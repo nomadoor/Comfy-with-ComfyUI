@@ -3,7 +3,11 @@
   <div class="site-header__inner">
     <div class="site-header__logo">{{ headerTitle }}</div>
     <div class="site-header__search">
-      <input type="search" placeholder="検索 (Coming Soon)" aria-label="サイト内検索" disabled />
+      {% set searchPlaceholder = currentLang == 'ja' and 'サイト内検索' or 'Search the docs' %}
+      <div class="search-box" data-search>
+        <input type="search" class="search-box__input" data-search-input placeholder="{{ searchPlaceholder }}" aria-label="{{ searchPlaceholder }}" autocomplete="off" />
+        <div class="search-box__results" data-search-results hidden></div>
+      </div>
     </div>
     <div class="site-header__actions">
       <button class="icon-button icon-button--ghost" type="button" aria-label="Notifications placeholder">◎</button>
