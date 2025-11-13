@@ -1,0 +1,44 @@
+﻿sections:
+  - key: begin-with
+    label: "Begin With ComfyUI"
+    pages:
+      - id: about
+        title: "About"
+      - id: how-to-use-this-site
+        title: "How to Use This Site"
+      - id: spin-up-fast
+        title: "Get It Running"
+      - id: pc-basics
+        title: "PC Basics"
+  - key: data-utilities
+    label: "Data / Image Utilities"
+    pages:
+      - id: data-ops
+        title: "Data Operations"
+      - id: batch-processing
+        title: "Batch Processing"
+      - id: columns
+        title: "Columns"
+  - key: ai-capabilities
+    label: "AI Capabilities"
+    pages:
+      - id: conditioning
+        title: "Conditioning"
+      - id: text-encoder
+        title: "Text Encoder"
+      - id: upscale-restoration
+        title: "Upscale & Restoration"
+  - key: basic-workflows
+    label: "Basic Workflows"
+    pages:
+      - id: sd15-basics
+        title: "SD1.5 Basics"
+      - id: other-foundation-models
+        title: "Other Foundation Models"
+  - key: faq
+    label: "FAQ / Troubleshooting"
+    pages:
+      - id: oom-vram
+        title: "OOM / VRAM"
+      - id: common-questions
+        title: "Common Questions"

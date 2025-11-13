@@ -1,0 +1,22 @@
+{
+  "defaultLang": "ja",
+  "name": {
+    "ja": "Comfyに使う ComfyUI",
+    "en": "Comfy with ComfyUI"
+  },
+  "languages": [
+    { "code": "ja", "label": "日本語", "title": "Comfyに使う ComfyUI" },
+    { "code": "en", "label": "English", "title": "Comfy with ComfyUI" }
+  ],
+  "sections": [
+    { "key": "begin-with", "ja": "??はじめてのComfyUI", "en": "??Begin With ComfyUI" },
+    { "key": "data-utilities", "ja": "??データ / 画像ユーティリティ", "en": "??Data & Image Utilities" },
+    { "key": "ai-capabilities", "ja": "??AIの仕組みと出来ること", "en": "??AI Capabilities" },
+    { "key": "basic-workflows", "ja": "??基本のworkflow", "en": "??Basic Workflows" },
+    { "key": "faq", "ja": "??FAQ / トラブルシューティング", "en": "??FAQ / Troubleshooting" }
+  ],
+  "hero": {
+    "defaultGradient": "linear-gradient(135deg, #111B2F, #182745)",
+    "height": 320
+  }
+}

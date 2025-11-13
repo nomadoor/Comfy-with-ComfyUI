@@ -1,0 +1,11 @@
+{% set heroGradient = hero.gradient or site.hero.defaultGradient %}
+<div class="hero" style="{% if not hero.image and heroGradient %}background: {{ heroGradient }};{% endif %}">
+  {% if hero.image %}
+    <img src="{{ hero.image }}" alt="{{ hero.alt or title }}" class="hero__media" width="1440" height="480" />
+  {% endif %}
+  <div class="hero__scrim"></div>
+  <div class="hero__content">
+    <h1 class="hero__title">{{ title }}</h1>
+    {% include "tag-chips.njk" %}
+  </div>
+</div>

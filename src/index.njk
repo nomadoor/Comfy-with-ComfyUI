@@ -1,0 +1,26 @@
+﻿{% set defaultLang = site.defaultLang %}
+{% set localeNav = nav[defaultLang] or nav[site.defaultLang] %}
+{% set redirectPath = "/" + defaultLang + "/" %}
+{% if localeNav and localeNav.sections and (localeNav.sections | length) > 0 %}
+  {% set firstSection = localeNav.sections | first %}
+  {% if firstSection and firstSection.pages and (firstSection.pages | length) > 0 %}
+    {% set firstPage = firstSection.pages | first %}
+    {% set redirectPath = "/" + defaultLang + "/" + firstSection.key + "/" + firstPage.id + "/" %}
+  {% endif %}
+{% endif %}
+<!DOCTYPE html>
+<html lang="{{ defaultLang }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="0;url={{ redirectPath }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Comfy with ComfyUI</title>
+    <link rel="canonical" href="{{ redirectPath }}" />
+    <script>
+      window.location.replace("{{ redirectPath }}");
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to <a href="{{ redirectPath }}">{{ redirectPath }}</a>...</p>
+  </body>
+</html>

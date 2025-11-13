@@ -1,0 +1,28 @@
+{
+  "name": "comfy-with-comfyui",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "ComfyUI onboarding + workflow docs built with Eleventy, vanilla CSS, and ESM-only scripts.",
+  "scripts": {
+    "dev": "eleventy --serve --input=src --output=_site",
+    "build": "eleventy --input=src --output=_site",
+    "clean": "rimraf _site",
+    "test:playwright": "playwright test"
+  },
+  "keywords": [
+    "eleventy",
+    "esm",
+    "docs",
+    "comfyui"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "rimraf": "^6.1.0"
+  }
+}

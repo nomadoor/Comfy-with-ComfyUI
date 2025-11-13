@@ -1,0 +1,26 @@
+# Node / build artifacts
+node_modules/
+_site/
+.cache/
+
+# Logs / reports
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env / secrets
+.env
+.env.*
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+
+# Optional local data
+coverage/
+tmp/
+
+# Mock assets (large reference images only)
+src/assets/mock/**

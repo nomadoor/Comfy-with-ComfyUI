@@ -1,0 +1,44 @@
+﻿sections:
+  - key: begin-with
+    label: "はじめてのComfyUI"
+    pages:
+      - id: about
+        title: "About / 運営情報"
+      - id: how-to-use-this-site
+        title: "このサイトの使い方"
+      - id: spin-up-fast
+        title: "とりあえず動かしてみる"
+      - id: pc-basics
+        title: "必要なPC知識"
+  - key: data-utilities
+    label: "データ / 画像ユーティリティ"
+    pages:
+      - id: data-ops
+        title: "データ操作"
+      - id: batch-processing
+        title: "連続処理"
+      - id: columns
+        title: "コラム"
+  - key: ai-capabilities
+    label: "AIの仕組みと出来ること"
+    pages:
+      - id: conditioning
+        title: "Conditioning"
+      - id: text-encoder
+        title: "Text Encoder"
+      - id: upscale-restoration
+        title: "アップスケール・画像修復"
+  - key: basic-workflows
+    label: "基本のworkflow"
+    pages:
+      - id: sd15-basics
+        title: "画像生成の基本 (SD1.5)"
+      - id: other-foundation-models
+        title: "他の基盤モデル"
+  - key: faq
+    label: "FAQ / トラブルシューティング"
+    pages:
+      - id: oom-vram
+        title: "OOM / VRAM"
+      - id: common-questions
+        title: "よくある質問"

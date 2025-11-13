@@ -1,0 +1,44 @@
+{% set currentLang = lang | default(site.defaultLang) -%}
+{% set localeNav = nav[currentLang] or nav[site.defaultLang] -%}
+{% set sectionCandidate = section -%}
+{% set sectionExists = false -%}
+{% if sectionCandidate and localeNav -%}
+  {% for item in localeNav.sections -%}
+    {% if item.key == sectionCandidate -%}
+      {% set sectionExists = true -%}
+    {% endif -%}
+  {% endfor -%}
+{% endif -%}
+{% set currentSection = sectionExists and sectionCandidate or (localeNav.sections[0].key if localeNav and localeNav.sections else site.sections[0].key) -%}
+{% set currentNavId = navId | default(slug) -%}
+<!DOCTYPE html>
+<html lang="{{ currentLang }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }} | {{ site.name[currentLang] or site.name[site.defaultLang] }}</title>
+    <meta name="description" content="{{ summary | default('Comfy with ComfyUI docs') }}" />
+    <link rel="preload" href="/assets/fonts/berlin-type/BerlinTypeWeb-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/berlin-type/BerlinTypeWeb-Bold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+  </head>
+  <body lang="{{ currentLang }}" id="top">
+    {% include "header.njk" %}
+    <div class="app-shell">
+      <aside class="app-shell__sidebar">
+        {% include "sidebar.njk" %}
+      </aside>
+      <main class="app-shell__content">
+        {{ content | safe }}
+      </main>
+      <aside class="app-shell__toc">
+        {% include "toc.njk" %}
+      </aside>
+    </div>
+    <script type="module" src="/assets/js/sidebar.js"></script>
+    <script type="module" src="/assets/js/toc.js"></script>
+    <script type="module" src="/assets/js/lang-switcher.js"></script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+---
+layout: base.njk
+---
+{% include "hero.njk" %}
+<div class="article-body">
+  {{ content | safe }}
+</div>
+{% if workflowJson and workflowJson.length %}
+<section class="workflow-json">
+  <h2 class="workflow-json__heading">Workflow JSON</h2>
+  <div class="workflow-json__list">
+    {% for workflow in workflowJson %}
+      {% set fileName = (workflow.json or '') | basename %}
+      <div class="workflow-json__row">
+        <span class="workflow-json__filename">{{ fileName }}</span>
+        <div class="workflow-json__actions">
+          <button class="workflow-json__icon" type="button" aria-label="Copy {{ fileName }}" data-copy-json="{{ workflow.id }}-json">
+            <img src="/assets/icons/Copy%20SVG%20File.svg" alt="" aria-hidden="true" />
+          </button>
+          <a class="workflow-json__icon" href="{{ workflow.json }}" download aria-label="Download {{ fileName }}">
+            <img src="/assets/icons/Download%20SVG%20File.svg" alt="" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+      {% if workflow.copy %}
+        <pre id="{{ workflow.id }}-json" class="sr-only">{{ workflow.copy | safe }}</pre>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if section == "basic-workflows" %}
+  {% set relatedPages = collections.all | relatedWorkflows(page.url, tags) %}
+  {% if relatedPages.length %}
+    <section class="workflow-related">
+      <h2 class="workflow-related__heading">関連ワークフロー</h2>
+      <div class="workflow-related__grid">
+        {% for entry in relatedPages %}
+          <a class="workflow-related__card" href="{{ entry.url }}">
+            <span class="workflow-related__title">{{ entry.title }}</span>
+            {% if entry.summary %}
+            <span class="workflow-related__summary">{{ entry.summary }}</span>
+            {% endif %}
+          </a>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+{% endif %}

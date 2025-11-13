@@ -1,0 +1,51 @@
+{% set localeNav = nav[lang] or nav[site.defaultLang] %}
+{% if localeNav %}
+<div class="sidebar">
+  <div class="sidebar__sections" role="tablist">
+    {% for section in localeNav.sections %}
+      <button
+        class="sidebar__section-btn{% if section.key == currentSection %} is-active{% endif %}"
+        data-section-key="{{ section.key }}"
+        type="button"
+        role="tab"
+        aria-selected="{% if section.key == currentSection %}true{% else %}false{% endif %}"
+      >
+        {{ section.label }}
+      </button>
+    {% endfor %}
+  </div>
+  <div class="sidebar__nav-wrapper">
+    <div class="sidebar__nav-panels">
+      {% for section in localeNav.sections %}
+        <div class="sidebar__nav-panel{% if section.key == currentSection %} is-active{% endif %}" data-section-panel="{{ section.key }}">
+          {% set navItems = section.pages %}
+          {% set navSectionKey = section.key %}
+          {% include "nav-list.njk" %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="sidebar__footer">
+    <div class="sidebar__about">
+      <a href="/{{ lang }}/begin-with/about/">About</a>
+    </div>
+    <div class="sidebar__controls">
+      <div class="sidebar__lang">
+        <button class="chip lang-toggle" type="button" data-lang-toggle>
+          {{ lang | upper }} ▾
+        </button>
+        <div class="lang-menu" data-lang-menu>
+          {% set currentSlug = currentNavId or slug or 'how-to-use-this-site' %}
+          {% for option in site.languages %}
+            {% set target = '/' + option.code + '/' + currentSection + '/' + currentSlug + '/' %}
+            <a href="{{ target }}" class="{% if option.code == lang %}is-active{% endif %}">{{ option.label }}</a>
+          {% endfor %}
+        </div>
+      </div>
+      <button class="chip" type="button" aria-label="テーマ切替(未実装)">☾</button>
+    </div>
+  </div>
+</div>
+{% else %}
+<p style="color: var(--color-danger);">Navigation missing for {{ lang }}.</p>
+{% endif %}

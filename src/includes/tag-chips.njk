@@ -1,0 +1,12 @@
+{% if section == "basic-workflows" and tags and tags.length %}
+<div class="tag-chips">
+  {% for tag in tags %}
+    {% set tagMeta = tagIndex[lang] and tagIndex[lang][tag] %}
+    {% if tagMeta %}
+      <a class="tag-chip" href="/{{ lang }}/{{ tagMeta.section }}/{{ tag }}/">{{ tagMeta.title or tag }}</a>
+    {% else %}
+      <span class="tag-chip">{{ tag }}</span>
+    {% endif %}
+  {% endfor %}
+</div>
+{% endif %}
