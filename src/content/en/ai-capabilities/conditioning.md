@@ -36,3 +36,5 @@ High-level explanation of guidance vectors.
 Balancing CFG against conditioning strength.
 
 ![Conditioning gyazo](https://i.gyazo.com/f805391f1a7ae6b253440cf16168a763.jpg)
+
+![Conditioning workflow sample](https://i.gyazo.com/075ff7bc7a36635d40662b163b5a9cfe.jpg)

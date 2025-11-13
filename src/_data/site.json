@@ -1,19 +1,19 @@
-{
+ï»¿{
   "defaultLang": "ja",
   "name": {
-    "ja": "Comfy‚Ég‚¤ ComfyUI",
+    "ja": "Comfyã«ä½¿ã† ComfyUI",
     "en": "Comfy with ComfyUI"
   },
   "languages": [
-    { "code": "ja", "label": "“ú–{Œê", "title": "Comfy‚Ég‚¤ ComfyUI" },
+    { "code": "ja", "label": "æ—¥æœ¬èª", "title": "Comfyã«ä½¿ã† ComfyUI" },
     { "code": "en", "label": "English", "title": "Comfy with ComfyUI" }
   ],
   "sections": [
-    { "key": "begin-with", "ja": "??‚Í‚¶‚ß‚Ä‚ÌComfyUI", "en": "??Begin With ComfyUI" },
-    { "key": "data-utilities", "ja": "??ƒf[ƒ^ / ‰æ‘œƒ†[ƒeƒBƒŠƒeƒB", "en": "??Data & Image Utilities" },
-    { "key": "ai-capabilities", "ja": "??AI‚Ìd‘g‚İ‚Æo—ˆ‚é‚±‚Æ", "en": "??AI Capabilities" },
-    { "key": "basic-workflows", "ja": "??Šî–{‚Ìworkflow", "en": "??Basic Workflows" },
-    { "key": "faq", "ja": "??FAQ / ƒgƒ‰ƒuƒ‹ƒVƒ…[ƒeƒBƒ“ƒO", "en": "??FAQ / Troubleshooting" }
+    { "key": "begin-with", "ja": "ã¯ã˜ã‚ã¦ã®ComfyUI", "en": "Begin With ComfyUI" },
+    { "key": "data-utilities", "ja": "ãƒ‡ãƒ¼ã‚¿ / ç”»åƒãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£", "en": "Data & Image Utilities" },
+    { "key": "ai-capabilities", "ja": "AIã®ä»•çµ„ã¿ã¨å‡ºæ¥ã‚‹ã“ã¨", "en": "AI Capabilities" },
+    { "key": "basic-workflows", "ja": "åŸºæœ¬ã®workflow", "en": "Basic Workflows" },
+    { "key": "faq", "ja": "FAQ / ãƒˆãƒ©ãƒ–ãƒ«ã‚·ãƒ¥ãƒ¼ãƒ†ã‚£ãƒ³ã‚°", "en": "FAQ / Troubleshooting" }
   ],
   "hero": {
     "defaultGradient": "linear-gradient(135deg, #111B2F, #182745)",
