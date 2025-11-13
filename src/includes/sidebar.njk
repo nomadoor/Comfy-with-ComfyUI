@@ -45,18 +45,19 @@
     </div>
     <div class="sidebar__controls">
       <div class="sidebar__lang">
-        <button class="chip lang-toggle" type="button" data-lang-toggle>
+        <button class="chip lang-toggle" type="button" data-lang-toggle aria-haspopup="true" aria-expanded="false">
           {{ lang | upper }} ▾
         </button>
-        <div class="lang-menu" data-lang-menu>
+        <div class="lang-menu" data-lang-menu role="menu">
           {% set currentSlug = currentNavId or slug or 'how-to-use-this-site' %}
           {% for option in site.languages %}
             {% set target = '/' + option.code + '/' + currentSection + '/' + currentSlug + '/' %}
-            <a href="{{ target }}" class="{% if option.code == lang %}is-active{% endif %}">{{ option.label }}</a>
+            <a href="{{ target }}" class="{% if option.code == lang %}is-active{% endif %}" role="menuitem">{{ option.label }}</a>
           {% endfor %}
         </div>
       </div>
-      <button class="chip theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="テーマ切替">
+      {% set themeLabel = (site.i18n and site.i18n.themeToggle and (site.i18n.themeToggle[lang] or site.i18n.themeToggle[site.defaultLang])) or 'Theme toggle' %}
+      <button class="chip theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="{{ themeLabel }}">
         <img src="/assets/icons/Moon%20SVG%20File.svg" alt="" aria-hidden="true" data-theme-icon="moon" />
         <img src="/assets/icons/Sun%20SVG%20File.svg" alt="" aria-hidden="true" data-theme-icon="sun" />
       </button>

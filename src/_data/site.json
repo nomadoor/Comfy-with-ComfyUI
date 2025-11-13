@@ -18,5 +18,11 @@
   "hero": {
     "defaultGradient": "linear-gradient(135deg, #111B2F, #182745)",
     "height": 320
+  },
+  "i18n": {
+    "themeToggle": {
+      "ja": "テーマ切替",
+      "en": "Theme toggle"
+    }
   }
 }
