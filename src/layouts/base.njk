@@ -28,18 +28,23 @@
     {% include "header.njk" %}
     <div class="app-shell">
       <aside class="app-shell__sidebar">
-        {% include "sidebar.njk" %}
+        <div class="rail rail--sidebar">
+          {% include "sidebar.njk" %}
+        </div>
       </aside>
       <main class="app-shell__content">
         {{ content | safe }}
       </main>
       <aside class="app-shell__toc">
-        {% include "toc.njk" %}
+        <div class="rail rail--toc">
+          {% include "toc.njk" %}
+        </div>
       </aside>
     </div>
     <script type="module" src="/assets/js/sidebar.js"></script>
     <script type="module" src="/assets/js/toc.js"></script>
     <script type="module" src="/assets/js/lang-switcher.js"></script>
     <script type="module" src="/assets/js/lightbox.js"></script>
+    <script type="module" src="/assets/js/copy-json.js"></script>
   </body>
 </html>

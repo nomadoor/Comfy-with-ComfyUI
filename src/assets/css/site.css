@@ -1,4 +1,4 @@
-﻿@font-face {
+@font-face {
   font-family: "Berlin Type";
   src: url("../fonts/berlin-type/BerlinTypeWeb-Regular.woff2") format("woff2"),
        url("../fonts/berlin-type/BerlinTypeWeb-Regular.woff") format("woff");
@@ -44,16 +44,19 @@ body {
   --space-xl: 2rem;
   --space-2xl: 3rem;
 
-  --radius-sm: 0.35rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1.25rem;
-  --radius-pill: 999px;
+  --radius-md: 0.5rem;
+  --radius-sm: var(--radius-md);
+  --radius-lg: var(--radius-md);
+  --radius-pill: var(--radius-md);
 
   --header-height: 72px;
-  --sidebar-width: 17rem;
-  --toc-width: 14rem;
+  --sidebar-width: 16rem;
+  --toc-width: 16rem;
   --content-max: 60rem;
-  --layout-max: calc(var(--sidebar-width) + var(--content-max) + var(--toc-width) + (var(--space-xl) * 2));
+  --column-gap: 4.5rem;
+  --shell-padding: var(--space-xl);
+  --layout-max: calc(var(--sidebar-width) + var(--content-max) + var(--toc-width) + (var(--column-gap) * 2) + (var(--shell-padding) * 2));
+  --rail-offset: calc((100vw - min(100vw, var(--layout-max))) / 2 + var(--shell-padding));
 
   --font-base: "Berlin Type", "Zen Kaku Gothic New", "Hiragino Sans", system-ui, sans-serif;
 }
@@ -69,6 +72,8 @@ body {
   font-family: var(--font-base);
   min-height: 100%;
   line-height: 1.7;
+  overflow-y: scroll;
+  scrollbar-gutter: stable both-edges;
 }
 
 img,
@@ -91,7 +96,7 @@ video {
   height: var(--header-height);
   max-width: var(--layout-max);
   margin: 0 auto;
-  padding: 0 var(--space-xl);
+  padding: 0 var(--shell-padding);
   display: grid;
   grid-template-columns: var(--sidebar-width) minmax(0, var(--content-max)) var(--toc-width);
   align-items: center;
@@ -119,7 +124,7 @@ video {
   width: 80%;
   max-width: 520px;
   height: 44px;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
   background: var(--color-panel);
   color: var(--color-text-muted);
@@ -135,15 +140,17 @@ video {
 .app-shell {
   display: grid;
   grid-template-columns: var(--sidebar-width) minmax(0, var(--content-max)) var(--toc-width);
-  gap: var(--space-xl);
-  padding: var(--space-xl);
+  gap: var(--column-gap);
+  padding: var(--shell-padding);
   margin: 0 auto;
   max-width: var(--layout-max);
   width: 100%;
+  position: relative;
 }
 
 .app-shell__content {
   min-width: 0;
+  width: 100%;
 }
 
 .sidebar {
@@ -151,7 +158,7 @@ video {
   flex-direction: column;
   background: var(--color-panel);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   padding: var(--space-md);
   gap: var(--space-md);
   height: 100%;
@@ -169,26 +176,44 @@ video {
   padding-right: 0.25rem;
 }
 
-.app-shell__sidebar,
-.app-shell__toc {
-  position: sticky;
+.rail {
+  position: fixed;
   top: calc(var(--header-height) + var(--space-xl));
-  align-self: start;
   height: calc(100vh - var(--header-height) - (var(--space-xl) * 2));
+  will-change: transform;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: var(--sidebar-width);
 }
 
-.app-shell__sidebar {
-  padding-right: 0.25rem;
+.rail--sidebar {
+  left: var(--rail-offset);
 }
 
-.app-shell__toc {
-  padding-left: 0.25rem;
-  overflow-y: auto;
+.rail--toc {
+  width: var(--toc-width);
+  right: var(--rail-offset);
 }
 
 @media (max-width: 1100px) {
   .app-shell {
-    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    padding: var(--space-lg) var(--space-md);
+  }
+  .rail {
+    position: static;
+    height: auto;
+    width: 100%;
+    top: auto;
+  }
+  .app-shell__sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    margin: 0;
   }
   .app-shell__toc {
     display: none;
@@ -249,7 +274,7 @@ video {
   padding: var(--space-xs) var(--space-sm);
   color: var(--color-text);
   text-decoration: none;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   position: relative;
 }
 
@@ -262,7 +287,7 @@ video {
   width: 2px;
   height: 60%;
   background: transparent;
-  border-radius: 1px;
+  border-radius: var(--radius-md);
 }
 
 .nav-list__link.is-active,
@@ -309,7 +334,7 @@ video {
 
 .chip {
   border: 1px solid var(--color-chip-border);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   background: var(--color-chip-bg);
   color: var(--color-text-muted);
   padding: 0.15rem 0.75rem;
@@ -365,7 +390,7 @@ video {
 .icon-button {
   width: 2.25rem;
   height: 2.25rem;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
   background: transparent;
   color: var(--color-text);
@@ -381,9 +406,9 @@ video {
 
 .hero {
   position: relative;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  min-height: 220px;
+  height: 12rem;
   background: var(--color-panel-alt);
   margin-bottom: var(--space-lg);
 }
@@ -410,19 +435,22 @@ video {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   padding: var(--space-xl);
+  text-align: center;
+  gap: var(--space-sm);
 }
 
 .hero__title {
   font-size: clamp(2rem, 4vw, 3rem);
-  margin: 0 0 var(--space-sm);
+  margin: 0;
 }
 
 .tag-chips {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-xs);
+  justify-content: center;
 }
 
 .tag-chip {
@@ -431,7 +459,7 @@ video {
   gap: 0.25rem;
   background: var(--color-chip-bg);
   border: 1px solid var(--color-chip-border);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   padding: 0.2rem 0.75rem;
   font-size: 0.8rem;
   letter-spacing: 0.05em;
@@ -476,6 +504,7 @@ video {
   object-fit: contain;
   margin: var(--space-xl) 0;
   cursor: zoom-in;
+  border-radius: var(--radius-md);
 }
 
 .workflow-rail {
@@ -534,7 +563,7 @@ video {
   align-items: flex-end;
   gap: var(--space-sm);
   background-color: #212121;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   padding: var(--space-2xs) var(--space-sm);
 }
 
@@ -551,7 +580,7 @@ video {
 .workflow-json__icon {
   width: 32px;
   height: 32px;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
   background: transparent;
   display: inline-flex;
@@ -617,29 +646,73 @@ video {
   background: rgba(255, 255, 255, 0.02);
 }
 
-.toc {
-  border-left: 1px solid var(--color-border);
-  padding-left: var(--space-sm);
+.right-rail {
   font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  height: 100%;
+}
+
+.right-rail__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.right-rail__section--toc {
+  flex: 1;
+}
+
+.right-rail__section--tips {
+  margin-top: auto;
+}
+
+.toc {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--color-border);
+  gap: var(--space-xs);
+}
+
+.toc__rail {
   overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.toc__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
 }
 
 .toc__link {
   display: block;
   color: var(--color-text-muted);
   text-decoration: none;
-  margin-bottom: var(--space-xs);
+  border-left: 2px solid transparent;
+  margin-left: -1px;
+  padding: var(--space-2xs) 0;
+  padding-left: calc(var(--space-sm) - 1px);
 }
 
 .toc__link.is-active {
   color: var(--color-text);
+  border-left-color: var(--color-highlight);
 }
 
-.back-to-top {
-  display: inline-block;
-  margin-top: var(--space-md);
-  color: var(--color-link);
-  text-decoration: none;
+.right-rail__tips {
+  width: 100%;
+  min-height: 140px;
+  background: var(--color-panel-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-md);
 }
 
 @media (max-width: 900px) {
@@ -732,7 +805,7 @@ body.lightbox-open {
 
 .lightbox__nav {
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   background: rgba(0, 0, 0, 0.4);
   color: var(--color-text);
   width: 3rem;
@@ -755,7 +828,7 @@ body.lightbox-open {
 
 .lightbox__zoom button {
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   width: 2.5rem;
   height: 2.5rem;
   background: var(--color-panel);
@@ -837,7 +910,7 @@ body.lightbox-open {
   background: rgba(0, 0, 0, 0.4);
   width: 48px;
   height: 48px;
-  border-radius: 50%;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -934,7 +1007,7 @@ body.lightbox-open {
   background: rgba(0, 0, 0, 0.4);
   width: 48px;
   height: 48px;
-  border-radius: 50%;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;

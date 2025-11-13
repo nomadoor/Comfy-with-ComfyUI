@@ -1,7 +1,10 @@
 # AGENTS.md — Comfy with ComfyUI (Docs) / Agent Principles
 
 **Motto**  
-> Small, clear, safe steps — one source of truth in /ops.
+> Small, clear, safe steps — one source of truth in /ops (update /ops after every verbal change).
+
+**Live directives trump docs**  
+口頭で指示された仕様が最優先。指示を受けたら `/ops` を即座に更新し、それから実装すること。
 
 ---
 
@@ -28,7 +31,7 @@
 - 依存は最小、軽量JS優先。未翻訳・未準備の Workflow JSON は許容
 
 ## 4. Information Architecture（要約）
-- 左：サイドバー（常時2〜3階層、折り畳み極力回避）
+- 左：サイドバー（上部にセクションタブ、タブを切り替えると該当セクションのナビが1カラムで表示される）
 - 中：本文（H1直下に**タグチップ**）
 - 右：TOC（H2/H3）
 - 「できること」/ 「workflow」セクションページ下部：**同タグの カード全件**
@@ -45,8 +48,7 @@
   - `slug` … 言語非依存の英語 kebab
 - **同一 section 内で slug の重複を禁止**（言語別に同じ slug は可）
 
-## 7. Design Guardrails
-- **提供モック**（レイアウト・配色・余白・角丸・境界）を最優先
+- **提供モック**（レイアウト・配色・余白・角丸・境界）を最優先。ただしピクセル単位の一致は不要、雰囲気と構造を合わせる。
 - src/assets/mockのモックアップ画像を参考にする
 - 値は **/ops/style-design.md** のトークンで定義、実装はトークン参照のみ
 - 影は原則なし、階層は border + surface 差

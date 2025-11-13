@@ -1,6 +1,7 @@
+{% set headerTitle = site.name[currentLang] or site.name[site.defaultLang] %}
 <header class="site-header">
   <div class="site-header__inner">
-    <div class="site-header__logo">Comfy Docs</div>
+    <div class="site-header__logo">{{ headerTitle }}</div>
     <div class="site-header__search">
       <input type="search" placeholder="検索 (Coming Soon)" aria-label="サイト内検索" disabled />
     </div>

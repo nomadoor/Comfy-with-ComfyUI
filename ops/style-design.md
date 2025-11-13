@@ -32,10 +32,10 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 
 ## 3. Layout & Spacing
 - Spacing scale (`rem`): `0.25, 0.5, 0.75, 1, 1.5, 2, 3`.
-- Radii: `0.35`, `0.75`, `1.25`, pill = `999px`.
-- Grid: sidebar `17rem`, content `60rem` max, TOC `14rem`, gutters `2rem`. `--layout-max` = sum of columns + gutters. Header uses the exact same grid so every column aligns vertically.
-- Header height `72px`, sticky at the top. Logo / search / actions are centered within their columns; search input maxes at 80% width (≤520px).
-- Sidebar & TOC sit on `position: sticky` with `top = header + space`. They may scroll internally when content exceeds the viewport, but the primary scrollbar belongs to the article column.
+- Border radii: use `--radius-md = 0.5rem` for every component (pill shapes use `--radius-pill`).
+- Grid: sidebar `16em`, content `60rem` max, TOC `16em`. Column gap is `4.5rem`, outer padding is a separate token, and `--layout-max = sidebar + content + toc + (gap × 2) + (padding × 2)`; header uses the same width.
+- Header height `72px`, sticky at the top. Logo / search / actions stay centered within their columns; search input maxes at 80% width (≤520px).
+- Desktop rails are `position: fixed` with `height = 100vh - header` and scroll internally without drift; mobile reverts to stacked layout.
 
 ## 4. Sidebar
 - Section tabs: stacked buttons matching mock icons (icon stub optional). Active tab uses `--color-panel-alt` background and bold label.
@@ -44,20 +44,23 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
   - Language chip opens a dropdown **upward** so it never falls off-screen; each option links to the same slug in the chosen locale.
 
 ## 5. Hero & Tags
-- Hero height ≈ 220px, grayscale image (or `--color-panel-alt`). Add dark scrim gradient bottom-to-top.
-- H1 aligns left. Tag chips appear beneath H1 only on **basic-workflows** pages; they link to the AI Capabilities slug.
-- Images always tinted (`filter: grayscale(1) brightness(0.6)`) inside the hero to match the mock.
+- Hero height is fixed at `12rem`. Use a grayscale image (fallback `--color-panel-alt`) with a dark scrim.
+- Hero content is flex-centered both vertically and horizontally; remove all default margins (H1 included).
+- Apply `--radius-md` to the hero container and imagery. Tag chips still appear only on **basic-workflows** pages and link to the AI Capabilities slug.
+- Images remain tinted with `filter: grayscale(1) brightness(0.6)` inside the hero to match the mock.
 
 ## 6. Article Body
 - Transparent background (no cards). Content width max 60ch.
 - Heading rhythm: `h2` margin-top `3rem`, `h3` `1.5rem`.
 - Inline images are centered, `max-width: 720px`, `max-height: 300px`, and `object-fit: contain` so portrait assets never force extra scrolling.
+- 全ページで同一トーンを保つため、本文中の画像・動画もデフォルトで減光フィルタ（例：`filter: brightness(0.85)`）を適用する。
 - Lists use default bullets; ensure `padding-left: 1.5rem`.
 - `.placeholder` component is dashed border block for “まだページがありません” states and 404 page.
 
 ## 8. TOC
-- Thin column on the right. Border-left only, no container box. Links use muted grey; active link turns white.
-- “Back to top” pushes below the list.
+- Place TOC and the future Tips block inside the right sidebar column. Apply the border only to the TOC body, not the entire sidebar.
+- Each link carries a subtle guide line; the active item also shows a border highlight with the accent color.
+- Reserve a grey rectangular placeholder beneath the TOC for character/Tips content.
 
 ## 9. Workflow Assets
 - **Workflow JSON**: render as `filename | Copy | Download` rows (chips). Copy buttons read from hidden `<pre>` nodes to avoid DOM pollution; download links point at `/workflows/<slug>.json`.

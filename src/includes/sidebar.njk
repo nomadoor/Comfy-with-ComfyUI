@@ -3,11 +3,15 @@
 <div class="sidebar">
   <div class="sidebar__sections" role="tablist">
     {% for section in localeNav.sections %}
+      {% set tabId = "sidebar-tab-" + section.key %}
+      {% set panelId = "sidebar-panel-" + section.key %}
       <button
         class="sidebar__section-btn{% if section.key == currentSection %} is-active{% endif %}"
         data-section-key="{{ section.key }}"
         type="button"
         role="tab"
+        id="{{ tabId }}"
+        aria-controls="{{ panelId }}"
         aria-selected="{% if section.key == currentSection %}true{% else %}false{% endif %}"
       >
         {{ section.label }}
@@ -17,7 +21,17 @@
   <div class="sidebar__nav-wrapper">
     <div class="sidebar__nav-panels">
       {% for section in localeNav.sections %}
-        <div class="sidebar__nav-panel{% if section.key == currentSection %} is-active{% endif %}" data-section-panel="{{ section.key }}">
+        {% set tabId = "sidebar-tab-" + section.key %}
+        {% set panelId = "sidebar-panel-" + section.key %}
+        {% set isActive = section.key == currentSection %}
+        <div
+          class="sidebar__nav-panel{% if isActive %} is-active{% endif %}"
+          id="{{ panelId }}"
+          role="tabpanel"
+          aria-labelledby="{{ tabId }}"
+          data-section-panel="{{ section.key }}"
+          {% if not isActive %}hidden aria-hidden="true"{% else %}aria-hidden="false"{% endif %}
+        >
           {% set navItems = section.pages %}
           {% set navSectionKey = section.key %}
           {% include "nav-list.njk" %}
