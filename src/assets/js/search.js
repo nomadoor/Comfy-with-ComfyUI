@@ -46,7 +46,11 @@ if (container) {
   const navigateResults = (direction) => {
     const items = resultsEl?.querySelectorAll(".search-result") || [];
     if (!items.length) return;
-    activeIndex = (activeIndex + direction + items.length) % items.length;
+    if (activeIndex === -1) {
+      activeIndex = direction === 1 ? 0 : items.length - 1;
+    } else {
+      activeIndex = (activeIndex + direction + items.length) % items.length;
+    }
     updateActiveResult();
   };
 
@@ -71,9 +75,15 @@ if (container) {
       result.dataset.highlightTerm = query;
       result.setAttribute("tabindex", "-1");
       result.innerHTML = `
-        <span class="search-result__title">${item.title}</span>
-        ${item.summary ? `<span class="search-result__summary">${item.summary}</span>` : ""}
+        <span class="search-result__title"></span>
+        ${item.summary ? `<span class="search-result__summary"></span>` : ""}
       `;
+      const titleEl = result.querySelector(".search-result__title");
+      if (titleEl) titleEl.textContent = item.title;
+      if (item.summary) {
+        const summaryEl = result.querySelector(".search-result__summary");
+        if (summaryEl) summaryEl.textContent = item.summary;
+      }
       fragment.appendChild(result);
     });
     resultsEl.innerHTML = "";
@@ -160,7 +170,8 @@ if (container) {
     });
 
     input.addEventListener("focus", () => {
-      if (input.value.trim().length >= MIN_CHARS && resultsEl && resultsEl.innerHTML) {
+      const value = input.value.trim();
+      if (value.length >= MIN_CHARS && value === lastQuery && resultsEl && resultsEl.innerHTML) {
         resultsEl.hidden = false;
       }
     });
