@@ -61,6 +61,18 @@ body {
   --font-base: "Berlin Type", "Zen Kaku Gothic New", "Hiragino Sans", system-ui, sans-serif;
 }
 
+:root[data-theme="light"] {
+  --color-bg: #ffffff;
+  --color-panel: #f5f5f7;
+  --color-panel-alt: #ececf2;
+  --color-border: #d8d8e0;
+  --color-border-strong: #bebec7;
+  --color-text: #0f0f14;
+  --color-text-muted: #51515a;
+  --color-chip-bg: #ffffff;
+  --color-chip-border: #d8d8e0;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -339,6 +351,31 @@ video {
   color: var(--color-text-muted);
   padding: 0.15rem 0.75rem;
   font-size: 0.75rem;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  cursor: pointer;
+}
+
+.theme-toggle img {
+  width: 1rem;
+  height: 1rem;
+  opacity: 0.4;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.theme-toggle[data-theme="dark"] [data-theme-icon="moon"],
+.theme-toggle:not([data-theme]) [data-theme-icon="moon"] {
+  opacity: 1;
+  filter: invert(1);
+}
+
+.theme-toggle[data-theme="light"] [data-theme-icon="sun"] {
+  opacity: 1;
+  filter: brightness(1.4);
 }
 
 .chip--active {

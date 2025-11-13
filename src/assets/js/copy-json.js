@@ -20,13 +20,16 @@ function copyJson(button) {
   temp.style.top = "-9999px";
   document.body.appendChild(temp);
   temp.select();
+  let success = false;
   try {
-    document.execCommand("copy");
+    success = document.execCommand("copy");
   } catch (error) {
     console.warn("Copy fallback failed", error);
   }
   document.body.removeChild(temp);
-  markSuccess();
+  if (success) {
+    markSuccess();
+  }
 }
 
 function bindCopyButtons() {

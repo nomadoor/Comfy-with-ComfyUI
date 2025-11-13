@@ -56,7 +56,10 @@
           {% endfor %}
         </div>
       </div>
-      <button class="chip" type="button" aria-label="テーマ切替(未実装)">☾</button>
+      <button class="chip theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="テーマ切替">
+        <img src="/assets/icons/Moon%20SVG%20File.svg" alt="" aria-hidden="true" data-theme-icon="moon" />
+        <img src="/assets/icons/Sun%20SVG%20File.svg" alt="" aria-hidden="true" data-theme-icon="sun" />
+      </button>
     </div>
   </div>
 </div>

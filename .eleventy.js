@@ -8,12 +8,18 @@ export default function(eleventyConfig) {
 
   eleventyConfig.addWatchTarget("ops");
 
-  eleventyConfig.addFilter("relatedWorkflows", function (collection = [], currentUrl, currentTags = []) {
+  eleventyConfig.addFilter("relatedWorkflows", function (collection = [], currentUrl, currentTags = [], currentLang) {
     if (!Array.isArray(collection) || !currentTags || !currentTags.length) {
       return [];
     }
     return collection
-      .filter((entry) => entry && entry.data && entry.data.section === "basic-workflows" && entry.url !== currentUrl)
+      .filter((entry) => {
+        if (!entry || !entry.data) return false;
+        if (entry.url === currentUrl) return false;
+        if (entry.data.section !== "basic-workflows") return false;
+        if (currentLang && entry.data.lang && entry.data.lang !== currentLang) return false;
+        return true;
+      })
       .filter((entry) => {
         const entryTags = entry.data.tags || [];
         return currentTags.some((tag) => entryTags.includes(tag));

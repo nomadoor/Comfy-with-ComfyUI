@@ -31,7 +31,7 @@ layout: base.njk
 {% endif %}
 
 {% if section == "basic-workflows" %}
-  {% set relatedPages = collections.all | relatedWorkflows(page.url, tags) %}
+  {% set relatedPages = collections.all | relatedWorkflows(page.url, tags, lang) %}
   {% if relatedPages.length %}
     <section class="workflow-related">
       <h2 class="workflow-related__heading">関連ワークフロー</h2>
