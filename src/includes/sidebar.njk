@@ -30,8 +30,25 @@
       </button>
     {% endfor %}
   </div>
-  <div class="sidebar__nav-wrapper">
-    <div class="sidebar__nav-panels">
+  <div class="sidebar__section-panel">
+    <div class="sidebar__section-tabs" role="tablist" aria-label="Section shortcuts">
+      {% for section in localeNav.sections %}
+        {% set sectionIcon = sectionIcons[section.key] %}
+        <button
+          class="sidebar__section-tab{% if section.key == currentSection %} is-active{% endif %}"
+          type="button"
+          data-section-tab="{{ section.key }}"
+          aria-selected="{% if section.key == currentSection %}true{% else %}false{% endif %}"
+          aria-label="{{ section.label }}"
+        >
+          {% if sectionIcon %}
+            <span class="sidebar__section-tab-icon">{{ icon(sectionIcon) }}</span>
+          {% endif %}
+        </button>
+      {% endfor %}
+    </div>
+    <div class="sidebar__nav-wrapper">
+      <div class="sidebar__nav-panels">
       {% for section in localeNav.sections %}
         {% set tabId = "sidebar-tab-" + section.key %}
         {% set panelId = "sidebar-panel-" + section.key %}
@@ -49,6 +66,7 @@
           {% include "nav-list.njk" %}
         </div>
       {% endfor %}
+      </div>
     </div>
   </div>
   <div class="sidebar__footer">

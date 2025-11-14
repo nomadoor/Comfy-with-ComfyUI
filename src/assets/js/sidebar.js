@@ -1,4 +1,5 @@
 const sectionButtons = Array.from(document.querySelectorAll(".sidebar__section-btn"));
+const sectionTabs = Array.from(document.querySelectorAll(".sidebar__section-tab"));
 const navPanels = Array.from(document.querySelectorAll(".sidebar__nav-panel"));
 
 function activateSection(key, { focus = true } = {}) {
@@ -10,6 +11,11 @@ function activateSection(key, { focus = true } = {}) {
     if (isActive && focus) {
       btn.focus();
     }
+  });
+  sectionTabs.forEach((tab) => {
+    const isActive = tab.dataset.sectionTab === key;
+    tab.classList.toggle("is-active", isActive);
+    tab.setAttribute("aria-selected", String(isActive));
   });
   navPanels.forEach((panel) => {
     const isActive = panel.dataset.sectionPanel === key;
@@ -55,6 +61,10 @@ sectionButtons.forEach((btn, index) => {
         break;
     }
   });
+});
+
+sectionTabs.forEach((tab) => {
+  tab.addEventListener("click", () => activateSection(tab.dataset.sectionTab, { focus: false }));
 });
 
 const initialActive =
