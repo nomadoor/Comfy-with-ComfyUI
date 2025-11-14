@@ -1,8 +1,23 @@
 {% set heroBlock = hero or {} %}
 {% set heroImage = heroBlock.image %}
+{% set heroVariant = heroImage and (heroImage | imageVariant(1200)) %}
 <div class="hero{% if heroImage %} hero--has-media{% endif %}">
-  {% if heroImage %}
-    <img src="{{ heroImage }}" alt="{{ heroBlock.alt or title }}" class="hero__media" width="1440" height="480" />
+  {% if heroImage and heroVariant %}
+    <img
+      src="{{ heroVariant.preview }}"
+      {% if heroVariant.full and heroVariant.full != heroVariant.preview %}data-full-src="{{ heroVariant.full }}"{% endif %}
+      {% if heroVariant.full and heroVariant.full != heroVariant.preview %}
+        srcset="{{ heroVariant.preview }} 1000w, {{ heroVariant.full }} 2000w"
+        sizes="(min-width: 1100px) 960px, 100vw"
+      {% endif %}
+      alt="{{ heroBlock.alt or title }}"
+      class="hero__media"
+      width="1440"
+      height="480"
+      loading="eager"
+      fetchpriority="high"
+      decoding="sync"
+    />
   {% endif %}
   <div class="hero__scrim" aria-hidden="true"></div>
   <div class="hero__content">

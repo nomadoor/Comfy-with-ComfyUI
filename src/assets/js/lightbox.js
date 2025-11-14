@@ -36,6 +36,11 @@ export function initLightbox() {
   let zoomed = false;
   let keyHandler = null;
 
+  function getImageSource(target) {
+    if (!target) return "";
+    return target.dataset.fullSrc || target.currentSrc || target.src;
+  }
+
   function updateZoom() {
     imageEl.style.transform = zoomed ? "scale(2)" : "scale(1)";
     imageEl.classList.toggle("is-zoomed", zoomed);
@@ -44,7 +49,12 @@ export function initLightbox() {
   function show(index) {
     currentIndex = (index + images.length) % images.length;
     const target = images[currentIndex];
-    imageEl.src = target.currentSrc || target.src;
+    const source = getImageSource(target);
+    if (source) {
+      imageEl.removeAttribute("srcset");
+      imageEl.removeAttribute("sizes");
+      imageEl.src = source;
+    }
     imageEl.alt = target.alt || "";
     zoomed = false;
     updateZoom();
