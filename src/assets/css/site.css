@@ -26,7 +26,7 @@ body {
 :root {
   --color-bg: #040404;
   --color-panel: #111111;
-  --color-panel-strong: #121212;
+  --color-panel-strong: #1d1d1d;
   --color-panel-alt: #1a1a1a;
   --color-border: #292929;
   --color-border-strong: #3a3a3a;
@@ -278,14 +278,14 @@ video {
 .sidebar__nav-wrapper {
   flex: 1;
   overflow-y: auto;
-  padding: 0 0 var(--space-sm) var(--space-sm);
+  padding: var(--space-sm) 0 var(--space-sm) var(--space-sm);
   min-height: 0;
 }
 
 .sidebar__section-tabs {
   display: flex;
   gap: var(--space-2xs);
-  padding: var(--space-xs) var(--space-sm) 0 var(--space-sm);
+  background: #131313;
 }
 
 .sidebar__section-tab {
@@ -293,7 +293,7 @@ video {
   border: none;
   background: transparent;
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-  padding: var(--space-xs) 0;
+  padding: var(--space-xs) 0 0 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -303,7 +303,7 @@ video {
 }
 
 .sidebar__section-tab.is-active {
-  background: var(--color-panel);
+  background: var(--color-panel-strong);
   color: var(--color-highlight);
 }
 
@@ -314,7 +314,7 @@ video {
 }
 
 .sidebar__section-tab:not(.is-active) .sidebar__section-tab-icon .icon {
-  color: var(--color-text-muted);
+  color: #4A4A4A;
 }
 
 .sidebar__section-tab.is-active .sidebar__section-tab-icon .icon {
