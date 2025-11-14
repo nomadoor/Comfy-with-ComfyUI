@@ -1,11 +1,19 @@
 {% from "icon.njk" import icon %}
 {% set localeNav = nav[lang] or nav[site.defaultLang] %}
+{% set sectionIcons = {
+  "begin-with": "explore",
+  "data-utilities": "map",
+  "ai-capabilities": "navigation",
+  "basic-workflows": "map",
+  "faq": "emote-sad"
+} %}
 {% if localeNav %}
 <div class="sidebar">
   <div class="sidebar__sections" role="tablist">
     {% for section in localeNav.sections %}
       {% set tabId = "sidebar-tab-" + section.key %}
       {% set panelId = "sidebar-panel-" + section.key %}
+      {% set sectionIcon = sectionIcons[section.key] %}
       <button
         class="sidebar__section-btn{% if section.key == currentSection %} is-active{% endif %}"
         data-section-key="{{ section.key }}"
@@ -15,7 +23,10 @@
         aria-controls="{{ panelId }}"
         aria-selected="{% if section.key == currentSection %}true{% else %}false{% endif %}"
       >
-        {{ section.label }}
+        {% if sectionIcon %}
+          <span class="sidebar__section-icon">{{ icon(sectionIcon) }}</span>
+        {% endif %}
+        <span class="sidebar__section-label">{{ section.label }}</span>
       </button>
     {% endfor %}
   </div>
@@ -42,12 +53,16 @@
   </div>
   <div class="sidebar__footer">
     <div class="sidebar__about">
-      <a href="/{{ lang }}/begin-with/about/">About</a>
+      <a href="/{{ lang }}/begin-with/about/" class="sidebar__about-link">
+        <span class="sidebar__footer-icon">{{ icon("user-2") }}</span>
+        <span>About</span>
+      </a>
     </div>
     <div class="sidebar__controls">
       <div class="sidebar__lang">
         <button class="chip lang-toggle" type="button" data-lang-toggle aria-haspopup="true" aria-expanded="false">
-          {{ lang | upper }} ▾
+          <span class="sidebar__footer-icon">{{ icon("globe") }}</span>
+          <span class="sidebar__lang-label">{{ lang | upper }} ▾</span>
         </button>
         <div class="lang-menu" data-lang-menu role="menu">
           {% set currentSlug = currentNavId or slug or 'how-to-use-this-site' %}
