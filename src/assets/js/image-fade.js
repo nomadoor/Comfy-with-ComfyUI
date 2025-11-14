@@ -1,5 +1,8 @@
 function markLoaded(img) {
   img.dataset.loaded = "true";
+  document.dispatchEvent(
+    new CustomEvent("imageFade:loaded", { detail: { id: img.id || null } })
+  );
 }
 
 function watchImage(img) {

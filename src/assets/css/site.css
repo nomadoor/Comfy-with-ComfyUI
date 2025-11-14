@@ -433,7 +433,7 @@ video {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--space-2xs) var(--space-xs);
+  padding: var(--space-xs) var(--space-xs);
   color: var(--color-text);
   text-decoration: none;
   border-radius: var(--radius-sm);
@@ -446,6 +446,7 @@ video {
 
 .nav-list__link.is-active {
   background: #4A4A4A;
+  color: var(--color-heading);
   &:hover {
     background: #4A4A4A;
   }
@@ -474,6 +475,7 @@ video {
   border-radius: var(--radius-md);
   margin-top: auto;
   font-weight: 500;
+  font-size: 0.85rem;
 }
 
 .sidebar__about {
@@ -482,7 +484,6 @@ video {
 
 .sidebar__about a {
   color: var(--color-text);
-  font-size: 0.85rem;
   text-decoration: none;
   span:not(.sidebar__footer-icon) {
     padding-left: 0.2rem;
@@ -744,12 +745,14 @@ video {
   margin-top: var(--space-2xl);
   margin-bottom: var(--space-sm);
   font-size: 2rem;
+  scroll-margin-top: calc(var(--header-height) + var(--space-lg));
 }
 
 .article-body h3 {
   margin-top: var(--space-xl);
   margin-bottom: var(--space-xs);
   font-size: 1.2rem;
+  scroll-margin-top: calc(var(--header-height) + var(--space-lg));
 }
 
 \.article-body p,
