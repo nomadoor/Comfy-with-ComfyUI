@@ -84,7 +84,19 @@ video {
   display: block;
   max-width: 100%;
   height: auto;
+  background: var(--color-panel-alt);
   filter: brightness(0.85);
+}
+
+.article-body img {
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.article-body img[data-loaded="true"] {
+  opacity: 1;
 }
 
 .site-header {
