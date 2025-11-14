@@ -70,7 +70,7 @@ if (article && tocContainer) {
     tocContainer.appendChild(fragment);
 
     const tocLinks = Array.from(tocContainer.querySelectorAll(".toc__link"));
-    let activeId = headings[0].id;
+    let activeId = null;
     let headingPositions = [];
 
     function computePositions() {

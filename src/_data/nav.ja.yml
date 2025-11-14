@@ -17,6 +17,8 @@
         title: "必要なPC知識"
       - id: workspace-profiles
         title: "環境プリセット"
+      - id: component-gallery
+        title: "コンポーネントギャラリー"
   - key: data-utilities
     label: "データ / 画像ユーティリティ"
     pages:

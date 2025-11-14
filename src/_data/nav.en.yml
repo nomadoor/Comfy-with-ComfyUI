@@ -17,6 +17,8 @@
         title: "PC Basics"
       - id: workspace-profiles
         title: "Workspace Presets"
+      - id: component-gallery
+        title: "Component Gallery"
   - key: data-utilities
     label: "Data / Image Utilities"
     pages:

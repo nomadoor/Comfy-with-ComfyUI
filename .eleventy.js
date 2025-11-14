@@ -3,11 +3,15 @@ import fsSync from "node:fs";
 import path from "node:path";
 import MarkdownIt from "markdown-it";
 import fg from "fast-glob";
+import Prism from "prismjs";
+import loadLanguages from "prismjs/components/index.js";
 
 const GYAZO_HOST = "i.gyazo.com";
 const CACHE_DIR = ".cache";
 const GYAZO_CACHE_PATH = path.join(CACHE_DIR, "gyazo-images.json");
 const GYAZO_REGEX = /https:\/\/i\.gyazo\.com\/([a-f0-9]+)(?:\/max_size\/\d+)?\.(jpg|png|gif)/gi;
+
+loadLanguages(["bash", "shell", "json", "yaml", "javascript", "typescript", "css", "markup"]);
 
 let gyazoMeta = {};
 try {
@@ -88,6 +92,84 @@ function createImageVariants(url = "", size = 1000) {
   } catch {
     return fallback;
   }
+}
+
+function enhanceStandaloneImages(markdownLib) {
+  markdownLib.core.ruler.after("inline", "mark-standalone-images", (state) => {
+    const tokens = state.tokens;
+    for (let i = 0; i < tokens.length - 2; i++) {
+      const open = tokens[i];
+      const inlineToken = tokens[i + 1];
+      const close = tokens[i + 2];
+      if (
+        open.type !== "paragraph_open" ||
+        inlineToken.type !== "inline" ||
+        close.type !== "paragraph_close" ||
+        !inlineToken.children
+      ) {
+        continue;
+      }
+
+      const meaningfulChildren = inlineToken.children.filter((child) => {
+        if (child.type === "text") {
+          return child.content.trim().length > 0;
+        }
+        return child.type !== "softbreak" && child.type !== "hardbreak";
+      });
+
+      if (meaningfulChildren.length === 1 && meaningfulChildren[0].type === "image") {
+        const imageToken = meaningfulChildren[0];
+        imageToken.meta = imageToken.meta || {};
+        imageToken.meta.isStandalone = true;
+        open.meta = { ...(open.meta || {}), wrapsStandaloneImage: true };
+        close.meta = { ...(close.meta || {}), wrapsStandaloneImage: true };
+      }
+    }
+  });
+
+  const defaultParagraphOpen =
+    markdownLib.renderer.rules.paragraph_open ||
+    function (tokens, idx, options, env, self) {
+      return self.renderToken(tokens, idx, options);
+    };
+
+  markdownLib.renderer.rules.paragraph_open = function (tokens, idx, options, env, self) {
+    if (tokens[idx]?.meta?.wrapsStandaloneImage) {
+      return "";
+    }
+    return defaultParagraphOpen(tokens, idx, options, env, self);
+  };
+
+  const defaultParagraphClose =
+    markdownLib.renderer.rules.paragraph_close ||
+    function (tokens, idx, options, env, self) {
+      return self.renderToken(tokens, idx, options);
+    };
+
+  markdownLib.renderer.rules.paragraph_close = function (tokens, idx, options, env, self) {
+    if (tokens[idx]?.meta?.wrapsStandaloneImage) {
+      return "";
+    }
+    return defaultParagraphClose(tokens, idx, options, env, self);
+  };
+}
+
+function extractGyazoId(url = "") {
+  try {
+    const parsed = new URL(url);
+    const match = parsed.pathname.match(/([a-f0-9]{32})/i);
+    return match ? match[1] : null;
+  } catch {
+    return null;
+  }
+}
+
+function escapeHTML(str = "") {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }
 
 async function fetchGyazoMeta(url) {
@@ -189,10 +271,45 @@ export default function(eleventyConfig) {
     return createImageVariants(url, size);
   });
 
+  eleventyConfig.addShortcode("gyazoVideoLoop", function (url, caption = "", options = {}) {
+    const height = options.height || 300;
+    const width = options.width || 720;
+    const aspect = options.aspect || "16 / 9";
+    const id = extractGyazoId(url);
+    const source = typeof url === "string" && url.endsWith(".mp4")
+      ? url
+      : id
+        ? `https://i.gyazo.com/${id}.mp4`
+        : url;
+    const escapedCaption = escapeHTML(caption);
+    return `<figure class="article-video article-video--loop" style="--article-video-height:${height}px; --article-video-width:${width}px; --article-video-aspect:${aspect};"><div class="article-video__frame"><video src="${source}" muted loop autoplay playsinline></video></div>${caption ? `<figcaption>${escapedCaption}</figcaption>` : ""}</figure>`;
+  });
+
+  eleventyConfig.addShortcode("gyazoVideoPlayer", function (url, caption = "", options = {}) {
+    const height = options.height || 360;
+    const width = options.width || 720;
+    const aspect = options.aspect || "16 / 9";
+    const id = extractGyazoId(url);
+    const embed = id ? `https://embed.gyazo.com/${id}?loop=0` : url;
+    const escapedCaption = escapeHTML(caption);
+    return `<figure class="article-video article-video--player" style="--article-video-height:${height}px; --article-video-width:${width}px; --article-video-aspect:${aspect};"><div class="article-video__frame"><iframe src="${embed}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div>${caption ? `<figcaption>${escapedCaption}</figcaption>` : ""}</figure>`;
+  });
+
   const markdownLib = new MarkdownIt({
     html: true,
     linkify: true,
     typographer: false
+  });
+
+  markdownLib.set({
+    highlight: function (str, lang) {
+      const language = lang && Prism.languages[lang];
+      if (language) {
+        const highlighted = Prism.highlight(str, language, lang);
+        return `<pre class="language-${lang}"><code class="language-${lang}">${highlighted}</code></pre>`;
+      }
+      return `<pre class="language-text"><code class="language-text">${escapeHTML(str)}</code></pre>`;
+    }
   });
 
   const defaultImageRenderer = markdownLib.renderer.rules.image || function (tokens, idx, options, env, self) {
@@ -225,9 +342,35 @@ export default function(eleventyConfig) {
         token.attrSet("height", String(height));
       }
     }
-    return defaultImageRenderer(tokens, idx, options, env, self);
+    if (token.meta?.isStandalone) {
+      token.attrJoin("class", "article-media__image");
+    }
+    const renderedImage = defaultImageRenderer(tokens, idx, options, env, self);
+    if (!token.meta?.isStandalone) {
+      return renderedImage;
+    }
+    const widthAttr = Number(token.attrGet("width"));
+    const heightAttr = Number(token.attrGet("height"));
+    const hasDimensions =
+      Number.isFinite(widthAttr) && Number.isFinite(heightAttr) && widthAttr > 0 && heightAttr > 0;
+    const styleChunks = [];
+
+    if (hasDimensions) {
+      const ratioValue = widthAttr / heightAttr;
+      const limitedHeight = Math.min(heightAttr, 300);
+      styleChunks.push(`--article-media-aspect:${widthAttr} / ${heightAttr}`);
+      styleChunks.push(`--article-media-height:${limitedHeight}px`);
+      const constrainedWidth = Math.min(widthAttr, Math.round(ratioValue * limitedHeight));
+      styleChunks.push(`--article-media-width:${constrainedWidth}px`);
+    } else {
+      styleChunks.push(`--article-media-height:300px`);
+    }
+
+    const styleAttr = styleChunks.length ? ` style="${styleChunks.join("; ")}"` : "";
+    return `<figure class="article-media"${styleAttr}><div class="article-media__frame">${renderedImage}</div></figure>`;
   };
 
+  enhanceStandaloneImages(markdownLib);
   eleventyConfig.setLibrary("md", markdownLib);
 
   eleventyConfig.setServerOptions({
@@ -250,3 +393,4 @@ export default function(eleventyConfig) {
     pathPrefix: "/"
   };
 }
+

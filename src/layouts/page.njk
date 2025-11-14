@@ -8,6 +8,10 @@ layout: base.njk
 {% set workflowRelatedHeading = workflowI18n.relatedHeading[currentLang] or workflowI18n.relatedHeading[site.defaultLang] or "Related workflows" %}
 {% set workflowCopyLabel = workflowI18n.copyLabel[currentLang] or workflowI18n.copyLabel[site.defaultLang] or "Copy" %}
 {% set workflowDownloadLabel = workflowI18n.downloadLabel[currentLang] or workflowI18n.downloadLabel[site.defaultLang] or "Download" %}
+{% set footerConfig = site.footer or {} %}
+{% set footerTitle = footerConfig.title[currentLang] or footerConfig.title[site.defaultLang] %}
+{% set footerText = footerConfig.body[currentLang] or footerConfig.body[site.defaultLang] %}
+{% set footerLinks = footerConfig.links or [] %}
 {% include "hero.njk" %}
 <div class="article-body">
   {{ content | safe }}
@@ -54,4 +58,37 @@ layout: base.njk
       </div>
     </section>
   {% endif %}
+{% endif %}
+
+{% if footerTitle or footerText or footerLinks.length %}
+  <footer class="article-footer">
+    <div class="article-footer__inner">
+      <div class="article-footer__copy">
+        {% if footerTitle %}
+          <p class="article-footer__title">{{ footerTitle }}</p>
+        {% endif %}
+        {% if footerText %}
+          <p class="article-footer__text">{{ footerText }}</p>
+        {% endif %}
+      </div>
+      {% if footerLinks.length %}
+        <div class="article-footer__links">
+          {% for link in footerLinks %}
+            {% set linkLabel = link.label[currentLang] or link.label[site.defaultLang] %}
+            {% if linkLabel %}
+              {% if link.type == "internal" %}
+                {% set href = "/" ~ currentLang ~ "/" ~ (link.section or "begin-with") ~ "/" ~ (link.slug or "") ~ "/" %}
+              {% else %}
+                {% set href = link.href or "#" %}
+              {% endif %}
+              {% set isExternal = link.type == "external" %}
+              <a class="article-footer__link" href="{{ href }}" {% if isExternal %}target="_blank" rel="noreferrer noopener"{% endif %}>
+                {{ linkLabel }}
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </footer>
 {% endif %}

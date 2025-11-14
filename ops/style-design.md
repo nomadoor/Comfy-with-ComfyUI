@@ -1,9 +1,9 @@
-# STYLE-DESIGN — Visual Tokens And UI Rules
+# STYLE-DESIGN  EVisual Tokens And UI Rules
 
 ## 0. Identity
-- JA site title: **「Comfyに使う ComfyUI」** / EN: **“Comfy with ComfyUI”**. Strings live in `site.json`.
+- JA site title: **「Comfyに使ぁEComfyUI、E* / EN: **“Comfy with ComfyUI E*. Strings live in `site.json`.
 - IA sections remain `begin-with`, `data-utilities`, `ai-capabilities`, `basic-workflows`, `faq`.
-- Design intent follows `src/assets/mock/ホームデザイン_v01.png`: full-bleed black canvas, single-column article, chrome anchored on the left and top.
+- Design intent follows `src/assets/mock/ホ�EムチE��イン_v01.png`: full-bleed black canvas, single-column article, chrome anchored on the left and top.
 - Dark theme is canonical. Light mode will reuse the same token keys with different values.
 
 ## 1. Color Tokens
@@ -11,7 +11,7 @@
 | --- | --- | --- |
 | `--color-bg` | `#040404` | Body background. |
 | `--color-panel` | `#111111` | Sidebar and cards. |
-| `--color-panel-alt` | `#1a1a1a` | Active nav rows, hero fallback, search input. |
+| ``--color-panel-alt`` | `#1a1a1a` | Active nav rows, hero fallback, search input. |
 | `--color-border` | `#292929` | Default 1px borders. |
 | `--color-border-strong` | `#3a3a3a` | Active nav highlight, chip border. |
 | `--color-text` | `#f1f1f1` | Primary text. |
@@ -33,18 +33,18 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 ## 3. Layout & Spacing
 - Spacing scale (`rem`): `0.25, 0.5, 0.75, 1, 1.5, 2, 3`.
 - Border radii: use `--radius-md = 0.5rem` for every component (pill shapes use `--radius-pill`).
-- Grid: sidebar `16em`, content `60rem` max, TOC `16em`. Column gap is `4.5rem`, outer padding is a separate token, and `--layout-max = sidebar + content + toc + (gap × 2) + (padding × 2)`; header uses the same width.
+- Grid: sidebar `16em`, content `60rem` max, TOC `16em`. Column gap is `4.5rem`, outer padding is a separate token, and `--layout-max = sidebar + content + toc + (gap ÁE2) + (padding ÁE2)`; header uses the same width.
 - Header height `72px`, sticky at the top. Logo / search / actions stay centered within their columns; search input maxes at 80% width (≤520px).
 - Desktop rails are `position: fixed` with `height = 100vh - header` and scroll internally without drift; mobile reverts to stacked layout.
 
 ## 4. Sidebar
-- Section tabs: stacked buttons matching mock icons (icon stub optional). Active tab uses `--color-panel-alt` background and bold label.
+- Section tabs: stacked buttons matching mock icons (icon stub optional). Active tab uses ``--color-panel-alt`` background and bold label.
 - Nav list: single column, children indented with border-left. Active link shows a 2px highlight bar (mock’s purple line).
 - Footer: `About` link + language chips (JA/EN) + theme toggle stub. Chips use pill style with accent border when active.
   - Language chip opens a dropdown **upward** so it never falls off-screen; each option links to the same slug in the chosen locale.
 
 ## 5. Hero & Tags
-- Hero height is fixed at `12rem`. Use a grayscale image (fallback `--color-panel-alt`) with a dark scrim.
+- Hero height is fixed at `12rem`. Use a grayscale image (fallback ``--color-panel-alt``) with a dark scrim.
 - Hero content is flex-centered both vertically and horizontally; remove all default margins (H1 included).
 - Apply `--radius-md` to the hero container and imagery. Tag chips still appear only on **basic-workflows** pages and link to the AI Capabilities slug.
 - Images remain tinted with `filter: grayscale(1) brightness(0.6)` inside the hero to match the mock.
@@ -53,9 +53,10 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - Transparent background (no cards). Content width max 60ch.
 - Heading rhythm: `h2` margin-top `3rem`, `h3` `1.5rem`.
 - Inline images are centered, `max-width: 720px`, `max-height: 300px`, and `object-fit: contain` so portrait assets never force extra scrolling.
-- 全ページで同一トーンを保つため、本文中の画像・動画もデフォルトで減光フィルタ（例：`filter: brightness(0.85)`）を適用する。
+- Inline Gyazo media stays completely flat: **no borders / box-shadows**. When contrast is needed, rely on `--color-panel-alt` as the single backing surface.
+- 全ペ�Eジで同一ト�Eンを保つため、本斁E��の画像�E動画もデフォルトで減�Eフィルタ�E�例：`filter: brightness(0.85)`�E�を適用する、E
 - Lists use default bullets; ensure `padding-left: 1.5rem`.
-- `.placeholder` component is dashed border block for “まだページがありません” states and 404 page.
+- `.placeholder` component is dashed border block for “まだペ�Eジがありません Estates and 404 page.
 
 ## 8. TOC
 - Place TOC and the future Tips block inside the right sidebar column. Apply the border only to the TOC body, not the entire sidebar.
@@ -64,19 +65,19 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 
 ## 9. Workflow Assets
 - **Workflow JSON**: render as `filename | Copy | Download` rows (chips). Copy buttons read from hidden `<pre>` nodes to avoid DOM pollution; download links point at `/workflows/<slug>.json`.
-- **関連ワークフロー**: only on `basic-workflows/*` pages. Gather other workflow pages sharing at least one AI-capability tag and render them in a Cosense-style grid (`repeat(auto-fill, minmax(146px, 1fr))`). Each card shows title + summary — no screenshots.
+- **関連ワークフロー**: only on `basic-workflows/*` pages. Gather other workflow pages sharing at least one AI-capability tag and render them in a Cosense-style grid (`repeat(auto-fill, minmax(146px, 1fr))`). Each card shows title + summary  Eno screenshots.
 - Images in these sections obey the same `max-height: 300px` rule; JSON data stays pure text (never embedded screenshots).
 
 ## 10. Tags & Navigation Data
 - `nav.ja.yml` / `nav.en.yml` store sections + page IDs. Every tag slug **must** exist in these files so tag chips can build canonical links.
-- Missing page slugs auto-generate placeholders via `src/content/placeholders.11ty.js`. Placeholder copy: “まだページがありません…”.
+- Missing page slugs auto-generate placeholders via `src/content/placeholders.11ty.js`. Placeholder copy: “まだペ�Eジがありません… E
 
 ## 11. Fonts & Language Rules
 - Always list Berlin Type **before** Zen Kaku Gothic in CSS so Latin glyphs render in Berlin Type, even on JA pages.
 - `body[lang="ja"]` is still allowed for locale-specific tweaks (date format, etc.) but **not** to change typeface order.
 
 ## 12. Assets
-- Mock hero image tinted grayscale; when no asset, fill with `--color-panel-alt`.
+- Mock hero image tinted grayscale; when no asset, fill with ``--color-panel-alt``.
 - Icons remain monochrome, `currentColor`, 24px viewBox.
 - Placeholder cat illustration (mock bottom-right) will be added later; for now reserve space in layout for helper popover.
 

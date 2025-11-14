@@ -20,6 +20,7 @@
   "dependencies": {
     "@11ty/eleventy": "^3.1.2",
     "fast-glob": "^3.3.3",
+    "prismjs": "^1.29.0",
     "yaml": "^2.8.1"
   },
   "devDependencies": {

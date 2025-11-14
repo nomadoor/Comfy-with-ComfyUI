@@ -100,5 +100,36 @@
         "en": "Profile"
       }
     }
+  },
+  "footer": {
+    "title": {
+      "ja": "Comfy with ComfyUI ドキュメント",
+      "en": "Comfy with ComfyUI Docs"
+    },
+    "body": {
+      "ja": "コミュニティが保守する最新のComfyUIオンボーディング、ワークフロー、トラブルシューティング集です。",
+      "en": "Community-maintained ComfyUI onboarding, workflows, and troubleshooting guidance."
+    },
+    "links": [
+      {
+        "id": "guide",
+        "type": "internal",
+        "section": "begin-with",
+        "slug": "how-to-use-this-site",
+        "label": {
+          "ja": "このサイトの使い方",
+          "en": "How to use this site"
+        }
+      },
+      {
+        "id": "github",
+        "type": "external",
+        "href": "https://github.com/",
+        "label": {
+          "ja": "GitHub",
+          "en": "GitHub"
+        }
+      }
+    ]
   }
 }
