@@ -8,8 +8,15 @@
         title: "How to Use This Site"
       - id: spin-up-fast
         title: "Get It Running"
+        children:
+          - id: first-run-checklist
+            title: "First Run Checklist"
+          - id: gpu-ready
+            title: "GPU Prep Notes"
       - id: pc-basics
         title: "PC Basics"
+      - id: workspace-profiles
+        title: "Workspace Presets"
   - key: data-utilities
     label: "Data / Image Utilities"
     pages:
@@ -17,17 +24,31 @@
         title: "Data Operations"
       - id: batch-processing
         title: "Batch Processing"
+        children:
+          - id: batch-monitoring
+            title: "Job Monitoring"
       - id: columns
         title: "Columns"
+      - id: image-cleanup
+        title: "Image Cleanup"
+      - id: dataset-audit
+        title: "Dataset Audit"
   - key: ai-capabilities
     label: "AI Capabilities"
     pages:
       - id: conditioning
         title: "Conditioning"
+        children:
+          - id: conditioning-prompts
+            title: "Prompt Structures"
       - id: text-encoder
         title: "Text Encoder"
       - id: upscale-restoration
         title: "Upscale & Restoration"
+      - id: controlnet
+        title: "ControlNet Techniques"
+      - id: lora-library
+        title: "LoRA Library"
   - key: basic-workflows
     label: "Basic Workflows"
     pages:
@@ -35,10 +56,21 @@
         title: "SD1.5 Basics"
       - id: other-foundation-models
         title: "Other Foundation Models"
+      - id: sdxl-basics
+        title: "SDXL Starter"
+      - id: flux-tools
+        title: "Flux Tooling"
   - key: faq
     label: "FAQ / Troubleshooting"
     pages:
       - id: oom-vram
         title: "OOM / VRAM"
+        children:
+          - id: oom-checklist
+            title: "VRAM Recovery Checklist"
       - id: common-questions
         title: "Common Questions"
+      - id: render-errors
+        title: "Render Errors"
+      - id: workflow-debug
+        title: "Workflow Debugging"

@@ -8,8 +8,15 @@
         title: "このサイトの使い方"
       - id: spin-up-fast
         title: "とりあえず動かしてみる"
+        children:
+          - id: first-run-checklist
+            title: "初回起動チェックリスト"
+          - id: gpu-ready
+            title: "GPU準備メモ"
       - id: pc-basics
         title: "必要なPC知識"
+      - id: workspace-profiles
+        title: "環境プリセット"
   - key: data-utilities
     label: "データ / 画像ユーティリティ"
     pages:
@@ -17,17 +24,31 @@
         title: "データ操作"
       - id: batch-processing
         title: "連続処理"
+        children:
+          - id: batch-monitoring
+            title: "ジョブ監視"
       - id: columns
         title: "コラム"
+      - id: image-cleanup
+        title: "画像クリーンアップ"
+      - id: dataset-audit
+        title: "データセット監査"
   - key: ai-capabilities
     label: "AIの仕組みと出来ること"
     pages:
       - id: conditioning
         title: "Conditioning"
+        children:
+          - id: conditioning-prompts
+            title: "プロンプト構造"
       - id: text-encoder
         title: "Text Encoder"
       - id: upscale-restoration
         title: "アップスケール・画像修復"
+      - id: controlnet
+        title: "ControlNet使い分け"
+      - id: lora-library
+        title: "LoRAライブラリ"
   - key: basic-workflows
     label: "基本のworkflow"
     pages:
@@ -35,10 +56,21 @@
         title: "画像生成の基本 (SD1.5)"
       - id: other-foundation-models
         title: "他の基盤モデル"
+      - id: sdxl-basics
+        title: "SDXLスターター"
+      - id: flux-tools
+        title: "Flux系ツール"
   - key: faq
     label: "FAQ / トラブルシューティング"
     pages:
       - id: oom-vram
         title: "OOM / VRAM"
+        children:
+          - id: oom-checklist
+            title: "VRAM復旧手順"
       - id: common-questions
         title: "よくある質問"
+      - id: render-errors
+        title: "Renderエラー"
+      - id: workflow-debug
+        title: "Workflowデバッグ"
