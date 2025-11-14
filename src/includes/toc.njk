@@ -1,12 +1,16 @@
+{% set currentLang = lang or site.defaultLang %}
+{% set tocI18n = site.i18n.toc or {} %}
+{% set tipsPlaceholder = tocI18n.tipsPlaceholder[currentLang] or tocI18n.tipsPlaceholder[site.defaultLang] or "Tips" %}
+{% set tocLabel = tocI18n.label[currentLang] or tocI18n.label[site.defaultLang] or "Table of contents" %}
 <div class="right-rail">
   <div class="right-rail__section right-rail__section--toc">
-    <div class="toc">
+    <div class="toc" aria-label="{{ tocLabel }}">
       <div class="toc__rail">
         <div class="toc__links"></div>
       </div>
     </div>
   </div>
   <div class="right-rail__section right-rail__section--tips">
-    <div class="right-rail__tips" aria-hidden="true">Tips placeholder</div>
+    <div class="right-rail__tips" aria-hidden="true">{{ tipsPlaceholder }}</div>
   </div>
 </div>

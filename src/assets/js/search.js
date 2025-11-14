@@ -74,6 +74,7 @@ if (container) {
       result.href = item.url;
       result.dataset.highlightTerm = query;
       result.setAttribute("tabindex", "-1");
+      result.setAttribute("role", "option");
       result.innerHTML = `
         <span class="search-result__title"></span>
         ${item.summary ? `<span class="search-result__summary"></span>` : ""}

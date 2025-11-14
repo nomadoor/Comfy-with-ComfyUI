@@ -1,32 +1,39 @@
 ---
 layout: base.njk
 ---
+{% from "icon.njk" import icon %}
+{% set currentLang = lang or site.defaultLang %}
+{% set workflowI18n = site.i18n.workflow or {} %}
+{% set workflowJsonHeading = workflowI18n.jsonHeading[currentLang] or workflowI18n.jsonHeading[site.defaultLang] or "Workflow JSON" %}
+{% set workflowRelatedHeading = workflowI18n.relatedHeading[currentLang] or workflowI18n.relatedHeading[site.defaultLang] or "Related workflows" %}
+{% set workflowCopyLabel = workflowI18n.copyLabel[currentLang] or workflowI18n.copyLabel[site.defaultLang] or "Copy" %}
+{% set workflowDownloadLabel = workflowI18n.downloadLabel[currentLang] or workflowI18n.downloadLabel[site.defaultLang] or "Download" %}
 {% include "hero.njk" %}
 <div class="article-body">
   {{ content | safe }}
 </div>
 {% if workflowJson and workflowJson.length %}
 <section class="workflow-json">
-  <h2 class="workflow-json__heading">Workflow JSON</h2>
-  <div class="workflow-json__list">
+  <h2 class="workflow-json__heading">{{ workflowJsonHeading }}</h2>
+  <ul class="workflow-json__list">
     {% for workflow in workflowJson %}
       {% set fileName = (workflow.json or '') | basename %}
-      <div class="workflow-json__row">
+      <li class="workflow-json__row">
         <span class="workflow-json__filename">{{ fileName }}</span>
         <div class="workflow-json__actions">
-          <button class="workflow-json__icon" type="button" aria-label="Copy {{ fileName }}" data-copy-json="{{ workflow.id }}-json">
-            <img src="/assets/icons/Copy%20SVG%20File.svg" alt="" aria-hidden="true" />
+          <button class="workflow-json__icon" type="button" aria-label="{{ workflowCopyLabel }} {{ fileName }}" data-copy-json="{{ workflow.id }}-json">
+            {{ icon("copy") }}
           </button>
-          <a class="workflow-json__icon" href="{{ workflow.json }}" download aria-label="Download {{ fileName }}">
-            <img src="/assets/icons/Download%20SVG%20File.svg" alt="" aria-hidden="true" />
+          <a class="workflow-json__icon" href="{{ workflow.json }}" download aria-label="{{ workflowDownloadLabel }} {{ fileName }}">
+            {{ icon("download") }}
           </a>
         </div>
-      </div>
+      </li>
       {% if workflow.copy %}
         <pre id="{{ workflow.id }}-json" class="sr-only">{{ workflow.copy | safe }}</pre>
       {% endif %}
     {% endfor %}
-  </div>
+  </ul>
 </section>
 {% endif %}
 
@@ -34,7 +41,7 @@ layout: base.njk
   {% set relatedPages = collections.all | relatedWorkflows(page.url, tags, lang) %}
   {% if relatedPages.length %}
     <section class="workflow-related">
-      <h2 class="workflow-related__heading">関連ワークフロー</h2>
+      <h2 class="workflow-related__heading">{{ workflowRelatedHeading }}</h2>
       <div class="workflow-related__grid">
         {% for entry in relatedPages %}
           <a class="workflow-related__card" href="{{ entry.url }}">

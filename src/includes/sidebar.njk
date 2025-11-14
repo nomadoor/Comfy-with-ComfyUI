@@ -1,3 +1,4 @@
+{% from "icon.njk" import icon %}
 {% set localeNav = nav[lang] or nav[site.defaultLang] %}
 {% if localeNav %}
 <div class="sidebar">
@@ -58,8 +59,8 @@
       </div>
       {% set themeLabel = (site.i18n and site.i18n.themeToggle and (site.i18n.themeToggle[lang] or site.i18n.themeToggle[site.defaultLang])) or 'Theme toggle' %}
       <button class="chip theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="{{ themeLabel }}">
-        <img src="/assets/icons/Moon%20SVG%20File.svg" alt="" aria-hidden="true" data-theme-icon="moon" />
-        <img src="/assets/icons/Sun%20SVG%20File.svg" alt="" aria-hidden="true" data-theme-icon="sun" />
+        <span class="theme-toggle__icon" data-theme-icon="moon">{{ icon("moon") }}</span>
+        <span class="theme-toggle__icon" data-theme-icon="sun">{{ icon("sun") }}</span>
       </button>
     </div>
   </div>

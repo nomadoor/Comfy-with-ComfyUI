@@ -1,19 +1,47 @@
-﻿{
+{
   "defaultLang": "ja",
   "name": {
     "ja": "Comfyに使う ComfyUI",
     "en": "Comfy with ComfyUI"
   },
   "languages": [
-    { "code": "ja", "label": "日本語", "title": "Comfyに使う ComfyUI" },
-    { "code": "en", "label": "English", "title": "Comfy with ComfyUI" }
+    {
+      "code": "ja",
+      "label": "日本語",
+      "title": "Comfyに使う ComfyUI"
+    },
+    {
+      "code": "en",
+      "label": "English",
+      "title": "Comfy with ComfyUI"
+    }
   ],
   "sections": [
-    { "key": "begin-with", "ja": "はじめてのComfyUI", "en": "Begin With ComfyUI" },
-    { "key": "data-utilities", "ja": "データ / 画像ユーティリティ", "en": "Data & Image Utilities" },
-    { "key": "ai-capabilities", "ja": "AIの仕組みと出来ること", "en": "AI Capabilities" },
-    { "key": "basic-workflows", "ja": "基本のworkflow", "en": "Basic Workflows" },
-    { "key": "faq", "ja": "FAQ / トラブルシューティング", "en": "FAQ / Troubleshooting" }
+    {
+      "key": "begin-with",
+      "ja": "はじめてのComfyUI",
+      "en": "Begin With ComfyUI"
+    },
+    {
+      "key": "data-utilities",
+      "ja": "データ / 画像ユーティリティ",
+      "en": "Data & Image Utilities"
+    },
+    {
+      "key": "ai-capabilities",
+      "ja": "AIの仕組みと出来ること",
+      "en": "AI Capabilities"
+    },
+    {
+      "key": "basic-workflows",
+      "ja": "基本のworkflow",
+      "en": "Basic Workflows"
+    },
+    {
+      "key": "faq",
+      "ja": "FAQ / トラブルシューティング",
+      "en": "FAQ / Troubleshooting"
+    }
   ],
   "hero": {
     "defaultGradient": "linear-gradient(135deg, #111B2F, #182745)",
@@ -23,6 +51,54 @@
     "themeToggle": {
       "ja": "テーマ切替",
       "en": "Theme toggle"
+    },
+    "search": {
+      "placeholder": {
+        "ja": "ドキュメントを検索",
+        "en": "Search the docs"
+      },
+      "aria": {
+        "ja": "サイト内を検索",
+        "en": "Search this site"
+      }
+    },
+    "workflow": {
+      "jsonHeading": {
+        "ja": "Workflow JSON",
+        "en": "Workflow JSON"
+      },
+      "relatedHeading": {
+        "ja": "関連Workflow",
+        "en": "Related workflows"
+      },
+      "copyLabel": {
+        "ja": "コピー",
+        "en": "Copy"
+      },
+      "downloadLabel": {
+        "ja": "ダウンロード",
+        "en": "Download"
+      }
+    },
+    "toc": {
+      "tipsPlaceholder": {
+        "ja": "Tipsコンテンツ準備中",
+        "en": "Tips incoming"
+      },
+      "label": {
+        "ja": "目次",
+        "en": "Table of contents"
+      }
+    },
+    "headerActions": {
+      "notifications": {
+        "ja": "通知",
+        "en": "Notifications"
+      },
+      "profile": {
+        "ja": "プロフィール",
+        "en": "Profile"
+      }
     }
   }
 }
