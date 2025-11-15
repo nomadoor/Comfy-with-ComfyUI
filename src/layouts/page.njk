@@ -61,34 +61,26 @@ layout: base.njk
 {% endif %}
 
 {% if footerTitle or footerText or footerLinks.length %}
+  {% set footerLogoBase = 'src/assets/logos/logo_Comfy-ComfyUI.svg' | svgDataUri %}
+  {% set footerLogoJa = 'src/assets/logos/logo_に使う.svg' | svgDataUri %}
+  {% set footerLogoEn = 'src/assets/logos/logo_with.svg' | svgDataUri %}
   <footer class="article-footer">
     <div class="article-footer__inner">
-      <div class="article-footer__copy">
-        {% if footerTitle %}
-          <p class="article-footer__title">{{ footerTitle }}</p>
-        {% endif %}
-        {% if footerText %}
-          <p class="article-footer__text">{{ footerText }}</p>
-        {% endif %}
+      <div
+        class="article-footer__logo"
+        aria-label="{{ footerTitle }}"
+        style="--footer-logo-base: {{ footerLogoBase }}; --footer-logo-ja: {{ footerLogoJa }}; --footer-logo-en: {{ footerLogoEn }};"
+      >
+        <span class="sr-only">{{ footerTitle }}</span>
+        <span class="article-footer__logo-mark">
+          <span class="article-footer__logo-layer article-footer__logo-layer--base"></span>
+          <span class="article-footer__logo-layer article-footer__logo-layer--text{% if currentLang == 'ja' %} article-footer__logo-layer--ja{% else %} article-footer__logo-layer--en{% endif %}"></span>
+        </span>
       </div>
-      {% if footerLinks.length %}
-        <div class="article-footer__links">
-          {% for link in footerLinks %}
-            {% set linkLabel = link.label[currentLang] or link.label[site.defaultLang] %}
-            {% if linkLabel %}
-              {% if link.type == "internal" %}
-                {% set href = "/" ~ currentLang ~ "/" ~ (link.section or "begin-with") ~ "/" ~ (link.slug or "") ~ "/" %}
-              {% else %}
-                {% set href = link.href or "#" %}
-              {% endif %}
-              {% set isExternal = link.type == "external" %}
-              <a class="article-footer__link" href="{{ href }}" {% if isExternal %}target="_blank" rel="noreferrer noopener"{% endif %}>
-                {{ linkLabel }}
-              </a>
-            {% endif %}
-          {% endfor %}
-        </div>
-      {% endif %}
+      <div class="article-footer__links">
+        <a class="article-footer__link" href="/{{ currentLang }}/begin-with/how-to-use-this-site/">{{ site.i18n.footerGuide[currentLang] or site.i18n.footerGuide[site.defaultLang] or "How to use this site" }}</a>
+        <a class="article-footer__link" href="https://github.com/" target="_blank" rel="noreferrer noopener">GitHub</a>
+      </div>
     </div>
   </footer>
 {% endif %}
