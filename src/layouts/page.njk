@@ -79,7 +79,10 @@ layout: base.njk
       </div>
       <div class="article-footer__links">
         <a class="article-footer__link" href="/{{ currentLang }}/begin-with/how-to-use-this-site/">{{ site.i18n.footerGuide[currentLang] or site.i18n.footerGuide[site.defaultLang] or "How to use this site" }}</a>
-        <a class="article-footer__link" href="https://github.com/" target="_blank" rel="noreferrer noopener">GitHub</a>
+        <a class="article-footer__link article-footer__link--external" href="https://github.com/" target="_blank" rel="noreferrer noopener">
+          <span>GitHub</span>
+          <span class="article-footer__link-icon">{{ icon("newscreen") }}</span>
+        </a>
       </div>
     </div>
   </footer>
