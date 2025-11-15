@@ -45,6 +45,7 @@ body {
   --rail-height: calc(100vh - var(--header-height) - (var(--shell-padding-block) * 2));
 
   --font-base: "Plus Jakarta Sans", "Zen Kaku Gothic New", "Hiragino Sans", system-ui, sans-serif;
+  --transition-fast: all 100ms cubic-bezier(0.2, 0.91, 0.85, 0.96) 0s;
 }
 
 :root[data-theme="light"] {
@@ -306,7 +307,7 @@ video {
   justify-content: center;
   color: var(--color-text-muted);
   cursor: pointer;
-  transition: color 0.2s ease, background 0.2s ease;
+  transition: var(--transition-fast);
 }
 
 .sidebar__section-tab:hover,
@@ -324,7 +325,7 @@ video {
   block-size: 1.25rem;
   --icon-stroke-width: 1.8px;
   display: block;
-  transition: color 0.2s ease;
+  transition: var(--transition-fast);
 }
 
 .sidebar__section-tab:not(.is-active) .sidebar__section-tab-icon .icon {
@@ -415,7 +416,7 @@ video {
   font-weight: 600;
   cursor: pointer;
   text-align: left;
-  transition: color 0.2s ease, background 0.2s ease;
+  transition: var(--transition-fast);
 }
 
 .sidebar__section-btn:hover,
@@ -525,7 +526,7 @@ video {
   border-radius: var(--radius-md);
   margin-top: auto;
   font-weight: 500;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
 }
 
 .sidebar__about {
@@ -535,9 +536,9 @@ video {
 .sidebar__about a {
   color: var(--color-text);
   text-decoration: none;
-  span:not(.sidebar__footer-icon) {
+  /** span:not(.sidebar__footer-icon) {
     padding-left: 0.2rem;
-  }
+  } **/
 }
 
 .sidebar__about-link {
@@ -606,6 +607,7 @@ video {
   border: none;
   background: transparent;
   padding: 0;
+  transition: var(--transition-fast);
 }
 
 .theme-toggle__icon {
@@ -614,7 +616,7 @@ video {
   justify-content: center;
   opacity: 0.45;
   color: var(--color-text-muted);
-  transition: color 0.2s ease, opacity 0.2s ease;
+  transition: var(--transition-fast);
 }
 
 .theme-toggle__icon .icon {
@@ -837,12 +839,13 @@ video {
 
 .article-media-row {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-lg);
+  flex-wrap: nowrap;
+  gap: var(--space-md);
+  overflow-x: auto;
 }
 
 .article-media-row .article-media {
-  flex: 1 1 280px;
+  margin: 0;
 }
 
 .article-media__frame {
@@ -898,8 +901,8 @@ video {
 
 .article-body pre {
   margin: var(--space-2xl) 0;
-  padding: calc(var(--space-md) + 0.75rem) var(--space-md) var(--space-md) var(--space-md);
-  background: var(--color-panel);
+  padding: calc(var(--space-md) + 0.4rem) var(--space-md) var(--space-md) var(--space-md);
+  background: var(--color-panel-strong);
   border-radius: var(--radius-md);
   overflow-x: auto;
   font-size: 0.9rem;
@@ -938,14 +941,11 @@ video {
 }
 
 .article-video__frame {
-  width: min(
-    100%,
-    var(--article-video-width, 720px),
-    calc(var(--article-video-aspect, 16 / 9) * var(--article-video-height, 360px))
-  );
+  width: min(100%, var(--article-video-width, 720px));
   max-width: 100%;
-  max-height: var(--article-video-height, 360px);
   aspect-ratio: var(--article-video-aspect, 16 / 9);
+  max-height: var(--article-video-height, 360px);
+  height: auto;
   border-radius: var(--radius-md);
   overflow: hidden;
   background: #000;
@@ -957,10 +957,11 @@ video {
   width: 100%;
   height: 100%;
   border: none;
+  border-radius: inherit;
 }
 
 .article-video video {
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .article-video figcaption {
@@ -974,20 +975,32 @@ video {
   right: var(--space-sm);
   border: none;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.08);
+  background: transparent;
   color: var(--color-text);
-  font-size: 0.65rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 0.2rem 0.75rem;
+  padding: 0.2rem 0.6rem;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.code-copy__icon {
+  display: inline-flex;
+}
+
+.code-copy__icon svg {
+  inline-size: 0.9rem;
+  block-size: 0.9rem;
 }
 
 .code-copy:hover,
 .code-copy:focus-visible {
-  background: rgba(255, 255, 255, 0.2);
-  color: var(--color-heading);
+  color: var(--color-highlight);
+}
+
+.code-copy.is-copied {
+  color: var(--color-highlight);
 }
 
 .token.comment,
@@ -1317,6 +1330,7 @@ video {
   padding: var(--space-2xs) 0;
   padding-left: calc(var(--space-sm) - 1px);
   font-weight: 600;
+  transition: all 100ms cubic-bezier(0.2, 0.91, 0.85, 0.96) 0s;
 }
 
 .toc__link.is-active {
@@ -1443,7 +1457,7 @@ body.lightbox-open {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: var(--transition-fast);
 }
 
 .lightbox__nav:hover,

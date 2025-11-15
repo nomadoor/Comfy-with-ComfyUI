@@ -290,9 +290,13 @@ export default function(eleventyConfig) {
     const width = options.width || 720;
     const aspect = options.aspect || "16 / 9";
     const id = extractGyazoId(url);
-    const embed = id ? `https://embed.gyazo.com/${id}?loop=0` : url;
+    const source = typeof url === "string" && url.endsWith(".mp4")
+      ? url
+      : id
+        ? `https://i.gyazo.com/${id}.mp4`
+        : url;
     const escapedCaption = escapeHTML(caption);
-    return `<figure class="article-video article-video--player" style="--article-video-height:${height}px; --article-video-width:${width}px; --article-video-aspect:${aspect};"><div class="article-video__frame"><iframe src="${embed}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div>${caption ? `<figcaption>${escapedCaption}</figcaption>` : ""}</figure>`;
+    return `<figure class="article-video article-video--player" style="--article-video-height:${height}px; --article-video-width:${width}px; --article-video-aspect:${aspect};"><div class="article-video__frame"><video src="${source}" controls playsinline preload="metadata"></video></div>${caption ? `<figcaption>${escapedCaption}</figcaption>` : ""}</figure>`;
   });
 
   const markdownLib = new MarkdownIt({
