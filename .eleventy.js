@@ -277,6 +277,23 @@ export default function(eleventyConfig) {
     return segments[segments.length - 1] || "";
   });
 
+  eleventyConfig.addFilter("svgDataUri", function (inputPath = "") {
+    if (!inputPath) return "";
+    const cleanPath = inputPath.replace(/^[\/]/, "");
+    const diskPath = path.join(process.cwd(), cleanPath);
+    try {
+      const raw = fsSync.readFileSync(diskPath, "utf-8");
+      const minified = raw.replace(/\s+/g, " ").trim();
+      const encoded = encodeURIComponent(minified)
+        .replace(/'/g, "%27")
+        .replace(/"/g, "%22");
+      return `url("data:image/svg+xml,${encoded}")`;
+    } catch (error) {
+      console.warn("svgDataUri failed for", inputPath, error);
+      return "";
+    }
+  });
+
   eleventyConfig.addFilter("imageVariant", function (url, size = 1000) {
     return createImageVariants(url, size);
   });

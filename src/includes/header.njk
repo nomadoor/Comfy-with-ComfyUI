@@ -6,9 +6,21 @@
 {% set headerActions = site.i18n.headerActions or {} %}
 {% set notificationsLabel = headerActions.notifications[currentLang] or headerActions.notifications[site.defaultLang] or "Notifications" %}
 {% set profileLabel = headerActions.profile[currentLang] or headerActions.profile[site.defaultLang] or "Profile" %}
+{% set logoBaseMask = 'src/assets/logos/logo_Comfy-ComfyUI.svg' | svgDataUri %}
+{% if currentLang == 'ja' %}
+  {% set logoOverlayMask = 'src/assets/logos/logo_に使う.svg' | svgDataUri %}
+{% else %}
+  {% set logoOverlayMask = 'src/assets/logos/logo_with.svg' | svgDataUri %}
+{% endif %}
 <header class="site-header">
   <div class="site-header__inner">
-    <div class="site-header__logo">{{ headerTitle }}</div>
+    <a class="site-header__logo" href="/{{ currentLang }}/begin-with/how-to-use-this-site/" aria-label="{{ headerTitle }}">
+      <span class="sr-only">{{ headerTitle }}</span>
+      <span class="site-header__logo-mark">
+        <span class="site-header__logo-layer site-header__logo-layer--base" style="--logo-mask: {{ logoBaseMask }};"></span>
+        <span class="site-header__logo-layer site-header__logo-layer--text" style="--logo-mask: {{ logoOverlayMask }};"></span>
+      </span>
+    </a>
     <div class="site-header__search">
       <div class="search-box" data-search>
         <input

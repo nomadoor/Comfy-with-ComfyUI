@@ -146,8 +146,36 @@ video {
 }
 
 .site-header__logo {
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  height: 100%;
+}
+
+.site-header__logo-mark {
+  position: relative;
+  width: 83%;
+  max-width: 320px;
+  aspect-ratio: 800 / 94;
+  display: block;
+}
+
+.site-header__logo-layer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background: var(--logo-color, var(--color-heading));
+  -webkit-mask: var(--logo-mask) no-repeat center / contain;
+  mask: var(--logo-mask) no-repeat center / contain;
+}
+
+.site-header__logo-layer--base {
+  --logo-color: var(--color-heading);
+}
+
+.site-header__logo-layer--text {
+  --logo-color: var(--color-text);
 }
 
 .search-box {
@@ -259,7 +287,7 @@ video {
   display: flex;
   flex-direction: column;
   border-radius: var(--radius-md);
-  gap: var(--space-lg);
+  gap: var(--space-md);
   height: 100%;
   min-height: 0;
 }
@@ -293,7 +321,6 @@ video {
 .sidebar__section-tabs {
   display: flex;
   gap: var(--space-2xs);
-  border-radius: var(--radius-md);
 }
 
 .sidebar__section-tab {
@@ -336,26 +363,18 @@ video {
   color: var(--color-highlight);
 }
 
-.sidebar__section-tab:hover .sidebar__section-tab-icon .icon,
-.sidebar__section-tab:focus-visible .sidebar__section-tab-icon .icon {
+.sidebar__section-tab:not(.is-active):hover .sidebar__section-tab-icon .icon,
+.sidebar__section-tab:not(.is-active):focus-visible .sidebar__section-tab-icon .icon {
   color: var(--color-text);
 }
 
 @supports selector(:has(*)) {
-  .sidebar:has(.sidebar__section-tab[data-section-tab="begin-with"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="begin-with"],
-  .sidebar:has(.sidebar__section-tab[data-section-tab="data-utilities"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="data-utilities"],
-  .sidebar:has(.sidebar__section-tab[data-section-tab="ai-capabilities"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="ai-capabilities"],
-  .sidebar:has(.sidebar__section-tab[data-section-tab="basic-workflows"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="basic-workflows"],
-  .sidebar:has(.sidebar__section-tab[data-section-tab="faq"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="faq"] {
+  .sidebar:has(.sidebar__section-tab[data-section-tab="begin-with"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="begin-with"]:not(.is-active),
+  .sidebar:has(.sidebar__section-tab[data-section-tab="data-utilities"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="data-utilities"]:not(.is-active),
+  .sidebar:has(.sidebar__section-tab[data-section-tab="ai-capabilities"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="ai-capabilities"]:not(.is-active),
+  .sidebar:has(.sidebar__section-tab[data-section-tab="basic-workflows"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="basic-workflows"]:not(.is-active),
+  .sidebar:has(.sidebar__section-tab[data-section-tab="faq"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="faq"]:not(.is-active) {
     background: #373737;
-    color: var(--color-text);
-  }
-
-  .sidebar:has(.sidebar__section-tab[data-section-tab="begin-with"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="begin-with"] .sidebar__section-icon,
-  .sidebar:has(.sidebar__section-tab[data-section-tab="data-utilities"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="data-utilities"] .sidebar__section-icon,
-  .sidebar:has(.sidebar__section-tab[data-section-tab="ai-capabilities"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="ai-capabilities"] .sidebar__section-icon,
-  .sidebar:has(.sidebar__section-tab[data-section-tab="basic-workflows"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="basic-workflows"] .sidebar__section-icon,
-  .sidebar:has(.sidebar__section-tab[data-section-tab="faq"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="faq"] .sidebar__section-icon {
     color: var(--color-text);
   }
 }
@@ -419,13 +438,19 @@ video {
   transition: var(--transition-fast);
 }
 
-.sidebar__section-btn:hover,
-.sidebar__section-btn:focus-visible {
+.sidebar__section-btn:not(.is-active):hover,
+.sidebar__section-btn:not(.is-active):focus-visible {
   background: #373737;
   color: var(--color-text);
 }
 
 .sidebar__section-btn.is-active {
+  background: #DEDEDE;
+  color: var(--color-panel-strong);
+}
+
+.sidebar__section-btn.is-active:hover,
+.sidebar__section-btn.is-active:focus-visible {
   background: #DEDEDE;
   color: var(--color-panel-strong);
 }
@@ -441,8 +466,10 @@ video {
   color: #9357A3;
 }
 
-.sidebar__section-btn:hover .sidebar__section-icon,
-.sidebar__section-btn:focus-visible .sidebar__section-icon {
+.sidebar__section-btn.is-active .sidebar__section-icon
+
+.sidebar__section-btn:not(.is-active):hover .sidebar__section-icon,
+.sidebar__section-btn:not(.is-active):focus-visible .sidebar__section-icon {
   color: var(--color-text);
 }
 
@@ -496,11 +523,8 @@ video {
 
 
 .nav-list__link.is-active {
-  background: #4A4A4A;
+  background: #2f2f2f;
   color: var(--color-heading);
-  &:hover {
-    background: #4A4A4A;
-  }
 }
 
 .nav-list__link:hover {
@@ -512,9 +536,9 @@ video {
 }
 
 .nav-list__children {
-  margin-left: var(--space-xs);
+  margin-left: var(--space-sm);
   padding-left: var(--space-xs);
-  border-left: 2px solid #4a4a4a;
+  border-left: 1px solid #4a4a4a;
 }
 
 .sidebar__footer {
