@@ -1,19 +1,32 @@
-﻿function buildLightbox() {
+﻿const LIGHTBOX_ICONS = {
+  close:
+    '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 5L5 19M5 5L19 19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  prev:
+    '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 4L7 12L15 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  next:
+    '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 20L17 12L9 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+};
+
+function renderIcon(name) {
+  return `<span class="lightbox__icon" aria-hidden="true">${LIGHTBOX_ICONS[name] || ""}</span>`;
+}
+
+function buildLightbox() {
   const wrapper = document.createElement("div");
   wrapper.className = "lightbox";
   wrapper.innerHTML = `
     <div class="lightbox__backdrop" data-lightbox-close></div>
     <div class="lightbox__content" role="dialog" aria-modal="true" aria-label="画像プレビュー">
-      <button class="lightbox__close" data-lightbox-close aria-label="閉じる">
-        <img src="/assets/icons/Cross%20SVG%20File.svg" alt="" aria-hidden="true" />
+      <button class="lightbox__close" type="button" data-lightbox-close aria-label="閉じる">
+        ${renderIcon("close")}
       </button>
       <div class="lightbox__image-area">
-        <button class="lightbox__nav lightbox__nav--prev" data-lightbox-prev aria-label="前の画像">
-          <img src="/assets/icons/Chevron%20Left%20SVG%20File.svg" alt="" aria-hidden="true" />
+        <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="前の画像">
+          ${renderIcon("prev")}
         </button>
         <img data-lightbox-image alt="" />
-        <button class="lightbox__nav lightbox__nav--next" data-lightbox-next aria-label="次の画像">
-          <img src="/assets/icons/Chevron%20Right%20SVG%20File.svg" alt="" aria-hidden="true" />
+        <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="次の画像">
+          ${renderIcon("next")}
         </button>
       </div>
     </div>
