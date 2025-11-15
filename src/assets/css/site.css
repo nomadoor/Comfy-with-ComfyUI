@@ -466,7 +466,6 @@ video {
   color: #9357A3;
 }
 
-.sidebar__section-btn.is-active .sidebar__section-icon
 
 .sidebar__section-btn:not(.is-active):hover .sidebar__section-icon,
 .sidebar__section-btn:not(.is-active):focus-visible .sidebar__section-icon {

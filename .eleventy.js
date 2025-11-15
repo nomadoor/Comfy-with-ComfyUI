@@ -10,6 +10,9 @@ const GYAZO_HOST = "i.gyazo.com";
 const CACHE_DIR = ".cache";
 const GYAZO_CACHE_PATH = path.join(CACHE_DIR, "gyazo-images.json");
 const GYAZO_REGEX = /https:\/\/i\.gyazo\.com\/([a-f0-9]+)(?:\/max_size\/\d+)?\.(jpg|png|gif)/gi;
+const GYAZO_FETCH_TIMEOUT_MS = 5000;
+const GYAZO_FETCH_DELAY_MS = 200;
+const sleep = (ms = 0) => (ms > 0 ? new Promise((resolve) => setTimeout(resolve, ms)) : Promise.resolve());
 const UNORDERED_MARKS = new Set(['*', '-', '+']);
 const ARTICLE_LIST_ICON_SVG = '<svg class="article-body__list-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19" stroke="currentColor" stroke-width="var(--article-list-icon-stroke, 2.2)" stroke-linecap="round"/></svg>';
 
@@ -187,7 +190,7 @@ function escapeHTML(str = "") {
 async function fetchGyazoMeta(url) {
   try {
     const endpoint = `https://api.gyazo.com/api/oembed?url=${encodeURIComponent(url)}`;
-    const response = await fetch(endpoint);
+    const response = await fetch(endpoint, { signal: AbortSignal.timeout(GYAZO_FETCH_TIMEOUT_MS) });
     if (!response.ok) {
       return null;
     }
@@ -212,6 +215,7 @@ async function refreshGyazoMetadata() {
   for (const file of files) {
     try {
       const text = await fs.readFile(file, "utf-8");
+      GYAZO_REGEX.lastIndex = 0;
       let match;
       while ((match = GYAZO_REGEX.exec(text)) !== null) {
         const id = match[1];
@@ -227,6 +231,9 @@ async function refreshGyazoMetadata() {
   for (const url of urls) {
     if (!gyazoMeta[url] || !gyazoMeta[url].width || !gyazoMeta[url].height) {
       const meta = await fetchGyazoMeta(url);
+      if (GYAZO_FETCH_DELAY_MS) {
+        await sleep(GYAZO_FETCH_DELAY_MS);
+      }
       if (meta) {
         gyazoMeta[url] = meta;
         updated = true;
@@ -451,4 +458,6 @@ export default function(eleventyConfig) {
     pathPrefix: "/"
   };
 }
+
+
 
