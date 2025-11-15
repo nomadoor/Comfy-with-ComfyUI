@@ -154,6 +154,16 @@ function enhanceStandaloneImages(markdownLib) {
   };
 }
 
+function getGyazoDimensionsFromId(id) {
+  if (!id) return null;
+  const normalized = normalizeGyazoUrl(`https://${GYAZO_HOST}/${id}.jpg`);
+  const meta = normalized ? gyazoMeta[normalized] : null;
+  if (meta && meta.width && meta.height) {
+    return { width: meta.width, height: meta.height };
+  }
+  return null;
+}
+
 function extractGyazoId(url = "") {
   try {
     const parsed = new URL(url);
@@ -272,10 +282,15 @@ export default function(eleventyConfig) {
   });
 
   eleventyConfig.addShortcode("gyazoVideoLoop", function (url, caption = "", options = {}) {
-    const height = options.height || 300;
-    const width = options.width || 720;
-    const aspect = options.aspect || "16 / 9";
     const id = extractGyazoId(url);
+    const dims = getGyazoDimensionsFromId(id);
+    const baseWidth = dims?.width || options.width || 720;
+    const baseHeight = dims?.height || options.height || 360;
+    const maxHeight = Math.min(options.height || baseHeight, 360);
+    const scale = baseHeight > maxHeight ? maxHeight / baseHeight : 1;
+    const width = Math.round(baseWidth * scale);
+    const height = Math.round(baseHeight * scale);
+    const aspect = dims ? `${dims.width} / ${dims.height}` : options.aspect || "16 / 9";
     const source = typeof url === "string" && url.endsWith(".mp4")
       ? url
       : id
@@ -286,10 +301,15 @@ export default function(eleventyConfig) {
   });
 
   eleventyConfig.addShortcode("gyazoVideoPlayer", function (url, caption = "", options = {}) {
-    const height = options.height || 360;
-    const width = options.width || 720;
-    const aspect = options.aspect || "16 / 9";
     const id = extractGyazoId(url);
+    const dims = getGyazoDimensionsFromId(id);
+    const baseWidth = dims?.width || options.width || 720;
+    const baseHeight = dims?.height || options.height || 360;
+    const maxHeight = Math.min(options.height || baseHeight, 360);
+    const scale = baseHeight > maxHeight ? maxHeight / baseHeight : 1;
+    const width = Math.round(baseWidth * scale);
+    const height = Math.round(baseHeight * scale);
+    const aspect = dims ? `${dims.width} / ${dims.height}` : options.aspect || "16 / 9";
     const source = typeof url === "string" && url.endsWith(".mp4")
       ? url
       : id
