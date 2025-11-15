@@ -10,6 +10,8 @@ const GYAZO_HOST = "i.gyazo.com";
 const CACHE_DIR = ".cache";
 const GYAZO_CACHE_PATH = path.join(CACHE_DIR, "gyazo-images.json");
 const GYAZO_REGEX = /https:\/\/i\.gyazo\.com\/([a-f0-9]+)(?:\/max_size\/\d+)?\.(jpg|png|gif)/gi;
+const UNORDERED_MARKS = new Set(['*', '-', '+']);
+const ARTICLE_LIST_ICON_SVG = '<svg class="article-body__list-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19" stroke="currentColor" stroke-width="var(--article-list-icon-stroke, 2.2)" stroke-linecap="round"/></svg>';
 
 loadLanguages(["bash", "shell", "json", "yaml", "javascript", "typescript", "css", "markup"]);
 
@@ -409,6 +411,21 @@ export default function(eleventyConfig) {
 
     const styleAttr = styleChunks.length ? ` style="${styleChunks.join("; ")}"` : "";
     return `<figure class="article-media"${styleAttr}><div class="article-media__frame">${renderedImage}</div></figure>`;
+  };
+
+
+  const defaultListItemOpen = markdownLib.renderer.rules.list_item_open || function (tokens, idx, options, env, self) {
+    return self.renderToken(tokens, idx, options);
+  };
+
+  markdownLib.renderer.rules.list_item_open = function (tokens, idx, options, env, self) {
+    const rendered = defaultListItemOpen(tokens, idx, options, env, self);
+    const token = tokens[idx];
+    const markup = token.markup ? token.markup.trim() : "";
+    if (!UNORDERED_MARKS.has(markup)) {
+      return rendered;
+    }
+    return rendered + '<span class="article-body__list-icon" aria-hidden="true">' + ARTICLE_LIST_ICON_SVG + '</span>';
   };
 
   enhanceStandaloneImages(markdownLib);

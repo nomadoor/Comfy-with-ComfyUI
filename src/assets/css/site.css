@@ -854,38 +854,46 @@ video {
 
 .article-body ul {
   list-style: none;
-  margin: var(--space-md) 0;
+  margin: var(--space-2xs) 0;
   padding-left: 0;
 }
 
 .article-body ul li {
   position: relative;
-  padding-left: 1.1rem;
+  padding-left: calc(var(--space-2xs) + 0.9rem);
   margin-bottom: var(--space-2xs);
+  --article-list-line-height: 1.6em;
+  line-height: var(--article-list-line-height, 1.6);
 }
 
-.article-body ul > li::before {
-  content: "";
+.article-body__list-icon {
   position: absolute;
   left: 0;
-  top: 0.55rem;
-  inline-size: 0.65rem;
-  block-size: 0.65rem;
-  -webkit-mask: url("/assets/icons/Minus%20Small%20SVG%20File.svg") no-repeat center / contain;
-  mask: url("/assets/icons/Minus%20Small%20SVG%20File.svg") no-repeat center / contain;
-  background-color: rgba(255, 255, 255, 0.75);
+  top: calc(var(--article-list-line-height, 1.6em) / 2);
+  inline-size: 0.9rem;
+  block-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  pointer-events: none;
+  --article-list-icon-stroke: 2.2;
+  transform: translateY(-50%);
+}
+
+.article-body__list-icon-svg {
+  inline-size: 100%;
+  block-size: 100%;
+  stroke: currentColor;
+  fill: none;
+}
+
+.article-body__list-icon-svg path {
+  stroke-width: var(--article-list-icon-stroke, 2.2);
 }
 
 .article-body ul ul {
-  margin-left: var(--space-md);
-}
-
-.article-body ul ul > li::before {
-  background-color: rgba(255, 255, 255, 0.55);
-}
-
-.article-body ul ul ul > li::before {
-  background-color: rgba(255, 255, 255, 0.35);
+  margin-left: var(--space-2xs);
 }
 
 .article-body ol {
