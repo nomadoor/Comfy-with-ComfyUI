@@ -43,6 +43,16 @@ export function format(workflow: Workflow) {
 
 > “Small, clear, safe steps.” 文章のまとまりも 1 ステップずつ説明することで読者の目線をコントロールする。
 
+## ネストしたリスト
+
+- 入力を集める
+  - Gyazo スクショ
+    - alt を確認
+  - Workflow JSON
+- ワークフローをまとめる
+  - 目的を書く
+  - Download / Copy 動作を確認
+
 ## Gyazo 画像
 
 ![Conditioning reference](https://i.gyazo.com/075ff7bc7a36635d40662b163b5a9cfe.jpg)

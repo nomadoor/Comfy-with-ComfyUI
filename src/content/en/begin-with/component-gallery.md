@@ -39,6 +39,16 @@ Inline `code` snippets inherit the same palette but compress into a pill so the 
 
 > “Small, clear, safe steps” applies to prose, too. Keep guidance scoped to a single action so users can copy it in their own workflows.
 
+## Nested Lists
+
+- Capture inputs
+  - Gyazo screenshot
+    - Confirm alt text
+  - Workflow JSON
+- Document the workflow
+  - Describe goals
+  - Provide download + copy actions
+
 ## Gyazo Image
 
 ![Conditioning reference](https://i.gyazo.com/f805391f1a7ae6b253440cf16168a763.jpg)

@@ -828,8 +828,40 @@ video {
   color: var(--color-text);
 }
 
-.article-body ul {
-  padding-left: var(--space-lg);
+.article-body ul,
+.article-body ol {
+  list-style: none;
+  margin: var(--space-lg) 0;
+  padding-left: 0;
+}
+
+.article-body li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: var(--space-xs);
+}
+
+.article-body ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.4rem;
+  inline-size: 0.75rem;
+  block-size: 0.75rem;
+  mask: url("/assets/icons/Minus%20Small%20SVG%20File.svg") no-repeat center / contain;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.article-body ul ul {
+  margin-left: var(--space-md);
+}
+
+.article-body ul ul > li::before {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.article-body ul ul ul > li::before {
+  background: rgba(255, 255, 255, 0.35);
 }
 
 .article-media {
