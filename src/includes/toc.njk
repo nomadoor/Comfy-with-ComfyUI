@@ -1,7 +1,12 @@
 {% set currentLang = lang or site.defaultLang %}
 {% set tocI18n = site.i18n.toc or {} %}
-{% set tipsPlaceholder = tocI18n.tipsPlaceholder[currentLang] or tocI18n.tipsPlaceholder[site.defaultLang] or "Tips" %}
+{% set assistantStrings = site.i18n.tips or {} %}
+{% set bubbleLines = assistantStrings.bubbleLines[currentLang] or assistantStrings.bubbleLines[site.defaultLang] or [] %}
+{% set avatarLabel = assistantStrings.avatarLabel[currentLang] or assistantStrings.avatarLabel[site.defaultLang] or "Open assistant" %}
+{% set bubbleListLabel = assistantStrings.bubbleListLabel[currentLang] or assistantStrings.bubbleListLabel[site.defaultLang] or "Assistant suggestions" %}
 {% set tocLabel = tocI18n.label[currentLang] or tocI18n.label[site.defaultLang] or "Table of contents" %}
+{% set viviArt = 'src/assets/icons/Vivi-Comfy.svg' | svgDataUri %}
+{% set questionArt = 'src/assets/icons/question-Comfy.svg' | svgDataUri %}
 <div class="right-rail">
   <div class="right-rail__section right-rail__section--toc">
     <div class="toc" aria-label="{{ tocLabel }}">
@@ -11,6 +16,26 @@
     </div>
   </div>
   <div class="right-rail__section right-rail__section--tips">
-    <div class="right-rail__tips" aria-hidden="true">{{ tipsPlaceholder }}</div>
+    <div class="assistant-rail" data-expanded="false">
+      <div class="assistant-rail__panel" id="assistant-rail-panel" aria-hidden="true">
+        <ul class="assistant-rail__bubble-list" role="list" aria-label="{{ bubbleListLabel }}">
+          {% for line in bubbleLines %}
+          <li class="assistant-rail__bubble">
+            <span class="assistant-rail__bubble-text">{{ line }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <button
+        class="assistant-rail__avatar"
+        type="button"
+        aria-expanded="false"
+        aria-controls="assistant-rail-panel"
+        aria-label="{{ avatarLabel }}"
+        style='--assistant-question-art: {{ questionArt | safe }}; --assistant-vivi-art: {{ viviArt | safe }};'
+      >
+        <span class="sr-only">{{ avatarLabel }}</span>
+      </button>
+    </div>
   </div>
 </div>

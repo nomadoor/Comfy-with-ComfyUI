@@ -99,6 +99,28 @@
         "ja": "プロフィール",
         "en": "Profile"
       }
+    },
+    "tips": {
+      "avatarLabel": {
+        "ja": "ヒントを開く",
+        "en": "Open tips"
+      },
+      "bubbleListLabel": {
+        "ja": "サポートメッセージ",
+        "en": "Assistant suggestions"
+      },
+      "bubbleLines": {
+        "ja": [
+          "jsonコピーボタンはなんのため？",
+          "このページに間違いがあります！",
+          "これについても書いてください！"
+        ],
+        "en": [
+          "Why is the JSON copy button there?",
+          "This page has an issue!",
+          "Please cover this as well!"
+        ]
+      }
     }
   },
   "footer": {

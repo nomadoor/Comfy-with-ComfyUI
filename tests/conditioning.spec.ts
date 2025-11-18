@@ -8,16 +8,17 @@ test.describe("Conditioning page", () => {
     await page.goto("/ja/ai-capabilities/conditioning/");
 
     const heroMedia = page.locator(".hero__media");
-    await expect(heroMedia).toHaveAttribute("src", GYAZO_IMAGE);
+    await expect(heroMedia).toHaveAttribute("data-full-src", GYAZO_IMAGE);
+    await expect(heroMedia).toHaveAttribute("src", /max_size\/\d+\.jpg$/);
 
     await expect(page.locator(".workflow-json__row"))
       .toContainText("clip-conditioning.json");
 
     await expect(
-      page.locator('[aria-label="Copy clip-conditioning.json"]')
+      page.locator('[data-copy-json="clip-conditioning-json"]')
     ).toBeVisible();
     await expect(
-      page.locator('[aria-label="Download clip-conditioning.json"]')
+      page.locator('a[href$="clip-conditioning.json"]')
     ).toBeVisible();
 
     await expect(page.locator(".tag-chips")).toHaveCount(0);
