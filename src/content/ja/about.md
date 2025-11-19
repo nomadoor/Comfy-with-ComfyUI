@@ -1,14 +1,13 @@
 ﻿---
 layout: page.njk
 lang: ja
-section: begin-with
 slug: about
 navId: about
 title: "About / 運営情報"
 summary: "このサイトの目的と運営体制について。"
 tags:
   - about
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+permalink: "/{{ lang }}/{{ slug }}/"
 hero:
   gradient: ""
 ---

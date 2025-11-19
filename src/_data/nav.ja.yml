@@ -2,39 +2,104 @@
   - key: begin-with
     label: "はじめてのComfyUI"
     pages:
-      - id: about
-        title: "About / 運営情報"
+
       - id: how-to-use-this-site
         title: "このサイトの使い方"
       - id: spin-up-fast
         title: "とりあえず動かしてみる"
         children:
-          - id: first-run-checklist
-            title: "初回起動チェックリスト"
-          - id: gpu-ready
-            title: "GPU準備メモ"
+          - id: what-is-comfyui
+            title: "ComfyUIとは？"
+          - id: recommended-specs
+            title: "推奨スペック"
+          - id: setup
+            title: セットアップ
+          - id: Comfy Cloud
+            title: "Comfy Cloud"
+          - id: first-run
+            title: "起動して生成"
       - id: pc-basics
         title: "必要なPC知識"
-      - id: workspace-profiles
-        title: "環境プリセット"
-      - id: component-gallery
-        title: "コンポーネントギャラリー"
+        children:
+          - id: path
+            title: "パス"
+          - id: terminal
+            title: "ターミナル"
+          - id: python
+            title: "Python"
+          - id: git
+            title: "git"
+      - id: comfyui-operations
+        title: "ComfyUIの操作"
+        children:
+          - id: Run & Stop
+            title: "実行・停止"
+          - id: Saving & Loading Workflows
+            title: "workflowの保存・読み込み"
+          - id: Canvas Navigation
+            title: "キャンバスの操作"
+          - id: Nodes
+            title: ノード
+          - id: Media
+            title: "メディア"
+          - id: Subgraphs
+            title: "サブグラフ"
+      - id: customization
+        title: "カスタマイズ"
+        children:
+          - id: settings
+            title: "設定"
+          - id: Command Line Arguments
+            title: "コマンドライン引数"
+          - id: Updates
+            title: "アップデート"
+          - id: Downloading & Placing models
+            title: "モデルのダウンロードと配置"
+          - id: Custom Nodes
+            title: "カスタムノード"
   - key: data-utilities
     label: "データ / 画像ユーティリティ"
     pages:
       - id: data-ops
         title: "データ操作"
+        children:
+          - id: data-types
+            title: "データ型"
+          - id: simple-math
+            title: "単純な計算"
+          - id: text-ops
+            title: "テキスト操作"
+          - id: webcam-input
+            title: "Webカメラ入力"
+      - id: basic-image-processing
+        title: "基本的な画像処理"
+        children:
+          - id: resize-crop-pad
+            title: "リサイズ・クロップ・パディング"
+          - id: color-adjustments
+            title: "色調補正・フィルタ効果"
+          - id: mask-alpha
+            title: "マスクとアルファチャンネル"
+          - id: mask-ops
+            title: "マスク操作"
+          - id: layer-composite-blend
+            title: "レイヤ合成・ブレンド"
       - id: batch-processing
         title: "連続処理"
         children:
-          - id: batch-monitoring
-            title: "ジョブ監視"
+          - id: queue
+            title: "キュー"
+          - id: list
+            title: "リスト"
+          - id: batch-video
+            title: "バッチ・動画"
       - id: columns
         title: "コラム"
-      - id: image-cleanup
-        title: "画像クリーンアップ"
-      - id: dataset-audit
-        title: "データセット監査"
+        children:
+          - id: readable-nodes
+            title: "リーダブルノードのすすめ"
+          - id: wireless-nodes
+            title: "無線でノードをつなぐ"
   - key: ai-capabilities
     label: "AIの仕組みと出来ること"
     pages:

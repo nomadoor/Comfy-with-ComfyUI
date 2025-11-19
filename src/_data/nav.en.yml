@@ -2,8 +2,7 @@
   - key: begin-with
     label: "Begin With ComfyUI"
     pages:
-      - id: about
-        title: "About"
+
       - id: how-to-use-this-site
         title: "How to Use This Site"
       - id: spin-up-fast

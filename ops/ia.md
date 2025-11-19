@@ -7,6 +7,7 @@
 | `ai-capabilities` | 📂AIの仕組みと出来ること | 📂AI Capabilities | Conceptual capability coverage and advanced techniques. |
 | `basic-workflows` | 📂基本のworkflow | 📂Basic Workflows | Practical recipes; each page pulls related workflow cards. |
 | `faq` | 📂FAQ / トラブルシューティング | 📂FAQ / Troubleshooting | Common questions and incident playbooks. |
+| `about` | ℹ️About | ℹ️About | Standalone page (`/<lang>/about/`) linked from sidebar footer. Not in main nav. |
 
 > Emoji-prefixed labels appear in UI copy. Slugs stay ASCII kebab-case.
 

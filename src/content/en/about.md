@@ -1,14 +1,13 @@
 ﻿---
 layout: page.njk
 lang: en
-section: begin-with
 slug: about
 navId: about
 title: "About"
 summary: "Mission statement and maintainer notes."
 tags:
   - about
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+permalink: "/{{ lang }}/{{ slug }}/"
 hero:
   gradient: ""
 ---
