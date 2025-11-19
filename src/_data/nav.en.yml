@@ -14,6 +14,7 @@
             title: "GPU Prep Notes"
       - id: pc-basics
         title: "PC Basics"
+        noLink: true
       - id: workspace-profiles
         title: "Workspace Presets"
       - id: component-gallery
@@ -23,8 +24,10 @@
     pages:
       - id: data-ops
         title: "Data Operations"
+        noLink: true
       - id: batch-processing
         title: "Batch Processing"
+        noLink: true
         children:
           - id: batch-monitoring
             title: "Job Monitoring"
@@ -39,6 +42,7 @@
     pages:
       - id: conditioning
         title: "Conditioning"
+        noLink: true
         children:
           - id: conditioning-prompts
             title: "Prompt Structures"
@@ -66,6 +70,7 @@
     pages:
       - id: oom-vram
         title: "OOM / VRAM"
+        noLink: true
         children:
           - id: oom-checklist
             title: "VRAM Recovery Checklist"

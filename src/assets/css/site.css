@@ -1,5 +1,4 @@
-﻿
-html,
+﻿html,
 body {
   height: 100%;
 }
@@ -37,7 +36,7 @@ body {
   --header-height: 72px;
   --sidebar-width: 16rem;
   --toc-width: 16rem;
-  --content-max: 60rem;
+  --content-max: 55rem;
   --column-gap: 4rem;
   --shell-padding: var(--space-xl);
   --shell-padding-block: var(--space-md);
@@ -305,6 +304,7 @@ video {
   border-radius: var(--radius-md);
   padding: var(--space-xs) 0;
 }
+
 .sidebar__section-panel {
   flex: 1;
   display: flex;
@@ -321,6 +321,10 @@ video {
   overflow-y: auto;
   padding: var(--space-sm) 0 var(--space-sm) var(--space-sm);
   min-height: 0;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .sidebar__section-tabs {
@@ -374,45 +378,31 @@ video {
 }
 
 @supports selector(:has(*)) {
+
   /* 背景色：ボタンのみ */
-  .sidebar:has(.sidebar__section-tab[data-section-tab="begin-with"]:is(:hover, :focus-visible))
-    .sidebar__section-btn[data-section-key="begin-with"]:not(.is-active),
-  .sidebar:has(.sidebar__section-tab[data-section-tab="data-utilities"]:is(:hover, :focus-visible))
-    .sidebar__section-btn[data-section-key="data-utilities"]:not(.is-active),
-  .sidebar:has(.sidebar__section-tab[data-section-tab="ai-capabilities"]:is(:hover, :focus-visible))
-    .sidebar__section-btn[data-section-key="ai-capabilities"]:not(.is-active),
-  .sidebar:has(.sidebar__section-tab[data-section-tab="basic-workflows"]:is(:hover, :focus-visible))
-    .sidebar__section-btn[data-section-key="basic-workflows"]:not(.is-active),
-  .sidebar:has(.sidebar__section-tab[data-section-tab="faq"]:is(:hover, :focus-visible))
-    .sidebar__section-btn[data-section-key="faq"]:not(.is-active) {
+  .sidebar:has(.sidebar__section-tab[data-section-tab="begin-with"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="begin-with"]:not(.is-active),
+  .sidebar:has(.sidebar__section-tab[data-section-tab="data-utilities"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="data-utilities"]:not(.is-active),
+  .sidebar:has(.sidebar__section-tab[data-section-tab="ai-capabilities"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="ai-capabilities"]:not(.is-active),
+  .sidebar:has(.sidebar__section-tab[data-section-tab="basic-workflows"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="basic-workflows"]:not(.is-active),
+  .sidebar:has(.sidebar__section-tab[data-section-tab="faq"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="faq"]:not(.is-active) {
     background: #373737;
   }
 
   /* 文字色：ボタン本体 + その中のアイコン */
-  .sidebar:has(.sidebar__section-tab[data-section-tab="begin-with"]:is(:hover, :focus-visible))
-    .sidebar__section-btn[data-section-key="begin-with"]:not(.is-active),
-  .sidebar:has(.sidebar__section-tab[data-section-tab="begin-with"]:is(:hover, :focus-visible))
-    .sidebar__section-btn[data-section-key="begin-with"]:not(.is-active) .sidebar__section-icon,
+  .sidebar:has(.sidebar__section-tab[data-section-tab="begin-with"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="begin-with"]:not(.is-active),
+  .sidebar:has(.sidebar__section-tab[data-section-tab="begin-with"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="begin-with"]:not(.is-active) .sidebar__section-icon,
 
-  .sidebar:has(.sidebar__section-tab[data-section-tab="data-utilities"]:is(:hover, :focus-visible))
-    .sidebar__section-btn[data-section-key="data-utilities"]:not(.is-active),
-  .sidebar:has(.sidebar__section-tab[data-section-tab="data-utilities"]:is(:hover, :focus-visible))
-    .sidebar__section-btn[data-section-key="data-utilities"]:not(.is-active) .sidebar__section-icon,
+  .sidebar:has(.sidebar__section-tab[data-section-tab="data-utilities"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="data-utilities"]:not(.is-active),
+  .sidebar:has(.sidebar__section-tab[data-section-tab="data-utilities"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="data-utilities"]:not(.is-active) .sidebar__section-icon,
 
-  .sidebar:has(.sidebar__section-tab[data-section-tab="ai-capabilities"]:is(:hover, :focus-visible))
-    .sidebar__section-btn[data-section-key="ai-capabilities"]:not(.is-active),
-  .sidebar:has(.sidebar__section-tab[data-section-tab="ai-capabilities"]:is(:hover, :focus-visible))
-    .sidebar__section-btn[data-section-key="ai-capabilities"]:not(.is-active) .sidebar__section-icon,
+  .sidebar:has(.sidebar__section-tab[data-section-tab="ai-capabilities"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="ai-capabilities"]:not(.is-active),
+  .sidebar:has(.sidebar__section-tab[data-section-tab="ai-capabilities"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="ai-capabilities"]:not(.is-active) .sidebar__section-icon,
 
-  .sidebar:has(.sidebar__section-tab[data-section-tab="basic-workflows"]:is(:hover, :focus-visible))
-    .sidebar__section-btn[data-section-key="basic-workflows"]:not(.is-active),
-  .sidebar:has(.sidebar__section-tab[data-section-tab="basic-workflows"]:is(:hover, :focus-visible))
-    .sidebar__section-btn[data-section-key="basic-workflows"]:not(.is-active) .sidebar__section-icon,
+  .sidebar:has(.sidebar__section-tab[data-section-tab="basic-workflows"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="basic-workflows"]:not(.is-active),
+  .sidebar:has(.sidebar__section-tab[data-section-tab="basic-workflows"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="basic-workflows"]:not(.is-active) .sidebar__section-icon,
 
-  .sidebar:has(.sidebar__section-tab[data-section-tab="faq"]:is(:hover, :focus-visible))
-    .sidebar__section-btn[data-section-key="faq"]:not(.is-active),
-  .sidebar:has(.sidebar__section-tab[data-section-tab="faq"]:is(:hover, :focus-visible))
-    .sidebar__section-btn[data-section-key="faq"]:not(.is-active) .sidebar__section-icon {
+  .sidebar:has(.sidebar__section-tab[data-section-tab="faq"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="faq"]:not(.is-active),
+  .sidebar:has(.sidebar__section-tab[data-section-tab="faq"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="faq"]:not(.is-active) .sidebar__section-icon {
     color: var(--color-text);
   }
 }
@@ -440,12 +430,14 @@ video {
     gap: var(--space-lg);
     padding: var(--space-lg) var(--space-md);
   }
+
   .rail {
     position: static;
     height: auto;
     width: 100%;
     top: auto;
   }
+
   .app-shell__sidebar {
     position: static;
     width: 100%;
@@ -453,6 +445,7 @@ video {
     overflow: visible;
     margin: 0;
   }
+
   .app-shell__toc {
     display: none;
     position: static;
@@ -539,11 +532,10 @@ video {
   padding-left: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xs);
+
   .nav-list__item {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2xs);
   }
 }
 
@@ -579,6 +571,16 @@ video {
   margin-left: var(--space-sm);
   padding-left: var(--space-xs);
   border-left: 1px solid #4a4a4a;
+}
+
+.nav-list__no-link {
+  display: block;
+  padding: var(--space-xs) var(--space-xs);
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-top: var(--space-xs);
 }
 
 .sidebar__footer {
@@ -625,8 +627,7 @@ video {
   --icon-stroke-width: 1.6;
 }
 
-.sidebar__lang-label {
-}
+.sidebar__lang-label {}
 
 .sidebar__lang-caret {
   display: inline-flex;
@@ -703,9 +704,10 @@ video {
   opacity: 0.7;
 }
 
-.theme-toggle__icon + .theme-toggle__icon {
+.theme-toggle__icon+.theme-toggle__icon {
   margin-left: var(--space-2xs);
 }
+
 .chip--active {
   color: var(--color-text);
   border-color: var(--color-highlight);
@@ -817,6 +819,7 @@ video {
   position: absolute;
   inset: 0;
   background: lab(0 0 0 / 0.3);
+
   &[data-theme="light"] {
     background: lab(100 0 0 / 0.3);
   }
@@ -841,6 +844,7 @@ video {
   color: var(--color-heading);
 }
 
+
 .article-body h1,
 .article-body h2,
 .article-body h3 {
@@ -863,9 +867,10 @@ video {
   padding: 0.2rem 0.75rem;
   font-size: 0.75rem;
   letter-spacing: 0.05em;
-  color:var(--color-heading);
+  color: var(--color-heading);
   text-decoration: none;
   font-weight: 600;
+
   &::before {
     content: "#";
     color: var(--color-highlight);
@@ -874,6 +879,12 @@ video {
 
 .article-body {
   padding-bottom: var(--space-2xl);
+  font-weight: 500;
+  letter-spacing: 0.04rem;
+}
+
+.article-body strong {
+  color: var(--color-heading);
 }
 
 h1 {
@@ -883,9 +894,10 @@ h1 {
 .article-body h2 {
   margin-top: var(--space-2xl);
   margin-bottom: var(--space-sm);
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 500;
   scroll-margin-top: calc(var(--header-height) + var(--space-lg));
+  letter-spacing: 0;
 }
 
 .article-body h3 {
@@ -894,6 +906,7 @@ h1 {
   font-size: 1.2rem;
   font-weight: 500;
   scroll-margin-top: calc(var(--header-height) + var(--space-lg));
+  letter-spacing: 0;
 }
 
 \.article-body p,
@@ -975,11 +988,9 @@ h1 {
 }
 
 .article-media__frame {
-  width: min(
-    100%,
-    var(--article-media-width, 720px),
-    calc(var(--article-media-aspect, 16 / 9) * var(--article-media-height, 300px))
-  );
+  width: min(100%,
+      var(--article-media-width, 720px),
+      calc(var(--article-media-aspect, 16 / 9) * var(--article-media-height, 300px)));
   max-width: 100%;
   max-height: var(--article-media-height, 300px);
   aspect-ratio: var(--article-media-aspect, 16 / 9);
@@ -1021,7 +1032,7 @@ h1 {
   background: rgba(255, 255, 255, 0.02);
 }
 
-.article-body table tbody tr + tr td {
+.article-body table tbody tr+tr td {
   border-top: 1px solid var(--color-border);
 }
 
@@ -1067,11 +1078,9 @@ h1 {
 }
 
 .article-video__frame {
-  width: min(
-    100%,
-    var(--article-video-width, 720px),
-    calc(var(--article-video-aspect, 16 / 9) * var(--article-video-height, 360px))
-  );
+  width: min(100%,
+      var(--article-video-width, 720px),
+      calc(var(--article-video-aspect, 16 / 9) * var(--article-video-height, 360px)));
   max-width: 100%;
   aspect-ratio: var(--article-video-aspect, 16 / 9);
   max-height: var(--article-video-height, 360px);
@@ -1304,18 +1313,18 @@ h1 {
 }
 
 .article-footer__link {
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
-    color: var(--color-text);
-    gap: var(--space-2xs);
-  }
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-text);
+  gap: var(--space-2xs);
+}
 
 .article-footer__link-icon .icon {
-    inline-size: 1rem;
-    block-size: 1rem;
-    --icon-stroke-width: 1.6px;
-  }
+  inline-size: 1rem;
+  block-size: 1rem;
+  --icon-stroke-width: 1.6px;
+}
 
 .article-footer__link:hover,
 .article-footer__link:focus-visible {
@@ -1367,6 +1376,7 @@ h1 {
   color: var(--color-text);
   cursor: pointer;
   padding: 0;
+
   &:hover {
     color: var(--color-highlight);
   }
@@ -1376,6 +1386,7 @@ h1 {
   width: 1.25rem;
   height: 1.25rem;
 }
+
 .workflow-related {
   margin-top: var(--space-2xl);
 }
@@ -1429,7 +1440,10 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
-  height: 100%;\r\n  min-height: 0;\r\n}
+  height: 100%;
+  \r\n min-height: 0;
+  \r\n
+}
 
 .right-rail__section {
   display: flex;
@@ -1473,6 +1487,7 @@ h1 {
   padding-left: calc(var(--space-sm) - 1px);
   font-weight: 600;
   transition: all 100ms cubic-bezier(0.2, 0.91, 0.85, 0.96) 0s;
+
   &:hover {
     color: var(--color-text);
   }
@@ -1517,7 +1532,7 @@ h1 {
   overflow: hidden;
   filter: brightness(0.8);
   transition: height var(--assistant-rail-transition-out-duration) var(--assistant-rail-transition-out-timing) var(--assistant-panel-collapse-delay);
-  }
+}
 }
 
 [data-theme="light"] .assistant-rail__avatar {
@@ -1531,12 +1546,14 @@ h1 {
     --assistant-vivi-y: -2%;
     --assistant-vivi-size: 16rem;
     transition: height var(--assistant-rail-transition-duration) var(--assistant-rail-transition-timing) 0ms;
-    &::before, &::after {
-        transition:
-          transform var(--assistant-rail-transition-duration) var(--assistant-rail-transition-timing),
-          width var(--assistant-rail-transition-duration) var(--assistant-rail-transition-timing),
-          height var(--assistant-rail-transition-duration) var(--assistant-rail-transition-timing) ;
-        transition-delay: 0ms;
+
+    &::before,
+    &::after {
+      transition:
+        transform var(--assistant-rail-transition-duration) var(--assistant-rail-transition-timing),
+        width var(--assistant-rail-transition-duration) var(--assistant-rail-transition-timing),
+        height var(--assistant-rail-transition-duration) var(--assistant-rail-transition-timing);
+      transition-delay: 0ms;
     }
   }
 }
@@ -1554,7 +1571,7 @@ h1 {
   transition:
     transform var(--assistant-rail-transition-out-duration) var(--assistant-rail-transition-out-timing),
     width var(--assistant-rail-transition-out-duration) var(--assistant-rail-transition-out-timing),
-    height var(--assistant-rail-transition-out-duration) var(--assistant-rail-transition-out-timing) ;
+    height var(--assistant-rail-transition-out-duration) var(--assistant-rail-transition-out-timing);
   transition-delay: var(--assistant-panel-collapse-delay);
 }
 
@@ -1648,17 +1665,20 @@ h1 {
   body {
     overflow: auto;
   }
+
   .site-header__inner {
     grid-template-columns: 1fr;
     height: auto;
     padding: var(--space-md);
     gap: var(--space-sm);
   }
+
   .app-shell {
     grid-template-columns: 1fr;
     padding: var(--space-lg) var(--space-md);
     height: auto;
   }
+
   .app-shell__content,
   .app-shell__sidebar,
   .app-shell__toc {
@@ -1785,9 +1805,3 @@ body.lightbox-open {
   stroke: currentColor;
   fill: none;
 }
-
-
-
-
-
-

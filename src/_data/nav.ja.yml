@@ -20,6 +20,7 @@
             title: "起動して生成"
       - id: pc-basics
         title: "必要なPC知識"
+        noLink: true
         children:
           - id: path
             title: "パス"
@@ -31,6 +32,7 @@
             title: "git"
       - id: comfyui-operations
         title: "ComfyUIの操作"
+        noLink: true
         children:
           - id: Run & Stop
             title: "実行・停止"
@@ -46,6 +48,7 @@
             title: "サブグラフ"
       - id: customization
         title: "カスタマイズ"
+        noLink: true
         children:
           - id: settings
             title: "設定"
@@ -62,6 +65,7 @@
     pages:
       - id: data-ops
         title: "データ操作"
+        noLink: true
         children:
           - id: data-types
             title: "データ型"
@@ -73,6 +77,7 @@
             title: "Webカメラ入力"
       - id: basic-image-processing
         title: "基本的な画像処理"
+        noLink: true
         children:
           - id: resize-crop-pad
             title: "リサイズ・クロップ・パディング"
@@ -86,6 +91,7 @@
             title: "レイヤ合成・ブレンド"
       - id: batch-processing
         title: "連続処理"
+        noLink: true
         children:
           - id: queue
             title: "キュー"
@@ -95,6 +101,7 @@
             title: "バッチ・動画"
       - id: columns
         title: "コラム"
+        noLink: true
         children:
           - id: readable-nodes
             title: "リーダブルノードのすすめ"
@@ -105,6 +112,7 @@
     pages:
       - id: conditioning
         title: "Conditioning"
+        noLink: true
         children:
           - id: conditioning-prompts
             title: "プロンプト構造"
@@ -132,6 +140,7 @@
     pages:
       - id: oom-vram
         title: "OOM / VRAM"
+        noLink: true
         children:
           - id: oom-checklist
             title: "VRAM復旧手順"

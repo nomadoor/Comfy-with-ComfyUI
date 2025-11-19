@@ -3,18 +3,25 @@
 {% set listLang = lang or currentLang or site.defaultLang %}
 {% set listCurrentId = currentId or currentNavId %}
 <ul class="nav-list">
-{% for item in listItems %}
+  {% for item in listItems %}
   <li class="nav-list__item">
+    {% if item.noLink %}
+    <span class="nav-list__no-link">
+      {{ item.title }}
+    </span>
+    {% else %}
     {% set url = "/" + listLang + "/" + listSectionKey + "/" + item.id + "/" %}
-    <a href="{{ url }}" class="nav-list__link{% if item.id == listCurrentId %} is-active{% endif %}" {% if item.id == listCurrentId %}aria-current="page"{% endif %}>
+    <a href="{{ url }}" class="nav-list__link{% if item.id == listCurrentId %} is-active{% endif %}" {% if
+      item.id==listCurrentId %}aria-current="page" {% endif %}>
       {{ item.title }}
     </a>
+    {% endif %}
     {% if item.children %}
-      <div class="nav-list__children">
-        {% set navItems = item.children %}
-        {% include "nav-list.njk" %}
-      </div>
+    <div class="nav-list__children">
+      {% set navItems = item.children %}
+      {% include "nav-list.njk" %}
+    </div>
     {% endif %}
   </li>
-{% endfor %}
+  {% endfor %}
 </ul>
