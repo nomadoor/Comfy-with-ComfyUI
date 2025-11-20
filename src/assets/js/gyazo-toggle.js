@@ -34,6 +34,15 @@ function initGyazoToggle() {
     const toggle = figure.querySelector(".gyazo-toggle");
     if (!toggle) return;
 
+    const frame = figure.querySelector(".article-video__frame");
+    if (frame) {
+      frame.addEventListener("mouseleave", () => {
+        if (toggle.matches(":focus")) {
+          toggle.blur();
+        }
+      });
+    }
+
     const initial = figure.getAttribute("data-gyazo-initial") === "player" ? "player" : "loop";
     applyGyazoMode(figure, initial);
 
