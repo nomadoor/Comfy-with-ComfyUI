@@ -95,7 +95,7 @@ r?
 ## 2) WRITE (UTF‑8 no BOM, atomic replace, backup)
 
 nYOUR_TEXT_HERE
-# Additional Command Rules
+# Command Text Format
 
 **Rule:** In each command, **define → use**. Do **not** escape `$`. Use generic 'path/to/file.ext'.
 
