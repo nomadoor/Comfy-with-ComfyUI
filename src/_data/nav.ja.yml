@@ -1,154 +1,152 @@
-sections:
+ï»¿sections:
   - key: begin-with
-    label: "‚Í‚¶‚ß‚Ä‚ÌComfyUI"
+    label: "ã¯ã˜ã‚ã¦ã®ComfyUI"
     pages:
 
       - id: how-to-use-this-site
-        title: "‚±‚ÌƒTƒCƒg‚Ìg‚¢•û"
+        title: "ã“ã®ã‚µã‚¤ãƒˆã®ä½¿ã„æ–¹"
       - id: spin-up-fast
-        title: "‚Æ‚è‚ ‚¦‚¸“®‚©‚µ‚Ä‚İ‚é"
+        title: "ã¨ã‚Šã‚ãˆãšå‹•ã‹ã—ã¦ã¿ã‚‹"
         children:
           - id: what-is-comfyui
-            title: "ComfyUI‚Æ‚ÍH"
+            title: "ComfyUIã¨ã¯ï¼Ÿ"
           - id: recommended-specs
-            title: "„§ƒXƒyƒbƒN"
+            title: "æ¨å¥¨ã‚¹ãƒšãƒƒã‚¯"
           - id: setup
-            title: ƒZƒbƒgƒAƒbƒv
+            title: ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—
           - id: comfy-cloud
             title: "Comfy Cloud"
           - id: first-run
-            title: "‹N“®‚µ‚Ä¶¬"
+            title: "èµ·å‹•ã—ã¦ç”Ÿæˆ"
       - id: pc-basics
-        title: "•K—v‚ÈPC’m¯"
+        title: "å¿…è¦ãªPCçŸ¥è­˜"
         noLink: true
         children:
           - id: path
-            title: "ƒpƒX"
+            title: "ãƒ‘ã‚¹"
           - id: terminal
-            title: "ƒ^[ƒ~ƒiƒ‹"
+            title: "ã‚¿ãƒ¼ãƒŸãƒŠãƒ«"
           - id: python
             title: "Python"
           - id: git
             title: "git"
       - id: comfyui-operations
-        title: "ComfyUI‚Ì‘€ì"
+        title: "ComfyUIã®æ“ä½œ"
         noLink: true
         children:
           - id: run-and-stop
-            title: "ÀsE’â~"
+            title: "å®Ÿè¡Œãƒ»åœæ­¢"
           - id: saving-and-loading-workflows
-            title: "workflow‚Ì•Û‘¶E“Ç‚İ‚İ"
+            title: "workflowã®ä¿å­˜ãƒ»èª­ã¿è¾¼ã¿"
           - id: canvas-navigation
-            title: "ƒLƒƒƒ“ƒoƒX‚Ì‘€ì"
+            title: "ã‚­ãƒ£ãƒ³ãƒã‚¹ã®æ“ä½œ"
           - id: nodes
-            title: ƒm[ƒh
+            title: ãƒãƒ¼ãƒ‰
           - id: media
-            title: "ƒƒfƒBƒA"
+            title: "ãƒ¡ãƒ‡ã‚£ã‚¢"
           - id: subgraphs
-            title: "ƒTƒuƒOƒ‰ƒt"
+            title: "ã‚µãƒ–ã‚°ãƒ©ãƒ•"
       - id: customization
-        title: "ƒJƒXƒ^ƒ}ƒCƒY"
+        title: "ã‚«ã‚¹ã‚¿ãƒã‚¤ã‚º"
         noLink: true
         children:
           - id: settings
-            title: "İ’è"
+            title: "è¨­å®š"
           - id: command-line-arguments
-            title: "ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ˆø”"
+            title: "ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³å¼•æ•°"
           - id: updates
-            title: "ƒAƒbƒvƒf[ƒg"
+            title: "ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆ"
           - id: downloading-and-placing-models
-            title: "ƒ‚ƒfƒ‹‚Ìƒ_ƒEƒ“ƒ[ƒh‚Æ”z’u"
+            title: "ãƒ¢ãƒ‡ãƒ«ã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã¨é…ç½®"
           - id: custom-nodes
-            title: "ƒJƒXƒ^ƒ€ƒm[ƒh"
+            title: "ã‚«ã‚¹ã‚¿ãƒ ãƒãƒ¼ãƒ‰"
   - key: data-utilities
-    label: "ƒf[ƒ^ / ‰æ‘œƒ†[ƒeƒBƒŠƒeƒB"
+    label: "ãƒ‡ãƒ¼ã‚¿ / ç”»åƒãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£"
     pages:
       - id: data-ops
-        title: "ƒf[ƒ^‘€ì"
+        title: "ãƒ‡ãƒ¼ã‚¿æ“ä½œ"
         noLink: true
         children:
           - id: data-types
-            title: "ƒf[ƒ^Œ^"
+            title: "ãƒ‡ãƒ¼ã‚¿å‹"
           - id: simple-math
-            title: "’Pƒ‚ÈŒvZ"
+            title: "å˜ç´”ãªè¨ˆç®—"
           - id: text-ops
-            title: "ƒeƒLƒXƒg‘€ì"
+            title: "ãƒ†ã‚­ã‚¹ãƒˆæ“ä½œ"
           - id: webcam-input
-            title: "WebƒJƒƒ‰“ü—Í"
+            title: "Webã‚«ãƒ¡ãƒ©å…¥åŠ›"
       - id: basic-image-processing
-        title: "Šî–{“I‚È‰æ‘œˆ—"
+        title: "åŸºæœ¬çš„ãªç”»åƒå‡¦ç†"
         noLink: true
         children:
           - id: resize-crop-pad
-            title: "ƒŠƒTƒCƒYEƒNƒƒbƒvEƒpƒfƒBƒ“ƒO"
+            title: "ãƒªã‚µã‚¤ã‚ºãƒ»ã‚¯ãƒ­ãƒƒãƒ—ãƒ»ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°"
           - id: color-adjustments
-            title: "F’²•â³EƒtƒBƒ‹ƒ^Œø‰Ê"
+            title: "è‰²èª¿è£œæ­£ãƒ»ãƒ•ã‚£ãƒ«ã‚¿åŠ¹æœ"
           - id: mask-alpha
-            title: "ƒ}ƒXƒN‚ÆƒAƒ‹ƒtƒ@ƒ`ƒƒƒ“ƒlƒ‹"
+            title: "ãƒã‚¹ã‚¯ã¨ã‚¢ãƒ«ãƒ•ã‚¡ãƒãƒ£ãƒ³ãƒãƒ«"
           - id: mask-ops
-            title: "ƒ}ƒXƒN‘€ì"
+            title: "ãƒã‚¹ã‚¯æ“ä½œ"
           - id: layer-composite-blend
-            title: "ƒŒƒCƒ„‡¬EƒuƒŒƒ“ƒh"
+            title: "ãƒ¬ã‚¤ãƒ¤åˆæˆãƒ»ãƒ–ãƒ¬ãƒ³ãƒ‰"
       - id: batch-processing
-        title: "˜A‘±ˆ—"
+        title: "é€£ç¶šå‡¦ç†"
         noLink: true
         children:
           - id: queue
-            title: "ƒLƒ…["
+            title: "ã‚­ãƒ¥ãƒ¼"
           - id: list
-            title: "ƒŠƒXƒg"
+            title: "ãƒªã‚¹ãƒˆ"
           - id: batch-video
-            title: "ƒoƒbƒ`E“®‰æ"
+            title: "ãƒãƒƒãƒãƒ»å‹•ç”»"
       - id: columns
-        title: "ƒRƒ‰ƒ€"
+        title: "ã‚³ãƒ©ãƒ "
         noLink: true
         children:
           - id: readable-nodes
-            title: "ƒŠ[ƒ_ƒuƒ‹ƒm[ƒh‚Ì‚·‚·‚ß"
+            title: "ãƒªãƒ¼ãƒ€ãƒ–ãƒ«ãƒãƒ¼ãƒ‰ã®ã™ã™ã‚"
           - id: wireless-nodes
-            title: "–³ü‚Åƒm[ƒh‚ğ‚Â‚È‚®"
+            title: "ç„¡ç·šã§ãƒãƒ¼ãƒ‰ã‚’ã¤ãªã"
   - key: ai-capabilities
-    label: "AI‚Ìd‘g‚İ‚Æo—ˆ‚é‚±‚Æ"
+    label: "AIã®ä»•çµ„ã¿ã¨å‡ºæ¥ã‚‹ã“ã¨"
     pages:
       - id: conditioning
         title: "Conditioning"
         noLink: true
         children:
           - id: conditioning-prompts
-            title: "ƒvƒƒ“ƒvƒg\‘¢"
+            title: "ãƒ—ãƒ­ãƒ³ãƒ—ãƒˆæ§‹é€ "
       - id: text-encoder
         title: "Text Encoder"
       - id: upscale-restoration
-        title: "ƒAƒbƒvƒXƒP[ƒ‹E‰æ‘œC•œ"
+        title: "ã‚¢ãƒƒãƒ—ã‚¹ã‚±ãƒ¼ãƒ«ãƒ»ç”»åƒä¿®å¾©"
       - id: controlnet
-        title: "ControlNetg‚¢•ª‚¯"
+        title: "ControlNetä½¿ã„åˆ†ã‘"
       - id: lora-library
-        title: "LoRAƒ‰ƒCƒuƒ‰ƒŠ"
+        title: "LoRAãƒ©ã‚¤ãƒ–ãƒ©ãƒª"
   - key: basic-workflows
-    label: "Šî–{‚Ìworkflow"
+    label: "åŸºæœ¬ã®workflow"
     pages:
       - id: sd15-basics
-        title: "‰æ‘œ¶¬‚ÌŠî–{ (SD1.5)"
+        title: "ç”»åƒç”Ÿæˆã®åŸºæœ¬ (SD1.5)"
       - id: other-foundation-models
-        title: "‘¼‚ÌŠî”Õƒ‚ƒfƒ‹"
+        title: "ä»–ã®åŸºç›¤ãƒ¢ãƒ‡ãƒ«"
       - id: sdxl-basics
-        title: "SDXLƒXƒ^[ƒ^["
+        title: "SDXLã‚¹ã‚¿ãƒ¼ã‚¿ãƒ¼"
       - id: flux-tools
-        title: "FluxŒnƒc[ƒ‹"
+        title: "Fluxç³»ãƒ„ãƒ¼ãƒ«"
   - key: faq
-    label: "FAQ / ƒgƒ‰ƒuƒ‹ƒVƒ…[ƒeƒBƒ“ƒO"
+    label: "FAQ / ãƒˆãƒ©ãƒ–ãƒ«ã‚·ãƒ¥ãƒ¼ãƒ†ã‚£ãƒ³ã‚°"
     pages:
       - id: oom-vram
         title: "OOM / VRAM"
         noLink: true
         children:
           - id: oom-checklist
-            title: "VRAM•œ‹Œè‡"
+            title: "VRAMå¾©æ—§æ‰‹é †"
       - id: common-questions
-        title: "‚æ‚­‚ ‚é¿–â"
+        title: "ã‚ˆãã‚ã‚‹è³ªå•"
       - id: render-errors
-        title: "RenderƒGƒ‰["
+        title: "Renderã‚¨ãƒ©ãƒ¼"
       - id: workflow-debug
-        title: "WorkflowƒfƒoƒbƒO"
-
-
+        title: "Workflowãƒ‡ãƒãƒƒã‚°"
