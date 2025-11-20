@@ -15,6 +15,22 @@ const GYAZO_FETCH_DELAY_MS = 200;
 const sleep = (ms = 0) => (ms > 0 ? new Promise((resolve) => setTimeout(resolve, ms)) : Promise.resolve());
 const UNORDERED_MARKS = new Set(['*', '-', '+']);
 const ARTICLE_LIST_ICON_SVG = '<svg class="article-body__list-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19" stroke="currentColor" stroke-width="var(--article-list-icon-stroke, 2.2)" stroke-linecap="round"/></svg>';
+const SITE_DATA_PATH = path.join("src", "_data", "site.json");
+const ICON_SPRITES = {
+  copy: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="var(--icon-stroke-width, 1.5)" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path></svg>',
+  download: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="var(--icon-stroke-width, 1.5)" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>'
+};
+let siteData = {};
+try {
+  if (fsSync.existsSync(SITE_DATA_PATH)) {
+    siteData = JSON.parse(fsSync.readFileSync(SITE_DATA_PATH, "utf-8"));
+  }
+} catch {
+  siteData = {};
+}
+const WORKFLOW_I18N = siteData?.i18n?.workflow || {};
+const DEFAULT_LANG = siteData?.defaultLang || "ja";
+const WORKFLOW_ROOT = path.join(process.cwd(), "src", "workflows");
 
 loadLanguages(["bash", "shell", "json", "yaml", "javascript", "typescript", "css", "markup", "powershell", "python"]);
 
@@ -152,6 +168,134 @@ function enhanceStandaloneImages(markdownLib) {
     }
     return defaultParagraphClose(tokens, idx, options, env, self);
   };
+}
+
+function enhanceJsonLinks(markdownLib) {
+  markdownLib.core.ruler.after("inline", "convert-json-links", (state) => {
+    state.env = state.env || {};
+    state.env.__jsonLinkCounter = state.env.__jsonLinkCounter || 0;
+    const tokens = state.tokens;
+    for (let i = 0; i < tokens.length - 2; i++) {
+      const open = tokens[i];
+      const inlineToken = tokens[i + 1];
+      const close = tokens[i + 2];
+      if (
+        !open ||
+        !inlineToken ||
+        !close ||
+        open.type !== "paragraph_open" ||
+        inlineToken.type !== "inline" ||
+        close.type !== "paragraph_close"
+      ) {
+        continue;
+      }
+      const linkInfo = extractInlineJsonLink(inlineToken.children || []);
+      if (!linkInfo) continue;
+      const html = renderJsonLinkRow(linkInfo, state.env);
+      if (!html) continue;
+      const htmlToken = new state.Token("html_block", "", 0);
+      htmlToken.block = true;
+      htmlToken.content = `${html}\n`;
+      tokens.splice(i, 3, htmlToken);
+      i--;
+    }
+  });
+}
+
+function extractInlineJsonLink(children = []) {
+  if (!children.length) return null;
+  const meaningful = children.filter((token) => {
+    if (!token) return false;
+    if (token.type === "softbreak" || token.type === "hardbreak") return false;
+    if (token.type === "text" && token.content.trim().length === 0) return false;
+    return true;
+  });
+  if (meaningful.length < 2) return null;
+  const open = meaningful[0];
+  const closeIdx = meaningful.findIndex((token) => token.type === "link_close");
+  if (open.type !== "link_open" || closeIdx === -1) {
+    return null;
+  }
+  if (closeIdx !== meaningful.length - 1) {
+    return null;
+  }
+  const href = open.attrGet("href") || "";
+  if (!href.toLowerCase().endsWith(".json")) {
+    return null;
+  }
+  const textContent = meaningful.slice(1, closeIdx).map((token) => token.content || "").join("").trim();
+  return { href, text: textContent };
+}
+
+function getWorkflowLabel(key, lang) {
+  const labels = WORKFLOW_I18N[key] || {};
+  return labels[lang] || labels[DEFAULT_LANG] || (key === "downloadLabel" ? "Download" : "Copy");
+}
+
+function resolveJsonDiskPath(href = "", env = {}) {
+  if (!href || /^https?:\/\//i.test(href)) {
+    return null;
+  }
+  const cleanHref = href.split("?")[0].split("#")[0];
+  if (!cleanHref.toLowerCase().endsWith(".json")) {
+    return null;
+  }
+  let candidate;
+  if (cleanHref.startsWith("/")) {
+    candidate = path.join(process.cwd(), "src", cleanHref.replace(/^\//, ""));
+  } else if (cleanHref.startsWith(".")) {
+    const baseInput = env.page?.inputPath
+      ? path.dirname(path.join(process.cwd(), env.page.inputPath))
+      : path.join(process.cwd(), "src");
+    candidate = path.resolve(baseInput, cleanHref);
+  } else {
+    return null;
+  }
+  const normalized = path.normalize(candidate);
+  if (!normalized.startsWith(WORKFLOW_ROOT)) {
+    return null;
+  }
+  return normalized;
+}
+
+function getIconMarkup(name) {
+  return ICON_SPRITES[name] || "";
+}
+
+function renderJsonLinkRow(linkInfo, env) {
+  const diskPath = resolveJsonDiskPath(linkInfo.href, env);
+  if (!diskPath) {
+    return null;
+  }
+  let raw;
+  try {
+    raw = fsSync.readFileSync(diskPath, "utf-8");
+  } catch {
+    return null;
+  }
+  env.__jsonLinkCounter += 1;
+  const copyTargetId = `workflow-json-inline-${env.__jsonLinkCounter}`;
+  const fileName = path.basename(linkInfo.href.split("?")[0]);
+  const lang = env.lang || env.page?.lang || DEFAULT_LANG;
+  const copyLabel = getWorkflowLabel("copyLabel", lang);
+  const downloadLabel = getWorkflowLabel("downloadLabel", lang);
+  const copyIcon = getIconMarkup("copy");
+  const downloadIcon = getIconMarkup("download");
+  const escapedFile = escapeHTML(fileName);
+  return `<div class="workflow-json workflow-json--inline">
+  <div class="workflow-json__row">
+    <span class="workflow-json__filename">${escapedFile}</span>
+    <div class="workflow-json__actions">
+      <button class="workflow-json__icon" type="button" aria-label="${escapeHTML(copyLabel)} ${escapedFile}" data-copy-json="${copyTargetId}">
+        ${copyIcon}
+      </button>
+      <a class="workflow-json__icon" href="${linkInfo.href}" download aria-label="${escapeHTML(downloadLabel)} ${escapedFile}">
+        ${downloadIcon}
+      </a>
+    </div>
+  </div>
+  <pre id="${copyTargetId}" class="sr-only" hidden aria-hidden="true">${escapeHTML(raw)}</pre>
+</div>`;
 }
 
 function getGyazoDimensionsFromId(id) {
@@ -434,6 +578,7 @@ export default function (eleventyConfig) {
   };
 
   enhanceStandaloneImages(markdownLib);
+  enhanceJsonLinks(markdownLib);
   eleventyConfig.setLibrary("md", markdownLib);
 
   eleventyConfig.setServerOptions({
