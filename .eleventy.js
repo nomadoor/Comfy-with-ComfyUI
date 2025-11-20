@@ -546,15 +546,14 @@ export default function (eleventyConfig) {
         ? `https://i.gyazo.com/${id}.mp4`
         : url;
 
-    const commonFig = `<figure class="article-media" style="--article-media-width:${width}px; --article-media-height:${height}px; --article-media-aspect:${aspect};"><div class="article-media__frame">`;
-    const closing = `${alt ? `<figcaption>${alt}</figcaption>` : ""}</figure>`;
-
     if (mode === "loop") {
-      return `${commonFig}<video src="${source}" muted loop autoplay playsinline></video></div>${closing}`;
+      return `<figure class="article-video article-video--loop article-video--gyazo" data-gyazo-toggle data-gyazo-initial="loop" style="--article-video-height:${height}px; --article-video-width:${width}px; --article-video-aspect:${aspect};"><div class="article-video__frame"><video src="${source}" muted loop autoplay playsinline></video><button type="button" class="gyazo-toggle" aria-label="Toggle Gyazo playback mode" data-loop-label="Loop" data-player-label="Player"><span class="gyazo-toggle__pill"><span class="gyazo-toggle__knob"></span><span class="gyazo-toggle__text"></span></span></button></div>${alt ? `<figcaption>${alt}</figcaption>` : ""}</figure>`;
     }
     if (mode === "player") {
-      return `${commonFig}<video src="${source}" controls playsinline preload="metadata"></video></div>${closing}`;
+      return `<figure class="article-video article-video--player article-video--gyazo" data-gyazo-toggle data-gyazo-initial="player" style="--article-video-height:${height}px; --article-video-width:${width}px; --article-video-aspect:${aspect};"><div class="article-video__frame"><video src="${source}" controls playsinline preload="metadata"></video><button type="button" class="gyazo-toggle" aria-label="Toggle Gyazo playback mode" data-loop-label="Loop" data-player-label="Player"><span class="gyazo-toggle__pill"><span class="gyazo-toggle__knob"></span><span class="gyazo-toggle__text"></span></span></button></div>${alt ? `<figcaption>${alt}</figcaption>` : ""}</figure>`;
     }
+    const commonFig = `<figure class="article-media" style="--article-media-width:${width}px; --article-media-height:${height}px; --article-media-aspect:${aspect};"><div class="article-media__frame">`;
+    const closing = `${alt ? `<figcaption>${alt}</figcaption>` : ""}</figure>`;
     return `${commonFig}<img src="${url}" alt="${alt}" loading="lazy" decoding="async" /></div>${closing}`;
   }
 
