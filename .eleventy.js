@@ -615,15 +615,6 @@ export default function (eleventyConfig) {
     if (token.meta?.isGyazo || token.attrGet("gyazo")) {
       return renderGyazoMedia(token);
     }
-    return defaultImageRenderer(tokens, idx, options, env, self);
-  };
-
-  const defaultImageRenderer = markdownLib.renderer.rules.image || function (tokens, idx, options, env, self) {
-    return self.renderToken(tokens, idx, options);
-  };
-
-  markdownLib.renderer.rules.image = function (tokens, idx, options, env, self) {
-    const token = tokens[idx];
     const src = token.attrGet("src");
     if (src) {
       const variants = createImageVariants(src, 1000);
