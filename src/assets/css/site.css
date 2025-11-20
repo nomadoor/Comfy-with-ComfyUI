@@ -1149,6 +1149,72 @@ h1 {
   color: var(--color-text-muted);
 }
 
+.article-video--gyazo {
+  position: relative;
+}
+
+.gyazo-toggle {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-panel);
+  color: var(--color-text);
+  border-radius: var(--radius-pill);
+  padding: 0.25rem 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-fast);
+}
+
+.article-video--gyazo:hover .gyazo-toggle,
+.gyazo-toggle:focus-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.gyazo-toggle__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-panel-alt);
+  border: 1px solid var(--color-border);
+  transition: var(--transition-fast);
+}
+
+.gyazo-toggle__knob {
+  inline-size: 0.7rem;
+  block-size: 0.7rem;
+  border-radius: 999px;
+  background: currentColor;
+  transition: var(--transition-fast);
+}
+
+.gyazo-toggle__text {
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.gyazo-toggle[data-state="player"] {
+  color: var(--color-highlight);
+  border-color: var(--color-border-strong);
+}
+
+.gyazo-toggle[data-state="player"] .gyazo-toggle__pill {
+  background: rgba(148, 88, 163, 0.15);
+  border-color: var(--color-border-strong);
+}
+
+.gyazo-toggle[data-state="player"] .gyazo-toggle__knob {
+  transform: translateX(2px);
+}
+
 .code-copy {
   position: absolute;
   top: var(--space-sm);

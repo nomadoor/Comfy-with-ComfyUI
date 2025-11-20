@@ -472,7 +472,7 @@ export default function (eleventyConfig) {
         ? `https://i.gyazo.com/${id}.mp4`
         : url;
     const escapedCaption = escapeHTML(caption);
-    return `<figure class="article-video article-video--loop" style="--article-video-height:${height}px; --article-video-width:${width}px; --article-video-aspect:${aspect};"><div class="article-video__frame"><video src="${source}" muted loop autoplay playsinline></video></div>${caption ? `<figcaption>${escapedCaption}</figcaption>` : ""}</figure>`;
+    return `<figure class="article-video article-video--loop article-video--gyazo" data-gyazo-toggle data-gyazo-initial="loop" style="--article-video-height:${height}px; --article-video-width:${width}px; --article-video-aspect:${aspect};"><div class="article-video__frame"><video src="${source}" muted loop autoplay playsinline></video><button type="button" class="gyazo-toggle" aria-label="Toggle Gyazo playback mode" data-loop-label="Loop" data-player-label="Player"><span class="gyazo-toggle__pill"><span class="gyazo-toggle__knob"></span><span class="gyazo-toggle__text"></span></span></button></div>${caption ? `<figcaption>${escapedCaption}</figcaption>` : ""}</figure>`;
   });
 
   eleventyConfig.addShortcode("gyazoVideoPlayer", function (url, caption = "", options = {}) {
@@ -491,7 +491,7 @@ export default function (eleventyConfig) {
         ? `https://i.gyazo.com/${id}.mp4`
         : url;
     const escapedCaption = escapeHTML(caption);
-    return `<figure class="article-video article-video--player" style="--article-video-height:${height}px; --article-video-width:${width}px; --article-video-aspect:${aspect};"><div class="article-video__frame"><video src="${source}" controls playsinline preload="metadata"></video></div>${caption ? `<figcaption>${escapedCaption}</figcaption>` : ""}</figure>`;
+    return `<figure class="article-video article-video--player article-video--gyazo" data-gyazo-toggle data-gyazo-initial="player" style="--article-video-height:${height}px; --article-video-width:${width}px; --article-video-aspect:${aspect};"><div class="article-video__frame"><video src="${source}" controls playsinline preload="metadata"></video><button type="button" class="gyazo-toggle" aria-label="Toggle Gyazo playback mode" data-loop-label="Loop" data-player-label="Player"><span class="gyazo-toggle__pill"><span class="gyazo-toggle__knob"></span><span class="gyazo-toggle__text"></span></span></button></div>${caption ? `<figcaption>${escapedCaption}</figcaption>` : ""}</figure>`;
   });
 
   const markdownLib = new MarkdownIt({
