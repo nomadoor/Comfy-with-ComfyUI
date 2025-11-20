@@ -31,6 +31,12 @@ try {
 const WORKFLOW_I18N = siteData?.i18n?.workflow || {};
 const DEFAULT_LANG = siteData?.defaultLang || "ja";
 const WORKFLOW_ROOT = path.join(process.cwd(), "src", "workflows");
+const WORKFLOW_LABELS = {
+  copyLabel: "Copy",
+  downloadLabel: "Download",
+  copiedLabel: "Copied",
+  downloadedLabel: "Downloaded"
+};
 
 loadLanguages(["bash", "shell", "json", "yaml", "javascript", "typescript", "css", "markup", "powershell", "python"]);
 
@@ -227,9 +233,8 @@ function extractInlineJsonLink(children = []) {
   return { href, text: textContent };
 }
 
-function getWorkflowLabel(key, lang) {
-  const labels = WORKFLOW_I18N[key] || {};
-  return labels[lang] || labels[DEFAULT_LANG] || (key === "downloadLabel" ? "Download" : "Copy");
+function getWorkflowLabel(key) {
+  return WORKFLOW_LABELS[key] || "";
 }
 
 function resolveJsonDiskPath(href = "", env = {}) {
@@ -279,6 +284,8 @@ function renderJsonLinkRow(linkInfo, env) {
   const lang = env.lang || env.page?.lang || DEFAULT_LANG;
   const copyLabel = getWorkflowLabel("copyLabel", lang);
   const downloadLabel = getWorkflowLabel("downloadLabel", lang);
+  const copiedLabel = getWorkflowLabel("copiedLabel", lang);
+  const downloadedLabel = getWorkflowLabel("downloadedLabel", lang);
   const copyIcon = getIconMarkup("copy");
   const downloadIcon = getIconMarkup("download");
   const escapedFile = escapeHTML(fileName);
@@ -286,10 +293,10 @@ function renderJsonLinkRow(linkInfo, env) {
   <div class="workflow-json__row">
     <span class="workflow-json__filename">${escapedFile}</span>
     <div class="workflow-json__actions">
-      <button class="workflow-json__icon" type="button" aria-label="${escapeHTML(copyLabel)} ${escapedFile}" data-copy-json="${copyTargetId}">
+      <button class="workflow-json__icon" type="button" aria-label="${escapeHTML(copyLabel)} ${escapedFile}" data-copy-json="${copyTargetId}" data-label="${escapeHTML(copyLabel)}" data-success-label="${escapeHTML(copiedLabel)}">
         ${copyIcon}
       </button>
-      <a class="workflow-json__icon" href="${linkInfo.href}" download aria-label="${escapeHTML(downloadLabel)} ${escapedFile}">
+      <a class="workflow-json__icon" href="${linkInfo.href}" download aria-label="${escapeHTML(downloadLabel)} ${escapedFile}" data-download-json="${copyTargetId}-download" data-label="${escapeHTML(downloadLabel)}" data-success-label="${escapeHTML(downloadedLabel)}">
         ${downloadIcon}
       </a>
     </div>

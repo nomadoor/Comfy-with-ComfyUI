@@ -935,7 +935,6 @@ h1 {
 .article-body a:hover,
 .article-body a:focus-visible {
   text-decoration-thickness: 0.14em;
-  color: inherit;
 }
 
 .article-body a:focus-visible {
@@ -1084,7 +1083,6 @@ h1 {
   padding: calc(var(--space-md) + 0.4rem) var(--space-md) var(--space-md) var(--space-md);
   background: var(--color-panel-strong);
   border-radius: var(--radius-md);
-  overflow-x: auto;
   font-size: 0.9rem;
   line-height: 1.6;
   position: relative;
@@ -1162,9 +1160,15 @@ h1 {
   padding: 0.2rem 0.6rem;
   cursor: pointer;
   transition: var(--transition-fast);
+  font-family: var(--font-base);
   display: inline-flex;
   align-items: center;
   gap: var(--space-2xs);
+}
+
+.code-block {
+  position: relative;
+  overflow: visible;
 }
 
 .code-copy__icon {
@@ -1419,15 +1423,85 @@ h1 {
   color: var(--color-text);
   cursor: pointer;
   padding: 0;
+  position: relative;
+  border-radius: var(--radius-pill);
+  transition: var(--transition-fast);
+  font-family: var(--font-base);
+}
 
-  &:hover {
-    color: var(--color-highlight);
-  }
+.workflow-json__icon:hover,
+.workflow-json__icon:focus-visible {
+  color: var(--color-highlight);
+}
+
+.workflow-json__icon.is-success {
+  color: var(--color-highlight);
 }
 
 .workflow-json__icon svg {
   width: 1.25rem;
   height: 1.25rem;
+}
+
+.workflow-json__icon::after,
+.code-copy::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: calc(100% + var(--space-xs));
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1;
+  background: var(--color-highlight);
+  color: var(--color-section-strong);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+  font-family: var(--font-base);
+  z-index: 2;
+}
+
+.workflow-json__icon:hover::after,
+.workflow-json__icon:focus-visible::after,
+.code-copy:hover::after,
+.code-copy:focus-visible::after {
+  opacity: 1;
+}
+
+.workflow-json__icon.is-success::after,
+.code-copy.is-copied::after {
+  opacity: 0;
+}
+
+.workflow-json__icon::before,
+.code-copy::before {
+  content: attr(data-success-label);
+  position: absolute;
+  bottom: calc(100% + var(--space-xs));
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1;
+  background: var(--color-highlight);
+  color: var(--color-section-strong);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: var(--font-base);
+  z-index: 3;
+  transition: var(--transition-fast);
+}
+
+.workflow-json__icon.is-success::before,
+.code-copy.is-copied::before {
+  opacity: 1;
 }
 
 .workflow-related {

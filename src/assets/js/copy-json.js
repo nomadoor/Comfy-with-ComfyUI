@@ -1,3 +1,17 @@
+const SUCCESS_VISIBLE_MS = 1000;
+const successTimerKey = Symbol("workflowJsonSuccessTimer");
+
+function showSuccessState(element, className = "is-success") {
+  element.classList.add(className);
+  if (element[successTimerKey]) {
+    clearTimeout(element[successTimerKey]);
+  }
+  element[successTimerKey] = setTimeout(() => {
+    element.classList.remove(className);
+    element[successTimerKey] = null;
+  }, SUCCESS_VISIBLE_MS);
+}
+
 function copyJson(button) {
   const targetId = button.getAttribute("data-copy-json");
   const node = document.getElementById(targetId);
@@ -5,8 +19,7 @@ function copyJson(button) {
 
   const text = node.textContent.trim();
   const markSuccess = () => {
-    button.classList.add("is-success");
-    setTimeout(() => button.classList.remove("is-success"), 1500);
+    showSuccessState(button);
   };
 
   if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -38,4 +51,11 @@ function bindCopyButtons() {
   });
 }
 
+function bindDownloadButtons() {
+  document.querySelectorAll("[data-download-json]").forEach(anchor => {
+    anchor.addEventListener("click", () => showSuccessState(anchor));
+  });
+}
+
 bindCopyButtons();
+bindDownloadButtons();

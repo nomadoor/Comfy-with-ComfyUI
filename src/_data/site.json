@@ -78,6 +78,14 @@
       "downloadLabel": {
         "ja": "ダウンロード",
         "en": "Download"
+      },
+      "copiedLabel": {
+        "ja": "コピーしました",
+        "en": "Copied"
+      },
+      "downloadedLabel": {
+        "ja": "ダウンロードしました",
+        "en": "Downloaded"
       }
     },
     "toc": {

@@ -6,8 +6,10 @@ layout: base.njk
 {% set workflowI18n = site.i18n.workflow or {} %}
 {% set workflowJsonHeading = workflowI18n.jsonHeading[currentLang] or workflowI18n.jsonHeading[site.defaultLang] or "Workflow JSON" %}
 {% set workflowRelatedHeading = workflowI18n.relatedHeading[currentLang] or workflowI18n.relatedHeading[site.defaultLang] or "Related workflows" %}
-{% set workflowCopyLabel = workflowI18n.copyLabel[currentLang] or workflowI18n.copyLabel[site.defaultLang] or "Copy" %}
-{% set workflowDownloadLabel = workflowI18n.downloadLabel[currentLang] or workflowI18n.downloadLabel[site.defaultLang] or "Download" %}
+{% set workflowCopyLabel = "Copy" %}
+{% set workflowDownloadLabel = "Download" %}
+{% set workflowCopiedLabel = "Copied" %}
+{% set workflowDownloadedLabel = "Downloaded" %}
 {% set footerConfig = site.footer or {} %}
 {% set footerTitle = footerConfig.title[currentLang] or footerConfig.title[site.defaultLang] %}
 {% set footerText = footerConfig.body[currentLang] or footerConfig.body[site.defaultLang] %}
@@ -25,10 +27,10 @@ layout: base.njk
       <li class="workflow-json__row">
         <span class="workflow-json__filename">{{ fileName }}</span>
         <div class="workflow-json__actions">
-          <button class="workflow-json__icon" type="button" aria-label="{{ workflowCopyLabel }} {{ fileName }}" data-copy-json="{{ workflow.id }}-json">
+          <button class="workflow-json__icon" type="button" aria-label="{{ workflowCopyLabel }} {{ fileName }}" data-copy-json="{{ workflow.id }}-json" data-label="{{ workflowCopyLabel }}" data-success-label="{{ workflowCopiedLabel }}">
             {{ icon("copy") }}
           </button>
-          <a class="workflow-json__icon" href="{{ workflow.json }}" download aria-label="{{ workflowDownloadLabel }} {{ fileName }}">
+          <a class="workflow-json__icon" href="{{ workflow.json }}" download aria-label="{{ workflowDownloadLabel }} {{ fileName }}" data-download-json="{{ workflow.id }}-json" data-label="{{ workflowDownloadLabel }}" data-success-label="{{ workflowDownloadedLabel }}">
             {{ icon("download") }}
           </a>
         </div>
