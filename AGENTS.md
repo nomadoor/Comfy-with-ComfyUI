@@ -1,126 +1,305 @@
-﻿# AGENTS.md 窶・Comfy with ComfyUI (Docs) / Agent Principles
+﻿AGENTS.md — Comfy with ComfyUI (Docs) / Agent Principles
+Motto
 
-**Motto**  
-> Small, clear, safe steps 窶・one source of truth in /ops (update /ops after every verbal change).
+Small, clear, safe steps — and one source of truth in /ops.
+Any verbal agreement must be reflected in /ops immediately.
 
-**Live directives trump docs**  
-蜿｣鬆ｭ縺ｧ謖・､ｺ縺輔ｌ縺滉ｻ墓ｧ倥′譛蜆ｪ蜈医よ欠遉ｺ繧貞女縺代◆繧・`/ops` 繧貞叉蠎ｧ縺ｫ譖ｴ譁ｰ縺励√◎繧後°繧牙ｮ溯｣・☆繧九％縺ｨ縲・
----
+Live Directives Trump Docs
 
-## 1. Purpose
-- 譛ｬ繝ｪ繝昴ず繝医Μ縺ｯ **ComfyUI 縺ｮ蜈･髢縲懷ｮ溯ｷｵ繝峨く繝･繝｡繝ｳ繝・*繧帝撕逧・し繧､繝医→縺励※謠蝉ｾ帙☆繧九・
-- AI繧ｨ繝ｼ繧ｸ繧ｧ繝ｳ繝医・ **莠ｺ髢薙→蜷後§荳谺｡雉・侭**・・ops・峨ｒ蜿ら・縺励∝享謇九↑莉墓ｧ倩ｿｽ蜉繧定｡後ｏ縺ｪ縺・・
+If there is a conflict between an older document and a newer verbal / written directive from the owner, the newer directive wins.
+Once a decision is made, you must update /ops so that the docs stop drifting from reality.
 
-## 2. Scope / Non-Scope
-**蜷ｫ繧**
-- Eleventy(11ty) 縺ｫ繧医ｋ髱咏噪逕滓・・・A/EN縲ゞRL 縺ｯ `/<lang>/<section>/<slug>/`・・
-- 縲後・繝ｼ繧ｸ・昴ち繧ｰ縲肴婿蠑擾ｼ医ち繧ｰID=窶懺沒ら函謌植I縺ｮ莉慕ｵ・∩縺ｨ蜃ｺ譚･繧九％縺ｨ窶晏・縺ｮ slug・・
-- Workflow 險倅ｺ九・閾ｪ逕ｱ蠖｢蠑上る未騾｣ Workflow 縺ｯ **蜷後ち繧ｰ蜈ｨ莉ｶ繧ｫ繝ｼ繝芽｡ｨ遉ｺ**・医・繝ｼ繧ｸ繝阪・繧ｷ繝ｧ繝ｳ・・
-- 險隱槫挨讀懃ｴ｢・・A竊谷A縺ｮ縺ｿ・拾N竊脱N縺ｮ縺ｿ・・
-- JS 縺ｯ **ESM 髯仙ｮ・*縲√い繧､繧ｳ繝ｳ縺ｯ `currentColor` 驕狗畑縺ｮ SVG
+1. Purpose
 
-**蜷ｫ縺ｾ縺ｪ縺・*
-- 繧ｵ繝ｼ繝舌・繧ｵ繧､繝吋B縲・㍾縺ЙS繝輔Ξ繝ｼ繝繝ｯ繝ｼ繧ｯ縲∝ｸｸ譎ゅヨ繝ｩ繝・く繝ｳ繧ｰ
-- 繝｢繝・け螟悶・螟ｧ謾ｹ騾・医ョ繧ｶ繧､繝ｳ繝医・繧ｯ繝ｳ螟悶・螟画峩・・
+Provide a systematic, reproducible documentation set for ComfyUI and its workflows.
 
-## 3. Ground Rules
-- **UI/デザイン変更は必ず人間レビューアの許可を得てから。合意後は即コミットし、無断で追加変更しないこと。**
+Treat /ops as the single source of truth for IA, writing rules, design tokens, and contribution rules.
 
+Keep the implementation (11ty, layouts, components, content) aligned with /ops at all times.
 
-- 隕冗ｯ・・ **/ops 縺ｫ髮・ｴ・*縲ょｮ溯｣・燕縺ｫ /ops 繧呈峩譁ｰ・医さ繝ｼ繝牙・陦檎ｦ∵ｭ｢・・
-- 螟画峩縺ｯ譛蟆上・蜿ｯ騾・よ尠譏ｧ縺輔・ **/ops 繧呈峩譁ｰ**縺励※隗｣豸・
-- ID 縺ｯ險隱樣撼萓晏ｭ倥り｡ｨ遉ｺ縺ｨ繝ｪ繝ｳ繧ｯ縺ｧ險隱槫・譖ｿ
-- 萓晏ｭ倥・譛蟆上∬ｻｽ驥繍S蜆ｪ蜈医よ悴鄙ｻ險ｳ繝ｻ譛ｪ貅門ｙ縺ｮ Workflow JSON 縺ｯ險ｱ螳ｹ
+2. Scope / Non-Scope
+In Scope
 
-## 4. Information Architecture・郁ｦ∫ｴ・ｼ・- 蟾ｦ・壹し繧､繝峨ヰ繝ｼ・井ｸ企Κ縺ｫ繧ｻ繧ｯ繧ｷ繝ｧ繝ｳ繧ｿ繝悶√ち繝悶ｒ蛻・ｊ譖ｿ縺医ｋ縺ｨ隧ｲ蠖薙そ繧ｯ繧ｷ繝ｧ繝ｳ縺ｮ繝翫ン縺・繧ｫ繝ｩ繝縺ｧ陦ｨ遉ｺ縺輔ｌ繧具ｼ・- 荳ｭ・壽悽譁・ｼ・1逶ｴ荳九↓**繧ｿ繧ｰ繝√ャ繝・*・・
-- 蜿ｳ・啜OC・・2/H3・・
-- 縲後〒縺阪ｋ縺薙→縲・ 縲詣orkflow縲阪そ繧ｯ繧ｷ繝ｧ繝ｳ繝壹・繧ｸ荳矩Κ・・*蜷後ち繧ｰ縺ｮ 繧ｫ繝ｼ繝牙・莉ｶ**
+The documentation site built with Eleventy (11ty).
+Canonical URL pattern: /<lang>/<section>/<slug>/.
 
-## 5. Tagging・医・繝ｼ繧ｸ・昴ち繧ｰ・・
-- 繧ｿ繧ｰID縺ｯ **險隱樣撼萓晏ｭ・slug**・遺懺沒ら函謌植I縺ｮ莉慕ｵ・∩縺ｨ蜃ｺ譚･繧九％縺ｨ窶晞・荳九・ slug・・
-- 陦ｨ遉ｺ繝ｩ繝吶Ν繝ｻ繝ｪ繝ｳ繧ｯ縺ｯ **迴ｾ蝨ｨUI險隱・*縺ｧ隗｣豎ｺ・医Μ繝ｳ繧ｯ縺ｯ `/<lang>/ai-capabilities/<slug>/` 遲会ｼ・
-- 1險倅ｺ九・繧ｿ繧ｰ荳企剞・・*5**
+IA structure (sections, page types, navigation) as defined in /ops.
 
-## 6. URL & Identity
-- 蜈ｬ蠑酋RL・啻/<lang>/<section>/<slug>/`  
-  - `lang` 窶ｦ `ja` / `en`  
-  - `section` 窶ｦ `begin-with` / `ai-capabilities` / `basic-workflows` / `faq`・域圻螳夲ｼ・ 
-  - `slug` 窶ｦ 險隱樣撼萓晏ｭ倥・闍ｱ隱・kebab
-- **蜷御ｸ section 蜀・〒 slug 縺ｮ驥崎､・ｒ遖∵ｭ｢**・郁ｨ隱槫挨縺ｫ蜷後§ slug 縺ｯ蜿ｯ・・
+Content and examples for:
 
-- **謠蝉ｾ帙Δ繝・け**・医Ξ繧､繧｢繧ｦ繝医・驟崎牡繝ｻ菴咏區繝ｻ隗剃ｸｸ繝ｻ蠅・阜・峨ｒ譛蜆ｪ蜈医ゅ◆縺縺励ヴ繧ｯ繧ｻ繝ｫ蜊倅ｽ阪・荳閾ｴ縺ｯ荳崎ｦ√・峅蝗ｲ豌励→讒矩繧貞粋繧上○繧九・- src/assets/mock縺ｮ繝｢繝・け繧｢繝・・逕ｻ蜒上ｒ蜿り・↓縺吶ｋ
-- 蛟､縺ｯ **/ops/style-design.md** 縺ｮ繝医・繧ｯ繝ｳ縺ｧ螳夂ｾｩ縲∝ｮ溯｣・・繝医・繧ｯ繝ｳ蜿ら・縺ｮ縺ｿ
-- 蠖ｱ縺ｯ蜴溷援縺ｪ縺励・嚴螻､縺ｯ border + surface 蟾ｮ
+Local ComfyUI setup and usage.
 
-## 8. ESM / Assets・域婿驥晢ｼ・
-- 繝輔Ο繝ｳ繝・S縺ｯ **ESM 髯仙ｮ・*・・ommonJS 荳榊庄縲～type="module"`・・
-- 繧｢繧､繧ｳ繝ｳ・啻src/assets/icons/*.svg`・・viewBox`蠢・医・`currentColor`・・
+AI capabilities (models, depth, video, etc.).
 
-## 9. CI / Quality Gates・郁ｦ∵葎・・
-- **sectionﾃ耀lug 縺ｮ荳諢乗ｧ**・郁ｨ隱樊ｨｪ譁ｭ縺ｧ蜷御ｸ section 蜀・・驥崎､・ｦ∵ｭ｢・・
-- `nav.*.yml` 縺ｮ slug 螳溷惠
-- tags[] 縺瑚ｨｱ蜿ｯ髮・粋縺ｫ蜷ｫ縺ｾ繧後ｋ繝ｻ荳企剞5雜・・隴ｦ蜻・
-- 逕ｻ蜒・width/height 譛ｪ謖・ｮ夂紫縺ｮ隴ｦ蜻・
+Basic and advanced workflows with JSON examples.
 
-## 10. ADR Cadence・医＞縺､ADR繧呈嶌縺上°・・
-**PR 蜑阪↓ ADR 繧定ｵｷ譯医＠謇ｿ隱榊ｾ後↓螳溯｣・*
-- **IA 縺ｮ蛻晄悄螳夂ｾｩ・丞・驛ｨ蜃ｦ逅・・螟画峩**・・RL險ｭ險医√ち繧ｰ謚ｽ蜃ｺ縲∬ｨｱ蜿ｯ髮・粋縺ｮ豎ｺ繧∵婿・・
-- 繧ｳ繝ｳ繝昴・繝阪Φ繝医・譁ｰ險ｭ繝ｻ遐ｴ螢顔噪螟画峩・医Λ繧､繝医・繝・け繧ｹ縲・・蟶・ヰ繝ｼ縲∵､懃ｴ｢UI・・
-- 繝・じ繧､繝ｳ繝医・繧ｯ繝ｳ蜀榊ｮ夂ｾｩ・郁牡菴鍋ｳｻ繝ｻ菴咏區繧ｹ繧ｱ繝ｼ繝ｫ繝ｻ繧ｿ繧､繝晢ｼ・
-- CI/蜩∬ｳｪ繧ｲ繝ｼ繝医・霑ｽ蜉繝ｻ髢ｾ蛟､螟画峩
-- 讀懃ｴ｢譁ｹ蠑丞､画峩・医う繝ｳ繝・ャ繧ｯ繧ｹ莉墓ｧ倥・蟇ｾ雎｡遽・峇・・
-- 騾ｱ谺｡縺ｮ蟆丞､画峩縺ｯ **Weekly rollup ADR** 繧定ｨｱ螳ｹ
+Design system and UI behavior as defined in:
 
-## 11. MCP Agents・域怙蟆上Ν繝ｼ繝ｫ・・
-- 隱ｭ縺ｿ蜿悶ｊ蜆ｪ蜈茨ｼ啻/ops`, `/src/_data`, `/src/layouts`
-- 譖ｸ縺崎ｾｼ縺ｿ・・*`/src/**` 縺ｮ縺ｿ**・・/ops` 螟画峩縺ｯ PR 縺ｧ莠ｺ髢捺価隱搾ｼ・
-- 1 PR = 1 諢丞峙・磯ｪｨ邨・∩・上せ繧ｿ繧､繝ｫ・乗､懃ｴ｢縺ｪ縺ｩ豺ｷ蝨ｨ遖∵ｭ｢・・
-- 螳御ｺ・擅莉ｶ・咾I 邱托ｼ九Δ繝・け貅匁侠繧ｹ繧ｯ繧ｷ繝ｧ
+/ops/style-design.md (visual / layout tokens)
 
-## 12. Collaboration
-- 隕冗ｯ・→螳溯｣・・荳堺ｸ閾ｴ縺ｯ螳溯｣・●豁｢ 竊・/ops 譖ｴ譁ｰ繧貞・謠先｡・
-- 遒ｺ菫｡蠎ｦ < 80% 縺ｯ Issue 襍ｷ逾ｨ竊・ops 縺ｫ逍大撫繧定ｿｽ險倥＠蜷域э
+/ops/style-writing.md (writing rules, headings, examples)
 
+JavaScript written as ES Modules only.
+SVG icons that inherit currentColor.
 
-**Rule:** In each command, **define → use**. Do **not** escape . Use generic 'path/to/file.ext'.
+Out of Scope
 
----
+Maintaining external project-management tools (Notion, Scrapbox, etc.).
 
-## 1) READ (UTF‑8 no BOM, line‑numbered)
+Supporting legacy themes, deprecated UI, or third-party skins that are not aligned with /ops.
 
-r?
+“Random experiments” that are not tied to a concrete doc or ADR.
 
----
+3. Ground Rules
 
-## 2) WRITE (UTF‑8 no BOM, atomic replace, backup)
+No silent UX / UI changes.
+Any UI or design change must be:
 
-nYOUR_TEXT_HERE
-# Command Text Format
+Proposed and agreed with the human owner.
 
-**Rule:** In each command, **define → use**. Do **not** escape `$`. Use generic 'path/to/file.ext'.
+Implemented as a focused change (branch + PR).
 
----
+Not extended or “improved” further without explicit agreement.
 
-## 1) READ (UTF‑8 no BOM, line‑numbered)
+/ops first.
+
+If you change behavior, IA, naming, or conventions, you start by updating /ops.
+
+Code and content are then updated to match /ops.
+
+Persistent IDs.
+
+IDs, slugs, and major URLs must be stable.
+
+Renames require an ADR and nav updates, not ad-hoc edits.
+
+Reproducible workflows only.
+
+Workflow JSONs must be complete enough for a third party to reproduce results.
+
+4. Information Architecture & Writing
+
+The detailed rules for IA (headings, page templates, narrative structure, examples, etc.) are not duplicated here.
+
+Canonical reference: /ops/style-writing.md
+
+IA and writing decisions are made there; this file only enforces that those rules are treated as binding.
+
+Do not invent your own heading patterns or page layouts: always follow /ops/style-writing.md.
+
+5. Tagging
+
+Every page must have tags that are:
+
+Consistent with its slug and topic.
+
+Specific but not spammy.
+
+AI-capability pages under /<lang>/ai-capabilities/<slug>/ must have tags that describe:
+
+Task (e.g., depth, video, controlnet)
+
+Modality (e.g., image, video, 3d)
+
+Maximum 5 tags per page.
+More than 5 is a signal that the scope is too broad.
+
+6. URL & Identity
+
+Canonical URL format
+
+/<lang>/<section>/<slug>/
+
+lang ∈ { ja, en }
+
+section ∈ { begin-with, ai-capabilities, basic-workflows, faq }
+
+slug is a kebab-case, permanent identifier
+
+Slug rules
+
+No duplicate (section, slug) pairs across the site.
+
+No “temporary” slugs; treat slugs as stable IDs.
+
+Slug changes require: nav update + ADR.
+
+Assets
+
+Mockups and illustrations live under src/assets/mock/ or other agreed subfolders.
+
+All visual tokens (colors, radii, shadows, spacing) are defined in /ops/style-design.md.
+
+7. Design Tokens & Assets
+
+Colors, typography, border radii, spacing, and shadows are defined in /ops/style-design.md.
+
+Any change to design tokens:
+
+Must be proposed in /ops/style-design.md first.
+
+Then implemented in CSS / utility classes.
+
+Layout / component variations must align with:
+
+Existing token names.
+
+Previously agreed responsive behavior.
+
+8. JS / ESM
+
+All JavaScript is written as ESM:
+
+No new CommonJS modules.
+
+Use "type": "module" where appropriate.
+
+Icons:
+
+Stored in src/assets/icons/*.svg.
+
+Must define a viewBox.
+
+Must use fill="currentColor" or inherit currentColor.
+
+9. CI / Quality Gates
+
+Before merging any PR:
+
+section + slug uniqueness is preserved.
+
+nav.*.yml slugs match the actual file structure and IA.
+
+Each page:
+
+Has ≤ 5 tags.
+
+Uses the correct section and template as per /ops.
+
+All images:
+
+Have explicit width and height.
+
+Use appropriate formats and sizes (no unbounded raw dumps).
+
+If these gates cannot be satisfied, the PR is not ready.
+
+10. ADR Cadence
+
+Any change that affects IA, URL structure, or design system requires an ADR.
+
+ADR is required when:
+
+Changing IA (sections, page types, navigation patterns).
+
+Introducing or removing major components or layouts.
+
+Changing authoring rules in /ops/style-writing.md.
+
+Modifying CI / quality criteria.
+
+Minor changes can be batched into a weekly rollup ADR, but must still be documented.
+
+11. MCP & Tool Usage
+
+The goal is to use MCP servers aggressively and intelligently, not to restrict them.
+
+At startup or on first use, an agent should:
+
+Enumerate available MCP servers and their capabilities.
+
+Cache or summarize what each MCP can do (file access, search, browsing, etc.).
+
+When performing tasks (e.g., reading/writing files, searching, formatting), the agent should:
+
+Prefer MCP tools over custom shell commands whenever they are safer and more structured.
+
+Use the most specialized MCP for each job (e.g., “code edit MCP” for code, “docs MCP” for ops files).
+
+If a task can be expressed as:
+
+“Read/Write a project file”
+
+“Search in docs”
+
+“Format / lint content”
+
+then the agent should attempt to route it through MCP first, falling back to raw shell only when strictly necessary.
+
+Agents must not ignore available MCPs. Discover them and use them to the maximum extent compatible with safety and clarity.
+
+12. Collaboration & Git Workflow
+12.1 General Collaboration
+
+Verbal agreement → /ops update → implementation → PR → review → merge.
+
+If the spec in /ops is ambiguous:
+
+Open an Issue.
+
+Propose a clarification in /ops before pushing large changes.
+
+12.2 New Feature Rule (Commit / Branch Before Work)
+
+Before implementing any new feature on your own initiative:
+
+Do not work directly on main (or the primary trunk) without structure.
+
+Instead, you must:
+
+Create a dedicated feature branch that clearly states the intent in its name, and
+
+Commit at least a minimal, explicit change that:
+
+Updates /ops with the planned feature, or
+
+Adds a small, reversible scaffold (e.g., empty layout, stub page, or TODO section).
+
+The idea is:
+
+“First record the intent in Git, then expand it.”
+
+This makes it obvious what you are trying to do, and allows easy rollback or review at any stage.
+No large, untracked, or half-hidden feature work is allowed.
+Do not merge to main (or the primary trunk) without explicit owner approval; always keep feature work on its branch until reviewed.
+
+13. File I/O Command Templates (UTF-8, No BOM)
+
+These commands define a precise, reproducible way to read and write project files with UTF-8 without BOM, using PowerShell via Bash.
+
+Rule for these commands:
+
+In each command, define → use (no dangling helpers).
+
+Do not escape $ unless strictly required by the shell.
+
+Use generic paths like path/to/file.ext, not machine-specific ones.
+
+13.1 READ (UTF-8 no BOM, line-numbered)
+
+Print a file with line numbers, reading as UTF-8 without BOM:
 
 ```bash
 bash -lc 'powershell -NoLogo -Command "
 $OutputEncoding = [Console]::OutputEncoding = [Text.UTF8Encoding]::new($false);
 Set-Location -LiteralPath (Convert-Path .);
 function Get-Lines { param([string]$Path,[int]$Skip=0,[int]$First=40)
-  $enc=[Text.UTF8Encoding]::new($false)
-  $text=[IO.File]::ReadAllText($Path,$enc)
-  if($text.Length -gt 0 -and $text[0] -eq [char]0xFEFF){ $text=$text.Substring(1) }
-  $ls=$text -split "`r?`n"
-  for($i=$Skip; $i -lt [Math]::Min($Skip+$First,$ls.Length); $i++){ "{0:D4}: {1}" -f ($i+1), $ls[$i] }
+  $enc  = [Text.UTF8Encoding]::new($false)
+  $text = [IO.File]::ReadAllText($Path,$enc)
+  if ($text.Length -gt 0 -and $text[0] -eq [char]0xFEFF) {
+    $text = $text.Substring(1)
+  }
+  $ls = $text -split \"`r?`n\"
+  for ($i = $Skip; $i -lt [Math]::Min($Skip + $First, $ls.Length); $i++) {
+    '{0:D4}: {1}' -f ($i + 1), $ls[$i]
+  }
 }
-Get-Lines -Path "path/to/file.ext" -First 120 -Skip 0
-"'
+Get-Lines -Path 'path/to/file.ext' -First 120 -Skip 0
 ```
 
----
+13.2 WRITE (UTF-8 no BOM, atomic replace with backup option)
 
-## 2) WRITE (UTF‑8 no BOM, atomic replace, backup)
+Append a block of text to a file, writing as UTF-8 without BOM, with an atomic temp file:
 
 ```bash
 bash -lc 'powershell -NoLogo -Command "
@@ -134,7 +313,7 @@ function Write-Utf8NoBom { param([string]$Path,[string]$Content)
   $tmp = [IO.Path]::GetTempFileName()
   try {
     $enc = [Text.UTF8Encoding]::new($false)
-    [IO.File]::WriteAllText($tmp,$Content,$enc)
+    [IO.File]::WriteAllText($tmp, $Content, $enc)
     Move-Item $tmp $Path -Force
   }
   finally {
@@ -143,9 +322,10 @@ function Write-Utf8NoBom { param([string]$Path,[string]$Content)
     }
   }
 }
-$file = "path/to/your_file.ext"
+$file = 'path/to/your_file.ext'
 $enc  = [Text.UTF8Encoding]::new($false)
-$old  = (Test-Path $file) ? ([IO.File]::ReadAllText($file,$enc)) : ''
-Write-Utf8NoBom -Path $file -Content ($old+"`nYOUR_TEXT_HERE`n")
-"'
+$old  = (Test-Path $file) ? ([IO.File]::ReadAllText($file, $enc)) : ''
+Write-Utf8NoBom -Path $file -Content ($old + \"`nYOUR_TEXT_HERE`n\")
 ```
+
+Agents should reuse these exact patterns (with path and content substituted) rather than inventing ad-hoc file I/O commands.

@@ -61,7 +61,7 @@ export function format(workflow: Workflow) {
 
 サイズの異なる画像を`.article-media-row`で包むと、幅に応じて自動で整列します。
 
-![巻物ねこ](https://i.gyazo.com/f805391f1a7ae6b253440cf16168a763.jpg){gyazo=image} ![もこもこキャラ](https://i.gyazo.com/075ff7bc7a36635d40662b163b5a9cfe.jpg){gyazo=image}
+![](https://i.gyazo.com/f805391f1a7ae6b253440cf16168a763.jpg){gyazo=image} ![もこもこキャラ](https://i.gyazo.com/075ff7bc7a36635d40662b163b5a9cfe.jpg){gyazo=image}
 
 ## Gyazo 動画（ループ）
 
