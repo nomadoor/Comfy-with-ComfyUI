@@ -26,7 +26,7 @@ body {
   --space-md: 1rem;
   --space-lg: 1.5rem;
   --space-xl: 2rem;
-  --space-2xl: 3rem;
+  --space-2xl: 4rem;
 
   --radius-md: 0.5rem;
   --radius-sm: 0.25rem;
@@ -887,6 +887,11 @@ video {
   color: var(--color-heading);
 }
 
+.article-body hr {
+  border: 1px solid var(--color-border);
+  margin: var(--space-2xl) 0;
+}
+
 h1 {
   font-weight: 700;
 }
@@ -912,8 +917,44 @@ h1 {
 \.article-body p,
 .article-body ul,
 .article-body ol {
-  max-width: 60ch;
+  max-width: 100%;
   color: var(--color-text);
+}
+
+.article-body a {
+  color: inherit;
+  text-decoration-color: currentColor;
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.22em;
+  text-decoration-skip-ink: auto;
+  font-weight: 500;
+  transition: text-decoration-thickness var(--transition-fast), color var(--transition-fast);
+}
+
+.article-body a:hover,
+.article-body a:focus-visible {
+  text-decoration-thickness: 0.14em;
+  color: inherit;
+}
+
+.article-body a:focus-visible {
+  outline: 2px solid var(--color-highlight);
+  outline-offset: 0.2rem;
+  text-decoration-thickness: 0.16em;
+}
+
+.article-body a.link--external::after,
+.article-body a[data-link-type="external"]::after {
+  content: "";
+  display: inline-block;
+  inline-size: 0.95em;
+  block-size: 0.95em;
+  margin-inline-start: 0.35em;
+  background-color: currentColor;
+  mask: url("/assets/icons/external-link.svg") center / 100% no-repeat;
+  -webkit-mask: url("/assets/icons/external-link.svg") center / 100% no-repeat;
+  vertical-align: text-top;
 }
 
 .article-body ul {
@@ -1049,8 +1090,8 @@ h1 {
 
 .article-body code {
   font-family: ui-monospace, "JetBrains Mono", SFMono-Regular, Menlo, Consolas, monospace;
-  background: var(--color-panel-alt);
-  padding: 0 var(--space-2xs);
+  background: #313131;
+  padding: 0.1rem var(--space-xs);
   border-radius: var(--radius-sm);
   font-size: 0.9em;
 }
@@ -1490,6 +1531,9 @@ h1 {
 
   &:hover {
     color: var(--color-text);
+  }
+  &[data-depth="3"] {
+    margin-left: var(--space-sm);
   }
 }
 
