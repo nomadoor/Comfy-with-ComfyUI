@@ -511,6 +511,113 @@ export default function (eleventyConfig) {
     }
   });
 
+  // --- Gyazo Markdown helper -------------------------------------------------
+  function parseBraceAttrs(text = "") {
+    const match = text.trim().match(/^\{([^}]*)\}$/);
+    if (!match) return null;
+    const body = match[1];
+    const attrs = {};
+    body.split(/\s+/).forEach((chunk) => {
+      if (!chunk) return;
+      const [k, v] = chunk.split("=");
+      if (k) {
+        attrs[k] = v || "";
+      }
+    });
+    return Object.keys(attrs).length ? attrs : null;
+  }
+
+  function renderGyazoMedia(token) {
+    const url = token.attrGet("src") || "";
+    const mode = (token.attrGet("gyazo") || "image").toLowerCase();
+    const alt = escapeHTML(token.content || token.attrGet("alt") || "");
+
+    const id = extractGyazoId(url);
+    const dims = getGyazoDimensionsFromId(id);
+    const baseWidth = dims?.width || 720;
+    const baseHeight = dims?.height || 360;
+    const aspect = dims ? `${dims.width} / ${dims.height}` : "16 / 9";
+    const height = Math.min(baseHeight, 360);
+    const scale = baseHeight ? height / baseHeight : 1;
+    const width = Math.round(baseWidth * scale);
+    const source = typeof url === "string" && url.endsWith(".mp4")
+      ? url
+      : id
+        ? `https://i.gyazo.com/${id}.mp4`
+        : url;
+
+    const commonFig = `<figure class="article-media" style="--article-media-width:${width}px; --article-media-height:${height}px; --article-media-aspect:${aspect};"><div class="article-media__frame">`;
+    const closing = `${alt ? `<figcaption>${alt}</figcaption>` : ""}</figure>`;
+
+    if (mode === "loop") {
+      return `${commonFig}<video src="${source}" muted loop autoplay playsinline></video></div>${closing}`;
+    }
+    if (mode === "player") {
+      return `${commonFig}<video src="${source}" controls playsinline preload="metadata"></video></div>${closing}`;
+    }
+    return `${commonFig}<img src="${url}" alt="${alt}" loading="lazy" decoding="async" /></div>${closing}`;
+  }
+
+  // Detect `{gyazo=...}` right after an image and mark the token.
+  markdownLib.core.ruler.after("inline", "gyazo_attrs", function (state) {
+    const tokens = state.tokens;
+    for (let i = 0; i < tokens.length - 1; i++) {
+      const tok = tokens[i];
+      if (tok.type === "inline" && tok.children) {
+        const children = tok.children;
+        for (let j = 0; j < children.length - 1; j++) {
+          const img = children[j];
+          const txt = children[j + 1];
+          if (img.type === "image" && txt && txt.type === "text") {
+            const attrs = parseBraceAttrs(txt.content || "");
+            if (attrs && attrs.gyazo) {
+              img.attrSet("gyazo", attrs.gyazo);
+              img.meta = img.meta || {};
+              img.meta.isGyazo = true;
+              // remove the brace text token
+              children.splice(j + 1, 1);
+            }
+          }
+        }
+      }
+    }
+  });
+
+  // Rewrap paragraphs that contain only gyazo media into a media row.
+  markdownLib.core.ruler.after("gyazo_attrs", "gyazo_row", function (state) {
+    const tokens = state.tokens;
+    for (let i = 0; i < tokens.length - 2; i++) {
+      if (tokens[i].type !== "paragraph_open") continue;
+      const inline = tokens[i + 1];
+      const close = tokens[i + 2];
+      if (!inline || inline.type !== "inline" || close.type !== "paragraph_close") continue;
+      const children = inline.children || [];
+      if (!children.length) continue;
+      const onlyGyazo = children.every((c) => (c.type === "image" && c.meta?.isGyazo) || (c.type === "text" && !c.content.trim()));
+      if (!onlyGyazo) continue;
+      tokens[i].type = "gyazo_row_open";
+      tokens[i].tag = "div";
+      tokens[i].attrSet("class", "article-media-row");
+      tokens[i + 2].type = "gyazo_row_close";
+      tokens[i + 2].tag = "div";
+    }
+  });
+
+  markdownLib.renderer.rules.gyazo_row_open = (tokens, idx) => `<div class="${tokens[idx].attrGet("class")}">`;
+  markdownLib.renderer.rules.gyazo_row_close = () => `</div>`;
+
+  const defaultImageRenderer = markdownLib.renderer.rules.image || function (tokens, idx, options, env, self) {
+    return self.renderToken(tokens, idx, options);
+  };
+
+  markdownLib.renderer.rules.image = function (tokens, idx, options, env, self) {
+    const token = tokens[idx];
+    if (token.meta?.isGyazo || token.attrGet("gyazo")) {
+      return renderGyazoMedia(token);
+    }
+    return defaultImageRenderer(tokens, idx, options, env, self);
+  };
+
   const defaultImageRenderer = markdownLib.renderer.rules.image || function (tokens, idx, options, env, self) {
     return self.renderToken(tokens, idx, options);
   };

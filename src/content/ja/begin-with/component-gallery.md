@@ -55,32 +55,21 @@ export function format(workflow: Workflow) {
 
 ## Gyazo 画像
 
-![Conditioning reference](https://i.gyazo.com/075ff7bc7a36635d40662b163b5a9cfe.jpg)
+![Conditioning reference](https://i.gyazo.com/075ff7bc7a36635d40662b163b5a9cfe.jpg){gyazo=image}
 
 ## 画像を横並びにする
 
 サイズの異なる画像を`.article-media-row`で包むと、幅に応じて自動で整列します。
 
-<div class="article-media-row">
-  <figure class="article-media" style="--article-media-width:225px; --article-media-height:300px; --article-media-aspect:1108 / 1477;">
-    <div class="article-media__frame">
-      <img src="https://i.gyazo.com/f805391f1a7ae6b253440cf16168a763.jpg" alt="巻物ねこ" loading="lazy" decoding="async" />
-    </div>
-  </figure>
-  <figure class="article-media" style="--article-media-width:300px; --article-media-height:300px; --article-media-aspect:1212 / 1352;">
-    <div class="article-media__frame">
-      <img src="https://i.gyazo.com/075ff7bc7a36635d40662b163b5a9cfe.jpg" alt="もこもこキャラ" loading="lazy" decoding="async" />
-    </div>
-  </figure>
-</div>
+![巻物ねこ](https://i.gyazo.com/f805391f1a7ae6b253440cf16168a763.jpg){gyazo=image} ![もこもこキャラ](https://i.gyazo.com/075ff7bc7a36635d40662b163b5a9cfe.jpg){gyazo=image}
 
 ## Gyazo 動画（ループ）
 
-{% gyazoVideoLoop "https://gyazo.com/d32149b1fc31363100fbc9f009b41add", "ループ再生で確認したい場合はこちら。" %}
+![ループ再生で確認したい場合はこちら。](https://gyazo.com/d32149b1fc31363100fbc9f009b41add){gyazo=loop}
 
 ## Gyazo 動画（プレイヤー）
 
-{% gyazoVideoPlayer "https://gyazo.com/d32149b1fc31363100fbc9f009b41add", "Gyazo公式プレイヤーで再生・停止・シークを操作。" %}
+![Gyazo公式プレイヤーで再生・停止・シークを操作。](https://gyazo.com/d32149b1fc31363100fbc9f009b41add){gyazo=player}
 
 `gyazoVideoLoop` は自動再生 + ループ前提、`gyazoVideoPlayer` は Gyazo のプレイヤー UI とシークバーをそのまま埋め込みます。
 
