@@ -1419,15 +1419,53 @@ h1 {
   color: var(--color-text);
   cursor: pointer;
   padding: 0;
+  position: relative;
+  border-radius: var(--radius-pill);
+  transition: color var(--transition-fast);
+}
 
-  &:hover {
-    color: var(--color-highlight);
-  }
+.workflow-json__icon:hover,
+.workflow-json__icon:focus-visible {
+  color: var(--color-highlight);
 }
 
 .workflow-json__icon svg {
   width: 1.25rem;
   height: 1.25rem;
+}
+
+.workflow-json__icon::after,
+.code-copy::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: calc(100% + var(--space-2xs));
+  left: 50%;
+  transform: translate(-50%, 0.2rem);
+  background: var(--color-panel-alt);
+  color: var(--color-heading);
+  padding: 0.1rem 0.45rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.65rem;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  z-index: 2;
+}
+
+.workflow-json__icon:hover::after,
+.workflow-json__icon:focus-visible::after,
+.code-copy:hover::after,
+.code-copy:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, -0.15rem);
+}
+
+.workflow-json__icon.is-success::after,
+.code-copy.is-copied::after {
+  content: attr(data-success-label);
+  color: var(--color-highlight);
 }
 
 .workflow-related {

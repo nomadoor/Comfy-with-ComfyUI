@@ -279,6 +279,8 @@ function renderJsonLinkRow(linkInfo, env) {
   const lang = env.lang || env.page?.lang || DEFAULT_LANG;
   const copyLabel = getWorkflowLabel("copyLabel", lang);
   const downloadLabel = getWorkflowLabel("downloadLabel", lang);
+  const copiedLabel = getWorkflowLabel("copiedLabel", lang);
+  const downloadedLabel = getWorkflowLabel("downloadedLabel", lang);
   const copyIcon = getIconMarkup("copy");
   const downloadIcon = getIconMarkup("download");
   const escapedFile = escapeHTML(fileName);
@@ -286,10 +288,10 @@ function renderJsonLinkRow(linkInfo, env) {
   <div class="workflow-json__row">
     <span class="workflow-json__filename">${escapedFile}</span>
     <div class="workflow-json__actions">
-      <button class="workflow-json__icon" type="button" aria-label="${escapeHTML(copyLabel)} ${escapedFile}" data-copy-json="${copyTargetId}">
+      <button class="workflow-json__icon" type="button" aria-label="${escapeHTML(copyLabel)} ${escapedFile}" data-copy-json="${copyTargetId}" data-label="${escapeHTML(copyLabel)}" data-success-label="${escapeHTML(copiedLabel)}">
         ${copyIcon}
       </button>
-      <a class="workflow-json__icon" href="${linkInfo.href}" download aria-label="${escapeHTML(downloadLabel)} ${escapedFile}">
+      <a class="workflow-json__icon" href="${linkInfo.href}" download aria-label="${escapeHTML(downloadLabel)} ${escapedFile}" data-download-json="${copyTargetId}-download" data-label="${escapeHTML(downloadLabel)}" data-success-label="${escapeHTML(downloadedLabel)}">
         ${downloadIcon}
       </a>
     </div>

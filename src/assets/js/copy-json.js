@@ -38,4 +38,14 @@ function bindCopyButtons() {
   });
 }
 
+function bindDownloadButtons() {
+  document.querySelectorAll("[data-download-json]").forEach(anchor => {
+    anchor.addEventListener("click", () => {
+      anchor.classList.add("is-success");
+      setTimeout(() => anchor.classList.remove("is-success"), 1500);
+    });
+  });
+}
+
 bindCopyButtons();
+bindDownloadButtons();
