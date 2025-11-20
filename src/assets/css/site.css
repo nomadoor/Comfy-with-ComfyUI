@@ -1129,6 +1129,7 @@ h1 {
   border-radius: var(--radius-md);
   overflow: hidden;
   background: #000;
+  position: relative;
 }
 
 .article-video video,
@@ -1166,12 +1167,14 @@ h1 {
   align-items: center;
   gap: var(--space-2xs);
   cursor: pointer;
+  z-index: 2;
   opacity: 0;
   visibility: hidden;
   transition: var(--transition-fast);
 }
 
 .article-video--gyazo:hover .gyazo-toggle,
+.article-video--gyazo:focus-within .gyazo-toggle,
 .gyazo-toggle:focus-visible {
   opacity: 1;
   visibility: visible;
