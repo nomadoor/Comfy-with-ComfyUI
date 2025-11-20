@@ -43,7 +43,7 @@ ComfyUIの [GitHubリリースページ](https://github.com/comfyanonymous/Comfy
 ### 2. 展開と起動
 
 - 1.  ダウンロードした `7zファイル`を右クリックし、`すべて展開`で展開します。
-  - {% gyazoVideoLoop "https://gyazo.com/776dafe2320c41526e6292f52edbe07d" %}
+  - ![](https://gyazo.com/776dafe2320c41526e6292f52edbe07d){gyazo=loop}
   - [推奨スペックのストレージ](/ja/begin-with/recommended-specs/#ストレージ)でも説明しましたが、SSDに配置することをオススメします。
 - 2.  展開されたフォルダ内にある、`run_nvidia_gpu.bat` をダブルクリックで起動します。
 - 3.  初回起動時は環境設定に時間がかかります。ブラウザが自動で開けば成功です。

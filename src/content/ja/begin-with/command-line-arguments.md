@@ -27,7 +27,7 @@ python main.py --fast
 
 ポータブル版では、起動に使っている `.bat` ファイル（例: `run_nvidia_gpu.bat`）を右クリックして編集し、`python.exe` の後に引数を追加することで設定できます。
 
-![command-line-arguments](https://i.gyazo.com/44f113bf9373f5dac0ced2a92e054165.png)
+![command-line-arguments](https://i.gyazo.com/44f113bf9373f5dac0ced2a92e054165.png){gyazo=image}
 
 ---
 

@@ -20,7 +20,7 @@ hero:
 
 ## CLIの基本構造
 
-![Image](https://i.gyazo.com/90e4cdeaf87656d9d3b324cafc9b31eb.png)
+![Image](https://i.gyazo.com/90e4cdeaf87656d9d3b324cafc9b31eb.png){gyazo=image}
 
 * **プロンプト**
     * `PS D:\なんちゃら` の部分。
@@ -47,14 +47,14 @@ hero:
 
 * `cd <パス>`
     * フォルダを移動します。
-    * {% gyazoVideoLoop "https://gyazo.com/aae05ca5c1531996bf5781960e260f46" %}
+* ![](https://gyazo.com/aae05ca5c1531996bf5781960e260f46){gyazo=loop}
 * `dir`
     * 現在のフォルダに入っているフォルダ・ファイルの一覧を表示します。
 * `mkdir <フォルダ名>`
     * 新しいフォルダを作成します。
 * `.\<ファイル名>`
     * 現在のフォルダにある実行ファイルを起動します。
-    * {% gyazoVideoLoop "https://gyazo.com/855ce160b4ec55a5e6f93198f7efd39c" %}
+* ![](https://gyazo.com/855ce160b4ec55a5e6f93198f7efd39c){gyazo=loop}
 * `rm <ファイル名>`
     * ファイルを削除します。
 

@@ -39,6 +39,6 @@ hero:
 ### ロバスト性
 サンプル用段落。TOC で H3 まで拾えるか確認。
 
-![Conditioning gyazo](https://i.gyazo.com/f805391f1a7ae6b253440cf16168a763.jpg)
+![Conditioning gyazo](https://i.gyazo.com/f805391f1a7ae6b253440cf16168a763.jpg){gyazo=image}
 
-![Conditioning workflow sample](https://i.gyazo.com/075ff7bc7a36635d40662b163b5a9cfe.jpg)
+![Conditioning workflow sample](https://i.gyazo.com/075ff7bc7a36635d40662b163b5a9cfe.jpg){gyazo=image}
