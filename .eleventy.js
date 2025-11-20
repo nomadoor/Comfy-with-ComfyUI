@@ -31,6 +31,12 @@ try {
 const WORKFLOW_I18N = siteData?.i18n?.workflow || {};
 const DEFAULT_LANG = siteData?.defaultLang || "ja";
 const WORKFLOW_ROOT = path.join(process.cwd(), "src", "workflows");
+const WORKFLOW_LABELS = {
+  copyLabel: "Copy",
+  downloadLabel: "Download",
+  copiedLabel: "Copied",
+  downloadedLabel: "Downloaded"
+};
 
 loadLanguages(["bash", "shell", "json", "yaml", "javascript", "typescript", "css", "markup", "powershell", "python"]);
 
@@ -227,9 +233,8 @@ function extractInlineJsonLink(children = []) {
   return { href, text: textContent };
 }
 
-function getWorkflowLabel(key, lang) {
-  const labels = WORKFLOW_I18N[key] || {};
-  return labels[lang] || labels[DEFAULT_LANG] || (key === "downloadLabel" ? "Download" : "Copy");
+function getWorkflowLabel(key) {
+  return WORKFLOW_LABELS[key] || "";
 }
 
 function resolveJsonDiskPath(href = "", env = {}) {

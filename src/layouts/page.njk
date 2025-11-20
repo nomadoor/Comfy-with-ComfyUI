@@ -6,10 +6,10 @@ layout: base.njk
 {% set workflowI18n = site.i18n.workflow or {} %}
 {% set workflowJsonHeading = workflowI18n.jsonHeading[currentLang] or workflowI18n.jsonHeading[site.defaultLang] or "Workflow JSON" %}
 {% set workflowRelatedHeading = workflowI18n.relatedHeading[currentLang] or workflowI18n.relatedHeading[site.defaultLang] or "Related workflows" %}
-{% set workflowCopyLabel = workflowI18n.copyLabel[currentLang] or workflowI18n.copyLabel[site.defaultLang] or "Copy" %}
-{% set workflowDownloadLabel = workflowI18n.downloadLabel[currentLang] or workflowI18n.downloadLabel[site.defaultLang] or "Download" %}
-{% set workflowCopiedLabel = workflowI18n.copiedLabel[currentLang] or workflowI18n.copiedLabel[site.defaultLang] or "Copied" %}
-{% set workflowDownloadedLabel = workflowI18n.downloadedLabel[currentLang] or workflowI18n.downloadedLabel[site.defaultLang] or "Downloaded" %}
+{% set workflowCopyLabel = "Copy" %}
+{% set workflowDownloadLabel = "Download" %}
+{% set workflowCopiedLabel = "Copied" %}
+{% set workflowDownloadedLabel = "Downloaded" %}
 {% set footerConfig = site.footer or {} %}
 {% set footerTitle = footerConfig.title[currentLang] or footerConfig.title[site.defaultLang] %}
 {% set footerText = footerConfig.body[currentLang] or footerConfig.body[site.defaultLang] %}

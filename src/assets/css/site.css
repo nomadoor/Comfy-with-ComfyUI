@@ -935,7 +935,6 @@ h1 {
 .article-body a:hover,
 .article-body a:focus-visible {
   text-decoration-thickness: 0.14em;
-  color: inherit;
 }
 
 .article-body a:focus-visible {
