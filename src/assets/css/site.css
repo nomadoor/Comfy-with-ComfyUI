@@ -944,17 +944,19 @@ h1 {
   text-decoration-thickness: 0.16em;
 }
 
-.article-body a.link--external::after,
-.article-body a[data-link-type="external"]::after {
-  content: "";
-  display: inline-block;
-  inline-size: 0.95em;
-  block-size: 0.95em;
-  margin-inline-start: 0.35em;
-  background-color: currentColor;
-  mask: url("/assets/icons/external-link.svg") center / 100% no-repeat;
-  -webkit-mask: url("/assets/icons/external-link.svg") center / 100% no-repeat;
-  vertical-align: text-top;
+.article-link__icon {
+  display: inline-flex;
+  align-items: center;
+  margin-inline-start: 0.2rem;
+  line-height: 1;
+  vertical-align: -0.15em;
+}
+
+.article-link__icon .icon {
+  inline-size: 0.9rem;
+  block-size: 0.9rem;
+  --icon-stroke-width: 2.4px;
+  display: block;
 }
 
 .article-body ul {

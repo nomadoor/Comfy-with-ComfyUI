@@ -4,6 +4,9 @@ const LINK_TYPE_ATTRIBUTE = "linkType";
 const REL_TOKENS = ["noopener", "noreferrer"];
 const CLASSIFY_SELECTOR = 'a[href]:not([data-link-ignore])';
 const BASE_ORIGIN = window.location.origin;
+const ARTICLE_SCOPE_SELECTOR = ".article-body";
+const ARTICLE_ICON_CLASS = "article-link__icon";
+const SVG_NS = "http://www.w3.org/2000/svg";
 
 function normalizeRel(existingRel = "") {
   const tokens = existingRel
@@ -46,6 +49,7 @@ function enhanceAnchor(anchor) {
   }
   const href = anchor.getAttribute("href");
   const linkType = determineLinkType(href);
+  const isArticleLink = Boolean(anchor.closest(ARTICLE_SCOPE_SELECTOR));
 
   anchor.dataset[LINK_TYPE_ATTRIBUTE] = linkType;
   anchor.classList.remove(linkType === "external" ? INTERNAL_CLASS : EXTERNAL_CLASS);
@@ -54,6 +58,12 @@ function enhanceAnchor(anchor) {
   if (linkType === "external" && !anchor.hasAttribute("download")) {
     anchor.setAttribute("target", "_blank");
     anchor.setAttribute("rel", normalizeRel(anchor.getAttribute("rel") || ""));
+  }
+
+  if (linkType === "external" && isArticleLink) {
+    ensureArticleLinkIcon(anchor);
+  } else if (isArticleLink) {
+    removeArticleLinkIcon(anchor);
   }
 }
 
@@ -82,6 +92,42 @@ function setupMutationObserver() {
     }
   });
   observer.observe(document.body, { childList: true, subtree: true });
+}
+
+function createExternalIconSvg() {
+  const svg = document.createElementNS(SVG_NS, "svg");
+  svg.classList.add("icon");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("fill", "none");
+  svg.setAttribute("stroke", "currentColor");
+  svg.setAttribute("stroke-width", "var(--icon-stroke-width, 1.5)");
+  svg.setAttribute("stroke-linecap", "round");
+  svg.setAttribute("stroke-linejoin", "round");
+  svg.setAttribute("aria-hidden", "true");
+
+  const path = document.createElementNS(SVG_NS, "path");
+  path.setAttribute("d", "M20 4L10 14M20 4V10M20 4H14M10 4H4V20H20V14");
+  svg.appendChild(path);
+
+  return svg;
+}
+
+function ensureArticleLinkIcon(anchor) {
+  if (anchor.querySelector(`.${ARTICLE_ICON_CLASS}`)) {
+    return;
+  }
+  const wrapper = document.createElement("span");
+  wrapper.className = ARTICLE_ICON_CLASS;
+  wrapper.setAttribute("aria-hidden", "true");
+  wrapper.appendChild(createExternalIconSvg());
+  anchor.appendChild(wrapper);
+}
+
+function removeArticleLinkIcon(anchor) {
+  const icon = anchor.querySelector(`.${ARTICLE_ICON_CLASS}`);
+  if (icon) {
+    icon.remove();
+  }
 }
 
 enhanceAllLinks(document);
