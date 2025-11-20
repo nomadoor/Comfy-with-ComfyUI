@@ -1158,23 +1158,21 @@ h1 {
   position: absolute;
   top: var(--space-sm);
   right: var(--space-sm);
-  border: 1px solid var(--color-border);
   background: var(--color-panel);
   color: var(--color-text);
   border-radius: var(--radius-pill);
   padding: 0.25rem 0.6rem;
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2xs);
   cursor: pointer;
-  z-index: 2;
   opacity: 0;
   visibility: hidden;
   transition: var(--transition-fast);
+  border: none;
 }
 
-.article-video--gyazo:hover .gyazo-toggle,
-.article-video--gyazo:focus-within .gyazo-toggle,
+.article-video--gyazo .article-video__frame:hover .gyazo-toggle,
+.article-video--gyazo .article-video__frame:focus-within .gyazo-toggle,
 .gyazo-toggle:focus-visible {
   opacity: 1;
   visibility: visible;
@@ -1186,8 +1184,6 @@ h1 {
   gap: 0.35rem;
   padding: 0.15rem 0.4rem;
   border-radius: var(--radius-pill);
-  background: var(--color-panel-alt);
-  border: 1px solid var(--color-border);
   transition: var(--transition-fast);
 }
 
@@ -1206,12 +1202,6 @@ h1 {
 
 .gyazo-toggle[data-state="player"] {
   color: var(--color-highlight);
-  border-color: var(--color-border-strong);
-}
-
-.gyazo-toggle[data-state="player"] .gyazo-toggle__pill {
-  background: rgba(148, 88, 163, 0.15);
-  border-color: var(--color-border-strong);
 }
 
 .gyazo-toggle[data-state="player"] .gyazo-toggle__knob {
