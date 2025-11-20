@@ -307,10 +307,16 @@ function renderJsonLinkRow(linkInfo, env) {
 
 function getGyazoDimensionsFromId(id) {
   if (!id) return null;
-  const normalized = normalizeGyazoUrl(`https://${GYAZO_HOST}/${id}.jpg`);
-  const meta = normalized ? gyazoMeta[normalized] : null;
-  if (meta && meta.width && meta.height) {
-    return { width: meta.width, height: meta.height };
+  const candidates = [
+    normalizeGyazoUrl(`https://${GYAZO_HOST}/${id}.png`),
+    normalizeGyazoUrl(`https://${GYAZO_HOST}/${id}.jpg`),
+    normalizeGyazoUrl(`https://${GYAZO_HOST}/${id}.gif`)
+  ].filter(Boolean);
+  for (const norm of candidates) {
+    const meta = gyazoMeta[norm];
+    if (meta && meta.width && meta.height) {
+      return { width: meta.width, height: meta.height };
+    }
   }
   return null;
 }
