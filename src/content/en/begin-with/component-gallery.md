@@ -51,32 +51,21 @@ Inline `code` snippets inherit the same palette but compress into a pill so the 
 
 ## Gyazo Image
 
-![Conditioning reference](https://i.gyazo.com/f805391f1a7ae6b253440cf16168a763.jpg)
+![Conditioning reference](https://i.gyazo.com/f805391f1a7ae6b253440cf16168a763.jpg){gyazo=image}
 
 ## Image Rows
 
 Sometimes we need to present multiple screenshots side-by-side. Wrap standalone images with `.article-media-row` to keep gutters consistent regardless of orientation.
 
-<div class="article-media-row">
-  <figure class="article-media" style="--article-media-width:225px; --article-media-height:300px; --article-media-aspect:1108 / 1477;">
-    <div class="article-media__frame">
-      <img src="https://i.gyazo.com/f805391f1a7ae6b253440cf16168a763.jpg" alt="Rolled cat" loading="lazy" decoding="async" />
-    </div>
-  </figure>
-  <figure class="article-media" style="--article-media-width:300px; --article-media-height:300px; --article-media-aspect:1212 / 1352;">
-    <div class="article-media__frame">
-      <img src="https://i.gyazo.com/075ff7bc7a36635d40662b163b5a9cfe.jpg" alt="Fluffy creature" loading="lazy" decoding="async" />
-    </div>
-  </figure>
-</div>
+![Rolled cat](https://i.gyazo.com/f805391f1a7ae6b253440cf16168a763.jpg){gyazo=image} ![Fluffy creature](https://i.gyazo.com/075ff7bc7a36635d40662b163b5a9cfe.jpg){gyazo=image}
 
 ## Gyazo Video (Loop)
 
-{% gyazoVideoLoop "https://gyazo.com/d32149b1fc31363100fbc9f009b41add", "Looping Gyazo demo clip for animation recipes." %}
+![Looping Gyazo demo clip for animation recipes.](https://gyazo.com/d32149b1fc31363100fbc9f009b41add){gyazo=loop}
 
 ## Gyazo Video (Player)
 
-{% gyazoVideoPlayer "https://gyazo.com/d32149b1fc31363100fbc9f009b41add", "Player with controls + seek bar." %}
+![Player with controls + seek bar.](https://gyazo.com/d32149b1fc31363100fbc9f009b41add){gyazo=player}
 
 Use the `gyazoVideoLoop` shortcode for silent loops (muted/autoplay), and `gyazoVideoPlayer` when the author wants the official Gyazo controls, seek bar, and pause/resume behavior.
 
