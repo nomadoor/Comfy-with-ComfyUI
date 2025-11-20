@@ -9,14 +9,14 @@ import loadLanguages from "prismjs/components/index.js";
 const GYAZO_HOST = "i.gyazo.com";
 const CACHE_DIR = ".cache";
 const GYAZO_CACHE_PATH = path.join(CACHE_DIR, "gyazo-images.json");
-const GYAZO_REGEX = /https:\/\/i\.gyazo\.com\/([a-f0-9]+)(?:\/max_size\/\d+)?\.(jpg|png|gif)/gi;
+const GYAZO_URL_REGEX = /https:\/\/(?:[a-z]+\.)?gyazo\.com\/[^\s"'`)]+/gi;
 const GYAZO_FETCH_TIMEOUT_MS = 5000;
 const GYAZO_FETCH_DELAY_MS = 200;
 const sleep = (ms = 0) => (ms > 0 ? new Promise((resolve) => setTimeout(resolve, ms)) : Promise.resolve());
 const UNORDERED_MARKS = new Set(['*', '-', '+']);
 const ARTICLE_LIST_ICON_SVG = '<svg class="article-body__list-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19" stroke="currentColor" stroke-width="var(--article-list-icon-stroke, 2.2)" stroke-linecap="round"/></svg>';
 
-loadLanguages(["bash", "shell", "json", "yaml", "javascript", "typescript", "css", "markup"]);
+loadLanguages(["bash", "shell", "json", "yaml", "javascript", "typescript", "css", "markup", "powershell", "python"]);
 
 let gyazoMeta = {};
 try {
@@ -31,18 +31,13 @@ try {
 function normalizeGyazoUrl(url = "") {
   try {
     const parsed = new URL(url);
-    if (parsed.hostname !== GYAZO_HOST) return null;
-    const parts = parsed.pathname.split("/").filter(Boolean);
-    if (!parts.length) return null;
-    const last = parts[parts.length - 1];
-    const extMatch = last.match(/\.(jpg|png|gif)$/i);
-    if (!extMatch) return null;
-    const ext = extMatch[0].toLowerCase();
-    let id = parts[0];
-    if (id.toLowerCase().endsWith(ext)) {
-      id = id.slice(0, -ext.length);
-    }
-    return `${parsed.origin}/${id}${ext}`;
+    if (!parsed.hostname.endsWith("gyazo.com")) return null;
+    const id = extractGyazoId(url);
+    if (!id) return null;
+    const extMatch = url.match(/\.(jpg|png|gif|mp4)(?:$|\?)/i);
+    const extCandidate = extMatch ? extMatch[1].toLowerCase() : "jpg";
+    const ext = extCandidate === "png" || extCandidate === "gif" ? extCandidate : "jpg";
+    return `https://${GYAZO_HOST}/${id}.${ext}`;
   } catch {
     return null;
   }
@@ -211,31 +206,34 @@ async function saveGyazoCache() {
 
 async function refreshGyazoMetadata() {
   const files = await fg(["src/**/*.{md,njk,json}"], { dot: false });
-  const urls = new Set();
+  const urls = new Map();
   for (const file of files) {
     try {
       const text = await fs.readFile(file, "utf-8");
-      GYAZO_REGEX.lastIndex = 0;
+      GYAZO_URL_REGEX.lastIndex = 0;
       let match;
-      while ((match = GYAZO_REGEX.exec(text)) !== null) {
-        const id = match[1];
-        const ext = match[2];
-        const normalized = `https://${GYAZO_HOST}/${id}.${ext}`;
-        urls.add(normalized);
+      while ((match = GYAZO_URL_REGEX.exec(text)) !== null) {
+        const rawUrl = match[0];
+        const id = extractGyazoId(rawUrl);
+        if (!id) {
+          continue;
+        }
+        const normalized = normalizeGyazoUrl(rawUrl) || `https://${GYAZO_HOST}/${id}.jpg`;
+        urls.set(normalized, `https://gyazo.com/${id}`);
       }
     } catch {
       // ignore unreadable files
     }
   }
   let updated = false;
-  for (const url of urls) {
-    if (!gyazoMeta[url] || !gyazoMeta[url].width || !gyazoMeta[url].height) {
-      const meta = await fetchGyazoMeta(url);
+  for (const [normalized, fetchUrl] of urls) {
+    if (!gyazoMeta[normalized] || !gyazoMeta[normalized].width || !gyazoMeta[normalized].height) {
+      const meta = await fetchGyazoMeta(fetchUrl);
       if (GYAZO_FETCH_DELAY_MS) {
         await sleep(GYAZO_FETCH_DELAY_MS);
       }
       if (meta) {
-        gyazoMeta[url] = meta;
+        gyazoMeta[normalized] = meta;
         updated = true;
       }
     }
@@ -245,7 +243,7 @@ async function refreshGyazoMetadata() {
   }
 }
 
-export default function(eleventyConfig) {
+export default function (eleventyConfig) {
   // Passthrough static assets
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/workflows": "workflows" });
