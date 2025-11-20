@@ -1,3 +1,17 @@
+const SUCCESS_VISIBLE_MS = 1000;
+const successTimerKey = Symbol("codeCopySuccessTimer");
+
+function markCopiedState(button) {
+  button.classList.add("is-copied");
+  if (button[successTimerKey]) {
+    clearTimeout(button[successTimerKey]);
+  }
+  button[successTimerKey] = setTimeout(() => {
+    button.classList.remove("is-copied");
+    button[successTimerKey] = null;
+  }, SUCCESS_VISIBLE_MS);
+}
+
 function initCodeCopy() {
   const blocks = document.querySelectorAll("pre code");
   const iconMarkup =
@@ -20,8 +34,7 @@ function initCodeCopy() {
     button.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(code.textContent);
-        button.classList.add("is-copied");
-        setTimeout(() => button.classList.remove("is-copied"), 1600);
+        markCopiedState(button);
       } catch (error) {
         console.warn("Code copy failed", error);
       }

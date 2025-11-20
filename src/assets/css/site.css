@@ -1083,7 +1083,6 @@ h1 {
   padding: calc(var(--space-md) + 0.4rem) var(--space-md) var(--space-md) var(--space-md);
   background: var(--color-panel-strong);
   border-radius: var(--radius-md);
-  overflow-x: auto;
   font-size: 0.9rem;
   line-height: 1.6;
   position: relative;
@@ -1161,6 +1160,7 @@ h1 {
   padding: 0.2rem 0.6rem;
   cursor: pointer;
   transition: var(--transition-fast);
+  font-family: var(--font-base);
   display: inline-flex;
   align-items: center;
   gap: var(--space-2xs);
@@ -1425,11 +1425,16 @@ h1 {
   padding: 0;
   position: relative;
   border-radius: var(--radius-pill);
-  transition: color var(--transition-fast);
+  transition: var(--transition-fast);
+  font-family: var(--font-base);
 }
 
 .workflow-json__icon:hover,
 .workflow-json__icon:focus-visible {
+  color: var(--color-highlight);
+}
+
+.workflow-json__icon.is-success {
   color: var(--color-highlight);
 }
 
@@ -1442,19 +1447,21 @@ h1 {
 .code-copy::after {
   content: attr(data-label);
   position: absolute;
-  bottom: calc(100% + var(--space-2xs));
+  bottom: calc(100% + var(--space-xs));
   left: 50%;
   transform: translateX(-50%);
-  padding: 0.075rem 0.4rem;
+  padding: 0.2rem 0.4rem;
   border-radius: var(--radius-pill);
   font-size: 0.65rem;
+  font-weight: 600;
   line-height: 1;
-  background: rgba(0, 0, 0, 0.75);
-  color: #fff;
+  background: var(--color-highlight);
+  color: var(--color-section-strong);
   opacity: 0;
   pointer-events: none;
   white-space: nowrap;
-  transition: opacity var(--transition-fast);
+  transition: var(--transition-fast);
+  font-family: var(--font-base);
   z-index: 2;
 }
 
@@ -1467,7 +1474,34 @@ h1 {
 
 .workflow-json__icon.is-success::after,
 .code-copy.is-copied::after {
+  opacity: 0;
+}
+
+.workflow-json__icon::before,
+.code-copy::before {
   content: attr(data-success-label);
+  position: absolute;
+  bottom: calc(100% + var(--space-xs));
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1;
+  background: var(--color-highlight);
+  color: var(--color-section-strong);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: var(--font-base);
+  z-index: 3;
+  transition: var(--transition-fast);
+}
+
+.workflow-json__icon.is-success::before,
+.code-copy.is-copied::before {
+  opacity: 1;
 }
 
 .workflow-related {
