@@ -3,7 +3,7 @@ layout: page.njk
 lang: ja
 section: begin-with
 slug: terminal
-navId: tarminal
+navId: terminal
 title: "ターミナル"
 summary: ""
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
