@@ -1,12 +1,17 @@
 {% set currentLang = lang or site.defaultLang %}
 {% set tocI18n = site.i18n.toc or {} %}
 {% set assistantStrings = site.i18n.tips or {} %}
-{% set bubbleLines = assistantStrings.bubbleLines[currentLang] or assistantStrings.bubbleLines[site.defaultLang] or [] %}
+{% set assistantPanels = assistantStrings.panels or [] %}
+{% set formStrings = assistantStrings.form or {} %}
 {% set avatarLabel = assistantStrings.avatarLabel[currentLang] or assistantStrings.avatarLabel[site.defaultLang] or "Open assistant" %}
 {% set bubbleListLabel = assistantStrings.bubbleListLabel[currentLang] or assistantStrings.bubbleListLabel[site.defaultLang] or "Assistant suggestions" %}
+{% set closeLabel = assistantStrings.closeLabel[currentLang] or assistantStrings.closeLabel[site.defaultLang] or "Close" %}
 {% set tocLabel = tocI18n.label[currentLang] or tocI18n.label[site.defaultLang] or "Table of contents" %}
 {% set viviArt = 'src/assets/icons/Vivi-Comfy.svg' | svgDataUri %}
 {% set questionArt = 'src/assets/icons/question-Comfy.svg' | svgDataUri %}
+{% set closeMask = 'src/assets/icons/Cross SVG File.svg' | svgDataUri %}
+{% set submittedStrings = formStrings.submitted or {} %}
+{% set feedbackEndpoint = env.assistantFeedbackEndpoint or "" %}
 <div class="right-rail">
   <div class="right-rail__section right-rail__section--toc">
     <div class="toc" aria-label="{{ tocLabel }}">
@@ -16,15 +21,140 @@
     </div>
   </div>
   <div class="right-rail__section right-rail__section--tips">
-    <div class="assistant-rail" data-expanded="false">
+    <div class="assistant-rail" data-expanded="false" data-view="panel" data-placement="above" data-feedback-endpoint="{{ feedbackEndpoint }}">
       <div class="assistant-rail__panel" id="assistant-rail-panel" aria-hidden="true">
         <ul class="assistant-rail__bubble-list" role="list" aria-label="{{ bubbleListLabel }}">
-          {% for line in bubbleLines %}
+          {% for panel in assistantPanels %}
+          {% set panelTitle = panel.title[currentLang] or panel.title[site.defaultLang] or "" %}
           <li class="assistant-rail__bubble">
-            <span class="assistant-rail__bubble-text">{{ line }}</span>
+            <button
+              class="assistant-rail__panel-button"
+              type="button"
+              data-assistant-target="{{ panel.id }}"
+              data-assistant-panel="{{ panel.id }}"
+            >
+              <span class="assistant-rail__panel-title">{{ panelTitle }}</span>
+            </button>
           </li>
           {% endfor %}
         </ul>
+      </div>
+      <div class="assistant-rail__window" aria-hidden="true">
+        {% for panel in assistantPanels %}
+        {% set panelTitle = panel.title[currentLang] or panel.title[site.defaultLang] or "" %}
+        {% set panelBody = panel.body[currentLang] or panel.body[site.defaultLang] %}
+        <section class="assistant-rail__view" data-assistant-view="{{ panel.id }}" aria-hidden="true">
+          <header class="assistant-rail__window-header">
+            <div>
+              <h3 class="assistant-rail__window-title">{{ panelTitle }}</h3>
+            </div>
+            <button type="button" class="assistant-rail__close" data-assistant-close aria-label="{{ closeLabel }}">
+              <span class="assistant-rail__close-icon" aria-hidden="true" style="--assistant-close-icon: {{ closeMask | safe }};"></span>
+            </button>
+          </header>
+          <div class="assistant-rail__view-body">
+            {% if panelBody %}
+              {% if panelBody is iterable and panelBody is not string %}
+                {% for paragraph in panelBody %}
+                <p class="assistant-rail__view-text">{{ paragraph }}</p>
+                {% endfor %}
+              {% else %}
+                <p class="assistant-rail__view-text">{{ panelBody }}</p>
+              {% endif %}
+            {% endif %}
+            {% if panel.type == "info" %}
+              {% if panel.video %}
+                {% set videoCaption = panel.video.caption[currentLang] or panel.video.caption[site.defaultLang] or "" %}
+                <div class="assistant-rail__media">
+                  <div class="assistant-rail__media-frame">
+                    <video
+                      src="https://i.gyazo.com/{{ panel.video.id }}.mp4"
+                      autoplay
+                      muted
+                      loop
+                      playsinline
+                      aria-label="{{ videoCaption }}"
+                    ></video>
+                  </div>
+                  {% if videoCaption %}
+                  <p class="assistant-rail__media-caption">{{ videoCaption }}</p>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% else %}
+              {% set formConfig = panel.form or {} %}
+              {% set placeholder = formConfig.placeholder[currentLang] or formConfig.placeholder[site.defaultLang] or "" %}
+              <form
+                class="assistant-rail__form"
+                data-assistant-form
+                data-form-type="{{ panel.id }}"
+                data-include-url="{{ 'true' if formConfig.attachUrl else 'false' }}"
+                data-min-length="{{ formConfig.minLength or 20 }}"
+                data-success-detail="{{ formConfig.successDetail[currentLang] or formConfig.successDetail[site.defaultLang] or '' }}"
+                data-status-validation="{{ formStrings.status.validation[currentLang] or formStrings.status.validation[site.defaultLang] or '' }}"
+                data-status-endpoint="{{ formStrings.status.endpoint[currentLang] or formStrings.status.endpoint[site.defaultLang] or '' }}"
+                data-status-error="{{ formStrings.status.error[currentLang] or formStrings.status.error[site.defaultLang] or '' }}"
+                data-status-sending="{{ formStrings.status.sending[currentLang] or formStrings.status.sending[site.defaultLang] or '' }}"
+              >
+                <label class="assistant-rail__field">
+                  <span class="assistant-rail__field-label">{{ formStrings.messageLabel[currentLang] or formStrings.messageLabel[site.defaultLang] or "Message" }}</span>
+                  <textarea
+                    name="{{ panel.id }}-message"
+                    rows="4"
+                    placeholder="{{ placeholder }}"
+                    required
+                  ></textarea>
+                </label>
+                {% if formConfig.attachUrl %}
+                <p class="assistant-rail__form-meta">
+                  <span class="assistant-rail__form-meta-label">{{ formStrings.urlHint[currentLang] or formStrings.urlHint[site.defaultLang] }}</span>
+                  <span class="assistant-rail__form-meta-value" data-current-url></span>
+                </p>
+                {% endif %}
+                <div class="assistant-rail__form-actions">
+                  <button type="button" class="assistant-rail__button assistant-rail__button--primary" data-assistant-action="confirm">
+                    {{ formStrings.confirmLabel[currentLang] or formStrings.confirmLabel[site.defaultLang] or "Review" }}
+                  </button>
+                </div>
+                <div class="assistant-rail__form-confirm" data-assistant-confirm>
+                  <p class="assistant-rail__form-confirm-body">{{ formStrings.confirmBody[currentLang] or formStrings.confirmBody[site.defaultLang] }}</p>
+                  <div class="assistant-rail__form-preview" data-confirm-message></div>
+                  <div class="assistant-rail__form-confirm-actions">
+                    <button type="button" class="assistant-rail__button assistant-rail__button--ghost" data-assistant-action="edit">
+                      {{ formStrings.editLabel[currentLang] or formStrings.editLabel[site.defaultLang] or "Edit" }}
+                    </button>
+                    <button type="button" class="assistant-rail__button assistant-rail__button--primary" data-assistant-action="send">
+                      {{ formStrings.sendLabel[currentLang] or formStrings.sendLabel[site.defaultLang] or "Send" }}
+                    </button>
+                  </div>
+                </div>
+                <p class="assistant-rail__form-status" data-form-status aria-live="polite"></p>
+                <p class="assistant-rail__form-notice">{{ formStrings.notice[currentLang] or formStrings.notice[site.defaultLang] }}</p>
+              </form>
+            {% endif %}
+          </div>
+        </section>
+        {% endfor %}
+        <section class="assistant-rail__view assistant-rail__view--submitted" data-assistant-view="submitted" aria-hidden="true">
+          <header class="assistant-rail__window-header">
+            <div>
+              <h3 class="assistant-rail__window-title">{{ submittedStrings.title[currentLang] or submittedStrings.title[site.defaultLang] or "Thank you" }}</h3>
+            </div>
+            <button type="button" class="assistant-rail__close" data-assistant-close aria-label="{{ closeLabel }}">
+              <span class="assistant-rail__close-icon" aria-hidden="true" style="--assistant-close-icon: {{ closeMask | safe }};"></span>
+            </button>
+          </header>
+          <div class="assistant-rail__view-body assistant-rail__view-body--submitted">
+            <p class="assistant-rail__view-text">{{ submittedStrings.body[currentLang] or submittedStrings.body[site.defaultLang] }}</p>
+            <div class="assistant-rail__submitted-detail">
+              <span class="assistant-rail__submitted-label">{{ submittedStrings.detailLabel[currentLang] or submittedStrings.detailLabel[site.defaultLang] }}</span>
+              <span class="assistant-rail__submitted-value" data-assistant-submitted-detail></span>
+            </div>
+            <button type="button" class="assistant-rail__button assistant-rail__button--primary" data-assistant-reset>
+              {{ submittedStrings.cta[currentLang] or submittedStrings.cta[site.defaultLang] or "Back" }}
+            </button>
+          </div>
+        </section>
       </div>
       <button
         class="assistant-rail__avatar"

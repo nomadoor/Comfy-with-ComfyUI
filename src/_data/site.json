@@ -117,17 +117,162 @@
         "ja": "サポートメッセージ",
         "en": "Assistant suggestions"
       },
-      "bubbleLines": {
-        "ja": [
-          "jsonコピーボタンはなんのため？",
-          "このページに間違いがあります！",
-          "これについても書いてください！"
-        ],
-        "en": [
-          "Why is the JSON copy button there?",
-          "This page has an issue!",
-          "Please cover this as well!"
-        ]
+      "closeLabel": {
+        "ja": "ウィンドウを閉じる",
+        "en": "Close assistant window"
+      },
+      "panels": [
+        {
+          "id": "json-help",
+          "type": "info",
+          "title": {
+            "ja": "jsonコピーボタンとは？",
+            "en": "What is the JSON copy button?"
+          },
+          "summary": {
+            "ja": "workflow全体を一括コピーして再現できます。",
+            "en": "Share an entire workflow JSON for reproducible results."
+          },
+          "body": {
+            "ja": [
+              "ノード構成・設定・接続をまとめてJSON化し、他のユーザーが同じ結果を再現できるようにします。",
+              "ヘッダーの Copy JSON ボタンを押すと現在のworkflowがクリップボードに入ります。ComfyUIのキャンバスで Ctrl+V を押せば同じグラフを読み込めます。"
+            ],
+            "en": [
+              "It exports every node, connection, and parameter so someone else can reproduce the exact workflow.",
+              "Select the Copy JSON button on any workflow article to place the graph on your clipboard, then press Ctrl+V inside ComfyUI to load it."
+            ]
+          },
+          "video": {
+            "id": "d32149b1fc31363100fbc9f009b41add",
+            "caption": {
+              "ja": "Copy JSON の操作例",
+              "en": "Copy JSON demo clip"
+            }
+          }
+        },
+        {
+          "id": "form-correction",
+          "type": "form",
+          "title": {
+            "ja": "このページに間違いがあります！",
+            "en": "This page has an issue!"
+          },
+          "summary": {
+            "ja": "見つけた誤りや更新漏れを報告してください。",
+            "en": "Report mistakes or outdated instructions."
+          },
+          "body": {
+            "ja": "再現手順や正しい情報を添えてもらえると助かります。現在のURLは自動で添付されます。",
+            "en": "Include a short repro step or the correct information if you can. We attach the current URL automatically."
+          },
+          "form": {
+            "placeholder": {
+              "ja": "どこが誤っているのか、何を確認したかを書いてください。",
+              "en": "Describe what is incorrect and how you verified it."
+            },
+            "successDetail": {
+              "ja": "誤り報告",
+              "en": "Correction report"
+            },
+            "attachUrl": true,
+            "minLength": 20
+          }
+        },
+        {
+          "id": "form-request",
+          "type": "form",
+          "title": {
+            "ja": "これについても書いてください！",
+            "en": "Please explain more!"
+          },
+          "summary": {
+            "ja": "足りない解説やサンプルを提案できます。",
+            "en": "Suggest missing explanations or workflows."
+          },
+          "body": {
+            "ja": "欲しいトピックや使いたいモデル名など、背景が分かるように教えてください。",
+            "en": "Tell us what topic or model you need so we can plan the write-up."
+          },
+          "form": {
+            "placeholder": {
+              "ja": "例: Flux.1 Tools のLoRA設定を詳しく知りたい",
+              "en": "Example: Need more detail on Flux.1 Tools LoRA settings"
+            },
+            "successDetail": {
+              "ja": "追記リクエスト",
+              "en": "Expansion request"
+            },
+            "attachUrl": true,
+            "minLength": 20
+          }
+        }
+      ],
+      "form": {
+        "messageLabel": {
+          "ja": "内容",
+          "en": "Message"
+        },
+        "confirmLabel": {
+          "ja": "確認する",
+          "en": "Review"
+        },
+        "sendLabel": {
+          "ja": "送信する",
+          "en": "Send"
+        },
+        "editLabel": {
+          "ja": "編集に戻る",
+          "en": "Edit"
+        },
+        "confirmBody": {
+          "ja": "送信前に内容を確認してください。匿名でGitHub Issueを作成します。",
+          "en": "Double-check before sending. We'll create an anonymous GitHub issue."
+        },
+        "notice": {
+          "ja": "Cloudflare Worker 経由で GitHub Issue に投稿されます。個人情報は含めないでください。",
+          "en": "The Cloudflare Worker files a GitHub issue. Please avoid sharing personal data."
+        },
+        "urlHint": {
+          "ja": "URLは自動で送信されます：",
+          "en": "We include the current URL:"
+        },
+        "status": {
+          "sending": {
+            "ja": "送信中...",
+            "en": "Sending..."
+          },
+          "error": {
+            "ja": "送信に失敗しました。しばらくしてから再試行してください。",
+            "en": "Could not send. Please try again."
+          },
+          "endpoint": {
+            "ja": "送信先が設定されていません。管理者に連絡してください。",
+            "en": "Feedback endpoint is not configured. Please contact the maintainer."
+          },
+          "validation": {
+            "ja": "20文字以上で入力してください。",
+            "en": "Please enter at least 20 characters."
+          }
+        },
+        "submitted": {
+          "title": {
+            "ja": "ありがとうございます",
+            "en": "Thank you"
+          },
+          "body": {
+            "ja": "受け付けた内容はキューに追加され、担当者が順番に確認します。",
+            "en": "Your message is now in the queue and we'll review it shortly."
+          },
+          "detailLabel": {
+            "ja": "カテゴリー",
+            "en": "Category"
+          },
+          "cta": {
+            "ja": "別のリクエストを送る",
+            "en": "Send another request"
+          }
+        }
       }
     }
   },
