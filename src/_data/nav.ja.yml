@@ -30,6 +30,20 @@
             title: "Python"
           - id: git
             title: "git"
+      - id: customization
+        title: "カスタマイズ"
+        noLink: true
+        children:
+          - id: settings
+            title: "設定"
+          - id: command-line-arguments
+            title: "コマンドライン引数"
+          - id: updates
+            title: "アップデート"
+          - id: downloading-and-placing-models
+            title: "モデルのダウンロードと配置"
+          - id: custom-nodes
+            title: "カスタムノード"
       - id: comfyui-operations
         title: "ComfyUIの操作"
         noLink: true
@@ -46,20 +60,6 @@
             title: "メディア"
           - id: subgraphs
             title: "サブグラフ"
-      - id: customization
-        title: "カスタマイズ"
-        noLink: true
-        children:
-          - id: settings
-            title: "設定"
-          - id: command-line-arguments
-            title: "コマンドライン引数"
-          - id: updates
-            title: "アップデート"
-          - id: downloading-and-placing-models
-            title: "モデルのダウンロードと配置"
-          - id: custom-nodes
-            title: "カスタムノード"
   - key: data-utilities
     label: "データ / 画像ユーティリティ"
     pages:
