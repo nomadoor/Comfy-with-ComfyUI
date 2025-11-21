@@ -1,6 +1,9 @@
 import { test, expect } from "@playwright/test";
 
 const SAMPLE_PAGE = "/ja/basic-workflows/sd15-basics/";
+const PLAYWRIGHT_PORT = Number(process.env.PLAYWRIGHT_PORT || 8080);
+const BASE_TEST_URL =
+  process.env.PLAYWRIGHT_BASE_URL || `http://127.0.0.1:${PLAYWRIGHT_PORT}`;
 
 test.describe("Layout rails", () => {
   test("sidebar and TOC rails stay fixed with proper offsets", async ({ page }) => {
@@ -51,14 +54,27 @@ test.describe("Layout rails", () => {
   });
 
   test("assistant rail form flows through confirm and send", async ({ page }) => {
-    await page.goto(SAMPLE_PAGE);
-    await page.route("**/__assistant-test", (route) => {
-      route.fulfill({
+    const csrfValue = "test-csrf";
+    await page.context().addCookies([
+      {
+        name: "assistant_feedback_csrf",
+        value: csrfValue,
+        url: BASE_TEST_URL
+      }
+    ]);
+    await page.route("**/__assistant-test", async (route) => {
+      const headers = route.request().headers();
+      expect(headers["x-csrf-token"]).toBe(csrfValue);
+      const body = route.request().postDataJSON();
+      expect(body.url).toBe(SAMPLE_PAGE);
+      expect(body).not.toHaveProperty("userAgent");
+      await route.fulfill({
         status: 200,
         contentType: "application/json",
         body: JSON.stringify({ ok: true })
       });
     });
+    await page.goto(SAMPLE_PAGE);
     await page.evaluate(() => {
       const rail = document.querySelector(".assistant-rail");
       if (rail) {

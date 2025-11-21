@@ -230,12 +230,8 @@
           "en": "Double-check before sending. We'll create an anonymous GitHub issue."
         },
         "notice": {
-          "ja": "Cloudflare Worker 経由で GitHub Issue に投稿されます。個人情報は含めないでください。",
-          "en": "The Cloudflare Worker files a GitHub issue. Please avoid sharing personal data."
-        },
-        "urlHint": {
-          "ja": "URLは自動で送信されます：",
-          "en": "We include the current URL:"
+          "ja": "GitHub Issueに送信します。個人情報は書かないでください。",
+          "en": "We'll file a GitHub issue—please avoid personal data."
         },
         "status": {
           "sending": {

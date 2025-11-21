@@ -15,6 +15,8 @@ class AssistantRail {
     this.isCoarse = this.pointerQuery.matches;
     this.motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     this.prefersReducedMotion = this.motionQuery.matches;
+    this.csrfCookie = root.dataset.csrfCookie || "assistant_feedback_csrf";
+    this.csrfHeader = root.dataset.csrfHeader || "X-CSRF-Token";
     this.forms = [];
 
     this.handlePointerChange = (event) => {
@@ -90,7 +92,7 @@ class AssistantRail {
     });
 
     this.closeButtons.forEach((button) => {
-      button.addEventListener("click", () => this.closeView(true));
+      button.addEventListener("click", () => this.closeView({ keepExpanded: true }));
     });
 
     this.resetButtons.forEach((button) => {
@@ -158,7 +160,8 @@ class AssistantRail {
     });
   }
 
-  closeView(keepExpanded = false) {
+  closeView(options = {}) {
+    const { keepExpanded = false } = options;
     if (this.currentView === "panel") {
       this.delayedCollapse();
       return;
@@ -235,6 +238,23 @@ class AssistantRail {
     const needsBelow = viewHeight > availableAbove;
     this.root.dataset.placement = needsBelow ? "below" : "above";
   }
+
+  getCookieValue(name) {
+    if (!name || typeof document === "undefined") return "";
+    const cookies = document.cookie ? document.cookie.split(";") : [];
+    for (const rawCookie of cookies) {
+      const cookie = rawCookie.trim();
+      if (cookie.startsWith(`${name}=`)) {
+        return decodeURIComponent(cookie.substring(name.length + 1));
+      }
+    }
+    return "";
+  }
+
+  getCsrfToken() {
+    if (!this.csrfCookie) return "";
+    return this.getCookieValue(this.csrfCookie);
+  }
 }
 
 class AssistantFormController {
@@ -247,7 +267,6 @@ class AssistantFormController {
     this.sendButton = form.querySelector('[data-assistant-action="send"]');
     this.statusNode = form.querySelector("[data-form-status]");
     this.previewNode = form.querySelector("[data-confirm-message]");
-    this.urlNode = form.querySelector("[data-current-url]");
     this.includeUrl = form.dataset.includeUrl === "true";
     this.minLength = parseInt(form.dataset.minLength, 10) || 1;
     this.validationMessage = form.dataset.statusValidation || "";
@@ -262,11 +281,6 @@ class AssistantFormController {
     this.form.addEventListener("submit", (event) => {
       event.preventDefault();
     });
-
-    if (this.urlNode) {
-      this.urlNode.textContent = window.location.pathname;
-      this.urlNode.title = window.location.href;
-    }
 
     this.bindFormEvents();
     this.setState("input");
@@ -319,24 +333,29 @@ class AssistantFormController {
     this.isSending = true;
     this.showStatus(this.sendingMessage);
     try {
+      const urlValue = this.includeUrl ? window.location.pathname : "";
       const payload = {
         type: this.type,
         message,
-        url: this.includeUrl ? window.location.href : "",
-        userAgent: navigator.userAgent
+        url: urlValue
       };
+      const headers = {
+        "Content-Type": "application/json"
+      };
+      const csrfToken = this.rail.getCsrfToken();
+      if (csrfToken && this.rail.csrfHeader) {
+        headers[this.rail.csrfHeader] = csrfToken;
+      }
       const response = await fetch(endpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers,
+        credentials: "same-origin",
         body: JSON.stringify(payload)
       });
       if (!response.ok) {
         throw new Error("Request failed");
       }
       this.form.reset();
-      if (this.urlNode) {
-        this.urlNode.textContent = window.location.pathname;
-      }
       this.setState("input");
       this.isSending = false;
       this.showStatus("");
@@ -362,9 +381,6 @@ class AssistantFormController {
   reset() {
     this.isSending = false;
     this.form.reset();
-    if (this.urlNode) {
-      this.urlNode.textContent = window.location.pathname;
-    }
     this.setState("input");
     this.showStatus("");
   }

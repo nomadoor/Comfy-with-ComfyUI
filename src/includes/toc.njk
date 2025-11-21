@@ -6,10 +6,11 @@
 {% set avatarLabel = assistantStrings.avatarLabel[currentLang] or assistantStrings.avatarLabel[site.defaultLang] or "Open assistant" %}
 {% set bubbleListLabel = assistantStrings.bubbleListLabel[currentLang] or assistantStrings.bubbleListLabel[site.defaultLang] or "Assistant suggestions" %}
 {% set closeLabel = assistantStrings.closeLabel[currentLang] or assistantStrings.closeLabel[site.defaultLang] or "Close" %}
+{% set csrfCookie = env.assistantFeedbackCsrfCookie or "assistant_feedback_csrf" %}
+{% set csrfHeader = env.assistantFeedbackCsrfHeader or "X-CSRF-Token" %}
 {% set tocLabel = tocI18n.label[currentLang] or tocI18n.label[site.defaultLang] or "Table of contents" %}
 {% set viviArt = 'src/assets/icons/Vivi-Comfy.svg' | svgDataUri %}
 {% set questionArt = 'src/assets/icons/question-Comfy.svg' | svgDataUri %}
-{% set closeMask = 'src/assets/icons/Cross SVG File.svg' | svgDataUri %}
 {% set submittedStrings = formStrings.submitted or {} %}
 {% set feedbackEndpoint = env.assistantFeedbackEndpoint or "" %}
 <div class="right-rail">
@@ -21,7 +22,15 @@
     </div>
   </div>
   <div class="right-rail__section right-rail__section--tips">
-    <div class="assistant-rail" data-expanded="false" data-view="panel" data-placement="above" data-feedback-endpoint="{{ feedbackEndpoint }}">
+    <div
+      class="assistant-rail"
+      data-expanded="false"
+      data-view="panel"
+      data-placement="above"
+      data-feedback-endpoint="{{ feedbackEndpoint }}"
+      data-csrf-cookie="{{ csrfCookie }}"
+      data-csrf-header="{{ csrfHeader }}"
+    >
       <div class="assistant-rail__panel" id="assistant-rail-panel" aria-hidden="true">
         <ul class="assistant-rail__bubble-list" role="list" aria-label="{{ bubbleListLabel }}">
           {% for panel in assistantPanels %}
@@ -49,7 +58,14 @@
               <h3 class="assistant-rail__window-title">{{ panelTitle }}</h3>
             </div>
             <button type="button" class="assistant-rail__close" data-assistant-close aria-label="{{ closeLabel }}">
-              <span class="assistant-rail__close-icon" aria-hidden="true" style="--assistant-close-icon: {{ closeMask | safe }};"></span>
+              <svg
+                class="assistant-rail__close-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M19 5L5 19M5 5L19 19" />
+              </svg>
             </button>
           </header>
           <div class="assistant-rail__view-body">
@@ -105,12 +121,7 @@
                     required
                   ></textarea>
                 </label>
-                {% if formConfig.attachUrl %}
-                <p class="assistant-rail__form-meta">
-                  <span class="assistant-rail__form-meta-label">{{ formStrings.urlHint[currentLang] or formStrings.urlHint[site.defaultLang] }}</span>
-                  <span class="assistant-rail__form-meta-value" data-current-url></span>
-                </p>
-                {% endif %}
+                <p class="assistant-rail__form-notice">{{ formStrings.notice[currentLang] or formStrings.notice[site.defaultLang] }}</p>
                 <div class="assistant-rail__form-actions">
                   <button type="button" class="assistant-rail__button assistant-rail__button--primary" data-assistant-action="confirm">
                     {{ formStrings.confirmLabel[currentLang] or formStrings.confirmLabel[site.defaultLang] or "Review" }}
@@ -129,7 +140,6 @@
                   </div>
                 </div>
                 <p class="assistant-rail__form-status" data-form-status aria-live="polite"></p>
-                <p class="assistant-rail__form-notice">{{ formStrings.notice[currentLang] or formStrings.notice[site.defaultLang] }}</p>
               </form>
             {% endif %}
           </div>
@@ -141,7 +151,14 @@
               <h3 class="assistant-rail__window-title">{{ submittedStrings.title[currentLang] or submittedStrings.title[site.defaultLang] or "Thank you" }}</h3>
             </div>
             <button type="button" class="assistant-rail__close" data-assistant-close aria-label="{{ closeLabel }}">
-              <span class="assistant-rail__close-icon" aria-hidden="true" style="--assistant-close-icon: {{ closeMask | safe }};"></span>
+              <svg
+                class="assistant-rail__close-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M19 5L5 19M5 5L19 19" />
+              </svg>
             </button>
           </header>
           <div class="assistant-rail__view-body assistant-rail__view-body--submitted">

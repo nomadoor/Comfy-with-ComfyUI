@@ -1817,14 +1817,14 @@ h1 {
 .assistant-rail__window {
   background: var(--color-panel-alt);
   border-radius: var(--radius-md);
-  padding: var(--space-md);
+  padding: var(--space-sm);
   opacity: 0;
   pointer-events: none;
   box-shadow: none;
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  z-index: 31;
+  z-index: 1;
 }
 
 .assistant-rail[data-view="panel"] .assistant-rail__window {
@@ -1873,7 +1873,7 @@ h1 {
   flex-direction: column;
   gap: 0;
   cursor: pointer;
-  transition: background 150ms ease, color 150ms ease;
+  transition: var(--transition-fast);
 }
 
 .assistant-rail__panel-button:hover,
@@ -1883,7 +1883,7 @@ h1 {
 }
 
 .assistant-rail__panel-title {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 600;
   margin: 0;
 }
@@ -1891,8 +1891,7 @@ h1 {
 .assistant-rail__window-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: var(--space-sm);
+  align-items: center;
 }
 
 .assistant-rail__window-title {
@@ -1902,33 +1901,45 @@ h1 {
 }
 
 .assistant-rail__close {
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 999px;
-  border: 1px solid var(--color-border-strong);
+  border: 1px solid var(--color-highlight);
   background: var(--color-panel);
-  color: var(--color-text);
+  color: var(--color-highlight);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 150ms ease, border-color 150ms ease;
+  transition: var(--transition-fast);
 }
 
 .assistant-rail__close:hover,
 .assistant-rail__close:focus-visible {
-  background: var(--color-panel-alt);
-  border-color: var(--color-border);
+  background: var(--color-highlight);
+  border-color: var(--color-highlight);
+}
+
+.assistant-rail__close:hover .assistant-rail__close-icon,
+.assistant-rail__close:focus-visible .assistant-rail__close-icon {
+  color: var(--color-section-strong);
 }
 
 .assistant-rail__close-icon {
   width: 1.25rem;
   height: 1.25rem;
-  display: inline-block;
-  background-image: var(--assistant-close-icon);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  display: block;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: var(--assistant-close-stroke, 2);
+  transition: var(--transition-fast);
+}
+
+.assistant-rail__close-icon path {
+  stroke: inherit;
+  stroke-width: inherit;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .assistant-rail__view {
@@ -1945,6 +1956,7 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
+  font-weight: 500;
 }
 
 .assistant-rail__view-text {
@@ -2012,22 +2024,9 @@ h1 {
   outline-offset: 2px;
 }
 
-.assistant-rail__form-meta {
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-  margin: 0;
-  display: flex;
-  gap: var(--space-2xs);
-  flex-wrap: wrap;
-}
-
-.assistant-rail__form-meta-value {
-  color: var(--color-text);
-}
-
 .assistant-rail__form-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .assistant-rail__form-confirm {
@@ -2042,6 +2041,10 @@ h1 {
 
 .assistant-rail__form[data-form-state="confirm"] .assistant-rail__form-confirm {
   display: flex;
+}
+
+.assistant-rail__form[data-form-state="confirm"] .assistant-rail__field {
+  display: none;
 }
 
 .assistant-rail__form[data-form-state="confirm"] .assistant-rail__form-actions {
@@ -2061,6 +2064,8 @@ h1 {
   font-size: 0.85rem;
   color: var(--color-text);
   white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .assistant-rail__form-confirm-actions {
@@ -2078,7 +2083,7 @@ h1 {
   color: var(--color-text);
   cursor: pointer;
   font: inherit;
-  transition: background 120ms ease, border-color 120ms ease;
+  transition: var(--transition-fast);
 }
 
 .assistant-rail__button--primary {
@@ -2111,7 +2116,7 @@ h1 {
 
 .assistant-rail__form-notice {
   font-size: 0.75rem;
-  color: var(--color-text-muted);
+  color: var(--color-text);
   margin: 0;
 }
 
