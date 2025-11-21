@@ -69,15 +69,6 @@
             </button>
           </header>
           <div class="assistant-rail__view-body">
-            {% if panelBody %}
-              {% if panelBody is iterable and panelBody is not string %}
-                {% for paragraph in panelBody %}
-                <p class="assistant-rail__view-text">{{ paragraph }}</p>
-                {% endfor %}
-              {% else %}
-                <p class="assistant-rail__view-text">{{ panelBody }}</p>
-              {% endif %}
-            {% endif %}
             {% if panel.type == "info" %}
               {% if panel.video %}
                 {% set videoCaption = panel.video.caption[currentLang] or panel.video.caption[site.defaultLang] or "" %}
@@ -112,6 +103,18 @@
                 data-status-error="{{ formStrings.status.error[currentLang] or formStrings.status.error[site.defaultLang] or '' }}"
                 data-status-sending="{{ formStrings.status.sending[currentLang] or formStrings.status.sending[site.defaultLang] or '' }}"
               >
+                {% if panelBody %}
+                <div class="assistant-rail__form-guidance">
+                  {% if panelBody is iterable and panelBody is not string %}
+                    {% for paragraph in panelBody %}
+                    <p>{{ paragraph }}</p>
+                    {% endfor %}
+                  {% else %}
+                    <p>{{ panelBody }}</p>
+                  {% endif %}
+                </div>
+                {% endif %}
+                <p class="assistant-rail__form-confirm-body">{{ formStrings.confirmBody[currentLang] or formStrings.confirmBody[site.defaultLang] }}</p>
                 <label class="assistant-rail__field">
                   <textarea
                     name="{{ panel.id }}-message"
@@ -131,7 +134,6 @@
                   </button>
                 </div>
                 <div class="assistant-rail__form-confirm" data-assistant-confirm>
-                  <p class="assistant-rail__form-confirm-body">{{ formStrings.confirmBody[currentLang] or formStrings.confirmBody[site.defaultLang] }}</p>
                   <div class="assistant-rail__form-confirm-actions">
                     <button type="button" class="assistant-rail__button assistant-rail__button--ghost" data-assistant-action="edit">
                       {{ formStrings.editLabel[currentLang] or formStrings.editLabel[site.defaultLang] or "Edit" }}

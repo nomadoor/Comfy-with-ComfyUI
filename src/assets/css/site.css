@@ -1996,6 +1996,16 @@ h1 {
   gap: var(--space-sm);
 }
 
+.assistant-rail__form-guidance {
+  font-size: 0.8rem;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.assistant-rail__form-guidance p {
+  margin: 0;
+}
+
 .assistant-rail__field {
   display: flex;
   flex-direction: column;
@@ -2017,18 +2027,6 @@ h1 {
 .assistant-rail__field textarea:focus-visible {
   outline: 2px solid var(--color-highlight);
   outline-offset: 2px;
-}
-
-.assistant-rail__form-preview {
-  display: none;
-  border-radius: var(--radius-md);
-  border: 1px dashed var(--color-border);
-  padding: var(--space-sm);
-  font-size: 0.85rem;
-  color: var(--color-text);
-  white-space: pre-wrap;
-  word-break: break-word;
-  overflow-wrap: anywhere;
 }
 
 .assistant-rail__form-actions {
@@ -2065,15 +2063,25 @@ h1 {
   display: none;
 }
 
+.assistant-rail__form[data-form-state="confirm"] .assistant-rail__form-guidance {
+  display: none;
+}
+
 .assistant-rail__form-confirm-body {
+  display: none;
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--color-text);
 }
 
+.assistant-rail__form[data-form-state="confirm"] .assistant-rail__form-confirm-body {
+  display: block;
+}
+
 .assistant-rail__form-preview {
+  display: none;
   border-radius: var(--radius-md);
-  border: 1px dashed var(--color-border);
+  border: 2px solid var(--color-highlight);
   padding: var(--space-sm);
   font-size: 0.85rem;
   color: var(--color-text);
