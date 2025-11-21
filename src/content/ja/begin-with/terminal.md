@@ -20,7 +20,7 @@ hero:
 
 ## CLIの基本構造
 
-![Image](https://i.gyazo.com/90e4cdeaf87656d9d3b324cafc9b31eb.png){gyazo=image}
+![](https://i.gyazo.com/90e4cdeaf87656d9d3b324cafc9b31eb.png){gyazo=image}
 
 * **プロンプト**
     * `PS D:\なんちゃら` の部分。

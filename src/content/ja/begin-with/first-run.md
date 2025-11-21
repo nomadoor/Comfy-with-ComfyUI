@@ -12,33 +12,35 @@ hero:
 
 細かいことは置いておいて、とりあえず画像を生成してみましょう。
 
-## 起動
+## 起動する
 
-![](https://i.gyazo.com/bb40c87b9142498ca6bbbdc0b568a2e3.png){gyazo=image}
-
-- **ポータブル版**
-  - インストールしたフォルダにある `run_nvidia_gpu.bat` をダブルクリックします。
-- **デスクトップ版**
-  - デスクトップのショートカットまたはスタートメニューから起動します。
-- **手動インストール**
-  - 以下のコマンドを実行します。
-    ```powershell
-    cd "path\to\comfyui"
-    venv\Scripts\activate
-    python main.py
-    ```
+### **ポータブル版**
+- インストールしたフォルダにある `run_nvidia_gpu.bat` をダブルクリックします。
+### **デスクトップ版**
+- デスクトップのショートカットまたはスタートメニューから起動します。
+### **手動インストール**
+- 以下のコマンドを実行します。
+  ```powershell
+  cd path\to\comfyui
+  venv\Scripts\activate
+  python main.py
+  ```
 
 しばらくするとブラウザでComfyUIの画面が開きます。
 ※ 画面が開かない場合は、ブラウザのアドレスバーに `http://127.0.0.1:8188` と入力してみてください。
+
+---
 
 ## テンプレートからworkflowを選択
 
 ![](https://i.gyazo.com/7ffdc91e29dc41127e4101360ceff732.png){gyazo=image}
 
-- おそらくテンプレート画面が開いています。（開いていない場合は、左サイドバーの `Templates` を選択してください。）
-- まずは、**`Getting Started`** → **`Image Generation`** を選択してください。
+- 一番最初の起動直後は、おそらくテンプレート画面が開いています。（開いていない場合は、左サイドバーの `Templates` を選択してください。）
+- まずは、`Getting Started` → `Image Generation` を選択してください。
 - `Missing Models` というエラーが表示されます。
   - これはworkflowを動かすためのモデルが不足していることを示していますが、一度無視して `✕` を押して閉じてください。
+
+---
 
 ## モデルのダウンロード
 
@@ -62,7 +64,9 @@ hero:
   - モデルを配置しただけでは、ComfyUIはモデルを認識してくれません。
   - キーボードの `r` キーを押すか、`ComfyUIアイコン` → `Edit` → `Refresh Node Definitions` を押すと認識されます。
 
-## 生成
+---
+
+## 生成してみる
 
 ![](https://gyazo.com/57af4e96b7f6b2280aeed28afe3bb121){gyazo=loop}
 
@@ -77,6 +81,8 @@ hero:
 ```
 
 プロンプト（`CLIP Text Encode` ノードの文字）を変えてみたり、`seed` の数値を変えてみたりして遊んでみてください。
+
+---
 
 ## よくあるトラブル
 
