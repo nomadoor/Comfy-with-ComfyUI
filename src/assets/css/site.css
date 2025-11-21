@@ -906,8 +906,9 @@ h1 {
 }
 
 .article-body h3 {
-  margin-top: var(--space-xl);
-  margin-bottom: var(--space-xs);
+  margin: 0;
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xs);
   font-size: 1.2rem;
   font-weight: 500;
   scroll-margin-top: calc(var(--header-height) + var(--space-lg));
@@ -1663,13 +1664,14 @@ h1 {
   padding-left: calc(var(--space-sm) - 1px);
   font-weight: 600;
   transition: all 100ms cubic-bezier(0.2, 0.91, 0.85, 0.96) 0s;
+}
 
-  &:hover {
-    color: var(--color-text);
-  }
-  &[data-depth="3"] {
-    margin-left: var(--space-sm);
-  }
+.toc__link:hover {
+  color: var(--color-text);
+}
+
+.toc__link[data-depth="3"] {
+  padding-left: calc(var(--space-sm) * 2 - 1px);
 }
 
 .toc__link.is-active {
