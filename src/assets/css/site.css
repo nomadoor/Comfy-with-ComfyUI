@@ -1962,7 +1962,7 @@ h1 {
 .assistant-rail__view-text {
   margin: 0;
   color: var(--color-text);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   line-height: 1.6;
 }
 
@@ -2002,11 +2002,6 @@ h1 {
   gap: var(--space-2xs);
 }
 
-.assistant-rail__field-label {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-}
-
 .assistant-rail__field textarea {
   width: 100%;
   min-height: 120px;
@@ -2024,6 +2019,18 @@ h1 {
   outline-offset: 2px;
 }
 
+.assistant-rail__form-preview {
+  display: none;
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--color-border);
+  padding: var(--space-sm);
+  font-size: 0.85rem;
+  color: var(--color-text);
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
 .assistant-rail__form-actions {
   display: flex;
   justify-content: center;
@@ -2033,28 +2040,35 @@ h1 {
   display: none;
   flex-direction: column;
   gap: var(--space-sm);
-  padding: var(--space-sm);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-panel);
+  padding: 0;
+  border: none;
+  background: transparent;
 }
 
 .assistant-rail__form[data-form-state="confirm"] .assistant-rail__form-confirm {
   display: flex;
 }
 
-.assistant-rail__form[data-form-state="confirm"] .assistant-rail__field {
+.assistant-rail__form[data-form-state="confirm"] .assistant-rail__field textarea {
   display: none;
+}
+
+.assistant-rail__form[data-form-state="confirm"] .assistant-rail__form-preview {
+  display: block;
 }
 
 .assistant-rail__form[data-form-state="confirm"] .assistant-rail__form-actions {
   display: none;
 }
 
+.assistant-rail__form[data-form-state="confirm"] .assistant-rail__form-notice {
+  display: none;
+}
+
 .assistant-rail__form-confirm-body {
   margin: 0;
   font-size: 0.85rem;
-  color: var(--color-text-muted);
+  color: var(--color-text);
 }
 
 .assistant-rail__form-preview {
@@ -2071,7 +2085,7 @@ h1 {
 .assistant-rail__form-confirm-actions {
   display: flex;
   gap: var(--space-sm);
-  justify-content: flex-end;
+  justify-content: center;
   flex-wrap: wrap;
 }
 

@@ -113,15 +113,18 @@
                 data-status-sending="{{ formStrings.status.sending[currentLang] or formStrings.status.sending[site.defaultLang] or '' }}"
               >
                 <label class="assistant-rail__field">
-                  <span class="assistant-rail__field-label">{{ formStrings.messageLabel[currentLang] or formStrings.messageLabel[site.defaultLang] or "Message" }}</span>
                   <textarea
                     name="{{ panel.id }}-message"
                     rows="4"
                     placeholder="{{ placeholder }}"
                     required
                   ></textarea>
+                  <div class="assistant-rail__form-preview" data-confirm-message></div>
                 </label>
-                <p class="assistant-rail__form-notice">{{ formStrings.notice[currentLang] or formStrings.notice[site.defaultLang] }}</p>
+                {% set noticeText = formStrings.notice[currentLang] or formStrings.notice[site.defaultLang] %}
+                {% if noticeText %}
+                <p class="assistant-rail__form-notice">{{ noticeText }}</p>
+                {% endif %}
                 <div class="assistant-rail__form-actions">
                   <button type="button" class="assistant-rail__button assistant-rail__button--primary" data-assistant-action="confirm">
                     {{ formStrings.confirmLabel[currentLang] or formStrings.confirmLabel[site.defaultLang] or "Review" }}
@@ -129,7 +132,6 @@
                 </div>
                 <div class="assistant-rail__form-confirm" data-assistant-confirm>
                   <p class="assistant-rail__form-confirm-body">{{ formStrings.confirmBody[currentLang] or formStrings.confirmBody[site.defaultLang] }}</p>
-                  <div class="assistant-rail__form-preview" data-confirm-message></div>
                   <div class="assistant-rail__form-confirm-actions">
                     <button type="button" class="assistant-rail__button assistant-rail__button--ghost" data-assistant-action="edit">
                       {{ formStrings.editLabel[currentLang] or formStrings.editLabel[site.defaultLang] or "Edit" }}
