@@ -1087,6 +1087,9 @@ h1 {
   font-size: 0.9rem;
   line-height: 1.6;
   position: relative;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .article-body code {
