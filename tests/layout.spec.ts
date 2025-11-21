@@ -4,6 +4,7 @@ const SAMPLE_PAGE = "/ja/basic-workflows/sd15-basics/";
 
 test.describe("Layout rails", () => {
   test("sidebar and TOC rails stay fixed with proper offsets", async ({ page }) => {
+    await page.setViewportSize({ width: 1600, height: 900 });
     await page.goto(SAMPLE_PAGE);
 
     const sidebarRail = page.locator(".rail--sidebar");
