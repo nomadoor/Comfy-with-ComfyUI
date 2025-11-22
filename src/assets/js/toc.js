@@ -25,7 +25,18 @@ const initToc = () => {
   }
 
   function getHeadings() {
-    return Array.from(article.querySelectorAll("h2[id], h3[id]"));
+    const heads = Array.from(article.querySelectorAll("h2, h3"));
+    heads.forEach((h) => {
+      if (!h.id) {
+        const base = (h.textContent || "section").trim().toLowerCase();
+        const slug = base
+          .replace(/[^\p{L}\p{N}]+/gu, "-")
+          .replace(/^-+|-+$/g, "")
+          || `section-${Math.random().toString(36).slice(2, 8)}`;
+        h.id = slug;
+      }
+    });
+    return heads;
   }
 
   function buildToc() {
