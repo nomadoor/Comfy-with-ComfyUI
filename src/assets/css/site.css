@@ -2060,10 +2060,12 @@ body.nav-open .nav-backdrop {
     align-items: center;
     gap: var(--space-sm);
     padding: 0 var(--space-md);
+    width: 100%;
   }
 
   .site-header__logo {
     flex: 1 1 auto;
+    min-width: 0;
     display: flex;
     justify-content: center;
     width: auto;
@@ -2076,6 +2078,7 @@ body.nav-open .nav-backdrop {
     gap: var(--space-xs);
     justify-content: flex-end;
     flex: 0 0 auto;
+    width: auto;
   }
 
   .site-header__search-toggle {
