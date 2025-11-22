@@ -2056,17 +2056,20 @@ body.nav-open .nav-backdrop {
   }
 
   .site-header__inner {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    position: relative;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: var(--space-sm);
     padding: 0 var(--space-md);
     width: 100%;
   }
 
   .site-header__logo {
-    grid-column: 2;
-    justify-self: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     min-width: auto;
     display: flex;
     justify-content: center;
@@ -2082,7 +2085,6 @@ body.nav-open .nav-backdrop {
     justify-content: flex-end;
     flex: 0 0 auto;
     width: auto;
-    justify-self: end;
   }
 
   .site-header__search-toggle {
