@@ -1,6 +1,24 @@
 const sectionButtons = Array.from(document.querySelectorAll(".sidebar__section-btn"));
 const sectionTabs = Array.from(document.querySelectorAll(".sidebar__section-tab"));
 const navPanels = Array.from(document.querySelectorAll(".sidebar__nav-panel"));
+const navWrapper = document.querySelector(".sidebar__nav-wrapper");
+
+function scrollStorageKey(sectionKey) {
+  return `sidebar-scroll-${sectionKey || "default"}`;
+}
+
+function restoreScroll(sectionKey) {
+  if (!navWrapper) return;
+  const saved = sessionStorage.getItem(scrollStorageKey(sectionKey));
+  if (saved !== null) {
+    navWrapper.scrollTop = parseFloat(saved);
+  }
+}
+
+function persistScroll(sectionKey) {
+  if (!navWrapper) return;
+  sessionStorage.setItem(scrollStorageKey(sectionKey), navWrapper.scrollTop);
+}
 
 function activateSection(key, { focus = true } = {}) {
   sectionButtons.forEach((btn) => {
@@ -23,6 +41,7 @@ function activateSection(key, { focus = true } = {}) {
     panel.toggleAttribute("hidden", !isActive);
     panel.setAttribute("aria-hidden", String(!isActive));
   });
+  restoreScroll(key);
 }
 
 function focusNext(currentIndex, direction) {
@@ -71,4 +90,26 @@ const initialActive =
   sectionButtons.find((btn) => btn.classList.contains("is-active")) || sectionButtons[0];
 if (initialActive) {
   activateSection(initialActive.dataset.sectionKey, { focus: false });
+}
+
+if (navWrapper) {
+  let activeKey =
+    (initialActive && initialActive.dataset.sectionKey) ||
+    (navPanels[0] && navPanels[0].dataset.sectionPanel) ||
+    "default";
+  restoreScroll(activeKey);
+  let ticking = false;
+  navWrapper.addEventListener("scroll", () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      persistScroll(activeKey);
+      ticking = false;
+    });
+  });
+  sectionButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      activeKey = btn.dataset.sectionKey || activeKey;
+    });
+  });
 }
