@@ -8,6 +8,7 @@ let zoomed = false;
 let currentIndex = 0;
 let images = [];
 let initializedImages = new WeakSet();
+let controlsBound = false;
 
 const LIGHTBOX_ICONS = {
   close:
@@ -125,8 +126,8 @@ function detachKeyHandler() {
   keyHandler = null;
 }
 
-const initLightbox = () => {
-  images = Array.from(document.querySelectorAll(".article-body img"));
+const initLightbox = (root = document) => {
+  images = Array.from(root.querySelectorAll(".article-body img"));
   if (!images.length) return;
 
   buildLightbox();
@@ -148,20 +149,23 @@ const initLightbox = () => {
     }
   });
 
-  closeButtons.forEach((btn) => btn.addEventListener("click", close));
-  prevButton.addEventListener("click", (event) => {
-    event.stopPropagation();
-    next(-1);
-  });
-  nextButton.addEventListener("click", (event) => {
-    event.stopPropagation();
-    next(1);
-  });
-  imageEl.addEventListener("click", (event) => {
-    event.stopPropagation();
-    toggleZoom();
-  });
-  lightboxEl.querySelector(".lightbox__backdrop").addEventListener("click", close);
+  if (!controlsBound) {
+    closeButtons.forEach((btn) => btn.addEventListener("click", close));
+    prevButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      next(-1);
+    });
+    nextButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      next(1);
+    });
+    imageEl.addEventListener("click", (event) => {
+      event.stopPropagation();
+      toggleZoom();
+    });
+    lightboxEl.querySelector(".lightbox__backdrop").addEventListener("click", close);
+    controlsBound = true;
+  }
 };
 
 export default initLightbox;

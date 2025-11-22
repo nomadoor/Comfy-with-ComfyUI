@@ -1,7 +1,11 @@
+let langSwitcherInitialized = false;
+
 const initLangSwitcher = () => {
+  if (langSwitcherInitialized) return;
   const toggle = document.querySelector("[data-lang-toggle]");
   const menu = document.querySelector("[data-lang-menu]");
   if (!toggle || !menu) return;
+  langSwitcherInitialized = true;
 
   const setMenuState = (isOpen) => {
     menu.classList.toggle("is-open", isOpen);

@@ -3,14 +3,13 @@
 {% set sectionCandidate = section -%}
 {% set sectionExists = false -%}
 {% if sectionCandidate and localeNav -%}
-{% for item in localeNav.sections -%}
-{% if item.key == sectionCandidate -%}
-{% set sectionExists = true -%}
+  {% for item in localeNav.sections -%}
+    {% if item.key == sectionCandidate -%}
+      {% set sectionExists = true -%}
+    {% endif -%}
+  {% endfor -%}
 {% endif -%}
-{% endfor -%}
-{% endif -%}
-{% set currentSection = sectionExists and sectionCandidate or (localeNav.sections[0].key if localeNav and
-localeNav.sections else site.sections[0].key) -%}
+{% set currentSection = sectionExists and sectionCandidate or (localeNav.sections[0].key if localeNav and localeNav.sections else site.sections[0].key) -%}
 {% set currentNavId = navId | default(slug) -%}
 <!DOCTYPE html>
 <html lang="{{ currentLang }}">
@@ -47,21 +46,6 @@ localeNav.sections else site.sections[0].key) -%}
       </div>
     </aside>
   </div>
-  <script type="module" src="/assets/js/sidebar.js"></script>
-  <script type="module" src="/assets/js/toc.js"></script>
-  <script type="module" src="/assets/js/lang-switcher.js"></script>
-  <script type="module" src="/assets/js/lightbox.js"></script>
-  <script type="module" src="/assets/js/copy-json.js"></script>
-  <script type="module" src="/assets/js/search.js"></script>
-  <script type="module" src="/assets/js/theme-toggle.js"></script>
-  <script type="module" src="/assets/js/highlight.js"></script>
-  <script type="module" src="/assets/js/image-fade.js"></script>
-  <script type="module" src="/assets/js/code-copy.js"></script>
-  <script type="module" src="/assets/js/gyazo-toggle.js"></script>
-  <script type="module" src="/assets/js/assistant-rail.js"></script>
-  <script type="module" src="/assets/js/mobile-nav.js"></script>
-  <script type="module" src="/assets/js/link-behavior.js"></script>
-  <script src="https://unpkg.com/swup@4/dist/Swup.umd.js" defer></script>
   <script type="module" src="/assets/js/app.js"></script>
 </body>
 

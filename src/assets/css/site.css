@@ -1030,11 +1030,11 @@ h1 {
   padding-left: 0;
 }
 
-.article-body li > p {
+.article-body li>p {
   margin: 0 0 var(--space-2xs);
 }
 
-.article-body li > p:last-child {
+.article-body li>p:last-child {
   margin-bottom: 0;
 }
 
@@ -2114,23 +2114,23 @@ body.nav-open .nav-backdrop {
     z-index: 1;
   }
 
-body.search-open .site-header__search {
-  display: block;
-}
+  body.search-open .site-header__search {
+    display: block;
+  }
 
-body.search-open .search-box__input {
-  width: 100%;
-}
+  body.search-open .search-box__input {
+    width: 100%;
+  }
 
-body.search-open::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.72);
-  backdrop-filter: blur(8px);
-  z-index: 0;
-  pointer-events: none;
-}
+  body.search-open::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(8px);
+    z-index: 0;
+    pointer-events: none;
+  }
 
   /* User Strategy: Fixed Sidebar Overlay */
   .app-shell__sidebar {

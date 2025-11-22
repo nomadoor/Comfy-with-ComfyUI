@@ -8,15 +8,32 @@ const ARTICLE_SCOPE_SELECTOR = ".article-body";
 const ARTICLE_ICON_CLASS = "article-link__icon";
 const SVG_NS = "http://www.w3.org/2000/svg";
 let observerInitialized = false;
+let navLinks = [];
 
-function setActiveNavLink() {
-  const path = new URL(window.location.href).pathname.replace(/\/+$/, "/");
-  const navLinks = document.querySelectorAll(".nav-list__link");
+function normalizePathname(url) {
+  try {
+    const pathname = new URL(url, window.location.origin).pathname;
+    return pathname
+      .replace(/index\.html?$/i, "")
+      .replace(/\/+$/, "/")
+      || "/";
+  } catch {
+    return "/";
+  }
+}
+
+function collectNavLinks() {
+  navLinks = Array.from(document.querySelectorAll(".nav-list__link.link--internal"));
+}
+
+function setActiveNavLink(pathname = window.location.pathname) {
+  if (!navLinks.length) collectNavLinks();
+  const current = normalizePathname(pathname);
   navLinks.forEach((anchor) => {
     const href = anchor.getAttribute("href");
     if (!href) return;
-    const normalized = new URL(href, window.location.origin).pathname.replace(/\/+$/, "/");
-    const isActive = normalized === path;
+    const normalized = normalizePathname(href);
+    const isActive = normalized === current;
     anchor.classList.toggle("is-active", isActive);
     if (isActive) {
       anchor.setAttribute("aria-current", "page");
@@ -149,12 +166,15 @@ function removeArticleLinkIcon(anchor) {
 }
 
 const initLinkBehavior = () => {
-  enhanceAllLinks(document);
   if (!observerInitialized) {
+    enhanceAllLinks(document);
     setupMutationObserver();
+    collectNavLinks();
     observerInitialized = true;
   }
   setActiveNavLink();
 };
+
+export const refreshActiveNav = setActiveNavLink;
 
 export default initLinkBehavior;
