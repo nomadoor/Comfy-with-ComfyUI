@@ -204,8 +204,8 @@ video {
   top: calc(100% + var(--space-xs));
   left: 0;
   right: 0;
-  background: #0d0d0f;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: var(--space-sm);
   display: flex;
@@ -214,7 +214,7 @@ video {
   z-index: 20;
   max-height: 24rem;
   overflow-y: auto;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 
 .search-box__results[hidden] {
@@ -2098,8 +2098,7 @@ body.nav-open .nav-backdrop {
     left: 0;
     right: 0;
     padding: var(--space-sm) var(--space-md);
-    background: rgba(0, 0, 0, 0.82);
-    backdrop-filter: blur(6px);
+    background: var(--color-bg);
     z-index: 95;
   }
 
@@ -2110,16 +2109,7 @@ body.search-open .site-header__search {
 body.search-open .search-box__input {
   width: 100%;
 }
-
-body.search-open::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.72);
-  backdrop-filter: blur(8px);
-  z-index: 70;
-  pointer-events: none;
-}
+/* no global overlay; keep page visible */
 
   /* User Strategy: Fixed Sidebar Overlay */
   .app-shell__sidebar {
