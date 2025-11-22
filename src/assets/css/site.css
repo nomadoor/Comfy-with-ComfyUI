@@ -2067,10 +2067,10 @@ body.nav-open .nav-backdrop {
   .site-header__logo {
     grid-column: 2;
     justify-self: center;
-    min-width: 0;
+    min-width: auto;
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: max-content;
     margin: 0;
     max-width: 260px;
   }
