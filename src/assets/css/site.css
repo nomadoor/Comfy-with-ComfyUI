@@ -2124,7 +2124,7 @@ body.search-open::after {
     position: fixed !important;
     top: var(--header-height);
     left: 0;
-    bottom: 0;
+    bottom: auto;
     width: 85%;
     max-width: 320px;
     background: var(--color-bg);
@@ -2134,6 +2134,7 @@ body.search-open::after {
     border-right: 1px solid var(--color-border);
     padding: 0;
     margin: 0;
+    max-height: calc(100vh - var(--header-height));
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -2149,6 +2150,15 @@ body.search-open::after {
     display: flex;
     flex-direction: column;
     flex: 1;
+  }
+
+  .sidebar__nav-wrapper {
+    overflow: visible;
+    max-height: none;
+  }
+
+  body.nav-open {
+    overflow: hidden;
   }
 
   /* Open state */
