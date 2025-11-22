@@ -970,15 +970,17 @@ h1 {
   display: block;
 }
 
-.article-body ul {
+.article-body ul,
+.article-body ol {
+  --article-list-spacing: var(--space-sm);
   list-style: none;
-  margin: var(--space-2xs) 0;
+  margin: var(--article-list-spacing) 0;
   padding-left: 0;
 }
 
 .article-body ul li {
   position: relative;
-  padding-left: calc(var(--space-2xs) + 0.9rem);
+  padding-left: calc(var(--space-sm) + 0.9rem);
   margin-bottom: var(--space-2xs);
   --article-list-line-height: 1.6em;
   line-height: var(--article-list-line-height, 1.6);
@@ -1011,13 +1013,12 @@ h1 {
 }
 
 .article-body ul ul {
-  margin-left: var(--space-2xs);
+  margin-left: var(--space-sm);
 }
 
 .article-body ol {
-  margin: var(--space-md) 0;
-  padding-left: var(--space-md);
   list-style: decimal;
+  padding-left: var(--space-lg);
 }
 
 .article-body ol li {
