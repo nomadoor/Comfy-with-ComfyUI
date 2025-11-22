@@ -2,22 +2,13 @@ const sectionButtons = Array.from(document.querySelectorAll(".sidebar__section-b
 const sectionTabs = Array.from(document.querySelectorAll(".sidebar__section-tab"));
 const navPanels = Array.from(document.querySelectorAll(".sidebar__nav-panel"));
 const navWrapper = document.querySelector(".sidebar__nav-wrapper");
+const NAV_SCROLL_KEY = "sidebar-scroll";
 
-function scrollStorageKey(sectionKey) {
-  return `sidebar-scroll-${sectionKey || "default"}`;
-}
-
-function restoreScroll(sectionKey) {
-  if (!navWrapper) return;
-  const saved = sessionStorage.getItem(scrollStorageKey(sectionKey));
+if (navWrapper) {
+  const saved = sessionStorage.getItem(NAV_SCROLL_KEY);
   if (saved !== null) {
     navWrapper.scrollTop = parseFloat(saved);
   }
-}
-
-function persistScroll(sectionKey) {
-  if (!navWrapper) return;
-  sessionStorage.setItem(scrollStorageKey(sectionKey), navWrapper.scrollTop);
 }
 
 function activateSection(key, { focus = true } = {}) {
@@ -41,7 +32,6 @@ function activateSection(key, { focus = true } = {}) {
     panel.toggleAttribute("hidden", !isActive);
     panel.setAttribute("aria-hidden", String(!isActive));
   });
-  restoreScroll(key);
 }
 
 function focusNext(currentIndex, direction) {
@@ -93,23 +83,16 @@ if (initialActive) {
 }
 
 if (navWrapper) {
-  let activeKey =
-    (initialActive && initialActive.dataset.sectionKey) ||
-    (navPanels[0] && navPanels[0].dataset.sectionPanel) ||
-    "default";
-  restoreScroll(activeKey);
   let ticking = false;
   navWrapper.addEventListener("scroll", () => {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      persistScroll(activeKey);
+      sessionStorage.setItem(NAV_SCROLL_KEY, navWrapper.scrollTop);
       ticking = false;
     });
   });
-  sectionButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      activeKey = btn.dataset.sectionKey || activeKey;
-    });
+  window.addEventListener("pagehide", () => {
+    sessionStorage.setItem(NAV_SCROLL_KEY, navWrapper.scrollTop);
   });
 }
