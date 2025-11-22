@@ -2056,7 +2056,8 @@ body.nav-open .nav-backdrop {
   }
 
   .site-header__inner {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: var(--space-sm);
     padding: 0 var(--space-md);
@@ -2064,14 +2065,14 @@ body.nav-open .nav-backdrop {
   }
 
   .site-header__logo {
-    flex: 1 1 auto;
+    grid-column: 2;
+    justify-self: center;
     min-width: 0;
     display: flex;
     justify-content: center;
-    width: auto;
+    width: 100%;
     margin: 0;
-    max-width: 160px;
-    scale: 0.9;
+    max-width: 260px;
   }
 
   .site-header__actions {
@@ -2081,6 +2082,7 @@ body.nav-open .nav-backdrop {
     justify-content: flex-end;
     flex: 0 0 auto;
     width: auto;
+    justify-self: end;
   }
 
   .site-header__search-toggle {
