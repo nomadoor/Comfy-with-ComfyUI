@@ -1,7 +1,20 @@
+let tocState = {
+  scrollHandler: null,
+  resizeHandler: null,
+  loadHandler: null,
+  imageFadeHandler: null,
+};
+
 const initToc = () => {
   const article = document.querySelector(".article-body");
   const tocContainer = document.querySelector(".toc__links");
   if (!article || !tocContainer) return;
+
+  // remove previous listeners to avoid duplication on Swup replace
+  if (tocState.scrollHandler) window.removeEventListener("scroll", tocState.scrollHandler);
+  if (tocState.resizeHandler) window.removeEventListener("resize", tocState.resizeHandler);
+  if (tocState.loadHandler) window.removeEventListener("load", tocState.loadHandler);
+  if (tocState.imageFadeHandler) document.removeEventListener("imageFade:loaded", tocState.imageFadeHandler);
 
   function toPixels(value, baseSize) {
     if (!value) return 0;
@@ -114,6 +127,11 @@ const initToc = () => {
   window.addEventListener("resize", recomputeAndUpdate, { passive: true });
   window.addEventListener("load", recomputeAndUpdate);
   document.addEventListener("imageFade:loaded", recomputeAndUpdate);
+
+  tocState.scrollHandler = handleScroll;
+  tocState.resizeHandler = recomputeAndUpdate;
+  tocState.loadHandler = recomputeAndUpdate;
+  tocState.imageFadeHandler = recomputeAndUpdate;
 
   recomputeAndUpdate();
 };

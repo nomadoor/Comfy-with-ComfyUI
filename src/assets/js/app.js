@@ -9,7 +9,7 @@ const clearOverlays = () => {
   document.body.classList.remove("nav-open", "search-open");
 };
 
-const ENABLE_SWUP = false; // フリッカーや再初期化不具合が解消するまで無効化
+const ENABLE_SWUP = true; // 安定化後に有効化
 
 const bootstrap = () => {
   initPage();
