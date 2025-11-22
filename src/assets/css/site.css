@@ -974,11 +974,12 @@ h1 {
   list-style: none;
   margin: var(--space-2xs) 0;
   padding-left: 0;
+  --article-list-icon-size: 0.9rem;
 }
 
 .article-body ul li {
   position: relative;
-  padding-left: calc(var(--space-2xs) + 0.9rem);
+  padding-left: calc(var(--space-2xs) + var(--article-list-icon-size));
   margin-bottom: var(--space-2xs);
   --article-list-line-height: 1.6em;
   line-height: var(--article-list-line-height, 1.6);
@@ -988,8 +989,8 @@ h1 {
   position: absolute;
   left: 0;
   top: calc(var(--article-list-line-height, 1.6em) / 2);
-  inline-size: 0.9rem;
-  block-size: 0.9rem;
+  inline-size: var(--article-list-icon-size);
+  block-size: var(--article-list-icon-size);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1016,7 +1017,7 @@ h1 {
 
 .article-body ol {
   margin: var(--space-2xs) 0;
-  padding-left: var(--space-md);
+  padding-left: calc(var(--space-2xs) + var(--article-list-icon-size, 0.9rem));
   list-style: decimal;
 }
 
