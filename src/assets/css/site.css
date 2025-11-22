@@ -2099,7 +2099,7 @@ body.nav-open .nav-backdrop {
     right: 0;
     padding: var(--space-sm) var(--space-md);
     background: var(--color-bg);
-    z-index: 95;
+    z-index: 1;
   }
 
 body.search-open .site-header__search {
@@ -2116,7 +2116,7 @@ body.search-open::after {
   inset: 0;
   background: rgba(0, 0, 0, 0.72);
   backdrop-filter: blur(8px);
-  z-index: 70;
+  z-index: 0;
   pointer-events: none;
 }
 
