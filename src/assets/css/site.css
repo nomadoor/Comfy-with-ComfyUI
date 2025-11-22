@@ -1025,6 +1025,14 @@ h1 {
   padding-left: 0;
 }
 
+.article-body li > p {
+  margin: 0 0 var(--space-2xs);
+}
+
+.article-body li > p:last-child {
+  margin-bottom: 0;
+}
+
 .article-media {
   margin: var(--space-md) 0;
   display: block;
