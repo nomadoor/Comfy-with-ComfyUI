@@ -973,12 +973,12 @@ h1 {
 .article-body ul {
   list-style: none;
   margin: var(--space-2xs) 0;
-  padding-left: 0;
+  padding-left: var(--space-md);
 }
 
 .article-body ul li {
   position: relative;
-  padding-left: calc(var(--space-2xs) + 0.9rem);
+  padding-left: var(--space-md);
   margin-bottom: var(--space-2xs);
   --article-list-line-height: 1.6em;
   line-height: var(--article-list-line-height, 1.6);
@@ -1011,7 +1011,8 @@ h1 {
 }
 
 .article-body ul ul {
-  margin-left: var(--space-2xs);
+  margin-left: var(--space-md);
+  padding-left: var(--space-md);
 }
 
 .article-body ol {
