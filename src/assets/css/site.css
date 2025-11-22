@@ -1017,7 +1017,7 @@ h1 {
 
 .article-body ol {
   margin: var(--space-2xs) 0;
-  padding-left: calc(var(--space-2xs) + var(--article-list-icon-size, 0.9rem));
+  padding-left: calc(var(--space-2xs) + var(--article-list-icon-size));
   list-style: decimal;
 }
 
