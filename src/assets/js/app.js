@@ -2,10 +2,10 @@ import initPage from "./page.js";
 import initLinkBehavior, { refreshActiveNav } from "./link-behavior.js";
 
 const ENABLE_SWUP = true;
-const SWUP_CDN = "https://unpkg.com/swup@4?module";
+const SWUP_CDN = "https://unpkg.com/swup@4.0.0?module";
 
 const loadSwupCtor = async () => {
-  // Prefer already-present global (for local bundling or previously loaded CDN script)
+  // Prefer already-present global (for local bundling or previously loaded script)
   const globalSwup = window.Swup && (window.Swup.default || window.Swup);
   if (globalSwup) return globalSwup;
 
@@ -40,22 +40,18 @@ const bootstrap = async () => {
     animationSelector: null, // disable built-in animations to minimize flicker initially
   });
 
-  // Swup v4 exposes hooks; v3 exposes .on
-  const on = swup.on?.bind(swup);
   const hookOn = swup.hooks?.on?.bind(swup.hooks);
+  const on = swup.on?.bind(swup);
 
   const beforeOut = () => document.body.classList.remove("nav-open", "search-open");
-  on?.("animation:out:start", beforeOut);
-  on?.("animationOutStart", beforeOut);
   hookOn?.("visit:start", beforeOut);
+  on?.("animation:out:start", beforeOut);
 
   const afterReplace = () => reinit();
-  on?.("content:replace", afterReplace);
-  on?.("contentReplaced", afterReplace);
-  on?.("page:view", afterReplace);
-  on?.("pageView", afterReplace);
   hookOn?.("content:replace", afterReplace);
   hookOn?.("page:view", afterReplace);
+  on?.("content:replace", afterReplace);
+  on?.("page:view", afterReplace);
 };
 
 if (document.readyState === "loading") {

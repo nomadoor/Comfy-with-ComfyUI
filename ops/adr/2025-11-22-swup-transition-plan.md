@@ -55,4 +55,4 @@ Proceed with a structured refactor following the checklist below. Items will be 
 - Checklist updates will be recorded here as steps complete.  
 - Progressive enhancement is mandatory: Swup is an enhancement layer, not a hard dependency.  
 - No additional branches will be created unless explicitly requested.
-- Swup is now lazy-loaded from `https://unpkg.com/swup@4?module`; if the CDN fails, navigation automatically falls back to full reloads without console errors.
+- Swup is now lazy-loaded and pinned to `https://unpkg.com/swup@4.0.0?module`; if the CDN fails, navigation automatically falls back to full reloads without console errors.
