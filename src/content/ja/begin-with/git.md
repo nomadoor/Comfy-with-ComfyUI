@@ -28,7 +28,7 @@ hero:
 
 ## GitHub (ギットハブ) とは？
 
-![GitHub_ComfyUI](https://i.gyazo.com/aa0bd187bca975346df5582992735910.png)
+![](https://i.gyazo.com/aa0bd187bca975346df5582992735910.png){gyazo=image}
 
 Gitで保存したデータを置いておく **「巨大な倉庫（クラウドストレージ）」** です。
 
