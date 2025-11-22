@@ -2001,3 +2001,114 @@ body.lightbox-open {
   stroke: currentColor;
   fill: none;
 }
+
+/* Mobile Navigation & Assistant Rail Overlay */
+.site-header__menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  cursor: pointer;
+  padding: var(--space-xs);
+  margin-right: var(--space-xs);
+}
+
+.site-header__menu-btn .icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Backdrop for mobile nav */
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 90;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+
+body.nav-open .nav-backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Mobile Assistant Styles */
+.sidebar__mobile-assistant {
+  display: none;
+  margin-top: auto;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+@media (max-width: 1100px) {
+  .site-header__menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .site-header__inner {
+    display: flex;
+    padding: 0 var(--space-md);
+  }
+
+  .site-header__logo {
+    margin-right: auto;
+    width: auto;
+  }
+
+  .site-header__search,
+  .site-header__actions {
+    display: none;
+  }
+
+  /* User Strategy: Fixed Sidebar Overlay */
+  .app-shell__sidebar {
+    position: fixed !important;
+    top: var(--header-height);
+    left: 0;
+    bottom: 0;
+    width: 85%;
+    max-width: 320px;
+    background: var(--color-bg);
+    z-index: 100;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    border-right: 1px solid var(--color-border);
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Reset rail inside sidebar to be static and full width */
+  .app-shell__sidebar .rail {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  /* Open state */
+  body.nav-open .app-shell__sidebar {
+    transform: translateX(0);
+  }
+
+  /* Show mobile assistant */
+  .sidebar__mobile-assistant {
+    display: block;
+  }
+
+  /* Hide desktop assistant if present in sidebar (it's not, but just in case) */
+  .sidebar>.assistant-rail {
+    display: none;
+  }
+}
