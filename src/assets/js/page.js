@@ -4,6 +4,8 @@ import initLangSwitcher from "./lang-switcher.js";
 import initLightbox from "./lightbox.js";
 import initSearch from "./search.js";
 import initLinkBehavior from "./link-behavior.js";
+import initGyazoToggle from "./gyazo-toggle.js";
+import initCodeCopy from "./code-copy.js";
 
 export default function initPage() {
   initToc?.();
@@ -12,4 +14,6 @@ export default function initPage() {
   initLightbox?.();
   initSearch?.();
   initLinkBehavior?.();
+  initGyazoToggle?.();
+  initCodeCopy?.();
 }

@@ -9,6 +9,23 @@ const ARTICLE_ICON_CLASS = "article-link__icon";
 const SVG_NS = "http://www.w3.org/2000/svg";
 let observerInitialized = false;
 
+function setActiveNavLink() {
+  const path = new URL(window.location.href).pathname.replace(/\/+$/, "/");
+  const navLinks = document.querySelectorAll(".nav-list__link");
+  navLinks.forEach((anchor) => {
+    const href = anchor.getAttribute("href");
+    if (!href) return;
+    const normalized = new URL(href, window.location.origin).pathname.replace(/\/+$/, "/");
+    const isActive = normalized === path;
+    anchor.classList.toggle("is-active", isActive);
+    if (isActive) {
+      anchor.setAttribute("aria-current", "page");
+    } else {
+      anchor.removeAttribute("aria-current");
+    }
+  });
+}
+
 function normalizeRel(existingRel = "") {
   const tokens = existingRel
     .split(/\s+/)
@@ -137,6 +154,7 @@ const initLinkBehavior = () => {
     setupMutationObserver();
     observerInitialized = true;
   }
+  setActiveNavLink();
 };
 
 export default initLinkBehavior;
