@@ -2018,6 +2018,10 @@ body.lightbox-open {
   height: 24px;
 }
 
+.site-header__search-toggle {
+  display: none;
+}
+
 /* Backdrop for mobile nav */
 .nav-backdrop {
   position: fixed;
@@ -2052,17 +2056,44 @@ body.nav-open .nav-backdrop {
 
   .site-header__inner {
     display: flex;
+    align-items: center;
+    gap: var(--space-sm);
     padding: 0 var(--space-md);
   }
 
   .site-header__logo {
-    margin-right: auto;
+    margin: 0 auto 0 var(--space-sm);
     width: auto;
   }
 
-  .site-header__search,
   .site-header__actions {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-left: auto;
+  }
+
+  .site-header__search-toggle {
+    display: inline-flex;
+  }
+
+  .site-header__search {
     display: none;
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-bg);
+    z-index: 95;
+  }
+
+  body.search-open .site-header__search {
+    display: block;
+  }
+
+  body.search-open .search-box__input {
+    width: 100%;
   }
 
   /* User Strategy: Fixed Sidebar Overlay */
