@@ -38,7 +38,7 @@ localeNav.sections else site.sections[0].key) -%}
         {% include "sidebar.njk" %}
       </div>
     </aside>
-    <main class="app-shell__content">
+    <main class="app-shell__content" id="page">
       {{ content | safe }}
     </main>
     <aside class="app-shell__toc">
@@ -61,6 +61,8 @@ localeNav.sections else site.sections[0].key) -%}
   <script type="module" src="/assets/js/assistant-rail.js"></script>
   <script type="module" src="/assets/js/mobile-nav.js"></script>
   <script type="module" src="/assets/js/link-behavior.js"></script>
+  <script src="https://unpkg.com/swup@4/dist/Swup.umd.js" defer></script>
+  <script type="module" src="/assets/js/page-transition.js"></script>
 </body>
 
 </html>
