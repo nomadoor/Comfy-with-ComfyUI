@@ -2109,7 +2109,16 @@ body.search-open .site-header__search {
 body.search-open .search-box__input {
   width: 100%;
 }
-/* no global overlay; keep page visible */
+
+body.search-open::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+  z-index: 70;
+  pointer-events: none;
+}
 
   /* User Strategy: Fixed Sidebar Overlay */
   .app-shell__sidebar {
