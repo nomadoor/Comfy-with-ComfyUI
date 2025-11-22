@@ -926,7 +926,7 @@ h1 {
   letter-spacing: 0;
 }
 
-\.article-body p,
+.article-body p,
 .article-body ul,
 .article-body ol {
   max-width: 100%;
