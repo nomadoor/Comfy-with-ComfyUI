@@ -933,6 +933,10 @@ h1 {
   color: var(--color-text);
 }
 
+.article-body {
+  --article-list-icon-size: 0.9rem;
+}
+
 .article-body a {
   color: inherit;
   text-decoration-color: currentColor;
@@ -974,7 +978,6 @@ h1 {
   list-style: none;
   margin: var(--space-2xs) 0;
   padding-left: 0;
-  --article-list-icon-size: 0.9rem;
 }
 
 .article-body ul li {
