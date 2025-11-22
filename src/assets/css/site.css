@@ -1015,7 +1015,7 @@ h1 {
 }
 
 .article-body ol {
-  margin: var(--space-md) 0;
+  margin: var(--space-2xs) 0;
   padding-left: var(--space-md);
   list-style: decimal;
 }
