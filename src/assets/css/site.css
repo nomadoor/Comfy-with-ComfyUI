@@ -2052,6 +2052,7 @@ body.nav-open .nav-backdrop {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 0 0 auto;
   }
 
   .site-header__inner {
@@ -2062,15 +2063,19 @@ body.nav-open .nav-backdrop {
   }
 
   .site-header__logo {
-    margin: 0 auto 0 var(--space-sm);
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
     width: auto;
+    margin: 0;
   }
 
   .site-header__actions {
     display: inline-flex;
     align-items: center;
     gap: var(--space-xs);
-    margin-left: auto;
+    justify-content: flex-end;
+    flex: 0 0 auto;
   }
 
   .site-header__search-toggle {
