@@ -935,8 +935,6 @@ h1 {
 
 .article-body {
   --article-list-icon-size: 0.9rem;
-  --article-list-indent: var(--space-md);
-  --article-list-nest-indent: var(--space-md);
 }
 
 .article-body a {
@@ -979,12 +977,12 @@ h1 {
 .article-body ul {
   list-style: none;
   margin: var(--space-2xs) 0;
-  padding-left: var(--article-list-indent);
+  padding-left: 0;
 }
 
 .article-body ul li {
   position: relative;
-  padding-left: var(--article-list-indent);
+  padding-left: calc(var(--space-2xs) + var(--article-list-icon-size));
   margin-bottom: var(--space-2xs);
   --article-list-line-height: 1.6em;
   line-height: var(--article-list-line-height, 1.6);
@@ -1017,25 +1015,18 @@ h1 {
 }
 
 .article-body ul ul {
-  margin-left: var(--article-list-nest-indent);
-  padding-left: var(--article-list-indent);
+  margin-left: var(--space-2xs);
 }
 
 .article-body ol {
   margin: var(--space-2xs) 0;
-  padding-left: var(--article-list-indent);
+  padding-left: calc(var(--space-2xs) + var(--article-list-icon-size));
   list-style: decimal;
 }
 
 .article-body ol li {
   margin-bottom: var(--space-2xs);
   padding-left: 0;
-}
-
-.article-body li > ul,
-.article-body li > ol {
-  margin-left: var(--article-list-nest-indent);
-  padding-left: var(--article-list-indent);
 }
 
 .article-body li > p {
