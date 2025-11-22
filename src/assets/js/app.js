@@ -9,16 +9,28 @@ const clearOverlays = () => {
   document.body.classList.remove("nav-open", "search-open");
 };
 
-const swup = new window.Swup({
-  containers: ["#page"],
-  linkSelector: 'a[href^="/"]:not([data-no-swup])',
-});
-
-swup.on("animationOutStart", clearOverlays);
-swup.on("contentReplaced", () => {
-  clearOverlays();
+const bootstrap = () => {
   initPage();
-});
 
-// 初回ロード
-initPage();
+  if (!window.Swup) {
+    // Swupが読み込まれない場合は何もせずフルリロード挙動に任せる
+    return;
+  }
+
+  const swup = new window.Swup({
+    containers: ["#page"],
+    linkSelector: 'a[href^="/"]:not([data-no-swup])',
+  });
+
+  swup.on("animationOutStart", clearOverlays);
+  swup.on("contentReplaced", () => {
+    clearOverlays();
+    initPage();
+  });
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", bootstrap, { once: true });
+} else {
+  bootstrap();
+}
