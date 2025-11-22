@@ -49,7 +49,7 @@ hero:
 
 画像生成AIの始祖とも言えるこのモデルで、基本的な画像生成を学んでいきましょう。
 
-1.  **モデルをダウンロード**
+- 1.  **モデルをダウンロード**
   - [v1-5-pruned-emaonly-fp16.safetensors (直リンク)](https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive/resolve/main/v1-5-pruned-emaonly-fp16.safetensors)
   - 上のリンクをクリックするとダウンロードが始まります。
   - これを、以下のフォルダに保存してください。
@@ -60,7 +60,7 @@ hero:
             └── v1-5-pruned-emaonly-fp16.safetensors
   ```
 
-2.  **リフレッシュ**
+- 2.  **リフレッシュ**
   - モデルを配置しただけでは、ComfyUIはモデルを認識してくれません。
   - キーボードの `r` キーを押すか、`ComfyUIアイコン` → `Edit` → `Refresh Node Definitions` を押すと認識されます。
 

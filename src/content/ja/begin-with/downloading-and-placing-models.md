@@ -30,9 +30,9 @@ Stable Diffusion 1.5をダウンロードしてみましょう。
 
 ![](https://gyazo.com/b274b58909cf22061a2506ab7b43bf61){gyazo=loop}
 
-1.  まず、[Comfy-Org/stable-diffusion-v1-5-archive](https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive) ページを開きます。
-2.  `Files and versions` タブをクリックし、ファイル一覧から目的のモデルファイル（例: `.safetensors` や `.ckpt`）を見つけます。
-3.  ダウンロード方法は以下の3通りです。
+- 1.  まず、[Comfy-Org/stable-diffusion-v1-5-archive](https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive) ページを開きます。
+- 2.  `Files and versions` タブをクリックし、ファイル一覧から目的のモデルファイル（例: `.safetensors` や `.ckpt`）を見つけます。
+- 3.  ダウンロード方法は以下の3通りです。
     * **直接ダウンロード:**  
         - ファイル名の横にある **↓（ダウンロードアイコン）** をクリックします。
     * **詳細ページからダウンロード:**  
@@ -53,9 +53,9 @@ Stable Diffusion 1.5のファインチューニングモデルとして一斉を
 
 ![](https://i.gyazo.com/7bcde1665657f544a1191c760248dd80.png){gyazo=image}
 
-1.  まず、[epiCRealism](https://civitai.com/models/25694/epicrealism)のページを開きます。
-2.  画面右側にある青い **Download** ボタンをクリックします。
-3.  ダウンロードが始まります。
+- 1.  まず、[epiCRealism](https://civitai.com/models/25694/epicrealism)のページを開きます。
+- 2.  画面右側にある青い **Download** ボタンをクリックします。
+- 3.  ダウンロードが始まります。
 
 ※ ログインしないとダウンロードできないモデル（NSFWなど）もあります。
 

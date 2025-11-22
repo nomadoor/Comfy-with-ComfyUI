@@ -40,26 +40,26 @@ hero:
 
 ![](https://gyazo.com/c0d8901537b65da709f9ba9d6e1a0055){gyazo=loop}
 
-0. ComfyUI Managerのインストール
+- 0. ComfyUI Managerのインストール
   - ComfyUI Managerがまだインストールされていない場合は、[セットアップ - ComfyUI Manager の導入](/ja/begin-with/setup/#3-comfyui-manager-の導入)を参考にインストールしてください。
-1.  メニューの `Manager` ボタンをクリック。
-2.  `Custom Nodes Manager` をクリック。
-3.  検索バーにノード名を入力してカスタムノードを探します。
-4.  `Install` ボタンを押してカスタムノードをインストールします。
+- 1.  メニューの `Manager` ボタンをクリック。
+- 2.  `Custom Nodes Manager` をクリック。
+- 3.  検索バーにノード名を入力してカスタムノードを探します。
+- 4.  `Install` ボタンを押してカスタムノードをインストールします。
   - バージョン選択肢がある場合、特にこだわりが無ければ`latest`を選んでください。
-5.  ダウンロードが終わると再起動を促されます。`Restart`ボタンを押してComfyUIを再起動してください。
+- 5.  ダウンロードが終わると再起動を促されます。`Restart`ボタンを押してComfyUIを再起動してください。
 
 ### 手動でインストールする
 
 ComfyUI Managerに無い場合や、開発中の最新版を使いたい場合は手動でインストールします。基本的にはリポジトリのREAD MEに従ってください。
 
-1.  ターミナルで `ComfyUI/custom_nodes` フォルダに移動します。
-2.  `git clone` コマンドでリポジトリをダウンロードします。
+- 1.  ターミナルで `ComfyUI/custom_nodes` フォルダに移動します。
+- 2.  `git clone` コマンドでリポジトリをダウンロードします。
     ```powershell
     cd ComfyUI/custom_nodes
     git clone https://github.com/username/repository-name.git
     ```
-3. 必要に応じてライブラリをインストールします
+- 3. 必要に応じてライブラリをインストールします
     ```powershell
     # venv
     cd path/to/ComfyUI
@@ -71,7 +71,7 @@ ComfyUI Managerに無い場合や、開発中の最新版を使いたい場合�
     cd path/to/ComfyUI/custom_nodes/カスタムノード
     ../../../python_embeded/python.exe -s -m pip install -r requirements.txt
     ```
-4.  ComfyUIを再起動します。
+- 4.  ComfyUIを再起動します。
 
 ---
 
