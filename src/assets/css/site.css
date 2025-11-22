@@ -2073,7 +2073,7 @@ body.nav-open .nav-backdrop {
     min-width: auto;
     display: flex;
     justify-content: center;
-    width: max-content;
+    width: auto;
     margin: 0;
     max-width: 260px;
   }
