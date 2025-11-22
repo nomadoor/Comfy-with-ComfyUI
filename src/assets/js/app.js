@@ -9,9 +9,12 @@ const clearOverlays = () => {
   document.body.classList.remove("nav-open", "search-open");
 };
 
+const ENABLE_SWUP = false; // フリッカーや再初期化不具合が解消するまで無効化
+
 const bootstrap = () => {
   initPage();
 
+  if (!ENABLE_SWUP) return;
   if (!window.Swup) {
     // Swupが読み込まれない場合は何もせずフルリロード挙動に任せる
     return;
