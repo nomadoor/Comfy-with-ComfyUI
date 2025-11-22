@@ -2136,8 +2136,6 @@ body.search-open::after {
     margin: 0;
     max-height: calc(100vh - var(--header-height));
     overflow-y: auto;
-    display: flex;
-    flex-direction: column;
     box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
   }
 
