@@ -2070,6 +2070,8 @@ body.nav-open .nav-backdrop {
     justify-content: center;
     width: auto;
     margin: 0;
+    max-width: 160px;
+    scale: 0.9;
   }
 
   .site-header__actions {
