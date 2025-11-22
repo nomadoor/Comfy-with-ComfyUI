@@ -1,6 +1,13 @@
-const container = document.querySelector("[data-search]");
+let docClickAttached = false;
+let currentContainer = null;
+const initialized = new WeakSet();
 
-if (container) {
+const initSearch = () => {
+  const container = document.querySelector("[data-search]");
+  if (!container || initialized.has(container)) return;
+  initialized.add(container);
+  currentContainer = container;
+
   const input = container.querySelector("[data-search-input]");
   const resultsEl = container.querySelector("[data-search-results]");
   const lang = document.documentElement.lang || "ja";
@@ -178,9 +185,18 @@ if (container) {
     });
   }
 
-  document.addEventListener("click", (event) => {
-    if (!container.contains(event.target)) {
-      hideResults();
-    }
-  });
-}
+  if (!docClickAttached) {
+    document.addEventListener("click", (event) => {
+      if (currentContainer && !currentContainer.contains(event.target)) {
+        const results = currentContainer.querySelector("[data-search-results]");
+        if (results) {
+          results.hidden = true;
+          results.innerHTML = "";
+        }
+      }
+    });
+    docClickAttached = true;
+  }
+};
+
+export default initSearch;

@@ -1,31 +1,24 @@
-// Lightweight PJAX with Swup: keep header/sidebar, swap only #page
+// page-transition.js
+// Swup本体は base.njk で CDN 経由で先に読み込まれ、window.Swup として提供される前提。
 document.documentElement.classList.add("is-swup-enabled");
+
+// ページ内初期化フック: 各機能の init を呼ぶだけの薄いレイヤー
+import initPage from "./page.js";
 
 const swup = new window.Swup({
   containers: ["#page"],
   linkSelector: 'a[href^="/"]:not([data-no-swup])',
-  animationSelector: '[class*="page"]',
 });
-
-const reinitScripts = [
-  "/assets/js/toc.js",
-  "/assets/js/assistant-rail.js",
-  "/assets/js/lang-switcher.js",
-  "/assets/js/lightbox.js",
-  "/assets/js/search.js",
-  "/assets/js/link-behavior.js",
-];
 
 const clearOverlays = () => {
   document.body.classList.remove("nav-open", "search-open");
 };
 
 swup.on("animationOutStart", clearOverlays);
-
 swup.on("contentReplaced", () => {
   clearOverlays();
-  // re-run page-level scripts on the new content
-  reinitScripts.forEach((src) => {
-    import(`${src}?swup=${Date.now()}`).catch(() => {});
-  });
+  initPage();
 });
+
+// 初回ロード時も実行
+initPage();

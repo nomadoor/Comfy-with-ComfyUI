@@ -111,4 +111,4 @@ const initAssistantRail = () => {
   new AssistantRail(widget);
 };
 
-initAssistantRail();
+export default initAssistantRail;

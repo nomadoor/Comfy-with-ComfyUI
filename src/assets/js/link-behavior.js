@@ -7,6 +7,7 @@ const BASE_ORIGIN = window.location.origin;
 const ARTICLE_SCOPE_SELECTOR = ".article-body";
 const ARTICLE_ICON_CLASS = "article-link__icon";
 const SVG_NS = "http://www.w3.org/2000/svg";
+let observerInitialized = false;
 
 function normalizeRel(existingRel = "") {
   const tokens = existingRel
@@ -130,5 +131,12 @@ function removeArticleLinkIcon(anchor) {
   }
 }
 
-enhanceAllLinks(document);
-setupMutationObserver();
+const initLinkBehavior = () => {
+  enhanceAllLinks(document);
+  if (!observerInitialized) {
+    setupMutationObserver();
+    observerInitialized = true;
+  }
+};
+
+export default initLinkBehavior;
