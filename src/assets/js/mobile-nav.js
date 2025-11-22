@@ -5,6 +5,7 @@ const initMobileNav = () => {
   const body = document.body;
   // Target the sidebar itself as it will be the overlay
   const sidebar = document.querySelector(".app-shell__sidebar");
+  const navBackdrop = document.querySelector(".nav-backdrop");
 
   if (!menuBtn || !sidebar) return;
 
@@ -48,6 +49,10 @@ const initMobileNav = () => {
       e.stopPropagation();
       toggleSearch();
     });
+  }
+
+  if (navBackdrop) {
+    navBackdrop.addEventListener("click", closeNav);
   }
 
   // Close when clicking outside the sidebar (on the backdrop)
