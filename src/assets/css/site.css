@@ -1150,7 +1150,7 @@ h1 {
 
 .article-body blockquote {
   margin: var(--space-md) 0;
-  padding: var(--space-sm) var(--space-lg);
+  padding: var(--space-2xs) var(--space-lg);
   background: var(--color-panel);
   border-left: 3px solid var(--color-highlight);
   color: var(--color-text);
@@ -1696,7 +1696,7 @@ h1 {
 .toc__links {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: var(--space-2xs);
 }
 
 .toc__link {
@@ -1716,7 +1716,7 @@ h1 {
 }
 
 .toc__link[data-depth="3"] {
-  padding-left: calc(var(--space-sm) * 2 - 1px);
+  padding-left: calc(var(--space-sm) * 3 - 1px);
 }
 
 .toc__link.is-active {

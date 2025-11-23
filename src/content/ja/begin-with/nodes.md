@@ -68,20 +68,18 @@ hero:
 
 ### 選択と移動
 
-- **複数選択**: `Shift` + 左クリック
+- **複数選択**: `Shift` or `Ctrl` + 左クリック
 - **範囲選択**: `Ctrl` + ドラッグ
 - **移動**: 選択した状態でドラッグ
 
-![](https://gyazo.com/673e247b4c7f1f785a32a8a66a6e5c24){gyazo=loop}
-![](https://gyazo.com/ecdc4bbbba9c87d83599b129a8e0b900){gyazo=loop}
-![](https://gyazo.com/3c5b2f417600f8a13f4e0856bb766356){gyazo=loop}
+![](https://gyazo.com/ec2d834b60c0fdc243fe12298f2a849d){gyazo=loop}
 
 ### 削除
 
 - ノードを選択して `Delete` キー
 - または Node Selection Toolbox の `🗑️` をクリック
 
-![](https://gyazo.com/9411b084cc0eaf6bbff44627b0e6e3a4){gyazo=loop}
+![](https://gyazo.com/38bdfe83ae6bbbff8f063bed7936edfe){gyazo=loop}
 
 ### コピー & ペースト
 
@@ -89,9 +87,7 @@ hero:
 - **接続を維持してペースト**: `Ctrl + C` → `Ctrl + Shift + V`
 - **複製**: `Alt` を押しながらドラッグ
 
-![](https://gyazo.com/998a2fdf2c364abf7f3a3bca42ef2c7c){gyazo=loop}
-![](https://gyazo.com/8b101ca29fe83dd8ef755d80feba9179){gyazo=loop}
-![](https://gyazo.com/f2ad27c4df3405c005b530ace3af72fb){gyazo=loop}
+![](https://gyazo.com/3898dc47a12c5d95d8f81093bdf5bfb7){gyazo=loop}
 
 ### 折りたたみ
 
@@ -105,7 +101,7 @@ hero:
 ノードを動かないように固定します。
 
 - ノードを選択して `P` キー
-- または右クリック → `Pin`（解除は `Unpin`）
+- Node Selection Toolbox の `📌` をクリック
 
 ![](https://gyazo.com/e18df835c4248220e5c8a0c2d021dacd){gyazo=loop}
 
@@ -122,34 +118,42 @@ hero:
 - Node Selection Toolbox の `ℹ️` をクリック
 - そのノードがどのPythonファイルで定義されているかなどが分かります。エラー時のデバッグに便利です。
 
+### ノードの色変更
+
+ノードの背景色を変更して、役割ごとに色分けすると見やすくなります。
+
+- Node Selection Toolbox の `🎨 (Color)` をクリックして色を選択
+
+![](https://gyazo.com/57d95f8586bdda17ed96855cbac37af8){gyazo=loop}
+
+### ノードのタイトル変更
+
+ノードの表示名（タイトル）を変更します。
+
+- ノードをダブルクリック → 好きな名前を入力して `Enter`
+
+![](https://gyazo.com/6d04c3d29e18e2ef5327c438264ff3d0){gyazo=loop}
+
 
 ---
 
-## Rerouteノード（中継点）
+## Rerouteノード
 
 workflowの配線を整理するために使用します。
 
-- **追加**: 右クリック → `Add Node` → `utils` → `Reroute`
-- **縦向きに変更**: 右クリック → `Set Vertical`
+- 検索して追加
+- ポイントを中クリックで追加
 
-![](https://gyazo.com/316ead0d575a1635c0bd74c3a5b8c9c2){gyazo=loop}
+![](https://gyazo.com/86de60d6b6959f5448dcfaad42178fcb){gyazo=image}
 
-> **Tip**
-> ピンの上で **中クリック** することでも素早く呼び出せます。
-
-![](https://gyazo.com/c928c0d92b853be8feb42cd24cd4f7a8){gyazo=loop}
 
 ### ドット型Reroute
 
+Rerouteノードはノードとして単体で存在しましたが、こちらはノードではなく、ラインの通過地点を設定するものです。
+
 - ライン上の点を `Alt + 左クリック`
-- またはピンからドラッグしたメニューで `Add Reroute`
 
-![](https://gyazo.com/7dd44ce8cadd4e8468fde2d2c6178ffa){gyazo=loop}
-
-> **Note**
-> 通常のRerouteノードとは異なり、単体のノードとしては存在できません。そのため、スイッチのような使い方はできません。
-
-![](https://gyazo.com/524f49b51aab632adf7881507b58a950){gyazo=loop}
+![](https://gyazo.com/cac43ac8b7fef76a4cdb0ff5d83bd1c7){gyazo=loop}
 
 ---
 
@@ -160,7 +164,7 @@ workflowの配線を整理するために使用します。
 そのノードを**無視して**処理を続けます。
 
 - ノードを選択して `Ctrl + B`
-- または Node Selection Toolbox の `🔀` をクリック
+- Node Selection Toolbox の `🔀` をクリック
 
 ![](https://gyazo.com/4ab6605bdd97ee8cae5b4403057a38e5){gyazo=loop}
 
@@ -175,8 +179,7 @@ workflowの配線を整理するために使用します。
 > - **バイパス**: 「このノードが無かったこと」にして、前後のノードを直結しようとします。
 > - **ミュート**: 「ここで行き止まり」にします。
 >
-> 挙動が少し複雑なので、実際に試してみることをおすすめします。<br>
-> 実際のところ、ミュートはあまり使われません。代わりに使用しないノードを全部バイパスしてしまうことが多いです。
+> 実際のところ、ミュートはあまり使われません。使用しないノードを全部バイパスしてしまうことが多いです。
 
 ![](https://i.gyazo.com/5d96054e7b54a62b3a446a28d70212d6.png){gyazo=image}
 
@@ -194,6 +197,10 @@ workflowの配線を整理するために使用します。
 ### Primitiveノード
 
 あらゆる型の入力として使える万能ノードです。接続先の型に合わせて動的に変化します。
+
+> **注意:** 
+> 接続先の型に合わせる都合上、rerouteノードと組み合わせて使用できません。<br>
+> 現在は型が決まった`intノード`、`floatノード`、`stringノード`などを使用することを推奨します。
 
 ![](https://i.gyazo.com/e0a056e9c112028930466701e22afd10.gif){gyazo=image}
 
