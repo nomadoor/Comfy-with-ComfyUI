@@ -111,7 +111,7 @@
 
             {% set target = '/' + option.code + '/' + currentSection + '/' + currentSlug + '/' %}
 
-            <a href="{{ target }}" class="{% if option.code == lang %}is-active{% endif %}" role="menuitem">{{ option.label }}</a>
+            <a href="{{ target }}" class="{% if option.code == lang %}is-active{% endif %}" role="menuitem" data-router-ignore>{{ option.label }}</a>
 
           {% endfor %}
 

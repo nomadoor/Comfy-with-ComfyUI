@@ -294,21 +294,15 @@ video {
   width: 100%;
 }
 
-/* Page fade-in (Swup: we toggle .is-visible from JS) */
+/* Page fade-in (now driven by View Transitions; keep simple opacity guard) */
 .transition-fade {
-  opacity: 0;
-  transition: opacity 260ms cubic-bezier(0.4, 0.0, 0.2, 1);
-}
-
-.transition-fade.is-visible {
   opacity: 1;
+  transition: opacity 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .transition-fade,
-  .transition-fade.is-visible {
+  .transition-fade {
     transition: none !important;
-    opacity: 1 !important;
   }
 }
 

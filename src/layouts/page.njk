@@ -30,7 +30,7 @@ layout: base.njk
           <button class="workflow-json__icon" type="button" aria-label="{{ workflowCopyLabel }} {{ fileName }}" data-copy-json="{{ workflow.id }}-json" data-label="{{ workflowCopyLabel }}" data-success-label="{{ workflowCopiedLabel }}">
             {{ icon("copy") }}
           </button>
-          <a class="workflow-json__icon" href="{{ workflow.json }}" download="{{ fileName }}" data-no-swup aria-label="{{ workflowDownloadLabel }} {{ fileName }}" data-download-json="{{ workflow.id }}-json" data-label="{{ workflowDownloadLabel }}" data-success-label="{{ workflowDownloadedLabel }}">
+          <a class="workflow-json__icon" href="{{ workflow.json }}" download="{{ fileName }}" data-router-ignore aria-label="{{ workflowDownloadLabel }} {{ fileName }}" data-download-json="{{ workflow.id }}-json" data-label="{{ workflowDownloadLabel }}" data-success-label="{{ workflowDownloadedLabel }}">
             {{ icon("download") }}
           </a>
         </div>
