@@ -1,4 +1,4 @@
-﻿# ADR: Layout Rails & Hero Refresh
+# ADR: Layout Rails & Hero Refresh
 
 - Status: Accepted
 - Date: 2025-11-14

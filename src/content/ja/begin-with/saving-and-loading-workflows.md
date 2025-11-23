@@ -88,9 +88,11 @@ JSON形式のテキストデータをコピーしている場合、ComfyUI上で
 
 ![](https://gyazo.com/2df1b87e2f4771e3ea2f718b55357435){gyazo=loop}
 
-> - このサイトでは、ほとんどのworkflowを公開していますが、以下のようにコピーボタンとダウンロードボタンを用意しています。
-> - コピーボタンをクリックし、そのままキャンバス上で`Ctrl + V`すればworkflowを読み込めるのでぜひ活用してみてください。
+### 😎このサイトのworkflowを読み込む
+
+このサイトで公開しているworkflowには、コピーボタンとダウンロードボタンを用意しています。
+コピーボタンをクリックし、そのままキャンバス上で `Ctrl + V` すればworkflowを読み込めるのでぜひ活用してみてください。
 
 [](/workflows/begin-with/saving-and-loading-workflows/Stable_Diffusion_1.5.json)
 
-[](/workflows/begin-with/saving-and-loading-workflows/Stable_Diffusion_1.5.json)
+![](https://gyazo.com/13c0019ad1e471bcf89cdb4b17bc7d9c){gyazo=loop}

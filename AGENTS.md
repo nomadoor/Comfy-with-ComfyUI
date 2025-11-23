@@ -1,4 +1,4 @@
-﻿# AGENTS.md — Comfy with ComfyUI (Docs) / Agent Principles
+# AGENTS.md — Comfy with ComfyUI (Docs) / Agent Principles
 
 ## Motto
 

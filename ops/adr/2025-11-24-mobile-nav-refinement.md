@@ -1,4 +1,4 @@
-﻿# ADR: Mobile Nav Refinement Round (2025-11-24)
+# ADR: Mobile Nav Refinement Round (2025-11-24)
 
 ## Context
 - After Gemini’s initial mobile nav, we iterated to stabilize UI and align with the prior ADR (2025-11-21) while keeping desktop unchanged.

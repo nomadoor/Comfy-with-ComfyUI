@@ -1,4 +1,4 @@
-﻿import nav from "./nav.js";
+import nav from "./nav.js";
 
 function register(entryMap, lang, sectionKey, page) {
   if (!page || !page.id) return;

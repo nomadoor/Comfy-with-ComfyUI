@@ -1,4 +1,4 @@
-﻿# ADR: Image Lightbox Interaction (2025-11-13)
+# ADR: Image Lightbox Interaction (2025-11-13)
 
 ## Context
 - Article images needed zoom + navigation without mixing JSON/workflow UI.

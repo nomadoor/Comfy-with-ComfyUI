@@ -1,4 +1,4 @@
-﻿---
+---
 layout: page.njk
 lang: en
 section: begin-with

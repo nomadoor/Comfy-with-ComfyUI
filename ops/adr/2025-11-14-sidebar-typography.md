@@ -1,4 +1,4 @@
-﻿# ADR: Sidebar Label Line-Height
+# ADR: Sidebar Label Line-Height
 
 - Status: Accepted
 - Date: 2025-11-14
