@@ -614,6 +614,27 @@ video {
   margin-top: var(--space-xs);
 }
 
+/* Height-responsive (three-step) */
+@media (max-height: 1080px) {
+  .sidebar__sections {
+    gap: var(--space-2xs);
+  }
+
+  .sidebar__section-btn {
+    padding: var(--space-xs) 0.9rem;
+  }
+
+  .nav-list__no-link {
+    margin-top: 0;
+  }
+}
+
+@media (max-height: 720px) {
+  .sidebar__sections {
+    display: none;
+  }
+}
+
 .sidebar__footer {
   padding: var(--space-xs) var(--space-sm);
   display: flex;
