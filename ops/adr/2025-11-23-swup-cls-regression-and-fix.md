@@ -32,6 +32,10 @@ Accepted (implemented on branch `fix/gyazo-placeholder`, commit `7505806`)
 - UX shows a short fade-in (260ms) of new content; no dark blank screen between pages.
 - Approach is minimal and matches /ops principles (no hidden layout hacks, no extra overlays).
 - Future regressions: if `transition-fade` is removed from `#page`, or if `animationSelector` is changed to a selector, CLS may return.
+- **Gyazo等のメディア枠が初期描画に乗ることが決定的に重要**  
+  - `.article-media__frame` などのプレースホルダーは width/height/aspect-ratio を持つが、`#page` が透明/未表示のままだと初回レイアウトに参加できず、画像ロード後に下方向へ押し出し（CLS様の伸び）が発生する。  
+  - `#page` を常時DOMに残し、初期ロードで `is-visible` を必ず付与することで、メディア枠が最初のレイアウト段階で確保され、画像が遅延しても押し出しが起きない。  
+  - 今後UI改善時は「プレースホルダーが初回レイアウトに乗るか」を必ず確認すること（Swup設定変更時・transitionクラス変更時は要チェック）。
 
 ## Changes
 - `src/layouts/base.njk`: add `transition-fade` to `#page`.
