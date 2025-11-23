@@ -10,6 +10,11 @@ hero:
   gradient: ""
 ---
 
+## ComfyUIにおけるグループ
+
+ComfyUI
+
+
 ## グループの作成
 
 ### 手動で作成
