@@ -2195,6 +2195,25 @@ body.nav-open .nav-backdrop {
     max-height: calc(100vh - var(--header-height));
     overflow-y: auto;
     box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border-strong) transparent;
+  }
+
+  .app-shell__sidebar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .app-shell__sidebar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .app-shell__sidebar::-webkit-scrollbar-thumb {
+    background: var(--color-border-strong);
+    border-radius: 999px;
+  }
+
+  .app-shell__sidebar::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-muted);
   }
 
   /* Reset rail inside sidebar to be static and full width */
