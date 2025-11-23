@@ -10,13 +10,13 @@ const initMobileNav = () => {
 
   if (!menuBtn || !sidebar) return;
 
-  const toggleNav = () => {
-    const isExpanded = menuBtn.getAttribute("aria-expanded") === "true";
-    menuBtn.setAttribute("aria-expanded", !isExpanded);
-    body.classList.toggle("nav-open");
-  };
-
   const NAV_TRANSITION_MS = 300;
+
+  const openNav = () => {
+    menuBtn.setAttribute("aria-expanded", "true");
+    body.classList.remove("nav-closing");
+    body.classList.add("nav-open");
+  };
 
   const closeNav = () => {
     menuBtn.setAttribute("aria-expanded", "false");
@@ -24,6 +24,15 @@ const initMobileNav = () => {
     body.classList.add("nav-closing");
     body.classList.remove("nav-open");
     setTimeout(() => body.classList.remove("nav-closing"), NAV_TRANSITION_MS);
+  };
+
+  const toggleNav = () => {
+    const isExpanded = menuBtn.getAttribute("aria-expanded") === "true";
+    if (isExpanded) {
+      closeNav();
+    } else {
+      openNav();
+    }
   };
 
   const closeSearch = () => {
