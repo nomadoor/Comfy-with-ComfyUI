@@ -83,7 +83,7 @@ ComfyUI Managerに無い場合や、開発中の最新版を使いたい場合�
   - 多くのユーティリティー機能、動画生成の補助
 
 - **[ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)**
-  - バッチ処理、リスト操作、Detailer（顔補正など）
+  - バッチ処理、リスト操作、Detailer
 
 - **[Kosinkadink/ComfyUI-VideoHelperSuite](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)**
   - 動画の読み込み・書き出し

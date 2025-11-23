@@ -1,4 +1,4 @@
-sections:
+﻿sections:
   - key: begin-with
     label: "はじめてのComfyUI"
     pages:
@@ -57,8 +57,12 @@ sections:
             title: "キャンバスの操作"
           - id: nodes
             title: ノード
+          - id: group
+            title: "グループ"
           - id: media
             title: "メディア"
+          - id: mask-editor
+            title: "マスクエディタ"
           - id: subgraphs
             title: "サブグラフ"
   - key: data-utilities
