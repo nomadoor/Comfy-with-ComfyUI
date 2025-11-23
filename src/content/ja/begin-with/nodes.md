@@ -77,7 +77,7 @@ hero:
 ### 削除
 
 - ノードを選択して `Delete` キー
-- または Node Selection Toolbox の `🗑️` をクリック
+- または `Node Selection Toolbox` の `🗑️` をクリック
 
 ![](https://gyazo.com/38bdfe83ae6bbbff8f063bed7936edfe){gyazo=loop}
 
@@ -114,14 +114,14 @@ hero:
 
 ノードの詳細情報を確認します。
 
-- Node Selection Toolbox の `ℹ️` をクリック
+- `Node Selection Toolbox` の `ℹ️` をクリック
 - そのノードがどのPythonファイルで定義されているかなどが分かります。エラー時のデバッグに便利です。
 
 ### ノードの色変更
 
 ノードの背景色を変更して、役割ごとに色分けすると見やすくなります。
 
-- Node Selection Toolbox の `🎨 (Color)` をクリックして色を選択
+- `Node Selection Toolbox` の `🎨 (Color)` をクリックして色を選択
 
 ![](https://gyazo.com/57d95f8586bdda17ed96855cbac37af8){gyazo=loop}
 
@@ -163,7 +163,7 @@ Rerouteノードはノードとして単体で存在しましたが、こちら�
 そのノードを**無視して**処理を続けます。
 
 - ノードを選択して `Ctrl + B`
-- Node Selection Toolbox の `🔀` をクリック
+- `Node Selection Toolbox` の `🔀` をクリック
 
 ![](https://gyazo.com/4ab6605bdd97ee8cae5b4403057a38e5){gyazo=loop}
 
@@ -212,7 +212,7 @@ Rerouteノードはノードとして単体で存在しましたが、こちら�
 
 ## ノードの整理
 
-複数ノードを選択し、Node Selection Toolboxの `⋮` をクリックします。
+複数ノードを選択し、`Node Selection Toolbox` の `⋮` をクリックします。
 
 - **Align Selected To**: 選択したノードを整列させます（上揃え、左揃えなど）。
 - **Distribute Nodes**: 選択したノードを等間隔に配置します。
