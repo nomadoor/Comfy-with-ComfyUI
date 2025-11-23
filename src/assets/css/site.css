@@ -2229,6 +2229,12 @@ body.nav-open .nav-backdrop {
     transform: translateX(0);
   }
 
+  /* Closing state (JS adds nav-closing, removes nav-open) */
+  body.nav-closing .app-shell__sidebar {
+    transition: transform 0.3s ease;
+    transform: translateX(-100%);
+  }
+
   /* Show mobile assistant */
   .sidebar__mobile-assistant {
     display: block;

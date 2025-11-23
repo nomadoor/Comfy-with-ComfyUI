@@ -16,9 +16,14 @@ const initMobileNav = () => {
     body.classList.toggle("nav-open");
   };
 
+  const NAV_TRANSITION_MS = 300;
+
   const closeNav = () => {
     menuBtn.setAttribute("aria-expanded", "false");
+    // trigger closing animation on mobile
+    body.classList.add("nav-closing");
     body.classList.remove("nav-open");
+    setTimeout(() => body.classList.remove("nav-closing"), NAV_TRANSITION_MS);
   };
 
   const closeSearch = () => {
