@@ -278,6 +278,12 @@ video {
   padding: var(--shell-padding-block) var(--shell-padding);
   margin: 0 auto;
   max-width: var(--layout-max);
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, var(--content-max)) var(--toc-width);
+  gap: var(--column-gap);
+  padding: var(--shell-padding-block) var(--shell-padding);
+  margin: 0 auto;
+  max-width: var(--layout-max);
   width: 100%;
   position: relative;
   min-height: 100vh;
@@ -286,6 +292,24 @@ video {
 .app-shell__content {
   min-width: 0;
   width: 100%;
+}
+
+/* Page fade-in (Swup: we toggle .is-visible from JS) */
+.transition-fade {
+  opacity: 0;
+  transition: opacity 260ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.transition-fade.is-visible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .transition-fade,
+  .transition-fade.is-visible {
+    transition: none !important;
+    opacity: 1 !important;
+  }
 }
 
 .sidebar {
@@ -1720,6 +1744,33 @@ h1 {
   --assistant-panel-collapse-delay: 1000ms;
   --assistant-rail-transition-out-duration: 500ms;
   --assistant-rail-transition-out-timing: cubic-bezier(0.7, 0, 0.7, 1);
+}
+
+.assistant-rail__avatar {
+  --assistant-question-size: 20rem;
+  --assistant-question-x: 9%;
+  --assistant-question-y: 9%;
+  --assistant-vivi-size: 20rem;
+  --assistant-vivi-x: 11%;
+  --assistant-vivi-y: 8%;
+  width: 100%;
+  height: 90px;
+  border-radius: var(--radius-md);
+  border: none;
+  background-color: var(--color-panel-strong);
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  filter: brightness(0.8);
+  transition: height var(--assistant-rail-transition-out-duration) var(--assistant-rail-transition-out-timing) var(--assistant-panel-collapse-delay);
+}
+}
+
+--assistant-rail-transition-timing: cubic-bezier(0.3, 0, 0.3, 1);
+--assistant-panel-collapse-delay: 1000ms;
+--assistant-rail-transition-out-duration: 500ms;
+--assistant-rail-transition-out-timing: cubic-bezier(0.7, 0, 0.7, 1);
 }
 
 .assistant-rail__avatar {

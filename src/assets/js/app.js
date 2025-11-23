@@ -42,12 +42,22 @@ const bootstrap = async () => {
 
   const hookOn = swup.hooks?.on?.bind(swup.hooks);
   const on = swup.on?.bind(swup);
-
+  const getPage = () => document.getElementById("page");
   const beforeOut = () => document.body.classList.remove("nav-open", "search-open");
+  const showPage = () => {
+    const page = getPage();
+    if (page) page.classList.add("is-visible");
+  };
+
+  showPage();
+
   hookOn?.("visit:start", beforeOut);
   on?.("animation:out:start", beforeOut);
 
-  const afterReplace = () => reinit();
+  const afterReplace = () => {
+    reinit();
+    showPage();
+  };
   hookOn?.("content:replace", afterReplace);
   hookOn?.("page:view", afterReplace);
   on?.("content:replace", afterReplace);
