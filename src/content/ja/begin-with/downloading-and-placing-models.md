@@ -110,6 +110,7 @@ ComfyUIの `Load Checkpoint` ノードなどでは、ファイル名が `SD1.5\v
 **[rgthree-comfy](https://github.com/rgthree/rgthree-comfy)** というカスタムノードを導入すると、
 フォルダ分けした構造をメニュー上で階層的に表示してくれます。
 
-![](https://i.gyazo.com/dccf958c1d05e68e94bcb6bdd680e43c.png){gyazo=image}
+- `ComfyUIアイコン` → `⚙Settings` →　`rgthree-comfy settings` → `Auto Nest Subdirectories in Menus ✅️`
 
-`ComfyUIアイコン` → `⚙Settings` →　`rgthree-comfy settings` → `Auto Nest Subdirectories in Menus ✅️`
+  ![](https://i.gyazo.com/dccf958c1d05e68e94bcb6bdd680e43c.png){gyazo=image}
+
