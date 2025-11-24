@@ -1088,6 +1088,7 @@ h1 {
   flex-wrap: nowrap;
   gap: var(--space-md);
   overflow-x: auto;
+  margin: var(--space-md) 0;
 }
 
 .article-media-row .article-media {
@@ -1180,7 +1181,7 @@ h1 {
 }
 
 .article-video {
-  margin: var(--space-md) 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
@@ -1507,6 +1508,7 @@ h1 {
 
 
 .workflow-json {
+  margin: var(--space-md) 0;
 }
 
 .workflow-json__list {
