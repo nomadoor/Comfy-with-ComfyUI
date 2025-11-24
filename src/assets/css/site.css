@@ -147,6 +147,7 @@ video {
   display: flex;
   justify-content: center;
   position: relative;
+  width: max(calc(100% - 10rem), 400px);
 }
 
 .site-header__logo {
@@ -1096,9 +1097,9 @@ h1 {
 .article-media__frame {
   width: min(100%,
       var(--article-media-width, 720px),
-      calc(var(--article-media-aspect, 16 / 9) * var(--article-media-height, 300px)));
+      calc(var(--article-media-aspect, 16 / 9) * min(var(--article-media-height, 300px), 300px)));
   max-width: 100%;
-  max-height: var(--article-media-height, 300px);
+  max-height: min(var(--article-media-height, 300px), 300px);
   aspect-ratio: var(--article-media-aspect, 16 / 9);
   height: auto;
   border-radius: var(--radius-md);
@@ -1506,7 +1507,6 @@ h1 {
 
 
 .workflow-json {
-  margin-top: var(--space-2xl);
 }
 
 .workflow-json__list {
@@ -2026,7 +2026,14 @@ body.lightbox-open {
   gap: var(--space-lg);
 }
 
-.lightbox__image-area img {
+.lightbox__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox__media img,
+.lightbox__media video {
   max-width: 80vw;
   max-height: 70vh;
   transition: transform 0.2s ease;
@@ -2035,7 +2042,11 @@ body.lightbox-open {
   z-index: 1;
 }
 
-.lightbox__image-area img.is-zoomed {
+.lightbox__media video {
+  background: #000;
+}
+
+.lightbox__media img.is-zoomed {
   cursor: zoom-out;
 }
 

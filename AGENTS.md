@@ -75,6 +75,10 @@ Code and content are then updated to match the changes in `/ops`.
 
 Workflow JSONs must be complete enough for a third party to **reproduce the results**.
 
+### Authorship Boundary
+
+The human owner is the author, not the agent. Do not perform edits that exceed light proofreading of the owner's text.
+
 ---
 
 ## 4. Information Architecture and Writing

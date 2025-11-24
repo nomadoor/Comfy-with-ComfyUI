@@ -67,3 +67,7 @@ Gyazoを使用し、適切な属性を付与する。
 ![](https://gyazo.com/hash){gyazo=loop}
 ![](https://gyazo.com/hash){gyazo=player}
 ```
+
+## 著者性
+
+著者は人間オーナーであり、エージェントは軽い校正を超える本文の改変を行わない。

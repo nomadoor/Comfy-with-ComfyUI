@@ -1,13 +1,14 @@
 let lightboxEl = null;
 let imageEl = null;
+let videoEl = null;
 let closeButtons = [];
 let prevButton = null;
 let nextButton = null;
 let keyHandler = null;
 let zoomed = false;
 let currentIndex = 0;
-let images = [];
-let initializedImages = new WeakSet();
+let mediaItems = [];
+let initializedMedia = new WeakSet();
 let controlsBound = false;
 
 const LIGHTBOX_ICONS = {
@@ -37,7 +38,10 @@ function buildLightbox() {
         <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="前の画像">
           ${renderIcon("prev")}
         </button>
-        <img data-lightbox-image alt="" />
+        <div class="lightbox__media">
+          <img data-lightbox-image alt="" />
+          <video data-lightbox-video playsinline></video>
+        </div>
         <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="次の画像">
           ${renderIcon("next")}
         </button>
@@ -47,13 +51,14 @@ function buildLightbox() {
   document.body.appendChild(wrapper);
   lightboxEl = wrapper;
   imageEl = wrapper.querySelector("[data-lightbox-image]");
+  videoEl = wrapper.querySelector("[data-lightbox-video]");
   closeButtons = wrapper.querySelectorAll("[data-lightbox-close]");
   prevButton = wrapper.querySelector("[data-lightbox-prev]");
   nextButton = wrapper.querySelector("[data-lightbox-next]");
   return wrapper;
 }
 
-function getImageSource(target) {
+function getMediaSource(target) {
   if (!target) return "";
   return target.dataset.fullSrc || target.currentSrc || target.src;
 }
@@ -64,18 +69,58 @@ function updateZoom() {
 }
 
 function show(index) {
-  if (!images.length) return;
-  currentIndex = (index + images.length) % images.length;
-  const target = images[currentIndex];
-  const source = getImageSource(target);
-  if (source) {
-    imageEl.removeAttribute("srcset");
-    imageEl.removeAttribute("sizes");
-    imageEl.src = source;
-  }
-  imageEl.alt = target.alt || "";
+  if (!mediaItems.length) return;
+  currentIndex = (index + mediaItems.length) % mediaItems.length;
+  const target = mediaItems[currentIndex];
+  const source = getMediaSource(target);
+  const isVideo = target.tagName.toLowerCase() === "video";
+
+  // Reset state
   zoomed = false;
   updateZoom();
+
+  // Stop any playing video
+  if (videoEl) {
+    videoEl.pause();
+    videoEl.removeAttribute("src");
+  }
+
+  if (isVideo) {
+    imageEl.style.display = "none";
+    if (videoEl) {
+      videoEl.style.display = "block";
+      if (source) {
+        videoEl.src = source;
+      }
+      // Mirror current mode (loop / player) from parent figure if present
+      const figure = target.closest("[data-gyazo-toggle]");
+      const mode = figure?.dataset.gyazoMode || figure?.getAttribute("data-gyazo-initial") || "loop";
+      const isPlayer = mode === "player";
+      videoEl.loop = !isPlayer;
+      videoEl.muted = !isPlayer;
+      videoEl.autoplay = !isPlayer;
+      videoEl.controls = true; // always allow controls in lightbox
+
+      if (!isPlayer) {
+        const playPromise = videoEl.play();
+        if (playPromise?.catch) playPromise.catch(() => {});
+      } else {
+        videoEl.pause();
+      }
+    }
+  } else {
+    if (videoEl) {
+      videoEl.style.display = "none";
+    }
+    imageEl.style.display = "block";
+    if (source) {
+      imageEl.removeAttribute("srcset");
+      imageEl.removeAttribute("sizes");
+      imageEl.src = source;
+    }
+    imageEl.alt = target.alt || "";
+  }
+
   lightboxEl.classList.add("is-open");
   document.documentElement.classList.add("lightbox-open");
   attachKeyHandler();
@@ -83,6 +128,9 @@ function show(index) {
 
 function close() {
   if (!lightboxEl) return;
+  if (videoEl) {
+    videoEl.pause();
+  }
   lightboxEl.classList.remove("is-open");
   document.documentElement.classList.remove("lightbox-open");
   detachKeyHandler();
@@ -93,8 +141,11 @@ function next(step = 1) {
 }
 
 function toggleZoom() {
-  zoomed = !zoomed;
-  updateZoom();
+  // Zoom is only relevant for images
+  if (imageEl.style.display !== "none") {
+    zoomed = !zoomed;
+    updateZoom();
+  }
 }
 
 function onKeyDown(event) {
@@ -127,25 +178,31 @@ function detachKeyHandler() {
 }
 
 const initLightbox = (root = document) => {
-  images = Array.from(root.querySelectorAll(".article-body img"));
-  if (!images.length) return;
+  mediaItems = Array.from(root.querySelectorAll(".article-body img, .article-body figure[data-gyazo-toggle] video"));
+  if (!mediaItems.length) return;
 
   buildLightbox();
 
-  images.forEach((img, index) => {
-    if (initializedImages.has(img)) return;
-    initializedImages.add(img);
-    img.style.cursor = "zoom-in";
-    img.dataset.lightboxIndex = String(index);
-    img.addEventListener("click", () => show(index));
-    img.addEventListener("keydown", (event) => {
+  mediaItems.forEach((media, index) => {
+    if (initializedMedia.has(media)) return;
+    initializedMedia.add(media);
+
+    if (media.tagName.toLowerCase() === "img") {
+      media.style.cursor = "zoom-in";
+    } else {
+      media.style.cursor = "zoom-in";
+    }
+
+    media.dataset.lightboxIndex = String(index);
+    media.addEventListener("click", () => show(index));
+    media.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
         show(index);
       }
     });
-    if (!img.hasAttribute("tabindex")) {
-      img.setAttribute("tabindex", "0");
+    if (!media.hasAttribute("tabindex")) {
+      media.setAttribute("tabindex", "0");
     }
   });
 
