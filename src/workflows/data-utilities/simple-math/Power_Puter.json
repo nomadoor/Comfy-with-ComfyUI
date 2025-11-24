@@ -1,0 +1,210 @@
+{
+  "id": "c05fc5ca-84cc-4a12-9e1a-3dbddf62dcde",
+  "revision": 0,
+  "last_node_id": 7,
+  "last_link_id": 6,
+  "nodes": [
+    {
+      "id": 3,
+      "type": "LoadImage",
+      "pos": [
+        3602.8349609375,
+        -692.7393798828125
+      ],
+      "size": [
+        214.080078125,
+        314
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "example.png",
+        "image"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "PrimitiveInt",
+      "pos": [
+        3610.344970703125,
+        -312.99334716796875
+      ],
+      "size": [
+        210,
+        82
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            2
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "PrimitiveInt"
+      },
+      "widgets_values": [
+        512,
+        "fixed"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "PreviewAny",
+      "pos": [
+        4196.6748046875,
+        -692.7393798828125
+      ],
+      "size": [
+        210,
+        88
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 3
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 1,
+      "type": "Power Puter (rgthree)",
+      "pos": [
+        3866.253662109375,
+        -692.7393798828125
+      ],
+      "size": [
+        281.0826721191406,
+        259.6524963378906
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "*",
+          "link": 1
+        },
+        {
+          "name": "b",
+          "type": "*",
+          "link": 2
+        },
+        {
+          "name": "c",
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "STRING",
+          "name": "*",
+          "shape": 3,
+          "type": "STRING",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "rgthree-comfy",
+        "ver": "0fb1e239a903e93ef626a8c20589b38f46e39dff"
+      },
+      "widgets_values": [
+        {
+          "outputs": [
+            "STRING"
+          ]
+        },
+        "# テンソルの形状から画像サイズを取得\n_, height, width, _ = a.shape\n\n# 条件に応じたメッセージを作成\nif width < b:\n    result = f\"This image is smaller than {b}\"\nelse:\n    result = f\"This image is larger than {b}\"\n\n# 結果を出力\nprint(result)\n\n# 結果を返す\nreturn result"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      1,
+      3,
+      0,
+      1,
+      0,
+      "*"
+    ],
+    [
+      2,
+      4,
+      0,
+      1,
+      1,
+      "*"
+    ],
+    [
+      3,
+      1,
+      0,
+      5,
+      0,
+      "*"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.2284597357368363,
+      "offset": [
+        -3502.8349609375,
+        792.7393798828125
+      ]
+    },
+    "frontendVersion": "1.27.3",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
