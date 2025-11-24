@@ -1,5 +1,6 @@
 import initPage from "./page.js";
 import { refreshActiveNav } from "./link-behavior.js";
+import { updateLangLinks } from "./lang-switcher.js";
 
 const CONTAINER_SELECTOR = "#page";
 const ROUTER_IGNORE_ATTR = "data-router-ignore";
@@ -82,6 +83,7 @@ const reinitializePage = (destinationUrl) => {
   document.body.classList.remove("nav-open", "search-open");
   initPage();
   refreshActiveNav(destinationUrl.pathname);
+  updateLangLinks(destinationUrl.pathname);
   scrollToTarget(destinationUrl);
 };
 
