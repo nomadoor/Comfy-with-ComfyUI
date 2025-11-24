@@ -4,7 +4,7 @@
   "type": "module",
   "description": "ComfyUI onboarding + workflow docs built with Eleventy, vanilla CSS, and ESM-only scripts.",
   "scripts": {
-    "dev": "eleventy --serve --input=src --output=_site",
+    "dev": "npx @11ty/eleventy --serve --port=8080",
     "build": "eleventy --input=src --output=_site",
     "clean": "rimraf _site",
     "test:playwright": "playwright test"

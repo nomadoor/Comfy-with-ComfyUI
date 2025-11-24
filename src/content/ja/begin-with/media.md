@@ -164,3 +164,11 @@ Load Imaeg ノードと同様ドラッグ・アンド・ドロップでも動画
 - `Save Audio (FLAC)`
 - `Save Audio (MP3)`
 - `Save Audio (Opus)`
+
+## Webカメラ
+
+![](https://gyazo.com/2a7ab2f8dc9179e6c02d15e74dedcea3){gyazo=image}
+
+Webカメラの入力を画像として取り込むことができます。
+
+詳しくは、[Webカメラ](/ja/data-utilities/webcam-input/)をご覧ください。
