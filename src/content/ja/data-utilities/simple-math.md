@@ -25,7 +25,7 @@ hero:
   - 優れたノードなのですが、ほぼアーカイブ状態であるため、優れたノードが見つかれば差し替えます。
 - **[ComfyUI-Custom-Scripts](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)**
 
-ここでは **Simple Math** を例に解説します。
+ここでは、**ComfyUI_essentials**の **Simple Math**ノード を例に解説します。
 
 ---
 
