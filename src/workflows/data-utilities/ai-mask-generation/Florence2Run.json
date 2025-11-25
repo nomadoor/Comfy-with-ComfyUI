@@ -1,0 +1,273 @@
+{
+  "id": "57b8cf9b-11ed-420b-be41-187510d36325",
+  "revision": 0,
+  "last_node_id": 9,
+  "last_link_id": 9,
+  "nodes": [
+    {
+      "id": 4,
+      "type": "PreviewImage",
+      "pos": [
+        500.84779414328955,
+        53.49562866388473
+      ],
+      "size": [
+        357.987809336234,
+        366.9149013951313
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 6
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.68",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 7,
+      "type": "DownloadAndLoadFlorence2Model",
+      "pos": [
+        -199.95852064582468,
+        506.0635940169577
+      ],
+      "size": [
+        258.6021484375,
+        130
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora",
+          "shape": 7,
+          "type": "PEFTLORA",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "florence2_model",
+          "type": "FL2MODEL",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-florence2",
+        "ver": "00b63382966a444a9fefacb65b8deb188d12a458",
+        "Node name for S&R": "DownloadAndLoadFlorence2Model"
+      },
+      "widgets_values": [
+        "microsoft/Florence-2-base-ft",
+        "fp16",
+        "sdpa",
+        true
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 9,
+      "type": "MaskPreview",
+      "pos": [
+        504.15530090191146,
+        487.1967803209515
+      ],
+      "size": [
+        356.4644286534351,
+        363.80642544479423
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 9
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.71",
+        "Node name for S&R": "MaskPreview"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 6,
+      "type": "Florence2Run",
+      "pos": [
+        95.85142311428962,
+        53.49562866388473
+      ],
+      "size": [
+        366.62910569436383,
+        364
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 4
+        },
+        {
+          "name": "florence2_model",
+          "type": "FL2MODEL",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            6
+          ]
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [
+            9
+          ]
+        },
+        {
+          "name": "caption",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "data",
+          "type": "JSON",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-florence2",
+        "ver": "00b63382966a444a9fefacb65b8deb188d12a458",
+        "Node name for S&R": "Florence2Run"
+      },
+      "widgets_values": [
+        "Potted plant",
+        "caption_to_phrase_grounding",
+        true,
+        false,
+        1024,
+        3,
+        true,
+        "",
+        1234,
+        "fixed"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 5,
+      "type": "LoadImage",
+      "pos": [
+        -232.51584222034649,
+        53.49562866388473
+      ],
+      "size": [
+        290,
+        390
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            4
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.68",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "ComfyUI_05189_.png",
+        "image"
+      ]
+    }
+  ],
+  "links": [
+    [
+      4,
+      5,
+      0,
+      6,
+      0,
+      "IMAGE"
+    ],
+    [
+      6,
+      6,
+      0,
+      4,
+      0,
+      "IMAGE"
+    ],
+    [
+      7,
+      7,
+      0,
+      6,
+      1,
+      "FL2MODEL"
+    ],
+    [
+      9,
+      6,
+      1,
+      9,
+      0,
+      "MASK"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.1167815779424781,
+      "offset": [
+        332.5158422203465,
+        46.50437133611527
+      ]
+    },
+    "frontendVersion": "1.33.8",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

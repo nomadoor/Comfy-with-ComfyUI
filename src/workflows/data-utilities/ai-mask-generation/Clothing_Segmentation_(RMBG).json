@@ -1,0 +1,185 @@
+{
+  "id": "207761f3-951e-495d-82e6-ba18f812bf62",
+  "revision": 0,
+  "last_node_id": 6,
+  "last_link_id": 4,
+  "nodes": [
+    {
+      "id": 4,
+      "type": "LoadImage",
+      "pos": [
+        -196.19169533724752,
+        147.27211328602687
+      ],
+      "size": [
+        300.2159903749374,
+        523.434865885697
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.71",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "ComfyUI_temp_jgbjo_00009_.png",
+        "image"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "PreviewImage",
+      "pos": [
+        554.1983967152759,
+        147.27211328602687
+      ],
+      "size": [
+        279.6810290221624,
+        519.4029697754617
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 3
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.71",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 1,
+      "type": "ClothesSegment",
+      "pos": [
+        159.1113458764829,
+        147.27211328602687
+      ],
+      "size": [
+        340,
+        662
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            3
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        },
+        {
+          "name": "MASK_IMAGE",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-rmbg",
+        "ver": "2.9.4",
+        "Node name for S&R": "ClothesSegment"
+      },
+      "widgets_values": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        512,
+        0,
+        0,
+        false,
+        "Color",
+        "#00ff00"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      1,
+      4,
+      0,
+      1,
+      0,
+      "IMAGE"
+    ],
+    [
+      3,
+      1,
+      0,
+      5,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6934334949441355,
+      "offset": [
+        552.8853816068156,
+        29.159152850417545
+      ]
+    },
+    "frontendVersion": "1.33.8",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

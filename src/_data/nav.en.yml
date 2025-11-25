@@ -65,6 +65,14 @@
             title: "Mask Editor"
           - id: subgraphs
             title: "Subgraphs"
+      - id: columns
+        title: "Columns"
+        noLink: true
+        children:
+          - id: readable-nodes
+            title: "Readable Nodes"
+          - id: wireless-nodes
+            title: "Wireless Nodes"
   - key: data-utilities
     label: "Data / Image Utilities"
     pages:
@@ -92,6 +100,8 @@
             title: "Mask & Alpha Channel"
           - id: mask-ops
             title: "Mask Operations"
+          - id: ai-mask-generation
+            title: "AI Mask Generation"
           - id: layer-composite-blend
             title: "Layer Composite & Blend"
       - id: batch-processing
@@ -104,14 +114,7 @@
             title: "List"
           - id: batch-video
             title: "Batch & Video"
-      - id: columns
-        title: "Columns"
-        noLink: true
-        children:
-          - id: readable-nodes
-            title: "Readable Nodes"
-          - id: wireless-nodes
-            title: "Wireless Nodes"
+
   - key: ai-capabilities
     label: "AI Capabilities"
     pages:
