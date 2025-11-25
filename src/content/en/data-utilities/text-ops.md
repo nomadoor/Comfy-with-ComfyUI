@@ -31,63 +31,56 @@ In the programming world, text is called **string** to distinguish it from numbe
 
 ## Basic Operation Nodes
 
-### Entering Text
+### String Node (Text Input)
 
 ![](https://i.gyazo.com/7669da6621b5fcb5b7cc0c539f4d5af7.png){gyazo=image}
 
-**String** node and **String (Multiline)** node etc. are provided as nodes for entering character strings.
+This is a basic node for entering character strings.
+Using the **String (Multiline)** node allows you to enter text containing line breaks.
 
-Multiline is simply one that allows line breaks.
+### Concatenate Node (Text Joining)
 
-### Concatenating Text
+![](https://i.gyazo.com/a20e6df7b2f65bf71d42c2070f79c726.png){gyazo=image}
 
 Combines multiple strings into one.
 (Example: `apple` + `pen` → `applepen`)
 
-![](https://i.gyazo.com/a20e6df7b2f65bf71d42c2070f79c726.png){gyazo=image}
+- `delimiter` is a separator character. You can use whatever you like (comma, line break, etc.).
 
-- **Concatenate Node**
-  - `delimiter` is a separator character. You can use whatever you like (comma, line break, etc.).
+### Replace Node (Text Replacement)
 
-### Replacing Text
+![](https://i.gyazo.com/db1e540470805d5888a9c90b1381fa44.png){gyazo=image}
 
 Replaces specified characters with other characters.
 (Example: `apple pen` → `orange pen`)
 
-![](https://i.gyazo.com/db1e540470805d5888a9c90b1381fa44.png){gyazo=image}
+### Substring Node (Text Extraction)
 
-- **Replace Node**
-
-### Extracting Part of Text
+![](https://i.gyazo.com/ab158488e388004f441a2258379c7930.png){gyazo=image}
 
 Extracts characters in a specified range.
 (Example: `apple` → `ppl`)
 
-![](https://i.gyazo.com/ab158488e388004f441a2258379c7930.png){gyazo=image}
+- Extracts the string from the `start`th to the `end`th character.
 
-- **Substring Node**
-  - Extracts the string from the `start`th to the `end`th character.
+### Trim Node (Remove Spaces)
 
-### Removing Extra Spaces
+![](https://i.gyazo.com/1b83d39d165c117f05e1d28ca88957ee.png){gyazo=image}
 
 Removes spaces before and after the string.
 (Example: ` apple ` → `apple`)
 
-![](https://i.gyazo.com/1b83d39d165c117f05e1d28ca88957ee.png){gyazo=image}
+- It is plain but important because it prevents errors caused by unintended spaces in user input etc.
 
-- **Trim Node**
-  - It is plain but important because it prevents errors caused by unintended spaces in user input etc.
+### Length Node (Character Count)
 
-### Checking Character Count
+![](https://i.gyazo.com/cd8d1001ddaf646c85f31bfbf7df61fb.png){gyazo=image}
 
 Counts the length of the text.
 (Example: `apple` → `5`)
 
-![](https://i.gyazo.com/cd8d1001ddaf646c85f31bfbf7df61fb.png){gyazo=image}
-
-- **Length Node**
-  - Spaces and line breaks are also counted as 1 character.
-  - The output will be **int type (number)**.
+- Spaces and line breaks are also counted as 1 character.
+- The output will be **int type (number)**.
 
 ---
 
@@ -95,17 +88,17 @@ Counts the length of the text.
 
 Performs complex searches and replacements using a description rule called "Regular Expression (Regex)".
 
-### Extracting with Regular Expressions
+### Regex Extract Node
 
 ![](https://i.gyazo.com/ad16cc24b76fdffe4ed4adfd84a48563.png){gyazo=image}
 
-- **Regex Extract Node**
+Extracts strings that match the condition using regular expressions.
 
-### Replacing with Regular Expressions
+### Regex Replace Node
 
 ![](https://i.gyazo.com/8f469774411a0096e3725a090fe41d9d.png){gyazo=image}
 
-- **Regex Replace Node**
+Replaces strings that match the condition using regular expressions.
 
 ---
 

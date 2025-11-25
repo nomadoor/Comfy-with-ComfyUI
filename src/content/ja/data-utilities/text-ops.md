@@ -31,63 +31,56 @@ ComfyUIでは、主にプロンプトとしてテキストを扱います。
 
 ## 基本的な操作ノード
 
-### 文字を入力する
+### String ノード (文字入力)
 
 ![](https://i.gyazo.com/7669da6621b5fcb5b7cc0c539f4d5af7.png){gyazo=image}
 
-文字列を入力するノードとして **String** ノードと **String (Multiline)** ノードなどが用意されています。
+文字列を入力する基本的なノードです。
+**String (Multiline)** ノードを使うと、改行を含むテキストを入力できます。
 
-Multilineは単に改行ができるようになったものです。
+### Concatenate ノード (文字結合)
 
-### 文字をつなげる
+![](https://i.gyazo.com/a20e6df7b2f65bf71d42c2070f79c726.png){gyazo=image}
 
 複数のstringをつなげてひとつにまとめます。
 （例：`apple` + `pen` → `applepen`）
 
-![](https://i.gyazo.com/a20e6df7b2f65bf71d42c2070f79c726.png){gyazo=image}
+- `delimiter` は区切り文字のことです。好きなものが使用できます（カンマや改行など）。
 
-- **Concatenateノード**
-  - `delimiter` は区切り文字のことです。好きなものが使用できます（カンマや改行など）。
+### Replace ノード (文字置換)
 
-### 文字を置き換える
+![](https://i.gyazo.com/db1e540470805d5888a9c90b1381fa44.png){gyazo=image}
 
 指定した文字を別の文字に置き換えます。
 （例：`apple pen` → `orange pen`）
 
-![](https://i.gyazo.com/db1e540470805d5888a9c90b1381fa44.png){gyazo=image}
+### Substring ノード (文字抽出)
 
-- **Replaceノード**
-
-### 文字の一部を切り出す
+![](https://i.gyazo.com/ab158488e388004f441a2258379c7930.png){gyazo=image}
 
 指定した範囲の文字を抽出します。
 （例：`apple` → `ppl`）
 
-![](https://i.gyazo.com/ab158488e388004f441a2258379c7930.png){gyazo=image}
+- `start` 番目から `end` 番目までの文字列を切り出します。
 
-- **Substringノード**
-  - `start` 番目から `end` 番目までの文字列を切り出します。
+### Trim ノード (空白削除)
 
-### 余計な空白を消す
+![](https://i.gyazo.com/1b83d39d165c117f05e1d28ca88957ee.png){gyazo=image}
 
 文字列の前後にあるスペースを削除します。
 （例：` apple ` → `apple`）
 
-![](https://i.gyazo.com/1b83d39d165c117f05e1d28ca88957ee.png){gyazo=image}
+- ユーザー入力などで意図しない空白が入ってエラーになるのを防げるため、地味ですが重要です。
 
-- **Trimノード**
-  - ユーザー入力などで意図しない空白が入ってエラーになるのを防げるため、地味ですが重要です。
+### Length ノード (文字数カウント)
 
-### 文字数を調べる
+![](https://i.gyazo.com/cd8d1001ddaf646c85f31bfbf7df61fb.png){gyazo=image}
 
 文字の長さをカウントします。
 （例：`apple` → `5`）
 
-![](https://i.gyazo.com/cd8d1001ddaf646c85f31bfbf7df61fb.png){gyazo=image}
-
-- **Lengthノード**
-  - スペースや改行も1文字としてカウントされます。
-  - 出力は **int型（数値）** になります。
+- スペースや改行も1文字としてカウントされます。
+- 出力は **int型（数値）** になります。
 
 ---
 
@@ -95,17 +88,17 @@ Multilineは単に改行ができるようになったものです。
 
 「正規表現（Regex）」という記述ルールを使って、複雑な検索や置換を行います。
 
-### 正規表現で抽出する
+### Regex Extract ノード
 
 ![](https://i.gyazo.com/ad16cc24b76fdffe4ed4adfd84a48563.png){gyazo=image}
 
-- **Regex Extractノード**
+正規表現を使って、条件に一致する文字列を抽出します。
 
-### 正規表現で置き換える
+### Regex Replace ノード
 
 ![](https://i.gyazo.com/8f469774411a0096e3725a090fe41d9d.png){gyazo=image}
 
-- **Regex Replaceノード**
+正規表現を使って、条件に一致する文字列を置き換えます。
 
 ---
 
