@@ -65,6 +65,14 @@
             title: "マスクエディタ"
           - id: subgraphs
             title: "サブグラフ"
+      - id: columns
+        title: "コラム"
+        noLink: true
+        children:
+          - id: readable-nodes
+            title: "リーダブルノードのすすめ"
+          - id: wireless-nodes
+            title: "無線でノードをつなぐ"
   - key: data-utilities
     label: "データ / 画像ユーティリティ"
     pages:
@@ -92,6 +100,8 @@
             title: "マスクとアルファチャンネル"
           - id: mask-ops
             title: "マスク操作"
+          - id: ai-mask-generation
+            title: "AIを使ったマスク生成"
           - id: layer-composite-blend
             title: "レイヤ合成・ブレンド"
       - id: batch-processing
@@ -104,14 +114,6 @@
             title: "リスト"
           - id: batch-video
             title: "バッチ・動画"
-      - id: columns
-        title: "コラム"
-        noLink: true
-        children:
-          - id: readable-nodes
-            title: "リーダブルノードのすすめ"
-          - id: wireless-nodes
-            title: "無線でノードをつなぐ"
   - key: ai-capabilities
     label: "AIの仕組みと出来ること"
     pages:
