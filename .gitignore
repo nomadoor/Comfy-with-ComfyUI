@@ -21,6 +21,8 @@ Thumbs.db
 # Optional local data
 coverage/
 tmp/
+test-results/
+playwright-report/
 
 # Mock assets (large reference images only)
 src/assets/mock/**
