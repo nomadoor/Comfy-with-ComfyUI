@@ -1525,7 +1525,7 @@ h1 {
   align-items: center;
   gap: var(--space-sm);
   border-radius: var(--radius-md);
-  padding: var(--space-2xs) 1.25rem;
+  padding: 0 1.25rem;
   background: var(--color-panel-strong);
   align-self: start;
 }

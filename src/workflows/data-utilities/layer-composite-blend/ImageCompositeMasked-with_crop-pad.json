@@ -1,0 +1,804 @@
+{
+  "id": "5afabc21-bbd6-4ea3-bd3a-ce4c1dedc9c8",
+  "revision": 0,
+  "last_node_id": 77,
+  "last_link_id": 119,
+  "nodes": [
+    {
+      "id": 61,
+      "type": "ImageCompositeMasked",
+      "pos": [
+        381.84986261757945,
+        -438.46703544218724
+      ],
+      "size": [
+        210,
+        146
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "destination",
+          "type": "IMAGE",
+          "link": 89
+        },
+        {
+          "name": "source",
+          "type": "IMAGE",
+          "link": 107
+        },
+        {
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": 90
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            92
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "ImageCompositeMasked"
+      },
+      "widgets_values": [
+        0,
+        0,
+        true
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 71,
+      "type": "ImageCompositeMasked",
+      "pos": [
+        374.4083626175796,
+        562.3663137714836
+      ],
+      "size": [
+        210,
+        146
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "destination",
+          "type": "IMAGE",
+          "link": 103
+        },
+        {
+          "name": "source",
+          "type": "IMAGE",
+          "link": 104
+        },
+        {
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": 105
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            106
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "ImageCompositeMasked"
+      },
+      "widgets_values": [
+        0,
+        0,
+        true
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 76,
+      "type": "PreviewImage",
+      "pos": [
+        623.0842712343316,
+        78.65974313649643
+      ],
+      "size": [
+        503.2014527929691,
+        328.6741409453125
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 116
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 69,
+      "type": "PreviewImage",
+      "pos": [
+        623.0842712343316,
+        565.6720988954505
+      ],
+      "size": [
+        425.25276879296894,
+        420.7953129453126
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 106
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 64,
+      "type": "PreviewImage",
+      "pos": [
+        623.0842712343316,
+        -437.8232503182202
+      ],
+      "size": [
+        389.7879943847656,
+        406.6759948730469
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 92
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 67,
+      "type": "ImageScale",
+      "pos": [
+        134.00288795693496,
+        583.6559534632579
+      ],
+      "size": [
+        210,
+        130
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 100
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 97
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 98
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            104
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "ImageScale"
+      },
+      "widgets_values": [
+        "nearest-exact",
+        512,
+        512,
+        "center"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 73,
+      "type": "GetImageSize",
+      "pos": [
+        -168.98592681113297,
+        164.04643816374906
+      ],
+      "size": [
+        210,
+        136
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 108
+        }
+      ],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            109
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            111
+          ]
+        },
+        {
+          "name": "batch_size",
+          "type": "INT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "GetImageSize"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 66,
+      "type": "LoadImage",
+      "pos": [
+        -758.9863037618766,
+        157.01741062679625
+      ],
+      "size": [
+        449.2804064023437,
+        370.28902500000004
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            100,
+            107,
+            108,
+            119
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "flat_park.png",
+        "image"
+      ]
+    },
+    {
+      "id": 62,
+      "type": "LoadImage",
+      "pos": [
+        -721.3323372235926,
+        -426.2833808821872
+      ],
+      "size": [
+        380.18952740234374,
+        472.07216076953125
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            89,
+            99,
+            103,
+            112
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            90,
+            105,
+            114
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "9af5807860cb17e45acaabd3556f09fc.png",
+        "image"
+      ]
+    },
+    {
+      "id": 68,
+      "type": "GetImageSize",
+      "pos": [
+        -168.98592681113297,
+        629.975369576539
+      ],
+      "size": [
+        210,
+        136
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 99
+        }
+      ],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            97
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            98
+          ]
+        },
+        {
+          "name": "batch_size",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "GetImageSize"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 72,
+      "type": "ImageResizeKJv2",
+      "pos": [
+        74.00288795693494,
+        76.57273099184734
+      ],
+      "size": [
+        270,
+        336
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 112
+        },
+        {
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": 114
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 109
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 111
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            117
+          ]
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [
+            118
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-kjnodes",
+        "ver": "c661baadd9683c0033cd2a6ad90157c6d099a6c2",
+        "Node name for S&R": "ImageResizeKJv2"
+      },
+      "widgets_values": [
+        512,
+        512,
+        "nearest-exact",
+        "pad",
+        "0, 0, 0",
+        "center",
+        1,
+        "cpu"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 77,
+      "type": "ImageCompositeMasked",
+      "pos": [
+        374.4083626175796,
+        75.3539580125295
+      ],
+      "size": [
+        210,
+        146
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "destination",
+          "type": "IMAGE",
+          "link": 117
+        },
+        {
+          "name": "source",
+          "type": "IMAGE",
+          "link": 119
+        },
+        {
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": 118
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            116
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "ImageCompositeMasked"
+      },
+      "widgets_values": [
+        0,
+        0,
+        true
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      89,
+      62,
+      0,
+      61,
+      0,
+      "IMAGE"
+    ],
+    [
+      90,
+      62,
+      1,
+      61,
+      2,
+      "MASK"
+    ],
+    [
+      92,
+      61,
+      0,
+      64,
+      0,
+      "IMAGE"
+    ],
+    [
+      97,
+      68,
+      0,
+      67,
+      1,
+      "INT"
+    ],
+    [
+      98,
+      68,
+      1,
+      67,
+      2,
+      "INT"
+    ],
+    [
+      99,
+      62,
+      0,
+      68,
+      0,
+      "IMAGE"
+    ],
+    [
+      100,
+      66,
+      0,
+      67,
+      0,
+      "IMAGE"
+    ],
+    [
+      103,
+      62,
+      0,
+      71,
+      0,
+      "IMAGE"
+    ],
+    [
+      104,
+      67,
+      0,
+      71,
+      1,
+      "IMAGE"
+    ],
+    [
+      105,
+      62,
+      1,
+      71,
+      2,
+      "MASK"
+    ],
+    [
+      106,
+      71,
+      0,
+      69,
+      0,
+      "IMAGE"
+    ],
+    [
+      107,
+      66,
+      0,
+      61,
+      1,
+      "IMAGE"
+    ],
+    [
+      108,
+      66,
+      0,
+      73,
+      0,
+      "IMAGE"
+    ],
+    [
+      109,
+      73,
+      0,
+      72,
+      2,
+      "INT"
+    ],
+    [
+      111,
+      73,
+      1,
+      72,
+      3,
+      "INT"
+    ],
+    [
+      112,
+      62,
+      0,
+      72,
+      0,
+      "IMAGE"
+    ],
+    [
+      114,
+      62,
+      1,
+      72,
+      1,
+      "MASK"
+    ],
+    [
+      116,
+      77,
+      0,
+      76,
+      0,
+      "IMAGE"
+    ],
+    [
+      117,
+      72,
+      0,
+      77,
+      0,
+      "IMAGE"
+    ],
+    [
+      118,
+      72,
+      3,
+      77,
+      2,
+      "MASK"
+    ],
+    [
+      119,
+      66,
+      0,
+      77,
+      1,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "crop",
+      "bounding": [
+        -189.4861535218786,
+        477.59616906327756,
+        1352.5046636999987,
+        525.2738047999997
+      ],
+      "color": "#b58b2a",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Pad",
+      "bounding": [
+        -193.505926811133,
+        -4.296041987470447,
+        1353.3382508384339,
+        447.1725729793178
+      ],
+      "color": "#a1309b",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7513148009015782,
+      "offset": [
+        858.9863037618766,
+        538.4670354421872
+      ]
+    },
+    "frontendVersion": "1.30.6",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
