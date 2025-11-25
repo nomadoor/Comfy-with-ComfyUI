@@ -9,12 +9,19 @@ eleventyComputed:
   lang: "{{ stub.lang }}"
   section: "{{ stub.section }}"
   navId: "{{ stub.id }}"
-  title: "{{ stub.title | default('準備中') }}"
-summary: "まだページがありません"
+  title: >
+    {% if stub.title %}{{ stub.title }}{% elseif stub.lang == 'en' %}Coming Soon{% else %}準備中{% endif %}
+summary: >
+  {% if stub.lang == 'en' %}This page is not ready yet.{% else %}まだページがありません{% endif %}
 hero:
   gradient: ""
 ---
 <div class="article-body placeholder">
-  <h2>まだページがありません</h2>
-  <p>このトピックは準備中です。サイドバーから別のタグをお試しください。</p>
+  {% if stub.lang == 'en' %}
+    <h2>This page is not ready yet.</h2>
+    <p>This topic is being prepared. Please choose another item from the sidebar.</p>
+  {% else %}
+    <h2>まだページがありません</h2>
+    <p>このトピックは準備中です。サイドバーから別の項目をお試しください。</p>
+  {% endif %}
 </div>
