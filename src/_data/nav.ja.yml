@@ -109,11 +109,13 @@
         noLink: true
         children:
           - id: queue
-            title: "キュー"
+            title: "Queue"
           - id: list
-            title: "リスト"
+            title: "List"
           - id: batch-video
-            title: "バッチ・動画"
+            title: "Batch・動画"
+          - id: realtime
+            title: "リアルタイム処理"
   - key: ai-capabilities
     label: "AIの仕組みと出来ること"
     pages:

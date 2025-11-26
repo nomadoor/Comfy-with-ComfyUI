@@ -114,6 +114,8 @@
             title: "List"
           - id: batch-video
             title: "Batch & Video"
+          - id: realtime
+            title: "Realtime Processing"
 
   - key: ai-capabilities
     label: "AI Capabilities"
