@@ -1,0 +1,21 @@
+name = "comfyui-feedback"
+main = "src/index.js"
+compatibility_date = "2024-11-01"
+
+[vars]
+# Allowed CORS origin (set to your site origin, e.g. https://docs.example.com)
+ALLOW_ORIGIN = "https://example.com"
+
+# GitHub repository info
+GITHUB_OWNER = "YOUR_GITHUB_USERNAME_OR_ORG"
+GITHUB_REPO = "Comfy-with-ComfyUI"
+
+# Optional: Cloudflare Turnstile (set TURNSTILE_SECRET to enable verification)
+TURNSTILE_SECRET = ""
+
+# Rate limit (per IP)
+RATE_LIMIT_MAX = 3
+RATE_LIMIT_WINDOW = 60
+
+[observability]
+enabled = true

@@ -1,0 +1,134 @@
+const ipHits = new Map();
+
+export default {
+  async fetch(request, env) {
+    if (request.method === "OPTIONS") {
+      return this.#cors(new Response("", { status: 204 }), env, request);
+    }
+
+    if (request.method !== "POST") {
+      return this.#cors(new Response("Method Not Allowed", { status: 405 }), env, request);
+    }
+
+    let body;
+    try {
+      body = await request.json();
+    } catch {
+      return this.#cors(new Response("Invalid JSON", { status: 400 }), env, request);
+    }
+
+    const { type = "report", message = "", url = "", lang = "ja", turnstileToken = "" } = body;
+    const text = (message || "").trim();
+    if (text.length < 10) {
+      return this.#cors(new Response("Message too short", { status: 400 }), env, request);
+    }
+    if (text.length > 1200) {
+      return this.#cors(new Response("Message too long", { status: 400 }), env, request);
+    }
+
+    // Optional Turnstile verification
+    if (env.TURNSTILE_SECRET) {
+      const ok = await this.#verifyTurnstile(turnstileToken, request, env);
+      if (!ok) return this.#cors(new Response("Turnstile verification failed", { status: 403 }), env, request);
+    }
+
+    // Simple in-memory rate limit per IP (best-effort)
+    const ip = request.headers.get("cf-connecting-ip") || "unknown";
+    if (!this.#rateLimit(ip, env)) {
+      return this.#cors(new Response("Too Many Requests", { status: 429 }), env, request);
+    }
+
+    const kind = type === "request" ? "request" : "report";
+    const pageUrl = url || "N/A";
+    const title = `[${kind}] ${this.#titleFromUrl(pageUrl)}`;
+
+    const userAgent = request.headers.get("user-agent") || "";
+    const issueBody = [
+      text,
+      "",
+      `---`,
+      `Source: ${pageUrl}`,
+      `Lang: ${lang}`,
+      `UA: ${userAgent}`,
+      `Timestamp: ${new Date().toISOString()}`
+    ].join("\n");
+
+    const apiUrl = `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/issues`;
+    const ghResp = await fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "Authorization": `token ${env.GITHUB_TOKEN}`,
+        "Content-Type": "application/json",
+        "User-Agent": "comfyui-feedback-worker"
+      },
+      body: JSON.stringify({
+        title,
+        body: issueBody,
+        labels: ["assistant-feedback", kind, `lang:${lang}`].filter(Boolean)
+      })
+    });
+
+    if (!ghResp.ok) {
+      const text = await ghResp.text();
+      return this.#cors(new Response(`GitHub error: ${text}`, { status: 502 }), env, request);
+    }
+
+    const issue = await ghResp.json();
+    const resp = new Response(JSON.stringify({ ok: true, issueUrl: issue.html_url }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" }
+    });
+    return this.#cors(resp, env, request);
+  },
+
+  async #verifyTurnstile(token, request, env) {
+    if (!token) return false;
+    const formData = new FormData();
+    formData.append("secret", env.TURNSTILE_SECRET);
+    formData.append("response", token);
+    formData.append("remoteip", request.headers.get("cf-connecting-ip") || "");
+    const resp = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      body: formData
+    });
+    if (!resp.ok) return false;
+    const data = await resp.json();
+    return !!data.success;
+  },
+
+  #rateLimit(ip, env) {
+    const max = Number(env.RATE_LIMIT_MAX || 3);
+    const windowSec = Number(env.RATE_LIMIT_WINDOW || 60);
+    const now = Date.now();
+    const windowStart = now - windowSec * 1000;
+    const arr = ipHits.get(ip) || [];
+    const recent = arr.filter((ts) => ts >= windowStart);
+    recent.push(now);
+    ipHits.set(ip, recent);
+    return recent.length <= max;
+  },
+
+  #titleFromUrl(raw) {
+    try {
+      const u = new URL(raw);
+      return u.pathname || "feedback";
+    } catch {
+      return "feedback";
+    }
+  },
+
+  #cors(response, env, request) {
+    const origin = request.headers.get("Origin");
+    const allowOrigin = env.ALLOW_ORIGIN || "*";
+    const headers = new Headers(response.headers);
+    if (origin && (allowOrigin === "*" || origin === allowOrigin)) {
+      headers.set("Access-Control-Allow-Origin", origin);
+      headers.set("Vary", "Origin");
+    } else if (allowOrigin === "*") {
+      headers.set("Access-Control-Allow-Origin", "*");
+    }
+    headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+    headers.set("Access-Control-Allow-Headers", "Content-Type, X-CSRF-Token");
+    return new Response(response.body, { ...response, headers });
+  }
+};
