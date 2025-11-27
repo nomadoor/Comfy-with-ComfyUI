@@ -33,13 +33,13 @@ export default {
     // Simple rate-limit
     const ip = request.headers.get("cf-connecting-ip") || "unknown";
     if (!rateLimit(ip, env)) {
-      return cors(new Response("Too Many Requests", { status: 429 }), env, request);
-    }
+    return cors(new Response("Too Many Requests", { status: 429 }), env, request);
+  }
 
-    const kind = type === "request" ? "request" : "report";
-    const pageUrl = url || "N/A";
-    const title = `[${kind}] ${titleFromUrl(pageUrl)}`;
-    const userAgent = request.headers.get("user-agent") || "";
+  const kind = type === "request" ? "request" : "report";
+  const pageUrl = url && isValidOriginUrl(url, env) ? url : "N/A";
+  const title = `[${kind}] ${titleFromUrl(pageUrl)}`;
+  const userAgent = request.headers.get("user-agent") || "";
 
     const issueBody = [
       text,
@@ -124,6 +124,31 @@ function rateLimit(ip, env) {
   }
 
   return recent.length <= max;
+}
+
+function isValidOriginUrl(raw, env) {
+  if (!raw) return false;
+  try {
+    const u = new URL(raw);
+    const allowOrigin = env.ALLOW_ORIGIN || "*";
+    if (allowOrigin === "*") return true;
+    const origins = allowOrigin.split(",").map((o) => o.trim()).filter(Boolean);
+    return origins.some((rule) => {
+      try {
+        // rule may be hostname or full origin
+        if (rule.startsWith("*.")) {
+          const suffix = rule.slice(1); // keep leading dot
+          return u.hostname.endsWith(suffix);
+        }
+        const ruleUrl = rule.startsWith("http") ? new URL(rule) : new URL(`https://${rule}`);
+        return u.origin === ruleUrl.origin;
+      } catch {
+        return false;
+      }
+    });
+  } catch {
+    return false;
+  }
 }
 
 function titleFromUrl(raw) {
