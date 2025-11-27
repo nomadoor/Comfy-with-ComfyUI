@@ -1,4 +1,4 @@
-﻿# STYLE-DESIGN 窶・Visual Tokens And UI Rules
+# STYLE-DESIGN 窶・Visual Tokens And UI Rules
 
 ## 0. Identity
 - JA site title: **縲靴omfy縺ｫ菴ｿ縺・ComfyUI縲・* / EN: **窶廚omfy with ComfyUI窶・*. Strings live in `site.json`.
