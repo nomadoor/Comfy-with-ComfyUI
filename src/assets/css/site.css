@@ -64,7 +64,7 @@ body {
 :root[data-theme="light"] {
   --color-bg: #f1f1f1;
   --color-panel: #d9d9d9;
-  --color-panel-alt: #ececf2;
+  --color-panel-alt: #d9d9d9;
   --color-border: #d8d8e0;
   --color-border-strong: #bebec7;
   --color-text: #181818;
@@ -2103,7 +2103,7 @@ h1 {
   min-height: 120px;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
-  background: var(--color-panel);
+  background: var(--color-bg);
   color: var(--color-text);
   padding: var(--space-sm);
   resize: vertical;

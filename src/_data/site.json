@@ -135,7 +135,7 @@
           },
           "body": {
             "ja": [
-              "jsonテキストをコピーし、ComfyUI のキャンバス上で **Ctrl + V** を押すと、そのまま workflow を貼り付けられます。"
+              "jsonをコピーし、ComfyUI のキャンバス上で Ctrl + V を押すと、そのまま workflow を貼り付けられます。"
             ],
             "en": [
               "It exports every node, connection, and parameter so someone else can reproduce the exact workflow.",
