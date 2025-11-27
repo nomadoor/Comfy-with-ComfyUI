@@ -1,4 +1,5 @@
 const ipHits = new Map();
+const MAX_IP_ENTRIES = 1000;
 
 export default {
   async fetch(request, env) {
@@ -103,7 +104,24 @@ function rateLimit(ip, env) {
   const arr = ipHits.get(ip) || [];
   const recent = arr.filter((ts) => ts >= windowStart);
   recent.push(now);
-  ipHits.set(ip, recent);
+
+  // Save or prune this IP
+  if (recent.length === 0) {
+    ipHits.delete(ip);
+  } else {
+    ipHits.set(ip, recent);
+  }
+
+  // Periodic sweep to avoid unbounded growth
+  if (ipHits.size > MAX_IP_ENTRIES) {
+    for (const [key, timestamps] of ipHits.entries()) {
+      if (!timestamps.length || timestamps[timestamps.length - 1] < windowStart) {
+        ipHits.delete(key);
+      }
+      if (ipHits.size <= MAX_IP_ENTRIES) break;
+    }
+  }
+
   return recent.length <= max;
 }
 
