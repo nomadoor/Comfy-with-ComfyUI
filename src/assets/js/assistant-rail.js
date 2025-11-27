@@ -336,7 +336,7 @@ class AssistantFormController {
     this.isSending = true;
     this.showStatus(this.sendingMessage);
     try {
-      const urlValue = this.includeUrl ? window.location.pathname : "";
+      const urlValue = this.includeUrl ? window.location.href : "";
       let turnstileToken = "";
       if (this.turnstileSitekey) {
         turnstileToken = await executeTurnstile(this.turnstileSitekey);

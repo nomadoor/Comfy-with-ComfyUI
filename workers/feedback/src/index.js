@@ -67,7 +67,8 @@ export default {
 
     if (!ghResp.ok) {
       const text = await ghResp.text();
-      return cors(new Response(`GitHub error: ${text}`, { status: 502 }), env, request);
+      console.error("GitHub error", ghResp.status, text);
+      return cors(new Response("Upstream service error", { status: 502 }), env, request);
     }
 
     const issue = await ghResp.json();
