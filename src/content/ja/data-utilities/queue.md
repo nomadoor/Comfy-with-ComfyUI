@@ -4,14 +4,14 @@ lang: ja
 section: data-utilities
 slug: queue
 navId: queue
-title: "Queue (キュー)"
+title: "Queue"
 summary: "処理の予約と回数指定実行について"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""
 ---
 
-## Queue とは？
+## Queue (キュー) とは？
 
 Queue(キュー)は実行したい処理を順番に並べておく仕組みです。
 
