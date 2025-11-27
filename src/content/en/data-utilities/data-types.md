@@ -61,3 +61,17 @@ For example, in the famous **Impact Pack**, a unique type called `SEGS` appears.
 This is a collection of several data, but even so, these also only connect where they can connect.
 
 If you get lost, just try pulling the wire. **If it connects, it's good!**
+
+
+## Preview as Text Node
+
+This is a node for previewing arbitrary data as text.
+
+![](https://gyazo.com/423eaa0eac26fefe67f5d212a1ab2ad1){gyazo=image}
+
+[](/workflows/begin-with/data-types/Preview_as_Text.json)
+
+
+As debugging, there are many opportunities to display numbers and text.
+
+I don't know if you will use it, but you can also check images and latent representations as text.
