@@ -51,11 +51,16 @@ export default {
       `Timestamp: ${new Date().toISOString()}`
     ].join("\n");
 
+    if (!env.GITHUB_TOKEN) {
+      console.error("Missing GITHUB_TOKEN in environment");
+      return cors(new Response("Server configuration error", { status: 500 }), env, request);
+    }
+
     const apiUrl = `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/issues`;
     const ghResp = await fetch(apiUrl, {
       method: "POST",
       headers: {
-        "Authorization": `token ${env.GITHUB_TOKEN}`,
+        "Authorization": `Bearer ${env.GITHUB_TOKEN}`,
         "Content-Type": "application/json",
         "User-Agent": "comfyui-feedback-worker"
       },
