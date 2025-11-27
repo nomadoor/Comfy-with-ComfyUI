@@ -1,0 +1,26 @@
+{% set assistantStrings = site.i18n.tips or {} %}
+{% set bubbleLines = assistantStrings.bubbleLines[currentLang] or assistantStrings.bubbleLines[site.defaultLang] or []
+%}
+{% set avatarLabel = assistantStrings.avatarLabel[currentLang] or assistantStrings.avatarLabel[site.defaultLang] or
+"Open assistant" %}
+{% set bubbleListLabel = assistantStrings.bubbleListLabel[currentLang] or
+assistantStrings.bubbleListLabel[site.defaultLang] or "Assistant suggestions" %}
+{% set viviArt = 'src/assets/icons/Vivi-Comfy.svg' | svgDataUri %}
+{% set questionArt = 'src/assets/icons/question-Comfy.svg' | svgDataUri %}
+
+<div class="assistant-rail" data-expanded="false">
+  <div class="assistant-rail__panel" id="assistant-rail-panel-{{ uniqueId | default('default') }}" aria-hidden="true">
+    <ul class="assistant-rail__bubble-list" role="list" aria-label="{{ bubbleListLabel }}">
+      {% for line in bubbleLines %}
+      <li class="assistant-rail__bubble">
+        <span class="assistant-rail__bubble-text">{{ line }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <button class="assistant-rail__avatar" type="button" aria-expanded="false"
+    aria-controls="assistant-rail-panel-{{ uniqueId | default('default') }}" aria-label="{{ avatarLabel }}"
+    style='--assistant-question-art: {{ questionArt | safe }}; --assistant-vivi-art: {{ viviArt | safe }};'>
+    <span class="sr-only">{{ avatarLabel }}</span>
+  </button>
+</div>

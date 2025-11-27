@@ -1,4 +1,4 @@
-﻿# AGENTS.md — Comfy with ComfyUI (Docs) / Agent Principles
+# AGENTS.md — Comfy with ComfyUI (Docs) / Agent Principles
 
 ## Motto
 
@@ -74,6 +74,10 @@ Code and content are then updated to match the changes in `/ops`.
 ### Reproducible Workflows Only
 
 Workflow JSONs must be complete enough for a third party to **reproduce the results**.
+
+### Authorship Boundary
+
+The human owner is the author, not the agent. Do not perform edits that exceed light proofreading of the owner's text.
 
 ---
 
@@ -247,67 +251,13 @@ Before implementing any new feature on your own initiative:
 
 ---
 
-## 13. File I/O Command Templates (UTF-8, No BOM)
+13. Encoding & File I/O Rule
 
-These commands define a precise, reproducible way to read and write project files using **UTF-8 without BOM**, executing PowerShell via Bash.
+> All files must be UTF-8 (no BOM).
+> Do not modify system encoding settings.
+> If encoding issues occur → stop and ask.
 
-Rules for these commands:
+No custom encoding helpers, no codepage manipulation, no guessing.
 
-* In each command, define $\rightarrow$ use (no dangling helpers).
-* Do not escape `$` unless strictly required by the shell.
-* Use generic paths like `path/to/file.ext`, not machine-specific ones.
-
-### 13.1 READ (UTF-8 no BOM, line-numbered)
-
-Print a file with line numbers, reading as UTF-8 without BOM:
-
-```bash
-bash -lc 'powershell -NoLogo -Command "
-$OutputEncoding = [Console]::OutputEncoding = [Text.UTF8Encoding]::new($false);
-Set-Location -LiteralPath (Convert-Path .);
-function Get-Lines { param([string]$Path,[int]$Skip=0,[int]$First=40)
-  $enc  = [Text.UTF8Encoding]::new($false)
-  $text = [IO.File]::ReadAllText($Path,$enc)
-  if ($text.Length -gt 0 -and $text[0] -eq [char]0xFEFF) {
-    $text = $text.Substring(1)
-  }
-  $ls = $text -split \"`r?`n\"
-  for ($i = $Skip; $i -lt [Math]::Min($Skip + $First, $ls.Length); $i++) {
-    '{0:D4}: {1}' -f ($i + 1), $ls[$i]
-  }
-}
-Get-Lines -Path 'path/to/file.ext' -First 120 -Skip 0
-```
-
-## 13.2 WRITE (UTF-8 no BOM, atomic replace with backup option)
-
-Append a block of text to a file, writing as UTF-8 without BOM, using an atomic temp file:
-
-```bash
-bash -lc 'powershell -NoLogo -Command "
-$OutputEncoding = [Console]::OutputEncoding = [Text.UTF8Encoding]::new($false);
-Set-Location -LiteralPath (Convert-Path .);
-function Write-Utf8NoBom { param([string]$Path,[string]$Content)
-  $dir = Split-Path -Parent $Path
-  if (-not (Test-Path $dir)) {
-    New-Item -ItemType Directory -Path $dir -Force | Out-Null
-  }
-  $tmp = [IO.Path]::GetTempFileName()
-  try {
-    $enc = [Text.UTF8Encoding]::new($false)
-    [IO.File]::WriteAllText($tmp, $Content, $enc)
-    Move-Item $tmp $Path -Force
-  }
-  finally {
-    if (Test-Path $tmp) {
-      Remove-Item $tmp -Force -ErrorAction SilentlyContinue
-    }
-  }
-}
-$file = 'path/to/your_file.ext'
-$enc  = [Text.UTF8Encoding]::new($false)
-$old  = (Test-Path $file) ? ([IO.File]::ReadAllText($file, $enc)) : ''
-Write-Utf8NoBom -Path $file -Content ($old + \"`nYOUR_TEXT_HERE`n\")
-```
 
 Agents should reuse these exact patterns (with path and content substituted) rather than inventing ad-hoc file I/O commands.

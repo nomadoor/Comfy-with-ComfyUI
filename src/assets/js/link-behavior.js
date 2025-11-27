@@ -7,6 +7,41 @@ const BASE_ORIGIN = window.location.origin;
 const ARTICLE_SCOPE_SELECTOR = ".article-body";
 const ARTICLE_ICON_CLASS = "article-link__icon";
 const SVG_NS = "http://www.w3.org/2000/svg";
+let observerInitialized = false;
+let navLinks = [];
+
+function normalizePathname(url) {
+  try {
+    const pathname = new URL(url, window.location.origin).pathname;
+    return pathname
+      .replace(/index\.html?$/i, "")
+      .replace(/\/+$/, "/")
+      || "/";
+  } catch {
+    return "/";
+  }
+}
+
+function collectNavLinks() {
+  navLinks = Array.from(document.querySelectorAll(".nav-list__link.link--internal"));
+}
+
+function setActiveNavLink(pathname = window.location.pathname) {
+  if (!navLinks.length) collectNavLinks();
+  const current = normalizePathname(pathname);
+  navLinks.forEach((anchor) => {
+    const href = anchor.getAttribute("href");
+    if (!href) return;
+    const normalized = normalizePathname(href);
+    const isActive = normalized === current;
+    anchor.classList.toggle("is-active", isActive);
+    if (isActive) {
+      anchor.setAttribute("aria-current", "page");
+    } else {
+      anchor.removeAttribute("aria-current");
+    }
+  });
+}
 
 function normalizeRel(existingRel = "") {
   const tokens = existingRel
@@ -130,5 +165,16 @@ function removeArticleLinkIcon(anchor) {
   }
 }
 
-enhanceAllLinks(document);
-setupMutationObserver();
+const initLinkBehavior = () => {
+  if (!observerInitialized) {
+    enhanceAllLinks(document);
+    setupMutationObserver();
+    collectNavLinks();
+    observerInitialized = true;
+  }
+  setActiveNavLink();
+};
+
+export const refreshActiveNav = setActiveNavLink;
+
+export default initLinkBehavior;

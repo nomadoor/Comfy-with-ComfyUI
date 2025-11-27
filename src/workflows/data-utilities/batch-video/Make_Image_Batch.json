@@ -1,0 +1,277 @@
+{
+  "id": "51a0cfff-124a-46df-9bad-bbc9273d5bfe",
+  "revision": 0,
+  "last_node_id": 22,
+  "last_link_id": 27,
+  "nodes": [
+    {
+      "id": 9,
+      "type": "PreviewImage",
+      "pos": [
+        1391.2978517395427,
+        281.45517150102967
+      ],
+      "size": [
+        422.9744601491934,
+        466.20921868865173
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 27
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.73",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        437.0238029390012,
+        281.45517150102967
+      ],
+      "size": [
+        214.080078125,
+        314
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            24
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.73",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "A.png",
+        "image"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "LoadImage",
+      "pos": [
+        673.6492743455647,
+        377.2625981314576
+      ],
+      "size": [
+        214.080078125,
+        314
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            2,
+            7,
+            25
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.73",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "B.png",
+        "image"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "LoadImage",
+      "pos": [
+        910.2747457521282,
+        473.0700247618855
+      ],
+      "size": [
+        214.080078125,
+        314
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            26
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.73",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "C.png",
+        "image"
+      ]
+    },
+    {
+      "id": 22,
+      "type": "ImpactMakeImageBatch",
+      "pos": [
+        1160.7996273572849,
+        281.45517150102967
+      ],
+      "size": [
+        185.62226026920635,
+        86
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 24
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 25
+        },
+        {
+          "name": "image3",
+          "type": "IMAGE",
+          "link": 26
+        },
+        {
+          "name": "image4",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            27
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "ver": "61bd8397a18e7e7668e6a24e95168967768c2bed",
+        "Node name for S&R": "ImpactMakeImageBatch"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      2,
+      4,
+      0,
+      2,
+      0,
+      "IMAGE"
+    ],
+    [
+      7,
+      4,
+      0,
+      7,
+      0,
+      "IMAGE"
+    ],
+    [
+      24,
+      1,
+      0,
+      22,
+      0,
+      "IMAGE"
+    ],
+    [
+      25,
+      4,
+      0,
+      22,
+      1,
+      "IMAGE"
+    ],
+    [
+      26,
+      3,
+      0,
+      22,
+      2,
+      "IMAGE"
+    ],
+    [
+      27,
+      22,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9310785498489509,
+      "offset": [
+        -337.0238029390012,
+        -181.45517150102967
+      ]
+    },
+    "frontendVersion": "1.30.6",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

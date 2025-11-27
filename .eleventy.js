@@ -296,7 +296,7 @@ function renderJsonLinkRow(linkInfo, env) {
       <button class="workflow-json__icon" type="button" aria-label="${escapeHTML(copyLabel)} ${escapedFile}" data-copy-json="${copyTargetId}" data-label="${escapeHTML(copyLabel)}" data-success-label="${escapeHTML(copiedLabel)}">
         ${copyIcon}
       </button>
-      <a class="workflow-json__icon" href="${linkInfo.href}" download aria-label="${escapeHTML(downloadLabel)} ${escapedFile}" data-download-json="${copyTargetId}-download" data-label="${escapeHTML(downloadLabel)}" data-success-label="${escapeHTML(downloadedLabel)}">
+      <a class="workflow-json__icon" href="${linkInfo.href}" download="${escapedFile}" data-no-swup aria-label="${escapeHTML(downloadLabel)} ${escapedFile}" data-download-json="${copyTargetId}-download" data-label="${escapeHTML(downloadLabel)}" data-success-label="${escapeHTML(downloadedLabel)}">
         ${downloadIcon}
       </a>
     </div>
@@ -534,11 +534,12 @@ export default function (eleventyConfig) {
   }
 
   function renderGyazoMedia(token) {
-    const url = token.attrGet("src") || "";
+    const rawUrl = token.attrGet("src") || "";
+    const normalizedImageUrl = normalizeGyazoUrl(rawUrl) || rawUrl;
     const mode = (token.attrGet("gyazo") || "image").toLowerCase();
     const alt = escapeHTML(token.content || token.attrGet("alt") || "");
 
-    const id = extractGyazoId(url);
+    const id = extractGyazoId(rawUrl);
     const dims = getGyazoDimensionsFromId(id);
     const baseWidth = dims?.width || 720;
     const baseHeight = dims?.height || 360;
@@ -546,11 +547,11 @@ export default function (eleventyConfig) {
     const height = Math.min(baseHeight, 360);
     const scale = baseHeight ? height / baseHeight : 1;
     const width = Math.round(baseWidth * scale);
-    const source = typeof url === "string" && url.endsWith(".mp4")
-      ? url
+    const source = typeof rawUrl === "string" && rawUrl.endsWith(".mp4")
+      ? rawUrl
       : id
         ? `https://i.gyazo.com/${id}.mp4`
-        : url;
+        : rawUrl;
 
     if (mode === "loop") {
       return `<figure class="article-video article-video--loop article-video--gyazo" data-gyazo-toggle data-gyazo-initial="loop" style="--article-video-height:${height}px; --article-video-width:${width}px; --article-video-aspect:${aspect};"><div class="article-video__frame"><video src="${source}" muted loop autoplay playsinline></video><button type="button" class="gyazo-toggle" aria-label="Toggle Gyazo playback mode" data-loop-label="Loop" data-player-label="Player"><span class="gyazo-toggle__pill"><span class="gyazo-toggle__knob"></span><span class="gyazo-toggle__text"></span></span></button></div>${alt ? `<figcaption>${alt}</figcaption>` : ""}</figure>`;
@@ -558,9 +559,13 @@ export default function (eleventyConfig) {
     if (mode === "player") {
       return `<figure class="article-video article-video--player article-video--gyazo" data-gyazo-toggle data-gyazo-initial="player" style="--article-video-height:${height}px; --article-video-width:${width}px; --article-video-aspect:${aspect};"><div class="article-video__frame"><video src="${source}" controls playsinline preload="metadata"></video><button type="button" class="gyazo-toggle" aria-label="Toggle Gyazo playback mode" data-loop-label="Loop" data-player-label="Player"><span class="gyazo-toggle__pill"><span class="gyazo-toggle__knob"></span><span class="gyazo-toggle__text"></span></span></button></div>${alt ? `<figcaption>${alt}</figcaption>` : ""}</figure>`;
     }
-    const commonFig = `<figure class="article-media" style="--article-media-width:${width}px; --article-media-height:${height}px; --article-media-aspect:${aspect};"><div class="article-media__frame">`;
+    const variants = createImageVariants(normalizedImageUrl, 1200);
+    const imgWidth = variants.width || width;
+    const imgHeight = variants.height || height;
+    const imgAspect = variants.width && variants.height ? `${variants.width} / ${variants.height}` : aspect;
+    const commonFig = `<figure class="article-media" style="--article-media-width:${imgWidth}px; --article-media-height:${imgHeight}px; --article-media-aspect:${imgAspect};"><div class="article-media__frame">`;
     const closing = `${alt ? `<figcaption>${alt}</figcaption>` : ""}</figure>`;
-    return `${commonFig}<img src="${url}" alt="${alt}" loading="lazy" decoding="async" /></div>${closing}`;
+    return `${commonFig}<img src="${variants.preview}" alt="${alt}" loading="lazy" decoding="async" width="${imgWidth}" height="${imgHeight}" /></div>${closing}`;
   }
 
   // Detect `{gyazo=...}` right after an image and mark the token.

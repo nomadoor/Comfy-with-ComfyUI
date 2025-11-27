@@ -1,4 +1,4 @@
-﻿---
+---
 layout: page.njk
 lang: ja
 section: ai-capabilities

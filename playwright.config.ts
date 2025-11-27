@@ -1,4 +1,4 @@
-﻿import { defineConfig } from "@playwright/test";
+import { defineConfig } from "@playwright/test";
 
 const port = Number(process.env.PLAYWRIGHT_PORT || 8080);
 const baseURL =

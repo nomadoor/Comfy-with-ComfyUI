@@ -1,0 +1,5 @@
+- `npm install` – set up Eleventy, Playwright, and supporting deps.
+- `npm run dev` – run Eleventy with live reload (`src` → `_site`).
+- `npm run build` – production Eleventy build.
+- `npm run clean` – delete `_site` via rimraf.
+- `npm run test:playwright` – execute browser regression suite in `tests/` (layout, search, conditioning specs).

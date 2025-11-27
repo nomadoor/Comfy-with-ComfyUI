@@ -389,7 +389,9 @@ class AssistantFormController {
 const initAssistantRail = () => {
   const widget = document.querySelector(".assistant-rail");
   if (!widget) return;
+  if (widget.dataset.initialized === "true") return;
+  widget.dataset.initialized = "true";
   new AssistantRail(widget);
 };
 
-initAssistantRail();
+export default initAssistantRail;

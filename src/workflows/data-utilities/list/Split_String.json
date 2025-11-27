@@ -1,0 +1,223 @@
+{
+  "id": "af16b824-91c9-4ba6-a0e6-40095ed11517",
+  "revision": 0,
+  "last_node_id": 4,
+  "last_link_id": 2,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "ShowText|pysssss",
+      "pos": [
+        1031.5563035846048,
+        734.7163301987326
+      ],
+      "size": [
+        210,
+        226
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "f2838ed5e59de4d73cde5c98354b87a8d3200190",
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "pen",
+        "pineapple",
+        "apple",
+        "pen"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "ShowText|pysssss",
+      "pos": [
+        1031.5563035846048,
+        415.7876690701402
+      ],
+      "size": [
+        210,
+        226
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "f2838ed5e59de4d73cde5c98354b87a8d3200190",
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "pen",
+        "pineapple",
+        "apple",
+        "pen"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "GODMT_SplitString",
+      "pos": [
+        631.1430519298154,
+        734.7163301987326
+      ],
+      "size": [
+        350.85065431172916,
+        227.87574830081013
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "LIST",
+          "type": "LIST",
+          "links": null
+        },
+        {
+          "name": "length",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-list-utils",
+        "ver": "1.5.0",
+        "Node name for S&R": "GODMT_SplitString"
+      },
+      "widgets_values": [
+        "pen\npineapple\napple\npen",
+        ",",
+        true,
+        false
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 4,
+      "type": "GODMT_SplitString",
+      "pos": [
+        631.1430519298154,
+        415.7876690701402
+      ],
+      "size": [
+        350.85065431172916,
+        227.87574830081013
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "LIST",
+          "type": "LIST",
+          "links": null
+        },
+        {
+          "name": "length",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-list-utils",
+        "ver": "1.5.0",
+        "Node name for S&R": "GODMT_SplitString"
+      },
+      "widgets_values": [
+        "pen ✒️ pineapple ✒️ apple ✒️ pen",
+        "✒️",
+        false,
+        true
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      0,
+      1,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      4,
+      0,
+      3,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.1266050453172343,
+      "offset": [
+        -531.1430519298154,
+        -315.7876690701402
+      ]
+    },
+    "frontendVersion": "1.30.6",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

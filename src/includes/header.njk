@@ -1,40 +1,46 @@
 {% from "icon.njk" import icon %}
 {% set headerTitle = site.name[currentLang] or site.name[site.defaultLang] %}
 {% set searchI18n = site.i18n.search or {} %}
-{% set searchPlaceholder = searchI18n.placeholder[currentLang] or searchI18n.placeholder[site.defaultLang] or "Search" %}
+{% set searchPlaceholder = searchI18n.placeholder[currentLang] or searchI18n.placeholder[site.defaultLang] or "Search"
+%}
 {% set searchLabel = searchI18n.aria[currentLang] or searchI18n.aria[site.defaultLang] or searchPlaceholder %}
 {% set headerActions = site.i18n.headerActions or {} %}
-{% set notificationsLabel = headerActions.notifications[currentLang] or headerActions.notifications[site.defaultLang] or "Notifications" %}
+{% set notificationsLabel = headerActions.notifications[currentLang] or headerActions.notifications[site.defaultLang] or
+"Notifications" %}
 {% set profileLabel = headerActions.profile[currentLang] or headerActions.profile[site.defaultLang] or "Profile" %}
 {% set logoBaseMask = 'src/assets/logos/logo_Comfy-ComfyUI.svg' | svgDataUri %}
 {% if currentLang == 'ja' %}
-  {% set logoOverlayMask = 'src/assets/logos/logo_に使う.svg' | svgDataUri %}
+{% set logoOverlayMask = 'src/assets/logos/logo_に使う.svg' | svgDataUri %}
 {% else %}
-  {% set logoOverlayMask = 'src/assets/logos/logo_with.svg' | svgDataUri %}
+{% set logoOverlayMask = 'src/assets/logos/logo_with.svg' | svgDataUri %}
 {% endif %}
 <header class="site-header">
   <div class="site-header__inner">
-    <a class="site-header__logo" href="/{{ currentLang }}/begin-with/how-to-use-this-site/" aria-label="{{ headerTitle }}">
+    <button class="site-header__menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sidebar">
+      {{ icon("menu") }}
+    </button>
+    <a class="site-header__logo" href="/{{ currentLang }}/begin-with/how-to-use-this-site/"
+      aria-label="{{ headerTitle }}">
       <span class="sr-only">{{ headerTitle }}</span>
       <span class="site-header__logo-mark">
-        <span class="site-header__logo-layer site-header__logo-layer--base" style="--logo-mask: {{ logoBaseMask }};"></span>
-        <span class="site-header__logo-layer site-header__logo-layer--text" style="--logo-mask: {{ logoOverlayMask }};"></span>
+        <span class="site-header__logo-layer site-header__logo-layer--base"
+          style="--logo-mask: {{ logoBaseMask }};"></span>
+        <span class="site-header__logo-layer site-header__logo-layer--text"
+          style="--logo-mask: {{ logoOverlayMask }};"></span>
       </span>
     </a>
     <div class="site-header__search">
       <div class="search-box" data-search>
-        <input
-          type="search"
-          class="search-box__input"
-          data-search-input
-          placeholder="{{ searchPlaceholder }}"
-          aria-label="{{ searchLabel }}"
-          autocomplete="off"
-        />
+        <input type="search" class="search-box__input" data-search-input placeholder="{{ searchPlaceholder }}"
+          aria-label="{{ searchLabel }}" autocomplete="off" />
         <div class="search-box__results" data-search-results hidden role="listbox" aria-live="polite"></div>
       </div>
     </div>
     <div class="site-header__actions">
+      <button class="icon-button icon-button--ghost site-header__search-toggle" type="button"
+        aria-label="{{ searchLabel }}" aria-expanded="false" data-search-toggle>
+        {{ icon("search") }}
+      </button>
       <button class="icon-button icon-button--ghost" type="button" aria-label="{{ notificationsLabel }}">
         {{ icon("bell") }}
       </button>

@@ -1,4 +1,4 @@
-﻿import fs from "node:fs";
+import fs from "node:fs";
 import path from "node:path";
 import nav from "./nav.js";
 
@@ -29,6 +29,7 @@ function exists({ lang, section, id }) {
   return fs.existsSync(filePath);
 }
 
-const missing = flatten().filter((entry) => !exists(entry));
-
-export default missing;
+export default function () {
+  // Recompute on every Eleventy run so newly created pages stop being treated as "missing"
+  return flatten().filter((entry) => !exists(entry));
+}

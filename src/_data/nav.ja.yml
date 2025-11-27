@@ -7,6 +7,7 @@
         title: "このサイトの使い方"
       - id: spin-up-fast
         title: "とりあえず動かしてみる"
+        noLink: true
         children:
           - id: what-is-comfyui
             title: "ComfyUIとは？"
@@ -30,22 +31,6 @@
             title: "Python"
           - id: git
             title: "git"
-      - id: comfyui-operations
-        title: "ComfyUIの操作"
-        noLink: true
-        children:
-          - id: run-and-stop
-            title: "実行・停止"
-          - id: saving-and-loading-workflows
-            title: "workflowの保存・読み込み"
-          - id: canvas-navigation
-            title: "キャンバスの操作"
-          - id: nodes
-            title: ノード
-          - id: media
-            title: "メディア"
-          - id: subgraphs
-            title: "サブグラフ"
       - id: customization
         title: "カスタマイズ"
         noLink: true
@@ -60,6 +45,34 @@
             title: "モデルのダウンロードと配置"
           - id: custom-nodes
             title: "カスタムノード"
+      - id: comfyui-operations
+        title: "ComfyUIの操作"
+        noLink: true
+        children:
+          - id: run-and-stop
+            title: "実行・停止"
+          - id: saving-and-loading-workflows
+            title: "workflowの保存・読み込み"
+          - id: canvas-navigation
+            title: "キャンバスの操作"
+          - id: nodes
+            title: ノード
+          - id: group
+            title: "グループ"
+          - id: media
+            title: "メディア"
+          - id: mask-editor
+            title: "マスクエディタ"
+          - id: subgraphs
+            title: "サブグラフ"
+      - id: columns
+        title: "コラム"
+        noLink: true
+        children:
+          - id: readable-nodes
+            title: "リーダブルノードのすすめ"
+          - id: wireless-nodes
+            title: "無線でノードをつなぐ"
   - key: data-utilities
     label: "データ / 画像ユーティリティ"
     pages:
@@ -87,6 +100,8 @@
             title: "マスクとアルファチャンネル"
           - id: mask-ops
             title: "マスク操作"
+          - id: ai-mask-generation
+            title: "AIを使ったマスク生成"
           - id: layer-composite-blend
             title: "レイヤ合成・ブレンド"
       - id: batch-processing
@@ -94,19 +109,13 @@
         noLink: true
         children:
           - id: queue
-            title: "キュー"
+            title: "Queue"
           - id: list
-            title: "リスト"
+            title: "List"
           - id: batch-video
-            title: "バッチ・動画"
-      - id: columns
-        title: "コラム"
-        noLink: true
-        children:
-          - id: readable-nodes
-            title: "リーダブルノードのすすめ"
-          - id: wireless-nodes
-            title: "無線でノードをつなぐ"
+            title: "Batch・動画"
+          - id: realtime
+            title: "リアルタイム処理"
   - key: ai-capabilities
     label: "AIの仕組みと出来ること"
     pages:

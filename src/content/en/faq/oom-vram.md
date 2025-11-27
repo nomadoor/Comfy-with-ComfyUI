@@ -1,4 +1,4 @@
-﻿---
+---
 layout: page.njk
 lang: en
 section: faq
@@ -17,8 +17,8 @@ hero:
 Look for `CUDA out of memory` in the console.
 
 ### Fast fixes
-1. Reduce resolution.
-2. Drop batch size.
+- 1. Reduce resolution.
+- 2. Drop batch size.
 
 ## Long-term plan
 Profile VRAM usage and clear caches.

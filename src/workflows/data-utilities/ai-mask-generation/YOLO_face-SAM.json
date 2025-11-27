@@ -1,0 +1,369 @@
+{
+  "id": "ffcc6c64-e535-4685-ab04-be903b4cdf3c",
+  "revision": 0,
+  "last_node_id": 8,
+  "last_link_id": 6,
+  "nodes": [
+    {
+      "id": 3,
+      "type": "UltralyticsDetectorProvider",
+      "pos": [
+        -131.74129771892854,
+        275.10463657117793
+      ],
+      "size": [
+        225.47324988344883,
+        100.20074983277442
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "BBOX_DETECTOR",
+          "type": "BBOX_DETECTOR",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "SEGM_DETECTOR",
+          "type": "SEGM_DETECTOR",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-subpack",
+        "ver": "1.3.5",
+        "Node name for S&R": "UltralyticsDetectorProvider"
+      },
+      "widgets_values": [
+        "segm/person_yolov8m-seg.pt"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 5,
+      "type": "SegsToCombinedMask",
+      "pos": [
+        424.4134665014664,
+        275.10463657117793
+      ],
+      "size": [
+        211.851171875,
+        26
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "segs",
+          "type": "SEGS",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "ver": "61bd8397a18e7e7668e6a24e95168967768c2bed",
+        "Node name for S&R": "SegsToCombinedMask"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 6,
+      "type": "MaskPreview",
+      "pos": [
+        679.5682861699395,
+        275.10463657117793
+      ],
+      "size": [
+        294.93629499045346,
+        258
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 4
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.71",
+        "Node name for S&R": "MaskPreview"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 7,
+      "type": "SEGSPreview",
+      "pos": [
+        424.5080547233428,
+        380.8224702427784
+      ],
+      "size": [
+        210,
+        314
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "segs",
+          "type": "SEGS",
+          "link": 5
+        },
+        {
+          "name": "fallback_image_opt",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "ver": "61bd8397a18e7e7668e6a24e95168967768c2bed",
+        "Node name for S&R": "SEGSPreview"
+      },
+      "widgets_values": [
+        true,
+        0.2
+      ]
+    },
+    {
+      "id": 8,
+      "type": "SAMLoader",
+      "pos": [
+        -116.2680478354797,
+        435.37734731069196
+      ],
+      "size": [
+        210,
+        82
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SAM_MODEL",
+          "type": "SAM_MODEL",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "ver": "61bd8397a18e7e7668e6a24e95168967768c2bed",
+        "Node name for S&R": "SAMLoader"
+      },
+      "widgets_values": [
+        "sam_vit_b_01ec64.pth",
+        "AUTO"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 2,
+      "type": "LoadImage",
+      "pos": [
+        -199.16827143603965,
+        581.4934848883244
+      ],
+      "size": [
+        288.15658006702404,
+        326
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.71",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "1f421a11eb7f46ffcf970787036c5cc1.jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 1,
+      "type": "ImpactSimpleDetectorSEGS",
+      "pos": [
+        137.03559995799336,
+        275.10463657117793
+      ],
+      "size": [
+        244.07421875,
+        310
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "bbox_detector",
+          "type": "BBOX_DETECTOR",
+          "link": 2
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 1
+        },
+        {
+          "name": "sam_model_opt",
+          "shape": 7,
+          "type": "SAM_MODEL",
+          "link": 6
+        },
+        {
+          "name": "segm_detector_opt",
+          "shape": 7,
+          "type": "SEGM_DETECTOR",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SEGS",
+          "type": "SEGS",
+          "links": [
+            3,
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "ver": "61bd8397a18e7e7668e6a24e95168967768c2bed",
+        "Node name for S&R": "ImpactSimpleDetectorSEGS"
+      },
+      "widgets_values": [
+        0.5,
+        0,
+        3,
+        10,
+        0.5,
+        0,
+        0,
+        0.7,
+        0
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      0,
+      1,
+      1,
+      "IMAGE"
+    ],
+    [
+      2,
+      3,
+      0,
+      1,
+      0,
+      "BBOX_DETECTOR"
+    ],
+    [
+      3,
+      1,
+      0,
+      5,
+      0,
+      "SEGS"
+    ],
+    [
+      4,
+      5,
+      0,
+      6,
+      0,
+      "MASK"
+    ],
+    [
+      5,
+      1,
+      0,
+      7,
+      0,
+      "SEGS"
+    ],
+    [
+      6,
+      8,
+      0,
+      1,
+      2,
+      "SAM_MODEL"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.839054528882405,
+      "offset": [
+        431.4600310048111,
+        -114.3219362287694
+      ]
+    },
+    "frontendVersion": "1.33.8",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

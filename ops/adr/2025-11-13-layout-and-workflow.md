@@ -1,4 +1,4 @@
-﻿# ADR: Layout & Workflow Presentation Overhaul (2025-11-13)
+# ADR: Layout & Workflow Presentation Overhaul (2025-11-13)
 
 ## Context
 - Header/column alignment mismatched the provided mock: sticky header width differed from the three-column shell, causing visual drift and CLS.

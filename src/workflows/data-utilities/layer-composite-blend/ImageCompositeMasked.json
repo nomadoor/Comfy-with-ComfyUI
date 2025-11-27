@@ -1,0 +1,356 @@
+{
+  "id": "dbea702b-55fe-491d-a709-7c7bc1d46b5e",
+  "revision": 0,
+  "last_node_id": 13,
+  "last_link_id": 11,
+  "nodes": [
+    {
+      "id": 5,
+      "type": "ImageCompositeMasked",
+      "pos": [
+        1448.24951171875,
+        578.0513916015625
+      ],
+      "size": [
+        270,
+        146
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "destination",
+          "type": "IMAGE",
+          "link": 9
+        },
+        {
+          "name": "source",
+          "type": "IMAGE",
+          "link": 6
+        },
+        {
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "ImageCompositeMasked"
+      },
+      "widgets_values": [
+        0,
+        0,
+        true
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        1115.102294921875,
+        578.0513916015625
+      ],
+      "size": [
+        274.080078125,
+        314
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            3,
+            6
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "Epample_01.png",
+        "image"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "PreviewImage",
+      "pos": [
+        1449.9174410058904,
+        -163.38945628714424
+      ],
+      "size": [
+        255.79700000000003,
+        260.64099999999996
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 11
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.71",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 4,
+      "type": "PreviewImage",
+      "pos": [
+        1777.316650390625,
+        179.8215789794922
+      ],
+      "size": [
+        350.5400012207033,
+        300.35
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 4
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 6,
+      "type": "PreviewImage",
+      "pos": [
+        1777.316650390625,
+        578.0513916015625
+      ],
+      "size": [
+        349.33000122070325,
+        304.08000000000015
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 7,
+      "type": "EmptyImage",
+      "pos": [
+        1107.1242949218768,
+        179.0405789794925
+      ],
+      "size": [
+        270,
+        130
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            8,
+            9,
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.71",
+        "Node name for S&R": "EmptyImage"
+      },
+      "widgets_values": [
+        1500,
+        1080,
+        1,
+        31216
+      ]
+    },
+    {
+      "id": 3,
+      "type": "ImageCompositeMasked",
+      "pos": [
+        1448.24951171875,
+        179.8215789794922
+      ],
+      "size": [
+        270,
+        146
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "destination",
+          "type": "IMAGE",
+          "link": 8
+        },
+        {
+          "name": "source",
+          "type": "IMAGE",
+          "link": 3
+        },
+        {
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "ImageCompositeMasked"
+      },
+      "widgets_values": [
+        0,
+        0,
+        false
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      3,
+      1,
+      0,
+      3,
+      1,
+      "IMAGE"
+    ],
+    [
+      4,
+      3,
+      0,
+      4,
+      0,
+      "IMAGE"
+    ],
+    [
+      6,
+      1,
+      0,
+      5,
+      1,
+      "IMAGE"
+    ],
+    [
+      7,
+      5,
+      0,
+      6,
+      0,
+      "IMAGE"
+    ],
+    [
+      8,
+      7,
+      0,
+      3,
+      0,
+      "IMAGE"
+    ],
+    [
+      9,
+      7,
+      0,
+      5,
+      0,
+      "IMAGE"
+    ],
+    [
+      11,
+      7,
+      0,
+      11,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7513148009015777,
+      "offset": [
+        -1007.1242949218768,
+        263.38945628714424
+      ]
+    },
+    "frontendVersion": "1.30.6",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

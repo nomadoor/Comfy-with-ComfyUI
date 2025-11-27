@@ -1,6 +1,15 @@
 const sectionButtons = Array.from(document.querySelectorAll(".sidebar__section-btn"));
 const sectionTabs = Array.from(document.querySelectorAll(".sidebar__section-tab"));
 const navPanels = Array.from(document.querySelectorAll(".sidebar__nav-panel"));
+const navWrapper = document.querySelector(".sidebar__nav-wrapper");
+const NAV_SCROLL_KEY = "sidebar-scroll";
+
+if (navWrapper) {
+  const saved = sessionStorage.getItem(NAV_SCROLL_KEY);
+  if (saved !== null) {
+    navWrapper.scrollTop = parseFloat(saved);
+  }
+}
 
 function activateSection(key, { focus = true } = {}) {
   sectionButtons.forEach((btn) => {
@@ -71,4 +80,19 @@ const initialActive =
   sectionButtons.find((btn) => btn.classList.contains("is-active")) || sectionButtons[0];
 if (initialActive) {
   activateSection(initialActive.dataset.sectionKey, { focus: false });
+}
+
+if (navWrapper) {
+  let ticking = false;
+  navWrapper.addEventListener("scroll", () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      sessionStorage.setItem(NAV_SCROLL_KEY, navWrapper.scrollTop);
+      ticking = false;
+    });
+  });
+  window.addEventListener("pagehide", () => {
+    sessionStorage.setItem(NAV_SCROLL_KEY, navWrapper.scrollTop);
+  });
 }

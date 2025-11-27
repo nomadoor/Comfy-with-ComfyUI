@@ -36,7 +36,8 @@ ComfyUIの [GitHubリリースページ](https://github.com/comfyanonymous/Comfy
 
 | GPUの種類 | ファイル名 (例) | 備考 |
 | :--- | :--- | :--- |
-| **NVIDIA GPU** | `ComfyUI_windows_portable_nvidia.7z` | 通常は無印を選びます。古いGPUの場合はCUDAバージョン違い(`cu126`など)を検討。 |
+| **NVIDIA GPU** | `ComfyUI_windows_portable_nvidia.7z` | ドライバが十分新しい環境では、まず無印を選んでください。起動に失敗する場合は、GPUドライバの更新、もしくは下記の**旧ドライバ向け版**を使用します。|
+| NVIDIA GPU (安定/古めの環境) | `cu126`/`cu128` | ドライバを更新したくない場合、または無印版が起動直後に終了してしまう場合に使用します。|
 | AMD GPU | `ComfyUI_windows_portable_amd.7z` | AMDユーザー向け。 |
 
 

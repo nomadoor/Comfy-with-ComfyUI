@@ -1,0 +1,328 @@
+{
+  "id": "df61f910-9862-4ca4-9f9b-bdd1a3654446",
+  "revision": 0,
+  "last_node_id": 15,
+  "last_link_id": 22,
+  "nodes": [
+    {
+      "id": 2,
+      "type": "LoadImage",
+      "pos": [
+        -82.41541907172392,
+        258.46508350474323
+      ],
+      "size": [
+        214.080078125,
+        314
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            17
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.73",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "a6e07600049875412da66a0ac4ca5351.png",
+        "image"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "LoadImage",
+      "pos": [
+        155.15674618041572,
+        349.66829658024227
+      ],
+      "size": [
+        214.080078125,
+        314
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            3,
+            9,
+            18
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.73",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "b369caad1dbcdb433e3d6e7981480573.png",
+        "image"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "LoadImage",
+      "pos": [
+        392.7289114325554,
+        440.8715096557413
+      ],
+      "size": [
+        214.080078125,
+        314
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            19
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.73",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "46ade239632308009a1c4c53ce041343.png",
+        "image"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "ImpactMakeAnyList",
+      "pos": [
+        639.0504964896542,
+        261.687153222155
+      ],
+      "size": [
+        171.14667393498075,
+        86
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value1",
+          "shape": 7,
+          "type": "*",
+          "link": 17
+        },
+        {
+          "name": "value2",
+          "type": "*",
+          "link": 18
+        },
+        {
+          "name": "value3",
+          "type": "*",
+          "link": 19
+        },
+        {
+          "name": "value4",
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "*",
+          "name": "*",
+          "shape": 6,
+          "type": "*",
+          "links": [
+            21
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "ver": "61bd8397a18e7e7668e6a24e95168967768c2bed",
+        "Node name for S&R": "ImpactMakeAnyList"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 14,
+      "type": "PreviewImage",
+      "pos": [
+        1083.0276130338884,
+        261.687153222155
+      ],
+      "size": [
+        285.69125238897004,
+        326.22953596355376
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 22
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.73",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 15,
+      "type": "ImpactSelectNthItemOfAnyList",
+      "pos": [
+        834.6312406748693,
+        261.687153222155
+      ],
+      "size": [
+        223.96230210878457,
+        58
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "any_list",
+          "type": "IMAGE",
+          "link": 21
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "*",
+          "type": "IMAGE",
+          "links": [
+            22
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "ver": "61bd8397a18e7e7668e6a24e95168967768c2bed",
+        "Node name for S&R": "ImpactSelectNthItemOfAnyList"
+      },
+      "widgets_values": [
+        1
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      3,
+      4,
+      0,
+      1,
+      0,
+      "IMAGE"
+    ],
+    [
+      9,
+      4,
+      0,
+      8,
+      0,
+      "IMAGE"
+    ],
+    [
+      17,
+      2,
+      0,
+      11,
+      0,
+      "*"
+    ],
+    [
+      18,
+      4,
+      0,
+      11,
+      1,
+      "IMAGE"
+    ],
+    [
+      19,
+      5,
+      0,
+      11,
+      2,
+      "IMAGE"
+    ],
+    [
+      21,
+      11,
+      0,
+      15,
+      0,
+      "*"
+    ],
+    [
+      22,
+      15,
+      0,
+      14,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7694864048338454,
+      "offset": [
+        182.41541907172393,
+        -158.46508350474323
+      ]
+    },
+    "frontendVersion": "1.30.6",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

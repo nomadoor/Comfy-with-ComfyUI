@@ -1,0 +1,378 @@
+{
+  "id": "ba2ad549-90e5-4928-91a9-838f62faaf9b",
+  "revision": 0,
+  "last_node_id": 8,
+  "last_link_id": 8,
+  "nodes": [
+    {
+      "id": 3,
+      "type": "LoadImage",
+      "pos": [
+        470.12200360449634,
+        -270
+      ],
+      "size": [
+        335.64547880981644,
+        458.2099361064978
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1,
+            4
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "pasted/image (38).png",
+        "image"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "PreviewImage",
+      "pos": [
+        1220.681461659835,
+        -136.54694942555741
+      ],
+      "size": [
+        531.8183964013544,
+        582.297571000353
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        362.8584147649525,
+        257.4072522034403
+      ],
+      "size": [
+        442.9090676493603,
+        348.64453542168144
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            2,
+            5
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "pasted/image (36).png",
+        "image"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "LoadImage",
+      "pos": [
+        561.8919629449949,
+        680
+      ],
+      "size": [
+        243.87551946931785,
+        495.15628337345174
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            3,
+            6
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "pasted/image (37).png",
+        "image"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "ImpactMakeImageList",
+      "pos": [
+        958.4808813380901,
+        233.92279489924226
+      ],
+      "size": [
+        181.63769510352577,
+        88.44208248160515
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 1
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 2
+        },
+        {
+          "name": "image3",
+          "type": "IMAGE",
+          "link": 3
+        },
+        {
+          "name": "image4",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "ver": "61bd8397a18e7e7668e6a24e95168967768c2bed",
+        "Node name for S&R": "ImpactMakeImageList"
+      }
+    },
+    {
+      "id": 5,
+      "type": "ImpactMakeImageBatch",
+      "pos": [
+        958.4808813380901,
+        515.5703816480251
+      ],
+      "size": [
+        185.11459509789339,
+        86
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 4
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 5
+        },
+        {
+          "name": "image3",
+          "type": "IMAGE",
+          "link": 6
+        },
+        {
+          "name": "image4",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "ver": "61bd8397a18e7e7668e6a24e95168967768c2bed",
+        "Node name for S&R": "ImpactMakeImageBatch"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 7,
+      "type": "PreviewImage",
+      "pos": [
+        1220.681461659835,
+        515.5703816480251
+      ],
+      "size": [
+        528.0256750817534,
+        530.0647321425793
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 8
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": [],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      1,
+      3,
+      0,
+      4,
+      0,
+      "IMAGE"
+    ],
+    [
+      2,
+      1,
+      0,
+      4,
+      1,
+      "IMAGE"
+    ],
+    [
+      3,
+      2,
+      0,
+      4,
+      2,
+      "IMAGE"
+    ],
+    [
+      4,
+      3,
+      0,
+      5,
+      0,
+      "IMAGE"
+    ],
+    [
+      5,
+      1,
+      0,
+      5,
+      1,
+      "IMAGE"
+    ],
+    [
+      6,
+      2,
+      0,
+      5,
+      2,
+      "IMAGE"
+    ],
+    [
+      7,
+      4,
+      0,
+      6,
+      0,
+      "IMAGE"
+    ],
+    [
+      8,
+      5,
+      0,
+      7,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.630394086312858,
+      "offset": [
+        -262.8584147649525,
+        370
+      ]
+    },
+    "frontendVersion": "1.34.0",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

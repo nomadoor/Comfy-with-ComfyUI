@@ -1,4 +1,6 @@
-﻿function applyGyazoMode(figure, mode) {
+let initializedFigures = new WeakSet();
+
+function applyGyazoMode(figure, mode) {
   const video = figure.querySelector("video");
   const toggle = figure.querySelector(".gyazo-toggle");
   const labelEl = toggle?.querySelector(".gyazo-toggle__text");
@@ -28,9 +30,12 @@
   }
 }
 
-function initGyazoToggle() {
+const initGyazoToggle = () => {
   const figures = document.querySelectorAll("[data-gyazo-toggle]");
   figures.forEach((figure) => {
+    if (initializedFigures.has(figure)) return;
+    initializedFigures.add(figure);
+
     const toggle = figure.querySelector(".gyazo-toggle");
     if (!toggle) return;
 
@@ -51,6 +56,6 @@ function initGyazoToggle() {
       applyGyazoMode(figure, next);
     });
   });
-}
+};
 
-document.addEventListener("DOMContentLoaded", initGyazoToggle);
+export default initGyazoToggle;

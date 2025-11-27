@@ -1,0 +1,295 @@
+{
+  "id": "5afabc21-bbd6-4ea3-bd3a-ce4c1dedc9c8",
+  "revision": 0,
+  "last_node_id": 68,
+  "last_link_id": 98,
+  "nodes": [
+    {
+      "id": 64,
+      "type": "PreviewImage",
+      "pos": [
+        472.53912353515625,
+        -16.18735694885254
+      ],
+      "size": [
+        389.7879943847656,
+        406.6759948730469
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 92
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 67,
+      "type": "EmptyImage",
+      "pos": [
+        -204.73104858398438,
+        327.24261474609375
+      ],
+      "size": [
+        260.080078125,
+        130
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            97,
+            98
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "EmptyImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1,
+        31216
+      ]
+    },
+    {
+      "id": 68,
+      "type": "PreviewImage",
+      "pos": [
+        168.60767025899094,
+        350.2180223828934
+      ],
+      "size": [
+        237.16300000000012,
+        276.61299999999994
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 98
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.71",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 65,
+      "type": "MaskPreview",
+      "pos": [
+        153.95507202148437,
+        -277.7764831542968
+      ],
+      "size": [
+        254.04959106445312,
+        296.4132080078125
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 94
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "MaskPreview"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 61,
+      "type": "ImageCompositeMasked",
+      "pos": [
+        176.92471313476562,
+        111.9552001953125
+      ],
+      "size": [
+        210,
+        146
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "destination",
+          "type": "IMAGE",
+          "link": 89
+        },
+        {
+          "name": "source",
+          "type": "IMAGE",
+          "link": 97
+        },
+        {
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": 90
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            92
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "ImageCompositeMasked"
+      },
+      "widgets_values": [
+        0,
+        0,
+        true
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 62,
+      "type": "LoadImage",
+      "pos": [
+        -204.73104858398438,
+        -115.7205581665039
+      ],
+      "size": [
+        260.080078125,
+        352
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            89
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            90,
+            94
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "pasted/image (3).png",
+        "image"
+      ]
+    }
+  ],
+  "links": [
+    [
+      89,
+      62,
+      0,
+      61,
+      0,
+      "IMAGE"
+    ],
+    [
+      90,
+      62,
+      1,
+      61,
+      2,
+      "MASK"
+    ],
+    [
+      92,
+      61,
+      0,
+      64,
+      0,
+      "IMAGE"
+    ],
+    [
+      94,
+      62,
+      1,
+      65,
+      0,
+      "MASK"
+    ],
+    [
+      97,
+      67,
+      0,
+      61,
+      1,
+      "IMAGE"
+    ],
+    [
+      98,
+      67,
+      0,
+      68,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9090909090909091,
+      "offset": [
+        304.7310485839844,
+        377.7764831542968
+      ]
+    },
+    "frontendVersion": "1.30.6",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

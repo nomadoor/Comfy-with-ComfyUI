@@ -1,0 +1,155 @@
+{
+  "id": "4868028c-000b-496e-b4e0-958cdd175f4a",
+  "revision": 0,
+  "last_node_id": 67,
+  "last_link_id": 97,
+  "nodes": [
+    {
+      "id": 53,
+      "type": "LoadImage",
+      "pos": [
+        73.72727272727276,
+        158.8181818181818
+      ],
+      "size": [
+        318.5017680965466,
+        400.92742544483326
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            96
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.71",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "example.png",
+        "image"
+      ]
+    },
+    {
+      "id": 65,
+      "type": "PreviewImage",
+      "pos": [
+        754.6073471074372,
+        158.8181818181818
+      ],
+      "size": [
+        361.8754545454541,
+        401.1706611570247
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 97
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.71",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 67,
+      "type": "ImageSharpen",
+      "pos": [
+        438.4181939656283,
+        158.8181818181818
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 96
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            97
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.71",
+        "Node name for S&R": "ImageSharpen"
+      },
+      "widgets_values": [
+        20,
+        1,
+        1
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      96,
+      53,
+      0,
+      67,
+      0,
+      "IMAGE"
+    ],
+    [
+      97,
+      67,
+      0,
+      65,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9090909090909091,
+      "offset": [
+        218.77272727272722,
+        42.3818181818182
+      ]
+    },
+    "frontendVersion": "1.30.6",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

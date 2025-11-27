@@ -7,36 +7,116 @@
         title: "How to Use This Site"
       - id: spin-up-fast
         title: "Get It Running"
+        noLink: true
         children:
-          - id: first-run-checklist
-            title: "First Run Checklist"
-          - id: gpu-ready
-            title: "GPU Prep Notes"
+          - id: what-is-comfyui
+            title: "What is ComfyUI?"
+          - id: recommended-specs
+            title: "Recommended Specs"
+          - id: setup
+            title: "Setup"
+          - id: comfy-cloud
+            title: "Comfy Cloud"
+          - id: first-run
+            title: "First Run"
       - id: pc-basics
         title: "PC Basics"
         noLink: true
-      - id: workspace-profiles
-        title: "Workspace Presets"
-      - id: component-gallery
-        title: "Component Gallery"
+        children:
+          - id: path
+            title: "Path"
+          - id: terminal
+            title: "Terminal"
+          - id: python
+            title: "Python"
+          - id: git
+            title: "git"
+      - id: customization
+        title: "Customization"
+        noLink: true
+        children:
+          - id: settings
+            title: "Settings"
+          - id: command-line-arguments
+            title: "Command Line Arguments"
+          - id: updates
+            title: "Updates"
+          - id: downloading-and-placing-models
+            title: "Downloading & Placing Models"
+          - id: custom-nodes
+            title: "Custom Nodes"
+      - id: comfyui-operations
+        title: "ComfyUI Operations"
+        noLink: true
+        children:
+          - id: run-and-stop
+            title: "Run & Stop"
+          - id: saving-and-loading-workflows
+            title: "Save & Load Workflows"
+          - id: canvas-navigation
+            title: "Canvas Navigation"
+          - id: nodes
+            title: "Nodes"
+          - id: group
+            title: "Group"
+          - id: media
+            title: "Media"
+          - id: mask-editor
+            title: "Mask Editor"
+          - id: subgraphs
+            title: "Subgraphs"
+      - id: columns
+        title: "Columns"
+        noLink: true
+        children:
+          - id: readable-nodes
+            title: "Readable Nodes"
+          - id: wireless-nodes
+            title: "Wireless Nodes"
   - key: data-utilities
     label: "Data / Image Utilities"
     pages:
       - id: data-ops
         title: "Data Operations"
         noLink: true
+        children:
+          - id: data-types
+            title: "Data Types"
+          - id: simple-math
+            title: "Simple Math"
+          - id: text-ops
+            title: "Text Operations"
+          - id: webcam-input
+            title: "Webcam Input"
+      - id: basic-image-processing
+        title: "Basic Image Processing"
+        noLink: true
+        children:
+          - id: resize-crop-pad
+            title: "Resize, Crop, Pad"
+          - id: color-adjustments
+            title: "Color Adjustments & Filters"
+          - id: mask-alpha
+            title: "Mask & Alpha Channel"
+          - id: mask-ops
+            title: "Mask Operations"
+          - id: ai-mask-generation
+            title: "AI Mask Generation"
+          - id: layer-composite-blend
+            title: "Layer Composite & Blend"
       - id: batch-processing
         title: "Batch Processing"
         noLink: true
         children:
-          - id: batch-monitoring
-            title: "Job Monitoring"
-      - id: columns
-        title: "Columns"
-      - id: image-cleanup
-        title: "Image Cleanup"
-      - id: dataset-audit
-        title: "Dataset Audit"
+          - id: queue
+            title: "Queue"
+          - id: list
+            title: "List"
+          - id: batch-video
+            title: "Batch & Video"
+          - id: realtime
+            title: "Realtime Processing"
+
   - key: ai-capabilities
     label: "AI Capabilities"
     pages:

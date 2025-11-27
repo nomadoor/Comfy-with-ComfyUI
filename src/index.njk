@@ -1,4 +1,4 @@
-﻿{% set defaultLang = site.defaultLang %}
+{% set defaultLang = site.defaultLang %}
 {% set localeNav = nav[defaultLang] or nav[site.defaultLang] %}
 {% set redirectPath = "/" + defaultLang + "/" %}
 {% if localeNav and localeNav.sections and (localeNav.sections | length) > 0 %}
