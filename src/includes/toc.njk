@@ -13,6 +13,7 @@
 {% set questionArt = 'src/assets/icons/question-Comfy.svg' | svgDataUri %}
 {% set submittedStrings = formStrings.submitted or {} %}
 {% set feedbackEndpoint = env.assistantFeedbackEndpoint or "" %}
+{% set turnstileSitekey = env.assistantTurnstileSitekey or "" %}
 <div class="right-rail">
   <div class="right-rail__section right-rail__section--toc">
     <div class="toc" aria-label="{{ tocLabel }}">
@@ -28,6 +29,8 @@
       data-view="panel"
       data-placement="above"
       data-feedback-endpoint="{{ feedbackEndpoint }}"
+      data-assistant-sitekey="{{ turnstileSitekey }}"
+      data-lang="{{ currentLang }}"
       data-csrf-cookie="{{ csrfCookie }}"
       data-csrf-header="{{ csrfHeader }}"
     >

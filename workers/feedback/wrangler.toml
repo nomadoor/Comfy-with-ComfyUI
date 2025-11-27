@@ -10,9 +10,6 @@ ALLOW_ORIGIN = "https://comfyui.nomadoor.net"
 GITHUB_OWNER = "nomadoor"
 GITHUB_REPO = "Comfy-with-ComfyUI"
 
-# Optional: Cloudflare Turnstile (set TURNSTILE_SECRET to enable verification)
-TURNSTILE_SECRET = ""
-
 # Rate limit (per IP)
 RATE_LIMIT_MAX = 3
 RATE_LIMIT_WINDOW = 60

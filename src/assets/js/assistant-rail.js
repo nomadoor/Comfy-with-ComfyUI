@@ -17,6 +17,8 @@ class AssistantRail {
     this.prefersReducedMotion = this.motionQuery.matches;
     this.csrfCookie = root.dataset.csrfCookie || "assistant_feedback_csrf";
     this.csrfHeader = root.dataset.csrfHeader || "X-CSRF-Token";
+    this.turnstileSitekey = root.dataset.assistantSitekey || "";
+    this.lang = root.dataset.lang || document.documentElement.lang || "ja";
     this.forms = [];
 
     this.handlePointerChange = (event) => {
@@ -277,6 +279,7 @@ class AssistantFormController {
     this.type = form.dataset.formType || "feedback";
     this.state = "input";
     this.isSending = false;
+    this.turnstileSitekey = rail.turnstileSitekey || "";
 
     this.form.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -334,10 +337,19 @@ class AssistantFormController {
     this.showStatus(this.sendingMessage);
     try {
       const urlValue = this.includeUrl ? window.location.pathname : "";
+      let turnstileToken = "";
+      if (this.turnstileSitekey) {
+        turnstileToken = await executeTurnstile(this.turnstileSitekey);
+        if (!turnstileToken) {
+          throw new Error("Turnstile token missing");
+        }
+      }
       const payload = {
         type: this.type,
         message,
-        url: urlValue
+        url: urlValue,
+        lang: this.rail.lang || document.documentElement.lang || "ja",
+        turnstileToken
       };
       const headers = {
         "Content-Type": "application/json"
@@ -395,3 +407,58 @@ const initAssistantRail = () => {
 };
 
 export default initAssistantRail;
+
+// Turnstile helpers
+let turnstileReadyPromise = null;
+
+function ensureTurnstile() {
+  if (typeof window === "undefined") return Promise.resolve();
+  if (window.turnstile) return Promise.resolve();
+  if (turnstileReadyPromise) return turnstileReadyPromise;
+  turnstileReadyPromise = new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+    script.async = true;
+    script.defer = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error("Turnstile failed to load"));
+    document.head.appendChild(script);
+  });
+  return turnstileReadyPromise;
+}
+
+async function executeTurnstile(sitekey) {
+  await ensureTurnstile();
+  if (!window.turnstile) throw new Error("Turnstile not available");
+  return new Promise((resolve, reject) => {
+    const container = document.createElement("div");
+    container.style.display = "none";
+    document.body.appendChild(container);
+    const widgetId = window.turnstile.render(container, {
+      sitekey,
+      size: "invisible",
+      callback: (token) => {
+        cleanup();
+        resolve(token);
+      },
+      "error-callback": () => {
+        cleanup();
+        reject(new Error("Turnstile error"));
+      },
+      "expired-callback": () => {
+        cleanup();
+        reject(new Error("Turnstile expired"));
+      }
+    });
+    window.turnstile.execute(widgetId);
+
+    function cleanup() {
+      try {
+        window.turnstile.remove(widgetId);
+      } catch (e) {
+        // ignore
+      }
+      container.remove();
+    }
+  });
+}
