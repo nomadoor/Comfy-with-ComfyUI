@@ -19,6 +19,7 @@ body {
   --color-heading: #dfdfdf;
   --color-section-strong: #DEDEDE;
   --color-tav-strong: #2f2f2f;
+  --color-sidebar-hover: #373737;
 
   --space-2xs: 0.25rem;
   --space-xs: 0.5rem;
@@ -51,7 +52,7 @@ body {
 
 :root[data-theme="light"] {
   --color-bg: #f1f1f1;
-  --color-panel: #f5f5f7;
+  --color-panel: #d9d9d9;
   --color-panel-alt: #ececf2;
   --color-border: #d8d8e0;
   --color-border-strong: #bebec7;
@@ -63,6 +64,7 @@ body {
   --color-panel-strong: #d9d9d9;
   --color-section-strong: #2f2f2f;
   --color-tav-strong: #f1f1f1;
+  --color-sidebar-hover: var(--color-tav-strong);
 }
 
 * {
@@ -279,12 +281,6 @@ video {
   padding: var(--shell-padding-block) var(--shell-padding);
   margin: 0 auto;
   max-width: var(--layout-max);
-  display: grid;
-  grid-template-columns: var(--sidebar-width) minmax(0, var(--content-max)) var(--toc-width);
-  gap: var(--column-gap);
-  padding: var(--shell-padding-block) var(--shell-padding);
-  margin: 0 auto;
-  max-width: var(--layout-max);
   width: 100%;
   position: relative;
   min-height: 100vh;
@@ -405,7 +401,7 @@ video {
   .sidebar:has(.sidebar__section-tab[data-section-tab="ai-capabilities"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="ai-capabilities"]:not(.is-active),
   .sidebar:has(.sidebar__section-tab[data-section-tab="basic-workflows"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="basic-workflows"]:not(.is-active),
   .sidebar:has(.sidebar__section-tab[data-section-tab="faq"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="faq"]:not(.is-active) {
-    background: #373737;
+    background: var(--color-sidebar-hover);
   }
 
   /* 文字色：ボタン本体 + その中のアイコン */
@@ -504,7 +500,7 @@ video {
 
 .sidebar__section-btn:not(.is-active):hover,
 .sidebar__section-btn:not(.is-active):focus-visible {
-  background: #373737;
+  background: var(--color-sidebar-hover);
   color: var(--color-text);
 }
 
@@ -602,7 +598,7 @@ video {
 .nav-list__children {
   margin-left: var(--space-sm);
   padding-left: var(--space-xs);
-  border-left: 1px solid #4a4a4a;
+  border-left: 1px solid var(--color-border-strong);
 }
 
 .nav-list__no-link {
@@ -952,7 +948,7 @@ h1 {
   margin-top: var(--space-2xl);
   margin-bottom: var(--space-sm);
   font-size: 1.7rem;
-  font-weight: 500;
+  font-weight: 700;
   scroll-margin-top: calc(var(--header-height) + var(--space-lg));
   letter-spacing: 0;
 }
@@ -962,7 +958,7 @@ h1 {
   padding-top: var(--space-xl);
   padding-bottom: var(--space-xs);
   font-size: 1.2rem;
-  font-weight: 500;
+  font-weight: 700;
   scroll-margin-top: calc(var(--header-height) + var(--space-lg));
   letter-spacing: 0;
 }
@@ -1159,7 +1155,7 @@ h1 {
 
 .article-body code {
   font-family: ui-monospace, "JetBrains Mono", SFMono-Regular, Menlo, Consolas, monospace;
-  background: #313131;
+  background: var(--color-chip-border);
   padding: 0.1rem var(--space-xs);
   border-radius: var(--radius-sm);
   font-size: 0.9em;
@@ -1781,34 +1777,6 @@ h1 {
   overflow: hidden;
   filter: brightness(0.8);
   transition: height var(--assistant-rail-transition-out-duration) var(--assistant-rail-transition-out-timing) var(--assistant-panel-collapse-delay);
-}
-}
-
---assistant-rail-transition-timing: cubic-bezier(0.3, 0, 0.3, 1);
---assistant-panel-collapse-delay: 1000ms;
---assistant-rail-transition-out-duration: 500ms;
---assistant-rail-transition-out-timing: cubic-bezier(0.7, 0, 0.7, 1);
-}
-
-.assistant-rail__avatar {
-  --assistant-question-size: 20rem;
-  --assistant-question-x: 9%;
-  --assistant-question-y: 9%;
-  --assistant-vivi-size: 20rem;
-  --assistant-vivi-x: 11%;
-  --assistant-vivi-y: 8%;
-  width: 100%;
-  height: 90px;
-  border-radius: var(--radius-md);
-  border: none;
-  background-color: var(--color-panel-strong);
-  cursor: pointer;
-  padding: 0;
-  position: relative;
-  overflow: hidden;
-  filter: brightness(0.8);
-  transition: height var(--assistant-rail-transition-out-duration) var(--assistant-rail-transition-out-timing) var(--assistant-panel-collapse-delay);
-}
 }
 
 [data-theme="light"] .assistant-rail__avatar {
