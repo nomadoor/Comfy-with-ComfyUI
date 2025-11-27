@@ -4,10 +4,10 @@ compatibility_date = "2024-11-01"
 
 [vars]
 # Allowed CORS origin (set to your site origin, e.g. https://docs.example.com)
-ALLOW_ORIGIN = "https://example.com"
+ALLOW_ORIGIN = "https://comfyui.nomadoor.net"
 
 # GitHub repository info
-GITHUB_OWNER = "YOUR_GITHUB_USERNAME_OR_ORG"
+GITHUB_OWNER = "nomadoor"
 GITHUB_REPO = "Comfy-with-ComfyUI"
 
 # Optional: Cloudflare Turnstile (set TURNSTILE_SECRET to enable verification)

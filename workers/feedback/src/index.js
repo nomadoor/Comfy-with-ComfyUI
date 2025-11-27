@@ -2,47 +2,44 @@ const ipHits = new Map();
 
 export default {
   async fetch(request, env) {
+    // CORS preflight
     if (request.method === "OPTIONS") {
-      return this.#cors(new Response("", { status: 204 }), env, request);
+      return cors(new Response("", { status: 204 }), env, request);
     }
 
     if (request.method !== "POST") {
-      return this.#cors(new Response("Method Not Allowed", { status: 405 }), env, request);
+      return cors(new Response("Method Not Allowed", { status: 405 }), env, request);
     }
 
     let body;
     try {
       body = await request.json();
     } catch {
-      return this.#cors(new Response("Invalid JSON", { status: 400 }), env, request);
+      return cors(new Response("Invalid JSON", { status: 400 }), env, request);
     }
 
     const { type = "report", message = "", url = "", lang = "ja", turnstileToken = "" } = body;
     const text = (message || "").trim();
-    if (text.length < 10) {
-      return this.#cors(new Response("Message too short", { status: 400 }), env, request);
-    }
-    if (text.length > 1200) {
-      return this.#cors(new Response("Message too long", { status: 400 }), env, request);
-    }
+    if (text.length < 10) return cors(new Response("Message too short", { status: 400 }), env, request);
+    if (text.length > 1200) return cors(new Response("Message too long", { status: 400 }), env, request);
 
-    // Optional Turnstile verification
+    // Optional Turnstile
     if (env.TURNSTILE_SECRET) {
-      const ok = await this.#verifyTurnstile(turnstileToken, request, env);
-      if (!ok) return this.#cors(new Response("Turnstile verification failed", { status: 403 }), env, request);
+      const ok = await verifyTurnstile(turnstileToken, request, env);
+      if (!ok) return cors(new Response("Turnstile verification failed", { status: 403 }), env, request);
     }
 
-    // Simple in-memory rate limit per IP (best-effort)
+    // Simple rate-limit
     const ip = request.headers.get("cf-connecting-ip") || "unknown";
-    if (!this.#rateLimit(ip, env)) {
-      return this.#cors(new Response("Too Many Requests", { status: 429 }), env, request);
+    if (!rateLimit(ip, env)) {
+      return cors(new Response("Too Many Requests", { status: 429 }), env, request);
     }
 
     const kind = type === "request" ? "request" : "report";
     const pageUrl = url || "N/A";
-    const title = `[${kind}] ${this.#titleFromUrl(pageUrl)}`;
-
+    const title = `[${kind}] ${titleFromUrl(pageUrl)}`;
     const userAgent = request.headers.get("user-agent") || "";
+
     const issueBody = [
       text,
       "",
@@ -70,7 +67,7 @@ export default {
 
     if (!ghResp.ok) {
       const text = await ghResp.text();
-      return this.#cors(new Response(`GitHub error: ${text}`, { status: 502 }), env, request);
+      return cors(new Response(`GitHub error: ${text}`, { status: 502 }), env, request);
     }
 
     const issue = await ghResp.json();
@@ -78,57 +75,57 @@ export default {
       status: 200,
       headers: { "Content-Type": "application/json" }
     });
-    return this.#cors(resp, env, request);
-  },
-
-  async #verifyTurnstile(token, request, env) {
-    if (!token) return false;
-    const formData = new FormData();
-    formData.append("secret", env.TURNSTILE_SECRET);
-    formData.append("response", token);
-    formData.append("remoteip", request.headers.get("cf-connecting-ip") || "");
-    const resp = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-      method: "POST",
-      body: formData
-    });
-    if (!resp.ok) return false;
-    const data = await resp.json();
-    return !!data.success;
-  },
-
-  #rateLimit(ip, env) {
-    const max = Number(env.RATE_LIMIT_MAX || 3);
-    const windowSec = Number(env.RATE_LIMIT_WINDOW || 60);
-    const now = Date.now();
-    const windowStart = now - windowSec * 1000;
-    const arr = ipHits.get(ip) || [];
-    const recent = arr.filter((ts) => ts >= windowStart);
-    recent.push(now);
-    ipHits.set(ip, recent);
-    return recent.length <= max;
-  },
-
-  #titleFromUrl(raw) {
-    try {
-      const u = new URL(raw);
-      return u.pathname || "feedback";
-    } catch {
-      return "feedback";
-    }
-  },
-
-  #cors(response, env, request) {
-    const origin = request.headers.get("Origin");
-    const allowOrigin = env.ALLOW_ORIGIN || "*";
-    const headers = new Headers(response.headers);
-    if (origin && (allowOrigin === "*" || origin === allowOrigin)) {
-      headers.set("Access-Control-Allow-Origin", origin);
-      headers.set("Vary", "Origin");
-    } else if (allowOrigin === "*") {
-      headers.set("Access-Control-Allow-Origin", "*");
-    }
-    headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
-    headers.set("Access-Control-Allow-Headers", "Content-Type, X-CSRF-Token");
-    return new Response(response.body, { ...response, headers });
+    return cors(resp, env, request);
   }
 };
+
+async function verifyTurnstile(token, request, env) {
+  if (!token) return false;
+  const formData = new FormData();
+  formData.append("secret", env.TURNSTILE_SECRET);
+  formData.append("response", token);
+  formData.append("remoteip", request.headers.get("cf-connecting-ip") || "");
+  const resp = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+    method: "POST",
+    body: formData
+  });
+  if (!resp.ok) return false;
+  const data = await resp.json();
+  return !!data.success;
+}
+
+function rateLimit(ip, env) {
+  const max = Number(env.RATE_LIMIT_MAX || 3);
+  const windowSec = Number(env.RATE_LIMIT_WINDOW || 60);
+  const now = Date.now();
+  const windowStart = now - windowSec * 1000;
+  const arr = ipHits.get(ip) || [];
+  const recent = arr.filter((ts) => ts >= windowStart);
+  recent.push(now);
+  ipHits.set(ip, recent);
+  return recent.length <= max;
+}
+
+function titleFromUrl(raw) {
+  try {
+    const u = new URL(raw);
+    return u.pathname || "feedback";
+  } catch {
+    return "feedback";
+  }
+}
+
+function cors(response, env, request) {
+  const origin = request.headers.get("Origin");
+  const allowOrigin = env.ALLOW_ORIGIN || "*";
+  const headers = new Headers(response.headers);
+  if (origin && (allowOrigin === "*" || origin === allowOrigin)) {
+    headers.set("Access-Control-Allow-Origin", origin);
+    headers.set("Vary", "Origin");
+  } else if (allowOrigin === "*") {
+    headers.set("Access-Control-Allow-Origin", "*");
+  }
+  headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+  headers.set("Access-Control-Allow-Headers", "Content-Type, X-CSRF-Token");
+  return new Response(response.body, { ...response, headers });
+}
