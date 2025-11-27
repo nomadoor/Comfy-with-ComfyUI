@@ -10,7 +10,7 @@ eleventyExcludeFromCollections: true
   <url>
     <loc>{{ (origin ~ page.url) | replace("index.html", "") }}</loc>
     {% if page.date %}
-    <lastmod>{{ page.date | date("yyyy-MM-dd") }}</lastmod>
+    <lastmod>{{ page.date.toISOString().slice(0,10) }}</lastmod>
     {% endif %}
   </url>
   {% endif %}
