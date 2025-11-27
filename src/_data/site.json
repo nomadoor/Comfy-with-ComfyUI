@@ -195,8 +195,8 @@
           },
           "form": {
             "placeholder": {
-              "ja": "例: Flux.1 Tools のLoRA設定を詳しく知りたい",
-              "en": "Example: Need more detail on Flux.1 Tools LoRA settings"
+              "ja": "例: Flux.1 Tools の設定を詳しく知りたい",
+              "en": "Example: Need more detail on Flux.1 Tools settings"
             },
             "successDetail": {
               "ja": "追記リクエスト",
