@@ -20,7 +20,7 @@ export default {
 
     const { type = "report", message = "", url = "", lang = "ja", turnstileToken = "" } = body;
     const text = (message || "").trim();
-    if (text.length < 10) return cors(new Response("Message too short", { status: 400 }), env, request);
+    if (text.length < 20) return cors(new Response("Message too short", { status: 400 }), env, request);
     if (text.length > 1200) return cors(new Response("Message too long", { status: 400 }), env, request);
 
     // Optional Turnstile
