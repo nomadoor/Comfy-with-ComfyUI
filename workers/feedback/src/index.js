@@ -146,5 +146,10 @@ function cors(response, env, request) {
   }
   headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
   headers.set("Access-Control-Allow-Headers", "Content-Type, X-CSRF-Token");
-  return new Response(response.body, { ...response, headers });
+  const init = {
+    status: response.status,
+    statusText: response.statusText,
+    headers
+  };
+  return new Response(response.body, init);
 }

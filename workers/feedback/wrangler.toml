@@ -1,11 +1,8 @@
 name = "comfyui-feedback"
 main = "src/index.js"
-compatibility_date = "2024-11-01"
+compatibility_date = "2025-11-01"
 
 [vars]
-# Allowed CORS origin (set to your site origin, e.g. https://docs.example.com)
-ALLOW_ORIGIN = "https://comfyui.nomadoor.net"
-
 # GitHub repository info
 GITHUB_OWNER = "nomadoor"
 GITHUB_REPO = "Comfy-with-ComfyUI"
@@ -13,6 +10,12 @@ GITHUB_REPO = "Comfy-with-ComfyUI"
 # Rate limit (per IP)
 RATE_LIMIT_MAX = 3
 RATE_LIMIT_WINDOW = 60
+
+[env.production.vars]
+ALLOW_ORIGIN = "https://comfyui.nomadoor.net"
+
+[env.staging.vars]
+ALLOW_ORIGIN = "https://staging.example.com"
 
 [observability]
 enabled = true

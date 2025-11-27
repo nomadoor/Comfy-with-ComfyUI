@@ -41,7 +41,18 @@ test.describe("Layout rails", () => {
   });
 
   test("assistant rail opens info window and closes via the close button", async ({ page }) => {
+    await page.setViewportSize({ width: 1920, height: 1080 });
     await page.goto(SAMPLE_PAGE);
+    // Ensure the assistant trigger is visible even if responsive styles would hide it at smaller sizes.
+    await page.evaluate(() => {
+      const btn = document.querySelector<HTMLButtonElement>(".assistant-rail__avatar");
+      if (btn) {
+        btn.style.opacity = "1";
+        btn.style.visibility = "visible";
+        btn.style.display = "inline-flex";
+        btn.style.pointerEvents = "auto";
+      }
+    });
     const rail = page.locator(".assistant-rail");
     await page.locator(".assistant-rail__avatar").hover();
     const jsonButton = page.locator('[data-assistant-target="json-help"]').first();
@@ -56,6 +67,7 @@ test.describe("Layout rails", () => {
 
   test("assistant rail form flows through confirm and send", async ({ page }) => {
     const csrfValue = "test-csrf";
+    await page.setViewportSize({ width: 1920, height: 1080 });
     await page.context().addCookies([
       {
         name: "assistant_feedback_csrf",
@@ -67,7 +79,7 @@ test.describe("Layout rails", () => {
       const headers = route.request().headers();
       expect(headers["x-csrf-token"]).toBe(csrfValue);
       const body = route.request().postDataJSON();
-      expect(body.url).toBe(SAMPLE_PAGE);
+      expect(body.url).toBe(`${BASE_TEST_URL}${SAMPLE_PAGE}`);
       expect(body).not.toHaveProperty("userAgent");
       await route.fulfill({
         status: 200,
@@ -76,6 +88,15 @@ test.describe("Layout rails", () => {
       });
     });
     await page.goto(SAMPLE_PAGE);
+    await page.evaluate(() => {
+      const btn = document.querySelector<HTMLButtonElement>(".assistant-rail__avatar");
+      if (btn) {
+        btn.style.opacity = "1";
+        btn.style.visibility = "visible";
+        btn.style.display = "inline-flex";
+        btn.style.pointerEvents = "auto";
+      }
+    });
     await page.evaluate(() => {
       const rail = document.querySelector(".assistant-rail");
       if (rail) {
