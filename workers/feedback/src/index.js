@@ -108,12 +108,11 @@ function rateLimit(ip, env) {
   const windowStart = now - windowSec * 1000;
   const arr = ipHits.get(ip) || [];
   const recent = arr.filter((ts) => ts >= windowStart);
-  recent.push(now);
 
-  // Save or prune this IP
   if (recent.length === 0) {
     ipHits.delete(ip);
   } else {
+    recent.push(now);
     ipHits.set(ip, recent);
   }
 
