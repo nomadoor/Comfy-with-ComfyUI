@@ -256,8 +256,8 @@
             "en": "Thank you"
           },
           "body": {
-            "ja": "受け付けた内容はキューに追加され、担当者が順番に確認します。",
-            "en": "Your message is now in the queue and we'll review it shortly."
+            "ja": "いただいた内容を元にカイゼンしていきます！",
+            "en": "We’ll use your feedback to keep improving."
           },
           "detailLabel": {
             "ja": "カテゴリー",
