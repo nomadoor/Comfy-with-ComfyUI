@@ -31,3 +31,11 @@ jobs:
       # 4. ビルド
       - name: Build site
         run: npm run build
+
+      # 5. 簡易E2E（Playwright）
+      #    ブラウザを最小限だけ入れて smoke を回す
+      - name: Install Playwright browsers (Chromium only)
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright tests
+        run: npm run test:playwright -- --reporter=list
