@@ -51,8 +51,10 @@ export default {
       `Timestamp: ${new Date().toISOString()}`
     ].join("\n");
 
-    if (!env.GITHUB_TOKEN) {
-      console.error("Missing GITHUB_TOKEN in environment");
+    if (!env.GITHUB_TOKEN || !env.GITHUB_OWNER || !env.GITHUB_REPO) {
+      if (!env.GITHUB_TOKEN) console.error("Missing GITHUB_TOKEN in environment");
+      if (!env.GITHUB_OWNER) console.error("Missing GITHUB_OWNER in environment");
+      if (!env.GITHUB_REPO) console.error("Missing GITHUB_REPO in environment");
       return cors(new Response("Server configuration error", { status: 500 }), env, request);
     }
 
