@@ -144,7 +144,28 @@ function cors(response, env, request) {
   const origin = request.headers.get("Origin");
   const allowOrigin = env.ALLOW_ORIGIN || "*";
   const headers = new Headers(response.headers);
-  if (origin && (allowOrigin === "*" || origin === allowOrigin)) {
+
+  const allowed = (() => {
+    if (!origin) return false;
+    if (allowOrigin === "*") return true;
+    const origins = allowOrigin.split(",").map((o) => o.trim()).filter(Boolean);
+    try {
+      const { hostname } = new URL(origin);
+      return origins.some((rule) => {
+        if (rule === origin) return true;
+        if (rule === hostname) return true;
+        if (rule.startsWith("*.")) {
+          const suffix = rule.slice(1); // keep leading dot
+          return hostname.endsWith(suffix);
+        }
+        return false;
+      });
+    } catch {
+      return false;
+    }
+  })();
+
+  if (allowed) {
     headers.set("Access-Control-Allow-Origin", origin);
     headers.set("Vary", "Origin");
   } else if (allowOrigin === "*") {

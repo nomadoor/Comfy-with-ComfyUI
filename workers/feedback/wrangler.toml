@@ -15,7 +15,12 @@ RATE_LIMIT_WINDOW = 60
 ALLOW_ORIGIN = "https://comfyui.nomadoor.net"
 
 [env.staging.vars]
-ALLOW_ORIGIN = "https://staging.example.com"
+# Allow any preview for this project (branch hashes on comfy-with-comfyui.pages.dev)
+ALLOW_ORIGIN = "*.comfy-with-comfyui.pages.dev"
+GITHUB_OWNER = "nomadoor"
+GITHUB_REPO = "Comfy-with-ComfyUI"
+RATE_LIMIT_MAX = 3
+RATE_LIMIT_WINDOW = 60
 
 [observability]
 enabled = true
