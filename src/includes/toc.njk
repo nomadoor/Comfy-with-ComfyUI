@@ -88,6 +88,17 @@
                   {% endif %}
                 </div>
               {% endif %}
+              {% if panelBody %}
+                <div class="assistant-rail__info-body">
+                  {% if panelBody is iterable and panelBody is not string %}
+                    {% for paragraph in panelBody %}
+                    <p class="assistant-rail__view-text">{{ paragraph }}</p>
+                    {% endfor %}
+                  {% else %}
+                    <p class="assistant-rail__view-text">{{ panelBody }}</p>
+                  {% endif %}
+                </div>
+              {% endif %}
             {% else %}
               {% set formConfig = panel.form or {} %}
               {% set placeholder = formConfig.placeholder[currentLang] or formConfig.placeholder[site.defaultLang] or "" %}
