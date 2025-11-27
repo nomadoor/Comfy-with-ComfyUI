@@ -1,0 +1,33 @@
+﻿name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. チェックアウト
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Node.js をセットアップ (20 系)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # 3. 依存パッケージをインストール
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. ビルド
+      - name: Build site
+        run: npm run build
