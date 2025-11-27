@@ -64,17 +64,15 @@
 - Weekly rollups summarize ADR decisions.
 
 ## 14. Right-Rail Tips Widget
-- States: `collapsed`, `hover-expanded`, `json-help`, `form-correction`, `form-request`, `submitted`.
+- States remain `collapsed`, `hover-expanded`, `json-help`, `form-correction`, `form-request`, `submitted`. `data-view` controls which window renders while `data-expanded` only drives the avatar animation.
 - `collapsed`: tiny square anchored bottom-right with character peek.
-- `hover-expanded`: on hover (desktop) or tap (mobile) the card grows, character appears more, and three CTA buttons show.
-- CTA buttons:
-  1. "What is the JSON copy button?" -> `json-help` (Gyazo animation, no form).
-  2. "This page has a mistake!" -> `form-correction` (textarea + submit).
-  3. "Please explain more!" -> `form-request` (textarea + submit).
-- Forms submit into `submitted` state with a thank-you message and subtle character change.
-- Provide a visible close/back control in every expanded state to return to `hover-expanded` (desktop) or collapse (mobile).
-- Mobile: tap toggles expansion, lock body scroll while open, make CTA buttons large.
-- Gyazo embeds inside the bubble must reuse article media frame rules (max-height, fade-in) and keep flat design (no borders/shadows).
+- `hover-expanded`: desktop hover or mobile tap reveals three CTA bubbles (panel view). Selecting a CTA hides the panel and swaps in a fixed-width window positioned in the exact same rail slot.
+- Windows never close on hover-out/background clicks; the only exits are the circular close icon (Cross SVG asset) or the “send another request” CTA inside the submitted view.
+- `json-help`: copy stack + Gyazo loop clip. Use the existing media tokens (brightness 0.85, 300px height cap) and autoplay muted loop.
+- `form-correction` / `form-request`: two-step flow (`確認` -> preview -> `送信`). Confirm locks the textarea, shows the preview card, and exposes the Send + Edit buttons. The Send button posts to the Cloudflare Worker endpoint defined by `ASSISTANT_FEEDBACK_ENDPOINT`, always attaching `window.location.href` and `navigator.userAgent`.
+- Successful POST responses transition the rail into the `submitted` state, echo the category label, and keep the avatar expanded so the panel can be reopened immediately.
+- Mobile: tap toggles expansion, lock body scroll while any window is open, and keep CTA hit areas full width.
+- Gyazo embeds inside the rail reuse article media filters (flat, no drop-shadows, explicit width/height).
 
 ## 15. Link Behavior
 - Every anchor must be classified as internal or external so styles can target them (`data-link-type="internal|external"` plus `.link--internal` / `.link--external` classes).

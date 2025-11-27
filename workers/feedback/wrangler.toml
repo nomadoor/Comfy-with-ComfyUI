@@ -1,0 +1,26 @@
+name = "comfyui-feedback"
+main = "src/index.js"
+compatibility_date = "2025-11-01"
+
+[vars]
+# GitHub repository info
+GITHUB_OWNER = "nomadoor"
+GITHUB_REPO = "Comfy-with-ComfyUI"
+
+# Rate limit (per IP)
+RATE_LIMIT_MAX = 3
+RATE_LIMIT_WINDOW = 60
+
+[env.production.vars]
+ALLOW_ORIGIN = "https://comfyui.nomadoor.net"
+
+[env.staging.vars]
+# Allow any preview for this project (branch hashes on comfy-with-comfyui.pages.dev)
+ALLOW_ORIGIN = "*.comfy-with-comfyui.pages.dev"
+GITHUB_OWNER = "nomadoor"
+GITHUB_REPO = "Comfy-with-ComfyUI"
+RATE_LIMIT_MAX = 3
+RATE_LIMIT_WINDOW = 60
+
+[observability]
+enabled = true
