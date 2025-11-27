@@ -110,13 +110,8 @@ function rateLimit(ip, env) {
   const windowStart = now - windowSec * 1000;
   const arr = ipHits.get(ip) || [];
   const recent = arr.filter((ts) => ts >= windowStart);
-
-  if (recent.length === 0) {
-    ipHits.delete(ip);
-  } else {
-    recent.push(now);
-    ipHits.set(ip, recent);
-  }
+  recent.push(now);
+  ipHits.set(ip, recent);
 
   // Periodic sweep to avoid unbounded growth
   if (ipHits.size > MAX_IP_ENTRIES) {
