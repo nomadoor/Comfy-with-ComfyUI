@@ -104,8 +104,7 @@ async function verifyTurnstile(token, request, env) {
 }
 
 function rateLimit(ip, env) {
-  const max = Number(env.RATE_LIMIT_MAX || 3);
-  const windowSec = Number(env.RATE_LIMIT_WINDOW || 60);
+  const { max, windowSec } = getRateLimitConfig(env);
   const now = Date.now();
   const windowStart = now - windowSec * 1000;
   const arr = ipHits.get(ip) || [];
@@ -124,6 +123,24 @@ function rateLimit(ip, env) {
   }
 
   return recent.length <= max;
+}
+
+function getRateLimitConfig(env) {
+  const fallbackMax = 3;
+  const fallbackWindow = 60;
+  const parsedMax = Number(env.RATE_LIMIT_MAX);
+  const parsedWindow = Number(env.RATE_LIMIT_WINDOW);
+  const max = Number.isFinite(parsedMax) && parsedMax >= 1 ? parsedMax : fallbackMax;
+  const windowSec =
+    Number.isFinite(parsedWindow) && parsedWindow > 0 ? parsedWindow : fallbackWindow;
+
+  if (max !== parsedMax || windowSec !== parsedWindow) {
+    console.warn(
+      "Invalid RATE_LIMIT_MAX or RATE_LIMIT_WINDOW; falling back to defaults",
+      { max, windowSec }
+    );
+  }
+  return { max, windowSec };
 }
 
 function isValidOriginUrl(raw, env) {
