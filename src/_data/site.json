@@ -1,4 +1,4 @@
-﻿{
+{
   "defaultLang": "ja",
   "name": {
     "ja": "Comfyに使う ComfyUI",
@@ -135,7 +135,8 @@
           },
           "body": {
             "ja": [
-              "jsonテキストをコピーし、ComfyUI のキャンバス上で **Ctrl + V** を押すと、そのまま workflow を貼り付けられます。"
+              "ノード構成・設定・接続をまとめてJSON化し、他のユーザーが同じ結果を再現できるようにします。",
+              "ヘッダーの Copy JSON ボタンを押すと現在のworkflowがクリップボードに入ります。ComfyUIのキャンバスで Ctrl+V を押せば同じグラフを読み込めます。"
             ],
             "en": [
               "It exports every node, connection, and parameter so someone else can reproduce the exact workflow.",
@@ -303,4 +304,3 @@
     ]
   }
 }
-
