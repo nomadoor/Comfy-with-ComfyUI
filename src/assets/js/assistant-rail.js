@@ -94,7 +94,7 @@ class AssistantRail {
     });
 
     this.closeButtons.forEach((button) => {
-      button.addEventListener("click", () => this.closeView({ keepExpanded: true }));
+      button.addEventListener("click", () => this.closeView({ keepExpanded: false }));
     });
 
     this.resetButtons.forEach((button) => {
