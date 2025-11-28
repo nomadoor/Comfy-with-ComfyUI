@@ -1115,6 +1115,7 @@ h1 {
       calc(var(--article-media-aspect, 16 / 9) * min(var(--article-media-height, 300px), 300px)));
   max-width: 100%;
   max-height: min(var(--article-media-height, 300px), 300px);
+  min-height: min(var(--article-media-height, 300px), 300px);
   aspect-ratio: var(--article-media-aspect, 16 / 9);
   height: auto;
   border-radius: var(--radius-md);
