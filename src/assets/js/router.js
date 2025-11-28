@@ -8,9 +8,16 @@ const FETCH_HEADER = { "X-Requested-With": "view-transition-router" };
 const supportsViewTransitions =
   "startViewTransition" in document &&
   !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const isProfileNav = () => Boolean(window.__CW_PROFILE_NAV__);
+const PREFETCH_LIMIT = 3;
+const prefetched = new Set();
+const inflight = new Set();
+const prefetchCache = new Map(); // pathname+search -> html string
+const debounceTimers = new Map(); // pathname+search -> timer
 
 let isNavigating = false;
 let currentPathname = window.location.pathname;
+let linkObserver = null;
 
 const isSameOrigin = (url) => {
   try {
@@ -37,6 +44,80 @@ const shouldHandleClick = (event) => {
   }
   if (!isSameOrigin(href)) return false;
   return true;
+};
+
+const shouldPrefetch = (anchor) => {
+  if (anchor.hasAttribute(ROUTER_IGNORE_ATTR)) return false;
+  const href = anchor.getAttribute("href");
+  if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return false;
+  try {
+    const targetUrl = new URL(href, window.location.href);
+    if (!isSameOrigin(targetUrl.href)) return false;
+    if (targetUrl.pathname === currentPathname) return false;
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+const prefetch = (url) => {
+  const key = url.pathname + url.search;
+  if (prefetched.has(key) || inflight.has(key)) return;
+  if (inflight.size >= PREFETCH_LIMIT) return;
+  inflight.add(key);
+  fetch(url.href, { headers: FETCH_HEADER, credentials: "same-origin" })
+    .then((resp) => (resp.ok ? resp.text() : null))
+    .then((html) => {
+      if (html) prefetchCache.set(key, html);
+    })
+    .catch(() => {})
+    .finally(() => {
+      inflight.delete(key);
+      prefetched.add(key);
+    });
+};
+
+const schedulePrefetch = (anchor, delay = 80) => {
+  if (!anchor || !shouldPrefetch(anchor)) return;
+  try {
+    const url = new URL(anchor.getAttribute("href"), window.location.href);
+    const key = url.pathname + url.search;
+    if (prefetched.has(key) || inflight.has(key)) return;
+    if (debounceTimers.has(key)) return;
+    const timer = setTimeout(() => {
+      debounceTimers.delete(key);
+      prefetch(url);
+    }, delay);
+    debounceTimers.set(key, timer);
+  } catch {
+    /* no-op */
+  }
+};
+
+const handlePrefetchHover = (event) => {
+  const anchor = event.target.closest("a[href]");
+  if (!anchor || !shouldPrefetch(anchor)) return;
+  schedulePrefetch(anchor);
+};
+
+const setupIntersectionPrefetch = () => {
+  if (!("IntersectionObserver" in window)) return;
+  if (linkObserver) linkObserver.disconnect();
+  linkObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          schedulePrefetch(entry.target);
+        }
+      });
+    },
+    { root: null, rootMargin: "100px", threshold: 0.01 }
+  );
+  document.querySelectorAll("a[href]").forEach((anchor) => {
+    if (shouldPrefetch(anchor)) {
+      linkObserver.observe(anchor);
+    }
+  });
 };
 
 const updateHead = (nextDoc) => {
@@ -97,27 +178,43 @@ const navigateTo = async (url, { replace = false } = {}) => {
 
   isNavigating = true;
   try {
-    const response = await fetch(destinationUrl.href, { headers: FETCH_HEADER, credentials: "same-origin" });
-    const contentType = response.headers.get("content-type") || "";
-    if (!response.ok || !contentType.includes("text/html")) {
-      window.location.href = destinationUrl.href;
-      return;
+    const cacheKey = destinationUrl.pathname + destinationUrl.search;
+    let html = prefetchCache.get(cacheKey);
+    let contentType = "text/html";
+    if (!html) {
+      const tFetchStart = performance.now();
+      const response = await fetch(destinationUrl.href, { headers: FETCH_HEADER, credentials: "same-origin" });
+      const tFetchEnd = performance.now();
+      if (isProfileNav()) console.log(`[nav-prof] fetch ${destinationUrl.pathname}: ${(tFetchEnd - tFetchStart).toFixed(1)}ms`);
+
+      contentType = response.headers.get("content-type") || "";
+      if (!response.ok || !contentType.includes("text/html")) {
+        window.location.href = destinationUrl.href;
+        return;
+      }
+      html = await response.text();
+    } else if (isProfileNav()) {
+      console.log(`[nav-prof] fetch ${destinationUrl.pathname}: prefetch-hit`);
     }
-    const html = await response.text();
     const parser = new DOMParser();
     const nextDoc = parser.parseFromString(html, "text/html");
 
     const performSwap = () => {
+      const tSwapStart = performance.now();
       if (!swapContent(nextDoc, destinationUrl)) {
         window.location.href = destinationUrl.href;
         return;
       }
       updateHead(nextDoc);
       reinitializePage(destinationUrl);
+      setupIntersectionPrefetch();
+      if (isProfileNav()) console.log(`[nav-prof] swap+init ${destinationUrl.pathname}: ${(performance.now() - tSwapStart).toFixed(1)}ms`);
     };
 
     if (supportsViewTransitions) {
+      const tVTStart = performance.now();
       await document.startViewTransition(() => performSwap()).finished;
+      if (isProfileNav()) console.log(`[nav-prof] view-transition ${destinationUrl.pathname}: ${(performance.now() - tVTStart).toFixed(1)}ms`);
     } else {
       performSwap();
     }
@@ -156,6 +253,9 @@ const handlePopState = () => {
 const initRouter = () => {
   window.addEventListener("click", handleClick);
   window.addEventListener("popstate", handlePopState);
+  window.addEventListener("mouseover", handlePrefetchHover, { passive: true });
+  window.addEventListener("focusin", handlePrefetchHover);
+  setupIntersectionPrefetch();
 };
 
 export default initRouter;
