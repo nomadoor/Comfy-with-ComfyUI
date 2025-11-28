@@ -113,13 +113,26 @@ class AssistantRail {
     if (this.currentView !== "panel") return;
     setTimeout(() => {
       if (this.currentView !== "panel") return;
-      const hovered =
+
+      // Check if any currently hovered element is within the rail
+      let isHoveringRail = false;
+      const hoveredElements = document.querySelectorAll(":hover");
+      for (const el of hoveredElements) {
+        if (this.root.contains(el)) {
+          isHoveringRail = true;
+          break;
+        }
+      }
+
+      // Fallback/Double-check with matches
+      const simpleHover =
         (this.avatar && this.avatar.matches(":hover")) ||
         (this.panel && this.panel.matches(":hover"));
-      if (!hovered) {
+
+      if (!isHoveringRail && !simpleHover) {
         this.collapse();
       }
-    }, 200);
+    }, 400);
   }
 
   toggle() {
@@ -190,8 +203,7 @@ class AssistantRail {
     if (this.isCoarse) {
       this.collapse();
     } else {
-      this.expand();
-      this.delayedCollapse();
+      setTimeout(() => this.delayedCollapse(), 50);
     }
   }
 
