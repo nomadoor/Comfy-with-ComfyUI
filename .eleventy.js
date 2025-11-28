@@ -67,7 +67,9 @@ function normalizeGyazoUrl(url = "") {
 
 function getPreviewDimensions(meta, targetSize = 1000) {
   if (!meta || !meta.width || !meta.height) {
-    return { width: targetSize, height: targetSize };
+    // Fallback to a stable 16:9 box to reduce CLS when metadata is missing.
+    const height = Math.round(targetSize * 9 / 16);
+    return { width: targetSize, height };
   }
   const { width, height } = meta;
   const longest = Math.max(width, height);
@@ -395,8 +397,12 @@ async function refreshGyazoMetadata() {
       }
     }
   }
+  const missing = Object.entries(gyazoMeta).filter(([, m]) => !m.width || !m.height).length;
   if (updated) {
     await saveGyazoCache();
+  }
+  if (missing > 0) {
+    console.warn(`[gyazo] ${missing} items missing dimensions; using fallback aspect (16:9).`);
   }
 }
 
