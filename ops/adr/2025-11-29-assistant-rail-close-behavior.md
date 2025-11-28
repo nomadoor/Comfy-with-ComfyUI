@@ -8,16 +8,15 @@ Accepted — implemented on `fix/assistant-rail-collapse`
 - Users expect: after ❌ the three options reappear and remain clickable; if the pointer is not over the assistant panel, it should collapse after the standard hover-out delay. If the pointer is over the panel, it stays open.
 
 ## Decision
-- Keep the existing expand-on-close behavior (options visible).
-- Use only the panel hover state to decide collapse; no synthetic events or extra timers.
-- Collapse is triggered via the existing delayedCollapse path (mouseleave → 200ms → collapse if panel not hovered).
-- Close button now calls `closeView({ keepExpanded: true })` (as before) and relies on the hover-driven collapse logic; no extra post-close timers.
-- Ensure the assistant window is non-interactive when hidden by keeping `aria-hidden`/pointer-events on the window in sync with view state (already enforced).
+- Close button calls `closeView({ keepExpanded: false })`; we immediately return to the panel view.
+- After returning to panel (pointer devices), we run the existing delay chain: a 50ms defer then `delayedCollapse` (400ms) that collapses only if neither the avatar nor panel are hovered. This keeps options visible and clickable, and collapses naturally when the pointer is away.
+- No synthetic events or extra listeners are added; collapse is purely hover‑driven.
+- Window remains hidden/non-interactive in panel view via existing aria/pointer state.
 
 ## Consequences
 - After ❌, options remain clickable immediately.
-- If the pointer is away from the panel, the next mouseleave (or lack of hover) causes the standard delayed collapse; hovering the panel keeps it open.
-- No additional timers or synthetic events that previously blocked interaction.
+- If the pointer is away, the built‑in 50ms + 400ms collapse path hides the rail; hovering cancels the collapse.
+- No extra timers or synthetic events beyond the existing hover-based collapse logic.
 
 ## References
 - Code: `src/assets/js/assistant-rail.js` (closeView and delayedCollapse logic)
