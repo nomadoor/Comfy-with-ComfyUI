@@ -1797,7 +1797,8 @@ h1 {
   position: absolute;
   width: 100%;
   transition: opacity var(--assistant-rail-transition-duration) var(--assistant-rail-transition-timing),
-    transform var(--assistant-rail-transition-duration) var(--assistant-rail-transition-timing);
+    transform var(--assistant-rail-transition-duration) var(--assistant-rail-transition-timing),
+    visibility var(--assistant-rail-transition-duration) var(--assistant-rail-transition-timing);
 }
 
 .assistant-rail[data-placement="above"] .assistant-rail__panel,
@@ -1892,13 +1893,13 @@ h1 {
 
 .assistant-rail__panel {
   opacity: 0;
-  pointer-events: none;
+  visibility: hidden;
   transition-delay: 0ms;
 }
 
 .assistant-rail[data-expanded="true"][data-view="panel"] .assistant-rail__panel {
   opacity: 1;
-  pointer-events: auto;
+  visibility: visible;
   transition-delay: 0ms;
 }
 
@@ -1908,7 +1909,7 @@ h1 {
 
 .assistant-rail:not([data-view="panel"]) .assistant-rail__panel {
   opacity: 0;
-  pointer-events: none;
+  visibility: hidden;
   transition-delay: 0ms;
 }
 
