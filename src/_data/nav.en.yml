@@ -120,6 +120,8 @@
   - key: ai-capabilities
     label: "AI Capabilities"
     pages:
+      - id: diffusion-models
+        title: "Diffusion Models"
       - id: conditioning
         title: "Conditioning"
         noLink: true
