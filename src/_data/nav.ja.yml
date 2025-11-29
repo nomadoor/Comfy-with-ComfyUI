@@ -133,8 +133,6 @@
             title: "Sampling"
           - id: latent-diffusion-vae
             title: "Latent Diffusion ModelとVAE"
-          - id: model-architectures
-            title: "モデルアーキテクチャの違い"
       - id: image-generation-applications
         title: "画像生成の応用技術"
         noLink: true
