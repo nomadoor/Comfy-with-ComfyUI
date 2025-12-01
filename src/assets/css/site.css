@@ -469,7 +469,7 @@ video {
 @media (max-width: 1400px) {
   .app-shell {
     grid-template-columns: var(--sidebar-width) 1fr;
-    gap: var(--space-lg);
+    gap: var(--space-xl);
   }
 
   .app-shell__toc,
@@ -667,7 +667,7 @@ video {
   border-radius: var(--radius-md);
   margin-top: auto;
   font-weight: 500;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
 }
 
 .sidebar__about {
@@ -1718,7 +1718,7 @@ h1 {
 }
 
 .right-rail {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
@@ -1767,7 +1767,6 @@ h1 {
   flex-direction: column;
   gap: var(--space-2xs);
   border-left: 1px solid var(--color-border);
-  padding-left: calc(var(--space-sm) - 1px);
   }
 
 .toc__link {
