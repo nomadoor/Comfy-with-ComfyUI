@@ -81,6 +81,8 @@ However, from the perspective of ComfyUI, whether using CLIP or MLLM, the role i
 
 This page focused on text, but actually, there are various Conditionings other than text.
 
+[](/workflows/ai-capabilities/conditioning/clip-conditioning.json)
+
 ### Reference Image-Based Conditioning
 - **IP-Adapter family, etc.**
 - Convey "make it close to this character, this coloring, the atmosphere of this photo"
