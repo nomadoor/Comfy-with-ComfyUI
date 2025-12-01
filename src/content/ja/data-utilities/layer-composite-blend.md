@@ -27,11 +27,12 @@ Inpainting処理などで必要な場面もありますが、色調補正同様�
 
 ### ImageCompositeMasked ノード
 
+画像を重ね合わせるための基本ノードです。
+
 ![](https://gyazo.com/0f12d674fe3e1f6f30c2a06340464eb4){gyazo=image}
 
 [](/workflows/data-utilities/layer-composite-blend/ImageCompositeMasked.json)
 
-画像を重ね合わせるための基本ノードです。
 
 - **destination**: 背面（ベース）になる画像
 - **source**: 前面（上に乗る）画像
@@ -44,7 +45,7 @@ Inpainting処理などで必要な場面もありますが、色調補正同様�
 
 [](/workflows/data-utilities/layer-composite-blend/ImageCompositeMasked-Align_center.json)
 
-CSSでおなじみの `position: absolute; top: 50%; left: 50%;` のような座標計算をノードで行えば中央配置も可能ですが…まあ、正直めんどくさいですね(；・∀・)
+CSSでおなじみの `top: 50%; left: 50%; transform: translate(-50%, -50%);` のような座標計算をノードで行えば中央配置も可能ですが…まあ、正直めんどくさいですね(；・∀・)
 
 ---
 
@@ -84,11 +85,11 @@ ComfyUIでは、**「マスクされた部分を source 画像で置き換える
 
 ### 実践例：セグメンテーションとの組み合わせ
 
+「ドレスの部分だけ色を変えたい」といった場合も同じ理屈です。
+
 ![](https://i.gyazo.com/c848c0f8e8d3ee590ba7ae09e8db7e68.png){gyazo=image}
 
 [](/workflows/data-utilities/layer-composite-blend/ImageCompositeMasked_Segmentation.json)
-
-「ドレスの部分だけ色を変えたい」といった場合も同じ理屈です。
 
 - 1. 入力画像からセグメンテーションで「ドレスのマスク」を作ります。
 - 2. `source` に `EmptyImage`（単色画像）などを繋ぎます。
@@ -105,19 +106,21 @@ ComfyUIでは、**「マスクされた部分を source 画像で置き換える
 
 ### Image Stitch ノード
 
+シンプルな結合ノードです。
+
 ![](https://i.gyazo.com/4ce9346ef269709f6456f0fcd5832a9c.png){gyazo=image}
 
 [](/workflows/data-utilities/layer-composite-blend/Image_Stitch.json)
 
-シンプルな結合ノードです。
 
 ### 🪢 Image Concatenate From Batch ノード
+
+Stitchノードを複数使えば3枚、4枚と並べられますが、バッチ（複数枚セット）画像をまとめてグリッド状に並べたい場合は、このノードを使うとスマートに処理できます。
 
 ![](https://i.gyazo.com/18d0555fd1d0bd01ead60b3992662cb0.png){gyazo=image}
 
 [](/workflows/data-utilities/layer-composite-blend/Image_Concatenate_From_Batch.json)
 
-Stitchノードを複数使えば3枚、4枚と並べられますが、バッチ（複数枚セット）画像をまとめてグリッド状に並べたい場合は、このノードを使うとスマートに処理できます。
 
 - **[Kijai/ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes)** に含まれます。
 
@@ -127,24 +130,25 @@ Stitchノードを複数使えば3枚、4枚と並べられますが、バッチ
 
 ### Image Blend ノード
 
+ペイントソフトでいうレイヤーの「合成モード」のようなものです。  
+
 ![](https://i.gyazo.com/0c3dbad0a36a0399e7e12301a4b58638.png){gyazo=image}
 
 [](/workflows/data-utilities/layer-composite-blend/Image_Blend.json)
 
-ペイントソフトでいうレイヤーの「合成モード」のようなものです。
 標準ではごく単純なブレンドしかできませんが、`blend_factor` で合成の強さを調整できます。
-
-- `blend_factor`: 1.0に近いほど source 画像が濃くなります。
+- `blend_factor`: 1.0に近いほど source 画像が濃くなる。
 
 ---
 
 ## EmptyImage ノード
 
+単色の画像を作るだけのノードです。
+
 ![](https://gyazo.com/c39404b4f19fe6a47565b326b7f0dc6d){gyazo=image}
 
 [](/workflows/data-utilities/layer-composite-blend/EmptyImage.json)
 
-単色の画像を作るだけのノードです。
 
 ### 色の設定方法
 

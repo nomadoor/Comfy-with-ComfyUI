@@ -27,39 +27,38 @@ hero:
 
 ### Upscale Image ノード
 
+指定した幅・高さの解像度に強制的に変更します。
+
 ![](https://gyazo.com/c34faedbc24e22f65ac65462b9684f52){gyazo=image}
 
 [](/workflows/data-utilities/resize-crop-pad/Upscale_Image.json)
-
-指定した幅・高さの解像度に強制的に変更します。
 
 - **アスペクト比**: 元画像と異なる比率を指定すると、画像が歪みます。
 - **crop**: `center` に設定すると、歪ませる代わりに中心を維持してはみ出た部分をクロップ（切り捨て）します。
 
 ### Upscale Image By ノード
 
+「1.5倍」「0.5倍」のように、倍率でサイズを指定します。アスペクト比は維持されます。
 ![](https://i.gyazo.com/adcb853e458db1583e11fbcb4a8b0f87.png){gyazo=image}
 
 [](/workflows/data-utilities/resize-crop-pad/Upscale_Image_By.json)
 
-「1.5倍」「0.5倍」のように、倍率でサイズを指定します。アスペクト比は維持されます。
-
 ### ImageScaleToMaxDimension ノード
+
+画像の**長辺**が設定したサイズになるように、アスペクト比を保ったままリサイズします。
+（例：縦長の画像でも横長の画像でも、長い方が1024pxになるようにする）
 
 ![](https://i.gyazo.com/42ffc7b0534face3e58fc7946b243ce0.png){gyazo=image}
 
 [](/workflows/data-utilities/resize-crop-pad/ImageScaleToMaxDimension.json)
 
-画像の**長辺**が設定したサイズになるように、アスペクト比を保ったままリサイズします。
-（例：縦長の画像でも横長の画像でも、長い方が1024pxになるようにする）
-
 ### Scale Image to Total Pixels ノード
+
+指定した **総ピクセル数（画素数）** になるように、アスペクト比を保ったままリサイズします。
 
 ![](https://i.gyazo.com/e195b70965fc2e7dbf0511527516e527.png){gyazo=image}
 
 [](/workflows/data-utilities/resize-crop-pad/Scale_Image_to_Total_Pixels.json)
-
-指定した **総ピクセル数（画素数）** になるように、アスペクト比を保ったままリサイズします。
 
 **すこし重要な処理です**
 
@@ -86,21 +85,22 @@ hero:
 
 ### ResizeAndPadImage ノード
 
+指定した解像度に合わせてリサイズし、足りない部分をパディングで埋めます。
+
 ![](https://gyazo.com/633441a119959e98e0dca5cb765a53d8){gyazo=image}
 
 [](/workflows/data-utilities/resize-crop-pad/ResizeAndPadImage.json)
 
-指定した解像度に合わせてリサイズし、足りない部分をパディングで埋めます。
-
-マスクとして出力できないため、ほとんど使う場面はないかもしれません。
+このノードはパディング部分をマスクとして出力できないため、ほとんど使う場面はないかもしれません。
 
 ### Pad Image for Outpainting ノード
+
+画像の上下左右に、指定したピクセル数だけ余白を追加します。
 
 ![](https://gyazo.com/c6200467aad1b43edbc09b2ec4f3f2b0){gyazo=image}
 
 [](/workflows/data-utilities/resize-crop-pad/Pad_Image_for_Outpainting.json)
 
-画像の上下左右に、指定したピクセル数だけ余白を追加します。
 
 余白部分がマスクとして出力されます。
 
@@ -112,27 +112,30 @@ hero:
 
 ### ImageCrop ノード
 
+x, y座標と幅・高さを指定して、画像の一部分を矩形で切り抜きます。
+
 ![](https://i.gyazo.com/1c996b2fa8f7213f05c524b16468181e.png){gyazo=image}
 
 [](/workflows/data-utilities/resize-crop-pad/ImageCrop.json)
 
-- x, y座標と幅・高さを指定して、画像の一部分を矩形で切り抜きます。
 
 ### ImageRotate ノード
+
+画像を90度 / 180度 / 270度 回転させます。
 
 ![](https://gyazo.com/8de36981f39e9c39ec1b6c4aa3f9a7ff){gyazo=image}
 
 [](/workflows/data-utilities/resize-crop-pad/ImageRotate.json)
 
-- 画像を90度 / 180度 / 270度 回転させます。
 
 ### ImageFlip ノード
+
+画像を水平 / 垂直方向に反転させます。
 
 ![](https://gyazo.com/e0661734e160f918d9fc9080dda91240){gyazo=image}
 
 [](/workflows/data-utilities/resize-crop-pad/ImageFlip.json)
 
-- 画像を水平 / 垂直方向に反転させます。
 
 ---
 
@@ -174,13 +177,14 @@ hero:
 
 ### Get Image Size ノード
 
+画像の幅(width)と高さ(height)、バッチサイズ（枚数）を数値として出力します。
+
 ![](https://i.gyazo.com/961e83cbf29cbf1f1ab583de4a9e1a00.png){gyazo=image}
 
 [](/workflows/data-utilities/resize-crop-pad/Get_Image_Size.json)
 
-- 画像の幅(width)と高さ(height)を数値として出力します。
-- 取得したサイズを `Upscale Image` に繋げば、別の画像を「全く同じサイズ」に合わせることができます。
-- ※最新版ではバッチサイズ（枚数）も取得できるようになりました。
+- 取得したサイズを `Upscale Image` に繋げば、別の画像を「全く同じサイズ」にすることができます。
+  - 非常によく使う処理です。
 
 ---
 
