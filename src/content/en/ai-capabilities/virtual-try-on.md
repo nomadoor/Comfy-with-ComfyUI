@@ -4,13 +4,12 @@ lang: en
 section: ai-capabilities
 slug: virtual-try-on
 navId: virtual-try-on
-title: "Virtual Try-On"
-summary: "The task of replacing only the clothes with a different design or variation."
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: Virtual Try-On
+summary: The task of replacing only the clothes with a different design or variation.
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## What is Virtual Try-On?
 
 If ID Transfer is "Subject Transfer specialized for people," then Virtual Try-On (VTON) can be said to be **"Subject Transfer specialized for clothes."**

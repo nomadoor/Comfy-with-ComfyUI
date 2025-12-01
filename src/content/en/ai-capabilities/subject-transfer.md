@@ -4,13 +4,13 @@ lang: en
 section: ai-capabilities
 slug: subject-transfer
 navId: subject-transfer
-title: "Subject Transfer"
-summary: "Technology to make the same thing in a reference image appear in another scene."
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: Subject Transfer
+summary: Technology to make the same thing in a reference image appear in another
+  scene.
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## What is Subject Transfer?
 
 Officially, it is a task called "Subject-Driven Image Generation."

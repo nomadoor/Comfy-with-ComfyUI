@@ -4,13 +4,12 @@ lang: en
 section: ai-capabilities
 slug: conditioning
 navId: conditioning
-title: "Conditioning"
-summary: "A mechanism to tell the diffusion model 'what kind of image I want'."
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: Conditioning
+summary: A mechanism to tell the diffusion model 'what kind of image I want'.
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## Diffusion Models are Random if Left Alone
 
 Diffusion models have made it possible to generate meaningful images from noise.

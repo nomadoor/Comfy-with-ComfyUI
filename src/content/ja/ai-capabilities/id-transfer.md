@@ -4,13 +4,12 @@ lang: ja
 section: ai-capabilities
 slug: id-transfer
 navId: id-transfer
-title: "ID転送とFaceSwap"
-summary: "人物の顔や本人性を保ったまま、別シーンの画像を作る技術と顔差し替え"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: ID転送とFaceSwap
+summary: 人物の顔や本人性を保ったまま、別シーンの画像を作る技術と顔差し替え
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: "https://i.gyazo.com/877d8862f6e7f6dd3ec7fbeac5331cd9.png"
+  image: https://i.gyazo.com/877d8862f6e7f6dd3ec7fbeac5331cd9.png
 ---
-
 ## ID転送とFaceSwapとは？
 
 ID転送は、Subject転送の中でも人物に特化したものです。特に**顔**の一貫性にこだわったものが多いです（個人的には、髪や体まで含めてIDとして扱ってほしいですが）。

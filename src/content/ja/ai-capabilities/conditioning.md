@@ -4,13 +4,12 @@ lang: ja
 section: ai-capabilities
 slug: conditioning
 navId: conditioning
-title: "Conditioning"
-summary: "拡散モデルに「こういう画像がほしい」と伝える仕組み"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: Conditioning
+summary: 拡散モデルに「こういう画像がほしい」と伝える仕組み
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## 拡散モデルは「おまかせ」だとランダム
 
 拡散モデルによって、ノイズから意味のある画像を生成できるようになりました。

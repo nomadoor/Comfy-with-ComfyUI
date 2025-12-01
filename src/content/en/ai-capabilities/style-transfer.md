@@ -4,13 +4,12 @@ lang: en
 section: ai-capabilities
 slug: style-transfer
 navId: style-transfer
-title: "Style Transfer"
-summary: "The task of trying to transfer 'style' from a reference image, and its ambiguity."
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: Style Transfer
+summary: The task of trying to transfer 'style' from a reference image, and its ambiguity.
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## What is Style Transfer?
 
 Honestly, "Style Transfer" is quite ambiguous as a task name.

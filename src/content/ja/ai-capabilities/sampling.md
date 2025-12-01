@@ -4,13 +4,12 @@ lang: ja
 section: ai-capabilities
 slug: sampling
 navId: sampling
-title: "Sampling"
-summary: "ノイズをどのような手順で減らしていくかを決める仕組み"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: Sampling
+summary: ノイズをどのような手順で減らしていくかを決める仕組み
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## Samplingとは？
 
 拡散モデルは、ノイズを一気に消しているわけではなく、ノイズを少しずつ減らすステップを何回も進めながら画像を作っています。

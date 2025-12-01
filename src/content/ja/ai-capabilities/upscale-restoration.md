@@ -4,13 +4,12 @@ lang: ja
 section: ai-capabilities
 slug: upscale-restoration
 navId: upscale-restoration
-title: "アップスケール・画像修復"
-summary: "画像を大きくしたり、劣化した画像を修復したりする技術"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: アップスケール・画像修復
+summary: 画像を大きくしたり、劣化した画像を修復したりする技術
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## アップスケール・画像修復
 
 アップスケールは解像度の小さな画像を大きくするタスクですが、ただ大きくするだけなら PowerPoint などでもできます。

@@ -4,13 +4,12 @@ lang: en
 section: ai-capabilities
 slug: cfg
 navId: cfg
-title: "CFG"
-summary: "A mechanism that determines the 'effectiveness' of the prompt."
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: CFG
+summary: A mechanism that determines the 'effectiveness' of the prompt.
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## What is CFG?
 
 Roughly speaking, CFG (Classifier-Free Guidance) is a **coefficient that determines "how strongly to follow the prompt."**

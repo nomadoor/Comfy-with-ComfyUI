@@ -4,13 +4,12 @@ lang: ja
 section: ai-capabilities
 slug: instruction-based-image-editing
 navId: instruction-based-image-editing
-title: "指示ベース画像編集"
-summary: "テキストで指示するだけで、さまざまな画像編集タスクをこなすモデル群"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: 指示ベース画像編集
+summary: テキストで指示するだけで、さまざまな画像編集タスクをこなすモデル群
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## 指示ベース画像編集とは？
 
 画像とテキストの指示（必要なら参照画像も）を入力すると、その指示に従って画像を編集してくれるモデルを、このサイトでは **指示ベース画像編集モデル** と呼びます。  

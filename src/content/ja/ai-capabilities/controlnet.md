@@ -4,13 +4,12 @@ lang: ja
 section: ai-capabilities
 slug: controlnet
 navId: controlnet
-title: "ControlNet系"
-summary: "ポーズや線画などの追加情報で画像生成をコントロールする技術"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: ControlNet系
+summary: ポーズや線画などの追加情報で画像生成をコントロールする技術
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: "https://i.gyazo.com/374d9112c26cc1098d9e7e11b5ca49fa.png"
+  image: https://i.gyazo.com/374d9112c26cc1098d9e7e11b5ca49fa.png
 ---
-
 ## ControlNetとは？
 
 拡散モデルは、ざっくり言えば「ノイズ」と「画像」の関係性を学習し、ノイズの中から画像を復元できるようにしたモデルです。

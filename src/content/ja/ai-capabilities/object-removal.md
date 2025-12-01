@@ -4,13 +4,12 @@ lang: ja
 section: ai-capabilities
 slug: object-removal
 navId: object-removal
-title: "オブジェクト除去"
-summary: "画像から特定のものだけを消すタスクと、その代表的なやり方"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: オブジェクト除去
+summary: 画像から特定のものだけを消すタスクと、その代表的なやり方
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: "https://i.gyazo.com/e06eeccf0efa2e91773bb54acb31560a.gif"
+  image: https://i.gyazo.com/e06eeccf0efa2e91773bb54acb31560a.gif
 ---
-
 ## オブジェクト除去とは？
 
 その名の通り、画像から特定のオブジェクトだけを消すタスクです。

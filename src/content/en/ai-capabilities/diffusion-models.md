@@ -4,13 +4,12 @@ lang: en
 section: ai-capabilities
 slug: diffusion-models
 navId: diffusion-models
-title: "Diffusion Models"
-summary: "The mechanism of diffusion models."
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: Diffusion Models
+summary: The mechanism of diffusion models.
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## Beautiful Images Created from Noise
 
 ![](https://gyazo.com/3c82ca8a7dcb51f2475d0451de727783){gyazo=loop}

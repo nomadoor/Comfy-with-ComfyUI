@@ -4,13 +4,12 @@ lang: ja
 section: ai-capabilities
 slug: diffusion-models
 navId: diffusion-models
-title: "拡散モデル"
-summary: "拡散モデルの仕組み"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: 拡散モデル
+summary: 拡散モデルの仕組み
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## ノイズから美しい画像が作られる
 
 ![](https://gyazo.com/3c82ca8a7dcb51f2475d0451de727783){gyazo=loop}

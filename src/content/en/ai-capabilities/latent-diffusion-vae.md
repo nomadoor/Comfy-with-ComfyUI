@@ -4,13 +4,12 @@ lang: en
 section: ai-capabilities
 slug: latent-diffusion-vae
 navId: latent-diffusion-vae
-title: "Latent Diffusion Model & VAE"
-summary: "The role of latent space and VAE."
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: Latent Diffusion Model & VAE
+summary: The role of latent space and VAE.
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## What is a Latent Diffusion Model?
 
 ![](https://gyazo.com/22d5f654c3c598feb046cf71d4d8d4aa){gyazo=image}

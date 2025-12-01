@@ -4,13 +4,12 @@ lang: ja
 section: ai-capabilities
 slug: cfg
 navId: cfg
-title: "CFG"
-summary: "プロンプトの「効き具合」を決める仕組み"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: CFG
+summary: プロンプトの「効き具合」を決める仕組み
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## CFGとは？
 
 ざっくり言えば、CFG（Classifier-Free Guidance）は **「プロンプトにどれだけ強く従わせるか」を決める係数** です。

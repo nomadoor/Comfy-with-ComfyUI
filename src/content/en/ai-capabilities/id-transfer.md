@@ -4,13 +4,13 @@ lang: en
 section: ai-capabilities
 slug: id-transfer
 navId: id-transfer
-title: "ID Transfer & FaceSwap"
-summary: "Techniques to create images of different scenes while maintaining the person's face or identity, and face replacement."
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: ID Transfer & FaceSwap
+summary: Techniques to create images of different scenes while maintaining the person's
+  face or identity, and face replacement.
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: "https://i.gyazo.com/877d8862f6e7f6dd3ec7fbeac5331cd9.png"
+  image: https://i.gyazo.com/877d8862f6e7f6dd3ec7fbeac5331cd9.png
 ---
-
 ## What is ID Transfer and FaceSwap?
 
 ID Transfer is a type of Subject Transfer specialized for people. It often focuses particularly on the consistency of the **face** (personally, I wish hair and body were also treated as ID).

@@ -4,13 +4,12 @@ lang: ja
 section: ai-capabilities
 slug: virtual-try-on
 navId: virtual-try-on
-title: "着せ替え"
-summary: "服だけを別のデザイン・バリエーションに差し替えるタスク"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: 着せ替え
+summary: 服だけを別のデザイン・バリエーションに差し替えるタスク
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## 着せ替えとは？
 
 ID転送が「人に特化したSubject転送」だとしたら、着せ替えは **「服に特化したSubject転送」** と言ってよいでしょう。

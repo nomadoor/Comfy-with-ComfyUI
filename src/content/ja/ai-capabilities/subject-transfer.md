@@ -4,13 +4,12 @@ lang: ja
 section: ai-capabilities
 slug: subject-transfer
 navId: subject-transfer
-title: "Subject転送"
-summary: "参照画像と同じものを別のシーンに登場させる技術"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: Subject転送
+summary: 参照画像と同じものを別のシーンに登場させる技術
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## Subject転送とは？
 
 正式には「Subject-Driven Image Generation」と呼ばれるタスクです。

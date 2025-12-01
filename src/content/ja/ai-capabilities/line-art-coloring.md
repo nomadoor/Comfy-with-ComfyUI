@@ -4,13 +4,12 @@ lang: ja
 section: ai-capabilities
 slug: line-art-coloring
 navId: line-art-coloring
-title: "線画着色"
-summary: "線画に色を塗る技術"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: 線画着色
+summary: 線画に色を塗る技術
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## 線画着色とは？
 
 線画に色を付けるタスクです。

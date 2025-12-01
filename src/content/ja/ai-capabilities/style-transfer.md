@@ -4,13 +4,12 @@ lang: ja
 section: ai-capabilities
 slug: style-transfer
 navId: style-transfer
-title: "スタイル転送"
-summary: "「スタイル」を参照画像から移そうとするタスクと、その曖昧さ"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: スタイル転送
+summary: 「スタイル」を参照画像から移そうとするタスクと、その曖昧さ
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## スタイル転送とは？
 
 正直なところ、「スタイル転送」はタスク名としてかなり曖昧です。

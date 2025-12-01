@@ -4,13 +4,13 @@ lang: en
 section: ai-capabilities
 slug: object-removal
 navId: object-removal
-title: "Object Removal"
-summary: "The task of removing specific things from an image and typical methods for doing so."
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: Object Removal
+summary: The task of removing specific things from an image and typical methods for
+  doing so.
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: "https://i.gyazo.com/e06eeccf0efa2e91773bb54acb31560a.gif"
+  image: https://i.gyazo.com/e06eeccf0efa2e91773bb54acb31560a.gif
 ---
-
 ## What is Object Removal?
 
 As the name suggests, it is the task of removing only specific objects from an image.

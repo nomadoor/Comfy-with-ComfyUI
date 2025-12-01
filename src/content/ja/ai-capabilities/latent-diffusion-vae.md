@@ -4,13 +4,12 @@ lang: ja
 section: ai-capabilities
 slug: latent-diffusion-vae
 navId: latent-diffusion-vae
-title: "Latent Diffusion ModelとVAE"
-summary: "潜在空間とVAEの役割"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: Latent Diffusion ModelとVAE
+summary: 潜在空間とVAEの役割
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## Latent Diffusion Modelとは？
 
 ![](https://gyazo.com/22d5f654c3c598feb046cf71d4d8d4aa){gyazo=image}

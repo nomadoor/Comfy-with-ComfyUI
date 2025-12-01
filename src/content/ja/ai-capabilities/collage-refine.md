@@ -4,13 +4,12 @@ lang: ja
 section: ai-capabilities
 slug: collage-refine
 navId: collage-refine
-title: "雑コラのリファイン"
-summary: "雑なコラージュ画像を、指示ベース画像編集で自然な一枚絵に仕上げるテクニック"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: 雑コラのリファイン
+summary: 雑なコラージュ画像を、指示ベース画像編集で自然な一枚絵に仕上げるテクニック
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: "https://i.gyazo.com/967bb07db193bdc681c1f5528f99d537.png"
+  image: https://i.gyazo.com/967bb07db193bdc681c1f5528f99d537.png
 ---
-
 ## 雑コラのリファインとは？
 
 雑コラのリファインは、その名の通り「雑なコラージュ画像」を作り、それを指示ベース画像編集モデルに渡して自然な一枚絵に仕上げてもらうテクニックです。

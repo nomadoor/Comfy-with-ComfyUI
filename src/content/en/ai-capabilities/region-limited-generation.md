@@ -1,16 +1,16 @@
-﻿---
+---
 layout: page.njk
 lang: en
 section: ai-capabilities
 slug: region-limited-generation
 navId: region-limited-generation
-title: "Region-Limited Generation"
-summary: "Techniques to generate only parts of an image with different conditions, and their limitations."
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: Region-Limited Generation
+summary: Techniques to generate only parts of an image with different conditions,
+  and their limitations.
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## What is Region-Limited Generation?
 
 Layout is an important element in design.

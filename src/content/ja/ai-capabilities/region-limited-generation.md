@@ -4,13 +4,12 @@ lang: ja
 section: ai-capabilities
 slug: region-limited-generation
 navId: region-limited-generation
-title: "領域指定生成"
-summary: "画像の一部だけを別の条件で生成しようとする技術と、その限界"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: 領域指定生成
+summary: 画像の一部だけを別の条件で生成しようとする技術と、その限界
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## 領域指定生成とは？
 
 デザインにおいて、レイアウトは重要な要素です。

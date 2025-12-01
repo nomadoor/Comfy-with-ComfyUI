@@ -4,13 +4,12 @@ lang: en
 section: ai-capabilities
 slug: upscale-restoration
 navId: upscale-restoration
-title: "Upscale & Restoration"
-summary: "Technologies to enlarge images or restore degraded ones."
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: Upscale & Restoration
+summary: Technologies to enlarge images or restore degraded ones.
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## Upscale & Restoration
 
 Upscaling is the task of enlarging a low-resolution image, but if you just want to make it bigger, you can do it with PowerPoint.

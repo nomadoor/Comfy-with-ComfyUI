@@ -4,13 +4,13 @@ lang: en
 section: ai-capabilities
 slug: instruction-based-image-editing
 navId: instruction-based-image-editing
-title: "Instruction-Based Image Editing"
-summary: "A group of models that perform various image editing tasks simply by following text instructions."
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: Instruction-Based Image Editing
+summary: A group of models that perform various image editing tasks simply by following
+  text instructions.
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## What is Instruction-Based Image Editing?
 
 Models that take an image and text instructions (and reference images if necessary) as input and edit the image according to those instructions are referred to as **Instruction-Based Image Editing Models** on this site.

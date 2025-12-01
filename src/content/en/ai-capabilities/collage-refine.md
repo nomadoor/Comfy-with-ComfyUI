@@ -4,13 +4,13 @@ lang: en
 section: ai-capabilities
 slug: collage-refine
 navId: collage-refine
-title: "Refining Rough Collages"
-summary: "A technique to finish rough collage images into natural single pictures using instruction-based image editing."
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: Refining Rough Collages
+summary: A technique to finish rough collage images into natural single pictures using
+  instruction-based image editing.
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: "https://i.gyazo.com/967bb07db193bdc681c1f5528f99d537.png"
+  image: https://i.gyazo.com/967bb07db193bdc681c1f5528f99d537.png
 ---
-
 ## What is Refining Rough Collages?
 
 Refining rough collages is, as the name suggests, a technique where you create a "rough collage image" and pass it to an instruction-based image editing model to finish it into a natural single picture.

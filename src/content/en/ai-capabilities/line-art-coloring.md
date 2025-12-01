@@ -4,13 +4,12 @@ lang: en
 section: ai-capabilities
 slug: line-art-coloring
 navId: line-art-coloring
-title: "Line Art Coloring"
-summary: "Technology to color line art."
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: Line Art Coloring
+summary: Technology to color line art.
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## What is Line Art Coloring?
 
 It is the task of adding color to line art.

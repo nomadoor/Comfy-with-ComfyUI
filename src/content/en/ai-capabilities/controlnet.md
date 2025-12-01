@@ -4,13 +4,13 @@ lang: en
 section: ai-capabilities
 slug: controlnet
 navId: controlnet
-title: "ControlNet Techniques"
-summary: "Techniques to control image generation with additional information such as poses and line art."
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: ControlNet Techniques
+summary: Techniques to control image generation with additional information such as
+  poses and line art.
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: "https://i.gyazo.com/374d9112c26cc1098d9e7e11b5ca49fa.png"
+  image: https://i.gyazo.com/374d9112c26cc1098d9e7e11b5ca49fa.png
 ---
-
 ## What is ControlNet?
 
 Roughly speaking, diffusion models learn the relationship between "noise" and "images" so that they can restore images from noise.

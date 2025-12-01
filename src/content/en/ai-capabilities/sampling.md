@@ -4,13 +4,12 @@ lang: en
 section: ai-capabilities
 slug: sampling
 navId: sampling
-title: "Sampling"
-summary: "A mechanism that determines the procedure for reducing noise."
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: Sampling
+summary: A mechanism that determines the procedure for reducing noise.
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: ""
+  image: ''
 ---
-
 ## What is Sampling?
 
 The diffusion model does not remove noise all at once but creates an image while proceeding through steps to reduce noise little by little many times.
