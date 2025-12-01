@@ -27,14 +27,35 @@ const fitRows = (root = document) => {
 };
 
 let resizeTimer = null;
+const cleanupMap = new WeakMap();
 
 export default function initMediaRowFit(root = document) {
+  // If already initialized for this root, clean up previous listener to avoid duplicates.
+  if (cleanupMap.has(root)) {
+    cleanupMap.get(root)?.();
+    cleanupMap.delete(root);
+  }
+
   const run = () => fitRows(root);
   run();
-  window.addEventListener("resize", () => {
+
+  const onResize = () => {
     if (resizeTimer) {
       cancelAnimationFrame(resizeTimer);
     }
     resizeTimer = requestAnimationFrame(run);
-  });
+  };
+
+  window.addEventListener("resize", onResize);
+
+  const cleanup = () => {
+    window.removeEventListener("resize", onResize);
+    if (resizeTimer) {
+      cancelAnimationFrame(resizeTimer);
+      resizeTimer = null;
+    }
+  };
+
+  cleanupMap.set(root, cleanup);
+  return cleanup;
 }
