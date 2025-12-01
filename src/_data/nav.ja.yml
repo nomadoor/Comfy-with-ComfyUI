@@ -156,7 +156,7 @@
           - id: object-removal
             title: "オブジェクト除去"
           - id: instruction-based-image-editing
-            title: "指示ベースの画像編集"
+            title: "指示ベース画像編集"
           - id: collage-refine
             title: "雑コラのリファイン"
       - id: image-translation

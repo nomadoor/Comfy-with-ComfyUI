@@ -2,8 +2,8 @@
 layout: page.njk
 lang: ja
 section: ai-capabilities
-slug: lineart-colorization
-navId: lineart-colorization
+slug: line-art-coloring
+navId: line-art-coloring
 title: "線画着色"
 summary: "線画に色を塗る技術"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
