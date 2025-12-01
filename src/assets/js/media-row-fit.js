@@ -6,25 +6,22 @@ const fitRows = (root = document) => {
 
     // Reset any previous sizing
     items.forEach((frame) => {
-      frame.style.removeProperty("width");
-      frame.style.removeProperty("max-width");
+      frame.style.removeProperty("--media-scale");
     });
 
     const gap = parseFloat(getComputedStyle(row).gap || "0") || 0;
-    const rowWidth = row.clientWidth;
-    const totalWidth =
-      items.reduce((sum, frame) => sum + frame.getBoundingClientRect().width, 0) +
-      gap * Math.max(items.length - 1, 0);
+    const available = row.clientWidth - gap * Math.max(items.length - 1, 0);
+    if (available <= 0) return;
 
-    if (!rowWidth || totalWidth <= rowWidth) return;
+    const widths = items.map((frame) => frame.offsetWidth || frame.getBoundingClientRect().width);
+    const totalWidth = widths.reduce((sum, w) => sum + w, 0);
 
-    const scale = rowWidth / totalWidth;
+    if (!totalWidth || totalWidth <= available) return;
+
+    const scale = available / totalWidth;
 
     items.forEach((frame) => {
-      const currentWidth = frame.getBoundingClientRect().width;
-      const targetWidth = Math.max(currentWidth * scale, 1);
-      frame.style.width = `${targetWidth}px`;
-      frame.style.maxWidth = `${targetWidth}px`;
+      frame.style.setProperty("--media-scale", scale.toString());
     });
   });
 };
