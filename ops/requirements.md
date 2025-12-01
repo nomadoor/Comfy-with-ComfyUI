@@ -8,7 +8,7 @@
 ## 1. Content & Routing
 - Routes follow `/<lang>/<section>/<slug>/` with kebab-case slugs that match nav/data.
 - Markdown lives under `src/content/<lang>/`; workflows sit in `src/workflows/<slug>/*.json`; shared data under `_data`.
-- Front matter requires `slug`, `title`, and up to 5 `tags`. Use `draft: true` for hidden work.
+- Front matter requires `slug` and `title`. `tags` は任意（最大5件）。ただし **`ai-capabilities` セクションは原則 tags なし**。例外的に付ける場合はオーナー指示と `/ops` 合意を先に取る。`draft: true` で非公開化。
 
 ## 2. Navigation & Tags
 - Locale menus come from `_data/nav.<lang>.yml`; keep IDs aligned with folders and front matter.
@@ -51,7 +51,7 @@
 
 ## 11. CI & Quality Gates
 - Every slug must exist in nav files and directories.
-- `tags[]` stays <= 5 entries pulled from `_data/tagIndex.js`.
+- `tags[]` を使う場合は `_data/tagIndex.js` 由来で最大5件。`ai-capabilities` は tags なしが既定。
 - All `<img>` elements need width/height attributes or CSS aspect enforcement.
 - Update README/ADRs whenever IA or UX changes.
 
