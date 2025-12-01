@@ -26,7 +26,6 @@ const fitRows = (root = document) => {
   });
 };
 
-let resizeTimer = null;
 const cleanupMap = new WeakMap();
 
 export default function initMediaRowFit(root = document) {
@@ -36,6 +35,7 @@ export default function initMediaRowFit(root = document) {
     cleanupMap.delete(root);
   }
 
+  let resizeTimer = null;
   const run = () => fitRows(root);
   run();
 
