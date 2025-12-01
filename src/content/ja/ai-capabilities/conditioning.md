@@ -4,41 +4,97 @@ lang: ja
 section: ai-capabilities
 slug: conditioning
 navId: conditioning
-title: "Conditioningの考え方(ダミー)"
-summary: "拡散モデルにおける Conditioning の役割をダミーで解説。"
-tags:
-  - conditioning
-  - upscale-restoration
-workflowJson:
-  - id: clip-conditioning
-    title: "CLIP Text Encoder"
-    json: "/workflows/conditioning/clip-conditioning.json"
-    image: "https://i.gyazo.com/f805391f1a7ae6b253440cf16168a763.jpg"
-    copy: |
-      {
-        "workflow": "clip-conditioning",
-        "notes": "Dummy payload"
-      }
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+title: Conditioning
+summary: 拡散モデルに「こういう画像がほしい」と伝える仕組み
+permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: "https://i.gyazo.com/f805391f1a7ae6b253440cf16168a763.jpg"
-  alt: "Conditioning walkthrough"
+  image: ''
+---
+## 拡散モデルは「おまかせ」だとランダム
+
+拡散モデルによって、ノイズから意味のある画像を生成できるようになりました。
+
+しかし、このままだとあくまで「それっぽい画像」を出してくるだけで、どんな絵を出したいのか、**中身の指定**をすることはできません。
+
+ここで必要になるのが **Conditioning（コンディショニング）** です。
+
 ---
 
-## Conditioningとは
-ベクトルを使って生成方向を与える仕組みのダミー説明です。
+## Conditioningとは？
 
-### 入力チャネル
-- 正例 / 負例プロンプト
-- CLIP, T5 など
+ComfyUIでは、次のようなものをまとめて **Conditioning** と呼んでいます。
 
-## 実践ポイント
-- CFG と併せて調整
-- ノード構成例を workflows で提示予定
+> 拡散モデルがノイズを減らしていくときに、  
+> 「どんな画像にしてほしいか」「どこをどう変えてほしいか」  
+> を伝えるための追加情報
 
-### ロバスト性
-サンプル用段落。TOC で H3 まで拾えるか確認。
+簡単に言えば、**生成の方向性を決める道しるべ**のようなものです。
 
-![Conditioning gyazo](https://i.gyazo.com/f805391f1a7ae6b253440cf16168a763.jpg){gyazo=image}
+---
 
-![Conditioning workflow sample](https://i.gyazo.com/075ff7bc7a36635d40662b163b5a9cfe.jpg){gyazo=image}
+## テキストによるConditioning
+
+画像生成を制御する手段として最も一般的なのは、**テキストプロンプト**でしょう。  
+ただのテキストをConditioningにする方法を見てみましょう。
+
+### テキストエンコーダの役割
+
+拡散モデルは、そのままでは文章を読めません。  
+「犬」「森」「夕焼け」といった言葉は、ただの文字列です。
+
+そこで、テキストを拡散モデルが扱いやすい数値（ベクトル）に変換する役割を担うのが **テキストエンコーダ** です。
+
+- **入力**：テキスト（プロンプト）
+- **出力**：その意味を表すベクトル（数値のまとまり）
+
+拡散モデルは、このベクトルを道しるべにして、テキストプロンプトに合った画像になるようにノイズを減らしていきます。
+
+### CLIP型テキストエンコーダ
+
+Stable Diffusion 1.5のようなモデルでは、主に **CLIP** という仕組みをベースにしたテキストエンコーダが使われています。
+
+CLIPは「テキストと画像のペア」を大量に学習した "見るAI" です。画像とテキストを同じ「意味の空間」に配置できるのが特徴です。
+
+- 猫の写真を見せると、「a cat」という文章と相性がいいと判断できます
+- ということは、逆に a cat というテキストを入れれば、「猫らしさ」を表すベクトルを出してくれるわけです
+
+拡散モデル（U-Net）は、このベクトルを道しるべにして、「ノイズをどちら向きに減らせば、このテキストに合った画像になるか？」を判断していきます。
+
+### MLLM型テキストエンコーダ
+
+最近の画像モデル・動画モデルでは、CLIPの代わりに **MLLM（マルチモーダルLLM）** をベースにしたテキストエンコーダを使う流れも出てきています。
+
+MLLMは、ほぼChatGPTのようなものです。それ自体が会話することができ、画像を見ながら質問に答えることもできます。
+
+CLIPは単語と画像の対応を見ているだけなので、長い文章や複雑な位置関係を理解して画像生成に反映することは苦手でした。
+
+一方、MLLMであれば、はるかに高い精度で理解できます。
+
+> ![Z-Image](https://gyazo.com/21e83fc01b81ea693037ba3d17f39d5a){gyazo=image}
+> **例**：`A dog on a log with a frog in a bog`  
+> （丸太の上に犬、沼にはカエル、という複雑な位置関係も正確に理解）
+
+とはいえ、ComfyUIの立場から見ると、CLIPを使っていようがMLLMを使っていようが、どちらも「テキスト → 意味を表すベクトルに変換して、拡散モデルに渡す」という役割自体は同じです。
+
+## その他のConditioning（ざっくり）
+
+このページではテキストに絞りましたが、実際にはテキスト以外にもさまざまなConditioningがあります。
+
+### 参照画像ベースのConditioning
+- **IP-Adapter系など**
+- 「このキャラ・この塗り・この写真の雰囲気に寄せて」と伝える
+
+### 構造ベースのConditioning
+- **ControlNetなど**（ポーズ、線画、深度マップなど）
+- 「このポーズ・輪郭・奥行きは守って」と伝える
+
+### 領域ベースのConditioning
+- **Inpainting用のマスクなど**
+- 「この部分だけ描き直して、周りはあまり変えないで」と伝える
+
+どれも役割は同じです。
+
+> 拡散モデルがノイズを減らしていくときに、  
+> 何を優先して、どの方向へ寄せていくかを指示する **道しるべ**
+
+だと考えておけば十分です。

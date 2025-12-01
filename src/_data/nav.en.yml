@@ -120,20 +120,104 @@
   - key: ai-capabilities
     label: "AI Capabilities"
     pages:
-      - id: conditioning
-        title: "Conditioning"
+      - id: image-generation-mechanics
+        title: "Mechanics of Image Generation AI"
         noLink: true
         children:
-          - id: conditioning-prompts
-            title: "Prompt Structures"
-      - id: text-encoder
-        title: "Text Encoder"
-      - id: upscale-restoration
-        title: "Upscale & Restoration"
-      - id: controlnet
-        title: "ControlNet Techniques"
-      - id: lora-library
-        title: "LoRA Library"
+          - id: diffusion-models
+            title: "Diffusion Models"
+          - id: conditioning
+            title: "Conditioning"
+          - id: cfg
+            title: "CFG"
+          - id: sampling
+            title: "Sampling"
+          - id: latent-diffusion-vae
+            title: "Latent Diffusion Model & VAE"
+      - id: image-generation-applications
+        title: "Applications of Image Generation"
+        noLink: true
+        children:
+          - id: upscale-restoration
+            title: "Upscale & Restoration"
+          - id: controlnet
+            title: "ControlNet Family"
+          - id: region-limited-generation
+            title: "Region-Limited Generation"
+          - id: subject-transfer
+            title: "Subject Transfer"
+          - id: id-transfer
+            title: "ID Transfer & FaceSwap"
+          - id: virtual-try-on
+            title: "Virtual Try-On"
+          - id: style-transfer
+            title: "Style Transfer"
+          - id: line-art-coloring
+            title: "Line Art Coloring"
+          - id: object-removal
+            title: "Object Removal"
+          - id: instruction-based-image-editing
+            title: "Instruction-Based Image Editing"
+          - id: collage-refine
+            title: "Refining Rough Collages"
+      - id: image-translation
+        title: "Image Translation"
+        noLink: true
+        children:
+          - id: relighting
+            title: "Relighting / Delight"
+          - id: depth-normal-map
+            title: "Depth Estimation & Normal Map"
+      - id: video-audio-generation
+        title: "Video & Audio Generation"
+        noLink: true
+        children:
+          - id: video-generation
+            title: "Video Generation"
+          - id: video-upscale-restoration
+            title: "Video Upscale & Restoration"
+          - id: frame-interpolation
+            title: "Frame Interpolation"
+          - id: lip-sync
+            title: "Lip Sync"
+          - id: talking-head
+            title: "Talking Head"
+          - id: tts
+            title: "TTS"
+          - id: voice-clone
+            title: "Voice Clone"
+          - id: music-generation
+            title: "Music Generation"
+          - id: object-audio-edit
+            title: "Object-Based Audio Editing"
+          - id: video-to-audio
+            title: "Video-to-Audio"
+      - id: three-d-generation
+        title: "3D Generation"
+        noLink: true
+        children:
+          - id: three-d-model-generation
+            title: "3D Model Generation"
+          - id: multi-view-generation
+            title: "Multi-View Generation"
+      - id: computer-vision-vlm
+        title: "Computer Vision / VLM"
+        noLink: true
+        children:
+          - id: object-detection
+            title: "Object Detection"
+          - id: matching
+            title: "Matching"
+          - id: segmentation
+            title: "Segmentation"
+      - id: llm-mlm-usage
+        title: "LLM / MLLM Usage"
+        noLink: true
+        children:
+          - id: prompt-generation
+            title: "Prompt Generation & Editing"
+          - id: caption-generation
+            title: "Caption Generation"
   - key: basic-workflows
     label: "Basic Workflows"
     pages:

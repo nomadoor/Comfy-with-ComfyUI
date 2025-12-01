@@ -119,20 +119,104 @@
   - key: ai-capabilities
     label: "AIの仕組みと出来ること"
     pages:
-      - id: conditioning
-        title: "Conditioning"
+      - id: image-generation-mechanics
+        title: "画像生成AIの仕組み"
         noLink: true
         children:
-          - id: conditioning-prompts
-            title: "プロンプト構造"
-      - id: text-encoder
-        title: "Text Encoder"
-      - id: upscale-restoration
-        title: "アップスケール・画像修復"
-      - id: controlnet
-        title: "ControlNet使い分け"
-      - id: lora-library
-        title: "LoRAライブラリ"
+          - id: diffusion-models
+            title: "拡散モデル"
+          - id: conditioning
+            title: "Conditioning"
+          - id: cfg
+            title: "CFG"
+          - id: sampling
+            title: "Sampling"
+          - id: latent-diffusion-vae
+            title: "Latent Diffusion ModelとVAE"
+      - id: image-generation-applications
+        title: "画像生成の応用技術"
+        noLink: true
+        children:
+          - id: upscale-restoration
+            title: "アップスケール・画像修復"
+          - id: controlnet
+            title: "ControlNet系"
+          - id: region-limited-generation
+            title: "領域指定生成"
+          - id: subject-transfer
+            title: "Subject転送"
+          - id: id-transfer
+            title: "ID転送とFaceSwap"
+          - id: virtual-try-on
+            title: "着せ替え"
+          - id: style-transfer
+            title: "スタイル転送"
+          - id: line-art-coloring
+            title: "線画着色"
+          - id: object-removal
+            title: "オブジェクト除去"
+          - id: instruction-based-image-editing
+            title: "指示ベース画像編集"
+          - id: collage-refine
+            title: "雑コラのリファイン"
+      - id: image-translation
+        title: "画像変換"
+        noLink: true
+        children:
+          - id: relighting
+            title: "リライティング / Delight"
+          - id: depth-normal-map
+            title: "深度推定とノーマルマップ生成"
+      - id: video-audio-generation
+        title: "動画・音声生成"
+        noLink: true
+        children:
+          - id: video-generation
+            title: "動画生成"
+          - id: video-upscale-restoration
+            title: "アップスケール・動画修復"
+          - id: frame-interpolation
+            title: "フレーム補間"
+          - id: lip-sync
+            title: "リップシンク"
+          - id: talking-head
+            title: "talking head"
+          - id: tts
+            title: "TTS"
+          - id: voice-clone
+            title: "ボイスクローン"
+          - id: music-generation
+            title: "音楽生成"
+          - id: object-audio-edit
+            title: "物体ベースの音声編集"
+          - id: video-to-audio
+            title: "video2audio"
+      - id: three-d-generation
+        title: "3D生成"
+        noLink: true
+        children:
+          - id: three-d-model-generation
+            title: "3Dモデル生成"
+          - id: multi-view-generation
+            title: "マルチビュー生成"
+      - id: computer-vision-vlm
+        title: "コンピュータービジョン / VLM"
+        noLink: true
+        children:
+          - id: object-detection
+            title: "物体検出"
+          - id: matching
+            title: "マッチング"
+          - id: segmentation
+            title: "セグメンテーション"
+      - id: llm-mlm-usage
+        title: "LLM / MLLMの活用"
+        noLink: true
+        children:
+          - id: prompt-generation
+            title: "プロンプト生成・編集"
+          - id: caption-generation
+            title: "キャプション生成"
   - key: basic-workflows
     label: "基本のworkflow"
     pages:
