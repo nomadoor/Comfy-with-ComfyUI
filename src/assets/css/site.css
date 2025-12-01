@@ -3,6 +3,10 @@ body {
   height: 100%;
 }
 
+html {
+  font-size: 15px;
+}
+
 :root {
   --color-bg: #040404;
   --color-panel: #111111;
@@ -465,7 +469,7 @@ video {
 @media (max-width: 1400px) {
   .app-shell {
     grid-template-columns: var(--sidebar-width) 1fr;
-    gap: var(--space-lg);
+    gap: var(--space-xl);
   }
 
   .app-shell__toc,
@@ -663,7 +667,7 @@ video {
   border-radius: var(--radius-md);
   margin-top: auto;
   font-weight: 500;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
 }
 
 .sidebar__about {
@@ -1101,7 +1105,7 @@ h1 {
   display: flex;
   flex-wrap: nowrap;
   gap: var(--space-md);
-  overflow-x: auto;
+  overflow: hidden;
   margin: var(--space-md) 0;
 }
 
@@ -1125,6 +1129,22 @@ h1 {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+.article-media-row .article-media__frame {
+  width: calc(min(var(--article-media-width, 720px),
+          calc(var(--article-media-aspect, 16 / 9) * min(var(--article-media-height, 300px), 300px)))
+        * var(--media-scale, 1));
+  max-width: 100%;
+  height: calc(min(var(--article-media-height, 300px), 300px) * var(--media-scale, 1));
+  min-height: 0;
+  max-height: none;
+}
+
+.article-media-row .article-media__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .article-body table {
@@ -1698,7 +1718,7 @@ h1 {
 }
 
 .right-rail {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
@@ -1747,8 +1767,7 @@ h1 {
   flex-direction: column;
   gap: var(--space-2xs);
   border-left: 1px solid var(--color-border);
-  padding-left: calc(var(--space-sm) - 1px);
-}
+  }
 
 .toc__link {
   display: block;
