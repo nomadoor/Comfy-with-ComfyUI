@@ -23,7 +23,7 @@ hero:
 
 ---
 
-## 1. プロンプトで位置を指示する
+## プロンプトで位置を指示する
 
 最もシンプルな方法は、プロンプトにそのまま位置関係を書く方法です。
 
@@ -39,7 +39,7 @@ Stable Diffusionのテキストエンコーダは位置関係をほとんど理�
 
 ---
 
-## 2. Inpaintingを繰り返す
+## Inpaintingを繰り返す
 
 一度画像を生成してから、Inpaintingを何度も繰り返す方法です。
 
@@ -58,7 +58,7 @@ Stable Diffusionのテキストエンコーダは位置関係をほとんど理�
 
 ---
 
-## 3. Conditioning Set Area（Regional Prompting系）
+## Conditioning Set Area（Regional Prompting系）
 
 画像の各位置に異なるテキスト条件を適用しようとする手法です。Cross-Attention層を利用して、領域ごとに別のプロンプトを使います。
 
@@ -72,7 +72,7 @@ Stable Diffusionのテキストエンコーダは位置関係をほとんど理�
 
 ---
 
-## 4. Latent Composite（潜在空間での合成）
+## Latent Composite（潜在空間での合成）
 
 潜在空間の段階で画像を合成する方法です。
 
@@ -90,7 +90,7 @@ Stable Diffusionのテキストエンコーダは位置関係をほとんど理�
 
 ---
 
-## 5. Latent Couple / Attention Couple
+## Latent Couple / Attention Couple
 
 ### Latent Couple
 
@@ -113,7 +113,7 @@ Lantent CoupleではUNet丸々計算していましたが、こちらはCross-At
 
 ---
 
-## 6. 雑コラのリファイン (おすすめ)
+## 雑コラのリファイン (おすすめ)
 
 雑なコラージュ画像を作って、それをもとに自然な絵になるように作り直させる方法です。
 
@@ -121,4 +121,4 @@ Lantent CoupleではUNet丸々計算していましたが、こちらはCross-At
 
 非常に直感的に位置を指定できますし、生成する物自体も適当なオブジェクトを貼り付けておけばよいので、実際のところかなりおすすめの方法です。
 
-詳しくは → 
+詳しくは → [雑コラのリファイン](/ja/ai-capabilities/ragdoll-refine/)

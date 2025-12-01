@@ -86,7 +86,7 @@ Fluxをはじめとする DiT系モデルは、潜在能力として「一貫性
 
 ## 指示ベース画像編集モデル
 
-「指示ベース画像編集モデル」も、Subject転送に使えます。
+「[指示ベース画像編集モデル](/ja/ai-capabilities/instruction-based-image-editing/)」も、Subject転送に使えます。
 
 ![](https://gyazo.com/358c8441ff70ee58135d8340bd691200){gyazo=image}
 

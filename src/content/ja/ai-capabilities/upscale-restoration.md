@@ -79,7 +79,7 @@ Stable Diffusion などの拡散モデルを使って、画像を描き直しな
 
 [](/workflows/ai-capabilities/upscale-restoration/Qwen-Image-Edit-2509.json)
 
-詳しくは「指示ベース画像編集」のページで扱います。
+詳しくは「[指示ベース画像編集](/ja/ai-capabilities/instruction-based-image-editing/)」のページで扱います。
 
 ---
 

@@ -33,7 +33,7 @@ ControlNet Canny（edge）を使用すれば、入力した線画はおおむね
 
 ## 指示ベース画像編集での線画着色
 
-指示ベース画像編集モデルに、線画をそのまま渡して塗らせることもできます。
+[指示ベース画像編集](/ja/ai-capabilities/instruction-based-image-editing/)モデルに、線画をそのまま渡して塗らせることもできます。
 
 ![](https://gyazo.com/18b33d684675ffa56b3b805a9f56791a){gyazo=image}
 

@@ -81,7 +81,7 @@ IP-Adapter型の画像アダプタに加えて、顔認識モデルから得たI
 
 ## 指示ベース画像編集とID転送
 
-Subject転送ができるので言わずもがなですが、「指示ベース画像編集モデル」も、ID転送に使えます。
+Subject転送ができるので言わずもがなですが、「[指示ベース画像編集モデル](/ja/ai-capabilities/instruction-based-image-editing/)」も、ID転送に使えます。
 
 ---
 
