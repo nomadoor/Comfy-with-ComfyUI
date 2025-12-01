@@ -142,29 +142,27 @@
           - id: controlnet
             title: "ControlNet系"
           - id: region-limited-generation
-            title: "領域限定生成"
+            title: "領域指定生成"
           - id: subject-transfer
             title: "Subject転送"
-          - id: faceswap
-            title: "FaceSwap"
           - id: id-transfer
-            title: "ID転送"
-          - id: outfit-transfer
+            title: "ID転送とFaceSwap"
+          - id: virtual-try-on
             title: "着せ替え"
           - id: style-transfer
             title: "スタイル転送"
           - id: line-art-coloring
             title: "線画着色"
-          - id: object-based-editing
-            title: "物体ベースの画像編集"
+          - id: object-removal
+            title: "オブジェクト除去"
+          - id: instruction-based-image-editing
+            title: "指示ベースの画像編集"
           - id: collage-refine
             title: "雑コラのリファイン"
       - id: image-translation
         title: "画像変換"
         noLink: true
         children:
-          - id: object-removal
-            title: "オブジェクト除去"
           - id: relighting
             title: "リライティング / Delight"
           - id: depth-normal-map
