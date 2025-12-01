@@ -60,7 +60,7 @@ VTON系タスク（服の着せ替え）に特化したモデルはいくつも�
 
 ![](https://gyazo.com/30a82ecdd7a8cff9483a162decf7c31d){gyazo=image}
 
-[](/workflows/ai-capabilities/virtual-try-on/Flux_Kontext_LoRA_v0.2.json.json)
+[](/workflows/ai-capabilities/virtual-try-on/Flux_Kontext_LoRA_v0.2.json)
 
 - [nomadoor/crossimage-tryon-fluxkontext](https://huggingface.co/nomadoor/crossimage-tryon-fluxkontext)
 - **左側**：人物画像

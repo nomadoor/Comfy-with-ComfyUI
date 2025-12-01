@@ -1,4 +1,4 @@
----
+﻿---
 layout: page.njk
 lang: en
 section: ai-capabilities
@@ -120,4 +120,6 @@ A method of creating a rough collage image and having it remade into a natural p
 
 You can specify the position very intuitively, and since you just need to paste appropriate objects for what you want to generate, it is actually a highly recommended method.
 
-Details → [Refining Rough Collages](/en/ai-capabilities/collage-refine/)
+Details 竊・[Refining Rough Collages](/en/ai-capabilities/collage-refine/)
+
+
