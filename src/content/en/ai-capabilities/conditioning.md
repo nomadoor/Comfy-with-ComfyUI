@@ -8,7 +8,7 @@ title: "Conditioning"
 summary: "A mechanism to tell the diffusion model 'what kind of image I want'."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/f805391f1a7ae6b253440cf16168a763.jpg"
+  image: ""
 ---
 
 ## Diffusion Models are Random if Left Alone

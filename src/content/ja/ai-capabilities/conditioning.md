@@ -8,7 +8,7 @@ title: "Conditioning"
 summary: "拡散モデルに「こういう画像がほしい」と伝える仕組み"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/f805391f1a7ae6b253440cf16168a763.jpg"
+  image: ""
 ---
 
 ## 拡散モデルは「おまかせ」だとランダム
