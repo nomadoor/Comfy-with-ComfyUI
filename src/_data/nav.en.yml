@@ -1,242 +1,240 @@
-﻿sections:
-  - key: begin-with
-    label: "Begin With ComfyUI"
-    pages:
-
-      - id: how-to-use-this-site
-        title: "How to Use This Site"
-      - id: spin-up-fast
-        title: "Get It Running"
-        noLink: true
-        children:
-          - id: what-is-comfyui
-            title: "What is ComfyUI?"
-          - id: recommended-specs
-            title: "Recommended Specs"
-          - id: setup
-            title: "Setup"
-          - id: comfy-cloud
-            title: "Comfy Cloud"
-          - id: first-run
-            title: "First Run"
-      - id: pc-basics
-        title: "PC Basics"
-        noLink: true
-        children:
-          - id: path
-            title: "Path"
-          - id: terminal
-            title: "Terminal"
-          - id: python
-            title: "Python"
-          - id: git
-            title: "git"
-      - id: customization
-        title: "Customization"
-        noLink: true
-        children:
-          - id: settings
-            title: "Settings"
-          - id: command-line-arguments
-            title: "Command Line Arguments"
-          - id: updates
-            title: "Updates"
-          - id: downloading-and-placing-models
-            title: "Downloading & Placing Models"
-          - id: custom-nodes
-            title: "Custom Nodes"
-      - id: comfyui-operations
-        title: "ComfyUI Operations"
-        noLink: true
-        children:
-          - id: run-and-stop
-            title: "Run & Stop"
-          - id: saving-and-loading-workflows
-            title: "Save & Load Workflows"
-          - id: canvas-navigation
-            title: "Canvas Navigation"
-          - id: nodes
-            title: "Nodes"
-          - id: group
-            title: "Group"
-          - id: media
-            title: "Media"
-          - id: mask-editor
-            title: "Mask Editor"
-          - id: subgraphs
-            title: "Subgraphs"
-      - id: columns
-        title: "Columns"
-        noLink: true
-        children:
-          - id: readable-nodes
-            title: "Readable Nodes"
-          - id: wireless-nodes
-            title: "Wireless Nodes"
-  - key: data-utilities
-    label: "Data / Image Utilities"
-    pages:
-      - id: data-ops
-        title: "Data Operations"
-        noLink: true
-        children:
-          - id: data-types
-            title: "Data Types"
-          - id: simple-math
-            title: "Simple Math"
-          - id: text-ops
-            title: "Text Operations"
-          - id: webcam-input
-            title: "Webcam Input"
-      - id: basic-image-processing
-        title: "Basic Image Processing"
-        noLink: true
-        children:
-          - id: resize-crop-pad
-            title: "Resize, Crop, Pad"
-          - id: color-adjustments
-            title: "Color Adjustments & Filters"
-          - id: mask-alpha
-            title: "Mask & Alpha Channel"
-          - id: mask-ops
-            title: "Mask Operations"
-          - id: ai-mask-generation
-            title: "AI Mask Generation"
-          - id: layer-composite-blend
-            title: "Layer Composite & Blend"
-      - id: batch-processing
-        title: "Batch Processing"
-        noLink: true
-        children:
-          - id: queue
-            title: "Queue"
-          - id: list
-            title: "List"
-          - id: batch-video
-            title: "Batch & Video"
-          - id: realtime
-            title: "Realtime Processing"
-
-  - key: ai-capabilities
-    label: "AI Capabilities"
-    pages:
-      - id: image-generation-mechanics
-        title: "Mechanics of Image Generation AI"
-        noLink: true
-        children:
-          - id: diffusion-models
-            title: "Diffusion Models"
-          - id: conditioning
-            title: "Conditioning"
-          - id: cfg
-            title: "CFG"
-          - id: sampling
-            title: "Sampling"
-          - id: latent-diffusion-vae
-            title: "Latent Diffusion Model & VAE"
-      - id: image-generation-applications
-        title: "Applications of Image Generation"
-        noLink: true
-        children:
-          - id: upscale-restoration
-            title: "Upscale & Restoration"
-          - id: controlnet
-            title: "ControlNet Family"
-          - id: region-limited-generation
-            title: "Region-Limited Generation"
-          - id: subject-transfer
-            title: "Subject Transfer"
-          - id: id-transfer
-            title: "ID Transfer & FaceSwap"
-          - id: virtual-try-on
-            title: "Virtual Try-On"
-          - id: style-transfer
-            title: "Style Transfer"
-          - id: line-art-coloring
-            title: "Line Art Coloring"
-          - id: object-removal
-            title: "Object Removal"
-          - id: instruction-based-image-editing
-            title: "Instruction-Based Image Editing"
-          - id: collage-refine
-            title: "Refining Rough Collages"
-      - id: image-translation
-        title: "Image Translation"
-        noLink: true
-        children:
-          - id: relighting
-            title: "Relighting / Delight"
-          - id: depth-normal-map
-            title: "Depth Estimation & Normal Map"
-      - id: video-audio-generation
-        title: "Video & Audio Generation"
-        noLink: true
-        children:
-          - id: video-generation
-            title: "Video Generation"
-          - id: video-upscale-restoration
-            title: "Video Upscale & Restoration"
-          - id: frame-interpolation
-            title: "Frame Interpolation"
-          - id: lip-sync
-            title: "Lip Sync"
-          - id: talking-head
-            title: "Talking Head"
-          - id: tts
-            title: "TTS"
-          - id: voice-clone
-            title: "Voice Clone"
-          - id: music-generation
-            title: "Music Generation"
-          - id: video-to-audio
-            title: "Video-to-Audio"
-      - id: 3d-generation
-        title: "3D Generation"
-        noLink: true
-        children:
-          - id: 3d-model-generation
-            title: "3D Model Generation"
-      - id: computer-vision-vlm
-        title: "Computer Vision / VLM"
-        noLink: true
-        children:
-          - id: object-detection
-            title: "Object Detection"
-          - id: matting
-            title: "Matting"
-          - id: segmentation
-            title: "Segmentation"
-      - id: llm-mlm-usage
-        title: "LLM / MLLM Usage"
-        noLink: true
-        children:
-          - id: prompt-generation
-            title: "Prompt Generation & Editing"
-          - id: tag-caption-generation
-            title: "Tag & Caption Generation"
-  - key: basic-workflows
-    label: "Basic Workflows"
-    pages:
-      - id: sd15-basics
-        title: "SD1.5 Basics"
-      - id: other-foundation-models
-        title: "Other Foundation Models"
-      - id: sdxl-basics
-        title: "SDXL Starter"
-      - id: flux-tools
-        title: "Flux Tooling"
-  - key: faq
-    label: "FAQ / Troubleshooting"
-    pages:
-      - id: oom-vram
-        title: "OOM / VRAM"
-        noLink: true
-        children:
-          - id: oom-checklist
-            title: "VRAM Recovery Checklist"
-      - id: common-questions
-        title: "Common Questions"
-      - id: render-errors
-        title: "Render Errors"
-      - id: workflow-debug
-        title: "Workflow Debugging"
+sections:
+- key: begin-with
+  label: Begin With ComfyUI
+  pages:
+  - id: how-to-use-this-site
+    title: How to Use This Site
+  - id: spin-up-fast
+    title: Get It Running
+    noLink: true
+    children:
+    - id: what-is-comfyui
+      title: What is ComfyUI?
+    - id: recommended-specs
+      title: Recommended Specs
+    - id: setup
+      title: Setup
+    - id: comfy-cloud
+      title: Comfy Cloud
+    - id: first-run
+      title: First Run
+  - id: pc-basics
+    title: PC Basics
+    noLink: true
+    children:
+    - id: path
+      title: Path
+    - id: terminal
+      title: Terminal
+    - id: python
+      title: Python
+    - id: git
+      title: git
+  - id: customization
+    title: Customization
+    noLink: true
+    children:
+    - id: settings
+      title: Settings
+    - id: command-line-arguments
+      title: Command Line Arguments
+    - id: updates
+      title: Updates
+    - id: downloading-and-placing-models
+      title: Downloading & Placing Models
+    - id: custom-nodes
+      title: Custom Nodes
+  - id: comfyui-operations
+    title: ComfyUI Operations
+    noLink: true
+    children:
+    - id: run-and-stop
+      title: Run & Stop
+    - id: saving-and-loading-workflows
+      title: Save & Load Workflows
+    - id: canvas-navigation
+      title: Canvas Navigation
+    - id: nodes
+      title: Nodes
+    - id: group
+      title: Group
+    - id: media
+      title: Media
+    - id: mask-editor
+      title: Mask Editor
+    - id: subgraphs
+      title: Subgraphs
+  - id: columns
+    title: Columns
+    noLink: true
+    children:
+    - id: readable-nodes
+      title: Readable Nodes
+    - id: wireless-nodes
+      title: Wireless Nodes
+- key: data-utilities
+  label: Data / Image Utilities
+  pages:
+  - id: data-ops
+    title: Data Operations
+    noLink: true
+    children:
+    - id: data-types
+      title: Data Types
+    - id: simple-math
+      title: Simple Math
+    - id: text-ops
+      title: Text Operations
+    - id: webcam-input
+      title: Webcam Input
+  - id: basic-image-processing
+    title: Basic Image Processing
+    noLink: true
+    children:
+    - id: resize-crop-pad
+      title: Resize, Crop, Pad
+    - id: color-adjustments
+      title: Color Adjustments & Filters
+    - id: mask-alpha
+      title: Mask & Alpha Channel
+    - id: mask-ops
+      title: Mask Operations
+    - id: ai-mask-generation
+      title: AI Mask Generation
+    - id: layer-composite-blend
+      title: Layer Composite & Blend
+  - id: batch-processing
+    title: Batch Processing
+    noLink: true
+    children:
+    - id: queue
+      title: Queue
+    - id: list
+      title: List
+    - id: batch-video
+      title: Batch & Video
+    - id: realtime
+      title: Realtime Processing
+- key: ai-capabilities
+  label: AI Capabilities
+  pages:
+  - id: image-generation-mechanics
+    title: Mechanics of Image Generation AI
+    noLink: true
+    children:
+    - id: diffusion-models
+      title: Diffusion Models
+    - id: conditioning
+      title: Conditioning
+    - id: cfg
+      title: CFG
+    - id: sampling
+      title: Sampling
+    - id: latent-diffusion-vae
+      title: Latent Diffusion Model & VAE
+  - id: image-generation-applications
+    title: Applications of Image Generation
+    noLink: true
+    children:
+    - id: upscale-restoration
+      title: Upscale & Restoration
+    - id: controlnet
+      title: ControlNet Family
+    - id: region-limited-generation
+      title: Region-Limited Generation
+    - id: subject-transfer
+      title: Subject Transfer
+    - id: id-transfer
+      title: ID Transfer & FaceSwap
+    - id: virtual-try-on
+      title: Virtual Try-On
+    - id: style-transfer
+      title: Style Transfer
+    - id: line-art-coloring
+      title: Line Art Coloring
+    - id: object-removal
+      title: Object Removal
+    - id: instruction-based-image-editing
+      title: Instruction-Based Image Editing
+    - id: collage-refine
+      title: Refining Rough Collages
+  - id: image-translation
+    title: Image Translation
+    noLink: true
+    children:
+    - id: relight
+      title: Relight
+    - id: depth-normal-map
+      title: Depth Estimation & Normal Map
+  - id: video-audio-generation
+    title: Video & Audio Generation
+    noLink: true
+    children:
+    - id: video-generation
+      title: Video Generation
+    - id: video-upscale-restoration
+      title: Video Upscale & Restoration
+    - id: frame-interpolation
+      title: Frame Interpolation
+    - id: lip-sync
+      title: Lip Sync
+    - id: talking-head
+      title: Talking Head
+    - id: tts
+      title: TTS
+    - id: voice-clone
+      title: Voice Clone
+    - id: music-generation
+      title: Music Generation
+    - id: video-to-audio
+      title: Video-to-Audio
+  - id: 3d-generation
+    title: 3D Generation
+    noLink: true
+    children:
+    - id: 3d-model-generation
+      title: 3D Model Generation
+  - id: computer-vision-vlm
+    title: Computer Vision / VLM
+    noLink: true
+    children:
+    - id: object-detection
+      title: Object Detection
+    - id: matting
+      title: Matting
+    - id: segmentation
+      title: Segmentation
+  - id: llm-mlm-usage
+    title: LLM / MLLM Usage
+    noLink: true
+    children:
+    - id: prompt-generation
+      title: Prompt Generation & Editing
+    - id: tag-caption-generation
+      title: Tag & Caption Generation
+- key: basic-workflows
+  label: Basic Workflows
+  pages:
+  - id: sd15-basics
+    title: SD1.5 Basics
+  - id: other-foundation-models
+    title: Other Foundation Models
+  - id: sdxl-basics
+    title: SDXL Starter
+  - id: flux-tools
+    title: Flux Tooling
+- key: faq
+  label: FAQ / Troubleshooting
+  pages:
+  - id: oom-vram
+    title: OOM / VRAM
+    noLink: true
+    children:
+    - id: oom-checklist
+      title: VRAM Recovery Checklist
+  - id: common-questions
+    title: Common Questions
+  - id: render-errors
+    title: Render Errors
+  - id: workflow-debug
+    title: Workflow Debugging

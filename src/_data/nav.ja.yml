@@ -162,8 +162,8 @@ sections:
     title: 画像変換
     noLink: true
     children:
-    - id: relighting
-      title: リライティング / Delight
+    - id: relight
+      title: リライト
     - id: depth-normal-map
       title: 深度推定とノーマルマップ生成
   - id: video-audio-generation
