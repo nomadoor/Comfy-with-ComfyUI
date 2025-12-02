@@ -951,6 +951,7 @@ video {
   padding-bottom: var(--space-2xl);
   font-weight: 500;
   letter-spacing: 0.04rem;
+  line-height: 1.5;
 }
 
 .article-body strong {
