@@ -1,241 +1,240 @@
-﻿sections:
-  - key: begin-with
-    label: "はじめてのComfyUI"
-    pages:
-
-      - id: how-to-use-this-site
-        title: "このサイトの使い方"
-      - id: spin-up-fast
-        title: "とりあえず動かしてみる"
-        noLink: true
-        children:
-          - id: what-is-comfyui
-            title: "ComfyUIとは？"
-          - id: recommended-specs
-            title: "推奨スペック"
-          - id: setup
-            title: セットアップ
-          - id: comfy-cloud
-            title: "Comfy Cloud"
-          - id: first-run
-            title: "起動して生成"
-      - id: pc-basics
-        title: "必要なPC知識"
-        noLink: true
-        children:
-          - id: path
-            title: "パス"
-          - id: terminal
-            title: "ターミナル"
-          - id: python
-            title: "Python"
-          - id: git
-            title: "git"
-      - id: customization
-        title: "カスタマイズ"
-        noLink: true
-        children:
-          - id: settings
-            title: "設定"
-          - id: command-line-arguments
-            title: "コマンドライン引数"
-          - id: updates
-            title: "アップデート"
-          - id: downloading-and-placing-models
-            title: "モデルのダウンロードと配置"
-          - id: custom-nodes
-            title: "カスタムノード"
-      - id: comfyui-operations
-        title: "ComfyUIの操作"
-        noLink: true
-        children:
-          - id: run-and-stop
-            title: "実行・停止"
-          - id: saving-and-loading-workflows
-            title: "workflowの保存・読み込み"
-          - id: canvas-navigation
-            title: "キャンバスの操作"
-          - id: nodes
-            title: ノード
-          - id: group
-            title: "グループ"
-          - id: media
-            title: "メディア"
-          - id: mask-editor
-            title: "マスクエディタ"
-          - id: subgraphs
-            title: "サブグラフ"
-      - id: columns
-        title: "コラム"
-        noLink: true
-        children:
-          - id: readable-nodes
-            title: "リーダブルノードのすすめ"
-          - id: wireless-nodes
-            title: "無線でノードをつなぐ"
-  - key: data-utilities
-    label: "データ / 画像ユーティリティ"
-    pages:
-      - id: data-ops
-        title: "データ操作"
-        noLink: true
-        children:
-          - id: data-types
-            title: "データ型"
-          - id: simple-math
-            title: "単純な計算"
-          - id: text-ops
-            title: "テキスト操作"
-          - id: webcam-input
-            title: "Webカメラ入力"
-      - id: basic-image-processing
-        title: "基本的な画像処理"
-        noLink: true
-        children:
-          - id: resize-crop-pad
-            title: "リサイズ・クロップ・パディング"
-          - id: color-adjustments
-            title: "色調補正・フィルタ効果"
-          - id: mask-alpha
-            title: "マスクとアルファチャンネル"
-          - id: mask-ops
-            title: "マスク操作"
-          - id: ai-mask-generation
-            title: "AIを使ったマスク生成"
-          - id: layer-composite-blend
-            title: "レイヤ合成・ブレンド"
-      - id: batch-processing
-        title: "連続処理"
-        noLink: true
-        children:
-          - id: queue
-            title: "Queue"
-          - id: list
-            title: "List"
-          - id: batch-video
-            title: "Batch・動画"
-          - id: realtime
-            title: "リアルタイム処理"
-  - key: ai-capabilities
-    label: "AIの仕組みと出来ること"
-    pages:
-      - id: image-generation-mechanics
-        title: "画像生成AIの仕組み"
-        noLink: true
-        children:
-          - id: diffusion-models
-            title: "拡散モデル"
-          - id: conditioning
-            title: "Conditioning"
-          - id: cfg
-            title: "CFG"
-          - id: sampling
-            title: "Sampling"
-          - id: latent-diffusion-vae
-            title: "Latent Diffusion ModelとVAE"
-      - id: image-generation-applications
-        title: "画像生成の応用技術"
-        noLink: true
-        children:
-          - id: upscale-restoration
-            title: "アップスケール・画像修復"
-          - id: controlnet
-            title: "ControlNet系"
-          - id: region-limited-generation
-            title: "領域指定生成"
-          - id: subject-transfer
-            title: "Subject転送"
-          - id: id-transfer
-            title: "ID転送とFaceSwap"
-          - id: virtual-try-on
-            title: "着せ替え"
-          - id: style-transfer
-            title: "スタイル転送"
-          - id: line-art-coloring
-            title: "線画着色"
-          - id: object-removal
-            title: "オブジェクト除去"
-          - id: instruction-based-image-editing
-            title: "指示ベース画像編集"
-          - id: collage-refine
-            title: "雑コラのリファイン"
-      - id: image-translation
-        title: "画像変換"
-        noLink: true
-        children:
-          - id: relight
-            title: "リライト"
-          - id: depth-normal-map
-            title: "深度推定とノーマルマップ生成"
-      - id: video-audio-generation
-        title: "動画・音声生成"
-        noLink: true
-        children:
-          - id: video-generation
-            title: "動画生成"
-          - id: video-upscale-restoration
-            title: "アップスケール・動画修復"
-          - id: frame-interpolation
-            title: "フレーム補間"
-          - id: lip-sync
-            title: "リップシンク"
-          - id: talking-head
-            title: "talking head"
-          - id: tts
-            title: "TTS"
-          - id: voice-clone
-            title: "ボイスクローン"
-          - id: music-generation
-            title: "音楽生成"
-          - id: video-to-audio
-            title: "video2audio"
-      - id: 3d-generation
-        title: "3D生成"
-        noLink: true
-        children:
-          - id: 3d-model-generation
-            title: "3Dモデル生成"
-      - id: computer-vision-vlm
-        title: "コンピュータービジョン / VLM"
-        noLink: true
-        children:
-          - id: object-detection
-            title: "物体検出"
-          - id: matting
-            title: "マッティング"
-          - id: segmentation
-            title: "セグメンテーション"
-      - id: llm-mlm-usage
-        title: "LLM / MLLMの活用"
-        noLink: true
-        children:
-          - id: prompt-generation
-            title: "プロンプト生成・編集"
-          - id: tag-caption-generation
-            title: "タグ・キャプション生成"
-  - key: basic-workflows
-    label: "基本のworkflow"
-    pages:
-      - id: sd15-basics
-        title: "画像生成の基本 (SD1.5)"
-      - id: other-foundation-models
-        title: "他の基盤モデル"
-      - id: sdxl-basics
-        title: "SDXLスターター"
-      - id: flux-tools
-        title: "Flux系ツール"
-  - key: faq
-    label: "FAQ / トラブルシューティング"
-    pages:
-      - id: oom-vram
-        title: "OOM / VRAM"
-        noLink: true
-        children:
-          - id: oom-checklist
-            title: "VRAM復旧手順"
-      - id: common-questions
-        title: "よくある質問"
-      - id: render-errors
-        title: "Renderエラー"
-      - id: workflow-debug
-        title: "Workflowデバッグ"
+sections:
+- key: begin-with
+  label: はじめてのComfyUI
+  pages:
+  - id: how-to-use-this-site
+    title: このサイトの使い方
+  - id: spin-up-fast
+    title: とりあえず動かしてみる
+    noLink: true
+    children:
+    - id: what-is-comfyui
+      title: ComfyUIとは？
+    - id: recommended-specs
+      title: 推奨スペック
+    - id: setup
+      title: セットアップ
+    - id: comfy-cloud
+      title: Comfy Cloud
+    - id: first-run
+      title: 起動して生成
+  - id: pc-basics
+    title: 必要なPC知識
+    noLink: true
+    children:
+    - id: path
+      title: パス
+    - id: terminal
+      title: ターミナル
+    - id: python
+      title: Python
+    - id: git
+      title: git
+  - id: customization
+    title: カスタマイズ
+    noLink: true
+    children:
+    - id: settings
+      title: 設定
+    - id: command-line-arguments
+      title: コマンドライン引数
+    - id: updates
+      title: アップデート
+    - id: downloading-and-placing-models
+      title: モデルのダウンロードと配置
+    - id: custom-nodes
+      title: カスタムノード
+  - id: comfyui-operations
+    title: ComfyUIの操作
+    noLink: true
+    children:
+    - id: run-and-stop
+      title: 実行・停止
+    - id: saving-and-loading-workflows
+      title: workflowの保存・読み込み
+    - id: canvas-navigation
+      title: キャンバスの操作
+    - id: nodes
+      title: ノード
+    - id: group
+      title: グループ
+    - id: media
+      title: メディア
+    - id: mask-editor
+      title: マスクエディタ
+    - id: subgraphs
+      title: サブグラフ
+  - id: columns
+    title: コラム
+    noLink: true
+    children:
+    - id: readable-nodes
+      title: リーダブルノードのすすめ
+    - id: wireless-nodes
+      title: 無線でノードをつなぐ
+- key: data-utilities
+  label: データ / 画像ユーティリティ
+  pages:
+  - id: data-ops
+    title: データ操作
+    noLink: true
+    children:
+    - id: data-types
+      title: データ型
+    - id: simple-math
+      title: 単純な計算
+    - id: text-ops
+      title: テキスト操作
+    - id: webcam-input
+      title: Webカメラ入力
+  - id: basic-image-processing
+    title: 基本的な画像処理
+    noLink: true
+    children:
+    - id: resize-crop-pad
+      title: リサイズ・クロップ・パディング
+    - id: color-adjustments
+      title: 色調補正・フィルタ効果
+    - id: mask-alpha
+      title: マスクとアルファチャンネル
+    - id: mask-ops
+      title: マスク操作
+    - id: ai-mask-generation
+      title: AIを使ったマスク生成
+    - id: layer-composite-blend
+      title: レイヤ合成・ブレンド
+  - id: batch-processing
+    title: 連続処理
+    noLink: true
+    children:
+    - id: queue
+      title: Queue
+    - id: list
+      title: List
+    - id: batch-video
+      title: Batch・動画
+    - id: realtime
+      title: リアルタイム処理
+- key: ai-capabilities
+  label: AIの仕組みと出来ること
+  pages:
+  - id: image-generation-mechanics
+    title: 画像生成AIの仕組み
+    noLink: true
+    children:
+    - id: diffusion-models
+      title: 拡散モデル
+    - id: conditioning
+      title: Conditioning
+    - id: cfg
+      title: CFG
+    - id: sampling
+      title: Sampling
+    - id: latent-diffusion-vae
+      title: Latent Diffusion ModelとVAE
+  - id: image-generation-applications
+    title: 画像生成の応用技術
+    noLink: true
+    children:
+    - id: upscale-restoration
+      title: アップスケール・画像修復
+    - id: controlnet
+      title: ControlNet系
+    - id: region-limited-generation
+      title: 領域指定生成
+    - id: subject-transfer
+      title: Subject転送
+    - id: id-transfer
+      title: ID転送とFaceSwap
+    - id: virtual-try-on
+      title: 着せ替え
+    - id: style-transfer
+      title: スタイル転送
+    - id: line-art-coloring
+      title: 線画着色
+    - id: object-removal
+      title: オブジェクト除去
+    - id: instruction-based-image-editing
+      title: 指示ベース画像編集
+    - id: collage-refine
+      title: 雑コラのリファイン
+  - id: image-translation
+    title: 画像変換
+    noLink: true
+    children:
+    - id: relighting
+      title: リライティング / Delight
+    - id: depth-normal-map
+      title: 深度推定とノーマルマップ生成
+  - id: video-audio-generation
+    title: 動画・音声生成
+    noLink: true
+    children:
+    - id: video-generation
+      title: 動画生成
+    - id: video-upscale-restoration
+      title: アップスケール・動画修復
+    - id: frame-interpolation
+      title: フレーム補間
+    - id: lip-sync
+      title: リップシンク
+    - id: talking-head
+      title: talking head
+    - id: tts
+      title: TTS
+    - id: voice-clone
+      title: ボイスクローン
+    - id: music-generation
+      title: 音楽生成
+    - id: video-to-audio
+      title: video2audio
+  - id: 3d-generation
+    title: 3D生成
+    noLink: true
+    children:
+    - id: 3d-model-generation
+      title: 3Dモデル生成
+  - id: computer-vision-vlm
+    title: コンピュータービジョン / VLM
+    noLink: true
+    children:
+    - id: object-detection
+      title: 物体検出
+    - id: matting
+      title: マッティング
+    - id: segmentation
+      title: セグメンテーション
+  - id: llm-mlm-usage
+    title: LLM / MLLMの活用
+    noLink: true
+    children:
+    - id: prompt-generation
+      title: プロンプト生成・編集
+    - id: tag-caption-generation
+      title: タグ・キャプション生成
+- key: basic-workflows
+  label: 基本のworkflow
+  pages:
+  - id: sd15-basics
+    title: 画像生成の基本 (SD1.5)
+  - id: other-foundation-models
+    title: 他の基盤モデル
+  - id: sdxl-basics
+    title: SDXLスターター
+  - id: flux-tools
+    title: Flux系ツール
+- key: faq
+  label: FAQ / トラブルシューティング
+  pages:
+  - id: oom-vram
+    title: OOM / VRAM
+    noLink: true
+    children:
+    - id: oom-checklist
+      title: VRAM復旧手順
+  - id: common-questions
+    title: よくある質問
+  - id: render-errors
+    title: Renderエラー
+  - id: workflow-debug
+    title: Workflowデバッグ

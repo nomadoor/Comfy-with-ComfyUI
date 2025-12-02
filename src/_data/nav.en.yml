@@ -164,8 +164,8 @@
         title: "Image Translation"
         noLink: true
         children:
-          - id: relight
-            title: "relight"
+          - id: relighting
+            title: "Relighting / Delight"
           - id: depth-normal-map
             title: "Depth Estimation & Normal Map"
       - id: video-audio-generation
@@ -188,26 +188,22 @@
             title: "Voice Clone"
           - id: music-generation
             title: "Music Generation"
-          - id: object-audio-edit
-            title: "Object-Based Audio Editing"
           - id: video-to-audio
             title: "Video-to-Audio"
-      - id: three-d-generation
+      - id: 3d-generation
         title: "3D Generation"
         noLink: true
         children:
-          - id: three-d-model-generation
+          - id: 3d-model-generation
             title: "3D Model Generation"
-          - id: multi-view-generation
-            title: "Multi-View Generation"
       - id: computer-vision-vlm
         title: "Computer Vision / VLM"
         noLink: true
         children:
           - id: object-detection
             title: "Object Detection"
-          - id: matching
-            title: "Matching"
+          - id: matting
+            title: "Matting"
           - id: segmentation
             title: "Segmentation"
       - id: llm-mlm-usage
