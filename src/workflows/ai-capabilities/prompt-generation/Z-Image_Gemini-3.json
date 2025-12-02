@@ -1,0 +1,699 @@
+{
+  "id": "d8034549-7e0a-40f1-8c2e-de3ffc6f1cae",
+  "revision": 0,
+  "last_node_id": 60,
+  "last_link_id": 105,
+  "nodes": [
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1252.432861328125,
+        188.1918182373047
+      ],
+      "size": [
+        157.56002807617188,
+        46
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 35
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 76
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            101
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": [
+        492,
+        394.392333984375
+      ],
+      "size": [
+        418.3189392089844,
+        107.08506774902344
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 75
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            52
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Negative Prompt)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 37,
+      "type": "UNETLoader",
+      "pos": [
+        250.6552734375,
+        -167.9522705078125
+      ],
+      "size": [
+        305.3782043457031,
+        82
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            99
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "Z-Image\\z_image_turbo_bf16.safetensors",
+        "fp8_e4m3fn"
+      ]
+    },
+    {
+      "id": 54,
+      "type": "ModelSamplingAuraFlow",
+      "pos": [
+        586.9390258789062,
+        -167.9522705078125
+      ],
+      "size": [
+        230.33058166503906,
+        58
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 99
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            100
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.49",
+        "Node name for S&R": "ModelSamplingAuraFlow"
+      },
+      "widgets_values": [
+        3.1
+      ]
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        492,
+        175
+      ],
+      "size": [
+        330.26959228515625,
+        142.00363159179688
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 74
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 102
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            46
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 38,
+      "type": "CLIPLoader",
+      "pos": [
+        120.78603616968121,
+        342.5854112036154
+      ],
+      "size": [
+        301.3524169921875,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            74,
+            75
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "qwen_3_4b.safetensors",
+        "lumina2",
+        "default"
+      ]
+    },
+    {
+      "id": 53,
+      "type": "EmptySD3LatentImage",
+      "pos": [
+        597.2695922851562,
+        482.05751390379885
+      ],
+      "size": [
+        237,
+        106
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            98
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.49",
+        "Node name for S&R": "EmptySD3LatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 56,
+      "type": "SaveImage",
+      "pos": [
+        1442.0747874475098,
+        188.22962825237536
+      ],
+      "size": [
+        510.21224258223606,
+        595.4940064248622
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 101
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 59,
+      "type": "PreviewAny",
+      "pos": [
+        492,
+        1.5167060232018699
+      ],
+      "size": [
+        330,
+        111
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 104
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75",
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 57,
+      "type": "GeminiNode",
+      "pos": [
+        131.26602226763393,
+        0.08407710682253366
+      ],
+      "size": [
+        273,
+        266
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "video",
+          "shape": 7,
+          "type": "VIDEO",
+          "link": null
+        },
+        {
+          "name": "files",
+          "shape": 7,
+          "type": "GEMINI_INPUT_FILES",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 105
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            102,
+            104
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75",
+        "Node name for S&R": "GeminiNode"
+      },
+      "widgets_values": [
+        "",
+        "gemini-3-pro-preview",
+        12345,
+        "fixed",
+        "Status: Completed\nPrice: $0.0113\nTime elapsed: 10s"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 55,
+      "type": "MarkdownNote",
+      "pos": [
+        -136.07276600955444,
+        -300.4671673650518
+      ],
+      "size": [
+        349.13103718118725,
+        214.5148968572393
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n- [z_image_turbo_bf16.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors)\n- [qwen_3_4b.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/text_encoders/qwen_3_4b.safetensors)\n- [ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors)\n\n```\n📂ComfyUI/\n└── 📂models/\n      ├── 📂diffusion_models/\n      │   └── z_image_turbo_bf16.safetensors\n      ├── 📂text_encoders/\n      │   └── qwen_3_4b.safetensors\n      └── 📂vae/\n           └── ae.safetensors\n```"
+      ]
+    },
+    {
+      "id": 60,
+      "type": "StringConcatenate",
+      "pos": [
+        -181.55781163713942,
+        -8.244166137499546
+      ],
+      "size": [
+        283.8399999999999,
+        276.23
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            105
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75",
+        "Node name for S&R": "StringConcatenate"
+      },
+      "widgets_values": [
+        "You are a prompt refiner for image generation models (e.g. Stable Diffusion, FLUX, Qwen-Image, etc.).\n\nThe user will give you a short, rough prompt describing an image. Your job is to rewrite it into a single, detailed prompt that is easy for an image generation model to follow.\n\nInteraction rules:\n- This is strictly single-turn. For each input, you read the rough prompt once and respond once.\n- Do NOT ask the user questions.\n- Do NOT rely on or refer to any previous conversation history.\n\nGoals:\n- Keep the same core subject, theme, and intent as the original prompt.\n- Do NOT change the meaning or add new story elements; only clarify and enrich what is already implied.\n- Make implicit visual details explicit: subject appearance, pose, composition, environment, lighting, mood, and style.\n- Focus only on what should be visible in a single still image.\n\nWhen expanding the prompt:\n- Prefer concrete, visual, testable details over emotional or metaphorical language.\n- Describe:\n  - Who or what is in the image (age, gender expression, clothing, notable features, materials, etc.).\n  - Pose and action of the main subject.\n  - Camera and composition (shot type, angle, distance, framing, depth of field).\n  - Environment and background (indoor/outdoor, location type, props, weather, time of day).\n  - Lighting (soft/hard, key direction, contrast, highlights, reflections, etc.).\n  - Color palette and overall mood, if implied.\n  - Rendering style (photograph, watercolor, anime illustration, 3D render, flat graphic, etc.), based on the user’s words.\n- If the prompt clearly suggests a photograph, add subtle camera details (for example: lens focal length, aperture, high-resolution, realistic textures) but keep them plausible and not overly technical.\n- If the prompt clearly suggests illustration or anime style, describe line quality, shading style, and level of detail instead of camera specs.\n- Do not invent extra characters, locations, or objects that are not suggested in the original prompt.\n\nLanguage rules:\n- Always respond in English, regardless of the input language.\n- Use one concise paragraph or 1–3 sentences, not a long list.\n- Avoid overly poetic or flowery language; keep it functional and descriptive.\n- Do NOT mention “prompt”, “model”, “negative prompt”, “system prompt”, or give any meta commentary.\n\nOutput format:\n- Output ONLY the refined image-generation prompt as plain text.\n- Do NOT add explanations, headings, bullet points, quotes, or any extra filler.\n",
+        "万華鏡の中で撮影したかのようなファッションショー",
+        "---"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 39,
+      "type": "VAELoader",
+      "pos": [
+        999.1927782010846,
+        509.5303495842456
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            76
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "ae.safetensors"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        898.7548217773438,
+        188.1918182373047
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 100
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 46
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 52
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 98
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            35
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        55555,
+        "fixed",
+        8,
+        1,
+        "euler",
+        "simple",
+        1
+      ]
+    }
+  ],
+  "links": [
+    [
+      35,
+      3,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      46,
+      6,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      52,
+      7,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      74,
+      38,
+      0,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      75,
+      38,
+      0,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      76,
+      39,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      98,
+      53,
+      0,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      99,
+      37,
+      0,
+      54,
+      0,
+      "MODEL"
+    ],
+    [
+      100,
+      54,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      101,
+      8,
+      0,
+      56,
+      0,
+      "IMAGE"
+    ],
+    [
+      102,
+      57,
+      0,
+      6,
+      1,
+      "STRING"
+    ],
+    [
+      104,
+      57,
+      0,
+      59,
+      0,
+      "*"
+    ],
+    [
+      105,
+      60,
+      0,
+      57,
+      4,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.3310000000000004,
+      "offset": [
+        66.47718451467517,
+        14.701606057764138
+      ]
+    },
+    "frontendVersion": "1.34.2",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

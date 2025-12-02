@@ -2,9 +2,9 @@
 layout: page.njk
 lang: en
 section: ai-capabilities
-slug: relighting
-navId: relighting
-title: Relighting / Delight
+slug: relight
+navId: relight
+title: Relight
 summary: Relighting / Delight overview (draft)
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

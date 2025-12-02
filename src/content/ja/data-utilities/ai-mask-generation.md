@@ -193,7 +193,7 @@ SAMの最新版で、テキスト指示にも対応しており、物体検出�
 
 さらに複雑なことをしたい場合は、[Ltamann/ComfyUI-TBG-SAM3](https://github.com/Ltamann/ComfyUI-TBG-SAM3?tab=readme-ov-file) などのカスタムノードも試してみてください。
 
-## SAM 3 × BiRefNet
+### SAM 3 × BiRefNet
 
 ![](https://gyazo.com/82c4c2d947a3ea9c98b46e05a05d542f){gyazo=image}
 

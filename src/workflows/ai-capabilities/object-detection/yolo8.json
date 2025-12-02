@@ -1,0 +1,241 @@
+{
+  "id": "ffcc6c64-e535-4685-ab04-be903b4cdf3c",
+  "revision": 0,
+  "last_node_id": 7,
+  "last_link_id": 5,
+  "nodes": [
+    {
+      "id": 3,
+      "type": "UltralyticsDetectorProvider",
+      "pos": [
+        -131.74129771892854,
+        275.10463657117793
+      ],
+      "size": [
+        225.47324988344883,
+        100.20074983277442
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "BBOX_DETECTOR",
+          "type": "BBOX_DETECTOR",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "SEGM_DETECTOR",
+          "type": "SEGM_DETECTOR",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-subpack",
+        "ver": "1.3.5",
+        "Node name for S&R": "UltralyticsDetectorProvider"
+      },
+      "widgets_values": [
+        "segm/person_yolov8m-seg.pt"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 2,
+      "type": "LoadImage",
+      "pos": [
+        -192.01296976493634,
+        433.54398787774375
+      ],
+      "size": [
+        288.15658006702404,
+        326
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.71",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "1f421a11eb7f46ffcf970787036c5cc1.jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 1,
+      "type": "ImpactSimpleDetectorSEGS",
+      "pos": [
+        137.03559995799336,
+        275.10463657117793
+      ],
+      "size": [
+        244.07421875,
+        310
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "bbox_detector",
+          "type": "BBOX_DETECTOR",
+          "link": 2
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 1
+        },
+        {
+          "name": "sam_model_opt",
+          "shape": 7,
+          "type": "SAM_MODEL",
+          "link": null
+        },
+        {
+          "name": "segm_detector_opt",
+          "shape": 7,
+          "type": "SEGM_DETECTOR",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SEGS",
+          "type": "SEGS",
+          "links": [
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "ver": "61bd8397a18e7e7668e6a24e95168967768c2bed",
+        "Node name for S&R": "ImpactSimpleDetectorSEGS"
+      },
+      "widgets_values": [
+        0.5,
+        0,
+        3,
+        10,
+        0.5,
+        0,
+        0,
+        0.7,
+        0
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 7,
+      "type": "SEGSPreview",
+      "pos": [
+        416.62826858269676,
+        275.10463657117793
+      ],
+      "size": [
+        332.13668518001396,
+        314
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "segs",
+          "type": "SEGS",
+          "link": 5
+        },
+        {
+          "name": "fallback_image_opt",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "ver": "61bd8397a18e7e7668e6a24e95168967768c2bed",
+        "Node name for S&R": "SEGSPreview"
+      },
+      "widgets_values": [
+        true,
+        0.1
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      0,
+      1,
+      1,
+      "IMAGE"
+    ],
+    [
+      2,
+      3,
+      0,
+      1,
+      0,
+      "BBOX_DETECTOR"
+    ],
+    [
+      5,
+      1,
+      0,
+      7,
+      0,
+      "SEGS"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.01525597994771,
+      "offset": [
+        522.496714378834,
+        -22.433780096160543
+      ]
+    },
+    "frontendVersion": "1.34.3",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
