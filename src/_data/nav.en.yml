@@ -164,8 +164,8 @@
         title: "Image Translation"
         noLink: true
         children:
-          - id: relighting
-            title: "Relighting / Delight"
+          - id: relight
+            title: "relight"
           - id: depth-normal-map
             title: "Depth Estimation & Normal Map"
       - id: video-audio-generation
@@ -216,8 +216,8 @@
         children:
           - id: prompt-generation
             title: "Prompt Generation & Editing"
-          - id: caption-generation
-            title: "Caption Generation"
+          - id: tag-caption-generation
+            title: "Tag & Caption Generation"
   - key: basic-workflows
     label: "Basic Workflows"
     pages:
