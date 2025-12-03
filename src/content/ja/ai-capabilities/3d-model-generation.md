@@ -71,7 +71,7 @@ Zero123++ はその性質を利用して、「一回の生成で、できるだ�
 
 [Introducing Stable Video 3D](https://stability.ai/news/introducing-stable-video-3d)
 
-Stable Video Diffusionをベースにした image2model 系の流れです。
+Stable Video Diffusionをベースにした image2model です。
 
 ![](https://gyazo.com/49e94de4d1476e100761e2e6be7a2f6e){gyazo=image}
 

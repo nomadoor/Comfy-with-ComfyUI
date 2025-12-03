@@ -172,22 +172,28 @@ sections:
     children:
     - id: video-generation
       title: Video Generation
+      noLink: true
     - id: video-upscale-restoration
       title: Video Upscale & Restoration
     - id: frame-interpolation
       title: Frame Interpolation
+    - id: video-to-audio
+      title: video2audio
     - id: lip-sync
       title: Lip Sync
     - id: talking-head
-      title: Talking Head
+      title: talking head
+    - id: human-motion-transfer
+      title: Human Motion Transfer
     - id: tts
       title: TTS
+      noLink: true
     - id: voice-clone
       title: Voice Clone
+      noLink: true
     - id: music-generation
       title: Music Generation
-    - id: video-to-audio
-      title: Video-to-Audio
+      noLink: true
   - id: 3d-generation
     title: 3D Generation
     noLink: true
