@@ -15,3 +15,11 @@ workflowを読み込めば誰でも同じ画像・動画が生成できる、と
 # Comfy with ComfyUI
 
 **https://comfyui.nomadoor.net/**
+
+The simplest and most minimal ComfyUI guide—focused on the basics you actually need.
+
+Workflows let anyone reproduce the same images or videos, but when you want to customize them, you need to understand how ComfyUI itself works.
+
+This site highlights ComfyUI as a **data-processing tool**, not just a generative engine: IO handling, image/video utilities, and clean graph building.
+
+Let’s keep learning together and enjoy the fast-moving world of generative AI.
