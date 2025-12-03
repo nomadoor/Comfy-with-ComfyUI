@@ -26,9 +26,34 @@ function collectNavLinks() {
   navLinks = Array.from(document.querySelectorAll(".nav-list__link.link--internal"));
 }
 
+function scrollNavIntoView(activeAnchor) {
+  if (!activeAnchor) return;
+  let parent = activeAnchor.parentElement;
+  while (parent) {
+    const style = window.getComputedStyle(parent);
+    const overflowY = style.overflowY;
+    const isScrollable = overflowY === "auto" || overflowY === "scroll";
+    if (isScrollable && parent.scrollHeight > parent.clientHeight) {
+      const parentRect = parent.getBoundingClientRect();
+      const elRect = activeAnchor.getBoundingClientRect();
+      const offsetTop = elRect.top - parentRect.top;
+      const offsetBottom = elRect.bottom - parentRect.bottom;
+      const padding = 8;
+      if (offsetTop < 0) {
+        parent.scrollTop += offsetTop - padding;
+      } else if (offsetBottom > 0) {
+        parent.scrollTop += offsetBottom + padding;
+      }
+      break;
+    }
+    parent = parent.parentElement;
+  }
+}
+
 function setActiveNavLink(pathname = window.location.pathname) {
   collectNavLinks();
   const current = normalizePathname(pathname);
+  let activeAnchor = null;
   navLinks.forEach((anchor) => {
     const href = anchor.getAttribute("href");
     if (!href) return;
@@ -37,10 +62,12 @@ function setActiveNavLink(pathname = window.location.pathname) {
     anchor.classList.toggle("is-active", isActive);
     if (isActive) {
       anchor.setAttribute("aria-current", "page");
+      activeAnchor = anchor;
     } else {
       anchor.removeAttribute("aria-current");
     }
   });
+  scrollNavIntoView(activeAnchor);
 }
 
 function normalizeRel(existingRel = "") {
