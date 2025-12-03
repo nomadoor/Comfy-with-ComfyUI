@@ -27,7 +27,7 @@ function collectNavLinks() {
 }
 
 function setActiveNavLink(pathname = window.location.pathname) {
-  if (!navLinks.length) collectNavLinks();
+  collectNavLinks();
   const current = normalizePathname(pathname);
   navLinks.forEach((anchor) => {
     const href = anchor.getAttribute("href");
