@@ -1,4 +1,4 @@
-sections:
+﻿sections:
 - key: begin-with
   label: はじめてのComfyUI
   pages:
@@ -172,22 +172,28 @@ sections:
     children:
     - id: video-generation
       title: 動画生成
+      noLink: true
     - id: video-upscale-restoration
       title: アップスケール・動画修復
     - id: frame-interpolation
       title: フレーム補間
+    - id: video-to-audio
+      title: video2audio
     - id: lip-sync
       title: リップシンク
     - id: talking-head
       title: talking head
+    - id: human-motion-transfer
+      title: Human Motion Transfer
     - id: tts
       title: TTS
+      noLink: true
     - id: voice-clone
       title: ボイスクローン
+      noLink: true
     - id: music-generation
       title: 音楽生成
-    - id: video-to-audio
-      title: video2audio
+      noLink: true
   - id: 3d-generation
     title: 3D生成
     noLink: true
