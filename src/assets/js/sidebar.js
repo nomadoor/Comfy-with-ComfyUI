@@ -4,6 +4,8 @@ const navPanels = Array.from(document.querySelectorAll(".sidebar__nav-panel"));
 const navWrapper = document.querySelector(".sidebar__nav-wrapper");
 const NAV_SCROLL_KEY = "sidebar-scroll";
 
+const SECTION_KEYS = new Set(sectionButtons.map((btn) => btn.dataset.sectionKey));
+
 if (navWrapper) {
   const saved = sessionStorage.getItem(NAV_SCROLL_KEY);
   if (saved !== null) {
@@ -95,4 +97,13 @@ if (navWrapper) {
   window.addEventListener("pagehide", () => {
     sessionStorage.setItem(NAV_SCROLL_KEY, navWrapper.scrollTop);
   });
+}
+
+export function setActiveSectionByPathname(pathname = window.location.pathname) {
+  if (!sectionButtons.length) return;
+  const parts = pathname.split("/").filter(Boolean);
+  // Expecting /<lang>/<section>/...
+  const sectionKey = parts[1];
+  if (!sectionKey || !SECTION_KEYS.has(sectionKey)) return;
+  activateSection(sectionKey, { focus: false });
 }

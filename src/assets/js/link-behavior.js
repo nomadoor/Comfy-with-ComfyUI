@@ -28,25 +28,18 @@ function collectNavLinks() {
 
 function scrollNavIntoView(activeAnchor) {
   if (!activeAnchor) return;
-  let parent = activeAnchor.parentElement;
-  while (parent) {
-    const style = window.getComputedStyle(parent);
-    const overflowY = style.overflowY;
-    const isScrollable = overflowY === "auto" || overflowY === "scroll";
-    if (isScrollable && parent.scrollHeight > parent.clientHeight) {
-      const parentRect = parent.getBoundingClientRect();
-      const elRect = activeAnchor.getBoundingClientRect();
-      const offsetTop = elRect.top - parentRect.top;
-      const offsetBottom = elRect.bottom - parentRect.bottom;
-      const padding = 8;
-      if (offsetTop < 0) {
-        parent.scrollTop += offsetTop - padding;
-      } else if (offsetBottom > 0) {
-        parent.scrollTop += offsetBottom + padding;
-      }
-      break;
-    }
-    parent = parent.parentElement;
+  const container =
+    activeAnchor.closest(".sidebar__nav-panel") ||
+    activeAnchor.closest(".sidebar__nav-wrapper") ||
+    activeAnchor.parentElement;
+  if (!container) return;
+  const parentRect = container.getBoundingClientRect();
+  const elRect = activeAnchor.getBoundingClientRect();
+  const padding = 8;
+  if (elRect.top < parentRect.top) {
+    container.scrollTop += elRect.top - parentRect.top - padding;
+  } else if (elRect.bottom > parentRect.bottom) {
+    container.scrollTop += elRect.bottom - parentRect.bottom + padding;
   }
 }
 
