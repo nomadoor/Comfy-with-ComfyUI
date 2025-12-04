@@ -4,7 +4,7 @@ lang: ja
 section: data-utilities
 slug: batch-video
 navId: batch-video
-title: "Batch と動画"
+title: "Batch・動画"
 summary: "複数画像・動画フレームをまとめて扱う仕組み"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
