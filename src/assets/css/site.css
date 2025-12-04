@@ -1009,7 +1009,7 @@ h1 {
   transition: text-decoration-thickness var(--transition-fast), color var(--transition-fast);
 }
 
-.article-body a:hover,
+.article-body a:hover,.article-body ul li
 .article-body a:focus-visible {
   text-decoration-thickness: 0.14em;
 }
@@ -1061,7 +1061,7 @@ h1 {
 
 .article-body__list-icon {
   position: absolute;
-  left: 0;
+  left: calc(var(--space-2xs) / 2);
   top: calc(var(--article-list-line-height, 1.6em) / 2);
   inline-size: var(--article-list-icon-size);
   block-size: var(--article-list-icon-size);
