@@ -1,35 +1,20 @@
 ---
 layout: page.njk
 lang: ja
-section: basic-workflows
 slug: sd15-basics
-navId: sd15-basics
-title: "SD1.5 基本ワークフロー(ダミー)"
-summary: "標準的な text2image の流れを確認するダミー用記事。"
-tags:
-  - sd15-basics
-  - conditioning
-workflowJson:
-  - id: sd15-basic
-    title: "SD1.5 Basic Flow"
-    json: "/workflows/sd15-basics/standard.json"
-    image: "https://i.gyazo.com/f805391f1a7ae6b253440cf16168a763.jpg"
-    copy: |
-      {
-        "workflow": "sd15-basic",
-        "notes": "Dummy payload"
-      }
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+navId: sd15-basic
+title: "画像生成の基本(SD1.5)"
+summary: "Stable Diffusion 1.5で学ぶ画像生成の基本"
+permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  gradient: "linear-gradient(135deg, #1a1f3f, #352c64)"
+  gradient:
+  image: ""
 ---
 
-## ノード構成
-H2 dummy
+## ComfyUI画像生成の基本
 
-### text2image
-H3 dummy
 
-## Hires.fix
-- 分岐点
-- 画像は workflows セクションで参照予定
+
+---
+
+## 使い方

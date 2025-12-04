@@ -1,4 +1,4 @@
-sections:
+﻿sections:
 - key: begin-with
   label: はじめてのComfyUI
   pages:
@@ -223,7 +223,6 @@ sections:
   pages:
   - id: sd15-basics
     title: 画像生成の基本 (SD1.5)
-    noLink: true
     children:
     - id: sd15-text2image
       title: text2image
@@ -245,7 +244,6 @@ sections:
       title: Differential Diffusion
     - id: sd15-controlnet
       title: ControlNet
-      noLink: true
       children:
       - id: sd15-controlnet-types
         title: ControlNetの種類
@@ -259,13 +257,11 @@ sections:
     children:
     - id: sdxl
       title: SDXL
-      noLink: true
       children:
       - id: illustrious
         title: Illustrious
     - id: flux
       title: Flux
-      noLink: true
       children:
       - id: flux-lora
         title: Flux LoRA
@@ -281,10 +277,7 @@ sections:
       title: AuraFlow
     - id: qwen-image
       title: Qwen-Image
-      noLink: true
       children:
-      - id: qwen-image-basics
-        title: Qwen-Image基本
       - id: qwen-image-edit
         title: Qwen-Image-Edit
   - id: upscale-fix
@@ -319,10 +312,7 @@ sections:
     children:
     - id: wan-2-1
       title: Wan 2.1
-      noLink: true
       children:
-      - id: wan-2-1-basics
-        title: Wan 2.1基本
       - id: wan-2-1-vace
         title: Wan 2.1 VACE
     - id: wan-2-2
@@ -333,8 +323,6 @@ sections:
       title: FramePack
       noLink: true
       children:
-      - id: framepack-basics
-        title: FramePack基本
       - id: one-frame-inference
         title: 1フレーム推論
     - id: wan-animate
