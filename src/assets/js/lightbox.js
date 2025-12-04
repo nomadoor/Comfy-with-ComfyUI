@@ -91,6 +91,7 @@ function show(index) {
       videoEl.style.display = "block";
       if (source) {
         videoEl.src = source;
+        videoEl.load();
       }
       // Mirror current mode (loop / player) from parent figure if present
       const figure = target.closest("[data-gyazo-toggle]");
