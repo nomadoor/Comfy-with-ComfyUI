@@ -225,33 +225,33 @@ sections:
     title: 画像生成の基本 (SD1.5)
     noLink: true
     children:
-    - id: text2image
+    - id: sd15-text2image
       title: text2image
-    - id: textual-inversion
+    - id: sd15-textual-inversion
       title: Textual Inversion
-    - id: lora
+    - id: sd15-lora
       title: LoRA
-    - id: image2image
+    - id: sd15-image2image
       title: image2image
-    - id: ksampler-advanced
+    - id: sd15-ksampler-advanced
       title: KSamplerAdvanced
-    - id: hires-fix
+    - id: sd15-hires-fix
       title: Hires.fix
-    - id: inpainting
+    - id: sd15-inpainting
       title: inpainting
-    - id: outpainting
+    - id: sd15-outpainting
       title: outpainting
-    - id: differential-diffusion
+    - id: sd15-differential-diffusion
       title: Differential Diffusion
-    - id: controlnet
+    - id: sd15-controlnet
       title: ControlNet
       noLink: true
       children:
-      - id: controlnet-types
+      - id: sd15-controlnet-types
         title: ControlNetの種類
-      - id: controlnet-prep
+      - id: sd15-controlnet-prep
         title: 制御画像の作り方
-    - id: ip-adapter
+    - id: sd15-ip-adapter
       title: IP-Adapter
   - id: other-foundation-models
     title: 他の基盤モデル
