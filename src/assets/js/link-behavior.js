@@ -26,24 +26,45 @@ function collectNavLinks() {
   navLinks = Array.from(document.querySelectorAll(".nav-list__link.link--internal"));
 }
 
-function scrollNavIntoView(activeAnchor) {
+function scrollNavIntoView(activeAnchor, { forceCenter = false } = {}) {
   if (!activeAnchor) return;
-  const container =
-    activeAnchor.closest(".sidebar__nav-panel") ||
-    activeAnchor.closest(".sidebar__nav-wrapper") ||
-    activeAnchor.parentElement;
+  const panel = activeAnchor.closest(".sidebar__nav-panel");
+  const wrapper = activeAnchor.closest(".sidebar__nav-wrapper");
+  let container = null;
+
+  // Prefer a scrollable panel; otherwise fall back to the wrapper.
+  if (panel && panel.scrollHeight > panel.clientHeight) {
+    container = panel;
+  } else if (wrapper) {
+    container = wrapper;
+  } else {
+    container = activeAnchor.parentElement;
+  }
+
   if (!container) return;
+
   const parentRect = container.getBoundingClientRect();
   const elRect = activeAnchor.getBoundingClientRect();
   const padding = 8;
-  if (elRect.top < parentRect.top) {
-    container.scrollTop += elRect.top - parentRect.top - padding;
-  } else if (elRect.bottom > parentRect.bottom) {
-    container.scrollTop += elRect.bottom - parentRect.bottom + padding;
-  }
+  const isVisible =
+    elRect.top >= parentRect.top + padding &&
+    elRect.bottom <= parentRect.bottom - padding;
+
+  // Only scroll when forced or the item is out of view.
+  if (!forceCenter && isVisible) return;
+
+  const currentScroll = container.scrollTop;
+  const offsetWithin = elRect.top - parentRect.top + currentScroll;
+  const target =
+    offsetWithin - container.clientHeight / 2 + elRect.height / 2;
+  const clamped = Math.max(
+    0,
+    Math.min(target, container.scrollHeight - container.clientHeight)
+  );
+  container.scrollTo({ top: clamped, behavior: "smooth" });
 }
 
-function setActiveNavLink(pathname = window.location.pathname) {
+function setActiveNavLink(pathname = window.location.pathname, options = {}) {
   collectNavLinks();
   const current = normalizePathname(pathname);
   let activeAnchor = null;
@@ -60,7 +81,9 @@ function setActiveNavLink(pathname = window.location.pathname) {
       anchor.removeAttribute("aria-current");
     }
   });
-  scrollNavIntoView(activeAnchor);
+  if (options.scroll !== false) {
+    scrollNavIntoView(activeAnchor, options);
+  }
 }
 
 function normalizeRel(existingRel = "") {
