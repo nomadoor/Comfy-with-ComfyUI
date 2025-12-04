@@ -1,6 +1,7 @@
 import initPage from "./page.js";
 import { refreshActiveNav } from "./link-behavior.js";
 import { updateLangLinks } from "./lang-switcher.js";
+import { setActiveSectionByPathname } from "./sidebar.js";
 
 const CONTAINER_SELECTOR = "#page";
 const ROUTER_IGNORE_ATTR = "data-router-ignore";
@@ -149,26 +150,39 @@ const swapContent = (nextDoc, destinationUrl) => {
 };
 
 const scrollToTarget = (url) => {
-  if (url.hash) {
-    const id = decodeURIComponent(url.hash.substring(1));
+  if (!url.hash) {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    return;
+  }
+
+  const id = decodeURIComponent(url.hash.substring(1));
+  const tryScroll = () => {
     const target = document.getElementById(id);
     if (target) {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
-      return;
+      return true;
     }
-  }
-  window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    return false;
+  };
+
+  // Try immediately; if content isn't laid out yet (images, etc.), retry shortly.
+  if (tryScroll()) return;
+  requestAnimationFrame(() => {
+    if (tryScroll()) return;
+    setTimeout(tryScroll, 80);
+  });
 };
 
-const reinitializePage = (destinationUrl) => {
+const reinitializePage = (destinationUrl, { forceCenterNav = true, scrollNav = true } = {}) => {
   document.body.classList.remove("nav-open", "search-open");
   initPage();
-  refreshActiveNav(destinationUrl.pathname);
+  setActiveSectionByPathname(destinationUrl.pathname);
+  refreshActiveNav(destinationUrl.pathname, { forceCenter: forceCenterNav, scroll: scrollNav });
   updateLangLinks(destinationUrl.pathname);
   scrollToTarget(destinationUrl);
 };
 
-const navigateTo = async (url, { replace = false } = {}) => {
+const navigateTo = async (url, { replace = false, source = "unknown" } = {}) => {
   if (isNavigating) return;
   const destinationUrl = new URL(url, window.location.href);
   if (!isSameOrigin(destinationUrl.href)) {
@@ -206,7 +220,11 @@ const navigateTo = async (url, { replace = false } = {}) => {
         return;
       }
       updateHead(nextDoc);
-      reinitializePage(destinationUrl);
+      const fromSidebar = source === "sidebar-nav";
+      reinitializePage(destinationUrl, {
+        forceCenterNav: !fromSidebar,
+        scrollNav: !fromSidebar
+      });
       setupIntersectionPrefetch();
       if (isProfileNav()) console.log(`[nav-prof] swap+init ${destinationUrl.pathname}: ${(performance.now() - tSwapStart).toFixed(1)}ms`);
     };
@@ -243,11 +261,12 @@ const handleClick = (event) => {
     return;
   }
   event.preventDefault();
-  navigateTo(targetUrl);
+  const source = anchor.closest(".sidebar") ? "sidebar-nav" : "content";
+  navigateTo(targetUrl, { source });
 };
 
 const handlePopState = () => {
-  navigateTo(window.location.href, { replace: true });
+  navigateTo(window.location.href, { replace: true, source: "popstate" });
 };
 
 const initRouter = () => {

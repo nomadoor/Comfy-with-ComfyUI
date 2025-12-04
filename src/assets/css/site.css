@@ -1020,6 +1020,16 @@ h1 {
   text-decoration-thickness: 0.16em;
 }
 
+.article-body a.link--internal {
+    color: var(--color-heading);
+    font-weight: 700;
+}
+
+.article-body a.link--external {
+  color: var(--color-heading);
+  font-weight: 700;
+}
+
 .article-link__icon {
   display: inline-flex;
   align-items: center;

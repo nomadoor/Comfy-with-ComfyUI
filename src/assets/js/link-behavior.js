@@ -26,9 +26,48 @@ function collectNavLinks() {
   navLinks = Array.from(document.querySelectorAll(".nav-list__link.link--internal"));
 }
 
-function setActiveNavLink(pathname = window.location.pathname) {
-  if (!navLinks.length) collectNavLinks();
+function scrollNavIntoView(activeAnchor, { forceCenter = false } = {}) {
+  if (!activeAnchor) return;
+  const panel = activeAnchor.closest(".sidebar__nav-panel");
+  const wrapper = activeAnchor.closest(".sidebar__nav-wrapper");
+  let container = null;
+
+  // Prefer a scrollable panel; otherwise fall back to the wrapper.
+  if (panel && panel.scrollHeight > panel.clientHeight) {
+    container = panel;
+  } else if (wrapper) {
+    container = wrapper;
+  } else {
+    container = activeAnchor.parentElement;
+  }
+
+  if (!container) return;
+
+  const parentRect = container.getBoundingClientRect();
+  const elRect = activeAnchor.getBoundingClientRect();
+  const padding = 8;
+  const isVisible =
+    elRect.top >= parentRect.top + padding &&
+    elRect.bottom <= parentRect.bottom - padding;
+
+  // Only scroll when forced or the item is out of view.
+  if (!forceCenter && isVisible) return;
+
+  const currentScroll = container.scrollTop;
+  const offsetWithin = elRect.top - parentRect.top + currentScroll;
+  const target =
+    offsetWithin - container.clientHeight / 2 + elRect.height / 2;
+  const clamped = Math.max(
+    0,
+    Math.min(target, container.scrollHeight - container.clientHeight)
+  );
+  container.scrollTo({ top: clamped, behavior: "smooth" });
+}
+
+function setActiveNavLink(pathname = window.location.pathname, options = {}) {
+  collectNavLinks();
   const current = normalizePathname(pathname);
+  let activeAnchor = null;
   navLinks.forEach((anchor) => {
     const href = anchor.getAttribute("href");
     if (!href) return;
@@ -37,10 +76,14 @@ function setActiveNavLink(pathname = window.location.pathname) {
     anchor.classList.toggle("is-active", isActive);
     if (isActive) {
       anchor.setAttribute("aria-current", "page");
+      activeAnchor = anchor;
     } else {
       anchor.removeAttribute("aria-current");
     }
   });
+  if (options.scroll !== false) {
+    scrollNavIntoView(activeAnchor, options);
+  }
 }
 
 function normalizeRel(existingRel = "") {
