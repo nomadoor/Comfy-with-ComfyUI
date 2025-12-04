@@ -711,11 +711,32 @@ export default function (eleventyConfig) {
     const { img = "", alt = "", align = "left", width = 33 } = opts;
     const reverse = String(align).toLowerCase() === "right";
     const safeAlt = String(alt).replace(/"/g, "&quot;");
-    const mediaPart = img
-      ? `<div class="media-inline__media" style="--media-inline-width:${width}%;">
-           <img src="${img}" alt="${safeAlt}" loading="lazy" decoding="async">
-         </div>`
-      : "";
+
+    let mediaPart = "";
+    if (img) {
+      const variants = createImageVariants(img, 1000);
+      const widthAttr = variants.originalWidth || variants.width;
+      const heightAttr = variants.originalHeight || variants.height;
+      const attrs = [
+        `src="${variants.preview}"`,
+        `alt="${safeAlt}"`,
+        `loading="lazy"`,
+        `decoding="async"`
+      ];
+      if (variants.full && variants.full !== variants.preview) {
+        attrs.push(`data-full-src="${variants.full}"`);
+        attrs.push(`srcset="${variants.preview} 1000w, ${variants.full} 2000w"`);
+        attrs.push(`sizes="(min-width: 900px) ${width}vw, 100vw"`);
+      }
+      if (widthAttr && heightAttr) {
+        attrs.push(`width="${widthAttr}"`);
+        attrs.push(`height="${heightAttr}"`);
+      }
+      mediaPart = `<div class="media-inline__media" style="--media-inline-width:${width}%;">
+        <img ${attrs.join(" ")}>
+      </div>`;
+    }
+
     const renderedBody = markdownLib.render(content);
     return `
 <div class="media-inline${reverse ? " media-inline--reverse" : ""}">
