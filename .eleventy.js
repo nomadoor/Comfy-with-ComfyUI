@@ -702,6 +702,28 @@ export default function (eleventyConfig) {
   enhanceJsonLinks(markdownLib);
   eleventyConfig.setLibrary("md", markdownLib);
 
+  // Paired shortcode: side-by-side media + text
+  // Usage (in Markdown):
+  // {% mediaRow img="https://..." alt="説明" align="left" width="33" %}
+  // 任意のMarkdown（箇条書きなど）
+  // {% endmediaRow %}
+  eleventyConfig.addPairedShortcode("mediaRow", function (content, opts = {}) {
+    const { img = "", alt = "", align = "left", width = 33 } = opts;
+    const reverse = String(align).toLowerCase() === "right";
+    const safeAlt = String(alt).replace(/"/g, "&quot;");
+    const mediaPart = img
+      ? `<div class="media-inline__media" style="--media-inline-width:${width}%;">
+           <img src="${img}" alt="${safeAlt}" loading="lazy" decoding="async">
+         </div>`
+      : "";
+    const renderedBody = markdownLib.render(content);
+    return `
+<div class="media-inline${reverse ? " media-inline--reverse" : ""}">
+  ${mediaPart}
+  <div class="media-inline__body">${renderedBody}</div>
+</div>`;
+  });
+
   eleventyConfig.setServerOptions({
     showAllHosts: true,
     port: 8080,
