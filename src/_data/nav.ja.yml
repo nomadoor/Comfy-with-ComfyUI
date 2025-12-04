@@ -223,12 +223,158 @@ sections:
   pages:
   - id: sd15-basics
     title: 画像生成の基本 (SD1.5)
+    noLink: true
+    children:
+    - id: text2image
+      title: text2image
+    - id: textual-inversion
+      title: Textual Inversion
+    - id: lora
+      title: LoRA
+    - id: image2image
+      title: image2image
+    - id: ksampler-advanced
+      title: KSamplerAdvanced
+    - id: hires-fix
+      title: Hires.fix
+    - id: inpainting
+      title: inpainting
+    - id: outpainting
+      title: outpainting
+    - id: differential-diffusion
+      title: Differential Diffusion
+    - id: controlnet
+      title: ControlNet
+      noLink: true
+      children:
+      - id: controlnet-types
+        title: ControlNetの種類
+      - id: controlnet-prep
+        title: 制御画像の作り方
+    - id: ip-adapter
+      title: IP-Adapter
   - id: other-foundation-models
     title: 他の基盤モデル
-  - id: sdxl-basics
-    title: SDXLスターター
-  - id: flux-tools
-    title: Flux系ツール
+    noLink: true
+    children:
+    - id: sdxl
+      title: SDXL
+      noLink: true
+      children:
+      - id: illustrious
+        title: Illustrious
+    - id: flux
+      title: Flux
+      noLink: true
+      children:
+      - id: flux-lora
+        title: Flux LoRA
+      - id: flux-1-tools
+        title: Flux.1 Tools
+      - id: ace-plus-plus
+        title: ACE++
+      - id: flux-1-kontext
+        title: Flux.1 Kontext
+      - id: chroma
+        title: Chroma
+    - id: auraflow
+      title: AuraFlow
+    - id: qwen-image
+      title: Qwen-Image
+      noLink: true
+      children:
+      - id: qwen-image-basics
+        title: Qwen-Image基本
+      - id: qwen-image-edit
+        title: Qwen-Image-Edit
+  - id: upscale-fix
+    title: アップスケール・修正
+    noLink: true
+    children:
+    - id: esrgan
+      title: ESRGAN
+    - id: gfpgan
+      title: GFPGAN
+    - id: supir
+      title: SUPIR
+    - id: ultimate-sd-upscale
+      title: Ultimate SD Upscale
+    - id: detailer
+      title: Detailer
+  - id: mask-generation
+    title: マスク生成
+    noLink: true
+    children:
+    - id: birefnet
+      title: BiRefNet
+    - id: yolo
+      title: YOLO
+    - id: grounding-dino
+      title: Grounding DINO
+    - id: sam
+      title: SAM
+  - id: video-workflows
+    title: 動画生成・処理
+    noLink: true
+    children:
+    - id: wan-2-1
+      title: Wan 2.1
+      noLink: true
+      children:
+      - id: wan-2-1-basics
+        title: Wan 2.1基本
+      - id: wan-2-1-vace
+        title: Wan 2.1 VACE
+    - id: wan-2-2
+      title: Wan 2.2
+    - id: ltx-video
+      title: LTX-Video
+    - id: framepack
+      title: FramePack
+      noLink: true
+      children:
+      - id: framepack-basics
+        title: FramePack基本
+      - id: one-frame-inference
+        title: 1フレーム推論
+    - id: wan-animate
+      title: Wan-Animate
+    - id: liveportrait
+      title: LivePortrait
+    - id: hunyuanvideo-foley
+      title: HunyuanVideo-Foley
+  - id: llm-mlm-workflows
+    title: LLM / MLLM
+    noLink: true
+    children:
+    - id: joycaption
+      title: JoyCaption
+    - id: florence2
+      title: Florence2
+    - id: qwen-3-vl
+      title: Qwen 3 VL
+  - id: other-workflows
+    title: その他
+    noLink: true
+    children:
+    - id: reactor
+      title: ReActor
+  - id: system-optimization
+    title: システム・最適化
+    noLink: true
+    children:
+    - id: model-merge
+      title: モデルのマージ
+    - id: performance-tuning
+      title: 高速化・軽量化
+  - id: external-api
+    title: 外部API
+    noLink: true
+    children:
+    - id: nano-banana
+      title: nano-banana
+    - id: gemini-flash
+      title: gemini-flash
 - key: faq
   label: FAQ / トラブルシューティング
   pages:
