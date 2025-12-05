@@ -704,9 +704,8 @@ export default function (eleventyConfig) {
 
   // Paired shortcode: side-by-side media + text
   // Usage (in Markdown):
-  // {% mediaRow img="https://..." alt="説明" align="left" width="33" %}
-  // 任意のMarkdown（箇条書きなど）
-  // {% endmediaRow %}
+  // {% mediaRow img="https://..." alt="説昁E align="left" width="33" %}
+  // 任意�EMarkdown�E�箁E��書きなど�E�E  // {% endmediaRow %}
   eleventyConfig.addPairedShortcode("mediaRow", function (content, opts = {}) {
     let { img = "", alt = "", align = "left", width = 33, gyazo = "image", mode = "" } = opts;
     const reverse = String(align).toLowerCase() === "right";
@@ -725,8 +724,7 @@ export default function (eleventyConfig) {
 
     let mediaPart = "";
     if (img) {
-      // Keep original URL for id抽出、派生URL生成に使う
-      const rawUrl = img;
+      // Keep original URL for id抽出、派生URL生�Eに使ぁE      const rawUrl = img;
       const normalizedImg = normalizeGyazoUrl(img) || img;
 
       // Gyazo video modes (loop/player)
