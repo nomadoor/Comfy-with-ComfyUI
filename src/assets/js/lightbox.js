@@ -63,11 +63,27 @@ function getMediaSource(target) {
   const gyazoFig = target.closest("[data-gyazo-id]");
   if (gyazoFig) {
     const gid = gyazoFig.getAttribute("data-gyazo-id");
-    if (gid) {
-      return `https://i.gyazo.com/${gid}.mp4`;
-    }
+    if (gid) return `https://i.gyazo.com/${gid}.mp4`;
   }
-  return target.dataset.fullSrc || target.currentSrc || target.src;
+
+  const pick = target.dataset.fullSrc || target.currentSrc || target.src || "";
+
+  // If it's a Gyazo still image without max_size, force preview URL to avoid 403/404
+  try {
+    const u = new URL(pick);
+    if (u.hostname === "i.gyazo.com" && !u.pathname.includes("/max_size/")) {
+      const m = u.pathname.match(/\/([a-f0-9]{32})\.(png|jpg|jpeg|gif)$/i);
+      if (m) {
+        const id = m[1];
+        const ext = m[2].toLowerCase() === "jpeg" ? "jpg" : m[2].toLowerCase();
+        return `https://i.gyazo.com/${id}/max_size/1200.${ext}`;
+      }
+    }
+  } catch {
+    /* ignore */
+  }
+
+  return pick;
 }
 
 function updateZoom() {
@@ -79,7 +95,7 @@ function show(index) {
   if (!mediaItems.length) return;
   currentIndex = (index + mediaItems.length) % mediaItems.length;
   const target = mediaItems[currentIndex];
-  const source = getMediaSource(target);
+  const highResSource = getMediaSource(target);
   const isVideo = target.tagName.toLowerCase() === "video";
 
   // Reset state
@@ -90,14 +106,15 @@ function show(index) {
   if (videoEl) {
     videoEl.pause();
     videoEl.removeAttribute("src");
+    videoEl.style.display = "none";
   }
 
   if (isVideo) {
     imageEl.style.display = "none";
     if (videoEl) {
       videoEl.style.display = "block";
-      if (source) {
-        videoEl.src = source;
+      if (highResSource) {
+        videoEl.src = highResSource;
         videoEl.load();
       }
       // Mirror current mode (loop / player) from parent figure if present
@@ -111,22 +128,37 @@ function show(index) {
 
       if (!isPlayer) {
         const playPromise = videoEl.play();
-        if (playPromise?.catch) playPromise.catch(() => {});
+        if (playPromise?.catch) playPromise.catch(() => { });
       } else {
         videoEl.pause();
       }
     }
   } else {
-    if (videoEl) {
-      videoEl.style.display = "none";
-    }
     imageEl.style.display = "block";
-    if (source) {
+
+    // 1. Show the current (low-res) image immediately for instant feedback
+    const currentSrc = target.currentSrc || target.src;
+    if (currentSrc) {
       imageEl.removeAttribute("srcset");
       imageEl.removeAttribute("sizes");
-      imageEl.src = source;
+      imageEl.src = currentSrc;
     }
     imageEl.alt = target.alt || "";
+
+    // 2. If high-res is available and different, load it in background and swap
+    if (highResSource && highResSource !== currentSrc) {
+      const imgLoader = new Image();
+      const capturedIndex = currentIndex;
+
+      imgLoader.onload = () => {
+        // Only swap if the user is still viewing the same image
+        if (currentIndex === capturedIndex) {
+          imageEl.src = highResSource;
+        }
+      };
+
+      imgLoader.src = highResSource;
+    }
   }
 
   lightboxEl.classList.add("is-open");

@@ -1009,8 +1009,8 @@ h1 {
   transition: text-decoration-thickness var(--transition-fast), color var(--transition-fast);
 }
 
-.article-body a:hover,.article-body ul li
-.article-body a:focus-visible {
+.article-body a:hover,
+.article-body ul li .article-body a:focus-visible {
   text-decoration-thickness: 0.14em;
 }
 
@@ -1021,8 +1021,8 @@ h1 {
 }
 
 .article-body a.link--internal {
-    color: var(--color-heading);
-    font-weight: 700;
+  color: var(--color-heading);
+  font-weight: 700;
 }
 
 .article-body a.link--external {
@@ -1140,15 +1140,18 @@ h1 {
   min-width: 0;
 }
 
-.media-inline__body > :first-child {
+.media-inline__body> :first-child {
   margin-top: 0;
+  padding-top: 0;
 }
 
 @media (max-width: 900px) {
+
   .media-inline,
   .media-inline--reverse {
     flex-direction: column;
   }
+
   .media-inline__media {
     max-width: 100%;
     flex-basis: auto;
@@ -1192,8 +1195,7 @@ h1 {
 
 .article-media-row .article-media__frame {
   width: calc(min(var(--article-media-width, 720px),
-          calc(var(--article-media-aspect, 16 / 9) * min(var(--article-media-height, 300px), 300px)))
-        * var(--media-scale, 1));
+        calc(var(--article-media-aspect, 16 / 9) * min(var(--article-media-height, 300px), 300px))) * var(--media-scale, 1));
   max-width: 100%;
   height: calc(min(var(--article-media-height, 300px), 300px) * var(--media-scale, 1));
   min-height: 0;
@@ -1826,7 +1828,7 @@ h1 {
   flex-direction: column;
   gap: var(--space-2xs);
   border-left: 1px solid var(--color-border);
-  }
+}
 
 .toc__link {
   display: block;
@@ -2443,7 +2445,6 @@ body.lightbox-open {
 .lightbox__media video {
   max-width: 80vw;
   max-height: 70vh;
-  transition: transform 0.2s ease;
   cursor: zoom-in;
   flex: 0 1 auto;
   z-index: 1;

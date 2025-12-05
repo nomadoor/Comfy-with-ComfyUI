@@ -628,6 +628,7 @@ export default function (eleventyConfig) {
 
   markdownLib.renderer.rules.image = function (tokens, idx, options, env, self) {
     const token = tokens[idx];
+    const isGyazoImg = Boolean(token.meta?.isGyazo || token.attrGet("gyazo"));
     if (token.meta?.isGyazo || token.attrGet("gyazo")) {
       return renderGyazoMedia(token);
     }
@@ -642,11 +643,14 @@ export default function (eleventyConfig) {
         token.attrSet("decoding", "async");
       }
       if (variants.full && variants.full !== variants.preview) {
-        token.attrSet("data-full-src", variants.full);
+        const fullSrc = isGyazoImg ? variants.preview : variants.full;
+        token.attrSet("data-full-src", fullSrc);
         token.attrSet("srcset", `${variants.preview} 1000w, ${variants.full} 2000w`);
         if (!token.attrGet("sizes")) {
           token.attrSet("sizes", "(min-width: 768px) 720px, 100vw");
         }
+      } else {
+        token.attrSet("data-full-src", variants.preview);
       }
       const width = variants.originalWidth || variants.width;
       const height = variants.originalHeight || variants.height;
@@ -704,8 +708,9 @@ export default function (eleventyConfig) {
 
   // Paired shortcode: side-by-side media + text
   // Usage (in Markdown):
-  // {% mediaRow img="https://..." alt="隱ｬ譏・ align="left" width="33" %}
-  // 莉ｻ諢上・Markdown・育ｮ・擅譖ｸ縺阪↑縺ｩ・・  // {% endmediaRow %}
+  // {% mediaRow img="https://..." alt="説明" align="left" width="33" %}
+  // 任意のMarkdown（箇条書きなど）
+  // {% endmediaRow %}
   eleventyConfig.addPairedShortcode("mediaRow", function (content, opts = {}) {
     let { img = "", alt = "", align = "left", width = 33, gyazo = "image", mode = "" } = opts;
     const reverse = String(align).toLowerCase() === "right";
@@ -725,7 +730,7 @@ export default function (eleventyConfig) {
 
     let mediaPart = "";
     if (img) {
-      // Keep original URL for id謚ｽ蜃ｺ縲∵ｴｾ逕欟RL逕滓・縺ｫ菴ｿ縺・      const rawUrl = img;
+      const rawUrl = img;
       const normalizedImg = normalizeGyazoUrl(img) || img;
 
       // Gyazo video modes (loop/player)
@@ -763,8 +768,17 @@ export default function (eleventyConfig) {
           `loading="lazy"`,
           `decoding="async"`
         ];
-        if (variants.full && variants.full !== variants.preview) {
-          attrs.push(`data-full-src="${variants.full}"`);
+        const isGyazo = typeof normalizedImg === "string" && normalizedImg.includes("gyazo.com");
+
+        // Fix: Use full resolution for Gyazo if available (lightbox will handle max_size/1200)
+        const fullSrc = isGyazo
+          ? (variants.full || variants.preview)
+          : variants.full && variants.full !== variants.preview
+            ? variants.full
+            : variants.preview;
+
+        attrs.push(`data-full-src="${fullSrc}"`);
+        if (!isGyazo && variants.full && variants.full !== variants.preview) {
           attrs.push(`srcset="${variants.preview} 1000w, ${variants.full} 2000w"`);
           attrs.push(`sizes="(min-width: 900px) ${width}vw, 100vw"`);
         }
@@ -779,10 +793,15 @@ export default function (eleventyConfig) {
     }
 
     const renderedBody = markdownLib.render(content);
+
+    // Fix: Swap DOM order when reversed to match visual order (fixes Lightbox navigation)
+    const innerHTML = reverse
+      ? `<div class="media-inline__body">${renderedBody}</div>${mediaPart}`
+      : `${mediaPart}<div class="media-inline__body">${renderedBody}</div>`;
+
     return `
 <div class="media-inline${reverse ? " media-inline--reverse" : ""}">
-  ${mediaPart}
-  <div class="media-inline__body">${renderedBody}</div>
+  ${innerHTML}
 </div>`;
   });
 
@@ -806,8 +825,3 @@ export default function (eleventyConfig) {
     pathPrefix: "/"
   };
 }
-
-
-
-
-
