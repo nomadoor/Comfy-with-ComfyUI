@@ -60,6 +60,13 @@ function buildLightbox() {
 
 function getMediaSource(target) {
   if (!target) return "";
+  const gyazoFig = target.closest("[data-gyazo-id]");
+  if (gyazoFig) {
+    const gid = gyazoFig.getAttribute("data-gyazo-id");
+    if (gid) {
+      return `https://i.gyazo.com/${gid}.mp4`;
+    }
+  }
   return target.dataset.fullSrc || target.currentSrc || target.src;
 }
 

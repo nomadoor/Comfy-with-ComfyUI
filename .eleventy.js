@@ -1,4 +1,4 @@
-import fs from "node:fs/promises";
+﻿import fs from "node:fs/promises";
 import fsSync from "node:fs";
 import path from "node:path";
 import MarkdownIt from "markdown-it";
@@ -704,8 +704,8 @@ export default function (eleventyConfig) {
 
   // Paired shortcode: side-by-side media + text
   // Usage (in Markdown):
-  // {% mediaRow img="https://..." alt="説昁E align="left" width="33" %}
-  // 任意�EMarkdown�E�箁E��書きなど�E�E  // {% endmediaRow %}
+  // {% mediaRow img="https://..." alt="隱ｬ譏・ align="left" width="33" %}
+  // 莉ｻ諢上・Markdown・育ｮ・擅譖ｸ縺阪↑縺ｩ・・  // {% endmediaRow %}
   eleventyConfig.addPairedShortcode("mediaRow", function (content, opts = {}) {
     let { img = "", alt = "", align = "left", width = 33, gyazo = "image", mode = "" } = opts;
     const reverse = String(align).toLowerCase() === "right";
@@ -713,18 +713,19 @@ export default function (eleventyConfig) {
 
     // Allow braces style in img param: "https://gyazo.com/xxx {gyazo=loop}"
     let gyazoFromBrace = null;
-    const braceMatch = typeof img === "string" ? img.match(/\{[^}]*\}$/) : null;
-    if (braceMatch) {
-      const attrs = parseBraceAttrs(braceMatch[0]);
-      if (attrs?.gyazo) gyazoFromBrace = attrs.gyazo;
-      img = img.replace(/\s*\{[^}]*\}\s*$/, "");
+    if (typeof img === "string") {
+      const m = img.match(/\{gyazo=([^}]+)\}/i);
+      if (m) {
+        gyazoFromBrace = m[1];
+        img = img.replace(/\s*\{gyazo=[^}]+\}\s*/i, "");
+      }
     }
 
     const gyazoMode = (mode || gyazoFromBrace || gyazo || "image").toLowerCase();
 
     let mediaPart = "";
     if (img) {
-      // Keep original URL for id抽出、派生URL生�Eに使ぁE      const rawUrl = img;
+      // Keep original URL for id謚ｽ蜃ｺ縲∵ｴｾ逕欟RL逕滓・縺ｫ菴ｿ縺・      const rawUrl = img;
       const normalizedImg = normalizeGyazoUrl(img) || img;
 
       // Gyazo video modes (loop/player)
@@ -741,7 +742,7 @@ export default function (eleventyConfig) {
         const initial = gyazoMode;
         const isPlayer = initial === "player";
         mediaPart = `<div class="media-inline__media" style="--media-inline-width:${width}%;">
-  <figure class="article-video article-video--${initial} article-video--gyazo" data-gyazo-toggle data-gyazo-initial="${initial}" style="--article-video-height:${height}px; --article-video-width:${widthPx}px; --article-video-aspect:${aspect};">
+  <figure class="article-video article-video--${initial} article-video--gyazo" data-gyazo-toggle data-gyazo-initial="${initial}" data-gyazo-id="${id || ""}" style="--article-video-height:${height}px; --article-video-width:${widthPx}px; --article-video-aspect:${aspect};">
     <div class="article-video__frame">
       <video src="${source}" data-full-src="${source}" ${isPlayer ? "controls preload=\"metadata\"" : "muted loop autoplay"} playsinline></video>
       <button type="button" class="gyazo-toggle" aria-label="Toggle Gyazo playback mode" data-loop-label="Loop" data-player-label="Player">
@@ -805,6 +806,8 @@ export default function (eleventyConfig) {
     pathPrefix: "/"
   };
 }
+
+
 
 
 
