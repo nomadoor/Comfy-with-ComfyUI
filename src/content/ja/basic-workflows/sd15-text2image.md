@@ -1,6 +1,7 @@
 ---
 layout: page.njk
 lang: ja
+section: basic-workflows
 slug: sd15-text2image
 navId: sd15-text2image
 title: "text2image"

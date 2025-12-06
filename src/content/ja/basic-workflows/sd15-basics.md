@@ -1,6 +1,7 @@
 ---
 layout: page.njk
 lang: ja
+section: basic-workflows
 slug: sd15-basics
 navId: sd15-basic
 title: "画像生成の基本(SD1.5)"

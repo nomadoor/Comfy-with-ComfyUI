@@ -1,6 +1,7 @@
 ---
 layout: page.njk
 lang: ja
+section: basic-workflows
 slug: sd15-lora
 navId: sd15-lora
 title: "LoRA"

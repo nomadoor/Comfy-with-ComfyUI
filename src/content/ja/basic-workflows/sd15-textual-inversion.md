@@ -1,6 +1,7 @@
 ---
 layout: page.njk
 lang: ja
+section: basic-workflows
 slug: sd15-textual-inversion
 navId: sd15-textual-inversion
 title: "Textual Inversion"

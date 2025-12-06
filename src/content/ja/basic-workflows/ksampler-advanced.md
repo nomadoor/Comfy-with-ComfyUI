@@ -1,6 +1,7 @@
 ---
 layout: page.njk
 lang: ja
+section: basic-workflows
 slug: ksampler-advanced
 navId: ksampler-advanced
 title: "KSampler (Advanced)ノード"
