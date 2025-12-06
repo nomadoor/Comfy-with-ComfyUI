@@ -63,7 +63,7 @@ Textual Inversion は、学習が軽いという利点こそあれど、現在�
 
 ### workflow
 
-![](https://gyazo.com/bf0e224c60c17b7664613dbbd6d2396a){gyazo=image}
+![](https://gyazo.com/4631607c66ac4a2f6edfb442a786b79e){gyazo=image}
 
 [](/workflows/basic-workflows/sd15-textual-inversion/SD1.5_embedding.json)
 

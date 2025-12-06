@@ -40,7 +40,7 @@ LoRA は、モデルの重みそのものを書き換えるのではなく、「
 
 ### workflow
 
-![](https://gyazo.com/c2eee3ec1ec36c052a302dc344ff1a69){gyazo=image}
+![](https://gyazo.com/8596b20bea2e92a969693fa18f1ce778){gyazo=image}
 
 [](/workflows/basic-workflows/sd15-lora/SD1.5_lora.json)
 
@@ -75,9 +75,12 @@ Flux.1以降のモデルでは、LoRAの学習・適用も、拡散モデルの�
 
 ### ComfyUI workflowの変化
 
-この新しい設計を反映し、ComfyUIでは `LoraLoaderModelOnly`ノードが用意されています。  
-これは名前の通り、MODEL（拡散モデル）にのみLoRAを適用するノードです。
+`Load LoRA`ノードを使ってもいいんですが、使ってないCLIPにノードを接続するのもあんまり美しくありません。  
+ということで、代わりに `LoraLoaderModelOnly`ノードが用意されています。  
+名前の通り、MODEL（拡散モデル）にのみLoRAを適用するノードです。
 
-![](https://gyazo.com/87dc794e1f87940a585696bf82df517d){gyazo=image}
+![](https://gyazo.com/975300eed9cca90f7086dda53c1ca413){gyazo=image}
 
 [](/workflows/basic-workflows/sd15-lora/Flux.1_lora.json)
+
+新しいモデルでは、このようにLoRAを適用しています。覚えておいてください。

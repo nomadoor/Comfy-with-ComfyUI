@@ -51,11 +51,9 @@ hero:
 
 ## workflow
 
-![](https://gyazo.com/54e06d8a5bec841c5ba566a758140175){gyazo=image}
+![](https://gyazo.com/363769552b12b2072756280f163183df){gyazo=image}
 
 [](/workflows/basic-workflows/sd15-text2image/SD1.5_text2image.json)
-
----
 
 ## 各ノードについて
 
@@ -109,11 +107,40 @@ latentをピクセル画像に変換します。
 {% endmediaRow %}
 
 
+
+## VAEを変更する
+
+Stable Diffusion1.5のVAEは、正直あまり性能がよくありません。ファインチューニングモデルを使うと、変な色の画像が生成されることもあります。
+
+その後、改良されたVAEが発表されました。他にも色々なVAEが発表されていますが、Stable Diffusion 1.5のVAEは、これを使えば問題が出ることはほぼありません。
+
+### VAEのダウンロード
+
+- [vae-ft-mse-840000-ema-pruned.safetensors](https://huggingface.co/stabilityai/sd-vae-ft-mse-original/blob/main/vae-ft-mse-840000-ema-pruned.safetensors)
+-  ```text
+    📂ComfyUI/
+      └── 📂models/
+          └── 📂vae/
+              └── vae-ft-mse-840000-ema-pruned.safetensors
+    ```
+
+### workflow
+
+![](https://gyazo.com/897f66c308b3b98440f641ee3d33d50e){gyazo=image}
+
+[](/workflows/basic-workflows/sd15-text2image/SD1.5_text2image_vae-ft-mse-840000.json)
+
+- 🟥`Load VAE`ノードを追加し、先程ダウンロードしたVAEを選択。
+  -  VAE Decodeに繋ぎます。
+
+> **今後のworkflowはこれをベースにします。**
+
 ---
 
 ## 初心者がコケそうな疑問
 
-当然のように扱われていますが、よく考えれば画像生成特有で不思議なもの、というのはいくつかあります。それらについて別ページで簡単に解説しています。
+当然のように扱われていますが、よく考えれば画像生成特有で不思議なもの、というのはいくつかあります。  
+それらについて別ページで簡単に解説しています。
 
   - [同じパラメータを使ってもStable Diffusion web UIとComfyUIで同じ画像は生成できない]()
   - [512px × 512pxで生成するのはなぜ？]()
@@ -168,33 +195,3 @@ CLIPは、前にあるテキストをより重視するため、後半に書い�
 ![](https://gyazo.com/e13bd76787711c8392334243177e60f3){gyazo=loop}
 
 - 注目度を変えたいワードにカーソルを起き、`Ctrl + 矢印↑/↓`をすると、0.05ずつ調整できます。
-
-
----
-
-## VAEを変更する
-
-Stable Diffusion1.5のVAEは、正直あまり性能がよくありません。ファインチューニングモデルを使うと、変な色の画像が生成されることもあります。
-
-その後、改良されたVAEが発表されました。他にも色々なVAEが発表されていますが、Stable Diffusion 1.5のVAEは、これを使えば問題が出ることはほぼありません。
-
-### VAEのダウンロード
-
-- [vae-ft-mse-840000-ema-pruned.safetensors](https://huggingface.co/stabilityai/sd-vae-ft-mse-original/blob/main/vae-ft-mse-840000-ema-pruned.safetensors)
--  ```text
-    📂ComfyUI/
-      └── 📂models/
-          └── 📂vae/
-              └── vae-ft-mse-840000-ema-pruned.safetensors
-    ```
-
-### workflow
-
-![](https://gyazo.com/6a576a6c23a647c646df9945137e3272){gyazo=image}
-
-[](/workflows/basic-workflows/sd15-text2image/SD1.5_text2image_vae-ft-mse-840000.json)
-
-- 🟥`Load VAE`ノードを追加し、先程ダウンロードしたVAEを選択。
-  -  VAE Decodeに繋ぎます。
-
-> 今後のworkflowはこれをベースにします。

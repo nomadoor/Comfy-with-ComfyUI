@@ -24,6 +24,22 @@ function renderIcon(name) {
   return `<span class="lightbox__icon" aria-hidden="true">${LIGHTBOX_ICONS[name] || ""}</span>`;
 }
 
+function getMediaRatio(target) {
+  if (!target) return 1;
+  const attrWidth = Number(target.getAttribute?.("width"));
+  const attrHeight = Number(target.getAttribute?.("height"));
+  if (attrWidth > 0 && attrHeight > 0) {
+    return attrWidth / attrHeight;
+  }
+  if (target.naturalWidth && target.naturalHeight) {
+    return target.naturalWidth / target.naturalHeight;
+  }
+  if (target.videoWidth && target.videoHeight) {
+    return target.videoWidth / target.videoHeight;
+  }
+  return 1;
+}
+
 function buildLightbox() {
   if (lightboxEl) return lightboxEl;
   const wrapper = document.createElement("div");
@@ -97,6 +113,8 @@ function show(index) {
   const target = mediaItems[currentIndex];
   const highResSource = getMediaSource(target);
   const isVideo = target.tagName.toLowerCase() === "video";
+  const ratio = getMediaRatio(target);
+  lightboxEl?.style.setProperty("--lightbox-ratio", ratio.toString());
 
   // Reset state
   zoomed = false;

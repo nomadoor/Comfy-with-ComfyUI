@@ -196,7 +196,7 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "pasted/image (44).png",
+        "ComfyUI_02814_.png",
         "image"
       ],
       "color": "#232",
@@ -251,10 +251,50 @@
         "Node name for S&R": "CheckpointLoaderSimple"
       },
       "widgets_values": [
-        "📷-v1.x\\v1-5-pruned.safetensors"
+        "v1-5-pruned-emaonly-fp16.safetensors"
       ],
       "color": "#323",
       "bgcolor": "#535"
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        415,
+        186
+      ],
+      "size": [
+        422.84503173828125,
+        164.31304931640625
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.76",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "(best quality, high quality),painting of a single red rose in a small clear glass vase, centered composition on a dark blurred background, rich oil painting style, visible brushstrokes, thick impasto texture, detailed petals, canvas texture"
+      ]
     },
     {
       "id": 3,
@@ -308,53 +348,13 @@
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        12345,
+        1234,
         "fixed",
         20,
         8,
         "euler",
         "normal",
         0.85
-      ]
-    },
-    {
-      "id": 6,
-      "type": "CLIPTextEncode",
-      "pos": [
-        415,
-        186
-      ],
-      "size": [
-        422.84503173828125,
-        164.31304931640625
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 3
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            4
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.76",
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        "(best quality, high quality), close-up painting of a single red rose in a small clear glass vase, centered composition on a dark blurred background, rich oil painting style, visible brushstrokes, thick impasto texture, detailed petals, canvas texture, high resolution"
       ]
     }
   ],
@@ -459,7 +459,7 @@
       ]
     },
     "workflowRendererVersion": "LG",
-    "frontendVersion": "1.34.5",
+    "frontendVersion": "1.34.6",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

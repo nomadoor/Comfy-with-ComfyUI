@@ -230,10 +230,10 @@
       title: Textual Inversion
     - id: sd15-lora
       title: LoRA
+    - id: ksampler-advanced
+      title: KSampler (Advanced)ノード
     - id: sd15-image2image
       title: image2image
-    - id: sd15-ksampler-advanced
-      title: KSamplerAdvanced
     - id: sd15-hires-fix
       title: Hires.fix
     - id: sd15-inpainting

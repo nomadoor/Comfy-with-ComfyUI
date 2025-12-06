@@ -2443,8 +2443,11 @@ body.lightbox-open {
 
 .lightbox__media img,
 .lightbox__media video {
+  width: min(80vw, calc(70vh * var(--lightbox-ratio, 1)));
+  height: min(70vh, calc(80vw / var(--lightbox-ratio, 1)));
   max-width: 80vw;
   max-height: 70vh;
+  object-fit: contain;
   cursor: zoom-in;
   flex: 0 1 auto;
   z-index: 1;

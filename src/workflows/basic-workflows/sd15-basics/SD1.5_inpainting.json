@@ -206,6 +206,90 @@
       "bgcolor": "#353"
     },
     {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        415,
+        186
+      ],
+      "size": [
+        422.84503173828125,
+        164.31304931640625
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.76",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "(best quality, high quality), close-up painting of a single red rose in a small clear glass vase, centered composition on a dark blurred background, rich oil painting style, visible brushstrokes, thick impasto texture, detailed petals, canvas texture, high resolution"
+      ]
+    },
+    {
+      "id": 15,
+      "type": "SetLatentNoiseMask",
+      "pos": [
+        649.7194454545465,
+        636.1712727272728
+      ],
+      "size": [
+        187.34765624999991,
+        46
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 15
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 16
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            17
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.76",
+        "Node name for S&R": "SetLatentNoiseMask"
+      },
+      "widgets_values": [],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
       "id": 4,
       "type": "CheckpointLoaderSimple",
       "pos": [
@@ -254,50 +338,10 @@
         "Node name for S&R": "CheckpointLoaderSimple"
       },
       "widgets_values": [
-        "📷-v1.x\\v1-5-pruned.safetensors"
+        "v1-5-pruned-emaonly-fp16.safetensors"
       ],
       "color": "#323",
       "bgcolor": "#535"
-    },
-    {
-      "id": 6,
-      "type": "CLIPTextEncode",
-      "pos": [
-        415,
-        186
-      ],
-      "size": [
-        422.84503173828125,
-        164.31304931640625
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 3
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            4
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.76",
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        "(best quality, high quality), close-up painting of a single red rose in a small clear glass vase, centered composition on a dark blurred background, rich oil painting style, visible brushstrokes, thick impasto texture, detailed petals, canvas texture, high resolution"
-      ]
     },
     {
       "id": 3,
@@ -351,7 +395,7 @@
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        12345,
+        1234,
         "fixed",
         20,
         8,
@@ -359,50 +403,6 @@
         "normal",
         0.85
       ]
-    },
-    {
-      "id": 15,
-      "type": "SetLatentNoiseMask",
-      "pos": [
-        649.7194454545465,
-        636.1712727272728
-      ],
-      "size": [
-        187.34765624999991,
-        46
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "samples",
-          "type": "LATENT",
-          "link": 15
-        },
-        {
-          "name": "mask",
-          "type": "MASK",
-          "link": 16
-        }
-      ],
-      "outputs": [
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "links": [
-            17
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.76",
-        "Node name for S&R": "SetLatentNoiseMask"
-      },
-      "widgets_values": [],
-      "color": "#322",
-      "bgcolor": "#533"
     }
   ],
   "links": [
@@ -517,12 +517,12 @@
     "ds": {
       "scale": 0.7513148009015777,
       "offset": [
-        56.10409999999999,
-        -86
+        45.456099999999985,
+        -80.67599999999999
       ]
     },
     "workflowRendererVersion": "LG",
-    "frontendVersion": "1.34.5",
+    "frontendVersion": "1.34.6",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,
