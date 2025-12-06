@@ -39,16 +39,24 @@ const initToc = () => {
 
   function getHeadings() {
     const heads = Array.from(article.querySelectorAll("h2, h3"));
+    const counts = new Map();
+
     heads.forEach((h) => {
-      if (!h.id) {
-        const base = (h.textContent || "section").trim().toLowerCase();
-        const slug = base
-          .replace(/[^\p{L}\p{N}]+/gu, "-")
-          .replace(/^-+|-+$/g, "")
-          || `section-${Math.random().toString(36).slice(2, 8)}`;
-        h.id = slug;
+      const baseText = (h.textContent || h.id || "section").trim().toLowerCase();
+      const baseSlug = (h.id || baseText)
+        .replace(/[^\p{L}\p{N}]+/gu, "-")
+        .replace(/^-+|-+$/g, "") || "section";
+
+      const seen = counts.get(baseSlug) || 0;
+      const next = seen + 1;
+      counts.set(baseSlug, next);
+
+      const finalId = seen === 0 ? baseSlug : `${baseSlug}-${next}`;
+      if (h.id !== finalId) {
+        h.id = finalId;
       }
     });
+
     return heads;
   }
 

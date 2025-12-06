@@ -105,7 +105,7 @@
     * キャプション生成
 
 * 📂基本のworkflow
-  * 画像生成の基本 (SD1.5)
+  * 画像生成の基本 (SD1.5) — 親ページあり
     * text2image
     * Textual Inversion
     * LoRA
@@ -115,59 +115,55 @@
     * inpainting
     * outpainting
     * Differential Diffusion
-    * ControlNet
+    * ControlNet（親ページあり）
       * ControlNetの種類
       * 制御画像の作り方
     * IP-Adapter
-  * 他の基盤モデル
-    * SDXL
+  * 他の基盤モデル — 親ページあり
+    * SDXL（親ページあり）
       * Illustrious
-    * Flux
-      * LoRA
+    * Flux（親ページあり）
+      * Flux LoRA
       * Flux.1 Tools
       * ACE++
       * Flux.1 Kontext
       * Chroma
     * AuraFlow
-    * Qwen-Image
-      * Qwen-Image基本
+    * Qwen-Image（親ページあり）
       * Qwen-Image-Edit
-  * アップスケール・修正
+  * アップスケール・修正 — 親ページあり
     * ESRGAN
     * GFPGAN
     * SUPIR
     * Ultimate SD Upscale
     * Detailer
-  * マスク生成
+  * マスク生成 — 親ページあり
     * BiRefNet
     * YOLO
     * Grounding DINO
     * SAM
-  * 動画生成・処理
-    * Wan 2.1
-      * Wan 2.1基本
+  * 動画生成・処理 — 親ページあり
+    * Wan 2.1（親ページあり）
       * Wan 2.1 VACE
     * Wan 2.2
     * LTX-Video
-    * FramePack
-      * FramePack基本
+    * FramePack（親ページあり）
       * 1フレーム推論
     * Wan-Animate
     * LivePortrait
     * HunyuanVideo-Foley
-  * LLM / MLLM
+  * LLM / MLLM — 親ページあり
     * JoyCaption
     * Florence2
     * Qwen 3 VL
-  * その他
+  * その他 — 親ページあり
     * ReActor
-  * システム・最適化
+  * システム・最適化 — 親ページあり
     * モデルのマージ
     * 高速化・軽量化
-  * 外部API
+  * 外部API — 親ページあり
     * nano-banana
     * gemini-flash
-
 * 📂FAQ / トラブルシューティング
   * エラーが出た時にやること
     * エラーコードの確認

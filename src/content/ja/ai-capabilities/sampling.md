@@ -12,7 +12,9 @@ hero:
 ---
 ## Samplingとは？
 
-拡散モデルは、ノイズを一気に消しているわけではなく、ノイズを少しずつ減らすステップを何回も進めながら画像を作っています。
+![](https://gyazo.com/bf9d6d2e5b528f0b82f9d13e3c18c5fa){gyazo=image}
+
+[拡散モデル](/ja/ai-capabilities/diffusion-models/)は、ノイズを一気に消しているわけではなく、ノイズを少しずつ減らすステップを何回も進めながら画像を作っています。
 
 学習時は本当に細かくステップを分けてノイズを少しずつ増やしていますが、生成時も同じ細かさで1段階ずつノイズを消していくと、ステップ数が多くなりすぎて現実的な時間では終わりません。
 
@@ -57,20 +59,21 @@ Samplingが画質に影響しないわけではありませんが、この設定
 参考: [Stable Diffusion Deep Dive - CFG - Don't Accidentally Fry Your Images](https://www.youtube.com/watch?v=kuhO9zAzetk)
 
 
-![](https://gyazo.com/2726d797e03185230ce53475d48d707b){gyazo=image}
-例えば、**DPM++ 2M Karras 20step だとCFG 25を超えると赤信号**です。
+> ![](https://gyazo.com/2726d797e03185230ce53475d48d707b){gyazo=image}
 
-実際に生成してみると：
+この図に従うなら、例えば、**DPM++ 2M Karras 20step だとCFG 25を超えると赤信号**です。
 
-- **DPM++ 2M Karras / Step数 20 / CFG 8**  
+実際に生成してみると生成される画像の品質が悪いことがわかります。
+
+- DPM++ 2M Karras / Step数 20 / **CFG 8**  
   ![](https://gyazo.com/262e228b7207b827b105bfad833d3ac5){gyazo=image}
 
-- **DPM++ 2M Karras / Step数 20 / CFG 30**  
+- DPM++ 2M Karras / Step数 20 / **CFG 30**  
   ![](https://gyazo.com/375e367784f6446fcc1e4a0a93fbc0cb){gyazo=image}
 
 CFG以外の原因でも、このように彩度が上がりすぎた画像が生成されることがあります。このような画像を **over-saturated colors** や **burn out** と表現することがあります。
 
-逆にこのような画像が生成されれば、サンプラーやCFGの組み合わせが悪いかもしれません。
+逆にこのような画像が生成されれば、サンプラーやCFGの組み合わせが悪いかもしれません。これらのパラメータを確認してみてください。
 
 ---
 
@@ -80,6 +83,7 @@ CFG以外の原因でも、このように彩度が上がりすぎた画像が�
 
 こうしたモデルを**高速化蒸留モデル**と呼びます。代表的なものにLCM（Latent Consistency Model）やLightning系などがあります。
 
-これらは専用サンプラー（LCMサンプラーなど）と組み合わせて使うか、最近のものではEulerなどの汎用サンプラーでも動くよう調整されています。
+当初は専用サンプラー（LCMサンプラーなど）と組み合わせて使うことが前提でしたが、最近のものではEulerなどの汎用サンプラーでも動くよう調整されています。
 
-特に注意点する点として、`CFG = 1`を前提に学習されていることが多いため、まずチェックしておきましょう。
+特に注意点する点として、`CFG = 1`を前提に学習されていることが多いです。  
+つまり、1より大きいCFGを設定すると、上で行った実験のように**over-saturated colors**になったり、正しく生成できない可能性があります。注意してください。

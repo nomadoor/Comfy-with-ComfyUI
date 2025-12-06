@@ -3,33 +3,85 @@ layout: page.njk
 lang: ja
 section: basic-workflows
 slug: sd15-basics
-navId: sd15-basics
-title: "SD1.5 基本ワークフロー(ダミー)"
-summary: "標準的な text2image の流れを確認するダミー用記事。"
-tags:
-  - sd15-basics
-  - conditioning
-workflowJson:
-  - id: sd15-basic
-    title: "SD1.5 Basic Flow"
-    json: "/workflows/sd15-basics/standard.json"
-    image: "https://i.gyazo.com/f805391f1a7ae6b253440cf16168a763.jpg"
-    copy: |
-      {
-        "workflow": "sd15-basic",
-        "notes": "Dummy payload"
-      }
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+navId: sd15-basic
+title: "画像生成の基本(SD1.5)"
+summary: "Stable Diffusion 1.5で学ぶ画像生成の基本"
+permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  gradient: "linear-gradient(135deg, #1a1f3f, #352c64)"
+  gradient:
+  image: ""
 ---
 
-## ノード構成
-H2 dummy
+## どのモデルでもworkflowは大体同じ
 
-### text2image
-H3 dummy
+![](https://gyazo.com/55ef8fc59cbcbc5093b9e1b3d15dceb5){gyazo=image}
 
-## Hires.fix
-- 分岐点
-- 画像は workflows セクションで参照予定
+![](https://gyazo.com/bc7fe8fc68bbc2fb408314e8acee9ab1){gyazo=image}
+
+上が**Stable Diffusion 1.5**、下が最新モデルである **Z-Image** のworkflow です。
+
+ノードの数など細かい違いはあれど、大体同じなのが分かるでしょうか？  
+どんな新しい画像生成モデルであろうとも、動画生成モデルであろうとも、**「材料を用意してKSamplerに投げる」** この流れは変わりません。
+
+早く新しいモデルを使いたいという気持ちはとても良くわかりますが、逸る気持ちを抑え、一度Stable Diffusion 1.5をベースにしたworkflowを網羅してみてください。
+
+この先のComfyUI生活が、ぐっと楽しくなるはずです。
+
+---
+
+## 「モジュール式である」とは？
+
+ComfyUI のようなノードベースツールは、よく「モジュール式である」ことが利点だと説明されます。
+
+では、そもそもモジュール式とは何か。  
+それが画像生成において、どんなふうに便利なのでしょうか。  
+
+### モジュール式
+
+モジュール式とは、レゴブロックのように「必要な機能を後から付け足していける」構造のことです。
+
+- ベースになる土台がある
+- 必要な機能が出てきたら、その部分だけブロックを付け足す
+- さらに機能を増やしたいときは、またブロックを付け足す
+
+こうした「足し算していく」考え方が、ComfyUI の workflow にもそのまま当てはまります。
+
+### ComfyUI ではどうなっているか
+
+具体的なノード名はいったん置いておいて、workflow を少しずつ拡張していく様子を見てみます。  
+どの部分がモジュールとして増えているのか、流れで確認してみましょう。
+- 1. **text2image**
+  - 基本です。プロンプトを入力して、それをKSamplerに投げるだけです。
+  - ![](https://gyazo.com/10c6a84174c94fbd6b66fbed2bd2a4c3){gyazo=image}
+  - [](/workflows/basic-workflows/sd15-basics/SD1.5_text2image.json)
+
+- 2. **image2image**
+  - 入力した画像を下書きに画像生成します。
+  - ![](https://gyazo.com/8426a110f038cddb3907e51d155ed9b3){gyazo=image}
+  - [](/workflows/basic-workflows/sd15-basics/SD1.5_image2image.json)
+  - 🟩画像を読み込むノードと、それをlatentに変換するノードを追加しまう。
+
+- 3. **inpainting**
+  - 入力した画像の一部分だけimage2imageします。
+  - ![](https://gyazo.com/a9bd94b38c77cca3acb5b6a5b9d894a6){gyazo=image}
+  - [](/workflows/basic-workflows/sd15-basics/SD1.5_inpainting.json)
+  - 🟥マスクした場所のみimage2imageさせるためのノードを追加します。
+
+- 4. **ControlNet**
+  - ControlNetは、画像を生成する際に、画像を入力して制御することができる機能です。
+  - ![](https://gyazo.com/46553948d7e458ed19a69b0a5a8f5141){gyazo=image}
+  - [](/workflows/basic-workflows/sd15-basics/SD1.5_inpainting_controlnet.json)
+  - 🟦ControlNetを追加するノードと、ControlNetの制御として使う画像を作るためのノードを追加します。
+  
+- 5. **さらにControlNetを追加**
+  - ControlNetは一つだけという制限はありません。もう一個追加してみましょう。
+  - ![](https://gyazo.com/daa261583657abf6c25d2003581d1610){gyazo=image}
+  - [](/workflows/basic-workflows/sd15-basics/SD1.5_inpainting_controlnet2.json)
+  - 🟦ControlNetとその下処理ノードをもう1セット作ってつなげるだけです。
+
+---
+
+ひとつの例ですが、ComfyUIの柔軟性を見せられたと思います。
+
+公式のテンプレート以外にも、多くの人がworkflowを公開していますが、それでも、あなたの望む完璧なworkflowはこの世に無いかもしれません。  
+でも心配ありません。いらなかったら消し、他に欲しい機能があれば加えればいいのです。

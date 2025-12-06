@@ -1,4 +1,4 @@
-import fs from "node:fs/promises";
+﻿import fs from "node:fs/promises";
 import fsSync from "node:fs";
 import path from "node:path";
 import MarkdownIt from "markdown-it";
@@ -628,6 +628,7 @@ export default function (eleventyConfig) {
 
   markdownLib.renderer.rules.image = function (tokens, idx, options, env, self) {
     const token = tokens[idx];
+    const isGyazoImg = Boolean(token.meta?.isGyazo || token.attrGet("gyazo"));
     if (token.meta?.isGyazo || token.attrGet("gyazo")) {
       return renderGyazoMedia(token);
     }
@@ -642,11 +643,14 @@ export default function (eleventyConfig) {
         token.attrSet("decoding", "async");
       }
       if (variants.full && variants.full !== variants.preview) {
-        token.attrSet("data-full-src", variants.full);
+        const fullSrc = isGyazoImg ? variants.preview : variants.full;
+        token.attrSet("data-full-src", fullSrc);
         token.attrSet("srcset", `${variants.preview} 1000w, ${variants.full} 2000w`);
         if (!token.attrGet("sizes")) {
           token.attrSet("sizes", "(min-width: 768px) 720px, 100vw");
         }
+      } else {
+        token.attrSet("data-full-src", variants.preview);
       }
       const width = variants.originalWidth || variants.width;
       const height = variants.originalHeight || variants.height;
@@ -702,6 +706,105 @@ export default function (eleventyConfig) {
   enhanceJsonLinks(markdownLib);
   eleventyConfig.setLibrary("md", markdownLib);
 
+  // Paired shortcode: side-by-side media + text
+  // Usage (in Markdown):
+  // {% mediaRow img="https://..." alt="説明" align="left" width="33" %}
+  // 任意のMarkdown（箇条書きなど）
+  // {% endmediaRow %}
+  eleventyConfig.addPairedShortcode("mediaRow", function (content, opts = {}) {
+    let { img = "", alt = "", align = "left", width = 33, gyazo = "image", mode = "" } = opts;
+    const reverse = String(align).toLowerCase() === "right";
+    const safeAlt = String(alt).replace(/"/g, "&quot;");
+
+    // Allow braces style in img param: "https://gyazo.com/xxx {gyazo=loop}"
+    let gyazoFromBrace = null;
+    if (typeof img === "string") {
+      const m = img.match(/\{gyazo=([^}]+)\}/i);
+      if (m) {
+        gyazoFromBrace = m[1];
+        img = img.replace(/\s*\{gyazo=[^}]+\}\s*/i, "");
+      }
+    }
+
+    const gyazoMode = (mode || gyazoFromBrace || gyazo || "image").toLowerCase();
+
+    let mediaPart = "";
+    if (img) {
+      const rawUrl = img;
+      const normalizedImg = normalizeGyazoUrl(img) || img;
+
+      // Gyazo video modes (loop/player)
+      if (gyazoMode === "loop" || gyazoMode === "player") {
+        const id = extractGyazoId(rawUrl);
+        const dims = getGyazoDimensionsFromId(id);
+        const baseWidth = dims?.width || 720;
+        const baseHeight = dims?.height || 360;
+        const aspect = dims ? `${dims.width} / ${dims.height}` : "16 / 9";
+        const height = Math.min(baseHeight, 360);
+        const scale = baseHeight ? height / baseHeight : 1;
+        const widthPx = Math.round(baseWidth * scale);
+        const source = id ? `https://i.gyazo.com/${id}.mp4` : normalizedImg;
+        const initial = gyazoMode;
+        const isPlayer = initial === "player";
+        mediaPart = `<div class="media-inline__media" style="--media-inline-width:${width}%;">
+  <figure class="article-video article-video--${initial} article-video--gyazo" data-gyazo-toggle data-gyazo-initial="${initial}" data-gyazo-id="${id || ""}" style="--article-video-height:${height}px; --article-video-width:${widthPx}px; --article-video-aspect:${aspect};">
+    <div class="article-video__frame">
+      <video src="${source}" data-full-src="${source}" ${isPlayer ? "controls preload=\"metadata\"" : "muted loop autoplay"} playsinline></video>
+      <button type="button" class="gyazo-toggle" aria-label="Toggle Gyazo playback mode" data-loop-label="Loop" data-player-label="Player">
+        <span class="gyazo-toggle__pill"><span class="gyazo-toggle__knob"></span><span class="gyazo-toggle__text"></span></span>
+      </button>
+    </div>
+    ${safeAlt ? `<figcaption>${safeAlt}</figcaption>` : ""}
+  </figure>
+</div>`;
+      } else {
+        // Default image path (Gyazo images included)
+        const variants = createImageVariants(normalizedImg, 1000);
+        const widthAttr = variants.originalWidth || variants.width;
+        const heightAttr = variants.originalHeight || variants.height;
+        const attrs = [
+          `src="${variants.preview}"`,
+          `alt="${safeAlt}"`,
+          `loading="lazy"`,
+          `decoding="async"`
+        ];
+        const isGyazo = typeof normalizedImg === "string" && normalizedImg.includes("gyazo.com");
+
+        // Fix: Use full resolution for Gyazo if available (lightbox will handle max_size/1200)
+        const fullSrc = isGyazo
+          ? (variants.full || variants.preview)
+          : variants.full && variants.full !== variants.preview
+            ? variants.full
+            : variants.preview;
+
+        attrs.push(`data-full-src="${fullSrc}"`);
+        if (!isGyazo && variants.full && variants.full !== variants.preview) {
+          attrs.push(`srcset="${variants.preview} 1000w, ${variants.full} 2000w"`);
+          attrs.push(`sizes="(min-width: 900px) ${width}vw, 100vw"`);
+        }
+        if (widthAttr && heightAttr) {
+          attrs.push(`width="${widthAttr}"`);
+          attrs.push(`height="${heightAttr}"`);
+        }
+        mediaPart = `<div class="media-inline__media" style="--media-inline-width:${width}%;">
+  <img ${attrs.join(" ")}>
+</div>`;
+      }
+    }
+
+    const renderedBody = markdownLib.render(content);
+
+    // Fix: Swap DOM order when reversed to match visual order (fixes Lightbox navigation)
+    const innerHTML = reverse
+      ? `<div class="media-inline__body">${renderedBody}</div>${mediaPart}`
+      : `${mediaPart}<div class="media-inline__body">${renderedBody}</div>`;
+
+    return `
+<div class="media-inline${reverse ? " media-inline--reverse" : ""}">
+  ${innerHTML}
+</div>`;
+  });
+
   eleventyConfig.setServerOptions({
     showAllHosts: true,
     port: 8080,
@@ -722,6 +825,3 @@ export default function (eleventyConfig) {
     pathPrefix: "/"
   };
 }
-
-
-
