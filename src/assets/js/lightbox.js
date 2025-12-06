@@ -92,7 +92,7 @@ function getMediaSource(target) {
       if (m) {
         const id = m[1];
         const ext = m[2].toLowerCase() === "jpeg" ? "jpg" : m[2].toLowerCase();
-        return `https://i.gyazo.com/${id}/max_size/1200.${ext}`;
+        return `https://i.gyazo.com/${id}/max_size/2000.${ext}`;
       }
     }
   } catch {
