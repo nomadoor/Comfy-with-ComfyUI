@@ -223,6 +223,17 @@ sections:
   pages:
   - id: sd15-basics
     title: SD1.5 Basics
+    children:
+    - id: sd15-text2image
+      title: text2image
+    - id: sd15-textual-inversion
+      title: Textual Inversion
+    - id: sd15-lora
+      title: LoRA
+    - id: ksampler-advanced
+      title: KSampler (Advanced) Node
+    - id: sd15-image2image
+      title: image2image
   - id: other-foundation-models
     title: Other Foundation Models
   - id: sdxl-basics
