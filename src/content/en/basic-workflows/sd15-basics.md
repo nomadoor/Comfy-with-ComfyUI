@@ -1,6 +1,7 @@
 ---
 layout: page.njk
 lang: en
+section: basic-workflows
 slug: sd15-basics
 navId: sd15-basics
 title: "Basics of Image Generation (SD1.5)"
