@@ -419,9 +419,21 @@ export default function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("relatedWorkflows", function (collection = [], currentUrl, currentTags = [], currentLang) {
-    if (!Array.isArray(collection) || !currentTags || !currentTags.length) {
+    if (!Array.isArray(collection)) {
       return [];
     }
+
+    const normalizeTags = (value) => {
+      if (Array.isArray(value)) return value;
+      if (typeof value === "string" && value.trim().length) return [value.trim()];
+      return [];
+    };
+
+    const normalizedCurrentTags = normalizeTags(currentTags);
+    if (!normalizedCurrentTags.length) {
+      return [];
+    }
+
     return collection
       .filter((entry) => {
         if (!entry || !entry.data) return false;
@@ -431,8 +443,9 @@ export default function (eleventyConfig) {
         return true;
       })
       .filter((entry) => {
-        const entryTags = entry.data.tags || [];
-        return currentTags.some((tag) => entryTags.includes(tag));
+        const entryTags = normalizeTags(entry.data.tags);
+        if (!entryTags.length) return false;
+        return normalizedCurrentTags.some((tag) => entryTags.includes(tag));
       })
       .map((entry) => ({
         url: entry.url,

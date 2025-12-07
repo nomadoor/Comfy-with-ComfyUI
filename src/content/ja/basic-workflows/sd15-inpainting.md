@@ -7,6 +7,7 @@ navId: sd15-inpainting
 title: "inpainting"
 summary: "inpaintingで画像の一部分だけ編集する"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+tags: ["controlnet", "region-limited-generation"]
 hero:
   image: ""
 ---
