@@ -1,0 +1,3 @@
+# Enforce UTF-8 (no BOM) for YAML files to avoid accidental BOM reintroduction
+*.yml  text working-tree-encoding=UTF-8
+*.yaml text working-tree-encoding=UTF-8
