@@ -43,8 +43,13 @@ layout: base.njk
 </section>
 {% endif %}
 
-{% if section == "basic-workflows" %}
-  {% set relatedPages = collections.all | relatedWorkflows(page.url, tags, lang) %}
+{% set relatedTags = tags %}
+{% if section == "ai-capabilities" and (not relatedTags or not relatedTags.length) %}
+  {% set relatedTags = [slug] %}
+{% endif %}
+
+{% if section == "basic-workflows" or section == "ai-capabilities" %}
+  {% set relatedPages = collections.all | relatedWorkflows(page.url, relatedTags, lang) %}
   {% if relatedPages.length %}
     <section class="workflow-related">
       <h2 class="workflow-related__heading">{{ workflowRelatedHeading }}</h2>

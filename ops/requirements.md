@@ -15,7 +15,10 @@
 - Every page begins with one H1. Section badges and chip styles come from `/ops/style-design.md`.
 
 ## 3. Related Workflows
-- Only render related cards inside `basic-workflows` using the existing helper.
+- Render related cards using the existing helper.
+- Sections:
+  - `basic-workflows`: show other basic-workflows that share at least one tag.
+  - `ai-capabilities`: if tags are present use them; otherwise fall back to the page slug as the tag key to surface matching basic-workflows.
 - Limit to 12 cards; stack vertically on narrow layouts.
 
 ## 4. Workflow JSON Block
