@@ -1,4 +1,4 @@
-sections:
+﻿sections:
 - key: begin-with
   label: はじめてのComfyUI
   pages:
@@ -240,7 +240,7 @@ sections:
       title: inpainting
     - id: sd15-outpainting
       title: outpainting
-    - id: sd15-differential-diffusion
+    - id: differential-diffusion
       title: Differential Diffusion
     - id: sd15-controlnet
       title: ControlNet
