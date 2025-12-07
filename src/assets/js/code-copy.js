@@ -12,6 +12,35 @@ function markCopiedState(button) {
   }, SUCCESS_VISIBLE_MS);
 }
 
+async function copyText(text) {
+  if (!text) return false;
+  // Prefer async clipboard when available
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch (error) {
+      // fall through to legacy path
+    }
+  }
+
+  // Fallback: use a temporary textarea + execCommand
+  try {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "absolute";
+    textarea.style.left = "-9999px";
+    document.body.appendChild(textarea);
+    textarea.select();
+    const success = document.execCommand("copy");
+    document.body.removeChild(textarea);
+    return success;
+  } catch {
+    return false;
+  }
+}
+
 const initCodeCopy = () => {
   const blocks = document.querySelectorAll("pre code");
   const iconMarkup =
@@ -32,11 +61,11 @@ const initCodeCopy = () => {
     button.innerHTML = `<span class="code-copy__icon" aria-hidden="true">${iconMarkup}</span><span class="sr-only">${copyLabel}</span>`;
 
     button.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(code.textContent);
+      const ok = await copyText(code.textContent);
+      if (ok) {
         markCopiedState(button);
-      } catch (error) {
-        console.warn("Code copy failed", error);
+      } else {
+        console.warn("Code copy failed");
       }
     });
 

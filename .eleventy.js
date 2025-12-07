@@ -80,7 +80,7 @@ function getPreviewDimensions(meta, targetSize = 1000) {
   };
 }
 
-function createImageVariants(url = "", size = 1000) {
+function createImageVariants(url = "", size = 2000) {
   const fallback = { preview: url, full: url };
   if (typeof url !== "string" || !url) {
     return fallback;
@@ -419,9 +419,21 @@ export default function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("relatedWorkflows", function (collection = [], currentUrl, currentTags = [], currentLang) {
-    if (!Array.isArray(collection) || !currentTags || !currentTags.length) {
+    if (!Array.isArray(collection)) {
       return [];
     }
+
+    const normalizeTags = (value) => {
+      if (Array.isArray(value)) return value;
+      if (typeof value === "string" && value.trim().length) return [value.trim()];
+      return [];
+    };
+
+    const normalizedCurrentTags = normalizeTags(currentTags);
+    if (!normalizedCurrentTags.length) {
+      return [];
+    }
+
     return collection
       .filter((entry) => {
         if (!entry || !entry.data) return false;
@@ -431,8 +443,9 @@ export default function (eleventyConfig) {
         return true;
       })
       .filter((entry) => {
-        const entryTags = entry.data.tags || [];
-        return currentTags.some((tag) => entryTags.includes(tag));
+        const entryTags = normalizeTags(entry.data.tags);
+        if (!entryTags.length) return false;
+        return normalizedCurrentTags.some((tag) => entryTags.includes(tag));
       })
       .map((entry) => ({
         url: entry.url,
@@ -770,7 +783,7 @@ export default function (eleventyConfig) {
         ];
         const isGyazo = typeof normalizedImg === "string" && normalizedImg.includes("gyazo.com");
 
-        // Fix: Use full resolution for Gyazo if available (lightbox will handle max_size/1200)
+        // Fix: Use higher resolution for Gyazo (lightbox will handle max_size/2000)
         const fullSrc = isGyazo
           ? (variants.full || variants.preview)
           : variants.full && variants.full !== variants.preview
