@@ -14,11 +14,11 @@ tags: ["id-transfer"]
 
 ## ReActorとは？
 
-[face swap](顔の入れ替え) は deepfake として何年も前から存在しますが、当時は同じ人物の顔画像を何百枚も集めて学習させる必要がありました。
+**face swap** は deepfake として何年も前から存在しますが、当時は同じ人物の顔画像を何百枚も集めて学習させる必要がありました。
 
 ReActor（正確にはそのコアである **InsightFace** ）は、1枚の顔写真だけを参照にして、別の画像や動画に映っている顔を差し替えることができます。
 
-現在は拡散モデルベースのより柔軟な ID 転送手段も登場していますが、ReActor は「比較的軽い」「 良い意味で柔軟性が無く安定している」といった理由から、現在でもよく使われている手法です。
+現在は拡散モデルベースのより柔軟な ID 転送手段も登場していますが、ReActor は「比較的軽い」「良い意味で柔軟性がなく安定している」といった理由から、現在でもよく使われている手法です。
 
 ---
 
@@ -26,26 +26,25 @@ ReActor（正確にはそのコアである **InsightFace** ）は、1枚の顔�
 
 - [Gourieff/ComfyUI-ReActor](https://github.com/Gourieff/ComfyUI-ReActor?tab=readme-ov-file#installation)
 
-
 ### インストール方法
 
-このノードは導入が少し難しく、ComfyUI Managerからインストールするだけでは動きません。
+このノードは導入が少し難しく、ComfyUI Manager からインストールするだけでは動きません。
 
 - 1. ComfyUI Manager から ReActor ノードをインストール。
 - 2. `ComfyUI/custom_nodes/ComfyUI-ReActor` にある `install.bat` を実行。
-- 3. WIndowsユーザーはこれだけでは動かず、別途InsightFaceのインストールが必要です。
+- 3. Windows ユーザーはこれだけでは動かず、別途 InsightFace のインストールが必要です。
   - 詳しくは：[InsightFaceのインストール方法](/ja/notes/insightface-install/) を参照してください。
-- 4. ComfyUIの再起動
+- 4. ComfyUI を再起動。
 
 ---
 
-## FaceSwap（InsightFace）
+## FaceSwap（inswapper）
 
 基本的な FaceSwap は、ReActor ノードに「元画像」と「参照顔画像」を入力するだけです。
 
-![](https://gyazo.com/xxxxxxxxxxxxxxxxxxxxxx){gyazo=image}
+![](https://gyazo.com/bc67dfff78c431c688d8ec1a4937969e){gyazo=image}
 
-[](/workflows/basic-workflows/reactor/ReActor_InsightFace.json)
+[](/workflows/basic-workflows/reactor/ReActor_Fast_Face_Swap.json)
 
 - `input_image`  
   - 顔を入れ替えたい元の画像を接続します。
@@ -56,7 +55,8 @@ ReActor（正確にはそのコアである **InsightFace** ）は、1枚の顔�
 
 - `face_restore_model`
   - `GFPGANv1.3` を選ぶと、FaceSwap 後に GFPGAN による顔修復をかけます。
-  - 画質が荒れたときのリカバリに便利ですが、元画像の雰囲気が変わることもあります。
+  - `inswapper` は顔の部分を 128px 四方にリサイズして処理するため、そのままだとディテールが失われやすく、このような後処理が重要になります。
+  - ただ、どうしてもノッペリした印象になりやすい点には注意が必要です。
 - `detect_gender_input` / `detect_gender_source`
   - 入力画像・参照画像の性別を自動判定するかどうかの設定です。
   - 性別の違いによって結果が不自然になる場合は、ON/OFF を切り替えて試してみるとよいでしょう。
@@ -71,7 +71,7 @@ ReActor（正確にはそのコアである **InsightFace** ）は、1枚の顔�
 
 ## 別の FaceSwap モデルを使う（HyperSwap）
 
-先程使用した `inswapper` は、古いモデルということもありますが、社会的影響を考え、開発者によって高解像度版が封印されています。  
+先程使用した inswapper は、古いモデルということもありますが、社会的影響を考え、開発者によって高解像度版が封印されています。  
 代替モデルはいくつかありますが、FaceFusion Labs が開発している HyperSwap を使ってみましょう。
 
 ### モデルのダウンロード
@@ -87,9 +87,11 @@ ReActor（正確にはそのコアである **InsightFace** ）は、1枚の顔�
 
 ### workflow の設定
 
-ReActor ノードの `swap_model` を、デフォルトから `hyperswap_1a_256` に変更します。
+![](https://gyazo.com/bab77e7c89d65dff9a4ebedb17a46375){gyazo=image}
 
+[](/workflows/basic-workflows/reactor/ReActor_hyperswap.json)
 
+- ReActor ノードの `swap_model` を、`hyperswap_1a_256` に変更します。
 
 ---
 
