@@ -58,8 +58,6 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 {% endmediaRow %}
 
----
-
 {% mediaRow img="https://gyazo.com/4be8acdf3533fb7c80d9b580f755f1db{gyazo=image}", width=50, align="left" %}
 
 ### SoftEdge / HED
@@ -69,8 +67,6 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 - 🟩 HED Soft-Edge
 
 {% endmediaRow %}
-
----
 
 {% mediaRow img="https://gyazo.com/5fcfc6e4a07be8ed93ec0e3f9ed6a993{gyazo=image}", width=50, align="left" %}
 
@@ -83,7 +79,6 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 {% endmediaRow %}
 
----
 
 {% mediaRow img="https://gyazo.com/6be6036f6e7a7f56a8f6de81aeeea7d6{gyazo=image}", width=50, align="left" %}
 
@@ -96,8 +91,6 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 {% endmediaRow %}
 
----
-
 {% mediaRow img="https://gyazo.com/e55cf3d13d1b3c3c07497724d42b2780{gyazo=image}", width=50, align="left" %}
 
 ### Normal
@@ -108,8 +101,6 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 {% endmediaRow %}
 
----
-
 {% mediaRow img="https://gyazo.com/d7fe5840a075c7567848f8953c381734{gyazo=image}", width=50, align="left" %}
 
 ### MLSD
@@ -119,8 +110,6 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 - 🟩 M-LSD Lines
 
 {% endmediaRow %}
-
----
 
 {% mediaRow img="https://gyazo.com/9297daf25cc10b21f495ed985e2bae7c{gyazo=image}", width=50, align="left" %}
 
@@ -134,16 +123,14 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 {% endmediaRow %}
 
----
-
 {% mediaRow img="https://gyazo.com/d859b24e730122c4e510e2c97878a7e8{gyazo=image}", width=50, align="left" %}
 
 ### SDPose
 
-[judian17/ComfyUI-SDPose-OOD](https://github.com/judian17/ComfyUI-SDPose-OOD)
 
 [](/workflows/basic-workflows/controlnet-prep/SDPose.json)
 
+[judian17/ComfyUI-SDPose-OOD](https://github.com/judian17/ComfyUI-SDPose-OOD)
 - 🟩 SDPose
   - OpenPose は動物やアニメイラストに非常に弱いため、うまくいかなかったときはこちらを試してみてください。
 

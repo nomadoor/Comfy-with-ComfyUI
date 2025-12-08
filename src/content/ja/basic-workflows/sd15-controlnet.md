@@ -7,6 +7,7 @@ navId: sd15-controlnet
 title: "ControlNet"
 summary: "ポーズや線画を使って画像生成をコントロールする"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+tags: ["controlnet"]
 hero:
   image: "https://i.gyazo.com/374d9112c26cc1098d9e7e11b5ca49fa.png"
 ---

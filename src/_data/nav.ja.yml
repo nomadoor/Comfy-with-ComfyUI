@@ -282,14 +282,12 @@
     children:
     - id: esrgan
       title: ESRGAN
-    - id: gfpgan
-      title: GFPGAN
-    - id: supir
-      title: SUPIR
     - id: ultimate-sd-upscale
       title: Ultimate SD Upscale
     - id: detailer
       title: Detailer
+    - id: supir
+      title: SUPIR
   - id: video-workflows
     title: 動画生成・処理
     noLink: true
