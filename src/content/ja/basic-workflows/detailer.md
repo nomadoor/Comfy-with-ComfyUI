@@ -102,12 +102,13 @@ workflow を見れば分かるとおり、**マスク＋元画像** を渡すと
 さて、早速Detailer をやってみましょう。  
 といっても、[inpainting](/ja/basic-workflows/sd15-inpainting/) のworkflowに組み込むだけです。
 
-![](https://gyazo.com/94ab9c8e52e49eedb58bfb95c95b9e40){gyazo=image}
+![](https://gyazo.com/4246aded675f5267c9b5685486791390){gyazo=image}
 
 [](/workflows/basic-workflows/detailer/Detailer_Inpaint_Crop.json)
 
 - 🟩 ベースモデルによって　`output_target_width/height` を調整してください。
   - 今回はSD1.5なので512px
+- 🟥 直接 Detailer とは関係ありませんが、Inpaint Crop が「境界をぼかしたマスク」を出力してくれるので、それを活かせる [Differential Diffusion](/ja/basic-workflows/differential-diffusion/) とはかなり相性が良いです。
 
 ---
 
@@ -120,8 +121,6 @@ workflow を見れば分かるとおり、**マスク＋元画像** を渡すと
 [](/workflows/basic-workflows/detailer/Detailer_Inpaint_Crop_SAM3.json)
 
 - 🟦 SAM 3を使って顔のマスクを作成します。
-- 🟥 直接 Detailer とは関係ありませんが、Inpaint Crop が「境界をぼかしたマスク」を出力してくれるので、それを活かせる [Differential Diffusion](/ja/basic-workflows/differential-diffusion/) とはかなり相性が良いです。
-
 
 Detailerの基礎はこれだけなので、もう十分使いこなせると思います。  
 ただ、画像に映った複数の人物をまとめて検出して、一気に処理したい……となるとImpactPackを使用する必要があります。

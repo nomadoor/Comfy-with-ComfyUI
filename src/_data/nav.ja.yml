@@ -310,8 +310,6 @@
       title: Wan-Animate
     - id: liveportrait
       title: LivePortrait
-    - id: hunyuanvideo-foley
-      title: HunyuanVideo-Foley
   - id: llm-mlm-workflows
     title: LLM / MLLM
     noLink: true
@@ -319,9 +317,10 @@
     - id: joycaption
       title: JoyCaption
     - id: florence2
-      title: Florence2
+      title: Florence-2
     - id: qwen-3-vl
       title: Qwen 3 VL
+      noLink: true
   - id: other-workflows
     title: その他
     noLink: true
