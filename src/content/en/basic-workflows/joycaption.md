@@ -38,20 +38,20 @@ Generates a caption from the input image.
 [](/workflows/basic-workflows/joycaption/JoyCaption.json)
 
 - `prompt_style`
-  - **Descriptive**
-      - Writes as formal and long prose.
-      - Useful when you want to keep the content of the image in detail, but tends to be redundant to use as a prompt as is.
-  - **Straightforward**
-      - Writes in a concise and objective style.
-      - A style that is easy to divert as is for prompts and captions for LoRA.
-  - **Stable Diffusion Prompt**
-      - Writes in a prompt format for Stable Diffusion.
-  - **Danbooru tag list**
-      - Lists tags in Danbooru tag format (e.g., `1girl`, `blue_hair`).
+    - **Descriptive**
+        - Writes as formal and long prose.
+        - Useful when you want to keep the content of the image in detail, but tends to be redundant to use as a prompt as is.
+    - **Straightforward**
+        - Writes in a concise and objective style.
+        - A style that is easy to divert as is for prompts and captions for LoRA.
+    - **Stable Diffusion Prompt**
+        - Writes in a prompt format for Stable Diffusion.
+    - **Danbooru tag list**
+        - Lists tags in Danbooru tag format (e.g., `1girl`, `blue_hair`).
 
 - `caption_length`
-  - Specifies the volume of the caption to output (short/long).
+    - Specifies the volume of the caption to output (short/long).
 
 - `Extra Options`
-  - Sets additional instructions to guide caption generation.
-  - For example, you can specify a policy such as "write in detail / do not touch much" about camera angle, image quality/resolution, NSFW elements, etc.
+    - Sets additional instructions to guide caption generation.
+    - For example, you can specify a policy such as "write in detail / do not touch much" about camera angle, image quality/resolution, NSFW elements, etc.
