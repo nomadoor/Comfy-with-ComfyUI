@@ -245,10 +245,8 @@ sections:
     - id: sd15-controlnet
       title: ControlNet
       children:
-      - id: sd15-controlnet-types
-        title: ControlNetの種類
-      - id: sd15-controlnet-prep
-        title: 制御画像の作り方
+      - id: controlnet-prep
+        title: ControlNet Preprocessor
     - id: sd15-ip-adapter
       title: IP-Adapter
   - id: other-foundation-models
@@ -263,8 +261,6 @@ sections:
     - id: flux
       title: Flux
       children:
-      - id: flux-lora
-        title: Flux LoRA
       - id: flux-1-tools
         title: Flux.1 Tools
       - id: ace-plus-plus
@@ -286,26 +282,12 @@ sections:
     children:
     - id: esrgan
       title: ESRGAN
-    - id: gfpgan
-      title: GFPGAN
-    - id: supir
-      title: SUPIR
     - id: ultimate-sd-upscale
       title: Ultimate SD Upscale
     - id: detailer
       title: Detailer
-  - id: mask-generation
-    title: マスク生成
-    noLink: true
-    children:
-    - id: birefnet
-      title: BiRefNet
-    - id: yolo
-      title: YOLO
-    - id: grounding-dino
-      title: Grounding DINO
-    - id: sam
-      title: SAM
+    - id: supir
+      title: SUPIR
   - id: video-workflows
     title: 動画生成・処理
     noLink: true
@@ -321,7 +303,6 @@ sections:
       title: LTX-Video
     - id: framepack
       title: FramePack
-      noLink: true
       children:
       - id: one-frame-inference
         title: 1フレーム推論
@@ -329,8 +310,6 @@ sections:
       title: Wan-Animate
     - id: liveportrait
       title: LivePortrait
-    - id: hunyuanvideo-foley
-      title: HunyuanVideo-Foley
   - id: llm-mlm-workflows
     title: LLM / MLLM
     noLink: true
@@ -338,9 +317,10 @@ sections:
     - id: joycaption
       title: JoyCaption
     - id: florence2
-      title: Florence2
+      title: Florence-2
     - id: qwen-3-vl
       title: Qwen 3 VL
+      noLink: true
   - id: other-workflows
     title: その他
     noLink: true
