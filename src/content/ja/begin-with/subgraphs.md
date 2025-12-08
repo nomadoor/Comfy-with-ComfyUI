@@ -19,12 +19,16 @@ hero:
 
 単に見た目を整えるというよりは、あくまで「再利用可能なモジュール」を作成するための機能だと、個人的には考えています。
 
+---
+
 ## サブグラフの作成
 
 - 1. まとめたいノードを複数選択
 - 2. `Node Selection Toolbox` の `🕸️` (Convert Selection to Subgraph) をクリック
 
 ![](https://gyazo.com/d59c55b69252fad5f076a9b5e17be95a){gyazo=loop}
+
+---
 
 ## サブグラフの編集
 
@@ -33,6 +37,8 @@ hero:
 基本操作は通常と同じですが、外部とやり取りするパラメータは、サブグラフの入出力スロット（左端・右端）に接続する必要があります。
 
 ![](https://gyazo.com/5d5ebc1bc37a8dfdaad5a5db64d66cb2){gyazo=loop}
+
+---
 
 ## パラメータの公開設定
 
@@ -44,6 +50,8 @@ hero:
 - 3. 公開したいパラメータにチェックを入れる
 
 ![](https://gyazo.com/024e67b6cea67bda0849829b3762f4ba){gyazo=loop}
+
+---
 
 ## サブグラフの保存と再利用
 

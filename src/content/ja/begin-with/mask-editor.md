@@ -16,11 +16,15 @@ ComfyUI上で、画像の特定部分をマスク（白黒画像）として描�
 
 マスク作成だけでなく、簡易的なペイント機能も備えています。
 
+---
+
 ## 起動方法
 
 - `Load Image` ノードなどを選択 → `Node Selection Toolbox` の `🌔` (Open Mask Editor) をクリック
 
 ![](https://gyazo.com/41526255834943bb591e62583d85d324){gyazo=loop}
+
+---
 
 ## ツール操作
 
@@ -72,11 +76,15 @@ MaskやPaintモードのまま **右クリック** することでも消しゴ�
 
 ![](https://gyazo.com/bf6ca9fd1af91d39c50174a4ef981b90){gyazo=loop}
 
+---
+
 ## 上部メニューの操作
 
 - **Undo / Redo**: 操作の取り消し / やり直し
 - **Clear**: 全消去
 - **Invert**: マスクの反転
+
+---
 
 ## 保存と適用
 

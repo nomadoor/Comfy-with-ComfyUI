@@ -73,6 +73,10 @@ hero:
 
 処理が終わった後、再び背景を透過させて保存したい場合はどうすればよいでしょうか？
 
+![](https://gyazo.com/b05103b1633b9a4b0fbfdd96063499c2){gyazo=image}
+
+[](/workflows/data-utilities/mask-alpha/Join-Split_Image_with_Alpha.json)
+
 ### 🟨Join Image With Alpha ノード
 
 `IMAGE`（RGB画像）と `MASK` を合体させて、1枚の **RGBA画像（透過画像）** に変換します。
@@ -82,11 +86,9 @@ hero:
 
 逆に、RGBA画像を RGB と MASK に分離するノードです。
 
-![](https://gyazo.com/b05103b1633b9a4b0fbfdd96063499c2){gyazo=image}
+---
 
-[](/workflows/data-utilities/mask-alpha/Join-Split_Image_with_Alpha.json)
-
-### 🚨 エラーの罠：RGBAとRGBの混同
+## 🚨 エラーの罠：RGBAとRGBの混同
 
 ComfyUIのワイヤー上では、RGB画像(3チャンネル)も RGBA画像(4チャンネル)も、同じ **`IMAGE`** 型として流れます。見た目で区別がつきません。
 
