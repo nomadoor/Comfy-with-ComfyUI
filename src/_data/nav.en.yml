@@ -245,12 +245,35 @@ sections:
     - id: sd15-controlnet
       title: ControlNet
       children:
-      - id: sd15-controlnet-types
-        title: Types of ControlNet
-      - id: sd15-controlnet-prep
-        title: How to Make Control Images
+      - id: controlnet-prep
+        title: ControlNet Preprocessor
+    - id: sd15-ip-adapter
+      title: IP-Adapter
   - id: other-foundation-models
     title: Other Foundation Models
+  - id: upscale-fix
+    title: Upscale & Fix
+    noLink: true
+    children:
+    - id: esrgan
+      title: ESRGAN
+    - id: ultimate-sd-upscale
+      title: Ultimate SD Upscale
+    - id: detailer
+      title: Detailer
+    - id: supir
+      title: SUPIR
+  - id: llm-mlm-workflows
+    title: LLM / MLLM
+    noLink: true
+    children:
+    - id: joycaption
+      title: JoyCaption
+    - id: florence2
+      title: Florence-2
+    - id: qwen-3-vl
+      title: Qwen 3 VL
+      noLink: true
   - id: sdxl-basics
     title: SDXL Starter
   - id: flux-tools
