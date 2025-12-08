@@ -5,7 +5,7 @@ section: basic-workflows
 slug: reactor
 navId: reactor
 title: "ReActor"
-summary: "FaceSwapする技術"
+summary: "ReActorを使ったFaceSwap（顔入れ替え）"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: ""
@@ -14,65 +14,89 @@ tags: ["id-transfer"]
 
 ## ReActorとは？
 
-[face swap](顔の入れ替え)は[deepfake]として何年も前から存在しますが、当時は同じ人間の顔が何百枚と必要でした
+[face swap](顔の入れ替え) は deepfake として何年も前から存在しますが、当時は同じ人物の顔画像を何百枚も集めて学習させる必要がありました。
 
-ReActor(というかそのコアであるInsightFace)は、1枚の顔写真だけで、別の画像や動画に映っている顔を差し替えられます。
+ReActor（正確にはそのコアである **InsightFace** ）は、1枚の顔写真だけを参照にして、別の画像や動画に映っている顔を差し替えることができます。
 
-現在では拡散モデルをベースにした、より柔軟性の高いID転送手段がありますが、軽量さ、そして逆にReActorの柔軟性の無さによる安定感により、未だによく使われている技術です。
+現在は拡散モデルベースのより柔軟な ID 転送手段も登場していますが、ReActor は「比較的軽い」「 良い意味で柔軟性が無く安定している」といった理由から、現在でもよく使われている手法です。
 
+---
 
-## カスタムノード
+## カスタムノードとインストール
 
 - [Gourieff/ComfyUI-ReActor](https://github.com/Gourieff/ComfyUI-ReActor?tab=readme-ov-file#installation)
 
+
 ### インストール方法
 
-このノードは少し厄介で、ComfyUI Managerからインストールするだけでは使えません。
+このノードは導入が少し難しく、ComfyUI Managerからインストールするだけでは動きません。
 
-- 1. ComfyUI Managerからインストール
-- 2. 以下の場所にある `install.bat` をクリック
-  -  ```text
-      📂ComfyUI/
-        └── 📂custom_nodes/
-            └── install.bat
+- 1. ComfyUI Manager から ReActor ノードをインストール。
+- 2. `ComfyUI/custom_nodes/ComfyUI-ReActor` にある `install.bat` を実行。
+- 3. WIndowsユーザーはこれだけでは動かず、別途InsightFaceのインストールが必要です。
+  - 詳しくは：[InsightFaceのインストール方法](/ja/notes/insightface-install/) を参照してください。
+- 4. ComfyUIの再起動
+
+---
+
+## FaceSwap（InsightFace）
+
+基本的な FaceSwap は、ReActor ノードに「元画像」と「参照顔画像」を入力するだけです。
+
+![](https://gyazo.com/xxxxxxxxxxxxxxxxxxxxxx){gyazo=image}
+
+[](/workflows/basic-workflows/reactor/ReActor_InsightFace.json)
+
+- `input_image`  
+  - 顔を入れ替えたい元の画像を接続します。
+- `source_image`  
+  - 参照したい顔画像（1枚の顔写真など）を接続します。
+
+その他、よく使うパラメータを簡単にまとめます。
+
+- `face_restore_model`
+  - `GFPGANv1.3` を選ぶと、FaceSwap 後に GFPGAN による顔修復をかけます。
+  - 画質が荒れたときのリカバリに便利ですが、元画像の雰囲気が変わることもあります。
+- `detect_gender_input` / `detect_gender_source`
+  - 入力画像・参照画像の性別を自動判定するかどうかの設定です。
+  - 性別の違いによって結果が不自然になる場合は、ON/OFF を切り替えて試してみるとよいでしょう。
+- `input_faces_index`
+  - 元画像の中に複数人の顔がある場合、どの顔を対象にするかを指定します。
+  - `0` が最初に見つかった顔、`1` が2人目……というイメージです。
+  - `0,1` のようにカンマ区切りで複数指定すると、複数人を同時に置き換えることもできます。
+- `source_faces_index`
+  - 参照側の `source_image` に複数人の顔がある場合、どの顔を使うかを `input_faces_index` と同じように指定します。
+
+---
+
+## 別の FaceSwap モデルを使う（HyperSwap）
+
+先程使用した `inswapper` は、古いモデルということもありますが、社会的影響を考え、開発者によって高解像度版が封印されています。  
+代替モデルはいくつかありますが、FaceFusion Labs が開発している HyperSwap を使ってみましょう。
+
+### モデルのダウンロード
+
+- [hyperswap_1a_256.onnx](https://huggingface.co/facefusion/models-3.3.0/blob/main/hyperswap_1a_256.onnx) をダウンロードします。
+- 次のように配置します。
+  - ```text
+    📂ComfyUI/
+      └── 📂models/
+          └── 📂hyperswap/
+              └── hyperswap_1a_256.onnx
     ```
-- 3. Windowsの方は多分失敗するのでInsightFaceのインストールをします
-  - 1. [ComfyUI]で使われている[Python]のバージョンを確認する
- $ cd path\to\ComfyUI_windows_portable
- $ python_embeded\python.exe -V
- たぶん3.11
-2. それぞれのバージョンに対応する[InsightFace]のパッケージをダウンロード (直リンク)
-　3.10
-　 https://github.com/Gourieff/Assets/raw/main/Insightface/insightface-0.7.3-cp310-cp310-win_amd64.whl
-　3.11
-　 https://github.com/Gourieff/Assets/raw/main/Insightface/insightface-0.7.3-cp311-cp311-win_amd64.whl
-　3.12
-　 https://github.com/Gourieff/Assets/raw/main/Insightface/insightface-0.7.3-cp312-cp312-win_amd64.whl
-　3.13
-　	https://github.com/Gourieff/Assets/raw/main/Insightface/insightface-0.7.3-cp313-cp313-win_amd64.whl
-　以下の場所に置きます
-　　$ path\to\ComfyUI_windows_portable
-3. pipのアップデート
-　$ python_embeded\python.exe -m pip install -U pip
-4. InsightFaceのインストール
-　3.10
-　 $ python_embeded\python.exe -m pip install insightface-0.7.3-cp310-cp310-win_amd64.whl
-　3.11
-　 $ python_embeded\python.exe -m pip install insightface-0.7.3-cp311-cp311-win_amd64.whl
-　3.12
-　 $ python_embeded\python.exe -m pip install insightface-0.7.3-cp312-cp312-win_amd64.whl
-　3.13
-　 $ python_embeded\python.exe -m pip install insightface-0.7.3-cp313-cp313-win_amd64.whl
-- 4. 再起動
 
-## FaceSwap (insightface)
+### workflow の設定
+
+ReActor ノードの `swap_model` を、デフォルトから `hyperswap_1a_256` に変更します。
 
 
-## 別のFaceSwapモデルを使う
 
-insightface自体かなり古いモデルということもありますが、開発者によって高解像度版を封印されているため、
+---
 
-## NSFWフィルター
+## NSFWフィルターについて
 
-リポジトリを消されるためNSFWの画像を扱えないようにフィルターがかかっています。
-とはいえ、顔をクロップすればFaceSwap自体はできます。詳しくはいいませんが……　[Detailer](/ja/basic-workflows/detailer/)
+リポジトリが削除されないようにするため、ReActor には NSFW な画像に対するフィルターが入っています。  
+そのため、NSFW を含む画像を使った場合拒否されます。
+
+あまり詳しくはいいませんが、簡単な手段で回避することは出来ます。  
+( [Detailer](/ja/basic-workflows/detailer/) が役に立つ……かもしれません )
