@@ -5,27 +5,28 @@ section: data-utilities
 slug: data-types
 navId: data-types
 title: "Data Types"
-summary: "About the main data types handled in ComfyUI"
+summary: "About main data types handled in ComfyUI"
+
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""
 ---
 
-## What are Types?
+## What is a Type?
 
-It refers to the "kind of data".
+It refers to **"Type of Data"**.
 
-For images, it's "image data", for text, it's "text data", and for numbers, it's "numerical data".
+"Image data" for images, "text data" for text, "numerical data" for numbers, and so on.
 
-It is important in programming studies, but in ComfyUI, since "things only connect where they can connect", you honestly don't need to think about it that deeply.
+It is important for programming studies, but in ComfyUI, since it is designed to **"connect only where it connects"**, you honestly don't need to think that deeply.
 
-Therefore, it is rare to get an error because you connected the wrong data type, but it is not zero, so let's lightly understand the concept of this "type".
+Therefore, mistakes in the data type to connect almost never cause errors, but since it is not zero, let's lightly know the concept of this "type".
 
 ---
 
 ## Basic Data Types
 
-If you study the mechanism of image generation AI, you will naturally understand it.
+If you study the mechanism of image generation AI, you will naturally understand. You don't need to try hard to memorize here.
 
 ![](https://gyazo.com/6cc70d5d04c3daec2682adf3bc41c77f){gyazo=image}
 
@@ -39,33 +40,34 @@ If you study the mechanism of image generation AI, you will naturally understand
 
 ### Primitive (Basic) Data Types
 
-These are numbers and characters themselves.
+Numbers and characters themselves.
 
 - **INT** (Integer)
-  - Integers such as `1`, `20`, `1024`.
-- **FLOAT** (Floating Point Number)
-  - Decimals such as `1.5`, `0.75`.
+  - Integers like `1`, `20`, `1024`.
+- **FLOAT** (Floating point number)
+  - Decimals like `1.5`, `0.75`.
 - **STRING** (Text)
-  - Character strings. Prompt input fields fall into this category.
+  - Character strings. Prompt input fields etc. correspond to this.
 
 ---
 
-## Custom Defined Types
+## Uniquely Defined Types
 
-Since ComfyUI is highly extensible, custom nodes may add their own "types".
+Since ComfyUI has high extensibility, unique "types" may be added depending on the custom node.
 
 ![](https://gyazo.com/d5368ee02f84395613526515c34c458d){gyazo=image}
 
 For example, in the famous **Impact Pack**, a unique type called `SEGS` appears.
 
-This is a collection of several data, but even so, these also only connect where they can connect.
+This is a collection of several data, but even so, these also connect only where they connect.
 
-If you get lost, just try pulling the wire. **If it connects, it's good!**
+If you get lost, just try pulling the wire. **If it connects, it's OK!**
 
+---
 
 ## Preview as Text Node
 
-This is a node for previewing arbitrary data as text.
+Node to preview arbitrary data as text.
 
 ![](https://gyazo.com/423eaa0eac26fefe67f5d212a1ab2ad1){gyazo=image}
 

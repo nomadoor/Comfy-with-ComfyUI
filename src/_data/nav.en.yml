@@ -278,6 +278,12 @@ sections:
     title: SDXL Starter
   - id: flux-tools
     title: Flux Tooling
+  - id: other-workflows
+    title: Other
+    noLink: true
+    children:
+    - id: reactor
+      title: ReActor
 - key: faq
   label: FAQ / Troubleshooting
   pages:

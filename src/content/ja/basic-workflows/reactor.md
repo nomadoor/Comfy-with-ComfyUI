@@ -70,4 +70,9 @@ ReActor(というかそのコアであるInsightFace)は、1枚の顔写真だ�
 
 ## 別のFaceSwapモデルを使う
 
-insightfaceは
+insightface自体かなり古いモデルということもありますが、開発者によって高性能版を
+
+## NSFWフィルター
+
+リポジトリを消されるためNSFWの画像を扱えないようにフィルターがかかっています。
+とはいえ、顔をクロップすればFaceSwap自体はできます。詳しくはいいませんが……　[Detailer](/ja/basic-workflows/detailer/)
