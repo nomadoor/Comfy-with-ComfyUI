@@ -11,7 +11,7 @@ permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
    image: ""
 tags: ["upscale-restoration", "controlnet"]
----------------------------------------
+---
 
 ## Ultimate SD upscaleとは？
 
