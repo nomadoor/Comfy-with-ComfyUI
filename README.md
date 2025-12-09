@@ -1,4 +1,4 @@
-# Comfy に使う ComfyUI
+<h1 align="center">Comfy に使う ComfyUI</h1>
 
 <p align="center"><a href="https://comfyui.nomadoor.net/">comfyui.nomadoor.net</a></p>
 
@@ -12,7 +12,7 @@ workflowを読み込めば誰でも同じ画像・動画が生成できる、と
 
 ---
 
-# Comfy with ComfyUI
+<h1 align="center">Comfy with ComfyUI</h1>
 
 <p align="center"><a href="https://comfyui.nomadoor.net/">comfyui.nomadoor.net</a></p>
 
