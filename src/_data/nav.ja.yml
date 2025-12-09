@@ -1,4 +1,4 @@
-sections:
+﻿sections:
 - key: begin-with
   label: はじめてのComfyUI
   pages:
@@ -258,8 +258,8 @@ sections:
       children:
       - id: sdxl-anime
         title: アニメ系 SDXL モデル
-    - id: flux
-      title: Flux
+    - id: flux1
+      title: Flux.1
       children:
       - id: flux-1-tools
         title: Flux.1 Tools
