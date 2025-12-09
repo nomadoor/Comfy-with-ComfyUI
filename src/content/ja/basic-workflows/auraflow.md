@@ -9,7 +9,7 @@ summary: "AuraFlow と Pony V7 をざっくり整理"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "https://i.gyazo.com/2d37855d2969e9cd5515e4852dce230e.png"
-tags: ["text2image"]
+tags: []
 ---
 
 ## AuraFlowとは
@@ -74,7 +74,7 @@ tags: ["text2image"]
 
 [](/workflows/basic-workflows/auraflow/pony-v7-base.json)
 
-* 🟦 `T5TokenizerOptions`  
+- 🟦 `T5TokenizerOptions`  
   - トークン数が設定値以下だった場合に padding で埋めるノードです。入れても入れなくても大きな差はありません。
-* 公式の workflow は `euler_normal` でしたが線が暴れやすかったため、ここでは **CFG++（改良版 CFG ガイダンス）** を使用しています。  
+- 公式の workflow は `euler_normal` でしたが線が暴れやすかったため、ここでは **CFG++（改良版 CFG ガイダンス）** を使用しています。  
   - 従来の CFG を滑らかに調整するもので、線が安定しやすくなります。
