@@ -17,6 +17,8 @@ hero:
 画像のサイズを綺麗に半分にしたり、バッチサイズを調整したりと、単純な四則演算をする場面はしばしばあります。
 そのためのノードを見ていきましょう。
 
+---
+
 ## おすすめのカスタムノード
 
 単純な機能なので、これを実装するものは探せばいくらでもありますが、以下のどちらかのカスタムノードがあれば十分です。(コアノードとして実装されるといいんですがね…)
@@ -95,7 +97,7 @@ ComfyUIでは主に **`int`** と **`float`** の2種類を使います。
 
 **[rgthree-comfy](https://github.com/rgthree/rgthree-comfy)** で追加される `Power Puter` を使うと、画像のサイズを取得できたりif文が使えたりと、もはやほぼプログラミングですが、より複雑な処理をすることができます。
 
-- [Node: Power Puter (Wiki)](https://github.com/rgthree/rgthree-comfy/wiki/Node:-Power-Puter)
+cf. [Node: Power Puter (Wiki)](https://github.com/rgthree/rgthree-comfy/wiki/Node:-Power-Puter)
 
 ![](https://gyazo.com/20c5f92d6ef1e7057c6d42e2065d84b1){gyazo=image}
 

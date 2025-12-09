@@ -363,6 +363,7 @@ video {
   overflow-y: auto;
   padding: var(--space-sm) 0 var(--space-sm) var(--space-sm);
   min-height: 0;
+  overscroll-behavior: contain;
 
   &::-webkit-scrollbar {
     display: none;

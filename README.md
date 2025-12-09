@@ -1,6 +1,6 @@
-# Comfy に使う ComfyUI
+<h1 align="center">Comfy に使う ComfyUI</h1>
 
-[comfyui.nomadoor.net](https://comfyui.nomadoor.net/)
+<p align="center"><a href="https://comfyui.nomadoor.net/">comfyui.nomadoor.net</a></p>
 
 どこよりも基本的で、どこよりもミニマルで、どこよりもつまらない、ComfyUIの解説サイトです。
 
@@ -12,9 +12,9 @@ workflowを読み込めば誰でも同じ画像・動画が生成できる、と
 
 ---
 
-# Comfy with ComfyUI
+<h1 align="center">Comfy with ComfyUI</h1>
 
-[comfyui.nomadoor.net](https://comfyui.nomadoor.net/)
+<p align="center"><a href="https://comfyui.nomadoor.net/">comfyui.nomadoor.net</a></p>
 
 The simplest and most minimal ComfyUI guide—focused on the basics you actually need.
 

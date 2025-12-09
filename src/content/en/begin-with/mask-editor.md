@@ -4,27 +4,33 @@ lang: en
 slug: mask-editor
 navId: mask-editor
 title: "Mask Editor"
-summary: "How to use the Mask Editor"
+summary: "How to use the mask editor"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""
 ---
 
-## What is the Mask Editor?
+## What is Mask Editor?
 
-It is a tool that allows you to draw specific parts of an image as a mask (black and white image) on ComfyUI.
+It is a tool that allows you to draw a specific part of an image as a mask (black and white image) on ComfyUI.
 
-It features not only mask creation but also simple painting functions.
+It has not only mask creation but also a simple paint function.
+
+---
 
 ## How to Launch
 
-- Select a `Load Image` node, etc. → Click `🌔` (Open Mask Editor) in the `Node Selection Toolbox`.
+- Select `Load Image` node etc. → Click `🌔` (Open Mask Editor) in `Node Selection Toolbox`
 
 ![](https://gyazo.com/41526255834943bb591e62583d85d324){gyazo=loop}
 
-## Tool Operations
+---
 
-Switch functions using the tabs on the far left.
+## Tool Operation
+
+Switch functions with the tab on the left end.
+
+- * If browser's "Hardware Acceleration" is off, operation may become heavy.
 
 ### Mask Drawing
 
@@ -33,13 +39,13 @@ Draw a mask with a brush.
 - **Brush Shape**: Shape of the brush
 - **Thickness**: Thickness of the brush
 - **Opacity**: Opacity
-  - Since masks in AI generation are usually treated as "white or black (0 or 1)", basically use it at the maximum value.
-- **Hardness**: Hardness of the brush (blurriness)
+  - Since masks in AI generation are usually handled as "white or black (0 or 1)", basically use at maximum value.
+- **Hardness**: Hardness of the brush (blurring degree)
 - **Smoothing precision**: Line correction strength
 
 ### Paint
 
-Paint colors on the image. Can be used as a guide during Inpaint.
+Paint color on the image. Can be used for guides during Inpaint etc.
 
 - **Color Selector**: Selection of drawing color
 
@@ -47,39 +53,43 @@ Paint colors on the image. Can be used as a guide during Inpaint.
 
 ### Eraser
 
-Erases drawn masks or paint.
+Erases drawn masks and paints.
 
-You can also function as an eraser by **right-clicking** while in Mask or Paint mode.
+Right-clicking while int Mask or Paint mode also functions as an eraser.
 
 ### Fill
 
-Fills the area enclosed by a hand-drawn mask.
+Fills the area surrounded by handwritten masks.
 
 - **Tolerance**: Tolerance range
-  - If it is low, gaps may form, so it is better to increase it.
+  - If low, gaps will be created, so it is better to increase it.
 
 ![](https://gyazo.com/98edbb1b4ca8324d0974416546194a3c){gyazo=loop}
 
-### Auto Select
+### Automatic Selection
 
-The so-called "Magic Wand" tool.
+So-called "Magic Wand".
 
-Automatically masks areas with colors similar to the clicked point.
+Automatically masks the range of colors similar to the clicked location.
 
-- **Tolerance**: Color tolerance range
+- **Tolerance**: Color tolerance
 
 ![](https://gyazo.com/bf6ca9fd1af91d39c50174a4ef981b90){gyazo=loop}
 
-## Top Menu Operations
+---
 
-- **Undo / Redo**: Undo / Redo operations
+## Top Menu Operation
+
+- **Undo / Redo**: Undo / Redo operation
 - **Clear**: Clear all
 - **Invert**: Invert mask
+
+---
 
 ## Save and Apply
 
 - Click `Save to node`
 
-The edits are applied to the node, and the editor closes.
+Edits are applied to the node and the editor closes.
 
 ![](https://gyazo.com/05a4f6930a6d074435ac29b77c97e82e){gyazo=loop}
