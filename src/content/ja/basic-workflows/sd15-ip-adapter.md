@@ -40,7 +40,7 @@ IP-Adapterにはいくつか種類がありますが、最もスタンダード�
 - CLIP Vision モデル
   - [model.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/image_encoder/model.safetensors)
     - 分かりにくいので `OpenCLIP-ViT-H-14` にリネームしてください。
-```
+```text
 📂ComfyUI/
   └── 📂models/
       ├── 📂clip_vision/
