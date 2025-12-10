@@ -8,7 +8,7 @@ title: "Detailer"
 summary: "A mechanism to cut out only small faces or details and inpaint them"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: ""
+  image: "https://i.gyazo.com/5904f9e96c234cd6bec18b10af263838.png"
 tags: ["upscale-restoration"]
 ---
 

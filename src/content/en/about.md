@@ -27,6 +27,8 @@ Since ComfyUI evolves daily, I believe there is useful information for intermedi
   - One of the people captivated by the charm of generative AI, which began with the advent of Midjourney.
   - Just a NEET who is neither a designer nor an engineer, but since I have been using ComfyUI for a long time, I think I am reasonably knowledgeable among the non-experts... I think.
   - Please feel free to contact me for work, troubleshooting, or just a chat (´ε｀ )
+  - > I’m Japanese and I don’t speak much English.
+Thanks to today’s great translation tools I can usually manage, but my replies might be a bit slow sometimes. I’m sorry in advance if that happens.
 - Contact
   - Twitter : [@noma_door](https://x.com/noma_door)
   - Reddit : [u/nomadoor](https://www.reddit.com/user/nomadoor/)

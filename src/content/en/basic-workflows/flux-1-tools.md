@@ -9,12 +9,12 @@ summary: "How to use Flux.1 Tools"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "https://i.gyazo.com/204fbd9af3c371511c01a0c97cac40e8.png"
-tags: []
+tags: ["controlnet"]
 ---
 
 ## What are Flux.1 Tools?
 
-For Flux.1, derivative models equivalent to [ControlNet] and [IP-Adapter] have been released by Flux officially, separate from the base model.
+For Flux.1, derivative models equivalent to [ControlNet](/en/basic-workflows/sd15-controlnet/) and [IP-Adapter](/en/basic-workflows/sd15-ip-adapter/) have been released by Flux officially, separate from the base model.
 
 - `FLUX.1 Fill` ... Model for inpainting / outpainting
 - `FLUX.1 Depth` / `FLUX.1 Canny` ... Models that redraw while keeping the shape with structure-based guides (Depth / Canny)
