@@ -1,6 +1,7 @@
 <h1 align="center">Comfy に使う ComfyUI</h1>
 
 <p align="center"><a href="https://comfyui.nomadoor.net/">comfyui.nomadoor.net</a></p>
+<p align="center"><a href="https://ko-fi.com/T6T71Q062L"><img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi"></a></p>
 
 どこよりも基本的で、どこよりもミニマルで、どこよりもつまらない、ComfyUIの解説サイトです。
 

@@ -8,7 +8,7 @@ title: "IP-Adapter"
 summary: "The original mechanism for transferring style and subject from a reference image"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: ""
+  image: "https://i.gyazo.com/64fdcae074a2a01943d7f5fff3aaa418.png"
 tags: ["subject-transfer", "style-transfer"]
 ---
 

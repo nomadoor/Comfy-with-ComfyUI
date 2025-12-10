@@ -9,7 +9,7 @@ summary: "Creating auxiliary images for use with ControlNet"
 tags: ["controlnet"]
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: ""
+  image: "https://i.gyazo.com/b0ce7cf302624ce253c4d12e78885127.png"
 ---
 
 ## What is Preprocessor?
