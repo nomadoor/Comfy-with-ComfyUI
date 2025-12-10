@@ -1,136 +1,9 @@
 {
   "id": "3eaef21b-6855-4084-bfc0-5b9883338e4f",
   "revision": 0,
-  "last_node_id": 8,
-  "last_link_id": 9,
+  "last_node_id": 10,
+  "last_link_id": 13,
   "nodes": [
-    {
-      "id": 2,
-      "type": "SDPoseOODLoader",
-      "pos": [
-        431.37254071446944,
-        748.9983121269319
-      ],
-      "size": [
-        210,
-        130
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "SDPOSE_MODEL",
-          "type": "SDPOSE_MODEL",
-          "links": [
-            1
-          ]
-        }
-      ],
-      "properties": {
-        "aux_id": "judian17/ComfyUI-SDPose-OOD",
-        "ver": "c5953e1e112665340c642387129f1bc50fcf3dfa",
-        "Node name for S&R": "SDPoseOODLoader"
-      },
-      "widgets_values": [
-        "WholeBody",
-        "fp16",
-        "auto",
-        false
-      ],
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
-      "id": 1,
-      "type": "SDPoseOODProcessor",
-      "pos": [
-        683.3928341233861,
-        854.8218863298231
-      ],
-      "size": [
-        211.396484375,
-        170
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "sdpose_model",
-          "type": "SDPOSE_MODEL",
-          "link": 1
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 2
-        },
-        {
-          "name": "yolo_model",
-          "shape": 7,
-          "type": "YOLO_MODEL",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "links": [
-            3
-          ]
-        },
-        {
-          "name": "pose_json",
-          "type": "STRING",
-          "links": null
-        }
-      ],
-      "properties": {
-        "aux_id": "judian17/ComfyUI-SDPose-OOD",
-        "ver": "c5953e1e112665340c642387129f1bc50fcf3dfa",
-        "Node name for S&R": "SDPoseOODProcessor"
-      },
-      "widgets_values": [
-        0.3,
-        0.6,
-        false,
-        "poses/pose_edit"
-      ],
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
-      "id": 4,
-      "type": "PreviewImage",
-      "pos": [
-        936.0695869128772,
-        854.8218863298231
-      ],
-      "size": [
-        311.7598012062317,
-        365.66204159865424
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 3
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.66",
-        "Node name for S&R": "PreviewImage"
-      },
-      "widgets_values": []
-    },
     {
       "id": 3,
       "type": "LoadImage",
@@ -139,11 +12,11 @@
         941.4048106776432
       ],
       "size": [
-        214.080078125,
+        222.798828125,
         314
       ],
       "flags": {},
-      "order": 1,
+      "order": 0,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -151,7 +24,7 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            2
+            12
           ]
         },
         {
@@ -169,28 +42,175 @@
         "9af5807860cb17e45acaabd3556f09fc.png",
         "image"
       ]
+    },
+    {
+      "id": 4,
+      "type": "PreviewImage",
+      "pos": [
+        985.3182502919165,
+        861.5225583684754
+      ],
+      "size": [
+        311.7598012062317,
+        365.66204159865424
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 13
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.66",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 10,
+      "type": "SDPoseOODProcessor",
+      "pos": [
+        686.7955204692829,
+        861.5225583684754
+      ],
+      "size": [
+        255.64453125,
+        378
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "sdpose_model",
+          "type": "SDPOSE_MODEL",
+          "link": 11
+        },
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 12
+        },
+        {
+          "name": "data_from_florence2",
+          "shape": 7,
+          "type": "JSON",
+          "link": null
+        },
+        {
+          "name": "grounding_dino_model",
+          "shape": 7,
+          "type": "GROUNDING_DINO_MODEL",
+          "link": null
+        },
+        {
+          "name": "yolo_model",
+          "shape": 7,
+          "type": "YOLO_MODEL",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            13
+          ]
+        },
+        {
+          "name": "pose_keypoint",
+          "type": "POSE_KEYPOINT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "sdpose-ood",
+        "ver": "9c4d72564743d57eac88147f71de442a19df4407",
+        "Node name for S&R": "SDPoseOODProcessor"
+      },
+      "widgets_values": [
+        0.3,
+        0.5,
+        1,
+        "person .",
+        0.3,
+        false,
+        "poses/pose_edit",
+        true,
+        true,
+        true,
+        false
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 2,
+      "type": "SDPoseOODLoader",
+      "pos": [
+        431.37254071446944,
+        748.9983121269319
+      ],
+      "size": [
+        210,
+        130
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SDPOSE_MODEL",
+          "type": "SDPOSE_MODEL",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "sdpose-ood",
+        "ver": "c5953e1e112665340c642387129f1bc50fcf3dfa",
+        "Node name for S&R": "SDPoseOODLoader",
+        "aux_id": "judian17/ComfyUI-SDPose-OOD"
+      },
+      "widgets_values": [
+        "WholeBody",
+        "fp16",
+        "auto",
+        false
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
     }
   ],
   "links": [
     [
-      1,
+      11,
       2,
       0,
-      1,
+      10,
       0,
       "SDPOSE_MODEL"
     ],
     [
-      2,
+      12,
       3,
       0,
-      1,
+      10,
       1,
       "IMAGE"
     ],
     [
-      3,
-      1,
+      13,
+      10,
       0,
       4,
       0,
@@ -201,13 +221,13 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1.1167815779424812,
+      "scale": 1.1167815779424821,
       "offset": [
         -325.45234075906274,
         -648.9983121269319
       ]
     },
-    "frontendVersion": "1.31.0",
+    "frontendVersion": "1.35.0",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

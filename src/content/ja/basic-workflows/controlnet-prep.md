@@ -9,7 +9,7 @@ summary: "ControlNetで使う補助画像を作る"
 tags: ["controlnet"]
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: ""
+  image: "https://i.gyazo.com/b0ce7cf302624ce253c4d12e78885127.png"
 ---
 
 ## Preprocessorとは？
@@ -123,10 +123,9 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/d859b24e730122c4e510e2c97878a7e8{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="https://gyazo.com/617591c28e0aba1c028b9b4012a07c98 {gyazo=image}", width=50, align="left" %}
 
 ### SDPose
-
 
 [](/workflows/basic-workflows/controlnet-prep/SDPose.json)
 

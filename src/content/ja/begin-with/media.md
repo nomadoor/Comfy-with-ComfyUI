@@ -16,26 +16,27 @@ hero:
 
 画像をComfyUIに読み込みます。
 
-- `choose file to upload` をクリックしてファイルを選択
-- ノードに画像をドラッグ & ドロップ
-- クリップボードに画像がある状態で、キャンバス上で `Ctrl + V` を押すと、`Load Image` ノードとして貼り付けられます。
-
 ![](https://gyazo.com/9dd4bfe10197dddec18b0e7a1dc94f53){gyazo=loop}
 
-> **Note**
+ノードを検索して追加する以外に、いくつか便利な方法があります。
+- a. `choose file to upload` をクリックしてファイルを選択
+- b. ノードに画像をドラッグ & ドロップ
+- c. クリップボードに画像がある状態で、キャンバス上で `Ctrl + V` を押すと、`Load Image` ノードとして貼り付けられます。
+
 > アップロードされた画像は `ComfyUI\input` フォルダにコピーされ、そこから読み込まれます。**元のファイルが参照されるわけではありません。**
 >
 > この画像はinputフォルダから削除しない限り消えないため、一度Loadした画像は何度も利用できます。
 
 ### Preview Image ノード
 
-生成された画像をその場で確認します。保存はされないため、処理の途中経過や生成結果を一時的に確認したい場合に使用します。
-
-> **Tip**
-> 他の画像系ノードでも共通ですが、右クリックから `Save Image` や `Copy Image` で画像を保存・コピーすることが出来ます。
-> outputフォルダまで画像を探さなくていいので便利です。
+生成された画像をその場で確認します。  
+保存はされないため、処理の途中経過や生成結果を一時的に確認したい場合に使用します。
 
 ![](https://gyazo.com/9f5a3055bbb8ef271583545155f70371){gyazo=loop}
+
+- 他の画像系ノードでも共通ですが、右クリックから `Save Image` や `Copy Image` で画像を保存・コピーすることが出来ます。
+- outputフォルダまで画像を探さなくていいので便利です。
+
 
 ### Save Image ノード
 
@@ -72,19 +73,30 @@ main.py --output_dir --output-directory [path]
 
 ![](https://gyazo.com/1b344fc1baa844c784d53a9790e6aafb){gyazo=loop}
 
+### Image Comparer (rgthree) ノード
+
+２つの画像をスライダーで比較できます。
+
+![](https://gyazo.com/a3ac0fe532474c1447a2f9cd33b31649){gyazo=image}
+
+[](/workflows/begin-with/media/Image_Comparer_(rgthree).json)
+
+- [rgthree/rgthree-comfy](https://github.com/rgthree/rgthree-comfy) で追加されます。
+
 ---
 
 ## 動画
 
 ### Load Video ノード
 
-ComfyUIでは、多くのノードが動画を **画像の連番** として扱います。
+動画を読み込みます。
 
+![](https://gyazo.com/96531a04d73333953691800babd073b9){gyazo=image}
+
+ComfyUIでは、多くのノードが動画を **画像の連番** として扱います。  
 しかし、このノードの出力は `VIDEO` 型なのでそのままでは使えません。`Get Video Components` ノードを通して、動画を画像・音声・fpsに分解する必要があります。
 
 そのため、動画を扱う際は後述する **Video Helper Suite** の使用を推奨します。
-
-![](https://gyazo.com/96531a04d73333953691800babd073b9){gyazo=image}
 
 > **注意:**
 > 動画は基本的に圧縮されていますが、ComfyUIで読み込むと画像の連番（非圧縮）として展開されます。
@@ -96,9 +108,9 @@ ComfyUIでは、多くのノードが動画を **画像の連番** として扱�
 
 生成された動画を保存します。
 
-今度は逆に連番画像を`VIDEO`に直さなければならないため、Create Videoノードを使用して画像・音声をまとめます。
-
 ![](https://gyazo.com/695faf8fda159e16dc56ef533e28eb8f){gyazo=image}
+
+今度は逆に連番画像を`VIDEO`に直さなければならないため、Create Videoノードを使用して画像・音声をまとめます。
 
 ## 🎥Video Helper Suite
 

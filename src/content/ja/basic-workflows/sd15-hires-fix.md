@@ -61,9 +61,7 @@ Stable Diffusion 1.5 は、ほぼ 512 × 512px の画像だけで学習されて
 
 ---
 
-## workflow
-
-### ベーシックなやり方
+## ベーシックな方法
 
 ![](https://gyazo.com/96cd5924bcaef159a79e2fb5fa991665){gyazo=image}
 
@@ -73,11 +71,11 @@ Stable Diffusion 1.5 は、ほぼ 512 × 512px の画像だけで学習されて
 - 🟦 `Upscale Image By`ノードでデコードした画像を1.5倍に拡大
 - 🟨 拡大した画像を image2image に入力
 
+---
 
-### Latent のまま拡大するやり方
+## Latent のまま拡大する方法
 
-先ほどの workflow では、text2image した画像を一度ピクセル画像にデコードしてから拡大し、再び latent に変換して image2image する流れになっていました。
-
+先ほどの workflow では、text2image した画像を一度ピクセル画像にデコードしてから拡大し、再び latent に変換して image2image する流れになっていました。  
 ここで「わざわざピクセル画像に戻さず、latent のまま拡大できるんじゃない？」という発想が出てきます。
 
 ただし、単純に latent を拡大するだけだと、許容できないほどの劣化が発生します。  
@@ -92,3 +90,5 @@ Stable Diffusion 1.5 は、ほぼ 512 × 512px の画像だけで学習されて
 
 - 🟩 text2image から出てきた latent を `NNLatentUpscale`ノード でそのまま拡大
 - 🟨 拡大した latent を image2image にそのまま流す
+
+> あくまで体感ですが、一度ピクセル画像にデコードする方法のほうが品質は良いと思います。

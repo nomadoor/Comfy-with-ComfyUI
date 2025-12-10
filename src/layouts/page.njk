@@ -55,10 +55,20 @@ layout: base.njk
       <h2 class="workflow-related__heading">{{ workflowRelatedHeading }}</h2>
       <div class="workflow-related__grid">
         {% for entry in relatedPages %}
+          {% set heroImage = entry.hero and entry.hero.image or null %}
+          {% set heroVariant = null %}
+          {% if heroImage %}
+            {% set heroVariant = heroImage | imageVariant(480) %}
+          {% endif %}
+          {% set heroStyle = "" %}
+          {% if heroVariant and heroVariant.preview %}
+            {% set heroStyle = "background-image:url('" ~ heroVariant.preview ~ "')" %}
+          {% endif %}
           <a class="workflow-related__card" href="{{ entry.url }}">
+            <div class="workflow-related__hero" {% if heroStyle %}style="{{ heroStyle }}"{% endif %}></div>
             <span class="workflow-related__title">{{ entry.title }}</span>
             {% if entry.summary %}
-            <span class="workflow-related__summary">{{ entry.summary }}</span>
+              <span class="workflow-related__summary">{{ entry.summary }}</span>
             {% endif %}
           </a>
         {% endfor %}
@@ -86,7 +96,7 @@ layout: base.njk
       </div>
       <div class="article-footer__links">
         <a class="article-footer__link" href="/{{ currentLang }}/begin-with/how-to-use-this-site/">{{ site.i18n.footerGuide[currentLang] or site.i18n.footerGuide[site.defaultLang] or "How to use this site" }}</a>
-        <a class="article-footer__link article-footer__link--external" href="https://github.com/" target="_blank" rel="noreferrer noopener">
+        <a class="article-footer__link article-footer__link--external" href="https://github.com/nomadoor/Comfy-with-ComfyUI" target="_blank" rel="noreferrer noopener">
           <span>GitHub</span>
           <span class="article-footer__link-icon">{{ icon("newscreen") }}</span>
         </a>

@@ -8,7 +8,7 @@ title: "ReActor"
 summary: "ReActorを使ったFaceSwap（顔入れ替え）"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: ""
+  image: "https://i.gyazo.com/c75a0142055d05c154f7d8cf03b3ca56.png"
 tags: ["id-transfer"]
 ---
 
@@ -76,14 +76,13 @@ ReActor（正確にはそのコアである **InsightFace** ）は、1枚の顔�
 
 ### モデルのダウンロード
 
-- [hyperswap_1a_256.onnx](https://huggingface.co/facefusion/models-3.3.0/blob/main/hyperswap_1a_256.onnx) をダウンロードします。
-- 次のように配置します。
-  - ```text
-    📂ComfyUI/
-      └── 📂models/
-          └── 📂hyperswap/
-              └── hyperswap_1a_256.onnx
-    ```
+- [hyperswap_1a_256.onnx](https://huggingface.co/facefusion/models-3.3.0/blob/main/hyperswap_1a_256.onnx) 
+```text
+📂ComfyUI/
+  └── 📂models/
+      └── 📂hyperswap/
+          └── hyperswap_1a_256.onnx
+```
 
 ### workflow の設定
 

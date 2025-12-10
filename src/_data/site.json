@@ -292,9 +292,19 @@
         }
       },
       {
+        "id": "about",
+        "type": "internal",
+        "section": "about",
+        "slug": "",
+        "label": {
+          "ja": "About",
+          "en": "About"
+        }
+      },
+      {
         "id": "github",
         "type": "external",
-        "href": "https://github.com/",
+        "href": "https://github.com/nomadoor/Comfy-with-ComfyUI",
         "label": {
           "ja": "GitHub",
           "en": "GitHub"

@@ -281,8 +281,10 @@ function renderJsonLinkRow(linkInfo, env) {
     return null;
   }
   env.__jsonLinkCounter += 1;
-  const copyTargetId = `workflow-json-inline-${env.__jsonLinkCounter}`;
+  const pageKey = (env.page?.url || "page").replace(/[^a-z0-9]+/gi, "-");
   const fileName = path.basename(linkInfo.href.split("?")[0]);
+  const baseKey = path.basename(fileName, path.extname(fileName)).replace(/[^a-z0-9]+/gi, "-") || "wf";
+  const copyTargetId = `workflow-json-inline-${pageKey}-${baseKey}-${env.__jsonLinkCounter}`;
   const lang = env.lang || env.page?.lang || DEFAULT_LANG;
   const copyLabel = getWorkflowLabel("copyLabel", lang);
   const downloadLabel = getWorkflowLabel("downloadLabel", lang);
@@ -450,7 +452,8 @@ export default function (eleventyConfig) {
       .map((entry) => ({
         url: entry.url,
         title: entry.data.title,
-        summary: entry.data.summary || ""
+        summary: entry.data.summary || "",
+        hero: entry.data.hero || {}
       }));
   });
 

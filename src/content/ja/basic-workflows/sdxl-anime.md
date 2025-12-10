@@ -8,7 +8,7 @@ title: "アニメ系 SDXL モデル"
 summary: "SDXLベースのアニメ系モデルのざっくり整理"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: ""
+  image: "https://i.gyazo.com/6ee98c633b487214c13c32a9af7d64cb.png"
 tags: []
 ---
 

@@ -8,7 +8,7 @@ title: "IP-Adapter"
 summary: "参照画像からスタイルや被写体を転送する元祖的な仕組み"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: ""
+  image: "https://i.gyazo.com/64fdcae074a2a01943d7f5fff3aaa418.png"
 tags: ["subject-transfer", "style-transfer"]
 ---
 
@@ -23,6 +23,12 @@ tags: ["subject-transfer", "style-transfer"]
 
 ---
 
+## 必要なカスタムノード
+
+- [cubiq/ComfyUI_IPAdapter_plus](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
+
+---
+
 ## SD1.5 × IP-Adapter
 
 IP-Adapterにはいくつか種類がありますが、最もスタンダードなものをまずは試してみましょう。
@@ -34,14 +40,14 @@ IP-Adapterにはいくつか種類がありますが、最もスタンダード�
 - CLIP Vision モデル
   - [model.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/image_encoder/model.safetensors)
     - 分かりにくいので `OpenCLIP-ViT-H-14` にリネームしてください。
-- ```
-  📂ComfyUI/
-    └── 📂models/
-        ├── 📂clip_vision/
-        │   └── OpenCLIP-ViT-H-14.safetensors
-        └── 📂ip_adapter/
-            └── ip-adapter_sd15.safetensors
-  ```
+```text
+📂ComfyUI/
+  └── 📂models/
+      ├── 📂clip_vision/
+      │   └── OpenCLIP-ViT-H-14.safetensors
+      └── 📂ip_adapter/
+          └── ip-adapter_sd15.safetensors
+```
 
 ### workflow
 
