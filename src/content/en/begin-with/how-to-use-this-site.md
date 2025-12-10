@@ -31,6 +31,8 @@ The outline of the main sections is as follows.
 
 ### 🧭 Begin With ComfyUI
 Introduces the installation and basic operation of ComfyUI.
+> The UI changes frequently these days.
+> I want to fix it, but it will probably change again, so I will update it after it stabilizes to some extent.
 
 ### 🖼️ Data / Image Utilities
 Summarizes how to prepare images and data used for generation.
@@ -80,6 +82,8 @@ Making a 1-minute video. It cannot be done.
 When AI cannot do what you want to do, you may think there must be some solution, but in most cases, the progress of AI has not yet reached the point of satisfying your wishes.
 
 Don't rush, let's enjoy the immature AI. Only now can we do that.
+
+---
 
 ---
 

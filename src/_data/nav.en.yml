@@ -1,110 +1,110 @@
 sections:
 - key: begin-with
-  label: Begin With ComfyUI
+  label: はじめてのComfyUI
   pages:
   - id: how-to-use-this-site
-    title: How to Use This Site
+    title: このサイトの使い方
   - id: spin-up-fast
-    title: Get It Running
+    title: とりあえず動かしてみる
     noLink: true
     children:
     - id: what-is-comfyui
-      title: What is ComfyUI?
+      title: ComfyUIとは？
     - id: recommended-specs
-      title: Recommended Specs
+      title: 推奨スペック
     - id: setup
-      title: Setup
+      title: セットアップ
     - id: comfy-cloud
       title: Comfy Cloud
     - id: first-run
-      title: First Run
+      title: 起動して生成
   - id: pc-basics
-    title: PC Basics
+    title: 必要なPC知識
     noLink: true
     children:
     - id: path
-      title: Path
+      title: パス
     - id: terminal
-      title: Terminal
+      title: ターミナル
     - id: python
       title: Python
     - id: git
       title: git
   - id: customization
-    title: Customization
+    title: カスタマイズ
     noLink: true
     children:
     - id: settings
-      title: Settings
+      title: 設定
     - id: command-line-arguments
-      title: Command Line Arguments
+      title: コマンドライン引数
     - id: updates
-      title: Updates
+      title: アップデート
     - id: downloading-and-placing-models
-      title: Downloading & Placing Models
+      title: モデルのダウンロードと配置
     - id: custom-nodes
-      title: Custom Nodes
+      title: カスタムノード
   - id: comfyui-operations
-    title: ComfyUI Operations
+    title: ComfyUIの操作
     noLink: true
     children:
     - id: run-and-stop
-      title: Run & Stop
+      title: 実行・停止
     - id: saving-and-loading-workflows
-      title: Save & Load Workflows
+      title: workflowの保存・読み込み
     - id: canvas-navigation
-      title: Canvas Navigation
+      title: キャンバスの操作
     - id: nodes
-      title: Nodes
+      title: ノード
     - id: group
-      title: Group
+      title: グループ
     - id: media
-      title: Media
+      title: メディア
     - id: mask-editor
-      title: Mask Editor
+      title: マスクエディタ
     - id: subgraphs
-      title: Subgraphs
+      title: サブグラフ
   - id: columns
-    title: Columns
+    title: コラム
     noLink: true
     children:
     - id: readable-nodes
-      title: Readable Nodes
+      title: リーダブルノードのすすめ
     - id: wireless-nodes
-      title: Wireless Nodes
+      title: 無線でノードをつなぐ
 - key: data-utilities
-  label: Data / Image Utilities
+  label: データ / 画像ユーティリティ
   pages:
   - id: data-ops
-    title: Data Operations
+    title: データ操作
     noLink: true
     children:
     - id: data-types
-      title: Data Types
+      title: データ型
     - id: simple-math
-      title: Simple Math
+      title: 単純な計算
     - id: text-ops
-      title: Text Operations
+      title: テキスト操作
     - id: webcam-input
-      title: Webcam Input
+      title: Webカメラ入力
   - id: basic-image-processing
-    title: Basic Image Processing
+    title: 基本的な画像処理
     noLink: true
     children:
     - id: resize-crop-pad
-      title: Resize, Crop, Pad
+      title: リサイズ・クロップ・パディング
     - id: color-adjustments
-      title: Color Adjustments & Filters
+      title: 色調補正・フィルタ効果
     - id: mask-alpha
-      title: Mask & Alpha Channel
+      title: マスクとアルファチャンネル
     - id: mask-ops
-      title: Mask Operations
+      title: マスク操作
     - id: ai-mask-generation
-      title: AI Mask Generation
+      title: AIを使ったマスク生成
     - id: layer-composite-blend
-      title: Layer Composite & Blend
+      title: レイヤ合成・ブレンド
   - id: batch-processing
-    title: Batch Processing
+    title: 連続処理
     noLink: true
     children:
     - id: queue
@@ -112,18 +112,18 @@ sections:
     - id: list
       title: List
     - id: batch-video
-      title: Batch & Video
+      title: Batch・動画
     - id: realtime
-      title: Realtime Processing
+      title: リアルタイム処理
 - key: ai-capabilities
-  label: AI Capabilities
+  label: AIの仕組みと出来ること
   pages:
   - id: image-generation-mechanics
-    title: Mechanics of Image Generation AI
+    title: 画像生成AIの仕組み
     noLink: true
     children:
     - id: diffusion-models
-      title: Diffusion Models
+      title: 拡散モデル
     - id: conditioning
       title: Conditioning
     - id: cfg
@@ -131,56 +131,56 @@ sections:
     - id: sampling
       title: Sampling
     - id: latent-diffusion-vae
-      title: Latent Diffusion Model & VAE
+      title: Latent Diffusion ModelとVAE
   - id: image-generation-applications
-    title: Applications of Image Generation
+    title: 画像生成の応用技術
     noLink: true
     children:
     - id: upscale-restoration
-      title: Upscale & Restoration
+      title: アップスケール・画像修復
     - id: controlnet
-      title: ControlNet Family
+      title: ControlNet系
     - id: region-limited-generation
-      title: Region-Limited Generation
+      title: 領域指定生成
     - id: subject-transfer
-      title: Subject Transfer
+      title: Subject転送
     - id: id-transfer
-      title: ID Transfer & FaceSwap
+      title: ID転送とFaceSwap
     - id: virtual-try-on
-      title: Virtual Try-On
+      title: 着せ替え
     - id: style-transfer
-      title: Style Transfer
+      title: スタイル転送
     - id: line-art-coloring
-      title: Line Art Coloring
+      title: 線画着色
     - id: object-removal
-      title: Object Removal
+      title: オブジェクト除去
     - id: instruction-based-image-editing
-      title: Instruction-Based Image Editing
+      title: 指示ベース画像編集
     - id: collage-refine
-      title: Refining Rough Collages
+      title: 雑コラのリファイン
   - id: image-translation
-    title: Image Translation
+    title: 画像変換
     noLink: true
     children:
     - id: relight
-      title: Relight
+      title: リライト
     - id: depth-normal-map
-      title: Depth Estimation & Normal Map
+      title: 深度推定とノーマルマップ生成
   - id: video-audio-generation
-    title: Video & Audio Generation
+    title: 動画・音声生成
     noLink: true
     children:
     - id: video-generation
-      title: Video Generation
+      title: 動画生成
       noLink: true
     - id: video-upscale-restoration
-      title: Video Upscale & Restoration
+      title: アップスケール・動画修復
     - id: frame-interpolation
-      title: Frame Interpolation
+      title: フレーム補間
     - id: video-to-audio
       title: video2audio
     - id: lip-sync
-      title: Lip Sync
+      title: リップシンク
     - id: talking-head
       title: talking head
     - id: human-motion-transfer
@@ -189,40 +189,40 @@ sections:
       title: TTS
       noLink: true
     - id: voice-clone
-      title: Voice Clone
+      title: ボイスクローン
       noLink: true
     - id: music-generation
-      title: Music Generation
+      title: 音楽生成
       noLink: true
   - id: 3d-generation
-    title: 3D Generation
+    title: 3D生成
     noLink: true
     children:
     - id: 3d-model-generation
-      title: 3D Model Generation
+      title: 3Dモデル生成
   - id: computer-vision-vlm
-    title: Computer Vision / VLM
+    title: コンピュータービジョン / VLM
     noLink: true
     children:
     - id: object-detection
-      title: Object Detection
+      title: 物体検出
     - id: matting
-      title: Matting
+      title: マッティング
     - id: segmentation
-      title: Segmentation
+      title: セグメンテーション
   - id: llm-mlm-usage
-    title: LLM / MLLM Usage
+    title: LLM / MLLMの活用
     noLink: true
     children:
     - id: prompt-generation
-      title: Prompt Generation & Editing
+      title: プロンプト生成・編集
     - id: tag-caption-generation
-      title: Tag & Caption Generation
+      title: タグ・キャプション生成
 - key: basic-workflows
-  label: Basic Workflows
+  label: 基本のworkflow
   pages:
   - id: sd15-basics
-    title: SD1.5 Basics
+    title: 画像生成の基本 (SD1.5)
     children:
     - id: sd15-text2image
       title: text2image
@@ -231,7 +231,7 @@ sections:
     - id: sd15-lora
       title: LoRA
     - id: ksampler-advanced
-      title: KSampler (Advanced) Node
+      title: KSampler (Advanced)ノード
     - id: sd15-image2image
       title: image2image
     - id: sd15-hires-fix
@@ -250,9 +250,34 @@ sections:
     - id: sd15-ip-adapter
       title: IP-Adapter
   - id: other-foundation-models
-    title: Other Foundation Models
+    title: 他の基盤モデル
+    noLink: true
+    children:
+    - id: sdxl
+      title: SDXL
+      children:
+      - id: sdxl-anime
+        title: アニメ系 SDXL モデル
+    - id: flux1
+      title: Flux.1
+      children:
+      - id: flux-1-tools
+        title: Flux.1 Tools
+      - id: ace-plus-plus
+        title: ACE++
+      - id: flux-1-kontext
+        title: Flux.1 Kontext
+      - id: chroma
+        title: Chroma
+    - id: auraflow
+      title: AuraFlow
+    - id: qwen-image
+      title: Qwen-Image
+      children:
+      - id: qwen-image-edit
+        title: Qwen-Image-Edit
   - id: upscale-fix
-    title: Upscale & Fix
+    title: アップスケール・修正
     noLink: true
     children:
     - id: esrgan
@@ -261,8 +286,28 @@ sections:
       title: Ultimate SD Upscale
     - id: detailer
       title: Detailer
-    - id: supir
-      title: SUPIR
+  - id: video-workflows
+    title: 動画生成・処理
+    noLink: true
+    children:
+    - id: wan-2-1
+      title: Wan 2.1
+      children:
+      - id: wan-2-1-vace
+        title: Wan 2.1 VACE
+      - id: wan-animate
+        title: Wan-Animate
+    - id: wan-2-2
+      title: Wan 2.2
+    - id: ltx-video
+      title: LTX-Video
+    - id: framepack
+      title: FramePack
+      children:
+      - id: one-frame-inference
+        title: 1フレーム推論
+    - id: liveportrait
+      title: LivePortrait
   - id: llm-mlm-workflows
     title: LLM / MLLM
     noLink: true
@@ -274,28 +319,34 @@ sections:
     - id: qwen-3-vl
       title: Qwen 3 VL
       noLink: true
-  - id: sdxl-basics
-    title: SDXL Starter
-  - id: flux-tools
-    title: Flux Tooling
   - id: other-workflows
-    title: Other
+    title: その他
     noLink: true
     children:
     - id: reactor
       title: ReActor
+  - id: system-optimization
+    title: システム・最適化
+    noLink: true
+    children:
+    - id: model-merge
+      title: モデルのマージ
+    - id: performance-tuning
+      title: 高速化・軽量化
+  - id: external-api
+    title: 外部API
 - key: faq
-  label: FAQ / Troubleshooting
+  label: FAQ / トラブルシューティング
   pages:
   - id: oom-vram
     title: OOM / VRAM
     noLink: true
     children:
     - id: oom-checklist
-      title: VRAM Recovery Checklist
+      title: VRAM復旧手順
   - id: common-questions
-    title: Common Questions
+    title: よくある質問
   - id: render-errors
-    title: Render Errors
+    title: Renderエラー
   - id: workflow-debug
-    title: Workflow Debugging
+    title: Workflowデバッグ

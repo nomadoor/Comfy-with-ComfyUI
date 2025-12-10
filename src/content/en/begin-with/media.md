@@ -16,26 +16,27 @@ hero:
 
 Loads an image into ComfyUI.
 
-- Click `choose file to upload` to select a file.
-- Drag and drop an image onto the node.
-- With an image in your clipboard, press `Ctrl + V` on the canvas to paste it as a `Load Image` node.
-
 ![](https://gyazo.com/9dd4bfe10197dddec18b0e7a1dc94f53){gyazo=loop}
 
-> **Note**
+Besides searching and adding nodes, there are several convenient ways:
+- a. Click `choose file to upload` to select a file.
+- b. Drag and drop an image onto the node.
+- c. With an image in your clipboard, press `Ctrl + V` on the canvas to paste it as a `Load Image` node.
+
 > Uploaded images are copied to the `ComfyUI\input` folder and loaded from there. **The original file is not referenced directly.**
 >
 > Since these images remain in the input folder unless deleted, you can reuse an image as many times as you like once it's loaded.
 
 ### Preview Image Node
 
-Displays the generated image on the spot. Since it doesn't save the image, use this to temporarily check intermediate processing steps or generation results.
-
-> **Tip**
-> As with other image-related nodes, you can right-click and select `Save Image` or `Copy Image` to save or copy the image.
-> This is convenient as you don't have to search for the image in the output folder.
+Displays the generated image on the spot.
+Since it doesn't save the image, use this to temporarily check intermediate processing steps or generation results.
 
 ![](https://gyazo.com/9f5a3055bbb8ef271583545155f70371){gyazo=loop}
+
+- As with other image-related nodes, you can right-click and select `Save Image` or `Copy Image` to save or copy the image.
+- This is convenient as you don't have to search for the image in the output folder.
+
 
 ### Save Image Node
 
@@ -72,19 +73,30 @@ It is sometimes used as a pseudo-loop process.
 
 ![](https://gyazo.com/1b344fc1baa844c784d53a9790e6aafb){gyazo=loop}
 
+### Image Comparer (rgthree) Node
+
+You can compare two images with a slider.
+
+![](https://gyazo.com/a3ac0fe532474c1447a2f9cd33b31649){gyazo=image}
+
+[](/workflows/begin-with/media/Image_Comparer_(rgthree).json)
+
+- It is added by [rgthree/rgthree-comfy](https://github.com/rgthree/rgthree-comfy).
+
 ---
 
 ## Videos
 
 ### Load Video Node
 
-In ComfyUI, many nodes treat video as a **sequence of images**.
+Loads a video.
 
+![](https://gyazo.com/96531a04d73333953691800babd073b9){gyazo=image}
+
+In ComfyUI, many nodes treat video as a **sequence of images**.
 However, the output of this node is of type `VIDEO`, so it cannot be used as is. You need to decompose the video into images, audio, and fps using the `Get Video Components` node.
 
 Therefore, when handling videos, we recommend using the **Video Helper Suite** described below.
-
-![](https://gyazo.com/96531a04d73333953691800babd073b9){gyazo=image}
 
 > **Note:**
 > Videos are basically compressed, but when loaded in ComfyUI, they are expanded as a sequence of images (uncompressed).
@@ -96,9 +108,9 @@ Therefore, when handling videos, we recommend using the **Video Helper Suite** d
 
 Saves the generated video.
 
-This time, conversely, you have to convert the sequence of images back to `VIDEO`, so use the Create Video node to combine images and audio.
-
 ![](https://gyazo.com/695faf8fda159e16dc56ef533e28eb8f){gyazo=image}
+
+This time, conversely, you have to convert the sequence of images back to `VIDEO`, so use the Create Video node to combine images and audio.
 
 ## 🎥Video Helper Suite
 
@@ -164,3 +176,11 @@ There are three types depending on the format you want to save:
 - `Save Audio (FLAC)`
 - `Save Audio (MP3)`
 - `Save Audio (Opus)`
+
+## Webcam
+
+![](https://gyazo.com/2a7ab2f8dc9179e6c02d15e74dedcea3){gyazo=image}
+
+You can capture webcam input as an image.
+
+For details, please see [Webcam Input](/en/data-utilities/webcam-input/).

@@ -22,19 +22,7 @@ It is still in beta and does not have the freedom of the local version (such as 
 
 ## Pricing
 
-Comfy Plan: **$20 / month**
-
-The subscription plan includes:
-
-* GPU:
-  - A100 (40GB VRAM)
-* Usage Time:
-  - 8 hours of GPU usage rights per day (unused portion cannot be carried over to the next month)
-* API Credits:
-  - $10 worth of API balance is granted every month.
-  - This can be used to run closed models such as Gemini and Sora, and can be used commonly not only in Comfy Cloud but also in the local version of ComfyUI.
-* Models:
-  - Over 200 popular models are pre-installed
+> Pending until stable
 
 Details on the official page:
 
