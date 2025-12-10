@@ -2,7 +2,7 @@
   "id": "18404b37-92b0-4d11-a39c-ae941838eb83",
   "revision": 0,
   "last_node_id": 56,
-  "last_link_id": 85,
+  "last_link_id": 88,
   "nodes": [
     {
       "id": 42,
@@ -48,7 +48,7 @@
       "type": "VAEDecode",
       "pos": [
         1706.0733479729797,
-        221.4049586776859
+        218.09917355371894
       ],
       "size": [
         140,
@@ -130,221 +130,6 @@
       ]
     },
     {
-      "id": 35,
-      "type": "FluxGuidance",
-      "pos": [
-        1126.7588279489105,
-        240.33809166040578
-      ],
-      "size": [
-        211.60000610351562,
-        58
-      ],
-      "flags": {},
-      "order": 13,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "conditioning",
-          "type": "CONDITIONING",
-          "link": 70
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            71
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.39",
-        "Node name for S&R": "FluxGuidance"
-      },
-      "widgets_values": [
-        3.5
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159"
-    },
-    {
-      "id": 31,
-      "type": "KSampler",
-      "pos": [
-        1366.5439519158508,
-        221.4049586776859
-      ],
-      "size": [
-        315,
-        262
-      ],
-      "flags": {},
-      "order": 14,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 85
-        },
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 71
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "link": 68
-        },
-        {
-          "name": "latent_image",
-          "type": "LATENT",
-          "link": 82
-        }
-      ],
-      "outputs": [
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "slot_index": 0,
-          "links": [
-            52
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.39",
-        "Node name for S&R": "KSampler"
-      },
-      "widgets_values": [
-        1234,
-        "fixed",
-        20,
-        1,
-        "euler",
-        "normal",
-        1
-      ]
-    },
-    {
-      "id": 6,
-      "type": "CLIPTextEncode",
-      "pos": [
-        507,
-        190
-      ],
-      "size": [
-        301.84503173828125,
-        128.01304626464844
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 59
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            69
-          ]
-        }
-      ],
-      "title": "CLIP Text Encode (Positive Prompt)",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.39",
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        "oil painting, Giant panda eating bamboo, close-up portrait, adorable expression, natural habitat"
-      ]
-    },
-    {
-      "id": 47,
-      "type": "ControlNetApplyAdvanced",
-      "pos": [
-        882.4919581412817,
-        238.92253330066023
-      ],
-      "size": [
-        210,
-        186
-      ],
-      "flags": {},
-      "order": 11,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 69
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "link": 67
-        },
-        {
-          "name": "control_net",
-          "type": "CONTROL_NET",
-          "link": 75
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 78
-        },
-        {
-          "name": "vae",
-          "shape": 7,
-          "type": "VAE",
-          "link": 76
-        }
-      ],
-      "outputs": [
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "links": [
-            70
-          ]
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "links": [
-            68
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.76",
-        "Node name for S&R": "ControlNetApplyAdvanced"
-      },
-      "widgets_values": [
-        0.8,
-        0,
-        0.6
-      ],
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
       "id": 53,
       "type": "DepthAnythingV2Preprocessor",
       "pos": [
@@ -356,7 +141,7 @@
         82
       ],
       "flags": {},
-      "order": 9,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -438,7 +223,7 @@
         46
       ],
       "flags": {},
-      "order": 10,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -465,7 +250,8 @@
         "cnr_id": "comfy-core",
         "ver": "0.3.76",
         "Node name for S&R": "VAEEncode"
-      }
+      },
+      "widgets_values": []
     },
     {
       "id": 48,
@@ -555,7 +341,7 @@
         287.87325999999996
       ],
       "flags": {},
-      "order": 12,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
@@ -577,7 +363,7 @@
       "type": "SaveImage",
       "pos": [
         1870.6027440301086,
-        221.4049586776859
+        218.09917355371894
       ],
       "size": [
         379.50000000000045,
@@ -713,6 +499,221 @@
       ],
       "color": "#232",
       "bgcolor": "#353"
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        507,
+        190
+      ],
+      "size": [
+        301.84503173828125,
+        128.01304626464844
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 59
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            87
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "oil painting, Giant panda eating bamboo, close-up portrait, adorable expression, natural habitat"
+      ]
+    },
+    {
+      "id": 35,
+      "type": "FluxGuidance",
+      "pos": [
+        832.3404014877282,
+        191.7757107996847
+      ],
+      "size": [
+        211.60000610351562,
+        58
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 87
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            88
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "FluxGuidance"
+      },
+      "widgets_values": [
+        3.5
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 47,
+      "type": "ControlNetApplyAdvanced",
+      "pos": [
+        1099.9767176274077,
+        238.38213926398862
+      ],
+      "size": [
+        210,
+        186
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 88
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 67
+        },
+        {
+          "name": "control_net",
+          "type": "CONTROL_NET",
+          "link": 75
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 78
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 76
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            86
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            68
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.76",
+        "Node name for S&R": "ControlNetApplyAdvanced"
+      },
+      "widgets_values": [
+        0.8,
+        0,
+        0.6
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 31,
+      "type": "KSampler",
+      "pos": [
+        1364.8910593538671,
+        218.09917355371894
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 85
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 86
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 68
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 82
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            52
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        1234,
+        "fixed",
+        20,
+        1,
+        "euler",
+        "normal",
+        1
+      ]
     }
   ],
   "links": [
@@ -770,30 +771,6 @@
       1,
       31,
       2,
-      "CONDITIONING"
-    ],
-    [
-      69,
-      6,
-      0,
-      47,
-      0,
-      "CONDITIONING"
-    ],
-    [
-      70,
-      47,
-      0,
-      35,
-      0,
-      "CONDITIONING"
-    ],
-    [
-      71,
-      35,
-      0,
-      31,
-      1,
       "CONDITIONING"
     ],
     [
@@ -883,16 +860,40 @@
       31,
       0,
       "MODEL"
+    ],
+    [
+      86,
+      47,
+      0,
+      31,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      87,
+      6,
+      0,
+      35,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      88,
+      35,
+      0,
+      47,
+      0,
+      "CONDITIONING"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.7513148009015777,
+      "scale": 0.620921323059155,
       "offset": [
-        64.60029233725096,
-        23.82676508703305
+        62.989782337250965,
+        24.10627508703305
       ]
     },
     "frontendVersion": "1.35.0",

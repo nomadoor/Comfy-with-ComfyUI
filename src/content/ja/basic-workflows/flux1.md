@@ -8,7 +8,7 @@ title: "Flux.1"
 summary: "Flux.1の基本とComfyUIでの使い方"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: ""
+  image: "https://i.gyazo.com/9fd52a56e1f6b7cbf8cd96ca78484d02.png"
 tags: []
 ---
 
@@ -47,18 +47,18 @@ Flux.1 には 3 つのバリエーションがあります。
 - VAE  
   - [ae.safetensors](https://huggingface.co/black-forest-labs/FLUX.1-schnell/blob/main/ae.safetensors)  
 
-```text
-📂ComfyUI/
- └── 📂models/
-     ├── 📂diffusion_models/
-     │   ├── flux1-dev-fp8.safetensors
-     │   └── flux1-schnell-fp8.safetensors
-     ├── 📂clip/
-     │   ├── clip_l.safetensors
-     │   └── t5xxl_fp8_e4m3fn_scaled.safetensors
-     └── 📂vae/
-         └── ae.safetensors
-````
+- ```text
+  📂ComfyUI/
+  └── 📂models/
+      ├── 📂diffusion_models/
+      │   ├── flux1-dev-fp8.safetensors
+      │   └── flux1-schnell-fp8.safetensors
+      ├── 📂clip/
+      │   ├── clip_l.safetensors
+      │   └── t5xxl_fp8_e4m3fn_scaled.safetensors
+      └── 📂vae/
+          └── ae.safetensors
+  ````
 
 ---
 
@@ -113,18 +113,18 @@ Flux.1 向けの ControlNet モデルもいくつか公開されていますが�
 
   * 分かりにくいので、`FLUX.1-dev-ControlNet-Union-Pro-2.0-fp8.safetensors` などにリネームしてください。
 
-```text
-📂ComfyUI/
- └── 📂models/
-     └── 📂controlnet/
-         └── FLUX.1-dev-ControlNet-Union-Pro-2.0-fp8.safetensors
-```
+- ```text
+  📂ComfyUI/
+  └── 📂models/
+      └── 📂controlnet/
+          └── FLUX.1-dev-ControlNet-Union-Pro-2.0-fp8.safetensors
+  ```
 
 ### workflow
 
 ControlNet-Union は、複数の代表的な ControlNet を 1 つのモデルに内蔵しています。
 
-![](https://gyazo.com/92443fb383cd26598d744ba4a0174571){gyazo=image}
+![](https://gyazo.com/9e7cb79f7ca50fe5946ac9f232a552c6){gyazo=image}
 
 [](/workflows/basic-workflows/flux1/FLUX.1-dev-ControlNet-Union-Pro_depth.json)
 
@@ -157,12 +157,12 @@ PC スペックや用途に合わせて選んでください。
 * [FLUX.1-dev-gguf](https://huggingface.co/city96/FLUX.1-dev-gguf/tree/main)
 * [FLUX.1-schnell-gguf](https://huggingface.co/city96/FLUX.1-schnell-gguf/tree/main)
 
-```text
-📂ComfyUI/
- └── 📂models/
-     └── 📂unet/
-         └── flux1-dev.gguf
-```
+- ```text
+  📂ComfyUI/
+  └── 📂models/
+      └── 📂unet/
+          └── flux1-dev.gguf
+  ```
 
 ### workflow
 

@@ -1737,29 +1737,47 @@ h1 {
 
 .workflow-related__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(146px, 1fr));
-  gap: var(--space-sm);
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-md);
 }
 
 .workflow-related__card {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xs);
-  border: 1px solid var(--color-border);
+  gap: var(--space-xs);
   border-radius: var(--radius-md);
-  padding: var(--space-sm);
   text-decoration: none;
   color: var(--color-text);
-  background: var(--color-panel);
+  overflow: hidden;
+  transition: var(--transition-fast);
+}
+
+.workflow-related__card:hover,
+.workflow-related__card:focus-visible {
+  border-color: var(--color-border-strong);
+  transform: translateY(-2px);
+}
+
+.workflow-related__hero {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--color-panel-alt);
+  background-position: center;
+  background-size: cover;
+  border-radius: var(--radius-md);
+  overflow: hidden;
 }
 
 .workflow-related__title {
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 0.9rem;
 }
 
 .workflow-related__summary {
   font-size: 0.85rem;
   color: var(--color-text-muted);
+  font-weight: 500;
+  flex: 1;
 }
 
 .sr-only {
@@ -2636,7 +2654,7 @@ body.nav-open .nav-backdrop {
     border-right: 1px solid var(--color-border);
     padding: 0;
     margin: 0;
-    max-height: calc(100vh - var(--header-height));
+    max-height: min(calc(100vh - var(--header-height)), calc(100dvh - var(--header-height)));
     overflow-y: auto;
     box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
     scrollbar-width: thin;

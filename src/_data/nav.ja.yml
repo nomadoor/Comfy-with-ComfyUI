@@ -286,8 +286,6 @@
       title: Ultimate SD Upscale
     - id: detailer
       title: Detailer
-    - id: supir
-      title: SUPIR
   - id: video-workflows
     title: 動画生成・処理
     noLink: true
@@ -297,6 +295,8 @@
       children:
       - id: wan-2-1-vace
         title: Wan 2.1 VACE
+      - id: wan-animate
+        title: Wan-Animate
     - id: wan-2-2
       title: Wan 2.2
     - id: ltx-video
@@ -306,8 +306,6 @@
       children:
       - id: one-frame-inference
         title: 1フレーム推論
-    - id: wan-animate
-      title: Wan-Animate
     - id: liveportrait
       title: LivePortrait
   - id: llm-mlm-workflows
@@ -337,12 +335,6 @@
       title: 高速化・軽量化
   - id: external-api
     title: 外部API
-    noLink: true
-    children:
-    - id: nano-banana
-      title: nano-banana
-    - id: gemini-flash
-      title: gemini-flash
 - key: faq
   label: FAQ / トラブルシューティング
   pages:

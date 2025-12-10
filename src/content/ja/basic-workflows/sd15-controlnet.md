@@ -9,7 +9,7 @@ summary: "ポーズや線画を使って画像生成をコントロールする"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: ["controlnet"]
 hero:
-  image: "https://i.gyazo.com/374d9112c26cc1098d9e7e11b5ca49fa.png"
+  image: "https://i.gyazo.com/81753915732cf767995f1b35ac827b5d.png"
 ---
 
 ## ControlNetとは？
