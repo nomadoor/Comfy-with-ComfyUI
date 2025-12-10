@@ -75,47 +75,17 @@ layout: base.njk
         const src = el.dataset.hero;
         if (!src) return;
         const img = new Image();
+        const done = () => el.classList.add('is-loaded');
         img.onload = () => {
           el.style.setProperty('--hero-image', `url('${src}')`);
-          el.classList.add('is-loaded');
+          done();
         };
-        img.onerror = () => el.classList.add('is-loaded');
+        img.onerror = done;
         img.src = src;
       });
     </script>
   {% endif %}
 {% endif %}
-
-<script>
-  // Global image fade-in (works on cached images too)
-  (function () {
-    const ready = () => {
-      document.querySelectorAll('img').forEach((img) => {
-        img.classList.add('img-fade');
-        const done = () => img.classList.add('is-loaded');
-        if (img.complete) {
-          requestAnimationFrame(() => requestAnimationFrame(done));
-        } else {
-          img.addEventListener('load', done, { once: true });
-          img.addEventListener('error', done, { once: true });
-        }
-      });
-    };
-
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
-      ready();
-    } else {
-      document.addEventListener('DOMContentLoaded', ready, { once: true });
-    }
-
-    // bfcache restore (back/forward)
-    window.addEventListener('pageshow', (evt) => {
-      if (evt.persisted) {
-        ready();
-      }
-    });
-  })();
-</script>
 
 {% if footerTitle or footerText or footerLinks.length %}
   {% set footerLogoBase = 'src/assets/logos/logo_Comfy-ComfyUI.svg' | svgDataUri %}

@@ -1787,7 +1787,7 @@ h1 {
 
 .img-fade {
   opacity: 0;
-  animation: img-fade 320ms ease forwards;
+  animation: img-fade 1000ms ease forwards;
   animation-play-state: paused;
 }
 
