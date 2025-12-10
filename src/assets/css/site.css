@@ -1778,7 +1778,7 @@ h1 {
   background-position: center;
   background-size: cover;
   opacity: 0;
-  transition: opacity var(--transition-fast);
+  transition: opacity 320ms ease;
 }
 
 .workflow-related__hero.is-loaded::after {
