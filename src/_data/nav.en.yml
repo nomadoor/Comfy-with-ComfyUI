@@ -254,30 +254,30 @@ sections:
         noLink: true
         children:
           - id: sdxl
-            title: Sdxl
+            title: SDXL
             children:
               - id: sdxl-anime
-                title: Sdxl Anime
+                title: SDXL Anime
           - id: flux1
-            title: Flux1
+            title: Flux.1
             children:
               - id: flux-1-tools
-                title: Flux 1 Tools
+                title: Flux.1 Tools
               - id: ace-plus-plus
-                title: Ace Plus Plus
+                title: ACE++
               - id: flux-1-kontext
-                title: Flux 1 Kontext
+                title: Flux.1 Kontext
               - id: chroma
                 title: Chroma
           - id: auraflow
-            title: Auraflow
+            title: AuraFlow
           - id: lumina-image-2.0
-            title: Lumina Image 2.0
+            title: Lumina-Image 2.0
           - id: qwen-image
-            title: Qwen Image
+            title: Qwen-Image
             children:
               - id: qwen-image-edit
-                title: Qwen Image Edit
+                title: Qwen-Image-Edit
       - id: upscale-fix
         title: Upscale & Fix
         noLink: true

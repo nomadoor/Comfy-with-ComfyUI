@@ -123,7 +123,7 @@ Let's automate it a bit by automatically creating a face mask.
 This is the basics of Detailer, so I think you can use it well enough.
 However, if you want to detect multiple people reflected in the image at once and process them all at once... you need to use ImpactPack.
 
-→ [Detailer ImpactPack (WIP)](not yet)
+→ [Detailer ImpactPack (WIP)](still)
 
 ---
 
