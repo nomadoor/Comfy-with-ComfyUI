@@ -1784,6 +1784,22 @@ h1 {
 .workflow-related__hero.is-loaded::after {
   opacity: 1;
 }
+
+.img-fade {
+  opacity: 0;
+  transition: opacity 320ms ease;
+}
+
+.img-fade.is-loaded {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .img-fade {
+    opacity: 1;
+    transition: none;
+  }
+}
 .workflow-related__title {
   font-weight: 700;
   font-size: 0.9rem;

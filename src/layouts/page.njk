@@ -79,11 +79,29 @@ layout: base.njk
           el.style.setProperty('--hero-image', `url('${src}')`);
           el.classList.add('is-loaded');
         };
+        img.onerror = () => el.classList.add('is-loaded');
         img.src = src;
       });
     </script>
   {% endif %}
 {% endif %}
+
+<script>
+  // Global image fade-in
+  (function () {
+    const imgs = Array.from(document.images);
+    imgs.forEach((img) => {
+      img.classList.add('img-fade');
+      const done = () => img.classList.add('is-loaded');
+      if (img.complete) {
+        requestAnimationFrame(done);
+      } else {
+        img.addEventListener('load', done, { once: true });
+        img.addEventListener('error', done, { once: true });
+      }
+    });
+  })();
+</script>
 
 {% if footerTitle or footerText or footerLinks.length %}
   {% set footerLogoBase = 'src/assets/logos/logo_Comfy-ComfyUI.svg' | svgDataUri %}
