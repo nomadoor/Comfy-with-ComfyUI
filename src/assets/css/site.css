@@ -1631,6 +1631,8 @@ h1 {
 
 .workflow-json__filename {
   font-weight: 500;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .workflow-json__actions {
