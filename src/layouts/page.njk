@@ -60,12 +60,8 @@ layout: base.njk
           {% if heroImage %}
             {% set heroVariant = heroImage | imageVariant(480) %}
           {% endif %}
-          {% set heroStyle = "" %}
-          {% if heroVariant and heroVariant.preview %}
-            {% set heroStyle = "background-image:url('" ~ heroVariant.preview ~ "')" %}
-          {% endif %}
           <a class="workflow-related__card" href="{{ entry.url }}">
-            <div class="workflow-related__hero" {% if heroStyle %}style="{{ heroStyle }}"{% endif %}></div>
+            <div class="workflow-related__hero" {% if heroVariant and heroVariant.preview %}data-hero="{{ heroVariant.preview }}"{% endif %}></div>
             <span class="workflow-related__title">{{ entry.title }}</span>
             {% if entry.summary %}
               <span class="workflow-related__summary">{{ entry.summary }}</span>
@@ -74,6 +70,18 @@ layout: base.njk
         {% endfor %}
       </div>
     </section>
+    <script>
+      document.querySelectorAll('.workflow-related__hero[data-hero]').forEach((el) => {
+        const src = el.dataset.hero;
+        if (!src) return;
+        const img = new Image();
+        img.onload = () => {
+          el.style.setProperty('--hero-image', `url('${src}')`);
+          el.classList.add('is-loaded');
+        };
+        img.src = src;
+      });
+    </script>
   {% endif %}
 {% endif %}
 

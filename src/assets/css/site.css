@@ -1764,12 +1764,26 @@ h1 {
   width: 100%;
   aspect-ratio: 16 / 9;
   background: var(--color-panel-alt);
-  background-position: center;
-  background-size: cover;
   border-radius: var(--radius-md);
   overflow: hidden;
+  position: relative;
 }
 
+.workflow-related__hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-panel-alt);
+  background-image: var(--hero-image);
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.workflow-related__hero.is-loaded::after {
+  opacity: 1;
+}
 .workflow-related__title {
   font-weight: 700;
   font-size: 0.9rem;
