@@ -11,6 +11,7 @@ import "./sidebar.js"; // legacy auto-init; sidebar is persistent shell
 import "./mobile-nav.js"; // handles nav/search toggles; persistent shell
 import "./theme-toggle.js"; // global theme switcher
 import "./image-fade.js"; // progressive image reveal
+import initRelatedHero from "./related-hero.js";
 import "./highlight.js"; // search term highlight per page load
 
 const isProfileNav = () => Boolean(window.__CW_PROFILE_NAV__);
@@ -42,6 +43,7 @@ export default function initPage(root = document.getElementById("page") || docum
   profileStep("code-copy", () => initCodeCopy?.(root));
   profileStep("copy-json", () => initCopyJson?.(root));
   profileStep("media-row-fit", () => runIdle(() => initMediaRowFit?.(root)));
+  profileStep("related-hero", () => initRelatedHero?.(root));
 
   // Global-once modules (idempotent / guarded inside)
   profileStep("assistant", () => initAssistant?.());

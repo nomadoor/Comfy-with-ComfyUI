@@ -1787,7 +1787,7 @@ h1 {
 
 .img-fade {
   opacity: 0;
-  animation: img-fade 100ms cubic-bezier(0.2, 0.91, 0.85, 0.96) forwards;
+  animation: img-fade 400ms cubic-bezier(0.2, 0.91, 0.85, 0.96) forwards;
   animation-play-state: paused;
 }
 

@@ -70,20 +70,6 @@ layout: base.njk
         {% endfor %}
       </div>
     </section>
-    <script>
-      document.querySelectorAll('.workflow-related__hero[data-hero]').forEach((el) => {
-        const src = el.dataset.hero;
-        if (!src) return;
-        const img = new Image();
-        const done = () => el.classList.add('is-loaded');
-        img.onload = () => {
-          el.style.setProperty('--hero-image', `url('${src}')`);
-          done();
-        };
-        img.onerror = done;
-        img.src = src;
-      });
-    </script>
   {% endif %}
 {% endif %}
 
