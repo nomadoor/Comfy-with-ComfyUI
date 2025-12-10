@@ -1787,17 +1787,27 @@ h1 {
 
 .img-fade {
   opacity: 0;
-  transition: opacity 320ms ease;
+  animation: img-fade 320ms ease forwards;
+  animation-play-state: paused;
 }
 
 .img-fade.is-loaded {
-  opacity: 1;
+  animation-play-state: running;
+}
+
+@keyframes img-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .img-fade {
     opacity: 1;
-    transition: none;
+    animation: none;
   }
 }
 .workflow-related__title {

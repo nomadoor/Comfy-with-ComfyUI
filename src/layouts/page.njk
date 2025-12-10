@@ -87,17 +87,31 @@ layout: base.njk
 {% endif %}
 
 <script>
-  // Global image fade-in
+  // Global image fade-in (works on cached images too)
   (function () {
-    const imgs = Array.from(document.images);
-    imgs.forEach((img) => {
-      img.classList.add('img-fade');
-      const done = () => img.classList.add('is-loaded');
-      if (img.complete) {
-        requestAnimationFrame(done);
-      } else {
-        img.addEventListener('load', done, { once: true });
-        img.addEventListener('error', done, { once: true });
+    const ready = () => {
+      document.querySelectorAll('img').forEach((img) => {
+        img.classList.add('img-fade');
+        const done = () => img.classList.add('is-loaded');
+        if (img.complete) {
+          requestAnimationFrame(() => requestAnimationFrame(done));
+        } else {
+          img.addEventListener('load', done, { once: true });
+          img.addEventListener('error', done, { once: true });
+        }
+      });
+    };
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      ready();
+    } else {
+      document.addEventListener('DOMContentLoaded', ready, { once: true });
+    }
+
+    // bfcache restore (back/forward)
+    window.addEventListener('pageshow', (evt) => {
+      if (evt.persisted) {
+        ready();
       }
     });
   })();
