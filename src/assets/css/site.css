@@ -2790,3 +2790,11 @@ body.nav-open .nav-backdrop {
     display: none;
   }
 }
+
+/* Ensure rail top padding is cleared on very short viewports even in mobile layout */
+@media (max-width: 1100px) and (max-height: 720px) {
+  .app-shell__sidebar .rail {
+    padding-top: 0 !important;
+    overflow: visible;
+  }
+}
