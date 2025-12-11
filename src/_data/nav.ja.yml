@@ -332,9 +332,9 @@ sections:
     noLink: true
     children:
     - id: model-merge
-      title: モデルのマージ
-    - id: performance-tuning
-      title: 高速化・軽量化
+      title: モデルのマージと差分LoRA
+    - id: speed-and-efficiency
+      title: 高速化と軽量化
   - id: external-api
     title: 外部API
 - key: faq
