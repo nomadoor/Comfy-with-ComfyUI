@@ -89,23 +89,31 @@ const initToc = () => {
   }
 
   function snapshotHeadings() {
-    const offsetFix = 0;
     tocState.headings = getHeadings().map((heading) => ({
       id: heading.id,
-      top: heading.offsetTop + offsetFix,
+      top: heading.getBoundingClientRect().top + window.scrollY,
     }));
   }
 
   function getCurrentSectionId() {
     if (!tocState.headings.length) snapshotHeadings();
     const offset = getScrollOffset();
-    const scrollPos = window.scrollY + offset + 1;
-    const HYSTERESIS = 24; // px: prevents rapid flip near boundaries
+    const targetLine = window.scrollY + offset + 24; // slightly below header
+    const STICKY_BAND = 32; // px
+
+    const currentHeading = tocState.lastActiveId
+      ? tocState.headings.find((h) => h.id === tocState.lastActiveId)
+      : null;
+
+    // If we are still within the sticky band of the current heading, keep it.
+    if (currentHeading && Math.abs(targetLine - currentHeading.top) <= STICKY_BAND) {
+      return currentHeading.id;
+    }
 
     let candidate = tocState.headings[0]?.id;
     for (let i = 0; i < tocState.headings.length; i += 1) {
       const h = tocState.headings[i];
-      if (h.top <= scrollPos - HYSTERESIS) {
+      if (h.top <= targetLine) {
         candidate = h.id;
       } else {
         break;
