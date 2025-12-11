@@ -56,7 +56,8 @@ const initToc = () => {
 
   function getHeadings() {
     // Only select direct h2, h3 in the article to avoid accidentally picking up unwanted headers
-    const heads = Array.from(article.querySelectorAll("h2, h3"));
+    // :scope is widely supported in modern browsers.
+    const heads = Array.from(article.querySelectorAll(":scope > h2, :scope > h3"));
     const counts = new Map();
 
     heads.forEach((h) => {
