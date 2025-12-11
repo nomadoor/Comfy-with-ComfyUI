@@ -81,11 +81,12 @@ Flux.1 dev / schnell は、**CFG を 1.0 に固定した状態を蒸留したモ
 
 ## text2image - Flux.1 [schnell]
 
-Flux.1 [dev] と基本的な構成は同じです。
+Flux.1 [dev] をさらに蒸留したもので、4〜6 ステップで画像を生成できます。
 
-![](https://gyazo.com/ca565f4b96ddd04c336b65fffef6fec9){gyazo=image}
+![](https://gyazo.com/365108a45e0039af1ce0d35cf2cdcfa6){gyazo=image}
 
 [](/workflows/basic-workflows/flux1/flux1-schnell.json)
+- `steps` を 4〜6 にします。
 
 ---
 

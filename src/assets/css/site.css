@@ -654,8 +654,32 @@ video {
 }
 
 @media (max-height: 720px) {
+  .app-shell__sidebar .rail {
+    padding-top: 0;
+    overflow: visible;
+  }
+
   .sidebar__sections {
     display: none;
+  }
+}
+
+/* Keep section tabs visible while scrolling the sidebar */
+.sidebar__section-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--color-panel);
+}
+
+.sidebar__nav-wrapper {
+  position: relative;
+}
+
+@media (max-width: 1100px) and (max-height: 720px) {
+  .app-shell__sidebar .rail {
+    padding-top: 0;
+    overflow: visible;
   }
 }
 
@@ -997,6 +1021,12 @@ h1 {
 
 .article-body {
   --article-list-icon-size: 0.9rem;
+}
+
+.article-body a,
+.article-body code {
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .article-body a {
@@ -2758,5 +2788,13 @@ body.nav-open .nav-backdrop {
   /* Hide desktop assistant if present in sidebar (it's not, but just in case) */
   .sidebar>.assistant-rail {
     display: none;
+  }
+}
+
+/* Ensure rail top padding is cleared on very short viewports even in mobile layout */
+@media (max-width: 1100px) and (max-height: 720px) {
+  .app-shell__sidebar .rail {
+    padding-top: 0 !important;
+    overflow: visible;
   }
 }
