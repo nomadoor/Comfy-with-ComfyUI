@@ -5,6 +5,7 @@ let tocState = {
   imageFadeHandler: null,
   headings: [],
   lastActiveId: null,
+  observer: null,
 };
 
 const initToc = () => {
@@ -17,8 +18,10 @@ const initToc = () => {
   if (tocState.resizeHandler) window.removeEventListener("resize", tocState.resizeHandler);
   if (tocState.loadHandler) window.removeEventListener("load", tocState.loadHandler);
   if (tocState.imageFadeHandler) document.removeEventListener("imageFade:loaded", tocState.imageFadeHandler);
+  if (tocState.observer) tocState.observer.disconnect();
   tocState.headings = [];
   tocState.lastActiveId = null;
+  tocState.observer = null;
 
   function toPixels(value, baseSize) {
     if (!value) return 0;
@@ -91,47 +94,56 @@ const initToc = () => {
   function snapshotHeadings() {
     tocState.headings = getHeadings().map((heading) => ({
       id: heading.id,
-      top: heading.getBoundingClientRect().top + window.scrollY,
+      el: heading,
     }));
   }
 
-  function getCurrentSectionId() {
+  function createObserver() {
     if (!tocState.headings.length) snapshotHeadings();
     const offset = getScrollOffset();
-    const targetLine = window.scrollY + offset + 24; // slightly below header
-    const STICKY_BAND = 32; // px
+    const rootMargin = `-${offset + 8}px 0px -60% 0px`;
+    const thresholds = [0, 0.1, 0.25, 0.5, 0.75, 1];
 
-    const currentHeading = tocState.lastActiveId
-      ? tocState.headings.find((h) => h.id === tocState.lastActiveId)
-      : null;
+    const visible = new Map();
 
-    // If we are still within the sticky band of the current heading, keep it.
-    if (currentHeading && Math.abs(targetLine - currentHeading.top) <= STICKY_BAND) {
-      return currentHeading.id;
-    }
+    const pickActive = () => {
+      if (!visible.size) return null;
+      // choose the heading with the largest intersection ratio; tie-breaker: smallest top
+      const sorted = Array.from(visible.entries()).sort((a, b) => {
+        const [idA, dataA] = a;
+        const [idB, dataB] = b;
+        if (dataB.ratio !== dataA.ratio) return dataB.ratio - dataA.ratio;
+        return dataA.top - dataB.top;
+      });
+      return sorted[0][0];
+    };
 
-    let candidate = tocState.headings[0]?.id;
-    for (let i = 0; i < tocState.headings.length; i += 1) {
-      const h = tocState.headings[i];
-      if (h.top <= targetLine) {
-        candidate = h.id;
-      } else {
-        break;
+    tocState.observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.id;
+        if (entry.isIntersecting) {
+          visible.set(id, { ratio: entry.intersectionRatio, top: entry.boundingClientRect.top });
+        } else {
+          visible.delete(id);
+        }
+      });
+      const activeId = pickActive();
+      if (activeId && activeId !== tocState.lastActiveId) {
+        setActiveLink(activeId);
       }
-    }
-    return candidate;
-  }
+    }, { root: null, rootMargin, threshold: thresholds });
 
-  function updateActiveLink() {
-    const id = getCurrentSectionId();
-    if (id && id !== tocState.lastActiveId) setActiveLink(id);
+    tocState.headings.forEach((h) => tocState.observer.observe(h.el));
   }
 
   function recomputeAndUpdate() {
     buildToc();
     snapshotHeadings();
     tocState.lastActiveId = null;
-    updateActiveLink();
+    if (tocState.observer) tocState.observer.disconnect();
+    createObserver();
+    // set initial active using observer state (force sync)
+    if (tocState.headings[0]) setActiveLink(tocState.headings[0].id);
   }
 
   tocContainer.addEventListener("click", (event) => {
@@ -146,26 +158,17 @@ const initToc = () => {
     setActiveLink(targetId);
   });
 
-  let ticking = false;
-  const handleScroll = () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        updateActiveLink();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  };
+  const handleResize = () => recomputeAndUpdate();
+  const handleLoad = () => recomputeAndUpdate();
+  const handleImageFade = () => recomputeAndUpdate();
 
-  window.addEventListener("scroll", handleScroll, { passive: true });
-  window.addEventListener("resize", recomputeAndUpdate, { passive: true });
-  window.addEventListener("load", recomputeAndUpdate);
-  document.addEventListener("imageFade:loaded", recomputeAndUpdate);
+  window.addEventListener("resize", handleResize, { passive: true });
+  window.addEventListener("load", handleLoad);
+  document.addEventListener("imageFade:loaded", handleImageFade);
 
-  tocState.scrollHandler = handleScroll;
-  tocState.resizeHandler = recomputeAndUpdate;
-  tocState.loadHandler = recomputeAndUpdate;
-  tocState.imageFadeHandler = recomputeAndUpdate;
+  tocState.resizeHandler = handleResize;
+  tocState.loadHandler = handleLoad;
+  tocState.imageFadeHandler = handleImageFade;
 
   recomputeAndUpdate();
 };
