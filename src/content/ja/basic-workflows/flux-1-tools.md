@@ -9,12 +9,12 @@ summary: "Flux.1 Toolsの使い方"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "https://i.gyazo.com/204fbd9af3c371511c01a0c97cac40e8.png"
-tags: []
+tags: ["controlnet"]
 ---
 
 ## Flux.1 Toolsとは？
 
-Flux.1 には、ベースモデルとは別に [ControlNet] や [IP-Adapter] に相当するような派生モデルが Flux 公式から出ています。
+Flux.1 には、ベースモデルとは別に [ControlNet](/ja/basic-workflows/sd15-controlnet/) や [IP-Adapter](/ja/basic-workflows/sd15-ip-adapter/) に相当するような派生モデルが Flux 公式から出ています。
 
 - `FLUX.1 Fill` … inpainting / outpainting 用モデル
 - `FLUX.1 Depth` / `FLUX.1 Canny` … 構造ベースのガイド（Depth / Canny）で形をキープしたまま描き変えるモデル

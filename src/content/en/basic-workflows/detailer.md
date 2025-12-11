@@ -8,7 +8,7 @@ title: "Detailer"
 summary: "A mechanism to cut out only small faces or details and inpaint them"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: ""
+  image: "https://i.gyazo.com/5904f9e96c234cd6bec18b10af263838.png"
 tags: ["upscale-restoration"]
 ---
 
@@ -123,7 +123,7 @@ Let's automate it a bit by automatically creating a face mask.
 This is the basics of Detailer, so I think you can use it well enough.
 However, if you want to detect multiple people reflected in the image at once and process them all at once... you need to use ImpactPack.
 
-→ [Detailer ImpactPack (WIP)](not yet)
+→ [Detailer ImpactPack (WIP)](still)
 
 ---
 

@@ -8,7 +8,7 @@ title: "Detailer"
 summary: "小さな顔や細部だけを切り出してinpaintする仕組み"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: ""
+  image: "https://i.gyazo.com/5904f9e96c234cd6bec18b10af263838.png"
 tags: ["upscale-restoration"]
 ---
 

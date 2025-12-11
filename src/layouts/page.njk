@@ -60,12 +60,8 @@ layout: base.njk
           {% if heroImage %}
             {% set heroVariant = heroImage | imageVariant(480) %}
           {% endif %}
-          {% set heroStyle = "" %}
-          {% if heroVariant and heroVariant.preview %}
-            {% set heroStyle = "background-image:url('" ~ heroVariant.preview ~ "')" %}
-          {% endif %}
           <a class="workflow-related__card" href="{{ entry.url }}">
-            <div class="workflow-related__hero" {% if heroStyle %}style="{{ heroStyle }}"{% endif %}></div>
+            <div class="workflow-related__hero" {% if heroVariant and heroVariant.preview %}data-hero="{{ heroVariant.preview }}"{% endif %}></div>
             <span class="workflow-related__title">{{ entry.title }}</span>
             {% if entry.summary %}
               <span class="workflow-related__summary">{{ entry.summary }}</span>
@@ -96,6 +92,7 @@ layout: base.njk
       </div>
       <div class="article-footer__links">
         <a class="article-footer__link" href="/{{ currentLang }}/begin-with/how-to-use-this-site/">{{ site.i18n.footerGuide[currentLang] or site.i18n.footerGuide[site.defaultLang] or "How to use this site" }}</a>
+        <a class="article-footer__link" href="/{{ currentLang }}/about/">About</a>
         <a class="article-footer__link article-footer__link--external" href="https://github.com/nomadoor/Comfy-with-ComfyUI" target="_blank" rel="noreferrer noopener">
           <span>GitHub</span>
           <span class="article-footer__link-icon">{{ icon("newscreen") }}</span>

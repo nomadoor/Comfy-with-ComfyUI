@@ -13,13 +13,12 @@ hero:
 ---
 
 ## このサイトについて
-**Comfyに使うComfyUI** は、ComfyUIというソフト自体の操作・能力を知ってもらおうと思い作ったサイトです。
+**Comfyに使うComfyUI** は、ただのworkflowの提供ではなく、ComfyUIというソフト自体の操作・能力を知ってもらおうと思い作ったサイトです。
 
 テンプレートを使えば、とりあえずモデルを動かすことは出来ますが、そこから自分の思い通りに拡張していくためには、やはり基本の使い方を知っておく必要がありますね。
 
-中級者以上の方にとっても、リーダブルなworkflowを組むための参考になる部分があると思います。
+ComyfUIは日々進歩しているので、中級者以上の方にとっても、役に立つ情報があると思います。
 
-誰にとっても理解されやすいworkflowが広まっていくことが、ComfyUIコミュニティの発展につながると信じています。
 
 
 ## このサイトを作った人
@@ -52,6 +51,9 @@ hero:
 ## サポート
 
 まともな収入はないので、もしサポートいただけると、とてもとてもとても嬉しいです🙏。
+
+- [☕ Ko-fiで支援する / Support me on Ko-fi](https://ko-fi.com/nomadoor)
+- <iframe src="https://github.com/sponsors/nomadoor/button" title="Sponsor nomadoor" height="32" width="114" style="border: 0; border-radius: 6px;"></iframe>
 
 とはいえ、このサイトを見るのにも、私に助けを求めるのにもお金は必要ありません。
 
