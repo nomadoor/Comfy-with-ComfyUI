@@ -999,6 +999,12 @@ h1 {
   --article-list-icon-size: 0.9rem;
 }
 
+.article-body a,
+.article-body code {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
 .article-body a {
   color: inherit;
   text-decoration-color: currentColor;
