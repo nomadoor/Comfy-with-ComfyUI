@@ -3,6 +3,7 @@ let tocState = {
   resizeHandler: null,
   loadHandler: null,
   imageFadeHandler: null,
+  clickHandler: null,
   headings: [],
   lastActiveId: null,
   ticking: false,
@@ -18,6 +19,7 @@ const initToc = () => {
   if (tocState.resizeHandler) window.removeEventListener("resize", tocState.resizeHandler);
   if (tocState.loadHandler) window.removeEventListener("load", tocState.loadHandler);
   if (tocState.imageFadeHandler) document.removeEventListener("imageFade:loaded", tocState.imageFadeHandler);
+  if (tocState.clickHandler) tocContainer.removeEventListener("click", tocState.clickHandler);
 
   tocState.headings = [];
   tocState.lastActiveId = null;
@@ -115,14 +117,9 @@ const initToc = () => {
     if (!tocState.headings.length) return;
 
     const offset = getHeaderOffset();
-    const scrollY = window.scrollY;
 
     // Strategy: Find the last heading that is above the "read line" (offset)
     // or simply finding the heading closest to the top but slightly above or crossing it.
-
-    // Let's gather current positions relative to viewport
-    // We want the heading that effectively "owns" the current viewport area.
-    // Usually that means: The heading strictly above the offset line, closest to it.
 
     let activeId = null;
 
@@ -143,8 +140,7 @@ const initToc = () => {
         activeId = h.id;
       } else {
         // Once we find a heading that is below the checkLine,
-        // subsequent headings are also below (assuming document order).
-        // So the 'activeId' we found so far (the previous one) is the correct one.
+        // subsequent headings are also below.
         break;
       }
     }
@@ -174,13 +170,9 @@ const initToc = () => {
   update();
 
   // Re-calculate on resize / load / layout changes
-  // Debounce resize merely to avoid excessive DOM writes/reads, 
-  // though rAF throttling in update() handles most of it.
   const handleResize = onScroll;
   const handleLoad = () => {
-    // Layout might shift after images load
     update();
-    // Force a few more updates for safety in case of late layout shifts (fonts etc)
     setTimeout(update, 100);
     setTimeout(update, 300);
   };
@@ -188,18 +180,8 @@ const initToc = () => {
     update();
   };
 
-  window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", handleResize, { passive: true });
-  window.addEventListener("load", handleLoad);
-  document.addEventListener("imageFade:loaded", handleImageFade);
-
-  tocState.scrollHandler = onScroll;
-  tocState.resizeHandler = handleResize;
-  tocState.loadHandler = handleLoad;
-  tocState.imageFadeHandler = handleImageFade;
-
-  // Handle click scrolling manually to ensure smooth scroll + immediate active set
-  tocContainer.addEventListener("click", (event) => {
+  // Click handler implementation
+  const handleTocClick = (event) => {
     const link = event.target.closest(".toc__link");
     if (!link) return;
     event.preventDefault();
@@ -212,9 +194,21 @@ const initToc = () => {
       // Immediate feedback
       setActiveLink(targetId);
     }
-  });
+  };
 
-  // Safety: run update again after a short delay since single-page nav might handle scroll position async
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", handleResize, { passive: true });
+  window.addEventListener("load", handleLoad);
+  document.addEventListener("imageFade:loaded", handleImageFade);
+  tocContainer.addEventListener("click", handleTocClick);
+
+  tocState.scrollHandler = onScroll;
+  tocState.resizeHandler = handleResize;
+  tocState.loadHandler = handleLoad;
+  tocState.imageFadeHandler = handleImageFade;
+  tocState.clickHandler = handleTocClick;
+
+  // Safety update
   setTimeout(update, 50);
 };
 
