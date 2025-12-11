@@ -80,11 +80,12 @@ In either case, since the Negative side condition is multiplied by 0, **writing 
 
 ## text2image - Flux.1 [schnell]
 
-The basic configuration is the same as Flux.1 [dev].
+It is further distilled from Flux.1 [dev] and can generate images in 4 to 6 steps.
 
-![](https://gyazo.com/ca565f4b96ddd04c336b65fffef6fec9){gyazo=image}
+![](https://gyazo.com/365108a45e0039af1ce0d35cf2cdcfa6){gyazo=image}
 
 [](/workflows/basic-workflows/flux1/flux1-schnell.json)
+- Set `steps` to 4 to 6.
 
 ---
 

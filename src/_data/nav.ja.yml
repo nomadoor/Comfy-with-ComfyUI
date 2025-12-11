@@ -335,8 +335,8 @@ sections:
       title: モデルのマージと差分LoRA
     - id: speed-and-efficiency
       title: 高速化と軽量化
-  - id: external-api
-    title: 外部API
+  - id: api-nodes
+    title: APIノード
 - key: faq
   label: FAQ / トラブルシューティング
   pages:

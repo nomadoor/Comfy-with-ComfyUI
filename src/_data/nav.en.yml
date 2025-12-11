@@ -332,11 +332,11 @@ sections:
         noLink: true
         children:
           - id: model-merge
-            title: Model Merge
-          - id: performance-tuning
-            title: Performance Tuning
-      - id: external-api
-        title: External Api
+            title: Model Merge & Difference LoRA
+          - id: speed-and-efficiency
+            title: Speed and Efficiency
+      - id: api-nodes
+        title: API Nodes
   - key: faq
     label: FAQ / Troubleshooting
     pages:
