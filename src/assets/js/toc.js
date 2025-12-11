@@ -5,9 +5,7 @@ let tocState = {
   imageFadeHandler: null,
   headings: [],
   lastActiveId: null,
-  observer: null,
-  pendingId: null,
-  pendingTimer: null,
+  ticking: false,
 };
 
 const initToc = () => {
@@ -15,18 +13,15 @@ const initToc = () => {
   const tocContainer = document.querySelector(".toc__links");
   if (!article || !tocContainer) return;
 
-  // remove previous listeners to avoid duplication on Swup replace
+  // Cleanup existing listeners
   if (tocState.scrollHandler) window.removeEventListener("scroll", tocState.scrollHandler);
   if (tocState.resizeHandler) window.removeEventListener("resize", tocState.resizeHandler);
   if (tocState.loadHandler) window.removeEventListener("load", tocState.loadHandler);
   if (tocState.imageFadeHandler) document.removeEventListener("imageFade:loaded", tocState.imageFadeHandler);
-  if (tocState.observer) tocState.observer.disconnect();
-  if (tocState.pendingTimer) clearTimeout(tocState.pendingTimer);
+
   tocState.headings = [];
   tocState.lastActiveId = null;
-  tocState.observer = null;
-  tocState.pendingId = null;
-  tocState.pendingTimer = null;
+  tocState.ticking = false;
 
   function toPixels(value, baseSize) {
     if (!value) return 0;
@@ -36,20 +31,29 @@ const initToc = () => {
     return numeric;
   }
 
-  function getScrollOffset() {
+  function getHeaderOffset() {
     const root = document.documentElement;
     const styles = getComputedStyle(root);
     const baseFont = parseFloat(styles.fontSize) || 16;
     const headerVar = styles.getPropertyValue("--header-height").trim();
     const paddingVar = styles.getPropertyValue("--space-lg").trim();
-    const headerEl = document.querySelector(".site-header");
-    const headerHeight = headerEl ? headerEl.getBoundingClientRect().height : 0;
-    const header = toPixels(headerVar, baseFont) || headerHeight;
-    const padding = toPixels(paddingVar, baseFont);
-    return header + padding;
+
+    // Fallback if variables are missing
+    let offset = 0;
+    if (headerVar) offset += toPixels(headerVar, baseFont);
+    else {
+      const headerEl = document.querySelector(".site-header");
+      if (headerEl) offset += headerEl.getBoundingClientRect().height;
+    }
+
+    if (paddingVar) offset += toPixels(paddingVar, baseFont);
+    else offset += 20; // default padding
+
+    return offset;
   }
 
   function getHeadings() {
+    // Only select direct h2, h3 in the article to avoid accidentally picking up unwanted headers
     const heads = Array.from(article.querySelectorAll("h2, h3"));
     const counts = new Map();
 
@@ -75,7 +79,9 @@ const initToc = () => {
   function buildToc() {
     tocContainer.innerHTML = "";
     const frag = document.createDocumentFragment();
-    getHeadings().forEach((heading) => {
+    const currentHeadings = getHeadings();
+
+    currentHeadings.forEach((heading) => {
       const link = document.createElement("a");
       link.href = `#${heading.id}`;
       link.textContent = heading.textContent || heading.id;
@@ -85,9 +91,17 @@ const initToc = () => {
       frag.appendChild(link);
     });
     tocContainer.appendChild(frag);
+
+    // Store headings with their elements for position checking
+    tocState.headings = currentHeadings.map(h => ({
+      id: h.id,
+      el: h
+    }));
   }
 
   function setActiveLink(id) {
+    if (tocState.lastActiveId === id) return;
+
     const links = tocContainer.querySelectorAll(".toc__link");
     links.forEach((link) => {
       const isActive = link.dataset.targetId === id;
@@ -96,102 +110,112 @@ const initToc = () => {
     tocState.lastActiveId = id;
   }
 
-  function snapshotHeadings() {
-    tocState.headings = getHeadings().map((heading) => ({
-      id: heading.id,
-      el: heading,
-    }));
-  }
+  function update() {
+    tocState.ticking = false;
+    if (!tocState.headings.length) return;
 
-  function createObserver() {
-    if (!tocState.headings.length) snapshotHeadings();
-    const offset = getScrollOffset();
-    const rootMargin = `-${offset + 8}px 0px -60% 0px`;
-    const thresholds = [0, 0.1, 0.25, 0.5, 0.75, 1];
+    const offset = getHeaderOffset();
+    const scrollY = window.scrollY;
 
-    const visible = new Map();
+    // Strategy: Find the last heading that is above the "read line" (offset)
+    // or simply finding the heading closest to the top but slightly above or crossing it.
 
-    const pickActive = () => {
-      if (!visible.size) return null;
-      // choose the heading with the largest intersection ratio; tie-breaker: smallest top
-      const sorted = Array.from(visible.entries()).sort((a, b) => {
-        const [idA, dataA] = a;
-        const [idB, dataB] = b;
-        if (dataB.ratio !== dataA.ratio) return dataB.ratio - dataA.ratio;
-        return dataA.top - dataB.top;
-      });
-      return sorted[0][0];
-    };
+    // Let's gather current positions relative to viewport
+    // We want the heading that effectively "owns" the current viewport area.
+    // Usually that means: The heading strictly above the offset line, closest to it.
 
-    const commitPending = () => {
-      if (tocState.pendingId && tocState.pendingId !== tocState.lastActiveId) {
-        setActiveLink(tocState.pendingId);
+    let activeId = null;
+
+    // Margin allows a heading to become active slightly before it hits the exact top
+    // improving perceived responsiveness.
+    const activationMargin = 10;
+    const checkLine = offset + activationMargin;
+
+    // Headings are in document order.
+    // We search for the last heading whose top position is <= checkLine.
+    for (let i = 0; i < tocState.headings.length; i++) {
+      const h = tocState.headings[i];
+      const rect = h.el.getBoundingClientRect();
+
+      // rect.top is relative to viewport. 
+      // If rect.top <= checkLine, this heading has started (is above the line or just crossing).
+      if (rect.top <= checkLine) {
+        activeId = h.id;
+      } else {
+        // Once we find a heading that is below the checkLine,
+        // subsequent headings are also below (assuming document order).
+        // So the 'activeId' we found so far (the previous one) is the correct one.
+        break;
       }
-      tocState.pendingTimer = null;
-    };
+    }
 
-    tocState.observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const id = entry.target.id;
-        if (entry.isIntersecting) {
-          visible.set(id, { ratio: entry.intersectionRatio, top: entry.boundingClientRect.top });
-        } else {
-          visible.delete(id);
-        }
-      });
-      const activeId = pickActive();
-      if (activeId) {
-        if (tocState.pendingTimer) clearTimeout(tocState.pendingTimer);
-        tocState.pendingId = activeId;
-        // debounce to avoid rapid flicker during initial paint/layout shifts
-        tocState.pendingTimer = setTimeout(commitPending, 80);
+    if (activeId) {
+      setActiveLink(activeId);
+    } else {
+      // If no heading is above the line (Top of page), default to the first heading
+      if (tocState.headings.length > 0) {
+        setActiveLink(tocState.headings[0].id);
+      } else {
+        setActiveLink(null);
       }
-    }, { root: null, rootMargin, threshold: thresholds });
-
-    tocState.headings.forEach((h) => tocState.observer.observe(h.el));
+    }
   }
 
-  function recomputeAndUpdate() {
-    buildToc();
-    snapshotHeadings();
-    tocState.lastActiveId = null;
-    if (tocState.observer) tocState.observer.disconnect();
-    // delay observer start slightly to let layout settle after navigation
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        createObserver();
-        if (tocState.headings[0]) {
-          setActiveLink(tocState.headings[0].id);
-        }
-      });
-    });
+  function onScroll() {
+    if (!tocState.ticking) {
+      window.requestAnimationFrame(update);
+      tocState.ticking = true;
+    }
   }
 
+  // Initial Setup
+  buildToc();
+  // Run update immediately to set initial state
+  update();
+
+  // Re-calculate on resize / load / layout changes
+  // Debounce resize merely to avoid excessive DOM writes/reads, 
+  // though rAF throttling in update() handles most of it.
+  const handleResize = onScroll;
+  const handleLoad = () => {
+    // Layout might shift after images load
+    update();
+    // Force a few more updates for safety in case of late layout shifts (fonts etc)
+    setTimeout(update, 100);
+    setTimeout(update, 300);
+  };
+  const handleImageFade = () => {
+    update();
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", handleResize, { passive: true });
+  window.addEventListener("load", handleLoad);
+  document.addEventListener("imageFade:loaded", handleImageFade);
+
+  tocState.scrollHandler = onScroll;
+  tocState.resizeHandler = handleResize;
+  tocState.loadHandler = handleLoad;
+  tocState.imageFadeHandler = handleImageFade;
+
+  // Handle click scrolling manually to ensure smooth scroll + immediate active set
   tocContainer.addEventListener("click", (event) => {
     const link = event.target.closest(".toc__link");
     if (!link) return;
     event.preventDefault();
     const targetId = link.dataset.targetId;
     const targetEl = document.getElementById(targetId);
-    if (!targetEl) return;
-    const top = targetEl.getBoundingClientRect().top + window.scrollY - getScrollOffset();
-    window.scrollTo({ top, behavior: "smooth" });
-    setActiveLink(targetId);
+    if (targetEl) {
+      const offset = getHeaderOffset();
+      const top = targetEl.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: "smooth" });
+      // Immediate feedback
+      setActiveLink(targetId);
+    }
   });
 
-  const handleResize = () => recomputeAndUpdate();
-  const handleLoad = () => recomputeAndUpdate();
-  const handleImageFade = () => recomputeAndUpdate();
-
-  window.addEventListener("resize", handleResize, { passive: true });
-  window.addEventListener("load", handleLoad);
-  document.addEventListener("imageFade:loaded", handleImageFade);
-
-  tocState.resizeHandler = handleResize;
-  tocState.loadHandler = handleLoad;
-  tocState.imageFadeHandler = handleImageFade;
-
-  recomputeAndUpdate();
+  // Safety: run update again after a short delay since single-page nav might handle scroll position async
+  setTimeout(update, 50);
 };
 
 export default initToc;
