@@ -659,17 +659,16 @@ video {
   }
 
   .sidebar__sections {
-    display: flex;
+    display: none;
   }
+}
 
-  .sidebar__section-tabs {
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    background: var(--color-panel);
-    padding-top: var(--space-xs);
-    padding-bottom: var(--space-xs);
-  }
+/* Keep section tabs visible while scrolling the sidebar */
+.sidebar__section-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--color-panel);
 }
 
 .sidebar__footer {
