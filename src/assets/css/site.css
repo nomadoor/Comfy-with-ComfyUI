@@ -654,8 +654,21 @@ video {
 }
 
 @media (max-height: 720px) {
+  .app-shell__sidebar .rail {
+    padding-top: 0;
+  }
+
   .sidebar__sections {
-    display: none;
+    display: flex;
+  }
+
+  .sidebar__section-tabs {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--color-panel);
+    padding-top: var(--space-xs);
+    padding-bottom: var(--space-xs);
   }
 }
 
