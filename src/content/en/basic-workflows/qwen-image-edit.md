@@ -97,7 +97,7 @@ Therefore, in this workflow, we preprocess the image size in advance.
 * Resize to 1M pixels with `ImageScaleToTotalPixels` node
 * Crop so that the resolution is a multiple of 8 with `Resize Image v2` node
 
-> Qwen-Image-Edit cannot match "pixel perfect match between input image and edited image" no matter how hard you try.
+> Qwen-Image-Edit cannot match "pixel-perfect match between input image and edited image" no matter how hard you try.
 > Several workarounds have been proposed, but it is better to keep in mind the premise that the model design is not suitable for such use in the first place.
 
 ---
