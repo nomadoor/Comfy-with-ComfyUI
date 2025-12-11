@@ -676,6 +676,13 @@ video {
   position: relative;
 }
 
+@media (max-width: 1100px) and (max-height: 720px) {
+  .app-shell__sidebar .rail {
+    padding-top: 0;
+    overflow: visible;
+  }
+}
+
 .sidebar__footer {
   padding: var(--space-xs) var(--space-sm);
   display: flex;
