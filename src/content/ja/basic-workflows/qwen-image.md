@@ -134,6 +134,6 @@ Qwen-Image 向けの ControlNet モデルはいくつかありますが、使い
 
 [](/workflows/basic-workflows/qwen-image/Qwen-Image_lightning_8steps.json)
 
-* `LoraLoaderModelOnly` などで Lightning LoRA を読み込みます。
+* `LoraLoaderModelOnly` ノードで Lightning LoRA を読み込みます。
 * `KSampler` の `steps` を 4 または 8、`CFG` を 1.0 に設定します。
 
