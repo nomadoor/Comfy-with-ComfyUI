@@ -16,10 +16,13 @@ tags: ["id-transfer","subject-transfer"]
 
 ![](https://gyazo.com/1ecb26d7a9f2f9f558b02e91114cc692){gyazo=image}
 
-This image is a single image generated with a prompt like "Image divided into 2 frames. In the first frame, person A is sitting. In the second frame, person A is facing here."
+This image is a single image generated with the following prompt:
+- Image divided into 2 frames.
+- In the first frame, person A is sitting.
+- In the second frame, person A is facing here.
 
 As you can see, the people on the left and right look like the same person.
-This is called the sprite sheet technique, and it has been used since the Stable Diffusion 1.5 era when we wanted to create multiple consistent situations.
+This is called the sprite sheet technique, and it is a trick that has been used since the Stable Diffusion 1.5 era when we wanted to create multiple consistent situations.
 
 ![](https://gyazo.com/5b66002abf37e213214611933ac7b833){gyazo=image}
 

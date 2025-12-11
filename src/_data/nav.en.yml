@@ -267,8 +267,8 @@ sections:
                 title: ACE++
               - id: flux-1-kontext
                 title: Flux.1 Kontext
-              - id: chroma
-                title: Chroma
+              - id: chroma1-hd
+                title: Chroma1-HD
           - id: auraflow
             title: AuraFlow
           - id: lumina-image-2.0

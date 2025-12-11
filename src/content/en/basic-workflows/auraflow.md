@@ -15,7 +15,8 @@ tags: []
 ## What is AuraFlow?
 
 [AuraFlow](https://blog.fal.ai/auraflow/) is a **flow-based text2image model** developed by fal.ai. It is released under the Apache-2.0 license and is characterized by being lightweight and easy to handle.
-This page covers standard AuraFlow and **Pony V7**, an anime-oriented model based on AuraFlow, together.
+
+There are some movements to move from SDXL, and **Pony V7**, a representative example of this, is also introduced here.
 
 ---
 
@@ -46,7 +47,7 @@ The basic construction is almost the same as SD1.5 / SDXL.
 
 ## Pony V7 : AuraFlow-based Anime Model
 
-It is an anime-oriented model based on AuraFlow, created as a successor to [Pony Diffusion V6 XL](/en/basic-workflows/sdxl-anime/#pony-diffusion-v6-xl). By changing the base from SDXL to AuraFlow, it is easier to balance model size and operation speed.
+It is an anime-oriented model based on AuraFlow, created as a successor to [Pony Diffusion V6 XL](/en/basic-workflows/sdxl-anime/#pony-diffusion-v6-xl).
 
 ### Model Download
 
