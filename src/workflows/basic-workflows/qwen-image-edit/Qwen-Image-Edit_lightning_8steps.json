@@ -521,29 +521,6 @@
       ]
     },
     {
-      "id": 55,
-      "type": "MarkdownNote",
-      "pos": [
-        -421.1941530039864,
-        -209.48895595481417
-      ],
-      "size": [
-        459.8743576856938,
-        284.8380617897751
-      ],
-      "flags": {},
-      "order": 4,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "properties": {},
-      "widgets_values": [
-        "## models\n- [qwen_image_edit_2509_fp8_e4m3fn.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/blob/main/split_files/diffusion_models/qwen_image_edit_2509_fp8_e4m3fn.safetensors)\n- [Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors](https://huggingface.co/lightx2v/Qwen-Image-Lightning/blob/main/Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors)\n- [Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors](https://huggingface.co/lightx2v/Qwen-Image-Lightning/blob/main/Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors)\n- [qwen_2.5_vl_7b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/blob/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors)\n- [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/tree/main/split_files/vae)\n\n\n```\n📂ComfyUI/\n└──📂models/\n    ├── 📂diffusion_models/\n    │   └── qwen_image_edit_2509_fp8_e4m3fn.safetensors\n    ├── 📂loras/\n    │   ├── Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors\n    │   └── Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen_2.5_vl_7b_fp8.safetensors\n    └── 📂vae/\n         └── qwen_image_vae.safetensors\n\n```"
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
-    },
-    {
       "id": 3,
       "type": "KSampler",
       "pos": [
@@ -672,6 +649,29 @@
       "widgets_values": [
         "Qwen-Image\\Edit\\Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors",
         1
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 55,
+      "type": "MarkdownNote",
+      "pos": [
+        -421.1941530039864,
+        -209.48895595481417
+      ],
+      "size": [
+        459.8743576856938,
+        284.8380617897751
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n- [qwen_image_edit_2509_fp8_e4m3fn.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/blob/main/split_files/diffusion_models/qwen_image_edit_2509_fp8_e4m3fn.safetensors)\n- [Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors](https://huggingface.co/lightx2v/Qwen-Image-Lightning/blob/main/Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors)\n- [Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors](https://huggingface.co/lightx2v/Qwen-Image-Lightning/blob/main/Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors)\n- [qwen_2.5_vl_7b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/blob/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors)\n- [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/tree/main/split_files/vae)\n\n\n```\n📂ComfyUI/\n└──📂models/\n    ├── 📂diffusion_models/\n    │   └── qwen_image_edit_2509_fp8_e4m3fn.safetensors\n    ├── 📂loras/\n    │   ├── Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors\n    │   └── Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen_2.5_vl_7b_fp8_scaled.safetensors\n    └── 📂vae/\n         └── qwen_image_vae.safetensors\n\n```"
       ],
       "color": "#323",
       "bgcolor": "#535"
@@ -835,7 +835,7 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.7513148009015781,
+      "scale": 0.6209213230591552,
       "offset": [
         626.4102783203125,
         309.4889559548142

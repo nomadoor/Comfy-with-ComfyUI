@@ -78,7 +78,7 @@ Flux.1 Kontext は VAE ベースの編集のみでしたが、Qwen-Image-Edit �
 
 ### workflow
 
-![](https://gyazo.com/fa3508f1458f5a1ab951cab437387a84){gyazo=image}
+![](https://gyazo.com/79b84b74171ddd5c9cfdb57bccc69f13){gyazo=image}
 
 [](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit.json)
 
@@ -128,7 +128,7 @@ Qwen-Image-Edit-2509 は、無印版を拡張した新バージョンです。
 
 ### workflow（1枚）
 
-![](https://gyazo.com/0e873dd60f9897e044b9a51cb6c3f70b){gyazo=image}
+![](https://gyazo.com/456e6aec210ae38313aa25f83ce236df){gyazo=image}
 
 [](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit-2509.json)
 
@@ -136,7 +136,7 @@ Qwen-Image-Edit-2509 は、無印版を拡張した新バージョンです。
 
 ### workflow（複数枚）
 
-![](https://gyazo.com/85059ee6d9315d44729caebcb8b74f18){gyazo=image}
+![](https://gyazo.com/e33abcb42d03c53f3171a8fb12d7eca0){gyazo=image}
 
 [](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit-2509_multi-ref.json)
 
@@ -171,7 +171,7 @@ Qwen-Image-Edit-2509 は、無印版を拡張した新バージョンです。
 
 ### workflow
 
-![](https://gyazo.com/0410f92580f49cd0b9f4fd8556cd4acb){gyazo=image}
+![](https://gyazo.com/c91a20239e3cb536dfc931a30562f19f){gyazo=image}
 
 [](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit_lightning_8steps.json)
 

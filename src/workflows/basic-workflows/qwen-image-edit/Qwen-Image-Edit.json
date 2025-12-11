@@ -253,7 +253,7 @@
       "id": 111,
       "type": "UNETLoader",
       "pos": [
-        267.74774169921875,
+        268.08926368569036,
         -6.1566877365112305
       ],
       "size": [
@@ -286,29 +286,6 @@
       "bgcolor": "#535"
     },
     {
-      "id": 55,
-      "type": "MarkdownNote",
-      "pos": [
-        -151.94412231445312,
-        -162.66221618652344
-      ],
-      "size": [
-        390.76434326171875,
-        238.50552368164062
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "properties": {},
-      "widgets_values": [
-        "## models\n- [qwen_image_edit_fp8_e4m3fn.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/blob/main/split_files/diffusion_models/qwen_image_edit_fp8_e4m3fn.safetensors)\n- [qwen_2.5_vl_7b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/blob/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors)\n- [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/tree/main/split_files/vae)\n\n\n```\n📂ComfyUI/\n└──📂models/\n    ├── 📂diffusion_models/\n    │   └── \nqwen_image_edit_fp8_e4m3fn.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen_2.5_vl_7b_fp8.safetensors\n    └── 📂vae/\n         └── wan_2.1_vae.safetensors\n\n```"
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
-    },
-    {
       "id": 39,
       "type": "VAELoader",
       "pos": [
@@ -320,7 +297,7 @@
         58
       ],
       "flags": {},
-      "order": 3,
+      "order": 2,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -468,7 +445,7 @@
         414.46728515625
       ],
       "flags": {},
-      "order": 4,
+      "order": 3,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -610,6 +587,29 @@
         "simple",
         1
       ]
+    },
+    {
+      "id": 55,
+      "type": "MarkdownNote",
+      "pos": [
+        -151.94412231445312,
+        -160.6131710520566
+      ],
+      "size": [
+        391.44735671708384,
+        236.45648331554537
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n- [qwen_image_edit_fp8_e4m3fn.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/blob/main/split_files/diffusion_models/qwen_image_edit_fp8_e4m3fn.safetensors)\n- [qwen_2.5_vl_7b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/blob/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors)\n- [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/tree/main/split_files/vae)\n\n\n```\n📂ComfyUI/\n└──📂models/\n    ├── 📂diffusion_models/\n    │   └── qwen_image_edit_fp8_e4m3fn.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen_2.5_vl_7b_fp8_scaled.safetensors\n    └── 📂vae/\n         └── qwen_image_vae.safetensors\n```"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
     }
   ],
   "links": [
@@ -762,10 +762,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.6830134553650707,
+      "scale": 0.620921323059155,
       "offset": [
         650.9295654296875,
-        262.66221618652344
+        262.2236810520566
       ]
     },
     "frontendVersion": "1.35.0",
