@@ -656,6 +656,7 @@ video {
 @media (max-height: 720px) {
   .app-shell__sidebar .rail {
     padding-top: 0;
+    overflow: visible;
   }
 
   .sidebar__sections {
@@ -669,6 +670,10 @@ video {
   top: 0;
   z-index: 2;
   background: var(--color-panel);
+}
+
+.sidebar__nav-wrapper {
+  position: relative;
 }
 
 .sidebar__footer {
