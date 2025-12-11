@@ -2762,10 +2762,8 @@ body.nav-open .nav-backdrop {
   }
 
   .sidebar__nav-wrapper {
-    flex: 1;
-    min-height: 0;
-    overflow-y: auto;
-    padding-right: var(--space-sm);
+    overflow: visible;
+    max-height: none;
   }
 
   body.nav-open {
@@ -2790,24 +2788,6 @@ body.nav-open .nav-backdrop {
   /* Hide desktop assistant if present in sidebar (it's not, but just in case) */
   .sidebar>.assistant-rail {
     display: none;
-  }
-
-  /* Keep section tabs and footer pinned inside scrolling sidebar */
-  .sidebar__section-tabs {
-    position: sticky;
-    top: 0;
-    z-index: 3;
-    background: var(--color-panel);
-    padding-top: var(--space-xs);
-    padding-bottom: var(--space-xs);
-  }
-
-  .sidebar__footer {
-    position: sticky;
-    bottom: 0;
-    z-index: 3;
-    background: var(--color-panel-strong);
-    padding-bottom: var(--space-sm);
   }
 }
 
