@@ -3,6 +3,8 @@ let tocState = {
   resizeHandler: null,
   loadHandler: null,
   imageFadeHandler: null,
+  headings: [],
+  lastActiveId: null,
 };
 
 const initToc = () => {
@@ -15,6 +17,8 @@ const initToc = () => {
   if (tocState.resizeHandler) window.removeEventListener("resize", tocState.resizeHandler);
   if (tocState.loadHandler) window.removeEventListener("load", tocState.loadHandler);
   if (tocState.imageFadeHandler) document.removeEventListener("imageFade:loaded", tocState.imageFadeHandler);
+  tocState.headings = [];
+  tocState.lastActiveId = null;
 
   function toPixels(value, baseSize) {
     if (!value) return 0;
@@ -81,30 +85,43 @@ const initToc = () => {
       const isActive = link.dataset.targetId === id;
       link.classList.toggle("is-active", isActive);
     });
+    tocState.lastActiveId = id;
+  }
+
+  function snapshotHeadings() {
+    const offsetFix = 0;
+    tocState.headings = getHeadings().map((heading) => ({
+      id: heading.id,
+      top: heading.offsetTop + offsetFix,
+    }));
   }
 
   function getCurrentSectionId() {
-    const headings = getHeadings();
+    if (!tocState.headings.length) snapshotHeadings();
     const offset = getScrollOffset();
     const scrollPos = window.scrollY + offset + 1;
-    let currentId = headings[0]?.id;
-    for (const heading of headings) {
-      if (heading.offsetTop <= scrollPos) {
-        currentId = heading.id;
+    const HYSTERESIS = 24; // px: prevents rapid flip near boundaries
+
+    let candidate = tocState.headings[0]?.id;
+    for (let i = 0; i < tocState.headings.length; i += 1) {
+      const h = tocState.headings[i];
+      if (h.top <= scrollPos - HYSTERESIS) {
+        candidate = h.id;
       } else {
         break;
       }
     }
-    return currentId;
+    return candidate;
   }
 
   function updateActiveLink() {
     const id = getCurrentSectionId();
-    if (id) setActiveLink(id);
+    if (id && id !== tocState.lastActiveId) setActiveLink(id);
   }
 
   function recomputeAndUpdate() {
     buildToc();
+    snapshotHeadings();
     updateActiveLink();
   }
 
