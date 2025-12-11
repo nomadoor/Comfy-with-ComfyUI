@@ -122,6 +122,7 @@ const initToc = () => {
   function recomputeAndUpdate() {
     buildToc();
     snapshotHeadings();
+    tocState.lastActiveId = null;
     updateActiveLink();
   }
 
