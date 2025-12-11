@@ -6,6 +6,8 @@ let tocState = {
   headings: [],
   lastActiveId: null,
   observer: null,
+  pendingId: null,
+  pendingTimer: null,
 };
 
 const initToc = () => {
@@ -19,9 +21,12 @@ const initToc = () => {
   if (tocState.loadHandler) window.removeEventListener("load", tocState.loadHandler);
   if (tocState.imageFadeHandler) document.removeEventListener("imageFade:loaded", tocState.imageFadeHandler);
   if (tocState.observer) tocState.observer.disconnect();
+  if (tocState.pendingTimer) clearTimeout(tocState.pendingTimer);
   tocState.headings = [];
   tocState.lastActiveId = null;
   tocState.observer = null;
+  tocState.pendingId = null;
+  tocState.pendingTimer = null;
 
   function toPixels(value, baseSize) {
     if (!value) return 0;
@@ -118,6 +123,13 @@ const initToc = () => {
       return sorted[0][0];
     };
 
+    const commitPending = () => {
+      if (tocState.pendingId && tocState.pendingId !== tocState.lastActiveId) {
+        setActiveLink(tocState.pendingId);
+      }
+      tocState.pendingTimer = null;
+    };
+
     tocState.observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         const id = entry.target.id;
@@ -128,8 +140,11 @@ const initToc = () => {
         }
       });
       const activeId = pickActive();
-      if (activeId && activeId !== tocState.lastActiveId) {
-        setActiveLink(activeId);
+      if (activeId) {
+        if (tocState.pendingTimer) clearTimeout(tocState.pendingTimer);
+        tocState.pendingId = activeId;
+        // debounce to avoid rapid flicker during initial paint/layout shifts
+        tocState.pendingTimer = setTimeout(commitPending, 80);
       }
     }, { root: null, rootMargin, threshold: thresholds });
 
@@ -141,9 +156,15 @@ const initToc = () => {
     snapshotHeadings();
     tocState.lastActiveId = null;
     if (tocState.observer) tocState.observer.disconnect();
-    createObserver();
-    // set initial active using observer state (force sync)
-    if (tocState.headings[0]) setActiveLink(tocState.headings[0].id);
+    // delay observer start slightly to let layout settle after navigation
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        createObserver();
+        if (tocState.headings[0]) {
+          setActiveLink(tocState.headings[0].id);
+        }
+      });
+    });
   }
 
   tocContainer.addEventListener("click", (event) => {
