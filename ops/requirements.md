@@ -28,6 +28,7 @@
 
 ## 5. Media & Lightbox
 - Default media brightness: `filter: brightness(0.85)`. Obey the 320px article media height cap unless overridden.
+- Hero media may be an image or a Gyazo `.mp4` video URL. Hero videos autoplay muted loop and are purely decorative.
 - Lightbox must support Esc close, +/- zoom, and arrow keys or buttons for navigation.
 
 ## 6. Search
