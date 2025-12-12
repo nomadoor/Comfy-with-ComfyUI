@@ -102,7 +102,7 @@ Distillation is a method of teaching the behavior of a teacher model to another 
 
 Representative Examples
 
-- "High-speed version" checkpoints like [FLUX.1-schnell](/en/basic-workflows/flux1/#text2image-flux-1-schnell)
+- "High-speed version" checkpoints like [FLUX.1-schnell](/en/basic-workflows/flux-1/#text2image-flux-1-schnell)
 - High-speed generation LoRA like [Qwen-Image-Lightning](/en/basic-workflows/qwen-image/#lightning-high-speed-generation-lora)
 
 Since the number of steps can be reduced to about 1 to 4 steps, it is the first candidate when you want to make it faster anyway.
