@@ -1467,6 +1467,17 @@ h1 {
   color: var(--color-highlight);
 }
 
+/* Nav label clamp to 2 lines with ellipsis */
+.nav-list__link,
+.nav-list__no-link {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
 .token.comment,
 .token.prolog,
 .token.doctype,
