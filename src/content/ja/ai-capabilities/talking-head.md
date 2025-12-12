@@ -31,11 +31,11 @@ talking headの名の通り、顔を動かすことからスタートしまし�
 
 やっていることは3Dモデルというより、2Dのまま「グニャっと」ねじっているイメージに近いです。Photoshopのパペットワープのようなものですね。
 
-### [LivePortrait](https://liveportrait.github.io/)
+### [LivePortrait](/ja/basic-workflows/liveportrait/)
 
-![](https://gyazo.com/4dbed52f9f26d6f5ac4a15dac7f1c3af){gyazo=loop}
+![](https://gyazo.com/c893e38c12859f8f20ff1e0fca545788){gyazo=image}
 
-[](/workflows/ai-capabilities/talking-head/AdvancedLivePortrait_image2video.json)
+[](/workflows/basic-workflows/liveportrait/LivePortrait_i2v_ref.json)
 
 こちらも1枚絵と参照動画を入力にしますが、顔のパーツごとの動きや視線、感情のニュアンスなどを安定して再現できるよう工夫されています。
 

@@ -14,7 +14,7 @@ tags: []
 
 ## What is Chroma1-HD?
 
-[Flux.1 [dev]](/en/basic-workflows/flux1/) was a great model, but it had two major issues for widespread community use.
+[Flux.1 [dev]](/en/basic-workflows/flux-1/) was a great model, but it had two major issues for widespread community use.
 
 - Since it is strongly distilled, compatibility with LoRA and full fine-tuning is not very good.
 - Non-commercial license.

@@ -7,13 +7,13 @@
   <li class="nav-list__item">
     {% if item.noLink %}
     <span class="nav-list__no-link">
-      {{ item.title }}
+      <span class="nav-list__label">{{ item.title }}</span>
     </span>
     {% else %}
     {% set url = "/" + listLang + "/" + listSectionKey + "/" + item.id + "/" %}
     <a href="{{ url }}" class="nav-list__link{% if item.id == listCurrentId %} is-active{% endif %}" {% if
       item.id==listCurrentId %}aria-current="page" {% endif %}>
-      {{ item.title }}
+      <span class="nav-list__label">{{ item.title }}</span>
     </a>
     {% endif %}
     {% if item.children %}

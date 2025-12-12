@@ -31,11 +31,11 @@ When you input a single image and a video of a moving person, the image side def
 
 What it is doing is closer to an image of twisting "squishy" in 2D rather than a 3D model. It's like Photoshop's Puppet Warp.
 
-### [LivePortrait](https://liveportrait.github.io/)
+### [LivePortrait](/en/basic-workflows/liveportrait/)
 
-![](https://gyazo.com/4dbed52f9f26d6f5ac4a15dac7f1c3af){gyazo=loop}
+![](https://gyazo.com/c893e38c12859f8f20ff1e0fca545788){gyazo=image}
 
-[](/workflows/ai-capabilities/talking-head/AdvancedLivePortrait_image2video.json)
+[](/workflows/basic-workflows/liveportrait/LivePortrait_i2v_ref.json)
 
 This also takes a single image and a reference video as input, but it is devised to stably reproduce the movement of each part of the face, line of sight, and nuances of emotion.
 

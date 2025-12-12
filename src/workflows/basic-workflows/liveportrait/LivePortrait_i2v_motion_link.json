@@ -1,0 +1,565 @@
+{
+  "id": "dba15c18-c2e7-4547-8472-85361bc55454",
+  "revision": 0,
+  "last_node_id": 25,
+  "last_link_id": 26,
+  "nodes": [
+    {
+      "id": 8,
+      "type": "LoadImage",
+      "pos": [
+        1053.8902782149364,
+        -0.15546305848340092
+      ],
+      "size": [
+        282.1988281250001,
+        508.7
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            13,
+            17,
+            18,
+            22
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.76",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "pasted/image (105).png",
+        "image"
+      ]
+    },
+    {
+      "id": 16,
+      "type": "ExpressionEditor",
+      "pos": [
+        1692.8988596740764,
+        90.0760453615018
+      ],
+      "size": [
+        285.0200000000002,
+        781.96
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "src_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 18
+        },
+        {
+          "name": "motion_link",
+          "shape": 7,
+          "type": "EDITOR_LINK",
+          "link": 16
+        },
+        {
+          "name": "sample_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "add_exp",
+          "shape": 7,
+          "type": "EXP_DATA",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "links": [
+            21
+          ]
+        },
+        {
+          "name": "save_exp",
+          "type": "EXP_DATA",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-advancedliveportrait",
+        "ver": "3bba732915e22f18af0d221b9c5c282990181f1b",
+        "Node name for S&R": "ExpressionEditor"
+      },
+      "widgets_values": [
+        0,
+        12,
+        20,
+        0,
+        0,
+        23,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "All",
+        1.7
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 22,
+      "type": "ExpressionEditor",
+      "pos": [
+        2013.8137363411468,
+        90.0760453615018
+      ],
+      "size": [
+        285.0200000000002,
+        781.96
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "src_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 22
+        },
+        {
+          "name": "motion_link",
+          "shape": 7,
+          "type": "EDITOR_LINK",
+          "link": 21
+        },
+        {
+          "name": "sample_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "add_exp",
+          "shape": 7,
+          "type": "EXP_DATA",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "links": [
+            23
+          ]
+        },
+        {
+          "name": "save_exp",
+          "type": "EXP_DATA",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-advancedliveportrait",
+        "ver": "3bba732915e22f18af0d221b9c5c282990181f1b",
+        "Node name for S&R": "ExpressionEditor"
+      },
+      "widgets_values": [
+        -9.5,
+        -7,
+        0,
+        5,
+        15,
+        0,
+        -4,
+        -3.5,
+        82,
+        10.8,
+        10.2,
+        0.56,
+        1,
+        1,
+        "All",
+        1.7
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 14,
+      "type": "ExpressionEditor",
+      "pos": [
+        1371.9839830070064,
+        90.0760453615018
+      ],
+      "size": [
+        285.0200000000002,
+        781.96
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "src_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 13
+        },
+        {
+          "name": "motion_link",
+          "shape": 7,
+          "type": "EDITOR_LINK",
+          "link": null
+        },
+        {
+          "name": "sample_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "add_exp",
+          "shape": 7,
+          "type": "EXP_DATA",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "links": [
+            16
+          ]
+        },
+        {
+          "name": "save_exp",
+          "type": "EXP_DATA",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-advancedliveportrait",
+        "ver": "3bba732915e22f18af0d221b9c5c282990181f1b",
+        "Node name for S&R": "ExpressionEditor"
+      },
+      "widgets_values": [
+        20,
+        17,
+        0,
+        -9.5,
+        15,
+        0,
+        0,
+        0,
+        -20,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "All",
+        1.7
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 20,
+      "type": "AdvancedLivePortrait",
+      "pos": [
+        2334.7286130082166,
+        -0.15546305848340092
+      ],
+      "size": [
+        331.0184264611835,
+        652.616127810445
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "src_images",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 17
+        },
+        {
+          "name": "motion_link",
+          "shape": 7,
+          "type": "EDITOR_LINK",
+          "link": 23
+        },
+        {
+          "name": "driving_images",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-advancedliveportrait",
+        "ver": "3bba732915e22f18af0d221b9c5c282990181f1b",
+        "Node name for S&R": "AdvancedLivePortrait"
+      },
+      "widgets_values": [
+        0,
+        0,
+        1.7,
+        true,
+        false,
+        true,
+        "1 = 1:0\n2 = 15:0\n3 = 20:10"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 21,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        2689.223489675287,
+        -0.15546305848340092
+      ],
+      "size": [
+        344.2576171874998,
+        780.8260157993859
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 19
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
+        "ver": "8923bd836bdab8b7bbdf4ed104b7d045e70c66e2",
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 16,
+        "loop_count": 0,
+        "filename_prefix": "LivePortrait",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "trim_to_audio": false,
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "LivePortrait_00006.mp4",
+            "subfolder": "",
+            "type": "output",
+            "format": "video/h264-mp4",
+            "frame_rate": 16,
+            "workflow": "LivePortrait_00006.png",
+            "fullpath": "D:\\AI\\ComfyUI_windows_portable\\ComfyUI\\output\\LivePortrait_00006.mp4"
+          }
+        }
+      }
+    }
+  ],
+  "links": [
+    [
+      13,
+      8,
+      0,
+      14,
+      0,
+      "IMAGE"
+    ],
+    [
+      16,
+      14,
+      1,
+      16,
+      1,
+      "EDITOR_LINK"
+    ],
+    [
+      17,
+      8,
+      0,
+      20,
+      0,
+      "IMAGE"
+    ],
+    [
+      18,
+      8,
+      0,
+      16,
+      0,
+      "IMAGE"
+    ],
+    [
+      19,
+      20,
+      0,
+      21,
+      0,
+      "IMAGE"
+    ],
+    [
+      21,
+      16,
+      1,
+      22,
+      1,
+      "EDITOR_LINK"
+    ],
+    [
+      22,
+      8,
+      0,
+      22,
+      0,
+      "IMAGE"
+    ],
+    [
+      23,
+      22,
+      1,
+      20,
+      1,
+      "EDITOR_LINK"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6830134553650707,
+      "offset": [
+        -754.8905048415231,
+        305.5269496318352
+      ]
+    },
+    "reroutes": [
+      {
+        "id": 1,
+        "pos": [
+          1662.7292954251304,
+          14.011759237569276
+        ],
+        "linkIds": [
+          17,
+          18,
+          22
+        ]
+      },
+      {
+        "id": 2,
+        "parentId": 1,
+        "pos": [
+          1985.6296404880459,
+          16.037965357482776
+        ],
+        "linkIds": [
+          17,
+          22
+        ]
+      }
+    ],
+    "linkExtensions": [
+      {
+        "id": 17,
+        "parentId": 2
+      },
+      {
+        "id": 18,
+        "parentId": 1
+      },
+      {
+        "id": 22,
+        "parentId": 2
+      }
+    ],
+    "frontendVersion": "1.35.0",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

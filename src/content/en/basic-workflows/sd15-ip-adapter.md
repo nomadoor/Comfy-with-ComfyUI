@@ -23,6 +23,12 @@ Think of it as the pioneer of "reference2image" and "[Subject Transfer](/en/ai-c
 
 ---
 
+## Required Custom Nodes
+
+- [cubiq/ComfyUI_IPAdapter_plus](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
+
+---
+
 ## SD1.5 × IP-Adapter
 
 There are several types of IP-Adapter, but let's start by trying the most standard one.

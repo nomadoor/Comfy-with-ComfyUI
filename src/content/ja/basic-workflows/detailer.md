@@ -59,6 +59,7 @@ Detailer は、inpaintしたい周辺領域だけ切り抜くため無駄があ�
 
 Detailer は、このクロップ領域のみで行うinpaintingです。
 
+---
 
 ## ✂️ Inpaint Crop
 

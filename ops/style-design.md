@@ -65,7 +65,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 ## 6. Article Body
 - Transparent background (no cards). Content width max 60ch.
 - Heading rhythm: `h2` margin-top `3rem`, `h3` `1.5rem`.
-- Inline images are centered, `max-width: 720px`, `max-height: 300px`, and `object-fit: contain` so portrait assets never force extra scrolling.
+- Inline images are centered, `max-width: 720px`, `max-height: 320px`, and `object-fit: contain` so portrait assets never force extra scrolling.
 - Inline Gyazo media stays completely flat: **no borders / box-shadows**. When contrast is needed, rely on `--color-panel-alt` as the single backing surface.
 - 蜈ｨ繝壹・繧ｸ縺ｧ蜷御ｸ繝医・繝ｳ繧剃ｿ昴▽縺溘ａ縲∵悽譁・ｸｭ縺ｮ逕ｻ蜒上・蜍慕判繧ゅョ繝輔か繝ｫ繝医〒貂帛・繝輔ぅ繝ｫ繧ｿ・井ｾ具ｼ啻filter: brightness(0.85)`・峨ｒ驕ｩ逕ｨ縺吶ｋ縲・
 - Lists use default bullets; ensure `padding-left: 1.5rem`.

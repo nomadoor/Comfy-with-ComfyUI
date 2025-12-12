@@ -61,9 +61,7 @@ This idea of "going through the model's comfortable resolution once and then lif
 
 ---
 
-## workflow
-
-### Basic Method
+## Basic Method
 
 ![](https://gyazo.com/96cd5924bcaef159a79e2fb5fa991665){gyazo=image}
 
@@ -74,7 +72,9 @@ This idea of "going through the model's comfortable resolution once and then lif
 - 🟨 Input the enlarged image into image2image
 
 
-### Method of Enlarging as Latent
+---
+
+## Method of Enlarging as Latent
 
 In the previous workflow, the flow was to decode the text2image image into a pixel image once, enlarge it, convert it back to latent, and then image2image.
 

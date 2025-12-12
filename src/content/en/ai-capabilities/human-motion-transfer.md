@@ -15,9 +15,7 @@ hero:
 
 Human motion transfer applies the pose and movement from a source person to a different target character or subject. It is useful for puppet-style animation, reenactment, and stabilizing motion between takes.
 
----
-
-## Typical Approaches
+## Trends after Animate Anyone
 
 - Pose/keypoint based pipelines (e.g., OpenPose → motion-aware models)
 - Video-to-video diffusion models that condition on optical flow or keyframes
@@ -25,6 +23,6 @@ Human motion transfer applies the pose and movement from a source person to a di
 
 ---
 
-## Workflows
+## DiT Generation and Wan-Animate
 
 - [](/workflows/ai-capabilities/human-motion-transfer/MimicMotion.json)

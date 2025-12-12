@@ -176,4 +176,4 @@ Qwen-Image-Edit-2509 は、無印版を拡張した新バージョンです。
 [](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit_lightning_8steps.json)
 
 * `LoraLoaderModelOnly` ノードで Lightning LoRA を読み込みます。
-* `KSampler` の `steps` を 4 または 8、`CFG` を 1.0 前後に設定します。
+* `KSampler` の `steps` を 4 または 8、`CFG` を 1.0 に設定します。

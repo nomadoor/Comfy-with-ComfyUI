@@ -27,8 +27,8 @@
 - Download link forces `Content-Disposition: attachment`.
 
 ## 5. Media & Lightbox
-- Normalize Gyazo URLs to `https://i.gyazo.com/<id>/max_size/1000` and cache width/height to avoid CLS.
-- Default media brightness: `filter: brightness(0.85)`. Obey the 300px article media height cap unless overridden.
+- Default media brightness: `filter: brightness(0.85)`. Obey the 320px article media height cap unless overridden.
+- Hero media may be an image or a Gyazo `.mp4` video URL. Hero videos autoplay muted loop and are purely decorative.
 - Lightbox must support Esc close, +/- zoom, and arrow keys or buttons for navigation.
 
 ## 6. Search

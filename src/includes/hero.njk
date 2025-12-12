@@ -1,8 +1,21 @@
 {% set heroBlock = hero or {} %}
 {% set heroImage = heroBlock.image %}
-{% set heroVariant = heroImage and (heroImage | imageVariant(1200)) %}
+{% set isHeroVideo = heroImage and (heroImage | lower).endsWith(".mp4") %}
+{% set heroVariant = (heroImage and (not isHeroVideo)) and (heroImage | imageVariant(1200)) %}
 <div class="hero{% if heroImage %} hero--has-media{% endif %}">
-  {% if heroImage and heroVariant %}
+  {% if heroImage and isHeroVideo %}
+    <video
+      class="hero__media"
+      src="{{ heroImage }}"
+      muted
+      autoplay
+      loop
+      playsinline
+      preload="metadata"
+      aria-hidden="true"
+      tabindex="-1"
+    ></video>
+  {% elif heroImage and heroVariant %}
     <img
       src="{{ heroVariant.preview }}"
       {% if heroVariant.full and heroVariant.full != heroVariant.preview %}data-full-src="{{ heroVariant.full }}"{% endif %}
