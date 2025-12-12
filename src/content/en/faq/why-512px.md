@@ -23,6 +23,8 @@ There are two main reasons.
 - Because it is trained on images around 512px
 - Because computational cost jumps up at once when resolution is increased
 
+---
+
 ## 1. The model is trained around 512px
 
 Stable Diffusion 1.5 is trained mostly on **square images of 512px × 512px**.
@@ -45,6 +47,8 @@ One solution is Hires.fix.
 
 The idea is not to make it draw sizes it is not good at suddenly, but **"to go through the size it is good at once, and then make it a large picture"**.
 
+---
+
 ## 2. Computational complexity increases at once when resolution is increased
 
 The other is simply **a problem of computational complexity**.
@@ -64,6 +68,8 @@ There are several options for dealing with when you want to increase resolution.
 - **Use Tiled methods**
   - Instead of generating one sheet as a whole, use [Ultimate SD upscale](/en/basic-workflows/ultimate-sd-upscale/) which divides and combines.
   - If you increase the number of divisions like 4 divisions, 8 divisions, theoretically you can make ultra-high resolution images as much as you want.
+
+---
 
 ## Story after SDXL
 

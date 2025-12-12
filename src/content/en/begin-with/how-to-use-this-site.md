@@ -85,8 +85,6 @@ Don't rush, let's enjoy the immature AI. Only now can we do that.
 
 ---
 
----
-
 ## Questions / Correction Reports
 
 An assistant (?) confused by grabbing a ComfyUI node resides in the lower right of the screen 😏 Please hover your mouse over it.

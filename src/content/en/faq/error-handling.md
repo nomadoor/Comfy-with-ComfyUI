@@ -24,6 +24,8 @@ Basically, errors are displayed in the following two places with the same conten
 The error window on the screen disappears when you press Close, but the content remains in the terminal.
 Even if you close it in a hurry, you can check the same error message by scrolling through the terminal later.
 
+---
+
 ## Where to look in the error message
 
 The first thing to look at for runtime errors is the first two lines of the error message.
@@ -34,6 +36,8 @@ The first thing to look at for runtime errors is the first two lines of the erro
   → What is causing the failure (shape / channel / dtype etc.)
 
 If you keysearch these two lines, you can usually reach the cause.
+
+---
 
 ## How to investigate errors
 
@@ -54,6 +58,8 @@ If you keysearch these two lines, you can usually reach the cause.
   - There is also a Marshmallow for the work4ai community I participate in, so it's okay to throw it here if you want to ask anonymously.
     - [Marshmallow/work4ai](https://marshmallow-qa.com/gbyrz1zwnewy7gj?t=2ACPWh&utm_medium=url_text&utm_source=promotion)
   - Even then, the two points "which node" and "what error message" are important.
+
+---
 
 ## Last resort: Before writing an issue
 

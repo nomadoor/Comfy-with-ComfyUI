@@ -63,8 +63,6 @@ Here we only handle 14B.
         └── wan_2.1_vae.safetensors
 ```
 
----
-
 ## Basic Structure
 
 In any pattern, the basic form is adding the `WanVaceToVideo` node based on [Wan 2.1 text2video](/en/basic-workflows/wan-2-1/#quality-improvement-techniques).
@@ -121,20 +119,6 @@ Replace only a part of the video.
 
 ---
 
-## Spatial Outpainting
-
-Add margins to the top, bottom, left, and right of the video and fill those parts.
-
-![](https://gyazo.com/b3775e8e75ff61ae0d87dcd3b43028d1){gyazo=image}
-
-[](/workflows/basic-workflows/wan-2-1-vace/Wan2.1_VACE_outpainting.json)
-
-- Add padding with `ImagePad KJ` node etc., and extract the increased part as a mask.
-- Input the padded image and mask as `control_video` / `mask`.
-- Adjust resolution to be a **multiple of 16**.
-
----
-
 ## Temporal Outpainting (Extension)
 
 Extend the "time direction" of the video.
@@ -158,16 +142,3 @@ Apply Extension to make an existing video loop.
 [](/workflows/basic-workflows/wan-2-1-vace/Wan2.1_VACE_Extension_loop.json)
 
 - Use the beginning and end of the original video, and loop by generating frames connecting them with Extension.
-
----
-
-## In-between Frame Generation
-
-Generate only intermediate frames of the video by applying Extension.
-
-![](https://gyazo.com/9cb508fbbc705b2719e6c66a813bf17e){gyazo=loop}
-
-[](/workflows/basic-workflows/wan-2-1-vace/Wan2.1_VACE_4images.json)
-
-- Arrange still images serving as keyframes, and specify the interval between them as Extension section (full mask).
-- Unlike FLF2V, since prompts and `control_video` can be used together, more detailed guidance is possible.
