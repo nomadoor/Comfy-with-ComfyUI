@@ -50,7 +50,7 @@ The scheduler decides the allocation, such as whether to reduce greatly in the e
 
 It's not that Sampling doesn't affect image quality, but being particular about this setting doesn't necessarily improve quality that much.
 
-Basically, choosing **Euler + normal 20step** is fine.
+Basically, choosing **Euler + normal or Simple / 20step** is fine.
 
 ### Beware of Bad Combinations
 
