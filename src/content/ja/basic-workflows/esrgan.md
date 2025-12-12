@@ -57,6 +57,7 @@ ESRGANは、低解像度の画像を高解像度にアップスケールする�
 [](/workflows/basic-workflows/esrgan/RealESRGAN_x0.5.json)
 
 - 🟨 `scale_by`の値を変更して倍率を調整できます。
+- この場合なら、`4倍 × 0.5倍` で、最終的には2倍の解像度になります。
 
 ---
 

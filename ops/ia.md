@@ -169,10 +169,15 @@
     * エラーコードの確認
   * よくある質問
     * 512px × 512pxで生成するのはなぜ？
-    * SD1.5のLoRA/ControlNetはSDXLで使えない？
-    * 8の倍数解像度しか生成できないのはなぜ？
-  * トラブルシューティング
-    * OOM / VRAM
-    * アーティファクト
-    * 生成画像で人や物体が分身している
-    * RuntimeError: channels mismatch
+    * Stable Diffusion 1.5 の LoRA / ControlNet は SDXL で使えない？
+    * 8 の倍数解像度しか生成できないのはなぜ？
+    * Stable Diffusion web UI と ComfyUI で同じ画像は生成できない？
+  - 生成結果がおかしい
+    - 生成画像で人や物体が分身している
+  * エラーコード
+    * torch.cuda.OutOfMemoryError（VRAM 不足）
+    * CUDA error: an illegal memory access was encountered
+    * RuntimeError: Given groups=1, weight of size 64, 3, 3, 3, expected input 1, 4, 512, 512 to have 3 channels, but got 4 channels instead
+    * RuntimeError: mat1 and mat2 shapes cannot be multiplied
+    * UnicodeDecodeError('cp932' codec can't decode byte 0x87 in position 40: illegal multibyte sequence)
+
