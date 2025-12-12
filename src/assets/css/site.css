@@ -1274,13 +1274,17 @@ h1 {
   border-top: 1px solid var(--color-border);
 }
 
-.article-body table code {
+.article-body table td:first-child code,
+.article-body table th:first-child code {
   white-space: nowrap;
 }
 
-.article-body table td:not(:first-child),
-.article-body table th:not(:first-child) {
-  word-break: break-word;
+@media (max-width: 768px) {
+  .article-body table td:first-child code,
+  .article-body table th:first-child code {
+    white-space: normal;
+    word-break: break-word;
+  }
 }
 
 .article-body pre {
