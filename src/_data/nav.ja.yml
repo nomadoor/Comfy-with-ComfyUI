@@ -353,7 +353,7 @@ sections:
     - id: lora-cn-sdxl
       title: Stable Diffusion 1.5 の LoRA / ControlNet は SDXL で使えない？
     - id: why-multiple-of-8
-      title: 8 の倍数解像度しか生成できないのはなぜ？
+      title: 8 の倍数の解像度しか生成できないのはなぜ？
     - id: sdwebui-vs-comfyui
       title: web UI と ComfyUI で同じ画像は生成できない？
   - id: bad-output

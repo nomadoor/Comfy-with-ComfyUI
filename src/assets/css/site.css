@@ -629,13 +629,27 @@ video {
 }
 
 .nav-list__no-link {
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: var(--space-xs) var(--space-xs);
   color: var(--color-text-muted);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   margin-top: var(--space-xs);
+}
+
+.nav-list__label {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+  word-break: break-all;
+  /* Ensure long words/Japanese wrap properly */
 }
 
 /* Height-responsive (three-step) */
@@ -1280,6 +1294,7 @@ h1 {
 }
 
 @media (max-width: 768px) {
+
   .article-body table td:first-child code,
   .article-body table th:first-child code {
     white-space: normal;
@@ -1467,17 +1482,7 @@ h1 {
   color: var(--color-highlight);
 }
 
-/* Nav label clamp to 2 lines with ellipsis */
-.nav-list__link,
-.nav-list__no-link {
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  line-height: 1.4;
-}
+
 
 .token.comment,
 .token.prolog,
@@ -1862,6 +1867,7 @@ h1 {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -1873,6 +1879,7 @@ h1 {
     animation: none;
   }
 }
+
 .workflow-related__title {
   font-weight: 700;
   font-size: 0.9rem;
