@@ -366,6 +366,8 @@ sections:
     title: エラーコード
     noLink: true
     children:
+    - id: import-failed
+      title: (IMPORT FAILED)
     - id: torch-cuda-oom
       title: torch.cuda.OutOfMemoryError（VRAM 不足）
     - id: cuda-illegal-memory
