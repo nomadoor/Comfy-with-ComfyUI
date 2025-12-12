@@ -1,0 +1,243 @@
+{
+  "id": "dba15c18-c2e7-4547-8472-85361bc55454",
+  "revision": 0,
+  "last_node_id": 18,
+  "last_link_id": 19,
+  "nodes": [
+    {
+      "id": 15,
+      "type": "PreviewImage",
+      "pos": [
+        1701.7023235943498,
+        98.72387954106597
+      ],
+      "size": [
+        312.7272727272725,
+        485.090909090909
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 13
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.76",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 9,
+      "type": "LoadImage",
+      "pos": [
+        1081.3225849102464,
+        207.48210643813542
+      ],
+      "size": [
+        271.6843277493424,
+        470.9630353117956
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            9
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.76",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "pasted/image (107).png",
+        "image"
+      ]
+    },
+    {
+      "id": 14,
+      "type": "LoadImage",
+      "pos": [
+        766.4372083426591,
+        98.72387954106597
+      ],
+      "size": [
+        282.1988281250001,
+        508.70000000000005
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            14
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.76",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "pasted/image (105).png",
+        "image"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "ExpressionEditor",
+      "pos": [
+        1385.6934611021761,
+        98.72387954106597
+      ],
+      "size": [
+        283.32231404958657,
+        756
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "src_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 14
+        },
+        {
+          "name": "motion_link",
+          "shape": 7,
+          "type": "EDITOR_LINK",
+          "link": null
+        },
+        {
+          "name": "sample_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 9
+        },
+        {
+          "name": "add_exp",
+          "shape": 7,
+          "type": "EXP_DATA",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            13
+          ]
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "links": []
+        },
+        {
+          "name": "save_exp",
+          "type": "EXP_DATA",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-advancedliveportrait",
+        "ver": "3bba732915e22f18af0d221b9c5c282990181f1b",
+        "Node name for S&R": "ExpressionEditor"
+      },
+      "widgets_values": [
+        0,
+        17.5,
+        5.5,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "All",
+        1.7
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      9,
+      9,
+      0,
+      11,
+      2,
+      "IMAGE"
+    ],
+    [
+      13,
+      11,
+      0,
+      15,
+      0,
+      "IMAGE"
+    ],
+    [
+      14,
+      14,
+      0,
+      11,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6830134553650705,
+      "offset": [
+        -175.963708342659,
+        209.17832045893417
+      ]
+    },
+    "frontendVersion": "1.35.0",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

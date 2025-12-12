@@ -2,8 +2,8 @@
 layout: page.njk
 lang: ja
 section: basic-workflows
-slug: flux1
-navId: flux1
+slug: flux-1
+navId: flux-1
 title: "Flux.1"
 summary: "Flux.1の基本とComfyUIでの使い方"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"

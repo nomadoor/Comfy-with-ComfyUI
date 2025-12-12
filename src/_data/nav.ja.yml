@@ -258,7 +258,7 @@ sections:
       children:
       - id: sdxl-anime
         title: アニメ系 SDXL モデル
-    - id: flux1
+    - id: flux-1
       title: Flux.1
       children:
       - id: flux-1-tools
@@ -278,6 +278,8 @@ sections:
       children:
       - id: qwen-image-edit
         title: Qwen-Image-Edit
+    - id: z-image-turbo
+      title: Z-Image-Turbo
   - id: upscale-fix
     title: アップスケール・修正
     noLink: true
@@ -301,13 +303,13 @@ sections:
         title: Wan-Animate
     - id: wan-2-2
       title: Wan 2.2
-    - id: ltx-video
-      title: LTX-Video
     - id: framepack
       title: FramePack
+      noLink: true
       children:
-      - id: one-frame-inference
-        title: 1フレーム推論
+      - id: FramePack-one-frame-inference
+        title: FramePack 1フレーム推論
+        noLink: true
     - id: liveportrait
       title: LivePortrait
   - id: llm-mlm-workflows
