@@ -373,10 +373,10 @@ sections:
     - id: torch-cuda-oom
       title: torch.cuda.OutOfMemoryError（VRAM 不足）
     - id: cuda-illegal-memory
-      title: CUDA error: an illegal memory access was encountered
+      title: "CUDA error: an illegal memory access was encountered"
     - id: runtime-groups-channels
-      title: RuntimeError: Given groups=1, weight of size 64, 3, 3, 3, expected input 1, 4, 512, 512 to have 3 channels, but got 4 channels instead
+      title: "RuntimeError: Given groups=1, weight of size 64, 3, 3, 3, expected input 1, 4, 512, 512 to have 3 channels, but got 4 channels instead"
     - id: runtime-mat-shape
-      title: RuntimeError: mat1 and mat2 shapes cannot be multiplied
+      title: "RuntimeError: mat1 and mat2 shapes cannot be multiplied"
     - id: unicode-cp932
-      title: UnicodeDecodeError('cp932' codec can't decode byte 0x87 in position 40: illegal multibyte sequence)
+      title: "UnicodeDecodeError('cp932' codec can't decode byte 0x87 in position 40: illegal multibyte sequence)"
