@@ -342,15 +342,41 @@ sections:
 - key: faq
   label: FAQ / トラブルシューティング
   pages:
-  - id: oom-vram
-    title: OOM / VRAM
+  - id: error-handling
+    title: エラーが出た時にやること
     noLink: true
     children:
-    - id: oom-checklist
-      title: VRAM復旧手順
+    - id: check-error-code
+      title: エラーコードの確認
   - id: common-questions
     title: よくある質問
-  - id: render-errors
-    title: Renderエラー
-  - id: workflow-debug
-    title: Workflowデバッグ
+    noLink: true
+    children:
+    - id: why-512px
+      title: 512px × 512pxで生成するのはなぜ？
+    - id: lora-cn-sdxl
+      title: Stable Diffusion 1.5 の LoRA / ControlNet は SDXL で使えない？
+    - id: why-multiple-of-8
+      title: 8 の倍数解像度しか生成できないのはなぜ？
+    - id: sdwebui-vs-comfyui
+      title: Stable Diffusion web UI と ComfyUI で同じ画像は生成できない？
+  - id: bad-output
+    title: 生成結果がおかしい
+    noLink: true
+    children:
+    - id: duplicate-objects
+      title: 生成画像で人や物体が分身している
+  - id: error-codes
+    title: エラーコード
+    noLink: true
+    children:
+    - id: torch-cuda-oom
+      title: torch.cuda.OutOfMemoryError（VRAM 不足）
+    - id: cuda-illegal-memory
+      title: CUDA error: an illegal memory access was encountered
+    - id: runtime-groups-channels
+      title: RuntimeError: Given groups=1, weight of size 64, 3, 3, 3, expected input 1, 4, 512, 512 to have 3 channels, but got 4 channels instead
+    - id: runtime-mat-shape
+      title: RuntimeError: mat1 and mat2 shapes cannot be multiplied
+    - id: unicode-cp932
+      title: UnicodeDecodeError('cp932' codec can't decode byte 0x87 in position 40: illegal multibyte sequence)
