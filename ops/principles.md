@@ -13,6 +13,7 @@
 - “Page = Tag” is immutable. The tag slug ties nav, cards, workflows, and search facets together.
 - Max 5 tags per page; any overflow is a content bug that should block merge.
 - Workflows inherit the tag slug from the page displaying them; list all workflows sharing that slug without omission.
+- Tags are primarily for `basic-workflows` pages and exist to connect `ai-capabilities` ↔ `basic-workflows` (chips/cards/related lists). Treat tags outside `basic-workflows` as exceptions that require explicit owner agreement.
 
 ## 4. Five Section Contract
 - Section keys: `begin-with`, `data-utilities`, `ai-capabilities`, `basic-workflows`, `faq`.
