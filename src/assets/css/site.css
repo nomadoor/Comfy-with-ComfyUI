@@ -1249,6 +1249,7 @@ h1 {
   background: var(--color-panel);
   border-radius: var(--radius-md);
   overflow: hidden;
+  table-layout: auto;
 }
 
 .article-body table th,
@@ -1271,6 +1272,15 @@ h1 {
 
 .article-body table tbody tr+tr td {
   border-top: 1px solid var(--color-border);
+}
+
+.article-body table code {
+  white-space: nowrap;
+}
+
+.article-body table td:not(:first-child),
+.article-body table th:not(:first-child) {
+  word-break: break-word;
 }
 
 .article-body pre {
