@@ -87,7 +87,7 @@ Wan-Animate 本体と、Wan2.1 系で共通のモデルを揃えます。
 
 [](/workflows/basic-workflows/wan-animate/Wan2.2-Animate_Animation.json)
 
-{% mediaRow img="https://gyazo.com/77b9c908b9e96505678ccaa0bde8055b {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="https://gyazo.com/77b9c908b9e96505678ccaa0bde8055b{gyazo=image}", width=33, align="left" %}
 
 **1. Wan-Animate モデルを読み込む**
 
