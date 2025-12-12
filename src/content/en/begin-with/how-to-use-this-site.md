@@ -16,11 +16,9 @@ hero:
 Welcome to **Comfy-with-ComfyUI**!
 
 There are many excellent explanations of ComfyUI, including the official documentation.
-However, I felt that there was surprisingly little information on points where beginners tend to stumble at first, so I am focusing on explaining those parts.
+However, I felt that there was surprisingly little information on points where beginners first stumble, so I created this site to focus on explaining those parts!
 
 I think it will be a good place for veteran users to know how ComfyUI is evolving.
-
-> Some pages are already complete, but many are still **WIP**. Look forward to completion!
 
 ---
 
