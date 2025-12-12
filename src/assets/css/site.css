@@ -1476,8 +1476,7 @@ h1 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  line-height: 1.35;
-  max-height: calc(1.35em * 2);
+  line-height: 1.4;
 }
 
 .token.comment,
