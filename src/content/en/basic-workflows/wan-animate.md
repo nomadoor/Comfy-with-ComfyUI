@@ -23,7 +23,7 @@ tags: ["human-motion-transfer","talking-head"]
 
 There are two generation modes, but it is easier to think of Replacement Mode as Animation Mode with added "processing to blend into the background".
 
-Since it is based on Wan 2.1, it can only generate up to 77 frames, but like the [Wan 2.1 VACE]() extension, it has a feature that allows you to generate virtually infinitely long videos by repeatedly extracting the last few frames and generating the continuation.
+Since it is based on Wan 2.1, it can only generate up to 77 frames, but like the [Wan 2.1 VACE](/en/basic-workflows/wan-2-1-vace/) extension, it has a feature that allows you to generate virtually infinitely long videos by repeatedly extracting the last few frames and generating the continuation.
 
 ---
 
