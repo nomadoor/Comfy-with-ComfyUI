@@ -2,8 +2,8 @@
 layout: page.njk
 lang: ja
 section: faq
-slug: sdwebui-vs-comfyui
-navId: sdwebui-vs-comfyui
+slug: sdwebui-comfyui-reproducibility
+navId: sdwebui-comfyui-reproducibility
 title: "Stable Diffusion web UI と ComfyUI で同じ画像は生成できない？"
 summary: "同じモデル・同じシードでも画像が一致しない理由"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"

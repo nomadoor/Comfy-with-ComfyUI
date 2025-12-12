@@ -2,8 +2,8 @@
 layout: page.njk
 lang: en
 section: faq
-slug: sdwebui-vs-comfyui
-navId: sdwebui-vs-comfyui
+slug: sdwebui-comfyui-reproducibility
+navId: sdwebui-comfyui-reproducibility
 title: "Can't generate the same image with Stable Diffusion web UI and ComfyUI?"
 summary: "Reasons why images do not match even with the same model and same seed"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"

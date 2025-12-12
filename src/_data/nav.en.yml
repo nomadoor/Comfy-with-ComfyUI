@@ -350,11 +350,11 @@ sections:
         children:
           - id: why-512px
             title: Why generate at 512px × 512px?
-          - id: lora-cn-sdxl
+          - id: sd15-sdxl-asset-compatibility
             title: Can't use SD1.5 LoRA / ControlNet with SDXL?
           - id: why-multiple-of-8
             title: Why can only resolutions that are multiples of 8 be generated?
-          - id: sdwebui-vs-comfyui
+          - id: sdwebui-comfyui-reproducibility
             title: Can't generate the same image with web UI and ComfyUI?
       - id: bad-output
         title: Bad Output
@@ -370,11 +370,3 @@ sections:
             title: "(IMPORT FAILED)"
           - id: torch-cuda-oom
             title: torch.cuda.OutOfMemoryError (VRAM shortage)
-          - id: cuda-illegal-memory
-            title: "CUDA error: an illegal memory access was encountered"
-          - id: runtime-groups-channels
-            title: "RuntimeError: Given groups=1, weight of size 64, 3, 3, 3, expected input 1, 4, 512, 512 to have 3 channels, but got 4 channels instead"
-          - id: runtime-mat-shape
-            title: "RuntimeError: mat1 and mat2 shapes cannot be multiplied"
-          - id: unicode-cp932
-            title: "UnicodeDecodeError('cp932' codec can't decode byte 0x87 in position 40: illegal multibyte sequence)"
