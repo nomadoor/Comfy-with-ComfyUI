@@ -1191,13 +1191,15 @@ h1 {
 
 .article-media {
   margin: var(--space-md) 0;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
 }
 
 .article-media-row {
   display: flex;
   flex-wrap: nowrap;
-  gap: var(--space-md);
+  gap: var(--space-xs);
   overflow: hidden;
   margin: var(--space-md) 0;
 }
@@ -1209,10 +1211,10 @@ h1 {
 .article-media__frame {
   width: min(100%,
       var(--article-media-width, 720px),
-      calc(var(--article-media-aspect, 16 / 9) * min(var(--article-media-height, 300px), 300px)));
+      calc(var(--article-media-aspect, 16 / 9) * min(var(--article-media-height, 320px), 320px)));
   max-width: 100%;
-  max-height: min(var(--article-media-height, 300px), 300px);
-  min-height: min(var(--article-media-height, 300px), 300px);
+  max-height: min(var(--article-media-height, 320px), 320px);
+  min-height: min(var(--article-media-height, 320px), 320px);
   aspect-ratio: var(--article-media-aspect, 16 / 9);
   height: auto;
   border-radius: var(--radius-md);
@@ -1226,9 +1228,9 @@ h1 {
 
 .article-media-row .article-media__frame {
   width: calc(min(var(--article-media-width, 720px),
-        calc(var(--article-media-aspect, 16 / 9) * min(var(--article-media-height, 300px), 300px))) * var(--media-scale, 1));
+        calc(var(--article-media-aspect, 16 / 9) * min(var(--article-media-height, 320px), 320px))) * var(--media-scale, 1));
   max-width: 100%;
-  height: calc(min(var(--article-media-height, 300px), 300px) * var(--media-scale, 1));
+  height: calc(min(var(--article-media-height, 320px), 320px) * var(--media-scale, 1));
   min-height: 0;
   max-height: none;
 }
@@ -1313,7 +1315,7 @@ h1 {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
 }
 
 .article-video__frame {
@@ -1344,6 +1346,11 @@ h1 {
 }
 
 .article-video figcaption {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.article-media figcaption {
   font-size: 0.85rem;
   color: var(--color-text-muted);
 }

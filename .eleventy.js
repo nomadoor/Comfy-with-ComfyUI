@@ -566,7 +566,7 @@ export default function (eleventyConfig) {
     const baseWidth = dims?.width || 720;
     const baseHeight = dims?.height || 360;
     const aspect = dims ? `${dims.width} / ${dims.height}` : "16 / 9";
-    const height = Math.min(baseHeight, 360);
+    const height = Math.min(baseHeight, 320);
     const scale = baseHeight ? height / baseHeight : 1;
     const width = Math.round(baseWidth * scale);
     const source = typeof rawUrl === "string" && rawUrl.endsWith(".mp4")
@@ -690,13 +690,13 @@ export default function (eleventyConfig) {
 
     if (hasDimensions) {
       const ratioValue = widthAttr / heightAttr;
-      const limitedHeight = Math.min(heightAttr, 300);
+      const limitedHeight = Math.min(heightAttr, 320);
       styleChunks.push(`--article-media-aspect:${widthAttr} / ${heightAttr}`);
       styleChunks.push(`--article-media-height:${limitedHeight}px`);
       const constrainedWidth = Math.min(widthAttr, Math.round(ratioValue * limitedHeight));
       styleChunks.push(`--article-media-width:${constrainedWidth}px`);
     } else {
-      styleChunks.push(`--article-media-height:300px`);
+      styleChunks.push(`--article-media-height:320px`);
     }
 
     const styleAttr = styleChunks.length ? ` style="${styleChunks.join("; ")}"` : "";
