@@ -64,8 +64,8 @@ Access the [GitHub release page](https://github.com/comfyanonymous/ComfyUI/relea
     ```
 
 - 3. Open Terminal
-  - Type `cmd` in the address bar of the folder (where the path is displayed) and press the Enter key.
-  - A black screen (command prompt) will open.
+  - Right-click an empty area inside the custom_nodes folder and choose Open in Terminal.
+  - Windows Terminal (PowerShell) will open in that folder.
 
 - 4. Execute Command
   - Copy the following command, paste it into the black screen (right click), and press the Enter key.
