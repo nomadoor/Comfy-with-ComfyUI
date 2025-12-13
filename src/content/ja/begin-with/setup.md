@@ -64,7 +64,7 @@ ComfyUIの [GitHubリリースページ](https://github.com/comfyanonymous/Comfy
     ```
 
 - 3. ターミナルを開く
-  - custom_nodes フォルダの空白部分を右クリックして、**「ターミナルで開く」** を選びます。
+	- custom_nodes フォルダの空白部分を右クリックして、**「ターミナルで開く」** を選びます。
 	- Windows Terminal（PowerShell）が起動し、そのフォルダを作業場所として開きます。
 
 - 4. コマンドを実行
