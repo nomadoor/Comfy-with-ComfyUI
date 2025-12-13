@@ -8,7 +8,7 @@ title: "無線化"
 summary: "ノード間のワイヤレス通信について"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/f7990ba8ce62b43de894da9eba20cb20.png"
+  image: ""
 ---
 
 ## ノードの無線化とは

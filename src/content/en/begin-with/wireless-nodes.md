@@ -8,7 +8,7 @@ title: "Wireless"
 summary: "About wireless communication between nodes"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/f7990ba8ce62b43de894da9eba20cb20.png"
+  image: ""
 ---
 
 ## What is Node Wirelessization?
