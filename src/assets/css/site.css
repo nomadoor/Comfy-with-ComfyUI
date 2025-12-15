@@ -1031,10 +1031,10 @@ h1 {
 
 .heading-anchor {
   position: absolute;
-  top: 0.15em;
-  left: -1.8rem;
-  width: 1.35rem;
-  height: 1.35rem;
+  top: 0.95em;
+  left: calc(-1em - var(--space-xs));
+  width: 1em;
+  height: 1em;
   border: none;
   background: transparent;
   border-radius: var(--radius-pill);
@@ -1046,12 +1046,12 @@ h1 {
   opacity: 0;
   pointer-events: auto;
   transition: var(--transition-fast);
+  transform: translateY(-50%);
 }
 
 .heading-anchor:hover,
-.heading-anchor:focus,
 .heading-anchor:focus-visible,
-.heading-anchor.is-success {
+.heading-anchor:active {
   opacity: 1;
 }
 
@@ -1061,8 +1061,8 @@ h1 {
 }
 
 .heading-anchor__icon {
-  width: 0.9rem;
-  height: 0.9rem;
+  width: 1em;
+  height: 1em;
   background: var(--color-text-muted);
   -webkit-mask: url("/assets/icons/Link%20SVG%20File.svg") no-repeat center / contain;
   mask: url("/assets/icons/Link%20SVG%20File.svg") no-repeat center / contain;
@@ -1073,17 +1073,13 @@ h1 {
   background: var(--color-heading);
 }
 
-.heading-anchor.is-success {
-  opacity: 1;
-}
-
 .heading-anchor.is-success .heading-anchor__icon {
   background: var(--color-highlight);
 }
 
 @media (max-width: 700px) {
   .heading-anchor {
-    left: -1.4rem;
+    left: calc(-1em - var(--space-2xs));
   }
 }
 
