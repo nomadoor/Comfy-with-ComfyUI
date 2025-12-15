@@ -6,6 +6,26 @@ const BASE_TEST_URL =
   process.env.PLAYWRIGHT_BASE_URL || `http://127.0.0.1:${PLAYWRIGHT_PORT}`;
 
 test.describe("Layout rails", () => {
+  test("direct hash links scroll to the target heading", async ({ page }) => {
+    await page.setViewportSize({ width: 1600, height: 900 });
+    await page.goto("/en/basic-workflows/sd15-hires-fix/#basic-method");
+
+    const header = page.locator(".site-header");
+    const target = page.locator("#basic-method");
+
+    await expect(target).toBeVisible();
+
+    const headerBox = await header.boundingBox();
+    const targetBox = await target.boundingBox();
+
+    if (!headerBox || !targetBox) {
+      throw new Error("Unable to measure layout boxes");
+    }
+
+    // Target heading should be below the sticky header area.
+    expect(targetBox.y).toBeGreaterThan(headerBox.height - 1);
+  });
+
   test("sidebar and TOC rails stay fixed with proper offsets", async ({ page }) => {
     await page.setViewportSize({ width: 1600, height: 900 });
     await page.goto(SAMPLE_PAGE);

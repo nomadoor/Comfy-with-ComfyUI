@@ -37,7 +37,8 @@ export default function initPage(root = document.getElementById("page") || docum
   if (isProfileNav()) console.log("[nav-prof] initPage start");
 
   // Content-scoped modules (re-run per navigation)
-  profileStep("toc", () => runIdle(() => initToc?.(root)));
+  const shouldEagerToc = Boolean(window.location.hash);
+  profileStep("toc", () => (shouldEagerToc ? initToc?.(root) : runIdle(() => initToc?.(root))));
   profileStep("lightbox", () => initLightbox?.(root));
   profileStep("gyazo-toggle", () => initGyazoToggle?.(root));
   profileStep("code-copy", () => initCodeCopy?.(root));

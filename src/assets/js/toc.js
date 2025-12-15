@@ -54,6 +54,21 @@ const initToc = () => {
     return offset;
   }
 
+  function scrollToHashIfNeeded({ behavior = "auto" } = {}) {
+    const rawHash = window.location.hash || "";
+    if (!rawHash || rawHash === "#") return;
+    const id = decodeURIComponent(rawHash.slice(1));
+    if (!id) return;
+
+    const targetEl = document.getElementById(id);
+    if (!targetEl) return;
+
+    const offset = getHeaderOffset();
+    const top = targetEl.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior });
+    setActiveLink(id);
+  }
+
   function getHeadings() {
     // Only select direct h2, h3 in the article to avoid accidentally picking up unwanted headers
     // :scope is widely supported in modern browsers.
@@ -169,6 +184,8 @@ const initToc = () => {
   buildToc();
   // Run update immediately to set initial state
   update();
+  // Ensure direct-load hash links work after we assign heading IDs client-side.
+  scrollToHashIfNeeded({ behavior: "auto" });
 
   // Re-calculate on resize / load / layout changes
   const handleResize = onScroll;
@@ -176,6 +193,7 @@ const initToc = () => {
     update();
     setTimeout(update, 100);
     setTimeout(update, 300);
+    scrollToHashIfNeeded({ behavior: "auto" });
   };
   const handleImageFade = () => {
     update();
