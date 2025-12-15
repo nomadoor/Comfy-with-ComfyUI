@@ -29,8 +29,10 @@ test.describe("Layout rails", () => {
     const heading = page.locator("#basic-method");
     await expect(heading).toBeVisible();
 
-    await heading.hover();
     const button = heading.locator(".heading-anchor");
+    await expect(button).toHaveCount(1);
+
+    await button.focus();
     await expect(button).toBeVisible();
 
     await button.click();

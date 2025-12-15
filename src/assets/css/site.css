@@ -1035,8 +1035,8 @@ h1 {
   left: -1.8rem;
   width: 1.35rem;
   height: 1.35rem;
-  border: 1px solid var(--color-border);
-  background: var(--color-panel-alt);
+  border: none;
+  background: transparent;
   border-radius: var(--radius-pill);
   display: inline-flex;
   align-items: center;
@@ -1044,16 +1044,15 @@ h1 {
   padding: 0;
   cursor: pointer;
   opacity: 0;
-  pointer-events: none;
+  pointer-events: auto;
   transition: var(--transition-fast);
 }
 
-.article-body h2:hover .heading-anchor,
-.article-body h3:hover .heading-anchor,
+.heading-anchor:hover,
+.heading-anchor:focus,
 .heading-anchor:focus-visible,
 .heading-anchor.is-success {
   opacity: 1;
-  pointer-events: auto;
 }
 
 .heading-anchor:focus-visible {
@@ -1065,8 +1064,8 @@ h1 {
   width: 0.9rem;
   height: 0.9rem;
   background: var(--color-text-muted);
-  -webkit-mask: url("/assets/icons/Copy%20SVG%20File.svg") no-repeat center / contain;
-  mask: url("/assets/icons/Copy%20SVG%20File.svg") no-repeat center / contain;
+  -webkit-mask: url("/assets/icons/Link%20SVG%20File.svg") no-repeat center / contain;
+  mask: url("/assets/icons/Link%20SVG%20File.svg") no-repeat center / contain;
 }
 
 .heading-anchor:hover .heading-anchor__icon,
@@ -1075,7 +1074,7 @@ h1 {
 }
 
 .heading-anchor.is-success {
-  border-color: var(--color-highlight);
+  opacity: 1;
 }
 
 .heading-anchor.is-success .heading-anchor__icon {
