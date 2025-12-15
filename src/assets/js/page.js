@@ -7,6 +7,7 @@ import initGyazoToggle from "./gyazo-toggle.js";
 import initCodeCopy from "./code-copy.js";
 import initCopyJson from "./copy-json.js"; // workflow JSON copy/download
 import initMediaRowFit from "./media-row-fit.js";
+import initHeadingAnchors from "./heading-anchors.js";
 import "./sidebar.js"; // legacy auto-init; sidebar is persistent shell
 import "./mobile-nav.js"; // handles nav/search toggles; persistent shell
 import "./theme-toggle.js"; // global theme switcher
@@ -39,6 +40,7 @@ export default function initPage(root = document.getElementById("page") || docum
   // Content-scoped modules (re-run per navigation)
   const shouldEagerToc = Boolean(window.location.hash);
   profileStep("toc", () => (shouldEagerToc ? initToc?.(root) : runIdle(() => initToc?.(root))));
+  profileStep("heading-anchors", () => initHeadingAnchors?.(root));
   profileStep("lightbox", () => initLightbox?.(root));
   profileStep("gyazo-toggle", () => initGyazoToggle?.(root));
   profileStep("code-copy", () => initCodeCopy?.(root));
