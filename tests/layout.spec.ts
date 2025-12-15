@@ -6,6 +6,21 @@ const BASE_TEST_URL =
   process.env.PLAYWRIGHT_BASE_URL || `http://127.0.0.1:${PLAYWRIGHT_PORT}`;
 
 test.describe("Layout rails", () => {
+  test("Gyazo hero images always use max_size variants", async ({ page }) => {
+    await page.setViewportSize({ width: 1700, height: 900 });
+    await page.goto("/ja/begin-with/what-is-comfyui/");
+
+    const heroImage = page.locator(".hero img.hero__media");
+    await expect(heroImage).toBeVisible();
+
+    await expect
+      .poll(async () => heroImage.evaluate((img) => img.complete && img.naturalWidth > 0))
+      .toBeTruthy();
+
+    const currentSrc = await heroImage.evaluate((img) => img.currentSrc || img.src);
+    expect(currentSrc).toContain("/max_size/");
+  });
+
   test("direct hash links scroll to the target heading", async ({ page }) => {
     await page.setViewportSize({ width: 1600, height: 900 });
     await page.goto("/en/basic-workflows/sd15-hires-fix/#basic-method");

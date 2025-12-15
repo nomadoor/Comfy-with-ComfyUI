@@ -103,11 +103,13 @@ function createImageVariants(url = "", size = 2000) {
     const ext = extMatch[1];
     const id = normalizedPath.slice(0, -ext.length);
     const preview = `${normalizedUrl.origin}/${id}/max_size/${size}${ext}`;
+    const fullSize = Math.max(size, 2000);
+    const full = `${normalizedUrl.origin}/${id}/max_size/${fullSize}${ext}`;
     const meta = gyazoMeta[normalized];
     const previewDims = getPreviewDimensions(meta, size);
     return {
       preview,
-      full: normalized,
+      full,
       width: previewDims.width,
       height: previewDims.height,
       originalWidth: meta?.width,
