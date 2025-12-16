@@ -88,6 +88,16 @@
         "en": "Downloaded"
       }
     },
+    "headingAnchor": {
+      "copyLabel": {
+        "ja": "見出しリンクをコピー",
+        "en": "Copy heading link"
+      },
+      "copiedLabel": {
+        "ja": "コピーしました",
+        "en": "Copied"
+      }
+    },
     "toc": {
       "tipsPlaceholder": {
         "ja": "Tipsコンテンツ準備中",

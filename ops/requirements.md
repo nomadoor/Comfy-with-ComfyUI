@@ -81,3 +81,8 @@
 - Every anchor must be classified as internal or external so styles can target them (`data-link-type="internal|external"` plus `.link--internal` / `.link--external` classes).
 - External links (different origin, protocol-relative URLs, or explicit `mailto:`/`tel:` schemes) always open in a new tab/window and append `rel="noopener noreferrer"` unless the anchor has a `download` attribute.
 - Internal links keep in-app navigation; components must not override this unless an explicit spec requires a different behavior.
+
+## 16. Heading Permalinks (Article)
+- Article H2/H3 headings expose a permalink affordance: an icon appears on hover (and on keyboard focus).
+- Clicking the icon copies the canonical URL including the `#<heading-id>` fragment to the clipboard.
+- This is UI chrome (not authored content): do not add manual permalink markup inside Markdown.

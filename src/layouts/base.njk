@@ -11,6 +11,9 @@
 {% endif -%}
 {% set currentSection = sectionExists and sectionCandidate or (localeNav.sections[0].key if localeNav and localeNav.sections else site.sections[0].key) -%}
 {% set currentNavId = navId | default(slug) -%}
+{% set headingAnchorI18n = site.i18n.headingAnchor or {} -%}
+{% set headingAnchorCopyLabel = headingAnchorI18n.copyLabel[currentLang] or headingAnchorI18n.copyLabel[site.defaultLang] or "Copy heading link" -%}
+{% set headingAnchorCopiedLabel = headingAnchorI18n.copiedLabel[currentLang] or headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
 <!DOCTYPE html>
 <html lang="{{ currentLang }}">
 
@@ -28,7 +31,12 @@
   <link rel="icon" type="image/png" sizes="256x256" href="/assets/logos/favicon/favicon_256.png" />
 </head>
 
-<body lang="{{ currentLang }}" id="top">
+<body
+  lang="{{ currentLang }}"
+  id="top"
+  data-heading-anchor-copy-label="{{ headingAnchorCopyLabel | escape }}"
+  data-heading-anchor-copied-label="{{ headingAnchorCopiedLabel | escape }}"
+>
   {% include "header.njk" %}
   <div class="nav-backdrop" aria-hidden="true"></div>
   <div class="app-shell">

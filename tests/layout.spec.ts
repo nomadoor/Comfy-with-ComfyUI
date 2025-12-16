@@ -6,6 +6,83 @@ const BASE_TEST_URL =
   process.env.PLAYWRIGHT_BASE_URL || `http://127.0.0.1:${PLAYWRIGHT_PORT}`;
 
 test.describe("Layout rails", () => {
+  test("heading permalink icon copies the heading URL", async ({ page }) => {
+    await page.addInitScript(() => {
+      window.__copied = "";
+      const clipboard = navigator.clipboard || {};
+      try {
+        Object.defineProperty(navigator, "clipboard", {
+          value: clipboard,
+          configurable: true
+        });
+      } catch {
+        // ignore
+      }
+      clipboard.writeText = async (value) => {
+        window.__copied = String(value || "");
+      };
+    });
+
+    await page.setViewportSize({ width: 1600, height: 900 });
+    await page.goto("/en/basic-workflows/sd15-hires-fix/");
+
+    const heading = page.locator(".article-body h2", { hasText: "Basic Method" });
+    await expect(heading).toBeVisible();
+
+    await expect
+      .poll(async () => heading.getAttribute("id"))
+      .toBe("basic-method");
+
+    const button = heading.locator(".heading-anchor");
+    await expect(button).toHaveCount(1);
+
+    await button.focus();
+    await expect(button).toBeVisible();
+
+    await button.click();
+
+    await expect
+      .poll(() => page.evaluate(() => window.__copied))
+      .toContain("#basic-method");
+
+    await expect(button).toHaveClass(/is-success/);
+  });
+
+  test("Gyazo hero images always use max_size variants", async ({ page }) => {
+    await page.setViewportSize({ width: 1700, height: 900 });
+    await page.goto("/ja/begin-with/what-is-comfyui/");
+
+    const heroImage = page.locator(".hero img.hero__media");
+    await expect(heroImage).toBeVisible();
+
+    await expect
+      .poll(async () => heroImage.evaluate((img) => img.complete && img.naturalWidth > 0))
+      .toBeTruthy();
+
+    const currentSrc = await heroImage.evaluate((img) => img.currentSrc || img.src);
+    expect(currentSrc).toContain("/max_size/");
+  });
+
+  test("direct hash links scroll to the target heading", async ({ page }) => {
+    await page.setViewportSize({ width: 1600, height: 900 });
+    await page.goto("/en/basic-workflows/sd15-hires-fix/#basic-method");
+
+    const header = page.locator(".site-header");
+    const target = page.locator("#basic-method");
+
+    await expect(target).toBeVisible();
+
+    const headerBox = await header.boundingBox();
+    const targetBox = await target.boundingBox();
+
+    if (!headerBox || !targetBox) {
+      throw new Error("Unable to measure layout boxes");
+    }
+
+    // Target heading should be below the sticky header area.
+    expect(targetBox.y).toBeGreaterThan(headerBox.height - 1);
+  });
+
   test("sidebar and TOC rails stay fixed with proper offsets", async ({ page }) => {
     await page.setViewportSize({ width: 1600, height: 900 });
     await page.goto(SAMPLE_PAGE);
