@@ -1029,11 +1029,13 @@ h1 {
 }
 
 .heading-anchor {
+  --heading-anchor-size: 2rem;
+  --heading-anchor-icon-size: 0.9rem;
   position: absolute;
   top: 0.5lh;
-  width: 0.9rem;
-  height: 0.9rem;
-  left: calc(-1 * (0.9rem + var(--space-xs)));
+  width: var(--heading-anchor-size);
+  height: var(--heading-anchor-size);
+  left: calc(-1 * (var(--heading-anchor-size) + var(--space-xs)));
   border: none;
   background: transparent;
   border-radius: var(--radius-pill);
@@ -1064,8 +1066,8 @@ h1 {
 }
 
 .heading-anchor__icon {
-  width: 80%;
-  height: 80%;
+  width: var(--heading-anchor-icon-size);
+  height: var(--heading-anchor-icon-size);
   background: var(--color-text-muted);
   -webkit-mask: url("/assets/icons/Link%20SVG%20File.svg") no-repeat center / contain;
   mask: url("/assets/icons/Link%20SVG%20File.svg") no-repeat center / contain;
