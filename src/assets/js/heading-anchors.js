@@ -2,7 +2,7 @@ const HEADING_SELECTOR = "h2, h3";
 const ROOT_SELECTOR = ".article-body";
 const ANCHOR_CLASS = "heading-anchor";
 const SUCCESS_CLASS = "is-success";
-const SUCCESS_TIMEOUT_MS = 1200;
+const SUCCESS_TIMEOUT_MS = 800;
 
 const slugify = (value = "") =>
   String(value)
@@ -125,4 +125,3 @@ export default function initHeadingAnchors(root = document) {
     decorateHeading(heading, { copyLabel, copiedLabel })
   );
 }
-

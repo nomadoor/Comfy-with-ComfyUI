@@ -26,8 +26,12 @@ test.describe("Layout rails", () => {
     await page.setViewportSize({ width: 1600, height: 900 });
     await page.goto("/en/basic-workflows/sd15-hires-fix/");
 
-    const heading = page.locator("#basic-method");
+    const heading = page.locator(".article-body h2", { hasText: "Basic Method" });
     await expect(heading).toBeVisible();
+
+    await expect
+      .poll(async () => heading.getAttribute("id"))
+      .toBe("basic-method");
 
     const button = heading.locator(".heading-anchor");
     await expect(button).toHaveCount(1);
