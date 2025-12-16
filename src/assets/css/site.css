@@ -1014,7 +1014,6 @@ h1 {
   font-weight: 700;
   scroll-margin-top: calc(var(--header-height) + var(--space-lg));
   letter-spacing: 0;
-  margin-left: -0.2rem;
   position: relative;
 }
 
@@ -1032,9 +1031,9 @@ h1 {
 .heading-anchor {
   position: absolute;
   top: 0.5lh;
-  left: calc(-1em - var(--space-xs));
-  width: 2rem;
-  height: 2rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  left: calc(-1 * (0.9rem + var(--space-xs)));
   border: none;
   background: transparent;
   border-radius: var(--radius-pill);
