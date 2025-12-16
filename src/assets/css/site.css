@@ -1086,6 +1086,12 @@ h1 {
   background: var(--color-highlight);
 }
 
+@media (max-width: 1400px) {
+  .heading-anchor {
+    left: calc(-1 * var(--heading-anchor-size));
+  }
+}
+
 @media (max-width: 700px) {
   .heading-anchor {
     display: none;
