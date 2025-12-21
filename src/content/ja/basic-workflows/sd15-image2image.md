@@ -102,14 +102,14 @@ image2imageでは、この「空の latent」を**参照画像をエンコード
 
 ただ、つまみの割り当て方が違うため少し混乱します。同じ結果になりそうな設定でそれぞれの挙動を見てみましょう。
 
-{% mediaRow img="https://gyazo.com/e38909e3a90797d5b6aba273df2b97ca{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="https://gyazo.com/589d8db0a9506a3df81f2169de272d1e{gyazo=image}", width=50, align="left" %}
 **KSampler (Advanced)**
 - 例えば `steps: 20`, `start_at_step: 4` とすると、  
   「全体 20 ステップのうち、4 ステップ目から 20 ステップ目まで」だけを実行します。
 - 実際にサンプリングされる回数は **20 - 4 = 16 回** です。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/b3bd1f3ffe6b83d34ce52fbe27958768{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="https://gyazo.com/cbcfaf5df9cee8f8079c82e903b492b8{gyazo=image}", width=50, align="left" %}
 **無印 KSampler**
 - 同じく `steps: 20` にして、`denoise: 0.8` などと設定すると、見た目の「ノイズのかかり方」は近くなりますが、**サンプリング回数は 20 回のまま** です。
 - `denoise` の値を 0.5 に変えても 0.1 に変えても、やはり 20 回サンプリングします。
