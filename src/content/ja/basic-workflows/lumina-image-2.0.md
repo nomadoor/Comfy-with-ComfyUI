@@ -84,7 +84,7 @@ Gemma 2B 系テキストエンコーダを採用しつつ、モデル本体は S
 
 - サンプラーは公式設定に従い、`res_multistep` / `linear_quadratic` を使用します。
 
-🟩プロンプトに少し特徴があり、実際に書かせたいテキストの前に **システムプロンプト** を書く必要があります。
+プロンプトに少し特徴があり、実際に書かせたいテキストの前に **システムプロンプト** を書く必要があります。
 
 ```text
 You are an assistant designed to generate anime images based on textual prompts. <Prompt Start>
@@ -120,3 +120,63 @@ Neta Lumina をベースに、さらにファインチューニングした [Net
 ![](https://gyazo.com/eb9e649d59482227ed68b7c4c0ed86eb){gyazo=image}
 
 [](/workflows/basic-workflows/lumina-image-2.0/NetaYumev4.json)
+
+---
+
+## NewBie image Exp0.1
+
+NewBie-image（Exp0.1）は、Luminaアーキテクチャ研究の知見を踏まえ、Next-DiTを土台に設計されたNewBie独自アーキテクチャのアニメ向けT2Iモデルです。より強力なテキストエンコーダを使用し、XML形式プロンプト（構造化タグ）でより細かな制御ができるようにしています。
+
+> こちらのモデルはまだ20%の訓練しかされていません。今後のアップデートによってworkflowが変更されることがあります。
+
+### モデルのダウンロード
+
+- diffusion models
+  * [NewBie-Image-Exp0.1-bf16.safetensors](https://huggingface.co/Comfy-Org/NewBie-image-Exp0.1_repackaged/blob/main/split_files/diffusion_models/NewBie-Image-Exp0.1-bf16.safetensors)
+  
+
+- text encoders
+  * [gemma_3_4b_it_bf16.safetensors](https://huggingface.co/Comfy-Org/NewBie-image-Exp0.1_repackaged/blob/main/split_files/text_encoders/gemma_3_4b_it_bf16.safetensors)
+  * [jina_clip_v2_bf16.safetensors](https://huggingface.co/Comfy-Org/NewBie-image-Exp0.1_repackaged/blob/main/split_files/text_encoders/jina_clip_v2_bf16.safetensors)
+
+- vae
+  * [ae.safetensors](https://huggingface.co/Comfy-Org/Lumina_Image_2.0_Repackaged/blob/main/split_files/vae/ae.safetensors)
+
+```
+📂ComfyUI/
+└──📂models/
+    ├── 📂diffusion_models/
+    │   └── NewBie-Image-Exp0.1-bf16.safetensors
+    ├── 📂text_encoders/
+    │   ├── gemma_3_4b_it_bf16.safetensors
+    │   └── jina_clip_v2_bf16.safetensors
+    └── 📂vae/
+        └── ae.safetensors
+
+```
+
+### text2image
+
+![](https://gyazo.com/d7253fbe289e281e77dbb074d42c392d){gyazo=image}
+
+[](/workflows/basic-workflows/lumina-image-2.0/NewBie_image_Exp0.1.json)
+
+プロンプトは XML形式（タグで区切る構造化） が推奨されています。　　
+
+```
+<general_tags>
+  <style>
+    anime_style, key_visual, official_art, illustration,
+    refined_lineart, clean_lineart, high_contrast
+  </style>
+  <background>
+    underwater, deep_blue_water, water_surface, waterline,
+    caustics, light_rays, reflections
+  </background>
+</general_tags>
+```
+
+とはいえ自然文で書いても問題なく生成できるため、まずは気軽に試してみてください。
+
+詳しくは公式のプロンプトガイドを参照してください。
+- [NewBie-image Deployment and Zero-Threshold Usage Tutorial / Prompt Writing](https://ai.feishu.cn/wiki/NZl9wm7V1iuNzmkRKCUcb1USnsh#RN74dYdXaokGnSx0F5IcaBK0nHc)
