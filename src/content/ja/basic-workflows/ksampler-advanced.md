@@ -68,7 +68,7 @@ KSampler (Advanced)では、`add_noise`パラメータでノイズを追加す�
 
 このKSampler (Advanced)だからこそ出来ることとして、一つのサンプリングを2つ以上のKSamplerに分割する、というものがあります。
 
-![](https://gyazo.com/814b1585c344ea2651ffe3bf16b95a0d){gyazo=image}
+![](https://gyazo.com/27eed74329f52442a046e59245ee9b14){gyazo=image}
 
 図のように、前半 0 ~ 10stepは🟪Ksample (Advanced)、11~20stepは🟨KSampler (Advanced)で行ってみましょう。
 

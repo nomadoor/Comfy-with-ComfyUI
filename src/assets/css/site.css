@@ -1242,6 +1242,9 @@ h1 {
 .media-inline__media {
   flex: 0 0 var(--media-inline-width, 33%);
   max-width: var(--media-inline-width, 33%);
+  background: var(--color-panel-alt);
+  border-radius: var(--radius-md);
+  overflow: hidden;
 }
 
 .media-inline__media img,

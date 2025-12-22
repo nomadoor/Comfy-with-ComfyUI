@@ -102,14 +102,14 @@ What we want to do is the same, and both adjust **"how much noise is added to th
 
 However, since the assignment of knobs is different, it is a bit confusing. Let's look at the behavior of each with settings that seem to produce the same result.
 
-{% mediaRow img="https://gyazo.com/e38909e3a90797d5b6aba273df2b97ca{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="https://gyazo.com/589d8db0a9506a3df81f2169de272d1e{gyazo=image}", width=50, align="left" %}
 **KSampler (Advanced)**
 - For example, if you set `steps: 20`, `start_at_step: 4`,
   It executes only "from the 4th step to the 20th step of the total 20 steps".
 - The actual number of times sampled is **20 - 4 = 16 times**.
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/b3bd1f3ffe6b83d34ce52fbe27958768{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="https://gyazo.com/cbcfaf5df9cee8f8079c82e903b492b8{gyazo=image}", width=50, align="left" %}
 **Standard KSampler**
 - Similarly, if you set `steps: 20` and `denoise: 0.8`, the appearance of "how noise is applied" will be close, but **the sampling count remains 20 times**.
 - Even if you change the value of `denoise` to 0.5 or 0.1, it still samples 20 times.

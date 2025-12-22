@@ -86,7 +86,7 @@ Like an anime model, it also supports Danbooru tags and is characterized by acce
 
 - Follow the official settings for the sampler, use `res_multistep` / `linear_quadratic`.
 
-🟩 Prompts are a bit unique, and you need to write a **system prompt** before the text you actually want to generate.
+Prompts are a bit unique, and you need to write a **system prompt** before the text you actually want to generate.
 
 ```text
 You are an assistant designed to generate anime images based on textual prompts. <Prompt Start>
@@ -122,3 +122,63 @@ I will introduce this as well.
 ![](https://gyazo.com/eb9e649d59482227ed68b7c4c0ed86eb){gyazo=image}
 
 [](/workflows/basic-workflows/lumina-image-2.0/NetaYumev4.json)
+
+---
+
+## NewBie image Exp0.1
+
+NewBie-image (Exp0.1) is an anime-focused T2I model with a unique NewBie architecture designed based on Next-DiT, incorporating insights from Lumina architecture research. It uses a more powerful text encoder and enables more detailed control with XML-formatted prompts (structured tags).
+
+> This model is only 20% trained. The workflow may change with future updates.
+
+### Model Download
+
+- diffusion models
+  * [NewBie-Image-Exp0.1-bf16.safetensors](https://huggingface.co/Comfy-Org/NewBie-image-Exp0.1_repackaged/blob/main/split_files/diffusion_models/NewBie-Image-Exp0.1-bf16.safetensors)
+  
+
+- text encoders
+  * [gemma_3_4b_it_bf16.safetensors](https://huggingface.co/Comfy-Org/NewBie-image-Exp0.1_repackaged/blob/main/split_files/text_encoders/gemma_3_4b_it_bf16.safetensors)
+  * [jina_clip_v2_bf16.safetensors](https://huggingface.co/Comfy-Org/NewBie-image-Exp0.1_repackaged/blob/main/split_files/text_encoders/jina_clip_v2_bf16.safetensors)
+
+- vae
+  * [ae.safetensors](https://huggingface.co/Comfy-Org/Lumina_Image_2.0_Repackaged/blob/main/split_files/vae/ae.safetensors)
+
+```
+📂ComfyUI/
+└──📂models/
+    ├── 📂diffusion_models/
+    │   └── NewBie-Image-Exp0.1-bf16.safetensors
+    ├── 📂text_encoders/
+    │   ├── gemma_3_4b_it_bf16.safetensors
+    │   └── jina_clip_v2_bf16.safetensors
+    └── 📂vae/
+        └── ae.safetensors
+
+```
+
+### text2image
+
+![](https://gyazo.com/d7253fbe289e281e77dbb074d42c392d){gyazo=image}
+
+[](/workflows/basic-workflows/lumina-image-2.0/NewBie_image_Exp0.1.json)
+
+Prompts in XML format (structured with tags) are recommended.
+
+```
+<general_tags>
+  <style>
+    anime_style, key_visual, official_art, illustration,
+    refined_lineart, clean_lineart, high_contrast
+  </style>
+  <background>
+    underwater, deep_blue_water, water_surface, waterline,
+    caustics, light_rays, reflections
+  </background>
+</general_tags>
+```
+
+However, you can generate images without problems even if you write in natural language, so please feel free to try it first.
+
+Please refer to the official prompt guide for details.
+- [NewBie-image Deployment and Zero-Threshold Usage Tutorial / Prompt Writing](https://ai.feishu.cn/wiki/NZl9wm7V1iuNzmkRKCUcb1USnsh#RN74dYdXaokGnSx0F5IcaBK0nHc)

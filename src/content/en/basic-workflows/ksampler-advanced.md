@@ -69,7 +69,7 @@ Sampling only intermediate steps, not adding noise... where exactly is this usef
 
 One thing you can do precisely because it is KSampler (Advanced) is to split one sampling into two or more KSamplers.
 
-![](https://gyazo.com/814b1585c344ea2651ffe3bf16b95a0d){gyazo=image}
+![](https://gyazo.com/27eed74329f52442a046e59245ee9b14){gyazo=image}
 
 As shown in the figure, let's do the first half 0 ~ 10 steps with 🟪 KSampler (Advanced) and 11 ~ 20 steps with 🟨 KSampler (Advanced).
 
