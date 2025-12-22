@@ -67,21 +67,20 @@ Z-Image-Turbo 用の ControlNet 風パッチです。
 
 - model_patches
 
-  - [Z-Image-Turbo-Fun-Controlnet-Union.safetensors](https://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union/blob/main/Z-Image-Turbo-Fun-Controlnet-Union.safetensors)
+  - [Z-Image-Turbo-Fun-Controlnet-Union-2.1.safetensors](https://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.0/blob/main/Z-Image-Turbo-Fun-Controlnet-Union-2.1.safetensors)
 
 ```text
 📂ComfyUI/
 └── 📂models/
     └── 📂model_patches/
-        └── Z-Image-Turbo-Fun-Controlnet-Union.safetensors
+        └── Z-Image-Turbo-Fun-Controlnet-Union-2.1.safetensors
 ```
 
 ### workflow
 
-![](https://gyazo.com/0e836d2ee27441ac65a66ec87a5bfb17){gyazo=image}
+![](https://gyazo.com/53c91fd9eeb8f94357b20839e5d8c967){gyazo=image}
 
-[](/workflows/basic-workflows/z-image-turbo/Z-Image-Turbo-Fun-Controlnet-Union.json)
+[](/workflows/basic-workflows/z-image-turbo/Z-Image-Turbo-Fun-Controlnet-Union-2.1.json)
 
 - 🟩 `QwenImageDiffsynthControlnet` にモデルと制御画像を追加
 - 🟩 この workflow では Depth Anything V2 で深度マップを作成します。
-- 既存の ControlNet と比べると、効きの強さはやや控えめな印象です。
