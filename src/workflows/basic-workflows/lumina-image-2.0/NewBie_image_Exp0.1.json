@@ -276,47 +276,6 @@
       "bgcolor": "#653"
     },
     {
-      "id": 6,
-      "type": "CLIPTextEncode",
-      "pos": [
-        507,
-        190
-      ],
-      "size": [
-        339.84503173828125,
-        123.01304626464844
-      ],
-      "flags": {},
-      "order": 6,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 69
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            67
-          ]
-        }
-      ],
-      "title": "CLIP Text Encode (Positive Prompt)",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.39",
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        "<character_1>\n  <n>character_1</n>\n  <gender>1girl</gender>\n  <appearance>\n    solo, black_hair, long_hair, wet_hair, floating_hair,\n    sharp_eyes, intense_gaze\n  </appearance>\n  <clothing>\n    white_dress, wet_clothes\n  </clothing>\n  <expression>\n    serious, stoic, closed_mouth\n  </expression>\n  <action>\n    underwater, sinking, bubbles, bubble_trail, water_droplets\n  </action>\n  <position>\n    portrait, upper_body, dynamic_angle, dutch_angle, diagonal_composition\n  </position>\n</character_1>\n\n<general_tags>\n  <style>\n    anime_style, key_visual, official_art, illustration,\n    refined_lineart, clean_lineart, high_contrast\n  </style>\n  <background>\n    underwater, deep_blue_water, water_surface, waterline,\n    caustics, light_rays, reflections\n  </background>\n  <atmosphere>\n    cool, dramatic, cinematic, ethereal\n  </atmosphere>\n  <quality>\n    masterpiece, best_quality, very_aesthetic, no_text\n  </quality>\n  <resolution>max_high_resolution</resolution>\n</general_tags>\n"
-      ]
-    },
-    {
       "id": 31,
       "type": "KSampler",
       "pos": [
@@ -408,6 +367,47 @@
       ]
     },
     {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        507,
+        190
+      ],
+      "size": [
+        339.84503173828125,
+        123.01304626464844
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 69
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            67
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "<character_1>\n  <n>character_1</n>\n  <gender>1girl</gender>\n  <appearance>\n    solo, black_hair, long_hair, wet_hair, floating_hair,\n    sharp_eyes, intense_gaze\n  </appearance>\n  <clothing>\n    white_dress, wet_clothes\n  </clothing>\n  <expression>\n    serious, stoic, closed_mouth\n  </expression>\n  <action>\n    underwater, sinking, bubbles, bubble_trail, water_droplets\n  </action>\n  <position>\n    portrait, upper_body, dynamic_angle, dutch_angle, diagonal_composition\n  </position>\n</character_1>\n\n<general_tags>\n  <style>\n    anime_style, key_visual, official_art, illustration,\n    refined_lineart, clean_lineart, high_contrast\n  </style>\n  <background>\n    underwater, deep_blue_water, water_surface, waterline,\n    caustics, light_rays, reflections\n  </background>\n  <atmosphere>\n    cool, dramatic, cinematic, ethereal\n  </atmosphere>\n  <quality>\n    masterpiece, best_quality, very_aesthetic, no_text\n  </quality>\n  <resolution>max_high_resolution</resolution>\n</general_tags>\n"
+      ]
+    },
+    {
       "id": 46,
       "type": "MarkdownNote",
       "pos": [
@@ -425,7 +425,7 @@
       "outputs": [],
       "properties": {},
       "widgets_values": [
-        "## models\n* [lumina_2_model_bf16.safetensors](https://huggingface.co/Comfy-Org/Lumina_Image_2.0_Repackaged/blob/main/split_files/diffusion_models/lumina_2_model_bf16.safetensors)\n* [gemma_3_4b_it_bf16.safetensors](https://huggingface.co/Comfy-Org/NewBie-image-Exp0.1_repackaged/blob/main/split_files/text_encoders/gemma_3_4b_it_bf16.safetensors)\n* [jina_clip_v2_bf16.safetensors](https://huggingface.co/Comfy-Org/NewBie-image-Exp0.1_repackaged/blob/main/split_files/text_encoders/jina_clip_v2_bf16.safetensors)\n* [ae.safetensors](https://huggingface.co/Comfy-Org/Lumina_Image_2.0_Repackaged/blob/main/split_files/vae/ae.safetensors)\n\n```\n📂ComfyUI/\n└──📂models/\n    ├── 📂diffusion_models/\n    │   └── lumina_2_model_bf16.safetensors\n    ├── 📂text_encoders/\n    │   ├── gemma_3_4b_it_bf16.safetensors\n    │   └── jina_clip_v2_bf16.safetensors\n    └── 📂vae/\n        └── ae.safetensors\n\n```"
+        "## models\n* [NewBie-Image-Exp0.1-bf16.safetensors](https://huggingface.co/Comfy-Org/NewBie-image-Exp0.1_repackaged/blob/main/split_files/diffusion_models/NewBie-Image-Exp0.1-bf16.safetensors)\n* [gemma_3_4b_it_bf16.safetensors](https://huggingface.co/Comfy-Org/NewBie-image-Exp0.1_repackaged/blob/main/split_files/text_encoders/gemma_3_4b_it_bf16.safetensors)\n* [jina_clip_v2_bf16.safetensors](https://huggingface.co/Comfy-Org/NewBie-image-Exp0.1_repackaged/blob/main/split_files/text_encoders/jina_clip_v2_bf16.safetensors)\n* [ae.safetensors](https://huggingface.co/Comfy-Org/Lumina_Image_2.0_Repackaged/blob/main/split_files/vae/ae.safetensors)\n\n```\n📂ComfyUI/\n└──📂models/\n    ├── 📂diffusion_models/\n    │   └── NewBie-Image-Exp0.1-bf16.safetensors\n    ├── 📂text_encoders/\n    │   ├── gemma_3_4b_it_bf16.safetensors\n    │   └── jina_clip_v2_bf16.safetensors\n    └── 📂vae/\n        └── ae.safetensors\n\n```"
       ],
       "color": "#323",
       "bgcolor": "#535"
@@ -517,10 +517,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.8264462809917356,
+      "scale": 0.9090909090909091,
       "offset": [
-        477.550194411167,
-        140.9262047220384
+        308.41858706005223,
+        258.7552199824561
       ]
     },
     "frontendVersion": "1.36.7",

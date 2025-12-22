@@ -142,7 +142,7 @@ NewBie-image（Exp0.1）は、Luminaアーキテクチャ研究の知見を踏�
 - vae
   * [ae.safetensors](https://huggingface.co/Comfy-Org/Lumina_Image_2.0_Repackaged/blob/main/split_files/vae/ae.safetensors)
 
-```
+```text
 📂ComfyUI/
 └──📂models/
     ├── 📂diffusion_models/
@@ -163,7 +163,7 @@ NewBie-image（Exp0.1）は、Luminaアーキテクチャ研究の知見を踏�
 
 プロンプトは XML形式（タグで区切る構造化） が推奨されています。　　
 
-```
+```xml
 <general_tags>
   <style>
     anime_style, key_visual, official_art, illustration,
