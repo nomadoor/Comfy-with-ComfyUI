@@ -401,29 +401,6 @@
       ]
     },
     {
-      "id": 55,
-      "type": "MarkdownNote",
-      "pos": [
-        -111.7343437200557,
-        -145.25257962621737
-      ],
-      "size": [
-        386.9856262207031,
-        251.33447265625
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "properties": {},
-      "widgets_values": [
-        "## models\n- [qwen_image_edit_2511_fp8mixed.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/blob/main/split_files/diffusion_models/qwen_image_edit_2511_fp8mixed.safetensors)\n- [qwen_2.5_vl_7b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/blob/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors)\n- [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/tree/main/split_files/vae)\n\n\n```\n📂ComfyUI/\n└──📂models/\n    ├── 📂diffusion_models/\n    │   └── qwen_image_edit_2511_fp8mixed.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen_2.5_vl_7b_fp8.safetensors\n    └── 📂vae/\n         └── wan_2.1_vae.safetensors\n\n```"
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
-    },
-    {
       "id": 63,
       "type": "VAEEncode",
       "pos": [
@@ -531,8 +508,7 @@
         "0, 0, 0",
         "center",
         8,
-        "cpu",
-        "<tr><td>Output: </td><td><b>1</b> x <b>1024</b> x <b>1024 | 12.00MB</b></td></tr>"
+        "cpu"
       ]
     },
     {
@@ -608,7 +584,7 @@
         464.972363684788
       ],
       "flags": {},
-      "order": 4,
+      "order": 3,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -634,6 +610,29 @@
         "pasted/image (110).png",
         "image"
       ]
+    },
+    {
+      "id": 55,
+      "type": "MarkdownNote",
+      "pos": [
+        -111.7343437200557,
+        -145.25257962621737
+      ],
+      "size": [
+        386.9856262207031,
+        251.33447265625
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n- [qwen_image_edit_2511_fp8mixed.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/blob/main/split_files/diffusion_models/qwen_image_edit_2511_fp8mixed.safetensors)\n- [qwen_2.5_vl_7b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/blob/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors)\n- [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/tree/main/split_files/vae)\n\n\n```\n📂ComfyUI/\n└──📂models/\n    ├── 📂diffusion_models/\n    │   └── qwen_image_edit_2511_fp8mixed.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen_2.5_vl_7b_fp8.safetensors\n    └── 📂vae/\n         └── qwen_image_vae.safetensors\n```"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
     }
   ],
   "links": [
@@ -786,13 +785,13 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.6830134553650706,
+      "scale": 0.751314800901578,
       "offset": [
-        839.8875595403699,
-        357.94175023038514
+        718.1854603017258,
+        360.0562516389913
       ]
     },
-    "frontendVersion": "1.36.11",
+    "frontendVersion": "1.36.12",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,
