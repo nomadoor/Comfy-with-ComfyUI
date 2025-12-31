@@ -89,4 +89,4 @@ Previous methods required post-processing or special processing only during deco
 
 ## Reference
 
-* Comfy.Org blog: [https://qwen.ai/blog?id=qwen-image-layered](https://qwen.ai/blog?id=qwen-image-layered)
+* [Qwen Image Edit 2511 & Qwen Image Layered in ComfyUI](https://blog.comfy.org/p/qwen-image-edit-2511-and-qwen-image)
