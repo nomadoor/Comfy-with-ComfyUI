@@ -278,6 +278,8 @@ sections:
       children:
       - id: qwen-image-edit
         title: Qwen-Image-Edit
+      - id: qwen-image-layered
+        title: Qwen-Image-Layered
     - id: z-image-turbo
       title: Z-Image-Turbo
   - id: upscale-fix
