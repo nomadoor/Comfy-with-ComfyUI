@@ -68,7 +68,7 @@ Flux.1 Kontext は VAE ベースの編集のみでしたが、Qwen-Image-Edit �
     │   └── qwen_image_edit_fp8_e4m3fn.safetensors
     ├── 📂text_encoders/
     │   ├── qwen_2.5_vl_7b_fp8_scaled.safetensors
-    │   ├── Qwen2.5-VL-7B-Instruct.gguf               ← gguf を使う場合のみ
+    │   ├── Qwen2.5-VL-7B-Instruct.gguf                ← gguf を使う場合のみ
     │   └── Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf    ← gguf を使う場合のみ
     ├── 📂vae/
     │   └── qwen_image_vae.safetensors
@@ -105,7 +105,7 @@ Flux.1 Kontext は VAE ベースの編集のみでしたが、Qwen-Image-Edit �
 
 ## Qwen-Image-Edit-2509
 
-Qwen-Image-Edit-2509 は、無印版を拡張した新バージョンです。
+Qwen-Image-Edit-2509 は、無印版を拡張したバージョンです。
 最大の違いは、**参照画像を複数枚入力できる** ことです。
 
 ### モデルのダウンロード
@@ -148,9 +148,45 @@ Qwen-Image-Edit-2509 は、無印版を拡張した新バージョンです。
 
 ---
 
-## Lightning（Qwen-Image-Edit-2509向け）
+## Qwen-Image-Edit-2511
 
-**Qwen-Image-Edit-2509-Lightning** は、Qwen-Image-Edit-2509 を 4 / 8 steps で回せるように蒸留した LoRA セットです。
+Qwen-Image-Edit-2511 は、2509を改良した新モデルです。
+
+無印から2509のときほど大幅な変化はないですが、キャラクターの一貫性が向上したり、Relighting LoRAなど人気のあるLoRAモデルが統合されたりと着実な改良がされています。
+
+### モデルのダウンロード
+
+* diffusion_models
+
+  * [qwen_image_edit_2511_fp8mixed.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/blob/main/split_files/diffusion_models/qwen_image_edit_2511_fp8mixed.safetensors)
+
+* gguf（任意）
+
+  * [unsloth/Qwen-Image-Edit-2511-GGUF](https://huggingface.co/unsloth/Qwen-Image-Edit-2511-GGUF/tree/main)
+
+```text
+📂ComfyUI/
+└── 📂models/
+    ├── 📂diffusion_models/
+    │   └── qwen_image_edit_2511_fp8mixed.safetensors
+    └── 📂unet/
+        └── qwen-image-edit-2511-XXXX.gguf      ← gguf を使う場合のみ
+```
+
+### workflow
+
+![](https://gyazo.com/6d45ea40c1194384fb75c383c43a116b){gyazo=image}
+
+[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit-2511.json)
+
+2509とまったく同じworkflowで動きます。
+
+---
+
+
+## Lightning
+
+**Qwen-Image-Edit-Lightning** は、Qwen-Image-Edit を 4 / 8 steps で回せるように蒸留した LoRA セットです。
 
 ほとんど劣化なしでステップ数を大幅に減らせるため、多くの workflow で採用されています。
 
@@ -160,16 +196,18 @@ Qwen-Image-Edit-2509 は、無印版を拡張した新バージョンです。
 
   * [Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors](https://huggingface.co/lightx2v/Qwen-Image-Lightning/blob/main/Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors)
   * [Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors](https://huggingface.co/lightx2v/Qwen-Image-Lightning/blob/main/Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors)
+  - [Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors](https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning/blob/main/Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors)
 
 ```text
 📂ComfyUI/
 └── 📂models/
     └── 📂loras/
         ├── Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors
-        └── Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors
+        ├── Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors
+        └── Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors
 ```
 
-### workflow
+### Qwen-Image-Edit-2509
 
 ![](https://gyazo.com/c91a20239e3cb536dfc931a30562f19f){gyazo=image}
 
@@ -177,3 +215,11 @@ Qwen-Image-Edit-2509 は、無印版を拡張した新バージョンです。
 
 * `LoraLoaderModelOnly` ノードで Lightning LoRA を読み込みます。
 * `KSampler` の `steps` を 4 または 8、`CFG` を 1.0 に設定します。
+
+### Qwen-Image-Edit-2511
+
+![](https://gyazo.com/cc8cbe2a940d686092555896d4b3f067){gyazo=image}
+
+[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit-2511_lightning_4steps.json)
+
+* `LoraLoaderModelOnly` ノードで Lightning LoRA を読み込みます。

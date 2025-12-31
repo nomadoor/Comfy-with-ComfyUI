@@ -100,7 +100,7 @@ Therefore, in this workflow, image size preprocessing is done in advance.
 
 ## Qwen-Image-Edit-2509
 
-Qwen-Image-Edit-2509 is a new version that extends the original version.
+Qwen-Image-Edit-2509 is a version that extends the original version.
 The biggest difference is that **multiple reference images can be input**.
 
 ### Model Download
@@ -143,9 +143,45 @@ On the other hand, in cases where "I just want to generate a new image with the 
 
 ---
 
-## Lightning (For Qwen-Image-Edit-2509)
+## Qwen-Image-Edit-2511
 
-**Qwen-Image-Edit-2509-Lightning** is a LoRA set distilled to allow Qwen-Image-Edit-2509 to run in 4 / 8 steps.
+Qwen-Image-Edit-2511 is a new model that improves upon 2509.
+
+While there are no drastic changes like from the original to 2509, steady improvements have been made, such as improved character consistency and integration of popular LoRA models like Relighting LoRA.
+
+### Model Download
+
+* diffusion_models
+
+  * [qwen_image_edit_2511_fp8mixed.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/blob/main/split_files/diffusion_models/qwen_image_edit_2511_fp8mixed.safetensors)
+
+* gguf (Optional)
+
+  * [unsloth/Qwen-Image-Edit-2511-GGUF](https://huggingface.co/unsloth/Qwen-Image-Edit-2511-GGUF/tree/main)
+
+```text
+📂ComfyUI/
+└── 📂models/
+    ├── 📂diffusion_models/
+    │   └── qwen_image_edit_2511_fp8mixed.safetensors
+    └── 📂unet/
+        └── qwen-image-edit-2511-XXXX.gguf      ← Only when using gguf
+```
+
+### workflow
+
+![](https://gyazo.com/6d45ea40c1194384fb75c383c43a116b){gyazo=image}
+
+[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit-2511.json)
+
+It works with exactly the same workflow as 2509.
+
+---
+
+
+## Lightning
+
+**Qwen-Image-Edit-Lightning** is a LoRA set distilled to allow Qwen-Image-Edit to run in 4 / 8 steps.
 
 Since the number of steps can be significantly reduced with almost no degradation, it is adopted in many workflows.
 
@@ -155,16 +191,18 @@ Since the number of steps can be significantly reduced with almost no degradatio
 
   * [Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors](https://huggingface.co/lightx2v/Qwen-Image-Lightning/blob/main/Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors)
   * [Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors](https://huggingface.co/lightx2v/Qwen-Image-Lightning/blob/main/Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors)
+  - [Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors](https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning/blob/main/Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors)
 
 ```text
 📂ComfyUI/
 └── 📂models/
     └── 📂loras/
         ├── Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors
-        └── Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors
+        ├── Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors
+        └── Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors
 ```
 
-### workflow
+### Qwen-Image-Edit-2509
 
 ![](https://gyazo.com/c91a20239e3cb536dfc931a30562f19f){gyazo=image}
 
@@ -172,3 +210,11 @@ Since the number of steps can be significantly reduced with almost no degradatio
 
 * Load Lightning LoRA with the `LoraLoaderModelOnly` node.
 * Set `steps` in `KSampler` to 4 or 8, and `CFG` to 1.0.
+
+### Qwen-Image-Edit-2511
+
+![](https://gyazo.com/cc8cbe2a940d686092555896d4b3f067){gyazo=image}
+
+[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit-2511_lightning_4steps.json)
+
+* Load Lightning LoRA with the `LoraLoaderModelOnly` node.
