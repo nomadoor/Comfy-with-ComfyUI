@@ -305,6 +305,8 @@ sections:
         title: Wan-Animate
     - id: wan-2-2
       title: Wan 2.2
+    - id: ltx-2
+      title: LTX-2
     - id: framepack
       title: FramePack
       noLink: true
