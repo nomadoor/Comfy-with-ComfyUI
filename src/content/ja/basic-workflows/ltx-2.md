@@ -133,7 +133,7 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 
 動画latentの解像度を二倍にアップスケールします。
 
-- 専用のモデル(`ltx-2-spatial-upscaler-x2`)を使用します。
+- 専用のモデル (`ltx-2-spatial-upscaler-x2`)を使用します。
 
 {% endmediaRow %}
 
@@ -144,7 +144,9 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 アップスケール後の latent を 短いステップでリファインします。
 
 - こちらでは4~8ステップで生成できるようになる `distilled-lora`を使用します。
-- この workflow では 3 steps で回しています。
+  - 他のモデルでいうところの Lightning / Turbo のようなものだと考えてください。
+  - この workflow では **3 steps** で回しています。
+  - これに合わせて、CFGは `1.0` に変更します。
 - `Manual Sigma` を使っているため少し分かりにくいですが、`Simple` 相当で考えるなら `denoise = 0.47` 前後に近い挙動です。
 
 {% endmediaRow %}

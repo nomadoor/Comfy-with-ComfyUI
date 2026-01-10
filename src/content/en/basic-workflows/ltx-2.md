@@ -144,7 +144,9 @@ Upscale the resolution of the video latent by 2x.
 Refine the upscaled latent with short steps.
 
 - Here we use `distilled-lora` which allows generation in 4~8 steps.
-- This workflow runs in 3 steps.
+  - Think of it as something like Lightning / Turbo in other models.
+  - This workflow runs in **3 steps**.
+  - Accordingly, CFG is changed to `1.0`.
 - Because it uses `Manual Sigma`, it's a bit hard to understand, but if thinking in terms of `Simple`, it behaves somewhat close to `denoise = 0.47`.
 
 {% endmediaRow %}
