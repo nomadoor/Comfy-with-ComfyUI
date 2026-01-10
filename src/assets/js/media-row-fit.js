@@ -5,7 +5,11 @@ const fitRows = (root = document) => {
     const videoFrames = Array.from(row.querySelectorAll(".article-video__frame"));
     const isMixed = mediaFrames.length > 0 && videoFrames.length > 0;
     row.classList.toggle("article-media-row--mixed", isMixed);
-    const items = isMixed ? [...mediaFrames, ...videoFrames] : mediaFrames;
+    const items = isMixed
+      ? [...mediaFrames, ...videoFrames]
+      : mediaFrames.length
+        ? mediaFrames
+        : videoFrames;
     if (!items.length) return;
 
     // Reset any previous sizing
