@@ -1324,7 +1324,7 @@ h1 {
   max-height: none;
 }
 
-.article-media-row .article-video__frame {
+.article-media-row--mixed .article-video__frame {
   width: calc(min(var(--article-video-width, 720px),
         calc(var(--article-video-aspect, 16 / 9) * min(var(--article-media-height, 320px), 320px))) * var(--media-scale, 1));
   max-width: 100%;

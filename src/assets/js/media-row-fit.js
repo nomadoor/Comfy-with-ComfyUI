@@ -1,7 +1,11 @@
 const fitRows = (root = document) => {
   const rows = root.querySelectorAll(".article-media-row");
   rows.forEach((row) => {
-    const items = Array.from(row.querySelectorAll(".article-media__frame"));
+    const mediaFrames = Array.from(row.querySelectorAll(".article-media__frame"));
+    const videoFrames = Array.from(row.querySelectorAll(".article-video__frame"));
+    const isMixed = mediaFrames.length > 0 && videoFrames.length > 0;
+    row.classList.toggle("article-media-row--mixed", isMixed);
+    const items = isMixed ? [...mediaFrames, ...videoFrames] : mediaFrames;
     if (!items.length) return;
 
     // Reset any previous sizing
