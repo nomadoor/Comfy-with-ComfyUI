@@ -433,7 +433,7 @@ IC-LoRA (Detailer)は、低解像度の動画のディテールや質感を修�
 
 - 🟦 先に、入力動画を 最終的に欲しいサイズ にリサイズします。
 - `SamplerCustomAdvanced` の代わりに `🅛🅣🅧 LTXV Looping Sampler` を使います。
-  - これはUltimate SD 時間・空間をタイルに分けて処理できるため、VRAM 節約をすることができます。
+  - これは[Ultimate SD upscale](/ja/basic-workflows/ultimate-sd-upscale/)のように時間・空間をタイルに分けて処理するため、VRAM 節約をすることができます。
   - この workflow では 時間方向だけ タイリングしています。
 - 蒸留LoRAを使っていませんが、3 ステップで生成します。
 

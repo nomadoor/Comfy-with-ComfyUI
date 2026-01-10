@@ -434,7 +434,7 @@ Basically it is video2video with IC-LoRA(Detailer) applied.
 
 - 🟦 First, resize the input video to the desired final size.
 - Use `🅛🅣🅧 LTXV Looping Sampler` instead of `SamplerCustomAdvanced`.
-  - This works like Ultimate SD, processing time/space in tiles, so you can save VRAM.
+  - This works like [Ultimate SD upscale](/en/basic-workflows/ultimate-sd-upscale/), processing time/space in tiles, allowing you to save VRAM.
   - In this workflow, only the time direction is tiled.
 - It does not use distilled LoRA, but generates in 3 steps.
 
