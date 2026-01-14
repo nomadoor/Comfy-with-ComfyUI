@@ -54,6 +54,16 @@ function updateActionLabels(container, file) {
   }
 }
 
+function setRecommendedSuffix(select, suffix, enabled) {
+  if (!select) return;
+  const options = Array.from(select.options || []);
+  options.forEach((option) => {
+    const label = option.getAttribute("data-label") || option.textContent || "";
+    const isRecommended = option.getAttribute("data-recommended") === "true";
+    option.textContent = isRecommended && enabled ? `${label}${suffix}` : label;
+  });
+}
+
 function updateDownloadLink(container, file) {
   const downloadLink = container.querySelector("[data-workflow-picker-download]");
   if (!downloadLink) return;
@@ -107,11 +117,26 @@ function bindPicker(container) {
   const copyButton = container.querySelector("[data-workflow-picker-copy]");
   const downloadLink = container.querySelector("[data-workflow-picker-download]");
   if (!select || !copyButton || !downloadLink) return;
+  const suffix = container.getAttribute("data-recommended-suffix") || "";
 
   updateDownloadLink(container, select.value);
+  setRecommendedSuffix(select, suffix, false);
 
   select.addEventListener("change", () => {
     updateDownloadLink(container, select.value);
+    setRecommendedSuffix(select, suffix, false);
+  });
+
+  select.addEventListener("focus", () => {
+    setRecommendedSuffix(select, suffix, true);
+  });
+
+  select.addEventListener("mousedown", () => {
+    setRecommendedSuffix(select, suffix, true);
+  });
+
+  select.addEventListener("blur", () => {
+    setRecommendedSuffix(select, suffix, false);
   });
 
   copyButton.addEventListener("click", async () => {

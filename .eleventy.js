@@ -881,15 +881,13 @@ export default function (eleventyConfig) {
 
     const options = items.map((item, index) => {
       const isSelected = index === defaultIndex;
-      const suffix = isSelected ? recommendedSuffix : "";
-      const label = `${item.name}${suffix}`;
-      return `<option value="${escapeHTML(item.file)}"${isSelected ? " selected" : ""}>${escapeHTML(label)}</option>`;
+      return `<option value="${escapeHTML(item.file)}" data-label="${escapeHTML(item.name)}"${isSelected ? " selected" : ""}${isSelected ? " data-recommended=\"true\"" : ""}>${escapeHTML(item.name)}</option>`;
     }).join("");
 
     const defaultFile = items[defaultIndex].file;
     const defaultName = items[defaultIndex].name;
 
-    return `<div class="workflow-json workflow-json--picker" data-workflow-picker="${pickerId}" data-error-label="${escapeHTML(copyErrorLabel)}">
+    return `<div class="workflow-json workflow-json--picker" data-workflow-picker="${pickerId}" data-error-label="${escapeHTML(copyErrorLabel)}" data-recommended-suffix="${escapeHTML(recommendedSuffix)}">
   <div class="workflow-json__row workflow-json__row--picker">
     <select class="workflow-json__select" aria-label="${escapeHTML(selectLabel)}" data-workflow-picker-select>
       ${options}
