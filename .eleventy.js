@@ -271,6 +271,21 @@ function getIconMarkup(name) {
   return ICON_SPRITES[name] || "";
 }
 
+function hashString(value = "") {
+  let hash = 0;
+  for (let i = 0; i < value.length; i += 1) {
+    hash = ((hash << 5) - hash) + value.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash).toString(36);
+}
+
+function getWorkflowBasename(file = "") {
+  const clean = String(file).split("?")[0].split("#")[0];
+  const parts = clean.split("/");
+  return parts[parts.length - 1] || clean;
+}
+
 function renderJsonLinkRow(linkInfo, env) {
   const diskPath = resolveJsonDiskPath(linkInfo.href, env);
   if (!diskPath) {
@@ -820,6 +835,75 @@ export default function (eleventyConfig) {
     return `
 <div class="media-inline${reverse ? " media-inline--reverse" : ""}">
   ${innerHTML}
+</div>`;
+  });
+
+  eleventyConfig.addShortcode("workflowPicker", function (...rawArgs) {
+    const env = this || {};
+    const inputArgs = rawArgs.length === 1 && Array.isArray(rawArgs[0]) ? rawArgs[0] : rawArgs;
+    const normalized = inputArgs
+      .map((value) => (typeof value === "string" ? value.trim() : ""))
+      .filter(Boolean);
+
+    if (!normalized.length) return "";
+
+    const items = [];
+    let defaultIndex = -1;
+
+    normalized.forEach((raw, index) => {
+      const isDefault = raw.startsWith("!");
+      const file = isDefault ? raw.slice(1).trim() : raw;
+      if (!file) return;
+      const name = getWorkflowBasename(file);
+      if (isDefault && defaultIndex === -1) {
+        defaultIndex = items.length;
+      }
+      items.push({ file, name });
+    });
+
+    if (!items.length) return "";
+    if (defaultIndex < 0) defaultIndex = 0;
+
+    env.__workflowPickerCounter = env.__workflowPickerCounter || 0;
+    env.__workflowPickerCounter += 1;
+    const pickerKey = hashString(items.map((item) => item.file).join("|"));
+    const pickerId = `workflow-picker-${pickerKey}-${env.__workflowPickerCounter}`;
+    const lang = env.lang || env.page?.lang || DEFAULT_LANG;
+    const copyLabel = getWorkflowLabel("copyLabel", lang);
+    const downloadLabel = getWorkflowLabel("downloadLabel", lang);
+    const copiedLabel = getWorkflowLabel("copiedLabel", lang);
+    const downloadedLabel = getWorkflowLabel("downloadedLabel", lang);
+    const copyErrorLabel = lang === "ja" ? "コピーに失敗しました" : "Copy failed";
+    const selectLabel = lang === "ja" ? "workflow JSONを選択" : "Select workflow JSON";
+    const recommendedSuffix = lang === "ja" ? "（推奨）" : " (Recommended)";
+    const copyIcon = getIconMarkup("copy");
+    const downloadIcon = getIconMarkup("download");
+
+    const options = items.map((item, index) => {
+      const isSelected = index === defaultIndex;
+      const suffix = isSelected ? recommendedSuffix : "";
+      const label = `${item.name}${suffix}`;
+      return `<option value="${escapeHTML(item.file)}"${isSelected ? " selected" : ""}>${escapeHTML(label)}</option>`;
+    }).join("");
+
+    const defaultFile = items[defaultIndex].file;
+    const defaultName = items[defaultIndex].name;
+
+    return `<div class="workflow-json workflow-json--picker" data-workflow-picker="${pickerId}" data-error-label="${escapeHTML(copyErrorLabel)}">
+  <div class="workflow-json__row workflow-json__row--picker">
+    <select class="workflow-json__select" aria-label="${escapeHTML(selectLabel)}" data-workflow-picker-select>
+      ${options}
+    </select>
+    <div class="workflow-json__actions">
+      <button class="workflow-json__icon" type="button" aria-label="${escapeHTML(copyLabel)} ${escapeHTML(defaultName)}" data-workflow-picker-copy data-label="${escapeHTML(copyLabel)}" data-success-label="${escapeHTML(copiedLabel)}">
+        ${copyIcon}
+      </button>
+      <a class="workflow-json__icon" href="${defaultFile}" download="${escapeHTML(defaultName)}" data-no-swup aria-label="${escapeHTML(downloadLabel)} ${escapeHTML(defaultName)}" data-workflow-picker-download data-label="${escapeHTML(downloadLabel)}" data-success-label="${escapeHTML(downloadedLabel)}">
+        ${downloadIcon}
+      </a>
+    </div>
+  </div>
+  <span class="workflow-json__message" role="status" aria-live="polite" data-workflow-picker-message></span>
 </div>`;
   });
 
