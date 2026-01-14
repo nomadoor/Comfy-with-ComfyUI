@@ -1239,14 +1239,6 @@ h1 {
   border-top: 0;
 }
 
-.media-inline:not(.media-inline + .media-inline):has(+ .media-inline) {
-  border-top: 0;
-}
-
-.media-inline + .media-inline:not(:has(+ .media-inline)) {
-  border-bottom: 0;
-}
-
 .media-inline--reverse {
   flex-direction: row-reverse;
 }
