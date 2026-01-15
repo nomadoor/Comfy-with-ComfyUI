@@ -20,7 +20,7 @@
   } %}
   {% set glyph = shapes[name] %}
   {% if glyph %}
-    <svg class="icon{% if className %} {{ className }}{% endif %}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="var(--icon-stroke-width, 1.5)" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <svg class="icon{% if className %} {{ className }}{% endif %}" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="var(--icon-stroke-width, 1.5)" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       {{ glyph | safe }}
     </svg>
   {% endif %}
