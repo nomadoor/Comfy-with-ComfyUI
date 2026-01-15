@@ -1901,6 +1901,7 @@ h1 {
 
 .workflow-picker .workflow-picker__list > li {
   margin: 0;
+  padding: 0.5rem var(--workflow-row-padding);
   width: 100%;
 }
 
@@ -1910,7 +1911,7 @@ h1 {
 
 .workflow-picker__option {
   box-sizing: border-box;
-  padding: 0.5rem var(--workflow-row-padding);
+  padding: 0;
   /* Match button padding */
   font-family: var(--font-base);
   font-size: inherit;
