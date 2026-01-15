@@ -875,23 +875,29 @@ export default function (eleventyConfig) {
     const downloadedLabel = getWorkflowLabel("downloadedLabel", lang);
     const copyErrorLabel = lang === "ja" ? "コピーに失敗しました" : "Copy failed";
     const selectLabel = lang === "ja" ? "workflow JSONを選択" : "Select workflow JSON";
-    const recommendedSuffix = lang === "ja" ? "（推奨）" : " (Recommended)";
     const copyIcon = getIconMarkup("copy");
     const downloadIcon = getIconMarkup("download");
 
-    const options = items.map((item, index) => {
-      const isSelected = index === defaultIndex;
-      return `<option value="${escapeHTML(item.file)}" data-label="${escapeHTML(item.name)}"${isSelected ? " selected" : ""}${isSelected ? " data-recommended=\"true\"" : ""}>${escapeHTML(item.name)}</option>`;
-    }).join("");
-
     const defaultFile = items[defaultIndex].file;
     const defaultName = items[defaultIndex].name;
+    const listId = `${pickerId}-list`;
+    const toggleId = `${pickerId}-toggle`;
+    const options = items.map((item, index) => {
+      const isSelected = index === defaultIndex;
+      return `<li class="workflow-picker__option${isSelected ? " is-selected" : ""}" role="option" data-value="${escapeHTML(item.file)}" aria-selected="${isSelected ? "true" : "false"}">${escapeHTML(item.name)}</li>`;
+    }).join("");
 
-    return `<div class="workflow-json workflow-json--picker" data-workflow-picker="${pickerId}" data-error-label="${escapeHTML(copyErrorLabel)}" data-recommended-suffix="${escapeHTML(recommendedSuffix)}">
+    return `<div class="workflow-json workflow-json--picker" data-workflow-picker="${pickerId}" data-error-label="${escapeHTML(copyErrorLabel)}">
   <div class="workflow-json__row workflow-json__row--picker">
-    <select class="workflow-json__select" aria-label="${escapeHTML(selectLabel)}" data-workflow-picker-select>
-      ${options}
-    </select>
+    <div class="workflow-picker" data-workflow-picker-control>
+      <button class="workflow-picker__button" type="button" id="${toggleId}" aria-haspopup="listbox" aria-expanded="false" aria-controls="${listId}" aria-label="${escapeHTML(selectLabel)}" data-workflow-picker-toggle>
+        <span class="workflow-picker__label">${escapeHTML(defaultName)}</span>
+        <span class="workflow-picker__caret" aria-hidden="true"></span>
+      </button>
+      <ul class="workflow-picker__list" id="${listId}" role="listbox" aria-labelledby="${toggleId}" data-workflow-picker-list>
+        ${options}
+      </ul>
+    </div>
     <div class="workflow-json__actions">
       <button class="workflow-json__icon" type="button" aria-label="${escapeHTML(copyLabel)} ${escapeHTML(defaultName)}" data-workflow-picker-copy data-label="${escapeHTML(copyLabel)}" data-success-label="${escapeHTML(copiedLabel)}">
         ${copyIcon}

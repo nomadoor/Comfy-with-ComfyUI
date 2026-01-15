@@ -1,6 +1,8 @@
 const SUCCESS_VISIBLE_MS = 1000;
 const ERROR_VISIBLE_MS = 2400;
 const PICKER_BOUND_FLAG = "workflowPickerBound";
+const OPEN_CLASS = "is-open";
+const OPTION_SELECTED_CLASS = "is-selected";
 
 function getScope(root) {
   if (root && typeof root.querySelectorAll === "function") {
@@ -54,14 +56,17 @@ function updateActionLabels(container, file) {
   }
 }
 
-function setRecommendedSuffix(select, suffix, enabled) {
-  if (!select) return;
-  const options = Array.from(select.options || []);
-  options.forEach((option) => {
-    const label = option.getAttribute("data-label") || option.textContent || "";
-    const isRecommended = option.getAttribute("data-recommended") === "true";
-    option.textContent = isRecommended && enabled ? `${label}${suffix}` : label;
-  });
+function updatePickerWidth(picker) {
+  if (!picker) return;
+  const options = Array.from(picker.querySelectorAll(".workflow-picker__option"));
+  if (!options.length) return;
+  const maxLength = options.reduce((max, option) => {
+    const label = option.textContent || "";
+    return Math.max(max, label.length);
+  }, 0);
+  if (maxLength > 0) {
+    picker.style.setProperty("--workflow-picker-width", `${Math.min(maxLength + 1, 48)}ch`);
+  }
 }
 
 function updateDownloadLink(container, file) {
@@ -113,34 +118,76 @@ function bindPicker(container) {
   if (container.dataset[PICKER_BOUND_FLAG]) return;
   container.dataset[PICKER_BOUND_FLAG] = "true";
 
-  const select = container.querySelector("[data-workflow-picker-select]");
+  const picker = container.querySelector("[data-workflow-picker-control]");
+  const toggle = container.querySelector("[data-workflow-picker-toggle]");
+  const list = container.querySelector("[data-workflow-picker-list]");
+  const label = container.querySelector(".workflow-picker__label");
   const copyButton = container.querySelector("[data-workflow-picker-copy]");
   const downloadLink = container.querySelector("[data-workflow-picker-download]");
-  if (!select || !copyButton || !downloadLink) return;
-  const suffix = container.getAttribute("data-recommended-suffix") || "";
+  if (!picker || !toggle || !list || !label || !copyButton || !downloadLink) return;
 
-  updateDownloadLink(container, select.value);
-  setRecommendedSuffix(select, suffix, false);
+  const selectedOption = list.querySelector(`.${OPTION_SELECTED_CLASS}`) || list.querySelector("[data-value]");
+  if (selectedOption) {
+    label.textContent = selectedOption.textContent || "";
+    updateDownloadLink(container, selectedOption.getAttribute("data-value") || "");
+  }
+  updatePickerWidth(picker);
 
-  select.addEventListener("change", () => {
-    updateDownloadLink(container, select.value);
-    setRecommendedSuffix(select, suffix, false);
+  const closePicker = () => {
+    toggle.setAttribute("aria-expanded", "false");
+    picker.classList.remove(OPEN_CLASS);
+  };
+
+  const openPicker = () => {
+    toggle.setAttribute("aria-expanded", "true");
+    picker.classList.add(OPEN_CLASS);
+  };
+
+  const togglePicker = () => {
+    if (picker.classList.contains(OPEN_CLASS)) {
+      closePicker();
+    } else {
+      openPicker();
+    }
+  };
+
+  toggle.addEventListener("click", (event) => {
+    event.preventDefault();
+    togglePicker();
   });
 
-  select.addEventListener("focus", () => {
-    setRecommendedSuffix(select, suffix, true);
+  list.addEventListener("click", (event) => {
+    const option = event.target.closest(".workflow-picker__option");
+    if (!option) return;
+    list.querySelectorAll(`.${OPTION_SELECTED_CLASS}`).forEach((node) => {
+      node.classList.remove(OPTION_SELECTED_CLASS);
+      node.setAttribute("aria-selected", "false");
+    });
+    option.classList.add(OPTION_SELECTED_CLASS);
+    option.setAttribute("aria-selected", "true");
+    label.textContent = option.textContent || "";
+    updateDownloadLink(container, option.getAttribute("data-value") || "");
+    closePicker();
   });
 
-  select.addEventListener("mousedown", () => {
-    setRecommendedSuffix(select, suffix, true);
+  document.addEventListener("click", (event) => {
+    if (!picker.contains(event.target)) {
+      closePicker();
+    }
   });
 
-  select.addEventListener("blur", () => {
-    setRecommendedSuffix(select, suffix, false);
+  document.addEventListener("keydown", (event) => {
+    if (!picker.classList.contains(OPEN_CLASS)) return;
+    if (event.key === "Escape") {
+      closePicker();
+      toggle.focus();
+    }
   });
 
   copyButton.addEventListener("click", async () => {
-    const ok = await copyWorkflowJson(container, select.value);
+    const current = list.querySelector(`.${OPTION_SELECTED_CLASS}`) || list.querySelector("[data-value]");
+    const file = current?.getAttribute("data-value") || "";
+    const ok = await copyWorkflowJson(container, file);
     if (ok) {
       showSuccessState(copyButton);
     }
