@@ -907,7 +907,7 @@ export default function (eleventyConfig) {
       <button class="workflow-json__icon" type="button" aria-label="${escapeHTML(copyLabel)} ${escapeHTML(defaultName)}" data-workflow-picker-copy data-label="${escapeHTML(copyLabel)}" data-success-label="${escapeHTML(copiedLabel)}">
         ${copyIcon}
       </button>
-      <a class="workflow-json__icon" href="${defaultFile}" download="${escapeHTML(defaultName)}" data-no-swup aria-label="${escapeHTML(downloadLabel)} ${escapeHTML(defaultName)}" data-workflow-picker-download data-label="${escapeHTML(downloadLabel)}" data-success-label="${escapeHTML(downloadedLabel)}">
+      <a class="workflow-json__icon" href="${escapeHTML(defaultFile)}" download="${escapeHTML(defaultName)}" data-no-swup aria-label="${escapeHTML(downloadLabel)} ${escapeHTML(defaultName)}" data-workflow-picker-download data-label="${escapeHTML(downloadLabel)}" data-success-label="${escapeHTML(downloadedLabel)}">
         ${downloadIcon}
       </a>
     </div>
