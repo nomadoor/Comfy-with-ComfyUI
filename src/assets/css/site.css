@@ -223,9 +223,27 @@ video {
   border-radius: var(--radius-md);
   background: var(--color-panel-strong);
   color: var(--color-text);
-  padding: 0 var(--space-lg);
+  padding: 0 calc(var(--space-lg) + 2.25rem) 0 var(--space-lg);
   border: none;
   font-weight: 600;
+}
+
+.search-box {
+  position: relative;
+}
+
+.site-header__search-toggle--inline {
+  position: absolute;
+  top: 50%;
+  right: var(--space-sm);
+  transform: translateY(-50%);
+  display: inline-flex;
+}
+
+@media (min-width: 1101px) {
+  .site-header__search-toggle--inline {
+    display: inline-flex;
+  }
 }
 
 .search-box__results {
@@ -1833,6 +1851,11 @@ h1 {
   flex-shrink: 0;
 }
 
+.workflow-picker__button:hover .workflow-picker__caret {
+  border-right-color: var(--color-highlight);
+  border-bottom-color: var(--color-highlight);
+}
+
 .workflow-picker .workflow-picker__list {
   position: absolute;
   top: 120%;
@@ -2829,6 +2852,12 @@ body.lightbox-open {
 
 .site-header__search-toggle {
   display: none;
+}
+
+@media (min-width: 1101px) {
+  .site-header__search .site-header__search-toggle--inline {
+    display: inline-flex;
+  }
 }
 
 /* Backdrop for mobile nav */
