@@ -237,7 +237,12 @@ function extractInlineJsonLink(children = []) {
   return { href, text: textContent };
 }
 
-function getWorkflowLabel(key) {
+function getWorkflowLabel(key, lang = DEFAULT_LANG) {
+  const langKey = lang || DEFAULT_LANG;
+  const localized = WORKFLOW_I18N?.[key]?.[langKey];
+  if (localized) return localized;
+  const fallback = WORKFLOW_I18N?.[key]?.[DEFAULT_LANG];
+  if (fallback) return fallback;
   return WORKFLOW_LABELS[key] || "";
 }
 

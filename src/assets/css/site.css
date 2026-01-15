@@ -1818,8 +1818,9 @@ h1 {
 }
 
 .workflow-picker__button:focus-visible {
-  outline: none;
-  box-shadow: none;
+  outline: 2px solid var(--color-highlight);
+  outline-offset: 0.2rem;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.35);
 }
 
 .workflow-picker__caret {

@@ -85,9 +85,6 @@ Wan などに比べるとノード数が多いため複雑に感じるかもし�
 
 ![](https://gyazo.com/b6df8e98ae7d7337f2f32a65a10661d3){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2/LTX-2_text2video.json)
-
-
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/LTX-2_text2video_V2.json",
   "/workflows/basic-workflows/ltx-2/LTX-2_text2video.json"
