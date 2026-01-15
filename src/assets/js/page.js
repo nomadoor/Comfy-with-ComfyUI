@@ -6,6 +6,7 @@ import initSearch from "./search.js";
 import initGyazoToggle from "./gyazo-toggle.js";
 import initCodeCopy from "./code-copy.js";
 import initCopyJson from "./copy-json.js"; // workflow JSON copy/download
+import initWorkflowPicker from "./workflow-picker.js";
 import initMediaRowFit from "./media-row-fit.js";
 import initHeadingAnchors from "./heading-anchors.js";
 import "./sidebar.js"; // legacy auto-init; sidebar is persistent shell
@@ -45,6 +46,7 @@ export default function initPage(root = document.getElementById("page") || docum
   profileStep("gyazo-toggle", () => initGyazoToggle?.(root));
   profileStep("code-copy", () => initCodeCopy?.(root));
   profileStep("copy-json", () => initCopyJson?.(root));
+  profileStep("workflow-picker", () => initWorkflowPicker?.(root));
   profileStep("media-row-fit", () => runIdle(() => initMediaRowFit?.(root)));
   profileStep("related-hero", () => initRelatedHero?.(root));
 

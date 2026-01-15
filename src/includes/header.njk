@@ -33,6 +33,10 @@
       <div class="search-box" data-search>
         <input type="search" class="search-box__input" data-search-input placeholder="{{ searchPlaceholder }}"
           aria-label="{{ searchLabel }}" autocomplete="off" />
+        <button class="icon-button icon-button--ghost site-header__search-toggle site-header__search-toggle--inline"
+          type="button" aria-label="{{ searchLabel }}" data-search-focus>
+          {{ icon("search") }}
+        </button>
         <div class="search-box__results" data-search-results hidden role="listbox" aria-live="polite"></div>
       </div>
     </div>
