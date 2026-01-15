@@ -1,6 +1,7 @@
 const initMobileNav = () => {
   const menuBtn = document.querySelector(".site-header__menu-btn");
   const searchToggle = document.querySelector("[data-search-toggle]");
+  const searchFocus = document.querySelector("[data-search-focus]");
   const searchInput = document.querySelector("[data-search-input]");
   const body = document.body;
   // Target the sidebar itself as it will be the overlay
@@ -63,6 +64,14 @@ const initMobileNav = () => {
     searchToggle.addEventListener("click", (e) => {
       e.stopPropagation();
       toggleSearch();
+    });
+  }
+
+  if (searchFocus && searchInput) {
+    searchFocus.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      searchInput.focus();
     });
   }
 
