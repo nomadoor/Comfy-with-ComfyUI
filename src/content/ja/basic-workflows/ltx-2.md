@@ -48,7 +48,7 @@ tags: []
   - [ltx-2-19b-distilled-lora-384.safetensors](https://huggingface.co/Lightricks/LTX-2/blob/main/ltx-2-19b-distilled-lora-384.safetensors)
 - text_encoders
 
-  - [gemma_3_12B_it.safetensors](https://huggingface.co/Comfy-Org/ltx-2/blob/main/split_files/text_encoders/gemma_3_12B_it.safetensors)
+  - [gemma_3_12B_it_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/ltx-2/blob/main/split_files/text_encoders/gemma_3_12B_it_fp8_scaled.safetensors)
 
 ```text
 📂ComfyUI/
@@ -60,7 +60,7 @@ tags: []
     ├── 📂loras/
     │   └── ltx-2-19b-distilled-lora-384.safetensors
     └── 📂text_encoders/
-        └── gemma_3_12B_it.safetensors
+        └── gemma_3_12B_it_fp8_scaled.safetensors
 ```
 
 ---
@@ -83,14 +83,19 @@ Wan などに比べるとノード数が多いため複雑に感じるかもし�
 
 ## text2video
 
-![](https://gyazo.com/b6df8e98ae7d7337f2f32a65a10661d3){gyazo=image}
+![](https://gyazo.com/8d55d96d53a66f097482a02d2714791a){gyazo=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/LTX-2_text2video_V2.json",
   "/workflows/basic-workflows/ltx-2/LTX-2_text2video.json"
 %}
 
-{% mediaRow img="https://gyazo.com/129febfcdbfc077bf36db4a6aa33fb19 {gyazo=image}", width=50, align="left" %}
+上で説明した基本的な処理に沿ってworkflowを組んでいきます。
+- **1, 2, 3** が 1段目
+- **4, 5** が Hires.fix
+- **6** が デコード です
+
+{% mediaRow img="https://gyazo.com/bf2e2fa5389b9bf397478a238d969be2 {gyazo=image}", width=40, align="left" %}
 
 
 **1. 動画解像度・長さ・FPSの設定**
@@ -105,7 +110,7 @@ Wan などに比べるとノード数が多いため複雑に感じるかもし�
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/e058d717d9255db19e0bb0c186950e42 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="https://gyazo.com/e058d717d9255db19e0bb0c186950e42 {gyazo=image}", width=40, align="left" %}
 
 **2. プロンプト**
 
@@ -117,7 +122,7 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/1385ab23c63b68656e24650d11f5f5a9 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="https://gyazo.com/5b532a5acaab4738cccbb92c423ad3ec {gyazo=image}", width=40, align="left" %}
 
 **3. サンプリング（1段目）**
 
@@ -131,7 +136,7 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/353e095a574e974a64cff4593f8bf907 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="https://gyazo.com/216eebb358b46faffd4f2a6062128352 {gyazo=image}", width=40, align="left" %}
 
 **4. latent のアップスケール（x2）**
 
@@ -141,7 +146,7 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/5625337c055851450dd6dc0357891631 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="https://gyazo.com/15b685b362d047a085b80d9ecad8b734 {gyazo=image}", width=40, align="left" %}
 
 **5. サンプリング（2段目 / video2video）**
 
@@ -155,7 +160,7 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/801da41aa50410fb70b55eab18a8ab83 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="https://gyazo.com/801da41aa50410fb70b55eab18a8ab83 {gyazo=image}", width=40, align="left" %}
 
 **6. デコード**
 
@@ -172,9 +177,12 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 
 上ではHires.fixでのみ `Distilled LoRA` を使いましたが、1段目にも適用し、8ステップで高速に生成してみましょう。
 
-![](https://gyazo.com/aa18f5b7bb97ae164002fdef187f5790){gyazo=image}
+![](https://gyazo.com/b654179351e0a776f340fbc07e9cc936){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2/LTX-2_text2video_distilled.json)
+{% workflowPicker
+  "!/workflows/basic-workflows/ltx-2/LTX-2_text2video_distilled_V2.json",
+  "/workflows/basic-workflows/ltx-2/LTX-2_text2video_distilled.json"
+%}
 
 `distilled-lora`を適用するため、サンプリング設定をいくつか変更します。
 
@@ -182,20 +190,27 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 - scheduler : `Simple`
 - steps : `8`
 
-### 20ステップ / 8ステップ Distilled LoRA比較
+---
 
-![20ステップ](https://gyazo.com/decf4a825d56382d22b6c3a0fe549a64){gyazo=player} ![8ステップ(Distilled LoRA)](https://gyazo.com/05affbce361f48b4249a22b639a05e65){gyazo=player}
+## 20ステップ / 8ステップ Distilled LoRA比較
+
+![20ステップ](https://gyazo.com/62d8ccfbbd7222f626e6f85a3fa5cfcd){gyazo=player} ![8ステップ(Distilled LoRA)](https://gyazo.com/593027c6c33cdd49b60fc8a3aa79c4b0){gyazo=player}
 
 > 私が試した限りでは、distilled LoRA を適用したほうが安定して生成できます。  
-> そのため、速度アップを兼ねて以降のworkflowは全て１段目からdistilled loraを適用していきます。
+> そのため、速度アップを兼ねて以降のworkflowは全て **１段目からdistilled loraを適用** していきます。
 
 ---
 
 ## image2video
 
-![](https://gyazo.com/3ceb9e3b3fdbdf7e2187e709fe8022d7){gyazo=image}
+![](https://gyazo.com/a16d62da150521a5b0c96dc32bbea33b){gyazo=image}
 
 [](/workflows/basic-workflows/ltx-2/LTX-2_image2video_distilled.json)
+
+{% workflowPicker
+  "!/workflows/basic-workflows/ltx-2/LTX-2_image2video_distilled_V2.json",
+  "/workflows/basic-workflows/ltx-2/LTX-2_image2video_distilled.json"
+%}
 
 
 基本は「1フレーム目を入力画像で固定して、残りを生成」です。  
