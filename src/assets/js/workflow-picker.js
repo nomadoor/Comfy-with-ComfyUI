@@ -56,19 +56,6 @@ function updateActionLabels(container, file) {
   }
 }
 
-function updatePickerWidth(picker) {
-  if (!picker) return;
-  const options = Array.from(picker.querySelectorAll(".workflow-picker__option"));
-  if (!options.length) return;
-  const maxLength = options.reduce((max, option) => {
-    const label = option.textContent || "";
-    return Math.max(max, label.length);
-  }, 0);
-  if (maxLength > 0) {
-    picker.style.setProperty("--workflow-picker-width", `${Math.min(maxLength + 1, 48)}ch`);
-  }
-}
-
 function updateDownloadLink(container, file) {
   const downloadLink = container.querySelector("[data-workflow-picker-download]");
   if (!downloadLink) return;
@@ -131,8 +118,6 @@ function bindPicker(container) {
     label.textContent = selectedOption.textContent || "";
     updateDownloadLink(container, selectedOption.getAttribute("data-value") || "");
   }
-  updatePickerWidth(picker);
-
   const closePicker = () => {
     toggle.setAttribute("aria-expanded", "false");
     picker.classList.remove(OPEN_CLASS);
@@ -196,6 +181,7 @@ function bindPicker(container) {
   downloadLink.addEventListener("click", () => {
     showSuccessState(downloadLink);
   });
+
 }
 
 export default function initWorkflowPicker(root) {

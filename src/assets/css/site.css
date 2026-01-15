@@ -100,7 +100,7 @@ html {
 body {
   margin: 0;
   background: var(--color-bg);
-  color: var(--color-text);
+  color: var(--color-text-muted);
   font-family: var(--font-base);
   min-height: 100%;
   padding-top: var(--header-height);
@@ -161,7 +161,7 @@ video {
   display: grid;
   grid-template-columns: var(--sidebar-width) minmax(0, var(--content-max)) var(--toc-width);
   align-items: center;
-  gap: var(--space-xl);
+  gap: var(--column-gap);
 }
 
 .site-header__logo,
@@ -502,7 +502,7 @@ video {
   }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 900px) {
   .app-shell {
     grid-template-columns: 1fr;
     gap: var(--space-lg);
@@ -1236,6 +1236,11 @@ h1 {
   list-style: decimal;
 }
 
+.article-body li {
+  margin-bottom: 0.25rem;
+  padding-left: 0;
+}
+
 .article-body ol li {
   margin-bottom: var(--space-2xs);
   padding-left: 0;
@@ -1258,7 +1263,7 @@ h1 {
   border-bottom: 1px solid var(--color-border);
 }
 
-.media-inline + .media-inline {
+.media-inline+.media-inline {
   border-top: 0;
 }
 
@@ -1811,7 +1816,8 @@ h1 {
   align-items: center;
   gap: var(--space-sm);
   border-radius: var(--radius-md);
-  padding: 0 1.25rem;
+  --workflow-row-padding: 1.25rem;
+  padding: 0.2rem var(--workflow-row-padding);
   background: var(--color-panel-strong);
   align-self: start;
 }
@@ -1820,26 +1826,29 @@ h1 {
   font-weight: 500;
   overflow-wrap: anywhere;
   word-break: break-word;
+  color: var(--color-text);
 }
 
+/* Rebuilt Workflow Picker Styles */
 .workflow-json__row--picker {
+  padding: 0.2rem var(--workflow-row-padding);
   flex-wrap: wrap;
 }
 
 .workflow-picker {
   position: relative;
-  min-width: 12rem;
-  max-width: 100%;
-  width: auto;
-  align-self: flex-start;
+  /* User requirement: Width must follow the label text */
+  min-width: auto;
+  width: max-content;
 }
 
 .workflow-picker__button {
-  width: 100%;
-  padding: 0.35rem 0 0.35rem 0;
+  width: auto;
+  padding: 0.5rem 0;
+  /* Consistent alignment */
   border-radius: var(--radius-md);
   border: none;
-  background: var(--color-panel-strong);
+  background: transparent;
   color: var(--color-text);
   font-family: var(--font-base);
   font-size: inherit;
@@ -1848,18 +1857,17 @@ h1 {
   text-align: left;
   cursor: pointer;
   display: inline-flex;
+  /* Use inline-flex so width follows content */
   align-items: center;
-  gap: var(--space-xs);
+  gap: var(--space-sm);
 }
 
 .workflow-picker__button:focus-visible {
   outline: 2px solid var(--color-highlight);
-  outline-offset: 0.2rem;
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.35);
+  outline-offset: -2px;
 }
 
 .workflow-picker__caret {
-  margin-left: var(--space-xs);
   width: 0.5rem;
   height: 0.5rem;
   border-right: 2px solid var(--color-text-muted);
@@ -1875,18 +1883,25 @@ h1 {
 
 .workflow-picker .workflow-picker__list {
   position: absolute;
-  top: 120%;
-  left: -1.25rem;
-  right: auto;
-  min-width: calc(100% + 2.5rem);
+  top: calc(100% + 4px + 0.2rem);
+  /* Slight gap */
+  left: calc(-1 * var(--workflow-row-padding));
+  min-width: max-content;
+  width: max-content;
+  max-width: none;
   margin: 0;
   padding: var(--space-2xs) 0;
   list-style: none;
   background: var(--color-panel-strong);
   border-radius: var(--radius-md);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   display: none;
-  z-index: 10;
+  z-index: 100;
+}
+
+.workflow-picker .workflow-picker__list > li {
+  margin: 0;
+  width: 100%;
 }
 
 .workflow-picker.is-open .workflow-picker__list {
@@ -1894,12 +1909,17 @@ h1 {
 }
 
 .workflow-picker__option {
-  padding: 0.35rem 0;
+  box-sizing: border-box;
+  padding: 0.5rem var(--workflow-row-padding);
+  /* Match button padding */
   font-family: var(--font-base);
   font-size: inherit;
   font-weight: 500;
   color: var(--color-text);
   cursor: pointer;
+  white-space: nowrap;
+  display: block;
+  width: 100%;
 }
 
 .workflow-picker__option:hover {
@@ -1907,7 +1927,8 @@ h1 {
 }
 
 .workflow-picker__label {
-  padding-right: var(--space-xs);
+  padding-right: 0;
+  color: var(--color-text);
 }
 
 .workflow-json__message {
@@ -1945,17 +1966,28 @@ h1 {
 }
 
 .workflow-json__icon:hover,
-.workflow-json__icon:focus-visible {
-  color: var(--color-highlight);
-}
+  .workflow-json__icon:focus-visible {
+    color: var(--color-text);
+  }
 
-.workflow-json__icon.is-success {
-  color: var(--color-highlight);
-}
+.workflow-json__icon:hover svg,
+  .workflow-json__icon:focus-visible svg {
+    color: var(--color-highlight);
+  }
+
+  .workflow-json__icon.is-success svg {
+    color: var(--color-highlight);
+  }
+
+  .workflow-json__icon.is-success {
+    color: var(--color-text);
+  }
 
 .workflow-json__icon svg {
   width: 1.25rem;
   height: 1.25rem;
+  color: var(--color-text-muted);
+  stroke-width: 2;
 }
 
 .workflow-json__icon::after,
