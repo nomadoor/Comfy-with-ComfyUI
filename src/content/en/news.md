@@ -10,9 +10,12 @@ tags:
   - news
 ---
 
-## News
-
 <div class="news-list">
+  <a class="news-row" href="/en/basic-workflows/ltx-2/">
+    <span class="news-row__date">2026.1.17</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">Updated LTX-2 page<br>Adjusted parameters and added many workflows</span>
+  </a>
   <a class="news-row" href="/en/news/">
     <span class="news-row__date">2026.1.15</span>
     <span class="news-row__tag">none</span>

@@ -11,6 +11,11 @@ tags:
 ---
 
 <div class="news-list">
+  <a class="news-row" href="/ja/basic-workflows/ltx-2/">
+    <span class="news-row__date">2026.1.17</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">LTX-2のページを更新しました<br>パラメータを調整し、多くのworkflowを追加しています</span>
+  </a>
   <a class="news-row" href="/ja/news/">
     <span class="news-row__date">2026.1.15</span>
     <span class="news-row__tag">none</span>
