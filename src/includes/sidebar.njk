@@ -106,10 +106,15 @@
         <div class="lang-menu" data-lang-menu role="menu">
 
           {% set currentSlug = currentNavId or slug or 'how-to-use-this-site' %}
+          {% set isStandalone = (not sectionExists) and (currentSlug == 'news' or currentSlug == 'about') %}
 
           {% for option in site.languages %}
 
-            {% set target = '/' + option.code + '/' + currentSection + '/' + currentSlug + '/' %}
+            {% if isStandalone %}
+              {% set target = '/' + option.code + '/' + currentSlug + '/' %}
+            {% else %}
+              {% set target = '/' + option.code + '/' + currentSection + '/' + currentSlug + '/' %}
+            {% endif %}
 
             <a href="{{ target }}" class="{% if option.code == lang %}is-active{% endif %}" role="menuitem" data-router-ignore>{{ option.label }}</a>
 
