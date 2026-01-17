@@ -3065,6 +3065,8 @@ body.nav-open .nav-backdrop {
     padding: var(--space-sm) var(--space-md);
     background: var(--color-bg);
     z-index: 1;
+    width: 100%;
+    min-width: 0;
   }
 
   body.search-open .site-header__search {
