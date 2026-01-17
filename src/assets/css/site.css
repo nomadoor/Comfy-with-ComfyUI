@@ -1924,8 +1924,6 @@ h1 {
   color: var(--color-text);
   cursor: pointer;
   white-space: nowrap;
-  display: block;
-  width: 100%;
 }
 
 .workflow-picker__option:hover {
@@ -1934,7 +1932,6 @@ h1 {
 
 .workflow-picker__label {
   min-width: 0;
-  padding-right: 0;
   color: var(--color-text);
   white-space: normal;
   overflow-wrap: anywhere;
