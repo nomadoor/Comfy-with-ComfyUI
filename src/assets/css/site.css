@@ -1832,18 +1832,23 @@ h1 {
 /* Rebuilt Workflow Picker Styles */
 .workflow-json__row--picker {
   padding: 0.2rem var(--workflow-row-padding);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  max-width: 100%;
 }
 
 .workflow-picker {
   position: relative;
   /* User requirement: Width must follow the label text */
-  min-width: auto;
+  min-width: 0;
   width: max-content;
+  max-width: 100%;
+  flex: 0 1 auto;
 }
 
 .workflow-picker__button {
   width: auto;
+  max-width: 100%;
+  min-width: 0;
   padding: 0.5rem 0;
   /* Consistent alignment */
   border-radius: var(--radius-md);
@@ -1856,10 +1861,10 @@ h1 {
   line-height: 1.2;
   text-align: left;
   cursor: pointer;
-  display: inline-flex;
-  /* Use inline-flex so width follows content */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: var(--space-sm);
+  column-gap: var(--space-sm);
 }
 
 .workflow-picker__button:focus-visible {
@@ -1928,8 +1933,11 @@ h1 {
 }
 
 .workflow-picker__label {
+  min-width: 0;
   padding-right: 0;
   color: var(--color-text);
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .workflow-json__message {
