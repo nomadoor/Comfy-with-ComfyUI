@@ -14,7 +14,7 @@ tags: []
 
 ## LTX-2とは？
 
-**LTX-2** は、Lightricks が公開している 音声＋動画を同時に生成できる拡散モデルです。
+**[LTX-2](https://website.ltx.video/blog/introducing-ltx-2)** は、Lightricks が公開している 音声＋動画を同時に生成できる拡散モデルです。
 
 ---
 
@@ -83,7 +83,7 @@ Wan などに比べるとノード数が多いため複雑に感じるかもし�
 
 ## text2video
 
-![](https://gyazo.com/8d55d96d53a66f097482a02d2714791a){gyazo=image}
+![](https://gyazo.com/d9fa680727fd75aca39c94a865682c5a){gyazo=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/LTX-2_text2video_V2.json",
@@ -146,7 +146,7 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/15b685b362d047a085b80d9ecad8b734 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="https://gyazo.com/22271134a0909e979030ac2ce6e037ed {gyazo=image}", width=40, align="left" %}
 
 **5. サンプリング（2段目 / video2video）**
 
@@ -171,13 +171,12 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 
 {% endmediaRow %}
 
----
 
 ## text2video 8ステップ
 
-上ではHires.fixでのみ `Distilled LoRA` を使いましたが、1段目にも適用し、8ステップで高速に生成してみましょう。
+上ではHires.fixでのみ `distilled-lora` を使いましたが、1段目にも適用し、8ステップで高速に生成してみましょう。
 
-![](https://gyazo.com/b654179351e0a776f340fbc07e9cc936){gyazo=image}
+![](https://gyazo.com/e9e4851525adda6c3aab20a9acb09582){gyazo=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/LTX-2_text2video_distilled_V2.json",
@@ -190,46 +189,57 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 - scheduler : `Simple`
 - steps : `8`
 
----
 
-## 20ステップ / 8ステップ Distilled LoRA比較
+## 20ステップ / 8ステップ distilled-lora比較
 
-![20ステップ](https://gyazo.com/62d8ccfbbd7222f626e6f85a3fa5cfcd){gyazo=player} ![8ステップ(Distilled LoRA)](https://gyazo.com/593027c6c33cdd49b60fc8a3aa79c4b0){gyazo=player}
+![20ステップ](https://gyazo.com/d7457da890a04a168e0f82655c9a6392){gyazo=player} ![8ステップ(distilled-lora)](https://gyazo.com/1e20bd8fd074213736b0a7a2e3766be1){gyazo=player}
 
-> 私が試した限りでは、distilled LoRA を適用したほうが安定して生成できます。  
-> そのため、速度アップを兼ねて以降のworkflowは全て **１段目からdistilled loraを適用** していきます。
+> 私が試した限りでは、distilled-lora を適用したほうが安定して生成できます。  
+> そのため、速度アップを兼ねて以降のworkflowは全て **１段目からdistilled-loraを適用** していきます。
 
 ---
 
 ## image2video
 
-![](https://gyazo.com/a16d62da150521a5b0c96dc32bbea33b){gyazo=image}
+### single-frame I2V
 
-[](/workflows/basic-workflows/ltx-2/LTX-2_image2video_distilled.json)
+![](https://gyazo.com/a16d62da150521a5b0c96dc32bbea33b){gyazo=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/LTX-2_image2video_distilled_V2.json",
   "/workflows/basic-workflows/ltx-2/LTX-2_image2video_distilled.json"
 %}
 
+基本は「1フレーム目を入力画像で固定して、残りを生成」です。
 
-基本は「1フレーム目を入力画像で固定して、残りを生成」です。  
-LTX-2 は 2段階（半解像度→x2アップスケール）なので、入力画像もそれに合わせて扱います。
+例えば 121フレームの動画を作るなら、ざっくりこういう流れになります。
 
+```text
+(1) 121 frames の枠を作る（8n+1）
+    [ 🌫️ 🌫️ 🌫️ 🌫️ 🌫️ ... 🌫️ ]
 
-{% mediaRow img="https://gyazo.com/e30bb042c1ba2960ecdf369bd8263fe5 {gyazo=image}", width=50, align="left" %}
+(2) 1フレーム目だけ入力画像で上書き
+    [ 🖼️ 🌫️ 🌫️ 🌫️ 🌫️ ... 🌫️ ]
+
+(3) 残りの120フレームを生成
+    [ 🖼️ ✨ ✨ ✨ ✨ ... ✨ ]
+```
+🖼️ を起点に、後ろのフレーム（✨）が埋まっていくイメージです。
+
+{% mediaRow img="https://gyazo.com/981d0f06afef7364fcbe2c10bc1428c1 {gyazo=image}", width=40, align="left" %}
 
 **1. 入力画像のリサイズ（2系統作る）**
 
 - まず、最終出力したい解像度に合わせた フル解像度版 を作ります。
   - 任意のサイズにリサイズ (ここでは1MP)。
-  - 幅・高さは 32 の倍数にします。
+  - 幅・高さは 64 の倍数にします。
+    - 1段目は 1/2 解像度で回すため、半分にしても 32 の倍数になるように 64 の倍数にします。
 - つぎに、1段目（半解像度）用に、上の画像を 縦横 1/2 にした版も作ります。
   - `EmptyLTXVLatentVideo` には、この 半解像度側の width/height を入力します。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/ee5118476eb8c7d581339c94943bd6f2 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="https://gyazo.com/4198b2a54986678bbcf735dda9c8cb79 {gyazo=image}", width=40, align="left" %}
 
 **2. 画像の下処理**
 
@@ -238,7 +248,7 @@ LTX-Videoからの特徴ですが、動画は静止画と違い、少し圧縮�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/90c0a4dc550eb34a03a1a7ab100f866d {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="https://gyazo.com/90c0a4dc550eb34a03a1a7ab100f866d {gyazo=image}", width=40, align="left" %}
 
 **3. LTXVImgToVideoInplace（1段目の差し込み）**
 
@@ -248,7 +258,7 @@ LTX-Videoからの特徴ですが、動画は静止画と違い、少し圧縮�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/0be31e6d4769cbdfdb1b13100bb14cfe {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="https://gyazo.com/2a0c109b88debb478cf1d66f4a0b2f57 {gyazo=image}", width=40, align="left" %}
 
 **4. アップスケール側（2段目）にも同じことをする**
 
@@ -265,7 +275,68 @@ LTX-Videoからの特徴ですが、動画は静止画と違い、少し圧縮�
 
 **出力例**
 
-![入力](https://gyazo.com/9e1e51a809c8838bb01c1258925c4e0e){gyazo=image} ![出力](https://gyazo.com/f1878afbef8827ba5d6d70aee609c0e0){gyazo=player}
+![入力](https://gyazo.com/9e1e51a809c8838bb01c1258925c4e0e){gyazo=image} ![出力](https://gyazo.com/cdd2bcb62649ec744892c1615eae01d9){gyazo=player}
+
+---
+
+### multi-frame I2V
+
+先ほどの image2video workflow は、入力として **1枚の画像** だけでなく **画像バッチ（=動画）** も渡せます。  
+これを応用すると、任意の動画の末尾を「のりしろ」にして、その先を延長する workflow が作れます。
+
+![](https://gyazo.com/777521712af9329c1f8612710f00584a){gyazo=image}
+
+[](/workflows/basic-workflows/ltx-2/LTX-2_Extension_distilled.json)
+
+入力された動画の末尾数フレームを取得し、その続きを生成する、ということをします。
+
+```text
+(1) 入力動画（=画像バッチ）
+    [ 🖼️ 🖼️ 🖼️ 🖼️  ... 🖼️ 🖼️ 🖼️ ]
+
+(2) 末尾から N frames を取る（N = 8n+1）
+    [ 🖼️ 🖼️ 🖼️ 🖼️... 🖼️ 🖼️ 🖼️ ]
+                      └─── N ───┘
+
+(3) 121 frames の枠を作り、先頭に N frames を上書きして入れる
+    [ 🖼️ 🖼️ 🖼️ 🌫️ 🌫️ 🌫️ ... 🌫️ ]
+      └── N ──┘     
+
+(4) 残り（121 - N frames）を生成して続きを作る
+    [ 🖼️ 🖼️ 🖼️ ✨ ✨ ✨ ... ✨ ]
+
+(5) 先頭の N frames を削除（元動画末尾と重複するため）
+    [ ✨ ✨ ✨ ... ✨ ]
+    
+(6) 元の動画 + 続きを結合
+    [ 🖼️ 🖼️ 🖼️ ... 🖼️] + [ ✨ ✨ ✨ ... ✨ ]
+```
+
+{% mediaRow img="https://gyazo.com/5b0892af938467f9abf134e6dba73e87 {gyazo=image}", width=40, align="left" %}
+
+**1. 末尾の画像バッチ取得**
+
+入力動画の末尾から、のりしろとなる画像バッチを取得します。
+- `Get Image or Mask Range From Batch` の `num_frames` に任意の枚数を入力します（8n+1 の縛りあり）。
+- N を増やすほど元動画の動きや雰囲気を引き継ぎやすくなります。
+- ただし、生成する区間は 121 - N frames になるので、N を増やすほど「続き」は短くなります。
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/c87f00b6590f5b3b4b983dc204c99476 {gyazo=image}", width=40, align="left" %}
+
+**2. 生成した動画と元の動画を結合**
+
+生成結果には、先頭に「のりしろ（元動画末尾 N frames）」が含まれていますが、この部分は元動画と重複するので、結合前に削除します。
+- 生成した動画の先頭 N frames を削除（この例では 25 frames）
+- 元の動画の末尾に結合
+
+{% endmediaRow %}
+
+**出力例**
+
+![入力](https://gyazo.com/4c2fdd21e0ff8bac1c572dc130753018){gyazo=loop} ![出力](https://gyazo.com/1bce09367191f5fc19297331b43bdbb1){gyazo=loop}
+
 
 ---
 
@@ -273,14 +344,17 @@ LTX-Videoからの特徴ですが、動画は静止画と違い、少し圧縮�
 
 LTX-2 は「動画＋音声」を同時に扱うモデルなので、音声を入力として渡して 音に引っ張られた動画 を作る構成もできます。
 
-![](https://gyazo.com/5f4301951dfc2a62f0feaec21aed425c){gyazo=image}
+![](https://gyazo.com/be5aaa842432ee760228eeed24a3636f){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2/LTX-2_audio2video_distilled.json)
+{% workflowPicker
+  "!/workflows/basic-workflows/ltx-2/LTX-2_audio2video_distilled_V2.json",
+  "/workflows/basic-workflows/ltx-2/LTX-2_audio2video_distilled.json"
+%}
 
 - `Trim Audio Duration` で音声を適当な長さにトリミング
 - 音声をエンコードして、`LTXVConcatAVLatent` に接続します。
 - 二段目の `LTXVConcatAVLatent` にも接続します。
-- 入力音声をそのまま使います（生成音声は使いません）。
+- 出力動画には、入力音声をそのまま使います（生成音声は使いません）。
 
 > 🚨音声の長さが生成する動画の長さより **短い** 場合、音声条件が効きません。音と無関係な動画が生成されます。  
 > 無音でもいいので生成する動画の長さより余計に長くしておく必要があります。
@@ -290,7 +364,7 @@ LTX-2 は「動画＋音声」を同時に扱うモデルなので、音声を�
 
 **出力例**
 
-![](https://gyazo.com/69fdf6a78c1534e1b69bd0aa44677903){gyazo=player}
+![](https://gyazo.com/a4290b4a15307547b106f83ced77ae44){gyazo=player}
 
 ---
 
@@ -299,15 +373,97 @@ LTX-2 は「動画＋音声」を同時に扱うモデルなので、音声を�
 上２つを組み合わせることも出来ます。  
 顔画像に喋っている音声を組み合わせれば、talking headのようなことも出来ます。やってみましょう。
 
-![](https://gyazo.com/c07d99d56bef862ed590ea351e2d9b22){gyazo=image}
+![](https://gyazo.com/853b6d4b375b6ea1ef45f7697b71d369){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2/LTX-2_audio-image2video_distilled.json)
+{% workflowPicker
+  "!/workflows/basic-workflows/ltx-2/LTX-2_audio-image2video_distilled_V2.json",
+  "/workflows/basic-workflows/ltx-2/LTX-2_audio-image2video_distilled.json"
+%}
 
 - audio2video / image2video この 2 つのworkflowを組み合わせるだけです。
 
 **出力例**
 
-![入力](https://gyazo.com/7bf65ca84f1583d324c0debeee85b616){gyazo=image} ![出力](https://gyazo.com/f614c8645cac991c9b9dd918baa8fd5c){gyazo=player}
+![入力](https://gyazo.com/7bf65ca84f1583d324c0debeee85b616){gyazo=image} ![出力](https://gyazo.com/8cb2045b833bb0507d048bf9965cbf63){gyazo=player}
+
+> 実はあまりセリフに動画が追従しなかったため、プロンプトにセリフを入れています。もっと良いworkflowがあるかもしれません。
+
+---
+
+## video2audio
+
+audio2video の逆で、動画を入力して それに合う音（効果音や環境音） を生成することもできます。
+
+> このタスクは安定しません。おそらく改良が必要です。
+
+![](https://gyazo.com/62df52a54b4bfcf67f53429d6343d666){gyazo=image}
+
+[](/workflows/basic-workflows/ltx-2/LTX-2_video2audio_distilled.json)
+
+
+**出力例**
+
+※音が大きいので注意してください。
+
+![](https://gyazo.com/79db38d1a4e4f16317613bbb85cd37f7){gyazo=player}
+
+---
+
+## Temporal inpainting
+
+時間方向の inpainting（＝動画の一部だけ作り直す）です。VACE Extensionのようなものですね。
+
+![](https://gyazo.com/4f55cbb7932cdefc0d879c2c432ed224){gyazo=image}
+
+[](/workflows/basic-workflows/ltx-2/LTX-2_temporal-inpainting_distilled.json)
+
+基本は video2video です。  
+動画のうち「作り直したい時間範囲」だけをマスクし、その区間だけを再生成してもらいます。
+
+```text
+(1) 入力動画（= 既存の video latent）
+    [ 🖼️ 🖼️ 🖼️ 🖼️ 🖼️ 🖼️ 🖼️ 🖼️ 🖼️ 🖼️ ]
+
+(2) 作り直したい区間を指定（start_time ~ end_time）
+    例: 2.0s ~ 4.0s
+    [ 🖼️ 🖼️ | 🖼️ 🖼️ 🖼️ | 🖼️ 🖼️ 🖼️ ]
+             ^           ^
+         start_time   end_time
+
+(3) 指定区間だけマスクを立てる
+    [   0    0 |  1   1   1 |  0   0   0  ]
+               └─── Mask ───┘
+
+(4) マスク区間だけ再生成
+    [ 🖼️ 🖼️ | ✨ ✨ ✨ | 🖼️ 🖼️ 🖼️ ]
+             └─ inpaint ─┘
+```
+
+> 仕組み上、二段階 workflow（低解像度 → Hires.fix）を組みにくいため、最初から 1.5MP で生成しています。
+
+{% mediaRow img="https://gyazo.com/b8efdb1050318602e40897d0d181c77c {gyazo=image}", width=40, align="left" %}
+
+**1. LTXVAudioVideoMask**
+
+inpainting したい時間範囲を指定します。
+
+- `video_fps`：基本的には入力動画と同じ fps にします
+- `video_start_time` : inpainting 開始（秒）
+- `video_end_time` : inpainting 終了（秒）
+-  `audio_start_time` / `audio_end_time`：基本は video と同じにしますが、ずらすことで「音は保ったまま映像だけ編集」「映像は保ったまま音だけ編集」もできます
+{% endmediaRow %}
+
+**延長もできる**
+
+`end_time` を 入力動画の長さより後ろに指定すると、はみ出した部分は新規生成され、結果として動画が延長されます。
+例：入力が「2秒」なら
+- 2.0s → 5.0s を作り直す（= 2秒以降を新規生成して延長する）
+- `start_time = 2.0` / `end_time = 5.0`
+
+
+**出力例**
+
+![入力](https://gyazo.com/c460984d015f16a93523a37f70ff730a){gyazo=player} ![出力](https://gyazo.com/2ba5e11ee85ff39b50e44a3700cf8aa6){gyazo=player}
 
 
 ---
@@ -337,26 +493,29 @@ IC-LoRA は、ポーズや深度マップ、エッジなどの 制御信号か�
 ### IC-LoRA (Pose)
 
 
-text2videoをベースに制御動画を追加します。
+text2video の workflow をベースに、ControlNet のような制御用の動画入力を追加します。
 
-![](https://gyazo.com/e87ed3c369e8e0ed2473bffac25ec966){gyazo=image}
+![](https://gyazo.com/d520faa02e72245494eedeea79ebef20){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Pose)_distilled.json)
+{% workflowPicker
+  "!/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Pose)_distilled_V2.json",
+  "/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Pose)_distilled.json"
+%}
 
-{% mediaRow img="https://gyazo.com/72c9389b8f7a9e2070b7b3eb407d8bbf {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="https://gyazo.com/5efc334e9408a80a1328d0dceeadb892 {gyazo=image}", width=40, align="left" %}
 
 **1. 制御動画のリサイズ**
 
 生成する動画と同じ比率・解像度に揃えます。
 
-- 任意のサイズにリサイズ (ここでは1MP)。
-- 幅・高さは 32 の倍数にします。
+- 任意のサイズにリサイズ (ここでは1.5MP)。
+- 幅・高さは 64 の倍数にします。
 - `EmptyLTXVLatentVideo` に、 縦横 1/2 にした画像の width/height を入力します。
 
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/2c5faecd7ec8b06281d445f3c8f643b4 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="https://gyazo.com/95c6efb7ad89b70494e4db25c2b98121 {gyazo=image}", width=40, align="left" %}
 
 **2. ポーズ画像の生成**
 
@@ -366,7 +525,7 @@ text2videoをベースに制御動画を追加します。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/2d140f1d0b0c6fa0fba818e535c04082 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="https://gyazo.com/2d140f1d0b0c6fa0fba818e535c04082 {gyazo=image}", width=40, align="left" %}
 
 **3. LTXVAddGuide**
 
@@ -376,7 +535,7 @@ text2videoをベースに制御動画を追加します。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/9049aa36e2220ea94aa0b1bd6f541c37 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="https://gyazo.com/9049aa36e2220ea94aa0b1bd6f541c37 {gyazo=image}", width=40, align="left" %}
 
 **4. IC-LoRAの適用**
 
@@ -389,7 +548,7 @@ IC-LoRA (今回はPose) を適用してサンプリングします。
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/c30823a0376a9ff24e83b555cc55796f {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="https://gyazo.com/c30823a0376a9ff24e83b555cc55796f {gyazo=image}", width=40, align="left" %}
 
 **5. LTXVCropGuides**
 
@@ -409,16 +568,20 @@ IC-LoRA (今回はPose) を適用してサンプリングします。
 
 **出力例**
 
-![](https://gyazo.com/ba07959b5807a8d7254255a30697f34b){gyazo=loop}
+![入力](https://gyazo.com/a999fcd3eca5bcd0a3e89714be6d8074){gyazo=loop} ![出力](https://gyazo.com/35e6cc779d6d126973a46cac63c7dec9){gyazo=loop}
 
 ---
 
 ### IC-LoRA (Pose) + image2video
 複数IC-LoRAを重ねることは出来ませんが、image2videoやaudio2videoと組み合わせることはできます。
 
-![](https://gyazo.com/641c1ae330f7f684103aabe121d5edd1){gyazo=image}
+![](https://gyazo.com/a65682de39d9ea5c9fe6003cdf27e892){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Pose)_image2video_distilled.json)
+{% workflowPicker
+  "!/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Pose)_image2video_distilled_V2.json",
+  "/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Pose)_image2video_distilled.json"
+%}
+
 
 やっていることは、上の IC-LoRA (Pose) と image2video を合体させただけです。
 
@@ -430,7 +593,7 @@ IC-LoRA (今回はPose) を適用してサンプリングします。
 
 **出力例**
 
-![](https://gyazo.com/f580b5e68fc33f5f34787fadcc01d36c){gyazo=loop}
+![入力](https://gyazo.com/aed000bfabc8665e0fadb350ca72500b){gyazo=loop} ![出力](https://gyazo.com/0ec1dbf4cf746b021443ca341b6c019a){gyazo=loop}
 
 ---
 
@@ -444,9 +607,12 @@ IC-LoRA (Detailer)は、低解像度の動画のディテールや質感を修�
 
 - コアノードだけでも動かすこと自体はできますが、大きな解像度・長時間動画を扱うためにはカスタムノードが必要です。
 
-![](https://gyazo.com/bfae276aad1df7f61c4ce1bf3a22d30f){gyazo=image}
+![](https://gyazo.com/a366728b300f253233432d1c12239f8d){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Detailer).json)
+{% workflowPicker
+  "!/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Detailer)_V2.json",
+  "/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Detailer).json"
+%}
 
 基本は IC-LoRA(Detailer) を適用した video2video です。
 
@@ -458,7 +624,7 @@ IC-LoRA (Detailer)は、低解像度の動画のディテールや質感を修�
 
 **出力例**
 
-![入力](https://gyazo.com/aa14f25d1ad8e274a8de629f4666b1bd){gyazo=loop} ![出力](https://gyazo.com/98d208dc9e7c629fff9b060b1aa7bf76){gyazo=loop}
+![入力](https://gyazo.com/aa14f25d1ad8e274a8de629f4666b1bd){gyazo=loop} ![出力](https://gyazo.com/ceb4d9d0ba0eec0b5379b63ec307460a){gyazo=loop}
 
 ---
 

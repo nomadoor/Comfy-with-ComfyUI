@@ -524,13 +524,13 @@
           "hidden": false,
           "paused": false,
           "params": {
-            "filename": "LTX-2_00405-audio.mp4",
+            "filename": "LTX-2_00411-audio.mp4",
             "subfolder": "",
             "type": "output",
             "format": "video/h264-mp4",
             "frame_rate": 24,
-            "workflow": "LTX-2_00405.png",
-            "fullpath": "D:\\AI\\ComfyUI_windows_portable\\ComfyUI\\output\\LTX-2_00405-audio.mp4"
+            "workflow": "LTX-2_00411.png",
+            "fullpath": "D:\\AI\\ComfyUI_windows_portable\\ComfyUI\\output\\LTX-2_00411-audio.mp4"
           }
         }
       }
@@ -1229,47 +1229,6 @@
       ]
     },
     {
-      "id": 114,
-      "type": "RandomNoise",
-      "pos": [
-        2552.841166273303,
-        3913.19593099222
-      ],
-      "size": [
-        270,
-        82
-      ],
-      "flags": {},
-      "order": 9,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "NOISE",
-          "type": "NOISE",
-          "links": [
-            272
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.75",
-        "Node name for S&R": "RandomNoise",
-        "enableTabs": false,
-        "tabWidth": 65,
-        "tabXOffset": 10,
-        "hasSecondTab": false,
-        "secondTabText": "Send Back",
-        "secondTabOffset": 80,
-        "secondTabWidth": 65
-      },
-      "widgets_values": [
-        123,
-        "fixed"
-      ]
-    },
-    {
       "id": 115,
       "type": "RandomNoise",
       "pos": [
@@ -1281,7 +1240,7 @@
         82
       ],
       "flags": {},
-      "order": 10,
+      "order": 9,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1456,7 +1415,7 @@
         98
       ],
       "flags": {},
-      "order": 11,
+      "order": 10,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1824,6 +1783,47 @@
         "simple",
         8,
         1
+      ]
+    },
+    {
+      "id": 114,
+      "type": "RandomNoise",
+      "pos": [
+        2552.841166273303,
+        3913.19593099222
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            272
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75",
+        "Node name for S&R": "RandomNoise",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65
+      },
+      "widgets_values": [
+        1234,
+        "fixed"
       ]
     }
   ],
@@ -2257,10 +2257,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.5849097104177223,
+      "scale": 0.7513148009015783,
       "offset": [
-        220.6987958493752,
-        -3316.63665932478
+        -41.80725491301388,
+        -3384.449385437717
       ]
     },
     "frontendVersion": "1.38.1",
