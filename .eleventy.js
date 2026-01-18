@@ -852,10 +852,17 @@ export default function (eleventyConfig) {
     const renderedBody = markdownLib.render(content);
     const renderedFooter = footerContent.trim() ? markdownLib.render(footerContent) : "";
     if (renderedFooter && mediaPart) {
-      mediaPart = mediaPart.replace(
-        "</div>",
-        `  <div class="media-inline__footer">${renderedFooter}</div>\n</div>`
-      );
+      const marker = "MEDIA_FOOTER_ANCHOR";
+      const footerMarkup = `  <div class="media-inline__footer">${renderedFooter}</div>\n`;
+      const lastCloseIndex = mediaPart.lastIndexOf("</div>");
+      if (lastCloseIndex !== -1) {
+        mediaPart =
+          mediaPart.slice(0, lastCloseIndex) +
+          footerMarkup +
+          mediaPart.slice(lastCloseIndex);
+      } else {
+        mediaPart = mediaPart.replace(marker, footerMarkup);
+      }
     }
 
     // Fix: Swap DOM order when reversed to match visual order (fixes Lightbox navigation)
