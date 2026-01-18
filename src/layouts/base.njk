@@ -14,14 +14,49 @@
 {% set headingAnchorI18n = site.i18n.headingAnchor or {} -%}
 {% set headingAnchorCopyLabel = headingAnchorI18n.copyLabel[currentLang] or headingAnchorI18n.copyLabel[site.defaultLang] or "Copy heading link" -%}
 {% set headingAnchorCopiedLabel = headingAnchorI18n.copiedLabel[currentLang] or headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
+{% set pageSummary = summary | default('Comfy with ComfyUI docs') -%}
+{% set siteUrl = site.url or '' -%}
+{% set pagePath = page.url or '' -%}
+{% set canonicalUrl = pagePath -%}
+{% if siteUrl and pagePath -%}
+  {% set canonicalUrl = siteUrl ~ pagePath -%}
+{% endif -%}
+{% set heroBlock = hero or {} -%}
+{% set heroImage = heroBlock.image -%}
+{% set heroImageNormalized = heroImage | stripUrlQuery -%}
+{% set isHeroVideo = heroImageNormalized and ('.mp4' in (heroImageNormalized | lower)) -%}
+{% set ogImagePath = heroImageNormalized if (heroImageNormalized and (not isHeroVideo)) else (site.ogImage or '') -%}
+{% set ogImage = ogImagePath -%}
+{% if ogImagePath and siteUrl -%}
+  {% set ogStartsWithSlash = (ogImagePath | first) == '/' -%}
+  {% if ogStartsWithSlash -%}
+    {% set ogImage = siteUrl ~ ogImagePath -%}
+  {% endif -%}
+{% endif -%}
 <!DOCTYPE html>
 <html lang="{{ currentLang }}">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{ title }} | {{ site.name[currentLang] or site.name[site.defaultLang] }}</title>
-  <meta name="description" content="{{ summary | default('Comfy with ComfyUI docs') }}" />
+  <title>{{ title | e }} | {{ (site.name[currentLang] or site.name[site.defaultLang]) | e }}</title>
+  <meta name="description" content="{{ pageSummary | e }}" />
+  {% if canonicalUrl %}
+  <meta property="og:url" content="{{ canonicalUrl | e }}" />
+  {% endif %}
+  <meta property="og:title" content="{{ title | e }}" />
+  <meta property="og:description" content="{{ pageSummary | e }}" />
+  {% if ogImage %}
+  <meta property="og:image" content="{{ ogImage | e }}" />
+  {% endif %}
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="{{ (site.name[currentLang] or site.name[site.defaultLang]) | e }}" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="{{ title | e }}" />
+  <meta name="twitter:description" content="{{ pageSummary | e }}" />
+  {% if ogImage %}
+  <meta name="twitter:image" content="{{ ogImage | e }}" />
+  {% endif %}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet"
