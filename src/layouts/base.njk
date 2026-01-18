@@ -14,6 +14,17 @@
 {% set headingAnchorI18n = site.i18n.headingAnchor or {} -%}
 {% set headingAnchorCopyLabel = headingAnchorI18n.copyLabel[currentLang] or headingAnchorI18n.copyLabel[site.defaultLang] or "Copy heading link" -%}
 {% set headingAnchorCopiedLabel = headingAnchorI18n.copiedLabel[currentLang] or headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
+{% set pageSummary = summary | default('Comfy with ComfyUI docs') -%}
+{% set siteUrl = site.url or '' -%}
+{% set siteUrlNormalized = siteUrl and siteUrl.endsWith('/') ? siteUrl.slice(0, -1) : siteUrl -%}
+{% set pagePath = page.url or '' -%}
+{% set canonicalUrl = (siteUrlNormalized and pagePath) ? (siteUrlNormalized ~ pagePath) : pagePath -%}
+{% set heroBlock = hero or {} -%}
+{% set heroImage = heroBlock.image -%}
+{% set isHeroVideo = heroImage and (heroImage | lower).endsWith('.mp4') -%}
+{% set ogImagePath = (heroImage and (not isHeroVideo)) ? heroImage : (site.ogImage or '') -%}
+{% set ogIsAbsolute = ogImagePath and ((ogImagePath | lower).startsWith('http://') or (ogImagePath | lower).startsWith('https://')) -%}
+{% set ogImage = ogIsAbsolute ? ogImagePath : (siteUrlNormalized ? siteUrlNormalized ~ ogImagePath : ogImagePath) -%}
 <!DOCTYPE html>
 <html lang="{{ currentLang }}">
 
@@ -21,7 +32,23 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{{ title }} | {{ site.name[currentLang] or site.name[site.defaultLang] }}</title>
-  <meta name="description" content="{{ summary | default('Comfy with ComfyUI docs') }}" />
+  <meta name="description" content="{{ pageSummary }}" />
+  {% if canonicalUrl %}
+  <meta property="og:url" content="{{ canonicalUrl }}" />
+  {% endif %}
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:description" content="{{ pageSummary }}" />
+  {% if ogImage %}
+  <meta property="og:image" content="{{ ogImage }}" />
+  {% endif %}
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="{{ site.name[currentLang] or site.name[site.defaultLang] }}" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="{{ title }}" />
+  <meta name="twitter:description" content="{{ pageSummary }}" />
+  {% if ogImage %}
+  <meta name="twitter:image" content="{{ ogImage }}" />
+  {% endif %}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet"

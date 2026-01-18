@@ -1,4 +1,6 @@
 {
+  "url": "https://comfyui.nomadoor.net",
+  "ogImage": "/assets/logos/favicon/favicon_256.png",
   "defaultLang": "ja",
   "name": {
     "ja": "Comfyに使う ComfyUI",

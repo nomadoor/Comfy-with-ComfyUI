@@ -86,3 +86,13 @@
 - Article H2/H3 headings expose a permalink affordance: an icon appears on hover (and on keyboard focus).
 - Clicking the icon copies the canonical URL including the `#<heading-id>` fragment to the clipboard.
 - This is UI chrome (not authored content): do not add manual permalink markup inside Markdown.
+
+## 17. Social Cards (OGP / Twitter)
+- Add Open Graph and Twitter card meta tags in the base layout.
+- Use `summary` for the card type (no large image cards).
+- `og:title` / `twitter:title` should use page `title`.
+- `og:description` / `twitter:description` should use page `summary` (fallback to site default).
+- `og:url` should be absolute, built from `site.url` + `page.url`.
+- `og:image` / `twitter:image` should use the page hero image if it is an image (not `.mp4`).
+  - If the hero is a video or missing, fall back to `site.ogImage`.
+- `site.url` and `site.ogImage` live in `src/_data/site.json`.
