@@ -748,11 +748,26 @@ export default function (eleventyConfig) {
   // Usage (in Markdown):
   // {% mediaRow img="https://..." alt="説明" align="left" width="33" %}
   // 任意のMarkdown（箇条書きなど）
+  // {% mediaFooter %}画像の下に置きたいリンクや補足{% endmediaFooter %}
   // {% endmediaRow %}
+  eleventyConfig.addPairedShortcode("mediaFooter", function (content = "") {
+    return `@@MEDIA_FOOTER_START@@${content}@@MEDIA_FOOTER_END@@`;
+  });
+
   eleventyConfig.addPairedShortcode("mediaRow", function (content, opts = {}) {
     let { img = "", alt = "", align = "left", width = 33, gyazo = "image", mode = "" } = opts;
     const reverse = String(align).toLowerCase() === "right";
     const safeAlt = String(alt).replace(/"/g, "&quot;");
+    const footerRegex = /@@MEDIA_FOOTER_START@@([\s\S]*?)@@MEDIA_FOOTER_END@@/g;
+    let footerContent = "";
+
+    if (typeof content === "string") {
+      const matches = Array.from(content.matchAll(footerRegex));
+      if (matches.length) {
+        footerContent = matches.map((match) => match[1]).join("\n");
+        content = content.replace(footerRegex, "");
+      }
+    }
 
     // Allow braces style in img param: "https://gyazo.com/xxx {gyazo=loop}"
     let gyazoFromBrace = null;
@@ -784,7 +799,8 @@ export default function (eleventyConfig) {
         const source = id ? `https://i.gyazo.com/${id}.mp4` : normalizedImg;
         const initial = gyazoMode;
         const isPlayer = initial === "player";
-        mediaPart = `<div class="media-inline__media" style="--media-inline-width:${width}%;">
+        mediaPart = `<div class="media-inline__media-stack" style="--media-inline-width:${width}%;">
+  <div class="media-inline__media">
   <figure class="article-video article-video--${initial} article-video--gyazo" data-gyazo-toggle data-gyazo-initial="${initial}" data-gyazo-id="${id || ""}" style="--article-video-height:${height}px; --article-video-width:${widthPx}px; --article-video-aspect:${aspect};">
     <div class="article-video__frame">
       <video src="${source}" data-full-src="${source}" ${isPlayer ? "controls preload=\"metadata\"" : "muted loop autoplay"} playsinline></video>
@@ -794,6 +810,7 @@ export default function (eleventyConfig) {
     </div>
     ${safeAlt ? `<figcaption>${safeAlt}</figcaption>` : ""}
   </figure>
+  </div>
 </div>`;
       } else {
         // Default image path (Gyazo images included)
@@ -824,13 +841,22 @@ export default function (eleventyConfig) {
           attrs.push(`width="${widthAttr}"`);
           attrs.push(`height="${heightAttr}"`);
         }
-        mediaPart = `<div class="media-inline__media" style="--media-inline-width:${width}%;">
-  <img ${attrs.join(" ")}>
+        mediaPart = `<div class="media-inline__media-stack" style="--media-inline-width:${width}%;">
+  <div class="media-inline__media">
+    <img ${attrs.join(" ")}>
+  </div>
 </div>`;
       }
     }
 
     const renderedBody = markdownLib.render(content);
+    const renderedFooter = footerContent.trim() ? markdownLib.render(footerContent) : "";
+    if (renderedFooter && mediaPart) {
+      mediaPart = mediaPart.replace(
+        "</div>",
+        `  <div class="media-inline__footer">${renderedFooter}</div>\n</div>`
+      );
+    }
 
     // Fix: Swap DOM order when reversed to match visual order (fixes Lightbox navigation)
     const innerHTML = reverse
