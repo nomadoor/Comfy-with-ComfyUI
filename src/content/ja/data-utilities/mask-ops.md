@@ -114,11 +114,24 @@ ComfyUI上で、画像の特定部分をマスク（白黒画像）として描�
 深度マップは白黒のグラデーション画像です。ということは、そのままマスクとして転用できるんですね。  
 スマホのアプリなどで、あとから写真の背景ぼかす加工がありますが、基本的には同じ仕組みです。
 
-深度マップの作成方法は、[制御画像の作り方(まだ)]()をご覧ください
+深度マップの作成方法は、[ControlNet Preprocessor](/ja/basic-workflows/controlnet-prep/#よく使われるpreprocessor)をご覧ください。
 
 ---
 
 ## マスクの編集
+
+### Resize Image/Mask ノード
+
+[Resize Image/Mask ノード](/ja/data-utilities/resize-crop-pad/#resize-image-mask-ノード) で詳しく扱っているので、そちらを参照してください。
+
+![](https://gyazo.com/fd9f3fab0b5ead47c84ce51f9ec3325a){gyazo=image}
+
+[](/workflows/data-utilities/mask-ops/Resize_ImageMask_match-size.json)
+
+ここでは、`match size` だけ触れておきます。  
+画像をリサイズすると、画像とマスクのサイズがズレて、対応が取れなくなることがあります。
+
+`match size` を使うことで、参照画像に合わせてマスク側をリサイズでき、形（位置関係）を保ったまま揃えることができます。
 
 ### CropMask ノード
 

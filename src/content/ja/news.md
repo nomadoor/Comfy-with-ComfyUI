@@ -9,8 +9,12 @@ permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news
 ---
-
 <div class="news-list">
+  <a class="news-row" href="/ja/data-utilities/resize-crop-pad/">
+    <span class="news-row__date">2026.1.18</span>
+    <span class="news-row__tag">data-utilities</span>
+    <span class="news-row__title">Resize Image/Mask ノードの説明を追加しました</span>
+  </a>
   <a class="news-row" href="/ja/basic-workflows/ltx-2/">
     <span class="news-row__date">2026.1.17</span>
     <span class="news-row__tag">basic-workflows</span>

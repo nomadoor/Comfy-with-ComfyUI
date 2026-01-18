@@ -57,6 +57,23 @@
 場合によっては短い Tip・注意書きを追加してもよい。
 ```
 
+### 4-2. mediaRow の補足（画像の下にリンクを置きたい場合）
+
+`mediaRow` の本文内で、画像の下にリンクや短い補足を置きたい場合は `mediaFooter` を使う。
+
+```markdown
+{% mediaRow img="..." width=50 align="left" %}
+本文...
+
+{% mediaFooter %}
+[](/workflows/...json)
+短い補足文もOK。
+{% endmediaFooter %}
+{% endmediaRow %}
+```
+
+`mediaFooter` は **画像の下** に表示される。本文とは別枠になるため、右側が窮屈なときの退避先として使える。
+
 **特徴として重要なルール：**
 
 - **最初の一文で役割を言い切る**（あなたの文体の最大の特色）
