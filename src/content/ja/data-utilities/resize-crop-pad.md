@@ -8,7 +8,7 @@ title: "リサイズ・クロップ・パディング"
 summary: "画像のリサイズ、クロップ、パディングについて"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: ""
+  image: "https://i.gyazo.com/02cf6bd2a573dc15dff4799c94b15a0d.png"
 ---
 
 ## 画像のリサイズとクロップ
@@ -23,64 +23,151 @@ hero:
 
 ---
 
+## 画像情報の取得
+
+### Get Image Size ノード
+
+画像の幅(width)と高さ(height)、バッチサイズ（枚数）を数値として出力します。
+
+![](https://gyazo.com/ffb5c8bfea06d5ce1b15183cc70dc973){gyazo=image}
+
+[](/workflows/data-utilities/resize-crop-pad/Get_Image_Size.json)
+
+---
+
 ## リサイズ
 
-### Upscale Image ノード
+### Resize Image/Mask ノード
+
+いくつものリサイズ方法を切り替えて使えるノードです。  
+基本的には、これ一つで必要な処理をだいたい網羅できます。（ちなみにマスクもリサイズできます）
+
+{% mediaRow img="https://gyazo.com/afa66ff808e05a40e363761184c668c1 {gyazo=image}", width=45, align="left" %}
+
+**scale by multiplier**
+
+縦横を「倍率」で拡大・縮小します。
+
+たとえば `0.5` なら縦横が半分、`2.0` なら縦横が2倍です。
+
+{% mediaFooter %}
+[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_scale-by-multiplier.json)
+{% endmediaFooter %}
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/4fc6f32dc60859a38a2cf3a125aa82bf {gyazo=image}", width=45, align="left" %}
+
+**scale dimensions**
 
 指定した幅・高さの解像度に強制的に変更します。
 
-![](https://gyazo.com/c34faedbc24e22f65ac65462b9684f52){gyazo=image}
+- `crop`
+  - `disabled` : アスペクト比が違う場合は歪みます。
+  - `center` : 中心を維持してはみ出た部分をクロップ（切り捨て）します。
 
-[](/workflows/data-utilities/resize-crop-pad/Upscale_Image.json)
+{% mediaFooter %}
+[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_scale-dimensions.json)
+{% endmediaFooter %}
 
-- **アスペクト比**: 元画像と異なる比率を指定すると、画像が歪みます。
-- **crop**: `center` に設定すると、歪ませる代わりに中心を維持してはみ出た部分をクロップ（切り捨て）します。
+{% endmediaRow %}
 
-### Upscale Image By ノード
+{% mediaRow img="https://gyazo.com/bdc737b190e9e45ebc6a55a1b155414e {gyazo=image}", width=45, align="left" %}
 
-「1.5倍」「0.5倍」のように、倍率でサイズを指定します。アスペクト比は維持されます。
-![](https://i.gyazo.com/adcb853e458db1583e11fbcb4a8b0f87.png){gyazo=image}
+**scale longer/shorter dimension**
 
-[](/workflows/data-utilities/resize-crop-pad/Upscale_Image_By.json)
+長辺（longer）または短辺（shorter）だけを指定し、アスペクト比を保ったままリサイズします。
+
+{% mediaFooter %}
+[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_scale-longer-dimension.json)
+{% endmediaFooter %}
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/adcd25f46b34298cea4a37a046b221bf {gyazo=image}", width=45, align="left" %}
+
+**scale width/height**
+
+幅または高さのどちらか一方だけを指定し、アスペクト比を保ったままリサイズします。
+
+{% mediaFooter %}
+[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_scale-width.json)
+{% endmediaFooter %}
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/13116851f0f749d7f4f5e350fb474f5e {gyazo=image}", width=45, align="left" %}
+
+**scale total pixels**
+
+指定した **総ピクセル数（画素数）** になるように、アスペクト比を保ったままリサイズします。
+
+`1024 * 1024 = 1.00MP`として計算されます。
+
+| 目標サイズ | 総ピクセル数 | 設定値 |
+| :--- | :--- | :--- |
+| **512 × 512** | 262,144 | **0.25** |
+| **768 × 768** | 589,824 | **0.56** |
+| **1024 × 1024** | 1,048,576 | **1.00** |
+| **1536 × 1536** | 2,359,296 | **2.25** |
+
+{% mediaFooter %}
+[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_scale-total-pixels.json)
+{% endmediaFooter %}
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/e4398957f8190305364c6b9c12948c3c {gyazo=image}", width=45, align="left" %}
+
+**match size**
+
+参照画像と同じサイズになるようにリサイズします。
+
+以前は参照画像のサイズを取得して、それを別ノードへ渡す必要がありましたが、これで一つにまとまります。
+
+- `match`: 基準にしたい画像を接続
+- `crop`
+  - `disabled` : アスペクト比が違う場合は歪みます。
+  - `center`: 中心を維持してはみ出た部分をクロップ（切り捨て）します。
+
+{% mediaFooter %}
+[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_match-size.json)
+{% endmediaFooter %}
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/28d95c2ef2e320c18761852f60f2a508 {gyazo=image}", width=45, align="left" %}
+
+**scale to multiple**
+
+縦横を N の倍数 になるようにリサイズします。
+
+詳しくは [8の倍数の解像度しか生成できないのはなぜ？](/ja/faq/why-multiple-of-8/) で解説しますが、拡散モデルは VAEの都合で、特定の倍数になっていない解像度をそのまま扱えません。
+
+基本的にはどこかのノードで自動調整されることも多いのですが、指定解像度でないとエラーが出るケースや、入力と出力でピクセルを「完全一致」させたいケースで使うことがあります。
+
+{% mediaFooter %}
+[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_scale-to-multiple.json)
+{% endmediaFooter %}
+
+{% endmediaRow %}
+
 
 ### ImageScaleToMaxDimension ノード
 
-画像の**長辺**が設定したサイズになるように、アスペクト比を保ったままリサイズします。
+画像の**長辺**が設定したサイズになるように、アスペクト比を保ったままリサイズします。  
 （例：縦長の画像でも横長の画像でも、長い方が1024pxになるようにする）
 
 ![](https://i.gyazo.com/42ffc7b0534face3e58fc7946b243ce0.png){gyazo=image}
 
 [](/workflows/data-utilities/resize-crop-pad/ImageScaleToMaxDimension.json)
 
-### Scale Image to Total Pixels ノード
-
-指定した **総ピクセル数（画素数）** になるように、アスペクト比を保ったままリサイズします。
-
-![](https://i.gyazo.com/e195b70965fc2e7dbf0511527516e527.png){gyazo=image}
-
-[](/workflows/data-utilities/resize-crop-pad/Scale_Image_to_Total_Pixels.json)
-
-**すこし重要な処理です**
-
-画像生成モデルは、特定の解像度と様々なアスペクト比の画像で学習されています。モデルが最高の性能を発揮するためには、学習時と同じようなサイズ（総ピクセル数）で画像を生成することが重要です。
-
-このノードを使用すると、元の構図を維持したまま、総ピクセル数を指定して画像を調整できます。便利！
-
-**よく使う値（メガピクセル）**
-
-| 目標サイズ | 総ピクセル数 | 設定値 (megapixels) |
-| :--- | :--- | :--- |
-| **512 × 512** | 262,144 | **0.25** |
-| **768 × 768** | 589,824 | **0.56** |
-| **1024 × 1024** | 1,048,576 | **1.00** (SDXL推奨) |
-| **1536 × 1536** | 2,359,296 | **2.25** |
 
 ---
 
 ## パディング
 
-パディングとは、画像の周囲に余白（黒帯など）を追加して、サイズを調整する処理のことです。
-
+パディングとは、画像の周囲に余白（黒帯など）を追加して、サイズを調整する処理のことです。  
 ノードによっては、この余白部分をマスクとして出力できるため、Outpaintingを行う際の下準備として使われます。
 
 ### ResizeAndPadImage ノード
@@ -91,7 +178,7 @@ hero:
 
 [](/workflows/data-utilities/resize-crop-pad/ResizeAndPadImage.json)
 
-このノードはパディング部分をマスクとして出力できないため、ほとんど使う場面はないかもしれません。
+> このノードはパディング部分をマスクとして出力できないため、ほとんど使う場面はありません。
 
 ### Pad Image for Outpainting ノード
 
@@ -145,8 +232,6 @@ x, y座標と幅・高さを指定して、画像の一部分を矩形で切り�
 
 上記のリサイズ・クロップ・パディングが一つにまとめられたようなノードです。
 
-それ以外に重要な処理として、画像を**Nの倍数の解像度にリサイズ**することができます。
-
 | パラメータ名 | 説明 |
 | :--- | :--- |
 | **width / height** | 目標とする幅と高さ（0なら変更なし） |
@@ -156,41 +241,14 @@ x, y座標と幅・高さを指定して、画像の一部分を矩形で切り�
 | **crop_position** | center, top, bottom, left, right |
 | **divisible_by** | この値の倍数の解像度にリサイズされます（例：32, 64） |
 
-![](https://gyazo.com/35159d157a239f57c67b03484bd2cfa9){gyazo=image}
+> 以前は、縦横を N の倍数 になるようにリサイズする用途で多用していましたが、現在はコアノードで対応できるため、あまり使用していません。
 
-[](/workflows/data-utilities/resize-crop-pad/Crop_to_multiple_of_32.json)
-
-画像を32の倍数の解像度にリサイズするだけの設定です。
-
-- `divisible_by`: この値の倍数の解像度にリサイズされます
-- 単にこの操作だけしたい場合は、他のパラメータは0にします。
-
-**なぜこの操作が重要なのか?**
-
-というと、VAEというものに関わってきます。詳しくは[8の倍数の解像度しか生成できないのはなぜ？]()で解説しますが、ともかく、生成AIは微妙な解像度の画像を生成することが出来ません。
-
-基本的に、ComfyUIは内部で自動でクロップするため、このノードを使う必要は無いのですが、指定解像度でないとエラーが出たり、入力した画像と出力した画像のピクセルを完璧に合わせたいときなどに使用することがあります。
-
----
-
-## 画像情報の取得
-
-### Get Image Size ノード
-
-画像の幅(width)と高さ(height)、バッチサイズ（枚数）を数値として出力します。
-
-![](https://i.gyazo.com/961e83cbf29cbf1f1ab583de4a9e1a00.png){gyazo=image}
-
-[](/workflows/data-utilities/resize-crop-pad/Get_Image_Size.json)
-
-- 取得したサイズを `Upscale Image` に繋げば、別の画像を「全く同じサイズ」にすることができます。
-  - 非常によく使う処理です。
 
 ---
 
 ## 少し応用
 
-これまでのノードを組み合わせて、少し複雑な画像加工をしてみましょう
+これまでのノードを組み合わせて、少し複雑な画像加工をしてみましょう。
 
 ### 画像を半分にクロップ
 

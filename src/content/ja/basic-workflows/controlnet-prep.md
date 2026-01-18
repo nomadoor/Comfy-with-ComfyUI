@@ -51,10 +51,13 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 ### Canny
 
-[](/workflows/basic-workflows/controlnet-prep/Canny-Canny_Edge.json)
 
 - 🟩 Canny
 - 🟨 Canny Edgy
+
+{% mediaFooter %}
+[](/workflows/basic-workflows/controlnet-prep/Canny-Canny_Edge.json)
+{% endmediaFooter %}
 
 {% endmediaRow %}
 
@@ -62,9 +65,12 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 ### SoftEdge / HED
 
-[](/workflows/basic-workflows/controlnet-prep/HED_Soft-Edge.json)
 
 - 🟩 HED Soft-Edge
+
+{% mediaFooter %}
+[](/workflows/basic-workflows/controlnet-prep/HED_Soft-Edge.json)
+{% endmediaFooter %}
 
 {% endmediaRow %}
 
@@ -72,10 +78,13 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 ### Lineart
 
-[](/workflows/basic-workflows/controlnet-prep/Realistic-AnyLine_Lineart.json)
 
 - 🟩 Realistic Lineart
 - 🟨 AnyLine Lineart
+
+{% mediaFooter %}
+[](/workflows/basic-workflows/controlnet-prep/Realistic-AnyLine_Lineart.json)
+{% endmediaFooter %}
 
 {% endmediaRow %}
 
@@ -84,10 +93,13 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 ### Depth
 
-[](/workflows/basic-workflows/controlnet-prep/Depth_Anything_V2.json)
 
 - 🟩 Depth Anything V2
   - 現在 V3 まで開発されていますが、ControlNet 用途であれば V2 で十分です。
+
+{% mediaFooter %}
+[](/workflows/basic-workflows/controlnet-prep/Depth_Anything_V2.json)
+{% endmediaFooter %}
 
 {% endmediaRow %}
 
@@ -95,9 +107,12 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 ### Normal
 
-[](/workflows/basic-workflows/controlnet-prep/DSINE.json)
 
 - 🟩 DSINE
+
+{% mediaFooter %}
+[](/workflows/basic-workflows/controlnet-prep/DSINE.json)
+{% endmediaFooter %}
 
 {% endmediaRow %}
 
@@ -105,9 +120,12 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 ### MLSD
 
-[](/workflows/basic-workflows/controlnet-prep/M-LSD.json)
 
 - 🟩 M-LSD Lines
+
+{% mediaFooter %}
+[](/workflows/basic-workflows/controlnet-prep/M-LSD.json)
+{% endmediaFooter %}
 
 {% endmediaRow %}
 
@@ -115,11 +133,14 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 ### Pose
 
-[](/workflows/basic-workflows/controlnet-prep/OpenPose_DWPose.json)
 
 - 🟩 OpenPose
 - 🟨 DWPose
   - OpenPose の上位互換として扱われることが多いですが、後ろ姿が苦手という明確な弱点があります。状況に応じて OpenPose と併用してください。
+
+{% mediaFooter %}
+[](/workflows/basic-workflows/controlnet-prep/OpenPose_DWPose.json)
+{% endmediaFooter %}
 
 {% endmediaRow %}
 
@@ -127,10 +148,13 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 ### SDPose
 
-[](/workflows/basic-workflows/controlnet-prep/SDPose.json)
 
 [judian17/ComfyUI-SDPose-OOD](https://github.com/judian17/ComfyUI-SDPose-OOD)
 - 🟩 SDPose
   - OpenPose は動物やアニメイラストに非常に弱いため、うまくいかなかったときはこちらを試してみてください。
+
+{% mediaFooter %}
+[](/workflows/basic-workflows/controlnet-prep/SDPose.json)
+{% endmediaFooter %}
 
 {% endmediaRow %}

@@ -111,11 +111,24 @@ A depth map is a black and white gradient image. This means it can be diverted a
 
 Smartphone apps have processing to blur the background of photos later, and basically, it is the same mechanism.
 
-For how to create depth maps, please see [How to create control images (TBD)]().
+For how to create depth maps, please see [ControlNet Preprocessor](/en/basic-workflows/controlnet-prep/#frequently-used-preprocessors).
 
 ---
 
 ## Editing Masks
+
+### Resize Image/Mask Node
+
+It is covered in detail in [Resize Image/Mask Node](/en/data-utilities/resize-crop-pad/#resize-image-mask-node), so please refer to that.
+
+![](https://gyazo.com/fd9f3fab0b5ead47c84ce51f9ec3325a){gyazo=image}
+
+[](/workflows/data-utilities/mask-ops/Resize_ImageMask_match-size.json)
+
+Here, I will only touch on `match size`.
+When you resize an image, the size of the image and the mask may become misaligned, making it impossible to maintain correspondence.
+
+By using `match size`, you can resize the mask side to match the reference image, keeping the shape (positional relationship) aligned.
 
 ### CropMask Node
 
