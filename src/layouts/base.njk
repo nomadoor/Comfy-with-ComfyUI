@@ -16,15 +16,22 @@
 {% set headingAnchorCopiedLabel = headingAnchorI18n.copiedLabel[currentLang] or headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
 {% set pageSummary = summary | default('Comfy with ComfyUI docs') -%}
 {% set siteUrl = site.url or '' -%}
-{% set siteUrlNormalized = siteUrl and siteUrl.endsWith('/') ? siteUrl.slice(0, -1) : siteUrl -%}
 {% set pagePath = page.url or '' -%}
-{% set canonicalUrl = (siteUrlNormalized and pagePath) ? (siteUrlNormalized ~ pagePath) : pagePath -%}
+{% set canonicalUrl = pagePath -%}
+{% if siteUrl and pagePath -%}
+  {% set canonicalUrl = siteUrl ~ pagePath -%}
+{% endif -%}
 {% set heroBlock = hero or {} -%}
 {% set heroImage = heroBlock.image -%}
-{% set isHeroVideo = heroImage and (heroImage | lower).endsWith('.mp4') -%}
-{% set ogImagePath = (heroImage and (not isHeroVideo)) ? heroImage : (site.ogImage or '') -%}
-{% set ogIsAbsolute = ogImagePath and ((ogImagePath | lower).startsWith('http://') or (ogImagePath | lower).startsWith('https://')) -%}
-{% set ogImage = ogIsAbsolute ? ogImagePath : (siteUrlNormalized ? siteUrlNormalized ~ ogImagePath : ogImagePath) -%}
+{% set isHeroVideo = heroImage and ('.mp4' in (heroImage | lower)) -%}
+{% set ogImagePath = heroImage if (heroImage and (not isHeroVideo)) else (site.ogImage or '') -%}
+{% set ogImage = ogImagePath -%}
+{% if ogImagePath and siteUrl -%}
+  {% set ogStartsWithSlash = (ogImagePath | first) == '/' -%}
+  {% if ogStartsWithSlash -%}
+    {% set ogImage = siteUrl ~ ogImagePath -%}
+  {% endif -%}
+{% endif -%}
 <!DOCTYPE html>
 <html lang="{{ currentLang }}">
 
