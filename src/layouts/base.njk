@@ -23,8 +23,9 @@
 {% endif -%}
 {% set heroBlock = hero or {} -%}
 {% set heroImage = heroBlock.image -%}
-{% set isHeroVideo = heroImage and ('.mp4' in (heroImage | lower)) -%}
-{% set ogImagePath = heroImage if (heroImage and (not isHeroVideo)) else (site.ogImage or '') -%}
+{% set heroImageNormalized = heroImage and (((heroImage | split('?') | first) | split('#') | first)) or '' -%}
+{% set isHeroVideo = heroImageNormalized and ('.mp4' in (heroImageNormalized | lower)) -%}
+{% set ogImagePath = heroImageNormalized if (heroImageNormalized and (not isHeroVideo)) else (site.ogImage or '') -%}
 {% set ogImage = ogImagePath -%}
 {% if ogImagePath and siteUrl -%}
   {% set ogStartsWithSlash = (ogImagePath | first) == '/' -%}
@@ -38,23 +39,23 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{ title }} | {{ site.name[currentLang] or site.name[site.defaultLang] }}</title>
-  <meta name="description" content="{{ pageSummary }}" />
+  <title>{{ title | e }} | {{ (site.name[currentLang] or site.name[site.defaultLang]) | e }}</title>
+  <meta name="description" content="{{ pageSummary | e }}" />
   {% if canonicalUrl %}
-  <meta property="og:url" content="{{ canonicalUrl }}" />
+  <meta property="og:url" content="{{ canonicalUrl | e }}" />
   {% endif %}
-  <meta property="og:title" content="{{ title }}" />
-  <meta property="og:description" content="{{ pageSummary }}" />
+  <meta property="og:title" content="{{ title | e }}" />
+  <meta property="og:description" content="{{ pageSummary | e }}" />
   {% if ogImage %}
-  <meta property="og:image" content="{{ ogImage }}" />
+  <meta property="og:image" content="{{ ogImage | e }}" />
   {% endif %}
   <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="{{ site.name[currentLang] or site.name[site.defaultLang] }}" />
+  <meta property="og:site_name" content="{{ (site.name[currentLang] or site.name[site.defaultLang]) | e }}" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="{{ title }}" />
-  <meta name="twitter:description" content="{{ pageSummary }}" />
+  <meta name="twitter:title" content="{{ title | e }}" />
+  <meta name="twitter:description" content="{{ pageSummary | e }}" />
   {% if ogImage %}
-  <meta name="twitter:image" content="{{ ogImage }}" />
+  <meta name="twitter:image" content="{{ ogImage | e }}" />
   {% endif %}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
