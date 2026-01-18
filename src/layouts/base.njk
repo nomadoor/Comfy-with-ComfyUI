@@ -23,7 +23,7 @@
 {% endif -%}
 {% set heroBlock = hero or {} -%}
 {% set heroImage = heroBlock.image -%}
-{% set heroImageNormalized = heroImage and (((heroImage | split('?') | first) | split('#') | first)) or '' -%}
+{% set heroImageNormalized = heroImage | stripUrlQuery -%}
 {% set isHeroVideo = heroImageNormalized and ('.mp4' in (heroImageNormalized | lower)) -%}
 {% set ogImagePath = heroImageNormalized if (heroImageNormalized and (not isHeroVideo)) else (site.ogImage or '') -%}
 {% set ogImage = ogImagePath -%}

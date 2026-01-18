@@ -506,6 +506,11 @@ export default function (eleventyConfig) {
     return createImageVariants(url, size);
   });
 
+  eleventyConfig.addFilter("stripUrlQuery", function (value = "") {
+    if (typeof value !== "string") return "";
+    return value.split(/[?#]/)[0];
+  });
+
   eleventyConfig.addShortcode("gyazoVideoLoop", function (url, caption = "", options = {}) {
     const id = extractGyazoId(url);
     const dims = getGyazoDimensionsFromId(id);
