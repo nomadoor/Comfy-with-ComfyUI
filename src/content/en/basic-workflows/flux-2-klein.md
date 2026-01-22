@@ -220,7 +220,7 @@ Replace the ice bear with an ice duck. Add a hat on the duck with light blue, re
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/f7552667da5fcfa8ce3a4e4b49cf52284b4 {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="https://gyazo.com/f7552667da5fcfa8ce3a4e4b49cf5cdd {gyazo=image}", width=45, align="left" %}
 
 **Text Editing**
 
