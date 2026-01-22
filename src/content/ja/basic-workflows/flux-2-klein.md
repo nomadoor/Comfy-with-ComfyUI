@@ -57,14 +57,14 @@ Base（20 steps）に対し、Distilled は 4 steps で生成出来ます。
 
 
 ```text
-ComfyUI/
-└── models/
-    ├── diffusion_models/
+📂ComfyUI/
+└── 📂models/
+    ├── 📂diffusion_models/
     │   ├── flux-2-klein-9b-fp8.safetensors
     │   └── flux-2-klein-base-9b-fp8.safetensors
-    ├── text_encoders/
+    ├── 📂text_encoders/
     │   └── qwen_3_8b.safetensors
-    └── vae/
+    └── 📂vae/
         └── flux2-vae.safetensors
 ```
 
@@ -137,14 +137,14 @@ ComfyUI/
   * [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/blob/main/split_files/vae/flux2-vae.safetensors)
 
 ```text
-ComfyUI/
-└── models/
-    ├── diffusion_models/
+📂ComfyUI/
+└── 📂models/
+    ├── 📂diffusion_models/
     │   ├── flux-2-klein-4b.safetensors
     │   └── flux-2-klein-base-4b.safetensors
-    ├── text_encoders/
+    ├── 📂text_encoders/
     │   └── qwen_3_4b.safetensors
-    └── vae/
+    └── 📂vae/
         └── flux2-vae.safetensors
 ```
 
