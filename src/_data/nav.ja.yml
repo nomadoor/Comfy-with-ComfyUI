@@ -269,6 +269,8 @@ sections:
         title: Flux.1 Kontext
       - id: chroma1-hd
         title: Chroma1-HD
+    - id: flux-2-klein
+      title: FLUX.2 [klein]
     - id: auraflow
       title: AuraFlow
     - id: lumina-image-2.0

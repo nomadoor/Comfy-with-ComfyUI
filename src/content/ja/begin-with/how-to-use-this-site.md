@@ -85,9 +85,14 @@ ComfyUI のキャンバス上で **Ctrl + V** を押すと、そのまま workfl
 
 ## 質問・修正報告
 
+![](https://gyazo.com/c2cf37c0b9ae094cb7cbf526eb15d797){gyazo=loop}
+
 画面右下には、ComfyUI のノードを掴んで混乱しているアシスタント（？）が常駐しています😏 マウスホバーしてみてください。
 
 誤字の報告、内容の訂正、解説してほしいテーマのリクエストなど、気軽に送ってください。
+
+[GitHub issue](https://github.com/nomadoor/Comfy-with-ComfyUI/issues) に投げてもいいですし、[私に直接連絡](/ja/about/#このサイトを作った人) していただいても大丈夫です。
+
 
 ---
 
