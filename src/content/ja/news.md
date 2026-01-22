@@ -10,6 +10,11 @@ tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/ja/basic-workflows/flux-2-klein/">
+    <span class="news-row__date">2026.1.18</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">FLUX.2 [klein]のページを追加しました</span>
+  </a>
   <a class="news-row" href="/ja/data-utilities/resize-crop-pad/">
     <span class="news-row__date">2026.1.18</span>
     <span class="news-row__tag">data-utilities</span>
