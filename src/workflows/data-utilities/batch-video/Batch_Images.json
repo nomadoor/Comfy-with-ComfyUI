@@ -1,18 +1,18 @@
 {
-  "id": "51a0cfff-124a-46df-9bad-bbc9273d5bfe",
+  "id": "1c6f98ec-b3ae-4b9b-8480-99bf10fe1c76",
   "revision": 0,
-  "last_node_id": 21,
-  "last_link_id": 21,
+  "last_node_id": 6,
+  "last_link_id": 6,
   "nodes": [
     {
-      "id": 1,
+      "id": 3,
       "type": "LoadImage",
       "pos": [
-        437.0238029390012,
-        281.45517150102967
+        57.043942473394814,
+        327.0435950113614
       ],
       "size": [
-        214.080078125,
+        222.798828125,
         314
       ],
       "flags": {},
@@ -24,7 +24,7 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            15
+            2
           ]
         },
         {
@@ -34,12 +34,10 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.73",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "A.png",
+        "0.png",
         "image"
       ]
     },
@@ -47,12 +45,12 @@
       "id": 4,
       "type": "LoadImage",
       "pos": [
-        673.6492743455647,
-        377.2625981314576
+        309.95386844409427,
+        429.9439034751431
       ],
       "size": [
-        214.080078125,
-        314
+        222.798828125,
+        314.00000000000006
       ],
       "flags": {},
       "order": 1,
@@ -63,9 +61,7 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            2,
-            7,
-            16
+            3
           ]
         },
         {
@@ -75,25 +71,23 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.73",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "B.png",
+        "1 (1).png",
         "image"
       ]
     },
     {
-      "id": 3,
+      "id": 5,
       "type": "LoadImage",
       "pos": [
-        910.2747457521282,
-        473.0700247618855
+        562.8637944147937,
+        532.8442119389249
       ],
       "size": [
-        214.080078125,
-        314
+        222.798828125,
+        314.00000000000006
       ],
       "flags": {},
       "order": 2,
@@ -104,7 +98,7 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            19
+            4
           ]
         },
         {
@@ -114,39 +108,97 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.73",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "C.png",
+        "2 (1).png",
         "image"
       ]
     },
     {
-      "id": 21,
-      "type": "ImageBatch",
+      "id": 6,
+      "type": "LoadImage",
       "pos": [
-        1158.474612025215,
-        281.45517150102967
+        815.7737203854931,
+        635.7445204027067
       ],
       "size": [
-        160.40644154360825,
-        46
+        222.798828125,
+        314.00000000000006
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            5
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "3 (1).png",
+        "image"
+      ]
+    },
+    {
+      "id": 1,
+      "type": "BatchImagesNode",
+      "pos": [
+        1125.9930141133268,
+        327.0435950113614
+      ],
+      "size": [
+        169.6640625,
+        106
       ],
       "flags": {},
       "order": 4,
       "mode": 0,
       "inputs": [
         {
-          "name": "image1",
+          "label": "image0",
+          "name": "images.image0",
           "type": "IMAGE",
-          "link": 20
+          "link": 2
         },
         {
-          "name": "image2",
+          "label": "image1",
+          "name": "images.image1",
           "type": "IMAGE",
-          "link": 19
+          "link": 3
+        },
+        {
+          "label": "image2",
+          "name": "images.image2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 4
+        },
+        {
+          "label": "image3",
+          "name": "images.image3",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 5
+        },
+        {
+          "label": "image4",
+          "name": "images.image4",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
         }
       ],
       "outputs": [
@@ -154,28 +206,27 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            21
+            6
           ]
         }
       ],
       "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.73",
-        "Node name for S&R": "ImageBatch"
+        "Node name for S&R": "BatchImagesNode"
       },
+      "widgets_values": [],
       "color": "#232",
       "bgcolor": "#353"
     },
     {
-      "id": 9,
+      "id": 2,
       "type": "PreviewImage",
       "pos": [
-        1391.2978517395427,
-        281.45517150102967
+        1351.8995321489313,
+        327.0435950113614
       ],
       "size": [
-        422.9744601491934,
-        466.20921868865173
+        472.0485275700512,
+        490.87895237980354
       ],
       "flags": {},
       "order": 5,
@@ -184,116 +235,54 @@
         {
           "name": "images",
           "type": "IMAGE",
-          "link": 21
+          "link": 6
         }
       ],
       "outputs": [],
       "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.73",
         "Node name for S&R": "PreviewImage"
       },
       "widgets_values": []
-    },
-    {
-      "id": 20,
-      "type": "ImageBatch",
-      "pos": [
-        925.6513723108875,
-        281.45517150102967
-      ],
-      "size": [
-        160.40644154360825,
-        46
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "image1",
-          "type": "IMAGE",
-          "link": 15
-        },
-        {
-          "name": "image2",
-          "type": "IMAGE",
-          "link": 16
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            20
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.73",
-        "Node name for S&R": "ImageBatch"
-      },
-      "widgets_values": [],
-      "color": "#232",
-      "bgcolor": "#353"
     }
   ],
   "links": [
     [
       2,
-      4,
-      0,
-      2,
-      0,
-      "IMAGE"
-    ],
-    [
-      7,
-      4,
-      0,
-      7,
-      0,
-      "IMAGE"
-    ],
-    [
-      15,
-      1,
-      0,
-      20,
-      0,
-      "IMAGE"
-    ],
-    [
-      16,
-      4,
-      0,
-      20,
-      1,
-      "IMAGE"
-    ],
-    [
-      19,
       3,
       0,
-      21,
+      1,
+      0,
+      "IMAGE"
+    ],
+    [
+      3,
+      4,
+      0,
+      1,
       1,
       "IMAGE"
     ],
     [
-      20,
-      20,
+      4,
+      5,
       0,
-      21,
-      0,
+      1,
+      2,
       "IMAGE"
     ],
     [
-      21,
-      21,
+      5,
+      6,
       0,
-      9,
+      1,
+      3,
+      "IMAGE"
+    ],
+    [
+      6,
+      1,
+      0,
+      2,
       0,
       "IMAGE"
     ]
@@ -302,13 +291,13 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.9310785498489509,
+      "scale": 0.76804951207243,
       "offset": [
-        -337.0238029390012,
-        -181.45517150102967
+        219.43550038662673,
+        8.26726920516375
       ]
     },
-    "frontendVersion": "1.30.6",
+    "frontendVersion": "1.38.8",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

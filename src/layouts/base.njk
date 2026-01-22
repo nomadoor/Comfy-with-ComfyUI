@@ -24,8 +24,10 @@
 {% set heroBlock = hero or {} -%}
 {% set heroImage = heroBlock.image -%}
 {% set heroImageNormalized = heroImage | stripUrlQuery -%}
-{% set isHeroVideo = heroImageNormalized and ('.mp4' in (heroImageNormalized | lower)) -%}
-{% set ogImagePath = heroImageNormalized if (heroImageNormalized and (not isHeroVideo)) else (site.ogImage or '') -%}
+{% set heroVariant = heroImageNormalized | imageVariant(1200) -%}
+{% set candidateImage = heroVariant.preview -%}
+{% set isVideo = candidateImage and ('.mp4' in (candidateImage | lower)) -%}
+{% set ogImagePath = candidateImage if (candidateImage and (not isVideo)) else (site.ogImage or '') -%}
 {% set ogImage = ogImagePath -%}
 {% if ogImagePath and siteUrl -%}
   {% set ogStartsWithSlash = (ogImagePath | first) == '/' -%}

@@ -77,23 +77,13 @@ Batch は複数枚を同時に処理するため、必要なメモリ量もそ�
 
 ### Batch Images ノード
 
-2 つの `IMAGE` をまとめて Batch にします。
+複数の `IMAGE` をまとめて Batch にします。
 
-![](https://gyazo.com/aca8d944c0efb06dd3c36ff7f3060b15){gyazo=image}
+![](https://gyazo.com/6663a7ba4d243f0afd79c41a9406a42d){gyazo=loop}
 
 [](/workflows/data-utilities/batch-video/Batch_Images.json)
 
-- ノードを増やしていけば何枚でも Batch にできますが、3 枚以上では下のノードを使うほうが実用的です。
-
-### Make Image Batch ノード
-
-![](https://gyazo.com/221f5ed72be92b9215f9d0eaff753669){gyazo=image}
-
-[](/workflows/data-utilities/batch-video/Make_Image_Batch.json)
-
 - 接続先が増えるたびにスロットが追加され、好きな枚数をまとめられます。
-- 一度接続するとそのデータ型で固定されます。  
-  他のデータ型に変えたい場合は Fix node (recreate) を使うか、新しいノードを置いてください。
 
 ### Load Image Batch From Dir (Inspire) / Load Images (Path) ノード
 

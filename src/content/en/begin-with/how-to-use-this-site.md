@@ -89,6 +89,8 @@ An assistant (?) confused by grabbing a ComfyUI node resides in the lower right 
 
 Please feel free to send reports of typos, corrections of content, requests for themes you want explained, etc.
 
+You can post to [GitHub issue](https://github.com/nomadoor/Comfy-with-ComfyUI/issues) or contact me directly at [Author](/en/about/#about-the-author).
+
 ---
 
 ## To the World of ComfyUI

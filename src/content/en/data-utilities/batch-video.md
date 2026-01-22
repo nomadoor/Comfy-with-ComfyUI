@@ -77,23 +77,13 @@ Basic ones are provided as core nodes, but it is a bit tough when trying to hand
 
 ### Batch Images Node
 
-Groups two `IMAGE`s into a Batch.
+Groups multiple `IMAGE`s into a Batch.
 
-![](https://gyazo.com/aca8d944c0efb06dd3c36ff7f3060b15){gyazo=image}
+![](https://gyazo.com/6663a7ba4d243f0afd79c41a9406a42d){gyazo=loop}
 
 [](/workflows/data-utilities/batch-video/Batch_Images.json)
 
-- You can make a Batch of any number of images by increasing nodes, but for 3 or more, it is more practical to use the node below.
-
-### Make Image Batch Node
-
-![](https://gyazo.com/221f5ed72be92b9215f9d0eaff753669){gyazo=image}
-
-[](/workflows/data-utilities/batch-video/Make_Image_Batch.json)
-
-- Slots are added every time connection increases, allowing you to group any number of images.
-- Once connected, it is fixed to that data type.
-  If you want to change to another data type, use Fix node (recreate) or place a new node.
+- Slots are added every time a connection is made, allowing you to group any number of images.
 
 ### Load Image Batch From Dir (Inspire) / Load Images (Path) Node
 
