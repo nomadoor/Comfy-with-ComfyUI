@@ -1,6 +1,7 @@
 ---
 layout: page.njk
 lang: ja
+section: begin-with
 slug: nodes
 navId: nodes
 title: "ノード"

@@ -1,6 +1,7 @@
 ---
 layout: page.njk
 lang: en
+section: begin-with
 slug: custom-nodes
 navId: custom-nodes
 title: "Custom Nodes"

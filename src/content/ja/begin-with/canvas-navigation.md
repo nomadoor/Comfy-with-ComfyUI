@@ -1,6 +1,7 @@
 ---
 layout: page.njk
 lang: ja
+section: begin-with
 slug: canvas-navigation
 navId: canvas-navigation
 title: "キャンバスの操作"

@@ -1,6 +1,7 @@
 ---
 layout: page.njk
 lang: en
+section: begin-with
 slug: canvas-navigation
 navId: canvas-navigation
 title: "Canvas Navigation"
