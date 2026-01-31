@@ -12,26 +12,31 @@ hero:
 tags: []
 ---
 
-## Z-Imageとは？
+## Z-Image-Turboとは？
 
 Z-Image は、Alibaba / Tongyi-MAI による **画像生成モデルファミリー** です。
 
-- Z-Image-Base：ベースモデル（未公開）
-- Z-Image-Turbo：Base を数ステップ用に蒸留した実写寄り text2image
-- Z-Image-Edit：編集向けモデル（未公開）
+![](https://gyazo.com/569a829f2dbd9021bfdecf6d1e3267b9){gyazo=image}
 
-現状ローカルで扱えるのは Z-Image-Turbo だけなので、このページでは Z-Image-Turbo に絞って扱います。
+**Z-Image-Turbo** は、[Z-Image(Base)](ja/basic-workflow/z-image) を、少ないステップ数(8 steps) で生成できるよう蒸留した高速モデル です。  
+また、単に高速化しただけでなく、安定した画質を得ることを目的とした強化学習もあわせて施されています。
+
+そのため、設定を細かく詰めなくても 美しい画像を手早く生成できる 一方で、
+シードによるバリエーションは控えめで、得意分野は 実写 に偏っています。  
+イラスト調や特殊なプロンプト表現については、あまり得意ではありません。
+
+余談ではありますが、Z-Image ファミリーの中では 最も早い段階で公開されたモデル です。
 
 ---
 
 ## モデルのダウンロード
 
 - diffusion_models  
-  - [z_image_turbo_bf16.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors)
+  - [z_image_turbo_bf16.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors) (12.3 GB)
 - text_encoders  
-  - [qwen_3_4b.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/text_encoders/qwen_3_4b.safetensors)
+  - [qwen_3_4b.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/text_encoders/qwen_3_4b.safetensors) (8.04 GB)
 - vae  
-  - [ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors)（Flux.1 と共通）
+  - [ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors)（335 MB）
 
 ```text
 📂ComfyUI/
