@@ -278,7 +278,7 @@ LTX-Videoからの特徴ですが、動画は静止画と違い、少し圧縮�
 ![入力](https://gyazo.com/9e1e51a809c8838bb01c1258925c4e0e){gyazo=image} ![出力](https://gyazo.com/cdd2bcb62649ec744892c1615eae01d9){gyazo=player}
 
 > 既知の問題として、ほとんど画面が動かなかったり、ズームアウトするだけの動画になることがあります。  
-適切なプロンプトを使うことで多少マシになりますが、これを対策するための LoRA が登場したので紹介します。
+> 適切なプロンプトを使うことで多少マシになりますが、これを対策するための LoRA が登場したので紹介します。
 >
 > link + workflow : [LTX-2 Image2Video Adapter LoRa](https://scrapbox.io/work4ai/LTX-2_Image2Video_Adapter_LoRa)
 
