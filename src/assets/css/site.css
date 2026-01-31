@@ -2103,6 +2103,57 @@ h1 {
   transition: var(--transition-fast);
 }
 
+.article-pagination {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.article-pagination__inner {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.article-pagination__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.article-pagination__link--prev {
+  margin-right: auto;
+}
+
+.article-pagination__link--next {
+  margin-left: auto;
+}
+
+.article-pagination__caret {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.article-pagination__link:hover,
+.article-pagination__link:focus-visible {
+  color: var(--color-heading);
+  outline: none;
+}
+
+@media (max-width: 700px) {
+  .article-pagination__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .article-pagination__link--next {
+    margin-left: 0;
+  }
+}
+
 .news-list {
   display: flex;
   flex-direction: column;

@@ -479,6 +479,41 @@ export default function (eleventyConfig) {
       }));
   });
 
+  eleventyConfig.addFilter("navPrevNext", function (navData, sectionKey, currentId) {
+    if (!navData || !sectionKey || !currentId) {
+      return { prev: null, next: null };
+    }
+
+    const section = (navData.sections || []).find((entry) => entry.key === sectionKey);
+    if (!section || !Array.isArray(section.pages)) {
+      return { prev: null, next: null };
+    }
+
+    const ordered = [];
+    const addPages = (pages = []) => {
+      pages.forEach((page) => {
+        if (page && page.id && !page.noLink) {
+          ordered.push({ id: page.id, title: page.title || page.id });
+        }
+        if (page && Array.isArray(page.children)) {
+          addPages(page.children);
+        }
+      });
+    };
+
+    addPages(section.pages);
+
+    const index = ordered.findIndex((entry) => entry.id === currentId);
+    if (index === -1) {
+      return { prev: null, next: null };
+    }
+
+    return {
+      prev: ordered[index - 1] || null,
+      next: ordered[index + 1] || null
+    };
+  });
+
   eleventyConfig.addFilter("basename", function (value = "") {
     if (typeof value !== "string") return "";
     const segments = value.split("/");
