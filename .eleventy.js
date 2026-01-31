@@ -480,11 +480,26 @@ export default function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("navPrevNext", function (navData, sectionKey, currentId) {
-    if (!navData || !sectionKey || !currentId) {
+    if (!navData || !currentId) {
       return { prev: null, next: null };
     }
 
-    const section = (navData.sections || []).find((entry) => entry.key === sectionKey);
+    const sections = navData.sections || [];
+    let section = sectionKey
+      ? sections.find((entry) => entry.key === sectionKey)
+      : null;
+
+    if (!section) {
+      const hasId = (pages = []) => pages.some((page) => {
+        if (!page) return false;
+        if (page.id === currentId) return true;
+        if (Array.isArray(page.children) && hasId(page.children)) return true;
+        return false;
+      });
+
+      section = sections.find((entry) => hasId(entry.pages || [])) || null;
+    }
+
     if (!section || !Array.isArray(section.pages)) {
       return { prev: null, next: null };
     }
