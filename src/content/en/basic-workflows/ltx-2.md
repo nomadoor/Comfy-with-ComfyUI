@@ -277,6 +277,11 @@ Insert the image into the 2nd stage as well.
 
 ![Input](https://gyazo.com/9e1e51a809c8838bb01c1258925c4e0e){gyazo=image} ![Output](https://gyazo.com/cdd2bcb62649ec744892c1615eae01d9){gyazo=player}
 
+> As a known issue, often the video hardly moves or just zooms out.  
+> Using appropriate prompts helps to some extent, but a LoRA has been introduced to address this.
+>
+> link + workflow : [LTX-2 Image2Video Adapter LoRa](https://scrapbox.io/work4ai/LTX-2_Image2Video_Adapter_LoRa)
+
 ---
 
 ### multi-frame I2V
