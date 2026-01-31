@@ -282,8 +282,11 @@ sections:
                 title: Qwen-Image-Edit
               - id: qwen-image-layered
                 title: Qwen-Image-Layered
-          - id: z-image-turbo
-            title: Z-Image-Turbo
+          - id: z-image
+            title: Z-Image
+            children:
+              - id: z-image-turbo
+                title: Z-Image-Turbo
       - id: upscale-fix
         title: Upscale & Fix
         noLink: true

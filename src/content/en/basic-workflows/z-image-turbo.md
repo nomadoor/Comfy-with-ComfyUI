@@ -12,15 +12,19 @@ hero:
 tags: []
 ---
 
-## What is Z-Image?
+## What is Z-Image-Turbo?
 
 Z-Image is a **family of image generation models** by Alibaba / Tongyi-MAI.
 
-- Z-Image-Base: Base model (Unreleased)
-- Z-Image-Turbo: Photo-realistic text2image distilled from Base for few-step generation
-- Z-Image-Edit: Model for editing (Unreleased)
+![](https://gyazo.com/569a829f2dbd9021bfdecf6d1e3267b9){gyazo=image}
 
-Currently, only Z-Image-Turbo is available for local use, so this page focuses on Z-Image-Turbo.
+**Z-Image-Turbo** is a high-speed model distilled from [Z-Image (Base)](/en/basic-workflows/z-image/) for generation in few steps (8 steps).
+In addition to simply being faster, it has also undergone reinforcement learning to achieve stable image quality.
+
+Therefore, you can quickly generate beautiful images without fine-tuning settings. On the other hand, variation due to seed changes is limited, and its strength is biased towards photorealism.
+It is not very good at illustration styles or specific prompt expressions.
+
+As a side note, it is the earliest model released in the Z-Image family.
 
 ---
 

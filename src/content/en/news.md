@@ -11,8 +11,13 @@ tags:
 ---
 
 <div class="news-list">
+  <a class="news-row" href="/en/basic-workflows/z-image/">
+    <span class="news-row__date">2026.1.31</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">Added Z-Image page</span>
+  </a>
   <a class="news-row" href="/en/basic-workflows/flux-2-klein/">
-    <span class="news-row__date">2026.1.18</span>
+    <span class="news-row__date">2026.1.20</span>
     <span class="news-row__tag">basic-workflows</span>
     <span class="news-row__title">Added FLUX.2 [klein] page</span>
   </a>

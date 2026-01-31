@@ -47,7 +47,7 @@ What this formula means is **how much to amplify the difference between the "wit
 
 ## CFG Value and "Just Right"
 
-The optimal CFG value varies depending on the model and sampler, but for now, using **7 to 9** should be fine.
+The optimal CFG value varies depending on the model and sampler, but for now, using **4 to 7** should be fine.
 
 I said that increasing CFG can increase the effectiveness of the prompt, but that is only when:
 
