@@ -21,6 +21,12 @@
   - `ai-capabilities`: if tags are present use them; otherwise fall back to the page slug as the tag key to surface matching basic-workflows.
 - Limit to 12 cards; stack vertically on narrow layouts.
 
+## 3.5 Prev/Next Links (Article Footer)
+- Render a previous/next page row beneath the related pages block on article pages.
+- Ordering follows `_data/nav.<lang>.yml` within the current locale.
+- Each link uses a simple caret + page title label.
+- Hide the previous or next link if it does not exist.
+
 ## 4. Workflow JSON Block
 - Render `<filename>.json  [Copy]  [Download]` for each workflow entry.
 - Copy button uses the tooltip cycle: default -> "Copy" -> "Copied".
