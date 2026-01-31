@@ -63,7 +63,7 @@ It aims to combine the creativity of Z-Image with the stability of Z-Image-Turbo
 
 You can use image2image, but let's try splitting the sampling into two stages for a smarter approach.
 
-![](https://gyazo.com/42e10da0f6e85b132521fcc3959a3b01){gyazo=image}
+![](https://gyazo.com/2545e8ea917a80488d8687464185410d){gyazo=image}
 
 [](/workflows/basic-workflows/z-image/Z-Image_refine-turbo.json)
 

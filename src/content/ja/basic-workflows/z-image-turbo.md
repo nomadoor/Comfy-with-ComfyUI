@@ -18,7 +18,7 @@ Z-Image は、Alibaba / Tongyi-MAI による **画像生成モデルファミリ
 
 ![](https://gyazo.com/569a829f2dbd9021bfdecf6d1e3267b9){gyazo=image}
 
-**Z-Image-Turbo** は、[Z-Image(Base)](ja/basic-workflow/z-image) を、少ないステップ数(8 steps) で生成できるよう蒸留した高速モデル です。  
+**Z-Image-Turbo** は、[Z-Image (Base)](/ja/basic-workflows/z-image) を、少ないステップ数(8 steps) で生成できるよう蒸留した高速モデル です。  
 また、単に高速化しただけでなく、安定した画質を得ることを目的とした強化学習もあわせて施されています。
 
 そのため、設定を細かく詰めなくても 美しい画像を手早く生成できる 一方で、

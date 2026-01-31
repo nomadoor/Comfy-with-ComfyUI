@@ -65,7 +65,7 @@ Z-Image の創造性と、Z-Image-Turbo の品質の安定感の両取りを狙�
 
 image2image してもいいですが、ここでは少しオシャレにサンプリングを2段に分けてみましょう。
 
-![](https://gyazo.com/42e10da0f6e85b132521fcc3959a3b01){gyazo=image}
+![](https://gyazo.com/2545e8ea917a80488d8687464185410d){gyazo=image}
 
 [](/workflows/basic-workflows/z-image/Z-Image_refine-turbo.json)
 
