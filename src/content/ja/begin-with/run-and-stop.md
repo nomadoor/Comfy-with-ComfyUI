@@ -1,6 +1,7 @@
 ---
 layout: page.njk
 lang: ja
+section: begin-with
 slug: run-and-stop
 navId: run-and-stop
 title: "実行・停止"

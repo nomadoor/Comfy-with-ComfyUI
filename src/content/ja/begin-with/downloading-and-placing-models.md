@@ -1,6 +1,7 @@
 ---
 layout: page.njk
 lang: ja
+section: begin-with
 slug: downloading-and-placing-models
 navId: downloading-and-placing-models
 title: "モデルのダウンロードと配置"

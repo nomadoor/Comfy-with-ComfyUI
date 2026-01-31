@@ -1,6 +1,7 @@
 ---
 layout: page.njk
 lang: ja
+section: begin-with
 slug: setup
 navId: setup
 title: "セットアップ"

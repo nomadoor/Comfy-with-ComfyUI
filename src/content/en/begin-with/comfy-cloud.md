@@ -1,6 +1,7 @@
 ---
 layout: page.njk
 lang: en
+section: begin-with
 slug: comfy-cloud
 navId: comfy-cloud
 title: "Comfy Cloud"

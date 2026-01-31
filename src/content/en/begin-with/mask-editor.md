@@ -1,6 +1,7 @@
 ---
 layout: page.njk
 lang: en
+section: begin-with
 slug: mask-editor
 navId: mask-editor
 title: "Mask Editor"

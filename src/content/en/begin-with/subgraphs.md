@@ -1,6 +1,7 @@
 ---
 layout: page.njk
 lang: en
+section: begin-with
 slug: subgraphs
 navId: subgraphs
 title: "Subgraphs"

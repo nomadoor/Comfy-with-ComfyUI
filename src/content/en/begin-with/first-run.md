@@ -1,6 +1,7 @@
 ---
 layout: page.njk
 lang: en
+section: begin-with
 slug: first-run
 navId: first-run
 title: "First Run"

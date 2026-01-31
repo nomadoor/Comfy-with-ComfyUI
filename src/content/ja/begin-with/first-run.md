@@ -1,6 +1,7 @@
 ---
 layout: page.njk
 lang: ja
+section: begin-with
 slug: first-run
 navId: first-run
 title: "起動して生成"
