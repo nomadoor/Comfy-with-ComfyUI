@@ -73,6 +73,29 @@ layout: base.njk
   {% endif %}
 {% endif %}
 
+{% set navLocale = nav[currentLang] or nav[site.defaultLang] %}
+{% set navSectionKey = section or null %}
+{% set navCurrentId = navId or slug %}
+{% set navPrevNext = navLocale | navPrevNext(navSectionKey, navCurrentId) %}
+{% if navPrevNext and (navPrevNext.prev or navPrevNext.next) %}
+  <section class="article-pagination" aria-label="{% if currentLang == 'ja' %}ページ移動{% else %}Page navigation{% endif %}">
+    <div class="article-pagination__inner">
+      {% if navPrevNext.prev %}
+        <a class="article-pagination__link article-pagination__link--prev" href="/{{ currentLang }}/{{ navSectionKey }}/{{ navPrevNext.prev.id }}/">
+          <span class="article-pagination__caret" aria-hidden="true">&lt;</span>
+          <span class="article-pagination__title">{{ navPrevNext.prev.title }}</span>
+        </a>
+      {% endif %}
+      {% if navPrevNext.next %}
+        <a class="article-pagination__link article-pagination__link--next" href="/{{ currentLang }}/{{ navSectionKey }}/{{ navPrevNext.next.id }}/">
+          <span class="article-pagination__title">{{ navPrevNext.next.title }}</span>
+          <span class="article-pagination__caret" aria-hidden="true">&gt;</span>
+        </a>
+      {% endif %}
+    </div>
+  </section>
+{% endif %}
+
 {% if footerTitle or footerText or footerLinks.length %}
   {% set footerLogoBase = 'src/assets/logos/logo_Comfy-ComfyUI.svg' | svgDataUri %}
   {% set footerLogoJa = 'src/assets/logos/logo_に使う.svg' | svgDataUri %}
