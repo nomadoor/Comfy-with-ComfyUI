@@ -2106,7 +2106,6 @@ h1 {
 .article-pagination {
   margin-top: var(--space-xl);
   padding-top: var(--space-lg);
-  border-top: 1px solid var(--color-border);
 }
 
 .article-pagination__inner {
@@ -2145,8 +2144,9 @@ h1 {
 
 @media (max-width: 700px) {
   .article-pagination__inner {
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
+    flex-wrap: wrap;
   }
 
   .article-pagination__link--next {
