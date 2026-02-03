@@ -13,9 +13,8 @@ hero:
 
 ## Groups in ComfyUI
 
-ComfyUI's group function is for operating multiple nodes together, but the UI behavior is a bit quirky.
-
-Rather than "organizing nodes functionally", it is a visual-oriented function that "handles nodes touching the specified rectangular area together".
+ComfyUI groups are a UI feature not so much for "functionally bundling" nodes, but for **handling nodes touching a frame (rectangle) together**.
+Therefore, while convenient for visual organization, depending on placement, unintended nodes may move along with it.
 
 If you want to create a functional unit, [Subgraph](/en/basic-workflows/subgraphs/) is more suitable.
 
@@ -32,10 +31,8 @@ If you want to create a functional unit, [Subgraph](/en/basic-workflows/subgraph
 
 - Select nodes -> Click `#` (Frame Nodes) in `Node Selection Toolbox`
 
-> **Note**
-> Since the group frame can only be a rectangle, depending on the layout, unselected nodes may be included in the group.
->
-> This restricts the layout of nodes, so personally I don't use the group function much.
+> Since the group frame is fixed as a rectangle, depending on the layout, unselected nodes may be included.  
+> Since it reduces layout freedom, personally I don't use the group function much.
 
 ![](https://gyazo.com/b1c0185c6afc1de67f01acd041169f7c){gyazo=loop}
 
@@ -57,3 +54,12 @@ Right click the header of the group frame, or operate from `⋮` in `Node Select
 - **Bypass Group Nodes**: Bypass nodes in the group all at once
 
 ![](https://gyazo.com/2469b9f9e950748aa68bd9ee6c418841){gyazo=loop}
+
+## Moving Group Frame
+
+Dragging the group frame moves touching nodes together.
+When you want to fine-tune just the position, you don't want nodes to follow.
+
+By dragging while holding `Ctrl` + `Alt`, you can move only the group frame.
+
+![](https://gyazo.com/09e16ba51468b0e313ba1c0f445550d4){gyazo=loop}

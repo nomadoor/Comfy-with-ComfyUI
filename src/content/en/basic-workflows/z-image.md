@@ -78,6 +78,35 @@ Here we split it into the first 50% and the last 50%.
 ![Z-Image only](https://gyazo.com/73afc01007482bdfbcc0b0d33f75cb98){gyazo=image} ![Z-Image + Turbo](https://gyazo.com/0c1ece70589a7b42801f37383a604440){gyazo=image}
 
 
+
+## Z-Image-Fun-Controlnet-Union-2.1
+
+A ControlNet-like patch for Z-Image.
+
+### Model Download
+
+- model_patches
+
+  - [Z-Image-Fun-Controlnet-Union-2.1.safetensors](https://huggingface.co/alibaba-pai/Z-Image-Fun-Controlnet-Union-2.1/blob/main/Z-Image-Fun-Controlnet-Union-2.1.safetensors) (6.71 GB)
+
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂model_patches/
+        └── Z-Image-Fun-Controlnet-Union-2.1.safetensors
+
+```
+
+### workflow
+
+![](https://gyazo.com/1eb558462ba943c91305960b112c6a63){gyazo=image}
+
+[](/workflows/basic-workflows/z-image/Z-Image-Fun-Controlnet-Union-2.1.json)
+
+- 🟩 Add model and control image to `QwenImageDiffsynthControlnet`.
+- 🟩 In this workflow, Depth Anything V2 is used to create a depth map.
+
+
 ## Reference
 
 - [Comfy.Org blog](https://blog.comfy.org/p/z-image-day-0-support-in-comfyui?utm_campaign=post-expanded-share&utm_medium=web&triedRedirect=true)
