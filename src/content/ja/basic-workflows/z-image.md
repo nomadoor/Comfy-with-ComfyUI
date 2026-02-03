@@ -80,6 +80,35 @@ image2image してもいいですが、ここでは少しオシャレにサン�
 ![Z-Image のみ](https://gyazo.com/73afc01007482bdfbcc0b0d33f75cb98){gyazo=image} ![Z-Image + Turbo](https://gyazo.com/0c1ece70589a7b42801f37383a604440){gyazo=image}
 
 
+## Z-Image-Fun-Controlnet-Union-2.1
+
+Z-Image 用の ControlNet 風パッチです。
+
+### モデルのダウンロード
+
+- model_patches
+
+  - [Z-Image-Fun-Controlnet-Union-2.1.safetensors](https://huggingface.co/alibaba-pai/Z-Image-Fun-Controlnet-Union-2.1/blob/main/Z-Image-Fun-Controlnet-Union-2.1.safetensors) (6.71 GB)
+
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂model_patches/
+        └── Z-Image-Fun-Controlnet-Union-2.1.safetensors
+
+```
+
+### workflow
+
+![](https://gyazo.com/959448d98af117e9a56ee7b10ba3fb7b){gyazo=image}
+
+[](/workflows/basic-workflows/z-image/Z-Image-Fun-Controlnet-Union-2.1.json)
+
+- 🟩 `QwenImageDiffsynthControlnet` にモデルと制御画像を追加
+- 🟩 この workflow では Depth Anything V2 で深度マップを作成します。
+
+
+
 ## 参考
 
 - [Comfy.Org blog](https://blog.comfy.org/p/z-image-day-0-support-in-comfyui?utm_campaign=post-expanded-share&utm_medium=web&triedRedirect=true)
