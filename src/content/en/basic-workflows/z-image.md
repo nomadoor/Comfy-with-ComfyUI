@@ -99,7 +99,7 @@ A ControlNet-like patch for Z-Image.
 
 ### workflow
 
-![](https://gyazo.com/959448d98af117e9a56ee7b10ba3fb7b){gyazo=image}
+![](https://gyazo.com/1eb558462ba943c91305960b112c6a63){gyazo=image}
 
 [](/workflows/basic-workflows/z-image/Z-Image-Fun-Controlnet-Union-2.1.json)
 
