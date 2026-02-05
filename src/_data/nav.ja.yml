@@ -115,6 +115,14 @@ sections:
       title: Batch・動画
     - id: realtime
       title: リアルタイム処理
+  - id: api
+    title: API
+    noLink: true
+    children:
+    - id: api-about
+      title: APIとは？
+    - id: api-run-workflow
+      title: APIでworkflowを実行してみる
 - key: ai-capabilities
   label: AIの仕組みと出来ること
   pages:

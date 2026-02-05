@@ -94,7 +94,6 @@ A ControlNet-like patch for Z-Image.
 └── 📂models/
     └── 📂model_patches/
         └── Z-Image-Fun-Controlnet-Union-2.1.safetensors
-
 ```
 
 ### workflow

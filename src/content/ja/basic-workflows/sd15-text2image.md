@@ -41,12 +41,12 @@ hero:
 全ての始まりである、Stable Diffusion 1.5 を使い、解説していきます。
 
 - [Comfy-Org/stable-diffusion-v1-5-archive](https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive/blob/main/v1-5-pruned-emaonly-fp16.safetensors)
--  ```text
-    📂ComfyUI/
-      └── 📂models/
-          └── 📂checkpoints/
-              └── v1-5-pruned-emaonly-fp16.safetensors
-    ```
+```text
+📂ComfyUI/
+  └── 📂models/
+      └── 📂checkpoints/
+          └── v1-5-pruned-emaonly-fp16.safetensors
+```
 
 ---
 
@@ -118,12 +118,12 @@ Stable Diffusion1.5のVAEは、正直あまり性能がよくありません。�
 ### VAEのダウンロード
 
 - [vae-ft-mse-840000-ema-pruned.safetensors](https://huggingface.co/stabilityai/sd-vae-ft-mse-original/blob/main/vae-ft-mse-840000-ema-pruned.safetensors)
--  ```text
-    📂ComfyUI/
-      └── 📂models/
-          └── 📂vae/
-              └── vae-ft-mse-840000-ema-pruned.safetensors
-    ```
+```text
+📂ComfyUI/
+  └── 📂models/
+      └── 📂vae/
+          └── vae-ft-mse-840000-ema-pruned.safetensors
+```
 
 ### workflow
 
