@@ -10,14 +10,14 @@ eleventyComputed:
   section: "{{ stub.section }}"
   navId: "{{ stub.id }}"
   title: >
-    {% if stub.title %}{{ stub.title }}{% elseif stub.lang == 'en' %}Coming Soon{% else %}準備中{% endif %}
+    {% if stub.title %}{{ stub.title }}{% elseif stub.lang == 'ja' %}準備中{% else %}Coming Soon{% endif %}
 summary: >
-  {% if stub.lang == 'en' %}This page is not ready yet.{% else %}まだページがありません{% endif %}
+  {% if stub.lang == 'ja' %}まだページがありません{% else %}This page is not ready yet.{% endif %}
 hero:
   gradient: ""
 ---
 <div class="article-body placeholder">
-  {% if stub.lang == 'en' %}
+  {% if stub.lang != 'ja' %}
     <h2>This page is not ready yet.</h2>
     <p>This topic is being prepared. Please choose another item from the sidebar.</p>
   {% else %}

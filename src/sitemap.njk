@@ -3,12 +3,31 @@ permalink: "/sitemap.xml"
 eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
 {% set origin = siteOrigin or site.origin or "" -%}
 {% for page in collections.all %}
   {% if page.url %}
+  {% set pageLang = page.data.lang or site.defaultLang %}
+  {% set pageSection = page.data.section %}
+  {% set pageSlug = page.data.navId or page.data.slug %}
+  {% set isStandalone = (not pageSection) and (pageSlug == 'news' or pageSlug == 'about') %}
   <url>
     <loc>{{ (origin ~ page.url) | replace("index.html", "") }}</loc>
+    {% for option in site.languages %}
+      {% if isStandalone %}
+        {% set altPath = '/' + option.code + '/' + pageSlug + '/' %}
+      {% else %}
+        {% set altPath = '/' + option.code + '/' + pageSection + '/' + pageSlug + '/' %}
+      {% endif %}
+      <xhtml:link rel="alternate" hreflang="{{ option.code }}" href="{{ origin ~ altPath }}" />
+    {% endfor %}
+    {% if isStandalone %}
+      {% set defaultPath = '/' + site.defaultLang + '/' + pageSlug + '/' %}
+    {% else %}
+      {% set defaultPath = '/' + site.defaultLang + '/' + pageSection + '/' + pageSlug + '/' %}
+    {% endif %}
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ origin ~ defaultPath }}" />
     {% if page.date %}
     <lastmod>{{ page.date.toISOString().slice(0,10) }}</lastmod>
     {% endif %}

@@ -4,7 +4,8 @@
   "defaultLang": "ja",
   "name": {
     "ja": "Comfyに使う ComfyUI",
-    "en": "Comfy with ComfyUI"
+    "en": "Comfy with ComfyUI",
+    "zh": "Comfy with ComfyUI"
   },
   "languages": [
     {
@@ -15,6 +16,11 @@
     {
       "code": "en",
       "label": "English",
+      "title": "Comfy with ComfyUI"
+    },
+    {
+      "code": "zh",
+      "label": "中文",
       "title": "Comfy with ComfyUI"
     }
   ],

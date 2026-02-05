@@ -5,7 +5,8 @@ import { parse } from "yaml";
 const dataDir = path.resolve("src", "_data");
 const files = {
   ja: path.join(dataDir, "nav.ja.yml"),
-  en: path.join(dataDir, "nav.en.yml")
+  en: path.join(dataDir, "nav.en.yml"),
+  zh: path.join(dataDir, "nav.zh.yml")
 };
 
 function load(filePath) {
