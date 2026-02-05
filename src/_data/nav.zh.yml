@@ -324,9 +324,9 @@ sections:
       title: FramePack
       noLink: true
       children:
-    - id: framepack-one-frame-inference
-        title: FramePack 单帧推理
-        noLink: true
+        - id: framepack-one-frame-inference
+          title: FramePack 单帧推理
+          noLink: true
     - id: liveportrait
       title: LivePortrait
   - id: llm-mlm-workflows
