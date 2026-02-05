@@ -124,7 +124,7 @@ your_project/
 
 ターミナルで `run_min.py` を実行します。
 
-```powershell
+```bash
 cd path/to/your_project
 venv/Scripts/activate
 python run_min.py
