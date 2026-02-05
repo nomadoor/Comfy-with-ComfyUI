@@ -71,11 +71,12 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
   {% set langOptions = site.languages or [] -%}
   {% set currentSlug = currentNavId or slug -%}
   {% set isStandalone = (not sectionExists) and (currentSlug == 'news' or currentSlug == 'about') -%}
+  {% set hreflangSection = sectionCandidate or currentSection -%}
   {% for option in langOptions -%}
     {% if isStandalone -%}
       {% set altPath = '/' + option.code + '/' + currentSlug + '/' -%}
     {% else -%}
-      {% set altPath = '/' + option.code + '/' + currentSection + '/' + currentSlug + '/' -%}
+      {% set altPath = '/' + option.code + '/' + hreflangSection + '/' + currentSlug + '/' -%}
     {% endif -%}
     {% set altUrl = siteUrl and (siteUrl ~ altPath) or altPath -%}
   <link rel="alternate" hreflang="{{ option.code }}" href="{{ altUrl | e }}" />
@@ -83,7 +84,7 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
   {% if isStandalone -%}
     {% set defaultPath = '/' + site.defaultLang + '/' + currentSlug + '/' -%}
   {% else -%}
-    {% set defaultPath = '/' + site.defaultLang + '/' + currentSection + '/' + currentSlug + '/' -%}
+    {% set defaultPath = '/' + site.defaultLang + '/' + hreflangSection + '/' + currentSlug + '/' -%}
   {% endif -%}
   {% set defaultUrl = siteUrl and (siteUrl ~ defaultPath) or defaultPath -%}
   <link rel="alternate" hreflang="x-default" href="{{ defaultUrl | e }}" />
