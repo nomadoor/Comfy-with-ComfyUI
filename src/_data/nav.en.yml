@@ -324,7 +324,7 @@ sections:
             title: FramePack
             noLink: true
             children:
-              - id: FramePack-one-frame-inference
+              - id: framepack-one-frame-inference
                 title: FramePack One Frame Inference
                 noLink: true
           - id: liveportrait

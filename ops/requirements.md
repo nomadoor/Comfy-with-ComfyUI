@@ -7,11 +7,15 @@
 
 ## 1. Content & Routing
 - Routes follow `/<lang>/<section>/<slug>/` with kebab-case slugs that match nav/data.
+- `lang` is one of `ja`, `en`, `zh`.
+- Exceptions: `about` and `news` are standalone pages and use `/<lang>/<slug>/` without `section`.
 - Markdown lives under `src/content/<lang>/`; workflows sit in `src/workflows/<slug>/*.json`; shared data under `_data`.
 - Front matter requires `slug` and `title`. `tags` は任意（最大5件）。ただし **`ai-capabilities` セクションは原則 tags なし**。例外的に付ける場合はオーナー指示と `/ops` 合意を先に取る。`draft: true` で非公開化。
 
 ## 2. Navigation & Tags
 - Locale menus come from `_data/nav.<lang>.yml`; keep IDs aligned with folders and front matter.
+- `nav.zh.yml` mirrors the same slug IDs as `ja/en` (titles can be placeholders until translation).
+- Tags are **optional**. When present, they must be consistent with the slug/topic, specific but not spammy, and limited to **max 5** per page.
 - Every page begins with one H1. Section badges and chip styles come from `/ops/style-design.md`.
 
 ## 3. Related Workflows
@@ -60,7 +64,7 @@
 
 ## 11. CI & Quality Gates
 - Every slug must exist in nav files and directories.
-- `tags[]` を使う場合は `_data/tagIndex.js` 由来で最大5件。`ai-capabilities` は tags なしが既定。
+- `tags[]` は **任意**。使う場合は `_data/tagIndex.js` 由来で最大5件。`ai-capabilities` は tags なしが既定。
 - All `<img>` elements need width/height attributes or CSS aspect enforcement.
 - Update README/ADRs whenever IA or UX changes.
 
@@ -102,3 +106,8 @@
 - `og:image` / `twitter:image` should use the page hero image if it is an image (not `.mp4`).
   - If the hero is a video or missing, fall back to `site.ogImage`.
 - `site.url` and `site.ogImage` live in `src/_data/site.json`.
+
+## 18. i18n SEO (Canonical / Hreflang / Sitemap)
+- `link rel="canonical"` must be present for every page (`site.url + page.url`).
+- `hreflang` must be emitted for `ja`, `en`, `zh`, plus `x-default`.
+- Sitemaps should include alternate language references (`xhtml:link`) or equivalent per-locale sitemaps.

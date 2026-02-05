@@ -1,236 +1,236 @@
 sections:
 - key: begin-with
-  label: はじめてのComfyUI
+  label: 开始使用 ComfyUI
   pages:
   - id: how-to-use-this-site
-    title: このサイトの使い方
+    title: 如何使用本网站
   - id: spin-up-fast
-    title: とりあえず動かしてみる
+    title: 快速上手
     noLink: true
     children:
     - id: what-is-comfyui
-      title: ComfyUIとは？
+      title: 什么是 ComfyUI？
     - id: recommended-specs
-      title: 推奨スペック
+      title: 推荐配置
     - id: setup
-      title: セットアップ
+      title: 安装与设置
     - id: comfy-cloud
       title: Comfy Cloud
     - id: first-run
-      title: 起動して生成
+      title: 首次运行
   - id: pc-basics
-    title: 必要なPC知識
+    title: PC 基础
     noLink: true
     children:
     - id: path
-      title: パス
+      title: 路径
     - id: terminal
-      title: ターミナル
+      title: 终端
     - id: python
       title: Python
     - id: git
-      title: git
+      title: Git
   - id: customization
-    title: カスタマイズ
+    title: 自定义
     noLink: true
     children:
     - id: settings
-      title: 設定
+      title: 设置
     - id: command-line-arguments
-      title: コマンドライン引数
+      title: 命令行参数
     - id: updates
-      title: アップデート
+      title: 更新
     - id: downloading-and-placing-models
-      title: モデルのダウンロードと配置
+      title: 模型下载与放置
     - id: custom-nodes
-      title: カスタムノード
+      title: 自定义节点
   - id: comfyui-operations
-    title: ComfyUIの操作
+    title: ComfyUI 操作
     noLink: true
     children:
     - id: run-and-stop
-      title: 実行・停止
+      title: 运行与停止
     - id: saving-and-loading-workflows
-      title: workflowの保存・読み込み
+      title: 保存与加载工作流
     - id: canvas-navigation
-      title: キャンバスの操作
+      title: 画布操作
     - id: nodes
-      title: ノード
+      title: 节点
     - id: group
-      title: グループ
+      title: 分组
     - id: media
-      title: メディア
+      title: 媒体
     - id: mask-editor
-      title: マスクエディタ
+      title: 遮罩编辑器
     - id: subgraphs
-      title: サブグラフ
+      title: 子图
   - id: columns
-    title: コラム
+    title: 专栏
     noLink: true
     children:
     - id: readable-nodes
-      title: リーダブルノードのすすめ
+      title: 可读节点
     - id: wireless-nodes
-      title: 無線でノードをつなぐ
+      title: 无线连接节点
 - key: data-utilities
-  label: データ / 画像ユーティリティ
+  label: 数据 / 图像工具
   pages:
   - id: data-ops
-    title: データ操作
+    title: 数据操作
     noLink: true
     children:
     - id: data-types
-      title: データ型
+      title: 数据类型
     - id: simple-math
-      title: 単純な計算
+      title: 简单计算
     - id: text-ops
-      title: テキスト操作
+      title: 文本处理
     - id: webcam-input
-      title: Webカメラ入力
+      title: 摄像头输入
   - id: basic-image-processing
-    title: 基本的な画像処理
+    title: 基础图像处理
     noLink: true
     children:
     - id: resize-crop-pad
-      title: リサイズ・クロップ・パディング
+      title: 缩放 / 裁剪 / 填充
     - id: color-adjustments
-      title: 色調補正・フィルタ効果
+      title: 颜色调整与滤镜
     - id: mask-alpha
-      title: マスクとアルファチャンネル
+      title: 遮罩与 Alpha 通道
     - id: mask-ops
-      title: マスク操作
+      title: 遮罩操作
     - id: ai-mask-generation
-      title: AIを使ったマスク生成
+      title: AI 遮罩生成
     - id: layer-composite-blend
-      title: レイヤ合成・ブレンド
+      title: 图层合成与混合
   - id: batch-processing
-    title: 連続処理
+    title: 批量处理
     noLink: true
     children:
     - id: queue
-      title: Queue
+      title: 队列
     - id: list
-      title: List
+      title: 列表
     - id: batch-video
-      title: Batch・動画
+      title: 批量与视频
     - id: realtime
-      title: リアルタイム処理
+      title: 实时处理
   - id: api
     title: API
     noLink: true
     children:
     - id: api-about
-      title: APIとは？
+      title: 什么是 API？
     - id: api-run-workflow
-      title: APIでworkflowを実行してみる
+      title: 通过 API 运行工作流
 - key: ai-capabilities
-  label: AIの仕組みと出来ること
+  label: AI 能力
   pages:
   - id: image-generation-mechanics
-    title: 画像生成AIの仕組み
+    title: 图像生成机制
     noLink: true
     children:
     - id: diffusion-models
-      title: 拡散モデル
+      title: 扩散模型
     - id: conditioning
-      title: Conditioning
+      title: Conditioning（条件）
     - id: cfg
       title: CFG
     - id: sampling
-      title: Sampling
+      title: Sampling（采样）
     - id: latent-diffusion-vae
-      title: Latent Diffusion ModelとVAE
+      title: Latent Diffusion Model 与 VAE
   - id: image-generation-applications
-    title: 画像生成の応用技術
+    title: 图像生成应用
     noLink: true
     children:
     - id: upscale-restoration
-      title: アップスケール・画像修復
+      title: 放大与修复
     - id: controlnet
-      title: ControlNet系
+      title: ControlNet 系列
     - id: region-limited-generation
-      title: 領域指定生成
+      title: 区域限定生成
     - id: subject-transfer
-      title: Subject転送
+      title: 主体迁移
     - id: id-transfer
-      title: ID転送とFaceSwap
+      title: ID 迁移与 FaceSwap
     - id: virtual-try-on
-      title: 着せ替え
+      title: 虚拟试穿
     - id: style-transfer
-      title: スタイル転送
+      title: 风格迁移
     - id: line-art-coloring
-      title: 線画着色
+      title: 线稿上色
     - id: object-removal
-      title: オブジェクト除去
+      title: 物体移除
     - id: instruction-based-image-editing
-      title: 指示ベース画像編集
+      title: 指令式图像编辑
     - id: collage-refine
-      title: 雑コラのリファイン
+      title: 粗糙拼贴的精修
   - id: image-translation
-    title: 画像変換
+    title: 图像变换
     noLink: true
     children:
     - id: relight
-      title: リライト
+      title: Relight（重打光）
     - id: depth-normal-map
-      title: 深度推定とノーマルマップ生成
+      title: 深度估计与法线贴图
   - id: video-audio-generation
-    title: 動画・音声生成
+    title: 视频与音频生成
     noLink: true
     children:
     - id: video-generation
-      title: 動画生成
+      title: 视频生成
       noLink: true
     - id: video-upscale-restoration
-      title: アップスケール・動画修復
+      title: 视频放大与修复
     - id: frame-interpolation
-      title: フレーム補間
+      title: 帧插值
     - id: video-to-audio
       title: video2audio
     - id: lip-sync
-      title: リップシンク
+      title: 口型同步
     - id: talking-head
-      title: talking head
+      title: talking head（说话人像）
     - id: human-motion-transfer
-      title: Human Motion Transfer
+      title: 人体动作迁移
     - id: tts
       title: TTS
       noLink: true
     - id: voice-clone
-      title: ボイスクローン
+      title: 语音克隆
       noLink: true
     - id: music-generation
-      title: 音楽生成
+      title: 音乐生成
       noLink: true
   - id: 3d-generation
-    title: 3D生成
+    title: 3D 生成
     noLink: true
     children:
     - id: 3d-model-generation
-      title: 3Dモデル生成
+      title: 3D 模型生成
   - id: computer-vision-vlm
-    title: コンピュータービジョン / VLM
+    title: 计算机视觉 / VLM
     noLink: true
     children:
     - id: object-detection
-      title: 物体検出
+      title: 目标检测
     - id: matting
-      title: マッティング
+      title: 抠图
     - id: segmentation
-      title: セグメンテーション
+      title: 分割
   - id: llm-mlm-usage
-    title: LLM / MLLMの活用
+    title: LLM / MLLM 应用
     noLink: true
     children:
     - id: prompt-generation
-      title: プロンプト生成・編集
+      title: 提示词生成与编辑
     - id: tag-caption-generation
-      title: タグ・キャプション生成
+      title: 标签与字幕生成
 - key: basic-workflows
-  label: 基本のworkflow
+  label: 基础工作流
   pages:
   - id: sd15-basics
-    title: 画像生成の基本 (SD1.5)
+    title: SD1.5 基础
     children:
     - id: sd15-text2image
       title: text2image
@@ -239,7 +239,7 @@ sections:
     - id: sd15-lora
       title: LoRA
     - id: ksampler-advanced
-      title: KSampler (Advanced)ノード
+      title: KSampler（Advanced）节点
     - id: sd15-image2image
       title: image2image
     - id: sd15-hires-fix
@@ -254,18 +254,18 @@ sections:
       title: ControlNet
       children:
       - id: controlnet-prep
-        title: ControlNet Preprocessor
+        title: ControlNet 预处理器
     - id: sd15-ip-adapter
       title: IP-Adapter
   - id: other-foundation-models
-    title: 他の基盤モデル
+    title: 其他基础模型
     noLink: true
     children:
     - id: sdxl
       title: SDXL
       children:
       - id: sdxl-anime
-        title: アニメ系 SDXL モデル
+        title: SDXL 动漫模型
     - id: flux-1
       title: Flux.1
       children:
@@ -296,7 +296,7 @@ sections:
       - id: z-image-turbo
         title: Z-Image-Turbo
   - id: upscale-fix
-    title: アップスケール・修正
+    title: 放大与修复
     noLink: true
     children:
     - id: esrgan
@@ -306,7 +306,7 @@ sections:
     - id: detailer
       title: Detailer
   - id: video-workflows
-    title: 動画生成・処理
+    title: 视频工作流
     noLink: true
     children:
     - id: wan-2-1
@@ -325,7 +325,7 @@ sections:
       noLink: true
       children:
         - id: framepack-one-frame-inference
-          title: FramePack 1フレーム推論
+          title: FramePack 单帧推理
           noLink: true
     - id: liveportrait
       title: LivePortrait
@@ -341,49 +341,49 @@ sections:
       title: Qwen 3 VL
       noLink: true
   - id: other-workflows
-    title: その他
+    title: 其他
     noLink: true
     children:
     - id: reactor
       title: ReActor
   - id: system-optimization
-    title: システム・最適化
+    title: 系统优化
     noLink: true
     children:
     - id: model-merge
-      title: モデルのマージと差分LoRA
+      title: 模型合并与差分 LoRA
     - id: speed-and-efficiency
-      title: 高速化と軽量化
+      title: 速度与效率
   - id: api-nodes
-    title: APIノード
+    title: API 节点
 - key: faq
-  label: FAQ / トラブルシューティング
+  label: FAQ / 故障排除
   pages:
   - id: error-handling
-    title: エラーが出た時にやること
+    title: 出错时怎么办
   - id: common-questions
-    title: よくある質問
+    title: 常见问题
     noLink: true
     children:
     - id: why-512px
-      title: 512px × 512pxで生成するのはなぜ？
+      title: 为什么生成 512px × 512px？
     - id: sd15-sdxl-asset-compatibility
-      title: Stable Diffusion 1.5 の LoRA / ControlNet は SDXL で使えない？
+      title: SD1.5 的 LoRA/ControlNet 不能用于 SDXL？
     - id: why-multiple-of-8
-      title: 8 の倍数の解像度しか生成できないのはなぜ？
+      title: 为什么只能生成 8 的倍数分辨率？
     - id: sdwebui-comfyui-reproducibility
-      title: web UI と ComfyUI で同じ画像は生成できない？
+      title: web UI 与 ComfyUI 能生成同样的图吗？
   - id: bad-output
-    title: 生成結果がおかしい
+    title: 结果异常
     noLink: true
     children:
     - id: duplicate-objects
-      title: 生成画像で人や物体が分身している
+      title: 人物/物体出现重影
   - id: error-codes
-    title: エラーコード
+    title: 错误代码
     noLink: true
     children:
     - id: import-failed
-      title: (IMPORT FAILED)
+      title: （IMPORT FAILED）导入失败
     - id: torch-cuda-oom
-      title: torch.cuda.OutOfMemoryError（VRAM 不足）
+      title: torch.cuda.OutOfMemoryError（显存不足）

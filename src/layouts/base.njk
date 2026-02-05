@@ -50,6 +50,9 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
   <title>{{ title | e }} | {{ (site.name[currentLang] or site.name[site.defaultLang]) | e }}</title>
   <meta name="description" content="{{ pageSummary | e }}" />
   {% if canonicalUrl %}
+  <link rel="canonical" href="{{ canonicalUrl | e }}" />
+  {% endif %}
+  {% if canonicalUrl %}
   <meta property="og:url" content="{{ canonicalUrl | e }}" />
   {% endif %}
   <meta property="og:title" content="{{ title | e }}" />
@@ -65,6 +68,26 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
   {% if ogImage %}
   <meta name="twitter:image" content="{{ ogImage | e }}" />
   {% endif %}
+  {% set langOptions = site.languages or [] -%}
+  {% set currentSlug = currentNavId or slug -%}
+  {% set isStandalone = (not sectionExists) and (currentSlug == 'news' or currentSlug == 'about') -%}
+  {% set hreflangSection = sectionCandidate or currentSection -%}
+  {% for option in langOptions -%}
+    {% if isStandalone -%}
+      {% set altPath = '/' + option.code + '/' + currentSlug + '/' -%}
+    {% else -%}
+      {% set altPath = '/' + option.code + '/' + hreflangSection + '/' + currentSlug + '/' -%}
+    {% endif -%}
+    {% set altUrl = siteUrl and (siteUrl ~ altPath) or altPath -%}
+  <link rel="alternate" hreflang="{{ option.code }}" href="{{ altUrl | e }}" />
+  {% endfor -%}
+  {% if isStandalone -%}
+    {% set defaultPath = '/' + site.defaultLang + '/' + currentSlug + '/' -%}
+  {% else -%}
+    {% set defaultPath = '/' + site.defaultLang + '/' + hreflangSection + '/' + currentSlug + '/' -%}
+  {% endif -%}
+  {% set defaultUrl = siteUrl and (siteUrl ~ defaultPath) or defaultPath -%}
+  <link rel="alternate" hreflang="x-default" href="{{ defaultUrl | e }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet"
