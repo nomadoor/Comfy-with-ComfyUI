@@ -95,7 +95,6 @@ Z-Image 用の ControlNet 風パッチです。
 └── 📂models/
     └── 📂model_patches/
         └── Z-Image-Fun-Controlnet-Union-2.1.safetensors
-
 ```
 
 ### workflow
