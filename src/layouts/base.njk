@@ -80,7 +80,11 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
     {% set altUrl = siteUrl and (siteUrl ~ altPath) or altPath -%}
   <link rel="alternate" hreflang="{{ option.code }}" href="{{ altUrl | e }}" />
   {% endfor -%}
-  {% set defaultPath = '/' + site.defaultLang + '/' + (isStandalone ? currentSlug : (currentSection + '/' + currentSlug)) + '/' -%}
+  {% if isStandalone -%}
+    {% set defaultPath = '/' + site.defaultLang + '/' + currentSlug + '/' -%}
+  {% else -%}
+    {% set defaultPath = '/' + site.defaultLang + '/' + currentSection + '/' + currentSlug + '/' -%}
+  {% endif -%}
   {% set defaultUrl = siteUrl and (siteUrl ~ defaultPath) or defaultPath -%}
   <link rel="alternate" hreflang="x-default" href="{{ defaultUrl | e }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
