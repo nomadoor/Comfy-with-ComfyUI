@@ -58,86 +58,109 @@
   "i18n": {
     "themeToggle": {
       "ja": "テーマ切替",
-      "en": "Theme toggle"
+      "en": "Theme toggle",
+      "zh": "切换主题"
     },
     "search": {
       "placeholder": {
         "ja": "ドキュメントを検索",
-        "en": "Search the docs"
+        "en": "Search the docs",
+        "zh": "搜索文档"
       },
       "aria": {
         "ja": "サイト内を検索",
-        "en": "Search this site"
+        "en": "Search this site",
+        "zh": "站内搜索"
       }
     },
     "workflow": {
       "jsonHeading": {
         "ja": "Workflow JSON",
-        "en": "Workflow JSON"
+        "en": "Workflow JSON",
+        "zh": "工作流 JSON"
       },
       "relatedHeading": {
         "ja": "関連Workflow",
-        "en": "Related workflows"
+        "en": "Related workflows",
+        "zh": "相关工作流"
       },
       "copyLabel": {
         "ja": "コピー",
-        "en": "Copy"
+        "en": "Copy",
+        "zh": "复制"
       },
       "downloadLabel": {
         "ja": "ダウンロード",
-        "en": "Download"
+        "en": "Download",
+        "zh": "下载"
       },
       "copiedLabel": {
         "ja": "コピーしました",
-        "en": "Copied"
+        "en": "Copied",
+        "zh": "已复制"
       },
       "downloadedLabel": {
         "ja": "ダウンロードしました",
-        "en": "Downloaded"
+        "en": "Downloaded",
+        "zh": "已下载"
       }
     },
     "headingAnchor": {
       "copyLabel": {
         "ja": "見出しリンクをコピー",
-        "en": "Copy heading link"
+        "en": "Copy heading link",
+        "zh": "复制标题链接"
       },
       "copiedLabel": {
         "ja": "コピーしました",
-        "en": "Copied"
+        "en": "Copied",
+        "zh": "已复制"
       }
     },
     "toc": {
       "tipsPlaceholder": {
         "ja": "Tipsコンテンツ準備中",
-        "en": "Tips incoming"
+        "en": "Tips incoming",
+        "zh": "提示内容准备中"
       },
       "label": {
         "ja": "目次",
-        "en": "Table of contents"
+        "en": "Table of contents",
+        "zh": "目录"
       }
+    },
+    "footerGuide": {
+      "ja": "このサイトの使い方",
+      "en": "How to use this site",
+      "zh": "如何使用本网站"
     },
     "headerActions": {
       "notifications": {
         "ja": "通知",
-        "en": "Notifications"
+        "en": "Notifications",
+        "zh": "通知"
       },
       "profile": {
         "ja": "プロフィール",
-        "en": "Profile"
+        "en": "Profile",
+        "zh": "个人资料"
       }
     },
     "tips": {
       "avatarLabel": {
         "ja": "ヒントを開く",
-        "en": "Open tips"
+        "en": "Open tips",
+        "zh": "打开提示"
       },
       "bubbleListLabel": {
         "ja": "サポートメッセージ",
-        "en": "Assistant suggestions"
+        "en": "Assistant suggestions",
+        "zh": "助手建议"
       },
       "closeLabel": {
         "ja": "ウィンドウを閉じる",
-        "en": "Close assistant window"
+        "en": "Close assistant window",
+        "zh": "关闭助手窗口"
       },
       "panels": [
         {
@@ -145,11 +168,13 @@
           "type": "info",
           "title": {
             "ja": "jsonコピーボタンとは？",
-            "en": "What is the JSON copy button?"
+            "en": "What is the JSON copy button?",
+            "zh": "什么是 JSON 复制按钮？"
           },
           "summary": {
             "ja": "workflow全体を一括コピーして再現できます。",
-            "en": "Share an entire workflow JSON for reproducible results."
+            "en": "Share an entire workflow JSON for reproducible results.",
+            "zh": "可一次性复制整个工作流 JSON 以便复现。"
           },
           "body": {
             "ja": [
@@ -158,13 +183,17 @@
             "en": [
               "It exports every node, connection, and parameter so someone else can reproduce the exact workflow.",
               "Select the Copy JSON button on any workflow article to place the graph on your clipboard, then press Ctrl+V inside ComfyUI to load it."
-            ]
+            ],
+            "zh": [
+              "复制 JSON 后，在 ComfyUI 画布中按 Ctrl+V 就能直接粘贴该工作流。"
+            ],
           },
           "video": {
             "id": "13c0019ad1e471bcf89cdb4b17bc7d9c",
             "caption": {
               "ja": "",
-              "en": ""
+              "en": "",
+              "zh": ""
             }
           }
         },
@@ -173,24 +202,29 @@
           "type": "form",
           "title": {
             "ja": "このページに間違いがあります！",
-            "en": "This page has an issue!"
+            "en": "This page has an issue!",
+            "zh": "这个页面有问题！"
           },
           "summary": {
             "ja": "見つけた誤りや更新漏れを報告してください。",
-            "en": "Report mistakes or outdated instructions."
+            "en": "Report mistakes or outdated instructions.",
+            "zh": "反馈错误或过期内容。"
           },
           "body": {
             "ja": "再現手順や正しい情報を添えてもらえると助かります。現在のURLは自動で添付されます。",
-            "en": "Include a short repro step or the correct information if you can. We attach the current URL automatically."
+            "en": "Include a short repro step or the correct information if you can. We attach the current URL automatically.",
+            "zh": "请尽量提供复现步骤或正确信息，当前 URL 会自动附上。"
           },
           "form": {
             "placeholder": {
               "ja": "どこが誤っているのか、何を確認したかを書いてください。",
-              "en": "Describe what is incorrect and how you verified it."
+              "en": "Describe what is incorrect and how you verified it.",
+              "zh": "请说明哪里不正确，以及你如何验证的。"
             },
             "successDetail": {
               "ja": "誤り報告",
-              "en": "Correction report"
+              "en": "Correction report",
+              "zh": "错误反馈"
             },
             "attachUrl": true,
             "minLength": 20
@@ -201,24 +235,29 @@
           "type": "form",
           "title": {
             "ja": "これについても書いてください！",
-            "en": "Please explain more!"
+            "en": "Please explain more!",
+            "zh": "请补充讲解！"
           },
           "summary": {
             "ja": "足りない解説やサンプルを提案できます。",
-            "en": "Suggest missing explanations or workflows."
+            "en": "Suggest missing explanations or workflows.",
+            "zh": "提出缺少的说明或示例。"
           },
           "body": {
             "ja": "欲しいトピックや使いたいモデル名など、背景が分かるように教えてください。",
-            "en": "Tell us what topic or model you need so we can plan the write-up."
+            "en": "Tell us what topic or model you need so we can plan the write-up.",
+            "zh": "请说明想看的主题或模型名称，便于我们安排。"
           },
           "form": {
             "placeholder": {
               "ja": "例: Flux.1 Tools の設定を詳しく知りたい",
-              "en": "Example: Need more detail on Flux.1 Tools settings"
+              "en": "Example: Need more detail on Flux.1 Tools settings",
+              "zh": "例：想了解 Flux.1 Tools 的详细设置"
             },
             "successDetail": {
               "ja": "追記リクエスト",
-              "en": "Expansion request"
+              "en": "Expansion request",
+              "zh": "补充请求"
             },
             "attachUrl": true,
             "minLength": 20
@@ -228,62 +267,76 @@
       "form": {
         "messageLabel": {
           "ja": "内容",
-          "en": "Message"
+          "en": "Message",
+          "zh": "内容"
         },
         "confirmLabel": {
           "ja": "確認する",
-          "en": "Review"
+          "en": "Review",
+          "zh": "确认"
         },
         "sendLabel": {
           "ja": "送信する",
-          "en": "Send"
+          "en": "Send",
+          "zh": "发送"
         },
         "editLabel": {
           "ja": "編集に戻る",
-          "en": "Edit"
+          "en": "Edit",
+          "zh": "返回编辑"
         },
         "confirmBody": {
           "ja": "送信前に内容を確認してください。匿名でGitHub Issueを作成します。",
-          "en": "Double-check before sending. We'll create an anonymous GitHub issue."
+          "en": "Double-check before sending. We'll create an anonymous GitHub issue.",
+          "zh": "发送前请确认内容。我们会创建匿名的 GitHub Issue。"
         },
         "notice": {
           "ja": "GitHub Issueに送信します。個人情報は書かないでください。",
-          "en": "We'll file a GitHub issue—please avoid personal data."
+          "en": "We'll file a GitHub issue—please avoid personal data.",
+          "zh": "将提交到 GitHub Issue，请勿填写个人信息。"
         },
         "status": {
           "sending": {
             "ja": "送信中...",
-            "en": "Sending..."
+            "en": "Sending...",
+            "zh": "发送中..."
           },
           "error": {
             "ja": "送信に失敗しました。しばらくしてから再試行してください。",
-            "en": "Could not send. Please try again."
+            "en": "Could not send. Please try again.",
+            "zh": "发送失败，请稍后再试。"
           },
           "endpoint": {
             "ja": "送信先が設定されていません。管理者に連絡してください。",
-            "en": "Feedback endpoint is not configured. Please contact the maintainer."
+            "en": "Feedback endpoint is not configured. Please contact the maintainer.",
+            "zh": "未配置反馈端点，请联系维护者。"
           },
           "validation": {
             "ja": "20文字以上で入力してください。",
-            "en": "Please enter at least 20 characters."
+            "en": "Please enter at least 20 characters.",
+            "zh": "请输入至少 20 个字符。"
           }
         },
         "submitted": {
           "title": {
             "ja": "ありがとうございます",
-            "en": "Thank you"
+            "en": "Thank you",
+            "zh": "感谢！"
           },
           "body": {
             "ja": "いただいた内容を元にカイゼンしていきます！",
-            "en": "We’ll use your feedback to keep improving."
+            "en": "We’ll use your feedback to keep improving.",
+            "zh": "我们会根据你的反馈持续改进。"
           },
           "detailLabel": {
             "ja": "カテゴリー",
-            "en": "Category"
+            "en": "Category",
+            "zh": "类别"
           },
           "cta": {
             "ja": "別のリクエストを送る",
-            "en": "Send another request"
+            "en": "Send another request",
+            "zh": "再提交一个请求"
           }
         }
       }
