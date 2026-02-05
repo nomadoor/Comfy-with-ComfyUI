@@ -8,6 +8,7 @@
 ## 1. Content & Routing
 - Routes follow `/<lang>/<section>/<slug>/` with kebab-case slugs that match nav/data.
 - `lang` is one of `ja`, `en`, `zh`.
+- Exceptions: `about` and `news` are standalone pages and use `/<lang>/<slug>/` without `section`.
 - Markdown lives under `src/content/<lang>/`; workflows sit in `src/workflows/<slug>/*.json`; shared data under `_data`.
 - Front matter requires `slug` and `title`. `tags` は任意（最大5件）。ただし **`ai-capabilities` セクションは原則 tags なし**。例外的に付ける場合はオーナー指示と `/ops` 合意を先に取る。`draft: true` で非公開化。
 
