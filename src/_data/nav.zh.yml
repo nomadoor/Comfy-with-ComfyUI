@@ -1,389 +1,389 @@
 sections:
-  - key: begin-with
-    label: Begin With ComfyUI
-    pages:
-      - id: how-to-use-this-site
-        title: How to Use This Site
-      - id: spin-up-fast
-        title: Get It Running
+- key: begin-with
+  label: 开始使用 ComfyUI
+  pages:
+  - id: how-to-use-this-site
+    title: 如何使用本网站
+  - id: spin-up-fast
+    title: 快速上手
+    noLink: true
+    children:
+    - id: what-is-comfyui
+      title: 什么是 ComfyUI？
+    - id: recommended-specs
+      title: 推荐配置
+    - id: setup
+      title: 安装与设置
+    - id: comfy-cloud
+      title: Comfy Cloud
+    - id: first-run
+      title: 首次运行
+  - id: pc-basics
+    title: PC 基础
+    noLink: true
+    children:
+    - id: path
+      title: 路径
+    - id: terminal
+      title: 终端
+    - id: python
+      title: Python
+    - id: git
+      title: Git
+  - id: customization
+    title: 自定义
+    noLink: true
+    children:
+    - id: settings
+      title: 设置
+    - id: command-line-arguments
+      title: 命令行参数
+    - id: updates
+      title: 更新
+    - id: downloading-and-placing-models
+      title: 模型下载与放置
+    - id: custom-nodes
+      title: 自定义节点
+  - id: comfyui-operations
+    title: ComfyUI 操作
+    noLink: true
+    children:
+    - id: run-and-stop
+      title: 运行与停止
+    - id: saving-and-loading-workflows
+      title: 保存与加载工作流
+    - id: canvas-navigation
+      title: 画布操作
+    - id: nodes
+      title: 节点
+    - id: group
+      title: 分组
+    - id: media
+      title: 媒体
+    - id: mask-editor
+      title: 遮罩编辑器
+    - id: subgraphs
+      title: 子图
+  - id: columns
+    title: 专栏
+    noLink: true
+    children:
+    - id: readable-nodes
+      title: 可读节点
+    - id: wireless-nodes
+      title: 无线连接节点
+- key: data-utilities
+  label: 数据 / 图像工具
+  pages:
+  - id: data-ops
+    title: 数据操作
+    noLink: true
+    children:
+    - id: data-types
+      title: 数据类型
+    - id: simple-math
+      title: 简单计算
+    - id: text-ops
+      title: 文本处理
+    - id: webcam-input
+      title: 摄像头输入
+  - id: basic-image-processing
+    title: 基础图像处理
+    noLink: true
+    children:
+    - id: resize-crop-pad
+      title: 缩放 / 裁剪 / 填充
+    - id: color-adjustments
+      title: 颜色调整与滤镜
+    - id: mask-alpha
+      title: 遮罩与 Alpha 通道
+    - id: mask-ops
+      title: 遮罩操作
+    - id: ai-mask-generation
+      title: AI 遮罩生成
+    - id: layer-composite-blend
+      title: 图层合成与混合
+  - id: batch-processing
+    title: 批量处理
+    noLink: true
+    children:
+    - id: queue
+      title: 队列
+    - id: list
+      title: 列表
+    - id: batch-video
+      title: 批量与视频
+    - id: realtime
+      title: 实时处理
+  - id: api
+    title: API
+    noLink: true
+    children:
+    - id: api-about
+      title: 什么是 API？
+    - id: api-run-workflow
+      title: 通过 API 运行工作流
+- key: ai-capabilities
+  label: AI 能力
+  pages:
+  - id: image-generation-mechanics
+    title: 图像生成机制
+    noLink: true
+    children:
+    - id: diffusion-models
+      title: 扩散模型
+    - id: conditioning
+      title: Conditioning（条件）
+    - id: cfg
+      title: CFG
+    - id: sampling
+      title: Sampling（采样）
+    - id: latent-diffusion-vae
+      title: Latent Diffusion Model 与 VAE
+  - id: image-generation-applications
+    title: 图像生成应用
+    noLink: true
+    children:
+    - id: upscale-restoration
+      title: 放大与修复
+    - id: controlnet
+      title: ControlNet 系列
+    - id: region-limited-generation
+      title: 区域限定生成
+    - id: subject-transfer
+      title: 主体迁移
+    - id: id-transfer
+      title: ID 迁移与 FaceSwap
+    - id: virtual-try-on
+      title: 虚拟试穿
+    - id: style-transfer
+      title: 风格迁移
+    - id: line-art-coloring
+      title: 线稿上色
+    - id: object-removal
+      title: 物体移除
+    - id: instruction-based-image-editing
+      title: 指令式图像编辑
+    - id: collage-refine
+      title: 粗糙拼贴的精修
+  - id: image-translation
+    title: 图像变换
+    noLink: true
+    children:
+    - id: relight
+      title: Relight（重打光）
+    - id: depth-normal-map
+      title: 深度估计与法线贴图
+  - id: video-audio-generation
+    title: 视频与音频生成
+    noLink: true
+    children:
+    - id: video-generation
+      title: 视频生成
+      noLink: true
+    - id: video-upscale-restoration
+      title: 视频放大与修复
+    - id: frame-interpolation
+      title: 帧插值
+    - id: video-to-audio
+      title: video2audio
+    - id: lip-sync
+      title: 口型同步
+    - id: talking-head
+      title: talking head（说话人像）
+    - id: human-motion-transfer
+      title: 人体动作迁移
+    - id: tts
+      title: TTS
+      noLink: true
+    - id: voice-clone
+      title: 语音克隆
+      noLink: true
+    - id: music-generation
+      title: 音乐生成
+      noLink: true
+  - id: 3d-generation
+    title: 3D 生成
+    noLink: true
+    children:
+    - id: 3d-model-generation
+      title: 3D 模型生成
+  - id: computer-vision-vlm
+    title: 计算机视觉 / VLM
+    noLink: true
+    children:
+    - id: object-detection
+      title: 目标检测
+    - id: matting
+      title: 抠图
+    - id: segmentation
+      title: 分割
+  - id: llm-mlm-usage
+    title: LLM / MLLM 应用
+    noLink: true
+    children:
+    - id: prompt-generation
+      title: 提示词生成与编辑
+    - id: tag-caption-generation
+      title: 标签与字幕生成
+- key: basic-workflows
+  label: 基础工作流
+  pages:
+  - id: sd15-basics
+    title: SD1.5 基础
+    children:
+    - id: sd15-text2image
+      title: text2image
+    - id: sd15-textual-inversion
+      title: Textual Inversion
+    - id: sd15-lora
+      title: LoRA
+    - id: ksampler-advanced
+      title: KSampler（Advanced）节点
+    - id: sd15-image2image
+      title: image2image
+    - id: sd15-hires-fix
+      title: Hires.fix
+    - id: sd15-inpainting
+      title: inpainting
+    - id: sd15-outpainting
+      title: outpainting
+    - id: differential-diffusion
+      title: Differential Diffusion
+    - id: sd15-controlnet
+      title: ControlNet
+      children:
+      - id: controlnet-prep
+        title: ControlNet 预处理器
+    - id: sd15-ip-adapter
+      title: IP-Adapter
+  - id: other-foundation-models
+    title: 其他基础模型
+    noLink: true
+    children:
+    - id: sdxl
+      title: SDXL
+      children:
+      - id: sdxl-anime
+        title: SDXL 动漫模型
+    - id: flux-1
+      title: Flux.1
+      children:
+      - id: flux-1-tools
+        title: Flux.1 Tools
+      - id: ace-plus-plus
+        title: ACE++
+      - id: flux-1-kontext
+        title: Flux.1 Kontext
+      - id: chroma1-hd
+        title: Chroma1-HD
+    - id: flux-2-klein
+      title: FLUX.2 [klein]
+    - id: auraflow
+      title: AuraFlow
+    - id: lumina-image-2.0
+      title: Lumina-Image 2.0
+    - id: qwen-image
+      title: Qwen-Image
+      children:
+      - id: qwen-image-edit
+        title: Qwen-Image-Edit
+      - id: qwen-image-layered
+        title: Qwen-Image-Layered
+    - id: z-image
+      title: Z-Image
+      children:
+      - id: z-image-turbo
+        title: Z-Image-Turbo
+  - id: upscale-fix
+    title: 放大与修复
+    noLink: true
+    children:
+    - id: esrgan
+      title: ESRGAN
+    - id: ultimate-sd-upscale
+      title: Ultimate SD Upscale
+    - id: detailer
+      title: Detailer
+  - id: video-workflows
+    title: 视频工作流
+    noLink: true
+    children:
+    - id: wan-2-1
+      title: Wan 2.1
+      children:
+      - id: wan-2-1-vace
+        title: Wan 2.1 VACE
+      - id: wan-animate
+        title: Wan-Animate
+    - id: wan-2-2
+      title: Wan 2.2
+    - id: ltx-2
+      title: LTX-2
+    - id: framepack
+      title: FramePack
+      noLink: true
+      children:
+      - id: FramePack-one-frame-inference
+        title: FramePack 单帧推理
         noLink: true
-        children:
-          - id: what-is-comfyui
-            title: What is ComfyUI?
-          - id: recommended-specs
-            title: Recommended Specs
-          - id: setup
-            title: Setup
-          - id: comfy-cloud
-            title: Comfy Cloud
-          - id: first-run
-            title: First Run
-      - id: pc-basics
-        title: PC Basics
-        noLink: true
-        children:
-          - id: path
-            title: Path
-          - id: terminal
-            title: Terminal
-          - id: python
-            title: Python
-          - id: git
-            title: git
-      - id: customization
-        title: Customization
-        noLink: true
-        children:
-          - id: settings
-            title: Settings
-          - id: command-line-arguments
-            title: Command Line Arguments
-          - id: updates
-            title: Updates
-          - id: downloading-and-placing-models
-            title: Downloading & Placing Models
-          - id: custom-nodes
-            title: Custom Nodes
-      - id: comfyui-operations
-        title: ComfyUI Operations
-        noLink: true
-        children:
-          - id: run-and-stop
-            title: Run & Stop
-          - id: saving-and-loading-workflows
-            title: Save & Load Workflows
-          - id: canvas-navigation
-            title: Canvas Navigation
-          - id: nodes
-            title: Nodes
-          - id: group
-            title: Group
-          - id: media
-            title: Media
-          - id: mask-editor
-            title: Mask Editor
-          - id: subgraphs
-            title: Subgraphs
-      - id: columns
-        title: Columns
-        noLink: true
-        children:
-          - id: readable-nodes
-            title: Readable Nodes
-          - id: wireless-nodes
-            title: Wireless Nodes
-  - key: data-utilities
-    label: Data / Image Utilities
-    pages:
-      - id: data-ops
-        title: Data Operations
-        noLink: true
-        children:
-          - id: data-types
-            title: Data Types
-          - id: simple-math
-            title: Simple Math
-          - id: text-ops
-            title: Text Operations
-          - id: webcam-input
-            title: Webcam Input
-      - id: basic-image-processing
-        title: Basic Image Processing
-        noLink: true
-        children:
-          - id: resize-crop-pad
-            title: Resize, Crop, Pad
-          - id: color-adjustments
-            title: Color Adjustments & Filters
-          - id: mask-alpha
-            title: Mask & Alpha Channel
-          - id: mask-ops
-            title: Mask Operations
-          - id: ai-mask-generation
-            title: AI Mask Generation
-          - id: layer-composite-blend
-            title: Layer Composite & Blend
-      - id: batch-processing
-        title: Batch Processing
-        noLink: true
-        children:
-          - id: queue
-            title: Queue
-          - id: list
-            title: List
-          - id: batch-video
-            title: Batch & Video
-          - id: realtime
-            title: Realtime Processing
-      - id: api
-        title: API
-        noLink: true
-        children:
-          - id: api-about
-            title: What is the API?
-          - id: api-run-workflow
-            title: Running a Workflow via API
-  - key: ai-capabilities
-    label: AI Capabilities
-    pages:
-      - id: image-generation-mechanics
-        title: Mechanics of Image Generation AI
-        noLink: true
-        children:
-          - id: diffusion-models
-            title: Diffusion Models
-          - id: conditioning
-            title: Conditioning
-          - id: cfg
-            title: CFG
-          - id: sampling
-            title: Sampling
-          - id: latent-diffusion-vae
-            title: Latent Diffusion Model & VAE
-      - id: image-generation-applications
-        title: Applications of Image Generation
-        noLink: true
-        children:
-          - id: upscale-restoration
-            title: Upscale & Restoration
-          - id: controlnet
-            title: ControlNet Family
-          - id: region-limited-generation
-            title: Region-Limited Generation
-          - id: subject-transfer
-            title: Subject Transfer
-          - id: id-transfer
-            title: ID Transfer & FaceSwap
-          - id: virtual-try-on
-            title: Virtual Try-On
-          - id: style-transfer
-            title: Style Transfer
-          - id: line-art-coloring
-            title: Line Art Coloring
-          - id: object-removal
-            title: Object Removal
-          - id: instruction-based-image-editing
-            title: Instruction-Based Image Editing
-          - id: collage-refine
-            title: Refining Rough Collages
-      - id: image-translation
-        title: Image Translation
-        noLink: true
-        children:
-          - id: relight
-            title: Relight
-          - id: depth-normal-map
-            title: Depth Estimation & Normal Map
-      - id: video-audio-generation
-        title: Video & Audio Generation
-        noLink: true
-        children:
-          - id: video-generation
-            title: Video Generation
-            noLink: true
-          - id: video-upscale-restoration
-            title: Video Upscale & Restoration
-          - id: frame-interpolation
-            title: Frame Interpolation
-          - id: video-to-audio
-            title: video2audio
-          - id: lip-sync
-            title: Lip Sync
-          - id: talking-head
-            title: talking head
-          - id: human-motion-transfer
-            title: Human Motion Transfer
-          - id: tts
-            title: TTS
-            noLink: true
-          - id: voice-clone
-            title: Voice Clone
-            noLink: true
-          - id: music-generation
-            title: Music Generation
-            noLink: true
-      - id: 3d-generation
-        title: 3D Generation
-        noLink: true
-        children:
-          - id: 3d-model-generation
-            title: 3D Model Generation
-      - id: computer-vision-vlm
-        title: Computer Vision / VLM
-        noLink: true
-        children:
-          - id: object-detection
-            title: Object Detection
-          - id: matting
-            title: Matting
-          - id: segmentation
-            title: Segmentation
-      - id: llm-mlm-usage
-        title: LLM / MLLM Usage
-        noLink: true
-        children:
-          - id: prompt-generation
-            title: Prompt Generation & Editing
-          - id: tag-caption-generation
-            title: Tag & Caption Generation
-  - key: basic-workflows
-    label: Basic Workflows
-    pages:
-      - id: sd15-basics
-        title: SD1.5 Basics
-        children:
-          - id: sd15-text2image
-            title: text2image
-          - id: sd15-textual-inversion
-            title: Textual Inversion
-          - id: sd15-lora
-            title: LoRA
-          - id: ksampler-advanced
-            title: KSampler (Advanced) Node
-          - id: sd15-image2image
-            title: image2image
-          - id: sd15-hires-fix
-            title: Hires.fix
-          - id: sd15-inpainting
-            title: inpainting
-          - id: sd15-outpainting
-            title: outpainting
-          - id: differential-diffusion
-            title: Differential Diffusion
-          - id: sd15-controlnet
-            title: ControlNet
-            children:
-              - id: controlnet-prep
-                title: ControlNet Preprocessor
-          - id: sd15-ip-adapter
-            title: IP-Adapter
-      - id: other-foundation-models
-        title: Other Foundation Models
-        noLink: true
-        children:
-          - id: sdxl
-            title: SDXL
-            children:
-              - id: sdxl-anime
-                title: SDXL Anime
-          - id: flux-1
-            title: Flux.1
-            children:
-              - id: flux-1-tools
-                title: Flux.1 Tools
-              - id: ace-plus-plus
-                title: ACE++
-              - id: flux-1-kontext
-                title: Flux.1 Kontext
-              - id: chroma1-hd
-                title: Chroma1-HD
-          - id: flux-2-klein
-            title: FLUX.2 [klein]
-          - id: auraflow
-            title: AuraFlow
-          - id: lumina-image-2.0
-            title: Lumina-Image 2.0
-          - id: qwen-image
-            title: Qwen-Image
-            children:
-              - id: qwen-image-edit
-                title: Qwen-Image-Edit
-              - id: qwen-image-layered
-                title: Qwen-Image-Layered
-          - id: z-image
-            title: Z-Image
-            children:
-              - id: z-image-turbo
-                title: Z-Image-Turbo
-      - id: upscale-fix
-        title: Upscale & Fix
-        noLink: true
-        children:
-          - id: esrgan
-            title: ESRGAN
-          - id: ultimate-sd-upscale
-            title: Ultimate SD Upscale
-          - id: detailer
-            title: Detailer
-      - id: video-workflows
-        title: Video Workflows
-        noLink: true
-        children:
-          - id: wan-2-1
-            title: Wan 2.1
-            children:
-              - id: wan-2-1-vace
-                title: Wan 2.1 VACE
-              - id: wan-animate
-                title: Wan-Animate
-          - id: wan-2-2
-            title: Wan 2.2
-          - id: ltx-2
-            title: LTX-2
-          - id: framepack
-            title: FramePack
-            noLink: true
-            children:
-              - id: FramePack-one-frame-inference
-                title: FramePack One Frame Inference
-                noLink: true
-          - id: liveportrait
-            title: LivePortrait
-      - id: llm-mlm-workflows
-        title: LLM / MLLM
-        noLink: true
-        children:
-          - id: joycaption
-            title: JoyCaption
-          - id: florence2
-            title: Florence-2
-          - id: qwen-3-vl
-            title: Qwen 3 VL
-            noLink: true
-      - id: other-workflows
-        title: Other
-        noLink: true
-        children:
-          - id: reactor
-            title: ReActor
-      - id: system-optimization
-        title: System Optimization
-        noLink: true
-        children:
-          - id: model-merge
-            title: Model Merge & Difference LoRA
-          - id: speed-and-efficiency
-            title: Speed and Efficiency
-      - id: api-nodes
-        title: API Nodes
-  - key: faq
-    label: FAQ / Troubleshooting
-    pages:
-      - id: error-handling
-        title: What to do when an error occurs
-      - id: common-questions
-        title: Common Questions
-        noLink: true
-        children:
-          - id: why-512px
-            title: Why generate at 512px × 512px?
-          - id: sd15-sdxl-asset-compatibility
-            title: Can't use SD1.5 LoRA / ControlNet with SDXL?
-          - id: why-multiple-of-8
-            title: Why can only resolutions that are multiples of 8 be generated?
-          - id: sdwebui-comfyui-reproducibility
-            title: Can't generate the same image with web UI and ComfyUI?
-      - id: bad-output
-        title: Bad Output
-        noLink: true
-        children:
-          - id: duplicate-objects
-            title: People or objects are duplicating
-      - id: error-codes
-        title: Error Codes
-        noLink: true
-        children:
-          - id: import-failed
-            title: "(IMPORT FAILED)"
-          - id: torch-cuda-oom
-            title: torch.cuda.OutOfMemoryError (VRAM shortage)
+    - id: liveportrait
+      title: LivePortrait
+  - id: llm-mlm-workflows
+    title: LLM / MLLM
+    noLink: true
+    children:
+    - id: joycaption
+      title: JoyCaption
+    - id: florence2
+      title: Florence-2
+    - id: qwen-3-vl
+      title: Qwen 3 VL
+      noLink: true
+  - id: other-workflows
+    title: 其他
+    noLink: true
+    children:
+    - id: reactor
+      title: ReActor
+  - id: system-optimization
+    title: 系统优化
+    noLink: true
+    children:
+    - id: model-merge
+      title: 模型合并与差分 LoRA
+    - id: speed-and-efficiency
+      title: 速度与效率
+  - id: api-nodes
+    title: API 节点
+- key: faq
+  label: FAQ / 故障排除
+  pages:
+  - id: error-handling
+    title: 出错时怎么办
+  - id: common-questions
+    title: 常见问题
+    noLink: true
+    children:
+    - id: why-512px
+      title: 为什么生成 512px × 512px？
+    - id: sd15-sdxl-asset-compatibility
+      title: SD1.5 的 LoRA/ControlNet 不能用于 SDXL？
+    - id: why-multiple-of-8
+      title: 为什么只能生成 8 的倍数分辨率？
+    - id: sdwebui-comfyui-reproducibility
+      title: web UI 与 ComfyUI 能生成同样的图吗？
+  - id: bad-output
+    title: 结果异常
+    noLink: true
+    children:
+    - id: duplicate-objects
+      title: 人物/物体出现重影
+  - id: error-codes
+    title: 错误代码
+    noLink: true
+    children:
+    - id: import-failed
+      title: （IMPORT FAILED）导入失败
+    - id: torch-cuda-oom
+      title: torch.cuda.OutOfMemoryError（显存不足）
