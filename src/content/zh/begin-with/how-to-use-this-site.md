@@ -43,7 +43,7 @@ hero:
 这里也会讲解图像生成 AI 极其简单的运行机制。
 
 ### 🗺️ 基础工作流
-基础 Workflow 的解说。
+基础 工作流 的解说。
 虽然与 ComfyUI 的模板没有太大区别，但我们将其整理得更加极简且易于理解。
 
 ### ☹️ FAQ / 故障排除
@@ -53,16 +53,16 @@ hero:
 
 ---
 
-## workflow 的复制按钮
+## 工作流 的复制按钮
 
-本网站提供的几乎所有 workflow，都附带了 JSON。
+本网站提供的几乎所有 工作流，都附带了 JSON。
 
-虽然鲜为人知，但只要复制 workflow 的 JSON 文本，
-在 ComfyUI 的画布上按下 **Ctrl + V**，就可以直接粘贴 workflow。
+虽然鲜为人知，但只要复制 工作流 的 JSON 文本，
+在 ComfyUI 的画布上按下 **Ctrl + V**，就可以直接粘贴 工作流。
 
 ![](https://gyazo.com/13c0019ad1e471bcf89cdb4b17bc7d9c){gyazo=loop}
 
-测试 workflow:
+测试 工作流:
 
 [](/workflows/begin-with/saving-and-loading-workflows/Stable_Diffusion_1.5.json)
 

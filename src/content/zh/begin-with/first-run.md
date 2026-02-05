@@ -34,20 +34,20 @@ hero:
 
 ---
 
-## 从模板选择 workflow
+## 从模板选择 工作流
 
 ![](https://i.gyazo.com/7ffdc91e29dc41127e4101360ceff732.png){gyazo=image}
 
 - 刚启动时，应该会打开模板画面。（如果没有打开，请选择左侧边栏的 `Templates`。）
 - 首先，请选择 `Getting Started` → `Image Generation`。
 - 此时会显示 `Missing Models` 错误。
-  - 这表示运行该 workflow 所需的模型缺失，请先忽略它，点击右上角的 `✕` 关闭窗口。
+  - 这表示运行该 工作流 所需的模型缺失，请先忽略它，点击右上角的 `✕` 关闭窗口。
 
 ---
 
 ## 模型下载
 
-这个 workflow 是用于运行 **Stable Diffusion 1.5** 模型的。
+这个 工作流 是用于运行 **Stable Diffusion 1.5** 模型的。
 虽然性能不如最新的模型……或者老实说已经不太实用了，但根本的运行机制是一样的。
 
 让我们先用这个可以说是图像生成 AI 始祖的模型，来学习基础的生成方法吧。

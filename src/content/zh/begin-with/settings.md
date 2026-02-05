@@ -32,7 +32,7 @@ hero:
 ### 徽章
 `Lite Graph` → `Node` → `Node source badge mode` → `Show All`
 - 显示该节点是 ComfyUI 的核心节点还是自定义节点的徽章。
-- 当读取别人的 workflow 时，可以确认使用了哪个自定义节点的节点。
+- 当读取别人的 工作流 时，可以确认使用了哪个自定义节点的节点。
 
 ### Run 按钮位置
 

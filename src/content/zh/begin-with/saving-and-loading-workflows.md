@@ -4,8 +4,8 @@ lang: zh
 section: begin-with
 slug: saving-and-loading-workflows
 navId: saving-and-loading-workflows
-title: "保存与读取 Workflow"
-summary: "关于 workflow 的保存与读取"
+title: "保存与读取 工作流"
+summary: "关于 工作流 的保存与读取"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""
@@ -19,26 +19,26 @@ hero:
 
 ---
 
-## 保存 workflow (浏览器内)
+## 保存 工作流 (浏览器内)
 
-将创建的 workflow 保存在 ComfyUI 内部。
+将创建的 工作流 保存在 ComfyUI 内部。
 
-- 1. 点击顶部的 `Workflow`，选择 `Save` 或 `Save as`
+- 1. 点击顶部的 `工作流`，选择 `Save` 或 `Save as`
 - 2. 取一个喜欢的名字并 `Confirm`（或按 `Enter` 键）
 
-保存的 workflow 可以通过左侧边栏的文件夹图标 📂（或 `W` 键）进行调用。
+保存的 工作流 可以通过左侧边栏的文件夹图标 📂（或 `W` 键）进行调用。
 
 ![](https://gyazo.com/b9970219294a79c53a651585baa179b4){gyazo=loop}
 
 ---
 
-## 导出 workflow (保存为文件)
+## 导出 工作流 (保存为文件)
 
-将 workflow 导出为 `.json` 文件，用于分享或备份。
+将 工作流 导出为 `.json` 文件，用于分享或备份。
 
 ### 导出为 JSON 文件
 
-- 1. 点击顶部的 `Workflow`，选择 `Export`
+- 1. 点击顶部的 `工作流`，选择 `Export`
 - 2. 取一个喜欢的名字并 `Confirm`（或按 `Enter` 键）
 - 3. 选择保存位置进行保存
 
@@ -46,26 +46,26 @@ hero:
 
 ### 嵌入生成的图像并保存
 
-通过 ComfyUI 标准的图像保存节点（如 `Save Image`）生成的图像，会自动嵌入 workflow 的元数据（设置信息）。只需读取这张图片，即可还原生成时的 workflow。
+通过 ComfyUI 标准的图像保存节点（如 `Save Image`）生成的图像，会自动嵌入 工作流 的元数据（设置信息）。只需读取这张图片，即可还原生成时的 工作流。
 
 
 ### 保存为截图
 
-如果安装了 **[ComfyUI-Custom-Scripts](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)** 等自定义节点，就可以对整个 workflow 进行截图，并在其中嵌入元数据进行保存。
+如果安装了 **[ComfyUI-Custom-Scripts](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)** 等自定义节点，就可以对整个 工作流 进行截图，并在其中嵌入元数据进行保存。
 
 ![](https://gyazo.com/a66d20bf36c02fa63c6cd5ab957fe4db){gyazo=loop}
 
 
 ---
 
-## 读取 workflow
+## 读取 工作流
 
-### 读取保存的 workflow
+### 读取保存的 工作流
 
-打开保存在 ComfyUI 内部的 workflow。
+打开保存在 ComfyUI 内部的 工作流。
 
 - 1. 点击左侧边栏的文件夹图标 📂（或 `W` 键）
-- 2. 从列表中点击想要打开的 workflow
+- 2. 从列表中点击想要打开的 工作流
 
 ![](https://gyazo.com/7c2149e7af5d6f78a30c9c03ff671356){gyazo=loop}
 
@@ -74,7 +74,7 @@ hero:
 读取 PC 中的 `.json` 文件，或带有元数据的图像。
 
 **方法 A: 通过菜单**
-- 1. 点击顶部的 `Workflow`，选择 `Open`（或 `Ctrl + O`）
+- 1. 点击顶部的 `工作流`，选择 `Open`（或 `Ctrl + O`）
 - 2. 选择文件并打开
 
 **方法 B: 拖放**
@@ -89,10 +89,10 @@ hero:
 
 ![](https://gyazo.com/2df1b87e2f4771e3ea2f718b55357435){gyazo=loop}
 
-### 😎读取本站的 workflow
+### 😎读取本站的 工作流
 
-本站公开的 workflow 提供了复制按钮和下载按钮。
-只需点击复制按钮，然后直接在画布上 `Ctrl + V` 即可读取 workflow，请务必利用起来。
+本站公开的 工作流 提供了复制按钮和下载按钮。
+只需点击复制按钮，然后直接在画布上 `Ctrl + V` 即可读取 工作流，请务必利用起来。
 
 [](/workflows/begin-with/saving-and-loading-workflows/Stable_Diffusion_1.5.json)
 
