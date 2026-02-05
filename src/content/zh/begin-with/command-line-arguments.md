@@ -61,7 +61,7 @@ python main.py --fast
 | | `--extra-model-paths-config [path]` | 读取一个或多个 `extra_model_paths.yaml` 文件。 | 想要管理多个模型保存位置时使用。 |
 | | `--auto-launch` | 使用默认浏览器自动启动 ComfyUI。 | |
 
-### 故障排除 (错误隔离・调试)
+### 故障排除 (错误隔离/调试)
 
 当 ComfyUI 无法启动，或出现生成全黑图像等故障时使用。
 
@@ -75,7 +75,7 @@ python main.py --fast
 | | `--disable-metadata` | 不在文件中保存提示词元数据。 | 想要减小图像文件大小时使用。 |
 | | `--fast` | 启用未经测试的优化。 | 速度测试用。不保证质量。 |
 
-### 其他 (应用・开发者向)
+### 其他 (面向应用/开发者)
 
 主要包含 VRAM/精度的高级调整、前端测试相关内容。
 
