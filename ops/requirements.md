@@ -14,6 +14,7 @@
 ## 2. Navigation & Tags
 - Locale menus come from `_data/nav.<lang>.yml`; keep IDs aligned with folders and front matter.
 - `nav.zh.yml` mirrors the same slug IDs as `ja/en` (titles can be placeholders until translation).
+- Tags are **optional**. When present, they must be consistent with the slug/topic, specific but not spammy, and limited to **max 5** per page.
 - Every page begins with one H1. Section badges and chip styles come from `/ops/style-design.md`.
 
 ## 3. Related Workflows
@@ -62,7 +63,7 @@
 
 ## 11. CI & Quality Gates
 - Every slug must exist in nav files and directories.
-- `tags[]` を使う場合は `_data/tagIndex.js` 由来で最大5件。`ai-capabilities` は tags なしが既定。
+- `tags[]` は **任意**。使う場合は `_data/tagIndex.js` 由来で最大5件。`ai-capabilities` は tags なしが既定。
 - All `<img>` elements need width/height attributes or CSS aspect enforcement.
 - Update README/ADRs whenever IA or UX changes.
 
