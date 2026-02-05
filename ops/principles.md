@@ -4,10 +4,10 @@
 - Update `/ops` before writing code. No layout, token, or IA change lands in `/src` without a documented rule.
 - ADR cadence: anything that changes IA, tokens, CI, or component sets requires ADR draft + approval.
 
-## 2. One Site, Two Languages
-- JA/EN share the same slug IDs per section. Localization is label-only; content parity is the goal even if JA launches first.
+## 2. One Site, Three Languages
+- JA/EN/ZH share the same slug IDs per section. Localization is label-only; content parity is the goal even if JA launches first.
 - All UI chrome (nav, chips, buttons) must read the current locale from Eleventy data, never hard-coded.
-- **JA is the source of truth for content.** Every change starts in Japanese, and the EN page must be updated to mirror the JA page before merge. No EN-only pages or drift are allowed; if JA is missing, add JA first, then translate.
+- **JA is the source of truth for content.** Every change starts in Japanese, and the EN/ZH pages must be updated to mirror the JA page before merge. No EN-only/ZH-only pages or drift are allowed; if JA is missing, add JA first, then translate.
 
 ## 3. Tags Drive Everything
 - “Page = Tag” is immutable. The tag slug ties nav, cards, workflows, and search facets together.
