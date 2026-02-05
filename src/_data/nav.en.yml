@@ -115,6 +115,14 @@ sections:
             title: Batch & Video
           - id: realtime
             title: Realtime Processing
+      - id: api
+        title: API
+        noLink: true
+        children:
+          - id: api-about
+            title: What is the API?
+          - id: api-run-workflow
+            title: Running a Workflow via API
   - key: ai-capabilities
     label: AI Capabilities
     pages:

@@ -1,5 +1,4 @@
 ---
-
 layout: page.njk
 lang: ja
 section: data-utilities
@@ -32,8 +31,8 @@ API経由で、ComfyUIのworkflowを「外から」実行してみます。
 APIは「ComfyUIを起動しなくてよくなる仕組み」ではありません。  
 Pythonは、起動中のComfyUIサーバに対して命令を送ります。
 
-* ComfyUIを起動しておきます
-* ブラウザで `http://127.0.0.1:8188` を開ける状態にします
+- ComfyUIを起動しておきます
+- ブラウザで `http://127.0.0.1:8188` を開ける状態にします
 
 ---
 
@@ -64,17 +63,17 @@ Pythonは、起動中のComfyUIサーバに対して命令を送ります。
 
 ### API用のworkflowを取得
 
-- 1. ComfyUIのノードUIで、workflowを開く
-- 2. メニューから **Export (API)** を選ぶ
+- 1. ComfyUIのノードUIで、上のworkflowを開く
+- 2. メニューから `File` → **Export (API)** を選ぶ
 - 3. わかりやすい名前で保存（例：SD1.5_text2image_API.json）
 
-サンプル
+**サンプル**
 
 [](/workflows/data-utilities/api-run-workflow/SD1.5_text2image_API.json)
 
 ### 通常のworkflow JSONとの違い
 
-通常のJSONは「UIで編集・共有しやすい情報」も含んでいます。
+通常のJSONは「UIで編集・共有しやすい情報」も含んでいます。  
 APIのworkflow は、そのような余分な情報を削ぎ落とし、サーバに渡して実行するのに都合が良い形になっています。
 
 ---
@@ -93,7 +92,6 @@ venv\Scripts\activate
 # source venv/bin/activate
 
 pip install requests
-
 ```
 
 ### run_min.py
@@ -114,6 +112,7 @@ print(res)  # {"prompt_id": "...", "number": ..., "node_errors": {...}}
 ```
 
 ファイル配置
+
 ```text
 your_project/
   ├── run_min.py
@@ -133,9 +132,9 @@ python run_min.py
 
 実行できたか確認してみましょう。
 
-* Python側で `{"prompt_id": "...", ...}` が返ってくる（これが実行IDです。）
-* ComfyUI側のターミナルに実行ログが出る
-* `ComfyUI/output/` に画像ファイルが増える
+- Python側で `{"prompt_id": "...", ...}` が返ってくる（これが実行IDです。）
+- ComfyUI側のターミナルに実行ログが出る
+- `ComfyUI/output/` に画像ファイルが増える
   * ノードUIで実行するときと同じ場所に保存されているはずです
 
 ここまでできれば、API経由で実行できています。
@@ -144,14 +143,14 @@ python run_min.py
 
 ## CLIからプロンプトを変える
 
-API用JSONを直接編集しても、もちろんパラメータは変更できます。
+API用JSONを直接編集しても、もちろんパラメータは変更できます。  
 ただし、元ファイルを汚さずに連続実行したいなら **Pythonで差し替える** ほうが扱いやすいです。
 
 ### どこを書き換えるのか（今回のJSONの場合）
 
 今回は「プロンプトだけ」を変更します。
 
-* Positive prompt：ノード `6` の `inputs.text` 
+- Positive prompt：ノード `6` の `inputs.text` 
 
 ### 注：ノードIDは固定ではない
 
@@ -225,4 +224,5 @@ positive prompt: 好きなプロンプトを入力
 - ノードの入力仕様の取得（workflow編集を自動化する足がかり）
 
 このページでは「外からworkflowを実行できる」雰囲気さえ掴めれば十分です。
+
 あとはvibe codingでも何でも、欲しいものを実際に作ってみてください！

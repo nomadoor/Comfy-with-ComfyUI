@@ -11,6 +11,11 @@ tags:
 ---
 
 <div class="news-list">
+  <a class="news-row" href="/en/data-utilities/api-about/">
+    <span class="news-row__date">2026.2.5</span>
+    <span class="news-row__tag">data-utilities</span>
+    <span class="news-row__title">Added API documentation page</span>
+  </a>
   <a class="news-row" href="/en/basic-workflows/z-image/">
     <span class="news-row__date">2026.1.31</span>
     <span class="news-row__tag">basic-workflows</span>

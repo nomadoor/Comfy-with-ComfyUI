@@ -10,7 +10,12 @@ tags:
   - news
 ---
 <div class="news-list">
-    <a class="news-row" href="/ja/basic-workflows/z-image/">
+  <a class="news-row" href="/ja/data-utilities/api-about/">
+    <span class="news-row__date">2026.2.5</span>
+    <span class="news-row__tag">data-utilities</span>
+    <span class="news-row__title">APIに関するページを追加しました</span>
+  </a>
+  <a class="news-row" href="/ja/basic-workflows/z-image/">
     <span class="news-row__date">2026.1.31</span>
     <span class="news-row__tag">basic-workflows</span>
     <span class="news-row__title">Z-Imageのページを追加しました</span>
