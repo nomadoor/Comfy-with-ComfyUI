@@ -124,9 +124,9 @@ your_project/
 
 Run `run_min.py` in the terminal.
 
-```bash
-cd path/to/your_project
-venv/Scripts/activate
+```powershell
+cd path\to\your_project
+venv\Scripts\activate
 python run_min.py
 ```
 
@@ -198,9 +198,9 @@ print("done (check ComfyUI/output)")
 
 Run in the same way as before.
 
-```bash
-cd path/to/your_project
-venv/Scripts/activate
+```powershell
+cd path\to\your_project
+venv\Scripts\activate
 python run.py
 ```
 

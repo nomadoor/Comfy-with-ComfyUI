@@ -124,9 +124,9 @@ your_project/
 
 ターミナルで `run_min.py` を実行します。
 
-```bash
-cd path/to/your_project
-venv/Scripts/activate
+```powershell
+cd path\to\your_project
+venv\Scripts\activate
 python run_min.py
 ```
 
@@ -198,9 +198,9 @@ print("done (check ComfyUI/output)")
 
 先ほどと同様に実行します。
 
-```bash
-cd path/to/your_project
-venv/Scripts/activate
+```powershell
+cd path\to\your_project
+venv\Scripts\activate
 python run.py
 ```
 
