@@ -10,6 +10,11 @@ tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/zh/begin-with/how-to-use-this-site/">
+    <span class="news-row__date">2026.2.6</span>
+    <span class="news-row__tag">begin-with</span>
+    <span class="news-row__title">中国語に対応しました</span>
+  </a>
   <a class="news-row" href="/ja/data-utilities/api-about/">
     <span class="news-row__date">2026.2.5</span>
     <span class="news-row__tag">data-utilities</span>
