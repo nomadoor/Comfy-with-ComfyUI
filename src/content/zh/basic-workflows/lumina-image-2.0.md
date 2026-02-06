@@ -125,7 +125,7 @@ You are an assistant designed to generate anime images based on textual prompts.
 
 ## NewBie image Exp0.1
 
-NewBie-image（Exp0.1）是立足于 Lumina 架构研究的知识，以 Next-DiT 为地基设计的 NewBie 独自架构的动漫面向 T2I 模型。使用了更强力的文本编码器，设计为能用 XML 形式提示词（结构化标签）进行更细致的控制。
+NewBie-image（Exp0.1）是立足于 Lumina 架构研究的知识，以 Next-DiT 为地基设计的 NewBie 独自架构的动漫面向 T2I 模型。使用了更强力的文本编码器，设计为能用 XML 形式提示词（结构化标签）进行更细致地控制。
 
 > 这个模型还只进行了 20% 的训练。根据今后的更新，workflow 可能会有变更。
 
