@@ -9,8 +9,8 @@ title: Human Motion Transfer
 summary: 将其他视频的动作转移给角色的技术
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-image:
-------
+  image: ""
+---
 
 ## 什么是 Human Motion Transfer？
 

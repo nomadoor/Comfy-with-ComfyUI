@@ -32,7 +32,7 @@ hero:
 
 在 ComfyUI 中，通过以下公式将它们混合。
 
-```
+```text
 output = negative + guidance_scale × (positive - negative)
 ```
 
@@ -63,7 +63,7 @@ output = negative + guidance_scale × (positive - negative)
 在 CFG 中， `1` 这个值稍微有点特别。
 试着将 `guidance_scale = 1` 代入刚才的公式。
 
-```
+```text
 output = negative + 1 × (positive - negative)
        = positive
 ```

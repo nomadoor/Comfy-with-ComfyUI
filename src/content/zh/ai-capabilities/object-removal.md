@@ -40,7 +40,7 @@ hero:
 
 [](/workflows/ai-capabilities/object-removal/Remake_for_SDXL-Removing_Object_and_Filling_with_Background.json)
 
-但是，有时不仅没把对象消除，反而新增加了别的对象，作为对象去除去除来说有时并不稳定。
+但是，有时不仅没把对象消除，反而新增加了别的对象，对于对象去除来说有时并不稳定。
 
 因此，以前也有过在 inpainting 的预处理中使用 LaMa 的情况，但现在的模型已经不需要了吧。
 
