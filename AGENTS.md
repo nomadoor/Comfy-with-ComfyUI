@@ -93,17 +93,15 @@ Detailed rules for IA (headings, page templates, narrative structure, examples) 
 
 ## 5. Tagging
 
-Every page must have tags that are:
+Tags are optional.
 
-* **Consistent** with its slug and topic.
+When tags are present, they must be:
+
+* **Consistent** with the page slug and topic.
 * **Specific** but not spammy.
+* **Maximum 5 tags per page.**
 
-AI-capability pages under `/<lang>/ai-capabilities/<slug>/` must have tags that describe:
-
-* **Task** (e.g., `depth`, `video`, `controlnet`)
-* **Modality** (e.g., `image`, `video`, `3d`)
-
-> **Maximum 5 tags per page.** More than 5 indicates the scope is too broad.
+For `ai-capabilities`, default is no tags unless explicitly requested by the owner and documented in `/ops`.
 
 ---
 
@@ -169,13 +167,13 @@ Before merging any Pull Request (PR):
 
 **Each page** must:
 
-* Have $\leq 5$ tags.
 * Use the correct section and template as per `/ops`.
+* If tags are present, keep them to $\leq 5$.
 
 **All images** must:
 
-* Have **explicit width and height**.
 * Use appropriate formats and sizes (no unbounded raw dumps).
+* Provide explicit width/height unless rendered via the Gyazo pipeline (`{gyazo=image|loop}` or equivalent shortcode path) where layout sizing is enforced by renderer/CSS tokens.
 
 > If these gates cannot be satisfied, the **PR is not ready for merge**.
 

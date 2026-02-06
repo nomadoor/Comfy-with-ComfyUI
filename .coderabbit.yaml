@@ -1,0 +1,9 @@
+reviews:
+  path_instructions:
+    - path: "src/content/**/*.md"
+      instructions: |
+        Follow project policy from /ops:
+        - `tags` are optional. Do not request adding tags when they are intentionally omitted.
+        - When tags exist, enforce max 5 and topic consistency.
+        - For Gyazo-rendered media (`![](...){gyazo=image|loop}` and Gyazo usage inside `{% mediaRow %}`), do not request markdown alt/width/height fixes. These are renderer/CSS-managed embeds.
+        - Keep accessibility and dimension feedback for non-Gyazo standard markdown images.

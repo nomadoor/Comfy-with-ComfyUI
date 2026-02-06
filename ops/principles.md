@@ -10,9 +10,9 @@
 - **JA is the source of truth for content.** Every change starts in Japanese, and the EN/ZH pages must be updated to mirror the JA page before merge. Exception: ADR-compliant placeholder/stub pages are allowed in EN/ZH until translation is ready, but they must carry a clear placeholder flag in front matter/Eleventy data, be tracked in a translation queue with a deadline, and are not treated as final content (see ADR: `ops/adr/2026-02-05-zh-foundation.md`).
 - No EN-only/ZH-only pages or drift are allowed **except** the ADR-compliant placeholder lifecycle above.
 
-## 3. Tags Drive Everything
-- “Page = Tag” is immutable. The tag slug ties nav, cards, workflows, and search facets together.
-- Max 5 tags per page; any overflow is a content bug that should block merge.
+## 3. Tags and Discovery
+- Tags are optional metadata. If used, the tag slug ties nav, cards, workflows, and search facets together.
+- Max 5 tags per page; overflow is a content bug that should block merge.
 - Workflows inherit the tag slug from the page displaying them; list all workflows sharing that slug without omission.
 - Tags are primarily for `basic-workflows` pages and exist to connect `ai-capabilities` ↔ `basic-workflows` (chips/cards/related lists). Treat tags outside `basic-workflows` as exceptions that require explicit owner agreement.
 
@@ -27,7 +27,9 @@
 - Performance budget: avoid loading unused workflows/search data (language-scoped fetch only), lazy-load heavy assets.
 
 ## 6. Trust & Quality
-- CI must enforce slug uniqueness, nav integrity, tag allow-list, and image dimension coverage.
+- CI must enforce slug uniqueness and nav integrity.
+- Tag checks apply only when tags are present (optional field).
+- Image dimension/alt checks are required for standard markdown images; Gyazo-rendered embeds (`{gyazo=image|loop}` and equivalent shortcodes) are exempt and rely on renderer/CSS-enforced layout constraints.
 - Accessibility is non-negotiable: keyboard focus, ARIA labels on copy/download buttons, `prefers-reduced-motion` respected.
 - No external tracking or heavyweight dependencies; if something feels heavy, propose it here first.
 
