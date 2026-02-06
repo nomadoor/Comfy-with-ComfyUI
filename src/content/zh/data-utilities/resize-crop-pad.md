@@ -4,7 +4,7 @@ lang: zh
 section: data-utilities
 slug: resize-crop-pad
 navId: resize-crop-pad
-title: "调整大小・裁剪・填充"
+title: "调整大小、裁剪与填充"
 summary: "关于图像的调整大小、裁剪、填充"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

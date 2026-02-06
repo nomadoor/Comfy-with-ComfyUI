@@ -114,7 +114,7 @@ hero:
 深度图是黑白的渐变图像。这意味着它可以直接转用作蒙版。
 手机 APP 等能够进行后期虚化背景的加工，基本原理是一样的。
 
-深度图的制作方法，请参阅 [ControlNet Preprocessor](/zh/basic-workflows/controlnet-prep/#常用-preprocessor)。
+深度图的制作方法，请参阅 [ControlNet Preprocessor](/zh/basic-workflows/controlnet-prep/)。
 
 ---
 

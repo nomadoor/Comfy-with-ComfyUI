@@ -4,7 +4,7 @@ lang: zh
 section: data-utilities
 slug: batch-video
 navId: batch-video
-title: "Batch・视频"
+title: "Batch 与视频"
 summary: "汇总处理多张图像和视频帧的机制"
 
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"

@@ -4,14 +4,14 @@ lang: zh
 section: data-utilities
 slug: color-adjustments
 navId: color-adjustments
-title: "色调校正・特效"
+title: "色调校正与特效"
 summary: "关于图像的亮度调整、模糊、特效"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "https://i.gyazo.com/e1ecb574e0c11da63b0c6f8cee7a9f87.png"
 ---
 
-## 色调校正・特效
+## 色调校正与特效
 
 让画像变亮、提高对比度、添加发光效果让画面更帅气，这对于设计师和画师来说是熟悉的工序。
 

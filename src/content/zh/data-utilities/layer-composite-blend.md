@@ -46,7 +46,7 @@ hero:
 
 [](/workflows/data-utilities/layer-composite-blend/ImageCompositeMasked-Align_center.json)
 
-虽然用节点进行 CSS 中熟悉的 `top: 50%; left: 50%; transform: translate(-50%, -50%);` 这种坐标计算可以实现居中配置，但……老实说挺麻烦的(；・∀・)
+虽然用节点进行 CSS 中熟悉的 `top: 50%; left: 50%; transform: translate(-50%, -50%);` 这种坐标计算可以实现居中配置，但……老实说确实有点麻烦。
 
 ---
 
