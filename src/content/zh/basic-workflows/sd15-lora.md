@@ -6,7 +6,7 @@ slug: sd15-lora
 navId: sd15-lora
 title: "LoRA"
 summary: "Stable Diffusion 1.5 的 LoRA"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""
 ---

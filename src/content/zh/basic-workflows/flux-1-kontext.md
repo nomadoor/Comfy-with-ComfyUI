@@ -6,7 +6,7 @@ slug: flux-1-kontext
 navId: flux-1-kontext
 title: "Flux.1 Kontext"
 summary: "在 Flux.1 Kontext 中进行指令基础的图像编辑。"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "https://i.gyazo.com/79c075e47d999e282c8a2cd3c05f10ef.png"
 tags: ["instruction-based-image-editing","collage-refine"]

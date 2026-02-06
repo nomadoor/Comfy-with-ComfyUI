@@ -6,7 +6,7 @@ slug: esrgan
 navId: esrgan
 title: "ESRGAN"
 summary: "图像的放大和面部修正"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""
 tags: ["upscale-restoration"]

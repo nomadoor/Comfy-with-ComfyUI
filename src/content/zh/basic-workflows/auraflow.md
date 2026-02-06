@@ -6,7 +6,7 @@ slug: auraflow
 navId: auraflow
 title: "AuraFlow"
 summary: "AuraFlow 和 Pony V7 的粗略整理"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "https://i.gyazo.com/2d37855d2969e9cd5515e4852dce230e.png"
 tags: []

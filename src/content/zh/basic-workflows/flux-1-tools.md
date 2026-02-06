@@ -6,7 +6,7 @@ slug: flux-1-tools
 navId: flux-1-tools
 title: "Flux.1 Tools"
 summary: "Flux.1 Tools 的使用方法"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "https://i.gyazo.com/204fbd9af3c371511c01a0c97cac40e8.png"
 tags: ["controlnet"]

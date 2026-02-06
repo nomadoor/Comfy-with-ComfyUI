@@ -6,7 +6,7 @@ slug: sd15-outpainting
 navId: sd15-outpainting
 title: "outpainting"
 summary: "用 outpainting 扩画图像的外侧"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""
 ---

@@ -7,7 +7,7 @@ slug: ultimate-sd-upscale
 navId: ultimate-sd-upscale
 title: "Ultimate SD upscale"
 summary: "使用 Tile 和 ControlNet 的超高分辨率放大"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
    image: ""
 tags: ["upscale-restoration", "controlnet"]

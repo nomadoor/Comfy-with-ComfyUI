@@ -6,7 +6,7 @@ slug: sd15-image2image
 navId: sd15-image2image
 title: "image2image"
 summary: "在 Stable Diffusion 1.5 中学习 image2image"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""
 ---

@@ -6,7 +6,7 @@ slug: flux-1
 navId: flux-1
 title: "Flux.1"
 summary: "Flux.1 的基础和在 ComfyUI 中的使用方法"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "https://i.gyazo.com/9fd52a56e1f6b7cbf8cd96ca78484d02.png"
 tags: []
@@ -58,7 +58,7 @@ Flux.1 有 3 个变体。
       │   └── t5xxl_fp8_e4m3fn_scaled.safetensors
       └── 📂vae/
           └── ae.safetensors
-  ````
+  ```
 
 ---
 

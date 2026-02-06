@@ -6,7 +6,7 @@ slug: sdxl-anime
 navId: sdxl-anime
 title: "动漫系 SDXL 模型"
 summary: "SDXL 基础的动漫系模型的粗略整理"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "https://i.gyazo.com/6ee98c633b487214c13c32a9af7d64cb.png"
 tags: []

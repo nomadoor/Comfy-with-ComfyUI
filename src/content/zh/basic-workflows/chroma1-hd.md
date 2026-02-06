@@ -6,7 +6,7 @@ slug: chroma1-hd
 navId: chroma1-hd
 title: "Chroma1-HD"
 summary: "用 Chroma1-HD 扩展 Flux.1-schnell"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "https://i.gyazo.com/326db88733896540f58ce60e7320824f.png"
 tags: []

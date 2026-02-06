@@ -6,7 +6,7 @@ slug: sd15-hires-fix
 navId: sd15-hires-fix
 title: "Hires.fix"
 summary: "使用 Hires.fix 生成高分辨率图像"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""
 ---

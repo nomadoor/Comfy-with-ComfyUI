@@ -6,7 +6,7 @@ slug: detailer
 navId: detailer
 title: "Detailer"
 summary: "只切出小脸和细部进行 inpaint 的机制"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "https://i.gyazo.com/5904f9e96c234cd6bec18b10af263838.png"
 tags: ["upscale-restoration"]

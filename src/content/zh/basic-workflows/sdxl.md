@@ -6,7 +6,7 @@ slug: sdxl
 navId: sdxl
 title: "SDXL"
 summary: "SDXL 的使用方法"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "https://i.gyazo.com/2317e881cf31b7c2af135774fb56b4e4.png"
 tags: []

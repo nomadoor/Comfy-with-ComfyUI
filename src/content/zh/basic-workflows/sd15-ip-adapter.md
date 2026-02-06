@@ -6,7 +6,7 @@ slug: sd15-ip-adapter
 navId: sd15-ip-adapter
 title: "IP-Adapter"
 summary: "从参照图像转印风格和被摄体的元祖机制"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "https://i.gyazo.com/64fdcae074a2a01943d7f5fff3aaa418.png"
 tags: ["subject-transfer", "style-transfer"]

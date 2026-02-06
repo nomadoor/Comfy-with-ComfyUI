@@ -6,7 +6,7 @@ slug: sd15-text2image
 navId: sd15-text2image
 title: "text2image"
 summary: "Stable Diffusion 1.5 的 text2image"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   gradient:
   image: ""

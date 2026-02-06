@@ -6,7 +6,7 @@ slug: sd15-inpainting
 navId: sd15-inpainting
 title: "inpainting"
 summary: "用 inpainting 只编辑图像的一部分"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 tags: ["controlnet", "region-limited-generation"]
 hero:
   image: ""

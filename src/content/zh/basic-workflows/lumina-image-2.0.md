@@ -6,7 +6,7 @@ slug: lumina-image-2.0
 navId: lumina-image-2.0
 title: "Lumina-Image 2.0"
 summary: "Lumina-Image 2.0 的基础和在 ComfyUI 中的使用方法"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "https://i.gyazo.com/0eef66b0663a16cd722915b2dcde0c84.png"
 tags: []

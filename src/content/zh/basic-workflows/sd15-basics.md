@@ -6,7 +6,7 @@ slug: sd15-basics
 navId: sd15-basics
 title: "图像生成的基础(SD1.5)"
 summary: "在 Stable Diffusion 1.5 中学习图像生成的基础"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   gradient:
   image: ""

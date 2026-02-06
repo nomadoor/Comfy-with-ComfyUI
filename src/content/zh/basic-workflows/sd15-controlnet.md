@@ -6,7 +6,7 @@ slug: sd15-controlnet
 navId: sd15-controlnet
 title: "ControlNet"
 summary: "使用姿势或线稿控制图像生成"
-permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
+permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 tags: ["controlnet"]
 hero:
   image: "https://i.gyazo.com/81753915732cf767995f1b35ac827b5d.png"
