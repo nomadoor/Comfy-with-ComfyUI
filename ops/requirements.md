@@ -45,6 +45,8 @@
 - `search/index-<lang>.json` feeds client search with `title`, `tags`, and H2/H3 snippets.
 - Inputs need localized label, placeholder, and ARIA text.
 - Use `searchExclude: true` in front matter for test/internal pages that should remain routable but hidden from search results.
+- Search results are capped at 5 items per query.
+- Ranking prioritizes exact/partial title matches, then slug/tags/summary, then body text matches.
 
 ## 7. JavaScript
 - All scripts are ESM modules in `src/assets/js/`. No CommonJS.

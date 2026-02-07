@@ -14,7 +14,7 @@ const initSearch = () => {
     const input = container.querySelector("[data-search-input]");
     const resultsEl = container.querySelector("[data-search-results]");
     const lang = document.documentElement.lang || "ja";
-    const MAX_RESULTS = 10;
+    const MAX_RESULTS = 5;
     const MIN_CHARS = 2;
     let index = [];
     let loaded = false;
@@ -141,23 +141,51 @@ const initSearch = () => {
       }
     };
 
+    const computeScore = (item, normalized) => {
+      const title = String(item.title || "").toLowerCase();
+      const summary = String(item.summary || "").toLowerCase();
+      const tags = (item.tags || []).join(" ").toLowerCase();
+      const content = String(item.content || "").toLowerCase();
+      const slug = String(item.slug || "").toLowerCase();
+
+      let score = 0;
+      if (title === normalized) score += 2000;
+      else if (title.startsWith(normalized)) score += 1200;
+      else if (title.includes(normalized)) score += 900;
+
+      if (slug === normalized) score += 800;
+      else if (slug.includes(normalized)) score += 500;
+
+      if (tags.includes(normalized)) score += 350;
+      if (summary.includes(normalized)) score += 200;
+      if (content.includes(normalized)) score += 80;
+
+      // Prefer shorter/cleaner titles as tie-breaker.
+      score -= Math.min(title.length, 120) * 0.1;
+      return score;
+    };
+
     const performSearch = (query) => {
       if (!query || query.length < MIN_CHARS || !index.length) {
         hideResults();
         return;
       }
       const normalized = query.toLowerCase();
-      const results = index.filter((item) => {
-        const text = [
+      const results = index
+        .map((item) => {
+          const text = [
           item.title,
           item.summary,
           (item.tags || []).join(" "),
           item.content
-        ]
-          .join(" ")
-          .toLowerCase();
-        return text.includes(normalized);
-      });
+          ]
+            .join(" ")
+            .toLowerCase();
+          if (!text.includes(normalized)) return null;
+          return { ...item, _score: computeScore(item, normalized) };
+        })
+        .filter(Boolean)
+        .sort((a, b) => b._score - a._score);
       renderResults(results, query);
     };
 
