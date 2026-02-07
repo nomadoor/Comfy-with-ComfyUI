@@ -112,3 +112,5 @@
 - `link rel="canonical"` must be present for every page (`site.url + page.url`).
 - `hreflang` must be emitted for `ja`, `en`, `zh`, plus `x-default`.
 - Sitemaps should include alternate language references (`xhtml:link`) or equivalent per-locale sitemaps.
+- Language-switch discoverability can be emphasized via a short-lived animated glow around `.sidebar__lang` only on initial page access, and only when page language differs from the browser-preferred supported language (`ja`/`en`/`zh`) (non-blocking, no popup/modal).
+- Suppress repeated glow for 1 day via client storage.
