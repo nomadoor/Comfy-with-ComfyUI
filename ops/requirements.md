@@ -44,6 +44,7 @@
 ## 6. Search
 - `search/index-<lang>.json` feeds client search with `title`, `tags`, and H2/H3 snippets.
 - Inputs need localized label, placeholder, and ARIA text.
+- Use `searchExclude: true` in front matter for test/internal pages that should remain routable but hidden from search results.
 
 ## 7. JavaScript
 - All scripts are ESM modules in `src/assets/js/`. No CommonJS.

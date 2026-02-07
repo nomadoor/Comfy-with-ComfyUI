@@ -7,6 +7,12 @@ function stripHtml(value = "") {
     .trim();
 }
 
+function isExcludedFromSearch(entry) {
+  const data = entry?.data || {};
+  if (data.draft || data.searchExclude) return true;
+  return false;
+}
+
 module.exports = class SearchIndex {
   data() {
     return {
@@ -22,7 +28,12 @@ module.exports = class SearchIndex {
 
   render({ collections, locale }) {
     const items = (collections.all || [])
-      .filter((entry) => entry.data && entry.data.lang === locale.code && !entry.data.draft)
+      .filter(
+        (entry) =>
+          entry.data &&
+          entry.data.lang === locale.code &&
+          !isExcludedFromSearch(entry),
+      )
       .map((entry) => ({
         url: entry.url,
         lang: entry.data.lang,

@@ -31,6 +31,18 @@ const initSearch = () => {
       activeIndex = -1;
     };
 
+    const resetSearchUi = () => {
+      hideResults();
+      if (input) {
+        input.value = "";
+        input.blur();
+      }
+      document.body.classList.remove("search-open");
+      document
+        .querySelectorAll("[data-search-toggle]")
+        .forEach((toggle) => toggle.setAttribute("aria-expanded", "false"));
+    };
+
     const setHighlightPayload = (url, term) => {
       try {
         sessionStorage.setItem(
@@ -110,6 +122,7 @@ const initSearch = () => {
       if (term) {
         setHighlightPayload(target.getAttribute("href"), term);
       }
+      resetSearchUi();
     });
 
     const loadIndex = async () => {
