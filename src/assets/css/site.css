@@ -273,6 +273,13 @@ video {
   display: none;
 }
 
+.search-results__heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  padding: 0 var(--space-xs);
+}
+
 .search-result {
   display: flex;
   flex-direction: column;
@@ -281,8 +288,12 @@ video {
   padding: var(--space-xs);
   border-radius: var(--radius-md);
   border: 1px solid transparent;
+  background: transparent;
   color: var(--color-text);
   outline: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
 }
 
 .search-result:hover,
@@ -308,6 +319,23 @@ video {
 .search-result__meta {
   font-size: 0.75rem;
   color: var(--color-text-muted);
+}
+
+.search-results__clear {
+  align-self: flex-end;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-text-muted);
+  padding: 0.15rem 0.6rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.search-results__clear:hover,
+.search-results__clear:focus-visible {
+  color: var(--color-text);
+  border-color: var(--color-border-strong);
 }
 
 .highlight {
