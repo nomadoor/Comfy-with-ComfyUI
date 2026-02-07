@@ -789,6 +789,7 @@ video {
   align-items: center;
   gap: var(--space-xs);
   position: relative;
+  isolation: isolate;
 }
 
 .chip {
@@ -905,6 +906,62 @@ video {
   color: var(--color-text);
   background: var(--color-panel-alt);
 }
+
+.sidebar__lang::before {
+  content: "";
+  position: absolute;
+  inset: -0.45rem;
+  border-radius: calc(var(--radius-md) + 0.4rem);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0;
+}
+
+.sidebar__lang::before {
+  background:
+    radial-gradient(130% 120% at 0% 50%, var(--color-highlight) 0%, transparent 72%),
+    radial-gradient(130% 120% at 100% 50%, var(--color-link) 0%, transparent 72%),
+    linear-gradient(120deg, var(--color-highlight), var(--color-link), var(--color-highlight));
+  background-size: 220% 220%;
+  filter: blur(14px) saturate(130%);
+}
+
+.sidebar__lang.is-attention::before {
+  animation: langSwitchGlowPulse 6s ease-in-out 1 both, langSwitchGlowFlow 6s linear 1;
+}
+
+@keyframes langSwitchGlowPulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  12% {
+    opacity: 0.76;
+  }
+  30% {
+    opacity: 0.28;
+  }
+  52% {
+    opacity: 0.72;
+  }
+  75% {
+    opacity: 0.26;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes langSwitchGlowFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
 
 .icon-button {
   width: 2.25rem;
