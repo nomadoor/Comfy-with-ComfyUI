@@ -47,6 +47,7 @@
 - Use `searchExclude: true` in front matter for test/internal pages that should remain routable but hidden from search results.
 - Search results are capped at 5 items per query.
 - Ranking prioritizes exact/partial title matches, then slug/tags/summary, then body text matches.
+- When the search input is focused and empty, show up to 5 recent search terms from local storage.
 
 ## 7. JavaScript
 - All scripts are ESM modules in `src/assets/js/`. No CommonJS.

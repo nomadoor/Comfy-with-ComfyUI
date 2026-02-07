@@ -15,7 +15,15 @@ const initSearch = () => {
     const resultsEl = container.querySelector("[data-search-results]");
     const lang = document.documentElement.lang || "ja";
     const MAX_RESULTS = 5;
+    const HISTORY_LIMIT = 5;
     const MIN_CHARS = 2;
+    const HISTORY_STORAGE_KEY = `cw-search-history:${lang}`;
+    const I18N = {
+      ja: { recent: "最近の検索", clear: "履歴をクリア", fromHistory: "履歴" },
+      en: { recent: "Recent searches", clear: "Clear history", fromHistory: "History" },
+      zh: { recent: "最近搜索", clear: "清除历史", fromHistory: "历史" }
+    };
+    const i18n = I18N[lang] || I18N.en;
     let index = [];
     let loaded = false;
     let loading = false;
@@ -28,6 +36,88 @@ const initSearch = () => {
         resultsEl.hidden = true;
         resultsEl.innerHTML = "";
       }
+      activeIndex = -1;
+    };
+
+    const loadHistory = () => {
+      try {
+        const parsed = JSON.parse(localStorage.getItem(HISTORY_STORAGE_KEY) || "[]");
+        if (!Array.isArray(parsed)) return [];
+        return parsed
+          .map((item) => String(item || "").trim())
+          .filter(Boolean)
+          .slice(0, HISTORY_LIMIT);
+      } catch {
+        return [];
+      }
+    };
+
+    const saveHistory = (term) => {
+      const normalizedTerm = String(term || "").trim();
+      if (normalizedTerm.length < MIN_CHARS) return;
+      const next = [
+        normalizedTerm,
+        ...loadHistory().filter(
+          (existing) => existing.toLowerCase() !== normalizedTerm.toLowerCase()
+        )
+      ].slice(0, HISTORY_LIMIT);
+      try {
+        localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(next));
+      } catch (error) {
+        console.warn("Search history storage failed", error);
+      }
+    };
+
+    const clearHistory = () => {
+      try {
+        localStorage.removeItem(HISTORY_STORAGE_KEY);
+      } catch (error) {
+        console.warn("Search history clear failed", error);
+      }
+    };
+
+    const renderHistory = () => {
+      if (!resultsEl) return;
+      const history = loadHistory();
+      if (!history.length) {
+        hideResults();
+        return;
+      }
+
+      const fragment = document.createDocumentFragment();
+      const heading = document.createElement("div");
+      heading.className = "search-results__heading";
+      heading.textContent = i18n.recent;
+      fragment.appendChild(heading);
+
+      history.forEach((term) => {
+        const result = document.createElement("button");
+        result.type = "button";
+        result.className = "search-result";
+        result.dataset.historyTerm = term;
+        result.setAttribute("tabindex", "-1");
+        result.setAttribute("role", "option");
+        result.innerHTML = `
+          <span class="search-result__title"></span>
+          <span class="search-result__summary"></span>
+        `;
+        const titleEl = result.querySelector(".search-result__title");
+        const summaryEl = result.querySelector(".search-result__summary");
+        if (titleEl) titleEl.textContent = term;
+        if (summaryEl) summaryEl.textContent = i18n.fromHistory;
+        fragment.appendChild(result);
+      });
+
+      const clear = document.createElement("button");
+      clear.type = "button";
+      clear.className = "search-results__clear";
+      clear.dataset.clearSearchHistory = "true";
+      clear.textContent = i18n.clear;
+      fragment.appendChild(clear);
+
+      resultsEl.innerHTML = "";
+      resultsEl.appendChild(fragment);
+      resultsEl.hidden = false;
       activeIndex = -1;
     };
 
@@ -116,10 +206,31 @@ const initSearch = () => {
     };
 
     resultsEl?.addEventListener("click", (event) => {
+      const clearButton = event.target.closest("[data-clear-search-history]");
+      if (clearButton) {
+        clearHistory();
+        if (input?.value.trim()) {
+          hideResults();
+        } else {
+          renderHistory();
+        }
+        return;
+      }
+
+      const historyTarget = event.target.closest("[data-history-term]");
+      if (historyTarget && input) {
+        const term = historyTarget.dataset.historyTerm || "";
+        input.value = term;
+        lastQuery = term;
+        loadIndex().then(() => performSearch(term));
+        return;
+      }
+
       const target = event.target.closest(".search-result");
-      if (!target) return;
+      if (!target || target.dataset.historyTerm) return;
       const term = target.dataset.highlightTerm;
       if (term) {
+        saveHistory(term);
         setHighlightPayload(target.getAttribute("href"), term);
       }
       resetSearchUi();
@@ -211,7 +322,7 @@ const initSearch = () => {
         const value = input.value.trim();
         lastQuery = value;
         if (!value || value.length < MIN_CHARS) {
-          hideResults();
+          renderHistory();
           return;
         }
         clearTimeout(debounceTimer);
@@ -223,6 +334,10 @@ const initSearch = () => {
 
       input.addEventListener("focus", () => {
         const value = input.value.trim();
+        if (!value) {
+          renderHistory();
+          return;
+        }
         if (value.length >= MIN_CHARS && value === lastQuery && resultsEl && resultsEl.innerHTML) {
           resultsEl.hidden = false;
         }
