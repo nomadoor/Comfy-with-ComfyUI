@@ -6,7 +6,6 @@ slug: data-types
 navId: data-types
 title: "データ型"
 summary: "ComfyUIで扱う主なデータ型について"
-
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

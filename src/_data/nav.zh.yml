@@ -85,6 +85,9 @@ sections:
       title: 简单计算
     - id: text-ops
       title: 文本处理
+      children:
+      - id: wildcards
+        title: 通配符
     - id: webcam-input
       title: 摄像头输入
   - id: basic-image-processing

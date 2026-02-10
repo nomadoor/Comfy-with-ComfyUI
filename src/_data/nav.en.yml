@@ -85,6 +85,9 @@ sections:
             title: Simple Math
           - id: text-ops
             title: Text Operations
+            children:
+              - id: wildcards
+                title: Wildcards
           - id: webcam-input
             title: Webcam Input
       - id: basic-image-processing
