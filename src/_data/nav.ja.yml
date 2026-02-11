@@ -376,6 +376,8 @@ sections:
             title: 8 の倍数の解像度しか生成できないのはなぜ？
           - id: sdwebui-comfyui-reproducibility
             title: web UI と ComfyUI で同じ画像は生成できない？
+          - id: seed-neighbor
+            title: seed1234 と 1235 は全く別物
       - id: bad-output
         title: 生成結果がおかしい
         noLink: true
