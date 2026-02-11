@@ -85,6 +85,9 @@ sections:
       title: 简单计算
     - id: text-ops
       title: 文本处理
+      children:
+      - id: wildcards
+        title: 通配符
     - id: webcam-input
       title: 摄像头输入
   - id: basic-image-processing
@@ -373,6 +376,8 @@ sections:
       title: 为什么只能生成 8 的倍数分辨率？
     - id: sdwebui-comfyui-reproducibility
       title: web UI 与 ComfyUI 能生成同样的图吗？
+    - id: seed-neighbor
+      title: seed1234 和 1235 完全不是一回事
   - id: bad-output
     title: 结果异常
     noLink: true

@@ -10,6 +10,16 @@ tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/ja/faq/seed-neighbor/">
+    <span class="news-row__date">2026.2.11</span>
+    <span class="news-row__tag">faq</span>
+    <span class="news-row__title">seed1234 と 1235 は全く別物 のページを追加しました</span>
+  </a>
+  <a class="news-row" href="/ja/data-utilities/wildcards/">
+    <span class="news-row__date">2026.2.11</span>
+    <span class="news-row__tag">data-utilities</span>
+    <span class="news-row__title">ワイルドカードのページを追加しました</span>
+  </a>
   <a class="news-row" href="/zh/begin-with/how-to-use-this-site/">
     <span class="news-row__date">2026.2.6</span>
     <span class="news-row__tag">begin-with</span>
