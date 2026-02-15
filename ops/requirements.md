@@ -17,6 +17,7 @@
 - `nav.zh.yml` mirrors the same slug IDs as `ja/en` (titles can be placeholders until translation).
 - Tags are **optional**. When present, they must be consistent with the slug/topic, specific but not spammy, and limited to **max 5** per page.
 - Every page begins with one H1. Section badges and chip styles come from `/ops/style-design.md`.
+- On short mobile viewports (`max-width: 1100px` and `max-height: 720px`), sidebar section switching uses a compact dropdown: show only the current section label by default and expand section choices on tap/click.
 
 ## 3. Related Workflows
 - Render related cards using the existing helper.
