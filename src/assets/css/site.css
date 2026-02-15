@@ -59,7 +59,7 @@ html {
   --layout-max: calc(var(--sidebar-width) + var(--content-max) + var(--toc-width) + (var(--column-gap) * 2) + (var(--shell-padding) * 2));
   --rail-offset: calc((100vw - min(100vw, var(--layout-max))) / 2 + var(--shell-padding));
   --rail-top-offset: calc(var(--header-height) + var(--shell-padding-block));
-  --rail-height: calc(100vh - var(--header-height) - (var(--shell-padding-block) * 2));
+  --rail-height: calc(max(100vh, 100dvh) - var(--header-height) - (var(--shell-padding-block) * 2));
 
   --font-base: "Plus Jakarta Sans", "Zen Kaku Gothic New", "Hiragino Sans", system-ui, sans-serif;
   --transition-fast: all 100ms cubic-bezier(0.2, 0.91, 0.85, 0.96) 0s;
@@ -211,19 +211,6 @@ video {
   --logo-color: var(--color-text);
 }
 
-.nojs-notice {
-  background: var(--color-highlight);
-  border-radius: var(--radius-md);
-  margin-bottom: var(--space-md);
-}
-
-.nojs-notice__inner {
-  padding: var(--space-xs) var(--space-sm);
-  color: var(--color-bg);
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
 .js-fallback-notice {
   background: var(--color-highlight);
   border-radius: var(--radius-md);
@@ -235,6 +222,10 @@ video {
   color: var(--color-bg);
   font-size: 0.85rem;
   font-weight: 600;
+}
+
+html.js .js-fallback-notice {
+  display: none;
 }
 
 .search-box {
@@ -3370,7 +3361,8 @@ body.nav-open .nav-backdrop {
 }
 
 /* Ensure rail top padding is cleared on very short viewports even in mobile layout */
-@media (max-width: 1100px) and (max-height: 720px) {
+@media (max-width: 1100px) and (max-height: 720px),
+  (hover: none) and (pointer: coarse) and (max-height: 900px) {
   .app-shell__sidebar .rail {
     overflow: visible;
   }

@@ -17,7 +17,10 @@
 - `nav.zh.yml` mirrors the same slug IDs as `ja/en` (titles can be placeholders until translation).
 - Tags are **optional**. When present, they must be consistent with the slug/topic, specific but not spammy, and limited to **max 5** per page.
 - Every page begins with one H1. Section badges and chip styles come from `/ops/style-design.md`.
-- On short mobile viewports (`max-width: 1100px` and `max-height: 720px`), sidebar section switching uses a compact dropdown: show only the current section label by default and expand section choices on tap/click.
+- On short viewports, sidebar section switching uses a compact dropdown: show only the current section label by default and expand section choices on tap/click.
+- Compact mode applies to:
+  - mobile viewports (`max-width: 1100px` and `max-height: 720px`)
+  - short touch devices (`hover: none`, `pointer: coarse`, `max-height: 900px`) such as iPad landscape.
 
 ## 3. Related Workflows
 - Render related cards using the existing helper.
@@ -66,7 +69,7 @@
 - Provide descriptive `alt` text (describe Gyazo actions too).
 - Ensure keyboard support: focus states, Esc handlers, Enter/Space activations.
 - Serve `/assets/*` with `Cache-Control: public, max-age=31536000, immutable`.
-- Provide a JavaScript-failure fallback notice near the top of article content (in addition to `noscript`) so users are informed when core interactive scripts are blocked by extensions/privacy shields.
+- Provide a single JavaScript-unavailable fallback notice near the top of article content. Hide it by default when scripts run (`html.js` flag) so normal layouts are unaffected.
 
 ## 11. CI & Quality Gates
 - Every slug must exist in nav files and directories.
