@@ -47,6 +47,9 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    document.documentElement.classList.add("js");
+  </script>
   <title>{{ title | e }} | {{ (site.name[currentLang] or site.name[site.defaultLang]) | e }}</title>
   <meta name="description" content="{{ pageSummary | e }}" />
   {% if canonicalUrl %}
@@ -108,6 +111,17 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
       </div>
     </aside>
     <main class="app-shell__content transition-fade" id="page">
+      <div class="js-fallback-notice" data-js-fallback-notice role="status" aria-live="polite">
+        <div class="js-fallback-notice__inner">
+          {% if currentLang == "ja" %}
+            JavaScriptが利用できないため、メニューや検索など一部機能は利用できません。ブラウザや拡張機能の設定を確認してください。
+          {% elif currentLang == "zh" %}
+            由于 JavaScript 不可用，菜单和搜索等部分功能不可用。请检查浏览器或扩展设置。
+          {% else %}
+            JavaScript is unavailable, so some features (menu/search) are unavailable. Check browser or extension settings.
+          {% endif %}
+        </div>
+      </div>
       {{ content | safe }}
     </main>
     <aside class="app-shell__toc">
