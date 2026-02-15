@@ -66,6 +66,7 @@
 - Provide descriptive `alt` text (describe Gyazo actions too).
 - Ensure keyboard support: focus states, Esc handlers, Enter/Space activations.
 - Serve `/assets/*` with `Cache-Control: public, max-age=31536000, immutable`.
+- Provide a JavaScript-failure fallback notice near the top of article content (in addition to `noscript`) so users are informed when core interactive scripts are blocked by extensions/privacy shields.
 
 ## 11. CI & Quality Gates
 - Every slug must exist in nav files and directories.

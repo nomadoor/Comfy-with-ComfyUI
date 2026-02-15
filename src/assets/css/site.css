@@ -211,6 +211,32 @@ video {
   --logo-color: var(--color-text);
 }
 
+.nojs-notice {
+  background: var(--color-highlight);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-md);
+}
+
+.nojs-notice__inner {
+  padding: var(--space-xs) var(--space-sm);
+  color: var(--color-bg);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.js-fallback-notice {
+  background: var(--color-highlight);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-md);
+}
+
+.js-fallback-notice__inner {
+  padding: var(--space-xs) var(--space-sm);
+  color: var(--color-bg);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
 .search-box {
   width: 100%;
   max-width: none;

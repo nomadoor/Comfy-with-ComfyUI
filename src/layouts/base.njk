@@ -108,6 +108,30 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
       </div>
     </aside>
     <main class="app-shell__content transition-fade" id="page">
+      <div class="js-fallback-notice" data-js-fallback-notice role="status" aria-live="polite">
+        <div class="js-fallback-notice__inner">
+          {% if currentLang == "ja" %}
+            JavaScriptの読み込みに失敗した可能性があります。拡張機能（広告ブロック/プライバシー保護）設定を確認してください。
+          {% elif currentLang == "zh" %}
+            JavaScript 可能未正常加载。请检查扩展（广告拦截/隐私防护）设置。
+          {% else %}
+            JavaScript may have failed to load. Check extension settings (ad/privacy blockers).
+          {% endif %}
+        </div>
+      </div>
+      <noscript>
+        <div class="nojs-notice" role="status" aria-live="polite">
+          <div class="nojs-notice__inner">
+            {% if currentLang == "ja" %}
+              JavaScriptが無効なため、メニューや検索など一部機能は利用できません。
+            {% elif currentLang == "zh" %}
+              由于 JavaScript 已禁用，菜单和搜索等部分功能不可用。
+            {% else %}
+              JavaScript is disabled, so some features (menu/search) are unavailable.
+            {% endif %}
+          </div>
+        </div>
+      </noscript>
       {{ content | safe }}
     </main>
     <aside class="app-shell__toc">
