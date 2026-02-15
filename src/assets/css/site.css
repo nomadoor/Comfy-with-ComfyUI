@@ -3175,6 +3175,10 @@ body.nav-open .nav-backdrop {
 }
 
 @media (max-width: 1100px) {
+  :root {
+    --header-height: 43px;
+  }
+
   .site-header__menu-btn {
     display: flex;
     align-items: center;
@@ -3187,6 +3191,7 @@ body.nav-open .nav-backdrop {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: var(--header-height);
     gap: var(--space-sm);
     padding: 0 var(--space-md);
     width: 100%;
@@ -3203,6 +3208,12 @@ body.nav-open .nav-backdrop {
     width: 100%;
     margin: 0;
     max-width: 260px;
+  }
+
+  .site-header__logo-mark {
+    height: calc(100% - 18px);
+    width: auto;
+    margin-top: 4px;
   }
 
   .site-header__actions {
