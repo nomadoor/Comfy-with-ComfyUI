@@ -3,12 +3,31 @@ import initLinkBehavior from "./link-behavior.js";
 import initRouter from "./router.js";
 
 const bootstrap = () => {
+  let hasInitError = false;
+
   try {
     initLinkBehavior();
+  } catch (error) {
+    hasInitError = true;
+    console.error("[app] initLinkBehavior failed", error);
+  }
+
+  try {
     initPage();
+  } catch (error) {
+    hasInitError = true;
+    console.error("[app] initPage failed", error);
+  }
+
+  try {
     initRouter();
   } catch (error) {
-    console.error("[app] bootstrap failed", error);
+    hasInitError = true;
+    console.error("[app] initRouter failed", error);
+  }
+
+  if (hasInitError) {
+    document.documentElement.classList.remove("js");
   }
 };
 

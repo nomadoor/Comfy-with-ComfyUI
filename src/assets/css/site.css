@@ -3362,7 +3362,8 @@ body.nav-open .nav-backdrop {
 
 /* Ensure rail top padding is cleared on very short viewports even in mobile layout */
 @media (max-width: 1100px) and (max-height: 720px),
-  (hover: none) and (pointer: coarse) and (max-height: 900px) {
+  (hover: none) and (pointer: coarse) and (max-height: 900px),
+  (max-height: 950px) {
   .app-shell__sidebar .rail {
     overflow: visible;
   }

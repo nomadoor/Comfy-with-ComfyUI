@@ -20,7 +20,8 @@
 - On short viewports, sidebar section switching uses a compact dropdown: show only the current section label by default and expand section choices on tap/click.
 - Compact mode applies to:
   - mobile viewports (`max-width: 1100px` and `max-height: 720px`)
-  - short touch devices (`hover: none`, `pointer: coarse`, `max-height: 900px`) such as iPad landscape.
+  - short touch devices (`hover: none`, `pointer: coarse`, `max-height: 900px`) such as iPad landscape, regardless of width.
+  - any short viewport (`max-height: 950px`) so low-height landscape windows also collapse sections.
 
 ## 3. Related Workflows
 - Render related cards using the existing helper.
