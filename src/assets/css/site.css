@@ -2236,10 +2236,6 @@ h1 {
     align-items: flex-start;
     flex-wrap: wrap;
   }
-
-  .article-pagination__link--next {
-    margin-left: 0;
-  }
 }
 
 .news-list {
@@ -3368,7 +3364,7 @@ body.nav-open .nav-backdrop {
   }
 
   .sidebar__sections.is-open~.sidebar__section-panel {
-    filter: brightness(0.5);
+    filter: blur(2px) brightness(0.55);
   }
 
   .sidebar__sections {
