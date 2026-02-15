@@ -9,18 +9,18 @@
 } %}
 {% if localeNav %}
 <div class="sidebar">
-  {% set currentSectionLabel = currentSection %}
-  {% for section in localeNav.sections %}
-    {% if section.key == currentSection %}
-      {% set currentSectionLabel = section.label %}
-    {% endif %}
-  {% endfor %}
+  {% set currentSectionLabel %}
+    {% for section in localeNav.sections %}
+      {% if section.key == currentSection %}{{ section.label }}{% endif %}
+    {% endfor %}
+  {% endset %}
+  {% set currentSectionLabel = currentSectionLabel | trim or currentSection %}
   <div class="sidebar__sections" data-section-selector>
     <button
       class="sidebar__sections-trigger"
       type="button"
       data-section-selector-toggle
-      aria-haspopup="listbox"
+      aria-haspopup="true"
       aria-expanded="false"
     >
       <span class="sidebar__sections-trigger-label" data-section-selector-label>

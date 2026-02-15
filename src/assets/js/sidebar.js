@@ -111,6 +111,9 @@ document.addEventListener("keydown", (event) => {
   if (event.key !== "Escape") return;
   if (!sectionSelector || !sectionSelector.classList.contains("is-open")) return;
   setSectionSelectorOpen(false);
+  if (sectionSelectorToggle && typeof sectionSelectorToggle.focus === "function") {
+    sectionSelectorToggle.focus();
+  }
 });
 
 sectionTabs.forEach((tab) => {
