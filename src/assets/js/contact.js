@@ -1,5 +1,31 @@
 const CONTACT_SELECTOR = "[data-contact-page]";
 const REPORT_LINK_SELECTOR = "[data-contact-report-link]";
+const OPERATOR_FORM_I18N = {
+  ja: {
+    categoryPlaceholder: "選択してください",
+    replyTo: "返信用メールアドレス:",
+    name: "お名前:",
+    category: "ご要件:",
+    body: "ご相談内容:",
+    environment: "環境:"
+  },
+  en: {
+    categoryPlaceholder: "Please select",
+    replyTo: "Reply-to Email:",
+    name: "Name:",
+    category: "Category:",
+    body: "Message:",
+    environment: "Environment:"
+  },
+  zh: {
+    categoryPlaceholder: "请选择",
+    replyTo: "回复邮箱地址:",
+    name: "姓名:",
+    category: "需求分类:",
+    body: "咨询内容:",
+    environment: "环境:"
+  }
+};
 const CONTACT_STATUS_MESSAGES = {
   sent: "投稿しました。ありがとうございます。",
   error: "送信に失敗しました。時間をおいて再試行してください。",
@@ -258,16 +284,38 @@ function renderConfirmMessage(node, message) {
   if (!node) return;
   const labelPrefixes = [
     "対象ページ:",
+    "Page URL:",
+    "目标页面 URL:",
+    "内容:",
+    "Details:",
     "内容:",
     "スクショ/ログ:",
+    "Screenshot/Log:",
+    "截图/日志:",
     "テーマ:",
+    "Topic:",
+    "主题:",
     "期待する内容:",
+    "What you expect:",
+    "期望内容:",
     "この内容をサイトに掲載/引用",
+    "Allow this content to be cited/quoted on the site",
+    "是否允许在本站刊登/引用这条内容",
     "返信用メールアドレス:",
+    "Reply-to Email:",
+    "回复邮箱地址:",
     "お名前:",
+    "Name:",
+    "姓名:",
     "ご要件:",
+    "Category:",
+    "需求分类:",
     "ご相談内容:",
-    "環境:"
+    "Message:",
+    "咨询内容:",
+    "環境:",
+    "Environment:",
+    "环境:"
   ];
   const hiddenSingleLines = new Set([
     "記事リクエスト",
@@ -493,6 +541,8 @@ function wireContactForms(root) {
 function wireOperatorForm(root, statusRoot) {
   const form = root.querySelector("[data-operator-form]");
   if (!form) return;
+  const lang = (document.documentElement.lang || "ja").toLowerCase();
+  const i18n = OPERATOR_FORM_I18N[lang] || OPERATOR_FORM_I18N.ja;
   const confirmBlock = form.querySelector("[data-operator-confirm]");
   const confirmMessage = form.querySelector("[data-operator-confirm-message]");
   const turnstileContainer = form.querySelector("[data-operator-turnstile]");
@@ -525,7 +575,7 @@ function wireOperatorForm(root, statusRoot) {
   const setCategoryValue = (value, labelText) => {
     if (!categoryInput || !categoryLabel || !categoryMenu) return;
     categoryInput.value = value || "";
-    categoryLabel.textContent = labelText || "選択してください";
+    categoryLabel.textContent = labelText || i18n.categoryPlaceholder;
     const options = categoryMenu.querySelectorAll("[data-contact-category-option]");
     options.forEach((option) => {
       const isSelected = option.dataset.value === value;
@@ -554,18 +604,18 @@ function wireOperatorForm(root, statusRoot) {
     const body = form.querySelector('textarea[name="body"]')?.value?.trim() || "";
     const environment = form.querySelector('input[name="environment"]')?.value?.trim() || "";
     const lines = [
-      "返信用メールアドレス:",
+      i18n.replyTo,
       replyTo
     ];
     if (name) {
-      lines.push("", "お名前:", name);
+      lines.push("", i18n.name, name);
     }
     if (category) {
-      lines.push("", "ご要件:", category);
+      lines.push("", i18n.category, category);
     }
-    lines.push("", "ご相談内容:", body);
+    lines.push("", i18n.body, body);
     if (environment) {
-      lines.push("", "環境:", environment);
+      lines.push("", i18n.environment, environment);
     }
     return lines.join("\n");
   };

@@ -163,6 +163,16 @@ test.describe("Layout rails", () => {
             cb("playwright-turnstile-token");
           }
         },
+        execute(id) {
+          const cb = callbacks.get(id);
+          if (typeof cb === "function") {
+            cb("playwright-turnstile-token");
+          }
+          return "playwright-turnstile-token";
+        },
+        remove(id) {
+          callbacks.delete(id);
+        },
         getResponse() {
           return "playwright-turnstile-token";
         }
