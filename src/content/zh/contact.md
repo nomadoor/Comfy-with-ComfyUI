@@ -55,7 +55,7 @@ hero:
 <div class="contact-page__actions contact-page__actions--confirm">
 <p class="contact-page__status" data-contact-status aria-live="polite"></p>
 <div class="contact-page__confirm-controls">
-<div class="contact-page__turnstile" data-contact-turnstile data-sitekey="{{ site.turnstileSiteKey or '' }}"></div>
+<div class="contact-page__turnstile" data-contact-turnstile data-sitekey="{{ env.assistantTurnstileSitekey or site.turnstileSiteKey or '' }}"></div>
 <div class="contact-page__confirm-buttons">
 <button type="button" class="contact-page__submit" data-contact-confirm-back><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span class="contact-page__submit-label">返回编辑</span></button>
 <button type="button" class="contact-page__submit" data-contact-confirm-send><span class="contact-page__submit-label">按此内容发送</span><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
@@ -89,7 +89,7 @@ hero:
 <div class="contact-page__actions contact-page__actions--confirm">
 <p class="contact-page__status" data-contact-status aria-live="polite"></p>
 <div class="contact-page__confirm-controls">
-<div class="contact-page__turnstile" data-contact-turnstile data-sitekey="{{ site.turnstileSiteKey or '' }}"></div>
+<div class="contact-page__turnstile" data-contact-turnstile data-sitekey="{{ env.assistantTurnstileSitekey or site.turnstileSiteKey or '' }}"></div>
 <div class="contact-page__confirm-buttons">
 <button type="button" class="contact-page__submit" data-contact-confirm-back><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span class="contact-page__submit-label">返回编辑</span></button>
 <button type="button" class="contact-page__submit" data-contact-confirm-send><span class="contact-page__submit-label">按此内容发送</span><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
@@ -130,7 +130,7 @@ hero:
 <div class="contact-page__actions contact-page__actions--confirm">
 <p class="contact-page__status" data-contact-status aria-live="polite"></p>
 <div class="contact-page__confirm-controls">
-<div class="contact-page__turnstile" data-contact-turnstile data-sitekey="{{ site.turnstileSiteKey or '' }}"></div>
+<div class="contact-page__turnstile" data-contact-turnstile data-sitekey="{{ env.assistantTurnstileSitekey or site.turnstileSiteKey or '' }}"></div>
 <div class="contact-page__confirm-buttons">
 <button type="button" class="contact-page__submit" data-contact-confirm-back><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span class="contact-page__submit-label">返回编辑</span></button>
 <button type="button" class="contact-page__submit" data-contact-confirm-send><span class="contact-page__submit-label">按此内容发送</span><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
@@ -216,7 +216,7 @@ hero:
     <div class="contact-page__actions contact-page__actions--confirm contact-page__actions--operator">
       <p class="contact-page__status" data-operator-status aria-live="polite"></p>
       <div class="contact-page__operator-controls">
-        <div class="contact-page__turnstile" data-operator-turnstile data-sitekey="{{ site.turnstileSiteKey or '' }}"></div>
+        <div class="contact-page__turnstile" data-operator-turnstile data-sitekey="{{ env.assistantTurnstileSitekey or site.turnstileSiteKey or '' }}"></div>
         <div class="contact-page__operator-confirm-buttons">
           <button type="button" class="contact-page__submit" data-operator-confirm-back><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span class="contact-page__submit-label">返回编辑</span></button>
           <button type="submit" class="contact-page__submit" data-operator-send><span class="contact-page__submit-label">按此内容发送</span><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
@@ -227,7 +227,6 @@ hero:
   <p class="contact-page__fallback-link">若发送失败请联系: <a href="mailto:nomadoor@gmail.com">nomadoor@gmail.com</a></p>
 </form>
 </div>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 ## 支持本站
 

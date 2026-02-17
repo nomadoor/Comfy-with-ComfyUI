@@ -212,13 +212,13 @@
             "zh": "反馈错误或过期内容。"
           },
           "body": {
-            "ja": "再現手順や正しい情報を添えてもらえると助かります。現在のURLは自動で添付されます。",
+            "ja": "内容の不備・誤字などがあった場合は、対象ページのURLとともにお知らせください。",
             "en": "Include a short repro step or the correct information if you can. We attach the current URL automatically.",
             "zh": "请尽量提供复现步骤或正确信息，当前 URL 会自动附上。"
           },
           "form": {
             "placeholder": {
-              "ja": "どこが誤っているのか、何を確認したかを書いてください。",
+              "ja": "どこが間違っているか、何が起きるかを記載してください。",
               "en": "Describe what is incorrect and how you verified it.",
               "zh": "请说明哪里不正确，以及你如何验证的。"
             },
@@ -245,13 +245,13 @@
             "zh": "提出缺少的说明或示例。"
           },
           "body": {
-            "ja": "欲しいトピックや使いたいモデル名など、背景が分かるように教えてください。",
+            "ja": "なにか解説して欲しいComfyUIの機能、AIの技術などがあれば気軽にリクエストしてください。",
             "en": "Tell us what topic or model you need so we can plan the write-up.",
             "zh": "请说明想看的主题或模型名称，便于我们安排。"
           },
           "form": {
             "placeholder": {
-              "ja": "例: Flux.1 Tools の設定を詳しく知りたい",
+              "ja": "テーマに対して詳しく知りたい部分を記載してください。",
               "en": "Example: Need more detail on Flux.1 Tools settings",
               "zh": "例：想了解 Flux.1 Tools 的详细设置"
             },
@@ -277,7 +277,7 @@
             "zh": "可提交一般反馈或其他说明。"
           },
           "body": {
-            "ja": "気づいたことや改善アイデアなどを自由に送ってください。",
+            "ja": "応援の言葉、お叱りの言葉、どんなものでもモチベーションになります。いつもありがとうございます！",
             "en": "Feel free to share ideas, impressions, or anything else.",
             "zh": "欢迎提交你的想法、印象或其他建议。"
           },

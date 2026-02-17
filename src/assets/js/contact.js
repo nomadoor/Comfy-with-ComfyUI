@@ -52,10 +52,12 @@ const CONTACT_STATUS_MESSAGES = {
     sent: "投稿しました。ありがとうございます。",
     error: "送信に失敗しました。時間をおいて再試行してください。",
     turnstile: "認証を完了してください。",
+    turnstileUnavailable: "認証ウィジェットを読み込めませんでした。通信設定やブロッカーを確認してください。",
     minLength: "20文字以上で入力してください。",
     operatorSending: "送信中です...",
     operatorSent: "送信しました。ありがとうございます。",
     operatorTurnstile: "認証に失敗しました。再度お試しください。",
+    operatorTurnstileUnavailable: "認証ウィジェットを読み込めませんでした。通信設定やブロッカーを確認してください。",
     operatorInvalid: "入力内容を確認してください。",
     operatorConfig: "サーバ設定エラーです。管理者に連絡してください。",
     operatorError: "送信に失敗しました。時間をおいて再試行してください。"
@@ -64,10 +66,12 @@ const CONTACT_STATUS_MESSAGES = {
     sent: "Sent. Thank you.",
     error: "Failed to send. Please try again shortly.",
     turnstile: "Please complete the verification.",
+    turnstileUnavailable: "Could not load the verification widget. Please check network settings or blockers.",
     minLength: "Please enter at least 20 characters.",
     operatorSending: "Sending...",
     operatorSent: "Sent. Thank you.",
     operatorTurnstile: "Verification failed. Please try again.",
+    operatorTurnstileUnavailable: "Could not load the verification widget. Please check network settings or blockers.",
     operatorInvalid: "Please check your input.",
     operatorConfig: "Server configuration error. Please contact the administrator.",
     operatorError: "Failed to send. Please try again shortly."
@@ -76,10 +80,12 @@ const CONTACT_STATUS_MESSAGES = {
     sent: "已提交，感谢你的反馈。",
     error: "发送失败，请稍后重试。",
     turnstile: "请完成验证。",
+    turnstileUnavailable: "无法加载验证组件，请检查网络设置或拦截插件。",
     minLength: "请输入至少 20 个字符。",
     operatorSending: "发送中...",
     operatorSent: "已发送，感谢你的联系。",
     operatorTurnstile: "验证失败，请重试。",
+    operatorTurnstileUnavailable: "无法加载验证组件，请检查网络设置或拦截插件。",
     operatorInvalid: "请检查输入内容。",
     operatorConfig: "服务器配置错误，请联系管理员。",
     operatorError: "发送失败，请稍后重试。"
@@ -310,9 +316,40 @@ async function submitToTipsEndpoint(submitType, message, sourceUrl, turnstileTok
   return response.ok;
 }
 
+let turnstileReadyPromise = null;
+
+function ensureContactTurnstile() {
+  if (typeof window === "undefined") return Promise.resolve(false);
+  if (window.turnstile?.render) return Promise.resolve(true);
+  if (turnstileReadyPromise) return turnstileReadyPromise;
+
+  turnstileReadyPromise = new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+    script.async = true;
+    script.defer = true;
+    script.dataset.contactTurnstileLoader = "true";
+    script.onload = () => {
+      turnstileReadyPromise = null;
+      resolve(true);
+    };
+    script.onerror = () => {
+      turnstileReadyPromise = null;
+      resolve(false);
+    };
+    document.head.appendChild(script);
+  });
+
+  return turnstileReadyPromise;
+}
+
 async function waitForTurnstile() {
-  for (let i = 0; i < 40; i += 1) {
+  await ensureContactTurnstile();
+  for (let i = 0; i < 160; i += 1) {
     if (window.turnstile?.render) return true;
+    if (i === 80) {
+      await ensureContactTurnstile();
+    }
     await new Promise((resolve) => window.setTimeout(resolve, 50));
   }
   return false;
@@ -433,11 +470,12 @@ function wireContactForms(root) {
     };
 
     const ensureTurnstileWidget = async () => {
-      if (!turnstileContainer || widgetId !== null) return;
+      if (!turnstileContainer) return false;
+      if (widgetId !== null) return true;
       const sitekey = (turnstileContainer.dataset.sitekey || "").trim();
-      if (!sitekey) return;
+      if (!sitekey) return false;
       const ready = await waitForTurnstile();
-      if (!ready || !window.turnstile?.render) return;
+      if (!ready || !window.turnstile?.render) return false;
 
       widgetId = window.turnstile.render(turnstileContainer, {
         sitekey,
@@ -451,6 +489,7 @@ function wireContactForms(root) {
           setTurnstileTokenState(false);
         }
       });
+      return widgetId !== null;
     };
 
     const resetTurnstile = () => {
@@ -536,7 +575,11 @@ function wireContactForms(root) {
 
       const turnstileState = turnstileStateMap.get(form);
       if (turnstileState?.hasContainer) {
-        await turnstileState.ensureTurnstileWidget();
+        const ready = await turnstileState.ensureTurnstileWidget();
+        if (!ready) {
+          setContactStatus(getStatusMessage(root, "turnstileUnavailable"), true);
+          return;
+        }
         turnstileState.resetTurnstile();
       }
     });
@@ -721,11 +764,12 @@ function wireOperatorForm(root, statusRoot) {
   };
 
   const ensureTurnstileWidget = async () => {
-    if (!turnstileContainer || turnstileWidgetId !== null) return;
+    if (!turnstileContainer) return false;
+    if (turnstileWidgetId !== null) return true;
     const sitekey = (turnstileContainer.dataset.sitekey || "").trim();
-    if (!sitekey) return;
+    if (!sitekey) return false;
     const ready = await waitForTurnstile();
-    if (!ready || !window.turnstile?.render) return;
+    if (!ready || !window.turnstile?.render) return false;
 
     turnstileWidgetId = window.turnstile.render(turnstileContainer, {
       sitekey,
@@ -739,6 +783,7 @@ function wireOperatorForm(root, statusRoot) {
         setTurnstileTokenState(false);
       }
     });
+    return turnstileWidgetId !== null;
   };
 
   const resetTurnstile = () => {
@@ -759,7 +804,11 @@ function wireOperatorForm(root, statusRoot) {
       const message = buildOperatorMessage();
       renderConfirmMessage(confirmMessage, message);
       setOperatorStatus("");
-      await ensureTurnstileWidget();
+      const ready = await ensureTurnstileWidget();
+      if (!ready) {
+        setOperatorStatus(getStatusMessage(statusRoot, "operatorTurnstileUnavailable"), true);
+        return;
+      }
       setOperatorFormState("confirm");
     });
   }
