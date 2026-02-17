@@ -316,57 +316,20 @@ async function submitToTipsEndpoint(submitType, message, sourceUrl, turnstileTok
   return response.ok;
 }
 
-let turnstileReadyPromise = null;
-
 function loadTurnstileScript() {
-  if (window.turnstile?.render) return Promise.resolve(true);
-  if (turnstileReadyPromise) return turnstileReadyPromise;
-
-  turnstileReadyPromise = new Promise((resolve) => {
-    let settled = false;
-    const finish = (ok) => {
-      if (settled) return;
-      settled = true;
-      resolve(ok);
-    };
-    const timeoutId = window.setTimeout(() => finish(Boolean(window.turnstile?.render)), 8000);
-    const onLoad = () => {
-      window.clearTimeout(timeoutId);
-      finish(true);
-    };
-    const onError = () => {
-      window.clearTimeout(timeoutId);
-      finish(false);
-    };
-
-    const existing = document.querySelector('script[src="https://challenges.cloudflare.com/turnstile/v0/api.js"]');
-    if (existing) {
-      if (window.turnstile?.render) {
-        window.clearTimeout(timeoutId);
-        finish(true);
-        return;
-      }
-      existing.addEventListener("load", onLoad, { once: true });
-      existing.addEventListener("error", onError, { once: true });
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
-    script.async = true;
-    script.defer = true;
-    script.addEventListener("load", onLoad, { once: true });
-    script.addEventListener("error", onError, { once: true });
-    document.head.appendChild(script);
-  });
-
-  return turnstileReadyPromise;
+  if (window.turnstile?.render) return;
+  const src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+  if (document.querySelector(`script[src="${src}"]`)) return;
+  const script = document.createElement("script");
+  script.src = src;
+  script.async = true;
+  script.defer = true;
+  document.head.appendChild(script);
 }
 
 async function waitForTurnstile() {
-  const loaded = await loadTurnstileScript();
-  if (!loaded) return false;
-  for (let i = 0; i < 40; i += 1) {
+  loadTurnstileScript();
+  for (let i = 0; i < 120; i += 1) {
     if (window.turnstile?.render) return true;
     await new Promise((resolve) => window.setTimeout(resolve, 50));
   }

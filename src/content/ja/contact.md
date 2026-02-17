@@ -77,7 +77,7 @@ hero:
 <label class="contact-page__field">
 <span class="contact-page__field-label">期待する内容</span>
 <span class="contact-page__field-meta is-optional">任意</span>
-<textarea name="expectation" rows="4" placeholder="どの部分を知りたいかを短く"></textarea>
+<textarea name="expectation" rows="4" placeholder="テーマに対して詳しく知りたい部分を記載してください。"></textarea>
 </label>
 <div class="contact-page__actions">
 <p class="contact-page__status" data-contact-status aria-live="polite"></p>
