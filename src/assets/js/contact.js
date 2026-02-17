@@ -244,8 +244,7 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
-function setContactConfirmMessage(form, message) {
-  const node = form.querySelector("[data-contact-confirm-message]");
+function renderConfirmMessage(node, message) {
   if (!node) return;
   const labelPrefixes = [
     "対象ページ:",
@@ -253,7 +252,12 @@ function setContactConfirmMessage(form, message) {
     "スクショ/ログ:",
     "テーマ:",
     "期待する内容:",
-    "この内容をサイトに掲載/引用"
+    "この内容をサイトに掲載/引用",
+    "返信用メールアドレス:",
+    "お名前:",
+    "ご要件:",
+    "ご相談内容:",
+    "環境:"
   ];
 
   const html = String(message || "")
@@ -273,6 +277,11 @@ function setContactConfirmMessage(form, message) {
     .join("\n");
 
   node.innerHTML = html;
+}
+
+function setContactConfirmMessage(form, message) {
+  const node = form.querySelector("[data-contact-confirm-message]");
+  renderConfirmMessage(node, message);
 }
 
 function wireContactForms(root) {
@@ -370,6 +379,11 @@ function wireOperatorForm(root, statusRoot) {
   const confirmBlock = form.querySelector("[data-operator-confirm]");
   const confirmMessage = form.querySelector("[data-operator-confirm-message]");
   const turnstileContainer = form.querySelector("[data-operator-turnstile]");
+  const categorySelect = form.querySelector("[data-contact-category]");
+  const categoryInput = form.querySelector("[data-contact-category-input]");
+  const categoryLabel = form.querySelector("[data-contact-category-label]");
+  const categoryToggle = form.querySelector("[data-contact-category-toggle]");
+  const categoryMenu = form.querySelector("[data-contact-category-menu]");
   let turnstileWidgetId = null;
 
   const fields = form.querySelectorAll("input, textarea, select");
@@ -384,31 +398,89 @@ function wireOperatorForm(root, statusRoot) {
     nodes.forEach((node) => setStatus(node, message, isError));
   };
 
+  const setCategoryOpen = (isOpen) => {
+    if (!categorySelect || !categoryToggle || !categoryMenu) return;
+    categorySelect.classList.toggle("is-open", isOpen);
+    categoryToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    categoryMenu.hidden = !isOpen;
+  };
+
+  const setCategoryValue = (value, labelText) => {
+    if (!categoryInput || !categoryLabel || !categoryMenu) return;
+    categoryInput.value = value || "";
+    categoryLabel.textContent = labelText || "選択してください";
+    const options = categoryMenu.querySelectorAll("[data-contact-category-option]");
+    options.forEach((option) => {
+      const isSelected = option.dataset.value === value;
+      option.classList.toggle("is-selected", isSelected);
+      option.setAttribute("aria-selected", isSelected ? "true" : "false");
+    });
+    syncOperatorSubmitState(form);
+  };
+
   const setOperatorFormState = (state) => {
     const nextState = state === "confirm" ? "confirm" : "input";
     form.dataset.formState = nextState;
     if (confirmBlock) {
       confirmBlock.hidden = nextState !== "confirm";
     }
+    if (nextState !== "input") {
+      setCategoryOpen(false);
+    }
     syncOperatorSubmitState(form);
   };
 
   const buildOperatorMessage = () => {
     const replyTo = form.querySelector('input[name="reply_to"]')?.value?.trim() || "";
+    const name = form.querySelector('input[name="name"]')?.value?.trim() || "";
+    const category = categoryLabel?.textContent?.trim() || "";
     const body = form.querySelector('textarea[name="body"]')?.value?.trim() || "";
     const environment = form.querySelector('input[name="environment"]')?.value?.trim() || "";
     const lines = [
-      "返信先:",
-      replyTo,
-      "",
-      "内容:",
-      body
+      "返信用メールアドレス:",
+      replyTo
     ];
+    if (name) {
+      lines.push("", "お名前:", name);
+    }
+    if (category) {
+      lines.push("", "ご要件:", category);
+    }
+    lines.push("", "ご相談内容:", body);
     if (environment) {
       lines.push("", "環境:", environment);
     }
     return lines.join("\n");
   };
+
+  if (categoryToggle && categoryMenu) {
+    categoryToggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const nextOpen = !categorySelect.classList.contains("is-open");
+      setCategoryOpen(nextOpen);
+    });
+
+    categoryMenu.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const option = event.target.closest("[data-contact-category-option]");
+      if (!option) return;
+      setCategoryValue(option.dataset.value || "", option.textContent?.trim() || "");
+      setCategoryOpen(false);
+      categoryToggle.focus();
+    });
+
+    document.addEventListener("pointerdown", (event) => {
+      if (!categorySelect?.contains(event.target)) {
+        setCategoryOpen(false);
+      }
+    }, true);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setCategoryOpen(false);
+      }
+    });
+  }
 
   const setTurnstileTokenState = (hasToken) => {
     form.dataset.turnstileTokenReady = hasToken ? "true" : "false";
@@ -460,9 +532,7 @@ function wireOperatorForm(root, statusRoot) {
     previewButton.addEventListener("click", async () => {
       if (!form.reportValidity()) return;
       const message = buildOperatorMessage();
-      if (confirmMessage) {
-        confirmMessage.textContent = message;
-      }
+      renderConfirmMessage(confirmMessage, message);
       setOperatorStatus("");
       await ensureTurnstileWidget();
       setOperatorFormState("confirm");
@@ -530,6 +600,7 @@ function wireOperatorForm(root, statusRoot) {
       }
 
       form.reset();
+      setCategoryValue("", "");
       resetTurnstile();
       setOperatorStatus(getStatusMessage(statusRoot, "operatorSent"));
       setOperatorFormState("input");
@@ -544,6 +615,7 @@ function wireOperatorForm(root, statusRoot) {
 
   setOperatorFormState("input");
   setTurnstileTokenState(false);
+  setCategoryValue(categoryInput?.value || "", "");
 }
 
 function updateReportLinks(root = document) {

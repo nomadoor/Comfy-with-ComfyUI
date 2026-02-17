@@ -67,21 +67,32 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     }
 
     const replyTo = String(form.get("reply_to") || "").trim();
+    const name = String(form.get("name") || "").trim();
+    const category = String(form.get("category") || "").trim();
     const body = String(form.get("body") || "").trim();
     const environment = String(form.get("environment") || "").trim();
 
-    if (!replyTo || !body) {
+    if (!replyTo || !category || !body) {
       return json({ ok: false, error: "invalid" }, 400);
     }
 
     const subject = "[Comfy with ComfyUI] 個人相談・仕事依頼";
+    const categoryLabels: Record<string, string> = {
+      "comfyui-consulting": "ComfyUIの相談（トラブル／ワークフロー）",
+      "genai-dev": "生成AI / カスタムノード（技術・開発）",
+      "business": "仕事の相談（依頼／見積）",
+      "other": "その他"
+    };
+    const categoryLabel = categoryLabels[category] || category;
     const lines = [
       "[Contact] 個人相談・仕事依頼",
-      `返信先: ${replyTo}`,
+      `返信用メールアドレス: ${replyTo}`,
+      name ? `お名前: ${name}` : "",
+      `ご要件: ${categoryLabel}`,
       "",
-      "内容:",
+      "ご相談内容:",
       body
-    ];
+    ].filter(Boolean);
 
     if (environment) {
       lines.push("", "環境:", environment);

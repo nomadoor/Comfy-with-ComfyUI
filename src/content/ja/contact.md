@@ -17,6 +17,8 @@ hero:
 このサイトの誤字・不具合報告、記事リクエスト、感想・その他の連絡を送れます。  
 内容にあわせて、下のカードを選んでください。
 
+この内容は匿名で  [GitHub issue](https://github.com/nomadoor/Comfy-with-ComfyUI/issues) に送られます。GitHubに慣れている方は直接投稿していただいても構いません。
+
 <div data-contact-page>
 <div class="contact-page__site-card contact-page__site-card--stacked">
 <div class="contact-page__segment" data-contact-segment role="group" aria-label="問い合わせ種別">
@@ -26,8 +28,7 @@ hero:
 </div>
 <form class="contact-page__form" data-contact-form="fix" novalidate>
 <p class="contact-page__form-description">
-対象ページのURLとともに、その誤字や間違いについて以下のフォームよりお知らせください。<br />
-この内容は匿名で<a href="https://github.com/nomadoor/Comfy-with-ComfyUI/issues/new?labels=assistant-feedback,report">GitHub issue</a>に送られます。GitHubに慣れている方は直接投稿していただいても構いません。
+内容の不備・誤字などがあった場合は、対象ページのURLとともに、以下のフォームよりお知らせください。
 </p>
 <label class="contact-page__field">
 <span class="contact-page__field-label">対象ページURL</span>
@@ -138,22 +139,52 @@ Midjourneyの登場で幕を開けた画像生成AIの魅力に取りつかれ�
 - Twitter : [@noma_door](https://x.com/noma_door)
 - Reddit : [u/nomadoor](https://www.reddit.com/user/nomadoor/)
 - GitHub : [nomadoor](https://github.com/nomadoor)
-- Email : nomadoor@gmail.com
 
 
 <div class="contact-page__site-card">
 <form class="contact-page__form" data-operator-form novalidate>
-<p class="contact-page__form-description">これを仕事にしたことがないので、何が仕事となるか自分でも分かっていませんが、ComfyUIのworkflow構築、トラブルシューティング、どんな技術があるかなど、なんでもご相談ください。</br>
-もちろん、仕事と関係なくちょっとした質問でも歓迎です。お気軽にご連絡ください。
-</br>
-</p>  
+<p class="contact-page__form-heading"><span class="contact-page__segment-label">お問い合わせ</span></p>
+<p class="contact-page__form-description">ComfyUIのworkflow構築・調整、トラブルシューティング、技術の整理（結局どれを使えばいいのか、みたいな話）など。仕事の相談でも、ちょっとした質問でも歓迎です。お気軽にご連絡ください。
+</p>
 <label class="contact-page__field">
-    <span class="contact-page__field-label">返信先メール</span>
+    <span class="contact-page__field-label">返信用メールアドレス</span>
     <span class="contact-page__field-meta is-required">必須</span>
     <input type="email" name="reply_to" required placeholder="you@example.com" />
   </label>
   <label class="contact-page__field">
-    <span class="contact-page__field-label">内容</span>
+    <span class="contact-page__field-label">お名前</span>
+    <span class="contact-page__field-meta is-optional">任意</span>
+    <input type="text" name="name" placeholder="例: nomadoor" />
+  </label>
+  <label class="contact-page__field">
+    <span class="contact-page__field-label">ご要件</span>
+    <span class="contact-page__field-meta is-required">必須</span>
+    <div class="contact-page__category-select" data-contact-category>
+      <input type="hidden" name="category" value="" required data-contact-category-input />
+      <button
+        type="button"
+        class="contact-page__category-trigger"
+        data-contact-category-toggle
+        aria-haspopup="listbox"
+        aria-expanded="false"
+      >
+        <span data-contact-category-label>選択してください</span>
+        <span class="contact-page__category-caret" aria-hidden="true">
+          <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </span>
+      </button>
+      <div class="contact-page__category-menu" data-contact-category-menu role="listbox" hidden>
+        <button type="button" class="contact-page__category-option" data-contact-category-option data-value="comfyui-consulting">ComfyUIの相談（トラブル／ワークフロー）</button>
+        <button type="button" class="contact-page__category-option" data-contact-category-option data-value="genai-dev">生成AI / カスタムノード（技術・開発）</button>
+        <button type="button" class="contact-page__category-option" data-contact-category-option data-value="business">仕事の相談（依頼／見積）</button>
+        <button type="button" class="contact-page__category-option" data-contact-category-option data-value="other">その他</button>
+      </div>
+    </div>
+  </label>
+  <label class="contact-page__field">
+    <span class="contact-page__field-label">ご相談内容</span>
     <span class="contact-page__field-meta is-required">必須</span>
     <textarea name="body" rows="6" required placeholder="相談内容 / 依頼内容"></textarea>
   </label>
@@ -175,6 +206,7 @@ Midjourneyの登場で幕を開けた画像生成AIの魅力に取りつかれ�
       </div>
     </div>
   </div>
+  <p class="contact-page__fallback-link">送れない場合はこちら: <a href="mailto:nomadoor@gmail.com">nomadoor@gmail.com</a></p>
 </form>
 </div>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
