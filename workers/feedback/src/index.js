@@ -1,5 +1,10 @@
 const ipHits = new Map();
 const MAX_IP_ENTRIES = 1000;
+const ALLOWED_ISSUE_LABELS = new Set([
+  "report",
+  "request",
+  "feedback"
+]);
 
 export default {
   async fetch(request, env) {
@@ -47,11 +52,7 @@ export default {
     const pageUrl = url && isValidOriginUrl(url, env) ? url : "N/A";
     const title = `[${kind}] ${titleFromUrl(pageUrl)}`;
     const userAgent = request.headers.get("user-agent") || "";
-    const requestedLabels = Array.isArray(labels)
-      ? labels
-          .map((item) => (typeof item === "string" ? item.trim().toLowerCase() : ""))
-          .filter(Boolean)
-      : [];
+    const requestedLabels = sanitizeRequestedLabels(labels);
 
     const issueBody = [
       text,
@@ -197,6 +198,17 @@ function normalizeType(type) {
   return "report";
 }
 
+function normalizeLabel(label) {
+  return typeof label === "string" ? label.trim().toLowerCase() : "";
+}
+
+function sanitizeRequestedLabels(labels) {
+  if (!Array.isArray(labels)) return [];
+  return labels
+    .map(normalizeLabel)
+    .filter((label) => label && ALLOWED_ISSUE_LABELS.has(label));
+}
+
 function buildIssueLabels(kind, lang, requestedLabels = []) {
   const labelSet = new Set(["assistant-feedback", `lang:${lang}`]);
   if (kind === "report") {
@@ -204,7 +216,7 @@ function buildIssueLabels(kind, lang, requestedLabels = []) {
   } else {
     labelSet.add(kind);
   }
-  requestedLabels.forEach((label) => labelSet.add(label));
+  sanitizeRequestedLabels(requestedLabels).forEach((label) => labelSet.add(label));
   return Array.from(labelSet);
 }
 

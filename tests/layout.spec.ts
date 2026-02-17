@@ -144,6 +144,30 @@ test.describe("Layout rails", () => {
 
   test("assistant rail form flows through confirm and send", async ({ page }) => {
     const csrfValue = "test-csrf";
+    await page.addInitScript(() => {
+      const callbacks = new Map();
+      let nextId = 1;
+      window.turnstile = {
+        render(element, options) {
+          const id = nextId++;
+          callbacks.set(id, options?.callback);
+          // Simulate solved captcha immediately.
+          if (typeof options?.callback === "function") {
+            options.callback("playwright-turnstile-token");
+          }
+          return id;
+        },
+        reset(id) {
+          const cb = callbacks.get(id);
+          if (typeof cb === "function") {
+            cb("playwright-turnstile-token");
+          }
+        },
+        getResponse() {
+          return "playwright-turnstile-token";
+        }
+      };
+    });
     await page.setViewportSize({ width: 1920, height: 1080 });
     await page.context().addCookies([
       {

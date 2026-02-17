@@ -28,7 +28,8 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     ].filter(Boolean);
 
     if (missingEnv.length > 0) {
-      return json({ ok: false, error: "config", missing: missingEnv }, 500);
+      console.error("[contact] missing required env vars", missingEnv);
+      return json({ ok: false, error: "config" }, 500);
     }
 
     const form = await request.formData();
@@ -107,6 +108,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       body: JSON.stringify({
         from: env.CONTACT_FROM_EMAIL,
         to: [env.CONTACT_TO_EMAIL],
+        reply_to: replyTo,
         subject,
         text: lines.join("\n")
       })

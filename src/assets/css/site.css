@@ -17,6 +17,7 @@ html {
   --color-text: #B0B0B0;
   --color-text-muted: #636363;
   --color-highlight: #9458A3;
+  --color-danger: #ff7a7a;
   --color-chip-bg: #1d1d1d;
   --color-chip-border: #3d3d3d;
   --color-link: #cfc6ff;
@@ -73,6 +74,7 @@ html {
   --color-border-strong: #bebec7;
   --color-text: #181818;
   --color-text-muted: #51515a;
+  --color-danger: #b42318;
   --color-chip-bg: #ffffff;
   --color-chip-border: #d8d8e0;
   --color-heading: #222222;
@@ -2486,7 +2488,7 @@ h1 {
   font: inherit;
   line-height: 1.6;
   white-space: pre-wrap;
-  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .contact-page__confirm-label {
@@ -2626,7 +2628,7 @@ h1 {
   width: 1.8rem;
   height: 1.8rem;
   fill: none;
-  stroke: currentColor;
+  stroke: currentcolor;
   transform: translateX(0);
   transition: transform 0.15s ease;
 }
@@ -3112,7 +3114,7 @@ h1 {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
   border: 0;
 }
 

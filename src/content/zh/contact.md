@@ -1,10 +1,10 @@
 ---
 layout: page.njk
-lang: ja
+lang: zh
 slug: contact
 navId: contact
-title: "お問い合わせ"
-summary: "サイト修正報告・記事リクエスト・運営者連絡"
+title: "联系我们"
+summary: "站点修正、文章请求与运营者联系"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - contact
@@ -33,7 +33,7 @@ hero:
 <label class="contact-page__field">
 <span class="contact-page__field-label">対象ページURL</span>
 <span class="contact-page__field-meta is-required">必須</span>
-<input type="text" name="page_url" required placeholder="例: /ja/begin-with/how-to-use-this-site/" data-contact-fix-url />
+<input type="text" name="page_url" required placeholder="例: /zh/begin-with/how-to-use-this-site/" data-contact-fix-url />
 </label>
 <label class="contact-page__field">
 <span class="contact-page__field-label">内容</span>
@@ -66,7 +66,7 @@ hero:
 </form>
 <form class="contact-page__form" data-contact-form="request" hidden novalidate>
 <p class="contact-page__form-description">
-なにか解説して欲しいComfyUIの機能、AIの技術などがあれば気軽にリクエストしてください。<br>
+なにか解説して欲しいComfyUIの機能、AIの技術などがあれば気軽にリクエストしてください。</br>
 このサイトはシンプルを心がけているので追加できるかはわかりませんが、なにかしらの媒体で対応したいと思います。
 </p>
 <label class="contact-page__field">

@@ -272,7 +272,6 @@ function renderConfirmMessage(node, message) {
   const hiddenSingleLines = new Set([
     "記事リクエスト",
     "修正・誤字報告",
-    "修正・語時報告",
     "感想・その他"
   ]);
 
