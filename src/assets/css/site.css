@@ -2431,6 +2431,14 @@ h1 {
   word-break: break-word;
 }
 
+.contact-page__confirm-label {
+  color: var(--color-text);
+}
+
+.contact-page__confirm-value {
+  color: var(--color-text-muted);
+}
+
 .contact-page__field {
   display: grid;
   grid-template-columns: minmax(6.5rem, 9rem) auto minmax(0, 1fr);
@@ -2509,7 +2517,10 @@ h1 {
 
 .contact-page__submit[data-contact-submit],
 .contact-page__submit[data-contact-confirm-back],
-.contact-page__submit[data-contact-confirm-send] {
+.contact-page__submit[data-contact-confirm-send],
+.contact-page__submit[data-operator-preview],
+.contact-page__submit[data-operator-confirm-back],
+.contact-page__submit[data-operator-send] {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -2528,7 +2539,13 @@ h1 {
 .contact-page__submit[data-contact-confirm-back]:hover,
 .contact-page__submit[data-contact-confirm-back]:focus-visible,
 .contact-page__submit[data-contact-confirm-send]:hover,
-.contact-page__submit[data-contact-confirm-send]:focus-visible {
+.contact-page__submit[data-contact-confirm-send]:focus-visible,
+.contact-page__submit[data-operator-preview]:hover,
+.contact-page__submit[data-operator-preview]:focus-visible,
+.contact-page__submit[data-operator-confirm-back]:hover,
+.contact-page__submit[data-operator-confirm-back]:focus-visible,
+.contact-page__submit[data-operator-send]:hover,
+.contact-page__submit[data-operator-send]:focus-visible {
   background: transparent;
   border-color: transparent;
   color: var(--color-highlight);
@@ -2542,7 +2559,10 @@ h1 {
 
 .contact-page__submit[data-contact-submit] .icon,
 .contact-page__submit[data-contact-confirm-back] .icon,
-.contact-page__submit[data-contact-confirm-send] .icon {
+.contact-page__submit[data-contact-confirm-send] .icon,
+.contact-page__submit[data-operator-preview] .icon,
+.contact-page__submit[data-operator-confirm-back] .icon,
+.contact-page__submit[data-operator-send] .icon {
   display: inline-block;
   width: 1.8rem;
   height: 1.8rem;
@@ -2555,18 +2575,26 @@ h1 {
 .contact-page__submit[data-contact-submit]:hover .icon,
 .contact-page__submit[data-contact-submit]:focus-visible .icon,
 .contact-page__submit[data-contact-confirm-send]:hover .icon,
-.contact-page__submit[data-contact-confirm-send]:focus-visible .icon {
+.contact-page__submit[data-contact-confirm-send]:focus-visible .icon,
+.contact-page__submit[data-operator-preview]:hover .icon,
+.contact-page__submit[data-operator-preview]:focus-visible .icon,
+.contact-page__submit[data-operator-send]:hover .icon,
+.contact-page__submit[data-operator-send]:focus-visible .icon {
   transform: translateX(4px);
 }
 
 .contact-page__submit[data-contact-confirm-back]:hover .icon,
-.contact-page__submit[data-contact-confirm-back]:focus-visible .icon {
+.contact-page__submit[data-contact-confirm-back]:focus-visible .icon,
+.contact-page__submit[data-operator-confirm-back]:hover .icon,
+.contact-page__submit[data-operator-confirm-back]:focus-visible .icon {
   transform: translateX(-4px);
 }
 
 /* Disabled State */
 .contact-page__submit[data-contact-submit]:disabled,
-.contact-page__submit[data-contact-submit]:disabled:hover {
+.contact-page__submit[data-contact-submit]:disabled:hover,
+.contact-page__submit[data-operator-preview]:disabled,
+.contact-page__submit[data-operator-preview]:disabled:hover {
   opacity: 0.5;
   cursor: not-allowed;
   background: transparent;
@@ -2577,7 +2605,11 @@ h1 {
 .contact-page__submit[data-contact-confirm-send]:disabled,
 .contact-page__submit[data-contact-confirm-send]:disabled:hover,
 .contact-page__submit[data-contact-confirm-back]:disabled,
-.contact-page__submit[data-contact-confirm-back]:disabled:hover {
+.contact-page__submit[data-contact-confirm-back]:disabled:hover,
+.contact-page__submit[data-operator-send]:disabled,
+.contact-page__submit[data-operator-send]:disabled:hover,
+.contact-page__submit[data-operator-confirm-back]:disabled,
+.contact-page__submit[data-operator-confirm-back]:disabled:hover {
   opacity: 0.5;
   cursor: not-allowed;
   background: transparent;
@@ -2615,6 +2647,44 @@ h1 {
 
 .contact-page__actions--confirm .contact-page__submit {
   margin-left: 0;
+}
+
+.contact-page__actions--operator {
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.contact-page__actions--operator .contact-page__status {
+  margin: 0;
+  flex: 1 1 12rem;
+}
+
+.contact-page__operator-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-sm);
+}
+
+.contact-page__operator-controls [data-operator-turnstile] {
+  margin: 0;
+  border: none;
+}
+
+.contact-page__operator-controls [data-operator-turnstile] iframe {
+  border: none;
+}
+
+.contact-page__operator-controls .contact-page__submit {
+  margin-left: 0;
+}
+
+.contact-page__operator-confirm-buttons {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
 }
 
 .contact-page__consent {

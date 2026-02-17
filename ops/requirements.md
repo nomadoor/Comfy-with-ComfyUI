@@ -55,6 +55,18 @@
 - Article pages provide a footer shortcut link to contact:
   - `/contact/?type=fix&url=<current_url>#site`
 
+## 3.8 Contact Page (`/contact/`) Operator Form
+- The operator form on `/contact/` must submit directly to `POST /api/contact` (no `mailto:` flow).
+- Frontend requirements:
+  - Use a two-step flow: input -> confirmation -> send.
+  - Render Cloudflare Turnstile widget (`cf-turnstile`) on the confirmation state (not the initial input state).
+  - Submit via `fetch("/api/contact", { method: "POST", body: new FormData(form) })`.
+  - Disable the submit button while sending, show localized success/error status, and reset the form on success.
+- Backend requirements (Cloudflare Pages Functions):
+  - `functions/api/contact.ts` handles `POST /api/contact`.
+  - Validate `cf-turnstile-response` against Turnstile `siteverify` with `TURNSTILE_SECRET`.
+  - Send validated messages via Resend using `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, `CONTACT_TO_EMAIL`.
+
 ## 4. Workflow JSON Block
 - Render `<filename>.json  [Copy]  [Download]` for each workflow entry.
 - Copy button uses the tooltip cycle: default -> "Copy" -> "Copied".

@@ -5,6 +5,8 @@
   "description": "ComfyUI onboarding + workflow docs built with Eleventy, vanilla CSS, and ESM-only scripts.",
   "scripts": {
     "dev": "npx @11ty/eleventy --serve --port=8080",
+    "dev:watch": "npx @11ty/eleventy --watch --output=_site",
+    "dev:pages": "npx wrangler pages dev _site --port=8080 --compatibility-date=2026-02-17",
     "build": "eleventy --input=src --output=_site",
     "clean": "rimraf _site",
     "test:playwright": "playwright test"

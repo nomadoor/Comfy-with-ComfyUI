@@ -1,5 +1,6 @@
 {
   "url": "https://comfyui.nomadoor.net",
+  "turnstileSiteKey": "0x4AAAAAACeNHt46k6LVf5wp",
   "ogImage": "/assets/logos/favicon/favicon_256.png",
   "defaultLang": "ja",
   "name": {

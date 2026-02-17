@@ -3,8 +3,12 @@ const REPORT_LINK_SELECTOR = "[data-contact-report-link]";
 const CONTACT_STATUS_MESSAGES = {
   sent: "投稿しました。ありがとうございます。",
   error: "送信に失敗しました。時間をおいて再試行してください。",
-  mailto: "メールアプリの起動を試みました。開かない場合は下記メールアドレスへ直接ご連絡ください。",
-  mailtoError: "メールアプリを起動できませんでした。本文をコピーしたので、メールに貼り付けて送信してください。"
+  operatorSending: "送信中です...",
+  operatorSent: "送信しました。ありがとうございます。",
+  operatorTurnstile: "認証に失敗しました。再度お試しください。",
+  operatorInvalid: "入力内容を確認してください。",
+  operatorConfig: "サーバ設定エラーです。管理者に連絡してください。",
+  operatorError: "送信に失敗しました。時間をおいて再試行してください。"
 };
 
 function getStatusMessage(root, key) {
@@ -56,30 +60,6 @@ function normalizeReportedUrl(rawUrl) {
   return `${window.location.origin}/${value.replace(/^\/+/, "")}`;
 }
 
-function openMailtoUrl(mailtoUrl) {
-  try {
-    const anchor = document.createElement("a");
-    anchor.href = mailtoUrl;
-    anchor.style.display = "none";
-    document.body.append(anchor);
-    anchor.click();
-    anchor.remove();
-    return true;
-  } catch (error) {
-    return false;
-  }
-}
-
-async function copyTextToClipboard(text) {
-  if (!text || !navigator.clipboard?.writeText) return false;
-  try {
-    await navigator.clipboard.writeText(text);
-    return true;
-  } catch (error) {
-    return false;
-  }
-}
-
 function disableForm(form, disabled) {
   const controls = form.querySelectorAll("input, textarea, select, button");
   controls.forEach((control) => {
@@ -106,8 +86,18 @@ function syncContactSubmitState(form) {
 
 function syncOperatorSubmitState(form) {
   if (!form) return;
-  const submit = form.querySelector('button[type="submit"]');
-  if (!submit) return;
+  const previewButton = form.querySelector("[data-operator-preview]");
+  const sendButton = form.querySelector("[data-operator-send]");
+  const backButton = form.querySelector("[data-operator-confirm-back]");
+  const isConfirmState = form.dataset.formState === "confirm";
+  const hasTurnstileToken = form.dataset.turnstileTokenReady === "true";
+
+  if (form.dataset.sending === "true") {
+    if (previewButton) previewButton.disabled = true;
+    if (sendButton) sendButton.disabled = true;
+    if (backButton) backButton.disabled = true;
+    return;
+  }
 
   const requiredFields = form.querySelectorAll("input[required], textarea[required], select[required]");
   const isValid = Array.from(requiredFields).every((field) => {
@@ -116,7 +106,9 @@ function syncOperatorSubmitState(form) {
     return field.checkValidity();
   });
 
-  submit.disabled = !isValid;
+  if (previewButton) previewButton.disabled = !isValid || isConfirmState;
+  if (sendButton) sendButton.disabled = !isConfirmState || !hasTurnstileToken;
+  if (backButton) backButton.disabled = !isConfirmState;
 }
 
 
@@ -243,10 +235,44 @@ function setContactFormState(form, state) {
   }
 }
 
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll("\"", "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
 function setContactConfirmMessage(form, message) {
   const node = form.querySelector("[data-contact-confirm-message]");
   if (!node) return;
-  node.textContent = message || "";
+  const labelPrefixes = [
+    "対象ページ:",
+    "内容:",
+    "スクショ/ログ:",
+    "テーマ:",
+    "期待する内容:",
+    "この内容をサイトに掲載/引用"
+  ];
+
+  const html = String(message || "")
+    .split("\n")
+    .map((line) => {
+      if (!line.trim()) return "";
+      const matched = labelPrefixes.find((prefix) => line.startsWith(prefix));
+      if (!matched) {
+        return `<span class="contact-page__confirm-value">${escapeHtml(line)}</span>`;
+      }
+      const value = line.slice(matched.length).trimStart();
+      if (!value) {
+        return `<span class="contact-page__confirm-label">${escapeHtml(matched)}</span>`;
+      }
+      return `<span class="contact-page__confirm-label">${escapeHtml(matched)}</span> <span class="contact-page__confirm-value">${escapeHtml(value)}</span>`;
+    })
+    .join("\n");
+
+  node.innerHTML = html;
 }
 
 function wireContactForms(root) {
@@ -341,6 +367,10 @@ function wireContactForms(root) {
 function wireOperatorForm(root, statusRoot) {
   const form = root.querySelector("[data-operator-form]");
   if (!form) return;
+  const confirmBlock = form.querySelector("[data-operator-confirm]");
+  const confirmMessage = form.querySelector("[data-operator-confirm-message]");
+  const turnstileContainer = form.querySelector("[data-operator-turnstile]");
+  let turnstileWidgetId = null;
 
   const fields = form.querySelectorAll("input, textarea, select");
   fields.forEach((field) => {
@@ -349,17 +379,27 @@ function wireOperatorForm(root, statusRoot) {
   });
   syncOperatorSubmitState(form);
 
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    if (!form.reportValidity()) return;
+  const setOperatorStatus = (message, isError = false) => {
+    const nodes = form.querySelectorAll("[data-operator-status]");
+    nodes.forEach((node) => setStatus(node, message, isError));
+  };
 
-    const status = form.querySelector("[data-operator-status]");
+  const setOperatorFormState = (state) => {
+    const nextState = state === "confirm" ? "confirm" : "input";
+    form.dataset.formState = nextState;
+    if (confirmBlock) {
+      confirmBlock.hidden = nextState !== "confirm";
+    }
+    syncOperatorSubmitState(form);
+  };
+
+  const buildOperatorMessage = () => {
     const replyTo = form.querySelector('input[name="reply_to"]')?.value?.trim() || "";
     const body = form.querySelector('textarea[name="body"]')?.value?.trim() || "";
     const environment = form.querySelector('input[name="environment"]')?.value?.trim() || "";
     const lines = [
-      "[Contact] 個人相談・仕事依頼",
-      `返信先: ${replyTo}`,
+      "返信先:",
+      replyTo,
       "",
       "内容:",
       body
@@ -367,17 +407,143 @@ function wireOperatorForm(root, statusRoot) {
     if (environment) {
       lines.push("", "環境:", environment);
     }
+    return lines.join("\n");
+  };
 
-    const subject = "[Comfy with ComfyUI] 個人相談・仕事依頼";
-    const mailto = `mailto:nomadoor@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
-    const opened = openMailtoUrl(mailto);
-    if (opened) {
-      setStatus(status, getStatusMessage(statusRoot, "mailto"));
-    } else {
-      await copyTextToClipboard(lines.join("\n"));
-      setStatus(status, getStatusMessage(statusRoot, "mailtoError"), true);
+  const setTurnstileTokenState = (hasToken) => {
+    form.dataset.turnstileTokenReady = hasToken ? "true" : "false";
+    syncOperatorSubmitState(form);
+  };
+
+  const waitForTurnstile = async () => {
+    for (let i = 0; i < 40; i += 1) {
+      if (window.turnstile?.render) return true;
+      await new Promise((resolve) => window.setTimeout(resolve, 50));
+    }
+    return false;
+  };
+
+  const ensureTurnstileWidget = async () => {
+    if (!turnstileContainer || turnstileWidgetId !== null) return;
+    const sitekey = (turnstileContainer.dataset.sitekey || "").trim();
+    if (!sitekey) return;
+    const ready = await waitForTurnstile();
+    if (!ready || !window.turnstile?.render) return;
+
+    turnstileWidgetId = window.turnstile.render(turnstileContainer, {
+      sitekey,
+      callback: (token) => {
+        setTurnstileTokenState(Boolean(token));
+      },
+      "expired-callback": () => {
+        setTurnstileTokenState(false);
+      },
+      "error-callback": () => {
+        setTurnstileTokenState(false);
+      }
+    });
+  };
+
+  const resetTurnstile = () => {
+    setTurnstileTokenState(false);
+    try {
+      if (turnstileWidgetId !== null && typeof window.turnstile?.reset === "function") {
+        window.turnstile.reset(turnstileWidgetId);
+      }
+    } catch (error) {
+      // ignore
+    }
+  };
+
+  const previewButton = form.querySelector("[data-operator-preview]");
+  if (previewButton) {
+    previewButton.addEventListener("click", async () => {
+      if (!form.reportValidity()) return;
+      const message = buildOperatorMessage();
+      if (confirmMessage) {
+        confirmMessage.textContent = message;
+      }
+      setOperatorStatus("");
+      await ensureTurnstileWidget();
+      setOperatorFormState("confirm");
+    });
+  }
+
+  const backButton = form.querySelector("[data-operator-confirm-back]");
+  if (backButton) {
+    backButton.addEventListener("click", () => {
+      setOperatorFormState("input");
+      setOperatorStatus("");
+      resetTurnstile();
+    });
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (form.dataset.formState !== "confirm") return;
+    if (!form.reportValidity()) return;
+
+    form.dataset.sending = "true";
+    syncOperatorSubmitState(form);
+    setOperatorStatus(getStatusMessage(statusRoot, "operatorSending"));
+
+    try {
+      const formData = new FormData(form);
+      let turnstileToken = String(formData.get("cf-turnstile-response") || "").trim();
+      try {
+        if (!turnstileToken && turnstileWidgetId !== null && typeof window.turnstile?.getResponse === "function") {
+          turnstileToken = String(window.turnstile.getResponse(turnstileWidgetId) || "").trim();
+        }
+      } catch (error) {
+        turnstileToken = "";
+      }
+      if (!turnstileToken) {
+        setOperatorStatus(getStatusMessage(statusRoot, "operatorTurnstile"), true);
+        return;
+      }
+      formData.set("cf-turnstile-response", turnstileToken);
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+        credentials: "same-origin"
+      });
+
+      let payload = null;
+      try {
+        payload = await response.json();
+      } catch (error) {
+        payload = null;
+      }
+
+      if (!response.ok || !payload?.ok) {
+        const errorKey = payload?.error === "turnstile"
+          ? "operatorTurnstile"
+          : payload?.error === "invalid"
+            ? "operatorInvalid"
+            : payload?.error === "config"
+              ? "operatorConfig"
+            : "operatorError";
+        setOperatorStatus(getStatusMessage(statusRoot, errorKey), true);
+        resetTurnstile();
+        return;
+      }
+
+      form.reset();
+      resetTurnstile();
+      setOperatorStatus(getStatusMessage(statusRoot, "operatorSent"));
+      setOperatorFormState("input");
+    } catch (error) {
+      setOperatorStatus(getStatusMessage(statusRoot, "operatorError"), true);
+      resetTurnstile();
+    } finally {
+      form.dataset.sending = "false";
+      syncOperatorSubmitState(form);
     }
   });
+
+  setOperatorFormState("input");
+  setTurnstileTokenState(false);
 }
 
 function updateReportLinks(root = document) {

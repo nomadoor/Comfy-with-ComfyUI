@@ -157,12 +157,27 @@ Midjourneyの登場で幕を開けた画像生成AIの魅力に取りつかれ�
     <span class="contact-page__field-meta is-required">必須</span>
     <textarea name="body" rows="6" required placeholder="相談内容 / 依頼内容"></textarea>
   </label>
-  <div class="contact-page__actions">
+  <div class="contact-page__actions contact-page__actions--operator">
     <p class="contact-page__status" data-operator-status aria-live="polite"></p>
-    <button type="submit" class="contact-page__submit">確認してメールを開く</button>
+    <button type="button" class="contact-page__submit" data-operator-preview><span class="contact-page__submit-label">確認する</span><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+  </div>
+  <div class="contact-page__confirm" data-operator-confirm hidden>
+    <p class="contact-page__confirm-title">送信内容を確認してください。</p>
+    <pre class="contact-page__confirm-message" data-operator-confirm-message></pre>
+    <div class="contact-page__actions contact-page__actions--confirm contact-page__actions--operator">
+      <p class="contact-page__status" data-operator-status aria-live="polite"></p>
+      <div class="contact-page__operator-controls">
+        <div class="contact-page__turnstile" data-operator-turnstile data-sitekey="{{ site.turnstileSiteKey or 'TURNSTILE_SITEKEY' }}"></div>
+        <div class="contact-page__operator-confirm-buttons">
+          <button type="button" class="contact-page__submit" data-operator-confirm-back><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span class="contact-page__submit-label">編集に戻る</span></button>
+          <button type="submit" class="contact-page__submit" data-operator-send><span class="contact-page__submit-label">この内容で送信</span><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
   </div>
 </form>
 </div>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 ## サポートのお願い
 
