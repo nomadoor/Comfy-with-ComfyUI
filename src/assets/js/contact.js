@@ -3,6 +3,13 @@ const REPORT_LINK_SELECTOR = "[data-contact-report-link]";
 const OPERATOR_FORM_I18N = {
   ja: {
     categoryPlaceholder: "選択してください",
+    pageUrl: "対象ページ:",
+    content: "内容:",
+    screenshotLog: "スクショ/ログ:",
+    topic: "テーマ:",
+    expectation: "期待する内容:",
+    publishAllowSentence: "この内容をサイトに掲載/引用して良い",
+    publishDenySentence: "この内容をサイトに掲載/引用しないでほしい",
     replyTo: "返信用メールアドレス:",
     name: "お名前:",
     category: "ご要件:",
@@ -11,6 +18,13 @@ const OPERATOR_FORM_I18N = {
   },
   en: {
     categoryPlaceholder: "Please select",
+    pageUrl: "Page URL:",
+    content: "Details:",
+    screenshotLog: "Screenshot/Log:",
+    topic: "Topic:",
+    expectation: "What you expect:",
+    publishAllowSentence: "Allow this content to be cited/quoted on the site",
+    publishDenySentence: "Do not allow this content to be cited/quoted on the site",
     replyTo: "Reply-to Email:",
     name: "Name:",
     category: "Category:",
@@ -19,6 +33,13 @@ const OPERATOR_FORM_I18N = {
   },
   zh: {
     categoryPlaceholder: "请选择",
+    pageUrl: "目标页面 URL:",
+    content: "内容:",
+    screenshotLog: "截图/日志:",
+    topic: "主题:",
+    expectation: "期望内容:",
+    publishAllowSentence: "允许在本站刊登/引用这条内容",
+    publishDenySentence: "不允许在本站刊登/引用这条内容",
     replyTo: "回复邮箱地址:",
     name: "姓名:",
     category: "需求分类:",
@@ -27,21 +48,55 @@ const OPERATOR_FORM_I18N = {
   }
 };
 const CONTACT_STATUS_MESSAGES = {
-  sent: "投稿しました。ありがとうございます。",
-  error: "送信に失敗しました。時間をおいて再試行してください。",
-  turnstile: "認証を完了してください。",
-  minLength: "20文字以上で入力してください。",
-  operatorSending: "送信中です...",
-  operatorSent: "送信しました。ありがとうございます。",
-  operatorTurnstile: "認証に失敗しました。再度お試しください。",
-  operatorInvalid: "入力内容を確認してください。",
-  operatorConfig: "サーバ設定エラーです。管理者に連絡してください。",
-  operatorError: "送信に失敗しました。時間をおいて再試行してください。"
+  ja: {
+    sent: "投稿しました。ありがとうございます。",
+    error: "送信に失敗しました。時間をおいて再試行してください。",
+    turnstile: "認証を完了してください。",
+    minLength: "20文字以上で入力してください。",
+    operatorSending: "送信中です...",
+    operatorSent: "送信しました。ありがとうございます。",
+    operatorTurnstile: "認証に失敗しました。再度お試しください。",
+    operatorInvalid: "入力内容を確認してください。",
+    operatorConfig: "サーバ設定エラーです。管理者に連絡してください。",
+    operatorError: "送信に失敗しました。時間をおいて再試行してください。"
+  },
+  en: {
+    sent: "Sent. Thank you.",
+    error: "Failed to send. Please try again shortly.",
+    turnstile: "Please complete the verification.",
+    minLength: "Please enter at least 20 characters.",
+    operatorSending: "Sending...",
+    operatorSent: "Sent. Thank you.",
+    operatorTurnstile: "Verification failed. Please try again.",
+    operatorInvalid: "Please check your input.",
+    operatorConfig: "Server configuration error. Please contact the administrator.",
+    operatorError: "Failed to send. Please try again shortly."
+  },
+  zh: {
+    sent: "已提交，感谢你的反馈。",
+    error: "发送失败，请稍后重试。",
+    turnstile: "请完成验证。",
+    minLength: "请输入至少 20 个字符。",
+    operatorSending: "发送中...",
+    operatorSent: "已发送，感谢你的联系。",
+    operatorTurnstile: "验证失败，请重试。",
+    operatorInvalid: "请检查输入内容。",
+    operatorConfig: "服务器配置错误，请联系管理员。",
+    operatorError: "发送失败，请稍后重试。"
+  }
 };
+
+function resolveContactLocale(root) {
+  const lang = String(root?.dataset?.lang || document.documentElement.lang || "ja")
+    .toLowerCase()
+    .trim();
+  return CONTACT_STATUS_MESSAGES[lang] ? lang : "ja";
+}
 
 function getStatusMessage(root, key) {
   const attrName = `status${key.charAt(0).toUpperCase()}${key.slice(1)}`;
-  return root?.dataset?.[attrName] || CONTACT_STATUS_MESSAGES[key] || "";
+  const locale = resolveContactLocale(root);
+  return root?.dataset?.[attrName] || CONTACT_STATUS_MESSAGES[locale]?.[key] || "";
 }
 
 function getCookieValue(name) {
@@ -54,6 +109,11 @@ function getCookieValue(name) {
     }
   }
   return "";
+}
+
+function resolveOperatorI18n() {
+  const lang = String(document.documentElement.lang || "ja").toLowerCase().trim();
+  return OPERATOR_FORM_I18N[lang] || OPERATOR_FORM_I18N.ja;
 }
 
 function setStatus(node, message, isError = false) {
@@ -165,43 +225,46 @@ function applyContactType(root, type) {
 }
 
 function buildFixMessage(form) {
+  const i18n = resolveOperatorI18n();
   const pageUrl = form.querySelector('input[name="page_url"]')?.value?.trim() || "";
   const body = form.querySelector('textarea[name="message"]')?.value?.trim() || "";
   const extra = form.querySelector('textarea[name="extra"]')?.value?.trim() || "";
   const lines = [
-    "対象ページ:",
+    i18n.pageUrl,
     pageUrl,
     "",
-    "内容:",
+    i18n.content,
     body
   ];
   if (extra) {
-    lines.push("", "スクショ/ログ:", extra);
+    lines.push("", i18n.screenshotLog, extra);
   }
   return lines.join("\n");
 }
 
 function buildRequestMessage(form) {
+  const i18n = resolveOperatorI18n();
   const topic = form.querySelector('input[name="topic"]')?.value?.trim() || "";
   const expectation = form.querySelector('textarea[name="expectation"]')?.value?.trim() || "";
   const lines = [
-    "テーマ:",
+    i18n.topic,
     topic
   ];
   if (expectation) {
-    lines.push("", "期待する内容:", expectation);
+    lines.push("", i18n.expectation, expectation);
   }
   return lines.join("\n");
 }
 
 function buildFeedbackMessage(form) {
+  const i18n = resolveOperatorI18n();
   const body = form.querySelector('textarea[name="message"]')?.value?.trim() || "";
   const publishPermission = form.querySelector('input[name="publish_permission"]:checked')?.value || "deny";
   const publishSentence = publishPermission === "deny"
-    ? "この内容をサイトに掲載/引用しないでほしい"
-    : "この内容をサイトに掲載/引用して良い";
+    ? i18n.publishDenySentence
+    : i18n.publishAllowSentence;
   const lines = [
-    "内容:",
+    i18n.content,
     body,
     "",
     publishSentence
@@ -300,7 +363,10 @@ function renderConfirmMessage(node, message) {
     "期望内容:",
     "この内容をサイトに掲載/引用",
     "Allow this content to be cited/quoted on the site",
+    "Do not allow this content to be cited/quoted on the site",
     "是否允许在本站刊登/引用这条内容",
+    "允许在本站刊登/引用这条内容",
+    "不允许在本站刊登/引用这条内容",
     "返信用メールアドレス:",
     "Reply-to Email:",
     "回复邮箱地址:",
@@ -728,6 +794,7 @@ function wireOperatorForm(root, statusRoot) {
       }
       if (!turnstileToken) {
         setOperatorStatus(getStatusMessage(statusRoot, "operatorTurnstile"), true);
+        resetTurnstile();
         return;
       }
       formData.set("cf-turnstile-response", turnstileToken);
