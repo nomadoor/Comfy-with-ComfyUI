@@ -29,7 +29,7 @@
       data-view="panel"
       data-placement="above"
       data-feedback-endpoint="{{ feedbackEndpoint }}"
-      data-assistant-sitekey="{{ turnstileSitekey }}"
+      data-assistant-sitekey="{{ turnstileSitekey or site.turnstileSiteKey or '' }}"
       data-lang="{{ currentLang }}"
       data-csrf-cookie="{{ csrfCookie }}"
       data-csrf-header="{{ csrfHeader }}"
@@ -116,6 +116,7 @@
                 data-status-endpoint="{{ formStrings.status.endpoint[currentLang] or formStrings.status.endpoint[site.defaultLang] or '' }}"
                 data-status-error="{{ formStrings.status.error[currentLang] or formStrings.status.error[site.defaultLang] or '' }}"
                 data-status-sending="{{ formStrings.status.sending[currentLang] or formStrings.status.sending[site.defaultLang] or '' }}"
+                data-status-turnstile="{{ formStrings.status.turnstile[currentLang] or formStrings.status.turnstile[site.defaultLang] or '認証を完了してください。' }}"
               >
                 {% if panelBody %}
                 <div class="assistant-rail__form-guidance">
@@ -138,23 +139,50 @@
                   ></textarea>
                   <div class="assistant-rail__form-preview" data-confirm-message></div>
                 </label>
+                {% if panel.id == "form-feedback" %}
+                <div class="assistant-rail__consent" role="group" aria-label="{{ formStrings.publishLabel[currentLang] or formStrings.publishLabel[site.defaultLang] or 'この内容をサイトに掲載/引用' }}">
+                  <span class="assistant-rail__consent-label">{{ formStrings.publishLabel[currentLang] or formStrings.publishLabel[site.defaultLang] or "この内容をサイトに掲載/引用" }}</span>
+                  <div class="assistant-rail__consent-segment">
+                    <label class="assistant-rail__consent-option">
+                      <input type="radio" name="{{ panel.id }}-publish-permission" value="allow" />
+                      <span>{{ formStrings.publishAllow[currentLang] or formStrings.publishAllow[site.defaultLang] or "して良い" }}</span>
+                    </label>
+                    <label class="assistant-rail__consent-option">
+                      <input type="radio" name="{{ panel.id }}-publish-permission" value="deny" checked />
+                      <span>{{ formStrings.publishDeny[currentLang] or formStrings.publishDeny[site.defaultLang] or "しないでほしい" }}</span>
+                    </label>
+                  </div>
+                </div>
+                {% endif %}
                 {% set noticeText = formStrings.notice[currentLang] or formStrings.notice[site.defaultLang] %}
                 {% if noticeText %}
                 <p class="assistant-rail__form-notice">{{ noticeText }}</p>
                 {% endif %}
                 <div class="assistant-rail__form-actions">
                   <button type="button" class="assistant-rail__button assistant-rail__button--primary" data-assistant-action="confirm">
-                    {{ formStrings.confirmLabel[currentLang] or formStrings.confirmLabel[site.defaultLang] or "Review" }}
+                    <span class="assistant-rail__button-label">{{ formStrings.confirmLabel[currentLang] or formStrings.confirmLabel[site.defaultLang] or "Review" }}</span>
+                    <svg class="assistant-rail__button-icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
                   </button>
                 </div>
                 <div class="assistant-rail__form-confirm" data-assistant-confirm>
-                  <div class="assistant-rail__form-confirm-actions">
+                  <div class="assistant-rail__form-confirm-controls">
+                    <div class="assistant-rail__turnstile" data-assistant-turnstile data-sitekey="{{ turnstileSitekey or site.turnstileSiteKey or 'TURNSTILE_SITEKEY' }}"></div>
+                    <div class="assistant-rail__form-confirm-actions">
                     <button type="button" class="assistant-rail__button assistant-rail__button--ghost" data-assistant-action="edit">
-                      {{ formStrings.editLabel[currentLang] or formStrings.editLabel[site.defaultLang] or "Edit" }}
+                      <svg class="assistant-rail__button-icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                      </svg>
+                      <span class="assistant-rail__button-label">{{ formStrings.editLabel[currentLang] or formStrings.editLabel[site.defaultLang] or "Edit" }}</span>
                     </button>
                     <button type="button" class="assistant-rail__button assistant-rail__button--primary" data-assistant-action="send">
-                      {{ formStrings.sendLabel[currentLang] or formStrings.sendLabel[site.defaultLang] or "Send" }}
+                      <span class="assistant-rail__button-label">{{ "この内容で送信" if currentLang == "ja" else (formStrings.sendLabel[currentLang] or formStrings.sendLabel[site.defaultLang] or "Send") }}</span>
+                      <svg class="assistant-rail__button-icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
                     </button>
+                  </div>
                   </div>
                 </div>
                 <p class="assistant-rail__form-status" data-form-status aria-live="polite"></p>

@@ -5,6 +5,7 @@ slug: about
 navId: about
 title: "About"
 summary: "About this site"
+searchExclude: true
 tags:
   - about
 permalink: "/{{ lang }}/{{ slug }}/"

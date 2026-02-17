@@ -15,8 +15,9 @@ hero:
 
 ようこそ！**Comfyに使うComfyUI** へ。
 
-ComfyUI の解説は、公式ドキュメントをはじめ優れたものが多く存在します。  
-ただ、初心者が最初につまずくポイントに関する情報が意外と少ないと感じたので、このサイトを作ってみました！
+このサイトは、ただのworkflowの提供ではなく、生成AIの可能性、そしてComfyUIというソフト自体の操作・能力を知ってもらおうと思い作成しました。
+
+テンプレートを使えば、とりあえずモデルを動かすことは出来ますが、そこから自分の思い通りに拡張していくためには、やはり基本の使い方を知っておく必要がありますね。
 
 ベテランユーザーにとっても、ComfyUI がどのように進化しているかを知る良い場所になると思います。
 
@@ -43,7 +44,7 @@ ComfyUI の導入と基本操作を紹介しています。
 画像生成 AI のごく簡単な仕組みもここで解説します。
 
 ### 🗺️ 基本のworkflow
-基本的な Workflow の解説です。  
+基本的な workflow の解説です。  
 ComfyUI のテンプレートと大きくは変わりませんが、よりミニマルで分かりやすい構成にしています。
 
 ### ☹️ FAQ / トラブルシューティング
@@ -64,7 +65,7 @@ ComfyUI のキャンバス上で **Ctrl + V** を押すと、そのまま workfl
 
 テストworkflow:
 
-[](/workflows/begin-with/saving-and-loading-workflows/Stable_Diffusion_1.5.json)
+[Stable_Diffusion_1.5.json](/workflows/begin-with/saving-and-loading-workflows/Stable_Diffusion_1.5.json)
 
 ぜひ活用してください！
 
@@ -83,16 +84,21 @@ ComfyUI のキャンバス上で **Ctrl + V** を押すと、そのまま workfl
 
 ---
 
-## 質問・修正報告
+## お問い合わせ
 
-![](https://gyazo.com/c2cf37c0b9ae094cb7cbf526eb15d797){gyazo=loop}
+サイトの修正報告・記事リクエスト・感想は、お問い合わせページの[「サイトに関すること」](/ja/contact/#サイトに関すること)から送れます（[GitHub Issue](https://github.com/nomadoor/Comfy-with-ComfyUI/issues)でもOKです）。
 
-画面右下には、ComfyUI のノードを掴んで混乱しているアシスタント（？）が常駐しています😏 マウスホバーしてみてください。
+PCでは画面右下のアイコンからも送れます（表示されない環境もあります）。
 
-誤字の報告、内容の訂正、解説してほしいテーマのリクエストなど、気軽に送ってください。
+作者への連絡は、お問い合わせページの[「このサイトを作った人」](/ja/contact/#このサイトを作った人)からどうぞ。
 
-[GitHub issue](https://github.com/nomadoor/Comfy-with-ComfyUI/issues) に投げてもいいですし、[私に直接連絡](/ja/about/#このサイトを作った人) していただいても大丈夫です。
+---
 
+## ライセンス
+
+このサイトに掲載されている文章、workflow、画像は全て **CC0** です。
+
+楽しく自由に使ってくださいな |дﾟ)
 
 ---
 

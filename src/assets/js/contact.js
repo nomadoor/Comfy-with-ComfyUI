@@ -3,6 +3,8 @@ const REPORT_LINK_SELECTOR = "[data-contact-report-link]";
 const CONTACT_STATUS_MESSAGES = {
   sent: "投稿しました。ありがとうございます。",
   error: "送信に失敗しました。時間をおいて再試行してください。",
+  turnstile: "認証を完了してください。",
+  minLength: "20文字以上で入力してください。",
   operatorSending: "送信中です...",
   operatorSent: "送信しました。ありがとうございます。",
   operatorTurnstile: "認証に失敗しました。再度お試しください。",
@@ -141,8 +143,8 @@ function buildFixMessage(form) {
   const body = form.querySelector('textarea[name="message"]')?.value?.trim() || "";
   const extra = form.querySelector('textarea[name="extra"]')?.value?.trim() || "";
   const lines = [
-    "修正・誤字報告",
-    `対象ページ: ${pageUrl}`,
+    "対象ページ:",
+    pageUrl,
     "",
     "内容:",
     body
@@ -157,8 +159,8 @@ function buildRequestMessage(form) {
   const topic = form.querySelector('input[name="topic"]')?.value?.trim() || "";
   const expectation = form.querySelector('textarea[name="expectation"]')?.value?.trim() || "";
   const lines = [
-    "記事リクエスト",
-    `テーマ: ${topic}`
+    "テーマ:",
+    topic
   ];
   if (expectation) {
     lines.push("", "期待する内容:", expectation);
@@ -187,7 +189,7 @@ function mapSubmitTypeToEndpointType(submitType) {
   return "report";
 }
 
-async function submitToTipsEndpoint(submitType, message, sourceUrl) {
+async function submitToTipsEndpoint(submitType, message, sourceUrl, turnstileToken = "") {
   const rail = document.querySelector(".assistant-rail");
   if (!rail) return false;
   const endpoint = (rail.dataset.feedbackEndpoint || "").trim();
@@ -211,12 +213,20 @@ async function submitToTipsEndpoint(submitType, message, sourceUrl) {
       message,
       url: sourceUrl || window.location.href,
       lang: document.documentElement.lang || "ja",
-      turnstileToken: "",
+      turnstileToken: String(turnstileToken || ""),
       labels: endpointType === "report" ? ["report"] : []
     })
   });
 
   return response.ok;
+}
+
+async function waitForTurnstile() {
+  for (let i = 0; i < 40; i += 1) {
+    if (window.turnstile?.render) return true;
+    await new Promise((resolve) => window.setTimeout(resolve, 50));
+  }
+  return false;
 }
 
 function buildContactMessage(form, submitType) {
@@ -259,20 +269,28 @@ function renderConfirmMessage(node, message) {
     "ご相談内容:",
     "環境:"
   ];
+  const hiddenSingleLines = new Set([
+    "記事リクエスト",
+    "修正・誤字報告",
+    "修正・語時報告",
+    "感想・その他"
+  ]);
 
   const html = String(message || "")
     .split("\n")
     .map((line) => {
-      if (!line.trim()) return "";
+      const trimmed = line.trim();
+      if (!trimmed) return "";
+      if (hiddenSingleLines.has(trimmed)) return "";
       const matched = labelPrefixes.find((prefix) => line.startsWith(prefix));
       if (!matched) {
-        return `<span class="contact-page__confirm-value">${escapeHtml(line)}</span>`;
+        return `<span class="contact-page__confirm-value">${escapeHtml(trimmed)}</span>`;
       }
       const value = line.slice(matched.length).trimStart();
       if (!value) {
         return `<span class="contact-page__confirm-label">${escapeHtml(matched)}</span>`;
       }
-      return `<span class="contact-page__confirm-label">${escapeHtml(matched)}</span> <span class="contact-page__confirm-value">${escapeHtml(value)}</span>`;
+      return `<span class="contact-page__confirm-label">${escapeHtml(matched)}</span>\n<span class="contact-page__confirm-value">${escapeHtml(value)}</span>`;
     })
     .join("\n");
 
@@ -286,7 +304,62 @@ function setContactConfirmMessage(form, message) {
 
 function wireContactForms(root) {
   const forms = root.querySelectorAll("[data-contact-form]");
+  const turnstileStateMap = new WeakMap();
+
   forms.forEach((form) => {
+    const turnstileContainer = form.querySelector("[data-contact-turnstile]");
+    let widgetId = null;
+
+    const setTurnstileTokenState = (hasToken) => {
+      form.dataset.turnstileTokenReady = hasToken ? "true" : "false";
+      const sendButton = form.querySelector("[data-contact-confirm-send]");
+      if (sendButton) {
+        const isConfirmState = form.dataset.formState === "confirm";
+        sendButton.disabled = !isConfirmState || !hasToken || form.dataset.sending === "true";
+      }
+    };
+
+    const ensureTurnstileWidget = async () => {
+      if (!turnstileContainer || widgetId !== null) return;
+      const sitekey = (turnstileContainer.dataset.sitekey || "").trim();
+      if (!sitekey) return;
+      const ready = await waitForTurnstile();
+      if (!ready || !window.turnstile?.render) return;
+
+      widgetId = window.turnstile.render(turnstileContainer, {
+        sitekey,
+        callback: (token) => {
+          setTurnstileTokenState(Boolean(token));
+        },
+        "expired-callback": () => {
+          setTurnstileTokenState(false);
+        },
+        "error-callback": () => {
+          setTurnstileTokenState(false);
+        }
+      });
+    };
+
+    const resetTurnstile = () => {
+      setTurnstileTokenState(false);
+      try {
+        if (widgetId !== null && typeof window.turnstile?.reset === "function") {
+          window.turnstile.reset(widgetId);
+        }
+      } catch (error) {
+        // ignore
+      }
+    };
+
+    turnstileStateMap.set(form, {
+      getWidgetId: () => widgetId,
+      ensureTurnstileWidget,
+      resetTurnstile,
+      hasContainer: Boolean(turnstileContainer)
+    });
+
+    setTurnstileTokenState(false);
+
     const fields = form.querySelectorAll("input, textarea, select");
     fields.forEach((field) => {
       field.addEventListener("input", () => syncContactSubmitState(form));
@@ -318,10 +391,23 @@ function wireContactForms(root) {
 
   const submitButtons = root.querySelectorAll("[data-contact-submit]");
   submitButtons.forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", async () => {
       const form = button.closest("form");
-      const status = form?.querySelector("[data-contact-status]");
+      const statusNodes = form?.querySelectorAll("[data-contact-status]");
+      const setContactStatus = (message, isError = false) => {
+        statusNodes?.forEach((node) => setStatus(node, message, isError));
+      };
       if (!form) return;
+      const minLength = Number.parseInt(form.dataset.contactMessageMinLength || "0", 10);
+      if (minLength > 0) {
+        const messageField = form.querySelector('textarea[name="message"]');
+        const length = messageField?.value?.trim().length || 0;
+        if (length < minLength) {
+          setContactStatus(getStatusMessage(root, "minLength"), true);
+          messageField?.focus();
+          return;
+        }
+      }
       if (!form.reportValidity()) return;
 
       const submitType = button.dataset.contactSubmitType;
@@ -333,7 +419,13 @@ function wireContactForms(root) {
       form.dataset.contactPendingMessage = message;
       setContactConfirmMessage(form, message);
       setContactFormState(form, "confirm");
-      setStatus(status, "");
+      setContactStatus("");
+
+      const turnstileState = turnstileStateMap.get(form);
+      if (turnstileState?.hasContainer) {
+        await turnstileState.ensureTurnstileWidget();
+        turnstileState.resetTurnstile();
+      }
     });
   });
 
@@ -342,6 +434,10 @@ function wireContactForms(root) {
     button.addEventListener("click", () => {
       const form = button.closest("form");
       if (!form) return;
+      const turnstileState = turnstileStateMap.get(form);
+      if (turnstileState?.hasContainer) {
+        turnstileState.resetTurnstile();
+      }
       setContactFormState(form, "input");
     });
   });
@@ -350,24 +446,46 @@ function wireContactForms(root) {
   confirmSendButtons.forEach((button) => {
     button.addEventListener("click", async () => {
       const form = button.closest("form");
-      const status = form?.querySelector("[data-contact-status]");
+      const statusNodes = form?.querySelectorAll("[data-contact-status]");
+      const setContactStatus = (message, isError = false) => {
+        statusNodes?.forEach((node) => setStatus(node, message, isError));
+      };
       if (!form) return;
       const submitType = form.dataset.contactSubmitType || "form-correction";
       const sourceUrl = form.dataset.contactSourceUrl || window.location.href;
       const message = form.dataset.contactPendingMessage || buildContactMessage(form, submitType);
+      const turnstileState = turnstileStateMap.get(form);
+      const widgetId = turnstileState?.getWidgetId?.();
+
+      let turnstileToken = "";
+      try {
+        if (widgetId !== null && typeof window.turnstile?.getResponse === "function") {
+          turnstileToken = String(window.turnstile.getResponse(widgetId) || "").trim();
+        }
+      } catch (error) {
+        turnstileToken = "";
+      }
+
+      if (!turnstileToken) {
+        setContactStatus(getStatusMessage(root, "turnstile"), true);
+        return;
+      }
 
       try {
-        const sent = await submitToTipsEndpoint(submitType, message, sourceUrl);
+        const sent = await submitToTipsEndpoint(submitType, message, sourceUrl, turnstileToken);
         if (sent) {
           setContactFormState(form, "input");
           form.reset();
-          setStatus(status, getStatusMessage(root, "sent"));
+          setContactStatus(getStatusMessage(root, "sent"));
+          if (turnstileState?.hasContainer) {
+            turnstileState.resetTurnstile();
+          }
           syncContactSubmitState(form);
         } else {
-          setStatus(status, getStatusMessage(root, "error"), true);
+          setContactStatus(getStatusMessage(root, "error"), true);
         }
       } catch (error) {
-        setStatus(status, getStatusMessage(root, "error"), true);
+        setContactStatus(getStatusMessage(root, "error"), true);
       }
     });
   });
@@ -485,14 +603,6 @@ function wireOperatorForm(root, statusRoot) {
   const setTurnstileTokenState = (hasToken) => {
     form.dataset.turnstileTokenReady = hasToken ? "true" : "false";
     syncOperatorSubmitState(form);
-  };
-
-  const waitForTurnstile = async () => {
-    for (let i = 0; i < 40; i += 1) {
-      if (window.turnstile?.render) return true;
-      await new Promise((resolve) => window.setTimeout(resolve, 50));
-    }
-    return false;
   };
 
   const ensureTurnstileWidget = async () => {

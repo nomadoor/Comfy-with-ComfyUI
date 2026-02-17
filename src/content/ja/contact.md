@@ -26,7 +26,7 @@ hero:
 <button type="button" class="contact-page__segment-btn" data-contact-type-btn="request" aria-pressed="false"><span class="contact-page__segment-label">記事リクエスト</span></button>
 <button type="button" class="contact-page__segment-btn" data-contact-type-btn="feedback" aria-pressed="false"><span class="contact-page__segment-label">感想・その他</span></button>
 </div>
-<form class="contact-page__form" data-contact-form="fix" novalidate>
+<form class="contact-page__form" data-contact-form="fix" data-contact-message-min-length="20" novalidate>
 <p class="contact-page__form-description">
 内容の不備・誤字などがあった場合は、対象ページのURLとともに、以下のフォームよりお知らせください。
 </p>
@@ -53,8 +53,14 @@ hero:
 <p class="contact-page__confirm-title">送信内容を確認してください。</p>
 <pre class="contact-page__confirm-message" data-contact-confirm-message></pre>
 <div class="contact-page__actions contact-page__actions--confirm">
+<p class="contact-page__status" data-contact-status aria-live="polite"></p>
+<div class="contact-page__confirm-controls">
+<div class="contact-page__turnstile" data-contact-turnstile data-sitekey="{{ site.turnstileSiteKey or 'TURNSTILE_SITEKEY' }}"></div>
+<div class="contact-page__confirm-buttons">
 <button type="button" class="contact-page__submit" data-contact-confirm-back><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span class="contact-page__submit-label">編集に戻る</span></button>
 <button type="button" class="contact-page__submit" data-contact-confirm-send><span class="contact-page__submit-label">この内容で送信</span><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+</div>
+</div>
 </div>
 </div>
 </form>
@@ -81,12 +87,18 @@ hero:
 <p class="contact-page__confirm-title">送信内容を確認してください。</p>
 <pre class="contact-page__confirm-message" data-contact-confirm-message></pre>
 <div class="contact-page__actions contact-page__actions--confirm">
+<p class="contact-page__status" data-contact-status aria-live="polite"></p>
+<div class="contact-page__confirm-controls">
+<div class="contact-page__turnstile" data-contact-turnstile data-sitekey="{{ site.turnstileSiteKey or 'TURNSTILE_SITEKEY' }}"></div>
+<div class="contact-page__confirm-buttons">
 <button type="button" class="contact-page__submit" data-contact-confirm-back><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span class="contact-page__submit-label">編集に戻る</span></button>
 <button type="button" class="contact-page__submit" data-contact-confirm-send><span class="contact-page__submit-label">この内容で送信</span><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
 </div>
 </div>
+</div>
+</div>
 </form>
-<form class="contact-page__form" data-contact-form="feedback" hidden novalidate>
+<form class="contact-page__form" data-contact-form="feedback" data-contact-message-min-length="20" hidden novalidate>
 <p class="contact-page__form-description">
 応援の言葉、お叱りの言葉、どんなものでもモチベーションになります。いつもありがとうございます！
 </p>
@@ -116,8 +128,14 @@ hero:
 <p class="contact-page__confirm-title">送信内容を確認してください。</p>
 <pre class="contact-page__confirm-message" data-contact-confirm-message></pre>
 <div class="contact-page__actions contact-page__actions--confirm">
+<p class="contact-page__status" data-contact-status aria-live="polite"></p>
+<div class="contact-page__confirm-controls">
+<div class="contact-page__turnstile" data-contact-turnstile data-sitekey="{{ site.turnstileSiteKey or 'TURNSTILE_SITEKEY' }}"></div>
+<div class="contact-page__confirm-buttons">
 <button type="button" class="contact-page__submit" data-contact-confirm-back><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span class="contact-page__submit-label">編集に戻る</span></button>
 <button type="button" class="contact-page__submit" data-contact-confirm-send><span class="contact-page__submit-label">この内容で送信</span><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+</div>
+</div>
 </div>
 </div>
 </form>
