@@ -8,7 +8,7 @@
 ## 1. Content & Routing
 - Routes follow `/<lang>/<section>/<slug>/` with kebab-case slugs that match nav/data.
 - `lang` is one of `ja`, `en`, `zh`.
-- Exceptions: `about` and `news` are standalone pages and use `/<lang>/<slug>/` without `section`.
+- Exceptions: `about`, `news`, and `contact` are standalone pages and use `/<lang>/<slug>/` without `section`.
 - Markdown lives under `src/content/<lang>/`; workflows sit in `src/workflows/<slug>/*.json`; shared data under `_data`.
 - Front matter requires `slug` and `title`. `tags` は任意（最大5件）。ただし **`ai-capabilities` セクションは原則 tags なし**。例外的に付ける場合はオーナー指示と `/ops` 合意を先に取る。`draft: true` で非公開化。
 
@@ -35,6 +35,37 @@
 - Ordering follows `_data/nav.<lang>.yml` within the current locale.
 - Each link uses a simple caret + page title label.
 - Hide the previous or next link if it does not exist.
+
+## 3.6 Footer Navigation
+- Footer primary navigation is fixed to four links:
+  - How to use this site
+  - Updates (route remains `/news/`)
+  - Contact
+  - GitHub
+- `About` is not part of the primary footer navigation.
+
+## 3.7 Contact Page (`/contact/`)
+- `/contact/` is a standalone page and must provide two hubs under `#site`:
+  - correction/bug reports
+  - article requests
+- Both forms remain mounted in the DOM to avoid layout jumps; toggling is done with visual state + disabled controls (no `display: none` for the form containers).
+- Query handling:
+  - `type=fix|request` sets the initial selected hub.
+  - `url=<page-url>` prefills the correction URL input.
+- Article pages provide a footer shortcut link to contact:
+  - `/contact/?type=fix&url=<current_url>#site`
+
+## 3.8 Contact Page (`/contact/`) Operator Form
+- The operator form on `/contact/` must submit directly to `POST /api/contact` (no `mailto:` flow).
+- Frontend requirements:
+  - Use a two-step flow: input -> confirmation -> send.
+  - Render Cloudflare Turnstile widget (`cf-turnstile`) on the confirmation state (not the initial input state).
+  - Submit via `fetch("/api/contact", { method: "POST", body: new FormData(form) })`.
+  - Disable the submit button while sending, show localized success/error status, and reset the form on success.
+- Backend requirements (Cloudflare Pages Functions):
+  - `functions/api/contact.ts` handles `POST /api/contact`.
+  - Validate `cf-turnstile-response` against Turnstile `siteverify` with `TURNSTILE_SECRET`.
+  - Send validated messages via Resend using `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, `CONTACT_TO_EMAIL`.
 
 ## 4. Workflow JSON Block
 - Render `<filename>.json  [Copy]  [Download]` for each workflow entry.

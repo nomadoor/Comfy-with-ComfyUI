@@ -1,5 +1,6 @@
 {
   "url": "https://comfyui.nomadoor.net",
+  "turnstileSiteKey": "0x4AAAAAACeNHt46k6LVf5wp",
   "ogImage": "/assets/logos/favicon/favicon_256.png",
   "defaultLang": "ja",
   "name": {
@@ -201,7 +202,7 @@
           "id": "form-correction",
           "type": "form",
           "title": {
-            "ja": "このページに間違いがあります！",
+            "ja": "修正・誤字報告",
             "en": "This page has an issue!",
             "zh": "这个页面有问题！"
           },
@@ -234,7 +235,7 @@
           "id": "form-request",
           "type": "form",
           "title": {
-            "ja": "これについても書いてください！",
+            "ja": "記事リクエスト",
             "en": "Please explain more!",
             "zh": "请补充讲解！"
           },
@@ -258,6 +259,38 @@
               "ja": "追記リクエスト",
               "en": "Expansion request",
               "zh": "补充请求"
+            },
+            "attachUrl": true
+          }
+        },
+        {
+          "id": "form-feedback",
+          "type": "form",
+          "title": {
+            "ja": "感想・その他",
+            "en": "Feedback / Other",
+            "zh": "感想 / 其他"
+          },
+          "summary": {
+            "ja": "感想や相談前のメモなど、自由に送れます。",
+            "en": "Share general feedback or notes.",
+            "zh": "可提交一般反馈或其他说明。"
+          },
+          "body": {
+            "ja": "気づいたことや改善アイデアなどを自由に送ってください。",
+            "en": "Feel free to share ideas, impressions, or anything else.",
+            "zh": "欢迎提交你的想法、印象或其他建议。"
+          },
+          "form": {
+            "placeholder": {
+              "ja": "感想、気づき、その他の連絡内容を書いてください",
+              "en": "Write your feedback, ideas, or other notes",
+              "zh": "请填写你的反馈、想法或其他内容"
+            },
+            "successDetail": {
+              "ja": "感想・その他",
+              "en": "Feedback / Other",
+              "zh": "感想 / 其他"
             },
             "attachUrl": true,
             "minLength": 20
@@ -286,7 +319,7 @@
           "zh": "返回编辑"
         },
         "confirmBody": {
-          "ja": "送信前に内容を確認してください。匿名でGitHub Issueを作成します。",
+          "ja": "送信前に内容を確認してください。",
           "en": "Double-check before sending. We'll create an anonymous GitHub issue.",
           "zh": "发送前请确认内容。我们会创建匿名的 GitHub Issue。"
         },
@@ -294,6 +327,21 @@
           "ja": "GitHub Issueに送信します。個人情報は書かないでください。",
           "en": "We'll file a GitHub issue—please avoid personal data.",
           "zh": "将提交到 GitHub Issue，请勿填写个人信息。"
+        },
+        "publishLabel": {
+          "ja": "この内容をサイトに掲載/引用",
+          "en": "Allow site citation/use",
+          "zh": "允许站点引用/刊登"
+        },
+        "publishAllow": {
+          "ja": "して良い",
+          "en": "Allow",
+          "zh": "允许"
+        },
+        "publishDeny": {
+          "ja": "しないでほしい",
+          "en": "Do not allow",
+          "zh": "请勿引用"
         },
         "status": {
           "sending": {

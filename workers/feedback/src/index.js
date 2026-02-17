@@ -1,5 +1,10 @@
 const ipHits = new Map();
 const MAX_IP_ENTRIES = 1000;
+const ALLOWED_ISSUE_LABELS = new Set([
+  "report",
+  "request",
+  "feedback"
+]);
 
 export default {
   async fetch(request, env) {
@@ -19,7 +24,14 @@ export default {
       return cors(new Response("Invalid JSON", { status: 400 }), env, request);
     }
 
-    const { type = "report", message = "", url = "", lang = "ja", turnstileToken = "" } = body;
+    const {
+      type = "report",
+      message = "",
+      url = "",
+      lang = "ja",
+      turnstileToken = "",
+      labels = []
+    } = body;
     const text = (message || "").trim();
     if (text.length < 20) return cors(new Response("Message too short", { status: 400 }), env, request);
     if (text.length > 1200) return cors(new Response("Message too long", { status: 400 }), env, request);
@@ -36,10 +48,11 @@ export default {
     return cors(new Response("Too Many Requests", { status: 429 }), env, request);
   }
 
-  const kind = type === "request" ? "request" : "report";
-  const pageUrl = url && isValidOriginUrl(url, env) ? url : "N/A";
-  const title = `[${kind}] ${titleFromUrl(pageUrl)}`;
-  const userAgent = request.headers.get("user-agent") || "";
+    const kind = normalizeType(type);
+    const pageUrl = url && isValidOriginUrl(url, env) ? url : "N/A";
+    const title = `[${kind}] ${titleFromUrl(pageUrl)}`;
+    const userAgent = request.headers.get("user-agent") || "";
+    const requestedLabels = sanitizeRequestedLabels(labels);
 
     const issueBody = [
       text,
@@ -69,7 +82,7 @@ export default {
       body: JSON.stringify({
         title,
         body: issueBody,
-        labels: ["assistant-feedback", kind, `lang:${lang}`].filter(Boolean)
+        labels: buildIssueLabels(kind, lang, requestedLabels)
       })
     });
 
@@ -175,6 +188,36 @@ function titleFromUrl(raw) {
   } catch {
     return "feedback";
   }
+}
+
+function normalizeType(type) {
+  const value = typeof type === "string" ? type.trim().toLowerCase() : "";
+  if (value === "request" || value === "form-request") return "request";
+  if (value === "feedback" || value === "form-feedback") return "feedback";
+  if (value === "report" || value === "form-correction") return "report";
+  return "report";
+}
+
+function normalizeLabel(label) {
+  return typeof label === "string" ? label.trim().toLowerCase() : "";
+}
+
+function sanitizeRequestedLabels(labels) {
+  if (!Array.isArray(labels)) return [];
+  return labels
+    .map(normalizeLabel)
+    .filter((label) => label && ALLOWED_ISSUE_LABELS.has(label));
+}
+
+function buildIssueLabels(kind, lang, requestedLabels = []) {
+  const labelSet = new Set(["assistant-feedback", `lang:${lang}`]);
+  if (kind === "report") {
+    labelSet.add("report");
+  } else {
+    labelSet.add(kind);
+  }
+  sanitizeRequestedLabels(requestedLabels).forEach((label) => labelSet.add(label));
+  return Array.from(labelSet);
 }
 
 function cors(response, env, request) {

@@ -90,12 +90,6 @@
     </div>
   </div>
   <div class="sidebar__footer">
-    <div class="sidebar__about">
-      <a href="/{{ lang }}/about/" class="sidebar__about-link">
-        <span class="sidebar__footer-icon">{{ icon("user-2") }}</span>
-        <span>About</span>
-      </a>
-    </div>
     <div class="sidebar__controls">
       <div class="sidebar__lang">
 
@@ -126,7 +120,7 @@
         <div class="lang-menu" data-lang-menu role="menu">
 
           {% set currentSlug = currentNavId or slug or 'how-to-use-this-site' %}
-          {% set isStandalone = (not sectionExists) and (currentSlug == 'news' or currentSlug == 'about') %}
+          {% set isStandalone = (not sectionExists) and (currentSlug == 'news' or currentSlug == 'about' or currentSlug == 'contact') %}
 
           {% for option in site.languages %}
 

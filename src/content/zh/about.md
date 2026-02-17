@@ -5,6 +5,7 @@ slug: about
 navId: about
 title: "About"
 summary: "关于本站"
+searchExclude: true
 tags:
   - about
 permalink: "/{{ lang }}/{{ slug }}/"

@@ -100,6 +100,14 @@ class AssistantRail {
     this.resetButtons.forEach((button) => {
       button.addEventListener("click", () => this.resetToPanel(true));
     });
+
+    this.root.addEventListener("assistant:open", (event) => {
+      const detail = event.detail || {};
+      const opened = this.openFromExternal(detail.viewId, detail.message);
+      if (detail && typeof detail === "object") {
+        detail.handled = opened;
+      }
+    });
   }
 
   initForms() {
@@ -214,6 +222,24 @@ class AssistantRail {
     this.openView("submitted");
   }
 
+  openFromExternal(viewId, message = "") {
+    if (!viewId) return false;
+    const targetView = this.views.find((view) => view.dataset.assistantView === viewId);
+    if (!targetView) return false;
+    this.openView(viewId);
+
+    const targetForm = targetView.querySelector("[data-assistant-form]");
+    const textarea = targetForm?.querySelector("textarea");
+    if (textarea) {
+      textarea.value = typeof message === "string" ? message : "";
+      textarea.dispatchEvent(new Event("input", { bubbles: true }));
+    }
+
+    const controller = this.forms.find((item) => item.form === targetForm);
+    controller?.setState("input");
+    return true;
+  }
+
   update() {
     if (this.currentView !== "panel") {
       this.isExpanded = true;
@@ -287,11 +313,17 @@ class AssistantFormController {
     this.endpointMessage = form.dataset.statusEndpoint || "";
     this.errorMessage = form.dataset.statusError || "";
     this.sendingMessage = form.dataset.statusSending || "";
+    this.turnstileMessage = form.dataset.statusTurnstile || "認証を完了してください。";
     this.successDetail = form.dataset.successDetail || "";
     this.type = form.dataset.formType || "feedback";
     this.state = "input";
     this.isSending = false;
     this.turnstileSitekey = rail.turnstileSitekey || "";
+    this.turnstileContainer = form.querySelector("[data-assistant-turnstile]");
+    this.turnstileWidgetId = null;
+    this.turnstileTokenReady = false;
+    this.publishPermissionInputs = Array.from(form.querySelectorAll('input[name$="-publish-permission"]'));
+    this.hasPublishPermission = this.publishPermissionInputs.length > 0;
 
     this.form.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -303,7 +335,10 @@ class AssistantFormController {
 
   bindFormEvents() {
     this.confirmButton?.addEventListener("click", () => this.confirm());
-    this.editButton?.addEventListener("click", () => this.setState("input"));
+    this.editButton?.addEventListener("click", () => {
+      this.setState("input");
+      this.resetTurnstile();
+    });
     this.sendButton?.addEventListener("click", () => this.submit());
   }
 
@@ -319,22 +354,58 @@ class AssistantFormController {
     if (state === "input" && this.previewNode) {
       this.previewNode.textContent = "";
     }
+    this.updateSendState();
   }
 
   getMessage() {
     return this.textarea ? this.textarea.value.trim() : "";
   }
 
-  confirm() {
+  getPublishPermissionValue() {
+    if (!this.hasPublishPermission) return "deny";
+    const checked = this.form.querySelector('input[name$="-publish-permission"]:checked');
+    return checked?.value === "allow" ? "allow" : "deny";
+  }
+
+  getPublishPermissionSentence() {
+    if (!this.hasPublishPermission) return "";
+    const value = this.getPublishPermissionValue();
+    const lang = String(this.rail.lang || document.documentElement.lang || "ja").slice(0, 2);
+    if (lang === "en") {
+      return value === "allow"
+        ? "This content may be cited/quoted on the site."
+        : "Please do not cite/quote this content on the site.";
+    }
+    if (lang === "zh") {
+      return value === "allow"
+        ? "此内容可以在网站上引用/刊登。"
+        : "请不要在网站上引用/刊登此内容。";
+    }
+    return value === "allow"
+      ? "この内容をサイトに掲載/引用して良い"
+      : "この内容をサイトに掲載/引用しないでほしい";
+  }
+
+  getSubmissionMessage() {
+    const message = this.getMessage();
+    const consentSentence = this.getPublishPermissionSentence();
+    if (!consentSentence) return message;
+    return `${message}\n\n${consentSentence}`;
+  }
+
+  async confirm() {
     const message = this.getMessage();
     if (message.length < this.minLength) {
       this.showStatus(this.validationMessage);
       return;
     }
     if (this.previewNode) {
-      this.previewNode.textContent = message;
+      this.previewNode.textContent = this.getSubmissionMessage();
     }
     this.setState("confirm");
+    await this.ensureTurnstileWidget();
+    this.resetTurnstile();
+    this.updateSendState();
   }
 
   async submit() {
@@ -344,17 +415,18 @@ class AssistantFormController {
       this.showStatus(this.endpointMessage);
       return;
     }
-    const message = this.getMessage();
+    const message = this.getSubmissionMessage();
     this.isSending = true;
+    this.updateSendState();
     this.showStatus(this.sendingMessage);
     try {
       const urlValue = this.includeUrl ? window.location.href : "";
-      let turnstileToken = "";
-      if (this.turnstileSitekey) {
-        turnstileToken = await executeTurnstile(this.turnstileSitekey);
-        if (!turnstileToken) {
-          throw new Error("Turnstile token missing");
-        }
+      let turnstileToken = this.getTurnstileToken();
+      if (this.turnstileSitekey && !turnstileToken) {
+        this.showStatus(this.turnstileMessage);
+        this.isSending = false;
+        this.updateSendState();
+        return;
       }
       const payload = {
         type: this.type,
@@ -382,10 +454,12 @@ class AssistantFormController {
       this.form.reset();
       this.setState("input");
       this.isSending = false;
+      this.resetTurnstile();
       this.showStatus("");
       this.rail.showSubmitted(this.successDetail);
     } catch (error) {
       this.isSending = false;
+      this.updateSendState();
       this.showStatus(this.errorMessage || error.message);
     }
   }
@@ -406,7 +480,60 @@ class AssistantFormController {
     this.isSending = false;
     this.form.reset();
     this.setState("input");
+    this.resetTurnstile();
     this.showStatus("");
+  }
+
+  updateSendState() {
+    if (!this.sendButton) return;
+    const needsTurnstile = Boolean(this.turnstileSitekey);
+    const canSend = this.state === "confirm" && !this.isSending && (!needsTurnstile || this.turnstileTokenReady);
+    this.sendButton.disabled = !canSend;
+  }
+
+  async ensureTurnstileWidget() {
+    if (!this.turnstileSitekey || !this.turnstileContainer || this.turnstileWidgetId !== null) return;
+    await ensureTurnstile();
+    if (!window.turnstile?.render) return;
+
+    this.turnstileWidgetId = window.turnstile.render(this.turnstileContainer, {
+      sitekey: this.turnstileSitekey,
+      callback: (token) => {
+        this.turnstileTokenReady = Boolean(token);
+        this.updateSendState();
+      },
+      "expired-callback": () => {
+        this.turnstileTokenReady = false;
+        this.updateSendState();
+      },
+      "error-callback": () => {
+        this.turnstileTokenReady = false;
+        this.updateSendState();
+      }
+    });
+  }
+
+  resetTurnstile() {
+    if (!this.turnstileSitekey) return;
+    this.turnstileTokenReady = false;
+    if (this.turnstileWidgetId !== null && typeof window.turnstile?.reset === "function") {
+      try {
+        window.turnstile.reset(this.turnstileWidgetId);
+      } catch (error) {
+        // ignore
+      }
+    }
+    this.updateSendState();
+  }
+
+  getTurnstileToken() {
+    if (!this.turnstileSitekey) return "";
+    if (this.turnstileWidgetId === null || typeof window.turnstile?.getResponse !== "function") return "";
+    try {
+      return String(window.turnstile.getResponse(this.turnstileWidgetId) || "").trim();
+    } catch (error) {
+      return "";
+    }
   }
 }
 
@@ -439,38 +566,3 @@ function ensureTurnstile() {
   return turnstileReadyPromise;
 }
 
-async function executeTurnstile(sitekey) {
-  await ensureTurnstile();
-  if (!window.turnstile) throw new Error("Turnstile not available");
-  return new Promise((resolve, reject) => {
-    const container = document.createElement("div");
-    container.style.display = "none";
-    document.body.appendChild(container);
-    const widgetId = window.turnstile.render(container, {
-      sitekey,
-      size: "invisible",
-      callback: (token) => {
-        cleanup();
-        resolve(token);
-      },
-      "error-callback": () => {
-        cleanup();
-        reject(new Error("Turnstile error"));
-      },
-      "expired-callback": () => {
-        cleanup();
-        reject(new Error("Turnstile expired"));
-      }
-    });
-    window.turnstile.execute(widgetId);
-
-    function cleanup() {
-      try {
-        window.turnstile.remove(widgetId);
-      } catch (e) {
-        // ignore
-      }
-      container.remove();
-    }
-  });
-}

@@ -77,6 +77,22 @@ layout: base.njk
 {% set navSectionKey = section or null %}
 {% set navCurrentId = navId or slug %}
 {% set navPrevNext = navLocale | navPrevNext(navSectionKey, navCurrentId) %}
+{% if section %}
+  <p class="article-contact-link">
+    <a class="article-contact-link__anchor" href="/{{ currentLang }}/contact/?type=fix&url={{ page.url }}#site" data-contact-report-link data-router-ignore>
+      <span class="article-contact-link__icon" aria-hidden="true">{{ icon("edit-4") }}</span>
+      <span class="article-contact-link__text">
+        {% if currentLang == "ja" %}
+          このページの修正を報告
+        {% elseif currentLang == "zh" %}
+          反馈此页面的修正
+        {% else %}
+          Report a correction for this page
+        {% endif %}
+      </span>
+    </a>
+  </p>
+{% endif %}
 {% if navPrevNext and (navPrevNext.prev or navPrevNext.next) %}
   <section class="article-pagination" aria-label="{% if currentLang == 'ja' %}ページ移動{% else %}Page navigation{% endif %}">
     <div class="article-pagination__inner">
@@ -115,8 +131,12 @@ layout: base.njk
       </div>
       <div class="article-footer__links">
         <a class="article-footer__link" href="/{{ currentLang }}/begin-with/how-to-use-this-site/">{{ site.i18n.footerGuide[currentLang] or site.i18n.footerGuide[site.defaultLang] or "How to use this site" }}</a>
-        <a class="article-footer__link" href="/{{ currentLang }}/about/">About</a>
-        <a class="article-footer__link" href="/{{ currentLang }}/news/">News</a>
+        <a class="article-footer__link" href="/{{ currentLang }}/news/">
+          {% if currentLang == "ja" %}更新情報{% elseif currentLang == "zh" %}更新信息{% else %}Updates{% endif %}
+        </a>
+        <a class="article-footer__link" href="/{{ currentLang }}/contact/">
+          {% if currentLang == "ja" %}お問い合わせ{% elseif currentLang == "zh" %}联系{% else %}Contact{% endif %}
+        </a>
         <a class="article-footer__link article-footer__link--external" href="https://github.com/nomadoor/Comfy-with-ComfyUI" target="_blank" rel="noreferrer noopener">
           <span>GitHub</span>
           <span class="article-footer__link-icon">{{ icon("newscreen") }}</span>

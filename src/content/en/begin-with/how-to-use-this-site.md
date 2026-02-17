@@ -13,86 +13,96 @@ hero:
 
 ## Introduction
 
-Welcome to **Comfy-with-ComfyUI**!
+Welcome to **Comfy with ComfyUI**.
 
-There are many excellent explanations of ComfyUI, including the official documentation.
-However, I felt that there was surprisingly little information on points where beginners first stumble, so I created this site to focus on explaining those parts!
+This site is not just for sharing workflows. It is built to help people understand what generative AI can do, and how to operate ComfyUI itself.
 
-I think it will be a good place for veteran users to know how ComfyUI is evolving.
+Templates can get you started quickly, but if you want to extend things your own way, you still need the fundamentals.
+
+I also hope this can be a useful place for experienced users to track how ComfyUI is evolving.
 
 ---
 
 ## Sections
 
-By switching the **Section Tab** on the top left, articles corresponding to each theme will be displayed.
-The outline of the main sections is as follows.
+Switch the **section tabs** in the top-left to browse articles by theme.
+Here is a quick overview of the main sections:
 
 ### 🧭 Begin With ComfyUI
-Introduces the installation and basic operation of ComfyUI.
+Covers ComfyUI setup and basic operations.
 > The UI changes frequently these days.
-> I want to fix it, but it will probably change again, so I will update it after it stabilizes to some extent.
+> I want to keep it updated, but changes happen so often that I usually wait for a bit of stability.
 
 ### 🖼️ Data / Image Utilities
-Summarizes how to prepare images and data used for generation.
-It covers image processing/conversion and how to handle many images at once.
+Focuses on preparing data and images for generation.
+Includes editing/conversion workflows and ways to process many images at once.
 
 ### 🔼 AI Capabilities
-Many beginners do not know **what kinds of AI exist in the first place** before how to use AI.
-It is structured so that you can look up "what AI can be used" from "what you want to do".
+Many beginners do not yet know **what kinds of AI exist**.
+This section is designed so you can start from "what you want to do" and find "which AI can do it."
 
-The very simple mechanism of image generation AI is also explained here.
+It also explains the basic mechanism of image generation AI.
 
 ### 🗺️ Basic Workflows
-Explanation of basic workflows.
-It is not much different from ComfyUI's template, but it has a more minimal and easy-to-understand structure.
+Basic workflow guides.
+They are close to ComfyUI templates, but with a more minimal and easy-to-read structure.
 
 ### ☹️ FAQ / Troubleshooting
-Summarizes questions that are now taken for granted, such as "Why are there many 512px?" and "Seed value 1234 and 1235 are completely different things".
+Organizes common questions like "Why 512px?" and "Why seed 1234 and 1235 are totally different."
 
-Also, errors and troubles likely to be encountered in ComfyUI are collected, and their causes and countermeasures are introduced.
+It also collects frequent ComfyUI errors and troubleshooting patterns.
 
 ---
 
 ## Workflow Copy Button
 
-This site provides JSON for almost all workflows introduced.
+This site provides workflow JSON for almost every workflow article.
 
-Although not well known, if you copy the JSON text of the workflow and
-press **Ctrl + V** on the ComfyUI canvas, you can paste the workflow as is.
+Copy the workflow JSON text, then press **Ctrl + V** on the ComfyUI canvas.
+The workflow will be pasted directly.
 
 ![](https://gyazo.com/13c0019ad1e471bcf89cdb4b17bc7d9c){gyazo=loop}
 
 Test workflow:
 
-[](/workflows/begin-with/saving-and-loading-workflows/Stable_Diffusion_1.5.json)
+[Stable_Diffusion_1.5.json](/workflows/begin-with/saving-and-loading-workflows/Stable_Diffusion_1.5.json)
 
-Please make use of it!
+Please make use of it.
 
 ---
 
 ## How to Face Generative AI
 
-Generative AI expands possibilities that did not exist before, but it **cannot do anything** more than we imagine.
+Generative AI opens new possibilities, but it still **cannot do many things**.
 
-Creating an image referencing multiple characters while maintaining consistency. This has not yet been achieved.
-Making a 1-minute video. It cannot be done.
+For example, maintaining strong multi-character consistency is still very hard.
+Creating a solid 1-minute video is also not there yet.
 
-When AI cannot do what you want to do, you may think there must be some solution, but in most cases, the progress of AI has not yet reached the point of satisfying your wishes.
+When AI fails to do what you want, there is often no hidden trick.
+In many cases, the technology just has not reached that point yet.
 
-Don't rush, let's enjoy the immature AI. Only now can we do that.
-
----
-
-## Questions / Correction Reports
-
-An assistant (?) confused by grabbing a ComfyUI node resides in the lower right of the screen 😏 Please hover your mouse over it.
-
-Please feel free to send reports of typos, corrections of content, requests for themes you want explained, etc.
-
-You can post to [GitHub issue](https://github.com/nomadoor/Comfy-with-ComfyUI/issues) or contact me directly at [Author](/en/about/#about-the-author).
+Take your time and enjoy this still-immature phase of AI.
 
 ---
 
-## To the World of ComfyUI
+## Contact
 
-Then, let's study together to use ComfyUI **Comfy**!
+For correction reports, article requests, and feedback, use the ["Site-related" section](/en/contact/#site) on the contact page (or post directly to [GitHub Issues](https://github.com/nomadoor/Comfy-with-ComfyUI/issues)).
+
+On desktop, you can also send from the bottom-right assistant icon (it may be unavailable in some environments).
+
+If you want to contact the author directly, please use the contact page as well: [/en/contact/](/en/contact/).
+
+---
+
+## License
+
+All text, workflows, and images on this site are **CC0**.
+
+Please use them freely.
+
+---
+
+## Into the World of ComfyUI
+
+Let's keep learning together so we can use ComfyUI more **Comfy**.

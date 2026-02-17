@@ -12,6 +12,8 @@ pnpm-debug.log*
 # Env / secrets
 .env
 .env.*
+.dev.vars
+.dev.vars.*
 
 # OS / editor cruft
 .DS_Store
