@@ -100,6 +100,14 @@ class AssistantRail {
     this.resetButtons.forEach((button) => {
       button.addEventListener("click", () => this.resetToPanel(true));
     });
+
+    this.root.addEventListener("assistant:open", (event) => {
+      const detail = event.detail || {};
+      const opened = this.openFromExternal(detail.viewId, detail.message);
+      if (detail && typeof detail === "object") {
+        detail.handled = opened;
+      }
+    });
   }
 
   initForms() {
@@ -212,6 +220,24 @@ class AssistantRail {
       this.submittedDetail.textContent = detailText || "";
     }
     this.openView("submitted");
+  }
+
+  openFromExternal(viewId, message = "") {
+    if (!viewId) return false;
+    const targetView = this.views.find((view) => view.dataset.assistantView === viewId);
+    if (!targetView) return false;
+    this.openView(viewId);
+
+    const targetForm = targetView.querySelector("[data-assistant-form]");
+    const textarea = targetForm?.querySelector("textarea");
+    if (textarea) {
+      textarea.value = typeof message === "string" ? message : "";
+      textarea.dispatchEvent(new Event("input", { bubbles: true }));
+    }
+
+    const controller = this.forms.find((item) => item.form === targetForm);
+    controller?.setState("input");
+    return true;
   }
 
   update() {

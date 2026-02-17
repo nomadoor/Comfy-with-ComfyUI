@@ -201,7 +201,7 @@
           "id": "form-correction",
           "type": "form",
           "title": {
-            "ja": "このページに間違いがあります！",
+            "ja": "修正・誤字報告",
             "en": "This page has an issue!",
             "zh": "这个页面有问题！"
           },
@@ -234,7 +234,7 @@
           "id": "form-request",
           "type": "form",
           "title": {
-            "ja": "これについても書いてください！",
+            "ja": "記事リクエスト",
             "en": "Please explain more!",
             "zh": "请补充讲解！"
           },
@@ -258,6 +258,39 @@
               "ja": "追記リクエスト",
               "en": "Expansion request",
               "zh": "补充请求"
+            },
+            "attachUrl": true,
+            "minLength": 20
+          }
+        },
+        {
+          "id": "form-feedback",
+          "type": "form",
+          "title": {
+            "ja": "感想・その他",
+            "en": "Feedback / Other",
+            "zh": "感想 / 其他"
+          },
+          "summary": {
+            "ja": "感想や相談前のメモなど、自由に送れます。",
+            "en": "Share general feedback or notes.",
+            "zh": "可提交一般反馈或其他说明。"
+          },
+          "body": {
+            "ja": "気づいたことや改善アイデアなどを自由に送ってください。",
+            "en": "Feel free to share ideas, impressions, or anything else.",
+            "zh": "欢迎提交你的想法、印象或其他建议。"
+          },
+          "form": {
+            "placeholder": {
+              "ja": "感想、気づき、その他の連絡内容を書いてください",
+              "en": "Write your feedback, ideas, or other notes",
+              "zh": "请填写你的反馈、想法或其他内容"
+            },
+            "successDetail": {
+              "ja": "感想・その他",
+              "en": "Feedback / Other",
+              "zh": "感想 / 其他"
             },
             "attachUrl": true,
             "minLength": 20

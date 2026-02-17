@@ -126,7 +126,7 @@
         <div class="lang-menu" data-lang-menu role="menu">
 
           {% set currentSlug = currentNavId or slug or 'how-to-use-this-site' %}
-          {% set isStandalone = (not sectionExists) and (currentSlug == 'news' or currentSlug == 'about') %}
+          {% set isStandalone = (not sectionExists) and (currentSlug == 'news' or currentSlug == 'about' or currentSlug == 'contact') %}
 
           {% for option in site.languages %}
 
