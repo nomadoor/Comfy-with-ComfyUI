@@ -55,7 +55,7 @@ If you found incorrect or outdated content, please send the page URL and details
 <div class="contact-page__actions contact-page__actions--confirm">
 <p class="contact-page__status" data-contact-status aria-live="polite"></p>
 <div class="contact-page__confirm-controls">
-<div class="contact-page__turnstile" data-contact-turnstile data-sitekey="{{ site.turnstileSiteKey or '' }}"></div>
+<div class="contact-page__turnstile" data-contact-turnstile data-sitekey="{{ env.assistantTurnstileSitekey or site.turnstileSiteKey or '' }}"></div>
 <div class="contact-page__confirm-buttons">
 <button type="button" class="contact-page__submit" data-contact-confirm-back><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span class="contact-page__submit-label">Back to edit</span></button>
 <button type="button" class="contact-page__submit" data-contact-confirm-send><span class="contact-page__submit-label">Send this content</span><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
@@ -89,7 +89,7 @@ This site aims to stay simple, so I cannot promise everything will be added, but
 <div class="contact-page__actions contact-page__actions--confirm">
 <p class="contact-page__status" data-contact-status aria-live="polite"></p>
 <div class="contact-page__confirm-controls">
-<div class="contact-page__turnstile" data-contact-turnstile data-sitekey="{{ site.turnstileSiteKey or '' }}"></div>
+<div class="contact-page__turnstile" data-contact-turnstile data-sitekey="{{ env.assistantTurnstileSitekey or site.turnstileSiteKey or '' }}"></div>
 <div class="contact-page__confirm-buttons">
 <button type="button" class="contact-page__submit" data-contact-confirm-back><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span class="contact-page__submit-label">Back to edit</span></button>
 <button type="button" class="contact-page__submit" data-contact-confirm-send><span class="contact-page__submit-label">Send this content</span><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
@@ -130,7 +130,7 @@ Any feedback helps, whether praise, criticism, or anything else. Thank you as al
 <div class="contact-page__actions contact-page__actions--confirm">
 <p class="contact-page__status" data-contact-status aria-live="polite"></p>
 <div class="contact-page__confirm-controls">
-<div class="contact-page__turnstile" data-contact-turnstile data-sitekey="{{ site.turnstileSiteKey or '' }}"></div>
+<div class="contact-page__turnstile" data-contact-turnstile data-sitekey="{{ env.assistantTurnstileSitekey or site.turnstileSiteKey or '' }}"></div>
 <div class="contact-page__confirm-buttons">
 <button type="button" class="contact-page__submit" data-contact-confirm-back><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span class="contact-page__submit-label">Back to edit</span></button>
 <button type="button" class="contact-page__submit" data-contact-confirm-send><span class="contact-page__submit-label">Send this content</span><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
@@ -216,7 +216,7 @@ I am not exactly a designer, engineer, or creator in the strict sense, but I hav
     <div class="contact-page__actions contact-page__actions--confirm contact-page__actions--operator">
       <p class="contact-page__status" data-operator-status aria-live="polite"></p>
       <div class="contact-page__operator-controls">
-        <div class="contact-page__turnstile" data-operator-turnstile data-sitekey="{{ site.turnstileSiteKey or '' }}"></div>
+        <div class="contact-page__turnstile" data-operator-turnstile data-sitekey="{{ env.assistantTurnstileSitekey or site.turnstileSiteKey or '' }}"></div>
         <div class="contact-page__operator-confirm-buttons">
           <button type="button" class="contact-page__submit" data-operator-confirm-back><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg><span class="contact-page__submit-label">Back to edit</span></button>
           <button type="submit" class="contact-page__submit" data-operator-send><span class="contact-page__submit-label">Send this content</span><svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
