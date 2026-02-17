@@ -227,7 +227,6 @@ I am not exactly a designer, engineer, or creator in the strict sense, but I hav
   <p class="contact-page__fallback-link">If sending fails: <a href="mailto:nomadoor@gmail.com">nomadoor@gmail.com</a></p>
 </form>
 </div>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 ## Support
 

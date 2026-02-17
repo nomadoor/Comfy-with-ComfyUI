@@ -316,21 +316,40 @@ async function submitToTipsEndpoint(submitType, message, sourceUrl, turnstileTok
   return response.ok;
 }
 
-function loadTurnstileScript() {
-  if (window.turnstile?.render) return;
-  const src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
-  if (document.querySelector(`script[src="${src}"]`)) return;
-  const script = document.createElement("script");
-  script.src = src;
-  script.async = true;
-  script.defer = true;
-  document.head.appendChild(script);
+let turnstileReadyPromise = null;
+
+function ensureContactTurnstile() {
+  if (typeof window === "undefined") return Promise.resolve(false);
+  if (window.turnstile?.render) return Promise.resolve(true);
+  if (turnstileReadyPromise) return turnstileReadyPromise;
+
+  turnstileReadyPromise = new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+    script.async = true;
+    script.defer = true;
+    script.dataset.contactTurnstileLoader = "true";
+    script.onload = () => {
+      turnstileReadyPromise = null;
+      resolve(true);
+    };
+    script.onerror = () => {
+      turnstileReadyPromise = null;
+      resolve(false);
+    };
+    document.head.appendChild(script);
+  });
+
+  return turnstileReadyPromise;
 }
 
 async function waitForTurnstile() {
-  loadTurnstileScript();
-  for (let i = 0; i < 120; i += 1) {
+  await ensureContactTurnstile();
+  for (let i = 0; i < 160; i += 1) {
     if (window.turnstile?.render) return true;
+    if (i === 80) {
+      await ensureContactTurnstile();
+    }
     await new Promise((resolve) => window.setTimeout(resolve, 50));
   }
   return false;

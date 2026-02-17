@@ -227,7 +227,6 @@ Midjourneyの登場で幕を開けた画像生成AIの魅力に取りつかれ�
   <p class="contact-page__fallback-link">送れない場合はこちら: <a href="mailto:nomadoor@gmail.com">nomadoor@gmail.com</a></p>
 </form>
 </div>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 ## サポートのお願い
 

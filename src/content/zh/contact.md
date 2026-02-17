@@ -227,7 +227,6 @@ hero:
   <p class="contact-page__fallback-link">若发送失败请联系: <a href="mailto:nomadoor@gmail.com">nomadoor@gmail.com</a></p>
 </form>
 </div>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 ## 支持本站
 
