@@ -332,9 +332,8 @@ sections:
                 noLink: true
           - id: liveportrait
             title: LivePortrait
-      - id: llm-mlm-workflows
+      - id: llm-mllm
         title: LLM / MLLM
-        noLink: true
         children:
           - id: joycaption
             title: JoyCaption
@@ -343,6 +342,8 @@ sections:
           - id: qwen-3-vl
             title: Qwen 3 VL
             noLink: true
+          - id: external-llm-server
+            title: 外部LLMサーバ連携
       - id: other-workflows
         title: その他
         noLink: true

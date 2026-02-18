@@ -10,6 +10,16 @@ tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/ja/basic-workflows/external-llm-server/">
+    <span class="news-row__date">2026.2.18</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">外部LLMサーバ連携のページを追加しました</span>
+  </a>
+  <a class="news-row" href="/ja/basic-workflows/llm-mllm/">
+    <span class="news-row__date">2026.2.18</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">LLM / MLLMのページを追加しました</span>
+  </a>
   <a class="news-row" href="/ja/faq/seed-neighbor/">
     <span class="news-row__date">2026.2.11</span>
     <span class="news-row__tag">faq</span>
