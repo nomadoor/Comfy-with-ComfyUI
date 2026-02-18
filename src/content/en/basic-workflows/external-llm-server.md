@@ -44,7 +44,7 @@ We'll use **[Ollama](https://ollama.com/)**, a simple and easy-to-use open-sourc
 
 ### Installation
 
-Download the installer from the [official site](https://ollama.com/download/windows) and run it.
+Download the installer from the [official site](https://ollama.com/download) and run it.
 
 After installation, Ollama runs as a background service. If you see the icon in the system tray, you're ready to go.
 

@@ -44,7 +44,7 @@ Ollama 也提供了这个[兼容 API](https://docs.ollama.com/api/openai-compati
 
 ### 安装
 
-从[官网](https://ollama.com/download/windows)下载安装程序并运行。
+从[官网](https://ollama.com/download)下载安装程序并运行。
 
 安装完成后，Ollama 会作为后台服务运行。任务栏托盘中出现图标即表示准备就绪。
 

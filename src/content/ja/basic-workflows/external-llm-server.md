@@ -43,7 +43,7 @@ Ollamaもこの[互換API](https://docs.ollama.com/api/openai-compatibility)を�
 
 ### インストール
 
-[公式サイト](https://ollama.com/download/windows)からインストーラーをダウンロードし、実行してください。
+[公式サイト](https://ollama.com/download)からインストーラーをダウンロードし、実行してください。
 
 インストール後、Ollama は常駐して動作します。タスクトレイにアイコンが出ていれば準備完了です。
 
