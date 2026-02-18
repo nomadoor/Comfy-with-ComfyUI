@@ -63,7 +63,7 @@ ollama run qwen3-vl:8b
 Other locally useful models:
 
 - **gemma3** : Developed by Google. Usable for similar purposes as Qwen3 VL
-- **gpt-oss-20b** : OpenAI's open-weight model. Text-only, but very powerful
+- **gpt-oss:20b** : OpenAI's open-weight model. Text-only, but very powerful
 - **◯◯-Abliterated** : Even open-weight models typically include censorship (not just NSFW). Models with this alignment removed carry this kind of name
   - [UGI Leaderboard](https://huggingface.co/spaces/DontPlanToEnd/UGI-Leaderboard) is a good place to find various models
 

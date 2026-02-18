@@ -62,7 +62,7 @@ ollama run qwen3-vl:8b
 その他、ローカルとして使いやすいモデル:
 
 - **gemma3** : Google開発です。Qwen3 VLと似た用途で使えます
-- **gpt-oss-20b** : OpenAIのオープンウェイトモデルです。テキストのみの処理ですが、非常に強力ですね
+- **gpt-oss:20b** : OpenAIのオープンウェイトモデルです。テキストのみの処理ですが、非常に強力ですね
 - **◯◯-Abliterated** : オープンウェイトといえど基本的には(NSFWのみならず)検閲が入っています。このアライメントを除去したモデルはこのような名前がついています
   - [UGI Leaderboard](https://huggingface.co/spaces/DontPlanToEnd/UGI-Leaderboard)では様々なモデルを見つけられます
 

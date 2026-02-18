@@ -63,7 +63,7 @@ ollama run qwen3-vl:8b
 其他适合本地使用的模型：
 
 - **gemma3** : Google 开发，可用于与 Qwen3 VL 类似的用途
-- **gpt-oss-20b** : OpenAI 的开放权重模型，仅支持文本处理，但非常强大
+- **gpt-oss:20b** : OpenAI 的开放权重模型，仅支持文本处理，但非常强大
 - **◯◯-Abliterated** : 即使是开放权重模型，通常也内置了审查机制（不仅限于 NSFW）。移除了这种对齐的模型会带有此类名称
   - [UGI Leaderboard](https://huggingface.co/spaces/DontPlanToEnd/UGI-Leaderboard) 可以找到各种模型
 
