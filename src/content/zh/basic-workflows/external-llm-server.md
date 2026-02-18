@@ -8,7 +8,7 @@ title: "外部 LLM 服务器集成"
 summary: "在 ComfyUI 外部运行 LLM 并与其联动"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: ""
+  image: "https://i.gyazo.com/da95a615f374717f19b3447244ad647a.png"
 ---
 
 ## 外部 LLM 服务器集成

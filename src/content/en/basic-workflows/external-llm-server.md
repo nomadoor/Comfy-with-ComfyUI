@@ -8,7 +8,7 @@ title: "External LLM Server Integration"
 summary: "Run an LLM outside ComfyUI and connect to it"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: ""
+  image: "https://i.gyazo.com/da95a615f374717f19b3447244ad647a.png"
 ---
 
 ## External LLM Server Integration
