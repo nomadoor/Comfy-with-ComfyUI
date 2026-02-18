@@ -11,6 +11,16 @@ tags:
 ---
 
 <div class="news-list">
+  <a class="news-row" href="/en/basic-workflows/external-llm-server/">
+    <span class="news-row__date">2026.2.18</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">Added External LLM Server Integration page</span>
+  </a>
+  <a class="news-row" href="/en/basic-workflows/llm-mllm/">
+    <span class="news-row__date">2026.2.18</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">Added LLM / MLLM page</span>
+  </a>
   <a class="news-row" href="/zh/begin-with/how-to-use-this-site/">
     <span class="news-row__date">2026.2.6</span>
     <span class="news-row__tag">begin-with</span>

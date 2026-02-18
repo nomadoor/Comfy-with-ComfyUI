@@ -10,6 +10,16 @@ tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/zh/basic-workflows/external-llm-server/">
+    <span class="news-row__date">2026.2.18</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">追加了外部 LLM 服务器集成的页面</span>
+  </a>
+  <a class="news-row" href="/zh/basic-workflows/llm-mllm/">
+    <span class="news-row__date">2026.2.18</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">追加了 LLM / MLLM 的页面</span>
+  </a>
   <a class="news-row" href="/zh/begin-with/how-to-use-this-site/">
     <span class="news-row__date">2026.2.6</span>
     <span class="news-row__tag">begin-with</span>
