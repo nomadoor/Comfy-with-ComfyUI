@@ -2,11 +2,13 @@
 
 ## 0. Identity
 - JA site title: **縲靴omfy縺ｫ菴ｿ縺・ComfyUI縲・* / EN: **窶廚omfy with ComfyUI窶・*. Strings live in `site.json`.
-- IA sections remain `begin-with`, `data-utilities`, `ai-capabilities`, `basic-workflows`, `faq`.
+- Primary IA sections remain `begin-with`, `data-utilities`, `ai-capabilities`, `basic-workflows`, `faq`.
+- `notes` is an auxiliary article section for standalone notes pages. It uses the same route pattern, but is not part of the primary sidebar IA buckets.
 - Design intent follows `src/assets/mock/繝帙・繝繝・じ繧､繝ｳ_v01.png`: full-bleed black canvas, single-column article, chrome anchored on the left and top.
 - Dark theme is canonical. Light mode will reuse the same token keys with different values.
 
 ## 1. Color Tokens
+
 | Token | Value | Usage |
 | --- | --- | --- |
 | `--color-bg` | `#040404` | Body background. |
@@ -30,6 +32,7 @@
 | `--token-atrule` | Dark `#9eb0ff` / Light `#2f6fda` | @規則、関数、class 名。 |
 | `--token-keyword` | Dark `#db8bff` / Light `#af52de` | 言語キーワード。 |
 | `--token-regex` | Dark `#ffc8dd` / Light `#c02c5a` | 正規表現、important。 |
+
 
 PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 

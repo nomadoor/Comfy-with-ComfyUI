@@ -14,6 +14,7 @@
 
 ## 2. Navigation & Tags
 - Locale menus come from `_data/nav.<lang>.yml`; keep IDs aligned with folders and front matter.
+- Exception: `notes` pages are standalone auxiliary articles and do not need to appear in `_data/nav.<lang>.yml`.
 - `nav.zh.yml` mirrors the same slug IDs as `ja/en` (titles can be placeholders until translation).
 - Tags are **optional**. When present, they must be consistent with the slug/topic, specific but not spammy, and limited to **max 5** per page.
 - Every page begins with one H1. Section badges and chip styles come from `/ops/style-design.md`.
@@ -104,7 +105,7 @@
 - Provide a single JavaScript-unavailable fallback notice near the top of article content. Hide it by default when scripts run (`html.js` flag) so normal layouts are unaffected.
 
 ## 11. CI & Quality Gates
-- Every slug must exist in nav files and directories.
+- Every slug must exist in nav files and directories, except `notes` pages which are allowed to live outside nav.
 - `tags[]` は **任意**。使う場合は `_data/tagIndex.js` 由来で最大5件。`ai-capabilities` は tags なしが既定。
 - All standard markdown `<img>` elements need width/height attributes or CSS aspect enforcement.
 - Exception: Gyazo-rendered embeds (`![](...){gyazo=image|loop}` and equivalent `mediaRow` Gyazo usage) are allowed without per-image width/height in Markdown because renderer/CSS enforces dimensions and media caps.
