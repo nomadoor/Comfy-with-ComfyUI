@@ -16,10 +16,11 @@
 - Workflows inherit the tag slug from the page displaying them; list all workflows sharing that slug without omission.
 - Tags are primarily for `basic-workflows` pages and exist to connect `ai-capabilities` ↔ `basic-workflows` (chips/cards/related lists). Treat tags outside `basic-workflows` as exceptions that require explicit owner agreement.
 
-## 4. Five Section Contract
-- Section keys: `begin-with`, `data-utilities`, `ai-capabilities`, `basic-workflows`, `faq`.
+## 4. Section Contract
+- Primary section keys: `begin-with`, `data-utilities`, `ai-capabilities`, `basic-workflows`, `faq`.
+- `notes` is allowed as an auxiliary standalone section outside the primary sidebar buckets.
 - A slug must be unique inside its section across both languages.
-- Sidebar ordering matches this list, and search filters respect the same buckets.
+- Sidebar ordering matches the primary section list, and search filters respect the same buckets.
 
 ## 5. Experience Guardrails
 - Match the provided mock layout (3 columns, tag chips below H1, workflow rail at bottom).

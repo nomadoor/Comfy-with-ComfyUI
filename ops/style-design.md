@@ -2,7 +2,8 @@
 
 ## 0. Identity
 - JA site title: **縲靴omfy縺ｫ菴ｿ縺・ComfyUI縲・* / EN: **窶廚omfy with ComfyUI窶・*. Strings live in `site.json`.
-- IA sections remain `begin-with`, `data-utilities`, `ai-capabilities`, `basic-workflows`, `faq`.
+- Primary IA sections remain `begin-with`, `data-utilities`, `ai-capabilities`, `basic-workflows`, `faq`.
+- `notes` is an auxiliary article section for standalone notes pages. It uses the same route pattern, but is not part of the primary sidebar IA buckets.
 - Design intent follows `src/assets/mock/繝帙・繝繝・じ繧､繝ｳ_v01.png`: full-bleed black canvas, single-column article, chrome anchored on the left and top.
 - Dark theme is canonical. Light mode will reuse the same token keys with different values.
 
