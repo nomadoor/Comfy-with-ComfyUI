@@ -19,7 +19,7 @@
 ## 4. Section Contract
 - Primary section keys: `begin-with`, `data-utilities`, `ai-capabilities`, `basic-workflows`, `faq`.
 - `notes` is allowed as an auxiliary standalone section outside the primary sidebar buckets.
-- A slug must be unique inside its section across both languages.
+- A slug must be unique inside its section across the three locales (JA/EN/ZH).
 - Sidebar ordering matches the primary section list, and search filters respect the same buckets.
 
 ## 5. Experience Guardrails

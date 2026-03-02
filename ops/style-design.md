@@ -8,6 +8,7 @@
 - Dark theme is canonical. Light mode will reuse the same token keys with different values.
 
 ## 1. Color Tokens
+
 | Token | Value | Usage |
 | --- | --- | --- |
 | `--color-bg` | `#040404` | Body background. |
@@ -31,6 +32,7 @@
 | `--token-atrule` | Dark `#9eb0ff` / Light `#2f6fda` | @規則、関数、class 名。 |
 | `--token-keyword` | Dark `#db8bff` / Light `#af52de` | 言語キーワード。 |
 | `--token-regex` | Dark `#ffc8dd` / Light `#c02c5a` | 正規表現、important。 |
+
 
 PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 

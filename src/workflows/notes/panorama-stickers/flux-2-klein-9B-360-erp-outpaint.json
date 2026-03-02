@@ -675,7 +675,7 @@
       "outputs": [],
       "properties": {},
       "widgets_values": [
-        "## models\n- [flux-2-klein-base-9b-fp8.safetensors](https://huggingface.co/black-forest-labs/FLUX.2-klein-base-9b-fp8/blob/main/flux-2-klein-base-9b-fp8.safetensors)\n- [flux-2-klein-9B-360-erp-outpaint-lora_V1.safetensors](https://huggingface.co/nomadoor/flux-2-klein-9B-360-erp-outpaint-lora/blob/main/flux-2-klein-9B-360-erp-outpaint-lora_V1.safetensors)\n- [qwen_3_8b.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/blob/main/split_files/text_encoders/qwen_3_8b.safetensors)\n- [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/blob/main/split_files/vae/flux2-vae.safetensors)\n\n```\n📂ComfyUI/\n└── 📂models/\n      ├── 📂diffusion_models/\n      │   └── flux-2-klein-base-9b-fp8.safetensors\n      ├── 📂loras/\n      │   └── flux-2-klein-9B-360-erp-outpaint-lora_V1.safetensors\n      ├── 📂text_encoders/\n      │   └── qwen_3_4b.safetensors\n      └── 📂vae/\n           └── flux2-vae.safetensors\n```"
+        "## models\n- [flux-2-klein-base-9b-fp8.safetensors](https://huggingface.co/black-forest-labs/FLUX.2-klein-base-9b-fp8/blob/main/flux-2-klein-base-9b-fp8.safetensors)\n- [flux-2-klein-9B-360-erp-outpaint-lora_V1.safetensors](https://huggingface.co/nomadoor/flux-2-klein-9B-360-erp-outpaint-lora/blob/main/flux-2-klein-9B-360-erp-outpaint-lora_V1.safetensors)\n- [qwen_3_8b.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/blob/main/split_files/text_encoders/qwen_3_8b.safetensors)\n- [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/blob/main/split_files/vae/flux2-vae.safetensors)\n\n```\n📂ComfyUI/\n└── 📂models/\n      ├── 📂diffusion_models/\n      │   └── flux-2-klein-base-9b-fp8.safetensors\n      ├── 📂loras/\n      │   └── flux-2-klein-9B-360-erp-outpaint-lora_V1.safetensors\n      ├── 📂text_encoders/\n      │   └── qwen_3_8b.safetensors\n      └── 📂vae/\n           └── flux2-vae.safetensors\n```"
       ],
       "color": "#323",
       "bgcolor": "#535"
@@ -839,10 +839,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.6929483166639309,
+      "scale": 0.6929483166639314,
       "offset": [
-        323.96689842392607,
-        440.4322768893966
+        121.96333901363025,
+        584.6020432231649
       ]
     },
     "frontendVersion": "1.39.16",
