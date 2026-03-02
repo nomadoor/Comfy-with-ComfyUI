@@ -10,6 +10,11 @@ tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/ja/notes/panorama-stickers/">
+    <span class="news-row__date">2026.3.2</span>
+    <span class="news-row__tag">notes</span>
+    <span class="news-row__title">ComfyUI Panorama Stickers のページを追加しました</span>
+  </a>
   <a class="news-row" href="/ja/basic-workflows/external-llm-server/">
     <span class="news-row__date">2026.2.18</span>
     <span class="news-row__tag">basic-workflows</span>
