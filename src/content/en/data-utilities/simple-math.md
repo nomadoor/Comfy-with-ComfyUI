@@ -19,23 +19,15 @@ Let's look at the nodes for that.
 
 ---
 
-## Recommended Custom Nodes
-
-Since it is a simple function, there are as many things that implement this as you look for, but one of the following custom nodes is sufficient. (I hope it will be implemented as a core node...)
-
-- **[ComfyUI_essentials](https://github.com/cubiq/ComfyUI_essentials)**
-  - It is an excellent node, but since it is almost in an archived state, I will replace it if I find an excellent node.
-- **[ComfyUI-Custom-Scripts](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)**
-
-Here, we will explain using the **Simple Math** node of **ComfyUI_essentials** as an example.
+> Previously, a custom node was needed for this, but now a similar node has been added to the core, so it is no longer necessary.
 
 ---
 
-## Simple Math
+## Math Expression
 
-![](https://gyazo.com/02da3cbf7851b49c8ba18326cda16d3c){gyazo=image}
+![](https://gyazo.com/7ea9d7efa48a88e7b9bdfeef6b86d2d2){gyazo=image}
 
-[](/workflows/data-utilities/simple-math/Simple_Math.json)
+[](/workflows/data-utilities/simple-math/Math_Expression.json)
 
 You can enter numbers in `a`, `b`, and `c` respectively.
 Using those variables, if you write like `a * b - c`, you can simply perform arithmetic.
@@ -75,13 +67,13 @@ I can hear a tsukkomi saying "Everything is fine with float", but they are disti
 
 ### Type Conversion
 
-By the way, if you pass the value through the `Simple Math` node once, you can convert between `int` ↔ `float`.
+By the way, if you pass the value through the `Math Expression` node once, you can convert between `int` ↔ `float`.
 
 Even if the input is float, if the output destination is int, it will automatically convert it.
 
-![](https://gyazo.com/2265cc54a515359586944c94f258df50){gyazo=image}
+![](https://gyazo.com/07161b2b92b1f8cedc7fa99cbf1d22cc){gyazo=image}
 
-[](/workflows/data-utilities/simple-math/Simple_Math_FloatInt.json)
+[](/workflows/data-utilities/simple-math/Math_Expression_FloatInt.json)
 
 ---
 

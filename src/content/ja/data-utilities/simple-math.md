@@ -17,25 +17,15 @@ hero:
 画像のサイズを綺麗に半分にしたり、バッチサイズを調整したりと、単純な四則演算をする場面はしばしばあります。
 そのためのノードを見ていきましょう。
 
----
-
-## おすすめのカスタムノード
-
-単純な機能なので、これを実装するものは探せばいくらでもありますが、以下のどちらかのカスタムノードがあれば十分です。(コアノードとして実装されるといいんですがね…)
-
-- **[ComfyUI_essentials](https://github.com/cubiq/ComfyUI_essentials)**
-  - 優れたノードなのですが、ほぼアーカイブ状態であるため、優れたノードが見つかれば差し替えます。
-- **[ComfyUI-Custom-Scripts](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)**
-
-ここでは、**ComfyUI_essentials**の **Simple Math**ノード を例に解説します。
+> 以前はこれを行うためにカスタムノードを導入していましたが、現在、コアに同様の機能を持つノードが追加されたため、不要になりました。
 
 ---
 
-## Simple Math
+## Math Expression
 
-![](https://gyazo.com/02da3cbf7851b49c8ba18326cda16d3c){gyazo=image}
+![](https://gyazo.com/7ea9d7efa48a88e7b9bdfeef6b86d2d2){gyazo=image}
 
-[](/workflows/data-utilities/simple-math/Simple_Math.json)
+[](/workflows/data-utilities/simple-math/Math_Expression.json)
 
 `a`, `b`, `c` にそれぞれ数値を入れられます。
 その変数を利用して、`a * b - c` のように書けば、単純に算数を行うことができます。
@@ -75,13 +65,13 @@ ComfyUIでは主に **`int`** と **`float`** の2種類を使います。
 
 ### 型の変換
 
-ちなみに、値を一度 `Simple Math` ノードに通すと、`int` ↔ `float` の変換を行えます。
+ちなみに、値を一度 `Math Expression` ノードに通すと、`int` ↔ `float` の変換を行えます。
 
 入力がfloatでも、出力先がintなら自動的に変換してくれます。
 
-![](https://gyazo.com/2265cc54a515359586944c94f258df50){gyazo=image}
+![](https://gyazo.com/07161b2b92b1f8cedc7fa99cbf1d22cc){gyazo=image}
 
-[](/workflows/data-utilities/simple-math/Simple_Math_FloatInt.json)
+[](/workflows/data-utilities/simple-math/Math_Expression_FloatInt.json)
 
 ---
 
