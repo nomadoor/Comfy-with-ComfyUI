@@ -339,9 +339,6 @@ sections:
             title: JoyCaption
           - id: florence2
             title: Florence-2
-          - id: qwen-3-vl
-            title: Qwen 3 VL
-            noLink: true
           - id: external-llm-server
             title: 外部LLMサーバ連携
       - id: other-workflows
