@@ -19,23 +19,15 @@ hero:
 
 ---
 
-## 推荐的自定义节点
-
-因为功能简单，实现它的节点要找的话有很多，但只要有以下任意一个自定义节点就足够了。(要是能作为核心节点实现就好了……)
-
-- **[ComfyUI_essentials](https://github.com/cubiq/ComfyUI_essentials)**
-  - 虽然是一个优秀的节点，但因为几乎处于归档状态，如果发现优秀的替代节点我会进行替换。
-- **[ComfyUI-Custom-Scripts](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)**
-
-这里我们以 **ComfyUI_essentials** 的 **Simple Math** 节点为例进行讲解。
+> 以前做这件事需要安装自定义节点，但现在核心已经加入了类似功能的节点，所以已经不需要了。
 
 ---
 
-## Simple Math
+## Math Expression
 
-![](https://gyazo.com/02da3cbf7851b49c8ba18326cda16d3c){gyazo=image}
+![](https://gyazo.com/7ea9d7efa48a88e7b9bdfeef6b86d2d2){gyazo=image}
 
-[](/workflows/data-utilities/simple-math/Simple_Math.json)
+[](/workflows/data-utilities/simple-math/Math_Expression.json)
 
 可以在 `a`, `b`, `c` 中分别输入数值。
 利用这些变量，写成 `a * b - c` 这样，就可以进行简单的算术运算。
@@ -75,13 +67,13 @@ round(a / b) # 四雪五入
 
 ### 类型的转换
 
-顺便提一下，将数值通过一次 `Simple Math` 节点，就可以进行 `int` ↔ `float` 的转换。
+顺便提一下，将数值通过一次 `Math Expression` 节点，就可以进行 `int` ↔ `float` 的转换。
 
 即使输入是 float，如果输出目标是 int，它也会自动进行转换。
 
-![](https://gyazo.com/2265cc54a515359586944c94f258df50){gyazo=image}
+![](https://gyazo.com/07161b2b92b1f8cedc7fa99cbf1d22cc){gyazo=image}
 
-[](/workflows/data-utilities/simple-math/Simple_Math_FloatInt.json)
+[](/workflows/data-utilities/simple-math/Math_Expression_FloatInt.json)
 
 ---
 

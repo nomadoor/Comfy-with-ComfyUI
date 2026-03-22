@@ -323,6 +323,9 @@ sections:
             title: Wan 2.2
           - id: ltx-2
             title: LTX-2
+            children:
+              - id: ltx-2-3
+                title: LTX 2.3
           - id: framepack
             title: FramePack
             noLink: true

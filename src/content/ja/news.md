@@ -10,6 +10,11 @@ tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/ja/basic-workflows/ltx-2-3/">
+    <span class="news-row__date">2026.3.22</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">LTX 2.3のページを追加しました</span>
+  </a>
   <a class="news-row" href="/ja/notes/panorama-stickers/">
     <span class="news-row__date">2026.3.2</span>
     <span class="news-row__tag">notes</span>

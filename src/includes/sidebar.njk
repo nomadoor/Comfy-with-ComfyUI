@@ -121,17 +121,11 @@
 
           {% set currentSlug = currentNavId or slug or 'how-to-use-this-site' %}
           {% set isStandalone = (not sectionExists) and (currentSlug == 'news' or currentSlug == 'about' or currentSlug == 'contact') %}
-          {% set pagePath = page and page.url or '' %}
-          {% set currentLangPrefix = '/' + lang + '/' %}
 
           {% for option in site.languages %}
 
-            {% if pagePath and (currentLangPrefix in pagePath) %}
-              {% set target = pagePath | replace(currentLangPrefix, '/' + option.code + '/') %}
-            {% elif isStandalone %}
+            {% if isStandalone %}
               {% set target = '/' + option.code + '/' + currentSlug + '/' %}
-            {% elif section %}
-              {% set target = '/' + option.code + '/' + section + '/' + currentSlug + '/' %}
             {% else %}
               {% set target = '/' + option.code + '/' + currentSection + '/' + currentSlug + '/' %}
             {% endif %}

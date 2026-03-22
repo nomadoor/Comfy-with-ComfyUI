@@ -34,13 +34,28 @@ In ComfyUI, LLMs are used less for conversation and more as a "behind-the-scenes
 
 ---
 
-## 3 ways to use LLMs in ComfyUI
+## 4 ways to use LLMs in ComfyUI
 
-ComfyUI is an engine specialized for image generation, so there's no built-in feature to run LLMs — the underlying mechanisms are completely different.
+ComfyUI is an engine specialized for image generation, so its LLM functionality is limited — the underlying mechanisms are completely different.
 
-That means you'll generally use custom nodes or external integrations.
+That means you'll generally use core nodes, custom nodes, or external integrations.
 
-### Self-contained within ComfyUI
+### TextGenerate node
+
+This is a recently added core node that tries to let you use the text encoder from image generation models as an LLM / MLLM.
+
+Because it is forced to run entirely inside ComfyUI, it is much slower and less capable than dedicated engines such as `llama-cpp`.
+
+It is certainly nice that this works in the core at all, but at the moment it is still hard to recommend.
+
+![Gemma 3](https://gyazo.com/4e2275270a8f40c8ecdbe2b286addb2e){gyazo=image}
+
+[](/workflows/basic-workflows/llm-mllm/TextGenerate_gemma3.json)
+
+**Supported models**
+- Gemma 3
+
+### ComfyUI custom nodes
 
 Download a model file and run it on your own PC, just like image generation models.
 

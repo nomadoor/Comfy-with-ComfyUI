@@ -34,13 +34,28 @@ MLLM 则是在此基础上，还能接受图像等多种输入的 LLM。顾名�
 
 ---
 
-## 在 ComfyUI 中使用 LLM 的三种方式
+## 在 ComfyUI 中使用 LLM 的四种方式
 
-ComfyUI 是专为图像生成设计的引擎，核心功能中并不包含运行 LLM 的能力——两者的底层机制完全不同。
+ComfyUI 是专为图像生成设计的引擎，因此它对 LLM 的支持能力是比较有限的——两者的底层机制完全不同。
 
-因此，通常需要通过自定义节点或外部集成来使用。
+因此，通常需要通过核心节点、自定义节点或外部集成来使用。
 
-### 在 ComfyUI 内部完结
+### TextGenerate 节点
+
+这是最近加入核心的节点，目标是让图像生成里使用的文本编码器，也能当作 LLM / MLLM 来使用。
+
+由于它是强行在 ComfyUI 的代码环境中运行的，所以和 `llama-cpp` 这类专用引擎相比，无论速度还是功能都差了不少。
+
+当然，能在核心里直接跑起来这一点本身已经很厉害了，不过就现状而言，还不太算是推荐方案。
+
+![Gemma 3](https://gyazo.com/4e2275270a8f40c8ecdbe2b286addb2e){gyazo=image}
+
+[](/workflows/basic-workflows/llm-mllm/TextGenerate_gemma3.json)
+
+**支持的模型**
+- Gemma 3
+
+### ComfyUI 自定义节点
 
 与图像生成模型一样，下载模型文件并在本机运行。
 

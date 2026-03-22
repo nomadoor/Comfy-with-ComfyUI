@@ -107,7 +107,6 @@ const initLangSwitcher = () => {
     }
   });
 
-  updateLangLinks(window.location.pathname);
   setMenuState(false);
   triggerLangAttention();
 };
