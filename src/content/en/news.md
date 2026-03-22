@@ -16,6 +16,11 @@ tags:
     <span class="news-row__tag">basic-workflows</span>
     <span class="news-row__title">Added LTX 2.3 page</span>
   </a>
+  <a class="news-row" href="/en/notes/panorama-stickers/">
+    <span class="news-row__date">2026.3.2</span>
+    <span class="news-row__tag">notes</span>
+    <span class="news-row__title">Added ComfyUI Panorama Stickers page</span>
+  </a>
   <a class="news-row" href="/en/basic-workflows/external-llm-server/">
     <span class="news-row__date">2026.2.18</span>
     <span class="news-row__tag">basic-workflows</span>
