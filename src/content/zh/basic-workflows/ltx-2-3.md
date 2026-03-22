@@ -5,7 +5,7 @@ section: basic-workflows
 slug: ltx-2-3
 navId: ltx-2-3
 title: "LTX 2.3"
-summary: "在 LTX 2.3 中处理 text2video / image2video"
+summary: "在 LTX 2.3 中处理 text2video、image2video、audio2video 和 audio-image2video"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "https://i.gyazo.com/f3f8635fb9056670204fe9bdac577b39.mp4"

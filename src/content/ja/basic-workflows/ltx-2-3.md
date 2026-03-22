@@ -5,7 +5,7 @@ section: basic-workflows
 slug: ltx-2-3
 navId: ltx-2-3
 title: "LTX 2.3"
-summary: "LTX 2.3 で text2video / image2video　/ audio2video を扱う"
+summary: "LTX 2.3: text2video / image2video / audio2video"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "https://i.gyazo.com/f3f8635fb9056670204fe9bdac577b39.mp4"
