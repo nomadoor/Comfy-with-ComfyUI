@@ -10,6 +10,11 @@ tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/zh/basic-workflows/ltx-2-3/">
+    <span class="news-row__date">2026.3.22</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">追加了 LTX 2.3 的页面</span>
+  </a>
   <a class="news-row" href="/zh/basic-workflows/external-llm-server/">
     <span class="news-row__date">2026.2.18</span>
     <span class="news-row__tag">basic-workflows</span>

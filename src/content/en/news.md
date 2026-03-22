@@ -11,6 +11,11 @@ tags:
 ---
 
 <div class="news-list">
+  <a class="news-row" href="/en/basic-workflows/ltx-2-3/">
+    <span class="news-row__date">2026.3.22</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">Added LTX 2.3 page</span>
+  </a>
   <a class="news-row" href="/en/basic-workflows/external-llm-server/">
     <span class="news-row__date">2026.2.18</span>
     <span class="news-row__tag">basic-workflows</span>
