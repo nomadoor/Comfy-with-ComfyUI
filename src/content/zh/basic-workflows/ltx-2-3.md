@@ -78,6 +78,19 @@ tags: []
 
 ---
 
+## 关于提示词
+
+和 LTX-2 一样，提示词的质量会直接影响生成视频的质量。  
+建议参考[官方提示词指南](https://x.com/ltx_model/status/2029927683539325332)，尽量写得更具体、信息量更足一些。
+
+也可以让 LLM 帮你整理提示词。把参考链接和想生成的内容交给它，让它帮你润色即可。
+
+> ComfyUI 里有一个可以在核心中运行 LLM 的 [TextGenerate 节点](/zh/basic-workflows/llm-mllm/#textgenerate-节点)。  
+> 很多 LTX-2 workflow 会用它来整理提示词，但这一页里的 workflow 并没有使用它。  
+> 它本质上只是一个辅助节点，所以我个人觉得，直接用 ChatGPT 或 Gemini 在外面先把提示词写好会更省心。
+
+---
+
 ## text2video
 
 ![](https://gyazo.com/7477c07351d62edda93ae50270bbbaf5){gyazo=image}
@@ -144,7 +157,7 @@ tags: []
 
 ### 模型下载
 
-- [ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control/blob/main/ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors) 654 MB
+- [ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control/blob/main/ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors) (654 MB)
 
 ```text
 📂ComfyUI/
@@ -168,3 +181,82 @@ tags: []
 **输出例**
 
 ![输入](https://gyazo.com/9aea1871cc24b0c98931d55bebb1c19c){gyazo=loop} ![输出](https://gyazo.com/25f44e7a08247ae96a2ebcc3cb901d56){gyazo=loop}
+
+---
+
+## ID-LoRA
+
+通过 1 张参考图、1 段短参考音频和文本提示词，生成“这个人在这个场景里说出这些内容”的 talking head 视频。
+
+它和先做语音克隆、再把音频送进 `audio-image2video` 不一样，ID-LoRA 是同时生成音频和视频的。  
+因此，嘴部动作和声音气质往往会更统一一些。
+
+### 模型下载
+
+- [LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-CelebVHQ-3K/blob/main/lora_weights.safetensors) (1.16 GB)
+- [LTX-2.3-ID-LoRA-TalkVid-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-TalkVid-3K/blob/main/lora_weights.safetensors) (1.16 GB)
+> 这两个发布文件的名字都叫 `lora_weights.safetensors`。  
+> 为了便于区分，建议分别重命名为 `LTX-2.3-ID-LoRA-TalkVid-3K.safetensors` 和 `LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors`。
+
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂loras/
+        ├── LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors
+        └── LTX-2.3-ID-LoRA-TalkVid-3K.safetensors
+```
+
+### workflow
+
+![](https://gyazo.com/cd8a2899358fbac24b90eebe9b10a823){gyazo=image}
+
+[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_ID-LoRA_distilled_3stage.json)
+
+整体是以 [image2video](#image2video) 为基础。  
+然后再加上 ID-LoRA 的 LoRA 和参考音频条件。
+
+{% mediaRow img="https://gyazo.com/cb84a0967e26e916925aaa4cfeb6d782 {gyazo=image}", width=40, align="left" %}
+
+**ID-LoRA 模型**
+
+加载 ID-LoRA。
+
+- LTX-2.3-ID-LoRA-CelebVHQ-3K
+- LTX-2.3-ID-LoRA-TalkVid-3K
+
+这两个版本的方法本身是一样的，只是训练数据集不同。  
+建议都试一下，最后用效果更好的那个。
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/3a653c109b828ad561e428c09b8eb91f {gyazo=image}", width=40, align="left" %}
+
+**LTXV Reference Audio (ID-LoRA)**
+
+把 ID-LoRA 和参考音频连接起来。
+
+- 参考音频建议裁成 5 秒左右
+- 它只是作为参考，不会决定最终视频的时长
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/c987355bbbd29dfdc866dee769937957 {gyazo=image}", width=40, align="left" %}
+
+**提示词**
+
+提示词格式是固定的，按这个结构来写。
+- cf. [ID-LoRA/📝 Prompt Format](https://github.com/ID-LoRA/ID-LoRA/tree/main?tab=readme-ov-file#-prompt-format)
+
+```text
+[VISUAL]: 场景描写和人物外观
+[SPEECH]: 人物说的台词
+[SOUNDS]: 说话方式 + 环境音 / 周围声音
+```
+
+- 为了避免最后变成“只有声音盖在画面上”的感觉，最好也在 `[VISUAL]` 里写清楚人物正在实际开口说话
+
+{% endmediaRow %}
+
+**输出例**
+
+![input](https://gyazo.com/7d7fa9dc9a9f4fa1a08e25aff1285fd7){gyazo=image} ![ref_audio](https://gyazo.com/921d5546567ae28fc9616803f0dcccb9){gyazo=player}  ![output](https://gyazo.com/f179f159e0f3cf6fb05cf259b2828425){gyazo=player}

@@ -56,6 +56,8 @@ ComfyUI上のコードだけで無理矢理動かしているため、llama-cpp�
 
 **対応しているモデル**
 - Gemma 3
+- Qwen3
+- Qwen-3.5
 
 ### ComfyUIカスタムノード
 

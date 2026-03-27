@@ -54,6 +54,8 @@ It is certainly nice that this works in the core at all, but at the moment it is
 
 **Supported models**
 - Gemma 3
+- Qwen3
+- Qwen-3.5
 
 ### ComfyUI custom nodes
 

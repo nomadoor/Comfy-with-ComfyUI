@@ -78,6 +78,19 @@ tags: []
 
 ---
 
+## プロンプトについて
+
+LTX-2 と同様に、プロンプトの質はそのまま生成動画の質に繋がります。  
+[公式のプロンプトガイド](https://x.com/ltx_model/status/2029927683539325332)を参考にしながら、定量的で情報量のあるプロンプトを書くのがおすすめです。
+
+LLM に手伝ってもらうのも有効です。参考リンクと作りたい内容を渡して、整えてもらいましょう。
+
+> ComfyUI には、コアで LLM を動かす [TextGenerate ノード](/ja/basic-workflows/llm-mllm/#textgenerate-ノード) があります。  
+> 多くの LTX-2 workflow ではこれでプロンプトを整えていますが、このページの workflow では使っていません。  
+> あくまで補助用のノードなので、個人的には ChatGPT や Gemini で別に作る方が気楽だとは思います。
+
+---
+
 ## text2video
 
 ![](https://gyazo.com/7477c07351d62edda93ae50270bbbaf5){gyazo=image}
@@ -145,7 +158,7 @@ tags: []
 
 ### モデルのダウンロード
 
-- [ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control/blob/main/ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors) 654 MB
+- [ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control/blob/main/ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors) (654 MB)
 
 ```text
 📂ComfyUI/
@@ -169,3 +182,85 @@ tags: []
 **出力例**
 
 ![入力](https://gyazo.com/9aea1871cc24b0c98931d55bebb1c19c){gyazo=loop} ![出力](https://gyazo.com/25f44e7a08247ae96a2ebcc3cb901d56){gyazo=loop}
+
+---
+
+## ID-LoRA
+
+参照画像 1 枚 + 短い参照音声 + テキストプロンプトから、その人がその場面でその内容を喋っている talking head 動画を生成します。
+
+ボイスクローンで作った音声をあとから `audio-image2video` に流し込むのとは違い、ID-LoRA は音声と動画を同時に生成します。  
+そのため、口の動きや声の雰囲気も含めて、より一体感のある映像になりやすいです。
+
+
+### モデルのダウンロード
+
+- [LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-CelebVHQ-3K/blob/main/lora_weights.safetensors) (1.16 GB)
+- [LTX-2.3-ID-LoRA-TalkVid-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-TalkVid-3K/blob/main/lora_weights.safetensors) (1.16 GB)
+> 配布ファイル名はどちらも `lora_weights.safetensors` です。  
+> 分かりにくいので、それぞれ `LTX-2.3-ID-LoRA-TalkVid-3K.safetensors` / `LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors` にリネームしておくと扱いやすいです。
+
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂loras/
+        ├── LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors
+        └── LTX-2.3-ID-LoRA-TalkVid-3K.safetensors
+```
+
+### workflow
+
+![](https://gyazo.com/cd8a2899358fbac24b90eebe9b10a823){gyazo=image}
+
+[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_ID-LoRA_distilled_3stage.json)
+
+
+全体のベースは [image2video](#image2video) です。  
+そこに、ID-LoRA 用の LoRA と参照音声条件を追加します。
+
+{% mediaRow img="https://gyazo.com/cb84a0967e26e916925aaa4cfeb6d782 {gyazo=image}", width=40, align="left" %}
+
+**ID-LoRA モデル**
+
+ID-LoRAを読み込みます。
+
+- LTX-2.3-ID-LoRA-CelebVHQ-3K
+- LTX-2.3-ID-LoRA-TalkVid-3K
+
+二種類ありますが、データセットが違うだけで仕組みとしては同じものです。  
+まずは切り替えて試してみて、うまくいく方を使うとよいでしょう。
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/3a653c109b828ad561e428c09b8eb91f {gyazo=image}", width=40, align="left" %}
+
+**LTXV Reference Audio (ID-LoRA)**
+
+ID-LoRAと参照音声をつなぎます。
+
+- 参照音声には、5秒程度にトリムしたものを使います。
+- あくまで参照するだけなので、生成する動画の長さとは関係ありません。
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/c987355bbbd29dfdc866dee769937957 {gyazo=image}", width=40, align="left" %}
+
+**プロンプト**
+
+プロンプト形式は決まっているので、これに従って書きます。
+- cf. [ID-LoRA/📝 Prompt Format](https://github.com/ID-LoRA/ID-LoRA/tree/main?tab=readme-ov-file#-prompt-format)
+
+```text
+[VISUAL]: 場面描写および登場人物の見た目
+[SPEECH]: 登場人物のセリフ
+[SOUNDS]: 演者のしゃべり方 + 環境音/周囲の音
+```
+
+- ナレーションのように声だけ乗る形にならないよう、人物が実際に喋っていることも `[VISUAL]` に書いておくと安定しやすいです
+
+{% endmediaRow %}
+
+
+**出力例**
+
+![input](https://gyazo.com/7d7fa9dc9a9f4fa1a08e25aff1285fd7){gyazo=image} ![ref_audio](https://gyazo.com/921d5546567ae28fc9616803f0dcccb9){gyazo=player}  ![output](https://gyazo.com/f179f159e0f3cf6fb05cf259b2828425){gyazo=player}
