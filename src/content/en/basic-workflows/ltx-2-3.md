@@ -78,6 +78,19 @@ This is not the officially recommended method, but the results are clearly bette
 
 ---
 
+## About prompts
+
+Just like LTX-2, prompt quality directly affects video quality.  
+It is a good idea to use the [official prompt guide](https://x.com/ltx_model/status/2029927683539325332) as a reference and write prompts that are both specific and information-rich.
+
+It can also help to let an LLM assist with prompt writing. Give it the reference link and a rough description of what you want, and have it clean the prompt up for you.
+
+> ComfyUI has a core [TextGenerate node](/en/basic-workflows/llm-mllm/#textgenerate-node) that can run an LLM directly.  
+> Many LTX-2 workflows use it to refine prompts, but it is still just a node for editing prompts, so the workflows on this page do not use it.  
+> Personally, I think it is easier to make prompts separately with ChatGPT or Gemini.
+
+---
+
 ## text2video
 
 ![](https://gyazo.com/7477c07351d62edda93ae50270bbbaf5){gyazo=image}
@@ -144,7 +157,7 @@ This is where you decide the parameters for the video and audio you want to gene
 
 ### Model Download
 
-- [ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control/blob/main/ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors) 654 MB
+- [ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control/blob/main/ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors) (654 MB)
 
 ```text
 📂ComfyUI/
@@ -168,3 +181,82 @@ This is where you decide the parameters for the video and audio you want to gene
 **Output example**
 
 ![Input](https://gyazo.com/9aea1871cc24b0c98931d55bebb1c19c){gyazo=loop} ![Output](https://gyazo.com/25f44e7a08247ae96a2ebcc3cb901d56){gyazo=loop}
+
+---
+
+## ID-LoRA
+
+Generate a talking-head video of a person speaking in a scene, using one reference image, a short reference audio clip, and a text prompt.
+
+Unlike feeding cloned audio into `audio-image2video` afterward, ID-LoRA generates the audio and video at the same time.  
+Because of that, the mouth movement and overall voice feel tend to come out more naturally as one piece.
+
+### Model Download
+
+- [LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-CelebVHQ-3K/blob/main/lora_weights.safetensors) (1.16 GB)
+- [LTX-2.3-ID-LoRA-TalkVid-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-TalkVid-3K/blob/main/lora_weights.safetensors) (1.16 GB)
+> Both distributed files are named `lora_weights.safetensors`.  
+> To keep them easy to tell apart, it is helpful to rename them to `LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors` and `LTX-2.3-ID-LoRA-TalkVid-3K.safetensors`.
+
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂loras/
+        ├── LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors
+        └── LTX-2.3-ID-LoRA-TalkVid-3K.safetensors
+```
+
+### workflow
+
+![](https://gyazo.com/cd8a2899358fbac24b90eebe9b10a823){gyazo=image}
+
+[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_ID-LoRA_distilled_3stage.json)
+
+The overall base is [image2video](#image2video).  
+On top of that, you add the ID-LoRA LoRA and the reference-audio condition.
+
+{% mediaRow img="https://gyazo.com/cb84a0967e26e916925aaa4cfeb6d782 {gyazo=image}", width=40, align="left" %}
+
+**ID-LoRA model**
+
+Load the ID-LoRA model.
+
+- LTX-2.3-ID-LoRA-CelebVHQ-3K
+- LTX-2.3-ID-LoRA-TalkVid-3K
+
+There are two versions, but the method is the same and only the dataset differs.  
+It is best to try both and keep the one that works better for your case.
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/3a653c109b828ad561e428c09b8eb91f {gyazo=image}", width=40, align="left" %}
+
+**LTXV Reference Audio (ID-LoRA)**
+
+Connect ID-LoRA and the reference audio.
+
+- Use a reference audio clip trimmed to around 5 seconds
+- It is only used as a reference, so it does not determine the final video length
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/c987355bbbd29dfdc866dee769937957 {gyazo=image}", width=40, align="left" %}
+
+**Prompt**
+
+The prompt format is fixed, so write it in this structure.
+- cf. [ID-LoRA/📝 Prompt Format](https://github.com/ID-LoRA/ID-LoRA/tree/main?tab=readme-ov-file#-prompt-format)
+
+```text
+[VISUAL]: Scene description and the character's appearance
+[SPEECH]: The line the character speaks
+[SOUNDS]: Speaking style + ambient / surrounding sounds
+```
+
+- To avoid ending up with audio that feels like narration laid over the video, it helps to state in `[VISUAL]` that the character is actually speaking
+
+{% endmediaRow %}
+
+**Output example**
+
+![input](https://gyazo.com/7d7fa9dc9a9f4fa1a08e25aff1285fd7){gyazo=image} ![ref_audio](https://gyazo.com/921d5546567ae28fc9616803f0dcccb9){gyazo=player}  ![output](https://gyazo.com/f179f159e0f3cf6fb05cf259b2828425){gyazo=player}

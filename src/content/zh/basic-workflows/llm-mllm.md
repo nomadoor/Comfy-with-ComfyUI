@@ -54,6 +54,8 @@ ComfyUI 是专为图像生成设计的引擎，因此它对 LLM 的支持能力�
 
 **支持的模型**
 - Gemma 3
+- Qwen3
+- Qwen-3.5
 
 ### ComfyUI 自定义节点
 
