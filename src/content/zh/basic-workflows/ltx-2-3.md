@@ -86,8 +86,8 @@ tags: []
 也可以让 LLM 帮你整理提示词。把参考链接和想生成的内容交给它，让它帮你润色即可。
 
 > ComfyUI 里有一个可以在核心中运行 LLM 的 [TextGenerate 节点](/zh/basic-workflows/llm-mllm/#textgenerate-节点)。  
-> 很多 LTX-2 workflow 会用它来整理提示词，但这一页里的 workflow 并没有使用它。  
-> 它本质上只是一个辅助节点，所以我个人觉得，直接用 ChatGPT 或 Gemini 在外面先把提示词写好会更省心。
+> 很多 LTX-2 workflow 会用它来整理提示词，不过它本质上也只是一个用来修正提示词的节点，所以这一页里的 workflow 并没有使用它。  
+> 就我个人来说，还是直接用 ChatGPT 或 Gemini 在外面先把提示词写好更轻松。
 
 ---
 

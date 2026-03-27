@@ -86,8 +86,8 @@ LTX-2 と同様に、プロンプトの質はそのまま生成動画の質に�
 LLM に手伝ってもらうのも有効です。参考リンクと作りたい内容を渡して、整えてもらいましょう。
 
 > ComfyUI には、コアで LLM を動かす [TextGenerate ノード](/ja/basic-workflows/llm-mllm/#textgenerate-ノード) があります。  
-> 多くの LTX-2 workflow ではこれでプロンプトを整えていますが、このページの workflow では使っていません。  
-> あくまで補助用のノードなので、個人的には ChatGPT や Gemini で別に作る方が気楽だとは思います。
+> 多くの LTX-2 workflow ではこれでプロンプトを整えていますが、あくまでプロンプトを修正するだけのノードなので、このページの workflow では使っていません。  
+> 個人的には ChatGPT や Gemini で別に作る方が気楽だと思います。
 
 ---
 

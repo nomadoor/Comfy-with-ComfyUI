@@ -86,8 +86,8 @@ It is a good idea to use the [official prompt guide](https://x.com/ltx_model/sta
 It can also help to let an LLM assist with prompt writing. Give it the reference link and a rough description of what you want, and have it clean the prompt up for you.
 
 > ComfyUI has a core [TextGenerate node](/en/basic-workflows/llm-mllm/#textgenerate-node) that can run an LLM directly.  
-> Many LTX-2 workflows use it to improve prompts, but the workflows on this page do not use it.  
-> It is only a helper node, so personally I find it easier to write prompts separately with ChatGPT or Gemini.
+> Many LTX-2 workflows use it to refine prompts, but it is still just a node for editing prompts, so the workflows on this page do not use it.  
+> Personally, I think it is easier to make prompts separately with ChatGPT or Gemini.
 
 ---
 
