@@ -30,7 +30,7 @@ In ComfyUI, Sampling is configured by dividing it into two elements.
 
 ### Sampler
 
-An algorithm that calculates "how much noise to reduce in the next step".
+An algorithm that decides how to move to the next step based on the current state and the model's prediction.
 
 - **Euler**: Applies the amount of change for one step as is.
 - **DPM family**: Smartly corrects by referring to past steps as well.
