@@ -198,7 +198,7 @@ LLM に手伝ってもらうのも有効です。参考リンクと作りたい�
 - [LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-CelebVHQ-3K/blob/main/lora_weights.safetensors) (1.16 GB)
 - [LTX-2.3-ID-LoRA-TalkVid-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-TalkVid-3K/blob/main/lora_weights.safetensors) (1.16 GB)
 > 配布ファイル名はどちらも `lora_weights.safetensors` です。  
-> 分かりにくいので、それぞれ `LTX-2.3-ID-LoRA-TalkVid-3K.safetensors` / `LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors` にリネームしておくと扱いやすいです。
+> 分かりにくいので、それぞれ `LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors` / `LTX-2.3-ID-LoRA-TalkVid-3K.safetensors` にリネームしておくと扱いやすいです。
 
 ```text
 📂ComfyUI/

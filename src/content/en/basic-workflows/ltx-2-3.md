@@ -196,7 +196,7 @@ Because of that, the mouth movement and overall voice feel tend to come out more
 - [LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-CelebVHQ-3K/blob/main/lora_weights.safetensors) (1.16 GB)
 - [LTX-2.3-ID-LoRA-TalkVid-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-TalkVid-3K/blob/main/lora_weights.safetensors) (1.16 GB)
 > Both distributed files are named `lora_weights.safetensors`.  
-> To keep them easy to tell apart, it is helpful to rename them to `LTX-2.3-ID-LoRA-TalkVid-3K.safetensors` and `LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors`.
+> To keep them easy to tell apart, it is helpful to rename them to `LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors` and `LTX-2.3-ID-LoRA-TalkVid-3K.safetensors`.
 
 ```text
 📂ComfyUI/

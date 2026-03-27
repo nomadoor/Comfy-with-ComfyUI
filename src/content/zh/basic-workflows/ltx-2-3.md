@@ -196,7 +196,7 @@ tags: []
 - [LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-CelebVHQ-3K/blob/main/lora_weights.safetensors) (1.16 GB)
 - [LTX-2.3-ID-LoRA-TalkVid-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-TalkVid-3K/blob/main/lora_weights.safetensors) (1.16 GB)
 > 这两个发布文件的名字都叫 `lora_weights.safetensors`。  
-> 为了便于区分，建议分别重命名为 `LTX-2.3-ID-LoRA-TalkVid-3K.safetensors` 和 `LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors`。
+> 为了便于区分，建议分别重命名为 `LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors` 和 `LTX-2.3-ID-LoRA-TalkVid-3K.safetensors`。
 
 ```text
 📂ComfyUI/
