@@ -40,15 +40,15 @@ export default function initPage(root = document.getElementById("page") || docum
   if (isProfileNav()) console.log("[nav-prof] initPage start");
 
   // Content-scoped modules (re-run per navigation)
-  const shouldEagerToc = Boolean(window.location.hash);
-  profileStep("toc", () => (shouldEagerToc ? initToc?.(root) : runIdle(() => initToc?.(root))));
+  const hasHashTarget = Boolean(window.location.hash);
+  profileStep("media-row-fit", () => (hasHashTarget ? initMediaRowFit?.(root) : runIdle(() => initMediaRowFit?.(root))));
+  profileStep("toc", () => (hasHashTarget ? initToc?.(root) : runIdle(() => initToc?.(root))));
   profileStep("heading-anchors", () => initHeadingAnchors?.(root));
   profileStep("lightbox", () => initLightbox?.(root));
   profileStep("gyazo-toggle", () => initGyazoToggle?.(root));
   profileStep("code-copy", () => initCodeCopy?.(root));
   profileStep("copy-json", () => initCopyJson?.(root));
   profileStep("workflow-picker", () => initWorkflowPicker?.(root));
-  profileStep("media-row-fit", () => runIdle(() => initMediaRowFit?.(root)));
   profileStep("related-hero", () => initRelatedHero?.(root));
   profileStep("contact", () => initContact?.(root));
 

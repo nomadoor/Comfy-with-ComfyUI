@@ -63,9 +63,7 @@ const initToc = () => {
     const targetEl = document.getElementById(id);
     if (!targetEl) return;
 
-    const offset = getHeaderOffset();
-    const top = targetEl.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top, behavior });
+    targetEl.scrollIntoView({ behavior, block: "start" });
     setActiveLink(id);
   }
 
@@ -193,7 +191,6 @@ const initToc = () => {
     update();
     setTimeout(update, 100);
     setTimeout(update, 300);
-    scrollToHashIfNeeded({ behavior: "auto" });
   };
   const handleImageFade = () => {
     update();
@@ -207,9 +204,11 @@ const initToc = () => {
     const targetId = link.dataset.targetId;
     const targetEl = document.getElementById(targetId);
     if (targetEl) {
-      const offset = getHeaderOffset();
-      const top = targetEl.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: "smooth" });
+      targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      const nextHash = `#${encodeURIComponent(targetId)}`;
+      if (window.location.hash !== nextHash) {
+        window.history.pushState({}, "", nextHash);
+      }
       // Immediate feedback
       setActiveLink(targetId);
     }
