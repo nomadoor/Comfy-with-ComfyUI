@@ -205,7 +205,10 @@ const initToc = () => {
     const targetEl = document.getElementById(targetId);
     if (targetEl) {
       targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
-      window.history.pushState({}, "", `#${encodeURIComponent(targetId)}`);
+      const nextHash = `#${encodeURIComponent(targetId)}`;
+      if (window.location.hash !== nextHash) {
+        window.history.pushState({}, "", nextHash);
+      }
       // Immediate feedback
       setActiveLink(targetId);
     }
