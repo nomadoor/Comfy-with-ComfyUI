@@ -225,7 +225,7 @@ Load the ID-LoRA model.
 - LTX-2.3-ID-LoRA-TalkVid-3K
 
 There are two versions, but the method is the same and only the dataset differs.  
-It is best to try both and keep the one that works better for your case.
+There is not a huge difference between them, but it is worth trying both to see which one works better for you.
 
 {% endmediaRow %}
 
