@@ -151,19 +151,81 @@ This is where you decide the parameters for the video and audio you want to gene
 
 ---
 
+## Generative Interpolation
+
+It is also called FLF2V or FMLF2V, but in practice it means inserting images into intermediate frames and generating a video while using them as guideposts.
+
+![](https://gyazo.com/f0cdfd8e0d5f0106e0d6fc98fdcb9aee){gyazo=image}
+
+[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_generative-Interpolation_distilled_1stage.json)
+
+It may look like an extension of `image2video`, but the mechanism is different.  
+In `image2video`, the first frame itself is replaced with the reference image, and the remaining frames are generated afterward.  
+Here, the reference images are placed beside intermediate frames as guides during generation.
+
+{% mediaRow img="https://gyazo.com/e115e860b7b68f36f27937d9e630501d {gyazo=image}", width=40, align="left" %}
+
+**1. Resize the images**
+
+Resize the reference images to an appropriate size (around 1.5 MP).
+- Every image after the first one also needs to be resized to the same dimensions.
+- The `match size` mode in the `Resize Image/Mask` node makes this easy.
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/9cd44b6e0a04e7a63cb0f8de0ed01475 {gyazo=image}", width=40, align="left" %}
+
+**2. LTXVAddGuide**
+
+Insert the reference images here as guides.
+
+- In `frame_idx`, specify the frame position and the image you want to insert.
+  - `0`: first frame
+  - `-1`: last frame
+- This workflow uses 3 reference frames, but you can chain more of them in series if needed
+  - With only 1 image, it can behave a lot like `image2video`, and if you only place images at the first and last frames, it becomes FLF2V.
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/13c859c89782a23e4d001be63cde0057 {gyazo=image}", width=40, align="left" %}
+
+**3. LTXVCropGuides**
+
+With LTX-2's guide mechanism, the guide images will remain mixed into the generated video if you output it as-is.  
+So you remove those guide areas with the `LTXVCropGuides` node.
+
+For more detail on the behavior, see this page.
+- [LTX-2 IC-LoRA (Pose)](/en/basic-workflows/ltx-2/#ic-lora-pose)
+
+{% endmediaRow %}
+
+**Output example**
+
+![Input](https://gyazo.com/513a407f54159c8e3cae9a32fe888702){gyazo=loop} ![Output](https://gyazo.com/fad61f020fb0ed54bd23c59782bff81d){gyazo=loop}
+
+---
+
 ## IC-LoRA
 
-`LTX-2.3` can also use IC-LoRA-based extensions, just like `LTX-2`.
+`LTX-2.3` can also use IC-LoRA-based extensions, just like `LTX-2`.  
+There are several variations, but here we only introduce two easy-to-understand ones.
+
+- Union
+  - Generate video using pose, depth maps, or edges as conditions
+- Outpaint
+  - Naturally fill the black areas of an input video
 
 ### Model Download
 
 - [ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control/blob/main/ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors) (654 MB)
+- [ltx-2.3-22b-ic-lora-outpaint.safetensors](https://huggingface.co/oumoumad/LTX-2.3-22b-IC-LoRA-Outpaint/blob/main/ltx-2.3-22b-ic-lora-outpaint.safetensors) (1.31 GB)
 
 ```text
 📂ComfyUI/
 └── 📂models/
     └── 📂loras/
-        └── ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors
+        ├── ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors
+        └── ltx-2.3-22b-ic-lora-outpaint.safetensors
 ```
 
 ### IC-LoRA Union (Pose)
@@ -173,14 +235,43 @@ This is where you decide the parameters for the video and audio you want to gene
 [](/workflows/basic-workflows/ltx-2-3/LTX-2.3_IC-LoRA(Pose)_distilled_2stage.json)
 
 - 🚨For IC-LoRA, use a **2-stage workflow instead of 3-stage**
-- IC-LoRA Union uses a special method where the control video is generated at half the resolution of the final video
-  - So if you use 3 stages, the control image resolution drops to "half of half of half of half", roughly around 100px
-  - At that point, it no longer keeps enough information to work as a control image
-  - That is why IC-LoRA stays at 2 stages
+- IC-LoRA Union uses a slightly unusual method where the control video is set to half the resolution of the generated video
+  - So if you use 3 stages, the control image resolution becomes even smaller and drops to around 100px
+  - At that size, it becomes hard to preserve enough information for a proper control image
+  - That is why IC-LoRA is more stable when you stop at 2 stages
 
 **Output example**
 
 ![Input](https://gyazo.com/9aea1871cc24b0c98931d55bebb1c19c){gyazo=loop} ![Output](https://gyazo.com/25f44e7a08247ae96a2ebcc3cb901d56){gyazo=loop}
+
+### IC-LoRA Outpaint
+
+![](https://gyazo.com/b43880620c819f250e61f6df0e494a7c){gyazo=image}
+
+[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_IC-LoRA-Outpaint_distilled_1stage.json)
+
+This workflow naturally fills the black areas of an input video.  
+To preserve the original video as much as possible, it uses a 1-stage workflow instead of a 3-stage workflow that gradually scales up from low resolution.
+
+{% mediaRow img="https://gyazo.com/80624e8617d2df1c92f929249c681752 {gyazo=image}", width=40, align="left" %}
+**Load the LoRA model**
+
+Load the `IC-LoRA-Outpaint` LoRA here.
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/404ebbcfd601d31b927e97573327e398 {gyazo=image}", width=40, align="left" %}
+**Add black padding**
+
+Add the area you want to expand by padding it with black.  
+You do not need a special mask here, as long as the added area is black.
+- I have not tested it yet, but it may also work for something like inpainting
+
+{% endmediaRow %}
+
+**Output example**
+
+![Input](https://gyazo.com/676f9b4dfb10ea6bc80b25b46d3b63ef){gyazo=loop} ![Output](https://gyazo.com/2776655edfe4896da1697755084b5e57){gyazo=loop}
 
 ---
 

@@ -14,7 +14,10 @@ tags: []
 
 ## LTX-2とは？
 
-**[LTX-2](https://website.ltx.video/blog/introducing-ltx-2)** は、Lightricks が公開している 音声＋動画を同時に生成できる拡散モデルです。
+**[LTX-2](https://website.ltx.video/blog/introducing-ltx-2)** は、Lightricks が公開している、音声と動画を同時に生成できる拡散モデルです。
+
+> 現在は、後継モデルとして [LTX-2.3](/ja/basic-workflows/ltx-2-3/) が登場しています。  
+> アーキテクチャは同じなので、こちらで仕組みを学びつつ、実際に生成するなら新しいモデルを使うのがおすすめです。
 
 ---
 
@@ -640,4 +643,3 @@ IC-LoRA (Detailer)は、低解像度の動画のディテールや質感を修�
 - [LTX-2公式Doc](https://docs.ltx.video/open-source-model/getting-started/overview)
 - [Lightricks/ComfyUI-LTXVideo/example_workflows](https://github.com/Lightricks/ComfyUI-LTXVideo/tree/master/example_workflows)
 - [Comfy.Org blog](https://blog.comfy.org/p/ltx-2-open-source-audio-video-ai)
-

@@ -16,6 +16,9 @@ tags: []
 
 **[LTX-2](https://website.ltx.video/blog/introducing-ltx-2)** 是 Lightricks 公开的能同时生成音频＋视频的扩散模型。
 
+> 现在已经有后继模型 [LTX-2.3](/zh/basic-workflows/ltx-2-3/)。  
+> 由于架构是相同的，这一页仍然适合用来理解它的机制；如果是实际生成，还是更推荐直接使用新模型。
+
 ---
 
 ## 推荐设定值

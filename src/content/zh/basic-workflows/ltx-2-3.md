@@ -151,19 +151,81 @@ tags: []
 
 ---
 
+## Generative Interpolation
+
+也叫 FLF2V 或 FMLF2V，可以理解为把图片插到中间帧里，再把这些图片当作参照来生成视频的机制。
+
+![](https://gyazo.com/f0cdfd8e0d5f0106e0d6fc98fdcb9aee){gyazo=image}
+
+[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_generative-Interpolation_distilled_1stage.json)
+
+它看起来像是 `image2video` 的延伸，但底层机制其实不同。  
+`image2video` 是把第一帧直接替换成参考图，再生成后面的帧。  
+而这里则是在中间的多个帧位置旁边放上参考图，作为生成时的 guide。
+
+{% mediaRow img="https://gyazo.com/e115e860b7b68f36f27937d9e630501d {gyazo=image}", width=40, align="left" %}
+
+**1. 调整图片尺寸**
+
+先把参考图调整到合适的尺寸（约 1.5 MP）。
+- 第二张之后的图片，也需要和第一张调整成相同尺寸。
+- `Resize Image/Mask` 节点里的 `match size` 模式可以很方便地完成这件事。
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/9cd44b6e0a04e7a63cb0f8de0ed01475 {gyazo=image}", width=40, align="left" %}
+
+**2. LTXVAddGuide**
+
+在这里把参考图作为 guide 插进去。
+
+- 在 `frame_idx` 中输入要插入的帧位置和图片。
+  - `0`: 第一帧
+  - `-1`: 最后一帧
+- 这个 workflow 里放了 3 个参考帧，不过如果串联下去，也可以继续增加
+  - 反过来说，如果只放 1 张，就会有点像 `image2video`；如果只在最前和最后放图，那就是 FLF2V。
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/13c859c89782a23e4d001be63cde0057 {gyazo=image}", width=40, align="left" %}
+
+**3. LTXVCropGuides**
+
+LTX-2 的 guide 机制里，如果直接输出，生成出来的视频会混入这些 guide 图片。  
+所以这里要用 `LTXVCropGuides` 节点把 guide 部分裁掉。
+
+更具体的行为可以参考这里。
+- [LTX-2 IC-LoRA (Pose)](/zh/basic-workflows/ltx-2/#ic-lora-pose)
+
+{% endmediaRow %}
+
+**输出例**
+
+![输入](https://gyazo.com/513a407f54159c8e3cae9a32fe888702){gyazo=loop} ![输出](https://gyazo.com/fad61f020fb0ed54bd23c59782bff81d){gyazo=loop}
+
+---
+
 ## IC-LoRA
 
-`LTX-2.3` 也可以像 `LTX-2` 一样使用 IC-LoRA 系扩展。
+`LTX-2.3` 也可以像 `LTX-2` 一样使用 IC-LoRA 系扩展。  
+种类有几种，不过这里先介绍两种比较好理解的。
+
+- Union
+  - 用 pose、深度图和 edge 作为条件来生成视频
+- Outpaint
+  - 自然补全输入视频里的黑色区域
 
 ### 模型下载
 
 - [ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control/blob/main/ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors) (654 MB)
+- [ltx-2.3-22b-ic-lora-outpaint.safetensors](https://huggingface.co/oumoumad/LTX-2.3-22b-IC-LoRA-Outpaint/blob/main/ltx-2.3-22b-ic-lora-outpaint.safetensors) (1.31 GB)
 
 ```text
 📂ComfyUI/
 └── 📂models/
     └── 📂loras/
-        └── ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors
+        ├── ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors
+        └── ltx-2.3-22b-ic-lora-outpaint.safetensors
 ```
 
 ### IC-LoRA Union (Pose)
@@ -173,14 +235,43 @@ tags: []
 [](/workflows/basic-workflows/ltx-2-3/LTX-2.3_IC-LoRA(Pose)_distilled_2stage.json)
 
 - 🚨IC-LoRA 时使用的不是 **3 stage**，而是 **2 stage** workflow
-- IC-LoRA Union 有一个特殊点：它使用的是“生成视频一半分辨率”的控制视频
-  - 所以如果用 3 stage，控制图像的分辨率会变成“二分之一的二分之一的二分之一的二分之一”，大约只剩 100px
-  - 小到这个程度后，已经无法作为有效的控制图像保留足够信息
-  - 所以 IC-LoRA 在这里停在 2 stage
+- IC-LoRA Union 有一点比较特殊：它使用的是生成视频一半分辨率的控制视频
+  - 所以如果用 3 stage，控制图像的分辨率会继续缩小，最后大概只剩 100px 左右
+  - 小到这个程度后，就很难继续保留足够的信息来做控制
+  - 所以 IC-LoRA 停在 2 stage 会更稳定
 
 **输出例**
 
 ![输入](https://gyazo.com/9aea1871cc24b0c98931d55bebb1c19c){gyazo=loop} ![输出](https://gyazo.com/25f44e7a08247ae96a2ebcc3cb901d56){gyazo=loop}
+
+### IC-LoRA Outpaint
+
+![](https://gyazo.com/b43880620c819f250e61f6df0e494a7c){gyazo=image}
+
+[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_IC-LoRA-Outpaint_distilled_1stage.json)
+
+这是一个用来自然补全输入视频中黑色区域的 workflow。  
+为了尽量保留原始视频，不采用从低分辨率逐步放大的 3stage，而是使用 1stage。
+
+{% mediaRow img="https://gyazo.com/80624e8617d2df1c92f929249c681752 {gyazo=image}", width=40, align="left" %}
+**读取 LoRA 模型**
+
+在这里读取 `IC-LoRA-Outpaint` 的 LoRA。
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/404ebbcfd601d31b927e97573327e398 {gyazo=image}", width=40, align="left" %}
+**用黑色做 Padding**
+
+用黑色 Padding 把想扩展的区域加出来。  
+这里不需要特别准备 mask，只要新增区域是黑色就可以。
+- 我还没试过，不过感觉也许可以拿来做类似 inpainting 的用法
+
+{% endmediaRow %}
+
+**输出例**
+
+![输入](https://gyazo.com/676f9b4dfb10ea6bc80b25b46d3b63ef){gyazo=loop} ![输出](https://gyazo.com/2776655edfe4896da1697755084b5e57){gyazo=loop}
 
 ---
 
