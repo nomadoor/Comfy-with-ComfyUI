@@ -152,19 +152,81 @@ LLM に手伝ってもらうのも有効です。参考リンクと作りたい�
 
 ---
 
+## Generative Interpolation
+
+FLF2V や FMLF2V とも呼ばれますが、途中のフレームに画像を差し込み、それを目印に動画を生成する仕組みです。
+
+![](https://gyazo.com/f0cdfd8e0d5f0106e0d6fc98fdcb9aee){gyazo=image}
+
+[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_generative-Interpolation_distilled_1stage.json)
+
+`image2video` の延長にも見えますが、仕組みとしては別物です。  
+`image2video` は最初の 1 枚を参照画像に差し替え、残りのフレームを生成します。  
+それに対してこちらは、途中のフレームごとに参照画像をガイドとして横に置いて生成させます。
+
+{% mediaRow img="https://gyazo.com/e115e860b7b68f36f27937d9e630501d {gyazo=image}", width=40, align="left" %}
+
+**1. 画像のリサイズ**
+
+参照画像を適切なサイズ（1.5 MP）にリサイズします。
+- 二枚目以降も一枚目と同じサイズにリサイズする必要があります。
+- `Resize Image/Mask` ノードにある `match size` モードを使うと簡単です。
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/9cd44b6e0a04e7a63cb0f8de0ed01475 {gyazo=image}", width=40, align="left" %}
+
+**2. LTXVAddGuide**
+
+ここで参照画像をガイドとして差し込みます。
+
+- `frame_idx` に、差し込みたいフレーム位置と画像を入力します。
+  - `0`: 最初のフレーム
+  - `-1`: 最後のフレーム
+- この workflow では参照フレームを 3 つにしていますが、直列につないでいけばいくらでも増やせます
+  - 逆に 1 枚だけなら `image2video` のように使えますし、最初と最後だけ差し込めば FLF2V になります。
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/13c859c89782a23e4d001be63cde0057 {gyazo=image}", width=40, align="left" %}
+
+**3. LTXVCropGuides**
+
+LTX-2 のガイド機構では、そのまま出力すると生成した動画にガイド画像が混ざってしまいます。  
+そのため、`LTXVCropGuides` ノードでガイド部分を除去します。
+
+詳しい挙動はこちらで確認してください。
+- [LTX-2 IC-LoRA (Pose)](/ja/basic-workflows/ltx-2/#ic-lora-pose)
+
+{% endmediaRow %}
+
+**出力例**
+
+![入力](https://gyazo.com/513a407f54159c8e3cae9a32fe888702){gyazo=loop} ![出力](https://gyazo.com/fad61f020fb0ed54bd23c59782bff81d){gyazo=loop}
+
+---
+
 ## IC-LoRA
 
-`LTX-2.3` でも、`LTX-2` と同様に IC-LoRA 系の拡張を使うことができます。
+`LTX-2.3` でも、`LTX-2` と同様に IC-LoRA 系の拡張を使うことができます。  
+いくつか種類がありますが、ここでは分かりやすい二種だけ紹介します。
+
+- Union
+  - ポーズや深度マップ、エッジを条件に動画を生成します
+- Outpaint
+  - 入力動画の黒い部分を自然に埋めます
 
 ### モデルのダウンロード
 
 - [ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control/blob/main/ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors) (654 MB)
+- [ltx-2.3-22b-ic-lora-outpaint.safetensors](https://huggingface.co/oumoumad/LTX-2.3-22b-IC-LoRA-Outpaint/blob/main/ltx-2.3-22b-ic-lora-outpaint.safetensors) (1.31 GB)
 
 ```text
 📂ComfyUI/
 └── 📂models/
     └── 📂loras/
-        └── ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors
+        ├── ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors
+        └── ltx-2.3-22b-ic-lora-outpaint.safetensors
 ```
 
 ### IC-LoRA Union (Pose)
@@ -174,14 +236,44 @@ LLM に手伝ってもらうのも有効です。参考リンクと作りたい�
 [](/workflows/basic-workflows/ltx-2-3/LTX-2.3_IC-LoRA(Pose)_distilled_2stage.json)
 
 - 🚨IC-LoRA のときは **3 stage ではなく 2 stage** の workflow を使います
-- IC-LoRA Union では、制御動画に「生成動画の半分の解像度」を使う、という特殊な手法を使います
-  - そのため 3 stage にすると、制御画像の解像度は "半分の半分の半分の半分"、つまり 100px ほどまで落ちます
-  - そこまで小さくなると、制御画像としてまともな情報を保てません
-  - そのため、IC-LoRA では 2 stage で止めます
+- IC-LoRA Union では、制御動画に「生成動画の半分の解像度」を使う、という少し特殊な方法を使います
+  - そのため 3 stage にすると、制御画像の解像度はさらに小さくなり、100px 前後まで落ちます
+  - そこまで小さくなると、制御画像として必要な情報を保ちにくくなります
+  - そのため、IC-LoRA では 2 stage で止める方が安定します
 
 **出力例**
 
 ![入力](https://gyazo.com/9aea1871cc24b0c98931d55bebb1c19c){gyazo=loop} ![出力](https://gyazo.com/25f44e7a08247ae96a2ebcc3cb901d56){gyazo=loop}
+
+
+### IC-LoRA Outpaint
+
+![](https://gyazo.com/b43880620c819f250e61f6df0e494a7c){gyazo=image}
+
+[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_IC-LoRA-Outpaint_distilled_1stage.json)
+
+入力動画の黒い部分を自然に埋める workflow です。  
+元の動画をなるべく崩したくないため、低解像度から順に拡大していく 3stage ではなく、1stage にしています。
+
+{% mediaRow img="https://gyazo.com/80624e8617d2df1c92f929249c681752 {gyazo=image}", width=40, align="left" %}
+**LoRAモデルの読み込み**
+
+`IC-LoRA-Outpaint` の LoRA を読み込みます。
+
+{% endmediaRow %}
+
+{% mediaRow img="https://gyazo.com/404ebbcfd601d31b927e97573327e398 {gyazo=image}", width=40, align="left" %}
+**黒でPadding**
+
+広げたい範囲を、黒で Padding して追加します。  
+特別なマスクを作る必要はなく、黒で埋まっていれば大丈夫です。
+- まだ試していませんが、inpainting 的な使い方もできるかもしれません
+
+{% endmediaRow %}
+
+**出力例**
+
+![入力](https://gyazo.com/676f9b4dfb10ea6bc80b25b46d3b63ef){gyazo=loop} ![出力](https://gyazo.com/2776655edfe4896da1697755084b5e57){gyazo=loop}
 
 ---
 
