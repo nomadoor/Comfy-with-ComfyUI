@@ -155,3 +155,10 @@
 - Sitemaps should include alternate language references (`xhtml:link`) or equivalent per-locale sitemaps.
 - Language-switch discoverability can be emphasized via a short-lived animated glow around `.sidebar__lang` only on initial page access, and only when page language differs from the browser-preferred supported language (`ja`/`en`/`zh`) (non-blocking, no popup/modal).
 - Suppress repeated glow for 1 day via client storage.
+
+## 19. Agent Discovery / AI Search
+- The site's content is CC0 and should be broadly discoverable by search engines, AI search, agents, and reuse workflows.
+- `/robots.txt` must return HTTP 200 as `text/plain`, include explicit crawler rules, and reference the canonical sitemap.
+- AI crawler policy is permissive: allow crawling for search, AI input, and AI training unless a future owner directive narrows this policy.
+- Publish machine-readable discovery files under `/.well-known/` only when they describe real site capabilities; do not advertise protected APIs, OAuth issuers, or MCP servers that do not exist.
+- Prefer low-maintenance static discovery artifacts for this Eleventy site. Cloudflare-only features may be enabled operationally, but their intended behavior must be reflected here or in an ADR.
