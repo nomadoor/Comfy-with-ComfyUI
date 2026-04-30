@@ -435,6 +435,9 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/workflows": "workflows" });
   eleventyConfig.addPassthroughCopy({ "src/search": "search" });
+  eleventyConfig.addPassthroughCopy({ "src/.well-known": ".well-known" });
+  eleventyConfig.addPassthroughCopy({ "src/_headers": "_headers" });
+  eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
 
   eleventyConfig.addWatchTarget("ops");
 

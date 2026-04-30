@@ -1,0 +1,55 @@
+---
+permalink: "/llms.txt"
+eleventyExcludeFromCollections: true
+---
+# {{ site.name.en }}
+
+> CC0 ComfyUI documentation for humans, search engines, AI agents, and reuse workflows.
+
+Base URL: {{ site.url }}
+Default language: {{ site.defaultLang }}
+Languages: {% for language in site.languages %}{{ language.code }}{% if not loop.last %}, {% endif %}{% endfor %}
+
+## Preferred Entry Points
+
+- Japanese: {{ site.url }}/ja/begin-with/how-to-use-this-site/
+- English: {{ site.url }}/en/begin-with/how-to-use-this-site/
+- Chinese: {{ site.url }}/zh/begin-with/how-to-use-this-site/
+- Sitemap: {{ site.url }}/sitemap.xml
+- Search index JA: {{ site.url }}/search/index-ja.json
+- Search index EN: {{ site.url }}/search/index-en.json
+- Search index ZH: {{ site.url }}/search/index-zh.json
+- API catalog: {{ site.url }}/.well-known/api-catalog
+
+## Sections
+{% for section in site.sections %}
+
+### {{ section.key }}
+
+{% for language in site.languages %}
+{% set localeNav = nav[language.code] %}
+{% if localeNav %}
+{% for navSection in localeNav.sections %}
+{% if navSection.key == section.key %}
+- {{ language.code }}: {{ site.url }}/{{ language.code }}/{{ section.key }}/
+{% for item in navSection.pages %}
+{% if not item.noLink %}
+  - {{ item.title }}: {{ site.url }}/{{ language.code }}/{{ section.key }}/{{ item.id }}/
+{% endif %}
+{% if item.children %}
+{% for child in item.children %}
+{% if not child.noLink %}
+  - {{ child.title }}: {{ site.url }}/{{ language.code }}/{{ section.key }}/{{ child.id }}/
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+## Reuse Policy
+
+The site owner has directed that CC0 content may be indexed, summarized, quoted, transformed, used as AI input, and used for AI training. Preserve source URLs when practical so readers can reach the canonical page.

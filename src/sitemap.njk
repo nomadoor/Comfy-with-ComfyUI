@@ -7,11 +7,12 @@ eleventyExcludeFromCollections: true
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 {% set origin = siteOrigin or site.origin or "" -%}
 {% for page in collections.all %}
-  {% if page.url %}
   {% set pageLang = page.data.lang or site.defaultLang %}
   {% set pageSection = page.data.section %}
   {% set pageSlug = page.data.navId or page.data.slug %}
-  {% set isStandalone = (not pageSection) and (pageSlug == 'news' or pageSlug == 'about') %}
+  {% set isStandalone = (not pageSection) and (pageSlug == 'news' or pageSlug == 'about' or pageSlug == 'contact') %}
+  {% set isCanonicalPage = page.url and page.data.lang and pageSlug and (pageSection or isStandalone) and pageSection != 'missing' %}
+  {% if isCanonicalPage %}
   <url>
     <loc>{{ (origin ~ page.url) | replace("index.html", "") }}</loc>
     {% for option in site.languages %}

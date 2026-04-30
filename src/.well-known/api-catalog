@@ -1,0 +1,90 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://comfyui.nomadoor.net/search/index-ja.json",
+      "service-desc": [
+        {
+          "href": "https://comfyui.nomadoor.net/.well-known/openapi.json",
+          "type": "application/vnd.oai.openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://comfyui.nomadoor.net/ja/begin-with/how-to-use-this-site/",
+          "type": "text/html",
+          "hreflang": [
+            "ja"
+          ]
+        }
+      ]
+    },
+    {
+      "anchor": "https://comfyui.nomadoor.net/search/index-en.json",
+      "service-desc": [
+        {
+          "href": "https://comfyui.nomadoor.net/.well-known/openapi.json",
+          "type": "application/vnd.oai.openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://comfyui.nomadoor.net/en/begin-with/how-to-use-this-site/",
+          "type": "text/html",
+          "hreflang": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "anchor": "https://comfyui.nomadoor.net/search/index-zh.json",
+      "service-desc": [
+        {
+          "href": "https://comfyui.nomadoor.net/.well-known/openapi.json",
+          "type": "application/vnd.oai.openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://comfyui.nomadoor.net/zh/begin-with/how-to-use-this-site/",
+          "type": "text/html",
+          "hreflang": [
+            "zh"
+          ]
+        }
+      ]
+    },
+    {
+      "anchor": "https://comfyui.nomadoor.net/api/contact",
+      "service-desc": [
+        {
+          "href": "https://comfyui.nomadoor.net/.well-known/openapi.json",
+          "type": "application/vnd.oai.openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://comfyui.nomadoor.net/ja/contact/",
+          "type": "text/html",
+          "hreflang": [
+            "ja"
+          ]
+        },
+        {
+          "href": "https://comfyui.nomadoor.net/en/contact/",
+          "type": "text/html",
+          "hreflang": [
+            "en"
+          ]
+        },
+        {
+          "href": "https://comfyui.nomadoor.net/zh/contact/",
+          "type": "text/html",
+          "hreflang": [
+            "zh"
+          ]
+        }
+      ]
+    }
+  ]
+}

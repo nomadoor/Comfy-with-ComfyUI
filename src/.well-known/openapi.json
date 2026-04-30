@@ -1,0 +1,214 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Comfy with ComfyUI Public Site Interfaces",
+    "version": "1.0.0",
+    "description": "Machine-readable descriptions for public, unauthenticated site resources and the operator contact endpoint."
+  },
+  "servers": [
+    {
+      "url": "https://comfyui.nomadoor.net"
+    }
+  ],
+  "paths": {
+    "/search/index-ja.json": {
+      "get": {
+        "summary": "Japanese search index",
+        "description": "Returns the static client-side search index for Japanese pages.",
+        "responses": {
+          "200": {
+            "description": "Search index JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchIndex"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/search/index-en.json": {
+      "get": {
+        "summary": "English search index",
+        "description": "Returns the static client-side search index for English pages.",
+        "responses": {
+          "200": {
+            "description": "Search index JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchIndex"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/search/index-zh.json": {
+      "get": {
+        "summary": "Chinese search index",
+        "description": "Returns the static client-side search index for Chinese pages.",
+        "responses": {
+          "200": {
+            "description": "Search index JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchIndex"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/contact": {
+      "post": {
+        "summary": "Submit a contact message",
+        "description": "Accepts operator contact messages from the public contact page. Cloudflare Turnstile verification is required.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "reply_to",
+                  "category",
+                  "body",
+                  "cf-turnstile-response"
+                ],
+                "properties": {
+                  "reply_to": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "comfyui-consulting",
+                      "genai-dev",
+                      "business",
+                      "other"
+                    ]
+                  },
+                  "body": {
+                    "type": "string"
+                  },
+                  "environment": {
+                    "type": "string"
+                  },
+                  "cf-turnstile-response": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Message accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "405": {
+            "description": "Unsupported method"
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SearchIndex": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "summary": {
+              "type": "string"
+            },
+            "tags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "content": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "title",
+            "url"
+          ],
+          "additionalProperties": true
+        }
+      },
+      "ContactResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "additionalProperties": true
+      },
+      "ServerError": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "const": false
+          },
+          "error": {
+            "type": "string",
+            "enum": [
+              "config",
+              "server"
+            ]
+          }
+        },
+        "required": [
+          "ok",
+          "error"
+        ],
+        "additionalProperties": true
+      }
+    }
+  }
+}
