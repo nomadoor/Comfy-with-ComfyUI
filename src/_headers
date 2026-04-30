@@ -1,0 +1,31 @@
+/
+  Link: </.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby"; type="text/plain", </sitemap.xml>; rel="describedby"; type="application/xml"
+  Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+/ja/*
+  Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+/en/*
+  Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+/zh/*
+  Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+/.well-known/api-catalog
+  Content-Type: application/linkset+json; charset=utf-8
+
+/.well-known/openapi.json
+  Content-Type: application/vnd.oai.openapi+json; charset=utf-8
+
+/.well-known/agent-skills/index.json
+  Content-Type: application/json; charset=utf-8
+
+/.well-known/agent-skills/comfyui-docs/SKILL.md
+  Content-Type: text/markdown; charset=utf-8

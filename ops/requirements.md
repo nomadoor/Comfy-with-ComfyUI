@@ -162,3 +162,4 @@
 - AI crawler policy is permissive: allow crawling for search, AI input, and AI training unless a future owner directive narrows this policy.
 - Publish machine-readable discovery files under `/.well-known/` only when they describe real site capabilities; do not advertise protected APIs, OAuth issuers, or MCP servers that do not exist.
 - Prefer low-maintenance static discovery artifacts for this Eleventy site. Cloudflare-only features may be enabled operationally, but their intended behavior must be reflected here or in an ADR.
+- WebMCP support, when present, must be progressive enhancement only. If `navigator.modelContext` is unavailable, the site must behave exactly as before.

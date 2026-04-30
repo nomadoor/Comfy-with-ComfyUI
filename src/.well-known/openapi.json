@@ -1,0 +1,174 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Comfy with ComfyUI Public Site Interfaces",
+    "version": "1.0.0",
+    "description": "Machine-readable descriptions for public, unauthenticated site resources and the contact endpoint."
+  },
+  "servers": [
+    {
+      "url": "https://comfyui.nomadoor.net"
+    }
+  ],
+  "paths": {
+    "/search/index-ja.json": {
+      "get": {
+        "summary": "Japanese search index",
+        "description": "Returns the static client-side search index for Japanese pages.",
+        "responses": {
+          "200": {
+            "description": "Search index JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchIndex"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/search/index-en.json": {
+      "get": {
+        "summary": "English search index",
+        "description": "Returns the static client-side search index for English pages.",
+        "responses": {
+          "200": {
+            "description": "Search index JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchIndex"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/search/index-zh.json": {
+      "get": {
+        "summary": "Chinese search index",
+        "description": "Returns the static client-side search index for Chinese pages.",
+        "responses": {
+          "200": {
+            "description": "Search index JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchIndex"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/contact": {
+      "post": {
+        "summary": "Submit a contact message",
+        "description": "Accepts site correction and article request submissions. Cloudflare Turnstile verification is required.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "type",
+                  "message",
+                  "cf-turnstile-response"
+                ],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "fix",
+                      "request"
+                    ]
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "cf-turnstile-response": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Message accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "405": {
+            "description": "Unsupported method"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SearchIndex": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "summary": {
+              "type": "string"
+            },
+            "tags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "body": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "title",
+            "url"
+          ],
+          "additionalProperties": true
+        }
+      },
+      "ContactResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "additionalProperties": true
+      }
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import initPage from "./page.js";
 import initLinkBehavior from "./link-behavior.js";
 import initRouter from "./router.js";
+import initWebMcp from "./webmcp.js";
 
 const bootstrap = () => {
   let hasInitError = false;
@@ -24,6 +25,12 @@ const bootstrap = () => {
   } catch (error) {
     hasInitError = true;
     console.error("[app] initRouter failed", error);
+  }
+
+  try {
+    initWebMcp();
+  } catch (error) {
+    console.warn("[app] initWebMcp failed", error);
   }
 
   if (hasInitError) {
