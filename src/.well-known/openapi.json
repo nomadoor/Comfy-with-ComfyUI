@@ -3,7 +3,7 @@
   "info": {
     "title": "Comfy with ComfyUI Public Site Interfaces",
     "version": "1.0.0",
-    "description": "Machine-readable descriptions for public, unauthenticated site resources and the contact endpoint."
+    "description": "Machine-readable descriptions for public, unauthenticated site resources and the operator contact endpoint."
   },
   "servers": [
     {
@@ -68,7 +68,7 @@
     "/api/contact": {
       "post": {
         "summary": "Submit a contact message",
-        "description": "Accepts site correction and article request submissions. Cloudflare Turnstile verification is required.",
+        "description": "Accepts operator contact messages from the public contact page. Cloudflare Turnstile verification is required.",
         "requestBody": {
           "required": true,
           "content": {
@@ -76,24 +76,33 @@
               "schema": {
                 "type": "object",
                 "required": [
-                  "type",
-                  "message",
+                  "reply_to",
+                  "category",
+                  "body",
                   "cf-turnstile-response"
                 ],
                 "properties": {
-                  "type": {
+                  "reply_to": {
                     "type": "string",
-                    "enum": [
-                      "fix",
-                      "request"
-                    ]
+                    "format": "email"
                   },
-                  "message": {
+                  "name": {
                     "type": "string"
                   },
-                  "url": {
+                  "category": {
                     "type": "string",
-                    "format": "uri"
+                    "enum": [
+                      "comfyui-consulting",
+                      "genai-dev",
+                      "business",
+                      "other"
+                    ]
+                  },
+                  "body": {
+                    "type": "string"
+                  },
+                  "environment": {
+                    "type": "string"
                   },
                   "cf-turnstile-response": {
                     "type": "string"
@@ -146,7 +155,7 @@
                 "type": "string"
               }
             },
-            "body": {
+            "content": {
               "type": "string"
             }
           },
