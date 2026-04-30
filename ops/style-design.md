@@ -3,17 +3,16 @@
 ## 0. Identity
 - JA site title: **縲靴omfy縺ｫ菴ｿ縺・ComfyUI縲・* / EN: **窶廚omfy with ComfyUI窶・*. Strings live in `site.json`.
 - IA sections remain `begin-with`, `data-utilities`, `ai-capabilities`, `basic-workflows`, `faq`.
-- Design intent follows the current production layout: full-bleed dark canvas, three-column documentation shell, persistent left navigation, central article content, and a right utility rail.
+- Design intent follows `src/assets/mock/繝帙・繝繝・じ繧､繝ｳ_v01.png`: full-bleed black canvas, single-column article, chrome anchored on the left and top.
 - Dark theme is canonical. Light mode will reuse the same token keys with different values.
 
 ## 1. Color Tokens
 | Token | Value | Usage |
 | --- | --- | --- |
 | `--color-bg` | `#040404` | Body background. |
-| `--color-panel` | `#0f0f0f` | Receded sidebar and cards. |
-| `--color-panel-strong` | `#111111` | Sidebar blocks and search input. |
-| ``--color-panel-alt`` | `#161616` | Active nav rows and hero fallback. |
-| `--color-border` | `#242424` | Default 1px borders. |
+| `--color-panel` | `#111111` | Sidebar and cards. |
+| ``--color-panel-alt`` | `#1a1a1a` | Active nav rows, hero fallback, search input. |
+| `--color-border` | `#292929` | Default 1px borders. |
 | `--color-border-strong` | `#3a3a3a` | Active nav highlight, chip border. |
 | `--color-text` | `#f1f1f1` | Primary text. |
 | `--color-text-muted` | `#a3a3a3` | Supporting text, controls. |
@@ -37,17 +36,17 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 **Code color guidance:** Code blocks keep the existing backgrounds (`--color-panel-strong` for block, `--color-chip-border` for inline). Syntax colors must come from the `--color-code-text` / `--token-*` tokens listed above. When changing any code color, update this table first, then adjust CSS to match. Target contrast is roughly WCAG AA (≥4.5:1) against the block background for both themes.
 
 ## 2. Typography
-- Base font stack (all locales): `"Plus Jakarta Sans", "Zen Kaku Gothic New", "Hiragino Sans", system-ui, sans-serif`
-  - Latin glyphs render via Plus Jakarta Sans, Japanese via Zen Kaku (fallback).
+- Base font stack (all locales): `"Berlin Type", "Zen Kaku Gothic New", "Hiragino Sans", system-ui, sans-serif`
+  - Latin glyphs render via Berlin Type, Japanese via Zen Kaku (fallback).
 - `--font-jp` used only for body copy that must stay purely Japanese.
-- Headings use 700 weight; body copy uses 500.
-- Body copy line height targets `1.68`.
-- Body copy should not use broad positive tracking. Keep article letter spacing at `0`.
+- Headings use 600 weight; body 400.
+- Line height: `1.7`.
+- `@font-face` declared for Berlin Type regular + bold (woff2 + woff) under `src/assets/fonts/berlin-type/`.
 
 ## 3. Layout & Spacing
 - Spacing scale (`rem`): `0.25, 0.5, 0.75, 1, 1.5, 2, 3`.
 - Border radii: use `--radius-md = 0.5rem` for every component (pill shapes use `--radius-pill`).
-- Grid: sidebar `16rem`, content `55rem` max, TOC `16rem`. Column gap is `4rem`, outer padding is a separate token, and `--layout-max = sidebar + content + toc + (gap * 2) + (padding * 2)`; header uses the same width.
+- Grid: sidebar `16em`, content `60rem` max, TOC `16em`. Column gap is `4.5rem`, outer padding is a separate token, and `--layout-max = sidebar + content + toc + (gap ﾃ・2) + (padding ﾃ・2)`; header uses the same width.
 - Header height `72px`, sticky at the top. Logo / search / actions stay centered within their columns; search input maxes at 80% width (竕､520px).
 - Desktop rails are `position: fixed` with `height = 100vh - header` and scroll internally without drift; mobile reverts to stacked layout.
 
@@ -58,13 +57,13 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
   - Language chip opens a dropdown **upward** so it never falls off-screen; each option links to the same slug in the chosen locale.
 
 ## 5. Hero & Tags
-- Hero height is fixed at `10rem`. Use a grayscale image (fallback ``--color-panel-alt``) with a dark scrim.
+- Hero height is fixed at `12rem`. Use a grayscale image (fallback ``--color-panel-alt``) with a dark scrim.
 - Hero content is flex-centered both vertically and horizontally; remove all default margins (H1 included).
 - Apply `--radius-md` to the hero container and imagery. Tag chips still appear only on **basic-workflows** pages and link to the AI Capabilities slug.
 - Images remain tinted with `filter: grayscale(1) brightness(0.6)` inside the hero to match the mock.
 
 ## 6. Article Body
-- Transparent background (no cards). Text blocks should center at a readable measure around `68ch`; wide media, tables, code blocks, and workflow components may use the full content column.
+- Transparent background (no cards). Content width max 60ch.
 - Heading rhythm: `h2` margin-top `3rem`, `h3` `1.5rem`.
 - Inline images are centered, `max-width: 720px`, `max-height: 320px`, and `object-fit: contain` so portrait assets never force extra scrolling.
 - Inline Gyazo media stays completely flat: **no borders / box-shadows**. When contrast is needed, rely on `--color-panel-alt` as the single backing surface.
@@ -96,3 +95,4 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - Placeholder cat illustration (mock bottom-right) will be added later; for now reserve space in layout for helper popover.
 
 > Follow the mock first. If a token or component is missing, update `/ops/style-design.md` before touching `/src`.
+
