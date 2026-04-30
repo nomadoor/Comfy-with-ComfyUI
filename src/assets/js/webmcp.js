@@ -32,7 +32,7 @@ const searchDocs = async ({ query, lang = "ja", limit = 5 } = {}) => {
     return { results: [] };
   }
   const normalizedLang = getLang(lang);
-  const cappedLimit = Math.max(1, Math.min(Number(limit) || 5, 10));
+  const cappedLimit = Math.max(1, Math.min(Number(limit) || 5, 5));
   const response = await fetch(`/search/index-${normalizedLang}.json`, {
     headers: { Accept: "application/json" }
   });
@@ -108,8 +108,8 @@ export default function initWebMcp() {
           limit: {
             type: "integer",
             minimum: 1,
-            maximum: 10,
-            description: "Maximum number of results."
+            maximum: 5,
+            description: "Maximum number of results. Search results are capped at 5 items per query."
           }
         },
         required: ["query"]
