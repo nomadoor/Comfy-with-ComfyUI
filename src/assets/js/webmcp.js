@@ -9,10 +9,18 @@ const getLang = (value) => {
 const scoreResult = (item, query) => {
   const q = query.toLowerCase();
   const title = String(item.title || "").toLowerCase();
+  const slug = String(item.slug || "").toLowerCase();
+  const tags = Array.isArray(item.tags)
+    ? item.tags.map((tag) => String(tag || "").toLowerCase())
+    : [];
   const summary = String(item.summary || "").toLowerCase();
   const content = String(item.content || "").toLowerCase();
   if (title === q) return 100;
   if (title.includes(q)) return 80;
+  if (slug === q) return 90;
+  if (tags.some((tag) => tag === q)) return 85;
+  if (slug.includes(q)) return 70;
+  if (tags.some((tag) => tag.includes(q))) return 65;
   if (summary.includes(q)) return 50;
   if (content.includes(q)) return 20;
   return 0;
