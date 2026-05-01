@@ -11,6 +11,8 @@ The current documentation layout is useful, but the side rails can attract more 
 
 Test the design in small reversible steps on a feature branch.
 
+Companion token proposal: `/ops/style-design.md` defines the design primitives used by this trial, including `--color-reader`, `--color-sidebar-surface`, `--content-max`, column widths, column gap, rail padding, desktop scroll behavior, article rhythm, list markers, blockquote treatment, and TOC active-line behavior. Implementation in `/src` must follow those token definitions.
+
 1. First trial: add a subtle central reading surface to `app-shell__content`.
 2. Second trial, only if needed: tune article reading rhythm.
 3. Third trial, only if needed: tune column grouping and side-rail spacing without adding borders.
