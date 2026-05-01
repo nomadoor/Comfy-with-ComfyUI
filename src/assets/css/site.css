@@ -2569,6 +2569,10 @@ h1 {
   transition: var(--transition-fast);
 }
 
+.article-body a.workflow-related__card {
+  text-decoration: none;
+}
+
 .note-finder {
   display: flex;
   flex-direction: column;
