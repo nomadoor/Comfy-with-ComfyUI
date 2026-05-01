@@ -53,9 +53,11 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - On desktop, search, theme, and language controls live in the top-right header actions area. Header actions may use their own compact width instead of being constrained to the TOC column. On mobile, keep the existing search toggle and sidebar footer controls.
 - The desktop search dropdown stays aligned to the search input width. Do not widen it independently of the input or use scrollbars for the capped result list.
 - Search inputs suppress browser-native search decorations such as WebKit cancel buttons; use only the site's own search icon/control styling.
+- Header search and Notes finder search use the same compact surface behavior: `--color-panel-alt` normally and `--color-tav-strong` while focused.
 - Notes finder keeps exactly `--space-md` (`1rem`) between its local search input and tag buttons.
 - Desktop rails sit in the grid columns with `height = 100vh - header - bottom padding`, stay sticky below the fixed header, and scroll internally without drift. The app shell has no top padding on desktop; mobile reverts to stacked layout.
 - On desktop, the document/body is the native scroll root. The central reader surface is part of normal document flow, with a zero-height sticky corner mask that preserves the upper radius below the fixed header without creating a persistent top gap. Wheel, keyboard, and middle-button scrolling use browser-native document behavior instead of JavaScript proxying.
+- The root `html` element reserves scrollbar space with `scrollbar-gutter: stable` so header and content widths do not shift as pages move between scrollable and non-scrollable states.
 
 ## 4. Sidebar
 - Section icon tabs (`sidebar__section-tabs`): compact icon-only shortcuts inside `sidebar__section-panel`. Active state is indicated by icon color only, without a filled background.

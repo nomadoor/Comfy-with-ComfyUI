@@ -12,6 +12,7 @@ const initSearch = () => {
     containers.add(container);
 
     const input = container.querySelector("[data-search-input]");
+    const clearButton = container.querySelector("[data-search-clear]");
     const resultsEl = container.querySelector("[data-search-results]");
     const lang = document.documentElement.lang || "ja";
     const MAX_RESULTS = 5;
@@ -37,6 +38,11 @@ const initSearch = () => {
         resultsEl.innerHTML = "";
       }
       activeIndex = -1;
+    };
+
+    const updateClearButton = () => {
+      if (!clearButton || !input) return;
+      clearButton.hidden = !input.value.trim();
     };
 
     const loadHistory = () => {
@@ -127,6 +133,7 @@ const initSearch = () => {
         input.value = "";
         input.blur();
       }
+      updateClearButton();
       document.body.classList.remove("search-open");
       document
         .querySelectorAll("[data-search-toggle]")
@@ -301,6 +308,8 @@ const initSearch = () => {
     };
 
     if (input) {
+      updateClearButton();
+
       input.addEventListener("keydown", (event) => {
         if (event.key === "ArrowDown") {
           event.preventDefault();
@@ -321,6 +330,7 @@ const initSearch = () => {
       input.addEventListener("input", () => {
         const value = input.value.trim();
         lastQuery = value;
+        updateClearButton();
         if (!value || value.length < MIN_CHARS) {
           renderHistory();
           return;
@@ -343,6 +353,15 @@ const initSearch = () => {
         }
       });
     }
+
+    clearButton?.addEventListener("click", () => {
+      if (!input) return;
+      input.value = "";
+      lastQuery = "";
+      updateClearButton();
+      hideResults();
+      input.focus();
+    });
   });
 
   if (!docClickAttached) {

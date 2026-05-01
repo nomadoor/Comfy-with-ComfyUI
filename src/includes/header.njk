@@ -4,6 +4,12 @@
 {% set searchPlaceholder = searchI18n.placeholder[currentLang] or searchI18n.placeholder[site.defaultLang] or "Search"
 %}
 {% set searchLabel = searchI18n.aria[currentLang] or searchI18n.aria[site.defaultLang] or searchPlaceholder %}
+{% set searchClearLabel = "Clear search" %}
+{% if currentLang == "ja" %}
+  {% set searchClearLabel = "検索をクリア" %}
+{% elif currentLang == "zh" %}
+  {% set searchClearLabel = "清除搜索" %}
+{% endif %}
 {% set themeLabel = (site.i18n and site.i18n.themeToggle and (site.i18n.themeToggle[currentLang] or site.i18n.themeToggle[site.defaultLang])) or 'Theme toggle' %}
 {% set langOptions = site.languages or [] %}
 {% set currentSlugForLang = currentNavId or slug or 'how-to-use-this-site' %}
@@ -32,12 +38,10 @@
     <div class="site-header__actions">
       <div class="site-header__search">
         <div class="search-box" data-search>
+          <span class="search-box__icon" aria-hidden="true">{{ icon("search") }}</span>
           <input type="search" class="search-box__input" data-search-input placeholder="{{ searchPlaceholder }}"
             aria-label="{{ searchLabel }}" autocomplete="off" />
-          <button class="icon-button icon-button--ghost site-header__search-toggle site-header__search-toggle--inline"
-            type="button" aria-label="{{ searchLabel }}" data-search-focus>
-            {{ icon("search") }}
-          </button>
+          <button class="search-box__clear" type="button" data-search-clear hidden aria-label="{{ searchClearLabel }}"><span aria-hidden="true"></span></button>
           <div class="search-box__results" data-search-results hidden role="listbox" aria-live="polite"></div>
         </div>
       </div>
