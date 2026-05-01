@@ -2651,7 +2651,7 @@ h1 {
 }
 
 .note-finder__tag-prefix {
-  color: var(--color-accent);
+  color: var(--color-highlight);
 }
 
 .note-finder__tag:hover,
