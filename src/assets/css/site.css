@@ -2641,6 +2641,7 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
+  margin-top: var(--space-xl);
 }
 
 .note-finder__search {
@@ -2648,7 +2649,7 @@ h1 {
   align-items: center;
   gap: var(--space-xs);
   width: min(24rem, 100%);
-  height: 1.5rem;
+  height: 2rem;
   margin-inline: auto;
   padding: 0 var(--space-sm);
   border-radius: var(--radius-pill);
@@ -2677,13 +2678,18 @@ h1 {
 .note-finder__input {
   width: 100%;
   min-width: 0;
+  height: 24px;
   border: 0;
+  border-radius: 0;
   outline: 0;
   background: transparent;
   color: var(--color-text);
+  padding: 0;
   font: inherit;
   font-size: 0.86rem;
+  font-weight: 500;
   line-height: 1;
+  transition: var(--transition-fast);
 }
 
 .note-finder__input::placeholder {

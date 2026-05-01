@@ -16,6 +16,8 @@ hero:
 {% from "icon.njk" import icon %}
 {% set notes = collections.all | notesForLang(lang) %}
 {% set hasViews = notes | notesHaveViews %}
+<p>Notes collects FAQ-style answers, troubleshooting notes, small observations from production work, and occasional articles around ComfyUI rather than strict workflow guides.</p>
+
 <section class="note-finder" data-note-finder>
   <label class="sr-only" for="note-finder-query">Search Notes</label>
   <div class="note-finder__search">
