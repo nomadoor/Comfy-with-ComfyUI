@@ -14,11 +14,14 @@ const EXCLUDED_SELECTOR = [
   "select",
   "textarea",
 ].join(", ");
-const MIDDLE_DRAG_EXCLUDED_SELECTOR = [
+const MIDDLE_SCROLL_EXCLUDED_SELECTOR = [
   EXCLUDED_SELECTOR,
   "a",
   "[role='button']",
 ].join(", ");
+const MIDDLE_SCROLL_DEAD_ZONE_PX = 8;
+const MIDDLE_SCROLL_SPEED_MULTIPLIER = 10;
+const MIDDLE_SCROLL_MAX_SPEED_PX_PER_SECOND = 2400;
 
 const getScrollableState = (element) => {
   if (!element) {
@@ -39,12 +42,67 @@ const canScroll = (element) => {
   return isVerticallyScrollable || isHorizontallyScrollable;
 };
 
+const getMiddleScrollVelocity = (offset) => {
+  const distance = Math.abs(offset);
+  if (distance <= MIDDLE_SCROLL_DEAD_ZONE_PX) return 0;
+
+  const speed = (distance - MIDDLE_SCROLL_DEAD_ZONE_PX) * MIDDLE_SCROLL_SPEED_MULTIPLIER;
+  return Math.sign(offset) * Math.min(speed, MIDDLE_SCROLL_MAX_SPEED_PX_PER_SECOND);
+};
+
 const initContentScrollProxy = () => {
   if (initialized) return;
   initialized = true;
 
   const desktopQuery = window.matchMedia(DESKTOP_QUERY);
-  let middleDragState = null;
+  let middleScrollState = null;
+  let middleScrollFrame = 0;
+  let suppressNextMiddleAuxClick = false;
+  let clearMiddleAuxClickTimer = 0;
+
+  const stopMiddleScroll = () => {
+    middleScrollState = null;
+    document.documentElement.style.cursor = "";
+    if (middleScrollFrame) {
+      window.cancelAnimationFrame(middleScrollFrame);
+      middleScrollFrame = 0;
+    }
+  };
+
+  const clearMiddleAuxClickSuppressionSoon = () => {
+    if (clearMiddleAuxClickTimer) {
+      window.clearTimeout(clearMiddleAuxClickTimer);
+    }
+    clearMiddleAuxClickTimer = window.setTimeout(() => {
+      suppressNextMiddleAuxClick = false;
+      clearMiddleAuxClickTimer = 0;
+    }, 100);
+  };
+
+  const tickMiddleScroll = (timestamp) => {
+    if (!middleScrollState || !desktopQuery.matches || !canScroll(middleScrollState.contentScroll)) {
+      stopMiddleScroll();
+      return;
+    }
+
+    const elapsedSeconds = middleScrollState.lastTimestamp
+      ? Math.min((timestamp - middleScrollState.lastTimestamp) / 1000, 0.05)
+      : 0;
+    middleScrollState.lastTimestamp = timestamp;
+
+    const velocityX = getMiddleScrollVelocity(middleScrollState.currentX - middleScrollState.anchorX);
+    const velocityY = getMiddleScrollVelocity(middleScrollState.currentY - middleScrollState.anchorY);
+
+    if (elapsedSeconds && (velocityX || velocityY)) {
+      middleScrollState.contentScroll.scrollBy({
+        left: velocityX * elapsedSeconds,
+        top: velocityY * elapsedSeconds,
+        behavior: "auto",
+      });
+    }
+
+    middleScrollFrame = window.requestAnimationFrame(tickMiddleScroll);
+  };
 
   document.addEventListener(
     "wheel",
@@ -69,17 +127,24 @@ const initContentScrollProxy = () => {
     "mousedown",
     (event) => {
       if (!desktopQuery.matches || event.button !== 1 || event.defaultPrevented) return;
-      if (event.target.closest(MIDDLE_DRAG_EXCLUDED_SELECTOR)) return;
+      if (event.target.closest(MIDDLE_SCROLL_EXCLUDED_SELECTOR)) return;
 
       const contentScroll = document.querySelector(CONTENT_SCROLL_SELECTOR);
       if (!canScroll(contentScroll)) return;
 
       event.preventDefault();
-      middleDragState = {
+      stopMiddleScroll();
+      suppressNextMiddleAuxClick = true;
+      middleScrollState = {
         contentScroll,
-        lastX: event.clientX,
-        lastY: event.clientY,
+        anchorX: event.clientX,
+        anchorY: event.clientY,
+        currentX: event.clientX,
+        currentY: event.clientY,
+        lastTimestamp: 0,
       };
+      document.documentElement.style.cursor = "all-scroll";
+      middleScrollFrame = window.requestAnimationFrame(tickMiddleScroll);
     },
     { passive: false }
   );
@@ -87,30 +152,37 @@ const initContentScrollProxy = () => {
   document.addEventListener(
     "mousemove",
     (event) => {
-      if (!middleDragState) return;
-
-      const deltaX = event.clientX - middleDragState.lastX;
-      const deltaY = event.clientY - middleDragState.lastY;
-      middleDragState.lastX = event.clientX;
-      middleDragState.lastY = event.clientY;
-
-      middleDragState.contentScroll.scrollBy({
-        left: deltaX,
-        top: deltaY,
-        behavior: "auto",
-      });
+      if (!middleScrollState) return;
+      middleScrollState.currentX = event.clientX;
+      middleScrollState.currentY = event.clientY;
     },
     { passive: true }
   );
 
   document.addEventListener("mouseup", (event) => {
     if (event.button === 1) {
-      middleDragState = null;
+      stopMiddleScroll();
+      clearMiddleAuxClickSuppressionSoon();
     }
   });
 
+  document.addEventListener(
+    "auxclick",
+    (event) => {
+      if (event.button !== 1 || !suppressNextMiddleAuxClick) return;
+      suppressNextMiddleAuxClick = false;
+      if (clearMiddleAuxClickTimer) {
+        window.clearTimeout(clearMiddleAuxClickTimer);
+        clearMiddleAuxClickTimer = 0;
+      }
+      event.preventDefault();
+    },
+    { passive: false }
+  );
+
   window.addEventListener("blur", () => {
-    middleDragState = null;
+    stopMiddleScroll();
+    suppressNextMiddleAuxClick = false;
   });
 };
 
