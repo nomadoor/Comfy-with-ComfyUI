@@ -6,12 +6,6 @@
 {% set searchLabel = searchI18n.aria[currentLang] or searchI18n.aria[site.defaultLang] or searchPlaceholder %}
 {% set themeLabel = (site.i18n and site.i18n.themeToggle and (site.i18n.themeToggle[currentLang] or site.i18n.themeToggle[site.defaultLang])) or 'Theme toggle' %}
 {% set langOptions = site.languages or [] %}
-{% set langLabel = currentLang | upper %}
-{% for option in langOptions %}
-  {% if option.code == currentLang %}
-    {% set langLabel = option.label or langLabel %}
-  {% endif %}
-{% endfor %}
 {% set currentSlugForLang = currentNavId or slug or 'how-to-use-this-site' %}
 {% set isStandaloneForLang = (not sectionExists) and (currentSlugForLang == 'news' or currentSlugForLang == 'about' or currentSlugForLang == 'contact') %}
 {% set logoBaseMask = 'src/assets/logos/logo_Comfy-ComfyUI.svg' | svgDataUri %}
@@ -57,7 +51,13 @@
       </button>
       <div class="site-header__lang sidebar__lang" data-lang-control>
         <button class="lang-toggle" type="button" data-lang-toggle aria-haspopup="true" aria-expanded="false">
-          <span class="sidebar__lang-label">{{ langLabel }}</span>
+          <span class="sidebar__lang-label">
+            {%- for option in langOptions -%}
+              {%- if option.code == currentLang -%}
+                {{- option.label or (currentLang | upper) -}}
+              {%- endif -%}
+            {%- endfor -%}
+          </span>
           <span class="sidebar__lang-caret">{{ icon("chevron-down") }}</span>
         </button>
         <div class="lang-menu" data-lang-menu role="menu">

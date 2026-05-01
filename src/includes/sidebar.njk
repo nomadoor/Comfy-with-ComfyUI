@@ -96,21 +96,15 @@
 
           {% set langOptions = site.languages or [] %}
 
-          {% set langLabel = lang | upper %}
-
-          {% for option in langOptions %}
-
-            {% if option.code == lang %}
-
-              {% set langLabel = option.label or langLabel %}
-
-            {% endif %}
-
-          {% endfor %}
-
           <button class="lang-toggle" type="button" data-lang-toggle aria-haspopup="true" aria-expanded="false">
 
-            <span class="sidebar__lang-label">{{ langLabel }}</span>
+            <span class="sidebar__lang-label">
+              {%- for option in langOptions -%}
+                {%- if option.code == lang -%}
+                  {{- option.label or (lang | upper) -}}
+                {%- endif -%}
+              {%- endfor -%}
+            </span>
 
             <span class="sidebar__lang-caret">{{ icon("chevron-down") }}</span>
 
