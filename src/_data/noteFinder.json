@@ -1,9 +1,9 @@
-export default {
-  recommendedTags: [
+{
+  "recommendedTags": [
     "troubleshoot",
     "custom-nodes",
     "install",
     "vram",
     "error"
   ]
-};
+}
