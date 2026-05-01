@@ -173,7 +173,7 @@
 
 ## Hidden Draft Backlog
 
-These topics were removed from sidebar navigation on 2026-05-01 because they are not ready as navigable entries yet. Keep them as owner notes for future writing, not as current IA commitments.
+These topic names are a planned backlog, not current sidebar navigation entries. The parent groups may remain in the active IA, but the exact items listed below are owner notes for future writing until they are ready to become navigable pages.
 
 - AI Capabilities / Video & Audio Generation
   - Video Generation
