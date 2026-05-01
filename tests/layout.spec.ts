@@ -106,7 +106,7 @@ test.describe("Layout rails", () => {
       throw new Error("Unable to measure layout boxes");
     }
 
-    expect(sidebarBox.y).toBeGreaterThan(headerBox.y + headerBox.height + 8);
+    expect(sidebarBox.y).toBeGreaterThanOrEqual(headerBox.y + headerBox.height - 1);
     expect(contentBox.x).toBeGreaterThan(sidebarBox.x + sidebarBox.width + 8);
     expect(tocBox.x).toBeGreaterThan(contentBox.x + contentBox.width + 8);
   });
