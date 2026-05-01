@@ -11,6 +11,8 @@
 | --- | --- | --- |
 | `--color-bg` | `#040404` | Body background. |
 | `--color-panel` | `#111111` | Sidebar and cards. |
+| `--color-reader` | `#101010` | Central reading surface behind `app-shell__content`. |
+| `--color-sidebar-surface` | `#101010` | Sidebar and TOC column surface, matching the central reader surface. |
 | ``--color-panel-alt`` | `#1a1a1a` | Active nav rows, hero fallback, search input. |
 | `--color-border` | `#292929` | Default 1px borders. |
 | `--color-border-strong` | `#3a3a3a` | Active nav highlight, chip border. |
@@ -46,12 +48,18 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 ## 3. Layout & Spacing
 - Spacing scale (`rem`): `0.25, 0.5, 0.75, 1, 1.5, 2, 3`.
 - Border radii: use `--radius-md = 0.5rem` for every component (pill shapes use `--radius-pill`).
-- Grid: sidebar `16em`, content `60rem` max, TOC `16em`. Column gap is `4.5rem`, outer padding is a separate token, and `--layout-max = sidebar + content + toc + (gap ﾃ・2) + (padding ﾃ・2)`; header uses the same width.
+- Grid: sidebar `15rem`, content `60rem` max, TOC `15rem`. Side rails add internal padding without reducing their content width. Column gap is `1.5rem`, outer padding is a separate token, and `--layout-max = sidebar + content + toc + (gap ﾃ・2) + (padding ﾃ・2)`; header uses the same width.
 - Header height `72px`, sticky at the top. Logo / search / actions stay centered within their columns; search input maxes at 80% width (竕､520px).
-- Desktop rails are `position: fixed` with `height = 100vh - header` and scroll internally without drift; mobile reverts to stacked layout.
+- On desktop, search, theme, and language controls live in the top-right header actions area. Header actions may use their own compact width instead of being constrained to the TOC column. On mobile, keep the existing search toggle and sidebar footer controls.
+- The desktop search dropdown stays aligned to the search input width. Do not widen it independently of the input or use scrollbars for the capped result list.
+- Search inputs suppress browser-native search decorations such as WebKit cancel buttons; use only the site's own search icon/control styling.
+- Desktop rails sit in the grid columns with `height = 100vh - header - bottom padding` and scroll internally without drift. The app shell has no top padding on desktop; mobile reverts to stacked layout.
+- On desktop, wheel scrolling outside the side rails and form/menu controls is proxied to the central reading surface so gaps, header area, and background space still scroll the article.
 
 ## 4. Sidebar
-- Section tabs: stacked buttons matching mock icons (icon stub optional). Active tab uses ``--color-panel-alt`` background and bold label.
+- Section tabs: stacked buttons matching mock icons (icon stub optional). Active tab is indicated by icon color only, without a filled background.
+- The left sidebar is split into two visible blocks: `sidebar__sections` for section switching and `sidebar__section-panel` for tabbed navigation plus sidebar controls. The TOC rail remains a single visible block.
+- Section selector buttons keep inactive labels muted. The active selector uses heading-colored text and a quiet `--color-panel-alt` background, not a light filled pill.
 - Nav list: single column, children indented with border-left. Active link shows a 2px highlight bar (mock窶冱 purple line).
 - Footer: `About` link + language chips (JA/EN) + theme toggle stub. Chips use pill style with accent border when active.
   - Language chip opens a dropdown **upward** so it never falls off-screen; each option links to the same slug in the chosen locale.
@@ -73,7 +81,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 
 ## 8. TOC
 - Place TOC and the future Tips block inside the right sidebar column. Apply the border only to the TOC body, not the entire sidebar.
-- Each link carries a subtle guide line; the active item also shows a border highlight with the accent color.
+- TOC links do not show a guide line by default. Only the active item shows a left accent line.
 - Reserve a grey rectangular placeholder beneath the TOC for character/Tips content.
 
 ## 9. Workflow Assets

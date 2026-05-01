@@ -54,7 +54,8 @@ const markAttentionShown = (currentLang, preferredLang) => {
 };
 
 const triggerLangAttention = () => {
-  const langContainer = document.querySelector(".sidebar__lang");
+  const langControls = Array.from(document.querySelectorAll("[data-lang-control]"));
+  const langContainer = langControls.find((control) => control.offsetParent) || langControls[0];
   if (!langContainer) return;
 
   const currentLang = parsePathLang(window.location.pathname);
@@ -86,40 +87,48 @@ const triggerLangAttention = () => {
 
 const initLangSwitcher = () => {
   if (langSwitcherInitialized) return;
-  const toggle = document.querySelector("[data-lang-toggle]");
-  const menu = document.querySelector("[data-lang-menu]");
-  if (!toggle || !menu) return;
+  const controls = Array.from(document.querySelectorAll("[data-lang-control]"))
+    .map((control) => ({
+      control,
+      toggle: control.querySelector("[data-lang-toggle]"),
+      menu: control.querySelector("[data-lang-menu]"),
+    }))
+    .filter(({ toggle, menu }) => toggle && menu);
+  if (!controls.length) return;
   langSwitcherInitialized = true;
 
-  const setMenuState = (isOpen) => {
+  const setMenuState = ({ toggle, menu }, isOpen) => {
     menu.classList.toggle("is-open", isOpen);
     toggle.setAttribute("aria-expanded", String(isOpen));
   };
 
-  toggle.addEventListener("click", () => {
-    const next = !menu.classList.contains("is-open");
-    setMenuState(next);
+  controls.forEach((item) => {
+    item.toggle.addEventListener("click", () => {
+      const next = !item.menu.classList.contains("is-open");
+      controls.forEach((other) => setMenuState(other, other === item ? next : false));
+    });
   });
 
   document.addEventListener("click", (event) => {
-    if (!menu.contains(event.target) && !toggle.contains(event.target)) {
-      setMenuState(false);
-    }
+    controls.forEach((item) => {
+      if (!item.menu.contains(event.target) && !item.toggle.contains(event.target)) {
+        setMenuState(item, false);
+      }
+    });
   });
 
-  setMenuState(false);
+  controls.forEach((item) => setMenuState(item, false));
   triggerLangAttention();
 };
 
 export const updateLangLinks = (pathname) => {
-  const menu = document.querySelector("[data-lang-menu]");
-  if (!menu) return;
+  const menus = document.querySelectorAll("[data-lang-menu]");
+  if (!menus.length) return;
 
-  const links = menu.querySelectorAll("a");
   const currentLangMatch = pathname.match(/^\/([a-z]{2})\//);
   const currentLang = currentLangMatch ? currentLangMatch[1] : "ja";
 
-  links.forEach((link) => {
+  menus.forEach((menu) => menu.querySelectorAll("a").forEach((link) => {
     // Get the target language code from the initial href or data attribute if we added one.
     // Since the structure is /<lang>/..., we can try to infer the target lang from the link's text or existing href.
     // A safer way is to check the link's existing href to see which lang it points to.
@@ -142,7 +151,7 @@ export const updateLangLinks = (pathname) => {
         link.classList.remove("is-active");
       }
     }
-  });
+  }));
 };
 
 export default initLangSwitcher;

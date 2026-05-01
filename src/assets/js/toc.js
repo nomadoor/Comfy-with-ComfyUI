@@ -4,6 +4,7 @@ let tocState = {
   loadHandler: null,
   imageFadeHandler: null,
   clickHandler: null,
+  scrollRoot: null,
   headings: [],
   lastActiveId: null,
   ticking: false,
@@ -11,11 +12,15 @@ let tocState = {
 
 const initToc = () => {
   const article = document.querySelector(".article-body");
+  const contentScroll = document.querySelector(".app-shell__content-scroll");
   const tocContainer = document.querySelector(".toc__links");
   if (!article || !tocContainer) return;
 
   // Cleanup existing listeners
-  if (tocState.scrollHandler) window.removeEventListener("scroll", tocState.scrollHandler);
+  if (tocState.scrollHandler) {
+    const previousScrollRoot = tocState.scrollRoot || window;
+    previousScrollRoot.removeEventListener("scroll", tocState.scrollHandler);
+  }
   if (tocState.resizeHandler) window.removeEventListener("resize", tocState.resizeHandler);
   if (tocState.loadHandler) window.removeEventListener("load", tocState.loadHandler);
   if (tocState.imageFadeHandler) document.removeEventListener("imageFade:loaded", tocState.imageFadeHandler);
@@ -130,7 +135,9 @@ const initToc = () => {
     tocState.ticking = false;
     if (!tocState.headings.length) return;
 
-    const offset = getHeaderOffset();
+    const offset = contentScroll
+      ? contentScroll.getBoundingClientRect().top
+      : getHeaderOffset();
 
     // Strategy: Find the last heading that is above the "read line" (offset)
     // or simply finding the heading closest to the top but slightly above or crossing it.
@@ -214,13 +221,15 @@ const initToc = () => {
     }
   };
 
-  window.addEventListener("scroll", onScroll, { passive: true });
+  const scrollRoot = contentScroll || window;
+  scrollRoot.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", handleResize, { passive: true });
   window.addEventListener("load", handleLoad);
   document.addEventListener("imageFade:loaded", handleImageFade);
   tocContainer.addEventListener("click", handleTocClick);
 
   tocState.scrollHandler = onScroll;
+  tocState.scrollRoot = scrollRoot;
   tocState.resizeHandler = handleResize;
   tocState.loadHandler = handleLoad;
   tocState.imageFadeHandler = handleImageFade;

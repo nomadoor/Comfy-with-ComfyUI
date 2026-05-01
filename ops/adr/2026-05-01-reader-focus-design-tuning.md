@@ -11,18 +11,22 @@ The current documentation layout is useful, but the side rails can attract more 
 
 Test the design in small reversible steps on a feature branch.
 
-1. First trial: reduce side-rail visual weight and tighten the article reading rhythm.
-2. Second trial, only if needed: add a subtle central reading surface behind the article column.
-3. Keep the current dark identity and overall Comfy with ComfyUI visual direction.
-4. Do not introduce blog-specific decoration, large shadows, or paper-binding motifs.
+1. First trial: add a subtle central reading surface to `app-shell__content`.
+2. Second trial, only if needed: tune article reading rhythm.
+3. Third trial, only if needed: tune column grouping and side-rail spacing without adding borders.
+4. Keep the current dark identity and overall Comfy with ComfyUI visual direction.
+5. Do not introduce blog-specific decoration, large shadows, or paper-binding motifs.
 
 ## Initial Trial Criteria
 
-- Sidebar and TOC should recede behind the article.
-- Article text should feel less scattered by removing broad tracking.
-- Body copy should be easier to scan with a narrower measure and a calmer line height.
-- Hero treatment should be less dominant so documentation content becomes the first visual priority.
+- The central content column should read as the primary surface.
+- Sidebar, article, and TOC should read as three related column blocks. Side rails may use the same surface color as the article, with internal padding and a narrower column gap to create a unified layout.
+- On desktop, the central reading surface should remain in place while the page content scrolls inside it.
+- Desktop rails should use the same grid column gap as the central column, not independent fixed-position offsets.
+- The left sidebar should expose its information structure as two visible blocks: section switching and section navigation.
+- Article typography, hero sizing, and layout rhythm should remain unchanged in this trial.
+- The surface should be quiet: no border, no large shadow, no paper decoration, and no blog-specific binding motif.
 
 ## Follow-Up
 
-If the first trial still leaves the rails too prominent, evaluate a central reading surface as a separate patch.
+If the first trial still leaves the rails too prominent, evaluate typography, hero, or rail contrast as separate patches.

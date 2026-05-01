@@ -122,7 +122,9 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
           {% endif %}
         </div>
       </div>
-      {{ content | safe }}
+      <div class="app-shell__content-scroll">
+        {{ content | safe }}
+      </div>
     </main>
     <aside class="app-shell__toc">
       <div class="rail rail--toc">
