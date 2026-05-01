@@ -56,14 +56,18 @@ html {
   --sidebar-width: 15rem;
   --toc-width: 15rem;
   --content-max: 50rem;
+  --reader-gap: var(--space-md);
+  --reader-padding-block: var(--space-lg);
+  --reader-padding-inline: var(--space-xl);
   --rail-padding: var(--space-md);
   --sidebar-column-width: calc(var(--sidebar-width) + (var(--rail-padding) * 2));
   --toc-column-width: calc(var(--toc-width) + (var(--rail-padding) * 2));
+  --reader-column-width: calc(var(--content-max) + (var(--reader-padding-inline) * 2) + (var(--reader-gap) * 2));
   --column-gap: var(--space-lg);
   --shell-padding: var(--space-xl);
   --shell-padding-block-start: 0px;
   --shell-padding-block-end: var(--space-md);
-  --layout-max: calc(var(--sidebar-column-width) + var(--content-max) + var(--toc-column-width) + (var(--column-gap) * 2) + (var(--shell-padding) * 2));
+  --layout-max: calc(var(--sidebar-column-width) + var(--reader-column-width) + var(--toc-column-width) + (var(--column-gap) * 2) + (var(--shell-padding) * 2));
   --rail-height: calc(max(100vh, 100dvh) - var(--header-height) - var(--shell-padding-block-start) - var(--shell-padding-block-end));
 
   --font-base: "Plus Jakarta Sans", "Zen Kaku Gothic New", "Hiragino Sans", system-ui, sans-serif;
@@ -402,7 +406,7 @@ html.js .js-fallback-notice {
 
 .app-shell {
   display: grid;
-  grid-template-columns: var(--sidebar-column-width) minmax(0, var(--content-max)) var(--toc-column-width);
+  grid-template-columns: var(--sidebar-column-width) minmax(0, var(--reader-column-width)) var(--toc-column-width);
   gap: var(--column-gap);
   padding: var(--shell-padding-block-start) var(--shell-padding) var(--shell-padding-block-end);
   margin: 0 auto;
@@ -416,69 +420,55 @@ html.js .js-fallback-notice {
 .app-shell__sidebar,
 .app-shell__toc {
   align-self: start;
-  grid-row: 1;
   position: relative;
   z-index: 2;
 }
 
-.app-shell__sidebar {
-  grid-column: 1;
-}
-
-.app-shell__toc {
-  grid-column: 3;
-}
-
-.app-shell__content {
-  display: grid;
-  grid-column: 1 / -1;
-  grid-row: 1;
-  grid-template-columns: var(--sidebar-column-width) minmax(0, var(--content-max)) var(--toc-column-width);
-  gap: var(--column-gap);
+.app-shell__center-scroll {
   min-width: 0;
   width: 100%;
   height: var(--rail-height);
   min-height: 0;
-  background: transparent;
-  border-radius: 0;
+  margin-inline: calc(var(--column-gap) * -1);
   overflow-x: hidden;
   overflow-y: auto;
+  padding: var(--reader-gap) calc(var(--reader-gap) + var(--column-gap));
   scrollbar-width: none;
   -ms-overflow-style: none;
   position: relative;
   z-index: 1;
 }
 
-.app-shell__content::before {
+.app-shell__center-scroll::before {
   content: "";
-  grid-column: 2;
-  grid-row: 1;
   position: sticky;
   top: 0;
-  height: var(--rail-height);
-  align-self: start;
+  display: block;
+  height: calc(var(--rail-height) - (var(--reader-gap) * 2));
+  margin-bottom: calc((var(--rail-height) - (var(--reader-gap) * 2)) * -1);
   background: var(--color-reader);
   border-radius: var(--radius-md);
   pointer-events: none;
   z-index: 0;
 }
 
-.app-shell__content-scroll {
-  grid-column: 2;
-  grid-row: 1;
+.app-shell__content {
+  min-height: calc(var(--rail-height) - (var(--reader-gap) * 2));
   position: relative;
   z-index: 1;
   width: 100%;
   overflow: visible;
-  padding: var(--space-lg) var(--space-xl);
+  padding: var(--reader-padding-block) var(--reader-padding-inline);
+  background: transparent;
+  border-radius: var(--radius-md);
 }
 
-.app-shell__content-scroll> :not(.article-footer) {
+.app-shell__content> :not(.article-footer) {
   width: min(100%, var(--content-max));
   margin-inline: auto;
 }
 
-.app-shell__content::-webkit-scrollbar {
+.app-shell__center-scroll::-webkit-scrollbar {
   display: none;
 }
 
@@ -495,7 +485,7 @@ html.js .js-fallback-notice {
 }
 
 @media (max-width: 700px) {
-  .app-shell__content-scroll {
+  .app-shell__content {
     padding: var(--space-md);
   }
 }
@@ -655,9 +645,9 @@ html.js .js-fallback-notice {
     gap: var(--space-lg);
   }
 
-  .app-shell__content {
-    grid-template-columns: var(--sidebar-column-width) minmax(0, 1fr);
-    gap: var(--space-lg);
+  .app-shell__center-scroll {
+    margin-inline: calc(var(--space-lg) * -1) 0;
+    padding-inline: calc(var(--reader-gap) + var(--space-lg)) var(--reader-gap);
   }
 
   .app-shell__toc,
@@ -699,6 +689,28 @@ html.js .js-fallback-notice {
     height: auto;
     overflow: visible;
     padding: 0;
+  }
+
+  .app-shell__center-scroll {
+    height: auto;
+    margin-inline: 0;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .app-shell__center-scroll::before {
+    display: none;
+  }
+
+  .app-shell__content {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: var(--rail-height);
+    background: var(--color-reader);
+    border-radius: var(--radius-md);
+    overflow: visible;
+    position: static;
   }
 }
 
@@ -4040,27 +4052,6 @@ h1 {
     padding: 0;
   }
 
-  .app-shell__content {
-    display: flex;
-    flex-direction: column;
-    grid-column: auto;
-    grid-row: auto;
-    height: auto;
-    min-height: var(--rail-height);
-    background: var(--color-reader);
-    border-radius: var(--radius-md);
-    overflow: visible;
-    position: static;
-  }
-
-  .app-shell__content::before {
-    display: none;
-  }
-
-  .app-shell__content-scroll {
-    height: auto;
-    overflow: visible;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
