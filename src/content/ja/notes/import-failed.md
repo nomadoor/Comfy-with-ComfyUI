@@ -7,7 +7,7 @@ navId: import-failed
 title: "(IMPORT FAILED)"
 created: 2025-12-13
 updated: 2026-03-02
-tags: ["troubleshoot", "custom-nodes"]
+noteTags: ["troubleshoot", "custom-nodes"]
 summary: "カスタムノードの読み込み失敗"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:

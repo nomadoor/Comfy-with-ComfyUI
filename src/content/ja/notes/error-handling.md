@@ -7,7 +7,7 @@ navId: error-handling
 title: "エラーが出た時にやること"
 created: 2025-12-13
 updated: 2026-03-02
-tags: ["troubleshoot", "error"]
+noteTags: ["troubleshoot", "error"]
 summary: "エラーが出た時にやることリスト"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:

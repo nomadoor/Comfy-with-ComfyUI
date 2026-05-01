@@ -7,7 +7,7 @@ navId: duplicate-objects
 title: "生成图像中人或物体分裂了"
 created: 2026-02-06
 updated: 2026-03-02
-tags: ["troubleshoot", "prompt"]
+noteTags: ["troubleshoot", "prompt"]
 summary: "人物或物体变得不自然地增多时的对策"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:

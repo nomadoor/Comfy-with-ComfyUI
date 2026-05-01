@@ -16,10 +16,11 @@ The owner wants to replace the existing FAQ / Troubleshooting section with a bro
   - Updated / Views segment control, with Views rendered disabled until view-count data exists,
   - flat article title list with no category headings or indentation.
 - Add `/notes/find/` for local note discovery. It lists all Notes as cards, supports text filtering by title / summary / tags, exposes tag pills that write into the local search field, and provides Updated / Views sorting. Views remains visible but disabled until view-count data exists, because a clickable control that produces the same order is visually noisy and misleading.
+- Use `noteTags` for Notes finder facets. Do not use regular `tags` for Notes, because regular tags drive workflow / capability relationships elsewhere in the site.
 - Add `created` and `updated` front matter to content pages using the best available Git history dates when exact editorial dates are unknown.
 
 ## Consequences
 
 - Existing article URLs under `/faq/` become redirect-only legacy routes.
 - Search and sitemap should expose only the canonical `/notes/` pages.
-- Notes can use tags outside `basic-workflows`; this is an explicit owner-approved exception for the Notes finder.
+- Notes finder facets are intentionally isolated from regular tags, so Notes pages do not participate in workflow tag-chip or related-workflow behavior.

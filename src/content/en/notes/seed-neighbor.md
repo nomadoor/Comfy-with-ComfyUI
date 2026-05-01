@@ -7,7 +7,7 @@ navId: seed-neighbor
 title: "Seed 1234 and 1235 are completely different"
 created: 2026-02-11
 updated: 2026-03-02
-tags: ["concept", "seed"]
+noteTags: ["concept", "seed"]
 summary: "A nearby seed value does not mean a nearby result"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:

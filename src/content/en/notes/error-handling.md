@@ -7,7 +7,7 @@ navId: error-handling
 title: "What to do when an error occurs"
 created: 2025-12-13
 updated: 2026-03-02
-tags: ["troubleshoot", "error"]
+noteTags: ["troubleshoot", "error"]
 summary: "Checklist for troubleshooting errors"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:

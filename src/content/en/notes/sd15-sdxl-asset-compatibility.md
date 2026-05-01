@@ -7,7 +7,7 @@ navId: sd15-sdxl-asset-compatibility
 title: "Can't use SD1.5 LoRA / ControlNet with SDXL?"
 created: 2025-12-13
 updated: 2026-03-02
-tags: ["concept", "sd15", "sdxl"]
+noteTags: ["concept", "sd15", "sdxl"]
 summary: "Compatibility between models and why SD1.5 assets cannot be used with SDXL."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:

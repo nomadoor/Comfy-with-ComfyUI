@@ -7,7 +7,7 @@ navId: seed-neighbor
 title: "seed1234 と 1235 は全く別物"
 created: 2026-02-11
 updated: 2026-03-02
-tags: ["concept", "seed"]
+noteTags: ["concept", "seed"]
 summary: "シードは「近い数字＝近い結果」にならない"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:

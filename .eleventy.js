@@ -507,7 +507,7 @@ export default function (eleventyConfig) {
         slug: entry.data.slug,
         title: entry.data.title || entry.data.slug,
         summary: entry.data.summary || "",
-        tags: Array.isArray(entry.data.tags) ? entry.data.tags : [],
+        noteTags: Array.isArray(entry.data.noteTags) ? entry.data.noteTags : [],
         created: toDateKey(entry.data.created),
         updated: toDateKey(entry.data.updated || entry.data.created),
         views: Number(entry.data.views || 0),
@@ -524,7 +524,7 @@ export default function (eleventyConfig) {
     const tags = new Set();
     if (!Array.isArray(notes)) return [];
     notes.forEach((note) => {
-      (note.tags || []).forEach((tag) => {
+      (note.noteTags || []).forEach((tag) => {
         if (tag) tags.add(tag);
       });
     });

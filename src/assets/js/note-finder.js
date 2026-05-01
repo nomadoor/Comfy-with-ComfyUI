@@ -37,7 +37,7 @@ export default function initNoteFinder(root = document) {
       const haystack = [
         card.dataset.title || "",
         card.dataset.summary || "",
-        card.dataset.tags || ""
+        card.dataset.noteTags || ""
       ].join(" ");
       const isVisible = !query || haystack.includes(query);
       card.hidden = !isVisible;

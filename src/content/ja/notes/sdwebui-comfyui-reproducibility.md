@@ -7,7 +7,7 @@ navId: sdwebui-comfyui-reproducibility
 title: "Stable Diffusion web UI と ComfyUI で同じ画像は生成できない？"
 created: 2025-12-13
 updated: 2026-03-02
-tags: ["concept", "reproducibility"]
+noteTags: ["concept", "reproducibility"]
 summary: "同じモデル・同じシードでも画像が一致しない理由"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:

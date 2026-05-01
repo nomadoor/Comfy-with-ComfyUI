@@ -7,7 +7,7 @@ navId: error-handling
 title: "遇到错误时该怎么办"
 created: 2026-02-06
 updated: 2026-03-02
-tags: ["troubleshoot", "error"]
+noteTags: ["troubleshoot", "error"]
 summary: "遇到错误时的检查清单"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:

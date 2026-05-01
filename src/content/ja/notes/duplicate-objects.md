@@ -7,7 +7,7 @@ navId: duplicate-objects
 title: "生成画像で人や物体が分身している"
 created: 2025-12-13
 updated: 2026-03-02
-tags: ["troubleshoot", "prompt"]
+noteTags: ["troubleshoot", "prompt"]
 summary: "人物や物体が不自然に増えてしまうときの対処法"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:

@@ -7,7 +7,7 @@ navId: seed-neighbor
 title: "seed1234 和 1235 完全不是一回事"
 created: 2026-02-11
 updated: 2026-03-02
-tags: ["concept", "seed"]
+noteTags: ["concept", "seed"]
 summary: "seed 数值接近，不代表结果接近"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:

@@ -7,7 +7,7 @@ navId: why-multiple-of-8
 title: "Why can only resolutions that are multiples of 8 be generated?"
 created: 2025-12-13
 updated: 2026-03-02
-tags: ["concept", "resolution", "vae"]
+noteTags: ["concept", "resolution", "vae"]
 summary: "Reason why resolution is limited to multiples of 8 and relation to VAE compression rate"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:

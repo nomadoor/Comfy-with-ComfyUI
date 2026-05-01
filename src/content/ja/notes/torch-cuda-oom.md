@@ -7,7 +7,7 @@ navId: torch-cuda-oom
 title: "torch.cuda.OutOfMemoryError"
 created: 2025-12-13
 updated: 2026-03-02
-tags: ["troubleshoot", "vram"]
+noteTags: ["troubleshoot", "vram"]
 summary: "torch.cuda.OutOfMemoryError"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:

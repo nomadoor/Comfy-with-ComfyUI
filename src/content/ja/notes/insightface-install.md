@@ -7,7 +7,7 @@ navId: insightface-install
 title: "InsightFaceのインストール方法"
 created: 2025-12-09
 updated: 2026-03-02
-tags: ["troubleshoot", "install", "insightface", "reactor"]
+noteTags: ["troubleshoot", "install", "insightface", "reactor"]
 summary: "InsightFaceのインストール方法"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:

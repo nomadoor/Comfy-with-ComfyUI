@@ -7,7 +7,7 @@ navId: duplicate-objects
 title: "People or objects are duplicating in generated images"
 created: 2025-12-13
 updated: 2026-03-02
-tags: ["troubleshoot", "prompt"]
+noteTags: ["troubleshoot", "prompt"]
 summary: "What to do when characters or objects multiply unnaturally"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:

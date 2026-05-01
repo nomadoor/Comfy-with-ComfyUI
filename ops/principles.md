@@ -14,7 +14,9 @@
 - Tags are optional metadata. If used, the tag slug ties nav, cards, workflows, and search facets together.
 - Max 5 tags per page; overflow is a content bug that should block merge.
 - Workflows inherit the tag slug from the page displaying them; list all workflows sharing that slug without omission.
-- Tags are primarily for `basic-workflows` pages and exist to connect `ai-capabilities` ↔ `basic-workflows` (chips/cards/related lists). `notes` may also use tags for the local Notes finder. Other tag use outside `basic-workflows` remains an exception that requires explicit owner agreement.
+- `tags` are primarily for `basic-workflows` pages and exist to connect `ai-capabilities` ↔ `basic-workflows` (chips/cards/related lists).
+- `notes` uses `noteTags` instead of `tags`. These are local finder facets for `/notes/find/`, not workflow relation tags and not site-wide tag-chip links.
+- Other tag use outside `basic-workflows` remains an exception that requires explicit owner agreement.
 
 ## 4. Five Section Contract
 - Section keys: `begin-with`, `data-utilities`, `ai-capabilities`, `basic-workflows`, `notes`.

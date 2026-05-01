@@ -7,7 +7,7 @@ navId: sdwebui-comfyui-reproducibility
 title: "Can't generate the same image with Stable Diffusion web UI and ComfyUI?"
 created: 2025-12-13
 updated: 2026-03-02
-tags: ["concept", "reproducibility"]
+noteTags: ["concept", "reproducibility"]
 summary: "Reasons why images do not match even with the same model and same seed"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:

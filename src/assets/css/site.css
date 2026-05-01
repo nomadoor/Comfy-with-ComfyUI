@@ -2688,6 +2688,26 @@ h1 {
   transform: none;
 }
 
+.note-finder__card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  margin-top: calc(var(--space-xs) * -0.35);
+}
+
+.note-finder__card-tag {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  padding: 0.12rem 0.45rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-chip-bg);
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
 .note-finder__hero--placeholder::before {
   content: "";
   position: absolute;

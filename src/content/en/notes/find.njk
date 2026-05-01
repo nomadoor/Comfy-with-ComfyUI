@@ -42,9 +42,16 @@ hero:
       {% if heroImage %}
         {% set heroVariant = heroImage | imageVariant(480) %}
       {% endif %}
-      <a class="workflow-related__card note-finder__card" href="{{ note.url }}" data-note-card data-title="{{ note.title | lower }}" data-summary="{{ note.summary | lower }}" data-tags="{{ note.tags | join(' ') | lower }}" data-updated="{{ note.updated }}" data-views="{{ note.views or 0 }}">
+      <a class="workflow-related__card note-finder__card" href="{{ note.url }}" data-note-card data-title="{{ note.title | lower }}" data-summary="{{ note.summary | lower }}" data-note-tags="{{ note.noteTags | join(' ') | lower }}" data-updated="{{ note.updated }}" data-views="{{ note.views or 0 }}">
         <div class="workflow-related__hero note-finder__hero{% if not (heroVariant and heroVariant.preview) %} note-finder__hero--placeholder{% endif %}" {% if heroVariant and heroVariant.preview %}data-hero="{{ heroVariant.preview }}"{% endif %}></div>
         <span class="workflow-related__title">{{ note.title }}</span>
+        {% if note.noteTags and note.noteTags.length %}
+          <span class="note-finder__card-tags" aria-label="Tags">
+            {% for tag in note.noteTags %}
+              <span class="note-finder__card-tag">{{ tag }}</span>
+            {% endfor %}
+          </span>
+        {% endif %}
         {% if note.summary %}
           <span class="workflow-related__summary">{{ note.summary }}</span>
         {% endif %}
