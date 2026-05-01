@@ -447,8 +447,7 @@ html.js .js-fallback-notice {
   position: sticky;
   top: var(--header-height);
   z-index: 2;
-  height: var(--space-lg);
-  margin-bottom: calc(var(--space-lg) * -1);
+  height: 0;
   pointer-events: none;
 }
 
@@ -456,18 +455,20 @@ html.js .js-fallback-notice {
 .app-shell__content-top::after {
   content: "";
   position: absolute;
+  top: 0;
+  width: var(--radius-md);
+  height: var(--radius-md);
   pointer-events: none;
 }
 
 .app-shell__content-top::before {
-  inset: 0;
-  background: var(--color-bg);
+  left: 0;
+  background: radial-gradient(circle at 100% 100%, transparent calc(var(--radius-md) - 1px), var(--color-bg) var(--radius-md));
 }
 
 .app-shell__content-top::after {
-  inset: 0;
-  background: var(--color-reader);
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  right: 0;
+  background: radial-gradient(circle at 0 100%, transparent calc(var(--radius-md) - 1px), var(--color-bg) var(--radius-md));
 }
 
 .app-shell__content-scroll {

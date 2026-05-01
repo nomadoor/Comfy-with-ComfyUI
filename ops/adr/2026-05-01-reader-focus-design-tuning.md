@@ -23,7 +23,7 @@ Companion token proposal: `/ops/style-design.md` defines the design primitives u
 
 - The central content column should read as the primary surface.
 - Sidebar, article, and TOC should read as three related column blocks. Side rails may use the same surface color as the article, with internal padding and a narrower column gap to create a unified layout.
-- On desktop, the document should remain the native scroll root, and a sticky non-interactive top cap should preserve the central surface's upper radius below the fixed header while page content scrolls.
+- On desktop, the document should remain the native scroll root, and a zero-height sticky corner mask should preserve the central surface's upper radius below the fixed header while allowing page content to scroll to the reader edge.
 - Desktop rails should use the same grid column gap as the central column, not independent fixed-position offsets.
 - The left sidebar should expose its information structure as two visible blocks: section switching and section navigation.
 - Article typography, hero sizing, and layout rhythm should remain unchanged in this trial.
