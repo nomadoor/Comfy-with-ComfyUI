@@ -878,7 +878,7 @@ html.js .js-fallback-notice {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: var(--space-2xs);
   padding-bottom: var(--space-xs);
   background: var(--color-sidebar-surface);
 }
@@ -888,8 +888,8 @@ html.js .js-fallback-notice {
   align-items: center;
   padding: var(--space-xs);
   border-radius: var(--radius-sm);
-  background: var(--color-panel-alt);
-  color: var(--color-text);
+  background: transparent;
+  color: var(--color-text-muted);
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 600;
@@ -901,6 +901,15 @@ html.js .js-fallback-notice {
 .notes-nav__find:focus-visible {
   color: var(--color-heading);
   background: var(--color-tav-strong);
+}
+
+.notes-nav__sort-label {
+  margin: 0;
+  padding: 0 var(--space-xs);
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
 .notes-nav__sort {
@@ -2567,13 +2576,14 @@ h1 {
 .note-finder {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: var(--space-md);
 }
 
 .note-finder__search {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  width: min(100%, 34rem);
   padding: var(--space-sm) var(--space-md);
   border-radius: var(--radius-md);
   background: var(--color-sidebar-surface);
@@ -2609,14 +2619,14 @@ h1 {
 .note-finder__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-xs);
+  gap: var(--space-2xs);
 }
 
 .note-finder__tag {
   border: 0;
   border-radius: 999px;
   padding: var(--space-2xs) var(--space-sm);
-  background: var(--color-panel-alt);
+  background: var(--color-sidebar-surface);
   color: var(--color-text-muted);
   font: inherit;
   font-size: 0.82rem;
@@ -2629,6 +2639,15 @@ h1 {
 .note-finder__tag:focus-visible {
   background: var(--color-tav-strong);
   color: var(--color-heading);
+}
+
+.note-finder__sort-label {
+  align-self: flex-start;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
 .note-finder__sort {
@@ -2661,7 +2680,26 @@ h1 {
 }
 
 .note-finder__grid {
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
   margin-top: 0;
+}
+
+.note-finder__card:hover,
+.note-finder__card:focus-visible {
+  transform: none;
+}
+
+.note-finder__hero--placeholder::before {
+  content: "";
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 1.45rem;
+  height: 1.45rem;
+  background: var(--color-text-muted);
+  opacity: 0.42;
+  transform: translate(-50%, -50%);
+  -webkit-mask: url("/assets/icons/Edit%204%20SVG%20File.svg") no-repeat center / contain;
+  mask: url("/assets/icons/Edit%204%20SVG%20File.svg") no-repeat center / contain;
 }
 
 .note-finder__card[hidden] {

@@ -531,6 +531,11 @@ export default function (eleventyConfig) {
     return [...tags].sort((a, b) => String(a).localeCompare(String(b)));
   });
 
+  eleventyConfig.addFilter("notesHaveViews", function (notes = []) {
+    if (!Array.isArray(notes)) return false;
+    return notes.some((note) => Number(note?.views || 0) > 0);
+  });
+
   eleventyConfig.addFilter("navPrevNext", function (navData, sectionKey, currentId) {
     if (!navData || !currentId) {
       return { prev: null, next: null };

@@ -16,6 +16,7 @@ hero:
 {% from "icon.njk" import icon %}
 {% set notes = collections.all | notesForLang(lang) %}
 {% set noteTagList = notes | noteTags %}
+{% set hasViews = notes | notesHaveViews %}
 <section class="note-finder" data-note-finder>
   <label class="sr-only" for="note-finder-query">Search Notes</label>
   <div class="note-finder__search">
@@ -29,10 +30,14 @@ hero:
     {% endfor %}
   </div>
 
-  <div class="note-finder__sort" role="group" aria-label="Sort Notes">
-    <button class="note-finder__sort-btn is-active" type="button" data-note-sort="updated" aria-pressed="true">Updated</button>
-    <button class="note-finder__sort-btn" type="button" data-note-sort="views" aria-pressed="false">Views</button>
-  </div>
+  {% if hasViews %}
+    <div class="note-finder__sort" role="group" aria-label="Sort Notes">
+      <button class="note-finder__sort-btn is-active" type="button" data-note-sort="updated" aria-pressed="true">Updated</button>
+      <button class="note-finder__sort-btn" type="button" data-note-sort="views" aria-pressed="false">Views</button>
+    </div>
+  {% else %}
+    <p class="note-finder__sort-label">Updated</p>
+  {% endif %}
 
   <div class="workflow-related__grid note-finder__grid" data-note-grid>
     {% for note in notes %}
@@ -42,7 +47,7 @@ hero:
         {% set heroVariant = heroImage | imageVariant(480) %}
       {% endif %}
       <a class="workflow-related__card note-finder__card" href="{{ note.url }}" data-note-card data-title="{{ note.title | lower }}" data-summary="{{ note.summary | lower }}" data-tags="{{ note.tags | join(' ') | lower }}" data-updated="{{ note.updated }}" data-views="{{ note.views or 0 }}">
-        <div class="workflow-related__hero" {% if heroVariant and heroVariant.preview %}data-hero="{{ heroVariant.preview }}"{% endif %}></div>
+        <div class="workflow-related__hero note-finder__hero{% if not (heroVariant and heroVariant.preview) %} note-finder__hero--placeholder{% endif %}" {% if heroVariant and heroVariant.preview %}data-hero="{{ heroVariant.preview }}"{% endif %}></div>
         <span class="workflow-related__title">{{ note.title }}</span>
         {% if note.summary %}
           <span class="workflow-related__summary">{{ note.summary }}</span>
