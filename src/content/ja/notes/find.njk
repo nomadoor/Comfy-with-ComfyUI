@@ -35,15 +35,15 @@ hero:
     <button class="note-finder__sort-btn" type="button" data-note-sort="views" aria-pressed="false" {% if not hasViews %}disabled aria-disabled="true"{% endif %}>Views</button>
   </div>
 
-  <div class="workflow-related__grid note-finder__grid" data-note-grid>
+  <div class="workflow-related__grid" data-note-grid>
     {% for note in notes %}
       {% set heroImage = note.hero and note.hero.image or null %}
       {% set heroVariant = null %}
       {% if heroImage %}
         {% set heroVariant = heroImage | imageVariant(480) %}
       {% endif %}
-      <a class="workflow-related__card note-finder__card" href="{{ note.url }}" data-note-card data-title="{{ note.title | lower }}" data-summary="{{ note.summary | lower }}" data-note-tags="{{ note.noteTags | join(' ') | lower }}" data-updated="{{ note.updated }}" data-views="{{ note.views or 0 }}">
-        <div class="workflow-related__hero note-finder__hero{% if not (heroVariant and heroVariant.preview) %} note-finder__hero--placeholder{% endif %}" {% if heroVariant and heroVariant.preview %}data-hero="{{ heroVariant.preview }}"{% endif %}></div>
+      <a class="workflow-related__card" href="{{ note.url }}" data-note-card data-title="{{ note.title | lower }}" data-summary="{{ note.summary | lower }}" data-note-tags="{{ note.noteTags | join(' ') | lower }}" data-updated="{{ note.updated }}" data-views="{{ note.views or 0 }}">
+        <div class="workflow-related__hero" {% if heroVariant and heroVariant.preview %}data-hero="{{ heroVariant.preview }}"{% endif %}></div>
         <span class="workflow-related__title">{{ note.title }}</span>
       </a>
     {% endfor %}

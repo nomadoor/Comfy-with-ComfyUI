@@ -2569,7 +2569,11 @@ h1 {
   transition: var(--transition-fast);
 }
 
-.article-body a.workflow-related__card {
+.article-body a.workflow-related__card,
+.article-body a.workflow-related__card.link--internal,
+.article-body a.workflow-related__card.link--external {
+  color: var(--color-text);
+  font-weight: inherit;
   text-decoration: none;
 }
 
@@ -2732,30 +2736,7 @@ h1 {
   color: color-mix(in srgb, var(--color-text-muted) 62%, transparent);
 }
 
-.note-finder__grid {
-  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-  margin-top: 0;
-}
-
-.note-finder__card:hover,
-.note-finder__card:focus-visible {
-  transform: none;
-}
-
-.note-finder__hero--placeholder::before {
-  content: "";
-  position: absolute;
-  inset: 50% auto auto 50%;
-  width: 1.45rem;
-  height: 1.45rem;
-  background: var(--color-text-muted);
-  opacity: 0.42;
-  transform: translate(-50%, -50%);
-  -webkit-mask: url("/assets/icons/Edit%204%20SVG%20File.svg") no-repeat center / contain;
-  mask: url("/assets/icons/Edit%204%20SVG%20File.svg") no-repeat center / contain;
-}
-
-.note-finder__card[hidden] {
+[data-note-card][hidden] {
   display: none;
 }
 
