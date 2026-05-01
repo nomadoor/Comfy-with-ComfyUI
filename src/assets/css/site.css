@@ -741,6 +741,9 @@ html.js .js-fallback-notice {
   transition: all 100ms cubic-bezier(0.2, 0.91, 0.85, 0.96) 0s;
 }
 
+.sidebar__nav-panel>.nav-list>.nav-list__item>.nav-list__link {
+  color: var(--color-text);
+}
 
 .nav-list__link.is-active {
   background: var(--color-tav-strong);
