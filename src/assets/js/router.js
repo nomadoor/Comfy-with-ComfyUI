@@ -212,6 +212,17 @@ const navigateTo = async (url, { replace = false, source = "unknown" } = {}) => 
     }
     const parser = new DOMParser();
     const nextDoc = parser.parseFromString(html, "text/html");
+    const nextUrl = destinationUrl.pathname + destinationUrl.search + destinationUrl.hash;
+    let historyUpdated = false;
+    const updateHistory = () => {
+      if (historyUpdated) return;
+      if (replace) {
+        window.history.replaceState({}, "", nextUrl);
+      } else {
+        window.history.pushState({}, "", nextUrl);
+      }
+      historyUpdated = true;
+    };
 
     const performSwap = () => {
       const tSwapStart = performance.now();
@@ -220,6 +231,7 @@ const navigateTo = async (url, { replace = false, source = "unknown" } = {}) => 
         return;
       }
       updateHead(nextDoc);
+      updateHistory();
       const fromSidebar = source === "sidebar-nav";
       reinitializePage(destinationUrl, {
         forceCenterNav: !fromSidebar,
@@ -235,13 +247,6 @@ const navigateTo = async (url, { replace = false, source = "unknown" } = {}) => 
       if (isProfileNav()) console.log(`[nav-prof] view-transition ${destinationUrl.pathname}: ${(performance.now() - tVTStart).toFixed(1)}ms`);
     } else {
       performSwap();
-    }
-
-    const nextUrl = destinationUrl.pathname + destinationUrl.search + destinationUrl.hash;
-    if (replace) {
-      window.history.replaceState({}, "", nextUrl);
-    } else {
-      window.history.pushState({}, "", nextUrl);
     }
   } catch (error) {
     console.error("[router] navigation failed, falling back to full reload", error);
