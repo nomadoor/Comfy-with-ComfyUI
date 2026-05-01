@@ -737,7 +737,7 @@ html.js .js-fallback-notice {
   border-radius: var(--radius-sm);
   position: relative;
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   transition: all 100ms cubic-bezier(0.2, 0.91, 0.85, 0.96) 0s;
 }
 
