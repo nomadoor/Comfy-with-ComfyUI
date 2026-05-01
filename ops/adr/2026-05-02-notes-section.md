@@ -4,7 +4,7 @@ Date: 2026-05-02
 
 ## Context
 
-The owner wants to replace the existing FAQ / Troubleshooting section with a broader Notes section. Notes should cover troubleshooting, concepts, experiments, release notes, and short practical writeups without forcing them into a category tree.
+The owner wants to replace the existing FAQ / Troubleshooting section with a broader Notes section. Notes should cover FAQ, troubleshooting, projects, release notes, and short practical writeups without forcing them into a category tree.
 
 ## Decision
 
@@ -19,7 +19,7 @@ The owner wants to replace the existing FAQ / Troubleshooting section with a bro
 - Notes finder cards reuse the shared `workflow-related` card styling. They show only the thumbnail/placeholder and title. Summary and `noteTags` remain in data attributes for local filtering, but they are not rendered inside each card.
 - Notes finder controls follow the compact blog index pattern: a slim centered local search field followed by centered `#tag` helper buttons. These tag buttons only write the tag text into the search field; they do not represent a persistent selected facet, so they do not receive active-state styling. The helper buttons are a manually curated recommended set, not a complete list of every `noteTags` value.
 - Use `noteTags` for Notes finder facets. Do not use regular `tags` for Notes, because regular tags drive workflow / capability relationships elsewhere in the site.
-- `noteTags` remain flat in front matter, chips, and filtering, but the authoring rule separates them into tier1 primary facets and tier2 secondary details. The Note finder helper buttons render only tier1 tags that are actually present in the current language's Notes.
+- `noteTags` remain flat in front matter, chips, and filtering, but the authoring rule separates them into tier1 primary facets and tier2 secondary details. The Note finder helper buttons render the fixed tier1 set: `faq`, `troubleshoot`, and `project`.
 - On individual Note pages, `noteTags` chips link to `/notes/find/?q=<tag>` in the current language. The finder reads `q` and initializes the local search field with that value.
 - Views sorting is driven by `src/_data/pageViews.json`, keyed by canonical page URL. The file covers the whole site, and Notes templates read only matching Notes URLs from it.
 - Generate `pageViews.json` with `scripts/update-page-views.mjs`, using Cloudflare Web Analytics GraphQL `rumPageloadEventsAdaptiveGroups`. Treat `count` grouped by `dimensions.requestPath` as the page-load metric for sorting. The script reads `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_API_TOKEN`, and `CLOUDFLARE_RUM_SITE_TAG` from the environment or local `.env.local`; secrets must not be committed.

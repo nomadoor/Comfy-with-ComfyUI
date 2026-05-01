@@ -2,11 +2,11 @@
   "tier1Tags": [
     "faq",
     "troubleshoot",
-    "custom-nodes",
-    "concept",
-    "experiment"
+    "project"
   ],
   "tier2Tags": [
+    "custom-nodes",
+    "concept",
     "install",
     "vram",
     "error",
@@ -21,6 +21,7 @@
     "flux",
     "insightface",
     "reactor",
-    "prompt"
+    "prompt",
+    "experiment"
   ]
 }

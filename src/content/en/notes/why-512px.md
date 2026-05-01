@@ -7,7 +7,7 @@ navId: why-512px
 title: "Why generate at 512px × 512px?"
 created: 2025-12-13
 updated: 2026-03-02
-noteTags: ["concept", "sd15"]
+noteTags: ["faq", "sd15"]
 summary: "Why sizes around 512px are recommended for Stable Diffusion 1.5"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:

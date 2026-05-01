@@ -7,7 +7,7 @@ navId: why-512px
 title: "为什么生成 512px × 512px？"
 created: 2026-02-06
 updated: 2026-03-02
-noteTags: ["concept", "sd15"]
+noteTags: ["faq", "sd15"]
 summary: "Stable Diffusion 1.5 中推荐使用 512px 附近的理由"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
