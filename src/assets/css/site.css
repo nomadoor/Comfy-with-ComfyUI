@@ -112,7 +112,8 @@ body {
   font-family: var(--font-base);
   min-height: 100%;
   padding-top: var(--header-height);
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: auto;
   scrollbar-gutter: stable both-edges;
 }
 
@@ -409,8 +410,28 @@ html.js .js-fallback-notice {
   max-width: var(--layout-max);
   width: 100%;
   position: relative;
-  height: calc(var(--rail-height) + var(--shell-padding-block-start) + var(--shell-padding-block-end));
-  min-height: 0;
+  z-index: 1;
+  min-height: calc(var(--rail-height) + var(--shell-padding-block-start) + var(--shell-padding-block-end));
+}
+
+.reader-backplate {
+  --shell-edge: max(0px, calc((100vw - var(--layout-max)) / 2));
+  position: fixed;
+  top: var(--header-height);
+  bottom: var(--shell-padding-block-end);
+  left: calc(var(--shell-edge) + var(--shell-padding) + var(--sidebar-column-width) + var(--column-gap));
+  right: calc(var(--shell-edge) + var(--shell-padding) + var(--toc-column-width) + var(--column-gap));
+  z-index: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-reader);
+  pointer-events: none;
+}
+
+.app-shell__sidebar,
+.app-shell__toc {
+  align-self: start;
+  position: sticky;
+  top: var(--header-height);
 }
 
 .app-shell__content {
@@ -418,28 +439,21 @@ html.js .js-fallback-notice {
   flex-direction: column;
   min-width: 0;
   width: 100%;
-  height: var(--rail-height);
-  background: var(--color-reader);
+  min-height: var(--rail-height);
+  background: transparent;
   border-radius: var(--radius-md);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .app-shell__content-scroll {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
+  width: 100%;
+  overflow: visible;
   padding: var(--space-lg) var(--space-xl);
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
 .app-shell__content-scroll> :not(.article-footer) {
   width: min(100%, var(--content-max));
   margin-inline: auto;
-}
-
-.app-shell__content-scroll::-webkit-scrollbar {
-  display: none;
 }
 
 /* Page fade-in (now driven by View Transitions; keep simple opacity guard) */
@@ -615,6 +629,10 @@ html.js .js-fallback-notice {
     gap: var(--space-lg);
   }
 
+  .reader-backplate {
+    right: calc(var(--shell-edge) + var(--shell-padding));
+  }
+
   .app-shell__toc,
   .rail--toc {
     display: none;
@@ -649,6 +667,14 @@ html.js .js-fallback-notice {
     height: auto;
     overflow: visible;
     padding: 0;
+  }
+
+  .reader-backplate {
+    display: none;
+  }
+
+  .app-shell__content {
+    background: var(--color-reader);
   }
 }
 

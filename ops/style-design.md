@@ -53,8 +53,8 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - On desktop, search, theme, and language controls live in the top-right header actions area. Header actions may use their own compact width instead of being constrained to the TOC column. On mobile, keep the existing search toggle and sidebar footer controls.
 - The desktop search dropdown stays aligned to the search input width. Do not widen it independently of the input or use scrollbars for the capped result list.
 - Search inputs suppress browser-native search decorations such as WebKit cancel buttons; use only the site's own search icon/control styling.
-- Desktop rails sit in the grid columns with `height = 100vh - header - bottom padding` and scroll internally without drift. The app shell has no top padding on desktop; mobile reverts to stacked layout.
-- On desktop, wheel scrolling outside the side rails and form/menu controls is proxied to the central reading surface so gaps, header area, and background space still scroll the article.
+- Desktop rails sit in the grid columns with `height = 100vh - header - bottom padding`, stay sticky below the fixed header, and scroll internally without drift. The app shell has no top padding on desktop; mobile reverts to stacked layout.
+- On desktop, the document/body is the native scroll root. The central reader surface is a fixed, non-interactive backplate aligned to the content column, so wheel, keyboard, and middle-button scrolling use browser-native document behavior instead of JavaScript proxying.
 
 ## 4. Sidebar
 - Section icon tabs (`sidebar__section-tabs`): compact icon-only shortcuts inside `sidebar__section-panel`. Active state is indicated by icon color only, without a filled background.
@@ -71,8 +71,8 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - Images remain tinted with `filter: grayscale(1) brightness(0.6)` inside the hero to match the mock.
 
 ## 6. Article Body
-- The central `app-shell__content` column may use a subtle reading surface. It is not a card: avoid borders, shadows, and decorative paper motifs.
-- On desktop, the central surface stays fixed while `.app-shell__content-scroll` carries page scrolling.
+- The central content column may use a subtle fixed reader backplate. It is not a card: avoid borders, shadows, and decorative paper motifs.
+- On desktop, `.reader-backplate` stays fixed behind the article while the document scrolls. `.app-shell__content-scroll` is a structural padding and width wrapper, not an independent page scroller.
 - The central surface may grow when side rails collapse, but article content inside `.app-shell__content-scroll` stays centered at the content max width.
 - Article body content remains transparent inside that surface. Content width follows `--content-max` (`50rem`).
 - Article typography follows the calmer blog rhythm: body letter spacing stays `0`, body line-height is about `1.7`, `h2` is around `1.4rem`, and `h3` is around `1.1rem` without accent coloring.

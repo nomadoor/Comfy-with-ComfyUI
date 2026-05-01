@@ -2,7 +2,6 @@ import initPage from "./page.js";
 import initLinkBehavior from "./link-behavior.js";
 import initRouter from "./router.js";
 import initWebMcp from "./webmcp.js";
-import initContentScrollProxy from "./content-scroll-proxy.js";
 
 const bootstrap = () => {
   let hasInitError = false;
@@ -26,13 +25,6 @@ const bootstrap = () => {
   } catch (error) {
     hasInitError = true;
     console.error("[app] initRouter failed", error);
-  }
-
-  try {
-    initContentScrollProxy();
-  } catch (error) {
-    hasInitError = true;
-    console.error("[app] initContentScrollProxy failed", error);
   }
 
   try {
