@@ -72,7 +72,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 
 ## 6. Article Body
 - The central content column may use a subtle reader surface drawn in normal document flow. It is not a card: avoid borders, shadows, and decorative paper motifs.
-- On desktop, `.app-shell__content-top` keeps only the upper reader corners visible below the header while the document scrolls. It must not reserve vertical space; `.app-shell__content-scroll` is a structural padding and width wrapper, not an independent page scroller.
+- On desktop, `.app-shell__content-corner-mask` keeps only the upper reader corners visible below the header while the document scrolls. It must not reserve vertical space; `.app-shell__content-scroll` is a structural padding and width wrapper, not an independent page scroller.
 - The central surface may grow when side rails collapse, but article content inside `.app-shell__content-scroll` stays centered at the content max width.
 - Article body content remains transparent inside that surface. Content width follows `--content-max` (`50rem`).
 - Article typography follows the calmer blog rhythm: body letter spacing stays `0`, body line-height is about `1.7`, `h2` is around `1.4rem`, and `h3` is around `1.1rem` without accent coloring.

@@ -443,7 +443,9 @@ html.js .js-fallback-notice {
   pointer-events: none;
 }
 
-.app-shell__content-top {
+.app-shell__content-corner-mask {
+  --reader-corner-mask-size: var(--radius-md);
+  --reader-corner-mask-fill: var(--color-bg);
   position: sticky;
   top: var(--header-height);
   z-index: 2;
@@ -451,24 +453,29 @@ html.js .js-fallback-notice {
   pointer-events: none;
 }
 
-.app-shell__content-top::before,
-.app-shell__content-top::after {
+.app-shell__content-corner-mask::before,
+.app-shell__content-corner-mask::after {
   content: "";
   position: absolute;
   top: 0;
-  width: var(--radius-md);
-  height: var(--radius-md);
+  width: var(--reader-corner-mask-size);
+  height: var(--reader-corner-mask-size);
+  background: radial-gradient(
+    circle at var(--reader-corner-mask-origin),
+    transparent calc(var(--reader-corner-mask-size) - 1px),
+    var(--reader-corner-mask-fill) var(--reader-corner-mask-size)
+  );
   pointer-events: none;
 }
 
-.app-shell__content-top::before {
+.app-shell__content-corner-mask::before {
+  --reader-corner-mask-origin: 100% 100%;
   left: 0;
-  background: radial-gradient(circle at 100% 100%, transparent calc(var(--radius-md) - 1px), var(--color-bg) var(--radius-md));
 }
 
-.app-shell__content-top::after {
+.app-shell__content-corner-mask::after {
+  --reader-corner-mask-origin: 0 100%;
   right: 0;
-  background: radial-gradient(circle at 0 100%, transparent calc(var(--radius-md) - 1px), var(--color-bg) var(--radius-md));
 }
 
 .app-shell__content-scroll {
@@ -698,7 +705,7 @@ html.js .js-fallback-notice {
   }
 
   .app-shell__content::before,
-  .app-shell__content-top {
+  .app-shell__content-corner-mask {
     display: none;
   }
 }
