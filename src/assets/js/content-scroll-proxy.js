@@ -28,7 +28,11 @@ const initContentScrollProxy = () => {
       if (event.target.closest(EXCLUDED_SELECTOR)) return;
 
       const contentScroll = document.querySelector(CONTENT_SCROLL_SELECTOR);
-      if (!contentScroll || contentScroll.scrollHeight <= contentScroll.clientHeight) return;
+      if (!contentScroll) return;
+
+      const isVerticallyScrollable = contentScroll.scrollHeight > contentScroll.clientHeight;
+      const isHorizontallyScrollable = contentScroll.scrollWidth > contentScroll.clientWidth;
+      if (!isVerticallyScrollable && !isHorizontallyScrollable) return;
 
       event.preventDefault();
       contentScroll.scrollBy({
