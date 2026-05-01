@@ -12,7 +12,7 @@ let tocState = {
 
 const initToc = () => {
   const article = document.querySelector(".article-body");
-  const contentScroll = document.querySelector(".app-shell__center-scroll");
+  const contentScroll = document.querySelector(".app-shell__content");
   const tocContainer = document.querySelector(".toc__links");
   if (!article || !tocContainer) return;
 

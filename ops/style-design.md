@@ -11,7 +11,7 @@
 | --- | --- | --- |
 | `--color-bg` | `#040404` | Body background. |
 | `--color-panel` | `#111111` | Sidebar and cards. |
-| `--color-reader` | `#101010` | Central reading surface drawn inside `app-shell__center-scroll`. |
+| `--color-reader` | `#101010` | Central reading surface behind `app-shell__content`. |
 | `--color-sidebar-surface` | `#101010` | Sidebar and TOC column surface, matching the central reader surface. |
 | ``--color-panel-alt`` | `#1a1a1a` | Active nav rows, hero fallback, search input. |
 | `--color-border` | `#292929` | Default 1px borders. |
@@ -48,13 +48,13 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 ## 3. Layout & Spacing
 - Spacing scale (`rem`): `0.25, 0.5, 0.75, 1, 1.5, 2, 3`.
 - Border radii: use `--radius-md = 0.5rem` for every component (pill shapes use `--radius-pill`).
-- Grid: sidebar `15rem`, content `50rem` max, TOC `15rem`. Side rails add internal padding without reducing their content width. The center scroll column includes the article max width, reader padding, and reader gap. Column gap is `1.5rem`, outer padding is a separate token, and `--layout-max = sidebar + center scroll column + toc + (gap ﾃ・2) + (padding ﾃ・2)`; header uses the same width.
+- Grid: sidebar `15rem`, content `50rem` max, TOC `15rem`. Side rails add internal padding without reducing their content width. Column gap is `1.5rem`, outer padding is a separate token, and `--layout-max = sidebar + content + toc + (gap ﾃ・2) + (padding ﾃ・2)`; header uses the same width.
 - Header height `72px`, sticky at the top. Logo / search / actions stay centered within their columns; search input maxes at 80% width (竕､520px).
 - On desktop, search, theme, and language controls live in the top-right header actions area. Header actions may use their own compact width instead of being constrained to the TOC column. On mobile, keep the existing search toggle and sidebar footer controls.
 - The desktop search dropdown stays aligned to the search input width. Do not widen it independently of the input or use scrollbars for the capped result list.
 - Search inputs suppress browser-native search decorations such as WebKit cancel buttons; use only the site's own search icon/control styling.
 - Desktop rails sit in the grid columns with `height = 100vh - header - bottom padding` and scroll internally without drift. The app shell has no top padding on desktop; mobile reverts to stacked layout.
-- On desktop, `.app-shell__center-scroll` is the native scroll container for the article, and its padding is the scrollable visual gap around the reader surface. Do not proxy wheel, middle-button, or keyboard scrolling through JavaScript.
+- On desktop, `.app-shell__content` is the native scroll container for the article. It spans the desktop grid as the scroll hit area, while the visible reader surface is drawn only in the central content column so its surrounding space and border radius remain visible while scrolling. Do not proxy wheel, middle-button, or keyboard scrolling through JavaScript.
 
 ## 4. Sidebar
 - Section icon tabs (`sidebar__section-tabs`): compact icon-only shortcuts inside `sidebar__section-panel`. Active state is indicated by icon color only, without a filled background.
@@ -71,9 +71,9 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - Images remain tinted with `filter: grayscale(1) brightness(0.6)` inside the hero to match the mock.
 
 ## 6. Article Body
-- The central `app-shell__center-scroll` column may use a subtle reading surface. It is not a card: avoid borders, shadows, and decorative paper motifs.
-- On desktop, the central surface remains viewport-bound while `.app-shell__center-scroll` carries page scrolling. `.app-shell__content` is the article layer inside that scroll container.
-- The central surface may grow when side rails collapse, but article content inside `.app-shell__content` stays centered at the content max width.
+- The central `app-shell__content` column may use a subtle reading surface. It is not a card: avoid borders, shadows, and decorative paper motifs.
+- On desktop, the central surface remains viewport-bound while `.app-shell__content` carries page scrolling. `.app-shell__content-scroll` is a structural padding and width wrapper, not an independent page scroller.
+- The central surface may grow when side rails collapse, but article content inside `.app-shell__content-scroll` stays centered at the content max width.
 - Article body content remains transparent inside that surface. Content width follows `--content-max` (`50rem`).
 - Article typography follows the calmer blog rhythm: body letter spacing stays `0`, body line-height is about `1.7`, `h2` is around `1.4rem`, and `h3` is around `1.1rem` without accent coloring.
 - Blockquotes use a quiet but visible purple-tinted background surface with small radius and a small Tabler-style info icon at the start. Do not use borders, a left accent bar, or italic styling by default.

@@ -114,8 +114,8 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
         {% include "sidebar.njk" %}
       </div>
     </aside>
-    <div class="app-shell__center-scroll">
-      <main class="app-shell__content transition-fade" id="page">
+    <main class="app-shell__content transition-fade" id="page">
+      <div class="app-shell__content-scroll">
         <div class="js-fallback-notice" data-js-fallback-notice role="status" aria-live="polite">
           <div class="js-fallback-notice__inner">
             {% if currentLang == "ja" %}
@@ -128,8 +128,8 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
           </div>
         </div>
         {{ content | safe }}
-      </main>
-    </div>
+      </div>
+    </main>
     <aside class="app-shell__toc">
       <div class="rail rail--toc">
         {% include "toc.njk" %}
