@@ -150,8 +150,10 @@ const swapContent = (nextDoc, destinationUrl) => {
 };
 
 const scrollToTarget = (url) => {
+  const contentScroll = document.querySelector(".app-shell__content");
   if (!url.hash) {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    if (contentScroll) contentScroll.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    else window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     return;
   }
 
