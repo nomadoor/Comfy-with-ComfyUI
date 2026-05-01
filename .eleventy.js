@@ -13,8 +13,6 @@ const GYAZO_URL_REGEX = /https:\/\/(?:[a-z]+\.)?gyazo\.com\/[^\s"'`)]+/gi;
 const GYAZO_FETCH_TIMEOUT_MS = 5000;
 const GYAZO_FETCH_DELAY_MS = 200;
 const sleep = (ms = 0) => (ms > 0 ? new Promise((resolve) => setTimeout(resolve, ms)) : Promise.resolve());
-const UNORDERED_MARKS = new Set(['*', '-', '+']);
-const ARTICLE_LIST_ICON_SVG = '<svg class="article-body__list-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19" stroke="currentColor" stroke-width="var(--article-list-icon-stroke, 2.2)" stroke-linecap="round"/></svg>';
 const SITE_DATA_PATH = path.join("src", "_data", "site.json");
 const ICON_SPRITES = {
   copy: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="var(--icon-stroke-width, 1.5)" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path></svg>',
@@ -783,20 +781,6 @@ export default function (eleventyConfig) {
     return `<figure class="article-media"${styleAttr}><div class="article-media__frame">${renderedImage}</div></figure>`;
   };
 
-
-  const defaultListItemOpen = markdownLib.renderer.rules.list_item_open || function (tokens, idx, options, env, self) {
-    return self.renderToken(tokens, idx, options);
-  };
-
-  markdownLib.renderer.rules.list_item_open = function (tokens, idx, options, env, self) {
-    const rendered = defaultListItemOpen(tokens, idx, options, env, self);
-    const token = tokens[idx];
-    const markup = token.markup ? token.markup.trim() : "";
-    if (!UNORDERED_MARKS.has(markup)) {
-      return rendered;
-    }
-    return rendered + '<span class="article-body__list-icon" aria-hidden="true">' + ARTICLE_LIST_ICON_SVG + '</span>';
-  };
 
   enhanceStandaloneImages(markdownLib);
   enhanceJsonLinks(markdownLib);
