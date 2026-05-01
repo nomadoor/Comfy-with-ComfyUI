@@ -446,10 +446,15 @@ html.js .js-fallback-notice {
 .app-shell__content-corner-mask {
   --reader-corner-mask-size: var(--radius-md);
   --reader-corner-mask-fill: var(--color-bg);
+
   position: sticky;
+
   top: var(--header-height);
+
   z-index: 2;
+
   height: 0;
+
   pointer-events: none;
 }
 
