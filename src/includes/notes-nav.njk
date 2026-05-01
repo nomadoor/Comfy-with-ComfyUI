@@ -19,7 +19,7 @@
     </div>
   </div>
 
-  <ul class="notes-nav__list" data-notes-list>
+  <ul class="nav-list__children notes-nav__list" data-notes-list>
     {% for note in notes %}
       <li class="notes-nav__item" data-updated="{{ note.updated }}" data-views="{{ note.views or 0 }}" data-title="{{ note.title }}">
         <a href="{{ note.url }}" class="nav-list__link{% if note.slug == currentNavId %} is-active{% endif %}" {% if note.slug == currentNavId %}aria-current="page"{% endif %}>

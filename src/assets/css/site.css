@@ -950,8 +950,10 @@ html.js .js-fallback-notice {
   display: flex;
   flex-direction: column;
   gap: 0;
-  margin: 0;
-  padding: 0;
+  margin-block: 0;
+  margin-right: 0;
+  padding-block: 0;
+  padding-right: 0;
 }
 
 .notes-nav__item {
