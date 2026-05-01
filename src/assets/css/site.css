@@ -832,6 +832,11 @@ html.js .js-fallback-notice {
   color: var(--color-text);
 }
 
+.nav-list__link.is-active:hover,
+.nav-list__link.is-active:focus-visible {
+  color: var(--color-heading);
+}
+
 .nav-list__link.is-active::before {
   background: var(--color-highlight);
 }
