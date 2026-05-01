@@ -16,6 +16,7 @@ hero:
 {% from "icon.njk" import icon %}
 {% set notes = collections.all | notesForLang(lang, false, pageViews) %}
 {% set hasViews = notes | notesHaveViews %}
+{% set availableNoteTags = notes | noteTags %}
 <p>Notes 收录 FAQ、故障排查、制作过程中留下的小笔记，以及一些不完全属于 ComfyUI 工作流教程的周边文章。</p>
 
 <section class="note-finder" data-note-finder>
@@ -27,8 +28,10 @@ hero:
   </div>
 
   <div class="note-finder__tags" aria-label="Tags">
-    {% for tag in noteFinder.recommendedTags %}
-      <button class="note-finder__tag" type="button" data-note-tag="{{ tag }}"><span class="note-finder__tag-prefix" aria-hidden="true">#</span>{{ tag }}</button>
+    {% for tag in noteFinder.tier1Tags %}
+      {% if tag in availableNoteTags %}
+        <button class="note-finder__tag" type="button" data-note-tag="{{ tag }}"><span class="note-finder__tag-prefix" aria-hidden="true">#</span>{{ tag }}</button>
+      {% endif %}
     {% endfor %}
   </div>
 
