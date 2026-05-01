@@ -54,14 +54,20 @@ layout: base.njk
     <section class="workflow-related">
       <h2 class="workflow-related__heading">{{ workflowRelatedHeading }}</h2>
       <div class="workflow-related__grid">
+        {% set placeholderIcons = ["terminal-2", "cpu-2", "braces", "binary-tree", "sparkles"] %}
         {% for entry in relatedPages %}
           {% set heroImage = entry.hero and entry.hero.image or null %}
           {% set heroVariant = null %}
           {% if heroImage %}
             {% set heroVariant = heroImage | imageVariant(480) %}
           {% endif %}
+          {% set placeholderIcon = placeholderIcons[loop.index0 % placeholderIcons.length] %}
           <a class="workflow-related__card" href="{{ entry.url }}">
-            <div class="workflow-related__hero" {% if heroVariant and heroVariant.preview %}data-hero="{{ heroVariant.preview }}"{% endif %}></div>
+            <div class="workflow-related__hero" {% if heroVariant and heroVariant.preview %}data-hero="{{ heroVariant.preview }}"{% endif %}>
+              {% if not heroVariant %}
+                <span class="workflow-related__placeholder-icon" aria-hidden="true">{{ icon(placeholderIcon) }}</span>
+              {% endif %}
+            </div>
             <span class="workflow-related__title">{{ entry.title }}</span>
             {% if entry.summary %}
               <span class="workflow-related__summary">{{ entry.summary }}</span>
