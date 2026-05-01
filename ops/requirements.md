@@ -9,13 +9,16 @@
 - Routes follow `/<lang>/<section>/<slug>/` with kebab-case slugs that match nav/data.
 - `lang` is one of `ja`, `en`, `zh`.
 - Exceptions: `about`, `news`, and `contact` are standalone pages and use `/<lang>/<slug>/` without `section`.
+- The former `faq` section is replaced by `notes`. Old `/<lang>/faq/<slug>/` URLs must not keep duplicate content; redirect them with Cloudflare Pages `_redirects` to `/<lang>/notes/<slug>/`.
 - Markdown lives under `src/content/<lang>/`; workflows sit in `src/workflows/<slug>/*.json`; shared data under `_data`.
-- Front matter requires `slug` and `title`. `tags` は任意（最大5件）。ただし **`ai-capabilities` セクションは原則 tags なし**。例外的に付ける場合はオーナー指示と `/ops` 合意を先に取る。`draft: true` で非公開化。
+- Front matter requires `slug`, `title`, `created`, and `updated`. `created` / `updated` use `YYYY-MM-DD`; when exact authorship dates are unknown, use the best available Git history date and adjust later if the owner provides a better date. `tags` は任意（最大5件）。ただし **`ai-capabilities` セクションは原則 tags なし**。例外的に付ける場合はオーナー指示と `/ops` 合意を先に取る。`draft: true` で非公開化。
 
 ## 2. Navigation & Tags
 - Locale menus come from `_data/nav.<lang>.yml`; keep IDs aligned with folders and front matter.
 - `nav.zh.yml` mirrors the same slug IDs as `ja/en` (titles can be placeholders until translation).
 - Tags are **optional**. When present, they must be consistent with the slug/topic, specific but not spammy, and limited to **max 5** per page.
+- The `notes` section is a flat collection. Its left sidebar panel uses a fixed `find` link, an independent Updated / Views segment control, and a flat title list. It must not render category headings or nested children.
+- `/notes/find/` is a local note finder page. It filters only notes by title, summary, and tags; it does not change the global header search.
 - Every page begins with one H1. Section badges and chip styles come from `/ops/style-design.md`.
 - On short viewports, sidebar section switching uses a compact dropdown: show only the current section label by default and expand section choices on tap/click.
 - Compact mode applies to:

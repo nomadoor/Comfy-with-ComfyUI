@@ -6,7 +6,7 @@
 | `data-utilities` | 📂データ / 画像ユーティリティ | 📂Data & Image Utilities | Repeatable utilities for data prep and image manipulation. URL root `/<lang>/data-utilities/<slug>/`. |
 | `ai-capabilities` | 📂AIの仕組みと出来ること | 📂AI Capabilities | Conceptual capability coverage and advanced techniques. |
 | `basic-workflows` | 📂基本のworkflow | 📂Basic Workflows | Practical recipes; each page pulls related workflow cards. |
-| `faq` | 📂FAQ / トラブルシューティング | 📂FAQ / Troubleshooting | Common questions and incident playbooks. |
+| `notes` | 📝Notes | 📝Notes | Flat note collection for troubleshooting, concepts, experiments, and short incident playbooks. URL root `/<lang>/notes/<slug>/`. |
 | `about` | ℹ️About | ℹ️About | Standalone page (`/<lang>/about/`). Hidden from sidebar and main nav. |
 | `news` | 📰更新情報 | 📰News | Standalone page (`/<lang>/news/`). Not in main nav. |
 
@@ -158,18 +158,12 @@
   * 外部API — 親ページあり
     * nano-banana
     * gemini-flash
-* 📂FAQ / トラブルシューティング
-  * エラーが出た時にやること
-    * エラーコードの確認
-  * よくある質問
-    * 512px × 512pxで生成するのはなぜ？
-    * SD1.5のLoRA/ControlNetはSDXLで使えない？
-    * 8の倍数解像度しか生成できないのはなぜ？
-  * トラブルシューティング
-    * OOM / VRAM
-    * アーティファクト
-    * 生成画像で人や物体が分身している
-    * RuntimeError: channels mismatch
+* 📝Notes
+  * Noteを探す / Find Notes / 查找 Notes
+  * 個別Noteは階層化せず、左カラムではフラットなタイトルリストとして表示する
+  * 左カラムの Notes パネルは固定の「Noteを探す」リンク、Updated / Views セグメント、フラットリストで構成する
+  * `Views` は将来の閲覧数データ用。データが無い間は `Updated` と同じ順序にフォールバックする
+  * 旧 `/<lang>/faq/<slug>/` はコンテンツを残さず、Cloudflare Pages `_redirects` で `/<lang>/notes/<slug>/` へ 301 リダイレクトする
 
 ## Hidden Draft Backlog
 
