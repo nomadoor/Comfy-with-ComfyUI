@@ -2714,11 +2714,11 @@ h1 {
 .note-finder__sort-btn {
   border: 0;
   border-radius: var(--radius-sm);
-  padding: var(--space-xs) var(--space-sm);
+  padding: var(--space-2xs) var(--space-xs);
   background: transparent;
   color: var(--color-text-muted);
   font: inherit;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition-fast);
