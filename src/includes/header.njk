@@ -60,7 +60,7 @@
           </span>
           <span class="sidebar__lang-caret">{{ icon("chevron-down") }}</span>
         </button>
-        <div class="lang-menu" data-lang-menu role="menu">
+        <div class="lang-menu" data-lang-menu>
           {% for option in site.languages %}
             {% if isStandaloneForLang %}
               {% set target = '/' + option.code + '/' + currentSlugForLang + '/' %}
@@ -69,7 +69,7 @@
             {% else %}
               {% set target = '/' + option.code + '/' + currentSlugForLang + '/' %}
             {% endif %}
-            <a href="{{ target }}" class="{% if option.code == currentLang %}is-active{% endif %}" role="menuitem" data-router-ignore>{{ option.label }}</a>
+            <a href="{{ target }}" class="{% if option.code == currentLang %}is-active{% endif %}" data-router-ignore>{{ option.label }}</a>
           {% endfor %}
         </div>
       </div>
