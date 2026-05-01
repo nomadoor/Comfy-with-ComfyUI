@@ -177,3 +177,18 @@
     * アーティファクト
     * 生成画像で人や物体が分身している
     * RuntimeError: channels mismatch
+
+## Hidden Draft Backlog
+
+These topics were removed from sidebar navigation on 2026-05-01 because they are not ready as navigable entries yet. Keep them as owner notes for future writing, not as current IA commitments.
+
+- AI Capabilities / Video & Audio Generation
+  - Video Generation
+  - TTS
+  - Voice Clone
+  - Music Generation
+- Basic Workflows / Video Workflows
+  - FramePack
+  - FramePack One Frame Inference
+- Basic Workflows / LLM / MLLM
+  - Qwen 3 VL
