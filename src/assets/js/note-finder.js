@@ -18,6 +18,7 @@ export default function initNoteFinder(root = document) {
   finder.dataset.initialized = "true";
 
   const input = finder.querySelector("[data-note-query]");
+  const clearButton = finder.querySelector("[data-note-clear]");
   const grid = finder.querySelector("[data-note-grid]");
   const empty = finder.querySelector("[data-note-empty]");
   const sortButtons = Array.from(finder.querySelectorAll("[data-note-sort]"));
@@ -25,6 +26,14 @@ export default function initNoteFinder(root = document) {
   if (!input || !grid) return;
 
   let sortMode = "updated";
+
+  const updateClearButton = () => {
+    const hasQuery = Boolean(input.value.trim());
+    finder.classList.toggle("is-clearable", hasQuery);
+    if (clearButton) {
+      clearButton.hidden = !hasQuery;
+    }
+  };
 
   const applyFilter = () => {
     const query = input.value.trim().toLowerCase();
@@ -42,6 +51,7 @@ export default function initNoteFinder(root = document) {
     if (empty) {
       empty.hidden = visibleCount > 0;
     }
+    updateClearButton();
   };
 
   try {
@@ -55,6 +65,11 @@ export default function initNoteFinder(root = document) {
   }
 
   input.addEventListener("input", applyFilter);
+  clearButton?.addEventListener("click", () => {
+    input.value = "";
+    input.focus();
+    applyFilter();
+  });
   tagButtons.forEach((button) => {
     button.addEventListener("click", () => {
       input.value = button.dataset.noteTag || "";

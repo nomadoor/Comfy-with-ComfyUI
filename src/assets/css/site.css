@@ -2612,6 +2612,7 @@ h1 {
 
 .note-finder__input {
   width: 100%;
+  min-width: 0;
   border: 0;
   outline: 0;
   background: transparent;
@@ -2629,6 +2630,37 @@ h1 {
 .note-finder__input::-webkit-search-decoration {
   -webkit-appearance: none;
   appearance: none;
+}
+
+.note-finder__clear {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 1.15rem;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.note-finder__clear[hidden] {
+  display: none;
+}
+
+.note-finder__clear:hover,
+.note-finder__clear:focus-visible {
+  color: var(--color-heading);
+}
+
+.note-finder__clear span {
+  display: block;
+  width: 0.78rem;
+  height: 0.78rem;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 6L6 18'/%3E%3Cpath d='M6 6L18 18'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 6L6 18'/%3E%3Cpath d='M6 6L18 18'/%3E%3C/svg%3E") no-repeat center / contain;
 }
 
 .note-finder__tags {
