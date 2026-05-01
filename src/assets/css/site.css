@@ -1043,6 +1043,10 @@ html.js .js-fallback-notice {
   letter-spacing: 0;
 }
 
+.site-header__lang .sidebar__lang-caret {
+  color: var(--color-text);
+}
+
 .site-header__lang .sidebar__lang-caret .icon {
   inline-size: 10px;
   block-size: 10px;
