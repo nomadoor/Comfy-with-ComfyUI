@@ -15,7 +15,7 @@
 - Max 5 tags per page; overflow is a content bug that should block merge.
 - Workflows inherit the tag slug from the page displaying them; list all workflows sharing that slug without omission.
 - `tags` are primarily for `basic-workflows` pages and exist to connect `ai-capabilities` ↔ `basic-workflows` (chips/cards/related lists).
-- `notes` uses `noteTags` instead of `tags`. These are local finder facets for `/notes/find/`, not workflow relation tags and not site-wide tag-chip links.
+- `notes` uses `noteTags` instead of `tags`. These are local finder facets for `/notes/find/`, not workflow relation tags and not site-wide tag-chip links. They may reuse the same visual chip component as regular tags until a clearer distinction is designed.
 - Other tag use outside `basic-workflows` remains an exception that requires explicit owner agreement.
 
 ## 4. Five Section Contract

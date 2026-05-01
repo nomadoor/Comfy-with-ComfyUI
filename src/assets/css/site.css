@@ -1434,14 +1434,6 @@ html.js .js-fallback-notice {
   }
 }
 
-.tag-chips--notes {
-  justify-content: center;
-}
-
-.tag-chip--note {
-  color: var(--color-text);
-}
-
 .article-body {
   padding-bottom: var(--space-2xl);
   font-weight: 500;

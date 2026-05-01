@@ -10,9 +10,9 @@
   {% endfor %}
 </div>
 {% elif section == "notes" and noteTags and noteTags.length %}
-<div class="tag-chips tag-chips--notes">
+<div class="tag-chips">
   {% for tag in noteTags %}
-    <span class="tag-chip tag-chip--note">{{ tag }}</span>
+    <span class="tag-chip">{{ tag }}</span>
   {% endfor %}
 </div>
 {% endif %}
