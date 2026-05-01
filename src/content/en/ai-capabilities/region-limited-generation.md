@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: region-limited-generation
 navId: region-limited-generation
 title: Region-Limited Generation
-created: 2025-12-01
-updated: 2026-03-02
 summary: Techniques to generate only parts of an image with different conditions,
   and their limitations.
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/

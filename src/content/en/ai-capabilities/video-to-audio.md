@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: video-to-audio
 navId: video-to-audio
 title: video2audio
-created: 2025-12-01
-updated: 2026-03-02
 summary: Technology to automatically generate sound effects and environmental sounds from video
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

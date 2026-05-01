@@ -5,8 +5,6 @@ section: basic-workflows
 slug: reactor
 navId: reactor
 title: "ReActor"
-created: 2025-12-09
-updated: 2026-03-02
 summary: "ReActorを使ったFaceSwap（顔入れ替え）"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

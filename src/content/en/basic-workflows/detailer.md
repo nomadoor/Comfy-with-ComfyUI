@@ -5,8 +5,6 @@ section: basic-workflows
 slug: detailer
 navId: detailer
 title: "Detailer"
-created: 2025-12-09
-updated: 2026-03-02
 summary: "A mechanism to cut out only small faces or details and inpaint them"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

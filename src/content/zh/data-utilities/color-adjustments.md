@@ -5,8 +5,6 @@ section: data-utilities
 slug: color-adjustments
 navId: color-adjustments
 title: "色调校正与特效"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "关于图像的亮度调整、模糊、特效"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

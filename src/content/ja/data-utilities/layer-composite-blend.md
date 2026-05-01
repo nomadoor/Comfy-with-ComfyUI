@@ -5,8 +5,6 @@ section: data-utilities
 slug: layer-composite-blend
 navId: layer-composite-blend
 title: "レイヤ合成"
-created: 2025-11-25
-updated: 2026-03-02
 summary: "画像の重ね合わせや結合、ブレンドについて"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

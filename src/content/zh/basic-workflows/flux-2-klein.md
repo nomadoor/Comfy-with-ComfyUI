@@ -6,8 +6,6 @@ section: basic-workflows
 slug: flux-2-klein
 navId: flux-2-klein
 title: "FLUX.2 [klein]"
-created: 2026-01-22
-updated: 2026-03-02
 summary: "FLUX.2 [klein] 生成・图像编辑工作流"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

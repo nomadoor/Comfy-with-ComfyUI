@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: video-to-audio
 navId: video-to-audio
 title: video2audio
-created: 2025-12-01
-updated: 2026-03-02
 summary: 動画から効果音や環境音を自動生成する技術
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

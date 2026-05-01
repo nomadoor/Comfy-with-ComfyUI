@@ -5,8 +5,6 @@ section: data-utilities
 slug: simple-math
 navId: simple-math
 title: "Simple Math"
-created: 2025-11-25
-updated: 2026-03-21
 summary: "About nodes that perform basic calculations such as arithmetic operations"
 
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"

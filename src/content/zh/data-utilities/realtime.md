@@ -5,8 +5,6 @@ section: data-utilities
 slug: realtime
 navId: realtime
 title: "实时处理"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "伪实时处理，以及 Instant/Change 的使用场景"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

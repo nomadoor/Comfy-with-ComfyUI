@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: style-transfer
 navId: style-transfer
 title: 风格转移
-created: 2026-02-06
-updated: 2026-03-02
 summary: 试图从参考图像中转移“风格”的任务，及其模糊性
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

@@ -5,8 +5,6 @@ section: data-utilities
 slug: color-adjustments
 navId: color-adjustments
 title: "Color Adjustments & Effects"
-created: 2025-11-25
-updated: 2026-03-02
 summary: "About image brightness adjustment, blur, and effects"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

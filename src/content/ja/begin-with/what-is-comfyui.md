@@ -5,8 +5,6 @@ section: begin-with
 slug: what-is-comfyui
 navId: what-is-comfyui
 title: "ComfyUIとは？"
-created: 2025-11-19
-updated: 2026-03-02
 summary: "ComfyUIとは生成AIのOSです"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

@@ -5,8 +5,6 @@ section: begin-with
 slug: what-is-comfyui
 navId: what-is-comfyui
 title: "What is ComfyUI?"
-created: 2025-11-24
-updated: 2026-03-02
 summary: "ComfyUI is the OS of Generative AI"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

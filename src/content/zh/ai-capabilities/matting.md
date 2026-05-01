@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: matting
 navId: matting
 title: 抠图
-created: 2026-02-06
-updated: 2026-03-02
 summary: "从自然图像中抠出前景，与背景分离的技术"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

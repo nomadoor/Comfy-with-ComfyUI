@@ -5,8 +5,6 @@ section: basic-workflows
 slug: sd15-ip-adapter
 navId: sd15-ip-adapter
 title: "IP-Adapter"
-created: 2025-12-09
-updated: 2026-03-02
 summary: "从参照图像转印风格和被摄体的元祖机制"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

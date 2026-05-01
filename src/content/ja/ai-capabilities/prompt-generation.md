@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: prompt-generation
 navId: prompt-generation
 title: プロンプト生成・編集
-created: 2025-12-01
-updated: 2026-03-02
 summary: "ざっくり書いた指示を、モデルが理解しやすいプロンプトに整えるテクニック"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

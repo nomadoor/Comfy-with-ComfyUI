@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: region-limited-generation
 navId: region-limited-generation
 title: 区域指定生成
-created: 2026-02-06
-updated: 2026-03-02
 summary: 试图只按照该条件生成图像一部分的技术，及其局限性
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

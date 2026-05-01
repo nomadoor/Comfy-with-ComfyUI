@@ -5,8 +5,6 @@ section: begin-with
 slug: nodes
 navId: nodes
 title: "Nodes"
-created: 2025-11-24
-updated: 2026-03-02
 summary: "About Nodes"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

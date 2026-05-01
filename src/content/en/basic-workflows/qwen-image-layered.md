@@ -5,8 +5,6 @@ section: basic-workflows
 slug: qwen-image-layered
 navId: qwen-image-layered
 title: "Qwen-Image-Layered"
-created: 2025-12-31
-updated: 2026-03-02
 summary: "Decompose input image into multiple RGBA layers"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

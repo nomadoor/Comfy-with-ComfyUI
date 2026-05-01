@@ -5,8 +5,6 @@ section: basic-workflows
 slug: lumina-image-2.0
 navId: lumina-image-2.0
 title: "Lumina-Image 2.0"
-created: 2025-12-11
-updated: 2026-03-02
 summary: "Lumina-Image 2.0の基本とComfyUIでの使い方"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

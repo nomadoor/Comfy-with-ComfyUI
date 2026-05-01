@@ -5,8 +5,6 @@ section: basic-workflows
 slug: reactor
 navId: reactor
 title: "ReActor"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "使用 ReActor 的 FaceSwap（变脸）"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

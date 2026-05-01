@@ -5,8 +5,6 @@ section: data-utilities
 slug: batch-video
 navId: batch-video
 title: "Batch & Video"
-created: 2025-11-27
-updated: 2026-03-02
 summary: "Mechanism to handle multiple images/video frames collectively"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

@@ -5,8 +5,6 @@ section: begin-with
 slug: wireless-nodes
 navId: wireless-nodes
 title: "Wireless"
-created: 2025-11-26
-updated: 2026-03-02
 summary: "About wireless communication between nodes"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

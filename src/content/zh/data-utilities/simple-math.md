@@ -5,8 +5,6 @@ section: data-utilities
 slug: simple-math
 navId: simple-math
 title: "简单计算"
-created: 2026-02-06
-updated: 2026-03-21
 summary: "关于四则运算等、执行基本计算的节点"
 
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"

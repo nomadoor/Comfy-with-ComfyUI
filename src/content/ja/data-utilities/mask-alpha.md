@@ -5,8 +5,6 @@ section: data-utilities
 slug: mask-alpha
 navId: mask-alpha
 title: "マスクとアルファチャンネル"
-created: 2025-11-25
-updated: 2026-03-02
 summary: "マスクの概念と透過画像の扱いについて"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: collage-refine
 navId: collage-refine
 title: 雑コラのリファイン
-created: 2025-12-01
-updated: 2026-03-02
 summary: 雑なコラージュ画像を、指示ベース画像編集で自然な一枚絵に仕上げるテクニック
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

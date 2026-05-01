@@ -5,8 +5,6 @@ section: data-utilities
 slug: wildcards
 navId: wildcards
 title: "通配符"
-created: 2026-02-10
-updated: 2026-03-02
 summary: "在每次队列执行时随机替换提示词的一部分"
 permalink: "/{{ lang }}/data-utilities/{{ slug }}/"
 hero:

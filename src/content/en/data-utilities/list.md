@@ -5,8 +5,6 @@ section: data-utilities
 slug: list
 navId: list
 title: "List"
-created: 2025-11-27
-updated: 2026-03-02
 summary: "Concept of continuous processing using multiple data"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

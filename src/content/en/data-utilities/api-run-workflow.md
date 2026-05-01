@@ -5,8 +5,6 @@ section: data-utilities
 slug: api-run-workflow
 navId: api-run-workflow
 title: "Running a Workflow via API"
-created: 2026-02-05
-updated: 2026-03-02
 summary: "Minimum steps: Request execution -> Check completion -> Get output"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

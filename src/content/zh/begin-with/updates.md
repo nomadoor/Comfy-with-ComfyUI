@@ -5,8 +5,6 @@ section: begin-with
 slug: updates
 navId: updates
 title: "更新"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "关于 ComfyUI 的更新方法"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

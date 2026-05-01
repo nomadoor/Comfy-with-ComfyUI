@@ -5,8 +5,6 @@ section: basic-workflows
 slug: sd15-hires-fix
 navId: sd15-hires-fix
 title: "Hires.fix"
-created: 2025-12-07
-updated: 2026-03-02
 summary: "Hires.fixを使った高解像度画像生成"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

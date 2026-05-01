@@ -5,8 +5,6 @@ section: basic-workflows
 slug: z-image-turbo
 navId: z-image-turbo
 title: "Z-Image-Turbo"
-created: 2025-12-12
-updated: 2026-03-02
 summary: "Z-Image-Turboでの画像生成"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

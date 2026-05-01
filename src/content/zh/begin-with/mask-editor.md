@@ -5,8 +5,6 @@ section: begin-with
 slug: mask-editor
 navId: mask-editor
 title: "蒙版编辑器"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "关于蒙版编辑器的使用方法"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

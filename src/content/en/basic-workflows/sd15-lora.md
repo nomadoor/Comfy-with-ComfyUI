@@ -5,8 +5,6 @@ section: basic-workflows
 slug: sd15-lora
 navId: sd15-lora
 title: "LoRA"
-created: 2025-12-06
-updated: 2026-03-02
 summary: "LoRA in Stable Diffusion 1.5"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

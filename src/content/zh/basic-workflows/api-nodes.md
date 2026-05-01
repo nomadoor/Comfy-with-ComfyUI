@@ -5,8 +5,6 @@ section: basic-workflows
 slug: api-nodes
 navId: api-nodes
 title: "API 节点"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "在 ComfyUI 的 API 节点利用外部的封闭模型的方法"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

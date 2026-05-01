@@ -5,8 +5,6 @@ section: begin-with
 slug: recommended-specs
 navId: recommended-specs
 title: "推荐配置"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "运行 ComfyUI 所需的 PC 配置"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

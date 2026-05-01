@@ -5,8 +5,6 @@ section: begin-with
 slug: subgraphs
 navId: subgraphs
 title: "子图 (Subgraph)"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "关于子图"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

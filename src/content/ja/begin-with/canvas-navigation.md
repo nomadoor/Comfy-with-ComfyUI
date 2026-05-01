@@ -5,8 +5,6 @@ section: begin-with
 slug: canvas-navigation
 navId: canvas-navigation
 title: "キャンバスの操作"
-created: 2025-11-20
-updated: 2026-03-02
 summary: "キャンバスの操作について"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

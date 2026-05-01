@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: voice-clone
 navId: voice-clone
 title: 声音克隆
-created: 2026-02-06
-updated: 2026-03-02
 summary: 声音克隆 的概要页面（准备中）
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

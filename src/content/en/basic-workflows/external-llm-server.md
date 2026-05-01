@@ -5,8 +5,6 @@ section: basic-workflows
 slug: external-llm-server
 navId: external-llm-server
 title: "External LLM Server Integration"
-created: 2026-02-18
-updated: 2026-03-02
 summary: "Run an LLM outside ComfyUI and connect to it"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

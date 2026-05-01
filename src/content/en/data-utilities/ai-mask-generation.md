@@ -5,8 +5,6 @@ section: data-utilities
 slug: ai-mask-generation
 navId: ai-mask-generation
 title: "AI Mask Generation"
-created: 2025-11-26
-updated: 2026-03-02
 summary: "About Matting, Segmentation, and Object Detection"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

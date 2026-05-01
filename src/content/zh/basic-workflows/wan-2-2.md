@@ -5,8 +5,6 @@ section: basic-workflows
 slug: wan-2-2
 navId: wan-2-2
 title: "Wan2.2"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "在 Wan2.2 中使用 text2video / image2video / FLF2V 的视频生成"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

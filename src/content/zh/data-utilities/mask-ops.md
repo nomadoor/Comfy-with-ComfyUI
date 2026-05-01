@@ -5,8 +5,6 @@ section: data-utilities
 slug: mask-ops
 navId: mask-ops
 title: "蒙版操作"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "蒙版的制作方法和编辑方法"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

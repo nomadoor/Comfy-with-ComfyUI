@@ -5,8 +5,6 @@ section: basic-workflows
 slug: flux-1-kontext
 navId: flux-1-kontext
 title: "Flux.1 Kontext"
-created: 2025-12-11
-updated: 2026-03-02
 summary: "Instruction-based image editing with Flux.1 Kontext."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

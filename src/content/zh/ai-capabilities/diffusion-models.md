@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: diffusion-models
 navId: diffusion-models
 title: 扩散模型
-created: 2026-02-06
-updated: 2026-03-02
 summary: 扩散模型的机制
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: relight
 navId: relight
 title: 重打光
-created: 2026-02-06
-updated: 2026-03-02
 summary: "改变光源或环境光，调整图像的打光的任务"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

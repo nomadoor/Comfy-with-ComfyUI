@@ -5,8 +5,6 @@ section: basic-workflows
 slug: esrgan
 navId: esrgan
 title: "ESRGAN"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "图像的放大和面部修正"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

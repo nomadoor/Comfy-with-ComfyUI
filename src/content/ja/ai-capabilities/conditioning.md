@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: conditioning
 navId: conditioning
 title: Conditioning
-created: 2025-11-13
-updated: 2026-03-02
 summary: 拡散モデルに「こういう画像がほしい」と伝える仕組み
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

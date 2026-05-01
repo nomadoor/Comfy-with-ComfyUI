@@ -5,8 +5,6 @@ section: begin-with
 slug: command-line-arguments
 navId: command-line-arguments
 title: "与启动参数"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "启动 ComfyUI 时指定的选项"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

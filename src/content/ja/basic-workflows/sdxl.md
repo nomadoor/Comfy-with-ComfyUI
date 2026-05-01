@@ -5,8 +5,6 @@ section: basic-workflows
 slug: sdxl
 navId: sdxl
 title: "SDXL"
-created: 2025-12-09
-updated: 2026-03-02
 summary: "SDXLの使い方"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: tag-caption-generation
 navId: tag-caption-generation
 title: 标签・描述生成
-created: 2026-02-06
-updated: 2026-03-02
 summary: "从图像自动添加标签或说明文（Caption）的技术"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

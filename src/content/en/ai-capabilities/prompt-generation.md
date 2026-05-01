@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: prompt-generation
 navId: prompt-generation
 title: Prompt Generation & Editing
-created: 2025-12-01
-updated: 2026-03-02
 summary: "Techniques to refine roughly written instructions into prompts that models can easily understand"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

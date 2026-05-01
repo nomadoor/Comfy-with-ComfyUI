@@ -6,8 +6,6 @@ section: basic-workflows
 slug: qwen-image-edit
 navId: qwen-image-edit
 title: "Qwen-Image-Edit"
-created: 2025-12-11
-updated: 2026-03-02
 summary: "Qwen-Image-Editで指示ベース画像編集を行う"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

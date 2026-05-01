@@ -5,8 +5,6 @@ section: data-utilities
 slug: text-ops
 navId: text-ops
 title: "テキスト操作"
-created: 2025-11-25
-updated: 2026-03-02
 summary: "テキストを操作するノードについて"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

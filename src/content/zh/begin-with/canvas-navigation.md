@@ -5,8 +5,6 @@ section: begin-with
 slug: canvas-navigation
 navId: canvas-navigation
 title: "画布操作"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "关于画布的操作"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

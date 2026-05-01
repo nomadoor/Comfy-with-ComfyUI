@@ -5,8 +5,6 @@ section: basic-workflows
 slug: flux-1
 navId: flux-1
 title: "Flux.1"
-created: 2025-12-09
-updated: 2026-03-02
 summary: "Flux.1の基本とComfyUIでの使い方"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

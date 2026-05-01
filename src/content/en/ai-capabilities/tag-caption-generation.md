@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: tag-caption-generation
 navId: tag-caption-generation
 title: Tag & Caption Generation
-created: 2025-12-03
-updated: 2026-03-02
 summary: "Technology to automatically add tags and descriptions (captions) from images."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

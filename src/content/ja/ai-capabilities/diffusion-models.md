@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: diffusion-models
 navId: diffusion-models
 title: 拡散モデル
-created: 2025-11-29
-updated: 2026-03-02
 summary: 拡散モデルの仕組み
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

@@ -5,8 +5,6 @@ section: basic-workflows
 slug: joycaption
 navId: joycaption
 title: "JoyCaption"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "使用 JoyCaption 的图像说明文生成"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

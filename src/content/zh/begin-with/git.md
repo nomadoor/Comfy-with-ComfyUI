@@ -5,8 +5,6 @@ section: begin-with
 slug: git
 navId: git
 title: "Git"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "关于 Git 的基础知识"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

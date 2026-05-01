@@ -5,8 +5,6 @@ section: begin-with
 slug: wireless-nodes
 navId: wireless-nodes
 title: "无线化"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "关于节点间的无线通信"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

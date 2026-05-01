@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: matting
 navId: matting
 title: マッティング
-created: 2025-12-03
-updated: 2026-03-02
 summary: "自然な画像から前景を切り出し、背景と分離する技術"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

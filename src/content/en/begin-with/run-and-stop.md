@@ -5,8 +5,6 @@ section: begin-with
 slug: run-and-stop
 navId: run-and-stop
 title: "Run & Stop"
-created: 2025-11-24
-updated: 2026-03-02
 summary: "About Run & Stop"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: segmentation
 navId: segmentation
 title: "Segmentation"
-created: 2025-12-01
-updated: 2026-03-02
 summary: "Technology to divide images to create masks (mainly SAM family)"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

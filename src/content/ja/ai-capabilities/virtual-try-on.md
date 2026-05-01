@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: virtual-try-on
 navId: virtual-try-on
 title: 着せ替え
-created: 2025-12-01
-updated: 2026-03-02
 summary: 服だけを別のデザイン・バリエーションに差し替えるタスク
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

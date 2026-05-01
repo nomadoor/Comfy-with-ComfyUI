@@ -5,8 +5,6 @@ section: data-utilities
 slug: queue
 navId: queue
 title: "Queue"
-created: 2025-11-27
-updated: 2026-03-02
 summary: "About queuing processes and batch execution"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

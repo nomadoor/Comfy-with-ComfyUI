@@ -5,8 +5,6 @@ section: basic-workflows
 slug: controlnet-prep
 navId: controlnet-prep
 title: "ControlNet Preprocessor"
-created: 2025-12-08
-updated: 2026-03-02
 summary: "ControlNetで使う補助画像を作る"
 tags: ["controlnet"]
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"

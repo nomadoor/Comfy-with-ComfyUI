@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: upscale-restoration
 navId: upscale-restoration
 title: アップスケール・画像修復
-created: 2025-11-13
-updated: 2026-03-02
 summary: 画像を大きくしたり、劣化した画像を修復したりする技術
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

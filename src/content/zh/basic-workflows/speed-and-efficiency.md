@@ -5,8 +5,6 @@ section: basic-workflows
 slug: speed-and-efficiency
 navId: speed-and-efficiency
 title: "高速化与轻量化"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "整理扩散模型的高速化・轻量化技术并按目的区分使用"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

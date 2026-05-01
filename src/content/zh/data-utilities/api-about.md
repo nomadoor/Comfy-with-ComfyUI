@@ -5,8 +5,6 @@ section: data-utilities
 slug: api-about
 navId: api-about
 title: "什么是 API？"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "从“外部驱动” ComfyUI 的入口"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

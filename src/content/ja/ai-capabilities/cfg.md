@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: cfg
 navId: cfg
 title: CFG
-created: 2025-11-29
-updated: 2026-03-02
 summary: プロンプトの「効き具合」を決める仕組み
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

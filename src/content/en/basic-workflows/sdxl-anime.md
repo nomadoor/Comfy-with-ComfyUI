@@ -5,8 +5,6 @@ section: basic-workflows
 slug: sdxl-anime
 navId: sdxl-anime
 title: "Anime-style SDXL Models"
-created: 2025-12-10
-updated: 2026-03-02
 summary: "Rough organization of SDXL-based anime models"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

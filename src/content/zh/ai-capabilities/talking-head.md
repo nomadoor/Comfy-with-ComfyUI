@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: talking-head
 navId: talking-head
 title: Talking Head
-created: 2026-02-06
-updated: 2026-03-02
 summary: 让单张图片或人脸照片配合参考视频或音频说话的技术
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

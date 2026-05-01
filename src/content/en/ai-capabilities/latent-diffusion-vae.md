@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: latent-diffusion-vae
 navId: latent-diffusion-vae
 title: Latent Diffusion Model & VAE
-created: 2025-12-01
-updated: 2026-03-02
 summary: The role of latent space and VAE.
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

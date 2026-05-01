@@ -5,8 +5,6 @@ section: data-utilities
 slug: webcam-input
 navId: webcam-input
 title: "Webcam"
-created: 2025-11-25
-updated: 2026-03-02
 summary: "How to import webcam or OBS footage into ComfyUI"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

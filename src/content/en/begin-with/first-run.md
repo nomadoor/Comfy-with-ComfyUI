@@ -5,8 +5,6 @@ section: begin-with
 slug: first-run
 navId: first-run
 title: "First Run"
-created: 2025-11-24
-updated: 2026-03-02
 summary: "About first run"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

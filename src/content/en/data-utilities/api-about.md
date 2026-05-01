@@ -5,8 +5,6 @@ section: data-utilities
 slug: api-about
 navId: api-about
 title: "What is the API?"
-created: 2026-02-05
-updated: 2026-03-02
 summary: "An entry point to control ComfyUI from outside"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

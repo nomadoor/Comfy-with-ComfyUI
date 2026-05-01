@@ -5,8 +5,6 @@ section: basic-workflows
 slug: api-nodes
 navId: api-nodes
 title: "APIノード"
-created: 2025-12-11
-updated: 2026-03-02
 summary: "ComfyUIのAPIノードで外部のクローズドモデルを利用する方法"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

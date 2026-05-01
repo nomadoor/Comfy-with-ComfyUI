@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: virtual-try-on
 navId: virtual-try-on
 title: 换装
-created: 2026-02-06
-updated: 2026-03-02
 summary: 只将衣服替换为不同设计・变体的任务
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: subject-transfer
 navId: subject-transfer
 title: Subject 转移
-created: 2026-02-06
-updated: 2026-03-02
 summary: 让参考图像中的相同物体在不同场景中登场的技术
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

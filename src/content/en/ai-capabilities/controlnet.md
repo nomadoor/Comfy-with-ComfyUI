@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: controlnet
 navId: controlnet
 title: ControlNet Techniques
-created: 2025-12-01
-updated: 2026-03-02
 summary: Techniques to control image generation with additional information such as
   poses and line art.
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/

@@ -5,8 +5,6 @@ section: begin-with
 slug: updates
 navId: updates
 title: "アップデート"
-created: 2025-11-20
-updated: 2026-03-02
 summary: ""
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

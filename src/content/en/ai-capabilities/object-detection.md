@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: object-detection
 navId: object-detection
 title: Object Detection
-created: 2025-12-01
-updated: 2026-03-02
 summary: "Technology to find 'what' is 'where' in an image"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

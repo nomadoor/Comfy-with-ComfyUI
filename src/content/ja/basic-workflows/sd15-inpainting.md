@@ -5,8 +5,6 @@ section: basic-workflows
 slug: sd15-inpainting
 navId: sd15-inpainting
 title: "inpainting"
-created: 2025-12-07
-updated: 2026-03-02
 summary: "inpaintingで画像の一部分だけ編集する"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: ["controlnet", "region-limited-generation"]

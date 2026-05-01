@@ -5,8 +5,6 @@ section: data-utilities
 slug: webcam-input
 navId: webcam-input
 title: "Webカメラ"
-created: 2025-11-25
-updated: 2026-03-02
 summary: "WebカメラやOBSの映像をComfyUIに取り込む方法"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

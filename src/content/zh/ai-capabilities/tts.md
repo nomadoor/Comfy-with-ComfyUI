@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: tts
 navId: tts
 title: TTS
-created: 2025-12-01
-updated: 2026-03-02
 summary: TTS 的概要页面（准备中）
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

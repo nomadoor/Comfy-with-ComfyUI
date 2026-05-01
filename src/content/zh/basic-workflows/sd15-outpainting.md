@@ -5,8 +5,6 @@ section: basic-workflows
 slug: sd15-outpainting
 navId: sd15-outpainting
 title: "outpainting"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "用 outpainting 扩画图像的外侧"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

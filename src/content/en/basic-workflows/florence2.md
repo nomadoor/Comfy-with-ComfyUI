@@ -5,8 +5,6 @@ section: basic-workflows
 slug: florence2
 navId: florence2
 title: "Florence-2"
-created: 2025-12-09
-updated: 2026-03-02
 summary: "Image caption generation and object detection using Florence-2"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

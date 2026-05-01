@@ -5,8 +5,6 @@ section: data-utilities
 slug: list
 navId: list
 title: "List"
-created: 2025-11-26
-updated: 2026-03-02
 summary: "複数データを使った連続処理の考え方"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

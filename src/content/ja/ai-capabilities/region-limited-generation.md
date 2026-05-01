@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: region-limited-generation
 navId: region-limited-generation
 title: 領域指定生成
-created: 2025-12-01
-updated: 2026-03-02
 summary: 画像の一部だけを別の条件で生成しようとする技術と、その限界
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

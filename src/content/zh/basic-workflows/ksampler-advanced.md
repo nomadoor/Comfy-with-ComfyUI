@@ -5,8 +5,6 @@ section: basic-workflows
 slug: ksampler-advanced
 navId: ksampler-advanced
 title: "KSampler (Advanced) 节点"
-created: 2026-02-06
-updated: 2026-03-02
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

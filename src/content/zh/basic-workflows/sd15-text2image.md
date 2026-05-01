@@ -5,8 +5,6 @@ section: basic-workflows
 slug: sd15-text2image
 navId: sd15-text2image
 title: "text2image"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "Stable Diffusion 1.5 的 text2image"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -145,9 +143,9 @@ hero:
 虽然被理所当然地对待，但仔细一想，有一些是图像生成特有的、不可思议的东西。  
 关于这些在别的页面简单地进行了解说。
 
-  - [即使使用相同的参数，Stable Diffusion web UI 和 ComfyUI 也无法生成相同的图像](/zh/notes/sdwebui-comfyui-reproducibility/)
-  - [为什么生成 512px × 512px？](/zh/notes/why-512px/)
-  - [为什么只能生成 8 的倍数的分辨率？](/zh/notes/why-multiple-of-8/)
+  - [即使使用相同的参数，Stable Diffusion web UI 和 ComfyUI 也无法生成相同的图像](/zh/faq/sdwebui-comfyui-reproducibility/)
+  - [为什么生成 512px × 512px？](/zh/faq/why-512px/)
+  - [为什么只能生成 8 的倍数的分辨率？](/zh/faq/why-multiple-of-8/)
   - Seed 值 "1234" 和 "1235" 是完全不同的东西（待补链接）
 
 ---

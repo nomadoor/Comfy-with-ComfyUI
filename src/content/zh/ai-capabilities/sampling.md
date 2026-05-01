@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: sampling
 navId: sampling
 title: 采样 (Sampling)
-created: 2026-02-06
-updated: 2026-03-27
 summary: 决定以何种步骤减少噪点的机制
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

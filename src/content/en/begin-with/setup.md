@@ -5,8 +5,6 @@ section: begin-with
 slug: setup
 navId: setup
 title: "Setup"
-created: 2025-11-24
-updated: 2026-03-02
 summary: "About Setup"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

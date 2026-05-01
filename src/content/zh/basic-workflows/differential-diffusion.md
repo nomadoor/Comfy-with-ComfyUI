@@ -5,8 +5,6 @@ section: basic-workflows
 slug: differential-diffusion
 navId: differential-diffusion
 title: "Differential Diffusion"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "用掩膜的浓度控制变化量"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

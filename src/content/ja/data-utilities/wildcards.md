@@ -5,8 +5,6 @@ section: data-utilities
 slug: wildcards
 navId: wildcards
 title: "ワイルドカード"
-created: 2026-02-10
-updated: 2026-03-02
 summary: "Queueごとにpromptの一部をランダムに入れ替える"
 permalink: "/{{ lang }}/data-utilities/{{ slug }}/"
 hero:

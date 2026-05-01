@@ -5,8 +5,6 @@ section: data-utilities
 slug: webcam-input
 navId: webcam-input
 title: "摄像头 (Webcam)"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "将网络摄像头或 OBS 的影像导入 ComfyUI 的方法"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

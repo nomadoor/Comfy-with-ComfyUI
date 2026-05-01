@@ -5,8 +5,6 @@ section: data-utilities
 slug: mask-alpha
 navId: mask-alpha
 title: "Mask & Alpha Channel"
-created: 2025-11-25
-updated: 2026-03-02
 summary: "Concept of mask and handling of transparent images"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

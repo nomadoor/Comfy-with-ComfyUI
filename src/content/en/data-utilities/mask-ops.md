@@ -5,8 +5,6 @@ section: data-utilities
 slug: mask-ops
 navId: mask-ops
 title: "Mask Operations"
-created: 2025-11-26
-updated: 2026-03-02
 summary: "How to create and edit masks"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

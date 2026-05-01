@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: segmentation
 navId: segmentation
 title: "分割"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "为了制作蒙版而区分图像的技术（主要是 SAM 系）"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

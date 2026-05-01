@@ -5,8 +5,6 @@ section: basic-workflows
 slug: auraflow
 navId: auraflow
 title: "AuraFlow"
-created: 2025-12-09
-updated: 2026-03-02
 summary: "AuraFlow 和 Pony V7 的粗略整理"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

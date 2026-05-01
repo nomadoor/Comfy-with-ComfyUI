@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: matting
 navId: matting
 title: Matting
-created: 2025-12-03
-updated: 2026-03-02
 summary: "Technology to cut out the foreground from a natural image and separate it from the background"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

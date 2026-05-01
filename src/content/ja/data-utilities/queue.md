@@ -5,8 +5,6 @@ section: data-utilities
 slug: queue
 navId: queue
 title: "Queue"
-created: 2025-11-26
-updated: 2026-03-02
 summary: "処理の予約と回数指定実行について"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

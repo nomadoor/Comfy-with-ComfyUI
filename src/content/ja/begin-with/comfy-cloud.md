@@ -5,8 +5,6 @@ section: begin-with
 slug: comfy-cloud
 navId: comfy-cloud
 title: "Comfy Cloud"
-created: 2025-11-20
-updated: 2026-03-02
 summary: "Comfy Cloudについて"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

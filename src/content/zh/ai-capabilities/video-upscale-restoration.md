@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: video-upscale-restoration
 navId: video-upscale-restoration
 title: 放大・视频修复
-created: 2026-02-06
-updated: 2026-03-02
 summary: 让视频变大・变清晰的专用模型
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

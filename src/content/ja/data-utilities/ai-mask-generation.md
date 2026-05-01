@@ -5,8 +5,6 @@ section: data-utilities
 slug: ai-mask-generation
 navId: ai-mask-generation
 title: "AIを使ったマスク生成"
-created: 2025-11-26
-updated: 2026-03-02
 summary: "マッティング、セグメンテーション、物体検出について"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

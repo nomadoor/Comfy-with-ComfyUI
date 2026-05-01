@@ -5,8 +5,6 @@ section: begin-with
 slug: nodes
 navId: nodes
 title: "节点"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "关于节点"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

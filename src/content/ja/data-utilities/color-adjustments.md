@@ -5,8 +5,6 @@ section: data-utilities
 slug: color-adjustments
 navId: color-adjustments
 title: "色調補正・エフェクト"
-created: 2025-11-25
-updated: 2026-03-02
 summary: "画像の明るさ調整やブラー、エフェクトについて"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

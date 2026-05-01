@@ -4,8 +4,6 @@ lang: ja
 slug: about
 navId: about
 title: "About"
-created: 2025-11-13
-updated: 2026-03-02
 summary: "このサイトについて"
 searchExclude: true
 tags:

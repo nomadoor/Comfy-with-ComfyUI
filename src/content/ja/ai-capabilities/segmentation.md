@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: segmentation
 navId: segmentation
 title: "セグメンテーション"
-created: 2025-12-01
-updated: 2026-03-02
 summary: "マスクをつくるために画像を分ける技術（主にSAM系）"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

@@ -5,8 +5,6 @@ section: begin-with
 slug: run-and-stop
 navId: run-and-stop
 title: "実行・停止"
-created: 2025-11-20
-updated: 2026-03-02
 summary: "実行・停止について"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

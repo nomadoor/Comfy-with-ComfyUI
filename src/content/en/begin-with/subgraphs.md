@@ -5,8 +5,6 @@ section: begin-with
 slug: subgraphs
 navId: subgraphs
 title: "Subgraphs"
-created: 2025-11-24
-updated: 2026-03-02
 summary: "About subgraphs"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

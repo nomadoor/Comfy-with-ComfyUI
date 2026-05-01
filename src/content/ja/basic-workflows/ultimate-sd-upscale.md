@@ -6,8 +6,6 @@ section: basic-workflows
 slug: ultimate-sd-upscale
 navId: ultimate-sd-upscale
 title: "Ultimate SD upscale"
-created: 2025-12-08
-updated: 2026-03-02
 summary: "TileとControlNetを使った超高解像度アップスケール"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

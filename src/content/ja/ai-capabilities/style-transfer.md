@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: style-transfer
 navId: style-transfer
 title: スタイル転送
-created: 2025-12-01
-updated: 2026-03-02
 summary: 「スタイル」を参照画像から移そうとするタスクと、その曖昧さ
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

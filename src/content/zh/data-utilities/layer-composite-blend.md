@@ -5,8 +5,6 @@ section: data-utilities
 slug: layer-composite-blend
 navId: layer-composite-blend
 title: "层合成"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "关于图像的叠加、结合、混合"
 
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"

@@ -4,8 +4,6 @@ lang: zh
 slug: news
 navId: news
 title: "更新信息"
-created: 2026-02-05
-updated: 2026-03-22
 summary: "本站的更新信息"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:

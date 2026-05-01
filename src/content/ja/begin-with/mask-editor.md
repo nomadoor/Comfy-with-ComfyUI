@@ -5,8 +5,6 @@ section: begin-with
 slug: mask-editor
 navId: mask-editor
 title: "マスクエディタ"
-created: 2025-11-20
-updated: 2026-03-02
 summary: "マスクエディタの使い方について"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

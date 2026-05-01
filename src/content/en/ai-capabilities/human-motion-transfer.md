@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: human-motion-transfer
 navId: human-motion-transfer
 title: "Human Motion Transfer"
-created: 2025-12-03
-updated: 2026-03-02
 summary: "Techniques for transferring a source person's movements to a target character or video."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

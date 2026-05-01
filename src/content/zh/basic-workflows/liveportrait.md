@@ -5,8 +5,6 @@ section: basic-workflows
 slug: liveportrait
 navId: liveportrait
 title: "LivePortrait"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "在 LivePortrait 中从 1 张脸部照片控制表情和摇头"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

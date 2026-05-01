@@ -5,8 +5,6 @@ section: data-utilities
 slug: wildcards
 navId: wildcards
 title: "Wildcards"
-created: 2026-02-10
-updated: 2026-03-02
 summary: "Randomly replace part of a prompt for each queue run"
 permalink: "/{{ lang }}/data-utilities/{{ slug }}/"
 hero:

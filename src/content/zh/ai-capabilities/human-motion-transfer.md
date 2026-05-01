@@ -6,8 +6,6 @@ section: ai-capabilities
 slug: human-motion-transfer
 navId: human-motion-transfer
 title: Human Motion Transfer
-created: 2026-02-06
-updated: 2026-03-02
 summary: 将其他视频的动作转移给角色的技术
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

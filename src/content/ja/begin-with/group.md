@@ -5,8 +5,6 @@ section: begin-with
 slug: group
 navId: group
 title: "グループ"
-created: 2025-11-23
-updated: 2026-03-02
 summary: "ノードをまとめるグループ機能について"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

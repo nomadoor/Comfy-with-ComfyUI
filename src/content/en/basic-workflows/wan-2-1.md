@@ -5,8 +5,6 @@ section: basic-workflows
 slug: wan-2-1
 navId: wan-2-1
 title: "Wan 2.1"
-created: 2025-12-12
-updated: 2026-03-02
 summary: "Basic workflow for handling text2video, image2video, and FLF2V with Wan2.1"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

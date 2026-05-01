@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: controlnet
 navId: controlnet
 title: ControlNet系
-created: 2025-12-01
-updated: 2026-03-02
 summary: ポーズや線画などの追加情報で画像生成をコントロールする技術
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

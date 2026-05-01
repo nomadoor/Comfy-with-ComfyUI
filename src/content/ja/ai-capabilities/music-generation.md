@@ -5,8 +5,6 @@ section: ai-capabilities
 slug: music-generation
 navId: music-generation
 title: 音楽生成
-created: 2025-12-01
-updated: 2026-03-02
 summary: 音楽生成 の概要ページ（準備中）
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

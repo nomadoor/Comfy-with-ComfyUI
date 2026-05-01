@@ -5,8 +5,6 @@ section: data-utilities
 slug: api-run-workflow
 navId: api-run-workflow
 title: "尝试通过 API 执行工作流"
-created: 2026-02-06
-updated: 2026-03-02
 summary: "请求执行 → 确认完成 → 获取输出，的最简步骤"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

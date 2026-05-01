@@ -5,8 +5,6 @@ section: data-utilities
 slug: api-run-workflow
 navId: api-run-workflow
 title: "APIでworkflowを実行してみる"
-created: 2026-02-05
-updated: 2026-03-02
 summary: "実行依頼→完了確認→出力取得、の最小手順"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

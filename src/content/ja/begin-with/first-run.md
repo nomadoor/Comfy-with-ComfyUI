@@ -5,8 +5,6 @@ section: begin-with
 slug: first-run
 navId: first-run
 title: "起動して生成"
-created: 2025-11-20
-updated: 2026-03-02
 summary: "起動して生成について"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

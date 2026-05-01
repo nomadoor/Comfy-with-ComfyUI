@@ -4,8 +4,6 @@ lang: ja
 slug: contact
 navId: contact
 title: "お問い合わせ"
-created: 2026-02-17
-updated: 2026-03-02
 summary: "サイト修正報告・記事リクエスト・運営者連絡"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
