@@ -258,6 +258,11 @@ html.js .js-fallback-notice {
   outline-offset: 0.2rem;
 }
 
+.search-box__input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
 .search-box__input::-webkit-search-cancel-button,
 .search-box__input::-webkit-search-decoration {
   -webkit-appearance: none;
