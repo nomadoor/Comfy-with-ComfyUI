@@ -2626,7 +2626,9 @@ h1 {
   text-decoration: none;
   color: var(--color-text);
   overflow: hidden;
-  transition: var(--transition-fast);
+  transition:
+    transform 120ms cubic-bezier(0.2, 0.91, 0.85, 0.96),
+    color 120ms cubic-bezier(0.2, 0.91, 0.85, 0.96);
 }
 
 .article-body a.workflow-related__card,
@@ -3586,7 +3588,7 @@ h1 {
 
 .workflow-related__card:hover,
 .workflow-related__card:focus-visible {
-  border-color: var(--color-border-strong);
+  color: var(--color-heading);
   transform: translateY(-2px);
 }
 

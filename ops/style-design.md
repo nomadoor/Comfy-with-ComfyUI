@@ -95,6 +95,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 ## 9. Workflow Assets
 - **Workflow JSON**: render as `filename | Copy | Download` rows (chips). Copy buttons read from hidden `<pre>` nodes to avoid DOM pollution; download links point at `/workflows/<slug>.json`.
 - **髢｢騾｣繝ｯ繝ｼ繧ｯ繝輔Ο繝ｼ**: only on `basic-workflows/*` pages. Gather other workflow pages sharing at least one AI-capability tag and render them in a Cosense-style grid (`repeat(auto-fill, minmax(146px, 1fr))`). Each card shows title + summary 窶・no screenshots.
+- Shared related-card interactions stay borderless. Hover / focus feedback may use a small translate lift plus token-based text color changes, all covered by an explicit transition on the changed properties.
 - Images in these sections obey the same `max-height: 300px` rule; JSON data stays pure text (never embedded screenshots).
 
 ## 10. Tags & Navigation Data
