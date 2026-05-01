@@ -66,6 +66,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 
 ## 5. Hero & Tags
 - Hero height is fixed at `12rem`. Use a grayscale image (fallback ``--color-panel-alt``) with a dark scrim.
+- Hero H1 uses `2rem` on all desktop/tablet widths; do not scale it with viewport width.
 - Hero content is flex-centered both vertically and horizontally; remove all default margins (H1 included).
 - Apply `--radius-md` to the hero container and imagery. Tag chips still appear only on **basic-workflows** pages and link to the AI Capabilities slug.
 - Images remain tinted with `filter: grayscale(1) brightness(0.6)` inside the hero to match the mock.
