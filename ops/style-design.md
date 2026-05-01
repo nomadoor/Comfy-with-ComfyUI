@@ -57,9 +57,9 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - On desktop, wheel scrolling outside the side rails and form/menu controls is proxied to the central reading surface so gaps, header area, and background space still scroll the article.
 
 ## 4. Sidebar
-- Section tabs: stacked buttons matching mock icons (icon stub optional). Active tab is indicated by icon color only, without a filled background.
-- The left sidebar is split into two visible blocks: `sidebar__sections` for section switching and `sidebar__section-panel` for tabbed navigation plus sidebar controls. The TOC rail remains a single visible block.
-- Section selector buttons keep inactive labels muted. The active selector uses heading-colored text and a quiet `--color-panel-alt` background, not a light filled pill.
+- Section icon tabs (`sidebar__section-tabs`): compact icon-only shortcuts inside `sidebar__section-panel`. Active state is indicated by icon color only, without a filled background.
+- The left sidebar is split into two visible blocks: `sidebar__sections` for the labeled section selector/dropdown and `sidebar__section-panel` for icon-tabbed navigation plus sidebar controls. The TOC rail remains a single visible block.
+- Section selector buttons (`sidebar__sections` / `sidebar__section-btn`) keep inactive labels muted. The active selector uses heading-colored text and a quiet `--color-panel-alt` background, not a light filled pill.
 - Nav list: single column, children indented with border-left. Active link shows a 2px highlight bar (mock窶冱 purple line).
 - Footer: `About` link + language chips (JA/EN) + theme toggle stub. Chips use pill style with accent border when active.
   - Language chip opens a dropdown **upward** so it never falls off-screen; each option links to the same slug in the chosen locale.
