@@ -12,7 +12,7 @@ The owner wants to replace the existing FAQ / Troubleshooting section with a bro
 - Move existing FAQ articles to `src/content/<lang>/notes/` and update their `section` / permalink metadata.
 - Do not keep duplicate FAQ pages. Publish Cloudflare Pages `_redirects` entries from each old `/<lang>/faq/<slug>/` URL to the matching `/<lang>/notes/<slug>/` URL.
 - The Notes sidebar panel renders differently from other sections:
-  - fixed `find` link at the top,
+  - fixed `find` link at the top, with a small search icon but no persistent filled background,
   - Updated / Views segment control, with Views rendered disabled until view-count data exists,
   - flat article title list with no category headings or indentation.
 - Add `/notes/find/` for local note discovery. It lists all Notes as cards, supports text filtering by title / summary / tags, exposes tag pills that write into the local search field, and provides Updated / Views sorting. Views remains visible but disabled until view-count data exists, because a clickable control that produces the same order is visually noisy and misleading.

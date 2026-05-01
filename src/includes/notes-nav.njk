@@ -1,3 +1,4 @@
+{% from "icon.njk" import icon %}
 {% set notes = collections.all | notesForLang(lang) %}
 {% set hasViews = notes | notesHaveViews %}
 {% set findItem = (section.pages or []) | first %}
@@ -5,8 +6,11 @@
 {% set findUrl = "/" + lang + "/notes/find/" %}
 <div class="notes-nav" data-notes-nav>
   <div class="notes-nav__chrome">
-    <a href="{{ findUrl }}" class="notes-nav__find{% if currentNavId == 'find' %} is-active{% endif %}" {% if currentNavId == 'find' %}aria-current="page"{% endif %}>
-      <span class="nav-list__label">{{ findTitle }}</span>
+    <a href="{{ findUrl }}" class="nav-list__link notes-nav__find{% if currentNavId == 'find' %} is-active{% endif %}" {% if currentNavId == 'find' %}aria-current="page"{% endif %}>
+      <span class="notes-nav__find-label">
+        <span class="notes-nav__find-icon">{{ icon("search") }}</span>
+        <span class="nav-list__label">{{ findTitle }}</span>
+      </span>
     </a>
 
     <div class="notes-nav__sort" role="group" aria-label="Notes sort">

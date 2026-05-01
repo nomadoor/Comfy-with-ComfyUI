@@ -884,23 +884,26 @@ html.js .js-fallback-notice {
 }
 
 .notes-nav__find {
-  display: flex;
-  align-items: center;
-  padding: var(--space-xs);
-  border-radius: var(--radius-sm);
-  background: transparent;
-  color: var(--color-text-muted);
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 600;
-  transition: var(--transition-fast);
+  color: var(--color-text);
 }
 
-.notes-nav__find.is-active,
-.notes-nav__find:hover,
-.notes-nav__find:focus-visible {
-  color: var(--color-heading);
-  background: var(--color-tav-strong);
+.notes-nav__find-icon {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.notes-nav__find-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-width: 0;
+}
+
+.notes-nav__find-icon .icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  --icon-stroke-width: 2;
 }
 
 .notes-nav__sort {
