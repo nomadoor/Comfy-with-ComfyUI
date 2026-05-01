@@ -114,10 +114,23 @@ async function cloudflareFetch(url, token, init = {}) {
       ...(init.headers || {})
     }
   });
-  const data = await response.json().catch(() => null);
+  const body = await response.text();
+  let data;
+  try {
+    data = body ? JSON.parse(body) : null;
+  } catch (error) {
+    throw new Error(
+      `Cloudflare API invalid JSON response (HTTP ${response.status} ${response.statusText || ""}): ${body.slice(0, 300) || error.message}`
+    );
+  }
   if (!response.ok) {
-    const message = data?.errors?.map((error) => error.message).join("; ") || response.statusText;
+    const message = data?.errors?.map((error) => error.message).join("; ") || response.statusText || body.slice(0, 300);
     throw new Error(`Cloudflare API HTTP ${response.status}: ${message}`);
+  }
+  if (data == null) {
+    throw new Error(
+      `Cloudflare API invalid or empty JSON response (HTTP ${response.status} ${response.statusText || ""}): ${body.slice(0, 300) || "(empty body)"}`
+    );
   }
   if (data?.success === false) {
     const message = data.errors?.map((error) => error.message).join("; ") || "unknown error";
