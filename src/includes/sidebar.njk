@@ -119,8 +119,8 @@
 
               {% if isStandalone %}
                 {% set target = '/' + option.code + '/' + currentSlug + '/' %}
-              {% elif currentSection %}
-                {% set target = '/' + option.code + '/' + currentSection + '/' + currentSlug + '/' %}
+              {% elif sectionExists and sectionCandidate %}
+                {% set target = '/' + option.code + '/' + sectionCandidate + '/' + currentSlug + '/' %}
               {% else %}
                 {% set target = '/' + option.code + '/' + currentSlug + '/' %}
               {% endif %}

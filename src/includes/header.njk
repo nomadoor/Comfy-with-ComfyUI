@@ -64,8 +64,8 @@
           {% for option in site.languages %}
             {% if isStandaloneForLang %}
               {% set target = '/' + option.code + '/' + currentSlugForLang + '/' %}
-            {% elif currentSection %}
-              {% set target = '/' + option.code + '/' + currentSection + '/' + currentSlugForLang + '/' %}
+            {% elif sectionExists and sectionCandidate %}
+              {% set target = '/' + option.code + '/' + sectionCandidate + '/' + currentSlugForLang + '/' %}
             {% else %}
               {% set target = '/' + option.code + '/' + currentSlugForLang + '/' %}
             {% endif %}

@@ -74,7 +74,7 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
   {% set langOptions = site.languages or [] -%}
   {% set currentSlug = currentNavId or slug -%}
 {% set isStandalone = (not sectionExists) and (currentSlug == 'news' or currentSlug == 'about' or currentSlug == 'contact') -%}
-  {% set hreflangSection = sectionCandidate or currentSection -%}
+  {% set hreflangSection = sectionCandidate if sectionExists else '' -%}
   {% for option in langOptions -%}
     {% if isStandalone -%}
       {% set altPath = '/' + option.code + '/' + currentSlug + '/' -%}
