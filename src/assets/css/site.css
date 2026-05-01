@@ -732,7 +732,7 @@ html.js .js-fallback-notice {
   justify-content: space-between;
   align-items: center;
   padding: var(--space-xs) var(--space-xs);
-  color: var(--color-text);
+  color: var(--color-text-muted);
   text-decoration: none;
   border-radius: var(--radius-sm);
   position: relative;
@@ -747,8 +747,10 @@ html.js .js-fallback-notice {
   color: var(--color-heading);
 }
 
-.nav-list__link:hover {
+.nav-list__link:hover,
+.nav-list__link:focus-visible {
   background: var(--color-tav-strong);
+  color: var(--color-text);
 }
 
 .nav-list__link.is-active::before {
