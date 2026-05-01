@@ -1,5 +1,5 @@
 {% from "icon.njk" import icon %}
-{% set notes = collections.all | notesForLang(lang) %}
+{% set notes = collections.all | notesForLang(lang, false, noteViews) %}
 {% set hasViews = notes | notesHaveViews %}
 {% set findItem = (section.pages or []) | first %}
 {% set findTitle = findItem.title or "Find Notes" %}

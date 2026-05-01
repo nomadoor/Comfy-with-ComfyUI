@@ -14,7 +14,7 @@ hero:
   image: "https://i.gyazo.com/a6e07600049875412da66a0ac4ca5351.png"
 ---
 {% from "icon.njk" import icon %}
-{% set notes = collections.all | notesForLang(lang) %}
+{% set notes = collections.all | notesForLang(lang, false, noteViews) %}
 {% set hasViews = notes | notesHaveViews %}
 <p>Notesセクションでは、FAQやトラブルシューティング、制作中に気づいた小さなメモ、ComfyUIに直接関係しない周辺記事などをまとめています。</p>
 

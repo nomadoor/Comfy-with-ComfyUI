@@ -371,6 +371,38 @@ function toDateKey(value = "") {
   return String(value).slice(0, 10);
 }
 
+function normalizeSitePath(value = "") {
+  if (typeof value !== "string" || !value.trim()) return "";
+  try {
+    const parsed = new URL(value, "https://example.invalid");
+    return parsed.pathname.endsWith("/") ? parsed.pathname : `${parsed.pathname}/`;
+  } catch {
+    const pathOnly = value.split(/[?#]/)[0];
+    const withLeadingSlash = pathOnly.startsWith("/") ? pathOnly : `/${pathOnly}`;
+    return withLeadingSlash.endsWith("/") ? withLeadingSlash : `${withLeadingSlash}/`;
+  }
+}
+
+function getNoteViewCount(entry, noteViews = {}) {
+  if (!entry || !entry.data) return 0;
+  const pages = noteViews?.pages && typeof noteViews.pages === "object" ? noteViews.pages : {};
+  const candidates = [
+    entry.url,
+    `/${entry.data.lang || ""}/notes/${entry.data.slug || ""}/`
+  ]
+    .map(normalizeSitePath)
+    .filter(Boolean);
+
+  for (const key of candidates) {
+    const value = pages[key];
+    const count = Number(value || 0);
+    if (Number.isFinite(count) && count > 0) {
+      return count;
+    }
+  }
+  return 0;
+}
+
 async function fetchGyazoMeta(url) {
   try {
     const endpoint = `https://api.gyazo.com/api/oembed?url=${encodeURIComponent(url)}`;
@@ -489,7 +521,7 @@ export default function (eleventyConfig) {
       }));
   });
 
-  eleventyConfig.addFilter("notesForLang", function (collection = [], currentLang, includeFinder = false) {
+  eleventyConfig.addFilter("notesForLang", function (collection = [], currentLang, includeFinder = false, noteViews = {}) {
     if (!Array.isArray(collection)) {
       return [];
     }
@@ -510,7 +542,7 @@ export default function (eleventyConfig) {
         noteTags: Array.isArray(entry.data.noteTags) ? entry.data.noteTags : [],
         created: toDateKey(entry.data.created),
         updated: toDateKey(entry.data.updated || entry.data.created),
-        views: Number(entry.data.views || 0),
+        views: getNoteViewCount(entry, noteViews),
         hero: entry.data.hero || {}
       }))
       .sort((a, b) => {

@@ -20,6 +20,7 @@ The owner wants to replace the existing FAQ / Troubleshooting section with a bro
 - Notes finder controls follow the compact blog index pattern: a slim centered local search field followed by centered `#tag` helper buttons. These tag buttons only write the tag text into the search field; they do not represent a persistent selected facet, so they do not receive active-state styling. The helper buttons are a manually curated recommended set, not a complete list of every `noteTags` value.
 - Use `noteTags` for Notes finder facets. Do not use regular `tags` for Notes, because regular tags drive workflow / capability relationships elsewhere in the site.
 - On individual Note pages, `noteTags` chips link to `/notes/find/?q=<tag>` in the current language. The finder reads `q` and initializes the local search field with that value.
+- Views sorting is driven by `src/_data/noteViews.json`, keyed by canonical page URL. This file starts as manual test data and should later be generated from the analytics provider without changing sidebar or finder templates.
 - Add `created` and `updated` front matter to content pages using the best available Git history dates when exact editorial dates are unknown.
 
 ## Consequences
@@ -27,3 +28,4 @@ The owner wants to replace the existing FAQ / Troubleshooting section with a bro
 - Existing article URLs under `/faq/` become redirect-only legacy routes.
 - Search and sitemap should expose only the canonical `/notes/` pages.
 - Notes finder facets are intentionally isolated from regular tags, so Notes pages do not participate in workflow tag-chip or related-workflow behavior.
+- The Views control is enabled only when `noteViews.json` contains at least one positive count for the current Notes list.

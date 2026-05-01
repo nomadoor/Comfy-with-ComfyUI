@@ -164,7 +164,7 @@
   * Notes の絞り込み用分類は `noteTags` front matter を使う。通常ページの `tags` とは別物で、関連Workflowやサイトワイドタグリンクには使わない。ただし表示上は当面、通常タグと同じチップ表現を再利用する。個別Noteの `noteTags` チップは `/<lang>/notes/find/?q=<tag>` へ遷移し、Note finder の検索欄をそのタグで初期化する
   * Note finder 上部のタグボタンは全 `noteTags` の一覧ではなく、よく使われそうな検索語だけを `src/_data/noteFinder.json` で明示したおすすめボタンとして表示する
   * 左カラムの Notes パネルは固定の「Noteを探す」リンク、Updated / Views セグメント、フラットリストで構成する。「Noteを探す」リンクは特別導線としてアイコンを添えつつ、通常の `nav-list__link` 表現を再利用し、文字色は第一階層ナビと同じ明るさにする
-  * `Views` は将来の閲覧数データ用。閲覧数データが1件も無い間もセグメント内に表示するが、disabled として扱い、クリックしても `Updated` と同じ並びになる状態は作らない
+  * `Views` は `src/_data/noteViews.json` を唯一の手動/生成データ源として使う。キーは正規URL（例: `/ja/notes/torch-cuda-oom/`）、値はページ単位の集計閲覧数。閲覧数データが1件も無い間もセグメント内に表示するが、disabled として扱い、クリックしても `Updated` と同じ並びになる状態は作らない
   * 旧 `/<lang>/faq/<slug>/` はコンテンツを残さず、Cloudflare Pages `_redirects` で `/<lang>/notes/<slug>/` へ 301 リダイレクトする
 
 ## Hidden Draft Backlog
