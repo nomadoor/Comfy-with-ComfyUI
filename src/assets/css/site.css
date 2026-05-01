@@ -901,6 +901,12 @@ html.js .js-fallback-notice {
   isolation: isolate;
 }
 
+.sidebar__lang > .lang-toggle,
+.sidebar__lang > .lang-menu {
+  position: relative;
+  z-index: 1;
+}
+
 .chip {
   border: 1px solid var(--color-chip-border);
   border-radius: var(--radius-md);
@@ -1101,7 +1107,7 @@ html.js .js-fallback-notice {
   inset: -0.45rem;
   border-radius: calc(var(--radius-md) + 0.4rem);
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
   opacity: 0;
 }
 

@@ -55,14 +55,15 @@ const markAttentionShown = (currentLang, preferredLang) => {
 
 const triggerLangAttention = () => {
   const langControls = Array.from(document.querySelectorAll("[data-lang-control]"));
-  const langContainer = langControls.find((control) => control.offsetParent) || langControls[0];
-  if (!langContainer) return;
+  const visibleLangControls = langControls.filter((control) => control.offsetParent);
+  const targetLangControls = visibleLangControls.length ? visibleLangControls : langControls;
+  if (!targetLangControls.length) return;
 
   const currentLang = parsePathLang(window.location.pathname);
   const preferredLang = getPreferredSupportedLang();
   const shouldHighlight = Boolean(preferredLang && preferredLang !== currentLang);
   if (!shouldHighlight) {
-    langContainer.classList.remove("is-attention");
+    langControls.forEach((control) => control.classList.remove("is-attention"));
     if (attentionTimer) {
       window.clearTimeout(attentionTimer);
       attentionTimer = null;
@@ -71,17 +72,17 @@ const triggerLangAttention = () => {
   }
   if (hasRecentAttention(currentLang, preferredLang)) return;
 
-  langContainer.classList.remove("is-attention");
+  langControls.forEach((control) => control.classList.remove("is-attention"));
   // Force reflow so the animation can replay when the 1-day TTL has expired.
-  void langContainer.offsetWidth;
-  langContainer.classList.add("is-attention");
+  void targetLangControls[0].offsetWidth;
+  targetLangControls.forEach((control) => control.classList.add("is-attention"));
   markAttentionShown(currentLang, preferredLang);
 
   if (attentionTimer) {
     window.clearTimeout(attentionTimer);
   }
   attentionTimer = window.setTimeout(() => {
-    langContainer.classList.remove("is-attention");
+    targetLangControls.forEach((control) => control.classList.remove("is-attention"));
   }, 6200);
 };
 
