@@ -17,7 +17,7 @@ The owner wants to replace the existing FAQ / Troubleshooting section with a bro
   - flat article title list with no category headings or indentation.
 - Add `/notes/find/` for local note discovery. It lists all Notes as cards, supports text filtering by title / summary / tags, exposes tag pills that write into the local search field, and provides Updated / Views sorting. Views remains visible but disabled until view-count data exists, because a clickable control that produces the same order is visually noisy and misleading.
 - Notes finder cards show only the thumbnail/placeholder and title. Summary and `noteTags` remain in data attributes for local filtering, but they are not rendered inside each card.
-- Notes finder controls follow the compact blog index pattern: a slim centered local search field followed by centered `#tag` filter chips.
+- Notes finder controls follow the compact blog index pattern: a slim centered local search field followed by centered `#tag` helper buttons. These tag buttons only write the tag text into the search field; they do not represent a persistent selected facet, so they do not receive active-state styling.
 - Use `noteTags` for Notes finder facets. Do not use regular `tags` for Notes, because regular tags drive workflow / capability relationships elsewhere in the site.
 - On individual Note pages, `noteTags` chips link to `/notes/find/?q=<tag>` in the current language. The finder reads `q` and initializes the local search field with that value.
 - Add `created` and `updated` front matter to content pages using the best available Git history dates when exact editorial dates are unknown.

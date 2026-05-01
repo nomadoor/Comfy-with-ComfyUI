@@ -29,10 +29,6 @@ export default function initNoteFinder(root = document) {
   const applyFilter = () => {
     const query = input.value.trim().toLowerCase();
     let visibleCount = 0;
-    tagButtons.forEach((button) => {
-      const tag = String(button.dataset.noteTag || "").toLowerCase();
-      button.classList.toggle("is-active", Boolean(query && tag === query));
-    });
     Array.from(grid.querySelectorAll("[data-note-card]")).forEach((card) => {
       const haystack = [
         card.dataset.title || "",

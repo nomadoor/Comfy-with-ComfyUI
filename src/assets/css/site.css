@@ -2588,8 +2588,8 @@ h1 {
   margin-inline: auto;
   padding: 0 var(--space-sm);
   border-radius: var(--radius-pill);
-  background: var(--color-sidebar-surface);
-  color: var(--color-text-muted);
+  background: var(--color-panel-alt);
+  color: var(--color-heading);
   transition: var(--transition-fast);
 }
 
@@ -2640,8 +2640,8 @@ h1 {
   border: 0;
   border-radius: 999px;
   padding: 0.16rem 0.55rem;
-  background: transparent;
-  color: var(--color-text);
+  background: var(--color-panel-alt);
+  color: var(--color-heading);
   font: inherit;
   font-size: 0.78rem;
   font-weight: 600;
@@ -2655,8 +2655,7 @@ h1 {
 }
 
 .note-finder__tag:hover,
-.note-finder__tag:focus-visible,
-.note-finder__tag.is-active {
+.note-finder__tag:focus-visible {
   background: var(--color-tav-strong);
   color: var(--color-heading);
 }
