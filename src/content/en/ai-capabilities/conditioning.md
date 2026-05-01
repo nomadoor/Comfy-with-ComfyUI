@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: conditioning
 navId: conditioning
 title: Conditioning
+created: 2025-11-13
+updated: 2026-03-02
 summary: A mechanism to tell the diffusion model 'what kind of image I want'.
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

@@ -5,6 +5,8 @@ section: data-utilities
 slug: data-types
 navId: data-types
 title: "Data Types"
+created: 2025-11-25
+updated: 2026-03-02
 summary: "About main data types handled in ComfyUI"
 
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"

@@ -1,12 +1,15 @@
 ---
 layout: page.njk
 lang: en
-section: faq
+section: notes
 slug: error-handling
 navId: error-handling
 title: "What to do when an error occurs"
+created: 2025-12-13
+updated: 2026-03-02
+tags: ["troubleshoot", "error"]
 summary: "Checklist for troubleshooting errors"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""
 ---

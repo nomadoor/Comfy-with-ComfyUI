@@ -5,6 +5,8 @@ section: basic-workflows
 slug: esrgan
 navId: esrgan
 title: "ESRGAN"
+created: 2025-12-08
+updated: 2026-03-02
 summary: "画像のアップスケールと顔補正"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

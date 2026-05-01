@@ -1,12 +1,15 @@
 ---
 layout: page.njk
 lang: en
-section: faq
+section: notes
 slug: duplicate-objects
 navId: duplicate-objects
 title: "People or objects are duplicating in generated images"
+created: 2025-12-13
+updated: 2026-03-02
+tags: ["troubleshoot", "prompt"]
 summary: "What to do when characters or objects multiply unnaturally"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""
 ---
@@ -24,7 +27,7 @@ hero:
 ## Cause
 
 - SD1.5 is trained on square images around 512px, so composition is difficult to stabilize at resolutions larger than that.
-  - For detailed background, refer to → [Why generate at 512px × 512px?](/en/faq/why-512px/).
+  - For detailed background, refer to → [Why generate at 512px × 512px?](/en/notes/why-512px/).
 
 ## Solution
 

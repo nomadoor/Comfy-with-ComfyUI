@@ -5,6 +5,8 @@ section: basic-workflows
 slug: sd15-image2image
 navId: sd15-image2image
 title: "image2image"
+created: 2025-12-06
+updated: 2026-03-02
 summary: "Stable Diffusion 1.5で学ぶimage2image"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

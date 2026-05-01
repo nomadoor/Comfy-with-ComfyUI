@@ -1,12 +1,15 @@
 ---
 layout: page.njk
 lang: ja
-section: faq
+section: notes
 slug: why-multiple-of-8
 navId: why-multiple-of-8
 title: "8 の倍数の解像度しか生成できないのはなぜ？"
+created: 2025-12-13
+updated: 2026-03-02
+tags: ["concept", "resolution", "vae"]
 summary: "解像度が 8 の倍数に制限される理由と、VAE の圧縮率の関係"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""
 ---

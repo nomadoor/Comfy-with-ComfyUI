@@ -4,6 +4,8 @@ lang: en
 slug: contact
 navId: contact
 title: "Contact"
+created: 2026-02-17
+updated: 2026-03-02
 summary: "Site corrections, article requests, and operator contact"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:

@@ -5,6 +5,8 @@ section: basic-workflows
 slug: sd15-controlnet
 navId: sd15-controlnet
 title: "ControlNet"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "使用姿势或线稿控制图像生成"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 tags: ["controlnet"]

@@ -5,6 +5,8 @@ section: begin-with
 slug: readable-nodes
 navId: readable-nodes
 title: "リーダブルノードのすゝめ"
+created: 2025-11-26
+updated: 2026-03-02
 summary: "綺麗で使いやすいワークフローを組むためのコツ"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

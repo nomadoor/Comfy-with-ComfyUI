@@ -5,6 +5,8 @@ section: data-utilities
 slug: api-about
 navId: api-about
 title: "APIとは？"
+created: 2026-02-05
+updated: 2026-03-02
 summary: "ComfyUIを「外から動かす」ための入口"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

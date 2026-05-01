@@ -5,6 +5,8 @@ section: basic-workflows
 slug: ultimate-sd-upscale
 navId: ultimate-sd-upscale
 title: "Ultimate SD Upscale"
+created: 2025-12-09
+updated: 2026-03-02
 summary: "Super resolution upscale using Tile and ControlNet"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

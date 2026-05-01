@@ -5,6 +5,8 @@ section: basic-workflows
 slug: sd15-text2image
 navId: sd15-text2image
 title: "text2image"
+created: 2025-12-04
+updated: 2026-03-02
 summary: "Stable Diffusion 1.5でのtext2image"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

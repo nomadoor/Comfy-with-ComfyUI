@@ -5,6 +5,8 @@ section: begin-with
 slug: command-line-arguments
 navId: command-line-arguments
 title: "コマンドライン引数"
+created: 2025-11-20
+updated: 2026-03-02
 summary: "ComfyUIの起動時に指定するオプション"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

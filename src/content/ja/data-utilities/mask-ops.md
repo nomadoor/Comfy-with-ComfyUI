@@ -5,6 +5,8 @@ section: data-utilities
 slug: mask-ops
 navId: mask-ops
 title: "マスク操作"
+created: 2025-11-25
+updated: 2026-03-02
 summary: "マスクの作成方法と編集方法"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

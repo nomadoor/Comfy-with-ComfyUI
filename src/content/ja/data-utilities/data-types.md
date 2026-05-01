@@ -5,6 +5,8 @@ section: data-utilities
 slug: data-types
 navId: data-types
 title: "データ型"
+created: 2025-11-24
+updated: 2026-03-02
 summary: "ComfyUIで扱う主なデータ型について"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

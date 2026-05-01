@@ -5,6 +5,8 @@ section: basic-workflows
 slug: wan-2-1
 navId: wan-2-1
 title: "Wan2.1"
+created: 2025-12-12
+updated: 2026-03-02
 summary: "在 Wan2.1 中处理 text2video・image2video・FLF2V 的基本工作流"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

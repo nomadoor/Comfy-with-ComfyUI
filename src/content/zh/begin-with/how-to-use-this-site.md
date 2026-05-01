@@ -5,6 +5,8 @@ section: begin-with
 slug: how-to-use-this-site
 navId: how-to-use-this-site
 title: "如何使用本网站"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "欢迎来到 Comfy with ComfyUI"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

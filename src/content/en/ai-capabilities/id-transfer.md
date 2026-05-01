@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: id-transfer
 navId: id-transfer
 title: ID Transfer & FaceSwap
+created: 2025-12-01
+updated: 2026-03-02
 summary: Techniques to create images of different scenes while maintaining the person's
   face or identity, and face replacement.
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/

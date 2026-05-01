@@ -623,7 +623,7 @@ html.js .js-fallback-notice {
   .sidebar:has(.sidebar__section-tab[data-section-tab="data-utilities"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="data-utilities"]:not(.is-active),
   .sidebar:has(.sidebar__section-tab[data-section-tab="ai-capabilities"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="ai-capabilities"]:not(.is-active),
   .sidebar:has(.sidebar__section-tab[data-section-tab="basic-workflows"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="basic-workflows"]:not(.is-active),
-  .sidebar:has(.sidebar__section-tab[data-section-tab="faq"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="faq"]:not(.is-active) {
+  .sidebar:has(.sidebar__section-tab[data-section-tab="notes"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="notes"]:not(.is-active) {
     background: var(--color-panel-alt);
   }
 
@@ -640,8 +640,8 @@ html.js .js-fallback-notice {
   .sidebar:has(.sidebar__section-tab[data-section-tab="basic-workflows"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="basic-workflows"]:not(.is-active),
   .sidebar:has(.sidebar__section-tab[data-section-tab="basic-workflows"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="basic-workflows"]:not(.is-active) .sidebar__section-icon,
 
-  .sidebar:has(.sidebar__section-tab[data-section-tab="faq"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="faq"]:not(.is-active),
-  .sidebar:has(.sidebar__section-tab[data-section-tab="faq"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="faq"]:not(.is-active) .sidebar__section-icon {
+  .sidebar:has(.sidebar__section-tab[data-section-tab="notes"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="notes"]:not(.is-active),
+  .sidebar:has(.sidebar__section-tab[data-section-tab="notes"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="notes"]:not(.is-active) .sidebar__section-icon {
     color: var(--color-text);
   }
 }
@@ -864,6 +864,86 @@ html.js .js-fallback-notice {
   line-height: 1.4;
   word-break: break-all;
   /* Ensure long words/Japanese wrap properly */
+}
+
+.notes-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.notes-nav__chrome {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding-bottom: var(--space-xs);
+  background: var(--color-sidebar-surface);
+}
+
+.notes-nav__find {
+  display: flex;
+  align-items: center;
+  padding: var(--space-xs);
+  border-radius: var(--radius-sm);
+  background: var(--color-panel-alt);
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.notes-nav__find.is-active,
+.notes-nav__find:hover,
+.notes-nav__find:focus-visible {
+  color: var(--color-heading);
+  background: var(--color-tav-strong);
+}
+
+.notes-nav__sort {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xs);
+  padding: var(--space-2xs);
+  border-radius: var(--radius-sm);
+  background: var(--color-panel-alt);
+}
+
+.notes-nav__sort-btn {
+  border: 0;
+  border-radius: var(--radius-sm);
+  padding: var(--space-2xs) var(--space-xs);
+  background: transparent;
+  color: var(--color-text-muted);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.notes-nav__sort-btn.is-active,
+.notes-nav__sort-btn:hover,
+.notes-nav__sort-btn:focus-visible {
+  background: var(--color-tav-strong);
+  color: var(--color-heading);
+}
+
+.notes-nav__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.notes-nav__item {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Height-responsive (three-step) */
@@ -2482,6 +2562,116 @@ h1 {
   color: var(--color-text);
   overflow: hidden;
   transition: var(--transition-fast);
+}
+
+.note-finder {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.note-finder__search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--color-sidebar-surface);
+  color: var(--color-text-muted);
+}
+
+.note-finder__search-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.note-finder__search-icon .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.note-finder__input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.note-finder__input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.note-finder__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.note-finder__tag {
+  border: 0;
+  border-radius: 999px;
+  padding: var(--space-2xs) var(--space-sm);
+  background: var(--color-panel-alt);
+  color: var(--color-text-muted);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.note-finder__tag:hover,
+.note-finder__tag:focus-visible {
+  background: var(--color-tav-strong);
+  color: var(--color-heading);
+}
+
+.note-finder__sort {
+  display: inline-flex;
+  align-self: flex-start;
+  gap: var(--space-2xs);
+  padding: var(--space-2xs);
+  border-radius: var(--radius-sm);
+  background: var(--color-panel-alt);
+}
+
+.note-finder__sort-btn {
+  border: 0;
+  border-radius: var(--radius-sm);
+  padding: var(--space-xs) var(--space-sm);
+  background: transparent;
+  color: var(--color-text-muted);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.note-finder__sort-btn.is-active,
+.note-finder__sort-btn:hover,
+.note-finder__sort-btn:focus-visible {
+  background: var(--color-tav-strong);
+  color: var(--color-heading);
+}
+
+.note-finder__grid {
+  margin-top: 0;
+}
+
+.note-finder__card[hidden] {
+  display: none;
+}
+
+.note-finder__empty {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-weight: 600;
 }
 
 .article-contact-link {

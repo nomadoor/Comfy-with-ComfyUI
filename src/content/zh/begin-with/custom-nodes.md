@@ -5,6 +5,8 @@ section: begin-with
 slug: custom-nodes
 navId: custom-nodes
 title: "自定义节点"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "关于自定义节点"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: lip-sync
 navId: lip-sync
 title: Lip Sync
+created: 2026-02-06
+updated: 2026-03-02
 summary: 配合音频移动嘴巴或表情的技术
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

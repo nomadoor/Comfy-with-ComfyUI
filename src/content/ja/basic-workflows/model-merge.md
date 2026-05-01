@@ -5,6 +5,8 @@ section: basic-workflows
 slug: model-merge
 navId: model-merge
 title: "モデルのマージと差分LoRA"
+created: 2025-12-11
+updated: 2026-03-02
 summary: "チェックポイントやLoRAをマージして新しいモデルや差分LoRAを作る方法"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

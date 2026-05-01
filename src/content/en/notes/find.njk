@@ -1,0 +1,54 @@
+---
+layout: page.njk
+lang: en
+section: notes
+slug: find
+navId: find
+title: "Find Notes"
+created: 2026-05-02
+updated: 2026-05-02
+summary: "Find Notes articles by search, tag, and sort order."
+permalink: "/{{ lang }}/notes/{{ slug }}/"
+searchExclude: true
+hero:
+  image: ""
+---
+{% from "icon.njk" import icon %}
+{% set notes = collections.all | notesForLang(lang) %}
+{% set noteTagList = notes | noteTags %}
+<section class="note-finder" data-note-finder>
+  <label class="sr-only" for="note-finder-query">Search Notes</label>
+  <div class="note-finder__search">
+    <span class="note-finder__search-icon" aria-hidden="true">{{ icon("search") }}</span>
+    <input id="note-finder-query" class="note-finder__input" type="search" placeholder="Search..." data-note-query autocomplete="off">
+  </div>
+
+  <div class="note-finder__tags" aria-label="Tags">
+    {% for tag in noteTagList %}
+      <button class="note-finder__tag" type="button" data-note-tag="{{ tag }}">{{ tag }}</button>
+    {% endfor %}
+  </div>
+
+  <div class="note-finder__sort" role="group" aria-label="Sort Notes">
+    <button class="note-finder__sort-btn is-active" type="button" data-note-sort="updated" aria-pressed="true">Updated</button>
+    <button class="note-finder__sort-btn" type="button" data-note-sort="views" aria-pressed="false">Views</button>
+  </div>
+
+  <div class="workflow-related__grid note-finder__grid" data-note-grid>
+    {% for note in notes %}
+      {% set heroImage = note.hero and note.hero.image or null %}
+      {% set heroVariant = null %}
+      {% if heroImage %}
+        {% set heroVariant = heroImage | imageVariant(480) %}
+      {% endif %}
+      <a class="workflow-related__card note-finder__card" href="{{ note.url }}" data-note-card data-title="{{ note.title | lower }}" data-summary="{{ note.summary | lower }}" data-tags="{{ note.tags | join(' ') | lower }}" data-updated="{{ note.updated }}" data-views="{{ note.views or 0 }}">
+        <div class="workflow-related__hero" {% if heroVariant and heroVariant.preview %}data-hero="{{ heroVariant.preview }}"{% endif %}></div>
+        <span class="workflow-related__title">{{ note.title }}</span>
+        {% if note.summary %}
+          <span class="workflow-related__summary">{{ note.summary }}</span>
+        {% endif %}
+      </a>
+    {% endfor %}
+  </div>
+  <p class="note-finder__empty" data-note-empty hidden>No matching notes.</p>
+</section>

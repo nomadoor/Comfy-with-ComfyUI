@@ -5,6 +5,8 @@ section: begin-with
 slug: saving-and-loading-workflows
 navId: saving-and-loading-workflows
 title: "workflowの保存・読み込み"
+created: 2025-11-20
+updated: 2026-03-02
 summary: "workflowの保存・読み込みについて"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

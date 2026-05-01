@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: cfg
 navId: cfg
 title: CFG
+created: 2026-02-06
+updated: 2026-03-02
 summary: 决定提示词“生效程度”的机制
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

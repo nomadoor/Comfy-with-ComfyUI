@@ -1,12 +1,15 @@
 ---
 layout: page.njk
 lang: en
-section: faq
+section: notes
 slug: why-512px
 navId: why-512px
 title: "Why generate at 512px × 512px?"
+created: 2025-12-13
+updated: 2026-03-02
+tags: ["concept", "sd15"]
 summary: "Why sizes around 512px are recommended for Stable Diffusion 1.5"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""
 ---

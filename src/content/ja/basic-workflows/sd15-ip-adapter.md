@@ -5,6 +5,8 @@ section: basic-workflows
 slug: sd15-ip-adapter
 navId: sd15-ip-adapter
 title: "IP-Adapter"
+created: 2025-12-08
+updated: 2026-03-02
 summary: "参照画像からスタイルや被写体を転送する元祖的な仕組み"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

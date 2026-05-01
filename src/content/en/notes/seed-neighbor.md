@@ -1,12 +1,15 @@
 ---
 layout: page.njk
 lang: en
-section: faq
+section: notes
 slug: seed-neighbor
 navId: seed-neighbor
 title: "Seed 1234 and 1235 are completely different"
+created: 2026-02-11
+updated: 2026-03-02
+tags: ["concept", "seed"]
 summary: "A nearby seed value does not mean a nearby result"
-permalink: "/{{ lang }}/faq/{{ slug }}/"
+permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: "https://i.gyazo.com/9cc7e9a5752b2a65f4e8a76972b9b366.png"
 ---
@@ -100,7 +103,7 @@ This is a bit more irregular for ComfyUI, so in many cases plain image2image may
 
 ![](https://gyazo.com/eee2f089f7ecf7f9b6541cf2f570266a){gyazo=image}
 
-[](/workflows/faq/seed-neighbor/Latent_Blend.json)
+[](/workflows/notes/seed-neighbor/Latent_Blend.json)
 
 - 🟩 With `Generate Noise` + `KSampler (Advanced)` (`add_noise=disable`), you can create noise outside the sampler.
 - 🟪 This `Generate Noise` node creates the second noise (latent) to blend in.
@@ -111,7 +114,7 @@ This is a bit more irregular for ComfyUI, so in many cases plain image2image may
 
 ![](https://gyazo.com/a5162437aa43b07806a802d301a5df9d){gyazo=image}
 
-[](/workflows/faq/seed-neighbor/Inject_Noise_To_Latent.json)
+[](/workflows/notes/seed-neighbor/Inject_Noise_To_Latent.json)
 
 - 🟨 Increase `strength` in `Inject Noise To Latent` gradually to add a second noise into the base latent.
   - Raising `mix_randn_amount` adds yet another random component, but here it is kept at `0`.

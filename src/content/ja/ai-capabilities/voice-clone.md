@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: voice-clone
 navId: voice-clone
 title: ボイスクローン
+created: 2025-12-01
+updated: 2026-03-02
 summary: ボイスクローン の概要ページ（準備中）
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

@@ -1,12 +1,15 @@
 ---
 layout: page.njk
 lang: ja
-section: faq
+section: notes
 slug: seed-neighbor
 navId: seed-neighbor
 title: "seed1234 と 1235 は全く別物"
+created: 2026-02-11
+updated: 2026-03-02
+tags: ["concept", "seed"]
 summary: "シードは「近い数字＝近い結果」にならない"
-permalink: "/{{ lang }}/faq/{{ slug }}/"
+permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: "https://i.gyazo.com/9cc7e9a5752b2a65f4e8a76972b9b366.png"
 ---
@@ -100,7 +103,7 @@ ComfyUIとしては少しイレギュラーなので、シンプルに image2ima
 
 ![](https://gyazo.com/eee2f089f7ecf7f9b6541cf2f570266a){gyazo=image}
 
-[](/workflows/faq/seed-neighbor/Latent_Blend.json)
+[](/workflows/notes/seed-neighbor/Latent_Blend.json)
 
 - 🟩`Generate Noise` + `KSampler (Advanced)` (`add_noise=disable`) という設定をすることで、ノイズを外部で作れるようにします。
 - 🟪こちらの`Generate Noise` では、混ぜたい別のノイズ（latent）を生成します。
@@ -111,7 +114,7 @@ ComfyUIとしては少しイレギュラーなので、シンプルに image2ima
 
 ![](https://gyazo.com/a5162437aa43b07806a802d301a5df9d){gyazo=image}
 
-[](/workflows/faq/seed-neighbor/Inject_Noise_To_Latent.json)
+[](/workflows/notes/seed-neighbor/Inject_Noise_To_Latent.json)
 
 - 🟨`Inject Noise To Latent`の`strength`を少しずつ上げていくことで、ベース latent に2つ目のノイズを追加していきます。
   - `mix_randn_amount`を上げると更に別のノイズが追加されますが、ここでは `0` にしておきます。

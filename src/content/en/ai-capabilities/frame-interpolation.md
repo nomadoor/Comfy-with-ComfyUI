@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: frame-interpolation
 navId: frame-interpolation
 title: Frame Interpolation
+created: 2025-12-01
+updated: 2026-03-02
 summary: Technology to smooth videos or connect distant frames
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

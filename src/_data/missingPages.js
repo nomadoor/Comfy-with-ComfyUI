@@ -25,8 +25,8 @@ function collect(acc, lang, sectionKey, pages) {
 }
 
 function exists({ lang, section, id }) {
-  const filePath = path.join(CONTENT_DIR, lang, section, `${id}.md`);
-  return fs.existsSync(filePath);
+  const sectionDir = path.join(CONTENT_DIR, lang, section);
+  return fs.existsSync(path.join(sectionDir, `${id}.md`)) || fs.existsSync(path.join(sectionDir, `${id}.njk`));
 }
 
 export default function () {

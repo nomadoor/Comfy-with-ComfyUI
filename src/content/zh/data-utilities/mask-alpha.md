@@ -5,6 +5,8 @@ section: data-utilities
 slug: mask-alpha
 navId: mask-alpha
 title: "蒙版与 Alpha 通道"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "关于蒙版的概念和透明图像的处理"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

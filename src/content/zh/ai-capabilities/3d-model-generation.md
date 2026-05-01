@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: 3d-model-generation
 navId: 3d-model-generation
 title: 3D 模型生成
+created: 2026-02-06
+updated: 2026-03-02
 summary: "从多视角到世界模型"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

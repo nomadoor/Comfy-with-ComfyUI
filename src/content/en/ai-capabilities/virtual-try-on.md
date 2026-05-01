@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: virtual-try-on
 navId: virtual-try-on
 title: Virtual Try-On
+created: 2025-12-01
+updated: 2026-03-02
 summary: The task of replacing only the clothes with a different design or variation.
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

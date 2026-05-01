@@ -5,6 +5,8 @@ section: data-utilities
 slug: data-types
 navId: data-types
 title: "数据类型"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "关于 ComfyUI 处理的主要数据类型"
 
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"

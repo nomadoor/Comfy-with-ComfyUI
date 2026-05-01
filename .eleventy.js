@@ -363,6 +363,14 @@ function escapeHTML(str = "") {
     .replace(/"/g, "&quot;");
 }
 
+function toDateKey(value = "") {
+  if (!value) return "";
+  if (value instanceof Date && !Number.isNaN(value.getTime())) {
+    return value.toISOString().slice(0, 10);
+  }
+  return String(value).slice(0, 10);
+}
+
 async function fetchGyazoMeta(url) {
   try {
     const endpoint = `https://api.gyazo.com/api/oembed?url=${encodeURIComponent(url)}`;
@@ -435,6 +443,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/search": "search" });
   eleventyConfig.addPassthroughCopy({ "src/.well-known": ".well-known" });
   eleventyConfig.addPassthroughCopy({ "src/_headers": "_headers" });
+  eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
   eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
 
   eleventyConfig.addWatchTarget("ops");
@@ -478,6 +487,48 @@ export default function (eleventyConfig) {
         summary: entry.data.summary || "",
         hero: entry.data.hero || {}
       }));
+  });
+
+  eleventyConfig.addFilter("notesForLang", function (collection = [], currentLang, includeFinder = false) {
+    if (!Array.isArray(collection)) {
+      return [];
+    }
+
+    return collection
+      .filter((entry) => {
+        if (!entry || !entry.data) return false;
+        if (entry.data.section !== "notes") return false;
+        if (currentLang && entry.data.lang !== currentLang) return false;
+        if (!includeFinder && entry.data.slug === "find") return false;
+        return true;
+      })
+      .map((entry) => ({
+        url: entry.url,
+        slug: entry.data.slug,
+        title: entry.data.title || entry.data.slug,
+        summary: entry.data.summary || "",
+        tags: Array.isArray(entry.data.tags) ? entry.data.tags : [],
+        created: toDateKey(entry.data.created),
+        updated: toDateKey(entry.data.updated || entry.data.created),
+        views: Number(entry.data.views || 0),
+        hero: entry.data.hero || {}
+      }))
+      .sort((a, b) => {
+        const updatedCompare = String(b.updated || "").localeCompare(String(a.updated || ""));
+        if (updatedCompare !== 0) return updatedCompare;
+        return String(a.title || "").localeCompare(String(b.title || ""));
+      });
+  });
+
+  eleventyConfig.addFilter("noteTags", function (notes = []) {
+    const tags = new Set();
+    if (!Array.isArray(notes)) return [];
+    notes.forEach((note) => {
+      (note.tags || []).forEach((tag) => {
+        if (tag) tags.add(tag);
+      });
+    });
+    return [...tags].sort((a, b) => String(a).localeCompare(String(b)));
   });
 
   eleventyConfig.addFilter("navPrevNext", function (navData, sectionKey, currentId) {

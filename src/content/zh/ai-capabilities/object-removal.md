@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: object-removal
 navId: object-removal
 title: 对象去除
+created: 2026-02-06
+updated: 2026-03-02
 summary: 从图像中仅去除特定物品的任务，及其代表性的方法
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

@@ -1,12 +1,15 @@
 ---
 layout: page.njk
 lang: zh
-section: faq
+section: notes
 slug: import-failed
 navId: import-failed
 title: "(IMPORT FAILED)"
+created: 2026-02-06
+updated: 2026-03-02
+tags: ["troubleshoot", "custom-nodes"]
 summary: "自定义节点加载失败"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""
 ---

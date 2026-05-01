@@ -10,6 +10,7 @@ import initWorkflowPicker from "./workflow-picker.js";
 import initMediaRowFit from "./media-row-fit.js";
 import initHeadingAnchors from "./heading-anchors.js";
 import initContact from "./contact.js";
+import initNoteFinder from "./note-finder.js";
 import "./sidebar.js"; // legacy auto-init; sidebar is persistent shell
 import "./mobile-nav.js"; // handles nav/search toggles; persistent shell
 import "./theme-toggle.js"; // global theme switcher
@@ -51,6 +52,7 @@ export default function initPage(root = document.getElementById("page") || docum
   profileStep("workflow-picker", () => initWorkflowPicker?.(root));
   profileStep("related-hero", () => initRelatedHero?.(root));
   profileStep("contact", () => initContact?.(root));
+  profileStep("note-finder", () => initNoteFinder?.(root));
 
   // Global-once modules (idempotent / guarded inside)
   profileStep("assistant", () => initAssistant?.());

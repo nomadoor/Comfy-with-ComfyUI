@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: prompt-generation
 navId: prompt-generation
 title: 提示词生成・编辑
+created: 2026-02-06
+updated: 2026-03-02
 summary: 将粗略的指示整理成模型容易理解的提示词的技术
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: lip-sync
 navId: lip-sync
 title: リップシンク
+created: 2025-12-01
+updated: 2026-03-02
 summary: 音声に合わせて口や表情を動かす技術
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

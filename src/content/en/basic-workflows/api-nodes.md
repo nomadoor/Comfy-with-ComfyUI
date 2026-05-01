@@ -5,6 +5,8 @@ section: basic-workflows
 slug: api-nodes
 navId: api-nodes
 title: "API Nodes"
+created: 2025-12-11
+updated: 2026-03-02
 summary: "How to use external closed models with API nodes in ComfyUI"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

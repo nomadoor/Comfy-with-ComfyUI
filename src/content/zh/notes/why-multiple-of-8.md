@@ -1,12 +1,15 @@
 ---
 layout: page.njk
 lang: zh
-section: faq
+section: notes
 slug: why-multiple-of-8
 navId: why-multiple-of-8
 title: "为什么只能生成 8 的倍数的分辨率？"
+created: 2026-02-06
+updated: 2026-03-02
+tags: ["concept", "resolution", "vae"]
 summary: "分辨率被限制为 8 的倍数的理由，以及与 VAE 压缩率的关系"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""
 ---

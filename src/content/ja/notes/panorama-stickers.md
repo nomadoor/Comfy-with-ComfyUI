@@ -5,6 +5,9 @@ slug: panorama-stickers
 section: notes
 navId: panorama-stickers
 title: "ComfyUI Panorama Stickers"
+created: 2026-03-02
+updated: 2026-03-22
+tags: ["experiment", "erp", "lora", "flux"]
 summary: "ERP上に参照画像を貼り、残りをoutpaintで埋めるための専用UI"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:

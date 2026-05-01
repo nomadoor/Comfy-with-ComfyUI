@@ -1,12 +1,15 @@
 ---
 layout: page.njk
 lang: ja
-section: faq
+section: notes
 slug: duplicate-objects
 navId: duplicate-objects
 title: "生成画像で人や物体が分身している"
+created: 2025-12-13
+updated: 2026-03-02
+tags: ["troubleshoot", "prompt"]
 summary: "人物や物体が不自然に増えてしまうときの対処法"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""
 ---
@@ -24,7 +27,7 @@ hero:
 ## 原因
 
 - SD1.5 が 512px 近辺の正方形画像で学習されており、それより大きい解像度では構図が安定しにくい。
-  - 詳しい背景は → [512px × 512pxで生成するのはなぜ？](/ja/faq/why-512px/) を参照。
+  - 詳しい背景は → [512px × 512pxで生成するのはなぜ？](/ja/notes/why-512px/) を参照。
 
 ## 解決方法
 

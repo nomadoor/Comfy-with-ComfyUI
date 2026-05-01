@@ -1,12 +1,15 @@
 ---
 layout: page.njk
 lang: zh
-section: faq
+section: notes
 slug: sd15-sdxl-asset-compatibility
 navId: sd15-sdxl-asset-compatibility
 title: "SD1.5 的 LoRA / ControlNet 能在 SDXL 上使用吗？"
+created: 2026-02-06
+updated: 2026-03-02
+tags: ["concept", "sd15", "sdxl"]
 summary: "模型间的兼容性，以及 SD1.5 用资源不能在 SDXL 上使用的理由"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""
 ---

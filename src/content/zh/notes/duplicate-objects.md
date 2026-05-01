@@ -1,12 +1,15 @@
 ---
 layout: page.njk
 lang: zh
-section: faq
+section: notes
 slug: duplicate-objects
 navId: duplicate-objects
 title: "生成图像中人或物体分裂了"
+created: 2026-02-06
+updated: 2026-03-02
+tags: ["troubleshoot", "prompt"]
 summary: "人物或物体变得不自然地增多时的对策"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""
 ---
@@ -24,7 +27,7 @@ hero:
 ## 原因
 
 - SD1.5 是以 512px 附近的正方形图像进行学习的，在比这大的分辨率下构图难以稳定。
-  - 详细背景请参照 → [为什么生成 512px × 512px？](/zh/faq/why-512px/)。
+  - 详细背景请参照 → [为什么生成 512px × 512px？](/zh/notes/why-512px/)。
 
 ## 解决方法
 

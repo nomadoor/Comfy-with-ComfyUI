@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: sampling
 navId: sampling
 title: Sampling
+created: 2025-11-29
+updated: 2026-03-27
 summary: ノイズをどのような手順で減らしていくかを決める仕組み
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

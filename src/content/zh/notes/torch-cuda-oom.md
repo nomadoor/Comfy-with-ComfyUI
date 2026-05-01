@@ -1,12 +1,15 @@
 ---
 layout: page.njk
 lang: zh
-section: faq
+section: notes
 slug: torch-cuda-oom
 navId: torch-cuda-oom
 title: "torch.cuda.OutOfMemoryError"
+created: 2026-02-06
+updated: 2026-03-02
+tags: ["troubleshoot", "vram"]
 summary: "torch.cuda.OutOfMemoryError"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""
 ---

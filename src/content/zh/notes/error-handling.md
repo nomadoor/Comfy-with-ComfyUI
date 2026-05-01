@@ -1,12 +1,15 @@
 ---
 layout: page.njk
 lang: zh
-section: faq
+section: notes
 slug: error-handling
 navId: error-handling
 title: "遇到错误时该怎么办"
+created: 2026-02-06
+updated: 2026-03-02
+tags: ["troubleshoot", "error"]
 summary: "遇到错误时的检查清单"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""
 ---

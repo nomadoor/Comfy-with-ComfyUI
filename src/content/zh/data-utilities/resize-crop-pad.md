@@ -5,6 +5,8 @@ section: data-utilities
 slug: resize-crop-pad
 navId: resize-crop-pad
 title: "调整大小、裁剪与填充"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "关于图像的调整大小、裁剪、填充"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -142,7 +144,7 @@ hero:
 
 调整大小使长宽成为 N 的倍数。
 
-详细内容会在 [为什么只能生成 8 的倍数的分辨率？](/zh/faq/why-multiple-of-8/) 中讲解，简而言之，由于 VAE 的原因，扩散模型无法直接处理不是特定倍数的分辨率。
+详细内容会在 [为什么只能生成 8 的倍数的分辨率？](/zh/notes/why-multiple-of-8/) 中讲解，简而言之，由于 VAE 的原因，扩散模型无法直接处理不是特定倍数的分辨率。
 
 虽然基本上很多时候会在某个节点自动调整，但在必须是指定分辨率否则报错的情况下，或者希望输入和输出的像素“完全一致”的情况下，会使用这个功能。
 

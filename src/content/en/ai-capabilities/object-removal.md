@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: object-removal
 navId: object-removal
 title: Object Removal
+created: 2025-12-01
+updated: 2026-03-02
 summary: The task of removing specific things from an image and typical methods for
   doing so.
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/

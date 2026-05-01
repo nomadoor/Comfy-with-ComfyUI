@@ -1,12 +1,15 @@
 ---
 layout: page.njk
 lang: zh
-section: faq
+section: notes
 slug: why-512px
 navId: why-512px
 title: "为什么生成 512px × 512px？"
+created: 2026-02-06
+updated: 2026-03-02
+tags: ["concept", "sd15"]
 summary: "Stable Diffusion 1.5 中推荐使用 512px 附近的理由"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""
 ---

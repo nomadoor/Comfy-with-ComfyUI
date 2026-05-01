@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: talking-head
 navId: talking-head
 title: talking head
+created: 2025-12-01
+updated: 2026-03-02
 summary: Technology to make a single image or face photo speak in sync with a reference video or audio
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

@@ -5,6 +5,8 @@ section: basic-workflows
 slug: ltx-2
 navId: ltx-2
 title: "LTX-2"
+created: 2026-02-06
+updated: 2026-04-13
 summary: "在 LTX-2 中处理 text2video / image2video / audio2video"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

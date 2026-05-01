@@ -1,12 +1,15 @@
 ---
 layout: page.njk
 lang: zh
-section: faq
+section: notes
 slug: sdwebui-comfyui-reproducibility
 navId: sdwebui-comfyui-reproducibility
 title: "Stable Diffusion web UI 和 ComfyUI 无法生成相同的图像？"
+created: 2026-02-06
+updated: 2026-03-02
+tags: ["concept", "reproducibility"]
 summary: "即使相同模型・相同种子图像也不一致的理由"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""
 ---

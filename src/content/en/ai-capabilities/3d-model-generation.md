@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: 3d-model-generation
 navId: 3d-model-generation
 title: 3D Model Generation
+created: 2025-12-03
+updated: 2026-03-02
 summary: "From multi-view to world models"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: subject-transfer
 navId: subject-transfer
 title: Subject Transfer
+created: 2025-12-01
+updated: 2026-03-02
 summary: Technology to make the same thing in a reference image appear in another
   scene.
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/

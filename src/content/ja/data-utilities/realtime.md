@@ -5,6 +5,8 @@ section: data-utilities
 slug: realtime
 navId: realtime
 title: "リアルタイム処理"
+created: 2025-11-27
+updated: 2026-03-02
 summary: "リアルタイム風の処理と、Instant/Change の使いどころ"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

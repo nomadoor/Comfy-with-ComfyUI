@@ -5,6 +5,8 @@ section: basic-workflows
 slug: esrgan
 navId: esrgan
 title: "ESRGAN"
+created: 2025-12-09
+updated: 2026-03-02
 summary: "Image upscaling and face restoration"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

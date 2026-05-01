@@ -5,6 +5,8 @@ section: basic-workflows
 slug: wan-animate
 navId: wan-animate
 title: "Wan-Animate"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "在 Wan-Animate 中进行向人物・角色的动作传送"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

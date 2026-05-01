@@ -5,6 +5,8 @@ section: begin-with
 slug: python
 navId: python
 title: "Python"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "关于 Python 的基础知识"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

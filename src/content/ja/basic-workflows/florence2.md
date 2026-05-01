@@ -5,6 +5,8 @@ section: basic-workflows
 slug: florence2
 navId: florence2
 title: "Florence-2"
+created: 2025-12-08
+updated: 2026-03-02
 summary: "Florence-2を使った画像キャプション生成・物体検出"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

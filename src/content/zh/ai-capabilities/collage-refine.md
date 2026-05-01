@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: collage-refine
 navId: collage-refine
 title: 杂乱拼贴的优化
+created: 2026-02-06
+updated: 2026-03-02
 summary: 将杂乱的拼贴图像，通过基于指令的图像编辑整理成自然的一张画的技巧
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

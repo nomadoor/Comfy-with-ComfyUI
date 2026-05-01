@@ -5,6 +5,8 @@ section: begin-with
 slug: recommended-specs
 navId: recommended-specs
 title: "推奨スペック"
+created: 2025-11-19
+updated: 2026-03-02
 summary: "ComfyUIを動かすために必要なPCスペック"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

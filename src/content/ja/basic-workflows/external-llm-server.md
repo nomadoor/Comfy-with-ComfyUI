@@ -5,6 +5,8 @@ section: basic-workflows
 slug: external-llm-server
 navId: external-llm-server
 title: "外部LLMサーバ連携"
+created: 2026-02-18
+updated: 2026-03-02
 summary: "ComfyUIの外でLLMを動かし連携する"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

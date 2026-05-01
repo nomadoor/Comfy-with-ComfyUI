@@ -5,6 +5,8 @@ section: basic-workflows
 slug: detailer
 navId: detailer
 title: "Detailer"
+created: 2025-12-08
+updated: 2026-03-02
 summary: "小さな顔や細部だけを切り出してinpaintする仕組み"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

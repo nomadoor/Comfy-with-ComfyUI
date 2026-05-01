@@ -5,6 +5,8 @@ section: begin-with
 slug: command-line-arguments
 navId: command-line-arguments
 title: "Command Line Arguments"
+created: 2025-11-24
+updated: 2026-03-02
 summary: "Options specified when starting ComfyUI"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

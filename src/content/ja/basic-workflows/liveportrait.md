@@ -5,6 +5,8 @@ section: basic-workflows
 slug: liveportrait
 navId: liveportrait
 title: "LivePortrait"
+created: 2025-12-12
+updated: 2026-03-02
 summary: "LivePortraitで1枚の顔写真から表情や首振りをコントロールする"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

@@ -1,12 +1,15 @@
 ---
 layout: page.njk
 lang: ja
-section: faq
+section: notes
 slug: sd15-sdxl-asset-compatibility
 navId: sd15-sdxl-asset-compatibility
 title: "Stable Diffusion 1.5 の LoRA / ControlNet は SDXL で使えない？"
+created: 2025-12-13
+updated: 2026-03-02
+tags: ["concept", "sd15", "sdxl"]
 summary: "モデルごとの互換性と、SD1.5用アセットをSDXLで使えない理由"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""
 ---

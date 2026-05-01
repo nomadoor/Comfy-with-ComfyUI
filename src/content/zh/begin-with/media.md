@@ -5,6 +5,8 @@ section: begin-with
 slug: media
 navId: media
 title: "媒体 (Media)"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "关于媒体文件"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

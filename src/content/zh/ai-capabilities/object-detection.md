@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: object-detection
 navId: object-detection
 title: 物体检测
+created: 2026-02-06
+updated: 2026-03-02
 summary: "找出图像中即“有什么”“在哪里”的技术"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

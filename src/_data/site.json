@@ -47,9 +47,10 @@
       "en": "Basic Workflows"
     },
     {
-      "key": "faq",
-      "ja": "FAQ / トラブルシューティング",
-      "en": "FAQ / Troubleshooting"
+      "key": "notes",
+      "ja": "Notes",
+      "en": "Notes",
+      "zh": "Notes"
     }
   ],
   "hero": {

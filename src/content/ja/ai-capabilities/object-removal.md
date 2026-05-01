@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: object-removal
 navId: object-removal
 title: オブジェクト除去
+created: 2025-12-01
+updated: 2026-03-02
 summary: 画像から特定のものだけを消すタスクと、その代表的なやり方
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

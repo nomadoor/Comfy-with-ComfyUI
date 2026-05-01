@@ -1,12 +1,15 @@
 ---
 layout: page.njk
 lang: ja
-section: faq
+section: notes
 slug: why-512px
 navId: why-512px
 title: "512px × 512pxで生成するのはなぜ？"
+created: 2025-12-13
+updated: 2026-03-02
+tags: ["concept", "sd15"]
 summary: "Stable Diffusion 1.5で512px近辺が推奨される理由"
-permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
+permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""
 ---
