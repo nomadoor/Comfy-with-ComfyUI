@@ -48,6 +48,16 @@ export default function initNoteFinder(root = document) {
     }
   };
 
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get("q");
+    if (query) {
+      input.value = query;
+    }
+  } catch {
+    /* Ignore malformed URL state and keep the default empty finder. */
+  }
+
   input.addEventListener("input", applyFilter);
   tagButtons.forEach((button) => {
     button.addEventListener("click", () => {

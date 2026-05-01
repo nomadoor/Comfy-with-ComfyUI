@@ -618,6 +618,10 @@ export default function (eleventyConfig) {
     return value.split(/[?#]/)[0];
   });
 
+  eleventyConfig.addFilter("urlEncode", function (value = "") {
+    return encodeURIComponent(String(value));
+  });
+
   eleventyConfig.addShortcode("gyazoVideoLoop", function (url, caption = "", options = {}) {
     const id = extractGyazoId(url);
     const dims = getGyazoDimensionsFromId(id);
