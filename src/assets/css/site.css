@@ -423,7 +423,7 @@ html.js .js-fallback-notice {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  padding: var(--space-lg) var(--space-xl) var(--space-2xl);
+  padding: var(--space-lg) var(--space-xl);
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
