@@ -901,8 +901,7 @@ html.js .js-fallback-notice {
   isolation: isolate;
 }
 
-.sidebar__lang > .lang-toggle,
-.sidebar__lang > .lang-menu {
+.sidebar__lang > .lang-toggle {
   position: relative;
   z-index: 1;
 }
