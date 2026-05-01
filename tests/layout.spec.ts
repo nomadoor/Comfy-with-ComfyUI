@@ -83,17 +83,19 @@ test.describe("Layout rails", () => {
     expect(targetBox.y).toBeGreaterThan(headerBox.height - 1);
   });
 
-  test("sidebar and TOC rails stay fixed with proper offsets", async ({ page }) => {
+  test("sidebar and TOC rails stay sticky with proper offsets", async ({ page }) => {
     await page.setViewportSize({ width: 1600, height: 900 });
     await page.goto(SAMPLE_PAGE);
 
+    const sidebarColumn = page.locator(".app-shell__sidebar");
+    const tocColumn = page.locator(".app-shell__toc");
     const sidebarRail = page.locator(".rail--sidebar");
     const tocRail = page.locator(".rail--toc");
     const content = page.locator(".app-shell__content");
     const header = page.locator(".site-header");
 
-    await expect(sidebarRail).toHaveCSS("position", "fixed");
-    await expect(tocRail).toHaveCSS("position", "fixed");
+    await expect(sidebarColumn).toHaveCSS("position", "sticky");
+    await expect(tocColumn).toHaveCSS("position", "sticky");
 
     const sidebarBox = await sidebarRail.boundingBox();
     const tocBox = await tocRail.boundingBox();
