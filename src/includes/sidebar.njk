@@ -125,8 +125,10 @@
 
               {% if isStandalone %}
                 {% set target = '/' + option.code + '/' + currentSlug + '/' %}
-              {% else %}
+              {% elif currentSection %}
                 {% set target = '/' + option.code + '/' + currentSection + '/' + currentSlug + '/' %}
+              {% else %}
+                {% set target = '/' + option.code + '/' + currentSlug + '/' %}
               {% endif %}
 
               <a href="{{ target }}" class="{% if option.code == lang %}is-active{% endif %}" role="menuitem" data-router-ignore>{{ option.label }}</a>

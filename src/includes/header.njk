@@ -64,8 +64,10 @@
           {% for option in site.languages %}
             {% if isStandaloneForLang %}
               {% set target = '/' + option.code + '/' + currentSlugForLang + '/' %}
-            {% else %}
+            {% elif currentSection %}
               {% set target = '/' + option.code + '/' + currentSection + '/' + currentSlugForLang + '/' %}
+            {% else %}
+              {% set target = '/' + option.code + '/' + currentSlugForLang + '/' %}
             {% endif %}
             <a href="{{ target }}" class="{% if option.code == currentLang %}is-active{% endif %}" role="menuitem" data-router-ignore>{{ option.label }}</a>
           {% endfor %}

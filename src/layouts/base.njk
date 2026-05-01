@@ -78,16 +78,20 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
   {% for option in langOptions -%}
     {% if isStandalone -%}
       {% set altPath = '/' + option.code + '/' + currentSlug + '/' -%}
-    {% else -%}
+    {% elif hreflangSection -%}
       {% set altPath = '/' + option.code + '/' + hreflangSection + '/' + currentSlug + '/' -%}
+    {% else -%}
+      {% set altPath = '/' + option.code + '/' + currentSlug + '/' -%}
     {% endif -%}
     {% set altUrl = siteUrl and (siteUrl ~ altPath) or altPath -%}
   <link rel="alternate" hreflang="{{ option.code }}" href="{{ altUrl | e }}" />
   {% endfor -%}
   {% if isStandalone -%}
     {% set defaultPath = '/' + site.defaultLang + '/' + currentSlug + '/' -%}
-  {% else -%}
+  {% elif hreflangSection -%}
     {% set defaultPath = '/' + site.defaultLang + '/' + hreflangSection + '/' + currentSlug + '/' -%}
+  {% else -%}
+    {% set defaultPath = '/' + site.defaultLang + '/' + currentSlug + '/' -%}
   {% endif -%}
   {% set defaultUrl = siteUrl and (siteUrl ~ defaultPath) or defaultPath -%}
   <link rel="alternate" hreflang="x-default" href="{{ defaultUrl | e }}" />
