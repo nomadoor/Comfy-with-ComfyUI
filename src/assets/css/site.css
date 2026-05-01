@@ -2625,6 +2625,12 @@ h1 {
   color: var(--color-text-muted);
 }
 
+.note-finder__input::-webkit-search-cancel-button,
+.note-finder__input::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 .note-finder__tags {
   display: flex;
   flex-wrap: wrap;
