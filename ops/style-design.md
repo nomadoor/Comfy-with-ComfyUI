@@ -11,6 +11,8 @@
 | --- | --- | --- |
 | `--color-bg` | `#040404` | Body background. |
 | `--color-panel` | `#111111` | Sidebar and cards. |
+| `--color-reader` | `#101010` | Central reading surface behind `app-shell__content`. |
+| `--color-sidebar-surface` | `#101010` | Sidebar and TOC column surface, matching the central reader surface. |
 | ``--color-panel-alt`` | `#1a1a1a` | Active nav rows, hero fallback, search input. |
 | `--color-border` | `#292929` | Default 1px borders. |
 | `--color-border-strong` | `#3a3a3a` | Active nav highlight, chip border. |
@@ -46,12 +48,18 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 ## 3. Layout & Spacing
 - Spacing scale (`rem`): `0.25, 0.5, 0.75, 1, 1.5, 2, 3`.
 - Border radii: use `--radius-md = 0.5rem` for every component (pill shapes use `--radius-pill`).
-- Grid: sidebar `16em`, content `60rem` max, TOC `16em`. Column gap is `4.5rem`, outer padding is a separate token, and `--layout-max = sidebar + content + toc + (gap ﾃ・2) + (padding ﾃ・2)`; header uses the same width.
+- Grid: sidebar `15rem`, content `50rem` max, TOC `15rem`. Side rails add internal padding without reducing their content width. Column gap is `1.5rem`; outer padding is `--shell-padding = --space-xl = 2rem`; and `--layout-max = sidebar + content + toc + (gap * 2) + (--shell-padding * 2)`. Header uses the same width.
 - Header height `72px`, sticky at the top. Logo / search / actions stay centered within their columns; search input maxes at 80% width (竕､520px).
-- Desktop rails are `position: fixed` with `height = 100vh - header` and scroll internally without drift; mobile reverts to stacked layout.
+- On desktop, search, theme, and language controls live in the top-right header actions area. Header actions may use their own compact width instead of being constrained to the TOC column. On mobile, keep the existing search toggle and sidebar footer controls.
+- The desktop search dropdown stays aligned to the search input width. Do not widen it independently of the input or use scrollbars for the capped result list.
+- Search inputs suppress browser-native search decorations such as WebKit cancel buttons; use only the site's own search icon/control styling.
+- Desktop rails sit in the grid columns with `height = 100vh - header - bottom padding`, stay sticky below the fixed header, and scroll internally without drift. The app shell has no top padding on desktop; mobile reverts to stacked layout.
+- On desktop, the document/body is the native scroll root. The central reader surface is part of normal document flow, with a zero-height sticky corner mask that preserves the upper radius below the fixed header without creating a persistent top gap. Wheel, keyboard, and middle-button scrolling use browser-native document behavior instead of JavaScript proxying.
 
 ## 4. Sidebar
-- Section tabs: stacked buttons matching mock icons (icon stub optional). Active tab uses ``--color-panel-alt`` background and bold label.
+- Section icon tabs (`sidebar__section-tabs`): compact icon-only shortcuts inside `sidebar__section-panel`. Active state is indicated by icon color only, without a filled background.
+- The left sidebar is split into two visible blocks: `sidebar__sections` for the labeled section selector/dropdown and `sidebar__section-panel` for icon-tabbed navigation plus sidebar controls. The TOC rail remains a single visible block.
+- Section selector buttons (`sidebar__sections` / `sidebar__section-btn`) keep inactive labels muted. The active selector uses heading-colored text and a quiet `--color-panel-alt` background, not a light filled pill.
 - Nav list: single column, children indented with border-left. Active link shows a 2px highlight bar (mock窶冱 purple line).
 - Footer: `About` link + language chips (JA/EN) + theme toggle stub. Chips use pill style with accent border when active.
   - Language chip opens a dropdown **upward** so it never falls off-screen; each option links to the same slug in the chosen locale.
@@ -63,17 +71,21 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - Images remain tinted with `filter: grayscale(1) brightness(0.6)` inside the hero to match the mock.
 
 ## 6. Article Body
-- Transparent background (no cards). Content width max 60ch.
-- Heading rhythm: `h2` margin-top `3rem`, `h3` `1.5rem`.
+- The central content column may use a subtle reader surface drawn in normal document flow. It is not a card: avoid borders, shadows, and decorative paper motifs.
+- On desktop, `.app-shell__content-corner-mask` keeps only the upper reader corners visible below the header while the document scrolls. It must not reserve vertical space; `.app-shell__content-scroll` is a structural padding and width wrapper, not an independent page scroller.
+- The central surface may grow when side rails collapse, but article content inside `.app-shell__content-scroll` stays centered at the content max width.
+- Article body content remains transparent inside that surface. Content width follows `--content-max` (`50rem`).
+- Article typography follows the calmer blog rhythm: body letter spacing stays `0`, body line-height is about `1.7`, `h2` is around `1.4rem`, and `h3` is around `1.1rem` without accent coloring.
+- Blockquotes use a quiet but visible purple-tinted background surface with small radius and a small Tabler-style info icon at the start. Do not use borders, a left accent bar, or italic styling by default.
 - Inline images are centered, `max-width: 720px`, `max-height: 320px`, and `object-fit: contain` so portrait assets never force extra scrolling.
 - Inline Gyazo media stays completely flat: **no borders / box-shadows**. When contrast is needed, rely on `--color-panel-alt` as the single backing surface.
 - 蜈ｨ繝壹・繧ｸ縺ｧ蜷御ｸ繝医・繝ｳ繧剃ｿ昴▽縺溘ａ縲∵悽譁・ｸｭ縺ｮ逕ｻ蜒上・蜍慕判繧ゅョ繝輔か繝ｫ繝医〒貂帛・繝輔ぅ繝ｫ繧ｿ・井ｾ具ｼ啻filter: brightness(0.85)`・峨ｒ驕ｩ逕ｨ縺吶ｋ縲・
-- Lists use default bullets; ensure `padding-left: 1.5rem`.
+- Lists use custom colored markers: small accent dots for unordered lists and accent numbers for ordered lists.
 - `.placeholder` component is dashed border block for 窶懊∪縺繝壹・繧ｸ縺後≠繧翫∪縺帙ｓ窶・states and 404 page.
 
 ## 8. TOC
 - Place TOC and the future Tips block inside the right sidebar column. Apply the border only to the TOC body, not the entire sidebar.
-- Each link carries a subtle guide line; the active item also shows a border highlight with the accent color.
+- TOC links do not show a guide line by default. Only the active item shows a left accent line.
 - Reserve a grey rectangular placeholder beneath the TOC for character/Tips content.
 
 ## 9. Workflow Assets
@@ -95,4 +107,3 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - Placeholder cat illustration (mock bottom-right) will be added later; for now reserve space in layout for helper popover.
 
 > Follow the mock first. If a token or component is missing, update `/ops/style-design.md` before touching `/src`.
-

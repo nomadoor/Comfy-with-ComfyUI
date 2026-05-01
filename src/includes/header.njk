@@ -4,10 +4,10 @@
 {% set searchPlaceholder = searchI18n.placeholder[currentLang] or searchI18n.placeholder[site.defaultLang] or "Search"
 %}
 {% set searchLabel = searchI18n.aria[currentLang] or searchI18n.aria[site.defaultLang] or searchPlaceholder %}
-{% set headerActions = site.i18n.headerActions or {} %}
-{% set notificationsLabel = headerActions.notifications[currentLang] or headerActions.notifications[site.defaultLang] or
-"Notifications" %}
-{% set profileLabel = headerActions.profile[currentLang] or headerActions.profile[site.defaultLang] or "Profile" %}
+{% set themeLabel = (site.i18n and site.i18n.themeToggle and (site.i18n.themeToggle[currentLang] or site.i18n.themeToggle[site.defaultLang])) or 'Theme toggle' %}
+{% set langOptions = site.languages or [] %}
+{% set currentSlugForLang = currentNavId or slug or 'how-to-use-this-site' %}
+{% set isStandaloneForLang = (not sectionExists) and (currentSlugForLang == 'news' or currentSlugForLang == 'about' or currentSlugForLang == 'contact') %}
 {% set logoBaseMask = 'src/assets/logos/logo_Comfy-ComfyUI.svg' | svgDataUri %}
 {% if currentLang == 'ja' %}
 {% set logoOverlayMask = 'src/assets/logos/logo_に使う.svg' | svgDataUri %}
@@ -29,27 +29,50 @@
           style="--logo-mask: {{ logoOverlayMask }};"></span>
       </span>
     </a>
-    <div class="site-header__search">
-      <div class="search-box" data-search>
-        <input type="search" class="search-box__input" data-search-input placeholder="{{ searchPlaceholder }}"
-          aria-label="{{ searchLabel }}" autocomplete="off" />
-        <button class="icon-button icon-button--ghost site-header__search-toggle site-header__search-toggle--inline"
-          type="button" aria-label="{{ searchLabel }}" data-search-focus>
-          {{ icon("search") }}
-        </button>
-        <div class="search-box__results" data-search-results hidden role="listbox" aria-live="polite"></div>
-      </div>
-    </div>
     <div class="site-header__actions">
+      <div class="site-header__search">
+        <div class="search-box" data-search>
+          <input type="search" class="search-box__input" data-search-input placeholder="{{ searchPlaceholder }}"
+            aria-label="{{ searchLabel }}" autocomplete="off" />
+          <button class="icon-button icon-button--ghost site-header__search-toggle site-header__search-toggle--inline"
+            type="button" aria-label="{{ searchLabel }}" data-search-focus>
+            {{ icon("search") }}
+          </button>
+          <div class="search-box__results" data-search-results hidden role="listbox" aria-live="polite"></div>
+        </div>
+      </div>
       <button class="icon-button icon-button--ghost site-header__search-toggle" type="button"
         aria-label="{{ searchLabel }}" aria-expanded="false" data-search-toggle>
         {{ icon("search") }}
       </button>
-      <a class="icon-button icon-button--ghost site-header__updates-link"
-        href="/{{ currentLang }}/news/"
-        aria-label="{{ notificationsLabel }}">
-        {{ icon("bell") }}
-      </a>
+      <button class="site-header__theme theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="{{ themeLabel }}">
+        <span class="theme-toggle__icon" data-theme-icon="moon">{{ icon("moon") }}</span>
+        <span class="theme-toggle__icon" data-theme-icon="sun">{{ icon("sun") }}</span>
+      </button>
+      <div class="site-header__lang sidebar__lang" data-lang-control>
+        <button class="lang-toggle" type="button" data-lang-toggle aria-haspopup="true" aria-expanded="false">
+          <span class="sidebar__lang-label">
+            {%- for option in langOptions -%}
+              {%- if option.code == currentLang -%}
+                {{- option.label or (currentLang | upper) -}}
+              {%- endif -%}
+            {%- endfor -%}
+          </span>
+          <span class="sidebar__lang-caret">{{ icon("chevron-down") }}</span>
+        </button>
+        <div class="lang-menu" data-lang-menu>
+          {% for option in site.languages %}
+            {% if isStandaloneForLang %}
+              {% set target = '/' + option.code + '/' + currentSlugForLang + '/' %}
+            {% elif sectionExists and sectionCandidate %}
+              {% set target = '/' + option.code + '/' + sectionCandidate + '/' + currentSlugForLang + '/' %}
+            {% else %}
+              {% set target = '/' + option.code + '/' + currentSlugForLang + '/' %}
+            {% endif %}
+            <a href="{{ target }}" class="{% if option.code == currentLang %}is-active{% endif %}" data-router-ignore>{{ option.label }}</a>
+          {% endfor %}
+        </div>
+      </div>
     </div>
   </div>
 </header>

@@ -74,20 +74,24 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
   {% set langOptions = site.languages or [] -%}
   {% set currentSlug = currentNavId or slug -%}
 {% set isStandalone = (not sectionExists) and (currentSlug == 'news' or currentSlug == 'about' or currentSlug == 'contact') -%}
-  {% set hreflangSection = sectionCandidate or currentSection -%}
+  {% set hreflangSection = sectionCandidate if sectionExists else '' -%}
   {% for option in langOptions -%}
     {% if isStandalone -%}
       {% set altPath = '/' + option.code + '/' + currentSlug + '/' -%}
-    {% else -%}
+    {% elif hreflangSection -%}
       {% set altPath = '/' + option.code + '/' + hreflangSection + '/' + currentSlug + '/' -%}
+    {% else -%}
+      {% set altPath = '/' + option.code + '/' + currentSlug + '/' -%}
     {% endif -%}
     {% set altUrl = siteUrl and (siteUrl ~ altPath) or altPath -%}
   <link rel="alternate" hreflang="{{ option.code }}" href="{{ altUrl | e }}" />
   {% endfor -%}
   {% if isStandalone -%}
     {% set defaultPath = '/' + site.defaultLang + '/' + currentSlug + '/' -%}
-  {% else -%}
+  {% elif hreflangSection -%}
     {% set defaultPath = '/' + site.defaultLang + '/' + hreflangSection + '/' + currentSlug + '/' -%}
+  {% else -%}
+    {% set defaultPath = '/' + site.defaultLang + '/' + currentSlug + '/' -%}
   {% endif -%}
   {% set defaultUrl = siteUrl and (siteUrl ~ defaultPath) or defaultPath -%}
   <link rel="alternate" hreflang="x-default" href="{{ defaultUrl | e }}" />
@@ -111,6 +115,7 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
       </div>
     </aside>
     <main class="app-shell__content transition-fade" id="page">
+      <div class="app-shell__content-corner-mask" aria-hidden="true"></div>
       <div class="js-fallback-notice" data-js-fallback-notice role="status" aria-live="polite">
         <div class="js-fallback-notice__inner">
           {% if currentLang == "ja" %}
@@ -122,7 +127,9 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
           {% endif %}
         </div>
       </div>
-      {{ content | safe }}
+      <div class="app-shell__content-scroll">
+        {{ content | safe }}
+      </div>
     </main>
     <aside class="app-shell__toc">
       <div class="rail rail--toc">

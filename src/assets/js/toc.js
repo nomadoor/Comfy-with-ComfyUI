@@ -4,6 +4,7 @@ let tocState = {
   loadHandler: null,
   imageFadeHandler: null,
   clickHandler: null,
+  scrollRoot: null,
   headings: [],
   lastActiveId: null,
   ticking: false,
@@ -15,7 +16,10 @@ const initToc = () => {
   if (!article || !tocContainer) return;
 
   // Cleanup existing listeners
-  if (tocState.scrollHandler) window.removeEventListener("scroll", tocState.scrollHandler);
+  if (tocState.scrollHandler) {
+    const previousScrollRoot = tocState.scrollRoot || window;
+    previousScrollRoot.removeEventListener("scroll", tocState.scrollHandler);
+  }
   if (tocState.resizeHandler) window.removeEventListener("resize", tocState.resizeHandler);
   if (tocState.loadHandler) window.removeEventListener("load", tocState.loadHandler);
   if (tocState.imageFadeHandler) document.removeEventListener("imageFade:loaded", tocState.imageFadeHandler);
@@ -214,13 +218,15 @@ const initToc = () => {
     }
   };
 
-  window.addEventListener("scroll", onScroll, { passive: true });
+  const scrollRoot = window;
+  scrollRoot.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", handleResize, { passive: true });
   window.addEventListener("load", handleLoad);
   document.addEventListener("imageFade:loaded", handleImageFade);
   tocContainer.addEventListener("click", handleTocClick);
 
   tocState.scrollHandler = onScroll;
+  tocState.scrollRoot = scrollRoot;
   tocState.resizeHandler = handleResize;
   tocState.loadHandler = handleLoad;
   tocState.imageFadeHandler = handleImageFade;

@@ -88,61 +88,57 @@
       {% endfor %}
       </div>
     </div>
-  </div>
-  <div class="sidebar__footer">
-    <div class="sidebar__controls">
-      <div class="sidebar__lang">
+    <div class="sidebar__footer">
+      <div class="sidebar__controls">
+        <div class="sidebar__lang" data-lang-control>
 
-        <span class="sidebar__footer-icon">{{ icon("translate") }}</span>
+          <span class="sidebar__footer-icon">{{ icon("translate") }}</span>
 
-        {% set langOptions = site.languages or [] %}
+          {% set langOptions = site.languages or [] %}
 
-        {% set langLabel = lang | upper %}
+          <button class="lang-toggle" type="button" data-lang-toggle aria-haspopup="true" aria-expanded="false">
 
-        {% for option in langOptions %}
+            <span class="sidebar__lang-label">
+              {%- for option in langOptions -%}
+                {%- if option.code == lang -%}
+                  {{- option.label or (lang | upper) -}}
+                {%- endif -%}
+              {%- endfor -%}
+            </span>
 
-          {% if option.code == lang %}
+            <span class="sidebar__lang-caret">{{ icon("chevron-down") }}</span>
 
-            {% set langLabel = option.label or langLabel %}
+          </button>
 
-          {% endif %}
+          <div class="lang-menu" data-lang-menu>
 
-        {% endfor %}
+            {% set currentSlug = currentNavId or slug or 'how-to-use-this-site' %}
+            {% set isStandalone = (not sectionExists) and (currentSlug == 'news' or currentSlug == 'about' or currentSlug == 'contact') %}
 
-        <button class="lang-toggle" type="button" data-lang-toggle aria-haspopup="true" aria-expanded="false">
+            {% for option in site.languages %}
 
-          <span class="sidebar__lang-label">{{ langLabel }}</span>
+              {% if isStandalone %}
+                {% set target = '/' + option.code + '/' + currentSlug + '/' %}
+              {% elif sectionExists and sectionCandidate %}
+                {% set target = '/' + option.code + '/' + sectionCandidate + '/' + currentSlug + '/' %}
+              {% else %}
+                {% set target = '/' + option.code + '/' + currentSlug + '/' %}
+              {% endif %}
 
-          <span class="sidebar__lang-caret">{{ icon("chevron-down") }}</span>
+              <a href="{{ target }}" class="{% if option.code == lang %}is-active{% endif %}" data-router-ignore>{{ option.label }}</a>
 
-        </button>
+            {% endfor %}
 
-        <div class="lang-menu" data-lang-menu role="menu">
-
-          {% set currentSlug = currentNavId or slug or 'how-to-use-this-site' %}
-          {% set isStandalone = (not sectionExists) and (currentSlug == 'news' or currentSlug == 'about' or currentSlug == 'contact') %}
-
-          {% for option in site.languages %}
-
-            {% if isStandalone %}
-              {% set target = '/' + option.code + '/' + currentSlug + '/' %}
-            {% else %}
-              {% set target = '/' + option.code + '/' + currentSection + '/' + currentSlug + '/' %}
-            {% endif %}
-
-            <a href="{{ target }}" class="{% if option.code == lang %}is-active{% endif %}" role="menuitem" data-router-ignore>{{ option.label }}</a>
-
-          {% endfor %}
+          </div>
 
         </div>
 
+        {% set themeLabel = (site.i18n and site.i18n.themeToggle and (site.i18n.themeToggle[lang] or site.i18n.themeToggle[site.defaultLang])) or 'Theme toggle' %}
+        <button class="chip theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="{{ themeLabel }}">
+          <span class="theme-toggle__icon" data-theme-icon="moon">{{ icon("moon") }}</span>
+          <span class="theme-toggle__icon" data-theme-icon="sun">{{ icon("sun") }}</span>
+        </button>
       </div>
-
-      {% set themeLabel = (site.i18n and site.i18n.themeToggle and (site.i18n.themeToggle[lang] or site.i18n.themeToggle[site.defaultLang])) or 'Theme toggle' %}
-      <button class="chip theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="{{ themeLabel }}">
-        <span class="theme-toggle__icon" data-theme-icon="moon">{{ icon("moon") }}</span>
-        <span class="theme-toggle__icon" data-theme-icon="sun">{{ icon("sun") }}</span>
-      </button>
     </div>
   </div>
 </div>
