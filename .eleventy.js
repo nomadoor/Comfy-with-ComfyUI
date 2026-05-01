@@ -383,9 +383,9 @@ function normalizeSitePath(value = "") {
   }
 }
 
-function getNoteViewCount(entry, noteViews = {}) {
+function getPageViewCount(entry, pageViews = {}) {
   if (!entry || !entry.data) return 0;
-  const pages = noteViews?.pages && typeof noteViews.pages === "object" ? noteViews.pages : {};
+  const pages = pageViews?.pages && typeof pageViews.pages === "object" ? pageViews.pages : {};
   const candidates = [
     entry.url,
     `/${entry.data.lang || ""}/notes/${entry.data.slug || ""}/`
@@ -521,7 +521,7 @@ export default function (eleventyConfig) {
       }));
   });
 
-  eleventyConfig.addFilter("notesForLang", function (collection = [], currentLang, includeFinder = false, noteViews = {}) {
+  eleventyConfig.addFilter("notesForLang", function (collection = [], currentLang, includeFinder = false, pageViews = {}) {
     if (!Array.isArray(collection)) {
       return [];
     }
@@ -542,7 +542,7 @@ export default function (eleventyConfig) {
         noteTags: Array.isArray(entry.data.noteTags) ? entry.data.noteTags : [],
         created: toDateKey(entry.data.created),
         updated: toDateKey(entry.data.updated || entry.data.created),
-        views: getNoteViewCount(entry, noteViews),
+        views: getPageViewCount(entry, pageViews),
         hero: entry.data.hero || {}
       }))
       .sort((a, b) => {

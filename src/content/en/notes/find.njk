@@ -14,7 +14,7 @@ hero:
   image: "https://i.gyazo.com/a6e07600049875412da66a0ac4ca5351.png"
 ---
 {% from "icon.njk" import icon %}
-{% set notes = collections.all | notesForLang(lang, false, noteViews) %}
+{% set notes = collections.all | notesForLang(lang, false, pageViews) %}
 {% set hasViews = notes | notesHaveViews %}
 <p>Notes collects FAQ-style answers, troubleshooting notes, small observations from production work, and occasional articles around ComfyUI rather than strict workflow guides.</p>
 

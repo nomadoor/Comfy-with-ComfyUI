@@ -3,6 +3,16 @@ import { test, expect } from "@playwright/test";
 const NOTES_FIND = "/ja/notes/find/";
 
 test.describe("Notes views sorting", () => {
+  async function expectSortedByViews(locator) {
+    const count = await locator.count();
+    expect(count).toBeGreaterThan(1);
+
+    const firstViews = Number(await locator.nth(0).getAttribute("data-views"));
+    const secondViews = Number(await locator.nth(1).getAttribute("data-views"));
+    expect(firstViews).toBeGreaterThan(0);
+    expect(firstViews).toBeGreaterThanOrEqual(secondViews);
+  }
+
   test("finder cards switch from updated order to views order", async ({ page }) => {
     await page.goto(NOTES_FIND);
 
@@ -13,7 +23,7 @@ test.describe("Notes views sorting", () => {
     await expect(viewsButton).toBeEnabled();
     await viewsButton.click();
 
-    await expect(cards.first()).toContainText("torch.cuda.OutOfMemoryError");
+    await expectSortedByViews(cards);
   });
 
   test("sidebar Notes list switches from updated order to views order", async ({ page }) => {
@@ -26,6 +36,6 @@ test.describe("Notes views sorting", () => {
     await expect(viewsButton).toBeEnabled();
     await viewsButton.click();
 
-    await expect(items.first()).toContainText("torch.cuda.OutOfMemoryError");
+    await expectSortedByViews(items);
   });
 });

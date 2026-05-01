@@ -14,7 +14,7 @@ hero:
   image: "https://i.gyazo.com/a6e07600049875412da66a0ac4ca5351.png"
 ---
 {% from "icon.njk" import icon %}
-{% set notes = collections.all | notesForLang(lang, false, noteViews) %}
+{% set notes = collections.all | notesForLang(lang, false, pageViews) %}
 {% set hasViews = notes | notesHaveViews %}
 <p>Notes 收录 FAQ、故障排查、制作过程中留下的小笔记，以及一些不完全属于 ComfyUI 工作流教程的周边文章。</p>
 
