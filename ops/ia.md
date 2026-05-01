@@ -84,14 +84,10 @@
     * リライト / Delight
     * 深度推定・ノーマルマップ生成
   * 動画・音声生成
-    * 動画生成
     * アップスケール・動画修復
     * フレーム補間
     * リップシンク
     * talking head
-    * TTS
-    * ボイスクローン
-    * 音楽生成
     * 指示ベースの音声編集
     * video2audio
   * 3D生成
@@ -148,15 +144,12 @@
       * Wan 2.1 VACE
     * Wan 2.2
     * LTX-Video
-    * FramePack（親ページあり）
-      * 1フレーム推論
     * Wan-Animate
     * LivePortrait
     * HunyuanVideo-Foley
   * LLM / MLLM — 親ページあり
     * JoyCaption
     * Florence2
-    * Qwen 3 VL
   * その他 — 親ページあり
     * ReActor
   * システム・最適化 — 親ページあり
