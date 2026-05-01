@@ -1,6 +1,7 @@
 let langSwitcherInitialized = false;
 let attentionTimer = null;
 const ATTENTION_TTL_MS = 24 * 60 * 60 * 1000;
+const ATTENTION_STORAGE_VERSION = "v2";
 
 const parsePathLang = (pathname) => {
   const match = pathname.match(/^\/([a-z]{2})\//);
@@ -32,7 +33,7 @@ const getPreferredSupportedLang = () => {
 };
 
 const getAttentionStorageKey = (currentLang, preferredLang) =>
-  `lang_attention_seen:${currentLang}:${preferredLang}`;
+  `lang_attention_seen:${ATTENTION_STORAGE_VERSION}:${currentLang}:${preferredLang}`;
 
 const hasRecentAttention = (currentLang, preferredLang) => {
   try {
