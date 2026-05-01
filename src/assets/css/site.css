@@ -418,7 +418,7 @@ html.js .js-fallback-notice {
   --shell-edge: max(0px, calc((100vw - var(--layout-max)) / 2));
   position: fixed;
   top: var(--header-height);
-  bottom: var(--shell-padding-block-end);
+  bottom: calc(var(--shell-padding-block-end) * -1);
   left: calc(var(--shell-edge) + var(--shell-padding) + var(--sidebar-column-width) + var(--column-gap));
   right: calc(var(--shell-edge) + var(--shell-padding) + var(--toc-column-width) + var(--column-gap));
   z-index: 0;
