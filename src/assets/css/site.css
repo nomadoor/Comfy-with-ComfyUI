@@ -745,6 +745,10 @@ html.js .js-fallback-notice {
   color: var(--color-text);
 }
 
+.sidebar__nav-panel>.nav-list>.nav-list__item>.nav-list__no-link {
+  color: var(--color-text);
+}
+
 .nav-list__link.is-active {
   background: var(--color-tav-strong);
   color: var(--color-heading);
