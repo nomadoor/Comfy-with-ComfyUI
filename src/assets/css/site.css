@@ -414,19 +414,6 @@ html.js .js-fallback-notice {
   min-height: calc(var(--rail-height) + var(--shell-padding-block-start) + var(--shell-padding-block-end));
 }
 
-.reader-backplate {
-  --shell-edge: max(0px, calc((100vw - var(--layout-max)) / 2));
-  position: fixed;
-  top: var(--header-height);
-  bottom: calc(var(--shell-padding-block-end) * -1);
-  left: calc(var(--shell-edge) + var(--shell-padding) + var(--sidebar-column-width) + var(--column-gap));
-  right: calc(var(--shell-edge) + var(--shell-padding) + var(--toc-column-width) + var(--column-gap));
-  z-index: 0;
-  border-radius: var(--radius-md);
-  background: var(--color-reader);
-  pointer-events: none;
-}
-
 .app-shell__sidebar,
 .app-shell__toc {
   align-self: start;
@@ -440,12 +427,52 @@ html.js .js-fallback-notice {
   min-width: 0;
   width: 100%;
   min-height: var(--rail-height);
-  background: transparent;
+  position: relative;
+  z-index: 0;
   border-radius: var(--radius-md);
   overflow: visible;
 }
 
+.app-shell__content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--color-reader);
+  border-radius: var(--radius-md);
+  pointer-events: none;
+}
+
+.app-shell__content-top {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 2;
+  height: var(--space-lg);
+  margin-bottom: calc(var(--space-lg) * -1);
+  pointer-events: none;
+}
+
+.app-shell__content-top::before,
+.app-shell__content-top::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.app-shell__content-top::before {
+  inset: 0;
+  background: var(--color-bg);
+}
+
+.app-shell__content-top::after {
+  inset: 0;
+  background: var(--color-reader);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
 .app-shell__content-scroll {
+  position: relative;
+  z-index: 1;
   width: 100%;
   overflow: visible;
   padding: var(--space-lg) var(--space-xl);
@@ -629,10 +656,6 @@ html.js .js-fallback-notice {
     gap: var(--space-lg);
   }
 
-  .reader-backplate {
-    right: calc(var(--shell-edge) + var(--shell-padding));
-  }
-
   .app-shell__toc,
   .rail--toc {
     display: none;
@@ -669,12 +692,13 @@ html.js .js-fallback-notice {
     padding: 0;
   }
 
-  .reader-backplate {
-    display: none;
-  }
-
   .app-shell__content {
     background: var(--color-reader);
+  }
+
+  .app-shell__content::before,
+  .app-shell__content-top {
+    display: none;
   }
 }
 

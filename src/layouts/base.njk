@@ -108,7 +108,6 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
   data-heading-anchor-copied-label="{{ headingAnchorCopiedLabel | escape }}">
   {% include "header.njk" %}
   <div class="nav-backdrop" aria-hidden="true"></div>
-  <div class="reader-backplate" aria-hidden="true"></div>
   <div class="app-shell">
     <aside class="app-shell__sidebar" id="sidebar">
       <div class="rail rail--sidebar">
@@ -116,6 +115,7 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
       </div>
     </aside>
     <main class="app-shell__content transition-fade" id="page">
+      <div class="app-shell__content-top" aria-hidden="true"></div>
       <div class="js-fallback-notice" data-js-fallback-notice role="status" aria-live="polite">
         <div class="js-fallback-notice__inner">
           {% if currentLang == "ja" %}
