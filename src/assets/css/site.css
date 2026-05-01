@@ -245,7 +245,7 @@ html.js .js-fallback-notice {
   width: 100%;
   height: 24px;
   border-radius: var(--radius-pill);
-  background: var(--color-panel-strong);
+  background: var(--color-sidebar-surface);
   color: var(--color-text);
   padding: 0 2rem 0 0.85rem;
   border: none;
