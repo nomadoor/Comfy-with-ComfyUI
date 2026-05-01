@@ -26,7 +26,7 @@ hero:
 
   <div class="note-finder__tags" aria-label="Tags">
     {% for tag in noteTagList %}
-      <button class="note-finder__tag" type="button" data-note-tag="{{ tag }}">{{ tag }}</button>
+      <button class="note-finder__tag" type="button" data-note-tag="{{ tag }}"><span class="note-finder__tag-prefix" aria-hidden="true">#</span>{{ tag }}</button>
     {% endfor %}
   </div>
 
