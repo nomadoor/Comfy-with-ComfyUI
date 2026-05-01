@@ -169,7 +169,6 @@ video {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: var(--column-gap);
 }
 
 .site-header__logo,
