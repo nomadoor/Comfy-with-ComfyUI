@@ -55,7 +55,7 @@ html {
   --header-height: 72px;
   --sidebar-width: 15rem;
   --toc-width: 15rem;
-  --content-max: 55rem;
+  --content-max: 50rem;
   --rail-padding: var(--space-md);
   --sidebar-column-width: calc(var(--sidebar-width) + (var(--rail-padding) * 2));
   --toc-column-width: calc(var(--toc-width) + (var(--rail-padding) * 2));
@@ -426,6 +426,11 @@ html.js .js-fallback-notice {
   padding: var(--space-lg) var(--space-xl);
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+
+.app-shell__content-scroll> :not(.article-footer) {
+  width: min(100%, var(--content-max));
+  margin-inline: auto;
 }
 
 .app-shell__content-scroll::-webkit-scrollbar {

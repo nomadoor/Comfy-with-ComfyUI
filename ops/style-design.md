@@ -48,7 +48,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 ## 3. Layout & Spacing
 - Spacing scale (`rem`): `0.25, 0.5, 0.75, 1, 1.5, 2, 3`.
 - Border radii: use `--radius-md = 0.5rem` for every component (pill shapes use `--radius-pill`).
-- Grid: sidebar `15rem`, content `60rem` max, TOC `15rem`. Side rails add internal padding without reducing their content width. Column gap is `1.5rem`, outer padding is a separate token, and `--layout-max = sidebar + content + toc + (gap ﾃ・2) + (padding ﾃ・2)`; header uses the same width.
+- Grid: sidebar `15rem`, content `50rem` max, TOC `15rem`. Side rails add internal padding without reducing their content width. Column gap is `1.5rem`, outer padding is a separate token, and `--layout-max = sidebar + content + toc + (gap ﾃ・2) + (padding ﾃ・2)`; header uses the same width.
 - Header height `72px`, sticky at the top. Logo / search / actions stay centered within their columns; search input maxes at 80% width (竕､520px).
 - On desktop, search, theme, and language controls live in the top-right header actions area. Header actions may use their own compact width instead of being constrained to the TOC column. On mobile, keep the existing search toggle and sidebar footer controls.
 - The desktop search dropdown stays aligned to the search input width. Do not widen it independently of the input or use scrollbars for the capped result list.
@@ -73,7 +73,8 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 ## 6. Article Body
 - The central `app-shell__content` column may use a subtle reading surface. It is not a card: avoid borders, shadows, and decorative paper motifs.
 - On desktop, the central surface stays fixed while `.app-shell__content-scroll` carries page scrolling.
-- Article body content remains transparent inside that surface. Content width max 60ch.
+- The central surface may grow when side rails collapse, but article content inside `.app-shell__content-scroll` stays centered at the content max width.
+- Article body content remains transparent inside that surface. Content width follows `--content-max` (`50rem`).
 - Article typography follows the calmer blog rhythm: body letter spacing stays `0`, body line-height is about `1.7`, `h2` is around `1.4rem`, and `h3` is around `1.1rem` without accent coloring.
 - Blockquotes use a quiet but visible purple-tinted background surface with small radius and a small Tabler-style info icon at the start. Do not use borders, a left accent bar, or italic styling by default.
 - Inline images are centered, `max-width: 720px`, `max-height: 320px`, and `object-fit: contain` so portrait assets never force extra scrolling.
