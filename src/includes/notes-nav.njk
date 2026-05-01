@@ -9,14 +9,10 @@
       <span class="nav-list__label">{{ findTitle }}</span>
     </a>
 
-    {% if hasViews %}
-      <div class="notes-nav__sort" role="group" aria-label="Notes sort">
-        <button class="notes-nav__sort-btn is-active" type="button" data-notes-sort="updated" aria-pressed="true">Updated</button>
-        <button class="notes-nav__sort-btn" type="button" data-notes-sort="views" aria-pressed="false">Views</button>
-      </div>
-    {% else %}
-      <p class="notes-nav__sort-label">Updated</p>
-    {% endif %}
+    <div class="notes-nav__sort" role="group" aria-label="Notes sort">
+      <button class="notes-nav__sort-btn is-active" type="button" data-notes-sort="updated" aria-pressed="true">Updated</button>
+      <button class="notes-nav__sort-btn" type="button" data-notes-sort="views" aria-pressed="false" {% if not hasViews %}disabled aria-disabled="true"{% endif %}>Views</button>
+    </div>
   </div>
 
   <ul class="notes-nav__list" data-notes-list>

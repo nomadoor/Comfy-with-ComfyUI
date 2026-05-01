@@ -30,14 +30,10 @@ hero:
     {% endfor %}
   </div>
 
-  {% if hasViews %}
-    <div class="note-finder__sort" role="group" aria-label="Sort Notes">
-      <button class="note-finder__sort-btn is-active" type="button" data-note-sort="updated" aria-pressed="true">Updated</button>
-      <button class="note-finder__sort-btn" type="button" data-note-sort="views" aria-pressed="false">Views</button>
-    </div>
-  {% else %}
-    <p class="note-finder__sort-label">Updated</p>
-  {% endif %}
+  <div class="note-finder__sort" role="group" aria-label="Sort Notes">
+    <button class="note-finder__sort-btn is-active" type="button" data-note-sort="updated" aria-pressed="true">Updated</button>
+    <button class="note-finder__sort-btn" type="button" data-note-sort="views" aria-pressed="false" {% if not hasViews %}disabled aria-disabled="true"{% endif %}>Views</button>
+  </div>
 
   <div class="workflow-related__grid note-finder__grid" data-note-grid>
     {% for note in notes %}

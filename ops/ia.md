@@ -161,8 +161,8 @@
 * 📝Notes
   * Noteを探す / Find Notes / 查找 Notes
   * 個別Noteは階層化せず、左カラムではフラットなタイトルリストとして表示する
-  * 左カラムの Notes パネルは固定の「Noteを探す」リンク、並び順表示、フラットリストで構成する
-  * `Views` は将来の閲覧数データ用。閲覧数データが1件も無い間はクリック可能な並べ替えとして表示せず、`Updated` の静かな状態表示に留める
+  * 左カラムの Notes パネルは固定の「Noteを探す」リンク、Updated / Views セグメント、フラットリストで構成する
+  * `Views` は将来の閲覧数データ用。閲覧数データが1件も無い間もセグメント内に表示するが、disabled として扱い、クリックしても `Updated` と同じ並びになる状態は作らない
   * 旧 `/<lang>/faq/<slug>/` はコンテンツを残さず、Cloudflare Pages `_redirects` で `/<lang>/notes/<slug>/` へ 301 リダイレクトする
 
 ## Hidden Draft Backlog

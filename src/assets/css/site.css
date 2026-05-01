@@ -903,15 +903,6 @@ html.js .js-fallback-notice {
   background: var(--color-tav-strong);
 }
 
-.notes-nav__sort-label {
-  margin: 0;
-  padding: 0 var(--space-xs);
-  color: var(--color-text-muted);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-}
-
 .notes-nav__sort {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -935,10 +926,15 @@ html.js .js-fallback-notice {
 }
 
 .notes-nav__sort-btn.is-active,
-.notes-nav__sort-btn:hover,
-.notes-nav__sort-btn:focus-visible {
+.notes-nav__sort-btn:not(:disabled):hover,
+.notes-nav__sort-btn:not(:disabled):focus-visible {
   background: var(--color-tav-strong);
   color: var(--color-heading);
+}
+
+.notes-nav__sort-btn:disabled {
+  cursor: default;
+  color: color-mix(in srgb, var(--color-text-muted) 62%, transparent);
 }
 
 .notes-nav__list {
@@ -2586,8 +2582,14 @@ h1 {
   width: min(100%, 34rem);
   padding: var(--space-sm) var(--space-md);
   border-radius: var(--radius-md);
-  background: var(--color-sidebar-surface);
+  background: var(--color-panel-alt);
   color: var(--color-text-muted);
+  transition: var(--transition-fast);
+}
+
+.note-finder__search:focus-within {
+  background: var(--color-tav-strong);
+  color: var(--color-heading);
 }
 
 .note-finder__search-icon {
@@ -2626,8 +2628,8 @@ h1 {
   border: 0;
   border-radius: 999px;
   padding: var(--space-2xs) var(--space-sm);
-  background: var(--color-sidebar-surface);
-  color: var(--color-text-muted);
+  background: var(--color-panel-alt);
+  color: var(--color-text);
   font: inherit;
   font-size: 0.82rem;
   font-weight: 600;
@@ -2636,18 +2638,10 @@ h1 {
 }
 
 .note-finder__tag:hover,
-.note-finder__tag:focus-visible {
+.note-finder__tag:focus-visible,
+.note-finder__tag.is-active {
   background: var(--color-tav-strong);
   color: var(--color-heading);
-}
-
-.note-finder__sort-label {
-  align-self: flex-start;
-  margin: 0;
-  color: var(--color-text-muted);
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
 }
 
 .note-finder__sort {
@@ -2673,10 +2667,15 @@ h1 {
 }
 
 .note-finder__sort-btn.is-active,
-.note-finder__sort-btn:hover,
-.note-finder__sort-btn:focus-visible {
+.note-finder__sort-btn:not(:disabled):hover,
+.note-finder__sort-btn:not(:disabled):focus-visible {
   background: var(--color-tav-strong);
   color: var(--color-heading);
+}
+
+.note-finder__sort-btn:disabled {
+  cursor: default;
+  color: color-mix(in srgb, var(--color-text-muted) 62%, transparent);
 }
 
 .note-finder__grid {
