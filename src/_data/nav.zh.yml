@@ -181,9 +181,6 @@ sections:
     title: 视频与音频生成
     noLink: true
     children:
-    - id: video-generation
-      title: 视频生成
-      noLink: true
     - id: video-upscale-restoration
       title: 视频放大与修复
     - id: frame-interpolation
@@ -196,15 +193,6 @@ sections:
       title: talking head（说话人像）
     - id: human-motion-transfer
       title: 人体动作迁移
-    - id: tts
-      title: TTS
-      noLink: true
-    - id: voice-clone
-      title: 语音克隆
-      noLink: true
-    - id: music-generation
-      title: 音乐生成
-      noLink: true
   - id: 3d-generation
     title: 3D 生成
     noLink: true
@@ -326,13 +314,6 @@ sections:
       children:
       - id: ltx-2-3
         title: LTX 2.3
-    - id: framepack
-      title: FramePack
-      noLink: true
-      children:
-        - id: framepack-one-frame-inference
-          title: FramePack 单帧推理
-          noLink: true
     - id: liveportrait
       title: LivePortrait
   - id: llm-mllm
@@ -342,9 +323,6 @@ sections:
       title: JoyCaption
     - id: florence2
       title: Florence-2
-    - id: qwen-3-vl
-      title: Qwen 3 VL
-      noLink: true
     - id: external-llm-server
       title: 外部 LLM 服务器集成
   - id: other-workflows

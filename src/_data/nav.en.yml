@@ -181,9 +181,6 @@ sections:
         title: Video & Audio Generation
         noLink: true
         children:
-          - id: video-generation
-            title: Video Generation
-            noLink: true
           - id: video-upscale-restoration
             title: Video Upscale & Restoration
           - id: frame-interpolation
@@ -196,15 +193,6 @@ sections:
             title: talking head
           - id: human-motion-transfer
             title: Human Motion Transfer
-          - id: tts
-            title: TTS
-            noLink: true
-          - id: voice-clone
-            title: Voice Clone
-            noLink: true
-          - id: music-generation
-            title: Music Generation
-            noLink: true
       - id: 3d-generation
         title: 3D Generation
         noLink: true
@@ -326,13 +314,6 @@ sections:
             children:
               - id: ltx-2-3
                 title: LTX 2.3
-          - id: framepack
-            title: FramePack
-            noLink: true
-            children:
-              - id: framepack-one-frame-inference
-                title: FramePack One Frame Inference
-                noLink: true
           - id: liveportrait
             title: LivePortrait
       - id: llm-mllm
@@ -342,9 +323,6 @@ sections:
             title: JoyCaption
           - id: florence2
             title: Florence-2
-          - id: qwen-3-vl
-            title: Qwen 3 VL
-            noLink: true
           - id: external-llm-server
             title: External LLM Server
       - id: other-workflows

@@ -181,9 +181,6 @@ sections:
         title: 動画・音声生成
         noLink: true
         children:
-          - id: video-generation
-            title: 動画生成
-            noLink: true
           - id: video-upscale-restoration
             title: アップスケール・動画修復
           - id: frame-interpolation
@@ -196,15 +193,6 @@ sections:
             title: talking head
           - id: human-motion-transfer
             title: Human Motion Transfer
-          - id: tts
-            title: TTS
-            noLink: true
-          - id: voice-clone
-            title: ボイスクローン
-            noLink: true
-          - id: music-generation
-            title: 音楽生成
-            noLink: true
       - id: 3d-generation
         title: 3D生成
         noLink: true
@@ -326,13 +314,6 @@ sections:
             children:
               - id: ltx-2-3
                 title: LTX 2.3
-          - id: framepack
-            title: FramePack
-            noLink: true
-            children:
-              - id: framepack-one-frame-inference
-                title: FramePack 1フレーム推論
-                noLink: true
           - id: liveportrait
             title: LivePortrait
       - id: llm-mllm
