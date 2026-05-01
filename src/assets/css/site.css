@@ -2610,12 +2610,23 @@ h1 {
 
 .workflow-related {
   margin-top: var(--space-2xl);
+  padding-top: var(--space-2xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.workflow-related__heading {
+  margin: 0 0 var(--space-md);
+  color: var(--color-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.35;
 }
 
 .workflow-related__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: var(--space-md);
+  column-gap: var(--space-md);
+  row-gap: var(--space-lg);
 }
 
 .workflow-related__card {
@@ -3584,11 +3595,6 @@ h1 {
   }
 }
 
-.workflow-related__card:hover,
-.workflow-related__card:focus-visible {
-  color: var(--color-heading);
-}
-
 .workflow-related__hero {
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -3606,6 +3612,7 @@ h1 {
   background-image: var(--hero-image);
   background-position: center;
   background-size: cover;
+  filter: brightness(0.85);
   opacity: 0;
   transform: scale(1);
   transform-origin: center;
@@ -3694,13 +3701,6 @@ h1 {
 .workflow-related__title {
   font-weight: 700;
   font-size: 0.9rem;
-}
-
-.workflow-related__summary {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  font-weight: 500;
-  flex: 1;
 }
 
 .sr-only {

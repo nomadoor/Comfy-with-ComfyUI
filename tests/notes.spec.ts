@@ -39,3 +39,22 @@ test.describe("Notes views sorting", () => {
     await expectSortedByViews(items);
   });
 });
+
+test.describe("Notes tag relations", () => {
+  test("related pages require a shared note tag", async ({ page }) => {
+    await page.goto("/ja/notes/sd15-sdxl-asset-compatibility/");
+
+    const related = page.locator(".workflow-related");
+    await expect(related).toBeVisible();
+    await expect(related).toContainText("512px × 512pxで生成するのはなぜ？");
+    await expect(related).not.toContainText("生成画像で人や物体が分身している");
+  });
+
+  test("note tag chips open the finder with that tag as the query", async ({ page }) => {
+    await page.goto("/ja/notes/sd15-sdxl-asset-compatibility/");
+    await page.locator(".tag-chip", { hasText: "sdxl" }).click();
+
+    await expect(page).toHaveURL(/\/ja\/notes\/find\/\?q=sdxl$/);
+    await expect(page.locator("[data-note-query]")).toHaveValue("sdxl");
+  });
+});

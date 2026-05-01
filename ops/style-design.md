@@ -94,12 +94,12 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 
 ## 9. Workflow Assets
 - **Workflow JSON**: render as `filename | Copy | Download` rows (chips). Copy buttons read from hidden `<pre>` nodes to avoid DOM pollution; download links point at `/workflows/<slug>.json`.
-- **髢｢騾｣繝ｯ繝ｼ繧ｯ繝輔Ο繝ｼ**: only on `basic-workflows/*` pages. Gather other workflow pages sharing at least one AI-capability tag and render them in a Cosense-style grid (`repeat(auto-fill, minmax(146px, 1fr))`). Each card shows title + summary 窶・no screenshots.
+- **Related pages**: render below article content on section pages. Separate the block from the article with the same quiet horizontal boundary rhythm used by article `<hr>` rules: `--space-2xl` before and after the line. Show only pages in the same locale that share the same tag channel: `tags` match `tags`, and `noteTags` match `noteTags`. If a page has both, score both channels independently and add the matches. Do not fall back to same-section pages without a shared tag; unrelated cards make the footer misleading. Cap the visible set so the footer stays scannable.
 - Shared related cards do not lift, draw borders, or cast shadows on hover. Hover / focus feedback belongs inside the thumbnail area: real images zoom subtly. Image-less cards use a quiet `--color-panel-alt` thumbnail with one subdued centered Tabler-style IT icon. The icon stays straight at rest and may add a tiny deterministic rotation while zooming on hover; do not use gradients or patterned placeholder art.
 - Images in these sections obey the same `max-height: 300px` rule; JSON data stays pure text (never embedded screenshots).
 
 ## 10. Tags & Navigation Data
-- `nav.ja.yml` / `nav.en.yml` store sections + page IDs. Every tag slug **must** exist in these files so tag chips can build canonical links.
+- `nav.<lang>.yml` stores sections + page IDs. Every regular `tags` slug **must** exist in these files so tag chips can build canonical links. `noteTags` are local Notes finder facets and do not require nav entries.
 - Missing page slugs auto-generate placeholders via `src/content/placeholders.11ty.js`. Placeholder copy: 窶懊∪縺繝壹・繧ｸ縺後≠繧翫∪縺帙ｓ窶ｦ窶・
 
 ## 11. Fonts & Language Rules

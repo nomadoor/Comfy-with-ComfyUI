@@ -5,7 +5,7 @@ layout: base.njk
 {% set currentLang = lang or site.defaultLang %}
 {% set workflowI18n = site.i18n.workflow or {} %}
 {% set workflowJsonHeading = workflowI18n.jsonHeading[currentLang] or workflowI18n.jsonHeading[site.defaultLang] or "Workflow JSON" %}
-{% set workflowRelatedHeading = workflowI18n.relatedHeading[currentLang] or workflowI18n.relatedHeading[site.defaultLang] or "Related workflows" %}
+{% set relatedPagesHeading = workflowI18n.relatedHeading[currentLang] or workflowI18n.relatedHeading[site.defaultLang] or "Related pages" %}
 {% set workflowCopyLabel = "Copy" %}
 {% set workflowDownloadLabel = "Download" %}
 {% set workflowCopiedLabel = "Copied" %}
@@ -43,19 +43,23 @@ layout: base.njk
 </section>
 {% endif %}
 
-{% set relatedTags = tags %}
-{% if section == "ai-capabilities" and (not relatedTags or not relatedTags.length) %}
-  {% set relatedTags = [slug] %}
-{% endif %}
-
-{% if section == "basic-workflows" or section == "ai-capabilities" %}
-  {% set relatedPages = collections.all | relatedWorkflows(page.url, relatedTags, lang) %}
-  {% if relatedPages.length %}
+{% if section and not (section == "notes" and slug == "find") %}
+  {% set relatedCurrentPage = {
+    lang: currentLang,
+    section: section,
+    slug: slug,
+    tags: tags,
+    noteTags: noteTags,
+    updated: updated,
+    created: created
+  } %}
+  {% set relatedEntries = collections.all | relatedPages(page.url, relatedCurrentPage, 6) %}
+  {% if relatedEntries.length %}
     <section class="workflow-related">
-      <h2 class="workflow-related__heading">{{ workflowRelatedHeading }}</h2>
+      <h2 class="workflow-related__heading">{{ relatedPagesHeading }}</h2>
       <div class="workflow-related__grid">
         {% set placeholderIcons = ["terminal-2", "cpu-2", "braces", "binary-tree", "sparkles"] %}
-        {% for entry in relatedPages %}
+        {% for entry in relatedEntries %}
           {% set heroImage = entry.hero and entry.hero.image or null %}
           {% set heroVariant = null %}
           {% if heroImage %}
@@ -69,9 +73,6 @@ layout: base.njk
               {% endif %}
             </div>
             <span class="workflow-related__title">{{ entry.title }}</span>
-            {% if entry.summary %}
-              <span class="workflow-related__summary">{{ entry.summary }}</span>
-            {% endif %}
           </a>
         {% endfor %}
       </div>

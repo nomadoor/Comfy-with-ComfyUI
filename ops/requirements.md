@@ -26,12 +26,15 @@
   - short touch devices (`hover: none`, `pointer: coarse`, `max-height: 900px`) such as iPad landscape, regardless of width.
   - any short viewport (`max-height: 950px`) so low-height landscape windows also collapse sections.
 
-## 3. Related Workflows
-- Render related cards using the existing helper.
-- Sections:
-  - `basic-workflows`: show other basic-workflows that share at least one tag.
-  - `ai-capabilities`: if tags are present use them; otherwise fall back to the page slug as the tag key to surface matching basic-workflows.
-- Limit to 12 cards; stack vertically on narrow layouts.
+## 3. Related Pages
+- Render related cards below article content with the shared related-card component.
+- Relatedness is tag-channel based:
+  - `tags` match only other `tags`.
+  - `noteTags` match only other `noteTags`.
+  - If a page has both channels, score both independently and add the matches.
+- `ai-capabilities` pages normally omit `tags`; for related-page matching only, their `slug` is treated as an implicit `tags` key so matching workflow pages can surface.
+- Do not fall back to same-section pages without a shared tag. A card without a shared tag is misleading.
+- Keep results in the current locale and cap the visible set so the footer stays scannable.
 
 ## 3.5 Prev/Next Links (Article Footer)
 - Render a previous/next page row beneath the related pages block on article pages.
