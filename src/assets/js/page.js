@@ -10,7 +10,6 @@ import initWorkflowPicker from "./workflow-picker.js";
 import initMediaRowFit from "./media-row-fit.js";
 import initHeadingAnchors from "./heading-anchors.js";
 import initContact from "./contact.js";
-import initNoteFinder from "./note-finder.js";
 import "./sidebar.js"; // legacy auto-init; sidebar is persistent shell
 import "./mobile-nav.js"; // handles nav/search toggles; persistent shell
 import "./theme-toggle.js"; // global theme switcher
@@ -37,6 +36,15 @@ const profileStep = (label, fn) => {
   return result;
 };
 
+const initNoteFinderIfNeeded = (root) => {
+  if (!root.querySelector?.("[data-note-finder]")) return;
+  import("./note-finder.js")
+    .then(({ default: initNoteFinder }) => initNoteFinder?.(root))
+    .catch((error) => {
+      console.error("[note-finder] failed to load", error);
+    });
+};
+
 export default function initPage(root = document.getElementById("page") || document) {
   if (isProfileNav()) console.log("[nav-prof] initPage start");
 
@@ -52,7 +60,7 @@ export default function initPage(root = document.getElementById("page") || docum
   profileStep("workflow-picker", () => initWorkflowPicker?.(root));
   profileStep("related-hero", () => initRelatedHero?.(root));
   profileStep("contact", () => initContact?.(root));
-  profileStep("note-finder", () => initNoteFinder?.(root));
+  profileStep("note-finder", () => initNoteFinderIfNeeded(root));
 
   // Global-once modules (idempotent / guarded inside)
   profileStep("assistant", () => initAssistant?.());
