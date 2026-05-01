@@ -12,7 +12,6 @@ let tocState = {
 
 const initToc = () => {
   const article = document.querySelector(".article-body");
-  const contentScroll = document.querySelector(".app-shell__content");
   const tocContainer = document.querySelector(".toc__links");
   if (!article || !tocContainer) return;
 
@@ -135,9 +134,7 @@ const initToc = () => {
     tocState.ticking = false;
     if (!tocState.headings.length) return;
 
-    const offset = contentScroll
-      ? contentScroll.getBoundingClientRect().top
-      : getHeaderOffset();
+    const offset = getHeaderOffset();
 
     // Strategy: Find the last heading that is above the "read line" (offset)
     // or simply finding the heading closest to the top but slightly above or crossing it.
@@ -221,7 +218,7 @@ const initToc = () => {
     }
   };
 
-  const scrollRoot = contentScroll || window;
+  const scrollRoot = window;
   scrollRoot.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", handleResize, { passive: true });
   window.addEventListener("load", handleLoad);
