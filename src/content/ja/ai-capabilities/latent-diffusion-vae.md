@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: latent-diffusion-vae
 navId: latent-diffusion-vae
 title: Latent Diffusion ModelとVAE
+created: 2025-11-29
+updated: 2026-03-02
 summary: 潜在空間とVAEの役割
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

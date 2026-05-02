@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: upscale-restoration
 navId: upscale-restoration
 title: Upscale & Restoration
+created: 2025-11-13
+updated: 2026-03-02
 summary: Technologies to enlarge images or restore degraded ones.
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

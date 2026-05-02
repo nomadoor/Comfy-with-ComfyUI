@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: latent-diffusion-vae
 navId: latent-diffusion-vae
 title: Latent Diffusion Model (潜扩散模型) 与 VAE
+created: 2026-02-06
+updated: 2026-03-02
 summary: 潜在空间和 VAE 的作用
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

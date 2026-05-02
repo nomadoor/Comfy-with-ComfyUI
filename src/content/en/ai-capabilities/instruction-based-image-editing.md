@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: instruction-based-image-editing
 navId: instruction-based-image-editing
 title: Instruction-Based Image Editing
+created: 2025-12-01
+updated: 2026-03-02
 summary: A group of models that perform various image editing tasks simply by following
   text instructions.
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/

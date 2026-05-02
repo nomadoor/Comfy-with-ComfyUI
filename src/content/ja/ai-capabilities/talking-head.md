@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: talking-head
 navId: talking-head
 title: talking head
+created: 2025-12-01
+updated: 2026-03-02
 summary: 1枚絵や顔写真を、参照動画や音声に合わせてしゃべらせる技術
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

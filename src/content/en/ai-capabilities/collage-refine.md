@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: collage-refine
 navId: collage-refine
 title: Refining Rough Collages
+created: 2025-12-01
+updated: 2026-03-02
 summary: A technique to finish rough collage images into natural single pictures using
   instruction-based image editing.
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/

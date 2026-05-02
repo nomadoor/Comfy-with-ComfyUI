@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: conditioning
 navId: conditioning
 title: Conditioning (调节/条件)
+created: 2026-02-06
+updated: 2026-03-02
 summary: 告诉扩散模型“想要这样的图像”的机制
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

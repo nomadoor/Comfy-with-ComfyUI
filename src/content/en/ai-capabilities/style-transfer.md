@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: style-transfer
 navId: style-transfer
 title: Style Transfer
+created: 2025-12-01
+updated: 2026-03-02
 summary: The task of trying to transfer 'style' from a reference image, and its ambiguity.
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

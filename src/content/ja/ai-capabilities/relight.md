@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: relight
 navId: relight
 title: リライト
+created: 2025-12-03
+updated: 2026-03-02
 summary: "光源や環境光を変えて、画像のライティングを調整するタスク"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

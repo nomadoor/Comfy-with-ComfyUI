@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: instruction-based-image-editing
 navId: instruction-based-image-editing
 title: 基于指令的图像编辑
+created: 2026-02-06
+updated: 2026-03-02
 summary: 只需用文本指示，就能完成各种图像编辑任务的模型群
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

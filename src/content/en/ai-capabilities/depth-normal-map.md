@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: depth-normal-map
 navId: depth-normal-map
 title: "Depth Estimation & Normal Map"
+created: 2025-12-01
+updated: 2026-03-02
 summary: "Technology to extract depth and three-dimensionality from images"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

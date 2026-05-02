@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: frame-interpolation
 navId: frame-interpolation
 title: 帧插值
+created: 2026-02-06
+updated: 2026-03-02
 summary: 让视频更流畅，或连接分离帧的技术
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

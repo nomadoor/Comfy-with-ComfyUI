@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: frame-interpolation
 navId: frame-interpolation
 title: フレーム補間
+created: 2025-12-01
+updated: 2026-03-02
 summary: 動画をなめらかにしたり、離れたフレーム同士をつなぐ技術
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

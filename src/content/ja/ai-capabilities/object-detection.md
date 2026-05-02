@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: object-detection
 navId: object-detection
 title: 物体検出
+created: 2025-12-01
+updated: 2026-03-02
 summary: "画像の中に「何が」「どこに」あるかを見つける技術"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

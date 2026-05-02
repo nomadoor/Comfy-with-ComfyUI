@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: subject-transfer
 navId: subject-transfer
 title: Subject転送
+created: 2025-12-01
+updated: 2026-03-02
 summary: 参照画像と同じものを別のシーンに登場させる技術
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

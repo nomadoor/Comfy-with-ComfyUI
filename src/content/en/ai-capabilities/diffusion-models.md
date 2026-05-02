@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: diffusion-models
 navId: diffusion-models
 title: Diffusion Models
+created: 2025-12-01
+updated: 2026-03-02
 summary: The mechanism of diffusion models.
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

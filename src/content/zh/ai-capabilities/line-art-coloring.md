@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: line-art-coloring
 navId: line-art-coloring
 title: 线稿上色
+created: 2026-02-06
+updated: 2026-03-02
 summary: 给线稿上色的技术
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

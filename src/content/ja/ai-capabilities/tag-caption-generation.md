@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: tag-caption-generation
 navId: tag-caption-generation
 title: タグ・キャプション生成
+created: 2025-12-03
+updated: 2026-03-02
 summary: "画像からタグや説明文（キャプション）を自動で付ける技術"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
