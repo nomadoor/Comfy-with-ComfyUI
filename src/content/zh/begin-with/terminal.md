@@ -5,6 +5,8 @@ section: begin-with
 slug: terminal
 navId: terminal
 title: "终端"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "关于终端 (CLI) 的基础知识"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

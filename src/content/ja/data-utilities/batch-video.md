@@ -5,6 +5,8 @@ section: data-utilities
 slug: batch-video
 navId: batch-video
 title: "Batch・動画"
+created: 2025-11-27
+updated: 2026-03-02
 summary: "複数画像・動画フレームをまとめて扱う仕組み"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

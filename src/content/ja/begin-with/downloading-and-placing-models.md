@@ -5,6 +5,8 @@ section: begin-with
 slug: downloading-and-placing-models
 navId: downloading-and-placing-models
 title: "モデルのダウンロードと配置"
+created: 2025-11-20
+updated: 2026-03-02
 summary: "モデルのダウンロードと配置について"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

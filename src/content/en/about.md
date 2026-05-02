@@ -4,6 +4,8 @@ lang: en
 slug: about
 navId: about
 title: "About"
+created: 2025-11-13
+updated: 2026-03-02
 summary: "About this site"
 searchExclude: true
 tags:

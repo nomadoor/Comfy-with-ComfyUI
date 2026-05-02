@@ -5,6 +5,8 @@ section: data-utilities
 slug: ai-mask-generation
 navId: ai-mask-generation
 title: "使用 AI 生成蒙版"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "关于抠图、分割、物体检测"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

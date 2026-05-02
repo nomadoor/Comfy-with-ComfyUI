@@ -5,6 +5,8 @@ section: data-utilities
 slug: realtime
 navId: realtime
 title: "Realtime Processing"
+created: 2025-11-27
+updated: 2026-03-02
 summary: "Realtime-like processing and when to use Instant/Change"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

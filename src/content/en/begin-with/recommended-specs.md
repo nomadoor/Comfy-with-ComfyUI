@@ -5,6 +5,8 @@ section: begin-with
 slug: recommended-specs
 navId: recommended-specs
 title: "Recommended Specs"
+created: 2025-11-24
+updated: 2026-03-02
 summary: "PC specs required to run ComfyUI"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

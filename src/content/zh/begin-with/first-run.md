@@ -5,6 +5,8 @@ section: begin-with
 slug: first-run
 navId: first-run
 title: "首次运行"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "关于首次运行与生成"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

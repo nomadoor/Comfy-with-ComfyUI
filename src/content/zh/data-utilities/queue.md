@@ -5,6 +5,8 @@ section: data-utilities
 slug: queue
 navId: queue
 title: "队列 (Queue)"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "关于处理的预约和指定次数运行"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

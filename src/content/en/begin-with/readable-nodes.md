@@ -5,6 +5,8 @@ section: begin-with
 slug: readable-nodes
 navId: readable-nodes
 title: "Recommendation of Readable Nodes"
+created: 2025-11-26
+updated: 2026-03-02
 summary: "Tips for building clean and easy-to-use workflows"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

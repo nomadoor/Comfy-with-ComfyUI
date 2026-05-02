@@ -5,6 +5,8 @@ section: begin-with
 slug: group
 navId: group
 title: "组 (Group)"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "关于将节点汇总的组功能"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

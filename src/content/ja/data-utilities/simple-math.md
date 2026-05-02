@@ -5,6 +5,8 @@ section: data-utilities
 slug: simple-math
 navId: simple-math
 title: "単純な計算"
+created: 2025-11-24
+updated: 2026-03-21
 summary: "四則演算など、基本的な計算を行うノードについて"
 
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
