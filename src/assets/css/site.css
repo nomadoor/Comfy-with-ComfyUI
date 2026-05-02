@@ -674,7 +674,7 @@ html.js .js-fallback-notice {
   .sidebar:has(.sidebar__section-tab[data-section-tab="ai-capabilities"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="ai-capabilities"]:not(.is-active),
   .sidebar:has(.sidebar__section-tab[data-section-tab="basic-workflows"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="basic-workflows"]:not(.is-active),
   .sidebar:has(.sidebar__section-tab[data-section-tab="notes"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="notes"]:not(.is-active) {
-    background: var(--color-panel-alt);
+    background: var(--color-tav-strong);
   }
 
   /* 文字色：ボタン本体 + その中のアイコン */
@@ -782,19 +782,18 @@ html.js .js-fallback-notice {
 
 .sidebar__section-btn:not(.is-active):hover,
 .sidebar__section-btn:not(.is-active):focus-visible {
-  background: var(--color-panel-alt);
+  background: var(--color-tav-strong);
   color: var(--color-text);
 }
 
-
 .sidebar__section-btn.is-active {
-  background: var(--color-panel-alt);
+  background: var(--color-tav-strong);
   color: var(--color-heading);
 }
 
 .sidebar__section-btn.is-active:hover,
 .sidebar__section-btn.is-active:focus-visible {
-  background: var(--color-panel-alt);
+  background: var(--color-tav-strong);
   color: var(--color-heading);
 }
 
@@ -959,6 +958,10 @@ html.js .js-fallback-notice {
   width: 0.9rem;
   height: 0.9rem;
   --icon-stroke-width: 2;
+}
+
+.notes-nav__find.is-active .notes-nav__find-icon {
+  color: var(--color-highlight);
 }
 
 .notes-nav__sort {
@@ -1672,15 +1675,18 @@ h1 {
 }
 
 .article-body ul li {
-  position: relative;
   --article-list-line-height: 1.7;
   --article-list-marker-size: 5px;
+  --article-list-marker-fill: var(--color-highlight);
+  --article-list-marker-shadow: none;
+
+  position: relative;
   padding-left: 1rem;
   margin: 0.4rem 0;
   line-height: var(--article-list-line-height);
 }
 
-.article-body ul>li::before {
+.article-body ul > li::before {
   content: "";
   position: absolute;
   left: 2px;
@@ -1688,11 +1694,18 @@ h1 {
   width: var(--article-list-marker-size);
   height: var(--article-list-marker-size);
   border-radius: 50%;
-  background: var(--color-highlight);
+  background: var(--article-list-marker-fill);
+  box-shadow: var(--article-list-marker-shadow);
 }
 
 .article-body ul ul {
   margin: 0.4rem 0 0.4rem var(--space-2xs);
+}
+
+.article-body ul ul > li {
+  --article-list-marker-size: 6px;
+  --article-list-marker-fill: transparent;
+  --article-list-marker-shadow: inset 0 0 0 1.6px color-mix(in srgb, var(--color-text-muted) 55%, var(--color-highlight));
 }
 
 .article-body ol {

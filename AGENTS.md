@@ -231,6 +231,14 @@ If the specification in `/ops` is ambiguous:
 * Open an Issue.
 * **Propose a clarification in `/ops`** before pushing large changes.
 
+### 12.1.1 Push Requires Explicit Owner Instruction
+
+Agents **must not push** local commits, force-push, update an existing PR branch, or otherwise publish local changes to any remote unless the owner explicitly says to push in the current work sequence.
+
+* Opening a PR, updating a PR, amending a pushed commit, and force-pushing all count as **push/publish operations**.
+* "Fix this review" or "address this finding" means edit and validate locally only, unless the owner also says to push.
+* If a push seems necessary, stop and ask for explicit permission first.
+
 ### 12.2 New Feature Rule (Commit / Branch Before Work)
 
 Before implementing any new feature on your own initiative:

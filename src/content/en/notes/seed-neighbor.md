@@ -73,9 +73,9 @@ The idea is straightforward.
 
 ![](https://gyazo.com/313224ede32c9b07ac81fad2c1bc3a71){gyazo=image}
 
-- 1. Create noise A with `seed_A`
-- 2. Create noise B with `seed_B`
-- 3. Use A as the base and blend in a small amount of B
+1. Create noise A with `seed_A`
+2. Create noise B with `seed_B`
+3. Use A as the base and blend in a small amount of B
 
 By changing `seed_B` or the blend amount, you can produce small variations.
 
@@ -85,8 +85,8 @@ Another way is to add a small noise latent to the base latent.
 
 ![](https://gyazo.com/3330b48b010177e127ceb014a3da882f){gyazo=image}
 
-- 1. Create noise A with `seed_A`
-- 2. Add a small noise latent from another random value, with a coefficient like `0.01`
+1. Create noise A with `seed_A`
+2. Add a small noise latent from another random value, with a coefficient like `0.01`
 
 Because this injects noise, the total noise amount increases.
 

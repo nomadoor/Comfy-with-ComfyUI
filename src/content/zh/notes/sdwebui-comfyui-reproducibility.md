@@ -59,13 +59,20 @@ hero:
 在官方 FAQ 的例子中，如下所示。
 
 **输入提示词**  
-> `(masterpiece:1.2) (best:1.3) (quality:1.4) girl`
 
-**在 Stable Diffusion web UI 中，会被归一化**  
-> `(masterpiece:0.98) (best:1.06) (quality:1.14) (girl:0.81)`
+```text
+(masterpiece:1.2) (best:1.3) (quality:1.4) girl
+```
+
+**在 Stable Diffusion web UI 中，会被归一化**
+
+```text
+(masterpiece:0.98) (best:1.06) (quality:1.14) (girl:0.81)
+```
 
 **在 ComfyUI 中不会被归一化**  
-> `masterpiece = 1.2 / best = 1.3 / quality = 1.4 / girl = 1.0` 保持原样
+
+`masterpiece = 1.2` / `best = 1.3` / `quality = 1.4` / `girl = 1.0` 保持原样
 
 结果是，即使输入相同的文本・相同的数值，由于 **传递给文本编码器的“实际权重”不同**，所以不会变成同样的画。
 
