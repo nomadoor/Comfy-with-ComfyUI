@@ -346,6 +346,8 @@ sections:
   pages:
   - id: find
     title: 查找 Notes
+  - id: ai-toolkit-sdxl-lora-training
+    title: 用 AI Toolkit 训练 SDXL（Illustrious）LoRA
   - id: panorama-stickers
     title: ComfyUI Panorama Stickers
   - id: insightface-install
