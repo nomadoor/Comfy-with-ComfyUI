@@ -74,7 +74,7 @@ Let's look at the Myaku-Myaku example.
 
 There are several visible elements in the image:
 
-- computer
+- laptop
 - chair
 - many eyes
 - blue body
