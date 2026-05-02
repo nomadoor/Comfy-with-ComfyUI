@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: upscale-restoration
 navId: upscale-restoration
 title: 放大・图像修复
+created: 2026-02-06
+updated: 2026-03-02
 summary: 放大图像，或修复劣化图像的技术
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: id-transfer
 navId: id-transfer
 title: ID 转移与 FaceSwap
+created: 2026-02-06
+updated: 2026-03-02
 summary: 保持人物面部或本人特征，创作不同场景图像的技术与换脸
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

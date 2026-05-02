@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: line-art-coloring
 navId: line-art-coloring
 title: Line Art Coloring
+created: 2025-12-01
+updated: 2026-03-02
 summary: Technology to color line art.
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

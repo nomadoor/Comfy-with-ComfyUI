@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: depth-normal-map
 navId: depth-normal-map
 title: "深度推断与法线贴图生成"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "从图像中提取进深感或立体感的技术"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

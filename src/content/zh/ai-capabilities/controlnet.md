@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: controlnet
 navId: controlnet
 title: ControlNet 系
+created: 2026-02-06
+updated: 2026-03-02
 summary: 使用姿势或线稿等附加信息控制图像生成的技术
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

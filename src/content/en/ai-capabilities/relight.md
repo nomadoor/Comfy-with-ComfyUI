@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: relight
 navId: relight
 title: Relight
+created: 2025-12-01
+updated: 2026-03-02
 summary: "Task to adjust lighting of an image by changing light source or ambient light"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

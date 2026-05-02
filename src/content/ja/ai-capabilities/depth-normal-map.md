@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: depth-normal-map
 navId: depth-normal-map
 title: "深度推定とノーマルマップ生成"
+created: 2025-12-01
+updated: 2026-03-02
 summary: "画像から奥行きや立体感を取り出す技術"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

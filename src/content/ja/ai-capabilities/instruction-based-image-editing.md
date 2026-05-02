@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: instruction-based-image-editing
 navId: instruction-based-image-editing
 title: 指示ベース画像編集
+created: 2025-12-01
+updated: 2026-03-02
 summary: テキストで指示するだけで、さまざまな画像編集タスクをこなすモデル群
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

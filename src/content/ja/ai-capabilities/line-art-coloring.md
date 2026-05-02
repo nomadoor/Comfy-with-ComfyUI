@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: line-art-coloring
 navId: line-art-coloring
 title: 線画着色
+created: 2025-12-01
+updated: 2026-03-02
 summary: 線画に色を塗る技術
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: video-generation
 navId: video-generation
 title: 视频生成
+created: 2025-12-01
+updated: 2026-03-02
 summary: 视频生成 的概要页面（准备中）
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

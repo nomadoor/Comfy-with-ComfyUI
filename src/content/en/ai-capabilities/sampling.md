@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: sampling
 navId: sampling
 title: Sampling
+created: 2025-12-01
+updated: 2026-03-27
 summary: Mechanism to decide the procedure for reducing noise
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

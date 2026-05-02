@@ -5,6 +5,8 @@ section: ai-capabilities
 slug: video-upscale-restoration
 navId: video-upscale-restoration
 title: アップスケール・動画修復
+created: 2025-12-01
+updated: 2026-03-02
 summary: 動画を大きく・きれいにするための専用モデル
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
