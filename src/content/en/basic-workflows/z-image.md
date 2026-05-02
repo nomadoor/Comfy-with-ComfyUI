@@ -5,6 +5,8 @@ section: basic-workflows
 slug: z-image
 navId: z-image
 title: "Z-Image"
+created: 2026-01-31
+updated: 2026-03-02
 summary: "Image generation with Z-Image"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

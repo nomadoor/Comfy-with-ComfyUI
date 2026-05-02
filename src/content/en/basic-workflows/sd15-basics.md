@@ -5,6 +5,8 @@ section: basic-workflows
 slug: sd15-basics
 navId: sd15-basics
 title: "Basics of Image Generation (SD1.5)"
+created: 2025-11-13
+updated: 2026-03-02
 summary: "Basics of Image Generation with Stable Diffusion 1.5"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

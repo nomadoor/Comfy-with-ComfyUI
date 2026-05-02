@@ -5,6 +5,8 @@ section: basic-workflows
 slug: controlnet-prep
 navId: controlnet-prep
 title: "ControlNet 预处理器"
+created: 2025-12-08
+updated: 2026-03-02
 summary: "制作在 ControlNet 使用的辅助图像"
 tags: ["controlnet"]
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"

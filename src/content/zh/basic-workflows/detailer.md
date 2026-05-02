@@ -5,6 +5,8 @@ section: basic-workflows
 slug: detailer
 navId: detailer
 title: "Detailer"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "只切出小脸和细部进行 inpaint 的机制"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

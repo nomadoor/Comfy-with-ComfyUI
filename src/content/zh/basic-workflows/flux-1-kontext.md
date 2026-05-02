@@ -5,6 +5,8 @@ section: basic-workflows
 slug: flux-1-kontext
 navId: flux-1-kontext
 title: "Flux.1 Kontext"
+created: 2025-12-11
+updated: 2026-03-02
 summary: "在 Flux.1 Kontext 中进行指令基础的图像编辑。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

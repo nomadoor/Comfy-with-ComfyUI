@@ -5,6 +5,8 @@ section: basic-workflows
 slug: qwen-image-edit
 navId: qwen-image-edit
 title: "Qwen-Image-Edit"
+created: 2025-12-11
+updated: 2026-03-02
 summary: "Instruction-based image editing with Qwen-Image-Edit"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

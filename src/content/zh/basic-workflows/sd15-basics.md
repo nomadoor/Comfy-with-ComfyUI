@@ -5,6 +5,8 @@ section: basic-workflows
 slug: sd15-basics
 navId: sd15-basics
 title: "图像生成的基础(SD1.5)"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "在 Stable Diffusion 1.5 中学习图像生成的基础"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

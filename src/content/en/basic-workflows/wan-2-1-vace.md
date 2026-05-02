@@ -5,6 +5,8 @@ section: basic-workflows
 slug: wan-2-1-vace
 navId: wan-2-1-vace
 title: "Wan 2.1 VACE"
+created: 2025-12-13
+updated: 2026-03-02
 summary: "Handle ControlNet-like control, in/outpainting, reference2video, and Extension with Wan 2.1 VACE"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

@@ -5,6 +5,8 @@ section: basic-workflows
 slug: sdxl-anime
 navId: sdxl-anime
 title: "动漫系 SDXL 模型"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "SDXL 基础的动漫系模型的粗略整理"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

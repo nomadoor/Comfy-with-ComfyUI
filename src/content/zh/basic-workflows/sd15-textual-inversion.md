@@ -5,6 +5,8 @@ section: basic-workflows
 slug: sd15-textual-inversion
 navId: sd15-textual-inversion
 title: "Textual Inversion"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "Stable Diffusion 1.5 的 Textual Inversion"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

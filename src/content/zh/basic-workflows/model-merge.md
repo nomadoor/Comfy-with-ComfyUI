@@ -5,6 +5,8 @@ section: basic-workflows
 slug: model-merge
 navId: model-merge
 title: "模型合并与差分 LoRA"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "合并检查点或 LoRA 制作新模型或差分 LoRA 的方法"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

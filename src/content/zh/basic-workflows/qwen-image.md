@@ -5,6 +5,8 @@ section: basic-workflows
 slug: qwen-image
 navId: qwen-image
 title: "Qwen-Image"
+created: 2025-12-11
+updated: 2026-03-02
 summary: "Qwen-Image 的使用方法"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
