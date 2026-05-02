@@ -59,13 +59,21 @@ hero:
 公式 FAQ の例では、次のようになります。
 
 **入力プロンプト**  
-> `(masterpiece:1.2) (best:1.3) (quality:1.4) girl`
 
-**Stable Diffusion web UI では、正規化される**  
-> `(masterpiece:0.98) (best:1.06) (quality:1.14) (girl:0.81)`
+```text
+(masterpiece:1.2) (best:1.3) (quality:1.4) girl
+```
+
+**Stable Diffusion web UI では、正規化される**
+
+```text
+(masterpiece:0.98) (best:1.06) (quality:1.14) (girl:0.81)
+```
 
 **ComfyUI では正規化されない**  
-> `masterpiece = 1.2 / best = 1.3 / quality = 1.4 / girl = 1.0` のまま
+
+`masterpiece = 1.2` / `best = 1.3` / `quality = 1.4` / `girl = 1.0` のまま
+
 
 その結果、同じテキスト・同じ数値を打っても、**テキストエンコーダに渡される「実際の重み」が違う**ため、同じ絵にならないのです。
 

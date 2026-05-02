@@ -178,6 +178,71 @@ function enhanceStandaloneImages(markdownLib) {
   };
 }
 
+function preserveManualNumberedBullets(markdownLib) {
+  const findParentListOpen = (tokens, index, itemLevel) => {
+    for (let cursor = index - 1; cursor >= 0; cursor--) {
+      const token = tokens[cursor];
+      if (token.level === itemLevel - 1 && token.nesting === 1 && token.type.endsWith("_list_open")) {
+        return token;
+      }
+    }
+    return null;
+  };
+
+  markdownLib.core.ruler.after("block", "preserve-manual-numbered-bullets", (state) => {
+    const tokens = state.tokens;
+    for (let i = tokens.length - 8; i >= 0; i--) {
+      const bulletItemOpen = tokens[i];
+      const outerListOpen = findParentListOpen(tokens, i, bulletItemOpen?.level);
+      const orderedListOpen = tokens[i + 1];
+      const orderedItemOpen = tokens[i + 2];
+      const paragraphOpen = tokens[i + 3];
+      const inlineToken = tokens[i + 4];
+      const paragraphClose = tokens[i + 5];
+      const orderedItemClose = tokens[i + 6];
+      const orderedListClose = tokens[i + 7];
+
+      if (
+        outerListOpen?.type !== "bullet_list_open" ||
+        bulletItemOpen?.type !== "list_item_open" ||
+        orderedListOpen?.type !== "ordered_list_open" ||
+        orderedItemOpen?.type !== "list_item_open" ||
+        paragraphOpen?.type !== "paragraph_open" ||
+        inlineToken?.type !== "inline" ||
+        paragraphClose?.type !== "paragraph_close" ||
+        orderedItemClose?.type !== "list_item_close" ||
+        orderedListClose?.type !== "ordered_list_close" ||
+        orderedListOpen.level !== bulletItemOpen.level + 1 ||
+        orderedItemOpen.level !== orderedListOpen.level + 1
+      ) {
+        continue;
+      }
+
+      const startAttr = orderedListOpen.attrGet("start");
+      const parsedNumber = startAttr == null ? 1 : Number(startAttr);
+      const number = Number.isFinite(parsedNumber) ? parsedNumber : 1;
+      paragraphOpen.level = bulletItemOpen.level + 1;
+      inlineToken.level = paragraphOpen.level + 1;
+      paragraphClose.level = paragraphOpen.level;
+      const manualNumberPrefix = `${number}. `;
+      if (Array.isArray(inlineToken.children)) {
+        const firstTextChild = inlineToken.children[0]?.type === "text" ? inlineToken.children[0] : null;
+        if (firstTextChild) {
+          firstTextChild.content = `${manualNumberPrefix}${firstTextChild.content}`;
+        } else {
+          const numberTextToken = new inlineToken.constructor("text", "", 0);
+          numberTextToken.content = manualNumberPrefix;
+          numberTextToken.level = inlineToken.level + 1;
+          inlineToken.children.unshift(numberTextToken);
+        }
+      } else {
+        inlineToken.content = `${manualNumberPrefix}${inlineToken.content}`;
+      }
+      tokens.splice(i + 1, 7, paragraphOpen, inlineToken, paragraphClose);
+    }
+  });
+}
+
 function enhanceJsonLinks(markdownLib) {
   markdownLib.core.ruler.after("inline", "convert-json-links", (state) => {
     state.env = state.env || {};
@@ -936,6 +1001,7 @@ export default function (eleventyConfig) {
 
 
   enhanceStandaloneImages(markdownLib);
+  preserveManualNumberedBullets(markdownLib);
   enhanceJsonLinks(markdownLib);
   eleventyConfig.setLibrary("md", markdownLib);
 

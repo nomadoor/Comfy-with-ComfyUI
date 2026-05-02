@@ -62,7 +62,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 ## 4. Sidebar
 - Section icon tabs (`sidebar__section-tabs`): compact icon-only shortcuts inside `sidebar__section-panel`. Active state is indicated by icon color only, without a filled background.
 - The left sidebar is split into two visible blocks: `sidebar__sections` for the labeled section selector/dropdown and `sidebar__section-panel` for icon-tabbed navigation plus sidebar controls. The TOC rail remains a single visible block.
-- Section selector buttons (`sidebar__sections` / `sidebar__section-btn`) keep inactive labels muted. The active selector uses heading-colored text and a quiet `--color-panel-alt` background, not a light filled pill.
+- Section selector buttons (`sidebar__sections` / `sidebar__section-btn`) keep inactive labels muted. Active and hover surfaces use `--color-tav-strong`; active selector text remains heading-colored.
 - Nav list: single column, children indented with border-left. Active link shows a 2px highlight bar (mock窶冱 purple line).
 - Footer: `About` link + language chips (JA/EN) + theme toggle stub. Chips use pill style with accent border when active.
   - Language chip opens a dropdown **upward** so it never falls off-screen; each option links to the same slug in the chosen locale.
@@ -84,7 +84,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - Inline images are centered, `max-width: 720px`, `max-height: 320px`, and `object-fit: contain` so portrait assets never force extra scrolling.
 - Inline Gyazo media stays completely flat: **no borders / box-shadows**. When contrast is needed, rely on `--color-panel-alt` as the single backing surface.
 - 蜈ｨ繝壹・繧ｸ縺ｧ蜷御ｸ繝医・繝ｳ繧剃ｿ昴▽縺溘ａ縲∵悽譁・ｸｭ縺ｮ逕ｻ蜒上・蜍慕判繧ゅョ繝輔か繝ｫ繝医〒貂帛・繝輔ぅ繝ｫ繧ｿ・井ｾ具ｼ啻filter: brightness(0.85)`・峨ｒ驕ｩ逕ｨ縺吶ｋ縲・
-- Lists use custom colored markers: small accent dots for unordered lists and accent numbers for ordered lists.
+- Lists use custom markers: first-level unordered lists use small accent dots, nested unordered lists use muted hollow accent dots, and ordered lists use accent numbers.
 - `.placeholder` component is dashed border block for 窶懊∪縺繝壹・繧ｸ縺後≠繧翫∪縺帙ｓ窶・states and 404 page.
 
 ## 8. TOC

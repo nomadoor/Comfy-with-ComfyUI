@@ -59,13 +59,20 @@ The behavior of **"weight"** written with parentheses or colons is also differen
 In the official FAQ example:
 
 **Input Prompt**  
-> `(masterpiece:1.2) (best:1.3) (quality:1.4) girl`
 
-**In Stable Diffusion web UI, it is normalized**  
-> `(masterpiece:0.98) (best:1.06) (quality:1.14) (girl:0.81)`
+```text
+(masterpiece:1.2) (best:1.3) (quality:1.4) girl
+```
+
+**In Stable Diffusion web UI, it is normalized**
+
+```text
+(masterpiece:0.98) (best:1.06) (quality:1.14) (girl:0.81)
+```
 
 **In ComfyUI, it is not normalized**  
-> `masterpiece = 1.2 / best = 1.3 / quality = 1.4 / girl = 1.0` as is
+
+`masterpiece = 1.2` / `best = 1.3` / `quality = 1.4` / `girl = 1.0` as is
 
 As a result, even if you type exactly the same text and numbers, **the "actual weight" passed to the text encoder is different**, so it does not become the same picture.
 
