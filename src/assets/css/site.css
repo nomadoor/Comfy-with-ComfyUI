@@ -1708,6 +1708,12 @@ h1 {
   --article-list-marker-shadow: inset 0 0 0 1.6px color-mix(in srgb, var(--color-text-muted) 55%, var(--color-highlight));
 }
 
+.article-body ul ul ul > li {
+  --article-list-marker-size: 5px;
+  --article-list-marker-fill: var(--color-highlight);
+  --article-list-marker-shadow: none;
+}
+
 .article-body ol {
   margin: 1rem 0;
   padding-left: 0;
