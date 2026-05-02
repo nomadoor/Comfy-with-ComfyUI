@@ -5,6 +5,8 @@ section: begin-with
 slug: settings
 navId: settings
 title: "设置"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "关于设置"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

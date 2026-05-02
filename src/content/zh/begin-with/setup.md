@@ -5,6 +5,8 @@ section: begin-with
 slug: setup
 navId: setup
 title: "安装与设置"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "关于安装与设置"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

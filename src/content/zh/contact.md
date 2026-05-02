@@ -4,6 +4,8 @@ lang: zh
 slug: contact
 navId: contact
 title: "联系我们"
+created: 2026-02-17
+updated: 2026-03-02
 summary: "站点修正、文章请求与运营者联系"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:

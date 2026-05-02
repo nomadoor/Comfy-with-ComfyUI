@@ -5,6 +5,8 @@ section: data-utilities
 slug: resize-crop-pad
 navId: resize-crop-pad
 title: "Resize, Crop, and Pad"
+created: 2025-11-25
+updated: 2026-03-02
 summary: "About image resizing, cropping, and padding"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -142,7 +144,7 @@ Previously, it was necessary to get the size of the reference image and pass it 
 
 Resizes the vertical and horizontal dimensions to be multiples of N.
 
-Details are explained in [Why can I only generate resolutions that are multiples of 8?](/en/faq/why-multiple-of-8/), but in short, diffusion models cannot handle resolutions that are not specific multiples due to VAE limitations.
+Details are explained in [Why can I only generate resolutions that are multiples of 8?](/en/notes/why-multiple-of-8/), but in short, diffusion models cannot handle resolutions that are not specific multiples due to VAE limitations.
 
 Basically, ComfyUI often adjusts automatically internally, so there isn't much need for this node unless you encounter errors with non-specific resolutions, or when you want to "perfectly match" the pixels of the input and output.
 

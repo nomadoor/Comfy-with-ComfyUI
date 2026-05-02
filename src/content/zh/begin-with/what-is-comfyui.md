@@ -5,6 +5,8 @@ section: begin-with
 slug: what-is-comfyui
 navId: what-is-comfyui
 title: "什么是 ComfyUI？"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "ComfyUI 是生成式 AI 的操作系统"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

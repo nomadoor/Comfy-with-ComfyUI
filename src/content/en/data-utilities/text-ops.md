@@ -5,6 +5,8 @@ section: data-utilities
 slug: text-ops
 navId: text-ops
 title: "Text Operations"
+created: 2025-11-25
+updated: 2026-03-02
 summary: "About nodes that manipulate text"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

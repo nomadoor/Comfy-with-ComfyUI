@@ -4,6 +4,8 @@ lang: en
 slug: news
 navId: news
 title: "News"
+created: 2026-01-15
+updated: 2026-03-22
 summary: "Site updates"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:

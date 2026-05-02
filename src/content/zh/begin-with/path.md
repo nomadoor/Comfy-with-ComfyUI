@@ -5,6 +5,8 @@ section: begin-with
 slug: path
 navId: path
 title: "路径"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "关于路径的概念"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

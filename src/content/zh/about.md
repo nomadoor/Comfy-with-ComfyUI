@@ -4,6 +4,8 @@ lang: zh
 slug: about
 navId: about
 title: "About"
+created: 2026-02-05
+updated: 2026-03-02
 summary: "关于本站"
 searchExclude: true
 tags:

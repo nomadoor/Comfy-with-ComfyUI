@@ -5,6 +5,8 @@ section: data-utilities
 slug: text-ops
 navId: text-ops
 title: "文本操作"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "关于操作文本的节点"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

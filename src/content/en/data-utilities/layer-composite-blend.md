@@ -5,6 +5,8 @@ section: data-utilities
 slug: layer-composite-blend
 navId: layer-composite-blend
 title: "Layer Composition"
+created: 2025-11-26
+updated: 2026-03-02
 summary: "Overlaying, stitching, and blending images"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

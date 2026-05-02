@@ -5,6 +5,8 @@ section: begin-with
 slug: python
 navId: python
 title: "Python"
+created: 2025-11-24
+updated: 2026-03-02
 summary: ""
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
