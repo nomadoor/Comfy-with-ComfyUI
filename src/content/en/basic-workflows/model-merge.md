@@ -5,6 +5,8 @@ section: basic-workflows
 slug: model-merge
 navId: model-merge
 title: "Model Merge & Difference LoRA"
+created: 2025-12-11
+updated: 2026-03-02
 summary: "How to merge checkpoints/LoRAs and create difference LoRAs"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

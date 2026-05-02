@@ -5,6 +5,8 @@ section: basic-workflows
 slug: sd15-inpainting
 navId: sd15-inpainting
 title: "inpainting"
+created: 2025-12-07
+updated: 2026-03-02
 summary: "Editing only a part of an image with inpainting"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

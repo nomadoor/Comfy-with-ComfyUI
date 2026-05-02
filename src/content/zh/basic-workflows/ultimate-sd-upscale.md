@@ -6,6 +6,8 @@ section: basic-workflows
 slug: ultimate-sd-upscale
 navId: ultimate-sd-upscale
 title: "Ultimate SD upscale"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "使用 Tile 和 ControlNet 的超高分辨率放大"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

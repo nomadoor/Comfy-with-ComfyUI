@@ -5,6 +5,8 @@ section: basic-workflows
 slug: florence2
 navId: florence2
 title: "Florence-2"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "使用 Florence-2 的图像说明文生成・物体检出"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

@@ -5,6 +5,8 @@ section: basic-workflows
 slug: sd15-outpainting
 navId: sd15-outpainting
 title: "outpainting"
+created: 2025-12-07
+updated: 2026-03-02
 summary: "outpaintingで画像の外側を描き足す"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

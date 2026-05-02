@@ -5,6 +5,8 @@ section: basic-workflows
 slug: reactor
 navId: reactor
 title: "ReActor"
+created: 2025-12-09
+updated: 2026-03-02
 summary: "FaceSwap using ReActor"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

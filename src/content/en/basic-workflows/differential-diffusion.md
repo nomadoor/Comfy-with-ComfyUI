@@ -5,6 +5,8 @@ section: basic-workflows
 slug: differential-diffusion
 navId: differential-diffusion
 title: "Differential Diffusion"
+created: 2025-12-07
+updated: 2026-03-02
 summary: "Control the amount of change with mask density"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

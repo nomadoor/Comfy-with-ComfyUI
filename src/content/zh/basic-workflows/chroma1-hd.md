@@ -5,6 +5,8 @@ section: basic-workflows
 slug: chroma1-hd
 navId: chroma1-hd
 title: "Chroma1-HD"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "用 Chroma1-HD 扩展 Flux.1-schnell"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

@@ -5,6 +5,8 @@ section: basic-workflows
 slug: ksampler-advanced
 navId: ksampler-advanced
 title: "KSampler (Advanced) Node"
+created: 2025-12-06
+updated: 2026-03-02
 summary: "Understanding the KSampler (Advanced) Node"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

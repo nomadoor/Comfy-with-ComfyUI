@@ -5,6 +5,8 @@ section: basic-workflows
 slug: llm-mllm
 navId: llm-mllm
 title: "LLM / MLLM"
+created: 2026-02-18
+updated: 2026-03-27
 summary: "在 ComfyUI 中使用 LLM 能做什么"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

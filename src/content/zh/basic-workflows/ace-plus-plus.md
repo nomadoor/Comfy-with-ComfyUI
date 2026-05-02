@@ -5,6 +5,8 @@ section: basic-workflows
 slug: ace-plus-plus
 navId: ace-plus-plus
 title: "ACE++"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "用 ACE++ 扩展 Flux.1 Fill"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

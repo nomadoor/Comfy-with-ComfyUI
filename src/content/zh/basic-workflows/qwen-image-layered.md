@@ -5,6 +5,8 @@ section: basic-workflows
 slug: qwen-image-layered
 navId: qwen-image-layered
 title: "Qwen-Image-Layered"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "将输入图像分解为复数的 RGBA 图层"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

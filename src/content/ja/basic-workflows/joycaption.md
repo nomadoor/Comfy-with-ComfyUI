@@ -5,6 +5,8 @@ section: basic-workflows
 slug: joycaption
 navId: joycaption
 title: "JoyCaption"
+created: 2025-12-08
+updated: 2026-03-02
 summary: "JoyCaptionを使った画像キャプション生成"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

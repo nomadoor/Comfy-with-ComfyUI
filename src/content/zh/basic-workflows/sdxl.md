@@ -5,6 +5,8 @@ section: basic-workflows
 slug: sdxl
 navId: sdxl
 title: "SDXL"
+created: 2026-02-06
+updated: 2026-03-02
 summary: "SDXL 的使用方法"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

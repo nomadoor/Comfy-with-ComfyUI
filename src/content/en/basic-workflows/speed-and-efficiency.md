@@ -5,6 +5,8 @@ section: basic-workflows
 slug: speed-and-efficiency
 navId: speed-and-efficiency
 title: "Speed and Efficiency"
+created: 2025-12-11
+updated: 2026-03-02
 summary: "Organizing speed-up and lightweighting techniques for diffusion models and using them according to purpose"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

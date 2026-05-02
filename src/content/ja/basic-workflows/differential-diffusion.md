@@ -5,6 +5,8 @@ section: basic-workflows
 slug: differential-diffusion
 navId: differential-diffusion
 title: "Differential Diffusion"
+created: 2025-12-07
+updated: 2026-03-02
 summary: "マスクの濃度で変化量をコントロールする"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
