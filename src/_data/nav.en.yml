@@ -341,36 +341,30 @@ sections:
             title: Speed and Efficiency
       - id: api-nodes
         title: API Nodes
-  - key: faq
-    label: FAQ / Troubleshooting
+  - key: notes
+    label: Notes
     pages:
+      - id: find
+        title: Find Notes
+      - id: panorama-stickers
+        title: ComfyUI Panorama Stickers
+      - id: insightface-install
+        title: How to install InsightFace
       - id: error-handling
         title: What to do when an error occurs
-      - id: common-questions
-        title: Common Questions
-        noLink: true
-        children:
-          - id: why-512px
-            title: Why generate at 512px × 512px?
-          - id: sd15-sdxl-asset-compatibility
-            title: Can't use SD1.5 LoRA / ControlNet with SDXL?
-          - id: why-multiple-of-8
-            title: Why can only resolutions that are multiples of 8 be generated?
-          - id: sdwebui-comfyui-reproducibility
-            title: Can't generate the same image with web UI and ComfyUI?
-          - id: seed-neighbor
-            title: Seed 1234 and 1235 are completely different
-      - id: bad-output
-        title: Bad Output
-        noLink: true
-        children:
-          - id: duplicate-objects
-            title: People or objects are duplicating
-      - id: error-codes
-        title: Error Codes
-        noLink: true
-        children:
-          - id: import-failed
-            title: "(IMPORT FAILED)"
-          - id: torch-cuda-oom
-            title: torch.cuda.OutOfMemoryError (VRAM shortage)
+      - id: why-512px
+        title: Why generate at 512px × 512px?
+      - id: sd15-sdxl-asset-compatibility
+        title: Can't use SD1.5 LoRA / ControlNet with SDXL?
+      - id: why-multiple-of-8
+        title: Why can only resolutions that are multiples of 8 be generated?
+      - id: sdwebui-comfyui-reproducibility
+        title: Can't generate the same image with web UI and ComfyUI?
+      - id: seed-neighbor
+        title: Seed 1234 and 1235 are completely different
+      - id: duplicate-objects
+        title: People or objects are duplicating
+      - id: import-failed
+        title: "(IMPORT FAILED)"
+      - id: torch-cuda-oom
+        title: torch.cuda.OutOfMemoryError (VRAM shortage)

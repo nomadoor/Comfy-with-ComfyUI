@@ -5,7 +5,7 @@
   "data-utilities": "image",
   "ai-capabilities": "navigation",
   "basic-workflows": "map",
-  "faq": "emote-sad"
+  "notes": "edit-4"
 } %}
 {% if localeNav %}
 <div class="sidebar">
@@ -81,9 +81,13 @@
           data-section-panel="{{ section.key }}"
           {% if not isActive %}hidden aria-hidden="true"{% else %}aria-hidden="false"{% endif %}
         >
-          {% set navItems = section.pages %}
-          {% set navSectionKey = section.key %}
-          {% include "nav-list.njk" %}
+          {% if section.key == "notes" %}
+            {% include "notes-nav.njk" %}
+          {% else %}
+            {% set navItems = section.pages %}
+            {% set navSectionKey = section.key %}
+            {% include "nav-list.njk" %}
+          {% endif %}
         </div>
       {% endfor %}
       </div>

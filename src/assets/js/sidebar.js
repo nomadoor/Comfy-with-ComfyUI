@@ -56,6 +56,20 @@ function activateSection(key, { focus = true } = {}) {
   setSectionSelectorOpen(false);
 }
 
+function sortNotesList(list, mode) {
+  const items = Array.from(list.querySelectorAll("[data-updated]"));
+  items.sort((a, b) => {
+    if (mode === "views") {
+      const views = Number(b.dataset.views || 0) - Number(a.dataset.views || 0);
+      if (views !== 0) return views;
+    }
+    const updated = String(b.dataset.updated || "").localeCompare(String(a.dataset.updated || ""));
+    if (updated !== 0) return updated;
+    return String(a.dataset.title || "").localeCompare(String(b.dataset.title || ""));
+  });
+  items.forEach((item) => list.appendChild(item));
+}
+
 function focusNext(currentIndex, direction) {
   if (!sectionButtons.length) return;
   const total = sectionButtons.length;
@@ -118,6 +132,26 @@ document.addEventListener("keydown", (event) => {
 
 sectionTabs.forEach((tab) => {
   tab.addEventListener("click", () => activateSection(tab.dataset.sectionTab, { focus: false }));
+});
+
+document.querySelectorAll("[data-notes-nav]").forEach((notesNav) => {
+  const list = notesNav.querySelector("[data-notes-list]");
+  const buttons = Array.from(notesNav.querySelectorAll("[data-notes-sort]"));
+  if (!list || !buttons.length) return;
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const mode = button.dataset.notesSort || "updated";
+      buttons.forEach((item) => {
+        const isActive = item === button;
+        item.classList.toggle("is-active", isActive);
+        item.setAttribute("aria-pressed", String(isActive));
+      });
+      sortNotesList(list, mode);
+    });
+  });
+
+  sortNotesList(list, "updated");
 });
 
 const initialActive =

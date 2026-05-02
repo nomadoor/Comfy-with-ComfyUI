@@ -9,6 +9,8 @@
     "dev:pages": "npx wrangler pages dev _site --port=8080 --compatibility-date=2026-02-17",
     "build": "eleventy --input=src --output=_site",
     "clean": "rimraf _site",
+    "views:update": "node scripts/update-page-views.mjs",
+    "views:update:dry": "node scripts/update-page-views.mjs --dry-run",
     "test:playwright": "playwright test"
   },
   "keywords": [

@@ -5,6 +5,9 @@ slug: insightface-install
 section: notes
 navId: insightface-install
 title: "How to Install InsightFace"
+created: 2025-12-09
+updated: 2026-03-02
+noteTags: ["troubleshoot", "install", "insightface", "reactor"]
 summary: "Installation guide for InsightFace"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:

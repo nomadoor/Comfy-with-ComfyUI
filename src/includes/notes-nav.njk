@@ -1,0 +1,31 @@
+{% from "icon.njk" import icon %}
+{% set notes = collections.all | notesForLang(lang, false, pageViews) %}
+{% set hasViews = notes | notesHaveViews %}
+{% set findItem = (section.pages or []) | first %}
+{% set findTitle = findItem.title or "Find Notes" %}
+{% set findUrl = "/" + lang + "/notes/find/" %}
+<div class="notes-nav" data-notes-nav>
+  <div class="notes-nav__chrome">
+    <a href="{{ findUrl }}" class="nav-list__link notes-nav__find{% if currentNavId == 'find' %} is-active{% endif %}" {% if currentNavId == 'find' %}aria-current="page"{% endif %}>
+      <span class="notes-nav__find-label">
+        <span class="notes-nav__find-icon">{{ icon("search") }}</span>
+        <span class="nav-list__label">{{ findTitle }}</span>
+      </span>
+    </a>
+
+    <div class="notes-nav__sort" role="group" aria-label="Notes sort">
+      <button class="notes-nav__sort-btn is-active" type="button" data-notes-sort="updated" aria-pressed="true">Updated</button>
+      <button class="notes-nav__sort-btn" type="button" data-notes-sort="views" aria-pressed="false" {% if not hasViews %}disabled aria-disabled="true"{% endif %}>Views</button>
+    </div>
+  </div>
+
+  <ul class="nav-list__children notes-nav__list" data-notes-list>
+    {% for note in notes %}
+      <li class="notes-nav__item" data-updated="{{ note.updated }}" data-views="{{ note.views or 0 }}" data-title="{{ note.title }}">
+        <a href="{{ note.url }}" class="nav-list__link{% if note.slug == currentNavId %} is-active{% endif %}" {% if note.slug == currentNavId %}aria-current="page"{% endif %}>
+          <span class="nav-list__label">{{ note.title }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

@@ -9,13 +9,16 @@
 - Routes follow `/<lang>/<section>/<slug>/` with kebab-case slugs that match nav/data.
 - `lang` is one of `ja`, `en`, `zh`.
 - Exceptions: `about`, `news`, and `contact` are standalone pages and use `/<lang>/<slug>/` without `section`.
+- The former `faq` section is replaced by `notes`. Old `/<lang>/faq/<slug>/` URLs must not keep duplicate content; redirect them with Cloudflare Pages `_redirects` to `/<lang>/notes/<slug>/`.
 - Markdown lives under `src/content/<lang>/`; workflows sit in `src/workflows/<slug>/*.json`; shared data under `_data`.
-- Front matter requires `slug` and `title`. `tags` は任意（最大5件）。ただし **`ai-capabilities` セクションは原則 tags なし**。例外的に付ける場合はオーナー指示と `/ops` 合意を先に取る。`draft: true` で非公開化。
+- Front matter requires `slug`, `title`, `created`, and `updated`. `created` / `updated` use `YYYY-MM-DD`; when exact authorship dates are unknown, use the best available Git history date and adjust later if the owner provides a better date. `tags` は任意（最大5件）。ただし **`ai-capabilities` セクションは原則 tags なし**。例外的に付ける場合はオーナー指示と `/ops` 合意を先に取る。`draft: true` で非公開化。
 
 ## 2. Navigation & Tags
 - Locale menus come from `_data/nav.<lang>.yml`; keep IDs aligned with folders and front matter.
 - `nav.zh.yml` mirrors the same slug IDs as `ja/en` (titles can be placeholders until translation).
 - Tags are **optional**. When present, they must be consistent with the slug/topic, specific but not spammy, and limited to **max 5** per page.
+- The `notes` section is a flat collection. Its left sidebar panel uses a fixed `find` link, an independent Updated / Views segment control, and a flat title list. It must not render category headings or nested children.
+- `/notes/find/` is a local note finder page. It filters only notes by title, summary, and tags; it does not change the global header search.
 - Every page begins with one H1. Section badges and chip styles come from `/ops/style-design.md`.
 - On short viewports, sidebar section switching uses a compact dropdown: show only the current section label by default and expand section choices on tap/click.
 - Compact mode applies to:
@@ -23,12 +26,15 @@
   - short touch devices (`hover: none`, `pointer: coarse`, `max-height: 900px`) such as iPad landscape, regardless of width.
   - any short viewport (`max-height: 950px`) so low-height landscape windows also collapse sections.
 
-## 3. Related Workflows
-- Render related cards using the existing helper.
-- Sections:
-  - `basic-workflows`: show other basic-workflows that share at least one tag.
-  - `ai-capabilities`: if tags are present use them; otherwise fall back to the page slug as the tag key to surface matching basic-workflows.
-- Limit to 12 cards; stack vertically on narrow layouts.
+## 3. Related Pages
+- Render related cards below article content with the shared related-card component.
+- Relatedness is tag-channel based:
+  - `tags` match only other `tags`.
+  - `noteTags` match only other `noteTags`.
+  - If a page has both channels, score both independently and add the matches.
+- `ai-capabilities` pages normally omit `tags`; for related-page matching only, their `slug` is treated as an implicit `tags` key so matching workflow pages can surface.
+- Do not fall back to same-section pages without a shared tag. A card without a shared tag is misleading.
+- Keep results in the current locale and cap the visible set so the footer stays scannable.
 
 ## 3.5 Prev/Next Links (Article Footer)
 - Render a previous/next page row beneath the related pages block on article pages.

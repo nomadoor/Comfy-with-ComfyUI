@@ -363,6 +363,46 @@ function escapeHTML(str = "") {
     .replace(/"/g, "&quot;");
 }
 
+function toDateKey(value = "") {
+  if (!value) return "";
+  if (value instanceof Date && !Number.isNaN(value.getTime())) {
+    return value.toISOString().slice(0, 10);
+  }
+  return String(value).slice(0, 10);
+}
+
+function normalizeSitePath(value = "") {
+  if (typeof value !== "string" || !value.trim()) return "";
+  try {
+    const parsed = new URL(value, "https://example.invalid");
+    return parsed.pathname.endsWith("/") ? parsed.pathname : `${parsed.pathname}/`;
+  } catch {
+    const pathOnly = value.split(/[?#]/)[0];
+    const withLeadingSlash = pathOnly.startsWith("/") ? pathOnly : `/${pathOnly}`;
+    return withLeadingSlash.endsWith("/") ? withLeadingSlash : `${withLeadingSlash}/`;
+  }
+}
+
+function getPageViewCount(entry, pageViews = {}) {
+  if (!entry || !entry.data) return 0;
+  const pages = pageViews?.pages && typeof pageViews.pages === "object" ? pageViews.pages : {};
+  const candidates = [
+    entry.url,
+    `/${entry.data.lang || ""}/notes/${entry.data.slug || ""}/`
+  ]
+    .map(normalizeSitePath)
+    .filter(Boolean);
+
+  for (const key of candidates) {
+    const value = pages[key];
+    const count = Number(value || 0);
+    if (Number.isFinite(count) && count > 0) {
+      return count;
+    }
+  }
+  return 0;
+}
+
 async function fetchGyazoMeta(url) {
   try {
     const endpoint = `https://api.gyazo.com/api/oembed?url=${encodeURIComponent(url)}`;
@@ -435,6 +475,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/search": "search" });
   eleventyConfig.addPassthroughCopy({ "src/.well-known": ".well-known" });
   eleventyConfig.addPassthroughCopy({ "src/_headers": "_headers" });
+  eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
   eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
 
   eleventyConfig.addWatchTarget("ops");
@@ -443,41 +484,149 @@ export default function (eleventyConfig) {
     await refreshGyazoMetadata();
   });
 
-  eleventyConfig.addFilter("relatedWorkflows", function (collection = [], currentUrl, currentTags = [], currentLang) {
+  const TAG_CHANNELS = ["tags", "noteTags"];
+
+  const normalizeTagList = (value) => {
+    const values = Array.isArray(value) ? value : [value];
+    return [
+      ...new Set(
+        values
+          .filter(Boolean)
+          .map((tag) => String(tag).trim().toLowerCase())
+          .filter(Boolean)
+      )
+    ];
+  };
+
+  const tagChannelsFor = (data = {}) =>
+    TAG_CHANNELS.reduce((channels, channel) => {
+      channels[channel] = normalizeTagList(data[channel]);
+      return channels;
+    }, {});
+
+  const relatedKeysFor = (data = {}) => {
+    const channels = tagChannelsFor(data);
+
+    if (data.section === "ai-capabilities" && data.slug) {
+      channels.tags = normalizeTagList([...channels.tags, data.slug]);
+    }
+
+    return channels;
+  };
+
+  const countSharedTags = (left = [], right = []) => left.filter((tag) => right.includes(tag)).length;
+
+  const relatedScoreFor = (currentKeys, entryKeys, sameSection) => {
+    const matchScore = TAG_CHANNELS.reduce(
+      (score, channel) => score + (countSharedTags(currentKeys[channel], entryKeys[channel]) * 100),
+      0
+    );
+
+    if (matchScore > 0) {
+      return matchScore + (sameSection ? 20 : 0);
+    }
+
+    return 0;
+  };
+
+  const relatedEntryFor = (entry) => ({
+    url: entry.url,
+    title: entry.data.title,
+    summary: entry.data.summary || "",
+    hero: entry.data.hero || {}
+  });
+
+  eleventyConfig.addFilter("relatedPages", function (collection = [], currentUrl, currentData = {}, limit = 6) {
     if (!Array.isArray(collection)) {
       return [];
     }
 
-    const normalizeTags = (value) => {
-      if (Array.isArray(value)) return value;
-      if (typeof value === "string" && value.trim().length) return [value.trim()];
-      return [];
-    };
+    const currentLang = currentData.lang;
+    const currentSection = currentData.section;
+    const maxResults = Math.max(1, Math.min(Number(limit) || 6, 12));
 
-    const normalizedCurrentTags = normalizeTags(currentTags);
-    if (!normalizedCurrentTags.length) {
+    if (!currentUrl || !currentSection) {
+      return [];
+    }
+
+    const currentKeys = relatedKeysFor(currentData);
+
+    return collection
+      .filter((entry) => {
+        if (!entry || !entry.data) return false;
+        if (entry.url === currentUrl) return false;
+        if (!entry.data.section) return false;
+        if (entry.data.section === "notes" && entry.data.slug === "find") return false;
+        if (currentLang && entry.data.lang && entry.data.lang !== currentLang) return false;
+        return true;
+      })
+      .map((entry, index) => {
+        const entryKeys = relatedKeysFor(entry.data);
+        const sameSection = entry.data.section === currentSection;
+        const score = relatedScoreFor(currentKeys, entryKeys, sameSection);
+
+        return {
+          entry,
+          index,
+          score,
+          updated: entry.data.updated || entry.data.date || entry.data.created || ""
+        };
+      })
+      .filter((item) => item.score > 0)
+      .sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        if (b.updated !== a.updated) return String(b.updated).localeCompare(String(a.updated));
+        return a.index - b.index;
+      })
+      .slice(0, maxResults)
+      .map((item) => relatedEntryFor(item.entry));
+  });
+
+  eleventyConfig.addFilter("notesForLang", function (collection = [], currentLang, includeFinder = false, pageViews = {}) {
+    if (!Array.isArray(collection)) {
       return [];
     }
 
     return collection
       .filter((entry) => {
         if (!entry || !entry.data) return false;
-        if (entry.url === currentUrl) return false;
-        if (entry.data.section !== "basic-workflows") return false;
-        if (currentLang && entry.data.lang && entry.data.lang !== currentLang) return false;
+        if (entry.data.section !== "notes") return false;
+        if (currentLang && entry.data.lang !== currentLang) return false;
+        if (!includeFinder && entry.data.slug === "find") return false;
         return true;
-      })
-      .filter((entry) => {
-        const entryTags = normalizeTags(entry.data.tags);
-        if (!entryTags.length) return false;
-        return normalizedCurrentTags.some((tag) => entryTags.includes(tag));
       })
       .map((entry) => ({
         url: entry.url,
-        title: entry.data.title,
+        slug: entry.data.slug,
+        title: entry.data.title || entry.data.slug,
         summary: entry.data.summary || "",
+        noteTags: normalizeTagList(entry.data.noteTags),
+        created: toDateKey(entry.data.created),
+        updated: toDateKey(entry.data.updated || entry.data.created),
+        views: getPageViewCount(entry, pageViews),
         hero: entry.data.hero || {}
-      }));
+      }))
+      .sort((a, b) => {
+        const updatedCompare = String(b.updated || "").localeCompare(String(a.updated || ""));
+        if (updatedCompare !== 0) return updatedCompare;
+        return String(a.title || "").localeCompare(String(b.title || ""));
+      });
+  });
+
+  eleventyConfig.addFilter("noteTags", function (notes = []) {
+    const tags = new Set();
+    if (!Array.isArray(notes)) return [];
+    notes.forEach((note) => {
+      normalizeTagList(note.noteTags).forEach((tag) => {
+        if (tag) tags.add(tag);
+      });
+    });
+    return [...tags].sort((a, b) => String(a).localeCompare(String(b)));
+  });
+
+  eleventyConfig.addFilter("notesHaveViews", function (notes = []) {
+    if (!Array.isArray(notes)) return false;
+    return notes.some((note) => Number(note?.views || 0) > 0);
   });
 
   eleventyConfig.addFilter("navPrevNext", function (navData, sectionKey, currentId) {
@@ -560,6 +709,10 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("stripUrlQuery", function (value = "") {
     if (typeof value !== "string") return "";
     return value.split(/[?#]/)[0];
+  });
+
+  eleventyConfig.addFilter("urlEncode", function (value = "") {
+    return encodeURIComponent(String(value));
   });
 
   eleventyConfig.addShortcode("gyazoVideoLoop", function (url, caption = "", options = {}) {

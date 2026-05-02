@@ -1,0 +1,27 @@
+{
+  "tier1Tags": [
+    "faq",
+    "troubleshoot",
+    "project"
+  ],
+  "tier2Tags": [
+    "custom-nodes",
+    "concept",
+    "install",
+    "vram",
+    "error",
+    "resolution",
+    "vae",
+    "sd15",
+    "sdxl",
+    "seed",
+    "reproducibility",
+    "erp",
+    "lora",
+    "flux",
+    "insightface",
+    "reactor",
+    "prompt",
+    "experiment"
+  ]
+}

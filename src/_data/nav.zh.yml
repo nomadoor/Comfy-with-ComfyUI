@@ -341,36 +341,30 @@ sections:
       title: 速度与效率
   - id: api-nodes
     title: API 节点
-- key: faq
-  label: FAQ / 故障排除
+- key: notes
+  label: Notes
   pages:
+  - id: find
+    title: 查找 Notes
+  - id: panorama-stickers
+    title: ComfyUI Panorama Stickers
+  - id: insightface-install
+    title: InsightFace 安装方法
   - id: error-handling
     title: 出错时怎么办
-  - id: common-questions
-    title: 常见问题
-    noLink: true
-    children:
-    - id: why-512px
-      title: 为什么生成 512px × 512px？
-    - id: sd15-sdxl-asset-compatibility
-      title: SD1.5 的 LoRA/ControlNet 不能用于 SDXL？
-    - id: why-multiple-of-8
-      title: 为什么只能生成 8 的倍数分辨率？
-    - id: sdwebui-comfyui-reproducibility
-      title: web UI 与 ComfyUI 能生成同样的图吗？
-    - id: seed-neighbor
-      title: seed1234 和 1235 完全不是一回事
-  - id: bad-output
-    title: 结果异常
-    noLink: true
-    children:
-    - id: duplicate-objects
-      title: 人物/物体出现重影
-  - id: error-codes
-    title: 错误代码
-    noLink: true
-    children:
-    - id: import-failed
-      title: （IMPORT FAILED）导入失败
-    - id: torch-cuda-oom
-      title: torch.cuda.OutOfMemoryError（显存不足）
+  - id: why-512px
+    title: 为什么生成 512px × 512px？
+  - id: sd15-sdxl-asset-compatibility
+    title: SD1.5 的 LoRA/ControlNet 不能用于 SDXL？
+  - id: why-multiple-of-8
+    title: 为什么只能生成 8 的倍数分辨率？
+  - id: sdwebui-comfyui-reproducibility
+    title: web UI 与 ComfyUI 能生成同样的图吗？
+  - id: seed-neighbor
+    title: seed1234 和 1235 完全不是一回事
+  - id: duplicate-objects
+    title: 人物/物体出现重影
+  - id: import-failed
+    title: （IMPORT FAILED）导入失败
+  - id: torch-cuda-oom
+    title: torch.cuda.OutOfMemoryError（显存不足）

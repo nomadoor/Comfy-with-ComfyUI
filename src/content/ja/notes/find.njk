@@ -1,0 +1,60 @@
+---
+layout: page.njk
+lang: ja
+section: notes
+slug: find
+navId: find
+title: "Noteを探す"
+created: 2026-05-02
+updated: 2026-05-02
+summary: "Notesの記事を検索・タグ・並べ替えで探すページ"
+permalink: "/{{ lang }}/notes/{{ slug }}/"
+searchExclude: true
+hero:
+  image: "https://i.gyazo.com/a6e07600049875412da66a0ac4ca5351.png"
+---
+{% from "icon.njk" import icon %}
+{% set notes = collections.all | notesForLang(lang, false, pageViews) %}
+{% set hasViews = notes | notesHaveViews %}
+<p>Notesセクションでは、FAQやトラブルシューティング、制作中に気づいた小さなメモ、ComfyUIに直接関係しない周辺記事などをまとめています。</p>
+
+<section class="note-finder" data-note-finder>
+  <label class="sr-only" for="note-finder-query">Notesを検索</label>
+  <div class="note-finder__search">
+    <span class="note-finder__search-icon" aria-hidden="true">{{ icon("search") }}</span>
+    <input id="note-finder-query" class="note-finder__input" type="search" placeholder="Noteを検索" data-note-query autocomplete="off">
+    <button class="note-finder__clear" type="button" data-note-clear hidden aria-label="検索をクリア"><span aria-hidden="true"></span></button>
+  </div>
+
+  <div class="note-finder__tags" aria-label="Tags">
+    {% for tag in noteFinder.tier1Tags %}
+      <button class="note-finder__tag" type="button" data-note-tag="{{ tag }}"><span class="note-finder__tag-prefix" aria-hidden="true">#</span>{{ tag }}</button>
+    {% endfor %}
+  </div>
+
+  <div class="note-finder__sort" role="group" aria-label="Notesの並べ替え">
+    <button class="note-finder__sort-btn is-active" type="button" data-note-sort="updated" aria-pressed="true">Updated</button>
+    <button class="note-finder__sort-btn" type="button" data-note-sort="views" aria-pressed="false" {% if not hasViews %}disabled aria-disabled="true"{% endif %}>Views</button>
+  </div>
+
+  <div class="workflow-related__grid" data-note-grid>
+    {% set placeholderIcons = ["terminal-2", "cpu-2", "braces", "binary-tree", "sparkles"] %}
+    {% for note in notes %}
+      {% set heroImage = note.hero and note.hero.image or null %}
+      {% set heroVariant = null %}
+      {% if heroImage %}
+        {% set heroVariant = heroImage | imageVariant(480) %}
+      {% endif %}
+      {% set placeholderIcon = placeholderIcons[loop.index0 % placeholderIcons.length] %}
+      <a class="workflow-related__card" href="{{ note.url }}" data-note-card data-title="{{ note.title | lower }}" data-summary="{{ note.summary | lower }}" data-note-tags="{{ note.noteTags | join(' ') | lower }}" data-updated="{{ note.updated }}" data-views="{{ note.views or 0 }}">
+        <div class="workflow-related__hero" {% if heroVariant and heroVariant.preview %}data-hero="{{ heroVariant.preview }}"{% endif %}>
+          {% if not heroVariant %}
+            <span class="workflow-related__placeholder-icon" aria-hidden="true">{{ icon(placeholderIcon) }}</span>
+          {% endif %}
+        </div>
+        <span class="workflow-related__title">{{ note.title }}</span>
+      </a>
+    {% endfor %}
+  </div>
+  <p class="note-finder__empty" data-note-empty hidden>一致するNoteはありません。</p>
+</section>

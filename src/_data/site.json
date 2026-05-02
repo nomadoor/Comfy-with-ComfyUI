@@ -47,9 +47,10 @@
       "en": "Basic Workflows"
     },
     {
-      "key": "faq",
-      "ja": "FAQ / トラブルシューティング",
-      "en": "FAQ / Troubleshooting"
+      "key": "notes",
+      "ja": "Notes",
+      "en": "Notes",
+      "zh": "Notes"
     }
   ],
   "hero": {
@@ -81,9 +82,9 @@
         "zh": "工作流 JSON"
       },
       "relatedHeading": {
-        "ja": "関連Workflow",
-        "en": "Related workflows",
-        "zh": "相关工作流"
+        "ja": "関連ページ",
+        "en": "Related pages",
+        "zh": "相关页面"
       },
       "copyLabel": {
         "ja": "コピー",

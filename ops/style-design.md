@@ -2,7 +2,7 @@
 
 ## 0. Identity
 - JA site title: **縲靴omfy縺ｫ菴ｿ縺・ComfyUI縲・* / EN: **窶廚omfy with ComfyUI窶・*. Strings live in `site.json`.
-- IA sections remain `begin-with`, `data-utilities`, `ai-capabilities`, `basic-workflows`, `faq`.
+- IA sections remain `begin-with`, `data-utilities`, `ai-capabilities`, `basic-workflows`, `notes`.
 - Design intent follows `src/assets/mock/繝帙・繝繝・じ繧､繝ｳ_v01.png`: full-bleed black canvas, single-column article, chrome anchored on the left and top.
 - Dark theme is canonical. Light mode will reuse the same token keys with different values.
 
@@ -53,8 +53,11 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - On desktop, search, theme, and language controls live in the top-right header actions area. Header actions may use their own compact width instead of being constrained to the TOC column. On mobile, keep the existing search toggle and sidebar footer controls.
 - The desktop search dropdown stays aligned to the search input width. Do not widen it independently of the input or use scrollbars for the capped result list.
 - Search inputs suppress browser-native search decorations such as WebKit cancel buttons; use only the site's own search icon/control styling.
+- Header search and Notes finder search use the same compact surface behavior: `--color-panel-alt` normally and `--color-tav-strong` while focused.
+- Notes finder keeps exactly `--space-md` (`1rem`) between its local search input and tag buttons.
 - Desktop rails sit in the grid columns with `height = 100vh - header - bottom padding`, stay sticky below the fixed header, and scroll internally without drift. The app shell has no top padding on desktop; mobile reverts to stacked layout.
 - On desktop, the document/body is the native scroll root. The central reader surface is part of normal document flow, with a zero-height sticky corner mask that preserves the upper radius below the fixed header without creating a persistent top gap. Wheel, keyboard, and middle-button scrolling use browser-native document behavior instead of JavaScript proxying.
+- The root `html` element reserves scrollbar space with `scrollbar-gutter: stable` so header and content widths do not shift as pages move between scrollable and non-scrollable states.
 
 ## 4. Sidebar
 - Section icon tabs (`sidebar__section-tabs`): compact icon-only shortcuts inside `sidebar__section-panel`. Active state is indicated by icon color only, without a filled background.
@@ -66,6 +69,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 
 ## 5. Hero & Tags
 - Hero height is fixed at `12rem`. Use a grayscale image (fallback ``--color-panel-alt``) with a dark scrim.
+- Hero H1 uses `2rem` on all desktop/tablet widths; do not scale it with viewport width.
 - Hero content is flex-centered both vertically and horizontally; remove all default margins (H1 included).
 - Apply `--radius-md` to the hero container and imagery. Tag chips still appear only on **basic-workflows** pages and link to the AI Capabilities slug.
 - Images remain tinted with `filter: grayscale(1) brightness(0.6)` inside the hero to match the mock.
@@ -90,11 +94,12 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 
 ## 9. Workflow Assets
 - **Workflow JSON**: render as `filename | Copy | Download` rows (chips). Copy buttons read from hidden `<pre>` nodes to avoid DOM pollution; download links point at `/workflows/<slug>.json`.
-- **髢｢騾｣繝ｯ繝ｼ繧ｯ繝輔Ο繝ｼ**: only on `basic-workflows/*` pages. Gather other workflow pages sharing at least one AI-capability tag and render them in a Cosense-style grid (`repeat(auto-fill, minmax(146px, 1fr))`). Each card shows title + summary 窶・no screenshots.
+- **Related pages**: render below article content on section pages. Separate the block from the article with the same quiet horizontal boundary rhythm used by article `<hr>` rules: `--space-2xl` before and after the line. Show only pages in the same locale that share the same tag channel: `tags` match `tags`, and `noteTags` match `noteTags`. If a page has both, score both channels independently and add the matches. Do not fall back to same-section pages without a shared tag; unrelated cards make the footer misleading. Cap the visible set so the footer stays scannable.
+- Shared related cards do not lift, draw borders, or cast shadows on hover. Hover / focus feedback belongs inside the thumbnail area: real images zoom subtly. Image-less cards use a quiet `--color-panel-alt` thumbnail with one subdued centered Tabler-style IT icon. The icon stays straight at rest and may add a tiny deterministic rotation while zooming on hover; do not use gradients or patterned placeholder art.
 - Images in these sections obey the same `max-height: 300px` rule; JSON data stays pure text (never embedded screenshots).
 
 ## 10. Tags & Navigation Data
-- `nav.ja.yml` / `nav.en.yml` store sections + page IDs. Every tag slug **must** exist in these files so tag chips can build canonical links.
+- `nav.<lang>.yml` stores sections + page IDs. Every regular `tags` slug **must** exist in these files so tag chips can build canonical links. `noteTags` are local Notes finder facets and do not require nav entries.
 - Missing page slugs auto-generate placeholders via `src/content/placeholders.11ty.js`. Placeholder copy: 窶懊∪縺繝壹・繧ｸ縺後≠繧翫∪縺帙ｓ窶ｦ窶・
 
 ## 11. Fonts & Language Rules
