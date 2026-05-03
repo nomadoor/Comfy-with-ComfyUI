@@ -11,7 +11,11 @@ test.describe("Notes views sorting", () => {
     const secondUpdated = await locator.nth(1).getAttribute("data-updated");
     expect(firstUpdated).toBeTruthy();
     expect(secondUpdated).toBeTruthy();
-    expect(firstUpdated ?? "").toBeGreaterThanOrEqual(secondUpdated ?? "");
+    const firstUpdatedTime = Date.parse(firstUpdated ?? "");
+    const secondUpdatedTime = Date.parse(secondUpdated ?? "");
+    expect(firstUpdatedTime).not.toBeNaN();
+    expect(secondUpdatedTime).not.toBeNaN();
+    expect(firstUpdatedTime).toBeGreaterThanOrEqual(secondUpdatedTime);
   }
 
   async function expectSortedByViews(locator) {

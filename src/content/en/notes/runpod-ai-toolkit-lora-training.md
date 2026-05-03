@@ -138,7 +138,7 @@ We will use a template, so there is nothing especially difficult here.
   - Open `Environment Variables` at the bottom.
   - Change the value of `AI_TOOLKIT_AUTH` to a password only you know.
 
-  > You will use this value when opening AI Toolkit. If you do not set `AI_TOOLKIT_AUTH`, the default password is `password`.
+  > You will use this value when opening AI Toolkit. If you leave the default as-is, anyone can open it with `password`, so use a different value.
 
 - **Storage configuration**
   - Allocate enough **Volume disk** for the dataset, base model, and output LoRA files.

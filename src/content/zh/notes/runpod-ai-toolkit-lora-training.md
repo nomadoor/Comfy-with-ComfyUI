@@ -138,7 +138,7 @@ Pod 就像一台可以自定义的云端租用 PC。
   - 打开最下方的 `Environment Variables`。
   - 把 `AI_TOOLKIT_AUTH` 的值改成只有自己知道的密码。
 
-  > 这里设置的值会在打开 AI Toolkit 时使用。如果不设置 `AI_TOOLKIT_AUTH`，初始密码会是 `password`。
+  > 这里设置的值会在打开 AI Toolkit 时使用。如果保持默认值，任何人都可以用 `password` 打开，所以请改成别的值。
 
 - **Storage configuration**
   - 准备足够的 **Volume disk**，用来放 dataset、base model 和输出的 LoRA。
