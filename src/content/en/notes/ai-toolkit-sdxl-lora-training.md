@@ -130,7 +130,7 @@ On Windows, [AI-Toolkit-Easy-Install](https://github.com/Tavris1/AI-Toolkit-Easy
 
 If you train on Runpod, see this guide.
 
-- [WIP]
+- [Running AI Toolkit on RunPod](/en/notes/runpod-ai-toolkit-lora-training/)
 
 ---
 

@@ -130,6 +130,16 @@ Pod 就像一台可以自定义的云端租用 PC。
   - 这是 AI Toolkit 作者 Ostris 制作的模板。
   - 用 `AI Toolkit` 搜索时，会出现很多同名或近似名称的模板，请注意不要选错。
 
+  接下来，对这个模板做一点修改。
+
+  ![](https://gyazo.com/423ba9ab55c4699b047abc7b7d0b2e44){gyazo=image}
+
+  - 点击 `Edit`。
+  - 打开最下方的 `Environment Variables`。
+  - 把 `AI_TOOLKIT_AUTH` 的值改成只有自己知道的密码。
+
+  > 这里设置的值会在打开 AI Toolkit 时使用。如果不设置 `AI_TOOLKIT_AUTH`，初始密码会是 `password`。
+
 - **Storage configuration**
   - 准备足够的 **Volume disk**，用来放 dataset、base model 和输出的 LoRA。
   - 使用默认值即可。
@@ -152,9 +162,7 @@ Pod 准备好后，会显示 `🟢Ready`，并出现打开 AI Toolkit 的链接�
 
 ![](https://gyazo.com/696fa9e2aa3260c51214fd4fc7c3af1a){gyazo=image}
 
-它会要求输入密码，输入 `password` 就可以进入。
-
-> 正常来说应该设置别的密码，但这次是一次性使用，所以这里不必太在意。
+它会要求输入密码，这里输入刚才设置在 `AI_TOOLKIT_AUTH` 中的值。
 
 接下来大致看一下在 AI Toolkit 中训练模型的流程。
 

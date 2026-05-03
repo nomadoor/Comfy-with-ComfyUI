@@ -130,6 +130,16 @@ We will use a template, so there is nothing especially difficult here.
   - This is the template made by Ostris, the author of AI Toolkit.
   - Be careful when searching for `AI Toolkit`, because many templates with similar names appear.
 
+  Next, edit this template slightly.
+
+  ![](https://gyazo.com/423ba9ab55c4699b047abc7b7d0b2e44){gyazo=image}
+
+  - Click `Edit`.
+  - Open `Environment Variables` at the bottom.
+  - Change the value of `AI_TOOLKIT_AUTH` to a password only you know.
+
+  > You will use this value when opening AI Toolkit. If you do not set `AI_TOOLKIT_AUTH`, the default password is `password`.
+
 - **Storage configuration**
   - Allocate enough **Volume disk** for the dataset, base model, and output LoRA files.
   - The default value is fine.
@@ -152,9 +162,7 @@ Click `HTTP Service`, and AI Toolkit should open.
 
 ![](https://gyazo.com/696fa9e2aa3260c51214fd4fc7c3af1a){gyazo=image}
 
-It will ask for a password. Enter `password`.
-
-> In a normal setup you should set a different password, but this Pod is disposable, so I do not worry about it too much here.
+When it asks for a password, enter the value you just set in `AI_TOOLKIT_AUTH`.
 
 From here, we will look at the rough training flow in AI Toolkit.
 

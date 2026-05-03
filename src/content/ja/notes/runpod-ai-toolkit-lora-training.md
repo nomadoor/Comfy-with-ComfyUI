@@ -130,6 +130,16 @@ Pod は、クラウド上にある、カスタムできるレンタル PC のよ
   - AI Toolkit の作者である Ostris 氏が作ったテンプレートです。
   - `AI Toolkit` で検索すると同名のテンプレートが数多く出てくるので気をつけてください。
 
+  次に、このテンプレートを少しだけ編集します。
+
+  ![](https://gyazo.com/423ba9ab55c4699b047abc7b7d0b2e44){gyazo=image}
+
+  - `Edit` をクリック。
+  - 最下部の `Environment Variables` を開きます。
+  - `AI_TOOLKIT_AUTH` の値を、自分だけが分かるパスワードに変更してください。
+
+  > ここで設定した値は、AI Toolkit を開くときに使います。`AI_TOOLKIT_AUTH` を設定しない場合、初期パスワードは `password` になります。
+
 - **Storage configuration**
   - dataset、base model、出力された LoRA を置けるだけの **Volume disk** を確保します。
   - 初期値のままで大丈夫です。
@@ -152,9 +162,7 @@ Pod が準備できると、`🟢Ready` の表示になり、AI Toolkit を開�
 
 ![](https://gyazo.com/696fa9e2aa3260c51214fd4fc7c3af1a){gyazo=image}
 
-パスワードが求められますが、`password` と入力すれば入れます。
-
-> 本来は別のパスワードを設定すべきですが、今回は使い捨てなのでそこまで気にしなくても構いません。
+パスワードが求められたら、先ほど `AI_TOOLKIT_AUTH` に設定した値を入力します。
 
 ここからは大まかにですが、AI Toolkit でのモデル学習の流れを見ていきます。
 

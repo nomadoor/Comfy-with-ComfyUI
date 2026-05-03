@@ -130,7 +130,7 @@ myakumyaku-san, sitting, indoors, office, desk, laptop, office chair, photo
 
 如果在 Runpod 上训练，可以参考这里。
 
-- [WIP]
+- [在 RunPod 上运行 AI Toolkit](/zh/notes/runpod-ai-toolkit-lora-training/)
 
 ---
 
