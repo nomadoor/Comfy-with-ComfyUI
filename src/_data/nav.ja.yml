@@ -346,6 +346,10 @@ sections:
     pages:
       - id: find
         title: Noteを探す
+      - id: ai-toolkit-sdxl-lora-training
+        title: AI Toolkit で SDXL（Illustrious）LoRA を学習する
+      - id: runpod-ai-toolkit-lora-training
+        title: RunPod で AI Toolkit を動かす
       - id: panorama-stickers
         title: ComfyUI Panorama Stickers
       - id: insightface-install

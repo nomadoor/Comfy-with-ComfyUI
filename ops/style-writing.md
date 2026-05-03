@@ -106,6 +106,9 @@
 
 - **workflow**：小文字で統一。
 - **ComfyUI**：正式表記 ComfyUI。
+- 日本語本文中の英字語・製品名・UI 名の前後には、原則として半角スペースを入れる。
+  - 例: `ComfyUI で生成する` / `LoRA を学習する` / `Batch Size を上げる`
+  - ただし、句読点・括弧・行頭・行末では不要。
 - 型・パラメータ・ノード名は backtick で囲む。
   - 例: `MASK` / `IMAGE` / `delimiter` / `String (Multiline)`。
 

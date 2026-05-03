@@ -111,7 +111,7 @@ For `ai-capabilities`, default is no tags unless explicitly requested by the own
 
 * **Format**: `/<lang>/<section>/<slug>/`
 * `lang` $\in$ { `ja`, `en`, `zh` }
-* `section` $\in$ { `begin-with`, `ai-capabilities`, `basic-workflows`, `data-utilities`, `faq` }
+* `section` $\in$ { `begin-with`, `ai-capabilities`, `basic-workflows`, `data-utilities`, `notes` }
 * `slug` is a **kebab-case, permanent identifier**.
 
 ### Slug Rules
