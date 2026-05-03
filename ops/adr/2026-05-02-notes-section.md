@@ -23,7 +23,7 @@ The owner wants to replace the existing FAQ / Troubleshooting section with a bro
 - On individual Note pages, `noteTags` chips link to `/notes/find/?q=<tag>` in the current language. The finder reads `q` and initializes the local search field with that value.
 - Views sorting is driven by `src/_data/pageViews.json`, keyed by canonical page URL. The file covers the whole site, and Notes templates read only matching Notes URLs from it.
 - Generate `pageViews.json` with `scripts/update-page-views.mjs`, using Cloudflare Web Analytics GraphQL `rumPageloadEventsAdaptiveGroups`. Treat `count` grouped by `dimensions.requestPath` as the page-load metric for sorting. The script reads `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_API_TOKEN`, and `CLOUDFLARE_RUM_SITE_TAG` from the environment or local `.env.local`; secrets must not be committed.
-- Refresh `pageViews.json` once per day with GitHub Actions. The scheduled workflow commits only when the generated JSON changes, so the site is not rebuilt for identical analytics data.
+- Refresh `pageViews.json` once per day by triggering a Cloudflare Pages rebuild from GitHub Actions. The Pages build command runs `npm run views:update && npm run build`, so the generated data is used during that build without pushing generated analytics data directly to `main`.
 - Add `created` and `updated` front matter to content pages using the best available Git history dates when exact editorial dates are unknown.
 
 ## Consequences

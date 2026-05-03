@@ -3,6 +3,17 @@ import { test, expect } from "@playwright/test";
 const NOTES_FIND = "/ja/notes/find/";
 
 test.describe("Notes views sorting", () => {
+  async function expectSortedByUpdated(locator) {
+    const count = await locator.count();
+    expect(count).toBeGreaterThan(1);
+
+    const firstUpdated = await locator.nth(0).getAttribute("data-updated");
+    const secondUpdated = await locator.nth(1).getAttribute("data-updated");
+    expect(firstUpdated).toBeTruthy();
+    expect(secondUpdated).toBeTruthy();
+    expect(firstUpdated ?? "").toBeGreaterThanOrEqual(secondUpdated ?? "");
+  }
+
   async function expectSortedByViews(locator) {
     const count = await locator.count();
     expect(count).toBeGreaterThan(1);
@@ -17,7 +28,7 @@ test.describe("Notes views sorting", () => {
     await page.goto(NOTES_FIND);
 
     const cards = page.locator("[data-note-grid] [data-note-card]");
-    await expect(cards.first()).toContainText("ComfyUI Panorama Stickers");
+    await expectSortedByUpdated(cards);
 
     const viewsButton = page.locator('[data-note-sort="views"]');
     await expect(viewsButton).toBeEnabled();
@@ -30,7 +41,7 @@ test.describe("Notes views sorting", () => {
     await page.goto(NOTES_FIND);
 
     const items = page.locator("[data-notes-list] .notes-nav__item");
-    await expect(items.first()).toContainText("ComfyUI Panorama Stickers");
+    await expectSortedByUpdated(items);
 
     const viewsButton = page.locator('[data-notes-sort="views"]');
     await expect(viewsButton).toBeEnabled();
