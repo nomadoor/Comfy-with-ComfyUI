@@ -348,6 +348,8 @@ sections:
         title: Find Notes
       - id: ai-toolkit-sdxl-lora-training
         title: Training an SDXL (Illustrious) LoRA with AI Toolkit
+      - id: runpod-ai-toolkit-lora-training
+        title: Running AI Toolkit on RunPod
       - id: panorama-stickers
         title: ComfyUI Panorama Stickers
       - id: insightface-install

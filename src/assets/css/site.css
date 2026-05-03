@@ -1916,6 +1916,7 @@ h1 {
 
 .article-body table th,
 .article-body table td {
+  color: #7f7f7f;
   text-align: left;
   padding: var(--space-sm) var(--space-md);
   font-size: 0.9rem;
