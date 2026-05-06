@@ -4,11 +4,12 @@
 - Update `/ops` before writing code. No layout, token, or IA change lands in `/src` without a documented rule.
 - ADR cadence: anything that changes IA, tokens, CI, or component sets requires ADR draft + approval.
 
-## 2. One Site, Three Languages
-- JA/EN/ZH share the same slug IDs per section. Localization is label-only; content parity is the goal even if JA launches first.
+## 2. Japanese Source First
+- **JA is the source of truth for content.** New article work starts in Japanese.
+- Do not create, translate, or update EN/ZH article pages unless the owner explicitly asks for that translation work in the current task.
+- Do not add EN/ZH nav entries for a new JA article unless the matching EN/ZH pages are intentionally being created in the same owner-approved translation task.
 - All UI chrome (nav, chips, buttons) must read the current locale from Eleventy data, never hard-coded.
-- **JA is the source of truth for content.** Every change starts in Japanese, and the EN/ZH pages must be updated to mirror the JA page before merge. Exception: ADR-compliant placeholder/stub pages are allowed in EN/ZH until translation is ready, but they must carry a clear placeholder flag in front matter/Eleventy data, be tracked in a translation queue with a deadline, and are not treated as final content (see ADR: `ops/adr/2026-02-05-zh-foundation.md`).
-- No EN-only/ZH-only pages or drift are allowed **except** the ADR-compliant placeholder lifecycle above.
+- Existing EN/ZH pages may remain, but content parity is not a reason for agents to spend tokens on unsolicited translations.
 
 ## 3. Tags and Discovery
 - Tags are optional metadata. If used, the tag slug ties nav, cards, workflows, and search facets together.
