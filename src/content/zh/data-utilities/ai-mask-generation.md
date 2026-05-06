@@ -6,7 +6,7 @@ slug: ai-mask-generation
 navId: ai-mask-generation
 title: "使用 AI 生成蒙版"
 created: 2026-02-06
-updated: 2026-03-02
+updated: 2026-05-07
 summary: "关于抠图、分割、物体检测"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -18,6 +18,9 @@ hero:
 在 Inpainting 等操作中经常需要制作蒙版，但每次都手动绘制或准备蒙版图像非常辛苦。最重要的是无法自动化。
 
 因此，让我们利用各种 AI 来自动生成蒙版吧。
+
+> 如果只是想为静态图像制作蒙版，可以先从 [SAM 3 / 3.1](/zh/data-utilities/sam3-mask-generation/) 开始。  
+> 它可以用文本指定对象，并把物体检测和分割放在同一流程里处理。
 
 - **物体检测 (Object Detection)**
   - 根据文本等指令，用 **边界框 (Bounding Box)** 检测图像中的物体。

@@ -6,7 +6,7 @@ slug: ai-mask-generation
 navId: ai-mask-generation
 title: "AIを使ったマスク生成"
 created: 2025-11-26
-updated: 2026-03-02
+updated: 2026-05-07
 summary: "マッティング、セグメンテーション、物体検出について"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -18,6 +18,9 @@ hero:
 inpaintingなどでマスクを作る場面は多いですが、毎回手書きをしたり、マスク画像を用意するのは大変です。なにより自動化できません。
 
 そこで様々なAIを活用してマスクを自動生成してみましょう。
+
+> とりあえず静止画でマスクを作りたい場合は、まず [SAM 3 / 3.1](/ja/data-utilities/sam3-mask-generation/) を使っておけばOKです。  
+> テキストで対象を指定でき、物体検出とセグメンテーションをまとめて扱えます。
 
 - **物体検出 (Detection)**
   - テキストなどの指示に従い、画像の中の物体を **バウンディングボックス (Bounding Box)** で検出します。

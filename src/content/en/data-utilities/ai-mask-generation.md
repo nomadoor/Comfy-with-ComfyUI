@@ -6,7 +6,7 @@ slug: ai-mask-generation
 navId: ai-mask-generation
 title: "AI Mask Generation"
 created: 2025-11-26
-updated: 2026-03-02
+updated: 2026-05-07
 summary: "About Matting, Segmentation, and Object Detection"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -18,6 +18,9 @@ hero:
 There are many situations where you create masks in inpainting, etc., but it is hard to draw them by hand or prepare mask images every time. Above all, it cannot be automated.
 
 So let's use various AIs to automatically generate masks.
+
+> If you just want to make a mask for a still image, start with [SAM 3 / 3.1](/en/data-utilities/sam3-mask-generation/).  
+> It can use text prompts and handle object detection and segmentation together.
 
 - **Object Detection**
   - Detects objects in an image with a **Bounding Box** according to instructions such as text.

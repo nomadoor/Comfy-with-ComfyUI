@@ -104,6 +104,9 @@ sections:
       title: 遮罩操作
     - id: ai-mask-generation
       title: AI 遮罩生成
+      children:
+      - id: sam3-mask-generation
+        title: SAM 3 / 3.1
     - id: layer-composite-blend
       title: 图层合成与混合
   - id: batch-processing

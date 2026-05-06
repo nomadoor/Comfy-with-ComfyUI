@@ -104,6 +104,9 @@ sections:
             title: Mask Operations
           - id: ai-mask-generation
             title: AI Mask Generation
+            children:
+              - id: sam3-mask-generation
+                title: SAM 3 / 3.1
           - id: layer-composite-blend
             title: Layer Composite & Blend
       - id: batch-processing
