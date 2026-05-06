@@ -105,7 +105,7 @@ sections:
           - id: ai-mask-generation
             title: AIを使ったマスク生成
             children:
-              - id: sam3-mask-generation
+              - id: sam3
                 title: SAM 3 / 3.1
           - id: layer-composite-blend
             title: レイヤ合成・ブレンド

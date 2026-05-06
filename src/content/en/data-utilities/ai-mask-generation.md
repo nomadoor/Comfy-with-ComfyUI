@@ -19,7 +19,7 @@ There are many situations where you create masks in inpainting, etc., but it is 
 
 So let's use various AIs to automatically generate masks.
 
-> If you just want to make a mask for a still image, start with [SAM 3 / 3.1](/en/data-utilities/sam3-mask-generation/).  
+> If you just want to make a mask for a still image, start with [SAM 3 / 3.1](/en/data-utilities/sam3/).  
 > It can use text prompts and handle object detection and segmentation together.
 
 - **Object Detection**

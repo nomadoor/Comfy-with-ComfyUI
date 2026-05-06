@@ -19,7 +19,7 @@ hero:
 
 因此，让我们利用各种 AI 来自动生成蒙版吧。
 
-> 如果只是想为静态图像制作蒙版，可以先从 [SAM 3 / 3.1](/zh/data-utilities/sam3-mask-generation/) 开始。  
+> 如果只是想为静态图像制作蒙版，可以先从 [SAM 3 / 3.1](/zh/data-utilities/sam3/) 开始。  
 > 它可以用文本指定对象，并把物体检测和分割放在同一流程里处理。
 
 - **物体检测 (Object Detection)**

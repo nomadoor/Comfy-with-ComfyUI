@@ -9,7 +9,7 @@ The AI mask generation page has grown into a broad overview that covers detectio
 Keep the existing `ai-mask-generation` page in place and add a focused child page for SAM 3 / 3.1 under Data & Image Utilities.
 
 - Parent page: `/<lang>/data-utilities/ai-mask-generation/`
-- New child page: `/<lang>/data-utilities/sam3-mask-generation/`
+- New child page: `/<lang>/data-utilities/sam3/`
 
 The parent page should link near the top to the SAM 3 / 3.1 page as the simple default path. The child page can stay lightweight at first and later receive workflow JSON once the workflow is ready.
 

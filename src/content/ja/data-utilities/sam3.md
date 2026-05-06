@@ -2,8 +2,8 @@
 layout: page.njk
 lang: ja
 section: data-utilities
-slug: sam3-mask-generation
-navId: sam3-mask-generation
+slug: sam3
+navId: sam3
 title: "SAM 3 / 3.1"
 created: 2026-05-07
 updated: 2026-05-07
