@@ -17,45 +17,45 @@ hero:
 
 [SAM 3](https://github.com/facebookresearch/sam3) は、Meta の Segment Anything Model シリーズの新しいモデルです。
 
-これまでの SAM は、ポイントや BBOX で「このあたり」を指定してマスクを作る使い方が中心でした。SAM 3 では、短いテキストで対象を指定し、その対象の検出とセグメンテーションをまとめて行えるようになっています。
+これまでの SAM は、あくまで **物の形が分かる** だけで、指定したオブジェクトを切り抜くには、BBOX や座標で位置を指定してあげる必要がありました。
 
-たとえば `person`、`red car`、`the dog` のように指定すると、対象を探して、その形をマスクとして取り出します。
+SAM 3 では、VLM のようにテキストで対象を指定し、単独でセグメンテーションを完結させることができるようになっています。
 
-[SAM 3.1](https://ai.meta.com/blog/segment-anything-model-3/) は SAM 3 の更新版です。特に動画で複数オブジェクトを追跡する処理が改善されています。静止画のマスク生成では、まず SAM 3 / 3.1 系として考えておけばよいでしょう。
-
----
-
-## 何に使う？
-
-ComfyUI では、inpainting、合成、背景処理、部分的な生成などでマスクをよく使います。
-
-SAM 3 / 3.1 は、次のような場面で便利です。
-
-- 画像内の人物だけをマスクにしたい
-- 車、服、家具など、テキストで説明しやすい対象を抜き出したい
-- YOLO や Grounding DINO と SAM を組み合わせる前に、まずシンプルに試したい
-
-静止画の AI マスク生成は、ひとまず SAM 3 / 3.1 から始めるのが分かりやすいです。
+[SAM 3.1](https://ai.meta.com/blog/segment-anything-model-3/) は SAM 3 の更新版です。動画で複数オブジェクトを追跡する処理が改善されています。
 
 ---
 
 ## モデルのダウンロード
 
-ComfyUI 本体側で SAM 3 系が使えるようになっているため、基本的には必要なモデルをダウンロードして使います。
+- [sam3.1_multiplex_fp16.safetensors](https://huggingface.co/Comfy-Org/sam3.1/blob/main/checkpoints/sam3.1_multiplex_fp16.safetensors) (1.75 GB)
 
-モデルは ComfyUI Manager の `Install Models` から探すか、Meta の Hugging Face ページから入手します。
-
-- [facebook/sam3](https://huggingface.co/facebook/sam3)
-- [facebook/sam3.1](https://huggingface.co/facebook/sam3.1)
-
-> Hugging Face 側で利用申請やログインが必要になる場合があります。
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂checkpoints/
+        └── sam3.1_multiplex_fp16.safetensors
+```
 
 ---
 
 ## workflow
 
-workflow は後で追加します。
+### 静止画
 
-まずは「テキストで対象を指定してマスクを作るモデル」と考えておけばOKです。
+![](https://gyazo.com/cd6078ed81d850085144836e404754d5){gyazo=image}
 
-複雑なマスク生成を組む前に、SAM 3 / 3.1 単体でどこまで取れるか試してみるのがおすすめです。
+[](/workflows/data-utilities/sam3/SAM3.1.json)
+
+- `SAM3 Detect` ノードに、画像・マスク、切り抜く対象の情報（テキストプロンプト、BBOX、座標）を入力します。
+- 少しややこしい仕様ですが、そのプロンプトに対応する対象が複数あった場合、単に `car` のように書くだけでは、そのうちの一番それらしいものしか検出しません。
+  - N 番目までセグメンテーションしたい場合は、`car:N` のように書く必要があります。
+  - 単に画面に映っている対象をすべて検出したい場合は、`car:99` のように書いてしまってもいいでしょう。
+
+### 動画
+
+![](https://gyazo.com/96c353a26df8cf274d9b68a95453ba7b){gyazo=loop}
+
+[](/workflows/data-utilities/sam3/SAM3.1_video.json)
+
+- `SAM3 Video Track` ノードを使用します。
+- `SAM3 Track Preview` ノードは SAM に限ったものではありませんが、画像とマスクを入力すると、マスク部分を色付けして見やすくしてくれます。
