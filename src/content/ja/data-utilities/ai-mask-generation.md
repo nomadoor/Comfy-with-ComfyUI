@@ -23,7 +23,7 @@ inpainting などでマスクを作る場面は多いですが、毎回手書き
 - **物体検出 (Detection)**
   - テキストなどの指示に従い、画像の中の物体を **バウンディングボックス (Bounding Box)** で検出します。
 - **マッティング (Matting)**
-  - **手前の景色** と **背後の景色** をグラデーションのあるマスク（Alpha Matte）で区切ります（ComfyUIではバイナリマスクになることも多いです）。
+  - **手前の景色** と **背後の景色** をグラデーションのあるマスク（Alpha Matte）で区切ります（ComfyUI ではバイナリマスクになることも多いです）。
 - **セグメンテーション (Segmentation)**
   - **「物体の形」** を白と黒のマスク（バイナリマスク）で抽出します。
 
@@ -31,7 +31,7 @@ inpainting などでマスクを作る場面は多いですが、毎回手書き
 
 ## 必要なカスタムノード
 
-> 2026年5月現在、対象を指定してマスクを作りたい場合は、コアに実装された [SAM 3 / 3.1](/ja/data-utilities/sam3/) から試すのがよいでしょう。  
+> 2026年5月現在、対象を指定してマスクを作りたい場合は、コアに実装された [SAM 3 / 3.1](/ja/data-utilities/sam3/) を使っておけば良いでしょう。  
 > 以下で紹介する技術は、SAM 3 登場以前によく使われていたものです。今から新しく使う理由はあまりありません。
 
 - **[1038lab/ComfyUI-RMBG](https://github.com/1038lab/ComfyUI-RMBG)**
@@ -39,11 +39,11 @@ inpainting などでマスクを作る場面は多いですが、毎回手書き
   - 2026年5月現在は更新が止まり気味で、環境によってはうまく動かないかもしれません。
 - **[ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)**
 - **[ltdrdata/ComfyUI-Impact-Subpack](https://github.com/ltdrdata/ComfyUI-Impact-Subpack)**
-  - Detailerという作業をするためのもので、単純にマスク生成として使うにはクセがあります。
+  - Detailer という作業をするためのもので、単純にマスク生成として使うにはクセがあります。
 - **[kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2)**
-  - Florence2というMLLMを動かします。
+  - Florence2 という MLLM を動かします。
 - **[kijai/ComfyUI-segment-anything-2](https://github.com/kijai/ComfyUI-segment-anything-2)**
-  - SAM 2というセグメンテーションモデルを動かすもので、Florence2とセットで使います。
+  - SAM 2 というセグメンテーションモデルを動かすもので、Florence2 とセットで使います。
 
 ---
 
@@ -103,7 +103,7 @@ Grounding DINO単体で動かすノードが無いため、下でセグメンテ
 
 「背景除去」という名前で提供されているサービスや機能の中身は基本的にこれと同じものです。
 
-オブジェクトを指定することなどは出来ませんし、「背景」が一体どこのことを指すのか？はAIに委ねられているため、シンプルに背景除去したい場合や、前景と背景の境界がはっきりしている場合に使うのがいいでしょう。
+オブジェクトを指定することなどはできませんし、「背景」が一体どこのことを指すのか？は AI に委ねられているため、シンプルに背景除去したい場合や、前景と背景の境界がはっきりしている場合に使うのがいいでしょう。
 
 ### BiRefNet
 
@@ -115,7 +115,7 @@ Grounding DINO単体で動かすノードが無いため、下でセグメンテ
 
 
 - `Background` を `Alpha` にすると、アルファチャンネルが付加された透過画像が出力されます。
-- **注意**: このときの出力は **RGBA** であるため、image2image等で使う場合、エラーが発生する可能性があります（[マスクとアルファチャンネル](/ja/data-utilities/mask-alpha/) 参照）。
+- **注意**: このときの出力は **RGBA** であるため、image2image 等で使う場合、エラーが発生する可能性があります（[マスクとアルファチャンネル](/ja/data-utilities/mask-alpha/) 参照）。
 
 アニメ画像が得意な ToonOut など、用途によって派生モデルがいくつかあります。色々試してみてください。
 
@@ -160,7 +160,7 @@ Grounding DINO単体で動かすノードが無いため、下でセグメンテ
 
 物体検出とセグメンテーション、マッティングを組み合わせることで、より高精度なマスク生成が可能になります。
 
-> あらためてになりますが、まずは単一モデルでマスク生成が完結する [SAM 3 / 3.1](/ja/data-utilities/sam3/) を使っておけばOKです。
+> 改めてになりますが、まずは単一モデルでマスク生成が完結する [SAM 3 / 3.1](/ja/data-utilities/sam3/) を使っておけばOKです。
 
 ### YOLO × SAM
 
@@ -168,7 +168,7 @@ Grounding DINO単体で動かすノードが無いため、下でセグメンテ
 
 [](/workflows/data-utilities/ai-mask-generation/YOLO_face-SAM.json)
 
-高速な顔検出（YOLO）とSAM(初期) の組み合わせです。
+高速な顔検出（YOLO）と SAM（初期） の組み合わせです。
 
 ### Grounding DINO × SAM
 
@@ -176,7 +176,7 @@ Grounding DINO単体で動かすノードが無いため、下でセグメンテ
 
 [](/workflows/data-utilities/ai-mask-generation/Grounding_DINO_HQ-SAM.json)
 
-Grounding DINO と SAMの改良版である HQ-SAM の組み合わせです。
+Grounding DINO と SAM の改良版である HQ-SAM の組み合わせです。
 
 テキストで対象を指定しつつ、高精度なマスクを生成できるので、最も使われる組み合わせの一つです。
 
