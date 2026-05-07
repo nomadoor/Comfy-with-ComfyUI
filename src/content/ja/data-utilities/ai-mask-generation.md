@@ -36,6 +36,7 @@ inpainting などでマスクを作る場面は多いですが、毎回手書き
 
 - **[1038lab/ComfyUI-RMBG](https://github.com/1038lab/ComfyUI-RMBG)**
   - マッティングからセグメンテーションまで、多くの技術に対応しており、使い勝手もよいです。
+  - 2026年5月現在は更新が止まり気味で、環境によってはうまく動かないかもしれません。
 - **[ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)**
 - **[ltdrdata/ComfyUI-Impact-Subpack](https://github.com/ltdrdata/ComfyUI-Impact-Subpack)**
   - Detailerという作業をするためのもので、単純にマスク生成として使うにはクセがあります。
