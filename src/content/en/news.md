@@ -5,7 +5,7 @@ slug: news
 navId: news
 title: "News"
 created: 2026-01-15
-updated: 2026-03-22
+updated: 2026-05-07
 summary: "Site updates"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
@@ -13,6 +13,21 @@ tags:
 ---
 
 <div class="news-list">
+  <a class="news-row" href="/en/data-utilities/sam3/">
+    <span class="news-row__date">2026.5.7</span>
+    <span class="news-row__tag">data-utilities</span>
+    <span class="news-row__title">Added SAM 3 / 3.1 page</span>
+  </a>
+  <a class="news-row" href="/en/notes/runpod-ai-toolkit-lora-training/">
+    <span class="news-row__date">2026.5.4</span>
+    <span class="news-row__tag">notes</span>
+    <span class="news-row__title">Added Running AI Toolkit on RunPod page</span>
+  </a>
+  <a class="news-row" href="/en/notes/ai-toolkit-sdxl-lora-training/">
+    <span class="news-row__date">2026.5.4</span>
+    <span class="news-row__tag">notes</span>
+    <span class="news-row__title">Added SDXL LoRA training with AI Toolkit page</span>
+  </a>
   <a class="news-row" href="/en/basic-workflows/ltx-2-3/">
     <span class="news-row__date">2026.3.22</span>
     <span class="news-row__tag">basic-workflows</span>

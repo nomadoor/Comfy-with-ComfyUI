@@ -5,13 +5,28 @@ slug: news
 navId: news
 title: "更新信息"
 created: 2026-02-05
-updated: 2026-03-22
+updated: 2026-05-07
 summary: "本站的更新信息"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/zh/data-utilities/sam3/">
+    <span class="news-row__date">2026.5.7</span>
+    <span class="news-row__tag">data-utilities</span>
+    <span class="news-row__title">追加了 SAM 3 / 3.1 的页面</span>
+  </a>
+  <a class="news-row" href="/zh/notes/runpod-ai-toolkit-lora-training/">
+    <span class="news-row__date">2026.5.4</span>
+    <span class="news-row__tag">notes</span>
+    <span class="news-row__title">追加了在 RunPod 上运行 AI Toolkit 的页面</span>
+  </a>
+  <a class="news-row" href="/zh/notes/ai-toolkit-sdxl-lora-training/">
+    <span class="news-row__date">2026.5.4</span>
+    <span class="news-row__tag">notes</span>
+    <span class="news-row__title">追加了用 AI Toolkit 训练 SDXL LoRA 的页面</span>
+  </a>
   <a class="news-row" href="/zh/basic-workflows/ltx-2-3/">
     <span class="news-row__date">2026.3.22</span>
     <span class="news-row__tag">basic-workflows</span>

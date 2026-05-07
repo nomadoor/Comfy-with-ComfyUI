@@ -15,7 +15,7 @@
 
 ## 2. Navigation & Tags
 - Locale menus come from `_data/nav.<lang>.yml`; keep IDs aligned with folders and front matter.
-- `nav.zh.yml` mirrors the same slug IDs as `ja/en` (titles can be placeholders until translation).
+- JA is the content source. Do not add EN/ZH nav entries or article files for new JA content unless the owner explicitly requests translation/localization work.
 - Tags are **optional**. When present, they must be consistent with the slug/topic, specific but not spammy, and limited to **max 5** per page.
 - The `notes` section is a flat collection. Its left sidebar panel uses a fixed `find` link, an independent Updated / Views segment control, and a flat title list. It must not render category headings or nested children.
 - `/notes/find/` is a local note finder page. It filters only notes by title, summary, and tags; it does not change the global header search.

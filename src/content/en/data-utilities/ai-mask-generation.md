@@ -6,8 +6,8 @@ slug: ai-mask-generation
 navId: ai-mask-generation
 title: "AI Mask Generation"
 created: 2025-11-26
-updated: 2026-03-02
-summary: "About Matting, Segmentation, and Object Detection"
+updated: 2026-05-07
+summary: "About matting, segmentation, and object detection"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "https://i.gyazo.com/499c4756e1b2adb1424f9cab9829806b.png"
@@ -15,32 +15,35 @@ hero:
 
 ## AI Mask Generation
 
-There are many situations where you create masks in inpainting, etc., but it is hard to draw them by hand or prepare mask images every time. Above all, it cannot be automated.
+Masks are often needed for inpainting and similar workflows, but drawing them by hand or preparing mask images every time is a lot of work. Above all, it cannot be automated.
 
-So let's use various AIs to automatically generate masks.
+That said, you cannot always get a clean mask just by saying "mask this part."  
+You need to use different AI techniques depending on the goal.
 
 - **Object Detection**
-  - Detects objects in an image with a **Bounding Box** according to instructions such as text.
+  - Detects objects in an image with a **Bounding Box** based on instructions such as text.
 - **Matting**
-  - Separates the **foreground** and **background** with a mask with gradation (Alpha Matte) (often becomes a binary mask in ComfyUI).
+  - Separates the **foreground** and **background** with a soft mask called an Alpha Matte. In ComfyUI, this often becomes a binary mask.
 - **Segmentation**
-  - Extracts the **"shape of the object"** with a black and white mask (binary mask).
+  - Extracts the **shape of an object** as a black-and-white mask.
 
 ---
 
 ## Required Custom Nodes
 
-There are many types of technologies to do these, and accordingly, there are various custom nodes, but for now, the following should suffice.
+> As of May 2026, if you want to create a mask by specifying a target, it is best to start with the core [SAM 3 / 3.1](/en/data-utilities/sam3/) implementation.  
+> The techniques below were commonly used before SAM 3. There is not much reason to start using them from scratch now.
 
 - **[1038lab/ComfyUI-RMBG](https://github.com/1038lab/ComfyUI-RMBG)**
-  - Supports many technologies from matting to segmentation, and is easy to use.
+  - Supports many techniques from matting to segmentation, and is easy to use.
+  - As of May 2026, updates seem to have slowed down, so it may not work well in some environments.
 - **[ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)**
 - **[ltdrdata/ComfyUI-Impact-Subpack](https://github.com/ltdrdata/ComfyUI-Impact-Subpack)**
-  - It is for doing work called Detailer, and it has some quirks to use simply as mask generation.
+  - These are mainly for Detailer workflows, so they have some quirks when used simply for mask generation.
 - **[kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2)**
-  - Runs an MLLM called Florence2.
+  - Runs Florence2, an MLLM.
 - **[kijai/ComfyUI-segment-anything-2](https://github.com/kijai/ComfyUI-segment-anything-2)**
-  - Runs a segmentation model called SAM 2, used in a set with Florence2.
+  - Runs the SAM 2 segmentation model, usually together with Florence2.
 
 ---
 
@@ -48,71 +51,72 @@ There are many types of technologies to do these, and accordingly, there are var
 
 ![](https://gyazo.com/1a10dcd7dcf8f72eee275a3d8484f882){gyazo=image}
 
-As the name suggests, it can identify the position of a specific object in an image and outputs a square range called BBOX.
+As the name suggests, this identifies the position of a specific object in an image and outputs a rectangular area called a BBOX.
 
-There are various technologies with characteristics in accuracy, versatility, and speed.
+There are many techniques, each with different strengths in accuracy, flexibility, and speed.
 
 ### YOLO Family
 
-An ultra-fast detection technology aimed at detecting objects in real time.
+YOLO is an extremely fast detection technique designed for real-time object detection.
 
-Basically, since one model (face only, hand only, etc.) is created for the type of object you want to detect, you need to make it yourself if there is no model, and it is unsuitable when you want to detect multiple types.
+Basically, one model is made for each type of object you want to detect, such as faces or hands. If there is no model for your target, you need to make one yourself, and it is not suitable when you want to detect many different categories at once.
 
 ![](https://gyazo.com/e8b4e05d42db0b613aee4467a8dca633){gyazo=image}
 
 [](/workflows/data-utilities/ai-mask-generation/Simple_Detector_(SEGS)-YOLO_face.json)
 
-Suitable when high-speed processing is required (when a specific target is decided, such as face detection).
+It is suitable when high-speed processing is needed, such as when the target is fixed to face detection.
 
-- **How to get models**: `ComfyUI Manager` -> `Install Models` -> Search for YOLO to find various YOLO models besides faces.
-- I won't paste the link, but if you search for Adetailer on Civitai, you can also find models specialized for NSFW.
+- **How to get models**: `ComfyUI Manager` -> `Install Models` -> search for YOLO. You can find various YOLO models besides face models.
+- I will not link them here, but if you search for Adetailer on Civitai, you can also find models specialized for NSFW.
 
 ### Grounding DINO
 
-Detects objects specified by text and outputs a BBOX.
+Grounding DINO detects objects specified by text and outputs BBOXes.
 
-Unlike YOLO, it is easy to use because you can specify objects with arbitrary text such as "white dog" or "red car", and you can also detect multiple objects at the same time.
+Unlike YOLO, you can specify objects with arbitrary text such as "white dog" or "red car", so it is easy to use and can detect multiple objects at the same time.
 
-Since there is no node that runs Grounding DINO alone, I will introduce a workflow combined with segmentation below.
+There is no node here that runs Grounding DINO alone, so the workflow below introduces it together with segmentation.
 
-### Florence-2
+### VLM / MLLM
 
-Florence-2 is a Vision Language Model that can understand images as text.
+VLM / MLLM are LLMs with the ability to see images.
 
-It can do various things such as caption generation, and one of them is object detection.
+They can do many things, such as caption generation, and some of them can also perform object detection.
+
+**Florence-2** appeared relatively early, but it is still one of the most versatile and convenient vision language models.
 
 ![](https://gyazo.com/eac97524bcdcb395cdd5172c3694da41){gyazo=image}
 
 [](/workflows/data-utilities/ai-mask-generation/Florence2Run.json)
 
-- **Model**: I don't feel much difference, but please try various ones. The model is downloaded automatically.
+- **Model**: I do not feel a big difference between them, but try a few. The model is downloaded automatically.
 - **Prompt**: Describe the object you want to detect.
 - **task**: caption_to_phrase_grounding
-- **output_mask_select**: If there are several detected items, select which output to use (if blank, all are output).
+- **output_mask_select**: If several items are detected, choose which output to use. If blank, all are output.
 
-Suitable when you want to specify the target with complex sentence expressions or utilize the understanding power of LLM (although the speed is slow).
+This is suitable when you want to specify the target with a complex expression, or when you want to use the understanding ability of an LLM. It is slow, though.
 
 ---
 
 ## Matting
 
-The contents of services and functions provided under the name "Background Removal" are basically the same as this.
+Services and features called "background removal" are basically doing this.
 
-You cannot specify objects, and "what exactly refers to the background?" is left to AI, so it is good to use when you simply want to remove the background or when the boundary between the foreground and background is clear.
+You cannot specify a particular object, and the AI decides what "background" means. It is best when you simply want to remove the background, or when the boundary between foreground and background is clear.
 
 ### BiRefNet
 
-Probably the most used model. Speed and performance are perfect, so you should use this for now.
+Probably the most commonly used model. Its speed and quality are both good enough, so this is the one to try first for matting.
 
 ![](https://gyazo.com/5ce4bac5b8c8dc13fbbb0468c44bf752){gyazo=image}
 
 [](/workflows/data-utilities/ai-mask-generation/BiRefNet_Remove_Background_(RMBG).json)
 
+- If you set `Background` to `Alpha`, it outputs a transparent image with an alpha channel.
+- **Note**: This output is **RGBA**, so it may cause errors when used in image2image and similar workflows. See [Mask & Alpha Channel](/en/data-utilities/mask-alpha/).
 
-- If you set `Background` to `Alpha`, a transparent image with an alpha channel added is output.
-- **Note**: Since the output at this time is **RGBA**, an error may occur if used in image2image etc. (see [Mask & Alpha Channel](/en/data-utilities/mask-alpha/)).
-
-There are several derivative models depending on the application, such as ToonOut which is good at anime images. Please try various ones.
+There are several derivative models depending on the use case, such as ToonOut for anime images. Try a few.
 
 ---
 
@@ -120,25 +124,25 @@ There are several derivative models depending on the application, such as ToonOu
 
 ### SAM (Segment Anything Model)
 
-Currently the most famous segmentation model.
+SAM is currently the most famous segmentation model.
 
-It knows "shapes of things" well, and if you specify a car etc. in a photo with a point or box, it accurately finds the outline and makes it a mask.
+It understands the "shape of things", so if you specify a car in a photo with a point or box, it can find the outline accurately and turn it into a mask.
 
 ![](https://gyazo.com/ae3a00df59eb97f8612b700ff90aac3b){gyazo=image}
 
-This is a function to segment the specified object by pressing a point, but basically it is often combined with object detection.
+This is the function where you click points and segment the specified object, but in practice it is often combined with object detection.
 
-- 1. Right-click on image node -> `Open in SAM Detector`
-- 2. Specify the object you want to extract by clicking with the left mouse button (right click for the range you want to exclude)
-- 3. Press `Detect` to generate a mask
+- 1. Right-click an image node -> `Open in SAM Detector`
+- 2. Left-click the object you want to extract. Right-click areas you want to exclude.
+- 3. Press `Detect` to generate the mask.
 
-> SAM is currently being developed, and there are Initial / SAM 2 / SAM 2.1 / SAM 3.
+> SAM is still being developed, and there are the original SAM / SAM 2 / SAM 2.1 / SAM 3.
 >
-> The latest version, SAM 3, supports not only point and BBOX instructions but also text instructions. I will introduce it again below, but honestly, SAM 3 alone is enough for AI mask generation of still images.
+> SAM 3 supports not only point and BBOX prompts, but also text prompts.
 
-### Clothing / Body Parts Segmentation
+### Clothing / Body Part Segmentation
 
-Performs segmentation of specific parts such as "upper body", "skirt", "face", "hair".
+This segments specific parts such as "upper body", "skirt", "face", and "hair".
 
 ![](https://gyazo.com/3221f2c1bfc5b2a0f4db328c820f5235){gyazo=image}
 
@@ -146,14 +150,15 @@ Performs segmentation of specific parts such as "upper body", "skirt", "face", "
 
 - Select the category you want to segment.
 
-I used to use it often for tasks such as changing clothes, but now object detection + segmentation might be more versatile and have better performance.
-
+I used to use this often for tasks such as virtual try-on, but now object detection + segmentation may be more flexible and perform better.
 
 ---
 
-## Combining
+## Practical Examples
 
-By combining object detection, segmentation, and matting, more precise mask generation becomes possible.
+By combining object detection, segmentation, and matting, you can generate more precise masks.
+
+> Again, start with [SAM 3 / 3.1](/en/data-utilities/sam3/) first, since mask generation can now be completed with a single model.
 
 ### YOLO x SAM
 
@@ -161,7 +166,7 @@ By combining object detection, segmentation, and matting, more precise mask gene
 
 [](/workflows/data-utilities/ai-mask-generation/YOLO_face-SAM.json)
 
-A combination of high-speed face detection (YOLO) and SAM (initial).
+This combines fast face detection with YOLO and the original SAM.
 
 ### Grounding DINO x SAM
 
@@ -169,9 +174,9 @@ A combination of high-speed face detection (YOLO) and SAM (initial).
 
 [](/workflows/data-utilities/ai-mask-generation/Grounding_DINO_HQ-SAM.json)
 
-A combination of Grounding DINO and HQ-SAM, an improved version of SAM.
+This combines Grounding DINO with HQ-SAM, an improved version of SAM.
 
-It is one of the most used combinations because it can generate high-precision masks while specifying the target by text.
+It can specify targets by text and generate high-precision masks, so it was one of the most commonly used combinations.
 
 ### Florence2 x SAM2
 
@@ -179,21 +184,9 @@ It is one of the most used combinations because it can generate high-precision m
 
 [](/workflows/data-utilities/ai-mask-generation/Florence2_SAM2.1.json)
 
-A combination of Florence2 and SAM2.1.
+This combines Florence2 and SAM2.1.
 
-Anything is fine if it is an easy-to-understand target such as a person or an animal, but when you want to specify with complex conditions such as "a man wearing sunglasses" or "a cat lying under a tree", such LLM-based models demonstrate their power.
-
-### SAM 3
-
-![](https://gyazo.com/5ab4819ba05efd277c18ae27046f7f58){gyazo=image}
-
-[](/workflows/data-utilities/ai-mask-generation/SAM3_Segmentation_(RMBG).json)
-
-The latest version of SAM, which also supports text instructions, allowing you to execute object detection and segmentation at once.
-
-Accuracy, performance, and speed are all excellent, so let's use this for now (´ε｀ )
-
-If you want to do something more complex, try custom nodes like [Ltamann/ComfyUI-TBG-SAM3](https://github.com/Ltamann/ComfyUI-TBG-SAM3?tab=readme-ov-file).
+For easy targets such as people or animals, many methods work fine. But when you want to specify a complex condition like "a man wearing sunglasses" or "a cat lying under a tree", this kind of LLM-based model is useful.
 
 ### SAM 3 x BiRefNet
 
@@ -201,8 +194,8 @@ If you want to do something more complex, try custom nodes like [Ltamann/ComfyUI
 
 [](/workflows/data-utilities/ai-mask-generation/SAM3_BiRefNet.json)
 
-Segmentation is originally for distinguishing objects and is not used for fine cutouts.
+Segmentation is for distinguishing objects, not for fine cutouts.
 
-On the other hand, matting can handle fine things like hair and semi-transparent things like glass.
+By contrast, matting can handle fine details like hair and semi-transparent objects like glass.
 
-By combining these, you can multiply each other's abilities.
+Combining them lets you take advantage of both.

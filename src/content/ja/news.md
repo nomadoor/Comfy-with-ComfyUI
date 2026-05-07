@@ -5,13 +5,28 @@ slug: news
 navId: news
 title: "更新情報"
 created: 2026-01-15
-updated: 2026-03-22
+updated: 2026-05-07
 summary: "このサイトの更新情報"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/ja/data-utilities/sam3/">
+    <span class="news-row__date">2026.5.7</span>
+    <span class="news-row__tag">data-utilities</span>
+    <span class="news-row__title">SAM 3 / 3.1 のページを追加しました</span>
+  </a>
+  <a class="news-row" href="/ja/notes/runpod-ai-toolkit-lora-training/">
+    <span class="news-row__date">2026.5.4</span>
+    <span class="news-row__tag">notes</span>
+    <span class="news-row__title">RunPod で AI Toolkit を動かすページを追加しました</span>
+  </a>
+  <a class="news-row" href="/ja/notes/ai-toolkit-sdxl-lora-training/">
+    <span class="news-row__date">2026.5.4</span>
+    <span class="news-row__tag">notes</span>
+    <span class="news-row__title">AI Toolkit で SDXL LoRA を学習するページを追加しました</span>
+  </a>
   <a class="news-row" href="/ja/basic-workflows/ltx-2-3/">
     <span class="news-row__date">2026.3.22</span>
     <span class="news-row__tag">basic-workflows</span>
