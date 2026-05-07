@@ -58,4 +58,5 @@ SAM 3 では、VLM のようにテキストで対象を指定し、単独でセ�
 [](/workflows/data-utilities/sam3/SAM3.1_video.json)
 
 - `SAM3 Video Track` ノードを使用します。
-- `SAM3 Track Preview` ノードは SAM に限ったものではありませんが、画像とマスクを入力すると、マスク部分を色付けして見やすくしてくれます。
+- 出力を `SAM3 Track to Mask` ノードに渡すことで、マスクとして使用できます。
+- `SAM3 Track Preview` ノードは、画像と `track_data` を入力すると、マスク部分を色付けして見やすくしてくれます。
