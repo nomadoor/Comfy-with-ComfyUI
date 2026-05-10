@@ -27,3 +27,4 @@ Workflows let anyone reproduce the same images or videos, but when you want to c
 This site highlights ComfyUI as a **data-processing tool**, not just a generative engine: IO handling, image/video utilities, and clean graph building.
 
 Let’s keep learning together and enjoy the fast-moving world of generative AI.
+
