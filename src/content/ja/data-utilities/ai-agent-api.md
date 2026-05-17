@@ -7,7 +7,7 @@ navId: ai-agent-api
 title: "ComfyUIのworkflowをAIエージェントに使わせる"
 created: 2026-05-17
 updated: 2026-05-17
-summary: "動作確認済みのComfyUI workflowを、AIエージェントにAPI経由で使わせる"
+summary: "ComfyUI workflowを、AIエージェントにAPI経由で使わせる"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""
