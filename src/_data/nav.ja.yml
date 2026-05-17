@@ -129,7 +129,7 @@ sections:
             title: APIとは？
           - id: api-run-workflow
             title: APIでworkflowを実行してみる
-          - id: api-agent
+          - id: ai-agent-api
             title: ComfyUIをAIエージェントに使わせる
   - key: ai-capabilities
     label: AIの仕組みと出来ること

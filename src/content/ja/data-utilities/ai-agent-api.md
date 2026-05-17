@@ -2,8 +2,8 @@
 layout: page.njk
 lang: ja
 section: data-utilities
-slug: api-agent
-navId: api-agent
+slug: ai-agent-api
+navId: ai-agent-api
 title: "ComfyUIをAIエージェントに使わせる"
 created: 2026-05-17
 updated: 2026-05-17
