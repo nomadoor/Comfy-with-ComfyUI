@@ -1,0 +1,30 @@
+# ADR: Add AI Agent API Article under Data Utilities
+
+Date: 2026-05-17
+
+## Context
+
+The API subsection under Data & Image Utilities already explains what the ComfyUI
+API is and how to run a workflow through it. The owner wants a follow-up article
+that frames the same API path as a practical way to let an AI agent use ComfyUI.
+
+## Decision
+
+Add a Japanese article under the existing API group:
+
+- Parent section: `data-utilities`
+- Parent navigation group: `api`
+- New page: `/ja/data-utilities/api-agent/`
+- Title: `ComfyUIをAIエージェントに使わせる`
+
+The first version is a skeleton based on the owner-provided heading outline. It
+should not create EN/ZH pages or nav entries unless translation work is
+explicitly requested later.
+
+## Consequences
+
+- Japanese navigation gains one child entry below the existing API pages.
+- The page stays focused on the API execution pattern first, with MCP discussed
+  as context rather than as a separate tooling implementation.
+- Future concrete scripts, workflow JSON, or MCP examples can be added after the
+  owner provides the implementation direction.
