@@ -15,7 +15,7 @@ Add a Japanese article under the existing API group:
 - Parent section: `data-utilities`
 - Parent navigation group: `api`
 - New page: `/ja/data-utilities/ai-agent-api/`
-- Title: `ComfyUIをAIエージェントに使わせる`
+- Title: `ComfyUIのworkflowをAIエージェントに使わせる`
 
 Use `ai-agent-api` as the slug because this page is about the API-based path for
 AI agents to operate ComfyUI. Other agent usage patterns, if needed later, can

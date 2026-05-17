@@ -60,7 +60,7 @@
   * API
     * APIとは？
     * APIでworkflowを実行してみる
-    * ComfyUIをAIエージェントに使わせる
+    * ComfyUIのworkflowをAIエージェントに使わせる
   * コラム
     * リーダブルノードのすすめ
     * 無線でノードをつなぐ
