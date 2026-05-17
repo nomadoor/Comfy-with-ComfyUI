@@ -129,6 +129,8 @@ sections:
             title: What is the API?
           - id: api-run-workflow
             title: Running a Workflow via API
+          - id: ai-agent-api
+            title: Letting AI Agents Use ComfyUI Workflows
   - key: ai-capabilities
     label: AI Capabilities
     pages:

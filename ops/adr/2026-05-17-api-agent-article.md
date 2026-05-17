@@ -21,9 +21,9 @@ Use `ai-agent-api` as the slug because this page is about the API-based path for
 AI agents to operate ComfyUI. Other agent usage patterns, if needed later, can
 be split into separate pages with their own stable slugs.
 
-The first version is a skeleton based on the owner-provided heading outline. It
-should not create EN/ZH pages or nav entries unless translation work is
-explicitly requested later.
+The first version is based on the owner-provided heading outline. EN/ZH pages
+and nav entries are added because the owner explicitly requested translation
+work after the Japanese article stabilized.
 
 ## Consequences
 
