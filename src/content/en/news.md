@@ -5,7 +5,7 @@ slug: news
 navId: news
 title: "News"
 created: 2026-01-15
-updated: 2026-05-07
+updated: 2026-05-17
 summary: "Site updates"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
@@ -13,6 +13,11 @@ tags:
 ---
 
 <div class="news-list">
+  <a class="news-row" href="/en/data-utilities/ai-agent-api/">
+    <span class="news-row__date">2026.5.17</span>
+    <span class="news-row__tag">data-utilities</span>
+    <span class="news-row__title">Added Letting AI Agents Use ComfyUI Workflows page</span>
+  </a>
   <a class="news-row" href="/en/data-utilities/sam3/">
     <span class="news-row__date">2026.5.7</span>
     <span class="news-row__tag">data-utilities</span>

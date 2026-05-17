@@ -5,13 +5,18 @@ slug: news
 navId: news
 title: "更新情報"
 created: 2026-01-15
-updated: 2026-05-07
+updated: 2026-05-17
 summary: "このサイトの更新情報"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/ja/data-utilities/ai-agent-api/">
+    <span class="news-row__date">2026.5.17</span>
+    <span class="news-row__tag">data-utilities</span>
+    <span class="news-row__title">ComfyUIのworkflowをAIエージェントに使わせるページを追加しました</span>
+  </a>
   <a class="news-row" href="/ja/data-utilities/sam3/">
     <span class="news-row__date">2026.5.7</span>
     <span class="news-row__tag">data-utilities</span>
