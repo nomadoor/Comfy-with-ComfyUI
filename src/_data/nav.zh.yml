@@ -129,6 +129,8 @@ sections:
       title: 什么是 API？
     - id: api-run-workflow
       title: 通过 API 运行工作流
+    - id: ai-agent-api
+      title: 让 AI Agent 使用 ComfyUI 工作流
 - key: ai-capabilities
   label: AI 能力
   pages:
