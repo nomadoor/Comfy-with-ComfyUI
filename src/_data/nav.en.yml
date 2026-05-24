@@ -72,6 +72,8 @@ sections:
             title: Readable Nodes
           - id: wireless-nodes
             title: Wireless Nodes
+          - id: multiple-comfyui-instances
+            title: Run Multiple ComfyUI Instances
   - key: data-utilities
     label: Data / Image Utilities
     pages:

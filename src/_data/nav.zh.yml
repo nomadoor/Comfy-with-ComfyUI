@@ -72,6 +72,8 @@ sections:
       title: 可读节点
     - id: wireless-nodes
       title: 无线连接节点
+    - id: multiple-comfyui-instances
+      title: 多开 ComfyUI
 - key: data-utilities
   label: 数据 / 图像工具
   pages:
