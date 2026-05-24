@@ -267,3 +267,22 @@ No custom encoding helpers, no codepage manipulation, no guessing.
 
 
 Agents should reuse these exact patterns (with path and content substituted) rather than inventing ad-hoc file I/O commands.
+
+
+---
+
+## 14. Agent Instructions
+
+Before starting work, read `AGENT_STATE.md` if it exists.
+
+When you finish a meaningful step, update `AGENT_STATE.md` with:
+- current goal
+- files changed
+- checks run
+- next action
+- blockers
+
+Do not rely on chat history as the source of truth.
+
+`AGENT_STATE.md` is a local working-memory file and should not be committed.
+Use `AGENT_STATE.example.md` as the shared template.
