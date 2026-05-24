@@ -41,3 +41,9 @@
 - 1 PR = 1 intent (e.g., “app shell” or “search”), with mock-compliance screenshots attached.
 - Document breaking questions as issues linked from `/ops`; never patch around ambiguity.
 - Keep change logs in the PR description; this file should summarize enduring rules, not per-PR notes.
+
+## 8. Agent Working Memory
+- Agents must read `AGENT_STATE.md` at startup if it exists, then update it after meaningful steps.
+- `AGENT_STATE.md` is local working memory and must stay out of git.
+- The shared contract lives in `AGENTS.md`; the shared template lives in `AGENT_STATE.example.md`.
+- Durable project decisions still belong in `/ops` and ADRs, not in `AGENT_STATE.md`.

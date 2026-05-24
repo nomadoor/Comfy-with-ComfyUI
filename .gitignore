@@ -25,6 +25,7 @@ coverage/
 tmp/
 test-results/
 playwright-report/
+AGENT_STATE.md
 
 # Mock assets (large reference images only)
 src/assets/mock/**
