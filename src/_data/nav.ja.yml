@@ -72,6 +72,8 @@ sections:
             title: リーダブルノードのすすめ
           - id: wireless-nodes
             title: 無線でノードをつなぐ
+          - id: multiple-comfyui-instances
+            title: ComfyUIを多重起動する
   - key: data-utilities
     label: データ / 画像ユーティリティ
     pages:

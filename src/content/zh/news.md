@@ -5,13 +5,18 @@ slug: news
 navId: news
 title: "更新信息"
 created: 2026-02-05
-updated: 2026-05-17
+updated: 2026-05-24
 summary: "本站的更新信息"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/zh/begin-with/multiple-comfyui-instances/">
+    <span class="news-row__date">2026.5.24</span>
+    <span class="news-row__tag">begin-with</span>
+    <span class="news-row__title">追加了多开 ComfyUI 的页面</span>
+  </a>
   <a class="news-row" href="/zh/data-utilities/ai-agent-api/">
     <span class="news-row__date">2026.5.17</span>
     <span class="news-row__tag">data-utilities</span>
