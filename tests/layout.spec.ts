@@ -83,6 +83,28 @@ test.describe("Layout rails", () => {
     expect(targetBox.y).toBeGreaterThan(headerBox.height - 1);
   });
 
+  test("in-page article hash links scroll to the target heading", async ({ page }) => {
+    await page.setViewportSize({ width: 1600, height: 900 });
+    await page.goto("/ja/begin-with/setup/");
+
+    await page.locator('.article-body a[href="#デスクトップ版"]').click();
+    await expect(page).toHaveURL(/#%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E7%89%88$/);
+
+    const header = page.locator(".site-header");
+    const target = page.locator("#デスクトップ版");
+
+    await expect(target).toBeVisible();
+
+    const headerBox = await header.boundingBox();
+    const targetBox = await target.boundingBox();
+
+    if (!headerBox || !targetBox) {
+      throw new Error("Unable to measure layout boxes");
+    }
+
+    expect(targetBox.y).toBeGreaterThan(headerBox.height - 1);
+  });
+
   test("sidebar and TOC rails stay sticky with proper offsets", async ({ page }) => {
     await page.setViewportSize({ width: 1600, height: 900 });
     await page.goto(SAMPLE_PAGE);
