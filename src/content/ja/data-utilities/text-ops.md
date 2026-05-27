@@ -6,7 +6,7 @@ slug: text-ops
 navId: text-ops
 title: "テキスト操作"
 created: 2025-11-25
-updated: 2026-03-02
+updated: 2026-05-27
 summary: "テキストを操作するノードについて"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -48,6 +48,16 @@ ComfyUIでは、主にプロンプトとしてテキストを扱います。
 （例：`apple` + `pen` → `applepen`）
 
 - `delimiter` は区切り文字のことです。好きなものが使用できます（カンマや改行など）。
+
+### Format Text ノード
+
+![](https://gyazo.com/b662c552b5e80b5b04cad422b72a19b2){gyazo=image}
+
+文章のひな形を作り、そこに別のstringを差し込むノードです。
+
+Concatenate よりも、柔軟にテキストを組み合わせられます。
+
+たとえば `a` に `apple`、`b` に `red` を接続し、format に `{a} is {b}.` と書くと、`apple is red.` のような文字列を作れます。
 
 ### Replace ノード (文字置換)
 
