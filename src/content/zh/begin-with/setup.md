@@ -185,4 +185,4 @@ hero:
 ---
 
 ### 参考文献
-* [ComfyUI Manager 的安装](https://docs.comfy.org/zh-CN/manager/install)
+* [ComfyUI Manager 的安装](https://docs.comfy.org/zh/manager/install)

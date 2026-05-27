@@ -42,7 +42,7 @@ Basically, install from **ComfyUI Manager**.
 ![](https://gyazo.com/c0d8901537b65da709f9ba9d6e1a0055){gyazo=loop}
 
 1. Install ComfyUI Manager
-   - If ComfyUI Manager is not installed yet, please refer to [Setup - Installing ComfyUI Manager](/en/begin-with/setup/#3-installing-comfyui-manager) to install.
+   - If ComfyUI Manager is not installed yet, please refer to [ComfyUI Manager](/en/begin-with/comfyui-manager/) to install it.
 2. Click `Manager` in the menu
 3. Click `Custom Nodes Manager`
 4. Enter the node name in the search bar to search

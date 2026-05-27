@@ -6,7 +6,7 @@ slug: command-line-arguments
 navId: command-line-arguments
 title: "コマンドライン引数"
 created: 2025-11-20
-updated: 2026-03-02
+updated: 2026-05-27
 summary: "ComfyUIの起動時に指定するオプション"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -60,6 +60,8 @@ VRAM不足によるエラー（OOM）対策や、VRAM容量に応じた動作調
 | 🔥 | `--output-directory [path]` | **出力先ディレクトリ**を設定。 | 生成画像の保存先を変更したい場合に。 |
 | | `--listen` | 外部からの接続許可: リッスンするIPアドレスを指定。 | 引数なし (`--listen`) で `0.0.0.0` (すべてのアドレス) でリッスン。別PCからアクセス可能に。 |
 | | `--port [num]` | リッスンポートを設定 (デフォルト: 8188)。 | 既にポートが使用されている場合などに変更します。 |
+| | `--enable-manager` | ComfyUI Manager を有効化する。 | ポータブル版や手動インストール版で Manager を表示するために使用します。 |
+| | `--enable-manager-legacy-ui` | 古い ComfyUI Manager UI を有効化する。 | `--enable-manager` と併用します。詳しくは [ComfyUI Manager](/ja/begin-with/comfyui-manager/) を参照してください。 |
 | | `--extra-model-paths-config [path]` | 1つ以上の `extra_model_paths.yaml` ファイルを読み込む。 | モデルの保存場所を複数管理したい場合に。 |
 | | `--auto-launch` | デフォルトのブラウザでComfyUIを自動的に起動する。 | |
 

@@ -5,13 +5,18 @@ slug: news
 navId: news
 title: "更新情報"
 created: 2026-01-15
-updated: 2026-05-24
+updated: 2026-05-27
 summary: "このサイトの更新情報"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/ja/begin-with/comfyui-manager/">
+    <span class="news-row__date">2026.5.27</span>
+    <span class="news-row__tag">begin-with</span>
+    <span class="news-row__title">ComfyUI Managerのページを追加しました</span>
+  </a>
   <a class="news-row" href="/ja/begin-with/multiple-comfyui-instances/">
     <span class="news-row__date">2026.5.24</span>
     <span class="news-row__tag">begin-with</span>

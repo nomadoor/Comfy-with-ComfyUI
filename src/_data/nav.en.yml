@@ -38,6 +38,8 @@ sections:
             title: Settings
           - id: command-line-arguments
             title: Command Line Arguments
+          - id: comfyui-manager
+            title: ComfyUI Manager
           - id: updates
             title: Updates
           - id: downloading-and-placing-models

@@ -42,7 +42,7 @@ hero:
 ![](https://gyazo.com/c0d8901537b65da709f9ba9d6e1a0055){gyazo=loop}
 
 1. 安装 ComfyUI Manager
-   - 如果还没有安装 ComfyUI Manager，请参考 [安装与设置 - 安装 ComfyUI Manager](/zh/begin-with/setup/#3-安装-comfyui-manager) 进行安装。
+   - 如果还没有安装 ComfyUI Manager，请参考 [ComfyUI Manager](/zh/begin-with/comfyui-manager/) 进行安装。
 2. 点击菜单中的 `Manager`
 3. 点击 `Custom Nodes Manager`
 4. 在搜索栏输入节点名称进行搜索

@@ -6,7 +6,7 @@ slug: command-line-arguments
 navId: command-line-arguments
 title: "Command Line Arguments"
 created: 2025-11-24
-updated: 2026-03-02
+updated: 2026-05-27
 summary: "Options specified when starting ComfyUI"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -60,6 +60,8 @@ Used for browser behavior and ComfyUI sharing settings within LAN.
 | 🔥 | `--output-directory [path]` | Set **output directory**. | When you want to change the save destination of generated images. |
 | | `--listen` | Allow external connection: Specify the IP address to listen to. | Listen on `0.0.0.0` (all addresses) with no argument (`--listen`). Accessible from another PC. |
 | | `--port [num]` | Set listen port (default: 8188). | Change when the port is already in use. |
+| | `--enable-manager` | Enable ComfyUI Manager. | Used to show Manager in the portable and manual installation versions. |
+| | `--enable-manager-legacy-ui` | Enable the old ComfyUI Manager UI. | Use together with `--enable-manager`. See [ComfyUI Manager](/en/begin-with/comfyui-manager/) for details. |
 | | `--extra-model-paths-config [path]` | Load one or more `extra_model_paths.yaml` files. | When you want to manage multiple model storage locations. |
 | | `--auto-launch` | Automatically launch ComfyUI in the default browser. | |
 

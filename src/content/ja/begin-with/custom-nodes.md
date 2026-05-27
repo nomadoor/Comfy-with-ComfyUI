@@ -42,7 +42,7 @@ hero:
 ![](https://gyazo.com/c0d8901537b65da709f9ba9d6e1a0055){gyazo=loop}
 
 1. ComfyUI Managerのインストール
-   - ComfyUI Managerがまだインストールされていない場合は、[セットアップ - ComfyUI Manager の導入](/ja/begin-with/setup/#3-comfyui-manager-の導入)を参考にインストールしてください。
+   - ComfyUI Managerがまだインストールされていない場合は、[ComfyUI Manager](/ja/begin-with/comfyui-manager/)を参考にインストールしてください。
 2. メニューの `Manager` をクリック
 3. `Custom Nodes Manager` をクリック
 4. 検索バーにノード名を入力して検索
