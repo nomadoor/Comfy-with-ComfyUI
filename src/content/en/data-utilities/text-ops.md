@@ -53,6 +53,8 @@ Combines multiple strings into one.
 
 ![](https://gyazo.com/b662c552b5e80b5b04cad422b72a19b2){gyazo=image}
 
+[](../../../workflows/data-utilities/text-ops/Format_Text.json)
+
 This node lets you create a text template and insert other strings into it.
 
 It can combine text more flexibly than Concatenate.

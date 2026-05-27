@@ -53,6 +53,8 @@ hero:
 
 ![](https://gyazo.com/b662c552b5e80b5b04cad422b72a19b2){gyazo=image}
 
+[](../../../workflows/data-utilities/text-ops/Format_Text.json)
+
 这个节点可以先写好文章的模板，再把其他 string 插入进去。
 
 相比 Concatenate，它可以更灵活地组合文本。

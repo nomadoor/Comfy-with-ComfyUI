@@ -53,6 +53,8 @@ ComfyUIでは、主にプロンプトとしてテキストを扱います。
 
 ![](https://gyazo.com/b662c552b5e80b5b04cad422b72a19b2){gyazo=image}
 
+[](../../../workflows/data-utilities/text-ops/Format_Text.json)
+
 文章のひな形を作り、そこに別のstringを差し込むノードです。
 
 Concatenate よりも、柔軟にテキストを組み合わせられます。
