@@ -41,37 +41,37 @@ Basically, install from **ComfyUI Manager**.
 
 ![](https://gyazo.com/c0d8901537b65da709f9ba9d6e1a0055){gyazo=loop}
 
-- 0. Install ComfyUI Manager
-  - If ComfyUI Manager is not installed yet, please refer to [Setup - Installing ComfyUI Manager](/en/begin-with/setup/#3-installing-comfyui-manager) to install.
-- 1. Click `Manager` in the menu
-- 2. Click `Custom Nodes Manager`
-- 3. Enter the node name in the search bar to search
-- 4. Click `Install` (Version is usually `latest` OK)
-- 5. Click `Restart` to restart ComfyUI
+1. Install ComfyUI Manager
+   - If ComfyUI Manager is not installed yet, please refer to [ComfyUI Manager](/en/begin-with/comfyui-manager/) to install it.
+2. Click `Manager` in the menu
+3. Click `Custom Nodes Manager`
+4. Enter the node name in the search bar to search
+5. Click `Install` (Version is usually `latest` OK)
+6. Click `Restart` to restart ComfyUI
 
 ### Installing Manually
 
 Perform this when it is not in Manager or when you want to use the latest version under development.
 
-- 1. Move to `ComfyUI/custom_nodes` folder in terminal
-- 2. Download the repository with `git clone` command
-    ```powershell
-    cd ComfyUI/custom_nodes
-    git clone https://github.com/username/repository-name.git
-    ```
-- 3. Install libraries if necessary
-    ```powershell
-    # venv
-    cd path/to/ComfyUI
-    venv/Scripts/activate
-    cd custom_nodes/custom_node
-    pip install -r requirements.txt
+1. Move to `ComfyUI/custom_nodes` folder in terminal
+2. Download the repository with `git clone` command
+   ```powershell
+   cd ComfyUI/custom_nodes
+   git clone https://github.com/username/repository-name.git
+   ```
+3. Install libraries if necessary
+   ```powershell
+   # venv
+   cd path/to/ComfyUI
+   venv/Scripts/activate
+   cd custom_nodes/custom_node
+   pip install -r requirements.txt
 
-    # portable version
-    cd path/to/ComfyUI/custom_nodes/custom_node
-    ../../../python_embeded/python.exe -s -m pip install -r requirements.txt
-    ```
-- 4. Restart ComfyUI
+   # portable version
+   cd path/to/ComfyUI/custom_nodes/custom_node
+   ../../../python_embeded/python.exe -s -m pip install -r requirements.txt
+   ```
+4. Restart ComfyUI
 
 ---
 

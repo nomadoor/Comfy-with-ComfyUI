@@ -6,7 +6,7 @@ slug: setup
 navId: setup
 title: "Setup"
 created: 2025-11-24
-updated: 2026-03-02
+updated: 2026-05-25
 summary: "About Setup"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
@@ -17,15 +17,15 @@ hero:
 
 There are several ways to run ComfyUI in a local environment.
 
-* **Portable Version (Recommended)**
-* Desktop Version (Installer format)
-* Manual Installation Version (venv + Git / For advanced users)
+* **[Portable Version (Recommended)](#setup-with-portable-version)**
+* [Desktop Version (Installer format)](#desktop-version)
+* [Manual Installation Version (venv + Git / For advanced users)](#manual-installation-windows-linux)
 
 The portable version is flexible yet stable, and since anyone can create a similar environment, this site will explain assuming that you are basically using the portable version.
 
-In addition, let's install **ComfyUI Manager** here as well.
+We will also install **ComfyUI Manager** here.
 
-This is a tool that makes managing ComfyUI easy, such as installing custom nodes.
+It is a tool that makes ComfyUI management easier, including installing custom nodes.
 
 ---
 
@@ -46,38 +46,39 @@ Access the [GitHub release page](https://github.com/comfyanonymous/ComfyUI/relea
 
 ### 2. Extract and Run
 
-- 1. Right-click the downloaded `7z file` and extract it with `Extract All`.
-  - ![](https://gyazo.com/776dafe2320c41526e6292f52edbe07d){gyazo=loop}
-  - As explained in [Recommended Specs - Storage](/en/begin-with/recommended-specs/#storage), we recommend placing it on an SSD.
-- 2. Double-click `run_nvidia_gpu.bat` in the extracted folder to start it.
-- 3. Initial startup takes time for environment configuration. If the browser opens automatically, it is successful.
+1. Right-click the downloaded `7z file` and extract it with `Extract All`.
+   - ![](https://gyazo.com/776dafe2320c41526e6292f52edbe07d){gyazo=loop}
+   - As explained in [Recommended Specs - Storage](/en/begin-with/recommended-specs/#storage), we recommend placing it on an SSD.
+2. Double-click `run_nvidia_gpu.bat` in the extracted folder to start it.
+3. Initial startup takes time for environment configuration. If the browser opens automatically, it is successful.
 
 ### 3. Installing ComfyUI Manager
 
-- 1. Install Git
-  - Download the installer from [Git for Windows](https://gitforwindows.org/) and install it.
-  - You can leave all settings as default (just keep clicking Next).
+1. Open the `ComfyUI_windows_portable` folder, right-click inside the folder, and choose `Open in Terminal`.
 
-- 2. Open the installation location
-  - Open the `custom_nodes` folder inside the ComfyUI folder.
-  - ```text
-    📂ComfyUI_windows_portable/
-    └── 📂ComfyUI/
-          └── 📂custom_nodes/
-    ```
+2. Enter the following command in the window and press `Enter`.
 
-- 3. Open Terminal
-  - Right-click an empty area inside the custom_nodes folder and choose Open in Terminal.
-  - Windows Terminal (PowerShell) will open in that folder.
+   ```powershell
+   .\python_embeded\python.exe -m pip install -r ComfyUI\manager_requirements.txt
+   ```
 
-- 4. Execute Command
-  - Copy the following command, paste it into the black screen (right click), and press the Enter key.
-  - ```powershell
-    git clone https://github.com/ltdrdata/ComfyUI-Manager.git
-    ```
+   This installs the libraries required by Manager.
 
-If a folder named `ComfyUI-Manager` is created inside the `custom_nodes` folder, it is successful.
-Restart ComfyUI and a "Manager" button will be added to the menu.
+   However, Manager will not appear in the screen yet. Next, add a command line argument to the launch `.bat` file.
+
+3. Right-click `run_nvidia_gpu.bat` and choose `Edit`.
+
+4. Add `--enable-manager` to the end of the line that runs `main.py`.
+
+   ```powershell
+   .\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build --enable-manager
+   ```
+
+5. If you want to use the old ComfyUI Manager, also add `--enable-manager-legacy-ui`.
+
+   ```powershell
+   .\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build --enable-manager --enable-manager-legacy-ui
+   ```
 
 ---
 
@@ -87,8 +88,10 @@ This is an installer format for Windows. It provides stable operation with Comfy
 
 ### Download
 
-- 1. Download `ComfyUI Setup.exe` from the [GitHub page](https://github.com/Comfy-Org/desktop) of ComfyUI Desktop.
-- 2. Run it and select the installation destination and GPU settings.
+1. Download `ComfyUI Setup.exe` from the [GitHub page](https://github.com/Comfy-Org/desktop) of ComfyUI Desktop.
+2. Run it and select the installation destination and GPU settings.
+
+> ComfyUI Manager is included by default.
 
 ---
 
@@ -102,51 +105,72 @@ This is a standard installation method using `git clone` and `pip`.
 
 ### 1. Installation
 
-First, clone the repository, create a virtual environment, and activate it.
+1. Clone the repository and move into the ComfyUI folder.
 
-```powershell
-# Clone the repository
-git clone https://github.com/comfyanonymous/ComfyUI.git
-cd ComfyUI
+   ```powershell
+   git clone https://github.com/comfyanonymous/ComfyUI.git
+   cd ComfyUI
+   ```
 
-# Create and activate virtual environment (Windows)
-python -m venv venv
-venv\Scripts\activate
+2. Create and activate a virtual environment.
 
-# (For Linux/macOS)
-# python -m venv venv
-# . venv/bin/activate
-```
+   On Windows:
+
+   ```powershell
+   python -m venv venv
+   venv\Scripts\activate
+   ```
+
+   On Linux/macOS:
+
+   ```bash
+   python -m venv venv
+   . venv/bin/activate
+   ```
 
 ### 2. Install PyTorch (NVIDIA)
 
-Stable:
-```bash
-pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu130
-```
+1. Normally, install the Stable version.
 
-Nightly (Potential performance improvement):
-```bash
-pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu130
-```
+   ```bash
+   pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu130
+   ```
+
+2. If you want to use the Nightly version, run the following.
+
+   It may improve performance, but normally the Stable version is fine.
+
+   ```bash
+   pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu130
+   ```
 
 ### 3. Install Dependencies
 
-Execute the following inside the ComfyUI folder.
+1. Install the dependencies.
 
-```bash
-pip install -r requirements.txt
-```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ### 4. Installing ComfyUI Manager
 
-Even with manual installation, Manager is essential.
+1. Install the libraries required by ComfyUI Manager.
 
-```bash
-cd custom_nodes
-git clone https://github.com/ltdrdata/ComfyUI-Manager.git
-cd ..
-```
+   ```bash
+   pip install -r manager_requirements.txt
+   ```
+
+2. Add `--enable-manager` when starting ComfyUI.
+
+   ```bash
+   python main.py --enable-manager
+   ```
+
+3. If you want to use the old ComfyUI Manager, also add `--enable-manager-legacy-ui`.
+
+   ```bash
+   python main.py --enable-manager --enable-manager-legacy-ui
+   ```
 
 ---
 
@@ -161,4 +185,4 @@ Since introducing ComfyUI, including the portable version, is not that difficult
 ---
 
 ### References
-* [ComfyUI - Installing](https://github.com/comfyanonymous/ComfyUI#installing)
+* [Installing ComfyUI Manager](https://docs.comfy.org/manager/install)

@@ -9,6 +9,7 @@ const FETCH_HEADER = { "X-Requested-With": "view-transition-router" };
 const supportsViewTransitions =
   "startViewTransition" in document &&
   !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const isProfileNav = () => Boolean(window.__CW_PROFILE_NAV__);
 const PREFETCH_LIMIT = 3;
 const prefetched = new Set();
@@ -257,6 +258,34 @@ const navigateTo = async (url, { replace = false, source = "unknown" } = {}) => 
 };
 
 const handleClick = (event) => {
+  const hashAnchor = event.target.closest("a[href]");
+  if (hashAnchor && !event.defaultPrevented && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+    const href = hashAnchor.getAttribute("href");
+    if (href && href !== "#") {
+      try {
+        const targetUrl = new URL(href, window.location.href);
+        if (targetUrl.pathname === window.location.pathname && targetUrl.search === window.location.search && targetUrl.hash) {
+          const targetId = decodeURIComponent(targetUrl.hash.slice(1));
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            event.preventDefault();
+            targetEl.scrollIntoView({
+              behavior: prefersReducedMotion ? "auto" : "smooth",
+              block: "start"
+            });
+            const nextHash = `#${encodeURIComponent(targetId)}`;
+            if (window.location.hash !== nextHash) {
+              window.history.pushState({}, "", nextHash);
+            }
+            return;
+          }
+        }
+      } catch {
+        // Let the existing navigation fallback handle malformed URLs.
+      }
+    }
+  }
+
   if (!shouldHandleClick(event)) return;
   const anchor = event.target.closest("a[href]");
   const href = anchor.getAttribute("href");

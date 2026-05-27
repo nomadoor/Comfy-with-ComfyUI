@@ -6,7 +6,7 @@ slug: setup
 navId: setup
 title: "セットアップ"
 created: 2025-11-20
-updated: 2026-03-02
+updated: 2026-05-25
 summary: "セットアップについて"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
@@ -17,15 +17,15 @@ hero:
 
 ComfyUIをローカル環境で動かす方法はいくつか用意されています。
 
-* **ポータブル版（推奨）**
-* デスクトップ版（インストーラー形式）
-* 手動インストール版（venv + Git / 上級者向け）
+* **[ポータブル版（推奨）](#ポータブル版によるセットアップ)**
+* [デスクトップ版（インストーラー形式）](#デスクトップ版)
+* [手動インストール版（venv + Git / 上級者向け）](#手動インストール-windows-linux)
 
 ポータブル版は柔軟性もありながら安定しており、誰がセットアップしても似た環境を作り出せるため、このサイトでは基本的にポータブル版を使用していることを想定して解説を書いていきます。
 
 加えて、**ComfyUI Manager**の導入もここで行いましょう。
 
-これはカスタムノードのインストールなど、ComfyUIの管理を簡単にしてくれるツールです。
+カスタムノードのインストールなど、ComfyUIの管理を簡単にしてくれるツールです。
 
 ---
 
@@ -46,38 +46,37 @@ ComfyUIの [GitHubリリースページ](https://github.com/comfyanonymous/Comfy
 
 ### 2. 展開と起動
 
-- 1.  ダウンロードした `7zファイル`を右クリックし、`すべて展開`で展開します。
-  - ![](https://gyazo.com/776dafe2320c41526e6292f52edbe07d){gyazo=loop}
-  - [推奨スペックのストレージ](/ja/begin-with/recommended-specs/#ストレージ)でも説明しましたが、SSDに配置することをオススメします。
-- 2.  展開されたフォルダ内にある、`run_nvidia_gpu.bat` をダブルクリックで起動します。
-- 3.  初回起動時は環境設定に時間がかかります。ブラウザが自動で開けば成功です。
+1. ダウンロードした `7zファイル`を右クリックし、`すべて展開`で展開します。
+   - ![](https://gyazo.com/776dafe2320c41526e6292f52edbe07d){gyazo=loop}
+   - [推奨スペックのストレージ](/ja/begin-with/recommended-specs/#ストレージ)でも説明しましたが、SSDに配置することをオススメします。
+2. 展開されたフォルダ内にある、`run_nvidia_gpu.bat` をダブルクリックで起動します。
+3. 初回起動時は環境設定に時間がかかります。ブラウザが自動で開けば成功です。
 
 ### 3. ComfyUI Manager の導入
 
-- 1. Gitのインストール
-  - [Git for Windows](https://gitforwindows.org/) からインストーラーをダウンロードし、インストールしてください。
-  - 設定はすべてデフォルトのままで構いません（Nextを連打でOK）。
+1. `ComfyUI_windows_portable` フォルダを開き、フォルダ内を右クリックして、`ターミナルで開く`
 
-- 2. インストール場所を開く
-  - ComfyUIフォルダの中にある `custom_nodes` フォルダを開きます。
-  - ```text
-    📂ComfyUI_windows_portable/
-    └── 📂ComfyUI/
-          └── 📂custom_nodes/
-    ```
+2. 出てきた画面に以下を入力して `Enter`
+   ```powershell
+   .\python_embeded\python.exe -m pip install -r ComfyUI\manager_requirements.txt
+   ```
+   これでManagerに必要なライブラリがインストールされます。
 
-- 3. ターミナルを開く
-	- custom_nodes フォルダの空白部分を右クリックして、**「ターミナルで開く」** を選びます。
-	- Windows Terminal（PowerShell）が起動し、そのフォルダを作業場所として開きます。
+   ただし、これだけでは画面にManagerは出てこないので、起動用の `.bat` ファイルにコマンドライン引数を追加します。
 
-- 4. コマンドを実行
-  - 以下のコマンドをコピーして、黒い画面に貼り付け（右クリック）、Enter キーを押します。
-  - ```powershell
-    git clone https://github.com/ltdrdata/ComfyUI-Manager.git
-    ```
+3. `run_nvidia_gpu.bat` を右クリックして `編集`
 
-これで `custom_nodes` フォルダの中に `ComfyUI-Manager` というフォルダが作成されれば成功です。
-ComfyUIを再起動すると、メニューに「Manager」ボタンが追加されます。
+4. `main.py` を実行している行の末尾に、`--enable-manager` を追加します。
+
+   ```powershell
+   .\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build --enable-manager
+   ```
+
+5. 古い ComfyUI Manager を使いたい場合は、`--enable-manager-legacy-ui` も追加します。
+
+   ```powershell
+   .\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build --enable-manager --enable-manager-legacy-ui
+   ```
 
 ---
 
@@ -87,8 +86,10 @@ Windows向けのインストーラー形式です。ComfyUI Managerがすでに�
 
 ### ダウンロード
 
-- 1.  ComfyUI Desktopの [GitHubページ](https://github.com/Comfy-Org/desktop) から `ComfyUI Setup.exe` をダウンロードします。
-- 2.  実行し、インストール先やGPU設定を選択します。
+1. ComfyUI Desktopの [GitHubページ](https://github.com/Comfy-Org/desktop) から `ComfyUI Setup.exe` をダウンロードします。
+2. 実行し、インストール先やGPU設定を選択します。
+
+> ComfyUI Managerはデフォルトで搭載されています。
 
 ---
 
@@ -98,61 +99,82 @@ Windows向けのインストーラー形式です。ComfyUI Managerがすでに�
 
 ### Pythonのバージョンについて
 * **Python 3.13** が推奨されています。
-* カスタムノードの依存関係で問題が発生する場合は、**3.12** を試してください。
+* カスタムノードの依存関係で問題が発生する場合は、**3.12** を試してみてください。
 
 ### 1. インストール
 
-まず、リポジトリをクローンし、仮想環境を作成して有効化します。
+1. リポジトリをクローンし、ComfyUIフォルダに移動します。
 
-```powershell
-# リポジトリをクローン
-git clone https://github.com/comfyanonymous/ComfyUI.git
-cd ComfyUI
+   ```powershell
+   git clone https://github.com/comfyanonymous/ComfyUI.git
+   cd ComfyUI
+   ```
 
-# 仮想環境を作成・有効化 (Windows)
-python -m venv venv
-venv\Scripts\activate
+2. 仮想環境を作成して有効化します。
 
-# (Linux/macOSの場合)
-# python -m venv venv
-# . venv/bin/activate
-```
+   Windowsの場合:
+
+   ```powershell
+   python -m venv venv
+   venv\Scripts\activate
+   ```
+
+   Linux/macOSの場合:
+
+   ```bash
+   python -m venv venv
+   . venv/bin/activate
+   ```
 
 ### 2. PyTorchのインストール (NVIDIA)
 
-安定版 (Stable):
-```bash
-pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu130
-```
+1. 通常は安定版 (Stable) をインストールします。
 
-Nightly (パフォーマンス向上の可能性あり):
-```bash
-pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu130
-```
+   ```bash
+   pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu130
+   ```
+
+2. Nightly版を使いたい場合は、以下を実行します。
+
+   パフォーマンスが向上する可能性はありますが、通常は安定版で構いません。
+
+   ```bash
+   pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu130
+   ```
 
 ### 3. 依存関係のインストール
 
-ComfyUIフォルダ内で以下を実行します。
+1. 依存関係をインストールします。
 
-```bash
-pip install -r requirements.txt
-```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ### 4. ComfyUI Manager の導入
 
-手動インストールの場合も、Managerは必須です。
+1. ComfyUI Manager に必要なライブラリをインストールします。
 
-```bash
-cd custom_nodes
-git clone https://github.com/ltdrdata/ComfyUI-Manager.git
-cd ..
-```
+   ```bash
+   pip install -r manager_requirements.txt
+   ```
+
+2. これだけでは画面にManagerが出てこないので、ComfyUIを起動するときに `--enable-manager` を追加します。
+
+   ```bash
+   python main.py --enable-manager
+   ```
+
+3. 古い ComfyUI Manager を使いたい場合は、`--enable-manager-legacy-ui` も追加してください。
+
+   ```bash
+   python main.py --enable-manager --enable-manager-legacy-ui
+   ```
 
 ---
 
 ## イージーインストーラーについて
 
-PinokioやStability Matrix等のイージーインストーラーは、確かに便利であり、複雑な機能を簡単に導入することができます。
+Pinokio や Stability Matrix 等のイージーインストーラーは、確かに便利であり、複雑な機能を簡単に導入することができます。
 
 しかしながら、間に絡む要素が増えるだけトラブルは増えるもので… 問題が置きたとき何が要因かを突き止めるのが難しくなり、結局初心者の手に負えない場面が出てきます。
 
@@ -161,4 +183,4 @@ PinokioやStability Matrix等のイージーインストーラーは、確かに
 ---
 
 ### 参考文献
-* [ComfyUI - Installing](https://github.com/comfyanonymous/ComfyUI#installing)
+* [ComfyUI-Manager のインストール](https://docs.comfy.org/ja/manager/install)

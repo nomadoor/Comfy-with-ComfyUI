@@ -5,7 +5,7 @@ slug: news
 navId: news
 title: "News"
 created: 2026-01-15
-updated: 2026-05-24
+updated: 2026-05-27
 summary: "Site updates"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
@@ -13,6 +13,11 @@ tags:
 ---
 
 <div class="news-list">
+  <a class="news-row" href="/en/begin-with/comfyui-manager/">
+    <span class="news-row__date">2026.5.27</span>
+    <span class="news-row__tag">begin-with</span>
+    <span class="news-row__title">Added ComfyUI Manager page</span>
+  </a>
   <a class="news-row" href="/en/begin-with/multiple-comfyui-instances/">
     <span class="news-row__date">2026.5.24</span>
     <span class="news-row__tag">begin-with</span>

@@ -41,37 +41,37 @@ hero:
 
 ![](https://gyazo.com/c0d8901537b65da709f9ba9d6e1a0055){gyazo=loop}
 
-- 0. 安装 ComfyUI Manager
-  - 如果还没有安装 ComfyUI Manager，请参考 [安装与设置 - 安装 ComfyUI Manager](/zh/begin-with/setup/#3-安装-comfyui-manager) 进行安装。
-- 1. 点击菜单中的 `Manager`
-- 2. 点击 `Custom Nodes Manager`
-- 3. 在搜索栏输入节点名称进行搜索
-- 4. 点击 `Install`（版本通常选 `latest` 即可）
-- 5. 点击 `Restart` 重启 ComfyUI
+1. 安装 ComfyUI Manager
+   - 如果还没有安装 ComfyUI Manager，请参考 [ComfyUI Manager](/zh/begin-with/comfyui-manager/) 进行安装。
+2. 点击菜单中的 `Manager`
+3. 点击 `Custom Nodes Manager`
+4. 在搜索栏输入节点名称进行搜索
+5. 点击 `Install`（版本通常选 `latest` 即可）
+6. 点击 `Restart` 重启 ComfyUI
 
 ### 手动安装
 
 当 Manager 中没有，或者想要使用开发中的最新版时进行。
 
-- 1. 在终端中移动到 `ComfyUI/custom_nodes` 文件夹
-- 2. 使用 `git clone` 命令下载仓库
-    ```powershell
-    cd ComfyUI/custom_nodes
-    git clone https://github.com/username/repository-name.git
-    ```
-- 3. 根据需要安装依赖库
-    ```powershell
-    # venv
-    cd path/to/ComfyUI
-    venv/Scripts/activate
-    cd custom_nodes/自定义节点
-    pip install -r requirements.txt
+1. 在终端中移动到 `ComfyUI/custom_nodes` 文件夹
+2. 使用 `git clone` 命令下载仓库
+   ```powershell
+   cd ComfyUI/custom_nodes
+   git clone https://github.com/username/repository-name.git
+   ```
+3. 根据需要安装依赖库
+   ```powershell
+   # venv
+   cd path/to/ComfyUI
+   venv/Scripts/activate
+   cd custom_nodes/自定义节点
+   pip install -r requirements.txt
 
-    # 便携版
-    cd path/to/ComfyUI/custom_nodes/自定义节点
-    ../../../python_embeded/python.exe -s -m pip install -r requirements.txt
-    ```
-- 4. 重启 ComfyUI
+   # 便携版
+   cd path/to/ComfyUI/custom_nodes/自定义节点
+   ../../../python_embeded/python.exe -s -m pip install -r requirements.txt
+   ```
+4. 重启 ComfyUI
 
 ---
 
