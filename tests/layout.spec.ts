@@ -87,11 +87,14 @@ test.describe("Layout rails", () => {
     await page.setViewportSize({ width: 1600, height: 900 });
     await page.goto("/ja/begin-with/setup/");
 
-    await page.locator('.article-body a[href="#デスクトップ版"]').click();
+    await page
+      .locator(".article-body")
+      .getByRole("link", { name: "デスクトップ版（インストーラー形式）" })
+      .click();
     await expect(page).toHaveURL(/#%E3%83%87%E3%82%B9%E3%82%AF%E3%83%88%E3%83%83%E3%83%97%E7%89%88$/);
 
     const header = page.locator(".site-header");
-    const target = page.locator("#デスクトップ版");
+    const target = page.locator(".article-body h2", { hasText: "デスクトップ版" });
 
     await expect(target).toBeVisible();
 

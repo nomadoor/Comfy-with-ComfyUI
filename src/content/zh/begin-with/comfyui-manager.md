@@ -5,7 +5,7 @@ section: begin-with
 slug: comfyui-manager
 navId: comfyui-manager
 title: "ComfyUI Manager"
-created: 2026-05-27
+created: 2026-05-26
 updated: 2026-05-27
 summary: "关于 ComfyUI Manager"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
