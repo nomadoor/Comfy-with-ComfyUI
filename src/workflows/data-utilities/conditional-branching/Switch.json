@@ -1,0 +1,251 @@
+{
+  "id": "29ed44dd-6fe2-456a-bd1a-461f34951fde",
+  "revision": 0,
+  "last_node_id": 8,
+  "last_link_id": 8,
+  "nodes": [
+    {
+      "id": 3,
+      "type": "LoadImage",
+      "pos": [
+        2748.9669779761944,
+        1624.9274767201969
+      ],
+      "size": [
+        226.7833983976825,
+        326
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            3
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.22.0",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "B.png",
+        "image"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "LoadImage",
+      "pos": [
+        2492.7754310784335,
+        1498.5904319414708
+      ],
+      "size": [
+        226.7833983976825,
+        326
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.22.0",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "A.png",
+        "image"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "PrimitiveBoolean",
+      "pos": [
+        2748.769003945466,
+        2005.3149857773456
+      ],
+      "size": [
+        230.67001742550065,
+        58
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "BOOLEAN",
+          "type": "BOOLEAN",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.22.0",
+        "Node name for S&R": "PrimitiveBoolean"
+      },
+      "widgets_values": [
+        true
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 4,
+      "type": "PreviewImage",
+      "pos": [
+        3344.4342364224844,
+        1498.5904319414708
+      ],
+      "size": [
+        304.55743368775256,
+        332.8579683361372
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 4
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.22.0",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 1,
+      "type": "ComfySwitchNode",
+      "pos": [
+        3040.914082203413,
+        1498.5904319414708
+      ],
+      "size": [
+        270,
+        78
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "on_false",
+          "type": "IMAGE",
+          "link": 1
+        },
+        {
+          "name": "on_true",
+          "type": "IMAGE",
+          "link": 3
+        },
+        {
+          "name": "switch",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "IMAGE",
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.22.0",
+        "Node name for S&R": "ComfySwitchNode"
+      },
+      "widgets_values": [
+        false
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      0,
+      1,
+      0,
+      "IMAGE"
+    ],
+    [
+      3,
+      3,
+      0,
+      1,
+      1,
+      "IMAGE"
+    ],
+    [
+      4,
+      1,
+      0,
+      4,
+      0,
+      "IMAGE"
+    ],
+    [
+      8,
+      8,
+      0,
+      1,
+      2,
+      "BOOLEAN"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9229599817706482,
+      "offset": [
+        -2156.9237407065307,
+        -1178.4599104270771
+      ]
+    },
+    "frontendVersion": "1.44.19"
+  },
+  "version": 0.4
+}

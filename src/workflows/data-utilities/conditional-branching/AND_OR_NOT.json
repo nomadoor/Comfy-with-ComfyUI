@@ -1,0 +1,430 @@
+{
+  "id": "29b7b79f-f765-42d3-bf97-c0310f2e4ab1",
+  "revision": 0,
+  "last_node_id": 8,
+  "last_link_id": 8,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "ComfyAndNode",
+      "pos": [
+        3243.655451593356,
+        1424.6992835911767
+      ],
+      "size": [
+        180.474609375,
+        86
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "value0",
+          "name": "values.value0",
+          "type": "*",
+          "link": 1
+        },
+        {
+          "label": "value1",
+          "name": "values.value1",
+          "shape": 7,
+          "type": "*",
+          "link": 2
+        },
+        {
+          "label": "value2",
+          "name": "values.value2",
+          "shape": 7,
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOOLEAN",
+          "type": "BOOLEAN",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.22.0",
+        "Node name for S&R": "ComfyAndNode"
+      },
+      "widgets_values": [],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 2,
+      "type": "ComfyOrNode",
+      "pos": [
+        3243.655451593356,
+        1600.9782195634316
+      ],
+      "size": [
+        180.474609375,
+        86
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "value0",
+          "name": "values.value0",
+          "type": "*",
+          "link": 3
+        },
+        {
+          "label": "value1",
+          "name": "values.value1",
+          "shape": 7,
+          "type": "*",
+          "link": 4
+        },
+        {
+          "label": "value2",
+          "name": "values.value2",
+          "shape": 7,
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOOLEAN",
+          "type": "BOOLEAN",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.22.0",
+        "Node name for S&R": "ComfyOrNode"
+      },
+      "widgets_values": [],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 3,
+      "type": "ComfyNotNode",
+      "pos": [
+        3243.655451593356,
+        1777.2571555356867
+      ],
+      "size": [
+        180.474609375,
+        26
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "*",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOOLEAN",
+          "type": "BOOLEAN",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.22.0",
+        "Node name for S&R": "ComfyNotNode"
+      },
+      "widgets_values": [],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 4,
+      "type": "PrimitiveBoolean",
+      "pos": [
+        2849.5866872595443,
+        1533.0468610425542
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "BOOLEAN",
+          "type": "BOOLEAN",
+          "links": [
+            1,
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.22.0",
+        "Node name for S&R": "PrimitiveBoolean"
+      },
+      "widgets_values": [
+        true
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 5,
+      "type": "PrimitiveBoolean",
+      "pos": [
+        2849.569497039055,
+        1656.9267808516133
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "BOOLEAN",
+          "type": "BOOLEAN",
+          "links": [
+            2,
+            4,
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.22.0",
+        "Node name for S&R": "PrimitiveBoolean"
+      },
+      "widgets_values": [
+        false
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 6,
+      "type": "PreviewAny",
+      "pos": [
+        3480.0359374991986,
+        1424.6992835911767
+      ],
+      "size": [
+        241.08104976588402,
+        112
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.22.0",
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 7,
+      "type": "PreviewAny",
+      "pos": [
+        3480.0359374991986,
+        1600.9782195634316
+      ],
+      "size": [
+        241.08104976588402,
+        112
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.22.0",
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 8,
+      "type": "PreviewAny",
+      "pos": [
+        3480.0359374991986,
+        1777.2571555356867
+      ],
+      "size": [
+        241.08104976588402,
+        112
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.22.0",
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    }
+  ],
+  "links": [
+    [
+      1,
+      4,
+      0,
+      1,
+      0,
+      "BOOLEAN"
+    ],
+    [
+      2,
+      5,
+      0,
+      1,
+      1,
+      "BOOLEAN"
+    ],
+    [
+      3,
+      4,
+      0,
+      2,
+      0,
+      "BOOLEAN"
+    ],
+    [
+      4,
+      5,
+      0,
+      2,
+      1,
+      "BOOLEAN"
+    ],
+    [
+      5,
+      5,
+      0,
+      3,
+      0,
+      "BOOLEAN"
+    ],
+    [
+      6,
+      1,
+      0,
+      6,
+      0,
+      "BOOLEAN"
+    ],
+    [
+      7,
+      2,
+      0,
+      7,
+      0,
+      "BOOLEAN"
+    ],
+    [
+      8,
+      3,
+      0,
+      8,
+      0,
+      "BOOLEAN"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.1167815779424861,
+      "offset": [
+        -2610.9052853223634,
+        -1235.8307818001963
+      ]
+    },
+    "frontendVersion": "1.44.19"
+  },
+  "version": 0.4
+}

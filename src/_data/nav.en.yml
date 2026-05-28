@@ -92,6 +92,8 @@ sections:
             children:
               - id: wildcards
                 title: Wildcards
+          - id: conditional-branching
+            title: Conditional Branching
           - id: webcam-input
             title: Webcam Input
       - id: basic-image-processing

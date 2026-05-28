@@ -1,0 +1,369 @@
+{
+  "id": "b44355d7-ed6f-45da-8b10-a323c1253081",
+  "revision": 0,
+  "last_node_id": 11,
+  "last_link_id": 10,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        2804.885198733637,
+        1394.2279939324023
+      ],
+      "size": [
+        279.21710715197923,
+        387.42527994692887
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1,
+            7,
+            8
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.22.0",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "0054_amodal_rebuild001_0055 (1).png",
+        "image"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "ComfyMathExpression",
+      "pos": [
+        3358.744771432823,
+        1611.8942365428447
+      ],
+      "size": [
+        293.4438010526278,
+        158.81020881025938
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "a",
+          "name": "values.a",
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 2
+        },
+        {
+          "label": "b",
+          "name": "values.b",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 3
+        },
+        {
+          "label": "c",
+          "name": "values.c",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "BOOL",
+          "type": "BOOLEAN",
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.22.0",
+        "Node name for S&R": "ComfyMathExpression"
+      },
+      "widgets_values": [
+        "a < b"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 4,
+      "type": "ComfySwitchNode",
+      "pos": [
+        3673.9612274799,
+        1394.2279939324023
+      ],
+      "size": [
+        230.99505860380214,
+        78
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "on_false",
+          "type": "IMAGE",
+          "link": 8
+        },
+        {
+          "name": "on_true",
+          "type": "IMAGE",
+          "link": 9
+        },
+        {
+          "name": "switch",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "IMAGE",
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.22.0",
+        "Node name for S&R": "ComfySwitchNode"
+      },
+      "widgets_values": [
+        false
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 11,
+      "type": "PreviewImage",
+      "pos": [
+        3936.81673188957,
+        1394.2279939324023
+      ],
+      "size": [
+        367.53720929434166,
+        315.2072473810899
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 10
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.22.0",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 2,
+      "type": "GetImageSize",
+      "pos": [
+        3121.0626802023608,
+        1609.3754605618176
+      ],
+      "size": [
+        210,
+        136
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            3
+          ]
+        },
+        {
+          "name": "batch_size",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.22.0",
+        "Node name for S&R": "GetImageSize"
+      },
+      "widgets_values": [],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 10,
+      "type": "ImageRotate",
+      "pos": [
+        3358.744771432823,
+        1480.0859384220487
+      ],
+      "size": [
+        226.0425153311071,
+        58
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.22.0",
+        "Node name for S&R": "ImageRotate"
+      },
+      "widgets_values": [
+        "90 degrees"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "IMAGE"
+    ],
+    [
+      2,
+      2,
+      0,
+      3,
+      0,
+      "INT"
+    ],
+    [
+      3,
+      2,
+      1,
+      3,
+      1,
+      "INT"
+    ],
+    [
+      4,
+      3,
+      2,
+      4,
+      2,
+      "BOOLEAN"
+    ],
+    [
+      7,
+      1,
+      0,
+      10,
+      0,
+      "IMAGE"
+    ],
+    [
+      8,
+      1,
+      0,
+      4,
+      0,
+      "IMAGE"
+    ],
+    [
+      9,
+      10,
+      0,
+      4,
+      1,
+      "IMAGE"
+    ],
+    [
+      10,
+      4,
+      0,
+      11,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7627768444385532,
+      "offset": [
+        -2311.7396288934533,
+        -909.3072739208028
+      ]
+    },
+    "frontendVersion": "1.44.19"
+  },
+  "version": 0.4
+}
