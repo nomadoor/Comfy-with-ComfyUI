@@ -135,6 +135,7 @@
       * Flux.1 Kontext
       * Chroma
     * AuraFlow
+    * Anima
     * Qwen-Image（親ページあり）
       * Qwen-Image-Edit
   * アップスケール・修正 — 親ページあり
