@@ -5,7 +5,7 @@ slug: news
 navId: news
 title: "News"
 created: 2026-01-15
-updated: 2026-05-27
+updated: 2026-05-29
 summary: "Site updates"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
@@ -13,6 +13,11 @@ tags:
 ---
 
 <div class="news-list">
+  <a class="news-row" href="/en/data-utilities/conditional-branching/">
+    <span class="news-row__date">2026.5.29</span>
+    <span class="news-row__tag">data-utilities</span>
+    <span class="news-row__title">Added Conditional Branching page</span>
+  </a>
   <a class="news-row" href="/en/begin-with/comfyui-manager/">
     <span class="news-row__date">2026.5.27</span>
     <span class="news-row__tag">begin-with</span>

@@ -5,13 +5,18 @@ slug: news
 navId: news
 title: "更新情報"
 created: 2026-01-15
-updated: 2026-05-27
+updated: 2026-05-29
 summary: "このサイトの更新情報"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/ja/data-utilities/conditional-branching/">
+    <span class="news-row__date">2026.5.29</span>
+    <span class="news-row__tag">data-utilities</span>
+    <span class="news-row__title">条件分岐のページを追加しました</span>
+  </a>
   <a class="news-row" href="/ja/begin-with/comfyui-manager/">
     <span class="news-row__date">2026.5.27</span>
     <span class="news-row__tag">begin-with</span>
