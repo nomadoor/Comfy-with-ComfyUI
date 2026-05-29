@@ -135,6 +135,7 @@
       * Flux.1 Kontext
       * Chroma
     * AuraFlow
+    * Lumina-Image 2.0
     * Anima
     * Qwen-Image（親ページあり）
       * Qwen-Image-Edit
