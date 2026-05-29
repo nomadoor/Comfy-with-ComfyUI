@@ -12,6 +12,11 @@ tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/zh/basic-workflows/anima/">
+    <span class="news-row__date">2026.5.29</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">追加了 Anima 的页面</span>
+  </a>
   <a class="news-row" href="/zh/data-utilities/conditional-branching/">
     <span class="news-row__date">2026.5.29</span>
     <span class="news-row__tag">data-utilities</span>
