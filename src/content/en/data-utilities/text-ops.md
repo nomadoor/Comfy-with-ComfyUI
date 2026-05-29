@@ -6,7 +6,7 @@ slug: text-ops
 navId: text-ops
 title: "Text Operations"
 created: 2025-11-25
-updated: 2026-03-02
+updated: 2026-05-27
 summary: "About nodes that manipulate text"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -48,6 +48,18 @@ Combines multiple strings into one.
 (Example: `apple` + `pen` → `applepen`)
 
 - `delimiter` is a separator character. You can use whatever you like (comma, line break, etc.).
+
+### Format Text Node
+
+![](https://gyazo.com/b662c552b5e80b5b04cad422b72a19b2){gyazo=image}
+
+[](../../../workflows/data-utilities/text-ops/Format_Text.json)
+
+This node lets you create a text template and insert other strings into it.
+
+It can combine text more flexibly than Concatenate.
+
+For example, if you connect `apple` to `a` and `red` to `b`, then write `{a} is {b}.` in format, it creates a string like `apple is red.`.
 
 ### Replace Node (Text Replacement)
 

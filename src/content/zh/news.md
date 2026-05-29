@@ -5,13 +5,23 @@ slug: news
 navId: news
 title: "更新信息"
 created: 2026-02-05
-updated: 2026-05-27
+updated: 2026-05-29
 summary: "本站的更新信息"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/zh/basic-workflows/anima/">
+    <span class="news-row__date">2026.5.29</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">追加了 Anima 的页面</span>
+  </a>
+  <a class="news-row" href="/zh/data-utilities/conditional-branching/">
+    <span class="news-row__date">2026.5.29</span>
+    <span class="news-row__tag">data-utilities</span>
+    <span class="news-row__title">追加了条件分支的页面</span>
+  </a>
   <a class="news-row" href="/zh/begin-with/comfyui-manager/">
     <span class="news-row__date">2026.5.27</span>
     <span class="news-row__tag">begin-with</span>

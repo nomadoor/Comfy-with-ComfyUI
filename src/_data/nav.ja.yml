@@ -92,6 +92,8 @@ sections:
             children:
               - id: wildcards
                 title: ワイルドカード
+          - id: conditional-branching
+            title: 条件分岐
           - id: webcam-input
             title: Webカメラ入力
       - id: basic-image-processing
@@ -283,6 +285,8 @@ sections:
             title: AuraFlow
           - id: lumina-image-2.0
             title: Lumina-Image 2.0
+          - id: anima
+            title: Anima
           - id: qwen-image
             title: Qwen-Image
             children:

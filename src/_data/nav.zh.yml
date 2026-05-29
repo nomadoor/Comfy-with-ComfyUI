@@ -92,6 +92,8 @@ sections:
       children:
       - id: wildcards
         title: 通配符
+    - id: conditional-branching
+      title: 条件分支
     - id: webcam-input
       title: 摄像头输入
   - id: basic-image-processing
@@ -283,6 +285,8 @@ sections:
       title: AuraFlow
     - id: lumina-image-2.0
       title: Lumina-Image 2.0
+    - id: anima
+      title: Anima
     - id: qwen-image
       title: Qwen-Image
       children:

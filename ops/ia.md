@@ -45,6 +45,7 @@
     * データ型
     * 単純な計算
     * テキスト操作
+    * 条件分岐
     * Webカメラ入力
   * 基本的な画像処理
     * リサイズ・クロップ・パディング
@@ -134,6 +135,8 @@
       * Flux.1 Kontext
       * Chroma
     * AuraFlow
+    * Lumina-Image 2.0
+    * Anima
     * Qwen-Image（親ページあり）
       * Qwen-Image-Edit
   * アップスケール・修正 — 親ページあり

@@ -6,7 +6,7 @@ slug: text-ops
 navId: text-ops
 title: "文本操作"
 created: 2026-02-06
-updated: 2026-03-02
+updated: 2026-05-27
 summary: "关于操作文本的节点"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -48,6 +48,18 @@ hero:
 （例：`apple` + `pen` → `applepen`）
 
 - `delimiter` 是指分隔符。可以使用喜欢的字符（逗号或换行符等）。
+
+### Format Text 节点
+
+![](https://gyazo.com/b662c552b5e80b5b04cad422b72a19b2){gyazo=image}
+
+[](../../../workflows/data-utilities/text-ops/Format_Text.json)
+
+这个节点可以先写好文章的模板，再把其他 string 插入进去。
+
+相比 Concatenate，它可以更灵活地组合文本。
+
+例如，将 `apple` 连接到 `a`，将 `red` 连接到 `b`，然后在 format 中写入 `{a} is {b}.`，就可以生成类似 `apple is red.` 的字符串。
 
 ### Replace 节点 (文字替换)
 
