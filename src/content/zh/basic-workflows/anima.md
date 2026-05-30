@@ -6,7 +6,7 @@ slug: anima
 navId: anima
 title: "Anima"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-05-30
 summary: "使用 Anima 进行图像生成"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: []
@@ -23,7 +23,7 @@ hero:
 作为从 SDXL 世代的动漫模型迁移过去的目标之一，Anima 受到了相当多的期待。
 
 > 许可证是 **CircleStone Labs Non-Commercial License**。  
-> 请注意，只能用于非商业用途。
+> Anima 模型本身、派生模型和 LoRA 等为非商业用途。生成图像可以用于商业用途。
 
 ---
 

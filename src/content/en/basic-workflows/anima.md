@@ -6,7 +6,7 @@ slug: anima
 navId: anima
 title: "Anima"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-05-30
 summary: "Image generation with Anima"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: []
@@ -23,7 +23,7 @@ It is based on NVIDIA Cosmos, and is a **pure anime model** trained on several m
 It is one of the models drawing a lot of attention as a possible migration target from SDXL-era anime models.
 
 > The license is **CircleStone Labs Non-Commercial License**.  
-> Be careful: use is limited to non-commercial purposes.
+> The Anima model itself, derivative models, and LoRAs are non-commercial. Generated images can be used commercially.
 
 ---
 

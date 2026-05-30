@@ -6,7 +6,7 @@ slug: ai-mask-generation
 navId: ai-mask-generation
 title: "AIを使ったマスク生成"
 created: 2025-11-26
-updated: 2026-05-07
+updated: 2026-05-30
 summary: "マッティング、セグメンテーション、物体検出について"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -17,33 +17,17 @@ hero:
 
 inpainting などでマスクを作る場面は多いですが、毎回手書きをしたり、マスク画像を用意するのは大変です。なにより自動化できません。
 
-ただし、単に「この部分をマスクして」と言うだけで、簡単にキレイなマスクが作れるわけではありません。  
-いくつかの AI 技術を使い分ける必要があります。
+しかし、単に「この部分をマスクして」と言うだけで、簡単にキレイなマスクが作れる技術は、あんまりありません。
 
-- **物体検出 (Detection)**
-  - テキストなどの指示に従い、画像の中の物体を **バウンディングボックス (Bounding Box)** で検出します。
-- **マッティング (Matting)**
-  - **手前の景色** と **背後の景色** をグラデーションのあるマスク（Alpha Matte）で区切ります（ComfyUI ではバイナリマスクになることも多いです）。
-- **セグメンテーション (Segmentation)**
-  - **「物体の形」** を白と黒のマスク（バイナリマスク）で抽出します。
+いくつかの AI 技術を組み合わせて考える必要があります。
 
----
+- **物体検出** - 画像内の対象がどこにあるかを見つけます。
+- **セグメンテーション** - 対象の形をマスクとして切り出します。
+- **マッティング** - 前景と背景の境界を、より細かく扱います。
 
-## 必要なカスタムノード
+たとえば「対象を見つけるために物体検出を使い、その結果をセグメンテーションに渡してマスク化する」といった流れですね。
 
-> 2026年5月現在、対象を指定してマスクを作りたい場合は、コアに実装された [SAM 3 / 3.1](/ja/data-utilities/sam3/) を使っておけば良いでしょう。  
-> 以下で紹介する技術は、SAM 3 登場以前によく使われていたものです。今から新しく使う理由はあまりありません。
-
-- **[1038lab/ComfyUI-RMBG](https://github.com/1038lab/ComfyUI-RMBG)**
-  - マッティングからセグメンテーションまで、多くの技術に対応しており、使い勝手もよいです。
-  - 2026年5月現在は更新が止まり気味で、環境によってはうまく動かないかもしれません。
-- **[ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)**
-- **[ltdrdata/ComfyUI-Impact-Subpack](https://github.com/ltdrdata/ComfyUI-Impact-Subpack)**
-  - Detailer という作業をするためのもので、単純にマスク生成として使うにはクセがあります。
-- **[kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2)**
-  - Florence2 という MLLM を動かします。
-- **[kijai/ComfyUI-segment-anything-2](https://github.com/kijai/ComfyUI-segment-anything-2)**
-  - SAM 2 というセグメンテーションモデルを動かすもので、Florence2 とセットで使います。
+どんなものがあるか、見てみましょう。
 
 ---
 
@@ -53,30 +37,21 @@ inpainting などでマスクを作る場面は多いですが、毎回手書き
 
 その名の通り、画像内にある特定の物体の位置を特定することができ、BBOXと呼ばれる四角い範囲を出力します。
 
-正確性・汎用性・速度、それぞれに特徴のある様々な技術が存在します。
-
 ### YOLO系
 
 リアルタイムに物体を検出することを目的としている、超高速な検出技術です。
 
-基本的には、検出したい物体の種類に対して一つのモデル（顔専用、手専用など）を作るため、モデルがなければ自分で作る必要がありますし、複数の種類を検出したい場合には不向きです。
-
 ![](https://gyazo.com/e8b4e05d42db0b613aee4467a8dca633){gyazo=image}
 
-[](/workflows/data-utilities/ai-mask-generation/Simple_Detector_(SEGS)-YOLO_face.json)
+基本的には、検出したい物体の種類に対して一つのモデル（顔専用、手専用など）を作るため、モデルがなければ自分で作る必要がありますし、複数の種類を検出したい場合には不向きです。
 
-高速処理が必要な場合（顔検出など、特定の対象が決まっている場合）に適しています。
+その分、処理が非常に軽いので、高速処理が必要な場合に適しています。
 
-- **モデルの入手方法**: `ComfyUI Manager` → `Install Models` → YOLOで検索すると顔以外にも色々なYOLOモデルを見つけることができます。
-- リンクは貼りませんが、CivitaiでAdetailerと探すとNSFWに特化したモデルも見つけることができます。
-
-### Grounding DINO
+### Grounding DINO 他
 
 テキストで指定した物体を検出し、BBOXを出力します。
 
-YOLOとは違い、「white dog」「red car」など任意のテキストで物体を指定できるため使い勝手が良く、同時に複数の物体を検出することもできます。
-
-Grounding DINO単体で動かすノードが無いため、下でセグメンテーションと組み合わせたworkflowを紹介します。
+YOLOとは違い、「white dog」「red car」など好きなテキストで物体を指定できるため使い勝手が良く、同時に複数の物体を検出することもできます。
 
 ### VLM / MLLM
 
@@ -84,40 +59,27 @@ Grounding DINO単体で動かすノードが無いため、下でセグメンテ
 
 キャプション生成など様々なことができますが、その中の一つに物体検出ができるものがあります。
 
-**Florence-2** は、比較的早い時期に登場しながら、今でも多用途で便利な視覚言語モデルの一つです。
-
 ![](https://gyazo.com/eac97524bcdcb395cdd5172c3694da41){gyazo=image}
 
-[](/workflows/data-utilities/ai-mask-generation/Florence2Run.json)
+かなり古いですが、代表的なものには **Florence-2** のようなものがあります。
 
-- **モデル**: あまり大きな違いは感じませんが、色々と試してみてください。モデルは自動でダウンロードされます。
-- **プロンプト**: 検出したい物体を説明します。
-- **task**: caption_to_phrase_grounding
-- **output_mask_select**: 検出したものがいくつかある場合、どの出力を使うか選択します（空白の場合はすべて出力されます）。
-
-複雑な文章表現で対象を指定したい場合や、LLM の理解力を活用したい場合に適しています（ただし速度は遅いです）。
+速度は遅いですが、理解力が高いため「画面右側に映っている青い帽子を被った女性」のように、複雑な文章で対象を指定できます。
 
 ---
 
 ## マッティング (Matting)
 
-「背景除去」という名前で提供されているサービスや機能の中身は基本的にこれと同じものです。
+「背景除去」と呼ばれる処理の多くは、マッティングです。
 
-オブジェクトを指定することなどはできませんし、「背景」が一体どこのことを指すのか？は AI に委ねられているため、シンプルに背景除去したい場合や、前景と背景の境界がはっきりしている場合に使うのがいいでしょう。
+手前にあるものと背景を分け、髪の毛のような細かい境界や半透明の部分も扱えます。
+
+ただし、セグメンテーションのように特定の物体を指定して抜くものではありません。
 
 ### BiRefNet
 
-おそらく最も使われているモデルです。速度・性能ともに申し分ないため、とりあえずこれを使えばよいでしょう。
-
 ![](https://gyazo.com/5ce4bac5b8c8dc13fbbb0468c44bf752){gyazo=image}
 
-[](/workflows/data-utilities/ai-mask-generation/BiRefNet_Remove_Background_(RMBG).json)
-
-
-- `Background` を `Alpha` にすると、アルファチャンネルが付加された透過画像が出力されます。
-- **注意**: このときの出力は **RGBA** であるため、image2image 等で使う場合、エラーが発生する可能性があります（[マスクとアルファチャンネル](/ja/data-utilities/mask-alpha/) 参照）。
-
-アニメ画像が得意な ToonOut など、用途によって派生モデルがいくつかあります。色々試してみてください。
+詳しい使い方は [BiRefNet](/ja/data-utilities/birefnet/) のページで扱っています。
 
 ---
 
@@ -127,40 +89,36 @@ Grounding DINO単体で動かすノードが無いため、下でセグメンテ
 
 現在最も有名なセグメンテーションモデルです。
 
-「物の形」を熟知しており、写真内の車などをポイントやボックスで指定すると、その輪郭を正確に見つけてマスクにしてくれます。
+「物の形」を理解しているため、写真内の車などをテキスト、ポイント、ボックスで指定すると、その輪郭を見つけてマスクにしてくれます。
 
-![](https://gyazo.com/ae3a00df59eb97f8612b700ff90aac3b){gyazo=image}
+![](https://gyazo.com/cd6078ed81d850085144836e404754d5){gyazo=image}
 
-これはポイントを押して、指定したオブジェクトをセグメンテーションする機能ですが、基本的には物体検出と組み合わせることが多いでしょう。
-
-- 1. 画像系ノードを右クリック → `Open in SAM Detector`
-- 2. 抽出したい物体を左クリックでポチポチと指定（除外したい範囲は右クリック）
-- 3. `Detect` を押すとマスクが生成されます
-
-> SAM は現在も開発が続けられており、初期 / SAM 2 / SAM 2.1 / SAM 3 があります。
->
-> SAM 3 は、ポイントや BBOX での指示のみならず、テキスト指示にも対応しています。
-
-### 服装・人体部位セグメンテーション
-
-「上半身」「スカート」「顔」「髪」といった特定部位のセグメンテーションを行います。
-
-![](https://gyazo.com/3221f2c1bfc5b2a0f4db328c820f5235){gyazo=image}
-
-[](/workflows/data-utilities/ai-mask-generation/Clothing_Segmentation_(RMBG).json)
-
-- セグメンテーションしたいカテゴリを選択します。
-
-着せ替え等のタスクで以前はよく使っていたのですが、現在は物体検出 + セグメンテーションのほうが汎用性が高く性能が良いかもしれません。
-
+現在の最新モデルである [SAM 3 / 3.1](/ja/data-utilities/sam3/) のページで扱っています。
 
 ---
 
 ## 実践例
 
-物体検出とセグメンテーション、マッティングを組み合わせることで、より高精度なマスク生成が可能になります。
+上記の技術を組み合わせて、任意のテキストやカテゴリのマスクを生成してみましょう。
 
-> 改めてになりますが、まずは単一モデルでマスク生成が完結する [SAM 3 / 3.1](/ja/data-utilities/sam3/) を使っておけばOKです。
+> 以下の workflow は SAM 3 登場以前によく使われていた構成です。対象指定のセグメンテーションが目的なら、現在はまず [SAM 3 / 3.1](/ja/data-utilities/sam3/) を試してください。
+>
+> 古い workflow を読み解きたい場合や、既存環境で同じ構成を再現したい場合の参考として残しています。
+
+### 必要なカスタムノード
+
+以下は、このページの実践例を動かすために必要になることがあるカスタムノードです。
+
+- **[1038lab/ComfyUI-RMBG](https://github.com/1038lab/ComfyUI-RMBG)**
+  - 以前は、マッティングからセグメンテーションまで幅広く使われていました。
+  - 現在は ComfyUI core に BiRefNet 系の背景除去も入っているため、まず core 側を確認してください。
+- **[ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)**
+- **[ltdrdata/ComfyUI-Impact-Subpack](https://github.com/ltdrdata/ComfyUI-Impact-Subpack)**
+  - Detailer まわりで使われることが多いノード群です。単純なマスク生成だけに使うには少しクセがあります。
+- **[kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2)**
+  - Florence2 という MLLM を動かします。
+- **[kijai/ComfyUI-segment-anything-2](https://github.com/kijai/ComfyUI-segment-anything-2)**
+  - SAM 2 / 2.1 系のセグメンテーションモデルを動かすために使います。
 
 ### YOLO × SAM
 
