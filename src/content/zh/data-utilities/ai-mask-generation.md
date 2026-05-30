@@ -6,7 +6,7 @@ slug: ai-mask-generation
 navId: ai-mask-generation
 title: "使用 AI 生成蒙版"
 created: 2026-02-06
-updated: 2026-05-07
+updated: 2026-05-30
 summary: "关于抠图、分割、物体检测"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -17,33 +17,17 @@ hero:
 
 在 inpainting 等场景中，经常需要制作蒙版。但每次都手动绘制，或者提前准备蒙版图像，非常麻烦。最重要的是，这样无法自动化。
 
-不过，单纯说一句“把这部分做成蒙版”，并不一定就能轻松得到干净的蒙版。  
-需要根据目的，区分使用几种 AI 技术。
+但是，单纯说一句“把这部分做成蒙版”，并不一定就能轻松得到干净的蒙版。
 
-- **物体检测 (Detection)**
-  - 根据文本等指令，用 **边界框 (Bounding Box)** 检测图像中的物体。
-- **抠图 (Matting)**
-  - 用带有渐变的蒙版（Alpha Matte）分隔 **前景** 和 **背景**（在 ComfyUI 中也经常会变成二值蒙版）。
-- **分割 (Segmentation)**
-  - 用黑白蒙版（二值蒙版）提取 **“物体的形状”**。
+需要把几种 AI 技术组合起来考虑。
 
----
+- **物体检测** - 找出图像中的目标在哪里。
+- **分割** - 将目标的形状切出为蒙版。
+- **抠图** - 更细致地处理前景和背景之间的边界。
 
-## 必要的自定义节点
+例如，可以先用物体检测找到目标，再把结果传给分割模型，将其转换成蒙版。
 
-> 截至 2026 年 5 月，如果想指定对象并生成蒙版，先从 ComfyUI core 中实现的 [SAM 3 / 3.1](/zh/data-utilities/sam3/) 开始就可以了。  
-> 下面介绍的技术，是 SAM 3 出现以前经常使用的东西。现在从零开始使用它们的理由已经不多了。
-
-- **[1038lab/ComfyUI-RMBG](https://github.com/1038lab/ComfyUI-RMBG)**
-  - 从抠图到分割，支持多种技术，使用也很方便。
-  - 截至 2026 年 5 月，更新有些停滞，根据环境可能无法顺利运行。
-- **[ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)**
-- **[ltdrdata/ComfyUI-Impact-Subpack](https://github.com/ltdrdata/ComfyUI-Impact-Subpack)**
-  - 主要用于 Detailer 相关作业，单纯作为蒙版生成使用时稍微有点特殊。
-- **[kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2)**
-  - 运行名为 Florence2 的 MLLM。
-- **[kijai/ComfyUI-segment-anything-2](https://github.com/kijai/ComfyUI-segment-anything-2)**
-  - 运行 SAM 2 分割模型，通常与 Florence2 搭配使用。
+下面看看主要有哪些技术。
 
 ---
 
@@ -51,32 +35,23 @@ hero:
 
 ![](https://gyazo.com/1a10dcd7dcf8f72eee275a3d8484f882){gyazo=image}
 
-顾名思义，它可以确定图像内特定物体的位置，并输出称为 BBOX 的矩形范围。
-
-不同技术在准确性、通用性、速度方面各有特点。
+顾名思义，物体检测可以确定图像中特定物体的位置，并输出称为 BBOX 的矩形范围。
 
 ### YOLO 系
 
 YOLO 是以实时检测物体为目的的超高速检测技术。
 
-基本上，它会针对想要检测的物体类型分别制作模型（如人脸专用、手专用等）。如果没有对应模型，就需要自己制作；如果想同时检测多种类型，也不太适合。
-
 ![](https://gyazo.com/e8b4e05d42db0b613aee4467a8dca633){gyazo=image}
 
-[](/workflows/data-utilities/ai-mask-generation/Simple_Detector_(SEGS)-YOLO_face.json)
+基本上，它会针对想要检测的物体类型分别制作模型，例如人脸专用、手专用等。如果没有对应模型，就需要自己制作；如果想同时检测多种类别，也不太适合。
 
-适用于需要高速处理的情况，例如检测对象已经固定为人脸时。
+相对地，它的处理非常轻，适合需要高速处理的情况。
 
-- **模型的获取方法**: `ComfyUI Manager` -> `Install Models` -> 搜索 YOLO。除了人脸模型外，也能找到各种 YOLO 模型。
-- 这里不贴链接，但在 Civitai 上搜索 Adetailer，也可以找到专注于 NSFW 的模型。
-
-### Grounding DINO
+### Grounding DINO 等
 
 Grounding DINO 会检测用文本指定的物体，并输出 BBOX。
 
-与 YOLO 不同，可以用 “white dog”、“red car” 等任意文本指定物体，因此使用方便，也可以同时检测多个物体。
-
-这里没有单独运行 Grounding DINO 的节点，下面会介绍与分割组合使用的 workflow。
+与 YOLO 不同，可以用 “white dog”、“red car” 这样的文本指定物体，因此使用方便，也可以同时检测多个物体。
 
 ### VLM / MLLM
 
@@ -84,39 +59,27 @@ Grounding DINO 会检测用文本指定的物体，并输出 BBOX。
 
 它们可以进行图像描述生成等各种任务，其中也有可以进行物体检测的模型。
 
-**Florence-2** 是比较早期出现的模型，但现在仍然是多用途且方便的视觉语言模型之一。
-
 ![](https://gyazo.com/eac97524bcdcb395cdd5172c3694da41){gyazo=image}
 
-[](/workflows/data-utilities/ai-mask-generation/Florence2Run.json)
+比较早期的代表例是 **Florence-2**。
 
-- **模型**: 感觉差别并不大，但可以试试不同模型。模型会自动下载。
-- **提示词**: 描述想要检测的物体。
-- **task**: caption_to_phrase_grounding
-- **output_mask_select**: 检测到多个物体时，选择使用哪个输出（留空则全部输出）。
-
-适合想用复杂语句指定对象，或想利用 LLM 理解能力的情况（不过速度较慢）。
+速度较慢，但理解能力较高，因此可以用“画面右侧戴着蓝色帽子的女性”这样的复杂句子来指定目标。
 
 ---
 
 ## 抠图 (Matting)
 
-以“背景去除”的名义提供的服务或功能，内部基本就是这个。
+很多被称为“背景去除”的处理，本质上就是抠图。
 
-它无法指定某个对象，而“背景”究竟指哪里，也交给 AI 判断。因此，适合单纯去除背景，或者前景和背景边界清晰的情况。
+抠图会分离前景和背景，也可以处理头发这类细小边界，以及半透明区域。
+
+不过，它并不是像分割那样，用来指定并切出某个特定物体的技术。
 
 ### BiRefNet
 
-大概是最常用的模型。速度和性能都没什么问题，抠图的话可以先用它。
-
 ![](https://gyazo.com/5ce4bac5b8c8dc13fbbb0468c44bf752){gyazo=image}
 
-[](/workflows/data-utilities/ai-mask-generation/BiRefNet_Remove_Background_(RMBG).json)
-
-- 将 `Background` 设为 `Alpha`，会输出带 Alpha 通道的透明图像。
-- **注意**: 此时的输出是 **RGBA**，因此在 image2image 等 workflow 中使用时可能会出错。参考 [蒙版与 Alpha 通道](/zh/data-utilities/mask-alpha/)。
-
-根据用途还有一些派生模型，例如擅长动漫图像的 ToonOut 等。可以试试看。
+详细用法请看 [BiRefNet](/zh/data-utilities/birefnet/) 页面。
 
 ---
 
@@ -126,39 +89,36 @@ Grounding DINO 会检测用文本指定的物体，并输出 BBOX。
 
 SAM 是目前最有名的分割模型。
 
-它很了解“物体的形状”。如果用点或框指定照片中的汽车等对象，它就能准确找到轮廓，并生成蒙版。
+它理解“物体的形状”。如果用文本、点或框指定照片中的汽车等对象，它就能找到轮廓，并生成蒙版。
 
-![](https://gyazo.com/ae3a00df59eb97f8612b700ff90aac3b){gyazo=image}
+![](https://gyazo.com/cd6078ed81d850085144836e404754d5){gyazo=image}
 
-这是点击点来分割指定对象的功能，但实际使用中通常会与物体检测组合使用。
-
-- 1. 右键点击图像类节点 -> `Open in SAM Detector`
-- 2. 左键点击想要提取的物体（右键点击想要排除的范围）
-- 3. 点击 `Detect` 生成蒙版
-
-> SAM 目前仍在持续开发中，有初期版 / SAM 2 / SAM 2.1 / SAM 3。
->
-> SAM 3 不仅支持点和 BBOX 指定，也支持文本指令。
-
-### 服装与人体部位分割
-
-用于分割“上半身”、“裙子”、“脸”、“头发”等特定部位。
-
-![](https://gyazo.com/3221f2c1bfc5b2a0f4db328c820f5235){gyazo=image}
-
-[](/workflows/data-utilities/ai-mask-generation/Clothing_Segmentation_(RMBG).json)
-
-- 选择想要分割的类别。
-
-以前在换装等任务中经常使用，但现在物体检测 + 分割可能通用性更高，性能也更好。
+目前最新模型的内容，会在 [SAM 3 / 3.1](/zh/data-utilities/sam3/) 页面中说明。
 
 ---
 
 ## 实践例
 
-通过组合物体检测、分割和抠图，可以生成更高精度的蒙版。
+下面组合上述技术，生成任意文本或类别的蒙版。
 
-> 再说一次，首先使用单一模型就能完成蒙版生成的 [SAM 3 / 3.1](/zh/data-utilities/sam3/) 就可以了。
+> 以下 workflow 是 SAM 3 出现以前经常使用的结构。如果目标是指定对象并进行分割，现在请先尝试 [SAM 3 / 3.1](/zh/data-utilities/sam3/)。
+>
+> 这里保留下来，是为了方便理解旧 workflow，或在既有环境中复现相同结构。
+
+### 必要的自定义节点
+
+以下自定义节点可能是运行本页实践例所需要的。
+
+- **[1038lab/ComfyUI-RMBG](https://github.com/1038lab/ComfyUI-RMBG)**
+  - 以前从抠图到分割都经常使用。
+  - 现在 ComfyUI core 中也有 BiRefNet 系背景去除，所以请先确认 core 侧的节点。
+- **[ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)**
+- **[ltdrdata/ComfyUI-Impact-Subpack](https://github.com/ltdrdata/ComfyUI-Impact-Subpack)**
+  - 常用于 Detailer 周边。单纯作为蒙版生成使用时稍微有点特殊。
+- **[kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2)**
+  - 运行 Florence2 这个 MLLM。
+- **[kijai/ComfyUI-segment-anything-2](https://github.com/kijai/ComfyUI-segment-anything-2)**
+  - 用于运行 SAM 2 / 2.1 系分割模型。
 
 ### YOLO × SAM
 

@@ -18,4 +18,4 @@ The page should follow the lightweight structure of the SAM 3 / 3.1 page: a shor
 
 - `ops/ia.md` records BiRefNet as an active child page under AI mask generation.
 - Japanese navigation gains a `BiRefNet` child entry above `SAM 3 / 3.1`.
-- EN/ZH translation and navigation are not created unless the owner explicitly requests them.
+- EN/ZH translations and navigation entries were added after the owner explicitly requested translation sync.

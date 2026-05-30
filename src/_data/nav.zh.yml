@@ -111,6 +111,8 @@ sections:
     - id: ai-mask-generation
       title: AI 遮罩生成
       children:
+      - id: birefnet
+        title: BiRefNet
       - id: sam3
         title: SAM 3 / 3.1
     - id: layer-composite-blend
