@@ -6,7 +6,7 @@ slug: anima
 navId: anima
 title: "Anima"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-05-30
 summary: "Animaでの画像生成"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: []
@@ -23,7 +23,7 @@ NVIDIA Cosmos をベースにし、数百万枚のアニメ画像とアート画
 SDXL 世代のアニメ系モデルからの移行先として、かなり期待されているモデルのひとつですね。
 
 > ライセンスは **CircleStone Labs Non-Commercial License** です。  
-> 非商用のみなので注意してください。
+> Anima のモデル本体・派生モデル・LoRA などは非商用です。生成した画像は商用利用できます。
 
 ---
 
