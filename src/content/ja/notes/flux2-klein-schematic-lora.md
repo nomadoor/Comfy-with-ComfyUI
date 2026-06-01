@@ -28,6 +28,11 @@ hero:
 
 結果として SOTA 性能を出せたとは言えませんが、簡単な LoRA 学習だけでも、ローカルモデルで Vision Banana に近い方向の挙動を試せることを示せればと思います。
 
+## 配布先
+
+- LoRA: [nomadoor/flux-2-klein-9B-schematic-lora](https://huggingface.co/nomadoor/flux-2-klein-9B-schematic-lora)
+- Dataset: [nomadoor/flux-2-klein-9B-schematic-dataset](https://huggingface.co/datasets/nomadoor/flux-2-klein-9B-schematic-dataset)
+
 ---
 
 ## タスク設定
