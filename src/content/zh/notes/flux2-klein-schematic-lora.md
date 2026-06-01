@@ -28,6 +28,11 @@ hero:
 
 结果当然谈不上达到 SOTA 性能。不过我希望这个实验能说明，仅靠简单的 LoRA 训练，也可以在本地模型上尝试接近 Vision Banana 方向的行为。
 
+## 发布地址
+
+- LoRA: [nomadoor/flux-2-klein-9B-schematic-lora](https://huggingface.co/nomadoor/flux-2-klein-9B-schematic-lora)
+- Dataset: [nomadoor/flux-2-klein-9B-schematic-dataset](https://huggingface.co/datasets/nomadoor/flux-2-klein-9B-schematic-dataset)
+
 ---
 
 ## 任务设定

@@ -28,6 +28,11 @@ Inspired by that direction, I wanted to see whether something similar could be d
 
 The result is not SOTA-level performance. Still, I hope this experiment shows that even a simple LoRA can make a local model behave in a direction somewhat close to Vision Banana.
 
+## Downloads
+
+- LoRA: [nomadoor/flux-2-klein-9B-schematic-lora](https://huggingface.co/nomadoor/flux-2-klein-9B-schematic-lora)
+- Dataset: [nomadoor/flux-2-klein-9B-schematic-dataset](https://huggingface.co/datasets/nomadoor/flux-2-klein-9B-schematic-dataset)
+
 ---
 
 ## Task Setup
