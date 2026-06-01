@@ -83,6 +83,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - Blockquotes use a quiet but visible purple-tinted background surface with small radius and a small Tabler-style info icon at the start. Do not use borders, a left accent bar, or italic styling by default.
 - Inline images are centered, `max-width: 720px`, `max-height: 320px`, and `object-fit: contain` so portrait assets never force extra scrolling.
 - Inline Gyazo media stays completely flat: **no borders / box-shadows**. When contrast is needed, rely on `--color-panel-alt` as the single backing surface.
+- Image comparison tables must stay within the article content width. Tables that contain article media use fixed column layout, compact cell padding, and equal-size square media frames; images preserve their own aspect ratio with `object-fit: contain`.
 - 蜈ｨ繝壹・繧ｸ縺ｧ蜷御ｸ繝医・繝ｳ繧剃ｿ昴▽縺溘ａ縲∵悽譁・ｸｭ縺ｮ逕ｻ蜒上・蜍慕判繧ゅョ繝輔か繝ｫ繝医〒貂帛・繝輔ぅ繝ｫ繧ｿ・井ｾ具ｼ啻filter: brightness(0.85)`・峨ｒ驕ｩ逕ｨ縺吶ｋ縲・
 - Lists use custom markers: first-level unordered lists use small accent dots, nested unordered lists use muted hollow accent dots, and ordered lists use accent numbers.
 - `.placeholder` component is dashed border block for 窶懊∪縺繝壹・繧ｸ縺後≠繧翫∪縺帙ｓ窶・states and 404 page.

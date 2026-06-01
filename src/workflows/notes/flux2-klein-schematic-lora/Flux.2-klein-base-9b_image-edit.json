@@ -1,0 +1,848 @@
+{
+  "id": "37b279c2-46a8-4e38-ae9d-efce5a7f30a1",
+  "revision": 0,
+  "last_node_id": 90,
+  "last_link_id": 204,
+  "nodes": [
+    {
+      "id": 49,
+      "type": "ReferenceLatent",
+      "pos": [
+        1021.3615651604734,
+        160.40068341159756
+      ],
+      "size": [
+        204.134765625,
+        46
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 70
+        },
+        {
+          "name": "latent",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 75
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            71
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2",
+        "Node name for S&R": "ReferenceLatent"
+      },
+      "widgets_values": [],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 52,
+      "type": "VAEEncode",
+      "pos": [
+        821.9650317382822,
+        579.5488468801722
+      ],
+      "size": [
+        162,
+        46
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 149
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 76
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            74,
+            75,
+            84
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2",
+        "Node name for S&R": "VAEEncode"
+      },
+      "widgets_values": [],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 55,
+      "type": "ReferenceLatent",
+      "pos": [
+        1021.3615651604734,
+        387.24938745307793
+      ],
+      "size": [
+        204.134765625,
+        46
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 83
+        },
+        {
+          "name": "latent",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 84
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            85
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2",
+        "Node name for S&R": "ReferenceLatent"
+      },
+      "widgets_values": [],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 44,
+      "type": "CLIPLoader",
+      "pos": [
+        224.49879211425772,
+        292.66704483032197
+      ],
+      "size": [
+        283.80000000000007,
+        106
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            63,
+            64
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.73",
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "qwen_3_8b.safetensors",
+        "flux2",
+        "default"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 43,
+      "type": "VAELoader",
+      "pos": [
+        520.2735954205992,
+        751.5950256347664
+      ],
+      "size": [
+        269.8313103058076,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            62,
+            76
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "flux2-vae.safetensors"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 51,
+      "type": "ResizeImageMaskNode",
+      "pos": [
+        213.01819139432666,
+        579.5488468801722
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "IMAGE,MASK",
+          "link": 196
+        }
+      ],
+      "outputs": [
+        {
+          "name": "resized",
+          "type": "IMAGE",
+          "links": [
+            82
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2",
+        "Node name for S&R": "ResizeImageMaskNode"
+      },
+      "widgets_values": [
+        "scale total pixels",
+        1,
+        "nearest-exact"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 33,
+      "type": "CLIPTextEncode",
+      "pos": [
+        558.700000000001,
+        387.24938745307793
+      ],
+      "size": [
+        425.2650317382812,
+        122.99611236572264
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 64
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            83
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Negative Prompt)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "text, worst quality, blurry, ugly"
+      ]
+    },
+    {
+      "id": 48,
+      "type": "UNETLoader",
+      "pos": [
+        500.7576387664047,
+        0.22617585350672265
+      ],
+      "size": [
+        308.1592787377913,
+        82
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            140
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2",
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "Flux.2/flux-2-klein-base-9b-fp8.safetensors",
+        "default"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 45,
+      "type": "SaveImage",
+      "pos": [
+        1827.035886825295,
+        160.40068341159756
+      ],
+      "size": [
+        672.8774941199636,
+        835.2894627396925
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 65
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.73"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1615.039087801503,
+        160.40068341159756
+      ],
+      "size": [
+        161.111083984375,
+        46
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 52
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 62
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            65
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 54,
+      "type": "ResizeImageMaskNode",
+      "pos": [
+        517.4916115663044,
+        579.5488468801722
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "IMAGE,MASK",
+          "link": 82
+        }
+      ],
+      "outputs": [
+        {
+          "name": "resized",
+          "type": "IMAGE",
+          "links": [
+            149
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2",
+        "Node name for S&R": "ResizeImageMaskNode"
+      },
+      "widgets_values": [
+        "scale to multiple",
+        16,
+        "nearest-exact"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 50,
+      "type": "LoadImage",
+      "pos": [
+        -139.92346878942647,
+        579.5488468801722
+      ],
+      "size": [
+        324.77206892429183,
+        437.2170640540477
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            196
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "000144_00001_.png",
+        "image"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 84,
+      "type": "MarkdownNote",
+      "pos": [
+        12.952843572078905,
+        -258.08006758864195
+      ],
+      "size": [
+        425.4143199001238,
+        450.1487253162147
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "# Workflow Prompts\n\n## Relative Depth\n\n```text\nGenerate a relative depth map of the input image.\n```\n\n## Surface Normal\n\n```text\nGenerate a surface normal map of the input image.\n```\n\n## Body Pose\n\n```text\nGenerate a body pose map of all visible people in the input image.\n```\n\n## Full Pose\n\n```text\nGenerate a full pose map of all visible people in the input image.\n```\n\n## Binary Segmentation\n\n```text\nGenerate a binary segmentation mask of [target] in the input image.\n```\n\n## Amodal Segmentation\n\n```text\nGenerate an amodal segmentation mask of [target] in the input image.\n```"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        558.700000000001,
+        160.40068341159756
+      ],
+      "size": [
+        425.2650317382812,
+        167.9430462646484
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 63
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            70
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "Generate a relative depth map of the input image.\n"
+      ]
+    },
+    {
+      "id": 31,
+      "type": "KSampler",
+      "pos": [
+        1262.7259909887628,
+        160.40068341159756
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 193
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 71
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 85
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 74
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            52
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        1234,
+        "fixed",
+        20,
+        5,
+        "euler",
+        "simple",
+        1
+      ]
+    },
+    {
+      "id": 81,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        834.1673366934359,
+        0.22617585350672265
+      ],
+      "size": [
+        393.62824686843055,
+        82
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 140
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            193
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.20.1",
+        "Node name for S&R": "LoraLoaderModelOnly"
+      },
+      "widgets_values": [
+        "flux2-klein-schematic-relative-depth-lora.safetensors",
+        0.8
+      ]
+    },
+    {
+      "id": 85,
+      "type": "MarkdownNote",
+      "pos": [
+        -458.2999499066289,
+        -259.54092129190855
+      ],
+      "size": [
+        423.753902071114,
+        543.7932327033926
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n\n* diffusion_models\n\n  * [flux-2-klein-base-9b-fp8.safetensors](https://huggingface.co/black-forest-labs/FLUX.2-klein-base-9b-fp8/blob/main/flux-2-klein-base-9b-fp8.safetensors)\n* text_encoders\n\n  * [qwen_3_8b.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/blob/main/split_files/text_encoders/qwen_3_8b.safetensors)\n* vae\n\n  * [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/blob/main/split_files/vae/flux2-vae.safetensors)\n\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   ├── flux-2-klein-9b-fp8.safetensors\n    │   └── flux-2-klein-base-9b-fp8.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen_3_8b.safetensors\n    └── 📂vae/\n         └── flux2-vae.safetensors\n```\n\n### loras\n\n- loras\n  - [flux2-klein-schematic-relative-depth-lora.safetensors](https://huggingface.co/nomadoor/flux-2-klein-9B-schematic-lora/blob/main/loras/flux2-klein-schematic-relative-depth-lora.safetensors)\n  - [flux2-klein-schematic-surface-normal-lora.safetensors](https://huggingface.co/nomadoor/flux-2-klein-9B-schematic-lora/blob/main/loras/flux2-klein-schematic-surface-normal-lora.safetensors)\n  - [flux2-klein-schematic-body-pose-lora.safetensors](https://huggingface.co/nomadoor/flux-2-klein-9B-schematic-lora/blob/main/loras/flux2-klein-schematic-body-pose-lora.safetensors)\n  - [flux2-klein-schematic-full-pose-lora.safetensors](https://huggingface.co/nomadoor/flux-2-klein-9B-schematic-lora/blob/main/loras/flux2-klein-schematic-full-pose-lora.safetensors)\n  - [flux2-klein-schematic-binary-segmentation-lora.safetensors](https://huggingface.co/nomadoor/flux-2-klein-9B-schematic-lora/blob/main/loras/flux2-klein-schematic-binary-segmentation-lora.safetensors)\n  - [flux2-klein-schematic-amodal-segmentation-lora.safetensors](https://huggingface.co/nomadoor/flux-2-klein-9B-schematic-lora/blob/main/loras/flux2-klein-schematic-amodal-segmentation-lora.safetensors)\n\n```\n📂ComfyUI/\n└── 📂models/\n    └── 📂loras/\n        ├── flux2-klein-schematic-relative-depth-lora.safetensors\n        ├── flux2-klein-schematic-surface-normal-lora.safetensors\n        ├── flux2-klein-schematic-body-pose-lora.safetensors\n        ├── flux2-klein-schematic-full-pose-lora.safetensors\n        ├── flux2-klein-schematic-binary-segmentation-lora.safetensors\n        └── flux2-klein-schematic-amodal-segmentation-lora.safetensors\n```"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    }
+  ],
+  "links": [
+    [
+      52,
+      31,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      62,
+      43,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      63,
+      44,
+      0,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      64,
+      44,
+      0,
+      33,
+      0,
+      "CLIP"
+    ],
+    [
+      65,
+      8,
+      0,
+      45,
+      0,
+      "IMAGE"
+    ],
+    [
+      70,
+      6,
+      0,
+      49,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      71,
+      49,
+      0,
+      31,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      74,
+      52,
+      0,
+      31,
+      3,
+      "LATENT"
+    ],
+    [
+      75,
+      52,
+      0,
+      49,
+      1,
+      "LATENT"
+    ],
+    [
+      76,
+      43,
+      0,
+      52,
+      1,
+      "VAE"
+    ],
+    [
+      82,
+      51,
+      0,
+      54,
+      0,
+      "IMAGE"
+    ],
+    [
+      83,
+      33,
+      0,
+      55,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      84,
+      52,
+      0,
+      55,
+      1,
+      "LATENT"
+    ],
+    [
+      85,
+      55,
+      0,
+      31,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      140,
+      48,
+      0,
+      81,
+      0,
+      "MODEL"
+    ],
+    [
+      149,
+      54,
+      0,
+      52,
+      0,
+      "IMAGE"
+    ],
+    [
+      193,
+      81,
+      0,
+      31,
+      0,
+      "MODEL"
+    ],
+    [
+      196,
+      50,
+      0,
+      51,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7627768444385989,
+      "offset": [
+        1370.6596805987829,
+        510.4137858114659
+      ]
+    },
+    "frontendVersion": "1.42.15",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
