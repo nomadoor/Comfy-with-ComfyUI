@@ -20,4 +20,4 @@ Use the existing flat Notes structure and `noteTags`, without adding a sidebar n
 
 - The article is discoverable through Notes and Note finder.
 - No workflow JSON is required at this stage.
-- English and Chinese versions are not added until the owner requests translation sync.
+- English and Chinese versions were added after the owner explicitly requested translation sync.

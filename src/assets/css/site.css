@@ -1905,6 +1905,7 @@ h1 {
 
 .article-body table {
   width: 100%;
+  max-width: 100%;
   margin: var(--space-md) 0;
   border-collapse: collapse;
   border-spacing: 0;
@@ -1935,6 +1936,35 @@ h1 {
 
 .article-body table tbody tr+tr td {
   border-top: 1px solid var(--color-border);
+}
+
+.article-body table:has(.article-media) {
+  table-layout: fixed;
+}
+
+.article-body table:has(.article-media) th,
+.article-body table:has(.article-media) td {
+  padding: var(--space-xs);
+  vertical-align: top;
+}
+
+.article-body table:has(.article-media) .article-media {
+  margin: 0;
+}
+
+.article-body table:has(.article-media) .article-media__frame {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  aspect-ratio: 1 / 1;
+}
+
+.article-body table:has(.article-media) .article-media__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .article-body table td:first-child code,
