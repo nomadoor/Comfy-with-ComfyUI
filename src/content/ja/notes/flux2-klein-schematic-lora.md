@@ -18,7 +18,7 @@ hero:
 
 ![](https://gyazo.com/2bd9f7b01d61bea0658ba82a750f227e){gyazo=image}
 
-画像生成モデルの事前知識を活用して、CV タスクに応用する研究はいくつもあります。代表的なものでいえば、[Marigold](https://arxiv.org/abs/2312.02145)、[Lotus-2](https://huggingface.co/papers/2512.01030)、[SDPose](https://tsliang.top/SDPose/) などです。
+画像生成モデルの事前知識を活用して、CV タスクに応用する研究はいくつもあります。代表的なものでいえば、[Marigold](https://marigoldmonodepth.github.io/)、[Lotus-2](https://huggingface.co/papers/2512.01030)、[SDPose](https://tsliang.top/SDPose/) などです。
 
 これらは事前学習済みの画像生成モデルを利用しているとはいえ、最終的にはそれぞれのタスク専用に設計されています。
 
@@ -119,6 +119,8 @@ amodal segmentation は、対象物の見えている部分だけでなく、隠
 既存データセット、およびこれを直接生成する teacher が手元になかったため、画像生成と画像編集を組み合わせて作成しました。
 
 作成手順:
+
+![](https://gyazo.com/c3daf3c0a5804bf37d4920a95c7dde61){gyazo=image}
 
 1. 明確な subject と、それを自然に隠す occluder が含まれる occlusion scene のプロンプトを GPT-5.5 で作成
 2. Z-Image-Turbo で source image を生成

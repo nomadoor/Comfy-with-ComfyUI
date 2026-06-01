@@ -18,7 +18,7 @@ hero:
 
 ![](https://gyazo.com/2bd9f7b01d61bea0658ba82a750f227e){gyazo=image}
 
-There are many studies that reuse the prior knowledge of image generation models for CV tasks. Representative examples include [Marigold](https://arxiv.org/abs/2312.02145), [Lotus-2](https://huggingface.co/papers/2512.01030), and [SDPose](https://tsliang.top/SDPose/).
+There are many studies that reuse the prior knowledge of image generation models for CV tasks. Representative examples include [Marigold](https://marigoldmonodepth.github.io/), [Lotus-2](https://huggingface.co/papers/2512.01030), and [SDPose](https://tsliang.top/SDPose/).
 
 Although these methods use pretrained image generation models, they are ultimately designed specifically for each task.
 
@@ -115,6 +115,8 @@ Amodal segmentation is a task that creates a mask for the whole object, includin
 I did not have an existing dataset or a teacher that could directly generate this, so I created it by combining image generation and image editing.
 
 Creation flow:
+
+![](https://gyazo.com/c3daf3c0a5804bf37d4920a95c7dde61){gyazo=image}
 
 1. GPT-5.5 created prompts for occlusion scenes with a clear subject and a natural occluder
 2. Z-Image-Turbo generated the source image
