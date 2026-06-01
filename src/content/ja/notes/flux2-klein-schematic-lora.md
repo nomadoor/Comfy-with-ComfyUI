@@ -205,7 +205,7 @@ ComfyUI で実際に動かして、良さそうな step を選びます。すべ
   - [flux2-klein-schematic-binary-segmentation-lora.safetensors](https://huggingface.co/nomadoor/flux-2-klein-9B-schematic-lora/blob/main/loras/flux2-klein-schematic-binary-segmentation-lora.safetensors)
   - [flux2-klein-schematic-amodal-segmentation-lora.safetensors](https://huggingface.co/nomadoor/flux-2-klein-9B-schematic-lora/blob/main/loras/flux2-klein-schematic-amodal-segmentation-lora.safetensors)
 
-```
+```text
 📂ComfyUI/
 └── 📂models/
     └── 📂loras/
