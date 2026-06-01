@@ -18,7 +18,7 @@ hero:
 
 ![](https://gyazo.com/2bd9f7b01d61bea0658ba82a750f227e){gyazo=image}
 
-利用图像生成模型的先验知识来做 CV 任务的研究有不少。代表性的例子包括 [Marigold](https://arxiv.org/abs/2312.02145)、[Lotus-2](https://huggingface.co/papers/2512.01030)、[SDPose](https://tsliang.top/SDPose/) 等。
+利用图像生成模型的先验知识来做 CV 任务的研究有不少。代表性的例子包括 [Marigold](https://marigoldmonodepth.github.io/)、[Lotus-2](https://huggingface.co/papers/2512.01030)、[SDPose](https://tsliang.top/SDPose/) 等。
 
 这些方法虽然利用了预训练图像生成模型，但最终仍然是为各自任务专门设计的。
 
@@ -115,6 +115,8 @@ amodal segmentation 是为对象创建 mask 的任务，不只包含可见部分
 手头没有现成数据集，也没有能直接生成它的 teacher，所以这次结合图像生成和图像编辑来制作。
 
 制作流程：
+
+![](https://gyazo.com/c3daf3c0a5804bf37d4920a95c7dde61){gyazo=image}
 
 1. 让 GPT-5.5 创建包含明确 subject 和自然 occluder 的 occlusion scene prompt
 2. 用 Z-Image-Turbo 生成 source image
