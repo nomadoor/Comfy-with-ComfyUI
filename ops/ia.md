@@ -140,6 +140,9 @@
     * Anima
     * Qwen-Image（親ページあり）
       * Qwen-Image-Edit
+    * Z-Image（親ページあり）
+      * Z-Image-Turbo
+      * PixelDiT / PiD
   * アップスケール・修正 — 親ページあり
     * ESRGAN
     * GFPGAN
