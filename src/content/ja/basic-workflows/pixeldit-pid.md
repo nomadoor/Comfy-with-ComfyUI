@@ -57,29 +57,17 @@ PixelDiT 単体で text2image を行う workflow です。
 
 ## PiD
 
-**PiD** は、PixelDiT 系の仕組みを使って、既存の [Latent Diffusion Model](/ja/ai-capabilities/latent-diffusion-vae/) の **VAE Decode を置き換える** モデルです。
+**PiD** は、VAE Decode の代わりに使う PixelDiT です。
 
-既存モデルが作った latent を **VAE Decode せずに** 受け取り、高解像度の画像として出力します。
-名前の通り Pixel diffusion Decoder で、単に画像を拡大するというより、latent から画像へ戻す処理そのものをピクセル拡散モデルで行います。
+通常は、生成した latent を VAE Decode して画像に戻します。
+PiD では、その latent を PixelDiT に渡して、画像への復元と拡大をまとめて行います。
 
-通常の流れはこうです。
+例えば、Z-Image-Turbo で 1024×1024 の latent を作り、VAE Decode する前に PiD へ渡します。
+`1024_to_4096` の PiD なら、それを 4096×4096 の画像として出力します。
 
-```text
-Latent Diffusion Model
-→ VAE Decode
-→ アップスケール / 修復
-```
+既存モデルの生成力を使いつつ、VAE Decode による細部劣化を避けられる、というわけです。
 
-PiD を使う場合は、ここをまとめます。
-
-```text
-Latent Diffusion Model
-→ PiD
-→ 高解像度画像
-```
-
-PiD は「アップスケーラ」として見てもよいですが、単純な画像アップスケールではありません。
-入力するのは完成画像ではなく、モデルが生成した latent です。
+中身としては、他の latent 拡散モデルが作った latent を条件にして、4 ステップ蒸留した PixelDiT モデルで画像生成しています。
 
 ### モデルの選び方
 
@@ -118,17 +106,20 @@ PiD は、元になる latent 空間に合わせて選びます。
         └── pid_flux2_1024_to_4096_4step_2606_bf16.safetensors
 ```
 
-### Z-Image-Turbo + PiD
+### Z-Image-Turbo → PiD
 
 ![](https://gyazo.com/be589a49f195194b86b2ccef61cdc250){gyazo=image}
 
 Z-Image-Turbo の latent を、通常の VAE Decode ではなく PiD 側へ接続する例です。
 
-この場合、Z-Image 側では低めの解像度で latent を作り、PiD で 4K 相当まで引き上げます。
-`1024_to_4096` の PiD を使う場合は、1024px から 4096px へ、つまり 4 倍の出力を狙う形になります。
-
 `Context Windows (Manual)` ノードは、いわゆるタイリング用です。
 OOM する場合や、縦長・横長の画像で出力が荒れる場合に使います。
+
+### 任意の画像をアップスケール
+
+PiD は latent を入力にするため、任意の画像を使う場合は、いったん対応する VAE で latent に変換してから渡します。
+
+ただし、やっていることは本質的には描き直しなので、忠実な再現が必要な用途には向かないことに注意です。
 
 ---
 
