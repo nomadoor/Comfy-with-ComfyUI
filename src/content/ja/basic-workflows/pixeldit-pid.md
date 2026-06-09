@@ -135,20 +135,21 @@ Z-Image-Turbo の latent を、PiD でデコードしてみましょう。
 
 ### 任意の画像をアップスケール
 
-上の workflow を見て気づいたかもしれませんが、`PiD Conditioning` に任意の latent を繋いでいるだけです。
+`PiD Conditioning` に渡しているのは、Z-Image-Turbo 専用の信号ではなく、通常の latent です。
 
-つまり、text2image から PiD に繋がなくても、好きな画像を一度 VAE Encode してから PiD に渡せば、アップスケーラーとして使えるんですね。
+そのため、text2image から直接繋がなくても、好きな画像を一度 VAE Encode して PiD に渡せば、アップスケーラーのように使うこともできます。
 
 ![](https://gyazo.com/1d83eec4daa183467327ed1d3a5b3461){gyazo=image}
 
 [](/workflows/basic-workflows/pixeldit-pid/PiD_flux1_4x_enhance.json)
 
-- 画像を 1M ピクセル相当、かつ 16 の倍数になるようにリサイズ
-- 高さと幅を取得し、4 倍の値を PiD 側の出力サイズに使用
+- 入力画像を 1M ピクセル相当、かつ 16 の倍数になるようにリサイズ
+- リサイズ後の高さと幅を取得し、4 倍した値を PiD 側の出力サイズに使用
 
-latent ごとに PiD モデルがあるので、どの latent にエンコードするかは好みです。
+PiD モデルは latent の種類ごとに分かれているため、どの VAE で encode するかも選ぶ必要があります。
 
-基本的にはもっとも新しい Flux.2 VAE でエンコードするのが良い気がしますが、色が大きく変わってしまうため、ここでは Flux.1 PiD + `ae.safetensors` の組み合わせにしています。
+基本的には新しい Flux.2 VAE を使いたくなりますが、色が大きく変わってしまうことがありました。
+ここでは、色の変化が比較的少なかった Flux.1 PiD + `ae.safetensors` の組み合わせにしています。
 
 > やっていることは本質的には描き直しなので、アップスケーラーというよりエンハンスです。
 > 忠実な再現が必要な用途には向かないことに注意してください。
