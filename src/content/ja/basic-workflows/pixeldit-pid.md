@@ -20,12 +20,8 @@ tags: [upscale-restoration]
   - NVIDIA が公開している **ピクセル拡散モデル** です。
   - [Latent Diffusion Model](/ja/ai-capabilities/latent-diffusion-vae/) のように latent 空間で生成するのではなく、ピクセル空間そのものを denoise して画像を作ります。
 - **PiD**
-  - PixelDiT 系の仕組みを使って、既存の [Latent Diffusion Model](/ja/ai-capabilities/latent-diffusion-vae/) の **VAE Decode を肩代わりする** ためのモデルです。
+  - PixelDiT 系の仕組みを使って、既存の [Latent Diffusion Model](/ja/ai-capabilities/latent-diffusion-vae/) の **VAE Decode を置き換える** モデルです。
   - 通常の VAE Decode の代わりに PiD へ latent を渡すことで、画像への復元とアップスケールをまとめて行います。
-- **このページで扱う位置づけ**
-  - PixelDiT は「ピクセルで直接生成するモデル」です。
-  - PiD は「latent を高解像度のピクセルへ直接戻す decoder」です。
-  - Z-Image の派生ではなく、別アーキテクチャとして扱います。
 
 ピクセル空間で処理する利点は、VAE の圧縮・復元を挟まないことです。
 
