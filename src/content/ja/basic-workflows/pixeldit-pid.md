@@ -90,35 +90,19 @@ PiD では、その latent を PixelDiT に渡して、画像への復元と拡�
   - [pid_flux2_512_to_2048_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_flux2_512_to_2048_4step_bf16.safetensors) (2.73 GB)
   - [pid_flux2_1024_to_4096_4step_2606_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_flux2_1024_to_4096_4step_2606_bf16.safetensors) (2.73 GB)
 
-- 共通
-
-  - [gemma_2_2b_it_elm_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/text_encoders/gemma_2_2b_it_elm_bf16.safetensors) (5.23 GB)
-
-- Flux.1 / Z-Image 系の例で使用
-
-  - [ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors) (335 MB)
-
 ```text
 📂ComfyUI/
 └── 📂models/
-    ├── 📂diffusion_models/
-    │   # 使うベースモデルに対応した PiD だけでOK
-    │   ├── pid_sdxl_1024_to_4096_4step_bf16.safetensors
-    │   ├── pid_qwenimage_1024_to_4096_4step_bf16.safetensors
-    │   ├── pid_flux1_512_to_2048_4step_bf16.safetensors
-    │   ├── pid_flux1_1024_to_4096_4step_bf16.safetensors
-    │   ├── pid_flux2_512_to_2048_4step_bf16.safetensors
-    │   └── pid_flux2_1024_to_4096_4step_2606_bf16.safetensors
-    ├── 📂text_encoders/
-    │   └── gemma_2_2b_it_elm_bf16.safetensors
-    └── 📂vae/
-        # Flux.1 / Z-Image 系の例で使用
-        └── ae.safetensors
+    └── 📂diffusion_models/
+        ├── pid_sdxl_1024_to_4096_4step_bf16.safetensors
+        ├── pid_qwenimage_1024_to_4096_4step_bf16.safetensors
+        ├── pid_flux1_512_to_2048_4step_bf16.safetensors
+        ├── pid_flux1_1024_to_4096_4step_bf16.safetensors
+        ├── pid_flux2_512_to_2048_4step_bf16.safetensors
+        └── pid_flux2_1024_to_4096_4step_2606_bf16.safetensors
 ```
 
-PiD モデル自体は、すべて入れる必要はありません。使うベースモデルに対応したものだけ配置します。
-一方で、このページの PiD workflow では `gemma_2_2b_it_elm_bf16.safetensors` も必要です。
-Flux.1 / Z-Image 系の例では、画像を Encode するために `ae.safetensors` も使います。
+すべて入れる必要はありません。使うベースモデルに対応した PiD だけ配置します。
 
 ### モデルの選び方
 
@@ -141,6 +125,17 @@ Z-Image-Turbo の latent を、PiD でデコードしてみましょう。
 
 [](/workflows/basic-workflows/pixeldit-pid/Z-Image-Turbo_to_PiD_4k.json)
 
+この workflow では、PiD 側で次の text encoder も使います。
+
+- [gemma_2_2b_it_elm_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/text_encoders/gemma_2_2b_it_elm_bf16.safetensors) (5.23 GB)
+
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂text_encoders/
+        └── gemma_2_2b_it_elm_bf16.safetensors
+```
+
 - 🟦 左上は通常の [Z-Image-Turbo](/ja/basic-workflows/z-image-turbo/) workflow です。
   - 🟩 出力された latent は VAE Decode せず、PixelDiT 側の `PiD Conditioning` に繋ぎます。
 - 今回は `1024_to_4096` モデルを使います。
@@ -158,6 +153,20 @@ Z-Image-Turbo の latent を、PiD でデコードしてみましょう。
 ![](https://gyazo.com/1d83eec4daa183467327ed1d3a5b3461){gyazo=image}
 
 [](/workflows/basic-workflows/pixeldit-pid/PiD_flux1_4x_enhance.json)
+
+この workflow では、PiD 側の text encoder と、画像を Encode するための VAE も使います。
+
+- [gemma_2_2b_it_elm_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/text_encoders/gemma_2_2b_it_elm_bf16.safetensors) (5.23 GB)
+- [ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors) (335 MB)
+
+```text
+📂ComfyUI/
+└── 📂models/
+    ├── 📂text_encoders/
+    │   └── gemma_2_2b_it_elm_bf16.safetensors
+    └── 📂vae/
+        └── ae.safetensors
+```
 
 - 入力画像を 1M ピクセル相当、かつ 16 の倍数になるようにリサイズ
 - リサイズ後の高さと幅を取得し、4 倍した値を PiD 側の出力サイズに使用
