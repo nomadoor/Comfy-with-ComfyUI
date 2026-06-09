@@ -90,19 +90,35 @@ PiD では、その latent を PixelDiT に渡して、画像への復元と拡�
   - [pid_flux2_512_to_2048_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_flux2_512_to_2048_4step_bf16.safetensors) (2.73 GB)
   - [pid_flux2_1024_to_4096_4step_2606_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_flux2_1024_to_4096_4step_2606_bf16.safetensors) (2.73 GB)
 
+- 共通
+
+  - [gemma_2_2b_it_elm_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/text_encoders/gemma_2_2b_it_elm_bf16.safetensors) (5.23 GB)
+
+- Flux.1 / Z-Image 系の例で使用
+
+  - [ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors) (335 MB)
+
 ```text
 📂ComfyUI/
 └── 📂models/
-    └── 📂diffusion_models/
-        ├── pid_sdxl_1024_to_4096_4step_bf16.safetensors
-        ├── pid_qwenimage_1024_to_4096_4step_bf16.safetensors
-        ├── pid_flux1_512_to_2048_4step_bf16.safetensors
-        ├── pid_flux1_1024_to_4096_4step_bf16.safetensors
-        ├── pid_flux2_512_to_2048_4step_bf16.safetensors
-        └── pid_flux2_1024_to_4096_4step_2606_bf16.safetensors
+    ├── 📂diffusion_models/
+    │   # 使うベースモデルに対応した PiD だけでOK
+    │   ├── pid_sdxl_1024_to_4096_4step_bf16.safetensors
+    │   ├── pid_qwenimage_1024_to_4096_4step_bf16.safetensors
+    │   ├── pid_flux1_512_to_2048_4step_bf16.safetensors
+    │   ├── pid_flux1_1024_to_4096_4step_bf16.safetensors
+    │   ├── pid_flux2_512_to_2048_4step_bf16.safetensors
+    │   └── pid_flux2_1024_to_4096_4step_2606_bf16.safetensors
+    ├── 📂text_encoders/
+    │   └── gemma_2_2b_it_elm_bf16.safetensors
+    └── 📂vae/
+        # Flux.1 / Z-Image 系の例で使用
+        └── ae.safetensors
 ```
 
-すべて入れる必要はありません。使うベースモデルに対応した PiD だけ配置します。
+PiD モデル自体は、すべて入れる必要はありません。使うベースモデルに対応したものだけ配置します。
+一方で、このページの PiD workflow では `gemma_2_2b_it_elm_bf16.safetensors` も必要です。
+Flux.1 / Z-Image 系の例では、画像を Encode するために `ae.safetensors` も使います。
 
 ### モデルの選び方
 
