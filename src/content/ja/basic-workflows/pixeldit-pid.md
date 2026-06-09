@@ -121,11 +121,15 @@ PiD では、その latent を PixelDiT に渡して、画像への復元と拡�
 
 Z-Image-Turbo の latent を、PiD でデコードしてみましょう。
 
-![](https://gyazo.com/be589a49f195194b86b2ccef61cdc250){gyazo=image}
+![](https://gyazo.com/ffadadaad0731fe65418fde91d8214e0){gyazo=image}
 
-- 左上は通常の [Z-Image-Turbo](/ja/basic-workflows/z-image-turbo/) workflow です。
-- ただし、出力された latent は VAE Decode せず、PixelDiT 側の `PiD Conditioning` に繋ぎます。
-- PiD は 4 ステップ蒸留モデルなので、ここでは `steps` を 3、`cfg` を 1.0 にしています。
+[](/workflows/basic-workflows/pixeldit-pid/Z-Image-Turbo_to_PiD_4k.json)
+
+- 🟦 左上は通常の [Z-Image-Turbo](/ja/basic-workflows/z-image-turbo/) workflow です。
+  - 🟩 出力された latent は VAE Decode せず、PixelDiT 側の `PiD Conditioning` に繋ぎます。
+- 今回は `1024_to_4096` モデルを使います。
+  - Z-Image-Turbo 側は 1M ピクセル相当で生成し、PiD 側ではその 4 倍の解像度を指定します。
+- PiD は 4 ステップ蒸留モデルなので、ここでは `steps` を 4、`cfg` を 1.0 にしています。
 - `Context Windows (Manual)` ノードは、いわゆるタイリング用です。
   OOM する場合や、縦長・横長の画像で出力が荒れる場合に使います。
 
