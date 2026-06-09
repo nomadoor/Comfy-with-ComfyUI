@@ -29,3 +29,4 @@ This keeps the first draft visually near the Z-Image workflow examples without i
 - The initial page is JA only, following the project rule that EN/ZH pages are not added unless explicitly requested.
 - No existing slugs are renamed.
 - The page can link to PixelDiT and PiD references, but should stay a light draft rather than a full theory article.
+- Per owner feedback, the page should explain PixelDiT first and PiD second, instead of combining them in a shared opening summary.

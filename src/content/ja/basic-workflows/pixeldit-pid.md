@@ -14,26 +14,19 @@ hero:
 tags: [upscale-restoration]
 ---
 
-## PixelDiT / PiD とは？
+## PixelDiT
 
-- **PixelDiT**
-  - NVIDIA が公開している **ピクセル拡散モデル** です。
-  - [Latent Diffusion Model](/ja/ai-capabilities/latent-diffusion-vae/) のように latent 空間で生成するのではなく、ピクセル空間そのものを denoise して画像を作ります。
-- **PiD**
-  - PixelDiT 系の仕組みを使って、既存の [Latent Diffusion Model](/ja/ai-capabilities/latent-diffusion-vae/) の **VAE Decode を置き換える** モデルです。
-  - 通常の VAE Decode の代わりに PiD へ latent を渡すことで、画像への復元とアップスケールをまとめて行います。
+**PixelDiT** は、NVIDIA が公開している **ピクセル拡散モデル** です。
+
+[Latent Diffusion Model](/ja/ai-capabilities/latent-diffusion-vae/) のように latent 空間で生成するのではなく、ピクセル空間そのものを denoise して画像を作ります。
 
 ピクセル空間で処理する利点は、VAE の圧縮・復元を挟まないことです。
-
 VAE は画像を扱いやすい latent に圧縮してくれる一方で、細かい文字、模様、エッジ、質感のような情報は落ちることがあります。
+
 ピクセル拡散モデルでは、最終的な画像そのものに近い空間で denoise するため、こうした細部を直接作り込めます。
-
 ただし、ピクセル空間は latent 空間よりずっと大きいので、そのまま扱うと計算量と VRAM 使用量が重くなります。
+
 PixelDiT では画像をパッチとして扱い、全体の意味を扱う経路と、細部を詰めるピクセル側の経路を分けることで、この重さを抑えています。
-
----
-
-## PixelDiT
 
 ### モデルのダウンロード
 
@@ -64,7 +57,9 @@ PixelDiT 単体で text2image を行う workflow です。
 
 ## PiD
 
-PiD は、既存モデルが作った latent を **VAE Decode せずに** 受け取り、高解像度の画像として出力するためのモデルです。
+**PiD** は、PixelDiT 系の仕組みを使って、既存の [Latent Diffusion Model](/ja/ai-capabilities/latent-diffusion-vae/) の **VAE Decode を置き換える** モデルです。
+
+既存モデルが作った latent を **VAE Decode せずに** 受け取り、高解像度の画像として出力します。
 
 通常の流れはこうです。
 
