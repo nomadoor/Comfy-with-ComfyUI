@@ -489,7 +489,7 @@
         "ver": "0.3.33"
       },
       "widgets_values": [
-        "Z-Image/z_image_turbo_bf16.safetensors",
+        "z_image_turbo_bf16.safetensors",
         "fp8_e4m3fn"
       ],
       "color": "#323",
