@@ -119,12 +119,15 @@ PiD では、その latent を PixelDiT に渡して、画像への復元と拡�
 
 ### Z-Image-Turbo → PiD
 
+Z-Image-Turbo の latent を、PiD でデコードしてみましょう。
+
 ![](https://gyazo.com/be589a49f195194b86b2ccef61cdc250){gyazo=image}
 
-Z-Image-Turbo の latent を、通常の VAE Decode ではなく PiD 側へ接続する例です。
-
-`Context Windows (Manual)` ノードは、いわゆるタイリング用です。
-OOM する場合や、縦長・横長の画像で出力が荒れる場合に使います。
+- 左上は通常の [Z-Image-Turbo](/ja/basic-workflows/z-image-turbo/) workflow です。
+- ただし、出力された latent は VAE Decode せず、PixelDiT 側の `PiD Conditioning` に繋ぎます。
+- PiD は 4 ステップ蒸留モデルなので、ここでは `steps` を 3、`cfg` を 1.0 にしています。
+- `Context Windows (Manual)` ノードは、いわゆるタイリング用です。
+  OOM する場合や、縦長・横長の画像で出力が荒れる場合に使います。
 
 ### 任意の画像をアップスケール
 
