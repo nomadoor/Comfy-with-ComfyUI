@@ -301,6 +301,8 @@ sections:
       children:
       - id: z-image-turbo
         title: Z-Image-Turbo
+    - id: pixeldit-pid
+      title: PixelDiT / PiD
   - id: upscale-fix
     title: 放大与修复
     noLink: true

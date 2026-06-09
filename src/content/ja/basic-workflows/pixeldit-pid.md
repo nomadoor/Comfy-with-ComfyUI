@@ -148,7 +148,7 @@ Z-Image-Turbo の latent を、PiD でデコードしてみましょう。
 
 PiD モデルごとに対応する VAE が違うため、PiD モデルに合った VAE で Encode する必要があります。
 
-新しい Flux.2 VAE を使いたくなりますが、色が大きく変わってしまうため、ここでは安定している Flux.1 PiD + `ae.safetensors` の組み合わせにしています。
+新しい Flux.2 VAE を使いたくなりますが、色が大きく変わってしまうため、ここでは安定している `Flux.1用PiD` + `ae.safetensors` の組み合わせにしています。
 
 - [ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors) (335 MB)
 
@@ -160,7 +160,7 @@ PiD モデルごとに対応する VAE が違うため、PiD モデルに合っ�
 ```
 
 > やっていることは本質的には描き直しなので、アップスケーラーというよりエンハンスです。  
-> 忠実な再現が必要な用途には向かないことに注意してください。
+> 忠実な再現が必要な用途にはあまり向きません。
 
 ---
 
