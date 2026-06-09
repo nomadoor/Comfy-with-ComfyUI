@@ -10,7 +10,7 @@ updated: 2026-06-09
 summary: "PixelDiT と PiD を使った画像生成・高解像度デコード"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://gyazo.com/be589a49f195194b86b2ccef61cdc250"
+  image: "https://i.gyazo.com/d2c8e2acd81c8ab3a69526c0e33f40f2.png"
 tags: [upscale-restoration]
 ---
 
@@ -18,15 +18,16 @@ tags: [upscale-restoration]
 
 **PixelDiT** は、NVIDIA が公開している **ピクセル拡散モデル** です。
 
-[Latent Diffusion Model](/ja/ai-capabilities/latent-diffusion-vae/) のように latent 空間で生成するのではなく、ピクセル空間そのものを denoise して画像を作ります。
+これまでの画像生成モデルの多くは、基本的に [Latent Diffusion Model](/ja/ai-capabilities/latent-diffusion-vae/) という仕組みでした。
 
-ピクセル空間で処理する利点は、VAE の圧縮・復元を挟まないことです。
-VAE は画像を扱いやすい latent に圧縮してくれる一方で、細かい文字、模様、エッジ、質感のような情報は落ちることがあります。
+画像を 1 ピクセルずつ計算するのは大変なので、一度 latent というものに圧縮することで、計算量を減らしたり、画像の特徴を扱いやすくしていました。
 
-ピクセル拡散モデルでは、最終的な画像そのものに近い空間で denoise するため、こうした細部を直接作り込めます。
-ただし、ピクセル空間は latent 空間よりずっと大きいので、そのまま扱うと計算量と VRAM 使用量が重くなります。
+しかし、その代償として、細かい文字や模様などの情報が崩れてしまうことがあります。
 
-PixelDiT では画像をパッチとして扱い、全体の意味を扱う経路と、細部を詰めるピクセル側の経路を分けることで、この重さを抑えています。
+対して、ピクセル拡散モデルは、その名の通り latent を介さず、ピクセルのまま生成します。
+そのため、VAE による劣化は仕組み的にありません。
+
+もちろん、計算量を下げるための latent だったんじゃないの？という疑問は残りますが、画像をパッチに分割するという別の方法で対策しています。
 
 ### モデルのダウンロード
 
