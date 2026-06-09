@@ -143,7 +143,12 @@ Z-Image-Turbo の latent を、PiD でデコードしてみましょう。
 
 [](/workflows/basic-workflows/pixeldit-pid/PiD_flux1_4x_enhance.json)
 
-この workflow では、画像を Encode するために `ae.safetensors` も使います。
+- 入力画像を 1M ピクセル相当、かつ 16 の倍数になるようにリサイズ
+- リサイズ後の高さと幅を取得し、4 倍した値を PiD 側の出力サイズに使用
+
+PiD モデルごとに対応する VAE が違うため、PiD モデルに合った VAE で Encode する必要があります。
+
+新しい Flux.2 VAE を使いたくなりますが、色が大きく変わってしまうため、ここでは安定している Flux.1 PiD + `ae.safetensors` の組み合わせにしています。
 
 - [ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors) (335 MB)
 
@@ -153,13 +158,6 @@ Z-Image-Turbo の latent を、PiD でデコードしてみましょう。
     └── 📂vae/
         └── ae.safetensors
 ```
-
-- 入力画像を 1M ピクセル相当、かつ 16 の倍数になるようにリサイズ
-- リサイズ後の高さと幅を取得し、4 倍した値を PiD 側の出力サイズに使用
-
-PiD モデルごとに対応する VAE が違うため、PiD モデルに合った VAE で Encode する必要があります。
-
-新しい Flux.2 VAE を使いたくなりますが、色が大きく変わってしまうため、ここでは安定している Flux.1 PiD + `ae.safetensors` の組み合わせにしています。
 
 > やっていることは本質的には描き直しなので、アップスケーラーというよりエンハンスです。  
 > 忠実な再現が必要な用途には向かないことに注意してください。
