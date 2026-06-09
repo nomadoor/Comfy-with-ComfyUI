@@ -135,9 +135,9 @@ Z-Image-Turbo の latent を、PiD でデコードしてみましょう。
 
 ### 任意の画像をアップスケール
 
-`PiD Conditioning` に渡しているのは、Z-Image-Turbo 専用の信号ではなく、通常の latent です。
+`PiD Conditioning` に渡しているのは、ただの latent です。
 
-そのため、text2image から直接繋がなくても、好きな画像を一度 VAE Encode して PiD に渡せば、アップスケーラーのように使うこともできます。
+そのため、前段でわざわざ text2image をしなくても、好きな画像を一度 VAE Encode して PiD に渡せば、アップスケーラーのように使うこともできます。
 
 ![](https://gyazo.com/1d83eec4daa183467327ed1d3a5b3461){gyazo=image}
 
