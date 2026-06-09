@@ -94,11 +94,15 @@ PiD では、その latent を PixelDiT に渡して、画像への復元と拡�
 📂ComfyUI/
 └── 📂models/
     └── 📂diffusion_models/
+        ├── pid_sdxl_1024_to_4096_4step_bf16.safetensors
+        ├── pid_qwenimage_1024_to_4096_4step_bf16.safetensors
         ├── pid_flux1_512_to_2048_4step_bf16.safetensors
         ├── pid_flux1_1024_to_4096_4step_bf16.safetensors
         ├── pid_flux2_512_to_2048_4step_bf16.safetensors
         └── pid_flux2_1024_to_4096_4step_2606_bf16.safetensors
 ```
+
+すべて入れる必要はありません。使うベースモデルに対応した PiD だけ配置します。
 
 ### モデルの選び方
 
