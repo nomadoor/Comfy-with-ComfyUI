@@ -46,12 +46,15 @@ Stable Diffusion 以降の画像生成モデルの多くは、[Latent Diffusion 
 
 ### text2image
 
-![](https://gyazo.com/fd716c0bb5f65a54aad3363c31da7d15){gyazo=image}
+![](https://gyazo.com/bdac1169d8ee0d91f6eed7b485ffa914){gyazo=image}
 
-PixelDiT 単体で text2image を行う workflow です。
+[](/workflows/basic-workflows/pixeldit-pid/PixelDiT_text2image.json)
 
-[Latent Diffusion Model](/ja/ai-capabilities/latent-diffusion-vae/) のように VAE を経由しないため、細かい文字やテクスチャの崩れ方が少し違います。
-ただし、この記事ではまず ComfyUI で動かすための入口として扱います。
+ピクセル拡散モデルなので、本来は `Load VAE` も `VAE Decode` も必要ありません。
+
+ただ、ComfyUI では既存の workflow 形式に合わせるため、`Load VAE` で `pixel_space` を選び、それを `VAE Decode` へ繋ぎます。
+
+`pixel_space` という VAE でデコードしているように見えますが、これは `KSampler` から `IMAGE` 出力を得るための操作だと思ってください。
 
 ---
 
@@ -65,27 +68,27 @@ PiD では、その latent を PixelDiT に渡して、画像への復元と拡�
 例えば、Z-Image-Turbo で 1024×1024 の latent を作り、VAE Decode する前に PiD へ渡します。
 `1024_to_4096` の PiD なら、それを 4096×4096 の画像として出力します。
 
-既存モデルの生成力を使いつつ、VAE Decode による細部劣化を避けられる、というわけです。
+既存モデルの生成力を使いつつ、VAE Decode による細部劣化を避けられる、というわけですね。
 
 ### モデルのダウンロード
 
-- **SDXL 用**
+- SDXL 用
 
-  - [pid_sdxl_1024_to_4096_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_sdxl_1024_to_4096_4step_bf16.safetensors)
+  - [pid_sdxl_1024_to_4096_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_sdxl_1024_to_4096_4step_bf16.safetensors) (2.72 GB)
 
-- **Qwen-Image 用**
+- Qwen-Image 用
 
-  - [pid_qwenimage_1024_to_4096_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_qwenimage_1024_to_4096_4step_bf16.safetensors)
+  - [pid_qwenimage_1024_to_4096_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_qwenimage_1024_to_4096_4step_bf16.safetensors) (2.72 GB)
 
-- **Flux.1 / Z-Image 用**
+- Flux.1 / Z-Image 用
 
-  - [pid_flux1_512_to_2048_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_flux1_512_to_2048_4step_bf16.safetensors)
-  - [pid_flux1_1024_to_4096_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_flux1_1024_to_4096_4step_bf16.safetensors)
+  - [pid_flux1_512_to_2048_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_flux1_512_to_2048_4step_bf16.safetensors) (2.72 GB)
+  - [pid_flux1_1024_to_4096_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_flux1_1024_to_4096_4step_bf16.safetensors) (2.72 GB)
 
-- **Flux.2 用**
+- Flux.2 用
 
-  - [pid_flux2_512_to_2048_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_flux2_512_to_2048_4step_bf16.safetensors)
-  - [pid_flux2_1024_to_4096_4step_2606_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_flux2_1024_to_4096_4step_2606_bf16.safetensors)
+  - [pid_flux2_512_to_2048_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_flux2_512_to_2048_4step_bf16.safetensors) (2.73 GB)
+  - [pid_flux2_1024_to_4096_4step_2606_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_flux2_1024_to_4096_4step_2606_bf16.safetensors) (2.73 GB)
 
 ```text
 📂ComfyUI/
@@ -108,7 +111,7 @@ PiD では、その latent を PixelDiT に渡して、画像への復元と拡�
 - 拡大率
   - モデル名を見ると `1024_to_4096` のような文字が見えますが、これは拡大率です。
   - これを使えば勝手に拡大されるわけではなく、たとえば `1024_to_4096` なら、1024px 相当の latent / 出力を PiD に渡し、4096px の画像が出力されるようにパラメータを設定します。
-  - アスペクト比は自由です。
+  - 大まかな解像度があっていればアスペクト比は自由です。
 
 ### Z-Image-Turbo → PiD
 
