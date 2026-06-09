@@ -16,15 +16,24 @@ tags: [upscale-restoration]
 
 ## PixelDiT / PiD とは？
 
-**PixelDiT** は、NVIDIA が公開している **pixel-space diffusion model** です。
+- **PixelDiT**
+  - NVIDIA が公開している **ピクセル拡散モデル** です。
+  - [Latent Diffusion Model](/ja/ai-capabilities/latent-diffusion-vae/) のように latent 空間で生成するのではなく、ピクセル空間そのものを denoise して画像を作ります。
+- **PiD**
+  - PixelDiT 系の仕組みを使って、既存の [Latent Diffusion Model](/ja/ai-capabilities/latent-diffusion-vae/) の **VAE Decode を肩代わりする** ためのモデルです。
+  - 通常の VAE Decode の代わりに PiD へ latent を渡すことで、画像への復元とアップスケールをまとめて行います。
+- **このページで扱う位置づけ**
+  - PixelDiT は「ピクセルで直接生成するモデル」です。
+  - PiD は「latent を高解像度のピクセルへ直接戻す decoder」です。
+  - Z-Image の派生ではなく、別アーキテクチャとして扱います。
 
-Stable Diffusion や Z-Image のような latent diffusion model は、まず小さな latent 空間で生成し、最後に VAE で画像へ戻します。
-PixelDiT はこの VAE を使わず、pixel 空間そのものを denoise して画像を作ります。
+ピクセル空間で処理する利点は、VAE の圧縮・復元を挟まないことです。
 
-**PiD** は、この PixelDiT 系の仕組みを使って、既存の latent diffusion model の **VAE Decode を肩代わりする** ためのモデルです。
-通常の VAE Decode の代わりに PiD へ latent を渡すことで、画像への復元とアップスケールをまとめて行います。
+VAE は画像を扱いやすい latent に圧縮してくれる一方で、細かい文字、模様、エッジ、質感のような情報は落ちることがあります。
+ピクセル拡散モデルでは、最終的な画像そのものに近い空間で denoise するため、こうした細部を直接作り込めます。
 
-ざっくり言うと、PixelDiT は「pixel で直接生成するモデル」、PiD は「latent を高解像度の pixel へ直接戻す decoder」です。
+ただし、ピクセル空間は latent 空間よりずっと大きいので、そのまま生成すると計算量と VRAM 使用量が重くなります。
+PiD では、すべてをゼロからピクセル空間で生成するのではなく、既存モデルが作った latent を受け取り、短いステップ数で高解像度に decode することで、この重さを現実的な範囲に抑えています。
 
 ---
 
@@ -52,7 +61,7 @@ PixelDiT はこの VAE を使わず、pixel 空間そのものを denoise して
 
 PixelDiT 単体で text2image を行う workflow です。
 
-latent diffusion model のように VAE を経由しないため、細かい文字やテクスチャの崩れ方が少し違います。
+[Latent Diffusion Model](/ja/ai-capabilities/latent-diffusion-vae/) のように VAE を経由しないため、細かい文字やテクスチャの崩れ方が少し違います。
 ただし、この記事ではまず ComfyUI で動かすための入口として扱います。
 
 ---
@@ -64,7 +73,7 @@ PiD は、既存モデルが作った latent を **VAE Decode せずに** 受け
 通常の流れはこうです。
 
 ```text
-latent diffusion model
+Latent Diffusion Model
 → VAE Decode
 → アップスケール / 修復
 ```
@@ -72,7 +81,7 @@ latent diffusion model
 PiD を使う場合は、ここをまとめます。
 
 ```text
-latent diffusion model
+Latent Diffusion Model
 → PiD
 → 高解像度画像
 ```
@@ -128,21 +137,6 @@ Z-Image-Turbo の latent を、通常の VAE Decode ではなく PiD 側へ接�
 
 `Context Windows (Manual)` ノードは、いわゆるタイリング用です。
 OOM する場合や、縦長・横長の画像で出力が荒れる場合に使います。
-
----
-
-## 使いどころ
-
-PiD は、普通のアップスケールよりも「生成寄り」の処理です。
-
-元画像をただ拡大するというより、latent の構造をもとに高解像度の細部を作り直します。
-そのため、細部がかなり増える一方で、色や質感が少し解釈されることもあります。
-
-この記事では Z-Image-Turbo を例にしていますが、PixelDiT / PiD は Z-Image 系の派生ではありません。
-あくまで、PiD が対応している latent を受け取り、高解像度の pixel へ戻す別アーキテクチャの decoder として扱います。
-
-まずは対応しているモデルの出力を高解像度化したいときに試すのが分かりやすいです。
-通常の VAE Decode と PiD の出力を並べて、どちらが目的に合うか比べるのがよいと思います。
 
 ---
 
