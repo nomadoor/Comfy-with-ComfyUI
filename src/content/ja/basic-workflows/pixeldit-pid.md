@@ -10,7 +10,7 @@ updated: 2026-06-09
 summary: "PixelDiT と PiD を使った画像生成・高解像度デコード"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/d2c8e2acd81c8ab3a69526c0e33f40f2.png"
+  image: "https://i.gyazo.com/31ea733be7d13db9616875f7c59e3f40.png"
 tags: [upscale-restoration]
 ---
 
@@ -150,7 +150,7 @@ PiD モデルごとに対応する VAE が違うため、PiD モデルに合っ�
 
 新しい Flux.2 VAE を使いたくなりますが、色が大きく変わってしまうため、ここでは安定している Flux.1 PiD + `ae.safetensors` の組み合わせにしています。
 
-> やっていることは本質的には描き直しなので、アップスケーラーというよりエンハンスです。
+> やっていることは本質的には描き直しなので、アップスケーラーというよりエンハンスです。  
 > 忠実な再現が必要な用途には向かないことに注意してください。
 
 ---
