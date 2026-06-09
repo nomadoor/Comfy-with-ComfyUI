@@ -135,9 +135,23 @@ Z-Image-Turbo の latent を、PiD でデコードしてみましょう。
 
 ### 任意の画像をアップスケール
 
-PiD は latent を入力にするため、任意の画像を使う場合は、いったん対応する VAE で latent に変換してから渡します。
+上の workflow を見て気づいたかもしれませんが、`PiD Conditioning` に任意の latent を繋いでいるだけです。
 
-ただし、やっていることは本質的には描き直しなので、忠実な再現が必要な用途には向かないことに注意です。
+つまり、text2image から PiD に繋がなくても、好きな画像を一度 VAE Encode してから PiD に渡せば、アップスケーラーとして使えるんですね。
+
+![](https://gyazo.com/1d83eec4daa183467327ed1d3a5b3461){gyazo=image}
+
+[](/workflows/basic-workflows/pixeldit-pid/PiD_flux1_4x_enhance.json)
+
+- 画像を 1M ピクセル相当、かつ 16 の倍数になるようにリサイズ
+- 高さと幅を取得し、4 倍の値を PiD 側の出力サイズに使用
+
+latent ごとに PiD モデルがあるので、どの latent にエンコードするかは好みです。
+
+基本的にはもっとも新しい Flux.2 VAE でエンコードするのが良い気がしますが、色が大きく変わってしまうため、ここでは Flux.1 PiD + `ae.safetensors` の組み合わせにしています。
+
+> やっていることは本質的には描き直しなので、アップスケーラーというよりエンハンスです。
+> 忠実な再現が必要な用途には向かないことに注意してください。
 
 ---
 
@@ -146,4 +160,3 @@ PiD は latent を入力にするため、任意の画像を使う場合は、�
 - [PixelDiT](https://pixeldit.github.io/)
 - [PiD: Fast and High-Resolution Latent Decoding with Pixel Diffusion](https://research.nvidia.com/labs/sil/projects/pid/)
 - [ComfyUI Pull Request: Support NVIDIA PixelDiT and PiD](https://github.com/Comfy-Org/ComfyUI/pull/14103)
-- [Comfy-Org / PixelDiT](https://huggingface.co/Comfy-Org/PixelDiT)
