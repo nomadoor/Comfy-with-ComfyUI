@@ -12,7 +12,7 @@ The owner requested a new Japanese draft article for PixelDiT / PiD based on the
 
 The placement was left to the agent, with Z-Image or upscale/restoration suggested as likely candidates.
 
-PixelDiT is a pixel-space diffusion model, while PiD uses pixel diffusion as a decoder that can replace VAE decode and upscale latent diffusion outputs. In ComfyUI usage, the immediate practical example is close to Z-Image / Z-Image-Turbo workflows, especially when using PiD checkpoints for Flux-family latents that include Z-Image.
+PixelDiT is a pixel-space diffusion model, while PiD uses pixel diffusion as a decoder that can replace VAE decode and upscale latent diffusion outputs. It is a separate architecture from Z-Image. In ComfyUI usage, one practical example can be shown with Z-Image / Z-Image-Turbo because PiD provides Flux-family checkpoints that can accept compatible latents, but PixelDiT / PiD must not be treated as a child topic of Z-Image.
 
 ## Decision
 
@@ -20,9 +20,9 @@ Add a Japanese draft page at:
 
 - `src/content/ja/basic-workflows/pixeldit-pid.md`
 
-Place it under **Basic Workflows > Other Foundation Models > Z-Image > PixelDiT / PiD** in the Japanese navigation.
+Place it under **Basic Workflows > Other Foundation Models > PixelDiT / PiD** in the Japanese navigation, immediately after the Z-Image group.
 
-This keeps the first draft near the workflow family the owner is currently using, while still allowing a later IA move to the upscale/restoration group if the article grows into a broader PiD upscaling guide.
+This keeps the first draft visually near the Z-Image workflow examples without implying that PixelDiT / PiD belongs to the Z-Image architecture. A later IA move to the upscale/restoration group remains possible if the article grows into a broader PiD upscaling guide.
 
 ## Consequences
 

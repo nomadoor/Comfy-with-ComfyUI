@@ -142,7 +142,7 @@
       * Qwen-Image-Edit
     * Z-Image（親ページあり）
       * Z-Image-Turbo
-      * PixelDiT / PiD
+    * PixelDiT / PiD
   * アップスケール・修正 — 親ページあり
     * ESRGAN
     * GFPGAN
