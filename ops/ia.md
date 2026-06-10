@@ -143,6 +143,7 @@
     * Z-Image（親ページあり）
       * Z-Image-Turbo
     * PixelDiT / PiD
+    * Ideogram 4.0
   * アップスケール・修正 — 親ページあり
     * ESRGAN
     * GFPGAN
