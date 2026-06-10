@@ -5,13 +5,18 @@ slug: news
 navId: news
 title: "更新情報"
 created: 2026-01-15
-updated: 2026-06-09
+updated: 2026-06-10
 summary: "このサイトの更新情報"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/ja/basic-workflows/ideogram-4/">
+    <span class="news-row__date">2026.6.10</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">Ideogram 4.0 のページを追加しました</span>
+  </a>
   <a class="news-row" href="/ja/basic-workflows/pixeldit-pid/">
     <span class="news-row__date">2026.6.9</span>
     <span class="news-row__tag">basic-workflows</span>

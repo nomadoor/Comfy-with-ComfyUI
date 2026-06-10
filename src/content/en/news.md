@@ -5,7 +5,7 @@ slug: news
 navId: news
 title: "News"
 created: 2026-01-15
-updated: 2026-06-09
+updated: 2026-06-10
 summary: "Site updates"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
@@ -13,6 +13,11 @@ tags:
 ---
 
 <div class="news-list">
+  <a class="news-row" href="/en/basic-workflows/ideogram-4/">
+    <span class="news-row__date">2026.6.10</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">Added Ideogram 4.0 page</span>
+  </a>
   <a class="news-row" href="/en/basic-workflows/pixeldit-pid/">
     <span class="news-row__date">2026.6.9</span>
     <span class="news-row__tag">basic-workflows</span>

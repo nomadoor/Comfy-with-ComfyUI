@@ -303,6 +303,8 @@ sections:
                 title: Z-Image-Turbo
           - id: pixeldit-pid
             title: PixelDiT / PiD
+          - id: ideogram-4
+            title: Ideogram 4.0
       - id: upscale-fix
         title: Upscale & Fix
         noLink: true
