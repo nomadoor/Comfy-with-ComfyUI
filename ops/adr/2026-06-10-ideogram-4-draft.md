@@ -20,12 +20,17 @@ Add a Japanese draft page at:
 
 - `src/content/ja/basic-workflows/ideogram-4.md`
 
+After explicit owner request, add translations at:
+
+- `src/content/en/basic-workflows/ideogram-4.md`
+- `src/content/zh/basic-workflows/ideogram-4.md`
+
 Place it under **Basic Workflows > Other Foundation Models > Ideogram 4.0**, immediately after PixelDiT / PiD.
 
 The page should stay focused on the ComfyUI workflow and practical reading of Ideogram 4.0 rather than becoming a full architecture paper summary.
 
 ## Consequences
 
-- The initial page is JA only unless EN/ZH translations are explicitly requested.
+- EN/ZH translations were added after explicit owner request.
 - No existing slugs are renamed.
 - Workflow explanation can use `mediaRow` blocks because the owner requested that format for the more complex workflow explanation.
