@@ -144,7 +144,7 @@ Aside from the prompt, there are a few parts that are slightly different from a 
 Ideogram 4.0 loads two diffusion models for its slightly unusual CFG.
 
 - In normal [CFG](/en/ai-capabilities/cfg/), the result with a prompt and the result without a prompt are compared, pushing the generation toward the prompt.
-- Ideogram 4.0 does not use a simple empty prompt on the unconditional side. It uses the model side that has no text condition.
+- Ideogram 4.0 does not pass an empty prompt to the unconditional side. Instead, it sends image-only input, without text tokens, through the unconditional model.
 - It is easy to wonder what the difference is, but you can think of it as a trick for handling the positive prompt more delicately.
 
 {% endmediaRow %}

@@ -144,7 +144,7 @@ ComfyUI 上で動かせるレベルのローカルモデルでは性能が足り
 Ideogram 4.0 では、少し特殊な CFG のために diffusion model を 2 つ読み込みます。
 
 - 通常の [CFG](/ja/ai-capabilities/cfg/) では、プロンプトありの結果と、プロンプトなしの結果を比べることで、プロンプト方向へ生成を寄せます。
-- 一方で Ideogram 4.0 では、unconditional 側に単なる空プロンプトを使うのではなく、テキスト条件を持たない側のモデルを使います。
+- 一方で Ideogram 4.0 では、unconditional 側に空プロンプトを渡すのではなく、テキスト token を使わない image-only の入力を unconditional 用モデルに通します。
 - なにが違うんだという感じもしますが、より positive prompt を繊細に扱うための工夫といった感じでしょうか。
 
 {% endmediaRow %}

@@ -144,7 +144,7 @@ ComfyUI 内部会处理显存，所以 VRAM 不够也不一定完全不能生成
 Ideogram 4.0 为了稍微特殊的 CFG，会读取两个 diffusion model。
 
 - 普通的 [CFG](/zh/ai-capabilities/cfg/) 是比较有提示词的结果和没有提示词的结果，把生成方向往提示词靠。
-- Ideogram 4.0 的 unconditional 侧不是使用单纯的空提示词，而是使用不带文本条件的那一侧模型。
+- Ideogram 4.0 的 unconditional 侧不是传入空提示词，而是把不使用文本 token 的 image-only 输入送入 unconditional 用模型。
 - 乍看可能会觉得这有什么区别，但可以把它理解成一种更细致处理 positive prompt 的办法。
 
 {% endmediaRow %}
