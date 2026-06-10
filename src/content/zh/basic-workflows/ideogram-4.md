@@ -136,6 +136,8 @@ ComfyUI 内部会处理显存，所以 VRAM 不够也不一定完全不能生成
 
 [](/workflows/basic-workflows/ideogram-4/Ideogram_4.0_text2image.json)
 
+除了提示词以外，它和普通 workflow 相比还有几个稍微特殊的地方，所以这里只看这些部分。
+
 {% mediaRow img="https://gyazo.com/c0d5e9131313e7c3c5255b4f54d55dbb {gyazo=image}", width=33, align="left" %}
 **Load Diffusion Model**
 

@@ -136,6 +136,8 @@ For example, [ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes) include
 
 [](/workflows/basic-workflows/ideogram-4/Ideogram_4.0_text2image.json)
 
+Aside from the prompt, there are a few parts that are slightly different from a normal workflow, so let's look only at those.
+
 {% mediaRow img="https://gyazo.com/c0d5e9131313e7c3c5255b4f54d55dbb {gyazo=image}", width=33, align="left" %}
 **Load Diffusion Model**
 

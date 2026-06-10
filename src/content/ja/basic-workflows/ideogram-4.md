@@ -136,6 +136,8 @@ ComfyUI 上で動かせるレベルのローカルモデルでは性能が足り
 
 [](/workflows/basic-workflows/ideogram-4/Ideogram_4.0_text2image.json)
 
+プロンプト以外にも、一般的な workflow と比べると少し特殊な部分があるので、そちらだけ見ていきましょう。
+
 {% mediaRow img="https://gyazo.com/c0d5e9131313e7c3c5255b4f54d55dbb {gyazo=image}", width=33, align="left" %}
 **Load Diffusion Model**
 
