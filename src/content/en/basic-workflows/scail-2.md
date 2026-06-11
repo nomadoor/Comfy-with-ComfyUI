@@ -68,7 +68,7 @@ Rather than humans building a complicated processing pipeline by hand, it is oft
 
 Move a **reference image** using a motion video.
 
-![](https://gyazo.com/a7c76588147896b9357481a741f1b071){gyazo=image}
+![](https://gyazo.com/3f28188680b010f2bce1a13858ccaf9f){gyazo=image}
 
 [](/workflows/basic-workflows/scail-2/SCAIL-2_Animation.json)
 
@@ -116,7 +116,7 @@ Mask the people in the reference image and motion video with [SAM 3 / 3.1](/en/d
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/2ed39327ee5ef67944b787be81605b08 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="https://gyazo.com/608eb36831300427187be280cf45c420 {gyazo=image}", width=33, align="left" %}
 **Create SCAIL-2 Colored Mask**
 
 The generated masks are colored appropriately.
@@ -145,7 +145,7 @@ SCAIL-2 can also use the Lightx2v LoRA for [fast Wan2.1 generation](/en/basic-wo
 
 Replace the **person in the video** with the **person in the reference image**.
 
-![](https://gyazo.com/0996965c611a4b4ad46f3490b27ad1d6){gyazo=image}
+![](https://gyazo.com/6ade374ea0cbcb2175889cdc0be0bc46){gyazo=image}
 
 [](/workflows/basic-workflows/scail-2/SCAIL-2_Replacement.json)
 
@@ -160,7 +160,7 @@ Replacement uses the video size as the base.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/48e4ebae5076eba223dda97a3853dc67 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="https://gyazo.com/cfdb30273c14347f30aad0d2c9987f8c {gyazo=image}", width=33, align="left" %}
 **Create SCAIL-2 Colored Mask and WanSCAILToVideo**
 
 Set `replacement_mode` to `true`.
@@ -171,7 +171,7 @@ Set `replacement_mode` to `true`.
 
 **Output Example**
 
-![motion video](https://gyazo.com/f14aef04ac197a4b92680e05c4fbd178){gyazo=loop} ![reference image](https://gyazo.com/ce9827f452cdc3cf7d47de8b12996f28){gyazo=image} ![output](https://gyazo.com/65599272e59ffa6edd7571f1b87db822){gyazo=loop}
+![motion video](https://gyazo.com/395fd549274fb126d836ac0a9414d07d){gyazo=loop} ![reference image](https://gyazo.com/ce9827f452cdc3cf7d47de8b12996f28){gyazo=image} ![output](https://gyazo.com/1a7caa57ded15aee5700bed072a4a0a7){gyazo=loop}
 
 ---
 
@@ -181,11 +181,11 @@ SCAIL-2 also supports videos and images with multiple people.
 
 No special operation is required. As before, just input the video and reference image.
 
-![](https://gyazo.com/86b498dff06f09754116fc3cce4d3dbd){gyazo=image}
+![](https://gyazo.com/a04e322f84ca4377479a7760a60436cd){gyazo=image}
 
 [](/workflows/basic-workflows/scail-2/SCAIL-2_Animation_multi-char.json)
 
-{% mediaRow img="https://gyazo.com/28c7b669ac66155518bbce22130e623b {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="https://gyazo.com/86e8ccd07a045bb039e2e69b81b2781b {gyazo=image}", width=33, align="left" %}
 **Create SCAIL-2 Colored Mask**
 
 When there are multiple people, it becomes important to control which person should follow which motion. SCAIL-2 uses colored masks for this.
@@ -200,3 +200,27 @@ When there are multiple people, it becomes important to control which person sho
 **Output Example**
 
 ![reference image](https://gyazo.com/567acaf722ca9e839ec7cb834c1ed344){gyazo=image} ![motion video](https://gyazo.com/53461ca17746349fbd11e69798460ea6){gyazo=loop} ![output](https://gyazo.com/913ff446dd39fa33f56ba9ed07ce6e16){gyazo=loop}
+
+---
+
+## Animation Mode (Over 81 Frames)
+
+SCAIL-2 basically generates up to 81 frames, but with `WAN Context Windows (Manual)`, you can generate longer videos by splitting along the time direction.
+
+![](https://gyazo.com/43b5c2e2684957795ab7d80f8ce9976a){gyazo=image}
+
+[](/workflows/basic-workflows/scail-2/SCAIL-2_Animation_WAN-Context-Windows.json)
+
+{% mediaRow img="https://gyazo.com/55aa8d3ccee17c3a43f87f17895ebfb1 {gyazo=image}", width=33, align="left" %}
+**WAN Context Windows (Manual)**
+
+It is like tiling along the time axis, or context sliding.
+
+- Set `context_length` to 81, and it generates internally in chunks of 81 frames.
+- If you leave it as-is, the seams will be obvious, so set an appropriate number of frames in `context_overlap` as overlap.
+
+{% endmediaRow %}
+
+**Output Example**
+
+![reference image](https://gyazo.com/ce9827f452cdc3cf7d47de8b12996f28){gyazo=image} ![motion video](https://gyazo.com/5491ba090036cbac5d76abd293d842ef){gyazo=loop} ![output](https://gyazo.com/ae5729a3c9c70711f767364534ccedf9){gyazo=loop}
