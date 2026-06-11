@@ -68,7 +68,7 @@ tags: ["human-motion-transfer","video-generation"]
 
 用动作视频来驱动 **参考图像**。
 
-![](https://gyazo.com/a7c76588147896b9357481a741f1b071){gyazo=image}
+![](https://gyazo.com/3f28188680b010f2bce1a13858ccaf9f){gyazo=image}
 
 [](/workflows/basic-workflows/scail-2/SCAIL-2_Animation.json)
 
@@ -116,7 +116,7 @@ tags: ["human-motion-transfer","video-generation"]
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/2ed39327ee5ef67944b787be81605b08 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="https://gyazo.com/608eb36831300427187be280cf45c420 {gyazo=image}", width=33, align="left" %}
 **Create SCAIL-2 Colored Mask**
 
 生成的 mask 会被适当地着色。
@@ -145,7 +145,7 @@ SCAIL-2 也可以使用 [Wan2.1 高速生成](/zh/basic-workflows/wan-2-1/#self-
 
 将 **视频中的人物** 替换为 **参考图像中的人物**。
 
-![](https://gyazo.com/0996965c611a4b4ad46f3490b27ad1d6){gyazo=image}
+![](https://gyazo.com/6ade374ea0cbcb2175889cdc0be0bc46){gyazo=image}
 
 [](/workflows/basic-workflows/scail-2/SCAIL-2_Replacement.json)
 
@@ -160,7 +160,7 @@ Replacement 会以视频尺寸为基准。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/48e4ebae5076eba223dda97a3853dc67 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="https://gyazo.com/cfdb30273c14347f30aad0d2c9987f8c {gyazo=image}", width=33, align="left" %}
 **Create SCAIL-2 Colored Mask 与 WanSCAILToVideo**
 
 将 `replacement_mode` 设为 `true`。
@@ -171,7 +171,7 @@ Replacement 会以视频尺寸为基准。
 
 **输出例**
 
-![动作视频](https://gyazo.com/f14aef04ac197a4b92680e05c4fbd178){gyazo=loop} ![参考图像](https://gyazo.com/ce9827f452cdc3cf7d47de8b12996f28){gyazo=image} ![output](https://gyazo.com/65599272e59ffa6edd7571f1b87db822){gyazo=loop}
+![动作视频](https://gyazo.com/395fd549274fb126d836ac0a9414d07d){gyazo=loop} ![参考图像](https://gyazo.com/ce9827f452cdc3cf7d47de8b12996f28){gyazo=image} ![output](https://gyazo.com/1a7caa57ded15aee5700bed072a4a0a7){gyazo=loop}
 
 ---
 
@@ -181,11 +181,11 @@ SCAIL-2 也支持多人视频和图像。
 
 不需要特别操作。和前面一样，输入视频和参考图像即可。
 
-![](https://gyazo.com/86b498dff06f09754116fc3cce4d3dbd){gyazo=image}
+![](https://gyazo.com/a04e322f84ca4377479a7760a60436cd){gyazo=image}
 
 [](/workflows/basic-workflows/scail-2/SCAIL-2_Animation_multi-char.json)
 
-{% mediaRow img="https://gyazo.com/28c7b669ac66155518bbce22130e623b {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="https://gyazo.com/86e8ccd07a045bb039e2e69b81b2781b {gyazo=image}", width=33, align="left" %}
 **Create SCAIL-2 Colored Mask**
 
 多人时，哪个人物对应哪段动作会变得重要。SCAIL-2 使用彩色 mask 来控制这一点。
@@ -200,3 +200,27 @@ SCAIL-2 也支持多人视频和图像。
 **输出例**
 
 ![参考图像](https://gyazo.com/567acaf722ca9e839ec7cb834c1ed344){gyazo=image} ![动作视频](https://gyazo.com/53461ca17746349fbd11e69798460ea6){gyazo=loop} ![output](https://gyazo.com/913ff446dd39fa33f56ba9ed07ce6e16){gyazo=loop}
+
+---
+
+## Animation 模式（81 帧以上）
+
+SCAIL-2 基本上生成到 81 帧为止，但使用 `WAN Context Windows (Manual)`，就可以沿时间方向分段生成更长的视频。
+
+![](https://gyazo.com/43b5c2e2684957795ab7d80f8ce9976a){gyazo=image}
+
+[](/workflows/basic-workflows/scail-2/SCAIL-2_Animation_WAN-Context-Windows.json)
+
+{% mediaRow img="https://gyazo.com/55aa8d3ccee17c3a43f87f17895ebfb1 {gyazo=image}", width=33, align="left" %}
+**WAN Context Windows (Manual)**
+
+可以理解为时间轴方向的 tiling，或者 context sliding。
+
+- 将 `context_length` 设为 81 时，内部会按 81 帧为一段进行生成。
+- 如果直接这样分段，接缝会很明显，所以用 `context_overlap` 设置适当的重叠帧数。
+
+{% endmediaRow %}
+
+**输出例**
+
+![参考图像](https://gyazo.com/ce9827f452cdc3cf7d47de8b12996f28){gyazo=image} ![动作视频](https://gyazo.com/5491ba090036cbac5d76abd293d842ef){gyazo=loop} ![output](https://gyazo.com/ae5729a3c9c70711f767364534ccedf9){gyazo=loop}
