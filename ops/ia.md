@@ -158,10 +158,10 @@
   * 動画生成・処理 — 親ページあり
     * Wan 2.1（親ページあり）
       * Wan 2.1 VACE
+      * Wan-Animate
+      * SCAIL-2
     * Wan 2.2
     * LTX-Video
-    * Wan-Animate
-    * SCAIL-2
     * LivePortrait
     * HunyuanVideo-Foley
   * LLM / MLLM — 親ページあり
