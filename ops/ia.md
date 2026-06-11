@@ -160,8 +160,8 @@
       * Wan 2.1 VACE
     * Wan 2.2
     * LTX-Video
-    * Wan-Animate（親ページあり）
-      * SCAIL-2
+    * Wan-Animate
+    * SCAIL-2
     * LivePortrait
     * HunyuanVideo-Foley
   * LLM / MLLM — 親ページあり

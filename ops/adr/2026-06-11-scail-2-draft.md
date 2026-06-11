@@ -12,7 +12,7 @@ The owner requested a new Japanese draft article for SCAIL-2 based on:
 - https://scrapbox.io/work4ai/%F0%9F%A6%8ASCAIL-2
 - Official SCAIL-2 project, code, model, and paper material
 
-The owner described SCAIL-2 as a Wan2.1-based human motion transfer model and requested it be placed below Wan-Animate.
+The owner described SCAIL-2 as a Wan2.1-based human motion transfer model and requested it be placed after Wan-Animate.
 
 ## Decision
 
@@ -20,7 +20,9 @@ Add a Japanese draft page at:
 
 - `src/content/ja/basic-workflows/scail-2.md`
 
-Place it under **Basic Workflows > Video Workflows > Wan 2.1 > Wan-Animate > SCAIL-2**.
+Place it under **Basic Workflows > Video Workflows > Wan 2.1 > SCAIL-2**, immediately after Wan-Animate.
+
+SCAIL-2 is adjacent to Wan-Animate, not a child page of Wan-Animate.
 
 The initial draft should stay short and focus on the practical position of SCAIL-2 relative to Wan-Animate: direct driving-video conditioning instead of depending primarily on skeleton or mask intermediates.
 
