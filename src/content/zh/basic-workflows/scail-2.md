@@ -89,7 +89,10 @@ tags: ["human-motion-transfer","video-generation"]
 {% mediaRow img="https://gyazo.com/ce84cc6fe405261d50b5a6a3cfd8bf91 {gyazo=image}", width=33, align="left" %}
 **Prompt**
 
-Prompt 不太适合细致指定人物或动作本身，更适合轻轻补充整体画质和氛围。
+因为只是转移动作，所以不需要很详细的 prompt。
+
+- 但是，如果 prompt 太短，尤其是在 [Replacement 模式](#replacement-模式) 中会更容易失败。
+- 这次的话，可以像 `穿着衬衫的男性一只手扶着腰，另一只手摸着头发` 这样，写到足够说明想生成什么样的视频。
 
 {% endmediaRow %}
 

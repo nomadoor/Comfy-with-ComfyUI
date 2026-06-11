@@ -89,7 +89,10 @@ The reference image and motion video are resized internally, so they do not need
 {% mediaRow img="https://gyazo.com/ce84cc6fe405261d50b5a6a3cfd8bf91 {gyazo=image}", width=33, align="left" %}
 **Prompt**
 
-The prompt is better treated as a light hint for overall quality and atmosphere, rather than a place to specify the person or motion in detail.
+Since this is just motion transfer, you do not need a detailed prompt.
+
+- However, if the prompt is too short, generation can fail more easily, especially in [Replacement Mode](#replacement-mode).
+- For this example, write enough to describe the intended video, such as `a man in a shirt is standing with one hand on his waist and touching his hair`.
 
 {% endmediaRow %}
 
