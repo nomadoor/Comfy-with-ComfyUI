@@ -5,13 +5,18 @@ slug: news
 navId: news
 title: "更新信息"
 created: 2026-02-05
-updated: 2026-06-10
+updated: 2026-06-11
 summary: "本站的更新信息"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/zh/basic-workflows/scail-2/">
+    <span class="news-row__date">2026.6.11</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">追加了 SCAIL-2 的页面</span>
+  </a>
   <a class="news-row" href="/zh/basic-workflows/ideogram-4/">
     <span class="news-row__date">2026.6.10</span>
     <span class="news-row__tag">basic-workflows</span>

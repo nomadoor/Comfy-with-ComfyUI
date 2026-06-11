@@ -326,6 +326,8 @@ sections:
         title: Wan 2.1 VACE
       - id: wan-animate
         title: Wan-Animate
+      - id: scail-2
+        title: SCAIL-2
     - id: wan-2-2
       title: Wan 2.2
     - id: ltx-2

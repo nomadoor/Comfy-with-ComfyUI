@@ -5,7 +5,7 @@ slug: news
 navId: news
 title: "News"
 created: 2026-01-15
-updated: 2026-06-10
+updated: 2026-06-11
 summary: "Site updates"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
@@ -13,6 +13,11 @@ tags:
 ---
 
 <div class="news-list">
+  <a class="news-row" href="/en/basic-workflows/scail-2/">
+    <span class="news-row__date">2026.6.11</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">Added SCAIL-2 page</span>
+  </a>
   <a class="news-row" href="/en/basic-workflows/ideogram-4/">
     <span class="news-row__date">2026.6.10</span>
     <span class="news-row__tag">basic-workflows</span>
