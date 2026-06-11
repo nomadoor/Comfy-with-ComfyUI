@@ -28,6 +28,6 @@ The initial draft should stay short and focus on the practical position of SCAIL
 
 ## Consequences
 
-- The initial page is JA only unless EN/ZH translations are explicitly requested.
+- The implementation includes JA/EN/ZH pages and matching navigation entries because EN/ZH translations were requested during the same PR.
 - No existing slugs are renamed.
 - Workflow JSONs can be added later when a reproducible ComfyUI workflow is available.
