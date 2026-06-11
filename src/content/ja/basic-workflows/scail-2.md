@@ -41,7 +41,7 @@ ViTPose や OpenPose で棒人間を作り、それを条件として人物を�
 - loras
   - [Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors](https://huggingface.co/lightx2v/Wan2.1-I2V-14B-480P-StepDistill-CfgDistill-Lightx2v/blob/main/loras/Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors)
 - text_encoders
-  - [umt5_xxl (fp16 or fp8).safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/tree/main/split_files/text_encoders)
+  - [umt5_xxl_fp8_e4m3fn_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors)
 - vae
   - [wan_2.1_vae.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/vae/wan_2.1_vae.safetensors)
 
@@ -57,7 +57,7 @@ ViTPose や OpenPose で棒人間を作り、それを条件として人物を�
     ├── 📂loras/
     │   └── Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors
     ├── 📂text_encoders/
-    │   └── umt5_xxl (fp16 or fp8).safetensors
+    │   └── umt5_xxl_fp8_e4m3fn_scaled.safetensors
     └── 📂vae/
         └── wan_2.1_vae.safetensors
 ```
@@ -98,7 +98,7 @@ ViTPose や OpenPose で棒人間を作り、それを条件として人物を�
 
 生成サイズとフレーム数は `WanSCAILToVideo` に入力します。
 
-- 推奨解像度は 480p（854×480）〜 720p（1280×720）かつ 32 の倍数
+- 推奨解像度は 480p（864×480）〜 720p 相当（1280×704）かつ 32 の倍数
 - 最大フレーム数は 81
 - 今回は、参照画像をリサイズし、そのサイズを生成解像度として使っています。
 

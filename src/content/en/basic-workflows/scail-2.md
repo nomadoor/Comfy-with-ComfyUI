@@ -41,7 +41,7 @@ Rather than humans building a complicated processing pipeline by hand, it is oft
 - loras
   - [Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors](https://huggingface.co/lightx2v/Wan2.1-I2V-14B-480P-StepDistill-CfgDistill-Lightx2v/blob/main/loras/Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors)
 - text_encoders
-  - [umt5_xxl (fp16 or fp8).safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/tree/main/split_files/text_encoders)
+  - [umt5_xxl_fp8_e4m3fn_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors)
 - vae
   - [wan_2.1_vae.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/vae/wan_2.1_vae.safetensors)
 
@@ -57,7 +57,7 @@ Rather than humans building a complicated processing pipeline by hand, it is oft
     ├── 📂loras/
     │   └── Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors
     ├── 📂text_encoders/
-    │   └── umt5_xxl (fp16 or fp8).safetensors
+    │   └── umt5_xxl_fp8_e4m3fn_scaled.safetensors
     └── 📂vae/
         └── wan_2.1_vae.safetensors
 ```
@@ -98,7 +98,7 @@ The prompt is better treated as a light hint for overall quality and atmosphere,
 
 Set the generation size and frame count in `WanSCAILToVideo`.
 
-- Recommended resolution is 480p (854×480) to 720p (1280×720), and a multiple of 32
+- Recommended resolution is 480p (864×480) to roughly 720p (1280×704), and a multiple of 32
 - Maximum frame count is 81
 - In this workflow, the reference image is resized and that size is used as the generation resolution.
 

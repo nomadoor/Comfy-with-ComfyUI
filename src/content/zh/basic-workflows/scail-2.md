@@ -41,7 +41,7 @@ tags: ["human-motion-transfer","video-generation"]
 - loras
   - [Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors](https://huggingface.co/lightx2v/Wan2.1-I2V-14B-480P-StepDistill-CfgDistill-Lightx2v/blob/main/loras/Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors)
 - text_encoders
-  - [umt5_xxl (fp16 or fp8).safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/tree/main/split_files/text_encoders)
+  - [umt5_xxl_fp8_e4m3fn_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors)
 - vae
   - [wan_2.1_vae.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/vae/wan_2.1_vae.safetensors)
 
@@ -57,7 +57,7 @@ tags: ["human-motion-transfer","video-generation"]
     ├── 📂loras/
     │   └── Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors
     ├── 📂text_encoders/
-    │   └── umt5_xxl (fp16 or fp8).safetensors
+    │   └── umt5_xxl_fp8_e4m3fn_scaled.safetensors
     └── 📂vae/
         └── wan_2.1_vae.safetensors
 ```
@@ -98,7 +98,7 @@ Prompt 不太适合细致指定人物或动作本身，更适合轻轻补充整�
 
 生成尺寸和帧数输入到 `WanSCAILToVideo`。
 
-- 推荐分辨率为 480p（854×480）到 720p（1280×720），并且是 32 的倍数
+- 推荐分辨率为 480p（864×480）到接近 720p（1280×704），并且是 32 的倍数
 - 最大帧数为 81
 - 这个 workflow 会 resize 参考图像，并把那个尺寸作为生成分辨率。
 
