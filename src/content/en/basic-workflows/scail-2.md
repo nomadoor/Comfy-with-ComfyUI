@@ -6,7 +6,7 @@ slug: scail-2
 navId: scail-2
 title: "SCAIL-2"
 created: 2026-06-11
-updated: 2026-06-11
+updated: 2026-06-18
 summary: "Transfer video motion to the person in a reference image with SCAIL-2"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -200,6 +200,39 @@ When there are multiple people, it becomes important to control which person sho
 **Output Example**
 
 ![reference image](https://gyazo.com/567acaf722ca9e839ec7cb834c1ed344){gyazo=image} ![motion video](https://gyazo.com/53461ca17746349fbd11e69798460ea6){gyazo=loop} ![output](https://gyazo.com/913ff446dd39fa33f56ba9ed07ce6e16){gyazo=loop}
+
+---
+
+## Animation Mode (Multiple References)
+
+You can also provide several reference images at once, such as another angle of the same person or a separate background image.
+
+![](https://gyazo.com/a135dfdaef80d8d16acd904f3d26a12a){gyazo=image}
+
+[](/workflows/basic-workflows/scail-2/SCAIL-2_Animation_multi-ref.json)
+
+The basic flow is the same as the normal Animation mode. The difference is that the reference images are passed in as a batch instead of a single image.
+
+{% mediaRow img="https://gyazo.com/23f0af93cd4027f7a8366c16b62181e0 {gyazo=image}", width=33, align="left" %}
+**Batch input**
+
+Input the images you want to reference into `Batch Images`.
+
+- Once the images are batched, they are all cropped to the same size as the first image.
+  - Images after the first one usually do not need to be resized, but anything outside that size will not be reflected.
+  - In this workflow, the later images are padded to match the first image size.
+- The **last** input image is reflected most strongly.
+  - It seems better to place the person you want to move after the background.
+
+{% endmediaRow %}
+
+Multiple reference images can be used, but this does not automatically adjust the background to the person's size or rewrite the whole image into a natural composition.
+
+Honestly, in many cases it is better to first create a single polished reference image with image editing.
+
+**Output Example**
+
+![reference image 1](https://gyazo.com/d2935f1c3b0ff3016616c54d88d6be56){gyazo=image} ![reference image 2](https://gyazo.com/7819645aea776b0aa5e24e8d9f642487){gyazo=image} ![reference image 3](https://gyazo.com/4617d933cec4a3431d36af11c65180e3){gyazo=image} ![motion video](https://gyazo.com/5491ba090036cbac5d76abd293d842ef){gyazo=loop} ![output](https://gyazo.com/50154740248550b3ffa1dfee024da941){gyazo=loop}
 
 ---
 

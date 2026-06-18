@@ -6,7 +6,7 @@ slug: scail-2
 navId: scail-2
 title: "SCAIL-2"
 created: 2026-06-11
-updated: 2026-06-11
+updated: 2026-06-18
 summary: "SCAIL-2で参照画像の人物に動画の動きを転送する"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -200,6 +200,39 @@ SCAIL-2 は複数人の動画・画像にも対応しています。
 **出力例**
 
 ![参照画像](https://gyazo.com/567acaf722ca9e839ec7cb834c1ed344){gyazo=image} ![モーション用動画](https://gyazo.com/53461ca17746349fbd11e69798460ea6){gyazo=loop} ![output](https://gyazo.com/913ff446dd39fa33f56ba9ed07ce6e16){gyazo=loop}
+
+---
+
+## Animation モード (マルチ参照)
+
+参照人物の別角度の画像や、背景用の画像をまとめて参照させることもできます。
+
+![](https://gyazo.com/a135dfdaef80d8d16acd904f3d26a12a){gyazo=image}
+
+[](/workflows/basic-workflows/scail-2/SCAIL-2_Animation_multi-ref.json)
+
+基本的な流れは通常の Animation モードと同じです。違いは、参照画像を 1 枚ではなくバッチとして入力する点です。
+
+{% mediaRow img="https://gyazo.com/23f0af93cd4027f7a8366c16b62181e0 {gyazo=image}", width=33, align="left" %}
+**バッチ入力**
+
+参照させたい画像を `Batch Images` に入力します。
+
+- バッチにした時点で、すべて 1 枚目と同じサイズにクロップされます。
+  - 2 枚目以降は基本的にリサイズしなくても構いませんが、はみ出した部分は反映されません。
+  - この workflow では、1 枚目と同じサイズになるように padding しています。
+- **一番最後** に入力した画像が最も強く反映されます。
+  - 背景よりも、動かしたい人物を後ろに入れるほうがよさそうです。
+
+{% endmediaRow %}
+
+複数の参照画像は使えますが、人物のサイズに合わせて背景を調整したり、全体を自然にリライトしたりするわけではありません。
+
+正直なところ、この機能を使うより、画像編集で先に参照画像を 1 枚作り込んだほうがよいでしょう。
+
+**出力例**
+
+![参照画像1](https://gyazo.com/d2935f1c3b0ff3016616c54d88d6be56){gyazo=image} ![参照画像2](https://gyazo.com/7819645aea776b0aa5e24e8d9f642487){gyazo=image} ![参照画像3](https://gyazo.com/4617d933cec4a3431d36af11c65180e3){gyazo=image} ![モーション用動画](https://gyazo.com/5491ba090036cbac5d76abd293d842ef){gyazo=loop} ![output](https://gyazo.com/50154740248550b3ffa1dfee024da941){gyazo=loop}
 
 ---
 
