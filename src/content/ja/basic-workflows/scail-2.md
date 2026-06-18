@@ -175,6 +175,8 @@ Replacement は動画のサイズが基準になります。
 
 ---
 
+> ここから先は Animation モードを使っていますが、どれも Replacement モードでも使えます。
+
 ## Animation モード (複数人)
 
 SCAIL-2 は複数人の動画・画像にも対応しています。
@@ -228,11 +230,11 @@ SCAIL-2 は複数人の動画・画像にも対応しています。
 
 複数の参照画像は使えますが、人物のサイズに合わせて背景を調整したり、全体を自然にリライトしたりするわけではありません。
 
-正直なところ、この機能を使うより、画像編集で先に参照画像を 1 枚作り込んだほうがよいでしょう。
+別角度からの人物を補うには向いていますが、背景を合成したいなら、この機能を使うより、画像編集で 1 枚作り込んだほうがよいでしょう。
 
 **出力例**
 
-![参照画像1](https://gyazo.com/d2935f1c3b0ff3016616c54d88d6be56){gyazo=image} ![参照画像2](https://gyazo.com/7819645aea776b0aa5e24e8d9f642487){gyazo=image} ![参照画像3](https://gyazo.com/4617d933cec4a3431d36af11c65180e3){gyazo=image} ![モーション用動画](https://gyazo.com/5491ba090036cbac5d76abd293d842ef){gyazo=loop} ![output](https://gyazo.com/50154740248550b3ffa1dfee024da941){gyazo=loop}
+![参照画像1](https://gyazo.com/d2935f1c3b0ff3016616c54d88d6be56){gyazo=image} ![参照画像2](https://gyazo.com/7819645aea776b0aa5e24e8d9f642487){gyazo=image} ![参照画像3](https://gyazo.com/4617d933cec4a3431d36af11c65180e3){gyazo=image} ![モーション用動画](https://gyazo.com/f14aef04ac197a4b92680e05c4fbd178){gyazo=loop} ![output](https://gyazo.com/50154740248550b3ffa1dfee024da941){gyazo=loop}
 
 ---
 
