@@ -39,6 +39,7 @@
 
 ## 7. Delivery Ritual
 - 1 PR = 1 intent (e.g., “app shell” or “search”), with mock-compliance screenshots attached.
+- PR titles describe the change itself. Do not prefix titles with agent labels such as `[codex]` or `[claude]`.
 - Document breaking questions as issues linked from `/ops`; never patch around ambiguity.
 - Keep change logs in the PR description; this file should summarize enduring rules, not per-PR notes.
 
