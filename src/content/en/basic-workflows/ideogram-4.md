@@ -6,7 +6,7 @@ slug: ideogram-4
 navId: ideogram-4
 title: "Ideogram 4.0"
 created: 2026-06-10
-updated: 2026-06-10
+updated: 2026-06-18
 summary: "Image generation with Ideogram 4.0"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -148,6 +148,34 @@ Ideogram 4.0 loads two diffusion models for its slightly unusual CFG.
 - It is easy to wonder what the difference is, but you can think of it as a trick for handling the positive prompt more delicately.
 
 {% endmediaRow %}
+
+---
+
+## Ideogram 4 TurboTime LoRA
+
+This is a LoRA published by Ostris for generating in 2 to 8 steps.
+
+### Model Download
+
+- loras
+  - [ideogram_4_turbotime_v1.safetensors](https://huggingface.co/ostris/ideogram_4_turbotime_lora/blob/main/ideogram_4_turbotime_v1.safetensors) (847 MB)
+
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂loras/
+        └── ideogram_4_turbotime_v1.safetensors
+```
+
+### text2image (8 step)
+
+![](https://gyazo.com/1bd65d1d1c703d8890df1f68cc424e35){gyazo=image}
+
+[](/workflows/basic-workflows/ideogram-4/Ideogram_4.0_text2image_turbotime.json)
+
+- It generates with CFG 1.0, so the unconditional model is no longer needed.
+- It is described as a 2 to 8 step LoRA, but very low step counts clearly start to break the image.
+- For now, using it at 8 steps is a good choice.
 
 {% mediaRow img="https://gyazo.com/26ef78ed5bf868ab5ca9a62b643640ff {gyazo=image}", width=33, align="left" %}
 **CFG**

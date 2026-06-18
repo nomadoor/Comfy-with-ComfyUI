@@ -6,7 +6,7 @@ slug: ideogram-4
 navId: ideogram-4
 title: "Ideogram 4.0"
 created: 2026-06-10
-updated: 2026-06-10
+updated: 2026-06-18
 summary: "Ideogram 4.0での画像生成"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -161,3 +161,30 @@ Ideogram 4.0 では、少し特殊な CFG のために diffusion model を 2 つ
 - この workflow では、全体の 70% 以降は cfg が 3 になります。
 
 {% endmediaRow %}
+
+---
+
+## Ideogram 4 TurboTime LoRA
+
+Ostris さんが公開している、2〜8 step で生成できる LoRA です。
+
+### モデルのダウンロード
+
+- loras
+  - [ideogram_4_turbotime_v1.safetensors](https://huggingface.co/ostris/ideogram_4_turbotime_lora/blob/main/ideogram_4_turbotime_v1.safetensors) (847 MB)
+
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂loras/
+        └── ideogram_4_turbotime_v1.safetensors
+```
+
+### text2image (8 step)
+
+![](https://gyazo.com/1bd65d1d1c703d8890df1f68cc424e35){gyazo=image}
+
+[](/workflows/basic-workflows/ideogram-4/Ideogram_4.0_text2image_turbotime.json)
+
+- CFG 1.0 で生成するため、unconditional model は不要になります。
+- 2〜8 step 用とされていますが、step 数が少なすぎると明確に崩れ始めるので、現状は 8 step で使うのがいいでしょう。
