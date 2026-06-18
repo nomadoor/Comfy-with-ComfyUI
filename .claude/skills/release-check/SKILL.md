@@ -25,3 +25,4 @@ git diff --check
 - In this environment, Playwright may need approval because Eleventy dev server binds `0.0.0.0`.
 - Report checks that were not run and why.
 - Do not push or open/update PRs unless the owner explicitly says to do so.
+- PR titles should describe the change, without agent labels such as `[codex]` or `[claude]`.
