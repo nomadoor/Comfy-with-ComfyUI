@@ -6,7 +6,7 @@ slug: scail-2
 navId: scail-2
 title: "SCAIL-2"
 created: 2026-06-11
-updated: 2026-06-11
+updated: 2026-06-18
 summary: "使用 SCAIL-2 将视频动作转移到参考图像中的人物"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -33,17 +33,17 @@ tags: ["human-motion-transfer","video-generation"]
 ## 模型下载
 
 - checkpoints
-  - [sam3.1_multiplex_fp16.safetensors](https://huggingface.co/Comfy-Org/sam3.1/blob/main/checkpoints/sam3.1_multiplex_fp16.safetensors)
+  - [sam3.1_multiplex_fp16.safetensors](https://huggingface.co/Comfy-Org/sam3.1/blob/main/checkpoints/sam3.1_multiplex_fp16.safetensors) (1.75 GB)
 - clip_vision
-  - [clip_vision_h.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/clip_vision/clip_vision_h.safetensors)
+  - [clip_vision_h.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/clip_vision/clip_vision_h.safetensors) (1.26 GB)
 - diffusion_models
-  - [wan2.1_14B_SCAIL_2_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/SCAIL-2/blob/main/diffusion_models/wan2.1_14B_SCAIL_2_fp8_scaled.safetensors)
+  - [wan2.1_14B_SCAIL_2_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/SCAIL-2/blob/main/diffusion_models/wan2.1_14B_SCAIL_2_fp8_scaled.safetensors) (17.7 GB)
 - loras
-  - [Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors](https://huggingface.co/lightx2v/Wan2.1-I2V-14B-480P-StepDistill-CfgDistill-Lightx2v/blob/main/loras/Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors)
+  - [Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors](https://huggingface.co/lightx2v/Wan2.1-I2V-14B-480P-StepDistill-CfgDistill-Lightx2v/blob/main/loras/Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors) (739 MB)
 - text_encoders
-  - [umt5_xxl_fp8_e4m3fn_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors)
+  - [umt5_xxl_fp8_e4m3fn_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors) (6.74 GB)
 - vae
-  - [wan_2.1_vae.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/vae/wan_2.1_vae.safetensors)
+  - [wan_2.1_vae.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/vae/wan_2.1_vae.safetensors) (254 MB)
 
 ```text
 📂ComfyUI/
@@ -200,6 +200,39 @@ SCAIL-2 也支持多人视频和图像。
 **输出例**
 
 ![参考图像](https://gyazo.com/567acaf722ca9e839ec7cb834c1ed344){gyazo=image} ![动作视频](https://gyazo.com/53461ca17746349fbd11e69798460ea6){gyazo=loop} ![output](https://gyazo.com/913ff446dd39fa33f56ba9ed07ce6e16){gyazo=loop}
+
+---
+
+## Animation 模式（多参考图像）
+
+也可以一次参考多张图像，例如参考人物的其他角度图，或单独准备的背景图。
+
+![](https://gyazo.com/a135dfdaef80d8d16acd904f3d26a12a){gyazo=image}
+
+[](/workflows/basic-workflows/scail-2/SCAIL-2_Animation_multi-ref.json)
+
+基本流程和普通的 Animation 模式相同。区别在于，这里不是输入 1 张参考图像，而是以 batch 的形式输入多张参考图像。
+
+{% mediaRow img="https://gyazo.com/23f0af93cd4027f7a8366c16b62181e0 {gyazo=image}", width=33, align="left" %}
+**Batch 输入**
+
+将想要参考的图像输入到 `Batch Images`。
+
+- 形成 batch 后，所有图像都会被裁剪成和第 1 张相同的尺寸。
+  - 第 2 张之后通常不需要重新 resize，但超出这个尺寸的部分不会被反映出来。
+  - 在这个 workflow 中，会用 padding 让后面的图像匹配第 1 张的尺寸。
+- **最后** 输入的图像会被反映得最强。
+  - 比起背景，最好把想要动起来的人物放在更后面。
+
+{% endmediaRow %}
+
+虽然可以使用多张参考图像，但它并不会根据人物大小自动调整背景，也不会把整体自然地重新改写成一张图。
+
+老实说，很多情况下不如先用图像编辑做出 1 张完整的参考图像。
+
+**输出例**
+
+![参考图像 1](https://gyazo.com/d2935f1c3b0ff3016616c54d88d6be56){gyazo=image} ![参考图像 2](https://gyazo.com/7819645aea776b0aa5e24e8d9f642487){gyazo=image} ![参考图像 3](https://gyazo.com/4617d933cec4a3431d36af11c65180e3){gyazo=image} ![动作视频](https://gyazo.com/5491ba090036cbac5d76abd293d842ef){gyazo=loop} ![output](https://gyazo.com/50154740248550b3ffa1dfee024da941){gyazo=loop}
 
 ---
 

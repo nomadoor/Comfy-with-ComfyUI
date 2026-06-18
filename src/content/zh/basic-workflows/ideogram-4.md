@@ -6,7 +6,7 @@ slug: ideogram-4
 navId: ideogram-4
 title: "Ideogram 4.0"
 created: 2026-06-10
-updated: 2026-06-10
+updated: 2026-06-18
 summary: "使用 Ideogram 4.0 进行图像生成"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -148,6 +148,34 @@ Ideogram 4.0 为了稍微特殊的 CFG，会读取两个 diffusion model。
 - 乍看可能会觉得这有什么区别，但可以把它理解成一种更细致处理 positive prompt 的办法。
 
 {% endmediaRow %}
+
+---
+
+## Ideogram 4 TurboTime LoRA
+
+这是 Ostris 发布的 LoRA，可以用于 2〜8 step 生成。
+
+### 模型下载
+
+- loras
+  - [ideogram_4_turbotime_v1.safetensors](https://huggingface.co/ostris/ideogram_4_turbotime_lora/blob/main/ideogram_4_turbotime_v1.safetensors) (847 MB)
+
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂loras/
+        └── ideogram_4_turbotime_v1.safetensors
+```
+
+### text2image (8 step)
+
+![](https://gyazo.com/f75015885dc02060128725d779ce7d49){gyazo=image}
+
+[](/workflows/basic-workflows/ideogram-4/Ideogram_4.0_text2image_turbotime.json)
+
+- 由于使用 CFG 1.0 生成，因此不需要 unconditional model。
+- 虽然它标注为 2〜8 step 用 LoRA，但 step 数太少时，图像会明显开始崩。
+- 目前建议以 8 step 使用。
 
 {% mediaRow img="https://gyazo.com/26ef78ed5bf868ab5ca9a62b643640ff {gyazo=image}", width=33, align="left" %}
 **CFG**
