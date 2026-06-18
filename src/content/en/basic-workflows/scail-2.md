@@ -175,6 +175,8 @@ Set `replacement_mode` to `true`.
 
 ---
 
+> From here on, the examples use Animation mode, but all of them can also be used in Replacement mode.
+
 ## Animation Mode (Multiple People)
 
 SCAIL-2 also supports videos and images with multiple people.
@@ -228,11 +230,11 @@ Input the images you want to reference into `Batch Images`.
 
 Multiple reference images can be used, but this does not automatically adjust the background to the person's size or rewrite the whole image into a natural composition.
 
-Honestly, in many cases it is better to first create a single polished reference image with image editing.
+It is useful for supplementing a person from another angle, but if you want to composite the background, it is better to first create a single polished reference image with image editing.
 
 **Output Example**
 
-![reference image 1](https://gyazo.com/d2935f1c3b0ff3016616c54d88d6be56){gyazo=image} ![reference image 2](https://gyazo.com/7819645aea776b0aa5e24e8d9f642487){gyazo=image} ![reference image 3](https://gyazo.com/4617d933cec4a3431d36af11c65180e3){gyazo=image} ![motion video](https://gyazo.com/5491ba090036cbac5d76abd293d842ef){gyazo=loop} ![output](https://gyazo.com/50154740248550b3ffa1dfee024da941){gyazo=loop}
+![reference image 1](https://gyazo.com/d2935f1c3b0ff3016616c54d88d6be56){gyazo=image} ![reference image 2](https://gyazo.com/7819645aea776b0aa5e24e8d9f642487){gyazo=image} ![reference image 3](https://gyazo.com/4617d933cec4a3431d36af11c65180e3){gyazo=image} ![motion video](https://gyazo.com/f14aef04ac197a4b92680e05c4fbd178){gyazo=loop} ![output](https://gyazo.com/50154740248550b3ffa1dfee024da941){gyazo=loop}
 
 ---
 

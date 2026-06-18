@@ -175,6 +175,8 @@ Replacement 会以视频尺寸为基准。
 
 ---
 
+> 从这里开始的示例使用 Animation 模式，但这些内容也都可以用于 Replacement 模式。
+
 ## Animation 模式（多人）
 
 SCAIL-2 也支持多人视频和图像。
@@ -228,11 +230,11 @@ SCAIL-2 也支持多人视频和图像。
 
 虽然可以使用多张参考图像，但它并不会根据人物大小自动调整背景，也不会把整体自然地重新改写成一张图。
 
-老实说，很多情况下不如先用图像编辑做出 1 张完整的参考图像。
+它适合用来补充人物的其他角度信息，但如果想合成背景，还是先用图像编辑做出 1 张完整的参考图像会更好。
 
 **输出例**
 
-![参考图像 1](https://gyazo.com/d2935f1c3b0ff3016616c54d88d6be56){gyazo=image} ![参考图像 2](https://gyazo.com/7819645aea776b0aa5e24e8d9f642487){gyazo=image} ![参考图像 3](https://gyazo.com/4617d933cec4a3431d36af11c65180e3){gyazo=image} ![动作视频](https://gyazo.com/5491ba090036cbac5d76abd293d842ef){gyazo=loop} ![output](https://gyazo.com/50154740248550b3ffa1dfee024da941){gyazo=loop}
+![参考图像 1](https://gyazo.com/d2935f1c3b0ff3016616c54d88d6be56){gyazo=image} ![参考图像 2](https://gyazo.com/7819645aea776b0aa5e24e8d9f642487){gyazo=image} ![参考图像 3](https://gyazo.com/4617d933cec4a3431d36af11c65180e3){gyazo=image} ![动作视频](https://gyazo.com/f14aef04ac197a4b92680e05c4fbd178){gyazo=loop} ![output](https://gyazo.com/50154740248550b3ffa1dfee024da941){gyazo=loop}
 
 ---
 
