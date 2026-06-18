@@ -169,7 +169,7 @@ Ideogram 4.0 为了稍微特殊的 CFG，会读取两个 diffusion model。
 
 ### text2image (8 step)
 
-![](https://gyazo.com/1bd65d1d1c703d8890df1f68cc424e35){gyazo=image}
+![](https://gyazo.com/f75015885dc02060128725d779ce7d49){gyazo=image}
 
 [](/workflows/basic-workflows/ideogram-4/Ideogram_4.0_text2image_turbotime.json)
 

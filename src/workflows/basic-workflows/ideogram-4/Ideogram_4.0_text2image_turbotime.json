@@ -557,44 +557,6 @@
       ]
     },
     {
-      "id": 111,
-      "type": "LoraLoaderModelOnly",
-      "pos": [
-        249.4552739659035,
-        -49.16835585157703
-      ],
-      "size": [
-        270,
-        82
-      ],
-      "flags": {},
-      "order": 10,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 177
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            178
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LoraLoaderModelOnly"
-      },
-      "widgets_values": [
-        "ideogram_4_turbotime_v1.safetensors",
-        0.6
-      ]
-    },
-    {
       "id": 95,
       "type": "Ideogram4Scheduler",
       "pos": [
@@ -665,6 +627,46 @@
       "properties": {},
       "widgets_values": [
         "## models\n\n- diffusion_models\n  - [ideogram4_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Ideogram-4/blob/main/diffusion_models/ideogram4_fp8_scaled.safetensors) (9.28 GB)\n  - [ideogram4_nvfp4_mixed.safetensors](https://huggingface.co/Comfy-Org/Ideogram-4/blob/main/diffusion_models/ideogram4_nvfp4_mixed.safetensors) (5.49 GB)\n- loras\n  - [ideogram_4_turbotime_v1.safetensors](https://huggingface.co/ostris/ideogram_4_turbotime_lora/blob/main/ideogram_4_turbotime_v1.safetensors) (847 MB)\n- text_encoders\n  - [qwen3vl_8b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Ideogram-4/blob/main/text_encoders/qwen3vl_8b_fp8_scaled.safetensors) (10.6 GB)\n- vae\n  - [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/Ideogram-4/blob/main/vae/flux2-vae.safetensors) (336 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   ├── ideogram4_fp8_scaled.safetensors\n    │   └── ideogram4_nvfp4_mixed.safetensors\n    ├── 📂loras/\n    │   └── ideogram_4_turbotime_v1.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_8b_fp8_scaled.safetensors\n    └── 📂vae/\n         └── flux2-vae.safetensors\n```"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 111,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        247.84471481703875,
+        -50.778860936690556
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 177
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            178
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly"
+      },
+      "widgets_values": [
+        "ideogram_4_turbotime_v1.safetensors",
+        0.6
       ],
       "color": "#323",
       "bgcolor": "#535"
