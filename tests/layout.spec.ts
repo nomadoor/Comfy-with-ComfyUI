@@ -169,6 +169,48 @@ test.describe("Layout rails", () => {
     await expect(rail).toHaveAttribute("data-view", "panel");
   });
 
+  test("assistant rail choices do not scroll the article", async ({ page }) => {
+    await page.setViewportSize({ width: 1920, height: 1080 });
+    await page.goto(SAMPLE_PAGE);
+    await page.evaluate(() => {
+      const btn = document.querySelector<HTMLButtonElement>(".assistant-rail__avatar");
+      if (btn) {
+        btn.style.opacity = "1";
+        btn.style.visibility = "visible";
+        btn.style.display = "inline-flex";
+        btn.style.pointerEvents = "auto";
+      }
+    });
+
+    const rail = page.locator(".assistant-rail");
+    const openChoiceWithoutScroll = async (viewId: string) => {
+      await page.evaluate(() => window.scrollTo(0, 260));
+      await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(260);
+
+      await page.evaluate((targetViewId) => {
+        const avatar = document.querySelector<HTMLElement>(".assistant-rail__avatar");
+        avatar?.dispatchEvent(new MouseEvent("mouseenter", { bubbles: true }));
+        document.querySelector<HTMLElement>(`[data-assistant-target="${targetViewId}"]`)?.click();
+      }, viewId);
+      await expect(rail).toHaveAttribute("data-view", viewId);
+
+      await expect
+        .poll(() => page.evaluate(() => window.scrollY))
+        .toBe(260);
+
+      await page.evaluate((targetViewId) => {
+        document
+          .querySelector<HTMLElement>(`.assistant-rail__view[data-assistant-view="${targetViewId}"] [data-assistant-close]`)
+          ?.click();
+      }, viewId);
+      await expect(rail).toHaveAttribute("data-view", "panel");
+    };
+
+    await openChoiceWithoutScroll("json-help");
+    await openChoiceWithoutScroll("form-correction");
+    await openChoiceWithoutScroll("form-request");
+  });
+
   test("assistant rail form flows through confirm and send", async ({ page }) => {
     const csrfValue = "test-csrf";
     await page.addInitScript(() => {
