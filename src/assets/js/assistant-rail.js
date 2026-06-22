@@ -179,7 +179,6 @@ class AssistantRail {
     this.update();
     window.requestAnimationFrame(() => {
       this.adjustWindowPlacement(target);
-      this.scrollIntoViewIfNeeded();
     });
   }
 
@@ -255,14 +254,6 @@ class AssistantRail {
     if (this.window) {
       this.window.setAttribute("aria-hidden", this.currentView === "panel" ? "true" : "false");
     }
-  }
-
-  scrollIntoViewIfNeeded() {
-    if (!this.root || typeof this.root.scrollIntoView !== "function") return;
-    const behavior = this.prefersReducedMotion ? "auto" : "smooth";
-    window.requestAnimationFrame(() => {
-      this.root.scrollIntoView({ block: "center", behavior });
-    });
   }
 
   adjustWindowPlacement(activeView) {
@@ -565,4 +556,3 @@ function ensureTurnstile() {
   });
   return turnstileReadyPromise;
 }
-
