@@ -5,7 +5,7 @@ slug: news
 navId: news
 title: "News"
 created: 2026-01-15
-updated: 2026-06-11
+updated: 2026-06-24
 summary: "Site updates"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
@@ -13,6 +13,11 @@ tags:
 ---
 
 <div class="news-list">
+  <a class="news-row" href="/en/basic-workflows/krea-2/">
+    <span class="news-row__date">2026.6.24</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">Added Krea 2 page</span>
+  </a>
   <a class="news-row" href="/en/basic-workflows/scail-2/">
     <span class="news-row__date">2026.6.11</span>
     <span class="news-row__tag">basic-workflows</span>

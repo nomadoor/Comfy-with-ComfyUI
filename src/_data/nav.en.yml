@@ -305,6 +305,8 @@ sections:
             title: PixelDiT / PiD
           - id: ideogram-4
             title: Ideogram 4.0
+          - id: krea-2
+            title: Krea 2
       - id: upscale-fix
         title: Upscale & Fix
         noLink: true
