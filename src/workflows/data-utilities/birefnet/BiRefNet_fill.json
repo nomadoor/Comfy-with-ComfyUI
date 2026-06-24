@@ -1,18 +1,18 @@
 {
   "id": "32d5b916-1532-435e-8274-bab16b8cce42",
   "revision": 0,
-  "last_node_id": 15,
-  "last_link_id": 18,
+  "last_node_id": 13,
+  "last_link_id": 20,
   "nodes": [
     {
       "id": 3,
       "type": "LoadBackgroundRemovalModel",
       "pos": [
-        769.3428839311762,
-        373.2630368921259
+        776.2984792746487,
+        215.5777412691436
       ],
       "size": [
-        328.627516211709,
+        325.9727446183857,
         58
       ],
       "flags": {},
@@ -43,15 +43,15 @@
       "id": 1,
       "type": "RemoveBackground",
       "pos": [
-        1140.4167084744367,
-        373.2630368921259
+        1145.3690790242017,
+        215.5777412691436
       ],
       "size": [
         204.705078125,
         46
       ],
       "flags": {},
-      "order": 2,
+      "order": 4,
       "mode": 0,
       "inputs": [
         {
@@ -70,8 +70,7 @@
           "name": "mask",
           "type": "MASK",
           "links": [
-            3,
-            13
+            15
           ]
         }
       ],
@@ -85,24 +84,24 @@
       "bgcolor": "#353"
     },
     {
-      "id": 10,
+      "id": 11,
       "type": "InvertMask",
       "pos": [
-        1387.568094930988,
-        373.2630368921259
+        1393.172012280369,
+        215.5777412691436
       ],
       "size": [
         140,
         26
       ],
       "flags": {},
-      "order": 4,
+      "order": 5,
       "mode": 0,
       "inputs": [
         {
           "name": "mask",
           "type": "MASK",
-          "link": 13
+          "link": 15
         }
       ],
       "outputs": [
@@ -110,7 +109,7 @@
           "name": "MASK",
           "type": "MASK",
           "links": [
-            15
+            16
           ]
         }
       ],
@@ -124,44 +123,15 @@
       "bgcolor": "#653"
     },
     {
-      "id": 4,
-      "type": "MaskPreview",
+      "id": 12,
+      "type": "ColorToRGBInt",
       "pos": [
-        1387.568094930988,
-        617.9104524429572
+        1262.8057138281881,
+        426.71661130361684
       ],
       "size": [
-        261.7862348244132,
-        283.74516954429964
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "mask",
-          "type": "MASK",
-          "link": 3
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.26.0",
-        "Node name for S&R": "MaskPreview"
-      },
-      "widgets_values": []
-    },
-    {
-      "id": 2,
-      "type": "LoadImage",
-      "pos": [
-        769.3428839311762,
-        494.9638574769056
-      ],
-      "size": [
-        328.627516211709,
-        406.6917645103512
+        270,
+        78
       ],
       "flags": {},
       "order": 1,
@@ -169,53 +139,51 @@
       "inputs": [],
       "outputs": [
         {
-          "name": "IMAGE",
-          "type": "IMAGE",
+          "name": "rgb_int",
+          "type": "INT",
           "links": [
-            8,
-            16
+            19
           ]
         },
         {
-          "name": "MASK",
-          "type": "MASK",
-          "links": []
+          "name": "hex",
+          "type": "COLOR",
+          "links": null
         }
       ],
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.26.0",
-        "Node name for S&R": "LoadImage"
+        "Node name for S&R": "ColorToRGBInt"
       },
       "widgets_values": [
-        "normal02_input.jpg",
-        "image"
-      ]
+        "#ffffff"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
     },
     {
-      "id": 11,
-      "type": "JoinImageWithAlpha",
+      "id": 10,
+      "type": "EmptyImage",
       "pos": [
-        1587.4157037841544,
-        494.9638574769056
+        1262.8055334741948,
+        555.658608688232
       ],
       "size": [
-        216.6609912109374,
-        46
+        270,
+        130
       ],
       "flags": {},
-      "order": 5,
+      "order": 3,
       "mode": 0,
       "inputs": [
         {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 16
-        },
-        {
-          "name": "alpha",
-          "type": "MASK",
-          "link": 15
+          "name": "color",
+          "type": "INT",
+          "widget": {
+            "name": "color"
+          },
+          "link": 19
         }
       ],
       "outputs": [
@@ -230,31 +198,130 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.26.0",
-        "Node name for S&R": "JoinImageWithAlpha"
+        "Node name for S&R": "EmptyImage"
       },
-      "widgets_values": [],
+      "widgets_values": [
+        1024,
+        1024,
+        1,
+        0
+      ],
       "color": "#432",
       "bgcolor": "#653"
     },
     {
-      "id": 15,
-      "type": "SaveImage",
+      "id": 2,
+      "type": "LoadImage",
       "pos": [
-        1841.5916728163381,
-        494.9638574769056
+        775.1632258740977,
+        335.574967141765
       ],
       "size": [
-        303.0471535866202,
-        354.2881776680789
+        325.5056205715746,
+        459.13681582045564
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            8,
+            17
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.26.0",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "depth03_input.jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "ImageCompositeMasked",
+      "pos": [
+        1597.768975382267,
+        332.6964371281348
+      ],
+      "size": [
+        271.64609375,
+        146
       ],
       "flags": {},
       "order": 6,
       "mode": 0,
       "inputs": [
         {
-          "name": "images",
+          "name": "destination",
+          "type": "IMAGE",
+          "link": 17
+        },
+        {
+          "name": "source",
           "type": "IMAGE",
           "link": 18
+        },
+        {
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": 16
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            20
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.26.0",
+        "Node name for S&R": "ImageCompositeMasked"
+      },
+      "widgets_values": [
+        0,
+        0,
+        true
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 13,
+      "type": "SaveImage",
+      "pos": [
+        1904.5789033233184,
+        332.6964371281348
+      ],
+      "size": [
+        360.75008862304685,
+        495.060003692627
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 20
         }
       ],
       "outputs": [
@@ -283,14 +350,6 @@
       "BACKGROUND_REMOVAL"
     ],
     [
-      3,
-      1,
-      0,
-      4,
-      0,
-      "MASK"
-    ],
-    [
       8,
       2,
       0,
@@ -299,34 +358,50 @@
       "IMAGE"
     ],
     [
-      13,
-      1,
-      0,
-      10,
-      0,
-      "MASK"
-    ],
-    [
       15,
-      10,
+      1,
       0,
       11,
-      1,
+      0,
       "MASK"
     ],
     [
       16,
+      11,
+      0,
+      8,
+      2,
+      "MASK"
+    ],
+    [
+      17,
       2,
       0,
-      11,
+      8,
       0,
       "IMAGE"
     ],
     [
       18,
-      11,
+      10,
       0,
-      15,
+      8,
+      1,
+      "IMAGE"
+    ],
+    [
+      19,
+      12,
+      0,
+      10,
+      0,
+      "INT"
+    ],
+    [
+      20,
+      8,
+      0,
+      13,
       0,
       "IMAGE"
     ]
@@ -335,13 +410,17 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1,
+      "scale": 0.7513148009015778,
       "offset": [
-        -585.8257424834793,
-        -221.4257217325228
+        -431.4889771758615,
+        -4.5243700184477955
       ]
     },
-    "frontendVersion": "1.45.19"
+    "frontendVersion": "1.45.19",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
   },
   "version": 0.4
 }
