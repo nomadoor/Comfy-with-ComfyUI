@@ -375,6 +375,8 @@ sections:
         title: RunPod で AI Toolkit を動かす
       - id: panorama-stickers
         title: ComfyUI Panorama Stickers
+      - id: comfyui-video-stabilizer
+        title: ComfyUI Video Stabilizer
       - id: insightface-install
         title: InsightFaceのインストール方法
       - id: error-handling

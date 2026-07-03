@@ -5,13 +5,18 @@ slug: news
 navId: news
 title: "更新情報"
 created: 2026-01-15
-updated: 2026-06-24
+updated: 2026-07-03
 summary: "このサイトの更新情報"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/ja/notes/comfyui-video-stabilizer/">
+    <span class="news-row__date">2026.7.3</span>
+    <span class="news-row__tag">notes</span>
+    <span class="news-row__title">ComfyUI Video Stabilizer のページを追加しました</span>
+  </a>
   <a class="news-row" href="/ja/basic-workflows/krea-2/">
     <span class="news-row__date">2026.6.24</span>
     <span class="news-row__tag">basic-workflows</span>

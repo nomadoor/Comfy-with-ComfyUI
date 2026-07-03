@@ -1,0 +1,419 @@
+{
+  "id": "c4a0a995-ecdc-4446-b4b3-79c2462c8d0f",
+  "revision": 0,
+  "last_node_id": 20,
+  "last_link_id": 19,
+  "nodes": [
+    {
+      "id": 6,
+      "type": "VHS_VideoInfoLoaded",
+      "pos": [
+        1032.1843366759986,
+        5183.054739756548
+      ],
+      "size": [
+        256.2392578125,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "name": "fps🟦",
+          "type": "FLOAT",
+          "links": [
+            8,
+            11
+          ]
+        },
+        {
+          "name": "frame_count🟦",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "duration🟦",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "width🟦",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "height🟦",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoInfoLoaded"
+      },
+      "widgets_values": {}
+    },
+    {
+      "id": 11,
+      "type": "video_stabilizer_motion_apply",
+      "pos": [
+        1641.247135511922,
+        4996.885283224809
+      ],
+      "size": [
+        294.8951171875,
+        194
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "Frames",
+          "name": "frames",
+          "type": "IMAGE",
+          "link": 12
+        },
+        {
+          "label": "Motion Meta",
+          "name": "motion_meta",
+          "type": "JSON",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Frames",
+          "type": "IMAGE",
+          "links": [
+            14
+          ]
+        },
+        {
+          "name": "Padding Mask",
+          "type": "MASK",
+          "links": null
+        },
+        {
+          "name": "Meta",
+          "type": "JSON",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "video_stabilizer_motion_apply"
+      },
+      "widgets_values": [
+        "crop",
+        "bilinear",
+        "#7F7F7F",
+        0,
+        "Standard"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 3,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        566.0962011978545,
+        4996.885283224809
+      ],
+      "size": [
+        444.68014904172344,
+        1079.3204064228532
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            9,
+            12
+          ]
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": null
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_LoadVideo"
+      },
+      "widgets_values": {
+        "video": "7578123-uhd_2160_3840_24fps.mp4",
+        "force_rate": 0,
+        "custom_width": 1024,
+        "custom_height": 0,
+        "frame_load_cap": 121,
+        "skip_first_frames": 0,
+        "select_every_nth": 1,
+        "format": "AnimateDiff",
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "7578123-uhd_2160_3840_24fps.mp4",
+            "type": "input",
+            "format": "video/mp4",
+            "force_rate": 0,
+            "custom_width": 0,
+            "custom_height": 0,
+            "frame_load_cap": 121,
+            "skip_first_frames": 0,
+            "select_every_nth": 1
+          }
+        }
+      }
+    },
+    {
+      "id": 5,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        1970.3092519356228,
+        4996.885283224809
+      ],
+      "size": [
+        446.50286515597736,
+        1107.7082285590845
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 14
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        },
+        {
+          "name": "frame_rate",
+          "type": "FLOAT",
+          "widget": {
+            "name": "frame_rate"
+          },
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 8,
+        "loop_count": 0,
+        "filename_prefix": "Video Stabilize",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": false,
+        "trim_to_audio": false,
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "Video Stabilize_00024.mp4",
+            "subfolder": "",
+            "type": "output",
+            "format": "video/h264-mp4",
+            "frame_rate": 23.976023976023978,
+            "workflow": "Video Stabilize_00024.png",
+            "fullpath": "/home/nomax/working-linux/ComfyUI-dev/output/Video Stabilize_00024.mp4"
+          }
+        }
+      }
+    },
+    {
+      "id": 8,
+      "type": "video_stabilizer_shake_generator",
+      "pos": [
+        1322.5905937246994,
+        5118.478229940922
+      ],
+      "size": [
+        284.4895425510215,
+        178
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "Frames Context",
+          "name": "frames_context",
+          "type": "IMAGE",
+          "link": 9
+        },
+        {
+          "name": "frame_rate",
+          "type": "FLOAT",
+          "widget": {
+            "name": "frame_rate"
+          },
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Motion Meta",
+          "type": "JSON",
+          "links": [
+            13
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "video_stabilizer_shake_generator"
+      },
+      "widgets_values": [
+        16,
+        "handheld",
+        1,
+        1,
+        0,
+        "fixed"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      6,
+      3,
+      3,
+      6,
+      0,
+      "VHS_VIDEOINFO"
+    ],
+    [
+      8,
+      6,
+      0,
+      5,
+      4,
+      "FLOAT"
+    ],
+    [
+      9,
+      3,
+      0,
+      8,
+      0,
+      "IMAGE"
+    ],
+    [
+      11,
+      6,
+      0,
+      8,
+      1,
+      "FLOAT"
+    ],
+    [
+      12,
+      3,
+      0,
+      11,
+      0,
+      "IMAGE"
+    ],
+    [
+      13,
+      8,
+      0,
+      11,
+      1,
+      "JSON"
+    ],
+    [
+      14,
+      11,
+      0,
+      5,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.5486301132808329,
+      "offset": [
+        -17.814042429216784,
+        -4642.277349663411
+      ]
+    },
+    "frontendVersion": "1.45.19",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
