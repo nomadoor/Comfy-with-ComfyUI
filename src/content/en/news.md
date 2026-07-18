@@ -5,7 +5,7 @@ slug: news
 navId: news
 title: "News"
 created: 2026-01-15
-updated: 2026-07-03
+updated: 2026-07-19
 summary: "Site updates"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
@@ -13,6 +13,11 @@ tags:
 ---
 
 <div class="news-list">
+  <a class="news-row" href="/en/notes/kura-krea2-lora-training/">
+    <span class="news-row__date">2026.7.19</span>
+    <span class="news-row__tag">notes</span>
+    <span class="news-row__title">Added the “Training a Krea 2 LoRA with Kura” page</span>
+  </a>
   <a class="news-row" href="/en/notes/comfyui-video-stabilizer/">
     <span class="news-row__date">2026.7.3</span>
     <span class="news-row__tag">notes</span>

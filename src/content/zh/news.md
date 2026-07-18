@@ -5,13 +5,18 @@ slug: news
 navId: news
 title: "更新信息"
 created: 2026-02-05
-updated: 2026-07-03
+updated: 2026-07-19
 summary: "本站的更新信息"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/zh/notes/kura-krea2-lora-training/">
+    <span class="news-row__date">2026.7.19</span>
+    <span class="news-row__tag">notes</span>
+    <span class="news-row__title">追加了用 Kura 训练 Krea 2 LoRA 的页面</span>
+  </a>
   <a class="news-row" href="/zh/notes/comfyui-video-stabilizer/">
     <span class="news-row__date">2026.7.3</span>
     <span class="news-row__tag">notes</span>
