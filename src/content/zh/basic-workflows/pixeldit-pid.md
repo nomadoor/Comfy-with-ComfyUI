@@ -6,7 +6,7 @@ slug: pixeldit-pid
 navId: pixeldit-pid
 title: "PixelDiT / PiD"
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-07-29
 summary: "使用 PixelDiT 和 PiD 进行图像生成与高分辨率解码"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -78,31 +78,31 @@ PiD 则是把这个 latent 交给 PixelDiT，让图像还原和放大一起完�
 
 - Qwen-Image 用
 
-  - [pid_qwenimage_1024_to_4096_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_qwenimage_1024_to_4096_4step_bf16.safetensors) (2.72 GB)
+  - [pid_1.5_qwenimage_1024_to_4096_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_1.5_qwenimage_1024_to_4096_4step_bf16.safetensors) (2.8 GB)
 
 - Flux.1 / Z-Image 用
 
   - [pid_flux1_512_to_2048_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_flux1_512_to_2048_4step_bf16.safetensors) (2.72 GB)
-  - [pid_flux1_1024_to_4096_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_flux1_1024_to_4096_4step_bf16.safetensors) (2.72 GB)
+  - [pid_1.5_flux1_1024_to_4096_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_1.5_flux1_1024_to_4096_4step_bf16.safetensors) (2.8 GB)
 
 - Flux.2 用
 
   - [pid_flux2_512_to_2048_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_flux2_512_to_2048_4step_bf16.safetensors) (2.73 GB)
-  - [pid_flux2_1024_to_4096_4step_2606_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_flux2_1024_to_4096_4step_2606_bf16.safetensors) (2.73 GB)
+  - [pid_1.5_flux2_1024_to_4096_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_1.5_flux2_1024_to_4096_4step_bf16.safetensors) (2.8 GB)
 
 ```text
 📂ComfyUI/
 └── 📂models/
     └── 📂diffusion_models/
         ├── pid_sdxl_1024_to_4096_4step_bf16.safetensors
-        ├── pid_qwenimage_1024_to_4096_4step_bf16.safetensors
+        ├── pid_1.5_qwenimage_1024_to_4096_4step_bf16.safetensors
         ├── pid_flux1_512_to_2048_4step_bf16.safetensors
-        ├── pid_flux1_1024_to_4096_4step_bf16.safetensors
+        ├── pid_1.5_flux1_1024_to_4096_4step_bf16.safetensors
         ├── pid_flux2_512_to_2048_4step_bf16.safetensors
-        └── pid_flux2_1024_to_4096_4step_2606_bf16.safetensors
+        └── pid_1.5_flux2_1024_to_4096_4step_bf16.safetensors
 ```
 
-不需要全部放进去。只放和使用的基础模型对应的 PiD 就可以。
+> 不需要全部放进去。只放和使用的基础模型对应的 PiD 就可以。
 
 ### 模型的选择
 
@@ -117,13 +117,15 @@ PiD 则是把这个 latent 交给 PixelDiT，让图像还原和放大一起完�
   - 并不是选了这个模型就会自动放大。比如 `1024_to_4096`，需要把 1024px 左右的 latent / 输出交给 PiD，并设置参数，让 PiD 输出 4096px 的图像。
   - 大致分辨率对上即可，宽高比可以自由调整。
 
+---
+
 ### Z-Image-Turbo → PiD
 
 试着用 PiD 解码 Z-Image-Turbo 的 latent。
 
-![](https://gyazo.com/ffadadaad0731fe65418fde91d8214e0){gyazo=image}
+![](https://gyazo.com/1b9e2dab2979aaafb65acc6e207c5948){gyazo=image}
 
-[](/workflows/basic-workflows/pixeldit-pid/Z-Image-Turbo_to_PiD_4k.json)
+[](/workflows/basic-workflows/pixeldit-pid/Z-Image-Turbo_to_PiD1.5_4k.json)
 
 - 🟦 左上是普通的 [Z-Image-Turbo](/zh/basic-workflows/z-image-turbo/) workflow。
   - 🟩 输出的 latent 不走 VAE Decode，而是连接到 PixelDiT 侧的 `PiD Conditioning`。
@@ -133,31 +135,31 @@ PiD 则是把这个 latent 交给 PixelDiT，让图像还原和放大一起完�
 - `Context Windows (Manual)` 节点用于 tiling。
   OOM 时，或者纵长 / 横长图像输出变粗糙时使用。
 
+---
+
 ### 放大任意图像
 
 传给 `PiD Conditioning` 的，只是普通的 latent。
 
 因此，前面不一定要专门做 text2image。把任意图像先 VAE Encode，再交给 PiD，就可以像 upscaler 一样使用。
 
-![](https://gyazo.com/1d83eec4daa183467327ed1d3a5b3461){gyazo=image}
+这里使用面向 Flux.2 的 PiD 1.5 模型和 `flux2-vae.safetensors`。
 
-[](/workflows/basic-workflows/pixeldit-pid/PiD_flux1_4x_enhance.json)
-
-- 将输入图像 resize 到约 1M 像素，并让尺寸成为 16 的倍数
-- 取得 resize 后的高和宽，把它们乘以 4，作为 PiD 侧的输出尺寸
-
-每个 PiD 模型对应的 VAE 不同，因此需要用和 PiD 模型匹配的 VAE 来 Encode。
-
-可能会想使用新的 Flux.2 VAE，但颜色会变化很大。这里使用更稳定的 `Flux.1 用 PiD` + `ae.safetensors` 组合。
-
-- [ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors) (335 MB)
+- [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/blob/main/split_files/vae/flux2-vae.safetensors) (336 MB)
 
 ```text
 📂ComfyUI/
 └── 📂models/
     └── 📂vae/
-        └── ae.safetensors
+        └── flux2-vae.safetensors
 ```
+
+![](https://gyazo.com/f501e4a19e295189ca8fdc8d509eb589){gyazo=image}
+
+[](/workflows/basic-workflows/pixeldit-pid/PiD1.5_flux2_4x_enhance.json)
+
+- 将输入图像 resize 到约 1M 像素，并让尺寸成为 16 的倍数
+- 取得 resize 后的高和宽，把它们乘以 4，作为 PiD 侧的输出尺寸
 
 > 本质上做的是重新描绘，所以与其说是 upscaler，不如说是 enhance。<br>
 > 不太适合需要忠实再现的用途。
