@@ -5,8 +5,8 @@ section: basic-workflows
 slug: sd15-lora
 navId: sd15-lora
 title: "LoRA"
-created: 2025-12-06
-updated: 2026-03-02
+created: 2025-12-05
+updated: 2026-08-01
 summary: "LoRA in Stable Diffusion 1.5"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
@@ -34,7 +34,8 @@ You can add new styles and characters to the base model as if loading an expansi
 This time, as an example, let's use a LoRA that makes it look like pixel art.
 
 - [8bitdiffuser 64x](https://civitai.com/models/185743)
--  ```text
+
+- ```text
     📂ComfyUI/
       └── 📂models/
           └── 📂loras/
@@ -47,9 +48,9 @@ This time, as an example, let's use a LoRA that makes it look like pixel art.
 
 [](/workflows/basic-workflows/sd15-lora/SD1.5_lora.json)
 
-- 🟩 Add a `Load LoRA` node.
+- 🟩 Add a `Load LoRA (Model and CLIP)` node.
   - Connect it so that it is sandwiched between `Load Checkpoint` and `CLIP Text Encode` / `KSampler`.
-  - Pass both **MODEL** and **CLIP** through `Load LoRA`.
+  - Pass both **MODEL** and **CLIP** through `Load LoRA (Model and CLIP)`.
 - `strength_model` / `strength_clip` : The application strength of LoRA. Basically `1.0`, but lower it if it works too strongly.
 - 🟨 Trigger Word
   - Just applying LoRA adds the ability to draw pixel art to the base model internally.
@@ -78,12 +79,10 @@ in models after Flux.1, LoRA training and application are also for the diffusion
 
 ### Changes in ComfyUI Workflow
 
-You could use the `Load LoRA` node, but it's not very elegant to connect a node to a CLIP that isn't being used.
-So, the `LoraLoaderModelOnly` node is provided instead.
-As the name suggests, it is a node that applies LoRA only to the MODEL (diffusion model).
+For Flux.1 and later models, use the `Load LoRA` node.
+
+This node does not connect to CLIP and applies LoRA only to the MODEL (diffusion model).
 
 ![](https://gyazo.com/975300eed9cca90f7086dda53c1ca413){gyazo=image}
 
 [](/workflows/basic-workflows/sd15-lora/Flux.1_lora.json)
-
-In new models, LoRA is applied like this. Please remember this.

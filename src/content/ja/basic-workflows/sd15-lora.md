@@ -34,7 +34,8 @@ LoRA は、モデルの重みそのものを書き換えるのではなく、「
 今回は例として、ピクセルアート風にする LoRA を使ってみます。
 
 - [8bitdiffuser 64x](https://civitai.com/models/185743)
--  ```text
+
+- ```text
     📂ComfyUI/
       └── 📂models/
           └── 📂loras/
@@ -85,5 +86,3 @@ Flux.1 以降では、`Load LoRA` ノードを使います。
 ![](https://gyazo.com/975300eed9cca90f7086dda53c1ca413){gyazo=image}
 
 [](/workflows/basic-workflows/sd15-lora/Flux.1_lora.json)
-
-新しいモデルでは、このようにLoRAを適用しています。覚えておいてください。

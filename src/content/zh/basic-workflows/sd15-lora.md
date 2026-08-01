@@ -5,8 +5,8 @@ section: basic-workflows
 slug: sd15-lora
 navId: sd15-lora
 title: "LoRA"
-created: 2026-02-06
-updated: 2026-03-02
+created: 2025-12-05
+updated: 2026-08-01
 summary: "Stable Diffusion 1.5 的 LoRA"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -34,7 +34,8 @@ LoRA 不是重写模型权重本身，而是采用将“变更部分”作为小
 这次作为例子，使用变成像素艺术风的 LoRA。
 
 - [8bitdiffuser 64x](https://civitai.com/models/185743)
--  ```text
+
+- ```text
     📂ComfyUI/
       └── 📂models/
           └── 📂loras/
@@ -47,9 +48,9 @@ LoRA 不是重写模型权重本身，而是采用将“变更部分”作为小
 
 [](/workflows/basic-workflows/sd15-lora/SD1.5_lora.json)
 
-- 🟩 添加 `Load LoRA` 节点。
+- 🟩 添加 `Load LoRA (Model and CLIP)` 节点。
   - 以夹在 `Load Checkpoint` 和 `CLIP Text Encode` / `KSampler` 之间的形式连接。
-  - **MODEL** 和 **CLIP** 两者都需要通过 `Load LoRA`。
+  - **MODEL** 和 **CLIP** 两者都需要通过 `Load LoRA (Model and CLIP)`。
 - `strength_model` / `strength_clip` : LoRA 的适用强度。基本是 `1.0`，但如果效力太强就降低。
 - 🟨 触发词
   - 虽然只是应用了 LoRA，但在内部，画点阵图的能力已经被叠加到了基础模型上。
@@ -78,12 +79,10 @@ LoRA 也追随这个。
 
 ### ComfyUI 工作流的变化
 
-虽然使用 `Load LoRA` 节点也可以，但连接节点到没在用的 CLIP 也不太美观。  
-这不，取而代之准备了 `LoraLoaderModelOnly` 节点。  
-正如其名，是仅对 MODEL（扩散模型）应用 LoRA 的节点。
+从 Flux.1 开始，使用 `Load LoRA` 节点。
+
+这个节点不连接 CLIP，只对 MODEL（扩散模型）应用 LoRA。
 
 ![](https://gyazo.com/975300eed9cca90f7086dda53c1ca413){gyazo=image}
 
 [](/workflows/basic-workflows/sd15-lora/Flux.1_lora.json)
-
-在新的模型中，像这样应用 LoRA。请记住。
