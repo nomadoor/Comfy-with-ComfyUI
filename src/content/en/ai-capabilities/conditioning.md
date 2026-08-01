@@ -6,7 +6,7 @@ slug: conditioning
 navId: conditioning
 title: Conditioning
 created: 2025-11-13
-updated: 2026-03-02
+updated: 2026-08-01
 summary: A mechanism to tell the diffusion model 'what kind of image I want'.
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
@@ -24,11 +24,7 @@ What is needed here is **Conditioning**.
 
 ## What is Conditioning?
 
-In ComfyUI, the following are collectively called **Conditioning**:
-
-> Additional information to convey
-> "what kind of image you want" or "where and how you want it changed"
-> when the diffusion model reduces noise.
+In ComfyUI, the additional information that tells a diffusion model "what kind of image you want" or "where and how you want it changed" as it reduces noise is collectively called **Conditioning**.
 
 Simply put, it's like a **guidepost that determines the direction of generation**.
 
@@ -62,41 +58,38 @@ CLIP is a "seeing AI" that has learned a large number of "text and image pairs."
 
 The diffusion model (U-Net) uses this vector as a guidepost to judge "in which direction should I reduce the noise to make it an image that matches this text?"
 
-### MLLM-type Text Encoder
+### LLM / MLLM-type Text Encoder
 
-In recent image and video models, there is a trend to use text encoders based on **MLLM (Multimodal LLM)** instead of CLIP.
+Recent image and video models may use text encoders based on **LLMs** or **MLLMs (Multimodal LLMs)** instead of CLIP.
 
-MLLM is almost like ChatGPT. It can converse by itself and answer questions while looking at images.
+LLMs are the technology behind conversational AI such as ChatGPT and can process the context of a passage. MLLMs extend this ability to images and other types of input.
 
-Since CLIP only looks at the correspondence between words and images, it was not good at understanding long sentences or complex positional relationships and reflecting them in image generation.
+CLIP is good at matching short descriptions and concepts, but it has struggled to reflect long passages and complex spatial relationships in image generation.
 
-On the other hand, MLLM can understand with much higher accuracy.
+LLMs and MLLMs can understand instructions like these more accurately.
 
-> ![Z-Image](https://gyazo.com/21e83fc01b81ea693037ba3d17f39d5a){gyazo=image}
-> **Example**: `A dog on a log with a frog in a bog`
-> (Accurately understands complex positional relationships such as a dog on a log and a frog in a bog)
+{% mediaRow img="https://gyazo.com/21e83fc01b81ea693037ba3d17f39d5a{gyazo=image}", width=50, align="left" %}
 
-However, from the perspective of ComfyUI, whether using CLIP or MLLM, the role itself of "converting Text → Vector representing meaning and passing it to the diffusion model" is the same.
+`A dog on a log with a frog in a bog`
+
+It correctly understands the complex spatial relationship: a dog on a log and a frog in a bog.
+
+{% endmediaRow %}
+
+From ComfyUI's perspective, however, CLIP, LLMs, and MLLMs all have the same role: converting text into vectors that represent its meaning and passing them to the diffusion model.
 
 ## Other Conditioning (Roughly)
 
 This page focused on text, but actually, there are various Conditionings other than text.
 
 ### Reference Image-Based Conditioning
+
 - **IP-Adapter family, etc.**
 - Convey "make it close to this character, this coloring, the atmosphere of this photo"
 
 ### Structure-Based Conditioning
+
 - **ControlNet, etc.** (Pose, Line Art, Depth Map, etc.)
 - Convey "keep this pose, outline, depth"
 
-### Region-Based Conditioning
-- **Masks for Inpainting, etc.**
-- Convey "redraw only this part, don't change the surroundings much"
-
-The role is the same for all of them.
-
-> A **guidepost** that instructs what to prioritize and which direction to move towards
-> when the diffusion model reduces noise.
-
-Thinking of it this way is sufficient.
+All of these are forms of Conditioning that tell the diffusion model what to prioritize and which direction to move toward.
