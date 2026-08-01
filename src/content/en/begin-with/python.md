@@ -6,7 +6,7 @@ slug: python
 navId: python
 title: "Python"
 created: 2025-11-24
-updated: 2026-03-02
+updated: 2026-08-01
 summary: ""
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -24,7 +24,7 @@ However, knowing a few terms might give you the energy to fight the errors you w
 
 ## Version
 
-It feels a bit strange that a "language" has a version, but just as words that didn't exist in the Showa era are born in the Reiwa era, Python adds new features and improvements with every update.
+It may seem strange for a language to have versions, but spoken languages also gain new words and expressions over time. Likewise, Python adds new features and improvements with each update.
 
 Basically, it is designed to maintain backward compatibility (making old code work), but some programs stop working when the version goes up.
 

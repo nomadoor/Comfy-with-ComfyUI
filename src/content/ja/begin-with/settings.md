@@ -6,7 +6,7 @@ slug: settings
 navId: settings
 title: "設定"
 created: 2025-11-20
-updated: 2026-03-02
+updated: 2026-08-01
 summary: "設定について"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
@@ -32,8 +32,8 @@ hero:
 - 日本語にしたい気持ちは分かるのですが、使われる語句のほとんどが専門用語なため、下手に日本語にすると余計にわからなくなります。
 
 ### バッジ
-`Lite Graph` → `Node` → `Node source badge mode` → `Show All`
-- そのノードがComfyUIのコアノードなのか、カスタムノードなのかを示すバッジを表示します。
+`Lite Graph` → `Node` → `Node source badge mode` → `Hide Built-in`
+- ComfyUI のコアノードではバッジを隠し、カスタムノードにだけ配布元のバッジを表示します。
 - 他人のworkflowを読み込んだ際、どのカスタムノードを使ったノードなのかを確認することができます。
 
 ### Runボタン位置

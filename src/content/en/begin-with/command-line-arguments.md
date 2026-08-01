@@ -6,7 +6,7 @@ slug: command-line-arguments
 navId: command-line-arguments
 title: "Command Line Arguments"
 created: 2025-11-24
-updated: 2026-05-27
+updated: 2026-08-01
 summary: "Options specified when starting ComfyUI"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -44,9 +44,12 @@ Used for countermeasures against errors due to lack of VRAM (OOM) and operation 
 |  | Argument Name | Function | Remarks |
 | :---: | :--- | :--- | :--- |
 | 🔥 | `--reserve-vram [GB]` | **Reserve VRAM:** Sets the amount of VRAM to use in GB units, and reserves that amount for the OS and other apps. | In the case of `--reserve-vram 1.0`, at least 1.0GB remains. |
+| | `--vram-headroom [GB]` | Keep additional VRAM free for DynamicVRAM. | With `--vram-headroom 1.0`, ComfyUI tries to leave an extra 1.0GB free. |
 | 🔥 | `--disable-smart-memory` | **Forced release of memory management.** Does not keep the model in VRAM and actively offloads it to RAM. | Effective when you want to prioritize stability in an environment with low VRAM. Speed may drop. |
 | | `--lowvram` | Enable VRAM saving mode. | Splits and executes UNET partially to reduce VRAM usage. Standard setting when VRAM is low. |
 | | `--highvram` | Keep the model in GPU memory without unloading it to CPU memory. | Improves model switching speed in environments with large VRAM capacity. |
+| | `--high-ram` | Remove RAM usage limits and make it easier to keep models in memory. | For systems with plenty of RAM. Memory usage will increase. |
+| | `--fast-disk` | Prefer fast disk storage for DynamicVRAM loading and offloading. | Useful when using a fast NVMe SSD. |
 | | `--cpu` | Use CPU for all processing. | Very slow, so use as a last resort when there is no GPU. |
 | | `--normalvram` | Force normal VRAM usage even if `lowvram` is automatically enabled. | |
 
@@ -56,12 +59,13 @@ Used for browser behavior and ComfyUI sharing settings within LAN.
 
 |  | Argument Name | Function | Remarks |
 | :---: | :--- | :--- | :--- |
-| 🔥 | `--disable-auto-launch` | Disable **browser auto-launch**. | Convenient when auto-launch is unnecessary, such as in the portable version. |
+| 🔥 | `--disable-auto-launch` | Disable **browser auto-launch**. | With official Windows Portable, add this to the end of the `.bat` file if you do not want the browser to open at startup. |
 | 🔥 | `--output-directory [path]` | Set **output directory**. | When you want to change the save destination of generated images. |
 | | `--listen` | Allow external connection: Specify the IP address to listen to. | Listen on `0.0.0.0` (all addresses) with no argument (`--listen`). Accessible from another PC. |
 | | `--port [num]` | Set listen port (default: 8188). | Change when the port is already in use. |
 | | `--enable-manager` | Enable ComfyUI Manager. | Used to show Manager in the portable and manual installation versions. |
 | | `--enable-manager-legacy-ui` | Enable the old ComfyUI Manager UI. | Use together with `--enable-manager`. See [ComfyUI Manager](/en/begin-with/comfyui-manager/) for details. |
+| | `--models-directory [path]` | Change the location of the `models` directory. | Specify an existing directory using an absolute path. |
 | | `--extra-model-paths-config [path]` | Load one or more `extra_model_paths.yaml` files. | When you want to manage multiple model storage locations. |
 | | `--auto-launch` | Automatically launch ComfyUI in the default browser. | |
 
