@@ -43,6 +43,8 @@ LoRA は、モデルの重みそのものを書き換えるのではなく、「
 
 ### workflow
 
+![](https://gyazo.com/8596b20bea2e92a969693fa18f1ce778){gyazo=image}
+
 [](/workflows/basic-workflows/sd15-lora/SD1.5_lora.json)
 
 - 🟩 `Load LoRA (Model and CLIP)` ノードを追加します。
@@ -79,6 +81,8 @@ Flux.1以降のモデルでは、LoRAの学習・適用も、拡散モデルの�
 Flux.1 以降では、`Load LoRA` ノードを使います。
 
 このノードには CLIP を接続せず、MODEL（拡散モデル）にのみ LoRA を適用します。
+
+![](https://gyazo.com/975300eed9cca90f7086dda53c1ca413){gyazo=image}
 
 [](/workflows/basic-workflows/sd15-lora/Flux.1_lora.json)
 
