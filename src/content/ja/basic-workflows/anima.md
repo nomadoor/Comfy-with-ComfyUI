@@ -42,6 +42,10 @@ SDXL 世代のアニメ系モデルからの移行先として、かなり期待
 
   * [qwen_image_vae.safetensors](https://huggingface.co/circlestone-labs/Anima/blob/main/split_files/vae/qwen_image_vae.safetensors) (254 MB)
 
+> `anima-base-v1.0` は未調整のベースモデルです。表現の幅・多様性・スタイル追従性を優先したい場合や、LoRA を学習する場合はこちらを使います。
+>
+> `anima-aesthetic-v1.1` は高品質な画像で追加学習した生成向けモデルです。Base よりも出力の一貫性が高く、デフォルトの絵柄も整いやすくなっています。
+
 ```text
 📂ComfyUI/
 └── 📂models/
