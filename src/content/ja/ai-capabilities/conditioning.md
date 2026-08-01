@@ -68,9 +68,9 @@ CLIPは短い説明や概念との対応には強い一方、長い文章や複�
 
 LLMやMLLMを使うことで、このような指示もより正確に理解できるようになります。
 
-![Z-Image](https://gyazo.com/21e83fc01b81ea693037ba3d17f39d5a){gyazo=image}
-
+{% mediaRow img="https://gyazo.com/21e83fc01b81ea693037ba3d17f39d5a{gyazo=image}", width=50, align="left" %}
 **例**：`A dog on a log with a frog in a bog`（丸太の上に犬、沼にはカエル、という複雑な位置関係も正確に理解）
+{% endmediaRow %}
 
 とはいえ、ComfyUIの立場から見ると、CLIP、LLM、MLLMのどれを使っていても、「テキスト → 意味を表すベクトルに変換して、拡散モデルに渡す」という役割自体は同じです。
 
