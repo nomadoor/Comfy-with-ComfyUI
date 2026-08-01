@@ -42,6 +42,9 @@ hero:
 
   * [qwen_image_vae.safetensors](https://huggingface.co/circlestone-labs/Anima/blob/main/split_files/vae/qwen_image_vae.safetensors) (254 MB)
 
+> `anima-base-v1.0` 是未经调整的基础模型。
+> `anima-aesthetic-v1.1` 是使用高质量图像微调过的模型。如果只想轻松试试生成，基本上使用这个即可。
+
 ```text
 📂ComfyUI/
 └── 📂models/
@@ -81,7 +84,7 @@ masterpiece, best quality, score_9, safe,
 
 ## Anima LLLite
 
-LLLite 是 Kohya 开发的、类似轻量版 ControlNet 的技术。
+ControlNet-LLLite 是 kohya 开发的轻量级 ControlNet。
 
 ### 模型下载
 
@@ -89,7 +92,7 @@ LLLite 是 Kohya 开发的、类似轻量版 ControlNet 的技术。
 
 请根据要使用的控制图像准备合适的模型。
 
-> 标有 `v2` 的模型针对 Anima-Base v1.0 训练。本例将其与 `anima-aesthetic-v1.1` 搭配使用。其他模型使用旧版 Anima Preview3 训练，因此效果可能会稍弱一些。
+> 标有 `v2` 的模型针对 Anima-Base v1.0 训练。其他模型使用旧版 Anima Preview3 训练，因此效果可能会稍弱一些。
 
 ```text
 📂ComfyUI/
@@ -104,6 +107,5 @@ LLLite 是 Kohya 开发的、类似轻量版 ControlNet 的技术。
 
 [](/workflows/basic-workflows/anima/anima-lllite-any-test-like-v2.json)
 
-`any-test-like-v2` 把草图、线稿和灰度图等几种控制整合在一个模型里。
-
-这里先简单提取边缘，把结果作为输入来使用。
+* `anima-lllite-any-test-like-v2` 将多种控制整合在一个模型中。它可以通过草图或线稿传递构图，也可以为灰度图像上色。
+* 这个工作流会使用 `Canny` 从输入图像中提取轮廓，并将其作为控制图像。
