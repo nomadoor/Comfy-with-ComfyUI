@@ -92,6 +92,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - Place TOC and the future Tips block inside the right sidebar column. Apply the border only to the TOC body, not the entire sidebar.
 - TOC links do not show a guide line by default. Only the active item shows a left accent line.
 - Reserve a grey rectangular placeholder beneath the TOC for character/Tips content.
+- The assistant rail bubble list stays transparent. Each bubble button owns its surface, so the gaps between suggestions reveal the underlying rail.
 
 ## 9. Workflow Assets
 - **Workflow JSON**: render as `filename | Copy | Download` rows (chips). Copy buttons read from hidden `<pre>` nodes to avoid DOM pollution; download links point at `/workflows/<slug>.json`.

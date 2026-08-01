@@ -5,8 +5,8 @@ section: ai-capabilities
 slug: conditioning
 navId: conditioning
 title: Conditioning (调节/条件)
-created: 2026-02-06
-updated: 2026-03-02
+created: 2025-11-13
+updated: 2026-08-01
 summary: 告诉扩散模型“想要这样的图像”的机制
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
@@ -24,11 +24,7 @@ hero:
 
 ## 什么是 Conditioning？
 
-在 ComfyUI 中，将以下内容统称为 **Conditioning**。
-
-> 当扩散模型减少噪点时，
-> 为了传达“希望生成什么样的图像”“希望哪里怎么改变”
-> 的附加信息
+在 ComfyUI 中，将扩散模型去除噪点时，用来传达“希望生成什么样的图像”“希望哪里怎么改变”的附加信息统称为 **Conditioning**。
 
 简单来说，就像是 **决定生成方向的路标**。
 
@@ -62,37 +58,38 @@ CLIP 是大量学习了“文本和图像配对”的“视觉 AI”。其特征
 
 扩散模型（U-Net）将这个向量作为路标，判断“噪点向哪个方向减少，才能变成符合这个文本的图像？”
 
-### MLLM 型文本编码器
+### LLM / MLLM 型文本编码器
 
-在最近的图像模型、视频模型中，也出现了使用以 **MLLM（多模态 LLM）** 为基础的文本编码器来代替 CLIP 的趋势。
+近年来，一些图像和视频模型开始使用基于 **LLM** 或 **MLLM（多模态 LLM）** 的文本编码器来代替 CLIP。
 
-MLLM 几乎就像 ChatGPT 一样。它本身可以进行对话，也可以一边看图像一边回答问题。
+LLM 是 ChatGPT 等对话式 AI 的基础技术，能够处理文章的上下文。MLLM 则在此基础上进一步支持图像等其他类型的输入。
 
-因为 CLIP 只是看着单词和图像的对应关系，所以不擅长理解长文章或复杂的位置关系并反映到图像生成中。
+CLIP 擅长短描述和概念之间的对应，但不太擅长将长文章或复杂的位置关系反映到图像生成中。
 
-另一方面，如果是 MLLM，就能以高得多的精度进行理解。
+使用 LLM 或 MLLM 后，就能更准确地理解这类指令。
 
-> ![Z-Image](https://gyazo.com/21e83fc01b81ea693037ba3d17f39d5a){gyazo=image}
-> **例**：`A dog on a log with a frog in a bog`
-> （沼泽里的圆木上有一只狗和一只青蛙，这样复杂的位置关系也能准确理解）
+{% mediaRow img="https://gyazo.com/21e83fc01b81ea693037ba3d17f39d5a{gyazo=image}", width=50, align="left" %}
 
-虽说如此，站在 ComfyUI 的立场来看，无论使用的是 CLIP 还是 MLLM，它们“将文本 → 转换为表示含义的向量 → 交给扩散模型”这一角色本身是相同的。
+`A dog on a log with a frog in a bog`
+
+它准确理解了“圆木上有一只狗，沼泽里有一只青蛙”这样的复杂位置关系。
+
+{% endmediaRow %}
+
+不过，站在 ComfyUI 的角度来看，无论使用 CLIP、LLM 还是 MLLM，其作用都是将文本转换为表示含义的向量，再交给扩散模型。
 
 ## 其他 Conditioning（概略）
 
-本页面虽然只针对了文本，但实际上除了文本以外还有各种各样的 Conditioning。
+本页面虽然只针对文本，但实际上除了文本以外还有各种各样的 Conditioning。
 
 ### 基于参考图像的 Conditioning
+
 - **IP-Adapter 系等**
 - 传达“请靠近这个角色、这个涂色、这张照片的氛围”
 
 ### 基于结构的 Conditioning
+
 - **ControlNet 等**（姿势、线稿、深度图等）
 - 传达“请遵守这个姿势、轮廓、景深”
 
-它们的作用都是一样的。
-
-> 当扩散模型减少噪点时，
-> 指示优先什么、向哪个方向靠近的 **路标**
-
-只要这样认为就足够了。
+这些都是用来告诉扩散模型“应该优先什么、向哪个方向调整”的 Conditioning。

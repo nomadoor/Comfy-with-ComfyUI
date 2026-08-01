@@ -6,7 +6,7 @@ slug: command-line-arguments
 navId: command-line-arguments
 title: "与启动参数"
 created: 2026-02-06
-updated: 2026-05-27
+updated: 2026-08-01
 summary: "启动 ComfyUI 时指定的选项"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -44,9 +44,12 @@ python main.py --fast
 |  | 参数名 | 功能 | 备注 |
 | :---: | :--- | :--- | :--- |
 | 🔥 | `--reserve-vram [GB]` | **VRAM 预约:** 将使用的 VRAM 量以 GB 为单位进行设定，为 OS 或其他应用保留指定大小的显存。 | 设定为 `--reserve-vram 1.0` 时，会至少保留 1.0GB。 |
+| | `--vram-headroom [GB]` | 为 DynamicVRAM 额外保留空闲 VRAM。 | 设为 `--vram-headroom 1.0` 时，会尝试比通常多留出 1.0GB。 |
 | 🔥 | `--disable-smart-memory` | **强制解除内存管理。** 不将模型保留在 VRAM 中，而是积极地卸载到 RAM。 | 在 VRAM 较少的环境下优先考虑稳定性时有效。速度可能会下降。 |
 | | `--lowvram` | 启用 VRAM 节约模式。 | 将 UNET 分割执行以减少 VRAM 使用量。VRAM 较少情况下的标准设置。|
 | | `--highvram` | 不将模型卸载到 CPU 内存，而是保留在 GPU 内存中。 | 在 VRAM 容量较大的环境下提升模型切换速度。 |
+| | `--high-ram` | 解除 RAM 使用限制，让模型更容易保留在内存中。 | 适用于 RAM 充足的环境。内存占用会增加。 |
+| | `--fast-disk` | 在 DynamicVRAM 的读取和卸载中优先使用高速磁盘。 | 使用高速 NVMe SSD 时有效。 |
 | | `--cpu` | 全部处理都在 CPU 上进行。 | 因为非常慢，仅作为没有 GPU 时的最后手段。 |
 | | `--normalvram` | 即使自动启用了 `lowvram`，也强制进行常规 VRAM 使用。 | |
 
@@ -56,12 +59,13 @@ python main.py --fast
 
 |  | 参数名 | 功能 | 备注 |
 | :---: | :--- | :--- | :--- |
-| 🔥 | `--disable-auto-launch` | 禁用**浏览器自动启动**。 | 在便携版等不需要自动启动时很方便。 |
+| 🔥 | `--disable-auto-launch` | 禁用**浏览器自动启动**。 | 使用官方 Windows 便携版时，如果不想在启动时打开浏览器，请将它追加到 `.bat` 文件末尾。 |
 | 🔥 | `--output-directory [path]` | 设置**输出目录**。 | 想更改生成图像的保存位置时使用。 |
-| | `--listen` | 允许外部连接: 指定监听的 IP 地址。 | 不带参数 (`--listen`) 时监听 `0.0.0.0` (所有地址)。这样可以从其他 PC 访问。 |
+| | `--listen` | 允许外部连接: 指定监听的 IP 地址。 | 不带参数 (`--listen`) 时同时监听 IPv4 的 `0.0.0.0` 和 IPv6 的 `::`。这样可以从其他 PC 访问。 |
 | | `--port [num]` | 设置监听端口 (默认: 8188)。 | 当端口已被占用时进行更改。 |
 | | `--enable-manager` | 启用 ComfyUI Manager。 | 在便携版和手动安装版中用于显示 Manager。 |
 | | `--enable-manager-legacy-ui` | 启用旧版 ComfyUI Manager UI。 | 与 `--enable-manager` 一起使用。详情请参考 [ComfyUI Manager](/zh/begin-with/comfyui-manager/)。 |
+| | `--models-directory [path]` | 更改 `models` 目录的位置。 | 指定一个已存在且可读取的目录。 |
 | | `--extra-model-paths-config [path]` | 读取一个或多个 `extra_model_paths.yaml` 文件。 | 想要管理多个模型保存位置时使用。 |
 | | `--auto-launch` | 使用默认浏览器自动启动 ComfyUI。 | |
 

@@ -6,7 +6,7 @@ slug: anima
 navId: anima
 title: "Anima"
 created: 2026-05-29
-updated: 2026-05-30
+updated: 2026-08-01
 summary: "Image generation with Anima"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: []
@@ -32,6 +32,7 @@ It is one of the models drawing a lot of attention as a possible migration targe
 * diffusion_models
 
   * [anima-base-v1.0.safetensors](https://huggingface.co/circlestone-labs/Anima/blob/main/split_files/diffusion_models/anima-base-v1.0.safetensors) (4.18 GB)
+  * [anima-aesthetic-v1.1.safetensors](https://huggingface.co/circlestone-labs/Anima/blob/main/split_files/diffusion_models/anima-aesthetic-v1.1.safetensors) (4.18 GB)
 
 * text_encoders
 
@@ -45,7 +46,8 @@ It is one of the models drawing a lot of attention as a possible migration targe
 📂ComfyUI/
 └── 📂models/
     ├── 📂diffusion_models/
-    │   └── anima-base-v1.0.safetensors
+    │   ├── anima-base-v1.0.safetensors
+    │   └── anima-aesthetic-v1.1.safetensors
     ├── 📂text_encoders/
     │   └── qwen_3_06b_base.safetensors
     └── 📂vae/
@@ -68,9 +70,40 @@ masterpiece, best quality, score_9, safe,
 
 ## text2image
 
-![](https://gyazo.com/7e9aaaea23279a5d2ca5298c713b4f8f){gyazo=image}
+![](https://gyazo.com/0e2f46074799b0e7a016ee1a5bd28118){gyazo=image}
 
-[](/workflows/basic-workflows/anima/anima-base-v1.0.json)
+[](/workflows/basic-workflows/anima/anima-aesthetic-v1.1.json)
 
-- Recommended resolution is `512px` to `1536px`.
-- Samplers with a little variation, such as `er_sde` and `euler_ancestral`, are recommended.
+* Recommended resolution is `512px` to `1536px`.
+* Samplers with a little variation, such as `er_sde` and `euler_ancestral`, are recommended.
+
+---
+
+## Anima LLLite
+
+LLLite is something like a lightweight ControlNet developed by Kohya.
+
+### Model Download
+
+* [Comfy-Org/Anima-LLLite](https://huggingface.co/Comfy-Org/Anima-LLLite/tree/main/model_patches)
+
+Choose a suitable model for the control image you want to use.
+
+> Models marked `v2` were trained for Anima-Base v1.0. This example uses one with `anima-aesthetic-v1.1`. The others were trained for the older Anima Preview3, so they may be a little less effective.
+
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂model_patches/
+        └── anima-lllite-*.safetensors
+```
+
+### anima-lllite-any-test-like-v2
+
+![](https://gyazo.com/d42f85633b9036b7e2e6e806c064ef56){gyazo=image}
+
+[](/workflows/basic-workflows/anima/anima-lllite-any-test-like-v2.json)
+
+`any-test-like-v2` combines several types of control, including rough sketches, line art, and grayscale images, in one model.
+
+Here, let's simply use an edge-detected image as the input.

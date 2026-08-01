@@ -6,7 +6,7 @@ slug: how-to-use-this-site
 navId: how-to-use-this-site
 title: "如何使用本网站"
 created: 2026-02-06
-updated: 2026-03-02
+updated: 2026-08-01
 summary: "欢迎来到 Comfy with ComfyUI"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -40,8 +40,8 @@ hero:
 包括图像处理、格式转换，以及批量处理等内容。
 
 ### 🔼 AI 能力
-很多初学者在开始使用前，甚至不清楚 **有哪些类型的 AI**。
-本栏目按“你想做什么”来反查“可以用什么 AI”。
+生成式 AI 有很多种类，各自擅长的事情也不同。
+本栏目可以从“你想做什么”反查“可以使用哪种 AI”。
 
 这里也会讲解图像生成 AI 的基础机制。
 

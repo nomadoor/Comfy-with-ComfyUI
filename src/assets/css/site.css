@@ -4015,12 +4015,9 @@ h1 {
   margin: 0;
   padding: 0;
   list-style: none;
-  background: color-mix(in srgb, var(--color-bg) 70%, transparent);
-  border-radius: var(--radius-md);
   transition:
     opacity var(--assistant-rail-transition-duration) var(--assistant-rail-transition-timing),
-    transform var(--assistant-rail-transition-duration) var(--assistant-rail-transition-timing),
-    background-color var(--assistant-rail-transition-duration) var(--assistant-rail-transition-timing);
+    transform var(--assistant-rail-transition-duration) var(--assistant-rail-transition-timing);
 }
 
 .assistant-rail__bubble {

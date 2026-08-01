@@ -6,7 +6,7 @@ slug: command-line-arguments
 navId: command-line-arguments
 title: "コマンドライン引数"
 created: 2025-11-20
-updated: 2026-05-27
+updated: 2026-08-01
 summary: "ComfyUIの起動時に指定するオプション"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -44,9 +44,12 @@ VRAM不足によるエラー（OOM）対策や、VRAM容量に応じた動作調
 |  | 引数名 | 機能 | 備考 |
 | :---: | :--- | :--- | :--- |
 | 🔥 | `--reserve-vram [GB]` | **VRAM予約:** 使用するVRAMの量をGB単位で設定し、その分をOSや他のアプリのために確保します。 | `--reserve-vram 1.0` の場合、最低1.0GBを残します。 |
+| | `--vram-headroom [GB]` | DynamicVRAMで追加の空きVRAMを確保する。 | `--vram-headroom 1.0` の場合、通常よりさらに1.0GB空けようとします。 |
 | 🔥 | `--disable-smart-memory` | **メモリ管理の強制解除。** モデルをVRAMに保持せず、積極的にRAMにオフロード。 | VRAMが少ない環境で、安定性を優先したい場合に有効。速度は落ちる可能性があります。 |
 | | `--lowvram` | VRAM節約モードを有効化。 | UNETを部分的に分割して実行し、VRAM使用量を減らします。VRAMが少ない場合の標準設定です。|
 | | `--highvram` | モデルをCPUメモリにアンロードせず、GPUメモリに保持する。 | VRAM容量が大きい環境で、モデル切り替え速度を向上させます。 |
+| | `--high-ram` | RAMの使用制限を外し、モデルをメモリに保持しやすくする。 | RAMが十分多い環境向けです。メモリ使用量が増えます。 |
+| | `--fast-disk` | DynamicVRAMの読み込み・オフロードに高速ディスクを優先する。 | 高速なNVMe SSDを使用している場合に有効です。 |
 | | `--cpu` | すべての処理をCPUで使用する。 | 非常に遅いため、GPUがない場合の最終手段として使用します。 |
 | | `--normalvram` | `lowvram`が自動で有効になった場合でも通常のVRAM使用を強制する。 | |
 
@@ -56,12 +59,13 @@ VRAM不足によるエラー（OOM）対策や、VRAM容量に応じた動作調
 
 |  | 引数名 | 機能 | 備考 |
 | :---: | :--- | :--- | :--- |
-| 🔥 | `--disable-auto-launch` | **ブラウザの自動起動**を無効化。 | ポータブル版などで自動起動が不要な場合に便利です。 |
+| 🔥 | `--disable-auto-launch` | **ブラウザの自動起動**を無効化。 | 公式Windows Portableで、起動時にブラウザを開きたくない場合は `.bat` の末尾に追加します。 |
 | 🔥 | `--output-directory [path]` | **出力先ディレクトリ**を設定。 | 生成画像の保存先を変更したい場合に。 |
-| | `--listen` | 外部からの接続許可: リッスンするIPアドレスを指定。 | 引数なし (`--listen`) で `0.0.0.0` (すべてのアドレス) でリッスン。別PCからアクセス可能に。 |
+| | `--listen` | 外部からの接続許可: リッスンするIPアドレスを指定。 | 引数なし (`--listen`) で IPv4 の `0.0.0.0` と IPv6 の `::` の両方でリッスン。別PCからアクセス可能に。 |
 | | `--port [num]` | リッスンポートを設定 (デフォルト: 8188)。 | 既にポートが使用されている場合などに変更します。 |
 | | `--enable-manager` | ComfyUI Manager を有効化する。 | ポータブル版や手動インストール版で Manager を表示するために使用します。 |
 | | `--enable-manager-legacy-ui` | 古い ComfyUI Manager UI を有効化する。 | `--enable-manager` と併用します。詳しくは [ComfyUI Manager](/ja/begin-with/comfyui-manager/) を参照してください。 |
+| | `--models-directory [path]` | `models` ディレクトリの場所を変更する。 | 存在し、読み取り可能なディレクトリを指定します。 |
 | | `--extra-model-paths-config [path]` | 1つ以上の `extra_model_paths.yaml` ファイルを読み込む。 | モデルの保存場所を複数管理したい場合に。 |
 | | `--auto-launch` | デフォルトのブラウザでComfyUIを自動的に起動する。 | |
 

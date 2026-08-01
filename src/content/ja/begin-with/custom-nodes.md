@@ -6,7 +6,7 @@ slug: custom-nodes
 navId: custom-nodes
 title: "カスタムノード"
 created: 2025-11-20
-updated: 2026-03-02
+updated: 2026-08-01
 summary: "カスタムノードについて"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
@@ -81,8 +81,6 @@ Managerにない場合や、開発中の最新版を使いたい場合に行い�
 
 - **[kijai/ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes)**
   - 多くのユーティリティー機能、動画生成の補助
-- **[ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)**
-  - バッチ処理、リスト操作、Detailer
 - **[Kosinkadink/ComfyUI-VideoHelperSuite](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)**
   - 動画の読み込み・書き出し
 
@@ -91,7 +89,7 @@ Managerにない場合や、開発中の最新版を使いたい場合に行い�
 - **[rgthree/rgthree-comfy](https://github.com/rgthree/rgthree-comfy)**
   - 比較スライダー、フォルダのネスト表示、高度な計算
 - **[crystian/ComfyUI-Crystools](https://github.com/crystian/ComfyUI-Crystools)**
-  - リソースモニター
+  - CPU、RAM、GPU、VRAMなどをリアルタイムで表示するリソースモニター
 
 ---
 

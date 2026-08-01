@@ -6,7 +6,7 @@ slug: anima
 navId: anima
 title: "Anima"
 created: 2026-05-29
-updated: 2026-05-30
+updated: 2026-08-01
 summary: "使用 Anima 进行图像生成"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: []
@@ -32,6 +32,7 @@ hero:
 * diffusion_models
 
   * [anima-base-v1.0.safetensors](https://huggingface.co/circlestone-labs/Anima/blob/main/split_files/diffusion_models/anima-base-v1.0.safetensors) (4.18 GB)
+  * [anima-aesthetic-v1.1.safetensors](https://huggingface.co/circlestone-labs/Anima/blob/main/split_files/diffusion_models/anima-aesthetic-v1.1.safetensors) (4.18 GB)
 
 * text_encoders
 
@@ -45,7 +46,8 @@ hero:
 📂ComfyUI/
 └── 📂models/
     ├── 📂diffusion_models/
-    │   └── anima-base-v1.0.safetensors
+    │   ├── anima-base-v1.0.safetensors
+    │   └── anima-aesthetic-v1.1.safetensors
     ├── 📂text_encoders/
     │   └── qwen_3_06b_base.safetensors
     └── 📂vae/
@@ -68,9 +70,40 @@ masterpiece, best quality, score_9, safe,
 
 ## text2image
 
-![](https://gyazo.com/7e9aaaea23279a5d2ca5298c713b4f8f){gyazo=image}
+![](https://gyazo.com/0e2f46074799b0e7a016ee1a5bd28118){gyazo=image}
 
-[](/workflows/basic-workflows/anima/anima-base-v1.0.json)
+[](/workflows/basic-workflows/anima/anima-aesthetic-v1.1.json)
 
-- 推荐分辨率是 `512px` 到 `1536px`。
-- 推荐使用 `er_sde` 或 `euler_ancestral` 这样带有一点随机变化的采样器。
+* 推荐分辨率是 `512px` 到 `1536px`。
+* 推荐使用 `er_sde` 或 `euler_ancestral` 这样带有一点随机变化的采样器。
+
+---
+
+## Anima LLLite
+
+LLLite 是 Kohya 开发的、类似轻量版 ControlNet 的技术。
+
+### 模型下载
+
+* [Comfy-Org/Anima-LLLite](https://huggingface.co/Comfy-Org/Anima-LLLite/tree/main/model_patches)
+
+请根据要使用的控制图像准备合适的模型。
+
+> 标有 `v2` 的模型针对 Anima-Base v1.0 训练。本例将其与 `anima-aesthetic-v1.1` 搭配使用。其他模型使用旧版 Anima Preview3 训练，因此效果可能会稍弱一些。
+
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂model_patches/
+        └── anima-lllite-*.safetensors
+```
+
+### anima-lllite-any-test-like-v2
+
+![](https://gyazo.com/d42f85633b9036b7e2e6e806c064ef56){gyazo=image}
+
+[](/workflows/basic-workflows/anima/anima-lllite-any-test-like-v2.json)
+
+`any-test-like-v2` 把草图、线稿和灰度图等几种控制整合在一个模型里。
+
+这里先简单提取边缘，把结果作为输入来使用。

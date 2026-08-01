@@ -6,7 +6,7 @@ slug: how-to-use-this-site
 navId: how-to-use-this-site
 title: "How to Use This Site"
 created: 2025-11-13
-updated: 2026-03-02
+updated: 2026-08-01
 summary: "Welcome to Comfy-with-ComfyUI"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -40,8 +40,8 @@ Focuses on preparing data and images for generation.
 Includes editing/conversion workflows and ways to process many images at once.
 
 ### 🔼 AI Capabilities
-Many beginners do not yet know **what kinds of AI exist**.
-This section is designed so you can start from "what you want to do" and find "which AI can do it."
+Generative AI comes in many forms, and each has different strengths.
+This section is designed so you can start from "what you want to do" and find "what kind of AI you can use."
 
 It also explains the basic mechanism of image generation AI.
 

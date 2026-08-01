@@ -6,7 +6,7 @@ slug: sd15-lora
 navId: sd15-lora
 title: "LoRA"
 created: 2025-12-05
-updated: 2026-03-02
+updated: 2026-08-01
 summary: "Stable Diffusion 1.5でのLoRA"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
@@ -34,7 +34,8 @@ LoRA は、モデルの重みそのものを書き換えるのではなく、「
 今回は例として、ピクセルアート風にする LoRA を使ってみます。
 
 - [8bitdiffuser 64x](https://civitai.com/models/185743)
--  ```text
+
+- ```text
     📂ComfyUI/
       └── 📂models/
           └── 📂loras/
@@ -47,9 +48,9 @@ LoRA は、モデルの重みそのものを書き換えるのではなく、「
 
 [](/workflows/basic-workflows/sd15-lora/SD1.5_lora.json)
 
-- 🟩`Load LoRA`ノードを追加します。
+- 🟩 `Load LoRA (Model and CLIP)` ノードを追加します。
   - `Load Checkpoint` と `CLIP Text Encode` / `KSampler` の間に挟む形で接続します。
-  - **MODEL** と **CLIP** の両方を `Load LoRA` 経由で通す必要があります。
+  - **MODEL** と **CLIP** の両方を `Load LoRA (Model and CLIP)` 経由で通す必要があります。
 - `strength_model` / `strength_clip` : LoRA の適用強度です。基本は `1.0` ですが、効きすぎるときは下げます。
 - 🟨トリガーワード
   - LoRA を適用しただけで、内部的にはドット絵を描く能力がベースモデルに上乗せされています。
@@ -78,12 +79,10 @@ Flux.1以降のモデルでは、LoRAの学習・適用も、拡散モデルの�
 
 ### ComfyUI workflowの変化
 
-`Load LoRA`ノードを使ってもいいんですが、使ってないCLIPにノードを接続するのもあんまり美しくありません。  
-ということで、代わりに `LoraLoaderModelOnly`ノードが用意されています。  
-名前の通り、MODEL（拡散モデル）にのみLoRAを適用するノードです。
+Flux.1 以降では、`Load LoRA` ノードを使います。
+
+このノードには CLIP を接続せず、MODEL（拡散モデル）にのみ LoRA を適用します。
 
 ![](https://gyazo.com/975300eed9cca90f7086dda53c1ca413){gyazo=image}
 
 [](/workflows/basic-workflows/sd15-lora/Flux.1_lora.json)
-
-新しいモデルでは、このようにLoRAを適用しています。覚えておいてください。
