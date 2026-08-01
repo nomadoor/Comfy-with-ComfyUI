@@ -42,6 +42,9 @@ It is one of the models drawing a lot of attention as a possible migration targe
 
   * [qwen_image_vae.safetensors](https://huggingface.co/circlestone-labs/Anima/blob/main/split_files/vae/qwen_image_vae.safetensors) (254 MB)
 
+> `anima-base-v1.0` is the untuned base model.
+> `anima-aesthetic-v1.1` is fine-tuned on high-quality images. If you just want to try generating images, this is generally the one to use.
+
 ```text
 📂ComfyUI/
 └── 📂models/
@@ -81,7 +84,7 @@ masterpiece, best quality, score_9, safe,
 
 ## Anima LLLite
 
-LLLite is something like a lightweight ControlNet developed by Kohya.
+ControlNet-LLLite is a lightweight ControlNet developed by kohya.
 
 ### Model Download
 
@@ -89,7 +92,7 @@ LLLite is something like a lightweight ControlNet developed by Kohya.
 
 Choose a suitable model for the control image you want to use.
 
-> Models marked `v2` were trained for Anima-Base v1.0. This example uses one with `anima-aesthetic-v1.1`. The others were trained for the older Anima Preview3, so they may be a little less effective.
+> Models marked `v2` were trained for Anima-Base v1.0. The others were trained for the older Anima Preview3, so they may be a little less effective.
 
 ```text
 📂ComfyUI/
@@ -104,6 +107,5 @@ Choose a suitable model for the control image you want to use.
 
 [](/workflows/basic-workflows/anima/anima-lllite-any-test-like-v2.json)
 
-`any-test-like-v2` combines several types of control, including rough sketches, line art, and grayscale images, in one model.
-
-Here, let's simply use an edge-detected image as the input.
+* `anima-lllite-any-test-like-v2` combines several types of control in a single model. It can use rough sketches or line art to guide the composition, or colorize grayscale images.
+* In this workflow, `Canny` extracts the outlines from the input image and uses them as the control image.

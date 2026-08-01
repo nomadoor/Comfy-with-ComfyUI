@@ -84,7 +84,7 @@ masterpiece, best quality, score_9, safe,
 
 ## Anima LLLite
 
-LLLiteとは Kohya氏が開発した、軽量なControlNetのようなものです。
+ControlNet-LLLite は、kohya 氏が開発した軽量な ControlNet です。
 
 ### モデルのダウンロード
 
@@ -107,5 +107,5 @@ LLLiteとは Kohya氏が開発した、軽量なControlNetのようなもので�
 
 [](/workflows/basic-workflows/anima/anima-lllite-any-test-like-v2.json)
 
-* `any-test-like-v2` は、ラフや線画、グレースケール画像など、いくつかの制御をひとつにまとめたモデルです。
-* 今回は単にエッジ抽出したものを入力として、使ってみましょう。
+* `anima-lllite-any-test-like-v2` は、いくつかの制御をひとつにまとめたモデルです。ラフや線画から構図を渡したり、グレースケール画像を彩色できたりします。
+* この workflow では、入力画像から `Canny` で輪郭を抽出し、制御画像として使っています。
