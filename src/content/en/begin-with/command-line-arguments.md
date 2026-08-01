@@ -61,11 +61,11 @@ Used for browser behavior and ComfyUI sharing settings within LAN.
 | :---: | :--- | :--- | :--- |
 | 🔥 | `--disable-auto-launch` | Disable **browser auto-launch**. | With official Windows Portable, add this to the end of the `.bat` file if you do not want the browser to open at startup. |
 | 🔥 | `--output-directory [path]` | Set **output directory**. | When you want to change the save destination of generated images. |
-| | `--listen` | Allow external connection: Specify the IP address to listen to. | Listen on `0.0.0.0` (all addresses) with no argument (`--listen`). Accessible from another PC. |
+| | `--listen` | Allow external connection: Specify the IP address to listen to. | With no argument (`--listen`), listen on both IPv4 `0.0.0.0` and IPv6 `::`. Accessible from another PC. |
 | | `--port [num]` | Set listen port (default: 8188). | Change when the port is already in use. |
 | | `--enable-manager` | Enable ComfyUI Manager. | Used to show Manager in the portable and manual installation versions. |
 | | `--enable-manager-legacy-ui` | Enable the old ComfyUI Manager UI. | Use together with `--enable-manager`. See [ComfyUI Manager](/en/begin-with/comfyui-manager/) for details. |
-| | `--models-directory [path]` | Change the location of the `models` directory. | Specify an existing directory using an absolute path. |
+| | `--models-directory [path]` | Change the location of the `models` directory. | Specify an existing readable directory. |
 | | `--extra-model-paths-config [path]` | Load one or more `extra_model_paths.yaml` files. | When you want to manage multiple model storage locations. |
 | | `--auto-launch` | Automatically launch ComfyUI in the default browser. | |
 

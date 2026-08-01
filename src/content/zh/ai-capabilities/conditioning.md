@@ -80,7 +80,7 @@ CLIP 擅长短描述和概念之间的对应，但不太擅长将长文章或复
 
 ## 其他 Conditioning（概略）
 
-本页面虽然只针对了文本，但实际上除了文本以外还有各种各样的 Conditioning。
+本页面虽然只针对文本，但实际上除了文本以外还有各种各样的 Conditioning。
 
 ### 基于参考图像的 Conditioning
 

@@ -89,7 +89,7 @@ LLLite is something like a lightweight ControlNet developed by Kohya.
 
 Choose a suitable model for the control image you want to use.
 
-> Models marked `v2` are for Anima-Base v1.0. The others were trained for the older Anima Preview3, so they may be a little less effective.
+> Models marked `v2` were trained for Anima-Base v1.0. This example uses one with `anima-aesthetic-v1.1`. The others were trained for the older Anima Preview3, so they may be a little less effective.
 
 ```text
 📂ComfyUI/
@@ -98,7 +98,7 @@ Choose a suitable model for the control image you want to use.
         └── anima-lllite-*.safetensors
 ```
 
-### anima-lllite-any-test-like
+### anima-lllite-any-test-like-v2
 
 ![](https://gyazo.com/d42f85633b9036b7e2e6e806c064ef56){gyazo=image}
 

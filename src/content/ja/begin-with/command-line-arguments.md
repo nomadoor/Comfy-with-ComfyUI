@@ -61,11 +61,11 @@ VRAM不足によるエラー（OOM）対策や、VRAM容量に応じた動作調
 | :---: | :--- | :--- | :--- |
 | 🔥 | `--disable-auto-launch` | **ブラウザの自動起動**を無効化。 | 公式Windows Portableで、起動時にブラウザを開きたくない場合は `.bat` の末尾に追加します。 |
 | 🔥 | `--output-directory [path]` | **出力先ディレクトリ**を設定。 | 生成画像の保存先を変更したい場合に。 |
-| | `--listen` | 外部からの接続許可: リッスンするIPアドレスを指定。 | 引数なし (`--listen`) で `0.0.0.0` (すべてのアドレス) でリッスン。別PCからアクセス可能に。 |
+| | `--listen` | 外部からの接続許可: リッスンするIPアドレスを指定。 | 引数なし (`--listen`) で IPv4 の `0.0.0.0` と IPv6 の `::` の両方でリッスン。別PCからアクセス可能に。 |
 | | `--port [num]` | リッスンポートを設定 (デフォルト: 8188)。 | 既にポートが使用されている場合などに変更します。 |
 | | `--enable-manager` | ComfyUI Manager を有効化する。 | ポータブル版や手動インストール版で Manager を表示するために使用します。 |
 | | `--enable-manager-legacy-ui` | 古い ComfyUI Manager UI を有効化する。 | `--enable-manager` と併用します。詳しくは [ComfyUI Manager](/ja/begin-with/comfyui-manager/) を参照してください。 |
-| | `--models-directory [path]` | `models` ディレクトリの場所を変更する。 | 存在するディレクトリを絶対パスで指定します。 |
+| | `--models-directory [path]` | `models` ディレクトリの場所を変更する。 | 存在し、読み取り可能なディレクトリを指定します。 |
 | | `--extra-model-paths-config [path]` | 1つ以上の `extra_model_paths.yaml` ファイルを読み込む。 | モデルの保存場所を複数管理したい場合に。 |
 | | `--auto-launch` | デフォルトのブラウザでComfyUIを自動的に起動する。 | |
 

@@ -42,9 +42,8 @@ SDXL 世代のアニメ系モデルからの移行先として、かなり期待
 
   * [qwen_image_vae.safetensors](https://huggingface.co/circlestone-labs/Anima/blob/main/split_files/vae/qwen_image_vae.safetensors) (254 MB)
 
-> `anima-base-v1.0` は未調整のベースモデルです。表現の幅・多様性・スタイル追従性を優先したい場合や、LoRA を学習する場合はこちらを使います。
->
-> `anima-aesthetic-v1.1` は高品質な画像で追加学習した生成向けモデルです。Base よりも出力の一貫性が高く、デフォルトの絵柄も整いやすくなっています。
+> `anima-base-v1.0` は未調整のベースモデルです。
+> `anima-aesthetic-v1.1` は、高品質な画像でファインチューニングされたモデルです。気軽に生成を試したいときは、基本的にこちらを使えばよいでしょう。
 
 ```text
 📂ComfyUI/
@@ -93,7 +92,7 @@ LLLiteとは Kohya氏が開発した、軽量なControlNetのようなもので�
 
 制御画像に合わせて適切なモデルを用意してください。
 
-> `v2` と書かれたものは Anima-Base v1.0 用です。それ以外は旧 Preview3 版の Anima で学習されているので、効きが少し悪いかもしれません。
+> `v2` と書かれたものは Anima-Base v1.0 向けに学習されています。それ以外は旧 Preview3 版の Anima で学習されているので、効きが少し悪いかもしれません。
 
 ```text
 📂ComfyUI/
@@ -102,7 +101,7 @@ LLLiteとは Kohya氏が開発した、軽量なControlNetのようなもので�
         └── anima-lllite-*.safetensors
 ```
 
-### anima-lllite-any-test-like
+### anima-lllite-any-test-like-v2
 
 ![](https://gyazo.com/d42f85633b9036b7e2e6e806c064ef56){gyazo=image}
 

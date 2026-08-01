@@ -89,7 +89,7 @@ LLLite 是 Kohya 开发的、类似轻量版 ControlNet 的技术。
 
 请根据要使用的控制图像准备合适的模型。
 
-> 标有 `v2` 的模型面向 Anima-Base v1.0。其他模型使用旧版 Anima Preview3 训练，因此效果可能会稍弱一些。
+> 标有 `v2` 的模型针对 Anima-Base v1.0 训练。本例将其与 `anima-aesthetic-v1.1` 搭配使用。其他模型使用旧版 Anima Preview3 训练，因此效果可能会稍弱一些。
 
 ```text
 📂ComfyUI/
@@ -98,7 +98,7 @@ LLLite 是 Kohya 开发的、类似轻量版 ControlNet 的技术。
         └── anima-lllite-*.safetensors
 ```
 
-### anima-lllite-any-test-like
+### anima-lllite-any-test-like-v2
 
 ![](https://gyazo.com/d42f85633b9036b7e2e6e806c064ef56){gyazo=image}
 

@@ -61,11 +61,11 @@ python main.py --fast
 | :---: | :--- | :--- | :--- |
 | 🔥 | `--disable-auto-launch` | 禁用**浏览器自动启动**。 | 使用官方 Windows 便携版时，如果不想在启动时打开浏览器，请将它追加到 `.bat` 文件末尾。 |
 | 🔥 | `--output-directory [path]` | 设置**输出目录**。 | 想更改生成图像的保存位置时使用。 |
-| | `--listen` | 允许外部连接: 指定监听的 IP 地址。 | 不带参数 (`--listen`) 时监听 `0.0.0.0` (所有地址)。这样可以从其他 PC 访问。 |
+| | `--listen` | 允许外部连接: 指定监听的 IP 地址。 | 不带参数 (`--listen`) 时同时监听 IPv4 的 `0.0.0.0` 和 IPv6 的 `::`。这样可以从其他 PC 访问。 |
 | | `--port [num]` | 设置监听端口 (默认: 8188)。 | 当端口已被占用时进行更改。 |
 | | `--enable-manager` | 启用 ComfyUI Manager。 | 在便携版和手动安装版中用于显示 Manager。 |
 | | `--enable-manager-legacy-ui` | 启用旧版 ComfyUI Manager UI。 | 与 `--enable-manager` 一起使用。详情请参考 [ComfyUI Manager](/zh/begin-with/comfyui-manager/)。 |
-| | `--models-directory [path]` | 更改 `models` 目录的位置。 | 使用绝对路径指定一个已存在的目录。 |
+| | `--models-directory [path]` | 更改 `models` 目录的位置。 | 指定一个已存在且可读取的目录。 |
 | | `--extra-model-paths-config [path]` | 读取一个或多个 `extra_model_paths.yaml` 文件。 | 想要管理多个模型保存位置时使用。 |
 | | `--auto-launch` | 使用默认浏览器自动启动 ComfyUI。 | |
 
