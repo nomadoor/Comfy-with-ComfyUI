@@ -36,7 +36,7 @@ Unlike Flux.1, Chroma1-HD does not use CLIP, but uses only T5.
 - text_encoders
   - [t5xxl_fp8_e4m3fn_scaled.safetensors](https://huggingface.co/comfyanonymous/flux_text_encoders/blob/main/t5xxl_fp8_e4m3fn_scaled.safetensors)
 - vae
-  - [ae.safetensors](https://huggingface.co/black-forest-labs/FLUX.1-schnell/blob/main/ae.safetensors)
+  - [ae.safetensors](https://huggingface.co/Comfy-Org/z_image/blob/main/split_files/vae/ae.safetensors)
 
 ```text
 📂ComfyUI/
