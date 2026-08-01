@@ -6,7 +6,7 @@ slug: conditioning
 navId: conditioning
 title: Conditioning
 created: 2025-11-13
-updated: 2026-03-02
+updated: 2026-08-01
 summary: 拡散モデルに「こういう画像がほしい」と伝える仕組み
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
@@ -73,6 +73,7 @@ CLIPは単語と画像の対応を見ているだけなので、長い文章や�
 一方、MLLMであれば、はるかに高い精度で理解できます。
 
 > ![Z-Image](https://gyazo.com/21e83fc01b81ea693037ba3d17f39d5a){gyazo=image}
+>
 > **例**：`A dog on a log with a frog in a bog`  
 > （丸太の上に犬、沼にはカエル、という複雑な位置関係も正確に理解）
 
