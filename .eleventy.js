@@ -79,7 +79,7 @@ function getPreviewDimensions(meta, targetSize = 1000) {
 }
 
 function createImageVariants(url = "", size = 2000) {
-  const fallback = { preview: url, full: url };
+  const fallback = { preview: url, large: url, full: url };
   if (typeof url !== "string" || !url) {
     return fallback;
   }
@@ -102,11 +102,13 @@ function createImageVariants(url = "", size = 2000) {
     const id = normalizedPath.slice(0, -ext.length);
     const preview = `${normalizedUrl.origin}/${id}/max_size/${size}${ext}`;
     const fullSize = Math.max(size, 2000);
-    const full = `${normalizedUrl.origin}/${id}/max_size/${fullSize}${ext}`;
+    const large = `${normalizedUrl.origin}/${id}/max_size/${fullSize}${ext}`;
+    const full = `https://gyazo.com/${id}/raw`;
     const meta = gyazoMeta[normalized];
     const previewDims = getPreviewDimensions(meta, size);
     return {
       preview,
+      large,
       full,
       width: previewDims.width,
       height: previewDims.height,
@@ -883,7 +885,7 @@ export default function (eleventyConfig) {
     const imgAspect = variants.width && variants.height ? `${variants.width} / ${variants.height}` : aspect;
     const commonFig = `<figure class="article-media" style="--article-media-width:${imgWidth}px; --article-media-height:${imgHeight}px; --article-media-aspect:${imgAspect};"><div class="article-media__frame">`;
     const closing = `${alt ? `<figcaption>${alt}</figcaption>` : ""}</figure>`;
-    return `${commonFig}<img src="${variants.preview}" alt="${alt}" loading="lazy" decoding="async" width="${imgWidth}" height="${imgHeight}" /></div>${closing}`;
+    return `${commonFig}<img src="${variants.preview}" data-full-src="${variants.full}" alt="${alt}" loading="lazy" decoding="async" width="${imgWidth}" height="${imgHeight}" /></div>${closing}`;
   }
 
   // Detect `{gyazo=...}` right after an image and mark the token.
@@ -940,7 +942,6 @@ export default function (eleventyConfig) {
 
   markdownLib.renderer.rules.image = function (tokens, idx, options, env, self) {
     const token = tokens[idx];
-    const isGyazoImg = Boolean(token.meta?.isGyazo || token.attrGet("gyazo"));
     if (token.meta?.isGyazo || token.attrGet("gyazo")) {
       return renderGyazoMedia(token);
     }
@@ -955,9 +956,8 @@ export default function (eleventyConfig) {
         token.attrSet("decoding", "async");
       }
       if (variants.full && variants.full !== variants.preview) {
-        const fullSrc = isGyazoImg ? variants.preview : variants.full;
-        token.attrSet("data-full-src", fullSrc);
-        token.attrSet("srcset", `${variants.preview} 1000w, ${variants.full} 2000w`);
+        token.attrSet("data-full-src", variants.full);
+        token.attrSet("srcset", `${variants.preview} 1000w, ${variants.large || variants.full} 2000w`);
         if (!token.attrGet("sizes")) {
           token.attrSet("sizes", "(min-width: 768px) 720px, 100vw");
         }
@@ -1086,7 +1086,7 @@ export default function (eleventyConfig) {
         ];
         const isGyazo = typeof normalizedImg === "string" && normalizedImg.includes("gyazo.com");
 
-        // Fix: Use higher resolution for Gyazo (lightbox will handle max_size/2000)
+        // Keep the raw Gyazo asset for the lightbox while the page uses a preview.
         const fullSrc = isGyazo
           ? (variants.full || variants.preview)
           : variants.full && variants.full !== variants.preview
@@ -1094,8 +1094,8 @@ export default function (eleventyConfig) {
             : variants.preview;
 
         attrs.push(`data-full-src="${fullSrc}"`);
-        if (!isGyazo && variants.full && variants.full !== variants.preview) {
-          attrs.push(`srcset="${variants.preview} 1000w, ${variants.full} 2000w"`);
+        if (variants.full && variants.full !== variants.preview) {
+          attrs.push(`srcset="${variants.preview} 1000w, ${variants.large || variants.full} 2000w"`);
           attrs.push(`sizes="(min-width: 900px) ${width}vw, 100vw"`);
         }
         if (widthAttr && heightAttr) {

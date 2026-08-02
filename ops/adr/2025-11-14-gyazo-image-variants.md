@@ -16,6 +16,8 @@
 4. Restore the global `filter: brightness(0.85)` for regular media but remove the extra brightness from hero images; retain grayscale to match the mock.
 5. Document the change via this ADR; no `/ops` token updates were required beyond the ADR entry.
 
+The untouched original is loaded through `https://gyazo.com/<id>/raw`, which redirects to the canonical raw asset with its actual file extension. A `/max_size/<n>` URL may be used for the page preview and responsive `srcset`, but must not be emitted as `data-full-src` or substituted by the lightbox.
+
 ## Consequences
 - Regular navigation now downloads smaller hero/inline assets while maintaining sharp lightbox zooms.
 - All Markdown images lazy-load by default, freeing the main thread and avoiding layout jumps despite remote Gyazo hosting.

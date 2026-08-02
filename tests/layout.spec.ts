@@ -41,11 +41,11 @@ test.describe("Layout rails", () => {
 
     await button.click();
 
+    await expect(button).toHaveClass(/is-success/);
+
     await expect
       .poll(() => page.evaluate(() => window.__copied))
       .toContain("#basic-method");
-
-    await expect(button).toHaveClass(/is-success/);
   });
 
   test("Gyazo hero images always use max_size variants", async ({ page }) => {
@@ -61,6 +61,129 @@ test.describe("Layout rails", () => {
 
     const currentSrc = await heroImage.evaluate((img) => img.currentSrc || img.src);
     expect(currentSrc).toContain("/max_size/");
+  });
+
+  test("Gyazo lightbox loads raw media and supports pan and continuous zoom", async ({ page }) => {
+    await page.goto("/ja/basic-workflows/anima/");
+
+    const articleImage = page.locator(".article-body .article-media img").first();
+    const previewSrc = await articleImage.getAttribute("src");
+    const fullSrc = await articleImage.getAttribute("data-full-src");
+
+    expect(previewSrc).toContain("/max_size/");
+    expect(fullSrc).toMatch(/^https:\/\/gyazo\.com\/[a-f0-9]{32}\/raw$/);
+    expect(fullSrc).not.toContain("/max_size/");
+
+    await page.route(fullSrc!, async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: "image/svg+xml",
+        body: '<svg xmlns="http://www.w3.org/2000/svg" width="2" height="2"></svg>'
+      });
+    });
+
+    await articleImage.click();
+    const lightboxImage = page.locator("[data-lightbox-image]");
+    await expect(lightboxImage).toHaveAttribute("src", fullSrc!);
+
+    const lightbox = page.locator(".lightbox");
+    const media = page.locator(".lightbox__media");
+    const zoomIn = page.locator("[data-lightbox-zoom-in]");
+    const zoomReset = page.locator("[data-lightbox-zoom-reset]");
+
+    await expect(page.locator("[data-lightbox-help]")).toContainText(
+      "クリックで拡大・ドラッグで移動・ホイールで拡大縮小"
+    );
+    await expect(page.locator(".lightbox__controls")).toHaveCSS("border-top-style", "none");
+    await expect(page.locator("[data-lightbox-close]")).toHaveAttribute("aria-label", "閉じる");
+    await expect(zoomReset.locator(".lightbox__icon")).toBeVisible();
+    await expect(zoomReset).toBeDisabled();
+    await expect(zoomReset).toHaveCSS("color", "rgba(255, 255, 255, 0.34)");
+    await expect(page.locator(".lightbox__zoom-controls")).toHaveCSS("display", "flex");
+    await expect(page.locator(".lightbox__zoom-controls")).toHaveCSS("align-items", "center");
+    await expect(page.locator(".lightbox__zoom-controls")).toHaveCSS("gap", "normal");
+    await expect(page.locator(".lightbox__zoom-level")).toHaveCSS("display", "flex");
+    await expect(page.locator(".lightbox__zoom-level")).toHaveCSS("align-items", "center");
+    await expect(page.locator("[data-lightbox-zoom-value]")).toHaveCSS("transform", "none");
+
+    const controlBoxes = await Promise.all([
+      zoomReset.locator(".lightbox__icon").boundingBox(),
+      page.locator("[data-lightbox-zoom-out] .lightbox__icon").boundingBox(),
+      page.locator("[data-lightbox-zoom-in] .lightbox__icon").boundingBox()
+    ]);
+    if (controlBoxes.some((box) => !box)) throw new Error("Unable to measure the zoom icons");
+    const iconCenters = controlBoxes.map((box) => box!.y + box!.height / 2);
+    expect(Math.max(...iconCenters) - Math.min(...iconCenters)).toBeLessThan(0.1);
+
+    const zoomOutBox = await page.locator("[data-lightbox-zoom-out]").boundingBox();
+    const zoomValueBox = await page.locator("[data-lightbox-zoom-value]").boundingBox();
+    const zoomInBox = await zoomIn.boundingBox();
+    const zoomResetBox = await zoomReset.boundingBox();
+    const zoomLevelBox = await page.locator(".lightbox__zoom-level").boundingBox();
+    if (!zoomOutBox || !zoomValueBox || !zoomInBox || !zoomResetBox || !zoomLevelBox) {
+      throw new Error("Unable to measure the zoom controls");
+    }
+    const zoomOutCenter = zoomOutBox.x + zoomOutBox.width / 2;
+    const zoomValueCenter = zoomValueBox.x + zoomValueBox.width / 2;
+    const zoomInCenter = zoomInBox.x + zoomInBox.width / 2;
+    expect(Math.abs(zoomValueCenter - (zoomOutCenter + zoomInCenter) / 2)).toBeLessThan(0.1);
+    const resetCenterY = zoomResetBox.y + zoomResetBox.height / 2;
+    const zoomLevelCenterY = zoomLevelBox.y + zoomLevelBox.height / 2;
+    expect(Math.abs(resetCenterY - zoomLevelCenterY)).toBeLessThan(0.1);
+
+    const initialImageBox = await lightboxImage.boundingBox();
+    const previousBox = await page.locator("[data-lightbox-prev]").boundingBox();
+    const nextBox = await page.locator("[data-lightbox-next]").boundingBox();
+    if (!initialImageBox || !previousBox || !nextBox) {
+      throw new Error("Unable to measure the initial Lightbox layout");
+    }
+    expect(initialImageBox.x).toBeGreaterThanOrEqual(previousBox.x + previousBox.width);
+    expect(initialImageBox.x + initialImageBox.width).toBeLessThanOrEqual(nextBox.x);
+
+    await lightboxImage.click();
+    await expect(lightboxImage).toHaveAttribute("data-zoom-scale", "2");
+    await expect(lightboxImage).toHaveCSS("cursor", "grab");
+    await expect(zoomReset).toBeEnabled();
+    await expect(page.locator(".lightbox__help-desktop")).toHaveText(
+      "クリックで拡大・ドラッグで移動・ホイールで拡大縮小"
+    );
+
+    await zoomReset.click();
+    await expect(lightboxImage).toHaveAttribute("data-zoom-scale", "1");
+    await expect(lightboxImage).toHaveCSS("cursor", "zoom-in");
+    await expect(zoomReset).toBeDisabled();
+
+    await zoomIn.click();
+    await expect(lightboxImage).toHaveAttribute("data-zoom-scale", "1.5");
+    await expect(page.locator("[data-lightbox-zoom-value]")).toHaveText("150%");
+
+    const mediaBox = await media.boundingBox();
+    if (!mediaBox) throw new Error("Unable to measure the lightbox media");
+    const centerX = mediaBox.x + mediaBox.width / 2;
+    const centerY = mediaBox.y + mediaBox.height / 2;
+
+    await page.mouse.move(centerX, centerY);
+    await page.mouse.wheel(0, -100);
+    await expect(lightboxImage).toHaveAttribute("data-zoom-scale", "2");
+
+    const transformBeforeDrag = await lightboxImage.evaluate((image) => image.style.transform);
+    await page.mouse.move(centerX, centerY);
+    await page.mouse.down();
+    await page.mouse.move(centerX + 60, centerY + 35);
+    await page.mouse.up();
+    await expect
+      .poll(() => lightboxImage.evaluate((image) => image.style.transform))
+      .not.toBe(transformBeforeDrag);
+
+    const enlargedImageBox = await lightboxImage.boundingBox();
+    if (!enlargedImageBox) throw new Error("Unable to measure the enlarged image");
+    expect(enlargedImageBox.width).toBeGreaterThan(mediaBox.width);
+
+    await zoomReset.click();
+    await expect(lightboxImage).toHaveAttribute("data-zoom-scale", "1");
+
+    await media.click({ position: { x: 5, y: 5 } });
+    await expect(lightbox).not.toHaveClass(/is-open/);
   });
 
   test("direct hash links scroll to the target heading", async ({ page }) => {

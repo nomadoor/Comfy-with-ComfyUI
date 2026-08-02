@@ -1,15 +1,68 @@
 let lightboxEl = null;
 let imageEl = null;
 let videoEl = null;
+let mediaEl = null;
 let closeButtons = [];
 let prevButton = null;
 let nextButton = null;
+let zoomControls = null;
+let zoomOutButton = null;
+let zoomInButton = null;
+let zoomResetButton = null;
+let zoomValueEl = null;
+let helpEl = null;
 let keyHandler = null;
-let zoomed = false;
 let currentIndex = 0;
 let mediaItems = [];
 let initializedMedia = new WeakSet();
 let controlsBound = false;
+let scale = 1;
+let panX = 0;
+let panY = 0;
+let dragStart = null;
+let pinchStart = null;
+let pointerMoved = false;
+const activePointers = new Map();
+
+const MIN_SCALE = 1;
+const MAX_SCALE = 5;
+const ZOOM_STEP = 0.5;
+
+const LIGHTBOX_LABELS = {
+  ja: {
+    dialog: "画像プレビュー",
+    close: "閉じる",
+    previous: "前の画像",
+    next: "次の画像",
+    zoomOut: "縮小",
+    zoomIn: "拡大",
+    reset: "倍率と位置をリセット",
+    desktopHelp: "クリックで拡大・ドラッグで移動・ホイールで拡大縮小",
+    touchHelp: "ピンチで拡大縮小・ドラッグで移動",
+  },
+  en: {
+    dialog: "Image preview",
+    close: "Close",
+    previous: "Previous image",
+    next: "Next image",
+    zoomOut: "Zoom out",
+    zoomIn: "Zoom in",
+    reset: "Reset zoom and position",
+    desktopHelp: "Click to zoom · Drag to move · Scroll to zoom",
+    touchHelp: "Pinch to zoom · Drag to move",
+  },
+  zh: {
+    dialog: "图片预览",
+    close: "关闭",
+    previous: "上一张图片",
+    next: "下一张图片",
+    zoomOut: "缩小",
+    zoomIn: "放大",
+    reset: "重置缩放和位置",
+    desktopHelp: "点击放大・拖动移动・滚轮缩放",
+    touchHelp: "双指缩放・拖动移动",
+  },
+};
 
 const LIGHTBOX_ICONS = {
   close:
@@ -18,10 +71,21 @@ const LIGHTBOX_ICONS = {
     '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 4L7 12L15 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
   next:
     '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 20L17 12L9 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  minus:
+    '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
+  plus:
+    '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
+  reset:
+    '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4V10H10M20 20V14H14M5.1 15A8 8 0 0 0 18.7 17M18.9 9A8 8 0 0 0 5.3 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
 };
 
 function renderIcon(name) {
   return `<span class="lightbox__icon" aria-hidden="true">${LIGHTBOX_ICONS[name] || ""}</span>`;
+}
+
+function getLightboxLabels() {
+  const lang = document.documentElement.lang || document.body?.lang || "en";
+  return LIGHTBOX_LABELS[lang] || LIGHTBOX_LABELS.en;
 }
 
 function getMediaRatio(target) {
@@ -42,23 +106,44 @@ function getMediaRatio(target) {
 
 function buildLightbox() {
   if (lightboxEl) return lightboxEl;
+  const labels = getLightboxLabels();
   const wrapper = document.createElement("div");
   wrapper.className = "lightbox";
   wrapper.innerHTML = `
-    <div class="lightbox__backdrop" data-lightbox-close></div>
-    <div class="lightbox__content" role="dialog" aria-modal="true" aria-label="画像プレビュー">
-      <button class="lightbox__close" type="button" data-lightbox-close aria-label="閉じる">
+    <div class="lightbox__backdrop" data-lightbox-backdrop></div>
+    <div class="lightbox__content" role="dialog" aria-modal="true" aria-label="${labels.dialog}">
+      <button class="lightbox__close" type="button" data-lightbox-close aria-label="${labels.close}">
         ${renderIcon("close")}
       </button>
+      <div class="lightbox__controls">
+        <p class="lightbox__help" data-lightbox-help>
+          <span class="lightbox__help-desktop">${labels.desktopHelp}</span>
+          <span class="lightbox__help-touch">${labels.touchHelp}</span>
+        </p>
+        <div class="lightbox__zoom-controls" data-lightbox-zoom-controls hidden>
+          <button class="lightbox__reset-button" type="button" data-lightbox-zoom-reset aria-label="${labels.reset}">
+            ${renderIcon("reset")}
+          </button>
+          <div class="lightbox__zoom-level">
+            <button class="lightbox__zoom-button" type="button" data-lightbox-zoom-out aria-label="${labels.zoomOut}">
+              ${renderIcon("minus")}
+            </button>
+            <span class="lightbox__zoom-value" data-lightbox-zoom-value aria-live="polite">100%</span>
+            <button class="lightbox__zoom-button" type="button" data-lightbox-zoom-in aria-label="${labels.zoomIn}">
+              ${renderIcon("plus")}
+            </button>
+          </div>
+        </div>
+      </div>
       <div class="lightbox__image-area">
-        <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="前の画像">
+        <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="${labels.previous}">
           ${renderIcon("prev")}
         </button>
         <div class="lightbox__media">
-          <img data-lightbox-image alt="" />
+          <img data-lightbox-image alt="" draggable="false" />
           <video data-lightbox-video playsinline></video>
         </div>
-        <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="次の画像">
+        <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="${labels.next}">
           ${renderIcon("next")}
         </button>
       </div>
@@ -68,10 +153,33 @@ function buildLightbox() {
   lightboxEl = wrapper;
   imageEl = wrapper.querySelector("[data-lightbox-image]");
   videoEl = wrapper.querySelector("[data-lightbox-video]");
+  mediaEl = wrapper.querySelector(".lightbox__media");
   closeButtons = wrapper.querySelectorAll("[data-lightbox-close]");
   prevButton = wrapper.querySelector("[data-lightbox-prev]");
   nextButton = wrapper.querySelector("[data-lightbox-next]");
+  zoomControls = wrapper.querySelector("[data-lightbox-zoom-controls]");
+  zoomOutButton = wrapper.querySelector("[data-lightbox-zoom-out]");
+  zoomInButton = wrapper.querySelector("[data-lightbox-zoom-in]");
+  zoomResetButton = wrapper.querySelector("[data-lightbox-zoom-reset]");
+  zoomValueEl = wrapper.querySelector("[data-lightbox-zoom-value]");
+  helpEl = wrapper.querySelector("[data-lightbox-help]");
   return wrapper;
+}
+
+function updateLightboxLabels() {
+  if (!lightboxEl) return;
+  const labels = getLightboxLabels();
+  lightboxEl.querySelector(".lightbox__content")?.setAttribute("aria-label", labels.dialog);
+  lightboxEl.querySelector("[data-lightbox-close]")?.setAttribute("aria-label", labels.close);
+  lightboxEl.querySelector("[data-lightbox-prev]")?.setAttribute("aria-label", labels.previous);
+  lightboxEl.querySelector("[data-lightbox-next]")?.setAttribute("aria-label", labels.next);
+  zoomOutButton?.setAttribute("aria-label", labels.zoomOut);
+  zoomInButton?.setAttribute("aria-label", labels.zoomIn);
+  zoomResetButton?.setAttribute("aria-label", labels.reset);
+  const desktopHelp = lightboxEl.querySelector(".lightbox__help-desktop");
+  const touchHelp = lightboxEl.querySelector(".lightbox__help-touch");
+  if (desktopHelp) desktopHelp.textContent = labels.desktopHelp;
+  if (touchHelp) touchHelp.textContent = labels.touchHelp;
 }
 
 function getMediaSource(target) {
@@ -82,17 +190,20 @@ function getMediaSource(target) {
     if (gid) return `https://i.gyazo.com/${gid}.mp4`;
   }
 
-  const pick = target.dataset.fullSrc || target.currentSrc || target.src || "";
+  if (target.dataset.fullSrc) {
+    return target.dataset.fullSrc;
+  }
 
-  // If it's a Gyazo still image without max_size, force preview URL to avoid 403/404
+  const pick = target.currentSrc || target.src || "";
+
+  // Recover the raw asset if older markup only exposes a Gyazo max_size preview.
   try {
     const u = new URL(pick);
-    if (u.hostname === "i.gyazo.com" && !u.pathname.includes("/max_size/")) {
-      const m = u.pathname.match(/\/([a-f0-9]{32})\.(png|jpg|jpeg|gif)$/i);
+    if (u.hostname === "i.gyazo.com") {
+      const m = u.pathname.match(/\/([a-f0-9]{32})\/max_size\/\d+\.(png|jpg|jpeg|gif)$/i);
       if (m) {
         const id = m[1];
-        const ext = m[2].toLowerCase() === "jpeg" ? "jpg" : m[2].toLowerCase();
-        return `https://i.gyazo.com/${id}/max_size/2000.${ext}`;
+        return `https://gyazo.com/${id}/raw`;
       }
     }
   } catch {
@@ -102,9 +213,80 @@ function getMediaSource(target) {
   return pick;
 }
 
-function updateZoom() {
-  imageEl.style.transform = zoomed ? "scale(2)" : "scale(1)";
-  imageEl.classList.toggle("is-zoomed", zoomed);
+function clamp(value, min, max) {
+  return Math.min(max, Math.max(min, value));
+}
+
+function getPanBounds(nextScale = scale) {
+  const imageWidth = imageEl?.clientWidth || 0;
+  const imageHeight = imageEl?.clientHeight || 0;
+  const viewportWidth = mediaEl?.clientWidth || imageWidth;
+  const viewportHeight = mediaEl?.clientHeight || imageHeight;
+  return {
+    x: Math.max(0, (imageWidth * nextScale - viewportWidth) / 2),
+    y: Math.max(0, (imageHeight * nextScale - viewportHeight) / 2),
+  };
+}
+
+function applyTransform() {
+  if (!imageEl) return;
+  if (scale <= MIN_SCALE) {
+    scale = MIN_SCALE;
+    panX = 0;
+    panY = 0;
+  } else {
+    const bounds = getPanBounds();
+    panX = clamp(panX, -bounds.x, bounds.x);
+    panY = clamp(panY, -bounds.y, bounds.y);
+  }
+
+  imageEl.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${scale})`;
+  imageEl.classList.toggle("is-zoomed", scale > MIN_SCALE);
+  imageEl.dataset.zoomScale = String(scale);
+  mediaEl?.classList.toggle("is-pannable", scale > MIN_SCALE);
+
+  if (zoomValueEl) zoomValueEl.textContent = `${Math.round(scale * 100)}%`;
+  if (zoomResetButton) zoomResetButton.disabled = scale <= MIN_SCALE;
+  if (zoomOutButton) zoomOutButton.disabled = scale <= MIN_SCALE;
+  if (zoomInButton) zoomInButton.disabled = scale >= MAX_SCALE;
+}
+
+function resetView() {
+  scale = MIN_SCALE;
+  panX = 0;
+  panY = 0;
+  activePointers.clear();
+  dragStart = null;
+  pinchStart = null;
+  pointerMoved = false;
+  applyTransform();
+}
+
+function setScale(nextScale, clientX = null, clientY = null) {
+  if (!imageEl || imageEl.style.display === "none") return;
+  const previousScale = scale;
+  const clampedScale = clamp(nextScale, MIN_SCALE, MAX_SCALE);
+
+  if (clampedScale === MIN_SCALE) {
+    resetView();
+    return;
+  }
+
+  if (clientX != null && clientY != null && mediaEl) {
+    const rect = mediaEl.getBoundingClientRect();
+    const pointX = clientX - (rect.left + rect.width / 2);
+    const pointY = clientY - (rect.top + rect.height / 2);
+    const ratio = clampedScale / previousScale;
+    panX = pointX - (pointX - panX) * ratio;
+    panY = pointY - (pointY - panY) * ratio;
+  }
+
+  scale = clampedScale;
+  applyTransform();
+}
+
+function zoomBy(amount, clientX = null, clientY = null) {
+  setScale(scale + amount, clientX, clientY);
 }
 
 function show(index) {
@@ -117,8 +299,7 @@ function show(index) {
   lightboxEl?.style.setProperty("--lightbox-ratio", ratio.toString());
 
   // Reset state
-  zoomed = false;
-  updateZoom();
+  resetView();
 
   // Stop any playing video
   if (videoEl) {
@@ -129,6 +310,8 @@ function show(index) {
 
   if (isVideo) {
     imageEl.style.display = "none";
+    if (zoomControls) zoomControls.hidden = true;
+    if (helpEl) helpEl.hidden = true;
     if (videoEl) {
       videoEl.style.display = "block";
       if (highResSource) {
@@ -153,6 +336,8 @@ function show(index) {
     }
   } else {
     imageEl.style.display = "block";
+    if (zoomControls) zoomControls.hidden = false;
+    if (helpEl) helpEl.hidden = false;
 
     // 1. Show the current (low-res) image immediately for instant feedback
     const currentSrc = target.currentSrc || target.src;
@@ -191,6 +376,7 @@ function close() {
   }
   lightboxEl.classList.remove("is-open");
   document.documentElement.classList.remove("lightbox-open");
+  resetView();
   detachKeyHandler();
 }
 
@@ -198,11 +384,128 @@ function next(step = 1) {
   show(currentIndex + step);
 }
 
-function toggleZoom() {
-  // Zoom is only relevant for images
-  if (imageEl.style.display !== "none") {
-    zoomed = !zoomed;
-    updateZoom();
+function handleBackdropClick() {
+  if (scale > MIN_SCALE) {
+    resetView();
+    return;
+  }
+  close();
+}
+
+function handleMediaClick(event) {
+  if (event.target === mediaEl) {
+    handleBackdropClick();
+  }
+}
+
+function getPointerDistance(first, second) {
+  return Math.hypot(second.x - first.x, second.y - first.y);
+}
+
+function getPointerCenter(first, second) {
+  return {
+    x: (first.x + second.x) / 2,
+    y: (first.y + second.y) / 2,
+  };
+}
+
+function beginPinch() {
+  if (activePointers.size < 2 || !mediaEl) return;
+  const [first, second] = Array.from(activePointers.values());
+  const center = getPointerCenter(first, second);
+  const rect = mediaEl.getBoundingClientRect();
+  const centerX = center.x - (rect.left + rect.width / 2);
+  const centerY = center.y - (rect.top + rect.height / 2);
+  pinchStart = {
+    distance: Math.max(1, getPointerDistance(first, second)),
+    scale,
+    localX: (centerX - panX) / scale,
+    localY: (centerY - panY) / scale,
+  };
+  dragStart = null;
+}
+
+function handlePointerDown(event) {
+  if (imageEl.style.display === "none" || (event.pointerType === "mouse" && event.button !== 0)) return;
+  imageEl.setPointerCapture?.(event.pointerId);
+  activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+  pointerMoved = false;
+
+  if (activePointers.size === 2) {
+    beginPinch();
+    return;
+  }
+
+  dragStart = {
+    pointerId: event.pointerId,
+    x: event.clientX,
+    y: event.clientY,
+    panX,
+    panY,
+  };
+}
+
+function handlePointerMove(event) {
+  if (!activePointers.has(event.pointerId)) return;
+  activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+  if (activePointers.size >= 2 && pinchStart && mediaEl) {
+    const [first, second] = Array.from(activePointers.values());
+    const distance = Math.max(1, getPointerDistance(first, second));
+    const center = getPointerCenter(first, second);
+    const rect = mediaEl.getBoundingClientRect();
+    const centerX = center.x - (rect.left + rect.width / 2);
+    const centerY = center.y - (rect.top + rect.height / 2);
+    scale = clamp(pinchStart.scale * (distance / pinchStart.distance), MIN_SCALE, MAX_SCALE);
+    panX = centerX - pinchStart.localX * scale;
+    panY = centerY - pinchStart.localY * scale;
+    pointerMoved = true;
+    applyTransform();
+    return;
+  }
+
+  if (!dragStart || dragStart.pointerId !== event.pointerId || scale <= MIN_SCALE) return;
+  const deltaX = event.clientX - dragStart.x;
+  const deltaY = event.clientY - dragStart.y;
+  if (Math.abs(deltaX) > 3 || Math.abs(deltaY) > 3) pointerMoved = true;
+  panX = dragStart.panX + deltaX;
+  panY = dragStart.panY + deltaY;
+  imageEl.classList.add("is-dragging");
+  applyTransform();
+}
+
+function handlePointerEnd(event) {
+  activePointers.delete(event.pointerId);
+  if (imageEl.hasPointerCapture?.(event.pointerId)) {
+    imageEl.releasePointerCapture(event.pointerId);
+  }
+  imageEl.classList.remove("is-dragging");
+  pinchStart = null;
+
+  if (activePointers.size === 1) {
+    const [pointerId, pointer] = Array.from(activePointers.entries())[0];
+    dragStart = { pointerId, x: pointer.x, y: pointer.y, panX, panY };
+  } else {
+    dragStart = null;
+  }
+}
+
+function handleWheel(event) {
+  if (imageEl.style.display === "none") return;
+  event.preventDefault();
+  const amount = event.deltaY < 0 ? ZOOM_STEP : -ZOOM_STEP;
+  zoomBy(amount, event.clientX, event.clientY);
+}
+
+function handleImageClick(event) {
+  event.stopPropagation();
+  if (pointerMoved) {
+    event.preventDefault();
+    pointerMoved = false;
+    return;
+  }
+  if (scale === MIN_SCALE) {
+    setScale(2, event.clientX, event.clientY);
   }
 }
 
@@ -217,6 +520,20 @@ function onKeyDown(event) {
       break;
     case "ArrowLeft":
       next(-1);
+      break;
+    case "+":
+    case "=":
+      event.preventDefault();
+      zoomBy(ZOOM_STEP);
+      break;
+    case "-":
+    case "_":
+      event.preventDefault();
+      zoomBy(-ZOOM_STEP);
+      break;
+    case "0":
+      event.preventDefault();
+      resetView();
       break;
     default:
       break;
@@ -240,6 +557,7 @@ const initLightbox = (root = document) => {
   if (!mediaItems.length) return;
 
   buildLightbox();
+  updateLightboxLabels();
 
   mediaItems.forEach((media, index) => {
     if (initializedMedia.has(media)) return;
@@ -274,11 +592,26 @@ const initLightbox = (root = document) => {
       event.stopPropagation();
       next(1);
     });
-    imageEl.addEventListener("click", (event) => {
+    zoomOutButton.addEventListener("click", (event) => {
       event.stopPropagation();
-      toggleZoom();
+      zoomBy(-ZOOM_STEP);
     });
-    lightboxEl.querySelector(".lightbox__backdrop").addEventListener("click", close);
+    zoomInButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      zoomBy(ZOOM_STEP);
+    });
+    zoomResetButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      resetView();
+    });
+    imageEl.addEventListener("click", handleImageClick);
+    imageEl.addEventListener("pointerdown", handlePointerDown);
+    imageEl.addEventListener("pointermove", handlePointerMove);
+    imageEl.addEventListener("pointerup", handlePointerEnd);
+    imageEl.addEventListener("pointercancel", handlePointerEnd);
+    mediaEl.addEventListener("click", handleMediaClick);
+    mediaEl.addEventListener("wheel", handleWheel, { passive: false });
+    lightboxEl.querySelector(".lightbox__backdrop").addEventListener("click", handleBackdropClick);
     controlsBound = true;
   }
 };

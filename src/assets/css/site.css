@@ -4471,6 +4471,7 @@ body.lightbox-open {
 }
 
 .lightbox {
+  --lightbox-image-inline-gap: 4.75rem;
   position: fixed;
   inset: 0;
   display: none;
@@ -4486,58 +4487,83 @@ body.lightbox-open {
 .lightbox__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.96);
 }
 
 .lightbox__content {
-  position: relative;
-  max-width: 90vw;
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-md);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
-.lightbox__close {
+.lightbox__controls {
   position: absolute;
-  top: -2.5rem;
-  right: 0;
-  border: none;
-  background: transparent;
-  color: var(--color-text);
-  font-size: 1.5rem;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-2xs);
+  right: var(--space-md);
+  bottom: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-xs);
+  z-index: 4;
+  pointer-events: none;
+  color: #f5f5f5;
+}
+
+.lightbox__help {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  text-align: right;
+  pointer-events: none;
+}
+
+.lightbox__help[hidden] {
+  display: none;
+}
+
+.lightbox__help-touch {
+  display: none;
 }
 
 .lightbox__image-area {
-  position: relative;
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-lg);
+  pointer-events: none;
 }
 
 .lightbox__media {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: auto;
 }
 
 .lightbox__media img,
 .lightbox__media video {
-  width: min(80vw, calc(70vh * var(--lightbox-ratio, 1)));
-  height: min(70vh, calc(80vw / var(--lightbox-ratio, 1)));
-  max-width: 80vw;
-  max-height: 70vh;
+  width: min(calc(100vw - var(--lightbox-image-inline-gap) - var(--lightbox-image-inline-gap)), calc((100vh - 2rem) * var(--lightbox-ratio, 1)));
+  height: min(calc(100vh - 2rem), calc((100vw - var(--lightbox-image-inline-gap) - var(--lightbox-image-inline-gap)) / var(--lightbox-ratio, 1)));
+  max-width: calc(100vw - var(--lightbox-image-inline-gap) - var(--lightbox-image-inline-gap));
+  max-height: calc(100vh - 2rem);
   object-fit: contain;
   cursor: zoom-in;
   flex: 0 1 auto;
   z-index: 1;
+  filter: none;
+}
+
+.lightbox__media img {
+  touch-action: none;
+  user-select: none;
+  transform-origin: center;
+  will-change: transform;
 }
 
 .lightbox__media video {
@@ -4545,7 +4571,92 @@ body.lightbox-open {
 }
 
 .lightbox__media img.is-zoomed {
-  cursor: zoom-out;
+  cursor: grab;
+}
+
+.lightbox__media img.is-dragging {
+  cursor: grabbing;
+}
+
+.lightbox__zoom-controls {
+  display: flex;
+  align-items: center;
+  color: #f5f5f5;
+  pointer-events: auto;
+}
+
+.lightbox__zoom-level {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.lightbox__zoom-controls[hidden] {
+  display: none;
+}
+
+.lightbox__zoom-button,
+.lightbox__reset-button,
+.lightbox__close {
+  box-sizing: border-box;
+  min-width: 1.875rem;
+  height: 1.875rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.lightbox__zoom-value {
+  width: 3rem;
+  height: 1.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.68);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  z-index: 4;
+  width: 2.75rem;
+  height: 2.75rem;
+  color: #f5f5f5;
+  pointer-events: auto;
+}
+
+.lightbox__zoom-button:not(:disabled):hover,
+.lightbox__zoom-button:not(:disabled):focus-visible,
+.lightbox__reset-button:not(:disabled):hover,
+.lightbox__reset-button:not(:disabled):focus-visible,
+.lightbox__close:hover,
+.lightbox__close:focus-visible {
+  color: #fff;
+  opacity: 0.72;
+}
+
+.lightbox__zoom-button:disabled,
+.lightbox__reset-button:disabled {
+  color: rgba(255, 255, 255, 0.34);
+  opacity: 1;
+  cursor: default;
+  background: transparent;
+}
+
+.lightbox__zoom-button .lightbox__icon,
+.lightbox__reset-button .lightbox__icon {
+  width: 0.875rem;
+  height: 0.875rem;
 }
 
 .lightbox__nav {
@@ -4561,14 +4672,25 @@ body.lightbox-open {
   cursor: pointer;
   transition: var(--transition-fast);
   flex-shrink: 0;
-  position: relative;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 2;
+  pointer-events: auto;
+}
+
+.lightbox__nav--prev {
+  left: var(--space-md);
+}
+
+.lightbox__nav--next {
+  right: var(--space-md);
 }
 
 .lightbox__nav:hover,
 .lightbox__nav:focus-visible {
   background: rgba(255, 255, 255, 0.18);
-  transform: translateY(-1px);
+  transform: translateY(-50%);
 }
 
 .lightbox__icon {
@@ -4578,8 +4700,8 @@ body.lightbox-open {
 }
 
 .lightbox__close .lightbox__icon {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .lightbox__icon svg {
@@ -4587,6 +4709,16 @@ body.lightbox-open {
   height: 100%;
   stroke: currentColor;
   fill: none;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .lightbox__help-desktop {
+    display: none;
+  }
+
+  .lightbox__help-touch {
+    display: inline;
+  }
 }
 
 /* Mobile Navigation & Assistant Rail Overlay */
