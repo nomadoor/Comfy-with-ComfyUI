@@ -87,7 +87,8 @@ function renderIcon(name) {
 }
 
 function getLightboxLabels() {
-  const lang = document.documentElement.lang || document.body?.lang || "en";
+  const rawLang = document.documentElement.lang || document.body?.lang || "en";
+  const lang = rawLang.toLowerCase().split("-")[0];
   return LIGHTBOX_LABELS[lang] || LIGHTBOX_LABELS.en;
 }
 
@@ -131,7 +132,7 @@ function buildLightbox() {
             <button class="lightbox__zoom-button" type="button" data-lightbox-zoom-out aria-label="${labels.zoomOut}">
               ${renderIcon("minus")}
             </button>
-            <span class="lightbox__zoom-value" data-lightbox-zoom-value aria-live="polite">100%</span>
+            <span class="lightbox__zoom-value" data-lightbox-zoom-value>100%</span>
             <button class="lightbox__zoom-button" type="button" data-lightbox-zoom-in aria-label="${labels.zoomIn}">
               ${renderIcon("plus")}
             </button>
@@ -545,6 +546,7 @@ function handleImageClick(event) {
 
 function onKeyDown(event) {
   if (!lightboxEl || !lightboxEl.classList.contains("is-open")) return;
+  if (event.ctrlKey || event.metaKey || event.altKey) return;
   switch (event.key) {
     case "Escape":
       close();

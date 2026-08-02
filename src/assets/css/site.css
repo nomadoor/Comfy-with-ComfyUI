@@ -4542,6 +4542,7 @@ body.lightbox-open {
   position: relative;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   pointer-events: auto;
 }
@@ -4549,9 +4550,12 @@ body.lightbox-open {
 .lightbox__image-stack,
 .lightbox__media video {
   width: min(calc(100vw - var(--lightbox-image-inline-gap) - var(--lightbox-image-inline-gap)), calc((100vh - 2rem) * var(--lightbox-ratio, 1)));
+  width: min(calc(100vw - var(--lightbox-image-inline-gap) - var(--lightbox-image-inline-gap)), calc((100dvh - 2rem) * var(--lightbox-ratio, 1)));
   height: min(calc(100vh - 2rem), calc((100vw - var(--lightbox-image-inline-gap) - var(--lightbox-image-inline-gap)) / var(--lightbox-ratio, 1)));
+  height: min(calc(100dvh - 2rem), calc((100vw - var(--lightbox-image-inline-gap) - var(--lightbox-image-inline-gap)) / var(--lightbox-ratio, 1)));
   max-width: calc(100vw - var(--lightbox-image-inline-gap) - var(--lightbox-image-inline-gap));
   max-height: calc(100vh - 2rem);
+  max-height: calc(100dvh - 2rem);
   cursor: zoom-in;
   flex: 0 1 auto;
   z-index: 1;

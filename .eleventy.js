@@ -106,18 +106,37 @@ function createImageVariants(url = "", size = 2000) {
     const full = `https://gyazo.com/${id}/raw`;
     const meta = gyazoMeta[normalized];
     const previewDims = getPreviewDimensions(meta, size);
+    const largeDims = getPreviewDimensions(meta, fullSize);
     return {
       preview,
       large,
       full,
       width: previewDims.width,
       height: previewDims.height,
+      largeWidth: largeDims.width,
+      largeHeight: largeDims.height,
       originalWidth: meta?.width,
       originalHeight: meta?.height
     };
   } catch {
     return fallback;
   }
+}
+
+function createImageSrcset(variants = {}) {
+  const previewWidth = Number(variants.width);
+  const largeWidth = Number(variants.largeWidth);
+  if (
+    !variants.preview ||
+    !variants.large ||
+    variants.preview === variants.large ||
+    !previewWidth ||
+    !largeWidth ||
+    largeWidth <= previewWidth
+  ) {
+    return "";
+  }
+  return `${variants.preview} ${previewWidth}w, ${variants.large} ${largeWidth}w`;
 }
 
 function enhanceStandaloneImages(markdownLib) {
@@ -957,8 +976,9 @@ export default function (eleventyConfig) {
       }
       if (variants.full && variants.full !== variants.preview) {
         token.attrSet("data-full-src", variants.full);
-        token.attrSet("srcset", `${variants.preview} 1000w, ${variants.large || variants.full} 2000w`);
-        if (!token.attrGet("sizes")) {
+        const srcset = createImageSrcset(variants);
+        if (srcset) token.attrSet("srcset", srcset);
+        if (srcset && !token.attrGet("sizes")) {
           token.attrSet("sizes", "(min-width: 768px) 720px, 100vw");
         }
       } else {
@@ -1094,8 +1114,9 @@ export default function (eleventyConfig) {
             : variants.preview;
 
         attrs.push(`data-full-src="${fullSrc}"`);
-        if (variants.full && variants.full !== variants.preview) {
-          attrs.push(`srcset="${variants.preview} 1000w, ${variants.large || variants.full} 2000w"`);
+        const srcset = createImageSrcset(variants);
+        if (variants.full && variants.full !== variants.preview && srcset) {
+          attrs.push(`srcset="${srcset}"`);
           attrs.push(`sizes="(min-width: 900px) ${width}vw, 100vw"`);
         }
         if (widthAttr && heightAttr) {

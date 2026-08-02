@@ -85,10 +85,10 @@ test.describe("Layout rails", () => {
     const rawImage = page.locator("[data-lightbox-raw]");
     await expect(previewImage).toHaveAttribute("src", /max_size/);
     await expect(rawImage).toHaveAttribute("src", fullSrc!);
-    expect(rawRequests).toBe(1);
     await expect
       .poll(() => rawImage.evaluate((image) => image.complete && image.naturalWidth))
       .toBe(3394);
+    expect(rawRequests).toBe(1);
     await expect(lightboxImage).toHaveClass(/is-raw-ready/);
     await expect(lightboxImage).toHaveCSS("display", "grid");
     await expect(lightboxImage).toHaveCSS("transform", "none");
@@ -147,6 +147,11 @@ test.describe("Layout rails", () => {
     await expect(page.locator(".lightbox__zoom-level")).toHaveCSS("display", "flex");
     await expect(page.locator(".lightbox__zoom-level")).toHaveCSS("align-items", "center");
     await expect(page.locator("[data-lightbox-zoom-value]")).toHaveCSS("transform", "none");
+    const browserZoomAllowed = await page.evaluate(() => document.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "+", ctrlKey: true, bubbles: true, cancelable: true })
+    ));
+    expect(browserZoomAllowed).toBe(true);
+    await expect(lightboxImage).toHaveAttribute("data-zoom-scale", "1");
 
     const controlBoxes = await Promise.all([
       zoomReset.locator(".lightbox__icon").boundingBox(),
