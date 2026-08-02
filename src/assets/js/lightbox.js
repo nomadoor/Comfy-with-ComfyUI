@@ -1,6 +1,5 @@
 let lightboxEl = null;
 let imageEl = null;
-let previewImageEl = null;
 let rawImageEl = null;
 let videoEl = null;
 let mediaEl = null;
@@ -145,7 +144,6 @@ function buildLightbox() {
         </button>
         <div class="lightbox__media">
           <div class="lightbox__image-stack" data-lightbox-image>
-            <img class="lightbox__preview-image" data-lightbox-preview data-fade-init="true" alt="" draggable="false" />
             <img class="lightbox__raw-image" data-lightbox-raw data-fade-init="true" alt="" draggable="false" />
           </div>
           <video data-lightbox-video playsinline></video>
@@ -159,7 +157,6 @@ function buildLightbox() {
   document.body.appendChild(wrapper);
   lightboxEl = wrapper;
   imageEl = wrapper.querySelector("[data-lightbox-image]");
-  previewImageEl = wrapper.querySelector("[data-lightbox-preview]");
   rawImageEl = wrapper.querySelector("[data-lightbox-raw]");
   videoEl = wrapper.querySelector("[data-lightbox-video]");
   mediaEl = wrapper.querySelector(".lightbox__media");
@@ -307,10 +304,8 @@ function stopLightboxVideo() {
 }
 
 function resetImageLayers() {
-  if (!imageEl || !previewImageEl || !rawImageEl) return;
-  imageEl.classList.remove("is-raw-ready");
-  previewImageEl.removeAttribute("src");
-  previewImageEl.alt = "";
+  if (!imageEl || !rawImageEl) return;
+  imageEl.style.backgroundImage = "";
   rawImageEl.onload = null;
   rawImageEl.onerror = null;
   rawImageEl.removeAttribute("src");
@@ -330,7 +325,7 @@ function loadRawImage(source, token) {
     rawImage.onload = null;
     rawImage.onerror = null;
     if (token !== showToken || rawImage.getAttribute("src") !== source) return;
-    imageEl.classList.add("is-raw-ready");
+    imageEl.style.backgroundImage = "";
   };
   rawImage.onerror = () => {
     rawImage.onload = null;
@@ -343,11 +338,10 @@ function loadRawImage(source, token) {
 
 function showImage(target, source, token) {
   setImageViewerVisible(true);
-  if (!previewImageEl || !rawImageEl) return;
+  if (!imageEl || !rawImageEl) return;
 
   const previewSource = target.currentSrc || target.src;
-  if (previewSource) previewImageEl.src = previewSource;
-  previewImageEl.alt = target.alt || "";
+  imageEl.style.backgroundImage = previewSource ? `url(${JSON.stringify(previewSource)})` : "";
   rawImageEl.alt = target.alt || "";
   loadRawImage(source, token);
 }

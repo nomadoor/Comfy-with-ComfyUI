@@ -81,21 +81,17 @@ test.describe("Layout rails", () => {
     await articleImage.click();
 
     const lightboxImage = page.locator("[data-lightbox-image]");
-    const previewImage = page.locator("[data-lightbox-preview]");
     const rawImage = page.locator("[data-lightbox-raw]");
-    await expect(previewImage).toHaveAttribute("src", /max_size/);
     await expect(rawImage).toHaveAttribute("src", fullSrc!);
     await expect
       .poll(() => rawImage.evaluate((image) => image.complete && image.naturalWidth))
       .toBe(3394);
     expect(rawRequests).toBe(1);
-    await expect(lightboxImage).toHaveClass(/is-raw-ready/);
     await expect(lightboxImage).toHaveCSS("display", "grid");
+    await expect(lightboxImage).toHaveCSS("background-image", "none");
     await expect(lightboxImage).toHaveCSS("transform", "none");
     await expect(lightboxImage).toHaveCSS("will-change", "auto");
-    await expect(previewImage).toBeHidden();
     await expect(rawImage).toBeVisible();
-    await expect(previewImage).not.toHaveClass(/img-fade/);
     await expect(rawImage).not.toHaveClass(/img-fade/);
   });
 
@@ -121,13 +117,12 @@ test.describe("Layout rails", () => {
 
     await articleImage.click();
     const lightboxImage = page.locator("[data-lightbox-image]");
-    const previewImage = page.locator("[data-lightbox-preview]");
     const rawImage = page.locator("[data-lightbox-raw]");
-    await expect(previewImage).toBeVisible();
+    await expect(lightboxImage).toHaveCSS("background-image", /max_size/);
     await expect(rawImage).toHaveAttribute("src", fullSrc!, { timeout: 500 });
     await expect(rawImage).toHaveAttribute("fetchpriority", "high");
     await expect(rawImage).toBeVisible();
-    await expect(previewImage).toHaveCSS("z-index", "1");
+    await expect(rawImage).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
 
     const lightbox = page.locator(".lightbox");
     const media = page.locator(".lightbox__media");

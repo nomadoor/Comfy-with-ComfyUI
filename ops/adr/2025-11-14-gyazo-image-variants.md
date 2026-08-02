@@ -18,13 +18,9 @@
 
 The untouched original is loaded through `https://gyazo.com/<id>/raw`, which redirects to the canonical raw asset with its actual file extension. A `/max_size/<n>` URL may be used for the page preview and responsive `srcset`, but must not be emitted as `data-full-src` or substituted by the lightbox.
 
-Normal page media uses the reduced variants only. When the viewer opens, it immediately shows that already-loaded preview and starts a separate raw `<img>` request. Once the raw image load completes, reveal that image and remove the preview layer. Keeping preview and raw as distinct image elements prevents a stale preview texture from surviving a `src` replacement. CSS fits both layers inside the initial viewer clearance. Do not preload raw media during normal page viewing.
+Normal page media uses the reduced variants only. When the viewer opens, its one visible `<img>` immediately requests raw while the already-loaded preview is painted as that element's background. Raw remains visible and paintable throughout the request; once load completes, its own pixels cover the preview and the background is cleared. A failed raw request leaves the preview background visible. This avoids both a same-element `src` replacement and an occluded second image whose rasterization may be deferred until a viewport repaint.
 
-The image stack must retain its CSS grid display; show/hide it with the `hidden` attribute rather than an inline `display` value. A failed raw request leaves the preview visible. Assign one `onload` and `onerror` handler before setting the raw source, overwriting them on each view, and use the viewer generation token plus requested URL to ignore stale completions.
-
-Exclude both Lightbox image layers from the site's global image-fade animation. The preview is already loaded and the raw layer has its own explicit reveal state; adding a second opacity animation creates unnecessary compositor layers and can delay the visible layer update until a viewport repaint.
-
-Keep the raw layer paintable at all times and place the preview above it while loading. On raw load, hide only the preview; do not simultaneously toggle visibility on the raw layer. This reduces the completed swap to one paint-state change and avoids retaining the preview composite until a viewport resize.
+Assign one `onload` and `onerror` handler before setting the raw source, overwriting them on each view, and use the viewer generation token plus requested URL to ignore stale completions. Exclude the Lightbox image from the site's global image-fade animation because the preview background already provides its loading presentation. Do not preload raw media during normal page viewing.
 
 ## Consequences
 - Regular navigation now downloads smaller hero/inline assets while maintaining sharp lightbox zooms.
