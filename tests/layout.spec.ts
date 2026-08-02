@@ -64,6 +64,7 @@ test.describe("Layout rails", () => {
   });
 
   test("Gyazo lightbox requests raw only after opening", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 700 });
     let rawRequests = 0;
     await page.route(/^https:\/\/gyazo\.com\/[a-f0-9]{32}\/raw$/i, async (route) => {
       rawRequests += 1;
@@ -93,6 +94,25 @@ test.describe("Layout rails", () => {
     await expect(lightboxImage).toHaveCSS("will-change", "auto");
     await expect(rawImage).toBeVisible();
     await expect(rawImage).not.toHaveClass(/img-fade/);
+
+    const mobileDimensions = await lightboxImage.evaluate((stack) => {
+      const raw = stack.querySelector<HTMLImageElement>("[data-lightbox-raw]");
+      return {
+        maxScale: Number((stack as HTMLElement).dataset.zoomMax),
+        fittedWidth: (stack as HTMLElement).clientWidth,
+        fittedHeight: (stack as HTMLElement).clientHeight,
+        rawWidth: raw?.naturalWidth || 0,
+        rawHeight: raw?.naturalHeight || 0
+      };
+    });
+    expect(mobileDimensions.maxScale).toBeGreaterThan(5);
+    expect(mobileDimensions.maxScale * mobileDimensions.fittedWidth)
+      .toBeGreaterThanOrEqual(mobileDimensions.rawWidth - 1);
+    expect(mobileDimensions.maxScale * mobileDimensions.fittedHeight)
+      .toBeGreaterThanOrEqual(mobileDimensions.rawHeight - 1);
+
+    await page.setViewportSize({ width: 1200, height: 800 });
+    await expect.poll(async () => Number(await lightboxImage.getAttribute("data-zoom-max"))).toBe(5);
   });
 
   test("Gyazo lightbox loads raw media and supports pan and continuous zoom", async ({ page }) => {
