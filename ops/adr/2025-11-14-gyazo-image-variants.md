@@ -16,6 +16,12 @@
 4. Restore the global `filter: brightness(0.85)` for regular media but remove the extra brightness from hero images; retain grayscale to match the mock.
 5. Document the change via this ADR; no `/ops` token updates were required beyond the ADR entry.
 
+The untouched original is loaded through `https://gyazo.com/<id>/raw`, which redirects to the canonical raw asset with its actual file extension. A `/max_size/<n>` URL may be used for the page preview and responsive `srcset`, but must not be emitted as `data-full-src` or substituted by the lightbox.
+
+Normal page media uses the reduced variants only. When the viewer opens, its one visible `<img>` immediately requests raw while the already-loaded preview is painted as that element's background. Raw remains visible and paintable throughout the request; once load completes, its own pixels cover the preview and the background is cleared. A failed raw request leaves the preview background visible. This avoids both a same-element `src` replacement and an occluded second image whose rasterization may be deferred until a viewport repaint.
+
+Assign one `onload` and `onerror` handler before setting the raw source, overwriting them on each view, and use the viewer generation token plus requested URL to ignore stale completions. Exclude the Lightbox image from the site's global image-fade animation because the preview background already provides its loading presentation. Do not preload raw media during normal page viewing.
+
 ## Consequences
 - Regular navigation now downloads smaller hero/inline assets while maintaining sharp lightbox zooms.
 - All Markdown images lazy-load by default, freeing the main thread and avoiding layout jumps despite remote Gyazo hosting.
