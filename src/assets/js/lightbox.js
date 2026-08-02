@@ -1,5 +1,7 @@
 let lightboxEl = null;
 let imageEl = null;
+let previewImageEl = null;
+let rawImageEl = null;
 let videoEl = null;
 let mediaEl = null;
 let closeButtons = [];
@@ -16,6 +18,7 @@ let currentIndex = 0;
 let mediaItems = [];
 let initializedMedia = new WeakSet();
 let controlsBound = false;
+let showToken = 0;
 let scale = 1;
 let panX = 0;
 let panY = 0;
@@ -140,7 +143,10 @@ function buildLightbox() {
           ${renderIcon("prev")}
         </button>
         <div class="lightbox__media">
-          <img data-lightbox-image alt="" draggable="false" />
+          <div class="lightbox__image-stack" data-lightbox-image>
+            <img class="lightbox__preview-image" data-lightbox-preview data-fade-init="true" alt="" draggable="false" />
+            <img class="lightbox__raw-image" data-lightbox-raw data-fade-init="true" alt="" draggable="false" />
+          </div>
           <video data-lightbox-video playsinline></video>
         </div>
         <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="${labels.next}">
@@ -152,6 +158,8 @@ function buildLightbox() {
   document.body.appendChild(wrapper);
   lightboxEl = wrapper;
   imageEl = wrapper.querySelector("[data-lightbox-image]");
+  previewImageEl = wrapper.querySelector("[data-lightbox-preview]");
+  rawImageEl = wrapper.querySelector("[data-lightbox-raw]");
   videoEl = wrapper.querySelector("[data-lightbox-video]");
   mediaEl = wrapper.querySelector(".lightbox__media");
   closeButtons = wrapper.querySelectorAll("[data-lightbox-close]");
@@ -234,13 +242,14 @@ function applyTransform() {
     scale = MIN_SCALE;
     panX = 0;
     panY = 0;
+    imageEl.style.transform = "none";
   } else {
     const bounds = getPanBounds();
     panX = clamp(panX, -bounds.x, bounds.x);
     panY = clamp(panY, -bounds.y, bounds.y);
+    imageEl.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${scale})`;
   }
 
-  imageEl.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${scale})`;
   imageEl.classList.toggle("is-zoomed", scale > MIN_SCALE);
   imageEl.dataset.zoomScale = String(scale);
   mediaEl?.classList.toggle("is-pannable", scale > MIN_SCALE);
@@ -263,7 +272,7 @@ function resetView() {
 }
 
 function setScale(nextScale, clientX = null, clientY = null) {
-  if (!imageEl || imageEl.style.display === "none") return;
+  if (!imageEl || imageEl.hidden) return;
   const previousScale = scale;
   const clampedScale = clamp(nextScale, MIN_SCALE, MAX_SCALE);
 
@@ -289,8 +298,88 @@ function zoomBy(amount, clientX = null, clientY = null) {
   setScale(scale + amount, clientX, clientY);
 }
 
+function stopLightboxVideo() {
+  if (!videoEl) return;
+  videoEl.pause();
+  videoEl.removeAttribute("src");
+  videoEl.hidden = true;
+}
+
+function resetImageLayers() {
+  if (!imageEl || !previewImageEl || !rawImageEl) return;
+  imageEl.classList.remove("is-raw-ready");
+  previewImageEl.removeAttribute("src");
+  previewImageEl.alt = "";
+  rawImageEl.onload = null;
+  rawImageEl.onerror = null;
+  rawImageEl.removeAttribute("src");
+  rawImageEl.alt = "";
+}
+
+function setImageViewerVisible(visible) {
+  if (imageEl) imageEl.hidden = !visible;
+  if (zoomControls) zoomControls.hidden = !visible;
+  if (helpEl) helpEl.hidden = !visible;
+}
+
+function loadRawImage(source, token) {
+  if (!rawImageEl || !imageEl || !source) return;
+  const rawImage = rawImageEl;
+  rawImage.onload = () => {
+    rawImage.onload = null;
+    rawImage.onerror = null;
+    if (token !== showToken || rawImage.getAttribute("src") !== source) return;
+    imageEl.classList.add("is-raw-ready");
+  };
+  rawImage.onerror = () => {
+    rawImage.onload = null;
+    rawImage.onerror = null;
+    // Keep the preview visible when raw loading fails.
+  };
+  rawImage.fetchPriority = "high";
+  rawImage.src = source;
+}
+
+function showImage(target, source, token) {
+  setImageViewerVisible(true);
+  if (!previewImageEl || !rawImageEl) return;
+
+  const previewSource = target.currentSrc || target.src;
+  if (previewSource) previewImageEl.src = previewSource;
+  previewImageEl.alt = target.alt || "";
+  rawImageEl.alt = target.alt || "";
+  loadRawImage(source, token);
+}
+
+function showVideo(target, source) {
+  setImageViewerVisible(false);
+  if (!videoEl) return;
+
+  videoEl.hidden = false;
+  if (source) {
+    videoEl.src = source;
+    videoEl.load();
+  }
+
+  const figure = target.closest("[data-gyazo-toggle]");
+  const mode = figure?.dataset.gyazoMode || figure?.getAttribute("data-gyazo-initial") || "loop";
+  const isPlayer = mode === "player";
+  videoEl.loop = !isPlayer;
+  videoEl.muted = !isPlayer;
+  videoEl.autoplay = !isPlayer;
+  videoEl.controls = true;
+
+  if (isPlayer) {
+    videoEl.pause();
+    return;
+  }
+  const playPromise = videoEl.play();
+  if (playPromise?.catch) playPromise.catch(() => { });
+}
+
 function show(index) {
   if (!mediaItems.length) return;
+  const token = ++showToken;
   currentIndex = (index + mediaItems.length) % mediaItems.length;
   const target = mediaItems[currentIndex];
   const highResSource = getMediaSource(target);
@@ -300,68 +389,13 @@ function show(index) {
 
   // Reset state
   resetView();
-
-  // Stop any playing video
-  if (videoEl) {
-    videoEl.pause();
-    videoEl.removeAttribute("src");
-    videoEl.style.display = "none";
-  }
+  stopLightboxVideo();
+  resetImageLayers();
 
   if (isVideo) {
-    imageEl.style.display = "none";
-    if (zoomControls) zoomControls.hidden = true;
-    if (helpEl) helpEl.hidden = true;
-    if (videoEl) {
-      videoEl.style.display = "block";
-      if (highResSource) {
-        videoEl.src = highResSource;
-        videoEl.load();
-      }
-      // Mirror current mode (loop / player) from parent figure if present
-      const figure = target.closest("[data-gyazo-toggle]");
-      const mode = figure?.dataset.gyazoMode || figure?.getAttribute("data-gyazo-initial") || "loop";
-      const isPlayer = mode === "player";
-      videoEl.loop = !isPlayer;
-      videoEl.muted = !isPlayer;
-      videoEl.autoplay = !isPlayer;
-      videoEl.controls = true; // always allow controls in lightbox
-
-      if (!isPlayer) {
-        const playPromise = videoEl.play();
-        if (playPromise?.catch) playPromise.catch(() => { });
-      } else {
-        videoEl.pause();
-      }
-    }
+    showVideo(target, highResSource);
   } else {
-    imageEl.style.display = "block";
-    if (zoomControls) zoomControls.hidden = false;
-    if (helpEl) helpEl.hidden = false;
-
-    // 1. Show the current (low-res) image immediately for instant feedback
-    const currentSrc = target.currentSrc || target.src;
-    if (currentSrc) {
-      imageEl.removeAttribute("srcset");
-      imageEl.removeAttribute("sizes");
-      imageEl.src = currentSrc;
-    }
-    imageEl.alt = target.alt || "";
-
-    // 2. If high-res is available and different, load it in background and swap
-    if (highResSource && highResSource !== currentSrc) {
-      const imgLoader = new Image();
-      const capturedIndex = currentIndex;
-
-      imgLoader.onload = () => {
-        // Only swap if the user is still viewing the same image
-        if (currentIndex === capturedIndex) {
-          imageEl.src = highResSource;
-        }
-      };
-
-      imgLoader.src = highResSource;
-    }
+    showImage(target, highResSource, token);
   }
 
   lightboxEl.classList.add("is-open");
@@ -426,7 +460,7 @@ function beginPinch() {
 }
 
 function handlePointerDown(event) {
-  if (imageEl.style.display === "none" || (event.pointerType === "mouse" && event.button !== 0)) return;
+  if (imageEl.hidden || (event.pointerType === "mouse" && event.button !== 0)) return;
   imageEl.setPointerCapture?.(event.pointerId);
   activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
   pointerMoved = false;
@@ -491,7 +525,7 @@ function handlePointerEnd(event) {
 }
 
 function handleWheel(event) {
-  if (imageEl.style.display === "none") return;
+  if (imageEl.hidden) return;
   event.preventDefault();
   const amount = event.deltaY < 0 ? ZOOM_STEP : -ZOOM_STEP;
   zoomBy(amount, event.clientX, event.clientY);
@@ -563,11 +597,7 @@ const initLightbox = (root = document) => {
     if (initializedMedia.has(media)) return;
     initializedMedia.add(media);
 
-    if (media.tagName.toLowerCase() === "img") {
-      media.style.cursor = "zoom-in";
-    } else {
-      media.style.cursor = "zoom-in";
-    }
+    media.style.cursor = "zoom-in";
 
     media.dataset.lightboxIndex = String(index);
     media.addEventListener("click", () => show(index));

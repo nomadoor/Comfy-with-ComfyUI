@@ -22,6 +22,7 @@
 - At 100%, clicking the zoom-in cursor image zooms to 200% around the click point. The cursor then becomes a grab hand and dragging pans the enlarged image.
 - Support wheel zoom around the pointer, `+` / `-` controls, keyboard `+` / `-`, and touch pinch zoom.
 - Allow pointer/touch dragging while zoomed and constrain the image so it cannot be moved completely out of view.
+- Keep the fitted 100% state out of a compositor transform layer (`transform: none`, no `will-change`). Apply the translated scale transform and `will-change: transform` only while zoomed.
 - Provide a compact percentage and a separate reset icon before the `- / percentage / +` zoom trio. Use a nested flex layout: the outer row centers the reset control against the zoom trio with no gap, and the inner row centers `- / percentage / +` with tight spacing and no transform or pixel offsets. Keep the minus/plus controls symmetric around the percentage. Disable and mute the reset control at 100%; enable it only when scale or position can be reset. Changing media or closing the lightbox resets scale and position.
 - Clicking the backdrop while zoomed resets scale and position; clicking it at 100% closes the lightbox. `Escape` always closes immediately.
 - Keep previous/next buttons and arrow-key navigation available at every zoom level. Video lightbox behavior remains unchanged.

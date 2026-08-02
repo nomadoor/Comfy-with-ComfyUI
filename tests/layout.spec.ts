@@ -63,6 +63,42 @@ test.describe("Layout rails", () => {
     expect(currentSrc).toContain("/max_size/");
   });
 
+  test("Gyazo lightbox requests raw only after opening", async ({ page }) => {
+    let rawRequests = 0;
+    await page.route(/^https:\/\/gyazo\.com\/[a-f0-9]{32}\/raw$/i, async (route) => {
+      rawRequests += 1;
+      await route.fulfill({
+        status: 200,
+        contentType: "image/svg+xml",
+        body: '<svg xmlns="http://www.w3.org/2000/svg" width="3394" height="2136"><rect width="3394" height="2136" fill="#777"/></svg>'
+      });
+    });
+
+    await page.goto("/ja/basic-workflows/anima/");
+    expect(rawRequests).toBe(0);
+    const articleImage = page.locator(".article-body .article-media img").first();
+    const fullSrc = await articleImage.getAttribute("data-full-src");
+    await articleImage.click();
+
+    const lightboxImage = page.locator("[data-lightbox-image]");
+    const previewImage = page.locator("[data-lightbox-preview]");
+    const rawImage = page.locator("[data-lightbox-raw]");
+    await expect(previewImage).toHaveAttribute("src", /max_size/);
+    await expect(rawImage).toHaveAttribute("src", fullSrc!);
+    expect(rawRequests).toBe(1);
+    await expect
+      .poll(() => rawImage.evaluate((image) => image.complete && image.naturalWidth))
+      .toBe(3394);
+    await expect(lightboxImage).toHaveClass(/is-raw-ready/);
+    await expect(lightboxImage).toHaveCSS("display", "grid");
+    await expect(lightboxImage).toHaveCSS("transform", "none");
+    await expect(lightboxImage).toHaveCSS("will-change", "auto");
+    await expect(previewImage).toBeHidden();
+    await expect(rawImage).toBeVisible();
+    await expect(previewImage).not.toHaveClass(/img-fade/);
+    await expect(rawImage).not.toHaveClass(/img-fade/);
+  });
+
   test("Gyazo lightbox loads raw media and supports pan and continuous zoom", async ({ page }) => {
     await page.goto("/ja/basic-workflows/anima/");
 
@@ -75,6 +111,7 @@ test.describe("Layout rails", () => {
     expect(fullSrc).not.toContain("/max_size/");
 
     await page.route(fullSrc!, async (route) => {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       await route.fulfill({
         status: 200,
         contentType: "image/svg+xml",
@@ -84,7 +121,12 @@ test.describe("Layout rails", () => {
 
     await articleImage.click();
     const lightboxImage = page.locator("[data-lightbox-image]");
-    await expect(lightboxImage).toHaveAttribute("src", fullSrc!);
+    const previewImage = page.locator("[data-lightbox-preview]");
+    const rawImage = page.locator("[data-lightbox-raw]");
+    await expect(previewImage).toBeVisible();
+    await expect(rawImage).toHaveAttribute("src", fullSrc!, { timeout: 500 });
+    await expect(rawImage).toHaveAttribute("fetchpriority", "high");
+    await expect(rawImage).toBeHidden();
 
     const lightbox = page.locator(".lightbox");
     const media = page.locator(".lightbox__media");
@@ -143,6 +185,7 @@ test.describe("Layout rails", () => {
     await lightboxImage.click();
     await expect(lightboxImage).toHaveAttribute("data-zoom-scale", "2");
     await expect(lightboxImage).toHaveCSS("cursor", "grab");
+    await expect(lightboxImage).toHaveCSS("will-change", "transform");
     await expect(zoomReset).toBeEnabled();
     await expect(page.locator(".lightbox__help-desktop")).toHaveText(
       "クリックで拡大・ドラッグで移動・ホイールで拡大縮小"
