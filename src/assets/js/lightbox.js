@@ -27,10 +27,10 @@ let pointerMoved = false;
 const activePointers = new Map();
 
 const MIN_SCALE = 1;
-const FALLBACK_MAX_SCALE = 5;
+const MINIMUM_MAX_SCALE = 5;
 const RAW_ZOOM_HEADROOM = 1.5;
 const ZOOM_STEP = 0.5;
-let maxScale = FALLBACK_MAX_SCALE;
+let maxScale = MINIMUM_MAX_SCALE;
 
 const LIGHTBOX_LABELS = {
   ja: {
@@ -228,13 +228,13 @@ function getPanBounds(nextScale = scale) {
 }
 
 function updateMaxScale() {
-  maxScale = FALLBACK_MAX_SCALE;
+  maxScale = MINIMUM_MAX_SCALE;
   if (imageEl && rawImageEl?.naturalWidth && rawImageEl.naturalHeight) {
     const fittedWidth = imageEl.clientWidth;
     const fittedHeight = imageEl.clientHeight;
     if (fittedWidth && fittedHeight) {
       maxScale = Math.max(
-        MIN_SCALE,
+        MINIMUM_MAX_SCALE,
         (rawImageEl.naturalWidth / fittedWidth) * RAW_ZOOM_HEADROOM,
         (rawImageEl.naturalHeight / fittedHeight) * RAW_ZOOM_HEADROOM
       );
@@ -321,7 +321,7 @@ function stopLightboxVideo() {
 
 function resetImageLayers() {
   if (!imageEl || !rawImageEl) return;
-  maxScale = FALLBACK_MAX_SCALE;
+  maxScale = MINIMUM_MAX_SCALE;
   imageEl.dataset.zoomMax = String(maxScale);
   imageEl.style.backgroundImage = "";
   rawImageEl.onload = null;

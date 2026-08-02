@@ -111,7 +111,7 @@ test.describe("Layout rails", () => {
     });
     const mobileDimensions = await readDimensions();
     const expectedMobileMax = Math.max(
-      1,
+      5,
       (mobileDimensions.rawWidth / mobileDimensions.fittedWidth) * 1.5,
       (mobileDimensions.rawHeight / mobileDimensions.fittedHeight) * 1.5
     );
@@ -129,12 +129,11 @@ test.describe("Layout rails", () => {
     await expect.poll(async () => (await readDimensions()).maxScale).not.toBe(mobileDimensions.maxScale);
     const desktopDimensions = await readDimensions();
     const expectedDesktopMax = Math.max(
-      1,
+      5,
       (desktopDimensions.rawWidth / desktopDimensions.fittedWidth) * 1.5,
       (desktopDimensions.rawHeight / desktopDimensions.fittedHeight) * 1.5
     );
     expect(desktopDimensions.maxScale).toBeCloseTo(expectedDesktopMax, 5);
-    expect(desktopDimensions.maxScale).not.toBe(5);
     await expect(page.locator("[data-lightbox-zoom-value]")).toHaveText(
       `${Math.round(desktopDimensions.maxScale * 100)}%`
     );
@@ -169,6 +168,8 @@ test.describe("Layout rails", () => {
     await expect(rawImage).toHaveAttribute("fetchpriority", "high");
     await expect(rawImage).toBeVisible();
     await expect(rawImage).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
+    await expect.poll(() => rawImage.evaluate((image) => image.naturalWidth)).toBe(2);
+    await expect(lightboxImage).toHaveAttribute("data-zoom-max", "5");
 
     const lightbox = page.locator(".lightbox");
     const media = page.locator(".lightbox__media");
