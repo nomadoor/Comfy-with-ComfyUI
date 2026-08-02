@@ -98,24 +98,13 @@ test.describe("Layout rails", () => {
       "クリックで拡大・＋／−／ホイール／ピンチで拡大縮小・ドラッグで移動"
     );
 
-    const mobileDimensions = await lightboxImage.evaluate((stack) => {
-      const raw = stack.querySelector<HTMLImageElement>("[data-lightbox-raw]");
-      return {
-        maxScale: Number((stack as HTMLElement).dataset.zoomMax),
-        fittedWidth: (stack as HTMLElement).clientWidth,
-        fittedHeight: (stack as HTMLElement).clientHeight,
-        rawWidth: raw?.naturalWidth || 0,
-        rawHeight: raw?.naturalHeight || 0
-      };
-    });
-    expect(mobileDimensions.maxScale).toBeGreaterThan(5);
-    expect(mobileDimensions.maxScale * mobileDimensions.fittedWidth)
-      .toBeGreaterThanOrEqual(mobileDimensions.rawWidth - 1);
-    expect(mobileDimensions.maxScale * mobileDimensions.fittedHeight)
-      .toBeGreaterThanOrEqual(mobileDimensions.rawHeight - 1);
-
+    const zoomIn = page.locator("[data-lightbox-zoom-in]");
+    for (let step = 0; step < 38; step += 1) await zoomIn.click();
+    await expect(page.locator("[data-lightbox-zoom-value]")).toHaveText("2000%");
+    await expect(zoomIn).toBeDisabled();
     await page.setViewportSize({ width: 1200, height: 800 });
-    await expect.poll(async () => Number(await lightboxImage.getAttribute("data-zoom-max"))).toBe(5);
+    await expect(page.locator("[data-lightbox-zoom-value]")).toHaveText("2000%");
+    await expect(zoomIn).toBeDisabled();
   });
 
   test("Gyazo lightbox loads raw media and supports pan and continuous zoom", async ({ page }) => {

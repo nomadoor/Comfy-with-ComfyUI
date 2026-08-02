@@ -18,7 +18,7 @@
 
 ## 2026-08-02 Extension: Pan And Continuous Zoom
 
-- Replace the two-step-only image zoom with continuous zoom from 100% to a minimum maximum of 500%. Once raw dimensions are available, increase that image's maximum when its fitted-to-intrinsic ratio requires more than 500% to reach native size. Recalculate after viewport changes.
+- Replace the two-step-only image zoom with continuous zoom from 100% to 2000%. Use the same fixed maximum for every image, viewport size, and input device; do not vary the available zoom range between desktop and mobile.
 - At 100%, clicking the zoom-in cursor image zooms to 200% around the click point. The cursor then becomes a grab hand and dragging pans the enlarged image.
 - Support wheel zoom around the pointer, `+` / `-` controls, keyboard `+` / `-`, and touch pinch zoom.
 - Allow pointer/touch dragging while zoomed and constrain the image so it cannot be moved completely out of view.

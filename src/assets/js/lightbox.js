@@ -27,9 +27,8 @@ let pointerMoved = false;
 const activePointers = new Map();
 
 const MIN_SCALE = 1;
-const DEFAULT_MAX_SCALE = 5;
+const MAX_SCALE = 20;
 const ZOOM_STEP = 0.5;
-let maxScale = DEFAULT_MAX_SCALE;
 
 const LIGHTBOX_LABELS = {
   ja: {
@@ -226,29 +225,6 @@ function getPanBounds(nextScale = scale) {
   };
 }
 
-function updateMaxScale() {
-  maxScale = DEFAULT_MAX_SCALE;
-  if (imageEl && rawImageEl?.naturalWidth && rawImageEl.naturalHeight) {
-    const fittedWidth = imageEl.clientWidth;
-    const fittedHeight = imageEl.clientHeight;
-    if (fittedWidth && fittedHeight) {
-      const nativeScale = Math.max(
-        rawImageEl.naturalWidth / fittedWidth,
-        rawImageEl.naturalHeight / fittedHeight
-      );
-      maxScale = Math.max(DEFAULT_MAX_SCALE, nativeScale);
-    }
-  }
-  scale = Math.min(scale, maxScale);
-  if (imageEl) imageEl.dataset.zoomMax = String(maxScale);
-}
-
-function handleViewportResize() {
-  if (!lightboxEl?.classList.contains("is-open") || imageEl?.hidden) return;
-  updateMaxScale();
-  applyTransform();
-}
-
 function applyTransform() {
   if (!imageEl) return;
   if (scale <= MIN_SCALE) {
@@ -270,7 +246,7 @@ function applyTransform() {
   if (zoomValueEl) zoomValueEl.textContent = `${Math.round(scale * 100)}%`;
   if (zoomResetButton) zoomResetButton.disabled = scale <= MIN_SCALE;
   if (zoomOutButton) zoomOutButton.disabled = scale <= MIN_SCALE;
-  if (zoomInButton) zoomInButton.disabled = scale >= maxScale;
+  if (zoomInButton) zoomInButton.disabled = scale >= MAX_SCALE;
 }
 
 function resetView() {
@@ -287,7 +263,7 @@ function resetView() {
 function setScale(nextScale, clientX = null, clientY = null) {
   if (!imageEl || imageEl.hidden) return;
   const previousScale = scale;
-  const clampedScale = clamp(nextScale, MIN_SCALE, maxScale);
+  const clampedScale = clamp(nextScale, MIN_SCALE, MAX_SCALE);
 
   if (clampedScale === MIN_SCALE) {
     resetView();
@@ -320,8 +296,6 @@ function stopLightboxVideo() {
 
 function resetImageLayers() {
   if (!imageEl || !rawImageEl) return;
-  maxScale = DEFAULT_MAX_SCALE;
-  imageEl.dataset.zoomMax = String(maxScale);
   imageEl.style.backgroundImage = "";
   rawImageEl.onload = null;
   rawImageEl.onerror = null;
@@ -343,8 +317,6 @@ function loadRawImage(source, token) {
     rawImage.onerror = null;
     if (token !== showToken || rawImage.getAttribute("src") !== source) return;
     imageEl.style.backgroundImage = "";
-    updateMaxScale();
-    applyTransform();
   };
   rawImage.onerror = () => {
     rawImage.onload = null;
@@ -504,7 +476,7 @@ function handlePointerMove(event) {
     const rect = mediaEl.getBoundingClientRect();
     const centerX = center.x - (rect.left + rect.width / 2);
     const centerY = center.y - (rect.top + rect.height / 2);
-    scale = clamp(pinchStart.scale * (distance / pinchStart.distance), MIN_SCALE, maxScale);
+    scale = clamp(pinchStart.scale * (distance / pinchStart.distance), MIN_SCALE, MAX_SCALE);
     panX = centerX - pinchStart.localX * scale;
     panY = centerY - pinchStart.localY * scale;
     pointerMoved = true;
@@ -657,7 +629,6 @@ const initLightbox = (root = document) => {
     mediaEl.addEventListener("click", handleMediaClick);
     mediaEl.addEventListener("wheel", handleWheel, { passive: false });
     lightboxEl.querySelector(".lightbox__backdrop").addEventListener("click", handleBackdropClick);
-    window.addEventListener("resize", handleViewportResize);
     controlsBound = true;
   }
 };
