@@ -99,11 +99,45 @@ test.describe("Layout rails", () => {
     );
 
     const zoomIn = page.locator("[data-lightbox-zoom-in]");
-    for (let step = 0; step < 38; step += 1) await zoomIn.click();
-    await expect(page.locator("[data-lightbox-zoom-value]")).toHaveText("2000%");
+    const readDimensions = () => lightboxImage.evaluate((stack) => {
+      const raw = stack.querySelector<HTMLImageElement>("[data-lightbox-raw]");
+      return {
+        maxScale: Number((stack as HTMLElement).dataset.zoomMax),
+        fittedWidth: (stack as HTMLElement).clientWidth,
+        fittedHeight: (stack as HTMLElement).clientHeight,
+        rawWidth: raw?.naturalWidth || 0,
+        rawHeight: raw?.naturalHeight || 0
+      };
+    });
+    const mobileDimensions = await readDimensions();
+    const expectedMobileMax = Math.max(
+      1,
+      mobileDimensions.rawWidth / mobileDimensions.fittedWidth,
+      mobileDimensions.rawHeight / mobileDimensions.fittedHeight
+    );
+    expect(mobileDimensions.maxScale).toBeCloseTo(expectedMobileMax, 5);
+    expect(mobileDimensions.maxScale).not.toBe(5);
+    for (let step = 0; step < Math.ceil((mobileDimensions.maxScale - 1) / 0.5); step += 1) {
+      await zoomIn.click();
+    }
+    await expect(page.locator("[data-lightbox-zoom-value]")).toHaveText(
+      `${Math.round(mobileDimensions.maxScale * 100)}%`
+    );
     await expect(zoomIn).toBeDisabled();
+
     await page.setViewportSize({ width: 1200, height: 800 });
-    await expect(page.locator("[data-lightbox-zoom-value]")).toHaveText("2000%");
+    await expect.poll(async () => (await readDimensions()).maxScale).not.toBe(mobileDimensions.maxScale);
+    const desktopDimensions = await readDimensions();
+    const expectedDesktopMax = Math.max(
+      1,
+      desktopDimensions.rawWidth / desktopDimensions.fittedWidth,
+      desktopDimensions.rawHeight / desktopDimensions.fittedHeight
+    );
+    expect(desktopDimensions.maxScale).toBeCloseTo(expectedDesktopMax, 5);
+    expect(desktopDimensions.maxScale).not.toBe(5);
+    await expect(page.locator("[data-lightbox-zoom-value]")).toHaveText(
+      `${Math.round(desktopDimensions.maxScale * 100)}%`
+    );
     await expect(zoomIn).toBeDisabled();
   });
 
