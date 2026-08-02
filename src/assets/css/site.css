@@ -4522,10 +4522,6 @@ body.lightbox-open {
   display: none;
 }
 
-.lightbox__help-touch {
-  display: none;
-}
-
 .lightbox__image-area {
   position: absolute;
   inset: 0;
@@ -4732,16 +4728,6 @@ body.lightbox-open {
   height: 100%;
   stroke: currentColor;
   fill: none;
-}
-
-@media (hover: none), (pointer: coarse) {
-  .lightbox__help-desktop {
-    display: none;
-  }
-
-  .lightbox__help-touch {
-    display: inline;
-  }
 }
 
 /* Mobile Navigation & Assistant Rail Overlay */

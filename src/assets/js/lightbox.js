@@ -40,8 +40,7 @@ const LIGHTBOX_LABELS = {
     zoomOut: "縮小",
     zoomIn: "拡大",
     reset: "倍率と位置をリセット",
-    desktopHelp: "クリックで拡大・ドラッグで移動・ホイールで拡大縮小",
-    touchHelp: "ピンチで拡大縮小・ドラッグで移動",
+    help: "クリックで拡大・＋／−／ホイール／ピンチで拡大縮小・ドラッグで移動",
   },
   en: {
     dialog: "Image preview",
@@ -51,8 +50,7 @@ const LIGHTBOX_LABELS = {
     zoomOut: "Zoom out",
     zoomIn: "Zoom in",
     reset: "Reset zoom and position",
-    desktopHelp: "Click to zoom · Drag to move · Scroll to zoom",
-    touchHelp: "Pinch to zoom · Drag to move",
+    help: "Click to zoom · Use + / −, scroll, or pinch to zoom · Drag to move",
   },
   zh: {
     dialog: "图片预览",
@@ -62,8 +60,7 @@ const LIGHTBOX_LABELS = {
     zoomOut: "缩小",
     zoomIn: "放大",
     reset: "重置缩放和位置",
-    desktopHelp: "点击放大・拖动移动・滚轮缩放",
-    touchHelp: "双指缩放・拖动移动",
+    help: "点击放大・使用＋／−、滚轮或双指缩放・拖动移动",
   },
 };
 
@@ -120,10 +117,7 @@ function buildLightbox() {
         ${renderIcon("close")}
       </button>
       <div class="lightbox__controls">
-        <p class="lightbox__help" data-lightbox-help>
-          <span class="lightbox__help-desktop">${labels.desktopHelp}</span>
-          <span class="lightbox__help-touch">${labels.touchHelp}</span>
-        </p>
+        <p class="lightbox__help" data-lightbox-help>${labels.help}</p>
         <div class="lightbox__zoom-controls" data-lightbox-zoom-controls hidden>
           <button class="lightbox__reset-button" type="button" data-lightbox-zoom-reset aria-label="${labels.reset}">
             ${renderIcon("reset")}
@@ -183,10 +177,7 @@ function updateLightboxLabels() {
   zoomOutButton?.setAttribute("aria-label", labels.zoomOut);
   zoomInButton?.setAttribute("aria-label", labels.zoomIn);
   zoomResetButton?.setAttribute("aria-label", labels.reset);
-  const desktopHelp = lightboxEl.querySelector(".lightbox__help-desktop");
-  const touchHelp = lightboxEl.querySelector(".lightbox__help-touch");
-  if (desktopHelp) desktopHelp.textContent = labels.desktopHelp;
-  if (touchHelp) touchHelp.textContent = labels.touchHelp;
+  if (helpEl) helpEl.textContent = labels.help;
 }
 
 function getMediaSource(target) {

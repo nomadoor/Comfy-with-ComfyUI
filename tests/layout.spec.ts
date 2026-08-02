@@ -94,6 +94,9 @@ test.describe("Layout rails", () => {
     await expect(lightboxImage).toHaveCSS("will-change", "auto");
     await expect(rawImage).toBeVisible();
     await expect(rawImage).not.toHaveClass(/img-fade/);
+    await expect(page.locator("[data-lightbox-help]")).toHaveText(
+      "クリックで拡大・＋／−／ホイール／ピンチで拡大縮小・ドラッグで移動"
+    );
 
     const mobileDimensions = await lightboxImage.evaluate((stack) => {
       const raw = stack.querySelector<HTMLImageElement>("[data-lightbox-raw]");
@@ -150,7 +153,7 @@ test.describe("Layout rails", () => {
     const zoomReset = page.locator("[data-lightbox-zoom-reset]");
 
     await expect(page.locator("[data-lightbox-help]")).toContainText(
-      "クリックで拡大・ドラッグで移動・ホイールで拡大縮小"
+      "クリックで拡大・＋／−／ホイール／ピンチで拡大縮小・ドラッグで移動"
     );
     await expect(page.locator(".lightbox__controls")).toHaveCSS("border-top-style", "none");
     await expect(page.locator("[data-lightbox-close]")).toHaveAttribute("aria-label", "閉じる");
@@ -208,8 +211,8 @@ test.describe("Layout rails", () => {
     await expect(lightboxImage).toHaveCSS("cursor", "grab");
     await expect(lightboxImage).toHaveCSS("will-change", "transform");
     await expect(zoomReset).toBeEnabled();
-    await expect(page.locator(".lightbox__help-desktop")).toHaveText(
-      "クリックで拡大・ドラッグで移動・ホイールで拡大縮小"
+    await expect(page.locator("[data-lightbox-help]")).toHaveText(
+      "クリックで拡大・＋／−／ホイール／ピンチで拡大縮小・ドラッグで移動"
     );
 
     await zoomReset.click();
