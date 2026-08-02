@@ -18,7 +18,7 @@
 
 ## 2026-08-02 Extension: Pan And Continuous Zoom
 
-- Replace the two-step-only image zoom with continuous zoom from 100% to a per-image maximum calculated as raw intrinsic dimensions divided by the fitted 100% dimensions. Do not impose a fixed 500% floor or a device-specific maximum: use the same calculation for every viewport and recalculate after viewport changes. This makes the maximum percentage vary while the maximum rendered image size consistently reaches raw native size.
+- Replace the two-step-only image zoom with continuous zoom from 100% to a per-image maximum calculated as 1.25 times the raw-intrinsic-to-fitted-size ratio. Do not impose a fixed 500% floor or a device-specific maximum: use the same calculation for every viewport and recalculate after viewport changes. This makes the maximum percentage vary while every image can reach raw native size plus 25% inspection headroom.
 - At 100%, clicking the zoom-in cursor image zooms to 200% around the click point. The cursor then becomes a grab hand and dragging pans the enlarged image.
 - Support wheel zoom around the pointer, `+` / `-` controls, keyboard `+` / `-`, and touch pinch zoom.
 - Allow pointer/touch dragging while zoomed and constrain the image so it cannot be moved completely out of view.

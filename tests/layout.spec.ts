@@ -112,8 +112,8 @@ test.describe("Layout rails", () => {
     const mobileDimensions = await readDimensions();
     const expectedMobileMax = Math.max(
       1,
-      mobileDimensions.rawWidth / mobileDimensions.fittedWidth,
-      mobileDimensions.rawHeight / mobileDimensions.fittedHeight
+      (mobileDimensions.rawWidth / mobileDimensions.fittedWidth) * 1.25,
+      (mobileDimensions.rawHeight / mobileDimensions.fittedHeight) * 1.25
     );
     expect(mobileDimensions.maxScale).toBeCloseTo(expectedMobileMax, 5);
     expect(mobileDimensions.maxScale).not.toBe(5);
@@ -130,8 +130,8 @@ test.describe("Layout rails", () => {
     const desktopDimensions = await readDimensions();
     const expectedDesktopMax = Math.max(
       1,
-      desktopDimensions.rawWidth / desktopDimensions.fittedWidth,
-      desktopDimensions.rawHeight / desktopDimensions.fittedHeight
+      (desktopDimensions.rawWidth / desktopDimensions.fittedWidth) * 1.25,
+      (desktopDimensions.rawHeight / desktopDimensions.fittedHeight) * 1.25
     );
     expect(desktopDimensions.maxScale).toBeCloseTo(expectedDesktopMax, 5);
     expect(desktopDimensions.maxScale).not.toBe(5);

@@ -28,6 +28,7 @@ const activePointers = new Map();
 
 const MIN_SCALE = 1;
 const FALLBACK_MAX_SCALE = 5;
+const RAW_ZOOM_HEADROOM = 1.25;
 const ZOOM_STEP = 0.5;
 let maxScale = FALLBACK_MAX_SCALE;
 
@@ -234,8 +235,8 @@ function updateMaxScale() {
     if (fittedWidth && fittedHeight) {
       maxScale = Math.max(
         MIN_SCALE,
-        rawImageEl.naturalWidth / fittedWidth,
-        rawImageEl.naturalHeight / fittedHeight
+        (rawImageEl.naturalWidth / fittedWidth) * RAW_ZOOM_HEADROOM,
+        (rawImageEl.naturalHeight / fittedHeight) * RAW_ZOOM_HEADROOM
       );
     }
   }
