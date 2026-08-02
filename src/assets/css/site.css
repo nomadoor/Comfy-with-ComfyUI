@@ -4583,16 +4583,12 @@ body.lightbox-open {
   pointer-events: none;
 }
 
-.lightbox__raw-image {
-  visibility: hidden;
+.lightbox__preview-image {
+  z-index: 1;
 }
 
 .lightbox__image-stack.is-raw-ready .lightbox__preview-image {
   display: none;
-}
-
-.lightbox__image-stack.is-raw-ready .lightbox__raw-image {
-  visibility: visible;
 }
 
 .lightbox__media video {

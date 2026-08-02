@@ -126,7 +126,8 @@ test.describe("Layout rails", () => {
     await expect(previewImage).toBeVisible();
     await expect(rawImage).toHaveAttribute("src", fullSrc!, { timeout: 500 });
     await expect(rawImage).toHaveAttribute("fetchpriority", "high");
-    await expect(rawImage).toBeHidden();
+    await expect(rawImage).toBeVisible();
+    await expect(previewImage).toHaveCSS("z-index", "1");
 
     const lightbox = page.locator(".lightbox");
     const media = page.locator(".lightbox__media");

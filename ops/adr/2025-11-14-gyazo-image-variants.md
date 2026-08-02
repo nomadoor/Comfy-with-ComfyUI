@@ -24,6 +24,8 @@ The image stack must retain its CSS grid display; show/hide it with the `hidden`
 
 Exclude both Lightbox image layers from the site's global image-fade animation. The preview is already loaded and the raw layer has its own explicit reveal state; adding a second opacity animation creates unnecessary compositor layers and can delay the visible layer update until a viewport repaint.
 
+Keep the raw layer paintable at all times and place the preview above it while loading. On raw load, hide only the preview; do not simultaneously toggle visibility on the raw layer. This reduces the completed swap to one paint-state change and avoids retaining the preview composite until a viewport resize.
+
 ## Consequences
 - Regular navigation now downloads smaller hero/inline assets while maintaining sharp lightbox zooms.
 - All Markdown images lazy-load by default, freeing the main thread and avoiding layout jumps despite remote Gyazo hosting.
