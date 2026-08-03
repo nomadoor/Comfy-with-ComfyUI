@@ -5,8 +5,8 @@ section: data-utilities
 slug: list
 navId: list
 title: "List"
-created: 2026-02-06
-updated: 2026-03-02
+created: 2025-11-26
+updated: 2026-08-03
 summary: "关于列表：使用多个数据进行连续处理的思路"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -27,31 +27,28 @@ List（列表）是一种将多个数据作为“一个整体”来处理的机�
 
 ---
 
-## 必要的自定义节点
-
-仅靠 ComfyUI 的标准节点无法创建 List，因此需要引入自定义节点。
-
-- [ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
-- [ltdrdata/ComfyUI-Inspire-Pack](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
-- [godmt/ComfyUI-List-Utils](https://github.com/godmt/ComfyUI-List-Utils)
-
----
-
 ## 创建 List
 
-### Make List (Any) 节点
+### Create List 节点
 
 用于手动组装 List 的节点。
 将任意类型（图像 / 文本 / 数值等）汇总成 1 个 List。
 
-![](https://gyazo.com/b6433f5c097164a60a762e4cc24f442f){gyazo=image}
+![](https://gyazo.com/06892a5581ad86c9a2b56f01df91b983){gyazo=image}
 
-[](/workflows/data-utilities/list/Make_List_(Any).json)
+[](/workflows/data-utilities/list/Create_List.json)
 
 - 连接节点后插槽会增加，可以添加任意数量。
-- 一旦连接，就会被“固定为该数据类型”。
-  - 如果要切换到其他数据类型，请通过 Fix node (recreate) 重置，或放置新的节点。
 
+---
+
+## 方便使用的自定义节点
+
+仅使用 ComfyUI 的标准节点也可以创建 List，但能做的操作比较有限。使用以下自定义节点，可以从文件夹或字符串创建 List，也可以从 List 中取出指定元素。
+
+- [ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
+- [ltdrdata/ComfyUI-Inspire-Pack](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
+- [godmt/ComfyUI-List-Utils](https://github.com/godmt/ComfyUI-List-Utils)
 
 ### Load Image List From Dir (Inspire) 节点
 
@@ -78,13 +75,9 @@ List（列表）是一种将多个数据作为“一个整体”来处理的机�
 - `splitlines`：按换行符分割
 - `strip` : 删除前后的空白
 
----
-
-## 从 List 中取出
-
 ### Select Nth Item (Any list) 节点
 
-从 List 中只取出指定位置的用于 1 件。
+从 List 中取出指定位置的一个元素。
 
 ![](https://gyazo.com/f1d3281970effbc7a2fc8a782f1a21ab){gyazo=image}
 
