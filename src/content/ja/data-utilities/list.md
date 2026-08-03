@@ -6,7 +6,7 @@ slug: list
 navId: list
 title: "List"
 created: 2025-11-26
-updated: 2026-03-02
+updated: 2026-08-03
 summary: "複数データを使った連続処理の考え方"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -27,31 +27,28 @@ Queue が「同じ workflow を何回も実行する」のに対し、List は *
 
 ---
 
-## 必要なカスタムノード
-
-ComfyUI の標準ノードだけでは List を作れないため、 カスタムノードを導入します。
-
-- [ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
-- [ltdrdata/ComfyUI-Inspire-Pack](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
-- [godmt/ComfyUI-List-Utils](https://github.com/godmt/ComfyUI-List-Utils)
-
----
-
 ## List を作る
 
-### Make List (Any) ノード
+### Create List ノード
 
 手動で List を組み立てるためのノードです。  
 任意の型（画像 / テキスト / 数値など）をまとめて 1 本の List にします。
 
-![](https://gyazo.com/b6433f5c097164a60a762e4cc24f442f){gyazo=image}
+![](https://gyazo.com/06892a5581ad86c9a2b56f01df91b983){gyazo=image}
 
-[](/workflows/data-utilities/list/Make_List_(Any).json)
+[](/workflows/data-utilities/list/Create_List.json)
 
 - ノードを接続するとスロットが増えるため、好きな数だけ追加できます。
-- 一度接続すると「そのデータ型で固定」されます。
-  - 他のデータ型に切り替える場合は、Fix node (recreate) でリセットするか、新しくノードを置いてください
 
+---
+
+## あると便利なカスタムノード
+
+List は ComfyUI の標準ノードだけでも作れますが、できることは限られています。以下のカスタムノードがあると、フォルダや文字列から List を作ったり、List から特定の要素を取り出したりできます。
+
+- [ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
+- [ltdrdata/ComfyUI-Inspire-Pack](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
+- [godmt/ComfyUI-List-Utils](https://github.com/godmt/ComfyUI-List-Utils)
 
 ### Load Image List From Dir (Inspire) ノード
 
@@ -77,10 +74,6 @@ ComfyUI の標準ノードだけでは List を作れないため、 カスタ�
 - `delimiter`：区切り文字（`,` はプロンプトで多用するため避けたほうが無難かもしれません）
 - `splitlines`：改行ごとに区切る
 - `strip` : 前後の空白を削除
-
----
-
-## Listから取り出す
 
 ### Select Nth Item (Any list) ノード
 

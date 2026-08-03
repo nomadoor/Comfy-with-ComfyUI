@@ -5,8 +5,8 @@ section: data-utilities
 slug: list
 navId: list
 title: "List"
-created: 2025-11-27
-updated: 2026-03-02
+created: 2025-11-26
+updated: 2026-08-03
 summary: "Concept of continuous processing using multiple data"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -28,31 +28,28 @@ It is easier to understand if you think of it as the difference between "Pressin
 
 ---
 
-## Required Custom Nodes
-
-Since standard ComfyUI nodes cannot create Lists, you need to introduce custom nodes.
-
-- [ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
-- [ltdrdata/ComfyUI-Inspire-Pack](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
-- [godmt/ComfyUI-List-Utils](https://github.com/godmt/ComfyUI-List-Utils)
-
----
-
 ## Creating a List
 
-### Make List (Any) Node
+### Create List Node
 
 This is a node for manually assembling a List.
 It groups any type (Image / Text / Number, etc.) into a single List.
 
-![](https://gyazo.com/b6433f5c097164a60a762e4cc24f442f){gyazo=image}
+![](https://gyazo.com/06892a5581ad86c9a2b56f01df91b983){gyazo=image}
 
-[](/workflows/data-utilities/list/Make_List_(Any).json)
+[](/workflows/data-utilities/list/Create_List.json)
 
 - Slots increase as you connect nodes, so you can add as many as you like.
-- Once connected, it is "fixed to that data type".
-  - If you want to switch to another data type, reset with Fix node (recreate) or place a new node.
 
+---
+
+## Useful Custom Nodes
+
+You can create a List using only standard ComfyUI nodes, but the available operations are limited. The following custom nodes let you create Lists from folders or strings and extract specific items from a List.
+
+- [ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
+- [ltdrdata/ComfyUI-Inspire-Pack](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
+- [godmt/ComfyUI-List-Utils](https://github.com/godmt/ComfyUI-List-Utils)
 
 ### Load Image List From Dir (Inspire) Node
 
@@ -78,10 +75,6 @@ Splits one long `STRING` with a delimiter and converts it to a List.
 - `delimiter`: Delimiter character (`,` might be better avoided as it is often used in prompts)
 - `splitlines`: Split by newlines
 - `strip` : Remove leading and trailing whitespace
-
----
-
-## Extracting from List
 
 ### Select Nth Item (Any list) Node
 
