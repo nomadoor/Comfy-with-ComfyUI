@@ -18,7 +18,22 @@ function json(data: unknown, status = 200): Response {
   });
 }
 
-export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
+export const onRequest: PagesFunction<Env> = async ({ request, env }) => {
+  if (request.method !== "POST") {
+    return new Response(JSON.stringify({
+      ok: false,
+      error: "method_not_allowed",
+      message: "Only POST requests are accepted.",
+      resolution: "Submit the contact form as multipart/form-data with POST."
+    }), {
+      status: 405,
+      headers: {
+        "Allow": "POST",
+        "Content-Type": "application/json; charset=utf-8"
+      }
+    });
+  }
+
   try {
     const missingEnv = [
       !env.TURNSTILE_SECRET ? "TURNSTILE_SECRET" : "",

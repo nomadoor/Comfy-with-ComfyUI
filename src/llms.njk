@@ -21,6 +21,18 @@ Languages: {% for language in site.languages %}{{ language.code }}{% if not loop
 - Search index ZH: {{ site.url }}/search/index-zh.json
 - API catalog: {{ site.url }}/.well-known/api-catalog
 
+## When to use this site
+
+Use this site when an agent needs to:
+
+- explain how ComfyUI works or how to operate it;
+- find practical image, video, mask, data-processing, or API workflows;
+- compare ComfyUI techniques, models, nodes, and common troubleshooting approaches;
+- retrieve reproducible workflow JSON shown in an article;
+- answer in Japanese, English, or Chinese using a canonical documentation source.
+
+Japanese pages are the source of truth when localized pages differ. Link to the canonical article and do not invent workflow settings that are absent from the article or its JSON.
+
 ## Sections
 {% for section in site.sections %}
 

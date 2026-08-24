@@ -71,6 +71,30 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
   {% if ogImage %}
   <meta name="twitter:image" content="{{ ogImage | e }}" />
   {% endif %}
+  {% if canonicalUrl and pagePath != "/404.html" %}
+  {% set structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": siteUrl ~ "/#website",
+        "url": siteUrl ~ "/",
+        "name": site.name[currentLang] or site.name[site.defaultLang],
+        "inLanguage": currentLang
+      },
+      {
+        "@type": "WebPage",
+        "@id": canonicalUrl ~ "#webpage",
+        "url": canonicalUrl,
+        "name": title,
+        "description": pageSummary,
+        "inLanguage": currentLang,
+        "isPartOf": { "@id": siteUrl ~ "/#website" }
+      }
+    ]
+  } %}
+  <script type="application/ld+json">{{ structuredData | jsonLd | safe }}</script>
+  {% endif %}
   {% set langOptions = site.languages or [] -%}
   {% set currentSlug = currentNavId or slug -%}
 {% set isStandalone = (not sectionExists) and (currentSlug == 'news' or currentSlug == 'about' or currentSlug == 'contact') -%}
