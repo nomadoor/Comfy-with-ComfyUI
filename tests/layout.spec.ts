@@ -6,6 +6,36 @@ const BASE_TEST_URL =
   process.env.PLAYWRIGHT_BASE_URL || `http://127.0.0.1:${PLAYWRIGHT_PORT}`;
 
 test.describe("Layout rails", () => {
+  test("content pages expose WebSite and WebPage JSON-LD", async ({ page }) => {
+    await page.goto("/ja/begin-with/how-to-use-this-site/");
+
+    const rawJsonLd = await page
+      .locator('script[type="application/ld+json"]')
+      .textContent();
+    const jsonLd = JSON.parse(rawJsonLd || "{}");
+
+    expect(jsonLd["@context"]).toBe("https://schema.org");
+    expect(jsonLd["@graph"]).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        "@type": "WebSite",
+        "@id": "https://comfyui.nomadoor.net/#website"
+      }),
+      expect.objectContaining({
+        "@type": "WebPage",
+        "url": "https://comfyui.nomadoor.net/ja/begin-with/how-to-use-this-site/",
+        "inLanguage": "ja"
+      })
+    ]));
+  });
+
+  test("404 page links agents back to discovery indexes", async ({ page }) => {
+    const response = await page.goto("/this-page-does-not-exist");
+
+    expect(response?.status()).toBe(404);
+    await expect(page.getByRole("link", { name: "サイトマップ" })).toHaveAttribute("href", "/sitemap.xml");
+    await expect(page.getByRole("link", { name: "AI・機械向けの記事一覧" })).toHaveAttribute("href", "/llms.txt");
+  });
+
   test("heading permalink icon copies the heading URL", async ({ page }) => {
     await page.addInitScript(() => {
       window.__copied = "";

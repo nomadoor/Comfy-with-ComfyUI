@@ -801,6 +801,13 @@ export default function (eleventyConfig) {
     return encodeURIComponent(String(value));
   });
 
+  eleventyConfig.addFilter("jsonLd", function (value = {}) {
+    return JSON.stringify(value)
+      .replace(/</g, "\\u003c")
+      .replace(/>/g, "\\u003e")
+      .replace(/&/g, "\\u0026");
+  });
+
   eleventyConfig.addShortcode("gyazoVideoLoop", function (url, caption = "", options = {}) {
     const id = extractGyazoId(url);
     const dims = getGyazoDimensionsFromId(id);

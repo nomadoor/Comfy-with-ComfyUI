@@ -13,6 +13,7 @@
   "paths": {
     "/search/index-ja.json": {
       "get": {
+        "operationId": "getJapaneseSearchIndex",
         "summary": "Japanese search index",
         "description": "Returns the static client-side search index for Japanese pages.",
         "responses": {
@@ -31,6 +32,7 @@
     },
     "/search/index-en.json": {
       "get": {
+        "operationId": "getEnglishSearchIndex",
         "summary": "English search index",
         "description": "Returns the static client-side search index for English pages.",
         "responses": {
@@ -49,6 +51,7 @@
     },
     "/search/index-zh.json": {
       "get": {
+        "operationId": "getChineseSearchIndex",
         "summary": "Chinese search index",
         "description": "Returns the static client-side search index for Chinese pages.",
         "responses": {
@@ -67,6 +70,7 @@
     },
     "/api/contact": {
       "post": {
+        "operationId": "submitContactMessage",
         "summary": "Submit a contact message",
         "description": "Accepts operator contact messages from the public contact page. Cloudflare Turnstile verification is required.",
         "requestBody": {
@@ -127,7 +131,23 @@
             "description": "Invalid input"
           },
           "405": {
-            "description": "Unsupported method"
+            "description": "Unsupported method",
+            "headers": {
+              "Allow": {
+                "description": "The supported method for this endpoint.",
+                "schema": {
+                  "type": "string",
+                  "const": "POST"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MethodNotAllowedError"
+                }
+              }
+            }
           },
           "500": {
             "description": "Server error",
@@ -187,6 +207,32 @@
           "ok"
         ],
         "additionalProperties": true
+      },
+      "MethodNotAllowedError": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "const": false
+          },
+          "error": {
+            "type": "string",
+            "const": "method_not_allowed"
+          },
+          "message": {
+            "type": "string"
+          },
+          "resolution": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "ok",
+          "error",
+          "message",
+          "resolution"
+        ],
+        "additionalProperties": false
       },
       "ServerError": {
         "type": "object",

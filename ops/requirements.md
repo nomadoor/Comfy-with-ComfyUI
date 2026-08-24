@@ -70,6 +70,7 @@
   - Disable the submit button while sending, show localized success/error status, and reset the form on success.
 - Backend requirements (Cloudflare Pages Functions):
   - `functions/api/contact.ts` handles `POST /api/contact`.
+  - Non-POST requests to `/api/contact` return a structured JSON `405 Method Not Allowed` response with `Allow: POST`.
   - Validate `cf-turnstile-response` against Turnstile `siteverify` with `TURNSTILE_SECRET`.
   - Send validated messages via Resend using `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, `CONTACT_TO_EMAIL`.
 
@@ -168,4 +169,10 @@
 - AI crawler policy is permissive: allow crawling for search, AI input, and AI training unless a future owner directive narrows this policy.
 - Publish machine-readable discovery files under `/.well-known/` only when they describe real site capabilities; do not advertise protected APIs, OAuth issuers, or MCP servers that do not exist.
 - Prefer low-maintenance static discovery artifacts for this Eleventy site. Cloudflare-only features may be enabled operationally, but their intended behavior must be reflected here or in an ADR.
+- `/` must use a real HTTP redirect to the canonical Japanese entry page; meta refresh and JavaScript are fallback output only, not the public redirect mechanism.
+- `llms.txt` must state concrete situations in which an agent should use the site.
+- Normal content pages publish minimal `WebSite` + `WebPage` JSON-LD using their canonical URL, language, title, and summary.
+- The real 404 response must provide recovery links to `sitemap.xml` and `llms.txt`.
+- Every operation advertised by the public OpenAPI document must have a unique, stable `operationId`.
+- Do not invent developer portals, API lifecycle policies, business contact data, or rate-limit behavior solely to improve generic agent-readiness scores.
 - WebMCP support, when present, must be progressive enhancement only. If `navigator.modelContext` is unavailable, the site must behave exactly as before.
