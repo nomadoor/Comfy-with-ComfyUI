@@ -6,7 +6,7 @@ slug: differential-diffusion
 navId: differential-diffusion
 title: "Differential Diffusion"
 created: 2025-12-07
-updated: 2026-03-02
+updated: 2026-08-26
 summary: "マスクの濃度で変化量をコントロールする"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
@@ -15,20 +15,20 @@ hero:
 
 ## Differential Diffusionとは？
 
-通常の inpainting では、マスクは「白か黒か」の二択で扱われます。  
-少しでもグレーになると「マスクしていない」と見なされ、完全な白の部分だけしか inpainting してくれません。
+通常の inpainting では、マスクの白い部分は変化し、黒い部分は変化しません。  
+では、グレーにすれば少しだけ変化するのか？というと、残念、想像するようなコントロールはそのままではできません。
 
-Differential Diffusion は、**マスクの濃度に応じて denoise の強さを連続的に変える** ための仕組みです。  
-これのおかげで、場所ごとに変化量が異なる inpainting を一回のサンプリングで行うことができます。
+そこで生まれたのが Differential Diffusion です。
 
-> [inpainting](/ja/basic-workflows/sd15-inpainting/) を先に読んでいる前提です。  
-> マスクの作り方は [マスク操作](/ja/data-utilities/mask-ops/)、[AIを使ったマスク生成](/ja/data-utilities/ai-mask-generation/) を参照してください。
+**マスクの濃度に応じて、場所ごとに denoise を変える** ことが出来るため、場所ごとに変化量を変えたり、境界をぼかしたマスクを扱えるようになります。
+
+> [inpainting](/ja/basic-workflows/sd15-inpainting/) をまだ読んでいなければ、先にご覧ください。
 
 ---
 
 ## 使い方
 
-グラデーションマスクを用意し、inpainting の workflow に `Differential Diffusion` ノードを追加するだけです。
+inpainting の workflow に `Differential Diffusion` ノードを追加し、マスクに濃淡をつけるだけです。
 
 ### workflow
 
@@ -36,20 +36,21 @@ Differential Diffusion は、**マスクの濃度に応じて denoise の強さ�
 
 [](/workflows/basic-workflows/differential-diffusion/SD1.5_Differential_Diffusion.json)
 
+- 🟩 `Differential Diffusion` ノードを追加
 - ベースは `Set Latent Noise Mask` ノードを使った workflow です。
   - もちろん、inpainting モデルや ControlNet モデルを使った workflow でも使えます。
-- 🟩 `Differential Diffusion` ノードを追加
 
-マスクの白い部分ほどプロンプトに寄り、黒い部分ほど「元の絵」を残します。
+マスクの白い部分ほど大きく変化し、黒い部分ほど「元の絵」を残します。
 
 ---
 
-## 面白い使い方
+## マスクの使い方
 
-### 部位ごとに変化量を変える
+### 場所ごとに変化量を変える
 
-マスクはグラデーションである必要はありません。  
-**一枚のマスクの中で、場所ごとに濃さを変える** ことで、1 回のサンプリングで部位ごとに違う変化量を指定できます。
+マスクの濃さは、滑らかなグラデーションにする必要はありません。
+
+**一枚のマスク画像の中で、場所ごとに濃さを変える** ことで、1 回のサンプリングで部位ごとに違う変化量を指定できます。
 
 ![](https://gyazo.com/4b3d0506456a4f1dc8aa062d4e445b17){gyazo=image}
 
@@ -57,30 +58,32 @@ Differential Diffusion は、**マスクの濃度に応じて denoise の強さ�
 
 - 変えたい部分ごとに、マスクの濃さを描き分ける（例: 顔は薄めのグレー、背景は白など）
 
-### マスク境界をなじませる
+### 境界をなじませる
 
-inpainting のよくある問題として、マスクの境目がくっきり出てしまうことがあります。  
-Differential Diffusion と、ぼかしたマスクを組み合わせることで、この境界を自然になじませましょう。
+inpainting のよくある問題として、マスクの境目がくっきり出てしまうことがあります。
+
+Differential Diffusion と、ぼかしたマスクを組み合わせて、境界を自然になじませましょう。
 
 ![](https://gyazo.com/e54a8d82e7dca29bf6ab19fdb20c3354){gyazo=image}
 
 [](/workflows/basic-workflows/differential-diffusion/SD1.5_Differential_Diffusion_blur.json)
 
 - 🟪 今回は inpainting モデルを使った workflow に組み込みます。
-- `Gaussian Blur Mask` ノード（[ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)）でマスクの境界をぼかす
+- 🟨 `Gaussian Blur Mask` ノード（[ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)）でマスクの境界をぼかす
   - ぼかすと実質マスクが小さくなるため、前処理として少しマスクを大きくしておきます。
 
 ### 深度マップをマスクとして使う
 
 深度マップは白黒のグラデーションで表されます。  
-つまり、Differential Diffusion と相性が良いマスクとして使うことが出来ます。
+つまり、そのまま Differential Diffusion のマスクとして使うことが出来ます。
 
 ![](https://gyazo.com/ac52958c32bb143910151029c53707d1){gyazo=image}
 
 [](/workflows/basic-workflows/differential-diffusion/SD1.5_Differential_Diffusion_depthmap.json)
 
-- 🟦 Depth Anything V2 で深度マップを作成
+- 🟦 Depth Anything V2（[comfyui_controlnet_aux](https://github.com/Fannovel16/comfyui_controlnet_aux)）で深度マップを作成
   - これは IMAGE なので `Convert Image to Mask` ノードでマスクに変換します。
+- `RemapMaskRange`（[ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes)）で濃淡を調整
 
 正直、SD1.5 では性能が足りないのですが、深度マップをマスクとして使うこと自体は、お気に入りの方法です。
 

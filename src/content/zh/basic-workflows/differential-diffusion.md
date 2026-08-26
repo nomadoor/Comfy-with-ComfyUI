@@ -5,8 +5,8 @@ section: basic-workflows
 slug: differential-diffusion
 navId: differential-diffusion
 title: "Differential Diffusion"
-created: 2026-02-06
-updated: 2026-03-02
+created: 2025-12-07
+updated: 2026-08-26
 summary: "用掩膜的浓度控制变化量"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -15,20 +15,20 @@ hero:
 
 ## 什么是 Differential Diffusion？
 
-在通常的 inpainting，掩膜以“白或黑”的二选一被处理。  
-即使稍微有点灰也会被视为“没有掩膜”，只 inpainting 完全是白色的部分。
+在通常的 inpainting 中，掩膜的白色部分会发生变化，黑色部分不会变化。  
+那么，改成灰色是不是就能只改变一点？很遗憾，直接这样做并不能得到想象中的控制效果。
 
-Differential Diffusion 是 **根据掩膜的浓度连续地改变 denoise 的强度** 的机制。  
-多亏了这个，可以用 1 次采样进行每一处变化量不同的 inpainting。
+于是便有了 Differential Diffusion。
 
-> 前提是先读了 [inpainting](/zh/basic-workflows/sd15-inpainting/)。  
-> 掩膜的制作方法请参照 [掩膜操作](/zh/data-utilities/mask-ops/)、[使用 AI 生成掩膜](/zh/data-utilities/ai-mask-generation/)。
+它可以**根据掩膜的浓淡，改变各个位置的 denoise**，因此既能让不同位置产生不同程度的变化，也能使用边界经过模糊的掩膜。
+
+> 如果还没有读过 [inpainting](/zh/basic-workflows/sd15-inpainting/)，请先看这篇文章。
 
 ---
 
 ## 使用方法
 
-只要准备渐变掩膜，向 inpainting 的工作流追加 `Differential Diffusion` 节点就好。
+只需在 inpainting 工作流中添加 `Differential Diffusion` 节点，再为掩膜添加深浅变化。
 
 ### 工作流
 
@@ -36,53 +36,56 @@ Differential Diffusion 是 **根据掩膜的浓度连续地改变 denoise 的强
 
 [](/workflows/basic-workflows/differential-diffusion/SD1.5_Differential_Diffusion.json)
 
-- 基础是使用了 `Set Latent Noise Mask` 节点的工作流。
-  - 当然，也能用于使用了 inpainting 模型或 ControlNet 模型的工作流。
 - 🟩 追加 `Differential Diffusion` 节点
+- 这个示例以使用 `Set Latent Noise Mask` 节点的工作流为基础。
+  - 当然，也可以用于使用 inpainting 模型或 ControlNet 模型的工作流。
 
-掩膜越白的部分越靠拢提示词，越黑的部分越残留“原来的画”。
+掩膜越白的部分变化越大，越黑的部分越多地保留原图。
 
 ---
 
-## 有趣的使用方法
+## 掩膜的用法
 
-### 每部位改变变化量
+### 让不同位置产生不同程度的变化
 
-掩膜没必要是渐变。  
-通过 **在 1 张掩膜中，每处改变浓度**，可以在 1 次采样中每部位指定不同的变化量。
+掩膜的浓淡不必是平滑的渐变。
+
+通过**在一张掩膜图像中，为不同位置设置不同的浓淡**，就能在一次采样中为各个部位指定不同的变化量。
 
 ![](https://gyazo.com/4b3d0506456a4f1dc8aa062d4e445b17){gyazo=image}
 
 [](/workflows/basic-workflows/differential-diffusion/SD1.5_Differential_Diffusion_multi-obj.json)
 
-- 每想改变的部分，分画掩膜的浓度（例: 脸是浅灰、背景是白等）
+- 为每个想改变的部分分别设置掩膜浓淡（例如脸部使用浅灰色，背景使用白色）
 
-### 融合掩膜边界
+### 柔化边界
 
-作为 inpainting 常见的问题，掩膜的交界线会清晰地显现。  
-通过组合 Differential Diffusion 和模糊的掩膜，让这个边界自然地融合吧。
+inpainting 的一个常见问题，是掩膜的边界会清楚地显现出来。
+
+将 Differential Diffusion 与模糊后的掩膜组合使用，可以让边界衔接得更加自然。
 
 ![](https://gyazo.com/e54a8d82e7dca29bf6ab19fdb20c3354){gyazo=image}
 
 [](/workflows/basic-workflows/differential-diffusion/SD1.5_Differential_Diffusion_blur.json)
 
 - 🟪 这次组装进使用了 inpainting 模型的工作流。
-- 用 `Gaussian Blur Mask` 节点（[ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)）模糊掩膜的边界
-  - 因为模糊的话实质掩膜变小，所以作为预处理稍微让掩膜大一点。
+- 🟨 使用 `Gaussian Blur Mask` 节点（[ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)）模糊掩膜边界
+  - 模糊会让掩膜在效果上变小，因此需要预先将掩膜稍微扩大。
 
 ### 将深度图作为掩膜使用
 
-深度图以黑白的渐变表示。  
-也就是说，可以作为与 Differential Diffusion 相性好的掩膜使用。
+深度图以黑白渐变表示。  
+也就是说，它可以直接作为 Differential Diffusion 的掩膜使用。
 
 ![](https://gyazo.com/ac52958c32bb143910151029c53707d1){gyazo=image}
 
 [](/workflows/basic-workflows/differential-diffusion/SD1.5_Differential_Diffusion_depthmap.json)
 
-- 🟦 用 Depth Anything V2 制作深度图
-  - 因为这是 IMAGE 所以用 `Convert Image to Mask` 节点转换为掩膜。
+- 🟦 使用 Depth Anything V2（[comfyui_controlnet_aux](https://github.com/Fannovel16/comfyui_controlnet_aux)）制作深度图
+  - 输出是 IMAGE，因此需要使用 `Convert Image to Mask` 节点将其转换为掩膜。
+- 使用 `RemapMaskRange`（[ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes)）调整浓淡范围
 
-老实说，在 SD1.5 性能不足，但将深度图作为掩膜使用本身，是我中意的方法。
+老实说，SD1.5 的能力还不太够，但我很喜欢用深度图作掩膜这个方法。
 
 ---
 
