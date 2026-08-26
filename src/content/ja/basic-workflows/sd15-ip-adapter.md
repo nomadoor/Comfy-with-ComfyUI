@@ -6,7 +6,7 @@ slug: sd15-ip-adapter
 navId: sd15-ip-adapter
 title: "IP-Adapter"
 created: 2025-12-08
-updated: 2026-03-02
+updated: 2026-08-26
 summary: "参照画像からスタイルや被写体を転送する元祖的な仕組み"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
@@ -113,18 +113,6 @@ IP-Adapter の「目」にあたる CLIP ViT-H-14 は、基本的に **224 × 22
 - [ip-adapter-plus-face_sd15.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/ip-adapter-plus-face_sd15.safetensors)
 - 顔立ち・輪郭・目鼻立ちなどをかなり強く固定する
 
-### ip-adapter-faceid-plusv2_sd15
-
-CLIPだけでなく、insightfaceの顔認識モデルも組み合わせたモデルです。
-
-![](https://gyazo.com/ded09a4d7a09bb7cfca5ccfa684951dc){gyazo=image}
-
-[](/workflows/basic-workflows/sd15-ip-adapter/ip-adapter-faceid-plusv2_sd15.json)
-
-- [ip-adapter-faceid-plusv2_sd15.bin](https://huggingface.co/h94/IP-Adapter-FaceID/blob/main/ip-adapter-faceid-plusv2_sd15.bin)
-- plus-faceよりも柔軟にIDを転送します。
-- 🟨 `IPAdapter FaceID`ノードを使用します。
-
 ---
 
 ## SDXL用モデルリンク
@@ -134,4 +122,3 @@ CLIPだけでなく、insightfaceの顔認識モデルも組み合わせたモ�
 - [ip-adapter_sdxl_vit-h](https://huggingface.co/h94/IP-Adapter/blob/main/sdxl_models/ip-adapter_sdxl_vit-h.safetensors)
 - [ip-adapter-plus-face_sdxl_vit-h](https://huggingface.co/h94/IP-Adapter/blob/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors)
 - [ip-adapter-plus_sdxl_vit-h](https://huggingface.co/h94/IP-Adapter/blob/main/sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors)
-- [ip-adapter-faceid-plusv2_sdxl](https://huggingface.co/h94/IP-Adapter-FaceID/blob/main/ip-adapter-faceid-plusv2_sdxl.bin)

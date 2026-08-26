@@ -6,7 +6,7 @@ slug: model-merge
 navId: model-merge
 title: "モデルのマージと差分LoRA"
 created: 2025-12-11
-updated: 2026-03-02
+updated: 2026-08-26
 summary: "チェックポイントやLoRAをマージして新しいモデルや差分LoRAを作る方法"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
@@ -43,8 +43,6 @@ tags: []
 
 ![](https://gyazo.com/89e876767a48d9acd6c6bb684e6b2495){gyazo=image}
 
-[](/workflows/basic-workflows/model-merge/50-50-save.json)
-
 - マージ結果が気に入ったら、`CheckpointSave` ノードにつないでチェックポイントとして保存します。(上のworkflowではバイパスしています。)
   - 保存先はデフォルトでは `ComfyUI/output/checkpoints/`（Windows ポータブル版の標準設定）です。
 
@@ -65,27 +63,17 @@ tags: []
 ## 階層マージ
 
 Stable Diffusion の「ノイズから画像を復元する本体」は U 字の形をしたネットワーク「U-Net」というものです。
-これは階段状になっているのですが、いくつかの研究から、層毎に役割が違うらしいということが分かっています。(cf. [P+](https://prompt-plus.github.io/))
+U-Net はいくつもの層に分かれていて、外側はテクスチャや色、中央付近は形や構図に影響しやすいなど、層ごとに役割が違うらしいことが分かっています。(cf. [P+](https://prompt-plus.github.io/))
 
-- 浅い層 … テクスチャ・色・細かいパターン寄り
-- 深い層 … 形・構図・レイアウト寄り
-
-ということは、モデルBの色味だけ欲しいときは、浅い層のみをモデル B 寄りにマージすれば良さそうです。
-これが階層マージの仕組みです。
+その違いを利用して、欲しい特徴だけをうまく混ぜようというのが階層マージです。
 
 ![](https://gyazo.com/380e98b86fa2205099cf6f231fc32ac8){gyazo=image}
 
 [](/workflows/basic-workflows/model-merge/ModelMergeBlocks_out_0.5.json)
 
-ComfyUI の標準ノード `ModelMergeBlocks` は、U-Net 全体を大まかに **IN / MID / OUT の3ブロック**に分けて比率を指定できます。
+ComfyUI の標準ノード `ModelMergeBlocks` は、U-Net を入力から中央までの `IN`、中央の `MID`、中央から出力までの `OUT` に分け、それぞれ比率を指定できます。
 
-- `IN` … 入力側のブロック（比較的浅い層）
-- `MID` … 真ん中のボトルネック付近
-- `OUT` … 出力側のブロック（比較的深い層）
-
-実際にはUNetは何十階層もあり、コミュニティの研究により、どの層が何に影響しそうか？というのは大体分かってきています。
-
-ComfyUIには、`ModelMergeSD1`/`ModelMergeSDXL`といった、一層ずつ比率を調整できるノードもあります。が、これを使いこなすのは職人芸でしょう……
+ComfyUI には、`ModelMergeSD1` / `ModelMergeSDXL` といった、一層ずつ比率を調整できるノードもあります。が、これを使いこなすのは職人芸でしょう……
 
 ---
 

@@ -6,7 +6,7 @@ slug: sd15-ip-adapter
 navId: sd15-ip-adapter
 title: "IP-Adapter"
 created: 2025-12-09
-updated: 2026-03-02
+updated: 2026-08-26
 summary: "The original mechanism for transferring style and subject from a reference image"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
@@ -113,18 +113,6 @@ An IP-Adapter specialized for faces (head).
 - [ip-adapter-plus-face_sd15.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/ip-adapter-plus-face_sd15.safetensors)
 - Fixes facial features, contours, etc. quite strongly.
 
-### ip-adapter-faceid-plusv2_sd15
-
-A model that combines not only CLIP but also the face recognition model of insightface.
-
-![](https://gyazo.com/ded09a4d7a09bb7cfca5ccfa684951dc){gyazo=image}
-
-[](/workflows/basic-workflows/sd15-ip-adapter/ip-adapter-faceid-plusv2_sd15.json)
-
-- [ip-adapter-faceid-plusv2_sd15.bin](https://huggingface.co/h94/IP-Adapter-FaceID/blob/main/ip-adapter-faceid-plusv2_sd15.bin)
-- Transfers ID more flexibly than plus-face.
-- 🟨 Uses the `IPAdapter FaceID` node.
-
 ---
 
 ## SDXL Model Links
@@ -134,4 +122,3 @@ For those who want to try SDXL as well, here is a list of model links for SDXL.
 - [ip-adapter_sdxl_vit-h](https://huggingface.co/h94/IP-Adapter/blob/main/sdxl_models/ip-adapter_sdxl_vit-h.safetensors)
 - [ip-adapter-plus-face_sdxl_vit-h](https://huggingface.co/h94/IP-Adapter/blob/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors)
 - [ip-adapter-plus_sdxl_vit-h](https://huggingface.co/h94/IP-Adapter/blob/main/sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors)
-- [ip-adapter-faceid-plusv2_sdxl](https://huggingface.co/h94/IP-Adapter-FaceID/blob/main/ip-adapter-faceid-plusv2_sdxl.bin)

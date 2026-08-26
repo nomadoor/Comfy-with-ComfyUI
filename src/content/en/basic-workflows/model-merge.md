@@ -6,7 +6,7 @@ slug: model-merge
 navId: model-merge
 title: "Model Merge & Difference LoRA"
 created: 2025-12-11
-updated: 2026-03-02
+updated: 2026-08-26
 summary: "How to merge checkpoints/LoRAs and create difference LoRAs"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
@@ -43,8 +43,6 @@ In this workflow, we use the `ModelMergeSimple` node to merge two checkpoints at
 
 ![](https://gyazo.com/89e876767a48d9acd6c6bb684e6b2495){gyazo=image}
 
-[](/workflows/basic-workflows/model-merge/50-50-save.json)
-
 - If you like the merge result, connect it to the `CheckpointSave` node to save it as a checkpoint. (It is bypassed in the workflow above.)
   - The default save location is `ComfyUI/output/checkpoints/` (standard setting for Windows portable version).
 
@@ -65,25 +63,15 @@ Is there any good way?
 ## Block Merge (Layer Merge)
 
 The "main body that restores images from noise" in Stable Diffusion is a U-shaped network called "U-Net".
-This is stepped, and several studies have shown that the role is different for each layer. (cf. [P+](https://prompt-plus.github.io/))
+The U-Net is divided into many layers, and each appears to play a different role. Its outer layers tend to affect texture and color, while the layers near the center tend to affect shape and composition. (cf. [P+](https://prompt-plus.github.io/))
 
-- Shallow layers ... Texture, color, fine patterns
-- Deep layers ... Shape, composition, layout
-
-So, when you only want the color of Model B, it seems good to merge only the shallow layers towards Model B.
-This is the mechanism of Block Merge (Layer Merge).
+Block Merge uses these differences to mix only the features you want.
 
 ![](https://gyazo.com/380e98b86fa2205099cf6f231fc32ac8){gyazo=image}
 
 [](/workflows/basic-workflows/model-merge/ModelMergeBlocks_out_0.5.json)
 
-ComfyUI's standard node `ModelMergeBlocks` can roughly divide the entire U-Net into **3 blocks of IN / MID / OUT** and specify ratios.
-
-- `IN` ... Input side block (relatively shallow layers)
-- `MID` ... Around the middle bottleneck
-- `OUT` ... Output side block (relatively deep layers)
-
-Actually, UNet has dozens of layers, and through community research, it is generally understood which layer is likely to affect what.
+ComfyUI's standard `ModelMergeBlocks` node divides the U-Net into `IN`, from the input toward the center; `MID`, at the center; and `OUT`, from the center toward the output. You can set a separate ratio for each.
 
 ComfyUI also has nodes like `ModelMergeSD1` / `ModelMergeSDXL` that can adjust the ratio layer by layer. However, mastering this would be a craftsmanship...
 

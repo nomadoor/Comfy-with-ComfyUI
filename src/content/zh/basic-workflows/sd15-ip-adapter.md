@@ -6,7 +6,7 @@ slug: sd15-ip-adapter
 navId: sd15-ip-adapter
 title: "IP-Adapter"
 created: 2025-12-09
-updated: 2026-03-02
+updated: 2026-08-26
 summary: "从参照图像转印风格和被摄体的元祖机制"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -113,18 +113,6 @@ IP-Adapter 有几种种类，首先试一下最标准的东西吧。
 - [ip-adapter-plus-face_sd15.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/ip-adapter-plus-face_sd15.safetensors)
 - 相当强地固定长相・轮廓・五官等
 
-### ip-adapter-faceid-plusv2_sd15
-
-不仅是 CLIP，也组合了 insightface 的人脸识别模型的模型。
-
-![](https://gyazo.com/ded09a4d7a09bb7cfca5ccfa684951dc){gyazo=image}
-
-[](/workflows/basic-workflows/sd15-ip-adapter/ip-adapter-faceid-plusv2_sd15.json)
-
-- [ip-adapter-faceid-plusv2_sd15.bin](https://huggingface.co/h94/IP-Adapter-FaceID/blob/main/ip-adapter-faceid-plusv2_sd15.bin)
-- 比 plus-face 更灵活地转印 ID。
-- 🟨 使用 `IPAdapter FaceID` 节点。
-
 ---
 
 ## SDXL 用模型链接
@@ -134,4 +122,3 @@ IP-Adapter 有几种种类，首先试一下最标准的东西吧。
 - [ip-adapter_sdxl_vit-h](https://huggingface.co/h94/IP-Adapter/blob/main/sdxl_models/ip-adapter_sdxl_vit-h.safetensors)
 - [ip-adapter-plus-face_sdxl_vit-h](https://huggingface.co/h94/IP-Adapter/blob/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors)
 - [ip-adapter-plus_sdxl_vit-h](https://huggingface.co/h94/IP-Adapter/blob/main/sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors)
-- [ip-adapter-faceid-plusv2_sdxl](https://huggingface.co/h94/IP-Adapter-FaceID/blob/main/ip-adapter-faceid-plusv2_sdxl.bin)

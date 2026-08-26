@@ -5,8 +5,8 @@ section: basic-workflows
 slug: model-merge
 navId: model-merge
 title: "模型合并与差分 LoRA"
-created: 2026-02-06
-updated: 2026-03-02
+created: 2025-12-11
+updated: 2026-08-26
 summary: "合并检查点或 LoRA 制作新模型或差分 LoRA 的方法"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -43,8 +43,6 @@ tags: []
 
 ![](https://gyazo.com/89e876767a48d9acd6c6bb684e6b2495){gyazo=image}
 
-[](/workflows/basic-workflows/model-merge/50-50-save.json)
-
 - 如果中意合并结果，连接到 `CheckpointSave` 节点作为检查点保存。(在上面的工作流旁路着。)
   - 保存目的地默认为 `ComfyUI/output/checkpoints/`（Windows 便携版的标准设定）。
 
@@ -64,26 +62,16 @@ tags: []
 
 ## 阶层合并
 
-Stable Diffusion 的“从噪声复原图像的本体”是名为 U 字形的网络“U-Net”的东西。
-这是阶梯状的，从几个研究知道每层似乎作用不同。(cf. [P+](https://prompt-plus.github.io/))
+Stable Diffusion 中“从噪声复原图像的本体”是一个 U 字形网络，称为“U-Net”。
+U-Net 由许多层组成，各层似乎有着不同的作用。外侧的层更容易影响纹理和颜色，中央附近的层则更容易影响形状和构图。(cf. [P+](https://prompt-plus.github.io/))
 
-- 浅层 … 靠拢纹理・颜色・细微的图案
-- 深层 … 靠拢形状・构图・布局
-
-也就是说，在只想要模型 B 的色调时，好像只要只将浅层向模型 B 靠拢合并就好。
-这就是阶层合并的机制。
+阶层合并就是利用这种差异，尽量只混入想要的特征。
 
 ![](https://gyazo.com/380e98b86fa2205099cf6f231fc32ac8){gyazo=image}
 
 [](/workflows/basic-workflows/model-merge/ModelMergeBlocks_out_0.5.json)
 
-ComfyUI 的标准节点 `ModelMergeBlocks`，可以将 U-Net 整体粗略分为 **IN / MID / OUT 的 3 块** 指定比率。
-
-- `IN` … 输入侧的块（比较浅的层）
-- `MID` … 中间的瓶颈附近
-- `OUT` … 输出侧的块（比较深的层）
-
-实际上 UNet 有几十层，通过社区的研究，哪层似乎对什么有影响，大体已经知道了。
+ComfyUI 的标准节点 `ModelMergeBlocks` 将 U-Net 分为从输入走向中央的 `IN`、位于中央的 `MID`，以及从中央走向输出的 `OUT`，并可分别指定合并比率。
 
 在 ComfyUI，也有 `ModelMergeSD1`/`ModelMergeSDXL` 这样，虽然能一层层调整比率的节点。但，能运用自如这个是工匠技艺吧……
 
