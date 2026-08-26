@@ -15,7 +15,8 @@ hero:
 
 ## Differential Diffusionとは？
 
-通常の inpainting では、マスクの白い部分は変化し、黒い部分は変化しません。  
+通常の inpainting では、マスクの白い部分は変化し、黒い部分は変化しません。
+
 では、グレーにすれば少しだけ変化するのか？というと、残念、想像するようなコントロールはそのままではできません。
 
 そこで生まれたのが Differential Diffusion です。

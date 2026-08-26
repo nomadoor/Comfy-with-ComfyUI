@@ -15,7 +15,8 @@ hero:
 
 ## What is Differential Diffusion?
 
-In normal inpainting, the white areas of the mask change while the black areas do not.  
+In normal inpainting, the white areas of the mask change while the black areas do not.
+
 So does making an area gray change it just a little? Unfortunately, it does not give you that kind of control on its own.
 
 That is where Differential Diffusion comes in.
@@ -74,7 +75,8 @@ Combine Differential Diffusion with a blurred mask to blend the boundary more na
 
 ### Use a Depth Map as a Mask
 
-A depth map is represented as a black-to-white gradient.  
+A depth map is represented as a black-to-white gradient.
+
 This means it can be used directly as a Differential Diffusion mask.
 
 ![](https://gyazo.com/ac52958c32bb143910151029c53707d1){gyazo=image}

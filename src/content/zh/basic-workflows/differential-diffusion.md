@@ -15,7 +15,8 @@ hero:
 
 ## 什么是 Differential Diffusion？
 
-在通常的 inpainting 中，掩膜的白色部分会发生变化，黑色部分不会变化。  
+在通常的 inpainting 中，掩膜的白色部分会发生变化，黑色部分不会变化。
+
 那么，改成灰色是不是就能只改变一点？很遗憾，直接这样做并不能得到想象中的控制效果。
 
 于是便有了 Differential Diffusion。
@@ -74,7 +75,8 @@ inpainting 的一个常见问题，是掩膜的边界会清楚地显现出来。
 
 ### 将深度图作为掩膜使用
 
-深度图以黑白渐变表示。  
+深度图以黑白渐变表示。
+
 也就是说，它可以直接作为 Differential Diffusion 的掩膜使用。
 
 ![](https://gyazo.com/ac52958c32bb143910151029c53707d1){gyazo=image}
