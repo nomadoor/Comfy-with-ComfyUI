@@ -6,7 +6,7 @@ slug: runpod-ai-toolkit-lora-training
 navId: runpod-ai-toolkit-lora-training
 title: "在 RunPod 上运行 AI Toolkit"
 created: 2026-05-03
-updated: 2026-05-03
+updated: 2026-08-26
 noteTags: ["guide", "training", "runpod", "ai-toolkit", "lora"]
 summary: "在 RunPod 上启动 AI Toolkit 并执行 LoRA 训练的流程"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
@@ -55,13 +55,15 @@ RunPod 是先购买点数，再消耗点数使用 GPU 的形式。
 
 如果只是试一下 LoRA 训练，10 美元左右就足够了。
 
+![](https://gyazo.com/f683db8baf406ed1aa79e5d348f1e406){gyazo=image}
+
 - 点击右上角的 `+` 按钮
-- 如果想从小额开始，选择 `Other`
+- 如果想购买 150 美元或更少的点数，选择 `Other`
 - 输入金额，然后进入 `Go to Checkout`
 
-不一定要用，不过这是我的邀请链接。从这里注册的话，第一次购买点数时会额外得到一点额度。
-
-- https://runpod.io?ref=ke9q7kqp
+> 不一定要用，不过这是我的邀请链接。从这里注册并购买至少 10 美元的点数，会额外得到一点额度。
+>
+> [RunPod 邀请链接](https://runpod.io?ref=ke9q7kqp)
 
 ---
 
@@ -77,74 +79,44 @@ Pod 就像一台可以自定义的云端租用 PC。
 
 这次我们会创建一个可以使用 AI Toolkit 的 Pod，从浏览器打开 AI Toolkit 界面，并训练 LoRA。
 
-### 创建 Pod
+### 选择 Template
 
-从侧边栏打开 `Pods`，创建新的 Pod。
+从侧边栏打开 `Pods`，点击 `Deploy`。
 
-这里需要选择 Cloud、GPU、CUDA version、storage 等项目。
+![](https://gyazo.com/c39356c905c1a2bf89d0fcf83451712d){gyazo=loop}
 
-![](https://gyazo.com/6f74774cfc5a065178ef3040173cbab8){gyazo=image}
+- 在 `Search templates` 中搜索 `AI Toolkit`
+- 选择 [AI Toolkit - ostris - ui - official](https://console.runpod.io/hub/template/ai-toolkit-ostris-ui-official?id=0fqzfjy6f3)
+  - 这是 AI Toolkit 作者 Ostris 制作的 Template。
+  - 搜索结果里会出现许多同名 Template，请注意不要选错。
 
-- **Cloud**
-  - `Secure Cloud`
-    - 这是 RunPod 准备好的环境。比较稳定，但价格偏高。
-  - `Community Cloud`
-    - 这是通过 RunPod 审核的外部提供环境。
-  - `Community Cloud` 不能使用 Network Volume，不过这次不会用到，所以选哪一个都可以。
+选择 Template 后，从 `Set overrides` 修改一项设置。
 
-- **Network Volume**
-  - Pod 关闭后，内部数据也会被删除。
-  - Network Volume 是为了避免这种情况，把数据保存到外部的服务。
-  - 这次的用法是训练结束后下载 LoRA，然后删除整个 Pod。
+- 打开 `Environment Variables`
+- 把 `AI_TOOLKIT_AUTH` 的值改成只有自己知道的密码
 
-- **CUDA version**
-  - CUDA version 太旧的话，AI Toolkit 有可能无法运行。
-  - 这次请选择 `12.8` 以上。
+> 这里设置的值会在打开 AI Toolkit 时使用。如果保持默认值，任何人都可以用 `password` 打开，所以请改成别的值。
 
-- **GPU**
-  - 选项很多，容易不知道该选哪个，但最先要看的是 **VRAM**。
-  - VRAM 不够时，训练中会出现 `Out of Memory`，无法继续处理。
-  - 在此基础上，才需要为了速度选择更高等级的 GPU。
+### 选择 GPU
 
-下面列几个常用的 GPU。
+`Compute` 一栏中会列出许多 GPU。
+
+不知道该选哪个时，首先要看的是 **VRAM**。
+
+VRAM 不够时，训练中会出现 `Out of Memory`，无法继续处理。
+
+价格较高的 GPU 通常训练也更快，但价格翻倍，并不代表速度也会翻倍。还是要看预算和剩余时间怎么取舍。
+
+我经常使用 RTX A5000 和 A40。
 
 | GPU | VRAM | 备注 |
 | --- | --- | --- |
-| **RTX 3090** | 24GB | 如果是 SDXL 系的 LoRA 训练，速度和成本的平衡不错。 |
-| **RTX A40** | 48GB | 可以相对便宜地使用 48GB VRAM，所以 LoRA 训练时我通常会先选它。24GB 不够时就用这个。 |
-| **RTX PRO 6000** | 96GB | 对 LoRA 训练来说有点规格过高，但在尝试 LTX-2 这类大型模型，或 VRAM 消耗很大的设置时会用到。 |
+| **RTX A5000** | 24GB | 优点是价格便宜。不过数量较少，有时可能没有空闲实例。 |
+| **A40** | 48GB | 可以相对便宜地使用 48GB VRAM。24GB 不够时，我会使用这张卡。 |
 
-### 部署设置
+### Deploy Pod
 
-硬件设置完成后，接下来选择要运行的软件。
-
-这次会使用模板，所以没有特别难的地方。
-
-![](https://gyazo.com/8a3c2e36c95a1c43daf39dc9c69880cc){gyazo=image}
-
-- **Pod name**
-  - 填一个喜欢的名字。
-
-- **Pod template**
-  - 选择 [AI Toolkit - ostris - ui - official](https://console.runpod.io/hub/template/ai-toolkit-ostris-ui-official?id=0fqzfjy6f3)。
-  - 这是 AI Toolkit 作者 Ostris 制作的模板。
-  - 用 `AI Toolkit` 搜索时，会出现很多同名或近似名称的模板，请注意不要选错。
-
-  接下来，对这个模板做一点修改。
-
-  ![](https://gyazo.com/423ba9ab55c4699b047abc7b7d0b2e44){gyazo=image}
-
-  - 点击 `Edit`。
-  - 打开最下方的 `Environment Variables`。
-  - 把 `AI_TOOLKIT_AUTH` 的值改成只有自己知道的密码。
-
-  > 这里设置的值会在打开 AI Toolkit 时使用。如果保持默认值，任何人都可以用 `password` 打开，所以请改成别的值。
-
-- **Storage configuration**
-  - 准备足够的 **Volume disk**，用来放 dataset、base model 和输出的 LoRA。
-  - 使用默认值即可。
-
-之后点击 `Deploy On-Demand`，Pod 就会被创建。
+点击 `Deploy Pod` 后，Pod 就会被创建。
 
 > 从这个时间点开始会消耗点数。dataset 等准备工作最好提前完成。
 
