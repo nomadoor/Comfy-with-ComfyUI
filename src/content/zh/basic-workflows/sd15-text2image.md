@@ -5,8 +5,8 @@ section: basic-workflows
 slug: sd15-text2image
 navId: sd15-text2image
 title: "text2image"
-created: 2026-02-06
-updated: 2026-03-02
+created: 2025-12-04
+updated: 2026-08-26
 summary: "Stable Diffusion 1.5 的 text2image"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -187,12 +187,12 @@ bad anatomy, extra fingers, extra limbs, blurry, lowres, jpeg artifacts, ...
 
 通过将 `(red:1.05)` / `(blue:0.9)` 这样的数值设定给提示词的各单词，可以更改该单词的重要性。
 
-CLIP 会更重视前面的文本，所以写在后半部分的文本几乎会被无视。而且，原本就有很生效的词，和不太生效的词。
+CLIP 往往会更重视前面的文本，因此越靠后写的内容越不容易生效。此外，有些词本来就更容易生效，有些则不太容易。
 
 为了手动调整这些，使用这个关注度记法。
 
 > 但是，这能顺利进行的前提终究是 CLIP 理解那个词的时候。  
-> 给可能不仅知道的词加上 `(Ghoti:999)` 之类的也没意义。
+> 给可能根本不认识的词加上 `(Ghoti:999)` 之类的也没有意义。
 
 ![](https://gyazo.com/e13bd76787711c8392334243177e60f3){gyazo=loop}
 

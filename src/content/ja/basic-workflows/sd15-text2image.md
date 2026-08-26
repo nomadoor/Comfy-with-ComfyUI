@@ -6,7 +6,7 @@ slug: sd15-text2image
 navId: sd15-text2image
 title: "text2image"
 created: 2025-12-04
-updated: 2026-03-02
+updated: 2026-08-26
 summary: "Stable Diffusion 1.5でのtext2image"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
@@ -187,8 +187,7 @@ bad anatomy, extra fingers, extra limbs, blurry, lowres, jpeg artifacts, ...
 
 プロンプトの各ワードに`(red:1.05)` / `(blue:0.9)`のように数値を設定することで、そのワードの重要度を変更できます。
 
-CLIPは、前にあるテキストをより重視するため、後半に書いたテキストはほぼ無視されます。また、そもそもワードによって良く効くもの、あまり効かないもの
-があります。
+CLIP はプロンプトの前にあるテキストを重視する傾向があり、後半に書いたものほど効きづらくなります。また、ワードによっても、よく効くものとあまり効かないものがあります。
 
 それを手動で調整するために、この注目度記法を使用します。
 
@@ -197,4 +196,4 @@ CLIPは、前にあるテキストをより重視するため、後半に書い�
 
 ![](https://gyazo.com/e13bd76787711c8392334243177e60f3){gyazo=loop}
 
-- 注目度を変えたいワードにカーソルを起き、`Ctrl + 矢印↑/↓`をすると、0.05ずつ調整できます。
+- 注目度を変えたいワードにカーソルを置き、`Ctrl + 矢印↑/↓`をすると、0.05ずつ調整できます。
