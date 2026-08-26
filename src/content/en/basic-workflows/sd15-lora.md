@@ -6,7 +6,7 @@ slug: sd15-lora
 navId: sd15-lora
 title: "LoRA"
 created: 2025-12-05
-updated: 2026-08-01
+updated: 2026-08-26
 summary: "LoRA in Stable Diffusion 1.5"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
@@ -44,7 +44,7 @@ This time, as an example, let's use a LoRA that makes it look like pixel art.
 
 ### workflow
 
-![](https://gyazo.com/8596b20bea2e92a969693fa18f1ce778){gyazo=image}
+![](https://gyazo.com/6f275d3cbc6c8487bf1645af06763aea){gyazo=image}
 
 [](/workflows/basic-workflows/sd15-lora/SD1.5_lora.json)
 
