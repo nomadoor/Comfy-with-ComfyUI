@@ -6,7 +6,7 @@ slug: sd15-textual-inversion
 navId: sd15-textual-inversion
 title: "Textual Inversion"
 created: 2025-12-05
-updated: 2026-03-02
+updated: 2026-08-26
 summary: "Stable Diffusion 1.5でのTextual Inversion"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
@@ -45,7 +45,7 @@ Textual Inversion は、学習が軽いという利点こそあれど、現在�
 
 モデルの性能を引き出すには、「作者が想定したプロンプト」を利用者が正しく入力する必要があります。しかし、すべての利用者がそれに従ってくれるとは限りませんし、毎回細かいプロンプトを書くのも面倒です。
 
-そこで、あらかじめ embeddings を用意し、その単語を入れてもらうことで、最低品質を保証しているということですね。
+そこで、あらかじめ embeddings を用意し、その単語を入れてもらうことで、作者が想定した出力に近づけやすくしているということですね。
 
 
 ---

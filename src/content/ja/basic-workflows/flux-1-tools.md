@@ -6,7 +6,7 @@ slug: flux-1-tools
 navId: flux-1-tools
 title: "Flux.1 Tools"
 created: 2025-12-10
-updated: 2026-03-02
+updated: 2026-08-26
 summary: "Flux.1 Toolsの使い方"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
@@ -129,4 +129,3 @@ Redux は、Flux 本体とは別の「スタイルモデル」として読み込
 プロンプトでもある程度コントロール出来るようにするカスタムノードもあります。参考までに。
 
 * [kaibioinfo/ComfyUI_AdvancedRefluxControl](https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl)
-

@@ -5,8 +5,8 @@ section: basic-workflows
 slug: liveportrait
 navId: liveportrait
 title: "LivePortrait"
-created: 2026-02-06
-updated: 2026-03-02
+created: 2025-12-12
+updated: 2026-08-26
 summary: "在 LivePortrait 中从 1 张脸部照片控制表情和摇头"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -78,7 +78,7 @@ tags: ["talking-head"]
 
 ![](https://gyazo.com/adf677e141945fd7d957acb2e26c02ec){gyazo=loop}
 
-[](/workflows/basic-workflows/liveportrait/LivePortrait_i2v_motion.json)
+[](/workflows/basic-workflows/liveportrait/LivePortrait_i2v_motion_link.json)
 
 - 🟨 `Advanced Live Portrait (PHM)` 节点
   - 将 `animate_without_vid` 设为 `true`
