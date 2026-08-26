@@ -6,7 +6,7 @@ slug: sd15-inpainting
 navId: sd15-inpainting
 title: "inpainting"
 created: 2025-12-07
-updated: 2026-03-02
+updated: 2026-08-26
 summary: "inpaintingで画像の一部分だけ編集する"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: ["controlnet", "region-limited-generation"]
@@ -16,80 +16,82 @@ hero:
 
 ## inpaintingとは？
 
-inpainting は **「画像の一部分だけを描き直す」** ための手法です。  
-が、実は中身を見てみると、次の 2 パターンに分けられます。
+inpainting は **「画像の一部分だけを描き直す」** ための手法です。
 
-- タイプA: **マスク部分だけを image2image する** 
-- タイプB: **周囲の情報を見ながら、マスク部分を自然に埋める**
+不要なものを消す、一部分だけ描き直す、別のものに置き換える…… 細かく分類すれば様々な用途がありますが、これを実現する方法はいくつもあります。
 
-一般的には、これらに区別をつけていませんが、それゆえ混乱している初心者をよく見かけます。  
-いったん別物として分けて考えていきましょう。
-
-> マスクの作り方やマスク編集の詳細は、別ページの[マスク操作](/ja/data-utilities/mask-ops/)、[AIを使ったマスク生成](/ja/data-utilities/ai-mask-generation/)を参照してください。
+- [image2image を一部分だけに適用する](#一部分だけの-image2image)
+- [inpainting 専用モデルを使う](#inpaintingモデル)
+- [ControlNet を使う](#controlnet-inpaint)
+- [画像編集モデルを使う](#画像編集モデル)
+- etc.
 
 ---
 
-## タイプA: マスク部分だけの image2image
+## 一部分だけの image2image
 
-マスクした部分だけを、通常の image2image と同じノリで描き直す方法です。  
-少し顔の表情を変える、絵柄を変える、細かい部分をちょっと修正したいときに向いています。
+通常の image2image では画像全体を再生成しますが、生成する範囲をマスク部分だけに限定すれば、一部分だけを再生成できます。
 
 ### workflow
 
-この workflow では、`SetLatentNoiseMask` ノードを使って「どこにノイズを足すか」を指定します。
+ベースはいつもの [image2image](/ja/basic-workflows/sd15-image2image/) です。そこにマスクを加えて、描き直す場所を決めます。
 
 ![](https://gyazo.com/4fc7e54c5ac44fb4c09fc9911f6be06a){gyazo=image}
 
 [](/workflows/basic-workflows/sd15-inpainting/SD1.5_inpainting_SetLatentNoiseMask.json)
 
-- ベースは image2image の workflow です。
 - 🟥 `VAE Encode` ノードで元画像を latent に変換
 - 🟩 `Set Latent Noise Mask` ノードで latent とマスクを組み合わせる
 
-### この手法の問題点
+`Set Latent Noise Mask` は、KSampler が描き直してよい範囲を決めるノードです。
+
+内部では、毎 step 画像全体を image2image した後、マスク外は元の画像（latent）に戻します。
+
+すると結果として、マスク部分だけに image2image をかけたように見えるんですね。
+
+> マスクの作り方やマスク編集の詳細は、別ページの[マスク操作](/ja/data-utilities/mask-ops/)、[AIを使ったマスク生成](/ja/data-utilities/ai-mask-generation/)を参照してください。
+
+### 【問題点】denoise を上げると周囲と合わなくなる
+
+基本的な性質は通常の image2image と同じです。
+
+`denoise` を高くするほど自由度は上がりますが、元画像を忘れていきます。
 
 試しに上の workflow で `denoise` を `1.00` にしてみましょう。
 
-![](https://gyazo.com/b18eb39eee9f53b669edb098a219bd24){gyazo=image}
+![わお、ホラー画像…(；・∀・)](https://gyazo.com/b18eb39eee9f53b669edb098a219bd24){gyazo=image}
 
-わお、ホラー画像が生成されました(；・∀・)  
+画像全体の image2image であれば、大きく変化しても、それはそれで楽しくてよいでしょう。
 
-この手法は、あくまで「マスク部分だけをキャンバスにした image2image」です。  
-`denoise` を上げると、マスク部分でほとんど **text2image に近い挙動** になります。
+しかし、一部分だけの image2image ではマスクの外は元の画像のまま残ります。マスクの中と外で一貫性が無くなってしまうんですね。
 
-プロンプトに「赤いパンチパーマの女性」と書いたので、元の画像とは関係なく、新たに女性を描き出したわけですね。
+花の形を少し変えるくらいなら、この方法でも良いでしょう。でも、大きな変化のときは難しい。
 
-全体の雰囲気を見つつ、マスクされた部分を描いてもらう方法はないでしょうか？
+赤い花を青にしたり、花を楽器に置き換えたりするには `denoise` を上げる必要がある。しかし、そうすると周りから浮いてしまう……
 
----
-
-## タイプB: 周囲を見ながらマスクを埋める
-
-画像全体を見たうえで、「周りと自然につなげるようにマスク部分を描き直す」タイプです。  
-
-先ほどは、「image2image の適用範囲をマスクで物理的に切り取る」だけでした。  
-こちらのタイプでは、マスク領域そのものを [Conditioning](/ja/ai-capabilities/conditioning/) の一種として扱い、「この範囲だけを描き直してほしい」という条件をモデルに直接渡します。
-
-そのうえで、実装のアプローチはいろいろありますが、SD1.5 では次の 2 系統を押さえておけば十分です。
-
-- **inpainting 専用モデルを使う**
-- **ControlNet inpaint でノーマルモデルを inpaint 対応にする**
+さて、こんなときはどうしましょう🤔
 
 ---
 
 ## inpaintingモデル
 
-SD1.5 を「周囲を見ながら埋める」タスク向けに調整したチェックポイントです。
+答えの一つが、inpainting 専用モデルです。
+
+先ほどの方法では、マスクは一部分だけに image2image をかけるために使われていました。**モデル自身には、どこがマスクされているのか伝わっていません。**
+
+inpainting モデルでは、モデル自身にも「どこを描き直すのか」と「その外側に何が写っているのか」を伝えます。
+
+マスク部分を灰色で隠した画像を作り、それをモデルへ渡します。描き直す前の中身は見せず、周囲だけを手掛かりにして埋めてもらうわけです。
 
 ### モデルのダウンロード
 
 - [stable-diffusion-v1-5/sd-v1-5-inpainting.ckpt](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-inpainting/blob/main/sd-v1-5-inpainting.ckpt)
-- ```
-  📂ComfyUI/
-    └── 📂models/
-        └── 📂checkpoints/
-            └── sd-v1-5-inpainting.ckpt
-  ```
+```
+📂ComfyUI/
+  └── 📂models/
+      └── 📂checkpoints/
+          └── sd-v1-5-inpainting.ckpt
+```
 
 ### workflow
 
@@ -98,26 +100,33 @@ SD1.5 を「周囲を見ながら埋める」タスク向けに調整したチ�
 [](/workflows/basic-workflows/sd15-inpainting/sd-v1-5-inpainting.json)
 
 - 🟪 inpainting モデルを読み込みます。
-* 🟩 `VAE Encode`、`Set Latent Noise Mask` を `InpaintModelConditioning` ノードに置き換えます。
-  * 入力するパラメータはほぼ同じです。
+- 🟩 `VAE Encode`、`Set Latent Noise Mask` を `InpaintModelConditioning` ノードに置き換えます。
 
-- `noise_mask` パラメータだけ少し注意が必要です。
-  * `true`
-    - `Set Latent Noise Mask` のときと同様に、マスクの中だけを書き直すよう強制します。通常はこの設定で問題ありません。
-  * `false`
-    - 一部のモデルでは、`true` にすると破綻することがあります。その場合の逃げ道として `false` を試してみてください。
+`InpaintModelConditioning` には、二つの役割があります。
 
-上の例では、`denoise` を `1.00` にしても、画像全体が自然に見えるように女性の髪を描き直していることが分かります。
-タイプA と違って、「周囲との整合性を見ながらマスク部分を埋める」挙動になっていますね。
+1. `Set Latent Noise Mask` と同じように、一部分だけに image2image をかける
+2. マスク部分を灰色で隠した元画像とマスクをモデルへ渡す
+
+`noise_mask` は、1つ目の役割を使うかどうかを決める設定です。
+
+- `true`
+  - `Set Latent Noise Mask` と同じように、マスク部分だけに image2image をかけます。
+  - 通常はこちらで問題ありません。
+- `false`
+  - モデルにはマスク部分を灰色で隠した元画像とマスクを渡しますが、マスク部分だけでなく全体を描き直させます。
+  - 極稀に `true` だとおかしくなるモデルがいるので、そのときは使ってみてください。
+
+上の workflow では `denoise` を `1.00` にしていますが、別の女性が出てくることはなく、周りに合わせて女性の髪を描き直していますね。
+
+どこを編集し、なにを参考に描けばよいのか、モデルがちゃんと分かっている証拠です。
 
 ---
 
 ## ControlNet inpaint
 
-inpainting モデルの欠点は、inpainting モデルを使わないといけないことです。
-Stable Diffusion 1.5 をファインチューニングしたモデルを、そのまま inpainting に使いたいときもあるでしょう。
+モデルにマスクの範囲を知らせる方法は、inpainting モデルだけではありません。
 
-そんな時、**ControlNet inpaint** が役に立ちます。
+その一つが、**ControlNet inpaint** です。
 
 > [ControlNet](/ja/basic-workflows/sd15-controlnet) については、また別のページで説明します。
 
@@ -127,8 +136,8 @@ Stable Diffusion 1.5 をファインチューニングしたモデルを、そ�
 
 ### ControlNet モデルのダウンロード
 
-* [comfyanonymous/control_v11p_sd15_inpaint_fp16.safetensors](https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/blob/main/control_v11p_sd15_inpaint_fp16.safetensors)
-* ```
+- [comfyanonymous/control_v11p_sd15_inpaint_fp16.safetensors](https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/blob/main/control_v11p_sd15_inpaint_fp16.safetensors)
+- ```
   📂ComfyUI/
     └── 📂models/
         └── 📂controlnet/
@@ -141,20 +150,40 @@ Stable Diffusion 1.5 をファインチューニングしたモデルを、そ�
 
 [](/workflows/basic-workflows/sd15-inpainting/SD1.5_ControlNet_inpaint.json)
 
-* 好きな SD1.5 checkpoint（＋LoRA）をロード
-* 🟨 画像とマスクを `Inpaint Preprocessor` に入力し、ControlNet 用の画像に変換
-  * 実際のところ、マスク部分を黒で塗りつぶしているだけです。
-* 🟩 `Apply ControlNet` ノードに ControlNet モデル・画像・VAE を入力
-* 🟥 上でやった `Set Latent Noise Mask` を使った inpainting を組み込む
+- 好きな SD1.5 checkpoint（＋LoRA）をロード
+- 🟨 画像とマスクを `Inpaint Preprocessor` に入力し、ControlNet 用の画像に変換
+  - 見た目は、マスク部分を黒く塗りつぶした画像です。
+- 🟩 `Apply ControlNet` ノードに ControlNet モデル・画像・VAE を入力
+- 🟥 `Set Latent Noise Mask` で、描き直す範囲をマスク部分に限定
+
+使っている技術は違いますが、「埋めてほしい場所」と「その周りに写っているもの」をモデルへ渡す点は、inpainting モデルと同じです。
 
 ---
 
-## SDXL / Flux などへのつなぎ
+## そのほかのinpainting
 
-このページは SD1.5 に特化していますが、ほかにも inpainting 手段はいくつか存在します。
+ここでは紹介しませんが、Stable Diffusion 1.5 以降のモデルでは、ほかにも様々な方法があります。
 
-- Fooocus inpaint（SDXL 向けの inpaint モデル）
-- Flux.fill（Flux 系の塗りつぶし機能）
-- Lanpaint（画像編集・inpaint 系ツール）
+- Fooocus Inpaint
+- FLUX.1 Fill
+- etc.
 
-これらは、また別で取り扱う予定です。
+---
+
+## 画像編集モデル
+
+現在であれば、画像編集モデルについて触れないわけにはいきません。
+
+画像編集モデルは、「男性の帽子を消して」のようにプロンプトで対象を指定したり、赤い線で囲んだ画像と「ここに猫を追加して」という指示を渡したりできます。専用のマスクすらいりません。
+
+正確には inpainting の文脈で語られるものではありませんが、**画像の一部分を変化させられる** という意味で、できることは同じです。
+
+### FLUX.2 [klein]
+
+代表的な画像編集モデルとして、[FLUX.2 \[klein\]](/ja/basic-workflows/flux-2-klein/) を見てみましょう。
+
+![](https://gyazo.com/e55ff686078115488cef6406f60b9370){gyazo=image}
+
+[](/workflows/basic-workflows/flux-2-klein/9b/Flux.2-klein-9b_image-edit.json)
+
+この workflow では、入力画像と `remove the man` というプロンプトだけで、画像から男性を消しています。

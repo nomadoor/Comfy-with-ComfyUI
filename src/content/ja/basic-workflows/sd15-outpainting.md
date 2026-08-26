@@ -6,7 +6,7 @@ slug: sd15-outpainting
 navId: sd15-outpainting
 title: "outpainting"
 created: 2025-12-07
-updated: 2026-03-02
+updated: 2026-08-26
 summary: "outpaintingで画像の外側を描き足す"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
@@ -17,17 +17,19 @@ hero:
 
 outpainting は **画像の「外側」を描き足す** 手法です。
 
-中身としては、inpainting の **「タイプB: 周囲の情報を見ながら、マスク部分を自然に埋める」** とまったく同じです。
+といっても、特別な生成方法ではありません。
 
-画像の中にマスクがあるか、外側にあるか、それだけの違いです。
+画像の外側にわざわざ余白を作り、その余白をマスクにして inpainting しているだけです。
 
-> [inpainting](/ja/basic-workflows/sd15-inpainting/) を先に読んでいる前提で進めます。
+画像の中を埋めるか、外側に作った余白を埋めるか。それだけです。
+
+> [inpainting](/ja/basic-workflows/sd15-inpainting/) をまだ読んでいなければ、先にご覧ください。
 
 ---
 
 ## inpaintingモデル
 
-inpainting モデルを使った、素直なやり方です。
+まずは、inpainting モデルを使う方法です。
 
 ### workflow
 
@@ -35,16 +37,15 @@ inpainting モデルを使った、素直なやり方です。
 
 [](/workflows/basic-workflows/sd15-outpainting/SD1.5_outpainting_sd-v1-5-inpainting.json)
 
-- [inpainting/inpaintingモデル](/ja/basic-workflows/sd15-inpainting/#inpaintingモデル) とほぼ同じです。
-- 🟦 `Pad Image for Outpainting` ノードで、外側に画像を広げます。
-  - 広がった部分がマスクとして出力されます。
-- 🟩 あとは `InpaintModelConditioning` ノードに接続するだけです。
+- 🟦 `Pad Image for Outpainting` ノードで、画像の外側に余白を作ります。
+  - 余白を追加した画像と、その余白を示すマスクが出力されます。
+- 🟩 あとは [inpainting/inpaintingモデル](/ja/basic-workflows/sd15-inpainting/#inpaintingモデル) と同じです。画像とマスクを `InpaintModelConditioning` ノードに接続します。
 
 ---
 
 ## ControlNet inpaint
 
-好きなモデルをそのまま使いたい場合は、ControlNet inpaint を使います。
+当然、ControlNet inpaint を使う方法もあります。
 
 ### workflow
 
@@ -52,7 +53,24 @@ inpainting モデルを使った、素直なやり方です。
 
 [](/workflows/basic-workflows/sd15-outpainting/SD1.5_outpainting_ControlNet_inpaint.json)
 
-- 基本構成は [inpainting/ControlNet inpaint](/ja/basic-workflows/sd15-inpainting/#controlnet-inpaint) と同じです。
-- 🟦 `Pad Image for Outpainting` ノードで、外側に画像を広げます。
-  - こちらも、広がった部分がマスクになります。
-- 🟨 outpainting 後の画像とマスクを、ControlNet inpaint 用の前処理ノードに渡します。
+- 🟦 `Pad Image for Outpainting` ノードで、画像の外側に余白を作ります。
+  - 余白を追加した画像と、その余白を示すマスクが出力されます。
+- 🟨 あとは [inpainting/ControlNet inpaint](/ja/basic-workflows/sd15-inpainting/#controlnet-inpaint) と同じです。画像とマスクを、ControlNet inpaint 用の前処理ノードに渡します。
+
+---
+
+## 画像編集モデル
+
+画像編集モデルを使うと、もっと簡単です。
+
+画像の外側に灰色の領域（色はなんでもいいのですが）を付け足し、画像編集モデルに入力します。あとは、「灰色の部分を自然に outpaint して」とプロンプトで指示するだけです。
+
+### FLUX.2 [klein]
+
+[FLUX.2 \[klein\]](/ja/basic-workflows/flux-2-klein/) 9B を使ってみましょう。
+
+![](https://gyazo.com/15ea40eaf859773d5a1543e1aba4df0b){gyazo=image}
+
+[](/workflows/basic-workflows/sd15-outpainting/Flux.2-klein-9b_image-edit_outpainting.json)
+
+- 🟩 マスクは使いません。余白を付け足した画像を渡して、そこを埋めるように指示しているだけです。

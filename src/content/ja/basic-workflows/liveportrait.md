@@ -6,7 +6,7 @@ slug: liveportrait
 navId: liveportrait
 title: "LivePortrait"
 created: 2025-12-12
-updated: 2026-03-02
+updated: 2026-08-26
 summary: "LivePortraitで1枚の顔写真から表情や首振りをコントロールする"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -78,7 +78,7 @@ tags: ["talking-head"]
 
 ![](https://gyazo.com/adf677e141945fd7d957acb2e26c02ec){gyazo=loop}
 
-[](/workflows/basic-workflows/liveportrait/LivePortrait_i2v_motion.json)
+[](/workflows/basic-workflows/liveportrait/LivePortrait_i2v_motion_link.json)
 
 - 🟨 `Advanced Live Portrait (PHM)` ノード
   - `animate_without_vid` を `true` に

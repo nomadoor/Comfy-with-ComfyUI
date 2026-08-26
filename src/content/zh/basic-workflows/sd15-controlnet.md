@@ -5,8 +5,8 @@ section: basic-workflows
 slug: sd15-controlnet
 navId: sd15-controlnet
 title: "ControlNet"
-created: 2026-02-06
-updated: 2026-03-02
+created: 2025-12-08
+updated: 2026-08-26
 summary: "使用姿势或线稿控制图像生成"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 tags: ["controlnet"]
@@ -16,7 +16,7 @@ hero:
 
 ## 什么是 ControlNet？
 
-生成 AI 的本质，是学习 **“两个东西的对应关系”**。
+生成 AI 擅长学习各种事物之间的关系。
 在 text2image 中让其记住“噪声 ↔ 图像”的关系，但噪声以外的东西也能做同样的事
 
 - 学习 **线稿 ↔ 图像** 的配对 → 线稿自动上色
@@ -146,8 +146,8 @@ ControlNet 的许多（pose / depth / scribble 等）是 **决定形状类型** 
 
 ## ControlNet Union
 
-虽然是 Flux 以后的话题，但将 Scribble 或 Pose、Depth 这样基本的 ControlNet  
-作为一个模型内置的东西就是“ControlNet Union”。
+ControlNet 中还有一种叫作 **ControlNet Union** 的模型。
 
-只要认为是自动识别输入图像的特征（姿势・线・深度等），  
-试图统一再现接近的 ControlNet 举动的模型就足够了。
+它并不是能完成什么特殊的新任务，而是把 Scribble、Pose、Depth 等原本一个任务对应一个模型的 ControlNet 合并到了一个模型中。
+
+不必来回更换模型就能使用多个任务，遇到时可以试试看。

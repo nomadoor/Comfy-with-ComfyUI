@@ -5,8 +5,8 @@ section: basic-workflows
 slug: sd15-textual-inversion
 navId: sd15-textual-inversion
 title: "Textual Inversion"
-created: 2026-02-06
-updated: 2026-03-02
+created: 2025-12-05
+updated: 2026-08-26
 summary: "Stable Diffusion 1.5 的 Textual Inversion"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -45,7 +45,7 @@ Textual Inversion 虽然有学习轻便的优点，但现在几乎被 LoRA 取�
 
 为了引出模型的性能，使用者需要正确输入“作者预想的提示词”。但是，不限于所有使用者都会遵从那个，每次写细致的提示词也很麻烦。
 
-于是，预先准备 embeddings，通过让使用者加入那个单词，来保证最低品质。
+于是，作者会预先准备 embeddings，让使用者加入这个单词，使输出更容易接近作者预想的效果。
 
 ---
 

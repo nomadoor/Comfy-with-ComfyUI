@@ -5,8 +5,8 @@ section: basic-workflows
 slug: flux-1-tools
 navId: flux-1-tools
 title: "Flux.1 Tools"
-created: 2026-02-06
-updated: 2026-03-02
+created: 2025-12-10
+updated: 2026-08-26
 summary: "Flux.1 Tools 的使用方法"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

@@ -5,8 +5,8 @@ section: basic-workflows
 slug: sd15-textual-inversion
 navId: sd15-textual-inversion
 title: "Textual Inversion"
-created: 2025-12-06
-updated: 2026-03-02
+created: 2025-12-05
+updated: 2026-08-26
 summary: "Textual Inversion in Stable Diffusion 1.5"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
@@ -45,7 +45,7 @@ Exceptionally, checkpoint or LoRA authors sometimes distribute dedicated embeddi
 
 To bring out the performance of the model, the user needs to correctly input the "prompt intended by the author". However, not all users will follow it, and it is troublesome to write detailed prompts every time.
 
-So, by preparing embeddings in advance and asking users to include that word, they guarantee a minimum quality.
+So, authors prepare embeddings in advance and ask users to include that word, making it easier to get the output they intended.
 
 
 ---

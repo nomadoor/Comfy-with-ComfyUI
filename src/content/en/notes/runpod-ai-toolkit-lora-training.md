@@ -6,7 +6,7 @@ slug: runpod-ai-toolkit-lora-training
 navId: runpod-ai-toolkit-lora-training
 title: "Running AI Toolkit on RunPod"
 created: 2026-05-03
-updated: 2026-05-03
+updated: 2026-08-26
 noteTags: ["guide", "training", "runpod", "ai-toolkit", "lora"]
 summary: "A practical flow for launching AI Toolkit on RunPod and running LoRA training"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
@@ -55,13 +55,15 @@ RunPod works by buying credits first and spending them as you use GPUs.
 
 If you only want to try LoRA training, about 10 dollars is enough.
 
+![](https://gyazo.com/f683db8baf406ed1aa79e5d348f1e406){gyazo=image}
+
 - Click the `+` button in the upper right
-- Choose `Other` if you want to start with a small amount
+- Choose `Other` if you want to purchase $150 or less
 - Enter the amount and continue to `Go to Checkout`
 
-You do not have to use it, but this is my referral code. If you register from here, you can get a little extra credit on your first credit purchase.
-
-- https://runpod.io?ref=ke9q7kqp
+> You do not have to use it, but this is my referral link. If you sign up from here and buy at least $10 in credits, you will get a little extra.
+>
+> [RunPod referral link](https://runpod.io?ref=ke9q7kqp)
 
 ---
 
@@ -77,74 +79,44 @@ You choose which GPU to use and how much storage to allocate, then rent that env
 
 This time, we will create a Pod that can run AI Toolkit, open AI Toolkit from the browser, and train a LoRA.
 
-### Create the Pod
+### Choose a Template
 
-Open `Pods` from the sidebar and create a new Pod.
+Open `Pods` from the sidebar and click `Deploy`.
 
-Here you choose Cloud, GPU, CUDA version, storage, and so on.
+![](https://gyazo.com/c39356c905c1a2bf89d0fcf83451712d){gyazo=loop}
 
-![](https://gyazo.com/6f74774cfc5a065178ef3040173cbab8){gyazo=image}
+- Search for `AI Toolkit` under `Search templates`
+- Choose [AI Toolkit - ostris - ui - official](https://console.runpod.io/hub/template/ai-toolkit-ostris-ui-official?id=0fqzfjy6f3)
+  - This is the template made by Ostris, the author of AI Toolkit.
+  - Many templates with the same name appear, so be careful to choose the right one.
 
-- **Cloud**
-  - `Secure Cloud`
-    - This is an environment prepared by RunPod. It is stable, but the price is higher.
-  - `Community Cloud`
-    - This is an externally provided environment that has passed RunPod's review.
-  - `Community Cloud` cannot use Network Volume, but we will not use it this time, so either option is fine.
+After choosing the Template, change one setting from `Set overrides`.
 
-- **Network Volume**
-  - When you close a Pod, the data inside it is also deleted.
-  - Network Volume is a service for keeping data somewhere else so that does not happen.
-  - In this note, we will download the LoRA after training and delete the whole Pod.
+- Open `Environment Variables`
+- Change the value of `AI_TOOLKIT_AUTH` to a password only you know
 
-- **CUDA version**
-  - AI Toolkit may not run with an old CUDA version.
-  - Choose `12.8` or later for this flow.
+> You will use this value when opening AI Toolkit. If you leave the default as-is, anyone can open it with `password`, so use a different value.
 
-- **GPU**
-  - There are many choices, so it is easy to get lost, but the first thing to look at is **VRAM**.
-  - If you do not have enough VRAM, training will fail with `Out of Memory`.
-  - After that, you can choose a higher-grade GPU for speed.
+### Choose a GPU
 
-Here are a few GPUs I often use.
+The `Compute` section lists many GPUs.
+
+It is easy to get lost, but the first thing to look at is **VRAM**.
+
+If you do not have enough VRAM, training will fail with `Out of Memory`.
+
+More expensive GPUs are generally faster for training, but twice the price does not mean twice the speed. It is a tradeoff between your wallet and how much time you have left.
+
+I usually use an RTX A5000 or A40.
 
 | GPU | VRAM | Note |
 | --- | --- | --- |
-| **RTX 3090** | 24GB | For SDXL-style LoRA training, this has a good balance of speed and cost. |
-| **RTX A40** | 48GB | Because 48GB VRAM is available at a relatively low price, this is the GPU I usually pick first for LoRA training. Use it when 24GB is not enough. |
-| **RTX PRO 6000** | 96GB | This is a little overkill for LoRA training, but useful for large models such as LTX-2 or settings with high VRAM usage. |
+| **RTX A5000** | 24GB | Its main advantage is the low price. However, there are not many available, so you may not find one depending on the time of day. |
+| **A40** | 48GB | This gives you 48GB of VRAM at a relatively low price. I use it when 24GB is not enough. |
 
-### Deployment settings
+### Deploy Pod
 
-After the hardware settings are done, choose what software to run.
-
-We will use a template, so there is nothing especially difficult here.
-
-![](https://gyazo.com/8a3c2e36c95a1c43daf39dc9c69880cc){gyazo=image}
-
-- **Pod name**
-  - Give it any name you like.
-
-- **Pod template**
-  - Choose [AI Toolkit - ostris - ui - official](https://console.runpod.io/hub/template/ai-toolkit-ostris-ui-official?id=0fqzfjy6f3).
-  - This is the template made by Ostris, the author of AI Toolkit.
-  - Be careful when searching for `AI Toolkit`, because many templates with similar names appear.
-
-  Next, edit this template slightly.
-
-  ![](https://gyazo.com/423ba9ab55c4699b047abc7b7d0b2e44){gyazo=image}
-
-  - Click `Edit`.
-  - Open `Environment Variables` at the bottom.
-  - Change the value of `AI_TOOLKIT_AUTH` to a password only you know.
-
-  > You will use this value when opening AI Toolkit. If you leave the default as-is, anyone can open it with `password`, so use a different value.
-
-- **Storage configuration**
-  - Allocate enough **Volume disk** for the dataset, base model, and output LoRA files.
-  - The default value is fine.
-
-After that, click `Deploy On-Demand` and the Pod will be created.
+Click `Deploy Pod` to create the Pod.
 
 > Credit usage starts at this point. Prepare your dataset before deploying the Pod.
 

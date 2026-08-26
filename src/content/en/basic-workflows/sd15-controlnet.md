@@ -6,7 +6,7 @@ slug: sd15-controlnet
 navId: sd15-controlnet
 title: "ControlNet"
 created: 2025-12-08
-updated: 2026-03-02
+updated: 2026-08-26
 summary: "Controlling image generation using poses and line drawings"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: ["controlnet"]
@@ -16,7 +16,7 @@ hero:
 
 ## What is ControlNet?
 
-The essence of generative AI is **learning the "correspondence between two things"**.
+Generative AI is good at learning relationships between all kinds of things.
 In text2image, it learns the relationship "Noise ↔ Image", but the same can be done with things other than noise.
 
 - Learn **Line drawing ↔ Image** pair → Automatic coloring from line drawing
@@ -146,6 +146,8 @@ Here we will introduce only representative ones.
 
 ## ControlNet Union
 
-This is a story since Flux, but "ControlNet Union" is a model that incorporates basic ControlNets such as Scribble, Pose, and Depth into a single model.
+There is also a type of ControlNet called **ControlNet Union**.
 
-It is enough to consider it as a model that automatically recognizes the features (pose, line, depth, etc.) of the input image and tries to reproduce the behavior of ControlNet closer to it collectively.
+It does not perform some special new task. Instead, it combines ControlNets that used to require one model per task, such as Scribble, Pose, and Depth, into a single model.
+
+You can use several tasks without swapping models, so give it a try when you come across one.

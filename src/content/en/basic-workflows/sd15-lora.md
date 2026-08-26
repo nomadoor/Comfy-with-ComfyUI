@@ -6,7 +6,7 @@ slug: sd15-lora
 navId: sd15-lora
 title: "LoRA"
 created: 2025-12-05
-updated: 2026-08-01
+updated: 2026-08-26
 summary: "LoRA in Stable Diffusion 1.5"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
@@ -44,7 +44,7 @@ This time, as an example, let's use a LoRA that makes it look like pixel art.
 
 ### workflow
 
-![](https://gyazo.com/8596b20bea2e92a969693fa18f1ce778){gyazo=image}
+![](https://gyazo.com/6f275d3cbc6c8487bf1645af06763aea){gyazo=image}
 
 [](/workflows/basic-workflows/sd15-lora/SD1.5_lora.json)
 
@@ -59,29 +59,19 @@ This time, as an example, let's use a LoRA that makes it look like pixel art.
 
 ---
 
-## LoRA with Flux.1 and Later Models
+## Recent Models and LoRA
 
-### Change in Design Philosophy of Image Generation AI
+In the days of Stable Diffusion 1.5 and SDXL, LoRAs were often trained on both the diffusion model that creates the image and the text encoder that understands the prompt.
 
-In **Stable Diffusion 1.5** and **SDXL**, when applying LoRA, it was common to target both the diffusion model (the core of image generation) and the text encoder (which interprets prompts) for learning.
+However, training the text encoder is difficult and can actually make prompts work less effectively.
 
-However, in models after **Flux.1**, large language models like T5 and Qwen have been adopted for the text encoder.
-These are like small ChatGPTs and already have general-purpose language understanding capabilities, so re-training them for image generation is inefficient, and may even degrade performance.
+SDXL has two text encoders, and later models began using large language models such as T5 and Qwen.
 
-Therefore, in the latest models, the design where the text encoder is fixed and only the diffusion model itself is trained has become mainstream.
+Today, it is more common to leave prompt understanding to the base text encoder and train only the diffusion model.
 
-### LoRA Follows Suit
+### ComfyUI workflow
 
-LoRA also follows this.
-
-Up to SDXL, both the diffusion model and the text encoder were trained, but
-in models after Flux.1, LoRA training and application are also for the diffusion model only.
-
-### Changes in ComfyUI Workflow
-
-For Flux.1 and later models, use the `Load LoRA` node.
-
-This node does not connect to CLIP and applies LoRA only to the MODEL (diffusion model).
+A LoRA trained only on the diffusion model contains nothing to apply to the text encoder, so use the `Load LoRA` node instead of `Load LoRA (Model and CLIP)`.
 
 ![](https://gyazo.com/975300eed9cca90f7086dda53c1ca413){gyazo=image}
 

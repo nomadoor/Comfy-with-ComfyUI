@@ -6,7 +6,7 @@ slug: sd15-lora
 navId: sd15-lora
 title: "LoRA"
 created: 2025-12-05
-updated: 2026-08-01
+updated: 2026-08-26
 summary: "Stable Diffusion 1.5でのLoRA"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
@@ -44,7 +44,7 @@ LoRA は、モデルの重みそのものを書き換えるのではなく、「
 
 ### workflow
 
-![](https://gyazo.com/8596b20bea2e92a969693fa18f1ce778){gyazo=image}
+![](https://gyazo.com/6f275d3cbc6c8487bf1645af06763aea){gyazo=image}
 
 [](/workflows/basic-workflows/sd15-lora/SD1.5_lora.json)
 
@@ -59,29 +59,19 @@ LoRA は、モデルの重みそのものを書き換えるのではなく、「
 
 ---
 
-## Flux.1以降のモデルと LoRA
+## 最近のモデルと LoRA
 
-### 画像生成AIの設計思想の変更
+Stable Diffusion 1.5 や SDXL の頃は、画像を作る拡散モデルだけでなく、プロンプトを理解するテキストエンコーダも一緒に学習する LoRA がよく作られていました。
 
-**Stable Diffusion 1.5** や **SDXL** では、LoRAを適用する際、画像生成の核となる拡散モデルと、プロンプトを解釈するテキストエンコーダの両方を学習対象とするのが一般的でした。
+ただ、テキストエンコーダの学習は難しく、かえってプロンプトが効きづらくなることがあります。
 
-しかし、**Flux.1**以降のモデルでは、テキストエンコーダにT5やQwenといった大規模な言語モデルが採用されるようになりました。  
-これらは小さなChatGPTのようなもので、すでに汎用的な言語理解能力があり、画像生成のために再学習させるのは非効率、どころか性能が落ちる可能性すらあります。
+SDXL ではテキストエンコーダが 2 つになり、その後に登場したモデルでは T5 や Qwen のような大きな言語モデルまで使われるようになりました。
 
-そのため、最新のモデルではテキストエンコーダは固定し、拡散モデル本体だけ学習する設計が主流になっています。
+そこで現在は、プロンプトの理解はベースのテキストエンコーダに任せ、拡散モデルだけを学習するのが主流になっています。
 
-### LoRAも追随
+### ComfyUI workflow
 
-LoRAもこれに追随します。
-
-SDXLまでは、拡散モデルとテキストエンコーダ両方を学習していましたが、  
-Flux.1以降のモデルでは、LoRAの学習・適用も、拡散モデルのみになっています。
-
-### ComfyUI workflowの変化
-
-Flux.1 以降では、`Load LoRA` ノードを使います。
-
-このノードには CLIP を接続せず、MODEL（拡散モデル）にのみ LoRA を適用します。
+拡散モデルだけを学習した LoRA には、テキストエンコーダに適用するものが入っていないため、`Load LoRA (Model and CLIP)` ではなく `Load LoRA` ノードを使います。
 
 ![](https://gyazo.com/975300eed9cca90f7086dda53c1ca413){gyazo=image}
 

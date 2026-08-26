@@ -5,8 +5,8 @@ section: basic-workflows
 slug: sd15-text2image
 navId: sd15-text2image
 title: "text2image"
-created: 2025-12-06
-updated: 2026-03-02
+created: 2025-12-04
+updated: 2026-08-26
 summary: "text2image with Stable Diffusion 1.5"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
@@ -187,7 +187,7 @@ Conversely, users would write words that seemed likely to lower quality in the n
 
 By setting a numerical value like `(red:1.05)` / `(blue:0.9)` for each word in the prompt, you can change the importance of that word.
 
-CLIP places more importance on text at the beginning, so text written in the second half is almost ignored. Also, some words work well and some don't.
+CLIP tends to place more importance on text near the beginning, so things written later in the prompt are less likely to have an effect. Some words also work better than others.
 
 To adjust this manually, we use this attention notation.
 
