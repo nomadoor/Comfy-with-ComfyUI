@@ -6,7 +6,7 @@ slug: sd15-controlnet
 navId: sd15-controlnet
 title: "ControlNet"
 created: 2025-12-08
-updated: 2026-03-02
+updated: 2026-08-26
 summary: "ポーズや線画を使って画像生成をコントロールする"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: ["controlnet"]
@@ -16,7 +16,7 @@ hero:
 
 ## ControlNetとは？
 
-生成AIの本質は、**「2つのものの対応関係」を学習すること**です。
+生成AIは、さまざまなものの関係を学習するのが得意です。
 text2imageでは「ノイズ ↔ 画像」の関係を覚えさせますが、ノイズ以外のものでも同じことができます
 
 - **線画 ↔ 画像** のペアを学習 → 線画から自動着色が
@@ -146,8 +146,8 @@ ControlNet の多く（pose / depth / scribble など）は **形を決めるタ
 
 ## ControlNet Union
 
-Flux 以降の話になりますが、Scribble や Pose、Depth といった基本的な ControlNet を  
-ひとつのモデルとして内蔵させたものが「ControlNet Union」です。
+ControlNet には、**ControlNet Union** という種類のものがあります。
 
-入力された画像の特徴（ポーズ・線・深度など）を自動で認識し、  
-それに近い ControlNet の挙動をまとめて再現しようとするモデルだと考えておけば十分です。
+これはなにか特別なタスクができるわけではなく、Scribble や Pose、Depth など、用途ごとに 1 タスク 1 モデルだった ControlNet をひとつのモデルにまとめたものです。
+
+モデルを入れ替えずにいくつものタスクを使えるので、見かけたら試してみてください。
