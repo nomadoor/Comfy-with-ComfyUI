@@ -6,7 +6,7 @@ slug: sd15-outpainting
 navId: sd15-outpainting
 title: "outpainting"
 created: 2025-12-07
-updated: 2026-03-02
+updated: 2026-08-26
 summary: "Drawing outside the image with outpainting"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
@@ -15,19 +15,21 @@ hero:
 
 ## What is outpainting?
 
-outpainting is a technique to **draw the "outside" of an image**.
+outpainting is a technique for **extending an image beyond its edges**.
 
-The content is exactly the same as inpainting's **"Type B: Fill the masked part naturally while looking at the surrounding information"**.
+It may sound like a special kind of generation, but it is not.
 
-The only difference is whether the mask is inside the image or outside.
+You deliberately add blank space outside the image, turn that space into a mask, then inpaint it.
 
-> We will proceed assuming you have read [inpainting](/en/basic-workflows/sd15-inpainting/) first.
+Whether you fill an area inside the image or blank space added outside it—that is all that changes.
+
+> If you have not read [inpainting](/en/basic-workflows/sd15-inpainting/) yet, take a look at it first.
 
 ---
 
-## inpainting Model
+## Inpainting model
 
-A straightforward method using an inpainting model.
+One way is to use an inpainting model.
 
 ### workflow
 
@@ -35,16 +37,15 @@ A straightforward method using an inpainting model.
 
 [](/workflows/basic-workflows/sd15-outpainting/SD1.5_outpainting_sd-v1-5-inpainting.json)
 
-- Almost the same as [inpainting/inpainting Model](/en/basic-workflows/sd15-inpainting/#inpainting-model).
-- 🟦 Expand the image outward with the `Pad Image for Outpainting` node.
-  - The expanded part is output as a mask.
-- 🟩 Just connect it to the `InpaintModelConditioning` node.
+- 🟦 Use the `Pad Image for Outpainting` node to add blank space outside the image.
+  - It outputs the padded image and a mask marking the added space.
+- 🟩 From there, it is the same as [inpainting/Inpainting models](/en/basic-workflows/sd15-inpainting/#inpainting-models). Connect the image and mask to `InpaintModelConditioning`.
 
 ---
 
 ## ControlNet inpaint
 
-If you want to use your favorite model as is, use ControlNet inpaint.
+Of course, you can also use ControlNet inpaint.
 
 ### workflow
 
@@ -52,7 +53,24 @@ If you want to use your favorite model as is, use ControlNet inpaint.
 
 [](/workflows/basic-workflows/sd15-outpainting/SD1.5_outpainting_ControlNet_inpaint.json)
 
-- The basic configuration is the same as [inpainting/ControlNet inpaint](/en/basic-workflows/sd15-inpainting/#controlnet-inpaint).
-- 🟦 Expand the image outward with the `Pad Image for Outpainting` node.
-  - Again, the expanded part becomes the mask.
-- 🟨 Pass the image and mask after outpainting to the pre-processing node for ControlNet inpaint.
+- 🟦 Use the `Pad Image for Outpainting` node to add blank space outside the image.
+  - It outputs the padded image and a mask marking the added space.
+- 🟨 From there, it is the same as [inpainting/ControlNet inpaint](/en/basic-workflows/sd15-inpainting/#controlnet-inpaint). Pass the image and mask to the ControlNet inpaint preprocessor.
+
+---
+
+## Image editing models
+
+Image editing models make this even simpler.
+
+Add a gray area outside the image—the color does not really matter—then feed the result to the image editing model. All you have to do is tell it to outpaint the gray area naturally.
+
+### FLUX.2 [klein]
+
+Let’s try [FLUX.2 \[klein\]](/en/basic-workflows/flux-2-klein/) 9B.
+
+![](https://gyazo.com/15ea40eaf859773d5a1543e1aba4df0b){gyazo=image}
+
+[](/workflows/basic-workflows/sd15-outpainting/Flux.2-klein-9b_image-edit_outpainting.json)
+
+- 🟩 No mask is needed. Give it an image with added blank space and tell it to fill that area.
