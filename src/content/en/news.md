@@ -5,7 +5,7 @@ slug: news
 navId: news
 title: "News"
 created: 2026-01-15
-updated: 2026-07-19
+updated: 2026-09-03
 summary: "Site updates"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
@@ -13,6 +13,11 @@ tags:
 ---
 
 <div class="news-list">
+  <a class="news-row" href="/en/basic-workflows/ltx-2-5/">
+    <span class="news-row__date">2026.9.3</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">Added LTX 2.5 page</span>
+  </a>
   <a class="news-row" href="/en/notes/kura-krea2-lora-training/">
     <span class="news-row__date">2026.7.19</span>
     <span class="news-row__tag">notes</span>

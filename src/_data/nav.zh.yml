@@ -337,6 +337,8 @@ sections:
       children:
       - id: ltx-2-3
         title: LTX 2.3
+      - id: ltx-2-5
+        title: LTX 2.5
     - id: liveportrait
       title: LivePortrait
   - id: llm-mllm
