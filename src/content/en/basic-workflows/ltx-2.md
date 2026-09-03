@@ -6,7 +6,7 @@ slug: ltx-2
 navId: ltx-2
 title: "LTX-2"
 created: 2026-01-10
-updated: 2026-04-13
+updated: 2026-09-03
 summary: "Handle text2video / image2video / audio2video with LTX-2"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -18,7 +18,7 @@ tags: []
 
 **[LTX-2](https://website.ltx.video/blog/introducing-ltx-2)** is an audio-visual diffusion model released by Lightricks that can generate both audio and video simultaneously.
 
-> A newer successor model, [LTX-2.3](/en/basic-workflows/ltx-2-3/), is now available.  
+> Its successor, [LTX 2.5](/en/basic-workflows/ltx-2-5/), is now available.<br>
 > The architecture is the same, so this page is still useful for learning how it works, but for actual generation I recommend using the newer model.
 
 ---

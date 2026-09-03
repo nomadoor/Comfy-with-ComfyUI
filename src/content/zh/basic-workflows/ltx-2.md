@@ -6,7 +6,7 @@ slug: ltx-2
 navId: ltx-2
 title: "LTX-2"
 created: 2026-02-06
-updated: 2026-04-13
+updated: 2026-09-03
 summary: "在 LTX-2 中处理 text2video / image2video / audio2video"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -18,7 +18,7 @@ tags: []
 
 **[LTX-2](https://website.ltx.video/blog/introducing-ltx-2)** 是 Lightricks 公开的能同时生成音频＋视频的扩散模型。
 
-> 现在已经有后继模型 [LTX-2.3](/zh/basic-workflows/ltx-2-3/)。  
+> 现在已经有后继模型 [LTX 2.5](/zh/basic-workflows/ltx-2-5/)。<br>
 > 由于架构是相同的，这一页仍然适合用来理解它的机制；如果是实际生成，还是更推荐直接使用新模型。
 
 ---
