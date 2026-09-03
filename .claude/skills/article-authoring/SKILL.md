@@ -27,6 +27,15 @@ description: Use when creating or substantially editing documentation articles i
    - player: `{gyazo=player}`
 7. When linking workflow JSON, use paths under `/workflows/...`.
 
+## Editing Owner Drafts
+
+- Treat the facts, examples, and explanations present in the owner's draft as the content boundary. When asked to "整える" or fix a rough passage, repair wording and structure without inventing examples, recommendations, parameter values, or background explanations.
+- Do not expand a shorthand statement merely because a generic tutorial would explain it more fully. Add prose only when the owner explicitly asks for an explanation, or when a sentence cannot be understood without it.
+- Respect the page sequence. If the page says it continues from or shares behavior with an earlier page, explain only the difference here. Do not repeat inherited mechanics or settings unless the owner wrote them again for a reason.
+- If research reveals a missing fact or dependency, report it to the owner before inserting it. Factual review is not permission to enlarge the draft.
+- Read several nearby articles before editing and copy their site-specific conventions, not a generic documentation template. In particular, model download links include the displayed file size and are followed by the matching `ComfyUI/models/` placement tree.
+- Preserve deliberate brevity, looseness, and author judgments. Do not replace them with textbook transitions, comprehensive lists, or polished marketing prose.
+
 ## Checks
 
 - `git diff --check`
