@@ -6,7 +6,7 @@ slug: ltx-2
 navId: ltx-2
 title: "LTX-2"
 created: 2026-01-10
-updated: 2026-04-13
+updated: 2026-09-03
 summary: "LTX-2でtext2video / image2video / audio2videoを扱う"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -18,7 +18,7 @@ tags: []
 
 **[LTX-2](https://website.ltx.video/blog/introducing-ltx-2)** は、Lightricks が公開している、音声と動画を同時に生成できる拡散モデルです。
 
-> 現在は、後継モデルとして [LTX-2.3](/ja/basic-workflows/ltx-2-3/) が登場しています。  
+> 現在は、後継モデルとして [LTX 2.5](/ja/basic-workflows/ltx-2-5/) が登場しています。<br>
 > アーキテクチャは同じなので、こちらで仕組みを学びつつ、実際に生成するなら新しいモデルを使うのがおすすめです。
 
 ---
