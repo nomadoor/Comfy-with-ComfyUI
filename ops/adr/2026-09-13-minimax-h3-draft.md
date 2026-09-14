@@ -9,4 +9,6 @@ Add a Japanese `basic-workflows/minimax-h3` article for running MiniMax H3 in Co
 
 The first draft covers the required models, practical generation settings, prompting, and the main local workflows. Optional quantization formats, the derivation of frame-count constraints, and unfinished workflows remain outside the initial scope.
 
-Navigation and localization will be handled only when the owner asks for them.
+Place `MiniMax H3` in the Japanese Video Workflows navigation between the `LTX-2` group and `LivePortrait`.
+
+Add English and Simplified Chinese localizations after the owner's request.

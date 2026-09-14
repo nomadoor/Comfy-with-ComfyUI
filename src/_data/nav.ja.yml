@@ -339,6 +339,8 @@ sections:
                 title: LTX 2.3
               - id: ltx-2-5
                 title: LTX 2.5
+          - id: minimax-h3
+            title: MiniMax H3
           - id: liveportrait
             title: LivePortrait
       - id: llm-mllm

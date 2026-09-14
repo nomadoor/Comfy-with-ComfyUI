@@ -5,13 +5,18 @@ slug: news
 navId: news
 title: "更新情報"
 created: 2026-01-15
-updated: 2026-09-03
+updated: 2026-09-14
 summary: "このサイトの更新情報"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/ja/basic-workflows/minimax-h3/">
+    <span class="news-row__date">2026.9.14</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">MiniMax H3 のページを追加しました</span>
+  </a>
   <a class="news-row" href="/ja/basic-workflows/ltx-2-5/">
     <span class="news-row__date">2026.9.3</span>
     <span class="news-row__tag">basic-workflows</span>

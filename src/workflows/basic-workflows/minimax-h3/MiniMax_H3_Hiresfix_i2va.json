@@ -1,0 +1,2219 @@
+{
+  "id": "ab470b3f-c850-4cc5-be9c-63a1bff0dc45",
+  "revision": 0,
+  "last_node_id": 120,
+  "last_link_id": 215,
+  "nodes": [
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        2796.1261686020252,
+        188.1918182373047
+      ],
+      "size": [
+        194.25299723441972,
+        46
+      ],
+      "flags": {},
+      "order": 34,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 209
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 140
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            159
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      }
+    },
+    {
+      "id": 82,
+      "type": "Reroute",
+      "pos": [
+        2659.843124784804,
+        64.14635395192796
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 149
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            150
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 79,
+      "type": "Reroute",
+      "pos": [
+        2659.843124784804,
+        -59.89911033344882
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 139
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            140
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 81,
+      "type": "VAELoader",
+      "pos": [
+        52.62317611836556,
+        64.14635395192796
+      ],
+      "size": [
+        301.3524169921875,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            149
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "minimax_h3_audio_vae_fp32.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 94,
+      "type": "PrimitiveFloat",
+      "pos": [
+        -136.5859971544101,
+        1208.6257749488502
+      ],
+      "size": [
+        214.65850806503283,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            166
+          ]
+        }
+      ],
+      "title": "Float: Duration (sec)",
+      "properties": {
+        "Node name for S&R": "PrimitiveFloat"
+      },
+      "widgets_values": [
+        6
+      ],
+      "widgets_values_named": {
+        "value": 6
+      }
+    },
+    {
+      "id": 95,
+      "type": "MarkdownNote",
+      "pos": [
+        -482.3943342566212,
+        -207.9445746188256
+      ],
+      "size": [
+        480.26512898835654,
+        314.3204118484383
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n- diffusion_models\n  - [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (21 GB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) (27.1 GB)\n- vae\n  - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)\n  - [minimax_h3_video_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_fp16.safetensors) (5.21 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_fl2va_pruned_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n    └── 📂vae/\n         ├── minimax_h3_audio_vae_fp32.safetensors\n         └── minimax_h3_video_vae_fp16.safetensors\n```"
+      ],
+      "widgets_values_named": {
+        "text": "## models\n- diffusion_models\n  - [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (21 GB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) (27.1 GB)\n- vae\n  - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)\n  - [minimax_h3_video_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_fp16.safetensors) (5.21 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_fl2va_pruned_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n    └── 📂vae/\n         ├── minimax_h3_audio_vae_fp32.safetensors\n         └── minimax_h3_video_vae_fp16.safetensors\n```"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 97,
+      "type": "ResizeImageMaskNode",
+      "pos": [
+        -786.7951171475131,
+        592.6500707410756
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "IMAGE,MASK",
+          "link": 167
+        }
+      ],
+      "outputs": [
+        {
+          "name": "resized",
+          "type": "IMAGE",
+          "links": [
+            168
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResizeImageMaskNode"
+      },
+      "widgets_values": [
+        "scale total pixels",
+        1,
+        "bicubic"
+      ],
+      "widgets_values_named": {
+        "resize_type": "scale total pixels",
+        "resize_type.megapixels": 1,
+        "scale_method": "bicubic"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 104,
+      "type": "ComfyMathExpression",
+      "pos": [
+        146.85987985144288,
+        853.1626745477416
+      ],
+      "size": [
+        210,
+        128
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "a",
+          "name": "values.a",
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 183
+        },
+        {
+          "name": "values.b",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            185
+          ]
+        },
+        {
+          "name": "BOOL",
+          "type": "BOOLEAN",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ComfyMathExpression",
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0"
+      },
+      "widgets_values": [
+        "a / 2"
+      ],
+      "widgets_values_named": {
+        "expression": "a / 2"
+      }
+    },
+    {
+      "id": 87,
+      "type": "ComfyMathExpression",
+      "pos": [
+        146.85987985144288,
+        1208.6257749488502
+      ],
+      "size": [
+        210,
+        128
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "a",
+          "name": "values.a",
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 166
+        },
+        {
+          "name": "values.b",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            178,
+            207
+          ]
+        },
+        {
+          "name": "BOOL",
+          "type": "BOOLEAN",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ComfyMathExpression",
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0"
+      },
+      "widgets_values": [
+        "17 * round((a * 24 - 5) / 17) + 5"
+      ],
+      "widgets_values_named": {
+        "expression": "17 * round((a * 24 - 5) / 17) + 5"
+      }
+    },
+    {
+      "id": 107,
+      "type": "LTXVSeparateAVLatent",
+      "pos": [
+        1174.115610086879,
+        263.27638134492935
+      ],
+      "size": [
+        194.25299723441972,
+        46
+      ],
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "av_latent",
+          "type": "LATENT",
+          "link": 189
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video_latent",
+          "type": "LATENT",
+          "links": [
+            186
+          ]
+        },
+        {
+          "name": "audio_latent",
+          "type": "LATENT",
+          "links": [
+            188
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LTXVSeparateAVLatent"
+      },
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 38,
+      "type": "CLIPLoader",
+      "pos": [
+        52.62317611836556,
+        188.1918182373047
+      ],
+      "size": [
+        301.3524169921875,
+        106
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            174,
+            191
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+        "minimax",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+        "type": "minimax",
+        "device": "default"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 99,
+      "type": "Reroute",
+      "pos": [
+        281.8598798514429,
+        592.6500707410756
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 169
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "links": [
+            171,
+            198
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        818.8072456703378,
+        188.1918182373047
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 164
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 176
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 130
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 177
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            189
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        1234,
+        "fixed",
+        20,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 1234,
+        "control_after_generate": "fixed",
+        "steps": 20,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 101,
+      "type": "MiniMaxH3ImageToVideo",
+      "pos": [
+        434.27961405604844,
+        188.1918182373047
+      ],
+      "size": [
+        338.26023712310575,
+        220
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 174
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 175
+        },
+        {
+          "name": "first_frame",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 171
+        },
+        {
+          "name": "last_frame",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 192
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 184
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 185
+        },
+        {
+          "name": "length",
+          "type": "INT",
+          "widget": {
+            "name": "length"
+          },
+          "link": 178
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            176,
+            179
+          ]
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            177
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MiniMaxH3ImageToVideo"
+      },
+      "widgets_values": [
+        "integrated_multimodal_description:\n[Shot 1] Single continuous shot, one take. Use the input image as the exact starting point. Preserve the woman, the sofa, the room layout, the bookshelf, the table, the coffee cup on the table, the lighting, and the painterly visual style of the image.\n\nThe camera is completely locked off and does not shake.\n\nThe woman is sitting on the sofa exactly as in the input image, with empty hands. She is not holding a fork or any other object. After a short pause, she gently leans her upper body to the left. Then, using that small counter-motion, she lets her body tip and collapse toward the right side, falling onto the right cushion and ending in a reclined, sprawled position across the sofa. She does not fall off the sofa.\n\nHer movement should not look like smooth traced live-action motion. It should feel stylized, painterly, and slightly imperfect, with more animation-like timing and slightly simplified, uneven physical behavior. It is acceptable for the motion to feel a little physically incorrect in a natural stylized way. The action should read clearly, but it should not feel overly fluid or overly realistic.\n\nThe background remains mostly still. The plant leaves move only slightly, with irregular, subtle, painterly motion that matches the visual style of the image. Their movement should feel limited and uneven rather than smooth or repetitive.\n\noverall_soundscape:\nSoft indoor ambience, subtle room tone, light fabric rustling as she shifts and falls onto the cushion, and faint small tableware presence from the coffee on the table. No dramatic impact sound.\n\nnon_diegetic_music:\nN/A",
+        1344,
+        768,
+        124
+      ],
+      "widgets_values_named": {
+        "prompt": "integrated_multimodal_description:\n[Shot 1] Single continuous shot, one take. Use the input image as the exact starting point. Preserve the woman, the sofa, the room layout, the bookshelf, the table, the coffee cup on the table, the lighting, and the painterly visual style of the image.\n\nThe camera is completely locked off and does not shake.\n\nThe woman is sitting on the sofa exactly as in the input image, with empty hands. She is not holding a fork or any other object. After a short pause, she gently leans her upper body to the left. Then, using that small counter-motion, she lets her body tip and collapse toward the right side, falling onto the right cushion and ending in a reclined, sprawled position across the sofa. She does not fall off the sofa.\n\nHer movement should not look like smooth traced live-action motion. It should feel stylized, painterly, and slightly imperfect, with more animation-like timing and slightly simplified, uneven physical behavior. It is acceptable for the motion to feel a little physically incorrect in a natural stylized way. The action should read clearly, but it should not feel overly fluid or overly realistic.\n\nThe background remains mostly still. The plant leaves move only slightly, with irregular, subtle, painterly motion that matches the visual style of the image. Their movement should feel limited and uneven rather than smooth or repetitive.\n\noverall_soundscape:\nSoft indoor ambience, subtle room tone, light fabric rustling as she shifts and falls onto the cushion, and faint small tableware presence from the coffee on the table. No dramatic impact sound.\n\nnon_diegetic_music:\nN/A",
+        "width": 1344,
+        "height": 768,
+        "length": 124
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 113,
+      "type": "Reroute",
+      "pos": [
+        1905.681439237728,
+        592.6500707410756
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 198
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "links": [
+            199
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 100,
+      "type": "GetImageSize",
+      "pos": [
+        -136.5859971544101,
+        997.5710151195559
+      ],
+      "size": [
+        210,
+        136
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 170
+        }
+      ],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            182,
+            200
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            183,
+            203
+          ]
+        },
+        {
+          "name": "batch_size",
+          "type": "INT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GetImageSize"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 117,
+      "type": "Reroute",
+      "pos": [
+        151.7672387140089,
+        1039.9978681149084
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "widget": {
+            "name": "value"
+          },
+          "link": 203
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            204
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 114,
+      "type": "Reroute",
+      "pos": [
+        1905.681439237728,
+        997.5710151195559
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "widget": {
+            "name": "value"
+          },
+          "link": 200
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            205
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 116,
+      "type": "Reroute",
+      "pos": [
+        1905.681439237728,
+        1039.9978681149084
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "widget": {
+            "name": "value"
+          },
+          "link": 204
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            206
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 118,
+      "type": "Reroute",
+      "pos": [
+        1905.681439237728,
+        1230
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "widget": {
+            "name": "value"
+          },
+          "link": 207
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "INT",
+          "links": [
+            208
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 91,
+      "type": "CreateVideo",
+      "pos": [
+        3031.6919032680566,
+        188.1918182373047
+      ],
+      "size": [
+        270,
+        126
+      ],
+      "flags": {},
+      "order": 36,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 159
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": 160
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            158
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CreateVideo",
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0"
+      },
+      "widgets_values": [
+        24,
+        8,
+        "sRGB"
+      ],
+      "widgets_values_named": {
+        "fps": 24,
+        "bit_depth": 8,
+        "color_space": "sRGB"
+      }
+    },
+    {
+      "id": 112,
+      "type": "KSampler",
+      "pos": [
+        2419.843124784804,
+        188.1918182373047
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 33,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 212
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 195
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 196
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 215
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            209,
+            210
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        1234,
+        "fixed",
+        10,
+        1,
+        "euler",
+        "simple",
+        0.4
+      ],
+      "widgets_values_named": {
+        "seed": 1234,
+        "control_after_generate": "fixed",
+        "steps": 10,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 0.4
+      }
+    },
+    {
+      "id": 77,
+      "type": "VAEDecodeAudio",
+      "pos": [
+        2796.8662161802217,
+        287.56047077038255
+      ],
+      "size": [
+        194.25299723441972,
+        46
+      ],
+      "flags": {},
+      "order": 35,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 210
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 150
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            160
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecodeAudio",
+        "cnr_id": "comfy-core",
+        "ver": "0.30.0"
+      }
+    },
+    {
+      "id": 98,
+      "type": "ResizeImageMaskNode",
+      "pos": [
+        -480.0318741602632,
+        592.6500707410756
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "IMAGE,MASK",
+          "link": 168
+        }
+      ],
+      "outputs": [
+        {
+          "name": "resized",
+          "type": "IMAGE",
+          "links": [
+            169,
+            170
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResizeImageMaskNode"
+      },
+      "widgets_values": [
+        "scale to multiple",
+        64,
+        "bicubic"
+      ],
+      "widgets_values_named": {
+        "resize_type": "scale to multiple",
+        "resize_type.multiple": 64,
+        "scale_method": "bicubic"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 119,
+      "type": "Reroute",
+      "pos": [
+        2298.57573029362,
+        -210.56656545542015
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 211
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "MODEL",
+          "links": [
+            212
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 110,
+      "type": "MiniMaxH3ImageToVideo",
+      "pos": [
+        2026.9488337289113,
+        188.1918182373047
+      ],
+      "size": [
+        346.62689656470866,
+        220
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 191
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 214
+        },
+        {
+          "name": "first_frame",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 199
+        },
+        {
+          "name": "last_frame",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 193
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 205
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 206
+        },
+        {
+          "name": "length",
+          "type": "INT",
+          "widget": {
+            "name": "length"
+          },
+          "link": 208
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            190,
+            195
+          ]
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MiniMaxH3ImageToVideo"
+      },
+      "widgets_values": [
+        "integrated_multimodal_description:\n[Shot 1] Single continuous shot, one take. Use the input image as the exact starting point. Preserve the woman, the sofa, the room layout, the bookshelf, the table, the coffee cup on the table, the lighting, and the painterly visual style of the image.\n\nThe camera is completely locked off and does not shake.\n\nThe woman is sitting on the sofa exactly as in the input image, with empty hands. She is not holding a fork or any other object. After a short pause, she gently leans her upper body to the left. Then, using that small counter-motion, she lets her body tip and collapse toward the right side, falling onto the right cushion and ending in a reclined, sprawled position across the sofa. She does not fall off the sofa.\n\nHer movement should not look like smooth traced live-action motion. It should feel stylized, painterly, and slightly imperfect, with more animation-like timing and slightly simplified, uneven physical behavior. It is acceptable for the motion to feel a little physically incorrect in a natural stylized way. The action should read clearly, but it should not feel overly fluid or overly realistic.\n\nThe background remains mostly still. The plant leaves move only slightly, with irregular, subtle, painterly motion that matches the visual style of the image. Their movement should feel limited and uneven rather than smooth or repetitive.\n\noverall_soundscape:\nSoft indoor ambience, subtle room tone, light fabric rustling as she shifts and falls onto the cushion, and faint small tableware presence from the coffee on the table. No dramatic impact sound.\n\nnon_diegetic_music:\nN/A",
+        1344,
+        768,
+        124
+      ],
+      "widgets_values_named": {
+        "prompt": "integrated_multimodal_description:\n[Shot 1] Single continuous shot, one take. Use the input image as the exact starting point. Preserve the woman, the sofa, the room layout, the bookshelf, the table, the coffee cup on the table, the lighting, and the painterly visual style of the image.\n\nThe camera is completely locked off and does not shake.\n\nThe woman is sitting on the sofa exactly as in the input image, with empty hands. She is not holding a fork or any other object. After a short pause, she gently leans her upper body to the left. Then, using that small counter-motion, she lets her body tip and collapse toward the right side, falling onto the right cushion and ending in a reclined, sprawled position across the sofa. She does not fall off the sofa.\n\nHer movement should not look like smooth traced live-action motion. It should feel stylized, painterly, and slightly imperfect, with more animation-like timing and slightly simplified, uneven physical behavior. It is acceptable for the motion to feel a little physically incorrect in a natural stylized way. The action should read clearly, but it should not feel overly fluid or overly realistic.\n\nThe background remains mostly still. The plant leaves move only slightly, with irregular, subtle, painterly motion that matches the visual style of the image. Their movement should feel limited and uneven rather than smooth or repetitive.\n\noverall_soundscape:\nSoft indoor ambience, subtle room tone, light fabric rustling as she shifts and falls onto the cushion, and faint small tableware presence from the coffee on the table. No dramatic impact sound.\n\nnon_diegetic_music:\nN/A",
+        "width": 1344,
+        "height": 768,
+        "length": 124
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 39,
+      "type": "VAELoader",
+      "pos": [
+        52.62317611836556,
+        -59.89911033344882
+      ],
+      "size": [
+        301.3524169921875,
+        58
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            139,
+            175,
+            213
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "minimax_h3_video_vae_fp16.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 120,
+      "type": "Reroute",
+      "pos": [
+        1905.681439237728,
+        -59.89911033344882
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 213
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            214
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 108,
+      "type": "LTXVConcatAVLatent",
+      "pos": [
+        1780.469411928666,
+        263.27638134492935
+      ],
+      "size": [
+        194.25299723441972,
+        46
+      ],
+      "flags": {},
+      "order": 32,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video_latent",
+          "type": "LATENT",
+          "link": 187
+        },
+        {
+          "name": "audio_latent",
+          "type": "LATENT",
+          "link": 188
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            215
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LTXVConcatAVLatent"
+      },
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 106,
+      "type": "MinimaxH3LatentUpscaler3D",
+      "pos": [
+        1414.6360018124824,
+        263.27638134492935
+      ],
+      "size": [
+        319.566015625,
+        226
+      ],
+      "flags": {},
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "latent",
+          "type": "*",
+          "link": 186
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "*",
+          "links": [
+            187
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MinimaxH3LatentUpscaler3D"
+      },
+      "widgets_values": [
+        "minimax_h3_latent_upscaler_3d_bf16.safetensors",
+        "scale by multiplier",
+        2,
+        32,
+        true,
+        "cuda",
+        "fp16",
+        false
+      ],
+      "widgets_values_named": {
+        "model_name": "minimax_h3_latent_upscaler_3d_bf16.safetensors",
+        "mode": "scale by multiplier",
+        "mode.scale": 2,
+        "align": 32,
+        "keep_proportion": true,
+        "device": "cuda",
+        "precision": "fp16",
+        "offload_after_upscale": false
+      },
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 105,
+      "type": "ComfyMathExpression",
+      "pos": [
+        146.85987985144288,
+        680.8680843333011
+      ],
+      "size": [
+        210,
+        128
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "a",
+          "name": "values.a",
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 182
+        },
+        {
+          "name": "values.b",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            184
+          ]
+        },
+        {
+          "name": "BOOL",
+          "type": "BOOLEAN",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ComfyMathExpression",
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0"
+      },
+      "widgets_values": [
+        "a / 2"
+      ],
+      "widgets_values_named": {
+        "expression": "a / 2"
+      }
+    },
+    {
+      "id": 96,
+      "type": "LoadImage",
+      "pos": [
+        -1322.5702547601131,
+        592.6500707410756
+      ],
+      "size": [
+        499.0118946253501,
+        409.63972524215967
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            167
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "ComfyUI_05011_.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "ComfyUI_05011_.png",
+        "upload": "image"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 86,
+      "type": "ModelAttentionBackend",
+      "pos": [
+        502.5398511791542,
+        -210.56656545542015
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 163
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "links": [
+            164,
+            211
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ModelAttentionBackend"
+      },
+      "widgets_values": [
+        "comfy kitchen attention"
+      ],
+      "widgets_values_named": {
+        "attention": "comfy kitchen attention"
+      }
+    },
+    {
+      "id": 37,
+      "type": "UNETLoader",
+      "pos": [
+        156.5403130152688,
+        -210.56656545542015
+      ],
+      "size": [
+        305.3782043457031,
+        82
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            163
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+        "weight_dtype": "default"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 92,
+      "type": "SaveVideo",
+      "pos": [
+        3343.0046406996676,
+        188.1918182373047
+      ],
+      "size": [
+        1011.5388371018557,
+        627.8536765771626
+      ],
+      "flags": {},
+      "order": 37,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 158
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0"
+      },
+      "widgets_values": [
+        "video/ComfyUI",
+        "auto",
+        "auto",
+        "auto"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "video/ComfyUI",
+        "format": "auto",
+        "format.codec": "auto",
+        "codec": "auto"
+      }
+    },
+    {
+      "id": 111,
+      "type": "PrimitiveNode",
+      "pos": [
+        55.507462859255384,
+        356.57421966691356
+      ],
+      "size": [
+        301.3524169921875,
+        170.19960636851056
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "links": [
+            192,
+            193
+          ]
+        }
+      ],
+      "title": "prompt",
+      "properties": {
+        "Run widget replace on values": false
+      },
+      "widgets_values": [
+        "integrated_multimodal_description:\n[Shot 1] Single continuous shot, one take. Use the input image as the exact starting point. Preserve the woman, the sofa, the room layout, the bookshelf, the table, the coffee cup on the table, the lighting, and the painterly visual style of the image.\n\nThe camera is completely locked off and does not shake.\n\nThe woman is sitting on the sofa exactly as in the input image, with empty hands. She is not holding a fork or any other object. After a short pause, she gently leans her upper body to the left. Then, using that small counter-motion, she lets her body tip and collapse toward the right side, falling onto the right cushion and ending in a reclined, sprawled position across the sofa. She does not fall off the sofa.\n\nHer movement should not look like smooth traced live-action motion. It should feel stylized, painterly, and slightly imperfect, with more animation-like timing and slightly simplified, uneven physical behavior. It is acceptable for the motion to feel a little physically incorrect in a natural stylized way. The action should read clearly, but it should not feel overly fluid or overly realistic.\n\nThe background remains mostly still. The plant leaves move only slightly, with irregular, subtle, painterly motion that matches the visual style of the image. Their movement should feel limited and uneven rather than smooth or repetitive.\n\noverall_soundscape:\nSoft indoor ambience, subtle room tone, light fabric rustling as she shifts and falls onto the cushion, and faint small tableware presence from the coffee on the table. No dramatic impact sound.\n\nnon_diegetic_music:\nN/A"
+      ],
+      "widgets_values_named": {
+        "value": "integrated_multimodal_description:\n[Shot 1] Single continuous shot, one take. Use the input image as the exact starting point. Preserve the woman, the sofa, the room layout, the bookshelf, the table, the coffee cup on the table, the lighting, and the painterly visual style of the image.\n\nThe camera is completely locked off and does not shake.\n\nThe woman is sitting on the sofa exactly as in the input image, with empty hands. She is not holding a fork or any other object. After a short pause, she gently leans her upper body to the left. Then, using that small counter-motion, she lets her body tip and collapse toward the right side, falling onto the right cushion and ending in a reclined, sprawled position across the sofa. She does not fall off the sofa.\n\nHer movement should not look like smooth traced live-action motion. It should feel stylized, painterly, and slightly imperfect, with more animation-like timing and slightly simplified, uneven physical behavior. It is acceptable for the motion to feel a little physically incorrect in a natural stylized way. The action should read clearly, but it should not feel overly fluid or overly realistic.\n\nThe background remains mostly still. The plant leaves move only slightly, with irregular, subtle, painterly motion that matches the visual style of the image. Their movement should feel limited and uneven rather than smooth or repetitive.\n\noverall_soundscape:\nSoft indoor ambience, subtle room tone, light fabric rustling as she shifts and falls onto the cushion, and faint small tableware presence from the coffee on the table. No dramatic impact sound.\n\nnon_diegetic_music:\nN/A"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 109,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        2155.1410452350265,
+        466.7764104457844
+      ],
+      "size": [
+        218.4346850585937,
+        26
+      ],
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 190
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            196
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningZeroOut",
+        "cnr_id": "comfy-core",
+        "ver": "0.30.0"
+      }
+    },
+    {
+      "id": 75,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        554.1051661205605,
+        466.7764104457844
+      ],
+      "size": [
+        218.4346850585937,
+        26
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 179
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            130
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningZeroOut",
+        "cnr_id": "comfy-core",
+        "ver": "0.30.0"
+      }
+    }
+  ],
+  "links": [
+    [
+      130,
+      75,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      139,
+      39,
+      0,
+      79,
+      0,
+      "VAE"
+    ],
+    [
+      140,
+      79,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      149,
+      81,
+      0,
+      82,
+      0,
+      "VAE"
+    ],
+    [
+      150,
+      82,
+      0,
+      77,
+      1,
+      "VAE"
+    ],
+    [
+      158,
+      91,
+      0,
+      92,
+      0,
+      "VIDEO"
+    ],
+    [
+      159,
+      8,
+      0,
+      91,
+      0,
+      "IMAGE"
+    ],
+    [
+      160,
+      77,
+      0,
+      91,
+      1,
+      "AUDIO"
+    ],
+    [
+      163,
+      37,
+      0,
+      86,
+      0,
+      "MODEL"
+    ],
+    [
+      164,
+      86,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      166,
+      94,
+      0,
+      87,
+      0,
+      "FLOAT"
+    ],
+    [
+      167,
+      96,
+      0,
+      97,
+      0,
+      "IMAGE"
+    ],
+    [
+      168,
+      97,
+      0,
+      98,
+      0,
+      "IMAGE"
+    ],
+    [
+      169,
+      98,
+      0,
+      99,
+      0,
+      "IMAGE"
+    ],
+    [
+      170,
+      98,
+      0,
+      100,
+      0,
+      "IMAGE"
+    ],
+    [
+      171,
+      99,
+      0,
+      101,
+      2,
+      "IMAGE"
+    ],
+    [
+      174,
+      38,
+      0,
+      101,
+      0,
+      "CLIP"
+    ],
+    [
+      175,
+      39,
+      0,
+      101,
+      1,
+      "VAE"
+    ],
+    [
+      176,
+      101,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      177,
+      101,
+      1,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      178,
+      87,
+      1,
+      101,
+      7,
+      "INT"
+    ],
+    [
+      179,
+      101,
+      0,
+      75,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      182,
+      100,
+      0,
+      105,
+      0,
+      "INT"
+    ],
+    [
+      183,
+      100,
+      1,
+      104,
+      0,
+      "INT"
+    ],
+    [
+      184,
+      105,
+      1,
+      101,
+      5,
+      "INT"
+    ],
+    [
+      185,
+      104,
+      1,
+      101,
+      6,
+      "INT"
+    ],
+    [
+      186,
+      107,
+      0,
+      106,
+      0,
+      "LATENT"
+    ],
+    [
+      187,
+      106,
+      0,
+      108,
+      0,
+      "LATENT"
+    ],
+    [
+      188,
+      107,
+      1,
+      108,
+      1,
+      "LATENT"
+    ],
+    [
+      189,
+      3,
+      0,
+      107,
+      0,
+      "LATENT"
+    ],
+    [
+      190,
+      110,
+      0,
+      109,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      191,
+      38,
+      0,
+      110,
+      0,
+      "CLIP"
+    ],
+    [
+      192,
+      111,
+      0,
+      101,
+      4,
+      "STRING"
+    ],
+    [
+      193,
+      111,
+      0,
+      110,
+      4,
+      "STRING"
+    ],
+    [
+      195,
+      110,
+      0,
+      112,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      196,
+      109,
+      0,
+      112,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      198,
+      99,
+      0,
+      113,
+      0,
+      "IMAGE"
+    ],
+    [
+      199,
+      113,
+      0,
+      110,
+      2,
+      "IMAGE"
+    ],
+    [
+      200,
+      100,
+      0,
+      114,
+      0,
+      "INT"
+    ],
+    [
+      203,
+      100,
+      1,
+      117,
+      0,
+      "INT"
+    ],
+    [
+      204,
+      117,
+      0,
+      116,
+      0,
+      "INT"
+    ],
+    [
+      205,
+      114,
+      0,
+      110,
+      5,
+      "INT"
+    ],
+    [
+      206,
+      116,
+      0,
+      110,
+      6,
+      "INT"
+    ],
+    [
+      207,
+      87,
+      1,
+      118,
+      0,
+      "INT"
+    ],
+    [
+      208,
+      118,
+      0,
+      110,
+      7,
+      "INT"
+    ],
+    [
+      209,
+      112,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      210,
+      112,
+      0,
+      77,
+      0,
+      "LATENT"
+    ],
+    [
+      211,
+      86,
+      0,
+      119,
+      0,
+      "MODEL"
+    ],
+    [
+      212,
+      119,
+      0,
+      112,
+      0,
+      "MODEL"
+    ],
+    [
+      213,
+      39,
+      0,
+      120,
+      0,
+      "VAE"
+    ],
+    [
+      214,
+      120,
+      0,
+      110,
+      1,
+      "VAE"
+    ],
+    [
+      215,
+      108,
+      0,
+      112,
+      3,
+      "LATENT"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.2673486306413783,
+      "offset": [
+        2250.92434362,
+        864.199350594036
+      ]
+    },
+    "frontendVersion": "1.51.10",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

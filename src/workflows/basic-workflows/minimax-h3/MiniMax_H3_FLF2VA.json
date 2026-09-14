@@ -1,0 +1,1390 @@
+{
+  "id": "6bfbac2d-3c68-4483-85ea-d512d058324d",
+  "revision": 0,
+  "last_node_id": 109,
+  "last_link_id": 188,
+  "nodes": [
+    {
+      "id": 77,
+      "type": "VAEDecodeAudio",
+      "pos": [
+        1308.6980183050962,
+        296.9762089835968
+      ],
+      "size": [
+        194.25299723441972,
+        46
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 132
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 150
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            160
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecodeAudio",
+        "cnr_id": "comfy-core",
+        "ver": "0.30.0"
+      }
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1308.6980183050962,
+        188.1918182373047
+      ],
+      "size": [
+        194.25299723441972,
+        46
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 35
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 140
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            159
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      }
+    },
+    {
+      "id": 82,
+      "type": "Reroute",
+      "pos": [
+        1138.7548217773438,
+        64.14635395192796
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 149
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            150
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 79,
+      "type": "Reroute",
+      "pos": [
+        1138.7548217773438,
+        -59.89911033344882
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 139
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            140
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 81,
+      "type": "VAELoader",
+      "pos": [
+        52.62317611836556,
+        64.14635395192796
+      ],
+      "size": [
+        301.3524169921875,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            149
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "minimax_h3_audio_vae_fp32.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 75,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        617.2715308676253,
+        587.3299521252133
+      ],
+      "size": [
+        218.4346850585937,
+        26
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 179
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            130
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningZeroOut",
+        "cnr_id": "comfy-core",
+        "ver": "0.30.0"
+      }
+    },
+    {
+      "id": 38,
+      "type": "CLIPLoader",
+      "pos": [
+        52.62317611836556,
+        188.19181823730474
+      ],
+      "size": [
+        301.3524169921875,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            174
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+        "minimax",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+        "type": "minimax",
+        "device": "default"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 39,
+      "type": "VAELoader",
+      "pos": [
+        52.62317611836556,
+        -59.89911033344882
+      ],
+      "size": [
+        301.3524169921875,
+        58
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            139,
+            175
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "minimax_h3_video_vae_fp16.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 94,
+      "type": "PrimitiveFloat",
+      "pos": [
+        -104.58269993214344,
+        879.0768919855448
+      ],
+      "size": [
+        214.65850806503283,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            166
+          ]
+        }
+      ],
+      "title": "Float: Duration (sec)",
+      "properties": {
+        "Node name for S&R": "PrimitiveFloat"
+      },
+      "widgets_values": [
+        6
+      ],
+      "widgets_values_named": {
+        "value": 6
+      }
+    },
+    {
+      "id": 86,
+      "type": "ModelAttentionBackend",
+      "pos": [
+        553.2461981384733,
+        -207.9445746188256
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 163
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            164
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ModelAttentionBackend"
+      },
+      "widgets_values": [
+        "comfy kitchen attention"
+      ],
+      "widgets_values_named": {
+        "attention": "comfy kitchen attention"
+      }
+    },
+    {
+      "id": 87,
+      "type": "ComfyMathExpression",
+      "pos": [
+        145.4173000678566,
+        879.0768919855448
+      ],
+      "size": [
+        210,
+        128
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "a",
+          "name": "values.a",
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 166
+        },
+        {
+          "name": "values.b",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            178
+          ]
+        },
+        {
+          "name": "BOOL",
+          "type": "BOOLEAN",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ComfyMathExpression",
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0"
+      },
+      "widgets_values": [
+        "17 * round((a * 24 - 5) / 17) + 5"
+      ],
+      "widgets_values_named": {
+        "expression": "17 * round((a * 24 - 5) / 17) + 5"
+      }
+    },
+    {
+      "id": 95,
+      "type": "MarkdownNote",
+      "pos": [
+        -482.3943342566212,
+        -207.9445746188256
+      ],
+      "size": [
+        480.26512898835654,
+        314.3204118484383
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n- diffusion_models\n  - [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (21 GB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) (27.1 GB)\n- vae\n  - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)\n  - [minimax_h3_video_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_fp16.safetensors) (5.21 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_fl2va_pruned_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n    └── 📂vae/\n         ├── minimax_h3_audio_vae_fp32.safetensors\n         └── minimax_h3_video_vae_fp16.safetensors\n```"
+      ],
+      "widgets_values_named": {
+        "text": "## models\n- diffusion_models\n  - [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (21 GB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) (27.1 GB)\n- vae\n  - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)\n  - [minimax_h3_video_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_fp16.safetensors) (5.21 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_fl2va_pruned_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n    └── 📂vae/\n         ├── minimax_h3_audio_vae_fp32.safetensors\n         └── minimax_h3_video_vae_fp16.safetensors\n```"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 97,
+      "type": "ResizeImageMaskNode",
+      "pos": [
+        -573.2971690475886,
+        364.79838929656063
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "IMAGE,MASK",
+          "link": 167
+        }
+      ],
+      "outputs": [
+        {
+          "name": "resized",
+          "type": "IMAGE",
+          "links": [
+            168
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResizeImageMaskNode"
+      },
+      "widgets_values": [
+        "scale total pixels",
+        1,
+        "bicubic"
+      ],
+      "widgets_values_named": {
+        "resize_type": "scale total pixels",
+        "resize_type.megapixels": 1,
+        "scale_method": "bicubic"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 98,
+      "type": "ResizeImageMaskNode",
+      "pos": [
+        -267.5188963220179,
+        364.79838929656063
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "IMAGE,MASK",
+          "link": 168
+        }
+      ],
+      "outputs": [
+        {
+          "name": "resized",
+          "type": "IMAGE",
+          "links": [
+            169,
+            170,
+            184
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResizeImageMaskNode"
+      },
+      "widgets_values": [
+        "scale to multiple",
+        32,
+        "bicubic"
+      ],
+      "widgets_values_named": {
+        "resize_type": "scale to multiple",
+        "resize_type.multiple": 32,
+        "scale_method": "bicubic"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 99,
+      "type": "Reroute",
+      "pos": [
+        278.97559311055306,
+        364.79838929656063
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 169
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "links": [
+            171
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 104,
+      "type": "LoadImage",
+      "pos": [
+        -651.3682490867859,
+        550.1538889682714
+      ],
+      "size": [
+        348.07108003919734,
+        537.1808623524007
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            185
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "5 (1).png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "5 (1).png",
+        "upload": "image"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 96,
+      "type": "LoadImage",
+      "pos": [
+        -1049.571980462346,
+        364.79838929656063
+      ],
+      "size": [
+        348.07108003919734,
+        532.8546258823376
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            167
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "1.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "1.png",
+        "upload": "image"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 106,
+      "type": "Reroute",
+      "pos": [
+        278.97559311055306,
+        549.6075368986789
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 187
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "links": [
+            186
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 105,
+      "type": "ResizeImageMaskNode",
+      "pos": [
+        -267.5188963220179,
+        549.6075368986789
+      ],
+      "size": [
+        270,
+        126
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "IMAGE,MASK",
+          "link": 185
+        },
+        {
+          "name": "resize_type.match",
+          "type": "IMAGE,MASK",
+          "link": 184
+        }
+      ],
+      "outputs": [
+        {
+          "name": "resized",
+          "type": "IMAGE",
+          "links": [
+            187
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResizeImageMaskNode"
+      },
+      "widgets_values": [
+        "match size",
+        "center",
+        "bicubic"
+      ],
+      "widgets_values_named": {
+        "resize_type": "match size",
+        "resize_type.crop": "center",
+        "scale_method": "bicubic"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 100,
+      "type": "GetImageSize",
+      "pos": [
+        145.4173000678566,
+        669.0768919855448
+      ],
+      "size": [
+        210,
+        136
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 170
+        }
+      ],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            172
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            173
+          ]
+        },
+        {
+          "name": "batch_size",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GetImageSize"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 91,
+      "type": "CreateVideo",
+      "pos": [
+        1544.2637529711267,
+        188.1918182373047
+      ],
+      "size": [
+        270,
+        126
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 159
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": 160
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            188
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CreateVideo",
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0"
+      },
+      "widgets_values": [
+        24,
+        8,
+        "sRGB"
+      ],
+      "widgets_values_named": {
+        "fps": 24,
+        "bit_depth": 8,
+        "color_space": "sRGB"
+      }
+    },
+    {
+      "id": 101,
+      "type": "MiniMaxH3ImageToVideo",
+      "pos": [
+        434.27961405604844,
+        188.1918182373047
+      ],
+      "size": [
+        401.42660187017054,
+        324.13877587380694
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 174
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 175
+        },
+        {
+          "name": "first_frame",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 171
+        },
+        {
+          "name": "last_frame",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 186
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 172
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 173
+        },
+        {
+          "name": "length",
+          "type": "INT",
+          "widget": {
+            "name": "length"
+          },
+          "link": 178
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            176,
+            179
+          ]
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            177
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MiniMaxH3ImageToVideo"
+      },
+      "widgets_values": [
+        "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\nFor the target video, at 5.00 seconds into the target video, <Picture 2> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description:\n[Shot 1] A single continuous high-end abstract motion-graphics animation begins from the exact composition, color atmosphere, and design language of <Picture 1>. The frame shows a large luminous numeral \"1\" surrounded by layered translucent curved bands and broad flowing gradient shapes. The visual style is elegant and premium, with a rich dark background, soft glow, subtle fine-grain texture, smooth gradients, and overlapping semi-transparent ribbon-like forms. The entire animation is one uninterrupted visual flow with no cuts and no abrupt switching.\n\nFrom 00:00.000 onward, the curved translucent bands and gradient surfaces are always in motion, flowing smoothly like luminous ribbons and soft graphic waves. The motion feels intentional, clean, and beautifully eased, like sophisticated title-sequence motion design. The shapes continuously bend, stretch, overlap, and sweep across the frame, and the current numeral is always formed by these same moving gradient elements.\n\nFrom 00:00.000 to 00:01.000, the numeral \"1\" is clearly readable as the initial form. During this interval, the surrounding bands and arcs flow gently and begin to pull the shape of the \"1\" into motion.\n\nAround 00:01.000, the \"1\" does not disappear or switch. Instead, its edges soften and elongate, and the same luminous bands that define it curve and wrap into a new structure. The moving gradient ribbons naturally reshape the composition, and the numeral \"2\" emerges directly out of the flowing forms.\n\nFrom 00:01.000 to 00:02.000, the numeral \"2\" becomes clearly readable while still remaining part of the same living system of translucent moving shapes. The arcs continue to circulate around it and through it, carrying the motion forward.\n\nAround 00:02.000, the same bands and gradient layers continue flowing without interruption. The body of the \"2\" opens, curls, and reconnects as the graphic motion pulls the figure into a new configuration. The numeral \"3\" is created organically from this transformation, as though the moving gradients themselves are sculpting it in real time.\n\nFrom 00:02.000 to 00:03.000, the numeral \"3\" is clearly readable, large and central, while the surrounding luminous curves continue their graceful motion.\n\nAround 00:03.000, the flowing bands sweep again across the composition. The upper and lower curves of the \"3\" straighten and re-balance as the translucent layers pivot and slide, and the numeral \"4\" forms naturally from the same continuous motion. The transformation remains fluid and connected, with no hard cut and no isolated replacement of the number.\n\nFrom 00:03.000 to 00:04.000, the numeral \"4\" is clearly readable at center, still made from the same evolving system of glowing arcs and gradient ribbons.\n\nAround 00:04.000, the motion carries forward into the final transformation. The linear and angular structure of the \"4\" gradually softens and rounds into a more circular, spiral-like composition. The luminous gradient bands continue sweeping and folding, and the numeral \"5\" emerges as the final resolved figure from the same uninterrupted flow.\n\nFrom 00:04.000 to 00:05.000, the numeral \"5\" becomes clearly readable and increasingly stable. At the same time, the palette shifts naturally and continuously into the green, cyan, and yellow luminous color world of <Picture 2>. The surrounding arcs and layered gradient shapes settle into the exact visual identity and final composition of <Picture 2> by the last frame. The entire sequence feels like one coherent continuous morphing animation in which moving gradients generate each new number in turn.\n\noverall_soundscape:\nN/A\n\nnon_diegetic_music:\nN/A",
+        1344,
+        768,
+        124
+      ],
+      "widgets_values_named": {
+        "prompt": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\nFor the target video, at 5.00 seconds into the target video, <Picture 2> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description:\n[Shot 1] A single continuous high-end abstract motion-graphics animation begins from the exact composition, color atmosphere, and design language of <Picture 1>. The frame shows a large luminous numeral \"1\" surrounded by layered translucent curved bands and broad flowing gradient shapes. The visual style is elegant and premium, with a rich dark background, soft glow, subtle fine-grain texture, smooth gradients, and overlapping semi-transparent ribbon-like forms. The entire animation is one uninterrupted visual flow with no cuts and no abrupt switching.\n\nFrom 00:00.000 onward, the curved translucent bands and gradient surfaces are always in motion, flowing smoothly like luminous ribbons and soft graphic waves. The motion feels intentional, clean, and beautifully eased, like sophisticated title-sequence motion design. The shapes continuously bend, stretch, overlap, and sweep across the frame, and the current numeral is always formed by these same moving gradient elements.\n\nFrom 00:00.000 to 00:01.000, the numeral \"1\" is clearly readable as the initial form. During this interval, the surrounding bands and arcs flow gently and begin to pull the shape of the \"1\" into motion.\n\nAround 00:01.000, the \"1\" does not disappear or switch. Instead, its edges soften and elongate, and the same luminous bands that define it curve and wrap into a new structure. The moving gradient ribbons naturally reshape the composition, and the numeral \"2\" emerges directly out of the flowing forms.\n\nFrom 00:01.000 to 00:02.000, the numeral \"2\" becomes clearly readable while still remaining part of the same living system of translucent moving shapes. The arcs continue to circulate around it and through it, carrying the motion forward.\n\nAround 00:02.000, the same bands and gradient layers continue flowing without interruption. The body of the \"2\" opens, curls, and reconnects as the graphic motion pulls the figure into a new configuration. The numeral \"3\" is created organically from this transformation, as though the moving gradients themselves are sculpting it in real time.\n\nFrom 00:02.000 to 00:03.000, the numeral \"3\" is clearly readable, large and central, while the surrounding luminous curves continue their graceful motion.\n\nAround 00:03.000, the flowing bands sweep again across the composition. The upper and lower curves of the \"3\" straighten and re-balance as the translucent layers pivot and slide, and the numeral \"4\" forms naturally from the same continuous motion. The transformation remains fluid and connected, with no hard cut and no isolated replacement of the number.\n\nFrom 00:03.000 to 00:04.000, the numeral \"4\" is clearly readable at center, still made from the same evolving system of glowing arcs and gradient ribbons.\n\nAround 00:04.000, the motion carries forward into the final transformation. The linear and angular structure of the \"4\" gradually softens and rounds into a more circular, spiral-like composition. The luminous gradient bands continue sweeping and folding, and the numeral \"5\" emerges as the final resolved figure from the same uninterrupted flow.\n\nFrom 00:04.000 to 00:05.000, the numeral \"5\" becomes clearly readable and increasingly stable. At the same time, the palette shifts naturally and continuously into the green, cyan, and yellow luminous color world of <Picture 2>. The surrounding arcs and layered gradient shapes settle into the exact visual identity and final composition of <Picture 2> by the last frame. The entire sequence feels like one coherent continuous morphing animation in which moving gradients generate each new number in turn.\n\noverall_soundscape:\nN/A\n\nnon_diegetic_music:\nN/A",
+        "width": 1344,
+        "height": 768,
+        "length": 124
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        898.7548217773438,
+        188.1918182373047
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 164
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 176
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 130
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 177
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            35,
+            132
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        1234,
+        "fixed",
+        20,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 1234,
+        "control_after_generate": "fixed",
+        "steps": 20,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 37,
+      "type": "UNETLoader",
+      "pos": [
+        206.3645345899397,
+        -207.9445746188256
+      ],
+      "size": [
+        305.3782043457031,
+        82
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            163
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+        "weight_dtype": "default"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 107,
+      "type": "SaveVideo",
+      "pos": [
+        1861.4809437304043,
+        188.1918182373047
+      ],
+      "size": [
+        435.86592704079794,
+        684.6314335785584
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 188
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": null
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "video/ComfyUI",
+        "auto",
+        "auto",
+        "auto"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "video/ComfyUI",
+        "format": "auto",
+        "format.codec": "auto",
+        "codec": "auto"
+      }
+    }
+  ],
+  "links": [
+    [
+      35,
+      3,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      130,
+      75,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      132,
+      3,
+      0,
+      77,
+      0,
+      "LATENT"
+    ],
+    [
+      139,
+      39,
+      0,
+      79,
+      0,
+      "VAE"
+    ],
+    [
+      140,
+      79,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      149,
+      81,
+      0,
+      82,
+      0,
+      "VAE"
+    ],
+    [
+      150,
+      82,
+      0,
+      77,
+      1,
+      "VAE"
+    ],
+    [
+      159,
+      8,
+      0,
+      91,
+      0,
+      "IMAGE"
+    ],
+    [
+      160,
+      77,
+      0,
+      91,
+      1,
+      "AUDIO"
+    ],
+    [
+      163,
+      37,
+      0,
+      86,
+      0,
+      "MODEL"
+    ],
+    [
+      164,
+      86,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      166,
+      94,
+      0,
+      87,
+      0,
+      "FLOAT"
+    ],
+    [
+      167,
+      96,
+      0,
+      97,
+      0,
+      "IMAGE"
+    ],
+    [
+      168,
+      97,
+      0,
+      98,
+      0,
+      "IMAGE"
+    ],
+    [
+      169,
+      98,
+      0,
+      99,
+      0,
+      "IMAGE"
+    ],
+    [
+      170,
+      98,
+      0,
+      100,
+      0,
+      "IMAGE"
+    ],
+    [
+      171,
+      99,
+      0,
+      101,
+      2,
+      "IMAGE"
+    ],
+    [
+      172,
+      100,
+      0,
+      101,
+      4,
+      "INT"
+    ],
+    [
+      173,
+      100,
+      1,
+      101,
+      5,
+      "INT"
+    ],
+    [
+      174,
+      38,
+      0,
+      101,
+      0,
+      "CLIP"
+    ],
+    [
+      175,
+      39,
+      0,
+      101,
+      1,
+      "VAE"
+    ],
+    [
+      176,
+      101,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      177,
+      101,
+      1,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      178,
+      87,
+      1,
+      101,
+      6,
+      "INT"
+    ],
+    [
+      179,
+      101,
+      0,
+      75,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      184,
+      98,
+      0,
+      105,
+      1,
+      "IMAGE"
+    ],
+    [
+      185,
+      104,
+      0,
+      105,
+      0,
+      "IMAGE"
+    ],
+    [
+      186,
+      106,
+      0,
+      101,
+      3,
+      "IMAGE"
+    ],
+    [
+      187,
+      105,
+      0,
+      106,
+      0,
+      "IMAGE"
+    ],
+    [
+      188,
+      91,
+      0,
+      107,
+      0,
+      "VIDEO"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.43056764313424634,
+      "offset": [
+        1350.2177879468782,
+        606.0070626236592
+      ]
+    },
+    "frontendVersion": "1.51.9",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
