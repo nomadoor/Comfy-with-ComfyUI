@@ -46,14 +46,14 @@ Before this change, Gyazo rules were spread across the site: `.eleventy.js` rend
 
 ### Upload workflow
 
-`npm run media:put -- <file.png|jpg> [...] [--alt "説明"] [--dry-run] [--no-clipboard]`
+`npm run media:put -- <file.png|jpg> [...] [--alt "説明"] [--force] [--dry-run] [--no-clipboard]`
 
 1. Remove metadata without re-encoding (`scripts/lib/media-metadata.mjs`):
    - Keep pixel data and everything that affects appearance: PNG `IHDR/PLTE/IDAT/IEND/tRNS/bKGD/sBIT/pHYs/gAMA/cHRM/sRGB/iCCP/cICP/mDCV/cLLI/acTL/fcTL/fdAT`; JPEG image segments, JFIF APP0, ICC profile APP2, Adobe APP14.
    - Remove ComfyUI workflow/prompt text chunks, EXIF (incl. GPS), XMP, comments, timestamps, Photoshop/IPTC, and other APPn/private chunks.
    - Reject instead of modifying: EXIF Orientation other than 1, MPF / Ultra HDR gain maps, JPEG data after EOI.
    - Verify after removal: the result re-parses, CRCs and dimensions match, image data (IDAT stream / JPEG image segments and scan data) is byte-identical, and nothing removable remains.
-2. Hash to the key; skip when the URL is already in the manifest.
+2. Hash to the key; skip when the URL is already in the manifest unless `--force` is given (used for registered objects that are not in the bucket yet, such as test fixtures). Objects under Bucket Lock still reject re-uploads.
 3. `npx wrangler r2 object put --remote` with Content-Type and Cache-Control. Authentication uses `npx wrangler login`; no long-lived API token is stored for this workflow.
 4. Append to `media.json` after each successful upload.
 5. Print the `![](…){media=image}` snippets and copy them to the clipboard (UTF-8 PowerShell on WSL).

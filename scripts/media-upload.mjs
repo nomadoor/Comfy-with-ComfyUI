@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 // Upload article images to the R2 media bucket.
 //
-//   npm run media:put -- <image.png|jpg> [...] [--alt "説明"] [--dry-run] [--no-clipboard]
+//   npm run media:put -- <image.png|jpg> [...] [--alt "説明"] [--force] [--dry-run] [--no-clipboard]
 //
 // For each file: remove non-visual metadata without re-encoding, name it by content hash,
 // upload it with immutable caching, record it in src/_data/media.json, and copy the Markdown
 // snippet to the clipboard. Authenticate once with `npx wrangler login`.
+//
+// --force uploads even when the URL is already in media.json (e.g. registered fixtures that are not
+// in the bucket yet). The key is still the content hash, so the bytes are identical; an object that
+// is already protected by Bucket Lock will be rejected by R2.
 //
 // mp4 is not handled yet: upload and register it in media.json manually (see
 // ops/adr/2026-09-17-media-layer-r2-gyazo.md). A video handler can be added next to
@@ -22,13 +26,14 @@ const SITE_DATA_PATH = path.resolve("src", "_data", "site.json");
 const MANIFEST_PATH = path.resolve("src", "_data", "media.json");
 const CACHE_CONTROL = "public, max-age=31536000, immutable";
 const HASH_LENGTH = 16;
-const USAGE = 'Usage: npm run media:put -- <image.png|jpg> [...] [--alt "説明"] [--dry-run] [--no-clipboard]';
+const USAGE = 'Usage: npm run media:put -- <image.png|jpg> [...] [--alt "説明"] [--force] [--dry-run] [--no-clipboard]';
 
 function parseArgs(argv) {
-  const opts = { files: [], alt: "", dryRun: false, clipboard: true };
+  const opts = { files: [], alt: "", dryRun: false, clipboard: true, force: false };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === "--dry-run") opts.dryRun = true;
+    else if (arg === "--force") opts.force = true;
     else if (arg === "--no-clipboard") opts.clipboard = false;
     else if (arg === "--alt") opts.alt = argv[++i] ?? "";
     else if (arg.startsWith("--")) throw new Error(`unknown option: ${arg}\n${USAGE}`);
@@ -91,11 +96,11 @@ function main() {
     const url = `https://${config.host}/${key}`;
     const summary = `${width}x${height} ${data.length} bytes; removed: ${removed.length ? removed.join(", ") : "none"}`;
 
-    if (manifest[url]) {
-      // Keys are never overwritten (Bucket Lock would reject it anyway).
-      console.log(`= ${file} -> ${url} (already in media.json)`);
+    if (manifest[url] && !opts.force) {
+      // Keys are never overwritten (Bucket Lock would reject it anyway). Use --force to upload anyway.
+      console.log(`= ${file} -> ${url} (already in media.json; use --force to upload)`);
     } else if (opts.dryRun) {
-      console.log(`~ ${file} -> ${url} ${summary} [dry-run]`);
+      console.log(`~ ${file} -> ${url} ${summary} [dry-run${opts.force ? ", force" : ""}]`);
     } else {
       const tmpFile = path.join(os.tmpdir(), `media-upload-${hash}.${ext}`);
       fs.writeFileSync(tmpFile, data);
@@ -104,10 +109,10 @@ function main() {
       } finally {
         fs.rmSync(tmpFile, { force: true });
       }
-      manifest[url] = { width, height, type, bytes: data.length };
+      manifest[url] = { ...manifest[url], width, height, type, bytes: data.length };
       // Write after each upload so an uploaded object is never left unrecorded.
       fs.writeFileSync(MANIFEST_PATH, `${JSON.stringify(manifest, null, 2)}\n`);
-      console.log(`+ ${file} -> ${url} ${summary}`);
+      console.log(`+ ${file} -> ${url} ${summary}${opts.force ? " [force]" : ""}`);
     }
     snippets.push(`![${opts.alt}](${url}){media=image}`);
   }
