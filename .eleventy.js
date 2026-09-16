@@ -14,6 +14,7 @@ const GYAZO_FETCH_TIMEOUT_MS = 5000;
 const GYAZO_FETCH_DELAY_MS = 200;
 const sleep = (ms = 0) => (ms > 0 ? new Promise((resolve) => setTimeout(resolve, ms)) : Promise.resolve());
 const SITE_DATA_PATH = path.join("src", "_data", "site.json");
+const MEDIA_MANIFEST_PATH = path.join("src", "_data", "media.json");
 const ICON_SPRITES = {
   copy: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="var(--icon-stroke-width, 1.5)" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path></svg>',
   download: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="var(--icon-stroke-width, 1.5)" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>'
@@ -28,6 +29,7 @@ try {
 }
 const WORKFLOW_I18N = siteData?.i18n?.workflow || {};
 const DEFAULT_LANG = siteData?.defaultLang || "ja";
+const MEDIA_HOST = siteData?.media?.host || "";
 const WORKFLOW_ROOT = path.join(process.cwd(), "src", "workflows");
 const WORKFLOW_LABELS = {
   copyLabel: "Copy",
@@ -37,6 +39,18 @@ const WORKFLOW_LABELS = {
 };
 
 loadLanguages(["bash", "shell", "json", "yaml", "javascript", "typescript", "css", "markup", "powershell", "python"]);
+
+let mediaManifest = {};
+function loadMediaManifest() {
+  try {
+    mediaManifest = fsSync.existsSync(MEDIA_MANIFEST_PATH)
+      ? JSON.parse(fsSync.readFileSync(MEDIA_MANIFEST_PATH, "utf-8"))
+      : {};
+  } catch {
+    mediaManifest = {};
+  }
+}
+loadMediaManifest();
 
 let gyazoMeta = {};
 try {
@@ -441,6 +455,98 @@ function extractGyazoId(url = "") {
   }
 }
 
+// --- Media layer -------------------------------------------------------------
+// `mode` is how media is displayed (image / loop / player) and is independent of where it is
+// stored. Storage-specific rules live only in the source resolvers below.
+const MEDIA_MODES = new Set(["image", "loop", "player"]);
+const VIDEO_TOGGLE_ICON = '<span class="media-toggle__pill"><span class="media-toggle__knob"></span><span class="media-toggle__text"></span></span>';
+
+function normalizeMediaMode(mode) {
+  const value = String(mode || "").toLowerCase();
+  return MEDIA_MODES.has(value) ? value : "";
+}
+
+function getHostname(url = "") {
+  try {
+    return new URL(url).hostname;
+  } catch {
+    return "";
+  }
+}
+
+function isVideoUrl(url = "") {
+  return /\.mp4(?:$|[?#])/i.test(url);
+}
+
+function resolveR2Media(url, kind) {
+  const entry = mediaManifest[url] || {};
+  const poster = kind === "video" ? entry.poster || "" : url;
+  return { kind, src: url, fullSrc: url, width: entry.width, height: entry.height, srcset: "", poster };
+}
+
+function resolveGyazoMedia(url, kind, size) {
+  const id = extractGyazoId(url);
+  const stillUrl = normalizeGyazoUrl(url) || url;
+  const still = createImageVariants(stillUrl, size);
+  if (kind === "video") {
+    const dims = getGyazoDimensionsFromId(id);
+    const src = isVideoUrl(url) || !id ? url : `https://${GYAZO_HOST}/${id}.mp4`;
+    return { kind, src, fullSrc: src, width: dims?.width, height: dims?.height, srcset: "", poster: id ? still.preview : "" };
+  }
+  return {
+    kind,
+    src: still.preview,
+    fullSrc: still.full || still.preview,
+    width: still.originalWidth || still.width,
+    height: still.originalHeight || still.height,
+    srcset: createImageSrcset(still),
+    poster: still.preview
+  };
+}
+
+/**
+ * Resolve a media URL into the URLs and dimensions a renderer needs.
+ * @param {string} url R2, Gyazo, or any external media URL.
+ * @param {{ mode?: "image"|"loop"|"player", size?: number }} options
+ *   Without `mode`, video vs. image is inferred from the manifest type or the `.mp4` extension.
+ * @returns {{ kind: "image"|"video", mode: string, src: string, fullSrc: string, width?: number,
+ *   height?: number, srcset: string, poster: string }} `poster` is a still image URL usable for
+ *   thumbnails/OGP ("" when none is known).
+ */
+function resolveMedia(url = "", { mode, size = 1000 } = {}) {
+  const source = typeof url === "string" ? url.trim() : "";
+  const host = getHostname(source);
+  const isR2 = Boolean(MEDIA_HOST) && host === MEDIA_HOST;
+  let resolvedMode = normalizeMediaMode(mode);
+  if (!resolvedMode) {
+    const manifestType = isR2 ? String(mediaManifest[source]?.type || "") : "";
+    resolvedMode = manifestType.startsWith("video/") || isVideoUrl(source) ? "loop" : "image";
+  }
+  const kind = resolvedMode === "image" ? "image" : "video";
+
+  let media;
+  if (isR2) {
+    media = resolveR2Media(source, kind);
+  } else if (host.endsWith("gyazo.com")) {
+    media = resolveGyazoMedia(source, kind, size);
+  } else {
+    media = { kind, src: source, fullSrc: source, width: undefined, height: undefined, srcset: "", poster: kind === "image" ? source : "" };
+  }
+  return { ...media, mode: resolvedMode };
+}
+
+function renderVideoFigure(media, { caption = "", maxHeight = 320 } = {}) {
+  const hasDims = media.width > 0 && media.height > 0;
+  const baseWidth = hasDims ? media.width : 720;
+  const baseHeight = hasDims ? media.height : 360;
+  const height = Math.min(baseHeight, maxHeight);
+  const width = Math.round(baseWidth * (height / baseHeight));
+  const aspect = hasDims ? `${media.width} / ${media.height}` : "16 / 9";
+  const initial = media.mode === "player" ? "player" : "loop";
+  const playback = initial === "player" ? 'controls playsinline preload="metadata"' : "muted loop autoplay playsinline";
+  return `<figure class="article-video article-video--${initial} article-video--toggleable" data-media-toggle data-media-initial="${initial}" style="--article-video-height:${height}px; --article-video-width:${width}px; --article-video-aspect:${aspect};"><div class="article-video__frame"><video src="${escapeHTML(media.src)}" data-full-src="${escapeHTML(media.fullSrc)}" ${playback}></video><button type="button" class="media-toggle" aria-label="Toggle video playback mode" data-loop-label="Loop" data-player-label="Player">${VIDEO_TOGGLE_ICON}</button></div>${caption ? `<figcaption>${caption}</figcaption>` : ""}</figure>`;
+}
+
 function escapeHTML(str = "") {
   return str
     .replace(/&/g, "&amp;")
@@ -567,6 +673,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addWatchTarget("ops");
 
   eleventyConfig.on("beforeBuild", async () => {
+    loadMediaManifest();
     await refreshGyazoMetadata();
   });
 
@@ -788,8 +895,8 @@ export default function (eleventyConfig) {
     }
   });
 
-  eleventyConfig.addFilter("imageVariant", function (url, size = 1000) {
-    return createImageVariants(url, size);
+  eleventyConfig.addFilter("resolveMedia", function (url, options = {}) {
+    return resolveMedia(url, options);
   });
 
   eleventyConfig.addFilter("stripUrlQuery", function (value = "") {
@@ -808,42 +915,13 @@ export default function (eleventyConfig) {
       .replace(/&/g, "\\u0026");
   });
 
-  eleventyConfig.addShortcode("gyazoVideoLoop", function (url, caption = "", options = {}) {
-    const id = extractGyazoId(url);
-    const dims = getGyazoDimensionsFromId(id);
-    const baseWidth = dims?.width || options.width || 720;
-    const baseHeight = dims?.height || options.height || 360;
-    const maxHeight = Math.min(options.height || baseHeight, 360);
-    const scale = baseHeight > maxHeight ? maxHeight / baseHeight : 1;
-    const width = Math.round(baseWidth * scale);
-    const height = Math.round(baseHeight * scale);
-    const aspect = dims ? `${dims.width} / ${dims.height}` : options.aspect || "16 / 9";
-    const source = typeof url === "string" && url.endsWith(".mp4")
-      ? url
-      : id
-        ? `https://i.gyazo.com/${id}.mp4`
-        : url;
-    const escapedCaption = escapeHTML(caption);
-    return `<figure class="article-video article-video--loop article-video--gyazo" data-gyazo-toggle data-gyazo-initial="loop" style="--article-video-height:${height}px; --article-video-width:${width}px; --article-video-aspect:${aspect};"><div class="article-video__frame"><video src="${source}" muted loop autoplay playsinline></video><button type="button" class="gyazo-toggle" aria-label="Toggle Gyazo playback mode" data-loop-label="Loop" data-player-label="Player"><span class="gyazo-toggle__pill"><span class="gyazo-toggle__knob"></span><span class="gyazo-toggle__text"></span></span></button></div>${caption ? `<figcaption>${escapedCaption}</figcaption>` : ""}</figure>`;
+  // Kept for compatibility with older templates; both accept any media URL.
+  eleventyConfig.addShortcode("gyazoVideoLoop", function (url, caption = "") {
+    return renderVideoFigure(resolveMedia(url, { mode: "loop" }), { caption: escapeHTML(caption), maxHeight: 360 });
   });
 
-  eleventyConfig.addShortcode("gyazoVideoPlayer", function (url, caption = "", options = {}) {
-    const id = extractGyazoId(url);
-    const dims = getGyazoDimensionsFromId(id);
-    const baseWidth = dims?.width || options.width || 720;
-    const baseHeight = dims?.height || options.height || 360;
-    const maxHeight = Math.min(options.height || baseHeight, 360);
-    const scale = baseHeight > maxHeight ? maxHeight / baseHeight : 1;
-    const width = Math.round(baseWidth * scale);
-    const height = Math.round(baseHeight * scale);
-    const aspect = dims ? `${dims.width} / ${dims.height}` : options.aspect || "16 / 9";
-    const source = typeof url === "string" && url.endsWith(".mp4")
-      ? url
-      : id
-        ? `https://i.gyazo.com/${id}.mp4`
-        : url;
-    const escapedCaption = escapeHTML(caption);
-    return `<figure class="article-video article-video--player article-video--gyazo" data-gyazo-toggle data-gyazo-initial="player" style="--article-video-height:${height}px; --article-video-width:${width}px; --article-video-aspect:${aspect};"><div class="article-video__frame"><video src="${source}" controls playsinline preload="metadata"></video><button type="button" class="gyazo-toggle" aria-label="Toggle Gyazo playback mode" data-loop-label="Loop" data-player-label="Player"><span class="gyazo-toggle__pill"><span class="gyazo-toggle__knob"></span><span class="gyazo-toggle__text"></span></span></button></div>${caption ? `<figcaption>${escapedCaption}</figcaption>` : ""}</figure>`;
+  eleventyConfig.addShortcode("gyazoVideoPlayer", function (url, caption = "") {
+    return renderVideoFigure(resolveMedia(url, { mode: "player" }), { caption: escapeHTML(caption), maxHeight: 360 });
   });
 
   const markdownLib = new MarkdownIt({
@@ -863,7 +941,7 @@ export default function (eleventyConfig) {
     }
   });
 
-  // --- Gyazo Markdown helper -------------------------------------------------
+  // --- Media Markdown helper -------------------------------------------------
   function parseBraceAttrs(text = "") {
     const match = text.trim().match(/^\{([^}]*)\}$/);
     if (!match) return null;
@@ -879,43 +957,21 @@ export default function (eleventyConfig) {
     return Object.keys(attrs).length ? attrs : null;
   }
 
-  function renderGyazoMedia(token) {
-    const rawUrl = token.attrGet("src") || "";
-    const normalizedImageUrl = normalizeGyazoUrl(rawUrl) || rawUrl;
-    const mode = (token.attrGet("gyazo") || "image").toLowerCase();
+  function renderMarkdownMedia(token) {
     const alt = escapeHTML(token.content || token.attrGet("alt") || "");
-
-    const id = extractGyazoId(rawUrl);
-    const dims = getGyazoDimensionsFromId(id);
-    const baseWidth = dims?.width || 720;
-    const baseHeight = dims?.height || 360;
-    const aspect = dims ? `${dims.width} / ${dims.height}` : "16 / 9";
-    const height = Math.min(baseHeight, 320);
-    const scale = baseHeight ? height / baseHeight : 1;
-    const width = Math.round(baseWidth * scale);
-    const source = typeof rawUrl === "string" && rawUrl.endsWith(".mp4")
-      ? rawUrl
-      : id
-        ? `https://i.gyazo.com/${id}.mp4`
-        : rawUrl;
-
-    if (mode === "loop") {
-      return `<figure class="article-video article-video--loop article-video--gyazo" data-gyazo-toggle data-gyazo-initial="loop" style="--article-video-height:${height}px; --article-video-width:${width}px; --article-video-aspect:${aspect};"><div class="article-video__frame"><video src="${source}" muted loop autoplay playsinline></video><button type="button" class="gyazo-toggle" aria-label="Toggle Gyazo playback mode" data-loop-label="Loop" data-player-label="Player"><span class="gyazo-toggle__pill"><span class="gyazo-toggle__knob"></span><span class="gyazo-toggle__text"></span></span></button></div>${alt ? `<figcaption>${alt}</figcaption>` : ""}</figure>`;
+    const media = resolveMedia(token.attrGet("src") || "", { mode: token.meta.mediaMode, size: 1200 });
+    if (media.kind === "video") {
+      return renderVideoFigure(media, { caption: alt });
     }
-    if (mode === "player") {
-      return `<figure class="article-video article-video--player article-video--gyazo" data-gyazo-toggle data-gyazo-initial="player" style="--article-video-height:${height}px; --article-video-width:${width}px; --article-video-aspect:${aspect};"><div class="article-video__frame"><video src="${source}" controls playsinline preload="metadata"></video><button type="button" class="gyazo-toggle" aria-label="Toggle Gyazo playback mode" data-loop-label="Loop" data-player-label="Player"><span class="gyazo-toggle__pill"><span class="gyazo-toggle__knob"></span><span class="gyazo-toggle__text"></span></span></button></div>${alt ? `<figcaption>${alt}</figcaption>` : ""}</figure>`;
-    }
-    const variants = createImageVariants(normalizedImageUrl, 1200);
-    const imgWidth = variants.width || width;
-    const imgHeight = variants.height || height;
-    const imgAspect = variants.width && variants.height ? `${variants.width} / ${variants.height}` : aspect;
-    const commonFig = `<figure class="article-media" style="--article-media-width:${imgWidth}px; --article-media-height:${imgHeight}px; --article-media-aspect:${imgAspect};"><div class="article-media__frame">`;
-    const closing = `${alt ? `<figcaption>${alt}</figcaption>` : ""}</figure>`;
-    return `${commonFig}<img src="${variants.preview}" data-full-src="${variants.full}" alt="${alt}" loading="lazy" decoding="async" width="${imgWidth}" height="${imgHeight}" /></div>${closing}`;
+    // Display box is fitted to 1200px on the longest side regardless of the media source.
+    const { width, height } = getPreviewDimensions(media, 1200);
+    const figureStyle = `--article-media-width:${width}px; --article-media-height:${height}px; --article-media-aspect:${width} / ${height};`;
+    const caption = alt ? `<figcaption>${alt}</figcaption>` : "";
+    return `<figure class="article-media" style="${figureStyle}"><div class="article-media__frame"><img src="${escapeHTML(media.src)}" data-full-src="${escapeHTML(media.fullSrc)}" alt="${alt}" loading="lazy" decoding="async" width="${width}" height="${height}" /></div>${caption}</figure>`;
   }
 
-  // Detect `{gyazo=...}` right after an image and mark the token.
-  markdownLib.core.ruler.after("inline", "gyazo_attrs", function (state) {
+  // Detect `{media=...}` (or the compatible `{gyazo=...}`) right after an image and mark the token.
+  markdownLib.core.ruler.after("inline", "media_attrs", function (state) {
     const tokens = state.tokens;
     for (let i = 0; i < tokens.length - 1; i++) {
       const tok = tokens[i];
@@ -926,10 +982,10 @@ export default function (eleventyConfig) {
           const txt = children[j + 1];
           if (img.type === "image" && txt && txt.type === "text") {
             const attrs = parseBraceAttrs(txt.content || "");
-            if (attrs && attrs.gyazo) {
-              img.attrSet("gyazo", attrs.gyazo);
+            const mediaMode = attrs && (attrs.media || attrs.gyazo);
+            if (mediaMode) {
               img.meta = img.meta || {};
-              img.meta.isGyazo = true;
+              img.meta.mediaMode = String(mediaMode).toLowerCase();
               // remove the brace text token
               children.splice(j + 1, 1);
             }
@@ -939,8 +995,8 @@ export default function (eleventyConfig) {
     }
   });
 
-  // Rewrap paragraphs that contain only gyazo media into a media row.
-  markdownLib.core.ruler.after("gyazo_attrs", "gyazo_row", function (state) {
+  // Rewrap paragraphs that contain only attributed media into a media row.
+  markdownLib.core.ruler.after("media_attrs", "media_row", function (state) {
     const tokens = state.tokens;
     for (let i = 0; i < tokens.length - 2; i++) {
       if (tokens[i].type !== "paragraph_open") continue;
@@ -949,18 +1005,18 @@ export default function (eleventyConfig) {
       if (!inline || inline.type !== "inline" || close.type !== "paragraph_close") continue;
       const children = inline.children || [];
       if (!children.length) continue;
-      const onlyGyazo = children.every((c) => (c.type === "image" && c.meta?.isGyazo) || (c.type === "text" && !c.content.trim()));
-      if (!onlyGyazo) continue;
-      tokens[i].type = "gyazo_row_open";
+      const onlyMedia = children.every((c) => (c.type === "image" && c.meta?.mediaMode) || (c.type === "text" && !c.content.trim()));
+      if (!onlyMedia) continue;
+      tokens[i].type = "media_row_open";
       tokens[i].tag = "div";
       tokens[i].attrSet("class", "article-media-row");
-      tokens[i + 2].type = "gyazo_row_close";
+      tokens[i + 2].type = "media_row_close";
       tokens[i + 2].tag = "div";
     }
   });
 
-  markdownLib.renderer.rules.gyazo_row_open = (tokens, idx) => `<div class="${tokens[idx].attrGet("class")}">`;
-  markdownLib.renderer.rules.gyazo_row_close = () => `</div>`;
+  markdownLib.renderer.rules.media_row_open = (tokens, idx) => `<div class="${tokens[idx].attrGet("class")}">`;
+  markdownLib.renderer.rules.media_row_close = () => `</div>`;
 
   const defaultImageRenderer = markdownLib.renderer.rules.image || function (tokens, idx, options, env, self) {
     return self.renderToken(tokens, idx, options);
@@ -968,34 +1024,29 @@ export default function (eleventyConfig) {
 
   markdownLib.renderer.rules.image = function (tokens, idx, options, env, self) {
     const token = tokens[idx];
-    if (token.meta?.isGyazo || token.attrGet("gyazo")) {
-      return renderGyazoMedia(token);
+    if (token.meta?.mediaMode) {
+      return renderMarkdownMedia(token);
     }
     const src = token.attrGet("src");
     if (src) {
-      const variants = createImageVariants(src, 1000);
-      token.attrSet("src", variants.preview);
+      const media = resolveMedia(src, { mode: "image", size: 1000 });
+      token.attrSet("src", media.src);
       if (!token.attrGet("loading")) {
         token.attrSet("loading", "lazy");
       }
       if (!token.attrGet("decoding")) {
         token.attrSet("decoding", "async");
       }
-      if (variants.full && variants.full !== variants.preview) {
-        token.attrSet("data-full-src", variants.full);
-        const srcset = createImageSrcset(variants);
-        if (srcset) token.attrSet("srcset", srcset);
-        if (srcset && !token.attrGet("sizes")) {
+      token.attrSet("data-full-src", media.fullSrc);
+      if (media.srcset) {
+        token.attrSet("srcset", media.srcset);
+        if (!token.attrGet("sizes")) {
           token.attrSet("sizes", "(min-width: 768px) 720px, 100vw");
         }
-      } else {
-        token.attrSet("data-full-src", variants.preview);
       }
-      const width = variants.originalWidth || variants.width;
-      const height = variants.originalHeight || variants.height;
-      if (width && height) {
-        token.attrSet("width", String(width));
-        token.attrSet("height", String(height));
+      if (media.width && media.height) {
+        token.attrSet("width", String(media.width));
+        token.attrSet("height", String(media.height));
       }
     }
     if (token.meta?.isStandalone) {
@@ -1034,7 +1085,7 @@ export default function (eleventyConfig) {
 
   // Paired shortcode: side-by-side media + text
   // Usage (in Markdown):
-  // {% mediaRow img="https://..." alt="説明" align="left" width="33" %}
+  // {% mediaRow img="https://... {media=image}", alt="説明", align="left", width=33 %}
   // 任意のMarkdown（箇条書きなど）
   // {% mediaFooter %}画像の下に置きたいリンクや補足{% endmediaFooter %}
   // {% endmediaRow %}
@@ -1043,7 +1094,7 @@ export default function (eleventyConfig) {
   });
 
   eleventyConfig.addPairedShortcode("mediaRow", function (content, opts = {}) {
-    let { img = "", alt = "", align = "left", width = 33, gyazo = "image", mode = "" } = opts;
+    let { img = "", alt = "", align = "left", width = 33, gyazo = "", media = "", mode = "" } = opts;
     const reverse = String(align).toLowerCase() === "right";
     const safeAlt = String(alt).replace(/"/g, "&quot;");
     const footerRegex = /@@MEDIA_FOOTER_START@@([\s\S]*?)@@MEDIA_FOOTER_END@@/g;
@@ -1057,85 +1108,47 @@ export default function (eleventyConfig) {
       }
     }
 
-    // Allow braces style in img param: "https://gyazo.com/xxx {gyazo=loop}"
-    let gyazoFromBrace = null;
+    // Allow braces style in img param: "https://... {media=loop}" (compatible: {gyazo=loop})
+    let modeFromBrace = "";
     if (typeof img === "string") {
-      const m = img.match(/\{gyazo=([^}]+)\}/i);
+      const m = img.match(/\{(?:media|gyazo)=([^}]+)\}/i);
       if (m) {
-        gyazoFromBrace = m[1];
-        img = img.replace(/\s*\{gyazo=[^}]+\}\s*/i, "");
+        modeFromBrace = m[1];
+        img = img.replace(/\s*\{(?:media|gyazo)=[^}]+\}\s*/i, "");
       }
     }
 
-    const gyazoMode = (mode || gyazoFromBrace || gyazo || "image").toLowerCase();
+    const mediaMode = normalizeMediaMode(mode || modeFromBrace || media || gyazo) || "image";
 
     let mediaPart = "";
     if (img) {
-      const rawUrl = img;
-      const normalizedImg = normalizeGyazoUrl(img) || img;
-
-      // Gyazo video modes (loop/player)
-      if (gyazoMode === "loop" || gyazoMode === "player") {
-        const id = extractGyazoId(rawUrl);
-        const dims = getGyazoDimensionsFromId(id);
-        const baseWidth = dims?.width || 720;
-        const baseHeight = dims?.height || 360;
-        const aspect = dims ? `${dims.width} / ${dims.height}` : "16 / 9";
-        const height = Math.min(baseHeight, 360);
-        const scale = baseHeight ? height / baseHeight : 1;
-        const widthPx = Math.round(baseWidth * scale);
-        const source = id ? `https://i.gyazo.com/${id}.mp4` : normalizedImg;
-        const initial = gyazoMode;
-        const isPlayer = initial === "player";
-        mediaPart = `<div class="media-inline__media-stack" style="--media-inline-width:${width}%;">
-  <div class="media-inline__media">
-  <figure class="article-video article-video--${initial} article-video--gyazo" data-gyazo-toggle data-gyazo-initial="${initial}" data-gyazo-id="${id || ""}" style="--article-video-height:${height}px; --article-video-width:${widthPx}px; --article-video-aspect:${aspect};">
-    <div class="article-video__frame">
-      <video src="${source}" data-full-src="${source}" ${isPlayer ? "controls preload=\"metadata\"" : "muted loop autoplay"} playsinline></video>
-      <button type="button" class="gyazo-toggle" aria-label="Toggle Gyazo playback mode" data-loop-label="Loop" data-player-label="Player">
-        <span class="gyazo-toggle__pill"><span class="gyazo-toggle__knob"></span><span class="gyazo-toggle__text"></span></span>
-      </button>
-    </div>
-    ${safeAlt ? `<figcaption>${safeAlt}</figcaption>` : ""}
-  </figure>
-  </div>
-</div>`;
+      const resolved = resolveMedia(img, { mode: mediaMode, size: 1000 });
+      let mediaMarkup;
+      if (resolved.kind === "video") {
+        mediaMarkup = renderVideoFigure(resolved, { caption: safeAlt, maxHeight: 360 });
       } else {
-        // Default image path (Gyazo images included)
-        const variants = createImageVariants(normalizedImg, 1000);
-        const widthAttr = variants.originalWidth || variants.width;
-        const heightAttr = variants.originalHeight || variants.height;
         const attrs = [
-          `src="${variants.preview}"`,
+          `src="${escapeHTML(resolved.src)}"`,
           `alt="${safeAlt}"`,
           `loading="lazy"`,
-          `decoding="async"`
+          `decoding="async"`,
+          `data-full-src="${escapeHTML(resolved.fullSrc)}"`
         ];
-        const isGyazo = typeof normalizedImg === "string" && normalizedImg.includes("gyazo.com");
-
-        // Keep the raw Gyazo asset for the lightbox while the page uses a preview.
-        const fullSrc = isGyazo
-          ? (variants.full || variants.preview)
-          : variants.full && variants.full !== variants.preview
-            ? variants.full
-            : variants.preview;
-
-        attrs.push(`data-full-src="${fullSrc}"`);
-        const srcset = createImageSrcset(variants);
-        if (variants.full && variants.full !== variants.preview && srcset) {
-          attrs.push(`srcset="${srcset}"`);
+        if (resolved.srcset) {
+          attrs.push(`srcset="${escapeHTML(resolved.srcset)}"`);
           attrs.push(`sizes="(min-width: 900px) ${width}vw, 100vw"`);
         }
-        if (widthAttr && heightAttr) {
-          attrs.push(`width="${widthAttr}"`);
-          attrs.push(`height="${heightAttr}"`);
+        if (resolved.width && resolved.height) {
+          attrs.push(`width="${resolved.width}"`);
+          attrs.push(`height="${resolved.height}"`);
         }
-        mediaPart = `<div class="media-inline__media-stack" style="--media-inline-width:${width}%;">
+        mediaMarkup = `<img ${attrs.join(" ")}>`;
+      }
+      mediaPart = `<div class="media-inline__media-stack" style="--media-inline-width:${width}%;">
   <div class="media-inline__media">
-    <img ${attrs.join(" ")}>
+    ${mediaMarkup}
   </div>
 </div>`;
-      }
     }
 
     const renderedBody = markdownLib.render(content);

@@ -44,7 +44,7 @@
 ```markdown
 ### ノード名
 
-![](URL){gyazo=image}
+![](URL){media=image}
 
 [](/workflows/...json)
 
@@ -112,16 +112,22 @@
 - 型・パラメータ・ノード名は backtick で囲む。
   - 例: `MASK` / `IMAGE` / `delimiter` / `String (Multiline)`。
 
-## 08. 画像・動画（Gyazo）
+## 08. 画像・動画
 
-- ノードの静止画 → `{gyazo=image}`
-- UI 操作・アニメーション → `{gyazo=loop}`
-- プレイヤー再生 → `{gyazo=player}`
+`{media=...}` は表示方法の指定で、R2 / Gyazo どちらの URL でも同じように使う。
+
+- ノードの静止画 → `{media=image}`
+- UI 操作・アニメーション → `{media=loop}`
+- プレイヤー再生 → `{media=player}`
+- 既存の `{gyazo=...}` は同じ意味の互換記法として使える。
+- 新しい画像は `npm run media:put -- <file>` で R2 にアップロードし、出力された Markdown を貼る（metadata 除去と `src/_data/media.json` への登録まで自動）。
+- 動画など重いメディアは Gyazo を使ってもよい。
 
 テンプレ：
 
 ```markdown
-![](https://i.gyazo.com/hash.png){gyazo=image}
+![](https://img.comfyui.nomadoor.net/u/<hash>.png){media=image}
+![](https://gyazo.com/<id>){media=loop}
 ```
 
 ## 09. Tip・補足・注意書き

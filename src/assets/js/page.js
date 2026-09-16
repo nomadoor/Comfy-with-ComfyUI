@@ -3,7 +3,7 @@ import initAssistant from "./assistant-rail.js";
 import initLangSwitcher from "./lang-switcher.js";
 import initLightbox from "./lightbox.js";
 import initSearch from "./search.js";
-import initGyazoToggle from "./gyazo-toggle.js";
+import initMediaToggle from "./media-toggle.js";
 import initCodeCopy from "./code-copy.js";
 import initCopyJson from "./copy-json.js"; // workflow JSON copy/download
 import initWorkflowPicker from "./workflow-picker.js";
@@ -54,7 +54,7 @@ export default function initPage(root = document.getElementById("page") || docum
   profileStep("toc", () => (hasHashTarget ? initToc?.(root) : runIdle(() => initToc?.(root))));
   profileStep("heading-anchors", () => initHeadingAnchors?.(root));
   profileStep("lightbox", () => initLightbox?.(root));
-  profileStep("gyazo-toggle", () => initGyazoToggle?.(root));
+  profileStep("media-toggle", () => initMediaToggle?.(root));
   profileStep("code-copy", () => initCodeCopy?.(root));
   profileStep("copy-json", () => initCopyJson?.(root));
   profileStep("workflow-picker", () => initWorkflowPicker?.(root));

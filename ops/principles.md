@@ -33,7 +33,7 @@
 ## 6. Trust & Quality
 - CI must enforce slug uniqueness and nav integrity.
 - Tag checks apply only when tags are present (optional field).
-- Image dimension/alt checks are required for standard markdown images; Gyazo-rendered embeds (`{gyazo=image|loop}` and equivalent shortcodes) are exempt and rely on renderer/CSS-enforced layout constraints.
+- Image dimension/alt checks are required for standard markdown images; media embeds (`{media=image|loop|player}`, compatible `{gyazo=...}`, and equivalent shortcodes) are exempt and rely on renderer/CSS-enforced layout constraints.
 - Accessibility is non-negotiable: keyboard focus, ARIA labels on copy/download buttons, `prefers-reduced-motion` respected.
 - No external tracking or heavyweight dependencies; if something feels heavy, propose it here first.
 

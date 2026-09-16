@@ -1,16 +1,16 @@
 let initializedFigures = new WeakSet();
 
-function applyGyazoMode(figure, mode) {
+function applyMediaMode(figure, mode) {
   const video = figure.querySelector("video");
-  const toggle = figure.querySelector(".gyazo-toggle");
-  const labelEl = toggle?.querySelector(".gyazo-toggle__text");
+  const toggle = figure.querySelector(".media-toggle");
+  const labelEl = toggle?.querySelector(".media-toggle__text");
   if (!video || !toggle || !labelEl) return;
 
   const loopLabel = toggle.dataset.loopLabel || "Loop";
   const playerLabel = toggle.dataset.playerLabel || "Player";
   const isPlayer = mode === "player";
 
-  figure.dataset.gyazoMode = mode;
+  figure.dataset.mediaMode = mode;
   toggle.dataset.state = mode;
   toggle.setAttribute("aria-pressed", String(isPlayer));
   labelEl.textContent = isPlayer ? playerLabel : loopLabel;
@@ -30,13 +30,13 @@ function applyGyazoMode(figure, mode) {
   }
 }
 
-const initGyazoToggle = () => {
-  const figures = document.querySelectorAll("[data-gyazo-toggle]");
+const initMediaToggle = () => {
+  const figures = document.querySelectorAll("[data-media-toggle]");
   figures.forEach((figure) => {
     if (initializedFigures.has(figure)) return;
     initializedFigures.add(figure);
 
-    const toggle = figure.querySelector(".gyazo-toggle");
+    const toggle = figure.querySelector(".media-toggle");
     if (!toggle) return;
 
     const frame = figure.querySelector(".article-video__frame");
@@ -48,14 +48,14 @@ const initGyazoToggle = () => {
       });
     }
 
-    const initial = figure.getAttribute("data-gyazo-initial") === "player" ? "player" : "loop";
-    applyGyazoMode(figure, initial);
+    const initial = figure.getAttribute("data-media-initial") === "player" ? "player" : "loop";
+    applyMediaMode(figure, initial);
 
     toggle.addEventListener("click", () => {
-      const next = figure.dataset.gyazoMode === "player" ? "loop" : "player";
-      applyGyazoMode(figure, next);
+      const next = figure.dataset.mediaMode === "player" ? "loop" : "player";
+      applyMediaMode(figure, next);
     });
   });
 };
 
-export default initGyazoToggle;
+export default initMediaToggle;
