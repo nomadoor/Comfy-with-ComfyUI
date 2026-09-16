@@ -6,6 +6,27 @@ const BASE_TEST_URL =
   process.env.PLAYWRIGHT_BASE_URL || `http://127.0.0.1:${PLAYWRIGHT_PORT}`;
 
 test.describe("Layout rails", () => {
+  test("Gyazo outage notice is localized above the hero", async ({ page }) => {
+    const cases = [
+      ["ja", "一部の画像が表示されない状態について"],
+      ["en", "Some images are currently unavailable"],
+      ["zh", "部分图片目前无法显示"]
+    ];
+
+    for (const [lang, heading] of cases) {
+      await page.goto(`/${lang}/basic-workflows/sd15-basics/`);
+
+      const notice = page.locator(".site-outage-notice");
+      const hero = page.locator(".hero");
+      await expect(notice).toBeVisible();
+      await expect(notice).toContainText(heading);
+      await expect
+        .poll(() => notice.evaluate((element) => element.nextElementSibling?.classList.contains("hero")))
+        .toBe(true);
+      await expect(hero).toBeVisible();
+    }
+  });
+
   test("content pages expose WebSite and WebPage JSON-LD", async ({ page }) => {
     await page.goto("/ja/begin-with/how-to-use-this-site/");
 
@@ -80,6 +101,13 @@ test.describe("Layout rails", () => {
 
   test("Gyazo hero images always use max_size variants", async ({ page }) => {
     await page.setViewportSize({ width: 1700, height: 900 });
+    await page.route(/^https:\/\/i\.gyazo\.com\/[a-f0-9]{32}\/max_size\/\d+\.jpg$/i, async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: "image/svg+xml",
+        body: '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400"><rect width="1200" height="400" fill="#777"/></svg>'
+      });
+    });
     await page.goto("/ja/begin-with/what-is-comfyui/");
 
     const heroImage = page.locator(".hero img.hero__media");
