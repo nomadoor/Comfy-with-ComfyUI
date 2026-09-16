@@ -57,6 +57,19 @@
     "defaultGradient": "linear-gradient(135deg, #111B2F, #182745)",
     "height": 320
   },
+  "outageNotice": {
+    "active": true,
+    "title": {
+      "ja": "一部の画像が表示されない状態について",
+      "en": "Some images are currently unavailable",
+      "zh": "部分图片目前无法显示"
+    },
+    "body": {
+      "ja": "現在、Gyazo側の画像配信停止の影響により、本サイト内の一部画像が表示されない状態になっています。サイト側の不具合ではありませんが、ご不便をおかけして申し訳ありません。画像は順次、別の配信環境へ移行する予定です。",
+      "en": "Some images on this site are currently unavailable due to an interruption in image delivery from Gyazo. This is not a problem with the site itself. We apologize for the inconvenience and plan to move the images to another delivery environment gradually.",
+      "zh": "目前受 Gyazo 图片分发中断影响，本站部分图片无法显示。这不是本站自身的故障。由此带来的不便，敬请谅解。我们计划逐步将图片迁移到其他分发环境。"
+    }
+  },
   "i18n": {
     "themeToggle": {
       "ja": "テーマ切替",

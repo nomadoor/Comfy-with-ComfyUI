@@ -1417,6 +1417,45 @@ html.js .js-fallback-notice {
   flex-shrink: 0;
 }
 
+.site-outage-notice {
+  --blockquote-icon-size: 1.25rem;
+  --outage-notice-color: var(--token-property);
+  display: grid;
+  grid-template-columns: var(--blockquote-icon-size) minmax(0, 1fr);
+  column-gap: 0.75rem;
+  align-items: start;
+  margin: 0 0 var(--space-md);
+  padding: 0.78rem 0.9rem 0.78rem 1rem;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--outage-notice-color) 24%, var(--color-reader));
+  color: color-mix(in srgb, var(--color-text) 92%, var(--color-heading));
+  font-style: normal;
+}
+
+.site-outage-notice__icon {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: var(--blockquote-icon-size);
+  line-height: 1.5;
+}
+
+.site-outage-notice__title,
+.site-outage-notice__body {
+  grid-column: 2;
+  margin: 0;
+}
+
+.site-outage-notice__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.site-outage-notice__body {
+  margin-top: var(--space-xs);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
 
 .hero {
   position: relative;

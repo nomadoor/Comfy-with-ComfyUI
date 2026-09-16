@@ -11,7 +11,7 @@ Some Gyazo-hosted images used throughout the site are temporarily unavailable. R
 
 - Show one compact, localized notice immediately above the shared hero on page layouts.
 - State that the missing images are caused by Gyazo-side image delivery being unavailable, apologize for the inconvenience, and explain that images will be migrated gradually.
-- Use existing color and spacing tokens so the notice remains visible without looking like a promotional banner.
+- Reuse the article blockquote layout and typography with a warm status surface and a decorative 🚨 icon, so the notice remains visible without looking like a promotional banner.
 - Keep the notice controlled by shared site data so it can be removed cleanly after the migration.
 
 ## Scope
@@ -19,3 +19,5 @@ Some Gyazo-hosted images used throughout the site are temporarily unavailable. R
 - `src/_data/site.json`
 - `src/includes/hero.njk`
 - `src/assets/css/site.css`
+- `ops/style-design.md`
+- `tests/layout.spec.ts`

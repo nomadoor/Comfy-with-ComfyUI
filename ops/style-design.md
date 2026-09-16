@@ -73,6 +73,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - Hero content is flex-centered both vertically and horizontally; remove all default margins (H1 included).
 - Apply `--radius-md` to the hero container and imagery. Tag chips still appear only on **basic-workflows** pages and link to the AI Capabilities slug.
 - Images remain tinted with `filter: grayscale(1) brightness(0.6)` inside the hero to match the mock.
+- Temporary site-wide service notices appear immediately above the hero. Reuse the article blockquote layout and typography with a warm status surface and a decorative 🚨 icon, and stay compact enough not to compete with the page title.
 
 ## 6. Article Body
 - The central content column may use a subtle reader surface drawn in normal document flow. It is not a card: avoid borders, shadows, and decorative paper motifs.
