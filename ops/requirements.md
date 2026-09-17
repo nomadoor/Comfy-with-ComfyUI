@@ -153,8 +153,8 @@
 - `og:title` / `twitter:title` should use page `title`.
 - `og:description` / `twitter:description` should use page `summary` (fallback to site default).
 - `og:url` should be absolute, built from `site.url` + `page.url`.
-- `og:image` / `twitter:image` should use the page hero image if it is an image (not `.mp4`).
-  - If the hero is a video or missing, fall back to `site.ogImage`.
+- `og:image` / `twitter:image` should use the hero media's resolved still image (`resolveMedia().poster`): the image itself for image heroes, the poster for video heroes.
+  - If the hero is missing or a video has no poster, fall back to `site.ogImage`.
 - `site.url` and `site.ogImage` live in `src/_data/site.json`.
 
 ## 18. i18n SEO (Canonical / Hreflang / Sitemap)

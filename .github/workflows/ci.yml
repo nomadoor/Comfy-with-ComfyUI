@@ -36,7 +36,11 @@ jobs:
       - name: Build site
         run: npm run build
 
-      # 6. 簡易E2E（Playwright）
+      # 6. ビルド出力の検査（fixture の混入・未解決の /media/ 参照がないこと）
+      - name: Check build output
+        run: npm run check:build
+
+      # 7. 簡易E2E（Playwright）
       #    ブラウザを最小限だけ入れて smoke を回す
       - name: Install Playwright browsers (Chromium only)
         run: npx playwright install --with-deps chromium
