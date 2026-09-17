@@ -1,10 +1,10 @@
 {
   "fixtures/r2_image.png": {
-    "key": "images/8934448705a26ed8.png",
+    "key": "images/c0c91b41afe537e7.webp",
     "width": 320,
     "height": 180,
-    "type": "image/png",
-    "bytes": 839
+    "type": "image/webp",
+    "bytes": 2926
   },
   "fixtures/r2_video.mp4": {
     "key": "videos/23d3bb96df2ebf63.mp4",

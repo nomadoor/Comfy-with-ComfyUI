@@ -3,7 +3,7 @@ import path from "node:path";
 import fg from "fast-glob";
 import {
   FIXTURE_NAME_PREFIX,
-  TYPE_BY_EXTENSION,
+  STORED_TYPE_BY_EXTENSION,
   extensionOf,
   logicalNameFromRef,
   validateKey,
@@ -24,6 +24,16 @@ const advisories = [];
 
 if (!host) failures.push("src/_data/site.json: media.host is required");
 if (!config.bucket) failures.push("src/_data/site.json: media.bucket is required");
+// Transformation presets must match the WAF allowlist (see npm run media:waf-expression).
+const TRANSFORM_PRESETS = ["thumbnail", "article", "og"];
+for (const preset of TRANSFORM_PRESETS) {
+  const value = config.transforms?.[preset];
+  if (typeof value !== "string" || !/^[a-z-]+=[a-z0-9-]+(?:,[a-z-]+=[a-z0-9-]+)*$/.test(value)) {
+    failures.push(`src/_data/site.json: media.transforms.${preset} must be a comma-separated option string`);
+  } else if (!value.split(",").includes("onerror=redirect")) {
+    failures.push(`src/_data/site.json: media.transforms.${preset} must include onerror=redirect`);
+  }
+}
 
 const isPositiveInt = (value) => Number.isInteger(value) && value > 0;
 
@@ -39,7 +49,7 @@ function checkManifest(file, manifest, { fixtures }) {
     if (fixtures && !name.startsWith(FIXTURE_NAME_PREFIX)) failures.push(`${label}: fixture names must start with ${FIXTURE_NAME_PREFIX}`);
     if (!fixtures && name.startsWith(FIXTURE_NAME_PREFIX)) failures.push(`${label}: ${FIXTURE_NAME_PREFIX} names belong in tests/fixtures/media/media.json`);
 
-    const expectedType = TYPE_BY_EXTENSION[extensionOf(name)];
+    const expectedType = STORED_TYPE_BY_EXTENSION[extensionOf(name)];
     if (expectedType && entry?.type !== expectedType) failures.push(`${label}: type must be ${expectedType} (got ${entry?.type})`);
     const keyError = validateKey(entry?.key, entry?.type);
     if (keyError) failures.push(`${label}: ${keyError}`);

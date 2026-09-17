@@ -5,7 +5,7 @@ import MarkdownIt from "markdown-it";
 import fg from "fast-glob";
 import Prism from "prismjs";
 import loadLanguages from "prismjs/components/index.js";
-import { logicalNameFromRef, mediaRef, publicUrl } from "./scripts/lib/media-names.mjs";
+import { logicalNameFromRef, mediaRef, publicUrl, transformUrl } from "./scripts/lib/media-names.mjs";
 
 const GYAZO_HOST = "i.gyazo.com";
 const CACHE_DIR = ".cache";
@@ -35,6 +35,11 @@ try {
 const WORKFLOW_I18N = siteData?.i18n?.workflow || {};
 const DEFAULT_LANG = siteData?.defaultLang || "ja";
 const MEDIA_HOST = siteData?.media?.host || "";
+// Cloudflare Image Transformations presets. They must match the WAF allowlist exactly
+// (print it with `npm run media:waf-expression`).
+const MEDIA_TRANSFORMS = siteData?.media?.transforms || {};
+// Cards request size <= this and get the thumbnail preset; everything else uses the article preset.
+const MEDIA_THUMBNAIL_MAX_SIZE = 640;
 const WORKFLOW_ROOT = path.join(process.cwd(), "src", "workflows");
 const WORKFLOW_LABELS = {
   copyLabel: "Copy",
@@ -501,8 +506,18 @@ function isVideoUrl(url = "") {
   return /\.mp4(?:$|[?#])/i.test(url);
 }
 
-function resolveManagedMedia(name, kind) {
-  const empty = { kind, src: "", fullSrc: "", width: undefined, height: undefined, srcset: "", poster: "" };
+function managedImageUrls(entry, size) {
+  const preset = size <= MEDIA_THUMBNAIL_MAX_SIZE ? MEDIA_TRANSFORMS.thumbnail : MEDIA_TRANSFORMS.article;
+  return {
+    display: preset ? transformUrl(MEDIA_HOST, preset, entry.key) : publicUrl(MEDIA_HOST, entry.key),
+    og: MEDIA_TRANSFORMS.og ? transformUrl(MEDIA_HOST, MEDIA_TRANSFORMS.og, entry.key) : publicUrl(MEDIA_HOST, entry.key)
+  };
+}
+
+// R2 stores one object per logical name: a full-size WebP for images (resized variants come from
+// transformation presets) or the mp4 itself for videos.
+function resolveManagedMedia(name, kind, size) {
+  const empty = { kind, src: "", fullSrc: "", width: undefined, height: undefined, srcset: "", poster: "", og: "" };
   const entry = mediaManifest[name];
   if (!entry) {
     reportMissingMedia(`${mediaRef(name)} is not registered in src/_data/media.json`);
@@ -512,14 +527,22 @@ function resolveManagedMedia(name, kind) {
     reportMissingMedia("media.host is missing in src/_data/site.json");
     return empty;
   }
-  const url = publicUrl(MEDIA_HOST, entry.key);
-  let poster = kind === "image" ? url : "";
-  if (kind === "video" && entry.poster) {
+  const objectUrl = publicUrl(MEDIA_HOST, entry.key);
+  const base = { kind, width: entry.width, height: entry.height, srcset: "" };
+
+  if (kind === "image") {
+    const { display, og } = managedImageUrls(entry, size);
+    return { ...base, src: display, fullSrc: objectUrl, poster: display, og };
+  }
+
+  let poster = "";
+  let og = "";
+  if (entry.poster) {
     const posterEntry = mediaManifest[entry.poster];
-    if (posterEntry) poster = publicUrl(MEDIA_HOST, posterEntry.key);
+    if (posterEntry) ({ display: poster, og } = managedImageUrls(posterEntry, size));
     else reportMissingMedia(`poster ${mediaRef(entry.poster)} of ${mediaRef(name)} is not registered`);
   }
-  return { kind, src: url, fullSrc: url, width: entry.width, height: entry.height, srcset: "", poster };
+  return { ...base, src: objectUrl, fullSrc: objectUrl, poster, og };
 }
 
 function resolveGyazoMedia(url, kind, size) {
@@ -548,8 +571,9 @@ function resolveGyazoMedia(url, kind, size) {
  * @param {{ mode?: "image"|"loop"|"player", size?: number }} options
  *   Without `mode`, video vs. image is inferred from the manifest type or the `.mp4` extension.
  * @returns {{ kind: "image"|"video", mode: string, src: string, fullSrc: string, width?: number,
- *   height?: number, srcset: string, poster: string }} `poster` is a still image URL usable for
- *   thumbnails/OGP ("" when none is known).
+ *   height?: number, srcset: string, poster: string, og: string }} `poster` is a still image URL for
+ *   thumbnails and `og` one for social cards ("" when none is known). For `/media/` images, `src` is a
+ *   thumbnail (size <= 640) or article transformation and `fullSrc` is the full-size WebP.
  */
 function resolveMedia(url = "", { mode, size = 1000 } = {}) {
   const source = typeof url === "string" ? url.trim() : "";
@@ -564,13 +588,13 @@ function resolveMedia(url = "", { mode, size = 1000 } = {}) {
 
   let media;
   if (logicalName !== null) {
-    media = resolveManagedMedia(logicalName, kind);
+    media = resolveManagedMedia(logicalName, kind, size);
   } else if (host.endsWith("gyazo.com")) {
     media = resolveGyazoMedia(source, kind, size);
   } else {
     media = { kind, src: source, fullSrc: source, width: undefined, height: undefined, srcset: "", poster: kind === "image" ? source : "" };
   }
-  return { ...media, mode: resolvedMode };
+  return { og: media.poster, ...media, mode: resolvedMode };
 }
 
 function renderVideoFigure(media, { caption = "", maxHeight = 320 } = {}) {

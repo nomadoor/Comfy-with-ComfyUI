@@ -76,3 +76,6 @@ Gyazo loop in mediaRow.
 {% endmediaRow %}
 
 </div>
+
+{% set cardMedia = "/media/fixtures/r2_image.png" | resolveMedia({ size: 480 }) %}
+<div data-fixture="card-resolution" data-src="{{ cardMedia.src }}" data-full-src="{{ cardMedia.fullSrc }}" data-og="{{ cardMedia.og }}" hidden></div>
