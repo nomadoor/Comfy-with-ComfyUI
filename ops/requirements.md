@@ -115,7 +115,7 @@
 - `tags[]` は **任意**。使う場合は `_data/tagIndex.js` 由来で最大5件。`ai-capabilities` は tags なしが既定。
 - All standard markdown `<img>` elements need width/height attributes or CSS aspect enforcement.
 - Exception: media embeds (`![](...){media=image|loop|player}`, compatible `{gyazo=...}`, and equivalent `mediaRow` usage) are allowed without per-image width/height in Markdown because the renderer takes dimensions from `src/_data/media.json` (R2) or the Gyazo metadata cache and CSS enforces media caps.
-- R2 media must be recorded in `src/_data/media.json` and match its display mode (`npm run check:media`). See `ops/adr/2026-09-17-media-layer-r2-gyazo.md`.
+- R2 media is referenced as `/media/<logical name>` (reserved virtual namespace), must be registered in `src/_data/media.json`, and must match its display mode; physical R2 URLs must not be written in content or data (`npm run check:media`). See `ops/adr/2026-09-17-media-layer-r2-gyazo.md`.
 - Update README/ADRs whenever IA or UX changes.
 
 ## 12. Deliverables

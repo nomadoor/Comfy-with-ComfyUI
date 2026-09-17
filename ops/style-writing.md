@@ -114,19 +114,22 @@
 
 ## 08. 画像・動画
 
-`{media=...}` は表示方法の指定で、R2 / Gyazo どちらの URL でも同じように使う。
+`{media=...}` は表示方法の指定で、R2（`/media/...`）/ Gyazo どちらでも同じように使う。
 
 - ノードの静止画 → `{media=image}`
 - UI 操作・アニメーション → `{media=loop}`
 - プレイヤー再生 → `{media=player}`
-- 既存の `{gyazo=...}` は同じ意味の互換記法として使える。
-- 新しい画像は `npm run media:put -- <file>` で R2 にアップロードし、出力された Markdown を貼る（metadata 除去と `src/_data/media.json` への登録まで自動）。
-- 動画など重いメディアは Gyazo を使ってもよい。
+- 既存の `{gyazo=...}` は同じ意味の互換記法。新規では使わない。
+- R2 の画像は `/media/<論理名>` で参照する。論理名は原本置き場（`COMFY_MEDIA_ORIGINALS`）からの相対パス（例: `flux-2-klein/001.png`）。小文字 ASCII・`[a-z0-9._-]` と `/` のみ。
+- 新しい画像は原本置き場に置き、`npm run media:put -- flux-2-klein/001.png` を実行して、出力された Markdown を貼る（metadata 除去・R2 アップロード・`src/_data/media.json` 登録まで自動）。
+- `img.comfyui.nomadoor.net/...` の物理 URL は記事に直接書かない（`check:media` でエラー）。
+- 公開後の論理名は安定 ID として扱い、安易に変えない。
+- 動画など重いメディアは Gyazo を使ってもよい（URL を直接書く）。
 
 テンプレ：
 
 ```markdown
-![](https://img.comfyui.nomadoor.net/u/<hash>.png){media=image}
+![](/media/flux-2-klein/001.png){media=image}
 ![](https://gyazo.com/<id>){media=loop}
 ```
 
