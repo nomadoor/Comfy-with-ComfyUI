@@ -18,9 +18,14 @@ export class MediaVideoError extends Error {}
 // Codecs every target browser can play from an mp4 container.
 const VIDEO_CODECS = new Set(["h264"]);
 const AUDIO_CODECS = new Set(["aac", "mp3", "opus"]);
-// Container/stream tags that ffmpeg writes structurally and that carry no user data.
+// Container tags that ffmpeg writes structurally, and the only stream tag values it writes by default.
+// Any other key or value could carry user data (paths, prompts) and is rejected.
 const ALLOWED_FORMAT_TAGS = new Set(["major_brand", "minor_version", "compatible_brands"]);
-const ALLOWED_STREAM_TAGS = new Set(["language", "handler_name", "vendor_id"]);
+const ALLOWED_STREAM_TAG_VALUES = {
+  language: new Set(["und"]),
+  handler_name: new Set(["VideoHandler", "SoundHandler"]),
+  vendor_id: new Set(["[0][0][0][0]"])
+};
 
 function run(command, args, { binary = false } = {}) {
   const result = spawnSync(command, args, { encoding: binary ? null : "utf8", maxBuffer: 1024 * 1024 * 1024 });
@@ -62,7 +67,11 @@ function assertPlayable(info) {
 
 function assertNoMetadata(info) {
   const extraFormatTags = Object.keys(info.format?.tags || {}).filter((tag) => !ALLOWED_FORMAT_TAGS.has(tag));
-  const extraStreamTags = info.streams.flatMap((stream) => Object.keys(stream.tags || {}).filter((tag) => !ALLOWED_STREAM_TAGS.has(tag)));
+  const extraStreamTags = info.streams.flatMap((stream) =>
+    Object.entries(stream.tags || {})
+      .filter(([tag, value]) => !ALLOWED_STREAM_TAG_VALUES[tag]?.has(value))
+      .map(([tag, value]) => `${tag}=${value}`)
+  );
   const extra = [...new Set([...extraFormatTags, ...extraStreamTags])];
   if (extra.length) throw new MediaVideoError(`動画の出力に metadata が残っています（${extra.join(", ")}）`);
   if ((info.chapters || []).length) throw new MediaVideoError("動画の出力にチャプターが残っています");

@@ -63,7 +63,7 @@ function checkManifest(file, manifest, { fixtures }) {
     if (!isPositiveInt(entry?.width) || !isPositiveInt(entry?.height)) failures.push(`${label}: width/height must be positive integers`);
     if (!isPositiveInt(entry?.bytes)) failures.push(`${label}: bytes must be a positive integer`);
 
-    if (entry?.source !== undefined && !/^[0-9a-f]{16}$/.test(entry.source)) {
+    if (entry?.source !== undefined && (typeof entry.source !== "string" || !/^[0-9a-f]{16}$/.test(entry.source))) {
       failures.push(`${label}: source must be 16 hex characters (hash of the local original)`);
     }
 

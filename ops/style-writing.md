@@ -127,7 +127,7 @@
   3. `npm run dev` の localhost で確認する（未アップロードの原本はそのままプレビューされる）
   4. コミットすると pre-commit フックが `media:sync` を実行し、原寸 WebP（動画は metadata を除いた mp4 と poster）への変換・R2 アップロード・`src/_data/media.json` 登録を自動で行う
 - サムネイル・記事用・OGP 用のサイズは配信時に自動生成される。原本は原本置き場にだけ置き、R2 には上げない。
-- 原本を差し替えた場合も、コミット時に自動で新しい内容がアップロードされる。
+- 原本を差し替えた場合も、記事などと一緒にコミットすれば自動で新しい内容がアップロードされる。原本だけを差し替えて記事を変えない場合は、フックが動かないので `npm run media:sync` を実行し、更新された `src/_data/media.json` をコミットする。
 - `media.comfyui.nomadoor.net/...` の物理 URL は記事に直接書かない（`check:media` でエラー）。
 - 原本は `<セクション>/<記事 slug>/<ファイル名>` に置く（workflow JSON と同じ構成）。フォルダは既存の記事 slug をそのまま使う。
 - ファイル名は小文字 snake_case で、単体で何の画像か分かる名前にする（例: `minimax_h3_audio_driven_i2va.png`。`audio_driven_i2va.png` まで短くしない）。記事タイトルや本文では正式表記（`MiniMax H3` など）を使う。

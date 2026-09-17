@@ -1,30 +1,49 @@
 #!/usr/bin/env node
 // Upload media referenced by the site that is new or changed in COMFY_MEDIA_ORIGINALS.
 //
-//   npm run media:sync [-- --dry-run] [-- --force]
+//   npm run media:sync [-- --dry-run] [-- --force] [-- --staged]
 //
-// Runs automatically from the git pre-commit hook (.githooks/pre-commit). Authenticate once with
+// Runs automatically from the git pre-commit hook (.githooks/pre-commit) with --staged, which reads
+// references from the git index (the snapshot being committed) instead of the working tree.
+// Authenticate once with
 // `npx wrangler login`. Videos need ffmpeg (`sudo apt install ffmpeg`).
 
+import crypto from "node:crypto";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { ORIGINALS_ENV, originalsRootFromEnv } from "./lib/media-local-preview.mjs";
-import { PRODUCTION_MANIFEST, productionSourceFiles, referencesInFiles } from "./lib/media-refs.mjs";
+import { PRODUCTION_MANIFEST, productionSourceFiles, referencesInFiles, stagedReferences } from "./lib/media-refs.mjs";
 import { syncMedia } from "./lib/media-sync.mjs";
 
 const CACHE_CONTROL = "public, max-age=31536000, immutable";
 const args = new Set(process.argv.slice(2));
 const dryRun = args.has("--dry-run");
 const force = args.has("--force");
+const staged = args.has("--staged");
 
 function formatBytes(bytes) {
   return bytes >= 1024 * 1024 ? `${(bytes / 1024 / 1024).toFixed(2)}MB` : `${Math.round(bytes / 1024)}KB`;
 }
 
-function uploadWithWrangler(bucket) {
-  return (key, data, type) => {
+// Keys are content hashes, so an existing object whose bytes hash to its key is exactly what we would
+// upload. Treat it as uploaded (Bucket Lock rejects overwriting it), which makes retries safe after a
+// partial failure such as a video uploaded but its poster not.
+async function remoteObjectMatchesKey(host, key) {
+  try {
+    const response = await fetch(`https://${host}/${key}`);
+    if (!response.ok) return false;
+    const body = Buffer.from(await response.arrayBuffer());
+    const expected = key.match(/\/([0-9a-f]{16})\./)?.[1];
+    return crypto.createHash("sha256").update(body).digest("hex").slice(0, 16) === expected;
+  } catch {
+    return false;
+  }
+}
+
+function uploadWithWrangler(bucket, host) {
+  return async (key, data, type) => {
     const tmpFile = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "media-sync-")), path.basename(key));
     fs.writeFileSync(tmpFile, data);
     try {
@@ -34,6 +53,10 @@ function uploadWithWrangler(bucket) {
         { encoding: "utf8" }
       );
       if (result.status !== 0) {
+        if (await remoteObjectMatchesKey(host, key)) {
+          console.log(`[media:sync] ${key} は R2 に同じ内容で存在するため、アップロード済みとして扱います`);
+          return;
+        }
         throw new Error(`R2 へのアップロードに失敗しました（${key}）: ${String(result.stderr || result.stdout).trim().split("\n").slice(-3).join(" / ")}`);
       }
     } finally {
@@ -48,12 +71,12 @@ function saveManifest(manifest) {
 }
 
 const { media: config = {} } = JSON.parse(fs.readFileSync("src/_data/site.json", "utf8"));
-if (!config.bucket) {
-  console.error("src/_data/site.json に media.bucket がありません");
+if (!config.bucket || !config.host) {
+  console.error("src/_data/site.json に media.bucket / media.host がありません");
   process.exit(1);
 }
 const manifest = JSON.parse(fs.readFileSync(PRODUCTION_MANIFEST, "utf8"));
-const references = referencesInFiles(await productionSourceFiles());
+const references = staged ? stagedReferences() : referencesInFiles(await productionSourceFiles());
 const root = originalsRootFromEnv();
 if (!root) console.warn(`[media:sync] ${ORIGINALS_ENV} が未設定か存在しません。登録済みのメディアだけ確認します。`);
 
@@ -63,7 +86,7 @@ const { results, errors } = await syncMedia({
   root,
   dryRun,
   force,
-  upload: uploadWithWrangler(config.bucket),
+  upload: uploadWithWrangler(config.bucket, config.host),
   save: saveManifest
 });
 

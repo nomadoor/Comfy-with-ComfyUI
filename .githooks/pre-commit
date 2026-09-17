@@ -9,7 +9,8 @@ if ! git diff --cached --name-only --diff-filter=ACMR | grep -qE '^src/(content|
 fi
 
 echo "[pre-commit] media:sync"
-if ! node scripts/media-sync.mjs; then
+# --staged: read references from the index, so unstaged edits cannot change what gets uploaded/recorded.
+if ! node scripts/media-sync.mjs --staged; then
   echo "[pre-commit] media:sync failed; commit aborted (fix the errors above, or SKIP_MEDIA_SYNC=1 to bypass)" >&2
   exit 1
 fi

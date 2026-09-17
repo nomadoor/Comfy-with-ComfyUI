@@ -112,7 +112,8 @@ export async function syncMedia({ manifest, references, root, upload, save, dryR
     }
     const sameObjects = current?.key === next.key && (!converted.poster || typeof next.poster === "string" || current?.poster?.key === next.poster.key);
     const status = !current ? "added" : sameObjects ? "source-updated" : "replaced";
-    const toUpload = converted.objects.filter((object) => force || !existingKeys.has(object.key));
+    const referencedKeys = new Set([next.key, typeof next.poster === "object" ? next.poster.key : undefined]);
+    const toUpload = converted.objects.filter((object) => referencedKeys.has(object.key) && (force || !existingKeys.has(object.key)));
 
     results.push({
       name,

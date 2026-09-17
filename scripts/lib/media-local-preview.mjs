@@ -21,12 +21,22 @@ export function originalsRootFromEnv(env = process.env) {
   return root && fs.existsSync(root) ? fs.realpathSync(root) : "";
 }
 
-/** Absolute path of a logical name inside the originals root, or "" when it is invalid or missing. */
+/**
+ * Canonical path of a logical name inside the originals root, or "" when it is invalid, missing, or
+ * resolves outside the root (for example through a symbolic link).
+ */
 export function originalPath(root, name) {
   if (!root || validateLogicalName(name)) return "";
-  const file = path.join(root, ...name.split("/"));
-  if (!file.startsWith(root + path.sep) || !fs.existsSync(file)) return "";
-  return file;
+  let canonicalRoot;
+  let canonicalFile;
+  try {
+    canonicalRoot = fs.realpathSync(root);
+    canonicalFile = fs.realpathSync(path.join(canonicalRoot, ...name.split("/")));
+  } catch {
+    return "";
+  }
+  if (!canonicalFile.startsWith(canonicalRoot + path.sep) || !fs.statSync(canonicalFile).isFile()) return "";
+  return canonicalFile;
 }
 
 /** First 16 hex chars of sha256 over the original file, cached by path, size, and mtime. */
@@ -34,7 +44,17 @@ export function sourceHash(file) {
   const stat = fs.statSync(file);
   const cacheKey = `${file}:${stat.size}:${stat.mtimeMs}`;
   if (!hashCache.has(cacheKey)) {
-    hashCache.set(cacheKey, crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex").slice(0, 16));
+    // Read in chunks so large videos are never buffered whole.
+    const hash = crypto.createHash("sha256");
+    const chunk = Buffer.alloc(1024 * 1024);
+    const fd = fs.openSync(file, "r");
+    try {
+      let bytesRead;
+      while ((bytesRead = fs.readSync(fd, chunk, 0, chunk.length, null)) > 0) hash.update(chunk.subarray(0, bytesRead));
+    } finally {
+      fs.closeSync(fd);
+    }
+    hashCache.set(cacheKey, hash.digest("hex").slice(0, 16));
   }
   return hashCache.get(cacheKey);
 }

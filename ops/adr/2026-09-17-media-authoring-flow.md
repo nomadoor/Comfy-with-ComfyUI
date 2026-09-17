@@ -25,6 +25,7 @@ Uploading during the Cloudflare Pages / CI build is not possible: originals live
 
 ### Dev server preview
 
+- Originals are hashed in chunks (large videos are not buffered whole). Paths are resolved canonically and must stay inside the canonical originals root, so symbolic links cannot expose files outside it.
 - In `eleventy --serve` / `--watch`, `resolveMedia()` renders a `/media/` reference from the local original when it is not registered or when the original changed since upload (`source` differs). The URL is `/__media-originals/<logical name>`, served by an Eleventy dev server middleware (`scripts/lib/media-local-preview.mjs`) with Range support and `Cache-Control: no-store`. Paths are validated as logical names and must resolve inside the originals root.
 - Image dimensions come from the PNG/JPEG header; video previews use the default aspect until uploaded.
 - Production builds never use the preview and still fail on unregistered names. Playwright's `dev:test` clears `COMFY_MEDIA_ORIGINALS` so tests do not depend on local files.
@@ -41,14 +42,15 @@ Uploading during the Cloudflare Pages / CI build is not possible: originals live
   - `source` changed, different public bytes → upload the new object and update the entry (`replaced`; the old object stays in R2);
   - original missing → keep a registered entry, or fail for an unregistered one.
 - Images: full-size WebP q90 (`scripts/lib/media-image.mjs`). Videos: see below.
-- Objects already referenced by any entry are not uploaded again (Bucket Lock rejects overwrites). `media.json` is written after each entry so uploaded objects are never left unrecorded.
+- Only objects referenced by the new entry are uploaded (a generated poster is skipped when a logical-name poster is kept). Objects already referenced by any entry are not uploaded again (Bucket Lock rejects overwrites). If an upload fails but the public object already exists with bytes matching its content-hash key, it is treated as uploaded, so a retry after a partial failure (e.g. video uploaded, poster not) succeeds. `media.json` is written after each completed entry.
 - `media:put` and `scripts/media-upload.mjs` are removed.
 
 ### Pre-commit hook
 
-- `.githooks/pre-commit` runs `media:sync` when staged files include `src/content`, `src/_data`, `src/includes`, `src/layouts`, or top-level `src/*.md|njk`, then stages `src/_data/media.json`. A failed sync aborts the commit; `SKIP_MEDIA_SYNC=1` bypasses it once.
+- `.githooks/pre-commit` runs `media:sync --staged` (references are read from the git index, so unstaged edits cannot change what is uploaded or recorded) when staged files include `src/content`, `src/_data`, `src/includes`, `src/layouts`, or top-level `src/*.md|njk`, then stages `src/_data/media.json`. A failed sync aborts the commit; `SKIP_MEDIA_SYNC=1` bypasses it once.
 - `npm install` runs `scripts/install-git-hooks.mjs` (the `prepare` script), which sets `core.hooksPath=.githooks`; it is a no-op on CI, Cloudflare Pages, or outside a git work tree.
-- The sync reads working-tree files, not only staged content; uploads happen at commit time (not on save) because R2 objects are public and protected by Bucket Lock for 7 days.
+- Uploads happen at commit time (not on save) because R2 objects are public and protected by Bucket Lock for 7 days.
+- Replacing only an original (no tracked file changes) does not trigger the hook: run `npm run media:sync` and commit the updated `media.json`.
 
 ### Video (mp4)
 
@@ -56,7 +58,7 @@ Uploading during the Cloudflare Pages / CI build is not possible: originals live
 
 - Accept mp4 with one H.264 video stream and AAC / MP3 / Opus audio; other codecs fail with a message to convert first.
 - `ffmpeg -map 0:v:0 -map 0:a? -map_metadata -1 -map_chapters -1 -c copy -movflags +faststart` with bitexact flags: streams are copied without re-encoding, metadata (including ComfyUI workflow tags), chapters, and other streams are removed, and output is deterministic.
-- Verify with ffprobe that only structural tags remain (`major_brand`, `minor_version`, `compatible_brands`; stream `language`, `handler_name`, `vendor_id`).
+- Verify with ffprobe that only structural tags remain: format `major_brand`, `minor_version`, `compatible_brands`, and stream tags with ffmpeg's default values only (`language=und`, `handler_name=VideoHandler|SoundHandler`, `vendor_id=[0][0][0][0]`).
 - Upload as `videos/<hash>.mp4` (`video/mp4`). The first frame becomes a full-size WebP poster stored as `images/<hash>.webp` and recorded inline:
 
 ```json

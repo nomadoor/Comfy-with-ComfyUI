@@ -3,6 +3,8 @@ import os from "node:os";
 import path from "node:path";
 import http from "node:http";
 import { pathToFileURL } from "node:url";
+import { spawnSync } from "node:child_process";
+import crypto from "node:crypto";
 import sharp from "sharp";
 import { test, expect } from "./support/test";
 
@@ -35,6 +37,22 @@ test.describe("local preview", () => {
     expect(localPreview(root, NAME, { key: "images/0000000000000000.webp" })).toBeNull();
     expect(localPreview(root, "basic-workflows/example/missing.png", undefined)).toBeNull();
     expect(localPreview("", NAME, undefined)).toBeNull();
+  });
+
+  test("symbolic links cannot escape the originals root; hashing reads in chunks", async () => {
+    const { originalPath, sourceHash } = await lib("media-local-preview.mjs");
+    const { root, file } = await makeOriginals();
+    const outside = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "media-outside-")), "secret.png");
+    fs.writeFileSync(outside, "TOP SECRET");
+    fs.symlinkSync(outside, path.join(root, "basic-workflows", "example", "leak.png"));
+    expect(originalPath(root, "basic-workflows/example/leak.png")).toBe("");
+    // A link that stays inside the root is still allowed.
+    fs.symlinkSync(file, path.join(root, "basic-workflows", "example", "alias.png"));
+    expect(originalPath(root, "basic-workflows/example/alias.png")).toBe(file);
+
+    const large = path.join(root, "basic-workflows", "example", "large.mp4");
+    fs.writeFileSync(large, crypto.randomBytes(3 * 1024 * 1024 + 123));
+    expect(sourceHash(large)).toBe(crypto.createHash("sha256").update(fs.readFileSync(large)).digest("hex").slice(0, 16));
   });
 
   test("middleware serves originals with ranges and rejects invalid paths", async () => {
@@ -134,6 +152,31 @@ test.describe("media:sync", () => {
   });
 });
 
+test.describe("staged references", () => {
+  test("reads the git index, ignoring unstaged edits and untracked files", async () => {
+    const repo = fs.mkdtempSync(path.join(os.tmpdir(), "media-staged-"));
+    const git = (...args: string[]) => {
+      const result = spawnSync("git", args, { cwd: repo, encoding: "utf8" });
+      expect(result.status, result.stderr).toBe(0);
+    };
+    git("init", "-q");
+    fs.mkdirSync(path.join(repo, "src", "content", "ja"), { recursive: true });
+    const article = path.join(repo, "src", "content", "ja", "page.md");
+    fs.writeFileSync(article, "![](/media/basic-workflows/example/staged.png){media=image}\n");
+    git("add", "src/content/ja/page.md");
+    // Unstaged edit removes the reference; an untracked draft adds another.
+    fs.writeFileSync(article, "no media here\n");
+    fs.writeFileSync(path.join(repo, "src", "content", "ja", "draft.md"), "![](/media/basic-workflows/example/untracked.png){media=image}\n");
+
+    const script = `import(${JSON.stringify(pathToFileURL(path.resolve("scripts", "lib", "media-refs.mjs")).href)}).then((m) => console.log(JSON.stringify(m.stagedReferences())))`;
+    const result = spawnSync("node", ["--input-type=module", "-e", script], { cwd: repo, encoding: "utf8" });
+    expect(result.status, result.stderr).toBe(0);
+    expect(JSON.parse(result.stdout)).toEqual([
+      { file: "src/content/ja/page.md", ref: "/media/basic-workflows/example/staged.png", mode: "image" }
+    ]);
+  });
+});
+
 test.describe("video preparation", () => {
   test("mp4 keeps streams, drops metadata, and yields a WebP poster", async () => {
     const { hasFfmpeg, prepareVideo, probe } = await lib("media-video.mjs");
@@ -141,7 +184,6 @@ test.describe("video preparation", () => {
 
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), "media-video-test-"));
     const input = path.join(dir, "input.mp4");
-    const { spawnSync } = await import("node:child_process");
     const made = spawnSync("ffmpeg", [
       "-v", "error", "-y", "-i", path.resolve("tests", "fixtures", "media", "r2_video.mp4"), "-c", "copy",
       "-metadata", 'comment={"workflow":{"nodes":[]}}', "-metadata", "title=secret prompt", input
@@ -158,9 +200,48 @@ test.describe("video preparation", () => {
     expect(first.poster.type).toBe("image/webp");
     expect([first.poster.width, first.poster.height]).toEqual([32, 32]);
 
+    // Per-stream metadata with user data is not carried over either.
+    const streamTagged = path.join(dir, "stream-tagged.mp4");
+    expect(spawnSync("ffmpeg", [
+      "-v", "error", "-y", "-i", path.resolve("tests", "fixtures", "media", "r2_video.mp4"), "-c", "copy",
+      "-metadata:s:v:0", "handler_name=C:/Users/me/secret handler", "-metadata:s:v:0", "language=jpn", streamTagged
+    ]).status).toBe(0);
+    const cleaned = await prepareVideo(streamTagged);
+    const cleanedFile = path.join(dir, "stream-cleaned.mp4");
+    fs.writeFileSync(cleanedFile, cleaned.data);
+    const streamTags = probe(cleanedFile).streams[0].tags || {};
+    expect(streamTags.handler_name).toBe("VideoHandler");
+    expect(cleaned.data.includes(Buffer.from("secret handler"))).toBe(false);
+
     const output = path.join(dir, "output.mp4");
     fs.writeFileSync(output, first.data);
     const tags = probe(output).format.tags || {};
     expect(Object.keys(tags).every((tag) => ["major_brand", "minor_version", "compatible_brands"].includes(tag))).toBe(true);
+  });
+});
+
+test.describe("media:sync videos", () => {
+  test("keeps a logical-name poster without uploading the generated frame", async () => {
+    const { hasFfmpeg } = await lib("media-video.mjs");
+    test.skip(!hasFfmpeg(), "ffmpeg is not installed");
+    const { syncMedia } = await lib("media-sync.mjs");
+    const { root } = await makeOriginals();
+    const name = "basic-workflows/example/example_clip.mp4";
+    fs.copyFileSync(path.resolve("tests", "fixtures", "media", "r2_video.mp4"), path.join(root, ...name.split("/")));
+    const references = [{ file: "a.md", ref: `/media/${name}` }];
+
+    const generated: Record<string, any> = {};
+    const generatedUploads: string[] = [];
+    await syncMedia({ manifest: generated, references, root, upload: (key: string) => void generatedUploads.push(key), save: () => {} });
+    expect(generated[name].poster).toMatchObject({ key: expect.stringMatching(/^images\/[0-9a-f]{16}\.webp$/) });
+    expect(generatedUploads).toEqual([generated[name].key, generated[name].poster.key]);
+
+    const chosen: Record<string, any> = {
+      [name]: { key: "videos/0000000000000000.mp4", width: 32, height: 32, type: "video/mp4", bytes: 1, poster: NAME }
+    };
+    const chosenUploads: string[] = [];
+    await syncMedia({ manifest: chosen, references, root, upload: (key: string) => void chosenUploads.push(key), save: () => {} });
+    expect(chosen[name].poster).toBe(NAME);
+    expect(chosenUploads).toEqual([chosen[name].key]);
   });
 });
