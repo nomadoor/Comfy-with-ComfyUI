@@ -1878,6 +1878,9 @@ h1 {
   .media-inline__media-stack {
     max-width: 100%;
     flex-basis: auto;
+    /* The column layout would otherwise shrink to the media's own width, which is zero until the
+       image loads, so the box takes up no space and the text below jumps when it arrives. */
+    align-self: stretch;
   }
 }
 
@@ -1924,6 +1927,17 @@ h1 {
   max-width: 100%;
   height: calc(min(var(--article-media-height, 320px), 320px) * var(--media-scale, 1));
   min-height: 0;
+  max-height: none;
+}
+
+/* Size a row video from its recorded dimensions (the `--article-video-*` variables) instead of the
+   300px placeholder width a browser gives a video it has not loaded yet: with lazy loading the clip
+   arrives while the reader is looking at it, and the row must not resize then. */
+.article-media-row:not(.article-media-row--mixed) .article-video__frame {
+  width: calc(min(var(--article-video-width, 720px),
+        calc(var(--article-video-aspect, 16 / 9) * min(var(--article-video-height, 320px), 320px))) * var(--media-scale, 1));
+  max-width: 100%;
+  height: auto;
   max-height: none;
 }
 
