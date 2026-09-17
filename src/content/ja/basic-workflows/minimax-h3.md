@@ -9,7 +9,7 @@ created: 2026-09-14
 summary: "MiniMax H3で映像と音声を生成する"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/f2f86d3785fc3dbe4b6c4f03c4a1b1c3.mp4"
+  image: "/media/basic-workflows/minimax-h3/minimax_h3_hero.mp4"
 tags: []
 ---
 
@@ -171,11 +171,11 @@ MiniMax H3 はクオリティが高い一方、非常に重いモデルでもあ
 
 使用モデル：`fl2va`
 
-![](https://gyazo.com/640b0d606e440bb2d489ca19cc577701){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_t2va.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_t2va.json)
 
-{% mediaRow img="https://gyazo.com/0fdde44845e4f993eff64f34a4f4a61d", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_t2va_resolution_length.png", width=40, align="left" %}
 **解像度・動画長さ設定**
 
 推奨の解像度は約 1 MP ですが、計算コストもかなり高くなります。最初は 0.3 MP など、小さなサイズで試したほうがよいかもしれません。
@@ -184,7 +184,7 @@ MiniMax H3 はクオリティが高い一方、非常に重いモデルでもあ
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/bb45c6fcdd48680cdffc25decbec3406", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_t2va_cfg.png", width=40, align="left" %}
 **CFG**
 
 H3 はすでに CFG 蒸留されたモデルです。そのため、CFG は `1.0` にします。
@@ -193,7 +193,7 @@ H3 はすでに CFG 蒸留されたモデルです。そのため、CFG は `1.0
 
 **出力例**
 
-![](https://gyazo.com/da088c890e5081038ebf3009d98dc064){gyazo=player}
+![](/media/basic-workflows/minimax-h3/minimax_h3_t2va_output.mp4){media=player}
 
 ---
 
@@ -201,7 +201,7 @@ H3 はすでに CFG 蒸留されたモデルです。そのため、CFG は `1.0
 
 使用モデル：`fl2va`
 
-![](https://gyazo.com/a78436a3bbeeca311a2a1d19feee1b37){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_i2va.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_i2va.json)
 
@@ -209,7 +209,7 @@ H3 はすでに CFG 蒸留されたモデルです。そのため、CFG は `1.0
 
 **出力例**
 
-![input](https://gyazo.com/c04a1f7a8896a775f77957b3077aa4db){gyazo=image} ![output](https://gyazo.com/b1440cd84dc84a04857aa67521c79a73){gyazo=loop}
+![input](/media/basic-workflows/minimax-h3/minimax_h3_i2va_input.png){media=image} ![output](/media/basic-workflows/minimax-h3/minimax_h3_i2va_output.mp4){media=loop}
 
 ---
 
@@ -217,7 +217,7 @@ H3 はすでに CFG 蒸留されたモデルです。そのため、CFG は `1.0
 
 使用モデル：`fl2va`
 
-![](https://gyazo.com/af53f47fcd30afc91b7bf1d564151f69){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_flf2va.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_FLF2VA.json)
 
@@ -225,13 +225,13 @@ I2VA と基本的にまったく同じです。`last_frame` にも画像を入�
 
 **出力例**
 
-![first](https://gyazo.com/d58cb1995e303be3d2e8bf8586aeb299){gyazo=image} ![last](https://gyazo.com/c4c1a076d97c24538ed8743616354d99){gyazo=image} ![output](https://gyazo.com/6ba5ab63418cb447b761788162de83cf){gyazo=loop}
+![first](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_first_frame.png){media=image} ![last](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_last_frame.png){media=image} ![output](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_output.mp4){media=loop}
 
 ### Generative Interpolation
 
 使用モデル：`fl2va`
 
-![](https://gyazo.com/77c23948fa05bed0dc7e197b4620f365){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_generative-interpolation.json)
 
@@ -241,7 +241,7 @@ I2VA と基本的にまったく同じです。`last_frame` にも画像を入�
 
 **出力例**
 
-![input1](https://gyazo.com/c90606d2a68d70da715b502ad2a19a99){gyazo=image} ![input2](https://gyazo.com/66edf1e60ec31d724532a36c721c2049){gyazo=image} ![input3](https://gyazo.com/d7b1e88bd7335dbc29dd0a608c0e4916){gyazo=image} ![output](https://gyazo.com/b44bb6bc2e2d89ab55ebc3844de830ce){gyazo=loop}
+![input1](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_1.png){media=image} ![input2](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_2.png){media=image} ![input3](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_3.png){media=image} ![output](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_output.mp4){media=loop}
 
 ---
 
@@ -249,7 +249,7 @@ I2VA と基本的にまったく同じです。`last_frame` にも画像を入�
 
 使用モデル：`fl2va`
 
-![](https://gyazo.com/d965ea9d2178950f4c142b187d959f57){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_audio-driven-i2va.json)
 
@@ -259,7 +259,7 @@ I2VA と基本的にまったく同じです。`last_frame` にも画像を入�
 
 **出力例**
 
-![input](https://gyazo.com/1a497e60c80ecb516113f164e6b00fe4){gyazo=image} ![output](https://gyazo.com/66f95200533701c207aa6276ee7de720){gyazo=player}
+![input](/media/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va_input.png){media=image} ![output](/media/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va_output.mp4){media=player}
 
 ---
 
@@ -273,13 +273,13 @@ H3 は動画を生成するための参考資料として、好きな「画像�
 
 あとは「1 番の画像を、1 番の音声でしゃべらせて」のように指示するだけで、生成する動画をコントロールできます。すごい。
 
-![](https://gyazo.com/0528483b69435c5d42731dd32ebfada2){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_reference-generation.json)
 
 今回は、すべて画像を参照として使って動画を作ります。
 
-{% mediaRow img="https://gyazo.com/b58c9622369b7af7e423e87cdf80e812", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_prompt.png", width=40, align="left" %}
 **プロンプト**
 
 `fl2va` モデルとはプロンプトの書き方が異なります。
@@ -292,7 +292,7 @@ H3 は動画を生成するための参考資料として、好きな「画像�
 
 **出力例**
 
-![](https://gyazo.com/1cd48fc0fa2eb8c461769ccd66a1848b){gyazo=player}
+![](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output.mp4){media=player}
 
 
 ### 🤔 Ref2VA は FL2VA と比べると単純な出力の質が落ちる
@@ -303,7 +303,7 @@ H3 は動画を生成するための参考資料として、好きな「画像�
 
 実は、この 2 つのモデルはアーキテクチャがほとんど同じなので、FL2VA モデルでも Reference Generation がある程度できたりします。
 
-![ref2va](https://gyazo.com/1cd48fc0fa2eb8c461769ccd66a1848b){gyazo=loop} ![fl2va](https://gyazo.com/6b6f6ddda651280e0892595b93c58351){gyazo=loop} ![Hybrid](https://gyazo.com/5921f56aade039f7e14024e019c5ca0c){gyazo=loop}
+![ref2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output.mp4){media=loop} ![fl2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_fl2va.mp4){media=loop} ![Hybrid](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_hybrid.mp4){media=loop}
 
 綺麗になりました。とはいえ、さすがに Ref2VA のほうが柔軟性はありますね。
 
@@ -323,7 +323,7 @@ H3 は動画を生成するための参考資料として、好きな「画像�
 
 FLUX.2 [klein] や Nano Banana のような画像編集の動画版ですね。
 
-![](https://gyazo.com/6062fa61cec174bb5cd4b5eb444ec610){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_video_editing.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_video-editing.json)
 
@@ -333,7 +333,7 @@ workflow は基本的に Reference Generation と同じです。
 
 **出力例**
 
-![Ref image](https://gyazo.com/f3f8a16832768d47ffd636f6ae7459ce){gyazo=image} ![input video](https://gyazo.com/18b59990c8c3671ad32b35f5e80b90d4){gyazo=loop} ![output](https://gyazo.com/df6ec47466edcfb582af091538adccba){gyazo=loop}
+![Ref image](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_ref.png){media=image} ![input video](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_input.mp4){media=loop} ![output](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_output.mp4){media=loop}
 
 ---
 
@@ -345,13 +345,13 @@ workflow は基本的に Reference Generation と同じです。
 
 ただし、こんなことをしなくても、Video Editing で「〇〇を△△に変えて」と言えば済むので、あまり使う場面はないかもしれません……。
 
-![](https://gyazo.com/33a0ba7e7bebb40e49356938cdfff19f){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_spatial-inpainting.json)
 
 今回は `ref2va` モデルを使って、動画内の犬を参照画像のぬいぐるみに変えてみます。
 
-{% mediaRow img="https://gyazo.com/b599f25c83f6899bd4c863b1606a5835", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_segmentation.png", width=40, align="left" %}
 **セグメンテーション**
 
 SAM 3.1 で犬をマスクし、少し余裕をもたせるためにマスクを大きくします。
@@ -362,7 +362,7 @@ SAM 3.1 で犬をマスクし、少し余裕をもたせるためにマスクを
 
 **出力例**
 
-![input](https://gyazo.com/23a15260d45d9bd57f34779f31601b3a){gyazo=loop} ![mask](https://gyazo.com/75f854880336fa874c25fbcaf5257dc4){gyazo=loop} ![output](https://gyazo.com/f6dd517e6149845d845c67fec2333ddf){gyazo=loop}
+![input](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input.mp4){media=loop} ![mask](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_mask.mp4){media=loop} ![output](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_output.mp4){media=loop}
 
 ---
 
@@ -392,18 +392,18 @@ SAM 3.1 で犬をマスクし、少し余裕をもたせるためにマスクを
 
 ### text2video / T2VA
 
-![](https://gyazo.com/4cb82e71e829f73d9c17e655ebfe73c5){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_Hiresfix_t2va.json)
 
-{% mediaRow img="https://gyazo.com/c135a6ddc5f6056633ac3b66873bf1c1", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va_first_stage_resolution.png", width=40, align="left" %}
 **1 段目の解像度**
 
 最終的に作りたい動画の幅と高さを、それぞれ半分にした値を最初の `Empty Latent` に入力します。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/249c8563103f54473de708fd84870fa0", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va_latent_upscale.png", width=40, align="left" %}
 **latent のアップスケール**
 
 ピクセル画像へデコードせず、**latent のまま** 幅と高さを 2 倍にアップスケールします。
@@ -417,11 +417,11 @@ latent を単純に拡大すると大きく劣化するため、専用のモデ�
 
 **出力例**
 
-![0.25 MP](https://gyazo.com/c7da4ebcff1d2d3fae3c11e2376ce765){gyazo=loop} ![1.0 MP](https://gyazo.com/48191c1471f1b27b5e1efcb60b16293b){gyazo=loop}
+![0.25 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va_output_0_25mp.mp4){media=loop} ![1.0 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va_output_1_0mp.mp4){media=loop}
 
 ### image2video / I2VA
 
-![](https://gyazo.com/5388590beb2f9b1de6c0b36a63fd730f){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_Hiresfix_i2va.json)
 
@@ -431,7 +431,7 @@ I2VA や Ref2VA では、Conditioning 側にも解像度を入力します。
 
 **出力例**
 
-![0.25 MP](https://gyazo.com/5ab76b1f3001a56baf4966360b467c58){gyazo=loop} ![1.0 MP](https://gyazo.com/3b6a71dbae19bc6f66f3d7a824b7fa96){gyazo=loop}
+![0.25 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va_output_0_25mp.mp4){media=loop} ![1.0 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va_output_1_0mp.mp4){media=loop}
 
 ## 参考
 

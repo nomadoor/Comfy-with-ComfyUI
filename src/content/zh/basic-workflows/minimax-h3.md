@@ -9,7 +9,7 @@ created: 2026-09-14
 summary: "使用 MiniMax H3 生成视频和音频"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/f2f86d3785fc3dbe4b6c4f03c4a1b1c3.mp4"
+  image: "/media/basic-workflows/minimax-h3/minimax_h3_hero.mp4"
 tags: []
 ---
 
@@ -171,11 +171,11 @@ MiniMax H3 的质量很高，但也是一个非常重的模型。
 
 使用模型：`fl2va`
 
-![](https://gyazo.com/640b0d606e440bb2d489ca19cc577701){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_t2va.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_t2va.json)
 
-{% mediaRow img="https://gyazo.com/0fdde44845e4f993eff64f34a4f4a61d", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_t2va_resolution_length.png", width=40, align="left" %}
 **分辨率与视频长度设置**
 
 推荐分辨率约为 1 MP，但计算成本也相当高。刚开始时，也许可以先用 0.3 MP 等较小的尺寸尝试。
@@ -184,7 +184,7 @@ MiniMax H3 的质量很高，但也是一个非常重的模型。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/bb45c6fcdd48680cdffc25decbec3406", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_t2va_cfg.png", width=40, align="left" %}
 **CFG**
 
 H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
@@ -193,7 +193,7 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 
 **输出示例**
 
-![](https://gyazo.com/da088c890e5081038ebf3009d98dc064){gyazo=player}
+![](/media/basic-workflows/minimax-h3/minimax_h3_t2va_output.mp4){media=player}
 
 ---
 
@@ -201,7 +201,7 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 
 使用模型：`fl2va`
 
-![](https://gyazo.com/a78436a3bbeeca311a2a1d19feee1b37){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_i2va.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_i2va.json)
 
@@ -209,7 +209,7 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 
 **输出示例**
 
-![输入](https://gyazo.com/c04a1f7a8896a775f77957b3077aa4db){gyazo=image} ![输出](https://gyazo.com/b1440cd84dc84a04857aa67521c79a73){gyazo=loop}
+![输入](/media/basic-workflows/minimax-h3/minimax_h3_i2va_input.png){media=image} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_i2va_output.mp4){media=loop}
 
 ---
 
@@ -217,7 +217,7 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 
 使用模型：`fl2va`
 
-![](https://gyazo.com/af53f47fcd30afc91b7bf1d564151f69){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_flf2va.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_FLF2VA.json)
 
@@ -225,13 +225,13 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 
 **输出示例**
 
-![第一帧](https://gyazo.com/d58cb1995e303be3d2e8bf8586aeb299){gyazo=image} ![最后一帧](https://gyazo.com/c4c1a076d97c24538ed8743616354d99){gyazo=image} ![输出](https://gyazo.com/6ba5ab63418cb447b761788162de83cf){gyazo=loop}
+![第一帧](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_first_frame.png){media=image} ![最后一帧](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_last_frame.png){media=image} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_output.mp4){media=loop}
 
 ### Generative Interpolation
 
 使用模型：`fl2va`
 
-![](https://gyazo.com/77c23948fa05bed0dc7e197b4620f365){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_generative-interpolation.json)
 
@@ -241,7 +241,7 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 
 **输出示例**
 
-![输入 1](https://gyazo.com/c90606d2a68d70da715b502ad2a19a99){gyazo=image} ![输入 2](https://gyazo.com/66edf1e60ec31d724532a36c721c2049){gyazo=image} ![输入 3](https://gyazo.com/d7b1e88bd7335dbc29dd0a608c0e4916){gyazo=image} ![输出](https://gyazo.com/b44bb6bc2e2d89ab55ebc3844de830ce){gyazo=loop}
+![输入 1](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_1.png){media=image} ![输入 2](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_2.png){media=image} ![输入 3](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_3.png){media=image} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_output.mp4){media=loop}
 
 ---
 
@@ -249,7 +249,7 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 
 使用模型：`fl2va`
 
-![](https://gyazo.com/d965ea9d2178950f4c142b187d959f57){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_audio-driven-i2va.json)
 
@@ -259,7 +259,7 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 
 **输出示例**
 
-![输入](https://gyazo.com/1a497e60c80ecb516113f164e6b00fe4){gyazo=image} ![输出](https://gyazo.com/66f95200533701c207aa6276ee7de720){gyazo=player}
+![输入](/media/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va_input.png){media=image} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va_output.mp4){media=player}
 
 ---
 
@@ -273,13 +273,13 @@ H3 可以放入多个“图像”“视频”和“音频”，作为生成视�
 
 之后只需写出“让图像 1 使用音频 1 说话”这样的指示，就能控制生成的视频。很厉害。
 
-![](https://gyazo.com/0528483b69435c5d42731dd32ebfada2){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_reference-generation.json)
 
 这次会把所有图像都作为参考来生成视频。
 
-{% mediaRow img="https://gyazo.com/b58c9622369b7af7e423e87cdf80e812", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_prompt.png", width=40, align="left" %}
 **提示词**
 
 它的提示词写法与 `fl2va` 模型不同。
@@ -292,7 +292,7 @@ H3 可以放入多个“图像”“视频”和“音频”，作为生成视�
 
 **输出示例**
 
-![](https://gyazo.com/1cd48fc0fa2eb8c461769ccd66a1848b){gyazo=player}
+![](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output.mp4){media=player}
 
 
 ### 🤔 Ref2VA 的直接输出质量低于 FL2VA
@@ -303,7 +303,7 @@ H3 可以放入多个“图像”“视频”和“音频”，作为生成视�
 
 实际上，这两个模型的架构几乎相同，因此 FL2VA 模型也能在一定程度上进行 Reference Generation。
 
-![ref2va](https://gyazo.com/1cd48fc0fa2eb8c461769ccd66a1848b){gyazo=loop} ![fl2va](https://gyazo.com/6b6f6ddda651280e0892595b93c58351){gyazo=loop} ![Hybrid](https://gyazo.com/5921f56aade039f7e14024e019c5ca0c){gyazo=loop}
+![ref2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output.mp4){media=loop} ![fl2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_fl2va.mp4){media=loop} ![Hybrid](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_hybrid.mp4){media=loop}
 
 画面变漂亮了。不过真要说灵活性，还是 Ref2VA 更好。
 
@@ -323,7 +323,7 @@ H3 可以放入多个“图像”“视频”和“音频”，作为生成视�
 
 可以理解为 FLUX.2 [klein] 或 Nano Banana 这类图像编辑的视频版本。
 
-![](https://gyazo.com/6062fa61cec174bb5cd4b5eb444ec610){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_video_editing.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_video-editing.json)
 
@@ -333,7 +333,7 @@ H3 可以放入多个“图像”“视频”和“音频”，作为生成视�
 
 **输出示例**
 
-![参考图像](https://gyazo.com/f3f8a16832768d47ffd636f6ae7459ce){gyazo=image} ![输入视频](https://gyazo.com/18b59990c8c3671ad32b35f5e80b90d4){gyazo=loop} ![输出](https://gyazo.com/df6ec47466edcfb582af091538adccba){gyazo=loop}
+![参考图像](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_ref.png){media=image} ![输入视频](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_input.mp4){media=loop} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_output.mp4){media=loop}
 
 ---
 
@@ -345,13 +345,13 @@ H3 也可以使用传统的（？）遮罩，只重新绘制指定区域来进�
 
 不过，即使不这样做，也可以直接在 Video Editing 中指示“把〇〇改成△△”，所以可能没有太多使用场景……
 
-![](https://gyazo.com/33a0ba7e7bebb40e49356938cdfff19f){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_spatial-inpainting.json)
 
 这次使用 `ref2va` 模型，把视频里的狗替换成参考图像中的玩偶。
 
-{% mediaRow img="https://gyazo.com/b599f25c83f6899bd4c863b1606a5835", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_segmentation.png", width=40, align="left" %}
 **分割**
 
 使用 SAM 3.1 为狗生成遮罩，再稍微扩大遮罩，留出一些余量。
@@ -362,7 +362,7 @@ H3 也可以使用传统的（？）遮罩，只重新绘制指定区域来进�
 
 **输出示例**
 
-![输入](https://gyazo.com/23a15260d45d9bd57f34779f31601b3a){gyazo=loop} ![遮罩](https://gyazo.com/75f854880336fa874c25fbcaf5257dc4){gyazo=loop} ![输出](https://gyazo.com/f6dd517e6149845d845c67fec2333ddf){gyazo=loop}
+![输入](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input.mp4){media=loop} ![遮罩](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_mask.mp4){media=loop} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_output.mp4){media=loop}
 
 ---
 
@@ -392,18 +392,18 @@ H3 也可以使用传统的（？）遮罩，只重新绘制指定区域来进�
 
 ### text2video / T2VA
 
-![](https://gyazo.com/4cb82e71e829f73d9c17e655ebfe73c5){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_Hiresfix_t2va.json)
 
-{% mediaRow img="https://gyazo.com/c135a6ddc5f6056633ac3b66873bf1c1", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va_first_stage_resolution.png", width=40, align="left" %}
 **第 1 阶段的分辨率**
 
 在第一个 `Empty Latent` 中，输入最终视频宽度和高度各自一半的值。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/249c8563103f54473de708fd84870fa0", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va_latent_upscale.png", width=40, align="left" %}
 **放大 latent**
 
 不解码为像素图像，直接将 **latent** 的宽度和高度放大 2 倍。
@@ -417,11 +417,11 @@ H3 也可以使用传统的（？）遮罩，只重新绘制指定区域来进�
 
 **输出示例**
 
-![0.25 MP](https://gyazo.com/c7da4ebcff1d2d3fae3c11e2376ce765){gyazo=loop} ![1.0 MP](https://gyazo.com/48191c1471f1b27b5e1efcb60b16293b){gyazo=loop}
+![0.25 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va_output_0_25mp.mp4){media=loop} ![1.0 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va_output_1_0mp.mp4){media=loop}
 
 ### image2video / I2VA
 
-![](https://gyazo.com/5388590beb2f9b1de6c0b36a63fd730f){gyazo=image}
+![](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va.png){media=image}
 
 [](/workflows/basic-workflows/minimax-h3/MiniMax_H3_Hiresfix_i2va.json)
 
@@ -431,7 +431,7 @@ H3 也可以使用传统的（？）遮罩，只重新绘制指定区域来进�
 
 **输出示例**
 
-![0.25 MP](https://gyazo.com/5ab76b1f3001a56baf4966360b467c58){gyazo=loop} ![1.0 MP](https://gyazo.com/3b6a71dbae19bc6f66f3d7a824b7fa96){gyazo=loop}
+![0.25 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va_output_0_25mp.mp4){media=loop} ![1.0 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va_output_1_0mp.mp4){media=loop}
 
 ## 参考资料
 
