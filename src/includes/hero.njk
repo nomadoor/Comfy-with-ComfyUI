@@ -17,6 +17,7 @@
     <video
       class="hero__media"
       src="{{ heroMedia.src }}"
+      {% if heroMedia.poster %}poster="{{ heroMedia.poster }}"{% endif %}
       muted
       autoplay
       loop

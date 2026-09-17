@@ -622,8 +622,14 @@ function renderVideoFigure(media, { caption = "", maxHeight = 320 } = {}) {
   const width = Math.round(baseWidth * (height / baseHeight));
   const aspect = hasDims ? `${media.width} / ${media.height}` : "16 / 9";
   const initial = media.mode === "player" ? "player" : "loop";
-  const playback = initial === "player" ? 'controls playsinline preload="metadata"' : "muted loop autoplay playsinline";
-  return `<figure class="article-video article-video--${initial} article-video--toggleable" data-media-toggle data-media-initial="${initial}" style="--article-video-height:${height}px; --article-video-width:${width}px; --article-video-aspect:${aspect};"><div class="article-video__frame"><video src="${escapeHTML(media.src)}" data-full-src="${escapeHTML(media.fullSrc)}" ${playback}></video><button type="button" class="media-toggle" aria-label="Toggle video playback mode" data-loop-label="Loop" data-player-label="Player">${VIDEO_TOGGLE_ICON}</button></div>${caption ? `<figcaption>${caption}</figcaption>` : ""}</figure>`;
+  // `preload="none"` and no `autoplay`: video-lazy.js loads and plays a clip once it nears the
+  // viewport, so opening a page does not download every video on it. The poster frame fills the box
+  // in the meantime.
+  const playback = initial === "player" ? 'controls playsinline preload="none"' : 'muted loop playsinline preload="none"';
+  // The poster is attached by video-lazy.js together with the clip; as a plain `poster` attribute it
+  // would be fetched for every video on the page as soon as the page renders.
+  const poster = media.poster ? ` data-poster="${escapeHTML(media.poster)}"` : "";
+  return `<figure class="article-video article-video--${initial} article-video--toggleable" data-media-toggle data-media-initial="${initial}" style="--article-video-height:${height}px; --article-video-width:${width}px; --article-video-aspect:${aspect};"><div class="article-video__frame"><video src="${escapeHTML(media.src)}" data-full-src="${escapeHTML(media.fullSrc)}"${poster} data-media-lazy ${playback}></video><button type="button" class="media-toggle" aria-label="Toggle video playback mode" data-loop-label="Loop" data-player-label="Player">${VIDEO_TOGGLE_ICON}</button></div>${caption ? `<figcaption>${caption}</figcaption>` : ""}</figure>`;
 }
 
 function escapeHTML(str = "") {

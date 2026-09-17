@@ -8,6 +8,8 @@
 // Videos switched to Player mode leave the group. Off-screen rows pause and restart together when
 // visible again.
 
+import { MEDIA_ACTIVATE, isNear } from "./video-lazy.js";
+
 export const MAX_DURATION_DIFF = 0.5;
 const SEEK_THRESHOLD = 0.3;
 const NUDGE_THRESHOLD = 0.04;
@@ -111,6 +113,9 @@ function createGroup(row) {
   }
 
   async function start() {
+    // video-lazy.js keeps videos at `preload="none"` until the reader is close; a group needs the
+    // metadata of every member, so ask for it as soon as the row is being set up.
+    videos.forEach((video) => { if (video.preload !== "auto") video.preload = "auto"; });
     const ready = await Promise.all(videos.map((video) => waitForReadyState(video, 1, signal)));
     // The row may have been removed by client-side navigation while waiting for metadata.
     if (signal.aborted) return;
@@ -165,8 +170,8 @@ function createGroup(row) {
       const figure = video.closest("figure[data-media-toggle]");
       if (figure?.dataset.mediaMode !== "player") {
         video.loop = true;
-        // Only resume native looping for videos still on the page.
-        if (video.isConnected) video.play().catch(() => {});
+        // Only resume looping for videos still on the page and still close to the reader.
+        if (video.isConnected && isNear(video)) video.play().catch(() => {});
       }
     });
   }
@@ -177,9 +182,14 @@ function createGroup(row) {
 const groups = new WeakMap();
 
 function setupRow(row) {
-  groups.get(row)?.destroy();
+  const videos = loopVideosIn(row);
+  const current = groups.get(row);
+  // Activation fires once per video, and again whenever a row is scrolled back into range; rebuild
+  // only when the set of Loop videos actually changed (a Loop/Player switch).
+  if (current && current.videos.length === videos.length && current.videos.every((video, index) => video === videos[index])) return;
+  current?.destroy();
   groups.delete(row);
-  if (loopVideosIn(row).length < 2) return;
+  if (videos.length < 2) return;
   const group = createGroup(row);
   groups.set(row, group);
   group.start();
@@ -191,7 +201,10 @@ const initVideoSync = (root = document) => {
     row.dataset.videoSyncBound = "true";
     // media-toggle.js announces Loop/Player switches; rebuild the group from the current modes.
     row.addEventListener("media-modechange", () => setupRow(row));
-    setupRow(row);
+    // video-lazy.js announces videos the reader has come close to; a row is synchronized from that
+    // point on, not while it is still far down the page and unloaded.
+    row.addEventListener(MEDIA_ACTIVATE, () => setupRow(row));
+    if (loopVideosIn(row).some(isNear)) setupRow(row);
   });
 };
 

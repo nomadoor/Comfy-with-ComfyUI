@@ -1,3 +1,5 @@
+import { isNear } from "./video-lazy.js";
+
 let initializedFigures = new WeakSet();
 
 function applyMediaMode(figure, mode) {
@@ -16,13 +18,15 @@ function applyMediaMode(figure, mode) {
   labelEl.textContent = isPlayer ? playerLabel : loopLabel;
 
   video.loop = !isPlayer;
-  video.autoplay = !isPlayer;
+  // Never `autoplay`: setting it would start loading every video on the page. video-lazy.js plays a
+  // Loop video once the reader is close to it.
+  video.autoplay = false;
   video.muted = !isPlayer;
   video.controls = isPlayer;
 
   if (isPlayer) {
     video.pause();
-  } else {
+  } else if (isNear(video)) {
     const playPromise = video.play();
     if (playPromise?.catch) {
       playPromise.catch(() => {});
