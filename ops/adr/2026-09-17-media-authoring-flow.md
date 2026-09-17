@@ -27,7 +27,7 @@ Uploading during the Cloudflare Pages / CI build is not possible: originals live
 
 - Originals are hashed in chunks (large videos are not buffered whole). Paths are resolved canonically and must stay inside the canonical originals root, so symbolic links cannot expose files outside it.
 - In `eleventy --serve` / `--watch`, `resolveMedia()` renders a `/media/` reference from the local original when it is not registered or when the original changed since upload (`source` differs). The URL is `/__media-originals/<logical name>`, served by an Eleventy dev server middleware (`scripts/lib/media-local-preview.mjs`) with Range support and `Cache-Control: no-store`. Paths are validated as logical names and must resolve inside the originals root.
-- Image dimensions come from the PNG/JPEG header; video previews use the default aspect until uploaded.
+- Dimensions come from the PNG/JPEG header, or for mp4 from the first video track's `tkhd` box (moov before or after mdat; a 90/270 degree display rotation swaps width and height), cached by size and mtime. Without them, video figures fell back to 16:9 and `object-fit: cover` cropped portrait clips.
 - Production builds never use the preview and still fail on unregistered names. Playwright's `dev:test` clears `COMFY_MEDIA_ORIGINALS` so tests do not depend on local files.
 
 ### `media:sync`
@@ -59,7 +59,7 @@ Uploading during the Cloudflare Pages / CI build is not possible: originals live
 - Accept mp4 with one H.264 video stream and AAC / MP3 / Opus audio; other codecs fail with a message to convert first.
 - `ffmpeg -map 0:v:0 -map 0:a? -map_metadata -1 -map_chapters -1 -c copy -movflags +faststart` with bitexact flags: streams are copied without re-encoding, metadata (including ComfyUI workflow tags), chapters, and other streams are removed, and output is deterministic.
 - Verify with ffprobe that only structural tags remain: format `major_brand`, `minor_version`, `compatible_brands`, and stream tags with ffmpeg's default values only (`language=und`, `handler_name=VideoHandler|SoundHandler`, `vendor_id=[0][0][0][0]`).
-- Upload as `videos/<hash>.mp4` (`video/mp4`). The first frame becomes a full-size WebP poster stored as `images/<hash>.webp` and recorded inline:
+- Upload as `videos/<hash>.mp4` (`video/mp4`). `width`/`height` record the displayed size: the display rotation survives `-c copy`, so a 90/270 degree rotation swaps the coded size (matching the preview and the poster frame). The first frame becomes a full-size WebP poster stored as `images/<hash>.webp` and recorded inline:
 
 ```json
 "basic-workflows/minimax-h3/minimax_h3_t2va_output.mp4": {

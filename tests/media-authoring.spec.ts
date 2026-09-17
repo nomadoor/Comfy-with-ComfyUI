@@ -245,3 +245,32 @@ test.describe("media:sync videos", () => {
     expect(chosenUploads).toEqual([chosen[name].key]);
   });
 });
+
+test.describe("video sizes", () => {
+  test("preview reads displayed mp4 size (moov at end or front, rotation) and sync records the same", async () => {
+    const { hasFfmpeg, prepareVideo } = await lib("media-video.mjs");
+    test.skip(!hasFfmpeg(), "ffmpeg is not installed");
+    const { localPreview, mp4Dimensions } = await lib("media-local-preview.mjs");
+    const { root } = await makeOriginals();
+    const dir = path.join(root, "basic-workflows", "example");
+    const ffmpeg = (...args: string[]) => expect(spawnSync("ffmpeg", ["-v", "error", "-y", ...args]).status).toBe(0);
+
+    const tall = path.join(dir, "tall_clip.mp4");
+    ffmpeg("-f", "lavfi", "-i", "color=c=gray:s=64x128:d=1:r=24", "-c:v", "libx264", "-pix_fmt", "yuv420p", tall);
+    const faststart = path.join(dir, "tall_faststart.mp4");
+    ffmpeg("-i", tall, "-c", "copy", "-movflags", "+faststart", faststart);
+    const rotated = path.join(dir, "rotated_clip.mp4");
+    ffmpeg("-display_rotation", "90", "-i", tall, "-c", "copy", rotated);
+
+    expect(mp4Dimensions(tall)).toEqual({ width: 64, height: 128 });
+    expect(mp4Dimensions(faststart)).toEqual({ width: 64, height: 128 });
+    expect(mp4Dimensions(rotated)).toEqual({ width: 128, height: 64 });
+    expect(mp4Dimensions(path.join(dir, "example_workflow.png"))).toEqual({});
+
+    expect(localPreview(root, "basic-workflows/example/tall_clip.mp4", undefined)).toMatchObject({ width: 64, height: 128 });
+
+    const prepared = await prepareVideo(rotated);
+    expect([prepared.width, prepared.height]).toEqual([128, 64]);
+    expect([prepared.poster.width, prepared.poster.height]).toEqual([128, 64]);
+  });
+});
