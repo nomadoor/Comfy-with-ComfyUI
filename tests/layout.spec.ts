@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./support/test";
 
 const SAMPLE_PAGE = "/ja/basic-workflows/sd15-basics/";
 const PLAYWRIGHT_PORT = Number(process.env.PLAYWRIGHT_PORT || 8091);

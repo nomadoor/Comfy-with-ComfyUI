@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import zlib from "node:zlib";
 import { pathToFileURL } from "node:url";
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./support/test";
 
 // Metadata removal used by `npm run media:put`. Browser decoding confirms the stripped files are
 // still valid and render the same pixels as the originals.
