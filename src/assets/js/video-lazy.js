@@ -21,6 +21,10 @@ const NEAR_ATTR = "mediaNear";
 const IMAGE_WAIT_MS = 3000;
 
 const cleanups = new WeakMap();
+// The content root video-lazy was initialized with; images outside it (the persistent shell) are not
+// given a head start, so a video must not wait for them either. Left unset until init so that this
+// module can also be imported outside a browser (tests import video-sync.js in Node).
+let imageRoot = null;
 
 function isPlayer(video) {
   const figure = video.closest("figure[data-media-toggle]");
@@ -39,9 +43,8 @@ function syncOwns(video) {
  * before it is on screen, and by then the images around it are the ones that matter.
  */
 function imagesLoadingNear(video) {
-  const root = video.ownerDocument;
-  const viewport = root.defaultView?.innerHeight || 0;
-  return [...root.querySelectorAll("img")].filter((image) => {
+  const viewport = video.ownerDocument.defaultView?.innerHeight || 0;
+  return [...(imageRoot || video.ownerDocument).querySelectorAll("img")].filter((image) => {
     if (image.complete) return false;
     const rect = image.getBoundingClientRect();
     return rect.bottom > -viewport && rect.top < viewport * 2;
@@ -87,6 +90,7 @@ export function isNear(video) {
 const initVideoLazy = (root = document) => {
   cleanups.get(root)?.();
 
+  imageRoot = root;
   const videos = [...root.querySelectorAll("video[data-media-lazy]")];
   if (!videos.length) return;
 
