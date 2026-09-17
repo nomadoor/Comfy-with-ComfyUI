@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "npx @11ty/eleventy --serve --port=8080",
     "dev:watch": "npx @11ty/eleventy --watch --output=_site",
-    "dev:test": "COMFY_MEDIA_FIXTURES=1 eleventy --serve --port=8091 --output=.cache/playwright-site",
+    "dev:test": "COMFY_MEDIA_FIXTURES=1 COMFY_MEDIA_ORIGINALS= eleventy --serve --port=8091 --output=.cache/playwright-site",
     "dev:pages": "npx wrangler pages dev _site --port=8080 --compatibility-date=2026-02-17",
     "build": "eleventy --input=src --output=_site",
     "clean": "rimraf _site",
@@ -25,9 +25,10 @@
     "check:build": "node scripts/check-build-output.mjs",
     "views:update": "node scripts/update-page-views.mjs",
     "views:update:dry": "node scripts/update-page-views.mjs --dry-run",
-    "media:put": "node scripts/media-upload.mjs",
+    "media:sync": "node scripts/media-sync.mjs",
     "media:waf-expression": "node scripts/media-waf-expression.mjs",
-    "test:playwright": "playwright test"
+    "test:playwright": "playwright test",
+    "prepare": "node scripts/install-git-hooks.mjs"
   },
   "keywords": [
     "eleventy",
