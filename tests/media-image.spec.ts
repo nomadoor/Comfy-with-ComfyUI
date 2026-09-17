@@ -61,6 +61,20 @@ test.describe("media image encoding", () => {
     expect(totalDiff / a.length).toBeLessThan(2);
   });
 
+  test("output verification inspects WebP chunks instead of scanning bytes", async () => {
+    const { encodeFullWebp, listWebpChunks, verifyPublicWebp } = await loadEncoder();
+    const clean = await encodeFullWebp(await comfyPng());
+    expect(listWebpChunks(clean.data).every((id: string) => ["VP8 ", "VP8L", "VP8X", "ALPH"].includes(id))).toBe(true);
+
+    // A WebP that carries EXIF/ICC chunks is rejected.
+    const withMetadata = await sharp(await comfyPng()).withMetadata({ exif: { IFD0: { Copyright: "x" } } }).webp().toBuffer();
+    expect(listWebpChunks(withMetadata)).toContain("EXIF");
+    await expect(verifyPublicWebp(withMetadata, 400, 160)).rejects.toThrow(/チャンク/);
+
+    // Marker-like bytes inside image data do not cause a false positive: only chunk IDs matter.
+    expect(await verifyPublicWebp(clean.data, 400, 160)).toBeUndefined();
+  });
+
   test("encoding is deterministic, so content-hash keys are stable", async () => {
     const { encodeFullWebp } = await loadEncoder();
     const input = await comfyPng();

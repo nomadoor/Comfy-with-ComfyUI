@@ -3,15 +3,18 @@
 // Cloudflare Image Transformations presets.
 //
 // sharp is pinned to an exact version in package.json: object keys are content hashes, so the same
-// original must always encode to the same bytes.
+// original should encode to the same bytes. The pin does not cover the platform-specific native build;
+// uploading from a different OS/CPU can change the bytes, which only means `media:put` asks for
+// `--replace` and stores a new object. Uploads are expected to run from one environment.
 
 import sharp from "sharp";
 
 export const WEBP_QUALITY = 90;
 // WebP cannot encode images larger than 16383 px on either side.
 const WEBP_MAX_DIMENSION = 16383;
-// Metadata keys that must never survive into a public file.
-const FORBIDDEN_MARKERS = ["workflow", "prompt", "parameters", "Exif", "http://ns.adobe.com/xap/1.0/"];
+// RIFF chunks that carry image data. Anything else (EXIF, XMP, ICCP, ANIM/ANMF, unknown chunks) would be
+// metadata or animation and must not appear in a public file.
+const ALLOWED_WEBP_CHUNKS = new Set(["VP8 ", "VP8L", "VP8X", "ALPH"]);
 
 export class MediaImageError extends Error {}
 
@@ -48,17 +51,32 @@ export async function encodeFullWebp(input) {
   return { data, width: info.width, height: info.height, type: "image/webp" };
 }
 
-async function verifyPublicWebp(data, width, height) {
+/** List the RIFF chunk IDs of a WebP file. */
+export function listWebpChunks(data) {
+  if (data.length < 12 || data.toString("latin1", 0, 4) !== "RIFF" || data.toString("latin1", 8, 12) !== "WEBP") {
+    throw new MediaImageError("WebP の RIFF ヘッダーが不正です");
+  }
+  const chunks = [];
+  let offset = 12;
+  while (offset + 8 <= data.length) {
+    const id = data.toString("latin1", offset, offset + 4);
+    const size = data.readUInt32LE(offset + 4);
+    const end = offset + 8 + size + (size % 2);
+    if (offset + 8 + size > data.length) throw new MediaImageError(`WebP のチャンク ${id} が途中で切れています`);
+    chunks.push(id);
+    offset = end;
+  }
+  return chunks;
+}
+
+/** Throw unless `data` is a WebP of the given size containing only image-data chunks. */
+export async function verifyPublicWebp(data, width, height) {
   const meta = await sharp(data).metadata();
   if (meta.format !== "webp" || meta.width !== width || meta.height !== height) {
     throw new MediaImageError("WebP の出力検証に失敗しました（形式またはサイズが一致しません）");
   }
-  if (meta.exif || meta.xmp || meta.icc || meta.iptc) {
-    throw new MediaImageError("WebP の出力に metadata が残っています");
-  }
-  const text = data.toString("latin1");
-  const marker = FORBIDDEN_MARKERS.find((value) => text.includes(value));
-  if (marker) {
-    throw new MediaImageError(`WebP の出力に "${marker}" が含まれています`);
+  const extra = listWebpChunks(data).filter((id) => !ALLOWED_WEBP_CHUNKS.has(id));
+  if (extra.length) {
+    throw new MediaImageError(`WebP の出力に画像データ以外のチャンクがあります（${extra.join(", ")}）`);
   }
 }

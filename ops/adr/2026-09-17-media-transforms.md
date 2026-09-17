@@ -39,11 +39,11 @@ Original PNGs are never uploaded to R2 (no `originals/` prefix).
 
 1. Validate the logical name and locate the original under `COMFY_MEDIA_ORIGINALS`.
 2. Encode with sharp (`scripts/lib/media-image.mjs`): reject non PNG/JPEG and animated images, apply EXIF orientation to pixels (`rotate()`), keep the original size (capped at WebP's 16383 px), `webp({ quality: 90 })`.
-3. Verify the output: WebP, expected dimensions, no EXIF/XMP/ICC/IPTC, and no `workflow` / `prompt` / `parameters` bytes.
+3. Verify the output: WebP with the expected dimensions whose RIFF chunks are only image data (`VP8 `, `VP8L`, `VP8X`, `ALPH`), so EXIF/XMP/ICC/animation chunks are rejected. Chunks are parsed rather than scanning bytes, which could match marker strings inside compressed pixels.
 4. Key = `images/<first 16 hex of sha256(WebP)>.webp`; compare with `media.json` (same key → skip; different → `--replace` required, references listed).
 5. Upload with `Content-Type: image/webp` and `Cache-Control: public, max-age=31536000, immutable`; then write `media.json`.
 
-sharp is a devDependency pinned to an exact version: encoding is deterministic for a given version, which keeps content-hash keys stable. Upgrading sharp can change bytes and therefore keys (use `--replace`).
+sharp is a devDependency pinned to an exact version: encoding is deterministic for a given version and environment, which keeps content-hash keys stable. The pin does not cover the platform-specific native build, so upgrading sharp or uploading from a different OS/CPU can change the bytes. The effect is limited to `media:put` requiring `--replace` and storing a new object (the old one becomes unreferenced); uploads are expected to run from the owner's single WSL environment, so no containerized uploader is introduced.
 
 `scripts/lib/media-metadata.mjs` (PNG/JPEG metadata removal without re-encoding) is removed; WebP re-encoding plus output verification replaces it.
 
