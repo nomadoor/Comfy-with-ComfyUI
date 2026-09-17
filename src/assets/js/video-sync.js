@@ -112,7 +112,12 @@ function createGroup(row) {
 
   async function start() {
     const ready = await Promise.all(videos.map((video) => waitForReadyState(video, 1, signal)));
+    // The row may have been removed by client-side navigation while waiting for metadata.
     if (signal.aborted) return;
+    if (!row.isConnected) {
+      groups.delete(row);
+      return;
+    }
     if (!ready.every(Boolean) || !canSyncDurations(videos.map((video) => video.duration))) {
       row.dataset.videoSync = "skipped";
       return;
