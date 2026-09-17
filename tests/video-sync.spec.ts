@@ -92,5 +92,18 @@ test.describe("video sync playback", () => {
     await expect(syncRow).not.toHaveAttribute("data-video-sync", /.+/);
     const [first] = await times(page, "sync-row");
     expect(first.loop).toBe(true);
+
+    // Switching back re-forms the group; removing the row (as the router does on navigation) tears it
+    // down without resuming playback of the detached videos.
+    await second.locator("button.media-toggle").dispatchEvent("click");
+    await expect(syncRow).toHaveAttribute("data-video-sync", "active");
+    const detached = await syncRow.evaluateHandle((row) => {
+      const videos = [...row.querySelectorAll("video")];
+      row.remove();
+      return { row, videos };
+    });
+    await expect
+      .poll(() => detached.evaluate(({ row, videos }) => !row.dataset.videoSync && videos.every((video) => video.paused)), { timeout: 3000 })
+      .toBe(true);
   });
 });

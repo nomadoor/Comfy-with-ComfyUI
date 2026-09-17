@@ -18,6 +18,7 @@ Articles often place comparison clips side by side (for example MiniMax H3 `ref2
 - **Buffering**: when any video fires `waiting`, the group pauses; when all can play again, followers align to the leader and playback resumes.
 - **Player mode**: `media-toggle.js` dispatches `media-modechange`; the row rebuilds its group from videos still in Loop mode. With fewer than two, the group dissolves and native looping is restored.
 - **Visibility**: an `IntersectionObserver` pauses the group off-screen and restarts it from 0 when the row becomes visible.
+- **Client-side navigation**: `router.js` swaps page content without reloading, so each check also tears down a group whose row is no longer in the document (clearing its timer and observer without resuming the detached videos).
 - Active groups set `data-video-sync="active"` on the row.
 
 ## Testing

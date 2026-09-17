@@ -88,7 +88,14 @@ function createGroup(row) {
   }
 
   function tick() {
-    if (signal.aborted || restarting || buffering || !visible || leader.paused) return;
+    if (signal.aborted) return;
+    // The router swaps page content without reloading; tear down groups whose row left the document.
+    if (!row.isConnected) {
+      destroy();
+      groups.delete(row);
+      return;
+    }
+    if (restarting || buffering || !visible || leader.paused) return;
     for (const video of videos) {
       if (video === leader) continue;
       // A slightly shorter follower waits on its last frame until the leader ends.
@@ -153,7 +160,8 @@ function createGroup(row) {
       const figure = video.closest("figure[data-media-toggle]");
       if (figure?.dataset.mediaMode !== "player") {
         video.loop = true;
-        video.play().catch(() => {});
+        // Only resume native looping for videos still on the page.
+        if (video.isConnected) video.play().catch(() => {});
       }
     });
   }
