@@ -1,7 +1,7 @@
 # ADR: Storage-independent media layer for R2 and Gyazo
 
 - Date: 2026-09-17
-- Status: Accepted
+- Status: Accepted (upload/metadata removal and image key format superseded by `2026-09-17-media-transforms.md`)
 
 ## Context
 

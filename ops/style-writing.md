@@ -121,7 +121,7 @@
 - プレイヤー再生 → `{media=player}`
 - 既存の `{gyazo=...}` は同じ意味の互換記法。新規では使わない。
 - R2 の画像は `/media/<論理名>` で参照する。論理名は原本置き場（`COMFY_MEDIA_ORIGINALS`）からの相対パス（例: `basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png`）。
-- 新しい画像は原本置き場に置き、`npm run media:put -- basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png` を実行して、出力された Markdown を貼る（metadata 除去・R2 アップロード・`src/_data/media.json` 登録まで自動）。
+- 新しい画像は原本置き場に置き、`npm run media:put -- basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png` を実行して、出力された Markdown を貼る（原寸 WebP への変換・R2 アップロード・`src/_data/media.json` 登録まで自動。サムネイル・記事用・OGP 用のサイズは配信時に自動生成される）。原本 PNG は原本置き場にだけ置き、R2 には上げない。
 - `media.comfyui.nomadoor.net/...` の物理 URL は記事に直接書かない（`check:media` でエラー）。
 - 原本は `<セクション>/<記事 slug>/<ファイル名>` に置く（workflow JSON と同じ構成）。フォルダは既存の記事 slug をそのまま使う。
 - ファイル名は小文字 snake_case で、単体で何の画像か分かる名前にする（例: `minimax_h3_audio_driven_i2va.png`。`audio_driven_i2va.png` まで短くしない）。記事タイトルや本文では正式表記（`MiniMax H3` など）を使う。
