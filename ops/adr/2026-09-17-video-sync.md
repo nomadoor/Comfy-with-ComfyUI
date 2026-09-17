@@ -23,7 +23,7 @@ Articles often place comparison clips side by side (for example MiniMax H3 `ref2
 
 ## Testing
 
-- `tests/video-sync.spec.ts`: duration and drift-correction rules; end-to-end playback on the fixture page with generated VP9 WebM clips (Playwright's Chromium cannot decode H.264): alignment across a loop restart, recovery from a forced 1 s drift, a >0.5 s duration difference left unsynced, and dissolving the group when one video switches to Player. Requires ffmpeg with libvpx-vp9 (skipped otherwise).
+- `tests/video-sync.spec.ts`: duration and drift-correction rules; end-to-end playback on the fixture page with generated VP9 WebM clips (Playwright's Chromium cannot decode H.264): alignment across a loop restart, recovery from a forced 1 s drift, a >0.5 s duration difference left unsynced, and dissolving the group when one video switches to Player. Requires ffmpeg with libvpx-vp9 (skipped otherwise); CI installs ffmpeg so these and the other video tests run there.
 - Real H.264 articles are checked manually on localhost.
 
 ## Scope

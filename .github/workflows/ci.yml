@@ -45,5 +45,9 @@ jobs:
       - name: Install Playwright browsers (Chromium only)
         run: npx playwright install --with-deps chromium
 
+      # 動画まわりのテスト（metadata 除去・サイズ取得・同期）に ffmpeg（libvpx-vp9 を含む）が必要
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
+
       - name: Run Playwright tests
         run: npm run test:playwright -- --reporter=list
