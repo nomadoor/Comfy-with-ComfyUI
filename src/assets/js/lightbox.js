@@ -183,33 +183,9 @@ function updateLightboxLabels() {
 
 function getMediaSource(target) {
   if (!target) return "";
-  const gyazoFig = target.closest("[data-gyazo-id]");
-  if (gyazoFig) {
-    const gid = gyazoFig.getAttribute("data-gyazo-id");
-    if (gid) return `https://i.gyazo.com/${gid}.mp4`;
-  }
-
-  if (target.dataset.fullSrc) {
-    return target.dataset.fullSrc;
-  }
-
-  const pick = target.currentSrc || target.src || "";
-
-  // Recover the raw asset if older markup only exposes a Gyazo max_size preview.
-  try {
-    const u = new URL(pick);
-    if (u.hostname === "i.gyazo.com") {
-      const m = u.pathname.match(/\/([a-f0-9]{32})\/max_size\/\d+\.(png|jpg|jpeg|gif)$/i);
-      if (m) {
-        const id = m[1];
-        return `https://gyazo.com/${id}/raw`;
-      }
-    }
-  } catch {
-    /* ignore */
-  }
-
-  return pick;
+  // The build writes the real full-resolution URL into data-full-src for every article image and
+  // video, so the viewer needs no knowledge of the media source.
+  return target.dataset.fullSrc || target.currentSrc || target.src || "";
 }
 
 function clamp(value, min, max) {
@@ -376,8 +352,8 @@ function showVideo(target, source) {
     videoEl.load();
   }
 
-  const figure = target.closest("[data-gyazo-toggle]");
-  const mode = figure?.dataset.gyazoMode || figure?.getAttribute("data-gyazo-initial") || "loop";
+  const figure = target.closest("[data-media-toggle]");
+  const mode = figure?.dataset.mediaMode || figure?.getAttribute("data-media-initial") || "loop";
   const isPlayer = mode === "player";
   videoEl.loop = !isPlayer;
   videoEl.muted = !isPlayer;
@@ -603,7 +579,7 @@ function detachKeyHandler() {
 }
 
 const initLightbox = (root = document) => {
-  mediaItems = Array.from(root.querySelectorAll(".article-body img, .article-body figure[data-gyazo-toggle] video"));
+  mediaItems = Array.from(root.querySelectorAll(".article-body img, .article-body figure[data-media-toggle] video"));
   if (!mediaItems.length) return;
 
   buildLightbox();

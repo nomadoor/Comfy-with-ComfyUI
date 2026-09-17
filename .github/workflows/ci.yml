@@ -28,11 +28,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 4. ビルド
+      # 4. 整合性チェック（frontmatter / nav / workflow / media など）
+      - name: Run checks
+        run: npm run check
+
+      # 5. ビルド
       - name: Build site
         run: npm run build
 
-      # 5. 簡易E2E（Playwright）
+      # 6. ビルド出力の検査（fixture の混入・未解決の /media/ 参照がないこと）
+      - name: Check build output
+        run: npm run check:build
+
+      # 7. 簡易E2E（Playwright）
       #    ブラウザを最小限だけ入れて smoke を回す
       - name: Install Playwright browsers (Chromium only)
         run: npx playwright install --with-deps chromium

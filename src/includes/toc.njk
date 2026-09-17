@@ -75,10 +75,11 @@
             {% if panel.type == "info" %}
               {% if panel.video %}
                 {% set videoCaption = panel.video.caption[currentLang] or panel.video.caption[site.defaultLang] or "" %}
+                {% set railVideo = panel.video.url | resolveMedia({ mode: "loop" }) %}
                 <div class="assistant-rail__media">
                   <div class="assistant-rail__media-frame">
                     <video
-                      src="https://i.gyazo.com/{{ panel.video.id }}.mp4"
+                      src="{{ railVideo.src }}"
                       autoplay
                       muted
                       loop

@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./support/test";
 
 const PAGE = "/ja/basic-workflows/sd15-basics/";
 

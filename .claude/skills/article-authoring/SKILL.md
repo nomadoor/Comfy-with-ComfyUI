@@ -1,13 +1,13 @@
 ---
 name: article-authoring
-description: Use when creating or substantially editing documentation articles in src/content, including frontmatter, headings, Gyazo embeds, workflow links, tags, summaries, and preserving the owner's Japanese writing voice.
+description: Use when creating or substantially editing documentation articles in src/content, including frontmatter, headings, media embeds (R2/Gyazo), workflow links, tags, summaries, and preserving the owner's Japanese writing voice.
 ---
 
 # Article Authoring
 
 ## Read First
 
-- Read `/ops/style-writing.md` for style, structure, Gyazo, mediaRow, tags, and translation-adjacent rules.
+- Read `/ops/style-writing.md` for style, structure, media embeds, mediaRow, tags, and translation-adjacent rules.
 - Read `/ops/ia.md` when adding a page or changing page placement.
 - Read nearby articles in the same section and language before writing.
 
@@ -21,10 +21,12 @@ description: Use when creating or substantially editing documentation articles i
    - `tags` are optional and max 5.
    - `notes` uses `noteTags`; do not substitute normal `tags`.
 5. Use H2/H3 only for article body structure unless an existing page pattern requires otherwise.
-6. Use Gyazo markup consistently:
-   - static image: `{gyazo=image}`
-   - loop: `{gyazo=loop}`
-   - player: `{gyazo=player}`
+6. Use media markup consistently. `{media=...}` is the display mode and works for R2 and Gyazo URLs; `{gyazo=...}` is a compatible alias:
+   - static image: `{media=image}`
+   - loop: `{media=loop}`
+   - player: `{media=player}`
+   - R2 media is referenced only as `/media/<logical name>` (for example `/media/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png`: `<section>/<article slug>/<lowercase_snake_case file name>`), where the logical name is registered in `src/_data/media.json`. The owner uploads with `npm run media:put`. Never write `media.comfyui.nomadoor.net` URLs directly, and never invent or rename logical names without the owner.
+   - Gyazo and other external media URLs are written directly.
 7. When linking workflow JSON, use paths under `/workflows/...`.
 
 ## Editing Owner Drafts

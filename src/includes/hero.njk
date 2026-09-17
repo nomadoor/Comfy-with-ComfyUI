@@ -1,7 +1,7 @@
 {% set heroBlock = hero or {} %}
 {% set heroImage = heroBlock.image %}
-{% set isHeroVideo = heroImage and (heroImage | lower).endsWith(".mp4") %}
-{% set heroVariant = (heroImage and (not isHeroVideo)) and (heroImage | imageVariant(1200)) %}
+{% set heroMedia = heroImage and (heroImage | resolveMedia({ size: 1200 })) %}
+{% set isHeroVideo = heroMedia and heroMedia.kind == "video" %}
 {% set outageNotice = site.outageNotice or {} %}
 {% set outageTitle = outageNotice.title[currentLang] or outageNotice.title[site.defaultLang] %}
 {% set outageBody = outageNotice.body[currentLang] or outageNotice.body[site.defaultLang] %}
@@ -16,7 +16,7 @@
   {% if heroImage and isHeroVideo %}
     <video
       class="hero__media"
-      src="{{ heroImage }}"
+      src="{{ heroMedia.src }}"
       muted
       autoplay
       loop
@@ -25,12 +25,12 @@
       aria-hidden="true"
       tabindex="-1"
     ></video>
-  {% elif heroImage and heroVariant %}
+  {% elif heroMedia %}
     <img
-      src="{{ heroVariant.preview }}"
-      {% if heroVariant.full and heroVariant.full != heroVariant.preview %}data-full-src="{{ heroVariant.full }}"{% endif %}
-      {% if heroVariant.full and heroVariant.full != heroVariant.preview and heroVariant.largeWidth > heroVariant.width %}
-        srcset="{{ heroVariant.preview }} {{ heroVariant.width }}w, {{ heroVariant.large }} {{ heroVariant.largeWidth }}w"
+      src="{{ heroMedia.src }}"
+      {% if heroMedia.fullSrc != heroMedia.src %}data-full-src="{{ heroMedia.fullSrc }}"{% endif %}
+      {% if heroMedia.srcset %}
+        srcset="{{ heroMedia.srcset }}"
         sizes="(min-width: 1100px) 960px, 100vw"
       {% endif %}
       alt="{{ heroBlock.alt or title }}"

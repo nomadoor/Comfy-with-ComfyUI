@@ -27,13 +27,8 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
 {% set heroBlock = hero or {} -%}
 {% set heroImage = heroBlock.image -%}
 {% set heroImageNormalized = heroImage | stripUrlQuery -%}
-{% set heroVariant = heroImageNormalized | imageVariant(1200) -%}
-{% set candidateImage = heroVariant.preview -%}
-{% set isVideo = candidateImage and ('.mp4' in (candidateImage | lower)) -%}
-{% set ogImagePath = candidateImage -%}
-{% if isVideo and candidateImage -%}
-{% set ogImagePath = candidateImage | replace(".mp4", ".jpg") | replace(".MP4", ".jpg") -%}
-{% endif -%}
+{% set heroMedia = heroImageNormalized | resolveMedia({ size: 1200 }) -%}
+{% set ogImagePath = heroMedia.poster -%}
 {% set ogImage = ogImagePath if ogImagePath else (site.ogImage or '') -%}
 {% if ogImagePath and siteUrl -%}
 {% set ogStartsWithSlash = (ogImagePath | first) == '/' -%}
@@ -52,6 +47,9 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
   </script>
   <title>{{ title | e }} | {{ (site.name[currentLang] or site.name[site.defaultLang]) | e }}</title>
   <meta name="description" content="{{ pageSummary | e }}" />
+  {% if robots %}
+  <meta name="robots" content="{{ robots | e }}" />
+  {% endif %}
   {% if canonicalUrl %}
   <link rel="canonical" href="{{ canonicalUrl | e }}" />
   {% endif %}

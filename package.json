@@ -3,22 +3,29 @@
   "version": "1.0.0",
   "type": "module",
   "description": "ComfyUI onboarding + workflow docs built with Eleventy, vanilla CSS, and ESM-only scripts.",
+  "engines": {
+    "node": ">=20.15.0"
+  },
   "scripts": {
     "dev": "npx @11ty/eleventy --serve --port=8080",
     "dev:watch": "npx @11ty/eleventy --watch --output=_site",
+    "dev:test": "COMFY_MEDIA_FIXTURES=1 eleventy --serve --port=8091 --output=.cache/playwright-site",
     "dev:pages": "npx wrangler pages dev _site --port=8080 --compatibility-date=2026-02-17",
     "build": "eleventy --input=src --output=_site",
     "clean": "rimraf _site",
-    "check": "npm run check:encoding && npm run check:content && npm run check:workflows && npm run check:assets",
-    "check:all": "npm run check && npm run build && npm run test:playwright",
+    "check": "npm run check:encoding && npm run check:content && npm run check:workflows && npm run check:media && npm run check:assets",
+    "check:all": "npm run check && npm run clean && npm run build && npm run check:build && npm run test:playwright",
     "check:assets": "node scripts/check-esm.mjs && node scripts/check-icons.mjs",
     "check:content": "node scripts/check-frontmatter.mjs && node scripts/check-nav-integrity.mjs && node scripts/check-markdown-links.mjs",
     "check:encoding": "node scripts/check-utf8.mjs",
     "check:links": "STRICT_LINKS=1 node scripts/check-markdown-links.mjs",
     "check:icons": "STRICT_ICONS=1 node scripts/check-icons.mjs",
     "check:workflows": "node scripts/check-workflows.mjs",
+    "check:media": "node scripts/check-media.mjs",
+    "check:build": "node scripts/check-build-output.mjs",
     "views:update": "node scripts/update-page-views.mjs",
     "views:update:dry": "node scripts/update-page-views.mjs --dry-run",
+    "media:put": "node scripts/media-upload.mjs",
     "test:playwright": "playwright test"
   },
   "keywords": [

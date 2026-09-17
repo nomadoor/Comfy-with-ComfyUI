@@ -81,7 +81,7 @@
 
 ## 5. Media & Lightbox
 - Default media brightness: `filter: brightness(0.85)`. Obey the 320px article media height cap unless overridden.
-- Hero media may be an image or a Gyazo `.mp4` video URL. Hero videos autoplay muted loop and are purely decorative.
+- Hero media may be an image or an `.mp4` video URL (R2 or Gyazo). Hero videos autoplay muted loop and are purely decorative. OGP uses the media poster, falling back to `site.ogImage`.
 - Lightbox must support Esc close, continuous zoom from 100% to a per-image maximum, constrained drag/pinch pan, and arrow keys or buttons for navigation. Every image must remain zoomable to at least 500% so the interaction range is consistent even for small raw assets. Once raw dimensions are available, extend that maximum when 1.5 times the raw-intrinsic-to-fitted-size ratio is greater, and recalculate after viewport changes. Desktop and mobile use the same calculation, so large images can reach 150% of their raw native rendered size without reducing the guaranteed 500% range for smaller images. At 100%, fit the image between the previous/next buttons without covering them; clicking the zoom-in cursor image must then zoom to 200% and change the cursor to a grab hand for panning. Zoom also works through flat, borderless controls at the bottom right, keyboard +/- keys, mouse wheel, and touch pinch. Place one localized operation hint beside those controls; do not switch it by device or input capability, and keep its wording unchanged across zoom states. The hint must list click, +/- controls, wheel, pinch, and drag so every supported operation remains discoverable. Keep a clearly visible close `×` at the top right. The browser viewport is the pan canvas after zooming: enlarged pixels may pass behind the navigation controls and are clipped only at the viewport edge rather than the fitted image rectangle. Controls must overlay the canvas without reserving a bottom toolbar, and the hint must be hidden for video. Clicking outside the fitted image resets an enlarged image before closing the lightbox on the next click.
 
 ## 6. Search
@@ -105,7 +105,7 @@
 - Reference `/ops/style-design.md` for typography, spacing, and elevation rules.
 
 ## 10. Accessibility & Performance
-- Provide descriptive `alt` text (describe Gyazo actions too).
+- Provide descriptive `alt` text (describe actions shown in videos too).
 - Ensure keyboard support: focus states, Esc handlers, Enter/Space activations.
 - Serve `/assets/*` with `Cache-Control: public, max-age=31536000, immutable`.
 - Provide a single JavaScript-unavailable fallback notice near the top of article content. Hide it by default when scripts run (`html.js` flag) so normal layouts are unaffected.
@@ -114,7 +114,8 @@
 - Every slug must exist in nav files and directories.
 - `tags[]` は **任意**。使う場合は `_data/tagIndex.js` 由来で最大5件。`ai-capabilities` は tags なしが既定。
 - All standard markdown `<img>` elements need width/height attributes or CSS aspect enforcement.
-- Exception: Gyazo-rendered embeds (`![](...){gyazo=image|loop}` and equivalent `mediaRow` Gyazo usage) are allowed without per-image width/height in Markdown because renderer/CSS enforces dimensions and media caps.
+- Exception: media embeds (`![](...){media=image|loop|player}`, compatible `{gyazo=...}`, and equivalent `mediaRow` usage) are allowed without per-image width/height in Markdown because the renderer takes dimensions from `src/_data/media.json` (R2) or the Gyazo metadata cache and CSS enforces media caps.
+- R2 media is referenced as `/media/<logical name>` (reserved virtual namespace), must be registered in `src/_data/media.json`, and must match its display mode; physical R2 URLs must not be written in content or data (`npm run check:media`). See `ops/adr/2026-09-17-media-layer-r2-gyazo.md`.
 - Update README/ADRs whenever IA or UX changes.
 
 ## 12. Deliverables
@@ -130,11 +131,11 @@
 - `collapsed`: tiny square anchored bottom-right with character peek.
 - `hover-expanded`: desktop hover or mobile tap reveals three CTA bubbles (panel view). Selecting a CTA hides the panel and swaps in a fixed-width window positioned in the exact same rail slot.
 - Windows never close on hover-out/background clicks; the only exits are the circular close icon (Cross SVG asset) or the “send another request” CTA inside the submitted view.
-- `json-help`: copy stack + Gyazo loop clip. Use the existing media tokens (brightness 0.85, 300px height cap) and autoplay muted loop.
+- `json-help`: copy stack + loop clip (`panel.video.url`). Use the existing media tokens (brightness 0.85, 300px height cap) and autoplay muted loop.
 - `form-correction` / `form-request`: two-step flow (`確認` -> preview -> `送信`). Confirm locks the textarea, shows the preview card, and exposes the Send + Edit buttons. The Send button posts to the Cloudflare Worker endpoint defined by `ASSISTANT_FEEDBACK_ENDPOINT`, always attaching `window.location.href` and `navigator.userAgent`.
 - Successful POST responses transition the rail into the `submitted` state, echo the category label, and keep the avatar expanded so the panel can be reopened immediately.
 - Mobile: tap toggles expansion, lock body scroll while any window is open, and keep CTA hit areas full width.
-- Gyazo embeds inside the rail reuse article media filters (flat, no drop-shadows, explicit width/height).
+- Media embeds inside the rail reuse article media filters (flat, no drop-shadows, explicit width/height).
 
 ## 15. Link Behavior
 - Every anchor must be classified as internal or external so styles can target them (`data-link-type="internal|external"` plus `.link--internal` / `.link--external` classes).
@@ -152,8 +153,8 @@
 - `og:title` / `twitter:title` should use page `title`.
 - `og:description` / `twitter:description` should use page `summary` (fallback to site default).
 - `og:url` should be absolute, built from `site.url` + `page.url`.
-- `og:image` / `twitter:image` should use the page hero image if it is an image (not `.mp4`).
-  - If the hero is a video or missing, fall back to `site.ogImage`.
+- `og:image` / `twitter:image` should use the hero media's resolved still image (`resolveMedia().poster`): the image itself for image heroes, the poster for video heroes.
+  - If the hero is missing or a video has no poster, fall back to `site.ogImage`.
 - `site.url` and `site.ogImage` live in `src/_data/site.json`.
 
 ## 18. i18n SEO (Canonical / Hreflang / Sitemap)

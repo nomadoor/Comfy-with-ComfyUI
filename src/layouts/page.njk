@@ -61,14 +61,14 @@ layout: base.njk
         {% set placeholderIcons = ["terminal-2", "cpu-2", "braces", "binary-tree", "sparkles"] %}
         {% for entry in relatedEntries %}
           {% set heroImage = entry.hero and entry.hero.image or null %}
-          {% set heroVariant = null %}
+          {% set heroMedia = null %}
           {% if heroImage %}
-            {% set heroVariant = heroImage | imageVariant(480) %}
+            {% set heroMedia = heroImage | resolveMedia({ size: 480 }) %}
           {% endif %}
           {% set placeholderIcon = placeholderIcons[loop.index0 % placeholderIcons.length] %}
           <a class="workflow-related__card" href="{{ entry.url }}">
-            <div class="workflow-related__hero" {% if heroVariant and heroVariant.preview %}data-hero="{{ heroVariant.preview }}"{% endif %}>
-              {% if not heroVariant %}
+            <div class="workflow-related__hero" {% if heroMedia and heroMedia.poster %}data-hero="{{ heroMedia.poster }}"{% endif %}>
+              {% if not (heroMedia and heroMedia.poster) %}
                 <span class="workflow-related__placeholder-icon" aria-hidden="true">{{ icon(placeholderIcon) }}</span>
               {% endif %}
             </div>
