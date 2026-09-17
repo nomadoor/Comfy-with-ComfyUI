@@ -2,6 +2,7 @@
 
 - Date: 2026-09-17
 - Status: Accepted
+- Upload command superseded by `2026-09-17-media-authoring-flow.md` (`media:put` → `media:sync`)
 - Supersedes (in part): `2026-09-17-media-layer-r2-gyazo.md` — the upload/metadata-removal steps and the image key format. The logical `/media/` naming, `media.json` role, display modes, fixtures, and checks remain as described there.
 
 ## Context

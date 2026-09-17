@@ -120,13 +120,19 @@
 - UI 操作・アニメーション → `{media=loop}`
 - プレイヤー再生 → `{media=player}`
 - 既存の `{gyazo=...}` は同じ意味の互換記法。新規では使わない。
-- R2 の画像は `/media/<論理名>` で参照する。論理名は原本置き場（`COMFY_MEDIA_ORIGINALS`）からの相対パス（例: `basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png`）。
-- 新しい画像は原本置き場に置き、`npm run media:put -- basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png` を実行して、出力された Markdown を貼る（原寸 WebP への変換・R2 アップロード・`src/_data/media.json` 登録まで自動。サムネイル・記事用・OGP 用のサイズは配信時に自動生成される）。原本 PNG は原本置き場にだけ置き、R2 には上げない。
+- R2 の画像・動画は `/media/<論理名>` で参照する。論理名は原本置き場（`COMFY_MEDIA_ORIGINALS`）からの相対パス（例: `basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png`）。
+- 書き方の流れ：
+  1. 原本（PNG / JPEG / mp4）を原本置き場に置く
+  2. 記事に `![](/media/<論理名>){media=image}`（動画は `{media=loop}` / `{media=player}`）と書く
+  3. `npm run dev` の localhost で確認する（未アップロードの原本はそのままプレビューされる）
+  4. コミットすると pre-commit フックが `media:sync` を実行し、原寸 WebP（動画は metadata を除いた mp4 と poster）への変換・R2 アップロード・`src/_data/media.json` 登録を自動で行う
+- サムネイル・記事用・OGP 用のサイズは配信時に自動生成される。原本は原本置き場にだけ置き、R2 には上げない。
+- 原本を差し替えた場合も、コミット時に自動で新しい内容がアップロードされる。
 - `media.comfyui.nomadoor.net/...` の物理 URL は記事に直接書かない（`check:media` でエラー）。
 - 原本は `<セクション>/<記事 slug>/<ファイル名>` に置く（workflow JSON と同じ構成）。フォルダは既存の記事 slug をそのまま使う。
 - ファイル名は小文字 snake_case で、単体で何の画像か分かる名前にする（例: `minimax_h3_audio_driven_i2va.png`。`audio_driven_i2va.png` まで短くしない）。記事タイトルや本文では正式表記（`MiniMax H3` など）を使う。
 - 公開後の論理名は安定 ID として扱い、安易に変えない。
-- 動画など重いメディアは Gyazo を使ってもよい（URL を直接書く）。
+- 動画（mp4、H.264）も R2 に置ける（ffmpeg が必要: `sudo apt install ffmpeg`）。Gyazo の URL を直接書いてもよい。
 
 テンプレ：
 
