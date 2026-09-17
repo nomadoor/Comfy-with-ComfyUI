@@ -13,8 +13,8 @@ const R2_VIDEO = "https://media.comfyui.nomadoor.net/videos/23d3bb96df2ebf63.mp4
 const GYAZO_IMAGE_ID = "a0b09641bae0c8b02187e6c6b7bb9c5a";
 const GYAZO_LOOP_ID = "8cc0775e0b3f0bf5605f9b3aedf0665c";
 const GYAZO_PLAYER_ID = "4e0ce0ea62fc7138ffe7ea1892ec21b8";
-const FIXTURE_PNG = fs.readFileSync(path.resolve("tests", "fixtures", "media", "r2-image.png"));
-const FIXTURE_MP4 = fs.readFileSync(path.resolve("tests", "fixtures", "media", "r2-video.mp4"));
+const FIXTURE_PNG = fs.readFileSync(path.resolve("tests", "fixtures", "media", "r2_image.png"));
+const FIXTURE_MP4 = fs.readFileSync(path.resolve("tests", "fixtures", "media", "r2_video.mp4"));
 
 async function routeMedia(page: Page) {
   const fulfill = async (route) => {

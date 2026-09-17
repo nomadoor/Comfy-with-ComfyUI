@@ -7,7 +7,7 @@ import { test, expect } from "@playwright/test";
 // Metadata removal used by `npm run media:put`. Browser decoding confirms the stripped files are
 // still valid and render the same pixels as the originals.
 
-const FIXTURE_PNG = fs.readFileSync(path.resolve("tests", "fixtures", "media", "r2-image.png"));
+const FIXTURE_PNG = fs.readFileSync(path.resolve("tests", "fixtures", "media", "r2_image.png"));
 
 async function loadStripper() {
   return import(pathToFileURL(path.resolve("scripts", "lib", "media-metadata.mjs")).href);

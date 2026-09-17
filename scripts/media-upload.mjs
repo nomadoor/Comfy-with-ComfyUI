@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // Upload article images to the R2 media bucket under a logical name.
 //
-//   COMFY_MEDIA_ORIGINALS=/mnt/d/comfy-with-comfyui-media
-//   npm run media:put -- flux-2-klein/001.png [...] [--alt "説明"] [--replace] [--force] [--dry-run] [--no-clipboard]
+//   COMFY_MEDIA_ORIGINALS=/mnt/e/ai/comfy-with-comfyui-media
+//   npm run media:put -- basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png [...] [--alt "説明"] [--replace] [--force] [--dry-run] [--no-clipboard]
 //
 // The argument is a path relative to COMFY_MEDIA_ORIGINALS (or an absolute path inside it); that
 // relative path is the logical name used in Markdown as `/media/<logical name>`.
@@ -32,7 +32,7 @@ const ORIGINALS_ENV = "COMFY_MEDIA_ORIGINALS";
 const CACHE_CONTROL = "public, max-age=31536000, immutable";
 const HASH_LENGTH = 16;
 const USAGE =
-  'Usage: npm run media:put -- <logical name, e.g. flux-2-klein/001.png> [...] [--alt "説明"] [--replace] [--force] [--dry-run] [--no-clipboard]';
+  'Usage: npm run media:put -- <logical name, e.g. basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png> [...] [--alt "説明"] [--replace] [--force] [--dry-run] [--no-clipboard]';
 const REFERENCE_SOURCES = [
   "src/*.{md,njk}",
   "src/content/**/*.{md,njk}",
@@ -59,7 +59,7 @@ function parseArgs(argv) {
 
 function originalsRoot() {
   const root = process.env[ORIGINALS_ENV];
-  if (!root) throw new Error(`${ORIGINALS_ENV} が設定されていません（原本置き場のルート。例: /mnt/d/comfy-with-comfyui-media）`);
+  if (!root) throw new Error(`${ORIGINALS_ENV} が設定されていません（原本置き場のルート。例: /mnt/e/ai/comfy-with-comfyui-media）`);
   if (!fs.existsSync(root) || !fs.statSync(root).isDirectory()) throw new Error(`${ORIGINALS_ENV}=${root} はディレクトリではありません`);
   return fs.realpathSync(root);
 }

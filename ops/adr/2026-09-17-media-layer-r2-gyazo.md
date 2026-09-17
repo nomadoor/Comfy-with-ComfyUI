@@ -26,16 +26,18 @@ Writing articles against hash-named R2 URLs would also make Markdown hard to rea
 
 | Layer | Example | Role |
 |---|---|---|
-| Local originals | `$COMFY_MEDIA_ORIGINALS/flux-2-klein/001.png` | Human-organized source of truth, outside the repository. May contain ComfyUI workflow metadata. Backed up by the owner. |
-| Markdown / data | `![](/media/flux-2-klein/001.png){media=image}` | Logical reference. |
-| `src/_data/media.json` | `"flux-2-klein/001.png": { "key": "images/<hash>.png", … }` | Logical name → R2 key and metadata. Production media only. |
+| Local originals | `$COMFY_MEDIA_ORIGINALS/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png` | Human-organized source of truth, outside the repository. May contain ComfyUI workflow metadata. Backed up by the owner. |
+| Markdown / data | `![](/media/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png){media=image}` | Logical reference. |
+| `src/_data/media.json` | `"basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png": { "key": "images/<hash>.png", … }` | Logical name → R2 key and metadata. Production media only. |
 | R2 | `https://media.comfyui.nomadoor.net/images/<hash>.png` | Public, immutable, content-addressed objects. |
 
 ### Logical names
 
 - A logical name is the original's path relative to `COMFY_MEDIA_ORIGINALS`, so no separate `source` field is stored.
-- Allowed form: a lowercase ASCII relative POSIX path whose segments match `[a-z0-9][a-z0-9._-]*`, ending in `.png`, `.jpg`, `.jpeg`, or `.mp4`. Forbidden: uppercase, leading or trailing `/`, empty segments (`//`), `.`/`..` segments, segments ending in `.`, and Windows reserved names (`con`, `prn`, `aux`, `nul`, `com1-9`, `lpt1-9`).
-- Article slugs are not part of R2 keys. A folder named after an article is only a naming convention for originals; shared media may live in any folder (for example `common/`).
+- Structure: `<section>/<article slug>/<file>`, the same layout as `src/workflows/`. Folders use the existing canonical slugs as they are (for example `lumina-image-2.0`); slugs are never changed for naming reasons. Subfolders such as `9b/` are allowed.
+- File names are lowercase snake_case (`[a-z0-9]+(_[a-z0-9]+)*` plus a lowercase extension) and should be understandable on their own, e.g. `minimax_h3_audio_driven_i2va.png` rather than `audio_driven_i2va.png`. The same convention applies to workflow JSON (tracked separately). Meaningful naming is a guideline; only the format is enforced.
+- Allowed form: a lowercase ASCII relative POSIX path whose folder segments match `[a-z0-9][a-z0-9._-]*`, ending in `.png`, `.jpg`, `.jpeg`, or `.mp4`. Uppercase is not used anywhere because Windows originals, WSL/Git, URLs, R2, and manifest IDs treat case differently. Forbidden: uppercase, leading or trailing `/`, empty segments (`//`), `.`/`..` segments, segments ending in `.`, and Windows reserved names (`con`, `prn`, `aux`, `nul`, `com1-9`, `lpt1-9`).
+- Article slugs are not part of R2 keys, so moving or sharing media never changes public object URLs.
 - Published names are treated as stable IDs and are not renamed casually. Before publication, renaming is manual (original file, `media.json` key, references); `check:media` catches misses.
 - `fixtures/` names are reserved for test fixtures and are rejected in the production manifest.
 
@@ -49,8 +51,8 @@ Writing articles against hash-named R2 URLs would also make Markdown hard to rea
 
 ```json
 {
-  "flux-2-klein/001.png": { "key": "images/a94f8d31c5e2b7d0.png", "width": 1920, "height": 1080, "type": "image/png", "bytes": 183241 },
-  "flux-2-klein/demo.mp4": { "key": "videos/23d3bb96df2ebf63.mp4", "width": 1280, "height": 720, "type": "video/mp4", "bytes": 912345, "poster": "flux-2-klein/demo-poster.png" }
+  "basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png": { "key": "images/a94f8d31c5e2b7d0.png", "width": 1920, "height": 1080, "type": "image/png", "bytes": 183241 },
+  "basic-workflows/minimax-h3/minimax_h3_demo.mp4": { "key": "videos/23d3bb96df2ebf63.mp4", "width": 1280, "height": 720, "type": "video/mp4", "bytes": 912345, "poster": "basic-workflows/minimax-h3/minimax_h3_demo_poster.png" }
 }
 ```
 
@@ -80,8 +82,8 @@ Writing articles against hash-named R2 URLs would also make Markdown hard to rea
 ### Upload workflow
 
 ```bash
-export COMFY_MEDIA_ORIGINALS=/mnt/d/comfy-with-comfyui-media   # machine-specific, not in the repo
-npm run media:put -- flux-2-klein/001.png [...] [--alt "説明"] [--replace] [--force] [--dry-run] [--no-clipboard]
+export COMFY_MEDIA_ORIGINALS=/mnt/e/ai/comfy-with-comfyui-media   # machine-specific, not in the repo
+npm run media:put -- basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png [...] [--alt "説明"] [--replace] [--force] [--dry-run] [--no-clipboard]
 ```
 
 1. The argument is relative to `COMFY_MEDIA_ORIGINALS` (an absolute path inside it is also accepted) and becomes the logical name. Paths outside the root, invalid names, and names whose on-disk case differs (WSL-mounted Windows drives are case-insensitive) are rejected.
@@ -102,7 +104,7 @@ mp4 is registered manually for now. ComfyUI video outputs (e.g. VideoHelperSuite
 ### Test fixtures
 
 - Production never contains fixtures: `src/_data/media.json` holds only real public media, and no fixture objects are uploaded to R2.
-- `tests/fixtures/media/` holds the fixture manifest (`media.json`, `fixtures/…` names), the fixture page (`media-fixtures.md`), `r2-image.png`, and `r2-video.mp4` (32×32 synthetic H.264).
+- `tests/fixtures/media/` holds the fixture manifest (`media.json`, `fixtures/…` names), the fixture page (`media-fixtures.md`), `r2_image.png`, and `r2_video.mp4` (32×32 synthetic H.264).
 - With `COMFY_MEDIA_FIXTURES=1`, `.eleventy.js` merges the fixture manifest and adds the page as a virtual template at `/internal/media-fixtures/` (`robots: noindex`, `searchExclude: true`, not in nav/sitemap/llms.txt/search). Without it, neither is read.
 - Playwright starts `npm run dev:test` (fixtures enabled, port 8091, output `.cache/playwright-site`), so a regular `npm run dev` server on 8080 and `_site` are never reused. R2 and Gyazo requests are fulfilled from local fixtures.
 - `tests/media.spec.ts` covers `/media/` resolution, R2/Gyazo × image/loop/player, OGP poster, UI naming, and lightbox; `tests/media-metadata.spec.ts` covers metadata removal. Player click-to-open is asserted with a normally sized Gyazo player because native controls cover the 32px R2 fixture.

@@ -25,7 +25,7 @@ description: Use when creating or substantially editing documentation articles i
    - static image: `{media=image}`
    - loop: `{media=loop}`
    - player: `{media=player}`
-   - R2 media is referenced only as `/media/<logical name>` (for example `/media/flux-2-klein/001.png`), where the logical name is registered in `src/_data/media.json`. The owner uploads with `npm run media:put`. Never write `media.comfyui.nomadoor.net` URLs directly, and never invent or rename logical names without the owner.
+   - R2 media is referenced only as `/media/<logical name>` (for example `/media/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png`: `<section>/<article slug>/<lowercase_snake_case file name>`), where the logical name is registered in `src/_data/media.json`. The owner uploads with `npm run media:put`. Never write `media.comfyui.nomadoor.net` URLs directly, and never invent or rename logical names without the owner.
    - Gyazo and other external media URLs are written directly.
 7. When linking workflow JSON, use paths under `/workflows/...`.
 
