@@ -13,5 +13,19 @@
     "type": "video/mp4",
     "bytes": 5071,
     "poster": "fixtures/r2_image.png"
+  },
+  "fixtures/r2_video_b.mp4": {
+    "key": "videos/1111111111111111.mp4",
+    "width": 32,
+    "height": 32,
+    "type": "video/mp4",
+    "bytes": 5071
+  },
+  "fixtures/r2_video_long.mp4": {
+    "key": "videos/2222222222222222.mp4",
+    "width": 32,
+    "height": 32,
+    "type": "video/mp4",
+    "bytes": 5071
   }
 }
