@@ -8,6 +8,10 @@ on:
     branches:
       - main
 
+# チェックアウトとビルド・テストだけなので読み取り権限のみ
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
