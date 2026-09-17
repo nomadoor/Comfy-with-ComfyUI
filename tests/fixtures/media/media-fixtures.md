@@ -61,6 +61,20 @@ Playwright の `tests/media.spec.ts` が使う検証用ページです。`COMFY_
 
 </div>
 
+<div data-fixture="lazy-spacer" style="height:300vh"></div>
+
+<div data-fixture="far-loop">
+
+![far loop](/media/fixtures/r2_video_far.mp4){media=loop}
+
+</div>
+
+<div data-fixture="far-player">
+
+![far player](/media/fixtures/r2_video_far_player.mp4){media=player}
+
+</div>
+
 <div data-fixture="gyazo-loop">
 
 ![Gyazo loop](https://gyazo.com/8cc0775e0b3f0bf5605f9b3aedf0665c){media=loop}
