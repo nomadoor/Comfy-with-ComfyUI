@@ -17,7 +17,7 @@ Writing articles against hash-named R2 URLs would also make Markdown hard to rea
 
 - **Cloudflare R2 is the primary permanent media storage.** New screenshots go to R2.
 - **Gyazo is not prohibited or deprecated.** It remains a supported media source, especially for heavy media such as videos. Gyazo support is not removed as R2 adoption progresses.
-- R2 bucket `media.bucket` (`comfy-with-comfyui-media`) is served only through the custom domain `media.host` (`img.comfyui.nomadoor.net`); both live in `src/_data/site.json`. The `r2.dev` URL stays disabled.
+- R2 bucket `media.bucket` (`comfy-with-comfyui-media`) is served only through the custom domain `media.host` (`media.comfyui.nomadoor.net`); both live in `src/_data/site.json`. The `r2.dev` URL stays disabled.
 - Objects are uploaded with an explicit `Content-Type` and `Cache-Control: public, max-age=31536000, immutable`, and are never overwritten.
 - A Bucket Lock retention rule of 30 days is added after the first real upload has been verified. It is not a backup.
 - Cloudflare setup (bucket, custom domain, r2.dev, Bucket Lock) is done by the owner in the dashboard.
@@ -29,7 +29,7 @@ Writing articles against hash-named R2 URLs would also make Markdown hard to rea
 | Local originals | `$COMFY_MEDIA_ORIGINALS/flux-2-klein/001.png` | Human-organized source of truth, outside the repository. May contain ComfyUI workflow metadata. Backed up by the owner. |
 | Markdown / data | `![](/media/flux-2-klein/001.png){media=image}` | Logical reference. |
 | `src/_data/media.json` | `"flux-2-klein/001.png": { "key": "images/<hash>.png", … }` | Logical name → R2 key and metadata. Production media only. |
-| R2 | `https://img.comfyui.nomadoor.net/images/<hash>.png` | Public, immutable, content-addressed objects. |
+| R2 | `https://media.comfyui.nomadoor.net/images/<hash>.png` | Public, immutable, content-addressed objects. |
 
 ### Logical names
 

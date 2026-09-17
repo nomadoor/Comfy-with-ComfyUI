@@ -8,8 +8,8 @@ import { test, expect, type Page } from "@playwright/test";
 // results do not depend on either service being reachable.
 
 const FIXTURE_PAGE = "/internal/media-fixtures/";
-const R2_IMAGE = "https://img.comfyui.nomadoor.net/images/8934448705a26ed8.png";
-const R2_VIDEO = "https://img.comfyui.nomadoor.net/videos/23d3bb96df2ebf63.mp4";
+const R2_IMAGE = "https://media.comfyui.nomadoor.net/images/8934448705a26ed8.png";
+const R2_VIDEO = "https://media.comfyui.nomadoor.net/videos/23d3bb96df2ebf63.mp4";
 const GYAZO_IMAGE_ID = "a0b09641bae0c8b02187e6c6b7bb9c5a";
 const GYAZO_LOOP_ID = "8cc0775e0b3f0bf5605f9b3aedf0665c";
 const GYAZO_PLAYER_ID = "4e0ce0ea62fc7138ffe7ea1892ec21b8";
@@ -25,7 +25,7 @@ async function routeMedia(page: Page) {
       await route.fulfill({ status: 200, contentType: "image/png", body: FIXTURE_PNG });
     }
   };
-  await page.route(/^https:\/\/img\.comfyui\.nomadoor\.net\//, fulfill);
+  await page.route(/^https:\/\/media\.comfyui\.nomadoor\.net\//, fulfill);
   await page.route(/^https:\/\/(?:i\.)?gyazo\.com\//, fulfill);
 }
 

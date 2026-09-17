@@ -3,7 +3,7 @@
   "turnstileSiteKey": "0x4AAAAAACeNHt46k6LVf5wp",
   "ogImage": "/assets/logos/favicon/favicon_256.png",
   "media": {
-    "host": "img.comfyui.nomadoor.net",
+    "host": "media.comfyui.nomadoor.net",
     "bucket": "comfy-with-comfyui-media"
   },
   "defaultLang": "ja",
