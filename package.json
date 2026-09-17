@@ -26,6 +26,7 @@
     "views:update": "node scripts/update-page-views.mjs",
     "views:update:dry": "node scripts/update-page-views.mjs --dry-run",
     "media:put": "node scripts/media-upload.mjs",
+    "media:waf-expression": "node scripts/media-waf-expression.mjs",
     "test:playwright": "playwright test"
   },
   "keywords": [
@@ -45,6 +46,7 @@
   "devDependencies": {
     "@playwright/test": "^1.56.1",
     "markdown-it": "^14.1.0",
-    "rimraf": "^6.1.0"
+    "rimraf": "^6.1.0",
+    "sharp": "0.35.4"
   }
 }

@@ -6,9 +6,10 @@
 //
 // The argument is a path relative to COMFY_MEDIA_ORIGINALS (or an absolute path inside it); that
 // relative path is the logical name used in Markdown as `/media/<logical name>`.
-// For each file: remove non-visual metadata without re-encoding, name the object by content hash
-// (images/<hash>.<ext>), upload it with immutable caching, record logical name → key in
-// src/_data/media.json, and copy the Markdown snippet to the clipboard.
+// For each file: encode the original (which may contain ComfyUI workflow metadata) into a full-size WebP
+// without metadata, name it by content hash (images/<hash>.webp), upload it with immutable caching,
+// record logical name → key in src/_data/media.json, and copy the Markdown snippet to the clipboard.
+// Only this WebP is stored; thumbnail/article/OGP sizes come from Cloudflare Image Transformations.
 //
 // Same logical name, same content: skipped (--force re-uploads, e.g. to restore a missing object).
 // Same logical name, different content: error, unless --replace is given. References to the name
@@ -23,8 +24,10 @@ import os from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import fg from "fast-glob";
-import { SUPPORTED_EXTENSIONS, stripImageMetadata } from "./lib/media-metadata.mjs";
+import { encodeFullWebp } from "./lib/media-image.mjs";
 import { keyFor, mediaRef, publicUrl, validateLogicalName } from "./lib/media-names.mjs";
+
+const SUPPORTED_EXTENSIONS = [".png", ".jpg", ".jpeg"];
 
 const SITE_DATA_PATH = path.resolve("src", "_data", "site.json");
 const MANIFEST_PATH = path.resolve("src", "_data", "media.json");
@@ -133,6 +136,10 @@ function uploadObject(bucket, key, file, contentType) {
   if (result.status !== 0) throw new Error(`wrangler upload failed for ${key}`);
 }
 
+function formatBytes(bytes) {
+  return bytes >= 1024 * 1024 ? `${(bytes / 1024 / 1024).toFixed(2)}MB` : `${Math.round(bytes / 1024)}KB`;
+}
+
 function writeManifest(manifest) {
   const sorted = Object.fromEntries(Object.entries(manifest).sort(([a], [b]) => a.localeCompare(b)));
   fs.writeFileSync(MANIFEST_PATH, `${JSON.stringify(sorted, null, 2)}\n`);
@@ -148,17 +155,18 @@ async function main() {
 
   for (const input of opts.inputs) {
     const { name, file } = resolveInput(root, input);
-    let stripped;
+    const original = fs.readFileSync(file);
+    let encoded;
     try {
-      stripped = stripImageMetadata(fs.readFileSync(file), path.extname(name));
+      encoded = await encodeFullWebp(original);
     } catch (error) {
       throw new Error(`${input}: ${error.message}`);
     }
-    const { data, width, height, type, ext, removed } = stripped;
+    const { data, width, height, type } = encoded;
     const hash = crypto.createHash("sha256").update(data).digest("hex").slice(0, HASH_LENGTH);
-    const key = keyFor(hash, ext, type);
+    const key = keyFor(hash, type);
     const current = manifest[name];
-    const summary = `${key} ${width}x${height} ${data.length} bytes; removed: ${removed.length ? removed.join(", ") : "none"}`;
+    const summary = `${key} ${width}x${height} WebP ${formatBytes(data.length)} (original ${formatBytes(original.length)})`;
     const snippet = `![${opts.alt}](${mediaRef(name)}){media=image}`;
 
     if (current && current.key === key && !opts.force) {
@@ -184,7 +192,7 @@ async function main() {
       continue;
     }
 
-    const tmpFile = path.join(os.tmpdir(), `media-upload-${hash}.${ext}`);
+    const tmpFile = path.join(os.tmpdir(), `media-upload-${hash}.webp`);
     fs.writeFileSync(tmpFile, data);
     try {
       uploadObject(config.bucket, key, tmpFile, type);
