@@ -4,8 +4,8 @@
 //
 // sharp is pinned to an exact version in package.json: object keys are content hashes, so the same
 // original should encode to the same bytes. The pin does not cover the platform-specific native build;
-// uploading from a different OS/CPU can change the bytes, which only means `media:put` asks for
-// `--replace` and stores a new object. Uploads are expected to run from one environment.
+// uploading from a different OS/CPU can change the bytes, which only means `media:sync` reports
+// a replacement and stores a new object. Uploads are expected to run from one environment.
 
 import sharp from "sharp";
 

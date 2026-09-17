@@ -4,7 +4,7 @@ import path from "node:path";
 import sharp from "sharp";
 import { test, expect } from "./support/test";
 
-// Full-size WebP encoding used by `npm run media:put`: the only file published to R2 per image.
+// Full-size WebP encoding used by `npm run media:sync`: the only file published to R2 per image.
 
 async function loadEncoder() {
   return import(pathToFileURL(path.resolve("scripts", "lib", "media-image.mjs")).href);

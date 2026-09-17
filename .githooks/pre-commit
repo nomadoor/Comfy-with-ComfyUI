@@ -1,0 +1,17 @@
+#!/bin/sh
+# Upload new or changed media referenced by staged site sources, then stage the updated manifest.
+# Skip once with: SKIP_MEDIA_SYNC=1 git commit ...
+
+[ "$SKIP_MEDIA_SYNC" = "1" ] && exit 0
+
+if ! git diff --cached --name-only --diff-filter=ACMR | grep -qE '^src/(content|_data|includes|layouts)/|^src/[^/]+\.(md|njk)$'; then
+  exit 0
+fi
+
+echo "[pre-commit] media:sync"
+if ! node scripts/media-sync.mjs; then
+  echo "[pre-commit] media:sync failed; commit aborted (fix the errors above, or SKIP_MEDIA_SYNC=1 to bypass)" >&2
+  exit 1
+fi
+
+git add src/_data/media.json
