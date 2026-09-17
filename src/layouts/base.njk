@@ -28,7 +28,7 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
 {% set heroImage = heroBlock.image -%}
 {% set heroImageNormalized = heroImage | stripUrlQuery -%}
 {% set heroMedia = heroImageNormalized | resolveMedia({ size: 1200 }) -%}
-{% set ogImagePath = heroMedia.poster -%}
+{% set ogImagePath = heroMedia.og or heroMedia.poster -%}
 {% set ogImage = ogImagePath if ogImagePath else (site.ogImage or '') -%}
 {% if ogImagePath and siteUrl -%}
 {% set ogStartsWithSlash = (ogImagePath | first) == '/' -%}

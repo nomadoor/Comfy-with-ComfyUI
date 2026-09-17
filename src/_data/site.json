@@ -4,7 +4,12 @@
   "ogImage": "/assets/logos/favicon/favicon_256.png",
   "media": {
     "host": "media.comfyui.nomadoor.net",
-    "bucket": "comfy-with-comfyui-media"
+    "bucket": "comfy-with-comfyui-media",
+    "transforms": {
+      "thumbnail": "width=640,height=360,fit=cover,quality=90,format=webp,onerror=redirect",
+      "article": "width=1600,height=800,fit=scale-down,quality=90,format=webp,onerror=redirect",
+      "og": "width=1200,height=1200,fit=scale-down,quality=85,format=jpeg,onerror=redirect"
+    }
   },
   "defaultLang": "ja",
   "name": {

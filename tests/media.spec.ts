@@ -1,3 +1,6 @@
+import fs from "node:fs";
+import path from "node:path";
+import { execFileSync } from "node:child_process";
 import { test, expect } from "./support/test";
 import type { Page } from "@playwright/test";
 
@@ -7,7 +10,13 @@ import type { Page } from "@playwright/test";
 // shared test in ./support/test.
 
 const FIXTURE_PAGE = "/internal/media-fixtures/";
-const R2_IMAGE = "https://media.comfyui.nomadoor.net/images/8934448705a26ed8.png";
+const MEDIA = JSON.parse(fs.readFileSync(path.resolve("src", "_data", "site.json"), "utf8")).media;
+const HOST = `https://${MEDIA.host}`;
+const R2_IMAGE_KEY = "images/c0c91b41afe537e7.webp";
+const R2_IMAGE_FULL = `${HOST}/${R2_IMAGE_KEY}`;
+const R2_IMAGE_ARTICLE = `${HOST}/cdn-cgi/image/${MEDIA.transforms.article}/${R2_IMAGE_KEY}`;
+const R2_IMAGE_THUMBNAIL = `${HOST}/cdn-cgi/image/${MEDIA.transforms.thumbnail}/${R2_IMAGE_KEY}`;
+const R2_IMAGE_OG = `${HOST}/cdn-cgi/image/${MEDIA.transforms.og}/${R2_IMAGE_KEY}`;
 const R2_VIDEO = "https://media.comfyui.nomadoor.net/videos/23d3bb96df2ebf63.mp4";
 const GYAZO_IMAGE_ID = "a0b09641bae0c8b02187e6c6b7bb9c5a";
 const GYAZO_LOOP_ID = "8cc0775e0b3f0bf5605f9b3aedf0665c";
@@ -28,7 +37,7 @@ test.describe("Media layer fixtures", () => {
   });
 
   test("logical /media/ references resolve to R2 URLs, and video posters feed OGP", async ({ page }) => {
-    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", R2_IMAGE);
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", R2_IMAGE_OG);
     await expect(page.locator("video.hero__media")).toHaveAttribute("src", R2_VIDEO);
     const unresolved = await page.evaluate(
       () => [...document.querySelectorAll("[src], [data-full-src]")].filter((el) =>
@@ -41,13 +50,35 @@ test.describe("Media layer fixtures", () => {
   test("R2 images render from media.json dimensions in every syntax", async ({ page }) => {
     for (const name of ["r2-image", "r2-plain", "row-r2-image"]) {
       const img = fixture(page, name).locator("img");
-      await expect(img, name).toHaveAttribute("src", R2_IMAGE);
-      await expect(img, name).toHaveAttribute("data-full-src", R2_IMAGE);
+      await expect(img, name).toHaveAttribute("src", R2_IMAGE_ARTICLE);
+      await expect(img, name).toHaveAttribute("data-full-src", R2_IMAGE_FULL);
       await expect(img, name).toHaveAttribute("width", "320");
       await expect(img, name).toHaveAttribute("height", "180");
       await expect(img, name).not.toHaveAttribute("srcset", /.+/);
     }
     await expect(fixture(page, "r2-image").locator("figcaption")).toHaveText("R2 image");
+  });
+
+  test("card-sized requests use the thumbnail preset; transformation URLs match the WAF allowlist", async ({ page }) => {
+    const card = fixture(page, "card-resolution");
+    await expect(card).toHaveAttribute("data-src", R2_IMAGE_THUMBNAIL);
+    await expect(card).toHaveAttribute("data-full-src", R2_IMAGE_FULL);
+    await expect(card).toHaveAttribute("data-og", R2_IMAGE_OG);
+
+    const expression = execFileSync("node", ["scripts/media-waf-expression.mjs"], { encoding: "utf8" });
+    const urls = await page.evaluate(() =>
+      [...document.querySelectorAll("[src], [data-full-src], [data-src], [data-og], meta[content]")]
+        .flatMap((el) => ["src", "data-full-src", "data-src", "data-og", "content"].map((name) => el.getAttribute(name) || ""))
+        .filter((value) => value.includes("/cdn-cgi/image/"))
+    );
+    expect(urls.length).toBeGreaterThan(0);
+    for (const url of urls) {
+      const { host, pathname } = new URL(url);
+      expect(host).toBe(MEDIA.host);
+      const allowedPrefix = pathname.match(/^\/cdn-cgi\/image\/[^/]+\/images\//)?.[0];
+      expect(allowedPrefix, url).toBeTruthy();
+      expect(expression, url).toContain(`"${allowedPrefix}"`);
+    }
   });
 
   test("Gyazo images use preview and raw URLs with both syntaxes", async ({ page }) => {
@@ -102,7 +133,7 @@ test.describe("Media layer fixtures", () => {
     const closeButton = page.locator(".lightbox__close");
 
     await fixture(page, "r2-image").locator("img").click();
-    await expect(raw).toHaveAttribute("src", R2_IMAGE);
+    await expect(raw).toHaveAttribute("src", R2_IMAGE_FULL);
     await expect.poll(() => raw.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth)).toBe(320);
     await closeButton.click();
 

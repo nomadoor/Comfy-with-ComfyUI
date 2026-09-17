@@ -6,7 +6,7 @@ import { test as base, expect, type Page } from "@playwright/test";
 // never depend on either service (a slow Gyazo response can otherwise hold the `load` event past the
 // test timeout). Routes registered inside a test are added later and take precedence.
 
-const FIXTURE_PNG = fs.readFileSync(path.resolve("tests", "fixtures", "media", "r2_image.png"));
+const FIXTURE_IMAGE = fs.readFileSync(path.resolve("tests", "fixtures", "media", "r2_image.webp"));
 const FIXTURE_MP4 = fs.readFileSync(path.resolve("tests", "fixtures", "media", "r2_video.mp4"));
 
 export async function routeExternalMedia(page: Page) {
@@ -15,7 +15,7 @@ export async function routeExternalMedia(page: Page) {
     if (/\.mp4(?:$|\?)/i.test(url)) {
       await route.fulfill({ status: 200, contentType: "video/mp4", body: FIXTURE_MP4 });
     } else {
-      await route.fulfill({ status: 200, contentType: "image/png", body: FIXTURE_PNG });
+      await route.fulfill({ status: 200, contentType: "image/webp", body: FIXTURE_IMAGE });
     }
   };
   await page.route(/^https:\/\/media\.comfyui\.nomadoor\.net\//, fulfill);
