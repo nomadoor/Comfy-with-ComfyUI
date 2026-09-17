@@ -3,7 +3,8 @@ import path from "node:path";
 import fg from "fast-glob";
 
 // Verifies a production build (default: _site) contains no test fixtures and no unresolved
-// `/media/` references. Run after `npm run build`, not after test builds.
+// `/media/` references. Run after a clean `npm run build` (Eleventy keeps stale files in the output
+// directory), not after test builds.
 
 const outputDir = process.argv[2] || "_site";
 const failures = [];

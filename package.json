@@ -11,7 +11,7 @@
     "build": "eleventy --input=src --output=_site",
     "clean": "rimraf _site",
     "check": "npm run check:encoding && npm run check:content && npm run check:workflows && npm run check:media && npm run check:assets",
-    "check:all": "npm run check && npm run build && npm run check:build && npm run test:playwright",
+    "check:all": "npm run check && npm run clean && npm run build && npm run check:build && npm run test:playwright",
     "check:assets": "node scripts/check-esm.mjs && node scripts/check-icons.mjs",
     "check:content": "node scripts/check-frontmatter.mjs && node scripts/check-nav-integrity.mjs && node scripts/check-markdown-links.mjs",
     "check:encoding": "node scripts/check-utf8.mjs",
