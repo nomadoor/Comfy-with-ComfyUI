@@ -54,6 +54,8 @@ const initMediaToggle = () => {
     toggle.addEventListener("click", () => {
       const next = figure.dataset.mediaMode === "player" ? "loop" : "player";
       applyMediaMode(figure, next);
+      // video-sync.js rebuilds synchronized rows when a video enters or leaves Loop mode.
+      figure.dispatchEvent(new CustomEvent("media-modechange", { bubbles: true, detail: { mode: next } }));
     });
   });
 };

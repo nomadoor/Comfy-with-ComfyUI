@@ -49,6 +49,18 @@ Playwright の `tests/media.spec.ts` が使う検証用ページです。`COMFY_
 
 </div>
 
+<div data-fixture="sync-row">
+
+![a](/media/fixtures/r2_video.mp4){media=loop} ![b](/media/fixtures/r2_video_b.mp4){media=loop}
+
+</div>
+
+<div data-fixture="unsynced-row">
+
+![a](/media/fixtures/r2_video.mp4){media=loop} ![long](/media/fixtures/r2_video_long.mp4){media=loop}
+
+</div>
+
 <div data-fixture="gyazo-loop">
 
 ![Gyazo loop](https://gyazo.com/8cc0775e0b3f0bf5605f9b3aedf0665c){media=loop}

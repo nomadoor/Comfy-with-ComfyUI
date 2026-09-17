@@ -47,6 +47,12 @@ export function probe(file) {
   return JSON.parse(run("ffprobe", ["-v", "error", "-print_format", "json", "-show_format", "-show_streams", file]));
 }
 
+// Displayed size: a 90/270 degree display rotation (kept by `-c copy`) swaps width and height.
+export function displaySize(stream) {
+  const rotation = Number((stream.side_data_list || []).find((data) => data.rotation !== undefined)?.rotation ?? stream.tags?.rotate ?? 0);
+  return Math.abs(rotation) % 180 === 90 ? { width: stream.height, height: stream.width } : { width: stream.width, height: stream.height };
+}
+
 function assertPlayable(info) {
   if (!String(info.format?.format_name || "").includes("mp4")) {
     throw new MediaVideoError(`mp4 コンテナではありません（${info.format?.format_name}）`);
@@ -85,8 +91,7 @@ function assertNoMetadata(info) {
  *   poster: { data: Buffer, width: number, height: number, type: "image/webp" } }>}
  */
 export async function prepareVideo(file) {
-  const sourceInfo = probe(file);
-  const sourceVideo = assertPlayable(sourceInfo);
+  assertPlayable(probe(file));
 
   const workDir = fs.mkdtempSync(path.join(os.tmpdir(), "media-video-"));
   const output = path.join(workDir, "public.mp4");
@@ -105,11 +110,13 @@ export async function prepareVideo(file) {
     assertNoMetadata(outputInfo);
     const data = fs.readFileSync(output);
 
-    // Rotation metadata is dropped with the rest, so use the coded size as displayed size.
+    // The display rotation (stream side data) survives `-c copy`; browsers apply it, and so does the
+    // poster frame extraction, so record the displayed size rather than the coded size.
     const posterPng = run("ffmpeg", ["-v", "error", "-i", output, "-frames:v", "1", "-f", "image2pipe", "-vcodec", "png", "-"], { binary: true });
     const poster = await encodeFullWebp(posterPng);
+    const { width, height } = displaySize(outputInfo.streams.find((stream) => stream.codec_type === "video"));
 
-    return { data, width: sourceVideo.width, height: sourceVideo.height, type: "video/mp4", poster };
+    return { data, width, height, type: "video/mp4", poster };
   } finally {
     fs.rmSync(workDir, { recursive: true, force: true });
   }

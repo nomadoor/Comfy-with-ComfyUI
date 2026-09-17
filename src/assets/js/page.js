@@ -4,6 +4,7 @@ import initLangSwitcher from "./lang-switcher.js";
 import initLightbox from "./lightbox.js";
 import initSearch from "./search.js";
 import initMediaToggle from "./media-toggle.js";
+import initVideoSync from "./video-sync.js";
 import initCodeCopy from "./code-copy.js";
 import initCopyJson from "./copy-json.js"; // workflow JSON copy/download
 import initWorkflowPicker from "./workflow-picker.js";
@@ -55,6 +56,7 @@ export default function initPage(root = document.getElementById("page") || docum
   profileStep("heading-anchors", () => initHeadingAnchors?.(root));
   profileStep("lightbox", () => initLightbox?.(root));
   profileStep("media-toggle", () => initMediaToggle?.(root));
+  profileStep("video-sync", () => initVideoSync?.(root));
   profileStep("code-copy", () => initCodeCopy?.(root));
   profileStep("copy-json", () => initCopyJson?.(root));
   profileStep("workflow-picker", () => initWorkflowPicker?.(root));

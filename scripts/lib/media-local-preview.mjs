@@ -59,7 +59,9 @@ export function sourceHash(file) {
   return hashCache.get(cacheKey);
 }
 
-// Read PNG/JPEG dimensions synchronously (renderers are synchronous). Videos return undefined.
+const dimensionCache = new Map();
+
+// Read PNG/JPEG dimensions synchronously (renderers are synchronous).
 function imageDimensions(file) {
   const fd = fs.openSync(file, "r");
   try {
@@ -86,6 +88,96 @@ function imageDimensions(file) {
   return {};
 }
 
+// Read the displayed size of the first video track of an mp4 synchronously: walk the top-level boxes
+// (skipping media data), then moov → trak → tkhd (size and rotation matrix) and mdia/hdlr ("vide").
+// Works whether moov is before or after mdat. Returns {} when it cannot be read.
+export function mp4Dimensions(file) {
+  const fd = fs.openSync(file, "r");
+  try {
+    const size = fs.fstatSync(fd).size;
+    const readAt = (position, length) => {
+      const buffer = Buffer.alloc(length);
+      const bytesRead = fs.readSync(fd, buffer, 0, length, position);
+      return buffer.subarray(0, bytesRead);
+    };
+    const children = (buffer, start, end) => {
+      const boxes = [];
+      let offset = start;
+      while (offset + 8 <= end) {
+        let boxSize = buffer.readUInt32BE(offset);
+        const type = buffer.toString("latin1", offset + 4, offset + 8);
+        let header = 8;
+        if (boxSize === 1) {
+          boxSize = Number(buffer.readBigUInt64BE(offset + 8));
+          header = 16;
+        } else if (boxSize === 0) {
+          boxSize = end - offset;
+        }
+        if (boxSize < header || offset + boxSize > end) break;
+        boxes.push({ type, start: offset + header, end: offset + boxSize });
+        offset += boxSize;
+      }
+      return boxes;
+    };
+
+    let moov = null;
+    for (let offset = 0; offset + 8 <= size; ) {
+      const head = readAt(offset, 16);
+      if (head.length < 8) break;
+      let boxSize = head.readUInt32BE(0);
+      const type = head.toString("latin1", 4, 8);
+      let header = 8;
+      if (boxSize === 1 && head.length >= 16) {
+        boxSize = Number(head.readBigUInt64BE(8));
+        header = 16;
+      } else if (boxSize === 0) {
+        boxSize = size - offset;
+      }
+      if (boxSize < header) break;
+      if (type === "moov") {
+        if (boxSize > 64 * 1024 * 1024) break;
+        moov = readAt(offset, boxSize);
+        moov = { buffer: moov, start: header, end: moov.length };
+        break;
+      }
+      offset += boxSize;
+    }
+    if (!moov) return {};
+
+    for (const trak of children(moov.buffer, moov.start, moov.end).filter((box) => box.type === "trak")) {
+      const trakBoxes = children(moov.buffer, trak.start, trak.end);
+      const mdia = trakBoxes.find((box) => box.type === "mdia");
+      const hdlr = mdia && children(moov.buffer, mdia.start, mdia.end).find((box) => box.type === "hdlr");
+      if (!hdlr || moov.buffer.toString("latin1", hdlr.start + 8, hdlr.start + 12) !== "vide") continue;
+      const tkhd = trakBoxes.find((box) => box.type === "tkhd");
+      if (!tkhd) continue;
+      const version = moov.buffer[tkhd.start];
+      const matrix = tkhd.start + 4 + (version === 1 ? 32 : 20) + 16;
+      const width = Math.round(moov.buffer.readUInt32BE(matrix + 36) / 65536);
+      const height = Math.round(moov.buffer.readUInt32BE(matrix + 40) / 65536);
+      if (!width || !height) continue;
+      // Matrix [a b u; c d v; x y w]: a = d = 0 means a 90/270 degree rotation.
+      const a = moov.buffer.readInt32BE(matrix);
+      const d = moov.buffer.readInt32BE(matrix + 16);
+      return a === 0 && d === 0 ? { width: height, height: width } : { width, height };
+    }
+    return {};
+  } catch {
+    return {};
+  } finally {
+    fs.closeSync(fd);
+  }
+}
+
+function mediaDimensions(file, name) {
+  const stat = fs.statSync(file);
+  const cacheKey = `${file}:${stat.size}:${stat.mtimeMs}`;
+  if (!dimensionCache.has(cacheKey)) {
+    dimensionCache.set(cacheKey, extensionOf(name) === "mp4" ? mp4Dimensions(file) : imageDimensions(file));
+  }
+  return dimensionCache.get(cacheKey);
+}
+
 /**
  * Decide whether a logical name should render from the local original.
  * @returns {null | { url: string, width?: number, height?: number, reason: "unregistered" | "changed" }}
@@ -97,7 +189,7 @@ export function localPreview(root, name, entry) {
   if (!entry) reason = "unregistered";
   else if (entry.source && entry.source !== sourceHash(file)) reason = "changed";
   if (!reason) return null;
-  const dims = extensionOf(name) === "mp4" ? {} : imageDimensions(file);
+  const dims = mediaDimensions(file, name);
   return { url: `${LOCAL_PREVIEW_PREFIX}${name}`, ...dims, reason };
 }
 
