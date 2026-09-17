@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 const SAMPLE_PAGE = "/ja/basic-workflows/sd15-basics/";
-const PLAYWRIGHT_PORT = Number(process.env.PLAYWRIGHT_PORT || 8080);
+const PLAYWRIGHT_PORT = Number(process.env.PLAYWRIGHT_PORT || 8091);
 const BASE_TEST_URL =
   process.env.PLAYWRIGHT_BASE_URL || `http://127.0.0.1:${PLAYWRIGHT_PORT}`;
 

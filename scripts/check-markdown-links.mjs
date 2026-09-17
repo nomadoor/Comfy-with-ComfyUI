@@ -54,6 +54,8 @@ for (const file of walk(CONTENT_DIR)) {
   const text = fs.readFileSync(file, "utf8");
   for (const rawUrl of extractMarkdownLinks(text)) {
     if (!rawUrl.startsWith("/") || rawUrl.startsWith("//")) continue;
+    // `/media/` is a reserved virtual namespace for R2 media, validated by check-media.mjs.
+    if (rawUrl.startsWith("/media/")) continue;
     if (!existsPublicPath(rawUrl)) failures.push(`${relative}: missing internal link ${rawUrl}`);
   }
 }

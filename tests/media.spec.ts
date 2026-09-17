@@ -2,12 +2,14 @@ import fs from "node:fs";
 import path from "node:path";
 import { test, expect, type Page } from "@playwright/test";
 
-// Media layer checks on the noindex fixture page. All R2 and Gyazo requests are fulfilled from
-// local fixtures so results do not depend on either service being reachable.
+// Media layer checks on the noindex fixture page, which only exists in test builds
+// (COMFY_MEDIA_FIXTURES=1, see playwright.config.ts). `/media/fixtures/...` references resolve through
+// tests/fixtures/media/media.json. All R2 and Gyazo requests are fulfilled from local fixtures, so
+// results do not depend on either service being reachable.
 
 const FIXTURE_PAGE = "/internal/media-fixtures/";
-const R2_IMAGE = "https://img.comfyui.nomadoor.net/u/8934448705a26ed8.png";
-const R2_VIDEO = "https://img.comfyui.nomadoor.net/u/23d3bb96df2ebf63.mp4";
+const R2_IMAGE = "https://img.comfyui.nomadoor.net/images/8934448705a26ed8.png";
+const R2_VIDEO = "https://img.comfyui.nomadoor.net/videos/23d3bb96df2ebf63.mp4";
 const GYAZO_IMAGE_ID = "a0b09641bae0c8b02187e6c6b7bb9c5a";
 const GYAZO_LOOP_ID = "8cc0775e0b3f0bf5605f9b3aedf0665c";
 const GYAZO_PLAYER_ID = "4e0ce0ea62fc7138ffe7ea1892ec21b8";
@@ -41,6 +43,17 @@ test.describe("Media layer fixtures", () => {
       const body = await (await request.get(file)).text();
       expect(body, file).not.toContain("/internal/media-fixtures/");
     }
+  });
+
+  test("logical /media/ references resolve to R2 URLs, and video posters feed OGP", async ({ page }) => {
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", R2_IMAGE);
+    await expect(page.locator("video.hero__media")).toHaveAttribute("src", R2_VIDEO);
+    const unresolved = await page.evaluate(
+      () => [...document.querySelectorAll("[src], [data-full-src]")].filter((el) =>
+        [el.getAttribute("src"), el.getAttribute("data-full-src")].some((value) => value?.startsWith("/media/"))
+      ).length
+    );
+    expect(unresolved).toBe(0);
   });
 
   test("R2 images render from media.json dimensions in every syntax", async ({ page }) => {

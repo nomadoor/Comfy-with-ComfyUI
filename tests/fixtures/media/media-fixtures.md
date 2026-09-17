@@ -8,20 +8,20 @@ robots: noindex
 searchExclude: true
 permalink: "/internal/media-fixtures/"
 hero:
-  gradient: ""
+  image: "/media/fixtures/r2-video.mp4"
 ---
 
-Playwright の `tests/media.spec.ts` が使う検証用ページです。R2 / Gyazo × image / loop / player の表示と lightbox を確認します。R2 の URL は `src/_data/media.json` に登録済みの fixture（`tests/fixtures/media/`）です。
+Playwright の `tests/media.spec.ts` が使う検証用ページです。`COMFY_MEDIA_FIXTURES=1` のテストビルドでだけ生成されます。`/media/fixtures/...` は `tests/fixtures/media/media.json` に登録された fixture で、本番の R2 には存在しません（Playwright が通信をローカル fixture に差し替えます）。
 
 <div data-fixture="r2-image">
 
-![R2 image](https://img.comfyui.nomadoor.net/u/8934448705a26ed8.png){media=image}
+![R2 image](/media/fixtures/r2-image.png){media=image}
 
 </div>
 
 <div data-fixture="r2-plain">
 
-![](https://img.comfyui.nomadoor.net/u/8934448705a26ed8.png)
+![](/media/fixtures/r2-image.png)
 
 </div>
 
@@ -39,13 +39,13 @@ Playwright の `tests/media.spec.ts` が使う検証用ページです。R2 / Gy
 
 <div data-fixture="r2-loop">
 
-![R2 loop](https://img.comfyui.nomadoor.net/u/23d3bb96df2ebf63.mp4){media=loop}
+![R2 loop](/media/fixtures/r2-video.mp4){media=loop}
 
 </div>
 
 <div data-fixture="r2-player">
 
-![R2 player](https://img.comfyui.nomadoor.net/u/23d3bb96df2ebf63.mp4){media=player}
+![R2 player](/media/fixtures/r2-video.mp4){media=player}
 
 </div>
 
@@ -63,7 +63,7 @@ Playwright の `tests/media.spec.ts` が使う検証用ページです。R2 / Gy
 
 <div data-fixture="row-r2-image">
 
-{% mediaRow img="https://img.comfyui.nomadoor.net/u/8934448705a26ed8.png {media=image}", alt="R2 row image", width=33 %}
+{% mediaRow img="/media/fixtures/r2-image.png {media=image}", alt="R2 row image", width=33 %}
 R2 image in mediaRow.
 {% endmediaRow %}
 

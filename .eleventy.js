@@ -5,6 +5,7 @@ import MarkdownIt from "markdown-it";
 import fg from "fast-glob";
 import Prism from "prismjs";
 import loadLanguages from "prismjs/components/index.js";
+import { logicalNameFromRef, mediaRef, publicUrl } from "./scripts/lib/media-names.mjs";
 
 const GYAZO_HOST = "i.gyazo.com";
 const CACHE_DIR = ".cache";
@@ -15,6 +16,10 @@ const GYAZO_FETCH_DELAY_MS = 200;
 const sleep = (ms = 0) => (ms > 0 ? new Promise((resolve) => setTimeout(resolve, ms)) : Promise.resolve());
 const SITE_DATA_PATH = path.join("src", "_data", "site.json");
 const MEDIA_MANIFEST_PATH = path.join("src", "_data", "media.json");
+// Test builds (COMFY_MEDIA_FIXTURES=1) add fixture media and the fixture page; production builds never read them.
+const MEDIA_FIXTURES_ENABLED = process.env.COMFY_MEDIA_FIXTURES === "1";
+const MEDIA_FIXTURE_MANIFEST_PATH = path.join("tests", "fixtures", "media", "media.json");
+const MEDIA_FIXTURE_PAGE_PATH = path.join("tests", "fixtures", "media", "media-fixtures.md");
 const ICON_SPRITES = {
   copy: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="var(--icon-stroke-width, 1.5)" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path></svg>',
   download: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="var(--icon-stroke-width, 1.5)" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>'
@@ -41,14 +46,18 @@ const WORKFLOW_LABELS = {
 loadLanguages(["bash", "shell", "json", "yaml", "javascript", "typescript", "css", "markup", "powershell", "python"]);
 
 let mediaManifest = {};
+function readJsonFile(filePath) {
+  return fsSync.existsSync(filePath) ? JSON.parse(fsSync.readFileSync(filePath, "utf-8")) : {};
+}
 function loadMediaManifest() {
-  try {
-    mediaManifest = fsSync.existsSync(MEDIA_MANIFEST_PATH)
-      ? JSON.parse(fsSync.readFileSync(MEDIA_MANIFEST_PATH, "utf-8"))
-      : {};
-  } catch {
-    mediaManifest = {};
+  const manifest = readJsonFile(MEDIA_MANIFEST_PATH);
+  if (MEDIA_FIXTURES_ENABLED) {
+    for (const [name, entry] of Object.entries(readJsonFile(MEDIA_FIXTURE_MANIFEST_PATH))) {
+      if (manifest[name]) throw new Error(`[media] fixture manifest redefines ${name}`);
+      manifest[name] = entry;
+    }
   }
+  mediaManifest = manifest;
 }
 loadMediaManifest();
 
@@ -466,6 +475,20 @@ function normalizeMediaMode(mode) {
   return MEDIA_MODES.has(value) ? value : "";
 }
 
+const reportedMissingMedia = new Set();
+// A `/media/` reference is owned by this site, so a missing entry fails production builds.
+// Dev servers (serve/watch) only warn so that work in progress stays viewable.
+function reportMissingMedia(message) {
+  if (process.env.ELEVENTY_RUN_MODE === "serve" || process.env.ELEVENTY_RUN_MODE === "watch") {
+    if (!reportedMissingMedia.has(message)) {
+      reportedMissingMedia.add(message);
+      console.warn(`[media] ${message}`);
+    }
+    return;
+  }
+  throw new Error(`[media] ${message}`);
+}
+
 function getHostname(url = "") {
   try {
     return new URL(url).hostname;
@@ -478,9 +501,24 @@ function isVideoUrl(url = "") {
   return /\.mp4(?:$|[?#])/i.test(url);
 }
 
-function resolveR2Media(url, kind) {
-  const entry = mediaManifest[url] || {};
-  const poster = kind === "video" ? entry.poster || "" : url;
+function resolveManagedMedia(name, kind) {
+  const empty = { kind, src: "", fullSrc: "", width: undefined, height: undefined, srcset: "", poster: "" };
+  const entry = mediaManifest[name];
+  if (!entry) {
+    reportMissingMedia(`${mediaRef(name)} is not registered in src/_data/media.json`);
+    return empty;
+  }
+  if (!MEDIA_HOST) {
+    reportMissingMedia("media.host is missing in src/_data/site.json");
+    return empty;
+  }
+  const url = publicUrl(MEDIA_HOST, entry.key);
+  let poster = kind === "image" ? url : "";
+  if (kind === "video" && entry.poster) {
+    const posterEntry = mediaManifest[entry.poster];
+    if (posterEntry) poster = publicUrl(MEDIA_HOST, posterEntry.key);
+    else reportMissingMedia(`poster ${mediaRef(entry.poster)} of ${mediaRef(name)} is not registered`);
+  }
   return { kind, src: url, fullSrc: url, width: entry.width, height: entry.height, srcset: "", poster };
 }
 
@@ -506,7 +544,7 @@ function resolveGyazoMedia(url, kind, size) {
 
 /**
  * Resolve a media URL into the URLs and dimensions a renderer needs.
- * @param {string} url R2, Gyazo, or any external media URL.
+ * @param {string} url `/media/<logical name>` (R2 via media.json), a Gyazo URL, or any external URL.
  * @param {{ mode?: "image"|"loop"|"player", size?: number }} options
  *   Without `mode`, video vs. image is inferred from the manifest type or the `.mp4` extension.
  * @returns {{ kind: "image"|"video", mode: string, src: string, fullSrc: string, width?: number,
@@ -515,18 +553,18 @@ function resolveGyazoMedia(url, kind, size) {
  */
 function resolveMedia(url = "", { mode, size = 1000 } = {}) {
   const source = typeof url === "string" ? url.trim() : "";
+  const logicalName = logicalNameFromRef(source);
   const host = getHostname(source);
-  const isR2 = Boolean(MEDIA_HOST) && host === MEDIA_HOST;
   let resolvedMode = normalizeMediaMode(mode);
   if (!resolvedMode) {
-    const manifestType = isR2 ? String(mediaManifest[source]?.type || "") : "";
+    const manifestType = logicalName !== null ? String(mediaManifest[logicalName]?.type || "") : "";
     resolvedMode = manifestType.startsWith("video/") || isVideoUrl(source) ? "loop" : "image";
   }
   const kind = resolvedMode === "image" ? "image" : "video";
 
   let media;
-  if (isR2) {
-    media = resolveR2Media(source, kind);
+  if (logicalName !== null) {
+    media = resolveManagedMedia(logicalName, kind);
   } else if (host.endsWith("gyazo.com")) {
     media = resolveGyazoMedia(source, kind, size);
   } else {
@@ -671,6 +709,11 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
 
   eleventyConfig.addWatchTarget("ops");
+
+  if (MEDIA_FIXTURES_ENABLED) {
+    eleventyConfig.addWatchTarget(MEDIA_FIXTURE_MANIFEST_PATH);
+    eleventyConfig.addTemplate("internal/media-fixtures.md", fsSync.readFileSync(MEDIA_FIXTURE_PAGE_PATH, "utf-8"));
+  }
 
   eleventyConfig.on("beforeBuild", async () => {
     loadMediaManifest();
