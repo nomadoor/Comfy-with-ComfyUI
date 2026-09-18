@@ -1,4 +1,4 @@
-import { test, expect } from "./support/test";
+import { test, expect, routeExternalMedia } from "./support/test";
 import type { Page } from "@playwright/test";
 
 // Lazy video loading (src/assets/js/video-lazy.js) and the layout it depends on: a media box must keep
@@ -66,6 +66,46 @@ test.describe("lazy video loading", () => {
 
     await player.evaluate((el: HTMLVideoElement) => el.play().catch(() => {}));
     await expect.poll(() => requested.length, { timeout: 5000 }).toBeGreaterThan(0);
+  });
+
+  test("media rows are laid out by CSS alone, before and without JavaScript", async ({ browser, baseURL }) => {
+    const sizes = async (javaScriptEnabled: boolean, width: number) => {
+      const context = await browser.newContext({ viewport: { width, height: 844 }, javaScriptEnabled });
+      const page = await context.newPage();
+      await routeExternalMedia(page);
+      await page.goto(new URL(FIXTURE_PAGE, baseURL).href);
+      await page.waitForTimeout(javaScriptEnabled ? 1500 : 400);
+      const rows = await page.evaluate(() =>
+        [...document.querySelectorAll(".article-media-row")].map((row) => ({
+          items: [...row.querySelectorAll(".article-video__frame, .article-media__frame")]
+            .map((frame) => {
+              const rect = frame.getBoundingClientRect();
+              return `${Math.round(rect.width)}x${Math.round(rect.height)}`;
+            })
+            .join(" "),
+          // Items are shrunk to the row width, so a row never scrolls or clips its contents.
+          overflows: row.scrollWidth > row.clientWidth + 1
+        }))
+      );
+      await context.close();
+      return rows;
+    };
+
+    for (const width of [1440, 390]) {
+      const withoutJs = await sizes(false, width);
+      const withJs = await sizes(true, width);
+      expect(withoutJs.length, `rows at ${width}px`).toBeGreaterThan(0);
+      // Rows must not be resized once scripts run: that resize was visible as a jump on every load.
+      expect(withJs, `rows at ${width}px`).toEqual(withoutJs);
+      for (const row of withoutJs) {
+        expect(row.items.startsWith("0x"), "no row item may collapse").toBe(false);
+        // Items of a row share one height, whatever their own proportions are.
+        const heights = row.items.split(" ").map((box) => Number(box.split("x")[1]));
+        expect(Math.max(...heights) - Math.min(...heights), `row heights at ${width}px: ${row.items}`).toBeLessThanOrEqual(1);
+        // The row itself must fit: items are shrunk to the row width, never scrolled or clipped.
+        expect(row.overflows, `row overflows at ${width}px: ${row.items}`).toBe(false);
+      }
+    }
   });
 
   test("media boxes keep their size from first paint", async ({ page }) => {

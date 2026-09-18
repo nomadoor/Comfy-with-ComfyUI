@@ -9,7 +9,6 @@ import initVideoSync from "./video-sync.js";
 import initCodeCopy from "./code-copy.js";
 import initCopyJson from "./copy-json.js"; // workflow JSON copy/download
 import initWorkflowPicker from "./workflow-picker.js";
-import initMediaRowFit from "./media-row-fit.js";
 import initHeadingAnchors from "./heading-anchors.js";
 import initContact from "./contact.js";
 import "./sidebar.js"; // legacy auto-init; sidebar is persistent shell
@@ -52,7 +51,6 @@ export default function initPage(root = document.getElementById("page") || docum
 
   // Content-scoped modules (re-run per navigation)
   const hasHashTarget = Boolean(window.location.hash);
-  profileStep("media-row-fit", () => (hasHashTarget ? initMediaRowFit?.(root) : runIdle(() => initMediaRowFit?.(root))));
   profileStep("toc", () => (hasHashTarget ? initToc?.(root) : runIdle(() => initToc?.(root))));
   profileStep("heading-anchors", () => initHeadingAnchors?.(root));
   profileStep("lightbox", () => initLightbox?.(root));
