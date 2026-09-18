@@ -1,0 +1,761 @@
+{
+  "id": "d8034549-7e0a-40f1-8c2e-de3ffc6f1cae",
+  "revision": 0,
+  "last_node_id": 66,
+  "last_link_id": 119,
+  "nodes": [
+    {
+      "id": 37,
+      "type": "UNETLoader",
+      "pos": [
+        528.8914031982422,
+        34.805270385742176
+      ],
+      "size": [
+        305.3782043457031,
+        82
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            105
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "krea2_turbo_fp8_scaled.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "krea2_turbo_fp8_scaled.safetensors",
+        "weight_dtype": "default"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        898.7548217773438,
+        188.1918182373047
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 105
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 46
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 118
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 112
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": 116
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            35
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        12345,
+        "fixed",
+        8,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 12345,
+        "control_after_generate": "fixed",
+        "steps": 8,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 60,
+      "type": "ResolutionSelector",
+      "pos": [
+        290.29125126341165,
+        545.7143721980366
+      ],
+      "size": [
+        270,
+        150
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            110
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            111
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResolutionSelector",
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0"
+      },
+      "widgets_values": [
+        "3:2 (Photo)",
+        1,
+        16
+      ],
+      "widgets_values_named": {
+        "aspect_ratio": "3:2 (Photo)",
+        "megapixels": 1,
+        "multiple": 16
+      }
+    },
+    {
+      "id": 55,
+      "type": "MarkdownNote",
+      "pos": [
+        -41.611756071819514,
+        -85.90566140100125
+      ],
+      "size": [
+        389.61380077225,
+        288.1499138219051
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n\n- diffusion_models\n  - [krea2_turbo_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors) (13.1 GB)\n- text_encoders\n  - [qwen3vl_4b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors) (5.24 GB)\n- vae\n  - [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/vae/qwen_image_vae.safetensors) (254 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── krea2_turbo_fp8_scaled.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_4b_fp8_scaled.safetensors\n    └── 📂vae/\n        └── qwen_image_vae.safetensors\n```"
+      ],
+      "widgets_values_named": {
+        "text": "## models\n\n- diffusion_models\n  - [krea2_turbo_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors) (13.1 GB)\n- text_encoders\n  - [qwen3vl_4b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors) (5.24 GB)\n- vae\n  - [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/vae/qwen_image_vae.safetensors) (254 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── krea2_turbo_fp8_scaled.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_4b_fp8_scaled.safetensors\n    └── 📂vae/\n        └── qwen_image_vae.safetensors\n```"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 39,
+      "type": "VAELoader",
+      "pos": [
+        951.5002075195309,
+        58.805270385742176
+      ],
+      "size": [
+        262.2546142578128,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            76
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "qwen_image_vae.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "qwen_image_vae.safetensors"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1252.432861328125,
+        188.1918182373047
+      ],
+      "size": [
+        157.56002807617188,
+        46
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 35
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 76
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            115
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      }
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        415.7513025457208,
+        186
+      ],
+      "size": [
+        418.5183049982245,
+        177.7917699892659
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 74
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            46,
+            117
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "A highly stylized anime illustration, viewed from a high-angle three-quarter perspective, showing an old compact car dramatically stranded in shallow coastal water among large rocks, as if it ran aground and got stuck there. The car is tilted unevenly and wedged against multiple rocks, creating a more dynamic and three-dimensional stranded composition. The surrounding environment is a natural rocky shoreline with bright blue seawater, scattered stones under the water, and no alley, no wall, no air-conditioning units, no urban background, no tree, no graffiti, and no city clutter.\n\nA desperate young woman sits on the roof of the car near a large hand-painted \"SOS\" sign. She has messy blonde hair and a visibly exhausted, worn-down expression. She is urgently drinking from a nearly empty plastic water bottle, as if she is rationing the last of it. Her posture should feel tense, drained, and survival-oriented, not relaxed or casual. She wears a pale light blue jumpsuit that is heavily worn, torn, dirty, and damaged, with frayed fabric and signs of hardship. Her body language and face should suggest thirst, fatigue, and isolation.\n\nThe car is old, weathered, faded, rusted, and damaged, with cracked windows and a harsh sun-bleached surface. Strong cloud shadows pass dramatically over the woman, the car, the rocks, and the water, creating bold shifting patches of light and shadow. Flat cel-shaded anime style, graphic poster-like composition, bold simplified shapes, clean linework, slightly exaggerated perspective, painterly digital texture, quiet but intense survival mood, vivid cyan-blue water, pale rocks, faded vehicle colors, strong atmospheric lighting, no photorealism, no 3D render."
+      ],
+      "widgets_values_named": {
+        "text": "A highly stylized anime illustration, viewed from a high-angle three-quarter perspective, showing an old compact car dramatically stranded in shallow coastal water among large rocks, as if it ran aground and got stuck there. The car is tilted unevenly and wedged against multiple rocks, creating a more dynamic and three-dimensional stranded composition. The surrounding environment is a natural rocky shoreline with bright blue seawater, scattered stones under the water, and no alley, no wall, no air-conditioning units, no urban background, no tree, no graffiti, and no city clutter.\n\nA desperate young woman sits on the roof of the car near a large hand-painted \"SOS\" sign. She has messy blonde hair and a visibly exhausted, worn-down expression. She is urgently drinking from a nearly empty plastic water bottle, as if she is rationing the last of it. Her posture should feel tense, drained, and survival-oriented, not relaxed or casual. She wears a pale light blue jumpsuit that is heavily worn, torn, dirty, and damaged, with frayed fabric and signs of hardship. Her body language and face should suggest thirst, fatigue, and isolation.\n\nThe car is old, weathered, faded, rusted, and damaged, with cracked windows and a harsh sun-bleached surface. Strong cloud shadows pass dramatically over the woman, the car, the rocks, and the water, creating bold shifting patches of light and shadow. Flat cel-shaded anime style, graphic poster-like composition, bold simplified shapes, clean linework, slightly exaggerated perspective, painterly digital texture, quiet but intense survival mood, vivid cyan-blue water, pale rocks, faded vehicle colors, strong atmospheric lighting, no photorealism, no 3D render."
+      }
+    },
+    {
+      "id": 65,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        607.1448419189453,
+        421.7568251762049
+      ],
+      "size": [
+        227.124765625,
+        26
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 117
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            118
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningZeroOut"
+      }
+    },
+    {
+      "id": 62,
+      "type": "EmptyLatentImage",
+      "pos": [
+        597.2696075439453,
+        520.5274060641684
+      ],
+      "size": [
+        237,
+        106
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 110
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 111
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            112
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.26.0"
+      },
+      "widgets_values": [
+        512,
+        512,
+        1
+      ],
+      "widgets_values_named": {
+        "width": 512,
+        "height": 512,
+        "batch_size": 1
+      }
+    },
+    {
+      "id": 38,
+      "type": "CLIPLoader",
+      "pos": [
+        46.649627708242974,
+        269.8446899414058
+      ],
+      "size": [
+        301.3524169921875,
+        106
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            74
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "qwen3vl_4b_fp8_scaled.safetensors",
+        "krea2",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_4b_fp8_scaled.safetensors",
+        "type": "krea2",
+        "device": "default"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 64,
+      "type": "EndLoop",
+      "pos": [
+        1455.865648099172,
+        282.2101999999997
+      ],
+      "size": [
+        270,
+        98
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "output_value",
+          "shape": 7,
+          "type": "*",
+          "link": 115
+        },
+        {
+          "name": "next_iteration_value",
+          "shape": 7,
+          "type": "*",
+          "link": null
+        },
+        {
+          "name": "terminations.termination0",
+          "shape": 7,
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "outputs",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": [
+            119
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EndLoop"
+      },
+      "widgets_values": [
+        true
+      ],
+      "widgets_values_named": {
+        "accumulate": true
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 63,
+      "type": "StartLoop",
+      "pos": [
+        -435.16847000000007,
+        282.2101999999997
+      ],
+      "size": [
+        349.177734375,
+        236
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "parent_iteration",
+          "shape": 7,
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "initial_iteration_value",
+          "shape": 7,
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "iteration_index",
+          "type": "INT",
+          "links": [
+            116
+          ]
+        },
+        {
+          "name": "is_first",
+          "type": "BOOLEAN",
+          "links": []
+        },
+        {
+          "name": "is_last",
+          "type": "BOOLEAN",
+          "links": []
+        },
+        {
+          "name": "list_item",
+          "type": "*",
+          "links": null
+        },
+        {
+          "name": "current_iteration_value",
+          "type": "*",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StartLoop"
+      },
+      "widgets_values": [
+        "simple",
+        4,
+        true
+      ],
+      "widgets_values_named": {
+        "mode": "simple",
+        "mode.num_iterations": 4,
+        "cache_iterations": true
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 66,
+      "type": "SaveImage",
+      "pos": [
+        1765.865648099172,
+        282.2101999999997
+      ],
+      "size": [
+        809.0480787999995,
+        603.6031710000001
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 119
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "ComfyUI"
+      }
+    }
+  ],
+  "links": [
+    [
+      35,
+      3,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      46,
+      6,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      74,
+      38,
+      0,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      76,
+      39,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      105,
+      37,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      110,
+      60,
+      0,
+      62,
+      0,
+      "INT"
+    ],
+    [
+      111,
+      60,
+      1,
+      62,
+      1,
+      "INT"
+    ],
+    [
+      112,
+      62,
+      0,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      115,
+      8,
+      0,
+      64,
+      0,
+      "IMAGE"
+    ],
+    [
+      116,
+      63,
+      0,
+      3,
+      4,
+      "INT"
+    ],
+    [
+      117,
+      6,
+      0,
+      65,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      118,
+      65,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      119,
+      64,
+      0,
+      66,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Krea2",
+      "bounding": [
+        -51.61175607181954,
+        -155.90566140100125,
+        1471.6046454761165,
+        861.6200335990378
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6830134553650705,
+      "offset": [
+        472.4055852508561,
+        384.1661061782143
+      ]
+    },
+    "frontendVersion": "1.52.7",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

@@ -127,6 +127,8 @@ sections:
       title: 列表
     - id: batch-video
       title: 批量与视频
+    - id: loop
+      title: 循环处理
     - id: realtime
       title: 实时处理
   - id: api
