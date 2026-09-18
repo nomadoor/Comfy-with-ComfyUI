@@ -70,7 +70,7 @@ Move a **reference image** using a motion video.
 
 ![](https://gyazo.com/3f28188680b010f2bce1a13858ccaf9f){gyazo=image}
 
-[](/workflows/basic-workflows/scail-2/SCAIL-2_Animation.json)
+[](/workflows/basic-workflows/scail-2/scail_2_animation.json)
 
 The base workflow is similar to [Wan-Animate](/en/basic-workflows/wan-animate/), but this one is much simpler, so let's look through it.
 
@@ -147,7 +147,7 @@ Replace the **person in the video** with the **person in the reference image**.
 
 ![](https://gyazo.com/6ade374ea0cbcb2175889cdc0be0bc46){gyazo=image}
 
-[](/workflows/basic-workflows/scail-2/SCAIL-2_Replacement.json)
+[](/workflows/basic-workflows/scail-2/scail_2_replacement.json)
 
 Basically, just set `replacement_mode` to `true` in `Create SCAIL-2 Colored Mask` and `WanSCAILToVideo`.
 
@@ -185,7 +185,7 @@ No special operation is required. As before, just input the video and reference 
 
 ![](https://gyazo.com/a04e322f84ca4377479a7760a60436cd){gyazo=image}
 
-[](/workflows/basic-workflows/scail-2/SCAIL-2_Animation_multi-char.json)
+[](/workflows/basic-workflows/scail-2/scail_2_animation_multi_char.json)
 
 {% mediaRow img="https://gyazo.com/86e8ccd07a045bb039e2e69b81b2781b {gyazo=image}", width=33, align="left" %}
 **Create SCAIL-2 Colored Mask**
@@ -211,7 +211,7 @@ You can also provide several reference images at once, such as another angle of 
 
 ![](https://gyazo.com/a135dfdaef80d8d16acd904f3d26a12a){gyazo=image}
 
-[](/workflows/basic-workflows/scail-2/SCAIL-2_Animation_multi-ref.json)
+[](/workflows/basic-workflows/scail-2/scail_2_animation_multi_ref.json)
 
 The basic flow is the same as the normal Animation mode. The difference is that the reference images are passed in as a batch instead of a single image.
 
@@ -244,7 +244,7 @@ SCAIL-2 basically generates up to 81 frames, but with `WAN Context Windows (Manu
 
 ![](https://gyazo.com/43b5c2e2684957795ab7d80f8ce9976a){gyazo=image}
 
-[](/workflows/basic-workflows/scail-2/SCAIL-2_Animation_WAN-Context-Windows.json)
+[](/workflows/basic-workflows/scail-2/scail_2_animation_wan_context_windows.json)
 
 {% mediaRow img="https://gyazo.com/55aa8d3ccee17c3a43f87f17895ebfb1 {gyazo=image}", width=33, align="left" %}
 **WAN Context Windows (Manual)**

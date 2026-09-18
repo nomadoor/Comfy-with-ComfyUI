@@ -58,7 +58,7 @@ SDXL（准确地说是 SDXL 1.0），是由开发了 Stable Diffusion 1.5 的 St
 
 ![](https://gyazo.com/c812a47ff8d57de7f90be3b85d1a5f58){gyazo=image}
 
-[](/workflows/basic-workflows/sdxl/SDXL_text2image_base.json)
+[](/workflows/basic-workflows/sdxl/sdxl_text2image_base.json)
 
 * 分辨率以大体 1M 像素（1024 × 1024px 前后）为标准。
 
@@ -72,7 +72,7 @@ ComfyUI 中也有可以向各个 CLIP 输入不同文本的节点，但先说好
 
 ![](https://gyazo.com/55a896ac7ae4544942d9242853a4d9c9){gyazo=image}
 
-[](/workflows/basic-workflows/sdxl/SDXL_text2image_base_CLIPTextEncodeSDXL.json)
+[](/workflows/basic-workflows/sdxl/sdxl_text2image_base_cliptextencodesdxl.json)
 
 * 如果向两个 CLIP 输入了相同的提示词，结果将变为与使用了 `CLIP Text Encode` 节点时几乎相同的举动。
 * 在实验结果中也明白，向两个 CLIP 输入相同文本时，最容易成为安定的输出。
@@ -90,7 +90,7 @@ SDXL base 和 SDXL refiner 使用相同的 latent 表现。
 
 ![](https://gyazo.com/4bc82a63f933e5538c45ca11832c5f08){gyazo=image}
 
-[](/workflows/basic-workflows/sdxl/SDXL_text2image_base-refiner.json)
+[](/workflows/basic-workflows/sdxl/sdxl_text2image_base_refiner.json)
 
 * 1. 🟪 用 SDXL base 照常进行 text2image（输出 latent）
 * 2. 🟨 将那个 latent 连接到使用了 SDXL refiner 的 KSampler
@@ -107,7 +107,7 @@ SDXL base 和 SDXL refiner 使用相同的 latent 表现。
 
 ![](https://gyazo.com/9f6609b33de0a955ca5d9a86ba882ab4){gyazo=image}
 
-[](/workflows/basic-workflows/sdxl/SDXL_text2image_base-refiner_Advanced.json)
+[](/workflows/basic-workflows/sdxl/sdxl_text2image_base_refiner_advanced.json)
 
 * 🟪 直到中盘用 SDXL base 进行采样
 * 🟨 将剩下的步数切换给 SDXL refiner 采样

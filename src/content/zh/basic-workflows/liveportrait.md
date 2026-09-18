@@ -45,7 +45,7 @@ tags: ["talking-head"]
 
 ![](https://gyazo.com/f3793dcde8d6e286a67c3dd41b732da5){gyazo=loop}
 
-[](/workflows/basic-workflows/liveportrait/LivePortrait_i2i.json)
+[](/workflows/basic-workflows/liveportrait/liveportrait_i2i.json)
 
 - 虽然有各种参数，但试着摸一下比较快呢。
 - 像这个视频那样，使用 `▷ Run (On Change)` 比较方便。
@@ -54,7 +54,7 @@ tags: ["talking-head"]
 
 ![](https://gyazo.com/0df8e012722c39159be1762a9a38ea99){gyazo=image}
 
-[](/workflows/basic-workflows/liveportrait/LivePortrait_i2i_ref.json)
+[](/workflows/basic-workflows/liveportrait/liveportrait_i2i_ref.json)
 
 - 只是向刚才的工作流加入 `sample_image`。
 - 可以从 `sample_parts`，选择让哪个部位跟随参照图像。
@@ -78,7 +78,7 @@ tags: ["talking-head"]
 
 ![](https://gyazo.com/adf677e141945fd7d957acb2e26c02ec){gyazo=loop}
 
-[](/workflows/basic-workflows/liveportrait/LivePortrait_i2v_motion_link.json)
+[](/workflows/basic-workflows/liveportrait/liveportrait_i2v_motion_link.json)
 
 - 🟨 `Advanced Live Portrait (PHM)` 节点
   - 将 `animate_without_vid` 设为 `true`
@@ -117,7 +117,7 @@ tags: ["talking-head"]
 
 ![](https://gyazo.com/c893e38c12859f8f20ff1e0fca545788){gyazo=image}
 
-[](/workflows/basic-workflows/liveportrait/LivePortrait_i2v_ref.json)
+[](/workflows/basic-workflows/liveportrait/liveportrait_i2v_ref.json)
 
 * 🟨 只是向 `driving_images` 输入参照视频。
 
@@ -132,7 +132,7 @@ tags: ["talking-head"]
 
 ![](https://gyazo.com/1a0205956e78b32045372f207582566d){gyazo=loop}
 
-[](/workflows/basic-workflows/liveportrait/LivePortrait_v2v_ref.json)
+[](/workflows/basic-workflows/liveportrait/liveportrait_v2v_ref.json)
 
 - 🟨 只是将 `src_images`、 `driving_images` 双方设为视频。
 * 可以保持基础视频的运镜和背景原样，只替换人物的表情・对口型。

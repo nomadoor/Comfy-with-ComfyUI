@@ -59,7 +59,7 @@ Z-Image-Turbo 是，与 Flux.1 dev 相同类型的 **蒸馏模型**。
 
 ![](https://gyazo.com/7e5d76cec53ee44278c313a30035463f){gyazo=image}
 
-[](/workflows/basic-workflows/z-image-turbo/Z-Image-Turbo.json)
+[](/workflows/basic-workflows/z-image-turbo/z_image_turbo.json)
 
 - `steps` … 6〜8
 - `cfg` … 1.0
@@ -87,7 +87,7 @@ Z-Image-Turbo 用的 ControlNet 风补丁。
 
 ![](https://gyazo.com/53c91fd9eeb8f94357b20839e5d8c967){gyazo=image}
 
-[](/workflows/basic-workflows/z-image-turbo/Z-Image-Turbo-Fun-Controlnet-Union-2.1.json)
+[](/workflows/basic-workflows/z-image-turbo/z_image_turbo_fun_controlnet_union_2_1.json)
 
 - 🟩 向 `QwenImageDiffsynthControlnet` 追加模型和控制数据
 - 🟩 在这个 workflow 用 Depth Anything V2 制作深度图。

@@ -85,7 +85,7 @@ ollama run qwen3-vl:8b
 
 ![](https://gyazo.com/767f4fd9d6adf6727fc075fac1d14479){gyazo=image}
 
-[](/workflows/basic-workflows/external-llm-server/OpenAI_API_Chat.json)
+[](/workflows/basic-workflows/external-llm-server/openai_api_chat.json)
 
 - `base_url` : `http://localhost:11434/v1`（Ollama 的默认地址）
 - `api_key` : 使用 Ollama 时无需填写。
@@ -101,7 +101,7 @@ ollama run qwen3-vl:8b
 
 ![](https://gyazo.com/274ae7b0dac7a88e4481cd4ca815757f){gyazo=image}
 
-[](/workflows/basic-workflows/external-llm-server/OpenAI_API_Chat-History.json)
+[](/workflows/basic-workflows/external-llm-server/openai_api_chat_history.json)
 
 - 🟨 将上一个节点的 `History` 连接到下一个节点的 `History`
 
@@ -111,7 +111,7 @@ ollama run qwen3-vl:8b
 
 ![](https://gyazo.com/04578d7535ce9b4c4fb43148ac1ee2bd){gyazo=image}
 
-[](/workflows/basic-workflows/external-llm-server/OpenAI_API_Chat-multi_images.json)
+[](/workflows/basic-workflows/external-llm-server/openai_api_chat_multi_images.json)
 
 - 将图像连接到 `image(s)`
 - 🟦 若要输入多张图像，先用 `Batch Images` 合并后再输入
@@ -122,7 +122,7 @@ ollama run qwen3-vl:8b
 
 ![](https://gyazo.com/214851c957532e34fb705e0d5feeeef9){gyazo=image}
 
-[](/workflows/basic-workflows/external-llm-server/OpenAI_API_Chat-image2prompt.json)
+[](/workflows/basic-workflows/external-llm-server/openai_api_chat_image2prompt.json)
 
 - 在系统提示词中指定输出格式，例如"输出可直接使用的图像生成提示词"。
 - 之后只需将输出连接到 `CLIP Text Encode` 即可。

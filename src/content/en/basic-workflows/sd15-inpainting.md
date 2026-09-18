@@ -38,7 +38,7 @@ The base is the usual [image2image](/en/basic-workflows/sd15-image2image/) workf
 
 ![](https://gyazo.com/4fc7e54c5ac44fb4c09fc9911f6be06a){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-inpainting/SD1.5_inpainting_SetLatentNoiseMask.json)
+[](/workflows/basic-workflows/sd15-inpainting/sd1_5_inpainting_setlatentnoisemask.json)
 
 - 🟥 Convert the original image to latent with the `VAE Encode` node
 - 🟩 Combine the latent and mask with the `Set Latent Noise Mask` node
@@ -97,7 +97,7 @@ It creates an image with the masked area covered in gray and passes that image t
 
 ![](https://gyazo.com/1f6954026bfda799259cfd948da779a3){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-inpainting/sd-v1-5-inpainting.json)
+[](/workflows/basic-workflows/sd15-inpainting/sd_v1_5_inpainting.json)
 
 - 🟪 Load the inpainting model.
 - 🟩 Replace `VAE Encode` and `Set Latent Noise Mask` with the `InpaintModelConditioning` node.
@@ -148,7 +148,7 @@ Another option is **ControlNet inpaint**.
 
 ![](https://gyazo.com/ae3fe8d999343135c6ac995b67a165e7){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-inpainting/SD1.5_ControlNet_inpaint.json)
+[](/workflows/basic-workflows/sd15-inpainting/sd1_5_controlnet_inpaint.json)
 
 - Load any SD1.5 checkpoint (+ LoRA)
 - 🟨 Pass the image and mask to `Inpaint Preprocessor` to create an image for ControlNet
@@ -184,6 +184,6 @@ As a representative image editing model, let's look at [FLUX.2 \[klein\]](/en/ba
 
 ![](https://gyazo.com/e55ff686078115488cef6406f60b9370){gyazo=image}
 
-[](/workflows/basic-workflows/flux-2-klein/9b/Flux.2-klein-9b_image-edit.json)
+[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_image_edit.json)
 
 In this workflow, the input image and the prompt `remove the man` are all that is needed to remove the man from the image.

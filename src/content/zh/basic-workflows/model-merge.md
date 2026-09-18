@@ -32,7 +32,7 @@ tags: []
 
 ![](https://gyazo.com/152fa7235f2878021cd924594b2d2bf1){gyazo=image}
 
-[](/workflows/basic-workflows/model-merge/ModelMergeSimple_0.5.json)
+[](/workflows/basic-workflows/model-merge/modelmergesimple_0_5.json)
 
 在这个工作流中，使用 `ModelMergeSimple` 节点将 2 个检查点以 1:1 合并。
 
@@ -69,7 +69,7 @@ U-Net 由许多层组成，各层似乎有着不同的作用。外侧的层更�
 
 ![](https://gyazo.com/380e98b86fa2205099cf6f231fc32ac8){gyazo=image}
 
-[](/workflows/basic-workflows/model-merge/ModelMergeBlocks_out_0.5.json)
+[](/workflows/basic-workflows/model-merge/modelmergeblocks_out_0_5.json)
 
 ComfyUI 的标准节点 `ModelMergeBlocks` 将 U-Net 分为从输入走向中央的 `IN`、位于中央的 `MID`，以及从中央走向输出的 `OUT`，并可分别指定合并比率。
 
@@ -104,7 +104,7 @@ LoRA 因为是像“能对原来的模型后加的差分补丁”那样的东西
 
 ![](https://gyazo.com/0b5930d9de58a61acd5bf63da5927634){gyazo=image}
 
-[](/workflows/basic-workflows/model-merge/ModelMergeSubtract_Save-LoRA.json)
+[](/workflows/basic-workflows/model-merge/modelmergesubtract_save_lora.json)
 
 - 🟩 输入想取 `ModelMergeSubtract` 节点的差分的模型。
   - 是 `model1 - model2`。
@@ -118,7 +118,7 @@ LoRA 因为是像“能对原来的模型后加的差分补丁”那样的东西
 ### 差分 LoRA 的测试
 ![](https://gyazo.com/c499e4f0a683dc0ddd573312f6897dc8){gyazo=image}
 
-[](/workflows/basic-workflows/model-merge/SD1.5_text2image_with_LoRA.json)
+[](/workflows/basic-workflows/model-merge/sd1_5_text2image_with_lora.json)
 
 - 这次因为差分大，虽然并不是仅适用 LoRA 就能完美再现，但虽是 SD1.5，变得能生成像那样的图像了呢。
 

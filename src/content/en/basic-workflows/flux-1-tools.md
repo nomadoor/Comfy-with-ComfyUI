@@ -42,7 +42,7 @@ It can be used just like an inpainting model.
 
 ![](https://gyazo.com/ab4e4b0f5c9fe2030ebd637b15ac144d){gyazo=image}
 
-[](/workflows/basic-workflows/flux-1-tools/FLUX.1-Fill.json)
+[](/workflows/basic-workflows/flux-1-tools/flux_1_fill.json)
 
 * 🟪 Load `flux1-fill-dev.safetensors` with the `Load Diffusion Model` node.
 * 🟩 Even specifically for Flux.1 workflows, add the `InpaintModelConditioning` node just like in Stable Diffusion 1.5 [inpainting](/en/basic-workflows/sd15-inpainting/).
@@ -71,7 +71,7 @@ It can be used with the same feeling as ControlNet Depth / Canny.
 
 ![](https://gyazo.com/8b4d310e8b9228e6e2be3b422150e01c){gyazo=image}
 
-[](/workflows/basic-workflows/flux-1-tools/FLUX.1-Depth.json)
+[](/workflows/basic-workflows/flux-1-tools/flux_1_depth.json)
 
 * 🟩 Input the control image to the `InstructPixToPixConditioning` node.
 * 🟦 Since it is Depth this time, create a depth map with Depth Anything V2.
@@ -107,7 +107,7 @@ Furthermore, CLIP-ViT for encoding reference images is also required.
 
 ![](https://gyazo.com/90588b4c7bc62bf7218901c901f31b8f){gyazo=image}
 
-[](/workflows/basic-workflows/flux-1-tools/FLUX.1-Redux.json)
+[](/workflows/basic-workflows/flux-1-tools/flux_1_redux.json)
 
 * 🟩 Add the `Apply Style Model` node and connect the Style model and `CLIP Vision Encode`.
 
@@ -119,7 +119,7 @@ If you line up the chunks of `Apply Style Model` horizontally, you can also refe
 
 ![](https://gyazo.com/cd6233194a56e2ceeb597c8877d645ef){gyazo=image}
 
-[](/workflows/basic-workflows/flux-1-tools/FLUX.1-Redux_multi.json)
+[](/workflows/basic-workflows/flux-1-tools/flux_1_redux_multi.json)
 
 ### Problem with Redux
 

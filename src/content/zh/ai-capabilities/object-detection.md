@@ -62,7 +62,7 @@ hero:
 
 ![](https://gyazo.com/9efa0561eb445e5b300aaf3abb76f526){gyazo=image}
 
-[](/workflows/ai-capabilities/object-detection/Florence-2.json)
+[](/workflows/ai-capabilities/object-detection/florence_2.json)
 
 * 观察图像进行描述生成・物体检测・分割等，一个模型能扮演多个角色的通用 VLM。
 * 因为拥有接近 LLM 的结构，所以比起 Grounding DINO，可以用更复杂的文章进行指示是它的强项。

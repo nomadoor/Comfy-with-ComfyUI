@@ -48,7 +48,7 @@ Stable Diffusion 以降の画像生成モデルの多くは、[Latent Diffusion 
 
 ![](https://gyazo.com/bdac1169d8ee0d91f6eed7b485ffa914){gyazo=image}
 
-[](/workflows/basic-workflows/pixeldit-pid/PixelDiT_text2image.json)
+[](/workflows/basic-workflows/pixeldit-pid/pixeldit_text2image.json)
 
 ピクセル拡散モデルなので、本来は `Load VAE` も `VAE Decode` も必要ありません。
 
@@ -125,7 +125,7 @@ Z-Image-Turbo の latent を、PiD でデコードしてみましょう。
 
 ![](https://gyazo.com/1b9e2dab2979aaafb65acc6e207c5948){gyazo=image}
 
-[](/workflows/basic-workflows/pixeldit-pid/Z-Image-Turbo_to_PiD1.5_4k.json)
+[](/workflows/basic-workflows/pixeldit-pid/z_image_turbo_to_pid1_5_4k.json)
 
 - 🟦 左上は通常の [Z-Image-Turbo](/ja/basic-workflows/z-image-turbo/) workflow です。
   - 🟩 出力された latent は VAE Decode せず、PixelDiT 側の `PiD Conditioning` に繋ぎます。
@@ -156,7 +156,7 @@ Z-Image-Turbo の latent を、PiD でデコードしてみましょう。
 
 ![](https://gyazo.com/f501e4a19e295189ca8fdc8d509eb589){gyazo=image}
 
-[](/workflows/basic-workflows/pixeldit-pid/PiD1.5_flux2_4x_enhance.json)
+[](/workflows/basic-workflows/pixeldit-pid/pid1_5_flux2_4x_enhance.json)
 
 - 入力画像を 1M ピクセル相当、かつ 16 の倍数になるようにリサイズ
 - リサイズ後の高さと幅を取得し、4 倍した値を PiD 側の出力サイズに使用

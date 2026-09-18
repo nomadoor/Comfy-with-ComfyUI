@@ -53,7 +53,7 @@ Combines multiple strings into one.
 
 ![](https://gyazo.com/b662c552b5e80b5b04cad422b72a19b2){gyazo=image}
 
-[](../../../workflows/data-utilities/text-ops/Format_Text.json)
+[](../../../workflows/data-utilities/text-ops/format_text.json)
 
 This node lets you create a text template and insert other strings into it.
 
@@ -124,4 +124,4 @@ The `Power Puter` from [rgthree-comfy](https://github.com/rgthree/rgthree-comfy)
 
 ![](https://i.gyazo.com/c6fd4f1e69b293da19f84963fa1e3ac1.png){gyazo=image}
 
-[](/workflows/data-utilities/text-ops/Power_Puter_(rgthree)_Replace.json)
+[](/workflows/data-utilities/text-ops/power_puter_rgthree_replace.json)

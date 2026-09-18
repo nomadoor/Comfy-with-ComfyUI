@@ -58,7 +58,7 @@ Stable Diffusion からの大きな違いとして、だいたい次の2点が�
 
 ![](https://gyazo.com/c812a47ff8d57de7f90be3b85d1a5f58){gyazo=image}
 
-[](/workflows/basic-workflows/sdxl/SDXL_text2image_base.json)
+[](/workflows/basic-workflows/sdxl/sdxl_text2image_base.json)
 
 * 解像度は、おおよそ 1M ピクセル（1024 × 1024px 前後）を目安にします。
 
@@ -72,7 +72,7 @@ ComfyUI には、それぞれの CLIP に別々のテキストを入力できる
 
 ![](https://gyazo.com/55a896ac7ae4544942d9242853a4d9c9){gyazo=image}
 
-[](/workflows/basic-workflows/sdxl/SDXL_text2image_base_CLIPTextEncodeSDXL.json)
+[](/workflows/basic-workflows/sdxl/sdxl_text2image_base_cliptextencodesdxl.json)
 
 * 両方の CLIP に同じプロンプトを入れた場合、結果としては `CLIP Text Encode` ノードを使ったときとほぼ同じ挙動になります。
 * 実験の結果でも、両方の CLIP に同じテキストを入れたときが、もっとも安定した出力になりやすいことが分かっています。
@@ -90,7 +90,7 @@ SDXL base と SDXL refiner は、同じ latent 表現を使います。
 
 ![](https://gyazo.com/4bc82a63f933e5538c45ca11832c5f08){gyazo=image}
 
-[](/workflows/basic-workflows/sdxl/SDXL_text2image_base-refiner.json)
+[](/workflows/basic-workflows/sdxl/sdxl_text2image_base_refiner.json)
 
 * 1. 🟪 SDXL base で通常どおり text2image（latent を出力）
 * 2. 🟨 その latent を、SDXL refiner を使った KSampler に接続
@@ -107,7 +107,7 @@ SDXL base と SDXL refiner は、同じ latent 表現を使います。
 
 ![](https://gyazo.com/9f6609b33de0a955ca5d9a86ba882ab4){gyazo=image}
 
-[](/workflows/basic-workflows/sdxl/SDXL_text2image_base-refiner_Advanced.json)
+[](/workflows/basic-workflows/sdxl/sdxl_text2image_base_refiner_advanced.json)
 
 * 🟪 中盤までは SDXL base でサンプリング
 * 🟨 残りのステップを SDXL refiner に切り替えサンプリング

@@ -37,7 +37,7 @@ Talking Head 是让一张图像或人脸照片看起来像“正在说话的人�
 
 ![](https://gyazo.com/c893e38c12859f8f20ff1e0fca545788){gyazo=image}
 
-[](/workflows/basic-workflows/liveportrait/LivePortrait_i2v_ref.json)
+[](/workflows/basic-workflows/liveportrait/liveportrait_i2v_ref.json)
 
 这个也是输入一张图和参考视频，但为了能稳定重现脸部各部分的动作、视线、感情的细微差别等进行了改良。
 
@@ -51,7 +51,7 @@ Talking Head 是让一张图像或人脸照片看起来像“正在说话的人�
 
 ![](https://gyazo.com/c70468086a939dce538a876073c9c523){gyazo=loop}
 
-[](/workflows/ai-capabilities/talking-head/HelloMeme_video.json)
+[](/workflows/ai-capabilities/talking-head/hellomeme_video.json)
 
 它们从参考视频中提取出相当于“头的方向”或“表情变化”的信号，并将其作为条件传递给扩散模型。所做的事情接近于一边用 ControlNet 固定姿势和构图一边生成图像，就像指定“希望用这个动作重绘这个角色的脸”一样。
 

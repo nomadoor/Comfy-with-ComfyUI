@@ -323,7 +323,7 @@ If you want to test several prompts at once, the `Create List` node is useful.
 
 ![](https://gyazo.com/88aed03eb70c3ada096a5e388c3cc245){gyazo=image}
 
-[](/workflows/notes/ai-toolkit-sdxl-lora-training/SDXL_list.json)
+[](/workflows/notes/ai-toolkit-sdxl-lora-training/sdxl_list.json)
 
 - Prepare multiple prompts
 - Connect them to `Create List`, then connect that to `CLIP Text Encode`

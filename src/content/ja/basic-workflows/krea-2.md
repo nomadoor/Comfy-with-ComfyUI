@@ -57,7 +57,7 @@ Krea が以前作っていた [FLUX.1 Krea](https://www.krea.ai/blog/flux-krea-o
 
 ![](https://gyazo.com/31bce8c4982ff74992c599268d13374d){gyazo=image}
 
-[](/workflows/basic-workflows/krea-2/Krea_2_turbo_text2image.json)
+[](/workflows/basic-workflows/krea-2/krea_2_turbo_text2image.json)
 
 Krea 2 Turbo は 8 steps 生成用のモデルです。
 
@@ -88,7 +88,7 @@ LoRA ごとに推奨 trigger word と強度があるので、各モデルカー�
 
 ![](https://gyazo.com/7a2ec126a289cfa04dd8cb609b6d04e3){gyazo=image}
 
-[](/workflows/basic-workflows/krea-2/Krea_2_turbo_text2image_darkbrush.json)
+[](/workflows/basic-workflows/krea-2/krea_2_turbo_text2image_darkbrush.json)
 
 - ここでは、[Krea-2-LoRA-darkbrush](https://huggingface.co/krea/Krea-2-LoRA-darkbrush) を使用しています。
 - トリガーワードは `monochrome ink wash style` 。

@@ -85,7 +85,7 @@ OpenAI API互換で投げられるノードを使います。どれでも良い�
 
 ![](https://gyazo.com/767f4fd9d6adf6727fc075fac1d14479){gyazo=image}
 
-[](/workflows/basic-workflows/external-llm-server/OpenAI_API_Chat.json)
+[](/workflows/basic-workflows/external-llm-server/openai_api_chat.json)
 
 - `base_url` : `http://localhost:11434/v1` （Ollamaのデフォルトアドレスです）
 - `api_key` : Ollamaの場合は不要です。
@@ -101,7 +101,7 @@ OpenAI API互換で投げられるノードを使います。どれでも良い�
 
 ![](https://gyazo.com/274ae7b0dac7a88e4481cd4ca815757f){gyazo=image}
 
-[](/workflows/basic-workflows/external-llm-server/OpenAI_API_Chat-History.json)
+[](/workflows/basic-workflows/external-llm-server/openai_api_chat_history.json)
 
 - 🟨前のノードの`History`から次のノードの`History`へつなぐ
 
@@ -111,7 +111,7 @@ Qwen3 VLのような画像も理解できるMLLMを使っていれば、画像�
 
 ![](https://gyazo.com/04578d7535ce9b4c4fb43148ac1ee2bd){gyazo=image}
 
-[](/workflows/basic-workflows/external-llm-server/OpenAI_API_Chat-multi_images.json)
+[](/workflows/basic-workflows/external-llm-server/openai_api_chat_multi_images.json)
 
 
 - `image(s)`に画像を入力
@@ -123,7 +123,7 @@ Qwen3 VLのような画像も理解できるMLLMを使っていれば、画像�
 
 ![](https://gyazo.com/214851c957532e34fb705e0d5feeeef9){gyazo=image}
 
-[](/workflows/basic-workflows/external-llm-server/OpenAI_API_Chat-image2prompt.json)
+[](/workflows/basic-workflows/external-llm-server/openai_api_chat_image2prompt.json)
 
 - システムプロンプトで「そのまま使える画像生成のプロンプト」を出力するようにフォーマットを指定しておくと良いでしょう。
 - あとは出力を`CLIP Text Encode`につなぐだけです。

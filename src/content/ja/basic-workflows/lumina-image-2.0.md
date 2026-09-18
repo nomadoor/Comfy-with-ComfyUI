@@ -54,7 +54,7 @@ Gemma 2B 系テキストエンコーダを採用しつつ、モデル本体は S
 
 ![](https://gyazo.com/7230949afb0971f994ed67980b88c14d){gyazo=image}
 
-[](/workflows/basic-workflows/lumina-image-2.0/Lumina-Image-2.0.json)
+[](/workflows/basic-workflows/lumina-image-2.0/lumina_image_2_0.json)
 
 ---
 
@@ -82,7 +82,7 @@ Gemma 2B 系テキストエンコーダを採用しつつ、モデル本体は S
 
 ![](https://gyazo.com/f9d633456c16c8869b941394fe17bac4){gyazo=image}
 
-[](/workflows/basic-workflows/lumina-image-2.0/neta-lumina-v1.0.json)
+[](/workflows/basic-workflows/lumina-image-2.0/neta_lumina_v1_0.json)
 
 - サンプラーは公式設定に従い、`res_multistep` / `linear_quadratic` を使用します。
 
@@ -121,7 +121,7 @@ Neta Lumina をベースに、さらにファインチューニングした [Net
 
 ![](https://gyazo.com/eb9e649d59482227ed68b7c4c0ed86eb){gyazo=image}
 
-[](/workflows/basic-workflows/lumina-image-2.0/NetaYumev4.json)
+[](/workflows/basic-workflows/lumina-image-2.0/netayumev4.json)
 
 ---
 
@@ -161,7 +161,7 @@ NewBie-image（Exp0.1）は、Luminaアーキテクチャ研究の知見を踏�
 
 ![](https://gyazo.com/d7253fbe289e281e77dbb074d42c392d){gyazo=image}
 
-[](/workflows/basic-workflows/lumina-image-2.0/NewBie_image_Exp0.1.json)
+[](/workflows/basic-workflows/lumina-image-2.0/newbie_image_exp0_1.json)
 
 プロンプトは XML形式（タグで区切る構造化） が推奨されています。　　
 

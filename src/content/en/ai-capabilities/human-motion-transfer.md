@@ -27,4 +27,4 @@ Human motion transfer applies the pose and movement from a source person to a di
 
 ## DiT Generation and Wan-Animate
 
-- [](/workflows/ai-capabilities/human-motion-transfer/MimicMotion.json)
+- [](/workflows/ai-capabilities/human-motion-transfer/mimicmotion.json)

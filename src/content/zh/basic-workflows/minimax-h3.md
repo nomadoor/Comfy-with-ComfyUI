@@ -173,7 +173,7 @@ MiniMax H3 的质量很高，但也是一个非常重的模型。
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_t2va.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_t2va.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_t2va.json)
 
 {% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_t2va_resolution_length.png", width=40, align="left" %}
 **分辨率与视频长度设置**
@@ -203,7 +203,7 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_i2va.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_i2va.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_i2va.json)
 
 在 `MiniMax H3 Image to Video` 中输入提示词和第一张图像。
 
@@ -219,7 +219,7 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_flf2va.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_FLF2VA.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_flf2va.json)
 
 基本上与 I2VA 完全相同，只需在 `last_frame` 中也输入一张图像。
 
@@ -233,7 +233,7 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_generative-interpolation.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_generative_interpolation.json)
 
 在指定的帧中插入图像，让模型补全它们之间的内容。
 
@@ -251,7 +251,7 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_audio-driven-i2va.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.json)
 
 `Add Guide for MiniMax H3` 也可以输入音频。
 
@@ -275,7 +275,7 @@ H3 可以放入多个“图像”“视频”和“音频”，作为生成视�
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_reference-generation.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_reference_generation.json)
 
 这次会把所有图像都作为参考来生成视频。
 
@@ -325,7 +325,7 @@ H3 可以放入多个“图像”“视频”和“音频”，作为生成视�
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_video_editing.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_video-editing.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_video_editing.json)
 
 工作流基本上与 Reference Generation 相同。
 
@@ -347,7 +347,7 @@ H3 也可以使用传统的（？）遮罩，只重新绘制指定区域来进�
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_spatial-inpainting.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting.json)
 
 这次使用 `ref2va` 模型，把视频里的狗替换成参考图像中的玩偶。
 
@@ -394,7 +394,7 @@ H3 也可以使用传统的（？）遮罩，只重新绘制指定区域来进�
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_Hiresfix_t2va.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va.json)
 
 {% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va_first_stage_resolution.png", width=40, align="left" %}
 **第 1 阶段的分辨率**
@@ -423,7 +423,7 @@ H3 也可以使用传统的（？）遮罩，只重新绘制指定区域来进�
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_Hiresfix_i2va.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va.json)
 
 在 I2VA 和 Ref2VA 中，Conditioning 侧也需要输入分辨率。
 

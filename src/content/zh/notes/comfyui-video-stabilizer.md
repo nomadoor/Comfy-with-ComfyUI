@@ -44,7 +44,7 @@ Flow 稍微重一些，但效果好很多，所以基本上推荐使用 Flow。
 
 ![](https://gyazo.com/779732831dc0e69b5eae8519d4599d24){gyazo=image}
 
-[](/workflows/notes/comfyui-video-stabilizer/Video_Stabilizer_Flow.json)
+[](/workflows/notes/comfyui-video-stabilizer/video_stabilizer_flow.json)
 
 
 ### 参数
@@ -93,7 +93,7 @@ Flow 稍微重一些，但效果好很多，所以基本上推荐使用 Flow。
 
 ![](https://gyazo.com/cf0408a1b507b5ecd0699c2e16ff539d){gyazo=image}
 
-[](/workflows/notes/comfyui-video-stabilizer/Video_Stabilizer_to_Motion_Apply.json)
+[](/workflows/notes/comfyui-video-stabilizer/video_stabilizer_to_motion_apply.json)
 
 > 如果用 `crop` 或 `crop_and_pad` 做了补正，已经被裁掉的像素无法恢复。如果后面还想还原手抖，最开始补正时建议使用 `expand`。
 
@@ -107,7 +107,7 @@ Flow 稍微重一些，但效果好很多，所以基本上推荐使用 Flow。
 
 ![](https://gyazo.com/695ab8d32156327393d57ac9432a1e62){gyazo=image}
 
-[](/workflows/notes/comfyui-video-stabilizer/Video_Stabilizer_Shake.json)
+[](/workflows/notes/comfyui-video-stabilizer/video_stabilizer_shake.json)
 
 `Video Stabilizer Shake Generator` 用来生成人工相机抖动，再把它交给 `Video Stabilizer Motion Apply`，就可以让视频产生抖动。
 

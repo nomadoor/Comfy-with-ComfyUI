@@ -82,7 +82,7 @@ main.py --output_dir --output-directory [path]
 
 ![](https://gyazo.com/a3ac0fe532474c1447a2f9cd33b31649){gyazo=image}
 
-[](/workflows/begin-with/media/Image_Comparer_(rgthree).json)
+[](/workflows/begin-with/media/image_comparer_rgthree.json)
 
 - [rgthree/rgthree-comfy](https://github.com/rgthree/rgthree-comfy) で追加されます。
 

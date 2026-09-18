@@ -67,7 +67,7 @@ hero:
 
 测试 workflow:
 
-[Stable_Diffusion_1.5.json](/workflows/begin-with/saving-and-loading-workflows/Stable_Diffusion_1.5.json)
+[Stable_Diffusion_1.5.json](/workflows/begin-with/saving-and-loading-workflows/stable_diffusion_1_5.json)
 
 欢迎直接使用。
 

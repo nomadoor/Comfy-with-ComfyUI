@@ -44,7 +44,7 @@ With SAM 3, you can specify the target with text, like a VLM, and complete segme
 
 ![](https://gyazo.com/cd6078ed81d850085144836e404754d5){gyazo=image}
 
-[](/workflows/data-utilities/sam3/SAM3.1.json)
+[](/workflows/data-utilities/sam3/sam3_1.json)
 
 - Input the image, mask, and target information (text prompt, BBOX, coordinates) into the `SAM3 Detect` node.
 - The behavior is a little tricky. If multiple objects match the prompt, simply writing `car` detects only the most likely one.
@@ -55,7 +55,7 @@ With SAM 3, you can specify the target with text, like a VLM, and complete segme
 
 ![](https://gyazo.com/96c353a26df8cf274d9b68a95453ba7b){gyazo=loop}
 
-[](/workflows/data-utilities/sam3/SAM3.1_video.json)
+[](/workflows/data-utilities/sam3/sam3_1_video.json)
 
 - Use the `SAM3 Video Track` node.
 - Pass the output to the `SAM3 Track to Mask` node to use it as a mask.

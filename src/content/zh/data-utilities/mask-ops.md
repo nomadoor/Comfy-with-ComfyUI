@@ -21,7 +21,7 @@ hero:
 
 ![](https://gyazo.com/a9dd4acbc14438fd7edfe85d3a14c6f3){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/MaskPreview.json)
+[](/workflows/data-utilities/mask-ops/maskpreview.json)
 
 
 ### Convert Mask to Image 节点
@@ -30,7 +30,7 @@ hero:
 
 ![](https://gyazo.com/28a1d381f0697c598db58f1e4c5648c6){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Convert_Mask_to_Image.json)
+[](/workflows/data-utilities/mask-ops/convert_mask_to_image.json)
 
 
 ---
@@ -43,7 +43,7 @@ hero:
 
 ![](https://gyazo.com/49e0e05fc6511b8e37a16439afad6fed){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Load_Image_(as_Mask).json)
+[](/workflows/data-utilities/mask-ops/load_image_as_mask.json)
 
 
 - **channel**:
@@ -57,7 +57,7 @@ hero:
 
 ![](https://gyazo.com/aa0f427a4464958a9ebea27ac925294a){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Convert_Image_to_Mask.json)
+[](/workflows/data-utilities/mask-ops/convert_image_to_mask.json)
 
 
 
@@ -68,7 +68,7 @@ hero:
 
 ![](https://gyazo.com/c38c27135c901d0db5927d493b5b8650){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Color_To_Mask.json)
+[](/workflows/data-utilities/mask-ops/color_to_mask.json)
 
 虽然核心节点中也有具有类似功能的 `ImageColorToMask` 节点，但由于无法调整阈值，难以使用，因此建议使用以下的自定义节点。
 
@@ -82,7 +82,7 @@ hero:
 
 ![](https://gyazo.com/088fbef6cdf9175a1a5bb0c08cfc9d8f){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/SolidMask.json)
+[](/workflows/data-utilities/mask-ops/solidmask.json)
 
 ### Mask Editor
 
@@ -111,7 +111,7 @@ hero:
 
 ![](https://i.gyazo.com/f2313d12383bc625fbf7f0c16cb8ba34.png){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/DepthmapAsMask.json)
+[](/workflows/data-utilities/mask-ops/depthmapasmask.json)
 
 深度图是黑白的渐变图像。这意味着它可以直接转用作蒙版。
 手机 APP 等能够进行后期虚化背景的加工，基本原理是一样的。
@@ -128,7 +128,7 @@ hero:
 
 ![](https://gyazo.com/fd9f3fab0b5ead47c84ce51f9ec3325a){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Resize_ImageMask_match-size.json)
+[](/workflows/data-utilities/mask-ops/resize_imagemask_match_size.json)
 
 这里只提及 `match size`。
 调整图像大小后，图像和蒙版的尺寸可能会产生偏差，导致无法对应。
@@ -141,7 +141,7 @@ hero:
 
 ![](https://gyazo.com/aa6a319345beedb98ad7d873633df500){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/CropMask.json)
+[](/workflows/data-utilities/mask-ops/cropmask.json)
 
 
 ### GrowMask 节点
@@ -150,7 +150,7 @@ hero:
 
 ![](https://gyazo.com/395ae15fa99d4b099e80b006dc1c2d7b){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/GrowMask.json)
+[](/workflows/data-utilities/mask-ops/growmask.json)
 
 
 ### 🪢 Gaussian Blur Mask 节点
@@ -159,7 +159,7 @@ hero:
 
 ![](https://gyazo.com/447edb124127718662b35089effdcfa3){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Gaussian_Blur_Mask.json)
+[](/workflows/data-utilities/mask-ops/gaussian_blur_mask.json)
 
 - 包含在 [ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack) 等中。
 
@@ -169,7 +169,7 @@ hero:
 
 ![](https://gyazo.com/c8ca1c37aa1e2bf3dd4581028e5ab8b9){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/InvertMask.json)
+[](/workflows/data-utilities/mask-ops/invertmask.json)
 
 ### ThresholdMask 节点
 
@@ -177,7 +177,7 @@ hero:
 
 ![](https://gyazo.com/08a267a2826ab83e8ba872298c3974ff){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/ThresholdMask.json)
+[](/workflows/data-utilities/mask-ops/thresholdmask.json)
 
 
 ### 🪢 Remap Mask Range 节点
@@ -187,7 +187,7 @@ hero:
 
 ![](https://i.gyazo.com/fc933c9858f06298ea6524fc6ed0ca5b.png){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Remap_Mask_Range.json)
+[](/workflows/data-utilities/mask-ops/remap_mask_range.json)
 
 
 ---
@@ -200,7 +200,7 @@ hero:
 
 ![](https://gyazo.com/564ef15662a33280a1ec6708104833ce){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/MaskComposite.json)
+[](/workflows/data-utilities/mask-ops/maskcomposite.json)
 
 
 ---

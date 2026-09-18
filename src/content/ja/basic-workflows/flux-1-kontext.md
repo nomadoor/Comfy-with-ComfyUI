@@ -80,7 +80,7 @@ Kontext の workflow 自体は、通常の Flux.1 に`ReferenceLatent` を追加
 
 ![](https://gyazo.com/b872b5de146a585c0c9745168d5f1dae){gyazo=image}
 
-[](/workflows/basic-workflows/flux-1-kontext/Flux.1-Kontext.json)
+[](/workflows/basic-workflows/flux-1-kontext/flux_1_kontext.json)
 
 * 🟪 `flux1-dev-kontext_fp8_scaled.safetensors` を読み込みます。
 * 🟩 `FluxKontextImageScale` ノードで、入力画像を Kontext 向けの解像度にリサイズします。

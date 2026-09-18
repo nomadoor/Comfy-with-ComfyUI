@@ -39,7 +39,7 @@ Florence2Run は、入力画像に対して Florence-2 にタスクを実行さ�
 
 ![](https://gyazo.com/b364e8bc1ba2799ad953384f4dfe2079){gyazo=image}
 
-[](/workflows/basic-workflows/florence2/Florence2-detailed_caption.json)
+[](/workflows/basic-workflows/florence2/florence2_detailed_caption.json)
 
 - `caption`  
   - 画像の概要をシンプルに説明します。
@@ -54,7 +54,7 @@ Florence2Run は、入力画像に対して Florence-2 にタスクを実行さ�
 
 ![](https://gyazo.com/0acc3146eed131b9642857ebc1edcce1){gyazo=image}
 
-[](/workflows/basic-workflows/florence2/Florence2-caption_to_phrase_grounding.json)
+[](/workflows/basic-workflows/florence2/florence2_caption_to_phrase_grounding.json)
 
 - 「left tree」「red car」など、少し複雑な指示でも位置を取れるのが特徴です。
 - 🟨 `Florence2 Coordinates` ノードで座標を取り出し、SAM2 などのセグメンテーションモデルと組み合わせることで、特定の物体だけをマスク化するといった使い方ができます。
@@ -65,7 +65,7 @@ Florence2Run は、入力画像に対して Florence-2 にタスクを実行さ�
 
 ![](https://gyazo.com/e701757ab4dfe4056a74a5290d52edbb){gyazo=image}
 
-[](/workflows/basic-workflows/florence2/Florence2-ocr.json)
+[](/workflows/basic-workflows/florence2/florence2_ocr.json)
 
 
 ### docvqa
@@ -74,7 +74,7 @@ Florence2Run は、入力画像に対して Florence-2 にタスクを実行さ�
 
 ![](https://gyazo.com/614f705d137c7d5a19015b5a9aaa4f17){gyazo=image}
 
-[](/workflows/basic-workflows/florence2/Florence2-docvqa.json)
+[](/workflows/basic-workflows/florence2/florence2_docvqa.json)
 
 - 「この画像の中で○○はどこにあるか？」「この表の値は？」といった質問を投げて、回答をテキストで受け取ることができます。
 - ChatGPT に画像を投げて質問するのと似た使い方のイメージです。

@@ -79,7 +79,7 @@ There are several other improvements, but this is enough to know for now if you 
 
 ![](https://gyazo.com/891b0474ea9ec2636b188b803f6ef2c3){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_text2video.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video.json)
 
 Like LTX-2, this is a 2-stage workflow. It first generates at half the target resolution, then upscales the result by 2x.
 
@@ -109,7 +109,7 @@ This has become more common with models such as Seedance 2: you can generate mul
 
 ![](https://gyazo.com/7d681d86ce23e28e4e48aed1fe452c7d){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_text2video_multishot.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.json)
 
 There is no special format. You can simply write something natural such as “a cut happens here...” and the model will recognize it.
 
@@ -139,7 +139,7 @@ LTX 2.5 can automatically estimate how long a video needs to be to express the c
 
 ![](https://gyazo.com/ecf49f82e56e0fdec6283401d71ae657){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_text2video_Duration_Predictor.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor.json)
 
 {% mediaRow img="https://gyazo.com/4567c3906de961a9c90bc01cef27db5d", width=40, align="left" %}
 **LTXV Duration Predictor**
@@ -154,7 +154,7 @@ It is only a prediction, so the result may be shorter or longer than expected. E
 
 ![](https://gyazo.com/e978305c53f6c658984db4ad42c71a7f){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_image2video.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_image2video.json)
 
 This works the same way as [image2video in LTX 2](/en/basic-workflows/ltx-2/#image2video). `LTXVImgToVideoInplace` inserts the input image as the first frame.
 
@@ -174,7 +174,7 @@ If you specify only the first and last images of the video, it becomes what is c
 
 ![](https://gyazo.com/a0e7571b01f97b79d73325390e0a4d3c){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_generative-interpolation.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation.json)
 
 {% mediaRow img="https://gyazo.com/2e39b3e006fcb35d96b87d649ded0146", width=40, align="left" %}
 **LTXV Add Guide**
@@ -222,7 +222,7 @@ Like a regular ControlNet, it can control the generated video with line art, dep
 
 ![](https://gyazo.com/4e194652b6db74b853390f20017bb542){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_IC-LoRA-Pose.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_pose.json)
 
 For a more detailed explanation of IC-LoRA, see [LTX 2 / IC-LoRA (Pose)](/en/basic-workflows/ltx-2/#ic-lora-pose).
 
@@ -240,7 +240,7 @@ So it is only natural to use the second stage on its own and turn it into a 2x u
 
 ![](https://gyazo.com/7fa914cfea3fe3b4648960d1c3474258){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_x2_upscaler.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_x2_upscaler.json)
 
 It simply runs VAE Encode on any video and connects it to the second stage of the workflow used above.
 

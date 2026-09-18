@@ -141,6 +141,13 @@
 ![](https://gyazo.com/<id>){media=loop}
 ```
 
+## 08-2. workflow JSON のファイル名
+
+- `src/workflows/<セクション>/<記事 slug>/<ファイル名>.json` に置く。
+- ファイル名は小文字 snake_case（`[a-z0-9_]` のみ）。大文字・空白・ハイフン・括弧・ピリオドは `_` にする（例: `Qwen-Image-Edit-2509.json` → `qwen_image_edit_2509.json`、`BiRefNet_Remove_Background_(RMBG).json` → `birefnet_remove_background_rmbg.json`）。
+- 理由: Windows と WSL を行き来してもファイル名が壊れないこと、URL でエンコードが要らないこと、comfy.org の表記に合わせること。画像・動画の原本と同じ規則。
+- `npm run check:workflows` がこの規則を検査する。記事本文やモデル名の正式表記（`Qwen-Image-Edit-2509` など）は今までどおり。
+
 ## 09. Tip・補足・注意書き
 
 - 必要な場合は `blockquote` (`>`) を使用。

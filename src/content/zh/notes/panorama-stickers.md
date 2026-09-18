@@ -226,8 +226,6 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 ![](https://gyazo.com/09deac88400d8e8d1f9301eda07c7b13){gyazo=image}
 
-[](/workflows/notes/panorama-stickers/PanoramaSeamPrep.json)
-
 - `seam_width_px`：指定遮罩宽度
 - `seam_center_offset_px`：让边界从中心位置偏移
 - `mask_blur_px`：模糊遮罩两端
@@ -281,7 +279,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 ### flux-2-klein-9B-360-erp-outpaint
 
 ![](https://gyazo.com/fc52e8eca49723f6ca9fd426abadc636){gyazo=image}
-[](/workflows/notes/panorama-stickers/flux-2-klein-9B-360-erp-outpaint.json)
+[](/workflows/notes/panorama-stickers/flux_2_klein_9b_360_erp_outpaint.json)
 
 - 用 `Panorama Stickers` 放置参考图像，先做出 ERP
 - 提示词用“触发词 + 一点补充”就可以
@@ -295,4 +293,4 @@ Fill the green spaces according to the image. Outpaint as a seamless 360 equirec
 ### flux-2-klein-4B-360-erp-outpaint
 
 ![](https://gyazo.com/fa6b005b1c0389c38728310e5b7a3085){gyazo=image}
-[](/workflows/notes/panorama-stickers/flux-2-klein-4B-360-erp-outpaint.json)
+[](/workflows/notes/panorama-stickers/flux_2_klein_4b_360_erp_outpaint.json)

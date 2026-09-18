@@ -37,7 +37,7 @@ Generates a caption from the input image.
 
 ![](https://gyazo.com/c14e87a362f349d3e649af28622262f1){gyazo=image}
 
-[](/workflows/basic-workflows/joycaption/JoyCaption.json)
+[](/workflows/basic-workflows/joycaption/joycaption.json)
 
 - `prompt_style`
     - **Descriptive**

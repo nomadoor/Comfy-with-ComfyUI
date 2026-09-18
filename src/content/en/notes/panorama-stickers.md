@@ -226,8 +226,6 @@ This node is used when you shift the image so the seam comes to the center, then
 
 ![](https://gyazo.com/09deac88400d8e8d1f9301eda07c7b13){gyazo=image}
 
-[](/workflows/notes/panorama-stickers/PanoramaSeamPrep.json)
-
 - `seam_width_px`: sets the width of the mask
 - `seam_center_offset_px`: shifts the seam away from the center
 - `mask_blur_px`: blurs both ends of the mask
@@ -281,7 +279,7 @@ Let's actually use the LoRA and create an ERP panorama from reference images.
 ### flux-2-klein-9B-360-erp-outpaint
 
 ![](https://gyazo.com/fc52e8eca49723f6ca9fd426abadc636){gyazo=image}
-[](/workflows/notes/panorama-stickers/flux-2-klein-9B-360-erp-outpaint.json)
+[](/workflows/notes/panorama-stickers/flux_2_klein_9b_360_erp_outpaint.json)
 
 - Use `Panorama Stickers` to place reference images and create the ERP
 - The prompt can be just “trigger words + a little extra”
@@ -295,4 +293,4 @@ Fill the green spaces according to the image. Outpaint as a seamless 360 equirec
 ### flux-2-klein-4B-360-erp-outpaint
 
 ![](https://gyazo.com/fa6b005b1c0389c38728310e5b7a3085){gyazo=image}
-[](/workflows/notes/panorama-stickers/flux-2-klein-4B-360-erp-outpaint.json)
+[](/workflows/notes/panorama-stickers/flux_2_klein_4b_360_erp_outpaint.json)

@@ -46,7 +46,7 @@ ReActor（正確にはそのコアである **InsightFace** ）は、1枚の顔�
 
 ![](https://gyazo.com/bc67dfff78c431c688d8ec1a4937969e){gyazo=image}
 
-[](/workflows/basic-workflows/reactor/ReActor_Fast_Face_Swap.json)
+[](/workflows/basic-workflows/reactor/reactor_fast_face_swap.json)
 
 - `input_image`  
   - 顔を入れ替えたい元の画像を接続します。
@@ -90,7 +90,7 @@ ReActor（正確にはそのコアである **InsightFace** ）は、1枚の顔�
 
 ![](https://gyazo.com/bab77e7c89d65dff9a4ebedb17a46375){gyazo=image}
 
-[](/workflows/basic-workflows/reactor/ReActor_hyperswap.json)
+[](/workflows/basic-workflows/reactor/reactor_hyperswap.json)
 
 - ReActor ノードの `swap_model` を、`hyperswap_1a_256` に変更します。
 

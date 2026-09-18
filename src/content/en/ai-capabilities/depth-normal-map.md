@@ -38,7 +38,7 @@ Before diffusion models became generalized, MiDaS and ZoeDepth were the standard
 
 ![](https://gyazo.com/8471cde6727e271aa05f0bad44797144){gyazo=image}
 
-[](/workflows/ai-capabilities/depth-normal-map/MiDaS_Depth-Normal_Map.json)
+[](/workflows/ai-capabilities/depth-normal-map/midas_depth_normal_map.json)
 
 - **MiDaS**
   - A model trained to estimate relative depth even from "miscellaneous images" with varied camera parameters.
@@ -55,7 +55,7 @@ The current mainstream is foundation models for depth estimation like **Depth An
 
 ![](https://gyazo.com/69b8c5331c693c699d389f1c95935fff){gyazo=image}
 
-[](/workflows/ai-capabilities/depth-normal-map/Depth_Anything_V2.json)
+[](/workflows/ai-capabilities/depth-normal-map/depth_anything_v2.json)
 
 When creating depth maps in ComfyUI, you will mostly use them as preprocessing for ControlNet, so for now, using this is OK.
 

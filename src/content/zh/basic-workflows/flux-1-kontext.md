@@ -80,7 +80,7 @@ Kontext 的工作流本身，是在通常的 Flux.1 中只添加了 `ReferenceLa
 
 ![](https://gyazo.com/b872b5de146a585c0c9745168d5f1dae){gyazo=image}
 
-[](/workflows/basic-workflows/flux-1-kontext/Flux.1-Kontext.json)
+[](/workflows/basic-workflows/flux-1-kontext/flux_1_kontext.json)
 
 * 🟪 读取 `flux1-dev-kontext_fp8_scaled.safetensors`。
 * 🟩 在 `FluxKontextImageScale` 节点，将输入图像调整为面向 Kontext 的分辨率。

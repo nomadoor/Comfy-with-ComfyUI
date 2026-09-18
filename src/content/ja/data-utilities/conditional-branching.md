@@ -28,7 +28,7 @@ ComfyUI はノードベースプログラミングと呼ばれることがあり
 
 ![](https://gyazo.com/42e0cbeb5ce32694423b50de55885358){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/Switch.json)
+[](/workflows/data-utilities/conditional-branching/switch.json)
 
 ### Switch で切り替える
 
@@ -62,7 +62,7 @@ Boolean は、`true` か `false`（0 or 1）のどちらかしか持たないシ
 
 ![](https://gyazo.com/78cde905a66746c303948be75f9b02c6){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/Math_Expression.json)
+[](/workflows/data-utilities/conditional-branching/math_expression.json)
 
 ```python
 a == 20
@@ -100,7 +100,7 @@ a <= b  # a が b 以下
 
 ![](https://gyazo.com/d0c09611404d536c589fb34a690152e8){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/Compare_Text.json)
+[](/workflows/data-utilities/conditional-branching/compare_text.json)
 
 `string_a` と `string_b` を比較し、条件に合っていれば `true`、合っていなければ `false` を出力します。
 
@@ -120,7 +120,7 @@ Boolean というのは `true` / `false` で表現される、という話をし
 
 ![](https://gyazo.com/09299f1fde08831664593c6f0b4c0d5e){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/Qwen3.5_4b.json)
+[](/workflows/data-utilities/conditional-branching/qwen3_5_4b.json)
 
 - ここでは `TextGenerate` ノードを使い、Qwen 3.5 4B を使用しています。
 - 少しややこしいですが、MLLM の出力はテキスト、つまり `string` なので、それを `int` に変換し、それをさらに `Boolean` に直します。
@@ -147,7 +147,7 @@ MLLM を使うと、単なる数値やテキスト比較に比べて、遥かに
 
 ![](https://gyazo.com/e7730a6112a0820ab0a65b4371f7e70b){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/AND_OR_NOT.json)
+[](/workflows/data-utilities/conditional-branching/and_or_not.json)
 
 - **AND**: 全てが `true` のときだけ `true`
 - **OR**: どれかが `true` なら `true`
@@ -167,7 +167,7 @@ AND に NOT を組み合わせれば、2 つの入力が `true` のとき、`fal
 
 ![](https://gyazo.com/b6b8471813b62a487bf91519a04f7279){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/Rotate_If_Portrait.json)
+[](/workflows/data-utilities/conditional-branching/rotate_if_portrait.json)
 
 1. `Get Image Size` で画像のサイズを取得
 2. 縦長のときは、`width < height` が `true` になります
@@ -179,7 +179,7 @@ AND に NOT を組み合わせれば、2 つの入力が `true` のとき、`fal
 
 ![](https://gyazo.com/cf499e4e4ed79b91d0020220c854d4ea){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/Switch_MLLM_Flux.2-Klein-9B.json)
+[](/workflows/data-utilities/conditional-branching/switch_mllm_flux_2_klein_9b.json)
 
 1. MLLM に画像を見せて、女性が映っていれば `1`、そうでなければ `0` を出力させます
 2. `true` のときは、女性を男性に変えるプロンプト、`false` のときは、人物を除去するプロンプトに切り替えます

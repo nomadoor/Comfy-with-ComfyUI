@@ -70,7 +70,7 @@ tags: ["human-motion-transfer","video-generation"]
 
 ![](https://gyazo.com/3f28188680b010f2bce1a13858ccaf9f){gyazo=image}
 
-[](/workflows/basic-workflows/scail-2/SCAIL-2_Animation.json)
+[](/workflows/basic-workflows/scail-2/scail_2_animation.json)
 
 基础 workflow 和 [Wan-Animate](/zh/basic-workflows/wan-animate/) 很接近，但这里简单很多，所以轻松看下去就好。
 
@@ -147,7 +147,7 @@ SCAIL-2 也可以使用 [Wan2.1 高速生成](/zh/basic-workflows/wan-2-1/#self-
 
 ![](https://gyazo.com/6ade374ea0cbcb2175889cdc0be0bc46){gyazo=image}
 
-[](/workflows/basic-workflows/scail-2/SCAIL-2_Replacement.json)
+[](/workflows/basic-workflows/scail-2/scail_2_replacement.json)
 
 基本上只要把 `Create SCAIL-2 Colored Mask` 和 `WanSCAILToVideo` 的 `replacement_mode` 设为 `true`。
 
@@ -185,7 +185,7 @@ SCAIL-2 也支持多人视频和图像。
 
 ![](https://gyazo.com/a04e322f84ca4377479a7760a60436cd){gyazo=image}
 
-[](/workflows/basic-workflows/scail-2/SCAIL-2_Animation_multi-char.json)
+[](/workflows/basic-workflows/scail-2/scail_2_animation_multi_char.json)
 
 {% mediaRow img="https://gyazo.com/86e8ccd07a045bb039e2e69b81b2781b {gyazo=image}", width=33, align="left" %}
 **Create SCAIL-2 Colored Mask**
@@ -211,7 +211,7 @@ SCAIL-2 也支持多人视频和图像。
 
 ![](https://gyazo.com/a135dfdaef80d8d16acd904f3d26a12a){gyazo=image}
 
-[](/workflows/basic-workflows/scail-2/SCAIL-2_Animation_multi-ref.json)
+[](/workflows/basic-workflows/scail-2/scail_2_animation_multi_ref.json)
 
 基本流程和普通的 Animation 模式相同。区别在于，这里不是输入 1 张参考图像，而是以 batch 的形式输入多张参考图像。
 
@@ -244,7 +244,7 @@ SCAIL-2 基本上生成到 81 帧为止，但使用 `WAN Context Windows (Manual
 
 ![](https://gyazo.com/43b5c2e2684957795ab7d80f8ce9976a){gyazo=image}
 
-[](/workflows/basic-workflows/scail-2/SCAIL-2_Animation_WAN-Context-Windows.json)
+[](/workflows/basic-workflows/scail-2/scail_2_animation_wan_context_windows.json)
 
 {% mediaRow img="https://gyazo.com/55aa8d3ccee17c3a43f87f17895ebfb1 {gyazo=image}", width=33, align="left" %}
 **WAN Context Windows (Manual)**

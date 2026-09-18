@@ -66,7 +66,7 @@ ComfyUIには無限の広さのキャンバスがあります。
 > 残念ながら、現在は画像にあるミニマルなワークフローはテンプレートから削除されてしまいました。
 > 代わりに、ここに置いておきます。
 >
-> [](/workflows/begin-with/readable-nodes/Stable_Diffusion_1.5.json)
+> [](/workflows/begin-with/readable-nodes/stable_diffusion_1_5.json)
 
 この構成は、SD1.5に限らず、あらゆる最新モデル（SDXL, Flux, Video生成など）のベースになります。
 

@@ -43,7 +43,7 @@ The basic idea is the same as IC-LoRA / ACE++, using a **side-by-side layout**.
 
 ![](https://gyazo.com/e06c4fb2aca261c0d37b792bea9dcc80){gyazo=image}
 
-[](/workflows/ai-capabilities/virtual-try-on/catvton-flux-LoRA.json)
+[](/workflows/ai-capabilities/virtual-try-on/catvton_flux_lora.json)
 
 - **Left side**: Person image
 - **Right side**: Image of clothes you want them to wear + mask
@@ -60,7 +60,7 @@ However, just like with IC-LoRA / ACE++, if you use the **side-by-side technique
 
 ![](https://gyazo.com/30a82ecdd7a8cff9483a162decf7c31d){gyazo=image}
 
-[](/workflows/ai-capabilities/virtual-try-on/Flux_Kontext_LoRA_v0.2.json)
+[](/workflows/ai-capabilities/virtual-try-on/flux_kontext_lora_v0_2.json)
 
 - [nomadoor/crossimage-tryon-fluxkontext](https://huggingface.co/nomadoor/crossimage-tryon-fluxkontext)
 - **Left side**: Person image

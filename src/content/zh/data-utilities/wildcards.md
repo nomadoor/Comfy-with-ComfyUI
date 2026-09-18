@@ -52,7 +52,7 @@ ComfyUI 的文本输入框（例如 `CLIP Text Encode`）默认支持 `{a|b|c}` 
 
 ![](https://gyazo.com/851ccf19703e3b7b97f779e0cb6ae23f){gyazo=image}
 
-[](/workflows/data-utilities/wildcards/ImpactWildcardProcessor.json)
+[](/workflows/data-utilities/wildcards/impactwildcardprocessor.json)
 
 - 上方输入通配符文本
 - 下方会显示展开后的文本

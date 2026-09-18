@@ -70,7 +70,7 @@ There are several LLMs that can be run locally in ComfyUI, but please also consi
 
 ![](https://gyazo.com/94496f33d758475aa62f614978ea2252){gyazo=image}
 
-[](/workflows/ai-capabilities/prompt-generation/Z-Image_Gemini-3.json)
+[](/workflows/ai-capabilities/prompt-generation/z_image_gemini_3.json)
 
 I am one of those who want to stick to local models, but honestly, speaking of PC specs, it is often more severe to use a decent quality LLM locally on a regular basis than to run an image generation model.
 

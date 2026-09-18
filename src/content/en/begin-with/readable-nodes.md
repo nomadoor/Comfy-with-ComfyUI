@@ -66,7 +66,7 @@ You can call the basic text2image workflow from `Templates` → `Getting Started
 > Unfortunately, the minimal workflow in the image has been removed from the templates.
 > Instead, I'll put it here.
 >
-> [](/workflows/begin-with/readable-nodes/Stable_Diffusion_1.5.json)
+> [](/workflows/begin-with/readable-nodes/stable_diffusion_1_5.json)
 
 This configuration is the base for not only SD1.5 but also all the latest models (SDXL, Flux, Video generation, etc.).
 

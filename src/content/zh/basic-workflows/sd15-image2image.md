@@ -74,7 +74,7 @@ image2image 是 **将参考图像作为草稿，在其上画图** 的方法。
 
 ![](https://gyazo.com/e5ff6f57deb2d62f568cb8897eb41355){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-image2image/SD1.5_image2image_KSampler_(Advanced).json)
+[](/workflows/basic-workflows/sd15-image2image/sd1_5_image2image_ksampler_advanced.json)
 
 - 🟩 在 VAE Encode 节点，将图像转换为 latent。
 - 🟨 更改 `start_at_step` 的值，尝试各种保留多少原图。
@@ -88,7 +88,7 @@ image2image 是 **将参考图像作为草稿，在其上画图** 的方法。
 
 ![](https://gyazo.com/41975fb8a105170ea9d8a9dbbd48b5dd){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-image2image/SD1.5_image2image_KSampler.json)
+[](/workflows/basic-workflows/sd15-image2image/sd1_5_image2image_ksampler.json)
 
 - 🟪 更改 `denoise` 的值，设定保留多少原图。
   - `1.0` 在完全用噪声填满。也就是说和 text2image 一样。

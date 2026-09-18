@@ -67,7 +67,7 @@ Detailer 是，仅在这个裁剪领域进行的 inpainting。
 
 ![](https://gyazo.com/52c85301e868fe14f7bb729508206078){gyazo=image}
 
-[](/workflows/basic-workflows/detailer/Inpaint_Crop_(Improved).json)
+[](/workflows/basic-workflows/detailer/inpaint_crop_improved.json)
 
 看工作流就明白，传递 **掩膜＋原图像** 的话，会自动制作以掩膜为基础足了稍微留白的裁剪领域，并只将那部分调整为指定尺寸。
 
@@ -91,7 +91,7 @@ Detailer 是，仅在这个裁剪领域进行的 inpainting。
 
 ![](https://gyazo.com/c210a482208c8932e252b770b8b856bf){gyazo=image}
 
-[](/workflows/basic-workflows/detailer/Inpaint_Stitch_(Improved).json)
+[](/workflows/basic-workflows/detailer/inpaint_stitch_improved.json)
 
 `✂️ Inpaint Stitch (Improved)` 节点，将弄过的裁剪图像返回原来的位置。
 
@@ -107,7 +107,7 @@ Detailer 是，仅在这个裁剪领域进行的 inpainting。
 
 ![](https://gyazo.com/4246aded675f5267c9b5685486791390){gyazo=image}
 
-[](/workflows/basic-workflows/detailer/Detailer_Inpaint_Crop.json)
+[](/workflows/basic-workflows/detailer/detailer_inpaint_crop.json)
 
 - 🟩 请根据基础模型调整 `output_target_width/height`。
   - 这次因为是 SD1.5 所以是 512px
@@ -121,7 +121,7 @@ Detailer 是，仅在这个裁剪领域进行的 inpainting。
 
 ![](https://gyazo.com/d65f393b285ec6c84a17a6a6ef438f14){gyazo=image}
 
-[](/workflows/basic-workflows/detailer/Detailer_Inpaint_Crop_SAM3.json)
+[](/workflows/basic-workflows/detailer/detailer_inpaint_crop_sam3.json)
 
 - 🟦 使用 SAM 3 制作脸的掩膜。
 

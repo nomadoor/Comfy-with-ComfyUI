@@ -33,7 +33,7 @@ Stable Diffusion 以前からある系統で、今でも軽量な処理として
 
 ![](https://gyazo.com/072c6cd7f09d777141293f6cf619ad83){gyazo=image}
 
-[](/workflows/ai-capabilities/upscale-restoration/ESRGAN.json)
+[](/workflows/ai-capabilities/upscale-restoration/esrgan.json)
 
 - ESRGAN
 - Real-ESRGAN
@@ -78,7 +78,7 @@ Stable Diffusion などの拡散モデルを使って、画像を描き直しな
 
 ![](https://gyazo.com/70baa67331207740cbab838d153c990d){gyazo=image}
 
-[](/workflows/ai-capabilities/upscale-restoration/Qwen-Image-Edit-2509.json)
+[](/workflows/ai-capabilities/upscale-restoration/qwen_image_edit_2509.json)
 
 詳しくは「[指示ベース画像編集](/ja/ai-capabilities/instruction-based-image-editing/)」のページで扱います。
 

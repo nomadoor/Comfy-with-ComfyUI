@@ -48,7 +48,7 @@ That raises the obvious question: wasn't the latent there to reduce computation?
 
 ![](https://gyazo.com/bdac1169d8ee0d91f6eed7b485ffa914){gyazo=image}
 
-[](/workflows/basic-workflows/pixeldit-pid/PixelDiT_text2image.json)
+[](/workflows/basic-workflows/pixeldit-pid/pixeldit_text2image.json)
 
 Because this is a pixel diffusion model, it does not inherently need `Load VAE` or `VAE Decode`.
 
@@ -125,7 +125,7 @@ Let's decode a Z-Image-Turbo latent with PiD.
 
 ![](https://gyazo.com/1b9e2dab2979aaafb65acc6e207c5948){gyazo=image}
 
-[](/workflows/basic-workflows/pixeldit-pid/Z-Image-Turbo_to_PiD1.5_4k.json)
+[](/workflows/basic-workflows/pixeldit-pid/z_image_turbo_to_pid1_5_4k.json)
 
 - 🟦 The upper-left part is a normal [Z-Image-Turbo](/en/basic-workflows/z-image-turbo/) workflow.
   - 🟩 Instead of sending the output latent to VAE Decode, connect it to PixelDiT's `PiD Conditioning`.
@@ -156,7 +156,7 @@ This example uses the PiD 1.5 model for Flux.2 with `flux2-vae.safetensors`.
 
 ![](https://gyazo.com/f501e4a19e295189ca8fdc8d509eb589){gyazo=image}
 
-[](/workflows/basic-workflows/pixeldit-pid/PiD1.5_flux2_4x_enhance.json)
+[](/workflows/basic-workflows/pixeldit-pid/pid1_5_flux2_4x_enhance.json)
 
 - Resize the input image to around 1M pixels, with dimensions that are multiples of 16
 - Get the resized height and width, multiply them by 4, and use those values as the PiD output size

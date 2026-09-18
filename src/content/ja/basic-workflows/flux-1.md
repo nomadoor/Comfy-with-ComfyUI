@@ -68,7 +68,7 @@ Flux.1 には 3 つのバリエーションがあります。
 
 ![](https://gyazo.com/2b89975e1b96fcbbd56880d31a0cd9c4){gyazo=image}
 
-[](/workflows/basic-workflows/flux1/flux1-dev.json)
+[](/workflows/basic-workflows/flux1/flux1_dev.json)
 
 Flux.1 dev / schnell は、**CFG を 1.0 に固定した状態を蒸留したモデル** です。
 そのため、従来の Stable Diffusion のような `CFG scale` や Negative Prompt の調整は前提としておらず、**Negative Prompt は一切効きません**。
@@ -87,7 +87,7 @@ Flux.1 [dev] をさらに蒸留したもので、4〜6 ステップで画像を�
 
 ![](https://gyazo.com/365108a45e0039af1ce0d35cf2cdcfa6){gyazo=image}
 
-[](/workflows/basic-workflows/flux1/flux1-schnell.json)
+[](/workflows/basic-workflows/flux1/flux1_schnell.json)
 - `steps` を 4〜6 にします。
 
 ---
@@ -100,7 +100,7 @@ Flux.1 [dev] をさらに蒸留したもので、4〜6 ステップで画像を�
 
 ![](https://gyazo.com/292030d5a8ffc53619232546c7ce750b){gyazo=image}
 
-[](/workflows/basic-workflows/flux1/flux1-dev_lora.json)
+[](/workflows/basic-workflows/flux1/flux1_dev_lora.json)
 
 * 🟪 [LoRA](/ja/basic-workflows/sd15-lora/) でも書いていますが、Flux 以降はテキストエンコーダを学習しなくなったため、`Load LoRA` ノードではなく、**重みのみに適用する** `LoraLoaderModelOnly` ノードを使用します。
 
@@ -129,7 +129,7 @@ ControlNet-Union は、複数の代表的な ControlNet を 1 つのモデルに
 
 ![](https://gyazo.com/9e7cb79f7ca50fe5946ac9f232a552c6){gyazo=image}
 
-[](/workflows/basic-workflows/flux1/FLUX.1-dev-ControlNet-Union-Pro_depth.json)
+[](/workflows/basic-workflows/flux1/flux_1_dev_controlnet_union_pro_depth.json)
 
 * 🟩 Flux を使った image2image の workflow に ControlNet が挿入されただけです。
 
@@ -171,7 +171,7 @@ PC スペックや用途に合わせて選んでください。
 
 ![](https://gyazo.com/f465ff82b48c4c7b5d5b9ce144f3dc8d){gyazo=image}
 
-[](/workflows/basic-workflows/flux1/FLUX.1-dev-gguf.json)
+[](/workflows/basic-workflows/flux1/flux_1_dev_gguf.json)
 
 * 🟪 `Load Diffusion Model` ノードを、`Unet Loader (GGUF)` ノードに差し替えます。
 * ほかの CLIP / T5 / VAE 部分はそのままです。

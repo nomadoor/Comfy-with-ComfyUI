@@ -33,7 +33,7 @@ RGB値を反転したネガ画像を生成します。
 
 ![](https://gyazo.com/79ea23575a35a9e8957853294e4f4e7e){gyazo=image}
 
-[](/workflows/data-utilities/color-adjustments/Invert_Image.json)
+[](/workflows/data-utilities/color-adjustments/invert_image.json)
 
 
 ### Image Sharpen ノード
@@ -42,7 +42,7 @@ RGB値を反転したネガ画像を生成します。
 
 ![](https://gyazo.com/0296ddc8958f0b0ee358afbdd449424b){gyazo=image}
 
-[](/workflows/data-utilities/color-adjustments/ImageSharpen.json)
+[](/workflows/data-utilities/color-adjustments/imagesharpen.json)
 
 
 ### Image Blur ノード
@@ -51,7 +51,7 @@ RGB値を反転したネガ画像を生成します。
 
 ![](https://gyazo.com/b3ae153b9b69063b83e3fb1eeb9bd335){gyazo=image}
 
-[](/workflows/data-utilities/color-adjustments/ImageBlur.json)
+[](/workflows/data-utilities/color-adjustments/imageblur.json)
 
 
 ### Image Quantize ノード
@@ -60,7 +60,7 @@ RGB値を反転したネガ画像を生成します。
 
 ![](https://gyazo.com/08652b0b1815b616f8e644ed9067c56a){gyazo=image}
 
-[](/workflows/data-utilities/color-adjustments/ImageQuantize.json)
+[](/workflows/data-utilities/color-adjustments/imagequantize.json)
 
 
 ### ImageAddNoise ノード
@@ -69,7 +69,7 @@ RGB値を反転したネガ画像を生成します。
 
 ![](https://gyazo.com/e57bf28e9d62134222cce8daaab0079e){gyazo=image}
 
-[](/workflows/data-utilities/color-adjustments/ImageAddNoise.json)
+[](/workflows/data-utilities/color-adjustments/imageaddnoise.json)
 
 少しニッチなのですが、image2imageを行う際、あえてノイズを乗せることで低denoise設定でもディテールを増やすテクニックがあります。
 
@@ -84,7 +84,7 @@ cf. [ピクセル画像にノイズを追加して、低denoiseでのimage2image
 
 ![](https://gyazo.com/db828b756ce851d763f9589b267f6002){gyazo=image}
 
-[](/workflows/data-utilities/color-adjustments/ImageMorphology.json)
+[](/workflows/data-utilities/color-adjustments/imagemorphology.json)
 
 
 cf. [OpenCV-Python/モルフォロジー変換](https://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_imgproc/py_morphological_ops/py_morphological_ops.html#id5)

@@ -58,7 +58,7 @@ If you are using it for ControlNet, you don't need such extreme accuracy.
 - 🟨 Canny Edgy
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/controlnet-prep/Canny-Canny_Edge.json)
+[](/workflows/basic-workflows/controlnet-prep/canny_canny_edge.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -71,7 +71,7 @@ If you are using it for ControlNet, you don't need such extreme accuracy.
 - 🟩 HED Soft-Edge
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/controlnet-prep/HED_Soft-Edge.json)
+[](/workflows/basic-workflows/controlnet-prep/hed_soft_edge.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -85,7 +85,7 @@ If you are using it for ControlNet, you don't need such extreme accuracy.
 - 🟨 AnyLine Lineart
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/controlnet-prep/Realistic-AnyLine_Lineart.json)
+[](/workflows/basic-workflows/controlnet-prep/realistic_anyline_lineart.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -100,7 +100,7 @@ If you are using it for ControlNet, you don't need such extreme accuracy.
   - Currently developed up to V3, but V2 is sufficient for ControlNet use.
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/controlnet-prep/Depth_Anything_V2.json)
+[](/workflows/basic-workflows/controlnet-prep/depth_anything_v2.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -113,7 +113,7 @@ If you are using it for ControlNet, you don't need such extreme accuracy.
 - 🟩 DSINE
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/controlnet-prep/DSINE.json)
+[](/workflows/basic-workflows/controlnet-prep/dsine.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -126,7 +126,7 @@ If you are using it for ControlNet, you don't need such extreme accuracy.
 - 🟩 M-LSD Lines
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/controlnet-prep/M-LSD.json)
+[](/workflows/basic-workflows/controlnet-prep/m_lsd.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -141,7 +141,7 @@ If you are using it for ControlNet, you don't need such extreme accuracy.
   - Often treated as a higher compatible version of OpenPose, but it has a clear weakness that it is not good at back views. Use it together with OpenPose depending on the situation.
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/controlnet-prep/OpenPose_DWPose.json)
+[](/workflows/basic-workflows/controlnet-prep/openpose_dwpose.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -156,7 +156,7 @@ If you are using it for ControlNet, you don't need such extreme accuracy.
   - OpenPose is very weak with animals and anime illustrations, so try this if it doesn't work well.
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/controlnet-prep/SDPose.json)
+[](/workflows/basic-workflows/controlnet-prep/sdpose.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}

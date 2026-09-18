@@ -57,7 +57,7 @@ tags: []
 
 ![](https://gyazo.com/31bce8c4982ff74992c599268d13374d){gyazo=image}
 
-[](/workflows/basic-workflows/krea-2/Krea_2_turbo_text2image.json)
+[](/workflows/basic-workflows/krea-2/krea_2_turbo_text2image.json)
 
 Krea 2 Turbo 是用于 8 steps 生成的模型。
 
@@ -88,7 +88,7 @@ Krea 2 的一大卖点，是 Style references 和 Moodboards 这类风格控制�
 
 ![](https://gyazo.com/7a2ec126a289cfa04dd8cb609b6d04e3){gyazo=image}
 
-[](/workflows/basic-workflows/krea-2/Krea_2_turbo_text2image_darkbrush.json)
+[](/workflows/basic-workflows/krea-2/krea_2_turbo_text2image_darkbrush.json)
 
 - 这里使用的是 [Krea-2-LoRA-darkbrush](https://huggingface.co/krea/Krea-2-LoRA-darkbrush)。
 - trigger word 是 `monochrome ink wash style`。

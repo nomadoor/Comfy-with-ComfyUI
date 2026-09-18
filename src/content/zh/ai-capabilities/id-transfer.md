@@ -44,7 +44,7 @@ IP-Adapter 是用于向现有的 text2image 模型添加“来自图像的条件
 
 ![](https://gyazo.com/afe7232d9dd3cc54f5d8a2f1d956e15f){gyazo=image}
 
-[](/workflows/ai-capabilities/id-transfer/ip-adapter-faceid-plusv2_sd15.json)
+[](/workflows/ai-capabilities/id-transfer/ip_adapter_faceid_plusv2_sd15.json)
 
 ### IP-Adapter-FaceID
 
@@ -60,7 +60,7 @@ IP-Adapter-FaceID 系是与人脸识别模型（InsightFace）组合，为了强
 
 ![](https://gyazo.com/a4213b144081a1267432874bfc09c1f4){gyazo=image}
 
-[](/workflows/ai-capabilities/id-transfer/InstantID-simple.json)
+[](/workflows/ai-capabilities/id-transfer/instantid_simple.json)
 
 除了 IP-Adapter 型的图像适配器之外，通过组合使用从人脸识别模型获得的 ID 嵌入和面部关键点的附加网络（IdentityNet），提高了从一张脸部照片保持 ID 和文本编辑的平衡。
 
@@ -74,7 +74,7 @@ IP-Adapter-FaceID 系是与人脸识别模型（InsightFace）组合，为了强
 
 - ![](https://gyazo.com/7a87706872f7b195d46aeabafa6a399e){gyazo=image}
 
-- [](/workflows/ai-capabilities/id-transfer/PuLID_Flux_ll.json)
+- [](/workflows/ai-capabilities/id-transfer/pulid_flux_ll.json)
 
 **InfiniteYou** 是基于 FLUX 系 Diffusion Transformer 的保持 ID 框架。通过将 Identity 特征注入 DiT 本体的模块（InfuseNet）和多阶段的学习策略，旨在同时提高 ID 的相似度、文本一致性及画质。
 
@@ -98,7 +98,7 @@ FaceSwap 是将目标人物的脸替换为参考人物脸的技术。
 
 ![](https://gyazo.com/1a0a81f044bd264db835ef99d40a37d1){gyazo=image}
 
-[](/workflows/ai-capabilities/id-transfer/ReActor_Fast.json)
+[](/workflows/ai-capabilities/id-transfer/reactor_fast.json)
 
 在 ComfyUI 中可以使用的代表性工具有 ReActor（基于 InsightFace 的 FaceSwap），但由于伦理观点导致仓库被删除等，这也是一项不确定因素很强的技术。
 
@@ -112,4 +112,4 @@ FaceSwap 是将目标人物的脸替换为参考人物脸的技术。
 
 ![](https://gyazo.com/877d8862f6e7f6dd3ec7fbeac5331cd9){gyazo=image}
 
-[](/workflows/ai-capabilities/id-transfer/ReActor_w_InstantID2.json)
+[](/workflows/ai-capabilities/id-transfer/reactor_w_instantid2.json)

@@ -55,7 +55,7 @@ There are several types of IP-Adapter, but let's start by trying the most standa
 
 ![](https://gyazo.com/6e8376130553997cbd30696c6700a601){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-ip-adapter/ip-adapter_sd15.json)
+[](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_sd15.json)
 
 - 🟩 Connect various models and the reference image you want to use to the `IPAdapter Advanced` node.
 - 🟦 Crop the reference image with the `Prep Image For ClipVision` node.
@@ -84,7 +84,7 @@ A model that strongly transfers composition and object positions.
 
 ![](https://gyazo.com/ecbbe99d3410a850767aaf506645952b){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-ip-adapter/ip-adapter-plus_sd15.json)
+[](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_plus_sd15.json)
 
 - [ip-adapter-plus_sd15.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/ip-adapter-plus_sd15.safetensors)
 - The composition will be very close to the reference image.
@@ -96,7 +96,7 @@ A model that prioritizes text prompts.
 
 ![](https://gyazo.com/422b44322caef6fe6fdec8c7d37f54e3){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-ip-adapter/ip-adapter_sd15_light.json)
+[](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_sd15_light.json)
 
 - [ip-adapter_sd15_light.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/ip-adapter_sd15_light.safetensors)
 - Leaves text instructions strongly.
@@ -108,7 +108,7 @@ An IP-Adapter specialized for faces (head).
 
 ![](https://gyazo.com/bba6f8053f411bee64044c141d4632c0){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-ip-adapter/ip-adapter-plus-face_sd15.json)
+[](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_plus_face_sd15.json)
 
 - [ip-adapter-plus-face_sd15.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/ip-adapter-plus-face_sd15.safetensors)
 - Fixes facial features, contours, etc. quite strongly.

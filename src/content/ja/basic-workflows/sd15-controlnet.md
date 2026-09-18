@@ -46,7 +46,7 @@ scribble モデルは、「ラフな落書き」をもとに画像を生成す�
 
 ![](https://gyazo.com/885feaa8a1857c09ce11977ad9d424c2){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-controlnet/SD1.5_ControlNet_scribble.json)
+[](/workflows/basic-workflows/sd15-controlnet/sd1_5_controlnet_scribble.json)
 
 - 🟩 `Apply ControlNet` ノードにControlNet モデルとscribble 画像を入力。
 - 🟨 ControlNet画像と生成する画像のサイズは同じでなくてもエラーは出ませんが、同じサイズにしておきましょう。

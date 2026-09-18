@@ -73,7 +73,7 @@ In addition, [Segment Anything Playground](https://aidemos.meta.com/segment-anyt
 
 ![](https://gyazo.com/8a13dabaec7771795dc4028d6e40abff){gyazo=image}
 
-[](/workflows/ai-capabilities/segmentation/SAM3.json)
+[](/workflows/ai-capabilities/segmentation/sam3.json)
 
 Before SAM 2.1, text object specification was not possible, so it was often used in combination with [Object Detection](/en/ai-capabilities/object-detection) such as Grounding DINO or Florence2.
 

@@ -324,7 +324,7 @@ myakumyaku-san, standing, simple background
 
 ![](https://gyazo.com/88aed03eb70c3ada096a5e388c3cc245){gyazo=image}
 
-[](/workflows/notes/ai-toolkit-sdxl-lora-training/SDXL_list.json)
+[](/workflows/notes/ai-toolkit-sdxl-lora-training/sdxl_list.json)
 
 - プロンプトを複数用意
 - `Create List` に繋ぎ、それを `CLIP Text Encode` ノードに繋ぐ

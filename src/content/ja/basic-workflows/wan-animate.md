@@ -87,7 +87,7 @@ Wan-Animate 本体と、Wan2.1 系で共通のモデルを揃えます。
 
 ![](https://gyazo.com/d25335c059e8117f9e617de4ffffefca){gyazo=image}
 
-[](/workflows/basic-workflows/wan-animate/Wan2.2-Animate_Animation.json)
+[](/workflows/basic-workflows/wan-animate/wan2_2_animate_animation.json)
 
 {% mediaRow img="https://gyazo.com/77b9c908b9e96505678ccaa0bde8055b{gyazo=image}", width=33, align="left" %}
 
@@ -136,7 +136,7 @@ Animation モードに、人物を inpainting するためのマスクと、背�
 
 ![](https://gyazo.com/ab3d36d1e2ddfd5d7e452778dbab411c){gyazo=image}
 
-[](/workflows/basic-workflows/wan-animate/Wan2.2-Animate_Replacement.json)
+[](/workflows/basic-workflows/wan-animate/wan2_2_animate_replacement.json)
 
 {% mediaRow img="https://gyazo.com/a26743871782e80338ed0d920ef6b786{gyazo=image}", width=33, align="left" %}
 
@@ -194,7 +194,7 @@ text2video で使うと劣化が気になりましたが、Wan-Animate では 0 
 
 ![](https://gyazo.com/c8ff6a05cd057198146cd2cffb16d733){gyazo=image}
 
-[](/workflows/basic-workflows/wan-animate/Wan2.2-Animate_Animation_lightx2v.json)
+[](/workflows/basic-workflows/wan-animate/wan2_2_animate_animation_lightx2v.json)
 
 {% mediaRow img="https://gyazo.com/3808ae94efd870f0ff0ce1d77595ea36{gyazo=image}", width=33, align="left" %}
 
@@ -216,7 +216,7 @@ text2video で使うと劣化が気になりましたが、Wan-Animate では 0 
 
 ![](https://gyazo.com/6e70b69630dea6bcf813917d8eb2c18a){gyazo=image}
 
-[](/workflows/basic-workflows/wan-animate/Wan2.2-Animate_Replacement_lightx2v.json)
+[](/workflows/basic-workflows/wan-animate/wan2_2_animate_replacement_lightx2v.json)
 
 ---
 
@@ -233,7 +233,7 @@ ComfyUI ではループ処理ができないため、ほぼ同じ workflow を�
 
 ![](https://gyazo.com/a489fad9b07fb1f1745d556fa130c731){gyazo=image}
 
-[](/workflows/basic-workflows/wan-animate/Wan2.2-Animate_Animation_lightx2v_repeat.json)
+[](/workflows/basic-workflows/wan-animate/wan2_2_animate_animation_lightx2v_repeat.json)
 
 ぱっと見は莫大な workflow に見えますが、これまでのものと違う点は次の 2 点だけです。
 
@@ -255,4 +255,4 @@ ComfyUI ではループ処理ができないため、ほぼ同じ workflow を�
 
 ![](https://gyazo.com/5efe20ed9671e3eb4960fd5ddc70cb46){gyazo=image}
 
-[](/workflows/basic-workflows/wan-animate/Wan2.2-Animate_Replacement_lightx2v_repeat.json)
+[](/workflows/basic-workflows/wan-animate/wan2_2_animate_replacement_lightx2v_repeat.json)

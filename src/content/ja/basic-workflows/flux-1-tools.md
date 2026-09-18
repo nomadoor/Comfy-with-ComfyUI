@@ -42,7 +42,7 @@ inpaintingモデルと同じように使えます。
 
 ![](https://gyazo.com/ab4e4b0f5c9fe2030ebd637b15ac144d){gyazo=image}
 
-[](/workflows/basic-workflows/flux-1-tools/FLUX.1-Fill.json)
+[](/workflows/basic-workflows/flux-1-tools/flux_1_fill.json)
 
 * 🟪 `flux1-fill-dev.safetensors` を `Load Diffusion Model` ノードで読み込みます。
 * 🟩 Flux.1 の workflow でも、Stable Diffusion 1.5 の [inpainting](/ja/basic-workflows/sd15-inpainting/) と同じように `InpaintModelConditioning` ノードを追加します。
@@ -71,7 +71,7 @@ ControlNet Depth / Canny と同じような感覚で使えます。
 
 ![](https://gyazo.com/8b4d310e8b9228e6e2be3b422150e01c){gyazo=image}
 
-[](/workflows/basic-workflows/flux-1-tools/FLUX.1-Depth.json)
+[](/workflows/basic-workflows/flux-1-tools/flux_1_depth.json)
 
 * 🟩 `InstructPixToPixConditioning` ノードに制御用画像を入力します。
 * 🟦 今回は Depth なので、Depth Anything V2 で深度マップを作成します。
@@ -107,7 +107,7 @@ Redux は、Flux 本体とは別の「スタイルモデル」として読み込
 
 ![](https://gyazo.com/90588b4c7bc62bf7218901c901f31b8f){gyazo=image}
 
-[](/workflows/basic-workflows/flux-1-tools/FLUX.1-Redux.json)
+[](/workflows/basic-workflows/flux-1-tools/flux_1_redux.json)
 
 * 🟩 `Apply Style Model` ノードを追加し、Style モデルと `CLIP Vision Encode` を繋ぎます。
 
@@ -119,7 +119,7 @@ Redux は、Flux 本体とは別の「スタイルモデル」として読み込
 
 ![](https://gyazo.com/cd6233194a56e2ceeb597c8877d645ef){gyazo=image}
 
-[](/workflows/basic-workflows/flux-1-tools/FLUX.1-Redux_multi.json)
+[](/workflows/basic-workflows/flux-1-tools/flux_1_redux_multi.json)
 
 ### Reduxの問題
 

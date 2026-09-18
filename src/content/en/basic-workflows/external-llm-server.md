@@ -85,7 +85,7 @@ We'll use a node that can send requests in OpenAI API-compatible format. Any wil
 
 ![](https://gyazo.com/767f4fd9d6adf6727fc075fac1d14479){gyazo=image}
 
-[](/workflows/basic-workflows/external-llm-server/OpenAI_API_Chat.json)
+[](/workflows/basic-workflows/external-llm-server/openai_api_chat.json)
 
 - `base_url` : `http://localhost:11434/v1` (Ollama's default address)
 - `api_key` : Not required for Ollama.
@@ -101,7 +101,7 @@ To continue a conversation, connect the `History` output of the previous node to
 
 ![](https://gyazo.com/274ae7b0dac7a88e4481cd4ca815757f){gyazo=image}
 
-[](/workflows/basic-workflows/external-llm-server/OpenAI_API_Chat-History.json)
+[](/workflows/basic-workflows/external-llm-server/openai_api_chat_history.json)
 
 - 🟨 Connect `History` from the previous node to `History` on the next node
 
@@ -111,7 +111,7 @@ If you're using an MLLM like Qwen3 VL that understands images, you can feed in a
 
 ![](https://gyazo.com/04578d7535ce9b4c4fb43148ac1ee2bd){gyazo=image}
 
-[](/workflows/basic-workflows/external-llm-server/OpenAI_API_Chat-multi_images.json)
+[](/workflows/basic-workflows/external-llm-server/openai_api_chat_multi_images.json)
 
 - Connect your image(s) to `image(s)`
 - 🟦 To input multiple images, concatenate them with `Batch Images` first
@@ -122,7 +122,7 @@ Let's put it to use: have the model generate a prompt from an input image, then 
 
 ![](https://gyazo.com/214851c957532e34fb705e0d5feeeef9){gyazo=image}
 
-[](/workflows/basic-workflows/external-llm-server/OpenAI_API_Chat-image2prompt.json)
+[](/workflows/basic-workflows/external-llm-server/openai_api_chat_image2prompt.json)
 
 - Use the system prompt to specify an output format like "output a ready-to-use image generation prompt."
 - Then just connect the output to `CLIP Text Encode`.

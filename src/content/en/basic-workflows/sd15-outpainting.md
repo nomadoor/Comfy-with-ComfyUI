@@ -35,7 +35,7 @@ One way is to use an inpainting model.
 
 ![](https://gyazo.com/dc8564ec48c6ac898fa9f4f080e9bcfd){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-outpainting/SD1.5_outpainting_sd-v1-5-inpainting.json)
+[](/workflows/basic-workflows/sd15-outpainting/sd1_5_outpainting_sd_v1_5_inpainting.json)
 
 - 🟦 Use the `Pad Image for Outpainting` node to add blank space outside the image.
   - It outputs the padded image and a mask marking the added space.
@@ -51,7 +51,7 @@ Of course, you can also use ControlNet inpaint.
 
 ![](https://gyazo.com/df7f466617d6c2bd773bedf0eeb03bb5){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-outpainting/SD1.5_outpainting_ControlNet_inpaint.json)
+[](/workflows/basic-workflows/sd15-outpainting/sd1_5_outpainting_controlnet_inpaint.json)
 
 - 🟦 Use the `Pad Image for Outpainting` node to add blank space outside the image.
   - It outputs the padded image and a mask marking the added space.
@@ -71,6 +71,6 @@ Let’s try [FLUX.2 \[klein\]](/en/basic-workflows/flux-2-klein/) 9B.
 
 ![](https://gyazo.com/15ea40eaf859773d5a1543e1aba4df0b){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-outpainting/Flux.2-klein-9b_image-edit_outpainting.json)
+[](/workflows/basic-workflows/sd15-outpainting/flux_2_klein_9b_image_edit_outpainting.json)
 
 - 🟩 No mask is needed. Give it an image with added blank space and tell it to fill that area.

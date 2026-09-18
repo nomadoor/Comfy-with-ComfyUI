@@ -32,7 +32,7 @@ First, let's simply mix two models half and half.
 
 ![](https://gyazo.com/152fa7235f2878021cd924594b2d2bf1){gyazo=image}
 
-[](/workflows/basic-workflows/model-merge/ModelMergeSimple_0.5.json)
+[](/workflows/basic-workflows/model-merge/modelmergesimple_0_5.json)
 
 In this workflow, we use the `ModelMergeSimple` node to merge two checkpoints at a 1:1 ratio.
 
@@ -69,7 +69,7 @@ Block Merge uses these differences to mix only the features you want.
 
 ![](https://gyazo.com/380e98b86fa2205099cf6f231fc32ac8){gyazo=image}
 
-[](/workflows/basic-workflows/model-merge/ModelMergeBlocks_out_0.5.json)
+[](/workflows/basic-workflows/model-merge/modelmergeblocks_out_0_5.json)
 
 ComfyUI's standard `ModelMergeBlocks` node divides the U-Net into `IN`, from the input toward the center; `MID`, at the center; and `OUT`, from the center toward the output. You can set a separate ratio for each.
 
@@ -104,7 +104,7 @@ Extracting "only the part of X" from this and making it a LoRA is **Difference L
 
 ![](https://gyazo.com/0b5930d9de58a61acd5bf63da5927634){gyazo=image}
 
-[](/workflows/basic-workflows/model-merge/ModelMergeSubtract_Save-LoRA.json)
+[](/workflows/basic-workflows/model-merge/modelmergesubtract_save_lora.json)
 
 - 🟩 Input the models you want to take the difference of into the `ModelMergeSubtract` node.
   - It is `model1 - model2`.
@@ -119,7 +119,7 @@ Extracting "only the part of X" from this and making it a LoRA is **Difference L
 
 ![](https://gyazo.com/c499e4f0a683dc0ddd573312f6897dc8){gyazo=image}
 
-[](/workflows/basic-workflows/model-merge/SD1.5_text2image_with_LoRA.json)
+[](/workflows/basic-workflows/model-merge/sd1_5_text2image_with_lora.json)
 
 - Since the difference was large this time, it is not possible to reproduce perfectly just by applying LoRA, but even with SD1.5, it has become possible to generate images that look like it.
 

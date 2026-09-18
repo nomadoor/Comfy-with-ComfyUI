@@ -74,7 +74,7 @@ This is called **image2image**.
 
 ![](https://gyazo.com/e5ff6f57deb2d62f568cb8897eb41355){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-image2image/SD1.5_image2image_KSampler_(Advanced).json)
+[](/workflows/basic-workflows/sd15-image2image/sd1_5_image2image_ksampler_advanced.json)
 
 - 🟩 Convert the image to latent with the VAE Encode node.
 - 🟨 Try changing the value of `start_at_step` to see how much of the original image remains.
@@ -88,7 +88,7 @@ However, **"which knob determines how much of the original image remains"** is q
 
 ![](https://gyazo.com/41975fb8a105170ea9d8a9dbbd48b5dd){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-image2image/SD1.5_image2image_KSampler.json)
+[](/workflows/basic-workflows/sd15-image2image/sd1_5_image2image_ksampler.json)
 
 - 🟪 set how much of the original image to leave by changing the value of `denoise`.
   - At `1.0`, it fills completely with noise. In other words, it is the same as text2image.

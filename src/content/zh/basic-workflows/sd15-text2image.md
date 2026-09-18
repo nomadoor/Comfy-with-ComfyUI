@@ -56,7 +56,7 @@ hero:
 
 ![](https://gyazo.com/363769552b12b2072756280f163183df){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-text2image/SD1.5_text2image.json)
+[](/workflows/basic-workflows/sd15-text2image/sd1_5_text2image.json)
 
 ## 关于各节点
 
@@ -131,7 +131,7 @@ hero:
 
 ![](https://gyazo.com/897f66c308b3b98440f641ee3d33d50e){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-text2image/SD1.5_text2image_vae-ft-mse-840000.json)
+[](/workflows/basic-workflows/sd15-text2image/sd1_5_text2image_vae_ft_mse_840000.json)
 
 - 🟥 添加 `Load VAE` 节点，选择刚才下载的 VAE。
   - 连接到 VAE Decode。

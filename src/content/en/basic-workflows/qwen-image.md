@@ -72,7 +72,7 @@ Qwen-Image recommends around 1.5M to 1.8M pixels.
 
 ![](https://gyazo.com/c06f913435b344d929cb0ec8e94d20c3){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image/Qwen-Image.json)
+[](/workflows/basic-workflows/qwen-image/qwen_image.json)
 
 * `euler` or `res_multistep` is often used for the sampler.
 
@@ -101,11 +101,11 @@ There are several ControlNet models for Qwen-Image, but I will introduce the one
 
 ![](https://gyazo.com/dd47c0c42514446cddc587561e073e0d){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image/Qwen-Image-InstantX-ControlNet-Union.json)
+[](/workflows/basic-workflows/qwen-image/qwen_image_instantx_controlnet_union.json)
 
 ![](https://gyazo.com/26cde876245eaa2fb914859216fc66a4){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image/Qwen-Image-InstantX-ControlNet-Inpainting.json)
+[](/workflows/basic-workflows/qwen-image/qwen_image_instantx_controlnet_inpainting.json)
 
 ---
 
@@ -134,7 +134,7 @@ Since it significantly reduces the number of steps with almost no degradation, i
 
 ![](https://gyazo.com/08f16f6f84c2d76a7ad1d50c617d32ef){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image/Qwen-Image_lightning_8steps.json)
+[](/workflows/basic-workflows/qwen-image/qwen_image_lightning_8steps.json)
 
 * Load Lightning LoRA with some nodes such as `LoraLoaderModelOnly`.
 * Set `steps` of `KSampler` to 4 or 8, and `CFG` to 1.0.

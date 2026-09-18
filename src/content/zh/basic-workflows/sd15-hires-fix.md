@@ -67,7 +67,7 @@ Stable Diffusion 1.5 几乎只用了 512 × 512px 的图像进行学习。
 
 ![](https://gyazo.com/96cd5924bcaef159a79e2fb5fa991665){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-hires-fix/SD1.5_Hires.fix.json)
+[](/workflows/basic-workflows/sd15-hires-fix/sd1_5_hires_fix.json)
 
 - 🟪 text2image
 - 🟦 在 `Upscale Image By` 节点将解码的图像放大为 1.5 倍
@@ -88,7 +88,7 @@ Stable Diffusion 1.5 几乎只用了 512 × 512px 的图像进行学习。
 
 ![](https://gyazo.com/545160bee6b5c66fd91b32e917ada79c){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-hires-fix/SD1.5_Hires.fix_NNLatentUpscale.json)
+[](/workflows/basic-workflows/sd15-hires-fix/sd1_5_hires_fix_nnlatentupscale.json)
 
 - 🟩 将 text2image 出来的 latent 在 `NNLatentUpscale` 节点直接放大
 - 🟨 将放大的 latent 原样流入 image2image

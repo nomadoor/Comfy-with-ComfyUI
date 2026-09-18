@@ -80,7 +80,7 @@ Use KSampler Advanced to process the first half with the `high_noise` model and 
 
 ![](https://gyazo.com/3c0c65842b078922808c740ff797917d){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-2/Wan2.2_text2video_14B.json)
+[](/workflows/basic-workflows/wan-2-2/wan2_2_text2video_14b.json)
 
 - 🟩 Specify at which step out of the total 20 steps to switch from `high_noise` -> `low_noise`.
   - As for the timing of this switch, it is recommended that the **ratio of "non-noise parts" to "noise parts"** be `1 : 1`.
@@ -95,7 +95,7 @@ Use KSampler Advanced to process the first half with the `high_noise` model and 
 
 ![](https://gyazo.com/83c1b3885e887ed2a170ce853b61691f){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-2/Wan2.2_image2video_14B.json)
+[](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_14b.json)
 
 - 🟦 Input the start image into the `WanImageToVideo` node.
 - Unlike Wan 2.1, Wan 2.2 **does not use** `clip_vision`.
@@ -110,7 +110,7 @@ In ComfyUI, you can generate a video that interpolates between two images simply
 
 ![](https://gyazo.com/2e2630bf85cd858b53dba10a0cdddba1){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-2/Wan2.2_image2video_FLF2V_14B.json)
+[](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_flf2v_14b.json)
 
 - 🟦 As with Wan 2.1, input the Start / End images into the `WanFirstLastFrameToVideo` node.
 
@@ -160,7 +160,7 @@ Placement example:
 
 ![](https://gyazo.com/167e6339de10602a8d3c5af9dc4c752e){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-2/Wan2.2_text2video_5B.json)
+[](/workflows/basic-workflows/wan-2-2/wan2_2_text2video_5b.json)
 
 In 5B text2video, the video is generated internally via the "first frame latent".
 
@@ -175,7 +175,7 @@ If you understand it as "text2video, but essentially a special case of image2vid
 
 ![](https://gyazo.com/79c9d851847801e276073863d349b43a){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-2/Wan2.2_image2video_5B.json)
+[](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_5b.json)
 
 image2video also uses the same TI2V model as text2video.
 Only the input increases, and the subsequent steps from KSampler onwards are almost common.

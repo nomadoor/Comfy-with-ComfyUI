@@ -35,7 +35,7 @@ Add the `Differential Diffusion` node to an inpainting workflow, then give the m
 
 ![](https://gyazo.com/32341a2b91def8997072eb24dde93cce){gyazo=image}
 
-[](/workflows/basic-workflows/differential-diffusion/SD1.5_Differential_Diffusion.json)
+[](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion.json)
 
 - 🟩 Add the `Differential Diffusion` node
 - This example is based on a workflow using the `Set Latent Noise Mask` node.
@@ -55,7 +55,7 @@ By **using different shades for different areas in a single mask image**, you ca
 
 ![](https://gyazo.com/4b3d0506456a4f1dc8aa062d4e445b17){gyazo=image}
 
-[](/workflows/basic-workflows/differential-diffusion/SD1.5_Differential_Diffusion_multi-obj.json)
+[](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion_multi_obj.json)
 
 - Paint each area you want to change with a different shade (for example, light gray for the face and white for the background)
 
@@ -67,7 +67,7 @@ Combine Differential Diffusion with a blurred mask to blend the boundary more na
 
 ![](https://gyazo.com/e54a8d82e7dca29bf6ab19fdb20c3354){gyazo=image}
 
-[](/workflows/basic-workflows/differential-diffusion/SD1.5_Differential_Diffusion_blur.json)
+[](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion_blur.json)
 
 - 🟪 This time, incorporate it into a workflow using an inpainting model.
 - 🟨 Blur the mask boundary with the `Gaussian Blur Mask` node ([ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack))
@@ -81,7 +81,7 @@ This means it can be used directly as a Differential Diffusion mask.
 
 ![](https://gyazo.com/ac52958c32bb143910151029c53707d1){gyazo=image}
 
-[](/workflows/basic-workflows/differential-diffusion/SD1.5_Differential_Diffusion_depthmap.json)
+[](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion_depthmap.json)
 
 - 🟦 Create a depth map with Depth Anything V2 ([comfyui_controlnet_aux](https://github.com/Fannovel16/comfyui_controlnet_aux))
   - The output is an IMAGE, so convert it to a mask with the `Convert Image to Mask` node.

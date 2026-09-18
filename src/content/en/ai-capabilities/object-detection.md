@@ -62,7 +62,7 @@ What is important for ComfyUI is detection of the type where **objects can be sp
 
 ![](https://gyazo.com/9efa0561eb445e5b300aaf3abb76f526){gyazo=image}
 
-[](/workflows/ai-capabilities/object-detection/Florence-2.json)
+[](/workflows/ai-capabilities/object-detection/florence_2.json)
 
 * A general-purpose VLM that performs multiple roles in one model, such as caption generation, object detection, and segmentation by looking at an image.
 * Since it has a structure close to an LLM, its strength is that it can be instructed with more complex sentences than Grounding DINO.

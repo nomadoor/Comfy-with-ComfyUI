@@ -49,7 +49,7 @@ hero:
 
 ![](https://gyazo.com/70f862355eef1106d51e8068ef48a006){gyazo=image}
 
-[](/workflows/ai-capabilities/video-upscale-restoration/FlashVSR.json)
+[](/workflows/ai-capabilities/video-upscale-restoration/flashvsr.json)
 
 複数フレームをまとめて処理し、時間方向のブレやフリッカーを抑えています。
 

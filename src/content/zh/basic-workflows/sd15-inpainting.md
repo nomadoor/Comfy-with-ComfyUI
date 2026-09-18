@@ -38,7 +38,7 @@ inpainting 是一种 **“只重绘图像的一部分”** 的方法。
 
 ![](https://gyazo.com/4fc7e54c5ac44fb4c09fc9911f6be06a){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-inpainting/SD1.5_inpainting_SetLatentNoiseMask.json)
+[](/workflows/basic-workflows/sd15-inpainting/sd1_5_inpainting_setlatentnoisemask.json)
 
 - 🟥 使用 `VAE Encode` 节点将原图转换为 latent
 - 🟩 使用 `Set Latent Noise Mask` 节点组合 latent 和掩膜
@@ -97,7 +97,7 @@ inpainting 模型还会接收到“要重绘哪里”和“该区域外有什么
 
 ![](https://gyazo.com/1f6954026bfda799259cfd948da779a3){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-inpainting/sd-v1-5-inpainting.json)
+[](/workflows/basic-workflows/sd15-inpainting/sd_v1_5_inpainting.json)
 
 - 🟪 加载 inpainting 模型。
 - 🟩 将 `VAE Encode`、`Set Latent Noise Mask` 替换为 `InpaintModelConditioning` 节点。
@@ -148,7 +148,7 @@ inpainting 模型还会接收到“要重绘哪里”和“该区域外有什么
 
 ![](https://gyazo.com/ae3fe8d999343135c6ac995b67a165e7){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-inpainting/SD1.5_ControlNet_inpaint.json)
+[](/workflows/basic-workflows/sd15-inpainting/sd1_5_controlnet_inpaint.json)
 
 - 加载任意 SD1.5 checkpoint（＋LoRA）
 - 🟨 将图像和掩膜输入 `Inpaint Preprocessor`，转换为 ControlNet 使用的图像
@@ -184,6 +184,6 @@ inpainting 模型还会接收到“要重绘哪里”和“该区域外有什么
 
 ![](https://gyazo.com/e55ff686078115488cef6406f60b9370){gyazo=image}
 
-[](/workflows/basic-workflows/flux-2-klein/9b/Flux.2-klein-9b_image-edit.json)
+[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_image_edit.json)
 
 这个工作流只需要输入图像和 `remove the man` 提示词，就能从图像中删除男性。

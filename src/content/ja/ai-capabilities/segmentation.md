@@ -72,7 +72,7 @@ ComfyUIで「セグメンテーション」といったとき、実際に使わ�
 
 ![](https://gyazo.com/8a13dabaec7771795dc4028d6e40abff){gyazo=image}
 
-[](/workflows/ai-capabilities/segmentation/SAM3.json)
+[](/workflows/ai-capabilities/segmentation/sam3.json)
 
 SAM 2.1以前はテキストでのオブジェクト指定ができなかったため、Grounding DINOやFlorence2といった[物体検出](/ja/ai-capabilities/object-detection)と組み合わせて使用されることが多かったですね。
 

@@ -77,7 +77,7 @@ AI 仅重新生成白色部分，黑色部分则保留原始图像。
 
 ![](https://gyazo.com/b05103b1633b9a4b0fbfdd96063499c2){gyazo=image}
 
-[](/workflows/data-utilities/mask-alpha/Join-Split_Image_with_Alpha.json)
+[](/workflows/data-utilities/mask-alpha/join_split_image_with_alpha.json)
 
 ### 🟨Join Image With Alpha 节点
 

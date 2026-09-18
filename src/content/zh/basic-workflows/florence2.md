@@ -39,7 +39,7 @@ Florence2Run 是，为了对输入图像让 Florence-2 执行任务的主节点�
 
 ![](https://gyazo.com/b364e8bc1ba2799ad953384f4dfe2079){gyazo=image}
 
-[](/workflows/basic-workflows/florence2/Florence2-detailed_caption.json)
+[](/workflows/basic-workflows/florence2/florence2_detailed_caption.json)
 
 - `caption`  
   - 简单地说明图像的概要。
@@ -54,7 +54,7 @@ Florence2Run 是，为了对输入图像让 Florence-2 执行任务的主节点�
 
 ![](https://gyazo.com/0acc3146eed131b9642857ebc1edcce1){gyazo=image}
 
-[](/workflows/basic-workflows/florence2/Florence2-caption_to_phrase_grounding.json)
+[](/workflows/basic-workflows/florence2/florence2_caption_to_phrase_grounding.json)
 
 - 能取到“left tree”“red car”等，稍微复杂的指示的位置是特征。
 - 🟨 用 `Florence2 Coordinates` 节点取出坐标，通过与 SAM2 等的分割模型组合，可以做只将特定的物体掩膜化这样的使用方法。
@@ -65,7 +65,7 @@ Florence2Run 是，为了对输入图像让 Florence-2 执行任务的主节点�
 
 ![](https://gyazo.com/e701757ab4dfe4056a74a5290d52edbb){gyazo=image}
 
-[](/workflows/basic-workflows/florence2/Florence2-ocr.json)
+[](/workflows/basic-workflows/florence2/florence2_ocr.json)
 
 
 ### docvqa
@@ -74,7 +74,7 @@ Florence2Run 是，为了对输入图像让 Florence-2 执行任务的主节点�
 
 ![](https://gyazo.com/614f705d137c7d5a19015b5a9aaa4f17){gyazo=image}
 
-[](/workflows/basic-workflows/florence2/Florence2-docvqa.json)
+[](/workflows/basic-workflows/florence2/florence2_docvqa.json)
 
 - 投出“这幅图像中〇〇在哪里？”“这个表的值是？”之类的问题，可以以文本接收回答。
 - 是向 ChatGPT 投图像提问相似的使用方法的印象。

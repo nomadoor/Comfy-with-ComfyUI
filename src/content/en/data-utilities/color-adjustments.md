@@ -31,7 +31,7 @@ There are many custom nodes related to image processing, and more advanced proce
 
 ![](https://gyazo.com/79ea23575a35a9e8957853294e4f4e7e){gyazo=image}
 
-[](/workflows/data-utilities/color-adjustments/Invert_Image.json)
+[](/workflows/data-utilities/color-adjustments/invert_image.json)
 
 Generates a negative image with inverted RGB values.
 
@@ -39,7 +39,7 @@ Generates a negative image with inverted RGB values.
 
 ![](https://gyazo.com/0296ddc8958f0b0ee358afbdd449424b){gyazo=image}
 
-[](/workflows/data-utilities/color-adjustments/ImageSharpen.json)
+[](/workflows/data-utilities/color-adjustments/imagesharpen.json)
 
 Sharpens the outlines.
 
@@ -47,7 +47,7 @@ Sharpens the outlines.
 
 ![](https://gyazo.com/b3ae153b9b69063b83e3fb1eeb9bd335){gyazo=image}
 
-[](/workflows/data-utilities/color-adjustments/ImageBlur.json)
+[](/workflows/data-utilities/color-adjustments/imageblur.json)
 
 Blurs the image.
 
@@ -55,7 +55,7 @@ Blurs the image.
 
 ![](https://gyazo.com/08652b0b1815b616f8e644ed9067c56a){gyazo=image}
 
-[](/workflows/data-utilities/color-adjustments/ImageQuantize.json)
+[](/workflows/data-utilities/color-adjustments/imagequantize.json)
 
 Reduces the number of colors (posterization).
 
@@ -63,7 +63,7 @@ Reduces the number of colors (posterization).
 
 ![](https://gyazo.com/e57bf28e9d62134222cce8daaab0079e){gyazo=image}
 
-[](/workflows/data-utilities/color-adjustments/ImageAddNoise.json)
+[](/workflows/data-utilities/color-adjustments/imageaddnoise.json)
 
 Adds noise to the image.
 
@@ -77,7 +77,7 @@ cf. [Adding noise to pixel images to increase details in image2image with low de
 
 ![](https://gyazo.com/db828b756ce851d763f9589b267f6002){gyazo=image}
 
-[](/workflows/data-utilities/color-adjustments/ImageMorphology.json)
+[](/workflows/data-utilities/color-adjustments/imagemorphology.json)
 
 It may be an unfamiliar term, but it is mainly used to process black and white mask images.
 Processing such as "thickening lines (dilation)" and "removing noise (erosion)" is possible.

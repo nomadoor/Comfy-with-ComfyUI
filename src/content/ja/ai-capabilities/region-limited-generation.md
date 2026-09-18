@@ -30,7 +30,7 @@ hero:
 
 ![](https://gyazo.com/70bc945855f5eb1162bba1cbd2babb60){gyazo=image}
 
-[](/workflows/ai-capabilities/region-limited-generation/Flux.1_dev.json)
+[](/workflows/ai-capabilities/region-limited-generation/flux_1_dev.json)
 
 >「左にバナナ、右にリンゴ」
 
@@ -46,7 +46,7 @@ Stable Diffusionのテキストエンコーダは位置関係をほとんど理�
 
 ![](https://gyazo.com/2c5b6e3fd8491c24da35f6c5d8d825c9){gyazo=image}
 
-[](/workflows/ai-capabilities/region-limited-generation/Flux.1_fill.json)
+[](/workflows/ai-capabilities/region-limited-generation/flux_1_fill.json)
 
 - 1. ベースとなる画像を生成する
 - 2. 編集したい領域にマスクをかけてInpaintingする
@@ -65,7 +65,7 @@ Stable Diffusionのテキストエンコーダは位置関係をほとんど理�
 
 ![](https://gyazo.com/bca9aa6c5425ee4f7e4294d081d04e18){gyazo=image}
 
-[](/workflows/ai-capabilities/region-limited-generation/Conditioning_(Set_Mask).json)
+[](/workflows/ai-capabilities/region-limited-generation/conditioning_set_mask.json)
 
 理屈はきれいですが、実際には境界がにじんだり、きっちり切り替わらないことが多く、**実用性は高くありません**。
 
@@ -79,7 +79,7 @@ Stable Diffusionのテキストエンコーダは位置関係をほとんど理�
 
 ![](https://gyazo.com/87c4aa926f36889c2987cf5fc827c4e9){gyazo=image}
 
-[](/workflows/ai-capabilities/region-limited-generation/Latent_Composite.json)
+[](/workflows/ai-capabilities/region-limited-generation/latent_composite.json)
 
 - 1. まず複数の画像（バナナ画像、リンゴ画像、背景画像など）を生成する
 - 2. それぞれのlatentを、マスクを使って1枚分のlatentに貼り合わせる
@@ -110,7 +110,7 @@ Lantent CoupleではUNet丸々計算していましたが、こちらはCross-At
 
 ![](https://gyazo.com/efd7424ffea10f0eed2ef0f4b744636d){gyazo=image}
 
-[](/workflows/ai-capabilities/region-limited-generation/Attention_Couple.json)
+[](/workflows/ai-capabilities/region-limited-generation/attention_couple.json)
 
 ---
 

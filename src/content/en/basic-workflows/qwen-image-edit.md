@@ -78,7 +78,7 @@ For what it can do, please refer to the [Official GitHub](https://github.com/Qwe
 
 ![](https://gyazo.com/79b84b74171ddd5c9cfdb57bccc69f13){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit.json)
+[](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit.json)
 
 🟩 I will add a little supplementary explanation about the behavior of the `TextEncodeQwenImageEdit` node.
 
@@ -127,7 +127,7 @@ The biggest difference is that **multiple reference images can be input**.
 
 ![](https://gyazo.com/456e6aec210ae38313aa25f83ce236df){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit-2509.json)
+[](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2509.json)
 
 - The basic flow is the same as the original version, but replace the `TextEncodeQwenImageEdit` node with the `TextEncodeQwenImageEditPlus` node.
 
@@ -135,7 +135,7 @@ The biggest difference is that **multiple reference images can be input**.
 
 ![](https://gyazo.com/e33abcb42d03c53f3171a8fb12d7eca0){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit-2509_multi-ref.json)
+[](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2509_multi_ref.json)
 
 - 🟩 Since it looks at the images properly, it works even with somewhat vague instructions, but you can also explicitly specify which image, such as "XX of image1", "XX of image2".
 
@@ -174,7 +174,7 @@ While there are no drastic changes like from the original to 2509, steady improv
 
 ![](https://gyazo.com/6d45ea40c1194384fb75c383c43a116b){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit-2511.json)
+[](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2511.json)
 
 It works with exactly the same workflow as 2509.
 
@@ -208,7 +208,7 @@ Since the number of steps can be significantly reduced with almost no degradatio
 
 ![](https://gyazo.com/c91a20239e3cb536dfc931a30562f19f){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit_lightning_8steps.json)
+[](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_lightning_8steps.json)
 
 * Load Lightning LoRA with the `LoraLoaderModelOnly` node.
 * Set `steps` in `KSampler` to 4 or 8, and `CFG` to 1.0.
@@ -217,6 +217,6 @@ Since the number of steps can be significantly reduced with almost no degradatio
 
 ![](https://gyazo.com/cc8cbe2a940d686092555896d4b3f067){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit-2511_lightning_4steps.json)
+[](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2511_lightning_4steps.json)
 
 * Load Lightning LoRA with the `LoraLoaderModelOnly` node.

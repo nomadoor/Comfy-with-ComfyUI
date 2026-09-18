@@ -43,7 +43,7 @@ The basic construction is almost the same as SD1.5 / SDXL.
 
 ![](https://gyazo.com/b19fda7dcd1fd17b91e2f0eea9d70c8c){gyazo=image}
 
-[](/workflows/basic-workflows/auraflow/aura_flow_0.3.json)
+[](/workflows/basic-workflows/auraflow/aura_flow_0_3.json)
 
 ---
 
@@ -75,7 +75,7 @@ It is an anime-oriented model based on AuraFlow, created as a successor to [Pony
 
 ![](https://gyazo.com/65638b2cf68cfc2a4ed7ff762653c0bc){gyazo=image}
 
-[](/workflows/basic-workflows/auraflow/pony-v7-base.json)
+[](/workflows/basic-workflows/auraflow/pony_v7_base.json)
 
 - 🟦 `T5TokenizerOptions`
   - A node that fills with padding if the number of tokens is below the set value. There is no big difference whether you include it or not.

@@ -80,7 +80,7 @@ KSampler Advanced を使って前半を `high_noise`、後半を `low_noise` モ
 
 ![](https://gyazo.com/3c0c65842b078922808c740ff797917d){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-2/Wan2.2_text2video_14B.json)
+[](/workflows/basic-workflows/wan-2-2/wan2_2_text2video_14b.json)
 
 - 🟩 全体 20 steps のうち、何 step 目で `high_noise` → `low_noise` に切り替えるかを指定します
   - この切り替えるタイミングですが、規定では **「ノイズじゃない部分」と「ノイズ部分」の割合** が、`1 : 1` の時を推奨されています。
@@ -95,7 +95,7 @@ KSampler Advanced を使って前半を `high_noise`、後半を `low_noise` モ
 
 ![](https://gyazo.com/83c1b3885e887ed2a170ce853b61691f){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-2/Wan2.2_image2video_14B.json)
+[](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_14b.json)
 
 - 🟦 スタート画像は `WanImageToVideo` 系ノードに入力します。
 - Wan2.2ではWan2.1のときと違い、`clip_vision`を**使用しません**。
@@ -110,7 +110,7 @@ ComfyUI では `WanFirstLastFrameToVideo` ノードに Start / End の 2 枚の�
 
 ![](https://gyazo.com/2e2630bf85cd858b53dba10a0cdddba1){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-2/Wan2.2_image2video_FLF2V_14B.json)
+[](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_flf2v_14b.json)
 
 - 🟦 Wan2.1 と同様、`WanFirstLastFrameToVideo` ノードに Start / End 画像を入力します。
 
@@ -160,7 +160,7 @@ Wan2.2-TI2V-5B は、text2video / image2video の両方を 1 つのモデルで�
 
 ![](https://gyazo.com/167e6339de10602a8d3c5af9dc4c752e){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-2/Wan2.2_text2video_5B.json)
+[](/workflows/basic-workflows/wan-2-2/wan2_2_text2video_5b.json)
 
 5B の text2video では、内部的には「最初のフレーム latent」を経由して動画を生成します。
 
@@ -175,7 +175,7 @@ Wan2.2-TI2V-5B は、text2video / image2video の両方を 1 つのモデルで�
 
 ![](https://gyazo.com/79c9d851847801e276073863d349b43a){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-2/Wan2.2_image2video_5B.json)
+[](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_5b.json)
 
 image2video も text2video と同じ TI2V モデルを使います。
 入力が増えるだけで、後段の KSampler 以降はほぼ共通です。

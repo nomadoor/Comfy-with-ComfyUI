@@ -85,7 +85,7 @@ Wan2.1 VACE 用には、通常の T2V モデルとは別の VACE 専用 diffusio
 
 ![](https://gyazo.com/58c1530fbeeb7aa1004120b2db2ddff9){gyazo=loop}
 
-[](/workflows/basic-workflows/wan-2-1-vace/Wan2.1_VACE_control_pose.json)
+[](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_control_pose.json)
 
 {% mediaRow img="https://gyazo.com/6aca797b02070eb54bef2d7c9b2599ee {gyazo=image}", width=33, align="left" %}
 
@@ -123,7 +123,7 @@ reference 画像のキャラやスタイルを、動画に転送します。
 
 ![](https://gyazo.com/b9a184b4ffcad5f4a16b056df24818ed){gyazo=loop}
 
-[](/workflows/basic-workflows/wan-2-1-vace/Wan2.1_VACE_reference.json)
+[](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_reference.json)
 
 {% mediaRow img="https://gyazo.com/235ae5ef44d4fb1518128c0ac099f601 {gyazo=image}", width=33, align="left" %}
 
@@ -153,7 +153,7 @@ reference 画像のキャラやスタイルを、動画に転送します。
 
 ![](https://gyazo.com/b146e11b6fab1d3e23cdcc30f8fe73c9){gyazo=loop}
 
-[](/workflows/basic-workflows/wan-2-1-vace/Wan2.1_VACE_inpainting.json)
+[](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_inpainting.json)
 
 {% mediaRow img="https://gyazo.com/eb65c46a68797753df091e4d28456929 {gyazo=image}", width=33, align="left" %}
 
@@ -183,7 +183,7 @@ reference 画像のキャラやスタイルを、動画に転送します。
 
 ![](https://gyazo.com/6bb7dd561151e0a93367fec89d90db26){gyazo=loop}
 
-[](/workflows/basic-workflows/wan-2-1-vace/Wan2.1_VACE_Extension.json)
+[](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_extension.json)
 
 - この workflow では、入力動画の最後 5 フレームを元に、その先の 72 フレーム（81 - 5）を生成しています。
 
@@ -227,7 +227,7 @@ reference 画像のキャラやスタイルを、動画に転送します。
 
 ![](https://gyazo.com/14d264b55e73ace3c1e07aa9ecc24515){gyazo=loop}
 
-[](/workflows/basic-workflows/wan-2-1-vace/Wan2.1_VACE_Extension_loop.json)
+[](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_extension_loop.json)
 
 - 上の Extension に加えて、**最初から 5 フレーム** も取得します。
 - それを `WanVideo VACE Start To End Frame` の `end_image` に入力します。

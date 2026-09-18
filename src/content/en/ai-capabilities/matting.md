@@ -31,7 +31,7 @@ It is lightweight and high-performance, so if you choose BiRefNet for matting, y
 
 ![](https://gyazo.com/131fe705fd29ddd98391fb4e78b608ab){gyazo=image}
 
-[](/workflows/ai-capabilities/matting/BiRefNet-general.json)
+[](/workflows/ai-capabilities/matting/birefnet_general.json)
 
 There are several derivative models, but please try **general** first. It supports a wide range of subjects such as people, objects, and animals.
 
@@ -43,7 +43,7 @@ There are several derivative models, but please try **general** first. It suppor
 
 ![](https://gyazo.com/317da8e987179adbe6e02f0eb40a4a07){gyazo=image}
 
-[](/workflows/ai-capabilities/matting/SDMatte.json)
+[](/workflows/ai-capabilities/matting/sdmatte.json)
 
 Like BiRefNet, it can cut out the foreground, but it is characterized by being able to handle **transparent things** such as glass bottles, liquids, and thin fabrics to some extent.
 

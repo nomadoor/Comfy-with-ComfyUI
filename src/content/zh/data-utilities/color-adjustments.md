@@ -33,7 +33,7 @@ hero:
 
 ![](https://gyazo.com/79ea23575a35a9e8957853294e4f4e7e){gyazo=image}
 
-[](/workflows/data-utilities/color-adjustments/Invert_Image.json)
+[](/workflows/data-utilities/color-adjustments/invert_image.json)
 
 
 ### Image Sharpen 节点
@@ -42,7 +42,7 @@ hero:
 
 ![](https://gyazo.com/0296ddc8958f0b0ee358afbdd449424b){gyazo=image}
 
-[](/workflows/data-utilities/color-adjustments/ImageSharpen.json)
+[](/workflows/data-utilities/color-adjustments/imagesharpen.json)
 
 
 ### Image Blur 节点
@@ -51,7 +51,7 @@ hero:
 
 ![](https://gyazo.com/b3ae153b9b69063b83e3fb1eeb9bd335){gyazo=image}
 
-[](/workflows/data-utilities/color-adjustments/ImageBlur.json)
+[](/workflows/data-utilities/color-adjustments/imageblur.json)
 
 
 ### Image Quantize 节点
@@ -60,7 +60,7 @@ hero:
 
 ![](https://gyazo.com/08652b0b1815b616f8e644ed9067c56a){gyazo=image}
 
-[](/workflows/data-utilities/color-adjustments/ImageQuantize.json)
+[](/workflows/data-utilities/color-adjustments/imagequantize.json)
 
 
 ### ImageAddNoise 节点
@@ -69,7 +69,7 @@ hero:
 
 ![](https://gyazo.com/e57bf28e9d62134222cce8daaab0079e){gyazo=image}
 
-[](/workflows/data-utilities/color-adjustments/ImageAddNoise.json)
+[](/workflows/data-utilities/color-adjustments/imageaddnoise.json)
 
 稍微有点小众，但在进行 image2image 时，有一种技巧是特意添加噪点，从而在低 denoise 设置下增加细节。
 
@@ -84,7 +84,7 @@ cf. [向像素图像添加噪点，在低 denoise 的 image2image 中增加细�
 
 ![](https://gyazo.com/db828b756ce851d763f9589b267f6002){gyazo=image}
 
-[](/workflows/data-utilities/color-adjustments/ImageMorphology.json)
+[](/workflows/data-utilities/color-adjustments/imagemorphology.json)
 
 
 cf. [OpenCV-Python/形态学转换](https://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_imgproc/py_morphological_ops/py_morphological_ops.html#id5)

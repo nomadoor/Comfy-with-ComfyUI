@@ -26,7 +26,7 @@ hero:
 
 ![](https://gyazo.com/4c0b962c3983bc3296da9b994c07f3b6){gyazo=image}
 
-[](/workflows/ai-capabilities/object-removal/LaMa.json)
+[](/workflows/ai-capabilities/object-removal/lama.json)
 
 它专注于用周围的纹理填充被遮罩的区域，也被用于去除水印等。
 
@@ -40,7 +40,7 @@ hero:
 
 ![](https://gyazo.com/2cad88edab0d74b24f0fc78f528a320d){gyazo=image}
 
-[](/workflows/ai-capabilities/object-removal/Remake_for_SDXL-Removing_Object_and_Filling_with_Background.json)
+[](/workflows/ai-capabilities/object-removal/remake_for_sdxl_removing_object_and_filling_with_background.json)
 
 但是，有时不仅没把对象消除，反而新增加了别的对象，对于对象去除来说有时并不稳定。
 
@@ -56,7 +56,7 @@ hero:
 
 ![](https://gyazo.com/84af7edfab7cd344f7654090b7957166){gyazo=image}
 
-[](/workflows/ai-capabilities/object-removal/Qwen-Image-Edit-2509_object-removal.json)
+[](/workflows/ai-capabilities/object-removal/qwen_image_edit_2509_object_removal.json)
 
 ### 不需要蒙版的优点
 

@@ -46,7 +46,7 @@ LoRA は、モデルの重みそのものを書き換えるのではなく、「
 
 ![](https://gyazo.com/6f275d3cbc6c8487bf1645af06763aea){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-lora/SD1.5_lora.json)
+[](/workflows/basic-workflows/sd15-lora/sd1_5_lora.json)
 
 - 🟩 `Load LoRA (Model and CLIP)` ノードを追加します。
   - `Load Checkpoint` と `CLIP Text Encode` / `KSampler` の間に挟む形で接続します。
@@ -75,4 +75,4 @@ SDXL ではテキストエンコーダが 2 つになり、その後に登場し
 
 ![](https://gyazo.com/975300eed9cca90f7086dda53c1ca413){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-lora/Flux.1_lora.json)
+[](/workflows/basic-workflows/sd15-lora/flux_1_lora.json)

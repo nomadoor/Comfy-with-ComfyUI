@@ -56,7 +56,7 @@ However, since it uses Gemma 2B (2B parameters) as a text encoder, it should be 
 
 ![](https://gyazo.com/7230949afb0971f994ed67980b88c14d){gyazo=image}
 
-[](/workflows/basic-workflows/lumina-image-2.0/Lumina-Image-2.0.json)
+[](/workflows/basic-workflows/lumina-image-2.0/lumina_image_2_0.json)
 
 ---
 
@@ -84,7 +84,7 @@ Like an anime model, it also supports Danbooru tags and is characterized by acce
 
 ![](https://gyazo.com/f9d633456c16c8869b941394fe17bac4){gyazo=image}
 
-[](/workflows/basic-workflows/lumina-image-2.0/neta-lumina-v1.0.json)
+[](/workflows/basic-workflows/lumina-image-2.0/neta_lumina_v1_0.json)
 
 - Follow the official settings for the sampler, use `res_multistep` / `linear_quadratic`.
 
@@ -123,7 +123,7 @@ I will introduce this as well.
 
 ![](https://gyazo.com/eb9e649d59482227ed68b7c4c0ed86eb){gyazo=image}
 
-[](/workflows/basic-workflows/lumina-image-2.0/NetaYumev4.json)
+[](/workflows/basic-workflows/lumina-image-2.0/netayumev4.json)
 
 ---
 
@@ -163,7 +163,7 @@ NewBie-image (Exp0.1) is an anime-focused T2I model with a unique NewBie archite
 
 ![](https://gyazo.com/d7253fbe289e281e77dbb074d42c392d){gyazo=image}
 
-[](/workflows/basic-workflows/lumina-image-2.0/NewBie_image_Exp0.1.json)
+[](/workflows/basic-workflows/lumina-image-2.0/newbie_image_exp0_1.json)
 
 Prompts in XML format (structured with tags) are recommended.
 

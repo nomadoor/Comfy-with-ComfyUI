@@ -31,7 +31,7 @@ This is the operation of simply placing one image on top of another.
 
 ![](https://gyazo.com/0f12d674fe3e1f6f30c2a06340464eb4){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/ImageCompositeMasked.json)
+[](/workflows/data-utilities/layer-composite-blend/imagecompositemasked.json)
 
 This is the basic node for overlaying images.
 
@@ -44,7 +44,7 @@ This is the basic node for overlaying images.
 
 ![](https://gyazo.com/282ad8bae51d35eef6a4810780f3eb82){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/ImageCompositeMasked-Align_center.json)
+[](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_align_center.json)
 
 It is possible to center the image by performing coordinate calculations with nodes like the familiar `position: absolute; top: 50%; left: 50%;` in CSS, but... well, honestly, it's a hassle (；・∀・)
 
@@ -62,7 +62,7 @@ In ComfyUI, you need to rethink this as a process of **"replacing the masked par
 
 ![](https://gyazo.com/cd53e89115c033f8a8ea175b72ca0aef){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/ImageCompositeMasked-with_Alpha.json)
+[](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_with_alpha.json)
 
 We use the same `ImageCompositeMasked` node, but we use the **`mask` input**.
 
@@ -76,7 +76,7 @@ If `resize_source` is set to `true`, the source image is forcibly stretched to t
 
 ![](https://gyazo.com/f7ba12c0cf33e3e5dc8a9b5fb24cb0a6){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/ImageCompositeMasked-with_crop-pad.json)
+[](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_with_crop_pad.json)
 
 This is not a concern if the background is a solid color or pattern, but it will be distorted in the case of photos.
 The easiest solution is to **pad/crop the two images to the same size in advance**.
@@ -88,7 +88,7 @@ The easiest solution is to **pad/crop the two images to the same size in advance
 
 ![](https://i.gyazo.com/c848c0f8e8d3ee590ba7ae09e8db7e68.png){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/ImageCompositeMasked_Segmentation.json)
+[](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_segmentation.json)
 
 The same logic applies when you want to "change the color of only the dress part".
 
@@ -109,7 +109,7 @@ Combine images side by side or vertically. This is useful when you want to creat
 
 ![](https://i.gyazo.com/4ce9346ef269709f6456f0fcd5832a9c.png){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/Image_Stitch.json)
+[](/workflows/data-utilities/layer-composite-blend/image_stitch.json)
 
 A simple stitching node.
 
@@ -117,7 +117,7 @@ A simple stitching node.
 
 ![](https://i.gyazo.com/18d0555fd1d0bd01ead60b3992662cb0.png){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/Image_Concatenate_From_Batch.json)
+[](/workflows/data-utilities/layer-composite-blend/image_concatenate_from_batch.json)
 
 You can arrange 3 or 4 images by using multiple Stitch nodes, but if you want to arrange batch (multiple set) images in a grid, this node handles it smartly.
 
@@ -131,7 +131,7 @@ You can arrange 3 or 4 images by using multiple Stitch nodes, but if you want to
 
 ![](https://i.gyazo.com/0c3dbad0a36a0399e7e12301a4b58638.png){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/Image_Blend.json)
+[](/workflows/data-utilities/layer-composite-blend/image_blend.json)
 
 This is like the "blend mode" of layers in paint software.
 Standard nodes can only do very simple blending, but you can adjust the strength of the composition with `blend_factor`.
@@ -144,7 +144,7 @@ Standard nodes can only do very simple blending, but you can adjust the strength
 
 ![](https://gyazo.com/c39404b4f19fe6a47565b326b7f0dc6d){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/EmptyImage.json)
+[](/workflows/data-utilities/layer-composite-blend/emptyimage.json)
 
 A node that just creates a solid color image.
 

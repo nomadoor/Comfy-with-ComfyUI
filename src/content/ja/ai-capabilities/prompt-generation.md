@@ -70,7 +70,7 @@ ComfyUIでローカルに動かせるLLMもいくつかありますが、**API�
 
 ![](https://gyazo.com/94496f33d758475aa62f614978ea2252){gyazo=image}
 
-[](/workflows/ai-capabilities/prompt-generation/Z-Image_Gemini-3.json)
+[](/workflows/ai-capabilities/prompt-generation/z_image_gemini_3.json)
 
 私自身、ローカルモデルにこだわりたい人間のひとりですが、正直なところ、画像生成モデルを動かすよりも、そこそこの品質のLLMをローカルで常用するほうがPCスペック的には厳しい場合が多いです。
 

@@ -34,7 +34,7 @@ Human Motion Transfer は、1枚の人物画像（またはキャラ画像）に
 
 ![](https://gyazo.com/1e1bb54d4617ed57e696502727b80092){gyazo=loop}
 
-[](/workflows/ai-capabilities/human-motion-transfer/MimicMotion.json)
+[](/workflows/ai-capabilities/human-motion-transfer/mimicmotion.json)
 
 ---
 

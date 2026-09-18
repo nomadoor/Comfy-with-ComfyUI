@@ -29,7 +29,7 @@ hero:
 
 ![](https://gyazo.com/7ea9d7efa48a88e7b9bdfeef6b86d2d2){gyazo=image}
 
-[](/workflows/data-utilities/simple-math/Math_Expression.json)
+[](/workflows/data-utilities/simple-math/math_expression.json)
 
 可以在 `a`, `b`, `c` 中分别输入数值。
 利用这些变量，写成 `a * b - c` 这样，就可以进行简单的算术运算。
@@ -75,7 +75,7 @@ round(a / b) # 四雪五入
 
 ![](https://gyazo.com/07161b2b92b1f8cedc7fa99cbf1d22cc){gyazo=image}
 
-[](/workflows/data-utilities/simple-math/Math_Expression_FloatInt.json)
+[](/workflows/data-utilities/simple-math/math_expression_floatint.json)
 
 ---
 
@@ -95,4 +95,4 @@ cf. [Node: Power Puter (Wiki)](https://github.com/rgthree/rgthree-comfy/wiki/Nod
 
 ![](https://gyazo.com/20c5f92d6ef1e7057c6d42e2065d84b1){gyazo=image}
 
-[](/workflows/data-utilities/simple-math/Power_Puter.json)
+[](/workflows/data-utilities/simple-math/power_puter.json)

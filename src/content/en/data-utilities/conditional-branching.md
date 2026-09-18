@@ -28,7 +28,7 @@ In programming, this kind of "change the process depending on a condition" is ca
 
 ![](https://gyazo.com/42e0cbeb5ce32694423b50de55885358){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/Switch.json)
+[](/workflows/data-utilities/conditional-branching/switch.json)
 
 ### Switching with Switch
 
@@ -62,7 +62,7 @@ For example, write the following.
 
 ![](https://gyazo.com/78cde905a66746c303948be75f9b02c6){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/Math_Expression.json)
+[](/workflows/data-utilities/conditional-branching/math_expression.json)
 
 ```python
 a == 20
@@ -100,7 +100,7 @@ For example, you can check whether the input text matches `Hello`, starts with `
 
 ![](https://gyazo.com/d0c09611404d536c589fb34a690152e8){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/Compare_Text.json)
+[](/workflows/data-utilities/conditional-branching/compare_text.json)
 
 It compares `string_a` and `string_b`, and outputs `true` if the condition matches, or `false` if it does not.
 
@@ -120,7 +120,7 @@ In other words, you can tell the MLLM, `If it is XX, output 1; otherwise output 
 
 ![](https://gyazo.com/09299f1fde08831664593c6f0b4c0d5e){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/Qwen3.5_4b.json)
+[](/workflows/data-utilities/conditional-branching/qwen3_5_4b.json)
 
 - Here, we use the `TextGenerate` node with Qwen 3.5 4B.
 - This is a little roundabout, but the MLLM output is text, meaning a `string`, so we convert it to an `int`, and then convert that to a `Boolean`.
@@ -147,7 +147,7 @@ When there are multiple Boolean inputs, they output `true` or `false` based on t
 
 ![](https://gyazo.com/e7730a6112a0820ab0a65b4371f7e70b){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/AND_OR_NOT.json)
+[](/workflows/data-utilities/conditional-branching/and_or_not.json)
 
 - **AND**: `true` only when all inputs are `true`
 - **OR**: `true` when any input is `true`
@@ -167,7 +167,7 @@ No need to overthink it. Try using them and watch how they behave.
 
 ![](https://gyazo.com/b6b8471813b62a487bf91519a04f7279){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/Rotate_If_Portrait.json)
+[](/workflows/data-utilities/conditional-branching/rotate_if_portrait.json)
 
 1. Get the image size with `Get Image Size`
 2. When the image is portrait, `width < height` becomes `true`
@@ -179,7 +179,7 @@ If a woman is shown, change her into a man. Otherwise, remove all people.
 
 ![](https://gyazo.com/cf499e4e4ed79b91d0020220c854d4ea){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/Switch_MLLM_Flux.2-Klein-9B.json)
+[](/workflows/data-utilities/conditional-branching/switch_mllm_flux_2_klein_9b.json)
 
 1. Show the image to the MLLM, and make it output `1` if a woman is shown, or `0` otherwise
 2. When `true`, switch to a prompt that changes the woman into a man; when `false`, switch to a prompt that removes people

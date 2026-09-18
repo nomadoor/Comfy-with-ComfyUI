@@ -62,7 +62,7 @@ Previous methods required post-processing or special processing only during deco
 
 ![](https://gyazo.com/f395431169623129f7888c42b0fcadfb){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image-layered/Qwen-Image-Layered.json)
+[](/workflows/basic-workflows/qwen-image-layered/qwen_image_layered.json)
 
 
 * Resize input image

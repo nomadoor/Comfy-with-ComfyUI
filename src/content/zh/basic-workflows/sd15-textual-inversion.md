@@ -67,7 +67,7 @@ Textual Inversion 虽然有学习轻便的优点，但现在几乎被 LoRA 取�
 
 ![](https://gyazo.com/4631607c66ac4a2f6edfb442a786b79e){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-textual-inversion/SD1.5_embedding.json)
+[](/workflows/basic-workflows/sd15-textual-inversion/sd1_5_embedding.json)
 
 - 在 CLIP Text Encode 中写入 `embedding:文件名` 这样来调用 embedding。
   - e.g. `embedding:porsche911_ti`

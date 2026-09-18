@@ -31,7 +31,7 @@ hero:
 
 ![](https://gyazo.com/131fe705fd29ddd98391fb4e78b608ab){gyazo=image}
 
-[](/workflows/ai-capabilities/matting/BiRefNet-general.json)
+[](/workflows/ai-capabilities/matting/birefnet_general.json)
 
 有几个派生模型，请先试用 **general**。它支持人物・物体・动物等广泛的对象。
 
@@ -43,7 +43,7 @@ hero:
 
 ![](https://gyazo.com/317da8e987179adbe6e02f0eb40a4a07){gyazo=image}
 
-[](/workflows/ai-capabilities/matting/SDMatte.json)
+[](/workflows/ai-capabilities/matting/sdmatte.json)
 
 和 BiRefNet 一样可以进行前景抠图，但特征是对于玻璃瓶・液体・薄布等 **透视可见的东西** 也能在一定程度上处理。
 

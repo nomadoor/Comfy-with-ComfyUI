@@ -46,7 +46,7 @@ The scribble model is a ControlNet that generates images based on "rough doodles
 
 ![](https://gyazo.com/885feaa8a1857c09ce11977ad9d424c2){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-controlnet/SD1.5_ControlNet_scribble.json)
+[](/workflows/basic-workflows/sd15-controlnet/sd1_5_controlnet_scribble.json)
 
 - 🟩 Input the ControlNet model and scribble image into the `Apply ControlNet` node.
 - 🟨 It is not an error if the ControlNet image and the generated image size are not the same, but let's make them the same size.

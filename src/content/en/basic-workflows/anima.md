@@ -75,7 +75,7 @@ masterpiece, best quality, score_9, safe,
 
 ![](https://gyazo.com/0e2f46074799b0e7a016ee1a5bd28118){gyazo=image}
 
-[](/workflows/basic-workflows/anima/anima-aesthetic-v1.1.json)
+[](/workflows/basic-workflows/anima/anima_aesthetic_v1_1.json)
 
 * Recommended resolution is `512px` to `1536px`.
 * Samplers with a little variation, such as `er_sde` and `euler_ancestral`, are recommended.
@@ -105,7 +105,7 @@ Choose a suitable model for the control image you want to use.
 
 ![](https://gyazo.com/d42f85633b9036b7e2e6e806c064ef56){gyazo=image}
 
-[](/workflows/basic-workflows/anima/anima-lllite-any-test-like-v2.json)
+[](/workflows/basic-workflows/anima/anima_lllite_any_test_like_v2.json)
 
 * `anima-lllite-any-test-like-v2` combines several types of control in a single model. It can use rough sketches or line art to guide the composition, or colorize grayscale images.
 * In this workflow, `Canny` extracts the outlines from the input image and uses them as the control image.

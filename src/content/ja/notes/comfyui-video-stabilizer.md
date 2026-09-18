@@ -44,7 +44,7 @@ Flow の方が少し重いですが、性能は大分良いので、基本的に
 
 ![](https://gyazo.com/779732831dc0e69b5eae8519d4599d24){gyazo=image}
 
-[](/workflows/notes/comfyui-video-stabilizer/Video_Stabilizer_Flow.json)
+[](/workflows/notes/comfyui-video-stabilizer/video_stabilizer_flow.json)
 
 
 ### パラメータ
@@ -93,7 +93,7 @@ Flow の方が少し重いですが、性能は大分良いので、基本的に
 
 ![](https://gyazo.com/cf0408a1b507b5ecd0699c2e16ff539d){gyazo=image}
 
-[](/workflows/notes/comfyui-video-stabilizer/Video_Stabilizer_to_Motion_Apply.json)
+[](/workflows/notes/comfyui-video-stabilizer/video_stabilizer_to_motion_apply.json)
 
 > `crop` や `crop_and_pad` で補正した場合、すでに切り落とした画素は戻せません。復元まで考える場合は、最初の手ブレ補正で `expand` を使うのがおすすめです。
 
@@ -107,7 +107,7 @@ AI で生成した動画…に限りませんが、カメラワークが滑ら�
 
 ![](https://gyazo.com/695ab8d32156327393d57ac9432a1e62){gyazo=image}
 
-[](/workflows/notes/comfyui-video-stabilizer/Video_Stabilizer_Shake.json)
+[](/workflows/notes/comfyui-video-stabilizer/video_stabilizer_shake.json)
 
 `Video Stabilizer Shake Generator` で人工的なカメラ揺れを作り、これを `Video Stabilizer Motion Apply` に渡すことで、動画を揺らします。
 

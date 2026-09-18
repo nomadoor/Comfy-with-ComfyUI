@@ -58,7 +58,7 @@ APIノードは、どのモデルを使う場合でも **必ずクレジット�
 
 ![](https://gyazo.com/0d12a7369948fa19779c0b7ffb487cd0){gyazo=image}
 
-[](/workflows/basic-workflows/api-nodes/Google_Gemini.json)
+[](/workflows/basic-workflows/api-nodes/google_gemini.json)
 
 ---
 

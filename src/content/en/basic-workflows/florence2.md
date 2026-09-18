@@ -39,7 +39,7 @@ Generates a natural language caption from the image.
 
 ![](https://gyazo.com/b364e8bc1ba2799ad953384f4dfe2079){gyazo=image}
 
-[](/workflows/basic-workflows/florence2/Florence2-detailed_caption.json)
+[](/workflows/basic-workflows/florence2/florence2_detailed_caption.json)
 
 - `caption`
   - Explains the outline of the image simply.
@@ -54,7 +54,7 @@ Outputs the position of the object in the form of a rectangle (bounding box) for
 
 ![](https://gyazo.com/0acc3146eed131b9642857ebc1edcce1){gyazo=image}
 
-[](/workflows/basic-workflows/florence2/Florence2-caption_to_phrase_grounding.json)
+[](/workflows/basic-workflows/florence2/florence2_caption_to_phrase_grounding.json)
 
 - It is characterized by being able to take the position even with slightly complex instructions such as "left tree" or "red car".
 - By extracting coordinates with the 🟨 `Florence2 Coordinates` node and combining it with a segmentation model such as SAM2, you can use it to mask only specific objects.
@@ -65,7 +65,7 @@ Reads characters in the image and outputs them as text.
 
 ![](https://gyazo.com/e701757ab4dfe4056a74a5290d52edbb){gyazo=image}
 
-[](/workflows/basic-workflows/florence2/Florence2-ocr.json)
+[](/workflows/basic-workflows/florence2/florence2_ocr.json)
 
 
 ### docvqa
@@ -74,7 +74,7 @@ A task to answer questions about the image.
 
 ![](https://gyazo.com/614f705d137c7d5a19015b5a9aaa4f17){gyazo=image}
 
-[](/workflows/basic-workflows/florence2/Florence2-docvqa.json)
+[](/workflows/basic-workflows/florence2/florence2_docvqa.json)
 
 - You can ask questions like "Where is XX in this image?" or "What is the value of this table?" and receive the answer in text.
 - Imagine usage similar to throwing an image to ChatGPT and asking questions.

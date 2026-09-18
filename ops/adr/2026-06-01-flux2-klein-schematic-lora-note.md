@@ -19,5 +19,5 @@ Use the existing flat Notes structure and `noteTags`, without adding a sidebar n
 ## Consequences
 
 - The article is discoverable through Notes and Note finder.
-- A workflow JSON was later delivered with the PR at `src/workflows/notes/flux2-klein-schematic-lora/Flux.2-klein-base-9b_image-edit.json`.
+- A workflow JSON was later delivered with the PR at `src/workflows/notes/flux2-klein-schematic-lora/flux_2_klein_base_9b_image_edit.json`.
 - English and Chinese versions were added after the owner explicitly requested translation sync.

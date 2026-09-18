@@ -29,7 +29,7 @@ This automatically assigns Danbooru-style tags and genre labels.
 
 - **WD14-tagger / WD-tagger-v3 family**
   - ![](https://gyazo.com/a97fe3f3a2e72a2396df6ebc8c005b72){gyazo=image}
-  - [](/workflows/ai-capabilities/tag-caption-generation/WD-tagger-v3.json)
+  - [](/workflows/ai-capabilities/tag-caption-generation/wd_tagger_v3.json)
   - Tagging models for illustration and anime images.
   - They provide very detailed tags such as characters, hair color, clothing, facial expressions, and composition.
 

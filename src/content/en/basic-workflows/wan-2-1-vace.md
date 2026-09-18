@@ -86,7 +86,7 @@ Control video movement using pose or depth map.
 
 ![](https://gyazo.com/ef1dae4f7c1fe82cb201e33558c6ca39){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-1-vace/Wan2.1_VACE_control_pose.json)
+[](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_control_pose.json)
 
 - Input pose (OpenPose, etc.) or depth map into `control_video`.
 - Can be used for purposes such as "borrowing only the pose from another video while maintaining the camera work of the original video".
@@ -99,7 +99,7 @@ Transfer the character or style of the reference image to the video.
 
 ![](https://gyazo.com/026bb65307ee96b243ccc2625e6d35a5){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-1-vace/Wan2.1_VACE_reference.json)
+[](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_reference.json)
 
 - Input character image or illustration into `reference_image`.
 - It is easier to stabilize if you use an image with the background cut out and filled with white.
@@ -114,7 +114,7 @@ Replace only a part of the video.
 
 ![](https://gyazo.com/516fed114e2f9cd247eed1d9a3c82770){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-1-vace/Wan2.1_VACE_inpainting.json)
+[](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_inpainting.json)
 
 - Use a **video filled with gray (RGB 127,127,127) in the masked part** for `control_video`.
 - Use the original video as is for the untouched area, and replace only the part filled with gray.
@@ -128,7 +128,7 @@ The mechanism uses only the first N frames of the input video and generates the 
 
 ![](https://gyazo.com/ee3739958e95c68676cd003cf7753ce1){gyazo=loop}
 
-[](/workflows/basic-workflows/wan-2-1-vace/Wan2.1_VACE_Extension.json)
+[](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_extension.json)
 
 - Make the section you want to generate continuation (e.g., from 11th frame onwards) a full mask with `Create Fade Mask Advanced` etc.
 - If you leave unused frames as is in `control_video`, they will become unnecessary guides, so the trick is to fill the parts you want to generate with mask or gray.
@@ -141,6 +141,6 @@ Apply Extension to make an existing video loop.
 
 ![](https://gyazo.com/d2b6874f4fea944fd8ddf8fd0d4ed5b9){gyazo=loop}
 
-[](/workflows/basic-workflows/wan-2-1-vace/Wan2.1_VACE_Extension_loop.json)
+[](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_extension_loop.json)
 
 - Use the beginning and end of the original video, and loop by generating frames connecting them with Extension.

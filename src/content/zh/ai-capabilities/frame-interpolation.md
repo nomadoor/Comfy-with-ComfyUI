@@ -29,7 +29,7 @@ hero:
 
 ![](https://gyazo.com/af7273352979b5286d8f85a9b6915ab6.png){gyazo=image}
 
-[](/workflows/ai-capabilities/frame-interpolation/VFI_GMFSS.json)
+[](/workflows/ai-capabilities/frame-interpolation/vfi_gmfss.json)
 
 存在 [FILM](https://github.com/google-research/frame-interpolation) 或 GMFSS 等各种补充手法。
 

@@ -32,7 +32,7 @@ tags: []
 
 ![](https://gyazo.com/152fa7235f2878021cd924594b2d2bf1){gyazo=image}
 
-[](/workflows/basic-workflows/model-merge/ModelMergeSimple_0.5.json)
+[](/workflows/basic-workflows/model-merge/modelmergesimple_0_5.json)
 
 この workflow では、`ModelMergeSimple` ノードを使って 2 つのチェックポイントを 1:1 でマージしています。
 
@@ -69,7 +69,7 @@ U-Net はいくつもの層に分かれていて、外側はテクスチャや�
 
 ![](https://gyazo.com/380e98b86fa2205099cf6f231fc32ac8){gyazo=image}
 
-[](/workflows/basic-workflows/model-merge/ModelMergeBlocks_out_0.5.json)
+[](/workflows/basic-workflows/model-merge/modelmergeblocks_out_0_5.json)
 
 ComfyUI の標準ノード `ModelMergeBlocks` は、U-Net を入力から中央までの `IN`、中央の `MID`、中央から出力までの `OUT` に分け、それぞれ比率を指定できます。
 
@@ -104,7 +104,7 @@ LoRA は「元のモデルにあとから足せる差分パッチ」のような
 
 ![](https://gyazo.com/0b5930d9de58a61acd5bf63da5927634){gyazo=image}
 
-[](/workflows/basic-workflows/model-merge/ModelMergeSubtract_Save-LoRA.json)
+[](/workflows/basic-workflows/model-merge/modelmergesubtract_save_lora.json)
 
 - 🟩 `ModelMergeSubtract`ノードの差分を取りたいモデルを入力します。
   - `model1 - model2` です。
@@ -118,7 +118,7 @@ LoRA は「元のモデルにあとから足せる差分パッチ」のような
 ### 差分LoRAのテスト
 ![](https://gyazo.com/c499e4f0a683dc0ddd573312f6897dc8){gyazo=image}
 
-[](/workflows/basic-workflows/model-merge/SD1.5_text2image_with_LoRA.json)
+[](/workflows/basic-workflows/model-merge/sd1_5_text2image_with_lora.json)
 
 - 今回は差分が大きかったので、LoRAを適用しただけで完璧に再現できるわけではないですが、SD1.5ながら、それっぽい画像を生成できるようになっていますね。
 

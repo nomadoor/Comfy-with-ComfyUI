@@ -67,7 +67,7 @@ Stable Diffusion 1.5 は、ほぼ 512 × 512px の画像だけで学習されて
 
 ![](https://gyazo.com/96cd5924bcaef159a79e2fb5fa991665){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-hires-fix/SD1.5_Hires.fix.json)
+[](/workflows/basic-workflows/sd15-hires-fix/sd1_5_hires_fix.json)
 
 - 🟪 text2image
 - 🟦 `Upscale Image By`ノードでデコードした画像を1.5倍に拡大
@@ -88,7 +88,7 @@ Stable Diffusion 1.5 は、ほぼ 512 × 512px の画像だけで学習されて
 
 ![](https://gyazo.com/545160bee6b5c66fd91b32e917ada79c){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-hires-fix/SD1.5_Hires.fix_NNLatentUpscale.json)
+[](/workflows/basic-workflows/sd15-hires-fix/sd1_5_hires_fix_nnlatentupscale.json)
 
 - 🟩 text2image から出てきた latent を `NNLatentUpscale`ノード でそのまま拡大
 - 🟨 拡大した latent を image2image にそのまま流す

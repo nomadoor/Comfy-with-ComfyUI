@@ -68,7 +68,7 @@ Flux.1 有 3 个变体。
 
 ![](https://gyazo.com/2b89975e1b96fcbbd56880d31a0cd9c4){gyazo=image}
 
-[](/workflows/basic-workflows/flux1/flux1-dev.json)
+[](/workflows/basic-workflows/flux1/flux1_dev.json)
 
 Flux.1 dev / schnell 是 **蒸馏了固定 CFG 为 1.0 状态的模型**。
 因此，不像传统的 Stable Diffusion 那样以 `CFG scale` 和 Negative Prompt 的调整为前提，**Negative Prompt 完全不生效**。
@@ -87,7 +87,7 @@ Flux.1 dev / schnell 是 **蒸馏了固定 CFG 为 1.0 状态的模型**。
 
 ![](https://gyazo.com/365108a45e0039af1ce0d35cf2cdcfa6){gyazo=image}
 
-[](/workflows/basic-workflows/flux1/flux1-schnell.json)
+[](/workflows/basic-workflows/flux1/flux1_schnell.json)
 - 将 `steps` 设为 4〜6。
 
 ---
@@ -100,7 +100,7 @@ Flux.1 dev / schnell 是 **蒸馏了固定 CFG 为 1.0 状态的模型**。
 
 ![](https://gyazo.com/292030d5a8ffc53619232546c7ce750b){gyazo=image}
 
-[](/workflows/basic-workflows/flux1/flux1-dev_lora.json)
+[](/workflows/basic-workflows/flux1/flux1_dev_lora.json)
 
 * 🟪 在 [LoRA](/zh/basic-workflows/sd15-lora/) 中也写了，Flux 以后不再学习文本编码器，所以不使用 `Load LoRA` 节点，使用 **仅适用于权重的** `LoraLoaderModelOnly` 节点。
 
@@ -129,7 +129,7 @@ ControlNet-Union 将多个代表性的 ControlNet 内置在 1 个模型中。
 
 ![](https://gyazo.com/9e7cb79f7ca50fe5946ac9f232a552c6){gyazo=image}
 
-[](/workflows/basic-workflows/flux1/FLUX.1-dev-ControlNet-Union-Pro_depth.json)
+[](/workflows/basic-workflows/flux1/flux_1_dev_controlnet_union_pro_depth.json)
 
 * 🟩 只是在使用了 Flux 的 image2image 工作流中插入了 ControlNet。
 
@@ -171,7 +171,7 @@ ControlNet-Union 将多个代表性的 ControlNet 内置在 1 个模型中。
 
 ![](https://gyazo.com/f465ff82b48c4c7b5d5b9ce144f3dc8d){gyazo=image}
 
-[](/workflows/basic-workflows/flux1/FLUX.1-dev-gguf.json)
+[](/workflows/basic-workflows/flux1/flux_1_dev_gguf.json)
 
 * 🟪 将 `Load Diffusion Model` 节点替换为 `Unet Loader (GGUF)` 节点。
 * 其他 CLIP / T5 / VAE 部分保持原样。

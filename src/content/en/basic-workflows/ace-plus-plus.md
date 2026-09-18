@@ -91,7 +91,7 @@ Generates an image resembling the person (face) of the reference image.
 
 ![](https://gyazo.com/ebe23ac6ca509cf96538f2a85fcf69c3){gyazo=image}
 
-[](/workflows/basic-workflows/ace-plus-plus/ACE_Plus_portrait.json)
+[](/workflows/basic-workflows/ace-plus-plus/ace_plus_portrait.json)
 
 * The base is inpainting using Flux.1 Fill.
 * 🟪 Load FLUX.1 Fill and `portrait` LoRA.
@@ -111,7 +111,7 @@ The basics are the same as ID transfer, but it works as Face Swap by changing "B
 
 ![](https://gyazo.com/966d3c2bfcbaa5ae054fdd7ec4bb1c96){gyazo=image}
 
-[](/workflows/basic-workflows/ace-plus-plus/ACE_Plus_portrait_faceswap.json)
+[](/workflows/basic-workflows/ace-plus-plus/ace_plus_portrait_faceswap.json)
 
 * 🟩 Input the image you want to swap faces (base image) on the right side.
 * 🟩 If you want to change only the face, mask only around the face.
@@ -126,7 +126,7 @@ If you switch to `comfyui_subject_lora16.safetensors`, you can do Subject transf
 
 ![](https://gyazo.com/3e84f30e31b23d804ff651a4d29667e9){gyazo=image}
 
-[](/workflows/basic-workflows/ace-plus-plus/ACE_Plus_subject.json)
+[](/workflows/basic-workflows/ace-plus-plus/ace_plus_subject.json)
 
 * It is the same workflow as the previous Face Swap.
 * 🟪 Change the LoRA to load to `subject`.
@@ -144,7 +144,7 @@ Using `comfyui_local_lora16.safetensors` allows you to bring it closer to **loca
 
 ![](https://gyazo.com/e93a8e393eca60dbb1832fd314402dec){gyazo=image}
 
-[](/workflows/basic-workflows/ace-plus-plus/ACE_Plus_local.json)
+[](/workflows/basic-workflows/ace-plus-plus/ace_plus_local.json)
 
 * Use a normal inpainting workflow instead of side-by-side.
 * 🟪 Change the LoRA to load to `local`.

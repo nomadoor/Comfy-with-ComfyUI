@@ -38,7 +38,7 @@ hero:
 
 ![](https://gyazo.com/8471cde6727e271aa05f0bad44797144){gyazo=image}
 
-[](/workflows/ai-capabilities/depth-normal-map/MiDaS_Depth-Normal_Map.json)
+[](/workflows/ai-capabilities/depth-normal-map/midas_depth_normal_map.json)
 
 - **MiDaS**
   - カメラパラメータがバラバラな「雑多な画像」からでも相対深度を推定できるように学習されたモデル。
@@ -55,7 +55,7 @@ hero:
 
 ![](https://gyazo.com/69b8c5331c693c699d389f1c95935fff){gyazo=image}
 
-[](/workflows/ai-capabilities/depth-normal-map/Depth_Anything_V2.json)
+[](/workflows/ai-capabilities/depth-normal-map/depth_anything_v2.json)
 
 ComfyUI で深度マップを作るときは、ControlNet の前処理として使うのがほとんどだと思いますが、とりあえずこれを使っておけば OK です。
 

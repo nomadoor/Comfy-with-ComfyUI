@@ -53,7 +53,7 @@ Chroma1-HD 与 Flux.1 不同，不使用 CLIP，仅利用 T5。
 
 ![](https://gyazo.com/319a7dc82aeea486d7f0912c830fb258){gyazo=image}
 
-[](/workflows/basic-workflows/chroma1-hd/Chroma1-HD.json)
+[](/workflows/basic-workflows/chroma1-hd/chroma1_hd.json)
 
 - 基本的组建方法与 Flux.1 几乎相同。
 - 🟦 T5TokenizerOptions 是当令牌数比设定值少时用 padding 填充的节点。放不放都没有大差别。

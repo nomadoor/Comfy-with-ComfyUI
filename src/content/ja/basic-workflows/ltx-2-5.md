@@ -79,7 +79,7 @@ tags: []
 
 ![](https://gyazo.com/891b0474ea9ec2636b188b803f6ef2c3){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_text2video.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video.json)
 
 LTX-2 と同じく、まず目標の半分の解像度で作り、そのあと 2 倍にアップスケールする 2 段階の workflow です。
 
@@ -109,7 +109,7 @@ Seedance 2 などから一般的になってきましたが、1 回の生成で�
 
 ![](https://gyazo.com/7d681d86ce23e28e4e48aed1fe452c7d){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_text2video_multishot.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.json)
 
 特別な書き方は必要なく、自然文で「ここにカットが入り……」と書けば認識してくれます。
 
@@ -139,7 +139,7 @@ LTX 2.5 には、プロンプトの内容から、それを表現するために
 
 ![](https://gyazo.com/ecf49f82e56e0fdec6283401d71ae657){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_text2video_Duration_Predictor.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor.json)
 
 {% mediaRow img="https://gyazo.com/4567c3906de961a9c90bc01cef27db5d", width=40, align="left" %}
 **LTXV Duration Predictor**
@@ -154,7 +154,7 @@ LTX 2.5 には、プロンプトの内容から、それを表現するために
 
 ![](https://gyazo.com/e978305c53f6c658984db4ad42c71a7f){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_image2video.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_image2video.json)
 
 [LTX 2 の image2video](/ja/basic-workflows/ltx-2/#image2video) と同じです。`LTXVImgToVideoInplace` で 1 フレーム目に入力画像を差し込みます。
 
@@ -174,7 +174,7 @@ LTX 2.5 には、プロンプトの内容から、それを表現するために
 
 ![](https://gyazo.com/a0e7571b01f97b79d73325390e0a4d3c){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_generative-interpolation.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation.json)
 
 {% mediaRow img="https://gyazo.com/2e39b3e006fcb35d96b87d649ded0146", width=40, align="left" %}
 **LTXV Add Guide**
@@ -222,7 +222,7 @@ LTX 2.3 用も含めると非常に多くの種類がありますが、ここで
 
 ![](https://gyazo.com/4e194652b6db74b853390f20017bb542){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_IC-LoRA-Pose.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_pose.json)
 
 IC-LoRA の詳しい解説は [LTX 2/IC-LoRA (Pose)](/ja/basic-workflows/ltx-2/#ic-lora-pose) で行っているので、興味があれば見てみてください。
 
@@ -240,7 +240,7 @@ LTX 2.5 は、半分の解像度で生成したものを 2 倍にして、もう
 
 ![](https://gyazo.com/7fa914cfea3fe3b4648960d1c3474258){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_x2_upscaler.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_x2_upscaler.json)
 
 任意の動画を VAE Encode し、これまで使ってきた workflow の 2 段目へつないでいるだけです。
 

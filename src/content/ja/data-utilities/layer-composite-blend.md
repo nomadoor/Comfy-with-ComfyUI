@@ -33,7 +33,7 @@ Inpainting処理などで必要な場面もありますが、色調補正同様�
 
 ![](https://gyazo.com/0f12d674fe3e1f6f30c2a06340464eb4){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/ImageCompositeMasked.json)
+[](/workflows/data-utilities/layer-composite-blend/imagecompositemasked.json)
 
 
 - **destination**: 背面（ベース）になる画像
@@ -45,7 +45,7 @@ Inpainting処理などで必要な場面もありますが、色調補正同様�
 
 ![](https://gyazo.com/282ad8bae51d35eef6a4810780f3eb82){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/ImageCompositeMasked-Align_center.json)
+[](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_align_center.json)
 
 CSSでおなじみの `top: 50%; left: 50%; transform: translate(-50%, -50%);` のような座標計算をノードで行えば中央配置も可能ですが…まあ、正直めんどくさいですね(；・∀・)
 
@@ -63,7 +63,7 @@ ComfyUIでは、**「マスクされた部分を source 画像で置き換える
 
 ![](https://gyazo.com/cd53e89115c033f8a8ea175b72ca0aef){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/ImageCompositeMasked-with_Alpha.json)
+[](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_with_alpha.json)
 
 使うのは同じく `ImageCompositeMasked` ノードですが、**`mask` 入力** を使用します。
 
@@ -77,7 +77,7 @@ ComfyUIでは、**「マスクされた部分を source 画像で置き換える
 
 ![](https://gyazo.com/f7ba12c0cf33e3e5dc8a9b5fb24cb0a6){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/ImageCompositeMasked-with_crop-pad.json)
+[](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_with_crop_pad.json)
 
 背景が単色やパターンなら気になりませんが、写真などの場合は歪んでしまいます。
 一番簡単な解決策は、**あらかじめ2つの画像を同じサイズにパディング/クロップしておくこと**です。
@@ -91,7 +91,7 @@ ComfyUIでは、**「マスクされた部分を source 画像で置き換える
 
 ![](https://i.gyazo.com/c848c0f8e8d3ee590ba7ae09e8db7e68.png){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/ImageCompositeMasked_Segmentation.json)
+[](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_segmentation.json)
 
 - 1. 入力画像からセグメンテーションで「ドレスのマスク」を作ります。
 - 2. `source` に `EmptyImage`（単色画像）などを繋ぎます。
@@ -112,7 +112,7 @@ ComfyUIでは、**「マスクされた部分を source 画像で置き換える
 
 ![](https://i.gyazo.com/4ce9346ef269709f6456f0fcd5832a9c.png){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/Image_Stitch.json)
+[](/workflows/data-utilities/layer-composite-blend/image_stitch.json)
 
 
 ### 🪢 Image Concatenate From Batch ノード
@@ -121,7 +121,7 @@ Stitchノードを複数使えば3枚、4枚と並べられますが、バッチ
 
 ![](https://i.gyazo.com/18d0555fd1d0bd01ead60b3992662cb0.png){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/Image_Concatenate_From_Batch.json)
+[](/workflows/data-utilities/layer-composite-blend/image_concatenate_from_batch.json)
 
 
 - **[Kijai/ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes)** に含まれます。
@@ -136,7 +136,7 @@ Stitchノードを複数使えば3枚、4枚と並べられますが、バッチ
 
 ![](https://i.gyazo.com/0c3dbad0a36a0399e7e12301a4b58638.png){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/Image_Blend.json)
+[](/workflows/data-utilities/layer-composite-blend/image_blend.json)
 
 標準ではごく単純なブレンドしかできませんが、`blend_factor` で合成の強さを調整できます。
 - `blend_factor`: 1.0に近いほど source 画像が濃くなる。
@@ -149,7 +149,7 @@ Stitchノードを複数使えば3枚、4枚と並べられますが、バッチ
 
 ![](https://gyazo.com/c39404b4f19fe6a47565b326b7f0dc6d){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/EmptyImage.json)
+[](/workflows/data-utilities/layer-composite-blend/emptyimage.json)
 
 
 ### 色の設定方法

@@ -42,7 +42,7 @@ tags: ["controlnet"]
 
 ![](https://gyazo.com/ab4e4b0f5c9fe2030ebd637b15ac144d){gyazo=image}
 
-[](/workflows/basic-workflows/flux-1-tools/FLUX.1-Fill.json)
+[](/workflows/basic-workflows/flux-1-tools/flux_1_fill.json)
 
 * 🟪 在 `Load Diffusion Model` 节点读取 `flux1-fill-dev.safetensors`。
 * 🟩 在 Flux.1 的工作流中，也和 Stable Diffusion 1.5 的 [inpainting](/zh/basic-workflows/sd15-inpainting/) 一样添加 `InpaintModelConditioning` 节点。
@@ -71,7 +71,7 @@ tags: ["controlnet"]
 
 ![](https://gyazo.com/8b4d310e8b9228e6e2be3b422150e01c){gyazo=image}
 
-[](/workflows/basic-workflows/flux-1-tools/FLUX.1-Depth.json)
+[](/workflows/basic-workflows/flux-1-tools/flux_1_depth.json)
 
 * 🟩 向 `InstructPixToPixConditioning` 节点输入控制用图像。
 * 🟦 这次是 Depth，所以用 Depth Anything V2 制作深度图。
@@ -107,7 +107,7 @@ Redux 作为与 Flux 本体不同的“风格模型”读取。
 
 ![](https://gyazo.com/90588b4c7bc62bf7218901c901f31b8f){gyazo=image}
 
-[](/workflows/basic-workflows/flux-1-tools/FLUX.1-Redux.json)
+[](/workflows/basic-workflows/flux-1-tools/flux_1_redux.json)
 
 * 🟩 添加 `Apply Style Model` 节点，连接 Style 模型和 `CLIP Vision Encode`。
 
@@ -119,7 +119,7 @@ Redux 作为与 Flux 本体不同的“风格模型”读取。
 
 ![](https://gyazo.com/cd6233194a56e2ceeb597c8877d645ef){gyazo=image}
 
-[](/workflows/basic-workflows/flux-1-tools/FLUX.1-Redux_multi.json)
+[](/workflows/basic-workflows/flux-1-tools/flux_1_redux_multi.json)
 
 ### Redux 的问题
 

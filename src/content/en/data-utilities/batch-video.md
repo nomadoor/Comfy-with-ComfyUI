@@ -47,7 +47,7 @@ If the width/height do not match, subsequent images are automatically cropped ba
 
 ![](https://gyazo.com/8e42e9262108b5d6065a330d16863352){gyazo=image}
 
-[](/workflows/data-utilities/batch-video/Diff_List-Batch.json)
+[](/workflows/data-utilities/batch-video/diff_list_batch.json)
 
 > Top: List
 > Bottom: Batch
@@ -83,7 +83,7 @@ Groups multiple `IMAGE`s into a Batch.
 
 ![](https://gyazo.com/6663a7ba4d243f0afd79c41a9406a42d){gyazo=loop}
 
-[](/workflows/data-utilities/batch-video/Batch_Images.json)
+[](/workflows/data-utilities/batch-video/batch_images.json)
 
 - Slots are added every time a connection is made, allowing you to group any number of images.
 
@@ -93,7 +93,7 @@ Groups images in a folder into a Batch.
 
 ![](https://gyazo.com/fca9d0847d5c6a45aafa63c923b0e0d8){gyazo=image}
 
-[](/workflows/data-utilities/batch-video/Load_Image_Batch_From_Dir-Load_Image_(Path).json)
+[](/workflows/data-utilities/batch-video/load_image_batch_from_dir_load_image_path.json)
 
 - Inspire node can sort
 - VHS node has additional functions such as "Output every N images"
@@ -109,7 +109,7 @@ Can be used for reverse playback of videos, etc.
 
 ![](https://gyazo.com/433f02c632e722abfe3174cd7eb23837){gyazo=image}
 
-[](/workflows/data-utilities/batch-video/Reverse_Image_Batch.json)
+[](/workflows/data-utilities/batch-video/reverse_image_batch.json)
 
 ### RepeatImageBatch Node
 
@@ -121,7 +121,7 @@ Repeats each frame a specified number of times.
 
 ![](https://gyazo.com/1384e9cff563f76a7b15fbd0f70f1aa5){gyazo=image}
 
-[](/workflows/data-utilities/batch-video/RepeatImageBatch-ImageBatchRepeatInterleaving.json)
+[](/workflows/data-utilities/batch-video/repeatimagebatch_imagebatchrepeatinterleaving.json)
 
 > Top: RepeatImageBatch
 > Bottom: ImageBatchRepeatInterleaving
@@ -136,7 +136,7 @@ Extracts an image at an arbitrary position from the Batch.
 
 ![](https://gyazo.com/6e48d34613f09e7dddfe3f40187f0de0){gyazo=image}
 
-[](/workflows/data-utilities/batch-video/ImageFromBatch.json)
+[](/workflows/data-utilities/batch-video/imagefrombatch.json)
 
 - `batch_index`: Position to extract (starts from 0)
 - `length`: Number of images in Batch
@@ -151,7 +151,7 @@ Gets frames skipping every N images.
 
 ![](https://gyazo.com/f5b845e89342f120cc994b999e390e11){gyazo=image}
 
-[](/workflows/data-utilities/batch-video/Select_Every_Nth_Image.json)
+[](/workflows/data-utilities/batch-video/select_every_nth_image.json)
 
 - `select_every_nth`: Interval to extract
 - `skip_first_images`: Skip the first number of images
@@ -166,7 +166,7 @@ If you want to process one by one after loading a video or Batch, convert it to 
 
 ![](https://gyazo.com/1b63fa52915e6e923b0802907066d81c){gyazo=image}
 
-[](/workflows/data-utilities/batch-video/Image_Batch_to_Image_List.json)
+[](/workflows/data-utilities/batch-video/image_batch_to_image_list.json)
 
 Conversely, there is also a node to group a List into a Batch.
 

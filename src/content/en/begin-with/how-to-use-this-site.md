@@ -67,7 +67,7 @@ The workflow will be pasted directly.
 
 Test workflow:
 
-[Stable_Diffusion_1.5.json](/workflows/begin-with/saving-and-loading-workflows/Stable_Diffusion_1.5.json)
+[Stable_Diffusion_1.5.json](/workflows/begin-with/saving-and-loading-workflows/stable_diffusion_1_5.json)
 
 Please make use of it.
 

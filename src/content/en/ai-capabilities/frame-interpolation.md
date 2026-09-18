@@ -29,7 +29,7 @@ General VFI receives two temporally close frames (less than 0.1 seconds) and gen
 
 ![](https://gyazo.com/af7273352979b5286d8f85a9b6915ab6.png){gyazo=image}
 
-[](/workflows/ai-capabilities/frame-interpolation/VFI_GMFSS.json)
+[](/workflows/ai-capabilities/frame-interpolation/vfi_gmfss.json)
 
 Various interpolation methods exist, such as [FILM](https://github.com/google-research/frame-interpolation) and GMFSS.
 

@@ -37,7 +37,7 @@ What it is doing is closer to an image of twisting "squishy" in 2D rather than a
 
 ![](https://gyazo.com/c893e38c12859f8f20ff1e0fca545788){gyazo=image}
 
-[](/workflows/basic-workflows/liveportrait/LivePortrait_i2v_ref.json)
+[](/workflows/basic-workflows/liveportrait/liveportrait_i2v_ref.json)
 
 This also takes a single image and a reference video as input, but it is devised to stably reproduce the movement of each part of the face, line of sight, and nuances of emotion.
 
@@ -51,7 +51,7 @@ In the next generation, talking heads in the direction of "redrawing the picture
 
 ![](https://gyazo.com/c70468086a939dce538a876073c9c523){gyazo=loop}
 
-[](/workflows/ai-capabilities/talking-head/HelloMeme_video.json)
+[](/workflows/ai-capabilities/talking-head/hellomeme_video.json)
 
 These extract signals corresponding to "head orientation" and "facial expression changes" from the reference video and pass them to the diffusion model as conditions. What they are doing is close to generating an image while fixing the pose and composition with ControlNet, specifying "I want you to redraw this character's face with this movement".
 

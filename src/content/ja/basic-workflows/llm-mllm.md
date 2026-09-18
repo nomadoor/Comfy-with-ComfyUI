@@ -53,7 +53,7 @@ ComfyUI上のコードだけで無理矢理動かしているため、llama-cpp�
 
 ![Gemma 3](https://gyazo.com/4e2275270a8f40c8ecdbe2b286addb2e){gyazo=image}
 
-[](/workflows/basic-workflows/llm-mllm/TextGenerate_gemma3.json)
+[](/workflows/basic-workflows/llm-mllm/textgenerate_gemma3.json)
 
 
 **対応しているモデル**

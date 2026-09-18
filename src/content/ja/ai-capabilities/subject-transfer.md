@@ -41,7 +41,7 @@ Subject転送は、参照画像に写っている同じSubjectが含まれる画
 
 ![](https://gyazo.com/26351f2e5d3eb17c623acd815ba8709c){gyazo=image}
 
-[](/workflows/ai-capabilities/subject-transfer/Z-Image_Gemini-3.0.json)
+[](/workflows/ai-capabilities/subject-transfer/z_image_gemini_3_0.json)
 
 最近のモデルの性能は、それを可能にしつつあります。「一番安上がりなSubject転送もどき」として、一度試してみる価値はあります。
 
@@ -55,7 +55,7 @@ image2promptは「画像→テキスト→埋め込み」という二段階で�
 
 ![](https://gyazo.com/d0196735e6162d464bd8764448d4088b){gyazo=image}
 
-[](/workflows/ai-capabilities/subject-transfer/SeeCoder.json)
+[](/workflows/ai-capabilities/subject-transfer/seecoder.json)
 
 image2promptよりも「テキスト化」での情報ロスが少ない一方で、テキストとしての編集ができないため、使い勝手は劣ります。
 
@@ -79,7 +79,7 @@ Fluxをはじめとする DiT系モデルは、潜在能力として「一貫性
 
 ![](https://gyazo.com/8e01db8cebce51e7c47d9f958a94c61b){gyazo=image}
 
-[](/workflows/ai-capabilities/subject-transfer/ACE_Plus_portrait.json)
+[](/workflows/ai-capabilities/subject-transfer/ace_plus_portrait.json)
 
 画像キャンバスの左側に参照画像（Subjectを含む）を配置し、右側を全てマスクにして生成(inpainting)させます。モデルは左側の情報を見ながら右側を埋めるため、「左側と同じSubjectを使って新しい画像を生成する」ことができます。
 
@@ -91,7 +91,7 @@ Fluxをはじめとする DiT系モデルは、潜在能力として「一貫性
 
 ![](https://gyazo.com/358c8441ff70ee58135d8340bd691200){gyazo=image}
 
-[](/workflows/ai-capabilities/subject-transfer/Qwen-Image-Edit_2509_multi-ref.json)
+[](/workflows/ai-capabilities/subject-transfer/qwen_image_edit_2509_multi_ref.json)
 
 これらのモデルは、「この犬を別の背景に置いて」「この人物を森の中に配置して」のようなテキスト指示で画像を編集できます。
 

@@ -80,7 +80,7 @@ Wan2.2-A14B 是前半段采样由 `high_noise` 模型，后半段由 `low_noise`
 
 ![](https://gyazo.com/3c0c65842b078922808c740ff797917d){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-2/Wan2.2_text2video_14B.json)
+[](/workflows/basic-workflows/wan-2-2/wan2_2_text2video_14b.json)
 
 - 🟩 指定全体 20 steps 中，在第几 step 切换 `high_noise` → `low_noise`
   - 关于这个切换的时机，规定推荐 **“非噪声部分”和“噪声部分”的比例** 为 `1 : 1` 时。
@@ -95,7 +95,7 @@ Wan2.2-A14B 是前半段采样由 `high_noise` 模型，后半段由 `low_noise`
 
 ![](https://gyazo.com/83c1b3885e887ed2a170ce853b61691f){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-2/Wan2.2_image2video_14B.json)
+[](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_14b.json)
 
 - 🟦 初始图像输入到 `WanImageToVideo` 系节点。
 - Wan2.2 与 Wan2.1 时不同，**不使用** `clip_vision`。
@@ -110,7 +110,7 @@ Wan2.1 中 FLF2V 有专用模型，但 Wan2.2 的 image2video 模型也对应 FL
 
 ![](https://gyazo.com/2e2630bf85cd858b53dba10a0cdddba1){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-2/Wan2.2_image2video_FLF2V_14B.json)
+[](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_flf2v_14b.json)
 
 - 🟦 与 Wan2.1 同样，向 `WanFirstLastFrameToVideo` 节点输入 Start / End 图像。
 
@@ -160,7 +160,7 @@ Wan2.2-TI2V-5B 是在 1 个模型处理 text2video / image2video 双方的 TI2V 
 
 ![](https://gyazo.com/167e6339de10602a8d3c5af9dc4c752e){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-2/Wan2.2_text2video_5B.json)
+[](/workflows/basic-workflows/wan-2-2/wan2_2_text2video_5b.json)
 
 5B 的 text2video，在内部经由“最初的帧 latent”生成视频。
 
@@ -175,7 +175,7 @@ Wan2.2-TI2V-5B 是在 1 个模型处理 text2video / image2video 双方的 TI2V 
 
 ![](https://gyazo.com/79c9d851847801e276073863d349b43a){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-2/Wan2.2_image2video_5B.json)
+[](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_5b.json)
 
 image2video 也使用与 text2video 相同的 TI2V 模型。
 只是输入增加，后段的 KSampler 以后几乎通用。

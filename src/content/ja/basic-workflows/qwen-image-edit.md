@@ -82,7 +82,7 @@ Flux.1 Kontext は VAE ベースの編集のみでしたが、Qwen-Image-Edit �
 
 ![](https://gyazo.com/79b84b74171ddd5c9cfdb57bccc69f13){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit.json)
+[](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit.json)
 
 
 🟩 `TextEncodeQwenImageEdit` ノードの挙動について、少しだけ補足しておきます。
@@ -132,7 +132,7 @@ Qwen-Image-Edit-2509 は、無印版を拡張したバージョンです。
 
 ![](https://gyazo.com/456e6aec210ae38313aa25f83ce236df){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit-2509.json)
+[](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2509.json)
 
 - 基本的な流れは無印版と同じですが、`TextEncodeQwenImageEdit`ノード を `TextEncodeQwenImageEditPlus` ノードに置き換えます。
 
@@ -140,7 +140,7 @@ Qwen-Image-Edit-2509 は、無印版を拡張したバージョンです。
 
 ![](https://gyazo.com/e33abcb42d03c53f3171a8fb12d7eca0){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit-2509_multi-ref.json)
+[](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2509_multi_ref.json)
 
 - 🟩 画像をきちんと見ているので、ある程度アバウトな指示でも動きますが、「image1 の〇〇」「image2 の〇〇」のように、どの画像かを明示的に指定することもできます。
 
@@ -179,7 +179,7 @@ Qwen-Image-Edit-2511 は、2509を改良した新モデルです。
 
 ![](https://gyazo.com/6d45ea40c1194384fb75c383c43a116b){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit-2511.json)
+[](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2511.json)
 
 2509とまったく同じworkflowで動きます。
 
@@ -213,7 +213,7 @@ Qwen-Image-Edit-2511 は、2509を改良した新モデルです。
 
 ![](https://gyazo.com/c91a20239e3cb536dfc931a30562f19f){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit_lightning_8steps.json)
+[](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_lightning_8steps.json)
 
 * `LoraLoaderModelOnly` ノードで Lightning LoRA を読み込みます。
 * `KSampler` の `steps` を 4 または 8、`CFG` を 1.0 に設定します。
@@ -222,6 +222,6 @@ Qwen-Image-Edit-2511 は、2509を改良した新モデルです。
 
 ![](https://gyazo.com/cc8cbe2a940d686092555896d4b3f067){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit-2511_lightning_4steps.json)
+[](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2511_lightning_4steps.json)
 
 * `LoraLoaderModelOnly` ノードで Lightning LoRA を読み込みます。

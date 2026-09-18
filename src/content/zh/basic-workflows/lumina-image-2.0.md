@@ -54,7 +54,7 @@ tags: []
 
 ![](https://gyazo.com/7230949afb0971f994ed67980b88c14d){gyazo=image}
 
-[](/workflows/basic-workflows/lumina-image-2.0/Lumina-Image-2.0.json)
+[](/workflows/basic-workflows/lumina-image-2.0/lumina_image_2_0.json)
 
 ---
 
@@ -82,7 +82,7 @@ tags: []
 
 ![](https://gyazo.com/f9d633456c16c8869b941394fe17bac4){gyazo=image}
 
-[](/workflows/basic-workflows/lumina-image-2.0/neta-lumina-v1.0.json)
+[](/workflows/basic-workflows/lumina-image-2.0/neta_lumina_v1_0.json)
 
 - 采样器遵从官方设定，使用 `res_multistep` / `linear_quadratic`。
 
@@ -121,7 +121,7 @@ You are an assistant designed to generate anime images based on textual prompts.
 
 ![](https://gyazo.com/eb9e649d59482227ed68b7c4c0ed86eb){gyazo=image}
 
-[](/workflows/basic-workflows/lumina-image-2.0/NetaYumev4.json)
+[](/workflows/basic-workflows/lumina-image-2.0/netayumev4.json)
 
 ---
 
@@ -161,7 +161,7 @@ NewBie-image（Exp0.1）是立足于 Lumina 架构研究的知识，以 Next-DiT
 
 ![](https://gyazo.com/d7253fbe289e281e77dbb074d42c392d){gyazo=image}
 
-[](/workflows/basic-workflows/lumina-image-2.0/NewBie_image_Exp0.1.json)
+[](/workflows/basic-workflows/lumina-image-2.0/newbie_image_exp0_1.json)
 
 提示词推荐 **XML 形式（用标签区隔的结构化）**。　　
 

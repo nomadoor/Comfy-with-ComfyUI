@@ -73,7 +73,7 @@ hero:
 
 ![](https://gyazo.com/423eaa0eac26fefe67f5d212a1ab2ad1){gyazo=image}
 
-[](/workflows/begin-with/data-types/Preview_as_Text.json)
+[](/workflows/begin-with/data-types/preview_as_text.json)
 
 
 作为调试，有很多机会显示数字或文本。

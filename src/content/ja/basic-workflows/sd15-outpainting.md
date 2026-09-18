@@ -35,7 +35,7 @@ outpainting は **画像の「外側」を描き足す** 手法です。
 
 ![](https://gyazo.com/dc8564ec48c6ac898fa9f4f080e9bcfd){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-outpainting/SD1.5_outpainting_sd-v1-5-inpainting.json)
+[](/workflows/basic-workflows/sd15-outpainting/sd1_5_outpainting_sd_v1_5_inpainting.json)
 
 - 🟦 `Pad Image for Outpainting` ノードで、画像の外側に余白を作ります。
   - 余白を追加した画像と、その余白を示すマスクが出力されます。
@@ -51,7 +51,7 @@ outpainting は **画像の「外側」を描き足す** 手法です。
 
 ![](https://gyazo.com/df7f466617d6c2bd773bedf0eeb03bb5){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-outpainting/SD1.5_outpainting_ControlNet_inpaint.json)
+[](/workflows/basic-workflows/sd15-outpainting/sd1_5_outpainting_controlnet_inpaint.json)
 
 - 🟦 `Pad Image for Outpainting` ノードで、画像の外側に余白を作ります。
   - 余白を追加した画像と、その余白を示すマスクが出力されます。
@@ -71,6 +71,6 @@ outpainting は **画像の「外側」を描き足す** 手法です。
 
 ![](https://gyazo.com/15ea40eaf859773d5a1543e1aba4df0b){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-outpainting/Flux.2-klein-9b_image-edit_outpainting.json)
+[](/workflows/basic-workflows/sd15-outpainting/flux_2_klein_9b_image_edit_outpainting.json)
 
 - 🟩 マスクは使いません。余白を付け足した画像を渡して、そこを埋めるように指示しているだけです。

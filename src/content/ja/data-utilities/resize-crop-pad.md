@@ -33,7 +33,7 @@ hero:
 
 ![](https://gyazo.com/ffb5c8bfea06d5ce1b15183cc70dc973){gyazo=image}
 
-[](/workflows/data-utilities/resize-crop-pad/Get_Image_Size.json)
+[](/workflows/data-utilities/resize-crop-pad/get_image_size.json)
 
 ---
 
@@ -53,7 +53,7 @@ hero:
 たとえば `0.5` なら縦横が半分、`2.0` なら縦横が2倍です。
 
 {% mediaFooter %}
-[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_scale-by-multiplier.json)
+[](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_by_multiplier.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -69,7 +69,7 @@ hero:
   - `center` : 中心を維持してはみ出た部分をクロップ（切り捨て）します。
 
 {% mediaFooter %}
-[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_scale-dimensions.json)
+[](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_dimensions.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -81,7 +81,7 @@ hero:
 長辺（longer）または短辺（shorter）だけを指定し、アスペクト比を保ったままリサイズします。
 
 {% mediaFooter %}
-[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_scale-longer-dimension.json)
+[](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_longer_dimension.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -93,7 +93,7 @@ hero:
 幅または高さのどちらか一方だけを指定し、アスペクト比を保ったままリサイズします。
 
 {% mediaFooter %}
-[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_scale-width.json)
+[](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_width.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -114,7 +114,7 @@ hero:
 | **1536 × 1536** | 2,359,296 | **2.25** |
 
 {% mediaFooter %}
-[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_scale-total-pixels.json)
+[](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_total_pixels.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -133,7 +133,7 @@ hero:
   - `center`: 中心を維持してはみ出た部分をクロップ（切り捨て）します。
 
 {% mediaFooter %}
-[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_match-size.json)
+[](/workflows/data-utilities/resize-crop-pad/resize_imagemask_match_size.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -149,7 +149,7 @@ hero:
 基本的にはどこかのノードで自動調整されることも多いのですが、指定解像度でないとエラーが出るケースや、入力と出力でピクセルを「完全一致」させたいケースで使うことがあります。
 
 {% mediaFooter %}
-[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_scale-to-multiple.json)
+[](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_to_multiple.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -162,7 +162,7 @@ hero:
 
 ![](https://i.gyazo.com/42ffc7b0534face3e58fc7946b243ce0.png){gyazo=image}
 
-[](/workflows/data-utilities/resize-crop-pad/ImageScaleToMaxDimension.json)
+[](/workflows/data-utilities/resize-crop-pad/imagescaletomaxdimension.json)
 
 
 ---
@@ -178,7 +178,7 @@ hero:
 
 ![](https://gyazo.com/633441a119959e98e0dca5cb765a53d8){gyazo=image}
 
-[](/workflows/data-utilities/resize-crop-pad/ResizeAndPadImage.json)
+[](/workflows/data-utilities/resize-crop-pad/resizeandpadimage.json)
 
 > このノードはパディング部分をマスクとして出力できないため、ほとんど使う場面はありません。
 
@@ -188,7 +188,7 @@ hero:
 
 ![](https://gyazo.com/c6200467aad1b43edbc09b2ec4f3f2b0){gyazo=image}
 
-[](/workflows/data-utilities/resize-crop-pad/Pad_Image_for_Outpainting.json)
+[](/workflows/data-utilities/resize-crop-pad/pad_image_for_outpainting.json)
 
 
 余白部分がマスクとして出力されます。
@@ -205,7 +205,7 @@ x, y座標と幅・高さを指定して、画像の一部分を矩形で切り�
 
 ![](https://i.gyazo.com/1c996b2fa8f7213f05c524b16468181e.png){gyazo=image}
 
-[](/workflows/data-utilities/resize-crop-pad/ImageCrop.json)
+[](/workflows/data-utilities/resize-crop-pad/imagecrop.json)
 
 
 ### ImageRotate ノード
@@ -214,7 +214,7 @@ x, y座標と幅・高さを指定して、画像の一部分を矩形で切り�
 
 ![](https://gyazo.com/8de36981f39e9c39ec1b6c4aa3f9a7ff){gyazo=image}
 
-[](/workflows/data-utilities/resize-crop-pad/ImageRotate.json)
+[](/workflows/data-utilities/resize-crop-pad/imagerotate.json)
 
 
 ### ImageFlip ノード
@@ -223,7 +223,7 @@ x, y座標と幅・高さを指定して、画像の一部分を矩形で切り�
 
 ![](https://gyazo.com/e0661734e160f918d9fc9080dda91240){gyazo=image}
 
-[](/workflows/data-utilities/resize-crop-pad/ImageFlip.json)
+[](/workflows/data-utilities/resize-crop-pad/imageflip.json)
 
 
 ---
@@ -256,7 +256,7 @@ x, y座標と幅・高さを指定して、画像の一部分を矩形で切り�
 
 ![](https://gyazo.com/02cf6bd2a573dc15dff4799c94b15a0d){gyazo=image}
 
-[](/workflows/data-utilities/resize-crop-pad/Crop_to_half_size.json)
+[](/workflows/data-utilities/resize-crop-pad/crop_to_half_size.json)
 
 - 画像のサイズを取得
 - `Simple math` ノードで幅の半分の長さを計算

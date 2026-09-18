@@ -55,30 +55,30 @@ ComfyUI のようなノードベースツールは、よく「モジュール式
 - 1. **text2image**
   - 基本です。プロンプトを入力して、それをKSamplerに投げるだけです。
   - ![](https://gyazo.com/10c6a84174c94fbd6b66fbed2bd2a4c3){gyazo=image}
-  - [](/workflows/basic-workflows/sd15-basics/SD1.5_text2image.json)
+  - [](/workflows/basic-workflows/sd15-basics/sd1_5_text2image.json)
 
 - 2. **image2image**
   - 入力した画像を下書きに画像生成します。
   - ![](https://gyazo.com/8426a110f038cddb3907e51d155ed9b3){gyazo=image}
-  - [](/workflows/basic-workflows/sd15-basics/SD1.5_image2image.json)
+  - [](/workflows/basic-workflows/sd15-basics/sd1_5_image2image.json)
   - 🟩画像を読み込むノードと、それをlatentに変換するノードを追加しまう。
 
 - 3. **inpainting**
   - 入力した画像の一部分だけimage2imageします。
   - ![](https://gyazo.com/a9bd94b38c77cca3acb5b6a5b9d894a6){gyazo=image}
-  - [](/workflows/basic-workflows/sd15-basics/SD1.5_inpainting.json)
+  - [](/workflows/basic-workflows/sd15-basics/sd1_5_inpainting.json)
   - 🟥マスクした場所のみimage2imageさせるためのノードを追加します。
 
 - 4. **ControlNet**
   - ControlNetは、画像を生成する際に、画像を入力して制御することができる機能です。
   - ![](https://gyazo.com/46553948d7e458ed19a69b0a5a8f5141){gyazo=image}
-  - [](/workflows/basic-workflows/sd15-basics/SD1.5_inpainting_controlnet.json)
+  - [](/workflows/basic-workflows/sd15-basics/sd1_5_inpainting_controlnet.json)
   - 🟦ControlNetを追加するノードと、ControlNetの制御として使う画像を作るためのノードを追加します。
   
 - 5. **さらにControlNetを追加**
   - ControlNetは一つだけという制限はありません。もう一個追加してみましょう。
   - ![](https://gyazo.com/daa261583657abf6c25d2003581d1610){gyazo=image}
-  - [](/workflows/basic-workflows/sd15-basics/SD1.5_inpainting_controlnet2.json)
+  - [](/workflows/basic-workflows/sd15-basics/sd1_5_inpainting_controlnet2.json)
   - 🟦ControlNetとその下処理ノードをもう1セット作ってつなげるだけです。
 
 ---

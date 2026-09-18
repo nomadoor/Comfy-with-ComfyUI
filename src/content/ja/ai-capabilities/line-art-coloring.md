@@ -26,7 +26,7 @@ ControlNet Canny（edge）を使用すれば、入力した線画はおおむね
 
 ![](https://gyazo.com/7e1ed10e17831b224bc547a8d6b3deea){gyazo=image}
 
-[](/workflows/ai-capabilities/line-art-coloring/Flux_ControlNet-Union.json)
+[](/workflows/ai-capabilities/line-art-coloring/flux_controlnet_union.json)
 
 線画（もしくはエッジ抽出結果）をControlNetに渡し、テキストプロンプトで服装や色、雰囲気を指定します。
 
@@ -38,7 +38,7 @@ ControlNet Canny（edge）を使用すれば、入力した線画はおおむね
 
 ![](https://gyazo.com/18b33d684675ffa56b3b805a9f56791a){gyazo=image}
 
-[](/workflows/ai-capabilities/line-art-coloring/Qwen-Image-Edit-2509.json)
+[](/workflows/ai-capabilities/line-art-coloring/qwen_image_edit_2509.json)
 
 入力画像に線画を与え、「この線画をフルカラーで塗って」「アニメ塗りで彩色して」などとテキストで指示するだけです。
 

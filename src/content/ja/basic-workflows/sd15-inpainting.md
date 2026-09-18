@@ -38,7 +38,7 @@ inpainting は **「画像の一部分だけを描き直す」** ための手法
 
 ![](https://gyazo.com/4fc7e54c5ac44fb4c09fc9911f6be06a){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-inpainting/SD1.5_inpainting_SetLatentNoiseMask.json)
+[](/workflows/basic-workflows/sd15-inpainting/sd1_5_inpainting_setlatentnoisemask.json)
 
 - 🟥 `VAE Encode` ノードで元画像を latent に変換
 - 🟩 `Set Latent Noise Mask` ノードで latent とマスクを組み合わせる
@@ -97,7 +97,7 @@ inpainting モデルでは、モデル自身にも「どこを描き直すのか
 
 ![](https://gyazo.com/1f6954026bfda799259cfd948da779a3){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-inpainting/sd-v1-5-inpainting.json)
+[](/workflows/basic-workflows/sd15-inpainting/sd_v1_5_inpainting.json)
 
 - 🟪 inpainting モデルを読み込みます。
 - 🟩 `VAE Encode`、`Set Latent Noise Mask` を `InpaintModelConditioning` ノードに置き換えます。
@@ -148,7 +148,7 @@ inpainting モデルでは、モデル自身にも「どこを描き直すのか
 
 ![](https://gyazo.com/ae3fe8d999343135c6ac995b67a165e7){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-inpainting/SD1.5_ControlNet_inpaint.json)
+[](/workflows/basic-workflows/sd15-inpainting/sd1_5_controlnet_inpaint.json)
 
 - 好きな SD1.5 checkpoint（＋LoRA）をロード
 - 🟨 画像とマスクを `Inpaint Preprocessor` に入力し、ControlNet 用の画像に変換
@@ -184,6 +184,6 @@ inpainting モデルでは、モデル自身にも「どこを描き直すのか
 
 ![](https://gyazo.com/e55ff686078115488cef6406f60b9370){gyazo=image}
 
-[](/workflows/basic-workflows/flux-2-klein/9b/Flux.2-klein-9b_image-edit.json)
+[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_image_edit.json)
 
 この workflow では、入力画像と `remove the man` というプロンプトだけで、画像から男性を消しています。

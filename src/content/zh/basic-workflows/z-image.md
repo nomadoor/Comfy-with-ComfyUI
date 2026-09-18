@@ -56,7 +56,7 @@ Z-Image，作为（微调源的）基础模型，持有坦率的特性。
 
 ![](https://gyazo.com/8f4213b84c8d739021b8be032e8f6f8a){gyazo=image}
 
-[](/workflows/basic-workflows/z-image/Z-Image.json)
+[](/workflows/basic-workflows/z-image/z_image.json)
 
 - `steps` : 虽然也根据采样器，但 30〜40 左右稍多的一方比较安定。
 
@@ -69,7 +69,7 @@ Z-Image，作为（微调源的）基础模型，持有坦率的特性。
 
 ![](https://gyazo.com/2545e8ea917a80488d8687464185410d){gyazo=image}
 
-[](/workflows/basic-workflows/z-image/Z-Image_refine-turbo.json)
+[](/workflows/basic-workflows/z-image/z_image_refine_turbo.json)
 
 这次以前半 50%，后半 50% 分开。
 (cf. [分割采样](/zh/basic-workflows/ksampler-advanced/#分割采样))
@@ -103,7 +103,7 @@ Z-Image 用的 ControlNet 风补丁。
 
 ![](https://gyazo.com/1eb558462ba943c91305960b112c6a63){gyazo=image}
 
-[](/workflows/basic-workflows/z-image/Z-Image-Fun-Controlnet-Union-2.1.json)
+[](/workflows/basic-workflows/z-image/z_image_fun_controlnet_union_2_1.json)
 
 - 🟩 向 `QwenImageDiffsynthControlnet` 追加模型和控制图像
 - 🟩 在这个 workflow 用 Depth Anything V2 制作深度图。

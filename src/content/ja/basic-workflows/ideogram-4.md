@@ -134,7 +134,7 @@ ComfyUI 上で動かせるレベルのローカルモデルでは性能が足り
 
 ![](https://gyazo.com/c9a2cf1717e87cd1ba28c5d236a02b4d){gyazo=image}
 
-[](/workflows/basic-workflows/ideogram-4/Ideogram_4.0_text2image.json)
+[](/workflows/basic-workflows/ideogram-4/ideogram_4_0_text2image.json)
 
 プロンプト以外にも、一般的な workflow と比べると少し特殊な部分があるので、そちらだけ見ていきましょう。
 
@@ -184,7 +184,7 @@ Ostris さんが公開している、2〜8 step で生成できる LoRA です�
 
 ![](https://gyazo.com/f75015885dc02060128725d779ce7d49){gyazo=image}
 
-[](/workflows/basic-workflows/ideogram-4/Ideogram_4.0_text2image_turbotime.json)
+[](/workflows/basic-workflows/ideogram-4/ideogram_4_0_text2image_turbotime.json)
 
 - CFG 1.0 で生成するため、unconditional model は不要になります。
 - 2〜8 step 用とされていますが、step 数が少なすぎると明確に崩れ始めるので、現状は 8 step で使うのがいいでしょう。
