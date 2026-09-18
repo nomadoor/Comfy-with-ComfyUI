@@ -226,8 +226,6 @@ This node is used when you shift the image so the seam comes to the center, then
 
 ![](https://gyazo.com/09deac88400d8e8d1f9301eda07c7b13){gyazo=image}
 
-[](/workflows/notes/panorama-stickers/PanoramaSeamPrep.json)
-
 - `seam_width_px`: sets the width of the mask
 - `seam_center_offset_px`: shifts the seam away from the center
 - `mask_blur_px`: blurs both ends of the mask

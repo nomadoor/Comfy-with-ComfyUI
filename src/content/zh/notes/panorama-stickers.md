@@ -226,8 +226,6 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 ![](https://gyazo.com/09deac88400d8e8d1f9301eda07c7b13){gyazo=image}
 
-[](/workflows/notes/panorama-stickers/PanoramaSeamPrep.json)
-
 - `seam_width_px`：指定遮罩宽度
 - `seam_center_offset_px`：让边界从中心位置偏移
 - `mask_blur_px`：模糊遮罩两端

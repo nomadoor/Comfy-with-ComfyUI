@@ -226,8 +226,6 @@ ERPキャンバスに参照画像を置いていくためのEditorです。
 
 ![](https://gyazo.com/09deac88400d8e8d1f9301eda07c7b13){gyazo=image}
 
-[](/workflows/notes/panorama-stickers/PanoramaSeamPrep.json)
-
 - `seam_width_px` : マスクの幅を指定します
 - `seam_center_offset_px` : 境界を中心からずらします
 - `mask_blur_px` : マスクの両端をぼかします
