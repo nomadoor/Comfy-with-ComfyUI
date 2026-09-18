@@ -53,7 +53,7 @@ hero:
 
 ![](https://gyazo.com/b662c552b5e80b5b04cad422b72a19b2){gyazo=image}
 
-[](../../../workflows/data-utilities/text-ops/Format_Text.json)
+[](../../../workflows/data-utilities/text-ops/format_text.json)
 
 这个节点可以先写好文章的模板，再把其他 string 插入进去。
 
@@ -124,4 +124,4 @@ hero:
 
 ![](https://i.gyazo.com/c6fd4f1e69b293da19f84963fa1e3ac1.png){gyazo=image}
 
-[](/workflows/data-utilities/text-ops/Power_Puter_(rgthree)_Replace.json)
+[](/workflows/data-utilities/text-ops/power_puter_rgthree_replace.json)

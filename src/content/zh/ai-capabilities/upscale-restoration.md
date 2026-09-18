@@ -33,7 +33,7 @@ hero:
 
 ![](https://gyazo.com/072c6cd7f09d777141293f6cf619ad83){gyazo=image}
 
-[](/workflows/ai-capabilities/upscale-restoration/ESRGAN.json)
+[](/workflows/ai-capabilities/upscale-restoration/esrgan.json)
 
 - ESRGAN
 - Real-ESRGAN
@@ -78,7 +78,7 @@ hero:
 
 ![](https://gyazo.com/70baa67331207740cbab838d153c990d){gyazo=image}
 
-[](/workflows/ai-capabilities/upscale-restoration/Qwen-Image-Edit-2509.json)
+[](/workflows/ai-capabilities/upscale-restoration/qwen_image_edit_2509.json)
 
 详情在“[基于指令的图像编辑](/zh/ai-capabilities/instruction-based-image-editing/)”页面介绍。
 

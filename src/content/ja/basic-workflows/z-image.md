@@ -56,7 +56,7 @@ Z-Image は、（ファインチューニング元となる）ベースモデル
 
 ![](https://gyazo.com/8f4213b84c8d739021b8be032e8f6f8a){gyazo=image}
 
-[](/workflows/basic-workflows/z-image/Z-Image.json)
+[](/workflows/basic-workflows/z-image/z_image.json)
 
 - `steps` : サンプラーにもよりますが、30〜40 ほどと少し多めのほうが安定します
 
@@ -69,7 +69,7 @@ image2image してもいいですが、ここでは少しオシャレにサン�
 
 ![](https://gyazo.com/2545e8ea917a80488d8687464185410d){gyazo=image}
 
-[](/workflows/basic-workflows/z-image/Z-Image_refine-turbo.json)
+[](/workflows/basic-workflows/z-image/z_image_refine_turbo.json)
 
 今回は前半50%、後半50%で分けます。
 (cf. [サンプリングを分割する](/ja/basic-workflows/ksampler-advanced/#サンプリングを分割する))
@@ -103,7 +103,7 @@ Z-Image 用の ControlNet 風パッチです。
 
 ![](https://gyazo.com/1eb558462ba943c91305960b112c6a63){gyazo=image}
 
-[](/workflows/basic-workflows/z-image/Z-Image-Fun-Controlnet-Union-2.1.json)
+[](/workflows/basic-workflows/z-image/z_image_fun_controlnet_union_2_1.json)
 
 - 🟩 `QwenImageDiffsynthControlnet` にモデルと制御画像を追加
 - 🟩 この workflow では Depth Anything V2 で深度マップを作成します。

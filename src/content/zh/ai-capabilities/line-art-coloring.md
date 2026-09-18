@@ -26,7 +26,7 @@ hero:
 
 ![](https://gyazo.com/7e1ed10e17831b224bc547a8d6b3deea){gyazo=image}
 
-[](/workflows/ai-capabilities/line-art-coloring/Flux_ControlNet-Union.json)
+[](/workflows/ai-capabilities/line-art-coloring/flux_controlnet_union.json)
 
 将线稿（或边缘提取结果）传递给 ControlNet，用文本提示词指定服装、颜色和氛围。
 
@@ -38,7 +38,7 @@ hero:
 
 ![](https://gyazo.com/18b33d684675ffa56b3b805a9f56791a){gyazo=image}
 
-[](/workflows/ai-capabilities/line-art-coloring/Qwen-Image-Edit-2509.json)
+[](/workflows/ai-capabilities/line-art-coloring/qwen_image_edit_2509.json)
 
 只需将线稿作为输入图像，然后用文本指示“把这个线稿涂成全彩”、“用动画涂法上色”等即可。
 

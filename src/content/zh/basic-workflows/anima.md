@@ -75,7 +75,7 @@ masterpiece, best quality, score_9, safe,
 
 ![](https://gyazo.com/0e2f46074799b0e7a016ee1a5bd28118){gyazo=image}
 
-[](/workflows/basic-workflows/anima/anima-aesthetic-v1.1.json)
+[](/workflows/basic-workflows/anima/anima_aesthetic_v1_1.json)
 
 * 推荐分辨率是 `512px` 到 `1536px`。
 * 推荐使用 `er_sde` 或 `euler_ancestral` 这样带有一点随机变化的采样器。
@@ -105,7 +105,7 @@ ControlNet-LLLite 是 kohya 开发的轻量级 ControlNet。
 
 ![](https://gyazo.com/d42f85633b9036b7e2e6e806c064ef56){gyazo=image}
 
-[](/workflows/basic-workflows/anima/anima-lllite-any-test-like-v2.json)
+[](/workflows/basic-workflows/anima/anima_lllite_any_test_like_v2.json)
 
 * `anima-lllite-any-test-like-v2` 将多种控制整合在一个模型中。它可以通过草图或线稿传递构图，也可以为灰度图像上色。
 * 这个工作流会使用 `Canny` 从输入图像中提取轮廓，并将其作为控制图像。

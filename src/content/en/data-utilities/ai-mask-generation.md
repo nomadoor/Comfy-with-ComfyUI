@@ -124,7 +124,7 @@ These custom nodes may be needed to run the practical examples on this page.
 
 ![](https://gyazo.com/2c1fb7ed9c7fcc6242e48b9e6e405c27){gyazo=image}
 
-[](/workflows/data-utilities/ai-mask-generation/YOLO_face-SAM.json)
+[](/workflows/data-utilities/ai-mask-generation/yolo_face_sam.json)
 
 This combines fast face detection with YOLO and the original SAM.
 
@@ -132,7 +132,7 @@ This combines fast face detection with YOLO and the original SAM.
 
 ![](https://gyazo.com/c7b4ed29a8dae26fb9c666b137091ab4){gyazo=image}
 
-[](/workflows/data-utilities/ai-mask-generation/Grounding_DINO_HQ-SAM.json)
+[](/workflows/data-utilities/ai-mask-generation/grounding_dino_hq_sam.json)
 
 This combines Grounding DINO with HQ-SAM, an improved version of SAM.
 
@@ -142,7 +142,7 @@ It can specify targets by text and generate high-precision masks, so it was one 
 
 ![](https://gyazo.com/677607c761c38defde753681398d6e1f){gyazo=image}
 
-[](/workflows/data-utilities/ai-mask-generation/Florence2_SAM2.1.json)
+[](/workflows/data-utilities/ai-mask-generation/florence2_sam2_1.json)
 
 This combines Florence2 and SAM2.1.
 
@@ -152,7 +152,7 @@ For easy targets such as people or animals, many methods work fine. But when you
 
 ![](https://gyazo.com/82c4c2d947a3ea9c98b46e05a05d542f){gyazo=image}
 
-[](/workflows/data-utilities/ai-mask-generation/SAM3_BiRefNet.json)
+[](/workflows/data-utilities/ai-mask-generation/sam3_birefnet.json)
 
 Segmentation is for distinguishing objects, not for fine cutouts.
 

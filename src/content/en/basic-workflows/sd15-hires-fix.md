@@ -67,7 +67,7 @@ This idea of "going through the model's comfortable resolution once and then lif
 
 ![](https://gyazo.com/96cd5924bcaef159a79e2fb5fa991665){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-hires-fix/SD1.5_Hires.fix.json)
+[](/workflows/basic-workflows/sd15-hires-fix/sd1_5_hires_fix.json)
 
 - 🟪 text2image
 - 🟦 Enlarge the decoded image by 1.5 times with the `Upscale Image By` node
@@ -90,7 +90,7 @@ Therefore, it was not practical for a long time, but a custom node that performs
 
 ![](https://gyazo.com/545160bee6b5c66fd91b32e917ada79c){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-hires-fix/SD1.5_Hires.fix_NNLatentUpscale.json)
+[](/workflows/basic-workflows/sd15-hires-fix/sd1_5_hires_fix_nnlatentupscale.json)
 
 - 🟩 Enlarge the latent coming out of text2image directly with the `NNLatentUpscale` node
 - 🟨 Flow the enlarged latent directly into image2image

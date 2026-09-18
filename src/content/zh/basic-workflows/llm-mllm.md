@@ -52,7 +52,7 @@ ComfyUI 是专为图像生成设计的引擎，因此它对 LLM 的支持能力�
 
 ![Gemma 3](https://gyazo.com/4e2275270a8f40c8ecdbe2b286addb2e){gyazo=image}
 
-[](/workflows/basic-workflows/llm-mllm/TextGenerate_gemma3.json)
+[](/workflows/basic-workflows/llm-mllm/textgenerate_gemma3.json)
 
 **支持的模型**
 - Gemma 3

@@ -26,7 +26,7 @@ hero:
 
 ![](https://gyazo.com/4c0b962c3983bc3296da9b994c07f3b6){gyazo=image}
 
-[](/workflows/ai-capabilities/object-removal/LaMa.json)
+[](/workflows/ai-capabilities/object-removal/lama.json)
 
 マスクされた領域を周囲のテクスチャで埋めることに特化しており、透かし除去などにも使われていましたね。
 
@@ -40,7 +40,7 @@ hero:
 
 ![](https://gyazo.com/2cad88edab0d74b24f0fc78f528a320d){gyazo=image}
 
-[](/workflows/ai-capabilities/object-removal/Remake_for_SDXL-Removing_Object_and_Filling_with_Background.json)
+[](/workflows/ai-capabilities/object-removal/remake_for_sdxl_removing_object_and_filling_with_background.json)
 
 ただし、オブジェクトを消すどころか、別のオブジェクトを新たに増やしてしまうこともあり、オブジェクト除去としては安定しない場合もありました。
 
@@ -56,7 +56,7 @@ hero:
 
 ![](https://gyazo.com/84af7edfab7cd344f7654090b7957166){gyazo=image}
 
-[](/workflows/ai-capabilities/object-removal/Qwen-Image-Edit-2509_object-removal.json)
+[](/workflows/ai-capabilities/object-removal/qwen_image_edit_2509_object_removal.json)
 
 ### マスク不要という利点
 

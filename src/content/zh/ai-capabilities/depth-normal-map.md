@@ -38,7 +38,7 @@ hero:
 
 ![](https://gyazo.com/8471cde6727e271aa05f0bad44797144){gyazo=image}
 
-[](/workflows/ai-capabilities/depth-normal-map/MiDaS_Depth-Normal_Map.json)
+[](/workflows/ai-capabilities/depth-normal-map/midas_depth_normal_map.json)
 
 - **MiDaS**
   - 即使是相机参数各不相同的“杂乱图像”，也能被训练成推断相对深度的模型。
@@ -55,7 +55,7 @@ hero:
 
 ![](https://gyazo.com/69b8c5331c693c699d389f1c95935fff){gyazo=image}
 
-[](/workflows/ai-capabilities/depth-normal-map/Depth_Anything_V2.json)
+[](/workflows/ai-capabilities/depth-normal-map/depth_anything_v2.json)
 
 在 ComfyUI 中制作深度贴图时，我认为大多数情况下是用作 ControlNet 的预处理，总之先用这个就 OK 了。
 

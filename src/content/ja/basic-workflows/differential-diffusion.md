@@ -35,7 +35,7 @@ inpainting の workflow に `Differential Diffusion` ノードを追加し、マ
 
 ![](https://gyazo.com/32341a2b91def8997072eb24dde93cce){gyazo=image}
 
-[](/workflows/basic-workflows/differential-diffusion/SD1.5_Differential_Diffusion.json)
+[](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion.json)
 
 - 🟩 `Differential Diffusion` ノードを追加
 - ベースは `Set Latent Noise Mask` ノードを使った workflow です。
@@ -55,7 +55,7 @@ inpainting の workflow に `Differential Diffusion` ノードを追加し、マ
 
 ![](https://gyazo.com/4b3d0506456a4f1dc8aa062d4e445b17){gyazo=image}
 
-[](/workflows/basic-workflows/differential-diffusion/SD1.5_Differential_Diffusion_multi-obj.json)
+[](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion_multi_obj.json)
 
 - 変えたい部分ごとに、マスクの濃さを描き分ける（例: 顔は薄めのグレー、背景は白など）
 
@@ -67,7 +67,7 @@ Differential Diffusion と、ぼかしたマスクを組み合わせて、境界
 
 ![](https://gyazo.com/e54a8d82e7dca29bf6ab19fdb20c3354){gyazo=image}
 
-[](/workflows/basic-workflows/differential-diffusion/SD1.5_Differential_Diffusion_blur.json)
+[](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion_blur.json)
 
 - 🟪 今回は inpainting モデルを使った workflow に組み込みます。
 - 🟨 `Gaussian Blur Mask` ノード（[ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)）でマスクの境界をぼかす
@@ -80,7 +80,7 @@ Differential Diffusion と、ぼかしたマスクを組み合わせて、境界
 
 ![](https://gyazo.com/ac52958c32bb143910151029c53707d1){gyazo=image}
 
-[](/workflows/basic-workflows/differential-diffusion/SD1.5_Differential_Diffusion_depthmap.json)
+[](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion_depthmap.json)
 
 - 🟦 Depth Anything V2（[comfyui_controlnet_aux](https://github.com/Fannovel16/comfyui_controlnet_aux)）で深度マップを作成
   - これは IMAGE なので `Convert Image to Mask` ノードでマスクに変換します。

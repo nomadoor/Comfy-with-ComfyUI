@@ -66,7 +66,7 @@ ComfyUI 拥有无限广阔的画布。
 > 遗憾的是，现在模板中已经删除了图中的极简工作流。
 > 作为替代，我把它放在这里。
 >
-> [](/workflows/begin-with/readable-nodes/Stable_Diffusion_1.5.json)
+> [](/workflows/begin-with/readable-nodes/stable_diffusion_1_5.json)
 
 这个构成不仅限于 SD1.5，也是所有最新模型（SDXL, Flux, Video 生成等）的基础。
 

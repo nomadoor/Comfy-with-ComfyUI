@@ -40,7 +40,7 @@ ESRGANは、低解像度の画像を高解像度にアップスケールする�
 
 ![](https://gyazo.com/daebc07f85601b354c872a0a27f3fec1){gyazo=image}
 
-[](/workflows/basic-workflows/esrgan/RealESRGAN.json)
+[](/workflows/basic-workflows/esrgan/realesrgan.json)
 
 - 🟩 `Load Upscale Model`ノードに任意のモデルを読み込みます。
 
@@ -56,7 +56,7 @@ ESRGANは、低解像度の画像を高解像度にアップスケールする�
 
 ![](https://gyazo.com/c05fc016293e3f1ae55b153cf1adaaae){gyazo=image}
 
-[](/workflows/basic-workflows/esrgan/RealESRGAN_x0.5.json)
+[](/workflows/basic-workflows/esrgan/realesrgan_x0_5.json)
 
 - 🟨 `scale_by`の値を変更して倍率を調整できます。
 

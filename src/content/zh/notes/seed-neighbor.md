@@ -103,7 +103,7 @@ seed 就是决定随机数初始化方式的编号。
 
 ![](https://gyazo.com/eee2f089f7ecf7f9b6541cf2f570266a){gyazo=image}
 
-[](/workflows/notes/seed-neighbor/Latent_Blend.json)
+[](/workflows/notes/seed-neighbor/latent_blend.json)
 
 - 🟩 通过 `Generate Noise` + `KSampler (Advanced)`（`add_noise=disable`）这个组合，可以在采样器外部生成噪声。
 - 🟪 这里的 `Generate Noise` 用于生成要混入的第二份噪声（latent）。
@@ -114,7 +114,7 @@ seed 就是决定随机数初始化方式的编号。
 
 ![](https://gyazo.com/a5162437aa43b07806a802d301a5df9d){gyazo=image}
 
-[](/workflows/notes/seed-neighbor/Inject_Noise_To_Latent.json)
+[](/workflows/notes/seed-neighbor/inject_noise_to_latent.json)
 
 - 🟨 逐步提高 `Inject Noise To Latent` 的 `strength`，就能向基础 latent 里加入第二份噪声。
   - `mix_randn_amount` 调高会再叠加额外随机噪声，这里保持为 `0`。

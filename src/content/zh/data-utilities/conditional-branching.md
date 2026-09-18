@@ -28,7 +28,7 @@ ComfyUI 有时会被称为节点式编程，但最基本的结构其实很简单
 
 ![](https://gyazo.com/42e0cbeb5ce32694423b50de55885358){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/Switch.json)
+[](/workflows/data-utilities/conditional-branching/switch.json)
 
 ### 用 Switch 切换
 
@@ -62,7 +62,7 @@ Boolean 是一种很简单的类型，只能是 `true` 或 `false`（0 or 1）�
 
 ![](https://gyazo.com/78cde905a66746c303948be75f9b02c6){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/Math_Expression.json)
+[](/workflows/data-utilities/conditional-branching/math_expression.json)
 
 ```python
 a == 20
@@ -100,7 +100,7 @@ a <= b  # a 小于等于 b
 
 ![](https://gyazo.com/d0c09611404d536c589fb34a690152e8){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/Compare_Text.json)
+[](/workflows/data-utilities/conditional-branching/compare_text.json)
 
 它会比较 `string_a` 和 `string_b`，条件满足时输出 `true`，不满足时输出 `false`。
 
@@ -120,7 +120,7 @@ a <= b  # a 小于等于 b
 
 ![](https://gyazo.com/09299f1fde08831664593c6f0b4c0d5e){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/Qwen3.5_4b.json)
+[](/workflows/data-utilities/conditional-branching/qwen3_5_4b.json)
 
 - 这里使用 `TextGenerate` 节点，并使用 Qwen 3.5 4B。
 - 稍微有点绕，但 MLLM 的输出是文本，也就是 `string`，所以先转换为 `int`，再转换为 `Boolean`。
@@ -147,7 +147,7 @@ a <= b  # a 小于等于 b
 
 ![](https://gyazo.com/e7730a6112a0820ab0a65b4371f7e70b){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/AND_OR_NOT.json)
+[](/workflows/data-utilities/conditional-branching/and_or_not.json)
 
 - **AND**: 只有全部为 `true` 时才输出 `true`
 - **OR**: 只要有一个为 `true`，就输出 `true`
@@ -167,7 +167,7 @@ a <= b  # a 小于等于 b
 
 ![](https://gyazo.com/b6b8471813b62a487bf91519a04f7279){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/Rotate_If_Portrait.json)
+[](/workflows/data-utilities/conditional-branching/rotate_if_portrait.json)
 
 1. 使用 `Get Image Size` 获取图像尺寸
 2. 图像为竖图时，`width < height` 会变成 `true`
@@ -179,7 +179,7 @@ a <= b  # a 小于等于 b
 
 ![](https://gyazo.com/cf499e4e4ed79b91d0020220c854d4ea){gyazo=image}
 
-[](/workflows/data-utilities/conditional-branching/Switch_MLLM_Flux.2-Klein-9B.json)
+[](/workflows/data-utilities/conditional-branching/switch_mllm_flux_2_klein_9b.json)
 
 1. 让 MLLM 查看图像，如果画面中有女性就输出 `1`，否则输出 `0`
 2. 当结果为 `true` 时，切换到“将女性改成男性”的提示词；为 `false` 时，切换到“删除人物”的提示词

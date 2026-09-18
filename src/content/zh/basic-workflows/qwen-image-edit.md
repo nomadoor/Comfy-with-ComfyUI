@@ -80,7 +80,7 @@ Flux.1 Kontext 虽然只是基于 VAE 的编辑，但 Qwen-Image-Edit 可以使�
 
 ![](https://gyazo.com/79b84b74171ddd5c9cfdb57bccc69f13){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit.json)
+[](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit.json)
 
 
 🟩 关于 `TextEncodeQwenImageEdit` 节点的举动，稍微补充一下。
@@ -130,7 +130,7 @@ Qwen-Image-Edit-2509 是，扩展了无印版的版本。
 
 ![](https://gyazo.com/456e6aec210ae38313aa25f83ce236df){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit-2509.json)
+[](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2509.json)
 
 - 基本的流程与无印版相同，但将 `TextEncodeQwenImageEdit` 节点替换为 `TextEncodeQwenImageEditPlus` 节点。
 
@@ -138,7 +138,7 @@ Qwen-Image-Edit-2509 是，扩展了无印版的版本。
 
 ![](https://gyazo.com/e33abcb42d03c53f3171a8fb12d7eca0){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit-2509_multi-ref.json)
+[](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2509_multi_ref.json)
 
 - 🟩 因为正经地看着图像，某种程度粗略的指示也能动，但像“image1 的〇〇”“image2 的〇〇”那样，也可以明示地指定是哪个图像。
 
@@ -177,7 +177,7 @@ Qwen-Image-Edit-2511 是，改良了 2509 的新模型。
 
 ![](https://gyazo.com/6d45ea40c1194384fb75c383c43a116b){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit-2511.json)
+[](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2511.json)
 
 以与 2509 完全相同的工作流动作。
 
@@ -211,7 +211,7 @@ Qwen-Image-Edit-2511 是，改良了 2509 的新模型。
 
 ![](https://gyazo.com/c91a20239e3cb536dfc931a30562f19f){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit_lightning_8steps.json)
+[](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_lightning_8steps.json)
 
 * 用 `LoraLoaderModelOnly` 节点读取 Lightning LoRA。
 * 将 `KSampler` 的 `steps` 设定为 4 或 8，`CFG` 设定为 1.0。
@@ -220,6 +220,6 @@ Qwen-Image-Edit-2511 是，改良了 2509 的新模型。
 
 ![](https://gyazo.com/cc8cbe2a940d686092555896d4b3f067){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image-edit/Qwen-Image-Edit-2511_lightning_4steps.json)
+[](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2511_lightning_4steps.json)
 
 * 用 `LoraLoaderModelOnly` 节点读取 Lightning LoRA。

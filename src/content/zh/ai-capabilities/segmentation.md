@@ -73,7 +73,7 @@ hero:
 
 ![](https://gyazo.com/8a13dabaec7771795dc4028d6e40abff){gyazo=image}
 
-[](/workflows/ai-capabilities/segmentation/SAM3.json)
+[](/workflows/ai-capabilities/segmentation/sam3.json)
 
 在 SAM 2.1 以前，因为无法用文本指定对象，所以经常与 Grounding DINO 或 Florence2 等[物体检测](/zh/ai-capabilities/object-detection/)组合使用。
 

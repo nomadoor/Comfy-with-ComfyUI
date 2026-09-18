@@ -55,7 +55,7 @@ IP-Adapterにはいくつか種類がありますが、最もスタンダード�
 
 ![](https://gyazo.com/6e8376130553997cbd30696c6700a601){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-ip-adapter/ip-adapter_sd15.json)
+[](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_sd15.json)
 
 - 🟩 `IPAdapter Advanced` ノードに各種モデルと参考にしたい画像を接続します。
 - 🟦 `Prep Image For ClipVision` ノードで参考画像をクロップします。
@@ -84,7 +84,7 @@ IP-Adapter の「目」にあたる CLIP ViT-H-14 は、基本的に **224 × 22
 
 ![](https://gyazo.com/ecbbe99d3410a850767aaf506645952b){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-ip-adapter/ip-adapter-plus_sd15.json)
+[](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_plus_sd15.json)
 
 - [ip-adapter-plus_sd15.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/ip-adapter-plus_sd15.safetensors)
 - 参照画像とかなり近い構図になる
@@ -96,7 +96,7 @@ IP-Adapter の「目」にあたる CLIP ViT-H-14 は、基本的に **224 × 22
 
 ![](https://gyazo.com/422b44322caef6fe6fdec8c7d37f54e3){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-ip-adapter/ip-adapter_sd15_light.json)
+[](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_sd15_light.json)
 
 - [ip-adapter_sd15_light.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/ip-adapter_sd15_light.safetensors)
 - テキストの指示を強めに残す
@@ -108,7 +108,7 @@ IP-Adapter の「目」にあたる CLIP ViT-H-14 は、基本的に **224 × 22
 
 ![](https://gyazo.com/bba6f8053f411bee64044c141d4632c0){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-ip-adapter/ip-adapter-plus-face_sd15.json)
+[](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_plus_face_sd15.json)
 
 - [ip-adapter-plus-face_sd15.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/ip-adapter-plus-face_sd15.safetensors)
 - 顔立ち・輪郭・目鼻立ちなどをかなり強く固定する

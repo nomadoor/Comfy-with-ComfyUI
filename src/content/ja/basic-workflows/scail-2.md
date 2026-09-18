@@ -70,7 +70,7 @@ ViTPose や OpenPose で棒人間を作り、それを条件として人物を�
 
 ![](https://gyazo.com/3f28188680b010f2bce1a13858ccaf9f){gyazo=image}
 
-[](/workflows/basic-workflows/scail-2/SCAIL-2_Animation.json)
+[](/workflows/basic-workflows/scail-2/scail_2_animation.json)
 
 ベースの workflow は [Wan-Animate](/ja/basic-workflows/wan-animate/) と同じですが、かなりシンプルになっているので気楽に見ていきましょう。
 
@@ -147,7 +147,7 @@ SCAIL-2 でも、[Wan2.1 の高速生成](/ja/basic-workflows/wan-2-1/#self-forc
 
 ![](https://gyazo.com/6ade374ea0cbcb2175889cdc0be0bc46){gyazo=image}
 
-[](/workflows/basic-workflows/scail-2/SCAIL-2_Replacement.json)
+[](/workflows/basic-workflows/scail-2/scail_2_replacement.json)
 
 基本的には `Create SCAIL-2 Colored Mask` と `WanSCAILToVideo` の `replacement_mode` を `true` にするだけです。
 
@@ -185,7 +185,7 @@ SCAIL-2 は複数人の動画・画像にも対応しています。
 
 ![](https://gyazo.com/a04e322f84ca4377479a7760a60436cd){gyazo=image}
 
-[](/workflows/basic-workflows/scail-2/SCAIL-2_Animation_multi-char.json)
+[](/workflows/basic-workflows/scail-2/scail_2_animation_multi_char.json)
 
 {% mediaRow img="https://gyazo.com/86e8ccd07a045bb039e2e69b81b2781b {gyazo=image}", width=33, align="left" %}
 **Create SCAIL-2 Colored Mask**
@@ -211,7 +211,7 @@ SCAIL-2 は複数人の動画・画像にも対応しています。
 
 ![](https://gyazo.com/a135dfdaef80d8d16acd904f3d26a12a){gyazo=image}
 
-[](/workflows/basic-workflows/scail-2/SCAIL-2_Animation_multi-ref.json)
+[](/workflows/basic-workflows/scail-2/scail_2_animation_multi_ref.json)
 
 基本的な流れは通常の Animation モードと同じです。違いは、参照画像を 1 枚ではなくバッチとして入力する点です。
 
@@ -244,7 +244,7 @@ SCAIL-2 は基本的に 81 フレームまでの生成ですが、`WAN Context W
 
 ![](https://gyazo.com/43b5c2e2684957795ab7d80f8ce9976a){gyazo=image}
 
-[](/workflows/basic-workflows/scail-2/SCAIL-2_Animation_WAN-Context-Windows.json)
+[](/workflows/basic-workflows/scail-2/scail_2_animation_wan_context_windows.json)
 
 {% mediaRow img="https://gyazo.com/55aa8d3ccee17c3a43f87f17895ebfb1 {gyazo=image}", width=33, align="left" %}
 **WAN Context Windows (Manual)**

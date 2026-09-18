@@ -37,7 +37,7 @@ hero:
 
 ![](https://gyazo.com/fd49b6cc5d0da73a01189cc407104371){gyazo=image}
 
-[](/workflows/begin-with/wireless-nodes/Set_Get.json)
+[](/workflows/begin-with/wireless-nodes/set_get.json)
 
 
 - 1. **Setノード** (送信側):
@@ -51,7 +51,7 @@ hero:
 
 ![](https://i.gyazo.com/0128233c9681fdaa4ad62d7afe59d2aa.png){gyazo=image}
 
-[](/workflows/begin-with/wireless-nodes/Set_Get_image2image.json)
+[](/workflows/begin-with/wireless-nodes/set_get_image2image.json)
 
 [リーダブルノードのすゝめ](/ja/begin-with/readable-nodes/) でも触れていますが、ノードツールの最大の利点は「繋がった線を見るだけでデータの流れが掴める」ことです。
 いたずらに無線化すると、「この画像データ、どこから飛んできたの？」と処理の流れを追うのが非常に困難になります。

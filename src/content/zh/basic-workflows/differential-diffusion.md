@@ -35,7 +35,7 @@ hero:
 
 ![](https://gyazo.com/32341a2b91def8997072eb24dde93cce){gyazo=image}
 
-[](/workflows/basic-workflows/differential-diffusion/SD1.5_Differential_Diffusion.json)
+[](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion.json)
 
 - 🟩 追加 `Differential Diffusion` 节点
 - 这个示例以使用 `Set Latent Noise Mask` 节点的工作流为基础。
@@ -55,7 +55,7 @@ hero:
 
 ![](https://gyazo.com/4b3d0506456a4f1dc8aa062d4e445b17){gyazo=image}
 
-[](/workflows/basic-workflows/differential-diffusion/SD1.5_Differential_Diffusion_multi-obj.json)
+[](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion_multi_obj.json)
 
 - 为每个想改变的部分分别设置掩膜浓淡（例如脸部使用浅灰色，背景使用白色）
 
@@ -67,7 +67,7 @@ inpainting 的一个常见问题，是掩膜的边界会清楚地显现出来。
 
 ![](https://gyazo.com/e54a8d82e7dca29bf6ab19fdb20c3354){gyazo=image}
 
-[](/workflows/basic-workflows/differential-diffusion/SD1.5_Differential_Diffusion_blur.json)
+[](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion_blur.json)
 
 - 🟪 这次组装进使用了 inpainting 模型的工作流。
 - 🟨 使用 `Gaussian Blur Mask` 节点（[ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)）模糊掩膜边界
@@ -81,7 +81,7 @@ inpainting 的一个常见问题，是掩膜的边界会清楚地显现出来。
 
 ![](https://gyazo.com/ac52958c32bb143910151029c53707d1){gyazo=image}
 
-[](/workflows/basic-workflows/differential-diffusion/SD1.5_Differential_Diffusion_depthmap.json)
+[](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion_depthmap.json)
 
 - 🟦 使用 Depth Anything V2（[comfyui_controlnet_aux](https://github.com/Fannovel16/comfyui_controlnet_aux)）制作深度图
   - 输出是 IMAGE，因此需要使用 `Convert Image to Mask` 节点将其转换为掩膜。

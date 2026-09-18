@@ -56,7 +56,7 @@ hero:
 
 ![](https://gyazo.com/363769552b12b2072756280f163183df){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-text2image/SD1.5_text2image.json)
+[](/workflows/basic-workflows/sd15-text2image/sd1_5_text2image.json)
 
 ## 各ノードについて
 
@@ -131,7 +131,7 @@ Stable Diffusion1.5のVAEは、正直あまり性能がよくありません。�
 
 ![](https://gyazo.com/897f66c308b3b98440f641ee3d33d50e){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-text2image/SD1.5_text2image_vae-ft-mse-840000.json)
+[](/workflows/basic-workflows/sd15-text2image/sd1_5_text2image_vae_ft_mse_840000.json)
 
 - 🟥`Load VAE`ノードを追加し、先程ダウンロードしたVAEを選択。
   -  VAE Decodeに繋ぎます。

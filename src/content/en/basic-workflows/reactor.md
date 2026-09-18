@@ -46,7 +46,7 @@ Basic FaceSwap simply involves inputting a "Source Image" and a "Reference Face 
 
 ![](https://gyazo.com/bc67dfff78c431c688d8ec1a4937969e){gyazo=image}
 
-[](/workflows/basic-workflows/reactor/ReActor_Fast_Face_Swap.json)
+[](/workflows/basic-workflows/reactor/reactor_fast_face_swap.json)
 
 - **`input_image`**
     - Connect the original image where you want to swap the face.
@@ -93,7 +93,7 @@ Here is an example using `hyperswap_1a_256.onnx`.
 
 ![](https://gyazo.com/bab77e7c89d65dff9a4ebedb17a46375){gyazo=image}
 
-[](/workflows/basic-workflows/reactor/ReActor_hyperswap.json)
+[](/workflows/basic-workflows/reactor/reactor_hyperswap.json)
 
 - Change the `swap_model` of the ReActor node to `hyperswap_1a_256`.
 

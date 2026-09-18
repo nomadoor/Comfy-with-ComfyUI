@@ -27,7 +27,7 @@ hero:
 
 ![](https://gyazo.com/7ea9d7efa48a88e7b9bdfeef6b86d2d2){gyazo=image}
 
-[](/workflows/data-utilities/simple-math/Math_Expression.json)
+[](/workflows/data-utilities/simple-math/math_expression.json)
 
 `a`, `b`, `c` にそれぞれ数値を入れられます。
 その変数を利用して、`a * b - c` のように書けば、単純に算数を行うことができます。
@@ -73,7 +73,7 @@ ComfyUIでは主に **`int`** と **`float`** の2種類を使います。
 
 ![](https://gyazo.com/07161b2b92b1f8cedc7fa99cbf1d22cc){gyazo=image}
 
-[](/workflows/data-utilities/simple-math/Math_Expression_FloatInt.json)
+[](/workflows/data-utilities/simple-math/math_expression_floatint.json)
 
 ---
 
@@ -93,4 +93,4 @@ cf. [Node: Power Puter (Wiki)](https://github.com/rgthree/rgthree-comfy/wiki/Nod
 
 ![](https://gyazo.com/20c5f92d6ef1e7057c6d42e2065d84b1){gyazo=image}
 
-[](/workflows/data-utilities/simple-math/Power_Puter.json)
+[](/workflows/data-utilities/simple-math/power_puter.json)

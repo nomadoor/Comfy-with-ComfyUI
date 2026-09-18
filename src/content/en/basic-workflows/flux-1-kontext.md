@@ -80,7 +80,7 @@ The workflow of Kontext itself is a simple configuration that just adds `Referen
 
 ![](https://gyazo.com/b872b5de146a585c0c9745168d5f1dae){gyazo=image}
 
-[](/workflows/basic-workflows/flux-1-kontext/Flux.1-Kontext.json)
+[](/workflows/basic-workflows/flux-1-kontext/flux_1_kontext.json)
 
 * 🟪 Load `flux1-dev-kontext_fp8_scaled.safetensors`.
 * 🟩 Resize the input image to a resolution suitable for Kontext with the `FluxKontextImageScale` node.

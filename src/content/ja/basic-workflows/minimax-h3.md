@@ -173,7 +173,7 @@ MiniMax H3 はクオリティが高い一方、非常に重いモデルでもあ
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_t2va.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_t2va.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_t2va.json)
 
 {% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_t2va_resolution_length.png", width=40, align="left" %}
 **解像度・動画長さ設定**
@@ -203,7 +203,7 @@ H3 はすでに CFG 蒸留されたモデルです。そのため、CFG は `1.0
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_i2va.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_i2va.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_i2va.json)
 
 `MiniMax H3 Image to Video` にプロンプトと最初の画像を入力します。
 
@@ -219,7 +219,7 @@ H3 はすでに CFG 蒸留されたモデルです。そのため、CFG は `1.0
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_flf2va.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_FLF2VA.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_flf2va.json)
 
 I2VA と基本的にまったく同じです。`last_frame` にも画像を入力します。
 
@@ -233,7 +233,7 @@ I2VA と基本的にまったく同じです。`last_frame` にも画像を入�
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_generative-interpolation.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_generative_interpolation.json)
 
 指定したフレームに画像を差し込み、その間をつないでもらいます。
 
@@ -251,7 +251,7 @@ I2VA と基本的にまったく同じです。`last_frame` にも画像を入�
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_audio-driven-i2va.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.json)
 
 `Add Guide for MiniMax H3` は音声も入力できます。
 
@@ -275,7 +275,7 @@ H3 は動画を生成するための参考資料として、好きな「画像�
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_reference-generation.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_reference_generation.json)
 
 今回は、すべて画像を参照として使って動画を作ります。
 
@@ -325,7 +325,7 @@ FLUX.2 [klein] や Nano Banana のような画像編集の動画版ですね。
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_video_editing.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_video-editing.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_video_editing.json)
 
 workflow は基本的に Reference Generation と同じです。
 
@@ -347,7 +347,7 @@ workflow は基本的に Reference Generation と同じです。
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_spatial-inpainting.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting.json)
 
 今回は `ref2va` モデルを使って、動画内の犬を参照画像のぬいぐるみに変えてみます。
 
@@ -394,7 +394,7 @@ SAM 3.1 で犬をマスクし、少し余裕をもたせるためにマスクを
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_Hiresfix_t2va.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va.json)
 
 {% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va_first_stage_resolution.png", width=40, align="left" %}
 **1 段目の解像度**
@@ -423,7 +423,7 @@ latent を単純に拡大すると大きく劣化するため、専用のモデ�
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_Hiresfix_i2va.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va.json)
 
 I2VA や Ref2VA では、Conditioning 側にも解像度を入力します。
 

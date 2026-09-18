@@ -77,7 +77,7 @@ Stable Video Diffusionをベースにした image2model です。
 
 ![](https://gyazo.com/49e94de4d1476e100761e2e6be7a2f6e){gyazo=image}
 
-[](/workflows/ai-capabilities/3d-model-generation/SV3D.json)
+[](/workflows/ai-capabilities/3d-model-generation/sv3d.json)
 
 * 静止画を1枚入力
 * そのオブジェクトがぐるっと回転する360度動画を生成

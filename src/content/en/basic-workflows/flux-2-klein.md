@@ -74,7 +74,7 @@ Since there is no significant difference in performance, we will basically use t
 
 ![](https://gyazo.com/0936f046def982bdf00c697bb1740bfa){gyazo=image}
 
-[](/workflows/basic-workflows/flux-2-klein/9b/Flux.2-klein-base-9b_text2image.json)
+[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_text2image.json)
 
 > The official workflow uses `Flux2Scheduler`, but since there is no major difference, we use `Simple` to simplify the workflow.
 
@@ -82,7 +82,7 @@ Since there is no significant difference in performance, we will basically use t
 
 ![](https://gyazo.com/ba71c46ad1a5880a40a4897992777050){gyazo=image}
 
-[](/workflows/basic-workflows/flux-2-klein/9b/Flux.2-klein-9b_text2image.json)
+[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_text2image.json)
 
 Change only the following parameters:
 - `CFG` : 1.0
@@ -92,7 +92,7 @@ Change only the following parameters:
 
 ![](https://gyazo.com/74b3fe065e88c1a48210c04b0e9c0766){gyazo=image}
 
-[](/workflows/basic-workflows/flux-2-klein/9b/Flux.2-klein-base-9b_image-edit.json)
+[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_image_edit.json)
 
 "Input Image + Instruction Prompt" is the basic method.
 - VAE Encode the input image and pass it to `ReferenceLatent`.
@@ -102,7 +102,7 @@ Change only the following parameters:
 
 ![](https://gyazo.com/e55ff686078115488cef6406f60b9370){gyazo=image}
 
-[](/workflows/basic-workflows/flux-2-klein/9b/Flux.2-klein-9b_image-edit.json)
+[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_image_edit.json)
 
 ### Image Editing (Multi-Reference) Base
 
@@ -110,7 +110,7 @@ You can also input and reference multiple images.
 
 ![](https://gyazo.com/d5d524090b273847fbc4a45cf52284b4){gyazo=image}
 
-[](/workflows/basic-workflows/flux-2-klein/9b/Flux.2-klein-base-9b_image-edit-multi.json)
+[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_image_edit_multi.json)
 
 - Just connect the block of `Reference Image → VAE Encode → ReferenceLatent` in series.
 - 2 or 3 images are OK. (Maximum is 4)
@@ -119,7 +119,7 @@ You can also input and reference multiple images.
 
 ![](https://gyazo.com/8d4bcf62e22ccaf6e91c3b2de20a417b){gyazo=image}
 
-[](/workflows/basic-workflows/flux-2-klein/9b/Flux.2-klein-9b_image-edit-multi.json)
+[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_image_edit_multi.json)
 
 ---
 
@@ -156,16 +156,16 @@ The basics are exactly the same as 9B.
 Just replace the model and text encoder with the 4B ones.
 
 **text2image**
-- [](/workflows/basic-workflows/flux-2-klein/4b/Flux.2-klein-base-4b_text2image.json)
-- [](/workflows/basic-workflows/flux-2-klein/4b/Flux.2-klein-4b_text2image.json)
+- [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_base_4b_text2image.json)
+- [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_4b_text2image.json)
 
 **Image Editing**
-- [](/workflows/basic-workflows/flux-2-klein/4b/Flux.2-klein-base-4b_image-edit.json)
-- [](/workflows/basic-workflows/flux-2-klein/4b/Flux.2-klein-4b_image-edit.json)
+- [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_base_4b_image_edit.json)
+- [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_4b_image_edit.json)
 
 **Image Editing (Multi-Reference)**
-- [](/workflows/basic-workflows/flux-2-klein/4b/Flux.2-klein-base-4b_image-edit-multi.json)
-- [](/workflows/basic-workflows/flux-2-klein/4b/Flux.2-klein-4b_image-edit-multi.json)
+- [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_base_4b_image_edit_multi.json)
+- [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_4b_image_edit_multi.json)
 
 ---
 
@@ -186,7 +186,7 @@ Reskin this into a watercolor illustration on textured paper.
 ```
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/flux-2-klein/examples/Flux.2-klein-9b_Style-transfer.json)
+[](/workflows/basic-workflows/flux-2-klein/examples/flux_2_klein_9b_style_transfer.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -202,7 +202,7 @@ Change the time to bright midday.
 ```
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/flux-2-klein/examples/Flux.2-klein-9b_Environmental-change.json)
+[](/workflows/basic-workflows/flux-2-klein/examples/flux_2_klein_9b_environmental_change.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -216,7 +216,7 @@ Replace the ice bear with an ice duck. Add a hat on the duck with light blue, re
 ```
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/flux-2-klein/examples/Flux.2-klein-9b_Object-swap.json)
+[](/workflows/basic-workflows/flux-2-klein/examples/flux_2_klein_9b_object_swap.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -231,7 +231,7 @@ Edit the text "WELCOME" to "Flux.2".
 ```
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/flux-2-klein/examples/Flux.2-klein-9b_Text-edit.json)
+[](/workflows/basic-workflows/flux-2-klein/examples/flux_2_klein_9b_text_edit.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -245,7 +245,7 @@ Restore and colorize this black-and-white photo.
 ```
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/flux-2-klein/examples/Flux.2-klein-9b_Restore.json)
+[](/workflows/basic-workflows/flux-2-klein/examples/flux_2_klein_9b_restore.json)
 {% endmediaFooter %}
 {% endmediaRow %}
 
@@ -263,7 +263,7 @@ A office lady sitting on outdoor stairs at dusk, matching the pose from the refe
 ```
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/flux-2-klein/examples/Flux.2-klein-9b_Pose.json)
+[](/workflows/basic-workflows/flux-2-klein/examples/flux_2_klein_9b_pose.json)
 {% endmediaFooter %}
 {% endmediaRow %}
 
@@ -279,7 +279,7 @@ Outpaint the gray areas to extend the scene naturally
 ```
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/flux-2-klein/examples/Flux.2-klein-9b_outpainting.json)
+[](/workflows/basic-workflows/flux-2-klein/examples/flux_2_klein_9b_outpainting.json)
 {% endmediaFooter %}
 {% endmediaRow %}
 
@@ -293,7 +293,7 @@ Turn this into a single realistic underwater ruins scene with two robots: a slee
 ```
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/flux-2-klein/examples/Flux.2-klein-9b_Collage-refinement.json)
+[](/workflows/basic-workflows/flux-2-klein/examples/flux_2_klein_9b_collage_refinement.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -309,7 +309,7 @@ Change image 1 to match the style of image 2.
 ```
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/flux-2-klein/examples/Flux.2-klein-9b_Style-transfer-multi.json)
+[](/workflows/basic-workflows/flux-2-klein/examples/flux_2_klein_9b_style_transfer_multi.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -323,7 +323,7 @@ Replace the person in image 1 with the person from image 2.
 ```
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/flux-2-klein/examples/Flux.2-klein-9b_Object-swap-multi.json)
+[](/workflows/basic-workflows/flux-2-klein/examples/flux_2_klein_9b_object_swap_multi.json)
 {% endmediaFooter %}
 {% endmediaRow %}
 
@@ -337,7 +337,7 @@ Place the airship from image 2 in the sky of image 1,Make the airship prominent 
 ```
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/flux-2-klein/examples/Flux.2-klein-9b_Object-add-multi.json)
+[](/workflows/basic-workflows/flux-2-klein/examples/flux_2_klein_9b_object_add_multi.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}

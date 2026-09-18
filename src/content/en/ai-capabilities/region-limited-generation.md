@@ -31,7 +31,7 @@ The simplest method is to write the positional relationship directly in the prom
 
 ![](https://gyazo.com/70bc945855f5eb1162bba1cbd2babb60){gyazo=image}
 
-[](/workflows/ai-capabilities/region-limited-generation/Flux.1_dev.json)
+[](/workflows/ai-capabilities/region-limited-generation/flux_1_dev.json)
 
 > "Banana on the left, apple on the right"
 
@@ -47,7 +47,7 @@ A method of generating an image once and then repeating Inpainting many times.
 
 ![](https://gyazo.com/2c5b6e3fd8491c24da35f6c5d8d825c9){gyazo=image}
 
-[](/workflows/ai-capabilities/region-limited-generation/Flux.1_fill.json)
+[](/workflows/ai-capabilities/region-limited-generation/flux_1_fill.json)
 
 - 1. Generate a base image
 - 2. Mask the area you want to edit and Inpaint
@@ -65,7 +65,7 @@ A method that attempts to apply different text conditions to each position of th
 
 ![](https://gyazo.com/bca9aa6c5425ee4f7e4294d081d04e18){gyazo=image}
 
-[](/workflows/ai-capabilities/region-limited-generation/Conditioning_(Set_Mask).json)
+[](/workflows/ai-capabilities/region-limited-generation/conditioning_set_mask.json)
 
 The theory is beautiful, but in reality, boundaries often blur or do not switch cleanly, and **practicality is not high**.
 
@@ -79,7 +79,7 @@ A method of synthesizing images at the latent space stage.
 
 ![](https://gyazo.com/87c4aa926f36889c2987cf5fc827c4e9){gyazo=image}
 
-[](/workflows/ai-capabilities/region-limited-generation/Latent_Composite.json)
+[](/workflows/ai-capabilities/region-limited-generation/latent_composite.json)
 
 - 1. First, generate multiple images (banana image, apple image, background image, etc.)
 - 2. Paste each latent onto a single latent using masks
@@ -110,7 +110,7 @@ The computational complexity is much lower, but LoRA cannot be specified by regi
 
 ![](https://gyazo.com/efd7424ffea10f0eed2ef0f4b744636d){gyazo=image}
 
-[](/workflows/ai-capabilities/region-limited-generation/Attention_Couple.json)
+[](/workflows/ai-capabilities/region-limited-generation/attention_couple.json)
 
 ---
 

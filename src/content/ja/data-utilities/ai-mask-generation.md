@@ -124,7 +124,7 @@ YOLOとは違い、「white dog」「red car」など好きなテキストで物
 
 ![](https://gyazo.com/2c1fb7ed9c7fcc6242e48b9e6e405c27){gyazo=image}
 
-[](/workflows/data-utilities/ai-mask-generation/YOLO_face-SAM.json)
+[](/workflows/data-utilities/ai-mask-generation/yolo_face_sam.json)
 
 高速な顔検出（YOLO）と SAM（初期） の組み合わせです。
 
@@ -132,7 +132,7 @@ YOLOとは違い、「white dog」「red car」など好きなテキストで物
 
 ![](https://gyazo.com/c7b4ed29a8dae26fb9c666b137091ab4){gyazo=image}
 
-[](/workflows/data-utilities/ai-mask-generation/Grounding_DINO_HQ-SAM.json)
+[](/workflows/data-utilities/ai-mask-generation/grounding_dino_hq_sam.json)
 
 Grounding DINO と SAM の改良版である HQ-SAM の組み合わせです。
 
@@ -142,7 +142,7 @@ Grounding DINO と SAM の改良版である HQ-SAM の組み合わせです。
 
 ![](https://gyazo.com/677607c761c38defde753681398d6e1f){gyazo=image}
 
-[](/workflows/data-utilities/ai-mask-generation/Florence2_SAM2.1.json)
+[](/workflows/data-utilities/ai-mask-generation/florence2_sam2_1.json)
 
 Florence2 と SAM2.1 の組み合わせです。
 
@@ -152,7 +152,7 @@ Florence2 と SAM2.1 の組み合わせです。
 
 ![](https://gyazo.com/82c4c2d947a3ea9c98b46e05a05d542f){gyazo=image}
 
-[](/workflows/data-utilities/ai-mask-generation/SAM3_BiRefNet.json)
+[](/workflows/data-utilities/ai-mask-generation/sam3_birefnet.json)
 
 セグメンテーションはそもそもオブジェクトを区別するものであり、精細な切り抜きに使うものではありません。
 

@@ -56,30 +56,30 @@ ComfyUI 这样的基于节点的工具，经常被说明优点是“模块式”
 - 1. **text2image**
   - 这是基本。输入提示词，把它投给 KSampler 即可。
   - ![](https://gyazo.com/10c6a84174c94fbd6b66fbed2bd2a4c3){gyazo=image}
-  - [](/workflows/basic-workflows/sd15-basics/SD1.5_text2image.json)
+  - [](/workflows/basic-workflows/sd15-basics/sd1_5_text2image.json)
 
 - 2. **image2image**
   - 以输入的图像为草稿进行图像生成。
   - ![](https://gyazo.com/8426a110f038cddb3907e51d155ed9b3){gyazo=image}
-  - [](/workflows/basic-workflows/sd15-basics/SD1.5_image2image.json)
+  - [](/workflows/basic-workflows/sd15-basics/sd1_5_image2image.json)
   - 🟩 添加读取图像的节点，和将其转换为 latent 的节点。
 
 - 3. **inpainting**
   - 只对输入图像的一部分进行 image2image。
   - ![](https://gyazo.com/a9bd94b38c77cca3acb5b6a5b9d894a6){gyazo=image}
-  - [](/workflows/basic-workflows/sd15-basics/SD1.5_inpainting.json)
+  - [](/workflows/basic-workflows/sd15-basics/sd1_5_inpainting.json)
   - 🟥 添加为了让其只 image2image 被掩盖场所的节点。
 
 - 4. **ControlNet**
   - ControlNet 是在生成图像时，可以输入图像进行控制的功能。
   - ![](https://gyazo.com/46553948d7e458ed19a69b0a5a8f5141){gyazo=image}
-  - [](/workflows/basic-workflows/sd15-basics/SD1.5_inpainting_controlnet.json)
+  - [](/workflows/basic-workflows/sd15-basics/sd1_5_inpainting_controlnet.json)
   - 🟦 添加 ControlNet 的节点，和制作作为 ControlNet 控制使用的图像的节点。
   
 - 5. **进一步添加 ControlNet**
   - ControlNet 没有只有一个的限制。再添加一个试试吧。
   - ![](https://gyazo.com/daa261583657abf6c25d2003581d1610){gyazo=image}
-  - [](/workflows/basic-workflows/sd15-basics/SD1.5_inpainting_controlnet2.json)
+  - [](/workflows/basic-workflows/sd15-basics/sd1_5_inpainting_controlnet2.json)
   - 🟦 只要再做一组 ControlNet 和其预处理节点并连接就行了。
 
 ---

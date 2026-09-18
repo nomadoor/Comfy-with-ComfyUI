@@ -33,7 +33,7 @@ Outputs the width, height, and batch size (count) of the image as numerical valu
 
 ![](https://gyazo.com/ffb5c8bfea06d5ce1b15183cc70dc973){gyazo=image}
 
-[](/workflows/data-utilities/resize-crop-pad/Get_Image_Size.json)
+[](/workflows/data-utilities/resize-crop-pad/get_image_size.json)
 
 ---
 
@@ -53,7 +53,7 @@ Scales vertically and horizontally by a "multiplier".
 For example, `0.5` makes the vertical and horizontal dimensions half, and `2.0` makes them double.
 
 {% mediaFooter %}
-[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_scale-by-multiplier.json)
+[](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_by_multiplier.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -69,7 +69,7 @@ Forcibly changes the resolution to the specified width and height.
   - `center` : Maintains the center and crops (discards) the protruding parts instead of distorting.
 
 {% mediaFooter %}
-[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_scale-dimensions.json)
+[](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_dimensions.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -81,7 +81,7 @@ Forcibly changes the resolution to the specified width and height.
 Resizes the image specifying only the long side (longer) or short side (shorter), maintaining the aspect ratio.
 
 {% mediaFooter %}
-[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_scale-longer-dimension.json)
+[](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_longer_dimension.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -93,7 +93,7 @@ Resizes the image specifying only the long side (longer) or short side (shorter)
 Resizes the image specifying only either the width or height, maintaining the aspect ratio.
 
 {% mediaFooter %}
-[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_scale-width.json)
+[](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_width.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -114,7 +114,7 @@ Calculated as `1024 * 1024 = 1.00MP`.
 | **1536 × 1536** | 2,359,296 | **2.25** |
 
 {% mediaFooter %}
-[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_scale-total-pixels.json)
+[](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_total_pixels.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -133,7 +133,7 @@ Previously, it was necessary to get the size of the reference image and pass it 
   - `center`: Maintains the center and crops (discards) the protruding parts.
 
 {% mediaFooter %}
-[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_match-size.json)
+[](/workflows/data-utilities/resize-crop-pad/resize_imagemask_match_size.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -149,7 +149,7 @@ Details are explained in [Why can I only generate resolutions that are multiples
 Basically, ComfyUI often adjusts automatically internally, so there isn't much need for this node unless you encounter errors with non-specific resolutions, or when you want to "perfectly match" the pixels of the input and output.
 
 {% mediaFooter %}
-[](/workflows/data-utilities/resize-crop-pad/Resize_ImageMask_scale-to-multiple.json)
+[](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_to_multiple.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -162,7 +162,7 @@ Resizes the image so that the **long side** becomes the set size, maintaining th
 
 ![](https://i.gyazo.com/42ffc7b0534face3e58fc7946b243ce0.png){gyazo=image}
 
-[](/workflows/data-utilities/resize-crop-pad/ImageScaleToMaxDimension.json)
+[](/workflows/data-utilities/resize-crop-pad/imagescaletomaxdimension.json)
 
 
 ---
@@ -178,7 +178,7 @@ Resizes to the specified resolution and fills the missing parts with padding.
 
 ![](https://gyazo.com/633441a119959e98e0dca5cb765a53d8){gyazo=image}
 
-[](/workflows/data-utilities/resize-crop-pad/ResizeAndPadImage.json)
+[](/workflows/data-utilities/resize-crop-pad/resizeandpadimage.json)
 
 > Since this node cannot output the padding part as a mask, there are practically no occasions to use it.
 
@@ -188,7 +188,7 @@ Adds margins of the specified number of pixels to the top, bottom, left, and rig
 
 ![](https://gyazo.com/c6200467aad1b43edbc09b2ec4f3f2b0){gyazo=image}
 
-[](/workflows/data-utilities/resize-crop-pad/Pad_Image_for_Outpainting.json)
+[](/workflows/data-utilities/resize-crop-pad/pad_image_for_outpainting.json)
 
 
 The margin part is output as a mask.
@@ -205,7 +205,7 @@ Crops a part of the image in a rectangle by specifying x, y coordinates and widt
 
 ![](https://i.gyazo.com/1c996b2fa8f7213f05c524b16468181e.png){gyazo=image}
 
-[](/workflows/data-utilities/resize-crop-pad/ImageCrop.json)
+[](/workflows/data-utilities/resize-crop-pad/imagecrop.json)
 
 
 ### ImageRotate Node
@@ -214,7 +214,7 @@ Rotates the image by 90 / 180 / 270 degrees.
 
 ![](https://gyazo.com/8de36981f39e9c39ec1b6c4aa3f9a7ff){gyazo=image}
 
-[](/workflows/data-utilities/resize-crop-pad/ImageRotate.json)
+[](/workflows/data-utilities/resize-crop-pad/imagerotate.json)
 
 
 ### ImageFlip Node
@@ -223,7 +223,7 @@ Flips the image horizontally / vertically.
 
 ![](https://gyazo.com/e0661734e160f918d9fc9080dda91240){gyazo=image}
 
-[](/workflows/data-utilities/resize-crop-pad/ImageFlip.json)
+[](/workflows/data-utilities/resize-crop-pad/imageflip.json)
 
 
 ---
@@ -255,7 +255,7 @@ Let's try some slightly complex image processing by combining the nodes so far.
 
 ![](https://gyazo.com/02cf6bd2a573dc15dff4799c94b15a0d){gyazo=image}
 
-[](/workflows/data-utilities/resize-crop-pad/Crop_to_half_size.json)
+[](/workflows/data-utilities/resize-crop-pad/crop_to_half_size.json)
 
 - Get the size of the image
 - Calculate half the width with `Simple math` node

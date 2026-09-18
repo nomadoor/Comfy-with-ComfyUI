@@ -58,7 +58,7 @@ hero:
 
 ![](https://gyazo.com/64cca8d8e53b01d4315b4aec434dd5ec){gyazo=image}
 
-[](/workflows/basic-workflows/ksampler-advanced/SD1.5_KSampler_(Advanced)-add_noise.json)
+[](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_add_noise.json)
 
 🟫 假如设定 `add_noise` 为 disable 进行采样，因为从没有噪声的图像持续去除噪声所以什么都不生成。
 
@@ -76,7 +76,7 @@ hero:
 
 ![](https://gyazo.com/d57cb22d3d85f90010815d19d45bb638){gyazo=image}
 
-[](/workflows/basic-workflows/ksampler-advanced/SD1.5_KSampler_(Advanced)-divide.json)
+[](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_divide.json)
 
 我想知道即使分割为 2 个生成的图像也完全一样。
 因为参数稍微麻烦，仔细看。
@@ -113,7 +113,7 @@ hero:
 
 ![](https://gyazo.com/6fd6725df9ce2fd370f7561927bafd4e){gyazo=image}
 
-[](/workflows/basic-workflows/ksampler-advanced/SD1.5_KSampler_(Advanced)-Prompt_Editing.json)
+[](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_prompt_editing.json)
 
 在这个 workflow，最初的 10step 用 `红苹果`、剩下用 `红兔子` 这样的提示词生成。
 
@@ -132,7 +132,7 @@ hero:
 
 ![](https://gyazo.com/f85b62fe88508687bf562fd162fcc569){gyazo=image}
 
-[](/workflows/basic-workflows/ksampler-advanced/SD1.5_KSampler_(Advanced)-LoRA.json)
+[](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_lora.json)
 
 节点增加变得稍微麻烦了呢。  
 只是，仔细看的话 text2image 的 workflow 排列了 2 个，只是在途中切换而已。

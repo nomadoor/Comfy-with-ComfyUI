@@ -67,7 +67,7 @@ ComfyUI のキャンバス上で **Ctrl + V** を押すと、そのまま workfl
 
 テストworkflow:
 
-[Stable_Diffusion_1.5.json](/workflows/begin-with/saving-and-loading-workflows/Stable_Diffusion_1.5.json)
+[Stable_Diffusion_1.5.json](/workflows/begin-with/saving-and-loading-workflows/stable_diffusion_1_5.json)
 
 ぜひ活用してください！
 

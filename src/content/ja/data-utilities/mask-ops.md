@@ -21,7 +21,7 @@ hero:
 
 ![](https://gyazo.com/a9dd4acbc14438fd7edfe85d3a14c6f3){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/MaskPreview.json)
+[](/workflows/data-utilities/mask-ops/maskpreview.json)
 
 
 ### Convert Mask to Image ノード
@@ -30,7 +30,7 @@ hero:
 
 ![](https://gyazo.com/28a1d381f0697c598db58f1e4c5648c6){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Convert_Mask_to_Image.json)
+[](/workflows/data-utilities/mask-ops/convert_mask_to_image.json)
 
 
 ---
@@ -43,7 +43,7 @@ hero:
 
 ![](https://gyazo.com/49e0e05fc6511b8e37a16439afad6fed){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Load_Image_(as_Mask).json)
+[](/workflows/data-utilities/mask-ops/load_image_as_mask.json)
 
 
 - **channel**:
@@ -57,7 +57,7 @@ hero:
 
 ![](https://gyazo.com/aa0f427a4464958a9ebea27ac925294a){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Convert_Image_to_Mask.json)
+[](/workflows/data-utilities/mask-ops/convert_image_to_mask.json)
 
 
 
@@ -68,7 +68,7 @@ hero:
 
 ![](https://gyazo.com/c38c27135c901d0db5927d493b5b8650){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Color_To_Mask.json)
+[](/workflows/data-utilities/mask-ops/color_to_mask.json)
 
 コアノードにも同様の機能を持つ `ImageColorToMask` ノードというのがあるんですが、閾値の調整ができず使いにくいため、以下のカスタムノードを使用します。
 
@@ -82,7 +82,7 @@ hero:
 
 ![](https://gyazo.com/088fbef6cdf9175a1a5bb0c08cfc9d8f){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/SolidMask.json)
+[](/workflows/data-utilities/mask-ops/solidmask.json)
 
 ### Mask Editor
 
@@ -111,7 +111,7 @@ ComfyUI上で、画像の特定部分をマスク（白黒画像）として描�
 
 ![](https://i.gyazo.com/f2313d12383bc625fbf7f0c16cb8ba34.png){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/DepthmapAsMask.json)
+[](/workflows/data-utilities/mask-ops/depthmapasmask.json)
 
 深度マップは白黒のグラデーション画像です。ということは、そのままマスクとして転用できるんですね。  
 スマホのアプリなどで、あとから写真の背景ぼかす加工がありますが、基本的には同じ仕組みです。
@@ -128,7 +128,7 @@ ComfyUI上で、画像の特定部分をマスク（白黒画像）として描�
 
 ![](https://gyazo.com/fd9f3fab0b5ead47c84ce51f9ec3325a){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Resize_ImageMask_match-size.json)
+[](/workflows/data-utilities/mask-ops/resize_imagemask_match_size.json)
 
 ここでは、`match size` だけ触れておきます。  
 画像をリサイズすると、画像とマスクのサイズがズレて、対応が取れなくなることがあります。
@@ -141,7 +141,7 @@ ComfyUI上で、画像の特定部分をマスク（白黒画像）として描�
 
 ![](https://gyazo.com/aa6a319345beedb98ad7d873633df500){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/CropMask.json)
+[](/workflows/data-utilities/mask-ops/cropmask.json)
 
 
 ### GrowMask ノード
@@ -150,7 +150,7 @@ ComfyUI上で、画像の特定部分をマスク（白黒画像）として描�
 
 ![](https://gyazo.com/395ae15fa99d4b099e80b006dc1c2d7b){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/GrowMask.json)
+[](/workflows/data-utilities/mask-ops/growmask.json)
 
 
 ### 🪢 Gaussian Blur Mask ノード
@@ -159,7 +159,7 @@ ComfyUI上で、画像の特定部分をマスク（白黒画像）として描�
 
 ![](https://gyazo.com/447edb124127718662b35089effdcfa3){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Gaussian_Blur_Mask.json)
+[](/workflows/data-utilities/mask-ops/gaussian_blur_mask.json)
 
 - [ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack) などに含まれます。
 
@@ -169,7 +169,7 @@ ComfyUI上で、画像の特定部分をマスク（白黒画像）として描�
 
 ![](https://gyazo.com/c8ca1c37aa1e2bf3dd4581028e5ab8b9){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/InvertMask.json)
+[](/workflows/data-utilities/mask-ops/invertmask.json)
 
 ### ThresholdMask ノード
 
@@ -177,7 +177,7 @@ ComfyUI上で、画像の特定部分をマスク（白黒画像）として描�
 
 ![](https://gyazo.com/08a267a2826ab83e8ba872298c3974ff){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/ThresholdMask.json)
+[](/workflows/data-utilities/mask-ops/thresholdmask.json)
 
 
 ### 🪢 Remap Mask Range ノード
@@ -187,7 +187,7 @@ ComfyUI上で、画像の特定部分をマスク（白黒画像）として描�
 
 ![](https://i.gyazo.com/fc933c9858f06298ea6524fc6ed0ca5b.png){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Remap_Mask_Range.json)
+[](/workflows/data-utilities/mask-ops/remap_mask_range.json)
 
 
 ---
@@ -200,7 +200,7 @@ ComfyUI上で、画像の特定部分をマスク（白黒画像）として描�
 
 ![](https://gyazo.com/564ef15662a33280a1ec6708104833ce){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/MaskComposite.json)
+[](/workflows/data-utilities/mask-ops/maskcomposite.json)
 
 
 ---

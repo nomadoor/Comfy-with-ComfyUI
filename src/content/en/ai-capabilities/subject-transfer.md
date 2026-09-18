@@ -42,7 +42,7 @@ You might think, "With such a primitive method?" but it is theoretically possibl
 
 ![](https://gyazo.com/26351f2e5d3eb17c623acd815ba8709c){gyazo=image}
 
-[](/workflows/ai-capabilities/subject-transfer/Z-Image_Gemini-3.0.json)
+[](/workflows/ai-capabilities/subject-transfer/z_image_gemini_3_0.json)
 
 The performance of recent models is making this possible. It is worth trying once as the "cheapest pseudo-Subject Transfer."
 
@@ -56,7 +56,7 @@ It creates a vector corresponding to text embedding from the image and uses it i
 
 ![](https://gyazo.com/d0196735e6162d464bd8764448d4088b){gyazo=image}
 
-[](/workflows/ai-capabilities/subject-transfer/SeeCoder.json)
+[](/workflows/ai-capabilities/subject-transfer/seecoder.json)
 
 While there is less information loss in "textualization" than image2prompt, usability is inferior because it cannot be edited as text.
 
@@ -80,7 +80,7 @@ Subject Transfer using this property is IC-LoRA / ACE++.
 
 ![](https://gyazo.com/8e01db8cebce51e7c47d9f958a94c61b){gyazo=image}
 
-[](/workflows/ai-capabilities/subject-transfer/ACE_Plus_portrait.json)
+[](/workflows/ai-capabilities/subject-transfer/ace_plus_portrait.json)
 
 Place the reference image (including the Subject) on the left side of the image canvas, mask the entire right side, and generate (inpaint). Since the model fills the right side while looking at the information on the left, it can "generate a new image using the same Subject as the left side."
 
@@ -92,7 +92,7 @@ Place the reference image (including the Subject) on the left side of the image 
 
 ![](https://gyazo.com/358c8441ff70ee58135d8340bd691200){gyazo=image}
 
-[](/workflows/ai-capabilities/subject-transfer/Qwen-Image-Edit_2509_multi-ref.json)
+[](/workflows/ai-capabilities/subject-transfer/qwen_image_edit_2509_multi_ref.json)
 
 These models can edit images with text instructions like "put this dog in a different background" or "place this person in the forest."
 

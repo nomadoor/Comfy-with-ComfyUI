@@ -323,7 +323,7 @@ myakumyaku-san, standing, simple background
 
 ![](https://gyazo.com/88aed03eb70c3ada096a5e388c3cc245){gyazo=image}
 
-[](/workflows/notes/ai-toolkit-sdxl-lora-training/SDXL_list.json)
+[](/workflows/notes/ai-toolkit-sdxl-lora-training/sdxl_list.json)
 
 - 准备多个 prompt
 - 连接到 `Create List`，再连接到 `CLIP Text Encode`

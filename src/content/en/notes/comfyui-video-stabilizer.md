@@ -44,7 +44,7 @@ Flow is a little heavier, but performs much better, so I generally recommend Flo
 
 ![](https://gyazo.com/779732831dc0e69b5eae8519d4599d24){gyazo=image}
 
-[](/workflows/notes/comfyui-video-stabilizer/Video_Stabilizer_Flow.json)
+[](/workflows/notes/comfyui-video-stabilizer/video_stabilizer_flow.json)
 
 
 ### Parameters
@@ -93,7 +93,7 @@ With `Video Stabilizer Motion Apply`, you can apply the shake removed by Video S
 
 ![](https://gyazo.com/cf0408a1b507b5ecd0699c2e16ff539d){gyazo=image}
 
-[](/workflows/notes/comfyui-video-stabilizer/Video_Stabilizer_to_Motion_Apply.json)
+[](/workflows/notes/comfyui-video-stabilizer/video_stabilizer_to_motion_apply.json)
 
 > If you stabilized with `crop` or `crop_and_pad`, pixels that were already cropped away cannot be recovered. If you plan to restore the shake later, I recommend using `expand` for the first stabilization step.
 
@@ -107,7 +107,7 @@ By intentionally adding camera shake, you can create a stronger sense of presenc
 
 ![](https://gyazo.com/695ab8d32156327393d57ac9432a1e62){gyazo=image}
 
-[](/workflows/notes/comfyui-video-stabilizer/Video_Stabilizer_Shake.json)
+[](/workflows/notes/comfyui-video-stabilizer/video_stabilizer_shake.json)
 
 `Video Stabilizer Shake Generator` creates artificial camera motion, and `Video Stabilizer Motion Apply` applies that motion to the video.
 

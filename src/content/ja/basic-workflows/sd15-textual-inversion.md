@@ -68,7 +68,7 @@ Textual Inversion は、学習が軽いという利点こそあれど、現在�
 
 ![](https://gyazo.com/4631607c66ac4a2f6edfb442a786b79e){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-textual-inversion/SD1.5_embedding.json)
+[](/workflows/basic-workflows/sd15-textual-inversion/sd1_5_embedding.json)
 
 - CLIP Text Encodeに `embedding:ファイル名` のように書くことでembeddingを呼び出します。
   - e.g. `embedding:porsche911_ti`

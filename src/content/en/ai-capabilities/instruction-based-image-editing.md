@@ -49,7 +49,7 @@ The framework that applied this property to editing is **IC-LoRA / ACE++**.
 
 ![](https://gyazo.com/4d84f2e35f1c7fe99a322d8ee3eaec43){gyazo=image}
 
-[](/workflows/ai-capabilities/instruction-based-image-editing/ACE_Plus_portrait_face-swap.json)
+[](/workflows/ai-capabilities/instruction-based-image-editing/ace_plus_portrait_face_swap.json)
 
 - Place a "reference image" on the left side of the image canvas.
 - Mask the right side and generate it.
@@ -63,7 +63,7 @@ Subsequently, as derivatives of text2image models, dedicated "image editing" mod
 
 ![](https://gyazo.com/5a7d5ddf5327f52ccc01acb5aae79a4a){gyazo=image}
 
-[](/workflows/ai-capabilities/instruction-based-image-editing/Flux.1_Kontext.json)
+[](/workflows/ai-capabilities/instruction-based-image-editing/flux_1_kontext.json)
 
 What they have in common is that they attempt to handle editing tasks—understanding the content of the input image and adjusting "where and how much to change" according to text instructions—generically within a single model.
 
@@ -75,7 +75,7 @@ Since **Qwen-Image-Edit-2509** and **Flux.2**, the trend of handling multiple re
 
 ![](https://gyazo.com/16e9c96c73b02e72fd416d489b44de13){gyazo=image}
 
-[](/workflows/ai-capabilities/instruction-based-image-editing/Qwen-Image-Edit-2509_object-swap.json)
+[](/workflows/ai-capabilities/instruction-based-image-editing/qwen_image_edit_2509_object_swap.json)
 
 - Image A: Person (Subject)
 - Image B: Clothes (For Try-On)

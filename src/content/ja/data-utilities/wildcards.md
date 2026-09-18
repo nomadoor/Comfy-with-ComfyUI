@@ -52,7 +52,7 @@ ComfyUIのテキスト欄（例：`CLIP Text Encode`）は、デフォルトで 
 
 ![](https://gyazo.com/851ccf19703e3b7b97f779e0cb6ae23f){gyazo=image}
 
-[](/workflows/data-utilities/wildcards/ImpactWildcardProcessor.json)
+[](/workflows/data-utilities/wildcards/impactwildcardprocessor.json)
 
 - 上段にワイルドカードを書きます
 - 下段には展開後のテキストが表示されます

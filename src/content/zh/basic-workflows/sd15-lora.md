@@ -46,7 +46,7 @@ LoRA 不是重写模型权重本身，而是采用将“变更部分”作为小
 
 ![](https://gyazo.com/6f275d3cbc6c8487bf1645af06763aea){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-lora/SD1.5_lora.json)
+[](/workflows/basic-workflows/sd15-lora/sd1_5_lora.json)
 
 - 🟩 添加 `Load LoRA (Model and CLIP)` 节点。
   - 以夹在 `Load Checkpoint` 和 `CLIP Text Encode` / `KSampler` 之间的形式连接。
@@ -75,4 +75,4 @@ SDXL 有两个文本编码器，后来登场的模型还开始使用 T5、Qwen �
 
 ![](https://gyazo.com/975300eed9cca90f7086dda53c1ca413){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-lora/Flux.1_lora.json)
+[](/workflows/basic-workflows/sd15-lora/flux_1_lora.json)

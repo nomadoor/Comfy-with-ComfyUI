@@ -37,7 +37,7 @@ It groups any type (Image / Text / Number, etc.) into a single List.
 
 ![](https://gyazo.com/06892a5581ad86c9a2b56f01df91b983){gyazo=image}
 
-[](/workflows/data-utilities/list/Create_List.json)
+[](/workflows/data-utilities/list/create_list.json)
 
 - Slots increase as you connect nodes, so you can add as many as you like.
 
@@ -57,7 +57,7 @@ Reads images in a folder collectively and creates a List of `IMAGE`.
 
 ![](https://gyazo.com/4003d1d985e5153aab3cfe4f68c7d979){gyazo=image}
 
-[](/workflows/data-utilities/list/Load_Image_List_From_Dir_(Inspire).json)
+[](/workflows/data-utilities/list/load_image_list_from_dir_inspire.json)
 
 - `directory`: Enter the path of the folder to read
 - `load_always`: Whether to reload every time the contents of the folder change
@@ -70,7 +70,7 @@ Splits one long `STRING` with a delimiter and converts it to a List.
 
 ![](https://gyazo.com/ec2466a80a39f2d4a1c79526167b5293){gyazo=image}
 
-[](/workflows/data-utilities/list/Split_String.json)
+[](/workflows/data-utilities/list/split_string.json)
 
 - `delimiter`: Delimiter character (`,` might be better avoided as it is often used in prompts)
 - `splitlines`: Split by newlines
@@ -82,7 +82,7 @@ Extracts only one element at the specified position from the List.
 
 ![](https://gyazo.com/f1d3281970effbc7a2fc8a782f1a21ab){gyazo=image}
 
-[](/workflows/data-utilities/list/Select_Nth_Item_(Any_list).json)
+[](/workflows/data-utilities/list/select_nth_item_any_list.json)
 
 - `index`: Position to extract (0, 1, 2...)
 
@@ -92,7 +92,7 @@ Extracts only one element at the specified position from the List.
 
 ![](https://gyazo.com/c001c197c385e9cdc2bdab3bc74f69c4){gyazo=image}
 
-[](/workflows/data-utilities/list/image2image_2list-3list.json)
+[](/workflows/data-utilities/list/image2image_2list_3list.json)
 
 For example, let's consider the following situation in image2image:
 

@@ -67,7 +67,7 @@ Detailer は、このクロップ領域のみで行うinpaintingです。
 
 ![](https://gyazo.com/52c85301e868fe14f7bb729508206078){gyazo=image}
 
-[](/workflows/basic-workflows/detailer/Inpaint_Crop_(Improved).json)
+[](/workflows/basic-workflows/detailer/inpaint_crop_improved.json)
 
 workflow を見れば分かるとおり、**マスク＋元画像** を渡すと、マスクをもとに少し余白を足したクロップ領域を自動で作り、その部分だけを指定サイズにリサイズしてくれます。
 
@@ -91,7 +91,7 @@ workflow を見れば分かるとおり、**マスク＋元画像** を渡すと
 
 ![](https://gyazo.com/c210a482208c8932e252b770b8b856bf){gyazo=image}
 
-[](/workflows/basic-workflows/detailer/Inpaint_Stitch_(Improved).json)
+[](/workflows/basic-workflows/detailer/inpaint_stitch_improved.json)
 
 `✂️ Inpaint Stitch (Improved)` ノードは、いじったクロップ画像を元の位置に戻します。
 
@@ -107,7 +107,7 @@ workflow を見れば分かるとおり、**マスク＋元画像** を渡すと
 
 ![](https://gyazo.com/4246aded675f5267c9b5685486791390){gyazo=image}
 
-[](/workflows/basic-workflows/detailer/Detailer_Inpaint_Crop.json)
+[](/workflows/basic-workflows/detailer/detailer_inpaint_crop.json)
 
 - 🟩 ベースモデルによって　`output_target_width/height` を調整してください。
   - 今回はSD1.5なので512px
@@ -121,7 +121,7 @@ workflow を見れば分かるとおり、**マスク＋元画像** を渡すと
 
 ![](https://gyazo.com/d65f393b285ec6c84a17a6a6ef438f14){gyazo=image}
 
-[](/workflows/basic-workflows/detailer/Detailer_Inpaint_Crop_SAM3.json)
+[](/workflows/basic-workflows/detailer/detailer_inpaint_crop_sam3.json)
 
 - 🟦 SAM 3を使って顔のマスクを作成します。
 

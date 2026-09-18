@@ -41,7 +41,7 @@ Subject 转移是用于生成包含参考图像中相同 Subject 的图像的技
 
 ![](https://gyazo.com/26351f2e5d3eb17c623acd815ba8709c){gyazo=image}
 
-[](/workflows/ai-capabilities/subject-transfer/Z-Image_Gemini-3.0.json)
+[](/workflows/ai-capabilities/subject-transfer/z_image_gemini_3_0.json)
 
 最近模型的性能正在使之成为可能。作为“最廉价的仿 Subject 转移”，值得试一次。
 
@@ -55,7 +55,7 @@ image2prompt 是“图像 → 文本 → 嵌入”这两个阶段，而在 SeeCo
 
 ![](https://gyazo.com/d0196735e6162d464bd8764448d4088b){gyazo=image}
 
-[](/workflows/ai-capabilities/subject-transfer/SeeCoder.json)
+[](/workflows/ai-capabilities/subject-transfer/seecoder.json)
 
 虽然比起 image2prompt 在“文本化”中的信息损失更少，但由于无法进行文本编辑，所以易用性较差。
 
@@ -79,7 +79,7 @@ IP-Adapter 是用于向现有的 text2image 模型插入“来自图像的条件
 
 ![](https://gyazo.com/8e01db8cebce51e7c47d9f958a94c61b){gyazo=image}
 
-[](/workflows/ai-capabilities/subject-transfer/ACE_Plus_portrait.json)
+[](/workflows/ai-capabilities/subject-transfer/ace_plus_portrait.json)
 
 在图像画布的左侧配置参考图像（包含 Subject），将右侧全部遮罩并让其生成 (inpainting)。模型一边看着左侧的信息一边填充右侧，因此“可以使用与左侧相同的 Subject 生成新的图像”。
 
@@ -91,7 +91,7 @@ IP-Adapter 是用于向现有的 text2image 模型插入“来自图像的条件
 
 ![](https://gyazo.com/358c8441ff70ee58135d8340bd691200){gyazo=image}
 
-[](/workflows/ai-capabilities/subject-transfer/Qwen-Image-Edit_2509_multi-ref.json)
+[](/workflows/ai-capabilities/subject-transfer/qwen_image_edit_2509_multi_ref.json)
 
 这些模型可以通过“把这只狗放在别的背景里”、“把这个人配置在森林里”这样的文本指令来编辑图像。
 

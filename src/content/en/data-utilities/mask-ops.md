@@ -19,7 +19,7 @@ hero:
 
 ![](https://gyazo.com/a9dd4acbc14438fd7edfe85d3a14c6f3){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/MaskPreview.json)
+[](/workflows/data-utilities/mask-ops/maskpreview.json)
 
 This is the mask version of the `Preview Image` node.
 
@@ -27,7 +27,7 @@ This is the mask version of the `Preview Image` node.
 
 ![](https://gyazo.com/28a1d381f0697c598db58f1e4c5648c6){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Convert_Mask_to_Image.json)
+[](/workflows/data-utilities/mask-ops/convert_mask_to_image.json)
 
 Converts a mask to a black and white `Image`.
 
@@ -39,7 +39,7 @@ Converts a mask to a black and white `Image`.
 
 ![](https://gyazo.com/49e0e05fc6511b8e37a16439afad6fed){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Load_Image_(as_Mask).json)
+[](/workflows/data-utilities/mask-ops/load_image_as_mask.json)
 
 Loads an image file directly as mask data.
 
@@ -51,7 +51,7 @@ Loads an image file directly as mask data.
 
 ![](https://gyazo.com/aa0f427a4464958a9ebea27ac925294a){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Convert_Image_to_Mask.json)
+[](/workflows/data-utilities/mask-ops/convert_image_to_mask.json)
 
 Converts an `IMAGE` (RGB image) in the workflow to a `MASK`.
 
@@ -61,7 +61,7 @@ It's like breaking down the `Load Image (as Mask)` node.
 
 ![](https://gyazo.com/c38c27135c901d0db5927d493b5b8650){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Color_To_Mask.json)
+[](/workflows/data-utilities/mask-ops/color_to_mask.json)
 
 Converts a specific color of an image (such as a green screen) to a mask. This is so-called chroma key processing.
 
@@ -75,7 +75,7 @@ Specify the target color in RGB and adjust the color error with `threshold`.
 
 ![](https://gyazo.com/088fbef6cdf9175a1a5bb0c08cfc9d8f){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/SolidMask.json)
+[](/workflows/data-utilities/mask-ops/solidmask.json)
 
 Creates a rectangular mask of the specified size.
 
@@ -107,7 +107,7 @@ For detailed operation instructions, please see [Mask Editor](/en/begin-with/mas
 
 ![](https://i.gyazo.com/f2313d12383bc625fbf7f0c16cb8ba34.png){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/DepthmapAsMask.json)
+[](/workflows/data-utilities/mask-ops/depthmapasmask.json)
 
 A depth map is a black and white gradient image. This means it can be diverted as a mask as it is.
 
@@ -125,7 +125,7 @@ It is covered in detail in [Resize Image/Mask Node](/en/data-utilities/resize-cr
 
 ![](https://gyazo.com/fd9f3fab0b5ead47c84ce51f9ec3325a){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Resize_ImageMask_match-size.json)
+[](/workflows/data-utilities/mask-ops/resize_imagemask_match_size.json)
 
 Here, I will only touch on `match size`.
 When you resize an image, the size of the image and the mask may become misaligned, making it impossible to maintain correspondence.
@@ -136,7 +136,7 @@ By using `match size`, you can resize the mask side to match the reference image
 
 ![](https://gyazo.com/aa6a319345beedb98ad7d873633df500){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/CropMask.json)
+[](/workflows/data-utilities/mask-ops/cropmask.json)
 
 Crops the mask to the specified range.
 
@@ -144,7 +144,7 @@ Crops the mask to the specified range.
 
 ![](https://gyazo.com/395ae15fa99d4b099e80b006dc1c2d7b){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/GrowMask.json)
+[](/workflows/data-utilities/mask-ops/growmask.json)
 
 Expands the outline of the mask. If the value is negative, you can also narrow (thin) it.
 
@@ -152,7 +152,7 @@ Expands the outline of the mask. If the value is negative, you can also narrow (
 
 ![](https://gyazo.com/447edb124127718662b35089effdcfa3){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Gaussian_Blur_Mask.json)
+[](/workflows/data-utilities/mask-ops/gaussian_blur_mask.json)
 
 Blurs the mask. Important for blending boundaries during composition.
 
@@ -162,7 +162,7 @@ Blurs the mask. Important for blending boundaries during composition.
 
 ![](https://gyazo.com/c8ca1c37aa1e2bf3dd4581028e5ab8b9){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/InvertMask.json)
+[](/workflows/data-utilities/mask-ops/invertmask.json)
 
 Inverts the black and white of the mask.
 
@@ -170,7 +170,7 @@ Inverts the black and white of the mask.
 
 ![](https://gyazo.com/08a267a2826ab83e8ba872298c3974ff){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/ThresholdMask.json)
+[](/workflows/data-utilities/mask-ops/thresholdmask.json)
 
 Converts a mask with intermediate values (gradients) into a binary (white or black) mask at the specified threshold.
 
@@ -178,7 +178,7 @@ Converts a mask with intermediate values (gradients) into a binary (white or bla
 
 ![](https://i.gyazo.com/fc933c9858f06298ea6524fc6ed0ca5b.png){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/Remap_Mask_Range.json)
+[](/workflows/data-utilities/mask-ops/remap_mask_range.json)
 
 Adjusts how the gradient mask is applied.
 Combining with the aforementioned "Depth Map", you can change "which position" in the depth to focus on, obtaining interesting effects.
@@ -191,7 +191,7 @@ Combining with the aforementioned "Depth Map", you can change "which position" i
 
 ![](https://gyazo.com/564ef15662a33280a1ec6708104833ce){gyazo=image}
 
-[](/workflows/data-utilities/mask-ops/MaskComposite.json)
+[](/workflows/data-utilities/mask-ops/maskcomposite.json)
 
 Composites two masks in various modes (addition, subtraction, multiplication, etc.).
 

@@ -50,7 +50,7 @@ hero:
 
 ![](https://gyazo.com/4d84f2e35f1c7fe99a322d8ee3eaec43){gyazo=image}
 
-[](/workflows/ai-capabilities/instruction-based-image-editing/ACE_Plus_portrait_face-swap.json)
+[](/workflows/ai-capabilities/instruction-based-image-editing/ace_plus_portrait_face_swap.json)
 
 - 在图像画布的左侧放置“参考图像”
 - 遮罩右侧并让其生成
@@ -64,7 +64,7 @@ hero:
 
 ![](https://gyazo.com/5a7d5ddf5327f52ccc01acb5aae79a4a){gyazo=image}
 
-[](/workflows/ai-capabilities/instruction-based-image-editing/Flux.1_Kontext.json)
+[](/workflows/ai-capabilities/instruction-based-image-editing/flux_1_kontext.json)
 
 共同点是，通过一个模型（某种程度上）通用地处理理解输入图像的内容，根据文本指令调整“哪里改变多少”这样的编辑任务。
 
@@ -76,7 +76,7 @@ hero:
 
 ![](https://gyazo.com/16e9c96c73b02e72fd416d489b44de13){gyazo=image}
 
-[](/workflows/ai-capabilities/instruction-based-image-editing/Qwen-Image-Edit-2509_object-swap.json)
+[](/workflows/ai-capabilities/instruction-based-image-editing/qwen_image_edit_2509_object_swap.json)
 
 - 图像 A：人物（Subject）
 - 图像 B：衣服（换装用）

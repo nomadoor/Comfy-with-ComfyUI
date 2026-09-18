@@ -34,7 +34,7 @@ hero:
 
 ![](https://gyazo.com/0f12d674fe3e1f6f30c2a06340464eb4){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/ImageCompositeMasked.json)
+[](/workflows/data-utilities/layer-composite-blend/imagecompositemasked.json)
 
 
 - **destination**: 背景（底层）图像
@@ -46,7 +46,7 @@ hero:
 
 ![](https://gyazo.com/282ad8bae51d35eef6a4810780f3eb82){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/ImageCompositeMasked-Align_center.json)
+[](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_align_center.json)
 
 虽然用节点进行 CSS 中熟悉的 `top: 50%; left: 50%; transform: translate(-50%, -50%);` 这种坐标计算可以实现居中配置，但……老实说确实有点麻烦。
 
@@ -64,7 +64,7 @@ hero:
 
 ![](https://gyazo.com/cd53e89115c033f8a8ea175b72ca0aef){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/ImageCompositeMasked-with_Alpha.json)
+[](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_with_alpha.json)
 
 使用的同样是 `ImageCompositeMasked` 节点，但要使用 **`mask` 输入**。
 
@@ -78,7 +78,7 @@ hero:
 
 ![](https://gyazo.com/f7ba12c0cf33e3e5dc8a9b5fb24cb0a6){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/ImageCompositeMasked-with_crop-pad.json)
+[](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_with_crop_pad.json)
 
 如果背景是单色或图案倒还好，如果是照片等情况就会变形。
 最简单的解决方案是，**预先将两张图像通过填充/裁剪调整为相同尺寸**。
@@ -92,7 +92,7 @@ hero:
 
 ![](https://i.gyazo.com/c848c0f8e8d3ee590ba7ae09e8db7e68.png){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/ImageCompositeMasked_Segmentation.json)
+[](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_segmentation.json)
 
 - 1. 从输入图像通过分割制作“裙子的蒙版”。
 - 2. 将 `EmptyImage`（单色图像）等连接到 `source`。
@@ -113,7 +113,7 @@ hero:
 
 ![](https://i.gyazo.com/4ce9346ef269709f6456f0fcd5832a9c.png){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/Image_Stitch.json)
+[](/workflows/data-utilities/layer-composite-blend/image_stitch.json)
 
 
 ### 🪢 Image Concatenate From Batch 节点
@@ -122,7 +122,7 @@ hero:
 
 ![](https://i.gyazo.com/18d0555fd1d0bd01ead60b3992662cb0.png){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/Image_Concatenate_From_Batch.json)
+[](/workflows/data-utilities/layer-composite-blend/image_concatenate_from_batch.json)
 
 
 - 包含在 **[Kijai/ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes)** 中。
@@ -137,7 +137,7 @@ hero:
 
 ![](https://i.gyazo.com/0c3dbad0a36a0399e7e12301a4b58638.png){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/Image_Blend.json)
+[](/workflows/data-utilities/layer-composite-blend/image_blend.json)
 
 标准功能只能进行非常简单的混合，但可以通过 `blend_factor` 调整合成强度。
 - `blend_factor`: 越接近 1.0，source 图像就越浓。
@@ -150,7 +150,7 @@ hero:
 
 ![](https://gyazo.com/c39404b4f19fe6a47565b326b7f0dc6d){gyazo=image}
 
-[](/workflows/data-utilities/layer-composite-blend/EmptyImage.json)
+[](/workflows/data-utilities/layer-composite-blend/emptyimage.json)
 
 
 ### 颜色的设置方法

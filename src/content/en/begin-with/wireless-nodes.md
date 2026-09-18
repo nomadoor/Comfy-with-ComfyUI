@@ -37,7 +37,7 @@ Usage is very simple.
 
 ![](https://gyazo.com/fd49b6cc5d0da73a01189cc407104371){gyazo=image}
 
-[](/workflows/begin-with/wireless-nodes/Set_Get.json)
+[](/workflows/begin-with/wireless-nodes/set_get.json)
 
 
 - 1. **Set Node** (Sender):
@@ -51,7 +51,7 @@ Usage is very simple.
 
 ![](https://i.gyazo.com/0128233c9681fdaa4ad62d7afe59d2aa.png){gyazo=image}
 
-[](/workflows/begin-with/wireless-nodes/Set_Get_image2image.json)
+[](/workflows/begin-with/wireless-nodes/set_get_image2image.json)
 
 As mentioned in [Recommendation for Readable Nodes](/en/begin-with/readable-nodes/), the biggest advantage of node tools is that "you can grasp the flow of data just by looking at the connected lines".
 If you wirelessly unnecessarily, it becomes very difficult to trace the flow of processing, asking "Where did this image data fly from?".

@@ -134,7 +134,7 @@ For example, [ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes) include
 
 ![](https://gyazo.com/c9a2cf1717e87cd1ba28c5d236a02b4d){gyazo=image}
 
-[](/workflows/basic-workflows/ideogram-4/Ideogram_4.0_text2image.json)
+[](/workflows/basic-workflows/ideogram-4/ideogram_4_0_text2image.json)
 
 Aside from the prompt, there are a few parts that are slightly different from a normal workflow, so let's look only at those.
 
@@ -171,7 +171,7 @@ This is a LoRA published by Ostris for generating in 2 to 8 steps.
 
 ![](https://gyazo.com/f75015885dc02060128725d779ce7d49){gyazo=image}
 
-[](/workflows/basic-workflows/ideogram-4/Ideogram_4.0_text2image_turbotime.json)
+[](/workflows/basic-workflows/ideogram-4/ideogram_4_0_text2image_turbotime.json)
 
 - It generates with CFG 1.0, so the unconditional model is no longer needed.
 - It is described as a 2 to 8 step LoRA, but very low step counts clearly start to break the image.

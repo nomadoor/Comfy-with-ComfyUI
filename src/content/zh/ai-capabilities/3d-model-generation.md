@@ -79,7 +79,7 @@ Zero123++ 可以说是利用了这个性质，朝着“一次生成，尽可能�
 
 ![](https://gyazo.com/49e94de4d1476e100761e2e6be7a2f6e){gyazo=image}
 
-[](/workflows/ai-capabilities/3d-model-generation/SV3D.json)
+[](/workflows/ai-capabilities/3d-model-generation/sv3d.json)
 
 * 输入一张静止画
 * 生成该物体旋转一圈的 360 度视频

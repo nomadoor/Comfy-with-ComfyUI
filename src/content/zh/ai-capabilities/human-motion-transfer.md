@@ -34,7 +34,7 @@ Human Motion Transfer 是将 **其他视频的全身动作转移** 到一张人�
 
 ![](https://gyazo.com/1e1bb54d4617ed57e696502727b80092){gyazo=loop}
 
-[](/workflows/ai-capabilities/human-motion-transfer/MimicMotion.json)
+[](/workflows/ai-capabilities/human-motion-transfer/mimicmotion.json)
 
 ---
 

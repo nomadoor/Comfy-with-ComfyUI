@@ -26,6 +26,11 @@ for (const file of files) {
     continue;
   }
   if (path.extname(file) !== ".json") continue;
+  // Lowercase snake_case only: the files travel between Windows and WSL and are referenced in URLs.
+  if (!/^[a-z0-9_]+\.json$/.test(path.basename(file))) {
+    failures.push(`${relative}: workflow file names must be lowercase snake_case ([a-z0-9_].json)`);
+    continue;
+  }
   try {
     JSON.parse(fs.readFileSync(file, "utf8"));
   } catch (error) {

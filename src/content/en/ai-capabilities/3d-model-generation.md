@@ -77,7 +77,7 @@ It is a flow of image2model based on Stable Video Diffusion.
 
 ![](https://gyazo.com/49e94de4d1476e100761e2e6be7a2f6e){gyazo=image}
 
-[](/workflows/ai-capabilities/3d-model-generation/SV3D.json)
+[](/workflows/ai-capabilities/3d-model-generation/sv3d.json)
 
 * Input one still image
 * Generate a 360-degree video where the object rotates

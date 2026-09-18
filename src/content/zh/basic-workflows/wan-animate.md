@@ -87,7 +87,7 @@ tags: ["human-motion-transfer","talking-head"]
 
 ![](https://gyazo.com/d25335c059e8117f9e617de4ffffefca){gyazo=image}
 
-[](/workflows/basic-workflows/wan-animate/Wan2.2-Animate_Animation.json)
+[](/workflows/basic-workflows/wan-animate/wan2_2_animate_animation.json)
 
 {% mediaRow img="https://gyazo.com/77b9c908b9e96505678ccaa0bde8055b{gyazo=image}", width=33, align="left" %}
 
@@ -136,7 +136,7 @@ tags: ["human-motion-transfer","talking-head"]
 
 ![](https://gyazo.com/ab3d36d1e2ddfd5d7e452778dbab411c){gyazo=image}
 
-[](/workflows/basic-workflows/wan-animate/Wan2.2-Animate_Replacement.json)
+[](/workflows/basic-workflows/wan-animate/wan2_2_animate_replacement.json)
 
 {% mediaRow img="https://gyazo.com/a26743871782e80338ed0d920ef6b786{gyazo=image}", width=33, align="left" %}
 
@@ -194,7 +194,7 @@ tags: ["human-motion-transfer","talking-head"]
 
 ![](https://gyazo.com/c8ff6a05cd057198146cd2cffb16d733){gyazo=image}
 
-[](/workflows/basic-workflows/wan-animate/Wan2.2-Animate_Animation_lightx2v.json)
+[](/workflows/basic-workflows/wan-animate/wan2_2_animate_animation_lightx2v.json)
 
 {% mediaRow img="https://gyazo.com/3808ae94efd870f0ff0ce1d77595ea36{gyazo=image}", width=33, align="left" %}
 
@@ -216,7 +216,7 @@ tags: ["human-motion-transfer","talking-head"]
 
 ![](https://gyazo.com/6e70b69630dea6bcf813917d8eb2c18a){gyazo=image}
 
-[](/workflows/basic-workflows/wan-animate/Wan2.2-Animate_Replacement_lightx2v.json)
+[](/workflows/basic-workflows/wan-animate/wan2_2_animate_replacement_lightx2v.json)
 
 ---
 
@@ -233,7 +233,7 @@ Wan-Animate 的基础和 Wan2.1 I2V 同样，**1 次推论能生成的上限是 
 
 ![](https://gyazo.com/a489fad9b07fb1f1745d556fa130c731){gyazo=image}
 
-[](/workflows/basic-workflows/wan-animate/Wan2.2-Animate_Animation_lightx2v_repeat.json)
+[](/workflows/basic-workflows/wan-animate/wan2_2_animate_animation_lightx2v_repeat.json)
 
 乍一看是巨大的工作流，但与至今的东西不同的点只有以下 2 点。
 
@@ -255,4 +255,4 @@ Wan-Animate 的基础和 Wan2.1 I2V 同样，**1 次推论能生成的上限是 
 
 ![](https://gyazo.com/5efe20ed9671e3eb4960fd5ddc70cb46){gyazo=image}
 
-[](/workflows/basic-workflows/wan-animate/Wan2.2-Animate_Replacement_lightx2v_repeat.json)
+[](/workflows/basic-workflows/wan-animate/wan2_2_animate_replacement_lightx2v_repeat.json)

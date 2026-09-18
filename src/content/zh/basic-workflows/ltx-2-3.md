@@ -97,7 +97,7 @@ tags: []
 
 ![](https://gyazo.com/7477c07351d62edda93ae50270bbbaf5){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_text2video_distilled_3stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_text2video_distilled_3stage.json)
 
 {% mediaRow img="https://gyazo.com/6e9e9474d28ef76af5053fb0be5e6290 {gyazo=image}", width=40, align="left" %}
 
@@ -121,7 +121,7 @@ tags: []
 
 ![](https://gyazo.com/0bb56ddc29aa5c644460f5eb6a2c7443){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_image2video_distilled_3stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_image2video_distilled_3stage.json)
 
 **输出例**
 
@@ -133,7 +133,7 @@ tags: []
 
 ![](https://gyazo.com/0d62ef375ff30b08ea96c40b5105c94c){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_audio2video_distilled_3stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_audio2video_distilled_3stage.json)
 
 **输出例**
 
@@ -145,7 +145,7 @@ tags: []
 
 ![](https://gyazo.com/443cbbeacab7a63e85641c0b209ab5da){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_audio-image2video_distilled_3stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_audio_image2video_distilled_3stage.json)
 
 **输出例**
 
@@ -159,7 +159,7 @@ tags: []
 
 ![](https://gyazo.com/f0cdfd8e0d5f0106e0d6fc98fdcb9aee){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_generative-Interpolation_distilled_1stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_generative_interpolation_distilled_1stage.json)
 
 它看起来像是 `image2video` 的延伸，但底层机制其实不同。  
 `image2video` 是把第一帧直接替换成参考图，再生成后面的帧。  
@@ -234,7 +234,7 @@ LTX-2 的 guide 机制里，如果直接输出，生成出来的视频会混入�
 
 ![](https://gyazo.com/9432f1cad25a54328ed912bc85af4a2d){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_IC-LoRA(Pose)_distilled_2stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_ic_lora_pose_distilled_2stage.json)
 
 - 🚨IC-LoRA 时使用的不是 **3 stage**，而是 **2 stage** workflow
 - IC-LoRA Union 有一点比较特殊：它使用的是生成视频一半分辨率的控制视频
@@ -250,7 +250,7 @@ LTX-2 的 guide 机制里，如果直接输出，生成出来的视频会混入�
 
 ![](https://gyazo.com/b43880620c819f250e61f6df0e494a7c){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_IC-LoRA-Outpaint_distilled_1stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_ic_lora_outpaint_distilled_1stage.json)
 
 这是一个用来自然补全输入视频中黑色区域的 workflow。  
 为了尽量保留原始视频，不采用从低分辨率逐步放大的 3stage，而是使用 1stage。
@@ -303,7 +303,7 @@ LTX-2 的 guide 机制里，如果直接输出，生成出来的视频会混入�
 
 ![](https://gyazo.com/cd8a2899358fbac24b90eebe9b10a823){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_ID-LoRA_distilled_3stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_id_lora_distilled_3stage.json)
 
 整体是以 [image2video](#image2video) 为基础。  
 然后再加上 ID-LoRA 的 LoRA 和参考音频条件。

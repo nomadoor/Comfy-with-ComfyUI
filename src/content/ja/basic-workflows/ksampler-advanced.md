@@ -58,7 +58,7 @@ KSampler (Advanced)では、`add_noise`パラメータでノイズを追加す�
 
 ![](https://gyazo.com/64cca8d8e53b01d4315b4aec434dd5ec){gyazo=image}
 
-[](/workflows/basic-workflows/ksampler-advanced/SD1.5_KSampler_(Advanced)-add_noise.json)
+[](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_add_noise.json)
 
 🟫仮に`add_noise`をdisableに設定してサンプリングを行うと、ノイズのない画像からノイズを除去し続けるため何も生成されません。
 
@@ -76,7 +76,7 @@ KSampler (Advanced)では、`add_noise`パラメータでノイズを追加す�
 
 ![](https://gyazo.com/d57cb22d3d85f90010815d19d45bb638){gyazo=image}
 
-[](/workflows/basic-workflows/ksampler-advanced/SD1.5_KSampler_(Advanced)-divide.json)
+[](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_divide.json)
 
 2つに分割しても生成される画像が全く同じであるのがわかると思います。
 パラメータが少しややこしいので、丁寧に見ていきます。
@@ -113,7 +113,7 @@ KSampler (Advanced)では、`add_noise`パラメータでノイズを追加す�
 
 ![](https://gyazo.com/6fd6725df9ce2fd370f7561927bafd4e){gyazo=image}
 
-[](/workflows/basic-workflows/ksampler-advanced/SD1.5_KSampler_(Advanced)-Prompt_Editing.json)
+[](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_prompt_editing.json)
 
 このworkflowでは、最初の10stepを`赤いりんご`、残りを`赤いうさぎ`というプロンプトで生成しています。
 
@@ -132,7 +132,7 @@ KSampler (Advanced)では、`add_noise`パラメータでノイズを追加す�
 
 ![](https://gyazo.com/f85b62fe88508687bf562fd162fcc569){gyazo=image}
 
-[](/workflows/basic-workflows/ksampler-advanced/SD1.5_KSampler_(Advanced)-LoRA.json)
+[](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_lora.json)
 
 ノードが増えて少しややこしくなってきましたね。  
 ただ、よく見るとtext2imageのworkflowが2つ並んでおり、途中で切り替えているだけです。

@@ -43,7 +43,7 @@ VTON系タスク（服の着せ替え）に特化したモデルはいくつも�
 
 ![](https://gyazo.com/e06c4fb2aca261c0d37b792bea9dcc80){gyazo=image}
 
-[](/workflows/ai-capabilities/virtual-try-on/catvton-flux-LoRA.json)
+[](/workflows/ai-capabilities/virtual-try-on/catvton_flux_lora.json)
 
 - **左側**：人物画像
 - **右側**：着せたい服の画像 + マスク
@@ -61,7 +61,7 @@ VTON系タスク（服の着せ替え）に特化したモデルはいくつも�
 
 ![](https://gyazo.com/30a82ecdd7a8cff9483a162decf7c31d){gyazo=image}
 
-[](/workflows/ai-capabilities/virtual-try-on/Flux_Kontext_LoRA_v0.2.json)
+[](/workflows/ai-capabilities/virtual-try-on/flux_kontext_lora_v0_2.json)
 
 - [nomadoor/crossimage-tryon-fluxkontext](https://huggingface.co/nomadoor/crossimage-tryon-fluxkontext)
 - **左側**：人物画像

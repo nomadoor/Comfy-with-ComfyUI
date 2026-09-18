@@ -58,7 +58,7 @@ hero:
 - 🟨 Canny Edgy
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/controlnet-prep/Canny-Canny_Edge.json)
+[](/workflows/basic-workflows/controlnet-prep/canny_canny_edge.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -71,7 +71,7 @@ hero:
 - 🟩 HED Soft-Edge
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/controlnet-prep/HED_Soft-Edge.json)
+[](/workflows/basic-workflows/controlnet-prep/hed_soft_edge.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -85,7 +85,7 @@ hero:
 - 🟨 AnyLine Lineart
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/controlnet-prep/Realistic-AnyLine_Lineart.json)
+[](/workflows/basic-workflows/controlnet-prep/realistic_anyline_lineart.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -100,7 +100,7 @@ hero:
   - 虽然现在开发到了 V3，但如果是 ControlNet 用途的话 V2 就足够了。
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/controlnet-prep/Depth_Anything_V2.json)
+[](/workflows/basic-workflows/controlnet-prep/depth_anything_v2.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -113,7 +113,7 @@ hero:
 - 🟩 DSINE
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/controlnet-prep/DSINE.json)
+[](/workflows/basic-workflows/controlnet-prep/dsine.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -126,7 +126,7 @@ hero:
 - 🟩 M-LSD Lines
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/controlnet-prep/M-LSD.json)
+[](/workflows/basic-workflows/controlnet-prep/m_lsd.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -141,7 +141,7 @@ hero:
   - 虽然经常被作为 OpenPose 的上位互换对待，但有不擅长背影这个明确的弱点。请根据状况与 OpenPose 并用。
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/controlnet-prep/OpenPose_DWPose.json)
+[](/workflows/basic-workflows/controlnet-prep/openpose_dwpose.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}
@@ -156,7 +156,7 @@ hero:
   - OpenPose 因为非常不擅长动物和动漫插图，所以如果不顺利的时候请尝试这边。
 
 {% mediaFooter %}
-[](/workflows/basic-workflows/controlnet-prep/SDPose.json)
+[](/workflows/basic-workflows/controlnet-prep/sdpose.json)
 {% endmediaFooter %}
 
 {% endmediaRow %}

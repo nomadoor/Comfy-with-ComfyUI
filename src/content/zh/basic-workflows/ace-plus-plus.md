@@ -91,7 +91,7 @@ ACE++，一边看 **横向排列了“参照图像”和“想编辑的图像＋
 
 ![](https://gyazo.com/ebe23ac6ca509cf96538f2a85fcf69c3){gyazo=image}
 
-[](/workflows/basic-workflows/ace-plus-plus/ACE_Plus_portrait.json)
+[](/workflows/basic-workflows/ace-plus-plus/ace_plus_portrait.json)
 
 * 基础是使用 Flux.1 Fill 的 inpainting。
 * 🟪 读取 FLUX.1 Fill 和 `portrait` LoRA。
@@ -111,7 +111,7 @@ ACE++，一边看 **横向排列了“参照图像”和“想编辑的图像＋
 
 ![](https://gyazo.com/966d3c2bfcbaa5ae054fdd7ec4bb1c96){gyazo=image}
 
-[](/workflows/basic-workflows/ace-plus-plus/ACE_Plus_portrait_faceswap.json)
+[](/workflows/basic-workflows/ace-plus-plus/ace_plus_portrait_faceswap.json)
 
 * 🟩 在右侧，输入想替换脸的图像（基础图像）。
 * 🟩 如果只想变脸，只在脸的周边打掩膜。
@@ -126,7 +126,7 @@ ACE++，一边看 **横向排列了“参照图像”和“想编辑的图像＋
 
 ![](https://gyazo.com/3e84f30e31b23d804ff651a4d29667e9){gyazo=image}
 
-[](/workflows/basic-workflows/ace-plus-plus/ACE_Plus_subject.json)
+[](/workflows/basic-workflows/ace-plus-plus/ace_plus_subject.json)
 
 * 与刚才的 Face Swap 相同的工作流。
 * 🟪 将读取的 LoRA 变更为 `subject`。
@@ -144,7 +144,7 @@ ACE++，一边看 **横向排列了“参照图像”和“想编辑的图像＋
 
 ![](https://gyazo.com/e93a8e393eca60dbb1832fd314402dec){gyazo=image}
 
-[](/workflows/basic-workflows/ace-plus-plus/ACE_Plus_local.json)
+[](/workflows/basic-workflows/ace-plus-plus/ace_plus_local.json)
 
 * 不是横向排列，使用通常的 inpainting 的工作流。
 * 🟪 将读取的 LoRA 变更为 `local`。

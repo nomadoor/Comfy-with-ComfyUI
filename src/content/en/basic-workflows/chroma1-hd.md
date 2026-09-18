@@ -53,7 +53,7 @@ Unlike Flux.1, Chroma1-HD does not use CLIP, but uses only T5.
 
 ![](https://gyazo.com/319a7dc82aeea486d7f0912c830fb258){gyazo=image}
 
-[](/workflows/basic-workflows/chroma1-hd/Chroma1-HD.json)
+[](/workflows/basic-workflows/chroma1-hd/chroma1_hd.json)
 
 - The basic construction is almost the same as Flux.1.
 - 🟦 `T5TokenizerOptions` is a node that fills with padding when the number of tokens is less than the set value. There is no big difference whether you put it in or not.

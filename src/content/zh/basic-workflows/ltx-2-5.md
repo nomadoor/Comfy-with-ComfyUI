@@ -79,7 +79,7 @@ tags: []
 
 ![](https://gyazo.com/891b0474ea9ec2636b188b803f6ef2c3){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_text2video.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video.json)
 
 和 LTX-2 一样，这是一个 2 阶段工作流：先以目标分辨率的一半生成，再放大 2 倍。
 
@@ -109,7 +109,7 @@ tags: []
 
 ![](https://gyazo.com/7d681d86ce23e28e4e48aed1fe452c7d){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_text2video_multishot.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.json)
 
 不需要特别的写法，只要用自然语言写出“这里切换镜头……”之类的内容，模型就会识别。
 
@@ -139,7 +139,7 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
 
 ![](https://gyazo.com/ecf49f82e56e0fdec6283401d71ae657){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_text2video_Duration_Predictor.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor.json)
 
 {% mediaRow img="https://gyazo.com/4567c3906de961a9c90bc01cef27db5d", width=40, align="left" %}
 **LTXV Duration Predictor**
@@ -154,7 +154,7 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
 
 ![](https://gyazo.com/e978305c53f6c658984db4ad42c71a7f){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_image2video.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_image2video.json)
 
 用法和 [LTX 2 的 image2video](/zh/basic-workflows/ltx-2/#image2video) 相同。使用 `LTXVImgToVideoInplace` 将输入图像插入为第 1 帧。
 
@@ -174,7 +174,7 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
 
 ![](https://gyazo.com/a0e7571b01f97b79d73325390e0a4d3c){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_generative-interpolation.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation.json)
 
 {% mediaRow img="https://gyazo.com/2e39b3e006fcb35d96b87d649ded0146", width=40, align="left" %}
 **LTXV Add Guide**
@@ -222,7 +222,7 @@ LTX 2.5 与许多为 LTX 2.3 制作的 IC-LoRA 兼容，可以直接使用。
 
 ![](https://gyazo.com/4e194652b6db74b853390f20017bb542){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_IC-LoRA-Pose.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_pose.json)
 
 关于 IC-LoRA 的详细说明，请参阅 [LTX 2 / IC-LoRA (Pose)](/zh/basic-workflows/ltx-2/#ic-lora-pose)。
 
@@ -240,7 +240,7 @@ LTX 2.5 采用 2 阶段结构：先以一半分辨率生成，再将分辨率放
 
 ![](https://gyazo.com/7fa914cfea3fe3b4648960d1c3474258){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-5/LTX-2.5_x2_upscaler.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_x2_upscaler.json)
 
 这里只是对任意视频进行 VAE Encode，再接到前面一直使用的工作流第 2 阶段。
 

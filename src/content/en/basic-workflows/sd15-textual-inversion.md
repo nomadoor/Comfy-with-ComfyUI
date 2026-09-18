@@ -68,7 +68,7 @@ Let's use an embedding called `Porsche 911 Turbo`.
 
 ![](https://gyazo.com/4631607c66ac4a2f6edfb442a786b79e){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-textual-inversion/SD1.5_embedding.json)
+[](/workflows/basic-workflows/sd15-textual-inversion/sd1_5_embedding.json)
 
 - Call the embedding by writing something like `embedding:filename` in CLIP Text Encode.
   - e.g. `embedding:porsche911_ti`

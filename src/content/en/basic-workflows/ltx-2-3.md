@@ -97,7 +97,7 @@ It can also help to let an LLM assist with prompt writing. Give it the reference
 
 ![](https://gyazo.com/7477c07351d62edda93ae50270bbbaf5){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_text2video_distilled_3stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_text2video_distilled_3stage.json)
 
 {% mediaRow img="https://gyazo.com/6e9e9474d28ef76af5053fb0be5e6290 {gyazo=image}", width=40, align="left" %}
 
@@ -121,7 +121,7 @@ This is where you decide the parameters for the video and audio you want to gene
 
 ![](https://gyazo.com/0bb56ddc29aa5c644460f5eb6a2c7443){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_image2video_distilled_3stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_image2video_distilled_3stage.json)
 
 **Output example**
 
@@ -133,7 +133,7 @@ This is where you decide the parameters for the video and audio you want to gene
 
 ![](https://gyazo.com/0d62ef375ff30b08ea96c40b5105c94c){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_audio2video_distilled_3stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_audio2video_distilled_3stage.json)
 
 **Output example**
 
@@ -145,7 +145,7 @@ This is where you decide the parameters for the video and audio you want to gene
 
 ![](https://gyazo.com/443cbbeacab7a63e85641c0b209ab5da){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_audio-image2video_distilled_3stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_audio_image2video_distilled_3stage.json)
 
 **Output example**
 
@@ -159,7 +159,7 @@ It is also called FLF2V or FMLF2V, but in practice it means inserting images int
 
 ![](https://gyazo.com/f0cdfd8e0d5f0106e0d6fc98fdcb9aee){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_generative-Interpolation_distilled_1stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_generative_interpolation_distilled_1stage.json)
 
 It may look like an extension of `image2video`, but the mechanism is different.  
 In `image2video`, the first frame itself is replaced with the reference image, and the remaining frames are generated afterward.  
@@ -234,7 +234,7 @@ There are several variations, but here we only introduce two easy-to-understand 
 
 ![](https://gyazo.com/9432f1cad25a54328ed912bc85af4a2d){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_IC-LoRA(Pose)_distilled_2stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_ic_lora_pose_distilled_2stage.json)
 
 - 🚨For IC-LoRA, use a **2-stage workflow instead of 3-stage**
 - IC-LoRA Union uses a slightly unusual method where the control video is set to half the resolution of the generated video
@@ -250,7 +250,7 @@ There are several variations, but here we only introduce two easy-to-understand 
 
 ![](https://gyazo.com/b43880620c819f250e61f6df0e494a7c){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_IC-LoRA-Outpaint_distilled_1stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_ic_lora_outpaint_distilled_1stage.json)
 
 This workflow naturally fills the black areas of an input video.  
 To preserve the original video as much as possible, it uses a 1-stage workflow instead of a 3-stage workflow that gradually scales up from low resolution.
@@ -303,7 +303,7 @@ Because of that, the mouth movement and overall voice feel tend to come out more
 
 ![](https://gyazo.com/cd8a2899358fbac24b90eebe9b10a823){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_ID-LoRA_distilled_3stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_id_lora_distilled_3stage.json)
 
 The overall base is [image2video](#image2video).  
 On top of that, you add the ID-LoRA LoRA and the reference-audio condition.

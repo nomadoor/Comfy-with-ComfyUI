@@ -52,7 +52,7 @@ If you want to nest wildcards, bias word frequency, or load candidates from text
 
 ![](https://gyazo.com/851ccf19703e3b7b97f779e0cb6ae23f){gyazo=image}
 
-[](/workflows/data-utilities/wildcards/ImpactWildcardProcessor.json)
+[](/workflows/data-utilities/wildcards/impactwildcardprocessor.json)
 
 - Write your wildcard text in the upper field
 - The expanded result is shown in the lower field

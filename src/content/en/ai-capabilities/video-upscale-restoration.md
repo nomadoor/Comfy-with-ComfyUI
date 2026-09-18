@@ -49,7 +49,7 @@ It is extremely high performance enough to be used at the restoration level, but
 
 ![](https://gyazo.com/70f862355eef1106d51e8068ef48a006){gyazo=image}
 
-[](/workflows/ai-capabilities/video-upscale-restoration/FlashVSR.json)
+[](/workflows/ai-capabilities/video-upscale-restoration/flashvsr.json)
 
 It processes multiple frames together to suppress temporal blur and flickering.
 

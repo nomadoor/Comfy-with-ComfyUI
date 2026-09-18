@@ -48,7 +48,7 @@ tags: ["upscale-restoration", "controlnet"]
 
 ![](https://gyazo.com/6ff5e63c42367c9ef8ffd8e2a89a61c5){gyazo=image} ![](https://gyazo.com/daf241e640303e9bdbebdbdb06ae4afa){gyazo=image}
 
-[](/workflows/basic-workflows/ultimate-sd-upscale/Tiled_Diffusion_overlap0.json)
+[](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap0.json)
 
 * 🟨 将输入图像调整尺寸为 1024 × 1024 px
 * 🟩 将瓦片尺寸设定为 512 × 512 px
@@ -68,7 +68,7 @@ tags: ["upscale-restoration", "controlnet"]
 
 ![](https://gyazo.com/d6bf859530ae65b7b09ca8a2b2e3006b){gyazo=image} ![](https://gyazo.com/fec3f15e6e4ff7110d3f5ff110f0faa2){gyazo=image}
 
-[](/workflows/basic-workflows/ultimate-sd-upscale/Tiled_Diffusion_overlap256.json)
+[](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap256.json)
 
 - 🟩 将 `tile_overlap` 设为 256px
 - 不是漂亮地排列瓦片，而是 **故意重叠一半左右** 排列的印象。
@@ -124,7 +124,7 @@ ControlNet Tile 是 **相当强地保持输入图像的结构** 生成新图像�
 
 ![](https://gyazo.com/a0d8adb6b4cbd35562588238db87f71e){gyazo=image} ![](https://gyazo.com/1bf02bf5900f379735c6a29a7aa1935e){gyazo=image}
 
-[](/workflows/basic-workflows/ultimate-sd-upscale/TiledDiffusion_ControlNet_Tile.json)
+[](/workflows/basic-workflows/ultimate-sd-upscale/tileddiffusion_controlnet_tile.json)
 
 在这个工作流中，敢于设为 `tile_overlap = 0`、`denoise = 1` 这种，最容易出现 Tile 的弱点的设定。
 
@@ -138,7 +138,7 @@ ControlNet Tile 是 **相当强地保持输入图像的结构** 生成新图像�
 
 ![](https://gyazo.com/763660c52564a7af2f5dce9eaa81e20f){gyazo=image} ![](https://gyazo.com/3e4bf6018a4e4500f3bbd14151ce56e7){gyazo=image}
 
-[](/workflows/basic-workflows/ultimate-sd-upscale/Tiled_Diffusion_overlap_ContolNet_Tile.json)
+[](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap_contolnet_tile.json)
 
 - 🟩 overlap 256px
 - 🟦 Controlnet strength 0.6

@@ -30,7 +30,7 @@ hero:
 
 ![](https://gyazo.com/70bc945855f5eb1162bba1cbd2babb60){gyazo=image}
 
-[](/workflows/ai-capabilities/region-limited-generation/Flux.1_dev.json)
+[](/workflows/ai-capabilities/region-limited-generation/flux_1_dev.json)
 
 > “左边是香蕉，右边是苹果”
 
@@ -46,7 +46,7 @@ Stable Diffusion 的文本编码器几乎无法理解位置关系，但 Flux 以
 
 ![](https://gyazo.com/2c5b6e3fd8491c24da35f6c5d8d825c9){gyazo=image}
 
-[](/workflows/ai-capabilities/region-limited-generation/Flux.1_fill.json)
+[](/workflows/ai-capabilities/region-limited-generation/flux_1_fill.json)
 
 - 1. 生成作为基础的图像
 - 2. 对想要编辑的区域进行遮罩并 Inpainting
@@ -64,7 +64,7 @@ Stable Diffusion 的文本编码器几乎无法理解位置关系，但 Flux 以
 
 ![](https://gyazo.com/bca9aa6c5425ee4f7e4294d081d04e18){gyazo=image}
 
-[](/workflows/ai-capabilities/region-limited-generation/Conditioning_(Set_Mask).json)
+[](/workflows/ai-capabilities/region-limited-generation/conditioning_set_mask.json)
 
 理论虽然很漂亮，但实际上边界经常模糊，或者无法彻底切换，**实用性并不高**。
 
@@ -78,7 +78,7 @@ Stable Diffusion 的文本编码器几乎无法理解位置关系，但 Flux 以
 
 ![](https://gyazo.com/87c4aa926f36889c2987cf5fc827c4e9){gyazo=image}
 
-[](/workflows/ai-capabilities/region-limited-generation/Latent_Composite.json)
+[](/workflows/ai-capabilities/region-limited-generation/latent_composite.json)
 
 - 1. 首先生成多张图像（香蕉图像、苹果图像、背景图像等）
 - 2. 使用遮罩将各个 latent 贴合成 1 张 latent
@@ -109,7 +109,7 @@ Latent Couple 是对整个 UNet 进行计算，而这里只计算 Cross-Attentio
 
 ![](https://gyazo.com/efd7424ffea10f0eed2ef0f4b744636d){gyazo=image}
 
-[](/workflows/ai-capabilities/region-limited-generation/Attention_Couple.json)
+[](/workflows/ai-capabilities/region-limited-generation/attention_couple.json)
 
 ---
 

@@ -85,7 +85,7 @@ Wan2.1 VACE 用，使用与通常的 T2V 模型不同的 VACE 专用 diffusion m
 
 ![](https://gyazo.com/58c1530fbeeb7aa1004120b2db2ddff9){gyazo=loop}
 
-[](/workflows/basic-workflows/wan-2-1-vace/Wan2.1_VACE_control_pose.json)
+[](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_control_pose.json)
 
 {% mediaRow img="https://gyazo.com/6aca797b02070eb54bef2d7c9b2599ee {gyazo=image}", width=33, align="left" %}
 
@@ -123,7 +123,7 @@ Wan2.1 VACE 用，使用与通常的 T2V 模型不同的 VACE 专用 diffusion m
 
 ![](https://gyazo.com/b9a184b4ffcad5f4a16b056df24818ed){gyazo=loop}
 
-[](/workflows/basic-workflows/wan-2-1-vace/Wan2.1_VACE_reference.json)
+[](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_reference.json)
 
 {% mediaRow img="https://gyazo.com/235ae5ef44d4fb1518128c0ac099f601 {gyazo=image}", width=33, align="left" %}
 
@@ -153,7 +153,7 @@ Wan2.1 VACE 用，使用与通常的 T2V 模型不同的 VACE 专用 diffusion m
 
 ![](https://gyazo.com/b146e11b6fab1d3e23cdcc30f8fe73c9){gyazo=loop}
 
-[](/workflows/basic-workflows/wan-2-1-vace/Wan2.1_VACE_inpainting.json)
+[](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_inpainting.json)
 
 {% mediaRow img="https://gyazo.com/eb65c46a68797753df091e4d28456929 {gyazo=image}", width=33, align="left" %}
 
@@ -183,7 +183,7 @@ Wan2.1 VACE 用，使用与通常的 T2V 模型不同的 VACE 专用 diffusion m
 
 ![](https://gyazo.com/6bb7dd561151e0a93367fec89d90db26){gyazo=loop}
 
-[](/workflows/basic-workflows/wan-2-1-vace/Wan2.1_VACE_Extension.json)
+[](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_extension.json)
 
 - 在这个工作流中，以输入视频的最后 5 帧为基础，生成前面的 72 帧（81 - 5）。
 
@@ -227,7 +227,7 @@ Wan2.1 VACE 用，使用与通常的 T2V 模型不同的 VACE 专用 diffusion m
 
 ![](https://gyazo.com/14d264b55e73ace3c1e07aa9ecc24515){gyazo=loop}
 
-[](/workflows/basic-workflows/wan-2-1-vace/Wan2.1_VACE_Extension_loop.json)
+[](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_extension_loop.json)
 
 - 加上上面的 Extension，也取得 **最初的 5 帧**。
 - 将其输入到 `WanVideo VACE Start To End Frame` 的 `end_image`。

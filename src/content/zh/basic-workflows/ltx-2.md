@@ -91,8 +91,8 @@ tags: []
 ![](https://gyazo.com/d9fa680727fd75aca39c94a865682c5a){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_text2video_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_text2video.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_text2video_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_text2video.json"
 %}
 
 沿着上面说明的基本处理组建工作流。
@@ -184,8 +184,8 @@ tags: []
 ![](https://gyazo.com/e9e4851525adda6c3aab20a9acb09582){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_text2video_distilled_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_text2video_distilled.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_text2video_distilled_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_text2video_distilled.json"
 %}
 
 为了适用 `distilled-lora`，变更几个采样设定。
@@ -211,8 +211,8 @@ tags: []
 ![](https://gyazo.com/a16d62da150521a5b0c96dc32bbea33b){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_image2video_distilled_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_image2video_distilled.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_image2video_distilled_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_image2video_distilled.json"
 %}
 
 基本是“固定第 1 帧为输入图像，生成剩余”。
@@ -297,7 +297,7 @@ tags: []
 
 ![](https://gyazo.com/777521712af9329c1f8612710f00584a){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2/LTX-2_Extension_distilled.json)
+[](/workflows/basic-workflows/ltx-2/ltx_2_extension_distilled.json)
 
 取得输入的视频的末尾数帧，生成那个后续，做这样的事。
 
@@ -358,8 +358,8 @@ LTX-2 因为是同时处理“视频＋音频”的模型，所以也可以传�
 ![](https://gyazo.com/be5aaa842432ee760228eeed24a3636f){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_audio2video_distilled_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_audio2video_distilled.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_audio2video_distilled_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_audio2video_distilled.json"
 %}
 
 - 在 `Trim Audio Duration` 将音频裁剪为适当的长度
@@ -387,8 +387,8 @@ LTX-2 因为是同时处理“视频＋音频”的模型，所以也可以传�
 ![](https://gyazo.com/853b6d4b375b6ea1ef45f7697b71d369){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_audio-image2video_distilled_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_audio-image2video_distilled.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_audio_image2video_distilled_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_audio_image2video_distilled.json"
 %}
 
 - 只是组合了 audio2video / image2video 这 2 个工作流。
@@ -409,7 +409,7 @@ audio2video 的反面，输入视频，也可以生成 适合那个的声音（�
 
 ![](https://gyazo.com/62df52a54b4bfcf67f53429d6343d666){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2/LTX-2_video2audio_distilled.json)
+[](/workflows/basic-workflows/ltx-2/ltx_2_video2audio_distilled.json)
 
 
 **输出例**
@@ -426,7 +426,7 @@ audio2video 的反面，输入视频，也可以生成 适合那个的声音（�
 
 ![](https://gyazo.com/4f55cbb7932cdefc0d879c2c432ed224){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2/LTX-2_temporal-inpainting_distilled.json)
+[](/workflows/basic-workflows/ltx-2/ltx_2_temporal_inpainting_distilled.json)
 
 基本是 video2video。  
 将视频中“想重新制作的时间范围”掩膜，让其只再生成那个区间。
@@ -509,8 +509,8 @@ IC-LoRA 从姿势和深度图、边缘等的 引导信号制作视频。
 ![](https://gyazo.com/d520faa02e72245494eedeea79ebef20){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Pose)_distilled_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Pose)_distilled.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_distilled_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_distilled.json"
 %}
 
 {% mediaRow img="https://gyazo.com/5efc334e9408a80a1328d0dceeadb892 {gyazo=image}", width=40, align="left" %}
@@ -589,8 +589,8 @@ IC-LoRA 从姿势和深度图、边缘等的 引导信号制作视频。
 ![](https://gyazo.com/a65682de39d9ea5c9fe6003cdf27e892){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Pose)_image2video_distilled_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Pose)_image2video_distilled.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_image2video_distilled_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_image2video_distilled.json"
 %}
 
 
@@ -621,8 +621,8 @@ IC-LoRA (Detailer) 修复低分辨率的视频的细节和质感。
 ![](https://gyazo.com/a366728b300f253233432d1c12239f8d){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Detailer)_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Detailer).json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_detailer_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_detailer.json"
 %}
 
 基本是适用了 IC-LoRA(Detailer) 的 video2video。

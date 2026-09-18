@@ -50,7 +50,7 @@ hero:
 
 ![](https://gyazo.com/4d84f2e35f1c7fe99a322d8ee3eaec43){gyazo=image}
 
-[](/workflows/ai-capabilities/instruction-based-image-editing/ACE_Plus_portrait_face-swap.json)
+[](/workflows/ai-capabilities/instruction-based-image-editing/ace_plus_portrait_face_swap.json)
 
 - 画像キャンバスの左側に「参照画像」を置く
 - 右側をマスクして生成させる
@@ -64,7 +64,7 @@ hero:
 
 ![](https://gyazo.com/5a7d5ddf5327f52ccc01acb5aae79a4a){gyazo=image}
 
-[](/workflows/ai-capabilities/instruction-based-image-editing/Flux.1_Kontext.json)
+[](/workflows/ai-capabilities/instruction-based-image-editing/flux_1_kontext.json)
 
 共通しているのは、入力画像の内容を理解し、テキスト指示に応じて「どこをどの程度変えるか」を調整する、といった編集タスクを、ひとつのモデルで（そこそこ）汎用に扱おうとしている点です。
 
@@ -76,7 +76,7 @@ hero:
 
 ![](https://gyazo.com/16e9c96c73b02e72fd416d489b44de13){gyazo=image}
 
-[](/workflows/ai-capabilities/instruction-based-image-editing/Qwen-Image-Edit-2509_object-swap.json)
+[](/workflows/ai-capabilities/instruction-based-image-editing/qwen_image_edit_2509_object_swap.json)
 
 - 画像 A：人物（Subject）
 - 画像 B：服（着せ替え用）

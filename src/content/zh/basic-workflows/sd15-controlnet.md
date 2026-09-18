@@ -46,7 +46,7 @@ scribble 模型，是基于“粗略的涂鸦”生成图像的 ControlNet。
 
 ![](https://gyazo.com/885feaa8a1857c09ce11977ad9d424c2){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-controlnet/SD1.5_ControlNet_scribble.json)
+[](/workflows/basic-workflows/sd15-controlnet/sd1_5_controlnet_scribble.json)
 
 - 🟩 向 `Apply ControlNet` 节点输入 ControlNet 模型和 scribble 图像。
 - 🟨 ControlNet 图像和生成的图像尺寸如果不相同也不会报错，但最好设为相同尺寸。

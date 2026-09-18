@@ -45,7 +45,7 @@ There are two main control methods.
 
 ![](https://gyazo.com/f3793dcde8d6e286a67c3dd41b732da5){gyazo=loop}
 
-[](/workflows/basic-workflows/liveportrait/LivePortrait_i2i.json)
+[](/workflows/basic-workflows/liveportrait/liveportrait_i2i.json)
 
 - There are various parameters, but it's quickest to try touching them.
 - As shown in this video, it is convenient to use `▷ Run (On Change)`.
@@ -54,7 +54,7 @@ There are two main control methods.
 
 ![](https://gyazo.com/0df8e012722c39159be1762a9a38ea99){gyazo=image}
 
-[](/workflows/basic-workflows/liveportrait/LivePortrait_i2i_ref.json)
+[](/workflows/basic-workflows/liveportrait/liveportrait_i2i_ref.json)
 
 - Just add `sample_image` to the previous workflow.
 - From `sample_parts`, you can choose which parts to follow the reference image.
@@ -78,7 +78,7 @@ You can create a video by making multiple expressions with the `Expression Edito
 
 ![](https://gyazo.com/adf677e141945fd7d957acb2e26c02ec){gyazo=loop}
 
-[](/workflows/basic-workflows/liveportrait/LivePortrait_i2v_motion_link.json)
+[](/workflows/basic-workflows/liveportrait/liveportrait_i2v_motion_link.json)
 
 - 🟨 `Advanced Live Portrait (PHM)` node
   - Set `animate_without_vid` to `true`
@@ -117,7 +117,7 @@ Although we did something a bit tricky above, I think this usage will actually b
 
 ![](https://gyazo.com/c893e38c12859f8f20ff1e0fca545788){gyazo=image}
 
-[](/workflows/basic-workflows/liveportrait/LivePortrait_i2v_ref.json)
+[](/workflows/basic-workflows/liveportrait/liveportrait_i2v_ref.json)
 
 * 🟨 Just input the reference video into `driving_images`.
 
@@ -132,7 +132,7 @@ Matches the expression of the person in the video to the reference video.
 
 ![](https://gyazo.com/1a0205956e78b32045372f207582566d){gyazo=loop}
 
-[](/workflows/basic-workflows/liveportrait/LivePortrait_v2v_ref.json)
+[](/workflows/basic-workflows/liveportrait/liveportrait_v2v_ref.json)
 
 - 🟨 Just set both `src_images` and `driving_images` to video.
 - You can replace only the person's expression and lip sync while keeping the camera work and background of the base video as is.

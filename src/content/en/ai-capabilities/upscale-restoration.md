@@ -33,7 +33,7 @@ This lineage has existed since before Stable Diffusion and is still used as a li
 
 ![](https://gyazo.com/072c6cd7f09d777141293f6cf619ad83){gyazo=image}
 
-[](/workflows/ai-capabilities/upscale-restoration/ESRGAN.json)
+[](/workflows/ai-capabilities/upscale-restoration/esrgan.json)
 
 - ESRGAN
 - Real-ESRGAN
@@ -78,7 +78,7 @@ Even without preparing specialized models individually, if you instruct "clean u
 
 ![](https://gyazo.com/70baa67331207740cbab838d153c990d){gyazo=image}
 
-[](/workflows/ai-capabilities/upscale-restoration/Qwen-Image-Edit-2509.json)
+[](/workflows/ai-capabilities/upscale-restoration/qwen_image_edit_2509.json)
 
 Details are covered on the "[Instruction-Based Image Editing](/en/ai-capabilities/instruction-based-image-editing/)" page.
 

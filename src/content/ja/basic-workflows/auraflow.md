@@ -43,7 +43,7 @@ SDXLから移行しようという動きもいくつかあり、その代表例�
 
 ![](https://gyazo.com/b19fda7dcd1fd17b91e2f0eea9d70c8c){gyazo=image}
 
-[](/workflows/basic-workflows/auraflow/aura_flow_0.3.json)
+[](/workflows/basic-workflows/auraflow/aura_flow_0_3.json)
 
 ---
 
@@ -75,7 +75,7 @@ SDXLから移行しようという動きもいくつかあり、その代表例�
 
 ![](https://gyazo.com/65638b2cf68cfc2a4ed7ff762653c0bc){gyazo=image}
 
-[](/workflows/basic-workflows/auraflow/pony-v7-base.json)
+[](/workflows/basic-workflows/auraflow/pony_v7_base.json)
 
 - 🟦 `T5TokenizerOptions`  
   - トークン数が設定値以下だった場合に padding で埋めるノードです。入れても入れなくても大きな差はありません。

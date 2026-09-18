@@ -47,7 +47,7 @@ Here we will explain using the Tiled Diffusion node as an example, but the node 
 
 ![](https://gyazo.com/6ff5e63c42367c9ef8ffd8e2a89a61c5){gyazo=image} ![](https://gyazo.com/daf241e640303e9bdbebdbdb06ae4afa){gyazo=image}
 
-[](/workflows/basic-workflows/ultimate-sd-upscale/Tiled_Diffusion_overlap0.json)
+[](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap0.json)
 
 * 🟨 Resize input image to 1024 × 1024 px
 * 🟩 Set tile size to 512 × 512 px
@@ -66,7 +66,7 @@ This is `tile_overlap`.
 
 ![](https://gyazo.com/d6bf859530ae65b7b09ca8a2b2e3006b){gyazo=image} ![](https://gyazo.com/fec3f15e6e4ff7110d3f5ff110f0faa2){gyazo=image}
 
-[](/workflows/basic-workflows/ultimate-sd-upscale/Tiled_Diffusion_overlap256.json)
+[](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap256.json)
 
 - 🟩 Set `tile_overlap` to 256px
 - Instead of lining up tiles neatly, imagine arranging them **intentionally overlapping by about half**.
@@ -119,7 +119,7 @@ It does not copy pixels as they are, but behaves like repainting textures and de
 
 ![](https://gyazo.com/a0d8adb6b4cbd35562588238db87f71e){gyazo=image} ![](https://gyazo.com/1bf02bf5900f379735c6a29a7aa1935e){gyazo=image}
 
-[](/workflows/basic-workflows/ultimate-sd-upscale/TiledDiffusion_ControlNet_Tile.json)
+[](/workflows/basic-workflows/ultimate-sd-upscale/tileddiffusion_controlnet_tile.json)
 
 In this workflow, we dare to set `tile_overlap = 0`, `denoise = 1`, which makes the weakness of Tile most visible.
 
@@ -133,7 +133,7 @@ Combining the elements so far, practical Tile upscale form comes into view.
 
 ![](https://gyazo.com/763660c52564a7af2f5dce9eaa81e20f){gyazo=image} ![](https://gyazo.com/3e4bf6018a4e4500f3bbd14151ce56e7){gyazo=image}
 
-[](/workflows/basic-workflows/ultimate-sd-upscale/Tiled_Diffusion_overlap_ContolNet_Tile.json)
+[](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap_contolnet_tile.json)
 
 - 🟩 overlap 256px
 - 🟦 Controlnet strength 0.6

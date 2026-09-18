@@ -30,7 +30,7 @@ Danbooru 風のタグやジャンルラベルを自動で付けるものです�
 
 - **WD14-tagger / WD-tagger-v3 系**
   - ![](https://gyazo.com/a97fe3f3a2e72a2396df6ebc8c005b72){gyazo=image}
-  - [](/workflows/ai-capabilities/tag-caption-generation/WD-tagger-v3.json)
+  - [](/workflows/ai-capabilities/tag-caption-generation/wd_tagger_v3.json)
   - イラスト・アニメ画像向けのタグ付けモデルです。
   - キャラ・髪色・服装・表情・構図など、かなり細かいタグまで付けてくれます。
 

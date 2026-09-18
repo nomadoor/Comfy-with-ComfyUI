@@ -42,7 +42,7 @@ BiRefNet 是用于背景去除和抠图的模型。
 
 ![](https://gyazo.com/57972a01d12b0d8e88ef705c18344651){gyazo=image}
 
-[](/workflows/data-utilities/birefnet/BiRefNet.json)
+[](/workflows/data-utilities/birefnet/birefnet.json)
 
 - 使用 `Load Background Removal Model` 读取 `birefnet.safetensors`。
 - 将图像和模型输入 `Remove Background` 后，会输出用于背景去除的 `MASK`。
@@ -55,7 +55,7 @@ BiRefNet 是用于背景去除和抠图的模型。
 
 ![](https://gyazo.com/5d22ae3e905a8ccd3c1b8c63f615bb4e){gyazo=image}
 
-[](/workflows/data-utilities/birefnet/BiRefNet_fill.json)
+[](/workflows/data-utilities/birefnet/birefnet_fill.json)
 
 - 将原图、反转后的蒙版、单色图像输入 `Image Composite Masked`。
 - 只把被蒙版选中的背景部分替换为单色图像。

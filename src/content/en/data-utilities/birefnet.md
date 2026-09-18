@@ -42,7 +42,7 @@ It is not like SAM, where you specify "this point", "this box", or "this object"
 
 ![](https://gyazo.com/57972a01d12b0d8e88ef705c18344651){gyazo=image}
 
-[](/workflows/data-utilities/birefnet/BiRefNet.json)
+[](/workflows/data-utilities/birefnet/birefnet.json)
 
 - Use `Load Background Removal Model` to load `birefnet.safetensors`.
 - Input the image and model into `Remove Background` to output a background-removal `MASK`.
@@ -55,7 +55,7 @@ The workflow above makes the background transparent, but for preprocessing in im
 
 ![](https://gyazo.com/5d22ae3e905a8ccd3c1b8c63f615bb4e){gyazo=image}
 
-[](/workflows/data-utilities/birefnet/BiRefNet_fill.json)
+[](/workflows/data-utilities/birefnet/birefnet_fill.json)
 
 - Input the original image, inverted mask, and solid-color image into `Image Composite Masked`.
 - Only the masked background area is replaced with the solid-color image.

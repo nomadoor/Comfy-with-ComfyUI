@@ -46,7 +46,7 @@ This time, as an example, let's use a LoRA that makes it look like pixel art.
 
 ![](https://gyazo.com/6f275d3cbc6c8487bf1645af06763aea){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-lora/SD1.5_lora.json)
+[](/workflows/basic-workflows/sd15-lora/sd1_5_lora.json)
 
 - 🟩 Add a `Load LoRA (Model and CLIP)` node.
   - Connect it so that it is sandwiched between `Load Checkpoint` and `CLIP Text Encode` / `KSampler`.
@@ -75,4 +75,4 @@ A LoRA trained only on the diffusion model contains nothing to apply to the text
 
 ![](https://gyazo.com/975300eed9cca90f7086dda53c1ca413){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-lora/Flux.1_lora.json)
+[](/workflows/basic-workflows/sd15-lora/flux_1_lora.json)

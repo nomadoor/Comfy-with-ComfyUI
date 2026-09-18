@@ -64,7 +64,7 @@ ComfyUI 的に重要なのは、**テキストで物体を指定できるタイ�
 
 ![](https://gyazo.com/9efa0561eb445e5b300aaf3abb76f526){gyazo=image}
 
-[](/workflows/ai-capabilities/object-detection/Florence-2.json)
+[](/workflows/ai-capabilities/object-detection/florence_2.json)
 
 * 画像を見てキャプション生成・物体検出・セグメンテーションなど、1 つのモデルで何役もこなす汎用的な VLM です。
 * LLM に近い構造を持つため、Grounding DINO よりも複雑な文章で指示できるのが強みです。

@@ -35,7 +35,7 @@ outpainting 是一种 **向图像“外侧”继续扩画** 的方法。
 
 ![](https://gyazo.com/dc8564ec48c6ac898fa9f4f080e9bcfd){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-outpainting/SD1.5_outpainting_sd-v1-5-inpainting.json)
+[](/workflows/basic-workflows/sd15-outpainting/sd1_5_outpainting_sd_v1_5_inpainting.json)
 
 - 🟦 使用 `Pad Image for Outpainting` 节点，在图像外侧添加空白。
   - 它会输出添加空白后的图像，以及标出空白区域的掩膜。
@@ -51,7 +51,7 @@ outpainting 是一种 **向图像“外侧”继续扩画** 的方法。
 
 ![](https://gyazo.com/df7f466617d6c2bd773bedf0eeb03bb5){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-outpainting/SD1.5_outpainting_ControlNet_inpaint.json)
+[](/workflows/basic-workflows/sd15-outpainting/sd1_5_outpainting_controlnet_inpaint.json)
 
 - 🟦 使用 `Pad Image for Outpainting` 节点，在图像外侧添加空白。
   - 它会输出添加空白后的图像，以及标出空白区域的掩膜。
@@ -71,6 +71,6 @@ outpainting 是一种 **向图像“外侧”继续扩画** 的方法。
 
 ![](https://gyazo.com/15ea40eaf859773d5a1543e1aba4df0b){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-outpainting/Flux.2-klein-9b_image-edit_outpainting.json)
+[](/workflows/basic-workflows/sd15-outpainting/flux_2_klein_9b_image_edit_outpainting.json)
 
 - 🟩 不使用掩膜。只需把添加了空白的图像交给模型，并告诉它填补那片区域。

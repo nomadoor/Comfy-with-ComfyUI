@@ -46,7 +46,7 @@ ReActor（正确地说是那个核心 **InsightFace** ），可以只以 1 张�
 
 ![](https://gyazo.com/bc67dfff78c431c688d8ec1a4937969e){gyazo=image}
 
-[](/workflows/basic-workflows/reactor/ReActor_Fast_Face_Swap.json)
+[](/workflows/basic-workflows/reactor/reactor_fast_face_swap.json)
 
 - `input_image`  
   - 连接想替换脸的元图像。
@@ -90,7 +90,7 @@ ReActor（正确地说是那个核心 **InsightFace** ），可以只以 1 张�
 
 ![](https://gyazo.com/bab77e7c89d65dff9a4ebedb17a46375){gyazo=image}
 
-[](/workflows/basic-workflows/reactor/ReActor_hyperswap.json)
+[](/workflows/basic-workflows/reactor/reactor_hyperswap.json)
 
 - 将 ReActor 节点的 `swap_model`，变更为 `hyperswap_1a_256`。
 

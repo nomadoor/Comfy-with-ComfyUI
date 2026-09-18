@@ -70,7 +70,7 @@ Stable Diffusion / SDXL 世代的模型无法很好地理解自然语言，基�
 
 ![](https://gyazo.com/94496f33d758475aa62f614978ea2252){gyazo=image}
 
-[](/workflows/ai-capabilities/prompt-generation/Z-Image_Gemini-3.json)
+[](/workflows/ai-capabilities/prompt-generation/z_image_gemini_3.json)
 
 我自己也是一个想要坚持使用本地模型的人，但老实说，相比于运行图像生成模型，在本地常用具有一定质量的 LLM，对 PC 规格的要求往往更严苛。
 

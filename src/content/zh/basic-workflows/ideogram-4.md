@@ -134,7 +134,7 @@ ComfyUI 内部会处理显存，所以 VRAM 不够也不一定完全不能生成
 
 ![](https://gyazo.com/c9a2cf1717e87cd1ba28c5d236a02b4d){gyazo=image}
 
-[](/workflows/basic-workflows/ideogram-4/Ideogram_4.0_text2image.json)
+[](/workflows/basic-workflows/ideogram-4/ideogram_4_0_text2image.json)
 
 除了提示词以外，它和普通 workflow 相比还有几个稍微特殊的地方，所以这里只看这些部分。
 
@@ -171,7 +171,7 @@ Ideogram 4.0 为了稍微特殊的 CFG，会读取两个 diffusion model。
 
 ![](https://gyazo.com/f75015885dc02060128725d779ce7d49){gyazo=image}
 
-[](/workflows/basic-workflows/ideogram-4/Ideogram_4.0_text2image_turbotime.json)
+[](/workflows/basic-workflows/ideogram-4/ideogram_4_0_text2image_turbotime.json)
 
 - 由于使用 CFG 1.0 生成，因此不需要 unconditional model。
 - 虽然它标注为 2〜8 step 用 LoRA，但 step 数太少时，图像会明显开始崩。

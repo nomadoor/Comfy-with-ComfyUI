@@ -96,6 +96,6 @@ If you have copied text data in JSON format, you can load it just by pasting (`C
 Workflows published on this site have a copy button and a download button.
 Click the copy button and simply `Ctrl + V` on the canvas to load the workflow, so please make use of it.
 
-[](/workflows/begin-with/saving-and-loading-workflows/Stable_Diffusion_1.5.json)
+[](/workflows/begin-with/saving-and-loading-workflows/stable_diffusion_1_5.json)
 
 ![](https://gyazo.com/13c0019ad1e471bcf89cdb4b17bc7d9c){gyazo=loop}

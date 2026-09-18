@@ -103,7 +103,7 @@ This is a bit more irregular for ComfyUI, so in many cases plain image2image may
 
 ![](https://gyazo.com/eee2f089f7ecf7f9b6541cf2f570266a){gyazo=image}
 
-[](/workflows/notes/seed-neighbor/Latent_Blend.json)
+[](/workflows/notes/seed-neighbor/latent_blend.json)
 
 - 🟩 With `Generate Noise` + `KSampler (Advanced)` (`add_noise=disable`), you can create noise outside the sampler.
 - 🟪 This `Generate Noise` node creates the second noise (latent) to blend in.
@@ -114,7 +114,7 @@ This is a bit more irregular for ComfyUI, so in many cases plain image2image may
 
 ![](https://gyazo.com/a5162437aa43b07806a802d301a5df9d){gyazo=image}
 
-[](/workflows/notes/seed-neighbor/Inject_Noise_To_Latent.json)
+[](/workflows/notes/seed-neighbor/inject_noise_to_latent.json)
 
 - 🟨 Increase `strength` in `Inject Noise To Latent` gradually to add a second noise into the base latent.
   - Raising `mix_randn_amount` adds yet another random component, but here it is kept at `0`.

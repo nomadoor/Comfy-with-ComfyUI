@@ -97,7 +97,7 @@ LLM に手伝ってもらうのも有効です。参考リンクと作りたい�
 
 ![](https://gyazo.com/7477c07351d62edda93ae50270bbbaf5){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_text2video_distilled_3stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_text2video_distilled_3stage.json)
 
 
 {% mediaRow img="https://gyazo.com/6e9e9474d28ef76af5053fb0be5e6290 {gyazo=image}", width=40, align="left" %}
@@ -122,7 +122,7 @@ LLM に手伝ってもらうのも有効です。参考リンクと作りたい�
 
 ![](https://gyazo.com/0bb56ddc29aa5c644460f5eb6a2c7443){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_image2video_distilled_3stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_image2video_distilled_3stage.json)
 
 **出力例**
 
@@ -134,7 +134,7 @@ LLM に手伝ってもらうのも有効です。参考リンクと作りたい�
 
 ![](https://gyazo.com/0d62ef375ff30b08ea96c40b5105c94c){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_audio2video_distilled_3stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_audio2video_distilled_3stage.json)
 
 **出力例**
 
@@ -146,7 +146,7 @@ LLM に手伝ってもらうのも有効です。参考リンクと作りたい�
 
 ![](https://gyazo.com/443cbbeacab7a63e85641c0b209ab5da){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_audio-image2video_distilled_3stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_audio_image2video_distilled_3stage.json)
 
 **出力例**
 
@@ -160,7 +160,7 @@ FLF2V や FMLF2V とも呼ばれますが、途中のフレームに画像を差
 
 ![](https://gyazo.com/f0cdfd8e0d5f0106e0d6fc98fdcb9aee){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_generative-Interpolation_distilled_1stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_generative_interpolation_distilled_1stage.json)
 
 `image2video` の延長にも見えますが、仕組みとしては別物です。  
 `image2video` は最初の 1 枚を参照画像に差し替え、残りのフレームを生成します。  
@@ -235,7 +235,7 @@ LTX-2 のガイド機構では、そのまま出力すると生成した動画�
 
 ![](https://gyazo.com/9432f1cad25a54328ed912bc85af4a2d){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_IC-LoRA(Pose)_distilled_2stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_ic_lora_pose_distilled_2stage.json)
 
 - 🚨IC-LoRA のときは **3 stage ではなく 2 stage** の workflow を使います
 - IC-LoRA Union では、制御動画に「生成動画の半分の解像度」を使う、という少し特殊な方法を使います
@@ -252,7 +252,7 @@ LTX-2 のガイド機構では、そのまま出力すると生成した動画�
 
 ![](https://gyazo.com/b43880620c819f250e61f6df0e494a7c){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_IC-LoRA-Outpaint_distilled_1stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_ic_lora_outpaint_distilled_1stage.json)
 
 入力動画の黒い部分を自然に埋める workflow です。  
 元の動画をなるべく崩したくないため、低解像度から順に拡大していく 3stage ではなく、1stage にしています。
@@ -306,7 +306,7 @@ LTX-2 のガイド機構では、そのまま出力すると生成した動画�
 
 ![](https://gyazo.com/cd8a2899358fbac24b90eebe9b10a823){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2-3/LTX-2.3_ID-LoRA_distilled_3stage.json)
+[](/workflows/basic-workflows/ltx-2-3/ltx_2_3_id_lora_distilled_3stage.json)
 
 
 全体のベースは [image2video](#image2video) です。  

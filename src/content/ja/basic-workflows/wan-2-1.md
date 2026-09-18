@@ -84,7 +84,7 @@ Wan2.1 の基本となる text2video の workflow です。
 
 ![](https://gyazo.com/58d4a88ecb1e1e2887c830c371236b40){gyazo=loop}
 
-[](/workflows/basic-workflows/wan-2-1/Wan2.1_text2video_14B.json)
+[](/workflows/basic-workflows/wan-2-1/wan2_1_text2video_14b.json)
 
 - 🟦 `ModelSamplingSD3` ノードの `Shift` は、動きの大きさに効くパラメータです。
 
@@ -99,7 +99,7 @@ Wan2.1 の基本となる text2video の workflow です。
 
 ![](https://gyazo.com/02c625103e8076b8a1f14046839e1ff9){gyazo=loop}
 
-[](/workflows/basic-workflows/wan-2-1/Wan2.1_text2video_14B_imp.json)
+[](/workflows/basic-workflows/wan-2-1/wan2_1_text2video_14b_imp.json)
 
 - 🟦 **UNetTemporalAttentionMultiply**
 
@@ -116,7 +116,7 @@ Wan2.1 の基本となる text2video の workflow です。
 
 ![](https://gyazo.com/2cbaf276cd5e4f6751826c34efb6c743){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-1/Wan2.1_image2video_14B.json)
+[](/workflows/basic-workflows/wan-2-1/wan2_1_image2video_14b.json)
 
 - 🟩 適度にリサイズした画像を `CLIP Vision Encode` と `WanImageToVideo` の両方に入力します。
 
@@ -128,7 +128,7 @@ Wan2.1 の基本となる text2video の workflow です。
 
 ![](https://gyazo.com/44220286b8ce6e0e70db622132527c02){gyazo=loop}
 
-[](/workflows/basic-workflows/wan-2-1/Wan2.1_FLF2V_14B.json)
+[](/workflows/basic-workflows/wan-2-1/wan2_1_flf2v_14b.json)
 
 - 🟩 2 枚の画像をバッチにして `WanFirstLastFrameToVideo` ノードに入力します。
 
@@ -157,7 +157,7 @@ Wan2.1 の基本となる text2video の workflow です。
 
 ![](https://gyazo.com/6e4854ea69598ba4b9c3d8bc259f4b57){gyazo=loop}
 
-[](/workflows/basic-workflows/wan-2-1/Wan2.1_text2video_14B_Self-Forcing.json)
+[](/workflows/basic-workflows/wan-2-1/wan2_1_text2video_14b_self_forcing.json)
 
 - `LoraLoaderModelOnly` ノードで LoRA を読み込みます。
 - `KSampler` の `steps` を 4 ～ 8、`CFG` を 1.0 に設定します。
@@ -173,4 +173,4 @@ text2video の workflow で、**1 フレームで動画生成**するだけで�
 
 ![](https://gyazo.com/edf26ea1ef891b721579af1dc5aa6bd1){gyazo=image}
 
-[](/workflows/basic-workflows/wan-2-1/Wan2.1_text2image_14B.json)
+[](/workflows/basic-workflows/wan-2-1/wan2_1_text2image_14b.json)

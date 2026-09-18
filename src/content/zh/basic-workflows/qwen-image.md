@@ -72,7 +72,7 @@ Qwen-Image 推荐 1.5M〜1.8M 像素前后。
 
 ![](https://gyazo.com/c06f913435b344d929cb0ec8e94d20c3){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image/Qwen-Image.json)
+[](/workflows/basic-workflows/qwen-image/qwen_image.json)
 
 * 采样器经常被使用 `euler` 或 `res_multistep`。
 
@@ -101,11 +101,11 @@ Qwen-Image 面向的 ControlNet 模型有几个，因为方便使用，介绍作
 
 ![](https://gyazo.com/dd47c0c42514446cddc587561e073e0d){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image/Qwen-Image-InstantX-ControlNet-Union.json)
+[](/workflows/basic-workflows/qwen-image/qwen_image_instantx_controlnet_union.json)
 
 ![](https://gyazo.com/26cde876245eaa2fb914859216fc66a4){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image/Qwen-Image-InstantX-ControlNet-Inpainting.json)
+[](/workflows/basic-workflows/qwen-image/qwen_image_instantx_controlnet_inpainting.json)
 
 ---
 
@@ -134,7 +134,7 @@ Qwen-Image 面向的 ControlNet 模型有几个，因为方便使用，介绍作
 
 ![](https://gyazo.com/08f16f6f84c2d76a7ad1d50c617d32ef){gyazo=image}
 
-[](/workflows/basic-workflows/qwen-image/Qwen-Image_lightning_8steps.json)
+[](/workflows/basic-workflows/qwen-image/qwen_image_lightning_8steps.json)
 
 * 用 `LoraLoaderModelOnly` 节点读取 Lightning LoRA。
 * 将 `KSampler` 的 `steps` 设定为 4 或 8，`CFG` 设定为 1.0。

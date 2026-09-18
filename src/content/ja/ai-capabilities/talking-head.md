@@ -37,7 +37,7 @@ talking headの名の通り、顔を動かすことからスタートしまし�
 
 ![](https://gyazo.com/c893e38c12859f8f20ff1e0fca545788){gyazo=image}
 
-[](/workflows/basic-workflows/liveportrait/LivePortrait_i2v_ref.json)
+[](/workflows/basic-workflows/liveportrait/liveportrait_i2v_ref.json)
 
 こちらも1枚絵と参照動画を入力にしますが、顔のパーツごとの動きや視線、感情のニュアンスなどを安定して再現できるよう工夫されています。
 
@@ -51,7 +51,7 @@ talking headの名の通り、顔を動かすことからスタートしまし�
 
 ![](https://gyazo.com/c70468086a939dce538a876073c9c523){gyazo=loop}
 
-[](/workflows/ai-capabilities/talking-head/HelloMeme_video.json)
+[](/workflows/ai-capabilities/talking-head/hellomeme_video.json)
 
 これらは、参照動画から「頭の向き」や「表情の変化」に相当する信号を取り出し、それを条件として拡散モデルに渡します。やっていることは、ControlNetでポーズや構図を固定しながら画像生成するのに近く、「このキャラの顔を、この動きで描き直してほしい」と指定しているようなものです。
 

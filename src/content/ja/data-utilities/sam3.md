@@ -44,7 +44,7 @@ SAM 3 では、VLM のようにテキストで対象を指定し、単独でセ�
 
 ![](https://gyazo.com/cd6078ed81d850085144836e404754d5){gyazo=image}
 
-[](/workflows/data-utilities/sam3/SAM3.1.json)
+[](/workflows/data-utilities/sam3/sam3_1.json)
 
 - `SAM3 Detect` ノードに、画像・マスク、切り抜く対象の情報（テキストプロンプト、BBOX、座標）を入力します。
 - 少しややこしい仕様ですが、そのプロンプトに対応する対象が複数あった場合、単に `car` のように書くだけでは、そのうちの一番それらしいものしか検出しません。
@@ -55,7 +55,7 @@ SAM 3 では、VLM のようにテキストで対象を指定し、単独でセ�
 
 ![](https://gyazo.com/96c353a26df8cf274d9b68a95453ba7b){gyazo=loop}
 
-[](/workflows/data-utilities/sam3/SAM3.1_video.json)
+[](/workflows/data-utilities/sam3/sam3_1_video.json)
 
 - `SAM3 Video Track` ノードを使用します。
 - 出力を `SAM3 Track to Mask` ノードに渡すことで、マスクとして使用できます。

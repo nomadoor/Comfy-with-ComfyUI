@@ -67,7 +67,7 @@ Here, we use the fp8 version of `dev` / `schnell`.
 
 ![](https://gyazo.com/2b89975e1b96fcbbd56880d31a0cd9c4){gyazo=image}
 
-[](/workflows/basic-workflows/flux1/flux1-dev.json)
+[](/workflows/basic-workflows/flux1/flux1_dev.json)
 
 Flux.1 dev / schnell are **models distilled with CFG fixed at 1.0**.
 Therefore, adjustment of `CFG scale` and Negative Prompt like in traditional Stable Diffusion is not assumed, and **Negative Prompt has no effect at all**.
@@ -86,7 +86,7 @@ This is a further distilled version of Flux.1 [dev], capable of generating image
 
 ![](https://gyazo.com/365108a45e0039af1ce0d35cf2cdcfa6){gyazo=image}
 
-[](/workflows/basic-workflows/flux1/flux1-schnell.json)
+[](/workflows/basic-workflows/flux1/flux1_schnell.json)
 - Set `steps` to 4-6.
 
 ---
@@ -99,7 +99,7 @@ Let's use LoRA to improve the quality of portrait images.
 
 ![](https://gyazo.com/292030d5a8ffc53619232546c7ce750b){gyazo=image}
 
-[](/workflows/basic-workflows/flux1/flux1-dev_lora.json)
+[](/workflows/basic-workflows/flux1/flux1_dev_lora.json)
 
 * 🟪 As written in [LoRA](/en/basic-workflows/sd15-lora/), since Flux and later models no longer train the text encoder, use the `LoraLoaderModelOnly` node which **applies only to weights**, instead of the `Load LoRA` node.
 
@@ -128,7 +128,7 @@ ControlNet-Union incorporates multiple typical ControlNets into a single model.
 
 ![](https://gyazo.com/9e7cb79f7ca50fe5946ac9f232a552c6){gyazo=image}
 
-[](/workflows/basic-workflows/flux1/FLUX.1-dev-ControlNet-Union-Pro_depth.json)
+[](/workflows/basic-workflows/flux1/flux_1_dev_controlnet_union_pro_depth.json)
 
 * 🟩 It is simply a workflow where ControlNet is inserted into an image2image workflow using Flux.
 
@@ -169,7 +169,7 @@ Please choose according to your PC specs and usage.
 
 ![](https://gyazo.com/f465ff82b48c4c7b5d5b9ce144f3dc8d){gyazo=image}
 
-[](/workflows/basic-workflows/flux1/FLUX.1-dev-gguf.json)
+[](/workflows/basic-workflows/flux1/flux_1_dev_gguf.json)
 
 * 🟪 Replace the `Load Diffusion Model` node with the `Unet Loader (GGUF)` node.
 * Other CLIP / T5 / VAE parts remain the same.

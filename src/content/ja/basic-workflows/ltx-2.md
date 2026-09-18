@@ -91,8 +91,8 @@ Wan などに比べるとノード数が多いため複雑に感じるかもし�
 ![](https://gyazo.com/d9fa680727fd75aca39c94a865682c5a){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_text2video_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_text2video.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_text2video_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_text2video.json"
 %}
 
 上で説明した基本的な処理に沿ってworkflowを組んでいきます。
@@ -184,8 +184,8 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 ![](https://gyazo.com/e9e4851525adda6c3aab20a9acb09582){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_text2video_distilled_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_text2video_distilled.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_text2video_distilled_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_text2video_distilled.json"
 %}
 
 `distilled-lora`を適用するため、サンプリング設定をいくつか変更します。
@@ -211,8 +211,8 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 ![](https://gyazo.com/a16d62da150521a5b0c96dc32bbea33b){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_image2video_distilled_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_image2video_distilled.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_image2video_distilled_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_image2video_distilled.json"
 %}
 
 基本は「1フレーム目を入力画像で固定して、残りを生成」です。
@@ -297,7 +297,7 @@ LTX-Videoからの特徴ですが、動画は静止画と違い、少し圧縮�
 
 ![](https://gyazo.com/777521712af9329c1f8612710f00584a){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2/LTX-2_Extension_distilled.json)
+[](/workflows/basic-workflows/ltx-2/ltx_2_extension_distilled.json)
 
 入力された動画の末尾数フレームを取得し、その続きを生成する、ということをします。
 
@@ -358,8 +358,8 @@ LTX-2 は「動画＋音声」を同時に扱うモデルなので、音声を�
 ![](https://gyazo.com/be5aaa842432ee760228eeed24a3636f){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_audio2video_distilled_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_audio2video_distilled.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_audio2video_distilled_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_audio2video_distilled.json"
 %}
 
 - `Trim Audio Duration` で音声を適当な長さにトリミング
@@ -387,8 +387,8 @@ LTX-2 は「動画＋音声」を同時に扱うモデルなので、音声を�
 ![](https://gyazo.com/853b6d4b375b6ea1ef45f7697b71d369){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_audio-image2video_distilled_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_audio-image2video_distilled.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_audio_image2video_distilled_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_audio_image2video_distilled.json"
 %}
 
 - audio2video / image2video この 2 つのworkflowを組み合わせるだけです。
@@ -409,7 +409,7 @@ audio2video の逆で、動画を入力して それに合う音（効果音や�
 
 ![](https://gyazo.com/62df52a54b4bfcf67f53429d6343d666){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2/LTX-2_video2audio_distilled.json)
+[](/workflows/basic-workflows/ltx-2/ltx_2_video2audio_distilled.json)
 
 
 **出力例**
@@ -426,7 +426,7 @@ audio2video の逆で、動画を入力して それに合う音（効果音や�
 
 ![](https://gyazo.com/4f55cbb7932cdefc0d879c2c432ed224){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2/LTX-2_temporal-inpainting_distilled.json)
+[](/workflows/basic-workflows/ltx-2/ltx_2_temporal_inpainting_distilled.json)
 
 基本は video2video です。  
 動画のうち「作り直したい時間範囲」だけをマスクし、その区間だけを再生成してもらいます。
@@ -509,8 +509,8 @@ text2video の workflow をベースに、ControlNet のような制御用の動
 ![](https://gyazo.com/d520faa02e72245494eedeea79ebef20){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Pose)_distilled_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Pose)_distilled.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_distilled_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_distilled.json"
 %}
 
 {% mediaRow img="https://gyazo.com/5efc334e9408a80a1328d0dceeadb892 {gyazo=image}", width=40, align="left" %}
@@ -589,8 +589,8 @@ IC-LoRA (今回はPose) を適用してサンプリングします。
 ![](https://gyazo.com/a65682de39d9ea5c9fe6003cdf27e892){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Pose)_image2video_distilled_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Pose)_image2video_distilled.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_image2video_distilled_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_image2video_distilled.json"
 %}
 
 
@@ -621,8 +621,8 @@ IC-LoRA (Detailer)は、低解像度の動画のディテールや質感を修�
 ![](https://gyazo.com/a366728b300f253233432d1c12239f8d){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Detailer)_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Detailer).json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_detailer_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_detailer.json"
 %}
 
 基本は IC-LoRA(Detailer) を適用した video2video です。

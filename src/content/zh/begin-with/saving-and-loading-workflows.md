@@ -96,6 +96,6 @@ hero:
 本站公开的 工作流 提供了复制按钮和下载按钮。
 只需点击复制按钮，然后直接在画布上 `Ctrl + V` 即可读取 工作流，请务必利用起来。
 
-[](/workflows/begin-with/saving-and-loading-workflows/Stable_Diffusion_1.5.json)
+[](/workflows/begin-with/saving-and-loading-workflows/stable_diffusion_1_5.json)
 
 ![](https://gyazo.com/13c0019ad1e471bcf89cdb4b17bc7d9c){gyazo=loop}

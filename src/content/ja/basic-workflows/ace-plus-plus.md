@@ -91,7 +91,7 @@ Flux.1 Fill が「どこを描き直すか」、ACE++ の LoRA が「どのよ�
 
 ![](https://gyazo.com/ebe23ac6ca509cf96538f2a85fcf69c3){gyazo=image}
 
-[](/workflows/basic-workflows/ace-plus-plus/ACE_Plus_portrait.json)
+[](/workflows/basic-workflows/ace-plus-plus/ace_plus_portrait.json)
 
 * ベースは Flux.1 Fill を使った inpainting です。
 * 🟪 FLUX.1 Fill と `portrait` LoRA を読み込みます。
@@ -111,7 +111,7 @@ Flux.1 Fill が「どこを描き直すか」、ACE++ の LoRA が「どのよ�
 
 ![](https://gyazo.com/966d3c2bfcbaa5ae054fdd7ec4bb1c96){gyazo=image}
 
-[](/workflows/basic-workflows/ace-plus-plus/ACE_Plus_portrait_faceswap.json)
+[](/workflows/basic-workflows/ace-plus-plus/ace_plus_portrait_faceswap.json)
 
 * 🟩 右側に、顔を入れ替えたい画像（ベース画像）を入力します。
 * 🟩 顔だけ変えたい場合は、顔の周辺だけにマスクをかけます。
@@ -126,7 +126,7 @@ FaceSwap といいながら、より柔軟なので、頭部全体をマスク�
 
 ![](https://gyazo.com/3e84f30e31b23d804ff651a4d29667e9){gyazo=image}
 
-[](/workflows/basic-workflows/ace-plus-plus/ACE_Plus_subject.json)
+[](/workflows/basic-workflows/ace-plus-plus/ace_plus_subject.json)
 
 * 先程の Face Swap と同じ workflow です。
 * 🟪 読み込む LoRA を `subject` に変更します。
@@ -144,7 +144,7 @@ FaceSwap といいながら、より柔軟なので、頭部全体をマスク�
 
 ![](https://gyazo.com/e93a8e393eca60dbb1832fd314402dec){gyazo=image}
 
-[](/workflows/basic-workflows/ace-plus-plus/ACE_Plus_local.json)
+[](/workflows/basic-workflows/ace-plus-plus/ace_plus_local.json)
 
 * 横並べではなく、通常の inpainting の workflow を使います。
 * 🟪 読み込む LoRA を `local` に変更します。

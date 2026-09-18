@@ -27,7 +27,7 @@ Before the advent of diffusion models, CNN-based inpainting models like LaMa wer
 
 ![](https://gyazo.com/4c0b962c3983bc3296da9b994c07f3b6){gyazo=image}
 
-[](/workflows/ai-capabilities/object-removal/LaMa.json)
+[](/workflows/ai-capabilities/object-removal/lama.json)
 
 It specializes in filling masked areas with surrounding textures and was also used for watermark removal.
 
@@ -41,7 +41,7 @@ Draw a mask on the object you want to remove, write a prompt that matches the ba
 
 ![](https://gyazo.com/2cad88edab0d74b24f0fc78f528a320d){gyazo=image}
 
-[](/workflows/ai-capabilities/object-removal/Remake_for_SDXL-Removing_Object_and_Filling_with_Background.json)
+[](/workflows/ai-capabilities/object-removal/remake_for_sdxl_removing_object_and_filling_with_background.json)
 
 However, sometimes it adds another object instead of removing it, so it was sometimes unstable as object removal.
 
@@ -57,7 +57,7 @@ Just instruct "remove this person," "remove this sign," "remove the logo on the 
 
 ![](https://gyazo.com/84af7edfab7cd344f7654090b7957166){gyazo=image}
 
-[](/workflows/ai-capabilities/object-removal/Qwen-Image-Edit-2509_object-removal.json)
+[](/workflows/ai-capabilities/object-removal/qwen_image_edit_2509_object_removal.json)
 
 ### Advantage: No Mask Required
 

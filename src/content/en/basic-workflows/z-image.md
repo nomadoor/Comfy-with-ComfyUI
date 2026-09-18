@@ -54,7 +54,7 @@ Unlike [Z-Image-Turbo](/en/basic-workflows/z-image-turbo/) which is stabilized b
 
 ![](https://gyazo.com/8f4213b84c8d739021b8be032e8f6f8a){gyazo=image}
 
-[](/workflows/basic-workflows/z-image/Z-Image.json)
+[](/workflows/basic-workflows/z-image/z_image.json)
 
 - `steps` : Depending on the sampler, 30-40 steps (slightly higher) is more stable.
 
@@ -67,7 +67,7 @@ You can use image2image, but let's try splitting the sampling into two stages fo
 
 ![](https://gyazo.com/2545e8ea917a80488d8687464185410d){gyazo=image}
 
-[](/workflows/basic-workflows/z-image/Z-Image_refine-turbo.json)
+[](/workflows/basic-workflows/z-image/z_image_refine_turbo.json)
 
 Here we split it into the first 50% and the last 50%.
 (cf. [Split Sampling](/en/basic-workflows/ksampler-advanced/#split-sampling))
@@ -102,7 +102,7 @@ A ControlNet-like patch for Z-Image.
 
 ![](https://gyazo.com/1eb558462ba943c91305960b112c6a63){gyazo=image}
 
-[](/workflows/basic-workflows/z-image/Z-Image-Fun-Controlnet-Union-2.1.json)
+[](/workflows/basic-workflows/z-image/z_image_fun_controlnet_union_2_1.json)
 
 - 🟩 Add model and control image to `QwenImageDiffsynthControlnet`.
 - 🟩 In this workflow, Depth Anything V2 is used to create a depth map.

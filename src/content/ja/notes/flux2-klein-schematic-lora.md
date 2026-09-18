@@ -228,7 +228,7 @@ ComfyUI で実際に動かして、良さそうな step を選びます。すべ
 
 ![](https://gyazo.com/596669219726f35c5106037b4fce9e38){gyazo=image}
 
-[](/workflows/notes/flux2-klein-schematic-lora/Flux.2-klein-base-9b_image-edit.json)
+[](/workflows/notes/flux2-klein-schematic-lora/flux_2_klein_base_9b_image_edit.json)
 
 ---
 

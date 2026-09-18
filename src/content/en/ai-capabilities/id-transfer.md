@@ -45,7 +45,7 @@ The official IP-Adapter model specialized for faces.
 
 ![](https://gyazo.com/afe7232d9dd3cc54f5d8a2f1d956e15f){gyazo=image}
 
-[](/workflows/ai-capabilities/id-transfer/ip-adapter-faceid-plusv2_sd15.json)
+[](/workflows/ai-capabilities/id-transfer/ip_adapter_faceid_plusv2_sd15.json)
 
 ### IP-Adapter-FaceID
 
@@ -61,7 +61,7 @@ Strictly speaking, it is not a lineage of IP-Adapter, but it is a technique spec
 
 ![](https://gyazo.com/a4213b144081a1267432874bfc09c1f4){gyazo=image}
 
-[](/workflows/ai-capabilities/id-transfer/InstantID-simple.json)
+[](/workflows/ai-capabilities/id-transfer/instantid_simple.json)
 
 By combining an IP-Adapter type image adapter with an additional network (IdentityNet) that uses ID embeddings and facial landmarks obtained from face recognition models, it enhances the balance between ID retention from a single face photo and text editing.
 
@@ -75,7 +75,7 @@ As times progress, the main battlefield of base models has shifted from SDXL to 
 
 - ![](https://gyazo.com/7a87706872f7b195d46aeabafa6a399e){gyazo=image}
 
-- [](/workflows/ai-capabilities/id-transfer/PuLID_Flux_ll.json)
+- [](/workflows/ai-capabilities/id-transfer/pulid_flux_ll.json)
 
 **InfiniteYou** is an ID retention framework based on FLUX-based Diffusion Transformers. It aims to improve ID resemblance, text consistency, and image quality simultaneously through a module (InfuseNet) that injects Identity features into the DiT body and a multi-stage learning strategy.
 
@@ -99,7 +99,7 @@ It estimates the position, orientation, and contour of the face with face detect
 
 ![](https://gyazo.com/1a0a81f044bd264db835ef99d40a37d1){gyazo=image}
 
-[](/workflows/ai-capabilities/id-transfer/ReActor_Fast.json)
+[](/workflows/ai-capabilities/id-transfer/reactor_fast.json)
 
 Representative ones that can be used in ComfyUI include ReActor (InsightFace-based FaceSwap), but it is also a technology with strong anxiety factors, such as repositories being deleted from an ethical point of view.
 
@@ -113,4 +113,4 @@ When ID Transfer technology was immature, there was also a method of FaceSwappin
 
 ![](https://gyazo.com/877d8862f6e7f6dd3ec7fbeac5331cd9){gyazo=image}
 
-[](/workflows/ai-capabilities/id-transfer/ReActor_w_InstantID2.json)
+[](/workflows/ai-capabilities/id-transfer/reactor_w_instantid2.json)

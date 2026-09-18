@@ -31,7 +31,7 @@ hero:
 
 ![](https://gyazo.com/131fe705fd29ddd98391fb4e78b608ab){gyazo=image}
 
-[](/workflows/ai-capabilities/matting/BiRefNet-general.json)
+[](/workflows/ai-capabilities/matting/birefnet_general.json)
 
 いくつか派生モデルがありますが、まずは**general**から試してみてください。人物・物体・動物など、幅広い対象に対応しています。
 
@@ -43,7 +43,7 @@ hero:
 
 ![](https://gyazo.com/317da8e987179adbe6e02f0eb40a4a07){gyazo=image}
 
-[](/workflows/ai-capabilities/matting/SDMatte.json)
+[](/workflows/ai-capabilities/matting/sdmatte.json)
 
 BiRefNetと同じように前景切り抜きもできますが、ガラス瓶・液体・薄い布など、**透けて見えるもの**もある程度扱えるのが特徴です。
 

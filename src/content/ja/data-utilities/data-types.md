@@ -72,7 +72,7 @@ ComfyUIは拡張性が高いため、カスタムノードによっては独自�
 
 ![](https://gyazo.com/423eaa0eac26fefe67f5d212a1ab2ad1){gyazo=image}
 
-[](/workflows/begin-with/data-types/Preview_as_Text.json)
+[](/workflows/begin-with/data-types/preview_as_text.json)
 
 
 デバッグとして、数字やテキストを表示する機会は多いです。

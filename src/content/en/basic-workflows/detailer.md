@@ -66,7 +66,7 @@ Detailer is inpainting performed only within this crop region.
 
 ![](https://gyazo.com/52c85301e868fe14f7bb729508206078){gyazo=image}
 
-[](/workflows/basic-workflows/detailer/Inpaint_Crop_(Improved).json)
+[](/workflows/basic-workflows/detailer/inpaint_crop_improved.json)
 
 As you can see from the workflow, if you pass **Mask + Original Image**, it automatically creates a crop region with a little margin added based on the mask, and resizes only that part to the specified size.
 
@@ -89,7 +89,7 @@ There are quite a few parameters, but basically, you only need to look at the on
 
 ![](https://gyazo.com/c210a482208c8932e252b770b8b856bf){gyazo=image}
 
-[](/workflows/basic-workflows/detailer/Inpaint_Stitch_(Improved).json)
+[](/workflows/basic-workflows/detailer/inpaint_stitch_improved.json)
 
 The `✂️ Inpaint Stitch (Improved)` node returns the modified crop image to its original position.
 
@@ -104,7 +104,7 @@ However, it's just incorporating it into the [inpainting](/en/basic-workflows/sd
 
 ![](https://gyazo.com/4246aded675f5267c9b5685486791390){gyazo=image}
 
-[](/workflows/basic-workflows/detailer/Detailer_Inpaint_Crop.json)
+[](/workflows/basic-workflows/detailer/detailer_inpaint_crop.json)
 
 - 🟩 Adjust `output_target_width/height` depending on the base model.
   - Since it is SD1.5 this time, it is 512px.
@@ -118,7 +118,7 @@ Let's automate it a bit by automatically creating a face mask.
 
 ![](https://gyazo.com/d65f393b285ec6c84a17a6a6ef438f14){gyazo=image}
 
-[](/workflows/basic-workflows/detailer/Detailer_Inpaint_Crop_SAM3.json)
+[](/workflows/basic-workflows/detailer/detailer_inpaint_crop_sam3.json)
 
 - 🟦 Create a face mask using SAM 3.
 

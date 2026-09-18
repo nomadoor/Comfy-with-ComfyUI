@@ -44,7 +44,7 @@ SAM 3 则可以像 VLM 一样用文本指定对象，并且单独完成分割。
 
 ![](https://gyazo.com/cd6078ed81d850085144836e404754d5){gyazo=image}
 
-[](/workflows/data-utilities/sam3/SAM3.1.json)
+[](/workflows/data-utilities/sam3/sam3_1.json)
 
 - 向 `SAM3 Detect` 节点输入图像、蒙版，以及想切出的对象信息（文本提示词、BBOX、坐标）。
 - 这个规格有点绕。如果有多个对象符合提示词，只写 `car` 的话，只会检测其中最像的一个。
@@ -55,7 +55,7 @@ SAM 3 则可以像 VLM 一样用文本指定对象，并且单独完成分割。
 
 ![](https://gyazo.com/96c353a26df8cf274d9b68a95453ba7b){gyazo=loop}
 
-[](/workflows/data-utilities/sam3/SAM3.1_video.json)
+[](/workflows/data-utilities/sam3/sam3_1_video.json)
 
 - 使用 `SAM3 Video Track` 节点。
 - 将输出传给 `SAM3 Track to Mask` 节点，就可以作为蒙版使用。

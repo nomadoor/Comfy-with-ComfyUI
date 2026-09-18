@@ -44,7 +44,7 @@ IP-Adapterは、既存のtext2imageモデルに「画像からの条件入力」
 
 ![](https://gyazo.com/afe7232d9dd3cc54f5d8a2f1d956e15f){gyazo=image}
 
-[](/workflows/ai-capabilities/id-transfer/ip-adapter-faceid-plusv2_sd15.json)
+[](/workflows/ai-capabilities/id-transfer/ip_adapter_faceid_plusv2_sd15.json)
 
 ### IP-Adapter-FaceID
 
@@ -60,7 +60,7 @@ IP-Adapter-FaceID系は、顔認識モデル（InsightFace）と組み合わせ�
 
 ![](https://gyazo.com/a4213b144081a1267432874bfc09c1f4){gyazo=image}
 
-[](/workflows/ai-capabilities/id-transfer/InstantID-simple.json)
+[](/workflows/ai-capabilities/id-transfer/instantid_simple.json)
 
 IP-Adapter型の画像アダプタに加えて、顔認識モデルから得たID埋め込みと顔ランドマークを使う追加ネットワーク（IdentityNet）を組み合わせることで、一枚の顔写真からのID保持とテキスト編集のバランスを高めています。
 
@@ -74,7 +74,7 @@ IP-Adapter型の画像アダプタに加えて、顔認識モデルから得たI
 
 - ![](https://gyazo.com/7a87706872f7b195d46aeabafa6a399e){gyazo=image}
 
-- [](/workflows/ai-capabilities/id-transfer/PuLID_Flux_ll.json)
+- [](/workflows/ai-capabilities/id-transfer/pulid_flux_ll.json)
 
 **InfiniteYou**は、FLUX系のDiffusion TransformerをベースにしたID保持フレームワークです。Identity特徴をDiT本体に注入するモジュール（InfuseNet）と多段階の学習戦略により、IDの似せ方、テキスト整合性、画質を同時に高めることを目指しています。
 
@@ -98,7 +98,7 @@ ID転送というより、「仮面を作って被せる」に近い発想です
 
 ![](https://gyazo.com/1a0a81f044bd264db835ef99d40a37d1){gyazo=image}
 
-[](/workflows/ai-capabilities/id-transfer/ReActor_Fast.json)
+[](/workflows/ai-capabilities/id-transfer/reactor_fast.json)
 
 ComfyUIで使用できる代表的なものは、ReActor（InsightFaceベースのFaceSwap）ですが、倫理的観点からリポジトリが削除されたりと、不安要素が強い技術でもあります。
 
@@ -112,4 +112,4 @@ ID転送の技術が未熟だったころは、ReActorでFaceSwapしてから、
 
 ![](https://gyazo.com/877d8862f6e7f6dd3ec7fbeac5331cd9){gyazo=image}
 
-[](/workflows/ai-capabilities/id-transfer/ReActor_w_InstantID2.json)
+[](/workflows/ai-capabilities/id-transfer/reactor_w_instantid2.json)

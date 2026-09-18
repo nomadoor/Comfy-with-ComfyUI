@@ -75,7 +75,7 @@ masterpiece, best quality, score_9, safe,
 
 ![](https://gyazo.com/0e2f46074799b0e7a016ee1a5bd28118){gyazo=image}
 
-[](/workflows/basic-workflows/anima/anima-aesthetic-v1.1.json)
+[](/workflows/basic-workflows/anima/anima_aesthetic_v1_1.json)
 
 * 推奨解像度は `512px` 〜 `1536px` です。
 * `er_sde` や `euler_ancestral` のような、少し揺らぎを持たせるサンプラーが推奨されています。
@@ -105,7 +105,7 @@ ControlNet-LLLite は、kohya 氏が開発した軽量な ControlNet です。
 
 ![](https://gyazo.com/d42f85633b9036b7e2e6e806c064ef56){gyazo=image}
 
-[](/workflows/basic-workflows/anima/anima-lllite-any-test-like-v2.json)
+[](/workflows/basic-workflows/anima/anima_lllite_any_test_like_v2.json)
 
 * `anima-lllite-any-test-like-v2` は、いくつかの制御をひとつにまとめたモデルです。ラフや線画から構図を渡したり、グレースケール画像を彩色できたりします。
 * この workflow では、入力画像から `Canny` で輪郭を抽出し、制御画像として使っています。

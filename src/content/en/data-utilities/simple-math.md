@@ -29,7 +29,7 @@ Let's look at the nodes for that.
 
 ![](https://gyazo.com/7ea9d7efa48a88e7b9bdfeef6b86d2d2){gyazo=image}
 
-[](/workflows/data-utilities/simple-math/Math_Expression.json)
+[](/workflows/data-utilities/simple-math/math_expression.json)
 
 You can enter numbers in `a`, `b`, and `c` respectively.
 Using those variables, if you write like `a * b - c`, you can simply perform arithmetic.
@@ -75,7 +75,7 @@ Even if the input is float, if the output destination is int, it will automatica
 
 ![](https://gyazo.com/07161b2b92b1f8cedc7fa99cbf1d22cc){gyazo=image}
 
-[](/workflows/data-utilities/simple-math/Math_Expression_FloatInt.json)
+[](/workflows/data-utilities/simple-math/math_expression_floatint.json)
 
 ---
 
@@ -95,4 +95,4 @@ cf. [Node: Power Puter (Wiki)](https://github.com/rgthree/rgthree-comfy/wiki/Nod
 
 ![](https://gyazo.com/20c5f92d6ef1e7057c6d42e2065d84b1){gyazo=image}
 
-[](/workflows/data-utilities/simple-math/Power_Puter.json)
+[](/workflows/data-utilities/simple-math/power_puter.json)

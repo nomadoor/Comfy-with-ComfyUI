@@ -48,7 +48,7 @@ Stable Diffusionで大きな画像を生成できない理由として、大き�
 
 ![](https://gyazo.com/6ff5e63c42367c9ef8ffd8e2a89a61c5){gyazo=image} ![](https://gyazo.com/daf241e640303e9bdbebdbdb06ae4afa){gyazo=image}
 
-[](/workflows/basic-workflows/ultimate-sd-upscale/Tiled_Diffusion_overlap0.json)
+[](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap0.json)
 
 * 🟨 入力画像を 1024 × 1024 px にリサイズ
 * 🟩 タイルサイズを 512 × 512 px に設定
@@ -68,7 +68,7 @@ Stable Diffusionで大きな画像を生成できない理由として、大き�
 
 ![](https://gyazo.com/d6bf859530ae65b7b09ca8a2b2e3006b){gyazo=image} ![](https://gyazo.com/fec3f15e6e4ff7110d3f5ff110f0faa2){gyazo=image}
 
-[](/workflows/basic-workflows/ultimate-sd-upscale/Tiled_Diffusion_overlap256.json)
+[](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap256.json)
 
 - 🟩 `tile_overlap` を 256px に
 - タイルをきれいに並べるのではなく、**わざと半分くらい重ねて** 並べるイメージです。
@@ -124,7 +124,7 @@ ControlNet Tile は、入力画像の **構造をかなり強く保持したま�
 
 ![](https://gyazo.com/a0d8adb6b4cbd35562588238db87f71e){gyazo=image} ![](https://gyazo.com/1bf02bf5900f379735c6a29a7aa1935e){gyazo=image}
 
-[](/workflows/basic-workflows/ultimate-sd-upscale/TiledDiffusion_ControlNet_Tile.json)
+[](/workflows/basic-workflows/ultimate-sd-upscale/tileddiffusion_controlnet_tile.json)
 
 このworkflowでは、あえて`tile_overlap = 0`、`denoise = 1`という、もっとも Tile の弱点が出やすい設定にしています。
 
@@ -138,7 +138,7 @@ ControlNet Tile は、入力画像の **構造をかなり強く保持したま�
 
 ![](https://gyazo.com/763660c52564a7af2f5dce9eaa81e20f){gyazo=image} ![](https://gyazo.com/3e4bf6018a4e4500f3bbd14151ce56e7){gyazo=image}
 
-[](/workflows/basic-workflows/ultimate-sd-upscale/Tiled_Diffusion_overlap_ContolNet_Tile.json)
+[](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap_contolnet_tile.json)
 
 - 🟩 overlap 256px
 - 🟦 Controlnet strength 0.6

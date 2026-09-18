@@ -26,7 +26,7 @@ By using ControlNet Canny (edge), you can add color while generally retaining th
 
 ![](https://gyazo.com/7e1ed10e17831b224bc547a8d6b3deea){gyazo=image}
 
-[](/workflows/ai-capabilities/line-art-coloring/Flux_ControlNet-Union.json)
+[](/workflows/ai-capabilities/line-art-coloring/flux_controlnet_union.json)
 
 Pass the line art (or edge extraction result) to ControlNet and specify the clothes, colors, and atmosphere with text prompts.
 
@@ -38,7 +38,7 @@ You can also pass line art directly to [Instruction-Based Image Editing](/en/ai-
 
 ![](https://gyazo.com/18b33d684675ffa56b3b805a9f56791a){gyazo=image}
 
-[](/workflows/ai-capabilities/line-art-coloring/Qwen-Image-Edit-2509.json)
+[](/workflows/ai-capabilities/line-art-coloring/qwen_image_edit_2509.json)
 
 Just give the line art to the input image and instruct with text like "color this line art in full color" or "color in anime style."
 

@@ -74,7 +74,7 @@ image2imageでは、この「空の latent」を**参照画像をエンコード
 
 ![](https://gyazo.com/e5ff6f57deb2d62f568cb8897eb41355){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-image2image/SD1.5_image2image_KSampler_(Advanced).json)
+[](/workflows/basic-workflows/sd15-image2image/sd1_5_image2image_ksampler_advanced.json)
 
 - 🟩VAE Encodeノードで、画像をlatentに変換します。
 - 🟨`start_at_step`の値を変更して、元の画像をどれくらい残すか、いろいろ試してみてください。
@@ -88,7 +88,7 @@ image2imageでは、この「空の latent」を**参照画像をエンコード
 
 ![](https://gyazo.com/41975fb8a105170ea9d8a9dbbd48b5dd){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-image2image/SD1.5_image2image_KSampler.json)
+[](/workflows/basic-workflows/sd15-image2image/sd1_5_image2image_ksampler.json)
 
 - 🟪`denoise`の値を変更して、元の画像をどれくらい残すかを設定します。
   - `1.0`では完全にノイズで埋めます。つまりtext2imageと同じです。

@@ -57,7 +57,7 @@ Two models are available, but for normal image generation you will use Turbo.
 
 ![](https://gyazo.com/31bce8c4982ff74992c599268d13374d){gyazo=image}
 
-[](/workflows/basic-workflows/krea-2/Krea_2_turbo_text2image.json)
+[](/workflows/basic-workflows/krea-2/krea_2_turbo_text2image.json)
 
 Krea 2 Turbo is a model for 8-step generation.
 
@@ -88,7 +88,7 @@ Each LoRA has its own recommended trigger word and strength, so check the model 
 
 ![](https://gyazo.com/7a2ec126a289cfa04dd8cb609b6d04e3){gyazo=image}
 
-[](/workflows/basic-workflows/krea-2/Krea_2_turbo_text2image_darkbrush.json)
+[](/workflows/basic-workflows/krea-2/krea_2_turbo_text2image_darkbrush.json)
 
 - Here, [Krea-2-LoRA-darkbrush](https://huggingface.co/krea/Krea-2-LoRA-darkbrush) is used.
 - The trigger word is `monochrome ink wash style`.

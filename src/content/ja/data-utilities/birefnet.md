@@ -42,7 +42,7 @@ SAM のように「この点」「この箱」「この物体」と指定して�
 
 ![](https://gyazo.com/57972a01d12b0d8e88ef705c18344651){gyazo=image}
 
-[](/workflows/data-utilities/birefnet/BiRefNet.json)
+[](/workflows/data-utilities/birefnet/birefnet.json)
 
 - `Load Background Removal Model` で `birefnet.safetensors` を読み込みます。
 - `Remove Background` に画像とモデルを入力すると、背景除去用の `MASK` が出力されます。
@@ -55,7 +55,7 @@ SAM のように「この点」「この箱」「この物体」と指定して�
 
 ![](https://gyazo.com/5d22ae3e905a8ccd3c1b8c63f615bb4e){gyazo=image}
 
-[](/workflows/data-utilities/birefnet/BiRefNet_fill.json)
+[](/workflows/data-utilities/birefnet/birefnet_fill.json)
 
 - `Image Composite Masked` に元画像、反転マスク、単色画像を入力します。
 - マスクされた背景部分だけを単色画像で置き換えます。

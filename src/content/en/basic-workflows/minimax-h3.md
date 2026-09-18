@@ -173,7 +173,7 @@ Model: `fl2va`
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_t2va.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_t2va.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_t2va.json)
 
 {% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_t2va_resolution_length.png", width=40, align="left" %}
 **Resolution and video length**
@@ -203,7 +203,7 @@ Model: `fl2va`
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_i2va.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_i2va.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_i2va.json)
 
 Enter the prompt and first image in `MiniMax H3 Image to Video`.
 
@@ -219,7 +219,7 @@ Model: `fl2va`
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_flf2va.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_FLF2VA.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_flf2va.json)
 
 This is basically the same as I2VA. Just provide an image for `last_frame` as well.
 
@@ -233,7 +233,7 @@ Model: `fl2va`
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_generative-interpolation.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_generative_interpolation.json)
 
 Insert images at specified frames and have the model fill in the motion between them.
 
@@ -251,7 +251,7 @@ Model: `fl2va`
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_audio-driven-i2va.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.json)
 
 `Add Guide for MiniMax H3` can also take audio as input.
 
@@ -275,7 +275,7 @@ Then simply give it an instruction such as “make the person in Picture 1 speak
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_reference-generation.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_reference_generation.json)
 
 For this example, we will generate a video using only images as references.
 
@@ -325,7 +325,7 @@ It is the video equivalent of image-editing models such as FLUX.2 [klein] and Na
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_video_editing.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_video-editing.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_video_editing.json)
 
 The workflow is basically the same as Reference Generation.
 
@@ -347,7 +347,7 @@ However, you can usually accomplish the same thing through Video Editing by simp
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_spatial-inpainting.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting.json)
 
 For this example, we use the `ref2va` model to replace the dog in the video with the stuffed toy from the reference image.
 
@@ -394,7 +394,7 @@ Another option is to generate the first stage at 0.25 MP, then upscale promising
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_Hiresfix_t2va.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va.json)
 
 {% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va_first_stage_resolution.png", width=40, align="left" %}
 **First-stage resolution**
@@ -423,7 +423,7 @@ H3 also stores the video and audio latents together. Since only the video needs 
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va.png){media=image}
 
-[](/workflows/basic-workflows/minimax-h3/MiniMax_H3_Hiresfix_i2va.json)
+[](/workflows/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va.json)
 
 I2VA and Ref2VA also take the resolution as part of their Conditioning.
 

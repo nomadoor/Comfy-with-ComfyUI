@@ -55,7 +55,7 @@ IP-Adapter 有几种种类，首先试一下最标准的东西吧。
 
 ![](https://gyazo.com/6e8376130553997cbd30696c6700a601){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-ip-adapter/ip-adapter_sd15.json)
+[](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_sd15.json)
 
 - 🟩 将各种模型和想参考的图像连接到 `IPAdapter Advanced` 节点。
 - 🟦 在 `Prep Image For ClipVision` 节点裁剪参考图像。
@@ -84,7 +84,7 @@ IP-Adapter 有几种种类，首先试一下最标准的东西吧。
 
 ![](https://gyazo.com/ecbbe99d3410a850767aaf506645952b){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-ip-adapter/ip-adapter-plus_sd15.json)
+[](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_plus_sd15.json)
 
 - [ip-adapter-plus_sd15.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/ip-adapter-plus_sd15.safetensors)
 - 变成与参照图像相当接近的构图
@@ -96,7 +96,7 @@ IP-Adapter 有几种种类，首先试一下最标准的东西吧。
 
 ![](https://gyazo.com/422b44322caef6fe6fdec8c7d37f54e3){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-ip-adapter/ip-adapter_sd15_light.json)
+[](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_sd15_light.json)
 
 - [ip-adapter_sd15_light.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/ip-adapter_sd15_light.safetensors)
 - 强力保留文本的指示
@@ -108,7 +108,7 @@ IP-Adapter 有几种种类，首先试一下最标准的东西吧。
 
 ![](https://gyazo.com/bba6f8053f411bee64044c141d4632c0){gyazo=image}
 
-[](/workflows/basic-workflows/sd15-ip-adapter/ip-adapter-plus-face_sd15.json)
+[](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_plus_face_sd15.json)
 
 - [ip-adapter-plus-face_sd15.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/ip-adapter-plus-face_sd15.safetensors)
 - 相当强地固定长相・轮廓・五官等

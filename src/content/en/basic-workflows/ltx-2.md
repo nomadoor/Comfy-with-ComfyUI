@@ -91,8 +91,8 @@ It might feel complicated because there are more nodes compared to Wan, but this
 ![](https://gyazo.com/b6df8e98ae7d7337f2f32a65a10661d3){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_text2video_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_text2video.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_text2video_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_text2video.json"
 %}
 
 Follow the basic flow explained above to build the workflow.
@@ -184,8 +184,8 @@ Above, we used `distilled-lora` only for Hires.fix, but let's apply it to the 1s
 ![](https://gyazo.com/e9e4851525adda6c3aab20a9acb09582){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_text2video_distilled_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_text2video_distilled.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_text2video_distilled_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_text2video_distilled.json"
 %}
 
 To apply `distilled-lora`, change some sampling settings.
@@ -210,8 +210,8 @@ To apply `distilled-lora`, change some sampling settings.
 ![](https://gyazo.com/a16d62da150521a5b0c96dc32bbea33b){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_image2video_distilled_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_image2video_distilled.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_image2video_distilled_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_image2video_distilled.json"
 %}
 
 The basic idea is "fix the 1st frame with input image and generate the rest".
@@ -296,7 +296,7 @@ By applying this, you can create a workflow that uses the end of an arbitrary vi
 
 ![](https://gyazo.com/777521712af9329c1f8612710f00584a){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2/LTX-2_Extension_distilled.json)
+[](/workflows/basic-workflows/ltx-2/ltx_2_extension_distilled.json)
 
 It takes the last few frames of the input video and generates the continuation.
 
@@ -357,8 +357,8 @@ Since LTX-2 is a model that handles "video + audio" simultaneously, you can conf
 ![](https://gyazo.com/be5aaa842432ee760228eeed24a3636f){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_audio2video_distilled_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_audio2video_distilled.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_audio2video_distilled_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_audio2video_distilled.json"
 %}
 
 - Trim audio to appropriate length with `Trim Audio Duration`.
@@ -386,8 +386,8 @@ If you combine a face image with spoken audio, you can do something like a talki
 ![](https://gyazo.com/853b6d4b375b6ea1ef45f7697b71d369){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_audio-image2video_distilled_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_audio-image2video_distilled.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_audio_image2video_distilled_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_audio_image2video_distilled.json"
 %}
 
 - Just combine the audio2video / image2video workflows.
@@ -408,7 +408,7 @@ Contrary to audio2video, you can also input a video and generate sound (sound ef
 
 ![](https://gyazo.com/62df52a54b4bfcf67f53429d6343d666){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2/LTX-2_video2audio_distilled.json)
+[](/workflows/basic-workflows/ltx-2/ltx_2_video2audio_distilled.json)
 
 
 **Output Example**
@@ -425,7 +425,7 @@ This is temporal inpainting (= repairing only a part of the video). Think of it 
 
 ![](https://gyazo.com/4f55cbb7932cdefc0d879c2c432ed224){gyazo=image}
 
-[](/workflows/basic-workflows/ltx-2/LTX-2_temporal-inpainting_distilled.json)
+[](/workflows/basic-workflows/ltx-2/ltx_2_temporal_inpainting_distilled.json)
 
 Basically it is video2video.
 Mask only the "time range you want to remake" of the video and regenerate only that section.
@@ -508,8 +508,8 @@ Add control video based on text2video.
 ![](https://gyazo.com/d520faa02e72245494eedeea79ebef20){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Pose)_distilled_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Pose)_distilled.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_distilled_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_distilled.json"
 %}
 
 {% mediaRow img="https://gyazo.com/5efc334e9408a80a1328d0dceeadb892 {gyazo=image}", width=40, align="left" %}
@@ -589,8 +589,8 @@ You cannot stack multiple IC-LoRAs, but you can combine with image2video or audi
 ![](https://gyazo.com/a65682de39d9ea5c9fe6003cdf27e892){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Pose)_image2video_distilled_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Pose)_image2video_distilled.json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_image2video_distilled_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_image2video_distilled.json"
 %}
 
 What it's doing is just combining IC-LoRA (Pose) above with image2video.
@@ -620,8 +620,8 @@ IC-LoRA (Detailer) restores details and textures of low-resolution videos.
 ![](https://gyazo.com/a366728b300f253233432d1c12239f8d){gyazo=image}
 
 {% workflowPicker
-  "!/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Detailer)_V2.json",
-  "/workflows/basic-workflows/ltx-2/LTX-2_IC-LoRA(Detailer).json"
+  "!/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_detailer_v2.json",
+  "/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_detailer.json"
 %}
 
 Basically it is video2video with IC-LoRA(Detailer) applied.

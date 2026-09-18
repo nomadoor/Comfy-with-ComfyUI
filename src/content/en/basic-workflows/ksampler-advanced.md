@@ -59,7 +59,7 @@ In KSampler (Advanced), you can select whether to add noise or not with the `add
 
 ![](https://gyazo.com/64cca8d8e53b01d4315b4aec434dd5ec){gyazo=image}
 
-[](/workflows/basic-workflows/ksampler-advanced/SD1.5_KSampler_(Advanced)-add_noise.json)
+[](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_add_noise.json)
 
 🟫 If you perform sampling with `add_noise` set to disable, nothing will be generated because it keeps removing noise from an image without noise.
 
@@ -77,7 +77,7 @@ As shown in the figure, let's do the first half 0 ~ 10 steps with 🟪 KSampler 
 
 ![](https://gyazo.com/d57cb22d3d85f90010815d19d45bb638){gyazo=image}
 
-[](/workflows/basic-workflows/ksampler-advanced/SD1.5_KSampler_(Advanced)-divide.json)
+[](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_divide.json)
 
 You can see that the generated image is exactly the same even if you split it into two.
 The parameters are a bit confusing, so let's look at them carefully.
@@ -114,7 +114,7 @@ You can use prompt "A" at first and switch to prompt "B" halfway through samplin
 
 ![](https://gyazo.com/6fd6725df9ce2fd370f7561927bafd4e){gyazo=image}
 
-[](/workflows/basic-workflows/ksampler-advanced/SD1.5_KSampler_(Advanced)-Prompt_Editing.json)
+[](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_prompt_editing.json)
 
 In this workflow, the image is generated with the prompt `red apple` for the first 10 steps and `red rabbit` for the rest. Can you see that an image that somehow mixes "apple" and "rabbit" is generated?
 
@@ -132,7 +132,7 @@ Similarly, you can switch models or LoRA halfway through.
 
 ![](https://gyazo.com/f85b62fe88508687bf562fd162fcc569){gyazo=image}
 
-[](/workflows/basic-workflows/ksampler-advanced/SD1.5_KSampler_(Advanced)-LoRA.json)
+[](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_lora.json)
 
 The nodes have increased and it's getting a bit complicated.
 But if you look closely, two text2image workflows are lined up, and it's just switching in the middle.

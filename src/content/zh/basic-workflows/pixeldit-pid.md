@@ -48,7 +48,7 @@ Stable Diffusion 之后的很多图像生成模型，都使用 [Latent Diffusion
 
 ![](https://gyazo.com/bdac1169d8ee0d91f6eed7b485ffa914){gyazo=image}
 
-[](/workflows/basic-workflows/pixeldit-pid/PixelDiT_text2image.json)
+[](/workflows/basic-workflows/pixeldit-pid/pixeldit_text2image.json)
 
 因为是像素扩散模型，本来并不需要 `Load VAE` 或 `VAE Decode`。
 
@@ -125,7 +125,7 @@ PiD 则是把这个 latent 交给 PixelDiT，让图像还原和放大一起完�
 
 ![](https://gyazo.com/1b9e2dab2979aaafb65acc6e207c5948){gyazo=image}
 
-[](/workflows/basic-workflows/pixeldit-pid/Z-Image-Turbo_to_PiD1.5_4k.json)
+[](/workflows/basic-workflows/pixeldit-pid/z_image_turbo_to_pid1_5_4k.json)
 
 - 🟦 左上是普通的 [Z-Image-Turbo](/zh/basic-workflows/z-image-turbo/) workflow。
   - 🟩 输出的 latent 不走 VAE Decode，而是连接到 PixelDiT 侧的 `PiD Conditioning`。
@@ -156,7 +156,7 @@ PiD 则是把这个 latent 交给 PixelDiT，让图像还原和放大一起完�
 
 ![](https://gyazo.com/f501e4a19e295189ca8fdc8d509eb589){gyazo=image}
 
-[](/workflows/basic-workflows/pixeldit-pid/PiD1.5_flux2_4x_enhance.json)
+[](/workflows/basic-workflows/pixeldit-pid/pid1_5_flux2_4x_enhance.json)
 
 - 将输入图像 resize 到约 1M 像素，并让尺寸成为 16 的倍数
 - 取得 resize 后的高和宽，把它们乘以 4，作为 PiD 侧的输出尺寸

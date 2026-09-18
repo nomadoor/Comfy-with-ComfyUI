@@ -222,7 +222,7 @@ pose / segmentation 都会遇到一个问题：当输入图像里不存在目标
 
 ![](https://gyazo.com/596669219726f35c5106037b4fce9e38){gyazo=image}
 
-[](/workflows/notes/flux2-klein-schematic-lora/Flux.2-klein-base-9b_image-edit.json)
+[](/workflows/notes/flux2-klein-schematic-lora/flux_2_klein_base_9b_image_edit.json)
 
 ---
 
