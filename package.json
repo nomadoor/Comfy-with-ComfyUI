@@ -49,5 +49,13 @@
     "markdown-it": "^14.1.0",
     "rimraf": "^6.1.0",
     "sharp": "0.35.4"
+  },
+  "overrides": {
+    "@11ty/eleventy": {
+      "liquidjs": "10.27.2"
+    },
+    "liquidjs": {
+      "liquidjs": "10.27.2"
+    }
   }
 }
