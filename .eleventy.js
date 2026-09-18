@@ -14,6 +14,9 @@ const GYAZO_CACHE_PATH = path.join(CACHE_DIR, "gyazo-images.json");
 const GYAZO_URL_REGEX = /https:\/\/(?:[a-z]+\.)?gyazo\.com\/[^\s"'`)]+/gi;
 const GYAZO_FETCH_TIMEOUT_MS = 5000;
 const GYAZO_FETCH_DELAY_MS = 200;
+// A lookup that fails is remembered, so an outage costs one attempt per URL instead of one per build.
+// After this long the URL is tried again, which is how dimensions come back once Gyazo recovers.
+const GYAZO_FAILURE_RETRY_MS = 24 * 60 * 60 * 1000;
 const sleep = (ms = 0) => (ms > 0 ? new Promise((resolve) => setTimeout(resolve, ms)) : Promise.resolve());
 const SITE_DATA_PATH = path.join("src", "_data", "site.json");
 const MEDIA_MANIFEST_PATH = path.join("src", "_data", "media.json");
@@ -723,25 +726,35 @@ async function refreshGyazoMetadata() {
       // ignore unreadable files
     }
   }
+  const now = Date.now();
   let updated = false;
+  let failed = 0;
   for (const [normalized, fetchUrl] of urls) {
-    if (!gyazoMeta[normalized] || !gyazoMeta[normalized].width || !gyazoMeta[normalized].height) {
-      const meta = await fetchGyazoMeta(fetchUrl);
-      if (GYAZO_FETCH_DELAY_MS) {
-        await sleep(GYAZO_FETCH_DELAY_MS);
-      }
-      if (meta) {
-        gyazoMeta[normalized] = meta;
-        updated = true;
-      }
+    const cached = gyazoMeta[normalized];
+    if (cached && cached.width && cached.height) continue;
+    if (cached && cached.failedAt && now - cached.failedAt < GYAZO_FAILURE_RETRY_MS) {
+      failed += 1;
+      continue;
     }
+    const meta = await fetchGyazoMeta(fetchUrl);
+    if (GYAZO_FETCH_DELAY_MS) {
+      await sleep(GYAZO_FETCH_DELAY_MS);
+    }
+    if (meta) {
+      gyazoMeta[normalized] = meta;
+    } else {
+      // Record the failure too, or every build pays the full round trip again while Gyazo is down.
+      gyazoMeta[normalized] = { failedAt: now };
+      failed += 1;
+    }
+    updated = true;
   }
   const missing = Object.entries(gyazoMeta).filter(([, m]) => !m.width || !m.height).length;
   if (updated) {
     await saveGyazoCache();
   }
   if (missing > 0) {
-    console.warn(`[gyazo] ${missing} items missing dimensions; using fallback aspect (16:9).`);
+    console.warn(`[gyazo] ${missing} items missing dimensions (${failed} lookups failed); using fallback aspect (16:9).`);
   }
 }
 
