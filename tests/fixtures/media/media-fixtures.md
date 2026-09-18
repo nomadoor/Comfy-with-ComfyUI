@@ -61,6 +61,12 @@ Playwright の `tests/media.spec.ts` が使う検証用ページです。`COMFY_
 
 </div>
 
+<div data-fixture="wide-row">
+
+![a](/media/fixtures/r2_image.png){media=image} ![b](/media/fixtures/r2_image.png){media=image} ![c](/media/fixtures/r2_image.png){media=image} ![d](/media/fixtures/r2_video.mp4){media=loop}
+
+</div>
+
 <div data-fixture="lazy-spacer" style="height:300vh"></div>
 
 <div data-fixture="far-loop">

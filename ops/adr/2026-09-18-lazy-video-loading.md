@@ -47,3 +47,29 @@ Remaining: text still shifts by ~26 px when the web fonts arrive, which is unrel
 ## Scope
 
 Not included: re-encoding videos to smaller files, additional image transformation presets (would need a WAF rule change for little gain), and skipping autoplay for `prefers-reduced-motion`.
+
+## Follow-up: rows sized without JavaScript (2026-09-18)
+
+Measuring in Firefox (Chromium cannot decode the H.264 clips, which hid this) showed the largest shift
+on every article was still `media-row-fit.js`: it measured each `.article-media-row` after the page had
+been painted and applied a `--media-scale`, so for the first ~0.9 s a row was drawn at its unscaled
+size. On a 1920 px window headings moved up to 1316 px and the page was 18503 px before settling at
+17255 px; at 390 px the movement was 3712 px.
+
+The build now records one shared height per row (`--article-row-height`: the smallest member's own
+height, capped at 320 px) and each item's width is that height times its own aspect ratio, so the
+items line up by construction. Flexbox does the rest: when a row is too wide, `flex-shrink` takes the
+same proportion off every item, which is the uniform scale the script computed. `--media-scale` and
+the JS-applied `.article-media-row--mixed` class are gone, `media-row-fit.js` is deleted, and window
+resizing is handled by the layout itself.
+
+The shared height also removes an old inconsistency: the mixed-row rule read a video's height from
+`--article-media-height`, which is never set on a video figure, so a clip shorter than 320 px was
+stretched to the row height and `object-fit: cover` cropped it (a square 256 px clip on
+/ja/ai-capabilities/talking-head/ was drawn in a 193x242 box). Rows now keep every aspect ratio and
+are as tall as their shortest member instead; that row is 225 px tall and uncropped. Across the built
+site, all 613 rows have equal item heights and none overflows its row.
+
+Verified against the previous layout on six pages (ja/en, R2 and Gyazo) at 1920/1440/768/390 px: 263 of
+280 rows identical, the other 17 off by one pixel of rounding. Movement after the fix: 67 px at 1920 px
+and 272 px at 390 px, all of it from the web fonts.

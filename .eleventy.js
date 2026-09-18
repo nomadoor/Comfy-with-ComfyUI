@@ -1047,6 +1047,23 @@ export default function (eleventyConfig) {
     return Object.keys(attrs).length ? attrs : null;
   }
 
+
+  // Every item in a media row is drawn at the same height, so a row never has to be evened out after
+  // its media arrives. The shared height is the smallest of the items' own heights (capped at
+  // MEDIA_ROW_MAX_HEIGHT), which keeps every aspect ratio intact: nothing is stretched or cropped to
+  // match a neighbour, the row just ends up as tall as its shortest member.
+  const MEDIA_ROW_MAX_HEIGHT = 320;
+  
+  function rowHeightFor(images) {
+    const heights = images.map((token) => {
+      const media = resolveMedia(token.attrGet("src") || "", { mode: token.meta?.mediaMode, size: 1200 });
+      if (media.kind === "video") return media.height > 0 ? media.height : MEDIA_ROW_MAX_HEIGHT;
+      const { height } = getPreviewDimensions(media, 1200);
+      return height > 0 ? height : MEDIA_ROW_MAX_HEIGHT;
+    });
+    return Math.min(MEDIA_ROW_MAX_HEIGHT, ...heights);
+  }
+
   function renderMarkdownMedia(token) {
     const alt = escapeHTML(token.content || token.attrGet("alt") || "");
     const media = resolveMedia(token.attrGet("src") || "", { mode: token.meta.mediaMode, size: 1200 });
@@ -1100,12 +1117,14 @@ export default function (eleventyConfig) {
       tokens[i].type = "media_row_open";
       tokens[i].tag = "div";
       tokens[i].attrSet("class", "article-media-row");
+      tokens[i].attrSet("style", `--article-row-height:${rowHeightFor(children.filter((c) => c.type === "image"))}px`);
       tokens[i + 2].type = "media_row_close";
       tokens[i + 2].tag = "div";
     }
   });
 
-  markdownLib.renderer.rules.media_row_open = (tokens, idx) => `<div class="${tokens[idx].attrGet("class")}">`;
+  markdownLib.renderer.rules.media_row_open = (tokens, idx) =>
+    `<div class="${tokens[idx].attrGet("class")}" style="${tokens[idx].attrGet("style")}">`;
   markdownLib.renderer.rules.media_row_close = () => `</div>`;
 
   const defaultImageRenderer = markdownLib.renderer.rules.image || function (tokens, idx, options, env, self) {

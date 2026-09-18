@@ -1921,39 +1921,24 @@ h1 {
   overflow: hidden;
 }
 
-.article-media-row .article-media__frame {
-  width: calc(min(var(--article-media-width, 720px),
-        calc(var(--article-media-aspect, 16 / 9) * min(var(--article-media-height, 320px), 320px))) * var(--media-scale, 1));
-  max-width: 100%;
-  height: calc(min(var(--article-media-height, 320px), 320px) * var(--media-scale, 1));
-  min-height: 0;
-  max-height: none;
+/* Row items are laid out by flexbox alone, so a row has its final size in the first paint. Every item
+   is drawn at the row's shared height (`--article-row-height`, the smallest member's height, set
+   while the page is built), so its width is just that height times its own aspect ratio and all
+   items line up. When the row is too wide, flex-shrink takes the same proportion off every item,
+   which is the uniform scale the old media-row-fit.js measured and applied after the page had
+   already been painted. */
+.article-media-row > .article-media,
+.article-media-row > .article-video {
+  flex: 0 1 auto;
+  min-width: 0;
+  width: calc(var(--article-media-aspect, var(--article-video-aspect, 16 / 9))
+      * var(--article-row-height, 320px));
 }
 
-/* Size a row video from its recorded dimensions (the `--article-video-*` variables) instead of the
-   300px placeholder width a browser gives a video it has not loaded yet: with lazy loading the clip
-   arrives while the reader is looking at it, and the row must not resize then. */
-.article-media-row:not(.article-media-row--mixed) .article-video__frame {
-  width: calc(min(var(--article-video-width, 720px),
-        calc(var(--article-video-aspect, 16 / 9) * min(var(--article-video-height, 320px), 320px))) * var(--media-scale, 1));
-  max-width: 100%;
-  height: auto;
-  max-height: none;
-}
-
-.article-media-row--mixed .article-video__frame {
-  width: calc(min(var(--article-video-width, 720px),
-        calc(var(--article-video-aspect, 16 / 9) * min(var(--article-media-height, 320px), 320px))) * var(--media-scale, 1));
-  max-width: 100%;
-  height: calc(min(var(--article-media-height, 320px), 320px) * var(--media-scale, 1));
-  min-height: 0;
-  max-height: none;
-}
-
-.article-media-row .article-media__image {
+.article-media-row .article-media__frame,
+.article-media-row .article-video__frame {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  min-height: 0;
 }
 
 .article-body table {
