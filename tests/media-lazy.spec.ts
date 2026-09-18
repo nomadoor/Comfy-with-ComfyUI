@@ -76,16 +76,17 @@ test.describe("lazy video loading", () => {
       await page.goto(new URL(FIXTURE_PAGE, baseURL).href);
       await page.waitForTimeout(javaScriptEnabled ? 1500 : 400);
       const rows = await page.evaluate(() =>
-        [...document.querySelectorAll(".article-media-row")].map((row) =>
-          [...row.querySelectorAll(".article-video__frame, .article-media__frame")]
+        [...document.querySelectorAll(".article-media-row")].map((row) => ({
+          items: [...row.querySelectorAll(".article-video__frame, .article-media__frame")]
             .map((frame) => {
               const rect = frame.getBoundingClientRect();
               return `${Math.round(rect.width)}x${Math.round(rect.height)}`;
             })
-            .join(" ")
-        )
+            .join(" "),
+          // Items are shrunk to the row width, so a row never scrolls or clips its contents.
+          overflows: row.scrollWidth > row.clientWidth + 1
+        }))
       );
-
       await context.close();
       return rows;
     };
@@ -96,11 +97,13 @@ test.describe("lazy video loading", () => {
       expect(withoutJs.length, `rows at ${width}px`).toBeGreaterThan(0);
       // Rows must not be resized once scripts run: that resize was visible as a jump on every load.
       expect(withJs, `rows at ${width}px`).toEqual(withoutJs);
-      expect(withoutJs.some((row) => row.startsWith("0x")), "no row item may collapse").toBe(false);
-      // Items of a row share one height, whatever their own proportions are.
       for (const row of withoutJs) {
-        const rowHeights = row.split(" ").map((box) => Number(box.split("x")[1]));
-        expect(Math.max(...rowHeights) - Math.min(...rowHeights), `row heights at ${width}px: ${row}`).toBeLessThanOrEqual(1);
+        expect(row.items.startsWith("0x"), "no row item may collapse").toBe(false);
+        // Items of a row share one height, whatever their own proportions are.
+        const heights = row.items.split(" ").map((box) => Number(box.split("x")[1]));
+        expect(Math.max(...heights) - Math.min(...heights), `row heights at ${width}px: ${row.items}`).toBeLessThanOrEqual(1);
+        // The row itself must fit: items are shrunk to the row width, never scrolled or clipped.
+        expect(row.overflows, `row overflows at ${width}px: ${row.items}`).toBe(false);
       }
     }
   });
