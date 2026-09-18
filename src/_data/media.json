@@ -442,5 +442,211 @@
     "type": "image/webp",
     "bytes": 280494,
     "source": "f10b13bcb8cfd5d5"
+  },
+  "data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_create_list.png": {
+    "key": "images/ea08ce322619ca9b.webp",
+    "width": 1810,
+    "height": 795,
+    "type": "image/webp",
+    "bytes": 75620,
+    "source": "c626a9614fc2f4a8"
+  },
+  "data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_image_and_prompt.png": {
+    "key": "images/301ac76cb811d742.webp",
+    "width": 2264,
+    "height": 1365,
+    "type": "image/webp",
+    "bytes": 81224,
+    "source": "938960359693e46c"
+  },
+  "data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_image_from_list.png": {
+    "key": "images/f64612dd489452f2.webp",
+    "width": 2237,
+    "height": 1131,
+    "type": "image/webp",
+    "bytes": 85010,
+    "source": "629ad4a6e252782d"
+  },
+  "data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_input.png": {
+    "key": "images/f3a1b356cd246c87.webp",
+    "width": 960,
+    "height": 1072,
+    "type": "image/webp",
+    "bytes": 149650,
+    "source": "d13163eff684ab7d"
+  },
+  "data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_1.png": {
+    "key": "images/2a37e5a97061649f.webp",
+    "width": 960,
+    "height": 1072,
+    "type": "image/webp",
+    "bytes": 151926,
+    "source": "140e9aa87d75720b"
+  },
+  "data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_2.png": {
+    "key": "images/a3c14a97c7ef431b.webp",
+    "width": 960,
+    "height": 1072,
+    "type": "image/webp",
+    "bytes": 156168,
+    "source": "736c008780a5f6e3"
+  },
+  "data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_3.png": {
+    "key": "images/c5ba3cd8267a192f.webp",
+    "width": 960,
+    "height": 1072,
+    "type": "image/webp",
+    "bytes": 92838,
+    "source": "a829b0aea7953f68"
+  },
+  "data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_4.png": {
+    "key": "images/838965db02960b94.webp",
+    "width": 960,
+    "height": 1072,
+    "type": "image/webp",
+    "bytes": 96104,
+    "source": "fb9a6eb92650cd10"
+  },
+  "data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_prompt_mllm.png": {
+    "key": "images/22a41dd167daceae.webp",
+    "width": 1597,
+    "height": 861,
+    "type": "image/webp",
+    "bytes": 58952,
+    "source": "7b8bc427db3fc047"
+  },
+  "data-utilities/loop/loop_flux_2_klein_9b_qwen3_5.png": {
+    "key": "images/76e8d40b74eb361d.webp",
+    "width": 5841,
+    "height": 1967,
+    "type": "image/webp",
+    "bytes": 332468,
+    "source": "44490461778c02b1"
+  },
+  "data-utilities/loop/loop_iteration_value_fibonacci.png": {
+    "key": "images/21ef141dc7ff7f36.webp",
+    "width": 2402,
+    "height": 551,
+    "type": "image/webp",
+    "bytes": 35724,
+    "source": "885bb3911641d90b"
+  },
+  "data-utilities/loop/loop_iteration_value.png": {
+    "key": "images/1030653927c8b1b4.webp",
+    "width": 1872,
+    "height": 472,
+    "type": "image/webp",
+    "bytes": 22696,
+    "source": "027f71f91224c3b1"
+  },
+  "data-utilities/loop/loop_krea_2_preview_invalid.png": {
+    "key": "images/1be2b90599ae56a2.webp",
+    "width": 3582,
+    "height": 1174,
+    "type": "image/webp",
+    "bytes": 107376,
+    "source": "da639bd0b1c4d227"
+  },
+  "data-utilities/loop/loop_krea_2_preview_termination.png": {
+    "key": "images/cb88c41510da5d34.webp",
+    "width": 3582,
+    "height": 1174,
+    "type": "image/webp",
+    "bytes": 253134,
+    "source": "3d6d2e44c62a27ed"
+  },
+  "data-utilities/loop/loop_krea_2.png": {
+    "key": "images/e6012793e10ac614.webp",
+    "width": 3211,
+    "height": 1242,
+    "type": "image/webp",
+    "bytes": 239320,
+    "source": "c67549161d52c305"
+  },
+  "data-utilities/loop/loop_minimax_h3_i2va_image.png": {
+    "key": "images/502d422c7c1e82bd.webp",
+    "width": 1810,
+    "height": 885,
+    "type": "image/webp",
+    "bytes": 121122,
+    "source": "30d7a3ac222a4849"
+  },
+  "data-utilities/loop/loop_minimax_h3_i2va_last_frame.png": {
+    "key": "images/7465911bbabdbe43.webp",
+    "width": 1805,
+    "height": 725,
+    "type": "image/webp",
+    "bytes": 53524,
+    "source": "e524857e2eca5afb"
+  },
+  "data-utilities/loop/loop_minimax_h3_i2va_output.mp4": {
+    "key": "videos/693326e3af7f0786.mp4",
+    "width": 832,
+    "height": 1248,
+    "type": "video/mp4",
+    "bytes": 7284944,
+    "source": "b0b4bc532fd3314e",
+    "poster": {
+      "key": "images/d505409e9028605b.webp",
+      "width": 832,
+      "height": 1248,
+      "bytes": 203520
+    }
+  },
+  "data-utilities/loop/loop_minimax_h3_i2va_prompt_list.png": {
+    "key": "images/a57eb18837494b68.webp",
+    "width": 1302,
+    "height": 1292,
+    "type": "image/webp",
+    "bytes": 98904,
+    "source": "45740bbd1ed0bc4e"
+  },
+  "data-utilities/loop/loop_minimax_h3_i2va_video_concatenate.png": {
+    "key": "images/53ac351fe27007a1.webp",
+    "width": 1548,
+    "height": 1390,
+    "type": "image/webp",
+    "bytes": 167566,
+    "source": "471111e790e91ee2"
+  },
+  "data-utilities/loop/loop_minimax_h3_i2va_video.png": {
+    "key": "images/451ab6dc347391a2.webp",
+    "width": 1805,
+    "height": 572,
+    "type": "image/webp",
+    "bytes": 55678,
+    "source": "db7cddf8f4eddd04"
+  },
+  "data-utilities/loop/loop_minimax_h3_i2va.png": {
+    "key": "images/16069cde068bdec6.webp",
+    "width": 5981,
+    "height": 1959,
+    "type": "image/webp",
+    "bytes": 478040,
+    "source": "5ebc47e0e64b96e2"
+  },
+  "data-utilities/loop/loop_simple_accumulate.png": {
+    "key": "images/e96aa69c9ae35d05.webp",
+    "width": 1562,
+    "height": 472,
+    "type": "image/webp",
+    "bytes": 19026,
+    "source": "4fb2a3c498ec70dc"
+  },
+  "data-utilities/loop/loop_simple_for_list.png": {
+    "key": "images/178863239b332896.webp",
+    "width": 1764,
+    "height": 1651,
+    "type": "image/webp",
+    "bytes": 80418,
+    "source": "85412e90c511eb80"
+  },
+  "data-utilities/loop/loop_simple.png": {
+    "key": "images/6b529db79aaf688b.webp",
+    "width": 1562,
+    "height": 472,
+    "type": "image/webp",
+    "bytes": 18696,
+    "source": "d605b99241f2b7c9"
   }
 }

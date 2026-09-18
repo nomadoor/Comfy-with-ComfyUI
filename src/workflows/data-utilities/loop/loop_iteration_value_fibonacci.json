@@ -1,0 +1,601 @@
+{
+  "id": "95e8cf30-a490-466b-8572-4a3a7a3bd635",
+  "revision": 0,
+  "last_node_id": 17,
+  "last_link_id": 35,
+  "nodes": [
+    {
+      "id": 9,
+      "type": "CreateList",
+      "pos": [
+        1003.3861543665919,
+        191.9158645738339
+      ],
+      "size": [
+        140,
+        66
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "inputs.input0",
+          "type": "*",
+          "link": 26
+        },
+        {
+          "name": "inputs.input1",
+          "shape": 7,
+          "type": "*",
+          "link": 27
+        },
+        {
+          "name": "inputs.input2",
+          "shape": 7,
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "list",
+          "shape": 6,
+          "type": "*",
+          "links": [
+            12
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CreateList"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 6,
+      "type": "PrimitiveInt",
+      "pos": [
+        685.2077581174274,
+        319.11804150136385
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            27
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveInt"
+      },
+      "widgets_values": [
+        1,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "value": 1,
+        "fixed": "fixed"
+      }
+    },
+    {
+      "id": 1,
+      "type": "StartLoop",
+      "pos": [
+        1191.5645506157564,
+        172.35753805326607
+      ],
+      "size": [
+        349.177734375,
+        236
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "parent_iteration",
+          "shape": 7,
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "initial_iteration_value",
+          "shape": 7,
+          "type": "*",
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "name": "iteration_index",
+          "type": "INT",
+          "links": []
+        },
+        {
+          "name": "is_first",
+          "type": "BOOLEAN",
+          "links": []
+        },
+        {
+          "name": "is_last",
+          "type": "BOOLEAN",
+          "links": []
+        },
+        {
+          "name": "list_item",
+          "type": "*",
+          "links": null
+        },
+        {
+          "name": "current_iteration_value",
+          "type": "*",
+          "links": [
+            13,
+            14
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StartLoop"
+      },
+      "widgets_values": [
+        "simple",
+        6,
+        false
+      ],
+      "widgets_values_named": {
+        "mode": "simple",
+        "mode.num_iterations": 6,
+        "cache_iterations": false
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 3,
+      "type": "ComfyMathExpression",
+      "pos": [
+        1846.4118859608175,
+        172.35753805326607
+      ],
+      "size": [
+        210,
+        128
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "values.a",
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 31
+        },
+        {
+          "name": "values.b",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 32
+        },
+        {
+          "name": "values.c",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            19,
+            34
+          ]
+        },
+        {
+          "name": "BOOL",
+          "type": "BOOLEAN",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ComfyMathExpression"
+      },
+      "widgets_values": [
+        "a + b"
+      ],
+      "widgets_values_named": {
+        "expression": "a + b"
+      }
+    },
+    {
+      "id": 10,
+      "type": "GetItemFromList",
+      "pos": [
+        1588.577085475787,
+        172.35753805326607
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "list",
+          "type": "*",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            31
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GetItemFromList"
+      },
+      "widgets_values": [
+        0
+      ],
+      "widgets_values_named": {
+        "index": 0
+      }
+    },
+    {
+      "id": 17,
+      "type": "PreviewAny",
+      "pos": [
+        2609.9162874159088,
+        192.00443075337773
+      ],
+      "size": [
+        276.5015145607408,
+        301.12504728457543
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 35
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 16,
+      "type": "PrimitiveInt",
+      "pos": [
+        685.2077581174274,
+        172.35753805326607
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            26
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveInt"
+      },
+      "widgets_values": [
+        0,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "value": 0,
+        "fixed": "fixed"
+      }
+    },
+    {
+      "id": 11,
+      "type": "GetItemFromList",
+      "pos": [
+        1588.577085475787,
+        321.17982104123513
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "list",
+          "type": "*",
+          "link": 14
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            32,
+            33
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GetItemFromList"
+      },
+      "widgets_values": [
+        1
+      ],
+      "widgets_values_named": {
+        "index": 1
+      }
+    },
+    {
+      "id": 13,
+      "type": "CreateList",
+      "pos": [
+        2104.246686445848,
+        321.17982104123513
+      ],
+      "size": [
+        140,
+        86
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "inputs.input0",
+          "type": "*",
+          "link": 33
+        },
+        {
+          "name": "inputs.input1",
+          "shape": 7,
+          "type": "*",
+          "link": 19
+        },
+        {
+          "name": "inputs.input2",
+          "shape": 7,
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "list",
+          "shape": 6,
+          "type": "*",
+          "links": [
+            20
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CreateList"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 2,
+      "type": "EndLoop",
+      "pos": [
+        2292.0814869308783,
+        192.00443075337773
+      ],
+      "size": [
+        270,
+        98
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "output_value",
+          "shape": 7,
+          "type": "*",
+          "link": 34
+        },
+        {
+          "name": "next_iteration_value",
+          "shape": 7,
+          "type": "*",
+          "link": 20
+        },
+        {
+          "name": "terminations.termination0",
+          "shape": 7,
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "outputs",
+          "shape": 6,
+          "type": "INT",
+          "links": [
+            35
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EndLoop"
+      },
+      "widgets_values": [
+        true
+      ],
+      "widgets_values_named": {
+        "accumulate": true
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      12,
+      9,
+      0,
+      1,
+      1,
+      "*"
+    ],
+    [
+      13,
+      1,
+      4,
+      10,
+      0,
+      "*"
+    ],
+    [
+      14,
+      1,
+      4,
+      11,
+      0,
+      "*"
+    ],
+    [
+      19,
+      3,
+      1,
+      13,
+      1,
+      "INT"
+    ],
+    [
+      20,
+      13,
+      0,
+      2,
+      1,
+      "*"
+    ],
+    [
+      26,
+      16,
+      0,
+      9,
+      0,
+      "INT"
+    ],
+    [
+      27,
+      6,
+      0,
+      9,
+      1,
+      "INT"
+    ],
+    [
+      31,
+      10,
+      0,
+      3,
+      0,
+      "FLOAT,INT,BOOLEAN"
+    ],
+    [
+      32,
+      11,
+      0,
+      3,
+      1,
+      "FLOAT,INT,BOOLEAN"
+    ],
+    [
+      33,
+      11,
+      0,
+      13,
+      0,
+      "*"
+    ],
+    [
+      34,
+      3,
+      1,
+      2,
+      0,
+      "INT"
+    ],
+    [
+      35,
+      2,
+      0,
+      17,
+      0,
+      "INT"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8475541758098672,
+      "offset": [
+        -372.54269595249144,
+        263.01473635900516
+      ]
+    },
+    "frontendVersion": "1.52.7",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

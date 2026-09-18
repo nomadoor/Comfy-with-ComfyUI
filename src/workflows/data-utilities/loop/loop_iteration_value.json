@@ -1,0 +1,323 @@
+{
+  "id": "0557844e-a57c-4909-8ae6-be59d0c08b21",
+  "revision": 0,
+  "last_node_id": 6,
+  "last_link_id": 10,
+  "nodes": [
+    {
+      "id": 5,
+      "type": "PreviewAny",
+      "pos": [
+        2281.597385618925,
+        173.3807916722894
+      ],
+      "size": [
+        264.05736163367874,
+        240.19608274913168
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 3,
+      "type": "ComfyMathExpression",
+      "pos": [
+        1608.5677759960538,
+        172.35753805326607
+      ],
+      "size": [
+        282.05080469693735,
+        128
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "values.a",
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 9
+        },
+        {
+          "name": "values.b",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            2,
+            8
+          ]
+        },
+        {
+          "name": "BOOL",
+          "type": "BOOLEAN",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ComfyMathExpression"
+      },
+      "widgets_values": [
+        "a * 10"
+      ],
+      "widgets_values_named": {
+        "expression": "a * 10"
+      }
+    },
+    {
+      "id": 2,
+      "type": "EndLoop",
+      "pos": [
+        1966.1911833510358,
+        172.35753805326607
+      ],
+      "size": [
+        270,
+        98
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "output_value",
+          "shape": 7,
+          "type": "*",
+          "link": 2
+        },
+        {
+          "name": "next_iteration_value",
+          "shape": 7,
+          "type": "*",
+          "link": 8
+        },
+        {
+          "name": "terminations.termination0",
+          "shape": 7,
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "outputs",
+          "shape": 6,
+          "type": "INT",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EndLoop"
+      },
+      "widgets_values": [
+        true
+      ],
+      "widgets_values_named": {
+        "accumulate": true
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 1,
+      "type": "StartLoop",
+      "pos": [
+        1183.8174389630092,
+        172.35753805326607
+      ],
+      "size": [
+        349.177734375,
+        236
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "parent_iteration",
+          "shape": 7,
+          "type": "INT",
+          "link": null
+        },
+        {
+          "name": "initial_iteration_value",
+          "shape": 7,
+          "type": "*",
+          "link": 10
+        }
+      ],
+      "outputs": [
+        {
+          "name": "iteration_index",
+          "type": "INT",
+          "links": []
+        },
+        {
+          "name": "is_first",
+          "type": "BOOLEAN",
+          "links": []
+        },
+        {
+          "name": "is_last",
+          "type": "BOOLEAN",
+          "links": []
+        },
+        {
+          "name": "list_item",
+          "type": "*",
+          "links": null
+        },
+        {
+          "name": "current_iteration_value",
+          "type": "INT",
+          "links": [
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StartLoop"
+      },
+      "widgets_values": [
+        "simple",
+        4,
+        false
+      ],
+      "widgets_values_named": {
+        "mode": "simple",
+        "mode.num_iterations": 4,
+        "cache_iterations": false
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 6,
+      "type": "PrimitiveInt",
+      "pos": [
+        873.6919222926444,
+        192.1937615834975
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveInt"
+      },
+      "widgets_values": [
+        5,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "value": 5,
+        "fixed": "fixed"
+      }
+    }
+  ],
+  "links": [
+    [
+      2,
+      3,
+      1,
+      2,
+      0,
+      "INT"
+    ],
+    [
+      3,
+      2,
+      0,
+      5,
+      0,
+      "INT"
+    ],
+    [
+      8,
+      3,
+      1,
+      2,
+      1,
+      "INT"
+    ],
+    [
+      9,
+      1,
+      4,
+      3,
+      0,
+      "FLOAT,INT,BOOLEAN"
+    ],
+    [
+      10,
+      6,
+      0,
+      1,
+      1,
+      "INT"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9323095933908516,
+      "offset": [
+        -661.6990234658466,
+        162.11617400407908
+      ]
+    },
+    "frontendVersion": "1.52.7",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

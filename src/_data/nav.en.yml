@@ -127,6 +127,8 @@ sections:
             title: List
           - id: batch-video
             title: Batch & Video
+          - id: loop
+            title: Loops
           - id: realtime
             title: Realtime Processing
       - id: api

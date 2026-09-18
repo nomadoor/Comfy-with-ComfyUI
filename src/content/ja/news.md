@@ -5,13 +5,18 @@ slug: news
 navId: news
 title: "更新情報"
 created: 2026-01-15
-updated: 2026-09-14
+updated: 2026-09-19
 summary: "このサイトの更新情報"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/ja/data-utilities/loop/">
+    <span class="news-row__date">2026.9.19</span>
+    <span class="news-row__tag">data-utilities</span>
+    <span class="news-row__title">ループ処理のページを追加しました</span>
+  </a>
   <a class="news-row" href="/ja/basic-workflows/minimax-h3/">
     <span class="news-row__date">2026.9.14</span>
     <span class="news-row__tag">basic-workflows</span>

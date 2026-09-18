@@ -127,6 +127,8 @@ sections:
             title: List
           - id: batch-video
             title: Batch・動画
+          - id: loop
+            title: ループ処理
           - id: realtime
             title: リアルタイム処理
       - id: api
