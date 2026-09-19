@@ -45,7 +45,7 @@ curl -s -o /dev/null -w "%{http_code} %{content_type} %{size_download}\n" \
 
 **`_data/*.js` is cached per process.** Editing `src/_data/nav.*.yml`, a slug, `navId`, or `ops/ia.md` does **not** take effect until the server restarts — the running process keeps the nav it loaded at startup. It can also fail loudly: a renamed page left the old placeholder path in memory and the build died with `ENOENT: ... _site/ja/data-utilities/loops/index.html`. Article text and media are picked up normally; nav and identity changes are not.
 
-**`npm run build` refusing unregistered media is correct.** Production builds throw on a `/media/...` that is not in `src/_data/media.json`; dev servers only warn and render the original instead ([.eleventy.js:489](.eleventy.js:489)). So the build failing while writing an article is expected — it clears once the pre-commit `media:sync` uploads and registers the files. Do not "fix" it by editing `media.json` by hand.
+**`npm run build` refusing unregistered media is correct.** Production builds throw on a `/media/...` that is not in `src/_data/media.json`; dev servers only warn and render the original instead ([.eleventy.js:489](.eleventy.js:489)). So the build failing while an article is still uncommitted is expected; it clears when the pre-commit `media:sync` uploads and registers the files. After that the build must pass — see [release-check](../release-check/SKILL.md). Do not "fix" it by editing `media.json` by hand.
 
 **Video posters do not exist before upload.** In the dev preview a video's poster is empty, because the poster is a frame `media:sync` extracts and uploads. `{media=player}` therefore shows no thumbnail locally; `{media=loop}` plays regardless. Nothing is wrong.
 

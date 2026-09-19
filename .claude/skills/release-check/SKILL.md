@@ -22,7 +22,7 @@ git diff --check
 
 ## Notes
 
-- `npm run build` failing on media that is not in `src/_data/media.json` is expected while an article is unpublished — the pre-commit `media:sync` registers it. See [preview-site](../preview-site/SKILL.md).
+- `npm run build` failing on media that is not in `src/_data/media.json` is expected **only before the commit** — the pre-commit `media:sync` registers it. Once committed, the build has to pass; a still-failing build is a real failure, not the draft state. Never hand-edit `media.json`. See [preview-site](../preview-site/SKILL.md).
 - Nav, slug or `ops/ia.md` changes need the dev server restarted before they show up.
 - In this environment, Playwright may need approval because Eleventy dev server binds `0.0.0.0`.
 - Report checks that were not run and why.

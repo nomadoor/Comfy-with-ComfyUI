@@ -136,7 +136,7 @@
 - 原本を差し替えた場合も、記事などと一緒にコミットすれば自動で新しい内容がアップロードされる。原本だけを差し替えて記事を変えない場合は、フックが動かないので `npm run media:sync` を実行し、更新された `src/_data/media.json` をコミットする。
 - `media.comfyui.nomadoor.net/...` の物理 URL は記事に直接書かない（`check:media` でエラー）。
 - 原本は `<セクション>/<記事 slug>/<ファイル名>` に置く（workflow JSON と同じ構成）。フォルダは既存の記事 slug をそのまま使う。
-- ファイル名は **記事 slug ではなく「何が写っているか」** で付ける。フォルダがすでに slug を持っているので、繰り返す必要はない。モデル名などの綴りは、既存フォルダの表記に合わせる（例: `basic-workflows/krea-2/krea_2_turbo_text2image.json`）。
+- ファイル名は **記事 slug ではなく「何が写っているか」** で付ける。フォルダがすでに slug を持っているので、繰り返す必要はない。モデル名などの綴りは、既存の素材や workflow JSON の表記に合わせる（例: `basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png`）。
 - ファイル名は小文字 snake_case で、単体で何の画像か分かる名前にする（例: `minimax_h3_audio_driven_i2va.png`。`audio_driven_i2va.png` まで短くしない）。記事タイトルや本文では正式表記（`MiniMax H3` など）を使う。
 - 公開後の論理名は安定 ID として扱い、安易に変えない。
 - 動画（mp4、H.264）も R2 に置ける（ffmpeg が必要: `sudo apt install ffmpeg`）。Gyazo の URL を直接書いてもよい。

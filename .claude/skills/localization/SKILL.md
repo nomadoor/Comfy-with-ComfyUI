@@ -38,4 +38,4 @@ Part of the article pipeline in [article-authoring](../article-authoring/SKILL.m
 
 After this: [news-readme-update](../news-readme-update/SKILL.md) — the news row is added in every language that now has a page, not just JA.
 
-When the JA page is new rather than edited, the locale nav entries (`src/_data/nav.{en,zh}.yml`) are part of this step, and so is the ADR's record of localization scope if [ia-nav-adr](../ia-nav-adr/SKILL.md) produced one.
+When a locale page is newly created, that locale's nav entry (`src/_data/nav.en.yml` or `nav.zh.yml`) is part of this step — only for the locales actually requested, and so is the ADR's record of localization scope if [ia-nav-adr](../ia-nav-adr/SKILL.md) produced one.

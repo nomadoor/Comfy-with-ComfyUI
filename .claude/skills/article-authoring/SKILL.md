@@ -12,7 +12,7 @@ This skill is the entry point for a new article. The steps after it are separate
 1. [external-model-research](../external-model-research/SKILL.md) — before writing, when the page covers a model or node you have not verified
 2. **article-authoring** (here) — the Japanese page. JA is always the source
 3. [workflow-json](../workflow-json/SKILL.md) / [ia-nav-adr](../ia-nav-adr/SKILL.md) — when the page ships workflow files, or changes placement, slug or nav
-4. [preview-site](../preview-site/SKILL.md) — check it on localhost before anything is uploaded
+4. [preview-site](../preview-site/SKILL.md) — check it on localhost. Not a one-off step: look again after any later step changes what a page renders
 5. [localization](../localization/SKILL.md) — EN/ZH, only when the owner asks
 6. [news-readme-update](../news-readme-update/SKILL.md) — one news row per language that exists
 7. [release-check](../release-check/SKILL.md) — checks before commit
