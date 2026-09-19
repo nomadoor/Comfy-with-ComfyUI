@@ -23,3 +23,9 @@ description: Use when researching current model, paper, GitHub, Hugging Face, Mo
 
 - `npm run check:content`
 - `npm run build`
+
+## Pipeline
+
+Comes before writing in the article pipeline ([article-authoring](../article-authoring/SKILL.md)): run it when the page covers a model, node or upstream behavior you have not verified against the source.
+
+Findings go into the article, an ADR, or your reply to the owner. Never into a pull request body — see [publish-pr](../publish-pr/SKILL.md) for why an upstream reference must not be linked there.

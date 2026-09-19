@@ -17,3 +17,11 @@ description: Use when updating src/content/*/news.md, README.md, public changelo
 
 - `npm run check:content`
 - `npm run build`
+
+## Pipeline
+
+Part of the article pipeline in [article-authoring](../article-authoring/SKILL.md).
+
+Add one row per language that actually has the page. If [localization](../localization/SKILL.md) has not run, JA only.
+
+Next: [release-check](../release-check/SKILL.md).

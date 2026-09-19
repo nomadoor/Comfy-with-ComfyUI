@@ -25,3 +25,9 @@ description: Use when modifying CSS, layout, components, icons, client-side Java
 - `npm run check:assets`
 - `npm run build`
 - `npm run test:playwright`
+
+## Pipeline
+
+Check the result on localhost with [preview-site](../preview-site/SKILL.md), then [release-check](../release-check/SKILL.md) — layout and client JS changes need `npm run test:playwright`.
+
+Design rules that outlive the change belong in `/ops/style-design.md` or an ADR via [ia-nav-adr](../ia-nav-adr/SKILL.md).

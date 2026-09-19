@@ -31,3 +31,11 @@ description: Use when translating, syncing, or reviewing JA/EN/ZH documentation 
 
 - `npm run check:content`
 - `npm run build`
+
+## Pipeline
+
+Part of the article pipeline in [article-authoring](../article-authoring/SKILL.md). Only run it when the owner asks for it in the current task.
+
+After this: [news-readme-update](../news-readme-update/SKILL.md) — the news row is added in every language that now has a page, not just JA.
+
+When the JA page is new rather than edited, the locale nav entries (`src/_data/nav.{en,zh}.yml`) are part of this step, and so is the ADR's record of localization scope if [ia-nav-adr](../ia-nav-adr/SKILL.md) produced one.

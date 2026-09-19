@@ -23,3 +23,7 @@ Checked:
 
 One note: ...
 ```
+
+## Pipeline
+
+This is also the voice for pull request titles and bodies — see [publish-pr](../publish-pr/SKILL.md), which sets what a PR body may and may not contain.

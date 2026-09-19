@@ -32,3 +32,17 @@ description: Use when changing information architecture, section placement, navi
 - `npm run check:content`
 - `npm run build`
 - `npm run test:playwright` for sidebar, search, language switch, previous/next, or notes changes.
+
+## Naming
+
+Slugs and asset prefixes are identifiers and stay singular, because English uses the singular in attributive position — `loop_simple.png`, never `loops_simple.png`. A display title or nav label is not attributive and may be plural when that is the natural English (`Loops`).
+
+Within a section, singular marks a page about one mechanism (`queue`, `list`, `batch-video`) and plural a page enumerating many items (`data-types`, `text-ops`, `wildcards`). Check the siblings before choosing.
+
+An ADR records the decision as it shipped. If the scope changes while the work is in progress — localization was requested halfway, placement moved — update the ADR before the PR, or it documents a plan nobody followed.
+
+## Pipeline
+
+Part of the article pipeline in [article-authoring](../article-authoring/SKILL.md), alongside [workflow-json](../workflow-json/SKILL.md).
+
+Nav and slug changes do not reach a running dev server — restart it, see [preview-site](../preview-site/SKILL.md).

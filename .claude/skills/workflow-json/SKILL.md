@@ -32,3 +32,11 @@ For a single file during iteration:
 ```bash
 node -e "JSON.parse(require('node:fs').readFileSync(process.argv[1], 'utf8'))" path/to/workflow.json
 ```
+
+## Pipeline
+
+Part of the article pipeline in [article-authoring](../article-authoring/SKILL.md), alongside [ia-nav-adr](../ia-nav-adr/SKILL.md) when placement or slug changes.
+
+File naming follows `/ops/style-writing.md` section 08 — the same rule as media originals. Check sibling folders before inventing a spelling.
+
+Check the result on localhost with [preview-site](../preview-site/SKILL.md) before [release-check](../release-check/SKILL.md).

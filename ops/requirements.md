@@ -117,6 +117,8 @@
 - Exception: media embeds (`![](...){media=image|loop|player}`, compatible `{gyazo=...}`, and equivalent `mediaRow` usage) are allowed without per-image width/height in Markdown because the renderer takes dimensions from `src/_data/media.json` (R2) or the Gyazo metadata cache and CSS enforces media caps.
 - R2 media is referenced as `/media/<logical name>` (reserved virtual namespace), must be registered in `src/_data/media.json`, and must match its display mode; physical R2 URLs must not be written in content or data (`npm run check:media`). See `ops/adr/2026-09-17-media-layer-r2-gyazo.md`.
 - Update README/ADRs whenever IA or UX changes.
+- Pull request titles, bodies and comments link only within this repository. No other repository's issues or pull requests, in any form, and no external URLs — a cross-repository reference posts a backlink on the target's timeline and cannot be withdrawn. Upstream references go in articles, ADRs or code comments instead.
+- No AI or Claude attribution in commits or pull requests.
 
 ## 12. Deliverables
 - Required folders: `.eleventy.js`, `layouts/`, `includes/`, `assets/js/`, `_data/`, `src/content/**`.

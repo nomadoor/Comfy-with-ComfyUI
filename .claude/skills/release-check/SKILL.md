@@ -22,7 +22,14 @@ git diff --check
 
 ## Notes
 
+- `npm run build` failing on media that is not in `src/_data/media.json` is expected while an article is unpublished — the pre-commit `media:sync` registers it. See [preview-site](../preview-site/SKILL.md).
+- Nav, slug or `ops/ia.md` changes need the dev server restarted before they show up.
 - In this environment, Playwright may need approval because Eleventy dev server binds `0.0.0.0`.
 - Report checks that were not run and why.
 - Do not push or open/update PRs unless the owner explicitly says to do so.
-- PR titles should describe the change, without agent labels such as `[codex]` or `[claude]`.
+
+## Pipeline
+
+The last check before publishing in the article pipeline ([article-authoring](../article-authoring/SKILL.md)). Passing these checks is not permission to commit, push, or open a PR.
+
+Next, only on an explicit request: [publish-pr](../publish-pr/SKILL.md).
