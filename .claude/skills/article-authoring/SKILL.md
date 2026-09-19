@@ -5,6 +5,21 @@ description: Use when creating or substantially editing documentation articles i
 
 # Article Authoring
 
+## Pipeline
+
+This skill is the entry point for a new article. The steps after it are separate skills; read the one you need when you reach it, and tell the owner what is still outstanding.
+
+1. [external-model-research](../external-model-research/SKILL.md) — before writing, when the page covers a model or node you have not verified
+2. **article-authoring** (here) — the Japanese page. JA is always the source
+3. [workflow-json](../workflow-json/SKILL.md) / [ia-nav-adr](../ia-nav-adr/SKILL.md) — when the page ships workflow files, or changes placement, slug or nav
+4. [preview-site](../preview-site/SKILL.md) — check it on localhost. Not a one-off step: look again after any later step changes what a page renders
+5. [localization](../localization/SKILL.md) — EN/ZH, only when the owner asks
+6. [news-readme-update](../news-readme-update/SKILL.md) — one news row per language that exists
+7. [release-check](../release-check/SKILL.md) — checks before commit
+8. [publish-pr](../publish-pr/SKILL.md) — only on an explicit request
+
+Do not run steps 5-8 on your own initiative. Finish the step you are on, then say which steps remain.
+
 ## Read First
 
 - Read `/ops/style-writing.md` for style, structure, media embeds, mediaRow, tags, and translation-adjacent rules.

@@ -32,3 +32,19 @@ description: Use when changing information architecture, section placement, navi
 - `npm run check:content`
 - `npm run build`
 - `npm run test:playwright` for sidebar, search, language switch, previous/next, or notes changes.
+
+## Naming
+
+An **asset prefix** is always singular, because it modifies the rest of the name and English uses the singular in attributive position — `loop_simple.png`, never `loops_simple.png`.
+
+A **slug or navId** follows the subject instead: singular for a page about one mechanism (`queue`, `list`, `batch-video`, `loop`), plural for a page enumerating many items (`data-types`, `text-ops`, `wildcards`). Check the siblings before choosing.
+
+A **display title or nav label** is not attributive either, and may be plural where that is the natural English even when the slug is singular — `loop` and `Loops`.
+
+An ADR records the decision as it shipped. If the scope changes while the work is in progress — localization was requested halfway, placement moved — update the ADR before the PR, or it documents a plan nobody followed.
+
+## Pipeline
+
+Part of the article pipeline in [article-authoring](../article-authoring/SKILL.md), alongside [workflow-json](../workflow-json/SKILL.md).
+
+Nav and slug changes do not reach a running dev server — restart it, see [preview-site](../preview-site/SKILL.md).
