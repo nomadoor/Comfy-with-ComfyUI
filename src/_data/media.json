@@ -572,17 +572,17 @@
     "source": "ef62f622994ccdf4"
   },
   "basic-workflows/qwen-image-2-1/qwen_image_2_1_panorama.mp4": {
-    "key": "videos/0d74caacf73161d3.mp4",
-    "width": 1798,
-    "height": 1078,
+    "key": "videos/f7cebbcf83b928a2.mp4",
+    "width": 1706,
+    "height": 1028,
     "type": "video/mp4",
-    "bytes": 5068757,
-    "source": "2da9d1fd8d255e32",
+    "bytes": 5659121,
+    "source": "cff16ca5c3136425",
     "poster": {
-      "key": "images/3399b63a6b9c7188.webp",
-      "width": 1798,
-      "height": 1078,
-      "bytes": 98906
+      "key": "images/ac7578cbfa4c14b1.webp",
+      "width": 1706,
+      "height": 1028,
+      "bytes": 88746
     }
   },
   "basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image_output.png": {

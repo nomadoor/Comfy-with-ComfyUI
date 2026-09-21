@@ -1,8 +1,8 @@
 {
   "id": "179e9c66-d274-4857-bcd9-34408448057b",
   "revision": 0,
-  "last_node_id": 83,
-  "last_link_id": 188,
+  "last_node_id": 84,
+  "last_link_id": 191,
   "nodes": [
     {
       "id": 8,
@@ -68,7 +68,7 @@
           "type": "MODEL",
           "slot_index": 0,
           "links": [
-            105
+            191
           ]
         }
       ],
@@ -119,12 +119,12 @@
         "ver": "0.3.33"
       },
       "widgets_values": [
-        "qwen3vl_8b_fp8_scaled.safetensors",
+        "qwen3vl_8b_int8_convrot.safetensors",
         "qwen_image",
         "default"
       ],
       "widgets_values_named": {
-        "clip_name": "qwen3vl_8b_fp8_scaled.safetensors",
+        "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
         "type": "qwen_image",
         "device": "default"
       },
@@ -189,7 +189,7 @@
         {
           "name": "model",
           "type": "MODEL",
-          "link": 105
+          "link": 191
         },
         {
           "name": "positive",
@@ -532,14 +532,6 @@
       "IMAGE"
     ],
     [
-      105,
-      37,
-      0,
-      3,
-      0,
-      "MODEL"
-    ],
-    [
       157,
       64,
       0,
@@ -602,16 +594,24 @@
       64,
       4,
       "VAE"
+    ],
+    [
+      191,
+      37,
+      0,
+      3,
+      0,
+      "MODEL"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.693433494944153,
+      "scale": 0.6303940863128672,
       "offset": [
-        1273.9292945711984,
-        437.63036425295047
+        1068.9459254260585,
+        313.8314430684178
       ]
     },
     "frontendVersion": "1.53.6",
