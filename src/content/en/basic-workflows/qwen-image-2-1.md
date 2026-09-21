@@ -18,7 +18,7 @@ tags: []
 
 [Qwen-Image-2.1](https://qwen.ai/blog?id=qwen-image-2.1) is an open-weight image generation model that combines image generation and editing in a single model.
 
-The closed Qwen-Image 2.0 was released first, but in the open-weight Qwen-Image family, this is the successor to `Qwen-Image-2512` and `Qwen-Image-Edit-2511`.
+A closed-source Qwen-Image 2.0 came first, but within the open-weight Qwen-Image family this is the successor to `Qwen-Image-2512` and `Qwen-Image-Edit-2511`.
 
 Previous Qwen-Image models used separate models for generation and editing. Like [MiniMax H3](/en/basic-workflows/minimax-h3/), the 2.x architecture feeds both text and reference images into a single DiT, so the same model can handle image generation, editing, and Ref2Image.
 
@@ -125,7 +125,7 @@ As with other image-editing models, simply give an instruction such as “remove
 **Text Encode Qwen Image 2.1**
 
 - `resolution`
-  - Unlike Ref2Image, set this to `0`. The image is not scaled; its dimensions are only rounded to multiples of 32 (the image has already been resized, so in practice nothing changes)
+  - Unlike Ref2Image, set this to `0`. The image is not scaled; its dimensions are only rounded to multiples of 32 (I resize the image beforehand, so in practice nothing changes)
   - It is still a good idea to match the size seen by the model to the output size
 
 {% endmediaRow %}
@@ -221,9 +221,9 @@ Save the output as PNG to preserve transparency. JPEG would discard the Alpha Ch
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_rgba_output.png){media=image}
 
-### Cutout
+### Subject extraction
 
-Combine transparent generation with image editing and—yes—you can make cutouts too.
+Combine transparent generation with image editing and—yes—you can pull a subject out of an image too.
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction.png){media=image}
 
