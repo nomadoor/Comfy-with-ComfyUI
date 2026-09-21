@@ -298,6 +298,8 @@ sections:
                 title: Qwen-Image-Edit
               - id: qwen-image-layered
                 title: Qwen-Image-Layered
+          - id: qwen-image-2-1
+            title: Qwen-Image-2.1
           - id: z-image
             title: Z-Image
             children:
