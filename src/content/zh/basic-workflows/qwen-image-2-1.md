@@ -63,7 +63,7 @@ tags: []
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="121s", tags=["4MP"], samplers=[{ speed: "3.45 s/it" }] %}
 
 - `CFG`: 1.0
   - 官方工作流没有使用 CFG，不过稍微提高一点并尝试 Negative Prompt，或许也值得一试
@@ -82,7 +82,7 @@ Seed 带来的差异非常大，可以说有好有坏。改变分辨率也会让
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="108s", tags=["2MP"], samplers=[{ speed: "1.95 s/it" }] %}
 
 - 最多可以输入 10 张参考图像
 - 在提示词中用“`<image1>` 中的女性坐在 `<image2>` 中的地点”这种方式，指定要使用的图像
@@ -117,7 +117,7 @@ Seed 带来的差异非常大，可以说有好有坏。改变分辨率也会让
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="57s", tags=["1MP"], samplers=[{ speed: "1.72 it/s" }] %}
 
 和以往的图像编辑一样，只要直接输入“删除男性”“把衣服变成红色”“改成水彩画”等指示即可。
 
@@ -138,7 +138,7 @@ Seed 带来的差异非常大，可以说有好有坏。改变分辨率也会让
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="64s", tags=["1MP"], samplers=[{ speed: "1.72 it/s" }] %}
 
 直接在图像上圈出要编辑的对象。
 
@@ -154,7 +154,7 @@ Seed 带来的差异非常大，可以说有好有坏。改变分辨率也会让
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="117s", tags=["2MP"], samplers=[{ speed: "2.27 s/it" }] %}
 
 思路与彩色圆圈相同，不过这里会将表示位置的黑白图像，**与原图分开** 输入。
 
@@ -181,7 +181,7 @@ Seed 带来的差异非常大，可以说有好有坏。改变分辨率也会让
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="93s", tags=["2MP"], samplers=[{ speed: "1.67 s/it" }] %}
 
 将横向图像作为参考图像输入，却把生成尺寸设成纵向，会怎么样呢？
 
@@ -196,6 +196,10 @@ Qwen-Image-2.1 会生成一张补全上下空间的新图像。
 ### 根据引导图像生成
 
 虽然它本身并不是 ControlNet，但可以把姿势图、深度图等作为图像编辑的参考，让模型根据这些图像进行生成。
+
+**所需自定义节点**
+
+- [Fannovel16/comfyui_controlnet_aux](https://github.com/Fannovel16/comfyui_controlnet_aux)
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose.png){media=image}
 
@@ -237,7 +241,7 @@ Qwen-Image-2.1 只需稍微修改提示词，就可以生成透明图像。
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_rgba.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_rgba.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_rgba.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="65s", tags=["2MP"], samplers=[{ speed: "1.11 s/it" }] %}
 
 按下面的格式编写提示词。
 
@@ -259,7 +263,7 @@ This is an RGBA image with transparency. <在这里填写要生成的内容>. Th
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="90s", tags=["2MP"], samplers=[{ speed: "1.67 s/it" }] %}
 
 使用刚才的格式，并用 `Extract 〇〇` 指定要提取的内容即可。
 
@@ -280,7 +284,7 @@ This is an RGBA image with transparency. <在这里填写要生成的内容>. Th
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_panorama.mp4){media=loop}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_panorama.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_panorama.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="159s", tags=["4MP"], samplers=[{ speed: "4.29 s/it" }] %}
 
 这个工作流会参考原图，生成一张横向的 2:1 图像。
 

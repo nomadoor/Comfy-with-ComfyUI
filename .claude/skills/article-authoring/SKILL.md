@@ -15,7 +15,7 @@ This skill is the entry point for a new article. The steps after it are separate
 4. [preview-site](../preview-site/SKILL.md) — check it on localhost. Not a one-off step: look again after any later step changes what a page renders
 5. [localization](../localization/SKILL.md) — EN/ZH, only when the owner asks
 6. [news-readme-update](../news-readme-update/SKILL.md) — one news row per language that exists
-7. [release-check](../release-check/SKILL.md) — checks before commit
+7. [release-check](../release-check/SKILL.md) — before commit, re-audit the complete article package from the final Japanese source; prior step completion is not evidence
 8. [publish-pr](../publish-pr/SKILL.md) — only on an explicit request
 
 Do not run steps 5-8 on your own initiative. Finish the step you are on, then say which steps remain.
