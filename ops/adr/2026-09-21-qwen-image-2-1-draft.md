@@ -14,6 +14,7 @@ Qwen-Image-2.1 was released on 2026-09-20 with native ComfyUI support. The site 
 - Treat Japanese as the source. The owner later requested EN/ZH localization and matching navigation before the pull request.
 - Use `/media/basic-workflows/qwen-image-2-1/<logical name>` for new article media. Do not add new Gyazo references or physical R2 URLs.
 - Place the Japanese page immediately after the `Qwen-Image` entry and its children under `基本のworkflow` → `他の基盤モデル`, so the Qwen family stays contiguous. It is a sibling rather than a child of `Qwen-Image`: 2.1 supersedes that generation rather than being a variant of it. Nav position does not affect the existing pages' URLs.
+- The 2026-09-22 follow-up adds `ガイド画像から生成` and `Upscale` under image editing, using the owner-supplied workflows, media, measurements, and prose. The finalized additions are localized into EN/ZH before publication.
 
 ## Scope
 

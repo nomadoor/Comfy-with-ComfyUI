@@ -194,6 +194,38 @@ workflow は Ref2Image とほとんど同じです。違うのは、生成する
 
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting_output.png){media=image}
 
+### ガイド画像から生成
+
+ControlNet そのものではありませんが、ポーズ画像や深度マップなどを画像編集の参照として渡し、それをもとに画像を生成できます。
+
+![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose.png){media=image}
+
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="82s", tags=["2MP"], samplers=[{ speed: "1.38 s/it" }] %}
+
+参照画像も一緒に入力し、その人物を指定したポーズにしてみましょう。
+
+わざわざ棒人間に直す必要があるのか？という気もしますが、「ポーズだけ見てほしい」といっていても、服装や背景など余計な情報まで引っ張ってしまうことがあります。
+
+ControlNet だから Pose を使うというより、参照画像から余計な情報を削ぎ落とし、ポーズや形だけを取り出して渡す、という意味合いのほうが強いですね。
+
+![reference](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_ref.png){media=image} ![pose](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_pose.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_output.png){media=image}
+
+### Upscale
+
+せっかく 4 MP まで生成できるので、画質の荒い画像をきれいにしてもらいましょう。
+
+![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale.png){media=image}
+
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="212s", tags=["4MP"], samplers=[{ speed: "5.28 s/it" }] %}
+
+あらかじめ 4 MP まで拡大した画像を参照として入力し、それを元にリファインしてもらいます。
+
+このモデルは参照画像を保持する力が非常に高いので、Upscale は、おそらく非常に得意なタスクの一つです。
+
+その一方で、いわゆるエンハンスのように大きく描き直すには、少し工夫がいるかもしれませんね。
+
+![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale_output.png){media=image}
+
 ---
 
 ## 透過画像

@@ -6,7 +6,7 @@ slug: qwen-image-2-1
 navId: qwen-image-2-1
 title: "Qwen-Image-2.1"
 created: 2026-09-21
-updated: 2026-09-21
+updated: 2026-09-22
 summary: "Image generation and editing with Qwen-Image-2.1"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -192,6 +192,38 @@ It redraws the whole image rather than only the added space, so the original are
 This is not a way to preserve the source image precisely, but it is wonderfully simple.
 
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting_output.png){media=image}
+
+### Generate from guide images
+
+Although this is not ControlNet itself, you can pass pose images, depth maps, and similar images as image-editing references and generate images based on them.
+
+![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose.png){media=image}
+
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="82s", tags=["2MP"], samplers=[{ speed: "1.38 s/it" }] %}
+
+Let’s also provide a reference image and put the person in a specified pose.
+
+You might wonder whether turning the pose into a stick figure is really necessary. Even if you ask the model to look only at the pose, it may also pick up unnecessary details such as the clothing and background.
+
+Rather than using Pose simply because that is what you do with ControlNet, the point here is to strip away unnecessary information from the reference image and pass only the pose or shape.
+
+![reference](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_ref.png){media=image} ![pose](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_pose.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_output.png){media=image}
+
+### Upscale
+
+Since it can generate images up to 4 MP, let’s use that ability to clean up a low-quality image.
+
+![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale.png){media=image}
+
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="212s", tags=["4MP"], samplers=[{ speed: "5.28 s/it" }] %}
+
+First upscale the image to 4 MP and provide it as a reference, then have the model refine it.
+
+This model is very good at preserving the reference image, so Upscale is probably one of its strongest tasks.
+
+On the other hand, getting it to redraw the image more aggressively, as in what is often called enhancement, may take a little ingenuity.
+
+![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale_output.png){media=image}
 
 ---
 
