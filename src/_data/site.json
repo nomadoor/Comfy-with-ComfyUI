@@ -127,6 +127,16 @@
         "ja": "ダウンロードしました",
         "en": "Downloaded",
         "zh": "已下载"
+      },
+      "performanceLabel": {
+        "ja": "パフォーマンス",
+        "en": "Performance",
+        "zh": "性能参考"
+      },
+      "levelLabel": {
+        "ja": "レベル",
+        "en": "level",
+        "zh": "等级"
       }
     },
     "headingAnchor": {

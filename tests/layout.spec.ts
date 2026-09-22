@@ -416,6 +416,19 @@ test.describe("Layout rails", () => {
     await expect(copyButton).toHaveClass(/is-success/);
   });
 
+  test("code block copy tooltip remains anchored above its button", async ({ page }) => {
+    await page.goto("/ja/data-utilities/sam3/");
+    const copyButton = page.locator(".code-copy").first();
+    await expect(copyButton).toBeVisible();
+
+    const tooltipBottom = await copyButton.evaluate(
+      (element) => getComputedStyle(element, "::after").bottom
+    );
+
+    expect(tooltipBottom).not.toBe("auto");
+    expect(Number.parseFloat(tooltipBottom)).toBeGreaterThan(20);
+  });
+
   test("assistant rail opens info window and closes via the close button", async ({ page }) => {
     await page.setViewportSize({ width: 1920, height: 1080 });
     await page.goto(SAMPLE_PAGE);

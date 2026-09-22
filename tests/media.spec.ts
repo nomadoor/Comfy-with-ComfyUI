@@ -162,4 +162,29 @@ test.describe("Media layer fixtures", () => {
     await expect(lightboxVideo).toHaveAttribute("src", `https://i.gyazo.com/${GYAZO_PLAYER_ID}.mp4`);
     expect(await lightboxVideo.evaluate((el: HTMLVideoElement) => el.loop)).toBe(false);
   });
+
+  test("lightbox keeps the loaded image available to the native context menu", async ({ page }) => {
+    await fixture(page, "r2-image").locator("img").click();
+
+    const imageStack = page.locator("[data-lightbox-image]");
+    const rawImage = page.locator("[data-lightbox-raw]");
+    await expect.poll(() => rawImage.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth)).toBe(320);
+
+    await page.evaluate(() => {
+      (window as typeof window & { __lightboxContextTarget?: string }).__lightboxContextTarget = "";
+      document.addEventListener("contextmenu", (event) => {
+        (window as typeof window & { __lightboxContextTarget?: string }).__lightboxContextTarget = (event.target as Element)?.tagName || "";
+      }, { once: true });
+    });
+
+    const imageBox = await rawImage.boundingBox();
+    expect(imageBox).not.toBeNull();
+    await page.mouse.click(imageBox!.x + imageBox!.width / 2, imageBox!.y + imageBox!.height / 2, { button: "right" });
+    await expect.poll(() => page.evaluate(
+      () => (window as typeof window & { __lightboxContextTarget?: string }).__lightboxContextTarget
+    )).toBe("IMG");
+
+    await rawImage.click();
+    await expect(imageStack).toHaveAttribute("data-zoom-scale", "2");
+  });
 });

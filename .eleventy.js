@@ -24,6 +24,7 @@ const MEDIA_MANIFEST_PATH = path.join("src", "_data", "media.json");
 const MEDIA_FIXTURES_ENABLED = process.env.COMFY_MEDIA_FIXTURES === "1";
 const MEDIA_FIXTURE_MANIFEST_PATH = path.join("tests", "fixtures", "media", "media.json");
 const MEDIA_FIXTURE_PAGE_PATH = path.join("tests", "fixtures", "media", "media-fixtures.md");
+const WORKFLOW_PERFORMANCE_FIXTURE_PAGE_PATH = path.join("tests", "fixtures", "workflow-performance.md");
 const ICON_SPRITES = {
   copy: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="var(--icon-stroke-width, 1.5)" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path></svg>',
   download: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="var(--icon-stroke-width, 1.5)" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>'
@@ -49,7 +50,9 @@ const WORKFLOW_LABELS = {
   copyLabel: "Copy",
   downloadLabel: "Download",
   copiedLabel: "Copied",
-  downloadedLabel: "Downloaded"
+  downloadedLabel: "Downloaded",
+  performanceLabel: "Performance",
+  levelLabel: "level"
 };
 
 loadLanguages(["bash", "shell", "json", "yaml", "javascript", "typescript", "css", "markup", "powershell", "python"]);
@@ -407,6 +410,102 @@ function getWorkflowBasename(file = "") {
   return parts[parts.length - 1] || clean;
 }
 
+function normalizeWorkflowPerformance(input) {
+  if (!input || typeof input !== "object") return null;
+  const level = Number(input.level);
+  if (!Number.isInteger(level) || level < 1 || level > 3) return null;
+  const rawRuns = Array.isArray(input.runs) ? input.runs : [];
+  const runs = rawRuns
+    .map((run) => {
+      if (!run || typeof run !== "object") return null;
+      const gpu = String(run.gpu || "").trim();
+      const ram = String(run.ram || "").trim();
+      const time = String(run.time || "").trim();
+      if (!gpu || !ram || !time) return null;
+      const tagValues = Array.isArray(run.tags) ? run.tags : run.tags ? [run.tags] : [];
+      const tags = tagValues.map((tag) => String(tag).trim()).filter(Boolean);
+      return { gpu, ram, time, tags };
+    })
+    .filter(Boolean);
+  return runs.length ? { level, runs } : null;
+}
+
+function getWorkflowPerformance(env = {}, file = "") {
+  const configured = env.workflowPerformance || env.ctx?.workflowPerformance;
+  if (!configured || typeof configured !== "object" || Array.isArray(configured)) return null;
+  const cleanFile = String(file).split("?")[0].split("#")[0];
+  const candidates = [cleanFile, cleanFile.replace(/^\//, ""), getWorkflowBasename(cleanFile)];
+  for (const key of candidates) {
+    if (Object.prototype.hasOwnProperty.call(configured, key)) {
+      return normalizeWorkflowPerformance(configured[key]);
+    }
+  }
+  return null;
+}
+
+function renderPerformanceMeter() {
+  return '<span class="workflow-performance__meter" aria-hidden="true"></span>';
+}
+
+function renderPerformanceRuns(performance) {
+  return performance.runs.map((run) => {
+    const tags = run.tags.length
+      ? `<span class="workflow-performance__tags">${run.tags.map((tag) => `<span class="workflow-performance__tag">${escapeHTML(tag)}</span>`).join("")}</span>`
+      : "";
+    return `<div class="workflow-performance__run">
+      <div class="workflow-performance__environment">
+        <span class="workflow-performance__gpu"><span class="workflow-performance__data-icon workflow-performance__data-icon--gpu" aria-hidden="true"></span>${escapeHTML(run.gpu)}</span>
+        <span class="workflow-performance__details"><span class="workflow-performance__ram"><span class="workflow-performance__data-icon workflow-performance__data-icon--ram" aria-hidden="true"></span>${escapeHTML(run.ram)}</span>${tags}</span>
+      </div>
+      <span class="workflow-performance__time">${escapeHTML(run.time)}</span>
+    </div>`;
+  }).join("");
+}
+
+function renderPerformancePopup(performance, { id, label, file = "", hidden = false }) {
+  return `<div class="workflow-performance__popup" id="${id}" role="tooltip" data-performance-level="${performance.level}"${file ? ` data-performance-file="${escapeHTML(file)}"` : ""}${hidden ? " hidden" : ""} data-performance-popup>
+      <div class="workflow-performance__heading">${escapeHTML(label)}</div>
+      <div class="workflow-performance__runs">${renderPerformanceRuns(performance)}</div>
+    </div>`;
+}
+
+function renderWorkflowPerformance(performance, { fileName, id, lang = DEFAULT_LANG }) {
+  if (!performance) return "";
+  const popupId = `${id}-performance`;
+  const performanceLabel = getWorkflowLabel("performanceLabel", lang);
+  const levelLabel = getWorkflowLabel("levelLabel", lang);
+  return `<div class="workflow-performance" data-workflow-performance data-performance-label="${escapeHTML(performanceLabel)}" data-level-label="${escapeHTML(levelLabel)}">
+    <button class="workflow-performance__trigger" type="button" aria-label="${escapeHTML(performanceLabel)} ${escapeHTML(levelLabel)} ${performance.level}: ${escapeHTML(fileName)}" aria-describedby="${popupId}" aria-expanded="false" data-level="${performance.level}" data-performance-trigger>
+      ${renderPerformanceMeter(performance.level)}
+    </button>
+    ${renderPerformancePopup(performance, { id: popupId, label: performanceLabel })}
+  </div>`;
+}
+
+function renderWorkflowPickerPerformance(items, defaultIndex, env, pickerId, lang = DEFAULT_LANG) {
+  const entries = items
+    .map((item, index) => ({ ...item, index, performance: getWorkflowPerformance(env, item.file) }))
+    .filter((entry) => entry.performance);
+  if (!entries.length) return "";
+  const selected = entries.find((entry) => entry.index === defaultIndex) || null;
+  const fallback = selected || entries[0];
+  const popupId = `${pickerId}-performance-${fallback.index}`;
+  const performanceLabel = getWorkflowLabel("performanceLabel", lang);
+  const levelLabel = getWorkflowLabel("levelLabel", lang);
+  const popups = entries.map((entry) => renderPerformancePopup(entry.performance, {
+    id: `${pickerId}-performance-${entry.index}`,
+    label: performanceLabel,
+    file: entry.file,
+    hidden: entry.index !== defaultIndex
+  })).join("");
+  return `<div class="workflow-performance"${selected ? "" : " hidden"} data-workflow-performance data-picker-performance data-performance-label="${escapeHTML(performanceLabel)}" data-level-label="${escapeHTML(levelLabel)}">
+    <button class="workflow-performance__trigger" type="button" aria-label="${escapeHTML(performanceLabel)} ${escapeHTML(levelLabel)} ${fallback.performance.level}: ${escapeHTML(fallback.name)}" aria-describedby="${popupId}" aria-expanded="false" data-level="${fallback.performance.level}" data-performance-trigger>
+      ${renderPerformanceMeter(fallback.performance.level)}
+    </button>
+    ${popups}
+  </div>`;
+}
+
 function renderJsonLinkRow(linkInfo, env) {
   const diskPath = resolveJsonDiskPath(linkInfo.href, env);
   if (!diskPath) {
@@ -431,6 +530,8 @@ function renderJsonLinkRow(linkInfo, env) {
   const copyIcon = getIconMarkup("copy");
   const downloadIcon = getIconMarkup("download");
   const escapedFile = escapeHTML(fileName);
+  const performance = getWorkflowPerformance(env, linkInfo.href);
+  const performanceMarkup = renderWorkflowPerformance(performance, { fileName, id: copyTargetId, lang });
   return `<div class="workflow-json workflow-json--inline">
   <div class="workflow-json__row">
     <span class="workflow-json__filename">${escapedFile}</span>
@@ -441,6 +542,7 @@ function renderJsonLinkRow(linkInfo, env) {
       <a class="workflow-json__icon" href="${linkInfo.href}" download="${escapedFile}" data-no-swup aria-label="${escapeHTML(downloadLabel)} ${escapedFile}" data-download-json="${copyTargetId}-download" data-label="${escapeHTML(downloadLabel)}" data-success-label="${escapeHTML(downloadedLabel)}">
         ${downloadIcon}
       </a>
+      ${performanceMarkup}
     </div>
   </div>
   <pre id="${copyTargetId}" class="sr-only" hidden aria-hidden="true">${escapeHTML(raw)}</pre>
@@ -773,6 +875,10 @@ export default function (eleventyConfig) {
   if (MEDIA_FIXTURES_ENABLED) {
     eleventyConfig.addWatchTarget(MEDIA_FIXTURE_MANIFEST_PATH);
     eleventyConfig.addTemplate("internal/media-fixtures.md", fsSync.readFileSync(MEDIA_FIXTURE_PAGE_PATH, "utf-8"));
+    eleventyConfig.addTemplate(
+      "internal/workflow-performance-fixtures.md",
+      fsSync.readFileSync(WORKFLOW_PERFORMANCE_FIXTURE_PAGE_PATH, "utf-8")
+    );
   }
 
   eleventyConfig.on("beforeBuild", async () => {
@@ -1348,6 +1454,7 @@ export default function (eleventyConfig) {
       const isSelected = index === defaultIndex;
       return `<li class="workflow-picker__option${isSelected ? " is-selected" : ""}" role="option" data-value="${escapeHTML(item.file)}" aria-selected="${isSelected ? "true" : "false"}">${escapeHTML(item.name)}</li>`;
     }).join("");
+    const performanceMarkup = renderWorkflowPickerPerformance(items, defaultIndex, env, pickerId, lang);
 
     return `<div class="workflow-json workflow-json--picker" data-workflow-picker="${pickerId}" data-error-label="${escapeHTML(copyErrorLabel)}">
   <div class="workflow-json__row workflow-json__row--picker">
@@ -1367,6 +1474,7 @@ export default function (eleventyConfig) {
       <a class="workflow-json__icon" href="${escapeHTML(defaultFile)}" download="${escapeHTML(defaultName)}" data-no-swup aria-label="${escapeHTML(downloadLabel)} ${escapeHTML(defaultName)}" data-workflow-picker-download data-label="${escapeHTML(downloadLabel)}" data-success-label="${escapeHTML(downloadedLabel)}">
         ${downloadIcon}
       </a>
+      ${performanceMarkup}
     </div>
   </div>
   <span class="workflow-json__message" role="status" aria-live="polite" data-workflow-picker-message></span>

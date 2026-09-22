@@ -1,9 +1,9 @@
-# STYLE-DESIGN 窶・Visual Tokens And UI Rules
+# STYLE-DESIGN — Visual Tokens And UI Rules
 
 ## 0. Identity
-- JA site title: **縲靴omfy縺ｫ菴ｿ縺・ComfyUI縲・* / EN: **窶廚omfy with ComfyUI窶・*. Strings live in `site.json`.
+- JA site title: **「Comfyに使う ComfyUI」** / EN: **“Comfy with ComfyUI”**. Strings live in `site.json`.
 - IA sections remain `begin-with`, `data-utilities`, `ai-capabilities`, `basic-workflows`, `notes`.
-- Design intent follows `src/assets/mock/繝帙・繝繝・じ繧､繝ｳ_v01.png`: full-bleed black canvas, single-column article, chrome anchored on the left and top.
+- Design intent follows `src/assets/mock/ホームデザイン_v01.png`: full-bleed black canvas, single-column article, chrome anchored on the left and top.
 - Dark theme is canonical. Light mode will reuse the same token keys with different values.
 
 ## 1. Color Tokens
@@ -63,7 +63,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - Section icon tabs (`sidebar__section-tabs`): compact icon-only shortcuts inside `sidebar__section-panel`. Active state is indicated by icon color only, without a filled background.
 - The left sidebar is split into two visible blocks: `sidebar__sections` for the labeled section selector/dropdown and `sidebar__section-panel` for icon-tabbed navigation plus sidebar controls. The TOC rail remains a single visible block.
 - Section selector buttons (`sidebar__sections` / `sidebar__section-btn`) keep inactive labels muted. Active and hover surfaces use `--color-tav-strong`; active selector text remains heading-colored.
-- Nav list: single column, children indented with border-left. Active link shows a 2px highlight bar (mock窶冱 purple line).
+- Nav list: single column, children indented with border-left. Active link shows a 2px highlight bar (mock’s purple line).
 - Footer: `About` link + language chips (JA/EN) + theme toggle stub. Chips use pill style with accent border when active.
   - Language chip opens a dropdown **upward** so it never falls off-screen; each option links to the same slug in the chosen locale.
 
@@ -85,9 +85,10 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - Inline images are centered, `max-width: 720px`, `max-height: 320px`, and `object-fit: contain` so portrait assets never force extra scrolling.
 - Inline article media (R2 or Gyazo) stays completely flat: **no borders / box-shadows**. When contrast is needed, rely on `--color-panel-alt` as the single backing surface.
 - Image comparison tables must stay within the article content width. Tables that contain article media use fixed column layout, compact cell padding, and equal-size square media frames; images preserve their own aspect ratio with `object-fit: contain`.
-- 蜈ｨ繝壹・繧ｸ縺ｧ蜷御ｸ繝医・繝ｳ繧剃ｿ昴▽縺溘ａ縲∵悽譁・ｸｭ縺ｮ逕ｻ蜒上・蜍慕判繧ゅョ繝輔か繝ｫ繝医〒貂帛・繝輔ぅ繝ｫ繧ｿ・井ｾ具ｼ啻filter: brightness(0.85)`・峨ｒ驕ｩ逕ｨ縺吶ｋ縲・
+- 全ページで同一トーンを保つため、本文中の画像・動画もデフォルトで減光フィルタ（例：`filter: brightness(0.85)`）を適用する。
 - Lists use custom markers: first-level unordered lists use small accent dots, nested unordered lists use muted hollow accent dots, and ordered lists use accent numbers.
-- `.placeholder` component is dashed border block for 窶懊∪縺繝壹・繧ｸ縺後≠繧翫∪縺帙ｓ窶・states and 404 page.
+- Article list markers apply only to authored list content; list-based interface components such as Workflow picker options must reset generated markers.
+- `.placeholder` component is dashed border block for “まだページがありません” states and 404 page.
 
 ## 8. TOC
 - Place TOC and the future Tips block inside the right sidebar column. Apply the border only to the TOC body, not the entire sidebar.
@@ -96,14 +97,15 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - The assistant rail bubble list stays transparent. Each bubble button owns its surface, so the gaps between suggestions reveal the underlying rail.
 
 ## 9. Workflow Assets
-- **Workflow JSON**: render as `filename | Copy | Download` rows (chips). Copy buttons read from hidden `<pre>` nodes to avoid DOM pollution; download links point at `/workflows/<slug>.json`.
+- **Workflow JSON**: render as `filename | Copy | Download` rows (chips). Copy buttons read from hidden `<pre>` nodes to avoid DOM pollution; download links point at `/workflows/<slug>.json`. Align the lower edge of the Copy/Download feedback tooltips with the lower edge of the Performance popup by using the same action-to-popup gap.
+- **Workflow performance**: when reference data exists, use the supplied `Performance 1 SVG.svg` through `Performance 3 SVG.svg` assets beside the unchanged Copy and Download controls. Preserve the existing zero-gap placement between Copy and Download, then separate only the Performance control with the compact action gap. Center the compact popup over the meter on desktop and include a small localized Performance label at its top so the unfamiliar meter remains as identifiable as the Copy and Download actions. Match that label's font size, weight, and line height to the Copy and Download tooltip labels, but use `--color-text-muted` to keep it subordinate. Keep `GPU` on the first line and `RAM + tags` on the second. Let the popup shrink-wrap its contents instead of imposing a minimum width. Each environment row uses flex, with the environment data followed by the time at exactly `var(--space-sm)`; do not add auto margins, `space-between`, or one-off spacing values. Time remains bottom-aligned with the RAM/tag row, and the widest row ends at the popup's right content edge. Prefix GPU and RAM values with the official Lucide `microchip` and `memory-stick` icons respectively; keep them decorative, monochrome, and smaller than the label text. Keep the popup type at medium weight with enough chip padding to separate icon and text, subordinate to the Workflow row, render upright chip text vertically centered inside each pill, and use `--color-heading` for all data text. Show `GPU + RAM + optional tags + time` on hover, focus, or tap; Escape, a second tap, and an outside tap dismiss it even while the trigger retains focus. Use existing monochrome tokens rather than warning colors. Hide the meter when the current Workflow has no data.
 - **Related pages**: render below article content on section pages. Separate the block from the article with the same quiet horizontal boundary rhythm used by article `<hr>` rules: `--space-2xl` before and after the line. Show only pages in the same locale that share the same tag channel: `tags` match `tags`, and `noteTags` match `noteTags`. If a page has both, score both channels independently and add the matches. Do not fall back to same-section pages without a shared tag; unrelated cards make the footer misleading. Cap the visible set so the footer stays scannable.
 - Shared related cards do not lift, draw borders, or cast shadows on hover. Hover / focus feedback belongs inside the thumbnail area: real images zoom subtly. Image-less cards use a quiet `--color-panel-alt` thumbnail with one subdued centered Tabler-style IT icon. The icon stays straight at rest and may add a tiny deterministic rotation while zooming on hover; do not use gradients or patterned placeholder art.
 - Images in these sections obey the same `max-height: 300px` rule; JSON data stays pure text (never embedded screenshots).
 
 ## 10. Tags & Navigation Data
 - `nav.<lang>.yml` stores sections + page IDs. Every regular `tags` slug **must** exist in these files so tag chips can build canonical links. `noteTags` are local Notes finder facets and do not require nav entries.
-- Missing page slugs auto-generate placeholders via `src/content/placeholders.11ty.js`. Placeholder copy: 窶懊∪縺繝壹・繧ｸ縺後≠繧翫∪縺帙ｓ窶ｦ窶・
+- Missing page slugs auto-generate placeholders via `src/content/placeholders.11ty.js`. Placeholder copy: “まだページがありません…”.
 
 ## 11. Fonts & Language Rules
 - Always list Berlin Type **before** Zen Kaku Gothic in CSS so Latin glyphs render in Berlin Type, even on JA pages.

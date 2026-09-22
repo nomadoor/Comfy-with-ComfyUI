@@ -35,6 +35,7 @@ Do not run steps 5-8 on your own initiative. Finish the step you are on, then sa
    - `section`, `slug`, `navId`, `title`, `summary`, `created`, `updated`
    - `tags` are optional and max 5.
    - `notes` uses `noteTags`; do not substitute normal `tags`.
+   - When `workflowPerformance` records a known generation size, keep the popup compact by using an approximate megapixel tag such as `1MP`, `2.3MP`, or `4MP`. Decimal values are allowed when useful; do not force the value to an integer. Use exact `W×H` only when those dimensions are important beyond performance context.
 5. Use H2/H3 only for article body structure unless an existing page pattern requires otherwise.
 6. Use media markup consistently. `{media=...}` is the display mode and works for R2 and Gyazo URLs; `{gyazo=...}` is a compatible alias:
    - static image: `{media=image}`

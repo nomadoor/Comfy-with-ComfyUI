@@ -6,12 +6,49 @@ slug: qwen-image-2-1
 navId: qwen-image-2-1
 title: "Qwen-Image-2.1"
 created: 2026-09-21
-updated: 2026-09-21
+updated: 2026-09-22
 summary: "Qwen-Image-2.1 での画像生成と画像編集"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_hero.png"
 tags: []
+workflowPerformance:
+  qwen_image_2_1_text2image.json:
+    level: 2
+    runs:
+      - { gpu: "RTX 4070 Ti 12GB", ram: "DDR5 64GB", time: "121s", tags: ["4MP"] }
+  qwen_image_2_1_ref2image.json:
+    level: 2
+    runs:
+      - { gpu: "RTX 4070 Ti 12GB", ram: "DDR5 64GB", time: "104s", tags: ["2MP"] }
+  qwen_image_2_1_image_edit.json:
+    level: 1
+    runs:
+      - { gpu: "RTX 4070 Ti 12GB", ram: "DDR5 64GB", time: "57s", tags: ["1MP"] }
+  qwen_image_2_1_image_edit_local.json:
+    level: 1
+    runs:
+      - { gpu: "RTX 4070 Ti 12GB", ram: "DDR5 64GB", time: "57s", tags: ["1MP"] }
+  qwen_image_2_1_image_edit_local_mask.json:
+    level: 2
+    runs:
+      - { gpu: "RTX 4070 Ti 12GB", ram: "DDR5 64GB", time: "114s", tags: ["2MP"] }
+  qwen_image_2_1_outpainting.json:
+    level: 2
+    runs:
+      - { gpu: "RTX 4070 Ti 12GB", ram: "DDR5 64GB", time: "88s", tags: ["2MP"] }
+  qwen_image_2_1_text2image_rgba.json:
+    level: 1
+    runs:
+      - { gpu: "RTX 4070 Ti 12GB", ram: "DDR5 64GB", time: "62s", tags: ["2MP"] }
+  qwen_image_2_1_subject_extraction.json:
+    level: 2
+    runs:
+      - { gpu: "RTX 4070 Ti 12GB", ram: "DDR5 64GB", time: "87s", tags: ["2MP"] }
+  qwen_image_2_1_panorama.json:
+    level: 2
+    runs:
+      - { gpu: "RTX 4070 Ti 12GB", ram: "DDR5 64GB", time: "146s", tags: ["4MP"] }
 ---
 
 ## Qwen-Image-2.1とは？

@@ -56,12 +56,40 @@ function updateActionLabels(container, file) {
   }
 }
 
+function updatePerformance(container, file) {
+  const performance = container.querySelector("[data-picker-performance]");
+  if (!performance) return;
+  const trigger = performance.querySelector("[data-performance-trigger]");
+  const panels = [...performance.querySelectorAll("[data-performance-file]")];
+  const selected = panels.find((panel) => panel.getAttribute("data-performance-file") === file);
+
+  performance.classList.remove("is-open", "is-dismissed");
+  trigger?.setAttribute("aria-expanded", "false");
+  panels.forEach((panel) => {
+    panel.hidden = panel !== selected;
+  });
+
+  if (!selected || !trigger) {
+    performance.hidden = true;
+    return;
+  }
+
+  performance.hidden = false;
+  const nextLevel = selected.getAttribute("data-performance-level") || "1";
+  const performanceLabel = performance.getAttribute("data-performance-label") || "Performance";
+  const levelLabel = performance.getAttribute("data-level-label") || "level";
+  trigger.setAttribute("data-level", nextLevel);
+  trigger.setAttribute("aria-label", `${performanceLabel} ${levelLabel} ${nextLevel}: ${getBasename(file)}`);
+  trigger.setAttribute("aria-describedby", selected.id);
+}
+
 function updateDownloadLink(container, file) {
   const downloadLink = container.querySelector("[data-workflow-picker-download]");
   if (!downloadLink) return;
   downloadLink.href = file;
   downloadLink.setAttribute("download", getBasename(file));
   updateActionLabels(container, file);
+  updatePerformance(container, file);
 }
 
 async function copyWorkflowJson(container, file) {

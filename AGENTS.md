@@ -32,7 +32,16 @@ Keep the always-loaded rules small. Task-specific procedures live in `.claude/sk
 - Do not push, force-push, open a PR, update a PR branch, or publish local changes unless the owner explicitly says to push/publish in the current work sequence.
 - For new feature work, use a dedicated branch and record the intent first with a small `/ops` update or reversible scaffold commit.
 
-## Skills
+## Agent skills
+
+Before engineering work, read the local workflow configuration in:
+
+- `docs/agents/workflow.md`
+- `docs/agents/domain.md`
+- `docs/agents/issue-tracker.md`
+- `docs/agents/labels.md`
+
+Task-specific procedures remain in `.claude/skills/`:
 
 Use the project-local skills in `.claude/skills/` when the task matches:
 

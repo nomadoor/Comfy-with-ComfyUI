@@ -9,6 +9,7 @@ import initVideoSync from "./video-sync.js";
 import initCodeCopy from "./code-copy.js";
 import initCopyJson from "./copy-json.js"; // workflow JSON copy/download
 import initWorkflowPicker from "./workflow-picker.js";
+import initWorkflowPerformance from "./workflow-performance.js";
 import initHeadingAnchors from "./heading-anchors.js";
 import initContact from "./contact.js";
 import "./sidebar.js"; // legacy auto-init; sidebar is persistent shell
@@ -60,6 +61,7 @@ export default function initPage(root = document.getElementById("page") || docum
   profileStep("code-copy", () => initCodeCopy?.(root));
   profileStep("copy-json", () => initCopyJson?.(root));
   profileStep("workflow-picker", () => initWorkflowPicker?.(root));
+  profileStep("workflow-performance", () => initWorkflowPerformance?.(root));
   profileStep("related-hero", () => initRelatedHero?.(root));
   profileStep("contact", () => initContact?.(root));
   profileStep("note-finder", () => initNoteFinderIfNeeded(root));
