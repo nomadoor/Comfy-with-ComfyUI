@@ -365,6 +365,10 @@ function getWorkflowLabel(key, lang = DEFAULT_LANG) {
   return WORKFLOW_LABELS[key] || "";
 }
 
+function getRenderLang(env = {}) {
+  return env.lang || env.ctx?.lang || env.page?.lang || env.ctx?.page?.lang || DEFAULT_LANG;
+}
+
 function resolveJsonDiskPath(href = "", env = {}) {
   if (!href || /^https?:\/\//i.test(href)) {
     return null;
@@ -553,7 +557,7 @@ function renderJsonLinkRow(linkInfo, env, performanceInput = null) {
   const fileName = path.basename(linkInfo.href.split("?")[0]);
   const baseKey = path.basename(fileName, path.extname(fileName)).replace(/[^a-z0-9]+/gi, "-") || "wf";
   const copyTargetId = `workflow-json-inline-${pageKey}-${baseKey}-${counterState.__jsonLinkCounter}`;
-  const lang = env.lang || env.page?.lang || DEFAULT_LANG;
+  const lang = getRenderLang(env);
   const copyLabel = getWorkflowLabel("copyLabel", lang);
   const downloadLabel = getWorkflowLabel("downloadLabel", lang);
   const copiedLabel = getWorkflowLabel("copiedLabel", lang);
@@ -1483,7 +1487,7 @@ export default function (eleventyConfig) {
     env.__workflowPickerCounter += 1;
     const pickerKey = hashString(items.map((item) => item.file).join("|"));
     const pickerId = `workflow-picker-${pickerKey}-${env.__workflowPickerCounter}`;
-    const lang = env.lang || env.page?.lang || DEFAULT_LANG;
+    const lang = getRenderLang(env);
     const copyLabel = getWorkflowLabel("copyLabel", lang);
     const downloadLabel = getWorkflowLabel("downloadLabel", lang);
     const copiedLabel = getWorkflowLabel("copiedLabel", lang);
