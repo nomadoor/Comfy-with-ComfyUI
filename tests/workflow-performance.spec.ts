@@ -351,16 +351,19 @@ test.describe("Workflow performance", () => {
 
     await meter.hover();
     const selectedRun = selectedPopup.locator(".workflow-performance__run").first();
-    const [popupBox, gpuBox, ramBox, tagBoxes] = await Promise.all([
+    const [popupBox, gpuBox, detailsBox, ramBox, tagBoxes] = await Promise.all([
       selectedPopup.boundingBox(),
       selectedRun.locator(".workflow-performance__gpu").boundingBox(),
+      selectedRun.locator(".workflow-performance__details").boundingBox(),
       selectedRun.locator(".workflow-performance__ram").boundingBox(),
       selectedRun.locator(".workflow-performance__tag").evaluateAll((tags) => tags.map((tag) => tag.getBoundingClientRect().y))
     ]);
     expect(popupBox).not.toBeNull();
     expect(gpuBox).not.toBeNull();
+    expect(detailsBox).not.toBeNull();
     expect(ramBox).not.toBeNull();
     expect(popupBox!.width).toBeGreaterThan(222);
+    expect(detailsBox!.width - gpuBox!.width).toBeGreaterThan(1);
     expect(gpuBox!.y).toBeLessThan(ramBox!.y);
     expect(tagBoxes.every((tagY) => Math.abs(tagY - ramBox!.y) <= 2)).toBe(true);
 
