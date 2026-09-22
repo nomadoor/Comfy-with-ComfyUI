@@ -6,7 +6,7 @@ slug: qwen-image-2-1
 navId: qwen-image-2-1
 title: "Qwen-Image-2.1"
 created: 2026-09-21
-updated: 2026-09-21
+updated: 2026-09-22
 summary: "使用 Qwen-Image-2.1 生成和编辑图像"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -192,6 +192,38 @@ Qwen-Image-2.1 会生成一张补全上下空间的新图像。
 这并不是严格固定原图的方法，不过确实非常简单。
 
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting_output.png){media=image}
+
+### 根据引导图像生成
+
+虽然它本身并不是 ControlNet，但可以把姿势图、深度图等作为图像编辑的参考，让模型根据这些图像进行生成。
+
+![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose.png){media=image}
+
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="82s", tags=["2MP"], samplers=[{ speed: "1.38 s/it" }] %}
+
+再输入一张参考图像，让其中的人物摆出指定姿势。
+
+可能会觉得，真的有必要特意把姿势转换成火柴人吗？不过，即使只想让模型参考姿势，它有时也会把服装、背景等无关信息一并带进去。
+
+与其说是因为 ControlNet 才使用 Pose，不如说重点在于从参考图像中剔除多余信息，只提取姿势或形状交给模型。
+
+![reference](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_ref.png){media=image} ![pose](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_pose.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_output.png){media=image}
+
+### Upscale
+
+既然能生成到 4 MP，不妨让它把画质较差的图像处理得更清晰。
+
+![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale.png){media=image}
+
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="212s", tags=["4MP"], samplers=[{ speed: "5.28 s/it" }] %}
+
+先将图像放大到 4 MP，作为参考图像输入，再让模型以此为基础进行细化。
+
+这个模型保持参考图像的能力很强，因此 Upscale 可能也是它非常擅长的任务之一。
+
+另一方面，如果想像通常所说的增强处理那样进行较大幅度的重绘，可能还需要一些调整。
+
+![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale_output.png){media=image}
 
 ---
 

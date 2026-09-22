@@ -523,6 +523,38 @@
     "bytes": 184518,
     "source": "066eca788998887a"
   },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_output.png": {
+    "key": "images/bcd9496eb00188cf.webp",
+    "width": 1184,
+    "height": 1728,
+    "type": "image/webp",
+    "bytes": 190706,
+    "source": "6ec5eed991e61844"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_pose.png": {
+    "key": "images/0f1e8ba01ffcd67e.webp",
+    "width": 512,
+    "height": 747,
+    "type": "image/webp",
+    "bytes": 14510,
+    "source": "cb3312366fefc1bb"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_ref.png": {
+    "key": "images/37e5d3fe87873ee4.webp",
+    "width": 768,
+    "height": 1408,
+    "type": "image/webp",
+    "bytes": 156850,
+    "source": "cfe023ae54622023"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose.png": {
+    "key": "images/c9e0d732adc15347.webp",
+    "width": 3443,
+    "height": 2148,
+    "type": "image/webp",
+    "bytes": 200874,
+    "source": "1c8f02045499ca15"
+  },
   "basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_output.png": {
     "key": "images/9fd507b0ffd3f00b.webp",
     "width": 1184,
@@ -538,6 +570,30 @@
     "type": "image/webp",
     "bytes": 20374,
     "source": "93c95dac15e88ec0"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale_input.png": {
+    "key": "images/fc950b374bbd57ae.webp",
+    "width": 1024,
+    "height": 1024,
+    "type": "image/webp",
+    "bytes": 215614,
+    "source": "14624cf6bdc9e40e"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale_output.png": {
+    "key": "images/e604619c0e51ea00.webp",
+    "width": 2048,
+    "height": 2048,
+    "type": "image/webp",
+    "bytes": 872782,
+    "source": "2cb269606a9fc71f"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale.png": {
+    "key": "images/1a256e2455d9b344.webp",
+    "width": 3103,
+    "height": 1610,
+    "type": "image/webp",
+    "bytes": 261440,
+    "source": "759727125059e706"
   },
   "basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit.png": {
     "key": "images/ee1733a218ca9354.webp",

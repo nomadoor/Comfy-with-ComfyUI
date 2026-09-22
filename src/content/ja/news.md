@@ -5,13 +5,18 @@ slug: news
 navId: news
 title: "更新情報"
 created: 2026-01-15
-updated: 2026-09-21
+updated: 2026-09-22
 summary: "このサイトの更新情報"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/ja/basic-workflows/qwen-image-2-1/">
+    <span class="news-row__date">2026.9.22</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">Qwen-Image-2.1 にガイド画像からの生成と Upscale を追加しました</span>
+  </a>
   <a class="news-row" href="/ja/basic-workflows/qwen-image-2-1/">
     <span class="news-row__date">2026.9.21</span>
     <span class="news-row__tag">basic-workflows</span>
