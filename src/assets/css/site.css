@@ -2499,6 +2499,10 @@ h1 {
   width: 100%;
 }
 
+.article-body .workflow-picker__option::before {
+  content: none;
+}
+
 .workflow-picker.is-open .workflow-picker__list {
   display: block;
 }
@@ -2538,9 +2542,249 @@ h1 {
 }
 
 .workflow-json__actions {
+  --workflow-popup-gap: 0.6rem;
   display: inline-flex;
   align-items: center;
+  gap: 0;
+}
+
+.workflow-performance {
+  position: relative;
+  display: inline-flex;
+  margin-left: var(--space-2xs);
+}
+
+.workflow-performance[hidden],
+.workflow-performance__popup[hidden] {
+  display: none;
+}
+
+.workflow-performance__trigger {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.workflow-performance__trigger:hover,
+.workflow-performance__trigger:focus-visible,
+.workflow-performance.is-open .workflow-performance__trigger {
+  color: var(--color-text);
+}
+
+.workflow-performance__trigger:focus-visible {
+  outline: 2px solid var(--color-highlight);
+  outline-offset: -2px;
+}
+
+.workflow-performance__meter {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  background: currentColor;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.workflow-performance__trigger[data-level="1"] .workflow-performance__meter {
+  -webkit-mask-image: url("/assets/icons/Performance%201%20SVG.svg");
+  mask-image: url("/assets/icons/Performance%201%20SVG.svg");
+}
+
+.workflow-performance__trigger[data-level="2"] .workflow-performance__meter {
+  -webkit-mask-image: url("/assets/icons/Performance%202%20SVG.svg");
+  mask-image: url("/assets/icons/Performance%202%20SVG.svg");
+}
+
+.workflow-performance__trigger[data-level="3"] .workflow-performance__meter {
+  -webkit-mask-image: url("/assets/icons/Performance%203%20SVG.svg");
+  mask-image: url("/assets/icons/Performance%203%20SVG.svg");
+}
+
+.workflow-performance__popup {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + var(--workflow-popup-gap));
+  z-index: 20;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: calc(100vw - 2rem);
+  padding: 0.9rem 1rem;
+  border-radius: 0.75rem;
+  background: var(--color-panel-alt);
+  color: var(--color-text);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 0.25rem);
+  transition: var(--transition-fast);
+}
+
+.workflow-performance:not(.is-dismissed):hover .workflow-performance__popup,
+.workflow-performance:not(.is-dismissed):focus-within .workflow-performance__popup,
+.workflow-performance.is-open .workflow-performance__popup {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+.workflow-performance__heading {
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-muted);
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.workflow-performance__runs {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  min-width: 100%;
+}
+
+.workflow-performance__run {
+  display: grid;
+  width: 100%;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  column-gap: var(--space-sm);
+  row-gap: var(--space-2xs);
+  padding: 0.6rem 0;
+}
+
+.workflow-performance__run:first-child {
+  padding-top: 0;
+}
+
+.workflow-performance__run:last-child {
+  padding-bottom: 0;
+}
+
+.workflow-performance__run + .workflow-performance__run {
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.workflow-performance__details,
+.workflow-performance__tags {
+  display: flex;
+  min-width: 0;
+  flex-wrap: nowrap;
+  align-items: center;
   gap: var(--space-2xs);
+}
+
+.workflow-performance__gpu,
+.workflow-performance__ram,
+.workflow-performance__tag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-text-muted) 68%, var(--color-panel-alt));
+  color: var(--color-heading);
+  padding: 0.14rem 0.45rem;
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.workflow-performance__gpu,
+.workflow-performance__ram {
+  gap: var(--space-2xs);
+}
+
+.workflow-performance__data-icon {
+  width: 0.78rem;
+  height: 0.78rem;
+  flex: none;
+  background-color: currentColor;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+.workflow-performance__data-icon--gpu {
+  mask-image: url("/assets/icons/microchip.svg");
+}
+
+.workflow-performance__data-icon--ram {
+  mask-image: url("/assets/icons/memory-stick.svg");
+}
+
+.workflow-performance__time {
+  flex: none;
+  color: var(--color-heading);
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.workflow-performance__metric {
+  display: flex;
+  grid-column: 2;
+  align-self: center;
+  align-items: baseline;
+  justify-self: end;
+  justify-content: flex-end;
+  gap: var(--space-xs);
+  white-space: nowrap;
+}
+
+.workflow-performance__metric-label,
+.workflow-performance__measurement-note {
+  color: var(--color-text-muted);
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.workflow-performance__sampler-speed {
+  color: var(--color-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.workflow-performance__measurement-note {
+  width: 100%;
+  margin-top: var(--space-xs);
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--color-border-strong);
+  line-height: 1.4;
+}
+
+@media (max-width: 700px) {
+  .workflow-performance__popup {
+    right: 0;
+    left: auto;
+    transform: translateY(0.25rem);
+  }
+
+  .workflow-performance:not(.is-dismissed):hover .workflow-performance__popup,
+  .workflow-performance:not(.is-dismissed):focus-within .workflow-performance__popup,
+  .workflow-performance.is-open .workflow-performance__popup {
+    transform: translateY(0);
+  }
 }
 
 .workflow-json__icon {
@@ -2589,7 +2833,7 @@ h1 {
 .code-copy::after {
   content: attr(data-label);
   position: absolute;
-  bottom: calc(100% + var(--space-xs));
+  bottom: calc(100% + var(--workflow-popup-gap, var(--space-xs)));
   left: 50%;
   transform: translateX(-50%);
   padding: 0.2rem 0.4rem;
@@ -2623,7 +2867,7 @@ h1 {
 .code-copy::before {
   content: attr(data-success-label);
   position: absolute;
-  bottom: calc(100% + var(--space-xs));
+  bottom: calc(100% + var(--workflow-popup-gap, var(--space-xs)));
   left: 50%;
   transform: translateX(-50%);
   padding: 0.2rem 0.4rem;
@@ -4559,7 +4803,7 @@ body.lightbox-open {
   background: transparent;
   object-fit: contain;
   filter: none;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .lightbox__media video {

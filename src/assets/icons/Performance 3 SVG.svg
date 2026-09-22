@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:affinity="https://www.affinity.studio/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-5041.818308,-3630.391957)">
+        <g id="アートボード2" transform="matrix(1.501466,0,0,1.488372,3942.744994,3630.391957)">
+            <rect x="732" y="0" width="682" height="688" style="fill:none;"/>
+            <g transform="matrix(23.845691,0,0,24.055477,-8409.865159,-9586.071735)">
+                <path d="M405.367,411.204C406.93,413 407.877,415.346 407.877,417.912L404.608,417.912C404.608,416.354 404.094,414.914 403.227,413.754L405.367,411.204Z" style="stroke:currentColor;stroke-width:1.12px;"/>
+            </g>
+            <g transform="matrix(23.845691,0,0,24.055477,-8409.865159,-9586.071735)">
+                <path d="M401.142,411.894C400.115,411.297 398.922,410.955 397.65,410.955C396.452,410.955 395.324,411.258 394.339,411.793L392.208,409.254C393.785,408.26 395.651,407.685 397.65,407.685C399.723,407.685 401.652,408.303 403.264,409.365L401.142,411.894Z" style="stroke:currentColor;stroke-width:1.12px;"/>
+            </g>
+            <g transform="matrix(23.845691,0,0,24.055477,-8409.865159,-9586.071735)">
+                <path d="M390.07,411.051L392.2,413.589C391.257,414.777 390.693,416.279 390.693,417.912L387.423,417.912C387.423,415.273 388.425,412.866 390.07,411.051Z" style="stroke:currentColor;stroke-width:1.12px;"/>
+            </g>
+        </g>
+    </g>
+</svg>
