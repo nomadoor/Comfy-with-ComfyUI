@@ -31,7 +31,10 @@ test.describe("Workflow performance", () => {
 
     for (const locale of locales) {
       await page.goto(locale.path);
-      const workflow = page.locator(".workflow-json--inline").first();
+      const workflow = page.locator(".workflow-json--inline").filter({
+        hasText: "qwen_image_2_1_text2image.json"
+      });
+      await expect(workflow).toHaveCount(1);
       await expect(workflow.locator(".workflow-performance__heading")).toHaveText(locale.performance);
       await expect(workflow.locator(".workflow-performance__metric-label").first()).toHaveText(locale.total);
       await expect(workflow.locator(".workflow-performance__measurement-note")).toHaveText(locale.note);
