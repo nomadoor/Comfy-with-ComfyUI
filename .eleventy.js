@@ -409,6 +409,18 @@ function getWorkflowBasename(file = "") {
   return parts[parts.length - 1] || clean;
 }
 
+function normalizeSamplerSpeed(input) {
+  const match = String(input || "").trim().match(/^(\d+(?:\.\d+)?)\s+(s\/it|it\/s)$/);
+  if (!match) return "";
+  const value = Number(match[1]);
+  if (!Number.isFinite(value) || value <= 0) return "";
+  if (match[2] === "s/it") return `${match[1]} s/it`;
+
+  const secondsPerIteration = 1 / value;
+  const roundedSeconds = Number(secondsPerIteration.toPrecision(2));
+  return `${roundedSeconds} s/it`;
+}
+
 function normalizeWorkflowPerformance(input) {
   if (!input || typeof input !== "object") return null;
   const level = Number(input.level);
@@ -423,7 +435,20 @@ function normalizeWorkflowPerformance(input) {
       if (!gpu || !ram || !time) return null;
       const tagValues = Array.isArray(run.tags) ? run.tags : run.tags ? [run.tags] : [];
       const tags = tagValues.map((tag) => String(tag).trim()).filter(Boolean);
-      return { gpu, ram, time, tags };
+      const samplerValues = Array.isArray(run.samplers) ? run.samplers : [];
+      const samplers = samplerValues
+        .map((sampler) => {
+          if (!sampler || typeof sampler !== "object") return null;
+          const name = String(sampler.name || "").trim();
+          const speed = normalizeSamplerSpeed(sampler.speed);
+          if (!speed) return null;
+          return { name, speed };
+        })
+        .filter(Boolean);
+      const validSamplers = samplers.length > 1 && samplers.some((sampler) => !sampler.name)
+        ? []
+        : samplers;
+      return { gpu, ram, time, tags, samplers: validSamplers };
     })
     .filter(Boolean);
   return runs.length ? { level, runs } : null;
@@ -433,25 +458,32 @@ function renderPerformanceMeter() {
   return '<span class="workflow-performance__meter" aria-hidden="true"></span>';
 }
 
-function renderPerformanceRuns(performance) {
+function renderPerformanceRuns(performance, { totalTimeLabel, samplerLabel }) {
   return performance.runs.map((run) => {
     const tags = run.tags.length
       ? `<span class="workflow-performance__tags">${run.tags.map((tag) => `<span class="workflow-performance__tag">${escapeHTML(tag)}</span>`).join("")}</span>`
       : "";
+    const samplerMetrics = run.samplers.map((sampler) => `<div class="workflow-performance__metric workflow-performance__metric--sampler">
+          <span class="workflow-performance__metric-label">${escapeHTML(sampler.name || samplerLabel)}</span>
+          <span class="workflow-performance__sampler-speed">${escapeHTML(sampler.speed)}</span>
+        </div>`).join("");
     return `<div class="workflow-performance__run">
-      <div class="workflow-performance__environment">
-        <span class="workflow-performance__gpu"><span class="workflow-performance__data-icon workflow-performance__data-icon--gpu" aria-hidden="true"></span>${escapeHTML(run.gpu)}</span>
-        <span class="workflow-performance__details"><span class="workflow-performance__ram"><span class="workflow-performance__data-icon workflow-performance__data-icon--ram" aria-hidden="true"></span>${escapeHTML(run.ram)}</span>${tags}</span>
+      <span class="workflow-performance__gpu"><span class="workflow-performance__data-icon workflow-performance__data-icon--gpu" aria-hidden="true"></span>${escapeHTML(run.gpu)}</span>
+      <div class="workflow-performance__metric workflow-performance__metric--total">
+        <span class="workflow-performance__metric-label">${escapeHTML(totalTimeLabel)}</span>
+        <span class="workflow-performance__time">${escapeHTML(run.time)}</span>
       </div>
-      <span class="workflow-performance__time">${escapeHTML(run.time)}</span>
+      <span class="workflow-performance__details"><span class="workflow-performance__ram"><span class="workflow-performance__data-icon workflow-performance__data-icon--ram" aria-hidden="true"></span>${escapeHTML(run.ram)}</span>${tags}</span>
+      ${samplerMetrics}
     </div>`;
   }).join("");
 }
 
-function renderPerformancePopup(performance, { id, label, file = "", hidden = false }) {
+function renderPerformancePopup(performance, { id, label, totalTimeLabel, samplerLabel, measurementNote, file = "", hidden = false }) {
   return `<div class="workflow-performance__popup" id="${id}" role="tooltip" data-performance-level="${performance.level}"${file ? ` data-performance-file="${escapeHTML(file)}"` : ""}${hidden ? " hidden" : ""} data-performance-popup>
       <div class="workflow-performance__heading">${escapeHTML(label)}</div>
-      <div class="workflow-performance__runs">${renderPerformanceRuns(performance)}</div>
+      <div class="workflow-performance__runs">${renderPerformanceRuns(performance, { totalTimeLabel, samplerLabel })}</div>
+      <div class="workflow-performance__measurement-note">${escapeHTML(measurementNote)}</div>
     </div>`;
 }
 
@@ -460,11 +492,14 @@ function renderWorkflowPerformance(performance, { fileName, id, lang = DEFAULT_L
   const popupId = `${id}-performance`;
   const performanceLabel = getWorkflowLabel("performanceLabel", lang);
   const levelLabel = getWorkflowLabel("levelLabel", lang);
+  const totalTimeLabel = getWorkflowLabel("totalTimeLabel", lang);
+  const samplerLabel = getWorkflowLabel("samplerLabel", lang);
+  const measurementNote = getWorkflowLabel("performanceMeasurementNote", lang);
   return `<div class="workflow-performance" data-workflow-performance data-performance-label="${escapeHTML(performanceLabel)}" data-level-label="${escapeHTML(levelLabel)}">
     <button class="workflow-performance__trigger" type="button" aria-label="${escapeHTML(performanceLabel)} ${escapeHTML(levelLabel)} ${performance.level}: ${escapeHTML(fileName)}" aria-describedby="${popupId}" aria-expanded="false" data-level="${performance.level}" data-performance-trigger>
       ${renderPerformanceMeter(performance.level)}
     </button>
-    ${renderPerformancePopup(performance, { id: popupId, label: performanceLabel })}
+    ${renderPerformancePopup(performance, { id: popupId, label: performanceLabel, totalTimeLabel, samplerLabel, measurementNote })}
   </div>`;
 }
 
@@ -478,9 +513,15 @@ function renderWorkflowPickerPerformance(items, defaultIndex, pickerId, lang = D
   const popupId = `${pickerId}-performance-${fallback.index}`;
   const performanceLabel = getWorkflowLabel("performanceLabel", lang);
   const levelLabel = getWorkflowLabel("levelLabel", lang);
+  const totalTimeLabel = getWorkflowLabel("totalTimeLabel", lang);
+  const samplerLabel = getWorkflowLabel("samplerLabel", lang);
+  const measurementNote = getWorkflowLabel("performanceMeasurementNote", lang);
   const popups = entries.map((entry) => renderPerformancePopup(entry.performance, {
     id: `${pickerId}-performance-${entry.index}`,
     label: performanceLabel,
+    totalTimeLabel,
+    samplerLabel,
+    measurementNote,
     file: entry.file,
     hidden: entry.index !== defaultIndex
   })).join("");

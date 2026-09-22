@@ -22,6 +22,19 @@ test.describe("Workflow performance", () => {
     await expect(configured.locator(".workflow-performance__popup")).toContainText("DDR5 64GB");
     await expect(configured.locator(".workflow-performance__popup")).toContainText("Sage");
     await expect(configured.locator(".workflow-performance__popup")).toContainText("51s");
+    await expect(configured.locator(".workflow-performance__popup")).toContainText("2.3 s/it");
+    await expect(configured.locator(".workflow-performance__popup")).toContainText("Base");
+    await expect(configured.locator(".workflow-performance__popup")).toContainText("1.2 s/it");
+    await expect(configured.locator(".workflow-performance__popup")).toContainText("Refiner");
+    await expect(configured.locator(".workflow-performance__popup")).toContainText("0.58 s/it");
+    await expect(configured.locator(".workflow-performance__popup")).toContainText("Slow pass");
+    await expect(configured.locator(".workflow-performance__popup")).toContainText("120 s/it");
+    await expect(configured.locator(".workflow-performance__popup")).not.toContainText("it/s");
+    await expect(configured.locator(".workflow-performance__measurement-note")).toHaveText("モデルUnload・Cache消去後の実測値");
+    await expect(configured.locator(".workflow-performance__metric-label", { hasText: "合計" })).toHaveCount(2);
+    await expect(configured.locator(".workflow-performance__metric-label", { hasText: "Sampler" })).toHaveCount(1);
+    await expect(configured.locator(".workflow-performance__metric-label", { hasText: "Base" })).toHaveCount(1);
+    await expect(configured.locator(".workflow-performance__metric-label", { hasText: "Refiner" })).toHaveCount(1);
     const heading = configured.locator(".workflow-performance__heading");
     const download = configured.locator("[data-download-json]");
     await expect(heading).toHaveText("パフォーマンス");
@@ -79,6 +92,7 @@ test.describe("Workflow performance", () => {
     expect(targets[0]).not.toBe(targets[1]);
     expect(targets[0]).not.toContain("NaN");
     expect(targets[1]).not.toContain("NaN");
+    await expect(simpleMath.locator(".workflow-performance__sampler-speed")).toHaveCount(0);
 
     await simpleMath.locator("[data-copy-json]").click();
     await conditionalMath.locator("[data-copy-json]").click();
@@ -167,24 +181,21 @@ test.describe("Workflow performance", () => {
     await meter.hover();
     await expect(popup).toBeVisible();
 
-    const [triggerBox, popupBox, ramBox, tagBox, timeBox, firstEnvironmentBox, secondEnvironmentBox, runGaps, popupRightInset] = await Promise.all([
+    const [triggerBox, popupBox, ramBox, tagBox, timeBox, firstGpuBox, secondGpuBox, runGaps, popupRightInset] = await Promise.all([
       meter.boundingBox(),
       popup.boundingBox(),
       ram.boundingBox(),
       tag.boundingBox(),
       time.boundingBox(),
-      firstRun.locator(".workflow-performance__environment").boundingBox(),
-      secondRun.locator(".workflow-performance__environment").boundingBox(),
+      firstRun.locator(".workflow-performance__gpu").boundingBox(),
+      secondRun.locator(".workflow-performance__gpu").boundingBox(),
       popup.locator(".workflow-performance__run").evaluateAll((runs) => runs.map((run) => {
-        const environment = run.querySelector(".workflow-performance__environment")!.getBoundingClientRect();
-        const time = run.querySelector(".workflow-performance__time")!.getBoundingClientRect();
         const probe = document.createElement("span");
         probe.style.width = "var(--space-sm)";
         run.append(probe);
         const spaceSm = Number.parseFloat(getComputedStyle(probe).width);
         probe.remove();
         return {
-          actual: time.left - environment.right,
           configured: Number.parseFloat(getComputedStyle(run).columnGap),
           spaceSm
         };
@@ -192,8 +203,8 @@ test.describe("Workflow performance", () => {
       popup.evaluate((element) => {
         const popupBox = element.getBoundingClientRect();
         const paddingRight = Number.parseFloat(getComputedStyle(element).paddingRight);
-        const rightmostTime = Math.max(...Array.from(element.querySelectorAll(".workflow-performance__time"), (time) => time.getBoundingClientRect().right));
-        return popupBox.right - paddingRight - rightmostTime;
+        const rightmostMetric = Math.max(...Array.from(element.querySelectorAll(".workflow-performance__metric"), (metric) => metric.getBoundingClientRect().right));
+        return popupBox.right - paddingRight - rightmostMetric;
       })
     ]);
 
@@ -202,20 +213,40 @@ test.describe("Workflow performance", () => {
     expect(ramBox).not.toBeNull();
     expect(tagBox).not.toBeNull();
     expect(timeBox).not.toBeNull();
-    expect(firstEnvironmentBox).not.toBeNull();
-    expect(secondEnvironmentBox).not.toBeNull();
+    expect(firstGpuBox).not.toBeNull();
+    expect(secondGpuBox).not.toBeNull();
     const maskImage = decodeURIComponent(await meterGraphic.evaluate((element) => getComputedStyle(element).maskImage));
     expect(maskImage).toContain("/assets/icons/Performance 1 SVG.svg");
     expect(Math.abs((popupBox!.x + popupBox!.width / 2) - (triggerBox!.x + triggerBox!.width / 2))).toBeLessThanOrEqual(2);
     expect(triggerBox!.y - (popupBox!.y + popupBox!.height)).toBeGreaterThanOrEqual(8);
     expect(Math.abs(ramBox!.y - tagBox!.y)).toBeLessThanOrEqual(2);
-    expect(Math.abs((timeBox!.y + timeBox!.height) - (tagBox!.y + tagBox!.height))).toBeLessThanOrEqual(2);
-    expect(Math.abs(firstEnvironmentBox!.x - secondEnvironmentBox!.x)).toBeLessThanOrEqual(2);
+    expect(Math.abs(firstGpuBox!.x - secondGpuBox!.x)).toBeLessThanOrEqual(2);
     for (const gap of runGaps) {
-      expect(Math.abs(gap.actual - gap.configured)).toBeLessThanOrEqual(1);
       expect(gap.configured).toBe(gap.spaceSm);
     }
     expect(Math.abs(popupRightInset)).toBeLessThanOrEqual(1);
+    const [rowAlignment, noteWidth] = await Promise.all([
+      firstRun.evaluate((run) => {
+        const centerY = (selector) => {
+          const rect = run.querySelector(selector)!.getBoundingClientRect();
+          return rect.y + rect.height / 2;
+        };
+        return {
+          first: Math.abs(centerY(".workflow-performance__gpu") - centerY(".workflow-performance__metric--total")),
+          second: Math.abs(centerY(".workflow-performance__details") - centerY(".workflow-performance__metric--sampler"))
+        };
+      }),
+      popup.evaluate((element) => {
+        const popupBox = element.getBoundingClientRect();
+        const style = getComputedStyle(element);
+        const contentWidth = popupBox.width - Number.parseFloat(style.paddingLeft) - Number.parseFloat(style.paddingRight);
+        const noteWidth = element.querySelector(".workflow-performance__measurement-note")!.getBoundingClientRect().width;
+        return { contentWidth, noteWidth };
+      })
+    ]);
+    expect(rowAlignment.first).toBeLessThanOrEqual(1);
+    expect(rowAlignment.second).toBeLessThanOrEqual(1);
+    expect(Math.abs(noteWidth.contentWidth - noteWidth.noteWidth)).toBeLessThanOrEqual(1);
     const popupColors = await popup.evaluate((element) => {
       const probe = document.createElement("span");
       probe.style.color = "var(--color-heading)";

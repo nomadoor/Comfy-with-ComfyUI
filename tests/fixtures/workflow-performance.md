@@ -15,8 +15,23 @@ searchExclude: true
 {% workflow "/workflows/basic-workflows/sd15-basics/sd1_5_text2image.json",
   level=1,
   runs=[
-    { gpu: "RTX 4070 Ti 12GB", ram: "DDR5 64GB", time: "51s", tags: ["Sage"] },
-    { gpu: "RTX 4090 24GB", ram: "DDR5 32GB", time: "22s" }
+    {
+      gpu: "RTX 4070 Ti 12GB",
+      ram: "DDR5 64GB",
+      time: "51s",
+      tags: ["Sage"],
+      samplers: [{ speed: "2.3 s/it" }]
+    },
+    {
+      gpu: "RTX 4090 24GB",
+      ram: "DDR5 32GB",
+      time: "22s",
+      samplers: [
+        { name: "Base", speed: "1.2 s/it" },
+        { name: "Refiner", speed: "1.72 it/s" },
+        { name: "Slow pass", speed: "0.0081 it/s" }
+      ]
+    }
   ]
 %}
 
@@ -26,7 +41,8 @@ searchExclude: true
   level=1,
   gpu="RTX 4070 Ti 12GB",
   ram="DDR5 64GB",
-  time="1s"
+  time="1s",
+  samplers=[{ speed: "2.3 s/it" }, { speed: "1.1 s/it" }]
 %}
 
 ## Duplicate basename B

@@ -45,6 +45,7 @@ Do not run steps 5-8 on your own initiative. Finish the step you are on, then sa
 7. When linking workflow JSON, use paths under `/workflows/...`.
    - Keep Performance data beside its Workflow JSON; never put it in front matter. Replace the normal Markdown link with `{% workflow "/workflows/.../example.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="51s", tags=["2.3MP"] %}`.
    - For multiple measured environments, pass `runs=[{ gpu: "...", ram: "...", time: "...", tags: ["..."] }, ...]` to the same `workflow` shortcode.
+   - Sampler speed is optional. Enter the value exactly as ComfyUI reports it using either `s/it` or `it/s`, for example `samplers=[{ speed: "2.3 s/it" }]` or `samplers=[{ speed: "1.72 it/s" }]`; the popup normalizes either form to `s/it`. Multiple Samplers are allowed, but every entry then requires a short identifying `name`, for example `samplers=[{ name: "Base", speed: "2.3 s/it" }, { name: "Refiner", speed: "1.72 it/s" }]`.
    - For a `workflowPicker`, pass an object containing `file` and the same Performance fields in place of that Workflow's path string.
    - Keep generation-size tags compact with an approximate megapixel value such as `1MP`, `2.3MP`, or `4MP`. Decimal values are allowed when useful; do not force the value to an integer. Use exact `W×H` only when those dimensions are important beyond performance context.
 

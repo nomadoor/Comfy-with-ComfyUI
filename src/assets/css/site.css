@@ -2659,10 +2659,12 @@ h1 {
 }
 
 .workflow-performance__run {
-  display: flex;
+  display: grid;
   width: 100%;
-  align-items: flex-end;
-  gap: var(--space-sm);
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  column-gap: var(--space-sm);
+  row-gap: var(--space-2xs);
   padding: 0.6rem 0;
 }
 
@@ -2678,7 +2680,6 @@ h1 {
   border-top: 1px solid var(--color-border-strong);
 }
 
-.workflow-performance__environment,
 .workflow-performance__details,
 .workflow-performance__tags {
   display: flex;
@@ -2686,12 +2687,6 @@ h1 {
   flex-wrap: nowrap;
   align-items: center;
   gap: var(--space-2xs);
-}
-
-.workflow-performance__environment {
-  width: max-content;
-  flex-direction: column;
-  align-items: flex-start;
 }
 
 .workflow-performance__gpu,
@@ -2742,6 +2737,40 @@ h1 {
   line-height: 1;
   text-align: right;
   white-space: nowrap;
+}
+
+.workflow-performance__metric {
+  display: flex;
+  grid-column: 2;
+  align-self: center;
+  align-items: baseline;
+  justify-self: end;
+  justify-content: flex-end;
+  gap: var(--space-xs);
+  white-space: nowrap;
+}
+
+.workflow-performance__metric-label,
+.workflow-performance__measurement-note {
+  color: var(--color-text-muted);
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.workflow-performance__sampler-speed {
+  color: var(--color-heading);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.workflow-performance__measurement-note {
+  width: 100%;
+  margin-top: var(--space-xs);
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--color-border-strong);
+  line-height: 1.4;
 }
 
 @media (max-width: 700px) {

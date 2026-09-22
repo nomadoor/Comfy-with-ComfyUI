@@ -137,6 +137,21 @@
         "ja": "レベル",
         "en": "level",
         "zh": "等级"
+      },
+      "totalTimeLabel": {
+        "ja": "合計",
+        "en": "Total",
+        "zh": "总计"
+      },
+      "samplerLabel": {
+        "ja": "Sampler",
+        "en": "Sampler",
+        "zh": "Sampler"
+      },
+      "performanceMeasurementNote": {
+        "ja": "モデルUnload・Cache消去後の実測値",
+        "en": "Measured after model unload and cache clear",
+        "zh": "卸载模型并清除缓存后的实测值"
       }
     },
     "headingAnchor": {
