@@ -586,12 +586,12 @@
     }
   },
   "basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image_output.png": {
-    "key": "images/7936b0287355b8a6.webp",
+    "key": "images/a57e7b9869fa8333.webp",
     "width": 1760,
     "height": 1184,
     "type": "image/webp",
-    "bytes": 243156,
-    "source": "804255b8da747fbc"
+    "bytes": 218178,
+    "source": "50ca2dcde9e7ffa8"
   },
   "basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image_text_encode.png": {
     "key": "images/53a7e0b5b399fd5e.webp",
