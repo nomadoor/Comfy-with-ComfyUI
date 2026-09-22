@@ -2,6 +2,7 @@
 node_modules/
 _site/
 .cache/
+.wrangler/
 
 # Logs / reports
 npm-debug.log*

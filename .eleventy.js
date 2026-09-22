@@ -7,6 +7,7 @@ import Prism from "prismjs";
 import loadLanguages from "prismjs/components/index.js";
 import { logicalNameFromRef, mediaRef, publicUrl, transformUrl } from "./scripts/lib/media-names.mjs";
 import { createOriginalsMiddleware, localPreview, originalsRootFromEnv } from "./scripts/lib/media-local-preview.mjs";
+import envData from "./src/_data/env.js";
 
 const GYAZO_HOST = "i.gyazo.com";
 const CACHE_DIR = ".cache";
@@ -893,6 +894,7 @@ async function refreshGyazoMetadata() {
 export default function (eleventyConfig) {
   // Passthrough static assets
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/js": `assets/js/${envData.assetVersion}` });
   eleventyConfig.addPassthroughCopy({ "src/workflows": "workflows" });
   eleventyConfig.addPassthroughCopy({ "src/search": "search" });
   eleventyConfig.addPassthroughCopy({ "src/.well-known": ".well-known" });

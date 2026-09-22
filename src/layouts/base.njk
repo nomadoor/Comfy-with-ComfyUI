@@ -37,7 +37,7 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
 {% endif -%}
 {% endif -%}
 <!DOCTYPE html>
-<html lang="{{ currentLang }}">
+<html lang="{{ currentLang }}" data-asset-version="{{ env.assetVersion | e }}">
 
 <head>
   <meta charset="utf-8" />
@@ -121,7 +121,7 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Zen+Kaku+Gothic+New:wght@400;500;600&display=swap" />
-  <link rel="stylesheet" href="/assets/css/site.css" />
+  <link rel="stylesheet" href="/assets/css/site.css?v={{ env.assetVersion | e }}" />
   <link rel="icon" type="image/png" sizes="128x128" href="/assets/logos/favicon/favicon_128.png" />
   <link rel="icon" type="image/png" sizes="256x256" href="/assets/logos/favicon/favicon_256.png" />
 </head>
@@ -159,7 +159,7 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
       </div>
     </aside>
   </div>
-  <script type="module" src="/assets/js/app.js"></script>
+  <script type="module" src="/assets/js/{{ env.assetVersion | e }}/app.js"></script>
 </body>
 
 </html>
