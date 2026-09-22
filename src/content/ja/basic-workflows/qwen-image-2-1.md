@@ -12,43 +12,6 @@ permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_hero.png"
 tags: []
-workflowPerformance:
-  qwen_image_2_1_text2image.json:
-    level: 2
-    runs:
-      - { gpu: "RTX 4070 Ti 12GB", ram: "DDR5 64GB", time: "121s", tags: ["4MP"] }
-  qwen_image_2_1_ref2image.json:
-    level: 2
-    runs:
-      - { gpu: "RTX 4070 Ti 12GB", ram: "DDR5 64GB", time: "104s", tags: ["2MP"] }
-  qwen_image_2_1_image_edit.json:
-    level: 1
-    runs:
-      - { gpu: "RTX 4070 Ti 12GB", ram: "DDR5 64GB", time: "57s", tags: ["1MP"] }
-  qwen_image_2_1_image_edit_local.json:
-    level: 1
-    runs:
-      - { gpu: "RTX 4070 Ti 12GB", ram: "DDR5 64GB", time: "57s", tags: ["1MP"] }
-  qwen_image_2_1_image_edit_local_mask.json:
-    level: 2
-    runs:
-      - { gpu: "RTX 4070 Ti 12GB", ram: "DDR5 64GB", time: "114s", tags: ["2MP"] }
-  qwen_image_2_1_outpainting.json:
-    level: 2
-    runs:
-      - { gpu: "RTX 4070 Ti 12GB", ram: "DDR5 64GB", time: "88s", tags: ["2MP"] }
-  qwen_image_2_1_text2image_rgba.json:
-    level: 1
-    runs:
-      - { gpu: "RTX 4070 Ti 12GB", ram: "DDR5 64GB", time: "62s", tags: ["2MP"] }
-  qwen_image_2_1_subject_extraction.json:
-    level: 2
-    runs:
-      - { gpu: "RTX 4070 Ti 12GB", ram: "DDR5 64GB", time: "87s", tags: ["2MP"] }
-  qwen_image_2_1_panorama.json:
-    level: 2
-    runs:
-      - { gpu: "RTX 4070 Ti 12GB", ram: "DDR5 64GB", time: "146s", tags: ["4MP"] }
 ---
 
 ## Qwen-Image-2.1とは？
@@ -100,7 +63,7 @@ workflowPerformance:
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="121s", tags=["4MP"] %}
 
 - `CFG`: 1.0
   - 公式の workflow は CFG なしになっていますが、少し上げて Negative Prompt を使ってみる価値はあるかもしれませんね
@@ -119,7 +82,7 @@ workflowPerformance:
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="104s", tags=["2MP"] %}
 
 - 参照画像は最大 10 枚まで入力可
 - プロンプトで「`<image1>` の女性が `<image2>` の場所に座っている」のように、どの画像を使うのか指定します。
@@ -155,7 +118,7 @@ workflow は Ref2Image とほとんど同じです。違うのは、生成する
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="57s", tags=["1MP"] %}
 
 これまでの画像編集と同様に、「男性を消して」「服を赤くして」「水彩画に変えて」のように指示してください。
 
@@ -177,7 +140,7 @@ workflow は Ref2Image とほとんど同じです。違うのは、生成する
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="57s", tags=["1MP"] %}
 
 編集したい画像に直接、編集させたいオブジェクトを囲みます。
 - `Load Image` ノードに付いている `Mask Editor` でも可能です。
@@ -192,7 +155,7 @@ workflow は Ref2Image とほとんど同じです。違うのは、生成する
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="114s", tags=["2MP"] %}
 
 赤丸と考え方は同じですが、こちらは位置を示す白黒画像を、**元画像とは別に** 入力します。
 
@@ -219,7 +182,7 @@ workflow は Ref2Image とほとんど同じです。違うのは、生成する
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="88s", tags=["2MP"] %}
 
 参照画像として横長の画像を入れる。でも、生成させる画像サイズを縦長にしたらどうでしょう？
 
@@ -243,7 +206,7 @@ Qwen-Image-2.1 は、プロンプトを少し変えるだけで透過画像も�
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_rgba.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_rgba.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_rgba.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="62s", tags=["2MP"] %}
 
 以下の形でプロンプトを書きます。
 
@@ -265,7 +228,7 @@ This is an RGBA image with transparency. <ここに生成したいもののプ�
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="87s", tags=["2MP"] %}
 
 先ほどのフォーマットで、切り抜きたいものを `Extract 〇〇` と指示するだけです。
 
@@ -286,7 +249,7 @@ This is an RGBA image with transparency. <ここに生成したいもののプ�
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_panorama.mp4){media=loop}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_panorama.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_panorama.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="146s", tags=["4MP"] %}
 
 元画像を参照しながら、横長 (2:1) の画像を生成します。
 

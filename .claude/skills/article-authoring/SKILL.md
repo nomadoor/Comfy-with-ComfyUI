@@ -35,7 +35,6 @@ Do not run steps 5-8 on your own initiative. Finish the step you are on, then sa
    - `section`, `slug`, `navId`, `title`, `summary`, `created`, `updated`
    - `tags` are optional and max 5.
    - `notes` uses `noteTags`; do not substitute normal `tags`.
-   - When `workflowPerformance` records a known generation size, keep the popup compact by using an approximate megapixel tag such as `1MP`, `2.3MP`, or `4MP`. Decimal values are allowed when useful; do not force the value to an integer. Use exact `W×H` only when those dimensions are important beyond performance context.
 5. Use H2/H3 only for article body structure unless an existing page pattern requires otherwise.
 6. Use media markup consistently. `{media=...}` is the display mode and works for R2 and Gyazo URLs; `{gyazo=...}` is a compatible alias:
    - static image: `{media=image}`
@@ -44,6 +43,10 @@ Do not run steps 5-8 on your own initiative. Finish the step you are on, then sa
    - R2 media is referenced only as `/media/<logical name>` (for example `/media/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png`: `<section>/<article slug>/<lowercase_snake_case file name>`), backed by an original in `COMFY_MEDIA_ORIGINALS`. Unuploaded originals preview on the dev server; the pre-commit hook runs `npm run media:sync` to upload and register them in `src/_data/media.json`. Never run uploads on the owner's behalf unless asked. Never write `media.comfyui.nomadoor.net` URLs directly, and never invent or rename logical names without the owner.
    - Gyazo and other external media URLs are written directly.
 7. When linking workflow JSON, use paths under `/workflows/...`.
+   - Keep Performance data beside its Workflow JSON; never put it in front matter. Replace the normal Markdown link with `{% workflow "/workflows/.../example.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="51s", tags=["2.3MP"] %}`.
+   - For multiple measured environments, pass `runs=[{ gpu: "...", ram: "...", time: "...", tags: ["..."] }, ...]` to the same `workflow` shortcode.
+   - For a `workflowPicker`, pass an object containing `file` and the same Performance fields in place of that Workflow's path string.
+   - Keep generation-size tags compact with an approximate megapixel value such as `1MP`, `2.3MP`, or `4MP`. Decimal values are allowed when useful; do not force the value to an integer. Use exact `W×H` only when those dimensions are important beyond performance context.
 
 ## Editing Owner Drafts
 

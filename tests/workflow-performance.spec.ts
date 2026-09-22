@@ -1,6 +1,10 @@
+import fs from "node:fs";
+import path from "node:path";
 import { test, expect } from "./support/test";
 
 const FIXTURE_PAGE = "/internal/workflow-performance-fixtures/";
+const SIMPLE_MATH_JSON = fs.readFileSync(path.resolve("src/workflows/data-utilities/simple-math/math_expression.json"), "utf8").trim();
+const CONDITIONAL_MATH_JSON = fs.readFileSync(path.resolve("src/workflows/data-utilities/conditional-branching/math_expression.json"), "utf8").trim();
 
 test.describe("Workflow performance", () => {
   test("shows configured reference data and omits the meter when data is absent", async ({ page }) => {
@@ -43,6 +47,45 @@ test.describe("Workflow performance", () => {
     expect(headingType).toEqual(downloadType);
     expect(headingColor).toBe(mutedColor);
     await expect(unconfigured.locator(".workflow-performance")).toHaveCount(0);
+  });
+
+  test("keeps multiple workflow shortcode IDs and copied JSON independent", async ({ page }) => {
+    await page.addInitScript(() => {
+      window.__copiedWorkflows = [];
+      const clipboard = navigator.clipboard || {};
+      try {
+        Object.defineProperty(navigator, "clipboard", {
+          value: clipboard,
+          configurable: true
+        });
+      } catch {
+        // ignore
+      }
+      clipboard.writeText = async (value) => {
+        window.__copiedWorkflows.push(String(value || ""));
+      };
+    });
+    await page.goto(FIXTURE_PAGE);
+
+    const simpleMath = page.locator('.workflow-json--inline:has([href="/workflows/data-utilities/simple-math/math_expression.json"])');
+    const conditionalMath = page.locator('.workflow-json--inline:has([href="/workflows/data-utilities/conditional-branching/math_expression.json"])');
+    const targets = await Promise.all([
+      simpleMath.locator("[data-copy-json]").getAttribute("data-copy-json"),
+      conditionalMath.locator("[data-copy-json]").getAttribute("data-copy-json")
+    ]);
+
+    expect(targets[0]).toBeTruthy();
+    expect(targets[1]).toBeTruthy();
+    expect(targets[0]).not.toBe(targets[1]);
+    expect(targets[0]).not.toContain("NaN");
+    expect(targets[1]).not.toContain("NaN");
+
+    await simpleMath.locator("[data-copy-json]").click();
+    await conditionalMath.locator("[data-copy-json]").click();
+    await expect.poll(() => page.evaluate(() => window.__copiedWorkflows)).toEqual([
+      SIMPLE_MATH_JSON,
+      CONDITIONAL_MATH_JSON
+    ]);
   });
 
   test("opens from hover, keyboard focus, and tap-style activation", async ({ page }) => {

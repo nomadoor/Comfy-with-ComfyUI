@@ -302,7 +302,6 @@ function preserveManualNumberedBullets(markdownLib) {
 function enhanceJsonLinks(markdownLib) {
   markdownLib.core.ruler.after("inline", "convert-json-links", (state) => {
     state.env = state.env || {};
-    state.env.__jsonLinkCounter = state.env.__jsonLinkCounter || 0;
     const tokens = state.tokens;
     for (let i = 0; i < tokens.length - 2; i++) {
       const open = tokens[i];
@@ -414,7 +413,7 @@ function normalizeWorkflowPerformance(input) {
   if (!input || typeof input !== "object") return null;
   const level = Number(input.level);
   if (!Number.isInteger(level) || level < 1 || level > 3) return null;
-  const rawRuns = Array.isArray(input.runs) ? input.runs : [];
+  const rawRuns = Array.isArray(input.runs) ? input.runs : [input];
   const runs = rawRuns
     .map((run) => {
       if (!run || typeof run !== "object") return null;
@@ -428,19 +427,6 @@ function normalizeWorkflowPerformance(input) {
     })
     .filter(Boolean);
   return runs.length ? { level, runs } : null;
-}
-
-function getWorkflowPerformance(env = {}, file = "") {
-  const configured = env.workflowPerformance || env.ctx?.workflowPerformance;
-  if (!configured || typeof configured !== "object" || Array.isArray(configured)) return null;
-  const cleanFile = String(file).split("?")[0].split("#")[0];
-  const candidates = [cleanFile, cleanFile.replace(/^\//, ""), getWorkflowBasename(cleanFile)];
-  for (const key of candidates) {
-    if (Object.prototype.hasOwnProperty.call(configured, key)) {
-      return normalizeWorkflowPerformance(configured[key]);
-    }
-  }
-  return null;
 }
 
 function renderPerformanceMeter() {
@@ -482,9 +468,9 @@ function renderWorkflowPerformance(performance, { fileName, id, lang = DEFAULT_L
   </div>`;
 }
 
-function renderWorkflowPickerPerformance(items, defaultIndex, env, pickerId, lang = DEFAULT_LANG) {
+function renderWorkflowPickerPerformance(items, defaultIndex, pickerId, lang = DEFAULT_LANG) {
   const entries = items
-    .map((item, index) => ({ ...item, index, performance: getWorkflowPerformance(env, item.file) }))
+    .map((item, index) => ({ ...item, index }))
     .filter((entry) => entry.performance);
   if (!entries.length) return "";
   const selected = entries.find((entry) => entry.index === defaultIndex) || null;
@@ -506,7 +492,7 @@ function renderWorkflowPickerPerformance(items, defaultIndex, env, pickerId, lan
   </div>`;
 }
 
-function renderJsonLinkRow(linkInfo, env) {
+function renderJsonLinkRow(linkInfo, env, performanceInput = null) {
   const diskPath = resolveJsonDiskPath(linkInfo.href, env);
   if (!diskPath) {
     return null;
@@ -517,11 +503,14 @@ function renderJsonLinkRow(linkInfo, env) {
   } catch {
     return null;
   }
-  env.__jsonLinkCounter += 1;
+  const counterState = env.ctx && typeof env.ctx === "object" ? env.ctx : env;
+  counterState.__jsonLinkCounter = Number.isInteger(counterState.__jsonLinkCounter)
+    ? counterState.__jsonLinkCounter + 1
+    : 1;
   const pageKey = (env.page?.url || "page").replace(/[^a-z0-9]+/gi, "-");
   const fileName = path.basename(linkInfo.href.split("?")[0]);
   const baseKey = path.basename(fileName, path.extname(fileName)).replace(/[^a-z0-9]+/gi, "-") || "wf";
-  const copyTargetId = `workflow-json-inline-${pageKey}-${baseKey}-${env.__jsonLinkCounter}`;
+  const copyTargetId = `workflow-json-inline-${pageKey}-${baseKey}-${counterState.__jsonLinkCounter}`;
   const lang = env.lang || env.page?.lang || DEFAULT_LANG;
   const copyLabel = getWorkflowLabel("copyLabel", lang);
   const downloadLabel = getWorkflowLabel("downloadLabel", lang);
@@ -530,7 +519,7 @@ function renderJsonLinkRow(linkInfo, env) {
   const copyIcon = getIconMarkup("copy");
   const downloadIcon = getIconMarkup("download");
   const escapedFile = escapeHTML(fileName);
-  const performance = getWorkflowPerformance(env, linkInfo.href);
+  const performance = normalizeWorkflowPerformance(performanceInput);
   const performanceMarkup = renderWorkflowPerformance(performance, { fileName, id: copyTargetId, lang });
   return `<div class="workflow-json workflow-json--inline">
   <div class="workflow-json__row">
@@ -1406,11 +1395,26 @@ export default function (eleventyConfig) {
 </div>`;
   });
 
+  eleventyConfig.addShortcode("workflow", function (file, performance = {}) {
+    const env = this || {};
+    const href = typeof file === "string" ? file.trim() : "";
+    if (!href) return "";
+    return renderJsonLinkRow({ href, text: "" }, env, performance) || "";
+  });
+
   eleventyConfig.addShortcode("workflowPicker", function (...rawArgs) {
     const env = this || {};
     const inputArgs = rawArgs.length === 1 && Array.isArray(rawArgs[0]) ? rawArgs[0] : rawArgs;
     const normalized = inputArgs
-      .map((value) => (typeof value === "string" ? value.trim() : ""))
+      .map((value) => {
+        if (typeof value === "string") {
+          return { file: value.trim(), performance: null };
+        }
+        if (value && typeof value === "object" && typeof value.file === "string") {
+          return { file: value.file.trim(), performance: normalizeWorkflowPerformance(value) };
+        }
+        return null;
+      })
       .filter(Boolean);
 
     if (!normalized.length) return "";
@@ -1418,15 +1422,15 @@ export default function (eleventyConfig) {
     const items = [];
     let defaultIndex = -1;
 
-    normalized.forEach((raw, index) => {
-      const isDefault = raw.startsWith("!");
-      const file = isDefault ? raw.slice(1).trim() : raw;
+    normalized.forEach((entry) => {
+      const isDefault = entry.file.startsWith("!");
+      const file = isDefault ? entry.file.slice(1).trim() : entry.file;
       if (!file) return;
       const name = getWorkflowBasename(file);
       if (isDefault && defaultIndex === -1) {
         defaultIndex = items.length;
       }
-      items.push({ file, name });
+      items.push({ file, name, performance: entry.performance });
     });
 
     if (!items.length) return "";
@@ -1454,7 +1458,7 @@ export default function (eleventyConfig) {
       const isSelected = index === defaultIndex;
       return `<li class="workflow-picker__option${isSelected ? " is-selected" : ""}" role="option" data-value="${escapeHTML(item.file)}" aria-selected="${isSelected ? "true" : "false"}">${escapeHTML(item.name)}</li>`;
     }).join("");
-    const performanceMarkup = renderWorkflowPickerPerformance(items, defaultIndex, env, pickerId, lang);
+    const performanceMarkup = renderWorkflowPickerPerformance(items, defaultIndex, pickerId, lang);
 
     return `<div class="workflow-json workflow-json--picker" data-workflow-picker="${pickerId}" data-error-label="${escapeHTML(copyErrorLabel)}">
   <div class="workflow-json__row workflow-json__row--picker">
