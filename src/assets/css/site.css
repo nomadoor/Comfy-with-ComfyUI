@@ -2710,6 +2710,10 @@ h1 {
   gap: var(--space-2xs);
 }
 
+.workflow-performance__gpu {
+  justify-self: start;
+}
+
 .workflow-performance__data-icon {
   width: 0.78rem;
   height: 0.78rem;
