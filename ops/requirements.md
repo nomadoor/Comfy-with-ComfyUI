@@ -3,7 +3,7 @@
 ## 0. Stack & General Rules
 - Eleventy + Nunjucks. JavaScript must stay ESM (`<script type="module">`).
 - Style with plain CSS; follow `/ops/style-design.md` tokens and transitions.
-- Deploy to Cloudflare Pages; treat `/assets/*` as immutable.
+- Deploy to Cloudflare Pages. Version mutable CSS and JavaScript entry URLs per deployment, and require browser revalidation for CSS and JavaScript module files.
 
 ## 1. Content & Routing
 - Routes follow `/<lang>/<section>/<slug>/` with kebab-case slugs that match nav/data.
@@ -107,7 +107,8 @@
 ## 10. Accessibility & Performance
 - Provide descriptive `alt` text (describe actions shown in videos too).
 - Ensure keyboard support: focus states, Esc handlers, Enter/Space activations.
-- Serve `/assets/*` with `Cache-Control: public, max-age=31536000, immutable`.
+- Append the deployment version to the main CSS URL, and serve the complete JavaScript module graph from a deployment-versioned directory so newly deployed HTML never reuses older CSS or child modules.
+- Serve `/assets/css/*` and `/assets/js/*` with `Cache-Control: public, max-age=0, must-revalidate`.
 - Provide a single JavaScript-unavailable fallback notice near the top of article content. Hide it by default when scripts run (`html.js` flag) so normal layouts are unaffected.
 
 ## 11. CI & Quality Gates

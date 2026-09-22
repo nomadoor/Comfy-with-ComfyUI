@@ -11,6 +11,12 @@
 /zh/*
   Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
+/assets/css/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/js/*
+  Cache-Control: public, max-age=0, must-revalidate
+
 /robots.txt
   Content-Type: text/plain; charset=utf-8
 

@@ -138,6 +138,12 @@ const updateHead = (nextDoc) => {
   }
 };
 
+const belongsToCurrentDeployment = (nextDoc) => {
+  const currentVersion = document.documentElement.dataset.assetVersion;
+  const nextVersion = nextDoc.documentElement.dataset.assetVersion;
+  return Boolean(currentVersion && nextVersion && currentVersion === nextVersion);
+};
+
 const swapContent = (nextDoc, destinationUrl) => {
   const nextPage = nextDoc.querySelector(CONTAINER_SELECTOR);
   const currentPage = document.querySelector(CONTAINER_SELECTOR);
@@ -213,6 +219,10 @@ const navigateTo = async (url, { replace = false, source = "unknown" } = {}) => 
     }
     const parser = new DOMParser();
     const nextDoc = parser.parseFromString(html, "text/html");
+    if (!belongsToCurrentDeployment(nextDoc)) {
+      window.location.href = destinationUrl.href;
+      return;
+    }
     const nextUrl = destinationUrl.pathname + destinationUrl.search + destinationUrl.hash;
     let historyUpdated = false;
     const updateHistory = () => {

@@ -12,10 +12,16 @@ const assistantFeedbackCsrfHeader =
   process.env.ASSISTANT_FEEDBACK_CSRF_HEADER || "X-CSRF-Token";
 const assistantTurnstileSitekey =
   process.env.ASSISTANT_TURNSTILE_SITEKEY || "";
+const deploymentCommit =
+  process.env.CF_PAGES_COMMIT_SHA || process.env.GITHUB_SHA || "";
+const assetVersion = /^[a-f0-9]{7,64}$/i.test(deploymentCommit)
+  ? deploymentCommit.slice(0, 12)
+  : "dev";
 
 export default {
   assistantFeedbackEndpoint,
   assistantFeedbackCsrfCookie,
   assistantFeedbackCsrfHeader,
-  assistantTurnstileSitekey
+  assistantTurnstileSitekey,
+  assetVersion
 };
