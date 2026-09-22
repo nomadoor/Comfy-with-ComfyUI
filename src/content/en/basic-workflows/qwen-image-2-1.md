@@ -63,7 +63,7 @@ The image generation component is a compact 7B model, yet it covers generation, 
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="121s", tags=["4MP"], samplers=[{ speed: "3.45 s/it" }] %}
 
 - `CFG`: 1.0
   - The official workflow does not use CFG, but it may be worth raising it slightly to try a Negative Prompt
@@ -82,7 +82,7 @@ This workflow combines reference images to create a new image.
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="108s", tags=["2MP"], samplers=[{ speed: "1.95 s/it" }] %}
 
 - Accepts up to 10 reference images
 - Specify which images to use in the prompt, such as “the woman from `<image1>` is sitting in the location from `<image2>`.”
@@ -117,7 +117,7 @@ The second and subsequent images can be used as references, just as in Ref2Image
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="57s", tags=["1MP"], samplers=[{ speed: "1.72 it/s" }] %}
 
 As with other image-editing models, simply give an instruction such as “remove the man,” “make the clothes red,” or “turn this into a watercolor painting.”
 
@@ -138,7 +138,7 @@ Draw colored circles around the areas you want to edit.
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="64s", tags=["1MP"], samplers=[{ speed: "1.72 it/s" }] %}
 
 Draw directly on the image to mark the objects you want to edit.
 
@@ -154,7 +154,7 @@ You can use several colors for separate instructions, which is handy when the lo
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="117s", tags=["2MP"], samplers=[{ speed: "2.27 s/it" }] %}
 
 The idea is the same as using a colored circle, but here a black-and-white image that marks the location is supplied **separately from the original image**.
 
@@ -181,7 +181,7 @@ This works very differently from ordinary [Outpainting](/en/basic-workflows/sd15
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="93s", tags=["2MP"], samplers=[{ speed: "1.67 s/it" }] %}
 
 What happens if you provide a wide image as a reference, but generate a portrait image?
 
@@ -196,6 +196,10 @@ This is not a way to preserve the source image precisely, but it is wonderfully 
 ### Generate from guide images
 
 Although this is not ControlNet itself, you can pass pose images, depth maps, and similar images as image-editing references and generate images based on them.
+
+**Required custom node**
+
+- [Fannovel16/comfyui_controlnet_aux](https://github.com/Fannovel16/comfyui_controlnet_aux)
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose.png){media=image}
 
@@ -237,7 +241,7 @@ No special nodes are required. It produces an RGBA image with an Alpha Channel f
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_rgba.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_rgba.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_rgba.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="65s", tags=["2MP"], samplers=[{ speed: "1.11 s/it" }] %}
 
 Write the prompt in this format:
 
@@ -259,7 +263,7 @@ Combine transparent generation with image editing and—yes—you can pull a sub
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction.png){media=image}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="90s", tags=["2MP"], samplers=[{ speed: "1.67 s/it" }] %}
 
 Use the same format as above and tell it what to extract with `Extract ...`.
 
@@ -280,7 +284,7 @@ Give it any reference image and ask for an ERP image at a 2:1 resolution. That a
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_panorama.mp4){media=loop}
 
-[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_panorama.json)
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_panorama.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="159s", tags=["4MP"], samplers=[{ speed: "4.29 s/it" }] %}
 
 This workflow generates a wide 2:1 image while using the source image as a reference.
 

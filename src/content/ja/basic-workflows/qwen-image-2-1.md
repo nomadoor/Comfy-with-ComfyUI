@@ -198,6 +198,10 @@ workflow は Ref2Image とほとんど同じです。違うのは、生成する
 
 ControlNet そのものではありませんが、ポーズ画像や深度マップなどを画像編集の参照として渡し、それをもとに画像を生成できます。
 
+**必要なカスタムノード**
+
+- [Fannovel16/comfyui_controlnet_aux](https://github.com/Fannovel16/comfyui_controlnet_aux)
+
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose.png){media=image}
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="82s", tags=["2MP"], samplers=[{ speed: "1.38 s/it" }] %}

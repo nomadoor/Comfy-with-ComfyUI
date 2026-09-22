@@ -7,6 +7,47 @@ const SIMPLE_MATH_JSON = fs.readFileSync(path.resolve("src/workflows/data-utilit
 const CONDITIONAL_MATH_JSON = fs.readFileSync(path.resolve("src/workflows/data-utilities/conditional-branching/math_expression.json"), "utf8").trim();
 
 test.describe("Workflow performance", () => {
+  test("localizes workflow controls and performance details to the article language", async ({ page }) => {
+    const locales = [
+      {
+        path: "/en/basic-workflows/qwen-image-2-1/",
+        pickerPath: "/en/basic-workflows/ltx-2/",
+        performance: "Performance",
+        total: "Total",
+        note: "Measured after model unload and cache clear",
+        copy: "Copy",
+        download: "Download"
+      },
+      {
+        path: "/zh/basic-workflows/qwen-image-2-1/",
+        pickerPath: "/zh/basic-workflows/ltx-2/",
+        performance: "性能参考",
+        total: "总计",
+        note: "卸载模型并清除缓存后的实测值",
+        copy: "复制",
+        download: "下载"
+      }
+    ];
+
+    for (const locale of locales) {
+      await page.goto(locale.path);
+      const workflow = page.locator(".workflow-json--inline").filter({
+        hasText: "qwen_image_2_1_text2image.json"
+      });
+      await expect(workflow).toHaveCount(1);
+      await expect(workflow.locator(".workflow-performance__heading")).toHaveText(locale.performance);
+      await expect(workflow.locator(".workflow-performance__metric-label").first()).toHaveText(locale.total);
+      await expect(workflow.locator(".workflow-performance__measurement-note")).toHaveText(locale.note);
+      await expect(workflow.locator("[data-copy-json]")).toHaveAttribute("data-label", locale.copy);
+      await expect(workflow.locator("[data-download-json]")).toHaveAttribute("data-label", locale.download);
+
+      await page.goto(locale.pickerPath);
+      const picker = page.locator(".workflow-json--picker").first();
+      await expect(picker.locator("[data-workflow-picker-copy]")).toHaveAttribute("data-label", locale.copy);
+      await expect(picker.locator("[data-workflow-picker-download]")).toHaveAttribute("data-label", locale.download);
+    }
+  });
+
   test("shows configured reference data and omits the meter when data is absent", async ({ page }) => {
     await page.goto(FIXTURE_PAGE);
 
