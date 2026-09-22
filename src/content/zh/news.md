@@ -12,6 +12,11 @@ tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/zh/data-utilities/loop/">
+    <span class="news-row__date">2026.9.22</span>
+    <span class="news-row__tag">data-utilities</span>
+    <span class="news-row__title">为循环处理添加了仅在第一次或最后一次改变处理的方法</span>
+  </a>
   <a class="news-row" href="/zh/basic-workflows/qwen-image-2-1/">
     <span class="news-row__date">2026.9.22</span>
     <span class="news-row__tag">basic-workflows</span>

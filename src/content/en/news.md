@@ -13,6 +13,11 @@ tags:
 ---
 
 <div class="news-list">
+  <a class="news-row" href="/en/data-utilities/loop/">
+    <span class="news-row__date">2026.9.22</span>
+    <span class="news-row__tag">data-utilities</span>
+    <span class="news-row__title">Added first and last iteration control to Loops</span>
+  </a>
   <a class="news-row" href="/en/basic-workflows/qwen-image-2-1/">
     <span class="news-row__date">2026.9.22</span>
     <span class="news-row__tag">basic-workflows</span>
