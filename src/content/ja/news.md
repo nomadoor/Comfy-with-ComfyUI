@@ -12,6 +12,11 @@ tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/ja/data-utilities/loop/">
+    <span class="news-row__date">2026.9.22</span>
+    <span class="news-row__tag">data-utilities</span>
+    <span class="news-row__title">ループ処理に最初と最後だけ処理を変える方法を追加しました</span>
+  </a>
   <a class="news-row" href="/ja/basic-workflows/qwen-image-2-1/">
     <span class="news-row__date">2026.9.22</span>
     <span class="news-row__tag">basic-workflows</span>

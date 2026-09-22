@@ -6,6 +6,7 @@ slug: loop
 navId: loop
 title: "循环处理"
 created: 2026-09-18
+updated: 2026-09-22
 summary: "用 Start Loop 和 End Loop 重复执行工作流的一部分"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -67,6 +68,22 @@ ComfyUI 的工作流虽然看起来复杂，但基本上是一条直线。放入
 只有 `List` 需要稍加注意。`iteration_index` 表示的只是第几轮，所以无论往 List 里放什么，它都是 0, 1, 2 …
 
 想使用放进去的内容，要从 `list_item` 取出。在这个例子中就是 11, 3, 8。
+
+### 只在第一次或最后一次改变处理
+
+如果只想在循环的最开始或最后改变处理，可以使用 `is_first` / `is_last`。
+
+`is_first` 只在第一次 iteration 输出 `true`，`is_last` 只在最后一次 iteration 输出 `true`。
+
+![](/media/data-utilities/loop/loop_simple_is_last.png){media=image}
+
+[](/workflows/data-utilities/loop/loop_simple_is_last.json)
+
+基本上，可以把它们理解为与 `If/Else Switch` 配合使用的输出。
+
+这个工作流只会把最后一次 iteration 的输出替换为 `12345`。
+
+> `iteration_index` 会输出当前是第几轮，因此配合 `If/Else Switch`，也可以在第一次和最后一次以外的任意时机切换处理。
 
 ### 把图像生成重复4次
 

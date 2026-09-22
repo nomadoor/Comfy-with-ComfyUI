@@ -6,6 +6,7 @@ slug: loop
 navId: loop
 title: "Loops"
 created: 2026-09-18
+updated: 2026-09-22
 summary: "Repeat part of a workflow with Start Loop and End Loop"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -67,6 +68,22 @@ That is hard to picture in words, so let's send `iteration_index` straight to th
 `List` needs a little care. `iteration_index` only ever tells you which pass you are on, so no matter what you put in the List it stays 0, 1, 2 …
 
 To use what you actually put in, take it from `list_item`. In this example that gives 11, 3, 8.
+
+### Changing behavior only on the first or last iteration
+
+When you want to change the behavior only at the start or end of a loop, use `is_first` / `is_last`.
+
+`is_first` is `true` only on the first iteration, while `is_last` is `true` only on the last.
+
+![](/media/data-utilities/loop/loop_simple_is_last.png){media=image}
+
+[](/workflows/data-utilities/loop/loop_simple_is_last.json)
+
+You can generally think of these as outputs to use with `If/Else Switch`.
+
+In this workflow, only the output from the last iteration is replaced with `12345`.
+
+> `iteration_index` tells you which pass you are on, so `If/Else Switch` can also change the behavior at any point—not just the first or last iteration.
 
 ### Repeating image generation 4 times
 
