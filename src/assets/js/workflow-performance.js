@@ -19,7 +19,7 @@ function bindDocumentClick() {
     document.querySelectorAll("[data-workflow-performance].is-open").forEach((wrapper) => {
       if (!wrapper.contains(event.target)) closePerformance(wrapper, { dismiss: true });
     });
-  });
+  }, true);
 }
 
 function bindPerformance(wrapper) {

@@ -87,6 +87,27 @@ test.describe("Workflow performance", () => {
     await expect(popup).not.toBeVisible();
   });
 
+  test("closes an open popup when another performance trigger is activated", async ({ page }) => {
+    await page.goto(FIXTURE_PAGE);
+
+    const inline = page.locator(".workflow-json--inline").filter({ hasText: "sd1_5_text2image.json" });
+    const inlineMeter = inline.getByRole("button", { name: /パフォーマンス|performance/i });
+    const inlinePopup = inline.locator(".workflow-performance__popup");
+    const picker = page.locator(".workflow-json--picker");
+    const pickerMeter = picker.getByRole("button", { name: /パフォーマンス|performance/i });
+    const pickerPopup = picker.locator(".workflow-performance__popup:not([hidden])");
+
+    await inlineMeter.click();
+    await expect(inlineMeter).toHaveAttribute("aria-expanded", "true");
+    await expect(inlinePopup).toBeVisible();
+
+    await pickerMeter.click();
+    await expect(pickerMeter).toHaveAttribute("aria-expanded", "true");
+    await expect(pickerPopup).toBeVisible();
+    await expect(inlineMeter).toHaveAttribute("aria-expanded", "false");
+    await expect(inlinePopup).not.toBeVisible();
+  });
+
   test("uses the supplied level icon and centers the popup over the meter", async ({ page }) => {
     await page.goto(FIXTURE_PAGE);
 
