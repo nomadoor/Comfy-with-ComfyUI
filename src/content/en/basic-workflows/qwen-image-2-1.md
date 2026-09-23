@@ -367,6 +367,10 @@ With `is_last` and `If/Else Switch`, the last iteration bypasses extraction and 
 
 {% endmediaRow %}
 
+> You might be wondering why I use `iteration_index` instead of a fixed seed.  
+> I do not know whether this is a bug or intended behavior, but editing an image again with the same seed makes the output badly artifacted.  
+> It works fine as long as the seed changes, so as a quick workaround I use `iteration_index`, which changes on every loop.
+
 **Output example**
 
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_input.png){media=image} ![output 1](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output1.png){media=image} ![output 2](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output2.png){media=image} ![output 3](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output3.png){media=image} ![output 4](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output4.png){media=image} ![output 5](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output5.png){media=image}
