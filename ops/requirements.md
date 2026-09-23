@@ -9,6 +9,7 @@
 - Routes follow `/<lang>/<section>/<slug>/` with kebab-case slugs that match nav/data.
 - `lang` is one of `ja`, `en`, `zh`.
 - Exceptions: `about`, `news`, and `contact` are standalone pages and use `/<lang>/<slug>/` without `section`.
+- News rows announce newly published pages by default. Do not add rows for updates to existing pages unless the owner explicitly requests an exception.
 - The former `faq` section is replaced by `notes`. Old `/<lang>/faq/<slug>/` URLs must not keep duplicate content; redirect them with Cloudflare Pages `_redirects` to `/<lang>/notes/<slug>/`.
 - Markdown lives under `src/content/<lang>/`; workflows sit in `src/workflows/<slug>/*.json`; shared data under `_data`.
 - Front matter requires `slug`, `title`, `created`, and `updated`. `created` / `updated` use `YYYY-MM-DD`; when exact authorship dates are unknown, use the best available Git history date and adjust later if the owner provides a better date. `tags` は任意（最大5件）。ただし **`ai-capabilities` セクションは原則 tags なし**。例外的に付ける場合はオーナー指示と `/ops` 合意を先に取る。`draft: true` で非公開化。

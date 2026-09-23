@@ -5,23 +5,13 @@ slug: news
 navId: news
 title: "更新信息"
 created: 2026-02-05
-updated: 2026-09-22
+updated: 2026-09-23
 summary: "本站的更新信息"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news
 ---
 <div class="news-list">
-  <a class="news-row" href="/zh/data-utilities/loop/">
-    <span class="news-row__date">2026.9.22</span>
-    <span class="news-row__tag">data-utilities</span>
-    <span class="news-row__title">为循环处理添加了仅在第一次或最后一次改变处理的方法</span>
-  </a>
-  <a class="news-row" href="/zh/basic-workflows/qwen-image-2-1/">
-    <span class="news-row__date">2026.9.22</span>
-    <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">为 Qwen-Image-2.1 添加了根据引导图像生成和 Upscale 的内容</span>
-  </a>
   <a class="news-row" href="/zh/basic-workflows/qwen-image-2-1/">
     <span class="news-row__date">2026.9.21</span>
     <span class="news-row__tag">basic-workflows</span>
@@ -156,16 +146,6 @@ tags:
     <span class="news-row__date">2026.1.20</span>
     <span class="news-row__tag">basic-workflows</span>
     <span class="news-row__title">追加了 FLUX.2 [klein] 的页面</span>
-  </a>
-  <a class="news-row" href="/zh/data-utilities/resize-crop-pad/">
-    <span class="news-row__date">2026.1.18</span>
-    <span class="news-row__tag">data-utilities</span>
-    <span class="news-row__title">追加了 Resize Image/Mask 节点的说明</span>
-  </a>
-  <a class="news-row" href="/zh/basic-workflows/ltx-2/">
-    <span class="news-row__date">2026.1.17</span>
-    <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">更新了 LTX-2 的页面<br>调整参数，追加了许多 workflow</span>
   </a>
   <a class="news-row" href="/zh/news/">
     <span class="news-row__date">2026.1.15</span>

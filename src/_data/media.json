@@ -603,6 +603,102 @@
     "bytes": 186216,
     "source": "29f390f1fe7a5fc6"
   },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_input.png": {
+    "key": "images/6c4270090ec6e82f.webp",
+    "width": 1024,
+    "height": 1536,
+    "type": "image/webp",
+    "bytes": 311516,
+    "source": "831fe8c5477ae2ee"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_mllm.png": {
+    "key": "images/bf88c88f18ec793f.webp",
+    "width": 1969,
+    "height": 883,
+    "type": "image/webp",
+    "bytes": 72520,
+    "source": "0aec37224e5a78cf"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_number.png": {
+    "key": "images/612d80dd28d0006a.webp",
+    "width": 1474,
+    "height": 1160,
+    "type": "image/webp",
+    "bytes": 140346,
+    "source": "89a12f6c58f202e4"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_object_extraction.png": {
+    "key": "images/d0a4e564d43dba95.webp",
+    "width": 1604,
+    "height": 1170,
+    "type": "image/webp",
+    "bytes": 78280,
+    "source": "e023f5a17da372f9"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_object_removal.png": {
+    "key": "images/44e85eb1664667c2.webp",
+    "width": 1836,
+    "height": 1067,
+    "type": "image/webp",
+    "bytes": 66104,
+    "source": "ce428c1d18d37827"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output1.png": {
+    "key": "images/7dda0f5726b83795.webp",
+    "width": 1024,
+    "height": 1536,
+    "type": "image/webp",
+    "bytes": 322206,
+    "source": "1648a39d33f263ad"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output2.png": {
+    "key": "images/751869316bf236f6.webp",
+    "width": 1024,
+    "height": 1536,
+    "type": "image/webp",
+    "bytes": 278686,
+    "source": "46a6ff564d79555b"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output3.png": {
+    "key": "images/4a171f38cc172c1e.webp",
+    "width": 1024,
+    "height": 1536,
+    "type": "image/webp",
+    "bytes": 305542,
+    "source": "7bac4eb24627de34"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output4.png": {
+    "key": "images/49401f4c0eddd848.webp",
+    "width": 1024,
+    "height": 1536,
+    "type": "image/webp",
+    "bytes": 266936,
+    "source": "6a96a188d149646f"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output5.png": {
+    "key": "images/7c9e3b4caed01d3a.webp",
+    "width": 1024,
+    "height": 1536,
+    "type": "image/webp",
+    "bytes": 366166,
+    "source": "a275af4057912ef2"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_switch.png": {
+    "key": "images/5239c68b56490c33.webp",
+    "width": 1977,
+    "height": 1247,
+    "type": "image/webp",
+    "bytes": 160418,
+    "source": "9c4d1c1da1544818"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition.png": {
+    "key": "images/224e2bd1a4c299eb.webp",
+    "width": 6441,
+    "height": 2598,
+    "type": "image/webp",
+    "bytes": 380420,
+    "source": "57de5f5e18ba9723"
+  },
   "basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting_input.png": {
     "key": "images/7b3aa5ba4ba45d4f.webp",
     "width": 1760,

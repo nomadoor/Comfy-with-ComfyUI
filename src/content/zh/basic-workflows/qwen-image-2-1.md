@@ -6,7 +6,7 @@ slug: qwen-image-2-1
 navId: qwen-image-2-1
 title: "Qwen-Image-2.1"
 created: 2026-09-21
-updated: 2026-09-22
+updated: 2026-09-23
 summary: "使用 Qwen-Image-2.1 生成和编辑图像"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -160,7 +160,7 @@ Seed 带来的差异非常大，可以说有好有坏。改变分辨率也会让
 
 优点是不需要直接在原图上涂画，不会弄脏原图。
 
-{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask_convert.png", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask_convert.png", width=40, align="left" %}
 **将蒙版转换为图像**
 
 使用 `Convert Mask to Image` 将 `Load Image` 的 MASK 输出转换为黑白图像，再输入到 `image_2`。
@@ -289,3 +289,84 @@ This is an RGBA image with transparency. <在这里填写要生成的内容>. Th
 这个工作流会参考原图，生成一张横向的 2:1 图像。
 
 它并不是严格地对左右两侧进行 Outpainting，而是重新绘制整个 ERP，使内容自然地落在全景空间中。
+
+### 图层分解
+
+在上面的[抠图](#抠图)中，可以从图像里单独提取任意内容，得到透明图像。
+
+那么，把抠出的物体从图像中移除，再继续抠出下一个位于前方的内容。重复这个过程，就能把一张图像从前到后分成多个图层。
+
+![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition.png){media=image}
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition.json)
+
+这里使用[循环处理](/zh/data-utilities/loop/)，重复以下步骤：
+
+1. 让 MLLM 选择看起来位于最前方的内容
+2. 只把选中的内容提取为透明图像
+3. 反过来，从当前图像中移除选中的内容
+4. 把移除后的图像传给下一次 iteration
+
+{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_number.png", width=40, align="left" %}
+
+**设置图层数量**
+
+首先输入图像，以及想要分成的图层数量。
+
+设为 `5` 时，会从前到后依次抠出 4 个图层，再加上最后剩下的背景，共 5 个图层。
+
+{% endmediaRow %}
+
+{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_mllm.png", width=40, align="left" %}
+
+**决定下一步抠出什么**
+
+让 `Generate Text` 查看当前图像，并用一段简短文本回答下一步要抠出的内容。
+
+剩余图层数量不同，适合作为一个图层提取的范围也会变化。因此，提示词中还会加入 `图层数 - iteration_index`，告诉 MLLM 接下来还要分成多少层。
+
+返回的物体名称会通过 `Format Text` 整理成给 Qwen-Image-2.1 的指令。
+
+> 将 RGBA 图像传给 `Generate Text` 节点会报错，因此先用 `Split Image with Alpha` 去掉 Alpha 信息。
+
+{% endmediaRow %}
+
+{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_object_extraction.png", width=40, align="left" %}
+
+**抠出最前方的物体**
+
+只将 MLLM 选中的物体提取为透明图像。
+
+这里做的事情与上面的[抠图](#抠图)相同。
+
+这张图像会作为一个图层传给 `End Loop`。
+
+{% endmediaRow %}
+
+{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_object_removal.png", width=40, align="left" %}
+
+**移除最前方的物体**
+
+图层分解不只需要抠出的物体，还需要一张移除该物体后的图像。
+
+直接输入原图和抠图，再要求“把这个去掉”没有取得理想效果。因此，这里把抠出的区域涂成绿色，并要求模型自然地填补绿色部分。
+
+移除物体后的图像，会成为下一次抠图使用的原图。
+
+{% endmediaRow %}
+
+{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_switch.png", width=40, align="left" %}
+
+**最后直接输出背景**
+
+重复这个过程后，最后只会剩下背景。
+
+不需要再从背景中抠出或移除任何内容。
+
+因此，使用 `is_last` 和 `If/Else Switch`，让最后一次 iteration 绕过抠图和移除，直接输出当前图像。
+
+{% endmediaRow %}
+
+**输出示例**
+
+![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_input.png){media=image} ![output 1](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output1.png){media=image} ![output 2](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output2.png){media=image} ![output 3](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output3.png){media=image} ![output 4](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output4.png){media=image} ![output 5](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output5.png){media=image}

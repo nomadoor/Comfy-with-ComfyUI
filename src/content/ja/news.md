@@ -5,23 +5,13 @@ slug: news
 navId: news
 title: "更新情報"
 created: 2026-01-15
-updated: 2026-09-22
+updated: 2026-09-23
 summary: "このサイトの更新情報"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news
 ---
 <div class="news-list">
-  <a class="news-row" href="/ja/data-utilities/loop/">
-    <span class="news-row__date">2026.9.22</span>
-    <span class="news-row__tag">data-utilities</span>
-    <span class="news-row__title">ループ処理に最初と最後だけ処理を変える方法を追加しました</span>
-  </a>
-  <a class="news-row" href="/ja/basic-workflows/qwen-image-2-1/">
-    <span class="news-row__date">2026.9.22</span>
-    <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">Qwen-Image-2.1 にガイド画像からの生成と Upscale を追加しました</span>
-  </a>
   <a class="news-row" href="/ja/basic-workflows/qwen-image-2-1/">
     <span class="news-row__date">2026.9.21</span>
     <span class="news-row__tag">basic-workflows</span>
@@ -166,16 +156,6 @@ tags:
     <span class="news-row__date">2026.1.20</span>
     <span class="news-row__tag">basic-workflows</span>
     <span class="news-row__title">FLUX.2 [klein]のページを追加しました</span>
-  </a>
-  <a class="news-row" href="/ja/data-utilities/resize-crop-pad/">
-    <span class="news-row__date">2026.1.18</span>
-    <span class="news-row__tag">data-utilities</span>
-    <span class="news-row__title">Resize Image/Mask ノードの説明を追加しました</span>
-  </a>
-  <a class="news-row" href="/ja/basic-workflows/ltx-2/">
-    <span class="news-row__date">2026.1.17</span>
-    <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">LTX-2のページを更新しました<br>パラメータを調整し、多くのworkflowを追加しています</span>
   </a>
   <a class="news-row" href="/ja/news/">
     <span class="news-row__date">2026.1.15</span>
