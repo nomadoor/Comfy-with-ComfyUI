@@ -6,7 +6,7 @@ slug: qwen-image-2-1
 navId: qwen-image-2-1
 title: "Qwen-Image-2.1"
 created: 2026-09-21
-updated: 2026-09-22
+updated: 2026-09-23
 summary: "Image generation and editing with Qwen-Image-2.1"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -160,7 +160,7 @@ The idea is the same as using a colored circle, but here a black-and-white image
 
 The nice part is that you do not have to draw directly on and alter the original image.
 
-{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask_convert.png", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask_convert.png", width=40, align="left" %}
 **Convert the mask to an image**
 
 Convert the MASK output from `Load Image` into a black-and-white image with `Convert Mask to Image`, then connect it to `image_2`.
@@ -289,3 +289,84 @@ Give it any reference image and ask for an ERP image at a 2:1 resolution. That a
 This workflow generates a wide 2:1 image while using the source image as a reference.
 
 Rather than strictly outpainting the left and right sides, it redraws the full ERP image so everything fits naturally into the panoramic space.
+
+### Layer decomposition
+
+In [Subject extraction](#subject-extraction), we extracted any subject from an image as a transparent image.
+
+Now remove that subject from the image, then extract the next thing in front. Repeat the process, and a single image can be split into layers from front to back.
+
+![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition.png){media=image}
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition.json)
+
+This uses [loops](/en/data-utilities/loop/) to repeat the following steps:
+
+1. Have an MLLM choose what appears to be at the very front
+2. Extract only that subject as a transparent image
+3. Remove the same subject from the current image
+4. Pass the image with the subject removed to the next iteration
+
+{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_number.png", width=40, align="left" %}
+
+**Set the number of layers**
+
+First, provide the image and the number of layers you want.
+
+Set this to `5` to extract four layers in order from the front, with the remaining background becoming the fifth.
+
+{% endmediaRow %}
+
+{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_mllm.png", width=40, align="left" %}
+
+**Choose what to extract next**
+
+`Generate Text` looks at the current image and answers with a short description of what to extract next.
+
+What should count as one layer depends on how many layers remain, so the prompt also includes `number of layers - iteration_index` to tell the MLLM how many more layers the image will be split into.
+
+The returned subject name is inserted into the Qwen-Image-2.1 instruction with `Format Text`.
+
+> `Generate Text` raises an error when given an RGBA image, so `Split Image with Alpha` removes the Alpha information first.
+
+{% endmediaRow %}
+
+{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_object_extraction.png", width=40, align="left" %}
+
+**Extract the foremost subject**
+
+Only the subject selected by the MLLM is extracted as a transparent image.
+
+This is the same process used in [Subject extraction](#subject-extraction) above.
+
+The resulting image is passed to `End Loop` as one layer.
+
+{% endmediaRow %}
+
+{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_object_removal.png", width=40, align="left" %}
+
+**Remove the foremost subject**
+
+Layer decomposition needs not only the extracted subject, but also an image with that subject removed.
+
+Passing the source image and cutout directly and asking it to “remove this” did not work well. Instead, the extracted region is painted green and the model is told to fill the green area naturally.
+
+The image with the subject removed then becomes the source for the next extraction.
+
+{% endmediaRow %}
+
+{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_switch.png", width=40, align="left" %}
+
+**Output the background as-is at the end**
+
+After repeating this process, only the background remains.
+
+There is no need to extract or remove anything from the background.
+
+With `is_last` and `If/Else Switch`, the last iteration bypasses extraction and removal and outputs the current image as-is.
+
+{% endmediaRow %}
+
+**Output example**
+
+![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_input.png){media=image} ![output 1](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output1.png){media=image} ![output 2](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output2.png){media=image} ![output 3](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output3.png){media=image} ![output 4](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output4.png){media=image} ![output 5](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output5.png){media=image}

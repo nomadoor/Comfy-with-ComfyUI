@@ -6,7 +6,7 @@ slug: qwen-image-2-1
 navId: qwen-image-2-1
 title: "Qwen-Image-2.1"
 created: 2026-09-21
-updated: 2026-09-22
+updated: 2026-09-23
 summary: "Qwen-Image-2.1 での画像生成と画像編集"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -161,7 +161,7 @@ workflow は Ref2Image とほとんど同じです。違うのは、生成する
 
 元画像へ直接書き込まないので、画像を汚さずに済むのがいいところですね。
 
-{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask_convert.png", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask_convert.png", width=40, align="left" %}
 **マスクを画像に変換**
 
 `Load Image` の MASK 出力を `Convert Mask to Image` で白黒画像に変換し、`image_2` へ入力します。
@@ -290,3 +290,84 @@ This is an RGBA image with transparency. <ここに生成したいもののプ�
 元画像を参照しながら、横長 (2:1) の画像を生成します。
 
 左右をキッチリ Outpainting するというよりは、パノラマ空間に自然に収まるように ERP 全体を描き直してもらうイメージです。
+
+### レイヤー分割
+
+先ほどの [切り抜き](#切り抜き)では、画像から好きなものだけを透過画像にできました。
+
+なら、切り抜いたオブジェクトを画像から消し、次に手前にあるものをまた切り抜く。これを繰り返せば、1 枚の画像を手前から順番にレイヤー分けできるはずです。
+
+![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition.png){media=image}
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition.json)
+
+[ループ処理](/ja/data-utilities/loop/)を使い、以下の処理を繰り返します。
+
+1. MLLM で、いま一番手前にありそうなものを選ぶ
+2. 選んだものだけを透過画像として切り抜く
+3. 逆に現在の画像から選んだものを消す
+4. 消したあとの画像を、次の iteration へ戻す
+
+{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_number.png", width=40, align="left" %}
+
+**分割数を設定する**
+
+最初に、画像と分割したいレイヤー数を入力します。
+
+ここを `5` にすると、手前から順に 4 枚を切り抜き、最後に残った背景と合わせて 5 枚になります。
+
+{% endmediaRow %}
+
+{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_mllm.png", width=40, align="left" %}
+
+**次に切り抜くものを決める**
+
+`Generate Text` に現在の画像を見せ、次に切り抜くものを短いテキストで答えてもらいます。
+
+残りのレイヤー数によって、どこまでを 1 枚として切り抜くべきかが変わるので、`レイヤー数 - iteration_index` もプロンプトに入れ、あと何枚に分ける予定なのかも MLLM に知らせます。
+
+返ってきたオブジェクト名は、`Format Text` で Qwen-Image-2.1 への指示に組み込みます。
+
+> `Generate Text` ノードに RGBA 画像を渡すとエラーになるため、`Split Image with Alpha` で Alpha 情報を取り除きます。
+
+{% endmediaRow %}
+
+{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_object_extraction.png", width=40, align="left" %}
+
+**最前面オブジェクトの切り抜き**
+
+MLLM が選んだオブジェクトだけを、透過画像として切り抜きます。
+
+やっていることは、上の [切り抜き](#切り抜き)と同じですね。
+
+この画像を 1 枚のレイヤーとして `End Loop` へ渡します。
+
+{% endmediaRow %}
+
+{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_object_removal.png", width=40, align="left" %}
+
+**最前面オブジェクトの除去**
+
+レイヤー分けには、オブジェクトの切り抜きだけでなく、そのオブジェクトを取り除いた画像も必要です。
+
+元画像と切り抜き画像をそのまま渡し、「これを消して」で済めばよかったんですが、うまくいかなかったため、切り抜いた領域を緑色で塗り、「緑の部分を自然に埋めてくれ」と指示しています。
+
+こうしてオブジェクトを消した画像が、次に切り抜くための元画像になります。
+
+{% endmediaRow %}
+
+{% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_switch.png", width=40, align="left" %}
+
+**最後は背景をそのまま出力する**
+
+この処理を繰り返していくと、最後には背景だけが残ります。
+
+背景から何かを切り抜いたり、消したりする必要はありません。
+
+そこで `is_last` と `If/Else Switch` を使い、最後の iteration だけ切り抜きと除去を通らず、現在の画像をそのまま出力します。
+
+{% endmediaRow %}
+
+**出力例**
+
+![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_input.png){media=image} ![output 1](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output1.png){media=image} ![output 2](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output2.png){media=image} ![output 3](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output3.png){media=image} ![output 4](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output4.png){media=image} ![output 5](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output5.png){media=image}

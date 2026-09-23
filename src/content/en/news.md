@@ -5,7 +5,7 @@ slug: news
 navId: news
 title: "News"
 created: 2026-01-15
-updated: 2026-09-22
+updated: 2026-09-23
 summary: "Site updates"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
@@ -13,16 +13,6 @@ tags:
 ---
 
 <div class="news-list">
-  <a class="news-row" href="/en/data-utilities/loop/">
-    <span class="news-row__date">2026.9.22</span>
-    <span class="news-row__tag">data-utilities</span>
-    <span class="news-row__title">Added first and last iteration control to Loops</span>
-  </a>
-  <a class="news-row" href="/en/basic-workflows/qwen-image-2-1/">
-    <span class="news-row__date">2026.9.22</span>
-    <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">Added guide-image generation and Upscale to Qwen-Image-2.1</span>
-  </a>
   <a class="news-row" href="/en/basic-workflows/qwen-image-2-1/">
     <span class="news-row__date">2026.9.21</span>
     <span class="news-row__tag">basic-workflows</span>
@@ -157,16 +147,6 @@ tags:
     <span class="news-row__date">2026.1.20</span>
     <span class="news-row__tag">basic-workflows</span>
     <span class="news-row__title">Added FLUX.2 [klein] page</span>
-  </a>
-  <a class="news-row" href="/en/data-utilities/resize-crop-pad/">
-    <span class="news-row__date">2026.1.18</span>
-    <span class="news-row__tag">data-utilities</span>
-    <span class="news-row__title">Added description for Resize Image/Mask node</span>
-  </a>
-  <a class="news-row" href="/en/basic-workflows/ltx-2/">
-    <span class="news-row__date">2026.1.17</span>
-    <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">Updated LTX-2 page<br>Adjusted parameters and added many workflows</span>
   </a>
   <a class="news-row" href="/en/news/">
     <span class="news-row__date">2026.1.15</span>
