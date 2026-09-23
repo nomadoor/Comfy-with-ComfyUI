@@ -367,6 +367,10 @@ This is an RGBA image with transparency. <在这里填写要生成的内容>. Th
 
 {% endmediaRow %}
 
+> 你可能会想，为什么不固定 seed，反而特意使用 `iteration_index`。  
+> 不知道这是 bug 还是预期行为，但用相同的 seed 再次编辑一张已经编辑过的图像时，输出会出现严重劣化。  
+> 只要 seed 发生变化就没有问题，所以作为临时处理，这里直接输入每次循环都会变化的 `iteration_index`。
+
 **输出示例**
 
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_input.png){media=image} ![output 1](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output1.png){media=image} ![output 2](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output2.png){media=image} ![output 3](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output3.png){media=image} ![output 4](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output4.png){media=image} ![output 5](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output5.png){media=image}

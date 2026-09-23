@@ -368,6 +368,10 @@ MLLM が選んだオブジェクトだけを、透過画像として切り抜き
 
 {% endmediaRow %}
 
+> seed 値を固定にせず、わざわざ `iteration_index` にしているのはなんで？と思うかもしれません。  
+> バグか仕様かはわかりませんが、一度編集した画像を同じ seed 値で再び編集すると、出力がガビガビになってしまうんですねぇ…。  
+> seed 値さえ変われば大丈夫なので、ループごとに変わる値として、とりあえずの処置として `iteration_index` を入力しています。
+
 **出力例**
 
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_input.png){media=image} ![output 1](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output1.png){media=image} ![output 2](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output2.png){media=image} ![output 3](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output3.png){media=image} ![output 4](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output4.png){media=image} ![output 5](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output5.png){media=image}
