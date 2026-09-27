@@ -10,7 +10,7 @@ updated: 2026-06-24
 summary: "Image generation with Krea 2 Turbo"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/6ce8c9a2f7042a08efbbcdefc8ab6673.png"
+  image: "/media/basic-workflows/krea-2/legacy_gyazo_6ce8c9a2f7042a08efbbcdefc8ab6673.png"
 tags: []
 ---
 
@@ -55,7 +55,7 @@ Two models are available, but for normal image generation you will use Turbo.
 
 ## text2image
 
-![](https://gyazo.com/31bce8c4982ff74992c599268d13374d){gyazo=image}
+![](/media/basic-workflows/krea-2/legacy_gyazo_31bce8c4982ff74992c599268d13374d.png){media=image}
 
 [](/workflows/basic-workflows/krea-2/krea_2_turbo_text2image.json)
 
@@ -86,7 +86,7 @@ Each LoRA has its own recommended trigger word and strength, so check the model 
 
 ### text2image (with LoRA)
 
-![](https://gyazo.com/7a2ec126a289cfa04dd8cb609b6d04e3){gyazo=image}
+![](/media/basic-workflows/krea-2/legacy_gyazo_7a2ec126a289cfa04dd8cb609b6d04e3.png){media=image}
 
 [](/workflows/basic-workflows/krea-2/krea_2_turbo_text2image_darkbrush.json)
 

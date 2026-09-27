@@ -27,7 +27,7 @@ ComfyUI 的组功能，与其说是“功能上将节点捆绑在一起”，不
 - 在画布上右键点击 → `Add Group`
 - 执行框的大小变更或移动，将节点收纳进框内
 
-![](https://gyazo.com/8cc0775e0b3f0bf5605f9b3aedf0665c){gyazo=loop}
+![](/media/begin-with/group/legacy_gyazo_8cc0775e0b3f0bf5605f9b3aedf0665c.mp4){media=loop}
 
 ### 从选中的节点创建
 
@@ -36,7 +36,7 @@ ComfyUI 的组功能，与其说是“功能上将节点捆绑在一起”，不
 > 由于分组框固定为矩形，根据布局不同，有时可能会包含未选中的节点。
 > 因为这会降低布局的自由度，所以我个人不太常使用组功能。
 
-![](https://gyazo.com/b1c0185c6afc1de67f01acd041169f7c){gyazo=loop}
+![](/media/begin-with/group/legacy_gyazo_b1c0185c6afc1de67f01acd041169f7c.mp4){media=loop}
 
 ## 编辑分组框
 
@@ -45,7 +45,7 @@ ComfyUI 的组功能，与其说是“功能上将节点捆绑在一起”，不
 - **Color**: 更改颜色
 - **Remove**: 删除分组框
 
-![](https://gyazo.com/5aedd107ed53fa8d73da8cfdbbf7d898){gyazo=loop}
+![](/media/begin-with/group/legacy_gyazo_5aedd107ed53fa8d73da8cfdbbf7d898.mp4){media=loop}
 
 ## 组的操作
 
@@ -55,7 +55,7 @@ ComfyUI 的组功能，与其说是“功能上将节点捆绑在一起”，不
 - **Select Nodes**: 全选组内的节点
 - **Bypass Group Nodes**: 批量屏蔽组内的节点
 
-![](https://gyazo.com/2469b9f9e950748aa68bd9ee6c418841){gyazo=loop}
+![](/media/begin-with/group/legacy_gyazo_2469b9f9e950748aa68bd9ee6c418841.mp4){media=loop}
 
 ## 移动分组框
 
@@ -64,4 +64,4 @@ ComfyUI 的组功能，与其说是“功能上将节点捆绑在一起”，不
 
 按住 `Ctrl` + `Alt` 进行拖动，即可仅移动分组框。
 
-![](https://gyazo.com/09e16ba51468b0e313ba1c0f445550d4){gyazo=loop}
+![](/media/begin-with/group/legacy_gyazo_09e16ba51468b0e313ba1c0f445550d4.mp4){media=loop}

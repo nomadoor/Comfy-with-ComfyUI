@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "Instruction-based image editing with Qwen-Image-Edit"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/14e608fdb6033e436570157da4645e34.png"
+  image: "/media/basic-workflows/qwen-image-edit/legacy_gyazo_14e608fdb6033e436570157da4645e34.png"
 tags: ["instruction-based-image-editing","collage-refine"]
 ---
 
@@ -76,7 +76,7 @@ For what it can do, please refer to the [Official GitHub](https://github.com/Qwe
 
 ### workflow
 
-![](https://gyazo.com/79b84b74171ddd5c9cfdb57bccc69f13){gyazo=image}
+![](/media/basic-workflows/qwen-image-edit/legacy_gyazo_79b84b74171ddd5c9cfdb57bccc69f13.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit.json)
 
@@ -125,7 +125,7 @@ The biggest difference is that **multiple reference images can be input**.
 
 ### workflow (Single Image)
 
-![](https://gyazo.com/456e6aec210ae38313aa25f83ce236df){gyazo=image}
+![](/media/basic-workflows/qwen-image-edit/legacy_gyazo_456e6aec210ae38313aa25f83ce236df.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2509.json)
 
@@ -133,7 +133,7 @@ The biggest difference is that **multiple reference images can be input**.
 
 ### workflow (Multiple Images)
 
-![](https://gyazo.com/e33abcb42d03c53f3171a8fb12d7eca0){gyazo=image}
+![](/media/basic-workflows/qwen-image-edit/legacy_gyazo_e33abcb42d03c53f3171a8fb12d7eca0.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2509_multi_ref.json)
 
@@ -172,7 +172,7 @@ While there are no drastic changes like from the original to 2509, steady improv
 
 ### workflow
 
-![](https://gyazo.com/6d45ea40c1194384fb75c383c43a116b){gyazo=image}
+![](/media/basic-workflows/qwen-image-edit/legacy_gyazo_6d45ea40c1194384fb75c383c43a116b.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2511.json)
 
@@ -206,7 +206,7 @@ Since the number of steps can be significantly reduced with almost no degradatio
 
 ### Qwen-Image-Edit-2509
 
-![](https://gyazo.com/c91a20239e3cb536dfc931a30562f19f){gyazo=image}
+![](/media/basic-workflows/qwen-image-edit/legacy_gyazo_c91a20239e3cb536dfc931a30562f19f.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_lightning_8steps.json)
 
@@ -215,7 +215,7 @@ Since the number of steps can be significantly reduced with almost no degradatio
 
 ### Qwen-Image-Edit-2511
 
-![](https://gyazo.com/cc8cbe2a940d686092555896d4b3f067){gyazo=image}
+![](/media/basic-workflows/qwen-image-edit/legacy_gyazo_cc8cbe2a940d686092555896d4b3f067.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2511_lightning_4steps.json)
 

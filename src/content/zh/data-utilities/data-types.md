@@ -30,7 +30,7 @@ hero:
 
 只要学习图像生成 AI 的机制，自然就会明白。没必要在这里拼命死记硬背。
 
-![](https://gyazo.com/6cc70d5d04c3daec2682adf3bc41c77f){gyazo=image}
+![](/media/data-utilities/data-types/legacy_gyazo_6cc70d5d04c3daec2682adf3bc41c77f.png){media=image}
 
 - MODEL (模型)
 - CLIP (条件)
@@ -57,7 +57,7 @@ hero:
 
 由于 ComfyUI 具有很高的扩展性，根据自定义节点的不同，有时会追加独特的“类型”。
 
-![](https://gyazo.com/d5368ee02f84395613526515c34c458d){gyazo=image}
+![](/media/data-utilities/data-types/legacy_gyazo_d5368ee02f84395613526515c34c458d.png){media=image}
 
 例如，在著名的 **Impact Pack** 中，会出现名为 `SEGS` 的独特类型。
 
@@ -71,7 +71,7 @@ hero:
 
 这是用于将任意数据作为文本进行预览的节点。
 
-![](https://gyazo.com/423eaa0eac26fefe67f5d212a1ab2ad1){gyazo=image}
+![](/media/data-utilities/data-types/legacy_gyazo_423eaa0eac26fefe67f5d212a1ab2ad1.png){media=image}
 
 [](/workflows/begin-with/data-types/preview_as_text.json)
 

@@ -5,7 +5,7 @@ section: data-utilities
 slug: simple-math
 navId: simple-math
 title: "简单计算"
-created: 2026-02-06
+created: 2025-11-24
 updated: 2026-03-21
 summary: "关于四则运算等、执行基本计算的节点"
 
@@ -27,7 +27,7 @@ hero:
 
 ## Math Expression
 
-![](https://gyazo.com/7ea9d7efa48a88e7b9bdfeef6b86d2d2){gyazo=image}
+![](/media/data-utilities/simple-math/legacy_gyazo_7ea9d7efa48a88e7b9bdfeef6b86d2d2.jpg){media=image}
 
 [](/workflows/data-utilities/simple-math/math_expression.json)
 
@@ -73,7 +73,7 @@ round(a / b) # 四雪五入
 
 即使输入是 float，如果输出目标是 int，它也会自动进行转换。
 
-![](https://gyazo.com/07161b2b92b1f8cedc7fa99cbf1d22cc){gyazo=image}
+![](/media/data-utilities/simple-math/legacy_gyazo_07161b2b92b1f8cedc7fa99cbf1d22cc.png){media=image}
 
 [](/workflows/data-utilities/simple-math/math_expression_floatint.json)
 
@@ -83,7 +83,7 @@ round(a / b) # 四雪五入
 
 如果是不用节点也能解决的简单计算，直接在输入栏中写入计算式，输入的就是计算后的值。
 
-![](https://gyazo.com/a285ddb6cb86d6a0e8d3a58766afe51e){gyazo=image}
+![](/media/data-utilities/simple-math/legacy_gyazo_a285ddb6cb86d6a0e8d3a58766afe51e.mp4){media=loop}
 
 ---
 
@@ -93,6 +93,6 @@ round(a / b) # 四雪五入
 
 cf. [Node: Power Puter (Wiki)](https://github.com/rgthree/rgthree-comfy/wiki/Node:-Power-Puter)
 
-![](https://gyazo.com/20c5f92d6ef1e7057c6d42e2065d84b1){gyazo=image}
+![](/media/data-utilities/simple-math/power_puter.png){media=image}
 
 [](/workflows/data-utilities/simple-math/power_puter.json)

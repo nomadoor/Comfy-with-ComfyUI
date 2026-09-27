@@ -68,13 +68,13 @@ ViTPose や OpenPose で棒人間を作り、それを条件として人物を�
 
 **参照画像** をモーション用動画で動かします。
 
-![](https://gyazo.com/3f28188680b010f2bce1a13858ccaf9f){gyazo=image}
+![](/media/basic-workflows/scail-2/legacy_gyazo_3f28188680b010f2bce1a13858ccaf9f.png){media=image}
 
 [](/workflows/basic-workflows/scail-2/scail_2_animation.json)
 
 ベースの workflow は [Wan-Animate](/ja/basic-workflows/wan-animate/) と同じですが、かなりシンプルになっているので気楽に見ていきましょう。
 
-{% mediaRow img="https://gyazo.com/0846209526768f5c450c700d1a153dad {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_0846209526768f5c450c700d1a153dad.png {media=image}", width=33, align="left" %}
 **参照画像・モーション用動画**
 
 参照画像とモーション用動画は、内部でリサイズされるため、同じサイズに揃える必要はありません。
@@ -86,7 +86,7 @@ ViTPose や OpenPose で棒人間を作り、それを条件として人物を�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/ce84cc6fe405261d50b5a6a3cfd8bf91 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_ce84cc6fe405261d50b5a6a3cfd8bf91.png {media=image}", width=33, align="left" %}
 **プロンプト**
 
 モーションを転送するだけなので、詳細なプロンプトは必要ありません。
@@ -96,7 +96,7 @@ ViTPose や OpenPose で棒人間を作り、それを条件として人物を�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/a632cf95fdb6fb5997e6fff4b71218fb {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_a632cf95fdb6fb5997e6fff4b71218fb.png {media=image}", width=33, align="left" %}
 **解像度・フレーム数**
 
 生成サイズとフレーム数は `WanSCAILToVideo` に入力します。
@@ -107,7 +107,7 @@ ViTPose や OpenPose で棒人間を作り、それを条件として人物を�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/74c8fc85eb5026b42cbb8f5d6255ba9b {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_74c8fc85eb5026b42cbb8f5d6255ba9b.png {media=image}", width=33, align="left" %}
 **SAM3.1 によるマスク生成**
 
 参照画像とモーション用動画の人物を、[SAM 3 / 3.1](/ja/data-utilities/sam3/) でマスクします。
@@ -116,7 +116,7 @@ ViTPose や OpenPose で棒人間を作り、それを条件として人物を�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/608eb36831300427187be280cf45c420 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_608eb36831300427187be280cf45c420.png {media=image}", width=33, align="left" %}
 **Create SCAIL-2 Colored Mask**
 
 作ったマスクが適切に色付けされます。
@@ -125,7 +125,7 @@ ViTPose や OpenPose で棒人間を作り、それを条件として人物を�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/25a3907c1246d3513e3bb109997579ab {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_25a3907c1246d3513e3bb109997579ab.png {media=image}", width=33, align="left" %}
 **6 steps 生成**
 
 SCAIL-2 でも、[Wan2.1 の高速生成](/ja/basic-workflows/wan-2-1/#self-forcing高速生成) 用の Lightx2v LoRA を使えます。
@@ -137,7 +137,7 @@ SCAIL-2 でも、[Wan2.1 の高速生成](/ja/basic-workflows/wan-2-1/#self-forc
 
 **出力例**
 
-![参照画像](https://gyazo.com/ce9827f452cdc3cf7d47de8b12996f28){gyazo=image} ![モーション用動画](https://gyazo.com/f14aef04ac197a4b92680e05c4fbd178){gyazo=loop} ![output](https://gyazo.com/d87b2644f8f71218ebe678736479959e){gyazo=loop}
+![参照画像](/media/basic-workflows/scail-2/legacy_gyazo_ce9827f452cdc3cf7d47de8b12996f28.png){media=image} ![モーション用動画](/media/basic-workflows/scail-2/legacy_gyazo_f14aef04ac197a4b92680e05c4fbd178.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_d87b2644f8f71218ebe678736479959e.mp4){media=loop}
 
 ---
 
@@ -145,13 +145,13 @@ SCAIL-2 でも、[Wan2.1 の高速生成](/ja/basic-workflows/wan-2-1/#self-forc
 
 **動画内の人物** を **参照画像の人物** に入れ替えます。
 
-![](https://gyazo.com/6ade374ea0cbcb2175889cdc0be0bc46){gyazo=image}
+![](/media/basic-workflows/scail-2/legacy_gyazo_6ade374ea0cbcb2175889cdc0be0bc46.png){media=image}
 
 [](/workflows/basic-workflows/scail-2/scail_2_replacement.json)
 
 基本的には `Create SCAIL-2 Colored Mask` と `WanSCAILToVideo` の `replacement_mode` を `true` にするだけです。
 
-{% mediaRow img="https://gyazo.com/5862792bc1510147b0cc73b260624a11 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_5862792bc1510147b0cc73b260624a11.png {media=image}", width=33, align="left" %}
 **解像度**
 
 Replacement は動画のサイズが基準になります。
@@ -160,7 +160,7 @@ Replacement は動画のサイズが基準になります。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/cfdb30273c14347f30aad0d2c9987f8c {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_cfdb30273c14347f30aad0d2c9987f8c.png {media=image}", width=33, align="left" %}
 **Create SCAIL-2 Colored Mask と WanSCAILToVideo**
 
 `replacement_mode` を `true` にします。
@@ -171,7 +171,7 @@ Replacement は動画のサイズが基準になります。
 
 **出力例**
 
-![モーション用動画](https://gyazo.com/395fd549274fb126d836ac0a9414d07d){gyazo=loop} ![参照画像](https://gyazo.com/ce9827f452cdc3cf7d47de8b12996f28){gyazo=image} ![output](https://gyazo.com/1a7caa57ded15aee5700bed072a4a0a7){gyazo=loop}
+![モーション用動画](/media/basic-workflows/scail-2/legacy_gyazo_395fd549274fb126d836ac0a9414d07d.mp4){media=loop} ![参照画像](/media/basic-workflows/scail-2/legacy_gyazo_ce9827f452cdc3cf7d47de8b12996f28.png){media=image} ![output](/media/basic-workflows/scail-2/legacy_gyazo_1a7caa57ded15aee5700bed072a4a0a7.mp4){media=loop}
 
 ---
 
@@ -183,11 +183,11 @@ SCAIL-2 は複数人の動画・画像にも対応しています。
 
 特別な操作は必要ありません。これまでと同様に動画と参照画像を入力するだけです。
 
-![](https://gyazo.com/a04e322f84ca4377479a7760a60436cd){gyazo=image}
+![](/media/basic-workflows/scail-2/legacy_gyazo_a04e322f84ca4377479a7760a60436cd.png){media=image}
 
 [](/workflows/basic-workflows/scail-2/scail_2_animation_multi_char.json)
 
-{% mediaRow img="https://gyazo.com/86e8ccd07a045bb039e2e69b81b2781b {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_86e8ccd07a045bb039e2e69b81b2781b.png {media=image}", width=33, align="left" %}
 **Create SCAIL-2 Colored Mask**
 
 複数人の場合は、どの人物にどの動きを対応させるかが重要になりますが、SCAIL-2 では色付きマスクを使ってそれを制御します。
@@ -201,7 +201,7 @@ SCAIL-2 は複数人の動画・画像にも対応しています。
 
 **出力例**
 
-![参照画像](https://gyazo.com/567acaf722ca9e839ec7cb834c1ed344){gyazo=image} ![モーション用動画](https://gyazo.com/53461ca17746349fbd11e69798460ea6){gyazo=loop} ![output](https://gyazo.com/913ff446dd39fa33f56ba9ed07ce6e16){gyazo=loop}
+![参照画像](/media/basic-workflows/scail-2/legacy_gyazo_567acaf722ca9e839ec7cb834c1ed344.png){media=image} ![モーション用動画](/media/basic-workflows/scail-2/legacy_gyazo_53461ca17746349fbd11e69798460ea6.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_913ff446dd39fa33f56ba9ed07ce6e16.mp4){media=loop}
 
 ---
 
@@ -209,13 +209,13 @@ SCAIL-2 は複数人の動画・画像にも対応しています。
 
 参照人物の別角度の画像や、背景用の画像をまとめて参照させることもできます。
 
-![](https://gyazo.com/a135dfdaef80d8d16acd904f3d26a12a){gyazo=image}
+![](/media/basic-workflows/scail-2/legacy_gyazo_a135dfdaef80d8d16acd904f3d26a12a.png){media=image}
 
 [](/workflows/basic-workflows/scail-2/scail_2_animation_multi_ref.json)
 
 基本的な流れは通常の Animation モードと同じです。違いは、参照画像を 1 枚ではなくバッチとして入力する点です。
 
-{% mediaRow img="https://gyazo.com/23f0af93cd4027f7a8366c16b62181e0 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_23f0af93cd4027f7a8366c16b62181e0.png {media=image}", width=33, align="left" %}
 **バッチ入力**
 
 参照させたい画像を `Batch Images` に入力します。
@@ -234,7 +234,7 @@ SCAIL-2 は複数人の動画・画像にも対応しています。
 
 **出力例**
 
-![参照画像1](https://gyazo.com/d2935f1c3b0ff3016616c54d88d6be56){gyazo=image} ![参照画像2](https://gyazo.com/7819645aea776b0aa5e24e8d9f642487){gyazo=image} ![参照画像3](https://gyazo.com/4617d933cec4a3431d36af11c65180e3){gyazo=image} ![モーション用動画](https://gyazo.com/f14aef04ac197a4b92680e05c4fbd178){gyazo=loop} ![output](https://gyazo.com/50154740248550b3ffa1dfee024da941){gyazo=loop}
+![参照画像1](/media/basic-workflows/scail-2/legacy_gyazo_d2935f1c3b0ff3016616c54d88d6be56.png){media=image} ![参照画像2](/media/basic-workflows/scail-2/legacy_gyazo_7819645aea776b0aa5e24e8d9f642487.png){media=image} ![参照画像3](/media/basic-workflows/scail-2/legacy_gyazo_4617d933cec4a3431d36af11c65180e3.png){media=image} ![モーション用動画](/media/basic-workflows/scail-2/legacy_gyazo_f14aef04ac197a4b92680e05c4fbd178.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_50154740248550b3ffa1dfee024da941.mp4){media=loop}
 
 ---
 
@@ -242,11 +242,11 @@ SCAIL-2 は複数人の動画・画像にも対応しています。
 
 SCAIL-2 は基本的に 81 フレームまでの生成ですが、`WAN Context Windows (Manual)` を使うと、時間方向に分割しながら長めの動画を生成できます。
 
-![](https://gyazo.com/43b5c2e2684957795ab7d80f8ce9976a){gyazo=image}
+![](/media/basic-workflows/scail-2/legacy_gyazo_43b5c2e2684957795ab7d80f8ce9976a.png){media=image}
 
 [](/workflows/basic-workflows/scail-2/scail_2_animation_wan_context_windows.json)
 
-{% mediaRow img="https://gyazo.com/55aa8d3ccee17c3a43f87f17895ebfb1 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_55aa8d3ccee17c3a43f87f17895ebfb1.png {media=image}", width=33, align="left" %}
 **WAN Context Windows (Manual)**
 
 時間軸方向のタイリング、あるいは context sliding のようなものです。
@@ -258,4 +258,4 @@ SCAIL-2 は基本的に 81 フレームまでの生成ですが、`WAN Context W
 
 **出力例**
 
-![参照画像](https://gyazo.com/ce9827f452cdc3cf7d47de8b12996f28){gyazo=image} ![モーション用動画](https://gyazo.com/5491ba090036cbac5d76abd293d842ef){gyazo=loop} ![output](https://gyazo.com/ae5729a3c9c70711f767364534ccedf9){gyazo=loop}
+![参照画像](/media/basic-workflows/scail-2/legacy_gyazo_ce9827f452cdc3cf7d47de8b12996f28.png){media=image} ![モーション用動画](/media/basic-workflows/scail-2/legacy_gyazo_5491ba090036cbac5d76abd293d842ef.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_ae5729a3c9c70711f767364534ccedf9.mp4){media=loop}

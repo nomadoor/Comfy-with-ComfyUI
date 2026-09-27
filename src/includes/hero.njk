@@ -2,16 +2,6 @@
 {% set heroImage = heroBlock.image %}
 {% set heroMedia = heroImage and (heroImage | resolveMedia({ size: 1200 })) %}
 {% set isHeroVideo = heroMedia and heroMedia.kind == "video" %}
-{% set outageNotice = site.outageNotice or {} %}
-{% set outageTitle = outageNotice.title[currentLang] or outageNotice.title[site.defaultLang] %}
-{% set outageBody = outageNotice.body[currentLang] or outageNotice.body[site.defaultLang] %}
-{% if outageNotice.active and outageTitle and outageBody %}
-  <aside class="site-outage-notice" role="status" aria-label="{{ outageTitle }}">
-    <span class="site-outage-notice__icon" aria-hidden="true">🚨</span>
-    <p class="site-outage-notice__title">{{ outageTitle }}</p>
-    <p class="site-outage-notice__body">{{ outageBody }}</p>
-  </aside>
-{% endif %}
 <div class="hero{% if heroImage %} hero--has-media{% endif %}">
   {% if heroImage and isHeroVideo %}
     <video

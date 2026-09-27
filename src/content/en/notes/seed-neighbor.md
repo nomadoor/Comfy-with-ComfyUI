@@ -11,14 +11,14 @@ noteTags: ["faq", "seed"]
 summary: "A nearby seed value does not mean a nearby result"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/9cc7e9a5752b2a65f4e8a76972b9b366.png"
+  image: "/media/notes/seed-neighbor/legacy_gyazo_9cc7e9a5752b2a65f4e8a76972b9b366.png"
 ---
 
 ## Seed 1234 and 1235 are completely different
 
 You have probably seen this already: if you change the seed, the generated image also changes.
 
-![](https://gyazo.com/69110725afae49631e11fff491cf6596){gyazo=image}
+![](/media/notes/seed-neighbor/legacy_gyazo_69110725afae49631e11fff491cf6596.png){media=image}
 
 Now try generating with `seed=1234`, then run it again with `seed=1235`.  
 Because the numbers are close, you might expect similar images, but the output is completely different.
@@ -71,7 +71,7 @@ Use the generated image as input, then set a low `denoise` value to create a sli
 
 The idea is straightforward.
 
-![](https://gyazo.com/313224ede32c9b07ac81fad2c1bc3a71){gyazo=image}
+![](/media/notes/seed-neighbor/legacy_gyazo_313224ede32c9b07ac81fad2c1bc3a71.png){media=image}
 
 1. Create noise A with `seed_A`
 2. Create noise B with `seed_B`
@@ -83,7 +83,7 @@ By changing `seed_B` or the blend amount, you can produce small variations.
 
 Another way is to add a small noise latent to the base latent.
 
-![](https://gyazo.com/3330b48b010177e127ceb014a3da882f){gyazo=image}
+![](/media/notes/seed-neighbor/legacy_gyazo_3330b48b010177e127ceb014a3da882f.png){media=image}
 
 1. Create noise A with `seed_A`
 2. Add a small noise latent from another random value, with a coefficient like `0.01`
@@ -101,7 +101,7 @@ This is a bit more irregular for ComfyUI, so in many cases plain image2image may
 
 ### Blend noise
 
-![](https://gyazo.com/eee2f089f7ecf7f9b6541cf2f570266a){gyazo=image}
+![](/media/notes/seed-neighbor/legacy_gyazo_eee2f089f7ecf7f9b6541cf2f570266a.png){media=image}
 
 [](/workflows/notes/seed-neighbor/latent_blend.json)
 
@@ -112,7 +112,7 @@ This is a bit more irregular for ComfyUI, so in many cases plain image2image may
 
 ### Inject noise
 
-![](https://gyazo.com/a5162437aa43b07806a802d301a5df9d){gyazo=image}
+![](/media/notes/seed-neighbor/legacy_gyazo_a5162437aa43b07806a802d301a5df9d.png){media=image}
 
 [](/workflows/notes/seed-neighbor/inject_noise_to_latent.json)
 

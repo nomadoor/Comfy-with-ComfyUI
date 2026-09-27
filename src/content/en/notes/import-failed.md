@@ -16,7 +16,7 @@ hero:
 
 ## Symptom
 
-![](https://gyazo.com/3054a82b909490117748ae061e29c35e){gyazo=image}
+![](/media/notes/import-failed/legacy_gyazo_3054a82b909490117748ae061e29c35e.png){media=image}
 
 - When starting ComfyUI, multiple lines of `(IMPORT FAILED)` appear in the terminal, and specific custom nodes cannot be used or do not appear in the node list.
 

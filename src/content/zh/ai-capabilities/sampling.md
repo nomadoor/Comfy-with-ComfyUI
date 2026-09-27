@@ -14,7 +14,7 @@ hero:
 ---
 ## 什么是采样 (Sampling)？
 
-![](https://gyazo.com/bf9d6d2e5b528f0b82f9d13e3c18c5fa){gyazo=image}
+![](/media/ai-capabilities/sampling/legacy_gyazo_bf9d6d2e5b528f0b82f9d13e3c18c5fa.png){media=image}
 
 [扩散模型](/zh/ai-capabilities/diffusion-models/) 并不是一下子消除噪点的，而是一边进行多次稍微减少一点噪点的步骤，一边制作图像。
 
@@ -61,17 +61,17 @@ Sampling 对画质并非没有影响，但即使专注于此设置，质量也�
 参考: [Stable Diffusion Deep Dive - CFG - Don't Accidentally Fry Your Images](https://www.youtube.com/watch?v=kuhO9zAzetk)
 
 
-> ![](https://gyazo.com/2726d797e03185230ce53475d48d707b){gyazo=image}
+> ![](/media/ai-capabilities/sampling/legacy_gyazo_2726d797e03185230ce53475d48d707b.png){media=image}
 
 按照这张图，例如 **DPM++ 2M Karras 20step 如果 CFG 超过 25 就是红灯**。
 
 实际生成一下就会发现生成的图像质量很差。
 
 - DPM++ 2M Karras / Step 数 20 / **CFG 8**
-  ![](https://gyazo.com/262e228b7207b827b105bfad833d3ac5){gyazo=image}
+  ![](/media/ai-capabilities/sampling/legacy_gyazo_262e228b7207b827b105bfad833d3ac5.png){media=image}
 
 - DPM++ 2M Karras / Step 数 20 / **CFG 30**
-  ![](https://gyazo.com/375e367784f6446fcc1e4a0a93fbc0cb){gyazo=image}
+  ![](/media/ai-capabilities/sampling/legacy_gyazo_375e367784f6446fcc1e4a0a93fbc0cb.png){media=image}
 
 除了 CFG 以外的原因，有时也会生成像这样饱和度过高的图像。这种图像有时被称为 **over-saturated colors** 或 **burn out**。
 

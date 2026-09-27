@@ -42,7 +42,7 @@ SAM 3 则可以像 VLM 一样用文本指定对象，并且单独完成分割。
 
 ### 静态图像
 
-![](https://gyazo.com/cd6078ed81d850085144836e404754d5){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_cd6078ed81d850085144836e404754d5.png){media=image}
 
 [](/workflows/data-utilities/sam3/sam3_1.json)
 
@@ -53,7 +53,7 @@ SAM 3 则可以像 VLM 一样用文本指定对象，并且单独完成分割。
 
 ### 视频
 
-![](https://gyazo.com/96c353a26df8cf274d9b68a95453ba7b){gyazo=loop}
+![](/media/data-utilities/sam3/legacy_gyazo_96c353a26df8cf274d9b68a95453ba7b.mp4){media=loop}
 
 [](/workflows/data-utilities/sam3/sam3_1_video.json)
 

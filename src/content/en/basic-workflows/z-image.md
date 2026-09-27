@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "Image generation with Z-Image"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/39cddc1debeff5423090f2fe87e5b038.png"
+  image: "/media/basic-workflows/z-image/legacy_gyazo_39cddc1debeff5423090f2fe87e5b038.png"
 tags: []
 ---
 
@@ -18,7 +18,7 @@ tags: []
 
 Z-Image is a **family of image generation models** by Alibaba / Tongyi-MAI.
 
-![](https://gyazo.com/126c0d5ef1364355014fdd7e3288825c){gyazo=image}
+![](/media/basic-workflows/z-image/z_family.png){media=image}
 
 The name Z-Image refers to the entire model family, which can be confusing, but this page covers **Z-Image** as the base model (sometimes referred to as Z-Image-Base to distinguish it).
 
@@ -52,7 +52,7 @@ Unlike [Z-Image-Turbo](/en/basic-workflows/z-image-turbo/) which is stabilized b
 
 ## text2image
 
-![](https://gyazo.com/8f4213b84c8d739021b8be032e8f6f8a){gyazo=image}
+![](/media/basic-workflows/z-image/legacy_gyazo_8f4213b84c8d739021b8be032e8f6f8a.png){media=image}
 
 [](/workflows/basic-workflows/z-image/z_image.json)
 
@@ -65,7 +65,7 @@ It aims to combine the creativity of Z-Image with the stability of Z-Image-Turbo
 
 You can use image2image, but let's try splitting the sampling into two stages for a smarter approach.
 
-![](https://gyazo.com/2545e8ea917a80488d8687464185410d){gyazo=image}
+![](/media/basic-workflows/z-image/legacy_gyazo_2545e8ea917a80488d8687464185410d.png){media=image}
 
 [](/workflows/basic-workflows/z-image/z_image_refine_turbo.json)
 
@@ -77,7 +77,7 @@ Here we split it into the first 50% and the last 50%.
 
 **Comparison**
 
-![Z-Image only](https://gyazo.com/73afc01007482bdfbcc0b0d33f75cb98){gyazo=image} ![Z-Image + Turbo](https://gyazo.com/0c1ece70589a7b42801f37383a604440){gyazo=image}
+![Z-Image only](/media/basic-workflows/z-image/legacy_gyazo_73afc01007482bdfbcc0b0d33f75cb98.png){media=image} ![Z-Image + Turbo](/media/basic-workflows/z-image/legacy_gyazo_0c1ece70589a7b42801f37383a604440.png){media=image}
 
 
 
@@ -100,7 +100,7 @@ A ControlNet-like patch for Z-Image.
 
 ### workflow
 
-![](https://gyazo.com/1eb558462ba943c91305960b112c6a63){gyazo=image}
+![](/media/basic-workflows/z-image/z_image_fun_controlnet_union_2_1.png){media=image}
 
 [](/workflows/basic-workflows/z-image/z_image_fun_controlnet_union_2_1.json)
 

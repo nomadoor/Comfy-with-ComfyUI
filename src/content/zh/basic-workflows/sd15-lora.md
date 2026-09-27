@@ -44,7 +44,7 @@ LoRA 不是重写模型权重本身，而是采用将“变更部分”作为小
 
 ### 工作流
 
-![](https://gyazo.com/6f275d3cbc6c8487bf1645af06763aea){gyazo=image}
+![](/media/basic-workflows/sd15-lora/legacy_gyazo_6f275d3cbc6c8487bf1645af06763aea.png){media=image}
 
 [](/workflows/basic-workflows/sd15-lora/sd1_5_lora.json)
 
@@ -73,6 +73,6 @@ SDXL 有两个文本编码器，后来登场的模型还开始使用 T5、Qwen �
 
 只学习扩散模型的 LoRA 中没有需要应用到文本编码器的内容，因此使用 `Load LoRA` 节点，而不是 `Load LoRA (Model and CLIP)`。
 
-![](https://gyazo.com/975300eed9cca90f7086dda53c1ca413){gyazo=image}
+![](/media/basic-workflows/sd15-lora/legacy_gyazo_975300eed9cca90f7086dda53c1ca413.png){media=image}
 
 [](/workflows/basic-workflows/sd15-lora/flux_1_lora.json)

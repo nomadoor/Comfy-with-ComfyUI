@@ -36,7 +36,7 @@ After a while, the ComfyUI screen will open in your browser.
 
 ## Select Workflow from Template
 
-![](https://i.gyazo.com/7ffdc91e29dc41127e4101360ceff732.png){gyazo=image}
+![](/media/begin-with/first-run/legacy_gyazo_7ffdc91e29dc41127e4101360ceff732.png){media=image}
 
 - Immediately after the very first startup, the template screen is probably open. (If not, select `Templates` on the left sidebar.)
 - First, select `Getting Started` -> `Image Generation`.
@@ -71,7 +71,7 @@ Let's learn basic image generation with this model, which can be said to be the 
 
 ## Let's Generate
 
-![](https://gyazo.com/57af4e96b7f6b2280aeed28afe3bb121){gyazo=loop}
+![](/media/begin-with/first-run/legacy_gyazo_57af4e96b7f6b2280aeed28afe3bb121.mp4){media=loop}
 
 - Press the **`▷ Run`** button at the top of the screen to start generation.
 - If an image is displayed in the `Save Image` node, it is successful.

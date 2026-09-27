@@ -5,8 +5,8 @@ section: begin-with
 slug: run-and-stop
 navId: run-and-stop
 title: "Run & Stop"
-created: 2025-11-24
-updated: 2026-03-02
+created: 2025-11-20
+updated: 2026-09-27
 summary: "About Run & Stop"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
@@ -17,9 +17,9 @@ hero:
 
 Execute the workflow.
 
-- Click the `▷ Run` (or `Queue Prompt`) button in the menu
+![](/media/begin-with/run-and-stop/legacy_gyazo_e1be6c3b9c1666f5735bd17261d7714f.mp4){media=loop}
 
-![](https://gyazo.com/e1be6c3b9c1666f5735bd17261d7714f){gyazo=loop}
+- Click the `▷ Run` (or `Queue Prompt`) button in the menu
 
 ---
 
@@ -27,9 +27,9 @@ Execute the workflow.
 
 Execute the workflow multiple times with the same settings.
 
-- Change the number next to the `▷ Run` button
+![](/media/begin-with/run-and-stop/legacy_gyazo_5831e4d69bd26c7d5a533fb5781a33ad.mp4){media=loop}
 
-![](https://gyazo.com/5831e4d69bd26c7d5a533fb5781a33ad){gyazo=loop}
+- Change the number next to the `▷ Run` button
 
 The default limit is **100**, but it can be changed in the settings.
 - Change the value of `⚙Settings` -> `Queue Button` -> `Batch count limit`.
@@ -40,10 +40,9 @@ The default limit is **100**, but it can be changed in the settings.
 
 Use this when you want to "generate automatically every time you change a parameter" or "leave it alone and continue generating infinitely".
 
-- Click `˅` inside the `▷ Run` button, select a mode, and click `▷ Run`
-- Press the `🔳 (Clear Pending Tasks)` button to stop
+![](/media/begin-with/run-and-stop/legacy_gyazo_c516b3b9fd8b2c506fb1fa91cf385174.mp4){media=loop}
 
-![](https://gyazo.com/c516b3b9fd8b2c506fb1fa91cf385174){gyazo=loop}
+- Click `˅` inside the `▷ Run` button, select a mode, and click `▷ Run`
 
 ### Difference in Modes
 
@@ -61,9 +60,9 @@ Use this when you want to "generate automatically every time you change a parame
 
 If you execute it by mistake, you can interrupt it from here.
 
-- **Operation**: Click the `❌️` button next to the `▷ Run` button
+![](/media/begin-with/run-and-stop/stop.mp4){media=loop}
 
-![](https://gyazo.com/06d8045e9aa39f3ccb9ed7fe49f28588){gyazo=loop}
+- **Operation**: Click the `❌️` button next to the `▷ Run` button
 
 ### About Forced Termination
 
@@ -76,9 +75,9 @@ If it doesn't stop no matter what, **close the terminal and restart ComfyUI itse
 
 You can check reserved processes (queues) or delete them all at once.
 
+![](/media/begin-with/run-and-stop/legacy_gyazo_23f7fb0414ad302f23b333ae0add5827.mp4){media=loop}
+
 - **Operation**: Click the Queue icon on the left sidebar (or `Q` key on the keyboard) to display the list.
 
-![](https://gyazo.com/23f7fb0414ad302f23b333ae0add5827){gyazo=loop}
-
 - **Cancel Individually**: Right-click the process you want to cancel and select `Delete`.
-- **Cancel All**: Pressing the `🟥` button next to the `▷ Run` button cancels all remaining queues.
+- **Cancel All**: Click `Clear queue` in the `Job Queue` window.

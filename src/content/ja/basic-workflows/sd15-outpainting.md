@@ -33,7 +33,7 @@ outpainting は **画像の「外側」を描き足す** 手法です。
 
 ### workflow
 
-![](https://gyazo.com/dc8564ec48c6ac898fa9f4f080e9bcfd){gyazo=image}
+![](/media/basic-workflows/sd15-outpainting/legacy_gyazo_dc8564ec48c6ac898fa9f4f080e9bcfd.png){media=image}
 
 [](/workflows/basic-workflows/sd15-outpainting/sd1_5_outpainting_sd_v1_5_inpainting.json)
 
@@ -49,7 +49,7 @@ outpainting は **画像の「外側」を描き足す** 手法です。
 
 ### workflow
 
-![](https://gyazo.com/df7f466617d6c2bd773bedf0eeb03bb5){gyazo=image}
+![](/media/basic-workflows/sd15-outpainting/legacy_gyazo_df7f466617d6c2bd773bedf0eeb03bb5.png){media=image}
 
 [](/workflows/basic-workflows/sd15-outpainting/sd1_5_outpainting_controlnet_inpaint.json)
 
@@ -69,7 +69,7 @@ outpainting は **画像の「外側」を描き足す** 手法です。
 
 [FLUX.2 \[klein\]](/ja/basic-workflows/flux-2-klein/) 9B を使ってみましょう。
 
-![](https://gyazo.com/15ea40eaf859773d5a1543e1aba4df0b){gyazo=image}
+![](/media/basic-workflows/sd15-outpainting/flux_2_klein_9b_image_edit_outpainting.png){media=image}
 
 [](/workflows/basic-workflows/sd15-outpainting/flux_2_klein_9b_image_edit_outpainting.json)
 

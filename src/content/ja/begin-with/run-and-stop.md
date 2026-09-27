@@ -6,7 +6,7 @@ slug: run-and-stop
 navId: run-and-stop
 title: "実行・停止"
 created: 2025-11-20
-updated: 2026-03-02
+updated: 2026-09-27
 summary: "実行・停止について"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
@@ -17,9 +17,9 @@ hero:
 
 workflowを実行します。
 
-- メニューの `▷ Run`（または `Queue Prompt`）ボタンをクリック
+![](/media/begin-with/run-and-stop/legacy_gyazo_e1be6c3b9c1666f5735bd17261d7714f.mp4){media=loop}
 
-![](https://gyazo.com/e1be6c3b9c1666f5735bd17261d7714f){gyazo=loop}
+- メニューの `▷ Run`（または `Queue Prompt`）ボタンをクリック
 
 ---
 
@@ -27,9 +27,9 @@ workflowを実行します。
 
 同じ設定で何回もworkflowを実行します。
 
-- `▷ Run` ボタンの横にある数字を変更
+![](/media/begin-with/run-and-stop/legacy_gyazo_5831e4d69bd26c7d5a533fb5781a33ad.mp4){media=loop}
 
-![](https://gyazo.com/5831e4d69bd26c7d5a533fb5781a33ad){gyazo=loop}
+- `▷ Run` ボタンの横にある数字を変更
 
 デフォルトでは上限が **100** になっていますが、設定で変更可能です。
 - `⚙Settings` → `Queue Button` → `Batch count limit` の値を変更してください。
@@ -40,10 +40,9 @@ workflowを実行します。
 
 「パラメータを変えるたびに自動で生成してほしい」あるいは「放置して無限に生成し続けたい」という場合に使います。
 
-- `▷ Run` ボタン内の `˅` をクリックし、モードを選択し、`▷ Run`をクリック
-- `🔳 (Clear Pending Tasks)` ボタンを押して停止
+![](/media/begin-with/run-and-stop/legacy_gyazo_c516b3b9fd8b2c506fb1fa91cf385174.mp4){media=loop}
 
-![](https://gyazo.com/c516b3b9fd8b2c506fb1fa91cf385174){gyazo=loop}
+- `▷ Run` ボタン内の `˅` をクリックし、モードを選択し、`▷ Run`をクリック
 
 ### モードの違い
 
@@ -61,9 +60,9 @@ workflowを実行します。
 
 間違えて実行してしまった場合などは、ここから中断できます。
 
-- **操作**: `▷ Run` ボタンの横にある `❌️` ボタンをクリック
+![](/media/begin-with/run-and-stop/stop.mp4){media=loop}
 
-![](https://gyazo.com/06d8045e9aa39f3ccb9ed7fe49f28588){gyazo=loop}
+- **操作**: `▷ Run` ボタンの横にある `❌️` ボタンをクリック
 
 ### 強制終了について
 
@@ -76,9 +75,8 @@ KSamplerでのサンプリング中など、PCに高い負荷がかかってい�
 
 予約されている処理（キュー）を確認したり、まとめて削除したりできます。
 
+![](/media/begin-with/run-and-stop/legacy_gyazo_23f7fb0414ad302f23b333ae0add5827.mp4){media=loop}
+
 - **操作**: 左サイドバーのQueueアイコンをクリック（またはキーボードの `Q` キー）で一覧を表示します。
-
-![](https://gyazo.com/23f7fb0414ad302f23b333ae0add5827){gyazo=loop}
-
 - **個別にキャンセル**: キャンセルしたい処理を右クリックし、`Delete` を選択します。
-- **まとめてキャンセル**: `▷ Run` ボタンの横にある `🟥` ボタンを押すと、残っている全てのキューをキャンセルします。
+- **まとめてキャンセル**: `Job Queue` ウィンドウの `Clear queue` をクリックします。

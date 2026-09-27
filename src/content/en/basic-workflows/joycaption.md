@@ -35,7 +35,7 @@ Because it is based on LLaVA-based multimodal models, it cannot be said to be li
 
 Generates a caption from the input image.
 
-![](https://gyazo.com/c14e87a362f349d3e649af28622262f1){gyazo=image}
+![](/media/basic-workflows/joycaption/legacy_gyazo_c14e87a362f349d3e649af28622262f1.png){media=image}
 
 [](/workflows/basic-workflows/joycaption/joycaption.json)
 

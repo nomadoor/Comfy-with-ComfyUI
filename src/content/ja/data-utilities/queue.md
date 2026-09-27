@@ -23,7 +23,7 @@ Queue(キュー)は実行したい処理を順番に並べておく仕組みで�
 
 ## ComfyUI での Queue の基本
 
-![](https://i.gyazo.com/5831e4d69bd26c7d5a533fb5781a33ad.png){gyazo=image}
+![](/media/begin-with/run-and-stop/legacy_gyazo_5831e4d69bd26c7d5a533fb5781a33ad.mp4){media=loop}
 
 ComfyUI の `▷ Run` ボタンは見た目こそ「実行」に見えますが、実際は **Queue に 1 件予約を追加するボタン** です。`▷ Run` を押した瞬間に生成が始まるのは、予約がそのまま先頭に入り、即時に実行されるためです。
 
@@ -39,7 +39,7 @@ Queueが追加されていくのが見られるはずです。
 もっともシンプルな方法です。
 同じ workflow をもう一度実行したい場合に、すぐ続けて Queue に追加できます。
 
-![](https://gyazo.com/0680d8d1d2ff86a81f15a81085af35a9){gyazo=loop}
+![](/media/data-utilities/queue/legacy_gyazo_0680d8d1d2ff86a81f15a81085af35a9.mp4){media=loop}
 
 ComfyUI は処理エンジンが 1 つのため、
 
@@ -50,7 +50,7 @@ ComfyUI は処理エンジンが 1 つのため、
 
 ### 2. Run 横の数字を増やして連続実行
 
-![](https://i.gyazo.com/5831e4d69bd26c7d5a533fb5781a33ad.png){gyazo=image}
+![](/media/begin-with/run-and-stop/legacy_gyazo_5831e4d69bd26c7d5a533fb5781a33ad.mp4){media=loop}
 
 `▷ Run` ボタンの横にある数字を変更すると、その回数分まとめて Queue に積むことができます。
 同じ設定で複数枚をつくりたいときに便利です。
@@ -61,7 +61,7 @@ ComfyUI は処理エンジンが 1 つのため、
 
 `INT` 型のパラメータ（例: `KSampler` の `seed` など）には、生成後に値を変えるオプションがあります。
 
-![](https://gyazo.com/3f0dd7eb5dde53d648a2fe2c49d41324){gyazo=loop}
+![](/media/data-utilities/queue/legacy_gyazo_3f0dd7eb5dde53d648a2fe2c49d41324.mp4){media=loop}
 
 Queue と併用すると、**毎回値を変えながら連続生成する** といった応用ができます。
 
@@ -90,7 +90,7 @@ seed を固定して他のパラメータの比較をしたい場合は `fixed` 
 実行中のジョブだけを停止します。
 Queue に積まれた “これからの予約” は残ります。
 
-![](https://gyazo.com/a7d76a9fee8c00efeddb0f454528c8d6){gyazo=loop}
+![](/media/data-utilities/queue/legacy_gyazo_a7d76a9fee8c00efeddb0f454528c8d6.mp4){media=loop}
 
 - `❌️ (Cancel Current Run)` をクリック
 
@@ -99,7 +99,7 @@ Queue に並んでいる “これからの予約” はそのまま残ります
 
 ### 予約されているタスクを消す
 
-![](https://gyazo.com/b4d1229ca875c9fd5cbbde0dfbf47fc6){gyazo=loop}
+![](/media/data-utilities/queue/legacy_gyazo_b4d1229ca875c9fd5cbbde0dfbf47fc6.mp4){media=loop}
 
 1 件だけ消したい場合
 - サイドバーの Queue で対象を右クリック → Delete
@@ -114,7 +114,7 @@ Queue に並んでいる “これからの予約” はそのまま残ります
 
 ## 過去の処理を確認する
 
-![](https://gyazo.com/3db298a7968024f5c06db82ee194d0c9){gyazo=loop}
+![](/media/data-utilities/queue/legacy_gyazo_3db298a7968024f5c06db82ee194d0c9.mp4){media=loop}
 
 サイドバーの`Queue`を開くと、過去の処理履歴が確認できます。
 ここから過去のworkflowを読み込むことも出来ます。

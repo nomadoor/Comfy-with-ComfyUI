@@ -69,7 +69,7 @@ Here we only handle 14B.
 
 In any pattern, the basic form is adding the `WanVaceToVideo` node based on [Wan 2.1 text2video](/en/basic-workflows/wan-2-1/#quality-improvement-techniques).
 
-![](https://gyazo.com/15272b819b453d21ec3707c059831edc){gyazo=image}
+![](/media/basic-workflows/wan-2-1-vace/legacy_gyazo_15272b819b453d21ec3707c059831edc.png){media=image}
 
 - `control_video`
   - "Guide video" such as pose, depth map, scribble, optical_flow, layout, etc.
@@ -84,7 +84,7 @@ In any pattern, the basic form is adding the `WanVaceToVideo` node based on [Wan
 
 Control video movement using pose or depth map.
 
-![](https://gyazo.com/ef1dae4f7c1fe82cb201e33558c6ca39){gyazo=image}
+![](/media/basic-workflows/wan-2-1-vace/legacy_gyazo_ef1dae4f7c1fe82cb201e33558c6ca39.png){media=image}
 
 [](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_control_pose.json)
 
@@ -97,7 +97,7 @@ Control video movement using pose or depth map.
 
 Transfer the character or style of the reference image to the video.
 
-![](https://gyazo.com/026bb65307ee96b243ccc2625e6d35a5){gyazo=image}
+![](/media/basic-workflows/wan-2-1-vace/legacy_gyazo_026bb65307ee96b243ccc2625e6d35a5.png){media=image}
 
 [](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_reference.json)
 
@@ -112,7 +112,7 @@ Transfer the character or style of the reference image to the video.
 
 Replace only a part of the video.
 
-![](https://gyazo.com/516fed114e2f9cd247eed1d9a3c82770){gyazo=image}
+![](/media/basic-workflows/wan-2-1-vace/legacy_gyazo_516fed114e2f9cd247eed1d9a3c82770.png){media=image}
 
 [](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_inpainting.json)
 
@@ -126,7 +126,7 @@ Replace only a part of the video.
 Extend the "time direction" of the video.
 The mechanism uses only the first N frames of the input video and generates the continuation.
 
-![](https://gyazo.com/ee3739958e95c68676cd003cf7753ce1){gyazo=loop}
+![](/media/basic-workflows/wan-2-1-vace/legacy_gyazo_ee3739958e95c68676cd003cf7753ce1.png){media=image}
 
 [](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_extension.json)
 
@@ -139,7 +139,7 @@ The mechanism uses only the first N frames of the input video and generates the 
 
 Apply Extension to make an existing video loop.
 
-![](https://gyazo.com/d2b6874f4fea944fd8ddf8fd0d4ed5b9){gyazo=loop}
+![](/media/basic-workflows/wan-2-1-vace/legacy_gyazo_d2b6874f4fea944fd8ddf8fd0d4ed5b9.png){media=image}
 
 [](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_extension_loop.json)
 

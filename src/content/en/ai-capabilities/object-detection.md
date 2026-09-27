@@ -32,7 +32,7 @@ There are various lineages in the world of object detection proper, but from a C
 
 A traditional and powerful group of models for detecting specific objects (cars, people, dogs, etc.).
 
-![](https://gyazo.com/2b694eacfaee03e50818eb87174f0ef9){gyazo=image}
+![](/media/ai-capabilities/object-detection/legacy_gyazo_2b694eacfaee03e50818eb87174f0ef9.png){media=image}
 
 [](/workflows/ai-capabilities/object-detection/yolo8.json)
 
@@ -60,7 +60,7 @@ What is important for ComfyUI is detection of the type where **objects can be sp
 
 ### Florence-2
 
-![](https://gyazo.com/9efa0561eb445e5b300aaf3abb76f526){gyazo=image}
+![](/media/ai-capabilities/object-detection/legacy_gyazo_9efa0561eb445e5b300aaf3abb76f526.png){media=image}
 
 [](/workflows/ai-capabilities/object-detection/florence_2.json)
 

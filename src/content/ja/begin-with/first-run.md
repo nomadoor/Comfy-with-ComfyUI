@@ -36,7 +36,7 @@ hero:
 
 ## テンプレートからworkflowを選択
 
-![](https://i.gyazo.com/7ffdc91e29dc41127e4101360ceff732.png){gyazo=image}
+![](/media/begin-with/first-run/legacy_gyazo_7ffdc91e29dc41127e4101360ceff732.png){media=image}
 
 - 一番最初の起動直後は、おそらくテンプレート画面が開いています。（開いていない場合は、左サイドバーの `Templates` を選択してください。）
 - まずは、`Getting Started` → `Image Generation` を選択してください。
@@ -71,7 +71,7 @@ hero:
 
 ## 生成してみる
 
-![](https://gyazo.com/57af4e96b7f6b2280aeed28afe3bb121){gyazo=loop}
+![](/media/begin-with/first-run/legacy_gyazo_57af4e96b7f6b2280aeed28afe3bb121.mp4){media=loop}
 
 - 画面上部の **`▷ Run`** ボタンを押せば生成が始まります。
 - `Save Image` ノードに画像が表示されていれば成功です。

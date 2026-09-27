@@ -36,7 +36,7 @@ inpainting 是一种 **“只重绘图像的一部分”** 的方法。
 
 基础是平时使用的 [image2image](/zh/basic-workflows/sd15-image2image/) 工作流。在此基础上加入掩膜，指定需要重绘的位置。
 
-![](https://gyazo.com/4fc7e54c5ac44fb4c09fc9911f6be06a){gyazo=image}
+![](/media/basic-workflows/sd15-inpainting/legacy_gyazo_4fc7e54c5ac44fb4c09fc9911f6be06a.png){media=image}
 
 [](/workflows/basic-workflows/sd15-inpainting/sd1_5_inpainting_setlatentnoisemask.json)
 
@@ -59,7 +59,7 @@ inpainting 是一种 **“只重绘图像的一部分”** 的方法。
 
 试着将上面工作流中的 `denoise` 设为 `1.00`。
 
-![哇，恐怖图……(；・∀・)](https://gyazo.com/b18eb39eee9f53b669edb098a219bd24){gyazo=image}
+![哇，恐怖图……(；・∀・)](/media/basic-workflows/sd15-inpainting/legacy_gyazo_b18eb39eee9f53b669edb098a219bd24.png){media=image}
 
 如果对整张图像执行 image2image，即使变化很大，也可以有它自己的乐趣。
 
@@ -95,7 +95,7 @@ inpainting 模型还会接收到“要重绘哪里”和“该区域外有什么
 
 ### 工作流
 
-![](https://gyazo.com/1f6954026bfda799259cfd948da779a3){gyazo=image}
+![](/media/basic-workflows/sd15-inpainting/legacy_gyazo_1f6954026bfda799259cfd948da779a3.png){media=image}
 
 [](/workflows/basic-workflows/sd15-inpainting/sd_v1_5_inpainting.json)
 
@@ -146,7 +146,7 @@ inpainting 模型还会接收到“要重绘哪里”和“该区域外有什么
 
 ### 工作流
 
-![](https://gyazo.com/ae3fe8d999343135c6ac995b67a165e7){gyazo=image}
+![](/media/basic-workflows/sd15-inpainting/legacy_gyazo_ae3fe8d999343135c6ac995b67a165e7.png){media=image}
 
 [](/workflows/basic-workflows/sd15-inpainting/sd1_5_controlnet_inpaint.json)
 
@@ -182,7 +182,7 @@ inpainting 模型还会接收到“要重绘哪里”和“该区域外有什么
 
 作为一个有代表性的图像编辑模型，我们来看看 [FLUX.2 \[klein\]](/zh/basic-workflows/flux-2-klein/)。
 
-![](https://gyazo.com/e55ff686078115488cef6406f60b9370){gyazo=image}
+![](/media/basic-workflows/flux-2-klein/legacy_gyazo_e55ff686078115488cef6406f60b9370.png){media=image}
 
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_image_edit.json)
 

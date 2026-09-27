@@ -23,7 +23,7 @@ Queue (队列) 是指将想要让计算机执行的处理按顺序排列等候�
 
 ## ComfyUI 中的 Queue 基础
 
-![](https://i.gyazo.com/5831e4d69bd26c7d5a533fb5781a33ad.png){gyazo=image}
+![](/media/begin-with/run-and-stop/legacy_gyazo_5831e4d69bd26c7d5a533fb5781a33ad.mp4){media=loop}
 
 ComfyUI 的 `▷ Run` 按钮虽然看起来是“执行”，但实际上是 **向 Queue 中追加 1 个预约的按钮**。按下 `▷ Run` 的瞬间生成就开始了，是因为预约直接进入了排头并且被立即执行了。
 
@@ -39,7 +39,7 @@ ComfyUI 的 `▷ Run` 按钮虽然看起来是“执行”，但实际上是 **�
 这是最简单的方法。
 当你想再次执行同一个 工作流 时，可以马上将其追加到 Queue 中。
 
-![](https://gyazo.com/0680d8d1d2ff86a81f15a81085af35a9){gyazo=loop}
+![](/media/data-utilities/queue/legacy_gyazo_0680d8d1d2ff86a81f15a81085af35a9.mp4){media=loop}
 
 由于 ComfyUI 只有一个处理引擎，因此无论你从
 
@@ -50,7 +50,7 @@ ComfyUI 的 `▷ Run` 按钮虽然看起来是“执行”，但实际上是 **�
 
 ### 2. 这增加 Run 旁边的数字进行连续运行
 
-![](https://i.gyazo.com/5831e4d69bd26c7d5a533fb5781a33ad.png){gyazo=image}
+![](/media/begin-with/run-and-stop/legacy_gyazo_5831e4d69bd26c7d5a533fb5781a33ad.mp4){media=loop}
 
 更改 `▷ Run` 按钮旁边的数字，就可以根据该次数批量堆积到 Queue 中。
 当想用相同的设置制作多张图时很方便。
@@ -61,7 +61,7 @@ ComfyUI 的 `▷ Run` 按钮虽然看起来是“执行”，但实际上是 **�
 
 `INT` 类型的参数（例: `KSampler` 的 `seed` 等），拥有在生成后更改数值的选项。
 
-![](https://gyazo.com/3f0dd7eb5dde53d648a2fe2c49d41324){gyazo=loop}
+![](/media/data-utilities/queue/legacy_gyazo_3f0dd7eb5dde53d648a2fe2c49d41324.mp4){media=loop}
 
 与 Queue 并用，就可以进行 **每次改变数值并连续生成** 这样的应用。
 
@@ -89,7 +89,7 @@ ComfyUI 的 `▷ Run` 按钮虽然看起来是“执行”，但实际上是 **�
 仅停止运行中的任务。
 堆积在 Queue 中的“后续预约”会保留。
 
-![](https://gyazo.com/a7d76a9fee8c00efeddb0f454528c8d6){gyazo=loop}
+![](/media/data-utilities/queue/legacy_gyazo_a7d76a9fee8c00efeddb0f454528c8d6.mp4){media=loop}
 
 - 点击 `❌️ (Cancel Current Run)`
 
@@ -98,7 +98,7 @@ ComfyUI 的 `▷ Run` 按钮虽然看起来是“执行”，但实际上是 **�
 
 ### 删除已预约的任务
 
-![](https://gyazo.com/b4d1229ca875c9fd5cbbde0dfbf47fc6){gyazo=loop}
+![](/media/data-utilities/queue/legacy_gyazo_b4d1229ca875c9fd5cbbde0dfbf47fc6.mp4){media=loop}
 
 想只删除 1 个时
 - 在侧边栏的 Queue 中右键点击对象 → Delete
@@ -113,7 +113,7 @@ ComfyUI 的 `▷ Run` 按钮虽然看起来是“执行”，但实际上是 **�
 
 ## 确认过去的处理
 
-![](https://gyazo.com/3db298a7968024f5c06db82ee194d0c9){gyazo=loop}
+![](/media/data-utilities/queue/legacy_gyazo_3db298a7968024f5c06db82ee194d0c9.mp4){media=loop}
 
 打开侧边栏的 `Queue`，可以确认过去的处理历史。
 也可以从这里读取过去的 工作流。

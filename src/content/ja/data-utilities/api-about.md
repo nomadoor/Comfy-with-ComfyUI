@@ -34,7 +34,7 @@ ComfyUIを起動すると、ローカルでは `http://127.0.0.1:8188` のよう
 フロントエンドとサーバは、勝手に繋がっているわけではありません。  
 その間をつないでいるのが **API（命令を渡す窓口）** です。
 
-![](https://gyazo.com/a04e2d09b534afb1e32900a738f0c3a7){gyazo=image}
+![](/media/begin-with/multiple-comfyui-instances/legacy_gyazo_a04e2d09b534afb1e32900a738f0c3a7.png){media=image}
 
 WebのノードUIも、内部的にはAPIを通してサーバに命令を送っています。  
 つまり、UIで `▷Run` を押した瞬間、裏ではサーバに「このworkflowを実行して」というリクエストが送られているのです。

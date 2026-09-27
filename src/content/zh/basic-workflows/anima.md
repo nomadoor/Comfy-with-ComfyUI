@@ -11,7 +11,7 @@ summary: "使用 Anima 进行图像生成"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: []
 hero:
-  image: "https://i.gyazo.com/1a342c19b3f7d493f6af396cde34891f.png"
+  image: "/media/basic-workflows/anima/legacy_gyazo_1a342c19b3f7d493f6af396cde34891f.png"
 ---
 
 ## Anima 是什么？
@@ -73,7 +73,7 @@ masterpiece, best quality, score_9, safe,
 
 ## text2image
 
-![](https://gyazo.com/0e2f46074799b0e7a016ee1a5bd28118){gyazo=image}
+![](/media/basic-workflows/anima/anima_aesthetic_v1_1.png){media=image}
 
 [](/workflows/basic-workflows/anima/anima_aesthetic_v1_1.json)
 
@@ -103,7 +103,7 @@ ControlNet-LLLite 是 kohya 开发的轻量级 ControlNet。
 
 ### anima-lllite-any-test-like-v2
 
-![](https://gyazo.com/d42f85633b9036b7e2e6e806c064ef56){gyazo=image}
+![](/media/basic-workflows/anima/legacy_gyazo_d42f85633b9036b7e2e6e806c064ef56.png){media=image}
 
 [](/workflows/basic-workflows/anima/anima_lllite_any_test_like_v2.json)
 

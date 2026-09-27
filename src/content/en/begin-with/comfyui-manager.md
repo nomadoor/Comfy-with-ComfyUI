@@ -10,7 +10,7 @@ updated: 2026-05-27
 summary: "About ComfyUI Manager"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/76b47ed5d45cf694b436022589464255.png"
+  image: "/media/begin-with/comfyui-manager/legacy_gyazo_76b47ed5d45cf694b436022589464255.png"
 ---
 
 ## What is ComfyUI Manager?
@@ -23,7 +23,7 @@ It became so common in many setups that it was almost treated like a default fea
 
 ## New and Legacy Manager
 
-![](https://gyazo.com/a0b09641bae0c8b02187e6c6b7bb9c5a){gyazo=image}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_a0b09641bae0c8b02187e6c6b7bb9c5a.png){media=image}
 
 Confusingly, the current ComfyUI Manager has two versions: the **new Manager** and the **older Manager**, also called the legacy UI.
 
@@ -98,7 +98,7 @@ For manual installation, work inside the ComfyUI folder with the virtual environ
 
 ### Opening ComfyUI Manager
 
-![](https://gyazo.com/ff8b7cdae4aba2a086a9cfebe8019023){gyazo=image}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_ff8b7cdae4aba2a086a9cfebe8019023.png){media=image}
 
 If installation and enabling succeeded, the `Extensions` button appears in the upper right.
 
@@ -131,7 +131,7 @@ If you need features that remain in the legacy version, such as update and model
 
 ### Current UI
 
-![](https://gyazo.com/85ac7d6fb86580c06f252938e153a152){gyazo=loop}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_85ac7d6fb86580c06f252938e153a152.mp4){media=loop}
 
 1. Enter the node name in the search bar.
 2. Click `Install`.
@@ -139,7 +139,7 @@ If you need features that remain in the legacy version, such as update and model
 
 ### Legacy UI
 
-![](https://gyazo.com/c0d8901537b65da709f9ba9d6e1a0055){gyazo=loop}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_c0d8901537b65da709f9ba9d6e1a0055.mp4){media=loop}
 
 1. Click `Custom Nodes Manager`.
 2. Enter the node name in the search bar.
@@ -152,7 +152,7 @@ If you need features that remain in the legacy version, such as update and model
 
 ### Current UI
 
-![](https://gyazo.com/3f8316ae71333f2214173e9987346153){gyazo=image}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_3f8316ae71333f2214173e9987346153.png){media=image}
 
 Go to the `Updates Available` tab.
 
@@ -163,7 +163,7 @@ Nodes that can be updated appear here.
 
 ### Legacy UI
 
-![](https://gyazo.com/3eeb7b5df0d8567f0fdc37ec8c73fff1){gyazo=image}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_3eeb7b5df0d8567f0fdc37ec8c73fff1.png){media=image}
 
 1. Click `Custom Nodes Manager`.
 2. Set Filter to `Installed` to show only installed nodes.

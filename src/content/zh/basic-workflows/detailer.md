@@ -10,13 +10,13 @@ updated: 2026-03-02
 summary: "只切出小脸和细部进行 inpaint 的机制"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/5904f9e96c234cd6bec18b10af263838.png"
+  image: "/media/basic-workflows/detailer/legacy_gyazo_5904f9e96c234cd6bec18b10af263838.png"
 tags: ["upscale-restoration"]
 ---
 
 ## 什么是 Detailer？
 
-![](https://gyazo.com/eb9c93e225419a1fe7574451d7cd94e1){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_eb9c93e225419a1fe7574451d7cd94e1.png){media=image}
 
 Stable Diffusion 1.5 最擅长的，大概是 512〜768px 前后的图像。  
 以这个分辨率画全身时，每 1 人能用于“脸”的像素数只有 30〜50px 程度。
@@ -54,7 +54,7 @@ Detailer 因为只剪切想 inpaint 的周边领域所以没有浪费。
 
 确认掩膜和裁剪领域的区别吧。
 
-![](https://gyazo.com/e52ea814ccd051de4c939bb7e90eb941){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_e52ea814ccd051de4c939bb7e90eb941.png){media=image}
 
 - 掩膜：真的想改写的部分（脸本身 等）
 - 裁剪领域：将掩膜和 BBOX 稍微扩大的“作业用画布”
@@ -65,7 +65,7 @@ Detailer 是，仅在这个裁剪领域进行的 inpainting。
 
 ## ✂️ Inpaint Crop
 
-![](https://gyazo.com/52c85301e868fe14f7bb729508206078){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_52c85301e868fe14f7bb729508206078.png){media=image}
 
 [](/workflows/basic-workflows/detailer/inpaint_crop_improved.json)
 
@@ -89,7 +89,7 @@ Detailer 是，仅在这个裁剪领域进行的 inpainting。
 
 ## ✂️ Inpaint Stitch (Improved)
 
-![](https://gyazo.com/c210a482208c8932e252b770b8b856bf){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_c210a482208c8932e252b770b8b856bf.png){media=image}
 
 [](/workflows/basic-workflows/detailer/inpaint_stitch_improved.json)
 
@@ -105,7 +105,7 @@ Detailer 是，仅在这个裁剪领域进行的 inpainting。
 那么，立刻做做看 Detailer 吧。  
 虽这么说，但也只是组装进 [inpainting](/zh/basic-workflows/sd15-inpainting/) 的工作流而已。
 
-![](https://gyazo.com/4246aded675f5267c9b5685486791390){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_4246aded675f5267c9b5685486791390.png){media=image}
 
 [](/workflows/basic-workflows/detailer/detailer_inpaint_crop.json)
 
@@ -119,7 +119,7 @@ Detailer 是，仅在这个裁剪领域进行的 inpainting。
 
 自动制作脸的掩膜，试着稍微自动化吧。
 
-![](https://gyazo.com/d65f393b285ec6c84a17a6a6ef438f14){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_d65f393b285ec6c84a17a6a6ef438f14.png){media=image}
 
 [](/workflows/basic-workflows/detailer/detailer_inpaint_crop_sam3.json)
 
@@ -134,4 +134,4 @@ Detailer 的基础只有这些，所以我想已经足够能运用自如了。
 
 ## 样本图像
 
-![](https://gyazo.com/7564534ad31facc3d0c91bc36606c930){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_7564534ad31facc3d0c91bc36606c930.jpg){media=image}

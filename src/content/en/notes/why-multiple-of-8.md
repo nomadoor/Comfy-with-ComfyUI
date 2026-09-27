@@ -16,7 +16,7 @@ hero:
 
 ## Why can only resolutions that are multiples of 8 be generated?
 
-![](https://gyazo.com/74438e54d131fb86c2f02e889a9fad7b){gyazo=loop}
+![](/media/notes/why-multiple-of-8/legacy_gyazo_74438e54d131fb86c2f02e889a9fad7b.mp4){media=loop}
 
 Looking at the `Empty Latent Image` node in ComfyUI, you can only set width/height in increments of 8.
 Even if you force input like 513px, the output is always rounded to a multiple of 8.

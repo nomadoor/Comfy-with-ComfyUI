@@ -26,7 +26,7 @@ ComfyUI はノードベースプログラミングと呼ばれることがあり
 
 ## 条件分岐の基本
 
-![](https://gyazo.com/42e0cbeb5ce32694423b50de55885358){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_42e0cbeb5ce32694423b50de55885358.png){media=image}
 
 [](/workflows/data-utilities/conditional-branching/switch.json)
 
@@ -60,7 +60,7 @@ Boolean は、`true` か `false`（0 or 1）のどちらかしか持たないシ
 
 例えば以下のように書いてみましょう。
 
-![](https://gyazo.com/78cde905a66746c303948be75f9b02c6){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_78cde905a66746c303948be75f9b02c6.jpg){media=image}
 
 [](/workflows/data-utilities/conditional-branching/math_expression.json)
 
@@ -98,7 +98,7 @@ a <= b  # a が b 以下
 
 たとえば、入力されたテキストが `Hello` と一致するか、`Hello` から始まっているか / 終わっているか、といった判定ができます。
 
-![](https://gyazo.com/d0c09611404d536c589fb34a690152e8){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_d0c09611404d536c589fb34a690152e8.png){media=image}
 
 [](/workflows/data-utilities/conditional-branching/compare_text.json)
 
@@ -118,7 +118,7 @@ Boolean というのは `true` / `false` で表現される、という話をし
 
 つまり、MLLM に対して、`「〇〇だったら 1、そうでないときは 0 と出力して」` といえば、それを Boolean に変換することができるんですね。
 
-![](https://gyazo.com/09299f1fde08831664593c6f0b4c0d5e){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_09299f1fde08831664593c6f0b4c0d5e.png){media=image}
 
 [](/workflows/data-utilities/conditional-branching/qwen3_5_4b.json)
 
@@ -145,7 +145,7 @@ MLLM を使うと、単なる数値やテキスト比較に比べて、遥かに
 
 複数の Boolean 入力があったとき、その組み合わせによって `true` か `false` を出力します。
 
-![](https://gyazo.com/e7730a6112a0820ab0a65b4371f7e70b){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_e7730a6112a0820ab0a65b4371f7e70b.png){media=image}
 
 [](/workflows/data-utilities/conditional-branching/and_or_not.json)
 
@@ -165,7 +165,7 @@ AND に NOT を組み合わせれば、2 つの入力が `true` のとき、`fal
 
 ### 画像が縦長なら 90 度回転
 
-![](https://gyazo.com/b6b8471813b62a487bf91519a04f7279){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_b6b8471813b62a487bf91519a04f7279.png){media=image}
 
 [](/workflows/data-utilities/conditional-branching/rotate_if_portrait.json)
 
@@ -177,7 +177,7 @@ AND に NOT を組み合わせれば、2 つの入力が `true` のとき、`fal
 
 女性が映っていれば男性に変え、それ以外の場合は人物をすべて消します。
 
-![](https://gyazo.com/cf499e4e4ed79b91d0020220c854d4ea){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_cf499e4e4ed79b91d0020220c854d4ea.png){media=image}
 
 [](/workflows/data-utilities/conditional-branching/switch_mllm_flux_2_klein_9b.json)
 

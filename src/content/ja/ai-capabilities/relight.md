@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "光源や環境光を変えて、画像のライティングを調整するタスク"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: 'https://i.gyazo.com/4c413909ac34f89df891a976fc660f70.png'
+  image: '/media/ai-capabilities/relight/legacy_gyazo_4c413909ac34f89df891a976fc660f70.png'
 ---
 
 ## リライトとは？
@@ -33,7 +33,7 @@ AIが出る以前から、Photoshopなどでチマチマ修正する方法はあ
 
 ### IC-Light / LBMなどの、拡散モデルベースのリライト
 
-![](https://gyazo.com/5e8ab13bbf6385a8413fd8dfdb774a77){gyazo=image}
+![](/media/ai-capabilities/relight/legacy_gyazo_5e8ab13bbf6385a8413fd8dfdb774a77.png){media=image}
 
 拡散モデルは大量の画像を学習する過程で、単に「画像を生成する」だけでなく、「こうしたほうが自然に見える」「光がこちらから来るなら、影はこう落ちる」といった統計的な知識も身につけています。
 
@@ -47,7 +47,7 @@ IC-LightやLBMなどの手法は、この性質を利用して、前景のライ
 
 専用のLoRAも作成されています。
 - [dx8152/Qwen-Image-Edit-2509-Relight](https://huggingface.co/dx8152/Qwen-Image-Edit-2509-Relight)
-- > ![](https://gyazo.com/74f605b5c212b69e7e0c269066665864){gyazo=image}
+- > ![](/media/ai-capabilities/relight/legacy_gyazo_74f605b5c212b69e7e0c269066665864.mp4){media=loop}
 
 ---
 
@@ -55,7 +55,7 @@ IC-LightやLBMなどの手法は、この性質を利用して、前景のライ
 
 もうひとつの系統は、**疑似的な光源をシーン内に置くタイプ**のリライトです。
 
-> ![ClipDrop Relight](https://gyazo.com/1cfc90b511ed7c12e3cfcf9128c170e5){gyazo=loop}
+> ![ClipDrop Relight](/media/ai-capabilities/relight/legacy_gyazo_1cfc90b511ed7c12e3cfcf9128c170e5.mp4){media=loop}
 
 深度マップやノーマルマップを推定し、「ここにスポットライト」「ここから太陽光」といった仮想ライトを置き、そのライトに合わせて陰影やハイライトを再計算します。
 

@@ -17,7 +17,7 @@ hero:
 
 - サイドバーの `Templates` アイコンをクリックし、好きなものを選択
 
-![](https://gyazo.com/a33cb7c6384321e684d9b9fd6eb1817c){gyazo=loop}
+![](/media/begin-with/saving-and-loading-workflows/legacy_gyazo_a33cb7c6384321e684d9b9fd6eb1817c.mp4){media=loop}
 
 ---
 
@@ -30,7 +30,7 @@ hero:
 
 保存したworkflowは、左サイドバーのフォルダアイコン 📂（または `W` キー）から呼び出せます。
 
-![](https://gyazo.com/b9970219294a79c53a651585baa179b4){gyazo=loop}
+![](/media/begin-with/saving-and-loading-workflows/legacy_gyazo_b9970219294a79c53a651585baa179b4.mp4){media=loop}
 
 ---
 
@@ -44,7 +44,7 @@ workflowを `.json` ファイルとして書き出し、共有やバックアッ
 - 2. 好きな名前を付けて `Confirm`（または `Enter` キー）
 - 3. 保存先を選択して保存
 
-![](https://gyazo.com/e13e29d51a26ea2a29ec87cc872bf522){gyazo=loop}
+![](/media/begin-with/saving-and-loading-workflows/legacy_gyazo_e13e29d51a26ea2a29ec87cc872bf522.mp4){media=loop}
 
 ### 生成画像に埋め込んで保存
 
@@ -55,7 +55,7 @@ ComfyUIの標準的な画像保存ノード（`Save Image` など）で生成さ
 
 **[ComfyUI-Custom-Scripts](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)** などのカスタムノードを導入すると、workflow全体のスクリーンショットを撮影し、そこにメタデータを埋め込んで保存することができます。
 
-![](https://gyazo.com/a66d20bf36c02fa63c6cd5ab957fe4db){gyazo=loop}
+![](/media/begin-with/saving-and-loading-workflows/legacy_gyazo_a66d20bf36c02fa63c6cd5ab957fe4db.mp4){media=loop}
 
 
 ---
@@ -69,7 +69,7 @@ ComfyUI内に保存したworkflowを開きます。
 - 1. 左サイドバーのフォルダアイコン 📂（または `W` キー）をクリック
 - 2. リストから開きたいworkflowをクリック
 
-![](https://gyazo.com/7c2149e7af5d6f78a30c9c03ff671356){gyazo=loop}
+![](/media/begin-with/saving-and-loading-workflows/legacy_gyazo_7c2149e7af5d6f78a30c9c03ff671356.mp4){media=loop}
 
 ### 外部ファイル（JSON / 画像）の読み込み
 
@@ -82,14 +82,14 @@ PCにある `.json` ファイルや、メタデータ付きの画像を読み込
 **方法B: ドラッグ&ドロップ**
 - `.json` ファイル、またはメタデータ埋め込み画像を、ComfyUIのキャンバス上にドラッグ&ドロップ
 
-![](https://gyazo.com/bbd3e9f3833a08a9af16bc3625c4747a){gyazo=loop}
+![](/media/begin-with/saving-and-loading-workflows/legacy_gyazo_bbd3e9f3833a08a9af16bc3625c4747a.mp4){media=loop}
 
 
 ### テキストから読み込み
 
 JSON形式のテキストデータをコピーしている場合、ComfyUI上でペースト（`Ctrl + V`）するだけでも読み込めます。
 
-![](https://gyazo.com/2df1b87e2f4771e3ea2f718b55357435){gyazo=loop}
+![](/media/begin-with/saving-and-loading-workflows/legacy_gyazo_2df1b87e2f4771e3ea2f718b55357435.mp4){media=loop}
 
 ### 😎このサイトのworkflowを読み込む
 

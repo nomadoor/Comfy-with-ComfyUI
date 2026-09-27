@@ -25,7 +25,7 @@ Since ComfyUI evolves daily, I believe there is useful information for intermedi
 
 
 ## About the Creator
-![](https://gyazo.com/eb8684edde8473e6522710d72f7d43cb/max_size/500){gyazo=image}
+![](/media/shared/about/nomadoor_logo.png){media=image}
 - **nomadoor**
   - One of the people captivated by the charm of generative AI, which began with the advent of Midjourney.
   - Just a NEET who is neither a designer nor an engineer, but since I have been using ComfyUI for a long time, I think I am reasonably knowledgeable among the non-experts... I think.

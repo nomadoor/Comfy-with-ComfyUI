@@ -25,7 +25,7 @@ hero:
 
 - 选中 `Load Image` 节点等 → 点击 `Node Selection Toolbox` 的 `🌔` (Open Mask Editor)
 
-![](https://gyazo.com/41526255834943bb591e62583d85d324){gyazo=loop}
+![](/media/begin-with/mask-editor/legacy_gyazo_41526255834943bb591e62583d85d324.mp4){media=loop}
 
 ---
 
@@ -52,7 +52,7 @@ hero:
 
 - **Color Selector**: 选择绘制颜色
 
-![](https://gyazo.com/398548a6895a8ad00ab2c9f5cf509222){gyazo=loop}
+![](/media/begin-with/mask-editor/legacy_gyazo_398548a6895a8ad00ab2c9f5cf509222.mp4){media=loop}
 
 ### 橡皮擦 (Eraser)
 
@@ -67,7 +67,7 @@ hero:
 - **Tolerance**: 容差
   - 如果太低会产生缝隙，所以最好调高一点。
 
-![](https://gyazo.com/98edbb1b4ca8324d0974416546194a3c){gyazo=loop}
+![](/media/begin-with/mask-editor/legacy_gyazo_98edbb1b4ca8324d0974416546194a3c.mp4){media=loop}
 
 ### 自动选择
 
@@ -77,7 +77,7 @@ hero:
 
 - **Tolerance**: 颜色的容差
 
-![](https://gyazo.com/bf6ca9fd1af91d39c50174a4ef981b90){gyazo=loop}
+![](/media/begin-with/mask-editor/legacy_gyazo_bf6ca9fd1af91d39c50174a4ef981b90.mp4){media=loop}
 
 ---
 
@@ -95,4 +95,4 @@ hero:
 
 编辑内容会被应用到节点上，编辑器关闭。
 
-![](https://gyazo.com/05a4f6930a6d074435ac29b77c97e82e){gyazo=loop}
+![](/media/begin-with/mask-editor/legacy_gyazo_05a4f6930a6d074435ac29b77c97e82e.mp4){media=loop}

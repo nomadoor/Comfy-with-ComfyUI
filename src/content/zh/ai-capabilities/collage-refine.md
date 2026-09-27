@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: 将杂乱的拼贴图像，通过基于指令的图像编辑整理成自然的一张画的技巧
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: https://i.gyazo.com/967bb07db193bdc681c1f5528f99d537.png
+  image: /media/ai-capabilities/collage-refine/legacy_gyazo_967bb07db193bdc681c1f5528f99d537.png
 ---
 ## 什么是杂乱拼贴的优化？
 
@@ -39,7 +39,7 @@ Flux Kontext 是基于指令的图像编辑模型的代表，原本是输入“1
 
 在最新的基于指令的图像编辑模型中，虽然支持多张图像输入，但尽管如此，杂乱拼贴的优化还是有几个优点。
 
-![](https://gyazo.com/be997efbbc0c0802513bfab1e8ebe585){gyazo=image}
+![](/media/ai-capabilities/collage-refine/legacy_gyazo_be997efbbc0c0802513bfab1e8ebe585.png){media=image}
 
 ### 可以原样保持位置信息
 

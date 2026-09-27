@@ -36,7 +36,7 @@ API nodes **always consume credits (prepaid)** regardless of which model you use
 The fee is determined for each model in the form of "X credits per generation".
 Basically, it is set at a level that does not deviate significantly from the API price range published by each company, and there is no such thing as "it becomes extremely expensive because it is via ComfyUI".
 
-![](https://gyazo.com/6f7f9247364acac4d4fb1ccfeeb2e845){gyazo=image}
+![](/media/basic-workflows/api-nodes/legacy_gyazo_6f7f9247364acac4d4fb1ccfeeb2e845.png){media=image}
 
 Approximate charges are displayed as badges on the top right of the API node.
 
@@ -56,7 +56,7 @@ Approximate charges are displayed as badges on the top right of the API node.
 
 The usage is the same as other nodes. Just search for the node by model name and connect it.
 
-![](https://gyazo.com/0d12a7369948fa19779c0b7ffb487cd0){gyazo=image}
+![](/media/basic-workflows/api-nodes/legacy_gyazo_0d12a7369948fa19779c0b7ffb487cd0.png){media=image}
 
 [](/workflows/basic-workflows/api-nodes/google_gemini.json)
 

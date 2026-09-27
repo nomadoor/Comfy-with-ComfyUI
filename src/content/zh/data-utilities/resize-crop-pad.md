@@ -5,12 +5,12 @@ section: data-utilities
 slug: resize-crop-pad
 navId: resize-crop-pad
 title: "调整大小、裁剪与填充"
-created: 2026-02-06
+created: 2025-11-25
 updated: 2026-03-02
 summary: "关于图像的调整大小、裁剪、填充"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/02cf6bd2a573dc15dff4799c94b15a0d.png"
+  image: "/media/data-utilities/resize-crop-pad/legacy_gyazo_02cf6bd2a573dc15dff4799c94b15a0d.png"
 ---
 
 ## 图像的调整大小与裁剪
@@ -31,7 +31,7 @@ hero:
 
 将图像的宽度 (width) 和高度 (height)、以及 Batch Size（张数）作为数值输出。
 
-![](https://gyazo.com/ffb5c8bfea06d5ce1b15183cc70dc973){gyazo=image}
+![](/media/data-utilities/resize-crop-pad/legacy_gyazo_ffb5c8bfea06d5ce1b15183cc70dc973.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/get_image_size.json)
 
@@ -44,7 +44,7 @@ hero:
 这是一个可以切换使用多种调整大小方法的节点。
 基本上，这一个节点就能涵盖大部分所需的处理。（顺便说一下，蒙版也可以调整大小）
 
-{% mediaRow img="https://gyazo.com/afa66ff808e05a40e363761184c668c1 {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/data-utilities/resize-crop-pad/legacy_gyazo_afa66ff808e05a40e363761184c668c1.png {media=image}", width=45, align="left" %}
 
 **scale by multiplier**
 
@@ -58,7 +58,7 @@ hero:
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/4fc6f32dc60859a38a2cf3a125aa82bf {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/data-utilities/resize-crop-pad/legacy_gyazo_4fc6f32dc60859a38a2cf3a125aa82bf.png {media=image}", width=45, align="left" %}
 
 **scale dimensions**
 
@@ -74,7 +74,7 @@ hero:
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/bdc737b190e9e45ebc6a55a1b155414e {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/data-utilities/resize-crop-pad/legacy_gyazo_bdc737b190e9e45ebc6a55a1b155414e.png {media=image}", width=45, align="left" %}
 
 **scale longer/shorter dimension**
 
@@ -86,7 +86,7 @@ hero:
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/adcd25f46b34298cea4a37a046b221bf {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/data-utilities/resize-crop-pad/legacy_gyazo_adcd25f46b34298cea4a37a046b221bf.png {media=image}", width=45, align="left" %}
 
 **scale width/height**
 
@@ -98,7 +98,7 @@ hero:
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/13116851f0f749d7f4f5e350fb474f5e {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/data-utilities/resize-crop-pad/resize_imagemask_scale_total_pixels.png {media=image}", width=45, align="left" %}
 
 **scale total pixels**
 
@@ -119,7 +119,7 @@ hero:
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/e4398957f8190305364c6b9c12948c3c {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/data-utilities/resize-crop-pad/legacy_gyazo_e4398957f8190305364c6b9c12948c3c.png {media=image}", width=45, align="left" %}
 
 **match size**
 
@@ -138,7 +138,7 @@ hero:
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/28d95c2ef2e320c18761852f60f2a508 {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/data-utilities/resize-crop-pad/legacy_gyazo_28d95c2ef2e320c18761852f60f2a508.png {media=image}", width=45, align="left" %}
 
 **scale to multiple**
 
@@ -160,7 +160,7 @@ hero:
 以图像的 **长边** 为设定的尺寸，保持纵横比进行调整大小。
 （例：无论是纵向长图还是横向长图，都让长的那一边变成 1024px）
 
-![](https://i.gyazo.com/42ffc7b0534face3e58fc7946b243ce0.png){gyazo=image}
+![](/media/data-utilities/resize-crop-pad/legacy_gyazo_42ffc7b0534face3e58fc7946b243ce0.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/imagescaletomaxdimension.json)
 
@@ -176,7 +176,7 @@ hero:
 
 调整为指定的分辨率，不足的部分用填充来填补。
 
-![](https://gyazo.com/633441a119959e98e0dca5cb765a53d8){gyazo=image}
+![](/media/data-utilities/resize-crop-pad/legacy_gyazo_633441a119959e98e0dca5cb765a53d8.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/resizeandpadimage.json)
 
@@ -186,7 +186,7 @@ hero:
 
 在图像的上下左右，添加指定像素数的空白。
 
-![](https://gyazo.com/c6200467aad1b43edbc09b2ec4f3f2b0){gyazo=image}
+![](/media/data-utilities/resize-crop-pad/legacy_gyazo_c6200467aad1b43edbc09b2ec4f3f2b0.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/pad_image_for_outpainting.json)
 
@@ -203,7 +203,7 @@ hero:
 
 指定 x, y 坐标和宽度、高度，将图像的一部分以矩形进行裁剪。
 
-![](https://i.gyazo.com/1c996b2fa8f7213f05c524b16468181e.png){gyazo=image}
+![](/media/data-utilities/resize-crop-pad/legacy_gyazo_1c996b2fa8f7213f05c524b16468181e.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/imagecrop.json)
 
@@ -212,7 +212,7 @@ hero:
 
 将图像旋转 90度 / 180度 / 270度。
 
-![](https://gyazo.com/8de36981f39e9c39ec1b6c4aa3f9a7ff){gyazo=image}
+![](/media/data-utilities/resize-crop-pad/legacy_gyazo_8de36981f39e9c39ec1b6c4aa3f9a7ff.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/imagerotate.json)
 
@@ -221,7 +221,7 @@ hero:
 
 将图像在水平 / 垂直方向进行翻转。
 
-![](https://gyazo.com/e0661734e160f918d9fc9080dda91240){gyazo=image}
+![](/media/data-utilities/resize-crop-pad/legacy_gyazo_e0661734e160f918d9fc9080dda91240.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/imageflip.json)
 
@@ -254,7 +254,7 @@ hero:
 
 ### 将图像裁剪为一半
 
-![](https://gyazo.com/02cf6bd2a573dc15dff4799c94b15a0d){gyazo=image}
+![](/media/data-utilities/resize-crop-pad/legacy_gyazo_02cf6bd2a573dc15dff4799c94b15a0d.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/crop_to_half_size.json)
 

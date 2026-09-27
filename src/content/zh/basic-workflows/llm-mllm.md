@@ -50,7 +50,7 @@ ComfyUI 是专为图像生成设计的引擎，因此它对 LLM 的支持能力�
 
 当然，能在核心里直接跑起来这一点本身已经很厉害了，不过就现状而言，还不太算是推荐方案。
 
-![Gemma 3](https://gyazo.com/4e2275270a8f40c8ecdbe2b286addb2e){gyazo=image}
+![Gemma 3](/media/basic-workflows/llm-mllm/legacy_gyazo_4e2275270a8f40c8ecdbe2b286addb2e.png){media=image}
 
 [](/workflows/basic-workflows/llm-mllm/textgenerate_gemma3.json)
 
@@ -65,7 +65,7 @@ ComfyUI 是专为图像生成设计的引擎，因此它对 LLM 的支持能力�
 
 主要使用针对特定任务优化的轻量模型，如描述生成或物体检测。
 
-![Florence2](https://gyazo.com/b364e8bc1ba2799ad953384f4dfe2079){gyazo=image}
+![Florence2](/media/basic-workflows/florence2/legacy_gyazo_b364e8bc1ba2799ad953384f4dfe2079.png){media=image}
 
 **代表性支持模型**
 - [JoyCaption](/zh/basic-workflows/joycaption/)
@@ -86,7 +86,7 @@ ComfyUI 是专为图像生成设计的引擎，因此它对 LLM 的支持能力�
 
 ComfyUI 官方提供的节点，用于通过 API 调用 ChatGPT 或 Gemini 等闭源服务。
 
-![Google_Gemini](https://gyazo.com/0d12a7369948fa19779c0b7ffb487cd0){gyazo=image}
+![Google_Gemini](/media/basic-workflows/api-nodes/legacy_gyazo_0d12a7369948fa19779c0b7ffb487cd0.png){media=image}
 
 说句实话，这些服务比本地模型聪明得多，也快得多。
 - PC 负载完全为零。在跑图的同时让它在后台润色提示词，完全不影响生成速度

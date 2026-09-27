@@ -16,9 +16,9 @@ hero:
 
 ## Workflows are roughly the same for any model
 
-![](https://gyazo.com/55ef8fc59cbcbc5093b9e1b3d15dceb5){gyazo=image}
+![](/media/basic-workflows/sd15-basics/legacy_gyazo_55ef8fc59cbcbc5093b9e1b3d15dceb5.png){media=image}
 
-![](https://gyazo.com/bc7fe8fc68bbc2fb408314e8acee9ab1){gyazo=image}
+![](/media/basic-workflows/sd15-basics/legacy_gyazo_bc7fe8fc68bbc2fb408314e8acee9ab1.png){media=image}
 
 The top is the workflow for **Stable Diffusion 1.5**, and the bottom is for the latest model **Z-Image** (hypothetical/example).
 
@@ -55,30 +55,30 @@ Let's check in the flow which parts are increasing as modules.
 
 - 1. **text2image**
   - The basics. Just input a prompt and throw it to KSampler.
-  - ![](https://gyazo.com/10c6a84174c94fbd6b66fbed2bd2a4c3){gyazo=image}
+  - ![](/media/basic-workflows/sd15-basics/legacy_gyazo_10c6a84174c94fbd6b66fbed2bd2a4c3.png){media=image}
   - [](/workflows/basic-workflows/sd15-basics/sd1_5_text2image.json)
 
 - 2. **image2image**
   - Generates an image using an input image as a draft.
-  - ![](https://gyazo.com/8426a110f038cddb3907e51d155ed9b3){gyazo=image}
+  - ![](/media/basic-workflows/sd15-basics/legacy_gyazo_8426a110f038cddb3907e51d155ed9b3.png){media=image}
   - [](/workflows/basic-workflows/sd15-basics/sd1_5_image2image.json)
   - 🟩 Add a node to load an image and a node to convert it to latent.
 
 - 3. **inpainting**
   - Performs image2image on only a part of the input image.
-  - ![](https://gyazo.com/a9bd94b38c77cca3acb5b6a5b9d894a6){gyazo=image}
+  - ![](/media/basic-workflows/sd15-basics/legacy_gyazo_a9bd94b38c77cca3acb5b6a5b9d894a6.png){media=image}
   - [](/workflows/basic-workflows/sd15-basics/sd1_5_inpainting.json)
   - 🟥 Add nodes to make image2image happen only in the masked area.
 
 - 4. **ControlNet**
   - ControlNet is a function that allows you to control image generation by inputting an image.
-  - ![](https://gyazo.com/46553948d7e458ed19a69b0a5a8f5141){gyazo=image}
+  - ![](/media/basic-workflows/sd15-basics/legacy_gyazo_46553948d7e458ed19a69b0a5a8f5141.png){media=image}
   - [](/workflows/basic-workflows/sd15-basics/sd1_5_inpainting_controlnet.json)
   - 🟦 Add nodes to add ControlNet and nodes to create images used for ControlNet control.
   
 - 5. **Add even more ControlNet**
   - There is no restriction that ControlNet must be only one. Let's add another one.
-  - ![](https://gyazo.com/daa261583657abf6c25d2003581d1610){gyazo=image}
+  - ![](/media/basic-workflows/sd15-basics/legacy_gyazo_daa261583657abf6c25d2003581d1610.png){media=image}
   - [](/workflows/basic-workflows/sd15-basics/sd1_5_inpainting_controlnet2.json)
   - 🟦 Just create another set of ControlNet and its preprocessing nodes and connect them.
 

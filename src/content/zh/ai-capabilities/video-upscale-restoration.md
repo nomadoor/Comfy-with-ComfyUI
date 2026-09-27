@@ -47,7 +47,7 @@ hero:
 
 [lihaoyun6/ComfyUI-FlashVSR_Ultra_Fast](https://github.com/lihaoyun6/ComfyUI-FlashVSR_Ultra_Fast)
 
-![](https://gyazo.com/70f862355eef1106d51e8068ef48a006){gyazo=image}
+![](/media/ai-capabilities/video-upscale-restoration/legacy_gyazo_70f862355eef1106d51e8068ef48a006.mp4){media=loop}
 
 [](/workflows/ai-capabilities/video-upscale-restoration/flashvsr.json)
 

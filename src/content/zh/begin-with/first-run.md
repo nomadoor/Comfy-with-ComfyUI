@@ -38,7 +38,7 @@ hero:
 
 ## 从模板选择 工作流
 
-![](https://i.gyazo.com/7ffdc91e29dc41127e4101360ceff732.png){gyazo=image}
+![](/media/begin-with/first-run/legacy_gyazo_7ffdc91e29dc41127e4101360ceff732.png){media=image}
 
 - 刚启动时，应该会打开模板画面。（如果没有打开，请选择左侧边栏的 `Templates`。）
 - 首先，请选择 `Getting Started` → `Image Generation`。
@@ -73,7 +73,7 @@ hero:
 
 ## 尝试生成
 
-![](https://gyazo.com/57af4e96b7f6b2280aeed28afe3bb121){gyazo=loop}
+![](/media/begin-with/first-run/legacy_gyazo_57af4e96b7f6b2280aeed28afe3bb121.mp4){media=loop}
 
 - 点击屏幕上方的 **`▷ Run`** 按钮，生成就会开始。
 - 如果 `Save Image` 节点显示了图像，即表示成功。

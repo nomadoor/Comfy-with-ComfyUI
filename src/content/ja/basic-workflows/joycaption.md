@@ -35,7 +35,7 @@ LLaVA系のマルチモーダルモデルをベースにしているため tagge
 
 入力された画像からキャプションを生成します。
 
-![](https://gyazo.com/c14e87a362f349d3e649af28622262f1){gyazo=image}
+![](/media/basic-workflows/joycaption/legacy_gyazo_c14e87a362f349d3e649af28622262f1.png){media=image}
 
 [](/workflows/basic-workflows/joycaption/joycaption.json)
 

@@ -10,7 +10,7 @@ updated: 2026-06-18
 summary: "Ideogram 4.0での画像生成"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/cb9116562b7693e120aa63eafef11769.png"
+  image: "/media/basic-workflows/ideogram-4/legacy_gyazo_cb9116562b7693e120aa63eafef11769.png"
 tags: []
 ---
 
@@ -113,7 +113,7 @@ ComfyUI は内部でやりくりしてくれるので、VRAM が足りなくて�
 
 ComfyUI 上で動かせるレベルのローカルモデルでは性能が足りないので、大人しく ChatGPT や Gemini などに頼った方が良いでしょう。
 
-![](https://gyazo.com/b314abc36bec096b81fb3231a2687064){gyazo=image}
+![](/media/basic-workflows/ideogram-4/legacy_gyazo_b314abc36bec096b81fb3231a2687064.png){media=image}
 
 - [サンプルチャット with ChatGPT](https://chatgpt.com/share/6a28f7cc-e934-8320-86d6-f790a5274389)
 
@@ -123,7 +123,7 @@ ComfyUI 上で動かせるレベルのローカルモデルでは性能が足り
 
 例えば [ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes) の `Ideogram 4 Prompt Builder KJ` ノードはよく使われているものの一つです。
 
-![](https://gyazo.com/a1c3a269983b478c1f605e2f0a5c6e4f){gyazo=image}
+![](/media/basic-workflows/ideogram-4/legacy_gyazo_a1c3a269983b478c1f605e2f0a5c6e4f.png){media=image}
 
 - 生成する画像のサイズを設定し、背景やスタイルといったものを入力していきます。
 - region 欄でドラッグすると、BBOX を作ることができ、そこに描かせたいもののプロンプト、及びカラーコードを設定します。
@@ -132,13 +132,13 @@ ComfyUI 上で動かせるレベルのローカルモデルでは性能が足り
 
 ## text2image
 
-![](https://gyazo.com/c9a2cf1717e87cd1ba28c5d236a02b4d){gyazo=image}
+![](/media/basic-workflows/ideogram-4/legacy_gyazo_c9a2cf1717e87cd1ba28c5d236a02b4d.png){media=image}
 
 [](/workflows/basic-workflows/ideogram-4/ideogram_4_0_text2image.json)
 
 プロンプト以外にも、一般的な workflow と比べると少し特殊な部分があるので、そちらだけ見ていきましょう。
 
-{% mediaRow img="https://gyazo.com/c0d5e9131313e7c3c5255b4f54d55dbb {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/ideogram-4/legacy_gyazo_c0d5e9131313e7c3c5255b4f54d55dbb.png {media=image}", width=33, align="left" %}
 **Load Diffusion Model**
 
 Ideogram 4.0 では、少し特殊な CFG のために diffusion model を 2 つ読み込みます。
@@ -149,7 +149,7 @@ Ideogram 4.0 では、少し特殊な CFG のために diffusion model を 2 つ
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/26ef78ed5bf868ab5ca9a62b643640ff {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/ideogram-4/legacy_gyazo_26ef78ed5bf868ab5ca9a62b643640ff.png {media=image}", width=33, align="left" %}
 **CFG**
 
 昔からある細かいテクニックですが、サンプリングの前半と後半で CFG の値を変えます。
@@ -182,7 +182,7 @@ Ostris さんが公開している、2〜8 step で生成できる LoRA です�
 
 ### text2image (8 step)
 
-![](https://gyazo.com/f75015885dc02060128725d779ce7d49){gyazo=image}
+![](/media/basic-workflows/ideogram-4/legacy_gyazo_f75015885dc02060128725d779ce7d49.png){media=image}
 
 [](/workflows/basic-workflows/ideogram-4/ideogram_4_0_text2image_turbotime.json)
 

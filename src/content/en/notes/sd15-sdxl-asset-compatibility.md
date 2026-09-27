@@ -49,7 +49,7 @@ You can assume that adapters are dedicated to that model.
 
 ## Does it actually cause an error?
 
-![](https://gyazo.com/3d13852e4d5921d17dd6e6c1835bfafa){gyazo=image}
+![](/media/notes/sd15-sdxl-asset-compatibility/legacy_gyazo_3d13852e4d5921d17dd6e6c1835bfafa.png){media=image}
 
 If you connect a ControlNet model for SDXL to a ControlNet workflow for SD1.5, an error like the one above will be displayed:
 

@@ -10,7 +10,7 @@ updated: 2026-08-26
 summary: "チェックポイントやLoRAをマージして新しいモデルや差分LoRAを作る方法"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
- image: "https://i.gyazo.com/60a8e4bd6e8b13d321cab6372e363baa.png"
+ image: "/media/basic-workflows/model-merge/legacy_gyazo_60a8e4bd6e8b13d321cab6372e363baa.png"
 tags: []
 ---
 
@@ -30,7 +30,7 @@ tags: []
 
 まずはシンプルに2つのモデルを半々に混ぜてみましょう。
 
-![](https://gyazo.com/152fa7235f2878021cd924594b2d2bf1){gyazo=image}
+![](/media/basic-workflows/model-merge/modelmergesimple_0_5.png){media=image}
 
 [](/workflows/basic-workflows/model-merge/modelmergesimple_0_5.json)
 
@@ -41,7 +41,7 @@ tags: []
 - 出力された `MODEL` をそのまま `KSampler` に繋げれば、中間モデルを簡単に試せます。
   - 雑にアニメ系とリアル系を混ぜただけですが、2.5次元のような表現が出来ているのには驚かされますね。
 
-![](https://gyazo.com/89e876767a48d9acd6c6bb684e6b2495){gyazo=image}
+![](/media/basic-workflows/model-merge/legacy_gyazo_89e876767a48d9acd6c6bb684e6b2495.png){media=image}
 
 - マージ結果が気に入ったら、`CheckpointSave` ノードにつないでチェックポイントとして保存します。(上のworkflowではバイパスしています。)
   - 保存先はデフォルトでは `ComfyUI/output/checkpoints/`（Windows ポータブル版の標準設定）です。
@@ -67,7 +67,7 @@ U-Net はいくつもの層に分かれていて、外側はテクスチャや�
 
 その違いを利用して、欲しい特徴だけをうまく混ぜようというのが階層マージです。
 
-![](https://gyazo.com/380e98b86fa2205099cf6f231fc32ac8){gyazo=image}
+![](/media/basic-workflows/model-merge/legacy_gyazo_380e98b86fa2205099cf6f231fc32ac8.png){media=image}
 
 [](/workflows/basic-workflows/model-merge/modelmergeblocks_out_0_5.json)
 
@@ -102,7 +102,7 @@ LoRA は「元のモデルにあとから足せる差分パッチ」のような
 
 ### workflow
 
-![](https://gyazo.com/0b5930d9de58a61acd5bf63da5927634){gyazo=image}
+![](/media/basic-workflows/model-merge/legacy_gyazo_0b5930d9de58a61acd5bf63da5927634.png){media=image}
 
 [](/workflows/basic-workflows/model-merge/modelmergesubtract_save_lora.json)
 
@@ -116,7 +116,7 @@ LoRA は「元のモデルにあとから足せる差分パッチ」のような
   - 抽出されたLoRAモデルは、`\ComfyUI\output\loras`に保存されています。
 
 ### 差分LoRAのテスト
-![](https://gyazo.com/c499e4f0a683dc0ddd573312f6897dc8){gyazo=image}
+![](/media/basic-workflows/model-merge/legacy_gyazo_c499e4f0a683dc0ddd573312f6897dc8.png){media=image}
 
 [](/workflows/basic-workflows/model-merge/sd1_5_text2image_with_lora.json)
 

@@ -24,7 +24,7 @@ hero:
 
 ControlNet Canny（edge）を使用すれば、入力した線画はおおむね保持したまま、そこに色を塗ることができます。
 
-![](https://gyazo.com/7e1ed10e17831b224bc547a8d6b3deea){gyazo=image}
+![](/media/ai-capabilities/line-art-coloring/legacy_gyazo_7e1ed10e17831b224bc547a8d6b3deea.png){media=image}
 
 [](/workflows/ai-capabilities/line-art-coloring/flux_controlnet_union.json)
 
@@ -36,7 +36,7 @@ ControlNet Canny（edge）を使用すれば、入力した線画はおおむね
 
 [指示ベース画像編集](/ja/ai-capabilities/instruction-based-image-editing/)モデルに、線画をそのまま渡して塗らせることもできます。
 
-![](https://gyazo.com/18b33d684675ffa56b3b805a9f56791a){gyazo=image}
+![](/media/ai-capabilities/line-art-coloring/qwen_image_edit_2509.png){media=image}
 
 [](/workflows/ai-capabilities/line-art-coloring/qwen_image_edit_2509.json)
 

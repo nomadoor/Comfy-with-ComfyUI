@@ -14,7 +14,7 @@ hero:
 ---
 ## ノイズから美しい画像が作られる
 
-![](https://gyazo.com/3c82ca8a7dcb51f2475d0451de727783){gyazo=loop}
+![](/media/ai-capabilities/diffusion-models/legacy_gyazo_3c82ca8a7dcb51f2475d0451de727783.mp4){media=loop}
 
 ComfyUIで画像生成の様子をプレビューしてみると、最初は砂嵐のようなノイズしか見えないのに、ステップが進むにつれて輪郭が現れ、最終的にはそれなりに整った画像になっていくのが分かります。
 

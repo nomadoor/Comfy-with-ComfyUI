@@ -38,7 +38,7 @@ There are a ridiculous number of models depending on the use case, but for now, 
 
 ## Upscaling with ESRGAN
 
-![](https://gyazo.com/daebc07f85601b354c872a0a27f3fec1){gyazo=image}
+![](/media/basic-workflows/esrgan/legacy_gyazo_daebc07f85601b354c872a0a27f3fec1.png){media=image}
 
 [](/workflows/basic-workflows/esrgan/realesrgan.json)
 
@@ -54,7 +54,7 @@ In such cases, add a process to shrink the image enlarged by the upscaler.
 
 ### workflow
 
-![](https://gyazo.com/c05fc016293e3f1ae55b153cf1adaaae){gyazo=image}
+![](/media/basic-workflows/esrgan/legacy_gyazo_c05fc016293e3f1ae55b153cf1adaaae.png){media=image}
 
 [](/workflows/basic-workflows/esrgan/realesrgan_x0_5.json)
 

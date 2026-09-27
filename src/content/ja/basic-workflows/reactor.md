@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "ReActorを使ったFaceSwap（顔入れ替え）"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/c75a0142055d05c154f7d8cf03b3ca56.png"
+  image: "/media/basic-workflows/reactor/legacy_gyazo_c75a0142055d05c154f7d8cf03b3ca56.png"
 tags: ["id-transfer"]
 ---
 
@@ -44,7 +44,7 @@ ReActor（正確にはそのコアである **InsightFace** ）は、1枚の顔�
 
 基本的な FaceSwap は、ReActor ノードに「元画像」と「参照顔画像」を入力するだけです。
 
-![](https://gyazo.com/bc67dfff78c431c688d8ec1a4937969e){gyazo=image}
+![](/media/basic-workflows/reactor/legacy_gyazo_bc67dfff78c431c688d8ec1a4937969e.png){media=image}
 
 [](/workflows/basic-workflows/reactor/reactor_fast_face_swap.json)
 
@@ -88,7 +88,7 @@ ReActor（正確にはそのコアである **InsightFace** ）は、1枚の顔�
 
 ### workflow の設定
 
-![](https://gyazo.com/bab77e7c89d65dff9a4ebedb17a46375){gyazo=image}
+![](/media/basic-workflows/reactor/legacy_gyazo_bab77e7c89d65dff9a4ebedb17a46375.png){media=image}
 
 [](/workflows/basic-workflows/reactor/reactor_hyperswap.json)
 

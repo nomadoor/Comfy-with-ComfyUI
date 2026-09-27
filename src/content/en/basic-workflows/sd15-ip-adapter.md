@@ -10,7 +10,7 @@ updated: 2026-08-26
 summary: "The original mechanism for transferring style and subject from a reference image"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/64fdcae074a2a01943d7f5fff3aaa418.png"
+  image: "/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_64fdcae074a2a01943d7f5fff3aaa418.png"
 tags: ["subject-transfer", "style-transfer"]
 ---
 
@@ -53,7 +53,7 @@ There are several types of IP-Adapter, but let's start by trying the most standa
 
 ### workflow
 
-![](https://gyazo.com/6e8376130553997cbd30696c6700a601){gyazo=image}
+![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_6e8376130553997cbd30696c6700a601.png){media=image}
 
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_sd15.json)
 
@@ -65,7 +65,7 @@ There are several types of IP-Adapter, but let's start by trying the most standa
 
 ## What is it "Looking" At?
 
-![](https://gyazo.com/302c47a4eb43f19e7e8535ca40e8ed5c){gyazo=image}
+![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_302c47a4eb43f19e7e8535ca40e8ed5c.png){media=image}
 
 The CLIP ViT-H-14, which acts as the "eye" for IP-Adapter, basically only sees a **224 × 224 square area**.
 Therefore, if you pass a portrait photo as is, the face or feet might be cut off, or it might only pick up features from the middle of the body.
@@ -82,7 +82,7 @@ There are several derivative models, and "what and how much they borrow" from th
 
 A model that strongly transfers composition and object positions.
 
-![](https://gyazo.com/ecbbe99d3410a850767aaf506645952b){gyazo=image}
+![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_ecbbe99d3410a850767aaf506645952b.png){media=image}
 
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_plus_sd15.json)
 
@@ -94,7 +94,7 @@ A model that strongly transfers composition and object positions.
 
 A model that prioritizes text prompts.
 
-![](https://gyazo.com/422b44322caef6fe6fdec8c7d37f54e3){gyazo=image}
+![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_422b44322caef6fe6fdec8c7d37f54e3.png){media=image}
 
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_sd15_light.json)
 
@@ -106,7 +106,7 @@ A model that prioritizes text prompts.
 
 An IP-Adapter specialized for faces (head).
 
-![](https://gyazo.com/bba6f8053f411bee64044c141d4632c0){gyazo=image}
+![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_bba6f8053f411bee64044c141d4632c0.png){media=image}
 
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_plus_face_sd15.json)
 

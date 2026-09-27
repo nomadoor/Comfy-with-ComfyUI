@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "マスクをつくるために画像を分ける技術（主にSAM系）"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/4a56caa5986a2c2403dcad74d1bf1874.png"
+  image: "/media/ai-capabilities/segmentation/legacy_gyazo_4a56caa5986a2c2403dcad74d1bf1874.png"
 ---
 
 ## セグメンテーションとは？
@@ -37,7 +37,7 @@ hero:
 
 ## SAM
 
-> ![](https://gyazo.com/109335e3e675b7bd8beb9f77bc489829){gyazo=loop}
+> ![](/media/ai-capabilities/segmentation/legacy_gyazo_109335e3e675b7bd8beb9f77bc489829.mp4){media=loop}
 > [Introducing Meta Segment Anything Model 3 and Segment Anything Playground](https://ai.meta.com/blog/segment-anything-model-3/)
 
 ComfyUIで「セグメンテーション」といったとき、実際に使われているのはほぼ**SAM（Segment Anything）系のモデル**です。
@@ -70,7 +70,7 @@ ComfyUIで「セグメンテーション」といったとき、実際に使わ�
 
 他にも[Segment Anything Playground](https://aidemos.meta.com/segment-anything/gallery)には、顔をぼかしたり、背景を白黒にしたりといった例がいくつもあります。(ちなみにこれらのほとんどをComfyUIで再現することが出来ます。)
 
-![](https://gyazo.com/8a13dabaec7771795dc4028d6e40abff){gyazo=image}
+![](/media/ai-capabilities/segmentation/legacy_gyazo_8a13dabaec7771795dc4028d6e40abff.png){media=image}
 
 [](/workflows/ai-capabilities/segmentation/sam3.json)
 
@@ -84,7 +84,7 @@ SAM 3はテキストでの指定もできますが、物体検出という意味
 
 教科書的には、セグメンテーションには次のような分類があります。
 
-> ![](https://gyazo.com/010576fd5cce11b2da01333c92d39ae7){gyazo=image}
+> ![](/media/ai-capabilities/segmentation/legacy_gyazo_010576fd5cce11b2da01333c92d39ae7.png){media=image}
 > [インスタンスセグメンテーション (Instance Segmentation, 実例分割)](https://cvml-expertguide.net/terms/dl/instance-segmentation/)
 
 - **セマンティックセグメンテーション**

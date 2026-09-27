@@ -44,7 +44,7 @@ Pythonは、起動中のComfyUIサーバに対して命令を送ります。
 
 ひとまず、最もシンプルなStable Diffusion 1.5のtext2imageを使います。
 
-![](https://gyazo.com/897f66c308b3b98440f641ee3d33d50e){gyazo=image}
+![](/media/basic-workflows/sd15-text2image/legacy_gyazo_897f66c308b3b98440f641ee3d33d50e.png){media=image}
 
 [](/workflows/basic-workflows/sd15-text2image/sd1_5_text2image_vae_ft_mse_840000.json)
 

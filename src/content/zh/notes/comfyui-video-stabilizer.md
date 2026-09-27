@@ -42,7 +42,7 @@ hero:
 
 Flow 稍微重一些，但效果好很多，所以基本上推荐使用 Flow。
 
-![](https://gyazo.com/779732831dc0e69b5eae8519d4599d24){gyazo=image}
+![](/media/notes/comfyui-video-stabilizer/legacy_gyazo_779732831dc0e69b5eae8519d4599d24.png){media=image}
 
 [](/workflows/notes/comfyui-video-stabilizer/video_stabilizer_flow.json)
 
@@ -64,7 +64,7 @@ Flow 稍微重一些，但效果好很多，所以基本上推荐使用 Flow。
 
 ### 🎞️ framing_mode
 
-![原视频](https://gyazo.com/32044ef9e564ad2228cdae872e9a35ed){gyazo=loop} ![crop](https://gyazo.com/f901016b9fd5d2ecc40db8430ae8ffef){gyazo=loop} ![crop_and_pad](https://gyazo.com/b7f5e7145c066ab0b94b20a401b79690){gyazo=loop} ![expand](https://gyazo.com/971541da6bcc4659360cc72b2c008d8c){gyazo=loop}
+![原视频](/media/notes/comfyui-video-stabilizer/legacy_gyazo_32044ef9e564ad2228cdae872e9a35ed.mp4){media=loop} ![crop](/media/notes/comfyui-video-stabilizer/legacy_gyazo_f901016b9fd5d2ecc40db8430ae8ffef.mp4){media=loop} ![crop_and_pad](/media/notes/comfyui-video-stabilizer/legacy_gyazo_b7f5e7145c066ab0b94b20a401b79690.mp4){media=loop} ![expand](/media/notes/comfyui-video-stabilizer/legacy_gyazo_971541da6bcc4659360cc72b2c008d8c.mp4){media=loop}
 
 - `crop`
   - 稍微放大 / 裁剪视频，让空白边缘不可见。
@@ -91,7 +91,7 @@ Flow 稍微重一些，但效果好很多，所以基本上推荐使用 Flow。
 
 使用 `Video Stabilizer Motion Apply`，可以把之前用 Video Stabilizer 消除的手抖反向应用回来，从而还原原来的运动。
 
-![](https://gyazo.com/cf0408a1b507b5ecd0699c2e16ff539d){gyazo=image}
+![](/media/notes/comfyui-video-stabilizer/legacy_gyazo_cf0408a1b507b5ecd0699c2e16ff539d.png){media=image}
 
 [](/workflows/notes/comfyui-video-stabilizer/video_stabilizer_to_motion_apply.json)
 
@@ -105,7 +105,7 @@ Flow 稍微重一些，但效果好很多，所以基本上推荐使用 Flow。
 
 这时有意识地添加一点手抖，可以营造临场感和真实感。
 
-![](https://gyazo.com/695ab8d32156327393d57ac9432a1e62){gyazo=image}
+![](/media/notes/comfyui-video-stabilizer/legacy_gyazo_695ab8d32156327393d57ac9432a1e62.png){media=image}
 
 [](/workflows/notes/comfyui-video-stabilizer/video_stabilizer_shake.json)
 
@@ -123,7 +123,7 @@ Flow 稍微重一些，但效果好很多，所以基本上推荐使用 Flow。
 
 ### style
 
-![tripod](https://gyazo.com/e11213660ec6a4473adf422011c54eb1){gyazo=loop}  ![handheld](https://gyazo.com/1febc33e4083bc2f4ff0cf30ea6c8f28){gyazo=loop} ![walking](https://gyazo.com/f08efa57fb62658e2745509a5881462f){gyazo=loop} ![action](https://gyazo.com/112121eaed2dacbba58626dcd1ba110d){gyazo=loop} ![vibration](https://gyazo.com/437717f27d6f65bd5b6d15321b7b547d){gyazo=loop}
+![tripod](/media/notes/comfyui-video-stabilizer/legacy_gyazo_e11213660ec6a4473adf422011c54eb1.mp4){media=loop}  ![handheld](/media/notes/comfyui-video-stabilizer/legacy_gyazo_1febc33e4083bc2f4ff0cf30ea6c8f28.mp4){media=loop} ![walking](/media/notes/comfyui-video-stabilizer/legacy_gyazo_f08efa57fb62658e2745509a5881462f.mp4){media=loop} ![action](/media/notes/comfyui-video-stabilizer/legacy_gyazo_112121eaed2dacbba58626dcd1ba110d.mp4){media=loop} ![vibration](/media/notes/comfyui-video-stabilizer/legacy_gyazo_437717f27d6f65bd5b6d15321b7b547d.mp4){media=loop}
 
 - `tripod`: 添加接近固定相机的、非常轻微的抖动。
 - `handheld`: 添加自然的手持相机风格抖动。
@@ -140,4 +140,4 @@ Flow 稍微重一些，但效果好很多，所以基本上推荐使用 Flow。
 
 稍微加一点后，会更接近真实相机拍摄的氛围。
 
-![原视频](https://gyazo.com/430ba048b450cebcc13829b3ac6151c8){gyazo=loop}  ![Blur: 0](https://gyazo.com/3cc5171d2839d110d07748395ddbf32f){gyazo=loop} ![Blur: 1.00](https://gyazo.com/a5a106e029af738b5642e1c0aff3c57c){gyazo=loop}
+![原视频](/media/notes/comfyui-video-stabilizer/legacy_gyazo_430ba048b450cebcc13829b3ac6151c8.mp4){media=loop}  ![Blur: 0](/media/notes/comfyui-video-stabilizer/legacy_gyazo_3cc5171d2839d110d07748395ddbf32f.mp4){media=loop} ![Blur: 1.00](/media/notes/comfyui-video-stabilizer/legacy_gyazo_a5a106e029af738b5642e1c0aff3c57c.mp4){media=loop}

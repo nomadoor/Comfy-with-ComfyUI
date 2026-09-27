@@ -10,7 +10,7 @@ updated: 2026-05-27
 summary: "关于 ComfyUI Manager"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/76b47ed5d45cf694b436022589464255.png"
+  image: "/media/begin-with/comfyui-manager/legacy_gyazo_76b47ed5d45cf694b436022589464255.png"
 ---
 
 ## 什么是 ComfyUI Manager
@@ -23,7 +23,7 @@ ComfyUI Manager 是 ltdrdata 开发的工具，用于统一管理自定义节点
 
 ## 新旧 Manager
 
-![](https://gyazo.com/a0b09641bae0c8b02187e6c6b7bb9c5a){gyazo=image}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_a0b09641bae0c8b02187e6c6b7bb9c5a.png){media=image}
 
 稍微复杂的是，现在的 ComfyUI Manager 有 **新版 Manager** 和 **旧版 Manager**(legacy UI) 两种。
 
@@ -98,7 +98,7 @@ ComfyUI Manager 是 ltdrdata 开发的工具，用于统一管理自定义节点
 
 ### 打开 ComfyUI Manager
 
-![](https://gyazo.com/ff8b7cdae4aba2a086a9cfebe8019023){gyazo=image}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_ff8b7cdae4aba2a086a9cfebe8019023.png){media=image}
 
 如果安装和启用成功，右上角会显示 `Extensions` 按钮。
 
@@ -131,7 +131,7 @@ python main.py --enable-manager --enable-manager-legacy-ui
 
 ### 现行 UI
 
-![](https://gyazo.com/85ac7d6fb86580c06f252938e153a152){gyazo=loop}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_85ac7d6fb86580c06f252938e153a152.mp4){media=loop}
 
 1. 在搜索栏输入节点名称。
 2. 点击 `Install`。
@@ -139,7 +139,7 @@ python main.py --enable-manager --enable-manager-legacy-ui
 
 ### 旧版 UI
 
-![](https://gyazo.com/c0d8901537b65da709f9ba9d6e1a0055){gyazo=loop}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_c0d8901537b65da709f9ba9d6e1a0055.mp4){media=loop}
 
 1. 点击 `Custom Nodes Manager`。
 2. 在搜索栏输入节点名称。
@@ -152,7 +152,7 @@ python main.py --enable-manager --enable-manager-legacy-ui
 
 ### 现行 UI
 
-![](https://gyazo.com/3f8316ae71333f2214173e9987346153){gyazo=image}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_3f8316ae71333f2214173e9987346153.png){media=image}
 
 移动到 `Updates Available` 标签页。
 
@@ -163,7 +163,7 @@ python main.py --enable-manager --enable-manager-legacy-ui
 
 ### 旧版 UI
 
-![](https://gyazo.com/3eeb7b5df0d8567f0fdc37ec8c73fff1){gyazo=image}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_3eeb7b5df0d8567f0fdc37ec8c73fff1.png){media=image}
 
 1. 点击 `Custom Nodes Manager`。
 2. 将 Filter 设置为 `Installed`，只显示已经安装的节点。

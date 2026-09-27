@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "Decompose input image into multiple RGBA layers"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/bfc9ecbc781e79e29f0a9b1df0597bbb.png"
+  image: "/media/basic-workflows/qwen-image-layered/legacy_gyazo_bfc9ecbc781e79e29f0a9b1df0597bbb.png"
 tags: []
 ---
 
@@ -60,7 +60,7 @@ Previous methods required post-processing or special processing only during deco
 
 ## workflow
 
-![](https://gyazo.com/f395431169623129f7888c42b0fcadfb){gyazo=image}
+![](/media/basic-workflows/qwen-image-layered/legacy_gyazo_f395431169623129f7888c42b0fcadfb.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image-layered/qwen_image_layered.json)
 

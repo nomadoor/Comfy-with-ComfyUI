@@ -37,7 +37,7 @@ Multi-view generation was born from this perspective.
 
 ### Zero-1-to-3
 
-> ![](https://gyazo.com/8f4d195ac2daffffc7356a036d4a3c98){gyazo=image}
+> ![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_8f4d195ac2daffffc7356a036d4a3c98.png){media=image}
 > [Zero-1-to-3: Zero-shot One Image to 3D Object](https://zero123.cs.columbia.edu/)
 
 One of the earliest multi-view generations based on diffusion models, it generates an image from a new viewpoint by changing the camera composition of the input image.
@@ -49,7 +49,7 @@ Now, similar things can be easily done with instruction-based image editing.
 
 Zero-1-to-3 was used as "Make one image of another angle of the input image → Rotate the angle and repeat", but **[Zero123++](https://github.com/SUDO-AI-3D/zero123plus)** generates multiple viewpoints simultaneously.
 
-![](https://gyazo.com/b6b4e05ace668acfd75449b8252b139f){gyazo=image} ![](https://gyazo.com/59359f3b3b6f250358211d2044d207fe){gyazo=image}
+![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_b6b4e05ace668acfd75449b8252b139f.png){media=image} ![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_59359f3b3b6f250358211d2044d207fe.jpg){media=image}
 
 Originally, it was known that when diffusion models generate multiple images in batch (cf. [Batch & Video](/en/data-utilities/batch-video)), the generated images have some consistency with each other.
 
@@ -75,7 +75,7 @@ Why not treat it as such?
 
 It is a flow of image2model based on Stable Video Diffusion.
 
-![](https://gyazo.com/49e94de4d1476e100761e2e6be7a2f6e){gyazo=image}
+![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_49e94de4d1476e100761e2e6be7a2f6e.mp4){media=loop}
 
 [](/workflows/ai-capabilities/3d-model-generation/sv3d.json)
 
@@ -147,6 +147,6 @@ by combining depth maps and mesh restoration here, they are trying to build a 3D
 
 When it comes to [HunyuanWorld-Mirror](https://github.com/Tencent-Hunyuan/HunyuanWorld-Mirror), it gets closer to creating a world that you can essentially walk around in.
 
-> ![](https://gyazo.com/47ddf0aa2f5bc667b43be75d2ed1223c){gyazo=player}
+> ![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_47ddf0aa2f5bc667b43be75d2ed1223c.mp4){media=player}
 
 * It consists of components such as estimating camera information, depth, and 3D representation (3D Gaussian, etc.) collectively with an image (or video) as input.

@@ -36,61 +36,16 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "CLIPTextEncode",
         "cnr_id": "comfy-core",
-        "ver": "0.3.76",
-        "Node name for S&R": "CLIPTextEncode"
+        "ver": "0.3.76"
       },
       "widgets_values": [
         "beautifull woman,portrait,wearing yellow sweater,looking at viewer, simple white background"
-      ]
-    },
-    {
-      "id": 14,
-      "type": "CheckpointLoaderSimple",
-      "pos": [
-        -321.07180000000005,
-        230.32569999999998
       ],
-      "size": [
-        315,
-        98
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "slot_index": 0,
-          "links": [
-            10
-          ]
-        },
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "slot_index": 1,
-          "links": []
-        },
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "slot_index": 2,
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.76",
-        "Node name for S&R": "CheckpointLoaderSimple"
-      },
-      "widgets_values": [
-        "📷-v1.x\\epicphotogasm_z.safetensors"
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
+      "widgets_values_named": {
+        "text": "beautifull woman,portrait,wearing yellow sweater,looking at viewer, simple white background"
+      }
     },
     {
       "id": 7,
@@ -124,13 +79,16 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "CLIPTextEncode",
         "cnr_id": "comfy-core",
-        "ver": "0.3.76",
-        "Node name for S&R": "CLIPTextEncode"
+        "ver": "0.3.76"
       },
       "widgets_values": [
         "text, watermark, worstquality, NSFW"
-      ]
+      ],
+      "widgets_values_named": {
+        "text": "text, watermark, worstquality, NSFW"
+      }
     },
     {
       "id": 5,
@@ -144,7 +102,7 @@
         106
       ],
       "flags": {},
-      "order": 1,
+      "order": 0,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -158,67 +116,20 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "EmptyLatentImage",
         "cnr_id": "comfy-core",
-        "ver": "0.3.76",
-        "Node name for S&R": "EmptyLatentImage"
+        "ver": "0.3.76"
       },
       "widgets_values": [
         512,
         512,
         1
-      ]
-    },
-    {
-      "id": 15,
-      "type": "CheckpointLoaderSimple",
-      "pos": [
-        -321.07180000000005,
-        400.3257000000004
       ],
-      "size": [
-        315,
-        98
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "slot_index": 0,
-          "links": [
-            12
-          ]
-        },
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "slot_index": 1,
-          "links": [
-            20
-          ]
-        },
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "slot_index": 2,
-          "links": [
-            36
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.76",
-        "Node name for S&R": "CheckpointLoaderSimple"
-      },
-      "widgets_values": [
-        "😎-v1.x\\meinamix_meinaV11.safetensors"
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
+      "widgets_values_named": {
+        "width": 512,
+        "height": 512,
+        "batch_size": 1
+      }
     },
     {
       "id": 18,
@@ -272,7 +183,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 3,
+      "order": 1,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -285,13 +196,16 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.76",
-        "Node name for S&R": "VAELoader"
+        "ver": "0.3.76"
       },
       "widgets_values": [
         "vae-ft-mse-840000-ema-pruned.safetensors"
-      ]
+      ],
+      "widgets_values_named": {
+        "vae_name": "vae-ft-mse-840000-ema-pruned.safetensors"
+      }
     },
     {
       "id": 8,
@@ -330,11 +244,10 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "VAEDecode",
         "cnr_id": "comfy-core",
-        "ver": "0.3.76",
-        "Node name for S&R": "VAEDecode"
-      },
-      "widgets_values": []
+        "ver": "0.3.76"
+      }
     },
     {
       "id": 32,
@@ -357,14 +270,23 @@
           "link": 37
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.76"
       },
       "widgets_values": [
         "ComfyUI"
-      ]
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "ComfyUI"
+      }
     },
     {
       "id": 3,
@@ -413,9 +335,9 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "KSampler",
         "cnr_id": "comfy-core",
-        "ver": "0.3.76",
-        "Node name for S&R": "KSampler"
+        "ver": "0.3.76"
       },
       "widgets_values": [
         12345,
@@ -425,7 +347,16 @@
         "euler",
         "normal",
         1
-      ]
+      ],
+      "widgets_values_named": {
+        "seed": 12345,
+        "control_after_generate": "fixed",
+        "steps": 20,
+        "cfg": 8,
+        "sampler_name": "euler",
+        "scheduler": "normal",
+        "denoise": 1
+      }
     },
     {
       "id": 10,
@@ -465,13 +396,16 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "ModelMergeSimple",
         "cnr_id": "comfy-core",
-        "ver": "0.3.76",
-        "Node name for S&R": "ModelMergeSimple"
+        "ver": "0.3.76"
       },
       "widgets_values": [
         0.5
       ],
+      "widgets_values_named": {
+        "ratio": 0.5
+      },
       "color": "#232",
       "bgcolor": "#353"
     },
@@ -508,15 +442,124 @@
       ],
       "outputs": [],
       "properties": {
+        "Node name for S&R": "CheckpointSave",
         "cnr_id": "comfy-core",
-        "ver": "0.3.76",
-        "Node name for S&R": "CheckpointSave"
+        "ver": "0.3.76"
       },
       "widgets_values": [
         "checkpoints/ComfyUI"
       ],
+      "widgets_values_named": {
+        "filename_prefix": "checkpoints/ComfyUI"
+      },
       "color": "#432",
       "bgcolor": "#653"
+    },
+    {
+      "id": 14,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -321.07180000000005,
+        230.32569999999998
+      ],
+      "size": [
+        315,
+        98
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            10
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": []
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 2,
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.76"
+      },
+      "widgets_values": [
+        "SD1.5/epicrealism_naturalSinRC1VAE.safetensors"
+      ],
+      "widgets_values_named": {
+        "ckpt_name": "SD1.5/epicrealism_naturalSinRC1VAE.safetensors"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 15,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -321.07180000000005,
+        400.3257000000004
+      ],
+      "size": [
+        315,
+        98
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            12
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            20
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 2,
+          "links": [
+            36
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.76"
+      },
+      "widgets_values": [
+        "SD1.5/meinamix_v12Final.safetensors"
+      ],
+      "widgets_values_named": {
+        "ckpt_name": "SD1.5/meinamix_v12Final.safetensors"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
     }
   ],
   "links": [
@@ -650,13 +693,13 @@
       4
     ],
     "ds": {
-      "scale": 0.8264462809917362,
+      "scale": 0.751314800901578,
       "offset": [
-        421.07180000000005,
-        33.73853581408855
+        522.258090492186,
+        81.8263080013536
       ]
     },
-    "frontendVersion": "1.35.0",
+    "frontendVersion": "1.51.9",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

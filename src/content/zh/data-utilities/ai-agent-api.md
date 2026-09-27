@@ -15,7 +15,7 @@ hero:
 
 ## ComfyUI 分为“画面”和“执行引擎”
 
-![](https://gyazo.com/a04e2d09b534afb1e32900a738f0c3a7){gyazo=image}
+![](/media/begin-with/multiple-comfyui-instances/legacy_gyazo_a04e2d09b534afb1e32900a738f0c3a7.png){media=image}
 
 首先需要知道的是，ComfyUI 分为 **画面** 和 **执行引擎**。
 
@@ -127,7 +127,7 @@ API 格式的 JSON，则是用来告诉 ComfyUI 服务器“执行这个”的�
 
 之后 Codex 会读取 workflow，替换必要的 prompt 和输入图像，并提交给 ComfyUI API。
 
-![VS Code 画面](https://gyazo.com/ae044eb02df2f95bd15f00bcd0c44620){gyazo=image}
+![VS Code 画面](/media/data-utilities/ai-agent-api/legacy_gyazo_ae044eb02df2f95bd15f00bcd0c44620.png){media=image}
 
 ---
 
@@ -138,7 +138,7 @@ API 格式的 JSON，则是用来告诉 ComfyUI 服务器“执行这个”的�
 让 AI 使用时，基本也是一样。  
 我觉得 workflow **小而简单** 时会更容易处理。
 
-![](https://i.gyazo.com/2a9c66fa28c01a8bd12b24fdde2a07a4.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_2a9c66fa28c01a8bd12b24fdde2a07a4.png){media=image}
 
 比如，把下面这些处理放进一个 workflow 里。
 

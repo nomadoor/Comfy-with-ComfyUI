@@ -78,7 +78,7 @@ Wan2.2-A14B は、サンプリング前半を `high_noise` モデル、後半を
 
 KSampler Advanced を使って前半を `high_noise`、後半を `low_noise` モデルで処理します。
 
-![](https://gyazo.com/3c0c65842b078922808c740ff797917d){gyazo=image}
+![](/media/basic-workflows/wan-2-2/legacy_gyazo_3c0c65842b078922808c740ff797917d.png){media=image}
 
 [](/workflows/basic-workflows/wan-2-2/wan2_2_text2video_14b.json)
 
@@ -93,7 +93,7 @@ KSampler Advanced を使って前半を `high_noise`、後半を `low_noise` モ
 
 ### image2video（14B）
 
-![](https://gyazo.com/83c1b3885e887ed2a170ce853b61691f){gyazo=image}
+![](/media/basic-workflows/wan-2-2/legacy_gyazo_83c1b3885e887ed2a170ce853b61691f.png){media=image}
 
 [](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_14b.json)
 
@@ -108,7 +108,7 @@ Wan2.1 では FLF2V は専用モデルがありましたが、Wan2.2 の image2v
 
 ComfyUI では `WanFirstLastFrameToVideo` ノードに Start / End の 2 枚の画像を入力するだけで、2 枚の間を補間した動画を生成できます。
 
-![](https://gyazo.com/2e2630bf85cd858b53dba10a0cdddba1){gyazo=image}
+![](/media/basic-workflows/wan-2-2/legacy_gyazo_2e2630bf85cd858b53dba10a0cdddba1.png){media=image}
 
 [](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_flf2v_14b.json)
 
@@ -173,7 +173,7 @@ Wan2.2-TI2V-5B は、text2video / image2video の両方を 1 つのモデルで�
 
 ### image2video（5B）
 
-![](https://gyazo.com/79c9d851847801e276073863d349b43a){gyazo=image}
+![](/media/basic-workflows/wan-2-2/legacy_gyazo_79c9d851847801e276073863d349b43a.png){media=image}
 
 [](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_5b.json)
 

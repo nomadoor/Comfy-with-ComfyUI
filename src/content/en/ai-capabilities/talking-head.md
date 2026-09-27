@@ -27,7 +27,7 @@ As the name talking head suggests, it started from moving the face, but it is ev
 
 ### [Thin-Plate Spline Motion Model for Image Animation](https://github.com/yoyo-nb/Thin-Plate-Spline-Motion-Model)
 
-![](https://gyazo.com/8e6de400ea9bc95a25e689483bd6b238){gyazo=image} ![](https://gyazo.com/b38439d333755e724f174fa774f74f71){gyazo=loop} ![](https://gyazo.com/c86570789722d04da913aed1f9ffd268){gyazo=loop}
+![](/media/ai-capabilities/talking-head/legacy_gyazo_8e6de400ea9bc95a25e689483bd6b238.png){media=image} ![](/media/ai-capabilities/talking-head/legacy_gyazo_b38439d333755e724f174fa774f74f71.mp4){media=loop} ![](/media/ai-capabilities/talking-head/legacy_gyazo_c86570789722d04da913aed1f9ffd268.mp4){media=loop}
 
 When you input a single image and a video of a moving person, the image side deforms to mimic that movement.
 
@@ -35,7 +35,7 @@ What it is doing is closer to an image of twisting "squishy" in 2D rather than a
 
 ### [LivePortrait](/en/basic-workflows/liveportrait/)
 
-![](https://gyazo.com/c893e38c12859f8f20ff1e0fca545788){gyazo=image}
+![](/media/ai-capabilities/talking-head/legacy_gyazo_c893e38c12859f8f20ff1e0fca545788.mp4){media=loop}
 
 [](/workflows/basic-workflows/liveportrait/liveportrait_i2v_ref.json)
 
@@ -49,7 +49,7 @@ Since it is not a diffusion model, it is relatively light and suitable for real-
 
 In the next generation, talking heads in the direction of "redrawing the picture itself" using diffusion models appeared. This includes lineages such as [X-Portrait](https://byteaigc.github.io/x-portrait/) and [HelloMeme](https://songkey.github.io/hellomeme/).
 
-![](https://gyazo.com/c70468086a939dce538a876073c9c523){gyazo=loop}
+![](/media/ai-capabilities/talking-head/legacy_gyazo_c70468086a939dce538a876073c9c523.mp4){media=loop}
 
 [](/workflows/ai-capabilities/talking-head/hellomeme_video.json)
 
@@ -61,7 +61,7 @@ These extract signals corresponding to "head orientation" and "facial expression
 
 In a newer generation, talking head / avatar models based on video generation models themselves have appeared. [OmniAvatar](https://omni-avatar.github.io/) and [Wan-Animate](https://humanaigc.github.io/wan-animate/) fall into this line.
 
-![](https://gyazo.com/9f0e0e20d750b2e207b01adc56858202){gyazo=image} ![](https://gyazo.com/d7f66b4153473136c37e48c7066709a1){gyazo=loop} ![](https://gyazo.com/86ed4c6aa64af79325ce18359a4021bc){gyazo=loop}
+![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_9f0e0e20d750b2e207b01adc56858202.png){media=image} ![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_d7f66b4153473136c37e48c7066709a1.mp4){media=loop} ![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_86ed4c6aa64af79325ce18359a4021bc.mp4){media=loop}
 > Wan-Animate
 
 Wan-Animate is a type of model that takes a character image and a "reference video with movement" as input and moves the character to trace that movement.

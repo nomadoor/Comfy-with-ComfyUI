@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "Technology to extract depth and three-dimensionality from images"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/f6033924229b0ea961d8f22eb38bd6b2.png"
+  image: "/media/ai-capabilities/depth-normal-map/legacy_gyazo_f6033924229b0ea961d8f22eb38bd6b2.png"
 ---
 
 ## What are Depth Maps and Normal Maps?
@@ -36,7 +36,7 @@ hero:
 
 Before diffusion models became generalized, MiDaS and ZoeDepth were the standard models for monocular depth estimation.
 
-![](https://gyazo.com/8471cde6727e271aa05f0bad44797144){gyazo=image}
+![](/media/ai-capabilities/depth-normal-map/legacy_gyazo_8471cde6727e271aa05f0bad44797144.png){media=image}
 
 [](/workflows/ai-capabilities/depth-normal-map/midas_depth_normal_map.json)
 
@@ -53,7 +53,7 @@ There is not much point in using these in new workflows, but you may see them in
 
 The current mainstream is foundation models for depth estimation like **Depth Anything / Depth Anything V2 / V3**.
 
-![](https://gyazo.com/69b8c5331c693c699d389f1c95935fff){gyazo=image}
+![](/media/ai-capabilities/depth-normal-map/legacy_gyazo_69b8c5331c693c699d389f1c95935fff.png){media=image}
 
 [](/workflows/ai-capabilities/depth-normal-map/depth_anything_v2.json)
 

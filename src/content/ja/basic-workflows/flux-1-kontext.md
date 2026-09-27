@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "Flux.1 Kontextで指示ベース画像編集を行う。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/79c075e47d999e282c8a2cd3c05f10ef.png"
+  image: "/media/basic-workflows/flux-1-kontext/legacy_gyazo_79c075e47d999e282c8a2cd3c05f10ef.png"
 tags: ["instruction-based-image-editing","collage-refine"]
 ---
 
@@ -78,7 +78,7 @@ Kontext でも、基本的な構成は通常の Flux.1 と同じです。
 
 Kontext の workflow 自体は、通常の Flux.1 に`ReferenceLatent` を追加しただけのシンプルな構成です。
 
-![](https://gyazo.com/b872b5de146a585c0c9745168d5f1dae){gyazo=image}
+![](/media/basic-workflows/flux-1-kontext/legacy_gyazo_b872b5de146a585c0c9745168d5f1dae.png){media=image}
 
 [](/workflows/basic-workflows/flux-1-kontext/flux_1_kontext.json)
 
@@ -108,7 +108,7 @@ Kontext の workflow 自体は、通常の Flux.1 に`ReferenceLatent` を追加
 
 ## できること
 
-{% mediaRow img="https://gyazo.com/79c075e47d999e282c8a2cd3c05f10ef {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-1-kontext/legacy_gyazo_79c075e47d999e282c8a2cd3c05f10ef.png {media=image}", width=50, align="left" %}
 ### 画像編集
 
 ```text
@@ -117,7 +117,7 @@ Change the hair to a messy blonde bob.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/677d45b54c4f1c9c278ae230e7b000b9 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-1-kontext/legacy_gyazo_677d45b54c4f1c9c278ae230e7b000b9.png {media=image}", width=50, align="left" %}
 ### 絵柄変換
 
 ```text
@@ -126,7 +126,7 @@ This character is made out of Lego blocks.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/7a409e39ee00b1766ee164df76b0ac7c {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-1-kontext/legacy_gyazo_7a409e39ee00b1766ee164df76b0ac7c.png {media=image}", width=50, align="left" %}
 ### オブジェクト除去
 
 ```text
@@ -135,7 +135,7 @@ Remove the woman
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/49bb5579217513e0b774d0952579bd4f {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-1-kontext/legacy_gyazo_49bb5579217513e0b774d0952579bd4f.png {media=image}", width=50, align="left" %}
 ### テキスト置き換え
 
 ```text
@@ -144,7 +144,7 @@ Replace [OPEN] with [FLUX]
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/6abbbb3aacaddf5df09d459f29466e93 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-1-kontext/legacy_gyazo_6abbbb3aacaddf5df09d459f29466e93.png {media=image}", width=50, align="left" %}
 ### サブジェクト転送
 
 ```text
@@ -153,7 +153,7 @@ A photo of a girl who received a stuffed elephant as a Christmas present.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/84db6461613ef8253aa130778cdb4305 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-1-kontext/legacy_gyazo_84db6461613ef8253aa130778cdb4305.png {media=image}", width=50, align="left" %}
 ### ガイドによる位置指定
 
 ```text
@@ -163,7 +163,7 @@ Add a sailing ship to the box position.
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/dae38a4ef8ee07c4a5922992c585578a {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-1-kontext/legacy_gyazo_dae38a4ef8ee07c4a5922992c585578a.png {media=image}", width=50, align="left" %}
 ### 雑コラのリファイン
 
 手動で作ったコラージュ画像を **溶け込ませる** という編集します。

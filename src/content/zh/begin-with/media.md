@@ -19,7 +19,7 @@ hero:
 
 将图像读取到 ComfyUI 中。
 
-![](https://gyazo.com/9dd4bfe10197dddec18b0e7a1dc94f53){gyazo=loop}
+![](/media/begin-with/media/legacy_gyazo_9dd4bfe10197dddec18b0e7a1dc94f53.mp4){media=loop}
 
 除了搜索并添加节点外，还有几种方便的方法。
 - a. 点击 `choose file to upload` 选择文件
@@ -35,7 +35,7 @@ hero:
 当场确认生成的图像。
 由于不会被保存，因此用于暂时确认处理的中途经过或生成结果。
 
-![](https://gyazo.com/9f5a3055bbb8ef271583545155f70371){gyazo=loop}
+![](/media/begin-with/media/legacy_gyazo_9f5a3055bbb8ef271583545155f70371.mp4){media=loop}
 
 - 其他图像类节点也通用，可以通过右键菜单中的 `Save Image` 或 `Copy Image` 来保存或复制图像。
 - 不需要特地去 output 文件夹找图片，很方便。
@@ -74,13 +74,13 @@ main.py --output_dir --output-directory [path]
 `Save Image` 节点保存的最新图像会被读取到这里。
 有时被用作伪循环处理。
 
-![](https://gyazo.com/1b344fc1baa844c784d53a9790e6aafb){gyazo=loop}
+![](/media/begin-with/media/legacy_gyazo_1b344fc1baa844c784d53a9790e6aafb.mp4){media=loop}
 
 ### Image Comparer (rgthree) 节点
 
 可以用滑块比较两张图像。
 
-![](https://gyazo.com/a3ac0fe532474c1447a2f9cd33b31649){gyazo=image}
+![](/media/begin-with/media/legacy_gyazo_a3ac0fe532474c1447a2f9cd33b31649.mp4){media=loop}
 
 [](/workflows/begin-with/media/image_comparer_rgthree.json)
 
@@ -94,7 +94,7 @@ main.py --output_dir --output-directory [path]
 
 读取视频。
 
-![](https://gyazo.com/96531a04d73333953691800babd073b9){gyazo=image}
+![](/media/begin-with/media/legacy_gyazo_96531a04d73333953691800babd073b9.png){media=image}
 
 在 ComfyUI 中，许多节点将视频视为 **连续的静态图像** 来处理。
 但是，这个节点的输出是 `VIDEO` 类型，直接是无法使用的。需要通过 `Get Video Components` 节点，将视频分解为图像、音频和 fps。
@@ -111,7 +111,7 @@ main.py --output_dir --output-directory [path]
 
 保存生成的视频。
 
-![](https://gyazo.com/695faf8fda159e16dc56ef533e28eb8f){gyazo=image}
+![](/media/begin-with/media/legacy_gyazo_695faf8fda159e16dc56ef533e28eb8f.png){media=image}
 
 这次反过来，需要将连续图像转回 `VIDEO`，因此使用 Create Video 节点将图像和音频合并。
 
@@ -122,7 +122,7 @@ main.py --output_dir --output-directory [path]
 处理视频用的便捷节点群。
 比核心节点存在得更久，功能丰富且易用，因此经常被使用。
 
-![](https://gyazo.com/ebfd8a274dbdecb613f3fa232eb3dbb0){gyazo=image}
+![](/media/begin-with/media/legacy_gyazo_ebfd8a274dbdecb613f3fa232eb3dbb0.png){media=image}
 
 ### Load Video (Upload/Path) 节点
 
@@ -182,7 +182,7 @@ main.py --output_dir --output-directory [path]
 
 ## 摄像头
 
-![](https://gyazo.com/2a7ab2f8dc9179e6c02d15e74dedcea3){gyazo=image}
+![](/media/begin-with/media/legacy_gyazo_2a7ab2f8dc9179e6c02d15e74dedcea3.png){media=image}
 
 可以将摄像头的输入作为图像导入。
 

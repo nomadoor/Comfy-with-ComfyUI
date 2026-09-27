@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "SDXLベースのアニメ系モデルのざっくり整理"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/6ee98c633b487214c13c32a9af7d64cb.png"
+  image: "/media/basic-workflows/sdxl-anime/legacy_gyazo_6ee98c633b487214c13c32a9af7d64cb.png"
 tags: []
 ---
 
@@ -50,7 +50,7 @@ Animagine XL は、アニメ系ファインチューニングモデルとして�
 
 ### workflow
 
-![](https://gyazo.com/770f77d075432d57c742780aea2c9ce1){gyazo=image}
+![](/media/basic-workflows/sdxl-anime/legacy_gyazo_770f77d075432d57c742780aea2c9ce1.png){media=image}
 
 [](/workflows/basic-workflows/sdxl-anime/animagine_xl_4_0_opt.json)
 
@@ -68,7 +68,7 @@ Illustrious XL は、[OnomaAI](https://www.illustrious-xl.ai/)が開発してい
 
 ### workflow
 
-![](https://gyazo.com/6cdc06d70882c9e1aecb272e980f1c2f){gyazo=image}
+![](/media/basic-workflows/sdxl-anime/legacy_gyazo_6cdc06d70882c9e1aecb272e980f1c2f.png){media=image}
 
 [](/workflows/basic-workflows/sdxl-anime/illustrious_xl_v2_0.json)
 
@@ -85,7 +85,7 @@ Pony Diffusion V6 XL は、名前の通りマイリトルポニーを生成す�
 
 ### workflow
 
-![](https://gyazo.com/d1ffe73486004ff4986b887fe671e04e){gyazo=image}
+![](/media/basic-workflows/sdxl-anime/legacy_gyazo_d1ffe73486004ff4986b887fe671e04e.png){media=image}
 
 [](/workflows/basic-workflows/sdxl-anime/ponydiffusionv6xl_v6startwiththisone.json)
 
@@ -101,7 +101,7 @@ Anything XL（万象熔炉）は、いくつかの有名なアニメ系 SDXL モ
 
 ### workflow
 
-![](https://gyazo.com/68b9972f6b29c83589bf50b92c3b5f76){gyazo=image}
+![](/media/basic-workflows/sdxl-anime/legacy_gyazo_68b9972f6b29c83589bf50b92c3b5f76.png){media=image}
 
 [](/workflows/basic-workflows/sdxl-anime/anythingxl_xl.json)
 
@@ -118,6 +118,6 @@ WAI-illustrious は、Illustrious XL をベースにした派生モデルの一�
 
 ### workflow
 
-![](https://gyazo.com/da7b629edb4f3ca7e8c3eb24b10dc6ec){gyazo=image}
+![](/media/basic-workflows/sdxl-anime/legacy_gyazo_da7b629edb4f3ca7e8c3eb24b10dc6ec.png){media=image}
 
 [](/workflows/basic-workflows/sdxl-anime/waiillustrioussdxl_v150.json)

@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "关于图像的亮度调整、模糊、特效"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/e1ecb574e0c11da63b0c6f8cee7a9f87.png"
+  image: "/media/data-utilities/color-adjustments/legacy_gyazo_e1ecb574e0c11da63b0c6f8cee7a9f87.png"
 ---
 
 ## 色调校正与特效
@@ -31,7 +31,7 @@ hero:
 
 生成反转了 RGB 值的底片图像。
 
-![](https://gyazo.com/79ea23575a35a9e8957853294e4f4e7e){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_79ea23575a35a9e8957853294e4f4e7e.png){media=image}
 
 [](/workflows/data-utilities/color-adjustments/invert_image.json)
 
@@ -40,7 +40,7 @@ hero:
 
 让轮廓变得清晰。
 
-![](https://gyazo.com/0296ddc8958f0b0ee358afbdd449424b){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_0296ddc8958f0b0ee358afbdd449424b.png){media=image}
 
 [](/workflows/data-utilities/color-adjustments/imagesharpen.json)
 
@@ -49,7 +49,7 @@ hero:
 
 模糊图像。
 
-![](https://gyazo.com/b3ae153b9b69063b83e3fb1eeb9bd335){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_b3ae153b9b69063b83e3fb1eeb9bd335.png){media=image}
 
 [](/workflows/data-utilities/color-adjustments/imageblur.json)
 
@@ -58,7 +58,7 @@ hero:
 
 减少颜色数量（色调分离）。
 
-![](https://gyazo.com/08652b0b1815b616f8e644ed9067c56a){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_08652b0b1815b616f8e644ed9067c56a.png){media=image}
 
 [](/workflows/data-utilities/color-adjustments/imagequantize.json)
 
@@ -67,7 +67,7 @@ hero:
 
 向图像添加噪点。
 
-![](https://gyazo.com/e57bf28e9d62134222cce8daaab0079e){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_e57bf28e9d62134222cce8daaab0079e.png){media=image}
 
 [](/workflows/data-utilities/color-adjustments/imageaddnoise.json)
 
@@ -82,7 +82,7 @@ cf. [向像素图像添加噪点，在低 denoise 的 image2image 中增加细�
 可能不太熟悉这个词，主要是针对黑白蒙版图像进行处理。
 可以进行“加粗线条（膨胀）”、“去除噪点（收缩）”等处理。
 
-![](https://gyazo.com/db828b756ce851d763f9589b267f6002){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_db828b756ce851d763f9589b267f6002.png){media=image}
 
 [](/workflows/data-utilities/color-adjustments/imagemorphology.json)
 
@@ -100,7 +100,7 @@ cf. [OpenCV-Python/形态学转换](https://labs.eecs.tottori-u.ac.jp/sd/Member/
 
 - **[orion4d/ComfyUI-Image-Effects](https://github.com/orion4d/ComfyUI-Image-Effects)**
 
-![](https://i.gyazo.com/e1ecb574e0c11da63b0c6f8cee7a9f87.png){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_e1ecb574e0c11da63b0c6f8cee7a9f87.png){media=image}
 
 色相、饱和度、亮度的调整（HSV 调整），或者类似色调曲线的调整，以及各种滤镜等，只要是人类想要调整的功能，大多都包含在内。
 详细的功能列表请查看仓库的文档。

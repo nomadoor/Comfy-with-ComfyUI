@@ -10,7 +10,7 @@ updated: 2026-08-26
 summary: "How to merge checkpoints/LoRAs and create difference LoRAs"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: "https://i.gyazo.com/60a8e4bd6e8b13d321cab6372e363baa.png"
+  image: "/media/basic-workflows/model-merge/legacy_gyazo_60a8e4bd6e8b13d321cab6372e363baa.png"
 tags: []
 ---
 
@@ -30,7 +30,7 @@ The first two require specialized knowledge and dataset preparation, but the thi
 
 First, let's simply mix two models half and half.
 
-![](https://gyazo.com/152fa7235f2878021cd924594b2d2bf1){gyazo=image}
+![](/media/basic-workflows/model-merge/modelmergesimple_0_5.png){media=image}
 
 [](/workflows/basic-workflows/model-merge/modelmergesimple_0_5.json)
 
@@ -41,7 +41,7 @@ In this workflow, we use the `ModelMergeSimple` node to merge two checkpoints at
 - If you connect the output `MODEL` directly to `KSampler`, you can easily try out the intermediate model.
   - It just roughly mixes an anime-style model and a realistic model, but it is surprising that it can create expressions like 2.5D.
 
-![](https://gyazo.com/89e876767a48d9acd6c6bb684e6b2495){gyazo=image}
+![](/media/basic-workflows/model-merge/legacy_gyazo_89e876767a48d9acd6c6bb684e6b2495.png){media=image}
 
 - If you like the merge result, connect it to the `CheckpointSave` node to save it as a checkpoint. (It is bypassed in the workflow above.)
   - The default save location is `ComfyUI/output/checkpoints/` (standard setting for Windows portable version).
@@ -67,7 +67,7 @@ The U-Net is divided into many layers, and each appears to play a different role
 
 Block Merge uses these differences to mix only the features you want.
 
-![](https://gyazo.com/380e98b86fa2205099cf6f231fc32ac8){gyazo=image}
+![](/media/basic-workflows/model-merge/legacy_gyazo_380e98b86fa2205099cf6f231fc32ac8.png){media=image}
 
 [](/workflows/basic-workflows/model-merge/modelmergeblocks_out_0_5.json)
 
@@ -102,7 +102,7 @@ Extracting "only the part of X" from this and making it a LoRA is **Difference L
 
 ### Workflow
 
-![](https://gyazo.com/0b5930d9de58a61acd5bf63da5927634){gyazo=image}
+![](/media/basic-workflows/model-merge/legacy_gyazo_0b5930d9de58a61acd5bf63da5927634.png){media=image}
 
 [](/workflows/basic-workflows/model-merge/modelmergesubtract_save_lora.json)
 
@@ -117,7 +117,7 @@ Extracting "only the part of X" from this and making it a LoRA is **Difference L
 
 ### Testing Difference LoRA
 
-![](https://gyazo.com/c499e4f0a683dc0ddd573312f6897dc8){gyazo=image}
+![](/media/basic-workflows/model-merge/legacy_gyazo_c499e4f0a683dc0ddd573312f6897dc8.png){media=image}
 
 [](/workflows/basic-workflows/model-merge/sd1_5_text2image_with_lora.json)
 

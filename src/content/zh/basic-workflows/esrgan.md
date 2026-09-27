@@ -38,7 +38,7 @@ ESRGAN 是用于将低分辨率的图像放大为高分辨率的 **超分辨率 
 
 ## 用 ESRGAN 放大
 
-![](https://gyazo.com/daebc07f85601b354c872a0a27f3fec1){gyazo=image}
+![](/media/basic-workflows/esrgan/legacy_gyazo_daebc07f85601b354c872a0a27f3fec1.png){media=image}
 
 [](/workflows/basic-workflows/esrgan/realesrgan.json)
 
@@ -54,7 +54,7 @@ ESRGAN 是用于将低分辨率的图像放大为高分辨率的 **超分辨率 
 
 ### 工作流
 
-![](https://gyazo.com/c05fc016293e3f1ae55b153cf1adaaae){gyazo=image}
+![](/media/basic-workflows/esrgan/legacy_gyazo_c05fc016293e3f1ae55b153cf1adaaae.png){media=image}
 
 [](/workflows/basic-workflows/esrgan/realesrgan_x0_5.json)
 

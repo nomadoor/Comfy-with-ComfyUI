@@ -11,7 +11,7 @@ summary: "使用姿势或线稿控制图像生成"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 tags: ["controlnet"]
 hero:
-  image: "https://i.gyazo.com/81753915732cf767995f1b35ac827b5d.png"
+  image: "/media/basic-workflows/sd15-controlnet/legacy_gyazo_81753915732cf767995f1b35ac827b5d.png"
 ---
 
 ## 什么是 ControlNet？
@@ -44,7 +44,7 @@ scribble 模型，是基于“粗略的涂鸦”生成图像的 ControlNet。
 
 ### 工作流
 
-![](https://gyazo.com/885feaa8a1857c09ce11977ad9d424c2){gyazo=image}
+![](/media/basic-workflows/sd15-controlnet/legacy_gyazo_885feaa8a1857c09ce11977ad9d424c2.png){media=image}
 
 [](/workflows/basic-workflows/sd15-controlnet/sd1_5_controlnet_scribble.json)
 
@@ -55,7 +55,7 @@ scribble 模型，是基于“粗略的涂鸦”生成图像的 ControlNet。
 > 如果是白背景上用黑色画的线，很多时候反应不好，请注意。
 
 - 样本图像
-  - ![](https://gyazo.com/fd112e311d4e0503fbb4df2044fc9325){gyazo=image}
+  - ![](/media/basic-workflows/sd15-controlnet/legacy_gyazo_fd112e311d4e0503fbb4df2044fc9325.png){media=image}
 
 ---
 
@@ -69,7 +69,7 @@ scribble 模型，是基于“粗略的涂鸦”生成图像的 ControlNet。
 
 ### start_percent / end_percent
 
-![](https://gyazo.com/3c82ca8a7dcb51f2475d0451de727783){gyazo=loop}
+![](/media/ai-capabilities/diffusion-models/legacy_gyazo_3c82ca8a7dcb51f2475d0451de727783.mp4){media=loop}
 
 采样是在序章决定大致形状，在后半描绘细节。
 
@@ -99,45 +99,45 @@ ControlNet 的许多（pose / depth / scribble 等）是 **决定形状类型** 
 
 ### 一览
 
-{% mediaRow img="https://gyazo.com/be3200558982f020a124d2bc68276c16 {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_be3200558982f020a124d2bc68276c16.png {media=image}", width=60, align="left" %}
 ### Canny
 - 保持照片或图像的轮廓，以别的风格重绘。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/debe9e414b688be1fa07bf01101ea2e0 {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_debe9e414b688be1fa07bf01101ea2e0.png {media=image}", width=60, align="left" %}
 ### Lineart
 - 与 Canny 相似，但更面向插画。  
 - 用于线稿上色等。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/cbe33c8ba39da19e249634a6e46ec13b {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_cbe33c8ba39da19e249634a6e46ec13b.png {media=image}", width=60, align="left" %}
 ### Depth
 - 使用深度图（前后信息），保持元图像的景深和构图进行生成。
 - 适合不想破坏建筑物或风景等立体感的情况。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/ae9a4fd7513b17114e2317b0da8dc14c {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_ae9a4fd7513b17114e2317b0da8dc14c.png {media=image}", width=60, align="left" %}
 ### Normal
 - 使用法线贴图，控制光照方式和立体感。{% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/8df713d0e8415ada994ad7c5f91d8ba9 {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_8df713d0e8415ada994ad7c5f91d8ba9.png {media=image}", width=60, align="left" %}
 ### Pose
 - 从 OpenPose 等提取的“火柴人姿势信息”，生成相同姿势的人物・角色图像。 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/fe7da06340c74791241cac5a482531bb {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_fe7da06340c74791241cac5a482531bb.png {media=image}", width=60, align="left" %}
 ### Inpaint
 - 想要只重绘图像一部分时使用的模型。
 - 可以只自然地重绘用掩膜指定的范围（消除不需要的东西・替换小物件等）。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/ea6af6e0edcd04ffe43f032b8a10b4fb {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_ea6af6e0edcd04ffe43f032b8a10b4fb.png {media=image}", width=60, align="left" %}
 ### QR Code Monster
 - 制作作为二维码可读取的图像。
 - 不限于二维码，也可以将“黑白图案图像”作为基础，变形为喜欢的画面。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/65e5e0ed5aaf2c87d363e6eb37e7d33b {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_65e5e0ed5aaf2c87d363e6eb37e7d33b.png {media=image}", width=60, align="left" %}
 ### Tile
 - 从模糊强烈的图像或低分辨率图像，制作漂亮的图像。
 - 虽然也可以单体使用，但实际上更多被与 Ultimate SD Upscale 这样的“超分辨率放大”组合使用。

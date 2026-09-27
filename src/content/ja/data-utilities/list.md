@@ -6,7 +6,7 @@ slug: list
 navId: list
 title: "List"
 created: 2025-11-26
-updated: 2026-08-03
+updated: 2026-09-27
 summary: "複数データを使った連続処理の考え方"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -27,69 +27,34 @@ Queue が「同じ workflow を何回も実行する」のに対し、List は *
 
 ---
 
-## List を作る
+## List を作る・取り出す
 
 ### Create List ノード
 
 手動で List を組み立てるためのノードです。  
 任意の型（画像 / テキスト / 数値など）をまとめて 1 本の List にします。
 
-![](https://gyazo.com/06892a5581ad86c9a2b56f01df91b983){gyazo=image}
+![](/media/data-utilities/list/create_list.mp4){media=loop}
 
 [](/workflows/data-utilities/list/create_list.json)
 
 - ノードを接続するとスロットが増えるため、好きな数だけ追加できます。
 
----
+### Get Item From List ノード
 
-## あると便利なカスタムノード
+List から、好きな番号のアイテムを 1 件取り出せます。
 
-List は ComfyUI の標準ノードだけでも作れますが、できることは限られています。以下のカスタムノードがあると、フォルダや文字列から List を作ったり、List から特定の要素を取り出したりできます。
+![](/media/data-utilities/list/get_item_from_list.png){media=image}
 
-- [ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
-- [ltdrdata/ComfyUI-Inspire-Pack](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
-- [godmt/ComfyUI-List-Utils](https://github.com/godmt/ComfyUI-List-Utils)
+[](/workflows/data-utilities/list/get_item_from_list.json)
 
-### Load Image List From Dir (Inspire) ノード
-
-フォルダ内の画像をまとめて読み込み、`IMAGE` の List を作ります。
-
-![](https://gyazo.com/4003d1d985e5153aab3cfe4f68c7d979){gyazo=image}
-
-[](/workflows/data-utilities/list/load_image_list_from_dir_inspire.json)
-
-- `directory`: 読み込むフォルダのパスを入力
-- `load_always`：フォルダの中身が変わったときに、毎回読み直すかどうか
-  - load_always を disabled のまま使うと、ComfyUI は「前回と同じパスなら中身は同じ」とみなし、フォルダ内の変更（画像を追加・削除など）があっても読み直しません。
-  - 画像を差し替えて再実行したい場合は、`load_always` を `enabled` に設定してください。
-
-### Split String
-
-1 つの長い `STRING` を、区切り文字で分割して List に変換します。  
-
-![](https://gyazo.com/ec2466a80a39f2d4a1c79526167b5293){gyazo=image}
-
-[](/workflows/data-utilities/list/split_string.json)
-
-- `delimiter`：区切り文字（`,` はプロンプトで多用するため避けたほうが無難かもしれません）
-- `splitlines`：改行ごとに区切る
-- `strip` : 前後の空白を削除
-
-### Select Nth Item (Any list) ノード
-
-List から、指定した位置の要素を 1 件だけ取り出します。
-
-![](https://gyazo.com/f1d3281970effbc7a2fc8a782f1a21ab){gyazo=image}
-
-[](/workflows/data-utilities/list/select_nth_item_any_list.json)
-
-- `index`：抽出したい位置（0, 1, 2…）
+- `index`：取り出したい位置（0, 1, 2…）
 
 ---
 
 ## 複数の List があるときの挙動
 
-![](https://gyazo.com/c001c197c385e9cdc2bdab3bc74f69c4){gyazo=image}
+![](/media/data-utilities/list/legacy_gyazo_c001c197c385e9cdc2bdab3bc74f69c4.png){media=image}
 
 [](/workflows/data-utilities/list/image2image_2list_3list.json)
 

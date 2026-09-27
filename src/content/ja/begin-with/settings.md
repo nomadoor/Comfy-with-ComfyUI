@@ -40,7 +40,7 @@ hero:
 
 `▷ Run` ボタン横の `⋮⋮` をドラッグすると、好きな位置に変更できます。
 
-![](https://gyazo.com/1c7183f67866e67e640715cfe42a2a61){gyazo=loop}
+![](/media/begin-with/settings/legacy_gyazo_1c7183f67866e67e640715cfe42a2a61.mp4){media=loop}
 
 
 ### 生成中のプレビュー
@@ -49,4 +49,4 @@ ComfyUI Manger → Preview methodを `Auto`/`TAESD`/`latent2RGB`のどれかに�
 - KSamlperノードの内部に、生成される最中のプレビュー画像が表示されるようになります。
 - かなりスペースを取ってしまうため私はオフにしていますが、どのように画像が生成されるのか学べる良い機能です。
 
-![](https://gyazo.com/b57c81af6a11466c664303f29b25b4cc){gyazo=loop}
+![](/media/begin-with/settings/legacy_gyazo_b57c81af6a11466c664303f29b25b4cc.mp4){media=loop}

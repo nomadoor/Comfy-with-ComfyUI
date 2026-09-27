@@ -27,7 +27,7 @@ Talking Head 是让一张图像或人脸照片看起来像“正在说话的人�
 
 ### [Thin-Plate Spline Motion Model for Image Animation](https://github.com/yoyo-nb/Thin-Plate-Spline-Motion-Model)
 
-![](https://gyazo.com/8e6de400ea9bc95a25e689483bd6b238){gyazo=image} ![](https://gyazo.com/b38439d333755e724f174fa774f74f71){gyazo=loop} ![](https://gyazo.com/c86570789722d04da913aed1f9ffd268){gyazo=loop}
+![](/media/ai-capabilities/talking-head/legacy_gyazo_8e6de400ea9bc95a25e689483bd6b238.png){media=image} ![](/media/ai-capabilities/talking-head/legacy_gyazo_b38439d333755e724f174fa774f74f71.mp4){media=loop} ![](/media/ai-capabilities/talking-head/legacy_gyazo_c86570789722d04da913aed1f9ffd268.mp4){media=loop}
 
 输入一张图像和正在活动的人的视频，图像侧就会模仿那个动作进行变形。
 
@@ -35,7 +35,7 @@ Talking Head 是让一张图像或人脸照片看起来像“正在说话的人�
 
 ### [LivePortrait](/zh/basic-workflows/liveportrait/)
 
-![](https://gyazo.com/c893e38c12859f8f20ff1e0fca545788){gyazo=image}
+![](/media/ai-capabilities/talking-head/legacy_gyazo_c893e38c12859f8f20ff1e0fca545788.mp4){media=loop}
 
 [](/workflows/basic-workflows/liveportrait/liveportrait_i2v_ref.json)
 
@@ -49,7 +49,7 @@ Talking Head 是让一张图像或人脸照片看起来像“正在说话的人�
 
 到了下一代，出现了使用扩散模型“重绘图像本身”方向的 Talking Head。[X-Portrait](https://byteaigc.github.io/x-portrait/) 或 [HelloMeme](https://songkey.github.io/hellomeme/) 就属于这一系。
 
-![](https://gyazo.com/c70468086a939dce538a876073c9c523){gyazo=loop}
+![](/media/ai-capabilities/talking-head/legacy_gyazo_c70468086a939dce538a876073c9c523.mp4){media=loop}
 
 [](/workflows/ai-capabilities/talking-head/hellomeme_video.json)
 
@@ -61,7 +61,7 @@ Talking Head 是让一张图像或人脸照片看起来像“正在说话的人�
 
 在更新的一代中，出现了以视频生成模型本身为基础的 Talking Head / Avatar 模型。[OmniAvatar](https://omni-avatar.github.io/) 或 [Wan-Animate](https://humanaigc.github.io/wan-animate/) 就属于这一类。
 
-![](https://gyazo.com/9f0e0e20d750b2e207b01adc56858202){gyazo=image} ![](https://gyazo.com/d7f66b4153473136c37e48c7066709a1){gyazo=loop} ![](https://gyazo.com/86ed4c6aa64af79325ce18359a4021bc){gyazo=loop}
+![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_9f0e0e20d750b2e207b01adc56858202.png){media=image} ![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_d7f66b4153473136c37e48c7066709a1.mp4){media=loop} ![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_86ed4c6aa64af79325ce18359a4021bc.mp4){media=loop}
 > Wan-Animate
 
 Wan-Animate 是输入角色图像和“带有动作的参考视频”，让角色像描绘那个动作一样移动的模型。

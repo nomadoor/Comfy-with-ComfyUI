@@ -51,7 +51,7 @@ hero:
 
 ## 实际上会出错误吗？
 
-![](https://gyazo.com/3d13852e4d5921d17dd6e6c1835bfafa){gyazo=image}
+![](/media/notes/sd15-sdxl-asset-compatibility/legacy_gyazo_3d13852e4d5921d17dd6e6c1835bfafa.png){media=image}
 
 如果试着将 SDXL 用的 ControlNet 模型连接到 SD1.5 的 ControlNet 工作流中，会显示如上图所示的错误：
 

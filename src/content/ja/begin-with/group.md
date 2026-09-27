@@ -27,7 +27,7 @@ ComfyUIのグループは、ノードを「機能的に束ねる」というよ�
 - キャンバス上で右クリック → `Add Group`
 - 枠のサイズ変更や移動を行い、ノードを枠内に収める
 
-![](https://gyazo.com/8cc0775e0b3f0bf5605f9b3aedf0665c){gyazo=loop}
+![](/media/begin-with/group/legacy_gyazo_8cc0775e0b3f0bf5605f9b3aedf0665c.mp4){media=loop}
 
 ### 選択したノードから作成
 
@@ -36,7 +36,7 @@ ComfyUIのグループは、ノードを「機能的に束ねる」というよ�
 > グループ枠は四角形固定なので、配置によっては選択していないノードも含まれることがあります。  
 > レイアウトの自由度が下がるため、個人的にはグループ機能はあまり使いません。
 
-![](https://gyazo.com/b1c0185c6afc1de67f01acd041169f7c){gyazo=loop}
+![](/media/begin-with/group/legacy_gyazo_b1c0185c6afc1de67f01acd041169f7c.mp4){media=loop}
 
 ## グループ枠の編集
 
@@ -45,7 +45,7 @@ ComfyUIのグループは、ノードを「機能的に束ねる」というよ�
 - **Color**: 色の変更
 - **Remove**: グループ枠の削除
 
-![](https://gyazo.com/5aedd107ed53fa8d73da8cfdbbf7d898){gyazo=loop}
+![](/media/begin-with/group/legacy_gyazo_5aedd107ed53fa8d73da8cfdbbf7d898.mp4){media=loop}
 
 ## グループの操作
 
@@ -55,7 +55,7 @@ ComfyUIのグループは、ノードを「機能的に束ねる」というよ�
 - **Select Nodes**: グループ内のノードを全選択
 - **Bypass Group Nodes**: グループ内のノードをまとめてバイパス
 
-![](https://gyazo.com/2469b9f9e950748aa68bd9ee6c418841){gyazo=loop}
+![](/media/begin-with/group/legacy_gyazo_2469b9f9e950748aa68bd9ee6c418841.mp4){media=loop}
 
 ## グループ枠の移動
 
@@ -64,4 +64,4 @@ ComfyUIのグループは、ノードを「機能的に束ねる」というよ�
 
 `Ctrl` + `Alt` を押しながらドラッグすることで、グループ枠のみ移動できます。
 
-![](https://gyazo.com/09e16ba51468b0e313ba1c0f445550d4){gyazo=loop}
+![](/media/begin-with/group/legacy_gyazo_09e16ba51468b0e313ba1c0f445550d4.mp4){media=loop}

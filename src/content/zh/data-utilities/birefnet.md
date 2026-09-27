@@ -10,7 +10,7 @@ updated: 2026-06-24
 summary: "使用 BiRefNet 进行背景去除和蒙版生成"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/2e42734281821aa3f28153af9ba6a08e.png"
+  image: "/media/data-utilities/birefnet/legacy_gyazo_2e42734281821aa3f28153af9ba6a08e.png"
 ---
 
 ## BiRefNet 是什么？
@@ -40,7 +40,7 @@ BiRefNet 是用于背景去除和抠图的模型。
 
 ### 切出前景
 
-![](https://gyazo.com/57972a01d12b0d8e88ef705c18344651){gyazo=image}
+![](/media/data-utilities/birefnet/legacy_gyazo_57972a01d12b0d8e88ef705c18344651.png){media=image}
 
 [](/workflows/data-utilities/birefnet/birefnet.json)
 
@@ -53,7 +53,7 @@ BiRefNet 是用于背景去除和抠图的模型。
 
 上面的 workflow 会把背景变为透明，但作为图像生成或分析的预处理使用时，把背景填充成单色通常更容易处理。
 
-![](https://gyazo.com/5d22ae3e905a8ccd3c1b8c63f615bb4e){gyazo=image}
+![](/media/data-utilities/birefnet/legacy_gyazo_5d22ae3e905a8ccd3c1b8c63f615bb4e.png){media=image}
 
 [](/workflows/data-utilities/birefnet/birefnet_fill.json)
 

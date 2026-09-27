@@ -23,7 +23,7 @@ hero:
 
 ## 既存動画の口パクを合わせる
 
-![](https://gyazo.com/17b81df017311b5fee98119e7e808492){gyazo=player} ![](https://gyazo.com/a6286699b56195148b64533d441561c0){gyazo=player}
+![](https://gyazo.com/17b81df017311b5fee98119e7e808492){gyazo=player} ![](/media/ai-capabilities/lip-sync/legacy_gyazo_a6286699b56195148b64533d441561c0.mp4){media=player}
 > ← ベース動画 | → リップシンク(LatentSync)
 
 最初に広く知られたのは、Wav2Lipのように「口元だけを直す」タイプのモデルです。
@@ -34,7 +34,7 @@ hero:
 
 ## 一枚絵をしゃべらせる
 
-> ![](https://gyazo.com/a74335c1403caa5475429688f420212d){gyazo=player}
+> ![](/media/ai-capabilities/lip-sync/legacy_gyazo_a74335c1403caa5475429688f420212d.mp4){media=player}
 > EMO
 
 [EMO](https://humanaigc.github.io/emote-portrait-alive/)のようなモデルは、一枚の顔画像と音声から、しゃべっている動画を直接生成します。  
@@ -53,7 +53,7 @@ hero:
 
 動画生成モデルが実用的な性能になってきたのも相まって、単なる「リップシンク」というより、**音声駆動型のポートレート動画生成** という流れに進んでいきます。
 
-> ![](https://gyazo.com/808dcfc73aa5fb1959eb35be3534e5e7){gyazo=player}
+> ![](/media/ai-capabilities/lip-sync/legacy_gyazo_808dcfc73aa5fb1959eb35be3534e5e7.mp4){media=player}
 > InfineTalk
 
 現在のSoTAとして、Wan2.1をベースにした、[FantasyTalking](https://fantasy-amap.github.io/fantasy-talking/)や[InfiniteTalk](https://meigen-ai.github.io/InfiniteTalk/)のようなものがあります。

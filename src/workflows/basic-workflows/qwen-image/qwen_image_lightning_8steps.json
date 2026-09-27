@@ -1,8 +1,8 @@
 {
   "id": "d8034549-7e0a-40f1-8c2e-de3ffc6f1cae",
   "revision": 0,
-  "last_node_id": 57,
-  "last_link_id": 103,
+  "last_node_id": 59,
+  "last_link_id": 107,
   "nodes": [
     {
       "id": 54,
@@ -16,7 +16,7 @@
         58
       ],
       "flags": {},
-      "order": 8,
+      "order": 9,
       "mode": 0,
       "inputs": [
         {
@@ -35,13 +35,16 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "ModelSamplingAuraFlow",
         "cnr_id": "comfy-core",
-        "ver": "0.3.49",
-        "Node name for S&R": "ModelSamplingAuraFlow"
+        "ver": "0.3.49"
       },
       "widgets_values": [
         3.1000000000000005
-      ]
+      ],
+      "widgets_values_named": {
+        "shift": 3.1000000000000005
+      }
     },
     {
       "id": 39,
@@ -69,13 +72,16 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "Node name for S&R": "VAELoader"
+        "ver": "0.3.33"
       },
       "widgets_values": [
         "qwen_image_vae.safetensors"
       ],
+      "widgets_values_named": {
+        "vae_name": "qwen_image_vae.safetensors"
+      },
       "color": "#322",
       "bgcolor": "#533"
     },
@@ -91,7 +97,7 @@
         46
       ],
       "flags": {},
-      "order": 10,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -116,131 +122,10 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "VAEDecode",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "Node name for S&R": "VAEDecode"
-      },
-      "widgets_values": []
-    },
-    {
-      "id": 57,
-      "type": "LoraLoaderModelOnly",
-      "pos": [
-        318.1189458223992,
-        53.0477294921875
-      ],
-      "size": [
-        260.9155484908506,
-        82
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 102
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            103
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.76",
-        "Node name for S&R": "LoraLoaderModelOnly"
-      },
-      "widgets_values": [
-        "Qwen-Image\\Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors",
-        1
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
-    },
-    {
-      "id": 37,
-      "type": "UNETLoader",
-      "pos": [
-        -12.163790088960356,
-        53.0477294921875
-      ],
-      "size": [
-        305.3782043457031,
-        82
-      ],
-      "flags": {},
-      "order": 1,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "slot_index": 0,
-          "links": [
-            102
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "Node name for S&R": "UNETLoader"
-      },
-      "widgets_values": [
-        "Qwen-Image\\qwen_image_fp8_e4m3fn.safetensors",
-        "fp8_e4m3fn"
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
-    },
-    {
-      "id": 6,
-      "type": "CLIPTextEncode",
-      "pos": [
-        415.00001525878906,
-        186
-      ],
-      "size": [
-        419.26959228515625,
-        156.00363159179688
-      ],
-      "flags": {},
-      "order": 6,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 74
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            46
-          ]
-        }
-      ],
-      "title": "CLIP Text Encode (Positive Prompt)",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        "A soft hand-drawn illustration for ComfyUI: A girl with bold solid pink hair, wearing oversized yellow headphones, a loose gray dress, bright orange tights, and chunky purple platform boots stands on a grassy hill, facing away from the viewer. The background features a luminous blue sky filled with huge, fluffy white clouds, distant misty mountain ranges, and sleek modern campus buildings on the horizon. At the bottom, large, bold ‘ComfyUI’ letters anchor the composition. The overall aesthetic uses gentle yet vibrant colors to convey themes of personal growth, curiosity, and quiet responsibility."
-      ]
+        "ver": "0.3.33"
+      }
     },
     {
       "id": 3,
@@ -254,7 +139,7 @@
         262
       ],
       "flags": {},
-      "order": 9,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -270,7 +155,7 @@
         {
           "name": "negative",
           "type": "CONDITIONING",
-          "link": 52
+          "link": 105
         },
         {
           "name": "latent_image",
@@ -289,9 +174,9 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "KSampler",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "Node name for S&R": "KSampler"
+        "ver": "0.3.33"
       },
       "widgets_values": [
         12345,
@@ -301,50 +186,16 @@
         "euler",
         "simple",
         1
-      ]
-    },
-    {
-      "id": 7,
-      "type": "CLIPTextEncode",
-      "pos": [
-        415,
-        405.392333984375
       ],
-      "size": [
-        418.3189392089844,
-        107.08506774902344
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 7,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 75
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            52
-          ]
-        }
-      ],
-      "title": "CLIP Text Encode (Negative Prompt)",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        ""
-      ]
+      "widgets_values_named": {
+        "seed": 12345,
+        "control_after_generate": "fixed",
+        "steps": 8,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
     },
     {
       "id": 53,
@@ -358,9 +209,26 @@
         106
       ],
       "flags": {},
-      "order": 2,
+      "order": 7,
       "mode": 0,
-      "inputs": [],
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 106
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 107
+        }
+      ],
       "outputs": [
         {
           "name": "LATENT",
@@ -371,15 +239,20 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "EmptySD3LatentImage",
         "cnr_id": "comfy-core",
-        "ver": "0.3.49",
-        "Node name for S&R": "EmptySD3LatentImage"
+        "ver": "0.3.49"
       },
       "widgets_values": [
         1328,
         1328,
         1
-      ]
+      ],
+      "widgets_values_named": {
+        "width": 1328,
+        "height": 1328,
+        "batch_size": 1
+      }
     },
     {
       "id": 56,
@@ -393,7 +266,7 @@
         469.26990965100083
       ],
       "flags": {},
-      "order": 11,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
@@ -402,14 +275,23 @@
           "link": 101
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.76"
       },
       "widgets_values": [
         "ComfyUI"
-      ]
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "ComfyUI"
+      }
     },
     {
       "id": 38,
@@ -423,7 +305,7 @@
         106
       ],
       "flags": {},
-      "order": 3,
+      "order": 1,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -432,46 +314,271 @@
           "type": "CLIP",
           "slot_index": 0,
           "links": [
-            74,
-            75
+            74
           ]
         }
       ],
       "properties": {
+        "Node name for S&R": "CLIPLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "Node name for S&R": "CLIPLoader"
+        "ver": "0.3.33"
       },
       "widgets_values": [
         "qwen_2.5_vl_7b_fp8_scaled.safetensors",
         "qwen_image",
         "default"
       ],
+      "widgets_values_named": {
+        "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+        "type": "qwen_image",
+        "device": "default"
+      },
       "color": "#432",
       "bgcolor": "#653"
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        415.00001525878906,
+        186
+      ],
+      "size": [
+        419.26959228515625,
+        156.00363159179688
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 74
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            46,
+            104
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "A soft hand-drawn illustration for ComfyUI: A girl with bold solid pink hair, wearing oversized yellow headphones, a loose gray dress, bright orange tights, and chunky purple platform boots stands on a grassy hill, facing away from the viewer. The background features a luminous blue sky filled with huge, fluffy white clouds, distant misty mountain ranges, and sleek modern campus buildings on the horizon. At the bottom, large, bold ‘ComfyUI’ letters anchor the composition. The overall aesthetic uses gentle yet vibrant colors to convey themes of personal growth, curiosity, and quiet responsibility."
+      ],
+      "widgets_values_named": {
+        "text": "A soft hand-drawn illustration for ComfyUI: A girl with bold solid pink hair, wearing oversized yellow headphones, a loose gray dress, bright orange tights, and chunky purple platform boots stands on a grassy hill, facing away from the viewer. The background features a luminous blue sky filled with huge, fluffy white clouds, distant misty mountain ranges, and sleek modern campus buildings on the horizon. At the bottom, large, bold ‘ComfyUI’ letters anchor the composition. The overall aesthetic uses gentle yet vibrant colors to convey themes of personal growth, curiosity, and quiet responsibility."
+      }
+    },
+    {
+      "id": 58,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        615.8536514885848,
+        405.9621335671986
+      ],
+      "size": [
+        218.41595605536054,
+        26
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 104
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            105
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningZeroOut"
+      }
+    },
+    {
+      "id": 57,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        269.52398153133663,
+        53.0477294921875
+      ],
+      "size": [
+        305.3782043457031,
+        82
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 102
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            103
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.76"
+      },
+      "widgets_values": [
+        "Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors",
+        1
+      ],
+      "widgets_values_named": {
+        "lora_name": "Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors",
+        "strength_model": 1
+      },
+      "color": "#323",
+      "bgcolor": "#535"
     },
     {
       "id": 55,
       "type": "MarkdownNote",
       "pos": [
-        -491.05311465172593,
-        -31.268711326654767
+        -574.0367510153619,
+        53.0477294921875
       ],
       "size": [
-        446.46560633233355,
-        271.0212201528051
+        455.1585048551617,
+        364.7803399347375
       ],
       "flags": {},
-      "order": 4,
+      "order": 2,
       "mode": 0,
       "inputs": [],
       "outputs": [],
       "properties": {},
       "widgets_values": [
-        "## models\n- [qwen_image_fp8_e4m3fn.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/blob/main/split_files/diffusion_models/qwen_image_fp8_e4m3fn.safetensors)\n- [qwen_2.5_vl_7b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/blob/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors)\n- [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/tree/main/split_files/vae)\n- [Qwen-Image-Lightning-4steps-V2.0-bf16.safetensors](https://huggingface.co/lightx2v/Qwen-Image-Lightning/blob/main/Qwen-Image-Lightning-4steps-V2.0-bf16.safetensors)\n- [Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors](https://huggingface.co/lightx2v/Qwen-Image-Lightning/blob/main/Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors)\n\n\n\n```\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── qwen_image_fp8_e4m3fn.safetensors\n    ├── 📂loras/\n    │   ├── Qwen-Image-Lightning-4steps-V2.0-bf16.safetensors\n    │   └── Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen_2.5_vl_7b_fp8_scaled.safetensors\n    └── 📂vae/\n         └── qwen_image_vae.safetensors\n```"
+        "## models\n\n- diffusion_models\n  - [qwen_image_fp8_e4m3fn.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/blob/main/split_files/diffusion_models/qwen_image_fp8_e4m3fn.safetensors)\n\n- loras\n  - [Qwen-Image-Lightning-4steps-V2.0-bf16.safetensors](https://huggingface.co/lightx2v/Qwen-Image-Lightning/blob/main/Qwen-Image-Lightning-4steps-V2.0-bf16.safetensors)\n  - [Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors](https://huggingface.co/lightx2v/Qwen-Image-Lightning/blob/main/Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors)\n\n- text_encoders\n  - [qwen_2.5_vl_7b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/blob/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors)\n\n- vae\n  - [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/tree/main/split_files/vae)\n\n\n\n```\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── qwen_image_fp8_e4m3fn.safetensors\n    ├── 📂loras/\n    │   ├── Qwen-Image-Lightning-4steps-V2.0-bf16.safetensors\n    │   └── Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen_2.5_vl_7b_fp8_scaled.safetensors\n    └── 📂vae/\n         └── qwen_image_vae.safetensors\n```"
       ],
+      "widgets_values_named": {
+        "text": "## models\n\n- diffusion_models\n  - [qwen_image_fp8_e4m3fn.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/blob/main/split_files/diffusion_models/qwen_image_fp8_e4m3fn.safetensors)\n\n- loras\n  - [Qwen-Image-Lightning-4steps-V2.0-bf16.safetensors](https://huggingface.co/lightx2v/Qwen-Image-Lightning/blob/main/Qwen-Image-Lightning-4steps-V2.0-bf16.safetensors)\n  - [Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors](https://huggingface.co/lightx2v/Qwen-Image-Lightning/blob/main/Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors)\n\n- text_encoders\n  - [qwen_2.5_vl_7b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/blob/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors)\n\n- vae\n  - [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/tree/main/split_files/vae)\n\n\n\n```\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── qwen_image_fp8_e4m3fn.safetensors\n    ├── 📂loras/\n    │   ├── Qwen-Image-Lightning-4steps-V2.0-bf16.safetensors\n    │   └── Qwen-Image-Lightning-8steps-V2.0-bf16.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen_2.5_vl_7b_fp8_scaled.safetensors\n    └── 📂vae/\n         └── qwen_image_vae.safetensors\n```"
+      },
       "color": "#323",
       "bgcolor": "#535"
+    },
+    {
+      "id": 37,
+      "type": "UNETLoader",
+      "pos": [
+        -64.89106281623306,
+        53.0477294921875
+      ],
+      "size": [
+        305.3782043457031,
+        82
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            102
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "qwen_image_fp8_e4m3fn.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "qwen_image_fp8_e4m3fn.safetensors",
+        "weight_dtype": "default"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 59,
+      "type": "ResolutionSelector",
+      "pos": [
+        295.166673684375,
+        536.0738117669774
+      ],
+      "size": [
+        270,
+        126
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "preview",
+          "shape": 7,
+          "type": "RESOLUTION_PREVIEW",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            106
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            107
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResolutionSelector"
+      },
+      "widgets_values": [
+        "1:1 (Square)",
+        1,
+        8
+      ],
+      "widgets_values_named": {
+        "aspect_ratio": "1:1 (Square)",
+        "megapixels": 1,
+        "multiple": 8
+      }
     }
   ],
   "links": [
@@ -492,26 +599,10 @@
       "CONDITIONING"
     ],
     [
-      52,
-      7,
-      0,
-      3,
-      2,
-      "CONDITIONING"
-    ],
-    [
       74,
       38,
       0,
       6,
-      0,
-      "CLIP"
-    ],
-    [
-      75,
-      38,
-      0,
-      7,
       0,
       "CLIP"
     ],
@@ -562,19 +653,51 @@
       54,
       0,
       "MODEL"
+    ],
+    [
+      104,
+      6,
+      0,
+      58,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      105,
+      58,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      106,
+      59,
+      0,
+      53,
+      0,
+      "INT"
+    ],
+    [
+      107,
+      59,
+      1,
+      53,
+      1,
+      "INT"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.7513148009015781,
+      "scale": 0.6830134553650707,
       "offset": [
-        591.053114651726,
-        131.26871132665477
+        626.4268131664544,
+        338.3796729585997
       ]
     },
-    "frontendVersion": "1.35.0",
+    "frontendVersion": "1.51.9",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

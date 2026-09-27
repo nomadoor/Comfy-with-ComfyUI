@@ -32,7 +32,7 @@ ComfyUI では、もっぱらマスク生成の入口として使います。
 
 特定の物体（車、人、犬など）を検出するための、伝統的かつ強力なモデル群です。
 
-![](https://gyazo.com/2b694eacfaee03e50818eb87174f0ef9){gyazo=image}
+![](/media/ai-capabilities/object-detection/legacy_gyazo_2b694eacfaee03e50818eb87174f0ef9.png){media=image}
 
 [](/workflows/ai-capabilities/object-detection/yolo8.json)
 
@@ -62,7 +62,7 @@ ComfyUI 的に重要なのは、**テキストで物体を指定できるタイ�
 
 ### Florence-2
 
-![](https://gyazo.com/9efa0561eb445e5b300aaf3abb76f526){gyazo=image}
+![](/media/ai-capabilities/object-detection/legacy_gyazo_9efa0561eb445e5b300aaf3abb76f526.png){media=image}
 
 [](/workflows/ai-capabilities/object-detection/florence_2.json)
 

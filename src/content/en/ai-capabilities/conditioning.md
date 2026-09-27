@@ -68,7 +68,7 @@ CLIP is good at matching short descriptions and concepts, but it has struggled t
 
 LLMs and MLLMs can understand instructions like these more accurately.
 
-{% mediaRow img="https://gyazo.com/21e83fc01b81ea693037ba3d17f39d5a{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/ai-capabilities/conditioning/legacy_gyazo_21e83fc01b81ea693037ba3d17f39d5a.png{media=image}", width=50, align="left" %}
 
 `A dog on a log with a frog in a bog`
 

@@ -25,7 +25,7 @@ It has not only mask creation but also a simple paint function.
 
 - Select `Load Image` node etc. → Click `🌔` (Open Mask Editor) in `Node Selection Toolbox`
 
-![](https://gyazo.com/41526255834943bb591e62583d85d324){gyazo=loop}
+![](/media/begin-with/mask-editor/legacy_gyazo_41526255834943bb591e62583d85d324.mp4){media=loop}
 
 ---
 
@@ -52,7 +52,7 @@ Paint color on the image. Can be used for guides during Inpaint etc.
 
 - **Color Selector**: Selection of drawing color
 
-![](https://gyazo.com/398548a6895a8ad00ab2c9f5cf509222){gyazo=loop}
+![](/media/begin-with/mask-editor/legacy_gyazo_398548a6895a8ad00ab2c9f5cf509222.mp4){media=loop}
 
 ### Eraser
 
@@ -67,7 +67,7 @@ Fills the area surrounded by handwritten masks.
 - **Tolerance**: Tolerance range
   - If low, gaps will be created, so it is better to increase it.
 
-![](https://gyazo.com/98edbb1b4ca8324d0974416546194a3c){gyazo=loop}
+![](/media/begin-with/mask-editor/legacy_gyazo_98edbb1b4ca8324d0974416546194a3c.mp4){media=loop}
 
 ### Automatic Selection
 
@@ -77,7 +77,7 @@ Automatically masks the range of colors similar to the clicked location.
 
 - **Tolerance**: Color tolerance
 
-![](https://gyazo.com/bf6ca9fd1af91d39c50174a4ef981b90){gyazo=loop}
+![](/media/begin-with/mask-editor/legacy_gyazo_bf6ca9fd1af91d39c50174a4ef981b90.mp4){media=loop}
 
 ---
 
@@ -95,4 +95,4 @@ Automatically masks the range of colors similar to the clicked location.
 
 Edits are applied to the node and the editor closes.
 
-![](https://gyazo.com/05a4f6930a6d074435ac29b77c97e82e){gyazo=loop}
+![](/media/begin-with/mask-editor/legacy_gyazo_05a4f6930a6d074435ac29b77c97e82e.mp4){media=loop}

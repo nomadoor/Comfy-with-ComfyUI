@@ -10,7 +10,7 @@ updated: 2026-08-26
 summary: "マスクの濃度で変化量をコントロールする"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/1f32a3d04b7ee26518803718151fc1d0.png"
+  image: "/media/basic-workflows/differential-diffusion/legacy_gyazo_1f32a3d04b7ee26518803718151fc1d0.png"
 ---
 
 ## Differential Diffusionとは？
@@ -33,7 +33,7 @@ inpainting の workflow に `Differential Diffusion` ノードを追加し、マ
 
 ### workflow
 
-![](https://gyazo.com/32341a2b91def8997072eb24dde93cce){gyazo=image}
+![](/media/basic-workflows/differential-diffusion/legacy_gyazo_32341a2b91def8997072eb24dde93cce.png){media=image}
 
 [](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion.json)
 
@@ -53,7 +53,7 @@ inpainting の workflow に `Differential Diffusion` ノードを追加し、マ
 
 **一枚のマスク画像の中で、場所ごとに濃さを変える** ことで、1 回のサンプリングで部位ごとに違う変化量を指定できます。
 
-![](https://gyazo.com/4b3d0506456a4f1dc8aa062d4e445b17){gyazo=image}
+![](/media/basic-workflows/differential-diffusion/legacy_gyazo_4b3d0506456a4f1dc8aa062d4e445b17.png){media=image}
 
 [](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion_multi_obj.json)
 
@@ -65,7 +65,7 @@ inpainting のよくある問題として、マスクの境目がくっきり出
 
 Differential Diffusion と、ぼかしたマスクを組み合わせて、境界を自然になじませましょう。
 
-![](https://gyazo.com/e54a8d82e7dca29bf6ab19fdb20c3354){gyazo=image}
+![](/media/basic-workflows/differential-diffusion/legacy_gyazo_e54a8d82e7dca29bf6ab19fdb20c3354.png){media=image}
 
 [](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion_blur.json)
 
@@ -78,7 +78,7 @@ Differential Diffusion と、ぼかしたマスクを組み合わせて、境界
 深度マップは白黒のグラデーションで表されます。  
 つまり、そのまま Differential Diffusion のマスクとして使うことが出来ます。
 
-![](https://gyazo.com/ac52958c32bb143910151029c53707d1){gyazo=image}
+![](/media/basic-workflows/differential-diffusion/legacy_gyazo_ac52958c32bb143910151029c53707d1.png){media=image}
 
 [](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion_depthmap.json)
 
@@ -92,4 +92,4 @@ Differential Diffusion と、ぼかしたマスクを組み合わせて、境界
 
 ## サンプル画像
 
-![](https://gyazo.com/8d2eb48340cf6f6f99e539e11517d6a2){gyazo=image} ![](https://gyazo.com/d8cd78b75de91ed4e9a1da1eedfcf21d){gyazo=image} ![](https://gyazo.com/ff958820180efd9b316cb42ddd9c0276){gyazo=image} ![](https://gyazo.com/2d0d14ad85109598f389e5ac0ad7b85f){gyazo=image}
+![](/media/basic-workflows/differential-diffusion/legacy_gyazo_8d2eb48340cf6f6f99e539e11517d6a2.png){media=image} ![](/media/basic-workflows/differential-diffusion/legacy_gyazo_d8cd78b75de91ed4e9a1da1eedfcf21d.png){media=image} ![](/media/basic-workflows/differential-diffusion/legacy_gyazo_ff958820180efd9b316cb42ddd9c0276.png){media=image} ![](/media/basic-workflows/differential-diffusion/legacy_gyazo_2d0d14ad85109598f389e5ac0ad7b85f.png){media=image}

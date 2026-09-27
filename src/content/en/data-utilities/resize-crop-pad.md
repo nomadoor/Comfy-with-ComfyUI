@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "About image resizing, cropping, and padding"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/02cf6bd2a573dc15dff4799c94b15a0d.png"
+  image: "/media/data-utilities/resize-crop-pad/legacy_gyazo_02cf6bd2a573dc15dff4799c94b15a0d.png"
 ---
 
 ## Image Resizing and Cropping
@@ -31,7 +31,7 @@ Since this is a frequently used task, let's firmly understand the differences be
 
 Outputs the width, height, and batch size (count) of the image as numerical values.
 
-![](https://gyazo.com/ffb5c8bfea06d5ce1b15183cc70dc973){gyazo=image}
+![](/media/data-utilities/resize-crop-pad/legacy_gyazo_ffb5c8bfea06d5ce1b15183cc70dc973.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/get_image_size.json)
 
@@ -44,7 +44,7 @@ Outputs the width, height, and batch size (count) of the image as numerical valu
 A node that allows you to switch between several resizing methods.  
 Basically, this one node covers most of the necessary processing. (By the way, masks can also be resized.)
 
-{% mediaRow img="https://gyazo.com/afa66ff808e05a40e363761184c668c1 {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/data-utilities/resize-crop-pad/legacy_gyazo_afa66ff808e05a40e363761184c668c1.png {media=image}", width=45, align="left" %}
 
 **scale by multiplier**
 
@@ -58,7 +58,7 @@ For example, `0.5` makes the vertical and horizontal dimensions half, and `2.0` 
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/4fc6f32dc60859a38a2cf3a125aa82bf {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/data-utilities/resize-crop-pad/legacy_gyazo_4fc6f32dc60859a38a2cf3a125aa82bf.png {media=image}", width=45, align="left" %}
 
 **scale dimensions**
 
@@ -74,7 +74,7 @@ Forcibly changes the resolution to the specified width and height.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/bdc737b190e9e45ebc6a55a1b155414e {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/data-utilities/resize-crop-pad/legacy_gyazo_bdc737b190e9e45ebc6a55a1b155414e.png {media=image}", width=45, align="left" %}
 
 **scale longer/shorter dimension**
 
@@ -86,7 +86,7 @@ Resizes the image specifying only the long side (longer) or short side (shorter)
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/adcd25f46b34298cea4a37a046b221bf {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/data-utilities/resize-crop-pad/legacy_gyazo_adcd25f46b34298cea4a37a046b221bf.png {media=image}", width=45, align="left" %}
 
 **scale width/height**
 
@@ -98,7 +98,7 @@ Resizes the image specifying only either the width or height, maintaining the as
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/13116851f0f749d7f4f5e350fb474f5e {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/data-utilities/resize-crop-pad/resize_imagemask_scale_total_pixels.png {media=image}", width=45, align="left" %}
 
 **scale total pixels**
 
@@ -119,7 +119,7 @@ Calculated as `1024 * 1024 = 1.00MP`.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/e4398957f8190305364c6b9c12948c3c {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/data-utilities/resize-crop-pad/legacy_gyazo_e4398957f8190305364c6b9c12948c3c.png {media=image}", width=45, align="left" %}
 
 **match size**
 
@@ -138,7 +138,7 @@ Previously, it was necessary to get the size of the reference image and pass it 
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/28d95c2ef2e320c18761852f60f2a508 {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/data-utilities/resize-crop-pad/legacy_gyazo_28d95c2ef2e320c18761852f60f2a508.png {media=image}", width=45, align="left" %}
 
 **scale to multiple**
 
@@ -160,7 +160,7 @@ Basically, ComfyUI often adjusts automatically internally, so there isn't much n
 Resizes the image so that the **long side** becomes the set size, maintaining the aspect ratio.  
 (Example: Whether it is a portrait or landscape image, make the longer side 1024px)
 
-![](https://i.gyazo.com/42ffc7b0534face3e58fc7946b243ce0.png){gyazo=image}
+![](/media/data-utilities/resize-crop-pad/legacy_gyazo_42ffc7b0534face3e58fc7946b243ce0.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/imagescaletomaxdimension.json)
 
@@ -176,7 +176,7 @@ Depending on the node, this margin part can be output as a mask, so it is used a
 
 Resizes to the specified resolution and fills the missing parts with padding.
 
-![](https://gyazo.com/633441a119959e98e0dca5cb765a53d8){gyazo=image}
+![](/media/data-utilities/resize-crop-pad/legacy_gyazo_633441a119959e98e0dca5cb765a53d8.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/resizeandpadimage.json)
 
@@ -186,7 +186,7 @@ Resizes to the specified resolution and fills the missing parts with padding.
 
 Adds margins of the specified number of pixels to the top, bottom, left, and right of the image.
 
-![](https://gyazo.com/c6200467aad1b43edbc09b2ec4f3f2b0){gyazo=image}
+![](/media/data-utilities/resize-crop-pad/legacy_gyazo_c6200467aad1b43edbc09b2ec4f3f2b0.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/pad_image_for_outpainting.json)
 
@@ -203,7 +203,7 @@ The margin part is output as a mask.
 
 Crops a part of the image in a rectangle by specifying x, y coordinates and width/height.
 
-![](https://i.gyazo.com/1c996b2fa8f7213f05c524b16468181e.png){gyazo=image}
+![](/media/data-utilities/resize-crop-pad/legacy_gyazo_1c996b2fa8f7213f05c524b16468181e.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/imagecrop.json)
 
@@ -212,7 +212,7 @@ Crops a part of the image in a rectangle by specifying x, y coordinates and widt
 
 Rotates the image by 90 / 180 / 270 degrees.
 
-![](https://gyazo.com/8de36981f39e9c39ec1b6c4aa3f9a7ff){gyazo=image}
+![](/media/data-utilities/resize-crop-pad/legacy_gyazo_8de36981f39e9c39ec1b6c4aa3f9a7ff.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/imagerotate.json)
 
@@ -221,7 +221,7 @@ Rotates the image by 90 / 180 / 270 degrees.
 
 Flips the image horizontally / vertically.
 
-![](https://gyazo.com/e0661734e160f918d9fc9080dda91240){gyazo=image}
+![](/media/data-utilities/resize-crop-pad/legacy_gyazo_e0661734e160f918d9fc9080dda91240.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/imageflip.json)
 
@@ -253,7 +253,7 @@ Let's try some slightly complex image processing by combining the nodes so far.
 
 ### Crop Image to Half
 
-![](https://gyazo.com/02cf6bd2a573dc15dff4799c94b15a0d){gyazo=image}
+![](/media/data-utilities/resize-crop-pad/legacy_gyazo_02cf6bd2a573dc15dff4799c94b15a0d.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/crop_to_half_size.json)
 

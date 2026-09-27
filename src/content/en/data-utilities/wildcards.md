@@ -27,7 +27,7 @@ When you generate many images at once, using the exact same prompt can get repet
 
 ComfyUI text fields (for example, `CLIP Text Encode`) support wildcard syntax in the `{a|b|c}` format by default.
 
-![](https://gyazo.com/06d9e27bd6586911830efcd2c3ff50cc){gyazo=loop}
+![](/media/data-utilities/wildcards/legacy_gyazo_06d9e27bd6586911830efcd2c3ff50cc.mp4){media=loop}
 
 [](/workflows/data-utilities/wildcards/wildcard_core.json)
 
@@ -50,7 +50,7 @@ If you want to nest wildcards, bias word frequency, or load candidates from text
 
 ### ImpactWildcardProcessor / Encode
 
-![](https://gyazo.com/851ccf19703e3b7b97f779e0cb6ae23f){gyazo=image}
+![](/media/data-utilities/wildcards/legacy_gyazo_851ccf19703e3b7b97f779e0cb6ae23f.png){media=image}
 
 [](/workflows/data-utilities/wildcards/impactwildcardprocessor.json)
 

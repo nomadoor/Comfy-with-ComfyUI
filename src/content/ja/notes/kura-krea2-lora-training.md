@@ -11,7 +11,7 @@ noteTags: ["project", "lora", "krea-2", "kura"]
 summary: "Kura と AI エージェントを使って、Krea 2 のキャラクター LoRA を学習・比較する流れ"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/bd00a496f18c5ecb9925dd7f790ffc7d.png"
+  image: "/media/notes/kura-krea2-lora-training/legacy_gyazo_bd00a496f18c5ecb9925dd7f790ffc7d.png"
 ---
 
 ## Kura とは？
@@ -53,7 +53,7 @@ LoRA 学習では、パラメータよりなによりデータセットの質が
 
 今回はオリジナルキャラクターの LoRA を作りますが、手元にあるのは自分で描いた数枚だけです。
 
-![画像編集モデルでバリエーションを増やす](https://gyazo.com/2159c09bf30ffc9230b93e72a9b933f9){gyazo=image}
+![画像編集モデルでバリエーションを増やす](/media/notes/kura-krea2-lora-training/legacy_gyazo_2159c09bf30ffc9230b93e72a9b933f9.png){media=image}
 
 そんなときは、Nano Banana や ChatGPT Images 2.0 でバリエーションを増やしても良いでしょう。
 
@@ -67,7 +67,7 @@ LoRA 学習では、パラメータよりなによりデータセットの質が
 
 Viviさんの例を見ながら、**キャラクター LoRA** でのキャプションの書き方を見ていきましょう。
 
-![ソファでくつろぐViviさん](https://gyazo.com/d74af5465c466791239a29516fa341c4){gyazo=image}
+![ソファでくつろぐViviさん](/media/notes/kura-krea2-lora-training/legacy_gyazo_d74af5465c466791239a29516fa341c4.png){media=image}
 
 この画像には、様々な要素が含まれています。
 
@@ -238,7 +238,7 @@ Kura を開いている AI エージェントへ、作りたい LoRA の詳細�
 datasets/character-lora の画像を使って、Krea 2 のキャラクター LoRA を作って。
 ```
 
-![Codex](https://gyazo.com/c0869c902e2ae71682a0b8433c693fbf){gyazo=image}
+![Codex](/media/notes/kura-krea2-lora-training/legacy_gyazo_c0869c902e2ae71682a0b8433c693fbf.png){media=image}
 
 Kura には、データセットの確認やパラメータ決めに使う Skill が用意されています。最初から細かいパラメータを指定する必要はありません。
 
@@ -282,7 +282,7 @@ cd path/to/Kura
 uv run kura monitor
 ```
 
-![kura monitor](https://gyazo.com/200c43a33b1a88c82d555d2bf2d3ed55){gyazo=image}
+![kura monitor](/media/notes/kura-krea2-lora-training/legacy_gyazo_200c43a33b1a88c82d555d2bf2d3ed55.png){media=image}
 
 ひとつの run を詳しく見たい場合は、`watch` コマンドを使います。
 
@@ -290,7 +290,7 @@ uv run kura monitor
 uv run kura run watch <run-id>
 ```
 
-![watch](https://gyazo.com/19b89285e83c62b08e1ba1ee80579c03){gyazo=image}
+![watch](/media/notes/kura-krea2-lora-training/legacy_gyazo_19b89285e83c62b08e1ba1ee80579c03.png){media=image}
 
 Monitor 内のリンクを左クリックすると、エクスプローラーが開きます。保存済みの LoRA は、学習中でも run の `outputs/` に順次追加されます。
 
@@ -326,7 +326,7 @@ RunPod を使った場合は、学習が終わり、すべての出力を回収�
 さっき学習した LoRA を適用して、ComfyUI で画像を 1 枚生成して。
 ```
 
-![Vivi 1000steps](https://gyazo.com/5bffd9971f963f76bd0dc68ce4add3d0){gyazo=image}
+![Vivi 1000steps](/media/notes/kura-krea2-lora-training/legacy_gyazo_5bffd9971f963f76bd0dc68ce4add3d0.png){media=image}
 
 基本的に、AI は workflow を **ゼロからは作りません**。
 
@@ -347,7 +347,7 @@ RunPod を使った場合は、学習が終わり、すべての出力を回収�
 3 つのプロンプトを使い、保存されている各 step の LoRA で生成し、それらを並べたレビュー画像も作って。
 ```
 
-![Comparison](https://gyazo.com/a9b23a29fc76faf1d66da47962b41373){gyazo=image}
+![Comparison](/media/notes/kura-krea2-lora-training/legacy_gyazo_a9b23a29fc76faf1d66da47962b41373.png){media=image}
 
 この例では、1000 step くらいが良さそうですね。
 

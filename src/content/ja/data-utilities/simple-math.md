@@ -25,7 +25,7 @@ hero:
 
 ## Math Expression
 
-![](https://gyazo.com/7ea9d7efa48a88e7b9bdfeef6b86d2d2){gyazo=image}
+![](/media/data-utilities/simple-math/legacy_gyazo_7ea9d7efa48a88e7b9bdfeef6b86d2d2.jpg){media=image}
 
 [](/workflows/data-utilities/simple-math/math_expression.json)
 
@@ -71,7 +71,7 @@ ComfyUIでは主に **`int`** と **`float`** の2種類を使います。
 
 入力がfloatでも、出力先がintなら自動的に変換してくれます。
 
-![](https://gyazo.com/07161b2b92b1f8cedc7fa99cbf1d22cc){gyazo=image}
+![](/media/data-utilities/simple-math/legacy_gyazo_07161b2b92b1f8cedc7fa99cbf1d22cc.png){media=image}
 
 [](/workflows/data-utilities/simple-math/math_expression_floatint.json)
 
@@ -81,7 +81,7 @@ ComfyUIでは主に **`int`** と **`float`** の2種類を使います。
 
 ノードを使うほどでもない簡単な計算なら、入力欄で直接計算式を書くと、計算された値が入力されます。
 
-![](https://gyazo.com/a285ddb6cb86d6a0e8d3a58766afe51e){gyazo=image}
+![](/media/data-utilities/simple-math/legacy_gyazo_a285ddb6cb86d6a0e8d3a58766afe51e.mp4){media=loop}
 
 ---
 
@@ -91,6 +91,6 @@ ComfyUIでは主に **`int`** と **`float`** の2種類を使います。
 
 cf. [Node: Power Puter (Wiki)](https://github.com/rgthree/rgthree-comfy/wiki/Node:-Power-Puter)
 
-![](https://gyazo.com/20c5f92d6ef1e7057c6d42e2065d84b1){gyazo=image}
+![](/media/data-utilities/simple-math/power_puter.png){media=image}
 
 [](/workflows/data-utilities/simple-math/power_puter.json)

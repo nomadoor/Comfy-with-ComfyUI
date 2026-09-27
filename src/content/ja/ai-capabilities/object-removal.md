@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: 画像から特定のものだけを消すタスクと、その代表的なやり方
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: https://i.gyazo.com/e06eeccf0efa2e91773bb54acb31560a.gif
+  image: /media/ai-capabilities/object-removal/legacy_gyazo_e06eeccf0efa2e91773bb54acb31560a.mp4
 ---
 ## オブジェクト除去とは？
 
@@ -24,7 +24,7 @@ hero:
 
 拡散モデル登場以前は、LaMaのようなCNNベースのinpaintingモデルがSoTAとしてよく使われていました。
 
-![](https://gyazo.com/4c0b962c3983bc3296da9b994c07f3b6){gyazo=image}
+![](/media/ai-capabilities/object-removal/legacy_gyazo_4c0b962c3983bc3296da9b994c07f3b6.png){media=image}
 
 [](/workflows/ai-capabilities/object-removal/lama.json)
 
@@ -38,7 +38,7 @@ hero:
 
 消したいオブジェクトにマスクを描き、背景に合わせたプロンプト（例：「背景の芝生だけ」「何もない床」）を書いて、inpaintingします。
 
-![](https://gyazo.com/2cad88edab0d74b24f0fc78f528a320d){gyazo=image}
+![](/media/ai-capabilities/object-removal/legacy_gyazo_2cad88edab0d74b24f0fc78f528a320d.png){media=image}
 
 [](/workflows/ai-capabilities/object-removal/remake_for_sdxl_removing_object_and_filling_with_background.json)
 
@@ -54,7 +54,7 @@ hero:
 
 「この人を消して」「この標識を消して」「右下のロゴを消して」などと指示するだけです。
 
-![](https://gyazo.com/84af7edfab7cd344f7654090b7957166){gyazo=image}
+![](/media/ai-capabilities/object-removal/legacy_gyazo_84af7edfab7cd344f7654090b7957166.png){media=image}
 
 [](/workflows/ai-capabilities/object-removal/qwen_image_edit_2509_object_removal.json)
 

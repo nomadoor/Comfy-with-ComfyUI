@@ -28,7 +28,7 @@ hero:
 
 最简单的方法是，直接在提示词中写下位置关系。
 
-![](https://gyazo.com/70bc945855f5eb1162bba1cbd2babb60){gyazo=image}
+![](/media/ai-capabilities/region-limited-generation/legacy_gyazo_70bc945855f5eb1162bba1cbd2babb60.png){media=image}
 
 [](/workflows/ai-capabilities/region-limited-generation/flux_1_dev.json)
 
@@ -44,7 +44,7 @@ Stable Diffusion 的文本编码器几乎无法理解位置关系，但 Flux 以
 
 这是一旦生成图像后，多次重复 Inpainting 的方法。
 
-![](https://gyazo.com/2c5b6e3fd8491c24da35f6c5d8d825c9){gyazo=image}
+![](/media/ai-capabilities/region-limited-generation/legacy_gyazo_2c5b6e3fd8491c24da35f6c5d8d825c9.png){media=image}
 
 [](/workflows/ai-capabilities/region-limited-generation/flux_1_fill.json)
 
@@ -62,7 +62,7 @@ Stable Diffusion 的文本编码器几乎无法理解位置关系，但 Flux 以
 
 这是一种试图对图像的各位置应用不同文本条件的手法。利用 Cross-Attention 层，对每个区域使用不同的提示词。
 
-![](https://gyazo.com/bca9aa6c5425ee4f7e4294d081d04e18){gyazo=image}
+![](/media/ai-capabilities/region-limited-generation/legacy_gyazo_bca9aa6c5425ee4f7e4294d081d04e18.png){media=image}
 
 [](/workflows/ai-capabilities/region-limited-generation/conditioning_set_mask.json)
 
@@ -76,7 +76,7 @@ Stable Diffusion 的文本编码器几乎无法理解位置关系，但 Flux 以
 
 这是在潜在空间的阶段合成图像的方法。
 
-![](https://gyazo.com/87c4aa926f36889c2987cf5fc827c4e9){gyazo=image}
+![](/media/ai-capabilities/region-limited-generation/legacy_gyazo_87c4aa926f36889c2987cf5fc827c4e9.png){media=image}
 
 [](/workflows/ai-capabilities/region-limited-generation/latent_composite.json)
 
@@ -107,7 +107,7 @@ Latent Couple 是对整个 UNet 进行计算，而这里只计算 Cross-Attentio
 
 相应地计算量会少很多，但无法进行 LoRA 的区域指定
 
-![](https://gyazo.com/efd7424ffea10f0eed2ef0f4b744636d){gyazo=image}
+![](/media/ai-capabilities/region-limited-generation/legacy_gyazo_efd7424ffea10f0eed2ef0f4b744636d.png){media=image}
 
 [](/workflows/ai-capabilities/region-limited-generation/attention_couple.json)
 
@@ -117,7 +117,7 @@ Latent Couple 是对整个 UNet 进行计算，而这里只计算 Cross-Attentio
 
 这是制作粗略的拼贴图像，并以此为基础让其重做成自然画作的方法。
 
-![](https://gyazo.com/be997efbbc0c0802513bfab1e8ebe585){gyazo=image}
+![](/media/ai-capabilities/collage-refine/legacy_gyazo_be997efbbc0c0802513bfab1e8ebe585.png){media=image}
 
 可以非常直观地指定位置，生成的东西也只要贴上适当的物体就行，实际上是相当推荐的方法。
 

@@ -23,7 +23,7 @@ Lip Sync 是配合音频的内容或节奏，追加嘴巴或表情动作的技�
 
 ## 配合现有视频的对口型
 
-![](https://gyazo.com/17b81df017311b5fee98119e7e808492){gyazo=player} ![](https://gyazo.com/a6286699b56195148b64533d441561c0){gyazo=player}
+![](https://gyazo.com/17b81df017311b5fee98119e7e808492){gyazo=player} ![](/media/ai-capabilities/lip-sync/legacy_gyazo_a6286699b56195148b64533d441561c0.mp4){media=player}
 > ← 基础视频 | → Lip Sync (LatentSync)
 
 最初广为人知的是像 Wav2Lip 那样“只修改嘴角”类型的模型。
@@ -34,7 +34,7 @@ Lip Sync 是配合音频的内容或节奏，追加嘴巴或表情动作的技�
 
 ## 让一张静止画说话
 
-> ![](https://gyazo.com/a74335c1403caa5475429688f420212d){gyazo=player}
+> ![](/media/ai-capabilities/lip-sync/legacy_gyazo_a74335c1403caa5475429688f420212d.mp4){media=player}
 > EMO
 
 像 [EMO](https://humanaigc.github.io/emote-portrait-alive/) 这样的模型，可以从一张人脸图像和音频中直接生成说话的视频。
@@ -53,7 +53,7 @@ Lip Sync 是配合音频的内容或节奏，追加嘴巴或表情动作的技�
 
 再加上视频生成模型已经达到了实用的性能，不仅仅是单纯的“对口型”，正在朝着 **音频驱动型肖像视频生成** 的方向发展。
 
-> ![](https://gyazo.com/808dcfc73aa5fb1959eb35be3534e5e7){gyazo=player}
+> ![](/media/ai-capabilities/lip-sync/legacy_gyazo_808dcfc73aa5fb1959eb35be3534e5e7.mp4){media=player}
 > InfineTalk
 
 作为现在的 SoTA，有基于 Wan2.1 的 [FantasyTalking](https://fantasy-amap.github.io/fantasy-talking/) 或 [InfiniteTalk](https://meigen-ai.github.io/InfiniteTalk/) 等。

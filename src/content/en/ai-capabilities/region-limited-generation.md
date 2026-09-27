@@ -29,7 +29,7 @@ The technology for generating images with objects placed where you want them is 
 
 The simplest method is to write the positional relationship directly in the prompt.
 
-![](https://gyazo.com/70bc945855f5eb1162bba1cbd2babb60){gyazo=image}
+![](/media/ai-capabilities/region-limited-generation/legacy_gyazo_70bc945855f5eb1162bba1cbd2babb60.png){media=image}
 
 [](/workflows/ai-capabilities/region-limited-generation/flux_1_dev.json)
 
@@ -45,7 +45,7 @@ Still, it tends to break down with complex compositions, and it is a means of co
 
 A method of generating an image once and then repeating Inpainting many times.
 
-![](https://gyazo.com/2c5b6e3fd8491c24da35f6c5d8d825c9){gyazo=image}
+![](/media/ai-capabilities/region-limited-generation/legacy_gyazo_2c5b6e3fd8491c24da35f6c5d8d825c9.png){media=image}
 
 [](/workflows/ai-capabilities/region-limited-generation/flux_1_fill.json)
 
@@ -63,7 +63,7 @@ The weakness is that since they are generated separately, interactions between s
 
 A method that attempts to apply different text conditions to each position of the image. It uses the Cross-Attention layer to use different prompts for each region.
 
-![](https://gyazo.com/bca9aa6c5425ee4f7e4294d081d04e18){gyazo=image}
+![](/media/ai-capabilities/region-limited-generation/legacy_gyazo_bca9aa6c5425ee4f7e4294d081d04e18.png){media=image}
 
 [](/workflows/ai-capabilities/region-limited-generation/conditioning_set_mask.json)
 
@@ -77,7 +77,7 @@ Also, you cannot specify LoRA by region.
 
 A method of synthesizing images at the latent space stage.
 
-![](https://gyazo.com/87c4aa926f36889c2987cf5fc827c4e9){gyazo=image}
+![](/media/ai-capabilities/region-limited-generation/legacy_gyazo_87c4aa926f36889c2987cf5fc827c4e9.png){media=image}
 
 [](/workflows/ai-capabilities/region-limited-generation/latent_composite.json)
 
@@ -108,7 +108,7 @@ While Latent Couple calculated the entire UNet, this calculates only the Cross-A
 
 The computational complexity is much lower, but LoRA cannot be specified by region.
 
-![](https://gyazo.com/efd7424ffea10f0eed2ef0f4b744636d){gyazo=image}
+![](/media/ai-capabilities/region-limited-generation/legacy_gyazo_efd7424ffea10f0eed2ef0f4b744636d.png){media=image}
 
 [](/workflows/ai-capabilities/region-limited-generation/attention_couple.json)
 
@@ -118,7 +118,7 @@ The computational complexity is much lower, but LoRA cannot be specified by regi
 
 A method of creating a rough collage image and having it remade into a natural picture based on it.
 
-![](https://gyazo.com/be997efbbc0c0802513bfab1e8ebe585){gyazo=image}
+![](/media/ai-capabilities/collage-refine/legacy_gyazo_be997efbbc0c0802513bfab1e8ebe585.png){media=image}
 
 You can specify the position very intuitively, and since you just need to paste appropriate objects for what you want to generate, it is actually a highly recommended method.
 

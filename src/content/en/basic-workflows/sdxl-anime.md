@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "Rough organization of SDXL-based anime models"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/6ee98c633b487214c13c32a9af7d64cb.png"
+  image: "/media/basic-workflows/sdxl-anime/legacy_gyazo_6ee98c633b487214c13c32a9af7d64cb.png"
 tags: []
 ---
 
@@ -50,7 +50,7 @@ Updates have been continued until relatively recently, and it is a general-purpo
 
 ### Workflow
 
-![](https://gyazo.com/770f77d075432d57c742780aea2c9ce1){gyazo=image}
+![](/media/basic-workflows/sdxl-anime/legacy_gyazo_770f77d075432d57c742780aea2c9ce1.png){media=image}
 
 [](/workflows/basic-workflows/sdxl-anime/animagine_xl_4_0_opt.json)
 
@@ -68,7 +68,7 @@ I recall that at one time, alongside Pony Diffusion V6 XL below, it was one of t
 
 ### Workflow
 
-![](https://gyazo.com/6cdc06d70882c9e1aecb272e980f1c2f){gyazo=image}
+![](/media/basic-workflows/sdxl-anime/legacy_gyazo_6cdc06d70882c9e1aecb272e980f1c2f.png){media=image}
 
 [](/workflows/basic-workflows/sdxl-anime/illustrious_xl_v2_0.json)
 
@@ -85,7 +85,7 @@ It is stronger in fantasy, beastmen, and furry styles rather than Japanese anime
 
 ### Workflow
 
-![](https://gyazo.com/d1ffe73486004ff4986b887fe671e04e){gyazo=image}
+![](/media/basic-workflows/sdxl-anime/legacy_gyazo_d1ffe73486004ff4986b887fe671e04e.png){media=image}
 
 [](/workflows/basic-workflows/sdxl-anime/ponydiffusionv6xl_v6startwiththisone.json)
 
@@ -101,7 +101,7 @@ Anything XL is a merged model of several famous anime-style SDXL models (Animagi
 
 ### Workflow
 
-![](https://gyazo.com/68b9972f6b29c83589bf50b92c3b5f76){gyazo=image}
+![](/media/basic-workflows/sdxl-anime/legacy_gyazo_68b9972f6b29c83589bf50b92c3b5f76.png){media=image}
 
 [](/workflows/basic-workflows/sdxl-anime/anythingxl_xl.json)
 
@@ -118,6 +118,6 @@ Even in 2025, version upgrades such as v15 are continuing, and it is a relativel
 
 ### Workflow
 
-![](https://gyazo.com/da7b629edb4f3ca7e8c3eb24b10dc6ec){gyazo=image}
+![](/media/basic-workflows/sdxl-anime/legacy_gyazo_da7b629edb4f3ca7e8c3eb24b10dc6ec.png){media=image}
 
 [](/workflows/basic-workflows/sdxl-anime/waiillustrioussdxl_v150.json)

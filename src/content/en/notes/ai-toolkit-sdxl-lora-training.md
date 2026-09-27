@@ -11,7 +11,7 @@ noteTags: ["project", "lora", "sdxl", "ai-toolkit"]
 summary: "A practical flow for training a character LoRA for Illustrious-style SDXL models with AI Toolkit"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/b0d3bb95931f32192df7619f612a202e.png"
+  image: "/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_b0d3bb95931f32192df7619f612a202e.png"
 ---
 
 ## Training an SDXL (Illustrious) LoRA with AI Toolkit
@@ -70,7 +70,7 @@ Captions can be written as natural language or as tags. For SDXL, a comma-separa
 
 Let's look at the Myaku-Myaku example.
 
-![Myaku-Myaku](https://gyazo.com/0b39351c0a14cdf1e768d4cc64b9ac0c){gyazo=image}
+![Myaku-Myaku](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_0b39351c0a14cdf1e768d4cc64b9ac0c.png){media=image}
 
 There are several visible elements in the image:
 
@@ -138,7 +138,7 @@ If you train on Runpod, see this guide.
 
 After starting AI Toolkit, load the dataset first.
 
-![](https://gyazo.com/8e7d24641bb2491bca6ad449bddcaa69){gyazo=image}
+![](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_8e7d24641bb2491bca6ad449bddcaa69.png){media=image}
 
 1. Open the `Dataset` tab
 2. Click `New Dataset` in the upper right
@@ -155,7 +155,7 @@ In AI Toolkit, you create a training setup called a Job, then start that Job.
 
 Think of it as something like a workflow in ComfyUI.
 
-![](https://gyazo.com/b4ef7a58d34d67eb34963f61d1bc50c3){gyazo=image}
+![](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_b4ef7a58d34d67eb34963f61d1bc50c3.png){media=image}
 
 Open `+ New Job` and configure each item.
 
@@ -286,7 +286,7 @@ Download the LoRA checkpoints that are saved during training and test them in Co
 
 ### Download the LoRA
 
-![](https://gyazo.com/d3f7c198f0ffd434876eee7522f5387d){gyazo=image}
+![](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_d3f7c198f0ffd434876eee7522f5387d.png){media=image}
 
 Saved LoRA checkpoints appear in `Checkpoints` on the right side of the Job screen.  
 Use the download button to get them.
@@ -321,7 +321,7 @@ Review the dataset or adjust the learning rate.
 
 If you want to test several prompts at once, the `Create List` node is useful.
 
-![](https://gyazo.com/88aed03eb70c3ada096a5e388c3cc245){gyazo=image}
+![](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_88aed03eb70c3ada096a5e388c3cc245.png){media=image}
 
 [](/workflows/notes/ai-toolkit-sdxl-lora-training/sdxl_list.json)
 
@@ -352,8 +352,8 @@ Here are examples from this Myaku-Myaku LoRA.
 
 In this run, around 2700 step looks good.
 
-![800step](https://gyazo.com/c8739cbbb75ff09453c092c7e2612308){gyazo=image} ![1300step](https://gyazo.com/715f92faeca1d427be017153631582a8){gyazo=image} ![1800step](https://gyazo.com/266b39d5c9e8ec1d383e66af75ba2253){gyazo=image}
+![800step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_c8739cbbb75ff09453c092c7e2612308.png){media=image} ![1300step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_715f92faeca1d427be017153631582a8.png){media=image} ![1800step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_266b39d5c9e8ec1d383e66af75ba2253.png){media=image}
 
-![2400step](https://gyazo.com/040467bfb8701ff106ecc1fe01545f75){gyazo=image} ![😎 2700step](https://gyazo.com/b0d3bb95931f32192df7619f612a202e){gyazo=image} ![3000step](https://gyazo.com/a0a4b53f690cc515e08103225f336adb){gyazo=image}
+![2400step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_040467bfb8701ff106ecc1fe01545f75.png){media=image} ![😎 2700step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_b0d3bb95931f32192df7619f612a202e.png){media=image} ![3000step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_a0a4b53f690cc515e08103225f336adb.png){media=image}
 
-![3300step](https://gyazo.com/a90b8f3b293e75939c7dcfb26334ecd3){gyazo=image} ![3600step](https://gyazo.com/cf10d44f3c466e847754ed6dbe7f7bcc){gyazo=image} ![4000step](https://gyazo.com/708b9f6cc164cd85b65d35c56f0ceeb8){gyazo=image}
+![3300step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_a90b8f3b293e75939c7dcfb26334ecd3.png){media=image} ![3600step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_cf10d44f3c466e847754ed6dbe7f7bcc.png){media=image} ![4000step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_708b9f6cc164cd85b65d35c56f0ceeb8.png){media=image}

@@ -31,7 +31,7 @@ Basically, there are two places where models (sometimes called weights) are dist
 
 Let's download Stable Diffusion 1.5.
 
-![](https://gyazo.com/b274b58909cf22061a2506ab7b43bf61){gyazo=loop}
+![](/media/begin-with/downloading-and-placing-models/legacy_gyazo_b274b58909cf22061a2506ab7b43bf61.mp4){media=loop}
 
 - 1.  First, open the [Comfy-Org/stable-diffusion-v1-5-archive](https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive) page.
 - 2.  Click the `Files and versions` tab and find the target model file (e.g. `.safetensors` or `.ckpt`) from the file list.
@@ -54,7 +54,7 @@ Let's download Stable Diffusion 1.5.
 
 Let's download epiCRealism, which took the world by storm as a fine-tuning model of Stable Diffusion 1.5.
 
-![](https://i.gyazo.com/7bcde1665657f544a1191c760248dd80.png){gyazo=image}
+![](/media/begin-with/downloading-and-placing-models/legacy_gyazo_7bcde1665657f544a1191c760248dd80.png){media=image}
 
 - 1.  First, open the [epiCRealism](https://civitai.com/models/25694/epicrealism) page.
 - 2.  Click the blue **Download** button on the right side of the screen.
@@ -115,4 +115,4 @@ it will display the folder structure hierarchically on the menu.
 
 - `ComfyUI Icon` -> `⚙Settings` -> `rgthree-comfy settings` -> `Auto Nest Subdirectories in Menus ✅️`
 
-  ![](https://i.gyazo.com/dccf958c1d05e68e94bcb6bdd680e43c.png){gyazo=image}
+  ![](/media/begin-with/downloading-and-placing-models/legacy_gyazo_dccf958c1d05e68e94bcb6bdd680e43c.png){media=image}

@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: ""
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/f763b3b332d7854c0200b3d0690b7c7f.png"
+  image: "/media/begin-with/terminal/legacy_gyazo_f763b3b332d7854c0200b3d0690b7c7f.png"
 ---
 
 ## What is a Terminal?
@@ -22,7 +22,7 @@ It may be unfamiliar and intimidating for non-engineers, but if you actually try
 
 ## Basic Structure of CLI
 
-![](https://i.gyazo.com/90e4cdeaf87656d9d3b324cafc9b31eb.png){gyazo=image}
+![](/media/begin-with/terminal/legacy_gyazo_90e4cdeaf87656d9d3b324cafc9b31eb.png){media=image}
 
 * **Prompt**
     * The `PS D:\something` part.
@@ -49,14 +49,14 @@ It may be unfamiliar and intimidating for non-engineers, but if you actually try
 
 * `cd <path>`
     * Move folders.
-    ![](https://gyazo.com/aae05ca5c1531996bf5781960e260f46){gyazo=loop}
+    ![](/media/begin-with/terminal/legacy_gyazo_aae05ca5c1531996bf5781960e260f46.mp4){media=loop}
 * `dir`
     * Displays a list of folders and files in the current folder.
 * `mkdir <folder name>`
     * Creates a new folder.
 * `.\<file name>`
     * Runs an executable file in the current folder.
-    ![](https://gyazo.com/855ce160b4ec55a5e6f93198f7efd39c){gyazo=loop}
+    ![](/media/begin-with/terminal/legacy_gyazo_855ce160b4ec55a5e6f93198f7efd39c.mp4){media=loop}
 * `rm <file name>`
     * Deletes a file.
 

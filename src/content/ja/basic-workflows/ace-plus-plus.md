@@ -10,13 +10,13 @@ updated: 2026-03-02
 summary: "ACE++でFlux.1 Fillを拡張する"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/ca2c5be6b2a22cead23cf75a4fc8424f.png"
+  image: "/media/basic-workflows/ace-plus-plus/legacy_gyazo_ca2c5be6b2a22cead23cf75a4fc8424f.png"
 tags: ["id-transfer","subject-transfer"]
 ---
 
 ## ACE++とは？
 
-![](https://gyazo.com/1ecb26d7a9f2f9f558b02e91114cc692){gyazo=image}
+![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_1ecb26d7a9f2f9f558b02e91114cc692.png){media=image}
 
 これは以下のようなプロンプトで生成した1枚の画像です。
 - 2フレームに分かれた画像。
@@ -26,7 +26,7 @@ tags: ["id-transfer","subject-transfer"]
 見て分かるように、左右に映っている人物は同一人物に見えますね。
 これはスプライトシートテクニックといって、一貫性のあるシチュエーションを複数枚作りたいときに、Stable Diffusion 1.5 時代から使われていた裏技です。
 
-![](https://gyazo.com/5b66002abf37e213214611933ac7b833){gyazo=image}
+![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_5b66002abf37e213214611933ac7b833.png){media=image}
 
 ここから一歩進めて、上のような画像を与えたうえで、右半分だけを inpainting させてみます。  
 すると、**左の画像を参照しながら、右側に新たな画像が生成されます。**
@@ -89,7 +89,7 @@ Flux.1 Fill が「どこを描き直すか」、ACE++ の LoRA が「どのよ�
 
 参照画像の人物（顔）に似た画像を生成します。
 
-![](https://gyazo.com/ebe23ac6ca509cf96538f2a85fcf69c3){gyazo=image}
+![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_ebe23ac6ca509cf96538f2a85fcf69c3.png){media=image}
 
 [](/workflows/basic-workflows/ace-plus-plus/ace_plus_portrait.json)
 
@@ -109,7 +109,7 @@ Flux.1 Fill が「どこを描き直すか」、ACE++ の LoRA が「どのよ�
 
 基本は ID転送 と同じですが、「右側に入れるベース画像」と「マスクのかけ方」を変えることで Face Swap として動きます。
 
-![](https://gyazo.com/966d3c2bfcbaa5ae054fdd7ec4bb1c96){gyazo=image}
+![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_966d3c2bfcbaa5ae054fdd7ec4bb1c96.png){media=image}
 
 [](/workflows/basic-workflows/ace-plus-plus/ace_plus_portrait_faceswap.json)
 
@@ -124,7 +124,7 @@ FaceSwap といいながら、より柔軟なので、頭部全体をマスク�
 
 `comfyui_subject_lora16.safetensors` に切り替えると、Subject 転送が出来ます。
 
-![](https://gyazo.com/3e84f30e31b23d804ff651a4d29667e9){gyazo=image}
+![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_3e84f30e31b23d804ff651a4d29667e9.png){media=image}
 
 [](/workflows/basic-workflows/ace-plus-plus/ace_plus_subject.json)
 
@@ -142,7 +142,7 @@ FaceSwap といいながら、より柔軟なので、頭部全体をマスク�
 
 `comfyui_local_lora16.safetensors` を使うと、マスクした領域だけを **プロンプトに沿って描き直すローカル編集** に寄せることができます。
 
-![](https://gyazo.com/e93a8e393eca60dbb1832fd314402dec){gyazo=image}
+![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_e93a8e393eca60dbb1832fd314402dec.png){media=image}
 
 [](/workflows/basic-workflows/ace-plus-plus/ace_plus_local.json)
 

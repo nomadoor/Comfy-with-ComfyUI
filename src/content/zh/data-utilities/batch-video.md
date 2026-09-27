@@ -5,7 +5,7 @@ section: data-utilities
 slug: batch-video
 navId: batch-video
 title: "Batch 与视频"
-created: 2026-02-06
+created: 2025-11-27
 updated: 2026-03-02
 summary: "汇总处理多张图像和视频帧的机制"
 
@@ -44,7 +44,7 @@ Queue / List / Batch 的关系如下。
 进入 Batch 的图像，**必须全部是相同尺寸**。
 如果长宽不一致，会以第 1 张为基准，后续的图像会被自动裁剪。
 
-![](https://gyazo.com/8e42e9262108b5d6065a330d16863352){gyazo=image}
+![](/media/data-utilities/batch-video/legacy_gyazo_8e42e9262108b5d6065a330d16863352.png){media=image}
 
 [](/workflows/data-utilities/batch-video/diff_list_batch.json)
 
@@ -80,7 +80,7 @@ Queue / List / Batch 的关系如下。
 
 将多个 `IMAGE` 汇总为 Batch。
 
-![](https://gyazo.com/6663a7ba4d243f0afd79c41a9406a42d){gyazo=loop}
+![](/media/data-utilities/batch-video/legacy_gyazo_6663a7ba4d243f0afd79c41a9406a42d.mp4){media=loop}
 
 [](/workflows/data-utilities/batch-video/batch_images.json)
 
@@ -90,7 +90,7 @@ Queue / List / Batch 的关系如下。
 
 将文件夹内的图像作为 Batch 汇总。
 
-![](https://gyazo.com/fca9d0847d5c6a45aafa63c923b0e0d8){gyazo=image}
+![](/media/data-utilities/batch-video/legacy_gyazo_fca9d0847d5c6a45aafa63c923b0e0d8.png){media=image}
 
 [](/workflows/data-utilities/batch-video/load_image_batch_from_dir_load_image_path.json)
 
@@ -106,7 +106,7 @@ Queue / List / Batch 的关系如下。
 颠倒 Batch 的顺序。
 可用于视频的倒放等。
 
-![](https://gyazo.com/433f02c632e722abfe3174cd7eb23837){gyazo=image}
+![](/media/data-utilities/batch-video/legacy_gyazo_433f02c632e722abfe3174cd7eb23837.png){media=image}
 
 [](/workflows/data-utilities/batch-video/reverse_image_batch.json)
 
@@ -118,7 +118,7 @@ Queue / List / Batch 的关系如下。
 
 将各帧重复指定次数。
 
-![](https://gyazo.com/1384e9cff563f76a7b15fbd0f70f1aa5){gyazo=image}
+![](/media/data-utilities/batch-video/repeatimagebatch_imagebatchrepeatinterleaving.png){media=image}
 
 [](/workflows/data-utilities/batch-video/repeatimagebatch_imagebatchrepeatinterleaving.json)
 
@@ -133,7 +133,7 @@ Queue / List / Batch 的关系如下。
 
 从 Batch 中取出任意位置的图像。
 
-![](https://gyazo.com/6e48d34613f09e7dddfe3f40187f0de0){gyazo=image}
+![](/media/data-utilities/batch-video/legacy_gyazo_6e48d34613f09e7dddfe3f40187f0de0.png){media=image}
 
 [](/workflows/data-utilities/batch-video/imagefrombatch.json)
 
@@ -148,7 +148,7 @@ Queue / List / Batch 的关系如下。
 
 每隔 N 张获取帧。
 
-![](https://gyazo.com/f5b845e89342f120cc994b999e390e11){gyazo=image}
+![](/media/data-utilities/batch-video/legacy_gyazo_f5b845e89342f120cc994b999e390e11.png){media=image}
 
 [](/workflows/data-utilities/batch-video/select_every_nth_image.json)
 
@@ -163,7 +163,7 @@ Queue / List / Batch 的关系如下。
 
 ### Image Batch to Image List 节点
 
-![](https://gyazo.com/1b63fa52915e6e923b0802907066d81c){gyazo=image}
+![](/media/data-utilities/batch-video/image_batch_to_image_list.png){media=image}
 
 [](/workflows/data-utilities/batch-video/image_batch_to_image_list.json)
 

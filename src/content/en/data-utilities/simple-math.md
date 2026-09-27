@@ -5,7 +5,7 @@ section: data-utilities
 slug: simple-math
 navId: simple-math
 title: "Simple Math"
-created: 2025-11-25
+created: 2025-11-24
 updated: 2026-03-21
 summary: "About nodes that perform basic calculations such as arithmetic operations"
 
@@ -27,7 +27,7 @@ Let's look at the nodes for that.
 
 ## Math Expression
 
-![](https://gyazo.com/7ea9d7efa48a88e7b9bdfeef6b86d2d2){gyazo=image}
+![](/media/data-utilities/simple-math/legacy_gyazo_7ea9d7efa48a88e7b9bdfeef6b86d2d2.jpg){media=image}
 
 [](/workflows/data-utilities/simple-math/math_expression.json)
 
@@ -73,7 +73,7 @@ By the way, if you pass the value through the `Math Expression` node once, you c
 
 Even if the input is float, if the output destination is int, it will automatically convert it.
 
-![](https://gyazo.com/07161b2b92b1f8cedc7fa99cbf1d22cc){gyazo=image}
+![](/media/data-utilities/simple-math/legacy_gyazo_07161b2b92b1f8cedc7fa99cbf1d22cc.png){media=image}
 
 [](/workflows/data-utilities/simple-math/math_expression_floatint.json)
 
@@ -83,7 +83,7 @@ Even if the input is float, if the output destination is int, it will automatica
 
 If it is a simple calculation that does not worth using a node, if you write the calculation formula directly in the input field, the calculated value will be input.
 
-![](https://gyazo.com/a285ddb6cb86d6a0e8d3a58766afe51e){gyazo=image}
+![](/media/data-utilities/simple-math/legacy_gyazo_a285ddb6cb86d6a0e8d3a58766afe51e.mp4){media=loop}
 
 ---
 
@@ -93,6 +93,6 @@ If you use `Power Puter` added by **[rgthree-comfy](https://github.com/rgthree/r
 
 cf. [Node: Power Puter (Wiki)](https://github.com/rgthree/rgthree-comfy/wiki/Node:-Power-Puter)
 
-![](https://gyazo.com/20c5f92d6ef1e7057c6d42e2065d84b1){gyazo=image}
+![](/media/data-utilities/simple-math/power_puter.png){media=image}
 
 [](/workflows/data-utilities/simple-math/power_puter.json)

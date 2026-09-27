@@ -27,7 +27,7 @@ talking headの名の通り、顔を動かすことからスタートしまし�
 
 ### [Thin-Plate Spline Motion Model for Image Animation](https://github.com/yoyo-nb/Thin-Plate-Spline-Motion-Model)
 
-![](https://gyazo.com/8e6de400ea9bc95a25e689483bd6b238){gyazo=image} ![](https://gyazo.com/b38439d333755e724f174fa774f74f71){gyazo=loop} ![](https://gyazo.com/c86570789722d04da913aed1f9ffd268){gyazo=loop}
+![](/media/ai-capabilities/talking-head/legacy_gyazo_8e6de400ea9bc95a25e689483bd6b238.png){media=image} ![](/media/ai-capabilities/talking-head/legacy_gyazo_b38439d333755e724f174fa774f74f71.mp4){media=loop} ![](/media/ai-capabilities/talking-head/legacy_gyazo_c86570789722d04da913aed1f9ffd268.mp4){media=loop}
 
 1枚の画像と、動いている人の動画を入力すると、画像側がその動きを真似するように変形します。
 
@@ -35,7 +35,7 @@ talking headの名の通り、顔を動かすことからスタートしまし�
 
 ### [LivePortrait](/ja/basic-workflows/liveportrait/)
 
-![](https://gyazo.com/c893e38c12859f8f20ff1e0fca545788){gyazo=image}
+![](/media/ai-capabilities/talking-head/legacy_gyazo_c893e38c12859f8f20ff1e0fca545788.mp4){media=loop}
 
 [](/workflows/basic-workflows/liveportrait/liveportrait_i2v_ref.json)
 
@@ -49,7 +49,7 @@ talking headの名の通り、顔を動かすことからスタートしまし�
 
 次の世代では、拡散モデルを使って「絵そのものを描き直す」方向のtalking headが出てきました。[X-Portrait](https://byteaigc.github.io/x-portrait/)や[HelloMeme](https://songkey.github.io/hellomeme/)といった系統です。
 
-![](https://gyazo.com/c70468086a939dce538a876073c9c523){gyazo=loop}
+![](/media/ai-capabilities/talking-head/legacy_gyazo_c70468086a939dce538a876073c9c523.mp4){media=loop}
 
 [](/workflows/ai-capabilities/talking-head/hellomeme_video.json)
 
@@ -61,7 +61,7 @@ talking headの名の通り、顔を動かすことからスタートしまし�
 
 さらに新しい世代では、動画生成モデル自体をベースにしたtalking head / avatarモデルが登場しています。[OmniAvatar](https://omni-avatar.github.io/)や[Wan-Animate](https://humanaigc.github.io/wan-animate/)がこのラインにあたります。
 
-![](https://gyazo.com/9f0e0e20d750b2e207b01adc56858202){gyazo=image} ![](https://gyazo.com/d7f66b4153473136c37e48c7066709a1){gyazo=loop} ![](https://gyazo.com/86ed4c6aa64af79325ce18359a4021bc){gyazo=loop}
+![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_9f0e0e20d750b2e207b01adc56858202.png){media=image} ![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_d7f66b4153473136c37e48c7066709a1.mp4){media=loop} ![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_86ed4c6aa64af79325ce18359a4021bc.mp4){media=loop}
 > Wan-Animate
 
 Wan-Animateは、キャラクター画像と「動きを持った参照動画」を入力にして、その動きをなぞるようにキャラクターを動かすタイプのモデルです。

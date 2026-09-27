@@ -54,13 +54,13 @@ hero:
 
 ## 工作流
 
-![](https://gyazo.com/363769552b12b2072756280f163183df){gyazo=image}
+![](/media/basic-workflows/sd15-text2image/legacy_gyazo_363769552b12b2072756280f163183df.png){media=image}
 
 [](/workflows/basic-workflows/sd15-text2image/sd1_5_text2image.json)
 
 ## 关于各节点
 
-{% mediaRow img="https://gyazo.com/c9e67fd1fd3382708102f366bdf63855 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-text2image/legacy_gyazo_c9e67fd1fd3382708102f366bdf63855.png {media=image}", width=33, align="left" %}
 ### Load Checkpoint 节点
 
 加载旧格式的 Checkpoint 模型。
@@ -69,14 +69,14 @@ hero:
 - 因此，将会使用 Load Diffusion Model / Load CLIP / Load VAE 等单独的节点。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/2321a6cfbee1f95261c5bf857068f4b7 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-text2image/legacy_gyazo_2321a6cfbee1f95261c5bf857068f4b7.png {media=image}", width=33, align="left" %}
 ### Empty Latent Image 节点
 
 制作作为图像生成“出发点”的、空的潜在图像 (latent)。
 - 指定想要创建的图像尺寸。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/ba121f352d6252f885c2855cd99ad2f5 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-text2image/legacy_gyazo_ba121f352d6252f885c2855cd99ad2f5.png {media=image}", width=33, align="left" %}
 ### CLIP Text Encode 节点
 
 将文本提示词转换为模型可以理解的 Conditioning。
@@ -85,7 +85,7 @@ hero:
 - 输入到下一个 KSampler 的 `positive` 插槽就被视为 positive，输入到 `negative` 插槽就被视为 negative。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/5404e0e4a52dade391da4cb125b8512e {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-text2image/legacy_gyazo_5404e0e4a52dade391da4cb125b8512e.png {media=image}", width=33, align="left" %}
 ### KSampler 节点
 
 进行 Sampling（去噪），是图像生成核心的节点。
@@ -101,7 +101,7 @@ hero:
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/73b18040b915d0c1159a79cabbb8d065 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-text2image/legacy_gyazo_73b18040b915d0c1159a79cabbb8d065.png {media=image}", width=33, align="left" %}
 
 ### VAE Decode 节点
 
@@ -129,7 +129,7 @@ hero:
 
 ### 工作流
 
-![](https://gyazo.com/897f66c308b3b98440f641ee3d33d50e){gyazo=image}
+![](/media/basic-workflows/sd15-text2image/legacy_gyazo_897f66c308b3b98440f641ee3d33d50e.png){media=image}
 
 [](/workflows/basic-workflows/sd15-text2image/sd1_5_text2image_vae_ft_mse_840000.json)
 
@@ -194,6 +194,6 @@ CLIP 往往会更重视前面的文本，因此越靠后写的内容越不容易
 > 但是，这能顺利进行的前提终究是 CLIP 理解那个词的时候。  
 > 给可能根本不认识的词加上 `(Ghoti:999)` 之类的也没有意义。
 
-![](https://gyazo.com/e13bd76787711c8392334243177e60f3){gyazo=loop}
+![](/media/basic-workflows/sd15-text2image/legacy_gyazo_e13bd76787711c8392334243177e60f3.mp4){media=loop}
 
 - 将光标放在想改变关注度的词上，按 `Ctrl + 箭头↑/↓`，可以用 0.05 为单位进行调整。

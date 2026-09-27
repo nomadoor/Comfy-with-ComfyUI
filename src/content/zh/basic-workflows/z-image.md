@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "使用 Z-Image 的图像生成"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/39cddc1debeff5423090f2fe87e5b038.png"
+  image: "/media/basic-workflows/z-image/legacy_gyazo_39cddc1debeff5423090f2fe87e5b038.png"
 tags: []
 ---
 
@@ -18,7 +18,7 @@ tags: []
 
 Z-Image 是，Alibaba / Tongyi-MAI 开发的 **图像生成模型家族**。
 
-![](https://gyazo.com/126c0d5ef1364355014fdd7e3288825c){gyazo=image}
+![](/media/basic-workflows/z-image/z_family.png){media=image}
 
 Z-Image 这个名字本身是模型群的总称所以稍微难以理解，但在这个页面，处理作为派生源的基础模型的 **Z-Image**。
 （为了区别有时也被呼为 Z-Image-Base。）
@@ -54,7 +54,7 @@ Z-Image，作为（微调源的）基础模型，持有坦率的特性。
 
 ## text2image
 
-![](https://gyazo.com/8f4213b84c8d739021b8be032e8f6f8a){gyazo=image}
+![](/media/basic-workflows/z-image/legacy_gyazo_8f4213b84c8d739021b8be032e8f6f8a.png){media=image}
 
 [](/workflows/basic-workflows/z-image/z_image.json)
 
@@ -67,7 +67,7 @@ Z-Image，作为（微调源的）基础模型，持有坦率的特性。
 
 虽然 image2image 也可以，但在这里稍微时髦地将采样分为 2 段试试吧。
 
-![](https://gyazo.com/2545e8ea917a80488d8687464185410d){gyazo=image}
+![](/media/basic-workflows/z-image/legacy_gyazo_2545e8ea917a80488d8687464185410d.png){media=image}
 
 [](/workflows/basic-workflows/z-image/z_image_refine_turbo.json)
 
@@ -79,7 +79,7 @@ Z-Image，作为（微调源的）基础模型，持有坦率的特性。
 
 **比较**
 
-![仅 Z-Image](https://gyazo.com/73afc01007482bdfbcc0b0d33f75cb98){gyazo=image} ![Z-Image + Turbo](https://gyazo.com/0c1ece70589a7b42801f37383a604440){gyazo=image}
+![仅 Z-Image](/media/basic-workflows/z-image/legacy_gyazo_73afc01007482bdfbcc0b0d33f75cb98.png){media=image} ![Z-Image + Turbo](/media/basic-workflows/z-image/legacy_gyazo_0c1ece70589a7b42801f37383a604440.png){media=image}
 
 
 ## Z-Image-Fun-Controlnet-Union-2.1
@@ -101,7 +101,7 @@ Z-Image 用的 ControlNet 风补丁。
 
 ### 工作流
 
-![](https://gyazo.com/1eb558462ba943c91305960b112c6a63){gyazo=image}
+![](/media/basic-workflows/z-image/z_image_fun_controlnet_union_2_1.png){media=image}
 
 [](/workflows/basic-workflows/z-image/z_image_fun_controlnet_union_2_1.json)
 

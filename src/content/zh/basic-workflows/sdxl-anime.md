@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "SDXL 基础的动漫系模型的粗略整理"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/6ee98c633b487214c13c32a9af7d64cb.png"
+  image: "/media/basic-workflows/sdxl-anime/legacy_gyazo_6ee98c633b487214c13c32a9af7d64cb.png"
 tags: []
 ---
 
@@ -50,7 +50,7 @@ Animagine XL 是作为动漫系微调模型最初期登场的模型。
 
 ### 工作流
 
-![](https://gyazo.com/770f77d075432d57c742780aea2c9ce1){gyazo=image}
+![](/media/basic-workflows/sdxl-anime/legacy_gyazo_770f77d075432d57c742780aea2c9ce1.png){media=image}
 
 [](/workflows/basic-workflows/sdxl-anime/animagine_xl_4_0_opt.json)
 
@@ -68,7 +68,7 @@ Illustrious XL 是 [OnomaAI](https://www.illustrious-xl.ai/) 开发的模型。
 
 ### 工作流
 
-![](https://gyazo.com/6cdc06d70882c9e1aecb272e980f1c2f){gyazo=image}
+![](/media/basic-workflows/sdxl-anime/legacy_gyazo_6cdc06d70882c9e1aecb272e980f1c2f.png){media=image}
 
 [](/workflows/basic-workflows/sdxl-anime/illustrious_xl_v2_0.json)
 
@@ -85,7 +85,7 @@ Pony Diffusion V6 XL 正如其名，是名为为了生成小马宝莉而制作�
 
 ### 工作流
 
-![](https://gyazo.com/d1ffe73486004ff4986b887fe671e04e){gyazo=image}
+![](/media/basic-workflows/sdxl-anime/legacy_gyazo_d1ffe73486004ff4986b887fe671e04e.png){media=image}
 
 [](/workflows/basic-workflows/sdxl-anime/ponydiffusionv6xl_v6startwiththisone.json)
 
@@ -101,7 +101,7 @@ Anything XL（万象熔炉）是几个有名的动漫系 SDXL 模型（Animagine
 
 ### 工作流
 
-![](https://gyazo.com/68b9972f6b29c83589bf50b92c3b5f76){gyazo=image}
+![](/media/basic-workflows/sdxl-anime/legacy_gyazo_68b9972f6b29c83589bf50b92c3b5f76.png){media=image}
 
 [](/workflows/basic-workflows/sdxl-anime/anythingxl_xl.json)
 
@@ -118,6 +118,6 @@ WAI-illustrious 是以 Illustrious XL 为基础的派生模型之一，是现在
 
 ### 工作流
 
-![](https://gyazo.com/da7b629edb4f3ca7e8c3eb24b10dc6ec){gyazo=image}
+![](/media/basic-workflows/sdxl-anime/legacy_gyazo_da7b629edb4f3ca7e8c3eb24b10dc6ec.png){media=image}
 
 [](/workflows/basic-workflows/sdxl-anime/waiillustrioussdxl_v150.json)

@@ -35,7 +35,7 @@ Stable Diffusion 1.5 is trained mostly on **square images of 512px × 512px**.
 - Vertical and horizontal images are also trimmed to 512px squares for training.
 - As a result, it is good at "drawing squares around 512px", but it has not practiced "larger pictures" or "extreme vertical/horizontal shapes" in the first place.
 
-![](https://gyazo.com/a5fee7589b0c712f6db86426d8f1cc72){gyazo=image}
+![](/media/basic-workflows/sd15-hires-fix/legacy_gyazo_a5fee7589b0c712f6db86426d8f1cc72.png){media=image}
 
 In fact, if you generate at 768px or 1024px, dogs might split and appear as multiple dogs even though you wrote `a single dog`.
 

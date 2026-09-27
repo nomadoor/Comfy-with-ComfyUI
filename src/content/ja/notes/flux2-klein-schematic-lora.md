@@ -11,12 +11,12 @@ noteTags: ["project", "flux-2-klein", "lora"]
 summary: "FLUX.2 [klein] に CV タスク風の RGB 出力を学習させる"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/a0dc0970df98429dcf703e3ed095f6fa.png"
+  image: "/media/notes/flux2-klein-schematic-lora/legacy_gyazo_a0dc0970df98429dcf703e3ed095f6fa.png"
 ---
 
 ## 概要
 
-![](https://gyazo.com/2bd9f7b01d61bea0658ba82a750f227e){gyazo=image}
+![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_2bd9f7b01d61bea0658ba82a750f227e.png){media=image}
 
 画像生成モデルの事前知識を活用して、CV タスクに応用する研究はいくつもあります。代表的なものでいえば、[Marigold](https://marigoldmonodepth.github.io/)、[Lotus-2](https://huggingface.co/papers/2512.01030)、[SDPose](https://tsliang.top/SDPose/) などです。
 
@@ -54,7 +54,7 @@ Vision Banana では、主に depth / normal / segmentation が扱われてい�
 
 ### amodal segmentation
 
-![](https://gyazo.com/a0cf18a91c6349d3d3002fe98453b723){gyazo=image}
+![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_a0cf18a91c6349d3d3002fe98453b723.png){media=image}
 
 この中で、amodal segmentation というタスクには聞き覚えのない方がいるかもしれません。
 
@@ -120,7 +120,7 @@ amodal segmentation は、対象物の見えている部分だけでなく、隠
 
 作成手順:
 
-![](https://gyazo.com/c3daf3c0a5804bf37d4920a95c7dde61){gyazo=image}
+![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_c3daf3c0a5804bf37d4920a95c7dde61.png){media=image}
 
 1. 明確な subject と、それを自然に隠す occluder が含まれる occlusion scene のプロンプトを GPT-5.5 で作成
 2. Z-Image-Turbo で source image を生成
@@ -226,7 +226,7 @@ ComfyUI で実際に動かして、良さそうな step を選びます。すべ
 
 ### image edit Base
 
-![](https://gyazo.com/596669219726f35c5106037b4fce9e38){gyazo=image}
+![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_596669219726f35c5106037b4fce9e38.png){media=image}
 
 [](/workflows/notes/flux2-klein-schematic-lora/flux_2_klein_base_9b_image_edit.json)
 
@@ -242,9 +242,9 @@ Generate a relative depth map of the input image.
 
 | input | Depth Anything V2 | FLUX.2 [klein] LoRA |
 |---|---|---|
-| ![](https://gyazo.com/668960b4d9147ef1260a01957f93ce9a){gyazo=image} | ![](https://gyazo.com/20a4dcedf04be910c3dbf0830a34cd02){gyazo=image} | ![](https://gyazo.com/8d011d8f92dfaea759907a6430493d63){gyazo=image} |
-| ![](https://gyazo.com/206992247684d3cc8540037dffe4b088){gyazo=image} | ![](https://gyazo.com/1b39fbf77eb003a1aa38ce800728eb58){gyazo=image} | ![](https://gyazo.com/6e27345a2ecf071e40671ca000fd84f9){gyazo=image} |
-| ![](https://gyazo.com/0ec98b233b467a27a1ac497d2ccf02f9){gyazo=image} | ![](https://gyazo.com/7b1501385098f7cc43354a257739a069){gyazo=image} | ![](https://gyazo.com/ef6402a1b2562118d88f6c471e00bbc0){gyazo=image} |
+| ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_668960b4d9147ef1260a01957f93ce9a.jpg){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_20a4dcedf04be910c3dbf0830a34cd02.png){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_8d011d8f92dfaea759907a6430493d63.png){media=image} |
+| ![](/media/notes/flux2-klein-schematic-lora/relative_depth_cyclist_input.jpg){media=image} | ![](/media/notes/flux2-klein-schematic-lora/relative_depth_cyclist_depth_anything_v2.png){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_6e27345a2ecf071e40671ca000fd84f9.png){media=image} |
+| ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_0ec98b233b467a27a1ac497d2ccf02f9.jpg){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_7b1501385098f7cc43354a257739a069.png){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_ef6402a1b2562118d88f6c471e00bbc0.png){media=image} |
 
 ### normal map
 
@@ -254,9 +254,9 @@ Generate a surface normal map of the input image.
 
 | input | Lotus-2 | FLUX.2 [klein] LoRA |
 |---|---|---|
-| ![](https://gyazo.com/b3a1684aefa305aacdc41d92ea4c3485){gyazo=image} | ![](https://gyazo.com/a75bc8fdb2794f16d264f8da33dcd7cc){gyazo=image} | ![](https://gyazo.com/a1def11da46b031feabe3f0e6b3f50a2){gyazo=image} |
-| ![](https://gyazo.com/225d29e4318a97b1bfc378091cd06b0e){gyazo=image} | ![](https://gyazo.com/8cc65f987cd5dc9f277efbb242bc6a11){gyazo=image} | ![](https://gyazo.com/595aff620129e00f348fe4ebed8425c7){gyazo=image} |
-| ![](https://gyazo.com/a3566d450ba6209c256f8c55293a428c){gyazo=image} | ![](https://gyazo.com/c2aa1322ad6e17b2b900762ac63f1ba8){gyazo=image} | ![](https://gyazo.com/9f1ea3ff029395ab2d6121c059a3bc3a){gyazo=image} |
+| ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_b3a1684aefa305aacdc41d92ea4c3485.jpg){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_a75bc8fdb2794f16d264f8da33dcd7cc.png){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_a1def11da46b031feabe3f0e6b3f50a2.png){media=image} |
+| ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_225d29e4318a97b1bfc378091cd06b0e.jpg){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_8cc65f987cd5dc9f277efbb242bc6a11.png){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_595aff620129e00f348fe4ebed8425c7.png){media=image} |
+| ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_a3566d450ba6209c256f8c55293a428c.jpg){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_c2aa1322ad6e17b2b900762ac63f1ba8.png){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_9f1ea3ff029395ab2d6121c059a3bc3a.png){media=image} |
 
 ### pose body
 
@@ -266,9 +266,9 @@ Generate a body pose map of all visible people in the input image.
 
 | input | DWPose | FLUX.2 [klein] LoRA |
 |---|---|---|
-| ![](https://gyazo.com/c3e372e31e394aec307a20fbb9b5fb73){gyazo=image} | ![](https://gyazo.com/5aa247ce618c608d195328483bd5f336){gyazo=image} | ![](https://gyazo.com/d503b1b89f9361c12d110e95dba909f0){gyazo=image} |
-| ![](https://gyazo.com/9ee77ec890a84129011b3ef339576171){gyazo=image} | ![](https://gyazo.com/a4a31c41ec507aa59eb0430b0eb05fc3){gyazo=image} | ![](https://gyazo.com/b06ce32e1e60019e84844b5c885f0022){gyazo=image} |
-| ![](https://gyazo.com/bd3bb102f39717b6bbfdae0cc68e96b5){gyazo=image} | ![](https://gyazo.com/5f949073e42723d6bef17932c8aa6139){gyazo=image} | ![](https://gyazo.com/5fcc24d235f0360e1284f32cf30fa9ff){gyazo=image} |
+| ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_c3e372e31e394aec307a20fbb9b5fb73.jpg){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_5aa247ce618c608d195328483bd5f336.png){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_d503b1b89f9361c12d110e95dba909f0.png){media=image} |
+| ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_9ee77ec890a84129011b3ef339576171.jpg){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_a4a31c41ec507aa59eb0430b0eb05fc3.png){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_b06ce32e1e60019e84844b5c885f0022.png){media=image} |
+| ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_bd3bb102f39717b6bbfdae0cc68e96b5.jpg){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_5f949073e42723d6bef17932c8aa6139.png){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_5fcc24d235f0360e1284f32cf30fa9ff.png){media=image} |
 
 ### pose full
 
@@ -278,9 +278,9 @@ Generate a full pose map of all visible people in the input image.
 
 | input | DWPose | FLUX.2 [klein] LoRA |
 |---|---|---|
-| ![](https://gyazo.com/c3e372e31e394aec307a20fbb9b5fb73){gyazo=image} | ![](https://gyazo.com/cd1c92e205f413cc144b2ec534a398d3){gyazo=image} | ![](https://gyazo.com/aec346f0e8592e8f946f8c2993491955){gyazo=image} |
-| ![](https://gyazo.com/9ee77ec890a84129011b3ef339576171){gyazo=image} | ![](https://gyazo.com/90e9d09c619cbea9c8e788e7b4643616){gyazo=image} | ![](https://gyazo.com/ce5459cca85c4ec415e402d6ecf9da8f){gyazo=image} |
-| ![](https://gyazo.com/bd3bb102f39717b6bbfdae0cc68e96b5){gyazo=image} | ![](https://gyazo.com/5f949073e42723d6bef17932c8aa6139){gyazo=image} | ![](https://gyazo.com/db7abedc5ea7431d831076ce4f58353c){gyazo=image} |
+| ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_c3e372e31e394aec307a20fbb9b5fb73.jpg){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_cd1c92e205f413cc144b2ec534a398d3.png){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_aec346f0e8592e8f946f8c2993491955.png){media=image} |
+| ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_9ee77ec890a84129011b3ef339576171.jpg){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_90e9d09c619cbea9c8e788e7b4643616.png){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_ce5459cca85c4ec415e402d6ecf9da8f.png){media=image} |
+| ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_bd3bb102f39717b6bbfdae0cc68e96b5.jpg){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_5f949073e42723d6bef17932c8aa6139.png){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_db7abedc5ea7431d831076ce4f58353c.png){media=image} |
 
 ### binary segmentation
 
@@ -292,9 +292,9 @@ Generate a binary segmentation mask of all jars in the input image.
 
 | input | SAM 3.1 | FLUX.2 [klein] LoRA |
 |---|---|---|
-| ![](https://gyazo.com/38dd24bd0eec756210f300aa6bc22dbd){gyazo=image} | ![](https://gyazo.com/78f513b8690050f8085995e79a2bf16a){gyazo=image} | ![](https://gyazo.com/8a1faf3881821b454265ab60f7d97af0){gyazo=image} |
-| ![](https://gyazo.com/ff1760a3c6943a2e4e666ec61e1b6eab){gyazo=image} | ![](https://gyazo.com/1abbfc37a68d8335a7f66b9bed7561c3){gyazo=image} | ![](https://gyazo.com/f2ecfb80e270561e7685dfa227855c84){gyazo=image} |
-| ![](https://gyazo.com/5cc009a2cf9ed0da1a2ba74c12e1ec8c){gyazo=image} | ![](https://gyazo.com/a355a426888bd07b48efdf8ee3b6f7d7){gyazo=image} | ![](https://gyazo.com/61c49e77830d9ea82039b839cb18b38e){gyazo=image} |
+| ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_38dd24bd0eec756210f300aa6bc22dbd.jpg){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_78f513b8690050f8085995e79a2bf16a.png){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_8a1faf3881821b454265ab60f7d97af0.png){media=image} |
+| ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_ff1760a3c6943a2e4e666ec61e1b6eab.jpg){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_1abbfc37a68d8335a7f66b9bed7561c3.png){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_f2ecfb80e270561e7685dfa227855c84.png){media=image} |
+| ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_5cc009a2cf9ed0da1a2ba74c12e1ec8c.jpg){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_a355a426888bd07b48efdf8ee3b6f7d7.png){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_61c49e77830d9ea82039b839cb18b38e.png){media=image} |
 
 ### amodal segmentation
 
@@ -306,9 +306,9 @@ Generate an amodal segmentation mask of the steam locomotive in the input image.
 
 | input | SAM 3.1 visible mask | FLUX.2 [klein] LoRA |
 |---|---|---|
-| ![](https://gyazo.com/6b4da57f9c240ace62c66fe6c49c49f6){gyazo=image} | ![](https://gyazo.com/ab3b4dbd6acadbe89e038d121ba011c7){gyazo=image} | ![](https://gyazo.com/79f8e50117e8bbab8dcdfee43b5d75e3){gyazo=image} |
-| ![](https://gyazo.com/3882219095ebaa6a3c148be2cd6c8cbc){gyazo=image} | ![](https://gyazo.com/34b8014d2efe1557b06403772c5c009d){gyazo=image} | ![](https://gyazo.com/fc9840c4f47858a7d52351694494c6c0){gyazo=image} |
-| ![](https://gyazo.com/4a50a286d8870c218e6c792138983ff1){gyazo=image} | ![](https://gyazo.com/95c93284e620212e59cbf261b29f21eb){gyazo=image} | ![](https://gyazo.com/4a3159526479a1ac84b9ce1bc99262d7){gyazo=image} |
+| ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_6b4da57f9c240ace62c66fe6c49c49f6.jpg){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_ab3b4dbd6acadbe89e038d121ba011c7.png){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_79f8e50117e8bbab8dcdfee43b5d75e3.png){media=image} |
+| ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_3882219095ebaa6a3c148be2cd6c8cbc.jpg){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_34b8014d2efe1557b06403772c5c009d.png){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_fc9840c4f47858a7d52351694494c6c0.png){media=image} |
+| ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_4a50a286d8870c218e6c792138983ff1.jpg){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_95c93284e620212e59cbf261b29f21eb.png){media=image} | ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_4a3159526479a1ac84b9ce1bc99262d7.png){media=image} |
 
 ---
 

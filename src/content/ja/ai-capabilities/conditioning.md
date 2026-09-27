@@ -68,7 +68,7 @@ CLIPは短い説明や概念との対応には強い一方、長い文章や複�
 
 LLMやMLLMを使うことで、このような指示もより正確に理解できるようになります。
 
-{% mediaRow img="https://gyazo.com/21e83fc01b81ea693037ba3d17f39d5a{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/ai-capabilities/conditioning/legacy_gyazo_21e83fc01b81ea693037ba3d17f39d5a.png{media=image}", width=50, align="left" %}
 
 `A dog on a log with a frog in a bog`
 

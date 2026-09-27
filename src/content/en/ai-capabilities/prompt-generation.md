@@ -68,7 +68,7 @@ Some image generation models have dedicated LLMs prepared, but it does not mean 
 
 There are several LLMs that can be run locally in ComfyUI, but please also consider **calling Gemini or ChatGPT with API nodes**.
 
-![](https://gyazo.com/94496f33d758475aa62f614978ea2252){gyazo=image}
+![](/media/ai-capabilities/prompt-generation/legacy_gyazo_94496f33d758475aa62f614978ea2252.png){media=image}
 
 [](/workflows/ai-capabilities/prompt-generation/z_image_gemini_3.json)
 

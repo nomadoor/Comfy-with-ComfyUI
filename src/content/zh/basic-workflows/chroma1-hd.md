@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "用 Chroma1-HD 扩展 Flux.1-schnell"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/326db88733896540f58ce60e7320824f.png"
+  image: "/media/basic-workflows/chroma1-hd/legacy_gyazo_326db88733896540f58ce60e7320824f.png"
 tags: []
 ---
 
@@ -51,7 +51,7 @@ Chroma1-HD 与 Flux.1 不同，不使用 CLIP，仅利用 T5。
 
 ## text2image
 
-![](https://gyazo.com/319a7dc82aeea486d7f0912c830fb258){gyazo=image}
+![](/media/basic-workflows/chroma1-hd/legacy_gyazo_319a7dc82aeea486d7f0912c830fb258.png){media=image}
 
 [](/workflows/basic-workflows/chroma1-hd/chroma1_hd.json)
 

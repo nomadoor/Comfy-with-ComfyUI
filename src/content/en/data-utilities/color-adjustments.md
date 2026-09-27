@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "About image brightness adjustment, blur, and effects"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/e1ecb574e0c11da63b0c6f8cee7a9f87.png"
+  image: "/media/data-utilities/color-adjustments/legacy_gyazo_e1ecb574e0c11da63b0c6f8cee7a9f87.png"
 ---
 
 ## Color Adjustments & Effects
@@ -29,7 +29,7 @@ There are many custom nodes related to image processing, and more advanced proce
 
 ### Invert Image Node
 
-![](https://gyazo.com/79ea23575a35a9e8957853294e4f4e7e){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_79ea23575a35a9e8957853294e4f4e7e.png){media=image}
 
 [](/workflows/data-utilities/color-adjustments/invert_image.json)
 
@@ -37,7 +37,7 @@ Generates a negative image with inverted RGB values.
 
 ### Image Sharpen Node
 
-![](https://gyazo.com/0296ddc8958f0b0ee358afbdd449424b){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_0296ddc8958f0b0ee358afbdd449424b.png){media=image}
 
 [](/workflows/data-utilities/color-adjustments/imagesharpen.json)
 
@@ -45,7 +45,7 @@ Sharpens the outlines.
 
 ### Image Blur Node
 
-![](https://gyazo.com/b3ae153b9b69063b83e3fb1eeb9bd335){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_b3ae153b9b69063b83e3fb1eeb9bd335.png){media=image}
 
 [](/workflows/data-utilities/color-adjustments/imageblur.json)
 
@@ -53,7 +53,7 @@ Blurs the image.
 
 ### Image Quantize Node
 
-![](https://gyazo.com/08652b0b1815b616f8e644ed9067c56a){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_08652b0b1815b616f8e644ed9067c56a.png){media=image}
 
 [](/workflows/data-utilities/color-adjustments/imagequantize.json)
 
@@ -61,7 +61,7 @@ Reduces the number of colors (posterization).
 
 ### ImageAddNoise Node
 
-![](https://gyazo.com/e57bf28e9d62134222cce8daaab0079e){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_e57bf28e9d62134222cce8daaab0079e.png){media=image}
 
 [](/workflows/data-utilities/color-adjustments/imageaddnoise.json)
 
@@ -75,7 +75,7 @@ cf. [Adding noise to pixel images to increase details in image2image with low de
 
 ## Morphological Transformation
 
-![](https://gyazo.com/db828b756ce851d763f9589b267f6002){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_db828b756ce851d763f9589b267f6002.png){media=image}
 
 [](/workflows/data-utilities/color-adjustments/imagemorphology.json)
 
@@ -95,7 +95,7 @@ Among them, we will introduce one that covers basic functions and is simple and 
 
 - **[orion4d/ComfyUI-Image-Effects](https://github.com/orion4d/ComfyUI-Image-Effects)**
 
-![](https://i.gyazo.com/e1ecb574e0c11da63b0c6f8cee7a9f87.png){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_e1ecb574e0c11da63b0c6f8cee7a9f87.png){media=image}
 
 It includes many functions that humans would want to adjust, such as Hue/Saturation/Value adjustment (HSV adjustment), tone curve-like adjustment, and various filters.
 Please check the repository documentation for a detailed list of functions.

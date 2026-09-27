@@ -27,7 +27,7 @@ hero:
 
 ## 1. 視線誘導 (左上から右下へ)
 
-![](https://i.gyazo.com/30d3ce6a42f9f1783ab798e91d2d0f45.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_30d3ce6a42f9f1783ab798e91d2d0f45.png){media=image}
 
 他のノードツールに比べると、ComfyUIは「素材が一本道の生産ラインに乗せられて画像へ加工されていく」だけのシンプルな構造です。
 「リーダブルであるか？」という問いは、この一本道のラインを **どれだけ素早く見つけられるか？** と言い換えられるでしょう。
@@ -38,7 +38,7 @@ hero:
 
 ## 2. ワイヤを見せる
 
-![](https://i.gyazo.com/9846334b433e5a4122ee5cae02850543.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_9846334b433e5a4122ee5cae02850543.png){media=image}
 
 情報がどこからどこへ受け渡されるかは、ワイヤを見ることでしか分かりません。
 ノードの裏にワイヤが隠れてしまわないように配置しましょう。
@@ -48,7 +48,7 @@ hero:
 
 ## 3. Bento（弁当箱）レイアウトにしない
 
-![](https://i.gyazo.com/643b7ec8626411c1d7d08161e348b5b5.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_643b7ec8626411c1d7d08161e348b5b5.png){media=image}
 
 四角形の中に綺麗にノードを敷き詰めたい気持ちは分かりますが、**「視線誘導」** と **「ワイヤを見せる」** 観点からは最悪です。
 
@@ -59,7 +59,7 @@ ComfyUIには無限の広さのキャンバスがあります。
 
 ## 4. デフォルトのworkflowから始める
 
-![](https://i.gyazo.com/71fdea2d1aeea37542d068aa855e512f.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_71fdea2d1aeea37542d068aa855e512f.png){media=image}
 
 サイドバーの`Templates` → `Getting Started` → `Image Generation` から、基本となる text2image のワークフローを呼び出せます。
 
@@ -74,7 +74,7 @@ ComfyUIには無限の広さのキャンバスがあります。
 
 ## 5. ノードを色分けする
 
-![](https://i.gyazo.com/ccf1a2d336fdbfd0e94ae71926e8d9b6.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_ccf1a2d336fdbfd0e94ae71926e8d9b6.png){media=image}
 
 機能が増えてくると、どれがどの役割のノードか瞬時に判別できなくなります。
 
@@ -86,7 +86,7 @@ ComfyUIには無限の広さのキャンバスがあります。
 
 ## 6. ノート（コメント）を書く
 
-![](https://i.gyazo.com/fa2b5d6e3560c0b56e068228f91f649a.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_fa2b5d6e3560c0b56e068228f91f649a.png){media=image}
 
 モデルの選択、CFGの値、サンプラーの種類… 生成AIには無数のパラメータがあり、**「なぜその値にしたのか」** をみんな知りたがっています。
 
@@ -95,7 +95,7 @@ ComfyUIには無限の広さのキャンバスがあります。
 
 ## 7. 小さく、シンプルに
 
-![](https://i.gyazo.com/2a9c66fa28c01a8bd12b24fdde2a07a4.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_2a9c66fa28c01a8bd12b24fdde2a07a4.png){media=image}
 
 ワークフローが肥大化すると、処理時間が長くなり、エラー率が上がり、読みづらくなります。
 
@@ -105,7 +105,7 @@ ComfyUIには無限の広さのキャンバスがあります。
 
 ## 8. カスタムノードは最小限に
 
-![](https://gyazo.com/e26d548e44643c52f6658eb368846cbf){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_e26d548e44643c52f6658eb368846cbf.png){media=image}
 
 カスタムノードはComfyUIを強力なものにしている機能ですが、コアノードと違い、メンテナンスされる保証も、確実に動く保証もありません。
 

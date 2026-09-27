@@ -16,7 +16,7 @@ hero:
 
 ## 症状
 
-![](https://gyazo.com/3054a82b909490117748ae061e29c35e){gyazo=image}
+![](/media/notes/import-failed/legacy_gyazo_3054a82b909490117748ae061e29c35e.png){media=image}
 
 - 启动 ComfyUI 时，终端排列着许多 `(IMPORT FAILED)` 的行，特定的自定义节点无法使用，或者没有出现在节点列表中。
 

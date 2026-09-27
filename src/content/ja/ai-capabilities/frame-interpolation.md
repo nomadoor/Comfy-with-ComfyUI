@@ -28,7 +28,7 @@ hero:
 一般的なVFIは、時間的に近い2枚のフレーム（0.1秒未満程度）を受け取り、その間に挟まる「中間フレーム」を1枚以上生成します。これを繰り返すことで、動画全体のフレーム数を増やします。
 
 
-![](https://gyazo.com/af7273352979b5286d8f85a9b6915ab6.png){gyazo=image}
+![](/media/ai-capabilities/frame-interpolation/legacy_gyazo_af7273352979b5286d8f85a9b6915ab6.mp4){media=loop}
 
 [](/workflows/ai-capabilities/frame-interpolation/vfi_gmfss.json)
 
@@ -42,7 +42,7 @@ hero:
 
 最近はそこから一歩進んで、**1秒以上離れたフレームの間を、動画生成モデルの力で埋める**タイプの技術が登場しています。
 
-![](https://gyazo.com/669467e658bbd5cd9e03207a5ccd1faa.gif){gyazo=image}
+![](/media/ai-capabilities/frame-interpolation/legacy_gyazo_669467e658bbd5cd9e03207a5ccd1faa.mp4){media=loop}
 
 [](/workflows/ai-capabilities/frame-interpolation/tooncrafter_interp.json)
 
@@ -63,7 +63,7 @@ ToonCrafterはこの系統の初期のモデルですが、新しい動画モデ
 - 2–3 枚目の間を埋める…
 - 3–4 枚目の間を埋める…
 
-![](https://gyazo.com/356c0e45a7ccf73ace4714f84ccc30fa.gif){gyazo=loop}
+![](/media/ai-capabilities/frame-interpolation/legacy_gyazo_356c0e45a7ccf73ace4714f84ccc30fa.mp4){media=loop}
 
 VACE の**Extension**は、ここから一段発展しています。
 
@@ -72,6 +72,6 @@ VACE の**Extension**は、ここから一段発展しています。
 例えば、81フレームの動画を生成するとしましょう。
 そのうち何フレームかに「キーフレーム」を差し込みます。モデルは、そのキーフレーム同士を**同じ時間軸の中で**自然につなぐように動画を生成します。
 
-![](https://gyazo.com/1bd83bd9c5258b25ce9016917516a526.gif){gyazo=image}
+![](/media/ai-capabilities/frame-interpolation/legacy_gyazo_1bd83bd9c5258b25ce9016917516a526.png){media=image}
 
 FLF2Vと比べ、遥かに自然な動画が生成されます。おそらく、今後はExtensionのような技術が主流になるでしょう。

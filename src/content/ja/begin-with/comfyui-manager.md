@@ -10,7 +10,7 @@ updated: 2026-05-27
 summary: "ComfyUI Managerについて"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/76b47ed5d45cf694b436022589464255.png"
+  image: "/media/begin-with/comfyui-manager/legacy_gyazo_76b47ed5d45cf694b436022589464255.png"
 ---
 
 ## ComfyUI Managerとは
@@ -23,7 +23,7 @@ ComfyUI Manager は、ltdrdata氏が開発した、カスタムノードのイ�
 
 ## 新旧Manager
 
-![](https://gyazo.com/a0b09641bae0c8b02187e6c6b7bb9c5a){gyazo=image}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_a0b09641bae0c8b02187e6c6b7bb9c5a.png){media=image}
 
 ややこしいことに、現在の ComfyUI Manager には **新しい Manager** と **従来(レガシー)の Manager** の二種類が存在します。
 
@@ -98,7 +98,7 @@ ComfyUI Desktop を使っている場合、ComfyUI Manager は最初から含ま
 
 ### ComfyUI Manager を開く
 
-![](https://gyazo.com/ff8b7cdae4aba2a086a9cfebe8019023){gyazo=image}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_ff8b7cdae4aba2a086a9cfebe8019023.png){media=image}
 
 インストールと有効化ができていれば、右上に `Extensions` ボタンが表示されます。
 
@@ -131,7 +131,7 @@ python main.py --enable-manager --enable-manager-legacy-ui
 
 ### 現行UI
 
-![](https://gyazo.com/85ac7d6fb86580c06f252938e153a152){gyazo=loop}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_85ac7d6fb86580c06f252938e153a152.mp4){media=loop}
 
 1. 検索バーにノード名を入力して検索
 2. `Install` をクリック
@@ -139,7 +139,7 @@ python main.py --enable-manager --enable-manager-legacy-ui
 
 ### レガシーUI
 
-![](https://gyazo.com/c0d8901537b65da709f9ba9d6e1a0055){gyazo=loop}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_c0d8901537b65da709f9ba9d6e1a0055.mp4){media=loop}
 
 1. `Custom Nodes Manager` をクリック
 2. 検索バーにノード名を入力して検索
@@ -152,7 +152,7 @@ python main.py --enable-manager --enable-manager-legacy-ui
 
 ### 現行UI
 
-![](https://gyazo.com/3f8316ae71333f2214173e9987346153){gyazo=image}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_3f8316ae71333f2214173e9987346153.png){media=image}
 
 `Updates Available` のタブに移動
 
@@ -163,7 +163,7 @@ python main.py --enable-manager --enable-manager-legacy-ui
 
 ### レガシーUI
 
-![](https://gyazo.com/3eeb7b5df0d8567f0fdc37ec8c73fff1){gyazo=image}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_3eeb7b5df0d8567f0fdc37ec8c73fff1.png){media=image}
 
 1. `Custom Nodes Manager` をクリック
 2. Filter を `Installed` にして、インストールされているものだけ表示

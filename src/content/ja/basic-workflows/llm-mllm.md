@@ -51,7 +51,7 @@ ComfyUI上のコードだけで無理矢理動かしているため、llama-cpp�
 
 もちろん、コアで動かせるというだけで素晴らしくはありますが、現状はまだおすすめできるものではありません。
 
-![Gemma 3](https://gyazo.com/4e2275270a8f40c8ecdbe2b286addb2e){gyazo=image}
+![Gemma 3](/media/basic-workflows/llm-mllm/legacy_gyazo_4e2275270a8f40c8ecdbe2b286addb2e.png){media=image}
 
 [](/workflows/basic-workflows/llm-mllm/textgenerate_gemma3.json)
 
@@ -67,7 +67,7 @@ ComfyUI上のコードだけで無理矢理動かしているため、llama-cpp�
 
 キャプション生成や物体検出など、特定のタスクに特化した軽量モデルがメインになります。
 
-![Florence2](https://gyazo.com/b364e8bc1ba2799ad953384f4dfe2079){gyazo=image}
+![Florence2](/media/basic-workflows/florence2/legacy_gyazo_b364e8bc1ba2799ad953384f4dfe2079.png){media=image}
 
 **対応している代表的なモデル**
 - [JoyCaption](/ja/basic-workflows/joycaption/)
@@ -88,7 +88,7 @@ LLMの推論は Ollama や LM Studio といった「専門のエンジン」に�
 
 いわゆるChatGPT や Gemini といったクローズドなサービスを、API経由で呼び出すComfyUI公式ノードです。
 
-![Google_Gemini](https://gyazo.com/0d12a7369948fa19779c0b7ffb487cd0){gyazo=image}
+![Google_Gemini](/media/basic-workflows/api-nodes/legacy_gyazo_0d12a7369948fa19779c0b7ffb487cd0.png){media=image}
 
 身も蓋もないことを言えば、ローカルモデルより遥かに賢く、そして速い です。
 - PC の負荷が完全にゼロ。画像生成を回しながら裏でプロンプトを練らせても、生成速度に一切影響しません

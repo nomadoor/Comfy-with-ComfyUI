@@ -29,7 +29,7 @@ hero:
 - 1. まとめたいノードを複数選択
 - 2. `Node Selection Toolbox` の `🕸️` (Convert Selection to Subgraph) をクリック
 
-![](https://gyazo.com/d59c55b69252fad5f076a9b5e17be95a){gyazo=loop}
+![](/media/begin-with/subgraphs/legacy_gyazo_d59c55b69252fad5f076a9b5e17be95a.mp4){media=loop}
 
 ---
 
@@ -39,7 +39,7 @@ hero:
 
 基本操作は通常と同じですが、外部とやり取りするパラメータは、サブグラフの入出力スロット（左端・右端）に接続する必要があります。
 
-![](https://gyazo.com/5d5ebc1bc37a8dfdaad5a5db64d66cb2){gyazo=loop}
+![](/media/begin-with/subgraphs/legacy_gyazo_5d5ebc1bc37a8dfdaad5a5db64d66cb2.mp4){media=loop}
 
 ---
 
@@ -52,7 +52,7 @@ hero:
 - 2. `Node Selection Toolbox` の `Edit Subgraph Widgets` をクリック
 - 3. 公開したいパラメータにチェックを入れる
 
-![](https://gyazo.com/024e67b6cea67bda0849829b3762f4ba){gyazo=loop}
+![](/media/begin-with/subgraphs/legacy_gyazo_024e67b6cea67bda0849829b3762f4ba.mp4){media=loop}
 
 ---
 
@@ -68,6 +68,6 @@ hero:
 
 サイドバーのノードライブラリからも確認でき、ここからBlueprintの削除・編集を行います。
 
-![](https://gyazo.com/74f9469b12a6b87fc7a62099dde54db7){gyazo=loop}
+![](/media/begin-with/subgraphs/legacy_gyazo_74f9469b12a6b87fc7a62099dde54db7.mp4){media=loop}
 
 [](/workflows/begin-with/subgraphs/chroma_key.json)

@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "Lumina-Image 2.0の基本とComfyUIでの使い方"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/0eef66b0663a16cd722915b2dcde0c84.png"
+  image: "/media/basic-workflows/lumina-image-2.0/legacy_gyazo_0eef66b0663a16cd722915b2dcde0c84.png"
 tags: []
 ---
 
@@ -52,7 +52,7 @@ Gemma 2B 系テキストエンコーダを採用しつつ、モデル本体は S
 
 ## text2image
 
-![](https://gyazo.com/7230949afb0971f994ed67980b88c14d){gyazo=image}
+![](/media/basic-workflows/lumina-image-2.0/legacy_gyazo_7230949afb0971f994ed67980b88c14d.png){media=image}
 
 [](/workflows/basic-workflows/lumina-image-2.0/lumina_image_2_0.json)
 
@@ -80,7 +80,7 @@ Gemma 2B 系テキストエンコーダを採用しつつ、モデル本体は S
 
 ### text2image
 
-![](https://gyazo.com/f9d633456c16c8869b941394fe17bac4){gyazo=image}
+![](/media/basic-workflows/lumina-image-2.0/legacy_gyazo_f9d633456c16c8869b941394fe17bac4.png){media=image}
 
 [](/workflows/basic-workflows/lumina-image-2.0/neta_lumina_v1_0.json)
 
@@ -119,7 +119,7 @@ Neta Lumina をベースに、さらにファインチューニングした [Net
 
 ### text2image
 
-![](https://gyazo.com/eb9e649d59482227ed68b7c4c0ed86eb){gyazo=image}
+![](/media/basic-workflows/lumina-image-2.0/legacy_gyazo_eb9e649d59482227ed68b7c4c0ed86eb.png){media=image}
 
 [](/workflows/basic-workflows/lumina-image-2.0/netayumev4.json)
 
@@ -159,7 +159,7 @@ NewBie-image（Exp0.1）は、Luminaアーキテクチャ研究の知見を踏�
 
 ### text2image
 
-![](https://gyazo.com/d7253fbe289e281e77dbb074d42c392d){gyazo=image}
+![](/media/basic-workflows/lumina-image-2.0/legacy_gyazo_d7253fbe289e281e77dbb074d42c392d.png){media=image}
 
 [](/workflows/basic-workflows/lumina-image-2.0/newbie_image_exp0_1.json)
 

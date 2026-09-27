@@ -25,11 +25,18 @@
           "link": 2
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
       "properties": {
         "Node name for S&R": "PreviewImage"
       },
-      "widgets_values": []
+      "widgets_values": [],
+      "widgets_values_named": {}
     },
     {
       "id": 2,
@@ -66,7 +73,11 @@
       "widgets_values": [
         "Image_fx.jpg",
         "image"
-      ]
+      ],
+      "widgets_values_named": {
+        "image": "Image_fx.jpg",
+        "upload": "image"
+      }
     },
     {
       "id": 1,
@@ -106,6 +117,11 @@
         1,
         "nearest-exact"
       ],
+      "widgets_values_named": {
+        "resize_type": "scale total pixels",
+        "resize_type.megapixels": 1,
+        "scale_method": "nearest-exact"
+      },
       "color": "#232",
       "bgcolor": "#353"
     }
@@ -132,13 +148,13 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1,
+      "scale": 0.7513148009015777,
       "offset": [
-        -89.54552426367871,
-        278.38818173595405
+        172.90147573632163,
+        369.3241817359541
       ]
     },
-    "frontendVersion": "1.38.4",
+    "frontendVersion": "1.51.9",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

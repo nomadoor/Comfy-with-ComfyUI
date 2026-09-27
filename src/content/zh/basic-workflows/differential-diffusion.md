@@ -10,7 +10,7 @@ updated: 2026-08-26
 summary: "用掩膜的浓度控制变化量"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/1f32a3d04b7ee26518803718151fc1d0.png"
+  image: "/media/basic-workflows/differential-diffusion/legacy_gyazo_1f32a3d04b7ee26518803718151fc1d0.png"
 ---
 
 ## 什么是 Differential Diffusion？
@@ -33,7 +33,7 @@ hero:
 
 ### 工作流
 
-![](https://gyazo.com/32341a2b91def8997072eb24dde93cce){gyazo=image}
+![](/media/basic-workflows/differential-diffusion/legacy_gyazo_32341a2b91def8997072eb24dde93cce.png){media=image}
 
 [](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion.json)
 
@@ -53,7 +53,7 @@ hero:
 
 通过**在一张掩膜图像中，为不同位置设置不同的浓淡**，就能在一次采样中为各个部位指定不同的变化量。
 
-![](https://gyazo.com/4b3d0506456a4f1dc8aa062d4e445b17){gyazo=image}
+![](/media/basic-workflows/differential-diffusion/legacy_gyazo_4b3d0506456a4f1dc8aa062d4e445b17.png){media=image}
 
 [](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion_multi_obj.json)
 
@@ -65,7 +65,7 @@ inpainting 的一个常见问题，是掩膜的边界会清楚地显现出来。
 
 将 Differential Diffusion 与模糊后的掩膜组合使用，可以让边界衔接得更加自然。
 
-![](https://gyazo.com/e54a8d82e7dca29bf6ab19fdb20c3354){gyazo=image}
+![](/media/basic-workflows/differential-diffusion/legacy_gyazo_e54a8d82e7dca29bf6ab19fdb20c3354.png){media=image}
 
 [](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion_blur.json)
 
@@ -79,7 +79,7 @@ inpainting 的一个常见问题，是掩膜的边界会清楚地显现出来。
 
 也就是说，它可以直接作为 Differential Diffusion 的掩膜使用。
 
-![](https://gyazo.com/ac52958c32bb143910151029c53707d1){gyazo=image}
+![](/media/basic-workflows/differential-diffusion/legacy_gyazo_ac52958c32bb143910151029c53707d1.png){media=image}
 
 [](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion_depthmap.json)
 
@@ -93,4 +93,4 @@ inpainting 的一个常见问题，是掩膜的边界会清楚地显现出来。
 
 ## 样本图像
 
-![](https://gyazo.com/8d2eb48340cf6f6f99e539e11517d6a2){gyazo=image} ![](https://gyazo.com/d8cd78b75de91ed4e9a1da1eedfcf21d){gyazo=image} ![](https://gyazo.com/ff958820180efd9b316cb42ddd9c0276){gyazo=image} ![](https://gyazo.com/2d0d14ad85109598f389e5ac0ad7b85f){gyazo=image}
+![](/media/basic-workflows/differential-diffusion/legacy_gyazo_8d2eb48340cf6f6f99e539e11517d6a2.png){media=image} ![](/media/basic-workflows/differential-diffusion/legacy_gyazo_d8cd78b75de91ed4e9a1da1eedfcf21d.png){media=image} ![](/media/basic-workflows/differential-diffusion/legacy_gyazo_ff958820180efd9b316cb42ddd9c0276.png){media=image} ![](/media/basic-workflows/differential-diffusion/legacy_gyazo_2d0d14ad85109598f389e5ac0ad7b85f.png){media=image}

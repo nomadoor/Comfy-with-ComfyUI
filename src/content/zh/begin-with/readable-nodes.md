@@ -27,7 +27,7 @@ hero:
 
 ## 1. 视线引导 (从左上到右下)
 
-![](https://i.gyazo.com/30d3ce6a42f9f1783ab798e91d2d0f45.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_30d3ce6a42f9f1783ab798e91d2d0f45.png){media=image}
 
 相比于其他节点工具，ComfyUI 只是“让素材搭上一条直线生产线，加工成图像”的简单结构。
 “是否 Readable？”这个问题，可以换成：**能否快速找到这条直线？**。
@@ -38,7 +38,7 @@ hero:
 
 ## 2. 展示连线
 
-![](https://i.gyazo.com/9846334b433e5a4122ee5cae02850543.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_9846334b433e5a4122ee5cae02850543.png){media=image}
 
 信息从哪里传递到哪里，只有通过看连线才能明白。
 在配置时，要注意不要让连线藏在节点后面。
@@ -48,7 +48,7 @@ hero:
 
 ## 3. 不要用 Bento（便当盒）布局
 
-![](https://i.gyazo.com/643b7ec8626411c1d7d08161e348b5b5.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_643b7ec8626411c1d7d08161e348b5b5.png){media=image}
 
 虽然能理解想把节点整齐地塞进四边形里的心情，但从 **“视线引导”** 和 **“展示连线”** 的角度来看，这是最糟糕的。
 
@@ -59,7 +59,7 @@ ComfyUI 拥有无限广阔的画布。
 
 ## 4. 从默认 工作流 开始
 
-![](https://i.gyazo.com/71fdea2d1aeea37542d068aa855e512f.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_71fdea2d1aeea37542d068aa855e512f.png){media=image}
 
 从侧边栏的 `Templates` → `Getting Started` → `Image Generation`，可以调用基础的 text2image 工作流。
 
@@ -74,7 +74,7 @@ ComfyUI 拥有无限广阔的画布。
 
 ## 5. 对节点进行颜色分类
 
-![](https://i.gyazo.com/ccf1a2d336fdbfd0e94ae71926e8d9b6.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_ccf1a2d336fdbfd0e94ae71926e8d9b6.png){media=image}
 
 随着功能增加，就会无法瞬间判别哪个是承担什么角色的节点。
 
@@ -86,7 +86,7 @@ ComfyUI 拥有无限广阔的画布。
 
 ## 6. 写笔记（注释）
 
-![](https://i.gyazo.com/fa2b5d6e3560c0b56e068228f91f649a.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_fa2b5d6e3560c0b56e068228f91f649a.png){media=image}
 
 模型的选择、CFG 的值、采样器的种类…… 生成 AI 有无数的参数，大家都想知道 **“为什么要设成这个值”**。
 
@@ -95,7 +95,7 @@ ComfyUI 拥有无限广阔的画布。
 
 ## 7. 保持小巧、简单
 
-![](https://i.gyazo.com/2a9c66fa28c01a8bd12b24fdde2a07a4.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_2a9c66fa28c01a8bd12b24fdde2a07a4.png){media=image}
 
 工作流一旦肥大化，处理时间就会变长，错误率会上升，也会变得难以阅读。
 
@@ -105,7 +105,7 @@ ComfyUI 拥有无限广阔的画布。
 
 ## 8. 自定义节点最小化
 
-![](https://gyazo.com/e26d548e44643c52f6658eb368846cbf){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_e26d548e44643c52f6658eb368846cbf.png){media=image}
 
 自定义节点虽然是让 ComfyUI 变得强大的功能，但与核心节点不同，它既不能保证会被维护，也不能保证一定能运行。
 

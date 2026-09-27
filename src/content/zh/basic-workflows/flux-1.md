@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "Flux.1 的基础和在 ComfyUI 中的使用方法"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/9fd52a56e1f6b7cbf8cd96ca78484d02.png"
+  image: "/media/basic-workflows/flux-1/legacy_gyazo_9fd52a56e1f6b7cbf8cd96ca78484d02.png"
 tags: []
 ---
 
@@ -66,7 +66,7 @@ Flux.1 有 3 个变体。
 
 ## text2image - Flux.1 [dev]
 
-![](https://gyazo.com/2b89975e1b96fcbbd56880d31a0cd9c4){gyazo=image}
+![](/media/basic-workflows/flux-1/legacy_gyazo_2b89975e1b96fcbbd56880d31a0cd9c4.png){media=image}
 
 [](/workflows/basic-workflows/flux1/flux1_dev.json)
 
@@ -85,7 +85,7 @@ Flux.1 dev / schnell 是 **蒸馏了固定 CFG 为 1.0 状态的模型**。
 
 是进一步蒸馏了 Flux.1 [dev] 的东西，可以用 4〜6 步生成图像。
 
-![](https://gyazo.com/365108a45e0039af1ce0d35cf2cdcfa6){gyazo=image}
+![](/media/basic-workflows/flux-1/legacy_gyazo_365108a45e0039af1ce0d35cf2cdcfa6.png){media=image}
 
 [](/workflows/basic-workflows/flux1/flux1_schnell.json)
 - 将 `steps` 设为 4〜6。
@@ -98,7 +98,7 @@ Flux.1 dev / schnell 是 **蒸馏了固定 CFG 为 1.0 状态的模型**。
 
 * [AWPortrait-FL-lora.safetensors](https://huggingface.co/Shakker-Labs/AWPortrait-FL/blob/main/AWPortrait-FL-lora.safetensors)
 
-![](https://gyazo.com/292030d5a8ffc53619232546c7ce750b){gyazo=image}
+![](/media/basic-workflows/flux-1/legacy_gyazo_292030d5a8ffc53619232546c7ce750b.png){media=image}
 
 [](/workflows/basic-workflows/flux1/flux1_dev_lora.json)
 
@@ -127,7 +127,7 @@ Flux.1 用的 ControlNet 模型也公开了几个，这里以 Union 型模型为
 
 ControlNet-Union 将多个代表性的 ControlNet 内置在 1 个模型中。
 
-![](https://gyazo.com/9e7cb79f7ca50fe5946ac9f232a552c6){gyazo=image}
+![](/media/basic-workflows/flux-1/legacy_gyazo_9e7cb79f7ca50fe5946ac9f232a552c6.png){media=image}
 
 [](/workflows/basic-workflows/flux1/flux_1_dev_controlnet_union_pro_depth.json)
 
@@ -169,7 +169,7 @@ ControlNet-Union 将多个代表性的 ControlNet 内置在 1 个模型中。
 
 ### 工作流
 
-![](https://gyazo.com/f465ff82b48c4c7b5d5b9ce144f3dc8d){gyazo=image}
+![](/media/basic-workflows/flux-1/legacy_gyazo_f465ff82b48c4c7b5d5b9ce144f3dc8d.png){media=image}
 
 [](/workflows/basic-workflows/flux1/flux_1_dev_gguf.json)
 

@@ -11,12 +11,12 @@ noteTags: ["project", "erp", "lora", "flux"]
 summary: "A dedicated UI for placing reference images on an ERP canvas and filling the rest with outpainting"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/0732762b1efdf916b6a5836a9078e90e.png"
+  image: "/media/notes/panorama-stickers/legacy_gyazo_0732762b1efdf916b6a5836a9078e90e.png"
 ---
 
 ## ComfyUI Panorama Stickers
 
-![](https://gyazo.com/748e50cd59976f45acabd7cf39d45bc6){gyazo=player}
+![](/media/notes/panorama-stickers/legacy_gyazo_748e50cd59976f45acabd7cf39d45bc6.mp4){media=player}
 
 This is a dedicated UI for **FLUX.2 Klein 4B/9B 360 ERP Outpaint LoRA**, which creates a 360 panorama from reference images.
 
@@ -39,12 +39,11 @@ Then you can have FLUX.2 Klein edit the output ERP as-is to complete the panoram
 
 ## Node Overview
 
-This custom node consists of four nodes.
+This page covers the following three nodes.
 
 - `Panorama Stickers`: places images on the ERP canvas
 - `Panorama Cutout`: cuts out any viewpoint inside the panorama, like taking a photo
 - `Panorama Preview`: previews on the node itself
-- `Panorama Seam Prep`: prepares the left/right seam
 
 ---
 
@@ -62,7 +61,7 @@ To keep it stable on both Legacy and Node 2.0, the main design is to operate it 
 
 > `Panorama Preview` can still be previewed on the node, but operation is designed around the modal UI.
 
-{% mediaRow img="https://gyazo.com/fc789c1056b38005c59d1e5be6c3095d{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_fc789c1056b38005c59d1e5be6c3095d.mp4{media=loop}", width=60, align="left" %}
 
 **Open the modal UI**
 
@@ -70,7 +69,7 @@ To keep it stable on both Legacy and Node 2.0, the main design is to operate it 
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/18d7795a35504cf58fe4813ed364a00e{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_18d7795a35504cf58fe4813ed364a00e.mp4{media=loop}", width=60, align="left" %}
 
 **Move viewpoint / Zoom**
 
@@ -79,7 +78,7 @@ To keep it stable on both Legacy and Node 2.0, the main design is to operate it 
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/02163c2018590f8b022623f9e711878d{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_02163c2018590f8b022623f9e711878d.mp4{media=loop}", width=60, align="left" %}
 
 **Bottom-right buttons**
 
@@ -88,7 +87,7 @@ To keep it stable on both Legacy and Node 2.0, the main design is to operate it 
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/ec0a8aaafab38c71dd23bdb075f224d5{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_ec0a8aaafab38c71dd23bdb075f224d5.mp4{media=loop}", width=60, align="left" %}
 
 **Switch render mode**
 
@@ -96,7 +95,7 @@ To keep it stable on both Legacy and Node 2.0, the main design is to operate it 
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/0873609554f60abe700f435144d23936{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_0873609554f60abe700f435144d23936.mp4{media=loop}", width=60, align="left" %}
 
 **Drag direction**
 
@@ -109,7 +108,7 @@ To keep it stable on both Legacy and Node 2.0, the main design is to operate it 
 
 This is the editor for placing reference images on the ERP canvas.
 
-{% mediaRow img="https://gyazo.com/217f50a8bb037ca6c10ce55cd230bf8d{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_217f50a8bb037ca6c10ce55cd230bf8d.mp4{media=loop}", width=60, align="left" %}
 
 **Add images**
 
@@ -118,7 +117,7 @@ This is the editor for placing reference images on the ERP canvas.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/e9907e0255952679f448d7796dd9d719{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_e9907e0255952679f448d7796dd9d719.mp4{media=loop}", width=60, align="left" %}
 
 **Move / Scale / Rotate images**
 
@@ -129,7 +128,7 @@ This is the editor for placing reference images on the ERP canvas.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/e7ca94b114093b218c82a333761021a3{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_e7ca94b114093b218c82a333761021a3.mp4{media=loop}", width=60, align="left" %}
 
 **Stack order / Duplicate**
 
@@ -139,7 +138,7 @@ This is the editor for placing reference images on the ERP canvas.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/6080f7006f8dfdfcd1e15fd30a394e50{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_6080f7006f8dfdfcd1e15fd30a394e50.mp4{media=loop}", width=60, align="left" %}
 
 **Delete images**
 
@@ -148,7 +147,7 @@ This is the editor for placing reference images on the ERP canvas.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/ba80aed93898c33f2f2588f7245723eb{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_ba80aed93898c33f2f2588f7245723eb.mp4{media=loop}", width=60, align="left" %}
 
 **Select images from the Inspector**
 
@@ -161,7 +160,7 @@ This is the editor for placing reference images on the ERP canvas.
 
 This is the editor for stepping inside the panorama and cutting out any viewpoint as if you were taking a photo with a camera.
 
-{% mediaRow img="https://gyazo.com/e7e7075770cd2693e94334bf09743fac{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_e7e7075770cd2693e94334bf09743fac.mp4{media=loop}", width=60, align="left" %}
 
 **Add frames**
 
@@ -170,7 +169,7 @@ This is the editor for stepping inside the panorama and cutting out any viewpoin
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/033ef3fd91b9bb4cc283906ae53b7269{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_033ef3fd91b9bb4cc283906ae53b7269.mp4{media=loop}", width=60, align="left" %}
 
 **Move / Scale / Rotate frames**
 
@@ -179,7 +178,7 @@ This is the editor for stepping inside the panorama and cutting out any viewpoin
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/da133d6d6fc2c17e7f4a59f716b92fec{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_da133d6d6fc2c17e7f4a59f716b92fec.mp4{media=loop}", width=60, align="left" %}
 
 **Switch to preset aspect ratios**
 
@@ -188,7 +187,7 @@ This is the editor for stepping inside the panorama and cutting out any viewpoin
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/a6d69406f8888c84cbbdcbd42a184107{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_a6d69406f8888c84cbbdcbd42a184107.mp4{media=loop}", width=60, align="left" %}
 
 **Move viewpoint to the frame**
 
@@ -201,7 +200,7 @@ This is the editor for stepping inside the panorama and cutting out any viewpoin
 
 This node lets you preview directly on the node. It uses the same modal UI as the others, but with a narrower feature set.
 
-{% mediaRow img="https://gyazo.com/fe09e529eea57ebf960f97b0d7720514{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_fe09e529eea57ebf960f97b0d7720514.mp4{media=loop}", width=60, align="left" %}
 
 **On-node preview**
 
@@ -209,7 +208,7 @@ This node lets you preview directly on the node. It uses the same modal UI as th
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/c98e12d762e11fb8922ffa3991912d6b{gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_c98e12d762e11fb8922ffa3991912d6b.png{media=image}", width=60, align="left" %}
 
 **Fullscreen**
 
@@ -218,20 +217,6 @@ This node lets you preview directly on the node. It uses the same modal UI as th
 
 {% endmediaRow %}
 
-
-## Panorama Seam Prep
-
-No matter how well the model is trained, getting the left and right edges (the seam) of a panorama to match perfectly is difficult.  
-This node is used when you shift the image so the seam comes to the center, then do a final inpainting pass on that seam.
-
-![](https://gyazo.com/09deac88400d8e8d1f9301eda07c7b13){gyazo=image}
-
-- `seam_width_px`: sets the width of the mask
-- `seam_center_offset_px`: shifts the seam away from the center
-- `mask_blur_px`: blurs both ends of the mask
-  - Use this when compositing the inpainted result back onto the original image
-
----
 
 ## workflow
 
@@ -278,7 +263,7 @@ Let's actually use the LoRA and create an ERP panorama from reference images.
 
 ### flux-2-klein-9B-360-erp-outpaint
 
-![](https://gyazo.com/fc52e8eca49723f6ca9fd426abadc636){gyazo=image}
+![](/media/notes/panorama-stickers/legacy_gyazo_fc52e8eca49723f6ca9fd426abadc636.png){media=image}
 [](/workflows/notes/panorama-stickers/flux_2_klein_9b_360_erp_outpaint.json)
 
 - Use `Panorama Stickers` to place reference images and create the ERP
@@ -292,5 +277,5 @@ Fill the green spaces according to the image. Outpaint as a seamless 360 equirec
 
 ### flux-2-klein-4B-360-erp-outpaint
 
-![](https://gyazo.com/fa6b005b1c0389c38728310e5b7a3085){gyazo=image}
+![](/media/notes/panorama-stickers/legacy_gyazo_fa6b005b1c0389c38728310e5b7a3085.png){media=image}
 [](/workflows/notes/panorama-stickers/flux_2_klein_4b_360_erp_outpaint.json)

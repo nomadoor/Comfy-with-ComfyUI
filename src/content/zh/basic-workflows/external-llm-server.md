@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "在 ComfyUI 外部运行 LLM 并与其联动"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/da95a615f374717f19b3447244ad647a.png"
+  image: "/media/basic-workflows/external-llm-server/legacy_gyazo_da95a615f374717f19b3447244ad647a.png"
 ---
 
 ## 外部 LLM 服务器集成
@@ -40,7 +40,7 @@ Ollama 也提供了这个[兼容 API](https://docs.ollama.com/api/openai-compati
 
 ## 安装 Ollama
 
-![](https://gyazo.com/a01ee125967ce857275bc883a5c3a1dd){gyazo=image}
+![](/media/basic-workflows/external-llm-server/legacy_gyazo_a01ee125967ce857275bc883a5c3a1dd.png){media=image}
 
 本次使用简单易用的开源推理引擎 **[Ollama](https://ollama.com/)**。
 
@@ -83,7 +83,7 @@ ollama run qwen3-vl:8b
 
 ### 最简聊天
 
-![](https://gyazo.com/767f4fd9d6adf6727fc075fac1d14479){gyazo=image}
+![](/media/basic-workflows/external-llm-server/legacy_gyazo_767f4fd9d6adf6727fc075fac1d14479.png){media=image}
 
 [](/workflows/basic-workflows/external-llm-server/openai_api_chat.json)
 
@@ -99,7 +99,7 @@ ollama run qwen3-vl:8b
 该节点内部没有"记忆"功能。
 若要延续对话，将上一个节点的 `History` 连接到下一个节点的 `History`，每次请求时一并发送历史记录。
 
-![](https://gyazo.com/274ae7b0dac7a88e4481cd4ca815757f){gyazo=image}
+![](/media/basic-workflows/external-llm-server/legacy_gyazo_274ae7b0dac7a88e4481cd4ca815757f.png){media=image}
 
 [](/workflows/basic-workflows/external-llm-server/openai_api_chat_history.json)
 
@@ -120,7 +120,7 @@ ollama run qwen3-vl:8b
 
 趁此机会，让模型根据输入图像生成提示词，再用该提示词生成相似图像。
 
-![](https://gyazo.com/214851c957532e34fb705e0d5feeeef9){gyazo=image}
+![](/media/basic-workflows/external-llm-server/legacy_gyazo_214851c957532e34fb705e0d5feeeef9.png){media=image}
 
 [](/workflows/basic-workflows/external-llm-server/openai_api_chat_image2prompt.json)
 

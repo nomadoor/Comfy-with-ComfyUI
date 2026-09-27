@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "关于终端 (CLI) 的基础知识"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/f763b3b332d7854c0200b3d0690b7c7f.png"
+  image: "/media/begin-with/terminal/legacy_gyazo_f763b3b332d7854c0200b3d0690b7c7f.png"
 ---
 
 ## 什么是终端？
@@ -22,7 +22,7 @@ hero:
 
 ## CLI 的基本结构
 
-![](https://i.gyazo.com/90e4cdeaf87656d9d3b324cafc9b31eb.png){gyazo=image}
+![](/media/begin-with/terminal/legacy_gyazo_90e4cdeaf87656d9d3b324cafc9b31eb.png){media=image}
 
 * **提示符 (Prompt)**
     * `PS D:\某种路径` 的部分。
@@ -48,14 +48,14 @@ hero:
 
 * `cd <路径>`
     * 移动文件夹。
-    ![](https://gyazo.com/aae05ca5c1531996bf5781960e260f46){gyazo=loop}
+    ![](/media/begin-with/terminal/legacy_gyazo_aae05ca5c1531996bf5781960e260f46.mp4){media=loop}
 * `dir`
     * 显示当前文件夹内的文件夹和文件列表。
 * `mkdir <文件夹名>`
     * 创建新文件夹。
 * `.\<文件名>`
     * 运行当前文件夹中的可执行文件。
-    ![](https://gyazo.com/855ce160b4ec55a5e6f93198f7efd39c){gyazo=loop}
+    ![](/media/begin-with/terminal/legacy_gyazo_855ce160b4ec55a5e6f93198f7efd39c.mp4){media=loop}
 * `rm <文件名>`
     * 删除文件。
 

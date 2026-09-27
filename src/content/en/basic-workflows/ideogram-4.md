@@ -10,7 +10,7 @@ updated: 2026-06-18
 summary: "Image generation with Ideogram 4.0"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/cb9116562b7693e120aa63eafef11769.png"
+  image: "/media/basic-workflows/ideogram-4/legacy_gyazo_cb9116562b7693e120aa63eafef11769.png"
 tags: []
 ---
 
@@ -113,7 +113,7 @@ You can also give it reference images or a rough sketch you made.
 
 Local models that can run inside ComfyUI usually are not strong enough for this, so it is better to rely on ChatGPT, Gemini, and similar tools.
 
-![](https://gyazo.com/b314abc36bec096b81fb3231a2687064){gyazo=image}
+![](/media/basic-workflows/ideogram-4/legacy_gyazo_b314abc36bec096b81fb3231a2687064.png){media=image}
 
 - [Sample chat with ChatGPT](https://chatgpt.com/share/6a28f7cc-e934-8320-86d6-f790a5274389)
 
@@ -123,7 +123,7 @@ Another option is to use a dedicated prompt builder and create the prompt visual
 
 For example, [ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes) includes a commonly used node called `Ideogram 4 Prompt Builder KJ`.
 
-![](https://gyazo.com/a1c3a269983b478c1f605e2f0a5c6e4f){gyazo=image}
+![](/media/basic-workflows/ideogram-4/legacy_gyazo_a1c3a269983b478c1f605e2f0a5c6e4f.png){media=image}
 
 - Set the generated image size, then enter the background and style fields.
 - Drag in the region field to create a BBOX, then set the prompt and color code for what you want drawn there.
@@ -132,13 +132,13 @@ For example, [ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes) include
 
 ## text2image
 
-![](https://gyazo.com/c9a2cf1717e87cd1ba28c5d236a02b4d){gyazo=image}
+![](/media/basic-workflows/ideogram-4/legacy_gyazo_c9a2cf1717e87cd1ba28c5d236a02b4d.png){media=image}
 
 [](/workflows/basic-workflows/ideogram-4/ideogram_4_0_text2image.json)
 
 Aside from the prompt, there are a few parts that are slightly different from a normal workflow, so let's look only at those.
 
-{% mediaRow img="https://gyazo.com/c0d5e9131313e7c3c5255b4f54d55dbb {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/ideogram-4/legacy_gyazo_c0d5e9131313e7c3c5255b4f54d55dbb.png {media=image}", width=33, align="left" %}
 **Load Diffusion Model**
 
 Ideogram 4.0 loads two diffusion models for its slightly unusual CFG.
@@ -169,7 +169,7 @@ This is a LoRA published by Ostris for generating in 2 to 8 steps.
 
 ### text2image (8 step)
 
-![](https://gyazo.com/f75015885dc02060128725d779ce7d49){gyazo=image}
+![](/media/basic-workflows/ideogram-4/legacy_gyazo_f75015885dc02060128725d779ce7d49.png){media=image}
 
 [](/workflows/basic-workflows/ideogram-4/ideogram_4_0_text2image_turbotime.json)
 
@@ -177,7 +177,7 @@ This is a LoRA published by Ostris for generating in 2 to 8 steps.
 - It is described as a 2 to 8 step LoRA, but very low step counts clearly start to break the image.
 - For now, using it at 8 steps is a good choice.
 
-{% mediaRow img="https://gyazo.com/26ef78ed5bf868ab5ca9a62b643640ff {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/ideogram-4/legacy_gyazo_26ef78ed5bf868ab5ca9a62b643640ff.png {media=image}", width=33, align="left" %}
 **CFG**
 
 This is an old small technique, but the CFG value changes between the first and second half of sampling.

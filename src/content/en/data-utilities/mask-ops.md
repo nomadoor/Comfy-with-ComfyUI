@@ -5,8 +5,8 @@ section: data-utilities
 slug: mask-ops
 navId: mask-ops
 title: "Mask Operations"
-created: 2025-11-26
-updated: 2026-03-02
+created: 2025-11-25
+updated: 2026-09-27
 summary: "How to create and edit masks"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -17,7 +17,7 @@ hero:
 
 ### MaskPreview Node
 
-![](https://gyazo.com/a9dd4acbc14438fd7edfe85d3a14c6f3){gyazo=image}
+![](/media/data-utilities/mask-ops/legacy_gyazo_a9dd4acbc14438fd7edfe85d3a14c6f3.png){media=image}
 
 [](/workflows/data-utilities/mask-ops/maskpreview.json)
 
@@ -25,7 +25,7 @@ This is the mask version of the `Preview Image` node.
 
 ### Convert Mask to Image Node
 
-![](https://gyazo.com/28a1d381f0697c598db58f1e4c5648c6){gyazo=image}
+![](/media/data-utilities/mask-ops/legacy_gyazo_28a1d381f0697c598db58f1e4c5648c6.png){media=image}
 
 [](/workflows/data-utilities/mask-ops/convert_mask_to_image.json)
 
@@ -37,7 +37,7 @@ Converts a mask to a black and white `Image`.
 
 ### Load Image (as Mask) Node
 
-![](https://gyazo.com/49e0e05fc6511b8e37a16439afad6fed){gyazo=image}
+![](/media/data-utilities/mask-ops/legacy_gyazo_49e0e05fc6511b8e37a16439afad6fed.png){media=image}
 
 [](/workflows/data-utilities/mask-ops/load_image_as_mask.json)
 
@@ -49,7 +49,7 @@ Loads an image file directly as mask data.
 
 ### Convert Image to Mask Node
 
-![](https://gyazo.com/aa0f427a4464958a9ebea27ac925294a){gyazo=image}
+![](/media/data-utilities/mask-ops/legacy_gyazo_aa0f427a4464958a9ebea27ac925294a.png){media=image}
 
 [](/workflows/data-utilities/mask-ops/convert_image_to_mask.json)
 
@@ -59,7 +59,7 @@ It's like breaking down the `Load Image (as Mask)` node.
 
 ### 🪢 Color To Mask Node
 
-![](https://gyazo.com/c38c27135c901d0db5927d493b5b8650){gyazo=image}
+![](/media/data-utilities/mask-ops/legacy_gyazo_c38c27135c901d0db5927d493b5b8650.png){media=image}
 
 [](/workflows/data-utilities/mask-ops/color_to_mask.json)
 
@@ -71,11 +71,11 @@ There is a core node called `ImageColorToMask` with similar functionality, but i
 
 Specify the target color in RGB and adjust the color error with `threshold`.
 
-### SolidMask Node
+### Create Solid Mask Node
 
-![](https://gyazo.com/088fbef6cdf9175a1a5bb0c08cfc9d8f){gyazo=image}
+![](/media/data-utilities/mask-ops/create_solid_mask.png){media=image}
 
-[](/workflows/data-utilities/mask-ops/solidmask.json)
+[](/workflows/data-utilities/mask-ops/create_solid_mask.json)
 
 Creates a rectangular mask of the specified size.
 
@@ -87,7 +87,7 @@ A tool that allows you to draw specific parts of an image as a mask (black and w
 
 - **How to launch**: Select a `Load Image` node etc. → Click `🌔` (Open Mask Editor) in the `Node Selection Toolbox`.
 
-![](https://gyazo.com/05a4f6930a6d074435ac29b77c97e82e){gyazo=loop}
+![](/media/begin-with/mask-editor/legacy_gyazo_05a4f6930a6d074435ac29b77c97e82e.mp4){media=loop}
 
 Switch functions with the tabs on the left edge.
 
@@ -105,7 +105,7 @@ For detailed operation instructions, please see [Mask Editor](/en/begin-with/mas
 
 ### 🪢 Depth Map
 
-![](https://i.gyazo.com/f2313d12383bc625fbf7f0c16cb8ba34.png){gyazo=image}
+![](/media/data-utilities/mask-ops/legacy_gyazo_f2313d12383bc625fbf7f0c16cb8ba34.png){media=image}
 
 [](/workflows/data-utilities/mask-ops/depthmapasmask.json)
 
@@ -123,7 +123,7 @@ For how to create depth maps, please see [ControlNet Preprocessor](/en/basic-wor
 
 It is covered in detail in [Resize Image/Mask Node](/en/data-utilities/resize-crop-pad/#resize-image-mask-node), so please refer to that.
 
-![](https://gyazo.com/fd9f3fab0b5ead47c84ce51f9ec3325a){gyazo=image}
+![](/media/data-utilities/mask-ops/legacy_gyazo_fd9f3fab0b5ead47c84ce51f9ec3325a.png){media=image}
 
 [](/workflows/data-utilities/mask-ops/resize_imagemask_match_size.json)
 
@@ -134,7 +134,7 @@ By using `match size`, you can resize the mask side to match the reference image
 
 ### CropMask Node
 
-![](https://gyazo.com/aa6a319345beedb98ad7d873633df500){gyazo=image}
+![](/media/data-utilities/mask-ops/legacy_gyazo_aa6a319345beedb98ad7d873633df500.png){media=image}
 
 [](/workflows/data-utilities/mask-ops/cropmask.json)
 
@@ -142,7 +142,7 @@ Crops the mask to the specified range.
 
 ### GrowMask Node
 
-![](https://gyazo.com/395ae15fa99d4b099e80b006dc1c2d7b){gyazo=image}
+![](/media/data-utilities/mask-ops/legacy_gyazo_395ae15fa99d4b099e80b006dc1c2d7b.png){media=image}
 
 [](/workflows/data-utilities/mask-ops/growmask.json)
 
@@ -150,7 +150,7 @@ Expands the outline of the mask. If the value is negative, you can also narrow (
 
 ### 🪢 Gaussian Blur Mask Node
 
-![](https://gyazo.com/447edb124127718662b35089effdcfa3){gyazo=image}
+![](/media/data-utilities/mask-ops/legacy_gyazo_447edb124127718662b35089effdcfa3.png){media=image}
 
 [](/workflows/data-utilities/mask-ops/gaussian_blur_mask.json)
 
@@ -160,7 +160,7 @@ Blurs the mask. Important for blending boundaries during composition.
 
 ### InvertMask Node
 
-![](https://gyazo.com/c8ca1c37aa1e2bf3dd4581028e5ab8b9){gyazo=image}
+![](/media/data-utilities/mask-ops/legacy_gyazo_c8ca1c37aa1e2bf3dd4581028e5ab8b9.png){media=image}
 
 [](/workflows/data-utilities/mask-ops/invertmask.json)
 
@@ -168,7 +168,7 @@ Inverts the black and white of the mask.
 
 ### ThresholdMask Node
 
-![](https://gyazo.com/08a267a2826ab83e8ba872298c3974ff){gyazo=image}
+![](/media/data-utilities/mask-ops/legacy_gyazo_08a267a2826ab83e8ba872298c3974ff.png){media=image}
 
 [](/workflows/data-utilities/mask-ops/thresholdmask.json)
 
@@ -176,7 +176,7 @@ Converts a mask with intermediate values (gradients) into a binary (white or bla
 
 ### 🪢 Remap Mask Range Node
 
-![](https://i.gyazo.com/fc933c9858f06298ea6524fc6ed0ca5b.png){gyazo=image}
+![](/media/data-utilities/mask-ops/legacy_gyazo_fc933c9858f06298ea6524fc6ed0ca5b.mp4){media=loop}
 
 [](/workflows/data-utilities/mask-ops/remap_mask_range.json)
 
@@ -189,7 +189,7 @@ Combining with the aforementioned "Depth Map", you can change "which position" i
 
 ### MaskComposite Node
 
-![](https://gyazo.com/564ef15662a33280a1ec6708104833ce){gyazo=image}
+![](/media/data-utilities/mask-ops/legacy_gyazo_564ef15662a33280a1ec6708104833ce.png){media=image}
 
 [](/workflows/data-utilities/mask-ops/maskcomposite.json)
 
@@ -199,4 +199,4 @@ Composites two masks in various modes (addition, subtraction, multiplication, et
 
 ## Sample Images
 
-![](https://gyazo.com/a4f60a62fa0aec62796ab908f16d9eaa){gyazo=image} ![](https://gyazo.com/20ca6b1922830c8864f755bc695d5c80){gyazo=image} ![](https://gyazo.com/727e5c4b9b80304adabccd3b36fbfcfe){gyazo=image} ![](https://gyazo.com/8c08c2615b3a741e711d3c11485d4d93){gyazo=image} ![](https://gyazo.com/96ab673a43e5b23bd666d1889360c981){gyazo=image} ![](https://gyazo.com/bb5bd997733867c5c07a986d5793c63a){gyazo=image}
+![](/media/data-utilities/mask-ops/legacy_gyazo_a4f60a62fa0aec62796ab908f16d9eaa.png){media=image} ![](/media/data-utilities/mask-ops/legacy_gyazo_20ca6b1922830c8864f755bc695d5c80.png){media=image} ![](/media/data-utilities/mask-ops/legacy_gyazo_727e5c4b9b80304adabccd3b36fbfcfe.png){media=image} ![](/media/data-utilities/mask-ops/legacy_gyazo_8c08c2615b3a741e711d3c11485d4d93.png){media=image} ![](/media/data-utilities/mask-ops/legacy_gyazo_96ab673a43e5b23bd666d1889360c981.png){media=image} ![](/media/data-utilities/mask-ops/legacy_gyazo_bb5bd997733867c5c07a986d5793c63a.png){media=image}

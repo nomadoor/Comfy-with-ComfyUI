@@ -10,12 +10,12 @@ updated: 2026-03-02
 summary: "关于蒙版的概念和透明图像的处理"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/bd1a30f0d9562418f2fd74c7d9dd6f1e.png"
+  image: "/media/data-utilities/mask-alpha/legacy_gyazo_bd1a30f0d9562418f2fd74c7d9dd6f1e.png"
 ---
 
 ## 什么是蒙版？
 
-![](https://i.gyazo.com/bd1a30f0d9562418f2fd74c7d9dd6f1e.png){gyazo=image}
+![](/media/data-utilities/mask-alpha/legacy_gyazo_bd1a30f0d9562418f2fd74c7d9dd6f1e.png){media=image}
 
 蒙版是一种黑白图像，用于指示图像的哪些部分 **“作为处理对象 / 应该排除”**。
 
@@ -25,7 +25,7 @@ hero:
 
 ### AI 中的蒙版
 
-![](https://i.gyazo.com/3b4d37c9bb4a46d514f2fc77234718f8.png){gyazo=image}
+![](/media/data-utilities/mask-alpha/legacy_gyazo_3b4d37c9bb4a46d514f2fc77234718f8.png){media=image}
 
 在图像生成 AI 中，主要用于仅重绘图像一部分的 **Inpainting**。
 
@@ -40,7 +40,7 @@ AI 仅重新生成白色部分，黑色部分则保留原始图像。
 
 ## 什么是 Alpha 通道？
 
-![](https://gyazo.com/cf9be566f77d85571b29a2b5597121cb){gyazo=image}
+![](/media/data-utilities/mask-alpha/legacy_gyazo_cf9be566f77d85571b29a2b5597121cb.png){media=image}
 
 普通图像是用 **R(红)・G(绿)・B(蓝)** 3 个通道来表现颜色的，但背景透明的图像（PNG 等）除此之外还包含 **A(Alpha)** 通道。
 这就是掌管透明度的信息。
@@ -50,7 +50,7 @@ AI 仅重新生成白色部分，黑色部分则保留原始图像。
 这里有一点复杂，Stable Diffusion 本身无法直接处理透明图像。
 因此，当在 ComfyUI 中读取透明 PNG 图像时，它会在内部被分离为 **“RGB 图像”和“蒙版”** 这两个部分。
 
-![](https://i.gyazo.com/dbe187645fd186d20f936f226a79b926.png){gyazo=image}
+![](/media/data-utilities/mask-alpha/legacy_gyazo_dbe187645fd186d20f936f226a79b926.png){media=image}
 
 让我们来看看 `Load Image` 节点的输出。
 
@@ -62,7 +62,7 @@ AI 仅重新生成白色部分，黑色部分则保留原始图像。
 
 ### 注意与一般软件的区别
 
-![](https://i.gyazo.com/e3ba8dcc1452e3ed88512250b0c81d06.png){gyazo=image}
+![](/media/data-utilities/mask-alpha/legacy_gyazo_e3ba8dcc1452e3ed88512250b0c81d06.png){media=image}
 
 
 在许多软件中，“透明部分＝黑色”生成的蒙版比较多，习惯了 Photoshop 或 Affinity Photo 等图像编辑软件的人可能会感到混乱，请把它当成别的东西来考虑。
@@ -75,7 +75,7 @@ AI 仅重新生成白色部分，黑色部分则保留原始图像。
 
 处理结束后，如果想再次让背景透明并保存，该怎么做呢？
 
-![](https://gyazo.com/b05103b1633b9a4b0fbfdd96063499c2){gyazo=image}
+![](/media/data-utilities/mask-alpha/legacy_gyazo_b05103b1633b9a4b0fbfdd96063499c2.png){media=image}
 
 [](/workflows/data-utilities/mask-alpha/join_split_image_with_alpha.json)
 

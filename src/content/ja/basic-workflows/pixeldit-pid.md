@@ -10,7 +10,7 @@ updated: 2026-07-29
 summary: "PixelDiT と PiD を使った画像生成・高解像度デコード"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/31ea733be7d13db9616875f7c59e3f40.png"
+  image: "/media/basic-workflows/pixeldit-pid/legacy_gyazo_31ea733be7d13db9616875f7c59e3f40.png"
 tags: [upscale-restoration]
 ---
 
@@ -46,7 +46,7 @@ Stable Diffusion 以降の画像生成モデルの多くは、[Latent Diffusion 
 
 ### text2image
 
-![](https://gyazo.com/bdac1169d8ee0d91f6eed7b485ffa914){gyazo=image}
+![](/media/basic-workflows/pixeldit-pid/legacy_gyazo_bdac1169d8ee0d91f6eed7b485ffa914.png){media=image}
 
 [](/workflows/basic-workflows/pixeldit-pid/pixeldit_text2image.json)
 
@@ -123,7 +123,7 @@ PiD では、その latent を PixelDiT に渡して、画像への復元と拡�
 
 Z-Image-Turbo の latent を、PiD でデコードしてみましょう。
 
-![](https://gyazo.com/1b9e2dab2979aaafb65acc6e207c5948){gyazo=image}
+![](/media/basic-workflows/pixeldit-pid/z_image_turbo_to_pid1_5_4k.png){media=image}
 
 [](/workflows/basic-workflows/pixeldit-pid/z_image_turbo_to_pid1_5_4k.json)
 
@@ -154,7 +154,7 @@ Z-Image-Turbo の latent を、PiD でデコードしてみましょう。
         └── flux2-vae.safetensors
 ```
 
-![](https://gyazo.com/f501e4a19e295189ca8fdc8d509eb589){gyazo=image}
+![](/media/basic-workflows/pixeldit-pid/pid1_5_flux2_4x_enhance.png){media=image}
 
 [](/workflows/basic-workflows/pixeldit-pid/pid1_5_flux2_4x_enhance.json)
 

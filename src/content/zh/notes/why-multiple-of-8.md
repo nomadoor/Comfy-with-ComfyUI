@@ -16,7 +16,7 @@ hero:
 
 ## 为什么只能生成 8 的倍数的分辨率？
 
-![](https://gyazo.com/74438e54d131fb86c2f02e889a9fad7b){gyazo=loop}
+![](/media/notes/why-multiple-of-8/legacy_gyazo_74438e54d131fb86c2f02e889a9fad7b.mp4){media=loop}
 
 看 ComfyUI 的 `Empty Latent Image` 节点，会发现宽・高只能以 8 为单位设定。
 即使强行输入 513px 等，输出也肯定会被四舍五入为 8 的倍数。

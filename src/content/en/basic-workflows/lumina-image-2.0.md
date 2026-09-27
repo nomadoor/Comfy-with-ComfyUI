@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "Basics of Lumina-Image 2.0 and usage in ComfyUI"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/0eef66b0663a16cd722915b2dcde0c84.png"
+  image: "/media/basic-workflows/lumina-image-2.0/legacy_gyazo_0eef66b0663a16cd722915b2dcde0c84.png"
 tags: []
 ---
 
@@ -54,7 +54,7 @@ However, since it uses Gemma 2B (2B parameters) as a text encoder, it should be 
 
 ## text2image
 
-![](https://gyazo.com/7230949afb0971f994ed67980b88c14d){gyazo=image}
+![](/media/basic-workflows/lumina-image-2.0/legacy_gyazo_7230949afb0971f994ed67980b88c14d.png){media=image}
 
 [](/workflows/basic-workflows/lumina-image-2.0/lumina_image_2_0.json)
 
@@ -82,7 +82,7 @@ Like an anime model, it also supports Danbooru tags and is characterized by acce
 
 ### text2image
 
-![](https://gyazo.com/f9d633456c16c8869b941394fe17bac4){gyazo=image}
+![](/media/basic-workflows/lumina-image-2.0/legacy_gyazo_f9d633456c16c8869b941394fe17bac4.png){media=image}
 
 [](/workflows/basic-workflows/lumina-image-2.0/neta_lumina_v1_0.json)
 
@@ -121,7 +121,7 @@ I will introduce this as well.
 
 ### text2image
 
-![](https://gyazo.com/eb9e649d59482227ed68b7c4c0ed86eb){gyazo=image}
+![](/media/basic-workflows/lumina-image-2.0/legacy_gyazo_eb9e649d59482227ed68b7c4c0ed86eb.png){media=image}
 
 [](/workflows/basic-workflows/lumina-image-2.0/netayumev4.json)
 
@@ -161,7 +161,7 @@ NewBie-image (Exp0.1) is an anime-focused T2I model with a unique NewBie archite
 
 ### text2image
 
-![](https://gyazo.com/d7253fbe289e281e77dbb074d42c392d){gyazo=image}
+![](/media/basic-workflows/lumina-image-2.0/legacy_gyazo_d7253fbe289e281e77dbb074d42c392d.png){media=image}
 
 [](/workflows/basic-workflows/lumina-image-2.0/newbie_image_exp0_1.json)
 

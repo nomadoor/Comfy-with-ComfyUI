@@ -29,14 +29,14 @@ ComfyUI input nodes have the following two execution modes.
 
 ### Run (Instant)
 
-![](https://gyazo.com/ba99c003cb82d4e8f2a483eab84e9f03){gyazo=loop}
+![](/media/data-utilities/realtime/legacy_gyazo_ba99c003cb82d4e8f2a483eab84e9f03.mp4){media=loop}
 
 - Once execution starts, **the same workflow is automatically re-executed every time processing finishes**
 - If you want to stop, please switch to another mode (it will not stop as it is)
 
 ### Run (On Change)
 
-![](https://gyazo.com/59133ed0ac3bcc4d02f0a34cc8bf9320){gyazo=loop}
+![](/media/data-utilities/realtime/legacy_gyazo_59133ed0ac3bcc4d02f0a34cc8bf9320.mp4){media=loop}
 
 - Executes only when values such as sliders change
 - Processing enters the queue automatically every time you move the mouse

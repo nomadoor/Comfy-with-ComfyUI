@@ -10,7 +10,7 @@ updated: 2026-04-13
 summary: "LTX 2.3: text2video / image2video / audio2video"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/f3f8635fb9056670204fe9bdac577b39.mp4"
+  image: "/media/basic-workflows/ltx-2-3/legacy_gyazo_f3f8635fb9056670204fe9bdac577b39.mp4"
 tags: []
 ---
 
@@ -64,7 +64,7 @@ tags: []
 
 ## 基本的な処理の流れ
 
-![](https://gyazo.com/7ace8e776133d570e2d42b1a27435189){gyazo=image}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_7ace8e776133d570e2d42b1a27435189.png){media=image}
 
 アーキテクチャは [LTX-2](/ja/basic-workflows/ltx-2/) と同じなので、workflow もそのまま流用できます。  
 ただし、そのままではあまり良い結果が出ません。
@@ -95,12 +95,12 @@ LLM に手伝ってもらうのも有効です。参考リンクと作りたい�
 
 ## text2video
 
-![](https://gyazo.com/7477c07351d62edda93ae50270bbbaf5){gyazo=image}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_7477c07351d62edda93ae50270bbbaf5.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-3/ltx_2_3_text2video_distilled_3stage.json)
 
 
-{% mediaRow img="https://gyazo.com/6e9e9474d28ef76af5053fb0be5e6290 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-3/legacy_gyazo_6e9e9474d28ef76af5053fb0be5e6290.png {media=image}", width=40, align="left" %}
 
 **動画解像度・長さ・FPSの設定**
 
@@ -114,7 +114,7 @@ LLM に手伝ってもらうのも有効です。参考リンクと作りたい�
 
 **出力例**
 
-![](https://gyazo.com/2cd2d6eb51760a4928ba476bf2c0878b){gyazo=loop}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_2cd2d6eb51760a4928ba476bf2c0878b.mp4){media=loop}
 
 ---
 
@@ -126,7 +126,7 @@ LLM に手伝ってもらうのも有効です。参考リンクと作りたい�
 
 **出力例**
 
-![入力](https://gyazo.com/bf4c40372ce923fb53f2867c33c27bc6){gyazo=image} ![出力](https://gyazo.com/cb1a91ed174f29d4441ae1332590f3a0){gyazo=loop}
+![入力](/media/basic-workflows/ltx-2-3/legacy_gyazo_bf4c40372ce923fb53f2867c33c27bc6.png){media=image} ![出力](/media/basic-workflows/ltx-2-3/legacy_gyazo_cb1a91ed174f29d4441ae1332590f3a0.mp4){media=loop}
 
 ---
 
@@ -138,19 +138,19 @@ LLM に手伝ってもらうのも有効です。参考リンクと作りたい�
 
 **出力例**
 
-![](https://gyazo.com/4e0ce0ea62fc7138ffe7ea1892ec21b8){gyazo=player}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_4e0ce0ea62fc7138ffe7ea1892ec21b8.mp4){media=player}
 
 ---
 
 ## audio-image2video
 
-![](https://gyazo.com/443cbbeacab7a63e85641c0b209ab5da){gyazo=image}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_443cbbeacab7a63e85641c0b209ab5da.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-3/ltx_2_3_audio_image2video_distilled_3stage.json)
 
 **出力例**
 
-![](https://gyazo.com/dc3fb2e0b92432ca2651ca121aea7205){gyazo=image} ![](https://gyazo.com/69ebdac3cc6a3badd9452f0cbb345167){gyazo=player}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_dc3fb2e0b92432ca2651ca121aea7205.png){media=image} ![](/media/basic-workflows/ltx-2-3/legacy_gyazo_69ebdac3cc6a3badd9452f0cbb345167.mp4){media=player}
 
 ---
 
@@ -158,7 +158,7 @@ LLM に手伝ってもらうのも有効です。参考リンクと作りたい�
 
 FLF2V や FMLF2V とも呼ばれますが、途中のフレームに画像を差し込み、それを目印に動画を生成する仕組みです。
 
-![](https://gyazo.com/f0cdfd8e0d5f0106e0d6fc98fdcb9aee){gyazo=image}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_f0cdfd8e0d5f0106e0d6fc98fdcb9aee.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-3/ltx_2_3_generative_interpolation_distilled_1stage.json)
 
@@ -166,7 +166,7 @@ FLF2V や FMLF2V とも呼ばれますが、途中のフレームに画像を差
 `image2video` は最初の 1 枚を参照画像に差し替え、残りのフレームを生成します。  
 それに対してこちらは、途中のフレームごとに参照画像をガイドとして横に置いて生成させます。
 
-{% mediaRow img="https://gyazo.com/e115e860b7b68f36f27937d9e630501d {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-3/legacy_gyazo_e115e860b7b68f36f27937d9e630501d.png {media=image}", width=40, align="left" %}
 
 **1. 画像のリサイズ**
 
@@ -176,7 +176,7 @@ FLF2V や FMLF2V とも呼ばれますが、途中のフレームに画像を差
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/9cd44b6e0a04e7a63cb0f8de0ed01475 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-3/legacy_gyazo_9cd44b6e0a04e7a63cb0f8de0ed01475.png {media=image}", width=40, align="left" %}
 
 **2. LTXVAddGuide**
 
@@ -204,7 +204,7 @@ LTX-2 のガイド機構では、そのまま出力すると生成した動画�
 
 **出力例**
 
-![入力](https://gyazo.com/513a407f54159c8e3cae9a32fe888702){gyazo=loop} ![出力](https://gyazo.com/fad61f020fb0ed54bd23c59782bff81d){gyazo=loop}
+![入力](/media/basic-workflows/ltx-2-3/legacy_gyazo_513a407f54159c8e3cae9a32fe888702.mp4){media=loop} ![出力](/media/basic-workflows/ltx-2-3/legacy_gyazo_fad61f020fb0ed54bd23c59782bff81d.mp4){media=loop}
 
 ---
 
@@ -233,7 +233,7 @@ LTX-2 のガイド機構では、そのまま出力すると生成した動画�
 
 ### IC-LoRA Union (Pose)
 
-![](https://gyazo.com/9432f1cad25a54328ed912bc85af4a2d){gyazo=image}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_9432f1cad25a54328ed912bc85af4a2d.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-3/ltx_2_3_ic_lora_pose_distilled_2stage.json)
 
@@ -245,26 +245,26 @@ LTX-2 のガイド機構では、そのまま出力すると生成した動画�
 
 **出力例**
 
-![入力](https://gyazo.com/9aea1871cc24b0c98931d55bebb1c19c){gyazo=loop} ![出力](https://gyazo.com/25f44e7a08247ae96a2ebcc3cb901d56){gyazo=loop}
+![入力](/media/basic-workflows/ltx-2-3/legacy_gyazo_9aea1871cc24b0c98931d55bebb1c19c.mp4){media=loop} ![出力](/media/basic-workflows/ltx-2-3/legacy_gyazo_25f44e7a08247ae96a2ebcc3cb901d56.mp4){media=loop}
 
 
 ### IC-LoRA Outpaint
 
-![](https://gyazo.com/b43880620c819f250e61f6df0e494a7c){gyazo=image}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_b43880620c819f250e61f6df0e494a7c.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-3/ltx_2_3_ic_lora_outpaint_distilled_1stage.json)
 
 入力動画の黒い部分を自然に埋める workflow です。  
 元の動画をなるべく崩したくないため、低解像度から順に拡大していく 3stage ではなく、1stage にしています。
 
-{% mediaRow img="https://gyazo.com/80624e8617d2df1c92f929249c681752 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-3/legacy_gyazo_80624e8617d2df1c92f929249c681752.png {media=image}", width=40, align="left" %}
 **LoRAモデルの読み込み**
 
 `IC-LoRA-Outpaint` の LoRA を読み込みます。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/404ebbcfd601d31b927e97573327e398 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-3/legacy_gyazo_404ebbcfd601d31b927e97573327e398.png {media=image}", width=40, align="left" %}
 **黒でPadding**
 
 広げたい範囲を、黒で Padding して追加します。  
@@ -275,7 +275,7 @@ LTX-2 のガイド機構では、そのまま出力すると生成した動画�
 
 **出力例**
 
-![入力](https://gyazo.com/676f9b4dfb10ea6bc80b25b46d3b63ef){gyazo=loop} ![出力](https://gyazo.com/2776655edfe4896da1697755084b5e57){gyazo=loop}
+![入力](/media/basic-workflows/ltx-2-3/legacy_gyazo_676f9b4dfb10ea6bc80b25b46d3b63ef.mp4){media=loop} ![出力](/media/basic-workflows/ltx-2-3/legacy_gyazo_2776655edfe4896da1697755084b5e57.mp4){media=loop}
 
 ---
 
@@ -304,7 +304,7 @@ LTX-2 のガイド機構では、そのまま出力すると生成した動画�
 
 ### workflow
 
-![](https://gyazo.com/cd8a2899358fbac24b90eebe9b10a823){gyazo=image}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_cd8a2899358fbac24b90eebe9b10a823.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-3/ltx_2_3_id_lora_distilled_3stage.json)
 
@@ -312,7 +312,7 @@ LTX-2 のガイド機構では、そのまま出力すると生成した動画�
 全体のベースは [image2video](#image2video) です。  
 そこに、ID-LoRA 用の LoRA と参照音声条件を追加します。
 
-{% mediaRow img="https://gyazo.com/cb84a0967e26e916925aaa4cfeb6d782 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-3/legacy_gyazo_cb84a0967e26e916925aaa4cfeb6d782.png {media=image}", width=40, align="left" %}
 
 **ID-LoRA モデル**
 
@@ -326,7 +326,7 @@ ID-LoRAを読み込みます。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/3a653c109b828ad561e428c09b8eb91f {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-3/legacy_gyazo_3a653c109b828ad561e428c09b8eb91f.png {media=image}", width=40, align="left" %}
 
 **LTXV Reference Audio (ID-LoRA)**
 
@@ -337,7 +337,7 @@ ID-LoRAと参照音声をつなぎます。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/c987355bbbd29dfdc866dee769937957 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-3/legacy_gyazo_c987355bbbd29dfdc866dee769937957.png {media=image}", width=40, align="left" %}
 
 **プロンプト**
 
@@ -357,4 +357,4 @@ ID-LoRAと参照音声をつなぎます。
 
 **出力例**
 
-![input](https://gyazo.com/7d7fa9dc9a9f4fa1a08e25aff1285fd7){gyazo=image} ![ref_audio](https://gyazo.com/921d5546567ae28fc9616803f0dcccb9){gyazo=player}  ![output](https://gyazo.com/f179f159e0f3cf6fb05cf259b2828425){gyazo=player}
+![input](/media/basic-workflows/ltx-2-3/legacy_gyazo_7d7fa9dc9a9f4fa1a08e25aff1285fd7.jpg){media=image} ![ref_audio](/media/basic-workflows/ltx-2-3/legacy_gyazo_921d5546567ae28fc9616803f0dcccb9.mp4){media=player}  ![output](/media/basic-workflows/ltx-2-3/legacy_gyazo_f179f159e0f3cf6fb05cf259b2828425.mp4){media=player}

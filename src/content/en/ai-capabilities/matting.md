@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "Technology to cut out the foreground from a natural image and separate it from the background"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: 'https://i.gyazo.com/38630075ecd6336a630da0fe5b8ba130.gif'
+  image: '/media/ai-capabilities/matting/legacy_gyazo_38630075ecd6336a630da0fe5b8ba130.mp4'
 ---
 
 ## What is Matting?
@@ -29,7 +29,7 @@ The goal of matting is to cut out even fine parts like hair as naturally as poss
 
 It is lightweight and high-performance, so if you choose BiRefNet for matting, you can't go wrong.
 
-![](https://gyazo.com/131fe705fd29ddd98391fb4e78b608ab){gyazo=image}
+![](/media/ai-capabilities/matting/legacy_gyazo_131fe705fd29ddd98391fb4e78b608ab.png){media=image}
 
 [](/workflows/ai-capabilities/matting/birefnet_general.json)
 
@@ -41,7 +41,7 @@ There are several derivative models, but please try **general** first. It suppor
 
 [SDMatte](https://github.com/vivoCameraResearch/SDMatte) is a matting model that utilizes the knowledge of Stable Diffusion.
 
-![](https://gyazo.com/317da8e987179adbe6e02f0eb40a4a07){gyazo=image}
+![](/media/ai-capabilities/matting/legacy_gyazo_317da8e987179adbe6e02f0eb40a4a07.png){media=image}
 
 [](/workflows/ai-capabilities/matting/sdmatte.json)
 

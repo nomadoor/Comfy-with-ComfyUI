@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "改变光源或环境光，调整图像的打光的任务"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: 'https://i.gyazo.com/4c413909ac34f89df891a976fc660f70.png'
+  image: '/media/ai-capabilities/relight/legacy_gyazo_4c413909ac34f89df891a976fc660f70.png'
 ---
 
 ## 什么是重打光？
@@ -33,7 +33,7 @@ hero:
 
 ### IC-Light / LBM 等，扩散模型基础的重打光
 
-![](https://gyazo.com/5e8ab13bbf6385a8413fd8dfdb774a77){gyazo=image}
+![](/media/ai-capabilities/relight/legacy_gyazo_5e8ab13bbf6385a8413fd8dfdb774a77.png){media=image}
 
 扩散模型在学习大量图像的过程中，不仅单纯“生成图像”，也掌握了“这样做看起来更自然”“如果光从这边来，影子这样落”等统计性的知识。
 
@@ -47,7 +47,7 @@ IC-Light 或 LBM 等手法，利用这个性质，进行只让前景的打光向
 
 也做成了专用的 LoRA。
 - [dx8152/Qwen-Image-Edit-2509-Relight](https://huggingface.co/dx8152/Qwen-Image-Edit-2509-Relight)
-- > ![](https://gyazo.com/74f605b5c212b69e7e0c269066665864){gyazo=image}
+- > ![](/media/ai-capabilities/relight/legacy_gyazo_74f605b5c212b69e7e0c269066665864.mp4){media=loop}
 
 ---
 
@@ -55,7 +55,7 @@ IC-Light 或 LBM 等手法，利用这个性质，进行只让前景的打光向
 
 另一个系统，是 **在场景内放置疑似的光源的类型** 的重打光。
 
-> ![ClipDrop Relight](https://gyazo.com/1cfc90b511ed7c12e3cfcf9128c170e5){gyazo=loop}
+> ![ClipDrop Relight](/media/ai-capabilities/relight/legacy_gyazo_1cfc90b511ed7c12e3cfcf9128c170e5.mp4){media=loop}
 
 推定深度图或法线贴图，放置“这里聚光灯”“从这里太阳光”等假想灯光，配合那个灯光再计算阴影或高光。
 

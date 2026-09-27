@@ -11,7 +11,7 @@ updated: 2026-03-02
 summary: "用 Qwen-Image-Edit 进行基于指示的图像编辑"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/14e608fdb6033e436570157da4645e34.png"
+  image: "/media/basic-workflows/qwen-image-edit/legacy_gyazo_14e608fdb6033e436570157da4645e34.png"
 tags: ["instruction-based-image-editing","collage-refine"]
 ---
 
@@ -78,7 +78,7 @@ Flux.1 Kontext 虽然只是基于 VAE 的编辑，但 Qwen-Image-Edit 可以使�
 
 ### 工作流
 
-![](https://gyazo.com/79b84b74171ddd5c9cfdb57bccc69f13){gyazo=image}
+![](/media/basic-workflows/qwen-image-edit/legacy_gyazo_79b84b74171ddd5c9cfdb57bccc69f13.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit.json)
 
@@ -128,7 +128,7 @@ Qwen-Image-Edit-2509 是，扩展了无印版的版本。
 
 ### 工作流（1 张）
 
-![](https://gyazo.com/456e6aec210ae38313aa25f83ce236df){gyazo=image}
+![](/media/basic-workflows/qwen-image-edit/legacy_gyazo_456e6aec210ae38313aa25f83ce236df.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2509.json)
 
@@ -136,7 +136,7 @@ Qwen-Image-Edit-2509 是，扩展了无印版的版本。
 
 ### 工作流（复数枚）
 
-![](https://gyazo.com/e33abcb42d03c53f3171a8fb12d7eca0){gyazo=image}
+![](/media/basic-workflows/qwen-image-edit/legacy_gyazo_e33abcb42d03c53f3171a8fb12d7eca0.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2509_multi_ref.json)
 
@@ -175,7 +175,7 @@ Qwen-Image-Edit-2511 是，改良了 2509 的新模型。
 
 ### 工作流
 
-![](https://gyazo.com/6d45ea40c1194384fb75c383c43a116b){gyazo=image}
+![](/media/basic-workflows/qwen-image-edit/legacy_gyazo_6d45ea40c1194384fb75c383c43a116b.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2511.json)
 
@@ -209,7 +209,7 @@ Qwen-Image-Edit-2511 是，改良了 2509 的新模型。
 
 ### Qwen-Image-Edit-2509
 
-![](https://gyazo.com/c91a20239e3cb536dfc931a30562f19f){gyazo=image}
+![](/media/basic-workflows/qwen-image-edit/legacy_gyazo_c91a20239e3cb536dfc931a30562f19f.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_lightning_8steps.json)
 
@@ -218,7 +218,7 @@ Qwen-Image-Edit-2511 是，改良了 2509 的新模型。
 
 ### Qwen-Image-Edit-2511
 
-![](https://gyazo.com/cc8cbe2a940d686092555896d4b3f067){gyazo=image}
+![](/media/basic-workflows/qwen-image-edit/legacy_gyazo_cc8cbe2a940d686092555896d4b3f067.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2511_lightning_4steps.json)
 

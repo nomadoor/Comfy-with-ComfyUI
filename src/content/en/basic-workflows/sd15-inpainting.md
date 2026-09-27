@@ -36,7 +36,7 @@ Standard image2image regenerates the entire image. If you limit the generation a
 
 The base is the usual [image2image](/en/basic-workflows/sd15-image2image/) workflow. Add a mask to decide where to redraw.
 
-![](https://gyazo.com/4fc7e54c5ac44fb4c09fc9911f6be06a){gyazo=image}
+![](/media/basic-workflows/sd15-inpainting/legacy_gyazo_4fc7e54c5ac44fb4c09fc9911f6be06a.png){media=image}
 
 [](/workflows/basic-workflows/sd15-inpainting/sd1_5_inpainting_setlatentnoisemask.json)
 
@@ -59,7 +59,7 @@ The higher the `denoise`, the more freedom the model has, but the more it forget
 
 Try setting `denoise` to `1.00` in the workflow above.
 
-![Whoa, a horror image... (；・∀・)](https://gyazo.com/b18eb39eee9f53b669edb098a219bd24){gyazo=image}
+![Whoa, a horror image... (；・∀・)](/media/basic-workflows/sd15-inpainting/legacy_gyazo_b18eb39eee9f53b669edb098a219bd24.png){media=image}
 
 With image2image over the whole image, even a large change can be fun in its own way.
 
@@ -95,7 +95,7 @@ It creates an image with the masked area covered in gray and passes that image t
 
 ### workflow
 
-![](https://gyazo.com/1f6954026bfda799259cfd948da779a3){gyazo=image}
+![](/media/basic-workflows/sd15-inpainting/legacy_gyazo_1f6954026bfda799259cfd948da779a3.png){media=image}
 
 [](/workflows/basic-workflows/sd15-inpainting/sd_v1_5_inpainting.json)
 
@@ -146,7 +146,7 @@ Another option is **ControlNet inpaint**.
 
 ### workflow
 
-![](https://gyazo.com/ae3fe8d999343135c6ac995b67a165e7){gyazo=image}
+![](/media/basic-workflows/sd15-inpainting/legacy_gyazo_ae3fe8d999343135c6ac995b67a165e7.png){media=image}
 
 [](/workflows/basic-workflows/sd15-inpainting/sd1_5_controlnet_inpaint.json)
 
@@ -182,7 +182,7 @@ Strictly speaking, these models are not normally discussed in the context of inp
 
 As a representative image editing model, let's look at [FLUX.2 \[klein\]](/en/basic-workflows/flux-2-klein/).
 
-![](https://gyazo.com/e55ff686078115488cef6406f60b9370){gyazo=image}
+![](/media/basic-workflows/flux-2-klein/legacy_gyazo_e55ff686078115488cef6406f60b9370.png){media=image}
 
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_image_edit.json)
 

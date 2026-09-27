@@ -11,7 +11,7 @@ updated: 2026-03-02
 summary: "FLUX.2 [klein] 生成・画像編集workflow"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/46ebf7545e89db8df26b83a992e4c728.png"
+  image: "/media/basic-workflows/flux-2-klein/legacy_gyazo_46ebf7545e89db8df26b83a992e4c728.png"
 tags: [instruction-based-image-editing]
 ---
 
@@ -72,7 +72,7 @@ Base（20 steps）に対し、Distilled は 4 steps で生成出来ます。
 
 ### text2image Base
 
-![](https://gyazo.com/0936f046def982bdf00c697bb1740bfa){gyazo=image}
+![](/media/basic-workflows/flux-2-klein/legacy_gyazo_0936f046def982bdf00c697bb1740bfa.png){media=image}
 
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_text2image.json)
 
@@ -80,7 +80,7 @@ Base（20 steps）に対し、Distilled は 4 steps で生成出来ます。
 
 ### text2image Distilled
 
-![](https://gyazo.com/ba71c46ad1a5880a40a4897992777050){gyazo=image}
+![](/media/basic-workflows/flux-2-klein/legacy_gyazo_ba71c46ad1a5880a40a4897992777050.png){media=image}
 
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_text2image.json)
 
@@ -90,7 +90,7 @@ Base（20 steps）に対し、Distilled は 4 steps で生成出来ます。
 
 ### 画像編集 Base
 
-![](https://gyazo.com/74b3fe065e88c1a48210c04b0e9c0766){gyazo=image}
+![](/media/basic-workflows/flux-2-klein/legacy_gyazo_74b3fe065e88c1a48210c04b0e9c0766.png){media=image}
 
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_image_edit.json)
 
@@ -100,7 +100,7 @@ Base（20 steps）に対し、Distilled は 4 steps で生成出来ます。
 
 ### 画像編集 Distilled
 
-![](https://gyazo.com/e55ff686078115488cef6406f60b9370){gyazo=image}
+![](/media/basic-workflows/flux-2-klein/legacy_gyazo_e55ff686078115488cef6406f60b9370.png){media=image}
 
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_image_edit.json)
 
@@ -108,7 +108,7 @@ Base（20 steps）に対し、Distilled は 4 steps で生成出来ます。
 
 複数枚の画像を入力して参照させることもできます。
 
-![](https://gyazo.com/d5d524090b273847fbc4a45cf52284b4){gyazo=image}
+![](/media/basic-workflows/flux-2-klein/legacy_gyazo_d5d524090b273847fbc4a45cf52284b4.png){media=image}
 
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_image_edit_multi.json)
 
@@ -117,7 +117,7 @@ Base（20 steps）に対し、Distilled は 4 steps で生成出来ます。
 
 ### 画像編集（マルチリファレンス）Distilled
 
-![](https://gyazo.com/8d4bcf62e22ccaf6e91c3b2de20a417b){gyazo=image}
+![](/media/basic-workflows/flux-2-klein/legacy_gyazo_8d4bcf62e22ccaf6e91c3b2de20a417b.png){media=image}
 
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_image_edit_multi.json)
 
@@ -177,7 +177,7 @@ Base（20 steps）に対し、Distilled は 4 steps で生成出来ます。
 
 ### 単一画像
 
-{% mediaRow img="https://gyazo.com/9739688bffdd08a9c5b3db5fa1dd8119 {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-2-klein/legacy_gyazo_9739688bffdd08a9c5b3db5fa1dd8119.png {media=image}", width=45, align="left" %}
 
 **スタイル変換**
 
@@ -193,7 +193,7 @@ Reskin this into a watercolor illustration on textured paper.
 
 
 
-{% mediaRow img="https://gyazo.com/1fc2e71374a7d109c7f4d008973b4693 {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-2-klein/legacy_gyazo_1fc2e71374a7d109c7f4d008973b4693.png {media=image}", width=45, align="left" %}
 
 **環境・状態変更**
 
@@ -207,7 +207,7 @@ Change the time to bright midday.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/13aca28a7b3b85966d2831ccd99ba2f4 {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-2-klein/legacy_gyazo_13aca28a7b3b85966d2831ccd99ba2f4.png {media=image}", width=45, align="left" %}
 
 **オブジェクト入れ替え / 追加**
 
@@ -222,7 +222,7 @@ Replace the ice bear with an ice duck. Add a hat on the duck with light blue, re
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/f7552667da5fcfa8ce3a4e4b49cf5cdd {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-2-klein/legacy_gyazo_f7552667da5fcfa8ce3a4e4b49cf5cdd.png {media=image}", width=45, align="left" %}
 
 **テキスト編集**
 
@@ -236,7 +236,7 @@ Edit the text "WELCOME" to "Flux.2".
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/d1e84e57e066c8e30868ac97fbc5512b {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-2-klein/legacy_gyazo_d1e84e57e066c8e30868ac97fbc5512b.png {media=image}", width=45, align="left" %}
 
 **画像修復**
 
@@ -250,7 +250,7 @@ Restore and colorize this black-and-white photo.
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/ef668f3e2ef9f7598ec410bcbbd30960 {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-2-klein/legacy_gyazo_ef668f3e2ef9f7598ec410bcbbd30960.png {media=image}", width=45, align="left" %}
 
 
 **ControlNetライク（Pose）**
@@ -268,7 +268,7 @@ A office lady sitting on outdoor stairs at dusk, matching the pose from the refe
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/090e1bccb68070e4a22c7315d1bdc2ce {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-2-klein/legacy_gyazo_090e1bccb68070e4a22c7315d1bdc2ce.png {media=image}", width=45, align="left" %}
 
 **inpainting / outpainting**
 
@@ -283,7 +283,7 @@ Outpaint the gray areas to extend the scene naturally
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/4a562fb90e23c8695ebe7c13b0db223e {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-2-klein/legacy_gyazo_4a562fb90e23c8695ebe7c13b0db223e.png {media=image}", width=45, align="left" %}
 
 **雑コラのリファイン**
 
@@ -299,7 +299,7 @@ Turn this into a single realistic underwater ruins scene with two robots: a slee
 
 ### マルチリファレンス画像編集
 
-{% mediaRow img="https://gyazo.com/fabad47684ddbc15657d34973511a405 {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-2-klein/legacy_gyazo_fabad47684ddbc15657d34973511a405.png {media=image}", width=45, align="left" %}
 
 **スタイル転送**
 
@@ -313,7 +313,7 @@ Change image 1 to match the style of image 2.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/d673551f6b212c41c35c0cfd2e729e8f {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-2-klein/legacy_gyazo_d673551f6b212c41c35c0cfd2e729e8f.png {media=image}", width=45, align="left" %}
 
 **オブジェクト・人物入れ替え**
 
@@ -327,7 +327,7 @@ Replace the person in image 1 with the person from image 2.
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/6360d713f4bee61dd3c844d4336eebcd {gyazo=image}", width=45, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-2-klein/legacy_gyazo_6360d713f4bee61dd3c844d4336eebcd.png {media=image}", width=45, align="left" %}
 
 **オブジェクト追加**
 

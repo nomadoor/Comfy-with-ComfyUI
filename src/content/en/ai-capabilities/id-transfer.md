@@ -11,7 +11,7 @@ summary: Techniques to create images of different scenes while maintaining the p
   face or identity, and face replacement.
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: https://i.gyazo.com/877d8862f6e7f6dd3ec7fbeac5331cd9.png
+  image: /media/ai-capabilities/id-transfer/legacy_gyazo_877d8862f6e7f6dd3ec7fbeac5331cd9.png
 ---
 ## What is ID Transfer and FaceSwap?
 
@@ -43,7 +43,7 @@ It extracts feature vectors from images and injects them into the UNet to reflec
 
 The official IP-Adapter model specialized for faces.
 
-![](https://gyazo.com/afe7232d9dd3cc54f5d8a2f1d956e15f){gyazo=image}
+![](/media/ai-capabilities/id-transfer/legacy_gyazo_afe7232d9dd3cc54f5d8a2f1d956e15f.png){media=image}
 
 [](/workflows/ai-capabilities/id-transfer/ip_adapter_faceid_plusv2_sd15.json)
 
@@ -59,7 +59,7 @@ In the improved version **FaceID-Plus**, both "Face ID embeddings for ID" and "C
 
 Strictly speaking, it is not a lineage of IP-Adapter, but it is a technique specialized for ID transfer that can be used just by pointing to an additional adapter.
 
-![](https://gyazo.com/a4213b144081a1267432874bfc09c1f4){gyazo=image}
+![](/media/ai-capabilities/id-transfer/legacy_gyazo_a4213b144081a1267432874bfc09c1f4.png){media=image}
 
 [](/workflows/ai-capabilities/id-transfer/instantid_simple.json)
 
@@ -73,7 +73,7 @@ As times progress, the main battlefield of base models has shifted from SDXL to 
 
 **PuLID-FLUX** is an ID-specialized customization method based on FLUX1-dev. Thanks to innovations like Lightning T2I, you can change the art style while maintaining the ID with "reference face + text" without additional training.
 
-- ![](https://gyazo.com/7a87706872f7b195d46aeabafa6a399e){gyazo=image}
+- ![](/media/ai-capabilities/id-transfer/legacy_gyazo_7a87706872f7b195d46aeabafa6a399e.png){media=image}
 
 - [](/workflows/ai-capabilities/id-transfer/pulid_flux_ll.json)
 
@@ -97,7 +97,7 @@ It is an idea closer to "making a mask and putting it on" rather than ID Transfe
 
 It estimates the position, orientation, and contour of the face with face detection and landmark detection, aligns the source face and target face with affine transformation, etc., and replaces the target side face part with the source face using masks and blending.
 
-![](https://gyazo.com/1a0a81f044bd264db835ef99d40a37d1){gyazo=image}
+![](/media/ai-capabilities/id-transfer/legacy_gyazo_1a0a81f044bd264db835ef99d40a37d1.png){media=image}
 
 [](/workflows/ai-capabilities/id-transfer/reactor_fast.json)
 
@@ -111,6 +111,6 @@ When ID Transfer technology was immature, there was also a method of FaceSwappin
 
 [Refining with InstantID after Face Swapping with ReActor](https://scrapbox.io/work4ai/ReActor%E3%81%A7Face_Swap%E3%81%97%E3%81%9F%E3%81%82%E3%81%A8%E3%81%ABInstantID%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%83%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B)
 
-![](https://gyazo.com/877d8862f6e7f6dd3ec7fbeac5331cd9){gyazo=image}
+![](/media/ai-capabilities/id-transfer/legacy_gyazo_877d8862f6e7f6dd3ec7fbeac5331cd9.png){media=image}
 
 [](/workflows/ai-capabilities/id-transfer/reactor_w_instantid2.json)

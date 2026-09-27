@@ -14,7 +14,7 @@ hero:
 ---
 ## 什么是 Latent Diffusion Model？
 
-![](https://gyazo.com/22d5f654c3c598feb046cf71d4d8d4aa){gyazo=image}
+![](/media/ai-capabilities/latent-diffusion-vae/legacy_gyazo_22d5f654c3c598feb046cf71d4d8d4aa.png){media=image}
 
 **Latent Diffusion Model (潜扩散模型)** 是让图像生成 AI 也能在自家电脑上运行的最大功臣之一。
 
@@ -68,7 +68,7 @@ VAE 是 **有损压缩**。
 将图像转换为潜在空间，再还原回图像，**无法完全恢复原状**。
 会变得稍微模糊，或者色调和对比度发生变化。
 
-![](https://gyazo.com/8741de326b196b666b2d0617502f3814){gyazo=image}
+![](/media/ai-capabilities/latent-diffusion-vae/legacy_gyazo_8741de326b196b666b2d0617502f3814.png){media=image}
 
 如果不使用扩散模型，仅仅用 VAE 对图像进行编码，再用同一个 VAE 进行解码，你会发现它稍微劣化了。
 这种“虽然稍微劣化，以此为代价使其能被轻量化处理”的权衡，就是潜在表现的特征。

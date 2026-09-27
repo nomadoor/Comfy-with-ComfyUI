@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "SDXL 的使用方法"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/2317e881cf31b7c2af135774fb56b4e4.png"
+  image: "/media/basic-workflows/sdxl/legacy_gyazo_2317e881cf31b7c2af135774fb56b4e4.png"
 tags: []
 ---
 
@@ -56,7 +56,7 @@ SDXL（准确地说是 SDXL 1.0），是由开发了 Stable Diffusion 1.5 的 St
 
 在 [SD1.5 的 text2image](/zh/basic-workflows/sd15-text2image/) 的工作流中，只要将 Checkpoint 替换为 SDXL base 就能进行基本的生成。
 
-![](https://gyazo.com/c812a47ff8d57de7f90be3b85d1a5f58){gyazo=image}
+![](/media/basic-workflows/sdxl/legacy_gyazo_c812a47ff8d57de7f90be3b85d1a5f58.png){media=image}
 
 [](/workflows/basic-workflows/sdxl/sdxl_text2image_base.json)
 
@@ -70,7 +70,7 @@ SDXL base 作为文本编码器，采用了组合 2 种 CLIP（OpenCLIP-ViT/G, C
 
 ComfyUI 中也有可以向各个 CLIP 输入不同文本的节点，但先说好 **没有使用的必要。**
 
-![](https://gyazo.com/55a896ac7ae4544942d9242853a4d9c9){gyazo=image}
+![](/media/basic-workflows/sdxl/legacy_gyazo_55a896ac7ae4544942d9242853a4d9c9.png){media=image}
 
 [](/workflows/basic-workflows/sdxl/sdxl_text2image_base_cliptextencodesdxl.json)
 
@@ -88,7 +88,7 @@ ComfyUI 中也有可以向各个 CLIP 输入不同文本的节点，但先说好
 SDXL base 和 SDXL refiner 使用相同的 latent 表现。
 因此，可以将通过 base 生成的 latent，原样输入到 refiner 侧的 KSampler 进行 image2image。
 
-![](https://gyazo.com/4bc82a63f933e5538c45ca11832c5f08){gyazo=image}
+![](/media/basic-workflows/sdxl/legacy_gyazo_4bc82a63f933e5538c45ca11832c5f08.png){media=image}
 
 [](/workflows/basic-workflows/sdxl/sdxl_text2image_base_refiner.json)
 
@@ -105,7 +105,7 @@ SDXL base 和 SDXL refiner 使用相同的 latent 表现。
 作为稍微聪明一点的做法，也有在采样途中从 base → refiner 切换的做法。
 使用 [KSampler (Advanced) 节点](/zh/basic-workflows/ksampler-advanced/)。
 
-![](https://gyazo.com/9f6609b33de0a955ca5d9a86ba882ab4){gyazo=image}
+![](/media/basic-workflows/sdxl/legacy_gyazo_9f6609b33de0a955ca5d9a86ba882ab4.png){media=image}
 
 [](/workflows/basic-workflows/sdxl/sdxl_text2image_base_refiner_advanced.json)
 

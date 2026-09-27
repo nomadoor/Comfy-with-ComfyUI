@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "ComfyUI is the OS of Generative AI"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/85c2b6638ce871ee1923a68ed24323b8.webp"
+  image: "/media/begin-with/what-is-comfyui/legacy_gyazo_85c2b6638ce871ee1923a68ed24323b8.png"
 ---
 
 At the dawn of generative AI, when Stable Diffusion web UI was mainstream, **ComfyUI** was born aiming for a node-based implementation.

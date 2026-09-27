@@ -37,7 +37,7 @@ text2imageのように、シンプルにノイズからモデルが現れてく�
 
 ### Zero-1-to-3
 
-> ![](https://gyazo.com/8f4d195ac2daffffc7356a036d4a3c98){gyazo=image}
+> ![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_8f4d195ac2daffffc7356a036d4a3c98.png){media=image}
 > [Zero-1-to-3: Zero-shot One Image to 3D Object](https://zero123.cs.columbia.edu/)
 
 拡散モデルをベースにした最初期のマルチビュー生成で、入力画像のカメラの構図を変更した新しい視点の画像を生成します。
@@ -49,7 +49,7 @@ text2imageのように、シンプルにノイズからモデルが現れてく�
 
 Zero-1-to-3は「入力画像の別角度の画像を1枚作る → 角度を変えて何度も回す」という使い方でしたが、**[Zero123++](https://github.com/SUDO-AI-3D/zero123plus)** は同時に複数視点を生成します。
 
-![](https://gyazo.com/b6b4e05ace668acfd75449b8252b139f){gyazo=image} ![](https://gyazo.com/59359f3b3b6f250358211d2044d207fe){gyazo=image}
+![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_b6b4e05ace668acfd75449b8252b139f.png){media=image} ![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_59359f3b3b6f250358211d2044d207fe.jpg){media=image}
 
 元々拡散モデルは、複数枚をバッチ生成（cf. [Batch・動画](/ja/data-utilities/batch-video/)）すると、生成した画像同士はある程度一貫性を持つことが知られていました。
 
@@ -75,7 +75,7 @@ Zero123++ はその性質を利用して、「一回の生成で、できるだ�
 
 Stable Video Diffusionをベースにした image2model です。
 
-![](https://gyazo.com/49e94de4d1476e100761e2e6be7a2f6e){gyazo=image}
+![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_49e94de4d1476e100761e2e6be7a2f6e.mp4){media=loop}
 
 [](/workflows/ai-capabilities/3d-model-generation/sv3d.json)
 
@@ -152,6 +152,6 @@ Latent Labs のツールや、[HunyuanWorld-1.0](https://github.com/Tencent-Huny
 
 [HunyuanWorld-Mirror](https://github.com/Tencent-Hunyuan/HunyuanWorld-Mirror) になると、より本質的に歩き回れる世界を作ることに近づきます。
 
-> ![](https://gyazo.com/47ddf0aa2f5bc667b43be75d2ed1223c){gyazo=player}
+> ![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_47ddf0aa2f5bc667b43be75d2ed1223c.mp4){media=player}
 
 * 画像（または動画）を入力にしてカメラの情報や深度、3D表現（3D Gaussianなど）をまとめて推定するといったコンポーネントで構成されています。

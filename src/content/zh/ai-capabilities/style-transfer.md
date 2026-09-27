@@ -29,7 +29,7 @@ hero:
 
 ## 贴近纹理・笔触系
 
-> ![](https://gyazo.com/eb073a78be8340c24c61048066d877b9){gyazo=image}
+> ![](/media/ai-capabilities/style-transfer/legacy_gyazo_eb073a78be8340c24c61048066d877b9.png){media=image}
 > [cysmith/neural-style-tf](https://github.com/cysmith/neural-style-tf)
 
 古典的 Neural Style Transfer，以及“油画风”、“水彩风”的滤镜／LoRA 等都属于此类。

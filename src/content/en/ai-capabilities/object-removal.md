@@ -11,7 +11,7 @@ summary: The task of removing specific things from an image and typical methods 
   doing so.
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: https://i.gyazo.com/e06eeccf0efa2e91773bb54acb31560a.gif
+  image: /media/ai-capabilities/object-removal/legacy_gyazo_e06eeccf0efa2e91773bb54acb31560a.mp4
 ---
 ## What is Object Removal?
 
@@ -25,7 +25,7 @@ It naturally removes things you don't want in the picture, such as people, signs
 
 Before the advent of diffusion models, CNN-based inpainting models like LaMa were often used as SOTA.
 
-![](https://gyazo.com/4c0b962c3983bc3296da9b994c07f3b6){gyazo=image}
+![](/media/ai-capabilities/object-removal/legacy_gyazo_4c0b962c3983bc3296da9b994c07f3b6.png){media=image}
 
 [](/workflows/ai-capabilities/object-removal/lama.json)
 
@@ -39,7 +39,7 @@ The most primitive method is to prepare a mask and fill it with ordinary inpaint
 
 Draw a mask on the object you want to remove, write a prompt that matches the background (e.g., "background lawn only", "empty floor"), and inpaint.
 
-![](https://gyazo.com/2cad88edab0d74b24f0fc78f528a320d){gyazo=image}
+![](/media/ai-capabilities/object-removal/legacy_gyazo_2cad88edab0d74b24f0fc78f528a320d.png){media=image}
 
 [](/workflows/ai-capabilities/object-removal/remake_for_sdxl_removing_object_and_filling_with_background.json)
 
@@ -55,7 +55,7 @@ With recent [Instruction-Based Image Editing](/en/ai-capabilities/instruction-ba
 
 Just instruct "remove this person," "remove this sign," "remove the logo on the bottom right," etc.
 
-![](https://gyazo.com/84af7edfab7cd344f7654090b7957166){gyazo=image}
+![](/media/ai-capabilities/object-removal/legacy_gyazo_84af7edfab7cd344f7654090b7957166.png){media=image}
 
 [](/workflows/ai-capabilities/object-removal/qwen_image_edit_2509_object_removal.json)
 

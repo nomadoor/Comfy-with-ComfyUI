@@ -5,7 +5,7 @@ section: data-utilities
 slug: layer-composite-blend
 navId: layer-composite-blend
 title: "层合成"
-created: 2026-02-06
+created: 2025-11-25
 updated: 2026-03-02
 summary: "关于图像的叠加、结合、混合"
 
@@ -32,7 +32,7 @@ hero:
 
 用于图像叠加的基本节点。
 
-![](https://gyazo.com/0f12d674fe3e1f6f30c2a06340464eb4){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_0f12d674fe3e1f6f30c2a06340464eb4.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/imagecompositemasked.json)
 
@@ -44,7 +44,7 @@ hero:
 
 ### 想要配置在中央时
 
-![](https://gyazo.com/282ad8bae51d35eef6a4810780f3eb82){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_282ad8bae51d35eef6a4810780f3eb82.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_align_center.json)
 
@@ -62,7 +62,7 @@ hero:
 
 ### 合成透明 PNG 的步骤
 
-![](https://gyazo.com/cd53e89115c033f8a8ea175b72ca0aef){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_cd53e89115c033f8a8ea175b72ca0aef.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_with_alpha.json)
 
@@ -76,7 +76,7 @@ hero:
 
 如果将 `resize_source` 设为 `true`，source 图像会被强行拉伸到与 destination 图像相同的尺寸。
 
-![](https://gyazo.com/f7ba12c0cf33e3e5dc8a9b5fb24cb0a6){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_f7ba12c0cf33e3e5dc8a9b5fb24cb0a6.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_with_crop_pad.json)
 
@@ -90,7 +90,7 @@ hero:
 
 “只想改变裙子部分的颜色”这种情况也是同样的道理。
 
-![](https://i.gyazo.com/c848c0f8e8d3ee590ba7ae09e8db7e68.png){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_c848c0f8e8d3ee590ba7ae09e8db7e68.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_segmentation.json)
 
@@ -111,7 +111,7 @@ hero:
 
 简单的结合节点。
 
-![](https://i.gyazo.com/4ce9346ef269709f6456f0fcd5832a9c.png){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_4ce9346ef269709f6456f0fcd5832a9c.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/image_stitch.json)
 
@@ -120,7 +120,7 @@ hero:
 
 如果使用多个 Stitch 节点可以排列 3 张、4 张，但如果想将 Batch（多张一组）图像整理成网格状排列，使用这个节点可以更智能地处理。
 
-![](https://i.gyazo.com/18d0555fd1d0bd01ead60b3992662cb0.png){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/image_concatenate_from_batch.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/image_concatenate_from_batch.json)
 
@@ -135,7 +135,7 @@ hero:
 
 就像绘图软件中图层的“混合模式”一样。
 
-![](https://i.gyazo.com/0c3dbad0a36a0399e7e12301a4b58638.png){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_0c3dbad0a36a0399e7e12301a4b58638.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/image_blend.json)
 
@@ -148,7 +148,7 @@ hero:
 
 只是制作单色图像的节点。
 
-![](https://gyazo.com/c39404b4f19fe6a47565b326b7f0dc6d){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_c39404b4f19fe6a47565b326b7f0dc6d.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/emptyimage.json)
 

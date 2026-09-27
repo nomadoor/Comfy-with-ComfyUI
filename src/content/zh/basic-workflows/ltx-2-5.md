@@ -10,7 +10,7 @@ updated: 2026-09-03
 summary: "使用 LTX 2.5 生成视频和音频"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/f0a0582dba74a4ef6e731142136b5c59.mp4"
+  image: "/media/basic-workflows/ltx-2-5/legacy_gyazo_f0a0582dba74a4ef6e731142136b5c59.mp4"
 tags: []
 ---
 
@@ -77,13 +77,13 @@ tags: []
 
 ## text2video
 
-![](https://gyazo.com/891b0474ea9ec2636b188b803f6ef2c3){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_891b0474ea9ec2636b188b803f6ef2c3.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video.json)
 
 和 LTX-2 一样，这是一个 2 阶段工作流：先以目标分辨率的一半生成，再放大 2 倍。
 
-{% mediaRow img="https://gyazo.com/d353cf476e7c8be513f7bc1e55cef365", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_d353cf476e7c8be513f7bc1e55cef365.png", width=40, align="left" %}
 **分辨率设置**
 
 之后会放大 2 倍，所以在 `EmptyLTXVLatentVideo` 中输入目标分辨率一半的值。
@@ -92,7 +92,7 @@ tags: []
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/82803fd97cf50afbdb616105f14b0405", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_82803fd97cf50afbdb616105f14b0405.png", width=40, align="left" %}
 **帧数设置**
 
 在这个工作流中，输入想要生成的视频秒数（sec）和 FPS 后，帧数会自动取整为合适的 `8n + 1`。
@@ -101,13 +101,13 @@ tags: []
 
 **输出示例**
 
-![](https://gyazo.com/e68699b3ebb44d9b20b5d85c73cf9644){gyazo=loop}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_e68699b3ebb44d9b20b5d85c73cf9644.mp4){media=loop}
 
 ### Multi-shot
 
 从 Seedance 2 等模型开始，这种功能逐渐常见起来。现在一次生成就能制作多个镜头。
 
-![](https://gyazo.com/7d681d86ce23e28e4e48aed1fe452c7d){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7d681d86ce23e28e4e48aed1fe452c7d.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.json)
 
@@ -117,7 +117,7 @@ tags: []
 
 **输出示例**
 
-![](https://gyazo.com/7fe2eadbd6abb69f2015df4f8531fe26){gyazo=loop}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7fe2eadbd6abb69f2015df4f8531fe26.mp4){media=loop}
 
 ### Duration Predictor
 
@@ -137,11 +137,11 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
         └── ltx-2.5-duration-head-bf16.safetensors
 ```
 
-![](https://gyazo.com/ecf49f82e56e0fdec6283401d71ae657){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_ecf49f82e56e0fdec6283401d71ae657.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor.json)
 
-{% mediaRow img="https://gyazo.com/4567c3906de961a9c90bc01cef27db5d", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_4567c3906de961a9c90bc01cef27db5d.png", width=40, align="left" %}
 **LTXV Duration Predictor**
 
 节点会输出根据提示词预测的帧数，再连接到普通 text2video 工作流的 `length`。
@@ -152,7 +152,7 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
 
 ## image2video
 
-![](https://gyazo.com/e978305c53f6c658984db4ad42c71a7f){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_e978305c53f6c658984db4ad42c71a7f.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_image2video.json)
 
@@ -162,7 +162,7 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
 
 **输出示例**
 
-![输入](https://gyazo.com/856453de1d4eaea2b8e02a8e6993db08){gyazo=image} ![输出](https://gyazo.com/d8bdced1eba00d48d1f5ff65dfb4e336){gyazo=loop}
+![输入](/media/basic-workflows/ltx-2-5/legacy_gyazo_856453de1d4eaea2b8e02a8e6993db08.png){media=image} ![输出](/media/basic-workflows/ltx-2-5/legacy_gyazo_d8bdced1eba00d48d1f5ff65dfb4e336.mp4){media=loop}
 
 ---
 
@@ -172,11 +172,11 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
 
 如果只指定视频的第一张和最后一张图像，就是通常所说的 **FLF2V**。
 
-![](https://gyazo.com/a0e7571b01f97b79d73325390e0a4d3c){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_a0e7571b01f97b79d73325390e0a4d3c.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation.json)
 
-{% mediaRow img="https://gyazo.com/2e39b3e006fcb35d96b87d649ded0146", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_2e39b3e006fcb35d96b87d649ded0146.png", width=40, align="left" %}
 **LTXV Add Guide**
 
 在 `frame_idx` 中指定插入图像的位置。
@@ -193,7 +193,7 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
 
 **输出示例**
 
-![输入 1](https://gyazo.com/de4eaa85c26607d8b0f98f774880e2b8){gyazo=image} ![输入 2](https://gyazo.com/0ef0afcbe6a2d35cf018bb0f77e0a0ff){gyazo=image} ![输入 3](https://gyazo.com/c2058ec73687479e7abe3fa7f21f9d64){gyazo=image} ![输出](https://gyazo.com/e0e2fcb86f4a8513708807bacd79af8c){gyazo=loop}
+![输入 1](/media/basic-workflows/ltx-2-5/legacy_gyazo_de4eaa85c26607d8b0f98f774880e2b8.png){media=image} ![输入 2](https://gyazo.com/0ef0afcbe6a2d35cf018bb0f77e0a0ff){gyazo=image} ![输入 3](/media/basic-workflows/ltx-2-5/legacy_gyazo_c2058ec73687479e7abe3fa7f21f9d64.png){media=image} ![输出](/media/basic-workflows/ltx-2-5/legacy_gyazo_e0e2fcb86f4a8513708807bacd79af8c.mp4){media=loop}
 
 ---
 
@@ -220,7 +220,7 @@ LTX 2.5 与许多为 LTX 2.3 制作的 IC-LoRA 兼容，可以直接使用。
 
 和普通 ControlNet 一样，可以用线稿、深度图或姿势视频控制生成视频。
 
-![](https://gyazo.com/4e194652b6db74b853390f20017bb542){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_4e194652b6db74b853390f20017bb542.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_pose.json)
 
@@ -228,7 +228,7 @@ LTX 2.5 与许多为 LTX 2.3 制作的 IC-LoRA 兼容，可以直接使用。
 
 **输出示例**
 
-![输入 / 姿势](https://gyazo.com/824ba34d0fa1ef036db386c4f7f7b5f6){gyazo=loop} ![输出](https://gyazo.com/4f55983a4205360420e7cc605402301b){gyazo=loop}
+![输入 / 姿势](/media/basic-workflows/ltx-2-5/legacy_gyazo_824ba34d0fa1ef036db386c4f7f7b5f6.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2-5/legacy_gyazo_4f55983a4205360420e7cc605402301b.mp4){media=loop}
 
 ---
 
@@ -238,7 +238,7 @@ LTX 2.5 采用 2 阶段结构：先以一半分辨率生成，再将分辨率放
 
 既然如此，只使用第 2 阶段，把它当作任意视频的 2 倍放大模型也是很自然的想法。
 
-![](https://gyazo.com/7fa914cfea3fe3b4648960d1c3474258){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7fa914cfea3fe3b4648960d1c3474258.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_x2_upscaler.json)
 
@@ -250,6 +250,6 @@ LTX 2.5 采用 2 阶段结构：先以一半分辨率生成，再将分辨率放
 
 **输出示例**
 
-![输入](https://gyazo.com/2090f2ae9f78af154922c00cd43e10f7){gyazo=loop} ![输出](https://gyazo.com/bb03d5683d784b144c290400638ba139){gyazo=loop}
+![输入](/media/basic-workflows/ltx-2-5/legacy_gyazo_2090f2ae9f78af154922c00cd43e10f7.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2-5/legacy_gyazo_bb03d5683d784b144c290400638ba139.mp4){media=loop}
 
 虽然现在也出现了许多竞争模型，但它生成自然视频的能力仍然相当突出。希望大家能根据用途灵活使用不同的模型。

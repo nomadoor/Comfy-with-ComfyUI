@@ -19,7 +19,7 @@ hero:
 
 画像をComfyUIに読み込みます。
 
-![](https://gyazo.com/9dd4bfe10197dddec18b0e7a1dc94f53){gyazo=loop}
+![](/media/begin-with/media/legacy_gyazo_9dd4bfe10197dddec18b0e7a1dc94f53.mp4){media=loop}
 
 ノードを検索して追加する以外に、いくつか便利な方法があります。
 - a. `choose file to upload` をクリックしてファイルを選択
@@ -35,7 +35,7 @@ hero:
 生成された画像をその場で確認します。  
 保存はされないため、処理の途中経過や生成結果を一時的に確認したい場合に使用します。
 
-![](https://gyazo.com/9f5a3055bbb8ef271583545155f70371){gyazo=loop}
+![](/media/begin-with/media/legacy_gyazo_9f5a3055bbb8ef271583545155f70371.mp4){media=loop}
 
 - 他の画像系ノードでも共通ですが、右クリックから `Save Image` や `Copy Image` で画像を保存・コピーすることが出来ます。
 - outputフォルダまで画像を探さなくていいので便利です。
@@ -74,13 +74,13 @@ main.py --output_dir --output-directory [path]
 `Save Image` ノードで保存された最新の画像がここに読み込まれます。
 疑似ループ処理として使われることがあります。
 
-![](https://gyazo.com/1b344fc1baa844c784d53a9790e6aafb){gyazo=loop}
+![](/media/begin-with/media/legacy_gyazo_1b344fc1baa844c784d53a9790e6aafb.mp4){media=loop}
 
 ### Image Comparer (rgthree) ノード
 
 ２つの画像をスライダーで比較できます。
 
-![](https://gyazo.com/a3ac0fe532474c1447a2f9cd33b31649){gyazo=image}
+![](/media/begin-with/media/legacy_gyazo_a3ac0fe532474c1447a2f9cd33b31649.mp4){media=loop}
 
 [](/workflows/begin-with/media/image_comparer_rgthree.json)
 
@@ -94,7 +94,7 @@ main.py --output_dir --output-directory [path]
 
 動画を読み込みます。
 
-![](https://gyazo.com/96531a04d73333953691800babd073b9){gyazo=image}
+![](/media/begin-with/media/legacy_gyazo_96531a04d73333953691800babd073b9.png){media=image}
 
 ComfyUIでは、多くのノードが動画を **画像の連番** として扱います。  
 しかし、このノードの出力は `VIDEO` 型なのでそのままでは使えません。`Get Video Components` ノードを通して、動画を画像・音声・fpsに分解する必要があります。
@@ -111,7 +111,7 @@ ComfyUIでは、多くのノードが動画を **画像の連番** として扱�
 
 生成された動画を保存します。
 
-![](https://gyazo.com/695faf8fda159e16dc56ef533e28eb8f){gyazo=image}
+![](/media/begin-with/media/legacy_gyazo_695faf8fda159e16dc56ef533e28eb8f.png){media=image}
 
 今度は逆に連番画像を`VIDEO`に直さなければならないため、Create Videoノードを使用して画像・音声をまとめます。
 
@@ -122,7 +122,7 @@ ComfyUIでは、多くのノードが動画を **画像の連番** として扱�
 動画を扱うための便利なノード群です。
 コアノードよりも古くから存在しており、機能が豊富で使いやすいためこちらが使われることも多いです。
 
-![](https://gyazo.com/ebfd8a274dbdecb613f3fa232eb3dbb0){gyazo=image}
+![](/media/begin-with/media/legacy_gyazo_ebfd8a274dbdecb613f3fa232eb3dbb0.png){media=image}
 
 ### Load Video (Upload/Path) ノード
 
@@ -182,7 +182,7 @@ Load Imaeg ノードと同様ドラッグ・アンド・ドロップでも動画
 
 ## Webカメラ
 
-![](https://gyazo.com/2a7ab2f8dc9179e6c02d15e74dedcea3){gyazo=image}
+![](/media/begin-with/media/legacy_gyazo_2a7ab2f8dc9179e6c02d15e74dedcea3.png){media=image}
 
 Webカメラの入力を画像として取り込むことができます。
 

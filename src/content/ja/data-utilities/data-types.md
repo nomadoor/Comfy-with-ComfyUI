@@ -29,7 +29,7 @@ hero:
 
 画像生成AIの仕組みを勉強していけば、おのずと分かってきます。ここで一生懸命覚える必要はありません。
 
-![](https://gyazo.com/6cc70d5d04c3daec2682adf3bc41c77f){gyazo=image}
+![](/media/data-utilities/data-types/legacy_gyazo_6cc70d5d04c3daec2682adf3bc41c77f.png){media=image}
 
 - MODEL (モデル)
 - CLIP (条件付け)
@@ -56,7 +56,7 @@ hero:
 
 ComfyUIは拡張性が高いため、カスタムノードによっては独自の「型」を追加してくることがあります。
 
-![](https://gyazo.com/d5368ee02f84395613526515c34c458d){gyazo=image}
+![](/media/data-utilities/data-types/legacy_gyazo_d5368ee02f84395613526515c34c458d.png){media=image}
 
 例えば、有名な **Impact Pack** では `SEGS` という独自の型が登場します。
 
@@ -70,7 +70,7 @@ ComfyUIは拡張性が高いため、カスタムノードによっては独自�
 
 任意のデータをテキストとしてプレビューするためのノードです。
 
-![](https://gyazo.com/423eaa0eac26fefe67f5d212a1ab2ad1){gyazo=image}
+![](/media/data-utilities/data-types/legacy_gyazo_423eaa0eac26fefe67f5d212a1ab2ad1.png){media=image}
 
 [](/workflows/begin-with/data-types/preview_as_text.json)
 

@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "在 Wan2.1 VACE 中处理 ControlNet 式控制・in/outpainting・reference2video・Extension"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://gyazo.com/7e8deb0b28623921172baeeb26cf9de1.mp4"
+  image: "/media/basic-workflows/wan-2-1-vace/legacy_gyazo_7e8deb0b28623921172baeeb26cf9de1.mp4"
 tags: []
 ---
 ## 什么是 Wan2.1 VACE？
@@ -68,7 +68,7 @@ Wan2.1 VACE 用，使用与通常的 T2V 模型不同的 VACE 专用 diffusion m
 
 无论哪个模式，都是以 [Wan2.1 text2video](/zh/basic-workflows/wan-2-1/#可能会提高品质的技术) 为基础，添加 `WanVaceToVideo` 节点的形式为基本。
 
-![](https://gyazo.com/15272b819b453d21ec3707c059831edc){gyazo=image}
+![](/media/basic-workflows/wan-2-1-vace/legacy_gyazo_15272b819b453d21ec3707c059831edc.png){media=image}
 
 - `control_video`
   - 姿势・深度图・scribble・optical_flow・layout 等的“引导视频”
@@ -83,11 +83,11 @@ Wan2.1 VACE 用，使用与通常的 T2V 模型不同的 VACE 专用 diffusion m
 
 使用姿势和深度图等，控制视频的动作。
 
-![](https://gyazo.com/58c1530fbeeb7aa1004120b2db2ddff9){gyazo=loop}
+![](/media/basic-workflows/wan-2-1-vace/legacy_gyazo_58c1530fbeeb7aa1004120b2db2ddff9.mp4){media=loop}
 
 [](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_control_pose.json)
 
-{% mediaRow img="https://gyazo.com/6aca797b02070eb54bef2d7c9b2599ee {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/wan-2-1-vace/legacy_gyazo_6aca797b02070eb54bef2d7c9b2599ee.png {media=image}", width=33, align="left" %}
 
 **1. 读取 Wan2.1 VACE 模型**
 
@@ -96,7 +96,7 @@ Wan2.1 VACE 用，使用与通常的 T2V 模型不同的 VACE 专用 diffusion m
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/cbf721a8d70bd43d48b1fde5771b48ab {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/wan-2-1-vace/legacy_gyazo_cbf721a8d70bd43d48b1fde5771b48ab.png {media=image}", width=33, align="left" %}
 
 **2. 视频的调整尺寸**
 
@@ -107,7 +107,7 @@ Wan2.1 VACE 用，使用与通常的 T2V 模型不同的 VACE 专用 diffusion m
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/f6cfc10cb0f532e1e7c9d55acf412aee {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/wan-2-1-vace/legacy_gyazo_f6cfc10cb0f532e1e7c9d55acf412aee.png {media=image}", width=33, align="left" %}
 
 **3. control_video 的制作和输入**
 
@@ -121,11 +121,11 @@ Wan2.1 VACE 用，使用与通常的 T2V 模型不同的 VACE 专用 diffusion m
 
 将 reference 图像的角色和风格，传送到视频。
 
-![](https://gyazo.com/b9a184b4ffcad5f4a16b056df24818ed){gyazo=loop}
+![](/media/basic-workflows/wan-2-1-vace/legacy_gyazo_b9a184b4ffcad5f4a16b056df24818ed.mp4){media=loop}
 
 [](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_reference.json)
 
-{% mediaRow img="https://gyazo.com/235ae5ef44d4fb1518128c0ac099f601 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/wan-2-1-vace/legacy_gyazo_235ae5ef44d4fb1518128c0ac099f601.png {media=image}", width=33, align="left" %}
 
 **1. 参照图像的预处理・输入**
 
@@ -136,7 +136,7 @@ Wan2.1 VACE 用，使用与通常的 T2V 模型不同的 VACE 专用 diffusion m
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/289292215d191fbf7e114ff0ec2dcd77 {gyazo=loop}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/wan-2-1-vace/legacy_gyazo_289292215d191fbf7e114ff0ec2dcd77.mp4 {media=loop}", width=33, align="left" %}
 
 **2. 初期帧剪切**
 
@@ -151,11 +151,11 @@ Wan2.1 VACE 用，使用与通常的 T2V 模型不同的 VACE 专用 diffusion m
 
 只替换视频的一部分。
 
-![](https://gyazo.com/b146e11b6fab1d3e23cdcc30f8fe73c9){gyazo=loop}
+![](/media/basic-workflows/wan-2-1-vace/legacy_gyazo_b146e11b6fab1d3e23cdcc30f8fe73c9.mp4){media=loop}
 
 [](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_inpainting.json)
 
-{% mediaRow img="https://gyazo.com/eb65c46a68797753df091e4d28456929 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/wan-2-1-vace/legacy_gyazo_eb65c46a68797753df091e4d28456929.png {media=image}", width=33, align="left" %}
 
 **1. 掩膜生成**
 
@@ -164,7 +164,7 @@ Wan2.1 VACE 用，使用与通常的 T2V 模型不同的 VACE 专用 diffusion m
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/ff3fe037d3699cda4c1939cfe30922c0 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/wan-2-1-vace/legacy_gyazo_ff3fe037d3699cda4c1939cfe30922c0.png {media=image}", width=33, align="left" %}
 
 **2. control_video 的制作**
 
@@ -181,13 +181,13 @@ Wan2.1 VACE 用，使用与通常的 T2V 模型不同的 VACE 专用 diffusion m
 拉伸视频的“时间方向”的是 Extension。
 只使用输入视频的一部分帧，让 VACE 补全前面。
 
-![](https://gyazo.com/6bb7dd561151e0a93367fec89d90db26){gyazo=loop}
+![](/media/basic-workflows/wan-2-1-vace/legacy_gyazo_6bb7dd561151e0a93367fec89d90db26.mp4){media=loop}
 
 [](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_extension.json)
 
 - 在这个工作流中，以输入视频的最后 5 帧为基础，生成前面的 72 帧（81 - 5）。
 
-{% mediaRow img="https://gyazo.com/97d42cdc7d3a1c5b9777336efb5dd905 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/wan-2-1-vace/legacy_gyazo_97d42cdc7d3a1c5b9777336efb5dd905.png {media=image}", width=33, align="left" %}
 
 **1. 取得最后 5 帧**
 
@@ -197,7 +197,7 @@ Wan2.1 VACE 用，使用与通常的 T2V 模型不同的 VACE 专用 diffusion m
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/9b449f71d2dad381d37e4f3e363159cf {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/wan-2-1-vace/legacy_gyazo_9b449f71d2dad381d37e4f3e363159cf.png {media=image}", width=33, align="left" %}
 
 **2. control_video 和掩膜的制作**
 
@@ -209,7 +209,7 @@ Wan2.1 VACE 用，使用与通常的 T2V 模型不同的 VACE 专用 diffusion m
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/9886bf3bcd6bdbaed2aeadd2d6cb810b {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/wan-2-1-vace/legacy_gyazo_9886bf3bcd6bdbaed2aeadd2d6cb810b.png {media=image}", width=33, align="left" %}
 
 **3. 将生成视频和原视频连接**
 
@@ -225,7 +225,7 @@ Wan2.1 VACE 用，使用与通常的 T2V 模型不同的 VACE 专用 diffusion m
 抽出视频的最后数帧和最初数帧，使之 **最后 → 最初** 连接的话就能制作循环视频。
 至今为止如果用 FLF2V 也确实能制作，但在 VACE 因为可以使用多个帧作为输入，所以能做成像是继承了视频流动的举动这点很有趣。
 
-![](https://gyazo.com/14d264b55e73ace3c1e07aa9ecc24515){gyazo=loop}
+![](/media/basic-workflows/wan-2-1-vace/legacy_gyazo_14d264b55e73ace3c1e07aa9ecc24515.mp4){media=loop}
 
 [](/workflows/basic-workflows/wan-2-1-vace/wan2_1_vace_extension_loop.json)
 

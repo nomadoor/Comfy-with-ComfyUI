@@ -68,7 +68,7 @@ Stable Diffusion / SDXL 世代的模型无法很好地理解自然语言，基�
 
 虽然也有一些可以在 ComfyUI 本地运行的 LLM，但也请考虑 **通过 API 节点调用 Gemini 或 ChatGPT**。
 
-![](https://gyazo.com/94496f33d758475aa62f614978ea2252){gyazo=image}
+![](/media/ai-capabilities/prompt-generation/legacy_gyazo_94496f33d758475aa62f614978ea2252.png){media=image}
 
 [](/workflows/ai-capabilities/prompt-generation/z_image_gemini_3.json)
 

@@ -19,7 +19,7 @@ hero:
 
 Loads an image into ComfyUI.
 
-![](https://gyazo.com/9dd4bfe10197dddec18b0e7a1dc94f53){gyazo=loop}
+![](/media/begin-with/media/legacy_gyazo_9dd4bfe10197dddec18b0e7a1dc94f53.mp4){media=loop}
 
 Besides searching and adding nodes, there are several convenient ways:
 - a. Click `choose file to upload` to select a file.
@@ -35,7 +35,7 @@ Besides searching and adding nodes, there are several convenient ways:
 Displays the generated image on the spot.
 Since it doesn't save the image, use this to temporarily check intermediate processing steps or generation results.
 
-![](https://gyazo.com/9f5a3055bbb8ef271583545155f70371){gyazo=loop}
+![](/media/begin-with/media/legacy_gyazo_9f5a3055bbb8ef271583545155f70371.mp4){media=loop}
 
 - As with other image-related nodes, you can right-click and select `Save Image` or `Copy Image` to save or copy the image.
 - This is convenient as you don't have to search for the image in the output folder.
@@ -74,13 +74,13 @@ main.py --output_dir --output-directory [path]
 The latest image saved by the `Save Image` node is loaded here.
 It is sometimes used as a pseudo-loop process.
 
-![](https://gyazo.com/1b344fc1baa844c784d53a9790e6aafb){gyazo=loop}
+![](/media/begin-with/media/legacy_gyazo_1b344fc1baa844c784d53a9790e6aafb.mp4){media=loop}
 
 ### Image Comparer (rgthree) Node
 
 You can compare two images with a slider.
 
-![](https://gyazo.com/a3ac0fe532474c1447a2f9cd33b31649){gyazo=image}
+![](/media/begin-with/media/legacy_gyazo_a3ac0fe532474c1447a2f9cd33b31649.mp4){media=loop}
 
 [](/workflows/begin-with/media/image_comparer_rgthree.json)
 
@@ -94,7 +94,7 @@ You can compare two images with a slider.
 
 Loads a video.
 
-![](https://gyazo.com/96531a04d73333953691800babd073b9){gyazo=image}
+![](/media/begin-with/media/legacy_gyazo_96531a04d73333953691800babd073b9.png){media=image}
 
 In ComfyUI, many nodes treat video as a **sequence of images**.
 However, the output of this node is of type `VIDEO`, so it cannot be used as is. You need to decompose the video into images, audio, and fps using the `Get Video Components` node.
@@ -111,7 +111,7 @@ Therefore, when handling videos, we recommend using the **Video Helper Suite** d
 
 Saves the generated video.
 
-![](https://gyazo.com/695faf8fda159e16dc56ef533e28eb8f){gyazo=image}
+![](/media/begin-with/media/legacy_gyazo_695faf8fda159e16dc56ef533e28eb8f.png){media=image}
 
 This time, conversely, you have to convert the sequence of images back to `VIDEO`, so use the Create Video node to combine images and audio.
 
@@ -122,7 +122,7 @@ This time, conversely, you have to convert the sequence of images back to `VIDEO
 A set of convenient nodes for handling videos.
 It has existed longer than the core nodes, and because it is feature-rich and easy to use, it is often used.
 
-![](https://gyazo.com/ebfd8a274dbdecb613f3fa232eb3dbb0){gyazo=image}
+![](/media/begin-with/media/legacy_gyazo_ebfd8a274dbdecb613f3fa232eb3dbb0.png){media=image}
 
 ### Load Video (Upload/Path) Node
 
@@ -182,7 +182,7 @@ There are three types depending on the format you want to save:
 
 ## Webcam
 
-![](https://gyazo.com/2a7ab2f8dc9179e6c02d15e74dedcea3){gyazo=image}
+![](/media/begin-with/media/legacy_gyazo_2a7ab2f8dc9179e6c02d15e74dedcea3.png){media=image}
 
 You can capture webcam input as an image.
 

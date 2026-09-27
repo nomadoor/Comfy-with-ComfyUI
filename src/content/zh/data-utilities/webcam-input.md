@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "将网络摄像头或 OBS 的影像导入 ComfyUI 的方法"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/5c2f4a37547aa854b5dcc8d264ff962b.png"
+  image: "/media/data-utilities/webcam-input/legacy_gyazo_5c2f4a37547aa854b5dcc8d264ff962b.png"
 ---
 ## 网络摄像头输入
 
@@ -18,7 +18,7 @@ ComfyUI 可以将连接到电脑的摄像头影像作为图像导入。
 
 ### Webcam Capture 节点
 
-![](https://gyazo.com/2a7ab2f8dc9179e6c02d15e74dedcea3){gyazo=image}
+![](/media/begin-with/media/legacy_gyazo_2a7ab2f8dc9179e6c02d15e74dedcea3.png){media=image}
 
 - 1. 添加 `Webcam Capture` 节点
 - 2. 如果浏览器请求相机使用权限，请允许。
@@ -38,7 +38,7 @@ ComfyUI 可以将连接到电脑的摄像头影像作为图像导入。
 
 - **源设置（窗口采集）**
   - 从来源的 `+` 中选择 `窗口采集`，并指定特定的软件（例：画图）。
-  - ![](https://i.gyazo.com/3ae7154d9a7d58b54a5e331858a119ad.png){gyazo=loop}
+  - ![](/media/data-utilities/webcam-input/legacy_gyazo_3ae7154d9a7d58b54a5e331858a119ad.mp4){media=loop}
   - **采集方法**: 如果画面全黑，更改为 `Windows 10 (1903 版本及以上)` 可能会显示出来（在 Affinity 等绘图类软件中经常发生）。
   - **光标**: 根据喜好取消勾选“捕获光标”。
 
@@ -60,6 +60,6 @@ ComfyUI 可以将连接到电脑的摄像头影像作为图像导入。
 
 ### 实时执行 (Auto Queue)
 
-![](https://gyazo.com/6b57f5d40d4c55b13d82bf6737a24e5a){gyazo=loop}
+![](/media/data-utilities/webcam-input/legacy_gyazo_6b57f5d40d4c55b13d82bf6737a24e5a.mp4){media=loop}
 
 如果只是拍一张静止画，普通执行就可以，但如果是想把绘画实时进行 AI 转换等情况，请使用 `▷ Rum` 菜单中的 **`Run (Instant)`**。

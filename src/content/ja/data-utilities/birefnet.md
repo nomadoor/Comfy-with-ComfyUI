@@ -10,7 +10,7 @@ updated: 2026-06-24
 summary: "BiRefNet を使った背景除去とマスク生成"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/2e42734281821aa3f28153af9ba6a08e.png"
+  image: "/media/data-utilities/birefnet/legacy_gyazo_2e42734281821aa3f28153af9ba6a08e.png"
 ---
 
 ## BiRefNetとは？
@@ -40,7 +40,7 @@ SAM のように「この点」「この箱」「この物体」と指定して�
 
 ### 前景を切り抜く
 
-![](https://gyazo.com/57972a01d12b0d8e88ef705c18344651){gyazo=image}
+![](/media/data-utilities/birefnet/legacy_gyazo_57972a01d12b0d8e88ef705c18344651.png){media=image}
 
 [](/workflows/data-utilities/birefnet/birefnet.json)
 
@@ -53,7 +53,7 @@ SAM のように「この点」「この箱」「この物体」と指定して�
 
 上の workflow では背景を透過しましたが、画像生成や解析の下処理として使う場合は、背景を単色で塗りつぶしたほうが扱いやすいことも多いです。
 
-![](https://gyazo.com/5d22ae3e905a8ccd3c1b8c63f615bb4e){gyazo=image}
+![](/media/data-utilities/birefnet/legacy_gyazo_5d22ae3e905a8ccd3c1b8c63f615bb4e.png){media=image}
 
 [](/workflows/data-utilities/birefnet/birefnet_fill.json)
 

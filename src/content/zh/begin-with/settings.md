@@ -40,7 +40,7 @@ hero:
 
 拖动 `▷ Run` 按钮旁边的 `⋮⋮`，可以将其更改到喜欢的位置。
 
-![](https://gyazo.com/1c7183f67866e67e640715cfe42a2a61){gyazo=loop}
+![](/media/begin-with/settings/legacy_gyazo_1c7183f67866e67e640715cfe42a2a61.mp4){media=loop}
 
 
 ### 生成中的预览
@@ -49,4 +49,4 @@ ComfyUI Manger → Preview method 设置为 `Auto`/`TAESD`/`latent2RGB` 中的�
 - 在 KSamlper 节点内部，将会显示生成过程中的预览图像。
 - 因为相当占空间所以我把它关掉了，但这对于学习图像是如何生成的来说是一个很好的功能。
 
-![](https://gyazo.com/b57c81af6a11466c664303f29b25b4cc){gyazo=loop}
+![](/media/begin-with/settings/legacy_gyazo_b57c81af6a11466c664303f29b25b4cc.mp4){media=loop}

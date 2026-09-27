@@ -14,7 +14,7 @@ hero:
 ---
 ## Latent Diffusion Modelとは？
 
-![](https://gyazo.com/22d5f654c3c598feb046cf71d4d8d4aa){gyazo=image}
+![](/media/ai-capabilities/latent-diffusion-vae/legacy_gyazo_22d5f654c3c598feb046cf71d4d8d4aa.png){media=image}
 
 **Latent Diffusion Model** は、画像生成AIを自宅PCでも動かせるようにした一番大きな工夫のひとつです。
 
@@ -68,7 +68,7 @@ VAEは **非可逆圧縮** です。
 画像を潜在空間に変換して、また画像に戻しても、**完全には元通りにはなりません**。  
 わずかにボケたり、色味やコントラストが変わったりします。
 
-![](https://gyazo.com/8741de326b196b666b2d0617502f3814){gyazo=image}
+![](/media/ai-capabilities/latent-diffusion-vae/legacy_gyazo_8741de326b196b666b2d0617502f3814.png){media=image}
 
 拡散モデルを使わず、単純に画像を VAE でエンコードして、同じ VAE でデコードしてみると、わずかに劣化しているのが分かるはずです。  
 この「少しだけ劣化する代わりに、軽く扱えるようにする」というトレードオフが、潜在表現の特徴です。

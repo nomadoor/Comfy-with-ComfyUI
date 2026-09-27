@@ -35,7 +35,7 @@ Stable Diffusion 1.5 は、ほぼ **512px × 512px の正方形画像** で学�
 - 縦長・横長の画像も、512px の正方形にトリミングして学習している
 - その結果、「512px くらいの正方形を描く」のは得意だが、「もっと大きい絵」や「極端な縦長・横長」はそもそも練習していない
 
-![](https://gyazo.com/a5fee7589b0c712f6db86426d8f1cc72){gyazo=image}
+![](/media/basic-workflows/sd15-hires-fix/legacy_gyazo_a5fee7589b0c712f6db86426d8f1cc72.png){media=image}
 
 実際、768px や 1024px で生成させてみると、`a single dog` と書いたのにもかかわらず、犬が分裂して複数匹出たりします。
 

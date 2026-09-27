@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "WebカメラやOBSの映像をComfyUIに取り込む方法"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/5c2f4a37547aa854b5dcc8d264ff962b.png"
+  image: "/media/data-utilities/webcam-input/legacy_gyazo_5c2f4a37547aa854b5dcc8d264ff962b.png"
 ---
 ## Webカメラ入力
 
@@ -18,7 +18,7 @@ ComfyUIは、PCに接続されたカメラ映像を画像として取り込む�
 
 ### Webcam Captureノード
 
-![](https://gyazo.com/2a7ab2f8dc9179e6c02d15e74dedcea3){gyazo=image}
+![](/media/begin-with/media/legacy_gyazo_2a7ab2f8dc9179e6c02d15e74dedcea3.png){media=image}
 
 - 1.  `Webcam Capture` ノードを追加
 - 2. ブラウザからカメラの利用許可を求められた場合は、許可してください。
@@ -38,7 +38,7 @@ OBSをインストールし、取り込みたい画面を設定します。
 
 - **ソース設定（ウィンドウキャプチャ）**
   - ソースの `+` から `ウィンドウキャプチャ` を選択し、特定のソフト（例：ペイント）を指定します。
-  - ![](https://i.gyazo.com/3ae7154d9a7d58b54a5e331858a119ad.png){gyazo=loop}
+  - ![](/media/data-utilities/webcam-input/legacy_gyazo_3ae7154d9a7d58b54a5e331858a119ad.mp4){media=loop}
   - **キャプチャ方法**: 画面が真っ暗な場合、`Windows 10 (1903以降)` に変更すると映ることがあります（Affinityなどの描画系ソフトでよく起こります）。
   - **カーソル**: お好みで「カーソルをキャプチャする」のチェックを外してください。
 
@@ -61,6 +61,6 @@ ComfyUIに戻り、`Webcam Capture` ノードの設定を変更します。
 
 ### リアルタイム実行 (Auto Queue)
 
-![](https://gyazo.com/6b57f5d40d4c55b13d82bf6737a24e5a){gyazo=loop}
+![](/media/data-utilities/webcam-input/legacy_gyazo_6b57f5d40d4c55b13d82bf6737a24e5a.mp4){media=loop}
 
 静止画として1枚撮るだけなら通常の実行で良いですが、お絵描きをリアルタイムでAI変換したい場合などは、`▷ Rum` メニューの **`Run (Instant)`** を使用します。

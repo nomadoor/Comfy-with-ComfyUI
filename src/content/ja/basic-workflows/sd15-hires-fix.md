@@ -15,7 +15,7 @@ hero:
 
 ## Hires.fixとは？
 
-![](https://gyazo.com/a63d1a6610c9928b6c21ba39a0d533d0){gyazo=image}
+![](/media/basic-workflows/sd15-hires-fix/legacy_gyazo_a63d1a6610c9928b6c21ba39a0d533d0.png){media=image}
 
 かっこいい名前ですが、やっていることはそこまで複雑ではありません。
 
@@ -42,7 +42,7 @@ Stable Diffusion 1.5 で推奨されていた解像度は 512 × 512px で、大
 
 より本質的なのは、モデルが **「どのサイズの画像で学習されたか」** です。
 
-![](https://gyazo.com/a5fee7589b0c712f6db86426d8f1cc72){gyazo=image}
+![](/media/basic-workflows/sd15-hires-fix/legacy_gyazo_a5fee7589b0c712f6db86426d8f1cc72.png){media=image}
 
 Stable Diffusion 1.5 は、ほぼ 512 × 512px の画像だけで学習されています。  
 つまり、このサイズ付近の絵を描くのは得意ですが、**それ以外の解像度はそもそも練習していません。**
@@ -65,7 +65,7 @@ Stable Diffusion 1.5 は、ほぼ 512 × 512px の画像だけで学習されて
 
 ## ベーシックな方法
 
-![](https://gyazo.com/96cd5924bcaef159a79e2fb5fa991665){gyazo=image}
+![](/media/basic-workflows/sd15-hires-fix/legacy_gyazo_96cd5924bcaef159a79e2fb5fa991665.png){media=image}
 
 [](/workflows/basic-workflows/sd15-hires-fix/sd1_5_hires_fix.json)
 
@@ -86,7 +86,7 @@ Stable Diffusion 1.5 は、ほぼ 512 × 512px の画像だけで学習されて
 - [Goktug/ComfyUI_NNLatentUpscale (forked from Ttl)](https://github.com/Goktug/ComfyUi_NNLatentUpscale)
   - ニューラルネットワークを使ってlatentをアップスケールします。
 
-![](https://gyazo.com/545160bee6b5c66fd91b32e917ada79c){gyazo=image}
+![](/media/basic-workflows/sd15-hires-fix/legacy_gyazo_545160bee6b5c66fd91b32e917ada79c.png){media=image}
 
 [](/workflows/basic-workflows/sd15-hires-fix/sd1_5_hires_fix_nnlatentupscale.json)
 

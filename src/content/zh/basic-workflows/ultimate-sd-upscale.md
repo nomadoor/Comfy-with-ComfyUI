@@ -17,7 +17,7 @@ tags: ["upscale-restoration", "controlnet"]
 
 ## 什么是 Ultimate SD upscale？
 
-![](https://gyazo.com/d3b6f13de466be0cb0a17f2565d6f9e3){gyazo=image}
+![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_d3b6f13de466be0cb0a17f2565d6f9e3.png){media=image}
 
 作为在 Stable Diffusion 无法生成大图像的理由，有未以大图像进行学习的理由，但作为另一个单纯的原因，有计算成本的问题。
 
@@ -46,7 +46,7 @@ tags: ["upscale-restoration", "controlnet"]
 首先，确认一下 Tile 的基本举动。
 这里以 Tiled Diffusion 的节点为例说明，但只要掌握了想法什么节点都无所谓。
 
-![](https://gyazo.com/6ff5e63c42367c9ef8ffd8e2a89a61c5){gyazo=image} ![](https://gyazo.com/daf241e640303e9bdbebdbdb06ae4afa){gyazo=image}
+![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_6ff5e63c42367c9ef8ffd8e2a89a61c5.png){media=image} ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_daf241e640303e9bdbebdbdb06ae4afa.png){media=image}
 
 [](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap0.json)
 
@@ -66,13 +66,13 @@ tags: ["upscale-restoration", "controlnet"]
 如果介意边界线的话，只要将瓦片稍微重叠配置就好，有这样的构思。
 这就是 `tile_overlap`。
 
-![](https://gyazo.com/d6bf859530ae65b7b09ca8a2b2e3006b){gyazo=image} ![](https://gyazo.com/fec3f15e6e4ff7110d3f5ff110f0faa2){gyazo=image}
+![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_d6bf859530ae65b7b09ca8a2b2e3006b.png){media=image} ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_fec3f15e6e4ff7110d3f5ff110f0faa2.png){media=image}
 
 [](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap256.json)
 
 - 🟩 将 `tile_overlap` 设为 256px
 - 不是漂亮地排列瓦片，而是 **故意重叠一半左右** 排列的印象。
-  - ![](https://gyazo.com/5f5d51e77955a55c8df142e45d8d12f5){gyazo=image}
+  - ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_5f5d51e77955a55c8df142e45d8d12f5.png){media=image}
 
 重叠的部分，因为像相邻的瓦片彼此共享信息的缓冲那样工作，
 所以在推进采样的期间边界融合，瓦片的接缝变得不显眼。
@@ -86,7 +86,7 @@ tags: ["upscale-restoration", "controlnet"]
 Tile 还有另一个，大的弱点。  
 因为 **在所有的瓦片使用相同的提示词**，所以在没想到的地方生成了多余的东西。
 
-![](https://gyazo.com/b180b2b157a72b030b099dcb6f7c046f){gyazo=image}
+![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_b180b2b157a72b030b099dcb6f7c046f.png){media=image}
 
 在刚才的工作流中，像 `tile_overlap = 0` / `denoise = 1` 这样设定，
 并在提示词只写 `一只狗` 试着生成吧。  
@@ -122,7 +122,7 @@ ControlNet Tile 是 **相当强地保持输入图像的结构** 生成新图像�
 
 虽然不是原样复制像素，但保持 **大体的形状**、**对象的位置关系** 原样，进行重涂纹理和细节那样的举动。
 
-![](https://gyazo.com/a0d8adb6b4cbd35562588238db87f71e){gyazo=image} ![](https://gyazo.com/1bf02bf5900f379735c6a29a7aa1935e){gyazo=image}
+![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_a0d8adb6b4cbd35562588238db87f71e.png){media=image} ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_1bf02bf5900f379735c6a29a7aa1935e.png){media=image}
 
 [](/workflows/basic-workflows/ultimate-sd-upscale/tileddiffusion_controlnet_tile.json)
 
@@ -136,7 +136,7 @@ ControlNet Tile 是 **相当强地保持输入图像的结构** 生成新图像�
 
 组合到此为止的要素的话，就能看见实用的 Tile 放大的形状。
 
-![](https://gyazo.com/763660c52564a7af2f5dce9eaa81e20f){gyazo=image} ![](https://gyazo.com/3e4bf6018a4e4500f3bbd14151ce56e7){gyazo=image}
+![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_763660c52564a7af2f5dce9eaa81e20f.png){media=image} ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_3e4bf6018a4e4500f3bbd14151ce56e7.png){media=image}
 
 [](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap_contolnet_tile.json)
 

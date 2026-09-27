@@ -5,7 +5,7 @@
 
 ## Context
 
-Some Gyazo-hosted images are currently unavailable (see `2026-09-16-gyazo-outage-notice.md`). Affected pages are restored by re-capturing screenshots, not by bulk export from Gyazo.
+The Gyazo outage recorded in `2026-09-16-gyazo-outage-notice.md` motivated a storage-independent media layer. The temporary site notice was removed after delivery resumed and the site-used media migration was completed.
 
 Before this change, Gyazo rules were spread across the site: `.eleventy.js` renderers, the `imageVariant` filter, the hero/OGP templates (`.mp4` → `.jpg`), the assistant rail (`panel.video.id`), `lightbox.js` (Gyazo ID → mp4 URL), and UI hooks named `gyazo-*`. Markdown used `{gyazo=image|loop|player}`, which mixed the display mode with the storage provider.
 

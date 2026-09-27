@@ -37,27 +37,27 @@ ControlNet で扱える「追加情報」はアイデア次第でいくらでも
 ### openpose（ポーズ / 棒人間）
 棒人間やスケルトンで、人やキャラのポーズを指定します。
 
-![](https://gyazo.com/637abbf2514e4c973b519053ae5809cd){gyazo=image} ![](https://gyazo.com/aa98af3564647910d9c8b647a9ecbd16){gyazo=image}
+![](/media/ai-capabilities/controlnet/legacy_gyazo_637abbf2514e4c973b519053ae5809cd.png){media=image} ![](/media/ai-capabilities/controlnet/legacy_gyazo_aa98af3564647910d9c8b647a9ecbd16.png){media=image}
 
 ### depth（深度マップ）
 深度マップを使って、構図や奥行きを固定します。
 
-![](https://gyazo.com/0c12343e13526e4ac28edf9258e5ad23){gyazo=image} ![](https://gyazo.com/f9fa9577d3e0569f18057da32c50c95a){gyazo=image}
+![](/media/ai-capabilities/controlnet/legacy_gyazo_0c12343e13526e4ac28edf9258e5ad23.png){media=image} ![](/media/ai-capabilities/controlnet/legacy_gyazo_f9fa9577d3e0569f18057da32c50c95a.png){media=image}
 
 ### scribble（落書き）
 ラフな落書きだけ渡し、それをもとに画像を生成します。
 
-![](https://gyazo.com/add872b3de994b2b07852f0304ca9d47){gyazo=image} ![](https://gyazo.com/277213578f705e57a2c9a90adaf135c5){gyazo=image}
+![](/media/ai-capabilities/controlnet/legacy_gyazo_add872b3de994b2b07852f0304ca9d47.png){media=image} ![](/media/ai-capabilities/controlnet/legacy_gyazo_277213578f705e57a2c9a90adaf135c5.png){media=image}
 
 ### lineart / anime（線画）
 線画を渡して、塗りを生成します。
 
-![](https://gyazo.com/5ddbfb2110194fca853a74641efd4f87){gyazo=image} ![](https://gyazo.com/6905030224a42fdc28d2c85cf431b0a4){gyazo=image}
+![](/media/ai-capabilities/controlnet/legacy_gyazo_5ddbfb2110194fca853a74641efd4f87.png){media=image} ![](/media/ai-capabilities/controlnet/legacy_gyazo_6905030224a42fdc28d2c85cf431b0a4.png){media=image}
 
 ### inpaint（インペイント用）
 マスクされた部分を自然に埋めます。
 
-![](https://gyazo.com/69794d94d649836b33e3110b57bd9272){gyazo=image} ![](https://gyazo.com/18ae31a6d8972fdb966f49275248dd3e){gyazo=image}
+![](/media/ai-capabilities/controlnet/legacy_gyazo_69794d94d649836b33e3110b57bd9272.png){media=image} ![](/media/ai-capabilities/controlnet/legacy_gyazo_18ae31a6d8972fdb966f49275248dd3e.png){media=image}
 
 このほかにも、エッジ抽出（Canny）、セグメンテーション、QR コードなど、さまざまなバリエーションがありますが、「画像」と「対応する表現」を用意さえできればどんなControlNetでも作れます。
 

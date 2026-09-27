@@ -8,12 +8,12 @@
       "id": 3,
       "type": "LoadImage",
       "pos": [
-        557.2993863646276,
-        332.50277383751643
+        373.10938532702494,
+        368.9467847380044
       ],
       "size": [
-        249.53462357954527,
-        493.0909090909091
+        425.47074562947455,
+        532.0275918396638
       ],
       "flags": {},
       "order": 0,
@@ -34,14 +34,56 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "LoadImage",
         "cnr_id": "comfy-core",
-        "ver": "0.3.75",
-        "Node name for S&R": "LoadImage"
+        "ver": "0.3.75"
       },
       "widgets_values": [
-        "5905871d320b72c5dd9db3ab44d81854-png.jpg",
+        "000144_00001_.png",
         "image"
-      ]
+      ],
+      "widgets_values_named": {
+        "image": "000144_00001_.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 4,
+      "type": "UpscaleModelLoader",
+      "pos": [
+        509.78226955003856,
+        234.0963033658035
+      ],
+      "size": [
+        288.7978614064609,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "UPSCALE_MODEL",
+          "type": "UPSCALE_MODEL",
+          "links": [
+            2
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UpscaleModelLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75"
+      },
+      "widgets_values": [
+        "ESRGAN/ESRGAN_4x.pth"
+      ],
+      "widgets_values_named": {
+        "model_name": "ESRGAN/ESRGAN_4x.pth"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
     },
     {
       "id": 2,
@@ -51,7 +93,7 @@
         313.41186474660685
       ],
       "size": [
-        246.5274857954545,
+        269.1818709498119,
         46
       ],
       "flags": {},
@@ -79,9 +121,9 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "ImageUpscaleWithModel",
         "cnr_id": "comfy-core",
-        "ver": "0.3.75",
-        "Node name for S&R": "ImageUpscaleWithModel"
+        "ver": "0.3.75"
       },
       "color": "#232",
       "bgcolor": "#353"
@@ -90,12 +132,12 @@
       "id": 6,
       "type": "SaveImage",
       "pos": [
-        1121.8448409100806,
-        315.2300465647888
+        1158.2888518105692,
+        313.41186474660685
       ],
       "size": [
-        304.5454545454545,
-        506.3636363636364
+        492.01837148390337,
+        540.4496212615362
       ],
       "flags": {},
       "order": 3,
@@ -107,49 +149,23 @@
           "link": 4
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.75"
       },
       "widgets_values": [
         "ComfyUI"
-      ]
-    },
-    {
-      "id": 4,
-      "type": "UpscaleModelLoader",
-      "pos": [
-        596.8340099441729,
-        213.4118647466074
       ],
-      "size": [
-        210,
-        58
-      ],
-      "flags": {},
-      "order": 1,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "UPSCALE_MODEL",
-          "type": "UPSCALE_MODEL",
-          "links": [
-            2
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.75",
-        "Node name for S&R": "UpscaleModelLoader"
-      },
-      "widgets_values": [
-        "ESRGAN\\ESRGAN_4x.pth"
-      ],
-      "color": "#232",
-      "bgcolor": "#353"
+      "widgets_values_named": {
+        "filename_prefix": "ComfyUI"
+      }
     }
   ],
   "links": [
@@ -182,13 +198,13 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.9229599817706415,
+      "scale": 0.7627768444385475,
       "offset": [
-        -361.95397406280983,
-        -53.820982057971335
+        40.156199132043845,
+        3.408419895391863
       ]
     },
-    "frontendVersion": "1.34.2",
+    "frontendVersion": "1.51.9",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

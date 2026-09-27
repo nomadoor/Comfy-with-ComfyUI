@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "Z-Imageでの画像生成"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/39cddc1debeff5423090f2fe87e5b038.png"
+  image: "/media/basic-workflows/z-image/legacy_gyazo_39cddc1debeff5423090f2fe87e5b038.png"
 tags: []
 ---
 
@@ -18,7 +18,7 @@ tags: []
 
 Z-Image は、Alibaba / Tongyi-MAI による **画像生成モデルファミリー** です。
 
-![](https://gyazo.com/126c0d5ef1364355014fdd7e3288825c){gyazo=image}
+![](/media/basic-workflows/z-image/z_family.png){media=image}
 
 Z-Image という名前自体がモデル群の総称なので少し分かりにくいですが、このページでは、派生元となる ベースモデルとしての **Z-Image** を扱います。
 （区別のために Z-Image-Base と呼ばれることもあります。）
@@ -54,7 +54,7 @@ Z-Image は、（ファインチューニング元となる）ベースモデル
 
 ## text2image
 
-![](https://gyazo.com/8f4213b84c8d739021b8be032e8f6f8a){gyazo=image}
+![](/media/basic-workflows/z-image/legacy_gyazo_8f4213b84c8d739021b8be032e8f6f8a.png){media=image}
 
 [](/workflows/basic-workflows/z-image/z_image.json)
 
@@ -67,7 +67,7 @@ Z-Image の創造性と、Z-Image-Turbo の品質の安定感の両取りを狙�
 
 image2image してもいいですが、ここでは少しオシャレにサンプリングを2段に分けてみましょう。
 
-![](https://gyazo.com/2545e8ea917a80488d8687464185410d){gyazo=image}
+![](/media/basic-workflows/z-image/legacy_gyazo_2545e8ea917a80488d8687464185410d.png){media=image}
 
 [](/workflows/basic-workflows/z-image/z_image_refine_turbo.json)
 
@@ -79,7 +79,7 @@ image2image してもいいですが、ここでは少しオシャレにサン�
 
 **比較**
 
-![Z-Image のみ](https://gyazo.com/73afc01007482bdfbcc0b0d33f75cb98){gyazo=image} ![Z-Image + Turbo](https://gyazo.com/0c1ece70589a7b42801f37383a604440){gyazo=image}
+![Z-Image のみ](/media/basic-workflows/z-image/legacy_gyazo_73afc01007482bdfbcc0b0d33f75cb98.png){media=image} ![Z-Image + Turbo](/media/basic-workflows/z-image/legacy_gyazo_0c1ece70589a7b42801f37383a604440.png){media=image}
 
 
 ## Z-Image-Fun-Controlnet-Union-2.1
@@ -101,7 +101,7 @@ Z-Image 用の ControlNet 風パッチです。
 
 ### workflow
 
-![](https://gyazo.com/1eb558462ba943c91305960b112c6a63){gyazo=image}
+![](/media/basic-workflows/z-image/z_image_fun_controlnet_union_2_1.png){media=image}
 
 [](/workflows/basic-workflows/z-image/z_image_fun_controlnet_union_2_1.json)
 

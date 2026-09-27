@@ -31,7 +31,7 @@ hero:
 
 Stable Diffusion 1.5をダウンロードしてみましょう。
 
-![](https://gyazo.com/b274b58909cf22061a2506ab7b43bf61){gyazo=loop}
+![](/media/begin-with/downloading-and-placing-models/legacy_gyazo_b274b58909cf22061a2506ab7b43bf61.mp4){media=loop}
 
 - 1.  まず、[Comfy-Org/stable-diffusion-v1-5-archive](https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive) ページを開きます。
 - 2.  `Files and versions` タブをクリックし、ファイル一覧から目的のモデルファイル（例: `.safetensors` や `.ckpt`）を見つけます。
@@ -54,7 +54,7 @@ Stable Diffusion 1.5をダウンロードしてみましょう。
 
 Stable Diffusion 1.5のファインチューニングモデルとして一斉を風靡したepiCRealismをダウンロードしてみましょう。
 
-![](https://i.gyazo.com/7bcde1665657f544a1191c760248dd80.png){gyazo=image}
+![](/media/begin-with/downloading-and-placing-models/legacy_gyazo_7bcde1665657f544a1191c760248dd80.png){media=image}
 
 - 1.  まず、[epiCRealism](https://civitai.com/models/25694/epicrealism)のページを開きます。
 - 2.  画面右側にある青い **Download** ボタンをクリックします。
@@ -115,5 +115,5 @@ ComfyUIの `Load Checkpoint` ノードなどでは、ファイル名が `SD1.5\v
 
 - `ComfyUIアイコン` → `⚙Settings` →　`rgthree-comfy settings` → `Auto Nest Subdirectories in Menus ✅️`
 
-  ![](https://i.gyazo.com/dccf958c1d05e68e94bcb6bdd680e43c.png){gyazo=image}
+  ![](/media/begin-with/downloading-and-placing-models/legacy_gyazo_dccf958c1d05e68e94bcb6bdd680e43c.png){media=image}
 

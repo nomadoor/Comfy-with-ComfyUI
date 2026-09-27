@@ -34,7 +34,7 @@ The Web node UI you usually use is just one of these frontends.
 The frontend and server are not connected arbitrarily.
 They are connected by the **API (Application Programming Interface)**.
 
-![](https://gyazo.com/a04e2d09b534afb1e32900a738f0c3a7){gyazo=image}
+![](/media/begin-with/multiple-comfyui-instances/legacy_gyazo_a04e2d09b534afb1e32900a738f0c3a7.png){media=image}
 
 The Web node UI also sends commands to the server internally via the API.
 In other words, the moment you press `▷Run` in the UI, a request saying "execute this workflow" is sent to the server in the background.

@@ -30,7 +30,7 @@ Therefore, mistakes in the data type to connect almost never cause errors, but s
 
 If you study the mechanism of image generation AI, you will naturally understand. You don't need to try hard to memorize here.
 
-![](https://gyazo.com/6cc70d5d04c3daec2682adf3bc41c77f){gyazo=image}
+![](/media/data-utilities/data-types/legacy_gyazo_6cc70d5d04c3daec2682adf3bc41c77f.png){media=image}
 
 - MODEL
 - CLIP (Conditioning)
@@ -57,7 +57,7 @@ Numbers and characters themselves.
 
 Since ComfyUI has high extensibility, unique "types" may be added depending on the custom node.
 
-![](https://gyazo.com/d5368ee02f84395613526515c34c458d){gyazo=image}
+![](/media/data-utilities/data-types/legacy_gyazo_d5368ee02f84395613526515c34c458d.png){media=image}
 
 For example, in the famous **Impact Pack**, a unique type called `SEGS` appears.
 
@@ -71,7 +71,7 @@ If you get lost, just try pulling the wire. **If it connects, it's OK!**
 
 Node to preview arbitrary data as text.
 
-![](https://gyazo.com/423eaa0eac26fefe67f5d212a1ab2ad1){gyazo=image}
+![](/media/data-utilities/data-types/legacy_gyazo_423eaa0eac26fefe67f5d212a1ab2ad1.png){media=image}
 
 [](/workflows/begin-with/data-types/preview_as_text.json)
 

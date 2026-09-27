@@ -10,7 +10,7 @@ updated: 2026-08-26
 summary: "LivePortraitで1枚の顔写真から表情や首振りをコントロールする"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/0df8e012722c39159be1762a9a38ea99.png"
+  image: "/media/basic-workflows/liveportrait/legacy_gyazo_0df8e012722c39159be1762a9a38ea99.png"
 tags: ["talking-head"]
 ---
 
@@ -43,7 +43,7 @@ tags: ["talking-head"]
 
 ### パラメータで表情を調整する
 
-![](https://gyazo.com/f3793dcde8d6e286a67c3dd41b732da5){gyazo=loop}
+![](/media/basic-workflows/liveportrait/legacy_gyazo_f3793dcde8d6e286a67c3dd41b732da5.mp4){media=loop}
 
 [](/workflows/basic-workflows/liveportrait/liveportrait_i2i.json)
 
@@ -52,7 +52,7 @@ tags: ["talking-head"]
 
 ### 参照画像から編集する
 
-![](https://gyazo.com/0df8e012722c39159be1762a9a38ea99){gyazo=image}
+![](/media/basic-workflows/liveportrait/legacy_gyazo_0df8e012722c39159be1762a9a38ea99.png){media=image}
 
 [](/workflows/basic-workflows/liveportrait/liveportrait_i2i_ref.json)
 
@@ -76,7 +76,7 @@ tags: ["talking-head"]
 
 `Expression Editor (PHM)` でいくつもの表情を作り、その表情を次へ次へ変化させていくことで動画を作ることが出来ます。
 
-![](https://gyazo.com/adf677e141945fd7d957acb2e26c02ec){gyazo=loop}
+![](/media/basic-workflows/liveportrait/legacy_gyazo_adf677e141945fd7d957acb2e26c02ec.mp4){media=loop}
 
 [](/workflows/basic-workflows/liveportrait/liveportrait_i2v_motion_link.json)
 
@@ -115,7 +115,7 @@ tags: ["talking-head"]
 
 上では少しトリッキーなことをしましたが、実際にはこちらの使い方のほうがメインになると思います。
 
-![](https://gyazo.com/c893e38c12859f8f20ff1e0fca545788){gyazo=image}
+![](/media/ai-capabilities/talking-head/legacy_gyazo_c893e38c12859f8f20ff1e0fca545788.mp4){media=loop}
 
 [](/workflows/basic-workflows/liveportrait/liveportrait_i2v_ref.json)
 
@@ -130,7 +130,7 @@ tags: ["talking-head"]
 
 動画の中の人物の表情を参照動画に合わせます。
 
-![](https://gyazo.com/1a0205956e78b32045372f207582566d){gyazo=loop}
+![](/media/basic-workflows/liveportrait/legacy_gyazo_1a0205956e78b32045372f207582566d.mp4){media=loop}
 
 [](/workflows/basic-workflows/liveportrait/liveportrait_v2v_ref.json)
 

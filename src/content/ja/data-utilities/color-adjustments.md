@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "画像の明るさ調整やブラー、エフェクトについて"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/e1ecb574e0c11da63b0c6f8cee7a9f87.png"
+  image: "/media/data-utilities/color-adjustments/legacy_gyazo_e1ecb574e0c11da63b0c6f8cee7a9f87.png"
 ---
 
 ## 色調補正・エフェクト
@@ -31,7 +31,7 @@ hero:
 
 RGB値を反転したネガ画像を生成します。
 
-![](https://gyazo.com/79ea23575a35a9e8957853294e4f4e7e){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_79ea23575a35a9e8957853294e4f4e7e.png){media=image}
 
 [](/workflows/data-utilities/color-adjustments/invert_image.json)
 
@@ -40,7 +40,7 @@ RGB値を反転したネガ画像を生成します。
 
 輪郭をくっきりさせます。
 
-![](https://gyazo.com/0296ddc8958f0b0ee358afbdd449424b){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_0296ddc8958f0b0ee358afbdd449424b.png){media=image}
 
 [](/workflows/data-utilities/color-adjustments/imagesharpen.json)
 
@@ -49,7 +49,7 @@ RGB値を反転したネガ画像を生成します。
 
 画像をぼかします。
 
-![](https://gyazo.com/b3ae153b9b69063b83e3fb1eeb9bd335){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_b3ae153b9b69063b83e3fb1eeb9bd335.png){media=image}
 
 [](/workflows/data-utilities/color-adjustments/imageblur.json)
 
@@ -58,7 +58,7 @@ RGB値を反転したネガ画像を生成します。
 
 色数を減らします（ポスタリゼーション）。
 
-![](https://gyazo.com/08652b0b1815b616f8e644ed9067c56a){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_08652b0b1815b616f8e644ed9067c56a.png){media=image}
 
 [](/workflows/data-utilities/color-adjustments/imagequantize.json)
 
@@ -67,7 +67,7 @@ RGB値を反転したネガ画像を生成します。
 
 画像にノイズを追加します。
 
-![](https://gyazo.com/e57bf28e9d62134222cce8daaab0079e){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_e57bf28e9d62134222cce8daaab0079e.png){media=image}
 
 [](/workflows/data-utilities/color-adjustments/imageaddnoise.json)
 
@@ -82,7 +82,7 @@ cf. [ピクセル画像にノイズを追加して、低denoiseでのimage2image
 聞き慣れない言葉かもしれませんが、主に白黒のマスク画像に対して処理を行うものです。  
 「線を太らせる（膨張）」「ノイズを除去する（収縮）」といった処理が可能です。
 
-![](https://gyazo.com/db828b756ce851d763f9589b267f6002){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_db828b756ce851d763f9589b267f6002.png){media=image}
 
 [](/workflows/data-utilities/color-adjustments/imagemorphology.json)
 
@@ -100,7 +100,7 @@ Photoshopで行うような、より実用的な画像編集機能を追加す�
 
 - **[orion4d/ComfyUI-Image-Effects](https://github.com/orion4d/ComfyUI-Image-Effects)**
 
-![](https://i.gyazo.com/e1ecb574e0c11da63b0c6f8cee7a9f87.png){gyazo=image}
+![](/media/data-utilities/color-adjustments/legacy_gyazo_e1ecb574e0c11da63b0c6f8cee7a9f87.png){media=image}
 
 色相・彩度・明度の調整（HSV調整）や、トーンカーブのような調整、各種フィルターなど、人間が調整したいと思う機能の多くが含まれています。  
 詳しい機能一覧はリポジトリのドキュメントを確認してください。

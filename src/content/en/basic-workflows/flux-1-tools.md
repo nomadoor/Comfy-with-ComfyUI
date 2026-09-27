@@ -9,8 +9,6 @@ created: 2025-12-10
 updated: 2026-08-26
 summary: "How to use Flux.1 Tools"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
-hero:
-  image: "https://i.gyazo.com/204fbd9af3c371511c01a0c97cac40e8.png"
 tags: ["controlnet"]
 ---
 
@@ -40,7 +38,7 @@ It can be used just like an inpainting model.
 
 ### Workflow
 
-![](https://gyazo.com/ab4e4b0f5c9fe2030ebd637b15ac144d){gyazo=image}
+![](/media/basic-workflows/flux-1-tools/legacy_gyazo_ab4e4b0f5c9fe2030ebd637b15ac144d.png){media=image}
 
 [](/workflows/basic-workflows/flux-1-tools/flux_1_fill.json)
 
@@ -69,7 +67,7 @@ It can be used with the same feeling as ControlNet Depth / Canny.
 
 ### Workflow
 
-![](https://gyazo.com/8b4d310e8b9228e6e2be3b422150e01c){gyazo=image}
+![](/media/basic-workflows/flux-1-tools/legacy_gyazo_8b4d310e8b9228e6e2be3b422150e01c.png){media=image}
 
 [](/workflows/basic-workflows/flux-1-tools/flux_1_depth.json)
 
@@ -105,7 +103,7 @@ Furthermore, CLIP-ViT for encoding reference images is also required.
 
 ### Workflow
 
-![](https://gyazo.com/90588b4c7bc62bf7218901c901f31b8f){gyazo=image}
+![](/media/basic-workflows/flux-1-tools/legacy_gyazo_90588b4c7bc62bf7218901c901f31b8f.png){media=image}
 
 [](/workflows/basic-workflows/flux-1-tools/flux_1_redux.json)
 
@@ -117,7 +115,7 @@ Furthermore, CLIP-ViT for encoding reference images is also required.
 
 If you line up the chunks of `Apply Style Model` horizontally, you can also reference and mix multiple images.
 
-![](https://gyazo.com/cd6233194a56e2ceeb597c8877d645ef){gyazo=image}
+![](/media/basic-workflows/flux-1-tools/legacy_gyazo_cd6233194a56e2ceeb597c8877d645ef.png){media=image}
 
 [](/workflows/basic-workflows/flux-1-tools/flux_1_redux_multi.json)
 
