@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "ComfyUIとは生成AIのOSです"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/85c2b6638ce871ee1923a68ed24323b8.webp"
+  image: "/media/begin-with/what-is-comfyui/legacy_gyazo_85c2b6638ce871ee1923a68ed24323b8.png"
 ---
 
 画像生成AIの黎明期、Stable Diffusion web UIが主流だった頃、ノードベースでの実装を目指して生まれたのが **ComfyUI** です。

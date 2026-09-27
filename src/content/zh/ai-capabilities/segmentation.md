@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "为了制作蒙版而区分图像的技术（主要是 SAM 系）"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/4a56caa5986a2c2403dcad74d1bf1874.png"
+  image: "/media/ai-capabilities/segmentation/legacy_gyazo_4a56caa5986a2c2403dcad74d1bf1874.png"
 ---
 
 ## 什么是分割？
@@ -38,7 +38,7 @@ hero:
 
 ## SAM
 
-> ![](https://gyazo.com/109335e3e675b7bd8beb9f77bc489829){gyazo=loop}
+> ![](/media/ai-capabilities/segmentation/legacy_gyazo_109335e3e675b7bd8beb9f77bc489829.mp4){media=loop}
 > [Introducing Meta Segment Anything Model 3 and Segment Anything Playground](https://ai.meta.com/blog/segment-anything-model-3/)
 
 在 ComfyUI 中提到“分割”时，实际被使用的几乎都是 **SAM（Segment Anything）系的模型**。
@@ -71,7 +71,7 @@ hero:
 
 此外，在 [Segment Anything Playground](https://aidemos.meta.com/segment-anything/gallery) 中，有许多模糊脸部、将背景变成黑白等的例子。（顺便说一下，这些大部分都可以在 ComfyUI 中重现。）
 
-![](https://gyazo.com/8a13dabaec7771795dc4028d6e40abff){gyazo=image}
+![](/media/ai-capabilities/segmentation/legacy_gyazo_8a13dabaec7771795dc4028d6e40abff.png){media=image}
 
 [](/workflows/ai-capabilities/segmentation/sam3.json)
 
@@ -85,7 +85,7 @@ SAM 3 虽然可以用文本指定，但在物体检测这层意义上，我认�
 
 在教科书上，分割有如下分类。
 
-> ![](https://gyazo.com/010576fd5cce11b2da01333c92d39ae7){gyazo=image}
+> ![](/media/ai-capabilities/segmentation/legacy_gyazo_010576fd5cce11b2da01333c92d39ae7.png){media=image}
 > [インスタンスセグメンテーション (Instance Segmentation, 実例分割)](https://cvml-expertguide.net/terms/dl/instance-segmentation/)
 
 - **语义分割 (Semantic Segmentation)**

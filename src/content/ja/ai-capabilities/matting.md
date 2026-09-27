@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "自然な画像から前景を切り出し、背景と分離する技術"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: 'https://i.gyazo.com/38630075ecd6336a630da0fe5b8ba130.gif'
+  image: '/media/ai-capabilities/matting/legacy_gyazo_38630075ecd6336a630da0fe5b8ba130.mp4'
 ---
 
 ## マッティングとは？
@@ -29,7 +29,7 @@ hero:
 
 軽量で高性能なので、マッティングならBiRefNetを選んでおけば間違いないです。
 
-![](https://gyazo.com/131fe705fd29ddd98391fb4e78b608ab){gyazo=image}
+![](/media/ai-capabilities/matting/legacy_gyazo_131fe705fd29ddd98391fb4e78b608ab.png){media=image}
 
 [](/workflows/ai-capabilities/matting/birefnet_general.json)
 
@@ -41,7 +41,7 @@ hero:
 
 [SDMatte](https://github.com/vivoCameraResearch/SDMatte)は、Stable Diffusionの知識を利用したマッティングモデルです。
 
-![](https://gyazo.com/317da8e987179adbe6e02f0eb40a4a07){gyazo=image}
+![](/media/ai-capabilities/matting/legacy_gyazo_317da8e987179adbe6e02f0eb40a4a07.png){media=image}
 
 [](/workflows/ai-capabilities/matting/sdmatte.json)
 

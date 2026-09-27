@@ -28,7 +28,7 @@ It means "that port is already being used", but what does that actually mean?
 
 ## ComfyUI runs as a server
 
-![](https://gyazo.com/a04e2d09b534afb1e32900a738f0c3a7){gyazo=image}
+![](/media/begin-with/multiple-comfyui-instances/legacy_gyazo_a04e2d09b534afb1e32900a738f0c3a7.png){media=image}
 
 The first thing to know is that ComfyUI is split into a **screen** and an **execution engine**.
 
@@ -103,7 +103,7 @@ Here we talked about running multiple ComfyUI servers.
 
 On the other hand, there is also a small trick where you open the same URL in another browser tab or another window.
 
-![](https://gyazo.com/71d8f5ff0d41e4b1e6790fc2e0a366a2){gyazo=image}
+![](/media/begin-with/multiple-comfyui-instances/legacy_gyazo_71d8f5ff0d41e4b1e6790fc2e0a366a2.png){media=image}
 
 For example, if you open `http://127.0.0.1:8188` in two browser tabs, you can control the same ComfyUI server from multiple screens.
 

@@ -15,7 +15,7 @@ hero:
 
 ## What is KSampler (Advanced)?
 
-![](https://gyazo.com/6f12a584833996a7a4800a13bb59cc23){gyazo=image}
+![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_6f12a584833996a7a4800a13bb59cc23.png){media=image}
 
 The `KSampler (Advanced)` node is a high-level version of the standard `KSampler` node.
 The `denoise` parameter is gone, and the following four have been added:
@@ -30,7 +30,7 @@ I think this is one of the most interesting features in ComfyUI, so let's take a
 
 ## Review of Diffusion Models and Sampling
 
-![](https://gyazo.com/bf9d6d2e5b528f0b82f9d13e3c18c5fa){gyazo=image}
+![](/media/ai-capabilities/sampling/legacy_gyazo_bf9d6d2e5b528f0b82f9d13e3c18c5fa.png){media=image}
 
 [Diffusion models](/en/ai-capabilities/diffusion-models/) work by creating an image by gradually removing noise from complete noise.
 
@@ -44,7 +44,7 @@ In the image above, full noise is added at step 0, and by step 20, all noise is 
 
 In KSampler (Advanced), by setting `start_at_step` and `end_at_step`, you can control from where borrowing starts and how far sampling proceeds.
 
-![](https://gyazo.com/e73ba8cf96fd09b8c5335844858a6c86){gyazo=image}
+![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_e73ba8cf96fd09b8c5335844858a6c86.png){media=image}
 
 For example, if you set `start_at_step` to **4** / `end_at_step` to **11**, it will only sample the white part of the image.
 
@@ -57,7 +57,7 @@ That's right, adding noise is also done by KSampler.
 
 In KSampler (Advanced), you can select whether to add noise or not with the `add_noise` parameter.
 
-![](https://gyazo.com/64cca8d8e53b01d4315b4aec434dd5ec){gyazo=image}
+![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_64cca8d8e53b01d4315b4aec434dd5ec.png){media=image}
 
 [](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_add_noise.json)
 
@@ -71,18 +71,18 @@ Sampling only intermediate steps, not adding noise... where exactly is this usef
 
 One thing you can do precisely because it is KSampler (Advanced) is to split one sampling into two or more KSamplers.
 
-![](https://gyazo.com/27eed74329f52442a046e59245ee9b14){gyazo=image}
+![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_27eed74329f52442a046e59245ee9b14.png){media=image}
 
 As shown in the figure, let's do the first half 0 ~ 10 steps with 🟪 KSampler (Advanced) and 11 ~ 20 steps with 🟨 KSampler (Advanced).
 
-![](https://gyazo.com/d57cb22d3d85f90010815d19d45bb638){gyazo=image}
+![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_d57cb22d3d85f90010815d19d45bb638.png){media=image}
 
 [](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_divide.json)
 
 You can see that the generated image is exactly the same even if you split it into two.
 The parameters are a bit confusing, so let's look at them carefully.
 
-{% mediaRow img="https://gyazo.com/05f6a71f5fe47d5c2257bce31a015d2b{gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/ksampler-advanced/legacy_gyazo_05f6a71f5fe47d5c2257bce31a015d2b.png{media=image}", width=33, align="left" %}
 **🟪KSampler (Advanced)**
 - `add_noise` : `enable`
 - `start_at_step` : `0`
@@ -91,7 +91,7 @@ The parameters are a bit confusing, so let's look at them carefully.
   - Returns the latent with noise remaining.
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/172843d68f88326455f5d66176286de0 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/ksampler-advanced/ksampler_advanced_2nd.png{media=image}", width=33, align="left" %}
 **🟨KSampler (Advanced)**
 - `add_noise` : `disable`
   - Since a latent with remaining noise is passed, noise is not added here.
@@ -112,13 +112,13 @@ It doesn't seem to make sense to split it, but this is where it gets interesting
 
 You can use prompt "A" at first and switch to prompt "B" halfway through sampling.
 
-![](https://gyazo.com/6fd6725df9ce2fd370f7561927bafd4e){gyazo=image}
+![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_6fd6725df9ce2fd370f7561927bafd4e.png){media=image}
 
 [](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_prompt_editing.json)
 
 In this workflow, the image is generated with the prompt `red apple` for the first 10 steps and `red rabbit` for the rest. Can you see that an image that somehow mixes "apple" and "rabbit" is generated?
 
-![](https://gyazo.com/b9db108769cb804df9df3fe8212e7707){gyazo=loop}
+![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_b9db108769cb804df9df3fe8212e7707.mp4){media=loop}
 
 To make it easier to understand, I made a video of the generated images when changing the switching step by 1. What was 100% apple gradually becomes a rabbit.
 
@@ -130,7 +130,7 @@ To make it easier to understand, I made a video of the generated images when cha
 
 Similarly, you can switch models or LoRA halfway through.
 
-![](https://gyazo.com/f85b62fe88508687bf562fd162fcc569){gyazo=image}
+![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_f85b62fe88508687bf562fd162fcc569.png){media=image}
 
 [](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_lora.json)
 
@@ -139,7 +139,7 @@ But if you look closely, two text2image workflows are lined up, and it's just sw
 
 Generating the first 6 steps **without LoRA**, and the rest **with LoRA**.
 
-![](https://gyazo.com/ca0b90aaa5297a515c7bfe8f94e55684){gyazo=image}
+![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_ca0b90aaa5297a515c7bfe8f94e55684.png){media=image}
 
 
 This is a LoRA that makes it pixel art, but LoRA has memories of the pictures used as training material in addition to the concept of "making it pixel art".

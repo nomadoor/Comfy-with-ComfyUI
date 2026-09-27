@@ -10,7 +10,7 @@ updated: 2026-05-30
 summary: "关于抠图、分割、物体检测"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/499c4756e1b2adb1424f9cab9829806b.png"
+  image: "/media/data-utilities/ai-mask-generation/legacy_gyazo_499c4756e1b2adb1424f9cab9829806b.png"
 ---
 
 ## 使用 AI 生成蒙版
@@ -41,7 +41,7 @@ hero:
 
 YOLO 是以实时检测物体为目的的超高速检测技术。
 
-![](https://gyazo.com/e8b4e05d42db0b613aee4467a8dca633){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_e8b4e05d42db0b613aee4467a8dca633.png){media=image}
 
 基本上，它会针对想要检测的物体类型分别制作模型，例如人脸专用、手专用等。如果没有对应模型，就需要自己制作；如果想同时检测多种类别，也不太适合。
 
@@ -59,7 +59,7 @@ Grounding DINO 会检测用文本指定的物体，并输出 BBOX。
 
 它们可以进行图像描述生成等各种任务，其中也有可以进行物体检测的模型。
 
-![](https://gyazo.com/eac97524bcdcb395cdd5172c3694da41){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_eac97524bcdcb395cdd5172c3694da41.png){media=image}
 
 比较早期的代表例是 **Florence-2**。
 
@@ -77,7 +77,7 @@ Grounding DINO 会检测用文本指定的物体，并输出 BBOX。
 
 ### BiRefNet
 
-![](https://gyazo.com/5ce4bac5b8c8dc13fbbb0468c44bf752){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_5ce4bac5b8c8dc13fbbb0468c44bf752.png){media=image}
 
 详细用法请看 [BiRefNet](/zh/data-utilities/birefnet/) 页面。
 
@@ -91,7 +91,7 @@ SAM 是目前最有名的分割模型。
 
 它理解“物体的形状”。如果用文本、点或框指定照片中的汽车等对象，它就能找到轮廓，并生成蒙版。
 
-![](https://gyazo.com/cd6078ed81d850085144836e404754d5){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_cd6078ed81d850085144836e404754d5.png){media=image}
 
 目前最新模型的内容，会在 [SAM 3 / 3.1](/zh/data-utilities/sam3/) 页面中说明。
 
@@ -122,7 +122,7 @@ SAM 是目前最有名的分割模型。
 
 ### YOLO × SAM
 
-![](https://gyazo.com/2c1fb7ed9c7fcc6242e48b9e6e405c27){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_2c1fb7ed9c7fcc6242e48b9e6e405c27.png){media=image}
 
 [](/workflows/data-utilities/ai-mask-generation/yolo_face_sam.json)
 
@@ -130,7 +130,7 @@ SAM 是目前最有名的分割模型。
 
 ### Grounding DINO × SAM
 
-![](https://gyazo.com/c7b4ed29a8dae26fb9c666b137091ab4){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_c7b4ed29a8dae26fb9c666b137091ab4.png){media=image}
 
 [](/workflows/data-utilities/ai-mask-generation/grounding_dino_hq_sam.json)
 
@@ -140,7 +140,7 @@ Grounding DINO 与 SAM 改良版 HQ-SAM 的组合。
 
 ### Florence2 × SAM2
 
-![](https://gyazo.com/677607c761c38defde753681398d6e1f){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_677607c761c38defde753681398d6e1f.png){media=image}
 
 [](/workflows/data-utilities/ai-mask-generation/florence2_sam2_1.json)
 
@@ -150,7 +150,7 @@ Florence2 与 SAM2.1 的组合。
 
 ### SAM 3 × BiRefNet
 
-![](https://gyazo.com/82c4c2d947a3ea9c98b46e05a05d542f){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_82c4c2d947a3ea9c98b46e05a05d542f.png){media=image}
 
 [](/workflows/data-utilities/ai-mask-generation/sam3_birefnet.json)
 

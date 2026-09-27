@@ -11,7 +11,7 @@ permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - contact
 hero:
-  image: "https://i.gyazo.com/ba9d047c28a5a0157ea93a1ef6779838.png"
+  image: "/media/shared/contact/legacy_gyazo_ba9d047c28a5a0157ea93a1ef6779838.png"
 ---
 
 ## サイトに関すること
@@ -146,7 +146,7 @@ hero:
 
 ## このサイトを作った人
 
-![](https://gyazo.com/b2e27b1ad9320212da03b23da92de02d){gyazo=image}
+![](/media/shared/contact/legacy_gyazo_b2e27b1ad9320212da03b23da92de02d.png){media=image}
 
 **nomadoor (ノマドア)**
 

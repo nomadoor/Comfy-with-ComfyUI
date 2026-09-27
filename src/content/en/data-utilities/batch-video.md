@@ -45,7 +45,7 @@ There is no need to distinguish between Video and Batch.
 Images entering a Batch must **all be the same size**.
 If the width/height do not match, subsequent images are automatically cropped based on the first one.
 
-![](https://gyazo.com/8e42e9262108b5d6065a330d16863352){gyazo=image}
+![](/media/data-utilities/batch-video/legacy_gyazo_8e42e9262108b5d6065a330d16863352.png){media=image}
 
 [](/workflows/data-utilities/batch-video/diff_list_batch.json)
 
@@ -81,7 +81,7 @@ Basic ones are provided as core nodes, but it is a bit tough when trying to hand
 
 Groups multiple `IMAGE`s into a Batch.
 
-![](https://gyazo.com/6663a7ba4d243f0afd79c41a9406a42d){gyazo=loop}
+![](/media/data-utilities/batch-video/legacy_gyazo_6663a7ba4d243f0afd79c41a9406a42d.mp4){media=loop}
 
 [](/workflows/data-utilities/batch-video/batch_images.json)
 
@@ -91,7 +91,7 @@ Groups multiple `IMAGE`s into a Batch.
 
 Groups images in a folder into a Batch.
 
-![](https://gyazo.com/fca9d0847d5c6a45aafa63c923b0e0d8){gyazo=image}
+![](/media/data-utilities/batch-video/legacy_gyazo_fca9d0847d5c6a45aafa63c923b0e0d8.png){media=image}
 
 [](/workflows/data-utilities/batch-video/load_image_batch_from_dir_load_image_path.json)
 
@@ -107,7 +107,7 @@ Groups images in a folder into a Batch.
 Reverses the order of the Batch.
 Can be used for reverse playback of videos, etc.
 
-![](https://gyazo.com/433f02c632e722abfe3174cd7eb23837){gyazo=image}
+![](/media/data-utilities/batch-video/legacy_gyazo_433f02c632e722abfe3174cd7eb23837.png){media=image}
 
 [](/workflows/data-utilities/batch-video/reverse_image_batch.json)
 
@@ -119,7 +119,7 @@ Repeats the entire Batch a specified number of times.
 
 Repeats each frame a specified number of times.
 
-![](https://gyazo.com/1384e9cff563f76a7b15fbd0f70f1aa5){gyazo=image}
+![](/media/data-utilities/batch-video/repeatimagebatch_imagebatchrepeatinterleaving.png){media=image}
 
 [](/workflows/data-utilities/batch-video/repeatimagebatch_imagebatchrepeatinterleaving.json)
 
@@ -134,7 +134,7 @@ Repeats each frame a specified number of times.
 
 Extracts an image at an arbitrary position from the Batch.
 
-![](https://gyazo.com/6e48d34613f09e7dddfe3f40187f0de0){gyazo=image}
+![](/media/data-utilities/batch-video/legacy_gyazo_6e48d34613f09e7dddfe3f40187f0de0.png){media=image}
 
 [](/workflows/data-utilities/batch-video/imagefrombatch.json)
 
@@ -149,7 +149,7 @@ Extracts a range of images (or masks) collectively.
 
 Gets frames skipping every N images.
 
-![](https://gyazo.com/f5b845e89342f120cc994b999e390e11){gyazo=image}
+![](/media/data-utilities/batch-video/legacy_gyazo_f5b845e89342f120cc994b999e390e11.png){media=image}
 
 [](/workflows/data-utilities/batch-video/select_every_nth_image.json)
 
@@ -164,7 +164,7 @@ If you want to process one by one after loading a video or Batch, convert it to 
 
 ### Image Batch to Image List Node
 
-![](https://gyazo.com/1b63fa52915e6e923b0802907066d81c){gyazo=image}
+![](/media/data-utilities/batch-video/image_batch_to_image_list.png){media=image}
 
 [](/workflows/data-utilities/batch-video/image_batch_to_image_list.json)
 

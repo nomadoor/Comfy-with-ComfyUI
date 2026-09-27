@@ -10,7 +10,7 @@ updated: 2026-06-24
 summary: "Background removal and mask generation with BiRefNet"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/2e42734281821aa3f28153af9ba6a08e.png"
+  image: "/media/data-utilities/birefnet/legacy_gyazo_2e42734281821aa3f28153af9ba6a08e.png"
 ---
 
 ## What is BiRefNet?
@@ -40,7 +40,7 @@ It is not like SAM, where you specify "this point", "this box", or "this object"
 
 ### Cut Out the Foreground
 
-![](https://gyazo.com/57972a01d12b0d8e88ef705c18344651){gyazo=image}
+![](/media/data-utilities/birefnet/legacy_gyazo_57972a01d12b0d8e88ef705c18344651.png){media=image}
 
 [](/workflows/data-utilities/birefnet/birefnet.json)
 
@@ -53,7 +53,7 @@ It is not like SAM, where you specify "this point", "this box", or "this object"
 
 The workflow above makes the background transparent, but for preprocessing in image generation or analysis, it is often easier to fill the background with a solid color.
 
-![](https://gyazo.com/5d22ae3e905a8ccd3c1b8c63f615bb4e){gyazo=image}
+![](/media/data-utilities/birefnet/legacy_gyazo_5d22ae3e905a8ccd3c1b8c63f615bb4e.png){media=image}
 
 [](/workflows/data-utilities/birefnet/birefnet_fill.json)
 

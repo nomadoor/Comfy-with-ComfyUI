@@ -11,7 +11,7 @@ summary: "ポーズや線画を使って画像生成をコントロールする"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: ["controlnet"]
 hero:
-  image: "https://i.gyazo.com/81753915732cf767995f1b35ac827b5d.png"
+  image: "/media/basic-workflows/sd15-controlnet/legacy_gyazo_81753915732cf767995f1b35ac827b5d.png"
 ---
 
 ## ControlNetとは？
@@ -44,7 +44,7 @@ scribble モデルは、「ラフな落書き」をもとに画像を生成す�
 
 ### workflow
 
-![](https://gyazo.com/885feaa8a1857c09ce11977ad9d424c2){gyazo=image}
+![](/media/basic-workflows/sd15-controlnet/legacy_gyazo_885feaa8a1857c09ce11977ad9d424c2.png){media=image}
 
 [](/workflows/basic-workflows/sd15-controlnet/sd1_5_controlnet_scribble.json)
 
@@ -55,7 +55,7 @@ scribble モデルは、「ラフな落書き」をもとに画像を生成す�
 > 白背景に黒で描いた線だと、うまく反応しないことが多いので注意してください。
 
 - サンプル画像
-  - ![](https://gyazo.com/fd112e311d4e0503fbb4df2044fc9325){gyazo=image}
+  - ![](/media/basic-workflows/sd15-controlnet/legacy_gyazo_fd112e311d4e0503fbb4df2044fc9325.png){media=image}
 
 ---
 
@@ -69,7 +69,7 @@ scribble モデルは、「ラフな落書き」をもとに画像を生成す�
 
 ### start_percent / end_percent
 
-![](https://gyazo.com/3c82ca8a7dcb51f2475d0451de727783){gyazo=loop}
+![](/media/ai-capabilities/diffusion-models/legacy_gyazo_3c82ca8a7dcb51f2475d0451de727783.mp4){media=loop}
 
 サンプリングは序盤で大まかな形が決まり、後半で細部が描き込まれます。
 
@@ -99,45 +99,45 @@ ControlNet の多く（pose / depth / scribble など）は **形を決めるタ
 
 ### 一覧
 
-{% mediaRow img="https://gyazo.com/be3200558982f020a124d2bc68276c16 {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_be3200558982f020a124d2bc68276c16.png {media=image}", width=60, align="left" %}
 ### Canny
 - 写真や画像の輪郭を保ったまま別のスタイルで描き直します。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/debe9e414b688be1fa07bf01101ea2e0 {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_debe9e414b688be1fa07bf01101ea2e0.png {media=image}", width=60, align="left" %}
 ### Lineart
 - Cannyと似ていますが、よりイラスト向けです。  
 - 線画着色などに使われます。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/cbe33c8ba39da19e249634a6e46ec13b {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_cbe33c8ba39da19e249634a6e46ec13b.png {media=image}", width=60, align="left" %}
 ### Depth
 - 深度マップ（手前・奥の情報）を使って、元画像の奥行きや構図を保ちながら生成します。
 - 建物や風景など、立体感を崩したくない場合に向いています。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/ae9a4fd7513b17114e2317b0da8dc14c {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_ae9a4fd7513b17114e2317b0da8dc14c.png {media=image}", width=60, align="left" %}
 ### Normal
 - 法線マップを使って、光の当たり方や立体感をコントロールします。{% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/8df713d0e8415ada994ad7c5f91d8ba9 {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_8df713d0e8415ada994ad7c5f91d8ba9.png {media=image}", width=60, align="left" %}
 ### Pose
 - OpenPose などで抽出した「棒人間のポーズ情報」から、同じポーズの人物・キャラクター画像を生成します。 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/fe7da06340c74791241cac5a482531bb {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_fe7da06340c74791241cac5a482531bb.png {media=image}", width=60, align="left" %}
 ### Inpaint
 - 画像の一部だけを描き直したいときに使うモデルです。
 - マスクで指定した範囲だけ、自然に描き換えることができます（不要物の消去・小物の差し替えなど）。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/ea6af6e0edcd04ffe43f032b8a10b4fb {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_ea6af6e0edcd04ffe43f032b8a10b4fb.png {media=image}", width=60, align="left" %}
 ### QR Code Monster
 - QRコードとして読み取れる画像を作り出します。
 - QRコードに限らず、「白黒のパターン画像」をベースに、好きな絵柄に変形させる使い方もできます。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/65e5e0ed5aaf2c87d363e6eb37e7d33b {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_65e5e0ed5aaf2c87d363e6eb37e7d33b.png {media=image}", width=60, align="left" %}
 ### Tile
 - ぼかしが強い画像や低解像度の画像から、綺麗な画像を作り出します。
 - 単体でも使えますが、実際には Ultimate SD Upscale のような「超解像アップスケール」と組み合わせて使われることが多いです。

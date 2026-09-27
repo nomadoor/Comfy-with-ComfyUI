@@ -16,7 +16,7 @@ tags: ["upscale-restoration", "controlnet"]
 
 ## What is Ultimate SD upscale?
 
-![](https://gyazo.com/d3b6f13de466be0cb0a17f2565d6f9e3){gyazo=image}
+![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_d3b6f13de466be0cb0a17f2565d6f9e3.png){media=image}
 
 There were two reasons why Stable Diffusion could not generate large images: one was that it was not trained on large images, and another simple reason was the problem of computational cost.
 
@@ -45,7 +45,7 @@ There is also a node exactly named [ssitu/ComfyUI_UltimateSDUpscale](https://git
 First, let's look at the basic behavior of Tile.
 Here we will explain using the Tiled Diffusion node as an example, but the node can be anything as long as you understand the concept.
 
-![](https://gyazo.com/6ff5e63c42367c9ef8ffd8e2a89a61c5){gyazo=image} ![](https://gyazo.com/daf241e640303e9bdbebdbdb06ae4afa){gyazo=image}
+![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_6ff5e63c42367c9ef8ffd8e2a89a61c5.png){media=image} ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_daf241e640303e9bdbebdbdb06ae4afa.png){media=image}
 
 [](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap0.json)
 
@@ -64,13 +64,13 @@ This is the **first weakness** of Tile.
 If you are concerned about boundaries, you can arrange the tiles with a slight overlap.
 This is `tile_overlap`.
 
-![](https://gyazo.com/d6bf859530ae65b7b09ca8a2b2e3006b){gyazo=image} ![](https://gyazo.com/fec3f15e6e4ff7110d3f5ff110f0faa2){gyazo=image}
+![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_d6bf859530ae65b7b09ca8a2b2e3006b.png){media=image} ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_fec3f15e6e4ff7110d3f5ff110f0faa2.png){media=image}
 
 [](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap256.json)
 
 - 🟩 Set `tile_overlap` to 256px
 - Instead of lining up tiles neatly, imagine arranging them **intentionally overlapping by about half**.
-  - ![](https://gyazo.com/5f5d51e77955a55c8df142e45d8d12f5){gyazo=image}
+  - ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_5f5d51e77955a55c8df142e45d8d12f5.png){media=image}
 
 The overlapped part acts like a cushion where adjacent tiles share information, so the boundary blends in as sampling progresses, making the seams of the tiles less noticeable.
 
@@ -83,7 +83,7 @@ However, increasing the overlap means sampling the same area multiple times, so 
 Tile has another major weakness.
 Since **the same prompt is used for all tiles**, unnecessary things are generated in unexpected places.
 
-![](https://gyazo.com/b180b2b157a72b030b099dcb6f7c046f){gyazo=image}
+![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_b180b2b157a72b030b099dcb6f7c046f.png){media=image}
 
 Let's try generating with settings like `tile_overlap = 0` / `denoise = 1` in the previous workflow, and writing only `a dog` in the prompt.
 Then, as shown in the image, many dogs appear in one image.
@@ -117,7 +117,7 @@ ControlNet Tile is a ControlNet that generates a new image while **maintaining t
 
 It does not copy pixels as they are, but behaves like repainting textures and details while maintaining the **rough shape** and **positional relationship of objects**.
 
-![](https://gyazo.com/a0d8adb6b4cbd35562588238db87f71e){gyazo=image} ![](https://gyazo.com/1bf02bf5900f379735c6a29a7aa1935e){gyazo=image}
+![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_a0d8adb6b4cbd35562588238db87f71e.png){media=image} ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_1bf02bf5900f379735c6a29a7aa1935e.png){media=image}
 
 [](/workflows/basic-workflows/ultimate-sd-upscale/tileddiffusion_controlnet_tile.json)
 
@@ -131,7 +131,7 @@ Still, you can see that by passing through ControlNet Tile, upscaling is possibl
 
 Combining the elements so far, practical Tile upscale form comes into view.
 
-![](https://gyazo.com/763660c52564a7af2f5dce9eaa81e20f){gyazo=image} ![](https://gyazo.com/3e4bf6018a4e4500f3bbd14151ce56e7){gyazo=image}
+![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_763660c52564a7af2f5dce9eaa81e20f.png){media=image} ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_3e4bf6018a4e4500f3bbd14151ce56e7.png){media=image}
 
 [](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap_contolnet_tile.json)
 

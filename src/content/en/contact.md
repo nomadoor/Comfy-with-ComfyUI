@@ -11,7 +11,7 @@ permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - contact
 hero:
-  image: "https://i.gyazo.com/ba9d047c28a5a0157ea93a1ef6779838.png"
+  image: "/media/shared/contact/legacy_gyazo_ba9d047c28a5a0157ea93a1ef6779838.png"
 ---
 
 ## Site Requests
@@ -146,7 +146,7 @@ Any feedback helps, whether praise, criticism, or anything else. Thank you as al
 
 ## About the Operator
 
-![](https://gyazo.com/b2e27b1ad9320212da03b23da92de02d){gyazo=image}
+![](/media/shared/contact/legacy_gyazo_b2e27b1ad9320212da03b23da92de02d.png){media=image}
 
 **nomadoor**
 

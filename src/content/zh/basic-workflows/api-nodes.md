@@ -36,7 +36,7 @@ API 节点，无论使用哪个模型 **必定消费积分（预付）**。没�
 费用，按各模型决定“每 1 次生成 〇 积分”这样的形式。  
 基本上，被设定为与各社公开的 API 价格带没有大背离的水平，“因为经由 ComfyUI 所以极端地变贵”这样的事没有。
 
-![](https://gyazo.com/6f7f9247364acac4d4fb1ccfeeb2e845){gyazo=image}
+![](/media/basic-workflows/api-nodes/legacy_gyazo_6f7f9247364acac4d4fb1ccfeeb2e845.png){media=image}
 
 大体的费用，作为徽章显示在 API 节点的右上方。
 
@@ -56,7 +56,7 @@ API 节点，无论使用哪个模型 **必定消费积分（预付）**。没�
 
 与其他节点使用方法没有变。从模型名搜索节点，连接而已。
 
-![](https://gyazo.com/0d12a7369948fa19779c0b7ffb487cd0){gyazo=image}
+![](/media/basic-workflows/api-nodes/legacy_gyazo_0d12a7369948fa19779c0b7ffb487cd0.png){media=image}
 
 [](/workflows/basic-workflows/api-nodes/google_gemini.json)
 

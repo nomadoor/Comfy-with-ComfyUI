@@ -54,13 +54,13 @@ hero:
 
 ## workflow
 
-![](https://gyazo.com/363769552b12b2072756280f163183df){gyazo=image}
+![](/media/basic-workflows/sd15-text2image/legacy_gyazo_363769552b12b2072756280f163183df.png){media=image}
 
 [](/workflows/basic-workflows/sd15-text2image/sd1_5_text2image.json)
 
 ## 各ノードについて
 
-{% mediaRow img="https://gyazo.com/c9e67fd1fd3382708102f366bdf63855 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-text2image/legacy_gyazo_c9e67fd1fd3382708102f366bdf63855.png {media=image}", width=33, align="left" %}
 ### Load Checkpoint ノード
 
 古い形式の Checkpoint モデルを読み込みます。
@@ -69,14 +69,14 @@ hero:
 - そのため、Load Diffusion Model / Load CLIP / Load VAE など、別々のノードを使うことになります。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/2321a6cfbee1f95261c5bf857068f4b7 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-text2image/legacy_gyazo_2321a6cfbee1f95261c5bf857068f4b7.png {media=image}", width=33, align="left" %}
 ### Empty Latent Image ノード
 
 画像生成の「出発点」となる、空の潜在画像(latent)を作ります。
 - 作成したい画像のサイズを指定します。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/ba121f352d6252f885c2855cd99ad2f5 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-text2image/legacy_gyazo_ba121f352d6252f885c2855cd99ad2f5.png {media=image}", width=33, align="left" %}
 ### CLIP Text Encode ノード
 
 テキストプロンプトを、モデルが理解できるConditioningに変換します。
@@ -85,7 +85,7 @@ hero:
 - 次のKSamplerの`positive`スロットに入力すればpositiveとして、`negative`スロットに入力すればnegativeとして扱われます。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/5404e0e4a52dade391da4cb125b8512e {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-text2image/legacy_gyazo_5404e0e4a52dade391da4cb125b8512e.png {media=image}", width=33, align="left" %}
 ### KSampler ノード
 
 Sampling（ノイズ除去）を行う、画像生成の中核となるノードです。
@@ -101,7 +101,7 @@ Sampling（ノイズ除去）を行う、画像生成の中核となるノード
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/73b18040b915d0c1159a79cabbb8d065 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-text2image/legacy_gyazo_73b18040b915d0c1159a79cabbb8d065.png {media=image}", width=33, align="left" %}
 
 ### VAE Decode ノード
 
@@ -129,7 +129,7 @@ Stable Diffusion1.5のVAEは、正直あまり性能がよくありません。�
 
 ### workflow
 
-![](https://gyazo.com/897f66c308b3b98440f641ee3d33d50e){gyazo=image}
+![](/media/basic-workflows/sd15-text2image/legacy_gyazo_897f66c308b3b98440f641ee3d33d50e.png){media=image}
 
 [](/workflows/basic-workflows/sd15-text2image/sd1_5_text2image_vae_ft_mse_840000.json)
 
@@ -194,6 +194,6 @@ CLIP はプロンプトの前にあるテキストを重視する傾向があり
 > ただし、これがうまくいくのはあくまでCLIPがその言葉を理解しているときです。  
 > 知らないであろう言葉に`(Ghoti:999)`などとつけても意味はありません。
 
-![](https://gyazo.com/e13bd76787711c8392334243177e60f3){gyazo=loop}
+![](/media/basic-workflows/sd15-text2image/legacy_gyazo_e13bd76787711c8392334243177e60f3.mp4){media=loop}
 
 - 注目度を変えたいワードにカーソルを置き、`Ctrl + 矢印↑/↓`をすると、0.05ずつ調整できます。

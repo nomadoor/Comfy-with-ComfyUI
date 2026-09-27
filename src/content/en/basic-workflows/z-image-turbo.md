@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "Image generation with Z-Image-Turbo"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/8cb43e18daed0bcb2bf3bf7c794e5360.png"
+  image: "/media/basic-workflows/z-image-turbo/legacy_gyazo_8cb43e18daed0bcb2bf3bf7c794e5360.png"
 tags: []
 ---
 
@@ -18,7 +18,7 @@ tags: []
 
 Z-Image is a **family of image generation models** by Alibaba / Tongyi-MAI.
 
-![](https://gyazo.com/569a829f2dbd9021bfdecf6d1e3267b9){gyazo=image}
+![](/media/basic-workflows/z-image-turbo/legacy_gyazo_569a829f2dbd9021bfdecf6d1e3267b9.png){media=image}
 
 **Z-Image-Turbo** is a high-speed model distilled from [Z-Image (Base)](/en/basic-workflows/z-image/) for generation in few steps (8 steps).
 In addition to simply being faster, it has also undergone reinforcement learning to achieve stable image quality.
@@ -56,7 +56,7 @@ As a side note, it is the earliest model released in the Z-Image family.
 
 Z-Image-Turbo is a **distilled model** of the same type as Flux.1 dev.
 
-![](https://gyazo.com/7e5d76cec53ee44278c313a30035463f){gyazo=image}
+![](/media/basic-workflows/z-image-turbo/legacy_gyazo_7e5d76cec53ee44278c313a30035463f.png){media=image}
 
 [](/workflows/basic-workflows/z-image-turbo/z_image_turbo.json)
 
@@ -84,7 +84,7 @@ A ControlNet-style patch for Z-Image-Turbo.
 
 ### workflow
 
-![](https://gyazo.com/53c91fd9eeb8f94357b20839e5d8c967){gyazo=image}
+![](/media/basic-workflows/z-image-turbo/legacy_gyazo_53c91fd9eeb8f94357b20839e5d8c967.png){media=image}
 
 [](/workflows/basic-workflows/z-image-turbo/z_image_turbo_fun_controlnet_union_2_1.json)
 

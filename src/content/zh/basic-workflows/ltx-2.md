@@ -10,7 +10,7 @@ updated: 2026-09-03
 summary: "在 LTX-2 中处理 text2video / image2video / audio2video"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/2a89cce32669413fb7f5b3fe4ca22960.mp4"
+  image: "/media/basic-workflows/ltx-2/legacy_gyazo_2a89cce32669413fb7f5b3fe4ca22960.mp4"
 tags: []
 ---
 
@@ -72,7 +72,7 @@ tags: []
 
 ## 基本的处理流程
 
-![](https://gyazo.com/1884b40ee25bafb8476dd4df1256b026){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_1884b40ee25bafb8476dd4df1256b026.png){media=image}
 
 因为与 Wan 等相比节点数多，所以可能感觉复杂，但做的只有这个。
 
@@ -88,7 +88,7 @@ tags: []
 
 ## text2video
 
-![](https://gyazo.com/d9fa680727fd75aca39c94a865682c5a){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_d9fa680727fd75aca39c94a865682c5a.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_text2video_v2.json",
@@ -100,7 +100,7 @@ tags: []
 - **4, 5** 是 Hires.fix
 - **6** 是解码
 
-{% mediaRow img="https://gyazo.com/bf2e2fa5389b9bf397478a238d969be2 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_bf2e2fa5389b9bf397478a238d969be2.png {media=image}", width=40, align="left" %}
 
 
 **1. 视频分辨率・长度・FPS 的设定**
@@ -115,7 +115,7 @@ tags: []
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/e058d717d9255db19e0bb0c186950e42 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_e058d717d9255db19e0bb0c186950e42.png {media=image}", width=40, align="left" %}
 
 **2. 提示词**
 
@@ -127,7 +127,7 @@ tags: []
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/5b532a5acaab4738cccbb92c423ad3ec {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_5b532a5acaab4738cccbb92c423ad3ec.png {media=image}", width=40, align="left" %}
 
 **3. 采样（第 1 段）**
 
@@ -141,7 +141,7 @@ tags: []
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/216eebb358b46faffd4f2a6062128352 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_216eebb358b46faffd4f2a6062128352.png {media=image}", width=40, align="left" %}
 
 **4. latent 的放缩（x2）**
 
@@ -151,7 +151,7 @@ tags: []
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/22271134a0909e979030ac2ce6e037ed {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_22271134a0909e979030ac2ce6e037ed.png {media=image}", width=40, align="left" %}
 
 **5. 采样（第 2 段 / video2video）**
 
@@ -165,7 +165,7 @@ tags: []
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/801da41aa50410fb70b55eab18a8ab83 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_801da41aa50410fb70b55eab18a8ab83.png {media=image}", width=40, align="left" %}
 
 **6. 解码**
 
@@ -181,7 +181,7 @@ tags: []
 
 上面只在 Hires.fix 使用了 `distilled-lora`，但也适用于第 1 段，用 8 步高速生成看看吧。
 
-![](https://gyazo.com/e9e4851525adda6c3aab20a9acb09582){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_e9e4851525adda6c3aab20a9acb09582.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_text2video_distilled_v2.json",
@@ -197,7 +197,7 @@ tags: []
 
 ## 20 步 / 8 步 distilled-lora 比较
 
-![20 步](https://gyazo.com/d7457da890a04a168e0f82655c9a6392){gyazo=player} ![8 步(distilled-lora)](https://gyazo.com/1e20bd8fd074213736b0a7a2e3766be1){gyazo=player}
+![20 步](/media/basic-workflows/ltx-2/legacy_gyazo_d7457da890a04a168e0f82655c9a6392.mp4){media=player} ![8 步(distilled-lora)](/media/basic-workflows/ltx-2/legacy_gyazo_1e20bd8fd074213736b0a7a2e3766be1.mp4){media=player}
 
 > 据我尝试，适用 distilled-lora 更能安定地生成。  
 > 因此，兼顾速度提升，以后的工作流全部 **从第 1 段开始适用 distilled-lora**。
@@ -208,7 +208,7 @@ tags: []
 
 ### single-frame I2V
 
-![](https://gyazo.com/a16d62da150521a5b0c96dc32bbea33b){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_a16d62da150521a5b0c96dc32bbea33b.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_image2video_distilled_v2.json",
@@ -231,7 +231,7 @@ tags: []
 ```
 以 🖼️ 为起点，后面的帧（✨）被填埋的印象。
 
-{% mediaRow img="https://gyazo.com/981d0f06afef7364fcbe2c10bc1428c1 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_981d0f06afef7364fcbe2c10bc1428c1.png {media=image}", width=40, align="left" %}
 
 **1. 输入图像的调整尺寸（制作 2 系统）**
 
@@ -244,7 +244,7 @@ tags: []
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/4198b2a54986678bbcf735dda9c8cb79 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_4198b2a54986678bbcf735dda9c8cb79.png {media=image}", width=40, align="left" %}
 
 **2. 图像的预处理**
 
@@ -253,7 +253,7 @@ tags: []
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/90c0a4dc550eb34a03a1a7ab100f866d {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_90c0a4dc550eb34a03a1a7ab100f866d.png {media=image}", width=40, align="left" %}
 
 **3. LTXVImgToVideoInplace（第 1 段的插入）**
 
@@ -263,7 +263,7 @@ tags: []
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/2a0c109b88debb478cf1d66f4a0b2f57 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_2a0c109b88debb478cf1d66f4a0b2f57.png {media=image}", width=40, align="left" %}
 
 **4. 对放缩侧（第 2 段）也做同样的事**
 
@@ -280,7 +280,7 @@ tags: []
 
 **输出例**
 
-![输入](https://gyazo.com/9e1e51a809c8838bb01c1258925c4e0e){gyazo=image} ![输出](https://gyazo.com/cdd2bcb62649ec744892c1615eae01d9){gyazo=player}
+![输入](/media/basic-workflows/ltx-2/legacy_gyazo_9e1e51a809c8838bb01c1258925c4e0e.png){media=image} ![输出](/media/basic-workflows/ltx-2/legacy_gyazo_cdd2bcb62649ec744892c1615eae01d9.mp4){media=player}
 
 > 作为已知的问题，有时画面几乎不动，或者变成只是缩小（Zoom Out）的视频。  
 > 通过使用适当的提示词会好转多少，但也介绍了为了对此的 LoRA。
@@ -323,7 +323,7 @@ tags: []
     [ 🖼️ 🖼️ 🖼️ ... 🖼️] + [ ✨ ✨ ✨ ... ✨ ]
 ```
 
-{% mediaRow img="https://gyazo.com/5b0892af938467f9abf134e6dba73e87 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_5b0892af938467f9abf134e6dba73e87.png {media=image}", width=40, align="left" %}
 
 **1. 末尾的图像批次取得**
 
@@ -334,7 +334,7 @@ tags: []
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/c87f00b6590f5b3b4b983dc204c99476 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_c87f00b6590f5b3b4b983dc204c99476.png {media=image}", width=40, align="left" %}
 
 **2. 结合生成的视频和原来的视频**
 
@@ -346,7 +346,7 @@ tags: []
 
 **输出例**
 
-![输入](https://gyazo.com/4c2fdd21e0ff8bac1c572dc130753018){gyazo=loop} ![输出](https://gyazo.com/1bce09367191f5fc19297331b43bdbb1){gyazo=loop}
+![输入](/media/basic-workflows/ltx-2/legacy_gyazo_4c2fdd21e0ff8bac1c572dc130753018.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2/legacy_gyazo_1bce09367191f5fc19297331b43bdbb1.mp4){media=loop}
 
 
 ---
@@ -355,7 +355,7 @@ tags: []
 
 LTX-2 因为是同时处理“视频＋音频”的模型，所以也可以传递音频作为输入，构成制作 被声音牵引的视频。
 
-![](https://gyazo.com/be5aaa842432ee760228eeed24a3636f){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_be5aaa842432ee760228eeed24a3636f.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_audio2video_distilled_v2.json",
@@ -375,7 +375,7 @@ LTX-2 因为是同时处理“视频＋音频”的模型，所以也可以传�
 
 **输出例**
 
-![](https://gyazo.com/a4290b4a15307547b106f83ced77ae44){gyazo=player}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_a4290b4a15307547b106f83ced77ae44.mp4){media=player}
 
 ---
 
@@ -384,7 +384,7 @@ LTX-2 因为是同时处理“视频＋音频”的模型，所以也可以传�
 也可以组合上面 2 个。  
 如果在脸部图像组合说话的声音，也可以做 talking head 那样的事。试试看吧。
 
-![](https://gyazo.com/853b6d4b375b6ea1ef45f7697b71d369){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_853b6d4b375b6ea1ef45f7697b71d369.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_audio_image2video_distilled_v2.json",
@@ -395,7 +395,7 @@ LTX-2 因为是同时处理“视频＋音频”的模型，所以也可以传�
 
 **输出例**
 
-![输入](https://gyazo.com/7bf65ca84f1583d324c0debeee85b616){gyazo=image} ![输出](https://gyazo.com/8cb2045b833bb0507d048bf9965cbf63){gyazo=player}
+![输入](/media/basic-workflows/ltx-2/legacy_gyazo_7bf65ca84f1583d324c0debeee85b616.png){media=image} ![输出](/media/basic-workflows/ltx-2/legacy_gyazo_8cb2045b833bb0507d048bf9965cbf63.mp4){media=player}
 
 > 其实因为视频不太跟随台词，所以在提示词加入了台词。也许有更好的工作流。
 
@@ -407,7 +407,7 @@ audio2video 的反面，输入视频，也可以生成 适合那个的声音（�
 
 > 这个任务不安定。恐怕需要改良。
 
-![](https://gyazo.com/62df52a54b4bfcf67f53429d6343d666){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_62df52a54b4bfcf67f53429d6343d666.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2/ltx_2_video2audio_distilled.json)
 
@@ -416,7 +416,7 @@ audio2video 的反面，输入视频，也可以生成 适合那个的声音（�
 
 ※因为声音很大请注意。
 
-![](https://gyazo.com/79db38d1a4e4f16317613bbb85cd37f7){gyazo=player}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_79db38d1a4e4f16317613bbb85cd37f7.mp4){media=player}
 
 ---
 
@@ -424,7 +424,7 @@ audio2video 的反面，输入视频，也可以生成 适合那个的声音（�
 
 时间方向的 inpainting（＝只重新制作视频的一部分）。像 VACE Extension 那样的东西呢。
 
-![](https://gyazo.com/4f55cbb7932cdefc0d879c2c432ed224){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_4f55cbb7932cdefc0d879c2c432ed224.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2/ltx_2_temporal_inpainting_distilled.json)
 
@@ -452,7 +452,7 @@ audio2video 的反面，输入视频，也可以生成 适合那个的声音（�
 
 > 构造上，因为难以组建二阶段工作流（低分辨率 → Hires.fix），所以从最初就以 1.5MP 生成。
 
-{% mediaRow img="https://gyazo.com/b8efdb1050318602e40897d0d181c77c {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_b8efdb1050318602e40897d0d181c77c.png {media=image}", width=40, align="left" %}
 
 **1. LTXVAudioVideoMask**
 
@@ -474,7 +474,7 @@ audio2video 的反面，输入视频，也可以生成 适合那个的声音（�
 
 **输出例**
 
-![输入](https://gyazo.com/c460984d015f16a93523a37f70ff730a){gyazo=player} ![输出](https://gyazo.com/2ba5e11ee85ff39b50e44a3700cf8aa6){gyazo=player}
+![输入](/media/basic-workflows/ltx-2/legacy_gyazo_c460984d015f16a93523a37f70ff730a.mp4){media=player} ![输出](/media/basic-workflows/ltx-2/legacy_gyazo_2ba5e11ee85ff39b50e44a3700cf8aa6.mp4){media=player}
 
 
 ---
@@ -506,14 +506,14 @@ IC-LoRA 从姿势和深度图、边缘等的 引导信号制作视频。
 
 以 text2video 的工作流为基础，添加像 ControlNet 那样的控制用的视频输入。
 
-![](https://gyazo.com/d520faa02e72245494eedeea79ebef20){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_d520faa02e72245494eedeea79ebef20.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_distilled_v2.json",
   "/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_distilled.json"
 %}
 
-{% mediaRow img="https://gyazo.com/5efc334e9408a80a1328d0dceeadb892 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_5efc334e9408a80a1328d0dceeadb892.png {media=image}", width=40, align="left" %}
 
 **1. 控制视频的调整尺寸**
 
@@ -526,7 +526,7 @@ IC-LoRA 从姿势和深度图、边缘等的 引导信号制作视频。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/95c6efb7ad89b70494e4db25c2b98121 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_95c6efb7ad89b70494e4db25c2b98121.png {media=image}", width=40, align="left" %}
 
 **2. 姿势图像的生成**
 
@@ -536,7 +536,7 @@ IC-LoRA 从姿势和深度图、边缘等的 引导信号制作视频。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/2d140f1d0b0c6fa0fba818e535c04082 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_2d140f1d0b0c6fa0fba818e535c04082.png {media=image}", width=40, align="left" %}
 
 **3. LTXVAddGuide**
 
@@ -546,7 +546,7 @@ IC-LoRA 从姿势和深度图、边缘等的 引导信号制作视频。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/9049aa36e2220ea94aa0b1bd6f541c37 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_9049aa36e2220ea94aa0b1bd6f541c37.png {media=image}", width=40, align="left" %}
 
 **4. IC-LoRA 的适用**
 
@@ -559,13 +559,13 @@ IC-LoRA 从姿势和深度图、边缘等的 引导信号制作视频。
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/c30823a0376a9ff24e83b555cc55796f {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_c30823a0376a9ff24e83b555cc55796f.png {media=image}", width=40, align="left" %}
 
 **5. LTXVCropGuides**
 
 第 1 段结束后，试着一度解码就容易理解，生成的视频混杂着刚才制作的姿势视频。
 
-- 注目后半 : [LTXVCropGuides 前.mp4](https://gyazo.com/8c92e2b45a7d3f3ee98f6a3d0a3cc14b)
+- 注目后半 : [LTXVCropGuides 前.mp4](/media/basic-workflows/ltx-2/legacy_gyazo_8c92e2b45a7d3f3ee98f6a3d0a3cc14b.mp4)
 
 这正是 IC-LoRA 的机制，但因为对输出是不需要的东西，所以在进入第 2 段之前删除。
 
@@ -579,14 +579,14 @@ IC-LoRA 从姿势和深度图、边缘等的 引导信号制作视频。
 
 **输出例**
 
-![输入](https://gyazo.com/a999fcd3eca5bcd0a3e89714be6d8074){gyazo=loop} ![输出](https://gyazo.com/35e6cc779d6d126973a46cac63c7dec9){gyazo=loop}
+![输入](/media/basic-workflows/ltx-2/legacy_gyazo_a999fcd3eca5bcd0a3e89714be6d8074.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2/legacy_gyazo_35e6cc779d6d126973a46cac63c7dec9.mp4){media=loop}
 
 ---
 
 ### IC-LoRA (Pose) + image2video
 虽然不能重叠复数 IC-LoRA，但可以与 image2video 或 audio2video 组合。
 
-![](https://gyazo.com/a65682de39d9ea5c9fe6003cdf27e892){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_a65682de39d9ea5c9fe6003cdf27e892.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_image2video_distilled_v2.json",
@@ -604,7 +604,7 @@ IC-LoRA 从姿势和深度图、边缘等的 引导信号制作视频。
 
 **输出例**
 
-![输入](https://gyazo.com/aed000bfabc8665e0fadb350ca72500b){gyazo=loop} ![输出](https://gyazo.com/0ec1dbf4cf746b021443ca341b6c019a){gyazo=loop}
+![输入](/media/basic-workflows/ltx-2/legacy_gyazo_aed000bfabc8665e0fadb350ca72500b.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2/legacy_gyazo_0ec1dbf4cf746b021443ca341b6c019a.mp4){media=loop}
 
 ---
 
@@ -618,7 +618,7 @@ IC-LoRA (Detailer) 修复低分辨率的视频的细节和质感。
 
 - 如果只用核心节点虽然能让其动作本身，但为了处理大的分辨率・长时间视频需要自定义节点。
 
-![](https://gyazo.com/a366728b300f253233432d1c12239f8d){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_a366728b300f253233432d1c12239f8d.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_detailer_v2.json",
@@ -635,7 +635,7 @@ IC-LoRA (Detailer) 修复低分辨率的视频的细节和质感。
 
 **输出例**
 
-![输入](https://gyazo.com/aa14f25d1ad8e274a8de629f4666b1bd){gyazo=loop} ![输出](https://gyazo.com/ceb4d9d0ba0eec0b5379b63ec307460a){gyazo=loop}
+![输入](/media/basic-workflows/ltx-2/legacy_gyazo_aa14f25d1ad8e274a8de629f4666b1bd.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2/legacy_gyazo_ceb4d9d0ba0eec0b5379b63ec307460a.mp4){media=loop}
 
 ---
 

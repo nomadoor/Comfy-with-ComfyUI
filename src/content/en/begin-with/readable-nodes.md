@@ -27,7 +27,7 @@ Let's build **"Readable Nodes"**, not the famous book "Readable Code", and live 
 
 ## 1. Visual Guidance (Top-Left to Bottom-Right)
 
-![](https://i.gyazo.com/30d3ce6a42f9f1783ab798e91d2d0f45.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_30d3ce6a42f9f1783ab798e91d2d0f45.png){media=image}
 
 Compared to other node tools, ComfyUI has a simple structure where "materials are put on a single production line and processed into images".
 The question "Is it readable?" can be rephrased as **"How quickly can you find this single line?"**.
@@ -38,7 +38,7 @@ It is better to arrange the workflow according to this principle.
 
 ## 2. Show the Wires
 
-![](https://i.gyazo.com/9846334b433e5a4122ee5cae02850543.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_9846334b433e5a4122ee5cae02850543.png){media=image}
 
 You can only know where information is passed from and to by looking at the wires.
 Arrange nodes so that wires are not hidden behind them.
@@ -48,7 +48,7 @@ Arrange nodes so that wires are not hidden behind them.
 
 ## 3. Don't Use Bento Box Layout
 
-![](https://i.gyazo.com/643b7ec8626411c1d7d08161e348b5b5.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_643b7ec8626411c1d7d08161e348b5b5.png){media=image}
 
 I understand the desire to pack nodes neatly into a rectangle, but it is the worst from the perspective of **"Visual Guidance"** and **"Showing Wires"**.
 
@@ -59,7 +59,7 @@ Don't pack it tight, use the space luxuriously and arrange it spaciously.
 
 ## 4. Start with the Default Workflow
 
-![](https://i.gyazo.com/71fdea2d1aeea37542d068aa855e512f.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_71fdea2d1aeea37542d068aa855e512f.png){media=image}
 
 You can call the basic text2image workflow from `Templates` → `Getting Started` → `Image Generation` in the sidebar.
 
@@ -74,7 +74,7 @@ By starting expansion from here, consistency is born in the structure of the wor
 
 ## 5. Color-Code Nodes
 
-![](https://i.gyazo.com/ccf1a2d336fdbfd0e94ae71926e8d9b6.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_ccf1a2d336fdbfd0e94ae71926e8d9b6.png){media=image}
 
 As functions increase, you will not be able to instantly distinguish which node plays which role.
 
@@ -88,7 +88,7 @@ Then, when you think "I want to change the ControlNet settings", you only need t
 
 ## 6. Write Notes (Comments)
 
-![](https://i.gyazo.com/fa2b5d6e3560c0b56e068228f91f649a.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_fa2b5d6e3560c0b56e068228f91f649a.png){media=image}
 
 Model selection, CFG value, sampler type... Generative AI has countless parameters, and everyone wants to know **"why you chose that value"**.
 
@@ -97,7 +97,7 @@ It takes a little effort, but just having this increases the value of the workfl
 
 ## 7. Keep it Small and Simple
 
-![](https://i.gyazo.com/2a9c66fa28c01a8bd12b24fdde2a07a4.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_2a9c66fa28c01a8bd12b24fdde2a07a4.png){media=image}
 
 If the workflow becomes bloated, processing time increases, the error rate rises, and it becomes difficult to read.
 
@@ -107,7 +107,7 @@ If you can split it, keep it as small as possible. ComfyUI has a tab function.
 
 ## 8. Minimize Custom Nodes
 
-![](https://gyazo.com/e26d548e44643c52f6658eb368846cbf){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_e26d548e44643c52f6658eb368846cbf.png){media=image}
 
 Custom nodes are a feature that makes ComfyUI powerful, but unlike core nodes, there is no guarantee that they will be maintained or work reliably.
 

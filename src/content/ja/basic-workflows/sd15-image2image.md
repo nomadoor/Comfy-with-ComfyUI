@@ -15,7 +15,7 @@ hero:
 
 ## image2imageとは？
 
-![](https://gyazo.com/bbb1bca709f4a0b20735da8222d6e3f9){gyazo=image}
+![](/media/basic-workflows/sd15-image2image/legacy_gyazo_bbb1bca709f4a0b20735da8222d6e3f9.png){media=image}
 
 image2imageは **参考画像を下書きにして、その上から絵を描いてもらう** 方法です。
 
@@ -34,7 +34,7 @@ image2imageでは、この「空の latent」を**参照画像をエンコード
 
 では、`steps: 20` の KSampler (Advanced) で `start_at_step` を変えてみたときの様子を見てみましょう。
 
-{% mediaRow img="https://gyazo.com/9068f8b11d1798b5aef16930565aa97c{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-image2image/legacy_gyazo_9068f8b11d1798b5aef16930565aa97c.png{media=image}", width=50, align="left" %}
 **start_at_step: 0**
 - 最初からノイズで埋められます。
 - 下書きの画像は全く見えません。ほぼ通常のtext2imageと同じです。
@@ -42,14 +42,14 @@ image2imageでは、この「空の latent」を**参照画像をエンコード
  → [denoise 1.0のときのimage2imageとtext2image](#denoise-1-0のときのimage2imageとtext2image)
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/9e4a63492f71b4f31e4efa761999c772{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-image2image/legacy_gyazo_9e4a63492f71b4f31e4efa761999c772.png{media=image}", width=50, align="left" %}
 **start_at_step: 1**
 - 1step進んだ場所からスタートします。
 - そのため、下書きに追加されるノイズの量（＝これから除去するノイズ量）が少し減ります。
 - とはいえ、まだ下書きの画像はほとんど見えません。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/2f5da8a9b3c1cdc017149a7c63fa7678{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-image2image/legacy_gyazo_2f5da8a9b3c1cdc017149a7c63fa7678.png{media=image}", width=50, align="left" %}
 **start_at_step: 9**
 - 下書きに追加されるノイズの量（＝これから除去するノイズ量）がかなり減ります。
 - 下書きの輪郭や構図が、そのまま分かる程度に残っています
@@ -57,7 +57,7 @@ image2imageでは、この「空の latent」を**参照画像をエンコード
 
 
 
-{% mediaRow img="https://gyazo.com/26906eaf7dfc00de20c1f265be4feff9{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-image2image/legacy_gyazo_26906eaf7dfc00de20c1f265be4feff9.png{media=image}", width=50, align="left" %}
 **start_at_step: 20**
 - 20ステップあるうち、最後のステップから始める指定なので、実質「何もしない」のと同じです。
 - つまり、実際には一切サンプリングせず、ノイズも追加されません。
@@ -72,7 +72,7 @@ image2imageでは、この「空の latent」を**参照画像をエンコード
 
 ## KSampler (Advanced)でのworkflow
 
-![](https://gyazo.com/e5ff6f57deb2d62f568cb8897eb41355){gyazo=image}
+![](/media/basic-workflows/sd15-image2image/legacy_gyazo_e5ff6f57deb2d62f568cb8897eb41355.png){media=image}
 
 [](/workflows/basic-workflows/sd15-image2image/sd1_5_image2image_ksampler_advanced.json)
 
@@ -86,7 +86,7 @@ image2imageでは、この「空の latent」を**参照画像をエンコード
 無印 KSampler でも、もちろん image2image はできます。  
 ただし、**「どのつまみで元画像の残り具合を決めるか」** が、KSampler (Advanced) とかなり違います。
 
-![](https://gyazo.com/41975fb8a105170ea9d8a9dbbd48b5dd){gyazo=image}
+![](/media/basic-workflows/sd15-image2image/legacy_gyazo_41975fb8a105170ea9d8a9dbbd48b5dd.png){media=image}
 
 [](/workflows/basic-workflows/sd15-image2image/sd1_5_image2image_ksampler.json)
 
@@ -104,14 +104,14 @@ image2imageでは、この「空の latent」を**参照画像をエンコード
 
 ただ、つまみの割り当て方が違うため少し混乱します。同じ結果になりそうな設定でそれぞれの挙動を見てみましょう。
 
-{% mediaRow img="https://gyazo.com/589d8db0a9506a3df81f2169de272d1e{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-image2image/legacy_gyazo_589d8db0a9506a3df81f2169de272d1e.png{media=image}", width=50, align="left" %}
 **KSampler (Advanced)**
 - 例えば `steps: 20`, `start_at_step: 4` とすると、  
   「全体 20 ステップのうち、4 ステップ目から 20 ステップ目まで」だけを実行します。
 - 実際にサンプリングされる回数は **20 - 4 = 16 回** です。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/cbcfaf5df9cee8f8079c82e903b492b8{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-image2image/legacy_gyazo_cbcfaf5df9cee8f8079c82e903b492b8.png{media=image}", width=50, align="left" %}
 **無印 KSampler**
 - 同じく `steps: 20` にして、`denoise: 0.8` などと設定すると、見た目の「ノイズのかかり方」は近くなりますが、**サンプリング回数は 20 回のまま** です。
 - `denoise` の値を 0.5 に変えても 0.1 に変えても、やはり 20 回サンプリングします。
@@ -142,7 +142,7 @@ image2imageでは、この「空の latent」を**参照画像をエンコード
 
 `denoise: 1.0`の時、元の画像をノイズで完全に埋めてしまうので、仕組み的にはimage2imageも`Empty Latent Image`ノードを使ったtext2imageも同じになるはずです。
 
-![](https://gyazo.com/aae8ea31ec753bc12053ae1d6b701179){gyazo=image}
+![](/media/basic-workflows/sd15-image2image/legacy_gyazo_aae8ea31ec753bc12053ae1d6b701179.png){media=image}
 
 が、**Stable Diffusion 1.5だと同じになりません**。（実装の違いだと思いますが、理解していないのでわかりません。）  
 一方で、最近のモデル(Flux等)では、全く同じ画像になります。
@@ -153,4 +153,4 @@ Stable Diffusion 1.5は特殊な例として、このサイトでは、本来の
 
 ## サンプル画像
 
-![](https://gyazo.com/1f5fee22e1db9942bf950cf39906c881){gyazo=image}
+![](/media/basic-workflows/sd15-image2image/legacy_gyazo_1f5fee22e1db9942bf950cf39906c881.png){media=image}

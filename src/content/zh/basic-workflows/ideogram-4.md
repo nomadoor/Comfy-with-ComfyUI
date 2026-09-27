@@ -10,7 +10,7 @@ updated: 2026-06-18
 summary: "使用 Ideogram 4.0 进行图像生成"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/cb9116562b7693e120aa63eafef11769.png"
+  image: "/media/basic-workflows/ideogram-4/legacy_gyazo_cb9116562b7693e120aa63eafef11769.png"
 tags: []
 ---
 
@@ -113,7 +113,7 @@ ComfyUI 内部会处理显存，所以 VRAM 不够也不一定完全不能生成
 
 能在 ComfyUI 里本地跑的模型，一般能力不太够，所以还是老老实实交给 ChatGPT、Gemini 之类会比较好。
 
-![](https://gyazo.com/b314abc36bec096b81fb3231a2687064){gyazo=image}
+![](/media/basic-workflows/ideogram-4/legacy_gyazo_b314abc36bec096b81fb3231a2687064.png){media=image}
 
 - [Sample chat with ChatGPT](https://chatgpt.com/share/6a28f7cc-e934-8320-86d6-f790a5274389)
 
@@ -123,7 +123,7 @@ ComfyUI 内部会处理显存，所以 VRAM 不够也不一定完全不能生成
 
 例如 [ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes) 里的 `Ideogram 4 Prompt Builder KJ` 节点，就是比较常用的一个。
 
-![](https://gyazo.com/a1c3a269983b478c1f605e2f0a5c6e4f){gyazo=image}
+![](/media/basic-workflows/ideogram-4/legacy_gyazo_a1c3a269983b478c1f605e2f0a5c6e4f.png){media=image}
 
 - 设置生成图像的尺寸，然后填写背景、风格等内容。
 - 在 region 栏拖动即可创建 BBOX，并为该区域设置想画的内容提示词和颜色代码。
@@ -132,13 +132,13 @@ ComfyUI 内部会处理显存，所以 VRAM 不够也不一定完全不能生成
 
 ## text2image
 
-![](https://gyazo.com/c9a2cf1717e87cd1ba28c5d236a02b4d){gyazo=image}
+![](/media/basic-workflows/ideogram-4/legacy_gyazo_c9a2cf1717e87cd1ba28c5d236a02b4d.png){media=image}
 
 [](/workflows/basic-workflows/ideogram-4/ideogram_4_0_text2image.json)
 
 除了提示词以外，它和普通 workflow 相比还有几个稍微特殊的地方，所以这里只看这些部分。
 
-{% mediaRow img="https://gyazo.com/c0d5e9131313e7c3c5255b4f54d55dbb {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/ideogram-4/legacy_gyazo_c0d5e9131313e7c3c5255b4f54d55dbb.png {media=image}", width=33, align="left" %}
 **Load Diffusion Model**
 
 Ideogram 4.0 为了稍微特殊的 CFG，会读取两个 diffusion model。
@@ -169,7 +169,7 @@ Ideogram 4.0 为了稍微特殊的 CFG，会读取两个 diffusion model。
 
 ### text2image (8 step)
 
-![](https://gyazo.com/f75015885dc02060128725d779ce7d49){gyazo=image}
+![](/media/basic-workflows/ideogram-4/legacy_gyazo_f75015885dc02060128725d779ce7d49.png){media=image}
 
 [](/workflows/basic-workflows/ideogram-4/ideogram_4_0_text2image_turbotime.json)
 
@@ -177,7 +177,7 @@ Ideogram 4.0 为了稍微特殊的 CFG，会读取两个 diffusion model。
 - 虽然它标注为 2〜8 step 用 LoRA，但 step 数太少时，图像会明显开始崩。
 - 目前建议以 8 step 使用。
 
-{% mediaRow img="https://gyazo.com/26ef78ed5bf868ab5ca9a62b643640ff {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/ideogram-4/legacy_gyazo_26ef78ed5bf868ab5ca9a62b643640ff.png {media=image}", width=33, align="left" %}
 **CFG**
 
 这是很早就有的小技巧：采样前半段和后半段使用不同的 CFG 值。

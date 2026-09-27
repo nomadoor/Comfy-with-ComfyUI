@@ -27,7 +27,7 @@ hero:
 
 ComfyUIのテキスト欄（例：`CLIP Text Encode`）は、デフォルトで `{a|b|c}` 形式のワイルドカードに対応しています。
 
-![](https://gyazo.com/06d9e27bd6586911830efcd2c3ff50cc){gyazo=loop}
+![](/media/data-utilities/wildcards/legacy_gyazo_06d9e27bd6586911830efcd2c3ff50cc.mp4){media=loop}
 
 [](/workflows/data-utilities/wildcards/wildcard_core.json)
 
@@ -50,7 +50,7 @@ ComfyUIのテキスト欄（例：`CLIP Text Encode`）は、デフォルトで 
 
 ### ImpactWildcardProcessor / Encode
 
-![](https://gyazo.com/851ccf19703e3b7b97f779e0cb6ae23f){gyazo=image}
+![](/media/data-utilities/wildcards/legacy_gyazo_851ccf19703e3b7b97f779e0cb6ae23f.png){media=image}
 
 [](/workflows/data-utilities/wildcards/impactwildcardprocessor.json)
 

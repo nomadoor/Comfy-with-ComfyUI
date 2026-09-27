@@ -10,7 +10,7 @@ updated: 2026-08-26
 summary: "从参照图像转印风格和被摄体的元祖机制"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/64fdcae074a2a01943d7f5fff3aaa418.png"
+  image: "/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_64fdcae074a2a01943d7f5fff3aaa418.png"
 tags: ["subject-transfer", "style-transfer"]
 ---
 
@@ -53,7 +53,7 @@ IP-Adapter 有几种种类，首先试一下最标准的东西吧。
 
 ### 工作流
 
-![](https://gyazo.com/6e8376130553997cbd30696c6700a601){gyazo=image}
+![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_6e8376130553997cbd30696c6700a601.png){media=image}
 
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_sd15.json)
 
@@ -65,7 +65,7 @@ IP-Adapter 有几种种类，首先试一下最标准的东西吧。
 
 ## 在“看”哪里
 
-![](https://gyazo.com/302c47a4eb43f19e7e8535ca40e8ed5c){gyazo=image}
+![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_302c47a4eb43f19e7e8535ca40e8ed5c.png){media=image}
 
 相当于 IP-Adapter “眼睛”的 CLIP ViT-H-14，基本只看 **224 × 224 的范围**。  
 因此，如果原样传递纵长的人物照片，脸和脚会被切掉，或者只以身体中间附近为线索获取特征。
@@ -82,7 +82,7 @@ IP-Adapter 有几种种类，首先试一下最标准的东西吧。
 
 强力转印构图和对象位置的模型。
 
-![](https://gyazo.com/ecbbe99d3410a850767aaf506645952b){gyazo=image}
+![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_ecbbe99d3410a850767aaf506645952b.png){media=image}
 
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_plus_sd15.json)
 
@@ -94,7 +94,7 @@ IP-Adapter 有几种种类，首先试一下最标准的东西吧。
 
 偏向文本提示词优先的模型。
 
-![](https://gyazo.com/422b44322caef6fe6fdec8c7d37f54e3){gyazo=image}
+![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_422b44322caef6fe6fdec8c7d37f54e3.png){media=image}
 
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_sd15_light.json)
 
@@ -106,7 +106,7 @@ IP-Adapter 有几种种类，首先试一下最标准的东西吧。
 
 专注于脸（头部）的 IP-Adapter。
 
-![](https://gyazo.com/bba6f8053f411bee64044c141d4632c0){gyazo=image}
+![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_bba6f8053f411bee64044c141d4632c0.png){media=image}
 
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_plus_face_sd15.json)
 

@@ -10,7 +10,7 @@ updated: 2026-09-03
 summary: "Handle text2video / image2video / audio2video with LTX-2"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/2a89cce32669413fb7f5b3fe4ca22960.mp4"
+  image: "/media/basic-workflows/ltx-2/legacy_gyazo_2a89cce32669413fb7f5b3fe4ca22960.mp4"
 tags: []
 ---
 
@@ -72,7 +72,7 @@ tags: []
 
 ## Basic Process Flow
 
-![](https://gyazo.com/1884b40ee25bafb8476dd4df1256b026){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_1884b40ee25bafb8476dd4df1256b026.png){media=image}
 
 It might feel complicated because there are more nodes compared to Wan, but this is all it does:
 
@@ -88,7 +88,7 @@ It might feel complicated because there are more nodes compared to Wan, but this
 
 ## text2video
 
-![](https://gyazo.com/b6df8e98ae7d7337f2f32a65a10661d3){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_b6df8e98ae7d7337f2f32a65a10661d3.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_text2video_v2.json",
@@ -100,7 +100,7 @@ Follow the basic flow explained above to build the workflow.
 - **4, 5** are Hires.fix.
 - **6** is Decode.
 
-{% mediaRow img="https://gyazo.com/129febfcdbfc077bf36db4a6aa33fb19 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_129febfcdbfc077bf36db4a6aa33fb19.png {media=image}", width=50, align="left" %}
 
 **1. Set Video Resolution, Length, FPS**
 
@@ -114,7 +114,7 @@ Decide the parameters for the video and audio you want to generate here.
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/e058d717d9255db19e0bb0c186950e42 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_e058d717d9255db19e0bb0c186950e42.png {media=image}", width=50, align="left" %}
 
 **2. Prompt**
 
@@ -126,7 +126,7 @@ A characteristic of the LTX series is that you need to be somewhat particular ab
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/1385ab23c63b68656e24650d11f5f5a9 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_1385ab23c63b68656e24650d11f5f5a9.png {media=image}", width=50, align="left" %}
 
 **3. Sampling (1st Stage)**
 
@@ -140,7 +140,7 @@ It doesn't look like the familiar `KSampler` so it might seem a bit complicated,
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/353e095a574e974a64cff4593f8bf907 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_353e095a574e974a64cff4593f8bf907.png {media=image}", width=50, align="left" %}
 
 **4. Latent Upscale (x2)**
 
@@ -150,7 +150,7 @@ Upscale the resolution of the video latent by 2x.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/5625337c055851450dd6dc0357891631 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_5625337c055851450dd6dc0357891631.png {media=image}", width=50, align="left" %}
 
 **5. Sampling (2nd Stage / video2video)**
 
@@ -164,7 +164,7 @@ Refine the upscaled latent with short steps.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/801da41aa50410fb70b55eab18a8ab83 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_801da41aa50410fb70b55eab18a8ab83.png {media=image}", width=50, align="left" %}
 
 **6. Decode**
 
@@ -181,7 +181,7 @@ Finally, decode and export video and audio respectively.
 
 Above, we used `distilled-lora` only for Hires.fix, but let's apply it to the 1st stage as well and generate quickly in 8 steps.
 
-![](https://gyazo.com/e9e4851525adda6c3aab20a9acb09582){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_e9e4851525adda6c3aab20a9acb09582.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_text2video_distilled_v2.json",
@@ -196,7 +196,7 @@ To apply `distilled-lora`, change some sampling settings.
 
 ### 20 steps / 8 steps distilled-lora Comparison
 
-![20 steps](https://gyazo.com/d7457da890a04a168e0f82655c9a6392){gyazo=player} ![8 steps (distilled-lora)](https://gyazo.com/1e20bd8fd074213736b0a7a2e3766be1){gyazo=player}
+![20 steps](/media/basic-workflows/ltx-2/legacy_gyazo_d7457da890a04a168e0f82655c9a6392.mp4){media=player} ![8 steps (distilled-lora)](/media/basic-workflows/ltx-2/legacy_gyazo_1e20bd8fd074213736b0a7a2e3766be1.mp4){media=player}
 
 > As far as I tried, applying distilled-lora produces more stable generations.  
 > Therefore, for speed and stability, all subsequent workflows apply **distilled-lora** from the 1st stage.
@@ -207,7 +207,7 @@ To apply `distilled-lora`, change some sampling settings.
 
 ### single-frame I2V
 
-![](https://gyazo.com/a16d62da150521a5b0c96dc32bbea33b){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_a16d62da150521a5b0c96dc32bbea33b.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_image2video_distilled_v2.json",
@@ -231,7 +231,7 @@ For example, if creating a 121-frame video, the flow is roughly like this:
 Imagine the frames (✨) filling up consecutively starting from 🖼️.
 
 
-{% mediaRow img="https://gyazo.com/981d0f06afef7364fcbe2c10bc1428c1 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_981d0f06afef7364fcbe2c10bc1428c1.png {media=image}", width=40, align="left" %}
 
 **1. Resize Input Image (Create 2 versions)**
 
@@ -244,7 +244,7 @@ Imagine the frames (✨) filling up consecutively starting from 🖼️.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/4198b2a54986678bbcf735dda9c8cb79 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_4198b2a54986678bbcf735dda9c8cb79.png {media=image}", width=40, align="left" %}
 
 **2. Image Preprocessing**
 
@@ -253,7 +253,7 @@ A characteristic from LTX-Video is that since video is slightly compressed and d
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/90c0a4dc550eb34a03a1a7ab100f866d {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_90c0a4dc550eb34a03a1a7ab100f866d.png {media=image}", width=40, align="left" %}
 
 **3. LTXVImgToVideoInplace (Insert into 1st Stage)**
 
@@ -263,7 +263,7 @@ This is the core of image2video.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/2a0c109b88debb478cf1d66f4a0b2f57 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_2a0c109b88debb478cf1d66f4a0b2f57.png {media=image}", width=40, align="left" %}
 
 **4. Do the same for Upscale side (2nd Stage)**
 
@@ -280,7 +280,7 @@ Insert the image into the 2nd stage as well.
 
 **Output Example**
 
-![Input](https://gyazo.com/9e1e51a809c8838bb01c1258925c4e0e){gyazo=image} ![Output](https://gyazo.com/cdd2bcb62649ec744892c1615eae01d9){gyazo=player}
+![Input](/media/basic-workflows/ltx-2/legacy_gyazo_9e1e51a809c8838bb01c1258925c4e0e.png){media=image} ![Output](/media/basic-workflows/ltx-2/legacy_gyazo_cdd2bcb62649ec744892c1615eae01d9.mp4){media=player}
 
 > As a known issue, often the video hardly moves or just zooms out.  
 > Using appropriate prompts helps to some extent, but a LoRA has been introduced to address this.
@@ -322,7 +322,7 @@ It takes the last few frames of the input video and generates the continuation.
     [ 🖼️ 🖼️ 🖼️ ... 🖼️] + [ ✨ ✨ ✨ ... ✨ ]
 ```
 
-{% mediaRow img="https://gyazo.com/5b0892af938467f9abf134e6dba73e87 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_5b0892af938467f9abf134e6dba73e87.png {media=image}", width=40, align="left" %}
 
 **1. Get End Image Batch**
 
@@ -333,7 +333,7 @@ Get the image batch that serves as the connector from the end of the input video
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/c87f00b6590f5b3b4b983dc204c99476 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_c87f00b6590f5b3b4b983dc204c99476.png {media=image}", width=40, align="left" %}
 
 **2. Concatenate Generated Video and Original Video**
 
@@ -345,7 +345,7 @@ The generation result includes the "connector (N frames from end of original vid
 
 **Output Example**
 
-![Input](https://gyazo.com/4c2fdd21e0ff8bac1c572dc130753018){gyazo=loop} ![Output](https://gyazo.com/1bce09367191f5fc19297331b43bdbb1){gyazo=loop}
+![Input](/media/basic-workflows/ltx-2/legacy_gyazo_4c2fdd21e0ff8bac1c572dc130753018.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2/legacy_gyazo_1bce09367191f5fc19297331b43bdbb1.mp4){media=loop}
 
 
 ---
@@ -354,7 +354,7 @@ The generation result includes the "connector (N frames from end of original vid
 
 Since LTX-2 is a model that handles "video + audio" simultaneously, you can configure it to take audio as input and create a video driven by the sound.
 
-![](https://gyazo.com/be5aaa842432ee760228eeed24a3636f){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_be5aaa842432ee760228eeed24a3636f.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_audio2video_distilled_v2.json",
@@ -374,7 +374,7 @@ I see workflows using `Set Latent Noise Mask` here, but the result is the same w
 
 **Output Example**
 
-![](https://gyazo.com/a4290b4a15307547b106f83ced77ae44){gyazo=player}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_a4290b4a15307547b106f83ced77ae44.mp4){media=player}
 
 ---
 
@@ -383,7 +383,7 @@ I see workflows using `Set Latent Noise Mask` here, but the result is the same w
 You can combine the above two.
 If you combine a face image with spoken audio, you can do something like a talking head. Let's try it.
 
-![](https://gyazo.com/853b6d4b375b6ea1ef45f7697b71d369){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_853b6d4b375b6ea1ef45f7697b71d369.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_audio_image2video_distilled_v2.json",
@@ -394,7 +394,7 @@ If you combine a face image with spoken audio, you can do something like a talki
 
 **Output Example**
 
-![Input](https://gyazo.com/7bf65ca84f1583d324c0debeee85b616){gyazo=image} ![Output](https://gyazo.com/8cb2045b833bb0507d048bf9965cbf63){gyazo=player}
+![Input](/media/basic-workflows/ltx-2/legacy_gyazo_7bf65ca84f1583d324c0debeee85b616.png){media=image} ![Output](/media/basic-workflows/ltx-2/legacy_gyazo_8cb2045b833bb0507d048bf9965cbf63.mp4){media=player}
 
 > Actually, because the video didn't follow the dialogue very well, I put the dialogue in the prompt. There might be a better workflow.
 
@@ -406,7 +406,7 @@ Contrary to audio2video, you can also input a video and generate sound (sound ef
 
 > This task is unstable. Probably needs improvement.
 
-![](https://gyazo.com/62df52a54b4bfcf67f53429d6343d666){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_62df52a54b4bfcf67f53429d6343d666.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2/ltx_2_video2audio_distilled.json)
 
@@ -415,7 +415,7 @@ Contrary to audio2video, you can also input a video and generate sound (sound ef
 
 *Caution: Sound may be loud.*
 
-![](https://gyazo.com/79db38d1a4e4f16317613bbb85cd37f7){gyazo=player}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_79db38d1a4e4f16317613bbb85cd37f7.mp4){media=player}
 
 ---
 
@@ -423,7 +423,7 @@ Contrary to audio2video, you can also input a video and generate sound (sound ef
 
 This is temporal inpainting (= repairing only a part of the video). Think of it like VACE Extension.
 
-![](https://gyazo.com/4f55cbb7932cdefc0d879c2c432ed224){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_4f55cbb7932cdefc0d879c2c432ed224.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2/ltx_2_temporal_inpainting_distilled.json)
 
@@ -451,7 +451,7 @@ Mask only the "time range you want to remake" of the video and regenerate only t
 
 > Structurally, it is difficult to assemble a two-stage workflow (low resolution -> Hires.fix), so we generate at 1.5MP from the beginning.
 
-{% mediaRow img="https://gyazo.com/b8efdb1050318602e40897d0d181c77c {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_b8efdb1050318602e40897d0d181c77c.png {media=image}", width=40, align="left" %}
 
 **1. LTXVAudioVideoMask**
 
@@ -473,7 +473,7 @@ e.g.: If input is "2 seconds"
 
 **Output Example**
 
-![Input](https://gyazo.com/c460984d015f16a93523a37f70ff730a){gyazo=player} ![Output](https://gyazo.com/2ba5e11ee85ff39b50e44a3700cf8aa6){gyazo=player}
+![Input](/media/basic-workflows/ltx-2/legacy_gyazo_c460984d015f16a93523a37f70ff730a.mp4){media=player} ![Output](/media/basic-workflows/ltx-2/legacy_gyazo_2ba5e11ee85ff39b50e44a3700cf8aa6.mp4){media=player}
 
 
 ---
@@ -505,14 +505,14 @@ IC-LoRA creates video from control signals such as pose, depth map, edges, etc.
 
 Add control video based on text2video.
 
-![](https://gyazo.com/d520faa02e72245494eedeea79ebef20){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_d520faa02e72245494eedeea79ebef20.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_distilled_v2.json",
   "/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_distilled.json"
 %}
 
-{% mediaRow img="https://gyazo.com/5efc334e9408a80a1328d0dceeadb892 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_5efc334e9408a80a1328d0dceeadb892.png {media=image}", width=40, align="left" %}
 
 **1. Resize Control Video**
 
@@ -525,7 +525,7 @@ Align to the same ratio and resolution as the video to be generated.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/95c6efb7ad89b70494e4db25c2b98121 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_95c6efb7ad89b70494e4db25c2b98121.png {media=image}", width=40, align="left" %}
 
 **2. Generate Pose Image**
 
@@ -535,7 +535,7 @@ Create stick figure images from video.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/2d140f1d0b0c6fa0fba818e535c04082 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_2d140f1d0b0c6fa0fba818e535c04082.png {media=image}", width=40, align="left" %}
 
 **3. LTXVAddGuide**
 
@@ -545,7 +545,7 @@ Put the control signal (pose video) into conditioning.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/9049aa36e2220ea94aa0b1bd6f541c37 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_9049aa36e2220ea94aa0b1bd6f541c37.png {media=image}", width=40, align="left" %}
 
 **4. Apply IC-LoRA**
 
@@ -558,13 +558,13 @@ Apply IC-LoRA (Pose this time) and sample.
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/c30823a0376a9ff24e83b555cc55796f {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_c30823a0376a9ff24e83b555cc55796f.png {media=image}", width=40, align="left" %}
 
 **5. LTXVCropGuides**
 
 If you decode once after the 1st stage is finished, it's easy to understand, but the generated video is mixed with the pose video created earlier.
 
-- Focus on the latter half: [Before LTXVCropGuides.mp4](https://gyazo.com/8c92e2b45a7d3f3ee98f6a3d0a3cc14b)
+- Focus on the latter half: [Before LTXVCropGuides.mp4](/media/basic-workflows/ltx-2/legacy_gyazo_8c92e2b45a7d3f3ee98f6a3d0a3cc14b.mp4)
 
 This is exactly how IC-LoRA works, but since it is unnecessary for the output, remove it before entering the 2nd stage.
 
@@ -578,7 +578,7 @@ This is exactly how IC-LoRA works, but since it is unnecessary for the output, r
 
 **Output Example**
 
-![Input](https://gyazo.com/a999fcd3eca5bcd0a3e89714be6d8074){gyazo=loop} ![Output](https://gyazo.com/35e6cc779d6d126973a46cac63c7dec9){gyazo=loop}
+![Input](/media/basic-workflows/ltx-2/legacy_gyazo_a999fcd3eca5bcd0a3e89714be6d8074.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2/legacy_gyazo_35e6cc779d6d126973a46cac63c7dec9.mp4){media=loop}
 
 ---
 
@@ -586,7 +586,7 @@ This is exactly how IC-LoRA works, but since it is unnecessary for the output, r
 
 You cannot stack multiple IC-LoRAs, but you can combine with image2video or audio2video.
 
-![](https://gyazo.com/a65682de39d9ea5c9fe6003cdf27e892){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_a65682de39d9ea5c9fe6003cdf27e892.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_image2video_distilled_v2.json",
@@ -603,7 +603,7 @@ What it's doing is just combining IC-LoRA (Pose) above with image2video.
 
 **Output Example**
 
-![Input](https://gyazo.com/aed000bfabc8665e0fadb350ca72500b){gyazo=loop} ![Output](https://gyazo.com/0ec1dbf4cf746b021443ca341b6c019a){gyazo=loop}
+![Input](/media/basic-workflows/ltx-2/legacy_gyazo_aed000bfabc8665e0fadb350ca72500b.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2/legacy_gyazo_0ec1dbf4cf746b021443ca341b6c019a.mp4){media=loop}
 
 ---
 
@@ -617,7 +617,7 @@ IC-LoRA (Detailer) restores details and textures of low-resolution videos.
 
 - You can run it with just core nodes, but custom nodes are required to handle large resolutions / long duration videos.
 
-![](https://gyazo.com/a366728b300f253233432d1c12239f8d){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_a366728b300f253233432d1c12239f8d.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_detailer_v2.json",
@@ -634,7 +634,7 @@ Basically it is video2video with IC-LoRA(Detailer) applied.
 
 **Output Example**
 
-![Input](https://gyazo.com/aa14f25d1ad8e274a8de629f4666b1bd){gyazo=loop} ![Output](https://gyazo.com/ceb4d9d0ba0eec0b5379b63ec307460a){gyazo=loop}
+![Input](/media/basic-workflows/ltx-2/legacy_gyazo_aa14f25d1ad8e274a8de629f4666b1bd.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2/legacy_gyazo_ceb4d9d0ba0eec0b5379b63ec307460a.mp4){media=loop}
 
 ---
 

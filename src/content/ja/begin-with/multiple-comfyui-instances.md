@@ -28,7 +28,7 @@ Please close the other application or use a different port with --port.
 
 ## ComfyUIはサーバーとして動いている
 
-![](https://gyazo.com/a04e2d09b534afb1e32900a738f0c3a7){gyazo=image}
+![](/media/begin-with/multiple-comfyui-instances/legacy_gyazo_a04e2d09b534afb1e32900a738f0c3a7.png){media=image}
 
 前提として知っておきたいのが、ComfyUI が **画面** と **実行エンジン** に分かれているという点です。
 
@@ -103,7 +103,7 @@ http://127.0.0.1:8189
 
 一方で、同じURLをブラウザの別タブや別ウィンドウで開くという小技もあります。
 
-![](https://gyazo.com/71d8f5ff0d41e4b1e6790fc2e0a366a2){gyazo=image}
+![](/media/begin-with/multiple-comfyui-instances/legacy_gyazo_71d8f5ff0d41e4b1e6790fc2e0a366a2.png){media=image}
 
 たとえば、`http://127.0.0.1:8188` を2つのブラウザタブで開いた場合、同じComfyUIサーバーをいろんな画面から操作できます。
 

@@ -14,7 +14,7 @@ hero:
 ---
 ## Samplingとは？
 
-![](https://gyazo.com/bf9d6d2e5b528f0b82f9d13e3c18c5fa){gyazo=image}
+![](/media/ai-capabilities/sampling/legacy_gyazo_bf9d6d2e5b528f0b82f9d13e3c18c5fa.png){media=image}
 
 [拡散モデル](/ja/ai-capabilities/diffusion-models/)は、ノイズを一気に消しているわけではなく、ノイズを少しずつ減らすステップを何回も進めながら画像を作っています。
 
@@ -61,17 +61,17 @@ Samplingが画質に影響しないわけではありませんが、この設定
 参考: [Stable Diffusion Deep Dive - CFG - Don't Accidentally Fry Your Images](https://www.youtube.com/watch?v=kuhO9zAzetk)
 
 
-> ![](https://gyazo.com/2726d797e03185230ce53475d48d707b){gyazo=image}
+> ![](/media/ai-capabilities/sampling/legacy_gyazo_2726d797e03185230ce53475d48d707b.png){media=image}
 
 この図に従うなら、例えば、**DPM++ 2M Karras 20step だとCFG 25を超えると赤信号**です。
 
 実際に生成してみると生成される画像の品質が悪いことがわかります。
 
 - DPM++ 2M Karras / Step数 20 / **CFG 8**  
-  ![](https://gyazo.com/262e228b7207b827b105bfad833d3ac5){gyazo=image}
+  ![](/media/ai-capabilities/sampling/legacy_gyazo_262e228b7207b827b105bfad833d3ac5.png){media=image}
 
 - DPM++ 2M Karras / Step数 20 / **CFG 30**  
-  ![](https://gyazo.com/375e367784f6446fcc1e4a0a93fbc0cb){gyazo=image}
+  ![](/media/ai-capabilities/sampling/legacy_gyazo_375e367784f6446fcc1e4a0a93fbc0cb.png){media=image}
 
 CFG以外の原因でも、このように彩度が上がりすぎた画像が生成されることがあります。このような画像を **over-saturated colors** や **burn out** と表現することがあります。
 

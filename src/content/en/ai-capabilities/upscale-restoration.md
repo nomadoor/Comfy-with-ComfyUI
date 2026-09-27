@@ -6,7 +6,7 @@ slug: upscale-restoration
 navId: upscale-restoration
 title: Upscale & Restoration
 created: 2025-11-13
-updated: 2026-03-02
+updated: 2026-09-27
 summary: Technologies to enlarge images or restore degraded ones.
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
@@ -31,7 +31,7 @@ Let's look at what kind of methods and models are used, focusing on representati
 Upscaling using GANs or traditional super-resolution models.
 This lineage has existed since before Stable Diffusion and is still used as a lightweight process.
 
-![](https://gyazo.com/072c6cd7f09d777141293f6cf619ad83){gyazo=image}
+![](/media/ai-capabilities/upscale-restoration/esrgan.png){media=image}
 
 [](/workflows/ai-capabilities/upscale-restoration/esrgan.json)
 
@@ -76,7 +76,7 @@ Some recent "Instruction-Based Image Editing" models can perform processing clos
 
 Even without preparing specialized models individually, if you instruct "clean up this photo," "reduce noise," or "color this black and white photo," it will do those processes together.
 
-![](https://gyazo.com/70baa67331207740cbab838d153c990d){gyazo=image}
+![](/media/ai-capabilities/upscale-restoration/legacy_gyazo_70baa67331207740cbab838d153c990d.png){media=image}
 
 [](/workflows/ai-capabilities/upscale-restoration/qwen_image_edit_2509.json)
 

@@ -6,7 +6,7 @@ slug: upscale-restoration
 navId: upscale-restoration
 title: アップスケール・画像修復
 created: 2025-11-13
-updated: 2026-03-02
+updated: 2026-09-27
 summary: 画像を大きくしたり、劣化した画像を修復したりする技術
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
@@ -31,7 +31,7 @@ hero:
 GAN や従来型の超解像モデルを使ったアップスケールです。  
 Stable Diffusion 以前からある系統で、今でも軽量な処理として使われることがあります。
 
-![](https://gyazo.com/072c6cd7f09d777141293f6cf619ad83){gyazo=image}
+![](/media/ai-capabilities/upscale-restoration/esrgan.png){media=image}
 
 [](/workflows/ai-capabilities/upscale-restoration/esrgan.json)
 
@@ -76,7 +76,7 @@ Stable Diffusion などの拡散モデルを使って、画像を描き直しな
 
 専門のモデルを個別に用意しなくても、「この写真をきれいにして」「ノイズを減らして」「白黒写真に色を付けて」などと指示すれば、それらの処理をまとめてやってくれます。
 
-![](https://gyazo.com/70baa67331207740cbab838d153c990d){gyazo=image}
+![](/media/ai-capabilities/upscale-restoration/legacy_gyazo_70baa67331207740cbab838d153c990d.png){media=image}
 
 [](/workflows/ai-capabilities/upscale-restoration/qwen_image_edit_2509.json)
 

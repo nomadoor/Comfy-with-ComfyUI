@@ -29,7 +29,7 @@ python main.py --fast
 
 In the portable version, you can set it by right-clicking and editing the `.bat` file used for startup (e.g. `run_nvidia_gpu.bat`) and adding arguments after `python.exe`.
 
-![](https://i.gyazo.com/44f113bf9373f5dac0ced2a92e054165.png){gyazo=image}
+![](/media/begin-with/command-line-arguments/legacy_gyazo_44f113bf9373f5dac0ced2a92e054165.png){media=image}
 
 ---
 

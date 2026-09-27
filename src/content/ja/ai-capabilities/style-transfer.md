@@ -29,7 +29,7 @@ hero:
 
 ## テクスチャ・タッチ寄せ系
 
-> ![](https://gyazo.com/eb073a78be8340c24c61048066d877b9){gyazo=image}
+> ![](/media/ai-capabilities/style-transfer/legacy_gyazo_eb073a78be8340c24c61048066d877b9.png){media=image}
 > [cysmith/neural-style-tf](https://github.com/cysmith/neural-style-tf)
 
 古典的なNeural Style Transferや、「油絵風」「水彩風」のフィルタ／LoRAなどがここに入ります。

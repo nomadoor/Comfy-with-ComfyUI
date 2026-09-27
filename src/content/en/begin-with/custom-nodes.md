@@ -39,7 +39,7 @@ Basically, install from **ComfyUI Manager**.
 
 ### Using ComfyUI Manager (Recommended)
 
-![](https://gyazo.com/c0d8901537b65da709f9ba9d6e1a0055){gyazo=loop}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_c0d8901537b65da709f9ba9d6e1a0055.mp4){media=loop}
 
 1. Install ComfyUI Manager
    - If ComfyUI Manager is not installed yet, please refer to [ComfyUI Manager](/en/begin-with/comfyui-manager/) to install it.

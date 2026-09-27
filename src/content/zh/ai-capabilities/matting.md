@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "从自然图像中抠出前景，与背景分离的技术"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: 'https://i.gyazo.com/38630075ecd6336a630da0fe5b8ba130.gif'
+  image: '/media/ai-capabilities/matting/legacy_gyazo_38630075ecd6336a630da0fe5b8ba130.mp4'
 ---
 
 ## 什么是抠图？
@@ -29,7 +29,7 @@ hero:
 
 既轻量又高性能，所以如果是抠图的话选 BiRefNet 肯定没错。
 
-![](https://gyazo.com/131fe705fd29ddd98391fb4e78b608ab){gyazo=image}
+![](/media/ai-capabilities/matting/legacy_gyazo_131fe705fd29ddd98391fb4e78b608ab.png){media=image}
 
 [](/workflows/ai-capabilities/matting/birefnet_general.json)
 
@@ -41,7 +41,7 @@ hero:
 
 [SDMatte](https://github.com/vivoCameraResearch/SDMatte) 是利用了 Stable Diffusion 知识的抠图模型。
 
-![](https://gyazo.com/317da8e987179adbe6e02f0eb40a4a07){gyazo=image}
+![](/media/ai-capabilities/matting/legacy_gyazo_317da8e987179adbe6e02f0eb40a4a07.png){media=image}
 
 [](/workflows/ai-capabilities/matting/sdmatte.json)
 

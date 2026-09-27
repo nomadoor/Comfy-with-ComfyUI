@@ -15,7 +15,7 @@ hero:
 
 ## 什么是 Hires.fix？
 
-![](https://gyazo.com/a63d1a6610c9928b6c21ba39a0d533d0){gyazo=image}
+![](/media/basic-workflows/sd15-hires-fix/legacy_gyazo_a63d1a6610c9928b6c21ba39a0d533d0.png){media=image}
 
 虽然名字很帅，但做的事情并没有那么复杂。
 
@@ -42,7 +42,7 @@ Stable Diffusion 1.5 推荐的分辨率是 512 × 512px，无法生成大的图�
 
 更本质的理由是，模型是 **“以什么尺寸的图像进行学习的”**。
 
-![](https://gyazo.com/a5fee7589b0c712f6db86426d8f1cc72){gyazo=image}
+![](/media/basic-workflows/sd15-hires-fix/legacy_gyazo_a5fee7589b0c712f6db86426d8f1cc72.png){media=image}
 
 Stable Diffusion 1.5 几乎只用了 512 × 512px 的图像进行学习。  
 也就是说，虽然擅长画这个尺寸附近的画，但 **除此以外的分辨率原本就没有练习过。**
@@ -65,7 +65,7 @@ Stable Diffusion 1.5 几乎只用了 512 × 512px 的图像进行学习。
 
 ## 基础的方法
 
-![](https://gyazo.com/96cd5924bcaef159a79e2fb5fa991665){gyazo=image}
+![](/media/basic-workflows/sd15-hires-fix/legacy_gyazo_96cd5924bcaef159a79e2fb5fa991665.png){media=image}
 
 [](/workflows/basic-workflows/sd15-hires-fix/sd1_5_hires_fix.json)
 
@@ -86,7 +86,7 @@ Stable Diffusion 1.5 几乎只用了 512 × 512px 的图像进行学习。
 - [Goktug/ComfyUI_NNLatentUpscale (forked from Ttl)](https://github.com/Goktug/ComfyUi_NNLatentUpscale)
   - 使用神经网络将 latent 放大。
 
-![](https://gyazo.com/545160bee6b5c66fd91b32e917ada79c){gyazo=image}
+![](/media/basic-workflows/sd15-hires-fix/legacy_gyazo_545160bee6b5c66fd91b32e917ada79c.png){media=image}
 
 [](/workflows/basic-workflows/sd15-hires-fix/sd1_5_hires_fix_nnlatentupscale.json)
 

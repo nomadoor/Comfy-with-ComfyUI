@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "AuraFlow and Pony V7 rough organization"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/2d37855d2969e9cd5515e4852dce230e.png"
+  image: "/media/basic-workflows/auraflow/legacy_gyazo_2d37855d2969e9cd5515e4852dce230e.png"
 tags: []
 ---
 
@@ -41,7 +41,7 @@ The latest version is **AuraFlow v0.3**.
 
 The basic construction is almost the same as SD1.5 / SDXL.
 
-![](https://gyazo.com/b19fda7dcd1fd17b91e2f0eea9d70c8c){gyazo=image}
+![](/media/basic-workflows/auraflow/legacy_gyazo_b19fda7dcd1fd17b91e2f0eea9d70c8c.png){media=image}
 
 [](/workflows/basic-workflows/auraflow/aura_flow_0_3.json)
 
@@ -73,7 +73,7 @@ It is an anime-oriented model based on AuraFlow, created as a successor to [Pony
 
 ### text2image
 
-![](https://gyazo.com/65638b2cf68cfc2a4ed7ff762653c0bc){gyazo=image}
+![](/media/basic-workflows/auraflow/legacy_gyazo_65638b2cf68cfc2a4ed7ff762653c0bc.png){media=image}
 
 [](/workflows/basic-workflows/auraflow/pony_v7_base.json)
 

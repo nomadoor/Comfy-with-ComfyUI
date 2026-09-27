@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: 人物の顔や本人性を保ったまま、別シーンの画像を作る技術と顔差し替え
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: https://i.gyazo.com/877d8862f6e7f6dd3ec7fbeac5331cd9.png
+  image: /media/ai-capabilities/id-transfer/legacy_gyazo_877d8862f6e7f6dd3ec7fbeac5331cd9.png
 ---
 ## ID転送とFaceSwapとは？
 
@@ -42,7 +42,7 @@ IP-Adapterは、既存のtext2imageモデルに「画像からの条件入力」
 
 公式の顔に特化したIP-Adapterモデルです。
 
-![](https://gyazo.com/afe7232d9dd3cc54f5d8a2f1d956e15f){gyazo=image}
+![](/media/ai-capabilities/id-transfer/legacy_gyazo_afe7232d9dd3cc54f5d8a2f1d956e15f.png){media=image}
 
 [](/workflows/ai-capabilities/id-transfer/ip_adapter_faceid_plusv2_sd15.json)
 
@@ -58,7 +58,7 @@ IP-Adapter-FaceID系は、顔認識モデル（InsightFace）と組み合わせ�
 
 厳密にはIP-Adapterの系譜ではないですが、同じく追加のアダプタを指すだけで使えるID転送に特化した手法です。
 
-![](https://gyazo.com/a4213b144081a1267432874bfc09c1f4){gyazo=image}
+![](/media/ai-capabilities/id-transfer/legacy_gyazo_a4213b144081a1267432874bfc09c1f4.png){media=image}
 
 [](/workflows/ai-capabilities/id-transfer/instantid_simple.json)
 
@@ -72,7 +72,7 @@ IP-Adapter型の画像アダプタに加えて、顔認識モデルから得たI
 
 **PuLID-FLUX**は、FLUX1-devをベースにした、ID特化のカスタマイズ手法です。Lightning T2Iなどの工夫により、追加の学習なしで「参照顔＋テキスト」でIDを保ったまま絵柄を変えることができます。
 
-- ![](https://gyazo.com/7a87706872f7b195d46aeabafa6a399e){gyazo=image}
+- ![](/media/ai-capabilities/id-transfer/legacy_gyazo_7a87706872f7b195d46aeabafa6a399e.png){media=image}
 
 - [](/workflows/ai-capabilities/id-transfer/pulid_flux_ll.json)
 
@@ -96,7 +96,7 @@ ID転送というより、「仮面を作って被せる」に近い発想です
 
 顔検出とランドマーク検出で、顔の位置・向き・輪郭を推定し、ソース顔とターゲット顔をアフィン変換などで位置合わせして、マスクとブレンディングでターゲット側の顔部分をソース顔に置き換えます。
 
-![](https://gyazo.com/1a0a81f044bd264db835ef99d40a37d1){gyazo=image}
+![](/media/ai-capabilities/id-transfer/legacy_gyazo_1a0a81f044bd264db835ef99d40a37d1.png){media=image}
 
 [](/workflows/ai-capabilities/id-transfer/reactor_fast.json)
 
@@ -110,6 +110,6 @@ ID転送の技術が未熟だったころは、ReActorでFaceSwapしてから、
 
 [ReActorでFace SwapしたあとにInstantIDを使ってリファインする](https://scrapbox.io/work4ai/ReActor%E3%81%A7Face_Swap%E3%81%97%E3%81%9F%E3%81%82%E3%81%A8%E3%81%ABInstantID%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%83%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B)
 
-![](https://gyazo.com/877d8862f6e7f6dd3ec7fbeac5331cd9){gyazo=image}
+![](/media/ai-capabilities/id-transfer/legacy_gyazo_877d8862f6e7f6dd3ec7fbeac5331cd9.png){media=image}
 
 [](/workflows/ai-capabilities/id-transfer/reactor_w_instantid2.json)

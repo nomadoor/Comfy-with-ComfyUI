@@ -16,7 +16,7 @@ hero:
 
 ## 8 の倍数解像度しか生成できないのはなぜ？
 
-![](https://gyazo.com/74438e54d131fb86c2f02e889a9fad7b){gyazo=loop}
+![](/media/notes/why-multiple-of-8/legacy_gyazo_74438e54d131fb86c2f02e889a9fad7b.mp4){media=loop}
 
 ComfyUI の `Empty Latent Image` ノードを見ると、幅・高さを 8 刻みでしか設定できません。
 無理やり 513px などを入力しても、出力は必ず 8 の倍数に丸められます。

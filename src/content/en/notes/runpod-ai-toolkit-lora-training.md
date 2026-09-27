@@ -45,7 +45,7 @@ This note walks through the flow from launching AI Toolkit on RunPod to download
 
 ### Create an account
 
-![](https://gyazo.com/fa937b8adfc9a1e28e406645ada9b52b){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_fa937b8adfc9a1e28e406645ada9b52b.png){media=image}
 
 Open [RunPod](https://www.runpod.io/) and create an account from `Sign Up`.
 
@@ -55,7 +55,7 @@ RunPod works by buying credits first and spending them as you use GPUs.
 
 If you only want to try LoRA training, about 10 dollars is enough.
 
-![](https://gyazo.com/f683db8baf406ed1aa79e5d348f1e406){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_f683db8baf406ed1aa79e5d348f1e406.png){media=image}
 
 - Click the `+` button in the upper right
 - Choose `Other` if you want to purchase $150 or less
@@ -83,7 +83,7 @@ This time, we will create a Pod that can run AI Toolkit, open AI Toolkit from th
 
 Open `Pods` from the sidebar and click `Deploy`.
 
-![](https://gyazo.com/c39356c905c1a2bf89d0fcf83451712d){gyazo=loop}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_c39356c905c1a2bf89d0fcf83451712d.mp4){media=loop}
 
 - Search for `AI Toolkit` under `Search templates`
 - Choose [AI Toolkit - ostris - ui - official](https://console.runpod.io/hub/template/ai-toolkit-ostris-ui-official?id=0fqzfjy6f3)
@@ -126,13 +126,13 @@ Click `Deploy Pod` to create the Pod.
 
 It takes a little while for the Pod to be created. Wait for it to finish.
 
-![](https://gyazo.com/952faa4188776b9cc626a5c2009422b3){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_952faa4188776b9cc626a5c2009422b3.png){media=image}
 
 When the Pod is ready, it will show `🟢Ready`, and a link for opening AI Toolkit will appear.
 
 Click `HTTP Service`, and AI Toolkit should open.
 
-![](https://gyazo.com/696fa9e2aa3260c51214fd4fc7c3af1a){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_696fa9e2aa3260c51214fd4fc7c3af1a.png){media=image}
 
 When it asks for a password, enter the value you just set in `AI_TOOLKIT_AUTH`.
 
@@ -142,7 +142,7 @@ From here, we will look at the rough training flow in AI Toolkit.
 
 ## 4. Upload a Dataset
 
-![](https://gyazo.com/d57274c9ba07002e7ee02b1b72a80499){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_d57274c9ba07002e7ee02b1b72a80499.png){media=image}
 
 Upload the images and caption files used for training to AI Toolkit.
 
@@ -161,7 +161,7 @@ In AI Toolkit, the flow is to create a training setup called a Job, then run it.
 
 It is a bit like a workflow in ComfyUI.
 
-![](https://gyazo.com/c8029171b590fcb71fc68188a2f5c8be){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_c8029171b590fcb71fc68188a2f5c8be.png){media=image}
 
 Set the base model, learning rate, dataset you just loaded, and other training parameters here.
 
@@ -175,7 +175,7 @@ Before training starts, you can change the settings as many times as you want.
 
 After creating the Job, run the training.
 
-![](https://gyazo.com/b06e6a6734de8d0dba21687c56604812){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_b06e6a6734de8d0dba21687c56604812.png){media=image}
 
 - Click the run button (`▶`) in the upper right
 
@@ -193,7 +193,7 @@ Depending on the settings, AI Toolkit periodically outputs LoRA files during tra
 
 The only real way to know whether training went well is to generate images with ComfyUI or another tool. To be honest, the Loss Graph is not very useful for judging that.
 
-![](https://gyazo.com/89e7eea124ea56af4a34bba8af083057){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_89e7eea124ea56af4a34bba8af083057.png){media=image}
 
 - Output LoRA files appear in the `Checkpoints` area
 - Click the download button and save them
@@ -211,7 +211,7 @@ RunPod charges while the Pod is running, even if you are not actively working.
 
 Do not forget to stop it.
 
-![](https://gyazo.com/f60fe312a59e9fe6624490c8004da78e){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_f60fe312a59e9fe6624490c8004da78e.png){media=image}
 
 - Return to the RunPod page
 - Open the running Pod
@@ -222,7 +222,7 @@ Do not forget to stop it.
 
 If you no longer need AI Toolkit, run `Terminate` to shut it down completely.
 
-![](https://gyazo.com/7142f88c43aa0b4b0281b6c6a1c064ad){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_7142f88c43aa0b4b0281b6c6a1c064ad.png){media=image}
 
 - Delete the Pod with `Terminate`
 

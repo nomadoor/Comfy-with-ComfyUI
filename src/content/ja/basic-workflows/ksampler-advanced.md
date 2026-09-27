@@ -14,7 +14,7 @@ hero:
 
 ## KSampler (Advanced)とは？
 
-![](https://gyazo.com/6f12a584833996a7a4800a13bb59cc23){gyazo=image}
+![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_6f12a584833996a7a4800a13bb59cc23.png){media=image}
 
 `KSampler (Advanced)`ノードは、無印`KSampler`ノードの上位互換です。
 パラメータは`denoise`が消えて以下の四つが増えています。
@@ -29,7 +29,7 @@ ComfyUIの中でも、最も面白い機能の一つだと思っているので�
 
 ## 拡散モデルとSamplingの復習
 
-![](https://gyazo.com/bf9d6d2e5b528f0b82f9d13e3c18c5fa){gyazo=image}
+![](/media/ai-capabilities/sampling/legacy_gyazo_bf9d6d2e5b528f0b82f9d13e3c18c5fa.png){media=image}
 
 [拡散モデル](/ja/ai-capabilities/diffusion-models/)というのは、完全なノイズから、徐々にノイズを取り除いていくことで画像を生成する仕組みでした。
 
@@ -43,7 +43,7 @@ ComfyUIの中でも、最も面白い機能の一つだと思っているので�
 
 KSampler (Advanced)では、`start_at_step` と `end_at_step` を設定することで、どこからサンプリングを開始し、どこまでサンプリングを進めるかを制御できます。
 
-![](https://gyazo.com/e73ba8cf96fd09b8c5335844858a6c86){gyazo=image}
+![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_e73ba8cf96fd09b8c5335844858a6c86.png){media=image}
 
 例えば、`start_at_step`を**4** / `end_at_step`を**11**と設定したとき、画像の白い部分しかサンプリングを行いません。
 
@@ -56,7 +56,7 @@ KSampler (Advanced)では、`start_at_step` と `end_at_step` を設定するこ
 
 KSampler (Advanced)では、`add_noise`パラメータでノイズを追加するかしないかを選択できます。
 
-![](https://gyazo.com/64cca8d8e53b01d4315b4aec434dd5ec){gyazo=image}
+![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_64cca8d8e53b01d4315b4aec434dd5ec.png){media=image}
 
 [](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_add_noise.json)
 
@@ -70,18 +70,18 @@ KSampler (Advanced)では、`add_noise`パラメータでノイズを追加す�
 
 このKSampler (Advanced)だからこそ出来ることとして、一つのサンプリングを2つ以上のKSamplerに分割する、というものがあります。
 
-![](https://gyazo.com/27eed74329f52442a046e59245ee9b14){gyazo=image}
+![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_27eed74329f52442a046e59245ee9b14.png){media=image}
 
 図のように、前半 0 ~ 10stepは🟪Ksample (Advanced)、11~20stepは🟨KSampler (Advanced)で行ってみましょう。
 
-![](https://gyazo.com/d57cb22d3d85f90010815d19d45bb638){gyazo=image}
+![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_d57cb22d3d85f90010815d19d45bb638.png){media=image}
 
 [](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_divide.json)
 
 2つに分割しても生成される画像が全く同じであるのがわかると思います。
 パラメータが少しややこしいので、丁寧に見ていきます。
 
-{% mediaRow img="https://gyazo.com/05f6a71f5fe47d5c2257bce31a015d2b{gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/ksampler-advanced/legacy_gyazo_05f6a71f5fe47d5c2257bce31a015d2b.png{media=image}", width=33, align="left" %}
 **🟪KSampler (Advanced)**
 - `add_noise` : `enable`
 - `start_at_step` : `0`
@@ -90,7 +90,7 @@ KSampler (Advanced)では、`add_noise`パラメータでノイズを追加す�
   - ノイズを残したままlatentを返します。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/172843d68f88326455f5d66176286de0 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/ksampler-advanced/ksampler_advanced_2nd.png{media=image}", width=33, align="left" %}
 **🟨KSampler (Advanced)**
 - `add_noise` : `disable`
   - ノイズが残ったlatentが渡されるので、ここでノイズは追加しません。
@@ -111,13 +111,13 @@ KSampler (Advanced)では、`add_noise`パラメータでノイズを追加す�
 
 最初は"A"のプロンプトを使い、サンプリングの途中から"B"のプロンプトに切り替える、といったことが出来ます。
 
-![](https://gyazo.com/6fd6725df9ce2fd370f7561927bafd4e){gyazo=image}
+![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_6fd6725df9ce2fd370f7561927bafd4e.png){media=image}
 
 [](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_prompt_editing.json)
 
 このworkflowでは、最初の10stepを`赤いりんご`、残りを`赤いうさぎ`というプロンプトで生成しています。
 
-![](https://gyazo.com/b9db108769cb804df9df3fe8212e7707){gyazo=loop}
+![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_b9db108769cb804df9df3fe8212e7707.mp4){media=loop}
 
 もっとわかりやすくするために、切り替えステップを1ずつ変えたときの生成画像を動画にしてみました。  
 100%りんごだったものが、徐々にうさぎになっていきます。
@@ -130,7 +130,7 @@ KSampler (Advanced)では、`add_noise`パラメータでノイズを追加す�
 
 同じように、途中からモデルやLoRAを切り替えることもできます。
 
-![](https://gyazo.com/f85b62fe88508687bf562fd162fcc569){gyazo=image}
+![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_f85b62fe88508687bf562fd162fcc569.png){media=image}
 
 [](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_lora.json)
 
@@ -139,7 +139,7 @@ KSampler (Advanced)では、`add_noise`パラメータでノイズを追加す�
 
 最初の6stepを**LoRAなし**で、残りを**LoRAあり**で生成しています。
 
-![](https://gyazo.com/ca0b90aaa5297a515c7bfe8f94e55684){gyazo=image}
+![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_ca0b90aaa5297a515c7bfe8f94e55684.png){media=image}
 
 
 これはドット絵にするLoRAですが、LoRAは"ドット絵にする"という概念以外にも、学習素材にした絵の記憶も持ってしまっています。

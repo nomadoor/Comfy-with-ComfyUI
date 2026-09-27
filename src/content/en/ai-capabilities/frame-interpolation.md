@@ -27,7 +27,7 @@ Also, with the advent of video generation AI, **Generative Frame Interpolation**
 
 General VFI receives two temporally close frames (less than 0.1 seconds) and generates one or more "intermediate frames" sandwiched between them. By repeating this, the number of frames in the entire video is increased.
 
-![](https://gyazo.com/af7273352979b5286d8f85a9b6915ab6.png){gyazo=image}
+![](/media/ai-capabilities/frame-interpolation/legacy_gyazo_af7273352979b5286d8f85a9b6915ab6.mp4){media=loop}
 
 [](/workflows/ai-capabilities/frame-interpolation/vfi_gmfss.json)
 
@@ -41,7 +41,7 @@ Conventional frame interpolation connected "adjacent frames with almost no chang
 
 Recently, going a step further, technologies of the type that **fill the gap between frames separated by more than 1 second with the power of video generation models** have appeared.
 
-![](https://gyazo.com/669467e658bbd5cd9e03207a5ccd1faa.gif){gyazo=image}
+![](/media/ai-capabilities/frame-interpolation/legacy_gyazo_669467e658bbd5cd9e03207a5ccd1faa.mp4){media=loop}
 
 [](/workflows/ai-capabilities/frame-interpolation/tooncrafter_interp.json)
 
@@ -62,7 +62,7 @@ Even if there are 3 or more input frames, each was just repeating frame interpol
 - Fill between 2nd and 3rd frames...
 - Fill between 3rd and 4th frames...
 
-![](https://gyazo.com/356c0e45a7ccf73ace4714f84ccc30fa.gif){gyazo=loop}
+![](/media/ai-capabilities/frame-interpolation/legacy_gyazo_356c0e45a7ccf73ace4714f84ccc30fa.mp4){media=loop}
 
 VACE's **Extension** has evolved one step from here.
 
@@ -71,6 +71,6 @@ While conventional VFI "looks only between adjacent two frames", Extension place
 For example, let's say you generate a video of 81 frames.
 Insert "keyframes" into some of those frames. The model generates the video so that the keyframes are connected naturally **within the same time axis**.
 
-![](https://gyazo.com/1bd83bd9c5258b25ce9016917516a526.gif){gyazo=image}
+![](/media/ai-capabilities/frame-interpolation/legacy_gyazo_1bd83bd9c5258b25ce9016917516a526.png){media=image}
 
 Compared to FLF2V, a much more natural video is generated. Probably, technologies like Extension will become mainstream in the future.

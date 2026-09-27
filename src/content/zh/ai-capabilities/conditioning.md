@@ -68,7 +68,7 @@ CLIP 擅长短描述和概念之间的对应，但不太擅长将长文章或复
 
 使用 LLM 或 MLLM 后，就能更准确地理解这类指令。
 
-{% mediaRow img="https://gyazo.com/21e83fc01b81ea693037ba3d17f39d5a{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/ai-capabilities/conditioning/legacy_gyazo_21e83fc01b81ea693037ba3d17f39d5a.png{media=image}", width=50, align="left" %}
 
 `A dog on a log with a frog in a bog`
 

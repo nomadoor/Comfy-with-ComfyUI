@@ -11,7 +11,7 @@ noteTags: ["project", "lora", "sdxl", "ai-toolkit"]
 summary: "使用 AI Toolkit，为 Illustrious 系 SDXL 模型训练角色 LoRA 的基本流程"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/b0d3bb95931f32192df7619f612a202e.png"
+  image: "/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_b0d3bb95931f32192df7619f612a202e.png"
 ---
 
 ## 用 AI Toolkit 训练 SDXL（Illustrious）LoRA
@@ -70,7 +70,7 @@ caption 主要有 **自然语言** 和 **标签形式** 两种写法。对于 SD
 
 我们用 Myaku-Myaku 的例子来看。
 
-![Myaku-Myaku](https://gyazo.com/0b39351c0a14cdf1e768d4cc64b9ac0c){gyazo=image}
+![Myaku-Myaku](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_0b39351c0a14cdf1e768d4cc64b9ac0c.png){media=image}
 
 看图可以发现很多元素：
 
@@ -138,7 +138,7 @@ myakumyaku-san, sitting, indoors, office, desk, laptop, office chair, photo
 
 启动 AI Toolkit 后，先读取 Dataset。
 
-![](https://gyazo.com/8e7d24641bb2491bca6ad449bddcaa69){gyazo=image}
+![](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_8e7d24641bb2491bca6ad449bddcaa69.png){media=image}
 
 1. 打开 `Dataset` 标签
 2. 点击右上角的 `New Dataset`
@@ -155,7 +155,7 @@ myakumyaku-san, sitting, indoors, office, desk, laptop, office chair, photo
 
 可以理解成类似 ComfyUI 里的 workflow。
 
-![](https://gyazo.com/b4ef7a58d34d67eb34963f61d1bc50c3){gyazo=image}
+![](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_b4ef7a58d34d67eb34963f61d1bc50c3.png){media=image}
 
 打开 `+ New Job`，设置各个项目。
 
@@ -286,7 +286,7 @@ LoRA 是否真的学好了，还是要实际生成图像来确认。
 
 ### 下载 LoRA
 
-![](https://gyazo.com/d3f7c198f0ffd434876eee7522f5387d){gyazo=image}
+![](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_d3f7c198f0ffd434876eee7522f5387d.png){media=image}
 
 Job 画面右侧的 `Checkpoints` 里会显示已保存的 LoRA。  
 可以通过下载按钮取得。
@@ -321,7 +321,7 @@ myakumyaku-san, standing, simple background
 
 如果想一次测试多个 prompt，`Create List` 节点很方便。
 
-![](https://gyazo.com/88aed03eb70c3ada096a5e388c3cc245){gyazo=image}
+![](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_88aed03eb70c3ada096a5e388c3cc245.png){media=image}
 
 [](/workflows/notes/ai-toolkit-sdxl-lora-training/sdxl_list.json)
 
@@ -352,8 +352,8 @@ myakumyaku-san, standing, simple background
 
 这次看起来 2700 step 左右比较好。
 
-![800step](https://gyazo.com/c8739cbbb75ff09453c092c7e2612308){gyazo=image} ![1300step](https://gyazo.com/715f92faeca1d427be017153631582a8){gyazo=image} ![1800step](https://gyazo.com/266b39d5c9e8ec1d383e66af75ba2253){gyazo=image}
+![800step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_c8739cbbb75ff09453c092c7e2612308.png){media=image} ![1300step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_715f92faeca1d427be017153631582a8.png){media=image} ![1800step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_266b39d5c9e8ec1d383e66af75ba2253.png){media=image}
 
-![2400step](https://gyazo.com/040467bfb8701ff106ecc1fe01545f75){gyazo=image} ![😎 2700step](https://gyazo.com/b0d3bb95931f32192df7619f612a202e){gyazo=image} ![3000step](https://gyazo.com/a0a4b53f690cc515e08103225f336adb){gyazo=image}
+![2400step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_040467bfb8701ff106ecc1fe01545f75.png){media=image} ![😎 2700step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_b0d3bb95931f32192df7619f612a202e.png){media=image} ![3000step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_a0a4b53f690cc515e08103225f336adb.png){media=image}
 
-![3300step](https://gyazo.com/a90b8f3b293e75939c7dcfb26334ecd3){gyazo=image} ![3600step](https://gyazo.com/cf10d44f3c466e847754ed6dbe7f7bcc){gyazo=image} ![4000step](https://gyazo.com/708b9f6cc164cd85b65d35c56f0ceeb8){gyazo=image}
+![3300step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_a90b8f3b293e75939c7dcfb26334ecd3.png){media=image} ![3600step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_cf10d44f3c466e847754ed6dbe7f7bcc.png){media=image} ![4000step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_708b9f6cc164cd85b65d35c56f0ceeb8.png){media=image}

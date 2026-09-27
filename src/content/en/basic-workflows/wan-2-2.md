@@ -78,7 +78,7 @@ By dividing it into two models, the model size is doubled to improve performance
 
 Use KSampler Advanced to process the first half with the `high_noise` model and the second half with the `low_noise` model.
 
-![](https://gyazo.com/3c0c65842b078922808c740ff797917d){gyazo=image}
+![](/media/basic-workflows/wan-2-2/legacy_gyazo_3c0c65842b078922808c740ff797917d.png){media=image}
 
 [](/workflows/basic-workflows/wan-2-2/wan2_2_text2video_14b.json)
 
@@ -93,7 +93,7 @@ Use KSampler Advanced to process the first half with the `high_noise` model and 
 
 ### image2video (14B)
 
-![](https://gyazo.com/83c1b3885e887ed2a170ce853b61691f){gyazo=image}
+![](/media/basic-workflows/wan-2-2/legacy_gyazo_83c1b3885e887ed2a170ce853b61691f.png){media=image}
 
 [](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_14b.json)
 
@@ -108,7 +108,7 @@ Wan 2.1 had a dedicated model for FLF2V, but Wan 2.2's image2video model also su
 
 In ComfyUI, you can generate a video that interpolates between two images simply by inputting the Start / End images into the `WanFirstLastFrameToVideo` node.
 
-![](https://gyazo.com/2e2630bf85cd858b53dba10a0cdddba1){gyazo=image}
+![](/media/basic-workflows/wan-2-2/legacy_gyazo_2e2630bf85cd858b53dba10a0cdddba1.png){media=image}
 
 [](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_flf2v_14b.json)
 
@@ -173,7 +173,7 @@ If you understand it as "text2video, but essentially a special case of image2vid
 
 ### image2video (5B)
 
-![](https://gyazo.com/79c9d851847801e276073863d349b43a){gyazo=image}
+![](/media/basic-workflows/wan-2-2/legacy_gyazo_79c9d851847801e276073863d349b43a.png){media=image}
 
 [](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_5b.json)
 

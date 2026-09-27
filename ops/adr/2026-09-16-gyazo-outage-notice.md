@@ -1,7 +1,7 @@
 # ADR: Temporary Gyazo outage notice
 
 - Date: 2026-09-16
-- Status: Accepted
+- Status: Superseded (notice removed 2026-09-27)
 
 ## Context
 
@@ -21,3 +21,7 @@ Some Gyazo-hosted images used throughout the site are temporarily unavailable. R
 - `src/assets/css/site.css`
 - `ops/style-design.md`
 - `tests/layout.spec.ts`
+
+## Outcome
+
+The owner removed the notice on 2026-09-27 after Gyazo delivery resumed and the site-used media migration was completed. The shared data, template markup, CSS, and dedicated regression test were removed together.

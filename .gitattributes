@@ -1,3 +1,6 @@
 # Enforce UTF-8 (no BOM) for YAML files to avoid accidental BOM reintroduction
 *.yml  text working-tree-encoding=UTF-8
 *.yaml text working-tree-encoding=UTF-8
+
+# This legacy article is tracked with CRLF; treat CR as part of the line ending.
+src/content/ja/notes/panorama-stickers.md whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

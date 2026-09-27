@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "画像から奥行きや立体感を取り出す技術"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/f6033924229b0ea961d8f22eb38bd6b2.png"
+  image: "/media/ai-capabilities/depth-normal-map/legacy_gyazo_f6033924229b0ea961d8f22eb38bd6b2.png"
 ---
 
 ## 深度マップとノーマルマップとは？
@@ -36,7 +36,7 @@ hero:
 
 拡散モデルが一般化する前は、MiDaS や ZoeDepth が単眼深度推定の定番モデルでした。
 
-![](https://gyazo.com/8471cde6727e271aa05f0bad44797144){gyazo=image}
+![](/media/ai-capabilities/depth-normal-map/legacy_gyazo_8471cde6727e271aa05f0bad44797144.png){media=image}
 
 [](/workflows/ai-capabilities/depth-normal-map/midas_depth_normal_map.json)
 
@@ -53,7 +53,7 @@ hero:
 
 最近の主流は **Depth Anything / Depth Anything V2 / V3** といった深度推定の基盤モデルです。
 
-![](https://gyazo.com/69b8c5331c693c699d389f1c95935fff){gyazo=image}
+![](/media/ai-capabilities/depth-normal-map/legacy_gyazo_69b8c5331c693c699d389f1c95935fff.png){media=image}
 
 [](/workflows/ai-capabilities/depth-normal-map/depth_anything_v2.json)
 

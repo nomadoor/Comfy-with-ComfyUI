@@ -37,7 +37,7 @@ Florence2Run 是，为了对输入图像让 Florence-2 执行任务的主节点�
 
 从图像生成自然文的说明文。
 
-![](https://gyazo.com/b364e8bc1ba2799ad953384f4dfe2079){gyazo=image}
+![](/media/basic-workflows/florence2/legacy_gyazo_b364e8bc1ba2799ad953384f4dfe2079.png){media=image}
 
 [](/workflows/basic-workflows/florence2/florence2_detailed_caption.json)
 
@@ -52,7 +52,7 @@ Florence2Run 是，为了对输入图像让 Florence-2 执行任务的主节点�
 
 每指定说明文的短语，以矩形（边界框）的形式输出物体的位置。
 
-![](https://gyazo.com/0acc3146eed131b9642857ebc1edcce1){gyazo=image}
+![](/media/basic-workflows/florence2/legacy_gyazo_0acc3146eed131b9642857ebc1edcce1.png){media=image}
 
 [](/workflows/basic-workflows/florence2/florence2_caption_to_phrase_grounding.json)
 
@@ -63,7 +63,7 @@ Florence2Run 是，为了对输入图像让 Florence-2 执行任务的主节点�
 
 读取图像内的文字，作为文本输出。
 
-![](https://gyazo.com/e701757ab4dfe4056a74a5290d52edbb){gyazo=image}
+![](/media/basic-workflows/florence2/legacy_gyazo_e701757ab4dfe4056a74a5290d52edbb.png){media=image}
 
 [](/workflows/basic-workflows/florence2/florence2_ocr.json)
 
@@ -72,7 +72,7 @@ Florence2Run 是，为了对输入图像让 Florence-2 执行任务的主节点�
 
 回答关于图像的问题的任务。
 
-![](https://gyazo.com/614f705d137c7d5a19015b5a9aaa4f17){gyazo=image}
+![](/media/basic-workflows/florence2/legacy_gyazo_614f705d137c7d5a19015b5a9aaa4f17.png){media=image}
 
 [](/workflows/basic-workflows/florence2/florence2_docvqa.json)
 

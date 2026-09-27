@@ -68,13 +68,13 @@ Rather than humans building a complicated processing pipeline by hand, it is oft
 
 Move a **reference image** using a motion video.
 
-![](https://gyazo.com/3f28188680b010f2bce1a13858ccaf9f){gyazo=image}
+![](/media/basic-workflows/scail-2/legacy_gyazo_3f28188680b010f2bce1a13858ccaf9f.png){media=image}
 
 [](/workflows/basic-workflows/scail-2/scail_2_animation.json)
 
 The base workflow is similar to [Wan-Animate](/en/basic-workflows/wan-animate/), but this one is much simpler, so let's look through it.
 
-{% mediaRow img="https://gyazo.com/0846209526768f5c450c700d1a153dad {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_0846209526768f5c450c700d1a153dad.png {media=image}", width=33, align="left" %}
 **Reference Image / Motion Video**
 
 The reference image and motion video are resized internally, so they do not need to be the same size.
@@ -86,7 +86,7 @@ The reference image and motion video are resized internally, so they do not need
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/ce84cc6fe405261d50b5a6a3cfd8bf91 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_ce84cc6fe405261d50b5a6a3cfd8bf91.png {media=image}", width=33, align="left" %}
 **Prompt**
 
 Since this is just motion transfer, you do not need a detailed prompt.
@@ -96,7 +96,7 @@ Since this is just motion transfer, you do not need a detailed prompt.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/a632cf95fdb6fb5997e6fff4b71218fb {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_a632cf95fdb6fb5997e6fff4b71218fb.png {media=image}", width=33, align="left" %}
 **Resolution / Frame Count**
 
 Set the generation size and frame count in `WanSCAILToVideo`.
@@ -107,7 +107,7 @@ Set the generation size and frame count in `WanSCAILToVideo`.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/74c8fc85eb5026b42cbb8f5d6255ba9b {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_74c8fc85eb5026b42cbb8f5d6255ba9b.png {media=image}", width=33, align="left" %}
 **Mask Generation with SAM3.1**
 
 Mask the people in the reference image and motion video with [SAM 3 / 3.1](/en/data-utilities/sam3/).
@@ -116,7 +116,7 @@ Mask the people in the reference image and motion video with [SAM 3 / 3.1](/en/d
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/608eb36831300427187be280cf45c420 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_608eb36831300427187be280cf45c420.png {media=image}", width=33, align="left" %}
 **Create SCAIL-2 Colored Mask**
 
 The generated masks are colored appropriately.
@@ -125,7 +125,7 @@ The generated masks are colored appropriately.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/25a3907c1246d3513e3bb109997579ab {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_25a3907c1246d3513e3bb109997579ab.png {media=image}", width=33, align="left" %}
 **6-Step Generation**
 
 SCAIL-2 can also use the Lightx2v LoRA for [fast Wan2.1 generation](/en/basic-workflows/wan-2-1/#self-forcing-fast-generation).
@@ -137,7 +137,7 @@ SCAIL-2 can also use the Lightx2v LoRA for [fast Wan2.1 generation](/en/basic-wo
 
 **Output Example**
 
-![reference image](https://gyazo.com/ce9827f452cdc3cf7d47de8b12996f28){gyazo=image} ![motion video](https://gyazo.com/f14aef04ac197a4b92680e05c4fbd178){gyazo=loop} ![output](https://gyazo.com/d87b2644f8f71218ebe678736479959e){gyazo=loop}
+![reference image](/media/basic-workflows/scail-2/legacy_gyazo_ce9827f452cdc3cf7d47de8b12996f28.png){media=image} ![motion video](/media/basic-workflows/scail-2/legacy_gyazo_f14aef04ac197a4b92680e05c4fbd178.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_d87b2644f8f71218ebe678736479959e.mp4){media=loop}
 
 ---
 
@@ -145,13 +145,13 @@ SCAIL-2 can also use the Lightx2v LoRA for [fast Wan2.1 generation](/en/basic-wo
 
 Replace the **person in the video** with the **person in the reference image**.
 
-![](https://gyazo.com/6ade374ea0cbcb2175889cdc0be0bc46){gyazo=image}
+![](/media/basic-workflows/scail-2/legacy_gyazo_6ade374ea0cbcb2175889cdc0be0bc46.png){media=image}
 
 [](/workflows/basic-workflows/scail-2/scail_2_replacement.json)
 
 Basically, just set `replacement_mode` to `true` in `Create SCAIL-2 Colored Mask` and `WanSCAILToVideo`.
 
-{% mediaRow img="https://gyazo.com/5862792bc1510147b0cc73b260624a11 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_5862792bc1510147b0cc73b260624a11.png {media=image}", width=33, align="left" %}
 **Resolution**
 
 Replacement uses the video size as the base.
@@ -160,7 +160,7 @@ Replacement uses the video size as the base.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/cfdb30273c14347f30aad0d2c9987f8c {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_cfdb30273c14347f30aad0d2c9987f8c.png {media=image}", width=33, align="left" %}
 **Create SCAIL-2 Colored Mask and WanSCAILToVideo**
 
 Set `replacement_mode` to `true`.
@@ -171,7 +171,7 @@ Set `replacement_mode` to `true`.
 
 **Output Example**
 
-![motion video](https://gyazo.com/395fd549274fb126d836ac0a9414d07d){gyazo=loop} ![reference image](https://gyazo.com/ce9827f452cdc3cf7d47de8b12996f28){gyazo=image} ![output](https://gyazo.com/1a7caa57ded15aee5700bed072a4a0a7){gyazo=loop}
+![motion video](/media/basic-workflows/scail-2/legacy_gyazo_395fd549274fb126d836ac0a9414d07d.mp4){media=loop} ![reference image](/media/basic-workflows/scail-2/legacy_gyazo_ce9827f452cdc3cf7d47de8b12996f28.png){media=image} ![output](/media/basic-workflows/scail-2/legacy_gyazo_1a7caa57ded15aee5700bed072a4a0a7.mp4){media=loop}
 
 ---
 
@@ -183,11 +183,11 @@ SCAIL-2 also supports videos and images with multiple people.
 
 No special operation is required. As before, just input the video and reference image.
 
-![](https://gyazo.com/a04e322f84ca4377479a7760a60436cd){gyazo=image}
+![](/media/basic-workflows/scail-2/legacy_gyazo_a04e322f84ca4377479a7760a60436cd.png){media=image}
 
 [](/workflows/basic-workflows/scail-2/scail_2_animation_multi_char.json)
 
-{% mediaRow img="https://gyazo.com/86e8ccd07a045bb039e2e69b81b2781b {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_86e8ccd07a045bb039e2e69b81b2781b.png {media=image}", width=33, align="left" %}
 **Create SCAIL-2 Colored Mask**
 
 When there are multiple people, it becomes important to control which person should follow which motion. SCAIL-2 uses colored masks for this.
@@ -201,7 +201,7 @@ When there are multiple people, it becomes important to control which person sho
 
 **Output Example**
 
-![reference image](https://gyazo.com/567acaf722ca9e839ec7cb834c1ed344){gyazo=image} ![motion video](https://gyazo.com/53461ca17746349fbd11e69798460ea6){gyazo=loop} ![output](https://gyazo.com/913ff446dd39fa33f56ba9ed07ce6e16){gyazo=loop}
+![reference image](/media/basic-workflows/scail-2/legacy_gyazo_567acaf722ca9e839ec7cb834c1ed344.png){media=image} ![motion video](/media/basic-workflows/scail-2/legacy_gyazo_53461ca17746349fbd11e69798460ea6.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_913ff446dd39fa33f56ba9ed07ce6e16.mp4){media=loop}
 
 ---
 
@@ -209,13 +209,13 @@ When there are multiple people, it becomes important to control which person sho
 
 You can also provide several reference images at once, such as another angle of the same person or a separate background image.
 
-![](https://gyazo.com/a135dfdaef80d8d16acd904f3d26a12a){gyazo=image}
+![](/media/basic-workflows/scail-2/legacy_gyazo_a135dfdaef80d8d16acd904f3d26a12a.png){media=image}
 
 [](/workflows/basic-workflows/scail-2/scail_2_animation_multi_ref.json)
 
 The basic flow is the same as the normal Animation mode. The difference is that the reference images are passed in as a batch instead of a single image.
 
-{% mediaRow img="https://gyazo.com/23f0af93cd4027f7a8366c16b62181e0 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_23f0af93cd4027f7a8366c16b62181e0.png {media=image}", width=33, align="left" %}
 **Batch input**
 
 Input the images you want to reference into `Batch Images`.
@@ -234,7 +234,7 @@ It is useful for supplementing a person from another angle, but if you want to c
 
 **Output Example**
 
-![reference image 1](https://gyazo.com/d2935f1c3b0ff3016616c54d88d6be56){gyazo=image} ![reference image 2](https://gyazo.com/7819645aea776b0aa5e24e8d9f642487){gyazo=image} ![reference image 3](https://gyazo.com/4617d933cec4a3431d36af11c65180e3){gyazo=image} ![motion video](https://gyazo.com/f14aef04ac197a4b92680e05c4fbd178){gyazo=loop} ![output](https://gyazo.com/50154740248550b3ffa1dfee024da941){gyazo=loop}
+![reference image 1](/media/basic-workflows/scail-2/legacy_gyazo_d2935f1c3b0ff3016616c54d88d6be56.png){media=image} ![reference image 2](/media/basic-workflows/scail-2/legacy_gyazo_7819645aea776b0aa5e24e8d9f642487.png){media=image} ![reference image 3](/media/basic-workflows/scail-2/legacy_gyazo_4617d933cec4a3431d36af11c65180e3.png){media=image} ![motion video](/media/basic-workflows/scail-2/legacy_gyazo_f14aef04ac197a4b92680e05c4fbd178.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_50154740248550b3ffa1dfee024da941.mp4){media=loop}
 
 ---
 
@@ -242,11 +242,11 @@ It is useful for supplementing a person from another angle, but if you want to c
 
 SCAIL-2 basically generates up to 81 frames, but with `WAN Context Windows (Manual)`, you can generate longer videos by splitting along the time direction.
 
-![](https://gyazo.com/43b5c2e2684957795ab7d80f8ce9976a){gyazo=image}
+![](/media/basic-workflows/scail-2/legacy_gyazo_43b5c2e2684957795ab7d80f8ce9976a.png){media=image}
 
 [](/workflows/basic-workflows/scail-2/scail_2_animation_wan_context_windows.json)
 
-{% mediaRow img="https://gyazo.com/55aa8d3ccee17c3a43f87f17895ebfb1 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_55aa8d3ccee17c3a43f87f17895ebfb1.png {media=image}", width=33, align="left" %}
 **WAN Context Windows (Manual)**
 
 It is like tiling along the time axis, or context sliding.
@@ -258,4 +258,4 @@ It is like tiling along the time axis, or context sliding.
 
 **Output Example**
 
-![reference image](https://gyazo.com/ce9827f452cdc3cf7d47de8b12996f28){gyazo=image} ![motion video](https://gyazo.com/5491ba090036cbac5d76abd293d842ef){gyazo=loop} ![output](https://gyazo.com/ae5729a3c9c70711f767364534ccedf9){gyazo=loop}
+![reference image](/media/basic-workflows/scail-2/legacy_gyazo_ce9827f452cdc3cf7d47de8b12996f28.png){media=image} ![motion video](/media/basic-workflows/scail-2/legacy_gyazo_5491ba090036cbac5d76abd293d842ef.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_ae5729a3c9c70711f767364534ccedf9.mp4){media=loop}

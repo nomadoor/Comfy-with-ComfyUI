@@ -16,7 +16,7 @@ hero:
 
 ## 症状
 
-![](https://gyazo.com/3054a82b909490117748ae061e29c35e){gyazo=image}
+![](/media/notes/import-failed/legacy_gyazo_3054a82b909490117748ae061e29c35e.png){media=image}
 
 - ComfyUI を起動したとき、ターミナルに `(IMPORT FAILED)` の行がいくつも並び、特定のカスタムノードが使えなかったり、ノード一覧に出てこなかったりする。
 

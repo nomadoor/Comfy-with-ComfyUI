@@ -39,7 +39,7 @@ hero:
 
 ### Zero-1-to-3
 
-> ![](https://gyazo.com/8f4d195ac2daffffc7356a036d4a3c98){gyazo=image}
+> ![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_8f4d195ac2daffffc7356a036d4a3c98.png){media=image}
 > [Zero-1-to-3: Zero-shot One Image to 3D Object](https://zero123.cs.columbia.edu/)
 
 基于扩散模型的最初期的多视角生成，生成改变了输入图像相机构图的新视角的图像。
@@ -51,7 +51,7 @@ hero:
 
 Zero-1-to-3 是“制作一张输入图像的别角度图像 → 改变角度多次旋转”的用法，但 **[Zero123++](https://github.com/SUDO-AI-3D/zero123plus)** 是同时生成多个视角。
 
-![](https://gyazo.com/b6b4e05ace668acfd75449b8252b139f){gyazo=image} ![](https://gyazo.com/59359f3b3b6f250358211d2044d207fe){gyazo=image}
+![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_b6b4e05ace668acfd75449b8252b139f.png){media=image} ![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_59359f3b3b6f250358211d2044d207fe.jpg){media=image}
 
 众所周知，扩散模型如果批量生成多张（cf. [Batch・视频](/zh/data-utilities/batch-video/)），生成的图像之间在某种程度上具有一致性。
 
@@ -77,7 +77,7 @@ Zero123++ 可以说是利用了这个性质，朝着“一次生成，尽可能�
 
 基于 Stable Video Diffusion 的 image2model。
 
-![](https://gyazo.com/49e94de4d1476e100761e2e6be7a2f6e){gyazo=image}
+![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_49e94de4d1476e100761e2e6be7a2f6e.mp4){media=loop}
 
 [](/workflows/ai-capabilities/3d-model-generation/sv3d.json)
 
@@ -153,6 +153,6 @@ Latent Labs 的工具，或 [HunyuanWorld-1.0](https://github.com/Tencent-Hunyua
 
 到了 [HunyuanWorld-Mirror](https://github.com/Tencent-Hunyuan/HunyuanWorld-Mirror)，就更接近于本质上制作可以走动的世界了。
 
-> ![](https://gyazo.com/47ddf0aa2f5bc667b43be75d2ed1223c){gyazo=player}
+> ![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_47ddf0aa2f5bc667b43be75d2ed1223c.mp4){media=player}
 
 * 由以图像（或视频）为输入，汇总推断相机信息、深度、3D 表现（3D Gaussian 等）的组件构成。

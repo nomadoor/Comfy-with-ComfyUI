@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: ""
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/4bb24e5d24ae91a7e0f1f5143c2e5ee5.png"
+  image: "/media/begin-with/git/legacy_gyazo_4bb24e5d24ae91a7e0f1f5143c2e5ee5.png"
 ---
 
 ## What is Git?
@@ -31,7 +31,7 @@ It provides functions to proceed with development comfortably so that you don't 
 
 ## What is GitHub?
 
-![](https://i.gyazo.com/aa0bd187bca975346df5582992735910.png){gyazo=image}
+![](/media/begin-with/git/legacy_gyazo_aa0bd187bca975346df5582992735910.png){media=image}
 
 It is a **"huge warehouse (cloud storage)"** to keep data saved with Git.
 

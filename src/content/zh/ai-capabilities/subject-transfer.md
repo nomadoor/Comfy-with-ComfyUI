@@ -39,7 +39,7 @@ Subject 转移是用于生成包含参考图像中相同 Subject 的图像的技
 
 你可能会想用这么原始的方法？但如果有能完美说明参考图像的 MLLM，和能完美重现该说明的图像生成模型的话，原理上是可能的。
 
-![](https://gyazo.com/26351f2e5d3eb17c623acd815ba8709c){gyazo=image}
+![](/media/ai-capabilities/subject-transfer/legacy_gyazo_26351f2e5d3eb17c623acd815ba8709c.png){media=image}
 
 [](/workflows/ai-capabilities/subject-transfer/z_image_gemini_3_0.json)
 
@@ -53,7 +53,7 @@ image2prompt 是“图像 → 文本 → 嵌入”这两个阶段，而在 SeeCo
 
 从图像制作相当于文本嵌入的向量，并将其代替 text encoder 使用。
 
-![](https://gyazo.com/d0196735e6162d464bd8764448d4088b){gyazo=image}
+![](/media/ai-capabilities/subject-transfer/legacy_gyazo_d0196735e6162d464bd8764448d4088b.png){media=image}
 
 [](/workflows/ai-capabilities/subject-transfer/seecoder.json)
 
@@ -77,7 +77,7 @@ IP-Adapter 是用于向现有的 text2image 模型插入“来自图像的条件
 
 利用这种性质的 Subject 转移就是 IC-LoRA / ACE++。
 
-![](https://gyazo.com/8e01db8cebce51e7c47d9f958a94c61b){gyazo=image}
+![](/media/ai-capabilities/subject-transfer/legacy_gyazo_8e01db8cebce51e7c47d9f958a94c61b.png){media=image}
 
 [](/workflows/ai-capabilities/subject-transfer/ace_plus_portrait.json)
 
@@ -89,7 +89,7 @@ IP-Adapter 是用于向现有的 text2image 模型插入“来自图像的条件
 
 “[基于指令的图像编辑模型](/zh/ai-capabilities/instruction-based-image-editing/)”也可以用于 Subject 转移。
 
-![](https://gyazo.com/358c8441ff70ee58135d8340bd691200){gyazo=image}
+![](/media/ai-capabilities/subject-transfer/legacy_gyazo_358c8441ff70ee58135d8340bd691200.png){media=image}
 
 [](/workflows/ai-capabilities/subject-transfer/qwen_image_edit_2509_multi_ref.json)
 

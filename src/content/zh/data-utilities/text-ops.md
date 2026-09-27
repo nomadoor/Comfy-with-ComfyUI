@@ -5,7 +5,7 @@ section: data-utilities
 slug: text-ops
 navId: text-ops
 title: "文本操作"
-created: 2026-02-06
+created: 2025-11-25
 updated: 2026-05-27
 summary: "关于操作文本的节点"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -15,7 +15,7 @@ hero:
 
 ## 文本的操作
 
-![](https://i.gyazo.com/8731cc3b1bd685d83a13d37ffc0617ed.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_8731cc3b1bd685d83a13d37ffc0617ed.png){media=image}
 
 在 ComfyUI 中，文本主要作为提示词来使用。
 通过自动化一些操作，如替换部分字符串，或将触发词附加到 LLM 创建的提示词中，可以使 工作流 更加便捷。
@@ -35,14 +35,14 @@ hero:
 
 ### String 节点 (文字输入)
 
-![](https://i.gyazo.com/7669da6621b5fcb5b7cc0c539f4d5af7.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_7669da6621b5fcb5b7cc0c539f4d5af7.png){media=image}
 
 输入字符串的基本节点。
 使用 **String (Multiline)** 节点，可以输入包含换行符的文本。
 
 ### Concatenate 节点 (文字结合)
 
-![](https://i.gyazo.com/a20e6df7b2f65bf71d42c2070f79c726.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_a20e6df7b2f65bf71d42c2070f79c726.png){media=image}
 
 将多个 string 连接成一个。
 （例：`apple` + `pen` → `applepen`）
@@ -51,7 +51,7 @@ hero:
 
 ### Format Text 节点
 
-![](https://gyazo.com/b662c552b5e80b5b04cad422b72a19b2){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_b662c552b5e80b5b04cad422b72a19b2.png){media=image}
 
 [](../../../workflows/data-utilities/text-ops/format_text.json)
 
@@ -63,23 +63,23 @@ hero:
 
 ### Replace 节点 (文字替换)
 
-![](https://i.gyazo.com/db1e540470805d5888a9c90b1381fa44.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_db1e540470805d5888a9c90b1381fa44.png){media=image}
 
 将指定的字符替换为其他字符。
 （例：`apple pen` → `orange pen`）
 
 ### Substring 节点 (文字提取)
 
-![](https://i.gyazo.com/ab158488e388004f441a2258379c7930.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_ab158488e388004f441a2258379c7930.png){media=image}
 
 提取指定范围的字符。
 （例：`apple` → `ppl`）
 
 - 截取从 `start` 到 `end` 的字符串。
 
-### Trim 节点 (删除空白)
+### Trim Text 节点 (删除空白)
 
-![](https://i.gyazo.com/1b83d39d165c117f05e1d28ca88957ee.png){gyazo=image}
+![](/media/data-utilities/text-ops/trim_text.png){media=image}
 
 删除字符串前后的空格。
 （例：` apple ` → `apple`）
@@ -88,7 +88,7 @@ hero:
 
 ### Length 节点 (计算字符数)
 
-![](https://i.gyazo.com/cd8d1001ddaf646c85f31bfbf7df61fb.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_cd8d1001ddaf646c85f31bfbf7df61fb.png){media=image}
 
 计算字符的长度。
 （例：`apple` → `5`）
@@ -104,13 +104,13 @@ hero:
 
 ### Regex Extract 节点
 
-![](https://i.gyazo.com/ad16cc24b76fdffe4ed4adfd84a48563.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_ad16cc24b76fdffe4ed4adfd84a48563.png){media=image}
 
 使用正则表达式，提取符合条件的字符串。
 
 ### Regex Replace 节点
 
-![](https://i.gyazo.com/8f469774411a0096e3725a090fe41d9d.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_8f469774411a0096e3725a090fe41d9d.png){media=image}
 
 使用正则表达式，替换符合条件的字符串。
 
@@ -122,6 +122,6 @@ hero:
 
 - [Node: Power Puter (Wiki)](https://github.com/rgthree/rgthree-comfy/wiki/Node:-Power-Puter)
 
-![](https://i.gyazo.com/c6fd4f1e69b293da19f84963fa1e3ac1.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_c6fd4f1e69b293da19f84963fa1e3ac1.png){media=image}
 
 [](/workflows/data-utilities/text-ops/power_puter_rgthree_replace.json)

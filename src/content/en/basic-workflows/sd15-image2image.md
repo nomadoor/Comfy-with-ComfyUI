@@ -15,7 +15,7 @@ hero:
 
 ## What is image2image?
 
-![](https://gyazo.com/bbb1bca709f4a0b20735da8222d6e3f9){gyazo=image}
+![](/media/basic-workflows/sd15-image2image/legacy_gyazo_bbb1bca709f4a0b20735da8222d6e3f9.png){media=image}
 
 image2image is a method of **using a reference image as a draft and having a picture drawn over it**.
 
@@ -34,7 +34,7 @@ In image2image, this "empty latent" is replaced with a **latent encoded from the
 
 Now, let's see what happens when we change `start_at_step` with a KSampler (Advanced) of `steps: 20`.
 
-{% mediaRow img="https://gyazo.com/9068f8b11d1798b5aef16930565aa97c{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-image2image/legacy_gyazo_9068f8b11d1798b5aef16930565aa97c.png{media=image}", width=50, align="left" %}
 **start_at_step: 0**
 - It is filled with noise from the beginning.
 - The draft image is not visible at all. It is almost the same as normal text2image.
@@ -42,14 +42,14 @@ Now, let's see what happens when we change `start_at_step` with a KSampler (Adva
  → [image2image and text2image when denoise is 1.0](#image2image-and-text2image-when-denoise-is-1-0)
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/9e4a63492f71b4f31e4efa761999c772{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-image2image/legacy_gyazo_9e4a63492f71b4f31e4efa761999c772.png{media=image}", width=50, align="left" %}
 **start_at_step: 1**
 - Starts from 1 step forward.
 - Therefore, the amount of noise added to the draft (= amount of noise to be removed from now on) decreases slightly.
 - However, the draft image is still barely visible.
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/2f5da8a9b3c1cdc017149a7c63fa7678{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-image2image/legacy_gyazo_2f5da8a9b3c1cdc017149a7c63fa7678.png{media=image}", width=50, align="left" %}
 **start_at_step: 9**
 - The amount of noise added to the draft (= amount of noise to be removed from now on) decreases significantly.
 - The outline and composition of the draft remain to the extent that they can be understood as they are.
@@ -57,7 +57,7 @@ Now, let's see what happens when we change `start_at_step` with a KSampler (Adva
 
 
 
-{% mediaRow img="https://gyazo.com/26906eaf7dfc00de20c1f265be4feff9{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-image2image/legacy_gyazo_26906eaf7dfc00de20c1f265be4feff9.png{media=image}", width=50, align="left" %}
 **start_at_step: 20**
 - Since it starts from the last step out of 20 steps, it is effectively the same as "doing nothing".
 - In other words, practically no sampling is done, and no noise is added.
@@ -72,7 +72,7 @@ This is called **image2image**.
 
 ## Workflow with KSampler (Advanced)
 
-![](https://gyazo.com/e5ff6f57deb2d62f568cb8897eb41355){gyazo=image}
+![](/media/basic-workflows/sd15-image2image/legacy_gyazo_e5ff6f57deb2d62f568cb8897eb41355.png){media=image}
 
 [](/workflows/basic-workflows/sd15-image2image/sd1_5_image2image_ksampler_advanced.json)
 
@@ -86,7 +86,7 @@ This is called **image2image**.
 Of course, you can do image2image with the standard KSampler as well.
 However, **"which knob determines how much of the original image remains"** is quite different from KSampler (Advanced).
 
-![](https://gyazo.com/41975fb8a105170ea9d8a9dbbd48b5dd){gyazo=image}
+![](/media/basic-workflows/sd15-image2image/legacy_gyazo_41975fb8a105170ea9d8a9dbbd48b5dd.png){media=image}
 
 [](/workflows/basic-workflows/sd15-image2image/sd1_5_image2image_ksampler.json)
 
@@ -104,14 +104,14 @@ What we want to do is the same, and both adjust **"how much noise is added to th
 
 However, since the assignment of knobs is different, it is a bit confusing. Let's look at the behavior of each with settings that seem to produce the same result.
 
-{% mediaRow img="https://gyazo.com/589d8db0a9506a3df81f2169de272d1e{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-image2image/legacy_gyazo_589d8db0a9506a3df81f2169de272d1e.png{media=image}", width=50, align="left" %}
 **KSampler (Advanced)**
 - For example, if you set `steps: 20`, `start_at_step: 4`,
   It executes only "from the 4th step to the 20th step of the total 20 steps".
 - The actual number of times sampled is **20 - 4 = 16 times**.
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/cbcfaf5df9cee8f8079c82e903b492b8{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-image2image/legacy_gyazo_cbcfaf5df9cee8f8079c82e903b492b8.png{media=image}", width=50, align="left" %}
 **Standard KSampler**
 - Similarly, if you set `steps: 20` and `denoise: 0.8`, the appearance of "how noise is applied" will be close, but **the sampling count remains 20 times**.
 - Even if you change the value of `denoise` to 0.5 or 0.1, it still samples 20 times.
@@ -142,7 +142,7 @@ It is OK if you know which parameter to change to leave how much of the original
 
 When `denoise: 1.0`, the original image is completely filled with noise, so mechanically image2image and text2image using the `Empty Latent Image` node should be the same.
 
-![](https://gyazo.com/aae8ea31ec753bc12053ae1d6b701179){gyazo=image}
+![](/media/basic-workflows/sd15-image2image/legacy_gyazo_aae8ea31ec753bc12053ae1d6b701179.png){media=image}
 
 But **they are not the same in Stable Diffusion 1.5**. (I think it's a difference in implementation, but I don't understand it so I don't know.)
 On the other hand, in recent models (Flux etc.), they become exactly the same image.
@@ -153,4 +153,4 @@ Stable Diffusion 1.5 is a special case, and on this site, we treat **"image2imag
 
 ## Sample Images
 
-![](https://gyazo.com/1f5fee22e1db9942bf950cf39906c881){gyazo=image}
+![](/media/basic-workflows/sd15-image2image/legacy_gyazo_1f5fee22e1db9942bf950cf39906c881.png){media=image}

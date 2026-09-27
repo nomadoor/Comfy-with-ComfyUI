@@ -10,13 +10,13 @@ updated: 2026-03-02
 summary: "小さな顔や細部だけを切り出してinpaintする仕組み"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/5904f9e96c234cd6bec18b10af263838.png"
+  image: "/media/basic-workflows/detailer/legacy_gyazo_5904f9e96c234cd6bec18b10af263838.png"
 tags: ["upscale-restoration"]
 ---
 
 ## Detailerとは？
 
-![](https://gyazo.com/eb9c93e225419a1fe7574451d7cd94e1){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_eb9c93e225419a1fe7574451d7cd94e1.png){media=image}
 
 Stable Diffusion 1.5 がもっとも得意なのは、だいたい 512〜768px 前後の画像です。  
 この解像度で全身を描いたとき、1人あたりの「顔」に使えるピクセル数は 30〜50px 程度しかありません。
@@ -54,7 +54,7 @@ Detailer は、inpaintしたい周辺領域だけ切り抜くため無駄があ�
 
 マスクとクロップ領域の違いを確認しておきましょう。
 
-![](https://gyazo.com/e52ea814ccd051de4c939bb7e90eb941){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_e52ea814ccd051de4c939bb7e90eb941.png){media=image}
 
 - マスク：本当に書き換えたい部分（顔そのもの など）
 - クロップ領域：マスクや BBOX を少しだけ広げた「作業用キャンバス」
@@ -65,7 +65,7 @@ Detailer は、このクロップ領域のみで行うinpaintingです。
 
 ## ✂️ Inpaint Crop
 
-![](https://gyazo.com/52c85301e868fe14f7bb729508206078){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_52c85301e868fe14f7bb729508206078.png){media=image}
 
 [](/workflows/basic-workflows/detailer/inpaint_crop_improved.json)
 
@@ -89,7 +89,7 @@ workflow を見れば分かるとおり、**マスク＋元画像** を渡すと
 
 ## ✂️ Inpaint Stitch (Improved)
 
-![](https://gyazo.com/c210a482208c8932e252b770b8b856bf){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_c210a482208c8932e252b770b8b856bf.png){media=image}
 
 [](/workflows/basic-workflows/detailer/inpaint_stitch_improved.json)
 
@@ -105,7 +105,7 @@ workflow を見れば分かるとおり、**マスク＋元画像** を渡すと
 さて、早速Detailer をやってみましょう。  
 といっても、[inpainting](/ja/basic-workflows/sd15-inpainting/) のworkflowに組み込むだけです。
 
-![](https://gyazo.com/4246aded675f5267c9b5685486791390){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_4246aded675f5267c9b5685486791390.png){media=image}
 
 [](/workflows/basic-workflows/detailer/detailer_inpaint_crop.json)
 
@@ -119,7 +119,7 @@ workflow を見れば分かるとおり、**マスク＋元画像** を渡すと
 
 顔のマスクを自動で作成して、少し自動化してみましょう。
 
-![](https://gyazo.com/d65f393b285ec6c84a17a6a6ef438f14){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_d65f393b285ec6c84a17a6a6ef438f14.png){media=image}
 
 [](/workflows/basic-workflows/detailer/detailer_inpaint_crop_sam3.json)
 
@@ -134,4 +134,4 @@ Detailerの基礎はこれだけなので、もう十分使いこなせると思
 
 ## サンプル画像
 
-![](https://gyazo.com/7564534ad31facc3d0c91bc36606c930){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_7564534ad31facc3d0c91bc36606c930.jpg){media=image}

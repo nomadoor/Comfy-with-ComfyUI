@@ -5,7 +5,7 @@ section: ai-capabilities
 slug: line-art-coloring
 navId: line-art-coloring
 title: 线稿上色
-created: 2026-02-06
+created: 2025-12-01
 updated: 2026-03-02
 summary: 给线稿上色的技术
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
@@ -24,7 +24,7 @@ hero:
 
 如果使用 ControlNet Canny（edge），就可以在保持输入线稿大致原貌的情况下，在那里上色。
 
-![](https://gyazo.com/7e1ed10e17831b224bc547a8d6b3deea){gyazo=image}
+![](/media/ai-capabilities/line-art-coloring/legacy_gyazo_7e1ed10e17831b224bc547a8d6b3deea.png){media=image}
 
 [](/workflows/ai-capabilities/line-art-coloring/flux_controlnet_union.json)
 
@@ -36,7 +36,7 @@ hero:
 
 也可以将线稿原样传递给 [基于指令的图像编辑](/zh/ai-capabilities/instruction-based-image-editing/) 模型让其上色。
 
-![](https://gyazo.com/18b33d684675ffa56b3b805a9f56791a){gyazo=image}
+![](/media/ai-capabilities/line-art-coloring/qwen_image_edit_2509.png){media=image}
 
 [](/workflows/ai-capabilities/line-art-coloring/qwen_image_edit_2509.json)
 

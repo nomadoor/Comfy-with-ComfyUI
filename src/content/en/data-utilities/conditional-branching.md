@@ -26,7 +26,7 @@ In programming, this kind of "change the process depending on a condition" is ca
 
 ## Conditional Branching Basics
 
-![](https://gyazo.com/42e0cbeb5ce32694423b50de55885358){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_42e0cbeb5ce32694423b50de55885358.png){media=image}
 
 [](/workflows/data-utilities/conditional-branching/switch.json)
 
@@ -60,7 +60,7 @@ As shown in [Simple Math](/en/data-utilities/simple-math/), this node can compar
 
 For example, write the following.
 
-![](https://gyazo.com/78cde905a66746c303948be75f9b02c6){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_78cde905a66746c303948be75f9b02c6.jpg){media=image}
 
 [](/workflows/data-utilities/conditional-branching/math_expression.json)
 
@@ -98,7 +98,7 @@ It is very simple: it compares two strings and outputs the result as a Boolean.
 
 For example, you can check whether the input text matches `Hello`, starts with `Hello`, or ends with `Hello`.
 
-![](https://gyazo.com/d0c09611404d536c589fb34a690152e8){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_d0c09611404d536c589fb34a690152e8.png){media=image}
 
 [](/workflows/data-utilities/conditional-branching/compare_text.json)
 
@@ -118,7 +118,7 @@ We said that a Boolean is represented as `true` / `false`, but it can also be re
 
 In other words, you can tell the MLLM, `If it is XX, output 1; otherwise output 0`, and then convert that result into a Boolean.
 
-![](https://gyazo.com/09299f1fde08831664593c6f0b4c0d5e){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_09299f1fde08831664593c6f0b4c0d5e.png){media=image}
 
 [](/workflows/data-utilities/conditional-branching/qwen3_5_4b.json)
 
@@ -145,7 +145,7 @@ There are three logical operators: `AND` / `OR` / `NOT`.
 
 When there are multiple Boolean inputs, they output `true` or `false` based on the combination.
 
-![](https://gyazo.com/e7730a6112a0820ab0a65b4371f7e70b){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_e7730a6112a0820ab0a65b4371f7e70b.png){media=image}
 
 [](/workflows/data-utilities/conditional-branching/and_or_not.json)
 
@@ -165,7 +165,7 @@ No need to overthink it. Try using them and watch how they behave.
 
 ### Rotate 90 Degrees If the Image Is Portrait
 
-![](https://gyazo.com/b6b8471813b62a487bf91519a04f7279){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_b6b8471813b62a487bf91519a04f7279.png){media=image}
 
 [](/workflows/data-utilities/conditional-branching/rotate_if_portrait.json)
 
@@ -177,7 +177,7 @@ No need to overthink it. Try using them and watch how they behave.
 
 If a woman is shown, change her into a man. Otherwise, remove all people.
 
-![](https://gyazo.com/cf499e4e4ed79b91d0020220c854d4ea){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_cf499e4e4ed79b91d0020220c854d4ea.png){media=image}
 
 [](/workflows/data-utilities/conditional-branching/switch_mllm_flux_2_klein_9b.json)
 

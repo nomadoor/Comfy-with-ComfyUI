@@ -35,7 +35,7 @@ Stable Diffusion 1.5 几乎是使用 **512px × 512px 的正方形图像** 进�
 - 纵长・横长的图像，也是裁剪成 512px 的正方形进行学习的
 - 结果是，虽然擅长“画 512px 左右的正方形”，但“更大的画”或“极端的纵长・横长”原本就没有练习过
 
-![](https://gyazo.com/a5fee7589b0c712f6db86426d8f1cc72){gyazo=image}
+![](/media/basic-workflows/sd15-hires-fix/legacy_gyazo_a5fee7589b0c712f6db86426d8f1cc72.png){media=image}
 
 实际上，试着生成 768px 或 1024px，明明写的是 `a single dog`，狗却会分裂出现好几只。
 

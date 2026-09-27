@@ -10,7 +10,7 @@ updated: 2026-05-30
 summary: "About matting, segmentation, and object detection"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/499c4756e1b2adb1424f9cab9829806b.png"
+  image: "/media/data-utilities/ai-mask-generation/legacy_gyazo_499c4756e1b2adb1424f9cab9829806b.png"
 ---
 
 ## AI Mask Generation
@@ -41,7 +41,7 @@ As the name suggests, object detection identifies the position of a specific obj
 
 YOLO is an extremely fast detection technique designed for real-time object detection.
 
-![](https://gyazo.com/e8b4e05d42db0b613aee4467a8dca633){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_e8b4e05d42db0b613aee4467a8dca633.png){media=image}
 
 Basically, one model is made for each type of object you want to detect, such as faces or hands. If there is no model for your target, you need to make one yourself, and it is not suitable when you want to detect many different categories at once.
 
@@ -59,7 +59,7 @@ VLM / MLLM are LLMs with the ability to see images.
 
 They can do many things, such as caption generation, and some of them can also perform object detection.
 
-![](https://gyazo.com/eac97524bcdcb395cdd5172c3694da41){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_eac97524bcdcb395cdd5172c3694da41.png){media=image}
 
 A representative older example is **Florence-2**.
 
@@ -77,7 +77,7 @@ However, it is not for specifying and cutting out one particular object the way 
 
 ### BiRefNet
 
-![](https://gyazo.com/5ce4bac5b8c8dc13fbbb0468c44bf752){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_5ce4bac5b8c8dc13fbbb0468c44bf752.png){media=image}
 
 The detailed usage is covered on the [BiRefNet](/en/data-utilities/birefnet/) page.
 
@@ -91,7 +91,7 @@ SAM is currently the most famous segmentation model.
 
 It understands the shape of objects, so if you specify a car in a photo with text, points, or boxes, it can find the outline and turn it into a mask.
 
-![](https://gyazo.com/cd6078ed81d850085144836e404754d5){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_cd6078ed81d850085144836e404754d5.png){media=image}
 
 The current latest model is covered on the [SAM 3 / 3.1](/en/data-utilities/sam3/) page.
 
@@ -122,7 +122,7 @@ These custom nodes may be needed to run the practical examples on this page.
 
 ### YOLO x SAM
 
-![](https://gyazo.com/2c1fb7ed9c7fcc6242e48b9e6e405c27){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_2c1fb7ed9c7fcc6242e48b9e6e405c27.png){media=image}
 
 [](/workflows/data-utilities/ai-mask-generation/yolo_face_sam.json)
 
@@ -130,7 +130,7 @@ This combines fast face detection with YOLO and the original SAM.
 
 ### Grounding DINO x SAM
 
-![](https://gyazo.com/c7b4ed29a8dae26fb9c666b137091ab4){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_c7b4ed29a8dae26fb9c666b137091ab4.png){media=image}
 
 [](/workflows/data-utilities/ai-mask-generation/grounding_dino_hq_sam.json)
 
@@ -140,7 +140,7 @@ It can specify targets by text and generate high-precision masks, so it was one 
 
 ### Florence2 x SAM2
 
-![](https://gyazo.com/677607c761c38defde753681398d6e1f){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_677607c761c38defde753681398d6e1f.png){media=image}
 
 [](/workflows/data-utilities/ai-mask-generation/florence2_sam2_1.json)
 
@@ -150,7 +150,7 @@ For easy targets such as people or animals, many methods work fine. But when you
 
 ### SAM 3 x BiRefNet
 
-![](https://gyazo.com/82c4c2d947a3ea9c98b46e05a05d542f){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_82c4c2d947a3ea9c98b46e05a05d542f.png){media=image}
 
 [](/workflows/data-utilities/ai-mask-generation/sam3_birefnet.json)
 

@@ -10,7 +10,7 @@ updated: 2026-09-03
 summary: "LTX 2.5で動画と音声を生成する"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/f0a0582dba74a4ef6e731142136b5c59.mp4"
+  image: "/media/basic-workflows/ltx-2-5/legacy_gyazo_f0a0582dba74a4ef6e731142136b5c59.mp4"
 tags: []
 ---
 
@@ -77,13 +77,13 @@ tags: []
 
 ## text2video
 
-![](https://gyazo.com/891b0474ea9ec2636b188b803f6ef2c3){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_891b0474ea9ec2636b188b803f6ef2c3.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video.json)
 
 LTX-2 と同じく、まず目標の半分の解像度で作り、そのあと 2 倍にアップスケールする 2 段階の workflow です。
 
-{% mediaRow img="https://gyazo.com/d353cf476e7c8be513f7bc1e55cef365", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_d353cf476e7c8be513f7bc1e55cef365.png", width=40, align="left" %}
 **解像度設定**
 
 あとから 2 倍にするため、目標解像度の半分の値を `EmptyLTXVLatentVideo` に入力します。
@@ -92,7 +92,7 @@ LTX-2 と同じく、まず目標の半分の解像度で作り、そのあと 2
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/82803fd97cf50afbdb616105f14b0405", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_82803fd97cf50afbdb616105f14b0405.png", width=40, align="left" %}
 **フレーム数の設定**
 
 この workflow では、作りたい動画の秒数（sec）と FPS を入力すると、適切な `8n + 1` のフレーム数に丸められます。
@@ -101,13 +101,13 @@ LTX-2 と同じく、まず目標の半分の解像度で作り、そのあと 2
 
 **出力例**
 
-![](https://gyazo.com/e68699b3ebb44d9b20b5d85c73cf9644){gyazo=loop}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_e68699b3ebb44d9b20b5d85c73cf9644.mp4){media=loop}
 
 ### Multi-shot
 
 Seedance 2 などから一般的になってきましたが、1 回の生成で複数のショットを作ることができます。
 
-![](https://gyazo.com/7d681d86ce23e28e4e48aed1fe452c7d){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7d681d86ce23e28e4e48aed1fe452c7d.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.json)
 
@@ -117,7 +117,7 @@ Seedance 2 などから一般的になってきましたが、1 回の生成で�
 
 **出力例**
 
-![](https://gyazo.com/7fe2eadbd6abb69f2015df4f8531fe26){gyazo=loop}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7fe2eadbd6abb69f2015df4f8531fe26.mp4){media=loop}
 
 ### Duration Predictor
 
@@ -137,11 +137,11 @@ LTX 2.5 には、プロンプトの内容から、それを表現するために
         └── ltx-2.5-duration-head-bf16.safetensors
 ```
 
-![](https://gyazo.com/ecf49f82e56e0fdec6283401d71ae657){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_ecf49f82e56e0fdec6283401d71ae657.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor.json)
 
-{% mediaRow img="https://gyazo.com/4567c3906de961a9c90bc01cef27db5d", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_4567c3906de961a9c90bc01cef27db5d.png", width=40, align="left" %}
 **LTXV Duration Predictor**
 
 プロンプトから予測されたフレーム数が出力されるので、通常の text2video workflow の `length` へつなぎます。
@@ -152,7 +152,7 @@ LTX 2.5 には、プロンプトの内容から、それを表現するために
 
 ## image2video
 
-![](https://gyazo.com/e978305c53f6c658984db4ad42c71a7f){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_e978305c53f6c658984db4ad42c71a7f.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_image2video.json)
 
@@ -162,7 +162,7 @@ LTX 2.5 には、プロンプトの内容から、それを表現するために
 
 **出力例**
 
-![input](https://gyazo.com/856453de1d4eaea2b8e02a8e6993db08){gyazo=image} ![output](https://gyazo.com/d8bdced1eba00d48d1f5ff65dfb4e336){gyazo=loop}
+![input](/media/basic-workflows/ltx-2-5/legacy_gyazo_856453de1d4eaea2b8e02a8e6993db08.png){media=image} ![output](/media/basic-workflows/ltx-2-5/legacy_gyazo_d8bdced1eba00d48d1f5ff65dfb4e336.mp4){media=loop}
 
 ---
 
@@ -172,11 +172,11 @@ LTX 2.5 には、プロンプトの内容から、それを表現するために
 
 動画の最初と最後だけを指定すれば、いわゆる **FLF2V** というものになります。
 
-![](https://gyazo.com/a0e7571b01f97b79d73325390e0a4d3c){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_a0e7571b01f97b79d73325390e0a4d3c.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation.json)
 
-{% mediaRow img="https://gyazo.com/2e39b3e006fcb35d96b87d649ded0146", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_2e39b3e006fcb35d96b87d649ded0146.png", width=40, align="left" %}
 **LTXV Add Guide**
 
 `frame_idx` に画像を入れる位置を指定します。
@@ -193,7 +193,7 @@ LTX 2.5 には、プロンプトの内容から、それを表現するために
 
 **出力例**
 
-![input1](https://gyazo.com/de4eaa85c26607d8b0f98f774880e2b8){gyazo=image} ![input2](https://gyazo.com/0ef0afcbe6a2d35cf018bb0f77e0a0ff){gyazo=image} ![input3](https://gyazo.com/c2058ec73687479e7abe3fa7f21f9d64){gyazo=image} ![output](https://gyazo.com/e0e2fcb86f4a8513708807bacd79af8c){gyazo=loop}
+![input1](/media/basic-workflows/ltx-2-5/legacy_gyazo_de4eaa85c26607d8b0f98f774880e2b8.png){media=image} ![input2](https://gyazo.com/0ef0afcbe6a2d35cf018bb0f77e0a0ff){gyazo=image} ![input3](/media/basic-workflows/ltx-2-5/legacy_gyazo_c2058ec73687479e7abe3fa7f21f9d64.png){media=image} ![output](/media/basic-workflows/ltx-2-5/legacy_gyazo_e0e2fcb86f4a8513708807bacd79af8c.mp4){media=loop}
 
 ---
 
@@ -220,7 +220,7 @@ LTX 2.3 用も含めると非常に多くの種類がありますが、ここで
 
 一般的な ControlNet と同様、線画や深度マップ、ポーズ動画で生成動画を制御できます。
 
-![](https://gyazo.com/4e194652b6db74b853390f20017bb542){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_4e194652b6db74b853390f20017bb542.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_pose.json)
 
@@ -228,7 +228,7 @@ IC-LoRA の詳しい解説は [LTX 2/IC-LoRA (Pose)](/ja/basic-workflows/ltx-2/#
 
 **出力例**
 
-![input/pose](https://gyazo.com/824ba34d0fa1ef036db386c4f7f7b5f6){gyazo=loop} ![output](https://gyazo.com/4f55983a4205360420e7cc605402301b){gyazo=loop}
+![input/pose](/media/basic-workflows/ltx-2-5/legacy_gyazo_824ba34d0fa1ef036db386c4f7f7b5f6.mp4){media=loop} ![output](/media/basic-workflows/ltx-2-5/legacy_gyazo_4f55983a4205360420e7cc605402301b.mp4){media=loop}
 
 ---
 
@@ -238,7 +238,7 @@ LTX 2.5 は、半分の解像度で生成したものを 2 倍にして、もう
 
 そこで、2 段目だけを使い、好きな動画を 2 倍にするアップスケーラーとして使っちゃおう、というのは自然な発想ですね。
 
-![](https://gyazo.com/7fa914cfea3fe3b4648960d1c3474258){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7fa914cfea3fe3b4648960d1c3474258.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_x2_upscaler.json)
 
@@ -250,6 +250,6 @@ LTX 2.5 は、半分の解像度で生成したものを 2 倍にして、もう
 
 **出力例**
 
-![input](https://gyazo.com/2090f2ae9f78af154922c00cd43e10f7){gyazo=loop} ![output](https://gyazo.com/bb03d5683d784b144c290400638ba139){gyazo=loop}
+![input](/media/basic-workflows/ltx-2-5/legacy_gyazo_2090f2ae9f78af154922c00cd43e10f7.mp4){media=loop} ![output](/media/basic-workflows/ltx-2-5/legacy_gyazo_bb03d5683d784b144c290400638ba139.mp4){media=loop}
 
 競合モデルも多く出てきていますが、自然な映像を作る力は、その中でも際立っています。適材適所で使いこなせるといいですね。

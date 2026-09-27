@@ -45,7 +45,7 @@ permalink: "/{{ lang }}/notes/{{ slug }}/"
 
 ### 创建账号
 
-![](https://gyazo.com/fa937b8adfc9a1e28e406645ada9b52b){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_fa937b8adfc9a1e28e406645ada9b52b.png){media=image}
 
 打开 [RunPod](https://www.runpod.io/)，从 `Sign Up` 创建账号。
 
@@ -55,7 +55,7 @@ RunPod 是先购买点数，再消耗点数使用 GPU 的形式。
 
 如果只是试一下 LoRA 训练，10 美元左右就足够了。
 
-![](https://gyazo.com/f683db8baf406ed1aa79e5d348f1e406){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_f683db8baf406ed1aa79e5d348f1e406.png){media=image}
 
 - 点击右上角的 `+` 按钮
 - 如果想购买 150 美元或更少的点数，选择 `Other`
@@ -83,7 +83,7 @@ Pod 就像一台可以自定义的云端租用 PC。
 
 从侧边栏打开 `Pods`，点击 `Deploy`。
 
-![](https://gyazo.com/c39356c905c1a2bf89d0fcf83451712d){gyazo=loop}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_c39356c905c1a2bf89d0fcf83451712d.mp4){media=loop}
 
 - 在 `Search templates` 中搜索 `AI Toolkit`
 - 选择 [AI Toolkit - ostris - ui - official](https://console.runpod.io/hub/template/ai-toolkit-ostris-ui-official?id=0fqzfjy6f3)
@@ -126,13 +126,13 @@ VRAM 不够时，训练中会出现 `Out of Memory`，无法继续处理。
 
 Pod 创建需要一点时间，先等它完成。
 
-![](https://gyazo.com/952faa4188776b9cc626a5c2009422b3){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_952faa4188776b9cc626a5c2009422b3.png){media=image}
 
 Pod 准备好后，会显示 `🟢Ready`，并出现打开 AI Toolkit 的链接。
 
 点击 `HTTP Service`，应该就能打开 AI Toolkit。
 
-![](https://gyazo.com/696fa9e2aa3260c51214fd4fc7c3af1a){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_696fa9e2aa3260c51214fd4fc7c3af1a.png){media=image}
 
 它会要求输入密码，这里输入刚才设置在 `AI_TOOLKIT_AUTH` 中的值。
 
@@ -142,7 +142,7 @@ Pod 准备好后，会显示 `🟢Ready`，并出现打开 AI Toolkit 的链接�
 
 ## 4. 上传 Dataset
 
-![](https://gyazo.com/d57274c9ba07002e7ee02b1b72a80499){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_d57274c9ba07002e7ee02b1b72a80499.png){media=image}
 
 把训练用的图片和 caption file 上传到 AI Toolkit。
 
@@ -161,7 +161,7 @@ Pod 准备好后，会显示 `🟢Ready`，并出现打开 AI Toolkit 的链接�
 
 有点像 ComfyUI 里的 workflow。
 
-![](https://gyazo.com/c8029171b590fcb71fc68188a2f5c8be){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_c8029171b590fcb71fc68188a2f5c8be.png){media=image}
 
 在这里设置 base model、学习率、刚才读取的 dataset 等训练参数。
 
@@ -175,7 +175,7 @@ Pod 准备好后，会显示 `🟢Ready`，并出现打开 AI Toolkit 的链接�
 
 Job 创建好之后，开始训练。
 
-![](https://gyazo.com/b06e6a6734de8d0dba21687c56604812){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_b06e6a6734de8d0dba21687c56604812.png){media=image}
 
 - 点击右上角的执行按钮（`▶`）
 
@@ -193,7 +193,7 @@ Job 创建好之后，开始训练。
 
 训练是否顺利，最终还是只能实际用 ComfyUI 等工具生成图片来确认。老实说，Loss Graph 参考价值不大。
 
-![](https://gyazo.com/89e7eea124ea56af4a34bba8af083057){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_89e7eea124ea56af4a34bba8af083057.png){media=image}
 
 - 输出的 LoRA 会显示在 `Checkpoints` 区域
 - 点击下载按钮保存
@@ -211,7 +211,7 @@ RunPod 在 Pod 运行期间，即使没有实际操作，也会产生费用。
 
 所以不要忘记停止它。
 
-![](https://gyazo.com/f60fe312a59e9fe6624490c8004da78e){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_f60fe312a59e9fe6624490c8004da78e.png){media=image}
 
 - 回到 RunPod 页面
 - 打开正在运行的 Pod
@@ -222,7 +222,7 @@ RunPod 在 Pod 运行期间，即使没有实际操作，也会产生费用。
 
 如果已经可以关闭 AI Toolkit，就执行 `Terminate` 完全关闭。
 
-![](https://gyazo.com/7142f88c43aa0b4b0281b6c6a1c064ad){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_7142f88c43aa0b4b0281b6c6a1c064ad.png){media=image}
 
 - 用 `Terminate` 删除 Pod
 

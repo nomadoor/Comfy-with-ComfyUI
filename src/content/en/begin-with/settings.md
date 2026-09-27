@@ -40,7 +40,7 @@ I introduce some recommended settings.
 
 You can change it to your preferred position by dragging `⋮⋮` next to the `▷ Run` button.
 
-![](https://gyazo.com/1c7183f67866e67e640715cfe42a2a61){gyazo=loop}
+![](/media/begin-with/settings/legacy_gyazo_1c7183f67866e67e640715cfe42a2a61.mp4){media=loop}
 
 
 ### Preview during generation
@@ -49,4 +49,4 @@ ComfyUI Manager → Set Preview method to one of `Auto`/`TAESD`/`latent2RGB`
 - A preview image being generated will be displayed inside the KSamlper node.
 - I turn it off because it takes up a lot of space, but it is a good function to learn how images are generated.
 
-![](https://gyazo.com/b57c81af6a11466c664303f29b25b4cc){gyazo=loop}
+![](/media/begin-with/settings/legacy_gyazo_b57c81af6a11466c664303f29b25b4cc.mp4){media=loop}

@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: 雑なコラージュ画像を、指示ベース画像編集で自然な一枚絵に仕上げるテクニック
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: https://i.gyazo.com/967bb07db193bdc681c1f5528f99d537.png
+  image: /media/ai-capabilities/collage-refine/legacy_gyazo_967bb07db193bdc681c1f5528f99d537.png
 ---
 ## 雑コラのリファインとは？
 
@@ -39,7 +39,7 @@ hero:
 
 最新の指示ベース画像編集モデルでは、複数枚の画像入力に対応していますが、それでも、雑コラのリファインには、まだいくつか利点があります。
 
-![](https://gyazo.com/be997efbbc0c0802513bfab1e8ebe585){gyazo=image}
+![](/media/ai-capabilities/collage-refine/legacy_gyazo_be997efbbc0c0802513bfab1e8ebe585.png){media=image}
 
 ### 位置情報をそのまま保持できる
 

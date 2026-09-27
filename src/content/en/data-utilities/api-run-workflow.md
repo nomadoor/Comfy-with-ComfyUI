@@ -44,7 +44,7 @@ Python sends commands to the running ComfyUI server.
 
 For now, we will use the simplest Stable Diffusion 1.5 text2image.
 
-![](https://gyazo.com/897f66c308b3b98440f641ee3d33d50e){gyazo=image}
+![](/media/basic-workflows/sd15-text2image/legacy_gyazo_897f66c308b3b98440f641ee3d33d50e.png){media=image}
 
 [](/workflows/basic-workflows/sd15-text2image/sd1_5_text2image_vae_ft_mse_840000.json)
 

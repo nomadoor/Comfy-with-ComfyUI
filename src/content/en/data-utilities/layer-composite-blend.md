@@ -5,7 +5,7 @@ section: data-utilities
 slug: layer-composite-blend
 navId: layer-composite-blend
 title: "Layer Composition"
-created: 2025-11-26
+created: 2025-11-25
 updated: 2026-03-02
 summary: "Overlaying, stitching, and blending images"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -29,7 +29,7 @@ This is the operation of simply placing one image on top of another.
 
 ### ImageCompositeMasked Node
 
-![](https://gyazo.com/0f12d674fe3e1f6f30c2a06340464eb4){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_0f12d674fe3e1f6f30c2a06340464eb4.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/imagecompositemasked.json)
 
@@ -42,7 +42,7 @@ This is the basic node for overlaying images.
 
 ### Centering the Image
 
-![](https://gyazo.com/282ad8bae51d35eef6a4810780f3eb82){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_282ad8bae51d35eef6a4810780f3eb82.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_align_center.json)
 
@@ -60,7 +60,7 @@ In ComfyUI, you need to rethink this as a process of **"replacing the masked par
 
 ### Steps to Composite Transparent PNGs
 
-![](https://gyazo.com/cd53e89115c033f8a8ea175b72ca0aef){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_cd53e89115c033f8a8ea175b72ca0aef.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_with_alpha.json)
 
@@ -74,7 +74,7 @@ We use the same `ImageCompositeMasked` node, but we use the **`mask` input**.
 
 If `resize_source` is set to `true`, the source image is forcibly stretched to the same size as the destination image.
 
-![](https://gyazo.com/f7ba12c0cf33e3e5dc8a9b5fb24cb0a6){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_f7ba12c0cf33e3e5dc8a9b5fb24cb0a6.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_with_crop_pad.json)
 
@@ -86,7 +86,7 @@ The easiest solution is to **pad/crop the two images to the same size in advance
 
 ### Practical Example: Combining with Segmentation
 
-![](https://i.gyazo.com/c848c0f8e8d3ee590ba7ae09e8db7e68.png){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_c848c0f8e8d3ee590ba7ae09e8db7e68.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_segmentation.json)
 
@@ -107,7 +107,7 @@ Combine images side by side or vertically. This is useful when you want to creat
 
 ### Image Stitch Node
 
-![](https://i.gyazo.com/4ce9346ef269709f6456f0fcd5832a9c.png){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_4ce9346ef269709f6456f0fcd5832a9c.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/image_stitch.json)
 
@@ -115,7 +115,7 @@ A simple stitching node.
 
 ### 🪢 Image Concatenate From Batch Node
 
-![](https://i.gyazo.com/18d0555fd1d0bd01ead60b3992662cb0.png){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/image_concatenate_from_batch.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/image_concatenate_from_batch.json)
 
@@ -129,7 +129,7 @@ You can arrange 3 or 4 images by using multiple Stitch nodes, but if you want to
 
 ### Image Blend Node
 
-![](https://i.gyazo.com/0c3dbad0a36a0399e7e12301a4b58638.png){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_0c3dbad0a36a0399e7e12301a4b58638.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/image_blend.json)
 
@@ -142,7 +142,7 @@ Standard nodes can only do very simple blending, but you can adjust the strength
 
 ## EmptyImage Node
 
-![](https://gyazo.com/c39404b4f19fe6a47565b326b7f0dc6d){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_c39404b4f19fe6a47565b326b7f0dc6d.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/emptyimage.json)
 

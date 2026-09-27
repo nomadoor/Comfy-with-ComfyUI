@@ -11,14 +11,14 @@ noteTags: ["faq", "seed"]
 summary: "seed 数值接近，不代表结果接近"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/9cc7e9a5752b2a65f4e8a76972b9b366.png"
+  image: "/media/notes/seed-neighbor/legacy_gyazo_9cc7e9a5752b2a65f4e8a76972b9b366.png"
 ---
 
 ## seed1234 和 1235 完全不是一回事
 
 你应该已经有这个经验：只要改 seed，输出图像也会变化。
 
-![](https://gyazo.com/69110725afae49631e11fff491cf6596){gyazo=image}
+![](/media/notes/seed-neighbor/legacy_gyazo_69110725afae49631e11fff491cf6596.png){media=image}
 
 那就试试看，先用 `seed=1234` 生成一次，再用 `seed=1235` 生成一次。  
 数字看起来很接近，但结果往往会完全不同。
@@ -71,7 +71,7 @@ seed 就是决定随机数初始化方式的编号。
 
 思路很简单。
 
-![](https://gyazo.com/313224ede32c9b07ac81fad2c1bc3a71){gyazo=image}
+![](/media/notes/seed-neighbor/legacy_gyazo_313224ede32c9b07ac81fad2c1bc3a71.png){media=image}
 
 1. 用 `seed_A` 生成噪声 A
 2. 用 `seed_B` 生成噪声 B
@@ -83,7 +83,7 @@ seed 就是决定随机数初始化方式的编号。
 
 另一种方式是：在基础 latent 上再加一点噪声 latent。
 
-![](https://gyazo.com/3330b48b010177e127ceb014a3da882f){gyazo=image}
+![](/media/notes/seed-neighbor/legacy_gyazo_3330b48b010177e127ceb014a3da882f.png){media=image}
 
 1. 用 `seed_A` 生成噪声 A
 2. 用另一组随机数生成小噪声，再乘以 `0.01` 这类系数后加进去
@@ -101,7 +101,7 @@ seed 就是决定随机数初始化方式的编号。
 
 ### 混合噪声（blend）
 
-![](https://gyazo.com/eee2f089f7ecf7f9b6541cf2f570266a){gyazo=image}
+![](/media/notes/seed-neighbor/legacy_gyazo_eee2f089f7ecf7f9b6541cf2f570266a.png){media=image}
 
 [](/workflows/notes/seed-neighbor/latent_blend.json)
 
@@ -112,7 +112,7 @@ seed 就是决定随机数初始化方式的编号。
 
 ### 注入噪声（injection）
 
-![](https://gyazo.com/a5162437aa43b07806a802d301a5df9d){gyazo=image}
+![](/media/notes/seed-neighbor/legacy_gyazo_a5162437aa43b07806a802d301a5df9d.png){media=image}
 
 [](/workflows/notes/seed-neighbor/inject_noise_to_latent.json)
 

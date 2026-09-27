@@ -36,7 +36,7 @@ inpainting は **「画像の一部分だけを描き直す」** ための手法
 
 ベースはいつもの [image2image](/ja/basic-workflows/sd15-image2image/) です。そこにマスクを加えて、描き直す場所を決めます。
 
-![](https://gyazo.com/4fc7e54c5ac44fb4c09fc9911f6be06a){gyazo=image}
+![](/media/basic-workflows/sd15-inpainting/legacy_gyazo_4fc7e54c5ac44fb4c09fc9911f6be06a.png){media=image}
 
 [](/workflows/basic-workflows/sd15-inpainting/sd1_5_inpainting_setlatentnoisemask.json)
 
@@ -59,7 +59,7 @@ inpainting は **「画像の一部分だけを描き直す」** ための手法
 
 試しに上の workflow で `denoise` を `1.00` にしてみましょう。
 
-![わお、ホラー画像…(；・∀・)](https://gyazo.com/b18eb39eee9f53b669edb098a219bd24){gyazo=image}
+![わお、ホラー画像…(；・∀・)](/media/basic-workflows/sd15-inpainting/legacy_gyazo_b18eb39eee9f53b669edb098a219bd24.png){media=image}
 
 画像全体の image2image であれば、大きく変化しても、それはそれで楽しくてよいでしょう。
 
@@ -95,7 +95,7 @@ inpainting モデルでは、モデル自身にも「どこを描き直すのか
 
 ### workflow
 
-![](https://gyazo.com/1f6954026bfda799259cfd948da779a3){gyazo=image}
+![](/media/basic-workflows/sd15-inpainting/legacy_gyazo_1f6954026bfda799259cfd948da779a3.png){media=image}
 
 [](/workflows/basic-workflows/sd15-inpainting/sd_v1_5_inpainting.json)
 
@@ -146,7 +146,7 @@ inpainting モデルでは、モデル自身にも「どこを描き直すのか
 
 ### workflow
 
-![](https://gyazo.com/ae3fe8d999343135c6ac995b67a165e7){gyazo=image}
+![](/media/basic-workflows/sd15-inpainting/legacy_gyazo_ae3fe8d999343135c6ac995b67a165e7.png){media=image}
 
 [](/workflows/basic-workflows/sd15-inpainting/sd1_5_controlnet_inpaint.json)
 
@@ -182,7 +182,7 @@ inpainting モデルでは、モデル自身にも「どこを描き直すのか
 
 代表的な画像編集モデルとして、[FLUX.2 \[klein\]](/ja/basic-workflows/flux-2-klein/) を見てみましょう。
 
-![](https://gyazo.com/e55ff686078115488cef6406f60b9370){gyazo=image}
+![](/media/basic-workflows/flux-2-klein/legacy_gyazo_e55ff686078115488cef6406f60b9370.png){media=image}
 
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_image_edit.json)
 

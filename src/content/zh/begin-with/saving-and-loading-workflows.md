@@ -17,7 +17,7 @@ hero:
 
 - 点击侧边栏的 `Templates` 图标，选择喜欢的模板
 
-![](https://gyazo.com/a33cb7c6384321e684d9b9fd6eb1817c){gyazo=loop}
+![](/media/begin-with/saving-and-loading-workflows/legacy_gyazo_a33cb7c6384321e684d9b9fd6eb1817c.mp4){media=loop}
 
 ---
 
@@ -30,7 +30,7 @@ hero:
 
 保存的 工作流 可以通过左侧边栏的文件夹图标 📂（或 `W` 键）进行调用。
 
-![](https://gyazo.com/b9970219294a79c53a651585baa179b4){gyazo=loop}
+![](/media/begin-with/saving-and-loading-workflows/legacy_gyazo_b9970219294a79c53a651585baa179b4.mp4){media=loop}
 
 ---
 
@@ -44,7 +44,7 @@ hero:
 - 2. 取一个喜欢的名字并 `Confirm`（或按 `Enter` 键）
 - 3. 选择保存位置进行保存
 
-![](https://gyazo.com/e13e29d51a26ea2a29ec87cc872bf522){gyazo=loop}
+![](/media/begin-with/saving-and-loading-workflows/legacy_gyazo_e13e29d51a26ea2a29ec87cc872bf522.mp4){media=loop}
 
 ### 嵌入生成的图像并保存
 
@@ -55,7 +55,7 @@ hero:
 
 如果安装了 **[ComfyUI-Custom-Scripts](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)** 等自定义节点，就可以对整个 工作流 进行截图，并在其中嵌入元数据进行保存。
 
-![](https://gyazo.com/a66d20bf36c02fa63c6cd5ab957fe4db){gyazo=loop}
+![](/media/begin-with/saving-and-loading-workflows/legacy_gyazo_a66d20bf36c02fa63c6cd5ab957fe4db.mp4){media=loop}
 
 
 ---
@@ -69,7 +69,7 @@ hero:
 - 1. 点击左侧边栏的文件夹图标 📂（或 `W` 键）
 - 2. 从列表中点击想要打开的 工作流
 
-![](https://gyazo.com/7c2149e7af5d6f78a30c9c03ff671356){gyazo=loop}
+![](/media/begin-with/saving-and-loading-workflows/legacy_gyazo_7c2149e7af5d6f78a30c9c03ff671356.mp4){media=loop}
 
 ### 读取外部文件 (JSON / 图像)
 
@@ -82,14 +82,14 @@ hero:
 **方法 B: 拖放**
 - 将 `.json` 文件或嵌入元数据的图像，拖放到 ComfyUI 的画布上
 
-![](https://gyazo.com/bbd3e9f3833a08a9af16bc3625c4747a){gyazo=loop}
+![](/media/begin-with/saving-and-loading-workflows/legacy_gyazo_bbd3e9f3833a08a9af16bc3625c4747a.mp4){media=loop}
 
 
 ### 从文本读取
 
 如果你复制了 JSON 格式的文本数据，只需在 ComfyUI 上进行粘贴（`Ctrl + V`）即可读取。
 
-![](https://gyazo.com/2df1b87e2f4771e3ea2f718b55357435){gyazo=loop}
+![](/media/begin-with/saving-and-loading-workflows/legacy_gyazo_2df1b87e2f4771e3ea2f718b55357435.mp4){media=loop}
 
 ### 😎读取本站的 工作流
 

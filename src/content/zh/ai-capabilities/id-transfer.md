@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: 保持人物面部或本人特征，创作不同场景图像的技术与换脸
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: https://i.gyazo.com/877d8862f6e7f6dd3ec7fbeac5331cd9.png
+  image: /media/ai-capabilities/id-transfer/legacy_gyazo_877d8862f6e7f6dd3ec7fbeac5331cd9.png
 ---
 ## 什么是 ID 转移与 FaceSwap？
 
@@ -42,7 +42,7 @@ IP-Adapter 是用于向现有的 text2image 模型添加“来自图像的条件
 
 官方专注于面部的 IP-Adapter 模型。
 
-![](https://gyazo.com/afe7232d9dd3cc54f5d8a2f1d956e15f){gyazo=image}
+![](/media/ai-capabilities/id-transfer/legacy_gyazo_afe7232d9dd3cc54f5d8a2f1d956e15f.png){media=image}
 
 [](/workflows/ai-capabilities/id-transfer/ip_adapter_faceid_plusv2_sd15.json)
 
@@ -58,7 +58,7 @@ IP-Adapter-FaceID 系是与人脸识别模型（InsightFace）组合，为了强
 
 严格来说它不属于 IP-Adapter 谱系，但也是只需指向额外的适配器就能使用的、专注于 ID 转移的手法。
 
-![](https://gyazo.com/a4213b144081a1267432874bfc09c1f4){gyazo=image}
+![](/media/ai-capabilities/id-transfer/legacy_gyazo_a4213b144081a1267432874bfc09c1f4.png){media=image}
 
 [](/workflows/ai-capabilities/id-transfer/instantid_simple.json)
 
@@ -72,7 +72,7 @@ IP-Adapter-FaceID 系是与人脸识别模型（InsightFace）组合，为了强
 
 **PuLID-FLUX** 是基于 FLUX1-dev 的、特化 ID 的定制手法。通过 Lightning T2I 等的巧思，无需额外学习，就能通过“参考脸＋文本”在保持 ID 的同时改变画风。
 
-- ![](https://gyazo.com/7a87706872f7b195d46aeabafa6a399e){gyazo=image}
+- ![](/media/ai-capabilities/id-transfer/legacy_gyazo_7a87706872f7b195d46aeabafa6a399e.png){media=image}
 
 - [](/workflows/ai-capabilities/id-transfer/pulid_flux_ll.json)
 
@@ -96,7 +96,7 @@ FaceSwap 是将目标人物的脸替换为参考人物脸的技术。
 
 通过人脸检测和关键点检测，推断脸部的位置・方向・轮廓，通过仿射变换等将源脸和目标脸对齐，用遮罩和混合将目标侧的脸部部分替换为源脸。
 
-![](https://gyazo.com/1a0a81f044bd264db835ef99d40a37d1){gyazo=image}
+![](/media/ai-capabilities/id-transfer/legacy_gyazo_1a0a81f044bd264db835ef99d40a37d1.png){media=image}
 
 [](/workflows/ai-capabilities/id-transfer/reactor_fast.json)
 
@@ -110,6 +110,6 @@ FaceSwap 是将目标人物的脸替换为参考人物脸的技术。
 
 [在 ReActor 进行 Face Swap 后使用 InstantID 进行优化](https://scrapbox.io/work4ai/ReActor%E3%81%A7Face_Swap%E3%81%97%E3%81%9F%E3%81%82%E3%81%A8%E3%81%ABInstantID%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%83%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B)
 
-![](https://gyazo.com/877d8862f6e7f6dd3ec7fbeac5331cd9){gyazo=image}
+![](/media/ai-capabilities/id-transfer/legacy_gyazo_877d8862f6e7f6dd3ec7fbeac5331cd9.png){media=image}
 
 [](/workflows/ai-capabilities/id-transfer/reactor_w_instantid2.json)

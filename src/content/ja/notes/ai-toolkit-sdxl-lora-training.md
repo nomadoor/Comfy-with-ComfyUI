@@ -11,7 +11,7 @@ noteTags: ["project", "lora", "sdxl", "ai-toolkit"]
 summary: "AI Toolkit を使って、Illustrious 系 SDXL モデル向けのキャラ LoRA を学習する流れ"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/b0d3bb95931f32192df7619f612a202e.png"
+  image: "/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_b0d3bb95931f32192df7619f612a202e.png"
 ---
 
 ## AI Toolkit で SDXL（Illustrious）LoRA を学習する
@@ -70,7 +70,7 @@ images/
 
 ミャクミャクさんの例を見ながら、キャプションの書き方を見ていきましょう。
 
-![ミャクミャクさん](https://gyazo.com/0b39351c0a14cdf1e768d4cc64b9ac0c){gyazo=image}
+![ミャクミャクさん](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_0b39351c0a14cdf1e768d4cc64b9ac0c.png){media=image}
 
 画像を見てみると、様々な要素がありますね。
 
@@ -138,7 +138,7 @@ Runpod で学習を行う場合は、こちらで解説しています。
 
 AI Toolkit を起動したら、まず Dataset を読み込みます。
 
-![](https://gyazo.com/8e7d24641bb2491bca6ad449bddcaa69){gyazo=image}
+![](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_8e7d24641bb2491bca6ad449bddcaa69.png){media=image}
 
 1. `Dataset` タブを開く
 2. 右上の `New Dataset` をクリックする
@@ -155,7 +155,7 @@ AI Toolkit では、Job と呼ばれる学習設定を作ってから、それ�
 
 ComfyUI でいう workflow のようなものですね。
 
-![](https://gyazo.com/b4ef7a58d34d67eb34963f61d1bc50c3){gyazo=image}
+![](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_b4ef7a58d34d67eb34963f61d1bc50c3.png){media=image}
 
 `+ New Job` を開き、各項目を設定します。
 
@@ -287,7 +287,7 @@ LoRA がちゃんと学習できているかは、実際に生成して確認す
 
 ### LoRA をダウンロードする
 
-![](https://gyazo.com/d3f7c198f0ffd434876eee7522f5387d){gyazo=image}
+![](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_d3f7c198f0ffd434876eee7522f5387d.png){media=image}
 
 Job 画面右側の `Checkpoints` に、保存された LoRA が並びます。  
 ダウンロードボタンから取得できます。
@@ -322,7 +322,7 @@ myakumyaku-san, standing, simple background
 
 複数プロンプトをまとめて試すなら、`Create List` ノードを使うと便利です。
 
-![](https://gyazo.com/88aed03eb70c3ada096a5e388c3cc245){gyazo=image}
+![](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_88aed03eb70c3ada096a5e388c3cc245.png){media=image}
 
 [](/workflows/notes/ai-toolkit-sdxl-lora-training/sdxl_list.json)
 
@@ -353,8 +353,8 @@ LoRA Strength は `0.8` 程度で上手く生成できるようにするのが�
 
 今回でいえば 2700 step くらいが良さそうですね。
 
-![800step](https://gyazo.com/c8739cbbb75ff09453c092c7e2612308){gyazo=image} ![1300step](https://gyazo.com/715f92faeca1d427be017153631582a8){gyazo=image} ![1800step](https://gyazo.com/266b39d5c9e8ec1d383e66af75ba2253){gyazo=image}
+![800step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_c8739cbbb75ff09453c092c7e2612308.png){media=image} ![1300step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_715f92faeca1d427be017153631582a8.png){media=image} ![1800step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_266b39d5c9e8ec1d383e66af75ba2253.png){media=image}
 
-![2400step](https://gyazo.com/040467bfb8701ff106ecc1fe01545f75){gyazo=image} ![😎 2700step](https://gyazo.com/b0d3bb95931f32192df7619f612a202e){gyazo=image} ![3000step](https://gyazo.com/a0a4b53f690cc515e08103225f336adb){gyazo=image}
+![2400step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_040467bfb8701ff106ecc1fe01545f75.png){media=image} ![😎 2700step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_b0d3bb95931f32192df7619f612a202e.png){media=image} ![3000step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_a0a4b53f690cc515e08103225f336adb.png){media=image}
 
-![3300step](https://gyazo.com/a90b8f3b293e75939c7dcfb26334ecd3){gyazo=image} ![3600step](https://gyazo.com/cf10d44f3c466e847754ed6dbe7f7bcc){gyazo=image} ![4000step](https://gyazo.com/708b9f6cc164cd85b65d35c56f0ceeb8){gyazo=image}
+![3300step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_a90b8f3b293e75939c7dcfb26334ecd3.png){media=image} ![3600step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_cf10d44f3c466e847754ed6dbe7f7bcc.png){media=image} ![4000step](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_708b9f6cc164cd85b65d35c56f0ceeb8.png){media=image}

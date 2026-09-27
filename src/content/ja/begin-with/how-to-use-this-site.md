@@ -10,7 +10,7 @@ updated: 2026-08-01
 summary: "ようこそ、Comfyに使うComfyUIへ"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/8d7fa7b6602e2b4d1cec23ab66090cce.png"
+  image: "/media/begin-with/how-to-use-this-site/legacy_gyazo_8d7fa7b6602e2b4d1cec23ab66090cce.png"
 ---
 
 ## はじめに

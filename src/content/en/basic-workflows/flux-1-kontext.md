@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "Instruction-based image editing with Flux.1 Kontext."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/79c075e47d999e282c8a2cd3c05f10ef.png"
+  image: "/media/basic-workflows/flux-1-kontext/legacy_gyazo_79c075e47d999e282c8a2cd3c05f10ef.png"
 tags: ["instruction-based-image-editing","collage-refine"]
 ---
 
@@ -78,7 +78,7 @@ Even with Kontext, the basic configuration is the same as the regular Flux.1.
 
 The workflow of Kontext itself is a simple configuration that just adds `ReferenceLatent` to the regular Flux.1.
 
-![](https://gyazo.com/b872b5de146a585c0c9745168d5f1dae){gyazo=image}
+![](/media/basic-workflows/flux-1-kontext/legacy_gyazo_b872b5de146a585c0c9745168d5f1dae.png){media=image}
 
 [](/workflows/basic-workflows/flux-1-kontext/flux_1_kontext.json)
 
@@ -108,7 +108,7 @@ If something changes that you don't want to change (e.g., the background changes
 
 ## Capabilities
 
-{% mediaRow img="https://gyazo.com/79c075e47d999e282c8a2cd3c05f10ef {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-1-kontext/legacy_gyazo_79c075e47d999e282c8a2cd3c05f10ef.png {media=image}", width=50, align="left" %}
 ### Image Editing
 
 ```text
@@ -117,7 +117,7 @@ Change the hair to a messy blonde bob.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/677d45b54c4f1c9c278ae230e7b000b9 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-1-kontext/legacy_gyazo_677d45b54c4f1c9c278ae230e7b000b9.png {media=image}", width=50, align="left" %}
 ### Style Transfer
 
 ```text
@@ -126,7 +126,7 @@ This character is made out of Lego blocks.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/7a409e39ee00b1766ee164df76b0ac7c {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-1-kontext/legacy_gyazo_7a409e39ee00b1766ee164df76b0ac7c.png {media=image}", width=50, align="left" %}
 ### Object Removal
 
 ```text
@@ -135,7 +135,7 @@ Remove the woman
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/49bb5579217513e0b774d0952579bd4f {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-1-kontext/legacy_gyazo_49bb5579217513e0b774d0952579bd4f.png {media=image}", width=50, align="left" %}
 ### Text Replacement
 
 ```text
@@ -144,7 +144,7 @@ Replace [OPEN] with [FLUX]
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/6abbbb3aacaddf5df09d459f29466e93 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-1-kontext/legacy_gyazo_6abbbb3aacaddf5df09d459f29466e93.png {media=image}", width=50, align="left" %}
 ### Subject Transfer
 
 ```text
@@ -153,7 +153,7 @@ A photo of a girl who received a stuffed elephant as a Christmas present.
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/84db6461613ef8253aa130778cdb4305 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-1-kontext/legacy_gyazo_84db6461613ef8253aa130778cdb4305.png {media=image}", width=50, align="left" %}
 ### Positioning by Guide
 
 ```text
@@ -163,7 +163,7 @@ Add a sailing ship to the box position.
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/dae38a4ef8ee07c4a5922992c585578a {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/flux-1-kontext/legacy_gyazo_dae38a4ef8ee07c4a5922992c585578a.png {media=image}", width=50, align="left" %}
 ### Refine Collage
 
 It edits to **blend** manually created collage images.

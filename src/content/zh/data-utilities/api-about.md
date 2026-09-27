@@ -34,7 +34,7 @@ ComfyUI 实际上分为“两个部分”。
 前端和服务器并不是随意连接的。
 连接它们之间的正是 **API（传递指令的窗口）**。
 
-![](https://gyazo.com/a04e2d09b534afb1e32900a738f0c3a7){gyazo=image}
+![](/media/begin-with/multiple-comfyui-instances/legacy_gyazo_a04e2d09b534afb1e32900a738f0c3a7.png){media=image}
 
 Web 节点 UI 在内部也是通过 API 向服务器发送指令的。
 也就是说，当你在 UI 上按下 `▷Run` 的瞬间，后台也会向服务器发送一个“执行这个 工作流”的请求。

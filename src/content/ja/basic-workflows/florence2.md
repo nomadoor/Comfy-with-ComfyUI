@@ -37,7 +37,7 @@ Florence2Run は、入力画像に対して Florence-2 にタスクを実行さ�
 
 画像から自然文のキャプションを生成します。
 
-![](https://gyazo.com/b364e8bc1ba2799ad953384f4dfe2079){gyazo=image}
+![](/media/basic-workflows/florence2/legacy_gyazo_b364e8bc1ba2799ad953384f4dfe2079.png){media=image}
 
 [](/workflows/basic-workflows/florence2/florence2_detailed_caption.json)
 
@@ -52,7 +52,7 @@ Florence2Run は、入力画像に対して Florence-2 にタスクを実行さ�
 
 指定したキャプションのフレーズごとに、物体の位置を矩形（バウンディングボックス）の形で出力します。
 
-![](https://gyazo.com/0acc3146eed131b9642857ebc1edcce1){gyazo=image}
+![](/media/basic-workflows/florence2/legacy_gyazo_0acc3146eed131b9642857ebc1edcce1.png){media=image}
 
 [](/workflows/basic-workflows/florence2/florence2_caption_to_phrase_grounding.json)
 
@@ -63,7 +63,7 @@ Florence2Run は、入力画像に対して Florence-2 にタスクを実行さ�
 
 画像内の文字を読み取り、テキストとして出力します。
 
-![](https://gyazo.com/e701757ab4dfe4056a74a5290d52edbb){gyazo=image}
+![](/media/basic-workflows/florence2/legacy_gyazo_e701757ab4dfe4056a74a5290d52edbb.png){media=image}
 
 [](/workflows/basic-workflows/florence2/florence2_ocr.json)
 
@@ -72,7 +72,7 @@ Florence2Run は、入力画像に対して Florence-2 にタスクを実行さ�
 
 画像についての質問に答えるタスクです。
 
-![](https://gyazo.com/614f705d137c7d5a19015b5a9aaa4f17){gyazo=image}
+![](/media/basic-workflows/florence2/legacy_gyazo_614f705d137c7d5a19015b5a9aaa4f17.png){media=image}
 
 [](/workflows/basic-workflows/florence2/florence2_docvqa.json)
 

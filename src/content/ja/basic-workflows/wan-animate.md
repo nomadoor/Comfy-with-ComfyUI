@@ -18,7 +18,7 @@ tags: ["human-motion-transfer","talking-head"]
 
 [Wan-Animate](https://humanaigc.github.io/wan-animate/) は、人・キャラへのモーション転送に特化した **Wan2.1-14B-I2V ベース** のモデルです。
 
-> ![](https://gyazo.com/20a7f10f302751293cda0e0ed353d25a){gyazo=image}
+> ![](/media/basic-workflows/wan-animate/legacy_gyazo_20a7f10f302751293cda0e0ed353d25a.png){media=image}
 
 - 入力した画像を、参照動画の人物の動きに合わせて動かす **Animation モード**
 - 入力した動画の人物を、参照画像の人物に置き換える **Replacement モード**
@@ -85,11 +85,11 @@ Wan-Animate 本体と、Wan2.1 系で共通のモデルを揃えます。
 
 かなり巨大なのでドキドキしますが、ベースは [Wan2.1 image2video](/ja/basic-workflows/wan-2-1/#image2video) の形そのままです。臆せず進めていきましょう。
 
-![](https://gyazo.com/d25335c059e8117f9e617de4ffffefca){gyazo=image}
+![](/media/basic-workflows/wan-animate/legacy_gyazo_d25335c059e8117f9e617de4ffffefca.png){media=image}
 
 [](/workflows/basic-workflows/wan-animate/wan2_2_animate_animation.json)
 
-{% mediaRow img="https://gyazo.com/77b9c908b9e96505678ccaa0bde8055b{gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/wan-animate/legacy_gyazo_77b9c908b9e96505678ccaa0bde8055b.png{media=image}", width=33, align="left" %}
 
 **1. Wan-Animate モデルを読み込む**
 
@@ -97,7 +97,7 @@ Wan-Animate 本体と、Wan2.1 系で共通のモデルを揃えます。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/1516ab2c0949d0df3261a26e46815d08{gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/wan-animate/legacy_gyazo_1516ab2c0949d0df3261a26e46815d08.png{media=image}", width=33, align="left" %}
 
 **2. 生成解像度を決める**
 
@@ -107,7 +107,7 @@ Wan-Animate 本体と、Wan2.1 系で共通のモデルを揃えます。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/c76608836777ce6a604372c2d9cc9c43{gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/wan-animate/legacy_gyazo_c76608836777ce6a604372c2d9cc9c43.png{media=image}", width=33, align="left" %}
 
 **3. WanAnimateToVideo ノードに追加情報を入力する**
 
@@ -124,7 +124,7 @@ Wan-Animate 本体と、Wan2.1 系で共通のモデルを揃えます。
 
 **生成例**
 
-![reference_image](https://gyazo.com/9f0e0e20d750b2e207b01adc56858202){gyazo=image} ![pose_video(処理前)](https://gyazo.com/d7f66b4153473136c37e48c7066709a1){gyazo=loop} ![output](https://gyazo.com/86ed4c6aa64af79325ce18359a4021bc){gyazo=loop}
+![reference_image](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_9f0e0e20d750b2e207b01adc56858202.png){media=image} ![pose_video(処理前)](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_d7f66b4153473136c37e48c7066709a1.mp4){media=loop} ![output](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_86ed4c6aa64af79325ce18359a4021bc.mp4){media=loop}
 
 ---
 
@@ -134,11 +134,11 @@ Wan-Animate 本体と、Wan2.1 系で共通のモデルを揃えます。
 
 Animation モードに、人物を inpainting するためのマスクと、背景になじませるためのリライト処理を追加したものになります。
 
-![](https://gyazo.com/ab3d36d1e2ddfd5d7e452778dbab411c){gyazo=image}
+![](/media/basic-workflows/wan-animate/legacy_gyazo_ab3d36d1e2ddfd5d7e452778dbab411c.png){media=image}
 
 [](/workflows/basic-workflows/wan-animate/wan2_2_animate_replacement.json)
 
-{% mediaRow img="https://gyazo.com/a26743871782e80338ed0d920ef6b786{gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/wan-animate/legacy_gyazo_a26743871782e80338ed0d920ef6b786.png{media=image}", width=33, align="left" %}
 
 **1. リライト LoRA の追加**
 
@@ -146,7 +146,7 @@ Animation モードに、人物を inpainting するためのマスクと、背�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/bc59ff33c803effd0e772879857e8a3a{gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/wan-animate/legacy_gyazo_bc59ff33c803effd0e772879857e8a3a.png{media=image}", width=33, align="left" %}
 
 **2. 参照画像の padding**
 
@@ -154,7 +154,7 @@ Animation モードに、人物を inpainting するためのマスクと、背�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/a6c53693b87e1cebda390d6b7dca306a{gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/wan-animate/legacy_gyazo_a6c53693b87e1cebda390d6b7dca306a.png{media=image}", width=33, align="left" %}
 
 **3. 人物マスク生成**
 
@@ -167,7 +167,7 @@ Animation モードに、人物を inpainting するためのマスクと、背�
 
 **生成例**
 
-![background-pose_video](https://gyazo.com/f14909bbf4415e5477b67870379c6719){gyazo=loop} ![reference_image](https://gyazo.com/59dda8074526ca42245b1220bbb4420f){gyazo=image} ![output](https://gyazo.com/280c5916091919526db60ea0625d441a){gyazo=loop}
+![background-pose_video](/media/basic-workflows/wan-animate/legacy_gyazo_f14909bbf4415e5477b67870379c6719.mp4){media=loop} ![reference_image](/media/basic-workflows/wan-animate/legacy_gyazo_59dda8074526ca42245b1220bbb4420f.png){media=image} ![output](/media/basic-workflows/wan-animate/legacy_gyazo_280c5916091919526db60ea0625d441a.mp4){media=loop}
 
 ---
 
@@ -192,11 +192,11 @@ text2video で使うと劣化が気になりましたが、Wan-Animate では 0 
 
 ### Animationモード（高速版）
 
-![](https://gyazo.com/c8ff6a05cd057198146cd2cffb16d733){gyazo=image}
+![](/media/basic-workflows/wan-animate/legacy_gyazo_c8ff6a05cd057198146cd2cffb16d733.png){media=image}
 
 [](/workflows/basic-workflows/wan-animate/wan2_2_animate_animation_lightx2v.json)
 
-{% mediaRow img="https://gyazo.com/3808ae94efd870f0ff0ce1d77595ea36{gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/wan-animate/legacy_gyazo_3808ae94efd870f0ff0ce1d77595ea36.png{media=image}", width=33, align="left" %}
 
 **LoRA の適用**
 
@@ -210,11 +210,11 @@ text2video で使うと劣化が気になりましたが、Wan-Animate では 0 
 
 **比較**
 
-![20steps](https://gyazo.com/86ed4c6aa64af79325ce18359a4021bc){gyazo=loop} ![6steps](https://gyazo.com/67326f2a1a4d803ab4c6a40799aef8a7){gyazo=loop}
+![20steps](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_86ed4c6aa64af79325ce18359a4021bc.mp4){media=loop} ![6steps](/media/basic-workflows/wan-animate/legacy_gyazo_67326f2a1a4d803ab4c6a40799aef8a7.mp4){media=loop}
 
 ### Replacementモード（高速版）
 
-![](https://gyazo.com/6e70b69630dea6bcf813917d8eb2c18a){gyazo=image}
+![](/media/basic-workflows/wan-animate/legacy_gyazo_6e70b69630dea6bcf813917d8eb2c18a.png){media=image}
 
 [](/workflows/basic-workflows/wan-animate/wan2_2_animate_replacement_lightx2v.json)
 
@@ -231,13 +231,13 @@ ComfyUI ではループ処理ができないため、ほぼ同じ workflow を�
 
 ### Animationモード（リピート）
 
-![](https://gyazo.com/a489fad9b07fb1f1745d556fa130c731){gyazo=image}
+![](/media/basic-workflows/wan-animate/legacy_gyazo_a489fad9b07fb1f1745d556fa130c731.png){media=image}
 
 [](/workflows/basic-workflows/wan-animate/wan2_2_animate_animation_lightx2v_repeat.json)
 
 ぱっと見は莫大な workflow に見えますが、これまでのものと違う点は次の 2 点だけです。
 
-![](https://gyazo.com/5db9830b2a2db2dd24ad1543906f49da){gyazo=image}
+![](/media/basic-workflows/wan-animate/legacy_gyazo_5db9830b2a2db2dd24ad1543906f49da.png){media=image}
 
 - `video_frame_offset`
 
@@ -253,6 +253,6 @@ ComfyUI ではループ処理ができないため、ほぼ同じ workflow を�
 
 ### Replacementモード（リピート）
 
-![](https://gyazo.com/5efe20ed9671e3eb4960fd5ddc70cb46){gyazo=image}
+![](/media/basic-workflows/wan-animate/legacy_gyazo_5efe20ed9671e3eb4960fd5ddc70cb46.png){media=image}
 
 [](/workflows/basic-workflows/wan-animate/wan2_2_animate_replacement_lightx2v_repeat.json)

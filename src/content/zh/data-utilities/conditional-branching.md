@@ -26,7 +26,7 @@ ComfyUI 有时会被称为节点式编程，但最基本的结构其实很简单
 
 ## 条件分支的基本
 
-![](https://gyazo.com/42e0cbeb5ce32694423b50de55885358){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_42e0cbeb5ce32694423b50de55885358.png){media=image}
 
 [](/workflows/data-utilities/conditional-branching/switch.json)
 
@@ -60,7 +60,7 @@ Boolean 是一种很简单的类型，只能是 `true` 或 `false`（0 or 1）�
 
 例如，可以这样写。
 
-![](https://gyazo.com/78cde905a66746c303948be75f9b02c6){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_78cde905a66746c303948be75f9b02c6.jpg){media=image}
 
 [](/workflows/data-utilities/conditional-branching/math_expression.json)
 
@@ -98,7 +98,7 @@ a <= b  # a 小于等于 b
 
 例如，可以判断输入文本是否等于 `Hello`，是否以 `Hello` 开头，或是否以 `Hello` 结尾。
 
-![](https://gyazo.com/d0c09611404d536c589fb34a690152e8){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_d0c09611404d536c589fb34a690152e8.png){media=image}
 
 [](/workflows/data-utilities/conditional-branching/compare_text.json)
 
@@ -118,7 +118,7 @@ a <= b  # a 小于等于 b
 
 也就是说，可以对 MLLM 说：`如果是〇〇，就输出 1；否则输出 0`，然后把这个结果转换成 Boolean。
 
-![](https://gyazo.com/09299f1fde08831664593c6f0b4c0d5e){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_09299f1fde08831664593c6f0b4c0d5e.png){media=image}
 
 [](/workflows/data-utilities/conditional-branching/qwen3_5_4b.json)
 
@@ -145,7 +145,7 @@ a <= b  # a 小于等于 b
 
 当有多个 Boolean 输入时，会根据它们的组合输出 `true` 或 `false`。
 
-![](https://gyazo.com/e7730a6112a0820ab0a65b4371f7e70b){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_e7730a6112a0820ab0a65b4371f7e70b.png){media=image}
 
 [](/workflows/data-utilities/conditional-branching/and_or_not.json)
 
@@ -165,7 +165,7 @@ a <= b  # a 小于等于 b
 
 ### 如果图像是竖图，就旋转 90 度
 
-![](https://gyazo.com/b6b8471813b62a487bf91519a04f7279){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_b6b8471813b62a487bf91519a04f7279.png){media=image}
 
 [](/workflows/data-utilities/conditional-branching/rotate_if_portrait.json)
 
@@ -177,7 +177,7 @@ a <= b  # a 小于等于 b
 
 如果画面中有女性，就将其改成男性。否则，删除所有人物。
 
-![](https://gyazo.com/cf499e4e4ed79b91d0020220c854d4ea){gyazo=image}
+![](/media/data-utilities/conditional-branching/legacy_gyazo_cf499e4e4ed79b91d0020220c854d4ea.png){media=image}
 
 [](/workflows/data-utilities/conditional-branching/switch_mllm_flux_2_klein_9b.json)
 

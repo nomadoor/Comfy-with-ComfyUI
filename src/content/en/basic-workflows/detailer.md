@@ -10,13 +10,13 @@ updated: 2026-03-02
 summary: "A mechanism to cut out only small faces or details and inpaint them"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/5904f9e96c234cd6bec18b10af263838.png"
+  image: "/media/basic-workflows/detailer/legacy_gyazo_5904f9e96c234cd6bec18b10af263838.png"
 tags: ["upscale-restoration"]
 ---
 
 ## What is Detailer?
 
-![](https://gyazo.com/eb9c93e225419a1fe7574451d7cd94e1){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_eb9c93e225419a1fe7574451d7cd94e1.png){media=image}
 
 What Stable Diffusion 1.5 is best at is images around 512-768px.
 When drawing a full body at this resolution, the number of pixels available for one person's "face" is only about 30-50px.
@@ -54,7 +54,7 @@ Detailer is efficient because it cuts out only the surrounding area you want to 
 
 Let's check the difference between mask and crop region.
 
-![](https://gyazo.com/e52ea814ccd051de4c939bb7e90eb941){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_e52ea814ccd051de4c939bb7e90eb941.png){media=image}
 
 - Mask: The part you really want to rewrite (face itself, etc.)
 - Crop region: "Working canvas" expanded slightly from the mask or BBOX
@@ -64,7 +64,7 @@ Detailer is inpainting performed only within this crop region.
 
 ## ✂️ Inpaint Crop
 
-![](https://gyazo.com/52c85301e868fe14f7bb729508206078){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_52c85301e868fe14f7bb729508206078.png){media=image}
 
 [](/workflows/basic-workflows/detailer/inpaint_crop_improved.json)
 
@@ -87,7 +87,7 @@ There are quite a few parameters, but basically, you only need to look at the on
 
 ## ✂️ Inpaint Stitch (Improved)
 
-![](https://gyazo.com/c210a482208c8932e252b770b8b856bf){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_c210a482208c8932e252b770b8b856bf.png){media=image}
 
 [](/workflows/basic-workflows/detailer/inpaint_stitch_improved.json)
 
@@ -102,7 +102,7 @@ Only the masked part is overwritten on the original image.
 Now, let's try Detailer immediately.
 However, it's just incorporating it into the [inpainting](/en/basic-workflows/sd15-inpainting/) workflow.
 
-![](https://gyazo.com/4246aded675f5267c9b5685486791390){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_4246aded675f5267c9b5685486791390.png){media=image}
 
 [](/workflows/basic-workflows/detailer/detailer_inpaint_crop.json)
 
@@ -116,7 +116,7 @@ However, it's just incorporating it into the [inpainting](/en/basic-workflows/sd
 
 Let's automate it a bit by automatically creating a face mask.
 
-![](https://gyazo.com/d65f393b285ec6c84a17a6a6ef438f14){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_d65f393b285ec6c84a17a6a6ef438f14.png){media=image}
 
 [](/workflows/basic-workflows/detailer/detailer_inpaint_crop_sam3.json)
 
@@ -131,4 +131,4 @@ However, if you want to detect multiple people reflected in the image at once an
 
 ## Sample Image
 
-![](https://gyazo.com/7564534ad31facc3d0c91bc36606c930){gyazo=image}
+![](/media/basic-workflows/detailer/legacy_gyazo_7564534ad31facc3d0c91bc36606c930.jpg){media=image}

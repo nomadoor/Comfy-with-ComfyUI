@@ -11,7 +11,7 @@ noteTags: ["project", "lora", "krea-2", "kura"]
 summary: "使用 Kura 和 AI 智能体训练、比较 Krea 2 角色 LoRA 的完整流程"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/bd00a496f18c5ecb9925dd7f790ffc7d.png"
+  image: "/media/notes/kura-krea2-lora-training/legacy_gyazo_bd00a496f18c5ecb9925dd7f790ffc7d.png"
 ---
 
 ## Kura 是什么？
@@ -53,7 +53,7 @@ Kura 是一套为 LoRA 训练准备好快捷方式的工具框架，让人可以
 
 这次要制作的是原创角色 LoRA，但手头只有几张自己画的图片。
 
-![用图像编辑模型增加图片变化](https://gyazo.com/2159c09bf30ffc9230b93e72a9b933f9){gyazo=image}
+![用图像编辑模型增加图片变化](/media/notes/kura-krea2-lora-training/legacy_gyazo_2159c09bf30ffc9230b93e72a9b933f9.png){media=image}
 
 遇到这种情况，也可以使用 Nano Banana 或 ChatGPT Images 2.0 增加图片变化。
 
@@ -67,7 +67,7 @@ Caption 是说明图片中有什么内容的文字。
 
 下面以 Vivi 为例，看看**角色 LoRA** 的 caption 应该怎样编写。
 
-![在沙发上休息的 Vivi](https://gyazo.com/d74af5465c466791239a29516fa341c4){gyazo=image}
+![在沙发上休息的 Vivi](/media/notes/kura-krea2-lora-training/legacy_gyazo_d74af5465c466791239a29516fa341c4.png){media=image}
 
 这张图片包含多种要素：
 
@@ -238,7 +238,7 @@ Vivi, reclining, couch, indoors, living room, pillow, blanket, floor lamp, windo
 使用 datasets/character-lora 中的图片，制作 Krea 2 的角色 LoRA。
 ```
 
-![Codex](https://gyazo.com/c0869c902e2ae71682a0b8433c693fbf){gyazo=image}
+![Codex](/media/notes/kura-krea2-lora-training/legacy_gyazo_c0869c902e2ae71682a0b8433c693fbf.png){media=image}
 
 Kura 提供了用于检查数据集和确定参数的 Skill，因此一开始不需要指定详细参数。
 
@@ -282,7 +282,7 @@ cd path/to/Kura
 uv run kura monitor
 ```
 
-![kura monitor](https://gyazo.com/200c43a33b1a88c82d555d2bf2d3ed55){gyazo=image}
+![kura monitor](/media/notes/kura-krea2-lora-training/legacy_gyazo_200c43a33b1a88c82d555d2bf2d3ed55.png){media=image}
 
 如果想详细查看某个 run，请使用 `watch` 命令。
 
@@ -290,7 +290,7 @@ uv run kura monitor
 uv run kura run watch <run-id>
 ```
 
-![watch](https://gyazo.com/19b89285e83c62b08e1ba1ee80579c03){gyazo=image}
+![watch](/media/notes/kura-krea2-lora-training/legacy_gyazo_19b89285e83c62b08e1ba1ee80579c03.png){media=image}
 
 在 Monitor 中左键单击链接，就会打开文件管理器。已保存的 LoRA 在训练过程中也会依次添加到该 run 的 `outputs/` 中。
 
@@ -326,7 +326,7 @@ LoRA 的效果究竟如何，只有实际生成后才知道。下面通过 Kura 
 应用刚才训练的 LoRA，用 ComfyUI 生成一张图片。
 ```
 
-![Vivi 1000 steps](https://gyazo.com/5bffd9971f963f76bd0dc68ce4add3d0){gyazo=image}
+![Vivi 1000 steps](/media/notes/kura-krea2-lora-training/legacy_gyazo_5bffd9971f963f76bd0dc68ce4add3d0.png){media=image}
 
 通常情况下，AI **不会从零创建工作流**。
 
@@ -347,7 +347,7 @@ LoRA 的效果究竟如何，只有实际生成后才知道。下面通过 Kura 
 使用 3 个提示词，让每个已保存 step 的 LoRA 分别生成图片，再把结果排列成一张评测图。
 ```
 
-![Comparison](https://gyazo.com/a9b23a29fc76faf1d66da47962b41373){gyazo=image}
+![Comparison](/media/notes/kura-krea2-lora-training/legacy_gyazo_a9b23a29fc76faf1d66da47962b41373.png){media=image}
 
 在这个例子中，1000 step 左右看起来比较合适。
 

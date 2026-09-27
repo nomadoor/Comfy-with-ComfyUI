@@ -35,7 +35,7 @@ There are several custom nodes that realize wirelessization.
 
 Usage is very simple.
 
-![](https://gyazo.com/fd49b6cc5d0da73a01189cc407104371){gyazo=image}
+![](/media/begin-with/wireless-nodes/legacy_gyazo_fd49b6cc5d0da73a01189cc407104371.png){media=image}
 
 [](/workflows/begin-with/wireless-nodes/set_get.json)
 
@@ -49,7 +49,7 @@ Usage is very simple.
 
 ## Convenient but use with caution
 
-![](https://i.gyazo.com/0128233c9681fdaa4ad62d7afe59d2aa.png){gyazo=image}
+![](/media/begin-with/wireless-nodes/legacy_gyazo_0128233c9681fdaa4ad62d7afe59d2aa.png){media=image}
 
 [](/workflows/begin-with/wireless-nodes/set_get_image2image.json)
 

@@ -14,7 +14,7 @@ hero:
 ---
 ## 从噪点生成美丽的图像
 
-![](https://gyazo.com/3c82ca8a7dcb51f2475d0451de727783){gyazo=loop}
+![](/media/ai-capabilities/diffusion-models/legacy_gyazo_3c82ca8a7dcb51f2475d0451de727783.mp4){media=loop}
 
 在 ComfyUI 中预览图像生成的样子时，你会发现一开始只能看到像砂岚一样的噪点，但随着步数的推进及，轮廓逐渐显现，最终会变成一张相当整洁的图像。
 

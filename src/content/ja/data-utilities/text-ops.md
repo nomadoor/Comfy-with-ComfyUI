@@ -15,7 +15,7 @@ hero:
 
 ## テキストの操作
 
-![](https://i.gyazo.com/8731cc3b1bd685d83a13d37ffc0617ed.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_8731cc3b1bd685d83a13d37ffc0617ed.png){media=image}
 
 ComfyUIでは、主にプロンプトとしてテキストを扱います。
 文字列の一部を置き換えたり、LLMが作成したプロンプトにトリガーワードをくっつけたりと、いくつかの操作を自動化することでワークフローがより便利になります。
@@ -35,14 +35,14 @@ ComfyUIでは、主にプロンプトとしてテキストを扱います。
 
 ### String ノード (文字入力)
 
-![](https://i.gyazo.com/7669da6621b5fcb5b7cc0c539f4d5af7.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_7669da6621b5fcb5b7cc0c539f4d5af7.png){media=image}
 
 文字列を入力する基本的なノードです。
 **String (Multiline)** ノードを使うと、改行を含むテキストを入力できます。
 
 ### Concatenate ノード (文字結合)
 
-![](https://i.gyazo.com/a20e6df7b2f65bf71d42c2070f79c726.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_a20e6df7b2f65bf71d42c2070f79c726.png){media=image}
 
 複数のstringをつなげてひとつにまとめます。
 （例：`apple` + `pen` → `applepen`）
@@ -51,7 +51,7 @@ ComfyUIでは、主にプロンプトとしてテキストを扱います。
 
 ### Format Text ノード
 
-![](https://gyazo.com/b662c552b5e80b5b04cad422b72a19b2){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_b662c552b5e80b5b04cad422b72a19b2.png){media=image}
 
 [](../../../workflows/data-utilities/text-ops/format_text.json)
 
@@ -63,23 +63,23 @@ Concatenate よりも、柔軟にテキストを組み合わせられます。
 
 ### Replace ノード (文字置換)
 
-![](https://i.gyazo.com/db1e540470805d5888a9c90b1381fa44.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_db1e540470805d5888a9c90b1381fa44.png){media=image}
 
 指定した文字を別の文字に置き換えます。
 （例：`apple pen` → `orange pen`）
 
 ### Substring ノード (文字抽出)
 
-![](https://i.gyazo.com/ab158488e388004f441a2258379c7930.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_ab158488e388004f441a2258379c7930.png){media=image}
 
 指定した範囲の文字を抽出します。
 （例：`apple` → `ppl`）
 
 - `start` 番目から `end` 番目までの文字列を切り出します。
 
-### Trim ノード (空白削除)
+### Trim Text ノード (空白削除)
 
-![](https://i.gyazo.com/1b83d39d165c117f05e1d28ca88957ee.png){gyazo=image}
+![](/media/data-utilities/text-ops/trim_text.png){media=image}
 
 文字列の前後にあるスペースを削除します。
 （例：` apple ` → `apple`）
@@ -88,7 +88,7 @@ Concatenate よりも、柔軟にテキストを組み合わせられます。
 
 ### Length ノード (文字数カウント)
 
-![](https://i.gyazo.com/cd8d1001ddaf646c85f31bfbf7df61fb.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_cd8d1001ddaf646c85f31bfbf7df61fb.png){media=image}
 
 文字の長さをカウントします。
 （例：`apple` → `5`）
@@ -104,13 +104,13 @@ Concatenate よりも、柔軟にテキストを組み合わせられます。
 
 ### Regex Extract ノード
 
-![](https://i.gyazo.com/ad16cc24b76fdffe4ed4adfd84a48563.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_ad16cc24b76fdffe4ed4adfd84a48563.png){media=image}
 
 正規表現を使って、条件に一致する文字列を抽出します。
 
 ### Regex Replace ノード
 
-![](https://i.gyazo.com/8f469774411a0096e3725a090fe41d9d.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_8f469774411a0096e3725a090fe41d9d.png){media=image}
 
 正規表現を使って、条件に一致する文字列を置き換えます。
 
@@ -122,6 +122,6 @@ Concatenate よりも、柔軟にテキストを組み合わせられます。
 
 - [Node: Power Puter (Wiki)](https://github.com/rgthree/rgthree-comfy/wiki/Node:-Power-Puter)
 
-![](https://i.gyazo.com/c6fd4f1e69b293da19f84963fa1e3ac1.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_c6fd4f1e69b293da19f84963fa1e3ac1.png){media=image}
 
 [](/workflows/data-utilities/text-ops/power_puter_rgthree_replace.json)

@@ -11,7 +11,7 @@ noteTags: ["project", "lora", "krea-2", "kura"]
 summary: "A practical guide to training and comparing a Krea 2 character LoRA with Kura and an AI agent"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/bd00a496f18c5ecb9925dd7f790ffc7d.png"
+  image: "/media/notes/kura-krea2-lora-training/legacy_gyazo_bd00a496f18c5ecb9925dd7f790ffc7d.png"
 ---
 
 ## What is Kura?
@@ -53,7 +53,7 @@ Collect images that clearly show the subject you want to train. If possible, inc
 
 Here, we are creating a LoRA for an original character, but only have a few hand-drawn images to start with.
 
-![Creating variations with an image editing model](https://gyazo.com/2159c09bf30ffc9230b93e72a9b933f9){gyazo=image}
+![Creating variations with an image editing model](/media/notes/kura-krea2-lora-training/legacy_gyazo_2159c09bf30ffc9230b93e72a9b933f9.png){media=image}
 
 In that situation, you can use Nano Banana or ChatGPT Images 2.0 to create more variations.
 
@@ -67,7 +67,7 @@ What you include depends on what you want the LoRA to learn. More detail is not 
 
 Using Vivi as an example, let's look at how to write captions for a **character LoRA**.
 
-![Vivi relaxing on a couch](https://gyazo.com/d74af5465c466791239a29516fa341c4){gyazo=image}
+![Vivi relaxing on a couch](/media/notes/kura-krea2-lora-training/legacy_gyazo_d74af5465c466791239a29516fa341c4.png){media=image}
 
 This image contains several kinds of information:
 
@@ -238,7 +238,7 @@ Tell the AI agent that has Kura open what you want to train.
 Use the images in datasets/character-lora to create a Krea 2 character LoRA.
 ```
 
-![Codex](https://gyazo.com/c0869c902e2ae71682a0b8433c693fbf){gyazo=image}
+![Codex](/media/notes/kura-krea2-lora-training/legacy_gyazo_c0869c902e2ae71682a0b8433c693fbf.png){media=image}
 
 Kura includes a Skill for reviewing datasets and choosing parameters. You do not need to specify every parameter at the start.
 
@@ -282,7 +282,7 @@ cd path/to/Kura
 uv run kura monitor
 ```
 
-![kura monitor](https://gyazo.com/200c43a33b1a88c82d555d2bf2d3ed55){gyazo=image}
+![kura monitor](/media/notes/kura-krea2-lora-training/legacy_gyazo_200c43a33b1a88c82d555d2bf2d3ed55.png){media=image}
 
 To inspect one run in detail, use the `watch` command.
 
@@ -290,7 +290,7 @@ To inspect one run in detail, use the `watch` command.
 uv run kura run watch <run-id>
 ```
 
-![watch](https://gyazo.com/19b89285e83c62b08e1ba1ee80579c03){gyazo=image}
+![watch](/media/notes/kura-krea2-lora-training/legacy_gyazo_19b89285e83c62b08e1ba1ee80579c03.png){media=image}
 
 Left-clicking a link in the Monitor opens it in your file explorer. Saved LoRAs are added to the run's `outputs/` directory during training.
 
@@ -326,7 +326,7 @@ Once ComfyUI is ready, ask the AI to generate an image.
 Apply the LoRA we just trained and generate one image in ComfyUI.
 ```
 
-![Vivi at 1000 steps](https://gyazo.com/5bffd9971f963f76bd0dc68ce4add3d0){gyazo=image}
+![Vivi at 1000 steps](/media/notes/kura-krea2-lora-training/legacy_gyazo_5bffd9971f963f76bd0dc68ce4add3d0.png){media=image}
 
 In general, the AI does **not build a workflow from scratch**.
 
@@ -347,7 +347,7 @@ I want to evaluate the character LoRA I trained.
 Use three prompts to generate with every saved step, then arrange the results into a review image.
 ```
 
-![Comparison](https://gyazo.com/a9b23a29fc76faf1d66da47962b41373){gyazo=image}
+![Comparison](/media/notes/kura-krea2-lora-training/legacy_gyazo_a9b23a29fc76faf1d66da47962b41373.png){media=image}
 
 In this example, around 1000 steps looks best.
 

@@ -15,7 +15,7 @@ hero:
 
 ## What is Hires.fix?
 
-![](https://gyazo.com/a63d1a6610c9928b6c21ba39a0d533d0){gyazo=image}
+![](/media/basic-workflows/sd15-hires-fix/legacy_gyazo_a63d1a6610c9928b6c21ba39a0d533d0.png){media=image}
 
 It has a cool name, but what it does is not that complex.
 
@@ -42,7 +42,7 @@ When image generation first appeared, it was not as optimized as it is now, and 
 
 More fundamentally, it is about **"what size images the model was trained with"**.
 
-![](https://gyazo.com/a5fee7589b0c712f6db86426d8f1cc72){gyazo=image}
+![](/media/basic-workflows/sd15-hires-fix/legacy_gyazo_a5fee7589b0c712f6db86426d8f1cc72.png){media=image}
 
 Stable Diffusion 1.5 is trained almost exclusively with 512 × 512px images.
 In other words, it is good at drawing pictures around this size, but **it hasn't practiced other resolutions at all.**
@@ -65,7 +65,7 @@ This idea of "going through the model's comfortable resolution once and then lif
 
 ## Basic Method
 
-![](https://gyazo.com/96cd5924bcaef159a79e2fb5fa991665){gyazo=image}
+![](/media/basic-workflows/sd15-hires-fix/legacy_gyazo_96cd5924bcaef159a79e2fb5fa991665.png){media=image}
 
 [](/workflows/basic-workflows/sd15-hires-fix/sd1_5_hires_fix.json)
 
@@ -88,7 +88,7 @@ Therefore, it was not practical for a long time, but a custom node that performs
 - [Goktug/ComfyUI_NNLatentUpscale (forked from Ttl)](https://github.com/Goktug/ComfyUi_NNLatentUpscale)
   - Upscales latent using a neural network.
 
-![](https://gyazo.com/545160bee6b5c66fd91b32e917ada79c){gyazo=image}
+![](/media/basic-workflows/sd15-hires-fix/legacy_gyazo_545160bee6b5c66fd91b32e917ada79c.png){media=image}
 
 [](/workflows/basic-workflows/sd15-hires-fix/sd1_5_hires_fix_nnlatentupscale.json)
 

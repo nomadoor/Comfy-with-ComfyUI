@@ -11,12 +11,12 @@ noteTags: ["project", "erp", "lora", "flux"]
 summary: "ERP上に参照画像を貼り、残りをoutpaintで埋めるための専用UI"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/0732762b1efdf916b6a5836a9078e90e.png"
+  image: "/media/notes/panorama-stickers/legacy_gyazo_0732762b1efdf916b6a5836a9078e90e.png"
 ---
 
 ## ComfyUI Panorama Stickers
 
-![](https://gyazo.com/748e50cd59976f45acabd7cf39d45bc6){gyazo=player}
+![](/media/notes/panorama-stickers/legacy_gyazo_748e50cd59976f45acabd7cf39d45bc6.mp4){media=player}
 
 参照画像から360度パノラマ画像を作る **FLUX.2 Klein 4B/9B 360 ERP Outpaint LoRA** 専用のUIです。
 
@@ -39,12 +39,11 @@ ERPはパノラマを展開したものなので、場所によって歪み方�
 
 ## ノード構成
 
-このカスタムノードは、4つのノードで構成されています。
+このページでは、以下の3つのノードを扱います。
 
 - `Panorama Stickers`：ERPキャンバスに画像を配置する
 - `Panorama Cutout`：パノラマ内の任意視点を切り出す（撮影する）
 - `Panorama Preview`：ノード上でプレビューする
-- `Panorama Seam Prep`：左右端の継ぎ目を整える
 
 ---
 
@@ -62,7 +61,7 @@ ERPはパノラマを展開したものなので、場所によって歪み方�
 
 > `Panorama Preview` だけはノード上でもプレビューできますが、操作はモーダルUIを前提にしています。
 
-{% mediaRow img="https://gyazo.com/fc789c1056b38005c59d1e5be6c3095d{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_fc789c1056b38005c59d1e5be6c3095d.mp4{media=loop}", width=60, align="left" %}
 
 **モーダルUIを開く**
 
@@ -70,7 +69,7 @@ ERPはパノラマを展開したものなので、場所によって歪み方�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/18d7795a35504cf58fe4813ed364a00e{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_18d7795a35504cf58fe4813ed364a00e.mp4{media=loop}", width=60, align="left" %}
 
 **視点移動 / ズーム**
 
@@ -79,7 +78,7 @@ ERPはパノラマを展開したものなので、場所によって歪み方�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/02163c2018590f8b022623f9e711878d{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_02163c2018590f8b022623f9e711878d.mp4{media=loop}", width=60, align="left" %}
 
 **右下ボタン**
 
@@ -88,7 +87,7 @@ ERPはパノラマを展開したものなので、場所によって歪み方�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/ec0a8aaafab38c71dd23bdb075f224d5{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_ec0a8aaafab38c71dd23bdb075f224d5.mp4{media=loop}", width=60, align="left" %}
 
 **描画方法切り替え**
 
@@ -96,7 +95,7 @@ ERPはパノラマを展開したものなので、場所によって歪み方�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/0873609554f60abe700f435144d23936{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_0873609554f60abe700f435144d23936.mp4{media=loop}", width=60, align="left" %}
 
 **ドラッグ方向**
 
@@ -109,7 +108,7 @@ ERPはパノラマを展開したものなので、場所によって歪み方�
 
 ERPキャンバスに参照画像を置いていくためのEditorです。
 
-{% mediaRow img="https://gyazo.com/217f50a8bb037ca6c10ce55cd230bf8d{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_217f50a8bb037ca6c10ce55cd230bf8d.mp4{media=loop}", width=60, align="left" %}
 
 **画像の追加**
 
@@ -118,7 +117,7 @@ ERPキャンバスに参照画像を置いていくためのEditorです。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/e9907e0255952679f448d7796dd9d719{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_e9907e0255952679f448d7796dd9d719.mp4{media=loop}", width=60, align="left" %}
 
 **画像の移動・拡大・回転**
 
@@ -129,7 +128,7 @@ ERPキャンバスに参照画像を置いていくためのEditorです。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/e7ca94b114093b218c82a333761021a3{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_e7ca94b114093b218c82a333761021a3.mp4{media=loop}", width=60, align="left" %}
 
 **重なり順 / 複製**
 
@@ -139,7 +138,7 @@ ERPキャンバスに参照画像を置いていくためのEditorです。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/6080f7006f8dfdfcd1e15fd30a394e50{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_6080f7006f8dfdfcd1e15fd30a394e50.mp4{media=loop}", width=60, align="left" %}
 
 **画像の削除**
 
@@ -148,7 +147,7 @@ ERPキャンバスに参照画像を置いていくためのEditorです。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/ba80aed93898c33f2f2588f7245723eb{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_ba80aed93898c33f2f2588f7245723eb.mp4{media=loop}", width=60, align="left" %}
 
 **Inspectorから画像選択**
 
@@ -161,7 +160,7 @@ ERPキャンバスに参照画像を置いていくためのEditorです。
 
 パノラマの中に入り、カメラで撮影するように任意視点を切り出すEditorです。
 
-{% mediaRow img="https://gyazo.com/e7e7075770cd2693e94334bf09743fac{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_e7e7075770cd2693e94334bf09743fac.mp4{media=loop}", width=60, align="left" %}
 
 **フレームの追加**
 
@@ -170,7 +169,7 @@ ERPキャンバスに参照画像を置いていくためのEditorです。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/033ef3fd91b9bb4cc283906ae53b7269{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_033ef3fd91b9bb4cc283906ae53b7269.mp4{media=loop}", width=60, align="left" %}
 
 **フレームの移動・拡大・回転**
 
@@ -179,7 +178,7 @@ ERPキャンバスに参照画像を置いていくためのEditorです。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/da133d6d6fc2c17e7f4a59f716b92fec{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_da133d6d6fc2c17e7f4a59f716b92fec.mp4{media=loop}", width=60, align="left" %}
 
 **既定のアスペクト比へ変更**
 
@@ -188,7 +187,7 @@ ERPキャンバスに参照画像を置いていくためのEditorです。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/a6d69406f8888c84cbbdcbd42a184107{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_a6d69406f8888c84cbbdcbd42a184107.mp4{media=loop}", width=60, align="left" %}
 
 **フレーム位置へ視点移動**
 
@@ -201,7 +200,7 @@ ERPキャンバスに参照画像を置いていくためのEditorです。
 
 ノード上でプレビューを見られるノードです。モーダルUIは他と共通ですが、機能を絞っています。
 
-{% mediaRow img="https://gyazo.com/fe09e529eea57ebf960f97b0d7720514{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_fe09e529eea57ebf960f97b0d7720514.mp4{media=loop}", width=60, align="left" %}
 
 **ノード上プレビュー**
 
@@ -209,7 +208,7 @@ ERPキャンバスに参照画像を置いていくためのEditorです。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/c98e12d762e11fb8922ffa3991912d6b{gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_c98e12d762e11fb8922ffa3991912d6b.png{media=image}", width=60, align="left" %}
 
 **全画面表示**
 
@@ -218,20 +217,6 @@ ERPキャンバスに参照画像を置いていくためのEditorです。
 
 {% endmediaRow %}
 
-
-## Panorama Seam Prep
-
-どんなに上手く学習しても、パノラマ画像の左右端（シーム）の完全一致は難しいです。  
-このノードは、境目が画像の中心になるように画像をずらし、境目をinpaintingで後処理するときに使用します。
-
-![](https://gyazo.com/09deac88400d8e8d1f9301eda07c7b13){gyazo=image}
-
-- `seam_width_px` : マスクの幅を指定します
-- `seam_center_offset_px` : 境界を中心からずらします
-- `mask_blur_px` : マスクの両端をぼかします
-  - inpaintingした結果を元の画像に合成するときに使用します
-
----
 
 ## workflow
 
@@ -278,7 +263,7 @@ ERPキャンバスに参照画像を置いていくためのEditorです。
 
 ### flux-2-klein-9B-360-erp-outpaint
 
-![](https://gyazo.com/fc52e8eca49723f6ca9fd426abadc636){gyazo=image}
+![](/media/notes/panorama-stickers/legacy_gyazo_fc52e8eca49723f6ca9fd426abadc636.png){media=image}
 
 [](/workflows/notes/panorama-stickers/flux_2_klein_9b_360_erp_outpaint.json)
 
@@ -293,6 +278,6 @@ Fill the green spaces according to the image. Outpaint as a seamless 360 equirec
 
 ### flux-2-klein-4B-360-erp-outpaint
 
-![](https://gyazo.com/fa6b005b1c0389c38728310e5b7a3085){gyazo=image}
+![](/media/notes/panorama-stickers/legacy_gyazo_fa6b005b1c0389c38728310e5b7a3085.png){media=image}
 
 [](/workflows/notes/panorama-stickers/flux_2_klein_4b_360_erp_outpaint.json)

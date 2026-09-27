@@ -51,7 +51,7 @@ hero:
 
 ## 実際にエラーが出るのか？
 
-![](https://gyazo.com/3d13852e4d5921d17dd6e6c1835bfafa){gyazo=image}
+![](/media/notes/sd15-sdxl-asset-compatibility/legacy_gyazo_3d13852e4d5921d17dd6e6c1835bfafa.png){media=image}
 
 SD1.5 の ControlNet ワークフローに SDXL 用の ControlNet モデルを繋いでみると、上記のようなエラーが表示されます：
 

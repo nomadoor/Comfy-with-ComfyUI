@@ -10,7 +10,7 @@ updated: 2026-08-26
 summary: "参照画像からスタイルや被写体を転送する元祖的な仕組み"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/64fdcae074a2a01943d7f5fff3aaa418.png"
+  image: "/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_64fdcae074a2a01943d7f5fff3aaa418.png"
 tags: ["subject-transfer", "style-transfer"]
 ---
 
@@ -53,7 +53,7 @@ IP-Adapterにはいくつか種類がありますが、最もスタンダード�
 
 ### workflow
 
-![](https://gyazo.com/6e8376130553997cbd30696c6700a601){gyazo=image}
+![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_6e8376130553997cbd30696c6700a601.png){media=image}
 
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_sd15.json)
 
@@ -65,7 +65,7 @@ IP-Adapterにはいくつか種類がありますが、最もスタンダード�
 
 ## どこを「見て」いるか
 
-![](https://gyazo.com/302c47a4eb43f19e7e8535ca40e8ed5c){gyazo=image}
+![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_302c47a4eb43f19e7e8535ca40e8ed5c.png){media=image}
 
 IP-Adapter の「目」にあたる CLIP ViT-H-14 は、基本的に **224 × 224 の範囲**しか見ていません。  
 そのため、縦長の人物写真をそのまま渡すと、顔や足が切れたり、体の真ん中あたりだけを手がかりに特徴を取ってしまったりします。
@@ -82,7 +82,7 @@ IP-Adapter の「目」にあたる CLIP ViT-H-14 は、基本的に **224 × 22
 
 構図やオブジェクトの位置を強めに転送するモデルです。
 
-![](https://gyazo.com/ecbbe99d3410a850767aaf506645952b){gyazo=image}
+![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_ecbbe99d3410a850767aaf506645952b.png){media=image}
 
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_plus_sd15.json)
 
@@ -94,7 +94,7 @@ IP-Adapter の「目」にあたる CLIP ViT-H-14 は、基本的に **224 × 22
 
 テキストプロンプト優先寄りのモデルです。
 
-![](https://gyazo.com/422b44322caef6fe6fdec8c7d37f54e3){gyazo=image}
+![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_422b44322caef6fe6fdec8c7d37f54e3.png){media=image}
 
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_sd15_light.json)
 
@@ -106,7 +106,7 @@ IP-Adapter の「目」にあたる CLIP ViT-H-14 は、基本的に **224 × 22
 
 顔（頭部）に特化した IP-Adapter です。
 
-![](https://gyazo.com/bba6f8053f411bee64044c141d4632c0){gyazo=image}
+![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_bba6f8053f411bee64044c141d4632c0.png){media=image}
 
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_plus_face_sd15.json)
 

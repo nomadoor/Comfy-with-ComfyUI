@@ -39,7 +39,7 @@ hero:
 
 ### ComfyUI Managerを使う（推奨）
 
-![](https://gyazo.com/c0d8901537b65da709f9ba9d6e1a0055){gyazo=loop}
+![](/media/begin-with/comfyui-manager/legacy_gyazo_c0d8901537b65da709f9ba9d6e1a0055.mp4){media=loop}
 
 1. ComfyUI Managerのインストール
    - ComfyUI Managerがまだインストールされていない場合は、[ComfyUI Manager](/ja/begin-with/comfyui-manager/)を参考にインストールしてください。

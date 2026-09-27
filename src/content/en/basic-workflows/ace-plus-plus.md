@@ -10,13 +10,13 @@ updated: 2026-03-02
 summary: "Extending Flux.1 Fill with ACE++"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/ca2c5be6b2a22cead23cf75a4fc8424f.png"
+  image: "/media/basic-workflows/ace-plus-plus/legacy_gyazo_ca2c5be6b2a22cead23cf75a4fc8424f.png"
 tags: ["id-transfer","subject-transfer"]
 ---
 
 ## What is ACE++?
 
-![](https://gyazo.com/1ecb26d7a9f2f9f558b02e91114cc692){gyazo=image}
+![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_1ecb26d7a9f2f9f558b02e91114cc692.png){media=image}
 
 This image is a single image generated with the following prompt:
 - Image divided into 2 frames.
@@ -26,7 +26,7 @@ This image is a single image generated with the following prompt:
 As you can see, the people on the left and right look like the same person.
 This is called the sprite sheet technique, and it is a trick that has been used since the Stable Diffusion 1.5 era when we wanted to create multiple consistent situations.
 
-![](https://gyazo.com/5b66002abf37e213214611933ac7b833){gyazo=image}
+![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_5b66002abf37e213214611933ac7b833.png){media=image}
 
 Taking it one step further, if we provide an image like the one above and inpaint only the right half.
 Then, **a new image is generated on the right side while referencing the image on the left.**
@@ -89,7 +89,7 @@ It is easy to understand if you think that Flux.1 Fill is in charge of "where to
 
 Generates an image resembling the person (face) of the reference image.
 
-![](https://gyazo.com/ebe23ac6ca509cf96538f2a85fcf69c3){gyazo=image}
+![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_ebe23ac6ca509cf96538f2a85fcf69c3.png){media=image}
 
 [](/workflows/basic-workflows/ace-plus-plus/ace_plus_portrait.json)
 
@@ -109,7 +109,7 @@ Generates an image resembling the person (face) of the reference image.
 
 The basics are the same as ID transfer, but it works as Face Swap by changing "Base image to put on the right side" and "How to apply mask".
 
-![](https://gyazo.com/966d3c2bfcbaa5ae054fdd7ec4bb1c96){gyazo=image}
+![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_966d3c2bfcbaa5ae054fdd7ec4bb1c96.png){media=image}
 
 [](/workflows/basic-workflows/ace-plus-plus/ace_plus_portrait_faceswap.json)
 
@@ -124,7 +124,7 @@ Although it is called FaceSwap, it is more flexible, so masking the entire head 
 
 If you switch to `comfyui_subject_lora16.safetensors`, you can do Subject transfer.
 
-![](https://gyazo.com/3e84f30e31b23d804ff651a4d29667e9){gyazo=image}
+![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_3e84f30e31b23d804ff651a4d29667e9.png){media=image}
 
 [](/workflows/basic-workflows/ace-plus-plus/ace_plus_subject.json)
 
@@ -142,7 +142,7 @@ You can generate by referring to various things such as logos and items as well 
 
 Using `comfyui_local_lora16.safetensors` allows you to bring it closer to **local editing redrawing along instructions** only for the masked area.
 
-![](https://gyazo.com/e93a8e393eca60dbb1832fd314402dec){gyazo=image}
+![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_e93a8e393eca60dbb1832fd314402dec.png){media=image}
 
 [](/workflows/basic-workflows/ace-plus-plus/ace_plus_local.json)
 

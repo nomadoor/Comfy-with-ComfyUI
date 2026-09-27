@@ -92,7 +92,7 @@ Complex operations are required to switch the current Git HEAD to the latest sta
 
 If you have installed ComfyUI Manager, you can update from the UI.
 
-![ComfyUI_Manager_Updates](https://i.gyazo.com/33cab8c113457ee1a54035612bea9c11.png){gyazo=image}
+![ComfyUI_Manager_Updates](/media/begin-with/updates/legacy_gyazo_33cab8c113457ee1a54035612bea9c11.png){media=image}
 
 - 1.  Select the version you want to update (**Nightly Version** or **Stable Version**)
 - 2.  Click the **`Update ComfyUI`** button

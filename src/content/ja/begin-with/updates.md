@@ -92,7 +92,7 @@ pip install -r requirements.txt
 
 もしComfyUI Managerをインストールしているなら、UI上からアップデートを行うことができます。 
 
-![ComfyUI_Manager_Updates](https://i.gyazo.com/33cab8c113457ee1a54035612bea9c11.png){gyazo=image}
+![ComfyUI_Manager_Updates](/media/begin-with/updates/legacy_gyazo_33cab8c113457ee1a54035612bea9c11.png){media=image}
 
 - 1.  更新したいバージョン（**Nightly Version** または **Stable Version**）を選択
 - 2.  **`Update ComfyUI`** ボタンをクリック

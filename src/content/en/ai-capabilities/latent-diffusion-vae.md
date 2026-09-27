@@ -14,7 +14,7 @@ hero:
 ---
 ## What is a Latent Diffusion Model?
 
-![](https://gyazo.com/22d5f654c3c598feb046cf71d4d8d4aa){gyazo=image}
+![](/media/ai-capabilities/latent-diffusion-vae/legacy_gyazo_22d5f654c3c598feb046cf71d4d8d4aa.png){media=image}
 
 The **Latent Diffusion Model** is one of the biggest innovations that allowed image generation AI to run on home PCs.
 
@@ -68,7 +68,7 @@ VAE is **lossy compression**.
 Even if you convert an image to latent space and convert it back to an image, **it will not return completely to its original state**.
 It may blur slightly, or the color and contrast may change.
 
-![](https://gyazo.com/8741de326b196b666b2d0617502f3814){gyazo=image}
+![](/media/ai-capabilities/latent-diffusion-vae/legacy_gyazo_8741de326b196b666b2d0617502f3814.png){media=image}
 
 If you simply encode an image with VAE and decode it with the same VAE without using a diffusion model, you should see that it has deteriorated slightly.
 This trade-off of "making it lighter to handle in exchange for slight deterioration" is a characteristic of latent representation.

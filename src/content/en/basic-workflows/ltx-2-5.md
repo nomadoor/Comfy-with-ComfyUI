@@ -10,7 +10,7 @@ updated: 2026-09-03
 summary: "Generate video and audio with LTX 2.5"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/f0a0582dba74a4ef6e731142136b5c59.mp4"
+  image: "/media/basic-workflows/ltx-2-5/legacy_gyazo_f0a0582dba74a4ef6e731142136b5c59.mp4"
 tags: []
 ---
 
@@ -77,13 +77,13 @@ There are several other improvements, but this is enough to know for now if you 
 
 ## text2video
 
-![](https://gyazo.com/891b0474ea9ec2636b188b803f6ef2c3){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_891b0474ea9ec2636b188b803f6ef2c3.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video.json)
 
 Like LTX-2, this is a 2-stage workflow. It first generates at half the target resolution, then upscales the result by 2x.
 
-{% mediaRow img="https://gyazo.com/d353cf476e7c8be513f7bc1e55cef365", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_d353cf476e7c8be513f7bc1e55cef365.png", width=40, align="left" %}
 **Resolution settings**
 
 Enter half the target resolution in `EmptyLTXVLatentVideo`, since the result will be upscaled by 2x afterward.
@@ -92,7 +92,7 @@ This value must also be a multiple of 32, so set the target width and height to 
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/82803fd97cf50afbdb616105f14b0405", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_82803fd97cf50afbdb616105f14b0405.png", width=40, align="left" %}
 **Frame count settings**
 
 In this workflow, enter the desired duration in seconds (sec) and the FPS, and the frame count is rounded to a suitable `8n + 1` value.
@@ -101,13 +101,13 @@ In this workflow, enter the desired duration in seconds (sec) and the FPS, and t
 
 **Output example**
 
-![](https://gyazo.com/e68699b3ebb44d9b20b5d85c73cf9644){gyazo=loop}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_e68699b3ebb44d9b20b5d85c73cf9644.mp4){media=loop}
 
 ### Multi-shot
 
 This has become more common with models such as Seedance 2: you can generate multiple shots in a single run.
 
-![](https://gyazo.com/7d681d86ce23e28e4e48aed1fe452c7d){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7d681d86ce23e28e4e48aed1fe452c7d.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.json)
 
@@ -117,7 +117,7 @@ This makes prompts easy to write, but the model may not always recognize them as
 
 **Output example**
 
-![](https://gyazo.com/7fe2eadbd6abb69f2015df4f8531fe26){gyazo=loop}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7fe2eadbd6abb69f2015df4f8531fe26.mp4){media=loop}
 
 ### Duration Predictor
 
@@ -137,11 +137,11 @@ LTX 2.5 can automatically estimate how long a video needs to be to express the c
         └── ltx-2.5-duration-head-bf16.safetensors
 ```
 
-![](https://gyazo.com/ecf49f82e56e0fdec6283401d71ae657){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_ecf49f82e56e0fdec6283401d71ae657.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor.json)
 
-{% mediaRow img="https://gyazo.com/4567c3906de961a9c90bc01cef27db5d", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_4567c3906de961a9c90bc01cef27db5d.png", width=40, align="left" %}
 **LTXV Duration Predictor**
 
 It outputs the predicted frame count, which is connected to `length` in the regular text2video workflow.
@@ -152,7 +152,7 @@ It is only a prediction, so the result may be shorter or longer than expected. E
 
 ## image2video
 
-![](https://gyazo.com/e978305c53f6c658984db4ad42c71a7f){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_e978305c53f6c658984db4ad42c71a7f.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_image2video.json)
 
@@ -162,7 +162,7 @@ This works the same way as [image2video in LTX 2](/en/basic-workflows/ltx-2/#ima
 
 **Output example**
 
-![Input](https://gyazo.com/856453de1d4eaea2b8e02a8e6993db08){gyazo=image} ![Output](https://gyazo.com/d8bdced1eba00d48d1f5ff65dfb4e336){gyazo=loop}
+![Input](/media/basic-workflows/ltx-2-5/legacy_gyazo_856453de1d4eaea2b8e02a8e6993db08.png){media=image} ![Output](/media/basic-workflows/ltx-2-5/legacy_gyazo_d8bdced1eba00d48d1f5ff65dfb4e336.mp4){media=loop}
 
 ---
 
@@ -172,11 +172,11 @@ This workflow takes any number of images and smoothly fills in the gaps between 
 
 If you specify only the first and last images of the video, it becomes what is commonly called **FLF2V**.
 
-![](https://gyazo.com/a0e7571b01f97b79d73325390e0a4d3c){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_a0e7571b01f97b79d73325390e0a4d3c.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation.json)
 
-{% mediaRow img="https://gyazo.com/2e39b3e006fcb35d96b87d649ded0146", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_2e39b3e006fcb35d96b87d649ded0146.png", width=40, align="left" %}
 **LTXV Add Guide**
 
 Use `frame_idx` to specify where each image is inserted.
@@ -193,7 +193,7 @@ Add more nodes and connect them in sequence to create Generative Interpolation.
 
 **Output example**
 
-![Input 1](https://gyazo.com/de4eaa85c26607d8b0f98f774880e2b8){gyazo=image} ![Input 2](https://gyazo.com/0ef0afcbe6a2d35cf018bb0f77e0a0ff){gyazo=image} ![Input 3](https://gyazo.com/c2058ec73687479e7abe3fa7f21f9d64){gyazo=image} ![Output](https://gyazo.com/e0e2fcb86f4a8513708807bacd79af8c){gyazo=loop}
+![Input 1](/media/basic-workflows/ltx-2-5/legacy_gyazo_de4eaa85c26607d8b0f98f774880e2b8.png){media=image} ![Input 2](https://gyazo.com/0ef0afcbe6a2d35cf018bb0f77e0a0ff){gyazo=image} ![Input 3](/media/basic-workflows/ltx-2-5/legacy_gyazo_c2058ec73687479e7abe3fa7f21f9d64.png){media=image} ![Output](/media/basic-workflows/ltx-2-5/legacy_gyazo_e0e2fcb86f4a8513708807bacd79af8c.mp4){media=loop}
 
 ---
 
@@ -220,7 +220,7 @@ There are many types available when you include those made for LTX 2.3, but here
 
 Like a regular ControlNet, it can control the generated video with line art, depth maps, or pose videos.
 
-![](https://gyazo.com/4e194652b6db74b853390f20017bb542){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_4e194652b6db74b853390f20017bb542.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_pose.json)
 
@@ -228,7 +228,7 @@ For a more detailed explanation of IC-LoRA, see [LTX 2 / IC-LoRA (Pose)](/en/bas
 
 **Output example**
 
-![Input / pose](https://gyazo.com/824ba34d0fa1ef036db386c4f7f7b5f6){gyazo=loop} ![Output](https://gyazo.com/4f55983a4205360420e7cc605402301b){gyazo=loop}
+![Input / pose](/media/basic-workflows/ltx-2-5/legacy_gyazo_824ba34d0fa1ef036db386c4f7f7b5f6.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2-5/legacy_gyazo_4f55983a4205360420e7cc605402301b.mp4){media=loop}
 
 ---
 
@@ -238,7 +238,7 @@ LTX 2.5 uses a 2-stage process: it generates at half resolution, then doubles th
 
 So it is only natural to use the second stage on its own and turn it into a 2x upscaler for any video.
 
-![](https://gyazo.com/7fa914cfea3fe3b4648960d1c3474258){gyazo=image}
+![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7fa914cfea3fe3b4648960d1c3474258.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_x2_upscaler.json)
 
@@ -250,6 +250,6 @@ Here, I replaced it with `Basic Scheduler` and set denoise to 0.3. Adjust it as 
 
 **Output example**
 
-![Input](https://gyazo.com/2090f2ae9f78af154922c00cd43e10f7){gyazo=loop} ![Output](https://gyazo.com/bb03d5683d784b144c290400638ba139){gyazo=loop}
+![Input](/media/basic-workflows/ltx-2-5/legacy_gyazo_2090f2ae9f78af154922c00cd43e10f7.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2-5/legacy_gyazo_bb03d5683d784b144c290400638ba139.mp4){media=loop}
 
 Many competing models are now available, but its ability to produce natural-looking video still stands out among them. It would be nice to use each model where it works best.

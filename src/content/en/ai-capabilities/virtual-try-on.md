@@ -41,7 +41,7 @@ There are many models specialized for VTON tasks (changing clothes), but **catvt
 
 The basic idea is the same as IC-LoRA / ACE++, using a **side-by-side layout**.
 
-![](https://gyazo.com/e06c4fb2aca261c0d37b792bea9dcc80){gyazo=image}
+![](/media/ai-capabilities/virtual-try-on/legacy_gyazo_e06c4fb2aca261c0d37b792bea9dcc80.png){media=image}
 
 [](/workflows/ai-capabilities/virtual-try-on/catvton_flux_lora.json)
 
@@ -58,7 +58,7 @@ The model generates an "image of the person on the left wearing the clothes on t
 
 However, just like with IC-LoRA / ACE++, if you use the **side-by-side technique** and a LoRA trained for this purpose, you can do something similar.
 
-![](https://gyazo.com/30a82ecdd7a8cff9483a162decf7c31d){gyazo=image}
+![](/media/ai-capabilities/virtual-try-on/legacy_gyazo_30a82ecdd7a8cff9483a162decf7c31d.png){media=image}
 
 [](/workflows/ai-capabilities/virtual-try-on/flux_kontext_lora_v0_2.json)
 

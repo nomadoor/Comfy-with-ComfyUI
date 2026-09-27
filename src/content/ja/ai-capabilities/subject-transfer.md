@@ -39,7 +39,7 @@ Subject転送は、参照画像に写っている同じSubjectが含まれる画
 
 そんな原始的な方法で？と思うかもしれませんが、参照画像を完璧に説明できるMLLMと、その説明を完璧に再現する画像生成モデルがあれば原理的には可能です。
 
-![](https://gyazo.com/26351f2e5d3eb17c623acd815ba8709c){gyazo=image}
+![](/media/ai-capabilities/subject-transfer/legacy_gyazo_26351f2e5d3eb17c623acd815ba8709c.png){media=image}
 
 [](/workflows/ai-capabilities/subject-transfer/z_image_gemini_3_0.json)
 
@@ -53,7 +53,7 @@ image2promptは「画像→テキスト→埋め込み」という二段階で�
 
 画像からテキスト埋め込みに相当するベクトルを作り、それをtext encoderの代わりに使います。
 
-![](https://gyazo.com/d0196735e6162d464bd8764448d4088b){gyazo=image}
+![](/media/ai-capabilities/subject-transfer/legacy_gyazo_d0196735e6162d464bd8764448d4088b.png){media=image}
 
 [](/workflows/ai-capabilities/subject-transfer/seecoder.json)
 
@@ -77,7 +77,7 @@ Fluxをはじめとする DiT系モデルは、潜在能力として「一貫性
 
 この性質を利用したSubject転送がIC-LoRA / ACE++です。
 
-![](https://gyazo.com/8e01db8cebce51e7c47d9f958a94c61b){gyazo=image}
+![](/media/ai-capabilities/subject-transfer/legacy_gyazo_8e01db8cebce51e7c47d9f958a94c61b.png){media=image}
 
 [](/workflows/ai-capabilities/subject-transfer/ace_plus_portrait.json)
 
@@ -89,7 +89,7 @@ Fluxをはじめとする DiT系モデルは、潜在能力として「一貫性
 
 「[指示ベース画像編集モデル](/ja/ai-capabilities/instruction-based-image-editing/)」も、Subject転送に使えます。
 
-![](https://gyazo.com/358c8441ff70ee58135d8340bd691200){gyazo=image}
+![](/media/ai-capabilities/subject-transfer/legacy_gyazo_358c8441ff70ee58135d8340bd691200.png){media=image}
 
 [](/workflows/ai-capabilities/subject-transfer/qwen_image_edit_2509_multi_ref.json)
 

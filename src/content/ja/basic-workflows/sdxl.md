@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "SDXLの使い方"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/2317e881cf31b7c2af135774fb56b4e4.png"
+  image: "/media/basic-workflows/sdxl/legacy_gyazo_2317e881cf31b7c2af135774fb56b4e4.png"
 tags: []
 ---
 
@@ -56,7 +56,7 @@ Stable Diffusion からの大きな違いとして、だいたい次の2点が�
 
 [SD1.5 の text2image](/ja/basic-workflows/sd15-text2image/) の workflow で、Checkpoint を SDXL base に差し替えるだけで基本的な生成はできます。
 
-![](https://gyazo.com/c812a47ff8d57de7f90be3b85d1a5f58){gyazo=image}
+![](/media/basic-workflows/sdxl/legacy_gyazo_c812a47ff8d57de7f90be3b85d1a5f58.png){media=image}
 
 [](/workflows/basic-workflows/sdxl/sdxl_text2image_base.json)
 
@@ -70,7 +70,7 @@ SDXL base はテキストエンコーダとして、2種類の CLIP（OpenCLIP-V
 
 ComfyUI には、それぞれの CLIP に別々のテキストを入力できるノードもありますが、先に言っておくと **使う必要はありません。**
 
-![](https://gyazo.com/55a896ac7ae4544942d9242853a4d9c9){gyazo=image}
+![](/media/basic-workflows/sdxl/legacy_gyazo_55a896ac7ae4544942d9242853a4d9c9.png){media=image}
 
 [](/workflows/basic-workflows/sdxl/sdxl_text2image_base_cliptextencodesdxl.json)
 
@@ -88,7 +88,7 @@ ComfyUI には、それぞれの CLIP に別々のテキストを入力できる
 SDXL base と SDXL refiner は、同じ latent 表現を使います。
 そのため、base で生成した latent を、そのまま refiner 側の KSampler に入力して image2image できます。
 
-![](https://gyazo.com/4bc82a63f933e5538c45ca11832c5f08){gyazo=image}
+![](/media/basic-workflows/sdxl/legacy_gyazo_4bc82a63f933e5538c45ca11832c5f08.png){media=image}
 
 [](/workflows/basic-workflows/sdxl/sdxl_text2image_base_refiner.json)
 
@@ -105,7 +105,7 @@ SDXL base と SDXL refiner は、同じ latent 表現を使います。
 もう少しスマートにやる方法として、サンプリング途中で base → refiner に切り替えるやり方もあります。
 [KSampler (Advanced)ノード](/ja/basic-workflows/ksampler-advanced/) を使います。
 
-![](https://gyazo.com/9f6609b33de0a955ca5d9a86ba882ab4){gyazo=image}
+![](/media/basic-workflows/sdxl/legacy_gyazo_9f6609b33de0a955ca5d9a86ba882ab4.png){media=image}
 
 [](/workflows/basic-workflows/sdxl/sdxl_text2image_base_refiner_advanced.json)
 

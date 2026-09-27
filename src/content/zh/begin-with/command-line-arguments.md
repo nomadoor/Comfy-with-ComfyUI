@@ -29,7 +29,7 @@ python main.py --fast
 
 在便携版中，可以通过右键编辑用于启动的 `.bat` 文件（例：`run_nvidia_gpu.bat`），在 `python.exe` 之后追加参数来进行设置。
 
-![](https://i.gyazo.com/44f113bf9373f5dac0ced2a92e054165.png){gyazo=image}
+![](/media/begin-with/command-line-arguments/legacy_gyazo_44f113bf9373f5dac0ced2a92e054165.png){media=image}
 
 ---
 

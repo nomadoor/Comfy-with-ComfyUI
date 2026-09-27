@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "Basic workflow for handling text2video, image2video, and FLF2V with Wan2.1"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/f952fb311ffdb409a173641f61dd3b67.png"
+  image: "/media/basic-workflows/wan-2-1/legacy_gyazo_f952fb311ffdb409a173641f61dd3b67.png"
 tags: []
 ---
 
@@ -82,7 +82,7 @@ Since 16fps often results in slow-motion video, adjust it by saving at 24fps or 
 
 This is the basic text2video workflow for Wan2.1.
 
-![](https://gyazo.com/58d4a88ecb1e1e2887c830c371236b40){gyazo=loop}
+![](/media/basic-workflows/wan-2-1/legacy_gyazo_58d4a88ecb1e1e2887c830c371236b40.mp4){media=loop}
 
 [](/workflows/basic-workflows/wan-2-1/wan2_1_text2video_14b.json)
 
@@ -97,7 +97,7 @@ This is the basic text2video workflow for Wan2.1.
 
 Although it is not noticeably different, a technology that improves quality with almost no downside is implemented as a core node, so let's use it.
 
-![](https://gyazo.com/02c625103e8076b8a1f14046839e1ff9){gyazo=loop}
+![](/media/basic-workflows/wan-2-1/legacy_gyazo_02c625103e8076b8a1f14046839e1ff9.mp4){media=loop}
 
 [](/workflows/basic-workflows/wan-2-1/wan2_1_text2video_14b_imp.json)
 
@@ -114,7 +114,7 @@ Although it is not noticeably different, a technology that improves quality with
 
 When given an image, it generates a continuation from that image.
 
-![](https://gyazo.com/2cbaf276cd5e4f6751826c34efb6c743){gyazo=image}
+![](/media/basic-workflows/wan-2-1/legacy_gyazo_2cbaf276cd5e4f6751826c34efb6c743.mp4){media=loop}
 
 [](/workflows/basic-workflows/wan-2-1/wan2_1_image2video_14b.json)
 
@@ -126,7 +126,7 @@ When given an image, it generates a continuation from that image.
 
 Give two images and generate a video so that the gap between them is filled naturally.
 
-![](https://gyazo.com/44220286b8ce6e0e70db622132527c02){gyazo=loop}
+![](/media/basic-workflows/wan-2-1/legacy_gyazo_44220286b8ce6e0e70db622132527c02.mp4){media=loop}
 
 [](/workflows/basic-workflows/wan-2-1/wan2_1_flf2v_14b.json)
 
@@ -155,7 +155,7 @@ This is originally a technique for real-time video generation, but in ComfyUI, w
 
 ### workflow
 
-![](https://gyazo.com/6e4854ea69598ba4b9c3d8bc259f4b57){gyazo=loop}
+![](/media/basic-workflows/wan-2-1/legacy_gyazo_6e4854ea69598ba4b9c3d8bc259f4b57.mp4){media=loop}
 
 [](/workflows/basic-workflows/wan-2-1/wan2_1_text2video_14b_self_forcing.json)
 
@@ -171,6 +171,6 @@ This is originally a technique for real-time video generation, but in ComfyUI, w
 
 Simply generate a video with **1 frame** using the text2video workflow.
 
-![](https://gyazo.com/edf26ea1ef891b721579af1dc5aa6bd1){gyazo=image}
+![](/media/basic-workflows/wan-2-1/legacy_gyazo_edf26ea1ef891b721579af1dc5aa6bd1.png){media=image}
 
 [](/workflows/basic-workflows/wan-2-1/wan2_1_text2image_14b.json)

@@ -41,7 +41,7 @@ VTON系タスク（服の着せ替え）に特化したモデルはいくつも�
 
 基本的な考え方はIC-LoRA / ACE++と同じで、**横並べレイアウト**を使います。
 
-![](https://gyazo.com/e06c4fb2aca261c0d37b792bea9dcc80){gyazo=image}
+![](/media/ai-capabilities/virtual-try-on/legacy_gyazo_e06c4fb2aca261c0d37b792bea9dcc80.png){media=image}
 
 [](/workflows/ai-capabilities/virtual-try-on/catvton_flux_lora.json)
 
@@ -59,7 +59,7 @@ VTON系タスク（服の着せ替え）に特化したモデルはいくつも�
 ただし、IC-LoRA / ACE++のときと同様に**横並べテクニック** とこのために学習したLoRAを使えば、近いことができます。
 
 
-![](https://gyazo.com/30a82ecdd7a8cff9483a162decf7c31d){gyazo=image}
+![](/media/ai-capabilities/virtual-try-on/legacy_gyazo_30a82ecdd7a8cff9483a162decf7c31d.png){media=image}
 
 [](/workflows/ai-capabilities/virtual-try-on/flux_kontext_lora_v0_2.json)
 

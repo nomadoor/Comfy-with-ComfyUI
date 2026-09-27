@@ -40,7 +40,7 @@ As the most primitive method, there is a method of "generating a caption from an
 
 You might think, "With such a primitive method?" but it is theoretically possible if there is an MLLM that can perfectly describe the reference image and an image generation model that can perfectly reproduce that description.
 
-![](https://gyazo.com/26351f2e5d3eb17c623acd815ba8709c){gyazo=image}
+![](/media/ai-capabilities/subject-transfer/legacy_gyazo_26351f2e5d3eb17c623acd815ba8709c.png){media=image}
 
 [](/workflows/ai-capabilities/subject-transfer/z_image_gemini_3_0.json)
 
@@ -54,7 +54,7 @@ image2prompt was a two-step process of "Image → Text → Embedding," but SeeCo
 
 It creates a vector corresponding to text embedding from the image and uses it instead of the text encoder.
 
-![](https://gyazo.com/d0196735e6162d464bd8764448d4088b){gyazo=image}
+![](/media/ai-capabilities/subject-transfer/legacy_gyazo_d0196735e6162d464bd8764448d4088b.png){media=image}
 
 [](/workflows/ai-capabilities/subject-transfer/seecoder.json)
 
@@ -78,7 +78,7 @@ DiT-based models including Flux have the potential to "create consistent images.
 
 Subject Transfer using this property is IC-LoRA / ACE++.
 
-![](https://gyazo.com/8e01db8cebce51e7c47d9f958a94c61b){gyazo=image}
+![](/media/ai-capabilities/subject-transfer/legacy_gyazo_8e01db8cebce51e7c47d9f958a94c61b.png){media=image}
 
 [](/workflows/ai-capabilities/subject-transfer/ace_plus_portrait.json)
 
@@ -90,7 +90,7 @@ Place the reference image (including the Subject) on the left side of the image 
 
 "[Instruction-Based Image Editing Models](/en/ai-capabilities/instruction-based-image-editing/)" can also be used for Subject Transfer.
 
-![](https://gyazo.com/358c8441ff70ee58135d8340bd691200){gyazo=image}
+![](/media/ai-capabilities/subject-transfer/legacy_gyazo_358c8441ff70ee58135d8340bd691200.png){media=image}
 
 [](/workflows/ai-capabilities/subject-transfer/qwen_image_edit_2509_multi_ref.json)
 

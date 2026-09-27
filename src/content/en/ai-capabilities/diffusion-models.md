@@ -14,7 +14,7 @@ hero:
 ---
 ## Beautiful Images Created from Noise
 
-![](https://gyazo.com/3c82ca8a7dcb51f2475d0451de727783){gyazo=loop}
+![](/media/ai-capabilities/diffusion-models/legacy_gyazo_3c82ca8a7dcb51f2475d0451de727783.mp4){media=loop}
 
 When you preview the image generation process in ComfyUI, you can see that although initially only noise like a sandstorm is visible, as the steps progress, outlines appear, and finally, it becomes a reasonably organized image.
 

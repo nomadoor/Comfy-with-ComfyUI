@@ -10,7 +10,7 @@ updated: 2026-09-03
 summary: "LTX-2でtext2video / image2video / audio2videoを扱う"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/2a89cce32669413fb7f5b3fe4ca22960.mp4"
+  image: "/media/basic-workflows/ltx-2/legacy_gyazo_2a89cce32669413fb7f5b3fe4ca22960.mp4"
 tags: []
 ---
 
@@ -72,7 +72,7 @@ tags: []
 
 ## 基本的な処理の流れ
 
-![](https://gyazo.com/1884b40ee25bafb8476dd4df1256b026){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_1884b40ee25bafb8476dd4df1256b026.png){media=image}
 
 Wan などに比べるとノード数が多いため複雑に感じるかもしれませんが、やっていることはこれだけです。
 
@@ -88,7 +88,7 @@ Wan などに比べるとノード数が多いため複雑に感じるかもし�
 
 ## text2video
 
-![](https://gyazo.com/d9fa680727fd75aca39c94a865682c5a){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_d9fa680727fd75aca39c94a865682c5a.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_text2video_v2.json",
@@ -100,7 +100,7 @@ Wan などに比べるとノード数が多いため複雑に感じるかもし�
 - **4, 5** が Hires.fix
 - **6** が デコード です
 
-{% mediaRow img="https://gyazo.com/bf2e2fa5389b9bf397478a238d969be2 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_bf2e2fa5389b9bf397478a238d969be2.png {media=image}", width=40, align="left" %}
 
 
 **1. 動画解像度・長さ・FPSの設定**
@@ -115,7 +115,7 @@ Wan などに比べるとノード数が多いため複雑に感じるかもし�
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/e058d717d9255db19e0bb0c186950e42 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_e058d717d9255db19e0bb0c186950e42.png {media=image}", width=40, align="left" %}
 
 **2. プロンプト**
 
@@ -127,7 +127,7 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/5b532a5acaab4738cccbb92c423ad3ec {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_5b532a5acaab4738cccbb92c423ad3ec.png {media=image}", width=40, align="left" %}
 
 **3. サンプリング（1段目）**
 
@@ -141,7 +141,7 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/216eebb358b46faffd4f2a6062128352 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_216eebb358b46faffd4f2a6062128352.png {media=image}", width=40, align="left" %}
 
 **4. latent のアップスケール（x2）**
 
@@ -151,7 +151,7 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/22271134a0909e979030ac2ce6e037ed {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_22271134a0909e979030ac2ce6e037ed.png {media=image}", width=40, align="left" %}
 
 **5. サンプリング（2段目 / video2video）**
 
@@ -165,7 +165,7 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/801da41aa50410fb70b55eab18a8ab83 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_801da41aa50410fb70b55eab18a8ab83.png {media=image}", width=40, align="left" %}
 
 **6. デコード**
 
@@ -181,7 +181,7 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 
 上ではHires.fixでのみ `distilled-lora` を使いましたが、1段目にも適用し、8ステップで高速に生成してみましょう。
 
-![](https://gyazo.com/e9e4851525adda6c3aab20a9acb09582){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_e9e4851525adda6c3aab20a9acb09582.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_text2video_distilled_v2.json",
@@ -197,7 +197,7 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 
 ## 20ステップ / 8ステップ distilled-lora比較
 
-![20ステップ](https://gyazo.com/d7457da890a04a168e0f82655c9a6392){gyazo=player} ![8ステップ(distilled-lora)](https://gyazo.com/1e20bd8fd074213736b0a7a2e3766be1){gyazo=player}
+![20ステップ](/media/basic-workflows/ltx-2/legacy_gyazo_d7457da890a04a168e0f82655c9a6392.mp4){media=player} ![8ステップ(distilled-lora)](/media/basic-workflows/ltx-2/legacy_gyazo_1e20bd8fd074213736b0a7a2e3766be1.mp4){media=player}
 
 > 私が試した限りでは、distilled-lora を適用したほうが安定して生成できます。  
 > そのため、速度アップを兼ねて以降のworkflowは全て **１段目からdistilled-loraを適用** していきます。
@@ -208,7 +208,7 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 
 ### single-frame I2V
 
-![](https://gyazo.com/a16d62da150521a5b0c96dc32bbea33b){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_a16d62da150521a5b0c96dc32bbea33b.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_image2video_distilled_v2.json",
@@ -231,7 +231,7 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 ```
 🖼️ を起点に、後ろのフレーム（✨）が埋まっていくイメージです。
 
-{% mediaRow img="https://gyazo.com/981d0f06afef7364fcbe2c10bc1428c1 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_981d0f06afef7364fcbe2c10bc1428c1.png {media=image}", width=40, align="left" %}
 
 **1. 入力画像のリサイズ（2系統作る）**
 
@@ -244,7 +244,7 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/4198b2a54986678bbcf735dda9c8cb79 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_4198b2a54986678bbcf735dda9c8cb79.png {media=image}", width=40, align="left" %}
 
 **2. 画像の下処理**
 
@@ -253,7 +253,7 @@ LTX-Videoからの特徴ですが、動画は静止画と違い、少し圧縮�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/90c0a4dc550eb34a03a1a7ab100f866d {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_90c0a4dc550eb34a03a1a7ab100f866d.png {media=image}", width=40, align="left" %}
 
 **3. LTXVImgToVideoInplace（1段目の差し込み）**
 
@@ -263,7 +263,7 @@ LTX-Videoからの特徴ですが、動画は静止画と違い、少し圧縮�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/2a0c109b88debb478cf1d66f4a0b2f57 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_2a0c109b88debb478cf1d66f4a0b2f57.png {media=image}", width=40, align="left" %}
 
 **4. アップスケール側（2段目）にも同じことをする**
 
@@ -280,7 +280,7 @@ LTX-Videoからの特徴ですが、動画は静止画と違い、少し圧縮�
 
 **出力例**
 
-![入力](https://gyazo.com/9e1e51a809c8838bb01c1258925c4e0e){gyazo=image} ![出力](https://gyazo.com/cdd2bcb62649ec744892c1615eae01d9){gyazo=player}
+![入力](/media/basic-workflows/ltx-2/legacy_gyazo_9e1e51a809c8838bb01c1258925c4e0e.png){media=image} ![出力](/media/basic-workflows/ltx-2/legacy_gyazo_cdd2bcb62649ec744892c1615eae01d9.mp4){media=player}
 
 > 既知の問題として、ほとんど画面が動かなかったり、ズームアウトするだけの動画になることがあります。  
 > 適切なプロンプトを使うことで多少マシになりますが、これを対策するための LoRA が登場したので紹介します。
@@ -323,7 +323,7 @@ LTX-Videoからの特徴ですが、動画は静止画と違い、少し圧縮�
     [ 🖼️ 🖼️ 🖼️ ... 🖼️] + [ ✨ ✨ ✨ ... ✨ ]
 ```
 
-{% mediaRow img="https://gyazo.com/5b0892af938467f9abf134e6dba73e87 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_5b0892af938467f9abf134e6dba73e87.png {media=image}", width=40, align="left" %}
 
 **1. 末尾の画像バッチ取得**
 
@@ -334,7 +334,7 @@ LTX-Videoからの特徴ですが、動画は静止画と違い、少し圧縮�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/c87f00b6590f5b3b4b983dc204c99476 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_c87f00b6590f5b3b4b983dc204c99476.png {media=image}", width=40, align="left" %}
 
 **2. 生成した動画と元の動画を結合**
 
@@ -346,7 +346,7 @@ LTX-Videoからの特徴ですが、動画は静止画と違い、少し圧縮�
 
 **出力例**
 
-![入力](https://gyazo.com/4c2fdd21e0ff8bac1c572dc130753018){gyazo=loop} ![出力](https://gyazo.com/1bce09367191f5fc19297331b43bdbb1){gyazo=loop}
+![入力](/media/basic-workflows/ltx-2/legacy_gyazo_4c2fdd21e0ff8bac1c572dc130753018.mp4){media=loop} ![出力](/media/basic-workflows/ltx-2/legacy_gyazo_1bce09367191f5fc19297331b43bdbb1.mp4){media=loop}
 
 
 ---
@@ -355,7 +355,7 @@ LTX-Videoからの特徴ですが、動画は静止画と違い、少し圧縮�
 
 LTX-2 は「動画＋音声」を同時に扱うモデルなので、音声を入力として渡して 音に引っ張られた動画 を作る構成もできます。
 
-![](https://gyazo.com/be5aaa842432ee760228eeed24a3636f){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_be5aaa842432ee760228eeed24a3636f.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_audio2video_distilled_v2.json",
@@ -375,7 +375,7 @@ LTX-2 は「動画＋音声」を同時に扱うモデルなので、音声を�
 
 **出力例**
 
-![](https://gyazo.com/a4290b4a15307547b106f83ced77ae44){gyazo=player}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_a4290b4a15307547b106f83ced77ae44.mp4){media=player}
 
 ---
 
@@ -384,7 +384,7 @@ LTX-2 は「動画＋音声」を同時に扱うモデルなので、音声を�
 上２つを組み合わせることも出来ます。  
 顔画像に喋っている音声を組み合わせれば、talking headのようなことも出来ます。やってみましょう。
 
-![](https://gyazo.com/853b6d4b375b6ea1ef45f7697b71d369){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_853b6d4b375b6ea1ef45f7697b71d369.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_audio_image2video_distilled_v2.json",
@@ -395,7 +395,7 @@ LTX-2 は「動画＋音声」を同時に扱うモデルなので、音声を�
 
 **出力例**
 
-![入力](https://gyazo.com/7bf65ca84f1583d324c0debeee85b616){gyazo=image} ![出力](https://gyazo.com/8cb2045b833bb0507d048bf9965cbf63){gyazo=player}
+![入力](/media/basic-workflows/ltx-2/legacy_gyazo_7bf65ca84f1583d324c0debeee85b616.png){media=image} ![出力](/media/basic-workflows/ltx-2/legacy_gyazo_8cb2045b833bb0507d048bf9965cbf63.mp4){media=player}
 
 > 実はあまりセリフに動画が追従しなかったため、プロンプトにセリフを入れています。もっと良いworkflowがあるかもしれません。
 
@@ -407,7 +407,7 @@ audio2video の逆で、動画を入力して それに合う音（効果音や�
 
 > このタスクは安定しません。おそらく改良が必要です。
 
-![](https://gyazo.com/62df52a54b4bfcf67f53429d6343d666){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_62df52a54b4bfcf67f53429d6343d666.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2/ltx_2_video2audio_distilled.json)
 
@@ -416,7 +416,7 @@ audio2video の逆で、動画を入力して それに合う音（効果音や�
 
 ※音が大きいので注意してください。
 
-![](https://gyazo.com/79db38d1a4e4f16317613bbb85cd37f7){gyazo=player}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_79db38d1a4e4f16317613bbb85cd37f7.mp4){media=player}
 
 ---
 
@@ -424,7 +424,7 @@ audio2video の逆で、動画を入力して それに合う音（効果音や�
 
 時間方向の inpainting（＝動画の一部だけ作り直す）です。VACE Extensionのようなものですね。
 
-![](https://gyazo.com/4f55cbb7932cdefc0d879c2c432ed224){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_4f55cbb7932cdefc0d879c2c432ed224.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2/ltx_2_temporal_inpainting_distilled.json)
 
@@ -452,7 +452,7 @@ audio2video の逆で、動画を入力して それに合う音（効果音や�
 
 > 仕組み上、二段階 workflow（低解像度 → Hires.fix）を組みにくいため、最初から 1.5MP で生成しています。
 
-{% mediaRow img="https://gyazo.com/b8efdb1050318602e40897d0d181c77c {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_b8efdb1050318602e40897d0d181c77c.png {media=image}", width=40, align="left" %}
 
 **1. LTXVAudioVideoMask**
 
@@ -474,7 +474,7 @@ inpainting したい時間範囲を指定します。
 
 **出力例**
 
-![入力](https://gyazo.com/c460984d015f16a93523a37f70ff730a){gyazo=player} ![出力](https://gyazo.com/2ba5e11ee85ff39b50e44a3700cf8aa6){gyazo=player}
+![入力](/media/basic-workflows/ltx-2/legacy_gyazo_c460984d015f16a93523a37f70ff730a.mp4){media=player} ![出力](/media/basic-workflows/ltx-2/legacy_gyazo_2ba5e11ee85ff39b50e44a3700cf8aa6.mp4){media=player}
 
 
 ---
@@ -506,14 +506,14 @@ IC-LoRA は、ポーズや深度マップ、エッジなどの 制御信号か�
 
 text2video の workflow をベースに、ControlNet のような制御用の動画入力を追加します。
 
-![](https://gyazo.com/d520faa02e72245494eedeea79ebef20){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_d520faa02e72245494eedeea79ebef20.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_distilled_v2.json",
   "/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_distilled.json"
 %}
 
-{% mediaRow img="https://gyazo.com/5efc334e9408a80a1328d0dceeadb892 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_5efc334e9408a80a1328d0dceeadb892.png {media=image}", width=40, align="left" %}
 
 **1. 制御動画のリサイズ**
 
@@ -526,7 +526,7 @@ text2video の workflow をベースに、ControlNet のような制御用の動
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/95c6efb7ad89b70494e4db25c2b98121 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_95c6efb7ad89b70494e4db25c2b98121.png {media=image}", width=40, align="left" %}
 
 **2. ポーズ画像の生成**
 
@@ -536,7 +536,7 @@ text2video の workflow をベースに、ControlNet のような制御用の動
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/2d140f1d0b0c6fa0fba818e535c04082 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_2d140f1d0b0c6fa0fba818e535c04082.png {media=image}", width=40, align="left" %}
 
 **3. LTXVAddGuide**
 
@@ -546,7 +546,7 @@ text2video の workflow をベースに、ControlNet のような制御用の動
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/9049aa36e2220ea94aa0b1bd6f541c37 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_9049aa36e2220ea94aa0b1bd6f541c37.png {media=image}", width=40, align="left" %}
 
 **4. IC-LoRAの適用**
 
@@ -559,13 +559,13 @@ IC-LoRA (今回はPose) を適用してサンプリングします。
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/c30823a0376a9ff24e83b555cc55796f {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_c30823a0376a9ff24e83b555cc55796f.png {media=image}", width=40, align="left" %}
 
 **5. LTXVCropGuides**
 
 1段目が終わったあと、一度デコードしてみると分かりやすいんですが、生成した動画に先程作ったポーズ動画が混ざっています。
 
-- 後半に注目 : [LTXVCropGuides前.mp4](https://gyazo.com/8c92e2b45a7d3f3ee98f6a3d0a3cc14b)
+- 後半に注目 : [LTXVCropGuides前.mp4](/media/basic-workflows/ltx-2/legacy_gyazo_8c92e2b45a7d3f3ee98f6a3d0a3cc14b.mp4)
 
 これがまさにIC-LoRAの仕組みですが、出力には不要なものなので、2段目に入る前に削除します。
 
@@ -579,14 +579,14 @@ IC-LoRA (今回はPose) を適用してサンプリングします。
 
 **出力例**
 
-![入力](https://gyazo.com/a999fcd3eca5bcd0a3e89714be6d8074){gyazo=loop} ![出力](https://gyazo.com/35e6cc779d6d126973a46cac63c7dec9){gyazo=loop}
+![入力](/media/basic-workflows/ltx-2/legacy_gyazo_a999fcd3eca5bcd0a3e89714be6d8074.mp4){media=loop} ![出力](/media/basic-workflows/ltx-2/legacy_gyazo_35e6cc779d6d126973a46cac63c7dec9.mp4){media=loop}
 
 ---
 
 ### IC-LoRA (Pose) + image2video
 複数IC-LoRAを重ねることは出来ませんが、image2videoやaudio2videoと組み合わせることはできます。
 
-![](https://gyazo.com/a65682de39d9ea5c9fe6003cdf27e892){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_a65682de39d9ea5c9fe6003cdf27e892.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_image2video_distilled_v2.json",
@@ -604,7 +604,7 @@ IC-LoRA (今回はPose) を適用してサンプリングします。
 
 **出力例**
 
-![入力](https://gyazo.com/aed000bfabc8665e0fadb350ca72500b){gyazo=loop} ![出力](https://gyazo.com/0ec1dbf4cf746b021443ca341b6c019a){gyazo=loop}
+![入力](/media/basic-workflows/ltx-2/legacy_gyazo_aed000bfabc8665e0fadb350ca72500b.mp4){media=loop} ![出力](/media/basic-workflows/ltx-2/legacy_gyazo_0ec1dbf4cf746b021443ca341b6c019a.mp4){media=loop}
 
 ---
 
@@ -618,7 +618,7 @@ IC-LoRA (Detailer)は、低解像度の動画のディテールや質感を修�
 
 - コアノードだけでも動かすこと自体はできますが、大きな解像度・長時間動画を扱うためにはカスタムノードが必要です。
 
-![](https://gyazo.com/a366728b300f253233432d1c12239f8d){gyazo=image}
+![](/media/basic-workflows/ltx-2/legacy_gyazo_a366728b300f253233432d1c12239f8d.png){media=image}
 
 {% workflowPicker
   "!/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_detailer_v2.json",
@@ -635,7 +635,7 @@ IC-LoRA (Detailer)は、低解像度の動画のディテールや質感を修�
 
 **出力例**
 
-![入力](https://gyazo.com/aa14f25d1ad8e274a8de629f4666b1bd){gyazo=loop} ![出力](https://gyazo.com/ceb4d9d0ba0eec0b5379b63ec307460a){gyazo=loop}
+![入力](/media/basic-workflows/ltx-2/legacy_gyazo_aa14f25d1ad8e274a8de629f4666b1bd.mp4){media=loop} ![出力](/media/basic-workflows/ltx-2/legacy_gyazo_ceb4d9d0ba0eec0b5379b63ec307460a.mp4){media=loop}
 
 ---
 

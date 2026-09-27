@@ -11,7 +11,7 @@ summary: "Controlling image generation using poses and line drawings"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: ["controlnet"]
 hero:
-  image: "https://i.gyazo.com/81753915732cf767995f1b35ac827b5d.png"
+  image: "/media/basic-workflows/sd15-controlnet/legacy_gyazo_81753915732cf767995f1b35ac827b5d.png"
 ---
 
 ## What is ControlNet?
@@ -44,7 +44,7 @@ The scribble model is a ControlNet that generates images based on "rough doodles
 
 ### workflow
 
-![](https://gyazo.com/885feaa8a1857c09ce11977ad9d424c2){gyazo=image}
+![](/media/basic-workflows/sd15-controlnet/legacy_gyazo_885feaa8a1857c09ce11977ad9d424c2.png){media=image}
 
 [](/workflows/basic-workflows/sd15-controlnet/sd1_5_controlnet_scribble.json)
 
@@ -55,7 +55,7 @@ The scribble model is a ControlNet that generates images based on "rough doodles
 > Please note that black lines drawn on a white background often do not react well.
 
 - Sample Image
-  - ![](https://gyazo.com/fd112e311d4e0503fbb4df2044fc9325){gyazo=image}
+  - ![](/media/basic-workflows/sd15-controlnet/legacy_gyazo_fd112e311d4e0503fbb4df2044fc9325.png){media=image}
 
 ---
 
@@ -69,7 +69,7 @@ So, how should we balance control and quality?
 
 ### start_percent / end_percent
 
-![](https://gyazo.com/3c82ca8a7dcb51f2475d0451de727783){gyazo=loop}
+![](/media/ai-capabilities/diffusion-models/legacy_gyazo_3c82ca8a7dcb51f2475d0451de727783.mp4){media=loop}
 
 In sampling, the rough shape is decided in the early stages, and details are drawn in the latter half.
 
@@ -98,46 +98,46 @@ Here we will introduce only representative ones.
 
 ### List
 
-{% mediaRow img="https://gyazo.com/be3200558982f020a124d2bc68276c16 {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_be3200558982f020a124d2bc68276c16.png {media=image}", width=60, align="left" %}
 ### Canny
 - Redraws in a different style while keeping the outline of the photo or image.
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/debe9e414b688be1fa07bf01101ea2e0 {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_debe9e414b688be1fa07bf01101ea2e0.png {media=image}", width=60, align="left" %}
 ### Lineart
 - Similar to Canny, but more for illustrations.
 - Used for coloring line drawings, etc.
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/cbe33c8ba39da19e249634a6e46ec13b {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_cbe33c8ba39da19e249634a6e46ec13b.png {media=image}", width=60, align="left" %}
 ### Depth
 - Generates while maintaining the depth and composition of the original image using a depth map (information on front / back).
 - Suitable when you do not want to break the three-dimensional effect of buildings or landscapes.
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/ae9a4fd7513b17114e2317b0da8dc14c {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_ae9a4fd7513b17114e2317b0da8dc14c.png {media=image}", width=60, align="left" %}
 ### Normal
 - Controls how light hits and three-dimensionality using a normal map.
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/8df713d0e8415ada994ad7c5f91d8ba9 {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_8df713d0e8415ada994ad7c5f91d8ba9.png {media=image}", width=60, align="left" %}
 ### Pose
 - Generates images of people/characters with the same pose from "stick figure pose information" extracted by OpenPose etc.
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/fe7da06340c74791241cac5a482531bb {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_fe7da06340c74791241cac5a482531bb.png {media=image}", width=60, align="left" %}
 ### Inpaint
 - A model used when you want to redraw only a part of the image.
 - You can redraw naturally only the range specified by the mask (erasing unnecessary objects, replacing small items, etc.).
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/ea6af6e0edcd04ffe43f032b8a10b4fb {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_ea6af6e0edcd04ffe43f032b8a10b4fb.png {media=image}", width=60, align="left" %}
 ### QR Code Monster
 - Creates an image that can be read as a QR code.
 - Not limited to QR codes, it can also be used to transform "black and white pattern images" into any pattern you like.
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/65e5e0ed5aaf2c87d363e6eb37e7d33b {gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-controlnet/legacy_gyazo_65e5e0ed5aaf2c87d363e6eb37e7d33b.png {media=image}", width=60, align="left" %}
 ### Tile
 - Creates a beautiful image from a highly blurred image or low-resolution image.
 - Can be used alone, but in practice, it is often used in combination with "super-resolution upscaling" such as Ultimate SD Upscale.

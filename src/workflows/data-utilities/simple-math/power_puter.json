@@ -12,7 +12,7 @@
         -692.7393798828125
       ],
       "size": [
-        214.080078125,
+        222.798828125,
         314
       ],
       "flags": {},
@@ -34,14 +34,18 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "LoadImage",
         "cnr_id": "comfy-core",
-        "ver": "0.3.59",
-        "Node name for S&R": "LoadImage"
+        "ver": "0.3.59"
       },
       "widgets_values": [
         "example.png",
         "image"
-      ]
+      ],
+      "widgets_values_named": {
+        "image": "example.png",
+        "upload": "image"
+      }
     },
     {
       "id": 4,
@@ -68,49 +72,24 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "PrimitiveInt",
         "cnr_id": "comfy-core",
-        "ver": "0.3.59",
-        "Node name for S&R": "PrimitiveInt"
+        "ver": "0.3.59"
       },
       "widgets_values": [
         512,
         "fixed"
-      ]
-    },
-    {
-      "id": 5,
-      "type": "PreviewAny",
-      "pos": [
-        4196.6748046875,
-        -692.7393798828125
       ],
-      "size": [
-        210,
-        88
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "source",
-          "type": "*",
-          "link": 3
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.59",
-        "Node name for S&R": "PreviewAny"
-      },
-      "widgets_values": []
+      "widgets_values_named": {
+        "value": 512,
+        "fixed": "fixed"
+      }
     },
     {
       "id": 1,
       "type": "Power Puter (rgthree)",
       "pos": [
-        3866.253662109375,
+        3870.6129608154297,
         -692.7393798828125
       ],
       "size": [
@@ -160,8 +139,52 @@
         },
         "# テンソルの形状から画像サイズを取得\n_, height, width, _ = a.shape\n\n# 条件に応じたメッセージを作成\nif width < b:\n    result = f\"This image is smaller than {b}\"\nelse:\n    result = f\"This image is larger than {b}\"\n\n# 結果を出力\nprint(result)\n\n# 結果を返す\nreturn result"
       ],
+      "widgets_values_named": {
+        "outputs": {
+          "outputs": [
+            "STRING"
+          ]
+        },
+        "code": "# テンソルの形状から画像サイズを取得\n_, height, width, _ = a.shape\n\n# 条件に応じたメッセージを作成\nif width < b:\n    result = f\"This image is smaller than {b}\"\nelse:\n    result = f\"This image is larger than {b}\"\n\n# 結果を出力\nprint(result)\n\n# 結果を返す\nreturn result"
+      },
       "color": "#232",
       "bgcolor": "#353"
+    },
+    {
+      "id": 5,
+      "type": "PreviewAny",
+      "pos": [
+        4196.6748046875,
+        -692.7393798828125
+      ],
+      "size": [
+        231.9787423344451,
+        140.7226323589715
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.59"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
     }
   ],
   "links": [
@@ -194,13 +217,13 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1.2284597357368363,
+      "scale": 0.9229599817707259,
       "offset": [
-        -3502.8349609375,
-        792.7393798828125
+        -3016.5373781830453,
+        1030.6340308008669
       ]
     },
-    "frontendVersion": "1.27.3",
+    "frontendVersion": "1.51.9",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

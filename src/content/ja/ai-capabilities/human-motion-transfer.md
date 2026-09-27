@@ -32,7 +32,7 @@ Human Motion Transfer は、1枚の人物画像（またはキャラ画像）に
 
 ただし Animate Anyone 自体はオープンソースではなかったため、実際に触れるモデルとしては、Stable Video Diffusion をベースに再現を試みた **MimicMotion** といったモデルが登場します。
 
-![](https://gyazo.com/1e1bb54d4617ed57e696502727b80092){gyazo=loop}
+![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_1e1bb54d4617ed57e696502727b80092.mp4){media=loop}
 
 [](/workflows/ai-capabilities/human-motion-transfer/mimicmotion.json)
 
@@ -55,7 +55,7 @@ VACE は、動画生成において `ControlNet`、`reference2video`、`inpainti
 
 よりモーション転送に特化したモデルが、[Wan-Animate](https://humanaigc.github.io/wan-animate/) です。
 
-![](https://gyazo.com/9f0e0e20d750b2e207b01adc56858202){gyazo=image} ![](https://gyazo.com/d7f66b4153473136c37e48c7066709a1){gyazo=loop} ![](https://gyazo.com/86ed4c6aa64af79325ce18359a4021bc){gyazo=loop}
+![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_9f0e0e20d750b2e207b01adc56858202.png){media=image} ![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_d7f66b4153473136c37e48c7066709a1.mp4){media=loop} ![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_86ed4c6aa64af79325ce18359a4021bc.mp4){media=loop}
 
 > Wan-Animate
 

@@ -11,12 +11,12 @@ noteTags: ["project", "erp", "lora", "flux"]
 summary: "用于在 ERP 上贴参考图像，并用 outpaint 补完剩余区域的专用 UI"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/0732762b1efdf916b6a5836a9078e90e.png"
+  image: "/media/notes/panorama-stickers/legacy_gyazo_0732762b1efdf916b6a5836a9078e90e.png"
 ---
 
 ## ComfyUI Panorama Stickers
 
-![](https://gyazo.com/748e50cd59976f45acabd7cf39d45bc6){gyazo=player}
+![](/media/notes/panorama-stickers/legacy_gyazo_748e50cd59976f45acabd7cf39d45bc6.mp4){media=player}
 
 这是一个专用于 **FLUX.2 Klein 4B/9B 360 ERP Outpaint LoRA** 的 UI，可以根据参考图像制作 360 度全景图像。
 
@@ -39,12 +39,11 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 ## 节点构成
 
-这个自定义节点由 4 个节点组成。
+本页介绍以下 3 个节点。
 
 - `Panorama Stickers`：在 ERP 画布上放置图像
 - `Panorama Cutout`：从全景内切出任意视角（相当于拍摄）
 - `Panorama Preview`：在节点上进行预览
-- `Panorama Seam Prep`：整理左右边缘的接缝
 
 ---
 
@@ -62,7 +61,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 > 只有 `Panorama Preview` 也可以在节点上预览，不过操作还是以前提使用模态 UI 为主。
 
-{% mediaRow img="https://gyazo.com/fc789c1056b38005c59d1e5be6c3095d{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_fc789c1056b38005c59d1e5be6c3095d.mp4{media=loop}", width=60, align="left" %}
 
 **打开模态 UI**
 
@@ -70,7 +69,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/18d7795a35504cf58fe4813ed364a00e{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_18d7795a35504cf58fe4813ed364a00e.mp4{media=loop}", width=60, align="left" %}
 
 **视角移动 / 缩放**
 
@@ -79,7 +78,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/02163c2018590f8b022623f9e711878d{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_02163c2018590f8b022623f9e711878d.mp4{media=loop}", width=60, align="left" %}
 
 **右下按钮**
 
@@ -88,7 +87,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/ec0a8aaafab38c71dd23bdb075f224d5{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_ec0a8aaafab38c71dd23bdb075f224d5.mp4{media=loop}", width=60, align="left" %}
 
 **切换绘制方式**
 
@@ -96,7 +95,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/0873609554f60abe700f435144d23936{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_0873609554f60abe700f435144d23936.mp4{media=loop}", width=60, align="left" %}
 
 **拖动方向**
 
@@ -109,7 +108,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 这是一个用于把参考图像放到 ERP 画布上的 Editor。
 
-{% mediaRow img="https://gyazo.com/217f50a8bb037ca6c10ce55cd230bf8d{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_217f50a8bb037ca6c10ce55cd230bf8d.mp4{media=loop}", width=60, align="left" %}
 
 **添加图像**
 
@@ -118,7 +117,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/e9907e0255952679f448d7796dd9d719{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_e9907e0255952679f448d7796dd9d719.mp4{media=loop}", width=60, align="left" %}
 
 **移动 / 缩放 / 旋转图像**
 
@@ -129,7 +128,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/e7ca94b114093b218c82a333761021a3{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_e7ca94b114093b218c82a333761021a3.mp4{media=loop}", width=60, align="left" %}
 
 **层级 / 复制**
 
@@ -139,7 +138,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/6080f7006f8dfdfcd1e15fd30a394e50{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_6080f7006f8dfdfcd1e15fd30a394e50.mp4{media=loop}", width=60, align="left" %}
 
 **删除图像**
 
@@ -148,7 +147,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/ba80aed93898c33f2f2588f7245723eb{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_ba80aed93898c33f2f2588f7245723eb.mp4{media=loop}", width=60, align="left" %}
 
 **从 Inspector 选择图像**
 
@@ -161,7 +160,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 这是一个可以进入全景内部，并像相机拍摄一样切出任意视角的 Editor。
 
-{% mediaRow img="https://gyazo.com/e7e7075770cd2693e94334bf09743fac{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_e7e7075770cd2693e94334bf09743fac.mp4{media=loop}", width=60, align="left" %}
 
 **添加 frame**
 
@@ -170,7 +169,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/033ef3fd91b9bb4cc283906ae53b7269{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_033ef3fd91b9bb4cc283906ae53b7269.mp4{media=loop}", width=60, align="left" %}
 
 **移动 / 缩放 / 旋转 frame**
 
@@ -179,7 +178,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/da133d6d6fc2c17e7f4a59f716b92fec{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_da133d6d6fc2c17e7f4a59f716b92fec.mp4{media=loop}", width=60, align="left" %}
 
 **切换到预设纵横比**
 
@@ -188,7 +187,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/a6d69406f8888c84cbbdcbd42a184107{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_a6d69406f8888c84cbbdcbd42a184107.mp4{media=loop}", width=60, align="left" %}
 
 **移动视角到 frame 位置**
 
@@ -201,7 +200,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 这是一个可以直接在节点上查看预览的节点。模态 UI 和其他节点共用，不过功能做了精简。
 
-{% mediaRow img="https://gyazo.com/fe09e529eea57ebf960f97b0d7720514{gyazo=loop}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_fe09e529eea57ebf960f97b0d7720514.mp4{media=loop}", width=60, align="left" %}
 
 **节点上预览**
 
@@ -209,7 +208,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/c98e12d762e11fb8922ffa3991912d6b{gyazo=image}", width=60, align="left" %}
+{% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_c98e12d762e11fb8922ffa3991912d6b.png{media=image}", width=60, align="left" %}
 
 **全屏显示**
 
@@ -218,20 +217,6 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 {% endmediaRow %}
 
-
-## Panorama Seam Prep
-
-无论学习得多好，全景图像左右两端（seam）要做到完全一致，还是很难。  
-这个节点是在把图像平移，让接缝来到图像中心后，再对这条接缝做 inpainting 后处理时使用的。
-
-![](https://gyazo.com/09deac88400d8e8d1f9301eda07c7b13){gyazo=image}
-
-- `seam_width_px`：指定遮罩宽度
-- `seam_center_offset_px`：让边界从中心位置偏移
-- `mask_blur_px`：模糊遮罩两端
-  - 在把 inpainting 的结果合成回原图时使用
-
----
 
 ## workflow
 
@@ -278,7 +263,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 ### flux-2-klein-9B-360-erp-outpaint
 
-![](https://gyazo.com/fc52e8eca49723f6ca9fd426abadc636){gyazo=image}
+![](/media/notes/panorama-stickers/legacy_gyazo_fc52e8eca49723f6ca9fd426abadc636.png){media=image}
 [](/workflows/notes/panorama-stickers/flux_2_klein_9b_360_erp_outpaint.json)
 
 - 用 `Panorama Stickers` 放置参考图像，先做出 ERP
@@ -292,5 +277,5 @@ Fill the green spaces according to the image. Outpaint as a seamless 360 equirec
 
 ### flux-2-klein-4B-360-erp-outpaint
 
-![](https://gyazo.com/fa6b005b1c0389c38728310e5b7a3085){gyazo=image}
+![](/media/notes/panorama-stickers/legacy_gyazo_fa6b005b1c0389c38728310e5b7a3085.png){media=image}
 [](/workflows/notes/panorama-stickers/flux_2_klein_4b_360_erp_outpaint.json)

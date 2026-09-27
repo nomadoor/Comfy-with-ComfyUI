@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "Technology to divide images to create masks (mainly SAM family)"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/4a56caa5986a2c2403dcad74d1bf1874.png"
+  image: "/media/ai-capabilities/segmentation/legacy_gyazo_4a56caa5986a2c2403dcad74d1bf1874.png"
 ---
 
 ## What is Segmentation?
@@ -38,7 +38,7 @@ So, is matting a subset of segmentation? Not at all, their roles are fundamental
 
 ## SAM
 
-> ![](https://gyazo.com/109335e3e675b7bd8beb9f77bc489829){gyazo=loop}
+> ![](/media/ai-capabilities/segmentation/legacy_gyazo_109335e3e675b7bd8beb9f77bc489829.mp4){media=loop}
 > [Introducing Meta Segment Anything Model 3 and Segment Anything Playground](https://ai.meta.com/blog/segment-anything-model-3/)
 
 When we say "segmentation" in ComfyUI, what is actually used is almost always **SAM (Segment Anything) family models**.
@@ -71,7 +71,7 @@ It is used in all kinds of situations, from cutouts to inpainting.
 
 In addition, [Segment Anything Playground](https://aidemos.meta.com/segment-anything/gallery) has many examples such as blurring faces or making the background black and white. (By the way, most of these can be reproduced with ComfyUI.)
 
-![](https://gyazo.com/8a13dabaec7771795dc4028d6e40abff){gyazo=image}
+![](/media/ai-capabilities/segmentation/legacy_gyazo_8a13dabaec7771795dc4028d6e40abff.png){media=image}
 
 [](/workflows/ai-capabilities/segmentation/sam3.json)
 
@@ -85,7 +85,7 @@ SAM 3 can specify by text, but in terms of object detection, models better than 
 
 Textbook-wise, segmentation has the following classifications.
 
-> ![](https://gyazo.com/010576fd5cce11b2da01333c92d39ae7){gyazo=image}
+> ![](/media/ai-capabilities/segmentation/legacy_gyazo_010576fd5cce11b2da01333c92d39ae7.png){media=image}
 > [Instance Segmentation](https://cvml-expertguide.net/terms/dl/instance-segmentation/)
 
 - **Semantic Segmentation**

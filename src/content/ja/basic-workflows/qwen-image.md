@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "Qwen-Imageの使い方"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/4f6ca42890bb8717fa4668d8c56bcbc5.png"
+  image: "/media/basic-workflows/qwen-image/legacy_gyazo_4f6ca42890bb8717fa4668d8c56bcbc5.png"
 tags: []
 ---
 
@@ -70,7 +70,7 @@ Qwen-Image は 1.5M〜1.8M ピクセル前後が推奨です。
 
 ## text2image
 
-![](https://gyazo.com/c06f913435b344d929cb0ec8e94d20c3){gyazo=image}
+![](/media/basic-workflows/qwen-image/legacy_gyazo_c06f913435b344d929cb0ec8e94d20c3.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image/qwen_image.json)
 
@@ -99,11 +99,11 @@ Qwen-Image 向けの ControlNet モデルはいくつかありますが、使い
 
 ### workflow
 
-![](https://gyazo.com/dd47c0c42514446cddc587561e073e0d){gyazo=image}
+![](/media/basic-workflows/qwen-image/legacy_gyazo_dd47c0c42514446cddc587561e073e0d.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image/qwen_image_instantx_controlnet_union.json)
 
-![](https://gyazo.com/26cde876245eaa2fb914859216fc66a4){gyazo=image}
+![](/media/basic-workflows/qwen-image/legacy_gyazo_26cde876245eaa2fb914859216fc66a4.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image/qwen_image_instantx_controlnet_inpainting.json)
 
@@ -132,7 +132,7 @@ Qwen-Image 向けの ControlNet モデルはいくつかありますが、使い
 
 ### workflow
 
-![](https://gyazo.com/08f16f6f84c2d76a7ad1d50c617d32ef){gyazo=image}
+![](/media/basic-workflows/qwen-image/qwen_image_lightning_8steps.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image/qwen_image_lightning_8steps.json)
 

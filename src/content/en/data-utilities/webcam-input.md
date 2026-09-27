@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "How to import webcam or OBS footage into ComfyUI"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/5c2f4a37547aa854b5dcc8d264ff962b.png"
+  image: "/media/data-utilities/webcam-input/legacy_gyazo_5c2f4a37547aa854b5dcc8d264ff962b.png"
 ---
 ## Webcam Input
 
@@ -18,7 +18,7 @@ ComfyUI can capture camera footage connected to your PC as an image.
 
 ### Webcam Capture Node
 
-![](https://gyazo.com/2a7ab2f8dc9179e6c02d15e74dedcea3){gyazo=image}
+![](/media/begin-with/media/legacy_gyazo_2a7ab2f8dc9179e6c02d15e74dedcea3.png){media=image}
 
 - 1. Add `Webcam Capture` node
 - 2. If the browser asks for permission to use the camera, please allow it.
@@ -38,7 +38,7 @@ Install OBS and set up the screen you want to capture.
 
 - **Source Settings (Window Capture)**
   - Select `Window Capture` from `+` in Sources and specify a specific software (e.g., Paint).
-  - ![](https://i.gyazo.com/3ae7154d9a7d58b54a5e331858a119ad.png){gyazo=loop}
+  - ![](/media/data-utilities/webcam-input/legacy_gyazo_3ae7154d9a7d58b54a5e331858a119ad.mp4){media=loop}
   - **Capture Method**: If the screen is black, changing it to `Windows 10 (1903 or later)` may make it appear (often happens with drawing software like Affinity).
   - **Cursor**: Uncheck "Capture Cursor" if you prefer.
 
@@ -61,6 +61,6 @@ Return to ComfyUI and change the settings of the `Webcam Capture` node.
 
 ### Real-time Execution (Auto Queue)
 
-![](https://gyazo.com/6b57f5d40d4c55b13d82bf6737a24e5a){gyazo=loop}
+![](/media/data-utilities/webcam-input/legacy_gyazo_6b57f5d40d4c55b13d82bf6737a24e5a.mp4){media=loop}
 
 Normal execution is fine if you just want to take one still image, but if you want to AI-convert your drawing in real-time, use **`Run (Instant)`** in the `▷ Run` menu.

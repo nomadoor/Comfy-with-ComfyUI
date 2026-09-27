@@ -10,7 +10,7 @@ updated: 2026-04-13
 summary: "在 LTX 2.3 中处理 text2video、image2video、audio2video 和 audio-image2video"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/f3f8635fb9056670204fe9bdac577b39.mp4"
+  image: "/media/basic-workflows/ltx-2-3/legacy_gyazo_f3f8635fb9056670204fe9bdac577b39.mp4"
 tags: []
 ---
 
@@ -64,7 +64,7 @@ tags: []
 
 ## 基本处理流程
 
-![](https://gyazo.com/7ace8e776133d570e2d42b1a27435189){gyazo=image}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_7ace8e776133d570e2d42b1a27435189.png){media=image}
 
 架构和 [LTX-2](/zh/basic-workflows/ltx-2/) 一样，所以 workflow 本身也可以直接沿用。  
 不过，如果原样照搬，结果通常不会太好。
@@ -95,11 +95,11 @@ tags: []
 
 ## text2video
 
-![](https://gyazo.com/7477c07351d62edda93ae50270bbbaf5){gyazo=image}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_7477c07351d62edda93ae50270bbbaf5.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-3/ltx_2_3_text2video_distilled_3stage.json)
 
-{% mediaRow img="https://gyazo.com/6e9e9474d28ef76af5053fb0be5e6290 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-3/legacy_gyazo_6e9e9474d28ef76af5053fb0be5e6290.png {media=image}", width=40, align="left" %}
 
 **设置视频分辨率、时长和 FPS**
 
@@ -113,7 +113,7 @@ tags: []
 
 **输出例**
 
-![](https://gyazo.com/2cd2d6eb51760a4928ba476bf2c0878b){gyazo=loop}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_2cd2d6eb51760a4928ba476bf2c0878b.mp4){media=loop}
 
 ---
 
@@ -125,7 +125,7 @@ tags: []
 
 **输出例**
 
-![输入](https://gyazo.com/bf4c40372ce923fb53f2867c33c27bc6){gyazo=image} ![输出](https://gyazo.com/cb1a91ed174f29d4441ae1332590f3a0){gyazo=loop}
+![输入](/media/basic-workflows/ltx-2-3/legacy_gyazo_bf4c40372ce923fb53f2867c33c27bc6.png){media=image} ![输出](/media/basic-workflows/ltx-2-3/legacy_gyazo_cb1a91ed174f29d4441ae1332590f3a0.mp4){media=loop}
 
 ---
 
@@ -137,19 +137,19 @@ tags: []
 
 **输出例**
 
-![](https://gyazo.com/4e0ce0ea62fc7138ffe7ea1892ec21b8){gyazo=player}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_4e0ce0ea62fc7138ffe7ea1892ec21b8.mp4){media=player}
 
 ---
 
 ## audio-image2video
 
-![](https://gyazo.com/443cbbeacab7a63e85641c0b209ab5da){gyazo=image}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_443cbbeacab7a63e85641c0b209ab5da.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-3/ltx_2_3_audio_image2video_distilled_3stage.json)
 
 **输出例**
 
-![](https://gyazo.com/dc3fb2e0b92432ca2651ca121aea7205){gyazo=image} ![](https://gyazo.com/69ebdac3cc6a3badd9452f0cbb345167){gyazo=player}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_dc3fb2e0b92432ca2651ca121aea7205.png){media=image} ![](/media/basic-workflows/ltx-2-3/legacy_gyazo_69ebdac3cc6a3badd9452f0cbb345167.mp4){media=player}
 
 ---
 
@@ -157,7 +157,7 @@ tags: []
 
 也叫 FLF2V 或 FMLF2V，可以理解为把图片插到中间帧里，再把这些图片当作参照来生成视频的机制。
 
-![](https://gyazo.com/f0cdfd8e0d5f0106e0d6fc98fdcb9aee){gyazo=image}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_f0cdfd8e0d5f0106e0d6fc98fdcb9aee.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-3/ltx_2_3_generative_interpolation_distilled_1stage.json)
 
@@ -165,7 +165,7 @@ tags: []
 `image2video` 是把第一帧直接替换成参考图，再生成后面的帧。  
 而这里则是在中间的多个帧位置旁边放上参考图，作为生成时的 guide。
 
-{% mediaRow img="https://gyazo.com/e115e860b7b68f36f27937d9e630501d {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-3/legacy_gyazo_e115e860b7b68f36f27937d9e630501d.png {media=image}", width=40, align="left" %}
 
 **1. 调整图片尺寸**
 
@@ -175,7 +175,7 @@ tags: []
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/9cd44b6e0a04e7a63cb0f8de0ed01475 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-3/legacy_gyazo_9cd44b6e0a04e7a63cb0f8de0ed01475.png {media=image}", width=40, align="left" %}
 
 **2. LTXVAddGuide**
 
@@ -203,7 +203,7 @@ LTX-2 的 guide 机制里，如果直接输出，生成出来的视频会混入�
 
 **输出例**
 
-![输入](https://gyazo.com/513a407f54159c8e3cae9a32fe888702){gyazo=loop} ![输出](https://gyazo.com/fad61f020fb0ed54bd23c59782bff81d){gyazo=loop}
+![输入](/media/basic-workflows/ltx-2-3/legacy_gyazo_513a407f54159c8e3cae9a32fe888702.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2-3/legacy_gyazo_fad61f020fb0ed54bd23c59782bff81d.mp4){media=loop}
 
 ---
 
@@ -232,7 +232,7 @@ LTX-2 的 guide 机制里，如果直接输出，生成出来的视频会混入�
 
 ### IC-LoRA Union (Pose)
 
-![](https://gyazo.com/9432f1cad25a54328ed912bc85af4a2d){gyazo=image}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_9432f1cad25a54328ed912bc85af4a2d.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-3/ltx_2_3_ic_lora_pose_distilled_2stage.json)
 
@@ -244,25 +244,25 @@ LTX-2 的 guide 机制里，如果直接输出，生成出来的视频会混入�
 
 **输出例**
 
-![输入](https://gyazo.com/9aea1871cc24b0c98931d55bebb1c19c){gyazo=loop} ![输出](https://gyazo.com/25f44e7a08247ae96a2ebcc3cb901d56){gyazo=loop}
+![输入](/media/basic-workflows/ltx-2-3/legacy_gyazo_9aea1871cc24b0c98931d55bebb1c19c.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2-3/legacy_gyazo_25f44e7a08247ae96a2ebcc3cb901d56.mp4){media=loop}
 
 ### IC-LoRA Outpaint
 
-![](https://gyazo.com/b43880620c819f250e61f6df0e494a7c){gyazo=image}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_b43880620c819f250e61f6df0e494a7c.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-3/ltx_2_3_ic_lora_outpaint_distilled_1stage.json)
 
 这是一个用来自然补全输入视频中黑色区域的 workflow。  
 为了尽量保留原始视频，不采用从低分辨率逐步放大的 3stage，而是使用 1stage。
 
-{% mediaRow img="https://gyazo.com/80624e8617d2df1c92f929249c681752 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-3/legacy_gyazo_80624e8617d2df1c92f929249c681752.png {media=image}", width=40, align="left" %}
 **读取 LoRA 模型**
 
 在这里读取 `IC-LoRA-Outpaint` 的 LoRA。
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/404ebbcfd601d31b927e97573327e398 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-3/legacy_gyazo_404ebbcfd601d31b927e97573327e398.png {media=image}", width=40, align="left" %}
 **用黑色做 Padding**
 
 用黑色 Padding 把想扩展的区域加出来。  
@@ -273,7 +273,7 @@ LTX-2 的 guide 机制里，如果直接输出，生成出来的视频会混入�
 
 **输出例**
 
-![输入](https://gyazo.com/676f9b4dfb10ea6bc80b25b46d3b63ef){gyazo=loop} ![输出](https://gyazo.com/2776655edfe4896da1697755084b5e57){gyazo=loop}
+![输入](/media/basic-workflows/ltx-2-3/legacy_gyazo_676f9b4dfb10ea6bc80b25b46d3b63ef.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2-3/legacy_gyazo_2776655edfe4896da1697755084b5e57.mp4){media=loop}
 
 ---
 
@@ -301,14 +301,14 @@ LTX-2 的 guide 机制里，如果直接输出，生成出来的视频会混入�
 
 ### workflow
 
-![](https://gyazo.com/cd8a2899358fbac24b90eebe9b10a823){gyazo=image}
+![](/media/basic-workflows/ltx-2-3/legacy_gyazo_cd8a2899358fbac24b90eebe9b10a823.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-3/ltx_2_3_id_lora_distilled_3stage.json)
 
 整体是以 [image2video](#image2video) 为基础。  
 然后再加上 ID-LoRA 的 LoRA 和参考音频条件。
 
-{% mediaRow img="https://gyazo.com/cb84a0967e26e916925aaa4cfeb6d782 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-3/legacy_gyazo_cb84a0967e26e916925aaa4cfeb6d782.png {media=image}", width=40, align="left" %}
 
 **ID-LoRA 模型**
 
@@ -322,7 +322,7 @@ LTX-2 的 guide 机制里，如果直接输出，生成出来的视频会混入�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/3a653c109b828ad561e428c09b8eb91f {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-3/legacy_gyazo_3a653c109b828ad561e428c09b8eb91f.png {media=image}", width=40, align="left" %}
 
 **LTXV Reference Audio (ID-LoRA)**
 
@@ -333,7 +333,7 @@ LTX-2 的 guide 机制里，如果直接输出，生成出来的视频会混入�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/c987355bbbd29dfdc866dee769937957 {gyazo=image}", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-3/legacy_gyazo_c987355bbbd29dfdc866dee769937957.png {media=image}", width=40, align="left" %}
 
 **提示词**
 
@@ -352,4 +352,4 @@ LTX-2 的 guide 机制里，如果直接输出，生成出来的视频会混入�
 
 **输出例**
 
-![input](https://gyazo.com/7d7fa9dc9a9f4fa1a08e25aff1285fd7){gyazo=image} ![ref_audio](https://gyazo.com/921d5546567ae28fc9616803f0dcccb9){gyazo=player}  ![output](https://gyazo.com/f179f159e0f3cf6fb05cf259b2828425){gyazo=player}
+![input](/media/basic-workflows/ltx-2-3/legacy_gyazo_7d7fa9dc9a9f4fa1a08e25aff1285fd7.jpg){media=image} ![ref_audio](/media/basic-workflows/ltx-2-3/legacy_gyazo_921d5546567ae28fc9616803f0dcccb9.mp4){media=player}  ![output](/media/basic-workflows/ltx-2-3/legacy_gyazo_f179f159e0f3cf6fb05cf259b2828425.mp4){media=player}

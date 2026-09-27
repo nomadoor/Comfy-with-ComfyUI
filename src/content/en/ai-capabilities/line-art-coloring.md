@@ -24,7 +24,7 @@ For those who can already draw line art themselves, "how to make AI color my lin
 
 By using ControlNet Canny (edge), you can add color while generally retaining the input line art.
 
-![](https://gyazo.com/7e1ed10e17831b224bc547a8d6b3deea){gyazo=image}
+![](/media/ai-capabilities/line-art-coloring/legacy_gyazo_7e1ed10e17831b224bc547a8d6b3deea.png){media=image}
 
 [](/workflows/ai-capabilities/line-art-coloring/flux_controlnet_union.json)
 
@@ -36,7 +36,7 @@ Pass the line art (or edge extraction result) to ControlNet and specify the clot
 
 You can also pass line art directly to [Instruction-Based Image Editing](/en/ai-capabilities/instruction-based-image-editing/) models and have them color it.
 
-![](https://gyazo.com/18b33d684675ffa56b3b805a9f56791a){gyazo=image}
+![](/media/ai-capabilities/line-art-coloring/qwen_image_edit_2509.png){media=image}
 
 [](/workflows/ai-capabilities/line-art-coloring/qwen_image_edit_2509.json)
 

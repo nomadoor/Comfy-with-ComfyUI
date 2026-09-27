@@ -10,12 +10,12 @@ updated: 2026-03-02
 summary: "マスクの概念と透過画像の扱いについて"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/bd1a30f0d9562418f2fd74c7d9dd6f1e.png"
+  image: "/media/data-utilities/mask-alpha/legacy_gyazo_bd1a30f0d9562418f2fd74c7d9dd6f1e.png"
 ---
 
 ## マスクとは？
 
-![](https://i.gyazo.com/bd1a30f0d9562418f2fd74c7d9dd6f1e.png){gyazo=image}
+![](/media/data-utilities/mask-alpha/legacy_gyazo_bd1a30f0d9562418f2fd74c7d9dd6f1e.png){media=image}
 
 マスクとは、画像のどの部分を処理の **「対象にするか / 除外するか」** を指示するための白黒画像です。
 
@@ -25,7 +25,7 @@ hero:
 
 ### AIにおけるマスク
 
-![](https://i.gyazo.com/3b4d37c9bb4a46d514f2fc77234718f8.png){gyazo=image}
+![](/media/data-utilities/mask-alpha/legacy_gyazo_3b4d37c9bb4a46d514f2fc77234718f8.png){media=image}
 
 画像生成AIにおいては、主に画像の一部分だけを描き直す **Inpainting** で使用されます。
 
@@ -40,7 +40,7 @@ hero:
 
 ## アルファチャンネルとは？
 
-![](https://gyazo.com/cf9be566f77d85571b29a2b5597121cb){gyazo=image}
+![](/media/data-utilities/mask-alpha/legacy_gyazo_cf9be566f77d85571b29a2b5597121cb.png){media=image}
 
 通常の画像は **R(赤)・G(緑)・B(青)** の3つのチャンネルで色が表現されていますが、背景が透けている画像（PNGなど）には、これに加えて **A(アルファ)** というチャンネルが含まれています。
 これが透明度を司る情報です。
@@ -50,7 +50,7 @@ hero:
 ここが少しややこしいポイントですが、Stable Diffusion自体は透過画像を直接扱うことができません。
 そのため、ComfyUIに透過PNG画像を読み込むと、内部で **「RGB画像」と「マスク」** の2つに分離されます。
 
-![](https://i.gyazo.com/dbe187645fd186d20f936f226a79b926.png){gyazo=image}
+![](/media/data-utilities/mask-alpha/legacy_gyazo_dbe187645fd186d20f936f226a79b926.png){media=image}
 
 `Load Image` ノードの出力を見てみましょう。
 
@@ -62,7 +62,7 @@ hero:
 
 ### 一般的なソフトとの違いに注意
 
-![](https://i.gyazo.com/e3ba8dcc1452e3ed88512250b0c81d06.png){gyazo=image}
+![](/media/data-utilities/mask-alpha/legacy_gyazo_e3ba8dcc1452e3ed88512250b0c81d06.png){media=image}
 
 
 多くのソフトでは「透明部分＝黒」としてマスクが作られるため、PhotoshopやAffinity Photoなどの画像編集ソフトに慣れている人は混乱するかもしれませんが、別物と考えてください。
@@ -75,7 +75,7 @@ hero:
 
 処理が終わった後、再び背景を透過させて保存したい場合はどうすればよいでしょうか？
 
-![](https://gyazo.com/b05103b1633b9a4b0fbfdd96063499c2){gyazo=image}
+![](/media/data-utilities/mask-alpha/legacy_gyazo_b05103b1633b9a4b0fbfdd96063499c2.png){media=image}
 
 [](/workflows/data-utilities/mask-alpha/join_split_image_with_alpha.json)
 

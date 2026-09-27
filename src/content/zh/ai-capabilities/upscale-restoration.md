@@ -5,8 +5,8 @@ section: ai-capabilities
 slug: upscale-restoration
 navId: upscale-restoration
 title: 放大・图像修复
-created: 2026-02-06
-updated: 2026-03-02
+created: 2025-11-13
+updated: 2026-09-27
 summary: 放大图像，或修复劣化图像的技术
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
@@ -31,7 +31,7 @@ hero:
 使用 GAN 或传统型超分辨率模型进行的放大。
 这是 Stable Diffusion 以前就有的系统，现在有时仍作为轻量处理被使用。
 
-![](https://gyazo.com/072c6cd7f09d777141293f6cf619ad83){gyazo=image}
+![](/media/ai-capabilities/upscale-restoration/esrgan.png){media=image}
 
 [](/workflows/ai-capabilities/upscale-restoration/esrgan.json)
 
@@ -76,7 +76,7 @@ hero:
 
 即使不分别准备专用的模型，只要指示“把这张照片变漂亮”、“减少噪点”、“给黑白照片上色”等，它就会汇总进行这些处理。
 
-![](https://gyazo.com/70baa67331207740cbab838d153c990d){gyazo=image}
+![](/media/ai-capabilities/upscale-restoration/legacy_gyazo_70baa67331207740cbab838d153c990d.png){media=image}
 
 [](/workflows/ai-capabilities/upscale-restoration/qwen_image_edit_2509.json)
 

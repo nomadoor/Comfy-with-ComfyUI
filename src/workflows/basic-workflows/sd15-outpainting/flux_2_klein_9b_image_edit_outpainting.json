@@ -1,57 +1,9 @@
 {
   "id": "0613b710-fadb-4f72-9aff-d02126893c5a",
   "revision": 0,
-  "last_node_id": 72,
-  "last_link_id": 114,
+  "last_node_id": 73,
+  "last_link_id": 116,
   "nodes": [
-    {
-      "id": 51,
-      "type": "ResizeImageMaskNode",
-      "pos": [
-        210.9172345510862,
-        484.74016932307575
-      ],
-      "size": [
-        270,
-        106
-      ],
-      "flags": {},
-      "order": 7,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "input",
-          "type": "IMAGE,MASK",
-          "link": 108
-        }
-      ],
-      "outputs": [
-        {
-          "name": "resized",
-          "type": "IMAGE",
-          "links": [
-            82
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ResizeImageMaskNode",
-        "cnr_id": "comfy-core",
-        "ver": "0.9.2"
-      },
-      "widgets_values": [
-        "scale total pixels",
-        1,
-        "nearest-exact"
-      ],
-      "widgets_values_named": {
-        "resize_type": "scale total pixels",
-        "resize_type.megapixels": 1,
-        "scale_method": "nearest-exact"
-      },
-      "color": "#232",
-      "bgcolor": "#353"
-    },
     {
       "id": 49,
       "type": "ReferenceLatent",
@@ -163,7 +115,7 @@
         {
           "name": "negative",
           "type": "CONDITIONING",
-          "link": 86
+          "link": 116
         },
         {
           "name": "latent_image",
@@ -245,54 +197,6 @@
         "Node name for S&R": "VAEEncode",
         "cnr_id": "comfy-core",
         "ver": "0.9.2"
-      },
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
-      "id": 54,
-      "type": "ResizeImageMaskNode",
-      "pos": [
-        516.4411331446843,
-        484.74016932307575
-      ],
-      "size": [
-        270,
-        106
-      ],
-      "flags": {},
-      "order": 9,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "input",
-          "type": "IMAGE,MASK",
-          "link": 82
-        }
-      ],
-      "outputs": [
-        {
-          "name": "resized",
-          "type": "IMAGE",
-          "links": [
-            80
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ResizeImageMaskNode",
-        "cnr_id": "comfy-core",
-        "ver": "0.9.2"
-      },
-      "widgets_values": [
-        "scale to multiple",
-        16,
-        "nearest-exact"
-      ],
-      "widgets_values_named": {
-        "resize_type": "scale to multiple",
-        "resize_type.multiple": 16,
-        "scale_method": "nearest-exact"
       },
       "color": "#232",
       "bgcolor": "#353"
@@ -380,95 +284,6 @@
       "bgcolor": "#535"
     },
     {
-      "id": 50,
-      "type": "LoadImage",
-      "pos": [
-        -396.5211876361099,
-        484.74016932307575
-      ],
-      "size": [
-        296.798828125,
-        458.0000000000001
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            107
-          ]
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LoadImage",
-        "cnr_id": "comfy-core",
-        "ver": "0.9.2"
-      },
-      "widgets_values": [
-        "Image_fx (2).jpg",
-        "image"
-      ],
-      "widgets_values_named": {
-        "image": "Image_fx (2).jpg",
-        "upload": "image"
-      },
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
-      "id": 6,
-      "type": "CLIPTextEncode",
-      "pos": [
-        558.700000000001,
-        160.40068341159756
-      ],
-      "size": [
-        425.2650317382812,
-        167.9430462646484
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 63
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            70
-          ]
-        }
-      ],
-      "title": "CLIP Text Encode (Positive Prompt)",
-      "properties": {
-        "Node name for S&R": "CLIPTextEncode",
-        "cnr_id": "comfy-core",
-        "ver": "0.3.39"
-      },
-      "widgets_values": [
-        "Outpaint the gray areas to extend the scene naturally"
-      ],
-      "widgets_values_named": {
-        "text": "Outpaint the gray areas to extend the scene naturally"
-      }
-    },
-    {
       "id": 67,
       "type": "ImagePadForOutpaint",
       "pos": [
@@ -480,7 +295,7 @@
         174
       ],
       "flags": {},
-      "order": 4,
+      "order": 5,
       "mode": 0,
       "inputs": [
         {
@@ -559,52 +374,6 @@
       "widgets_values_named": {}
     },
     {
-      "id": 33,
-      "type": "CLIPTextEncode",
-      "pos": [
-        558.700000000001,
-        387.24938745307793
-      ],
-      "size": [
-        425.2650317382812,
-        122.99611236572264
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 6,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 64
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            86
-          ]
-        }
-      ],
-      "title": "CLIP Text Encode (Negative Prompt)",
-      "properties": {
-        "Node name for S&R": "CLIPTextEncode",
-        "cnr_id": "comfy-core",
-        "ver": "0.3.39"
-      },
-      "widgets_values": [
-        ""
-      ],
-      "widgets_values_named": {
-        "text": ""
-      }
-    },
-    {
       "id": 44,
       "type": "CLIPLoader",
       "pos": [
@@ -616,7 +385,7 @@
         106
       ],
       "flags": {},
-      "order": 3,
+      "order": 2,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -624,8 +393,7 @@
           "name": "CLIP",
           "type": "CLIP",
           "links": [
-            63,
-            64
+            63
           ]
         }
       ],
@@ -685,6 +453,226 @@
       "widgets_values_named": {
         "filename_prefix": "ComfyUI"
       }
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        558.700000000001,
+        160.40068341159756
+      ],
+      "size": [
+        425.2650317382812,
+        167.9430462646484
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 63
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            70,
+            115
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39"
+      },
+      "widgets_values": [
+        "Outpaint the gray areas to extend the scene naturally"
+      ],
+      "widgets_values_named": {
+        "text": "Outpaint the gray areas to extend the scene naturally"
+      }
+    },
+    {
+      "id": 73,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        779.8302661132822,
+        389.67582186043444
+      ],
+      "size": [
+        204.134765625,
+        26
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 115
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            116
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningZeroOut"
+      }
+    },
+    {
+      "id": 51,
+      "type": "ResizeImageMaskNode",
+      "pos": [
+        210.9172345510862,
+        484.74016932307575
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "IMAGE,MASK",
+          "link": 108
+        }
+      ],
+      "outputs": [
+        {
+          "name": "resized",
+          "type": "IMAGE",
+          "links": [
+            82
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResizeImageMaskNode",
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2"
+      },
+      "widgets_values": [
+        "scale total pixels",
+        1,
+        "bicubic"
+      ],
+      "widgets_values_named": {
+        "resize_type": "scale total pixels",
+        "resize_type.megapixels": 1,
+        "scale_method": "bicubic"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 54,
+      "type": "ResizeImageMaskNode",
+      "pos": [
+        516.4411331446843,
+        484.74016932307575
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "IMAGE,MASK",
+          "link": 82
+        }
+      ],
+      "outputs": [
+        {
+          "name": "resized",
+          "type": "IMAGE",
+          "links": [
+            80
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResizeImageMaskNode",
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2"
+      },
+      "widgets_values": [
+        "scale to multiple",
+        16,
+        "bicubic"
+      ],
+      "widgets_values_named": {
+        "resize_type": "scale to multiple",
+        "resize_type.multiple": 16,
+        "scale_method": "bicubic"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 50,
+      "type": "LoadImage",
+      "pos": [
+        -396.5211876361099,
+        484.74016932307575
+      ],
+      "size": [
+        296.798828125,
+        458.0000000000001
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            107
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.9.2"
+      },
+      "widgets_values": [
+        "kura_compare_1.jpg",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "kura_compare_1.jpg",
+        "upload": "image"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
     }
   ],
   "links": [
@@ -709,14 +697,6 @@
       44,
       0,
       6,
-      0,
-      "CLIP"
-    ],
-    [
-      64,
-      44,
-      0,
-      33,
       0,
       "CLIP"
     ],
@@ -793,14 +773,6 @@
       "IMAGE"
     ],
     [
-      86,
-      33,
-      0,
-      31,
-      2,
-      "CONDITIONING"
-    ],
-    [
       107,
       50,
       0,
@@ -823,19 +795,35 @@
       72,
       0,
       "IMAGE"
+    ],
+    [
+      115,
+      6,
+      0,
+      73,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      116,
+      73,
+      0,
+      31,
+      2,
+      "CONDITIONING"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.5131581182307069,
+      "scale": 0.7513148009015778,
       "offset": [
-        690.5488435213136,
-        400.61761623956596
+        145.95413349941893,
+        161.80427061946395
       ]
     },
-    "frontendVersion": "1.49.6",
+    "frontendVersion": "1.51.9",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

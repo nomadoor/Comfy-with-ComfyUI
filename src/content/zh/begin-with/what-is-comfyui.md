@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "ComfyUI 是生成式 AI 的操作系统"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/85c2b6638ce871ee1923a68ed24323b8.webp"
+  image: "/media/begin-with/what-is-comfyui/legacy_gyazo_85c2b6638ce871ee1923a68ed24323b8.png"
 ---
 
 在图像生成 AI 的黎明期，当 Stable Diffusion web UI 还是主流的时候，**ComfyUI** 作为一个旨在实现节点式操作的项目诞生了。

@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "关于 Git 的基础知识"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/4bb24e5d24ae91a7e0f1f5143c2e5ee5.png"
+  image: "/media/begin-with/git/legacy_gyazo_4bb24e5d24ae91a7e0f1f5143c2e5ee5.png"
 ---
 
 ## 什么是 Git？
@@ -31,7 +31,7 @@ hero:
 
 ## 什么是 GitHub？
 
-![](https://i.gyazo.com/aa0bd187bca975346df5582992735910.png){gyazo=image}
+![](/media/begin-with/git/legacy_gyazo_aa0bd187bca975346df5582992735910.png){media=image}
 
 它是一个存放用 Git 保存的数据的 **“巨大的仓库（云存储）”**。
 

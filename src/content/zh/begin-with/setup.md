@@ -5,7 +5,7 @@ section: begin-with
 slug: setup
 navId: setup
 title: "安装与设置"
-created: 2026-02-06
+created: 2025-11-20
 updated: 2026-05-25
 summary: "关于安装与设置"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
@@ -47,7 +47,6 @@ hero:
 ### 2. 解压与启动
 
 1. 右键点击下载的 `7z 文件`，选择“提取到”进行解压。
-   - ![](https://gyazo.com/776dafe2320c41526e6292f52edbe07d){gyazo=loop}
    - 正如在[推荐配置的存储部分](/zh/begin-with/recommended-specs/#存储)中所述，推荐将其放置在 SSD 上。
 2. 双击解压文件夹中的 `run_nvidia_gpu.bat` 启动。
 3. 首次启动时环境配置需要一些时间。如果浏览器自动打开，即表示成功。

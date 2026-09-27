@@ -25,7 +25,7 @@ hero:
 > ノードの上で左ドラッグすると、キャンバスではなくノードそのものが動いてしまいます。<br>
 > ノードが密集している場所では、**中ボタン** や **Spaceキー** を使った移動がストレスフリーでおすすめです。
 
-![](https://gyazo.com/21e446d62dc091c9ad2972e824010680){gyazo=loop}
+![](/media/begin-with/canvas-navigation/legacy_gyazo_21e446d62dc091c9ad2972e824010680.mp4){media=loop}
 
 ---
 
@@ -34,7 +34,7 @@ hero:
 - マウスホイールを回転
 - ウィンドウ右下の `+` / `-` ボタンをクリック
 
-![](https://gyazo.com/e4a9566bd88e073497c6e75b02b7bbf9){gyazo=loop}
+![](/media/begin-with/canvas-navigation/legacy_gyazo_e4a9566bd88e073497c6e75b02b7bbf9.mp4){media=loop}
 
 ---
 
@@ -45,7 +45,7 @@ hero:
 - **全体を表示**: 何も選択していない状態で、ウィンドウ右下の `⏹️ (Fit View)` をクリック
 - **ノードにズーム**: ノードを選択した状態で、`⏹️ (Fit View)` をクリック
 
-![](https://gyazo.com/076543f8a710ae811112a54812adb348){gyazo=loop}
+![](/media/begin-with/canvas-navigation/legacy_gyazo_076543f8a710ae811112a54812adb348.mp4){media=loop}
 
 ---
 
@@ -56,7 +56,7 @@ hero:
 - ウィンドウ右下の `🗺️ (View Minimap)` アイコンをクリック
 - またはショートカットキー `Alt + M`
 
-![](https://gyazo.com/e5e2c39d837213a933b58059d27cd496){gyazo=loop}
+![](/media/begin-with/canvas-navigation/legacy_gyazo_e5e2c39d837213a933b58059d27cd496.mp4){media=loop}
 
 
 

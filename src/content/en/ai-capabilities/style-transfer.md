@@ -29,7 +29,7 @@ Currently, what is called "Style Transfer" can be seen as **just a collective te
 
 ## Texture/Touch Matching
 
-> ![](https://gyazo.com/eb073a78be8340c24c61048066d877b9){gyazo=image}
+> ![](/media/ai-capabilities/style-transfer/legacy_gyazo_eb073a78be8340c24c61048066d877b9.png){media=image}
 > [cysmith/neural-style-tf](https://github.com/cysmith/neural-style-tf)
 
 Classical Neural Style Transfer and filters/LoRAs like "oil painting style" or "watercolor style" fall into this category.

@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "使用 ReActor 的 FaceSwap（变脸）"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/c75a0142055d05c154f7d8cf03b3ca56.png"
+  image: "/media/basic-workflows/reactor/legacy_gyazo_c75a0142055d05c154f7d8cf03b3ca56.png"
 tags: ["id-transfer"]
 ---
 
@@ -44,7 +44,7 @@ ReActor（正确地说是那个核心 **InsightFace** ），可以只以 1 张�
 
 基本的 FaceSwap，只是向 ReActor 节点输入“元图像”和“参照脸图像”。
 
-![](https://gyazo.com/bc67dfff78c431c688d8ec1a4937969e){gyazo=image}
+![](/media/basic-workflows/reactor/legacy_gyazo_bc67dfff78c431c688d8ec1a4937969e.png){media=image}
 
 [](/workflows/basic-workflows/reactor/reactor_fast_face_swap.json)
 
@@ -88,7 +88,7 @@ ReActor（正确地说是那个核心 **InsightFace** ），可以只以 1 张�
 
 ### 工作流的设定
 
-![](https://gyazo.com/bab77e7c89d65dff9a4ebedb17a46375){gyazo=image}
+![](/media/basic-workflows/reactor/legacy_gyazo_bab77e7c89d65dff9a4ebedb17a46375.png){media=image}
 
 [](/workflows/basic-workflows/reactor/reactor_hyperswap.json)
 

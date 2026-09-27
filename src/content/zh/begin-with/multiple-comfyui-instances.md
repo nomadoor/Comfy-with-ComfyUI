@@ -28,7 +28,7 @@ Please close the other application or use a different port with --port.
 
 ## ComfyUI 是作为服务器运行的
 
-![](https://gyazo.com/a04e2d09b534afb1e32900a738f0c3a7){gyazo=image}
+![](/media/begin-with/multiple-comfyui-instances/legacy_gyazo_a04e2d09b534afb1e32900a738f0c3a7.png){media=image}
 
 首先需要知道的是，ComfyUI 分为 **画面** 和 **执行引擎** 两部分。
 
@@ -103,7 +103,7 @@ http://127.0.0.1:8189
 
 另一方面，也可以把同一个 URL 用浏览器的其他标签页或其他窗口打开。
 
-![](https://gyazo.com/71d8f5ff0d41e4b1e6790fc2e0a366a2){gyazo=image}
+![](/media/begin-with/multiple-comfyui-instances/legacy_gyazo_71d8f5ff0d41e4b1e6790fc2e0a366a2.png){media=image}
 
 例如，把 `http://127.0.0.1:8188` 在两个浏览器标签页中打开时，就可以从多个画面操作同一个 ComfyUI 服务器。
 

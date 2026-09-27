@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "FaceSwap using ReActor"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/c75a0142055d05c154f7d8cf03b3ca56.png"
+  image: "/media/basic-workflows/reactor/legacy_gyazo_c75a0142055d05c154f7d8cf03b3ca56.png"
 tags: ["id-transfer"]
 ---
 
@@ -44,7 +44,7 @@ This node is a bit tricky to install and often doesn't work just by installing i
 
 Basic FaceSwap simply involves inputting a "Source Image" and a "Reference Face Image" into the ReActor node.
 
-![](https://gyazo.com/bc67dfff78c431c688d8ec1a4937969e){gyazo=image}
+![](/media/basic-workflows/reactor/legacy_gyazo_bc67dfff78c431c688d8ec1a4937969e.png){media=image}
 
 [](/workflows/basic-workflows/reactor/reactor_fast_face_swap.json)
 
@@ -91,7 +91,7 @@ Here is an example using `hyperswap_1a_256.onnx`.
 
 ### Workflow Settings
 
-![](https://gyazo.com/bab77e7c89d65dff9a4ebedb17a46375){gyazo=image}
+![](/media/basic-workflows/reactor/legacy_gyazo_bab77e7c89d65dff9a4ebedb17a46375.png){media=image}
 
 [](/workflows/basic-workflows/reactor/reactor_hyperswap.json)
 

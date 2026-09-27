@@ -45,7 +45,7 @@ permalink: "/{{ lang }}/notes/{{ slug }}/"
 
 ### アカウントを作る
 
-![](https://gyazo.com/fa937b8adfc9a1e28e406645ada9b52b){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_fa937b8adfc9a1e28e406645ada9b52b.png){media=image}
 
 [RunPod](https://www.runpod.io/) にアクセスし、`Sign Up` からアカウントを作成します。
 
@@ -55,7 +55,7 @@ RunPod は、先にクレジットを購入して使う形です。
 
 LoRA の学習を試すだけなら、10ドルほどで十分です。
 
-![](https://gyazo.com/f683db8baf406ed1aa79e5d348f1e406){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_f683db8baf406ed1aa79e5d348f1e406.png){media=image}
 
 - 右上の `+` ボタンをクリック
 - $150以下にしたいときは `Other` を選択
@@ -83,7 +83,7 @@ Pod は、クラウド上にある、カスタムできるレンタル PC のよ
 
 サイドバーから `Pods` を開き、`Deploy` をクリックします。
 
-![](https://gyazo.com/c39356c905c1a2bf89d0fcf83451712d){gyazo=loop}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_c39356c905c1a2bf89d0fcf83451712d.mp4){media=loop}
 
 - `Search templates` で `AI Toolkit` を検索
 - [AI Toolkit - ostris - ui - official](https://console.runpod.io/hub/template/ai-toolkit-ostris-ui-official?id=0fqzfjy6f3) を選択
@@ -126,13 +126,13 @@ VRAM が足りないと、学習中に `Out of Memory` が出て処理できま�
 
 Pod が作られるまでしばらく時間がかかります。待ちましょう。
 
-![](https://gyazo.com/952faa4188776b9cc626a5c2009422b3){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_952faa4188776b9cc626a5c2009422b3.png){media=image}
 
 Pod が準備できると、`🟢Ready` の表示になり、AI Toolkit を開くためのリンクが表示されます。
 
 `HTTP Service` をクリックすれば、AI Toolkit が表示されるはずです。
 
-![](https://gyazo.com/696fa9e2aa3260c51214fd4fc7c3af1a){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_696fa9e2aa3260c51214fd4fc7c3af1a.png){media=image}
 
 パスワードが求められたら、先ほど `AI_TOOLKIT_AUTH` に設定した値を入力します。
 
@@ -142,7 +142,7 @@ Pod が準備できると、`🟢Ready` の表示になり、AI Toolkit を開�
 
 ## 4. Dataset をアップロードする
 
-![](https://gyazo.com/d57274c9ba07002e7ee02b1b72a80499){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_d57274c9ba07002e7ee02b1b72a80499.png){media=image}
 
 学習に使う画像と caption file を AI Toolkit にアップロードします。
 
@@ -161,7 +161,7 @@ AI Toolkit では、Job と呼ばれる学習設定を作ってから、それ�
 
 ComfyUI でいう workflow のようなものですね。
 
-![](https://gyazo.com/c8029171b590fcb71fc68188a2f5c8be){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_c8029171b590fcb71fc68188a2f5c8be.png){media=image}
 
 ここで、base model、学習率、先ほど読み込んだ dataset などを設定します。
 
@@ -175,7 +175,7 @@ ComfyUI でいう workflow のようなものですね。
 
 Job ができたら、学習を実行します。
 
-![](https://gyazo.com/b06e6a6734de8d0dba21687c56604812){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_b06e6a6734de8d0dba21687c56604812.png){media=image}
 
 - 右上の実行ボタン（`▶`）をクリック
 
@@ -193,7 +193,7 @@ Job ができたら、学習を実行します。
 
 上手く学習できているかは、実際に ComfyUI などで生成してみるしかありません。Loss Graph は、正直あまり参考にならないのです。
 
-![](https://gyazo.com/89e7eea124ea56af4a34bba8af083057){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_89e7eea124ea56af4a34bba8af083057.png){media=image}
 
 - `Checkpoints` の欄に出力された LoRA が並びます
 - ダウンロードボタンをクリックして保存する
@@ -211,7 +211,7 @@ RunPod は起動している間、作業していなくても料金がかかり�
 
 もったいないので、忘れずに止めましょう。
 
-![](https://gyazo.com/f60fe312a59e9fe6624490c8004da78e){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_f60fe312a59e9fe6624490c8004da78e.png){media=image}
 
 - RunPod の画面に戻る
 - 動かしている Pod を開く
@@ -222,7 +222,7 @@ RunPod は起動している間、作業していなくても料金がかかり�
 
 もう AI Toolkit を閉じてよければ、完全にシャットダウンする `Terminate` を行います。
 
-![](https://gyazo.com/7142f88c43aa0b4b0281b6c6a1c064ad){gyazo=image}
+![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_7142f88c43aa0b4b0281b6c6a1c064ad.png){media=image}
 
 - `Terminate` で Pod を削除する
 

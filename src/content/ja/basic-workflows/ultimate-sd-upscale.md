@@ -17,7 +17,7 @@ tags: ["upscale-restoration", "controlnet"]
 
 ## Ultimate SD upscaleとは？
 
-![](https://gyazo.com/d3b6f13de466be0cb0a17f2565d6f9e3){gyazo=image}
+![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_d3b6f13de466be0cb0a17f2565d6f9e3.png){media=image}
 
 Stable Diffusionで大きな画像を生成できない理由として、大きな画像で学習されていないという理由がありましたが、もう一つシンプルな原因として、計算コストの問題がありました。
 
@@ -46,7 +46,7 @@ Stable Diffusionで大きな画像を生成できない理由として、大き�
 まずは、Tile の基本的な挙動を見ておきます。
 ここでは Tiled Diffusion のノードを例に説明しますが、考え方さえ押さえればノードは何でもかまいません。
 
-![](https://gyazo.com/6ff5e63c42367c9ef8ffd8e2a89a61c5){gyazo=image} ![](https://gyazo.com/daf241e640303e9bdbebdbdb06ae4afa){gyazo=image}
+![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_6ff5e63c42367c9ef8ffd8e2a89a61c5.png){media=image} ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_daf241e640303e9bdbebdbdb06ae4afa.png){media=image}
 
 [](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap0.json)
 
@@ -66,13 +66,13 @@ Stable Diffusionで大きな画像を生成できない理由として、大き�
 境界線が気になるなら、タイルを少し重ねて配置すればよい、という発想があります。
 これが `tile_overlap` です。
 
-![](https://gyazo.com/d6bf859530ae65b7b09ca8a2b2e3006b){gyazo=image} ![](https://gyazo.com/fec3f15e6e4ff7110d3f5ff110f0faa2){gyazo=image}
+![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_d6bf859530ae65b7b09ca8a2b2e3006b.png){media=image} ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_fec3f15e6e4ff7110d3f5ff110f0faa2.png){media=image}
 
 [](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap256.json)
 
 - 🟩 `tile_overlap` を 256px に
 - タイルをきれいに並べるのではなく、**わざと半分くらい重ねて** 並べるイメージです。
-  - ![](https://gyazo.com/5f5d51e77955a55c8df142e45d8d12f5){gyazo=image}
+  - ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_5f5d51e77955a55c8df142e45d8d12f5.png){media=image}
 
 重なった部分は、隣り合うタイル同士が情報を共有するクッションのように働くため、
 サンプリングを進めるうちに境界がなじみ、タイルの継ぎ目が目立ちにくくなります。
@@ -86,7 +86,7 @@ Stable Diffusionで大きな画像を生成できない理由として、大き�
 Tile にはもうひとつ、大きな弱点があります。  
 **すべてのタイルで同じプロンプトを使う** ため、思ってもいない場所に余計なものが生成されてしまうのです。
 
-![](https://gyazo.com/b180b2b157a72b030b099dcb6f7c046f){gyazo=image}
+![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_b180b2b157a72b030b099dcb6f7c046f.png){media=image}
 
 先程のworkflowで、`tile_overlap = 0` / `denoise = 1` のように設定し、
 プロンプトに `一匹の犬` とだけ書いて生成してみましょう。  
@@ -122,7 +122,7 @@ ControlNet Tile は、入力画像の **構造をかなり強く保持したま�
 
 画素をそのままコピーするわけではありませんが、**大まかな形**、**オブジェクトの位置関係** を保ったまま、テクスチャやディテールを塗り直すような挙動をします。
 
-![](https://gyazo.com/a0d8adb6b4cbd35562588238db87f71e){gyazo=image} ![](https://gyazo.com/1bf02bf5900f379735c6a29a7aa1935e){gyazo=image}
+![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_a0d8adb6b4cbd35562588238db87f71e.png){media=image} ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_1bf02bf5900f379735c6a29a7aa1935e.png){media=image}
 
 [](/workflows/basic-workflows/ultimate-sd-upscale/tileddiffusion_controlnet_tile.json)
 
@@ -136,7 +136,7 @@ ControlNet Tile は、入力画像の **構造をかなり強く保持したま�
 
 ここまでの要素を組み合わせると、実用的な Tile アップスケールの形が見えてきます。
 
-![](https://gyazo.com/763660c52564a7af2f5dce9eaa81e20f){gyazo=image} ![](https://gyazo.com/3e4bf6018a4e4500f3bbd14151ce56e7){gyazo=image}
+![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_763660c52564a7af2f5dce9eaa81e20f.png){media=image} ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_3e4bf6018a4e4500f3bbd14151ce56e7.png){media=image}
 
 [](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap_contolnet_tile.json)
 

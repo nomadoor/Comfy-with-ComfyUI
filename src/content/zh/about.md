@@ -4,7 +4,7 @@ lang: zh
 slug: about
 navId: about
 title: "About"
-created: 2026-02-05
+created: 2025-11-13
 updated: 2026-03-02
 summary: "关于本站"
 searchExclude: true
@@ -24,7 +24,7 @@ hero:
 
 
 ## 制作这个网站的人
-![](https://gyazo.com/eb8684edde8473e6522710d72f7d43cb/max_size/500){gyazo=image}
+![](/media/shared/about/nomadoor_logo.png){media=image}
 - **nomadoor**
   - 是随着 Midjourney 的登场拉开帷幕的，被图像生成 AI 的魅力迷住的人类之一。
   - 虽然既不是设计师也不是工程师只是个普通的尼特，但只有 ComfyUI 用了很长时间，所以在不详细的人中觉得还是稍稍详细的…。

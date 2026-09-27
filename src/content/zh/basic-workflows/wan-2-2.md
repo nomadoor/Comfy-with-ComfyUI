@@ -78,7 +78,7 @@ Wan2.2-A14B 是前半段采样由 `high_noise` 模型，后半段由 `low_noise`
 
 使用 KSampler Advanced，前半用 `high_noise`，后半用 `low_noise` 模型处理。
 
-![](https://gyazo.com/3c0c65842b078922808c740ff797917d){gyazo=image}
+![](/media/basic-workflows/wan-2-2/legacy_gyazo_3c0c65842b078922808c740ff797917d.png){media=image}
 
 [](/workflows/basic-workflows/wan-2-2/wan2_2_text2video_14b.json)
 
@@ -93,7 +93,7 @@ Wan2.2-A14B 是前半段采样由 `high_noise` 模型，后半段由 `low_noise`
 
 ### image2video（14B）
 
-![](https://gyazo.com/83c1b3885e887ed2a170ce853b61691f){gyazo=image}
+![](/media/basic-workflows/wan-2-2/legacy_gyazo_83c1b3885e887ed2a170ce853b61691f.png){media=image}
 
 [](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_14b.json)
 
@@ -108,7 +108,7 @@ Wan2.1 中 FLF2V 有专用模型，但 Wan2.2 的 image2video 模型也对应 FL
 
 在 ComfyUI 中，只要向 `WanFirstLastFrameToVideo` 节点输入 Start / End 的 2 张图像，就能生成补充了 2 张之间的视频。
 
-![](https://gyazo.com/2e2630bf85cd858b53dba10a0cdddba1){gyazo=image}
+![](/media/basic-workflows/wan-2-2/legacy_gyazo_2e2630bf85cd858b53dba10a0cdddba1.png){media=image}
 
 [](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_flf2v_14b.json)
 
@@ -173,7 +173,7 @@ Wan2.2-TI2V-5B 是在 1 个模型处理 text2video / image2video 双方的 TI2V 
 
 ### image2video（5B）
 
-![](https://gyazo.com/79c9d851847801e276073863d349b43a){gyazo=image}
+![](/media/basic-workflows/wan-2-2/legacy_gyazo_79c9d851847801e276073863d349b43a.png){media=image}
 
 [](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_5b.json)
 

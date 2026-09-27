@@ -11,7 +11,7 @@ summary: A technique to finish rough collage images into natural single pictures
   instruction-based image editing.
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: https://i.gyazo.com/967bb07db193bdc681c1f5528f99d537.png
+  image: /media/ai-capabilities/collage-refine/legacy_gyazo_967bb07db193bdc681c1f5528f99d537.png
 ---
 ## What is Refining Rough Collages?
 
@@ -40,7 +40,7 @@ In fact, this worked well and is being enjoyed by the community.
 
 Although the latest instruction-based image editing models support multiple image inputs, there are still several advantages to refining rough collages.
 
-![](https://gyazo.com/be997efbbc0c0802513bfab1e8ebe585){gyazo=image}
+![](/media/ai-capabilities/collage-refine/legacy_gyazo_be997efbbc0c0802513bfab1e8ebe585.png){media=image}
 
 ### Positional Information Can Be Retained As Is
 

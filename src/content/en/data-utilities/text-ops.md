@@ -15,7 +15,7 @@ hero:
 
 ## Text Operations
 
-![](https://i.gyazo.com/8731cc3b1bd685d83a13d37ffc0617ed.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_8731cc3b1bd685d83a13d37ffc0617ed.png){media=image}
 
 In ComfyUI, text is mainly handled as prompts.
 Automating some operations, such as replacing part of a string or attaching trigger words to prompts created by LLMs, makes the workflow more convenient.
@@ -35,14 +35,14 @@ In the programming world, text is called **string** to distinguish it from numbe
 
 ### String Node (Text Input)
 
-![](https://i.gyazo.com/7669da6621b5fcb5b7cc0c539f4d5af7.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_7669da6621b5fcb5b7cc0c539f4d5af7.png){media=image}
 
 This is a basic node for entering character strings.
 Using the **String (Multiline)** node allows you to enter text containing line breaks.
 
 ### Concatenate Node (Text Joining)
 
-![](https://i.gyazo.com/a20e6df7b2f65bf71d42c2070f79c726.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_a20e6df7b2f65bf71d42c2070f79c726.png){media=image}
 
 Combines multiple strings into one.
 (Example: `apple` + `pen` → `applepen`)
@@ -51,7 +51,7 @@ Combines multiple strings into one.
 
 ### Format Text Node
 
-![](https://gyazo.com/b662c552b5e80b5b04cad422b72a19b2){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_b662c552b5e80b5b04cad422b72a19b2.png){media=image}
 
 [](../../../workflows/data-utilities/text-ops/format_text.json)
 
@@ -63,23 +63,23 @@ For example, if you connect `apple` to `a` and `red` to `b`, then write `{a} is 
 
 ### Replace Node (Text Replacement)
 
-![](https://i.gyazo.com/db1e540470805d5888a9c90b1381fa44.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_db1e540470805d5888a9c90b1381fa44.png){media=image}
 
 Replaces specified characters with other characters.
 (Example: `apple pen` → `orange pen`)
 
 ### Substring Node (Text Extraction)
 
-![](https://i.gyazo.com/ab158488e388004f441a2258379c7930.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_ab158488e388004f441a2258379c7930.png){media=image}
 
 Extracts characters in a specified range.
 (Example: `apple` → `ppl`)
 
 - Extracts the string from the `start`th to the `end`th character.
 
-### Trim Node (Remove Spaces)
+### Trim Text Node (Remove Spaces)
 
-![](https://i.gyazo.com/1b83d39d165c117f05e1d28ca88957ee.png){gyazo=image}
+![](/media/data-utilities/text-ops/trim_text.png){media=image}
 
 Removes spaces before and after the string.
 (Example: ` apple ` → `apple`)
@@ -88,7 +88,7 @@ Removes spaces before and after the string.
 
 ### Length Node (Character Count)
 
-![](https://i.gyazo.com/cd8d1001ddaf646c85f31bfbf7df61fb.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_cd8d1001ddaf646c85f31bfbf7df61fb.png){media=image}
 
 Counts the length of the text.
 (Example: `apple` → `5`)
@@ -104,13 +104,13 @@ Performs complex searches and replacements using a description rule called "Regu
 
 ### Regex Extract Node
 
-![](https://i.gyazo.com/ad16cc24b76fdffe4ed4adfd84a48563.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_ad16cc24b76fdffe4ed4adfd84a48563.png){media=image}
 
 Extracts strings that match the condition using regular expressions.
 
 ### Regex Replace Node
 
-![](https://i.gyazo.com/8f469774411a0096e3725a090fe41d9d.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_8f469774411a0096e3725a090fe41d9d.png){media=image}
 
 Replaces strings that match the condition using regular expressions.
 
@@ -122,6 +122,6 @@ The `Power Puter` from [rgthree-comfy](https://github.com/rgthree/rgthree-comfy)
 
 - [Node: Power Puter (Wiki)](https://github.com/rgthree/rgthree-comfy/wiki/Node:-Power-Puter)
 
-![](https://i.gyazo.com/c6fd4f1e69b293da19f84963fa1e3ac1.png){gyazo=image}
+![](/media/data-utilities/text-ops/legacy_gyazo_c6fd4f1e69b293da19f84963fa1e3ac1.png){media=image}
 
 [](/workflows/data-utilities/text-ops/power_puter_rgthree_replace.json)

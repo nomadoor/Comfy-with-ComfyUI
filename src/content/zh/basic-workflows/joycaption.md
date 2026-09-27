@@ -35,7 +35,7 @@ tags: ["tag-caption-generation"]
 
 从被输入的图像生成说明文。
 
-![](https://gyazo.com/c14e87a362f349d3e649af28622262f1){gyazo=image}
+![](/media/basic-workflows/joycaption/legacy_gyazo_c14e87a362f349d3e649af28622262f1.png){media=image}
 
 [](/workflows/basic-workflows/joycaption/joycaption.json)
 

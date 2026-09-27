@@ -25,13 +25,13 @@ hero:
 
 > どんなノードがあるかは覚えるしかないです。頑張って学びましょう！！
 
-![](https://gyazo.com/b0571db1685d43d84739aeac7559abc8){gyazo=loop}
+![](/media/begin-with/nodes/legacy_gyazo_b0571db1685d43d84739aeac7559abc8.mp4){media=loop}
 
 ### メニューから追加
 
 - キャンバス上で右クリック → `Add Node` → ノードを探してクリック
 
-![](https://gyazo.com/ef2cca44a8446a84d9722578e97becbc){gyazo=loop}
+![](/media/begin-with/nodes/legacy_gyazo_ef2cca44a8446a84d9722578e97becbc.mp4){media=loop}
 
 
 ### 接続可能なノードから追加
@@ -39,7 +39,7 @@ hero:
 - ピンからドラッグしてキャンバス上で離す
 - 検索窓が表示されますが、データ型によるフィルタがかかった状態で表示されます
 
-![](https://gyazo.com/89de8c5d0c26473008ed7b65c6d62f71){gyazo=loop}
+![](/media/begin-with/nodes/legacy_gyazo_89de8c5d0c26473008ed7b65c6d62f71.mp4){media=loop}
 
 
 ### 接続可能なノードから追加 (レガシー)
@@ -47,7 +47,7 @@ hero:
 - ピンからドラッグして**Shiftを押しながら**キャンバス上で離す
 - 表示されるリストから選択（表示上限があるため、見つからない場合は `Search` から検索）
 
-![](https://gyazo.com/7fd0db2ee2795630a82eff60f59dc967){gyazo=loop}
+![](/media/begin-with/nodes/legacy_gyazo_7fd0db2ee2795630a82eff60f59dc967.mp4){media=loop}
 
 ---
 
@@ -56,14 +56,14 @@ hero:
 - ピンからピンへドラッグ
 - 正確にピンに合わせなくても、ノード上にドラッグするだけで自動的に吸着します。
 
-![](https://gyazo.com/b8d64b7c5ff3ec72eab34d230b18220f){gyazo=loop}
+![](/media/begin-with/nodes/legacy_gyazo_b8d64b7c5ff3ec72eab34d230b18220f.mp4){media=loop}
 
 ### 接続の変更
 
 - `Shift` を押しながらピンからピンへドラッグ
 - 既に接続されているラインがある場合、まとめて繋ぎ直すことができます。
 
-![](https://gyazo.com/bd765ab5d368f0ea62bd9f6752bbd511){gyazo=loop}
+![](/media/begin-with/nodes/legacy_gyazo_bd765ab5d368f0ea62bd9f6752bbd511.mp4){media=loop}
 
 ---
 
@@ -75,14 +75,14 @@ hero:
 - **範囲選択**: `Ctrl` + ドラッグ
 - **移動**: 選択した状態でドラッグ
 
-![](https://gyazo.com/ec2d834b60c0fdc243fe12298f2a849d){gyazo=loop}
+![](/media/begin-with/nodes/legacy_gyazo_ec2d834b60c0fdc243fe12298f2a849d.mp4){media=loop}
 
 ### 削除
 
 - ノードを選択して `Delete` キー
 - または `Node Selection Toolbox` の `🗑️` をクリック
 
-![](https://gyazo.com/38bdfe83ae6bbbff8f063bed7936edfe){gyazo=loop}
+![](/media/begin-with/nodes/legacy_gyazo_38bdfe83ae6bbbff8f063bed7936edfe.mp4){media=loop}
 
 ### コピー & ペースト
 
@@ -90,14 +90,14 @@ hero:
 - **接続を維持してペースト**: `Ctrl + C` → `Ctrl + Shift + V`
 - **複製**: `Alt` を押しながらドラッグ
 
-![](https://gyazo.com/3898dc47a12c5d95d8f81093bdf5bfb7){gyazo=loop}
+![](/media/begin-with/nodes/legacy_gyazo_3898dc47a12c5d95d8f81093bdf5bfb7.mp4){media=loop}
 
 ### 折りたたみ
 
 - ノード左上の `⚫` をクリック
 - 折りたたみ中は、新たな接続や解除ができなくなります。
 
-![](https://gyazo.com/cc2fb21c796ea9a872dd9b25fdf317c0){gyazo=loop}
+![](/media/begin-with/nodes/legacy_gyazo_cc2fb21c796ea9a872dd9b25fdf317c0.mp4){media=loop}
 
 ### ピン留め（固定）
 
@@ -105,13 +105,13 @@ hero:
 
 - ノードを選択して `P` キー
 
-![](https://gyazo.com/e18df835c4248220e5c8a0c2d021dacd){gyazo=loop}
+![](/media/begin-with/nodes/legacy_gyazo_e18df835c4248220e5c8a0c2d021dacd.mp4){media=loop}
 
 ### パラメータのリセット
 
 - ノードを右クリック → `Fix node(recreate)`
 
-![](https://gyazo.com/b1fec4d60d74acb79b6ef2c56db4e6ab){gyazo=loop}
+![](/media/begin-with/nodes/legacy_gyazo_b1fec4d60d74acb79b6ef2c56db4e6ab.mp4){media=loop}
 
 ### Node Info（ノード情報）
 
@@ -126,7 +126,7 @@ hero:
 
 - `Node Selection Toolbox` の `🎨 (Color)` をクリックして色を選択
 
-![](https://gyazo.com/57d95f8586bdda17ed96855cbac37af8){gyazo=loop}
+![](/media/begin-with/nodes/legacy_gyazo_57d95f8586bdda17ed96855cbac37af8.mp4){media=loop}
 
 ### ノードのタイトル変更
 
@@ -134,7 +134,7 @@ hero:
 
 - ノードをダブルクリック → 好きな名前を入力して `Enter`
 
-![](https://gyazo.com/6d04c3d29e18e2ef5327c438264ff3d0){gyazo=loop}
+![](/media/begin-with/nodes/legacy_gyazo_6d04c3d29e18e2ef5327c438264ff3d0.mp4){media=loop}
 
 
 ---
@@ -146,7 +146,7 @@ workflowの配線を整理するために使用します。
 - 検索して追加
 - ポイントを中クリックで追加
 
-![](https://gyazo.com/86de60d6b6959f5448dcfaad42178fcb){gyazo=image}
+![](/media/begin-with/nodes/legacy_gyazo_86de60d6b6959f5448dcfaad42178fcb.mp4){media=loop}
 
 
 ### ドット型Reroute
@@ -155,7 +155,7 @@ Rerouteノードはノードとして単体で存在しましたが、こちら�
 
 - ライン上の点を `Alt + 左クリック`
 
-![](https://gyazo.com/cac43ac8b7fef76a4cdb0ff5d83bd1c7){gyazo=loop}
+![](/media/begin-with/nodes/legacy_gyazo_cac43ac8b7fef76a4cdb0ff5d83bd1c7.mp4){media=loop}
 
 ---
 
@@ -168,7 +168,7 @@ Rerouteノードはノードとして単体で存在しましたが、こちら�
 - ノードを選択して `Ctrl + B`
 - `Node Selection Toolbox` の `🔀` をクリック
 
-![](https://gyazo.com/4ab6605bdd97ee8cae5b4403057a38e5){gyazo=loop}
+![](/media/begin-with/nodes/legacy_gyazo_4ab6605bdd97ee8cae5b4403057a38e5.mp4){media=loop}
 
 ### ミュート (Mute)
 
@@ -183,7 +183,7 @@ Rerouteノードはノードとして単体で存在しましたが、こちら�
 >
 > 実際のところ、ミュートはあまり使われません。使用しないノードを全部バイパスしてしまうことが多いです。
 
-![](https://i.gyazo.com/5d96054e7b54a62b3a446a28d70212d6.png){gyazo=image}
+![](/media/begin-with/nodes/legacy_gyazo_5d96054e7b54a62b3a446a28d70212d6.png){media=image}
 
 ---
 
@@ -194,7 +194,7 @@ Rerouteノードはノードとして単体で存在しましたが、こちら�
 - **変換**: ピンがないパラメータの横にカーソルを持っていくと、接続ポイントが現れます。
 - **戻す**: 接続しているラインを外すと、自動的に元の入力欄に戻ります。
 
-![](https://gyazo.com/80e1bb9211082f4d89a2a85d5abd78c2){gyazo=loop}
+![](/media/begin-with/nodes/legacy_gyazo_80e1bb9211082f4d89a2a85d5abd78c2.mp4){media=loop}
 
 ### Primitiveノード
 
@@ -205,12 +205,12 @@ Rerouteノードはノードとして単体で存在しましたが、こちら�
 >
 > 現在は型が決まった`intノード`、`floatノード`、`stringノード`などを使用することを推奨します。
 
-![](https://i.gyazo.com/e0a056e9c112028930466701e22afd10.gif){gyazo=image}
+![](/media/begin-with/nodes/legacy_gyazo_e0a056e9c112028930466701e22afd10.mp4){media=loop}
 
 > **Tip:**
 > ピンを **ダブルクリック** すると、その型に合ったPrimitiveノードが自動的に接続されます。
 
-![](https://gyazo.com/35f00ebec3fab7b0471b5595b4b0a5e5){gyazo=loop}
+![](/media/begin-with/nodes/legacy_gyazo_35f00ebec3fab7b0471b5595b4b0a5e5.mp4){media=loop}
 
 
 ## ノードの整理
@@ -220,4 +220,4 @@ Rerouteノードはノードとして単体で存在しましたが、こちら�
 - **Align Selected To**: 選択したノードを整列させます（上揃え、左揃えなど）。
 - **Distribute Nodes**: 選択したノードを等間隔に配置します。
 
-![](https://gyazo.com/6bb992414f853ea57c7182cde11933f8){gyazo=loop}
+![](/media/begin-with/nodes/legacy_gyazo_6bb992414f853ea57c7182cde11933f8.mp4){media=loop}

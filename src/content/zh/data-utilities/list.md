@@ -6,7 +6,7 @@ slug: list
 navId: list
 title: "List"
 created: 2025-11-26
-updated: 2026-08-03
+updated: 2026-09-27
 summary: "关于列表：使用多个数据进行连续处理的思路"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
@@ -27,69 +27,33 @@ List（列表）是一种将多个数据作为“一个整体”来处理的机�
 
 ---
 
-## 创建 List
+## 创建和取出 List
 
 ### Create List 节点
 
-用于手动组装 List 的节点。
-将任意类型（图像 / 文本 / 数值等）汇总成 1 个 List。
+用于手动组装 List 的节点。它可以把图像、文本、数值等任意类型汇总成一个 List。
 
-![](https://gyazo.com/06892a5581ad86c9a2b56f01df91b983){gyazo=image}
+![](/media/data-utilities/list/create_list.mp4){media=loop}
 
 [](/workflows/data-utilities/list/create_list.json)
 
-- 连接节点后插槽会增加，可以添加任意数量。
+- 连接节点后会增加插槽，可以添加任意数量的项目。
 
----
+### Get Item From List 节点
 
-## 方便使用的自定义节点
+可以从 List 中取出任意编号的一项。
 
-仅使用 ComfyUI 的标准节点也可以创建 List，但能做的操作比较有限。使用以下自定义节点，可以从文件夹或字符串创建 List，也可以从 List 中取出指定元素。
+![](/media/data-utilities/list/get_item_from_list.png){media=image}
 
-- [ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
-- [ltdrdata/ComfyUI-Inspire-Pack](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
-- [godmt/ComfyUI-List-Utils](https://github.com/godmt/ComfyUI-List-Utils)
+[](/workflows/data-utilities/list/get_item_from_list.json)
 
-### Load Image List From Dir (Inspire) 节点
-
-批量读取文件夹内的图像，创建 `IMAGE` 的 List。
-
-![](https://gyazo.com/4003d1d985e5153aab3cfe4f68c7d979){gyazo=image}
-
-[](/workflows/data-utilities/list/load_image_list_from_dir_inspire.json)
-
-- `directory`: 输入要读取的文件夹路径
-- `load_always`：当文件夹内容发生变化时，是否每次重读
-  - 如果在 disabled 状态下使用，ComfyUI 会认为“只要路径与上次相同，内容就是一样的”，即使文件夹内有变更（添加、删除图像等）也不会重读。
-  - 如果想要替换图像并重新执行，请将 `load_always` 设置为 `enabled`。
-
-### Split String
-
-将 1 个长 `STRING`，按分隔符分割并转换为 List。
-
-![](https://gyazo.com/ec2466a80a39f2d4a1c79526167b5293){gyazo=image}
-
-[](/workflows/data-utilities/list/split_string.json)
-
-- `delimiter`：分隔符（因为 `,` 在提示词中经常使用，所以最好避免使用）
-- `splitlines`：按换行符分割
-- `strip` : 删除前后的空白
-
-### Select Nth Item (Any list) 节点
-
-从 List 中取出指定位置的一个元素。
-
-![](https://gyazo.com/f1d3281970effbc7a2fc8a782f1a21ab){gyazo=image}
-
-[](/workflows/data-utilities/list/select_nth_item_any_list.json)
-
-- `index`：想要取出的位置（0, 1, 2…）
+- `index`：要取出的位置（0、1、2……）
 
 ---
 
 ## 存在多个 List 时的举动
 
-![](https://gyazo.com/c001c197c385e9cdc2bdab3bc74f69c4){gyazo=image}
+![](/media/data-utilities/list/legacy_gyazo_c001c197c385e9cdc2bdab3bc74f69c4.png){media=image}
 
 [](/workflows/data-utilities/list/image2image_2list_3list.json)
 

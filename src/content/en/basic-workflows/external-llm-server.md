@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "Run an LLM outside ComfyUI and connect to it"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/da95a615f374717f19b3447244ad647a.png"
+  image: "/media/basic-workflows/external-llm-server/legacy_gyazo_da95a615f374717f19b3447244ad647a.png"
 ---
 
 ## External LLM Server Integration
@@ -40,7 +40,7 @@ Ollama also provides this [compatible API](https://docs.ollama.com/api/openai-co
 
 ## Setting up Ollama
 
-![](https://gyazo.com/a01ee125967ce857275bc883a5c3a1dd){gyazo=image}
+![](/media/basic-workflows/external-llm-server/legacy_gyazo_a01ee125967ce857275bc883a5c3a1dd.png){media=image}
 
 We'll use **[Ollama](https://ollama.com/)**, a simple and easy-to-use open-source inference engine.
 
@@ -83,7 +83,7 @@ We'll use a node that can send requests in OpenAI API-compatible format. Any wil
 
 ### Minimal chat
 
-![](https://gyazo.com/767f4fd9d6adf6727fc075fac1d14479){gyazo=image}
+![](/media/basic-workflows/external-llm-server/legacy_gyazo_767f4fd9d6adf6727fc075fac1d14479.png){media=image}
 
 [](/workflows/basic-workflows/external-llm-server/openai_api_chat.json)
 
@@ -99,7 +99,7 @@ Type your message in the input field at the top of the node and hit `▷Run`.
 This node has no internal "memory."
 To continue a conversation, connect the `History` output of the previous node to the `History` input of the next node — this sends the past log along with each new request.
 
-![](https://gyazo.com/274ae7b0dac7a88e4481cd4ca815757f){gyazo=image}
+![](/media/basic-workflows/external-llm-server/legacy_gyazo_274ae7b0dac7a88e4481cd4ca815757f.png){media=image}
 
 [](/workflows/basic-workflows/external-llm-server/openai_api_chat_history.json)
 
@@ -120,7 +120,7 @@ If you're using an MLLM like Qwen3 VL that understands images, you can feed in a
 
 Let's put it to use: have the model generate a prompt from an input image, then use that prompt to generate a similar image.
 
-![](https://gyazo.com/214851c957532e34fb705e0d5feeeef9){gyazo=image}
+![](/media/basic-workflows/external-llm-server/legacy_gyazo_214851c957532e34fb705e0d5feeeef9.png){media=image}
 
 [](/workflows/basic-workflows/external-llm-server/openai_api_chat_image2prompt.json)
 

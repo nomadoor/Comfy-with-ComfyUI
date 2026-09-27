@@ -25,7 +25,7 @@ ComyfUIは日々進歩しているので、中級者以上の方にとっても�
 
 
 ## このサイトを作った人
-![](https://gyazo.com/eb8684edde8473e6522710d72f7d43cb/max_size/500){gyazo=image}
+![](/media/shared/about/nomadoor_logo.png){media=image}
 - **nomadoor**
   - Midjourneyの登場で幕を開けた画像生成AIの魅力に取りつかれた人間の一人です。
   - デザイナーでもエンジニアでも無いただのニートですが、ComfyUIだけは長く使ってきたので、詳しくない中ではそこそこ詳しい…と思っています。

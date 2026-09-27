@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "在 Wan2.1 中处理 text2video・image2video・FLF2V 的基本工作流"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/f952fb311ffdb409a173641f61dd3b67.png"
+  image: "/media/basic-workflows/wan-2-1/legacy_gyazo_f952fb311ffdb409a173641f61dd3b67.png"
 tags: []
 ---
 
@@ -82,7 +82,7 @@ tags: []
 
 Wan2.1 的基础 text2video 的工作流。
 
-![](https://gyazo.com/58d4a88ecb1e1e2887c830c371236b40){gyazo=loop}
+![](/media/basic-workflows/wan-2-1/legacy_gyazo_58d4a88ecb1e1e2887c830c371236b40.mp4){media=loop}
 
 [](/workflows/basic-workflows/wan-2-1/wan2_1_text2video_14b.json)
 
@@ -97,7 +97,7 @@ Wan2.1 的基础 text2video 的工作流。
 
 虽然不是能体感到的程度，但作为核心节点实现了几乎没有缺点的提高品质的技术，所以用上吧。
 
-![](https://gyazo.com/02c625103e8076b8a1f14046839e1ff9){gyazo=loop}
+![](/media/basic-workflows/wan-2-1/legacy_gyazo_02c625103e8076b8a1f14046839e1ff9.mp4){media=loop}
 
 [](/workflows/basic-workflows/wan-2-1/wan2_1_text2video_14b_imp.json)
 
@@ -114,7 +114,7 @@ Wan2.1 的基础 text2video 的工作流。
 
 给予图像的话，会从那个图像生成后续。
 
-![](https://gyazo.com/2cbaf276cd5e4f6751826c34efb6c743){gyazo=image}
+![](/media/basic-workflows/wan-2-1/legacy_gyazo_2cbaf276cd5e4f6751826c34efb6c743.mp4){media=loop}
 
 [](/workflows/basic-workflows/wan-2-1/wan2_1_image2video_14b.json)
 
@@ -126,7 +126,7 @@ Wan2.1 的基础 text2video 的工作流。
 
 给予 2 张图像，生成让其之间自然填补的视频。
 
-![](https://gyazo.com/44220286b8ce6e0e70db622132527c02){gyazo=loop}
+![](/media/basic-workflows/wan-2-1/legacy_gyazo_44220286b8ce6e0e70db622132527c02.mp4){media=loop}
 
 [](/workflows/basic-workflows/wan-2-1/wan2_1_flf2v_14b.json)
 
@@ -155,7 +155,7 @@ Wan2.1 的基础 text2video 的工作流。
 
 ### 工作流
 
-![](https://gyazo.com/6e4854ea69598ba4b9c3d8bc259f4b57){gyazo=loop}
+![](/media/basic-workflows/wan-2-1/legacy_gyazo_6e4854ea69598ba4b9c3d8bc259f4b57.mp4){media=loop}
 
 [](/workflows/basic-workflows/wan-2-1/wan2_1_text2video_14b_self_forcing.json)
 
@@ -171,6 +171,6 @@ Wan2.1 的基础 text2video 的工作流。
 
 即在 text2video 的工作流中，**用 1 帧生成视频**。
 
-![](https://gyazo.com/edf26ea1ef891b721579af1dc5aa6bd1){gyazo=image}
+![](/media/basic-workflows/wan-2-1/legacy_gyazo_edf26ea1ef891b721579af1dc5aa6bd1.png){media=image}
 
 [](/workflows/basic-workflows/wan-2-1/wan2_1_text2image_14b.json)

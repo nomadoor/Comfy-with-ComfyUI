@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: 从图像中仅去除特定物品的任务，及其代表性的方法
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: https://i.gyazo.com/e06eeccf0efa2e91773bb54acb31560a.gif
+  image: /media/ai-capabilities/object-removal/legacy_gyazo_e06eeccf0efa2e91773bb54acb31560a.mp4
 ---
 ## 什么是对象去除？
 
@@ -24,7 +24,7 @@ hero:
 
 在扩散模型出现之前，像 LaMa 这样基于 CNN 的 inpainting 模型经常作为 SoTA 被使用。
 
-![](https://gyazo.com/4c0b962c3983bc3296da9b994c07f3b6){gyazo=image}
+![](/media/ai-capabilities/object-removal/legacy_gyazo_4c0b962c3983bc3296da9b994c07f3b6.png){media=image}
 
 [](/workflows/ai-capabilities/object-removal/lama.json)
 
@@ -38,7 +38,7 @@ hero:
 
 在想要去除的对象上绘制蒙版，编写配合背景的提示词（例：“只有背景的草坪”、“什么都没有的地板”），然后进行 inpainting。
 
-![](https://gyazo.com/2cad88edab0d74b24f0fc78f528a320d){gyazo=image}
+![](/media/ai-capabilities/object-removal/legacy_gyazo_2cad88edab0d74b24f0fc78f528a320d.png){media=image}
 
 [](/workflows/ai-capabilities/object-removal/remake_for_sdxl_removing_object_and_filling_with_background.json)
 
@@ -54,7 +54,7 @@ hero:
 
 只要指示“把这个人消除”、“把这个标志消除”、“把右下的 LOGO 消除”等即可。
 
-![](https://gyazo.com/84af7edfab7cd344f7654090b7957166){gyazo=image}
+![](/media/ai-capabilities/object-removal/legacy_gyazo_84af7edfab7cd344f7654090b7957166.png){media=image}
 
 [](/workflows/ai-capabilities/object-removal/qwen_image_edit_2509_object_removal.json)
 

@@ -27,7 +27,7 @@ hero:
 
 一般的 VFI 接收时间上接近的两张帧（不到 0.1 秒左右），在其间生成 1 张以上的“中间帧”。通过重复这个过程，增加视频整体的帧数。
 
-![](https://gyazo.com/af7273352979b5286d8f85a9b6915ab6.png){gyazo=image}
+![](/media/ai-capabilities/frame-interpolation/legacy_gyazo_af7273352979b5286d8f85a9b6915ab6.mp4){media=loop}
 
 [](/workflows/ai-capabilities/frame-interpolation/vfi_gmfss.json)
 
@@ -41,7 +41,7 @@ hero:
 
 最近，从此通过前进一步，出现了 **用视频生成模型的力量填补相隔 1 秒以上帧之间** 类型的技术。
 
-![](https://gyazo.com/669467e658bbd5cd9e03207a5ccd1faa.gif){gyazo=image}
+![](/media/ai-capabilities/frame-interpolation/legacy_gyazo_669467e658bbd5cd9e03207a5ccd1faa.mp4){media=loop}
 
 [](/workflows/ai-capabilities/frame-interpolation/tooncrafter_interp.json)
 
@@ -62,7 +62,7 @@ ToonCrafter 是这个系列的早期模型，但每次新的视频模型出现�
 - 填补第 2–3 张之间…
 - 填补第 3–4 张之间…
 
-![](https://gyazo.com/356c0e45a7ccf73ace4714f84ccc30fa.gif){gyazo=loop}
+![](/media/ai-capabilities/frame-interpolation/legacy_gyazo_356c0e45a7ccf73ace4714f84ccc30fa.mp4){media=loop}
 
 VACE 的 **Extension** 则在此基础上进一步发展了。
 
@@ -71,6 +71,6 @@ VACE 的 **Extension** 则在此基础上进一步发展了。
 例如，假设要生成 81 帧的视频。
 在其中插入几帧作为“关键帧”。模型会在 **同一个时间轴中** 自然地连接这些关键帧来生成视频。
 
-![](https://gyazo.com/1bd83bd9c5258b25ce9016917516a526.gif){gyazo=image}
+![](/media/ai-capabilities/frame-interpolation/legacy_gyazo_1bd83bd9c5258b25ce9016917516a526.png){media=image}
 
 与 FLF2V 相比，生成的视频要自然得多。恐怕今后 Extension 这样的技术会成为主流吧。

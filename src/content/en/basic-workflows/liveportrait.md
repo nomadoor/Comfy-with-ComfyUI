@@ -10,7 +10,7 @@ updated: 2026-08-26
 summary: "Controlling expression and head movement from a single face photo with LivePortrait"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/0df8e012722c39159be1762a9a38ea99.png"
+  image: "/media/basic-workflows/liveportrait/legacy_gyazo_0df8e012722c39159be1762a9a38ea99.png"
 tags: ["talking-head"]
 ---
 
@@ -43,7 +43,7 @@ There are two main control methods.
 
 ### Adjusting expressions with parameters
 
-![](https://gyazo.com/f3793dcde8d6e286a67c3dd41b732da5){gyazo=loop}
+![](/media/basic-workflows/liveportrait/legacy_gyazo_f3793dcde8d6e286a67c3dd41b732da5.mp4){media=loop}
 
 [](/workflows/basic-workflows/liveportrait/liveportrait_i2i.json)
 
@@ -52,7 +52,7 @@ There are two main control methods.
 
 ### Editing from a reference image
 
-![](https://gyazo.com/0df8e012722c39159be1762a9a38ea99){gyazo=image}
+![](/media/basic-workflows/liveportrait/legacy_gyazo_0df8e012722c39159be1762a9a38ea99.png){media=image}
 
 [](/workflows/basic-workflows/liveportrait/liveportrait_i2i_ref.json)
 
@@ -76,7 +76,7 @@ Animates the person in the image according to parameters or a reference video.
 
 You can create a video by making multiple expressions with the `Expression Editor (PHM)` and changing those expressions one after another.
 
-![](https://gyazo.com/adf677e141945fd7d957acb2e26c02ec){gyazo=loop}
+![](/media/basic-workflows/liveportrait/legacy_gyazo_adf677e141945fd7d957acb2e26c02ec.mp4){media=loop}
 
 [](/workflows/basic-workflows/liveportrait/liveportrait_i2v_motion_link.json)
 
@@ -115,7 +115,7 @@ In this case, a video with a total of 46 frames is created.
 
 Although we did something a bit tricky above, I think this usage will actually be the main one.
 
-![](https://gyazo.com/c893e38c12859f8f20ff1e0fca545788){gyazo=image}
+![](/media/ai-capabilities/talking-head/legacy_gyazo_c893e38c12859f8f20ff1e0fca545788.mp4){media=loop}
 
 [](/workflows/basic-workflows/liveportrait/liveportrait_i2v_ref.json)
 
@@ -130,7 +130,7 @@ Of course, you can also use it in combination with `motion_link` above.
 
 Matches the expression of the person in the video to the reference video.
 
-![](https://gyazo.com/1a0205956e78b32045372f207582566d){gyazo=loop}
+![](/media/basic-workflows/liveportrait/legacy_gyazo_1a0205956e78b32045372f207582566d.mp4){media=loop}
 
 [](/workflows/basic-workflows/liveportrait/liveportrait_v2v_ref.json)
 

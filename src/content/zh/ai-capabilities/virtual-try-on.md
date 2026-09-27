@@ -41,7 +41,7 @@ hero:
 
 基本思路与 IC-LoRA / ACE++ 相同，使用 **并排布局**。
 
-![](https://gyazo.com/e06c4fb2aca261c0d37b792bea9dcc80){gyazo=image}
+![](/media/ai-capabilities/virtual-try-on/legacy_gyazo_e06c4fb2aca261c0d37b792bea9dcc80.png){media=image}
 
 [](/workflows/ai-capabilities/virtual-try-on/catvton_flux_lora.json)
 
@@ -58,7 +58,7 @@ hero:
 
 但是，通过与 IC-LoRA / ACE++ 时同样的 **并排技巧** 以及为此学习的 LoRA，可以做到类似的事情。
 
-![](https://gyazo.com/30a82ecdd7a8cff9483a162decf7c31d){gyazo=image}
+![](/media/ai-capabilities/virtual-try-on/legacy_gyazo_30a82ecdd7a8cff9483a162decf7c31d.png){media=image}
 
 [](/workflows/ai-capabilities/virtual-try-on/flux_kontext_lora_v0_2.json)
 

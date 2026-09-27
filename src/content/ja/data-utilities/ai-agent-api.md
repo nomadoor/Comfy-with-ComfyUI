@@ -15,7 +15,7 @@ hero:
 
 ## ComfyUIは「画面」と「実行エンジン」に分かれている
 
-![](https://gyazo.com/a04e2d09b534afb1e32900a738f0c3a7){gyazo=image}
+![](/media/begin-with/multiple-comfyui-instances/legacy_gyazo_a04e2d09b534afb1e32900a738f0c3a7.png){media=image}
 
 前提として知っておきたいのが、ComfyUI が **画面** と **実行エンジン** に分かれているという点です。
 
@@ -127,7 +127,7 @@ output フォルダに保存してください。
 
 あとは Codex が workflow を読み、必要なプロンプトや入力画像を差し替え、ComfyUI API に投げてくれます。
 
-![VS Codeの画面](https://gyazo.com/ae044eb02df2f95bd15f00bcd0c44620){gyazo=image}
+![VS Codeの画面](/media/data-utilities/ai-agent-api/legacy_gyazo_ae044eb02df2f95bd15f00bcd0c44620.png){media=image}
 
 ---
 
@@ -138,7 +138,7 @@ output フォルダに保存してください。
 AI に使わせる場合も、基本は同じです。  
 workflow は **小さく、シンプルに** 分けておいたほうが扱いやすいように思います。
 
-![](https://i.gyazo.com/2a9c66fa28c01a8bd12b24fdde2a07a4.png){gyazo=image}
+![](/media/begin-with/readable-nodes/legacy_gyazo_2a9c66fa28c01a8bd12b24fdde2a07a4.png){media=image}
 
 たとえば、次の処理をひとつの workflow にまとめたとします。
 

@@ -29,14 +29,14 @@ ComfyUI の入力ノードには、次の 2 つの実行モードがあります
 
 ### Run (Instant)
 
-![](https://gyazo.com/ba99c003cb82d4e8f2a483eab84e9f03){gyazo=loop}
+![](/media/data-utilities/realtime/legacy_gyazo_ba99c003cb82d4e8f2a483eab84e9f03.mp4){media=loop}
 
 - いったん実行が始まると、**処理が終わるたびに同じ workflow が自動で再実行されます**
 - 止めたい場合は、他のモードに切り替えてください（そのままでは止まりません）
 
 ### Run (On Change)
 
-![](https://gyazo.com/59133ed0ac3bcc4d02f0a34cc8bf9320){gyazo=loop}
+![](/media/data-utilities/realtime/legacy_gyazo_59133ed0ac3bcc4d02f0a34cc8bf9320.mp4){media=loop}
 
 - スライダーなどの値が変わったときだけ実行
 - マウスを動かすたびに自動で処理がキューに入る

@@ -29,7 +29,7 @@ hero:
 ### WD 系 tagger
 
 - **WD14-tagger / WD-tagger-v3 系**
-  - ![](https://gyazo.com/a97fe3f3a2e72a2396df6ebc8c005b72){gyazo=image}
+  - ![](/media/ai-capabilities/tag-caption-generation/legacy_gyazo_a97fe3f3a2e72a2396df6ebc8c005b72.png){media=image}
   - [](/workflows/ai-capabilities/tag-caption-generation/wd_tagger_v3.json)
   - 面向插图・动漫图像的标签添加模型。
   - 角色、发色、服装、表情、构图等相当细致的标签都能添加。

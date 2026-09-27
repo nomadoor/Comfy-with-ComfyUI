@@ -11,7 +11,7 @@ summary: "ControlNetで使う補助画像を作る"
 tags: ["controlnet"]
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/b0ce7cf302624ce253c4d12e78885127.png"
+  image: "/media/basic-workflows/controlnet-prep/legacy_gyazo_b0ce7cf302624ce253c4d12e78885127.png"
 ---
 
 ## Preprocessorとは？
@@ -49,7 +49,7 @@ Canny のような単純なエッジならまだしも、深度マップを毎�
 
 ControlNetに使うくらいなら、そこまで極端な精度は必要ありません。
 
-{% mediaRow img="https://gyazo.com/25026afc9e67bd130954acbf98fd851a{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/controlnet-prep/legacy_gyazo_25026afc9e67bd130954acbf98fd851a.png{media=image}", width=50, align="left" %}
 
 ### Canny
 
@@ -63,7 +63,7 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/4be8acdf3533fb7c80d9b580f755f1db{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/controlnet-prep/legacy_gyazo_4be8acdf3533fb7c80d9b580f755f1db.png{media=image}", width=50, align="left" %}
 
 ### SoftEdge / HED
 
@@ -76,7 +76,7 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/5fcfc6e4a07be8ed93ec0e3f9ed6a993{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/controlnet-prep/legacy_gyazo_5fcfc6e4a07be8ed93ec0e3f9ed6a993.png{media=image}", width=50, align="left" %}
 
 ### Lineart
 
@@ -91,7 +91,7 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 {% endmediaRow %}
 
 
-{% mediaRow img="https://gyazo.com/6be6036f6e7a7f56a8f6de81aeeea7d6{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/controlnet-prep/legacy_gyazo_6be6036f6e7a7f56a8f6de81aeeea7d6.png{media=image}", width=50, align="left" %}
 
 ### Depth
 
@@ -105,7 +105,7 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/e55cf3d13d1b3c3c07497724d42b2780{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/controlnet-prep/legacy_gyazo_e55cf3d13d1b3c3c07497724d42b2780.png{media=image}", width=50, align="left" %}
 
 ### Normal
 
@@ -118,7 +118,7 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/d7fe5840a075c7567848f8953c381734{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/controlnet-prep/legacy_gyazo_d7fe5840a075c7567848f8953c381734.png{media=image}", width=50, align="left" %}
 
 ### MLSD
 
@@ -131,7 +131,7 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/9297daf25cc10b21f495ed985e2bae7c{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/controlnet-prep/legacy_gyazo_9297daf25cc10b21f495ed985e2bae7c.png{media=image}", width=50, align="left" %}
 
 ### Pose
 
@@ -146,7 +146,7 @@ ControlNetに使うくらいなら、そこまで極端な精度は必要あり�
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/617591c28e0aba1c028b9b4012a07c98 {gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/controlnet-prep/legacy_gyazo_617591c28e0aba1c028b9b4012a07c98.png {media=image}", width=50, align="left" %}
 
 ### SDPose
 

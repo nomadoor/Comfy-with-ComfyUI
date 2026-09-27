@@ -28,14 +28,14 @@ ComfyUI 的输入节点有以下 2 种执行模式。
 
 ### Run (Instant)
 
-![](https://gyazo.com/ba99c003cb82d4e8f2a483eab84e9f03){gyazo=loop}
+![](/media/data-utilities/realtime/legacy_gyazo_ba99c003cb82d4e8f2a483eab84e9f03.mp4){media=loop}
 
 - 一旦开始执行，**每次处理结束后都会自动重新执行相同的 工作流**
 - 如果想停止，请切换到其他模式（不切换的话不会停止）
 
 ### Run (On Change)
 
-![](https://gyazo.com/59133ed0ac3bcc4d02f0a34cc8bf9320){gyazo=loop}
+![](/media/data-utilities/realtime/legacy_gyazo_59133ed0ac3bcc4d02f0a34cc8bf9320.mp4){media=loop}
 
 - 仅在滑块等数值发生变化时执行
 - 每次移动鼠标，处理都会自动进入队列

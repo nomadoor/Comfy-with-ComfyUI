@@ -37,7 +37,7 @@ Florence2Run is the main node for having Florence-2 execute tasks on the input i
 
 Generates a natural language caption from the image.
 
-![](https://gyazo.com/b364e8bc1ba2799ad953384f4dfe2079){gyazo=image}
+![](/media/basic-workflows/florence2/legacy_gyazo_b364e8bc1ba2799ad953384f4dfe2079.png){media=image}
 
 [](/workflows/basic-workflows/florence2/florence2_detailed_caption.json)
 
@@ -52,7 +52,7 @@ However, if the purpose is only "caption for prompts", using a caption-specific 
 
 Outputs the position of the object in the form of a rectangle (bounding box) for each phrase of the specified caption.
 
-![](https://gyazo.com/0acc3146eed131b9642857ebc1edcce1){gyazo=image}
+![](/media/basic-workflows/florence2/legacy_gyazo_0acc3146eed131b9642857ebc1edcce1.png){media=image}
 
 [](/workflows/basic-workflows/florence2/florence2_caption_to_phrase_grounding.json)
 
@@ -63,7 +63,7 @@ Outputs the position of the object in the form of a rectangle (bounding box) for
 
 Reads characters in the image and outputs them as text.
 
-![](https://gyazo.com/e701757ab4dfe4056a74a5290d52edbb){gyazo=image}
+![](/media/basic-workflows/florence2/legacy_gyazo_e701757ab4dfe4056a74a5290d52edbb.png){media=image}
 
 [](/workflows/basic-workflows/florence2/florence2_ocr.json)
 
@@ -72,7 +72,7 @@ Reads characters in the image and outputs them as text.
 
 A task to answer questions about the image.
 
-![](https://gyazo.com/614f705d137c7d5a19015b5a9aaa4f17){gyazo=image}
+![](/media/basic-workflows/florence2/legacy_gyazo_614f705d137c7d5a19015b5a9aaa4f17.png){media=image}
 
 [](/workflows/basic-workflows/florence2/florence2_docvqa.json)
 

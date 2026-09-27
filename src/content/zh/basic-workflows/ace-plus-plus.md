@@ -10,13 +10,13 @@ updated: 2026-03-02
 summary: "用 ACE++ 扩展 Flux.1 Fill"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/ca2c5be6b2a22cead23cf75a4fc8424f.png"
+  image: "/media/basic-workflows/ace-plus-plus/legacy_gyazo_ca2c5be6b2a22cead23cf75a4fc8424f.png"
 tags: ["id-transfer","subject-transfer"]
 ---
 
 ## 什么是 ACE++？
 
-![](https://gyazo.com/1ecb26d7a9f2f9f558b02e91114cc692){gyazo=image}
+![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_1ecb26d7a9f2f9f558b02e91114cc692.png){media=image}
 
 这是用以下那样的提示词生成的 1 张图像。
 - 分为 2 帧的图像。
@@ -26,7 +26,7 @@ tags: ["id-transfer","subject-transfer"]
 如所见那样，映在左右的人物看起来是同一人物呢。
 这叫做精灵图表（Sprite sheet）技术，是想制作多张有一致性的情况时，从 Stable Diffusion 1.5 时代开始被使用的秘籍。
 
-![](https://gyazo.com/5b66002abf37e213214611933ac7b833){gyazo=image}
+![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_5b66002abf37e213214611933ac7b833.png){media=image}
 
 从这里更进一步，在给予如上的图像的基础上，试着让其只 inpainting 右半边。  
 于是，**一边参照左边的图像，一边在右侧生成新的图像。**
@@ -89,7 +89,7 @@ ACE++，一边看 **横向排列了“参照图像”和“想编辑的图像＋
 
 生成相似于参照图像的人物（脸）的图像。
 
-![](https://gyazo.com/ebe23ac6ca509cf96538f2a85fcf69c3){gyazo=image}
+![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_ebe23ac6ca509cf96538f2a85fcf69c3.png){media=image}
 
 [](/workflows/basic-workflows/ace-plus-plus/ace_plus_portrait.json)
 
@@ -109,7 +109,7 @@ ACE++，一边看 **横向排列了“参照图像”和“想编辑的图像＋
 
 基本与 ID 传送 相同，但通过改变“放入右侧的基础图像”和“掩膜的打法”作为 Face Swap 动作。
 
-![](https://gyazo.com/966d3c2bfcbaa5ae054fdd7ec4bb1c96){gyazo=image}
+![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_966d3c2bfcbaa5ae054fdd7ec4bb1c96.png){media=image}
 
 [](/workflows/basic-workflows/ace-plus-plus/ace_plus_portrait_faceswap.json)
 
@@ -124,7 +124,7 @@ ACE++，一边看 **横向排列了“参照图像”和“想编辑的图像＋
 
 切换为 `comfyui_subject_lora16.safetensors` 的话，可以进行 Subject 传送。
 
-![](https://gyazo.com/3e84f30e31b23d804ff651a4d29667e9){gyazo=image}
+![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_3e84f30e31b23d804ff651a4d29667e9.png){media=image}
 
 [](/workflows/basic-workflows/ace-plus-plus/ace_plus_subject.json)
 
@@ -142,7 +142,7 @@ ACE++，一边看 **横向排列了“参照图像”和“想编辑的图像＋
 
 使用 `comfyui_local_lora16.safetensors` 的话，可以靠拢只将掩膜的领域 **沿着提示词重画的本地编辑**。
 
-![](https://gyazo.com/e93a8e393eca60dbb1832fd314402dec){gyazo=image}
+![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_e93a8e393eca60dbb1832fd314402dec.png){media=image}
 
 [](/workflows/basic-workflows/ace-plus-plus/ace_plus_local.json)
 

@@ -50,7 +50,7 @@ Because it is forced to run entirely inside ComfyUI, it is much slower and less 
 
 It is certainly nice that this works in the core at all, but at the moment it is still hard to recommend.
 
-![Gemma 3](https://gyazo.com/4e2275270a8f40c8ecdbe2b286addb2e){gyazo=image}
+![Gemma 3](/media/basic-workflows/llm-mllm/legacy_gyazo_4e2275270a8f40c8ecdbe2b286addb2e.png){media=image}
 
 [](/workflows/basic-workflows/llm-mllm/textgenerate_gemma3.json)
 
@@ -65,7 +65,7 @@ Download a model file and run it on your own PC, just like image generation mode
 
 Lightweight models specialized for specific tasks — like caption generation or object detection — are the main use case here.
 
-![Florence2](https://gyazo.com/b364e8bc1ba2799ad953384f4dfe2079){gyazo=image}
+![Florence2](/media/basic-workflows/florence2/legacy_gyazo_b364e8bc1ba2799ad953384f4dfe2079.png){media=image}
 
 **Representative supported models**
 - [JoyCaption](/en/basic-workflows/joycaption/)
@@ -86,7 +86,7 @@ Running on the same PC still means competing for VRAM, but the key advantage is 
 
 ComfyUI's official nodes for calling closed services like ChatGPT or Gemini via API.
 
-![Google_Gemini](https://gyazo.com/0d12a7369948fa19779c0b7ffb487cd0){gyazo=image}
+![Google_Gemini](/media/basic-workflows/api-nodes/legacy_gyazo_0d12a7369948fa19779c0b7ffb487cd0.png){media=image}
 
 Bluntly put, these are far smarter and faster than local models.
 - Zero load on your PC. You can run image generation while prompts are being refined in the background, with no impact on generation speed

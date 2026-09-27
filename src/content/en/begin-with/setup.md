@@ -5,7 +5,7 @@ section: begin-with
 slug: setup
 navId: setup
 title: "Setup"
-created: 2025-11-24
+created: 2025-11-20
 updated: 2026-05-25
 summary: "About Setup"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
@@ -47,7 +47,6 @@ Access the [GitHub release page](https://github.com/comfyanonymous/ComfyUI/relea
 ### 2. Extract and Run
 
 1. Right-click the downloaded `7z file` and extract it with `Extract All`.
-   - ![](https://gyazo.com/776dafe2320c41526e6292f52edbe07d){gyazo=loop}
    - As explained in [Recommended Specs - Storage](/en/begin-with/recommended-specs/#storage), we recommend placing it on an SSD.
 2. Double-click `run_nvidia_gpu.bat` in the extracted folder to start it.
 3. Initial startup takes time for environment configuration. If the browser opens automatically, it is successful.

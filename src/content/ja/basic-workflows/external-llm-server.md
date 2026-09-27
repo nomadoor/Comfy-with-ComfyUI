@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "ComfyUIの外でLLMを動かし連携する"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/da95a615f374717f19b3447244ad647a.png"
+  image: "/media/basic-workflows/external-llm-server/legacy_gyazo_da95a615f374717f19b3447244ad647a.png"
 ---
 
 ## 外部LLMサーバ連携
@@ -39,7 +39,7 @@ Ollamaもこの[互換API](https://docs.ollama.com/api/openai-compatibility)を�
 ---
 ## Ollama の導入
 
-![](https://gyazo.com/a01ee125967ce857275bc883a5c3a1dd){gyazo=image}
+![](/media/basic-workflows/external-llm-server/legacy_gyazo_a01ee125967ce857275bc883a5c3a1dd.png){media=image}
 
 今回は、シンプルで使いやすいオープンソースの推論エンジン **[Ollama](https://ollama.com/)** を使用します。
 
@@ -83,7 +83,7 @@ OpenAI API互換で投げられるノードを使います。どれでも良い�
 
 ### 最小チャット
 
-![](https://gyazo.com/767f4fd9d6adf6727fc075fac1d14479){gyazo=image}
+![](/media/basic-workflows/external-llm-server/legacy_gyazo_767f4fd9d6adf6727fc075fac1d14479.png){media=image}
 
 [](/workflows/basic-workflows/external-llm-server/openai_api_chat.json)
 
@@ -99,7 +99,7 @@ OpenAI API互換で投げられるノードを使います。どれでも良い�
 このノードは内部に“記憶”を持ちません。  
 会話を続けたい場合は、前のノードの History を次のノードの History に接続して、過去ログを毎回いっしょに送ります。
 
-![](https://gyazo.com/274ae7b0dac7a88e4481cd4ca815757f){gyazo=image}
+![](/media/basic-workflows/external-llm-server/legacy_gyazo_274ae7b0dac7a88e4481cd4ca815757f.png){media=image}
 
 [](/workflows/basic-workflows/external-llm-server/openai_api_chat_history.json)
 
@@ -121,7 +121,7 @@ Qwen3 VLのような画像も理解できるMLLMを使っていれば、画像�
 
 せっかくなので、入力した画像からプロンプトを作成してもらい、同じような画像を作ってもらいましょう。
 
-![](https://gyazo.com/214851c957532e34fb705e0d5feeeef9){gyazo=image}
+![](/media/basic-workflows/external-llm-server/legacy_gyazo_214851c957532e34fb705e0d5feeeef9.png){media=image}
 
 [](/workflows/basic-workflows/external-llm-server/openai_api_chat_image2prompt.json)
 

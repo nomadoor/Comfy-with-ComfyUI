@@ -54,13 +54,13 @@ We will explain using Stable Diffusion 1.5, which is where it all started.
 
 ## workflow
 
-![](https://gyazo.com/363769552b12b2072756280f163183df){gyazo=image}
+![](/media/basic-workflows/sd15-text2image/legacy_gyazo_363769552b12b2072756280f163183df.png){media=image}
 
 [](/workflows/basic-workflows/sd15-text2image/sd1_5_text2image.json)
 
 ## About Each Node
 
-{% mediaRow img="https://gyazo.com/c9e67fd1fd3382708102f366bdf63855 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-text2image/legacy_gyazo_c9e67fd1fd3382708102f366bdf63855.png {media=image}", width=33, align="left" %}
 ### Load Checkpoint Node
 
 Loads a Checkpoint model in the old format.
@@ -69,14 +69,14 @@ Loads a Checkpoint model in the old format.
 - Therefore, you will use separate nodes like Load Diffusion Model / Load CLIP / Load VAE.
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/2321a6cfbee1f95261c5bf857068f4b7 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-text2image/legacy_gyazo_2321a6cfbee1f95261c5bf857068f4b7.png {media=image}", width=33, align="left" %}
 ### Empty Latent Image Node
 
 Creates an empty latent image, which serves as the "starting point" for image generation.
 - You specify the size of the image you want to create.
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/ba121f352d6252f885c2855cd99ad2f5 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-text2image/legacy_gyazo_ba121f352d6252f885c2855cd99ad2f5.png {media=image}", width=33, align="left" %}
 ### CLIP Text Encode Node
 
 Converts the text prompt into Conditioning that the model can understand.
@@ -85,7 +85,7 @@ Converts the text prompt into Conditioning that the model can understand.
 - If connected to the `positive` slot of the KSampler, it is treated as positive; if connected to the `negative` slot, it is treated as negative.
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/5404e0e4a52dade391da4cb125b8512e {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-text2image/legacy_gyazo_5404e0e4a52dade391da4cb125b8512e.png {media=image}", width=33, align="left" %}
 ### KSampler Node
 
 The core node of image generation that performs Sampling (noise removal).
@@ -101,7 +101,7 @@ The core node of image generation that performs Sampling (noise removal).
 
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/73b18040b915d0c1159a79cabbb8d065 {gyazo=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-text2image/legacy_gyazo_73b18040b915d0c1159a79cabbb8d065.png {media=image}", width=33, align="left" %}
 
 ### VAE Decode Node
 
@@ -129,7 +129,7 @@ Since then, improved VAEs have been released. There are various VAEs, but if you
 
 ### workflow
 
-![](https://gyazo.com/897f66c308b3b98440f641ee3d33d50e){gyazo=image}
+![](/media/basic-workflows/sd15-text2image/legacy_gyazo_897f66c308b3b98440f641ee3d33d50e.png){media=image}
 
 [](/workflows/basic-workflows/sd15-text2image/sd1_5_text2image_vae_ft_mse_840000.json)
 
@@ -194,6 +194,6 @@ To adjust this manually, we use this attention notation.
 > However, this only works if CLIP understands the word.
 > Adding `(Ghoti:999)` to a word it probably doesn't know has no meaning.
 
-![](https://gyazo.com/e13bd76787711c8392334243177e60f3){gyazo=loop}
+![](/media/basic-workflows/sd15-text2image/legacy_gyazo_e13bd76787711c8392334243177e60f3.mp4){media=loop}
 
 - Place the cursor on the word you want to change the attention of, and use `Ctrl + Up/Down Arrow` to adjust it by 0.05.

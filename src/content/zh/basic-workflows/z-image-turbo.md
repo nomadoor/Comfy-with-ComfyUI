@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "使用 Z-Image-Turbo 的图像生成"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/8cb43e18daed0bcb2bf3bf7c794e5360.png"
+  image: "/media/basic-workflows/z-image-turbo/legacy_gyazo_8cb43e18daed0bcb2bf3bf7c794e5360.png"
 tags: []
 ---
 
@@ -18,7 +18,7 @@ tags: []
 
 Z-Image 是，Alibaba / Tongyi-MAI 的 **图像生成模型家族**。
 
-![](https://gyazo.com/569a829f2dbd9021bfdecf6d1e3267b9){gyazo=image}
+![](/media/basic-workflows/z-image-turbo/legacy_gyazo_569a829f2dbd9021bfdecf6d1e3267b9.png){media=image}
 
 **Z-Image-Turbo** 是，为了能以少的步数 (8 steps) 生成 [Z-Image (Base)](/zh/basic-workflows/z-image) 而被蒸馏的高速模型。  
 并且，不仅是单纯的高速化，为了得到安定的画质也合并施加了强化学习。
@@ -57,7 +57,7 @@ Z-Image 是，Alibaba / Tongyi-MAI 的 **图像生成模型家族**。
 
 Z-Image-Turbo 是，与 Flux.1 dev 相同类型的 **蒸馏模型**。
 
-![](https://gyazo.com/7e5d76cec53ee44278c313a30035463f){gyazo=image}
+![](/media/basic-workflows/z-image-turbo/legacy_gyazo_7e5d76cec53ee44278c313a30035463f.png){media=image}
 
 [](/workflows/basic-workflows/z-image-turbo/z_image_turbo.json)
 
@@ -85,7 +85,7 @@ Z-Image-Turbo 用的 ControlNet 风补丁。
 
 ### 工作流
 
-![](https://gyazo.com/53c91fd9eeb8f94357b20839e5d8c967){gyazo=image}
+![](/media/basic-workflows/z-image-turbo/legacy_gyazo_53c91fd9eeb8f94357b20839e5d8c967.png){media=image}
 
 [](/workflows/basic-workflows/z-image-turbo/z_image_turbo_fun_controlnet_union_2_1.json)
 

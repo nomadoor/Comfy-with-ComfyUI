@@ -10,7 +10,7 @@ updated: 2026-08-26
 summary: "合并检查点或 LoRA 制作新模型或差分 LoRA 的方法"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
- image: "https://i.gyazo.com/60a8e4bd6e8b13d321cab6372e363baa.png"
+ image: "/media/basic-workflows/model-merge/legacy_gyazo_60a8e4bd6e8b13d321cab6372e363baa.png"
 tags: []
 ---
 
@@ -30,7 +30,7 @@ tags: []
 
 首先单纯地将 2 个模型混合一半吧。
 
-![](https://gyazo.com/152fa7235f2878021cd924594b2d2bf1){gyazo=image}
+![](/media/basic-workflows/model-merge/modelmergesimple_0_5.png){media=image}
 
 [](/workflows/basic-workflows/model-merge/modelmergesimple_0_5.json)
 
@@ -41,7 +41,7 @@ tags: []
 - 如果将输出的 `MODEL` 原样连接到 `KSampler`，就能简单地尝试中间模型。
   - 虽然只是杂乱地混合了动漫系和真实系，但能做到像 2.5 次元那样的表现令人吃惊呢。
 
-![](https://gyazo.com/89e876767a48d9acd6c6bb684e6b2495){gyazo=image}
+![](/media/basic-workflows/model-merge/legacy_gyazo_89e876767a48d9acd6c6bb684e6b2495.png){media=image}
 
 - 如果中意合并结果，连接到 `CheckpointSave` 节点作为检查点保存。(在上面的工作流旁路着。)
   - 保存目的地默认为 `ComfyUI/output/checkpoints/`（Windows 便携版的标准设定）。
@@ -67,7 +67,7 @@ U-Net 由许多层组成，各层似乎有着不同的作用。外侧的层更�
 
 阶层合并就是利用这种差异，尽量只混入想要的特征。
 
-![](https://gyazo.com/380e98b86fa2205099cf6f231fc32ac8){gyazo=image}
+![](/media/basic-workflows/model-merge/legacy_gyazo_380e98b86fa2205099cf6f231fc32ac8.png){media=image}
 
 [](/workflows/basic-workflows/model-merge/modelmergeblocks_out_0_5.json)
 
@@ -102,7 +102,7 @@ LoRA 因为是像“能对原来的模型后加的差分补丁”那样的东西
 
 ### 工作流
 
-![](https://gyazo.com/0b5930d9de58a61acd5bf63da5927634){gyazo=image}
+![](/media/basic-workflows/model-merge/legacy_gyazo_0b5930d9de58a61acd5bf63da5927634.png){media=image}
 
 [](/workflows/basic-workflows/model-merge/modelmergesubtract_save_lora.json)
 
@@ -116,7 +116,7 @@ LoRA 因为是像“能对原来的模型后加的差分补丁”那样的东西
   - 被抽出的 LoRA 模型，被保存在 `\ComfyUI\output\loras`。
 
 ### 差分 LoRA 的测试
-![](https://gyazo.com/c499e4f0a683dc0ddd573312f6897dc8){gyazo=image}
+![](/media/basic-workflows/model-merge/legacy_gyazo_c499e4f0a683dc0ddd573312f6897dc8.png){media=image}
 
 [](/workflows/basic-workflows/model-merge/sd1_5_text2image_with_lora.json)
 

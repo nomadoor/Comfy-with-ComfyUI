@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "Task to adjust lighting of an image by changing light source or ambient light"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
-  image: 'https://i.gyazo.com/4c413909ac34f89df891a976fc660f70.png'
+  image: '/media/ai-capabilities/relight/legacy_gyazo_4c413909ac34f89df891a976fc660f70.png'
 ---
 
 ## What is Relighting?
@@ -33,7 +33,7 @@ Before AI, there were methods to fix this meticulously using Photoshop, etc., bu
 
 ### Diffusion model-based relighting like IC-Light / LBM
 
-![](https://gyazo.com/5e8ab13bbf6385a8413fd8dfdb774a77){gyazo=image}
+![](/media/ai-capabilities/relight/legacy_gyazo_5e8ab13bbf6385a8413fd8dfdb774a77.png){media=image}
 
 In the process of learning from a large number of images, diffusion models acquire not only the ability to "generate images" but also statistical knowledge like "this looks more natural" or "if light comes from here, shadows fall like this."
 
@@ -47,7 +47,7 @@ Of course, it is also possible to perform relighting in the sense of simply chan
 
 Dedicated LoRAs have also been created.
 - [dx8152/Qwen-Image-Edit-2509-Relight](https://huggingface.co/dx8152/Qwen-Image-Edit-2509-Relight)
-- > ![](https://gyazo.com/74f605b5c212b69e7e0c269066665864){gyazo=image}
+- > ![](/media/ai-capabilities/relight/legacy_gyazo_74f605b5c212b69e7e0c269066665864.mp4){media=loop}
 
 ---
 
@@ -55,7 +55,7 @@ Dedicated LoRAs have also been created.
 
 Another lineage is the type of relighting that **places pseudo light sources within the scene**.
 
-> ![ClipDrop Relight](https://gyazo.com/1cfc90b511ed7c12e3cfcf9128c170e5){gyazo=loop}
+> ![ClipDrop Relight](/media/ai-capabilities/relight/legacy_gyazo_1cfc90b511ed7c12e3cfcf9128c170e5.mp4){media=loop}
 
 It estimates depth maps and normal maps, places virtual lights such as "spotlight here" and "sunlight from here," and recalculates shades and highlights according to those lights.
 

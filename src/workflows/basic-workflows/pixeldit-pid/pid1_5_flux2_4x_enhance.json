@@ -1,89 +1,9 @@
 {
   "id": "1aa3b166-1861-429f-92ae-7ee12e64ab01",
   "revision": 0,
-  "last_node_id": 96,
-  "last_link_id": 147,
+  "last_node_id": 97,
+  "last_link_id": 149,
   "nodes": [
-    {
-      "id": 60,
-      "type": "CLIPLoader",
-      "pos": [
-        178.4554950121201,
-        811.9490780397168
-      ],
-      "size": [
-        301.3524169921875,
-        106
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "slot_index": 0,
-          "links": [
-            104,
-            109
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "CLIPLoader",
-        "cnr_id": "comfy-core",
-        "ver": "0.3.33"
-      },
-      "widgets_values": [
-        "gemma_2_2b_it_elm_bf16.safetensors",
-        "pixeldit",
-        "default"
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 63,
-      "type": "CLIPTextEncode",
-      "pos": [
-        538.1873071000066,
-        694.9903029515484
-      ],
-      "size": [
-        361.1895922851561,
-        152.373631591797
-      ],
-      "flags": {},
-      "order": 7,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 109
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            112
-          ]
-        }
-      ],
-      "title": "CLIP Text Encode (Positive Prompt)",
-      "properties": {
-        "Node name for S&R": "CLIPTextEncode",
-        "cnr_id": "comfy-core",
-        "ver": "0.3.33"
-      },
-      "widgets_values": [
-        ""
-      ]
-    },
     {
       "id": 70,
       "type": "ComfyMathExpression",
@@ -106,7 +26,6 @@
           "link": 138
         },
         {
-          "label": "b",
           "name": "values.b",
           "shape": 7,
           "type": "FLOAT,INT,BOOLEAN",
@@ -137,13 +56,16 @@
       },
       "widgets_values": [
         "a * 4"
-      ]
+      ],
+      "widgets_values_named": {
+        "expression": "a * 4"
+      }
     },
     {
       "id": 74,
       "type": "ComfyMathExpression",
       "pos": [
-        671.926902524347,
+        671.8070430075916,
         1173.415179658996
       ],
       "size": [
@@ -161,7 +83,6 @@
           "link": 139
         },
         {
-          "label": "b",
           "name": "values.b",
           "shape": 7,
           "type": "FLOAT,INT,BOOLEAN",
@@ -192,7 +113,10 @@
       },
       "widgets_values": [
         "a * 4"
-      ]
+      ],
+      "widgets_values_named": {
+        "expression": "a * 4"
+      }
     },
     {
       "id": 62,
@@ -206,7 +130,7 @@
         58
       ],
       "flags": {},
-      "order": 1,
+      "order": 0,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -226,46 +150,10 @@
       },
       "widgets_values": [
         "pixel_space"
-      ]
-    },
-    {
-      "id": 82,
-      "type": "ResizeImageMaskNode",
-      "pos": [
-        -187.68646898516153,
-        1095.0166207447435
       ],
-      "size": [
-        266.5849202168248,
-        106
-      ],
-      "flags": {},
-      "order": 8,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "input",
-          "type": "IMAGE,MASK",
-          "link": 134
-        }
-      ],
-      "outputs": [
-        {
-          "name": "resized",
-          "type": "IMAGE",
-          "links": [
-            135
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ResizeImageMaskNode"
-      },
-      "widgets_values": [
-        "scale total pixels",
-        1,
-        "nearest-exact"
-      ]
+      "widgets_values_named": {
+        "vae_name": "pixel_space"
+      }
     },
     {
       "id": 80,
@@ -304,51 +192,7 @@
       ],
       "properties": {
         "Node name for S&R": "VAEEncode"
-      },
-      "widgets_values": []
-    },
-    {
-      "id": 58,
-      "type": "CLIPTextEncode",
-      "pos": [
-        540.3078029573284,
-        910.6321261399594
-      ],
-      "size": [
-        419.26959228515625,
-        107.08506774902344
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 6,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 104
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            107
-          ]
-        }
-      ],
-      "title": "CLIP Text Encode (Negative Prompt)",
-      "properties": {
-        "Node name for S&R": "CLIPTextEncode",
-        "cnr_id": "comfy-core",
-        "ver": "0.3.33"
-      },
-      "widgets_values": [
-        ""
-      ]
+      }
     },
     {
       "id": 84,
@@ -395,7 +239,8 @@
       "properties": {
         "Node name for S&R": "GetImageSize"
       },
-      "widgets_values": []
+      "widgets_values": [],
+      "widgets_values_named": {}
     },
     {
       "id": 65,
@@ -431,7 +276,10 @@
       },
       "widgets_values": [
         "ComfyUI"
-      ]
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "ComfyUI"
+      }
     },
     {
       "id": 64,
@@ -481,7 +329,12 @@
         896,
         1152,
         1
-      ]
+      ],
+      "widgets_values_named": {
+        "width": 896,
+        "height": 1152,
+        "batch_size": 1
+      }
     },
     {
       "id": 90,
@@ -495,7 +348,7 @@
         322
       ],
       "flags": {},
-      "order": 11,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -529,7 +382,21 @@
         false,
         "",
         true
-      ]
+      ],
+      "widgets_values_named": {
+        "context_length": 1536,
+        "context_overlap": 384,
+        "context_schedule": "standard_static",
+        "context_stride": 1,
+        "closed_loop": false,
+        "fuse_method": "pyramid",
+        "dim": 0,
+        "freenoise": false,
+        "cond_retain_index_list": "",
+        "split_conds_to_windows": false,
+        "latent_retain_index_list": "",
+        "causal_window_fix": true
+      }
     },
     {
       "id": 77,
@@ -543,7 +410,7 @@
         58
       ],
       "flags": {},
-      "order": 9,
+      "order": 7,
       "mode": 0,
       "inputs": [
         {
@@ -566,7 +433,10 @@
       },
       "widgets_values": [
         4
-      ]
+      ],
+      "widgets_values_named": {
+        "shift": 4
+      }
     },
     {
       "id": 67,
@@ -610,6 +480,10 @@
         "flux",
         0
       ],
+      "widgets_values_named": {
+        "latent_format": "flux",
+        "degrade_sigma": 0
+      },
       "color": "#232",
       "bgcolor": "#353"
     },
@@ -653,48 +527,7 @@
         "Node name for S&R": "VAEDecode",
         "cnr_id": "comfy-core",
         "ver": "0.3.33"
-      },
-      "widgets_values": []
-    },
-    {
-      "id": 83,
-      "type": "ResizeImageMaskNode",
-      "pos": [
-        106.84934568668905,
-        1095.0166207447435
-      ],
-      "size": [
-        266.5849202168248,
-        106
-      ],
-      "flags": {},
-      "order": 10,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "input",
-          "type": "IMAGE,MASK",
-          "link": 135
-        }
-      ],
-      "outputs": [
-        {
-          "name": "resized",
-          "type": "IMAGE",
-          "links": [
-            136,
-            137
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ResizeImageMaskNode"
-      },
-      "widgets_values": [
-        "scale to multiple",
-        16,
-        "nearest-exact"
-      ]
+      }
     },
     {
       "id": 79,
@@ -708,7 +541,7 @@
         467.0000366210936
       ],
       "flags": {},
-      "order": 2,
+      "order": 1,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -731,43 +564,11 @@
       "widgets_values": [
         "viewfilename=ComfyUI_temp_rpijz_00022_.png",
         "image"
-      ]
-    },
-    {
-      "id": 81,
-      "type": "VAELoader",
-      "pos": [
-        85.79355151979729,
-        989.5464055577053
       ],
-      "size": [
-        287.64071438371656,
-        58
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "slot_index": 0,
-          "links": [
-            132
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "VAELoader",
-        "cnr_id": "comfy-core",
-        "ver": "0.3.33"
-      },
-      "widgets_values": [
-        "flux2-vae.safetensors"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
+      "widgets_values_named": {
+        "image": "viewfilename=ComfyUI_temp_rpijz_00022_.png",
+        "upload": "image"
+      }
     },
     {
       "id": 59,
@@ -781,7 +582,7 @@
         82
       ],
       "flags": {},
-      "order": 4,
+      "order": 2,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -803,6 +604,10 @@
         "pid_1.5_flux2_1024_to_4096_4step_bf16.safetensors",
         "default"
       ],
+      "widgets_values_named": {
+        "unet_name": "pid_1.5_flux2_1024_to_4096_4step_bf16.safetensors",
+        "weight_dtype": "default"
+      },
       "color": "#323",
       "bgcolor": "#535"
     },
@@ -834,7 +639,7 @@
         {
           "name": "negative",
           "type": "CONDITIONING",
-          "link": 107
+          "link": 149
         },
         {
           "name": "latent_image",
@@ -865,7 +670,16 @@
         "lcm",
         "simple",
         1
-      ]
+      ],
+      "widgets_values_named": {
+        "seed": 1234,
+        "control_after_generate": "fixed",
+        "steps": 4,
+        "cfg": 1,
+        "sampler_name": "lcm",
+        "scheduler": "simple",
+        "denoise": 1
+      }
     },
     {
       "id": 89,
@@ -879,7 +693,7 @@
         299.6311117170049
       ],
       "flags": {},
-      "order": 5,
+      "order": 3,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -887,8 +701,261 @@
       "widgets_values": [
         "## models\n\n* diffusion_models\n\n  *  [pid_1.5_flux2_1024_to_4096_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_1.5_flux2_1024_to_4096_4step_bf16.safetensors) (2.8 GB)\n\n* text_encoders\n\n  * [gemma_2_2b_it_elm_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/text_encoders/gemma_2_2b_it_elm_bf16.safetensors) (5.23 GB)\n\n* vae\n\n  * [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/blob/main/split_files/vae/flux2-vae.safetensors) (336 MB)\n\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │    └── pid_1.5_flux2_1024_to_4096_4step_bf16.safetensors\n    ├── 📂text_encoders/\n    │    └── gemma_2_2b_it_elm_bf16.safetensors\n    └── 📂vae/\n          └── flux2-vae.safetensors\n\n```"
       ],
+      "widgets_values_named": {
+        "text": "## models\n\n* diffusion_models\n\n  *  [pid_1.5_flux2_1024_to_4096_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_1.5_flux2_1024_to_4096_4step_bf16.safetensors) (2.8 GB)\n\n* text_encoders\n\n  * [gemma_2_2b_it_elm_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/text_encoders/gemma_2_2b_it_elm_bf16.safetensors) (5.23 GB)\n\n* vae\n\n  * [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/blob/main/split_files/vae/flux2-vae.safetensors) (336 MB)\n\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │    └── pid_1.5_flux2_1024_to_4096_4step_bf16.safetensors\n    ├── 📂text_encoders/\n    │    └── gemma_2_2b_it_elm_bf16.safetensors\n    └── 📂vae/\n          └── flux2-vae.safetensors\n\n```"
+      },
       "color": "#323",
       "bgcolor": "#535"
+    },
+    {
+      "id": 82,
+      "type": "ResizeImageMaskNode",
+      "pos": [
+        -187.68646898516153,
+        1095.0166207447435
+      ],
+      "size": [
+        266.5849202168248,
+        106
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "IMAGE,MASK",
+          "link": 134
+        }
+      ],
+      "outputs": [
+        {
+          "name": "resized",
+          "type": "IMAGE",
+          "links": [
+            135
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResizeImageMaskNode"
+      },
+      "widgets_values": [
+        "scale total pixels",
+        1,
+        "bicubic"
+      ],
+      "widgets_values_named": {
+        "resize_type": "scale total pixels",
+        "resize_type.megapixels": 1,
+        "scale_method": "bicubic"
+      }
+    },
+    {
+      "id": 83,
+      "type": "ResizeImageMaskNode",
+      "pos": [
+        106.8493456866891,
+        1095.0166207447435
+      ],
+      "size": [
+        266.5849202168248,
+        106
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "IMAGE,MASK",
+          "link": 135
+        }
+      ],
+      "outputs": [
+        {
+          "name": "resized",
+          "type": "IMAGE",
+          "links": [
+            136,
+            137
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResizeImageMaskNode"
+      },
+      "widgets_values": [
+        "scale to multiple",
+        16,
+        "bicubic"
+      ],
+      "widgets_values_named": {
+        "resize_type": "scale to multiple",
+        "resize_type.multiple": 16,
+        "scale_method": "bicubic"
+      }
+    },
+    {
+      "id": 81,
+      "type": "VAELoader",
+      "pos": [
+        106.8493456866891,
+        977.4828493922302
+      ],
+      "size": [
+        266.5849202168248,
+        58
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            132
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "flux2-vae.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "flux2-vae.safetensors"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 60,
+      "type": "CLIPLoader",
+      "pos": [
+        106.8493456866891,
+        694.9903029515484
+      ],
+      "size": [
+        301.3524169921875,
+        106
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            109
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "gemma_2_2b_it_elm_bf16.safetensors",
+        "pixeldit",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "gemma_2_2b_it_elm_bf16.safetensors",
+        "type": "pixeldit",
+        "device": "default"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 63,
+      "type": "CLIPTextEncode",
+      "pos": [
+        493.627226048558,
+        694.9903029515484
+      ],
+      "size": [
+        399.327757205883,
+        161.90817282197872
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 109
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            112,
+            148
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        ""
+      ],
+      "widgets_values_named": {
+        "text": ""
+      }
+    },
+    {
+      "id": 97,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        671.8070430075916,
+        909.4459013661387
+      ],
+      "size": [
+        221.14794024684943,
+        26
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 148
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            149
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningZeroOut"
+      }
     }
   ],
   "links": [
@@ -907,22 +974,6 @@
       57,
       1,
       "VAE"
-    ],
-    [
-      104,
-      60,
-      0,
-      58,
-      0,
-      "CLIP"
-    ],
-    [
-      107,
-      58,
-      0,
-      61,
-      2,
-      "CONDITIONING"
     ],
     [
       108,
@@ -1067,6 +1118,22 @@
       61,
       0,
       "MODEL"
+    ],
+    [
+      148,
+      63,
+      0,
+      97,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      149,
+      97,
+      0,
+      61,
+      2,
+      "CONDITIONING"
     ]
   ],
   "groups": [
@@ -1086,13 +1153,13 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.4736244074476708,
+      "scale": 0.473624407447671,
       "offset": [
-        720.6286821401363,
-        117.25112206166943
+        977.8966693104766,
+        89.8812080100734
       ]
     },
-    "frontendVersion": "1.47.10",
+    "frontendVersion": "1.51.9",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

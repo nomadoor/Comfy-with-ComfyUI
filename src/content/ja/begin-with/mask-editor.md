@@ -25,7 +25,7 @@ ComfyUI上で、画像の特定部分をマスク（白黒画像）として描�
 
 - `Load Image` ノードなどを選択 → `Node Selection Toolbox` の `🌔` (Open Mask Editor) をクリック
 
-![](https://gyazo.com/41526255834943bb591e62583d85d324){gyazo=loop}
+![](/media/begin-with/mask-editor/legacy_gyazo_41526255834943bb591e62583d85d324.mp4){media=loop}
 
 ---
 
@@ -52,7 +52,7 @@ ComfyUI上で、画像の特定部分をマスク（白黒画像）として描�
 
 - **Color Selector**: 描画色の選択
 
-![](https://gyazo.com/398548a6895a8ad00ab2c9f5cf509222){gyazo=loop}
+![](/media/begin-with/mask-editor/legacy_gyazo_398548a6895a8ad00ab2c9f5cf509222.mp4){media=loop}
 
 ### 消しゴム
 
@@ -67,7 +67,7 @@ MaskやPaintモードのまま **右クリック** することでも消しゴ�
 - **Tolerance**: 許容範囲
   - 低いと隙間が出来てしまうため、上げておいたほうが良いです。
 
-![](https://gyazo.com/98edbb1b4ca8324d0974416546194a3c){gyazo=loop}
+![](/media/begin-with/mask-editor/legacy_gyazo_98edbb1b4ca8324d0974416546194a3c.mp4){media=loop}
 
 ### 自動選択
 
@@ -77,7 +77,7 @@ MaskやPaintモードのまま **右クリック** することでも消しゴ�
 
 - **Tolerance**: 色の許容範囲
 
-![](https://gyazo.com/bf6ca9fd1af91d39c50174a4ef981b90){gyazo=loop}
+![](/media/begin-with/mask-editor/legacy_gyazo_bf6ca9fd1af91d39c50174a4ef981b90.mp4){media=loop}
 
 ---
 
@@ -95,4 +95,4 @@ MaskやPaintモードのまま **右クリック** することでも消しゴ�
 
 編集内容がノードに適用され、エディタが閉じます。
 
-![](https://gyazo.com/05a4f6930a6d074435ac29b77c97e82e){gyazo=loop}
+![](/media/begin-with/mask-editor/legacy_gyazo_05a4f6930a6d074435ac29b77c97e82e.mp4){media=loop}

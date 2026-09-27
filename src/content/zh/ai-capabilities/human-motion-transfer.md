@@ -32,7 +32,7 @@ Human Motion Transfer 是将 **其他视频的全身动作转移** 到一张人�
 
 但是 Animate Anyone 本身没有开源，所以作为实际能接触到的模型，出现了以 Stable Video Diffusion 为基础试图重现的 **MimicMotion** 等模型。
 
-![](https://gyazo.com/1e1bb54d4617ed57e696502727b80092){gyazo=loop}
+![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_1e1bb54d4617ed57e696502727b80092.mp4){media=loop}
 
 [](/workflows/ai-capabilities/human-motion-transfer/mimicmotion.json)
 
@@ -55,7 +55,7 @@ VACE 是在视频生成中可以汇总处理 `ControlNet`、`reference2video`、
 
 更专注于动作转移的模型是 [Wan-Animate](https://humanaigc.github.io/wan-animate/)。
 
-![](https://gyazo.com/9f0e0e20d750b2e207b01adc56858202){gyazo=image} ![](https://gyazo.com/d7f66b4153473136c37e48c7066709a1){gyazo=loop} ![](https://gyazo.com/86ed4c6aa64af79325ce18359a4021bc){gyazo=loop}
+![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_9f0e0e20d750b2e207b01adc56858202.png){media=image} ![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_d7f66b4153473136c37e48c7066709a1.mp4){media=loop} ![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_86ed4c6aa64af79325ce18359a4021bc.mp4){media=loop}
 
 > Wan-Animate
 

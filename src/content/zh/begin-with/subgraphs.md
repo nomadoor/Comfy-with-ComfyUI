@@ -29,7 +29,7 @@ hero:
 - 1. 选中多个想要合并的节点
 - 2. 点击 `Node Selection Toolbox` 的 `🕸️` (Convert Selection to Subgraph)
 
-![](https://gyazo.com/d59c55b69252fad5f076a9b5e17be95a){gyazo=loop}
+![](/media/begin-with/subgraphs/legacy_gyazo_d59c55b69252fad5f076a9b5e17be95a.mp4){media=loop}
 
 ---
 
@@ -39,7 +39,7 @@ hero:
 
 基本操作与通常相同，但与外部交互的参数需要连接到子图的输入输出插槽（左侧/右侧）。
 
-![](https://gyazo.com/5d5ebc1bc37a8dfdaad5a5db64d66cb2){gyazo=loop}
+![](/media/begin-with/subgraphs/legacy_gyazo_5d5ebc1bc37a8dfdaad5a5db64d66cb2.mp4){media=loop}
 
 ---
 
@@ -52,7 +52,7 @@ hero:
 - 2. 点击 `Node Selection Toolbox` 的 `Edit Subgraph Widgets`
 - 3. 勾选想要公开的参数
 
-![](https://gyazo.com/024e67b6cea67bda0849829b3762f4ba){gyazo=loop}
+![](/media/begin-with/subgraphs/legacy_gyazo_024e67b6cea67bda0849829b3762f4ba.mp4){media=loop}
 
 ---
 
@@ -68,6 +68,6 @@ hero:
 
 也可以从侧边栏的节点库中确认，并在此处进行 Blueprint 的删除或编辑。
 
-![](https://gyazo.com/74f9469b12a6b87fc7a62099dde54db7){gyazo=loop}
+![](/media/begin-with/subgraphs/legacy_gyazo_74f9469b12a6b87fc7a62099dde54db7.mp4){media=loop}
 
 [](/workflows/begin-with/subgraphs/chroma_key.json)

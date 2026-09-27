@@ -44,7 +44,7 @@ LoRA は、モデルの重みそのものを書き換えるのではなく、「
 
 ### workflow
 
-![](https://gyazo.com/6f275d3cbc6c8487bf1645af06763aea){gyazo=image}
+![](/media/basic-workflows/sd15-lora/legacy_gyazo_6f275d3cbc6c8487bf1645af06763aea.png){media=image}
 
 [](/workflows/basic-workflows/sd15-lora/sd1_5_lora.json)
 
@@ -73,6 +73,6 @@ SDXL ではテキストエンコーダが 2 つになり、その後に登場し
 
 拡散モデルだけを学習した LoRA には、テキストエンコーダに適用するものが入っていないため、`Load LoRA (Model and CLIP)` ではなく `Load LoRA` ノードを使います。
 
-![](https://gyazo.com/975300eed9cca90f7086dda53c1ca413){gyazo=image}
+![](/media/basic-workflows/sd15-lora/legacy_gyazo_975300eed9cca90f7086dda53c1ca413.png){media=image}
 
 [](/workflows/basic-workflows/sd15-lora/flux_1_lora.json)

@@ -6,27 +6,6 @@ const BASE_TEST_URL =
   process.env.PLAYWRIGHT_BASE_URL || `http://127.0.0.1:${PLAYWRIGHT_PORT}`;
 
 test.describe("Layout rails", () => {
-  test("Gyazo outage notice is localized above the hero", async ({ page }) => {
-    const cases = [
-      ["ja", "一部の画像が表示されない状態について"],
-      ["en", "Some images are currently unavailable"],
-      ["zh", "部分图片目前无法显示"]
-    ];
-
-    for (const [lang, heading] of cases) {
-      await page.goto(`/${lang}/basic-workflows/sd15-basics/`);
-
-      const notice = page.locator(".site-outage-notice");
-      const hero = page.locator(".hero");
-      await expect(notice).toBeVisible();
-      await expect(notice).toContainText(heading);
-      await expect
-        .poll(() => notice.evaluate((element) => element.nextElementSibling?.classList.contains("hero")))
-        .toBe(true);
-      await expect(hero).toBeVisible();
-    }
-  });
-
   test("content pages expose WebSite and WebPage JSON-LD", async ({ page }) => {
     await page.goto("/ja/begin-with/how-to-use-this-site/");
 
@@ -101,14 +80,15 @@ test.describe("Layout rails", () => {
 
   test("Gyazo hero images always use max_size variants", async ({ page }) => {
     await page.setViewportSize({ width: 1700, height: 900 });
-    await page.route(/^https:\/\/i\.gyazo\.com\/[a-f0-9]{32}\/max_size\/\d+\.jpg$/i, async (route) => {
+    await page.route(/^https:\/\/i\.gyazo\.com\/[a-f0-9]{32}\/max_size\/\d+\.(?:png|jpe?g|gif|webp)$/i, async (route) => {
       await route.fulfill({
         status: 200,
         contentType: "image/svg+xml",
         body: '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400"><rect width="1200" height="400" fill="#777"/></svg>'
       });
     });
-    await page.goto("/ja/begin-with/what-is-comfyui/");
+    // Keep this regression on one of the intentionally deferred Gyazo heroes.
+    await page.goto("/ja/ai-capabilities/controlnet/");
 
     const heroImage = page.locator(".hero img.hero__media");
     await expect(heroImage).toBeVisible();
@@ -133,7 +113,7 @@ test.describe("Layout rails", () => {
       });
     });
 
-    await page.goto("/ja/basic-workflows/anima/");
+    await page.goto("/ja/ai-capabilities/instruction-based-image-editing/");
     expect(rawRequests).toBe(0);
     const articleImage = page.locator(".article-body .article-media img").first();
     const fullSrc = await articleImage.getAttribute("data-full-src");
@@ -199,7 +179,7 @@ test.describe("Layout rails", () => {
   });
 
   test("Gyazo lightbox loads raw media and supports pan and continuous zoom", async ({ page }) => {
-    await page.goto("/ja/basic-workflows/anima/");
+    await page.goto("/ja/ai-capabilities/instruction-based-image-editing/");
 
     const articleImage = page.locator(".article-body .article-media img").first();
     const previewSrc = await articleImage.getAttribute("src");

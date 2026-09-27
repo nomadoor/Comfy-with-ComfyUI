@@ -14,7 +14,7 @@ hero:
 ---
 ## What is Sampling?
 
-![](https://gyazo.com/bf9d6d2e5b528f0b82f9d13e3c18c5fa){gyazo=image}
+![](/media/ai-capabilities/sampling/legacy_gyazo_bf9d6d2e5b528f0b82f9d13e3c18c5fa.png){media=image}
 
 [Diffusion models](/en/ai-capabilities/diffusion-models/) do not eliminate noise all at once; they generate images by proceeding through steps of reducing noise little by little many times.
 
@@ -61,17 +61,17 @@ However, depending on the combination of sampler, scheduler, CFG, and number of 
 Reference: [Stable Diffusion Deep Dive - CFG - Don't Accidentally Fry Your Images](https://www.youtube.com/watch?v=kuhO9zAzetk)
 
 
-> ![](https://gyazo.com/2726d797e03185230ce53475d48d707b){gyazo=image}
+> ![](/media/ai-capabilities/sampling/legacy_gyazo_2726d797e03185230ce53475d48d707b.png){media=image}
 
 According to this diagram, for example, **with DPM++ 2M Karras 20step, exceeding CFG 25 is a red signal**.
 
 If you actually generate it, you can see that the quality of the generated image is bad.
 
 - DPM++ 2M Karras / Steps 20 / **CFG 8**  
-  ![](https://gyazo.com/262e228b7207b827b105bfad833d3ac5){gyazo=image}
+  ![](/media/ai-capabilities/sampling/legacy_gyazo_262e228b7207b827b105bfad833d3ac5.png){media=image}
 
 - DPM++ 2M Karras / Steps 20 / **CFG 30**  
-  ![](https://gyazo.com/375e367784f6446fcc1e4a0a93fbc0cb){gyazo=image}
+  ![](/media/ai-capabilities/sampling/legacy_gyazo_375e367784f6446fcc1e4a0a93fbc0cb.png){media=image}
 
 Even causes other than CFG can generate images with excessively high saturation like this. Such images are sometimes described as **over-saturated colors** or **burnt out**.
 

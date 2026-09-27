@@ -10,7 +10,7 @@ updated: 2026-03-02
 summary: "Basics of Flux.1 and usage in ComfyUI"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/9fd52a56e1f6b7cbf8cd96ca78484d02.png"
+  image: "/media/basic-workflows/flux-1/legacy_gyazo_9fd52a56e1f6b7cbf8cd96ca78484d02.png"
 tags: []
 ---
 
@@ -65,7 +65,7 @@ Here, we use the fp8 version of `dev` / `schnell`.
 
 ## text2image - Flux.1 [dev]
 
-![](https://gyazo.com/2b89975e1b96fcbbd56880d31a0cd9c4){gyazo=image}
+![](/media/basic-workflows/flux-1/legacy_gyazo_2b89975e1b96fcbbd56880d31a0cd9c4.png){media=image}
 
 [](/workflows/basic-workflows/flux1/flux1_dev.json)
 
@@ -84,7 +84,7 @@ In either case, since the condition on the Negative side is multiplied by 0, **w
 
 This is a further distilled version of Flux.1 [dev], capable of generating images in 4-6 steps.
 
-![](https://gyazo.com/365108a45e0039af1ce0d35cf2cdcfa6){gyazo=image}
+![](/media/basic-workflows/flux-1/legacy_gyazo_365108a45e0039af1ce0d35cf2cdcfa6.png){media=image}
 
 [](/workflows/basic-workflows/flux1/flux1_schnell.json)
 - Set `steps` to 4-6.
@@ -97,7 +97,7 @@ Let's use LoRA to improve the quality of portrait images.
 
 * [AWPortrait-FL-lora.safetensors](https://huggingface.co/Shakker-Labs/AWPortrait-FL/blob/main/AWPortrait-FL-lora.safetensors)
 
-![](https://gyazo.com/292030d5a8ffc53619232546c7ce750b){gyazo=image}
+![](/media/basic-workflows/flux-1/legacy_gyazo_292030d5a8ffc53619232546c7ce750b.png){media=image}
 
 [](/workflows/basic-workflows/flux1/flux1_dev_lora.json)
 
@@ -126,7 +126,7 @@ Several ControlNet models for Flux.1 have been released, but here we introduce a
 
 ControlNet-Union incorporates multiple typical ControlNets into a single model.
 
-![](https://gyazo.com/9e7cb79f7ca50fe5946ac9f232a552c6){gyazo=image}
+![](/media/basic-workflows/flux-1/legacy_gyazo_9e7cb79f7ca50fe5946ac9f232a552c6.png){media=image}
 
 [](/workflows/basic-workflows/flux1/flux_1_dev_controlnet_union_pro_depth.json)
 
@@ -167,7 +167,7 @@ Please choose according to your PC specs and usage.
 
 ### workflow
 
-![](https://gyazo.com/f465ff82b48c4c7b5d5b9ce144f3dc8d){gyazo=image}
+![](/media/basic-workflows/flux-1/legacy_gyazo_f465ff82b48c4c7b5d5b9ce144f3dc8d.png){media=image}
 
 [](/workflows/basic-workflows/flux1/flux_1_dev_gguf.json)
 

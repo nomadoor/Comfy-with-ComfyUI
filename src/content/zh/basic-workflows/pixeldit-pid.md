@@ -10,7 +10,7 @@ updated: 2026-07-29
 summary: "使用 PixelDiT 和 PiD 进行图像生成与高分辨率解码"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/31ea733be7d13db9616875f7c59e3f40.png"
+  image: "/media/basic-workflows/pixeldit-pid/legacy_gyazo_31ea733be7d13db9616875f7c59e3f40.png"
 tags: [upscale-restoration]
 ---
 
@@ -46,7 +46,7 @@ Stable Diffusion 之后的很多图像生成模型，都使用 [Latent Diffusion
 
 ### text2image
 
-![](https://gyazo.com/bdac1169d8ee0d91f6eed7b485ffa914){gyazo=image}
+![](/media/basic-workflows/pixeldit-pid/legacy_gyazo_bdac1169d8ee0d91f6eed7b485ffa914.png){media=image}
 
 [](/workflows/basic-workflows/pixeldit-pid/pixeldit_text2image.json)
 
@@ -123,7 +123,7 @@ PiD 则是把这个 latent 交给 PixelDiT，让图像还原和放大一起完�
 
 试着用 PiD 解码 Z-Image-Turbo 的 latent。
 
-![](https://gyazo.com/1b9e2dab2979aaafb65acc6e207c5948){gyazo=image}
+![](/media/basic-workflows/pixeldit-pid/z_image_turbo_to_pid1_5_4k.png){media=image}
 
 [](/workflows/basic-workflows/pixeldit-pid/z_image_turbo_to_pid1_5_4k.json)
 
@@ -154,7 +154,7 @@ PiD 则是把这个 latent 交给 PixelDiT，让图像还原和放大一起完�
         └── flux2-vae.safetensors
 ```
 
-![](https://gyazo.com/f501e4a19e295189ca8fdc8d509eb589){gyazo=image}
+![](/media/basic-workflows/pixeldit-pid/pid1_5_flux2_4x_enhance.png){media=image}
 
 [](/workflows/basic-workflows/pixeldit-pid/pid1_5_flux2_4x_enhance.json)
 

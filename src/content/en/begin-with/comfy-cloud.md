@@ -11,7 +11,7 @@ summary: "About Comfy Cloud"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient:
-  image: "https://i.gyazo.com/0aacb411ab5f3433f209a474010873fb.png"
+  image: "/media/begin-with/comfy-cloud/legacy_gyazo_0aacb411ab5f3433f209a474010873fb.png"
 ---
 
 ## What is Comfy Cloud?

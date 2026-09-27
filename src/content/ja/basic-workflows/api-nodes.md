@@ -36,7 +36,7 @@ APIノードは、どのモデルを使う場合でも **必ずクレジット�
 料金は、各モデルごとに「1 回の生成あたり◯クレジット」といった形で決まっています。  
 基本的には、各社が公開している API 価格帯と大きく乖離しないレベルに設定されており、「ComfyUI 経由だから極端に割高になる」といったことはありません。
 
-![](https://gyazo.com/6f7f9247364acac4d4fb1ccfeeb2e845){gyazo=image}
+![](/media/basic-workflows/api-nodes/legacy_gyazo_6f7f9247364acac4d4fb1ccfeeb2e845.png){media=image}
 
 だいたいの料金は、APIノードの右上にバッジとして表示されています。
 
@@ -56,7 +56,7 @@ APIノードは、どのモデルを使う場合でも **必ずクレジット�
 
 他のノードと使い方は変わりません。モデル名からノードを検索し、つなぐだけです。
 
-![](https://gyazo.com/0d12a7369948fa19779c0b7ffb487cd0){gyazo=image}
+![](/media/basic-workflows/api-nodes/legacy_gyazo_0d12a7369948fa19779c0b7ffb487cd0.png){media=image}
 
 [](/workflows/basic-workflows/api-nodes/google_gemini.json)
 

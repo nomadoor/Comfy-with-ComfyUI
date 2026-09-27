@@ -31,7 +31,7 @@ Inpainting処理などで必要な場面もありますが、色調補正同様�
 
 画像を重ね合わせるための基本ノードです。
 
-![](https://gyazo.com/0f12d674fe3e1f6f30c2a06340464eb4){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_0f12d674fe3e1f6f30c2a06340464eb4.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/imagecompositemasked.json)
 
@@ -43,7 +43,7 @@ Inpainting処理などで必要な場面もありますが、色調補正同様�
 
 ### 中央に配置したい場合
 
-![](https://gyazo.com/282ad8bae51d35eef6a4810780f3eb82){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_282ad8bae51d35eef6a4810780f3eb82.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_align_center.json)
 
@@ -61,7 +61,7 @@ ComfyUIでは、**「マスクされた部分を source 画像で置き換える
 
 ### 透過PNGを合成する手順
 
-![](https://gyazo.com/cd53e89115c033f8a8ea175b72ca0aef){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_cd53e89115c033f8a8ea175b72ca0aef.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_with_alpha.json)
 
@@ -75,7 +75,7 @@ ComfyUIでは、**「マスクされた部分を source 画像で置き換える
 
 `resize_source` を `true` にしていると、source画像は無理やり destination 画像と同じサイズに引き伸ばされます。
 
-![](https://gyazo.com/f7ba12c0cf33e3e5dc8a9b5fb24cb0a6){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_f7ba12c0cf33e3e5dc8a9b5fb24cb0a6.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_with_crop_pad.json)
 
@@ -89,7 +89,7 @@ ComfyUIでは、**「マスクされた部分を source 画像で置き換える
 
 「ドレスの部分だけ色を変えたい」といった場合も同じ理屈です。
 
-![](https://i.gyazo.com/c848c0f8e8d3ee590ba7ae09e8db7e68.png){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_c848c0f8e8d3ee590ba7ae09e8db7e68.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_segmentation.json)
 
@@ -110,7 +110,7 @@ ComfyUIでは、**「マスクされた部分を source 画像で置き換える
 
 シンプルな結合ノードです。
 
-![](https://i.gyazo.com/4ce9346ef269709f6456f0fcd5832a9c.png){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_4ce9346ef269709f6456f0fcd5832a9c.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/image_stitch.json)
 
@@ -119,7 +119,7 @@ ComfyUIでは、**「マスクされた部分を source 画像で置き換える
 
 Stitchノードを複数使えば3枚、4枚と並べられますが、バッチ（複数枚セット）画像をまとめてグリッド状に並べたい場合は、このノードを使うとスマートに処理できます。
 
-![](https://i.gyazo.com/18d0555fd1d0bd01ead60b3992662cb0.png){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/image_concatenate_from_batch.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/image_concatenate_from_batch.json)
 
@@ -134,7 +134,7 @@ Stitchノードを複数使えば3枚、4枚と並べられますが、バッチ
 
 ペイントソフトでいうレイヤーの「合成モード」のようなものです。  
 
-![](https://i.gyazo.com/0c3dbad0a36a0399e7e12301a4b58638.png){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_0c3dbad0a36a0399e7e12301a4b58638.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/image_blend.json)
 
@@ -147,7 +147,7 @@ Stitchノードを複数使えば3枚、4枚と並べられますが、バッチ
 
 単色の画像を作るだけのノードです。
 
-![](https://gyazo.com/c39404b4f19fe6a47565b326b7f0dc6d){gyazo=image}
+![](/media/data-utilities/layer-composite-blend/legacy_gyazo_c39404b4f19fe6a47565b326b7f0dc6d.png){media=image}
 
 [](/workflows/data-utilities/layer-composite-blend/emptyimage.json)
 

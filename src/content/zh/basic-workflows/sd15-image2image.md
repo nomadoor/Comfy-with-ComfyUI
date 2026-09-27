@@ -15,7 +15,7 @@ hero:
 
 ## 什么是 image2image？
 
-![](https://gyazo.com/bbb1bca709f4a0b20735da8222d6e3f9){gyazo=image}
+![](/media/basic-workflows/sd15-image2image/legacy_gyazo_bbb1bca709f4a0b20735da8222d6e3f9.png){media=image}
 
 image2image 是 **将参考图像作为草稿，在其上画图** 的方法。
 
@@ -34,7 +34,7 @@ image2image 是 **将参考图像作为草稿，在其上画图** 的方法。
 
 那么，让我们来看看在 `steps: 20` 的 KSampler (Advanced) 中改变 `start_at_step` 时的样子。
 
-{% mediaRow img="https://gyazo.com/9068f8b11d1798b5aef16930565aa97c{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-image2image/legacy_gyazo_9068f8b11d1798b5aef16930565aa97c.png{media=image}", width=50, align="left" %}
 **start_at_step: 0**
 - 从一开始就被噪声填满。
 - 完全看不见草稿图像。几乎和通常的 text2image 一样。
@@ -42,14 +42,14 @@ image2image 是 **将参考图像作为草稿，在其上画图** 的方法。
  → [denoise 1.0 时的 image2image 和 text2image](#denoise-1-0-时的-image2image-和-text2image)
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/9e4a63492f71b4f31e4efa761999c772{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-image2image/legacy_gyazo_9e4a63492f71b4f31e4efa761999c772.png{media=image}", width=50, align="left" %}
 **start_at_step: 1**
 - 从前进了 1 step 的位置开始。
 - 因此，添加到草稿的噪声量（＝接下来要去除的噪声量）稍微减少。
 - 虽说如此，还几乎看不见草稿图像。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/2f5da8a9b3c1cdc017149a7c63fa7678{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-image2image/legacy_gyazo_2f5da8a9b3c1cdc017149a7c63fa7678.png{media=image}", width=50, align="left" %}
 **start_at_step: 9**
 - 添加到草稿的噪声量（＝接下来要去除的噪声量）相当减少。
 - 草稿的轮廓和构图，残留到了能直接明白的程度
@@ -57,7 +57,7 @@ image2image 是 **将参考图像作为草稿，在其上画图** 的方法。
 
 
 
-{% mediaRow img="https://gyazo.com/26906eaf7dfc00de20c1f265be4feff9{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-image2image/legacy_gyazo_26906eaf7dfc00de20c1f265be4feff9.png{media=image}", width=50, align="left" %}
 **start_at_step: 20**
 - 既然指定在 20 步中的最后一步开始，实质上和“什么都不做”一样。
 - 也就是说，实际上一切采样都不进行，也不添加噪声。
@@ -72,7 +72,7 @@ image2image 是 **将参考图像作为草稿，在其上画图** 的方法。
 
 ## KSampler (Advanced) 的工作流
 
-![](https://gyazo.com/e5ff6f57deb2d62f568cb8897eb41355){gyazo=image}
+![](/media/basic-workflows/sd15-image2image/legacy_gyazo_e5ff6f57deb2d62f568cb8897eb41355.png){media=image}
 
 [](/workflows/basic-workflows/sd15-image2image/sd1_5_image2image_ksampler_advanced.json)
 
@@ -86,7 +86,7 @@ image2image 是 **将参考图像作为草稿，在其上画图** 的方法。
 用无印 KSampler，当然也可以做 image2image。  
 但是，**“用哪个旋钮决定原图的残留情况”**，和 KSampler (Advanced) 相当不同。
 
-![](https://gyazo.com/41975fb8a105170ea9d8a9dbbd48b5dd){gyazo=image}
+![](/media/basic-workflows/sd15-image2image/legacy_gyazo_41975fb8a105170ea9d8a9dbbd48b5dd.png){media=image}
 
 [](/workflows/basic-workflows/sd15-image2image/sd1_5_image2image_ksampler.json)
 
@@ -104,14 +104,14 @@ image2image 是 **将参考图像作为草稿，在其上画图** 的方法。
 
 只是，因为旋钮的分配方法不同，稍微有点混乱。让我们来看看在似乎会变成相同结果的设置下各自的举动。
 
-{% mediaRow img="https://gyazo.com/589d8db0a9506a3df81f2169de272d1e{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-image2image/legacy_gyazo_589d8db0a9506a3df81f2169de272d1e.png{media=image}", width=50, align="left" %}
 **KSampler (Advanced)**
 - 例如设为 `steps: 20`, `start_at_step: 4` 的话，  
   只执行“全部 20 步中的第 4 步到第 20 步”。
 - 实际采样的次数是 **20 - 4 = 16 次**。
 {% endmediaRow %}
 
-{% mediaRow img="https://gyazo.com/cbcfaf5df9cee8f8079c82e903b492b8{gyazo=image}", width=50, align="left" %}
+{% mediaRow img="/media/basic-workflows/sd15-image2image/legacy_gyazo_cbcfaf5df9cee8f8079c82e903b492b8.png{media=image}", width=50, align="left" %}
 **无印 KSampler**
 - 同样设为 `steps: 20`，如果设定 `denoise: 0.8` 等，外观上的“噪声施加方式”会变近，但 **采样次数仍是 20 次**。
 - 即使把 `denoise` 的值变为 0.5 或 0.1，也还是采样 20 次。
@@ -142,7 +142,7 @@ image2image 是 **将参考图像作为草稿，在其上画图** 的方法。
 
 `denoise: 1.0` 时，因为用噪声完全填满了原图，所以在机制上 image2image 和使用了 `Empty Latent Image` 节点的 text2image 应该是一样的。
 
-![](https://gyazo.com/aae8ea31ec753bc12053ae1d6b701179){gyazo=image}
+![](/media/basic-workflows/sd15-image2image/legacy_gyazo_aae8ea31ec753bc12053ae1d6b701179.png){media=image}
 
 但是，**Stable Diffusion 1.5 的话不会变得一样**。（虽然我觉得是实现的差异，但不理解所以不知道。）  
 另一方面，最近的模型 (Flux 等)，会变成完全一样的图像。
@@ -153,4 +153,4 @@ Stable Diffusion 1.5 作为特殊的例子，在本站，将按本来的设计 *
 
 ## 样本图像
 
-![](https://gyazo.com/1f5fee22e1db9942bf950cf39906c881){gyazo=image}
+![](/media/basic-workflows/sd15-image2image/legacy_gyazo_1f5fee22e1db9942bf950cf39906c881.png){media=image}

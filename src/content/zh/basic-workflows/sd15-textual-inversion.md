@@ -65,7 +65,7 @@ Textual Inversion 虽然有学习轻便的优点，但现在几乎被 LoRA 取�
 
 ### 工作流
 
-![](https://gyazo.com/4631607c66ac4a2f6edfb442a786b79e){gyazo=image}
+![](/media/basic-workflows/sd15-textual-inversion/legacy_gyazo_4631607c66ac4a2f6edfb442a786b79e.png){media=image}
 
 [](/workflows/basic-workflows/sd15-textual-inversion/sd1_5_embedding.json)
 

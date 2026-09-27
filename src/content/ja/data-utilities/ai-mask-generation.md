@@ -10,7 +10,7 @@ updated: 2026-05-30
 summary: "マッティング、セグメンテーション、物体検出について"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "https://i.gyazo.com/499c4756e1b2adb1424f9cab9829806b.png"
+  image: "/media/data-utilities/ai-mask-generation/legacy_gyazo_499c4756e1b2adb1424f9cab9829806b.png"
 ---
 
 ## AIを使ったマスク生成
@@ -41,7 +41,7 @@ inpainting などでマスクを作る場面は多いですが、毎回手書き
 
 リアルタイムに物体を検出することを目的としている、超高速な検出技術です。
 
-![](https://gyazo.com/e8b4e05d42db0b613aee4467a8dca633){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_e8b4e05d42db0b613aee4467a8dca633.png){media=image}
 
 基本的には、検出したい物体の種類に対して一つのモデル（顔専用、手専用など）を作るため、モデルがなければ自分で作る必要がありますし、複数の種類を検出したい場合には不向きです。
 
@@ -59,7 +59,7 @@ YOLOとは違い、「white dog」「red car」など好きなテキストで物
 
 キャプション生成など様々なことができますが、その中の一つに物体検出ができるものがあります。
 
-![](https://gyazo.com/eac97524bcdcb395cdd5172c3694da41){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_eac97524bcdcb395cdd5172c3694da41.png){media=image}
 
 かなり古いですが、代表的なものには **Florence-2** のようなものがあります。
 
@@ -77,7 +77,7 @@ YOLOとは違い、「white dog」「red car」など好きなテキストで物
 
 ### BiRefNet
 
-![](https://gyazo.com/5ce4bac5b8c8dc13fbbb0468c44bf752){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_5ce4bac5b8c8dc13fbbb0468c44bf752.png){media=image}
 
 詳しい使い方は [BiRefNet](/ja/data-utilities/birefnet/) のページで扱っています。
 
@@ -91,7 +91,7 @@ YOLOとは違い、「white dog」「red car」など好きなテキストで物
 
 「物の形」を理解しているため、写真内の車などをテキスト、ポイント、ボックスで指定すると、その輪郭を見つけてマスクにしてくれます。
 
-![](https://gyazo.com/cd6078ed81d850085144836e404754d5){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_cd6078ed81d850085144836e404754d5.png){media=image}
 
 現在の最新モデルである [SAM 3 / 3.1](/ja/data-utilities/sam3/) のページで扱っています。
 
@@ -122,7 +122,7 @@ YOLOとは違い、「white dog」「red car」など好きなテキストで物
 
 ### YOLO × SAM
 
-![](https://gyazo.com/2c1fb7ed9c7fcc6242e48b9e6e405c27){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_2c1fb7ed9c7fcc6242e48b9e6e405c27.png){media=image}
 
 [](/workflows/data-utilities/ai-mask-generation/yolo_face_sam.json)
 
@@ -130,7 +130,7 @@ YOLOとは違い、「white dog」「red car」など好きなテキストで物
 
 ### Grounding DINO × SAM
 
-![](https://gyazo.com/c7b4ed29a8dae26fb9c666b137091ab4){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_c7b4ed29a8dae26fb9c666b137091ab4.png){media=image}
 
 [](/workflows/data-utilities/ai-mask-generation/grounding_dino_hq_sam.json)
 
@@ -140,7 +140,7 @@ Grounding DINO と SAM の改良版である HQ-SAM の組み合わせです。
 
 ### Florence2 × SAM2
 
-![](https://gyazo.com/677607c761c38defde753681398d6e1f){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_677607c761c38defde753681398d6e1f.png){media=image}
 
 [](/workflows/data-utilities/ai-mask-generation/florence2_sam2_1.json)
 
@@ -150,7 +150,7 @@ Florence2 と SAM2.1 の組み合わせです。
 
 ### SAM 3 × BiRefNet
 
-![](https://gyazo.com/82c4c2d947a3ea9c98b46e05a05d542f){gyazo=image}
+![](/media/data-utilities/ai-mask-generation/legacy_gyazo_82c4c2d947a3ea9c98b46e05a05d542f.png){media=image}
 
 [](/workflows/data-utilities/ai-mask-generation/sam3_birefnet.json)
 

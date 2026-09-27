@@ -27,7 +27,7 @@ hero:
 
 ComfyUI 的文本输入框（例如 `CLIP Text Encode`）默认支持 `{a|b|c}` 这种通配符写法。
 
-![](https://gyazo.com/06d9e27bd6586911830efcd2c3ff50cc){gyazo=loop}
+![](/media/data-utilities/wildcards/legacy_gyazo_06d9e27bd6586911830efcd2c3ff50cc.mp4){media=loop}
 
 [](/workflows/data-utilities/wildcards/wildcard_core.json)
 
@@ -50,7 +50,7 @@ ComfyUI 的文本输入框（例如 `CLIP Text Encode`）默认支持 `{a|b|c}` 
 
 ### ImpactWildcardProcessor / Encode
 
-![](https://gyazo.com/851ccf19703e3b7b97f779e0cb6ae23f){gyazo=image}
+![](/media/data-utilities/wildcards/legacy_gyazo_851ccf19703e3b7b97f779e0cb6ae23f.png){media=image}
 
 [](/workflows/data-utilities/wildcards/impactwildcardprocessor.json)
 
