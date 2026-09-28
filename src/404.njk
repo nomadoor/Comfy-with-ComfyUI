@@ -16,15 +16,15 @@ eleventyComputed:
 hero:
   gradient: ""
 ---
-<div class="article-body placeholder">
+<div class="placeholder">
   {% if language.code == "ja" %}
-    <p>指定されたページは存在しません。<a href="/ja/">トップ</a>やサイドバーから、別のページを探してみてください。</p>
+    <p>指定されたページは存在しません。<a href="/ja/">トップ</a>から、別のページを探してみてください。</p>
     <p><a href="/sitemap.xml">サイトマップ</a>、または <a href="/llms.txt">AI・機械向けの記事一覧</a>から目的のページを探せます。</p>
   {% elseif language.code == "zh" %}
-    <p>找不到这个页面。请从<a href="/zh/">首页</a>或侧边栏寻找其他页面。</p>
+    <p>找不到这个页面。请从<a href="/zh/">首页</a>寻找其他页面。</p>
     <p>也可以通过<a href="/sitemap.xml">站点地图</a>或<a href="/llms.txt">面向 AI 的文章列表</a>查找。</p>
   {% else %}
-    <p>This page does not exist. Try the <a href="/en/">home page</a> or the sidebar to find another page.</p>
+    <p>This page does not exist. Try the <a href="/en/">home page</a> to find another page.</p>
     <p>You can also look through the <a href="/sitemap.xml">sitemap</a> or the <a href="/llms.txt">article list for AI agents</a>.</p>
   {% endif %}
 </div>

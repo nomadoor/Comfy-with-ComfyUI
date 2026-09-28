@@ -165,4 +165,20 @@ test.describe("Language home", () => {
     await expect(toggle).toBeFocused();
     await expect(toggle).toHaveAttribute("aria-expanded", "false");
   });
+
+  test("on mobile, Escape closes the language menu before the drawer", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/ja/basic-workflows/sdxl/");
+    await page.locator(".site-header__menu-btn").click();
+    await expect(page.locator("body")).toHaveClass(/nav-open/);
+    const toggle = page.locator(".sidebar [data-lang-toggle]");
+    await toggle.click();
+    await expect(page.locator(".sidebar [data-lang-menu]")).toHaveClass(/is-open/);
+    await page.keyboard.press("Escape");
+    await expect(page.locator(".sidebar [data-lang-menu]")).not.toHaveClass(/is-open/);
+    await expect(page.locator("body")).toHaveClass(/nav-open/);
+    await expect(toggle).toBeFocused();
+    await page.keyboard.press("Escape");
+    await expect(page.locator("body")).not.toHaveClass(/nav-open/);
+  });
 });

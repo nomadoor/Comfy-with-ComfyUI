@@ -8,7 +8,7 @@ title: "About"
 created: 2025-11-13
 updated: 2026-03-02
 summary: "このサイトについて"
-seoTitle: "このサイトについて：Comfyに使うComfyUI"
+seoTitle: "このサイトについて"
 seoDescription: "ComfyUIの操作と、生成AIでできることを基本から解説する日本語サイト「Comfyに使うComfyUI」の紹介。作者nomadoorのプロフィール、ライセンス（CC0）、サポートについて。"
 searchExclude: true
 tags:
