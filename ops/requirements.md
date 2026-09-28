@@ -168,9 +168,10 @@
 
 ## 18. i18n SEO (Canonical / Hreflang / Sitemap)
 - `link rel="canonical"` must be present for every page (`site.url + page.url`).
-- `hreflang` must be emitted for each existing `ja` / `en` / `zh` translation, plus `x-default`.
+- When a page exists in two or more languages, emit `hreflang` for each existing `ja` / `en` / `zh` translation plus `x-default` (the default-language URL). A page that exists in only one language emits no `hreflang`, since there is no alternate to declare.
 - Sitemaps should include alternate language references (`xhtml:link`) or equivalent per-locale sitemaps.
-- `hreflang` alternates (HTML and sitemap) are built by swapping the language segment of the page URL, and are emitted only for translations that exist. Noindex placeholders and the 404 page emit none.
+- `hreflang` alternates (HTML and sitemap) are built by swapping the language segment of the page URL, and are emitted only for translations that exist. Noindex placeholders and the 404 page emit no `hreflang`.
+- Page-specific head tags (description, robots, canonical, Open Graph, Twitter, `article:*`, author, JSON-LD, `hreflang`) carry `data-page-meta`; the router replaces that set from the fetched page on every navigation so the head matches a direct load.
 - Sitemap `<loc>` and alternates are absolute (`site.url`). `<lastmod>` uses frontmatter `updated`, falling back to `created`; never the build date.
 - Placeholder ("coming soon") pages are `noindex` and excluded from the sitemap.
 - Article pages (in a nav section, with `created`, not `searchExclude`, not noindex) emit schema.org `Article` JSON-LD with `headline`, `datePublished` (`created`), `dateModified` (`updated` or `created`), `image` when a hero exists, and `author`/`publisher` referencing a single `Person` (`site.author`: name, profile URL (X), `sameAs` = public profiles). They also emit `article:published_time`, `article:modified_time`, and `meta name="author"`.

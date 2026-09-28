@@ -94,13 +94,13 @@ for (const [url, expected] of expectedArticles) {
     continue;
   }
   const text = fs.readFileSync(htmlFile, "utf8");
-  if (!text.includes(`<meta property="article:published_time" content="${expected.datePublished}" />`)) {
+  if (!text.includes(`<meta property="article:published_time" content="${expected.datePublished}"`)) {
     failures.push(`${url}: article:published_time must be ${expected.datePublished}`);
   }
-  if (!text.includes(`<meta property="article:modified_time" content="${expected.dateModified}" />`)) {
+  if (!text.includes(`<meta property="article:modified_time" content="${expected.dateModified}"`)) {
     failures.push(`${url}: article:modified_time must be ${expected.dateModified}`);
   }
-  const ld = text.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1];
+  const ld = text.match(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/)?.[1];
   let graph = [];
   try {
     graph = JSON.parse(ld || "{}")["@graph"] || [];
@@ -135,7 +135,7 @@ for (const [url, seo] of expectedSeo) {
   }
   const text = fs.readFileSync(htmlFile, "utf8");
   if (seo.seoTitle && !text.includes(`<title>${escapeAttr(seo.seoTitle)} | `)) failures.push(`${url}: <title> must use seoTitle`);
-  if (seo.seoDescription && !text.includes(`<meta name="description" content="${escapeAttr(seo.seoDescription)}" />`)) {
+  if (seo.seoDescription && !text.includes(`<meta name="description" content="${escapeAttr(seo.seoDescription)}"`)) {
     failures.push(`${url}: meta description must use seoDescription`);
   }
 }

@@ -134,20 +134,15 @@ const updateHead = (nextDoc) => {
     document.body.setAttribute("lang", nextLang);
   }
 
-  const currentDesc = document.querySelector('meta[name="description"]');
-  const nextDesc = nextDoc.querySelector('meta[name="description"]');
-  if (nextDesc) {
-    const content = nextDesc.getAttribute("content") || "";
-    if (currentDesc) {
-      currentDesc.setAttribute("content", content);
-    } else {
-      const meta = document.createElement("meta");
-      meta.setAttribute("name", "description");
-      meta.setAttribute("content", content);
-      document.head.appendChild(meta);
-    }
+  // Replace every page-specific head tag (canonical, OG/Twitter, article meta, JSON-LD, hreflang,
+  // robots, description) with the next page's set, so the head matches a direct load.
+  document.head.querySelectorAll("[data-page-meta]").forEach((node) => node.remove());
+  const anchor = document.head.querySelector("title");
+  const nextTags = [...nextDoc.head.querySelectorAll("[data-page-meta]")].map((node) => document.importNode(node, true));
+  if (anchor) {
+    anchor.after(...nextTags);
   } else {
-    currentDesc?.remove();
+    document.head.prepend(...nextTags);
   }
 };
 

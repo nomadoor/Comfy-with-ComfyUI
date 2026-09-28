@@ -276,6 +276,53 @@ test.describe("View-transition router", () => {
     await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", original!);
   });
 
+  test("swaps every page-specific head tag on navigation", async ({ page }) => {
+    const headState = () =>
+      page.evaluate(() => ({
+        canonical: document.querySelector('link[rel="canonical"]')?.getAttribute("href"),
+        ogUrl: document.querySelector('meta[property="og:url"]')?.getAttribute("content"),
+        ogTitle: document.querySelector('meta[property="og:title"]')?.getAttribute("content"),
+        twitterTitle: document.querySelector('meta[name="twitter:title"]')?.getAttribute("content"),
+        jsonLd: document.querySelector('script[type="application/ld+json"]')?.textContent || "",
+        hreflangs: [...document.querySelectorAll('link[rel="alternate"][hreflang]')].map((link) => link.getAttribute("href")),
+        robots: document.querySelector('meta[name="robots"]')?.getAttribute("content") || null,
+        published: document.querySelector('meta[property="article:published_time"]')?.getAttribute("content") || null,
+        pageMetaCount: document.querySelectorAll("head [data-page-meta]").length
+      }));
+
+    await page.goto(OTHER_PAGE);
+    const direct = await headState();
+    await page.goto(LONG_PAGE);
+    await clickSidebarLink(page, OTHER_PAGE);
+    await expect(page).toHaveURL(OTHER_PAGE);
+    await expect(page.locator("h1").first()).toContainText("SDXL");
+    // After a router navigation the head must match a direct load of the same page.
+    expect(await headState()).toEqual(direct);
+    expect(direct.canonical).toContain(OTHER_PAGE);
+    expect(direct.jsonLd).toContain(`${OTHER_PAGE}#article`);
+
+    // Article -> noindex non-article page: article tags disappear, robots appears.
+    await page.evaluate(() => {
+      const link = document.createElement("a");
+      link.href = "/ja/about/";
+      link.id = "to-about";
+      link.textContent = "about";
+      document.querySelector(".article-body")?.prepend(link);
+    });
+    await page.locator("#to-about").click();
+    await expect(page).toHaveURL("/ja/about/");
+    const about = await headState();
+    expect(about.robots).toBe("noindex");
+    expect(about.published).toBeNull();
+    expect(about.hreflangs).toEqual([]);
+    expect(about.jsonLd).not.toContain('"Article"');
+
+    await page.goBack();
+    await expect(page).toHaveURL(OTHER_PAGE);
+    await expect(page.locator("h1").first()).toContainText("SDXL");
+    expect(await headState()).toEqual(direct);
+  });
+
   test("document listeners from page widgets do not pile up across navigations", async ({ page }) => {
     await page.addInitScript(() => {
       const records: { type: string; listener: any; signal?: AbortSignal; removed?: boolean }[] = [];

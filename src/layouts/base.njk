@@ -46,39 +46,40 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
     document.documentElement.classList.add("js");
   </script>
   <title>{{ searchTitle | e }} | {{ (site.name[currentLang] or site.name[site.defaultLang]) | e }}</title>
+  {# data-page-meta marks tags that differ per page; the router swaps them on navigation. #}
   {% if searchDescription %}
-  <meta name="description" content="{{ searchDescription | e }}" />
+  <meta name="description" content="{{ searchDescription | e }}" data-page-meta />
   {% endif %}
   {% if robots %}
-  <meta name="robots" content="{{ robots | e }}" />
+  <meta name="robots" content="{{ robots | e }}" data-page-meta />
   {% endif %}
   {% if canonicalUrl %}
-  <link rel="canonical" href="{{ canonicalUrl | e }}" />
+  <link rel="canonical" href="{{ canonicalUrl | e }}" data-page-meta />
   {% endif %}
   {% if canonicalUrl %}
-  <meta property="og:url" content="{{ canonicalUrl | e }}" />
+  <meta property="og:url" content="{{ canonicalUrl | e }}" data-page-meta />
   {% endif %}
-  <meta property="og:title" content="{{ searchTitle | e }}" />
+  <meta property="og:title" content="{{ searchTitle | e }}" data-page-meta />
   {% if searchDescription %}
-  <meta property="og:description" content="{{ searchDescription | e }}" />
+  <meta property="og:description" content="{{ searchDescription | e }}" data-page-meta />
   {% endif %}
   {% if ogImage %}
-  <meta property="og:image" content="{{ ogImage | e }}" />
+  <meta property="og:image" content="{{ ogImage | e }}" data-page-meta />
   {% endif %}
-  <meta property="og:type" content="article" />
+  <meta property="og:type" content="article" data-page-meta />
   {% if isArticle %}
-  <meta property="article:published_time" content="{{ created | isoDate }}" />
-  <meta property="article:modified_time" content="{{ (updated or created) | isoDate }}" />
-  <meta name="author" content="{{ site.author.name | e }}" />
+  <meta property="article:published_time" content="{{ created | isoDate }}" data-page-meta />
+  <meta property="article:modified_time" content="{{ (updated or created) | isoDate }}" data-page-meta />
+  <meta name="author" content="{{ site.author.name | e }}" data-page-meta />
   {% endif %}
-  <meta property="og:site_name" content="{{ (site.name[currentLang] or site.name[site.defaultLang]) | e }}" />
-  <meta name="twitter:card" content="{{ 'summary_large_image' if ogImagePath else 'summary' }}" />
-  <meta name="twitter:title" content="{{ searchTitle | e }}" />
+  <meta property="og:site_name" content="{{ (site.name[currentLang] or site.name[site.defaultLang]) | e }}" data-page-meta />
+  <meta name="twitter:card" content="{{ 'summary_large_image' if ogImagePath else 'summary' }}" data-page-meta />
+  <meta name="twitter:title" content="{{ searchTitle | e }}" data-page-meta />
   {% if searchDescription %}
-  <meta name="twitter:description" content="{{ searchDescription | e }}" />
+  <meta name="twitter:description" content="{{ searchDescription | e }}" data-page-meta />
   {% endif %}
   {% if ogImage %}
-  <meta name="twitter:image" content="{{ ogImage | e }}" />
+  <meta name="twitter:image" content="{{ ogImage | e }}" data-page-meta />
   {% endif %}
   {% if canonicalUrl and pagePath != "/404.html" %}
   {% set structuredData = {
@@ -95,11 +96,11 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
       "image": ogImage if ogImagePath else ""
     } if isArticle else null
   } | pageStructuredData %}
-  <script type="application/ld+json">{{ structuredData | jsonLd | safe }}</script>
+  <script type="application/ld+json" data-page-meta>{{ structuredData | jsonLd | safe }}</script>
   {% endif %}
   {% if sectionCandidate != 'missing' and not ('noindex' in (robots or '')) -%}
   {% for alt in pagePath | hreflangAlternates(site.languages, collections.all, site.defaultLang) -%}
-  <link rel="alternate" hreflang="{{ alt.hreflang }}" href="{{ siteUrl ~ alt.href | e }}" />
+  <link rel="alternate" hreflang="{{ alt.hreflang }}" href="{{ siteUrl ~ alt.href | e }}" data-page-meta />
   {% endfor -%}
   {% endif -%}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
