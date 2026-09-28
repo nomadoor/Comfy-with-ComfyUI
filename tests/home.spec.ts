@@ -144,4 +144,25 @@ test.describe("Language home", () => {
     await page.goto("/404.html");
     expect((await menu()).ja).toBe("/ja/");
   });
+
+  test("arriving at the home by in-site navigation shows the same sidebar section as a direct load", async ({ page }) => {
+    await page.goto("/ja/");
+    const directSection = await page.locator(".sidebar__section-btn.is-active").first().getAttribute("data-section-key");
+    await page.goto("/ja/basic-workflows/sdxl/");
+    await page.locator(".site-header__logo").click();
+    await expect(page).toHaveURL("/ja/");
+    await expect(page.locator(".sidebar__section-btn.is-active").first()).toHaveAttribute("data-section-key", directSection!);
+  });
+
+  test("Escape closes the language menu and returns focus to its button", async ({ page }) => {
+    await page.goto("/ja/basic-workflows/sdxl/");
+    const toggle = page.locator("header [data-lang-toggle]");
+    const menu = page.locator("header [data-lang-menu]");
+    await toggle.click();
+    await expect(menu).toHaveClass(/is-open/);
+    await page.keyboard.press("Escape");
+    await expect(menu).not.toHaveClass(/is-open/);
+    await expect(toggle).toBeFocused();
+    await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  });
 });

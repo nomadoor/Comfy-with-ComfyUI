@@ -60,7 +60,8 @@ const triggerLangAttention = () => {
   const targetLangControls = visibleLangControls.length ? visibleLangControls : langControls;
   if (!targetLangControls.length) return;
 
-  const currentLang = parsePathLang(window.location.pathname);
+  // The page language, not the URL: /404.html and friends carry no language segment.
+  const currentLang = document.documentElement.lang || parsePathLang(window.location.pathname);
   const preferredLang = getPreferredSupportedLang();
   const shouldHighlight = Boolean(preferredLang && preferredLang !== currentLang);
   if (!shouldHighlight) {
@@ -116,6 +117,15 @@ const initLangSwitcher = () => {
       if (!item.menu.contains(event.target) && !item.toggle.contains(event.target)) {
         setMenuState(item, false);
       }
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    controls.forEach((item) => {
+      if (!item.menu.classList.contains("is-open")) return;
+      setMenuState(item, false);
+      item.toggle.focus();
     });
   });
 
