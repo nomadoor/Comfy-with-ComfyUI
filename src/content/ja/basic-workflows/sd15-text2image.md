@@ -8,6 +8,8 @@ title: "text2image"
 created: 2025-12-04
 updated: 2026-08-26
 summary: "Stable Diffusion 1.5でのtext2image"
+seoTitle: "ComfyUIのtext2image入門：基本のworkflowとノード"
+seoDescription: "ComfyUIでテキストから画像を生成するtext2imageの基本を、Stable Diffusion 1.5で解説。Load Checkpoint、Empty Latent Image、CLIP Text Encode、KSampler、VAE Decodeの各ノードの役割を紹介します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   gradient:

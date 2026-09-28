@@ -8,6 +8,8 @@ title: "マスクとアルファチャンネル"
 created: 2025-11-25
 updated: 2026-03-02
 summary: "マスクの概念と透過画像の扱いについて"
+seoTitle: "ComfyUIのマスクとアルファチャンネル（透過）"
+seoDescription: "ComfyUIでのマスクと透過画像の扱い方。白黒で処理範囲を指定するマスクの意味、アルファチャンネルとの関係、一般的なソフトとの違い、RGBAの結合と分離、RGBとの混同によるエラーを解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/data-utilities/mask-alpha/legacy_gyazo_bd1a30f0d9562418f2fd74c7d9dd6f1e.png"

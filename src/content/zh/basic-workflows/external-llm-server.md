@@ -8,6 +8,8 @@ title: "外部 LLM 服务器集成"
 created: 2026-02-18
 updated: 2026-03-02
 summary: "在 ComfyUI 外部运行 LLM 并与其联动"
+seoTitle: "ComfyUI 与外部 LLM 服务器（Ollama）联动"
+seoDescription: "在 ComfyUI 之外运行 LLM 并从 ComfyUI 调用的方法。讲解分离处理的理由、Ollama 的安装与模型下载，以及用自定义节点搭建最简聊天的步骤。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/external-llm-server/legacy_gyazo_da95a615f374717f19b3447244ad647a.png"

@@ -9,6 +9,8 @@ created: 2025-12-13
 updated: 2026-03-02
 noteTags: ["troubleshoot", "error"]
 summary: "エラーが出た時にやることリスト"
+seoTitle: "ComfyUIでエラーが出たときにやること"
+seoDescription: "ComfyUIでエラーが出たときの確認手順。画面とターミナルのどこを見ればよいか、エラー文の読み方と調べ方、issueを書く前に確認しておきたいことをまとめています。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

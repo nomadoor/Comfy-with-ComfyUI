@@ -8,6 +8,8 @@ title: "调整大小、裁剪与填充"
 created: 2025-11-25
 updated: 2026-03-02
 summary: "关于图像的调整大小、裁剪、填充"
+seoTitle: "在 ComfyUI 中调整图像大小、裁剪、填充"
+seoDescription: "ComfyUI 中统一图像尺寸的调整大小、裁剪、填充节点的区别与用法。为适配模型的最佳分辨率、节省显存，附整理清晰易读的工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/data-utilities/resize-crop-pad/legacy_gyazo_02cf6bd2a573dc15dff4799c94b15a0d.png"

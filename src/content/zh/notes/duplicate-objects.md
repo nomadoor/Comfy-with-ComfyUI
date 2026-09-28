@@ -9,6 +9,8 @@ created: 2026-02-06
 updated: 2026-03-02
 noteTags: ["troubleshoot", "prompt"]
 summary: "人物或物体变得不自然地增多时的对策"
+seoTitle: "生成图像中人或物体重复出现的原因与对策"
+seoDescription: "图像生成 AI 中人物或物体不自然增多的原因和解决方法。讲解 Stable Diffusion 1.5 等在过高分辨率或极端宽高比下生成时出现该问题的理由。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

@@ -8,6 +8,8 @@ title: "Anima"
 created: 2026-05-29
 updated: 2026-08-01
 summary: "Animaでの画像生成"
+seoTitle: "ComfyUIでAnimaを使う：軽量なアニメ画像生成モデル"
+seoDescription: "NVIDIA Cosmosをベースにアニメ画像で学習された2Bの画像生成モデルAnimaの、ComfyUIでの使い方。モデルのダウンロード、プロンプトの書き方、text2imageとAnima LLLiteのworkflowを紹介します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: []
 hero:

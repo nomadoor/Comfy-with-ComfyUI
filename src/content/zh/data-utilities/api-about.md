@@ -8,6 +8,8 @@ title: "什么是 API？"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "从“外部驱动” ComfyUI 的入口"
+seoTitle: "什么是 ComfyUI API？从外部运行工作流的机制"
+seoDescription: "讲解 ComfyUI 分为服务器与前端的结构，以及作为向服务器发送指令窗口的 API。整理 API 能做什么，以及需要保持服务器运行等注意事项。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

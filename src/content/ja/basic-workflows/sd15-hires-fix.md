@@ -8,6 +8,8 @@ title: "Hires.fix"
 created: 2025-12-07
 updated: 2026-03-02
 summary: "Hires.fixを使った高解像度画像生成"
+seoTitle: "ComfyUIのHires.fix：高解像度画像を生成する方法"
+seoDescription: "生成した画像を拡大してimage2imageで描き直すHires.fixの仕組みと、生まれた理由。ComfyUIでの基本的な組み方と、latentのまま拡大する方法をworkflow付きで解説します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: ""

@@ -9,6 +9,8 @@ title: "FLUX.2 [klein]"
 created: 2026-01-22
 updated: 2026-03-02
 summary: "FLUX.2 [klein] 生成・图像编辑工作流"
+seoTitle: "在 ComfyUI 中使用 FLUX.2 [klein]：图像生成与编辑"
+seoDescription: "一个模型兼顾图像生成与基于指令编辑的小型高速 FLUX.2 [klein] 用法。介绍推荐设置、9B / 4B 与 Base / Distilled 的区别、text2image、图像编辑和多参考工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/flux-2-klein/legacy_gyazo_46ebf7545e89db8df26b83a992e4c728.png"

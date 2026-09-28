@@ -9,6 +9,8 @@ created: 2026-05-03
 updated: 2026-08-26
 noteTags: ["guide", "training", "runpod", "ai-toolkit", "lora"]
 summary: "在 RunPod 上启动 AI Toolkit 并执行 LoRA 训练的流程"
+seoTitle: "在 RunPod 上运行 AI Toolkit 训练 LoRA"
+seoDescription: "在云 GPU 服务 RunPod 上启动 AI Toolkit 并训练 LoRA 的步骤：创建账户与购买积分、创建 Pod 与选择模板，直到执行训练。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 ---
 

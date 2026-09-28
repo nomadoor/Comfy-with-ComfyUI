@@ -8,6 +8,8 @@ title: "Mask & Alpha Channel"
 created: 2025-11-25
 updated: 2026-03-02
 summary: "Concept of mask and handling of transparent images"
+seoTitle: "Masks and Alpha Channels in ComfyUI"
+seoDescription: "How ComfyUI handles masks and transparency: what masks mean, the alpha channel, differences from other apps, joining and splitting RGBA, and common errors."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/data-utilities/mask-alpha/legacy_gyazo_bd1a30f0d9562418f2fd74c7d9dd6f1e.png"

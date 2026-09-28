@@ -745,17 +745,27 @@ function wireOperatorForm(root, statusRoot) {
       categoryToggle.focus();
     });
 
-    document.addEventListener("pointerdown", (event) => {
+    // Document listeners outlive router content swaps; drop them once this form leaves the page.
+    const documentListeners = new AbortController();
+    const whileConnected = (handler) => (event) => {
+      if (!form.isConnected) {
+        documentListeners.abort();
+        return;
+      }
+      handler(event);
+    };
+
+    document.addEventListener("pointerdown", whileConnected((event) => {
       if (!categorySelect?.contains(event.target)) {
         setCategoryOpen(false);
       }
-    }, true);
+    }), { capture: true, signal: documentListeners.signal });
 
-    document.addEventListener("keydown", (event) => {
+    document.addEventListener("keydown", whileConnected((event) => {
       if (event.key === "Escape") {
         setCategoryOpen(false);
       }
-    });
+    }), { signal: documentListeners.signal });
   }
 
   const setTurnstileTokenState = (hasToken) => {

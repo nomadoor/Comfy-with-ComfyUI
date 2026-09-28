@@ -9,6 +9,8 @@ created: 2026-09-28
 updated: 2026-09-28
 noteTags: ["faq", "conditioning", "cfg"]
 summary: "为什么 CFG 1.0 工作流会使用 Conditioning Zero Out"
+seoTitle: "什么是 Conditioning Zero Out？CFG 1.0 下使用的理由"
+seoDescription: "最近工作流中常见的 Conditioning Zero Out 节点的作用。讲解 CFG 1.0 时 negative 被忽略的原因、与连接 positive 或空提示词的区别，以及使用 Zero Out 的好处。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: "/media/notes/conditioning-zero-out/conditioning_zero_out_hero.png"

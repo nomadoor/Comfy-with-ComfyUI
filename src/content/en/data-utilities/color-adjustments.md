@@ -8,6 +8,8 @@ title: "Color Adjustments & Effects"
 created: 2025-11-25
 updated: 2026-03-02
 summary: "About image brightness adjustment, blur, and effects"
+seoTitle: "Color Adjustment and Effect Nodes in ComfyUI"
+seoDescription: "ComfyUI nodes for color and effects: invert, sharpen, blur, quantize, add noise, morphology, and custom nodes for full color grading."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/data-utilities/color-adjustments/legacy_gyazo_e1ecb574e0c11da63b0c6f8cee7a9f87.png"

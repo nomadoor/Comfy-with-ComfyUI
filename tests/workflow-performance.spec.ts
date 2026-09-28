@@ -118,6 +118,10 @@ test.describe("Workflow performance", () => {
       clipboard.writeText = async (value) => {
         window.__copiedWorkflows.push(String(value || ""));
       };
+      clipboard.write = async (items) => {
+        const blob = await items[0].getType("text/plain");
+        window.__copiedWorkflows.push(await blob.text());
+      };
     });
     await page.goto(FIXTURE_PAGE);
 
@@ -136,11 +140,80 @@ test.describe("Workflow performance", () => {
     await expect(simpleMath.locator(".workflow-performance__sampler-speed")).toHaveCount(0);
 
     await simpleMath.locator("[data-copy-json]").click();
+    await expect.poll(() => page.evaluate(() => window.__copiedWorkflows.length)).toBe(1);
     await conditionalMath.locator("[data-copy-json]").click();
     await expect.poll(() => page.evaluate(() => window.__copiedWorkflows)).toEqual([
       SIMPLE_MATH_JSON,
       CONDITIONAL_MATH_JSON
     ]);
+  });
+
+  test("fetches workflow JSON on copy instead of embedding it in the page", async ({ page }) => {
+    await page.addInitScript(() => {
+      window.__clipboardCalls = [];
+      const clipboard = navigator.clipboard || {};
+      try {
+        Object.defineProperty(navigator, "clipboard", { value: clipboard, configurable: true });
+      } catch {
+        // ignore
+      }
+      // Safari-safe path: the clipboard write starts inside the click and receives a pending promise.
+      clipboard.write = async (items) => {
+        window.__clipboardCalls.push("write");
+        const blob = await items[0].getType("text/plain");
+        window.__clipboardCalls.push(await blob.text());
+      };
+      clipboard.writeText = async (value) => {
+        window.__clipboardCalls.push("writeText", String(value || ""));
+      };
+    });
+    const jsonRequests = [];
+    page.on("request", (request) => {
+      if (request.url().endsWith("/simple-math/math_expression.json")) jsonRequests.push(request.url());
+    });
+    await page.goto(FIXTURE_PAGE);
+
+    await expect(page.locator(".workflow-json pre")).toHaveCount(0);
+    expect(await page.content()).not.toContain('"last_node_id"');
+    expect(jsonRequests).toHaveLength(0);
+
+    const simpleMath = page.locator('.workflow-json--inline:has([href="/workflows/data-utilities/simple-math/math_expression.json"])');
+    const copyButton = simpleMath.locator("[data-copy-json]");
+    await copyButton.click();
+    await expect.poll(() => page.evaluate(() => window.__clipboardCalls)).toEqual(["write", SIMPLE_MATH_JSON]);
+    await expect(copyButton).toHaveClass(/is-success/);
+    expect(jsonRequests).toHaveLength(1);
+  });
+
+  test("does not show copy success when the workflow JSON cannot be fetched", async ({ page }) => {
+    await page.addInitScript(() => {
+      const clipboard = navigator.clipboard || {};
+      try {
+        Object.defineProperty(navigator, "clipboard", { value: clipboard, configurable: true });
+      } catch {
+        // ignore
+      }
+      clipboard.write = async (items) => {
+        await items[0].getType("text/plain");
+      };
+      clipboard.writeText = async () => {};
+    });
+    await page.route("**/simple-math/math_expression.json", (route) => route.fulfill({ status: 404, body: "" }));
+    await page.goto(FIXTURE_PAGE);
+
+    const simpleMath = page.locator('.workflow-json--inline:has([href="/workflows/data-utilities/simple-math/math_expression.json"])');
+    const copyButton = simpleMath.locator("[data-copy-json]");
+    await copyButton.evaluate((button) => {
+      window.__copySuccessSeen = false;
+      new MutationObserver(() => {
+        if (button.classList.contains("is-success")) window.__copySuccessSeen = true;
+      }).observe(button, { attributes: true, attributeFilter: ["class"] });
+    });
+    const failedFetch = page.waitForResponse("**/simple-math/math_expression.json");
+    await copyButton.click();
+    await failedFetch;
+    await page.waitForTimeout(300);
+    expect(await page.evaluate(() => window.__copySuccessSeen)).toBe(false);
   });
 
   test("opens from hover, keyboard focus, and tap-style activation", async ({ page }) => {
@@ -154,7 +227,9 @@ test.describe("Workflow performance", () => {
     await meter.hover();
     await expect(popup).toBeVisible();
 
-    await page.locator("h1").hover();
+    // Move the pointer away without targeting an element: the open popup or the sticky header can
+    // sit on top of any specific target and make a hover retry until timeout.
+    await page.mouse.move(2, 2);
     await meter.focus();
     await expect(popup).toBeVisible();
     await page.keyboard.press("Escape");

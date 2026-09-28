@@ -8,6 +8,8 @@ title: "JoyCaption"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "使用 JoyCaption 的图像说明文生成"
+seoTitle: "在 ComfyUI 中使用 JoyCaption：高精度图像描述生成"
+seoDescription: "可为照片、动漫、插画等广泛类型生成高精度描述的 VLM——JoyCaption 在 ComfyUI 中的用法，从安装自定义节点到 JoyCaption 节点的设置。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

@@ -8,6 +8,8 @@ title: "Command Line Arguments"
 created: 2025-11-24
 updated: 2026-08-01
 summary: "Options specified when starting ComfyUI"
+seoTitle: "ComfyUI Command Line Arguments: Full List"
+seoDescription: "How to set ComfyUI command line arguments, with a list by purpose: VRAM and OOM fixes, memory control, port and network settings, and debugging."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

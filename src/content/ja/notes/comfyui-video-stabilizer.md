@@ -9,6 +9,8 @@ created: 2026-07-03
 updated: 2026-07-03
 noteTags: ["project", "custom-nodes"]
 summary: "ComfyUIで動画の手ブレ補正、手ブレ復元、人工的な手ブレ追加を行うカスタムノード"
+seoTitle: "ComfyUI Video Stabilizer：動画の手ブレ補正ノード"
+seoDescription: "ComfyUI上で動画の手ブレを補正するカスタムノードComfyUI Video Stabilizerの使い方。インストール、framing_modeやcamera_lockなどのパラメータ、手ブレの復元と人工的な手ブレの追加を解説します。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

@@ -8,6 +8,8 @@ title: "Detailer"
 created: 2025-12-08
 updated: 2026-03-02
 summary: "小さな顔や細部だけを切り出してinpaintする仕組み"
+seoTitle: "ComfyUIのDetailer：小さな顔や細部をきれいに描き直す"
+seoDescription: "小さく崩れた顔や細部だけを切り出して描き直すDetailerの仕組み。Inpaint Crop / Stitchで手作業のDetailerを組む方法と、物体検出と組み合わせて自動化する方法をworkflow付きで解説します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/detailer/legacy_gyazo_5904f9e96c234cd6bec18b10af263838.png"

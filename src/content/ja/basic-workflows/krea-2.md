@@ -8,6 +8,8 @@ title: "Krea 2"
 created: 2026-06-24
 updated: 2026-06-24
 summary: "Krea 2 Turboでの画像生成"
+seoTitle: "ComfyUIでKrea 2を使う：AIらしくない美しい画像生成"
+seoDescription: "AIらしさが出ない美しい画像を目指して作られたKrea 2 Open-Source（Turbo）の、ComfyUIでの使い方。モデルのダウンロード、text2image、公式スタイルLoRAのworkflowを紹介します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/krea-2/legacy_gyazo_6ce8c9a2f7042a08efbbcdefc8ab6673.png"

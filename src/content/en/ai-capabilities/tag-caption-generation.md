@@ -8,6 +8,8 @@ title: Tag & Caption Generation
 created: 2025-12-03
 updated: 2026-03-02
 summary: "Technology to automatically add tags and descriptions (captions) from images."
+seoTitle: "AI Models for Image Tagging and Captioning"
+seoDescription: "Tag and caption images automatically: WD taggers and JoyTagger, JoyCaption and Qwen-VL captions, API models like ChatGPT and Gemini, and local models."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

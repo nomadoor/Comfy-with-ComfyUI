@@ -8,6 +8,8 @@ title: "AI Mask Generation"
 created: 2025-11-26
 updated: 2026-05-30
 summary: "About matting, segmentation, and object detection"
+seoTitle: "Generate Masks with AI in ComfyUI"
+seoDescription: "Create masks for inpainting automatically: object detection with YOLO or Grounding DINO, matting with BiRefNet, and segmentation with SAM."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/data-utilities/ai-mask-generation/legacy_gyazo_499c4756e1b2adb1424f9cab9829806b.png"

@@ -9,6 +9,8 @@ created: 2026-05-30
 updated: 2026-06-01
 noteTags: ["project", "flux-2-klein", "lora"]
 summary: "FLUX.2 [klein] に CV タスク風の RGB 出力を学習させる"
+seoTitle: "FLUX.2 [klein] Schematic LoRA：深度・法線・ポーズを推定"
+seoDescription: "指示ベース画像編集モデルFLUX.2 [klein]に、深度・ノーマル・ポーズ推定などのCVタスク風の出力を学習させたSchematic LoRAの紹介。配布先、タスクの設定、データセットと学習の流れを解説します。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: "/media/notes/flux2-klein-schematic-lora/legacy_gyazo_a0dc0970df98429dcf703e3ed095f6fa.png"

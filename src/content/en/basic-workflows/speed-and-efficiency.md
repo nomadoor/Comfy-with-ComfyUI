@@ -8,6 +8,8 @@ title: "Speed and Efficiency"
 created: 2025-12-11
 updated: 2026-03-02
 summary: "Organizing speed-up and lightweighting techniques for diffusion models and using them according to purpose"
+seoTitle: "Speed Up ComfyUI and Reduce VRAM: Techniques Compared"
+seoDescription: "Speed and memory techniques for diffusion models by goal: 8-bit and 4-bit quantization, GGUF, distillation, attention optimization, and sampling caches."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

@@ -8,6 +8,8 @@ title: "Settings"
 created: 2025-11-24
 updated: 2026-03-02
 summary: "About settings"
+seoTitle: "ComfyUI Settings and Recommended Options"
+seoDescription: "How to open ComfyUI settings and the options worth changing: interface language, node badges, Run button position, and live previews."
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

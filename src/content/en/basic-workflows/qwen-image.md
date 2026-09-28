@@ -8,6 +8,8 @@ title: "Qwen-Image"
 created: 2025-12-11
 updated: 2026-03-02
 summary: "How to use Qwen-Image"
+seoTitle: "Qwen-Image in ComfyUI: ControlNet and Lightning"
+seoDescription: "Use Qwen-Image, with Qwen2.5-VL as its text encoder, in ComfyUI: recommended resolutions, text2image, InstantX ControlNet, and the Lightning LoRA."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/qwen-image/legacy_gyazo_4f6ca42890bb8717fa4668d8c56bcbc5.png"

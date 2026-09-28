@@ -8,6 +8,8 @@ title: 线稿上色
 created: 2025-12-01
 updated: 2026-03-02
 summary: 给线稿上色的技术
+seoTitle: "用 AI 给线稿上色：ControlNet 与图像编辑模型"
+seoDescription: "用 AI 给自己画的线稿上色的方法比较：基于 ControlNet 的上色、用基于指令的图像编辑模型上色，以及结合线稿和彩色图像的参考式上色。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

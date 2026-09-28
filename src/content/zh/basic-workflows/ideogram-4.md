@@ -8,6 +8,8 @@ title: "Ideogram 4.0"
 created: 2026-06-10
 updated: 2026-06-18
 summary: "使用 Ideogram 4.0 进行图像生成"
+seoTitle: "在 ComfyUI 中使用 Ideogram 4.0：用 JSON 提示词精细指定"
+seoDescription: "可用 JSON 格式描述指定元素位置和颜色的 Ideogram 4.0 在 ComfyUI 中的用法。介绍用 LLM 或专用构建器生成提示词、text2image，以及 8 步的 TurboTime LoRA。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/ideogram-4/legacy_gyazo_cb9116562b7693e120aa63eafef11769.png"

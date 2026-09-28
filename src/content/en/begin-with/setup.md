@@ -8,6 +8,8 @@ title: "Setup"
 created: 2025-11-20
 updated: 2026-05-25
 summary: "About Setup"
+seoTitle: "How to Install ComfyUI: Portable and Desktop"
+seoDescription: "Set up ComfyUI locally: the recommended portable build, the desktop installer, and a manual install with venv and Git on Windows and Linux."
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

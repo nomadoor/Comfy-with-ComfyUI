@@ -8,6 +8,8 @@ title: "Batch・動画"
 created: 2025-11-27
 updated: 2026-03-02
 summary: "複数画像・動画フレームをまとめて扱う仕組み"
+seoTitle: "ComfyUIのBatchと動画：複数画像をまとめて処理する"
+seoDescription: "ComfyUIで複数の画像や動画フレームをまとめて処理するBatchの仕組み。QueueやListとの違い、動画がBatchとして扱われること、OOMの注意点、Batchを作る・操作するノードを解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

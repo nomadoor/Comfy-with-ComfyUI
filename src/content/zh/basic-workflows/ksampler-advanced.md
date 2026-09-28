@@ -5,6 +5,9 @@ section: basic-workflows
 slug: ksampler-advanced
 navId: ksampler-advanced
 title: "KSampler (Advanced) 节点"
+summary: "可以拆分采样、在中途切换提示词或模型的 KSampler 进阶版"
+seoTitle: "ComfyUI 的 KSampler (Advanced) 用法"
+seoDescription: "讲解 KSampler (Advanced) 的 add_noise、start_at_step、end_at_step 等参数，以及拆分采样、在中途切换提示词或模型（LoRA）的用法，附工作流。"
 created: 2025-12-06
 updated: 2026-03-02
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"

@@ -8,6 +8,8 @@ title: "高速化と軽量化"
 created: 2025-12-11
 updated: 2026-03-02
 summary: "拡散モデルの高速化・軽量化技術を整理して目的別に使い分ける"
+seoTitle: "ComfyUIで生成を高速化・軽量化する方法まとめ"
+seoDescription: "拡散モデルの高速化・軽量化技術を目的別に整理。8bit / 4bit量子化やGGUF、蒸留、Attentionの最適化、サンプリングキャッシュなど、VRAMを減らしたいときや速く生成したいときの選び方を解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""
@@ -104,7 +106,7 @@ ComfyUI では [city96/ComfyUI-GGUF](https://github.com/city96/ComfyUI-GGUF) を
 
 代表例
 
-- [FLUX.1-schnell](/ja/basic-workflows/flux1/#text2image-flux-1-schnell) のような「高速版」チェックポイント
+- [FLUX.1-schnell](/ja/basic-workflows/flux-1/#text2image-flux-1-schnell) のような「高速版」チェックポイント
 - [Qwen-Image-Lightning](/ja/basic-workflows/qwen-image/#lightning-高速生成-lora) のような、高速生成 LoRA
 
 ステップ数を 1〜4 steps 程度まで削れることもあり、とにかく速くしたいときの第一候補になります。

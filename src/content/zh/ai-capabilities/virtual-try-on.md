@@ -8,6 +8,8 @@ title: 换装
 created: 2026-02-06
 updated: 2026-03-02
 summary: 只将衣服替换为不同设计・变体的任务
+seoTitle: "用 AI 换装（Virtual Try-On）的方法"
+seoDescription: "只把图像中的衣服替换为其他设计的换装（虚拟试穿）技术比较：LoRA、catvton-flux，以及使用并排或多参考输入的基于指令的图像编辑模型。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

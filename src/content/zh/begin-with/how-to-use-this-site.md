@@ -8,6 +8,8 @@ title: "如何使用本网站"
 created: 2026-02-06
 updated: 2026-08-01
 summary: "欢迎来到 Comfy with ComfyUI"
+seoTitle: "从基础学习 ComfyUI：本站使用指南"
+seoDescription: "Comfy with ComfyUI 的导览。本站讲解 ComfyUI 的操作、图像与视频生成 AI 的原理以及主要模型的工作流，介绍各板块内容和复制工作流的方法。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/begin-with/how-to-use-this-site/legacy_gyazo_8d7fa7b6602e2b4d1cec23ab66090cce.png"

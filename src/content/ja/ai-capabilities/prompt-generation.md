@@ -8,6 +8,8 @@ title: プロンプト生成・編集
 created: 2025-12-01
 updated: 2026-03-02
 summary: "ざっくり書いた指示を、モデルが理解しやすいプロンプトに整えるテクニック"
+seoTitle: "LLMでプロンプトを生成・編集する：画像生成向けのテクニック"
+seoDescription: "ざっくり書いた指示を、画像生成モデルが理解しやすいプロンプトにLLMで整えるテクニック。Stable Diffusion時代のプロンプト生成から、自然文を理解する最近のモデルとの付き合い方、ComfyUIでの運用を解説します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

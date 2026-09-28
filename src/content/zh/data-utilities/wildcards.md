@@ -8,6 +8,8 @@ title: "通配符"
 created: 2026-02-10
 updated: 2026-03-02
 summary: "在每次队列执行时随机替换提示词的一部分"
+seoTitle: "ComfyUI 通配符：随机替换提示词"
+seoDescription: "在 ComfyUI 中每次队列执行时随机替换提示词一部分的方法。介绍标准的 {a|b|c} 写法和 Impact-Pack 的通配符语法，附工作流。"
 permalink: "/{{ lang }}/data-utilities/{{ slug }}/"
 hero:
   gradient: ""

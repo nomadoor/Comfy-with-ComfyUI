@@ -9,6 +9,8 @@ created: 2025-12-13
 updated: 2026-03-02
 noteTags: ["troubleshoot", "vram"]
 summary: "torch.cuda.OutOfMemoryError"
+seoTitle: "torch.cuda.OutOfMemoryError in ComfyUI: Causes and Fixes"
+seoDescription: "Fix torch.cuda.OutOfMemoryError (out of VRAM) in ComfyUI: how model size, resolution, and batch size use VRAM, and ways to avoid the error."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

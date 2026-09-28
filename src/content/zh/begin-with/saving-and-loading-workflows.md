@@ -8,6 +8,8 @@ title: "保存与读取 工作流"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于 工作流 的保存与读取"
+seoTitle: "ComfyUI 工作流的保存、读取、导出"
+seoDescription: "在 ComfyUI 中打开官方模板、在浏览器内保存工作流、导出为 JSON 文件，以及从文件或生成的图像读取工作流的方法。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

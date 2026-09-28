@@ -8,6 +8,8 @@ title: video2audio
 created: 2026-02-06
 updated: 2026-03-02
 summary: 从视频自动生成音效或环境音的技术
+seoTitle: "video2audio：从视频自动生成音效的 AI"
+seoDescription: "为没有声音的生成视频添加与画面同步的音效和环境音的 video2audio。介绍 FoleyCrafter 与 HunyuanVideo-Foley 的原理和特点。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

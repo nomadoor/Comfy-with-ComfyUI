@@ -9,6 +9,8 @@ created: 2025-12-13
 updated: 2026-03-02
 noteTags: ["faq", "reproducibility"]
 summary: "同じモデル・同じシードでも画像が一致しない理由"
+seoTitle: "Stable Diffusion web UIとComfyUIで同じ画像が出ない理由"
+seoDescription: "同じモデル・同じシードでも、Stable Diffusion web UIとComfyUIで画像が一致しない理由。ノイズの生成方法とプロンプトの重み付けの違いと、完全に一致させるのが難しい理由を解説します。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

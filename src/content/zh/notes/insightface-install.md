@@ -9,6 +9,8 @@ created: 2025-12-09
 updated: 2026-03-02
 noteTags: ["troubleshoot", "install", "insightface", "reactor"]
 summary: "InsightFace 的安装方法"
+seoTitle: "为 ComfyUI 安装 InsightFace 的方法"
+seoDescription: "ReActor 等使用 InsightFace 的自定义节点所需的额外安装步骤。在 Windows 便携版中确认 Python 版本并安装对应 wheel 的方法。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

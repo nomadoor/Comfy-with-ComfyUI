@@ -8,6 +8,8 @@ title: "LTX 2.5"
 created: 2026-09-01
 updated: 2026-09-03
 summary: "Generate video and audio with LTX 2.5"
+seoTitle: "LTX 2.5 in ComfyUI: Generate Video and Audio Together"
+seoDescription: "Use Lightricks' LTX 2.5 in ComfyUI: Multi-shot, Duration Predictor, text2video, image2video, FLF2V, and IC-LoRA, with easy-to-read workflows."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/ltx-2-5/legacy_gyazo_f0a0582dba74a4ef6e731142136b5c59.mp4"

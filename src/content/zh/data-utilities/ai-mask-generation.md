@@ -8,6 +8,8 @@ title: "使用 AI 生成蒙版"
 created: 2026-02-06
 updated: 2026-05-30
 summary: "关于抠图、分割、物体检测"
+seoTitle: "在 ComfyUI 中用 AI 自动生成蒙版"
+seoDescription: "用 AI 自动生成 inpainting 等所需蒙版的方法。讲解 YOLO、Grounding DINO 物体检测，BiRefNet 抠图，SAM 分割的区别与组合方式。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/data-utilities/ai-mask-generation/legacy_gyazo_499c4756e1b2adb1424f9cab9829806b.png"

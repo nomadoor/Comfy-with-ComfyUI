@@ -8,6 +8,8 @@ title: 抠图
 created: 2026-02-06
 updated: 2026-03-02
 summary: "从自然图像中抠出前景，与背景分离的技术"
+seoTitle: "什么是抠图（Matting）？用 AI 去除背景"
+seoDescription: "从普通照片中分离前景与背景的抠图（Image Matting）技术。讲解连头发都能自然抠出的 Alpha 遮罩思路，并介绍 BiRefNet 和 SDMatte。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: '/media/ai-capabilities/matting/legacy_gyazo_38630075ecd6336a630da0fe5b8ba130.mp4'

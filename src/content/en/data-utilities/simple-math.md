@@ -8,6 +8,8 @@ title: "Simple Math"
 created: 2025-11-24
 updated: 2026-03-21
 summary: "About nodes that perform basic calculations such as arithmetic operations"
+seoTitle: "Math in ComfyUI: The Math Expression Node"
+seoDescription: "Do arithmetic in ComfyUI: the core Math Expression node, int vs. float and type conversion, quick math in input fields, and rgthree's Power Puter."
 
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

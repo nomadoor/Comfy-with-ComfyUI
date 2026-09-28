@@ -8,6 +8,8 @@ title: "设置"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于设置"
+seoTitle: "ComfyUI 设置与推荐设置"
+seoDescription: "ComfyUI 设置界面的打开方式和推荐修改的选项：界面语言、节点徽章、Run 按钮位置、生成中的预览显示等。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

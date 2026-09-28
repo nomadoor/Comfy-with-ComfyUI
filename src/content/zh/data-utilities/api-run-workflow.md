@@ -8,6 +8,8 @@ title: "尝试通过 API 执行工作流"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "请求执行 → 确认完成 → 获取输出，的最简步骤"
+seoTitle: "用 Python 通过 ComfyUI API 执行工作流"
+seoDescription: "从外部执行 ComfyUI 工作流的最简步骤：用最简 Python 脚本将 API 格式 JSON POST 到 /prompt，以及从命令行修改提示词的方法。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

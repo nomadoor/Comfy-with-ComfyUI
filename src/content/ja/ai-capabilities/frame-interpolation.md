@@ -8,6 +8,8 @@ title: フレーム補間
 created: 2025-12-01
 updated: 2026-03-02
 summary: 動画をなめらかにしたり、離れたフレーム同士をつなぐ技術
+seoTitle: "フレーム補間とは？ 動画をなめらかにするAI（VFI・FLF2V）"
+seoDescription: "動画のフレームの間に新しいフレームを差し込むフレーム補間の解説。fpsを上げる従来のVFIと、動画生成AIで離れたフレーム同士をつなぐGenerative interpolation（FLF2V）、動画の延長を紹介します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: 'https://github.com/google-research/frame-interpolation/raw/main/moment.gif'

@@ -8,6 +8,8 @@ title: "数据类型"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于 ComfyUI 处理的主要数据类型"
+seoTitle: "ComfyUI 数据类型：IMAGE、LATENT、MASK 等"
+seoDescription: "ComfyUI 节点处理的主要数据类型：INT、STRING 等基本类型，IMAGE、LATENT、MASK、CONDITIONING 等 ComfyUI 特有类型，以及查看内容的 Preview as Text 节点。"
 
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

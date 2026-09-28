@@ -8,6 +8,8 @@ title: "PixelDiT / PiD"
 created: 2026-06-09
 updated: 2026-07-29
 summary: "使用 PixelDiT 和 PiD 进行图像生成与高分辨率解码"
+seoTitle: "在 ComfyUI 中使用 PixelDiT 与 PiD：像素扩散与高分辨率化"
+seoDescription: "NVIDIA 的像素扩散模型 PixelDiT，以及把 latent 解码为高分辨率图像的 PiD 在 ComfyUI 中的用法。介绍 text2image、与 Z-Image-Turbo 组合，以及放大任意图像。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/pixeldit-pid/legacy_gyazo_31ea733be7d13db9616875f7c59e3f40.png"

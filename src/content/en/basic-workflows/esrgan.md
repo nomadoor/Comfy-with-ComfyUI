@@ -8,6 +8,8 @@ title: "ESRGAN"
 created: 2025-12-09
 updated: 2026-03-02
 summary: "Image upscaling and face restoration"
+seoTitle: "ESRGAN in ComfyUI: Upscale Images and Restore Faces"
+seoDescription: "Use ESRGAN in ComfyUI to upscale images: model download, adjusting the scale, and restoring only faces with GFPGAN, with workflows."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: ""

@@ -8,6 +8,8 @@ title: "Recommended Specs"
 created: 2025-11-24
 updated: 2026-03-02
 summary: "PC specs required to run ComfyUI"
+seoTitle: "ComfyUI Recommended Specs: VRAM, RAM, GPU"
+seoDescription: "PC specs for running ComfyUI comfortably, based on real use: GPU VRAM matters most, then CPU, system memory (RAM), and storage."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

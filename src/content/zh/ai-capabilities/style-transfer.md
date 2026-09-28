@@ -8,6 +8,8 @@ title: 风格转移
 created: 2026-02-06
 updated: 2026-03-02
 summary: 试图从参考图像中转移“风格”的任务，及其模糊性
+seoTitle: "什么是风格转移？从参考图像迁移画风"
+seoDescription: "整理风格转移这一任务的模糊性，并比较不同做法：迁移纹理与笔触的方法、再现画风与作者风格的模型，以及只借用氛围的 IP-Adapter。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

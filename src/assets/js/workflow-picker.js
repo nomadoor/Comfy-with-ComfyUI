@@ -1,3 +1,5 @@
+import { copyJsonFromUrl } from "./copy-json.js";
+
 const SUCCESS_VISIBLE_MS = 1000;
 const ERROR_VISIBLE_MS = 2400;
 const PICKER_BOUND_FLAG = "workflowPickerBound";
@@ -96,31 +98,7 @@ async function copyWorkflowJson(container, file) {
   const messageNode = container.querySelector("[data-workflow-picker-message]");
   const errorLabel = container.getAttribute("data-error-label") || "Copy failed";
   try {
-    const response = await fetch(file, { cache: "no-store" });
-    if (!response.ok) {
-      throw new Error(`Failed to fetch JSON: ${response.status}`);
-    }
-    const text = await response.text();
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      await navigator.clipboard.writeText(text);
-      return true;
-    }
-    const temp = document.createElement("textarea");
-    temp.value = text;
-    temp.style.position = "fixed";
-    temp.style.top = "-9999px";
-    document.body.appendChild(temp);
-    temp.select();
-    let success = false;
-    try {
-      success = document.execCommand("copy");
-    } catch (error) {
-      console.warn("Copy fallback failed", error);
-    }
-    document.body.removeChild(temp);
-    if (!success) {
-      throw new Error("Copy fallback failed");
-    }
+    await copyJsonFromUrl(file);
     return true;
   } catch (error) {
     console.warn(error);
@@ -183,19 +161,29 @@ function bindPicker(container) {
     closePicker();
   });
 
-  document.addEventListener("click", (event) => {
+  // Document listeners outlive router content swaps; drop them once this picker leaves the page.
+  const documentListeners = new AbortController();
+  const whileConnected = (handler) => (event) => {
+    if (!container.isConnected) {
+      documentListeners.abort();
+      return;
+    }
+    handler(event);
+  };
+
+  document.addEventListener("click", whileConnected((event) => {
     if (!picker.contains(event.target)) {
       closePicker();
     }
-  });
+  }), { signal: documentListeners.signal });
 
-  document.addEventListener("keydown", (event) => {
+  document.addEventListener("keydown", whileConnected((event) => {
     if (!picker.classList.contains(OPEN_CLASS)) return;
     if (event.key === "Escape") {
       closePicker();
       toggle.focus();
     }
-  });
+  }), { signal: documentListeners.signal });
 
   copyButton.addEventListener("click", async () => {
     const current = list.querySelector(`.${OPTION_SELECTED_CLASS}`) || list.querySelector("[data-value]");

@@ -8,6 +8,8 @@ title: "实时处理"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "伪实时处理，以及 Instant/Change 的使用场景"
+seoTitle: "ComfyUI 伪实时处理：Run (Instant / On Change)"
+seoDescription: "ComfyUI 并不适合实时处理，但可以做到接近实时。讲解 Run (Instant) 与 Run (On Change) 的区别与使用场景，以及实时 image2image 和 video2video。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

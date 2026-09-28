@@ -8,6 +8,8 @@ title: "What is ComfyUI?"
 created: 2025-11-24
 updated: 2026-03-02
 summary: "ComfyUI is the OS of Generative AI"
+seoTitle: "What Is ComfyUI? The Node-Based Generative AI Platform"
+seoDescription: "What ComfyUI is as a generative AI engine, a node-based tool, and a platform, why it runs image, video, 3D, and audio models locally, and who runs it."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/begin-with/what-is-comfyui/legacy_gyazo_85c2b6638ce871ee1923a68ed24323b8.png"

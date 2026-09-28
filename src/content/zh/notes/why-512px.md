@@ -9,6 +9,8 @@ created: 2026-02-06
 updated: 2026-03-02
 noteTags: ["faq", "sd15"]
 summary: "Stable Diffusion 1.5 中推荐使用 512px 附近的理由"
+seoTitle: "为什么 Stable Diffusion 1.5 用 512px 生成？"
+seoDescription: "Stable Diffusion 1.5 推荐 512px 左右分辨率的原因：模型的训练分辨率、分辨率升高后计算量急剧增加的问题、Hires.fix 与分块方法，以及 SDXL 之后的情况。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

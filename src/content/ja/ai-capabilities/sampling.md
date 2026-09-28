@@ -8,6 +8,8 @@ title: Sampling
 created: 2025-11-29
 updated: 2026-03-27
 summary: ノイズをどのような手順で減らしていくかを決める仕組み
+seoTitle: "サンプラーとスケジューラーとは？ Samplingの仕組み"
+seoDescription: "拡散モデルがノイズを減らしていく手順を決めるSamplingの解説。サンプラーとスケジューラーの違い、品質への影響の大きさ、相性の悪い組み合わせ、LCMなど高速化用のSamplingをまとめています。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

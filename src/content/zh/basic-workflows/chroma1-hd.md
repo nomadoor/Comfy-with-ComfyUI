@@ -8,6 +8,8 @@ title: "Chroma1-HD"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "用 Chroma1-HD 扩展 Flux.1-schnell"
+seoTitle: "在 ComfyUI 中使用 Chroma1-HD：去蒸馏版 Flux"
+seoDescription: "以 Flux.1 [schnell] 为起点重建、更适合 LoRA 和微调的“去蒸馏版 Flux”Chroma1-HD 在 ComfyUI 中的用法，附模型下载与 text2image 工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/chroma1-hd/legacy_gyazo_326db88733896540f58ce60e7320824f.png"

@@ -8,6 +8,8 @@ title: "Resize, Crop, and Pad"
 created: 2025-11-25
 updated: 2026-03-02
 summary: "About image resizing, cropping, and padding"
+seoTitle: "Resize, Crop, and Pad Images in ComfyUI"
+seoDescription: "ComfyUI nodes for resizing, cropping, and padding images, and when to use each to match a model's resolution and save VRAM, with easy-to-read workflows."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/data-utilities/resize-crop-pad/legacy_gyazo_02cf6bd2a573dc15dff4799c94b15a0d.png"

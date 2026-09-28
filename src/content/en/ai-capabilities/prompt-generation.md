@@ -8,6 +8,8 @@ title: Prompt Generation & Editing
 created: 2025-12-01
 updated: 2026-03-02
 summary: "Techniques to refine roughly written instructions into prompts that models can easily understand"
+seoTitle: "Generate and Refine Prompts with LLMs for Image Generation"
+seoDescription: "Use LLMs to turn rough ideas into prompts image models understand, from the Stable Diffusion era to natural-language models, and how to do it in ComfyUI."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

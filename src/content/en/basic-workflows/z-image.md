@@ -8,6 +8,8 @@ title: "Z-Image"
 created: 2026-01-31
 updated: 2026-03-02
 summary: "Image generation with Z-Image"
+seoTitle: "Z-Image in ComfyUI: Base Model and ControlNet"
+seoDescription: "Use the Z-Image base model from Alibaba / Tongyi-MAI in ComfyUI: text2image, refining with Z-Image-Turbo, and Fun ControlNet Union 2.1."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/z-image/legacy_gyazo_39cddc1debeff5423090f2fe87e5b038.png"

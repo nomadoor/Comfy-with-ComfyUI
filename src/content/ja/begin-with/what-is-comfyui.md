@@ -8,6 +8,8 @@ title: "ComfyUIとは？"
 created: 2025-11-19
 updated: 2026-03-02
 summary: "ComfyUIとは生成AIのOSです"
+seoTitle: "ComfyUIとは？ ノードベースの生成AIプラットフォーム"
+seoDescription: "ComfyUIとは何かを、生成AIエンジン、ノードベースツール、生成AIプラットフォームの3つの面から解説。画像・動画・3D・音声などのモデルをローカルで動かせる理由と、運営体制を紹介します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/begin-with/what-is-comfyui/legacy_gyazo_85c2b6638ce871ee1923a68ed24323b8.png"

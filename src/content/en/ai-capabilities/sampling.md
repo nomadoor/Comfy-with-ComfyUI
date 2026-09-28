@@ -8,6 +8,8 @@ title: Sampling
 created: 2025-12-01
 updated: 2026-03-27
 summary: Mechanism to decide the procedure for reducing noise
+seoTitle: "Samplers and Schedulers Explained"
+seoDescription: "How sampling removes noise step by step: samplers vs. schedulers, how much they affect quality, bad combinations, and fast sampling like LCM."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

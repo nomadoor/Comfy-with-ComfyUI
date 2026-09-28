@@ -8,6 +8,8 @@ title: "Comfy Cloud"
 created: 2025-11-20
 updated: 2026-03-02
 summary: "Comfy Cloudについて"
+seoTitle: "Comfy Cloudとは？ 公式クラウド版ComfyUIの使い方"
+seoDescription: "Comfy Orgが提供する公式クラウドサービスComfy Cloudの概要。ブラウザだけで高性能GPU上のComfyUIを使える仕組みと、ローカル版との違い、利用開始までの手順を解説します。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient:

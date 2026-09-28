@@ -8,6 +8,8 @@ title: Conditioning
 created: 2025-11-13
 updated: 2026-08-01
 summary: A mechanism to tell the diffusion model 'what kind of image I want'.
+seoTitle: "What Is Conditioning in Diffusion Models?"
+seoDescription: "How conditioning tells a diffusion model what you want: text encoders, CLIP-style vs. LLM-style encoders, and conditioning from images, pose, or depth."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

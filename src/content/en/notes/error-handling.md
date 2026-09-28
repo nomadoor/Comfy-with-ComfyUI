@@ -9,6 +9,8 @@ created: 2025-12-13
 updated: 2026-03-02
 noteTags: ["troubleshoot", "error"]
 summary: "Checklist for troubleshooting errors"
+seoTitle: "What to Do When ComfyUI Shows an Error"
+seoDescription: "A checklist for ComfyUI errors: where to look on screen and in the terminal, how to read and search error messages, and what to check before an issue."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

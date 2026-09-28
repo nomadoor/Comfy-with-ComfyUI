@@ -8,6 +8,8 @@ title: "SCAIL-2"
 created: 2026-06-11
 updated: 2026-06-18
 summary: "Transfer video motion to the person in a reference image with SCAIL-2"
+seoTitle: "SCAIL-2 in ComfyUI: Motion Transfer Without Pose Skeletons"
+seoDescription: "Use SCAIL-2, a Wan 2.1-based model that transfers motion without pose skeletons: Animation and Replacement modes, multiple people, and long videos."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

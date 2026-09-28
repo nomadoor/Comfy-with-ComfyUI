@@ -8,6 +8,8 @@ title: 放大・图像修复
 created: 2025-11-13
 updated: 2026-09-27
 summary: 放大图像，或修复劣化图像的技术
+seoTitle: "AI 放大与图像修复：从 GAN 到扩散模型"
+seoDescription: "放大低画质图像并补全丢失细节的放大与修复技术。比较基于 GAN 的传统放大模型、面部修复模型、扩散模型方法，以及用图像编辑模型修复。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

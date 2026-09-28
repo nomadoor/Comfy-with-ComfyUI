@@ -8,6 +8,8 @@ title: "ReActor"
 created: 2025-12-09
 updated: 2026-03-02
 summary: "FaceSwap using ReActor"
+seoTitle: "ReActor in ComfyUI: Face Swap with One Photo"
+seoDescription: "Swap faces in images and videos from one photo with ReActor in ComfyUI: installation, inswapper vs. HyperSwap, and the NSFW filter."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/reactor/legacy_gyazo_c75a0142055d05c154f7d8cf03b3ca56.png"
@@ -105,4 +107,4 @@ To prevent the repository from being deleted, ReActor has a built-in filter for 
 Therefore, if you use an image containing NSFW content, it will be rejected.
 
 I won't go into detail, but there are simple ways to bypass this.
-( [Detailer](/en/upscale-fix/detailer/) might be useful... maybe. )
+( [Detailer](/en/basic-workflows/detailer/) might be useful... maybe. )

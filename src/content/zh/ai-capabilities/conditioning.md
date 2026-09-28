@@ -8,6 +8,8 @@ title: Conditioning (调节/条件)
 created: 2025-11-13
 updated: 2026-08-01
 summary: 告诉扩散模型“想要这样的图像”的机制
+seoTitle: "什么是 Conditioning？告诉扩散模型生成内容的机制"
+seoDescription: "向扩散模型传达“想要这样的图像”的 Conditioning 机制。整理文本编码器的作用、CLIP 型与 LLM 型的区别，以及基于参考图像和结构（姿势、深度等）的 Conditioning。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

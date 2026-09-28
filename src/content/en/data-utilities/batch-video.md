@@ -8,6 +8,8 @@ title: "Batch & Video"
 created: 2025-11-27
 updated: 2026-03-02
 summary: "Mechanism to handle multiple images/video frames collectively"
+seoTitle: "Batches and Video in ComfyUI"
+seoDescription: "Process many images or video frames at once with ComfyUI batches: vs. Queue and List, why video is a batch, OOM pitfalls, and batch nodes."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

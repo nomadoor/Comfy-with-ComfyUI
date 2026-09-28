@@ -8,6 +8,8 @@ title: "Ultimate SD Upscale"
 created: 2025-12-09
 updated: 2026-03-02
 summary: "Super resolution upscale using Tile and ControlNet"
+seoTitle: "Ultimate SD Upscale in ComfyUI: Tiled Upscaling"
+seoDescription: "Ultimate SD Upscale enlarges images tile by tile: hide seams with overlap, handle the prompt problem, and lock structure with ControlNet Tile."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
    image: ""

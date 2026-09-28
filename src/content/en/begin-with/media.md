@@ -8,6 +8,8 @@ title: "Media"
 created: 2025-11-24
 updated: 2026-03-02
 summary: "About media"
+seoTitle: "Load and Save Images, Video, and Audio in ComfyUI"
+seoDescription: "Core ComfyUI media nodes: Load Image, Save Image, and other image nodes, video nodes including Video Helper Suite, audio nodes, and quick ways to load files."
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

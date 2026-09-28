@@ -8,6 +8,8 @@ title: "高速化与轻量化"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "整理扩散模型的高速化・轻量化技术并按目的区分使用"
+seoTitle: "ComfyUI 生成加速与轻量化方法汇总"
+seoDescription: "按目的整理扩散模型的加速与轻量化技术：8bit / 4bit 量化、GGUF、蒸馏、Attention 优化、采样缓存等，以及想省显存或提速时如何选择。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

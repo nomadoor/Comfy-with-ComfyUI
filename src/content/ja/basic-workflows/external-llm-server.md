@@ -8,6 +8,8 @@ title: "外部LLMサーバ連携"
 created: 2026-02-18
 updated: 2026-03-02
 summary: "ComfyUIの外でLLMを動かし連携する"
+seoTitle: "ComfyUIと外部LLMサーバ（Ollama）を連携する"
+seoDescription: "LLMをComfyUIの外で動かし、ComfyUIから呼び出す方法。処理を分離する理由と、Ollamaのインストールとモデルのダウンロード、カスタムノードで最小のチャットを組む手順を解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/external-llm-server/legacy_gyazo_da95a615f374717f19b3447244ad647a.png"

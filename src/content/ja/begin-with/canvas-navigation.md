@@ -8,6 +8,8 @@ title: "キャンバスの操作"
 created: 2025-11-20
 updated: 2026-03-02
 summary: "キャンバスの操作について"
+seoTitle: "ComfyUIのキャンバス操作：移動・ズーム・全体表示"
+seoDescription: "ComfyUIのキャンバスを移動・拡大縮小する操作方法。ノードの上で誤って動かさないドラッグのコツ、全体表示やノードへのズーム、ミニマップの使い方をまとめています。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

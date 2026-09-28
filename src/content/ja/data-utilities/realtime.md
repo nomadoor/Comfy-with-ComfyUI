@@ -8,6 +8,8 @@ title: "リアルタイム処理"
 created: 2025-11-27
 updated: 2026-03-02
 summary: "リアルタイム風の処理と、Instant/Change の使いどころ"
+seoTitle: "ComfyUIでリアルタイム風に処理する：Run (Instant / On Change)"
+seoDescription: "リアルタイム処理に向かないComfyUIで、リアルタイム風に生成する方法。Run (Instant)とRun (On Change)の違いと使いどころ、リアルタイムimage2imageやvideo2videoについて解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

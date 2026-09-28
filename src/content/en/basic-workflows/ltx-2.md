@@ -8,6 +8,8 @@ title: "LTX-2"
 created: 2026-01-10
 updated: 2026-09-03
 summary: "Handle text2video / image2video / audio2video with LTX-2"
+seoTitle: "LTX-2 in ComfyUI: text2video, image2video, audio2video"
+seoDescription: "Run LTX-2, Lightricks' video-with-audio model, in ComfyUI: settings, models, and text2video, image2video, and audio2video in easy-to-read workflows."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/ltx-2/legacy_gyazo_2a89cce32669413fb7f5b3fe4ca22960.mp4"

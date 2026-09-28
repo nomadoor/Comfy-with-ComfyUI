@@ -1,5 +1,14 @@
 {
   "url": "https://comfyui.nomadoor.net",
+  "author": {
+    "name": "nomadoor",
+    "url": "https://x.com/noma_door",
+    "sameAs": [
+      "https://x.com/noma_door",
+      "https://www.reddit.com/user/nomadoor/",
+      "https://github.com/nomadoor"
+    ]
+  },
   "turnstileSiteKey": "0x4AAAAAACeNHt46k6LVf5wp",
   "ogImage": "/assets/logos/favicon/favicon_256.png",
   "media": {
@@ -13,7 +22,7 @@
   },
   "defaultLang": "ja",
   "name": {
-    "ja": "Comfyに使う ComfyUI",
+    "ja": "Comfyに使うComfyUI",
     "en": "Comfy with ComfyUI",
     "zh": "Comfy with ComfyUI"
   },
@@ -21,7 +30,7 @@
     {
       "code": "ja",
       "label": "日本語",
-      "title": "Comfyに使う ComfyUI"
+      "title": "Comfyに使うComfyUI"
     },
     {
       "code": "en",

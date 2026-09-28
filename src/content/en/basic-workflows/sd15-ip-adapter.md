@@ -8,6 +8,8 @@ title: "IP-Adapter"
 created: 2025-12-09
 updated: 2026-08-26
 summary: "The original mechanism for transferring style and subject from a reference image"
+seoTitle: "IP-Adapter in ComfyUI: Transfer Style from a Reference Image"
+seoDescription: "Use IP-Adapter with Stable Diffusion 1.5 to transfer style or subject from a reference image: custom nodes, models, the workflow, and plus, light, and face."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_64fdcae074a2a01943d7f5fff3aaa418.png"

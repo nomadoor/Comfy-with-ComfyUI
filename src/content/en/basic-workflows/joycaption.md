@@ -8,6 +8,8 @@ title: "JoyCaption"
 created: 2025-12-09
 updated: 2026-03-02
 summary: "Image caption generation using JoyCaption"
+seoTitle: "JoyCaption in ComfyUI: Accurate Image Captioning"
+seoDescription: "Use JoyCaption in ComfyUI, a VLM that writes accurate captions for photos, anime, and illustrations: installing and configuring the node."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

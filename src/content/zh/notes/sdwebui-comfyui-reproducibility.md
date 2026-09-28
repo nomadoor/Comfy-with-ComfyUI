@@ -9,6 +9,8 @@ created: 2026-02-06
 updated: 2026-03-02
 noteTags: ["faq", "reproducibility"]
 summary: "即使相同模型・相同种子图像也不一致的理由"
+seoTitle: "Stable Diffusion web UI 与 ComfyUI 生成不同图像的原因"
+seoDescription: "相同模型、相同种子在 Stable Diffusion web UI 与 ComfyUI 中也得不到相同图像的原因：噪声生成方式和提示词权重计算不同，以及难以完全一致的理由。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

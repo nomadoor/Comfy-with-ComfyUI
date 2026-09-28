@@ -8,6 +8,8 @@ title: "Flux.1 Kontext"
 created: 2025-12-11
 updated: 2026-03-02
 summary: "Instruction-based image editing with Flux.1 Kontext."
+seoTitle: "Flux.1 Kontext in ComfyUI: Instruction-Based Image Editing"
+seoDescription: "Edit images with text using Flux.1 Kontext [dev] in ComfyUI: model download, the basic workflow, prompting, and style, removal, and text edits."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/flux-1-kontext/legacy_gyazo_79c075e47d999e282c8a2cd3c05f10ef.png"
@@ -16,7 +18,7 @@ tags: ["instruction-based-image-editing","collage-refine"]
 
 ## What is Flux.1 Kontext?
 
-Flux.1 Kontext is an instruction-based image editing model based on [Flux.1](/en).
+Flux.1 Kontext is an instruction-based image editing model based on [Flux.1](/en/basic-workflows/flux-1/).
 
 It is undoubtedly this model that sparked the popularity of the task of AI image editing such as nano banana.
 

@@ -8,6 +8,8 @@ title: video2audio
 created: 2025-12-01
 updated: 2026-03-02
 summary: Technology to automatically generate sound effects and environmental sounds from video
+seoTitle: "video2audio: Generate Sound Effects from Video"
+seoDescription: "Most generated videos are silent. video2audio adds sound effects and ambience synced to the footage. How FoleyCrafter and HunyuanVideo-Foley work."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

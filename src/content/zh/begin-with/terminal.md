@@ -8,6 +8,8 @@ title: "终端"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于终端 (CLI) 的基础知识"
+seoTitle: "终端入门：PowerShell 与 Linux 基本命令"
+seoDescription: "安装 ComfyUI 和排查问题时用到的终端（CLI）基础。介绍 Windows PowerShell 与 Linux / macOS 终端的打开方法，以及必备命令。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/begin-with/terminal/legacy_gyazo_f763b3b332d7854c0200b3d0690b7c7f.png"

@@ -8,6 +8,8 @@ title: "分割"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "为了制作蒙版而区分图像的技术（主要是 SAM 系）"
+seoTitle: "什么是分割？用 SAM 制作蒙版的技术"
+seoDescription: "根据点、BBOX 或文本指定的物体生成对应形状蒙版的分割技术。讲解与抠图的区别、Segment Anything（SAM）系列主要模型，以及在 ComfyUI 中的用法。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/ai-capabilities/segmentation/legacy_gyazo_4a56caa5986a2c2403dcad74d1bf1874.png"

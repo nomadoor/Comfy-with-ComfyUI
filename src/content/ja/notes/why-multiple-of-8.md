@@ -9,6 +9,8 @@ created: 2025-12-13
 updated: 2026-03-02
 noteTags: ["faq", "resolution", "vae"]
 summary: "解像度が 8 の倍数に制限される理由と、VAE の圧縮率の関係"
+seoTitle: "画像生成で解像度が8の倍数になるのはなぜ？"
+seoDescription: "ComfyUIのEmpty Latent Imageで解像度が8刻みになる理由を、latent diffusion modelとVAEの圧縮率から解説。圧縮率の違うVAE、動画モデルのフレーム数、画像編集での注意点もまとめています。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

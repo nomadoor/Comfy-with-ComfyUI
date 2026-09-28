@@ -7,7 +7,9 @@ navId: git
 title: "Git"
 created: 2025-11-20
 updated: 2026-03-02
-summary: ""
+summary: "ComfyUIを使ううえで知っておきたいGitとGitHubの基本"
+seoTitle: "ComfyUIユーザーのためのGit・GitHub入門"
+seoDescription: "ComfyUIやカスタムノードの導入で出てくるGitとGitHubの基本。コミットやブランチの考え方、最低限覚えたいコマンド、ComfyUI Managerが裏でしていることを、ゲームのセーブにたとえて解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/begin-with/git/legacy_gyazo_4bb24e5d24ae91a7e0f1f5143c2e5ee5.png"

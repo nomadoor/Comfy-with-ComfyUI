@@ -8,6 +8,8 @@ title: "队列 (Queue)"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于处理的预约和指定次数运行"
+seoTitle: "ComfyUI 队列（Queue）：预约生成与连续执行"
+seoDescription: "ComfyUI 的 Run 按钮其实是向队列添加预约。介绍连续执行、control after generate 设置、停止当前任务、删除预约和查看历史的方法。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

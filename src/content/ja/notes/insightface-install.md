@@ -9,6 +9,8 @@ created: 2025-12-09
 updated: 2026-03-02
 noteTags: ["troubleshoot", "install", "insightface", "reactor"]
 summary: "InsightFaceのインストール方法"
+seoTitle: "ComfyUIにInsightFaceをインストールする方法"
+seoDescription: "ReActorなどInsightFaceを使うカスタムノードに必要な追加インストール手順。Windowsポータブル版で、Pythonのバージョンを確認して対応するwheelを入れる方法をまとめています。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

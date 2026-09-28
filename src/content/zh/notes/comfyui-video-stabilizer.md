@@ -9,6 +9,8 @@ created: 2026-07-03
 updated: 2026-07-03
 noteTags: ["project", "custom-nodes"]
 summary: "用于在 ComfyUI 中进行视频防抖、还原原始抖动，以及添加人工手持抖动的自定义节点"
+seoTitle: "ComfyUI Video Stabilizer：视频防抖节点"
+seoDescription: "在 ComfyUI 中进行视频防抖的自定义节点 ComfyUI Video Stabilizer 的用法。介绍安装、framing_mode 与 camera_lock 等参数、还原抖动以及添加人工手持抖动。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

@@ -8,6 +8,8 @@ title: 采样 (Sampling)
 created: 2026-02-06
 updated: 2026-03-27
 summary: 决定以何种步骤减少噪点的机制
+seoTitle: "什么是采样器与调度器？Sampling 的原理"
+seoDescription: "决定扩散模型如何逐步去除噪声的 Sampling。讲解采样器与调度器的区别、对画质影响有多大、不宜搭配的组合，以及 LCM 等加速用采样。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

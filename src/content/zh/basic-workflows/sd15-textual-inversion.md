@@ -8,6 +8,8 @@ title: "Textual Inversion"
 created: 2025-12-05
 updated: 2026-08-26
 summary: "Stable Diffusion 1.5 的 Textual Inversion"
+seoTitle: "在 ComfyUI 中使用 Textual Inversion（embedding）"
+seoDescription: "把难以用文字描述的外观作为新词教给模型的 Textual Inversion 原理，以及在 ComfyUI 中使用 embedding 的方法，附 embedding 下载与 text2image 工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

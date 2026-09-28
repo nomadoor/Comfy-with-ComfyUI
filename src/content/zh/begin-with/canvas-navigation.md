@@ -8,6 +8,8 @@ title: "画布操作"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于画布的操作"
+seoTitle: "ComfyUI 画布操作：移动、缩放、全局显示"
+seoDescription: "ComfyUI 画布的移动与缩放方法。介绍避免误拖动节点的技巧、显示整个工作流或聚焦单个节点，以及小地图的用法。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

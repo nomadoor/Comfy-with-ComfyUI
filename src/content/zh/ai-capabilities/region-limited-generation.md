@@ -8,6 +8,8 @@ title: 区域指定生成
 created: 2026-02-06
 updated: 2026-03-02
 summary: 试图只按照该条件生成图像一部分的技术，及其局限性
+seoTitle: "区域指定生成：在图像任意位置画出想要的内容"
+seoDescription: "只对图像局部用不同条件生成、以指定构图的技术比较：提示词中写位置、反复 inpainting、Conditioning Set Area、Latent Couple / Attention Couple，以及杂乱拼贴优化。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

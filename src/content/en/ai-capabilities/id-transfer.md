@@ -9,6 +9,8 @@ created: 2025-12-01
 updated: 2026-03-02
 summary: Techniques to create images of different scenes while maintaining the person's
   face or identity, and face replacement.
+seoTitle: "ID Transfer and FaceSwap: Keep a Face Across Images"
+seoDescription: "Keep a person's face and identity in new scenes, plus FaceSwap: LoRA, IP-Adapter, InstantID, PuLID-FLUX, InfiniteYou, and instruction-based editing."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: /media/ai-capabilities/id-transfer/legacy_gyazo_877d8862f6e7f6dd3ec7fbeac5331cd9.png

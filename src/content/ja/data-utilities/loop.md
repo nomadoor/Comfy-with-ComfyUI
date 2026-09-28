@@ -8,6 +8,8 @@ title: "ループ処理"
 created: 2026-09-18
 updated: 2026-09-22
 summary: "Start Loop と End Loop で、workflow の一部を繰り返し実行する"
+seoTitle: "ComfyUIのループ処理：Start LoopとEnd Loop"
+seoDescription: "Start LoopとEnd Loopでworkflowの一部を繰り返し実行する、ComfyUIのループ処理の使い方。結果をまとめるaccumulate、前の結果を次に渡す方法、最初と最後だけ処理を変える方法をworkflow付きで解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

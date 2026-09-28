@@ -8,6 +8,8 @@ title: "什么是 ComfyUI？"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "ComfyUI 是生成式 AI 的操作系统"
+seoTitle: "什么是 ComfyUI？基于节点的生成式 AI 平台"
+seoDescription: "从生成式 AI 引擎、节点式工具、生成式 AI 平台三个方面介绍 ComfyUI。说明它为何能在本地运行图像、视频、3D、音频等模型，以及项目的运营方式。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/begin-with/what-is-comfyui/legacy_gyazo_85c2b6638ce871ee1923a68ed24323b8.png"

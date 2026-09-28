@@ -8,6 +8,8 @@ title: "Wan-Animate"
 created: 2025-12-12
 updated: 2026-03-02
 summary: "Wan-Animateで人物・キャラへのモーション転送を行う"
+seoTitle: "ComfyUIでWan-Animateを使う：人物へのモーション転送"
+seoDescription: "参照動画の動きを画像の人物に移すWan-Animateの使い方。AnimationモードとReplacementモード、Lightx2v LoRAによる6ステップの高速化、長い動画のために処理を繰り返す方法を解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

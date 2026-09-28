@@ -8,6 +8,8 @@ title: "Hires.fix"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "使用 Hires.fix 生成高分辨率图像"
+seoTitle: "ComfyUI 的 Hires.fix：生成高分辨率图像"
+seoDescription: "把生成的图像放大后用 image2image 重绘的 Hires.fix 原理和诞生原因。介绍在 ComfyUI 中的基本搭法，以及在 latent 状态下放大的方法，附工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

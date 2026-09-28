@@ -9,6 +9,8 @@ created: 2025-12-13
 updated: 2026-03-02
 noteTags: ["faq", "resolution", "vae"]
 summary: "Reason why resolution is limited to multiples of 8 and relation to VAE compression rate"
+seoTitle: "Why Image Resolution Must Be a Multiple of 8"
+seoDescription: "Why ComfyUI's Empty Latent Image uses steps of 8: latent diffusion and VAE compression, other VAE ratios, video frame counts, and editing caveats."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

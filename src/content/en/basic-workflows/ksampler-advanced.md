@@ -8,6 +8,8 @@ title: "KSampler (Advanced) Node"
 created: 2025-12-06
 updated: 2026-03-02
 summary: "Understanding the KSampler (Advanced) Node"
+seoTitle: "How to Use KSampler (Advanced) in ComfyUI"
+seoDescription: "KSampler (Advanced) explained: add_noise, start_at_step, and end_at_step, and how to split sampling to switch prompts or LoRAs midway."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: ""

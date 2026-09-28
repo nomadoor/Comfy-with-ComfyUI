@@ -8,6 +8,8 @@ title: "ワイルドカード"
 created: 2026-02-10
 updated: 2026-03-02
 summary: "Queueごとにpromptの一部をランダムに入れ替える"
+seoTitle: "ComfyUIのワイルドカード：プロンプトをランダム化"
+seoDescription: "ComfyUIでQueueごとにプロンプトの一部をランダムに入れ替える方法。標準の{a|b|c}記法と、Impact-Packのワイルドカード構文をworkflow付きで解説します。"
 permalink: "/{{ lang }}/data-utilities/{{ slug }}/"
 hero:
   gradient: ""

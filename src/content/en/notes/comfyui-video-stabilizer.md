@@ -9,6 +9,8 @@ created: 2026-07-03
 updated: 2026-07-03
 noteTags: ["project", "custom-nodes"]
 summary: "A custom node for video stabilization, restoring camera shake, and adding artificial camera shake in ComfyUI"
+seoTitle: "ComfyUI Video Stabilizer: Stabilize Shaky Video"
+seoDescription: "Stabilize shaky video with the ComfyUI Video Stabilizer node: install, framing_mode and camera_lock, restoring shake, and adding artificial shake."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

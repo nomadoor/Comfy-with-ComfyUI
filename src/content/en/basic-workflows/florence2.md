@@ -8,6 +8,8 @@ title: "Florence-2"
 created: 2025-12-09
 updated: 2026-03-02
 summary: "Image caption generation and object detection using Florence-2"
+seoTitle: "Florence-2 in ComfyUI: Captioning, Object Detection, OCR"
+seoDescription: "Use Florence-2 in ComfyUI, one model for captioning, object detection, OCR, and visual question answering, with a workflow for each task."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

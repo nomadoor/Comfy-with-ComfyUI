@@ -8,6 +8,8 @@ title: Subject転送
 created: 2025-12-01
 updated: 2026-03-02
 summary: 参照画像と同じものを別のシーンに登場させる技術
+seoTitle: "Subject転送：同じキャラや物を別のシーンに登場させるAI"
+seoDescription: "参照画像と同じキャラクターや物を別のシーンに登場させるSubject転送（Subject-Driven Image Generation）の技術を整理。LoRA、IP-Adapter、IC-LoRA、ACE++、指示ベース画像編集モデルを比較します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

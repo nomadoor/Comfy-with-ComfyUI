@@ -1,3 +1,5 @@
+import { pushEntry } from "./history-entries.js";
+
 let tocState = {
   scrollHandler: null,
   resizeHandler: null,
@@ -208,11 +210,10 @@ const initToc = () => {
     const targetId = link.dataset.targetId;
     const targetEl = document.getElementById(targetId);
     if (targetEl) {
-      targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
       const nextHash = `#${encodeURIComponent(targetId)}`;
-      if (window.location.hash !== nextHash) {
-        window.history.pushState({}, "", nextHash);
-      }
+      // Push before scrolling so Back returns to this position (see history-entries.js).
+      if (window.location.hash !== nextHash) pushEntry(nextHash);
+      targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
       // Immediate feedback
       setActiveLink(targetId);
     }

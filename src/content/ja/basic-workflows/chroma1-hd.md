@@ -8,6 +8,8 @@ title: "Chroma1-HD"
 created: 2025-12-11
 updated: 2026-03-02
 summary: "Chroma1-HDでFlux.1-schnellを拡張する"
+seoTitle: "ComfyUIでChroma1-HDを使う：脱蒸留版Flux"
+seoDescription: "Flux.1 [schnell]を出発点に、LoRAやファインチューニングと相性の良い「脱蒸留版Flux」として作られたChroma1-HDの、ComfyUIでの使い方。モデルのダウンロードとtext2imageのworkflowを紹介します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/chroma1-hd/legacy_gyazo_326db88733896540f58ce60e7320824f.png"
@@ -16,7 +18,7 @@ tags: []
 
 ## Chroma1-HDとは？
 
-[Flux.1 [dev]](/ja/basic-workflows/flux1/) は素晴らしいモデルでしたが、コミュニティで広く使ううえでは大きく2つの課題がありました。
+[Flux.1 [dev]](/ja/basic-workflows/flux-1/) は素晴らしいモデルでしたが、コミュニティで広く使ううえでは大きく2つの課題がありました。
 
 - 強く蒸留されているため、LoRA やフルファインチューニングとの相性があまり良くない
 - 非商用ライセンス

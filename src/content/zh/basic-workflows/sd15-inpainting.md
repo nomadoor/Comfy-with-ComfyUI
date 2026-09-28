@@ -8,6 +8,8 @@ title: "inpainting"
 created: 2025-12-07
 updated: 2026-08-26
 summary: "使用 inpainting 只编辑图像的一部分"
+seoTitle: "用 ComfyUI 的 inpainting 只重绘图像的一部分"
+seoDescription: "比较只重绘图像局部的 inpainting 方法：局部 image2image 及与周围不协调的问题、inpainting 专用模型，以及 ControlNet inpaint 的用法，附工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 tags: ["controlnet", "region-limited-generation"]
 hero:

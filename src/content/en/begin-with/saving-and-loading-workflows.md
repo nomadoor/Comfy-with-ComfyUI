@@ -8,6 +8,8 @@ title: "Saving & Loading Workflows"
 created: 2025-11-24
 updated: 2026-03-02
 summary: "About saving and loading workflows"
+seoTitle: "Save, Load, and Export ComfyUI Workflows"
+seoDescription: "Open official templates, save workflows in the browser, export them as JSON, and load workflows from files or generated images in ComfyUI."
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

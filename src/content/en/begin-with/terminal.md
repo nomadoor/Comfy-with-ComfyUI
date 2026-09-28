@@ -7,7 +7,9 @@ navId: terminal
 title: "Terminal"
 created: 2025-11-24
 updated: 2026-03-02
-summary: ""
+summary: "Terminal basics for controlling your PC with commands"
+seoTitle: "Terminal Basics: PowerShell and Linux Commands"
+seoDescription: "Terminal (CLI) basics for installing and fixing ComfyUI: open PowerShell on Windows or a terminal on Linux and macOS, and the essential commands."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/begin-with/terminal/legacy_gyazo_f763b3b332d7854c0200b3d0690b7c7f.png"

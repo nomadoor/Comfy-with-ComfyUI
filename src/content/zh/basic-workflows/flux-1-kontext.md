@@ -8,6 +8,8 @@ title: "Flux.1 Kontext"
 created: 2025-12-11
 updated: 2026-03-02
 summary: "在 Flux.1 Kontext 中进行指令基础的图像编辑。"
+seoTitle: "在 ComfyUI 中使用 Flux.1 Kontext：基于指令的图像编辑"
+seoDescription: "用文字指令编辑图像的 Flux.1 Kontext [dev] 在 ComfyUI 中的用法。介绍模型下载、基本工作流、提示词写法，以及画风转换、物体去除、文字替换等示例。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/flux-1-kontext/legacy_gyazo_79c075e47d999e282c8a2cd3c05f10ef.png"

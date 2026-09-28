@@ -8,6 +8,8 @@ title: "JoyCaption"
 created: 2025-12-08
 updated: 2026-03-02
 summary: "JoyCaptionを使った画像キャプション生成"
+seoTitle: "ComfyUIでJoyCaptionを使う：高精度な画像キャプション生成"
+seoDescription: "実写・アニメ・イラストまで幅広く高精度なキャプションを生成できるVLM、JoyCaptionのComfyUIでの使い方。カスタムノードの導入からJoyCaptionノードの設定まで解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

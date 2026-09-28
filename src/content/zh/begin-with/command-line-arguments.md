@@ -8,6 +8,8 @@ title: "与启动参数"
 created: 2026-02-06
 updated: 2026-08-01
 summary: "启动 ComfyUI 时指定的选项"
+seoTitle: "ComfyUI 启动参数一览与设置方法"
+seoDescription: "ComfyUI 启动参数的设置方法与按用途整理的一览：显存不足（OOM）对策、内存控制、端口等连接设置，以及排查错误用的选项。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

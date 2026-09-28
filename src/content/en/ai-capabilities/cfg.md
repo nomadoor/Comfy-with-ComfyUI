@@ -8,6 +8,8 @@ title: CFG
 created: 2025-12-01
 updated: 2026-03-02
 summary: A mechanism that determines the 'effectiveness' of the prompt.
+seoTitle: "What Is CFG? How the CFG Scale Works in Image Generation"
+seoDescription: "How CFG sets how closely a model follows the prompt: what changing it does, how to pick a value, and why CFG 1 cuts compute and ignores the negative prompt."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

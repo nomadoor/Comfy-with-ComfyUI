@@ -8,6 +8,8 @@ title: 着せ替え
 created: 2025-12-01
 updated: 2026-03-02
 summary: 服だけを別のデザイン・バリエーションに差し替えるタスク
+seoTitle: "AIで服を着せ替える（Virtual Try-On）方法"
+seoDescription: "服だけを別のデザインに差し替える着せ替え（バーチャル試着）の技術を比較。LoRA、catvton-flux、指示ベース画像編集モデルでの横並べやマルチリファレンスによる方法を解説します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

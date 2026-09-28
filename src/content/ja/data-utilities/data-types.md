@@ -8,6 +8,8 @@ title: "データ型"
 created: 2025-11-24
 updated: 2026-03-02
 summary: "ComfyUIで扱う主なデータ型について"
+seoTitle: "ComfyUIのデータ型：IMAGE・LATENT・MASKなど"
+seoDescription: "ComfyUIのノードで扱う主なデータ型の解説。INTやSTRINGなどの基本的な型と、IMAGE・LATENT・MASK・CONDITIONINGなどComfyUI独自の型、中身を確かめるPreview as Textノードを紹介します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

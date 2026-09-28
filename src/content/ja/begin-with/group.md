@@ -8,6 +8,8 @@ title: "グループ"
 created: 2025-11-23
 updated: 2026-03-02
 summary: "ノードをまとめるグループ機能について"
+seoTitle: "ComfyUIのグループ機能：ノードを枠でまとめる"
+seoDescription: "ComfyUIのグループ機能の使い方。グループ枠の作成・編集・移動の方法と、枠に触れているノードまで一緒に動く仕組み、Subgraphとの使い分けを解説します。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

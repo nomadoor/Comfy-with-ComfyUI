@@ -8,6 +8,8 @@ title: "Wan2.2"
 created: 2025-12-12
 updated: 2026-03-02
 summary: "Wan2.2でtext2video / image2video / FLF2Vを使った動画生成"
+seoTitle: "ComfyUIでWan2.2を使う：14Bと5Bの動画生成workflow"
+seoDescription: "Wan2.1の後継Wan2.2をComfyUIで使う方法。high_noise / low_noiseを切り替える14Bと、単一モデルのTI2V-5Bそれぞれの推奨設定、text2video、image2video、FLF2Vを、読みやすく整理したworkflow付きで解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""
@@ -16,7 +18,7 @@ tags: []
 
 ## Wan2.2とは？
 
-Wan2.2 は、[Wan-2.1](/ja/basic-workflows/wan2-1/) の正当後継にあたる動画生成モデルファミリーです。
+Wan2.2 は、[Wan-2.1](/ja/basic-workflows/wan-2-1/) の正当後継にあたる動画生成モデルファミリーです。
 大きく 2 つのモデルで構成されています。
 
 - 14B：`high_noise` / `low_noise` の 2 モデルを切り替える二段構成

@@ -8,6 +8,8 @@ title: Diffusion Models
 created: 2025-12-01
 updated: 2026-03-02
 summary: The mechanism of diffusion models.
+seoTitle: "What Is a Diffusion Model? How Images Emerge from Noise"
+seoDescription: "How diffusion models, the core of image AI, turn noise into images, explained through ComfyUI's live preview: how they are trained and how generation works."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

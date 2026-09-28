@@ -8,6 +8,8 @@ title: "マスク操作"
 created: 2025-11-25
 updated: 2026-09-27
 summary: "マスクの作成方法と編集方法"
+seoTitle: "ComfyUIのマスク操作：作成・変換・編集ノード"
+seoDescription: "ComfyUIでマスクを作成・確認・編集する方法。画像やカラーからのマスク作成、Create Solid Mask、マスクエディタ、深度マップの活用、マスクの拡張・ぼかし・合成などの編集ノードをまとめています。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

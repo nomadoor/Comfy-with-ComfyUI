@@ -8,6 +8,8 @@ title: "Batch 与视频"
 created: 2025-11-27
 updated: 2026-03-02
 summary: "汇总处理多张图像和视频帧的机制"
+seoTitle: "ComfyUI 的 Batch 与视频：批量处理多张图像"
+seoDescription: "ComfyUI 中批量处理多张图像或视频帧的 Batch 机制。讲解与 Queue、List 的区别，视频以 Batch 形式处理，OOM 注意事项，以及创建和操作 Batch 的节点。"
 
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

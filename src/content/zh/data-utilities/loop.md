@@ -8,6 +8,8 @@ title: "循环处理"
 created: 2026-09-18
 updated: 2026-09-22
 summary: "用 Start Loop 和 End Loop 重复执行工作流的一部分"
+seoTitle: "ComfyUI 循环处理：Start Loop 与 End Loop"
+seoDescription: "用 Start Loop 和 End Loop 重复执行工作流一部分的方法。介绍用 accumulate 汇总结果、把上一次结果传给下一次，以及只改变首尾处理，附工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

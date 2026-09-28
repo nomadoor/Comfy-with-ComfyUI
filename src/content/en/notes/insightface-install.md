@@ -9,6 +9,8 @@ created: 2025-12-09
 updated: 2026-03-02
 noteTags: ["troubleshoot", "install", "insightface", "reactor"]
 summary: "Installation guide for InsightFace"
+seoTitle: "How to Install InsightFace for ComfyUI"
+seoDescription: "Install InsightFace for nodes like ReActor: check the Python version of the ComfyUI Windows portable build and install the matching wheel."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

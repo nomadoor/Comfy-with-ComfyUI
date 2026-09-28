@@ -9,6 +9,8 @@ created: 2026-02-06
 updated: 2026-03-02
 noteTags: ["faq", "resolution", "vae"]
 summary: "分辨率被限制为 8 的倍数的理由，以及与 VAE 压缩率的关系"
+seoTitle: "为什么图像生成的分辨率必须是 8 的倍数？"
+seoDescription: "从 latent diffusion model 与 VAE 压缩率讲解 ComfyUI 的 Empty Latent Image 只能以 8 为步长设置尺寸的原因，并介绍其他压缩率的 VAE、视频模型的帧数与图像编辑的注意点。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

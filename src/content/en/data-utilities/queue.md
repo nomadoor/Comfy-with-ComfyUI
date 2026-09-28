@@ -8,6 +8,8 @@ title: "Queue"
 created: 2025-11-27
 updated: 2026-03-02
 summary: "About queuing processes and batch execution"
+seoTitle: "The ComfyUI Queue: Schedule and Repeat Generations"
+seoDescription: "The ComfyUI Run button adds a job to the queue. Run multiple times, use control after generate, stop the current job, clear jobs, and check history."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

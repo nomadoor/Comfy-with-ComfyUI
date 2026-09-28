@@ -8,6 +8,8 @@ title: "组 (Group)"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于将节点汇总的组功能"
+seoTitle: "ComfyUI 组功能：用框整理节点"
+seoDescription: "ComfyUI 组（Group）的用法。介绍组框的创建、编辑与移动，接触到框的节点会一起移动的机制，以及与子图的区分使用。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

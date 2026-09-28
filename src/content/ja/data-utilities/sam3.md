@@ -8,6 +8,8 @@ title: "SAM 3 / 3.1"
 created: 2026-05-07
 updated: 2026-05-07
 summary: "SAM 3 / 3.1を使ったAIマスク生成"
+seoTitle: "ComfyUIでSAM 3 / 3.1を使う：テキストでマスク生成"
+seoDescription: "テキストで対象を指定してセグメンテーションできる、MetaのSAM 3 / 3.1のComfyUIでの使い方。モデルのダウンロードと、静止画と動画でマスクを作るworkflowを紹介します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

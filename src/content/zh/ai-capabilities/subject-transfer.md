@@ -8,6 +8,8 @@ title: Subject 转移
 created: 2026-02-06
 updated: 2026-03-02
 summary: 让参考图像中的相同物体在不同场景中登场的技术
+seoTitle: "Subject 转移：让同一角色或物体出现在新场景"
+seoDescription: "让参考图像中的角色或物体出现在其他场景的 Subject 转移（Subject-Driven Image Generation）。比较 LoRA、IP-Adapter、IC-LoRA、ACE++ 与基于指令的图像编辑模型。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

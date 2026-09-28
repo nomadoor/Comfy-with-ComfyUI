@@ -8,6 +8,8 @@ title: Line Art Coloring
 created: 2025-12-01
 updated: 2026-03-02
 summary: Technology to color line art.
+seoTitle: "Color Line Art with AI: ControlNet and Image Editing"
+seoDescription: "Color your own line art with AI: ControlNet coloring, instruction-based image editing, and reference coloring with line art plus a color image."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

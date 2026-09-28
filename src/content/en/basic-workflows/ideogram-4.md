@@ -8,6 +8,8 @@ title: "Ideogram 4.0"
 created: 2026-06-10
 updated: 2026-06-18
 summary: "Image generation with Ideogram 4.0"
+seoTitle: "Ideogram 4.0 in ComfyUI: Precise Control with JSON Prompts"
+seoDescription: "Use Ideogram 4.0 in ComfyUI with JSON captions that set element positions and colors: building prompts, text2image, and the 8-step TurboTime LoRA."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/ideogram-4/legacy_gyazo_cb9116562b7693e120aa63eafef11769.png"

@@ -9,6 +9,8 @@ title: "FLUX.2 [klein]"
 created: 2026-01-22
 updated: 2026-03-02
 summary: "FLUX.2 [klein] generation and image editing workflow"
+seoTitle: "FLUX.2 [klein] in ComfyUI: Image Generation and Editing"
+seoDescription: "Use FLUX.2 [klein] for generation and editing: settings, 9B vs. 4B, Base vs. Distilled, and text2image, editing, and multi-reference workflows."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/flux-2-klein/legacy_gyazo_46ebf7545e89db8df26b83a992e4c728.png"

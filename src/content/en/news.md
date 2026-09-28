@@ -7,6 +7,8 @@ title: "News"
 created: 2026-01-15
 updated: 2026-09-28
 summary: "Site updates"
+seoTitle: "News: New ComfyUI Guides and Workflows"
+seoDescription: "Update history of Comfy with ComfyUI: newly added model guides and workflows, plus updates to existing articles, listed by date."
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news

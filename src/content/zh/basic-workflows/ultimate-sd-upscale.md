@@ -9,6 +9,8 @@ title: "Ultimate SD upscale"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "使用 Tile 和 ControlNet 的超高分辨率放大"
+seoTitle: "ComfyUI 的 Ultimate SD Upscale：分块放大"
+seoDescription: "把图像分块放大的 Ultimate SD Upscale 思路。介绍用 overlap 融合分块边界、提示词问题，以及用 ControlNet Tile 固定结构的方法，附工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
    image: ""

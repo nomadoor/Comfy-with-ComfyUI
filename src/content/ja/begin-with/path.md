@@ -7,7 +7,9 @@ navId: path
 title: "パス"
 created: 2025-11-20
 updated: 2026-03-02
-summary: ""
+summary: "ファイルの場所を示すパスの基本"
+seoTitle: "パスとは？ 絶対パスと相対パスの違い"
+seoDescription: "ComfyUIの設定やエラーメッセージで出てくる「パス」の基本。ファイルの住所としてのパス、絶対パスと相対パスの違い、WindowsとMac/Linuxの区切り文字の違いを解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

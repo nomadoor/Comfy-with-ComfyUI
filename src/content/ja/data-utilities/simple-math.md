@@ -8,6 +8,8 @@ title: "単純な計算"
 created: 2025-11-24
 updated: 2026-03-21
 summary: "四則演算など、基本的な計算を行うノードについて"
+seoTitle: "ComfyUIで計算する：Math Expressionノード"
+seoDescription: "ComfyUIで画像サイズの計算などの四則演算をする方法。コアのMath Expressionノードの使い方、int型とfloat型と型の変換、入力欄での簡易計算、rgthreeのPower Puterを紹介します。"
 
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

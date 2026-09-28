@@ -8,6 +8,8 @@ title: "深度推定とノーマルマップ生成"
 created: 2025-12-01
 updated: 2026-03-02
 summary: "画像から奥行きや立体感を取り出す技術"
+seoTitle: "深度推定とノーマルマップ生成：Depth Anythingなど"
+seoDescription: "1枚の画像から奥行きや面の向きを取り出す深度推定とノーマルマップ生成の解説。MiDaS、ZoeDepth、Depth Anything系から、Marigold、Lotus、LBMなど拡散モデル由来の手法までを比較します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/ai-capabilities/depth-normal-map/legacy_gyazo_f6033924229b0ea961d8f22eb38bd6b2.png"

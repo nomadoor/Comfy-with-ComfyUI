@@ -8,6 +8,8 @@ title: "Nodes"
 created: 2025-11-24
 updated: 2026-03-02
 summary: "About Nodes"
+seoTitle: "ComfyUI Nodes: Add, Connect, Copy, and More"
+seoDescription: "Basic ComfyUI node operations: add nodes by search, menu, or dragging from a pin, connect and rewire, and select, delete, copy, collapse, or pin nodes."
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

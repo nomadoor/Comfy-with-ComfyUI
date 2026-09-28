@@ -8,6 +8,8 @@ title: "ReActor"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "使用 ReActor 的 FaceSwap（变脸）"
+seoTitle: "用 ComfyUI ReActor 换脸（FaceSwap）"
+seoDescription: "只需一张人脸照片即可替换图像或视频中人脸的 ReActor 在 ComfyUI 中的用法。介绍安装、inswapper 与 HyperSwap 的区分使用，以及 NSFW 过滤器。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/reactor/legacy_gyazo_c75a0142055d05c154f7d8cf03b3ca56.png"

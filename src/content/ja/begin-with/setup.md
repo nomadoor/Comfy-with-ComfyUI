@@ -8,6 +8,8 @@ title: "セットアップ"
 created: 2025-11-20
 updated: 2026-05-25
 summary: "セットアップについて"
+seoTitle: "ComfyUIのインストール方法：ポータブル版・デスクトップ版"
+seoDescription: "ComfyUIをローカルで動かすためのセットアップ手順。おすすめのポータブル版を中心に、デスクトップ版、venvとGitを使った手動インストール（Windows / Linux）まで解説します。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

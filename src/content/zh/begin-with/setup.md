@@ -8,6 +8,8 @@ title: "安装与设置"
 created: 2025-11-20
 updated: 2026-05-25
 summary: "关于安装与设置"
+seoTitle: "ComfyUI 安装方法：便携版、桌面版"
+seoDescription: "在本地运行 ComfyUI 的安装步骤。以推荐的便携版为主，也介绍桌面版，以及在 Windows / Linux 上用 venv 和 Git 手动安装的方法。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

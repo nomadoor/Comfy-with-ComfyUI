@@ -8,6 +8,8 @@ title: "Webカメラ"
 created: 2025-11-25
 updated: 2026-03-02
 summary: "WebカメラやOBSの映像をComfyUIに取り込む方法"
+seoTitle: "ComfyUIでWebカメラやOBSの映像を取り込む"
+seoDescription: "ComfyUIにWebカメラの映像を取り込むWebcam Captureノードの使い方と、OBSの仮想カメラでPC画面を読み込む方法。自動で繰り返し実行してリアルタイム風に処理する設定も解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/data-utilities/webcam-input/legacy_gyazo_5c2f4a37547aa854b5dcc8d264ff962b.png"

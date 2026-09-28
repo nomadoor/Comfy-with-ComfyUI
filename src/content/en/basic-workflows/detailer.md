@@ -8,6 +8,8 @@ title: "Detailer"
 created: 2025-12-09
 updated: 2026-03-02
 summary: "A mechanism to cut out only small faces or details and inpaint them"
+seoTitle: "Detailer in ComfyUI: Fix Small Faces and Details"
+seoDescription: "Fix small, broken faces and details by cropping and redrawing them: a manual detailer with Inpaint Crop and Stitch, then automated with object detection."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/detailer/legacy_gyazo_5904f9e96c234cd6bec18b10af263838.png"

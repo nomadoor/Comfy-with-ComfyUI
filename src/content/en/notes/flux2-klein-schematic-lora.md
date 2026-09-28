@@ -9,6 +9,8 @@ created: 2026-05-30
 updated: 2026-06-01
 noteTags: ["project", "flux-2-klein", "lora"]
 summary: "Training FLUX.2 [klein] to produce CV-task-like RGB outputs"
+seoTitle: "FLUX.2 [klein] Schematic LoRA: Depth, Normal, Pose"
+seoDescription: "A LoRA that teaches FLUX.2 [klein] to output depth, normals, and pose like computer-vision models: download, task setup, dataset, and training."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: "/media/notes/flux2-klein-schematic-lora/legacy_gyazo_a0dc0970df98429dcf703e3ed095f6fa.png"

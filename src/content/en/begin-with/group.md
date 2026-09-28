@@ -8,6 +8,8 @@ title: "Group"
 created: 2025-11-24
 updated: 2026-03-02
 summary: "About the group function to organize nodes"
+seoTitle: "ComfyUI Groups: Frame and Organize Nodes"
+seoDescription: "Use groups in ComfyUI: create, edit, and move group frames, why nodes touching a frame move with it, and when a subgraph is the better choice."
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""
@@ -18,7 +20,7 @@ hero:
 ComfyUI groups are a UI feature not so much for "functionally bundling" nodes, but for **handling nodes touching a frame (rectangle) together**.
 Therefore, while convenient for visual organization, depending on placement, unintended nodes may move along with it.
 
-If you want to create a functional unit, [Subgraph](/en/basic-workflows/subgraphs/) is more suitable.
+If you want to create a functional unit, [Subgraph](/en/begin-with/subgraphs/) is more suitable.
 
 ## Creating a Group
 

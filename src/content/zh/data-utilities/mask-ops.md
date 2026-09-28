@@ -8,6 +8,8 @@ title: "蒙版操作"
 created: 2025-11-25
 updated: 2026-09-27
 summary: "蒙版的制作方法和编辑方法"
+seoTitle: "ComfyUI 蒙版操作：创建、转换、编辑节点"
+seoDescription: "在 ComfyUI 中创建、查看和编辑蒙版的方法。包括从图像或颜色创建蒙版、Create Solid Mask、蒙版编辑器、利用深度图，以及扩展、模糊、合成等编辑节点。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

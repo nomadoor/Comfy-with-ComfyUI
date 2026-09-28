@@ -8,6 +8,8 @@ title: "SDXL"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "SDXL 的使用方法"
+seoTitle: "在 ComfyUI 中使用 SDXL：base 与 refiner"
+seoDescription: "Stable Diffusion 1.5 的后继 SDXL 在 ComfyUI 中的用法。介绍仅用 base 模型的 text2image、CLIPTextEncodeSDXL、base + refiner 两段式结构和用 KSampler (Advanced) 切换，以及 refiner 的思路。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/sdxl/legacy_gyazo_2317e881cf31b7c2af135774fb56b4e4.png"

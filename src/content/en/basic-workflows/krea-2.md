@@ -8,6 +8,8 @@ title: "Krea 2"
 created: 2026-06-24
 updated: 2026-06-24
 summary: "Image generation with Krea 2 Turbo"
+seoTitle: "Krea 2 in ComfyUI: Beautiful, Natural-Looking Images"
+seoDescription: "Use Krea 2 Open-Source (Turbo) in ComfyUI for images that do not look AI-made: model download, text2image, and the official style LoRAs."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/krea-2/legacy_gyazo_6ce8c9a2f7042a08efbbcdefc8ab6673.png"

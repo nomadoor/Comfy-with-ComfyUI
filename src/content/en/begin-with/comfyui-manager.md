@@ -8,6 +8,8 @@ title: "ComfyUI Manager"
 created: 2026-05-26
 updated: 2026-05-27
 summary: "About ComfyUI Manager"
+seoTitle: "ComfyUI Manager: Install and Manage Custom Nodes"
+seoDescription: "Install and update custom nodes with ComfyUI Manager: the new vs. legacy Manager, and how to enable it on portable, desktop, and manual installs."
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   image: "/media/begin-with/comfyui-manager/legacy_gyazo_76b47ed5d45cf694b436022589464255.png"

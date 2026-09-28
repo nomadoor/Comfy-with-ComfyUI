@@ -8,6 +8,8 @@ title: "リーダブルノードのすゝめ"
 created: 2025-11-26
 updated: 2026-03-02
 summary: "綺麗で使いやすいワークフローを組むためのコツ"
+seoTitle: "リーダブルノード：読みやすいComfyUI workflowの組み方"
+seoDescription: "スパゲッティ状態にならない、読みやすいComfyUIのworkflowを組むためのコツ。視線誘導、ワイヤを見せる配置、色分け、ノート、カスタムノードを最小限にする考え方などを紹介します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

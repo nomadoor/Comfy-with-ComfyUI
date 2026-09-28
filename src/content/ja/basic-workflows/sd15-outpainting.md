@@ -8,6 +8,8 @@ title: "outpainting"
 created: 2025-12-07
 updated: 2026-08-26
 summary: "outpaintingで画像の外側を描き足す"
+seoTitle: "ComfyUIのoutpaintingで画像の外側を描き足す"
+seoDescription: "画像の外側に余白を作って描き足すoutpaintingの方法。inpaintingモデル、ControlNet inpaint、FLUX.2 [klein]などの画像編集モデルを使ったやり方をworkflow付きで解説します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: ""

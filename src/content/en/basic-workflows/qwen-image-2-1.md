@@ -8,6 +8,8 @@ title: "Qwen-Image-2.1"
 created: 2026-09-21
 updated: 2026-09-23
 summary: "Image generation and editing with Qwen-Image-2.1"
+seoTitle: "Qwen-Image-2.1 in ComfyUI: Image Generation and Editing"
+seoDescription: "Use Qwen-Image-2.1 for generation and editing in one model: settings, text2image, Ref2Image, circle or mask edits, and outpainting, with easy-to-read workflows."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_hero.png"

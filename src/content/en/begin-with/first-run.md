@@ -8,6 +8,8 @@ title: "First Run"
 created: 2025-11-24
 updated: 2026-03-02
 summary: "About first run"
+seoTitle: "ComfyUI First Run: Generate Your First Image"
+seoDescription: "Start ComfyUI and generate your first image from an official template, on portable, desktop, or manual installs, and fix a missing model."
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

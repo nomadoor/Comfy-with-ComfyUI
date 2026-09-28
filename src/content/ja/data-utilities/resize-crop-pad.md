@@ -8,6 +8,8 @@ title: "リサイズ・クロップ・パディング"
 created: 2025-11-25
 updated: 2026-03-02
 summary: "画像のリサイズ、クロップ、パディングについて"
+seoTitle: "ComfyUIで画像をリサイズ・クロップ・パディングする"
+seoDescription: "ComfyUIで画像サイズを揃えるリサイズ、クロップ、パディングの各ノードの違いと使い分け。モデルの適正解像度やVRAM節約のための基本操作を、読みやすく整理したworkflow付きで解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/data-utilities/resize-crop-pad/legacy_gyazo_02cf6bd2a573dc15dff4799c94b15a0d.png"

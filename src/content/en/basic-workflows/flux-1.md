@@ -8,6 +8,8 @@ title: "Flux.1"
 created: 2025-12-12
 updated: 2026-03-02
 summary: "Basics of Flux.1 and usage in ComfyUI"
+seoTitle: "Flux.1 in ComfyUI: dev, schnell, LoRA, ControlNet"
+seoDescription: "Use Black Forest Labs' Flux.1 in ComfyUI: [dev] and [schnell] text2image, LoRA, ControlNet, and lighter GGUF models, with easy-to-read workflows."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/flux-1/legacy_gyazo_9fd52a56e1f6b7cbf8cd96ca78484d02.png"

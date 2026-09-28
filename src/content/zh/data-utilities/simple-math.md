@@ -8,6 +8,8 @@ title: "简单计算"
 created: 2025-11-24
 updated: 2026-03-21
 summary: "关于四则运算等、执行基本计算的节点"
+seoTitle: "在 ComfyUI 中计算：Math Expression 节点"
+seoDescription: "在 ComfyUI 中进行图像尺寸计算等四则运算的方法。介绍核心的 Math Expression 节点、int 与 float 及类型转换、输入框中的简易计算，以及 rgthree 的 Power Puter。"
 
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

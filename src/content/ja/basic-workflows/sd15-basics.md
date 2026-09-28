@@ -8,6 +8,8 @@ title: "画像生成の基本(SD1.5)"
 created: 2025-11-13
 updated: 2026-03-02
 summary: "Stable Diffusion 1.5で学ぶ画像生成の基本"
+seoTitle: "画像生成の基本：SD1.5で学ぶComfyUIのworkflow"
+seoDescription: "どのモデルでもComfyUIのworkflowは大体同じ、という基本をStable Diffusion 1.5で解説。材料を用意してKSamplerに渡す流れと、ComfyUIがモジュール式であることの意味を紹介します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   gradient:

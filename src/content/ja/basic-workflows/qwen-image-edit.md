@@ -9,6 +9,8 @@ title: "Qwen-Image-Edit"
 created: 2025-12-11
 updated: 2026-03-02
 summary: "Qwen-Image-Editで指示ベース画像編集を行う"
+seoTitle: "ComfyUIでQwen-Image-Editを使う：無印・2509・2511"
+seoDescription: "Qwen-Imageベースの指示ベース画像編集モデルQwen-Image-Editの、ComfyUIでの使い方。無印・2509・2511それぞれのモデルのダウンロードと、1枚・複数枚の画像を使った編集workflowを紹介します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/qwen-image-edit/legacy_gyazo_14e608fdb6033e436570157da4645e34.png"

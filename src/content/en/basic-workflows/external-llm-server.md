@@ -8,6 +8,8 @@ title: "External LLM Server Integration"
 created: 2026-02-18
 updated: 2026-03-02
 summary: "Run an LLM outside ComfyUI and connect to it"
+seoTitle: "Connect ComfyUI to an External LLM Server (Ollama)"
+seoDescription: "Run an LLM outside ComfyUI and call it from a workflow: why to separate them, installing Ollama and models, and a minimal chat with custom nodes."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/external-llm-server/legacy_gyazo_da95a615f374717f19b3447244ad647a.png"

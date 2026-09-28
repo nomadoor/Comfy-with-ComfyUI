@@ -5,6 +5,9 @@ section: basic-workflows
 slug: ksampler-advanced
 navId: ksampler-advanced
 title: "KSampler (Advanced)ノード"
+summary: "サンプリングを途中で分割・切り替えられるKSamplerの上位版"
+seoTitle: "ComfyUIのKSampler (Advanced)の使い方"
+seoDescription: "KSampler (Advanced)のadd_noise、start_at_step、end_at_stepなどのパラメータを解説。サンプリングを分割して、途中でプロンプトやモデル（LoRA）を切り替える使い方をworkflow付きで紹介します。"
 created: 2025-12-06
 updated: 2026-03-02
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"

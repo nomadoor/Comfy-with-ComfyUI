@@ -8,6 +8,8 @@ title: "outpainting"
 created: 2025-12-07
 updated: 2026-08-26
 summary: "Drawing outside the image with outpainting"
+seoTitle: "Outpainting in ComfyUI: Extend an Image Beyond Its Borders"
+seoDescription: "Extend an image past its borders: outpainting with an inpainting model, ControlNet inpaint, or image editing models such as FLUX.2 [klein]."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: ""

@@ -8,6 +8,8 @@ title: CFG
 created: 2026-02-06
 updated: 2026-03-02
 summary: 决定提示词“生效程度”的机制
+seoTitle: "什么是 CFG？图像生成中 CFG 值的参考与作用"
+seoDescription: "决定模型多大程度遵循提示词的 CFG（Classifier-Free Guidance）原理。讲解调高调低时的变化与合适取值，以及 CFG=1 时计算量减少、负面提示词失效的原因。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

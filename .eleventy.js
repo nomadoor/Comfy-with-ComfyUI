@@ -524,12 +524,11 @@ function renderJsonLinkRow(linkInfo, env, performanceInput = null) {
   if (!diskPath) {
     return null;
   }
-  let raw;
-  try {
-    raw = fsSync.readFileSync(diskPath, "utf-8");
-  } catch {
+  if (!fsSync.existsSync(diskPath)) {
     return null;
   }
+  // Root-absolute URL so Copy/Download do not depend on the page URL at click time.
+  const jsonUrl = `/${path.relative(path.join(process.cwd(), "src"), diskPath).split(path.sep).map(encodeURIComponent).join("/")}`;
   const counterState = env.ctx && typeof env.ctx === "object" ? env.ctx : env;
   counterState.__jsonLinkCounter = Number.isInteger(counterState.__jsonLinkCounter)
     ? counterState.__jsonLinkCounter + 1
@@ -552,16 +551,15 @@ function renderJsonLinkRow(linkInfo, env, performanceInput = null) {
   <div class="workflow-json__row">
     <span class="workflow-json__filename">${escapedFile}</span>
     <div class="workflow-json__actions">
-      <button class="workflow-json__icon" type="button" aria-label="${escapeHTML(copyLabel)} ${escapedFile}" data-copy-json="${copyTargetId}" data-label="${escapeHTML(copyLabel)}" data-success-label="${escapeHTML(copiedLabel)}">
+      <button class="workflow-json__icon" type="button" aria-label="${escapeHTML(copyLabel)} ${escapedFile}" data-copy-json="${copyTargetId}" data-json-src="${escapeHTML(jsonUrl)}" data-label="${escapeHTML(copyLabel)}" data-success-label="${escapeHTML(copiedLabel)}">
         ${copyIcon}
       </button>
-      <a class="workflow-json__icon" href="${linkInfo.href}" download="${escapedFile}" data-no-swup aria-label="${escapeHTML(downloadLabel)} ${escapedFile}" data-download-json="${copyTargetId}-download" data-label="${escapeHTML(downloadLabel)}" data-success-label="${escapeHTML(downloadedLabel)}">
+      <a class="workflow-json__icon" href="${escapeHTML(jsonUrl)}" download="${escapedFile}" data-no-swup aria-label="${escapeHTML(downloadLabel)} ${escapedFile}" data-download-json="${copyTargetId}-download" data-label="${escapeHTML(downloadLabel)}" data-success-label="${escapeHTML(downloadedLabel)}">
         ${downloadIcon}
       </a>
       ${performanceMarkup}
     </div>
   </div>
-  <pre id="${copyTargetId}" class="sr-only" hidden aria-hidden="true">${escapeHTML(raw)}</pre>
 </div>`;
 }
 
@@ -714,7 +712,9 @@ function resolveMedia(url = "", { mode, size = 1000 } = {}) {
   } else if (host.endsWith("gyazo.com")) {
     media = resolveGyazoMedia(source, kind, size);
   } else {
-    media = { kind, src: source, fullSrc: source, width: undefined, height: undefined, srcset: "", poster: kind === "image" ? source : "" };
+    // Third-party media (e.g. a GIF on GitHub) is shown in the article but never offered as the
+    // social preview image: its size and content type are outside our control.
+    media = { kind, src: source, fullSrc: source, width: undefined, height: undefined, srcset: "", poster: kind === "image" ? source : "", og: "", external: true };
   }
   return { og: media.poster, ...media, mode: resolvedMode };
 }
@@ -790,6 +790,10 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/assets/js": `assets/js/${envData.assetVersion}` });
   eleventyConfig.addPassthroughCopy({ "src/workflows": "workflows" });
+  // Drafts are unpublished (ops/requirements.md): skip them entirely instead of building hidden pages.
+  eleventyConfig.addPreprocessor("drafts", "*", (data) => (data.draft ? false : undefined));
+  // Asset notes are for maintainers, not pages.
+  eleventyConfig.ignores.add("src/assets/fonts/README.md");
   eleventyConfig.addPassthroughCopy({ "src/search": "search" });
   eleventyConfig.addPassthroughCopy({ "src/.well-known": ".well-known" });
   eleventyConfig.addPassthroughCopy({ "src/_headers": "_headers" });
@@ -1042,6 +1046,74 @@ export default function (eleventyConfig) {
     return encodeURIComponent(String(value));
   });
 
+  // Frontmatter dates arrive as Date (unquoted YAML) or "YYYY-MM-DD" strings (quoted).
+  eleventyConfig.addFilter("isoDate", function (value) {
+    if (value instanceof Date) return Number.isNaN(value.getTime()) ? "" : value.toISOString().slice(0, 10);
+    const match = String(value ?? "").match(/^\d{4}-\d{2}-\d{2}/);
+    return match ? match[0] : "";
+  });
+
+  // Swaps the language segment of a localized URL ("/ja/x/y/" -> "/en/x/y/"); "" outside the language tree.
+  const localizedPathFor = (url, langCode) => {
+    const match = String(url || "").match(/^\/(ja|en|zh)(\/.*)$/);
+    return match && langCode ? `/${langCode}${match[2]}` : "";
+  };
+
+  // hreflang alternates for a localized URL, limited to translations that were actually built
+  // (JA is the source language, so EN/ZH may not exist yet). x-default is the default-language URL.
+  const builtUrlSets = new WeakMap();
+  eleventyConfig.addFilter("hreflangAlternates", function (url = "", languages = [], collection = [], defaultLang = "") {
+    if (!builtUrlSets.has(collection)) {
+      const indexable = collection.filter((item) => !String(item.data?.robots || "").includes("noindex"));
+      builtUrlSets.set(collection, new Set(indexable.map((item) => item.url)));
+    }
+    const built = builtUrlSets.get(collection);
+    const alternates = [];
+    for (const { code } of languages) {
+      const href = localizedPathFor(url, code);
+      if (href && built.has(href)) alternates.push({ hreflang: code, href });
+    }
+    const defaultHref = localizedPathFor(url, defaultLang);
+    if (alternates.length > 1 && built.has(defaultHref)) alternates.push({ hreflang: "x-default", href: defaultHref });
+    return alternates.length > 1 ? alternates : [];
+  });
+
+  // schema.org graph for a page: WebSite + WebPage, plus Article and its Person author for articles.
+  eleventyConfig.addFilter("pageStructuredData", function (input = {}) {
+    const { siteUrl, canonicalUrl, lang, siteName, title, description, article, author } = input;
+    const websiteId = `${siteUrl}/#website`;
+    const webpageId = `${canonicalUrl}#webpage`;
+    const graph = [
+      { "@type": "WebSite", "@id": websiteId, url: `${siteUrl}/`, name: siteName, inLanguage: lang },
+      { "@type": "WebPage", "@id": webpageId, url: canonicalUrl, name: title, ...(description ? { description } : {}), inLanguage: lang, isPartOf: { "@id": websiteId } }
+    ];
+    if (article && author?.name) {
+      const authorId = `${siteUrl}/#author`;
+      graph.push({
+        "@type": "Article",
+        "@id": `${canonicalUrl}#article`,
+        headline: title,
+        ...(description ? { description } : {}),
+        inLanguage: lang,
+        datePublished: article.datePublished,
+        dateModified: article.dateModified,
+        ...(article.image ? { image: [article.image] } : {}),
+        author: { "@id": authorId },
+        publisher: { "@id": authorId },
+        mainEntityOfPage: { "@id": webpageId },
+        isPartOf: { "@id": websiteId }
+      });
+      graph.push({
+        "@type": "Person",
+        "@id": authorId,
+        name: author.name,
+        ...(author.url ? { url: author.url } : {}),
+        ...(author.sameAs?.length ? { sameAs: author.sameAs } : {})
+      });
+    }
+    return { "@context": "https://schema.org", "@graph": graph };
+  });
+
   eleventyConfig.addFilter("jsonLd", function (value = {}) {
     return JSON.stringify(value)
       .replace(/</g, "\\u003c")
@@ -1234,6 +1306,19 @@ export default function (eleventyConfig) {
   enhanceStandaloneImages(markdownLib);
   preserveManualNumberedBullets(markdownLib);
   enhanceJsonLinks(markdownLib);
+  // Plain links to managed media (`[clip.mp4](/media/...)`) point at the published R2 file, like embeds do.
+  markdownLib.core.ruler.after("inline", "resolve-media-links", (state) => {
+    state.tokens.forEach((blockToken) => {
+      (blockToken.children || []).forEach((token) => {
+        if (token.type !== "link_open") return;
+        const href = token.attrGet("href") || "";
+        if (!href.startsWith("/media/")) return;
+        const media = resolveMedia(href);
+        const resolved = media.fullSrc || media.src;
+        if (resolved) token.attrSet("href", resolved);
+      });
+    });
+  });
   eleventyConfig.setLibrary("md", markdownLib);
 
   // Paired shortcode: side-by-side media + text

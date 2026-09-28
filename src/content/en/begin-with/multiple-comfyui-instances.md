@@ -8,6 +8,8 @@ title: "Run Multiple ComfyUI Instances"
 created: 2026-05-24
 updated: 2026-05-24
 summary: "When running multiple ComfyUI instances, shift the port number"
+seoTitle: "Run Multiple ComfyUI Instances with --port"
+seoDescription: "Run several ComfyUI instances on one PC: why the second launch fails, how to change the port with --port, and why this does not add more GPU power."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

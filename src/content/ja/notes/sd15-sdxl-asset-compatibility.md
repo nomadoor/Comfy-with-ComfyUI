@@ -9,6 +9,8 @@ created: 2025-12-13
 updated: 2026-03-02
 noteTags: ["faq", "sd15", "sdxl"]
 summary: "モデルごとの互換性と、SD1.5用アセットをSDXLで使えない理由"
+seoTitle: "SD1.5のLoRAやControlNetはSDXLで使えない？"
+seoDescription: "Stable Diffusion 1.5用のLoRAやControlNetがSDXLで使えない理由を、コンセントのたとえで解説。モデルごとに互換性がない仕組みと、実際に使おうとしたときに何が起きるかをまとめています。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

@@ -8,6 +8,8 @@ title: video2audio
 created: 2025-12-01
 updated: 2026-03-02
 summary: 動画から効果音や環境音を自動生成する技術
+seoTitle: "video2audio：動画から効果音を自動生成するAI"
+seoDescription: "音のない生成動画に、映像と同期した効果音や環境音を付けるvideo2audioの解説。FoleyCrafterとHunyuanVideo-Foleyの仕組みと特徴を紹介します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

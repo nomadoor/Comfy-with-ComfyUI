@@ -8,6 +8,8 @@ title: "Qwen-Image-Layered"
 created: 2025-12-31
 updated: 2026-03-02
 summary: "入力画像を複数のRGBAレイヤーに分解する"
+seoTitle: "ComfyUIでQwen-Image-Layeredを使う：画像をレイヤーに分解"
+seoDescription: "入力画像を任意の枚数の透過（RGBA）レイヤーに分解する拡散モデルQwen-Image-Layeredの、ComfyUIでの使い方。レイヤー分けして一部だけを編集する考え方と、モデルのダウンロード、workflowを紹介します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/qwen-image-layered/legacy_gyazo_bfc9ecbc781e79e29f0a9b1df0597bbb.png"

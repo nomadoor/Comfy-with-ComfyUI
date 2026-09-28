@@ -8,6 +8,8 @@ title: "API Nodes"
 created: 2025-12-11
 updated: 2026-03-02
 summary: "How to use external closed models with API nodes in ComfyUI"
+seoTitle: "ComfyUI API Nodes: Use Closed Models in ComfyUI"
+seoDescription: "Use closed image and video models inside ComfyUI with API nodes: how credits work and how to buy them, how to use the nodes, and when they fit."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

@@ -9,6 +9,8 @@ created: 2025-12-13
 updated: 2026-03-02
 noteTags: ["troubleshoot", "prompt"]
 summary: "What to do when characters or objects multiply unnaturally"
+seoTitle: "Duplicated People or Objects in AI Images: Fixes"
+seoDescription: "Why generated images repeat people or objects, and how to fix it: models like Stable Diffusion 1.5 at too high a resolution or an extreme aspect ratio."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

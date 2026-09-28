@@ -9,6 +9,8 @@ created: 2026-03-02
 updated: 2026-03-22
 noteTags: ["project", "erp", "lora", "flux"]
 summary: "ERP上に参照画像を貼り、残りをoutpaintで埋めるための専用UI"
+seoTitle: "ComfyUI Panorama Stickers：360度パノラマを作るUI"
+seoDescription: "参照画像を貼って残りをoutpaintし、360度パノラマ画像を作るためのComfyUI専用UI。FLUX.2 Klein 360 ERP Outpaint LoRAと組み合わせる、Stickers・Cutout・Previewの各ノードとworkflowを解説します。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: "/media/notes/panorama-stickers/legacy_gyazo_0732762b1efdf916b6a5836a9078e90e.png"

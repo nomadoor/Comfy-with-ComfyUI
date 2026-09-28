@@ -8,6 +8,8 @@ title: リップシンク
 created: 2025-12-01
 updated: 2026-03-02
 summary: 音声に合わせて口や表情を動かす技術
+seoTitle: "リップシンクとは？ 音声に合わせて口を動かすAI"
+seoDescription: "音声に合わせて口や表情の動きを後付けするリップシンク技術の解説。既存動画の口元を合わせるWav2LipやLatentSync、一枚絵をしゃべらせる手法、音声から動画全体を動かすモデルまでを整理します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

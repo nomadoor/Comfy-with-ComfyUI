@@ -8,6 +8,8 @@ title: "LTX-2"
 created: 2026-01-10
 updated: 2026-09-03
 summary: "LTX-2でtext2video / image2video / audio2videoを扱う"
+seoTitle: "ComfyUIでLTX-2を使う：text2video・image2video・audio2video"
+seoDescription: "Lightricksの音声付き動画生成モデルLTX-2をComfyUIで動かす方法。推奨設定、モデルの入手先、text2video / image2video / audio2videoを、読みやすく組み直したworkflow付きで解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/ltx-2/legacy_gyazo_2a89cce32669413fb7f5b3fe4ca22960.mp4"

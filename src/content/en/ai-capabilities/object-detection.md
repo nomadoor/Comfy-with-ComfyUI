@@ -8,6 +8,8 @@ title: Object Detection
 created: 2025-12-01
 updated: 2026-03-02
 summary: "Technology to find 'what' is 'where' in an image"
+seoTitle: "Object Detection: YOLO, Grounding DINO, Florence-2"
+seoDescription: "Object detection finds what is where in an image: YOLO and DETR, text-prompted Grounding DINO and Florence-2, and its role in ComfyUI masking."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: 'https://i.gyazo.com/1a10dcd7dcf8f72eee275a3d8484f882.png'

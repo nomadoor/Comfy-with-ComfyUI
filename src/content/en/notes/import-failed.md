@@ -9,6 +9,8 @@ created: 2025-12-13
 updated: 2026-03-02
 noteTags: ["troubleshoot", "custom-nodes"]
 summary: "Custom node loading failure"
+seoTitle: "ComfyUI (IMPORT FAILED): Causes and Fixes"
+seoDescription: "Why ComfyUI shows (IMPORT FAILED) and custom nodes disappear, and how to fix it, from missing libraries to mismatched Python or PyTorch versions."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

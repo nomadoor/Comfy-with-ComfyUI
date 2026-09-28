@@ -8,6 +8,8 @@ title: "APIノード"
 created: 2025-12-11
 updated: 2026-03-02
 summary: "ComfyUIのAPIノードで外部のクローズドモデルを利用する方法"
+seoTitle: "ComfyUIのAPIノード：クローズドモデルを使う方法"
+seoDescription: "ComfyUIのAPIノードで、外部企業のクローズドな画像・動画生成モデルを使う方法。クレジット制の仕組みと購入方法、APIノードの使い方と使いどころを解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

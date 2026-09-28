@@ -8,6 +8,8 @@ title: "How to Use This Site"
 created: 2025-11-13
 updated: 2026-08-01
 summary: "Welcome to Comfy-with-ComfyUI"
+seoTitle: "Learn ComfyUI from the Basics: How to Use This Site"
+seoDescription: "A guide to Comfy with ComfyUI: ComfyUI basics, how image and video AI works, and workflows for major models. What each section covers and how to copy workflows."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/begin-with/how-to-use-this-site/legacy_gyazo_8d7fa7b6602e2b4d1cec23ab66090cce.png"

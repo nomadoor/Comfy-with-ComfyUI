@@ -9,6 +9,8 @@ created: 2026-07-13
 updated: 2026-07-14
 noteTags: ["project", "lora", "krea-2", "kura"]
 summary: "A practical guide to training and comparing a Krea 2 character LoRA with Kura and an AI agent"
+seoTitle: "Train a Krea 2 LoRA with Kura"
+seoDescription: "How to train and compare a Krea 2 character LoRA with Kura and an AI agent: preparing the dataset, setting up Kura, and running training."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: "/media/notes/kura-krea2-lora-training/legacy_gyazo_bd00a496f18c5ecb9925dd7f790ffc7d.png"

@@ -1,5 +1,7 @@
 ---
 layout: page.njk
+robots: noindex
+searchExclude: true
 lang: ja
 section: ai-capabilities
 slug: music-generation

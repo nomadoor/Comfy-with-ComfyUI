@@ -8,6 +8,8 @@ title: "Wan-Animate"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "在 Wan-Animate 中进行向人物・角色的动作传送"
+seoTitle: "在 ComfyUI 中使用 Wan-Animate：人物动作迁移"
+seoDescription: "把参考视频的动作迁移到图像人物上的 Wan-Animate 用法。介绍 Animation 与 Replacement 模式、用 Lightx2v LoRA 实现 6 步加速，以及为长视频重复处理的方法。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

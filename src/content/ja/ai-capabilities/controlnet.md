@@ -8,6 +8,8 @@ title: ControlNet系
 created: 2025-12-01
 updated: 2026-03-02
 summary: ポーズや線画などの追加情報で画像生成をコントロールする技術
+seoTitle: "ControlNetとは？ ポーズや線画で画像生成を制御する"
+seoDescription: "ポーズや線画、深度マップなどの追加情報で画像生成をコントロールするControlNetの仕組み。openpose、depth、scribble、lineart、inpaintなど代表的な種類と、指示ベース画像編集との関係を解説します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: https://i.gyazo.com/374d9112c26cc1098d9e7e11b5ca49fa.png

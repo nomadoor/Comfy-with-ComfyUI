@@ -8,6 +8,8 @@ title: "Z-Image-Turbo"
 created: 2025-12-12
 updated: 2026-03-02
 summary: "使用 Z-Image-Turbo 的图像生成"
+seoTitle: "在 ComfyUI 中使用 Z-Image-Turbo：8 步高速图像生成"
+seoDescription: "把 Z-Image 蒸馏为 8 步即可生成的高速模型 Z-Image-Turbo 在 ComfyUI 中的用法。介绍模型下载、text2image 以及 Fun ControlNet Union 工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/z-image-turbo/legacy_gyazo_8cb43e18daed0bcb2bf3bf7c794e5360.png"

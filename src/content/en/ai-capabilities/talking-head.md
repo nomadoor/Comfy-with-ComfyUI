@@ -8,6 +8,8 @@ title: talking head
 created: 2025-12-01
 updated: 2026-03-02
 summary: Technology to make a single image or face photo speak in sync with a reference video or audio
+seoTitle: "What Is a Talking Head Model? Make a Still Image Speak"
+seoDescription: "Talking head models animate one image from a video or audio. How they differ from lip sync, plus warping (LivePortrait), diffusion, and video-model methods."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

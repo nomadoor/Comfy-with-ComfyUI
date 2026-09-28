@@ -8,6 +8,8 @@ title: 拡散モデル
 created: 2025-11-29
 updated: 2026-03-02
 summary: 拡散モデルの仕組み
+seoTitle: "拡散モデルとは？ ノイズから画像が生まれる仕組み"
+seoDescription: "画像生成AIの中心にある拡散モデル（Diffusion Model）の仕組みを、ComfyUIのプレビューで見えるノイズの変化から解説。学習の方法と、ノイズから画像を作り出す流れをわかりやすくまとめています。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

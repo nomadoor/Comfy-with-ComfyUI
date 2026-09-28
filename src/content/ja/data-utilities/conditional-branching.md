@@ -8,6 +8,8 @@ title: "条件分岐"
 created: 2026-05-28
 updated: 2026-05-29
 summary: "Switch や Boolean を使って、workflow の流れを切り替える方法"
+seoTitle: "ComfyUIで条件分岐する：SwitchとBoolean"
+seoDescription: "ComfyUIのworkflowで処理を切り替える条件分岐の方法。Switchノードと、Math Expression、Compare Text、MLLMでBooleanを作る方法、AND / OR / NOTの組み合わせを実践例付きで解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

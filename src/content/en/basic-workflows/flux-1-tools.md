@@ -8,6 +8,8 @@ title: "Flux.1 Tools"
 created: 2025-12-10
 updated: 2026-08-26
 summary: "How to use Flux.1 Tools"
+seoTitle: "Flux.1 Tools in ComfyUI: Fill, Depth, Canny, Redux"
+seoDescription: "Use Flux.1 Tools in ComfyUI: Fill for inpainting and outpainting, Depth and Canny for structure, and Redux for image references, with workflows."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: ["controlnet"]
 ---

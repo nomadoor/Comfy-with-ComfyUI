@@ -5,32 +5,22 @@ eleventyExcludeFromCollections: true
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-{% set origin = siteOrigin or site.origin or "" -%}
+{% set origin = site.url -%}
 {% for page in collections.all %}
   {% set pageLang = page.data.lang or site.defaultLang %}
   {% set pageSection = page.data.section %}
   {% set pageSlug = page.data.navId or page.data.slug %}
   {% set isStandalone = (not pageSection) and (pageSlug == 'news' or pageSlug == 'about' or pageSlug == 'contact') %}
-  {% set isCanonicalPage = page.url and page.data.lang and pageSlug and (pageSection or isStandalone) and pageSection != 'missing' %}
+  {% set isCanonicalPage = page.url and page.data.lang and pageSlug and (pageSection or isStandalone) and pageSection != 'missing' and not ('noindex' in (page.data.robots or '')) %}
   {% if isCanonicalPage %}
   <url>
     <loc>{{ (origin ~ page.url) | replace("index.html", "") }}</loc>
-    {% for option in site.languages %}
-      {% if isStandalone %}
-        {% set altPath = '/' + option.code + '/' + pageSlug + '/' %}
-      {% else %}
-        {% set altPath = '/' + option.code + '/' + pageSection + '/' + pageSlug + '/' %}
-      {% endif %}
-      <xhtml:link rel="alternate" hreflang="{{ option.code }}" href="{{ origin ~ altPath }}" />
+    {% for alt in page.url | hreflangAlternates(site.languages, collections.all, site.defaultLang) %}
+    <xhtml:link rel="alternate" hreflang="{{ alt.hreflang }}" href="{{ origin ~ alt.href }}" />
     {% endfor %}
-    {% if isStandalone %}
-      {% set defaultPath = '/' + site.defaultLang + '/' + pageSlug + '/' %}
-    {% else %}
-      {% set defaultPath = '/' + site.defaultLang + '/' + pageSection + '/' + pageSlug + '/' %}
-    {% endif %}
-    <xhtml:link rel="alternate" hreflang="x-default" href="{{ origin ~ defaultPath }}" />
-    {% if page.date %}
-    <lastmod>{{ page.date.toISOString().slice(0,10) }}</lastmod>
+    {% set lastmod = (page.data.updated or page.data.created) | isoDate %}
+    {% if lastmod %}
+    <lastmod>{{ lastmod }}</lastmod>
     {% endif %}
   </url>
   {% endif %}

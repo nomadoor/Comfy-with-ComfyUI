@@ -8,6 +8,8 @@ title: "Conditional Branching"
 created: 2026-05-28
 updated: 2026-05-29
 summary: "How to switch workflow behavior with Switch and Boolean values"
+seoTitle: "Conditional Branching in ComfyUI: Switch and Boolean"
+seoDescription: "Branch ComfyUI workflows with the Switch node: build Booleans with Math Expression, Compare Text, or an MLLM, and combine them with AND, OR, and NOT."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

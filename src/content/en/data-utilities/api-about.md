@@ -8,6 +8,8 @@ title: "What is the API?"
 created: 2026-02-05
 updated: 2026-03-02
 summary: "An entry point to control ComfyUI from outside"
+seoTitle: "What Is the ComfyUI API? Run Workflows from Outside"
+seoDescription: "How ComfyUI splits into a server and a frontend, how the API sends commands to the server, what it can automate, and what to watch out for."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

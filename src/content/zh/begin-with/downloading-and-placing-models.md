@@ -8,6 +8,8 @@ title: "模型的下载与放置"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于模型的下载与放置"
+seoTitle: "ComfyUI 模型的下载与存放位置"
+seoDescription: "从 Hugging Face 和 Civitai 下载模型的步骤，各类模型应放在 ComfyUI 的 models 文件夹中的哪里，以及模型增多后的整理方法。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

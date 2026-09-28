@@ -8,6 +8,8 @@ title: "Ideogram 4.0"
 created: 2026-06-10
 updated: 2026-06-18
 summary: "Ideogram 4.0での画像生成"
+seoTitle: "ComfyUIでIdeogram 4.0を使う：JSONプロンプトで細かく指定"
+seoDescription: "JSON形式のキャプションで要素の位置や色まで指定できるIdeogram 4.0の、ComfyUIでの使い方。プロンプトをLLMや専用ビルダーで作る方法、text2image、8ステップのTurboTime LoRAを紹介します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/ideogram-4/legacy_gyazo_cb9116562b7693e120aa63eafef11769.png"

@@ -8,6 +8,8 @@ title: "Qwen-Image"
 created: 2025-12-11
 updated: 2026-03-02
 summary: "Qwen-Imageの使い方"
+seoTitle: "ComfyUIでQwen-Imageを使う：ControlNet・Lightning"
+seoDescription: "Qwen2.5-VLをテキストエンコーダに使い、プロンプトの理解力が高いQwen-Imageの、ComfyUIでの使い方。推奨解像度、text2image、InstantXのControlNet、高速生成用のLightning LoRAのworkflowを紹介します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/qwen-image/legacy_gyazo_4f6ca42890bb8717fa4668d8c56bcbc5.png"
@@ -20,7 +22,7 @@ tags: []
 
 テキストエンコーダにマルチモーダル LLM の **Qwen2.5-VL** を使っており、T5 や Gemma を使っているモデルに比べると、プロンプトの理解力は頭ひとつ抜けています。
 
-さらに、[Flux.1 dev](/ja/basic-workflows/flux1/) と違ってベースが蒸留モデルではないため学習しやすく、姉妹モデルである [Qwen-Image-Edit](/ja/basic-workflows/qwen-image-edit/) と合わせて、LoRA や Lightning 系の周辺エコシステムが充実しているのも特徴です。
+さらに、[Flux.1 dev](/ja/basic-workflows/flux-1/) と違ってベースが蒸留モデルではないため学習しやすく、姉妹モデルである [Qwen-Image-Edit](/ja/basic-workflows/qwen-image-edit/) と合わせて、LoRA や Lightning 系の周辺エコシステムが充実しているのも特徴です。
 
 ---
 

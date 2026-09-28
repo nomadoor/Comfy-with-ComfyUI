@@ -8,6 +8,8 @@ title: "マスクエディタ"
 created: 2025-11-20
 updated: 2026-03-02
 summary: "マスクエディタの使い方について"
+seoTitle: "ComfyUIのマスクエディタの使い方"
+seoDescription: "ComfyUIの画像にマスクを描くマスクエディタの使い方。起動方法、ブラシ・消しゴム・塗りつぶし・自動選択などのツール、上部メニューの操作、マスクの保存と適用までまとめています。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

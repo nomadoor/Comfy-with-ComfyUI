@@ -7,7 +7,9 @@ navId: 3d-model-generation
 title: 3Dモデル生成
 created: 2025-12-03
 updated: 2026-03-02
-summary: "3マルチビューからワールドモデルまで"
+summary: "マルチビューからワールドモデルまで"
+seoTitle: "3Dモデル生成AIの仕組み：マルチビューからワールドモデルまで"
+seoDescription: "画像やテキストから3Dモデルを作る生成AIの発展を整理。Zero123++などのマルチビュー生成、Stable Video 3D、Hunyuan3D-2.1、SAM 3D Objects、歩き回れる世界を作るWorldモデルまでを解説します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

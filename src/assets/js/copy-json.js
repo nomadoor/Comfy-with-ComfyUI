@@ -21,19 +21,14 @@ function showSuccessState(element, className = "is-success") {
   }, SUCCESS_VISIBLE_MS);
 }
 
-function copyJson(button) {
-  const targetId = button.getAttribute("data-copy-json");
-  const node = targetId ? document.getElementById(targetId) : null;
-  if (!node) return;
+function fetchJsonText(url) {
+  return fetch(url, { credentials: "same-origin" }).then((response) => {
+    if (!response.ok) throw new Error(`Failed to fetch JSON: ${response.status}`);
+    return response.text().then((text) => text.trim());
+  });
+}
 
-  const text = node.textContent.trim();
-  const markSuccess = () => showSuccessState(button);
-
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(markSuccess).catch(markSuccess);
-    return;
-  }
-
+function copyWithTextarea(text) {
   const temp = document.createElement("textarea");
   temp.value = text;
   temp.style.position = "fixed";
@@ -47,9 +42,42 @@ function copyJson(button) {
     console.warn("Copy fallback failed", error);
   }
   document.body.removeChild(temp);
-  if (success) {
-    markSuccess();
+  if (!success) throw new Error("Copy fallback failed");
+}
+
+// Workflow JSON is not embedded in the page; it is fetched when the user copies it.
+// The clipboard write starts synchronously inside the click with a pending ClipboardItem so Safari
+// keeps the user activation while the JSON is still downloading. Rejects when fetch or copy fails.
+export async function copyJsonFromUrl(url) {
+  const textPromise = fetchJsonText(url);
+  if (navigator.clipboard?.write && typeof ClipboardItem === "function") {
+    try {
+      const blobPromise = textPromise.then((text) => new Blob([text], { type: "text/plain" }));
+      blobPromise.catch(() => {}); // handled via textPromise below if write rejects before consuming it
+      await navigator.clipboard.write([new ClipboardItem({ "text/plain": blobPromise })]);
+      return;
+    } catch {
+      // Fall back below; a fetch failure rethrows when the text is awaited.
+    }
   }
+  const text = await textPromise;
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return;
+    } catch {
+      // Fall back to the textarea copy below.
+    }
+  }
+  copyWithTextarea(text);
+}
+
+function copyJson(button) {
+  const url = button.getAttribute("data-json-src");
+  if (!url) return;
+  copyJsonFromUrl(url)
+    .then(() => showSuccessState(button))
+    .catch((error) => console.warn("Workflow JSON copy failed", error));
 }
 
 function bindCopyButtons(root) {

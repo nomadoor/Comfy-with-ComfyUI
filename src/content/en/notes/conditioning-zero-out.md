@@ -9,6 +9,8 @@ created: 2026-09-28
 updated: 2026-09-28
 noteTags: ["faq", "conditioning", "cfg"]
 summary: "Why Conditioning Zero Out is used in CFG 1.0 workflows"
+seoTitle: "What Is Conditioning Zero Out? Why It Is Used at CFG 1.0"
+seoDescription: "Why recent workflows use Conditioning Zero Out: CFG 1.0 ignores the negative input, and how it compares with wiring the positive or an empty prompt."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: "/media/notes/conditioning-zero-out/conditioning_zero_out_hero.png"

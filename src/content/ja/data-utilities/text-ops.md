@@ -8,6 +8,8 @@ title: "テキスト操作"
 created: 2025-11-25
 updated: 2026-05-27
 summary: "テキストを操作するノードについて"
+seoTitle: "ComfyUIのテキスト操作ノード：結合・置換・正規表現"
+seoDescription: "ComfyUIでプロンプトなどの文字列を扱うノードのまとめ。結合・置換・抽出・空白削除といった基本操作から、正規表現、rgthreeのPower Puterまで、workflow付きで解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

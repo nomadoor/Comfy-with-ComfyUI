@@ -8,6 +8,8 @@ title: "BiRefNet"
 created: 2026-05-30
 updated: 2026-06-24
 summary: "使用 BiRefNet 进行背景去除和蒙版生成"
+seoTitle: "在 ComfyUI 中使用 BiRefNet：高精度去背景"
+seoDescription: "在 ComfyUI 中使用 BiRefNet 精细抠图的方法，连头发、植物等细节也能干净分离。介绍模型下载，以及抠出前景和填充背景的工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/data-utilities/birefnet/legacy_gyazo_2e42734281821aa3f28153af9ba6a08e.png"

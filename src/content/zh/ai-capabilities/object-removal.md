@@ -8,6 +8,8 @@ title: 对象去除
 created: 2026-02-06
 updated: 2026-03-02
 summary: 从图像中仅去除特定物品的任务，及其代表性的方法
+seoTitle: "用 AI 去除图像中的物体：LaMa、inpainting、图像编辑"
+seoDescription: "比较从图像中去除人物、电线等多余物体的方法：LaMa、扩散模型的 inpainting，以及无需蒙版的基于指令的图像编辑模型。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: /media/ai-capabilities/object-removal/legacy_gyazo_e06eeccf0efa2e91773bb54acb31560a.mp4

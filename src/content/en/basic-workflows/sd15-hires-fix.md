@@ -8,6 +8,8 @@ title: "Hires.fix"
 created: 2025-12-07
 updated: 2026-03-02
 summary: "High-Resolution Image Generation with Hires.fix"
+seoTitle: "Hires.fix in ComfyUI: Generate High-Resolution Images"
+seoDescription: "Hires.fix enlarges a generated image and redraws it with image2image. Why it exists and how to build it in ComfyUI, including latent upscaling."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: ""

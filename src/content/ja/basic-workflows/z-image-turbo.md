@@ -8,6 +8,8 @@ title: "Z-Image-Turbo"
 created: 2025-12-12
 updated: 2026-03-02
 summary: "Z-Image-Turboでの画像生成"
+seoTitle: "ComfyUIでZ-Image-Turboを使う：8ステップの高速画像生成"
+seoDescription: "Z-Imageを8ステップで生成できるように蒸留した高速モデルZ-Image-Turboの、ComfyUIでの使い方。モデルのダウンロード、text2image、Fun ControlNet Unionのworkflowを紹介します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/z-image-turbo/legacy_gyazo_8cb43e18daed0bcb2bf3bf7c794e5360.png"

@@ -9,6 +9,8 @@ created: 2026-05-02
 updated: 2026-05-02
 noteTags: ["project", "lora", "sdxl", "ai-toolkit"]
 summary: "A practical flow for training a character LoRA for Illustrious-style SDXL models with AI Toolkit"
+seoTitle: "Train an SDXL (Illustrious) LoRA with AI Toolkit"
+seoDescription: "Train a character LoRA for Illustrious-based SDXL with AI Toolkit: collect and clean images, write or generate captions, and run training."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: "/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_b0d3bb95931f32192df7619f612a202e.png"

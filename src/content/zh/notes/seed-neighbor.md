@@ -9,6 +9,8 @@ created: 2026-02-11
 updated: 2026-03-02
 noteTags: ["faq", "seed"]
 summary: "seed 数值接近，不代表结果接近"
+seoTitle: "为什么种子值相近也不会生成相似的图像"
+seoDescription: "从噪声与种子的关系讲解 seed 1234 和 1235 生成完全不同图像的原因，并介绍想生成相似图像时的 image2image、噪声混合（blend）与噪声注入（injection）。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: "/media/notes/seed-neighbor/legacy_gyazo_9cc7e9a5752b2a65f4e8a76972b9b366.png"

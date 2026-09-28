@@ -9,6 +9,8 @@ created: 2025-12-13
 updated: 2026-03-02
 noteTags: ["faq", "sd15"]
 summary: "Why sizes around 512px are recommended for Stable Diffusion 1.5"
+seoTitle: "Why Stable Diffusion 1.5 Generates at 512px"
+seoDescription: "Why about 512px is recommended for Stable Diffusion 1.5: training resolution, compute that grows fast, fixes like Hires.fix and tiling, and SDXL."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

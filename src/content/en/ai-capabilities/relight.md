@@ -8,6 +8,8 @@ title: Relight
 created: 2025-12-01
 updated: 2026-03-02
 summary: "Task to adjust lighting of an image by changing light source or ambient light"
+seoTitle: "What Is Relighting? Change Image Lighting with AI"
+seoDescription: "Relighting changes the lighting of an image: IC-Light and LBM for composites, editing models with relight LoRAs, and placing virtual lights."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: '/media/ai-capabilities/relight/legacy_gyazo_4c413909ac34f89df891a976fc660f70.png'

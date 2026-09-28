@@ -8,6 +8,8 @@ title: "深度推断与法线贴图生成"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "从图像中提取进深感或立体感的技术"
+seoTitle: "深度估计与法线贴图生成：Depth Anything 等"
+seoDescription: "从单张图像提取进深和表面朝向的深度估计与法线贴图生成。比较 MiDaS、ZoeDepth、Depth Anything 系列，以及 Marigold、Lotus、LBM 等源自扩散模型的方法。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/ai-capabilities/depth-normal-map/legacy_gyazo_f6033924229b0ea961d8f22eb38bd6b2.png"

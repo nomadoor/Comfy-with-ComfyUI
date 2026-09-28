@@ -8,6 +8,8 @@ title: "コマンドライン引数"
 created: 2025-11-20
 updated: 2026-08-01
 summary: "ComfyUIの起動時に指定するオプション"
+seoTitle: "ComfyUIのコマンドライン引数一覧と設定方法"
+seoDescription: "ComfyUIの起動時に指定するコマンドライン引数の設定方法と一覧。VRAM不足（OOM）対策、メモリ制御、ポートなどの接続設定、エラーの切り分けに使うオプションを用途別にまとめています。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

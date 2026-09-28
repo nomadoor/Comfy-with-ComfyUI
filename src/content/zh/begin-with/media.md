@@ -8,6 +8,8 @@ title: "媒体 (Media)"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于媒体文件"
+seoTitle: "在 ComfyUI 中读取与保存图像、视频、音频"
+seoDescription: "ComfyUI 处理媒体的基础节点汇总。介绍 Load Image、Save Image 等图像节点，包括 Video Helper Suite 在内的视频节点、音频节点以及便捷的读取方法。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

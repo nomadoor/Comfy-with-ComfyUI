@@ -9,6 +9,8 @@ created: 2026-02-06
 updated: 2026-03-02
 noteTags: ["faq", "sd15", "sdxl"]
 summary: "模型间的兼容性，以及 SD1.5 用资源不能在 SDXL 上使用的理由"
+seoTitle: "SD1.5 的 LoRA / ControlNet 能在 SDXL 上用吗？"
+seoDescription: "用插座打比方，讲解 Stable Diffusion 1.5 的 LoRA 和 ControlNet 无法在 SDXL 上使用的原因：模型之间基本不兼容，以及实际尝试时会发生什么。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

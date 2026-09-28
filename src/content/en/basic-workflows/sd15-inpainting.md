@@ -8,6 +8,8 @@ title: "inpainting"
 created: 2025-12-07
 updated: 2026-08-26
 summary: "Editing only part of an image with inpainting"
+seoTitle: "Inpainting in ComfyUI: Redraw Part of an Image"
+seoDescription: "Redraw part of an image in ComfyUI: partial image2image and its seams, dedicated inpainting models, and ControlNet inpaint, with workflows."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: ["controlnet", "region-limited-generation"]
 hero:

@@ -8,6 +8,8 @@ title: "Wan 2.2"
 created: 2025-12-12
 updated: 2026-03-02
 summary: "Video generation using text2video / image2video / FLF2V with Wan 2.2"
+seoTitle: "Wan 2.2 in ComfyUI: 14B and 5B Video Workflows"
+seoDescription: "Use Wan 2.2 in ComfyUI: the 14B high/low-noise pair and TI2V-5B, with text2video, image2video, and FLF2V in easy-to-read workflows."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

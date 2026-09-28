@@ -9,6 +9,8 @@ title: Human Motion Transfer
 created: 2026-02-06
 updated: 2026-03-02
 summary: 将其他视频的动作转移给角色的技术
+seoTitle: "Human Motion Transfer：把视频动作转移给角色的 AI"
+seoDescription: "把另一段视频的全身动作转移到单张人物图像上的 Human Motion Transfer。介绍 Animate Anyone 之后的发展，以及 Wan2.1 VACE、Wan-Animate 等 DiT 世代模型。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ""

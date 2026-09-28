@@ -8,6 +8,8 @@ title: "Wan 2.1 VACE"
 created: 2025-12-13
 updated: 2026-03-02
 summary: "Handle ControlNet-like control, in/outpainting, reference2video, and Extension with Wan 2.1 VACE"
+seoTitle: "Wan 2.1 VACE in ComfyUI: Video ControlNet and Editing"
+seoDescription: "Use Wan 2.1 VACE for video ControlNet, inpainting, outpainting, and reference2video: pose and depth control, extension, and loops, with workflows."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

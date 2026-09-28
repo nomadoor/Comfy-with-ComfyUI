@@ -8,6 +8,8 @@ title: 線画着色
 created: 2025-12-01
 updated: 2026-03-02
 summary: 線画に色を塗る技術
+seoTitle: "AIで線画に着色する方法：ControlNetと画像編集モデル"
+seoDescription: "自分で描いた線画にAIで色を塗る方法の比較。ControlNetによる着色、指示ベース画像編集モデルでの着色、線画とカラー画像を使った参照ベースの色付けを解説します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

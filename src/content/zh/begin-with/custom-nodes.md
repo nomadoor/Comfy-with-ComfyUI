@@ -8,6 +8,8 @@ title: "自定义节点"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于自定义节点"
+seoTitle: "什么是 ComfyUI 自定义节点？安装方法与注意事项"
+seoDescription: "为 ComfyUI 添加功能的自定义节点基础。讲解安装的风险、用 ComfyUI Manager 或手动安装的方法、推荐节点，以及原生实现与 Wrapper 的区别。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

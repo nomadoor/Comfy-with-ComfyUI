@@ -8,6 +8,8 @@ title: "条件分支"
 created: 2026-05-28
 updated: 2026-05-29
 summary: "使用 Switch 和 Boolean 切换工作流的处理流程"
+seoTitle: "ComfyUI 条件分支：Switch 与 Boolean"
+seoDescription: "在 ComfyUI 工作流中根据条件切换处理的方法。介绍 Switch 节点，用 Math Expression、Compare Text、MLLM 生成 Boolean，以及 AND / OR / NOT 组合，附实践示例。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

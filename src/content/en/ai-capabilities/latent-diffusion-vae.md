@@ -8,6 +8,8 @@ title: Latent Diffusion Model & VAE
 created: 2025-12-01
 updated: 2026-03-02
 summary: The role of latent space and VAE.
+seoTitle: "Latent Diffusion Models and VAE Explained"
+seoDescription: "How latent diffusion brought image AI to home PCs and what the VAE does: why work in latent space, why the VAE is lossy, and how to choose one."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

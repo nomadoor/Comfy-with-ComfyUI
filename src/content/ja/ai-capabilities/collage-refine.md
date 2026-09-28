@@ -8,6 +8,8 @@ title: 雑コラのリファイン
 created: 2025-12-01
 updated: 2026-03-02
 summary: 雑なコラージュ画像を、指示ベース画像編集で自然な一枚絵に仕上げるテクニック
+seoTitle: "雑コラのリファイン：画像編集AIでレイアウトを指定する"
+seoDescription: "オブジェクトを雑に配置したコラージュ画像を、指示ベース画像編集モデルで自然な一枚絵に仕上げるテクニック。位置をそのまま保てることや、参照の数に制限がない利点、専用LoRAについて解説します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: /media/ai-capabilities/collage-refine/legacy_gyazo_967bb07db193bdc681c1f5528f99d537.png

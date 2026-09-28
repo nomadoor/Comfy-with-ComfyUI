@@ -7,6 +7,8 @@ title: "お問い合わせ"
 created: 2026-02-17
 updated: 2026-03-02
 summary: "サイト修正報告・記事リクエスト・運営者連絡"
+seoTitle: "お問い合わせ・記事リクエスト"
+seoDescription: "「Comfyに使うComfyUI」への誤字・不具合の報告、解説してほしいComfyUIの機能や記事のリクエスト、感想などを送れるフォームです。内容は匿名でGitHub issueに送られます。"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - contact

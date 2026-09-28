@@ -7,7 +7,9 @@ navId: updates
 title: "Updates"
 created: 2025-11-24
 updated: 2026-03-02
-summary: ""
+summary: "How to keep ComfyUI up to date"
+seoTitle: "How to Update ComfyUI: Stable vs. Nightly"
+seoDescription: "Update ComfyUI: Stable vs. Nightly, and update steps for the portable build, manual installs, ComfyUI Manager, and the desktop app."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

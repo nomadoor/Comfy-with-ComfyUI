@@ -8,6 +8,8 @@ title: "节点"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于节点"
+seoTitle: "ComfyUI 节点操作：添加、连接、复制等"
+seoDescription: "ComfyUI 节点的基本操作。包括通过搜索、菜单或从引脚拖出添加节点，连接与改接，以及选择、删除、复制粘贴、折叠、固定等操作。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""
