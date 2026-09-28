@@ -227,7 +227,9 @@ test.describe("Workflow performance", () => {
     await meter.hover();
     await expect(popup).toBeVisible();
 
-    await page.locator("h1").hover();
+    // Move the pointer away without targeting an element: the open popup or the sticky header can
+    // sit on top of any specific target and make a hover retry until timeout.
+    await page.mouse.move(2, 2);
     await meter.focus();
     await expect(popup).toBeVisible();
     await page.keyboard.press("Escape");

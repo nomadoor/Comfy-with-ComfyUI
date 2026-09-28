@@ -351,7 +351,7 @@ test.describe("View-transition router", () => {
       await expect(page).toHaveURL(LONG_PAGE);
       await expect(page.locator("h1").first()).toContainText("LTX-2");
     }
-    await page.locator("h1").first().click();
+    await page.mouse.click(2, 2); // fire pointer events on the document without depending on a target
     const baseline = await active();
 
     for (let i = 0; i < 3; i += 1) {
@@ -361,7 +361,7 @@ test.describe("View-transition router", () => {
       await expect(page).toHaveURL(LONG_PAGE);
       await expect(page.locator("h1").first()).toContainText("LTX-2");
     }
-    await page.locator("h1").first().click();
+    await page.mouse.click(2, 2); // fire pointer events on the document without depending on a target
     expect(await active()).toBe(baseline);
   });
 });
