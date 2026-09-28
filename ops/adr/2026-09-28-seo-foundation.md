@@ -29,4 +29,5 @@ Accepted
 - hreflangとsitemapの代替URLは、`navId` ではなく実際のページURLの言語セグメントを差し替えて作る。JA `sd15-basics` の `navId: sd15-basic` のように `navId` と `slug` が異なるページでも、存在しないURLを指さない。`navId` 自体は変更しない。翻訳が存在しない言語の代替URLは出力しないため、JAのみの記事も追加できる。
 - 準備中のplaceholderページはnoindexとし、sitemapから除外してhreflangも出力しない。404ページもhreflangを出力しない。
 - 未使用だった `SITE_ORIGIN` 環境変数（`src/_data/siteOrigin.js`）を廃止し、originは `site.url` に一本化する。
+- Workflow JSONは記事HTMLに埋め込まない。Copyボタンは `data-json-src` のルート絶対URLからクリック時に取得する。Safariでユーザー操作の扱いが切れないよう、クリック内で取得中のPromiseを持つ `ClipboardItem` を書き込み、使えない場合は `writeText`、最後にtextareaでコピーする。取得に失敗した場合は成功表示を出さない。埋め込みの再発は `check-build-output.mjs` で検出する。
 - 各段階は同じ作業ブランチ上で、段階ごとにcommit承認を得る。

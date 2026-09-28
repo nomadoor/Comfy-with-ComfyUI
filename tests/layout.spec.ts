@@ -388,12 +388,17 @@ test.describe("Layout rails", () => {
     expect(tocBox.x).toBeGreaterThan(contentBox.x + contentBox.width + 8);
   });
 
-  test("workflow copy button provides visual success feedback", async ({ page }) => {
+  test("workflow copy button copies the fetched JSON and shows success", async ({ page, context }) => {
+    await context.grantPermissions(["clipboard-read", "clipboard-write"]);
     await page.goto(SAMPLE_PAGE);
     const copyButton = page.locator("[data-copy-json]").first();
     await expect(copyButton).toBeVisible();
+    const source = await copyButton.getAttribute("data-json-src");
+    expect(source).toMatch(/\.json$/);
     await copyButton.click();
     await expect(copyButton).toHaveClass(/is-success/);
+    const expected = (await (await page.request.get(source!)).text()).trim();
+    expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(expected);
   });
 
   test("code block copy tooltip remains anchored above its button", async ({ page }) => {

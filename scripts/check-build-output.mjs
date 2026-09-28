@@ -71,7 +71,7 @@ if (!fs.existsSync(sitemapPath)) {
   }
 }
 
-// Social preview images must be absolute URLs, and hreflang alternates must resolve to built pages.
+// Social preview images must be absolute URLs, workflow JSON must not be inlined, and hreflang alternates must resolve to built pages.
 for (const file of files.filter((f) => f.endsWith(".html"))) {
   const text = fs.readFileSync(path.join(outputDir, file), "utf8");
   for (const [, href] of text.matchAll(/<link rel="alternate" hreflang="[^"]*" href="([^"]*)"/g)) {
@@ -80,6 +80,8 @@ for (const file of files.filter((f) => f.endsWith(".html"))) {
     if (!fs.existsSync(target)) failures.push(`${file}: hreflang alternate points to a missing page: ${href}`);
     else if (isNoindex(target)) failures.push(`${file}: hreflang alternate points to a noindex page: ${href}`);
   }
+  // Workflow JSON is fetched on copy; embedding it bloats pages and every router prefetch.
+  if (/last_node_id|<pre[^>]*class="sr-only"/.test(text)) failures.push(`${file}: embeds workflow JSON; link it via data-json-src instead`);
   for (const [, prop, value] of text.matchAll(/<meta (?:property|name)="((?:og|twitter):image)" content="([^"]*)"/g)) {
     if (!/^https:\/\//.test(value)) failures.push(`${file}: ${prop} is not absolute: ${value}`);
   }

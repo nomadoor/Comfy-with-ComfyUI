@@ -524,12 +524,11 @@ function renderJsonLinkRow(linkInfo, env, performanceInput = null) {
   if (!diskPath) {
     return null;
   }
-  let raw;
-  try {
-    raw = fsSync.readFileSync(diskPath, "utf-8");
-  } catch {
+  if (!fsSync.existsSync(diskPath)) {
     return null;
   }
+  // Root-absolute URL so Copy/Download do not depend on the page URL at click time.
+  const jsonUrl = `/${path.relative(path.join(process.cwd(), "src"), diskPath).split(path.sep).join("/")}`;
   const counterState = env.ctx && typeof env.ctx === "object" ? env.ctx : env;
   counterState.__jsonLinkCounter = Number.isInteger(counterState.__jsonLinkCounter)
     ? counterState.__jsonLinkCounter + 1
@@ -552,16 +551,15 @@ function renderJsonLinkRow(linkInfo, env, performanceInput = null) {
   <div class="workflow-json__row">
     <span class="workflow-json__filename">${escapedFile}</span>
     <div class="workflow-json__actions">
-      <button class="workflow-json__icon" type="button" aria-label="${escapeHTML(copyLabel)} ${escapedFile}" data-copy-json="${copyTargetId}" data-label="${escapeHTML(copyLabel)}" data-success-label="${escapeHTML(copiedLabel)}">
+      <button class="workflow-json__icon" type="button" aria-label="${escapeHTML(copyLabel)} ${escapedFile}" data-copy-json="${copyTargetId}" data-json-src="${escapeHTML(jsonUrl)}" data-label="${escapeHTML(copyLabel)}" data-success-label="${escapeHTML(copiedLabel)}">
         ${copyIcon}
       </button>
-      <a class="workflow-json__icon" href="${linkInfo.href}" download="${escapedFile}" data-no-swup aria-label="${escapeHTML(downloadLabel)} ${escapedFile}" data-download-json="${copyTargetId}-download" data-label="${escapeHTML(downloadLabel)}" data-success-label="${escapeHTML(downloadedLabel)}">
+      <a class="workflow-json__icon" href="${escapeHTML(jsonUrl)}" download="${escapedFile}" data-no-swup aria-label="${escapeHTML(downloadLabel)} ${escapedFile}" data-download-json="${copyTargetId}-download" data-label="${escapeHTML(downloadLabel)}" data-success-label="${escapeHTML(downloadedLabel)}">
         ${downloadIcon}
       </a>
       ${performanceMarkup}
     </div>
   </div>
-  <pre id="${copyTargetId}" class="sr-only" hidden aria-hidden="true">${escapeHTML(raw)}</pre>
 </div>`;
 }
 

@@ -27,7 +27,7 @@ layout: base.njk
       <li class="workflow-json__row">
         <span class="workflow-json__filename">{{ fileName }}</span>
         <div class="workflow-json__actions">
-          <button class="workflow-json__icon" type="button" aria-label="{{ workflowCopyLabel }} {{ fileName }}" data-copy-json="{{ workflow.id }}-json" data-label="{{ workflowCopyLabel }}" data-success-label="{{ workflowCopiedLabel }}">
+          <button class="workflow-json__icon" type="button" aria-label="{{ workflowCopyLabel }} {{ fileName }}" data-copy-json="{{ workflow.id }}-json" data-json-src="{{ workflow.json }}" data-label="{{ workflowCopyLabel }}" data-success-label="{{ workflowCopiedLabel }}">
             {{ icon("copy") }}
           </button>
           <a class="workflow-json__icon" href="{{ workflow.json }}" download="{{ fileName }}" data-router-ignore aria-label="{{ workflowDownloadLabel }} {{ fileName }}" data-download-json="{{ workflow.id }}-json" data-label="{{ workflowDownloadLabel }}" data-success-label="{{ workflowDownloadedLabel }}">
@@ -35,9 +35,6 @@ layout: base.njk
           </a>
         </div>
       </li>
-      {% if workflow.copy %}
-        <pre id="{{ workflow.id }}-json" class="sr-only">{{ workflow.copy | safe }}</pre>
-      {% endif %}
     {% endfor %}
   </ul>
 </section>
