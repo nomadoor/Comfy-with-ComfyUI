@@ -153,18 +153,24 @@
 
 ## 17. Social Cards (OGP / Twitter)
 - Add Open Graph and Twitter card meta tags in the base layout.
-- Use `summary` for the card type (no large image cards).
+- Use `summary_large_image` when the page has a hero image (owner decision 2026-09-28); otherwise `summary`.
 - `og:title` / `twitter:title` should use page `title`.
-- `og:description` / `twitter:description` should use page `summary` (fallback to site default).
+- `og:description` / `twitter:description` and `meta name="description"` use page `summary`; when `summary` is empty the tags are omitted.
 - `og:url` should be absolute, built from `site.url` + `page.url`.
 - `og:image` / `twitter:image` should use the hero media's resolved still image (`resolveMedia().poster`): the image itself for image heroes, the poster for video heroes.
   - If the hero is missing or a video has no poster, fall back to `site.ogImage`.
+  - `og:image` / `twitter:image` must always be absolute URLs (`site.ogImage` is prefixed with `site.url`).
 - `site.url` and `site.ogImage` live in `src/_data/site.json`.
 
 ## 18. i18n SEO (Canonical / Hreflang / Sitemap)
 - `link rel="canonical"` must be present for every page (`site.url + page.url`).
-- `hreflang` must be emitted for `ja`, `en`, `zh`, plus `x-default`.
+- `hreflang` must be emitted for each existing `ja` / `en` / `zh` translation, plus `x-default`.
 - Sitemaps should include alternate language references (`xhtml:link`) or equivalent per-locale sitemaps.
+- `hreflang` alternates (HTML and sitemap) are built by swapping the language segment of the page URL, and are emitted only for translations that exist. Noindex placeholders and the 404 page emit none.
+- Sitemap `<loc>` and alternates are absolute (`site.url`). `<lastmod>` uses frontmatter `updated`, falling back to `created`; never the build date.
+- Placeholder ("coming soon") pages are `noindex` and excluded from the sitemap.
+- Article pages (in a nav section, with `created`, not `searchExclude`, not noindex) emit schema.org `Article` JSON-LD with `headline`, `datePublished` (`created`), `dateModified` (`updated` or `created`), `image` when a hero exists, and `author`/`publisher` referencing a single `Person` (`site.author`, URL = default-language About page, `sameAs` = public profiles). They also emit `article:published_time`, `article:modified_time`, and `meta name="author"`.
+- `scripts/check-build-output.mjs` enforces these rules on the production build.
 - Language-switch discoverability can be emphasized via a short-lived animated glow around `.sidebar__lang` only on initial page access, and only when page language differs from the browser-preferred supported language (`ja`/`en`/`zh`) (non-blocking, no popup/modal).
 - Suppress repeated glow for 1 day via client storage.
 

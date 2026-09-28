@@ -33,6 +33,7 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
 {% if ogImage and siteUrl and (ogImage | first) == '/' -%}
 {% set ogImage = siteUrl ~ ogImage -%}
 {% endif -%}
+{% set isArticle = sectionExists and created and not searchExclude and not ('noindex' in (robots or '')) -%}
 <!DOCTYPE html>
 <html lang="{{ currentLang }}" data-asset-version="{{ env.assetVersion | e }}">
 
@@ -43,7 +44,9 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
     document.documentElement.classList.add("js");
   </script>
   <title>{{ title | e }} | {{ (site.name[currentLang] or site.name[site.defaultLang]) | e }}</title>
+  {% if pageSummary %}
   <meta name="description" content="{{ pageSummary | e }}" />
+  {% endif %}
   {% if robots %}
   <meta name="robots" content="{{ robots | e }}" />
   {% endif %}
@@ -54,40 +57,43 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
   <meta property="og:url" content="{{ canonicalUrl | e }}" />
   {% endif %}
   <meta property="og:title" content="{{ title | e }}" />
+  {% if pageSummary %}
   <meta property="og:description" content="{{ pageSummary | e }}" />
+  {% endif %}
   {% if ogImage %}
   <meta property="og:image" content="{{ ogImage | e }}" />
   {% endif %}
   <meta property="og:type" content="article" />
+  {% if isArticle %}
+  <meta property="article:published_time" content="{{ created | isoDate }}" />
+  <meta property="article:modified_time" content="{{ (updated or created) | isoDate }}" />
+  <meta name="author" content="{{ site.author.name | e }}" />
+  {% endif %}
   <meta property="og:site_name" content="{{ (site.name[currentLang] or site.name[site.defaultLang]) | e }}" />
   <meta name="twitter:card" content="{{ 'summary_large_image' if ogImagePath else 'summary' }}" />
   <meta name="twitter:title" content="{{ title | e }}" />
+  {% if pageSummary %}
   <meta name="twitter:description" content="{{ pageSummary | e }}" />
+  {% endif %}
   {% if ogImage %}
   <meta name="twitter:image" content="{{ ogImage | e }}" />
   {% endif %}
   {% if canonicalUrl and pagePath != "/404.html" %}
   {% set structuredData = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": siteUrl ~ "/#website",
-        "url": siteUrl ~ "/",
-        "name": site.name[currentLang] or site.name[site.defaultLang],
-        "inLanguage": currentLang
-      },
-      {
-        "@type": "WebPage",
-        "@id": canonicalUrl ~ "#webpage",
-        "url": canonicalUrl,
-        "name": title,
-        "description": pageSummary,
-        "inLanguage": currentLang,
-        "isPartOf": { "@id": siteUrl ~ "/#website" }
-      }
-    ]
-  } %}
+    "siteUrl": siteUrl,
+    "canonicalUrl": canonicalUrl,
+    "lang": currentLang,
+    "defaultLang": site.defaultLang,
+    "siteName": site.name[currentLang] or site.name[site.defaultLang],
+    "title": title,
+    "description": pageSummary,
+    "author": site.author,
+    "article": {
+      "datePublished": created | isoDate,
+      "dateModified": (updated or created) | isoDate,
+      "image": ogImage if ogImagePath else ""
+    } if isArticle else null
+  } | pageStructuredData %}
   <script type="application/ld+json">{{ structuredData | jsonLd | safe }}</script>
   {% endif %}
   {% if sectionCandidate != 'missing' and not ('noindex' in (robots or '')) -%}

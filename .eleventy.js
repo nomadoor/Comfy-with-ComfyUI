@@ -1072,6 +1072,42 @@ export default function (eleventyConfig) {
     return alternates.length > 1 ? alternates : [];
   });
 
+  // schema.org graph for a page: WebSite + WebPage, plus Article and its Person author for articles.
+  eleventyConfig.addFilter("pageStructuredData", function (input = {}) {
+    const { siteUrl, canonicalUrl, lang, defaultLang, siteName, title, description, article, author } = input;
+    const websiteId = `${siteUrl}/#website`;
+    const webpageId = `${canonicalUrl}#webpage`;
+    const graph = [
+      { "@type": "WebSite", "@id": websiteId, url: `${siteUrl}/`, name: siteName, inLanguage: lang },
+      { "@type": "WebPage", "@id": webpageId, url: canonicalUrl, name: title, ...(description ? { description } : {}), inLanguage: lang, isPartOf: { "@id": websiteId } }
+    ];
+    if (article && author?.name) {
+      const authorId = `${siteUrl}/#author`;
+      graph.push({
+        "@type": "Article",
+        "@id": `${canonicalUrl}#article`,
+        headline: title,
+        ...(description ? { description } : {}),
+        inLanguage: lang,
+        datePublished: article.datePublished,
+        dateModified: article.dateModified,
+        ...(article.image ? { image: [article.image] } : {}),
+        author: { "@id": authorId },
+        publisher: { "@id": authorId },
+        mainEntityOfPage: { "@id": webpageId },
+        isPartOf: { "@id": websiteId }
+      });
+      graph.push({
+        "@type": "Person",
+        "@id": authorId,
+        name: author.name,
+        url: `${siteUrl}/${defaultLang}/about/`, // one canonical URL for the single #author entity
+        ...(author.sameAs?.length ? { sameAs: author.sameAs } : {})
+      });
+    }
+    return { "@context": "https://schema.org", "@graph": graph };
+  });
+
   eleventyConfig.addFilter("jsonLd", function (value = {}) {
     return JSON.stringify(value)
       .replace(/</g, "\\u003c")

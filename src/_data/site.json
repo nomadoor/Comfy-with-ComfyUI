@@ -1,5 +1,13 @@
 {
   "url": "https://comfyui.nomadoor.net",
+  "author": {
+    "name": "nomadoor",
+    "sameAs": [
+      "https://x.com/noma_door",
+      "https://www.reddit.com/user/nomadoor/",
+      "https://github.com/nomadoor"
+    ]
+  },
   "turnstileSiteKey": "0x4AAAAAACeNHt46k6LVf5wp",
   "ogImage": "/assets/logos/favicon/favicon_256.png",
   "media": {

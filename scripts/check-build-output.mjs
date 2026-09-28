@@ -36,13 +36,23 @@ const isNoindex = (htmlFile) => /<meta name="robots" content="[^"]*noindex/.test
 // (falling back to `created`), never from the build date. Permalinks are built from `slug`
 // (not `navId`, which may differ), so expected dates are keyed the same way.
 const expectedLastmod = new Map();
+const expectedArticles = new Map();
+const dateOnly = (value) => String(value || "").match(/^\d{4}-\d{2}-\d{2}/)?.[0];
 for (const file of await fg(["src/content/{ja,en,zh}/**/*.{md,njk}"])) {
   const match = fs.readFileSync(file, "utf8").match(/^---\r?\n([\s\S]*?)\r?\n---/);
   const data = match ? parse(match[1]) || {} : {};
   if (!data.lang || !data.slug) continue;
   const pagePath = data.section ? `/${data.lang}/${data.section}/${data.slug}/` : `/${data.lang}/${data.slug}/`;
-  const date = String(data.updated || data.created || "").match(/^\d{4}-\d{2}-\d{2}/)?.[0];
+  const date = dateOnly(data.updated || data.created);
   if (date) expectedLastmod.set(`${siteUrl}${pagePath}`, date);
+  // Articles: pages in a section with a publish date, excluding utility pages (search, find).
+  if (data.section && data.created && !data.searchExclude) {
+    expectedArticles.set(`${siteUrl}${pagePath}`, {
+      headline: String(data.title),
+      datePublished: dateOnly(data.created),
+      dateModified: dateOnly(data.updated || data.created)
+    });
+  }
 }
 
 const sitemapPath = path.join(outputDir, "sitemap.xml");
@@ -68,6 +78,54 @@ if (!fs.existsSync(sitemapPath)) {
     if (expected && lastmod !== expected) {
       failures.push(`sitemap.xml: ${loc} lastmod ${lastmod || "(missing)"} does not match frontmatter ${expected}`);
     }
+  }
+}
+
+// Article pages must carry Article structured data with dates from frontmatter and a Person author.
+if (!expectedArticles.size) failures.push("no article pages found to verify structured data");
+for (const [url, expected] of expectedArticles) {
+  const htmlFile = builtHtmlFor(url);
+  if (!fs.existsSync(htmlFile)) {
+    failures.push(`${url}: expected article page was not built`);
+    continue;
+  }
+  const text = fs.readFileSync(htmlFile, "utf8");
+  if (!text.includes(`<meta property="article:published_time" content="${expected.datePublished}" />`)) {
+    failures.push(`${url}: article:published_time must be ${expected.datePublished}`);
+  }
+  if (!text.includes(`<meta property="article:modified_time" content="${expected.dateModified}" />`)) {
+    failures.push(`${url}: article:modified_time must be ${expected.dateModified}`);
+  }
+  const ld = text.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1];
+  let graph = [];
+  try {
+    graph = JSON.parse(ld || "{}")["@graph"] || [];
+  } catch {
+    failures.push(`${url}: structured data is not valid JSON`);
+    continue;
+  }
+  const article = graph.find((node) => node["@type"] === "Article");
+  if (!article) {
+    failures.push(`${url}: missing Article structured data`);
+    continue;
+  }
+  for (const key of ["headline", "datePublished", "dateModified"]) {
+    if (article[key] !== expected[key]) failures.push(`${url}: Article ${key} ${article[key]} does not match ${expected[key]}`);
+  }
+  if (article.mainEntityOfPage?.["@id"] !== `${url}#webpage`) failures.push(`${url}: Article mainEntityOfPage must reference the WebPage`);
+  if ((article.image || []).some((image) => !/^https:\/\//.test(image))) failures.push(`${url}: Article image must be absolute`);
+  const author = graph.find((node) => node["@id"] === article.author?.["@id"]);
+  if (author?.["@type"] !== "Person" || !author.name || !isAbsoluteSiteUrl(author.url || "")) {
+    failures.push(`${url}: Article author must reference a Person with name and site URL`);
+  }
+}
+
+// Non-article pages (about, news, contact, search pages, placeholders, 404) must not claim to be articles.
+for (const file of files.filter((f) => f.endsWith(".html"))) {
+  const url = `${siteUrl}/${file.replace(/index\.html$/, "")}`;
+  if (expectedArticles.has(url)) continue;
+  if (fs.readFileSync(path.join(outputDir, file), "utf8").includes('"@type":"Article"')) {
+    failures.push(`${file}: non-article page must not emit Article structured data`);
   }
 }
 
