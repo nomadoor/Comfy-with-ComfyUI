@@ -7,6 +7,8 @@ import loadLanguages from "prismjs/components/index.js";
 import { logicalNameFromRef, mediaRef, publicUrl, transformUrl } from "./scripts/lib/media-names.mjs";
 import { createOriginalsMiddleware, localPreview, originalsRootFromEnv } from "./scripts/lib/media-local-preview.mjs";
 import envData from "./src/_data/env.js";
+import missingPages from "./src/_data/missingPages.js";
+import navData from "./src/_data/nav.js";
 
 const GYAZO_HOST = "i.gyazo.com";
 const SITE_DATA_PATH = path.join("src", "_data", "site.json");
@@ -1061,13 +1063,17 @@ export default function (eleventyConfig) {
 
   // hreflang alternates for a localized URL, limited to translations that were actually built
   // (JA is the source language, so EN/ZH may not exist yet). x-default is the default-language URL.
+  // URLs of built pages that are not noindex, cached per collection object.
   const builtUrlSets = new WeakMap();
-  eleventyConfig.addFilter("hreflangAlternates", function (url = "", languages = [], collection = [], defaultLang = "") {
+  const indexableUrls = (collection) => {
     if (!builtUrlSets.has(collection)) {
       const indexable = collection.filter((item) => !String(item.data?.robots || "").includes("noindex"));
       builtUrlSets.set(collection, new Set(indexable.map((item) => item.url)));
     }
-    const built = builtUrlSets.get(collection);
+    return builtUrlSets.get(collection);
+  };
+  eleventyConfig.addFilter("hreflangAlternates", function (url = "", languages = [], collection = [], defaultLang = "") {
+    const built = indexableUrls(collection);
     const alternates = [];
     for (const { code } of languages) {
       const href = localizedPathFor(url, code);
@@ -1076,6 +1082,44 @@ export default function (eleventyConfig) {
     const defaultHref = localizedPathFor(url, defaultLang);
     if (alternates.length > 1 && built.has(defaultHref)) alternates.push({ hreflang: "x-default", href: defaultHref });
     return alternates.length > 1 ? alternates : [];
+  });
+
+  // Every built page URL (noindex included), for navigation that must reach pages search engines skip.
+  // Paginated "coming soon" placeholders only surface their first page in collections, so their URLs
+  // are added from the same data that generates them.
+  const builtUrlLists = new WeakMap();
+  const allBuiltUrls = (collection) => {
+    if (!builtUrlLists.has(collection)) {
+      const urls = new Set(collection.map((item) => item.url));
+      missingPages().forEach((stub) => urls.add(`/${stub.lang}/${stub.section}/${stub.id}/`));
+      builtUrlLists.set(collection, urls);
+    }
+    return builtUrlLists.get(collection);
+  };
+
+  // Language-menu (and logo) target for the current page: the same page in `langCode` when it was
+  // built; otherwise that language's home, or its guide page while that home does not exist yet.
+  eleventyConfig.addFilter("langSwitchTarget", function (url = "", langCode = "", collection = []) {
+    const built = allBuiltUrls(collection);
+    const target = localizedPathFor(url, langCode);
+    if (target && built.has(target)) return target;
+    if (built.has(`/${langCode}/`)) return `/${langCode}/`;
+    return `/${langCode}/begin-with/how-to-use-this-site/`;
+  });
+
+  // The newest `limit` rows of a language's news page, reused on the language home.
+  // Rows are copied verbatim, so each news row must stay a flat <a class="news-row">…</a> block.
+  eleventyConfig.addFilter("newsRows", function (lang = "ja", limit = 5) {
+    const newsPath = path.join(process.cwd(), "src", "content", lang, "news.md");
+    if (!fsSync.existsSync(newsPath)) return "";
+    const rows = fsSync.readFileSync(newsPath, "utf-8").match(/<a class="news-row"[\s\S]*?<\/a>/g) || [];
+    return rows.slice(0, limit).join("\n");
+  });
+
+  // Look up a built page by its URL (for cards that point at articles).
+  eleventyConfig.addFilter("pageByUrl", function (collection = [], url = "") {
+    const entry = collection.find((item) => item.url === url);
+    return entry ? { url: entry.url, title: entry.data.title, hero: entry.data.hero || {} } : null;
   });
 
   // schema.org graph for a page: WebSite + WebPage, plus Article and its Person author for articles.
@@ -1306,6 +1350,27 @@ export default function (eleventyConfig) {
   enhanceStandaloneImages(markdownLib);
   preserveManualNumberedBullets(markdownLib);
   enhanceJsonLinks(markdownLib);
+  // News rows are authored with an internal section key (`<span class="news-row__tag">notes</span>`).
+  // Show the reader-facing section name from the nav instead, next to the date. `faq` is the old name
+  // of Notes; `none` and unknown keys show no section.
+  const newsSectionLabel = (lang, key) => {
+    const sectionKey = key === "faq" ? "notes" : key;
+    const section = (navData[lang] || navData[DEFAULT_LANG])?.sections?.find((item) => item.key === sectionKey);
+    return section ? String(section.label).replace(/^[^\p{L}\p{N}]+/u, "").trim() : "";
+  };
+  eleventyConfig.addTransform("news-section-labels", function (content) {
+    if (!(this.page.outputPath || "").endsWith(".html") || !content.includes("news-row__tag")) return content;
+    const lang = (this.page.url || "").split("/")[1] || DEFAULT_LANG;
+    return content.replace(/<span class="news-row__tag">([^<]*)<\/span>/g, (match, key) => {
+      const label = newsSectionLabel(lang, key.trim());
+      // Keep an empty cell when there is no section so the title stays in its column.
+      const sectionKey = key.trim() === "faq" ? "notes" : key.trim();
+      return label
+        ? `<span class="news-row__section" data-section="${escapeHTML(sectionKey)}">${escapeHTML(label)}</span>`
+        : `<span class="news-row__section" aria-hidden="true"></span>`;
+    });
+  });
+
   // Plain links to managed media (`[clip.mp4](/media/...)`) point at the published R2 file, like embeds do.
   markdownLib.core.ruler.after("inline", "resolve-media-links", (state) => {
     state.tokens.forEach((blockToken) => {
@@ -1320,6 +1385,11 @@ export default function (eleventyConfig) {
     });
   });
   eleventyConfig.setLibrary("md", markdownLib);
+
+  // Render a Markdown block inside a Nunjucks page (the language home mixes prose with generated parts).
+  eleventyConfig.addPairedShortcode("markdown", function (content = "") {
+    return markdownLib.render(content, { page: this.page });
+  });
 
   // Paired shortcode: side-by-side media + text
   // Usage (in Markdown):
@@ -1510,6 +1580,9 @@ export default function (eleventyConfig) {
     showAllHosts: true,
     port: 8080,
     watch: ["src/assets/**/*", "src/workflows/**/*"],
+    // Dev assets live at the fixed /assets/js/dev/ path; without this the browser can keep an old module
+    // next to a new one and every script on the page stops. Production paths change per deploy.
+    headers: { "Cache-Control": "no-store" },
     // `/__media-originals/<logical name>` previews local originals on the dev server (see resolveManagedMedia).
     middleware: [createOriginalsMiddleware(() => MEDIA_ORIGINALS_ROOT)]
   });

@@ -1,6 +1,6 @@
 import initPage from "./page.js";
 import { refreshActiveNav } from "./link-behavior.js";
-import { updateLangLinks } from "./lang-switcher.js";
+import { syncLangMenus } from "./lang-switcher.js";
 import { setActiveSectionByPathname } from "./sidebar.js";
 import { enterPoppedEntry, getCurrentEntryId, initHistoryEntries, markEntryShown, pushEntry, replaceEntryUrl, restoreScroll } from "./history-entries.js";
 
@@ -198,7 +198,6 @@ const reinitializePage = (destinationUrl, { forceCenterNav = true, scrollNav = t
   initPage();
   setActiveSectionByPathname(destinationUrl.pathname);
   refreshActiveNav(destinationUrl.pathname, { forceCenter: forceCenterNav, scroll: scrollNav });
-  updateLangLinks(destinationUrl.pathname);
   scrollToTarget(destinationUrl, restoreY);
 };
 
@@ -279,6 +278,7 @@ const navigateTo = async (url, options = {}) => {
         return;
       }
       updateHead(nextDoc);
+      syncLangMenus(nextDoc);
       if (replace) {
         replaceEntryUrl(nextUrl);
         markEntryShown();

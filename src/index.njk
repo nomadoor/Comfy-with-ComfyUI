@@ -1,13 +1,6 @@
 {% set defaultLang = site.defaultLang %}
-{% set localeNav = nav[defaultLang] or nav[site.defaultLang] %}
+{# The language home is the entry page; `_redirects` sends / there with a 301 in production. #}
 {% set redirectPath = "/" + defaultLang + "/" %}
-{% if localeNav and localeNav.sections and (localeNav.sections | length) > 0 %}
-  {% set firstSection = localeNav.sections | first %}
-  {% if firstSection and firstSection.pages and (firstSection.pages | length) > 0 %}
-    {% set firstPage = firstSection.pages | first %}
-    {% set redirectPath = "/" + defaultLang + "/" + firstSection.key + "/" + firstPage.id + "/" %}
-  {% endif %}
-{% endif %}
 <!DOCTYPE html>
 <html lang="{{ defaultLang }}">
   <head>

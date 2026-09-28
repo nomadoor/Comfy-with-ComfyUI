@@ -1,0 +1,32 @@
+{% from "icon.njk" import icon %}
+{% set picksBlock = picks or {} %}
+{% if picksBlock.groups and picksBlock.groups.length %}
+{# Headings stay direct children of .article-body so the TOC and heading anchors pick them up. #}
+<h2>{{ picksBlock.title }}</h2>
+<section class="home-picks" data-home-picks>
+  {% if picksBlock.lead %}<p class="home-picks__lead">{{ picksBlock.lead }}</p>{% endif %}
+  {% for group in picksBlock.groups %}
+    {% set groupIndex = loop.index %}
+    <h3 class="home-picks__category">{{ group.label }}</h3>
+    <div class="home-picks__grid">
+      {% for item in group.items %}
+        {% set pickPage = collections.all | pageByUrl(item.page) %}
+        {% set pickHero = pickPage and pickPage.hero.image and (pickPage.hero.image | resolveMedia({ size: 480 })) %}
+        {% set pickId = "home-pick-" ~ groupIndex ~ "-" ~ loop.index %}
+        <a class="home-pick workflow-related__card" href="{{ item.page }}" aria-labelledby="{{ pickId }}-title" aria-describedby="{{ pickId }}-text">
+          <div class="workflow-related__hero" {% if pickHero and pickHero.poster %}data-hero="{{ pickHero.poster }}"{% endif %}>
+            {% if pickHero and pickHero.kind == "video" %}
+              <video class="home-pick__video" src="{{ pickHero.src }}" poster="{{ pickHero.poster }}" muted autoplay loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video>
+            {% endif %}
+            {% if not (pickHero and pickHero.poster) %}
+              <span class="workflow-related__placeholder-icon" aria-hidden="true">{{ icon("sparkles") }}</span>
+            {% endif %}
+          </div>
+          <span class="home-pick__title" id="{{ pickId }}-title">{{ pickPage.title }}</span>
+          <span class="home-pick__text" id="{{ pickId }}-text">{{ item.text }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  {% endfor %}
+</section>
+{% endif %}

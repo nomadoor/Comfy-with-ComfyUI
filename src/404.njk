@@ -1,16 +1,30 @@
 ---
-permalink: /404.html
+pagination:
+  data: site.languages
+  size: 1
+  alias: language
 layout: page.njk
-lang: ja
 section: missing
 navId: missing
+robots: noindex
 title: "404"
-summary: "ページが見つかりません"
+eleventyComputed:
+  # Cloudflare Pages serves the nearest 404.html, so /en/… and /zh/… misses get their own language.
+  permalink: "{% if language.code == site.defaultLang %}/404.html{% else %}/{{ language.code }}/404.html{% endif %}"
+  lang: "{{ language.code }}"
+  summary: "{% if language.code == 'ja' %}ページが見つかりません{% elseif language.code == 'zh' %}找不到页面{% else %}Page not found{% endif %}"
 hero:
   gradient: ""
 ---
-<div class="article-body placeholder">
-  <h1>404</h1>
-  <p>指定されたページは存在しません。サイドバーや About から別のトピックを選んでください。</p>
-  <p><a href="/sitemap.xml">サイトマップ</a>、または <a href="/llms.txt">AI・機械向けの記事一覧</a>から目的のページを探せます。</p>
+<div class="placeholder">
+  {% if language.code == "ja" %}
+    <p>指定されたページは存在しません。<a href="/ja/">トップ</a>から、別のページを探してみてください。</p>
+    <p><a href="/sitemap.xml">サイトマップ</a>、または <a href="/llms.txt">AI・機械向けの記事一覧</a>から目的のページを探せます。</p>
+  {% elseif language.code == "zh" %}
+    <p>找不到这个页面。请从<a href="/zh/">首页</a>寻找其他页面。</p>
+    <p>也可以通过<a href="/sitemap.xml">站点地图</a>或<a href="/llms.txt">面向 AI 的文章列表</a>查找。</p>
+  {% else %}
+    <p>This page does not exist. Try the <a href="/en/">home page</a> to find another page.</p>
+    <p>You can also look through the <a href="/sitemap.xml">sitemap</a> or the <a href="/llms.txt">article list for AI agents</a>.</p>
+  {% endif %}
 </div>

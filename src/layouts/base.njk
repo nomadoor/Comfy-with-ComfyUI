@@ -53,10 +53,10 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
   {% if robots %}
   <meta name="robots" content="{{ robots | e }}" data-page-meta />
   {% endif %}
-  {% if canonicalUrl %}
+  {% if canonicalUrl and sectionCandidate != "missing" %}
   <link rel="canonical" href="{{ canonicalUrl | e }}" data-page-meta />
   {% endif %}
-  {% if canonicalUrl %}
+  {% if canonicalUrl and sectionCandidate != "missing" %}
   <meta property="og:url" content="{{ canonicalUrl | e }}" data-page-meta />
   {% endif %}
   <meta property="og:title" content="{{ searchTitle | e }}" data-page-meta />
@@ -81,7 +81,7 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
   {% if ogImage %}
   <meta name="twitter:image" content="{{ ogImage | e }}" data-page-meta />
   {% endif %}
-  {% if canonicalUrl and pagePath != "/404.html" %}
+  {% if canonicalUrl and sectionCandidate != "missing" %}
   {% set structuredData = {
     "siteUrl": siteUrl,
     "canonicalUrl": canonicalUrl,

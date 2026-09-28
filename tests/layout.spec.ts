@@ -36,6 +36,18 @@ test.describe("Layout rails", () => {
     await expect(page.getByRole("link", { name: "AI・機械向けの記事一覧" })).toHaveAttribute("href", "/llms.txt");
   });
 
+  test("each language has its own 404 page with one heading and no correction link", async ({ page }) => {
+    for (const [url, lang, home] of [["/404.html", "ja", "/ja/"], ["/en/404.html", "en", "/en/"], ["/zh/404.html", "zh", "/zh/"]]) {
+      await page.goto(url);
+      await expect(page.locator("html")).toHaveAttribute("lang", lang);
+      await expect(page.locator("h1")).toHaveCount(1);
+      await expect(page.locator(".article-contact-link")).toHaveCount(0);
+      await expect(page.locator(`.article-body a[href="${home}"]`)).toHaveCount(1);
+      await expect(page.locator('.article-body a[href="/sitemap.xml"]')).toHaveCount(1);
+      await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex");
+    }
+  });
+
   test("heading permalink icon copies the heading URL", async ({ page }) => {
     await page.addInitScript(() => {
       window.__copied = "";

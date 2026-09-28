@@ -1,0 +1,81 @@
+---
+layout: page.njk
+lang: zh
+slug: home
+title: "Comfy with ComfyUI"
+summary: "帮助大家理解 ComfyUI 的操作方式与生成式 AI 能力的网站。"
+seoTitle: "ComfyUI 使用教程与易读工作流"
+seoDescription: "用中文讲解 ComfyUI 的操作与生成式 AI 的能力。从安装到图像、视频的生成与编辑，介绍现在值得使用的模型，以及整理清晰易读的工作流。"
+created: 2026-09-29
+updated: 2026-09-29
+permalink: "/{{ lang }}/"
+searchExclude: true
+hero:
+  image: "/media/begin-with/how-to-use-this-site/legacy_gyazo_8d7fa7b6602e2b4d1cec23ab66090cce.png"
+picks:
+  title: "2026 年 9 月推荐模型"
+  lead: "新模型几乎每周都会出现，但在性能、通用性和稳定性之间取得良好平衡的并不多。现阶段，先用这些就不会出错。"
+  groups:
+    - label: 图像生成
+      items:
+        - page: /zh/basic-workflows/krea-2/
+          text: "插画和写实都能胜任，灵活而全能的模型。"
+        - page: /zh/basic-workflows/anima/
+          text: "轻量易用的动漫专用模型，适合从 SDXL 系模型迁移。"
+    - label: 图像编辑
+      items:
+        - page: /zh/basic-workflows/qwen-image-2-1/
+          text: "一个模型兼顾生成与编辑，甚至能生成透明图像。"
+    - label: 视频生成
+      items:
+        - page: /zh/basic-workflows/minimax-h3/
+          text: "可同时生成画面与音频，性能接近闭源模型。"
+---
+{% from "icon.njk" import icon %}
+{% set updatesHeading = "最近更新" %}
+{% set updatesMore = "全部更新信息" %}
+{% markdown %}
+## 欢迎来到 Comfy with ComfyUI
+
+这个网站不只是提供 workflow，更希望帮助大家理解生成式 AI 的能力，以及 ComfyUI 本身的操作方式。
+
+模板可以让你先跑起来，但如果想按自己的目标扩展，基础知识依然很重要。
+
+对有经验的用户来说，这里也可以作为观察 ComfyUI 演进的入口。
+{% endmarkdown %}
+
+<hr />
+
+{% include "home-picks.njk" %}
+
+<hr />
+
+{% include "home-updates.njk" %}
+
+<hr />
+
+<h2>关于作者</h2>
+<section class="home-author">
+  <div class="home-author__header">
+    <span class="home-author__name">nomadoor</span>
+    <ul class="home-social" aria-label="nomadoor 的账号" data-no-link-icon>
+      <li><a href="https://x.com/noma_door" aria-label="X（@noma_door）">{{ icon("brand-x") }}</a></li>
+      <li><a href="https://github.com/nomadoor" aria-label="GitHub（nomadoor）">{{ icon("brand-github") }}</a></li>
+      <li><a href="https://www.reddit.com/user/nomadoor/" aria-label="Reddit（u/nomadoor）">{{ icon("brand-reddit") }}</a></li>
+    </ul>
+  </div>
+  {% markdown %}
+我从 ComfyUI 早期就一直在使用它，所以对 ComfyUI 的设计思路还算有些了解。
+
+我坚持搭建易读的工作流（[Readable Node](/zh/begin-with/readable-nodes/)）。如果这种思路能传播开来，让更多人更深入地享受生成式 AI，我会很高兴。
+{% endmarkdown %}
+  <p class="home-author__contact">如有文章错误、文章需求或感想，欢迎通过<a href="/zh/contact/">联系我们</a>或 X（<a href="https://x.com/noma_door">@noma_door</a>）告诉我。</p>
+</section>
+
+{% markdown %}
+---
+
+## 许可证
+
+本站的文字、工作流和图像全部采用 **CC0**，可以自由使用。
+{% endmarkdown %}

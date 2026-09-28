@@ -81,7 +81,7 @@ layout: base.njk
 {% set navSectionKey = section or null %}
 {% set navCurrentId = navId or slug %}
 {% set navPrevNext = navLocale | navPrevNext(navSectionKey, navCurrentId) %}
-{% if section %}
+{% if section and section != "missing" %}
   <p class="article-contact-link">
     <a class="article-contact-link__anchor" href="/{{ currentLang }}/contact/?type=fix&url={{ page.url }}#site" data-contact-report-link data-router-ignore>
       <span class="article-contact-link__icon" aria-hidden="true">{{ icon("edit-4") }}</span>
@@ -134,7 +134,12 @@ layout: base.njk
         </span>
       </div>
       <div class="article-footer__links">
-        <a class="article-footer__link" href="/{{ currentLang }}/begin-with/how-to-use-this-site/">{{ site.i18n.footerGuide[currentLang] or site.i18n.footerGuide[site.defaultLang] or "How to use this site" }}</a>
+        {% set footerHome = ('/' ~ currentLang ~ '/') | langSwitchTarget(currentLang, collections.all) %}
+        {% if footerHome == '/' ~ currentLang ~ '/' %}
+          <a class="article-footer__link" href="{{ footerHome }}">{% if currentLang == "ja" %}トップ{% elseif currentLang == "zh" %}首页{% else %}Home{% endif %}</a>
+        {% else %}
+          <a class="article-footer__link" href="{{ footerHome }}">{{ site.i18n.footerGuide[currentLang] or site.i18n.footerGuide[site.defaultLang] or "How to use this site" }}</a>
+        {% endif %}
         <a class="article-footer__link" href="/{{ currentLang }}/news/">
           {% if currentLang == "ja" %}更新情報{% elseif currentLang == "zh" %}更新信息{% else %}Updates{% endif %}
         </a>
@@ -146,6 +151,7 @@ layout: base.njk
           <span class="article-footer__link-icon">{{ icon("newscreen") }}</span>
         </a>
       </div>
+      <p class="article-footer__author">CC0 · by <a href="{{ site.author.url or site.author.sameAs[0] }}" target="_blank" rel="noreferrer noopener">{{ site.author.name }}</a></p>
     </div>
   </footer>
 {% endif %}

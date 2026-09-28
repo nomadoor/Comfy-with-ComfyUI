@@ -105,6 +105,7 @@ const initMobileNav = () => {
 
   // Close on Escape key
   document.addEventListener("keydown", (e) => {
+    if (e.defaultPrevented) return; // an inner control (e.g. the language menu) already handled it
     if (e.key === "Escape" && body.classList.contains("nav-open")) {
       closeNav();
     }

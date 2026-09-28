@@ -5,7 +5,7 @@ import { parse } from "yaml";
 const CONTENT_DIR = path.resolve("src", "content");
 const LANGS = new Set(["ja", "en", "zh"]);
 const SECTIONS = new Set(["begin-with", "ai-capabilities", "basic-workflows", "data-utilities", "notes"]);
-const STANDALONE = new Set(["about", "news", "contact"]);
+const STANDALONE = new Set(["about", "news", "contact", "home"]);
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 const failures = [];
 
@@ -84,6 +84,17 @@ for (const file of walk(CONTENT_DIR)) {
     if (typeof data.seoDescription === "string" && displayWidth(data.seoDescription) > limits.description) {
       failures.push(`${relative}: seoDescription is wider than ${limits.description} (${displayWidth(data.seoDescription)}); search results will cut it off`);
     }
+  }
+
+  // Home picks must point at existing articles; a typo would otherwise render a card without a title.
+  for (const group of data.picks?.groups || []) {
+    if (!group?.label) failures.push(`${relative}: every picks group needs a label`);
+  }
+  for (const item of (data.picks?.groups || []).flatMap((group) => group?.items || [])) {
+    const match = String(item?.page || "").match(/^\/(ja|en|zh)\/([a-z0-9-]+)\/([a-z0-9.-]+)\/$/);
+    const target = match && ["md", "njk"].map((ext) => path.join(CONTENT_DIR, match[1], match[2], `${match[3]}.${ext}`)).find((file) => fs.existsSync(file));
+    if (!target) failures.push(`${relative}: picks item page ${item?.page} does not resolve to an article`);
+    if (!item?.text) failures.push(`${relative}: picks item ${item?.page} needs text`);
   }
 
   if (Array.isArray(data.tags) && data.tags.length > 5) failures.push(`${relative}: tags must be 5 or fewer`);
