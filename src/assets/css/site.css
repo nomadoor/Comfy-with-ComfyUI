@@ -277,6 +277,7 @@ html.js .js-fallback-notice {
   width: 100%;
   min-width: 0;
   height: 24px;
+  font-family: inherit;
   border-radius: 0;
   background: transparent;
   color: var(--color-text);

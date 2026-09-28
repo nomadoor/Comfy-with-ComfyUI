@@ -81,7 +81,7 @@ layout: base.njk
 {% set navSectionKey = section or null %}
 {% set navCurrentId = navId or slug %}
 {% set navPrevNext = navLocale | navPrevNext(navSectionKey, navCurrentId) %}
-{% if section %}
+{% if section and section != "missing" %}
   <p class="article-contact-link">
     <a class="article-contact-link__anchor" href="/{{ currentLang }}/contact/?type=fix&url={{ page.url }}#site" data-contact-report-link data-router-ignore>
       <span class="article-contact-link__icon" aria-hidden="true">{{ icon("edit-4") }}</span>

@@ -180,6 +180,8 @@ export function setActiveSectionByPathname(pathname = window.location.pathname) 
   const parts = pathname.split("/").filter(Boolean);
   // Expecting /<lang>/<section>/...
   const sectionKey = parts[1];
-  if (!sectionKey || !SECTION_KEYS.has(sectionKey)) return;
-  activateSection(sectionKey, { focus: false });
+  // Pages outside a section (home, news, contact) render with the first section open; match that.
+  const target = sectionKey && SECTION_KEYS.has(sectionKey) ? sectionKey : sectionButtons[0].dataset.sectionKey;
+  if (!target) return;
+  activateSection(target, { focus: false });
 }
