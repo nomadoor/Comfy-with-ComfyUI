@@ -173,7 +173,7 @@
 - `hreflang` alternates (HTML and sitemap) are built by swapping the language segment of the page URL, and are emitted only for translations that exist. Noindex placeholders and the 404 page emit none.
 - Sitemap `<loc>` and alternates are absolute (`site.url`). `<lastmod>` uses frontmatter `updated`, falling back to `created`; never the build date.
 - Placeholder ("coming soon") pages are `noindex` and excluded from the sitemap.
-- Article pages (in a nav section, with `created`, not `searchExclude`, not noindex) emit schema.org `Article` JSON-LD with `headline`, `datePublished` (`created`), `dateModified` (`updated` or `created`), `image` when a hero exists, and `author`/`publisher` referencing a single `Person` (`site.author`, URL = default-language About page, `sameAs` = public profiles). They also emit `article:published_time`, `article:modified_time`, and `meta name="author"`.
+- Article pages (in a nav section, with `created`, not `searchExclude`, not noindex) emit schema.org `Article` JSON-LD with `headline`, `datePublished` (`created`), `dateModified` (`updated` or `created`), `image` when a hero exists, and `author`/`publisher` referencing a single `Person` (`site.author`: name, profile URL (X), `sameAs` = public profiles). They also emit `article:published_time`, `article:modified_time`, and `meta name="author"`.
 - `scripts/check-build-output.mjs` enforces these rules on the production build.
 - Language-switch discoverability can be emphasized via a short-lived animated glow around `.sidebar__lang` only on initial page access, and only when page language differs from the browser-preferred supported language (`ja`/`en`/`zh`) (non-blocking, no popup/modal).
 - Suppress repeated glow for 1 day via client storage.

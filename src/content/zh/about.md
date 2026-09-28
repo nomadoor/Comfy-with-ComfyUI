@@ -1,5 +1,6 @@
 ---
 layout: page.njk
+robots: noindex
 lang: zh
 slug: about
 navId: about

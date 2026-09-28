@@ -30,7 +30,7 @@ Accepted
 - 準備中のplaceholderページはnoindexとし、sitemapから除外してhreflangも出力しない。404ページもhreflangを出力しない。
 - 未使用だった `SITE_ORIGIN` 環境変数（`src/_data/siteOrigin.js`）を廃止し、originは `site.url` に一本化する。
 - Workflow JSONは記事HTMLに埋め込まない。Copyボタンは `data-json-src` のルート絶対URLからクリック時に取得する。Safariでユーザー操作の扱いが切れないよう、クリック内で取得中のPromiseを持つ `ClipboardItem` を書き込み、使えない場合は `writeText`、最後にtextareaでコピーする。取得に失敗した場合は成功表示を出さない。埋め込みの再発は `check-build-output.mjs` で検出する。
-- Article構造化データは、セクションに属し `created` を持つ記事ページに出力する（About、News、Contact、検索用ページ、noindexページは除く）。著者はPersonとして `site.json` の `author`（名前とAboutで公開済みのSNS）から出力し、公開日と更新日は `created` / `updated` を使う。
+- Article構造化データは、セクションに属し `created` を持つ記事ページに出力する（About、News、Contact、検索用ページ、noindexページは除く）。著者はPersonとして `site.json` の `author`（名前、プロフィールURLとしてX、公開済みのSNS）から出力し（Aboutページは使わず、noindexとする）、公開日と更新日は `created` / `updated` を使う。
 - BreadcrumbListは、中間階層となるセクションの一覧ページが存在しないため保留する。セクション一覧ページとトップページの有無はIAの判断として別途扱う。
 - 検索結果向けの上書き項目はfrontmatterの `seoTitle` / `seoDescription` とする（オーナー承認済み）。どちらも任意で、未設定なら `title` / `summary` を使う。画面上の見出しと要約は変えない。文面はオーナーが書くか承認する。
 - オーナー指示により、JA/EN/ZHの全ての索引対象ページに `seoTitle` / `seoDescription` を設定し、空だった `summary` も埋めた。今後も全ページで必須とし、表示幅の上限とあわせて `check-frontmatter.mjs` で検証する。readable nodeの考え方は、造語ではなく「読みやすく整理したworkflow」という利点として、workflow中心の記事の説明文に書く。

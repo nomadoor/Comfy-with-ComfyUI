@@ -119,8 +119,8 @@ for (const [url, expected] of expectedArticles) {
   if (article.mainEntityOfPage?.["@id"] !== `${url}#webpage`) failures.push(`${url}: Article mainEntityOfPage must reference the WebPage`);
   if ((article.image || []).some((image) => !/^https:\/\//.test(image))) failures.push(`${url}: Article image must be absolute`);
   const author = graph.find((node) => node["@id"] === article.author?.["@id"]);
-  if (author?.["@type"] !== "Person" || !author.name || !isAbsoluteSiteUrl(author.url || "")) {
-    failures.push(`${url}: Article author must reference a Person with name and site URL`);
+  if (author?.["@type"] !== "Person" || !author.name || !/^https:\/\//.test(author.url || "")) {
+    failures.push(`${url}: Article author must reference a Person with name and an https profile URL`);
   }
 }
 

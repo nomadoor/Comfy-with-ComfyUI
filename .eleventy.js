@@ -1074,7 +1074,7 @@ export default function (eleventyConfig) {
 
   // schema.org graph for a page: WebSite + WebPage, plus Article and its Person author for articles.
   eleventyConfig.addFilter("pageStructuredData", function (input = {}) {
-    const { siteUrl, canonicalUrl, lang, defaultLang, siteName, title, description, article, author } = input;
+    const { siteUrl, canonicalUrl, lang, siteName, title, description, article, author } = input;
     const websiteId = `${siteUrl}/#website`;
     const webpageId = `${canonicalUrl}#webpage`;
     const graph = [
@@ -1101,7 +1101,7 @@ export default function (eleventyConfig) {
         "@type": "Person",
         "@id": authorId,
         name: author.name,
-        url: `${siteUrl}/${defaultLang}/about/`, // one canonical URL for the single #author entity
+        ...(author.url ? { url: author.url } : {}),
         ...(author.sameAs?.length ? { sameAs: author.sameAs } : {})
       });
     }
