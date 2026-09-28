@@ -1,9 +1,10 @@
 // Dev-server preview of local originals.
 //
-// While writing an article, `/media/<logical name>` may point to an original that is not uploaded yet
-// (or that changed since its last upload). In `eleventy --serve`, such references render from
-// COMFY_MEDIA_ORIGINALS through `/__media-originals/<logical name>`, so the page can be checked on
-// localhost before `media:sync` uploads anything. Production builds never use this.
+// While writing an article, `/media/<logical name>` may point to an original that is not uploaded yet.
+// In `eleventy --serve`, such references render from COMFY_MEDIA_ORIGINALS through
+// `/__media-originals/<logical name>`, so the page can be checked on localhost before `media:sync`
+// uploads anything. Checking registered originals for changes is opt-in because scanning and hashing
+// the entire originals library is expensive across WSL-mounted drives. Production builds never use this.
 
 import crypto from "node:crypto";
 import fs from "node:fs";
@@ -182,7 +183,8 @@ function mediaDimensions(file, name) {
  * Decide whether a logical name should render from the local original.
  * @returns {null | { url: string, width?: number, height?: number, reason: "unregistered" | "changed" }}
  */
-export function localPreview(root, name, entry) {
+export function localPreview(root, name, entry, { checkChanged = false } = {}) {
+  if (entry && !checkChanged) return null;
   const file = originalPath(root, name);
   if (!file) return null;
   let reason = null;

@@ -2,7 +2,6 @@ import fs from "node:fs/promises";
 import fsSync from "node:fs";
 import path from "node:path";
 import MarkdownIt from "markdown-it";
-import fg from "fast-glob";
 import Prism from "prismjs";
 import loadLanguages from "prismjs/components/index.js";
 import { logicalNameFromRef, mediaRef, publicUrl, transformUrl } from "./scripts/lib/media-names.mjs";
@@ -10,19 +9,12 @@ import { createOriginalsMiddleware, localPreview, originalsRootFromEnv } from ".
 import envData from "./src/_data/env.js";
 
 const GYAZO_HOST = "i.gyazo.com";
-const CACHE_DIR = ".cache";
-const GYAZO_CACHE_PATH = path.join(CACHE_DIR, "gyazo-images.json");
-const GYAZO_URL_REGEX = /https:\/\/(?:[a-z]+\.)?gyazo\.com\/[^\s"'`)]+/gi;
-const GYAZO_FETCH_TIMEOUT_MS = 5000;
-const GYAZO_FETCH_DELAY_MS = 200;
-// A lookup that fails is remembered, so an outage costs one attempt per URL instead of one per build.
-// After this long the URL is tried again, which is how dimensions come back once Gyazo recovers.
-const GYAZO_FAILURE_RETRY_MS = 24 * 60 * 60 * 1000;
-const sleep = (ms = 0) => (ms > 0 ? new Promise((resolve) => setTimeout(resolve, ms)) : Promise.resolve());
 const SITE_DATA_PATH = path.join("src", "_data", "site.json");
 const MEDIA_MANIFEST_PATH = path.join("src", "_data", "media.json");
 // Test builds (COMFY_MEDIA_FIXTURES=1) add fixture media and the fixture page; production builds never read them.
 const MEDIA_FIXTURES_ENABLED = process.env.COMFY_MEDIA_FIXTURES === "1";
+const MEDIA_ORIGINALS_ROOT = originalsRootFromEnv();
+const CHECK_CHANGED_MEDIA = process.env.COMFY_MEDIA_PREVIEW_CHANGED === "1";
 const MEDIA_FIXTURE_MANIFEST_PATH = path.join("tests", "fixtures", "media", "media.json");
 const MEDIA_FIXTURE_PAGE_PATH = path.join("tests", "fixtures", "media", "media-fixtures.md");
 const WORKFLOW_PERFORMANCE_FIXTURE_PAGE_PATH = path.join("tests", "fixtures", "workflow-performance.md");
@@ -73,16 +65,6 @@ function loadMediaManifest() {
   mediaManifest = manifest;
 }
 loadMediaManifest();
-
-let gyazoMeta = {};
-try {
-  if (fsSync.existsSync(GYAZO_CACHE_PATH)) {
-    const raw = fsSync.readFileSync(GYAZO_CACHE_PATH, "utf-8");
-    gyazoMeta = JSON.parse(raw);
-  }
-} catch {
-  gyazoMeta = {};
-}
 
 function normalizeGyazoUrl(url = "") {
   try {
@@ -140,9 +122,8 @@ function createImageVariants(url = "", size = 2000) {
     const fullSize = Math.max(size, 2000);
     const large = `${normalizedUrl.origin}/${id}/max_size/${fullSize}${ext}`;
     const full = `https://gyazo.com/${id}/raw`;
-    const meta = gyazoMeta[normalized];
-    const previewDims = getPreviewDimensions(meta, size);
-    const largeDims = getPreviewDimensions(meta, fullSize);
+    const previewDims = getPreviewDimensions(null, size);
+    const largeDims = getPreviewDimensions(null, fullSize);
     return {
       preview,
       large,
@@ -151,8 +132,8 @@ function createImageVariants(url = "", size = 2000) {
       height: previewDims.height,
       largeWidth: largeDims.width,
       largeHeight: largeDims.height,
-      originalWidth: meta?.width,
-      originalHeight: meta?.height
+      originalWidth: undefined,
+      originalHeight: undefined
     };
   } catch {
     return fallback;
@@ -584,22 +565,6 @@ function renderJsonLinkRow(linkInfo, env, performanceInput = null) {
 </div>`;
 }
 
-function getGyazoDimensionsFromId(id) {
-  if (!id) return null;
-  const candidates = [
-    normalizeGyazoUrl(`https://${GYAZO_HOST}/${id}.png`),
-    normalizeGyazoUrl(`https://${GYAZO_HOST}/${id}.jpg`),
-    normalizeGyazoUrl(`https://${GYAZO_HOST}/${id}.gif`)
-  ].filter(Boolean);
-  for (const norm of candidates) {
-    const meta = gyazoMeta[norm];
-    if (meta && meta.width && meta.height) {
-      return { width: meta.width, height: meta.height };
-    }
-  }
-  return null;
-}
-
 function extractGyazoId(url = "") {
   try {
     const parsed = new URL(url);
@@ -664,9 +629,10 @@ function managedImageUrls(entry, size) {
 function resolveManagedMedia(name, kind, size) {
   const empty = { kind, src: "", fullSrc: "", width: undefined, height: undefined, srcset: "", poster: "", og: "" };
   const entry = mediaManifest[name];
-  // Dev server: unregistered or changed originals render straight from COMFY_MEDIA_ORIGINALS.
+  // Dev server: unregistered originals render straight from COMFY_MEDIA_ORIGINALS. Registered
+  // originals are checked only in the opt-in replacement-preview mode to keep startup fast.
   if (isDevServer()) {
-    const preview = localPreview(originalsRootFromEnv(), name, entry);
+    const preview = localPreview(MEDIA_ORIGINALS_ROOT, name, entry, { checkChanged: CHECK_CHANGED_MEDIA });
     if (preview) {
       const poster = kind === "image" ? preview.url : "";
       return { kind, src: preview.url, fullSrc: preview.url, width: preview.width, height: preview.height, srcset: "", poster, og: "" };
@@ -707,9 +673,8 @@ function resolveGyazoMedia(url, kind, size) {
   const stillUrl = normalizeGyazoUrl(url) || url;
   const still = createImageVariants(stillUrl, size);
   if (kind === "video") {
-    const dims = getGyazoDimensionsFromId(id);
     const src = isVideoUrl(url) || !id ? url : `https://${GYAZO_HOST}/${id}.mp4`;
-    return { kind, src, fullSrc: src, width: dims?.width, height: dims?.height, srcset: "", poster: id ? still.preview : "" };
+    return { kind, src, fullSrc: src, width: undefined, height: undefined, srcset: "", poster: id ? still.preview : "" };
   }
   return {
     kind,
@@ -820,81 +785,6 @@ function getPageViewCount(entry, pageViews = {}) {
   return 0;
 }
 
-async function fetchGyazoMeta(url) {
-  try {
-    const endpoint = `https://api.gyazo.com/api/oembed?url=${encodeURIComponent(url)}`;
-    const response = await fetch(endpoint, { signal: AbortSignal.timeout(GYAZO_FETCH_TIMEOUT_MS) });
-    if (!response.ok) {
-      return null;
-    }
-    const data = await response.json();
-    if (data.width && data.height) {
-      return { width: data.width, height: data.height };
-    }
-  } catch {
-    return null;
-  }
-  return null;
-}
-
-async function saveGyazoCache() {
-  await fs.mkdir(CACHE_DIR, { recursive: true });
-  await fs.writeFile(GYAZO_CACHE_PATH, JSON.stringify(gyazoMeta, null, 2), "utf-8");
-}
-
-async function refreshGyazoMetadata() {
-  const files = await fg(["src/**/*.{md,njk,json}"], { dot: false });
-  const urls = new Map();
-  for (const file of files) {
-    try {
-      const text = await fs.readFile(file, "utf-8");
-      GYAZO_URL_REGEX.lastIndex = 0;
-      let match;
-      while ((match = GYAZO_URL_REGEX.exec(text)) !== null) {
-        const rawUrl = match[0];
-        const id = extractGyazoId(rawUrl);
-        if (!id) {
-          continue;
-        }
-        const normalized = normalizeGyazoUrl(rawUrl) || `https://${GYAZO_HOST}/${id}.jpg`;
-        urls.set(normalized, `https://gyazo.com/${id}`);
-      }
-    } catch {
-      // ignore unreadable files
-    }
-  }
-  const now = Date.now();
-  let updated = false;
-  let failed = 0;
-  for (const [normalized, fetchUrl] of urls) {
-    const cached = gyazoMeta[normalized];
-    if (cached && cached.width && cached.height) continue;
-    if (cached && cached.failedAt && now - cached.failedAt < GYAZO_FAILURE_RETRY_MS) {
-      failed += 1;
-      continue;
-    }
-    const meta = await fetchGyazoMeta(fetchUrl);
-    if (GYAZO_FETCH_DELAY_MS) {
-      await sleep(GYAZO_FETCH_DELAY_MS);
-    }
-    if (meta) {
-      gyazoMeta[normalized] = meta;
-    } else {
-      // Record the failure too, or every build pays the full round trip again while Gyazo is down.
-      gyazoMeta[normalized] = { failedAt: now };
-      failed += 1;
-    }
-    updated = true;
-  }
-  const missing = Object.entries(gyazoMeta).filter(([, m]) => !m.width || !m.height).length;
-  if (updated) {
-    await saveGyazoCache();
-  }
-  if (missing > 0) {
-    console.warn(`[gyazo] ${missing} items missing dimensions (${failed} lookups failed); using fallback aspect (16:9).`);
-  }
-}
-
 export default function (eleventyConfig) {
   // Passthrough static assets
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
@@ -917,9 +807,8 @@ export default function (eleventyConfig) {
     );
   }
 
-  eleventyConfig.on("beforeBuild", async () => {
+  eleventyConfig.on("beforeBuild", () => {
     loadMediaManifest();
-    await refreshGyazoMetadata();
   });
 
   const TAG_CHANNELS = ["tags", "noteTags"];
@@ -1537,7 +1426,7 @@ export default function (eleventyConfig) {
     port: 8080,
     watch: ["src/assets/**/*", "src/workflows/**/*"],
     // `/__media-originals/<logical name>` previews local originals on the dev server (see resolveManagedMedia).
-    middleware: [createOriginalsMiddleware()]
+    middleware: [createOriginalsMiddleware(() => MEDIA_ORIGINALS_ROOT)]
   });
 
   return {
