@@ -20,7 +20,7 @@ hero:
 ComfyUI groups are a UI feature not so much for "functionally bundling" nodes, but for **handling nodes touching a frame (rectangle) together**.
 Therefore, while convenient for visual organization, depending on placement, unintended nodes may move along with it.
 
-If you want to create a functional unit, [Subgraph](/en/basic-workflows/subgraphs/) is more suitable.
+If you want to create a functional unit, [Subgraph](/en/begin-with/subgraphs/) is more suitable.
 
 ## Creating a Group
 

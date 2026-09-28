@@ -258,6 +258,12 @@ const navigateTo = async (url, options = {}) => {
       fallBack();
       return;
     }
+    // The header, sidebar, and search are rendered per language and are not swapped, so a page in
+    // another language gets a full load instead of a content swap.
+    if ((nextDoc.documentElement.lang || "") !== (document.documentElement.lang || "")) {
+      fallBack();
+      return;
+    }
     const nextUrl = destinationUrl.pathname + destinationUrl.search + destinationUrl.hash;
 
     const entryAtCommit = getCurrentEntryId();

@@ -22,7 +22,7 @@ tags: []
 
 テキストエンコーダにマルチモーダル LLM の **Qwen2.5-VL** を使っており、T5 や Gemma を使っているモデルに比べると、プロンプトの理解力は頭ひとつ抜けています。
 
-さらに、[Flux.1 dev](/ja/basic-workflows/flux1/) と違ってベースが蒸留モデルではないため学習しやすく、姉妹モデルである [Qwen-Image-Edit](/ja/basic-workflows/qwen-image-edit/) と合わせて、LoRA や Lightning 系の周辺エコシステムが充実しているのも特徴です。
+さらに、[Flux.1 dev](/ja/basic-workflows/flux-1/) と違ってベースが蒸留モデルではないため学習しやすく、姉妹モデルである [Qwen-Image-Edit](/ja/basic-workflows/qwen-image-edit/) と合わせて、LoRA や Lightning 系の周辺エコシステムが充実しているのも特徴です。
 
 ---
 

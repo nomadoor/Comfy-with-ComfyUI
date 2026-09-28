@@ -8,7 +8,7 @@ title: "Git"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于 Git 的基础知识"
-seoTitle: "面向 ComfyUI 用户的 Git・GitHub 入门"
+seoTitle: "面向 ComfyUI 用户的 Git、GitHub 入门"
 seoDescription: "安装 ComfyUI 和自定义节点时会遇到的 Git 与 GitHub 基础。用游戏来比喻提交和分支，介绍必备命令以及 ComfyUI Manager 在背后做了什么。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

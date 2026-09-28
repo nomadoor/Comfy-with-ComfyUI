@@ -106,7 +106,7 @@ ComfyUI では [city96/ComfyUI-GGUF](https://github.com/city96/ComfyUI-GGUF) を
 
 代表例
 
-- [FLUX.1-schnell](/ja/basic-workflows/flux1/#text2image-flux-1-schnell) のような「高速版」チェックポイント
+- [FLUX.1-schnell](/ja/basic-workflows/flux-1/#text2image-flux-1-schnell) のような「高速版」チェックポイント
 - [Qwen-Image-Lightning](/ja/basic-workflows/qwen-image/#lightning-高速生成-lora) のような、高速生成 LoRA
 
 ステップ数を 1〜4 steps 程度まで削れることもあり、とにかく速くしたいときの第一候補になります。

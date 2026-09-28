@@ -8,7 +8,7 @@ title: 放大・视频修复
 created: 2026-02-06
 updated: 2026-03-02
 summary: 让视频变大・变清晰的专用模型
-seoTitle: "视频 AI 放大与修复：SeedVR2・FlashVSR"
+seoTitle: "视频 AI 放大与修复：SeedVR2、FlashVSR"
 seoDescription: "用于提升视频分辨率并修复画质的专用模型。讲解逐帧使用图像放大模型会产生闪烁的问题，以及保持时间一致性的 SeedVR2 和 FlashVSR。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

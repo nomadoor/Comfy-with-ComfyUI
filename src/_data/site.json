@@ -22,7 +22,7 @@
   },
   "defaultLang": "ja",
   "name": {
-    "ja": "Comfyに使う ComfyUI",
+    "ja": "Comfyに使うComfyUI",
     "en": "Comfy with ComfyUI",
     "zh": "Comfy with ComfyUI"
   },
@@ -30,7 +30,7 @@
     {
       "code": "ja",
       "label": "日本語",
-      "title": "Comfyに使う ComfyUI"
+      "title": "Comfyに使うComfyUI"
     },
     {
       "code": "en",

@@ -18,7 +18,7 @@ tags: ["instruction-based-image-editing","collage-refine"]
 
 ## What is Flux.1 Kontext?
 
-Flux.1 Kontext is an instruction-based image editing model based on [Flux.1](/en).
+Flux.1 Kontext is an instruction-based image editing model based on [Flux.1](/en/basic-workflows/flux-1/).
 
 It is undoubtedly this model that sparked the popularity of the task of AI image editing such as nano banana.
 

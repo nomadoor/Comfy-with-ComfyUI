@@ -107,4 +107,4 @@ To prevent the repository from being deleted, ReActor has a built-in filter for 
 Therefore, if you use an image containing NSFW content, it will be rejected.
 
 I won't go into detail, but there are simple ways to bypass this.
-( [Detailer](/en/upscale-fix/detailer/) might be useful... maybe. )
+( [Detailer](/en/basic-workflows/detailer/) might be useful... maybe. )

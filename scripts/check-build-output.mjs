@@ -19,7 +19,7 @@ if (fs.existsSync(path.join(outputDir, "internal", "media-fixtures"))) {
 }
 
 const files = await fg(["**/*.{html,xml,txt,json}"], { cwd: outputDir });
-const unresolved = /(?:src|data-full-src|data-hero|content)="\/media\//;
+const unresolved = /(?:src|href|data-full-src|data-hero|content)="\/media\//;
 for (const file of files) {
   const text = fs.readFileSync(path.join(outputDir, file), "utf8");
   if (text.includes("/media/fixtures/") || text.includes("media-fixtures")) failures.push(`${file}: references test fixtures`);
@@ -74,7 +74,8 @@ if (!fs.existsSync(sitemapPath)) {
       else if (!fs.existsSync(builtHtmlFor(href))) failures.push(`sitemap.xml: ${loc} alternate points to a missing page: ${href}`);
     }
     const htmlFile = builtHtmlFor(loc);
-    if (fs.existsSync(htmlFile) && isNoindex(htmlFile)) {
+    if (!fs.existsSync(htmlFile)) failures.push(`sitemap.xml: ${loc} was not built`);
+    else if (isNoindex(htmlFile)) {
       failures.push(`sitemap.xml: ${loc} is noindex and must not be listed`);
     }
     const lastmod = entry.match(/<lastmod>([^<]*)<\/lastmod>/)?.[1];
@@ -158,10 +159,16 @@ for (const file of files.filter((f) => f.endsWith(".html"))) {
     if (!fs.existsSync(target)) failures.push(`${file}: hreflang alternate points to a missing page: ${href}`);
     else if (isNoindex(target)) failures.push(`${file}: hreflang alternate points to a noindex page: ${href}`);
   }
+  // Template syntax must never leak into the rendered head (e.g. an uncomputed frontmatter value).
+  const head = text.split("</head>")[0];
+  if (/\{%|\{\{|&amp;amp;/.test(head)) failures.push(`${file}: head contains raw template syntax or double-escaped text`);
   // Workflow JSON is fetched on copy; embedding it bloats pages and every router prefetch.
   if (/last_node_id|<pre[^>]*class="sr-only"/.test(text)) failures.push(`${file}: embeds workflow JSON; link it via data-json-src instead`);
   for (const [, prop, value] of text.matchAll(/<meta (?:property|name)="((?:og|twitter):image)" content="([^"]*)"/g)) {
     if (!/^https:\/\//.test(value)) failures.push(`${file}: ${prop} is not absolute: ${value}`);
+    else if (!/^https:\/\/(comfyui\.nomadoor\.net|media\.comfyui\.nomadoor\.net|[a-z0-9.-]*gyazo\.com)\//.test(value)) {
+      failures.push(`${file}: ${prop} must come from the site, R2, or Gyazo: ${value}`);
+    }
   }
 }
 

@@ -8,7 +8,7 @@ title: "Qwen-Image"
 created: 2025-12-11
 updated: 2026-03-02
 summary: "Qwen-Image 的使用方法"
-seoTitle: "在 ComfyUI 中使用 Qwen-Image：ControlNet・Lightning"
+seoTitle: "在 ComfyUI 中使用 Qwen-Image：ControlNet、Lightning"
 seoDescription: "以 Qwen2.5-VL 作为文本编码器、提示词理解力强的 Qwen-Image 在 ComfyUI 中的用法。介绍推荐分辨率、text2image、InstantX ControlNet 和高速生成用 Lightning LoRA。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

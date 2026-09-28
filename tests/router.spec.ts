@@ -276,6 +276,24 @@ test.describe("View-transition router", () => {
     await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", original!);
   });
 
+  test("a link into another language loads the whole page in that language", async ({ page }) => {
+    await page.goto(OTHER_PAGE);
+    await page.evaluate(() => {
+      const link = document.createElement("a");
+      link.href = "/zh/basic-workflows/sdxl/";
+      link.id = "to-zh";
+      link.textContent = "zh";
+      document.querySelector(".article-body")?.prepend(link);
+      (window as any).__sameDocument = true;
+    });
+    await page.locator("#to-zh").click();
+    await expect(page).toHaveURL("/zh/basic-workflows/sdxl/");
+    await expect(page.locator("html")).toHaveAttribute("lang", "zh");
+    // A full load replaces the header and sidebar too, so nothing Japanese is left in the shell.
+    await expect.poll(() => page.evaluate(() => (window as any).__sameDocument ?? false)).toBe(false);
+    await expect(page.locator(".sidebar__lang-label").first()).toContainText("中文");
+  });
+
   test("swaps every page-specific head tag on navigation", async ({ page }) => {
     const headState = () =>
       page.evaluate(() => ({

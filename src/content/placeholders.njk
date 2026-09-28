@@ -10,10 +10,11 @@ eleventyComputed:
   lang: "{{ stub.lang }}"
   section: "{{ stub.section }}"
   navId: "{{ stub.id }}"
-  title: >
-    {% if stub.title %}{{ stub.title }}{% elseif stub.lang == 'ja' %}準備中{% elseif stub.lang == 'zh' %}准备中{% else %}Coming Soon{% endif %}
-summary: >
-  {% if stub.lang == 'ja' %}まだページがありません{% elseif stub.lang == 'zh' %}页面尚未准备好{% else %}This page is not ready yet.{% endif %}
+  # `| safe` keeps "&" from being escaped twice (computed data, then the layout); `>-` drops the newline.
+  title: >-
+    {% if stub.title %}{{ stub.title | safe }}{% elseif stub.lang == 'ja' %}準備中{% elseif stub.lang == 'zh' %}准备中{% else %}Coming Soon{% endif %}
+  summary: >-
+    {% if stub.lang == 'ja' %}まだページがありません{% elseif stub.lang == 'zh' %}页面尚未准备好{% else %}This page is not ready yet.{% endif %}
 hero:
   gradient: ""
 ---

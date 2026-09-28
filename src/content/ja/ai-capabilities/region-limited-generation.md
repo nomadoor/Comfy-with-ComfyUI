@@ -124,4 +124,4 @@ Lantent CoupleではUNet丸々計算していましたが、こちらはCross-At
 
 非常に直感的に位置を指定できますし、生成する物自体も適当なオブジェクトを貼り付けておけばよいので、実際のところかなりおすすめの方法です。
 
-詳しくは → [雑コラのリファイン](/ja/ai-capabilities/ragdoll-refine/)
+詳しくは → [雑コラのリファイン](/ja/ai-capabilities/collage-refine/)

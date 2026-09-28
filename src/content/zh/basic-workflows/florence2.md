@@ -8,7 +8,7 @@ title: "Florence-2"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "使用 Florence-2 的图像说明文生成・物体检出"
-seoTitle: "在 ComfyUI 中使用 Florence-2：描述生成・物体检测・OCR"
+seoTitle: "在 ComfyUI 中使用 Florence-2：描述生成、物体检测、OCR"
 seoDescription: "一个模型即可完成图像描述、物体检测、OCR 和图像问答的 Florence-2 在 ComfyUI 中的用法，附各任务的工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

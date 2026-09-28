@@ -8,7 +8,7 @@ title: "执行与停止"
 created: 2025-11-20
 updated: 2026-09-27
 summary: "关于执行与停止"
-seoTitle: "ComfyUI 的执行・停止与队列操作"
+seoTitle: "ComfyUI 的执行、停止与队列操作"
 seoDescription: "执行和停止 ComfyUI 工作流的方法。包括 Run 的重复次数、自动执行模式的区别、中断与强制停止，以及查看和清空队列。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:

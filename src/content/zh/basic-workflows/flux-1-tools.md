@@ -8,7 +8,7 @@ title: "Flux.1 Tools"
 created: 2025-12-10
 updated: 2026-08-26
 summary: "Flux.1 Tools 的使用方法"
-seoTitle: "在 ComfyUI 中使用 Flux.1 Tools：Fill・Depth・Canny・Redux"
+seoTitle: "在 ComfyUI 中使用 Flux.1 Tools：Fill、Depth、Canny、Redux"
 seoDescription: "Flux.1 官方衍生模型 Flux.1 Tools 的用法：用于 inpaint / outpaint 的 Fill、以结构为引导的 Depth 与 Canny、参考图像的 Redux，附模型下载与工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 tags: ["controlnet"]

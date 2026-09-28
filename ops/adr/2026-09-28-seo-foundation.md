@@ -36,4 +36,6 @@ Accepted
 - オーナー指示により、JA/EN/ZHの全ての索引対象ページに `seoTitle` / `seoDescription` を設定し、空だった `summary` も埋めた。今後も全ページで必須とし、表示幅の上限とあわせて `check-frontmatter.mjs` で検証する。readable nodeの考え方は、造語ではなく「読みやすく整理したworkflow」という利点として、workflow中心の記事の説明文に書く。
 - 本文が「準備中」だけの記事（music-generation、tts、video-generation、voice-clone）は、内容ができるまでnoindexにする。
 - routerの修正内容：履歴エントリごとのIDとスクロール位置を `src/assets/js/history-entries.js` で管理し、Back / Forward、リロード、別サイトからの戻りで読んでいた位置に戻す（`history.scrollRestoration` は `manual`、位置はメモリとsessionStorageに保存）。同じページ内のhash履歴はfetchせずスクロールだけで戻す。取得中のページ遷移は、新しいクリックやBackで中止して履歴を壊さない。遷移アニメーション中に来た操作は捨てずに最後の1件を続けて実行する。meta descriptionは次ページに合わせて作成・削除する。router差し替え後も残るdocument listener（workflow picker、contactのカテゴリ選択）は、要素がページから外れたら自分で解除する。位置の復元は、画像などの読み込みで高さが変わる間は位置を保ち（その間はscroll anchoringを止める）、ユーザーが操作するか別の遷移が始まったら止める。これらは `tests/router.spec.ts` で検証する。
+- 見直しで追加した修正：外部サイトのヒーロー画像はSNSプレビューに使わない。言語が変わるリンクはrouterで差し替えず通常の読み込みにする（ヘッダーとサイドバーは言語ごとに描画されるため）。準備中ページのtitleとdescriptionの生成不具合、既存の内部リンク切れ、`/media/` への素のリンクの未解決を修正した。ドラフトはビルドから除外する。
+- サイト名の日本語表記は、オーナー判断によりスペースなしの「Comfyに使うComfyUI」にそろえる。
 - 各段階は同じ作業ブランチ上で、段階ごとにcommit承認を得る。

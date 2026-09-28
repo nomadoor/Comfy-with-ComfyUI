@@ -8,7 +8,7 @@ title: 标签・描述生成
 created: 2026-02-06
 updated: 2026-03-02
 summary: "从图像自动添加标签或说明文（Caption）的技术"
-seoTitle: "从图像自动生成标签・描述的 AI 模型"
+seoTitle: "从图像自动生成标签、描述的 AI 模型"
 seoDescription: "为图像自动添加标签和描述的技术。比较 WD tagger 系、JoyTagger 等标签生成，JoyCaption、Qwen-VL 系的描述生成，ChatGPT、Gemini 等 API 模型，以及使用本地模型的理由。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:

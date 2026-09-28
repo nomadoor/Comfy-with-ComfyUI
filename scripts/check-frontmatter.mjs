@@ -76,9 +76,10 @@ for (const file of walk(CONTENT_DIR)) {
     for (const key of ["summary", "seoTitle", "seoDescription"]) {
       if (typeof data[key] !== "string" || !data[key].trim()) failures.push(`${relative}: indexable page needs ${key}`);
     }
-    const limits = SEO_LIMITS[lang];
+    const limits = SEO_LIMITS[lang] || SEO_LIMITS.en;
     if (typeof data.seoTitle === "string" && displayWidth(data.seoTitle) > limits.title) {
-      failures.push(`${relative}: seoTitle is wider than ${limits.title} (${displayWidth(data.seoTitle)}); search results will cut it off`);
+      // The " | site name" suffix is appended after this and may be cut off in results; that is accepted.
+      failures.push(`${relative}: seoTitle is wider than ${limits.title} (${displayWidth(data.seoTitle)}); the searched words themselves would be cut off`);
     }
     if (typeof data.seoDescription === "string" && displayWidth(data.seoDescription) > limits.description) {
       failures.push(`${relative}: seoDescription is wider than ${limits.description} (${displayWidth(data.seoDescription)}); search results will cut it off`);

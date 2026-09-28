@@ -9,7 +9,7 @@ created: 2026-02-06
 updated: 2026-03-02
 summary: "在 ComfyUI 的 API 节点利用外部的封闭模型的方法"
 seoTitle: "ComfyUI API 节点：使用闭源模型的方法"
-seoDescription: "用 ComfyUI 的 API 节点调用外部公司闭源图像・视频生成模型的方法。讲解积分制度与购买方式、API 节点的用法和适用场景。"
+seoDescription: "用 ComfyUI 的 API 节点调用外部公司闭源图像、视频生成模型的方法。讲解积分制度与购买方式、API 节点的用法和适用场景。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

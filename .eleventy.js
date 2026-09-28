@@ -528,7 +528,7 @@ function renderJsonLinkRow(linkInfo, env, performanceInput = null) {
     return null;
   }
   // Root-absolute URL so Copy/Download do not depend on the page URL at click time.
-  const jsonUrl = `/${path.relative(path.join(process.cwd(), "src"), diskPath).split(path.sep).join("/")}`;
+  const jsonUrl = `/${path.relative(path.join(process.cwd(), "src"), diskPath).split(path.sep).map(encodeURIComponent).join("/")}`;
   const counterState = env.ctx && typeof env.ctx === "object" ? env.ctx : env;
   counterState.__jsonLinkCounter = Number.isInteger(counterState.__jsonLinkCounter)
     ? counterState.__jsonLinkCounter + 1
@@ -712,7 +712,9 @@ function resolveMedia(url = "", { mode, size = 1000 } = {}) {
   } else if (host.endsWith("gyazo.com")) {
     media = resolveGyazoMedia(source, kind, size);
   } else {
-    media = { kind, src: source, fullSrc: source, width: undefined, height: undefined, srcset: "", poster: kind === "image" ? source : "" };
+    // Third-party media (e.g. a GIF on GitHub) is shown in the article but never offered as the
+    // social preview image: its size and content type are outside our control.
+    media = { kind, src: source, fullSrc: source, width: undefined, height: undefined, srcset: "", poster: kind === "image" ? source : "", og: "", external: true };
   }
   return { og: media.poster, ...media, mode: resolvedMode };
 }
@@ -788,6 +790,10 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/assets/js": `assets/js/${envData.assetVersion}` });
   eleventyConfig.addPassthroughCopy({ "src/workflows": "workflows" });
+  // Drafts are unpublished (ops/requirements.md): skip them entirely instead of building hidden pages.
+  eleventyConfig.addPreprocessor("drafts", "*", (data) => (data.draft ? false : undefined));
+  // Asset notes are for maintainers, not pages.
+  eleventyConfig.ignores.add("src/assets/fonts/README.md");
   eleventyConfig.addPassthroughCopy({ "src/search": "search" });
   eleventyConfig.addPassthroughCopy({ "src/.well-known": ".well-known" });
   eleventyConfig.addPassthroughCopy({ "src/_headers": "_headers" });
@@ -1300,6 +1306,19 @@ export default function (eleventyConfig) {
   enhanceStandaloneImages(markdownLib);
   preserveManualNumberedBullets(markdownLib);
   enhanceJsonLinks(markdownLib);
+  // Plain links to managed media (`[clip.mp4](/media/...)`) point at the published R2 file, like embeds do.
+  markdownLib.core.ruler.after("inline", "resolve-media-links", (state) => {
+    state.tokens.forEach((blockToken) => {
+      (blockToken.children || []).forEach((token) => {
+        if (token.type !== "link_open") return;
+        const href = token.attrGet("href") || "";
+        if (!href.startsWith("/media/")) return;
+        const media = resolveMedia(href);
+        const resolved = media.fullSrc || media.src;
+        if (resolved) token.attrSet("href", resolved);
+      });
+    });
+  });
   eleventyConfig.setLibrary("md", markdownLib);
 
   // Paired shortcode: side-by-side media + text

@@ -9,7 +9,7 @@ created: 2025-12-01
 updated: 2026-03-02
 summary: 只需用文本指示，就能完成各种图像编辑任务的模型群
 seoTitle: "什么是基于指令的图像编辑？用文字编辑图像的 AI"
-seoDescription: "只需图像和文字指令就能完成画风转换、物体替换等编辑的模型。整理从 InstructPix2Pix 到 DiT・In-Context 系、多参考以及基于视频模型的编辑的发展历史。"
+seoDescription: "只需图像和文字指令就能完成画风转换、物体替换等编辑的模型。整理从 InstructPix2Pix 到 DiT、In-Context 系、多参考以及基于视频模型的编辑的发展历史。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

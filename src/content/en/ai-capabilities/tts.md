@@ -1,6 +1,7 @@
 ---
 layout: page.njk
 robots: noindex
+searchExclude: true
 lang: en
 section: ai-capabilities
 slug: tts

@@ -18,7 +18,7 @@ tags: []
 
 ## Wan2.2とは？
 
-Wan2.2 は、[Wan-2.1](/ja/basic-workflows/wan2-1/) の正当後継にあたる動画生成モデルファミリーです。
+Wan2.2 は、[Wan-2.1](/ja/basic-workflows/wan-2-1/) の正当後継にあたる動画生成モデルファミリーです。
 大きく 2 つのモデルで構成されています。
 
 - 14B：`high_noise` / `low_noise` の 2 モデルを切り替える二段構成

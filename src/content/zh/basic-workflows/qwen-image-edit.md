@@ -9,7 +9,7 @@ title: "Qwen-Image-Edit"
 created: 2025-12-11
 updated: 2026-03-02
 summary: "用 Qwen-Image-Edit 进行基于指示的图像编辑"
-seoTitle: "在 ComfyUI 中使用 Qwen-Image-Edit：原版・2509・2511"
+seoTitle: "在 ComfyUI 中使用 Qwen-Image-Edit：原版、2509、2511"
 seoDescription: "Qwen-Image-Edit 是以 Qwen-Image 为基础、基于指令的图像编辑模型。介绍它在 ComfyUI 中的用法，包括原版、2509、2511 的模型下载，以及使用单张和多张图像的编辑工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
