@@ -2,6 +2,7 @@ import initPage from "./page.js";
 import { refreshActiveNav } from "./link-behavior.js";
 import { updateLangLinks } from "./lang-switcher.js";
 import { setActiveSectionByPathname } from "./sidebar.js";
+import { enterPoppedEntry, getCurrentEntryId, initHistoryEntries, markEntryShown, pushEntry, replaceEntryUrl, restoreScroll } from "./history-entries.js";
 
 const CONTAINER_SELECTOR = "#page";
 const ROUTER_IGNORE_ATTR = "data-router-ignore";
@@ -17,8 +18,10 @@ const inflight = new Set();
 const prefetchCache = new Map(); // pathname+search -> html string
 const debounceTimers = new Map(); // pathname+search -> timer
 
-let isNavigating = false;
+let activeNavigation = null; // { controller, committed, fellBack }
+let pendingNavigation = null; // latest navigation requested while a committed one is transitioning
 let currentPathname = window.location.pathname;
+let currentSearch = window.location.search;
 let linkObserver = null;
 
 const isSameOrigin = (url) => {
@@ -133,8 +136,18 @@ const updateHead = (nextDoc) => {
 
   const currentDesc = document.querySelector('meta[name="description"]');
   const nextDesc = nextDoc.querySelector('meta[name="description"]');
-  if (currentDesc && nextDesc) {
-    currentDesc.setAttribute("content", nextDesc.getAttribute("content") || "");
+  if (nextDesc) {
+    const content = nextDesc.getAttribute("content") || "";
+    if (currentDesc) {
+      currentDesc.setAttribute("content", content);
+    } else {
+      const meta = document.createElement("meta");
+      meta.setAttribute("name", "description");
+      meta.setAttribute("content", content);
+      document.head.appendChild(meta);
+    }
+  } else {
+    currentDesc?.remove();
   }
 };
 
@@ -153,10 +166,15 @@ const swapContent = (nextDoc, destinationUrl) => {
   currentPage.innerHTML = nextPage.innerHTML;
 
   currentPathname = destinationUrl.pathname;
+  currentSearch = destinationUrl.search;
   return true;
 };
 
-const scrollToTarget = (url) => {
+const scrollToTarget = (url, restoreY = null) => {
+  if (typeof restoreY === "number") {
+    restoreScroll(restoreY);
+    return;
+  }
   if (!url.hash) {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     return;
@@ -180,78 +198,104 @@ const scrollToTarget = (url) => {
   });
 };
 
-const reinitializePage = (destinationUrl, { forceCenterNav = true, scrollNav = true } = {}) => {
+const reinitializePage = (destinationUrl, { forceCenterNav = true, scrollNav = true, restoreY = null } = {}) => {
   document.body.classList.remove("nav-open", "search-open");
   initPage();
   setActiveSectionByPathname(destinationUrl.pathname);
   refreshActiveNav(destinationUrl.pathname, { forceCenter: forceCenterNav, scroll: scrollNav });
   updateLangLinks(destinationUrl.pathname);
-  scrollToTarget(destinationUrl);
+  scrollToTarget(destinationUrl, restoreY);
 };
 
-const navigateTo = async (url, { replace = false, source = "unknown" } = {}) => {
-  if (isNavigating) return;
+const navigateTo = async (url, options = {}) => {
+  if (activeNavigation) {
+    if (activeNavigation.committed) {
+      // History and content already changed and the transition is running; run the latest request next.
+      pendingNavigation = { url, options };
+      return;
+    }
+    // Still fetching: the newer request (a click, or Back/Forward) wins. Abort the old one before it
+    // touches history so entries are never pushed on top of a popped one.
+    activeNavigation.controller.abort();
+  }
+  const { replace = false, source = "unknown", restoreY = null } = options;
   const destinationUrl = new URL(url, window.location.href);
-  if (!isSameOrigin(destinationUrl.href)) {
+  const navigation = { controller: new AbortController(), committed: false, fellBack: false };
+  const isAborted = () => navigation.controller.signal.aborted;
+  const fallBack = () => {
+    navigation.fellBack = true;
+    pendingNavigation = null;
     window.location.href = destinationUrl.href;
+  };
+  if (!isSameOrigin(destinationUrl.href)) {
+    fallBack();
     return;
   }
 
-  isNavigating = true;
+  activeNavigation = navigation;
   try {
     const cacheKey = destinationUrl.pathname + destinationUrl.search;
     let html = prefetchCache.get(cacheKey);
     let contentType = "text/html";
     if (!html) {
       const tFetchStart = performance.now();
-      const response = await fetch(destinationUrl.href, { headers: FETCH_HEADER, credentials: "same-origin" });
+      const response = await fetch(destinationUrl.href, {
+        headers: FETCH_HEADER,
+        credentials: "same-origin",
+        signal: navigation.controller.signal
+      });
       const tFetchEnd = performance.now();
       if (isProfileNav()) console.log(`[nav-prof] fetch ${destinationUrl.pathname}: ${(tFetchEnd - tFetchStart).toFixed(1)}ms`);
 
       contentType = response.headers.get("content-type") || "";
       if (!response.ok || !contentType.includes("text/html")) {
-        window.location.href = destinationUrl.href;
+        if (!isAborted()) fallBack();
         return;
       }
       html = await response.text();
     } else if (isProfileNav()) {
       console.log(`[nav-prof] fetch ${destinationUrl.pathname}: prefetch-hit`);
     }
+    if (isAborted()) return;
     const parser = new DOMParser();
     const nextDoc = parser.parseFromString(html, "text/html");
     if (!belongsToCurrentDeployment(nextDoc)) {
-      window.location.href = destinationUrl.href;
+      fallBack();
       return;
     }
     const nextUrl = destinationUrl.pathname + destinationUrl.search + destinationUrl.hash;
-    let historyUpdated = false;
-    const updateHistory = () => {
-      if (historyUpdated) return;
-      if (replace) {
-        window.history.replaceState({}, "", nextUrl);
-      } else {
-        window.history.pushState({}, "", nextUrl);
-      }
-      historyUpdated = true;
-    };
 
+    const entryAtCommit = getCurrentEntryId();
     const performSwap = () => {
+      // Back/Forward landed between commit and this callback: history moved on, so leave the page to
+      // the queued popstate navigation instead of pushing on top of the popped entry. A same-page hash
+      // or TOC click in this gap also changes the entry; the newer click wins and this swap is dropped.
+      if (getCurrentEntryId() !== entryAtCommit) return;
       const tSwapStart = performance.now();
+      const leavingY = window.scrollY;
       if (!swapContent(nextDoc, destinationUrl)) {
-        window.location.href = destinationUrl.href;
+        fallBack();
         return;
       }
       updateHead(nextDoc);
-      updateHistory();
+      if (replace) {
+        replaceEntryUrl(nextUrl);
+        markEntryShown();
+      } else {
+        pushEntry(nextUrl, leavingY);
+      }
       const fromSidebar = source === "sidebar-nav";
       reinitializePage(destinationUrl, {
         forceCenterNav: !fromSidebar,
-        scrollNav: !fromSidebar
+        scrollNav: !fromSidebar,
+        restoreY
       });
       setupIntersectionPrefetch();
       if (isProfileNav()) console.log(`[nav-prof] swap+init ${destinationUrl.pathname}: ${(performance.now() - tSwapStart).toFixed(1)}ms`);
     };
 
+    // From here on the navigation cannot be aborted; later requests wait for it.
+    navigation.committed = true;
     if (supportsViewTransitions) {
       const tVTStart = performance.now();
       await document.startViewTransition(() => performSwap()).finished;
@@ -260,10 +304,18 @@ const navigateTo = async (url, { replace = false, source = "unknown" } = {}) => 
       performSwap();
     }
   } catch (error) {
+    if (isAborted()) return;
     console.error("[router] navigation failed, falling back to full reload", error);
-    window.location.href = destinationUrl.href;
+    fallBack();
   } finally {
-    isNavigating = false;
+    if (activeNavigation === navigation) {
+      activeNavigation = null;
+      if (pendingNavigation && !navigation.fellBack) {
+        const next = pendingNavigation;
+        pendingNavigation = null;
+        navigateTo(next.url, next.options);
+      }
+    }
   }
 };
 
@@ -279,14 +331,13 @@ const handleClick = (event) => {
           const targetEl = document.getElementById(targetId);
           if (targetEl) {
             event.preventDefault();
+            const nextHash = `#${encodeURIComponent(targetId)}`;
+            // Record the starting point before scrolling; reduced motion jumps synchronously.
+            if (window.location.hash !== nextHash) pushEntry(nextHash);
             targetEl.scrollIntoView({
               behavior: prefersReducedMotion ? "auto" : "smooth",
               block: "start"
             });
-            const nextHash = `#${encodeURIComponent(targetId)}`;
-            if (window.location.hash !== nextHash) {
-              window.history.pushState({}, "", nextHash);
-            }
             return;
           }
         }
@@ -309,11 +360,25 @@ const handleClick = (event) => {
   navigateTo(targetUrl, { source });
 };
 
-const handlePopState = () => {
-  navigateTo(window.location.href, { replace: true, source: "popstate" });
+const handlePopState = (event) => {
+  // A fetch still in flight belongs to the entry the user just left; drop it.
+  if (activeNavigation && !activeNavigation.committed) {
+    activeNavigation.controller.abort();
+    activeNavigation = null;
+  }
+  const destination = new URL(window.location.href);
+  const restoreY = enterPoppedEntry(event.state);
+  // Hash-only history entries belong to the page already shown: scroll instead of refetching.
+  if (destination.pathname === currentPathname && destination.search === currentSearch) {
+    markEntryShown();
+    scrollToTarget(destination, restoreY);
+    return;
+  }
+  navigateTo(destination.href, { replace: true, source: "popstate", restoreY });
 };
 
 const initRouter = () => {
+  initHistoryEntries();
   window.addEventListener("click", handleClick);
   window.addEventListener("popstate", handlePopState);
   window.addEventListener("mouseover", handlePrefetchHover, { passive: true });

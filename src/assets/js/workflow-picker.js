@@ -161,19 +161,29 @@ function bindPicker(container) {
     closePicker();
   });
 
-  document.addEventListener("click", (event) => {
+  // Document listeners outlive router content swaps; drop them once this picker leaves the page.
+  const documentListeners = new AbortController();
+  const whileConnected = (handler) => (event) => {
+    if (!container.isConnected) {
+      documentListeners.abort();
+      return;
+    }
+    handler(event);
+  };
+
+  document.addEventListener("click", whileConnected((event) => {
     if (!picker.contains(event.target)) {
       closePicker();
     }
-  });
+  }), { signal: documentListeners.signal });
 
-  document.addEventListener("keydown", (event) => {
+  document.addEventListener("keydown", whileConnected((event) => {
     if (!picker.classList.contains(OPEN_CLASS)) return;
     if (event.key === "Escape") {
       closePicker();
       toggle.focus();
     }
-  });
+  }), { signal: documentListeners.signal });
 
   copyButton.addEventListener("click", async () => {
     const current = list.querySelector(`.${OPTION_SELECTED_CLASS}`) || list.querySelector("[data-value]");
