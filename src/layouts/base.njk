@@ -30,11 +30,8 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
 {% set heroMedia = heroImageNormalized | resolveMedia({ size: 1200 }) -%}
 {% set ogImagePath = heroMedia.og or heroMedia.poster -%}
 {% set ogImage = ogImagePath if ogImagePath else (site.ogImage or '') -%}
-{% if ogImagePath and siteUrl -%}
-{% set ogStartsWithSlash = (ogImagePath | first) == '/' -%}
-{% if ogStartsWithSlash -%}
-{% set ogImage = siteUrl ~ ogImagePath -%}
-{% endif -%}
+{% if ogImage and siteUrl and (ogImage | first) == '/' -%}
+{% set ogImage = siteUrl ~ ogImage -%}
 {% endif -%}
 <!DOCTYPE html>
 <html lang="{{ currentLang }}" data-asset-version="{{ env.assetVersion | e }}">
@@ -63,7 +60,7 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
   {% endif %}
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="{{ (site.name[currentLang] or site.name[site.defaultLang]) | e }}" />
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="{{ 'summary_large_image' if ogImagePath else 'summary' }}" />
   <meta name="twitter:title" content="{{ title | e }}" />
   <meta name="twitter:description" content="{{ pageSummary | e }}" />
   {% if ogImage %}
@@ -93,30 +90,11 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
   } %}
   <script type="application/ld+json">{{ structuredData | jsonLd | safe }}</script>
   {% endif %}
-  {% set langOptions = site.languages or [] -%}
-  {% set currentSlug = currentNavId or slug -%}
-{% set isStandalone = (not sectionExists) and (currentSlug == 'news' or currentSlug == 'about' or currentSlug == 'contact') -%}
-  {% set hreflangSection = sectionCandidate if sectionExists else '' -%}
-  {% for option in langOptions -%}
-    {% if isStandalone -%}
-      {% set altPath = '/' + option.code + '/' + currentSlug + '/' -%}
-    {% elif hreflangSection -%}
-      {% set altPath = '/' + option.code + '/' + hreflangSection + '/' + currentSlug + '/' -%}
-    {% else -%}
-      {% set altPath = '/' + option.code + '/' + currentSlug + '/' -%}
-    {% endif -%}
-    {% set altUrl = siteUrl and (siteUrl ~ altPath) or altPath -%}
-  <link rel="alternate" hreflang="{{ option.code }}" href="{{ altUrl | e }}" />
+  {% if sectionCandidate != 'missing' and not ('noindex' in (robots or '')) -%}
+  {% for alt in pagePath | hreflangAlternates(site.languages, collections.all, site.defaultLang) -%}
+  <link rel="alternate" hreflang="{{ alt.hreflang }}" href="{{ siteUrl ~ alt.href | e }}" />
   {% endfor -%}
-  {% if isStandalone -%}
-    {% set defaultPath = '/' + site.defaultLang + '/' + currentSlug + '/' -%}
-  {% elif hreflangSection -%}
-    {% set defaultPath = '/' + site.defaultLang + '/' + hreflangSection + '/' + currentSlug + '/' -%}
-  {% else -%}
-    {% set defaultPath = '/' + site.defaultLang + '/' + currentSlug + '/' -%}
   {% endif -%}
-  {% set defaultUrl = siteUrl and (siteUrl ~ defaultPath) or defaultPath -%}
-  <link rel="alternate" hreflang="x-default" href="{{ defaultUrl | e }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet"

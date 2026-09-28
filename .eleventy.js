@@ -1042,6 +1042,38 @@ export default function (eleventyConfig) {
     return encodeURIComponent(String(value));
   });
 
+  // Frontmatter dates arrive as Date (unquoted YAML) or "YYYY-MM-DD" strings (quoted).
+  eleventyConfig.addFilter("isoDate", function (value) {
+    if (value instanceof Date) return Number.isNaN(value.getTime()) ? "" : value.toISOString().slice(0, 10);
+    const match = String(value ?? "").match(/^\d{4}-\d{2}-\d{2}/);
+    return match ? match[0] : "";
+  });
+
+  // Swaps the language segment of a localized URL ("/ja/x/y/" -> "/en/x/y/"); "" outside the language tree.
+  const localizedPathFor = (url, langCode) => {
+    const match = String(url || "").match(/^\/(ja|en|zh)(\/.*)$/);
+    return match && langCode ? `/${langCode}${match[2]}` : "";
+  };
+
+  // hreflang alternates for a localized URL, limited to translations that were actually built
+  // (JA is the source language, so EN/ZH may not exist yet). x-default is the default-language URL.
+  const builtUrlSets = new WeakMap();
+  eleventyConfig.addFilter("hreflangAlternates", function (url = "", languages = [], collection = [], defaultLang = "") {
+    if (!builtUrlSets.has(collection)) {
+      const indexable = collection.filter((item) => !String(item.data?.robots || "").includes("noindex"));
+      builtUrlSets.set(collection, new Set(indexable.map((item) => item.url)));
+    }
+    const built = builtUrlSets.get(collection);
+    const alternates = [];
+    for (const { code } of languages) {
+      const href = localizedPathFor(url, code);
+      if (href && built.has(href)) alternates.push({ hreflang: code, href });
+    }
+    const defaultHref = localizedPathFor(url, defaultLang);
+    if (alternates.length > 1 && built.has(defaultHref)) alternates.push({ hreflang: "x-default", href: defaultHref });
+    return alternates.length > 1 ? alternates : [];
+  });
+
   eleventyConfig.addFilter("jsonLd", function (value = {}) {
     return JSON.stringify(value)
       .replace(/</g, "\\u003c")
