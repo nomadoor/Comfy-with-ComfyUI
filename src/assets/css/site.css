@@ -3951,14 +3951,35 @@ h1 {
   color: var(--color-heading);
 }
 
+/* Section name next to the date, marked by a small colored dot per section. */
 .news-row__section {
+  --news-section-hue: var(--color-text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  justify-self: start;
   color: var(--color-text-muted);
   font-size: 0.8rem;
 }
 
-.news-row__section:not(:empty)::before {
-  content: "· ";
+.news-row__section::before {
+  content: "";
+  flex: none;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: var(--news-section-hue);
 }
+
+.news-row__section:empty {
+  visibility: hidden; /* keep the column so the title stays aligned */
+}
+
+.news-row__section[data-section="begin-with"] { --news-section-hue: #4f86e0; }
+.news-row__section[data-section="data-utilities"] { --news-section-hue: #3a9d72; }
+.news-row__section[data-section="ai-capabilities"] { --news-section-hue: #c98a32; }
+.news-row__section[data-section="basic-workflows"] { --news-section-hue: var(--color-highlight); }
+.news-row__section[data-section="notes"] { --news-section-hue: #8a8f98; }
 
 .news-row__title {
   color: inherit;
