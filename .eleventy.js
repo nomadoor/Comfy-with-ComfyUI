@@ -7,6 +7,7 @@ import loadLanguages from "prismjs/components/index.js";
 import { logicalNameFromRef, mediaRef, publicUrl, transformUrl } from "./scripts/lib/media-names.mjs";
 import { createOriginalsMiddleware, localPreview, originalsRootFromEnv } from "./scripts/lib/media-local-preview.mjs";
 import envData from "./src/_data/env.js";
+import missingPages from "./src/_data/missingPages.js";
 
 const GYAZO_HOST = "i.gyazo.com";
 const SITE_DATA_PATH = path.join("src", "_data", "site.json");
@@ -1083,17 +1084,25 @@ export default function (eleventyConfig) {
   });
 
   // Every built page URL (noindex included), for navigation that must reach pages search engines skip.
+  // Paginated "coming soon" placeholders only surface their first page in collections, so their URLs
+  // are added from the same data that generates them.
   const builtUrlLists = new WeakMap();
   const allBuiltUrls = (collection) => {
-    if (!builtUrlLists.has(collection)) builtUrlLists.set(collection, new Set(collection.map((item) => item.url)));
+    if (!builtUrlLists.has(collection)) {
+      const urls = new Set(collection.map((item) => item.url));
+      missingPages().forEach((stub) => urls.add(`/${stub.lang}/${stub.section}/${stub.id}/`));
+      builtUrlLists.set(collection, urls);
+    }
     return builtUrlLists.get(collection);
   };
 
-  // Language-menu target for the current page: the same page in `langCode` when it was built, else
-  // that language's guide page (e.g. the ja home before en/zh homes exist).
+  // Language-menu (and logo) target for the current page: the same page in `langCode` when it was
+  // built; otherwise that language's home, or its guide page while that home does not exist yet.
   eleventyConfig.addFilter("langSwitchTarget", function (url = "", langCode = "", collection = []) {
+    const built = allBuiltUrls(collection);
     const target = localizedPathFor(url, langCode);
-    if (target && allBuiltUrls(collection).has(target)) return target;
+    if (target && built.has(target)) return target;
+    if (built.has(`/${langCode}/`)) return `/${langCode}/`;
     return `/${langCode}/begin-with/how-to-use-this-site/`;
   });
 
