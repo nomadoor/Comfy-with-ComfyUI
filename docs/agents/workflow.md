@@ -17,5 +17,5 @@
 7. commit前に、承認された要件、関連するdomain文書、完全な未commit差分、検証結果を使って、別のread-only AI reviewを行う。
 8. findingはP0/P1/P2/P3で扱い、P0/P1はcommitを止める。修正後は再reviewする。
 9. commitには、差分と検証結果を提示したうえで明示承認を得る。
-10. pushとPR作成にはcommitとは別の明示承認を得る。PRは既定でDraftとし、CI成功後にオーナー承認を得てReadyへ変更する。
+10. pushとPR作成にはcommitとは別の明示承認を得る。PRは既定で通常のPR（Ready for review）として作る。オーナーが求めた場合だけDraftにする。
 11. mergeは初期の作業許可に含めない。
