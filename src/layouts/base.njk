@@ -18,6 +18,8 @@ headingAnchorI18n.copyLabel[site.defaultLang] or "Copy heading link" -%}
 {% set headingAnchorCopiedLabel = headingAnchorI18n.copiedLabel[currentLang] or
 headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
 {% set pageSummary = summary | default('Comfy with ComfyUI docs') -%}
+{% set searchTitle = seoTitle or title -%}
+{% set searchDescription = seoDescription or pageSummary -%}
 {% set siteUrl = site.url or '' -%}
 {% set pagePath = page.url or '' -%}
 {% set canonicalUrl = pagePath -%}
@@ -43,9 +45,9 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
   <script>
     document.documentElement.classList.add("js");
   </script>
-  <title>{{ title | e }} | {{ (site.name[currentLang] or site.name[site.defaultLang]) | e }}</title>
-  {% if pageSummary %}
-  <meta name="description" content="{{ pageSummary | e }}" />
+  <title>{{ searchTitle | e }} | {{ (site.name[currentLang] or site.name[site.defaultLang]) | e }}</title>
+  {% if searchDescription %}
+  <meta name="description" content="{{ searchDescription | e }}" />
   {% endif %}
   {% if robots %}
   <meta name="robots" content="{{ robots | e }}" />
@@ -56,9 +58,9 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
   {% if canonicalUrl %}
   <meta property="og:url" content="{{ canonicalUrl | e }}" />
   {% endif %}
-  <meta property="og:title" content="{{ title | e }}" />
-  {% if pageSummary %}
-  <meta property="og:description" content="{{ pageSummary | e }}" />
+  <meta property="og:title" content="{{ searchTitle | e }}" />
+  {% if searchDescription %}
+  <meta property="og:description" content="{{ searchDescription | e }}" />
   {% endif %}
   {% if ogImage %}
   <meta property="og:image" content="{{ ogImage | e }}" />
@@ -71,9 +73,9 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
   {% endif %}
   <meta property="og:site_name" content="{{ (site.name[currentLang] or site.name[site.defaultLang]) | e }}" />
   <meta name="twitter:card" content="{{ 'summary_large_image' if ogImagePath else 'summary' }}" />
-  <meta name="twitter:title" content="{{ title | e }}" />
-  {% if pageSummary %}
-  <meta name="twitter:description" content="{{ pageSummary | e }}" />
+  <meta name="twitter:title" content="{{ searchTitle | e }}" />
+  {% if searchDescription %}
+  <meta name="twitter:description" content="{{ searchDescription | e }}" />
   {% endif %}
   {% if ogImage %}
   <meta name="twitter:image" content="{{ ogImage | e }}" />
@@ -86,7 +88,7 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
     "defaultLang": site.defaultLang,
     "siteName": site.name[currentLang] or site.name[site.defaultLang],
     "title": title,
-    "description": pageSummary,
+    "description": searchDescription,
     "author": site.author,
     "article": {
       "datePublished": created | isoDate,

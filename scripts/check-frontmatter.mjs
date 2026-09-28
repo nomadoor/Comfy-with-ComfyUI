@@ -55,6 +55,12 @@ for (const file of walk(CONTENT_DIR)) {
     if (data.updated && !DATE_RE.test(String(data.updated))) failures.push(`${relative}: updated must be YYYY-MM-DD`);
   }
 
+  for (const key of ["seoTitle", "seoDescription"]) {
+    if (key in data && (typeof data[key] !== "string" || !data[key].trim())) {
+      failures.push(`${relative}: ${key} must be a non-empty string when present`);
+    }
+  }
+
   if (Array.isArray(data.tags) && data.tags.length > 5) failures.push(`${relative}: tags must be 5 or fewer`);
   if (sectionFromPath === "ai-capabilities" && Array.isArray(data.tags) && data.tags.length > 0) {
     failures.push(`${relative}: ai-capabilities pages should not use tags by default`);

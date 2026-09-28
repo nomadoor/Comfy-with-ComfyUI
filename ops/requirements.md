@@ -154,8 +154,10 @@
 ## 17. Social Cards (OGP / Twitter)
 - Add Open Graph and Twitter card meta tags in the base layout.
 - Use `summary_large_image` when the page has a hero image (owner decision 2026-09-28); otherwise `summary`.
-- `og:title` / `twitter:title` should use page `title`.
-- `og:description` / `twitter:description` and `meta name="description"` use page `summary`; when `summary` is empty the tags are omitted.
+- `og:title` / `twitter:title` use `seoTitle` when set, otherwise page `title`.
+- Optional frontmatter `seoTitle` overrides the page title in `<title>`, `og:title`, and `twitter:title`; the visible H1, JSON-LD `headline`, and WebPage `name` keep `title`.
+- Optional frontmatter `seoDescription` overrides `summary` in `meta name="description"`, `og:description`, `twitter:description`, and JSON-LD `description`; the visible summary keeps `summary`.
+- When neither `seoDescription` nor `summary` is set, the description tags are omitted.
 - `og:url` should be absolute, built from `site.url` + `page.url`.
 - `og:image` / `twitter:image` should use the hero media's resolved still image (`resolveMedia().poster`): the image itself for image heroes, the poster for video heroes.
   - If the hero is missing or a video has no poster, fall back to `site.ogImage`.

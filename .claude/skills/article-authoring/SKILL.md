@@ -35,6 +35,7 @@ Do not run steps 5-8 on your own initiative. Finish the step you are on, then sa
    - `section`, `slug`, `navId`, `title`, `summary`, `created`, `updated`
    - `tags` are optional and max 5.
    - `notes` uses `noteTags`; do not substitute normal `tags`.
+   - `seoTitle` / `seoDescription` are optional search-result overrides for `<title>` (before ` | site name`), `og:`/`twitter:` title and description, meta description, and JSON-LD description. The visible H1 and `summary` stay unchanged. Write them in the page language around what searchers type (model or node name, "ComfyUI", the task); describe the owner's readable-workflow approach in plain words rather than the coined term. The owner writes or approves the wording.
 5. Use H2/H3 only for article body structure unless an existing page pattern requires otherwise.
 6. Use media markup consistently. `{media=...}` is the display mode and works for R2 and Gyazo URLs; `{gyazo=...}` is a compatible alias:
    - static image: `{media=image}`

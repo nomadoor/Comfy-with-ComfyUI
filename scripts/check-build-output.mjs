@@ -37,6 +37,7 @@ const isNoindex = (htmlFile) => /<meta name="robots" content="[^"]*noindex/.test
 // (not `navId`, which may differ), so expected dates are keyed the same way.
 const expectedLastmod = new Map();
 const expectedArticles = new Map();
+const expectedSeo = new Map();
 const dateOnly = (value) => String(value || "").match(/^\d{4}-\d{2}-\d{2}/)?.[0];
 for (const file of await fg(["src/content/{ja,en,zh}/**/*.{md,njk}"])) {
   const match = fs.readFileSync(file, "utf8").match(/^---\r?\n([\s\S]*?)\r?\n---/);
@@ -45,6 +46,9 @@ for (const file of await fg(["src/content/{ja,en,zh}/**/*.{md,njk}"])) {
   const pagePath = data.section ? `/${data.lang}/${data.section}/${data.slug}/` : `/${data.lang}/${data.slug}/`;
   const date = dateOnly(data.updated || data.created);
   if (date) expectedLastmod.set(`${siteUrl}${pagePath}`, date);
+  if (data.seoTitle || data.seoDescription) {
+    expectedSeo.set(`${siteUrl}${pagePath}`, { seoTitle: data.seoTitle, seoDescription: data.seoDescription });
+  }
   // Articles: pages in a section with a publish date, excluding utility pages (search, find).
   if (data.section && data.created && !data.searchExclude) {
     expectedArticles.set(`${siteUrl}${pagePath}`, {
@@ -117,6 +121,22 @@ for (const [url, expected] of expectedArticles) {
   const author = graph.find((node) => node["@id"] === article.author?.["@id"]);
   if (author?.["@type"] !== "Person" || !author.name || !isAbsoluteSiteUrl(author.url || "")) {
     failures.push(`${url}: Article author must reference a Person with name and site URL`);
+  }
+}
+
+// Optional seoTitle / seoDescription override the search-result title and description.
+const escapeAttr = (value) =>
+  String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;").replace(/\\/g, "&#92;"); // mirrors Nunjucks escape
+for (const [url, seo] of expectedSeo) {
+  const htmlFile = builtHtmlFor(url);
+  if (!fs.existsSync(htmlFile)) {
+    failures.push(`${url}: page with seoTitle/seoDescription was not built`);
+    continue;
+  }
+  const text = fs.readFileSync(htmlFile, "utf8");
+  if (seo.seoTitle && !text.includes(`<title>${escapeAttr(seo.seoTitle)} | `)) failures.push(`${url}: <title> must use seoTitle`);
+  if (seo.seoDescription && !text.includes(`<meta name="description" content="${escapeAttr(seo.seoDescription)}" />`)) {
+    failures.push(`${url}: meta description must use seoDescription`);
   }
 }
 
