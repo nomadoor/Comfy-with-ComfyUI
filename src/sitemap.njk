@@ -10,7 +10,7 @@ eleventyExcludeFromCollections: true
   {% set pageLang = page.data.lang or site.defaultLang %}
   {% set pageSection = page.data.section %}
   {% set pageSlug = page.data.navId or page.data.slug %}
-  {% set isStandalone = (not pageSection) and (pageSlug == 'news' or pageSlug == 'about' or pageSlug == 'contact') %}
+  {% set isStandalone = (not pageSection) and (pageSlug == 'news' or pageSlug == 'about' or pageSlug == 'contact' or pageSlug == 'home') %}
   {% set isCanonicalPage = page.url and page.data.lang and pageSlug and (pageSection or isStandalone) and pageSection != 'missing' and not ('noindex' in (page.data.robots or '')) %}
   {% if isCanonicalPage %}
   <url>

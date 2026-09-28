@@ -1061,13 +1061,17 @@ export default function (eleventyConfig) {
 
   // hreflang alternates for a localized URL, limited to translations that were actually built
   // (JA is the source language, so EN/ZH may not exist yet). x-default is the default-language URL.
+  // URLs of built pages that are not noindex, cached per collection object.
   const builtUrlSets = new WeakMap();
-  eleventyConfig.addFilter("hreflangAlternates", function (url = "", languages = [], collection = [], defaultLang = "") {
+  const indexableUrls = (collection) => {
     if (!builtUrlSets.has(collection)) {
       const indexable = collection.filter((item) => !String(item.data?.robots || "").includes("noindex"));
       builtUrlSets.set(collection, new Set(indexable.map((item) => item.url)));
     }
-    const built = builtUrlSets.get(collection);
+    return builtUrlSets.get(collection);
+  };
+  eleventyConfig.addFilter("hreflangAlternates", function (url = "", languages = [], collection = [], defaultLang = "") {
+    const built = indexableUrls(collection);
     const alternates = [];
     for (const { code } of languages) {
       const href = localizedPathFor(url, code);
@@ -1076,6 +1080,36 @@ export default function (eleventyConfig) {
     const defaultHref = localizedPathFor(url, defaultLang);
     if (alternates.length > 1 && built.has(defaultHref)) alternates.push({ hreflang: "x-default", href: defaultHref });
     return alternates.length > 1 ? alternates : [];
+  });
+
+  // Every built page URL (noindex included), for navigation that must reach pages search engines skip.
+  const builtUrlLists = new WeakMap();
+  const allBuiltUrls = (collection) => {
+    if (!builtUrlLists.has(collection)) builtUrlLists.set(collection, new Set(collection.map((item) => item.url)));
+    return builtUrlLists.get(collection);
+  };
+
+  // Language-menu target for the current page: the same page in `langCode` when it was built, else
+  // that language's guide page (e.g. the ja home before en/zh homes exist).
+  eleventyConfig.addFilter("langSwitchTarget", function (url = "", langCode = "", collection = []) {
+    const target = localizedPathFor(url, langCode);
+    if (target && allBuiltUrls(collection).has(target)) return target;
+    return `/${langCode}/begin-with/how-to-use-this-site/`;
+  });
+
+  // The newest `limit` rows of a language's news page, reused on the language home.
+  // Rows are copied verbatim, so each news row must stay a flat <a class="news-row">…</a> block.
+  eleventyConfig.addFilter("newsRows", function (lang = "ja", limit = 5) {
+    const newsPath = path.join(process.cwd(), "src", "content", lang, "news.md");
+    if (!fsSync.existsSync(newsPath)) return "";
+    const rows = fsSync.readFileSync(newsPath, "utf-8").match(/<a class="news-row"[\s\S]*?<\/a>/g) || [];
+    return rows.slice(0, limit).join("\n");
+  });
+
+  // Look up a built page by its URL (for cards that point at articles).
+  eleventyConfig.addFilter("pageByUrl", function (collection = [], url = "") {
+    const entry = collection.find((item) => item.url === url);
+    return entry ? { url: entry.url, title: entry.data.title, hero: entry.data.hero || {} } : null;
   });
 
   // schema.org graph for a page: WebSite + WebPage, plus Article and its Person author for articles.
@@ -1321,6 +1355,11 @@ export default function (eleventyConfig) {
   });
   eleventyConfig.setLibrary("md", markdownLib);
 
+  // Render a Markdown block inside a Nunjucks page (the language home mixes prose with generated parts).
+  eleventyConfig.addPairedShortcode("markdown", function (content = "") {
+    return markdownLib.render(content, { page: this.page });
+  });
+
   // Paired shortcode: side-by-side media + text
   // Usage (in Markdown):
   // {% mediaRow img="https://... {media=image}", alt="説明", align="left", width=33 %}
@@ -1510,6 +1549,9 @@ export default function (eleventyConfig) {
     showAllHosts: true,
     port: 8080,
     watch: ["src/assets/**/*", "src/workflows/**/*"],
+    // Dev assets live at the fixed /assets/js/dev/ path; without this the browser can keep an old module
+    // next to a new one and every script on the page stops. Production paths change per deploy.
+    headers: { "Cache-Control": "no-store" },
     // `/__media-originals/<logical name>` previews local originals on the dev server (see resolveManagedMedia).
     middleware: [createOriginalsMiddleware(() => MEDIA_ORIGINALS_ROOT)]
   });

@@ -1,0 +1,81 @@
+---
+layout: page.njk
+lang: ja
+slug: home
+title: "Comfyに使う ComfyUI"
+summary: "ComfyUIの操作と、生成AIでできることを知ってもらうためのサイトです。"
+seoTitle: "ComfyUIの使い方とworkflowを日本語で解説"
+seoDescription: "ComfyUIというソフトの操作と能力、生成AIでできることを日本語で解説するサイト。インストールから画像・動画生成、画像編集まで、いま使うべきモデルと読みやすく整理したworkflowを紹介します。"
+created: 2026-09-28
+updated: 2026-09-28
+permalink: "/{{ lang }}/"
+searchExclude: true
+hero:
+  gradient: ""
+picks:
+  title: "2026年9月のおすすめモデル"
+  lead: "モデルは毎週のように増えますが、性能・汎用性・安定性のバランスが良いものは限られます。いまなら、とりあえずこれを使っておけば困りません。"
+  groups:
+    - label: 画像生成
+      items:
+        - page: /ja/basic-workflows/krea-2/
+          text: "イラストも実写もいける、柔軟で万能なモデル。"
+        - page: /ja/basic-workflows/anima/
+          text: "軽くて扱いやすいアニメ特化モデル。SDXL系からの乗り換え先に。"
+    - label: 画像編集
+      items:
+        - page: /ja/basic-workflows/qwen-image-2-1/
+          text: "生成も編集も1つでこなし、透過画像の生成までできる器用なモデル。"
+    - label: 動画生成
+      items:
+        - page: /ja/basic-workflows/minimax-h3/
+          text: "映像と音声をまとめて生成できる、クローズドに迫る性能の動画生成モデル。"
+---
+{% from "icon.njk" import icon %}
+{% set updatesHeading = "最近の更新" %}
+{% set updatesMore = "すべての更新情報" %}
+{% markdown %}
+## ようこそ！Comfyに使うComfyUIへ
+
+このサイトは、ただのworkflowの提供ではなく、生成AIの可能性、そしてComfyUIというソフト自体の操作・能力を知ってもらおうと思い作成しました。
+
+テンプレートを使えば、とりあえずモデルを動かすことは出来ますが、そこから自分の思い通りに拡張していくためには、やはり基本の使い方を知っておく必要がありますね。
+
+ベテランユーザーにとっても、ComfyUI がどのように進化しているかを知る良い場所になると思います。
+{% endmarkdown %}
+
+<hr />
+
+{% include "home-picks.njk" %}
+
+<hr />
+
+{% include "home-updates.njk" %}
+
+<hr />
+
+<h2>このサイトを作った人</h2>
+<section class="home-author">
+  <div class="home-author__header">
+    <span class="home-author__name">nomadoor</span>
+    <ul class="home-social" aria-label="nomadoor のアカウント" data-no-link-icon>
+      <li><a href="https://x.com/noma_door" aria-label="X（@noma_door）">{{ icon("brand-x") }}</a></li>
+      <li><a href="https://github.com/nomadoor" aria-label="GitHub（nomadoor）">{{ icon("brand-github") }}</a></li>
+      <li><a href="https://www.reddit.com/user/nomadoor/" aria-label="Reddit（u/nomadoor）">{{ icon("brand-reddit") }}</a></li>
+    </ul>
+  </div>
+  {% markdown %}
+ComfyUIの黎明期から触り続けてきたので、ComfyUIの考え方については、ちょっとだけ詳しいと思います。
+
+読みやすさにこだわったworkflow（[リーダブルノード](/ja/begin-with/readable-nodes/)）を作る。そんな考え方が広まって、多くの人が生成AIをもっと深く楽しめるようになったら嬉しいです。
+{% endmarkdown %}
+  <p class="home-author__contact">記事の不備や記事のリクエスト、感想があれば、<a href="/ja/contact/">お問い合わせ</a>か X（<a href="https://x.com/noma_door">@noma_door</a>）へお気軽にどうぞ。</p>
+</section>
+
+{% markdown %}
+---
+
+## ライセンス
+
+このサイトの文章、workflow、画像はすべて **CC0** です。自由に使ってください。
+{% endmarkdown %}

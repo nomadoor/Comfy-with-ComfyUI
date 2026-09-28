@@ -22,9 +22,13 @@ function stripFragmentAndQuery(url) {
 function existsPublicPath(urlPath) {
   const normalized = stripFragmentAndQuery(urlPath);
   if (!normalized || normalized === "/") return true;
-  const parts = normalized.replace(/^\/+/, "").split("/");
+  if (/\/\//.test(normalized)) return false;
+  const parts = normalized.replace(/^\/+/, "").split("/").filter(Boolean);
   if (PUBLIC_ROOTS.includes(parts[0])) {
     return fs.existsSync(path.join("src", ...parts));
+  }
+  if (parts.length === 1 && ["ja", "en", "zh"].includes(parts[0])) {
+    return fs.existsSync(path.join("src", "content", parts[0], "home.njk"));
   }
   if (parts.length === 2 && ["ja", "en", "zh"].includes(parts[0])) {
     return fs.existsSync(path.join("src", "content", parts[0], `${parts[1]}.md`)) ||

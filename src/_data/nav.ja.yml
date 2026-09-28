@@ -2,8 +2,6 @@ sections:
   - key: begin-with
     label: はじめてのComfyUI
     pages:
-      - id: how-to-use-this-site
-        title: このサイトの使い方
       - id: spin-up-fast
         title: とりあえず動かしてみる
         noLink: true

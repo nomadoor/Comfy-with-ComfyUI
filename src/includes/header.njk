@@ -12,8 +12,6 @@
 {% endif %}
 {% set themeLabel = (site.i18n and site.i18n.themeToggle and (site.i18n.themeToggle[currentLang] or site.i18n.themeToggle[site.defaultLang])) or 'Theme toggle' %}
 {% set langOptions = site.languages or [] %}
-{% set currentSlugForLang = currentNavId or slug or 'how-to-use-this-site' %}
-{% set isStandaloneForLang = (not sectionExists) and (currentSlugForLang == 'news' or currentSlugForLang == 'about' or currentSlugForLang == 'contact') %}
 {% set logoBaseMask = 'src/assets/logos/logo_Comfy-ComfyUI.svg' | svgDataUri %}
 {% if currentLang == 'ja' %}
 {% set logoOverlayMask = 'src/assets/logos/logo_に使う.svg' | svgDataUri %}
@@ -25,7 +23,7 @@
     <button class="site-header__menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sidebar">
       {{ icon("menu") }}
     </button>
-    <a class="site-header__logo" href="/{{ currentLang }}/begin-with/how-to-use-this-site/"
+    <a class="site-header__logo" href="{{ ('/' ~ currentLang ~ '/') | langSwitchTarget(currentLang, collections.all) }}"
       aria-label="{{ headerTitle }}">
       <span class="sr-only">{{ headerTitle }}</span>
       <span class="site-header__logo-mark">
@@ -66,14 +64,7 @@
         </button>
         <div class="lang-menu" data-lang-menu>
           {% for option in site.languages %}
-            {% if isStandaloneForLang %}
-              {% set target = '/' + option.code + '/' + currentSlugForLang + '/' %}
-            {% elif sectionExists and sectionCandidate %}
-              {% set target = '/' + option.code + '/' + sectionCandidate + '/' + currentSlugForLang + '/' %}
-            {% else %}
-              {% set target = '/' + option.code + '/' + currentSlugForLang + '/' %}
-            {% endif %}
-            <a href="{{ target }}" class="{% if option.code == currentLang %}is-active{% endif %}" data-router-ignore>{{ option.label }}</a>
+            <a href="{{ page.url | langSwitchTarget(option.code, collections.all) }}" class="{% if option.code == currentLang %}is-active{% endif %}" data-lang="{{ option.code }}" data-router-ignore>{{ option.label }}</a>
           {% endfor %}
         </div>
       </div>
