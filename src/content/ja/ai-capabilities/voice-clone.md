@@ -1,5 +1,6 @@
 ---
 layout: page.njk
+robots: noindex
 lang: ja
 section: ai-capabilities
 slug: voice-clone

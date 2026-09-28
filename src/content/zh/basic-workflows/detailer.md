@@ -8,6 +8,8 @@ title: "Detailer"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "只切出小脸和细部进行 inpaint 的机制"
+seoTitle: "ComfyUI 的 Detailer：重绘小脸和细节"
+seoDescription: "只裁出崩坏的小脸或细节并重绘的 Detailer 原理。介绍用 Inpaint Crop / Stitch 手动搭建 Detailer，以及结合物体检测自动化的方法，附工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/detailer/legacy_gyazo_5904f9e96c234cd6bec18b10af263838.png"

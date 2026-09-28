@@ -8,6 +8,8 @@ title: "設定"
 created: 2025-11-20
 updated: 2026-08-01
 summary: "設定について"
+seoTitle: "ComfyUIの設定とおすすめ設定"
+seoDescription: "ComfyUIの設定画面の開き方と、個人的におすすめの設定。表示言語、ノードのバッジ、Runボタンの位置、生成中のプレビュー表示などの変更方法を紹介します。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

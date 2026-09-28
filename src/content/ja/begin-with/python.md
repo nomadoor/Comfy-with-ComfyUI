@@ -7,7 +7,9 @@ navId: python
 title: "Python"
 created: 2025-11-20
 updated: 2026-03-02
-summary: ""
+summary: "ComfyUIを動かしているPythonの基本"
+seoTitle: "ComfyUIユーザーのためのPython入門"
+seoDescription: "ComfyUIを動かすPythonの基本用語。バージョン、ライブラリ、pip install、仮想環境、ポータブル版のPythonの扱いと注意点を、エラーと向き合うために必要な範囲で解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

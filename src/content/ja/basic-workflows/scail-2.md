@@ -8,6 +8,8 @@ title: "SCAIL-2"
 created: 2026-06-11
 updated: 2026-06-18
 summary: "SCAIL-2で参照画像の人物に動画の動きを転送する"
+seoTitle: "ComfyUIでSCAIL-2を使う：棒人間なしのモーション転送"
+seoDescription: "棒人間などの中間表現に変換せず、参照画像の人物に動画の動きを転送するWan2.1ベースのSCAIL-2の使い方。AnimationモードとReplacementモード、複数人やマルチ参照、長い動画の生成を解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

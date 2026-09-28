@@ -7,6 +7,8 @@ title: "更新情報"
 created: 2026-01-15
 updated: 2026-09-28
 summary: "このサイトの更新情報"
+seoTitle: "更新情報：ComfyUIの新しい記事とworkflow"
+seoDescription: "「Comfyに使う ComfyUI」の更新履歴。新しく追加したモデルの解説やworkflow、既存記事の更新を日付順にまとめています。"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news

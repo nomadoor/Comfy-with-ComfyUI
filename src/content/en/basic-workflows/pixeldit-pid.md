@@ -8,6 +8,8 @@ title: "PixelDiT / PiD"
 created: 2026-06-09
 updated: 2026-07-29
 summary: "Image generation and high-resolution decoding with PixelDiT and PiD"
+seoTitle: "PixelDiT and PiD in ComfyUI: Pixel Diffusion and Upscaling"
+seoDescription: "Use NVIDIA's pixel diffusion model PixelDiT and the high-res decoder PiD in ComfyUI: text2image, pairing with Z-Image-Turbo, and upscaling any image."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/pixeldit-pid/legacy_gyazo_31ea733be7d13db9616875f7c59e3f40.png"

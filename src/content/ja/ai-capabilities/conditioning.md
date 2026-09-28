@@ -8,6 +8,8 @@ title: Conditioning
 created: 2025-11-13
 updated: 2026-08-01
 summary: 拡散モデルに「こういう画像がほしい」と伝える仕組み
+seoTitle: "Conditioningとは？ 拡散モデルに生成内容を伝える仕組み"
+seoDescription: "拡散モデルに「こういう画像がほしい」と伝えるConditioningの仕組み。テキストエンコーダの役割とCLIP型・LLM型の違い、参照画像や構造（ポーズ・深度など）によるConditioningをまとめています。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

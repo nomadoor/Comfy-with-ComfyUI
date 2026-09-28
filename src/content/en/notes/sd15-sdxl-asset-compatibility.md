@@ -9,6 +9,8 @@ created: 2025-12-13
 updated: 2026-03-02
 noteTags: ["faq", "sd15", "sdxl"]
 summary: "Compatibility between models and why SD1.5 assets cannot be used with SDXL."
+seoTitle: "Can You Use SD1.5 LoRA or ControlNet with SDXL?"
+seoDescription: "Why Stable Diffusion 1.5 LoRAs and ControlNets do not work with SDXL, explained with a power plug analogy, and what happens if you try."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

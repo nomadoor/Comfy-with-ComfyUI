@@ -8,6 +8,8 @@ title: "Human Motion Transfer"
 created: 2025-12-03
 updated: 2026-03-02
 summary: "Techniques for transferring a source person's movements to a target character or video."
+seoTitle: "Human Motion Transfer: Move Characters with Video Motion"
+seoDescription: "Transfer full-body motion from a video to a person in a single image: how the technique works and how it evolved from Animate Anyone to DiT-era video models."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

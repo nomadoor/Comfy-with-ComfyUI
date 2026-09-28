@@ -8,6 +8,8 @@ title: "IP-Adapter"
 created: 2025-12-08
 updated: 2026-08-26
 summary: "参照画像からスタイルや被写体を転送する元祖的な仕組み"
+seoTitle: "ComfyUIでIP-Adapterを使う：参照画像から画風を転送"
+seoDescription: "テキストを介さず、参照画像のスタイルや被写体を転送するIP-AdapterをStable Diffusion 1.5で使う方法。カスタムノード、モデルのダウンロード、workflow、plus / light / faceなど主なモデルの違いを解説します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_64fdcae074a2a01943d7f5fff3aaa418.png"

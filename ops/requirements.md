@@ -158,6 +158,8 @@
 - Optional frontmatter `seoTitle` overrides the page title in `<title>`, `og:title`, and `twitter:title`; the visible H1, JSON-LD `headline`, and WebPage `name` keep `title`.
 - Optional frontmatter `seoDescription` overrides `summary` in `meta name="description"`, `og:description`, `twitter:description`, and JSON-LD `description`; the visible summary keeps `summary`.
 - When neither `seoDescription` nor `summary` is set, the description tags are omitted.
+- Every indexable content page (not `draft`, not `robots: noindex`) must have non-empty `summary`, `seoTitle`, and `seoDescription` in each language. `scripts/check-frontmatter.mjs` enforces this and a display-width limit (CJK = 2): `seoTitle` ≤ 64 in all languages; `seoDescription` ≤ 260 for JA/ZH and ≤ 170 for EN.
+- Stub articles whose body is only a "coming soon" note are `robots: noindex` until real content exists.
 - `og:url` should be absolute, built from `site.url` + `page.url`.
 - `og:image` / `twitter:image` should use the hero media's resolved still image (`resolveMedia().poster`): the image itself for image heroes, the poster for video heroes.
   - If the hero is missing or a video has no poster, fall back to `site.ogImage`.

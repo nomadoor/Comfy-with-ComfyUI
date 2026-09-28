@@ -8,6 +8,8 @@ title: "Qwen-Image-2.1"
 created: 2026-09-21
 updated: 2026-09-23
 summary: "使用 Qwen-Image-2.1 生成和编辑图像"
+seoTitle: "在 ComfyUI 中使用 Qwen-Image-2.1：图像生成与编辑"
+seoDescription: "将图像生成与编辑合为一体的 Qwen-Image-2.1 在 ComfyUI 中的用法。介绍推荐设置、text2image、Ref2Image、用红圈或蒙版指定位置编辑以及 Outpainting，附整理清晰易读的工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_hero.png"

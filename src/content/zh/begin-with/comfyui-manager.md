@@ -8,6 +8,8 @@ title: "ComfyUI Manager"
 created: 2026-05-26
 updated: 2026-05-27
 summary: "关于 ComfyUI Manager"
+seoTitle: "ComfyUI Manager 使用方法：安装与管理自定义节点"
+seoDescription: "用 ComfyUI Manager 安装和更新自定义节点的方法。讲解新旧 Manager 的区别，以及在便携版、桌面版和手动安装版中启用它的步骤。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   image: "/media/begin-with/comfyui-manager/legacy_gyazo_76b47ed5d45cf694b436022589464255.png"

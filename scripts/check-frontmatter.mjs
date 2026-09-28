@@ -9,6 +9,15 @@ const STANDALONE = new Set(["about", "news", "contact"]);
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 const failures = [];
 
+// Display width: CJK full-width characters count as 2, roughly matching how search results truncate.
+const displayWidth = (value) =>
+  [...value].reduce((width, char) => width + (/[\u1100-\u115F\u2E80-\uA4CF\uAC00-\uD7A3\uF900-\uFAFF\uFE30-\uFE4F\uFF00-\uFF60\uFFE0-\uFFE6]/.test(char) ? 2 : 1), 0);
+const SEO_LIMITS = {
+  ja: { title: 64, description: 260 },
+  zh: { title: 64, description: 260 },
+  en: { title: 64, description: 170 }
+};
+
 function walk(dir, files = []) {
   if (!fs.existsSync(dir)) return files;
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -58,6 +67,21 @@ for (const file of walk(CONTENT_DIR)) {
   for (const key of ["seoTitle", "seoDescription"]) {
     if (key in data && (typeof data[key] !== "string" || !data[key].trim())) {
       failures.push(`${relative}: ${key} must be a non-empty string when present`);
+    }
+  }
+
+  // Every indexable page needs search-result copy. Noindex and draft pages are exempt.
+  const indexable = !data.draft && !String(data.robots || "").includes("noindex");
+  if (indexable) {
+    for (const key of ["summary", "seoTitle", "seoDescription"]) {
+      if (typeof data[key] !== "string" || !data[key].trim()) failures.push(`${relative}: indexable page needs ${key}`);
+    }
+    const limits = SEO_LIMITS[lang];
+    if (typeof data.seoTitle === "string" && displayWidth(data.seoTitle) > limits.title) {
+      failures.push(`${relative}: seoTitle is wider than ${limits.title} (${displayWidth(data.seoTitle)}); search results will cut it off`);
+    }
+    if (typeof data.seoDescription === "string" && displayWidth(data.seoDescription) > limits.description) {
+      failures.push(`${relative}: seoDescription is wider than ${limits.description} (${displayWidth(data.seoDescription)}); search results will cut it off`);
     }
   }
 

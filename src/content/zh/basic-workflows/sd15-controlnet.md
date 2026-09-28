@@ -8,6 +8,8 @@ title: "ControlNet"
 created: 2025-12-08
 updated: 2026-08-26
 summary: "使用姿势或线稿控制图像生成"
+seoTitle: "在 ComfyUI 中使用 ControlNet：Stable Diffusion 1.5"
+seoDescription: "在 Stable Diffusion 1.5 上用 ControlNet 通过姿势和线稿控制图像生成。介绍 Scribble 工作流、用 start_percent / end_percent 调整控制强度，以及主要 ControlNet 类型。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 tags: ["controlnet"]
 hero:

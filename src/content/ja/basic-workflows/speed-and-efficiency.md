@@ -8,6 +8,8 @@ title: "高速化と軽量化"
 created: 2025-12-11
 updated: 2026-03-02
 summary: "拡散モデルの高速化・軽量化技術を整理して目的別に使い分ける"
+seoTitle: "ComfyUIで生成を高速化・軽量化する方法まとめ"
+seoDescription: "拡散モデルの高速化・軽量化技術を目的別に整理。8bit / 4bit量子化やGGUF、蒸留、Attentionの最適化、サンプリングキャッシュなど、VRAMを減らしたいときや速く生成したいときの選び方を解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

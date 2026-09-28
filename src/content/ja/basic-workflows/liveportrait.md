@@ -8,6 +8,8 @@ title: "LivePortrait"
 created: 2025-12-12
 updated: 2026-08-26
 summary: "LivePortraitで1枚の顔写真から表情や首振りをコントロールする"
+seoTitle: "ComfyUIでLivePortraitを使う：顔写真の表情と首振りを操作"
+seoDescription: "1枚の顔写真の表情や首の向きを操作できるLivePortraitの、ComfyUIでの使い方。パラメータでの表情調整、参照画像からの編集、参照動画の動きを転送するimage2video / video2videoを解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/liveportrait/legacy_gyazo_0df8e012722c39159be1762a9a38ea99.png"

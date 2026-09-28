@@ -8,6 +8,8 @@ title: Latent Diffusion Model (潜扩散模型) 与 VAE
 created: 2026-02-06
 updated: 2026-03-02
 summary: 潜在空间和 VAE 的作用
+seoTitle: "什么是 Latent Diffusion Model 与 VAE？潜在空间的作用"
+seoDescription: "让图像生成 AI 能在家用电脑上运行的 Latent Diffusion Model，以及在像素与潜在空间之间转换的 VAE。讲解在潜在空间处理的原因、VAE 是有损压缩，以及 VAE 的选择。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

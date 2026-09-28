@@ -8,6 +8,8 @@ title: "Anime-style SDXL Models"
 created: 2025-12-10
 updated: 2026-03-02
 summary: "Rough organization of SDXL-based anime models"
+seoTitle: "Anime SDXL Models: Illustrious, Pony, Animagine"
+seoDescription: "An overview of SDXL-based anime model families you can use in ComfyUI: Animagine XL, Illustrious XL, Pony Diffusion V6 XL, WAI-illustrious, and how they relate."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/sdxl-anime/legacy_gyazo_6ee98c633b487214c13c32a9af7d64cb.png"

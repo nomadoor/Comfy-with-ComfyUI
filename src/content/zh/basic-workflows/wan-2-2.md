@@ -8,6 +8,8 @@ title: "Wan2.2"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "在 Wan2.2 中使用 text2video / image2video / FLF2V 的视频生成"
+seoTitle: "在 ComfyUI 中使用 Wan2.2：14B 与 5B 视频工作流"
+seoDescription: "在 ComfyUI 中使用 Wan2.2：切换 high_noise / low_noise 的 14B 与单模型 TI2V-5B 各自的推荐设置，以及 text2video、image2video、FLF2V，附整理清晰易读的工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

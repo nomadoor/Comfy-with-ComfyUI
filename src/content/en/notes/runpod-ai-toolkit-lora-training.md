@@ -9,6 +9,8 @@ created: 2026-05-03
 updated: 2026-08-26
 noteTags: ["guide", "training", "runpod", "ai-toolkit", "lora"]
 summary: "A practical flow for launching AI Toolkit on RunPod and running LoRA training"
+seoTitle: "Train LoRAs with AI Toolkit on RunPod"
+seoDescription: "Run AI Toolkit on RunPod cloud GPUs to train a LoRA: create an account, buy credits, create a pod, pick a template, and start training."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 ---
 

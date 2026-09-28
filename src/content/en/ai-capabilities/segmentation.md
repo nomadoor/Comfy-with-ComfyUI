@@ -8,6 +8,8 @@ title: "Segmentation"
 created: 2025-12-01
 updated: 2026-03-02
 summary: "Technology to divide images to create masks (mainly SAM family)"
+seoTitle: "What Is Segmentation? Making Masks with SAM"
+seoDescription: "Segmentation makes a mask in the shape of an object picked by points, boxes, or text. How it differs from matting, the SAM family, and ComfyUI use."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/ai-capabilities/segmentation/legacy_gyazo_4a56caa5986a2c2403dcad74d1bf1874.png"

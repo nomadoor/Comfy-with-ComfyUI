@@ -8,6 +8,8 @@ title: "メディア"
 created: 2025-11-20
 updated: 2026-03-02
 summary: "メディアについて"
+seoTitle: "ComfyUIで画像・動画・音声を読み込み・保存する"
+seoDescription: "ComfyUIでメディアを扱う基本ノードのまとめ。Load Image / Save Imageなどの画像ノード、Video Helper Suiteを含む動画ノード、音声ノードの使い方と便利な読み込み方法を解説します。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

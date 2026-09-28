@@ -8,6 +8,8 @@ title: "更新"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于 ComfyUI 的更新方法"
+seoTitle: "ComfyUI 更新方法：稳定版与开发版"
+seoDescription: "ComfyUI 的更新步骤。讲解稳定版（Stable）与开发版（Nightly）的区别，以及便携版、手动安装版、ComfyUI Manager 和桌面版各自的更新方法。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

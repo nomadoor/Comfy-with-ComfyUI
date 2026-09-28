@@ -8,6 +8,8 @@ title: "摄像头 (Webcam)"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "将网络摄像头或 OBS 的影像导入 ComfyUI 的方法"
+seoTitle: "将网络摄像头或 OBS 画面导入 ComfyUI"
+seoDescription: "用 Webcam Capture 节点把摄像头画面导入 ComfyUI，以及通过 OBS 虚拟摄像头读取电脑屏幕的方法。还介绍自动重复执行以实现伪实时处理的设置。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/data-utilities/webcam-input/legacy_gyazo_5c2f4a37547aa854b5dcc8d264ff962b.png"

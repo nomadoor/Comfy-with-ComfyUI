@@ -8,6 +8,8 @@ title: "Flux.1"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "Flux.1 的基础和在 ComfyUI 中的使用方法"
+seoTitle: "在 ComfyUI 中使用 Flux.1：dev・schnell・LoRA・ControlNet"
+seoDescription: "在 ComfyUI 中使用 Black Forest Labs 的 Flux.1：[dev] 与 [schnell] 的 text2image、LoRA、ControlNet 以及用 GGUF 轻量化，附整理清晰易读的工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/flux-1/legacy_gyazo_9fd52a56e1f6b7cbf8cd96ca78484d02.png"

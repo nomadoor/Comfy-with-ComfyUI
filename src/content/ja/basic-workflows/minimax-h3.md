@@ -7,6 +7,8 @@ navId: minimax-h3
 title: "MiniMax H3"
 created: 2026-09-14
 summary: "MiniMax H3で映像と音声を生成する"
+seoTitle: "ComfyUIでMiniMax H3を使う：映像と音声を生成"
+seoDescription: "テキスト・画像・動画・音声を1つのTransformerで扱う動画生成モデルMiniMax H3の、ComfyUIでの使い方。FL2VAとRef2VAの違い、推奨設定、text2video、image2video、First / Last Frameのworkflowを解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/minimax-h3/minimax_h3_hero.mp4"

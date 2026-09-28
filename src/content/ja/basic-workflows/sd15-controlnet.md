@@ -8,6 +8,8 @@ title: "ControlNet"
 created: 2025-12-08
 updated: 2026-08-26
 summary: "ポーズや線画を使って画像生成をコントロールする"
+seoTitle: "ComfyUIでControlNetを使う：Stable Diffusion 1.5"
+seoDescription: "ポーズや線画で画像生成をコントロールするControlNetを、Stable Diffusion 1.5で使う方法。Scribbleのworkflow、start_percent / end_percentによる制御の強さの調整、主なControlNetの種類を解説します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: ["controlnet"]
 hero:

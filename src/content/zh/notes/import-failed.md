@@ -9,6 +9,8 @@ created: 2026-02-06
 updated: 2026-03-02
 noteTags: ["troubleshoot", "custom-nodes"]
 summary: "自定义节点加载失败"
+seoTitle: "ComfyUI (IMPORT FAILED) 的原因与解决方法"
+seoDescription: "ComfyUI 启动时显示 (IMPORT FAILED)、自定义节点无法使用时的原因与解决方法，包括缺少库、Python / PyTorch 版本不匹配等情况的处理。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

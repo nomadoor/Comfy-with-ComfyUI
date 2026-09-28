@@ -8,6 +8,8 @@ title: "ReActor"
 created: 2025-12-09
 updated: 2026-03-02
 summary: "FaceSwap using ReActor"
+seoTitle: "ReActor in ComfyUI: Face Swap with One Photo"
+seoDescription: "Swap faces in images and videos from one photo with ReActor in ComfyUI: installation, inswapper vs. HyperSwap, and the NSFW filter."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/reactor/legacy_gyazo_c75a0142055d05c154f7d8cf03b3ca56.png"

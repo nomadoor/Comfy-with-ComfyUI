@@ -8,6 +8,8 @@ title: "LTX 2.3"
 created: 2026-03-22
 updated: 2026-04-13
 summary: "在 LTX 2.3 中处理 text2video、image2video、audio2video 和 audio-image2video"
+seoTitle: "在 ComfyUI 中使用 LTX 2.3：相比 LTX-2 的变化与工作流"
+seoDescription: "在 ComfyUI 中使用 LTX 2.3 的方法。整理相比 LTX-2 变化的推荐设置与模型、提示词技巧，以及 text2video / image2video / audio2video 工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/ltx-2-3/legacy_gyazo_f3f8635fb9056670204fe9bdac577b39.mp4"

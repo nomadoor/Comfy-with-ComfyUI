@@ -8,6 +8,8 @@ title: "子图 (Subgraph)"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于子图"
+seoTitle: "ComfyUI 子图用法：合并节点并复用"
+seoDescription: "将多个节点合并为一个节点的 ComfyUI 子图功能。讲解创建与编辑、参数的公开设置，以及保存为可复用模块的方法。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

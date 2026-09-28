@@ -9,6 +9,8 @@ created: 2026-09-28
 updated: 2026-09-28
 noteTags: ["faq", "conditioning", "cfg"]
 summary: "CFG 1.0 の workflow で Conditioning Zero Out を使う理由"
+seoTitle: "Conditioning Zero Outとは？ CFG 1.0で使う理由"
+seoDescription: "最近のworkflowでよく見るConditioning Zero Outノードの役割。CFG 1.0でnegativeが無視される理由と、positiveや空のプロンプトをつなぐ方法との違い、Zero Outを使う利点を解説します。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: "/media/notes/conditioning-zero-out/conditioning_zero_out_hero.png"

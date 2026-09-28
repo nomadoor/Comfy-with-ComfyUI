@@ -8,6 +8,8 @@ title: "Custom Nodes"
 created: 2025-11-24
 updated: 2026-03-02
 summary: "About custom nodes"
+seoTitle: "ComfyUI Custom Nodes: Installation and Risks"
+seoDescription: "What ComfyUI custom nodes are, their risks, how to install them with ComfyUI Manager or by hand, recommended nodes, and native vs. wrapper nodes."
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

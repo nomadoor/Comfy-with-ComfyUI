@@ -8,6 +8,8 @@ title: "ControlNet"
 created: 2025-12-08
 updated: 2026-08-26
 summary: "Controlling image generation using poses and line drawings"
+seoTitle: "ControlNet in ComfyUI with Stable Diffusion 1.5"
+seoDescription: "Control generation with poses and line art using ControlNet on Stable Diffusion 1.5: the Scribble workflow, start and end percent, and the main types."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: ["controlnet"]
 hero:

@@ -8,6 +8,8 @@ title: Frame Interpolation
 created: 2025-12-01
 updated: 2026-03-02
 summary: Technology to smooth videos or connect distant frames
+seoTitle: "Video Frame Interpolation with AI: VFI and FLF2V"
+seoDescription: "Frame interpolation adds frames between frames: classic VFI for higher fps, generative interpolation (FLF2V) that bridges distant frames, and extension."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: 'https://github.com/google-research/frame-interpolation/raw/main/moment.gif'

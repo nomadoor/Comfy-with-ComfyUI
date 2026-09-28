@@ -8,6 +8,8 @@ title: "モデルのダウンロードと配置"
 created: 2025-11-20
 updated: 2026-03-02
 summary: "モデルのダウンロードと配置について"
+seoTitle: "ComfyUIのモデルのダウンロードと置き場所"
+seoDescription: "Hugging FaceとCivitaiからモデルをダウンロードする手順と、ComfyUIのmodelsフォルダのどこに置けばよいか、増えたモデルの整理方法までまとめています。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

@@ -8,6 +8,8 @@ title: 提示词生成・编辑
 created: 2026-02-06
 updated: 2026-03-02
 summary: 将粗略的指示整理成模型容易理解的提示词的技术
+seoTitle: "用 LLM 生成・编辑图像生成提示词的技巧"
+seoDescription: "用 LLM 把粗略的指示整理成图像模型容易理解的提示词。讲解从 Stable Diffusion 时代的提示词生成，到能理解自然语言的新模型，以及在 ComfyUI 中的运用。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

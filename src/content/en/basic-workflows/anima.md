@@ -8,6 +8,8 @@ title: "Anima"
 created: 2026-05-29
 updated: 2026-08-01
 summary: "Image generation with Anima"
+seoTitle: "Anima in ComfyUI: A Lightweight Anime Image Model"
+seoDescription: "Use Anima, a 2B anime image model built on NVIDIA Cosmos, in ComfyUI: model download, prompting, text2image, and Anima LLLite workflows."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: []
 hero:

@@ -8,6 +8,8 @@ title: "让 AI Agent 使用 ComfyUI 工作流"
 created: 2026-05-17
 updated: 2026-05-17
 summary: "通过 API 让 AI Agent 使用 ComfyUI workflow（工作流）"
+seoTitle: "让 AI Agent 通过 API 使用 ComfyUI 工作流"
+seoDescription: "让 Codex 等 AI Agent 通过 API 执行 ComfyUI 工作流的方法。介绍将可运行的工作流保存为 API 格式并交给 Agent 的步骤、从零创建工作流为何困难，以及 MCP。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

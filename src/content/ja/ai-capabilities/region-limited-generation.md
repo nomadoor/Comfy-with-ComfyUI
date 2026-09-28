@@ -8,6 +8,8 @@ title: 領域指定生成
 created: 2025-12-01
 updated: 2026-03-02
 summary: 画像の一部だけを別の条件で生成しようとする技術と、その限界
+seoTitle: "領域指定生成：画像の好きな位置に好きなものを描く方法"
+seoDescription: "画像の一部だけを別の条件で生成し、レイアウトを指定する技術の比較。プロンプトでの位置指定、inpaintingの繰り返し、Conditioning Set Area、Latent Couple / Attention Couple、雑コラのリファインを解説します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

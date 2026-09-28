@@ -8,6 +8,8 @@ title: "Lumina-Image 2.0"
 created: 2025-12-11
 updated: 2026-03-02
 summary: "Basics of Lumina-Image 2.0 and usage in ComfyUI"
+seoTitle: "Lumina-Image 2.0 and Neta Lumina in ComfyUI"
+seoDescription: "Use Lumina-Image 2.0, a light 2.6B image model, and anime models Neta Lumina, NetaYume Lumina, and NewBie image in ComfyUI, with workflows."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/lumina-image-2.0/legacy_gyazo_0eef66b0663a16cd722915b2dcde0c84.png"

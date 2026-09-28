@@ -8,6 +8,8 @@ title: "APIとは？"
 created: 2026-02-05
 updated: 2026-03-02
 summary: "ComfyUIを「外から動かす」ための入口"
+seoTitle: "ComfyUIのAPIとは？ 外からworkflowを動かす仕組み"
+seoDescription: "ComfyUIがサーバーとフロントエンドに分かれている構造と、サーバーに命令を送る窓口としてのAPIの役割を解説。APIでできること、サーバーを起動しておく必要があることなどの注意点もまとめています。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

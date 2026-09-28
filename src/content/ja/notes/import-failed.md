@@ -9,6 +9,8 @@ created: 2025-12-13
 updated: 2026-03-02
 noteTags: ["troubleshoot", "custom-nodes"]
 summary: "カスタムノードの読み込み失敗"
+seoTitle: "ComfyUIの(IMPORT FAILED)の原因と解決方法"
+seoDescription: "ComfyUIの起動時に(IMPORT FAILED)と表示され、カスタムノードが使えないときの原因と解決方法。ライブラリの不足やPython / PyTorchのバージョンの不一致などへの対処を解説します。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

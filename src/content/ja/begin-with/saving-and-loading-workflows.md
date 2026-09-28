@@ -8,6 +8,8 @@ title: "workflowの保存・読み込み"
 created: 2025-11-20
 updated: 2026-03-02
 summary: "workflowの保存・読み込みについて"
+seoTitle: "ComfyUIのworkflowの保存・読み込み・書き出し"
+seoDescription: "ComfyUIで公式テンプレートを開く方法、workflowをブラウザ内に保存する方法、JSONファイルへの書き出し、生成画像からworkflowを読み込む方法をまとめています。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

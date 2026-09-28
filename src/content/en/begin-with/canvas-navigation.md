@@ -8,6 +8,8 @@ title: "Canvas Navigation"
 created: 2025-11-24
 updated: 2026-03-02
 summary: "About Canvas Navigation"
+seoTitle: "ComfyUI Canvas Navigation: Pan, Zoom, Fit View"
+seoDescription: "Move around the ComfyUI canvas: pan without dragging nodes by accident, zoom, fit the workflow or a single node in view, and use the minimap."
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

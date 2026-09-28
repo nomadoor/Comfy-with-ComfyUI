@@ -8,6 +8,8 @@ title: ID転送とFaceSwap
 created: 2025-12-01
 updated: 2026-03-02
 summary: 人物の顔や本人性を保ったまま、別シーンの画像を作る技術と顔差し替え
+seoTitle: "ID転送とFaceSwap：顔を保ったまま画像を生成するAI"
+seoDescription: "人物の顔や本人らしさを保ったまま別のシーンの画像を作るID転送と、FaceSwapの技術を整理。LoRA、IP-Adapter系、InstantID、PuLID-FLUX、InfiniteYou、指示ベース画像編集による方法を比較します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: /media/ai-capabilities/id-transfer/legacy_gyazo_877d8862f6e7f6dd3ec7fbeac5331cd9.png

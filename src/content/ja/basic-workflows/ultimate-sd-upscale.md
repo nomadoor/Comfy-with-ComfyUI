@@ -9,6 +9,8 @@ title: "Ultimate SD upscale"
 created: 2025-12-08
 updated: 2026-03-02
 summary: "TileとControlNetを使った超高解像度アップスケール"
+seoTitle: "ComfyUIのUltimate SD Upscale：タイル分割で高解像度化"
+seoDescription: "画像をタイルに分けてアップスケールするUltimate SD Upscaleの考え方。タイルの境界線をoverlapでなじませる方法、プロンプトの問題、ControlNet Tileで構造を固定する方法をworkflow付きで解説します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
    image: ""

@@ -8,6 +8,8 @@ title: "BiRefNet"
 created: 2026-05-30
 updated: 2026-06-24
 summary: "Background removal and mask generation with BiRefNet"
+seoTitle: "BiRefNet in ComfyUI: High-Quality Background Removal"
+seoDescription: "Use BiRefNet in ComfyUI to cut out subjects cleanly, even hair and plants: model download, foreground extraction, and background fill workflows."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/data-utilities/birefnet/legacy_gyazo_2e42734281821aa3f28153af9ba6a08e.png"

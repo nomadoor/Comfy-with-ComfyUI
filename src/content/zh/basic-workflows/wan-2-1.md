@@ -8,6 +8,8 @@ title: "Wan2.1"
 created: 2025-12-12
 updated: 2026-03-02
 summary: "在 Wan2.1 中处理 text2video・image2video・FLF2V 的基本工作流"
+seoTitle: "在 ComfyUI 中使用 Wan2.1：text2video・image2video・FLF2V"
+seoDescription: "在 ComfyUI 中使用阿里巴巴视频生成模型 Wan2.1。介绍推荐设置、模型下载、text2video、image2video、FLF2V（首尾帧）以及高速生成的 Self Forcing 工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/wan-2-1/legacy_gyazo_f952fb311ffdb409a173641f61dd3b67.png"

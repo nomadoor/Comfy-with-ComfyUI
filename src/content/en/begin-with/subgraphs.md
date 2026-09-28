@@ -8,6 +8,8 @@ title: "Subgraphs"
 created: 2025-11-24
 updated: 2026-03-02
 summary: "About subgraphs"
+seoTitle: "ComfyUI Subgraphs: Combine and Reuse Nodes"
+seoDescription: "ComfyUI subgraphs combine several nodes into one: create and edit them, expose parameters, and save them as reusable modules."
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

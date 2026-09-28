@@ -8,6 +8,8 @@ title: "Qwen-Image-2.1"
 created: 2026-09-21
 updated: 2026-09-23
 summary: "Qwen-Image-2.1 での画像生成と画像編集"
+seoTitle: "ComfyUIでQwen-Image-2.1を使う：画像生成と画像編集"
+seoDescription: "画像生成と画像編集を1つにまとめたQwen-Image-2.1の、ComfyUIでの使い方。推奨設定、text2image、Ref2Image、赤丸やマスクでの位置指定編集、Outpaintingを、読みやすく整理したworkflow付きで解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_hero.png"

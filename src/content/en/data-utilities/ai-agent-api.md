@@ -8,6 +8,8 @@ title: "Letting AI Agents Use ComfyUI Workflows"
 created: 2026-05-17
 updated: 2026-05-17
 summary: "Let an AI agent use a ComfyUI workflow through the API"
+seoTitle: "Let AI Agents Run ComfyUI Workflows via the API"
+seoDescription: "Let an AI agent such as Codex run ComfyUI workflows via the API: save a working workflow in API format, hand it over, and why building from scratch is hard."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

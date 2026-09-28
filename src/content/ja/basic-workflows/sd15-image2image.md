@@ -8,6 +8,8 @@ title: "image2image"
 created: 2025-12-06
 updated: 2026-03-02
 summary: "Stable Diffusion 1.5で学ぶimage2image"
+seoTitle: "ComfyUIのimage2imageの使い方とdenoise"
+seoDescription: "参考画像を下書きにして絵を描き直すimage2imageの仕組みを、Stable Diffusion 1.5で解説。KSamplerとKSampler (Advanced)でのworkflowの違いと、denoiseの意味を紹介します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: ""

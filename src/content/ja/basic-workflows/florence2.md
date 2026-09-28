@@ -8,6 +8,8 @@ title: "Florence-2"
 created: 2025-12-08
 updated: 2026-03-02
 summary: "Florence-2を使った画像キャプション生成・物体検出"
+seoTitle: "ComfyUIでFlorence-2を使う：キャプション・物体検出・OCR"
+seoDescription: "1つのモデルで画像キャプション、物体検出、OCR、画像への質問応答をこなすFlorence-2の、ComfyUIでの使い方をタスクごとのworkflow付きで解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

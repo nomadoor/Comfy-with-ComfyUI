@@ -8,6 +8,8 @@ title: "Lumina-Image 2.0"
 created: 2025-12-11
 updated: 2026-03-02
 summary: "Lumina-Image 2.0の基本とComfyUIでの使い方"
+seoTitle: "ComfyUIでLumina-Image 2.0とNeta Luminaを使う"
+seoDescription: "軽量な2.6Bの画像生成モデルLumina-Image 2.0と、その派生のアニメ系モデルNeta Lumina、NetaYume Lumina、NewBie imageの、ComfyUIでの使い方とtext2imageのworkflowを紹介します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/lumina-image-2.0/legacy_gyazo_0eef66b0663a16cd722915b2dcde0c84.png"

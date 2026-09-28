@@ -8,6 +8,8 @@ title: "LTX 2.5"
 created: 2026-09-01
 updated: 2026-09-03
 summary: "使用 LTX 2.5 生成视频和音频"
+seoTitle: "在 ComfyUI 中使用 LTX 2.5：同时生成视频与音频"
+seoDescription: "在 ComfyUI 中使用 Lightricks 的 LTX 2.5：推荐设置与模型、Multi-shot、Duration Predictor、text2video、image2video、FLF2V 和 IC-LoRA，附整理清晰易读的工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/ltx-2-5/legacy_gyazo_f0a0582dba74a4ef6e731142136b5c59.mp4"

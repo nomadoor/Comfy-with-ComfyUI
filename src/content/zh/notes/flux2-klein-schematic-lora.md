@@ -9,6 +9,8 @@ created: 2026-05-30
 updated: 2026-06-01
 noteTags: ["project", "flux-2-klein", "lora"]
 summary: "让 FLUX.2 [klein] 学习 CV 任务风格的 RGB 输出"
+seoTitle: "FLUX.2 [klein] Schematic LoRA：估计深度・法线・姿势"
+seoDescription: "让基于指令的图像编辑模型 FLUX.2 [klein] 学会输出深度、法线、姿势估计等 CV 任务结果的 Schematic LoRA。介绍发布地址、任务设置、数据集与训练流程。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: "/media/notes/flux2-klein-schematic-lora/legacy_gyazo_a0dc0970df98429dcf703e3ed095f6fa.png"

@@ -8,6 +8,8 @@ title: Style Transfer
 created: 2025-12-01
 updated: 2026-03-02
 summary: The task of trying to transfer 'style' from a reference image, and its ambiguity.
+seoTitle: "What Is Style Transfer? Borrowing a Reference Style"
+seoDescription: "Why style transfer is an ambiguous task, and how approaches differ: texture and touch, artist-style models, and IP-Adapter for borrowing the mood."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

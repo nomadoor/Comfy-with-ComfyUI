@@ -8,6 +8,8 @@ title: 物体検出
 created: 2025-12-01
 updated: 2026-03-02
 summary: "画像の中に「何が」「どこに」あるかを見つける技術"
+seoTitle: "物体検出とは？ YOLO・Grounding DINO・Florence-2"
+seoDescription: "画像の中に何がどこにあるかを見つける物体検出の解説。YOLO系・DETR系の手法、テキストで対象を指定するGrounding DINOやFlorence-2、ComfyUIでマスク生成の入口として使う方法をまとめています。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: 'https://i.gyazo.com/1a10dcd7dcf8f72eee275a3d8484f882.png'

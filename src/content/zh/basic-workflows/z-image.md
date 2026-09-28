@@ -8,6 +8,8 @@ title: "Z-Image"
 created: 2026-01-31
 updated: 2026-03-02
 summary: "使用 Z-Image 的图像生成"
+seoTitle: "在 ComfyUI 中使用 Z-Image：基础模型与 ControlNet"
+seoDescription: "阿里巴巴 / Tongyi-MAI 图像生成模型家族 Z-Image 基础模型在 ComfyUI 中的用法。介绍 text2image、用 Z-Image-Turbo 精修，以及 Fun ControlNet Union 2.1 工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/z-image/legacy_gyazo_39cddc1debeff5423090f2fe87e5b038.png"

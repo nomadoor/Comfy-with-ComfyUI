@@ -9,6 +9,8 @@ created: 2025-12-01
 updated: 2026-03-02
 summary: The task of removing specific things from an image and typical methods for
   doing so.
+seoTitle: "Remove Objects from Images with AI: LaMa to Editing"
+seoDescription: "Erase unwanted people, wires, or signs from images: LaMa, diffusion inpainting, and mask-free removal with instruction-based editing models."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: /media/ai-capabilities/object-removal/legacy_gyazo_e06eeccf0efa2e91773bb54acb31560a.mp4

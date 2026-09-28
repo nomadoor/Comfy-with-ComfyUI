@@ -9,6 +9,8 @@ created: 2026-05-02
 updated: 2026-05-02
 noteTags: ["project", "lora", "sdxl", "ai-toolkit"]
 summary: "AI Toolkit を使って、Illustrious 系 SDXL モデル向けのキャラ LoRA を学習する流れ"
+seoTitle: "AI ToolkitでSDXL（Illustrious）のLoRAを学習する"
+seoDescription: "AI Toolkitを使って、Illustrious系SDXLモデル用のキャラクターLoRAを学習する手順。画像の集め方と整え方、キャプションの書き方やMLLMでの作成、AI Toolkitの起動から学習までを解説します。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: "/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_b0d3bb95931f32192df7619f612a202e.png"

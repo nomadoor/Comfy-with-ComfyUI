@@ -8,6 +8,8 @@ title: "Basics of Image Generation (SD1.5)"
 created: 2025-11-13
 updated: 2026-03-02
 summary: "Basics of Image Generation with Stable Diffusion 1.5"
+seoTitle: "Image Generation Basics: Learn ComfyUI Workflows with SD1.5"
+seoDescription: "Almost every model shares the same ComfyUI workflow shape. Learn it with Stable Diffusion 1.5: prepare inputs, pass them to KSampler, and what \"modular\" means."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   gradient:

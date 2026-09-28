@@ -8,6 +8,8 @@ title: "サブグラフ"
 created: 2025-11-20
 updated: 2026-03-02
 summary: "サブグラフについて"
+seoTitle: "ComfyUIのサブグラフの使い方：ノードをまとめて再利用"
+seoDescription: "複数のノードを1つのノードにまとめるComfyUIのサブグラフ機能。作成と編集、パラメータの公開設定、再利用できるモジュールとして保存する方法を解説します。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

@@ -7,6 +7,8 @@ title: "联系我们"
 created: 2026-02-17
 updated: 2026-03-02
 summary: "站点修正、文章请求与运营者联系"
+seoTitle: "联系我们・文章需求"
+seoDescription: "向 Comfy with ComfyUI 报告错别字或故障、请求讲解 ComfyUI 功能或 AI 技术，或发送感想。内容会以匿名方式提交为 GitHub issue。"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - contact

@@ -8,6 +8,8 @@ title: "inpainting"
 created: 2025-12-07
 updated: 2026-08-26
 summary: "inpaintingで画像の一部分だけ編集する"
+seoTitle: "ComfyUIのinpaintingで画像の一部だけを描き直す"
+seoDescription: "画像の一部分だけを描き直すinpaintingの方法を比較。一部分だけのimage2imageと周囲となじまない問題、inpainting専用モデル、ControlNet inpaintの使い方をworkflow付きで解説します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: ["controlnet", "region-limited-generation"]
 hero:

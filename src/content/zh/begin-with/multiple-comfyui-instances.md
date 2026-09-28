@@ -8,6 +8,8 @@ title: "多开 ComfyUI"
 created: 2026-05-24
 updated: 2026-05-24
 summary: "多开 ComfyUI 时，需要错开端口号"
+seoTitle: "多开 ComfyUI 的方法：用 --port 错开端口"
+seoDescription: "在同一台电脑上启动多个 ComfyUI 的方法。从前端与服务器的关系说明第二次启动报错的原因，介绍用 --port 错开端口号，以及多开并不会增加 GPU。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

@@ -8,6 +8,8 @@ title: Upscale & Restoration
 created: 2025-11-13
 updated: 2026-09-27
 summary: Technologies to enlarge images or restore degraded ones.
+seoTitle: "AI Upscaling and Image Restoration: GAN to Diffusion"
+seoDescription: "Upscale low-quality images and restore lost detail: GAN upscalers, face restoration models, diffusion-based methods, and image editing models."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

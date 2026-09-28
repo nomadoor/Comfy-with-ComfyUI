@@ -8,6 +8,8 @@ title: "IP-Adapter"
 created: 2025-12-09
 updated: 2026-08-26
 summary: "从参照图像转印风格和被摄体的元祖机制"
+seoTitle: "在 ComfyUI 中使用 IP-Adapter：从参考图迁移画风"
+seoDescription: "在 Stable Diffusion 1.5 上用 IP-Adapter，无需文字即可迁移参考图的风格或主体。介绍自定义节点、模型下载、工作流，以及 plus / light / face 等主要模型的区别。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_64fdcae074a2a01943d7f5fff3aaa418.png"

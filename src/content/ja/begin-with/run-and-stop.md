@@ -8,6 +8,8 @@ title: "実行・停止"
 created: 2025-11-20
 updated: 2026-09-27
 summary: "実行・停止について"
+seoTitle: "ComfyUIの実行・停止・キューの操作"
+seoDescription: "ComfyUIでworkflowを実行・停止する方法。Runの繰り返し回数、自動実行モードの違い、処理の中断と強制終了、キューの確認とクリアの方法をまとめています。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

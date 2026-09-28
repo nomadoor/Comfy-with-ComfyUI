@@ -8,6 +8,8 @@ title: "推荐配置"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "运行 ComfyUI 所需的 PC 配置"
+seoTitle: "ComfyUI 推荐配置：需要多少显存和内存"
+seoDescription: "流畅运行 ComfyUI 的电脑配置参考。以最重要的 GPU 显存为中心，根据实际使用体验整理 CPU、内存（RAM）和存储的推荐配置。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

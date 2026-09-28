@@ -8,6 +8,8 @@ title: "AIを使ったマスク生成"
 created: 2025-11-26
 updated: 2026-05-30
 summary: "マッティング、セグメンテーション、物体検出について"
+seoTitle: "ComfyUIでAIを使ってマスクを自動生成する"
+seoDescription: "inpaintingなどに使うマスクをAIで自動生成する方法。YOLOやGrounding DINOによる物体検出、BiRefNetによるマッティング、SAMによるセグメンテーションの違いと組み合わせ方を解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/data-utilities/ai-mask-generation/legacy_gyazo_499c4756e1b2adb1424f9cab9829806b.png"

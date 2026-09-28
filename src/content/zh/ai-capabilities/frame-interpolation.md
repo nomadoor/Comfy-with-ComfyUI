@@ -8,6 +8,8 @@ title: 帧插值
 created: 2026-02-06
 updated: 2026-03-02
 summary: 让视频更流畅，或连接分离帧的技术
+seoTitle: "什么是帧插值？让视频更流畅的 AI（VFI・FLF2V）"
+seoDescription: "在视频帧之间插入新帧的帧插值技术。介绍提升帧率的传统 VFI、用视频生成 AI 连接相隔较远帧的生成式插值（FLF2V），以及视频延长。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: 'https://github.com/google-research/frame-interpolation/raw/main/moment.gif'

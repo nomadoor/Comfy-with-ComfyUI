@@ -8,6 +8,8 @@ title: アップスケール・動画修復
 created: 2025-12-01
 updated: 2026-03-02
 summary: 動画を大きく・きれいにするための専用モデル
+seoTitle: "動画のAIアップスケールと修復：SeedVR2・FlashVSR"
+seoDescription: "動画を高解像度化し、画質を修復する専用モデルの解説。静止画用アップスケーラとの違いであるチラつきの問題と、時間方向の一貫性を保つSeedVR2、FlashVSRを紹介します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

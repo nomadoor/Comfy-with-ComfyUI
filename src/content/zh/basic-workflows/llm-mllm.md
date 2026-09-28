@@ -8,6 +8,8 @@ title: "LLM / MLLM"
 created: 2026-02-18
 updated: 2026-03-27
 summary: "在 ComfyUI 中使用 LLM 能做什么"
+seoTitle: "在 ComfyUI 中使用 LLM / MLLM：能做什么与四种方法"
+seoDescription: "在 ComfyUI 中用 LLM、MLLM 能做什么，如扩写提示词、生成图像描述，并比较四种用法：TextGenerate 节点、自定义节点、外部 LLM 服务器和官方 API 节点。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

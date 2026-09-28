@@ -8,6 +8,8 @@ title: "Anima"
 created: 2026-05-29
 updated: 2026-08-01
 summary: "使用 Anima 进行图像生成"
+seoTitle: "在 ComfyUI 中使用 Anima：轻量动漫图像生成模型"
+seoDescription: "基于 NVIDIA Cosmos、用动漫图像训练的 2B 图像生成模型 Anima 在 ComfyUI 中的用法。介绍模型下载、提示词写法、text2image 和 Anima LLLite 工作流。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 tags: []
 hero:

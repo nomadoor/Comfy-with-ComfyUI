@@ -8,6 +8,8 @@ title: "List"
 created: 2025-11-26
 updated: 2026-09-27
 summary: "複数データを使った連続処理の考え方"
+seoTitle: "ComfyUIのList：複数の入力を順番に処理する"
+seoDescription: "1回の実行で複数の入力を順番に処理する、ComfyUIのListの考え方。Queueとの違い、Create List / Get Item From Listノードの使い方、複数のListがあるときの挙動を解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

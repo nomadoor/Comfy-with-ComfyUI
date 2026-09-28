@@ -8,6 +8,8 @@ title: "レイヤ合成"
 created: 2025-11-25
 updated: 2026-03-02
 summary: "画像の重ね合わせや結合、ブレンドについて"
+seoTitle: "ComfyUIで画像を重ねる・並べる・ブレンドする"
+seoDescription: "ComfyUIで画像を合成する方法。ImageCompositeMaskedでの重ね合わせと中央配置、透過PNGの合成、Image Stitchなどでの横並び結合、Image Blendでのブレンドを解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

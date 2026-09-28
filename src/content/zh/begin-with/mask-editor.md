@@ -8,6 +8,8 @@ title: "蒙版编辑器"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于蒙版编辑器的使用方法"
+seoTitle: "ComfyUI 蒙版编辑器的使用方法"
+seoDescription: "在 ComfyUI 中给图像绘制蒙版的蒙版编辑器用法。包括打开方式、画笔・橡皮擦・填充・自动选择等工具、顶部菜单，以及蒙版的保存与应用。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

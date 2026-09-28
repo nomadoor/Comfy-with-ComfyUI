@@ -8,6 +8,8 @@ title: "text2image"
 created: 2025-12-04
 updated: 2026-08-26
 summary: "Stable Diffusion 1.5 的 text2image"
+seoTitle: "ComfyUI text2image 入门：基本工作流与节点"
+seoDescription: "用 Stable Diffusion 1.5 讲解在 ComfyUI 中由文字生成图像的 text2image 基础，介绍 Load Checkpoint、Empty Latent Image、CLIP Text Encode、KSampler、VAE Decode 各节点的作用。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   gradient:

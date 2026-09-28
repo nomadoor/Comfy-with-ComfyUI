@@ -8,6 +8,8 @@ title: "Run & Stop"
 created: 2025-11-20
 updated: 2026-09-27
 summary: "About Run & Stop"
+seoTitle: "Run, Stop, and Queue Workflows in ComfyUI"
+seoDescription: "Run and stop ComfyUI workflows: repeat counts, auto-run modes, interrupting and force-stopping, and checking and clearing the queue."
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

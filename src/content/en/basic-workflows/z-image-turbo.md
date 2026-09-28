@@ -8,6 +8,8 @@ title: "Z-Image-Turbo"
 created: 2025-12-12
 updated: 2026-03-02
 summary: "Image generation with Z-Image-Turbo"
+seoTitle: "Z-Image-Turbo in ComfyUI: Fast 8-Step Image Generation"
+seoDescription: "Use Z-Image-Turbo, an 8-step distilled Z-Image model, in ComfyUI: model download, text2image, and the Fun ControlNet Union workflow."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/z-image-turbo/legacy_gyazo_8cb43e18daed0bcb2bf3bf7c794e5360.png"

@@ -8,6 +8,8 @@ title: 指示ベース画像編集
 created: 2025-12-01
 updated: 2026-03-02
 summary: テキストで指示するだけで、さまざまな画像編集タスクをこなすモデル群
+seoTitle: "指示ベース画像編集とは？ テキストで画像を編集するAI"
+seoDescription: "画像とテキストの指示だけで、絵柄変換やオブジェクトの入れ替えなどをこなす指示ベース画像編集モデルの解説。InstructPix2Pixから、DiT・In-Context系、マルチリファレンス、動画モデルベースの編集までの歴史を整理します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

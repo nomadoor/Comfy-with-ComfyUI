@@ -7,6 +7,8 @@ title: "Contact"
 created: 2026-02-17
 updated: 2026-03-02
 summary: "Site corrections, article requests, and operator contact"
+seoTitle: "Contact and Article Requests"
+seoDescription: "Report typos or bugs, request ComfyUI topics to cover, or send feedback to Comfy with ComfyUI. Messages are posted anonymously as GitHub issues."
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - contact

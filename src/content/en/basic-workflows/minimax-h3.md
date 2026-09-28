@@ -7,6 +7,8 @@ navId: minimax-h3
 title: "MiniMax H3"
 created: 2026-09-14
 summary: "Generate video and audio with MiniMax H3"
+seoTitle: "MiniMax H3 in ComfyUI: Generate Video with Audio"
+seoDescription: "Use MiniMax H3, one transformer for text, image, video, and audio: FL2VA vs. Ref2VA, settings, and text2video, image2video, and first/last frame workflows."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/minimax-h3/minimax_h3_hero.mp4"

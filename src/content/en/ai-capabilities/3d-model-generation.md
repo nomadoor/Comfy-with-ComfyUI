@@ -8,6 +8,8 @@ title: 3D Model Generation
 created: 2025-12-03
 updated: 2026-03-02
 summary: "From multi-view to world models"
+seoTitle: "3D Model Generation AI: From Multi-View to World Models"
+seoDescription: "How AI builds 3D models from images and text: multi-view generation like Zero123++, Stable Video 3D, Hunyuan3D-2.1, SAM 3D Objects, and world models."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

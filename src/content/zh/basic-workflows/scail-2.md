@@ -8,6 +8,8 @@ title: "SCAIL-2"
 created: 2026-06-11
 updated: 2026-06-18
 summary: "使用 SCAIL-2 将视频动作转移到参考图像中的人物"
+seoTitle: "在 ComfyUI 中使用 SCAIL-2：无需骨架的动作迁移"
+seoDescription: "不转换为骨架等中间表示，直接把视频动作迁移到参考图人物上的 Wan2.1 系模型 SCAIL-2 的用法。介绍 Animation 与 Replacement 模式、多人、多参考以及长视频生成。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

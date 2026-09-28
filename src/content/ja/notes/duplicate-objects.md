@@ -9,6 +9,8 @@ created: 2025-12-13
 updated: 2026-03-02
 noteTags: ["troubleshoot", "prompt"]
 summary: "人物や物体が不自然に増えてしまうときの対処法"
+seoTitle: "生成画像で人や物体が分身する原因と対処法"
+seoDescription: "画像生成AIで人物や物体が不自然に増えてしまう症状の原因と解決方法。Stable Diffusion 1.5などで高すぎる解像度や極端な縦横比で生成したときに起きる理由を解説します。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

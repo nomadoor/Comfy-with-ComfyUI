@@ -8,6 +8,8 @@ title: "首次运行"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于首次运行与生成"
+seoTitle: "启动 ComfyUI 并生成第一张图"
+seoDescription: "启动 ComfyUI 并用官方模板生成第一张图片的步骤。包括便携版、桌面版和手动安装的启动方法，以及找不到模型时的处理。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

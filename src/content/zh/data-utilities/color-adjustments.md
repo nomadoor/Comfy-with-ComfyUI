@@ -8,6 +8,8 @@ title: "色调校正与特效"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于图像的亮度调整、模糊、特效"
+seoTitle: "ComfyUI 色调校正与特效节点"
+seoDescription: "ComfyUI 中调整图像亮度、颜色并添加特效的节点汇总：反相、锐化、模糊、减色、加噪、形态学变换，以及可进行专业调色的自定义节点。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/data-utilities/color-adjustments/legacy_gyazo_e1ecb574e0c11da63b0c6f8cee7a9f87.png"

@@ -8,6 +8,8 @@ title: "Data Types"
 created: 2025-11-25
 updated: 2026-03-02
 summary: "About main data types handled in ComfyUI"
+seoTitle: "ComfyUI Data Types: IMAGE, LATENT, MASK, and More"
+seoDescription: "ComfyUI data types: basics like INT and STRING, ComfyUI types such as IMAGE, LATENT, MASK, and CONDITIONING, and the Preview as Text node."
 
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

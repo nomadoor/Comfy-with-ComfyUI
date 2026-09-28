@@ -8,6 +8,8 @@ title: "ComfyUI Manager"
 created: 2026-05-26
 updated: 2026-05-27
 summary: "ComfyUI Managerについて"
+seoTitle: "ComfyUI Managerの使い方：導入とカスタムノード管理"
+seoDescription: "カスタムノードのインストールやアップデートを管理するComfyUI Managerの使い方。新旧Managerの違い、ポータブル版・デスクトップ版・手動インストール版での有効化方法を解説します。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   image: "/media/begin-with/comfyui-manager/legacy_gyazo_76b47ed5d45cf694b436022589464255.png"

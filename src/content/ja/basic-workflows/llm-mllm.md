@@ -8,6 +8,8 @@ title: "LLM / MLLM"
 created: 2026-02-18
 updated: 2026-03-27
 summary: "ComfyUIでLLMを使うと何ができるか"
+seoTitle: "ComfyUIでLLM / MLLMを使う：できることと4つの方法"
+seoDescription: "ComfyUIでLLMやMLLMを使ってできること。プロンプトの拡張や画像のキャプション生成などの用途と、TextGenerateノード、カスタムノード、外部LLMサーバ、公式APIノードという4つの使い方を比較します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

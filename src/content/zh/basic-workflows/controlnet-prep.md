@@ -8,6 +8,8 @@ title: "ControlNet 预处理器"
 created: 2025-12-08
 updated: 2026-03-02
 summary: "制作在 ControlNet 使用的辅助图像"
+seoTitle: "ComfyUI 的 ControlNet 预处理器：Canny・Depth・OpenPose"
+seoDescription: "从参考图自动生成 ControlNet 所需的线稿、深度图、骨架等控制图像的预处理器用法。比较 Canny、SoftEdge、Lineart、Depth、Normal、MLSD、OpenPose 等。"
 tags: ["controlnet"]
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

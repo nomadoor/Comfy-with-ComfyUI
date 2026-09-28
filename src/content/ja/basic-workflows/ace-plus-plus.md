@@ -8,6 +8,8 @@ title: "ACE++"
 created: 2025-12-10
 updated: 2026-03-02
 summary: "ACE++でFlux.1 Fillを拡張する"
+seoTitle: "ComfyUIでACE++を使う：ID転送・Face Swap・Subject転送"
+seoDescription: "Flux.1 Fillを拡張するACE++のComfyUIでの使い方。スプライトシートの考え方を応用したID転送、Face Swap、Subject転送、ローカル編集を、モデルの入手先とworkflow付きで解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/ace-plus-plus/legacy_gyazo_ca2c5be6b2a22cead23cf75a4fc8424f.png"

@@ -8,6 +8,8 @@ title: "Wan2.1"
 created: 2025-12-12
 updated: 2026-03-02
 summary: "Wan2.1でtext2video・image2video・FLF2Vを扱う基本workflow"
+seoTitle: "ComfyUIでWan2.1を使う：text2video・image2video・FLF2V"
+seoDescription: "Alibabaの動画生成モデルWan2.1をComfyUIで使う方法。推奨設定とモデルのダウンロード、text2video、image2video、FLF2V（最初と最後のフレーム指定）、高速生成のSelf Forcingのworkflowを解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/wan-2-1/legacy_gyazo_f952fb311ffdb409a173641f61dd3b67.png"

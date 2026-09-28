@@ -8,6 +8,8 @@ title: "LoRA"
 created: 2025-12-05
 updated: 2026-08-26
 summary: "Stable Diffusion 1.5 的 LoRA"
+seoTitle: "在 ComfyUI 中使用 LoRA 的方法"
+seoDescription: "通过追加训练让模型画出原本画不出内容的 LoRA 原理，以及在 ComfyUI 中的应用方法。介绍 LoRA 下载、text2image 工作流，以及新模型中 LoRA 的情况。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

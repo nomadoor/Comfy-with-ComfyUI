@@ -8,6 +8,8 @@ title: "LTX 2.5"
 created: 2026-09-01
 updated: 2026-09-03
 summary: "LTX 2.5で動画と音声を生成する"
+seoTitle: "ComfyUIでLTX 2.5を使う：動画と音声を同時に生成"
+seoDescription: "LightricksのLTX 2.5をComfyUIで使う方法。推奨設定とモデル、Multi-shotやDuration Predictor、text2video、image2video、FLF2V、IC-LoRAを、読みやすく整理したworkflow付きで解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/ltx-2-5/legacy_gyazo_f0a0582dba74a4ef6e731142136b5c59.mp4"

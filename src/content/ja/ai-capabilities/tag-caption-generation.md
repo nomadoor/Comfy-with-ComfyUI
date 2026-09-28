@@ -8,6 +8,8 @@ title: タグ・キャプション生成
 created: 2025-12-03
 updated: 2026-03-02
 summary: "画像からタグや説明文（キャプション）を自動で付ける技術"
+seoTitle: "画像からタグ・キャプションを自動生成するAIモデル"
+seoDescription: "画像にタグや説明文を自動で付ける技術の解説。WD tagger系やJoyTaggerなどのタグ生成と、JoyCaptionやQwen-VL系によるキャプション生成、API型のモデルとローカルモデルを使う理由を比較します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

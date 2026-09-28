@@ -8,6 +8,8 @@ title: "Wan-Animate"
 created: 2025-12-12
 updated: 2026-03-02
 summary: "Perform motion transfer to people/characters with Wan-Animate"
+seoTitle: "Wan-Animate in ComfyUI: Motion Transfer to Characters"
+seoDescription: "Animate a person in an image with a video's motion using Wan-Animate: Animation and Replacement modes, 6-step Lightx2v LoRA, and long videos."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

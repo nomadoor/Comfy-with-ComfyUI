@@ -8,6 +8,8 @@ title: "Recommendation of Readable Nodes"
 created: 2025-11-26
 updated: 2026-03-02
 summary: "Tips for building clean and easy-to-use workflows"
+seoTitle: "Readable Nodes: How to Build Clean ComfyUI Workflows"
+seoDescription: "Tips for ComfyUI workflows that never turn into spaghetti: guide the eye, keep wires visible, color-code nodes, write notes, and use few custom nodes."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

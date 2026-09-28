@@ -8,6 +8,8 @@ title: リライト
 created: 2025-12-03
 updated: 2026-03-02
 summary: "光源や環境光を変えて、画像のライティングを調整するタスク"
+seoTitle: "リライトとは？ AIで画像のライティングを変える"
+seoDescription: "画像の光源や環境光を変えるリライト（Relighting）の解説。合成した前景を背景になじませるIC-LightやLBM、画像編集モデルとリライト系LoRA、疑似的にライトを置く手法を紹介します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: '/media/ai-capabilities/relight/legacy_gyazo_4c413909ac34f89df891a976fc660f70.png'

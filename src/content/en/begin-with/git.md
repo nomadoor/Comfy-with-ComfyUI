@@ -7,7 +7,9 @@ navId: git
 title: "Git"
 created: 2025-11-24
 updated: 2026-03-02
-summary: ""
+summary: "The Git and GitHub basics worth knowing when using ComfyUI"
+seoTitle: "Git and GitHub Basics for ComfyUI Users"
+seoDescription: "Git and GitHub basics for installing ComfyUI and custom nodes: commits and branches explained with a video-game analogy, key commands, and what ComfyUI Manager does."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/begin-with/git/legacy_gyazo_4bb24e5d24ae91a7e0f1f5143c2e5ee5.png"

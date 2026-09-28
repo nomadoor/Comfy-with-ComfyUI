@@ -8,6 +8,8 @@ title: "Python"
 created: 2026-02-06
 updated: 2026-08-01
 summary: "关于 Python 的基础知识"
+seoTitle: "面向 ComfyUI 用户的 Python 入门"
+seoDescription: "应对 ComfyUI 报错所需的 Python 基础术语：版本、库、pip install、虚拟环境，以及便携版内置 Python 的用法与注意事项。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

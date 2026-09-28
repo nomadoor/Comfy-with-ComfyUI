@@ -8,6 +8,8 @@ title: "Comfy Cloud"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于 Comfy Cloud"
+seoTitle: "什么是 Comfy Cloud？官方云端 ComfyUI"
+seoDescription: "Comfy Org 提供的官方云服务 Comfy Cloud 概要。只需浏览器即可在高性能 GPU 上使用 ComfyUI，介绍与本地版的区别和开始使用的步骤。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient:

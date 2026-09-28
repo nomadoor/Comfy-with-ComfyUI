@@ -8,6 +8,8 @@ title: "ComfyUIを多重起動する"
 created: 2026-05-24
 updated: 2026-05-24
 summary: "ComfyUIを複数起動するときは、ポート番号をずらします"
+seoTitle: "ComfyUIを多重起動する方法：--portでポートをずらす"
+seoDescription: "ComfyUIを同じPCで複数起動する方法。2つ目の起動でエラーになる理由を、画面とサーバーの関係から説明し、--portでポート番号をずらす手順と、多重起動してもGPUは増えない点を解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

@@ -8,6 +8,8 @@ title: "ノード"
 created: 2025-11-20
 updated: 2026-03-02
 summary: "ノードについて"
+seoTitle: "ComfyUIのノード操作：追加・接続・コピーなど"
+seoDescription: "ComfyUIのノードの基本操作。検索やメニュー、ピンからの追加方法、接続と付け替え、選択・削除・コピー＆ペースト・折りたたみ・ピン留めなどの操作をまとめています。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

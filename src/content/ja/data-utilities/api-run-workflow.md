@@ -8,6 +8,8 @@ title: "APIでworkflowを実行してみる"
 created: 2026-02-05
 updated: 2026-03-02
 summary: "実行依頼→完了確認→出力取得、の最小手順"
+seoTitle: "ComfyUIのAPIでworkflowを実行する：Pythonの最小手順"
+seoDescription: "ComfyUIのworkflowをAPI経由で外から実行する最小手順。API形式のJSONを/promptにPOSTする最小のPythonスクリプトと、CLIからプロンプトを書き換える方法を解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

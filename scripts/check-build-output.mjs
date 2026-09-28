@@ -49,8 +49,8 @@ for (const file of await fg(["src/content/{ja,en,zh}/**/*.{md,njk}"])) {
   if (data.seoTitle || data.seoDescription) {
     expectedSeo.set(`${siteUrl}${pagePath}`, { seoTitle: data.seoTitle, seoDescription: data.seoDescription });
   }
-  // Articles: pages in a section with a publish date, excluding utility pages (search, find).
-  if (data.section && data.created && !data.searchExclude) {
+  // Articles: pages in a section with a publish date, excluding utility pages (search, find) and noindex stubs.
+  if (data.section && data.created && !data.searchExclude && !String(data.robots || "").includes("noindex")) {
     expectedArticles.set(`${siteUrl}${pagePath}`, {
       headline: String(data.title),
       datePublished: dateOnly(data.created),

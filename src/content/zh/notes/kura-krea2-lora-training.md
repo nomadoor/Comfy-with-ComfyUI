@@ -9,6 +9,8 @@ created: 2026-07-13
 updated: 2026-07-14
 noteTags: ["project", "lora", "krea-2", "kura"]
 summary: "使用 Kura 和 AI 智能体训练、比较 Krea 2 角色 LoRA 的完整流程"
+seoTitle: "用 Kura 训练 Krea 2 LoRA"
+seoDescription: "使用 Kura 和 AI 智能体训练并比较 Krea 2 角色 LoRA 的流程，包括准备数据集、搭建 Kura 以及执行训练。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: "/media/notes/kura-krea2-lora-training/legacy_gyazo_bd00a496f18c5ecb9925dd7f790ffc7d.png"

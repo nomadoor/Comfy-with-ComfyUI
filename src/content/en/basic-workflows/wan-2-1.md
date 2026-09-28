@@ -8,6 +8,8 @@ title: "Wan 2.1"
 created: 2025-12-12
 updated: 2026-03-02
 summary: "Basic workflow for handling text2video, image2video, and FLF2V with Wan2.1"
+seoTitle: "Wan 2.1 in ComfyUI: text2video, image2video, FLF2V"
+seoDescription: "Use Alibaba's Wan 2.1 in ComfyUI: settings, model downloads, text2video, image2video, FLF2V (first and last frame), and fast Self Forcing."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/wan-2-1/legacy_gyazo_f952fb311ffdb409a173641f61dd3b67.png"

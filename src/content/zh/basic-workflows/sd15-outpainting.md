@@ -8,6 +8,8 @@ title: "outpainting"
 created: 2025-12-07
 updated: 2026-08-26
 summary: "用 outpainting 扩画图像的外侧"
+seoTitle: "用 ComfyUI 的 outpainting 扩展图像外侧"
+seoDescription: "在图像外侧留出空白并补画的 outpainting 方法。介绍使用 inpainting 模型、ControlNet inpaint 以及 FLUX.2 [klein] 等图像编辑模型的做法，附工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

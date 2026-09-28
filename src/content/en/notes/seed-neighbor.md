@@ -9,6 +9,8 @@ created: 2026-02-11
 updated: 2026-03-02
 noteTags: ["faq", "seed"]
 summary: "A nearby seed value does not mean a nearby result"
+seoTitle: "Why Nearby Seeds Give Completely Different Images"
+seoDescription: "Why seed 1234 and 1235 give unrelated images, and how to get similar ones instead: image2image, noise blending, and noise injection."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: "/media/notes/seed-neighbor/legacy_gyazo_9cc7e9a5752b2a65f4e8a76972b9b366.png"

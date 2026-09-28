@@ -8,6 +8,8 @@ title: "ESRGAN"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "图像的放大和面部修正"
+seoTitle: "在 ComfyUI 中使用 ESRGAN：图像放大与面部修复"
+seoDescription: "GAN 时代沿用至今的超分辨率模型 ESRGAN 在 ComfyUI 中的用法。介绍模型下载、放大与倍率调整，以及用 GFPGAN 只修复面部，附工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

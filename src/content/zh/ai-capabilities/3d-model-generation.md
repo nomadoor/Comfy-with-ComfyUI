@@ -8,6 +8,8 @@ title: 3D 模型生成
 created: 2026-02-06
 updated: 2026-03-02
 summary: "从多视角到世界模型"
+seoTitle: "3D 模型生成 AI：从多视角到世界模型"
+seoDescription: "整理由图像或文本生成 3D 模型的 AI 发展：Zero123++ 等多视角生成、Stable Video 3D、Hunyuan3D-2.1、SAM 3D Objects，以及可以漫游其中的世界模型。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

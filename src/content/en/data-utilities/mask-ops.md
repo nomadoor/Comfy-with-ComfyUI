@@ -8,6 +8,8 @@ title: "Mask Operations"
 created: 2025-11-25
 updated: 2026-09-27
 summary: "How to create and edit masks"
+seoTitle: "Mask Operations in ComfyUI: Create, Convert, Edit"
+seoDescription: "Create, preview, and edit masks in ComfyUI: masks from images or colors, Create Solid Mask, the Mask Editor, depth maps, and grow, blur, and combine nodes."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

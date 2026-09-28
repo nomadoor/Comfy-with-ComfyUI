@@ -8,6 +8,8 @@ title: Talking Head
 created: 2026-02-06
 updated: 2026-03-02
 summary: 让单张图片或人脸照片配合参考视频或音频说话的技术
+seoTitle: "什么是 Talking Head？让单张图说话的 AI"
+seoDescription: "让单张图像或人脸照片配合参考视频或音频说话的 Talking Head 技术。讲解与 Lip Sync 的区别，以及 LivePortrait 等变形式、扩散模型式和视频生成模型式的方法。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

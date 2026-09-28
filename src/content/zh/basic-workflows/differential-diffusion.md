@@ -8,6 +8,8 @@ title: "Differential Diffusion"
 created: 2025-12-07
 updated: 2026-08-26
 summary: "用掩膜的浓度控制变化量"
+seoTitle: "ComfyUI 的 Differential Diffusion：用蒙版浓度控制变化量"
+seoDescription: "根据蒙版浓度按区域改变 denoise 的 Differential Diffusion 用法。介绍分区域调整变化量、融合边界，以及把深度图当作蒙版使用，附工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/differential-diffusion/legacy_gyazo_1f32a3d04b7ee26518803718151fc1d0.png"

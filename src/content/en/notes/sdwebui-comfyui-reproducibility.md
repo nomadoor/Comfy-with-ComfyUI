@@ -9,6 +9,8 @@ created: 2025-12-13
 updated: 2026-03-02
 noteTags: ["faq", "reproducibility"]
 summary: "Reasons why images do not match even with the same model and same seed"
+seoTitle: "Why Stable Diffusion web UI and ComfyUI Images Differ"
+seoDescription: "Why the same model and seed give different images in Stable Diffusion web UI and ComfyUI: noise generation and prompt weighting, and why an exact match is so hard."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

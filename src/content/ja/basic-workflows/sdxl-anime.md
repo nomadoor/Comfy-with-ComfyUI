@@ -8,6 +8,8 @@ title: "アニメ系 SDXL モデル"
 created: 2025-12-09
 updated: 2026-03-02
 summary: "SDXLベースのアニメ系モデルのざっくり整理"
+seoTitle: "アニメ系SDXLモデルまとめ：Illustrious・Pony・Animagine"
+seoDescription: "ComfyUIで使えるアニメ系SDXLモデルの系統を整理。Animagine XL、Illustrious XL、Pony Diffusion V6 XL、WAI-illustriousなどの特徴と関係をざっくり把握できます。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/sdxl-anime/legacy_gyazo_6ee98c633b487214c13c32a9af7d64cb.png"

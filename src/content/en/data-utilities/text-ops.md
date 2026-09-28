@@ -8,6 +8,8 @@ title: "Text Operations"
 created: 2025-11-25
 updated: 2026-05-27
 summary: "About nodes that manipulate text"
+seoTitle: "Text Nodes in ComfyUI: Concatenate, Replace, Regex"
+seoDescription: "ComfyUI nodes for prompts and other strings: concatenate, replace, substring, and trim, plus regular expressions and rgthree's Power Puter."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

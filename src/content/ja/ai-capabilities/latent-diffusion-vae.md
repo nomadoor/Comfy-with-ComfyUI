@@ -8,6 +8,8 @@ title: Latent Diffusion ModelとVAE
 created: 2025-11-29
 updated: 2026-03-02
 summary: 潜在空間とVAEの役割
+seoTitle: "Latent Diffusion ModelとVAEとは？ 潜在空間の役割"
+seoDescription: "画像生成AIを家庭のPCで動かせるようにしたLatent Diffusion Modelと、画像と潜在空間を行き来するVAEの役割を解説。潜在空間で処理する理由、VAEが非可逆圧縮であること、VAEの選び方をまとめています。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

@@ -7,7 +7,9 @@ navId: terminal
 title: "ターミナル"
 created: 2025-11-20
 updated: 2026-03-02
-summary: ""
+summary: "コマンドでPCを操作するターミナルの基本"
+seoTitle: "ターミナル入門：PowerShellとLinuxの基本コマンド"
+seoDescription: "ComfyUIのインストールやトラブル対応で使うターミナル（CLI）の基本。WindowsのPowerShellとLinux / macOSのターミナルの開き方、最低限覚えたいコマンドを解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/begin-with/terminal/legacy_gyazo_f763b3b332d7854c0200b3d0690b7c7f.png"

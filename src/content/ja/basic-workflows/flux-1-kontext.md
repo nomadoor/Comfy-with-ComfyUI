@@ -8,6 +8,8 @@ title: "Flux.1 Kontext"
 created: 2025-12-11
 updated: 2026-03-02
 summary: "Flux.1 Kontextで指示ベース画像編集を行う。"
+seoTitle: "ComfyUIでFlux.1 Kontextを使う：指示ベース画像編集"
+seoDescription: "テキストの指示で画像を編集するFlux.1 Kontext [dev]の、ComfyUIでの使い方。モデルのダウンロード、基本のworkflow、プロンプトの書き方と、絵柄変換・オブジェクト除去・テキスト置き換えなどの例を紹介します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/flux-1-kontext/legacy_gyazo_79c075e47d999e282c8a2cd3c05f10ef.png"

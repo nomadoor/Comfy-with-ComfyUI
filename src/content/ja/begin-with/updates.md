@@ -7,7 +7,9 @@ navId: updates
 title: "アップデート"
 created: 2025-11-20
 updated: 2026-03-02
-summary: ""
+summary: "ComfyUIを最新の状態に保つ方法"
+seoTitle: "ComfyUIのアップデート方法：安定版と開発版"
+seoDescription: "ComfyUIのアップデート手順。安定版（Stable）と開発版（Nightly）の違いと、ポータブル版、手動インストール版、ComfyUI Manager、デスクトップ版それぞれでの更新方法をまとめています。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

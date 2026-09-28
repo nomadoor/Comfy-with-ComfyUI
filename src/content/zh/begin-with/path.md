@@ -8,6 +8,8 @@ title: "路径"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于路径的概念"
+seoTitle: "什么是路径？绝对路径与相对路径的区别"
+seoDescription: "在 ComfyUI 设置和报错信息中经常出现的“路径”基础。讲解作为文件地址的路径、绝对路径与相对路径的区别，以及 Windows 与 Mac/Linux 分隔符的不同。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

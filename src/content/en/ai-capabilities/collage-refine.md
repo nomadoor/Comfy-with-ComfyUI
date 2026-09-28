@@ -9,6 +9,8 @@ created: 2025-12-01
 updated: 2026-03-02
 summary: A technique to finish rough collage images into natural single pictures using
   instruction-based image editing.
+seoTitle: "Refine Rough Collages with Image Editing AI"
+seoDescription: "Paste objects into a rough collage, then let an instruction-based editing model blend it into one image. Why positions hold, unlimited references, and LoRAs."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: /media/ai-capabilities/collage-refine/legacy_gyazo_967bb07db193bdc681c1f5528f99d537.png

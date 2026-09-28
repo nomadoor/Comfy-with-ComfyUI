@@ -9,6 +9,8 @@ created: 2025-12-01
 updated: 2026-03-02
 summary: A group of models that perform various image editing tasks simply by following
   text instructions.
+seoTitle: "What Is Instruction-Based Image Editing?"
+seoDescription: "Models that edit images from text instructions. Their history from InstructPix2Pix through DiT and in-context models to multi-reference and video editing."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

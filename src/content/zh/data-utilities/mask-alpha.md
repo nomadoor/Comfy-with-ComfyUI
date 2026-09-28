@@ -8,6 +8,8 @@ title: "蒙版与 Alpha 通道"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于蒙版的概念和透明图像的处理"
+seoTitle: "ComfyUI 的蒙版与 Alpha 通道（透明）"
+seoDescription: "ComfyUI 中蒙版与透明图像的处理。讲解用黑白指定处理范围的蒙版含义、与 Alpha 通道的关系、与一般软件的差异、RGBA 的合并与拆分，以及混用 RGB 导致的错误。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/data-utilities/mask-alpha/legacy_gyazo_bd1a30f0d9562418f2fd74c7d9dd6f1e.png"

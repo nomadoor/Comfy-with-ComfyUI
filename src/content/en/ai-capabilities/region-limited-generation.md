@@ -9,6 +9,8 @@ created: 2025-12-01
 updated: 2026-03-02
 summary: Techniques to generate only parts of an image with different conditions,
   and their limitations.
+seoTitle: "Regional Prompting: Place Things Where You Want in an Image"
+seoDescription: "Control where things appear: positions in the prompt, repeated inpainting, Conditioning Set Area, Latent Couple, Attention Couple, and collage refining."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

@@ -7,6 +7,8 @@ title: "About"
 created: 2025-11-13
 updated: 2026-03-02
 summary: "关于本站"
+seoTitle: "关于 Comfy with ComfyUI"
+seoDescription: "Comfy with ComfyUI 是一个从基础讲解 ComfyUI 操作和生成式 AI 能力的 CC0 网站。介绍作者 nomadoor、许可证与支持方式。"
 searchExclude: true
 tags:
   - about

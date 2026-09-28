@@ -8,6 +8,8 @@ title: "Differential Diffusion"
 created: 2025-12-07
 updated: 2026-08-26
 summary: "Control the amount of change with mask intensity"
+seoTitle: "Differential Diffusion in ComfyUI: Mask-Based Denoise"
+seoDescription: "Differential Diffusion sets denoise per area from mask intensity. Vary change by region, blend boundaries, and use depth maps as masks, with workflows."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/differential-diffusion/legacy_gyazo_1f32a3d04b7ee26518803718151fc1d0.png"

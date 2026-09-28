@@ -8,6 +8,8 @@ title: "起動して生成"
 created: 2025-11-20
 updated: 2026-03-02
 summary: "起動して生成について"
+seoTitle: "ComfyUIを起動して最初の画像を生成する"
+seoDescription: "ComfyUIを起動し、公式テンプレートから最初の画像を生成するまでの手順。ポータブル版・デスクトップ版・手動インストールでの起動方法と、モデルが見つからないときの対処を解説します。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

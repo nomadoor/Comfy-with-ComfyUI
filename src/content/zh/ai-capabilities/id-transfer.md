@@ -8,6 +8,8 @@ title: ID 转移与 FaceSwap
 created: 2026-02-06
 updated: 2026-03-02
 summary: 保持人物面部或本人特征，创作不同场景图像的技术与换脸
+seoTitle: "ID 转移与换脸：保持面部特征生成图像的 AI"
+seoDescription: "在保持人物面部和本人特征的同时生成不同场景的 ID 转移技术，以及换脸（FaceSwap）。比较 LoRA、IP-Adapter 系列、InstantID、PuLID-FLUX、InfiniteYou 与基于指令的图像编辑。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: /media/ai-capabilities/id-transfer/legacy_gyazo_877d8862f6e7f6dd3ec7fbeac5331cd9.png

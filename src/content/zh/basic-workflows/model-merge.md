@@ -8,6 +8,8 @@ title: "模型合并与差分 LoRA"
 created: 2025-12-11
 updated: 2026-08-26
 summary: "合并检查点或 LoRA 制作新模型或差分 LoRA 的方法"
+seoTitle: "在 ComfyUI 中合并模型：制作差分 LoRA"
+seoDescription: "在 ComfyUI 中合并检查点或 LoRA 制作新模型的方法。介绍 50:50 合并及其弱点、分层合并、LoRA 合并，以及从两个模型的差异提取 LoRA，附工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
  image: "/media/basic-workflows/model-merge/legacy_gyazo_60a8e4bd6e8b13d321cab6372e363baa.png"

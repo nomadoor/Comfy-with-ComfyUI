@@ -8,6 +8,8 @@ title: "推奨スペック"
 created: 2025-11-19
 updated: 2026-03-02
 summary: "ComfyUIを動かすために必要なPCスペック"
+seoTitle: "ComfyUIの推奨スペック：必要なVRAM・メモリ"
+seoDescription: "ComfyUIを快適に動かすためのPCスペックの目安。最も重要なGPUのVRAM容量を中心に、CPU、メモリ（RAM）、ストレージの推奨構成を、実際の利用感にもとづいて整理しています。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

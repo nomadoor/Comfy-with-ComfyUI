@@ -8,6 +8,8 @@ title: "image2image"
 created: 2025-12-06
 updated: 2026-03-02
 summary: "Learning image2image with Stable Diffusion 1.5"
+seoTitle: "image2image in ComfyUI and What Denoise Does"
+seoDescription: "How image2image redraws a reference image, shown with Stable Diffusion 1.5: KSampler vs. KSampler (Advanced) workflows and what denoise means."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: ""

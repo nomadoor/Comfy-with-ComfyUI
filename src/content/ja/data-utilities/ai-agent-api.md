@@ -8,6 +8,8 @@ title: "ComfyUIのworkflowをAIエージェントに使わせる"
 created: 2026-05-17
 updated: 2026-05-17
 summary: "ComfyUI workflowを、AIエージェントにAPI経由で使わせる"
+seoTitle: "ComfyUIのworkflowをAIエージェントにAPIで使わせる"
+seoDescription: "CodexなどのAIエージェントに、ComfyUIのworkflowをAPI経由で実行させる方法。動くworkflowをAPI形式で保存して渡す手順と、workflow作成から任せるのが難しい理由、MCPについて解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

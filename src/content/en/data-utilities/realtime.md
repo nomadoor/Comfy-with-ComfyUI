@@ -8,6 +8,8 @@ title: "Realtime Processing"
 created: 2025-11-27
 updated: 2026-03-02
 summary: "Realtime-like processing and when to use Instant/Change"
+seoTitle: "Near-Realtime ComfyUI: Run (Instant / On Change)"
+seoDescription: "ComfyUI is not built for realtime, but it can feel close. Run (Instant) vs. Run (On Change), and notes on realtime image2image and video2video."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

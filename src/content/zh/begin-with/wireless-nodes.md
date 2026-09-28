@@ -8,6 +8,8 @@ title: "无线化"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "关于节点间的无线通信"
+seoTitle: "ComfyUI 节点无线化：Set 与 Get 节点"
+seoDescription: "减少连线、整理工作流的 ComfyUI 节点无线化方法。介绍 KJNodes 的 Set / Get 节点用法，以及过度使用反而难以阅读的注意点。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

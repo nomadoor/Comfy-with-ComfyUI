@@ -8,6 +8,8 @@ title: "Differential Diffusion"
 created: 2025-12-07
 updated: 2026-08-26
 summary: "マスクの濃度で変化量をコントロールする"
+seoTitle: "ComfyUIのDifferential Diffusion：マスクの濃さで変化量を調整"
+seoDescription: "マスクの濃度に応じて場所ごとにdenoiseを変えられるDifferential Diffusionの使い方。部分ごとの変化量の調整、境界のなじませ方、深度マップをマスクとして使う方法をworkflow付きで解説します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/differential-diffusion/legacy_gyazo_1f32a3d04b7ee26518803718151fc1d0.png"

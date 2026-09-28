@@ -8,6 +8,8 @@ title: "モデルのマージと差分LoRA"
 created: 2025-12-11
 updated: 2026-08-26
 summary: "チェックポイントやLoRAをマージして新しいモデルや差分LoRAを作る方法"
+seoTitle: "ComfyUIでモデルをマージする：差分LoRAの作り方"
+seoDescription: "ComfyUIでチェックポイントやLoRAをマージして新しいモデルを作る方法。50:50のマージとその弱点、階層マージ、LoRAのマージ、2つのモデルの差分からLoRAを作る方法をworkflow付きで解説します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
  image: "/media/basic-workflows/model-merge/legacy_gyazo_60a8e4bd6e8b13d321cab6372e363baa.png"

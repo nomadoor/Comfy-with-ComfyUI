@@ -8,6 +8,8 @@ title: "List"
 created: 2025-11-26
 updated: 2026-09-27
 summary: "关于列表：使用多个数据进行连续处理的思路"
+seoTitle: "ComfyUI 的 List：按顺序处理多个输入"
+seoDescription: "一次执行即可按顺序处理多个输入的 ComfyUI List 思路。讲解与 Queue 的区别、Create List / Get Item From List 节点的用法，以及存在多个 List 时的行为。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

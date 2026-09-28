@@ -8,6 +8,8 @@ title: "ACE++"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "用 ACE++ 扩展 Flux.1 Fill"
+seoTitle: "在 ComfyUI 中使用 ACE++：ID 转移・换脸・Subject 转移"
+seoDescription: "扩展 Flux.1 Fill 的 ACE++ 在 ComfyUI 中的用法。借用精灵图（sprite sheet）思路实现 ID 转移、换脸、Subject 转移和局部编辑，附模型下载与工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/ace-plus-plus/legacy_gyazo_ca2c5be6b2a22cead23cf75a4fc8424f.png"

@@ -8,6 +8,8 @@ title: "Wildcards"
 created: 2026-02-10
 updated: 2026-03-02
 summary: "Randomly replace part of a prompt for each queue run"
+seoTitle: "ComfyUI Wildcards: Randomize Parts of a Prompt"
+seoDescription: "Randomly swap parts of a prompt on each queue run in ComfyUI with the built-in {a|b|c} syntax or Impact-Pack wildcards, with workflows."
 permalink: "/{{ lang }}/data-utilities/{{ slug }}/"
 hero:
   gradient: ""

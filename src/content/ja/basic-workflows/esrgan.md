@@ -8,6 +8,8 @@ title: "ESRGAN"
 created: 2025-12-08
 updated: 2026-03-02
 summary: "画像のアップスケールと顔補正"
+seoTitle: "ComfyUIでESRGANを使う：画像のアップスケールと顔補正"
+seoDescription: "GAN世代から使われてきた超解像モデルESRGANの、ComfyUIでの使い方。モデルのダウンロード、アップスケールと倍率の調整、GFPGANで顔だけを補正する方法をworkflow付きで解説します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: ""

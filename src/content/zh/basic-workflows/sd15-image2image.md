@@ -8,6 +8,8 @@ title: "image2image"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "在 Stable Diffusion 1.5 中学习 image2image"
+seoTitle: "ComfyUI 的 image2image 用法与 denoise"
+seoDescription: "用 Stable Diffusion 1.5 讲解以参考图为草稿重新绘制的 image2image 原理，介绍 KSampler 与 KSampler (Advanced) 工作流的区别，以及 denoise 的含义。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

@@ -8,6 +8,8 @@ title: "Qwen-Image-Layered"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "将输入图像分解为复数的 RGBA 图层"
+seoTitle: "在 ComfyUI 中使用 Qwen-Image-Layered：把图像分解为图层"
+seoDescription: "把输入图像分解为任意数量透明（RGBA）图层的扩散模型 Qwen-Image-Layered 在 ComfyUI 中的用法。讲解分层后只编辑部分内容的思路，以及模型下载和工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/qwen-image-layered/legacy_gyazo_bfc9ecbc781e79e29f0a9b1df0597bbb.png"

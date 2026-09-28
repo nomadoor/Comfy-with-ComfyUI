@@ -8,6 +8,8 @@ title: "List"
 created: 2025-11-26
 updated: 2026-09-27
 summary: "Concept of continuous processing using multiple data"
+seoTitle: "Lists in ComfyUI: Process Multiple Inputs in Turn"
+seoDescription: "ComfyUI lists process several inputs one by one in a single run: how they differ from the queue, Create List and Get Item From List, and multiple lists."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

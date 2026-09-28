@@ -8,6 +8,8 @@ title: "Textual Inversion"
 created: 2025-12-05
 updated: 2026-08-26
 summary: "Stable Diffusion 1.5でのTextual Inversion"
+seoTitle: "ComfyUIでTextual Inversion（embedding）を使う"
+seoDescription: "テキストで表現しづらい見た目を新しい単語として覚えさせるTextual Inversionの仕組みと、ComfyUIでのembeddingの使い方。embeddingのダウンロードとtext2imageのworkflowを紹介します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: ""

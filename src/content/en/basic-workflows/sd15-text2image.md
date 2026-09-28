@@ -8,6 +8,8 @@ title: "text2image"
 created: 2025-12-04
 updated: 2026-08-26
 summary: "text2image with Stable Diffusion 1.5"
+seoTitle: "ComfyUI text2image for Beginners: The Basic Workflow"
+seoDescription: "text2image basics in ComfyUI with Stable Diffusion 1.5: what Load Checkpoint, Empty Latent Image, CLIP Text Encode, KSampler, and VAE Decode do."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   gradient:

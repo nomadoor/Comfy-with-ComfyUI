@@ -8,6 +8,8 @@ title: "文本操作"
 created: 2025-11-25
 updated: 2026-05-27
 summary: "关于操作文本的节点"
+seoTitle: "ComfyUI 文本操作节点：拼接・替换・正则表达式"
+seoDescription: "ComfyUI 中处理提示词等字符串的节点汇总：拼接、替换、截取、去除空白等基本操作，以及正则表达式和 rgthree 的 Power Puter，附工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

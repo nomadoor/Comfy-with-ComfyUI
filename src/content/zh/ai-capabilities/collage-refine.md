@@ -8,6 +8,8 @@ title: 杂乱拼贴的优化
 created: 2026-02-06
 updated: 2026-03-02
 summary: 将杂乱的拼贴图像，通过基于指令的图像编辑整理成自然的一张画的技巧
+seoTitle: "杂乱拼贴优化：用图像编辑 AI 指定构图"
+seoDescription: "先随意拼贴摆放物体，再交给基于指令的图像编辑模型整理成自然画面的技巧。讲解能保留位置、参考数量不受限的优点，以及专用 LoRA。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: /media/ai-capabilities/collage-refine/legacy_gyazo_967bb07db193bdc681c1f5528f99d537.png

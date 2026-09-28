@@ -9,6 +9,8 @@ created: 2025-12-01
 updated: 2026-03-02
 summary: Technology to make the same thing in a reference image appear in another
   scene.
+seoTitle: "Subject Transfer: Same Character in New Scenes"
+seoDescription: "Place the subject of a reference image into new scenes. Compares LoRA, IP-Adapter, IC-LoRA, ACE++, and instruction-based image editing models."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

@@ -8,6 +8,8 @@ title: "SAM 3 / 3.1"
 created: 2026-05-07
 updated: 2026-05-07
 summary: "使用 SAM 3 / 3.1 生成 AI 蒙版"
+seoTitle: "在 ComfyUI 中使用 SAM 3 / 3.1：用文本生成蒙版"
+seoDescription: "在 ComfyUI 中使用 Meta 的 SAM 3 / 3.1，通过文本指定对象进行分割。介绍模型下载，以及为静态图像和视频生成蒙版的工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

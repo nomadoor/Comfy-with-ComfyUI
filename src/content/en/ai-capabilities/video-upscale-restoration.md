@@ -8,6 +8,8 @@ title: Video Upscale & Restoration
 created: 2025-12-01
 updated: 2026-03-02
 summary: Dedicated models to make videos larger and cleaner
+seoTitle: "AI Video Upscaling and Restoration: SeedVR2, FlashVSR"
+seoDescription: "Models for upscaling and restoring video: why frame-by-frame image upscalers flicker, and how SeedVR2 and FlashVSR stay consistent over time."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

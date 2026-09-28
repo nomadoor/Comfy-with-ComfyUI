@@ -8,6 +8,8 @@ title: "LLM / MLLM"
 created: 2026-02-18
 updated: 2026-03-27
 summary: "What you can do with LLMs in ComfyUI"
+seoTitle: "Using LLMs and MLLMs in ComfyUI: Four Ways"
+seoDescription: "What LLMs and MLLMs do in ComfyUI, from prompt expansion to captions, and four ways to run them: TextGenerate, custom nodes, a server, or API nodes."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

@@ -8,6 +8,8 @@ title: "セグメンテーション"
 created: 2025-12-01
 updated: 2026-03-02
 summary: "マスクをつくるために画像を分ける技術（主にSAM系）"
+seoTitle: "セグメンテーションとは？ SAMでマスクを作る技術"
+seoDescription: "ポイントやBBOX、テキストで指定した物体の形のマスクを作るセグメンテーションの解説。マッティングとの違い、Segment Anything（SAM）シリーズの主なモデルと、ComfyUIでの使いどころを紹介します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/ai-capabilities/segmentation/legacy_gyazo_4a56caa5986a2c2403dcad74d1bf1874.png"

@@ -8,6 +8,8 @@ title: "层合成"
 created: 2025-11-25
 updated: 2026-03-02
 summary: "关于图像的叠加、结合、混合"
+seoTitle: "在 ComfyUI 中叠加・拼接・混合图像"
+seoDescription: "ComfyUI 中合成图像的方法：用 ImageCompositeMasked 叠加与居中放置、合成透明 PNG、用 Image Stitch 等横向拼接，以及用 Image Blend 混合。"
 
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

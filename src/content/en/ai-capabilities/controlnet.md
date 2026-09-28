@@ -9,6 +9,8 @@ created: 2025-12-01
 updated: 2026-03-02
 summary: Techniques to control image generation with additional information such as
   poses and line art.
+seoTitle: "What Is ControlNet? Guide Generation with Poses and Lines"
+seoDescription: "How ControlNet steers generation with poses, line art, or depth maps: the main types (openpose, depth, scribble, lineart, inpaint) and instruction-based editing."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: https://i.gyazo.com/374d9112c26cc1098d9e7e11b5ca49fa.png

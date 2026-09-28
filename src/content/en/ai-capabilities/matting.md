@@ -8,6 +8,8 @@ title: Matting
 created: 2025-12-03
 updated: 2026-03-02
 summary: "Technology to cut out the foreground from a natural image and separate it from the background"
+seoTitle: "What Is Image Matting? AI Background Removal"
+seoDescription: "Image matting separates foreground from background in ordinary photos, down to single hairs, with alpha mattes. Introduces BiRefNet and SDMatte."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: '/media/ai-capabilities/matting/legacy_gyazo_38630075ecd6336a630da0fe5b8ba130.mp4'

@@ -8,6 +8,8 @@ title: 物体检测
 created: 2026-02-06
 updated: 2026-03-02
 summary: "找出图像中即“有什么”“在哪里”的技术"
+seoTitle: "什么是物体检测？YOLO・Grounding DINO・Florence-2"
+seoDescription: "找出图像中“有什么、在哪里”的物体检测。介绍 YOLO 系与 DETR 系，用文本指定对象的 Grounding DINO 和 Florence-2，以及在 ComfyUI 中作为生成蒙版第一步的用法。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: 'https://i.gyazo.com/1a10dcd7dcf8f72eee275a3d8484f882.png'

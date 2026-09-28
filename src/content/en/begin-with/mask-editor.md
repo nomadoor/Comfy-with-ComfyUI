@@ -8,6 +8,8 @@ title: "Mask Editor"
 created: 2025-11-24
 updated: 2026-03-02
 summary: "How to use the mask editor"
+seoTitle: "How to Use the ComfyUI Mask Editor"
+seoDescription: "Draw masks with the ComfyUI Mask Editor: opening it, brush, eraser, fill, and auto-select tools, the top menu, and saving and applying masks."
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

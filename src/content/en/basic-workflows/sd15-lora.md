@@ -8,6 +8,8 @@ title: "LoRA"
 created: 2025-12-05
 updated: 2026-08-26
 summary: "LoRA in Stable Diffusion 1.5"
+seoTitle: "How to Use LoRA in ComfyUI"
+seoDescription: "How LoRA teaches a model new things and how to apply it in ComfyUI: downloading a LoRA, the text2image workflow, and LoRA with recent models."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: ""

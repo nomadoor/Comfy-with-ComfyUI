@@ -9,6 +9,8 @@ created: 2026-02-06
 updated: 2026-03-02
 noteTags: ["troubleshoot", "vram"]
 summary: "torch.cuda.OutOfMemoryError"
+seoTitle: "ComfyUI 的 torch.cuda.OutOfMemoryError 原因与对策"
+seoDescription: "ComfyUI 出现 torch.cuda.OutOfMemoryError（显存不足）时的原因和解决方法，讲解模型、分辨率、批量大小与显存的关系，以及避免报错的对策。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

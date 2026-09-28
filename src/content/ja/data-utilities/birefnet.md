@@ -8,6 +8,8 @@ title: "BiRefNet"
 created: 2026-05-30
 updated: 2026-06-24
 summary: "BiRefNet を使った背景除去とマスク生成"
+seoTitle: "ComfyUIでBiRefNetを使う：高精度な背景除去"
+seoDescription: "髪や植物のような細かい部分まできれいに切り抜けるBiRefNetの、ComfyUIでの使い方。モデルのダウンロードと、前景の切り抜き・背景の塗りつぶしのworkflowを紹介します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/data-utilities/birefnet/legacy_gyazo_2e42734281821aa3f28153af9ba6a08e.png"

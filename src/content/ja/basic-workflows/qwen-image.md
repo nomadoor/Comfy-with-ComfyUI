@@ -8,6 +8,8 @@ title: "Qwen-Image"
 created: 2025-12-11
 updated: 2026-03-02
 summary: "Qwen-Imageの使い方"
+seoTitle: "ComfyUIでQwen-Imageを使う：ControlNet・Lightning"
+seoDescription: "Qwen2.5-VLをテキストエンコーダに使い、プロンプトの理解力が高いQwen-Imageの、ComfyUIでの使い方。推奨解像度、text2image、InstantXのControlNet、高速生成用のLightning LoRAのworkflowを紹介します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/qwen-image/legacy_gyazo_4f6ca42890bb8717fa4668d8c56bcbc5.png"

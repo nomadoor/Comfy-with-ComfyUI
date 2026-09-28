@@ -8,6 +8,8 @@ title: Virtual Try-On
 created: 2025-12-01
 updated: 2026-03-02
 summary: The task of replacing only the clothes with a different design or variation.
+seoTitle: "AI Virtual Try-On: Swap Clothes in an Image"
+seoDescription: "Swap only the clothes in an image: LoRA, catvton-flux, and instruction-based image editing with side-by-side or multi-reference inputs."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

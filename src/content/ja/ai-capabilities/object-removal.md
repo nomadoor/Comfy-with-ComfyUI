@@ -8,6 +8,8 @@ title: オブジェクト除去
 created: 2025-12-01
 updated: 2026-03-02
 summary: 画像から特定のものだけを消すタスクと、その代表的なやり方
+seoTitle: "AIでオブジェクトを除去する方法：LaMa・inpainting・画像編集"
+seoDescription: "画像から人物や電線などの不要なものだけを消すオブジェクト除去の方法を比較。LaMa、拡散モデルのinpainting、マスクが要らない指示ベース画像編集モデルでの除去を解説します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: /media/ai-capabilities/object-removal/legacy_gyazo_e06eeccf0efa2e91773bb54acb31560a.mp4

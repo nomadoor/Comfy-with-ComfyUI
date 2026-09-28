@@ -8,6 +8,8 @@ title: "Model Merge & Difference LoRA"
 created: 2025-12-11
 updated: 2026-08-26
 summary: "How to merge checkpoints/LoRAs and create difference LoRAs"
+seoTitle: "Merge Models in ComfyUI and Make Difference LoRAs"
+seoDescription: "Merge checkpoints and LoRAs in ComfyUI: 50:50 merges and their limits, block merging, LoRA merging, and extracting a difference LoRA, with workflows."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: "/media/basic-workflows/model-merge/legacy_gyazo_60a8e4bd6e8b13d321cab6372e363baa.png"

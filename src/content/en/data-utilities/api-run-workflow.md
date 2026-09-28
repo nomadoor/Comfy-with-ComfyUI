@@ -8,6 +8,8 @@ title: "Running a Workflow via API"
 created: 2026-02-05
 updated: 2026-03-02
 summary: "Minimum steps: Request execution -> Check completion -> Get output"
+seoTitle: "Run a ComfyUI Workflow via the API with Python"
+seoDescription: "Run a ComfyUI workflow from outside: POST API-format JSON to /prompt with a minimal Python script, then change the prompt from the command line."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

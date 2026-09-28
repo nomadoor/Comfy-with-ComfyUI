@@ -9,6 +9,8 @@ created: 2026-02-06
 updated: 2026-03-02
 noteTags: ["troubleshoot", "error"]
 summary: "遇到错误时的检查清单"
+seoTitle: "ComfyUI 出现错误时该做什么"
+seoDescription: "ComfyUI 报错时的检查步骤：应该看画面和终端的哪里、错误信息的读法与查法，以及提交 issue 前需要确认的事项。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

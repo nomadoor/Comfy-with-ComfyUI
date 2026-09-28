@@ -8,6 +8,8 @@ title: "Webcam"
 created: 2025-11-25
 updated: 2026-03-02
 summary: "How to import webcam or OBS footage into ComfyUI"
+seoTitle: "Use a Webcam or OBS as Input in ComfyUI"
+seoDescription: "Capture a webcam in ComfyUI with Webcam Capture, bring in your screen through OBS Virtual Camera, and rerun automatically for near-realtime results."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/data-utilities/webcam-input/legacy_gyazo_5c2f4a37547aa854b5dcc8d264ff962b.png"

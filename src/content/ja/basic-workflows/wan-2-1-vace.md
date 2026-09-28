@@ -8,6 +8,8 @@ title: "Wan2.1 VACE"
 created: 2025-12-13
 updated: 2026-03-02
 summary: "Wan2.1 VACEでControlNet的制御・in/outpainting・reference2video・Extensionを扱う"
+seoTitle: "ComfyUIでWan2.1 VACEを使う：動画版ControlNetと編集"
+seoDescription: "動画版のControlNet、inpainting / outpainting、reference2videoを1つにまとめたWan2.1 VACEの使い方。ポーズや深度での制御、動画の延長（Extension）、ループ化の方法をworkflow付きで解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/wan-2-1-vace/legacy_gyazo_7e8deb0b28623921172baeeb26cf9de1.mp4"

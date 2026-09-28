@@ -8,6 +8,8 @@ title: "图像生成的基础(SD1.5)"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "在 Stable Diffusion 1.5 中学习图像生成的基础"
+seoTitle: "图像生成基础：用 SD1.5 学习 ComfyUI 工作流"
+seoDescription: "无论哪个模型，ComfyUI 工作流的结构都大致相同。用 Stable Diffusion 1.5 讲解准备素材并交给 KSampler 的流程，以及 ComfyUI “模块化”的含义。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   gradient:

@@ -8,6 +8,8 @@ title: "カスタムノード"
 created: 2025-11-20
 updated: 2026-08-01
 summary: "カスタムノードについて"
+seoTitle: "ComfyUIのカスタムノードとは？ 入れ方と注意点"
+seoDescription: "ComfyUIに機能を追加するカスタムノードの基本。導入のリスク、ComfyUI Managerや手動でのインストール方法、最初に入れておきたいノード、ネイティブ実装とWrapperの違いを解説します。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

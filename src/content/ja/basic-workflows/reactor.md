@@ -8,6 +8,8 @@ title: "ReActor"
 created: 2025-12-09
 updated: 2026-03-02
 summary: "ReActorを使ったFaceSwap（顔入れ替え）"
+seoTitle: "ComfyUI ReActorで顔を入れ替える（FaceSwap）"
+seoDescription: "1枚の顔写真から画像や動画の顔を入れ替えるReActorの、ComfyUIでの使い方。インストール、inswapperとHyperSwapの使い分け、NSFWフィルターについて解説します。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/reactor/legacy_gyazo_c75a0142055d05c154f7d8cf03b3ca56.png"

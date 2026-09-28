@@ -8,6 +8,8 @@ title: "ControlNet Preprocessor"
 created: 2025-12-08
 updated: 2026-03-02
 summary: "Creating auxiliary images for use with ControlNet"
+seoTitle: "ComfyUI ControlNet Preprocessors: Canny, Depth, OpenPose"
+seoDescription: "Make ControlNet control images from a reference: Canny, SoftEdge, Lineart, Depth, Normal, MLSD, OpenPose, and other preprocessors compared."
 tags: ["controlnet"]
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

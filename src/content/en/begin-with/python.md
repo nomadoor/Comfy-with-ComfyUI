@@ -7,7 +7,9 @@ navId: python
 title: "Python"
 created: 2025-11-24
 updated: 2026-08-01
-summary: ""
+summary: "The Python basics behind ComfyUI"
+seoTitle: "Python Basics for ComfyUI Users"
+seoDescription: "The Python terms you need for ComfyUI errors: versions, libraries, pip install, virtual environments, and the portable build's embedded Python."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

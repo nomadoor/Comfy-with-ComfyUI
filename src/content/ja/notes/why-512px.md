@@ -9,6 +9,8 @@ created: 2025-12-13
 updated: 2026-03-02
 noteTags: ["faq", "sd15"]
 summary: "Stable Diffusion 1.5で512px近辺が推奨される理由"
+seoTitle: "Stable Diffusion 1.5で512pxで生成するのはなぜ？"
+seoDescription: "Stable Diffusion 1.5で512px前後の解像度が推奨される理由。モデルの学習解像度と、解像度を上げると計算量が一気に増える問題、Hires.fixやタイル系の手法、SDXL以降の事情を解説します。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: ""

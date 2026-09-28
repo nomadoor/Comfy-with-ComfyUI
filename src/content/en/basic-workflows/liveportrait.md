@@ -8,6 +8,8 @@ title: "LivePortrait"
 created: 2025-12-12
 updated: 2026-08-26
 summary: "Controlling expression and head movement from a single face photo with LivePortrait"
+seoTitle: "LivePortrait in ComfyUI: Control Expression and Head Pose"
+seoDescription: "Control expression and head pose in a face photo with LivePortrait in ComfyUI: parameters, reference-image edits, and motion transfer from video."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/liveportrait/legacy_gyazo_0df8e012722c39159be1762a9a38ea99.png"

@@ -8,6 +8,8 @@ title: "Qwen-Image-Edit"
 created: 2025-12-11
 updated: 2026-03-02
 summary: "Instruction-based image editing with Qwen-Image-Edit"
+seoTitle: "Qwen-Image-Edit in ComfyUI: Original, 2509, 2511"
+seoDescription: "Use Qwen-Image-Edit for instruction-based editing in ComfyUI: downloads for the original, 2509, and 2511, and edits with one or several images."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/qwen-image-edit/legacy_gyazo_14e608fdb6033e436570157da4645e34.png"

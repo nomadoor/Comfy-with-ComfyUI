@@ -8,6 +8,8 @@ title: "ControlNet Preprocessor"
 created: 2025-12-08
 updated: 2026-03-02
 summary: "ControlNetで使う補助画像を作る"
+seoTitle: "ComfyUIのControlNet Preprocessor：Canny・Depth・OpenPose"
+seoDescription: "ControlNetで使う線画・深度マップ・棒人間などの制御画像を、参考画像から自動で作るPreprocessorの使い方。Canny、SoftEdge、Lineart、Depth、Normal、MLSD、OpenPoseなどを比較します。"
 tags: ["controlnet"]
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:

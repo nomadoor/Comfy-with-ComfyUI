@@ -8,6 +8,8 @@ title: "Loops"
 created: 2026-09-18
 updated: 2026-09-22
 summary: "Repeat part of a workflow with Start Loop and End Loop"
+seoTitle: "Loops in ComfyUI: Start Loop and End Loop"
+seoDescription: "Repeat part of a ComfyUI workflow with Start Loop and End Loop: collect results, pass each result to the next pass, and change the first and last runs."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

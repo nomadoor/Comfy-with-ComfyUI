@@ -8,6 +8,8 @@ title: "Group"
 created: 2025-11-24
 updated: 2026-03-02
 summary: "About the group function to organize nodes"
+seoTitle: "ComfyUI Groups: Frame and Organize Nodes"
+seoDescription: "Use groups in ComfyUI: create, edit, and move group frames, why nodes touching a frame move with it, and when a subgraph is the better choice."
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

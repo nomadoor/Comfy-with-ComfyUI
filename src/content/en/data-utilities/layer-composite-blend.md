@@ -8,6 +8,8 @@ title: "Layer Composition"
 created: 2025-11-25
 updated: 2026-03-02
 summary: "Overlaying, stitching, and blending images"
+seoTitle: "Composite, Stitch, and Blend Images in ComfyUI"
+seoDescription: "Combine images in ComfyUI: overlay with ImageCompositeMasked, composite transparent PNGs, stitch images side by side, and blend with Image Blend."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

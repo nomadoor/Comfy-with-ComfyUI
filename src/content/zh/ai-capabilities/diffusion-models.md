@@ -8,6 +8,8 @@ title: 扩散模型
 created: 2026-02-06
 updated: 2026-03-02
 summary: 扩散模型的机制
+seoTitle: "什么是扩散模型？图像从噪声中诞生的原理"
+seoDescription: "通过 ComfyUI 预览中噪声的变化，讲解图像生成 AI 核心——扩散模型（Diffusion Model）的原理，包括训练方式以及从噪声生成图像的流程。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

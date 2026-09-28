@@ -8,6 +8,8 @@ title: "Comfy Cloud"
 created: 2025-11-24
 updated: 2026-03-02
 summary: "About Comfy Cloud"
+seoTitle: "What Is Comfy Cloud? Official Cloud ComfyUI"
+seoDescription: "Comfy Cloud is Comfy Org's official service for running ComfyUI in a browser on high-end GPUs. How it differs from a local install and how to start."
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient:

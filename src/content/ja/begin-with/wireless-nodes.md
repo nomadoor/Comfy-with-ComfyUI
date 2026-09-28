@@ -8,6 +8,8 @@ title: "無線化"
 created: 2025-11-26
 updated: 2026-03-02
 summary: "ノード間のワイヤレス通信について"
+seoTitle: "ComfyUIのノードを無線化する：Set & Getノード"
+seoDescription: "ワイヤを減らしてworkflowを整理する、ComfyUIのノード無線化の方法。KJNodesのSet / Getノードの使い方と、多用するとかえって読みにくくなる注意点を解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

@@ -8,6 +8,8 @@ title: "Queue"
 created: 2025-11-26
 updated: 2026-03-02
 summary: "処理の予約と回数指定実行について"
+seoTitle: "ComfyUIのQueue（キュー）：生成の予約と連続実行"
+seoDescription: "ComfyUIのRunボタンが実はQueueへの予約であることと、その使い方。連続実行の方法、control after generateの設定、実行中のジョブの停止、予約の削除、過去の処理の確認方法を解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

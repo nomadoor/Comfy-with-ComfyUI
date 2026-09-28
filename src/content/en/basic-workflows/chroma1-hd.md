@@ -8,6 +8,8 @@ title: "Chroma1-HD"
 created: 2025-12-11
 updated: 2026-03-02
 summary: "Extending Flux.1-schnell with Chroma1-HD"
+seoTitle: "Chroma1-HD in ComfyUI: A De-Distilled Flux"
+seoDescription: "Use Chroma1-HD in ComfyUI, a de-distilled Flux rebuilt from Flux.1 [schnell] that trains well with LoRA. Model download and text2image workflow."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/chroma1-hd/legacy_gyazo_326db88733896540f58ce60e7320824f.png"

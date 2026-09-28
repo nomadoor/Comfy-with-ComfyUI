@@ -8,6 +8,8 @@ title: "Readable Node 及其推荐"
 created: 2026-02-06
 updated: 2026-03-02
 summary: "搭建清晰易用工作流的技巧"
+seoTitle: "Readable Node：搭建易读的 ComfyUI 工作流"
+seoDescription: "避免工作流变成“意大利面”的搭建技巧：引导视线、让连线可见、节点配色、写注释，以及尽量少用自定义节点等思路。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

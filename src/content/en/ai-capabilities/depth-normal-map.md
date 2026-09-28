@@ -8,6 +8,8 @@ title: "Depth Estimation & Normal Map"
 created: 2025-12-01
 updated: 2026-03-02
 summary: "Technology to extract depth and three-dimensionality from images"
+seoTitle: "Depth Estimation and Normal Maps: Depth Anything and More"
+seoDescription: "Estimate depth and normals from a single image: MiDaS, ZoeDepth, and Depth Anything compared with diffusion-based Marigold, Lotus, and LBM."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/ai-capabilities/depth-normal-map/legacy_gyazo_f6033924229b0ea961d8f22eb38bd6b2.png"

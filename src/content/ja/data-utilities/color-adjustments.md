@@ -8,6 +8,8 @@ title: "色調補正・エフェクト"
 created: 2025-11-25
 updated: 2026-03-02
 summary: "画像の明るさ調整やブラー、エフェクトについて"
+seoTitle: "ComfyUIの色調補正・エフェクトノード"
+seoDescription: "ComfyUIで画像の明るさや色を調整し、エフェクトをかけるノードのまとめ。反転、シャープ、ブラー、減色、ノイズ付加、モルフォロジー変換と、本格的な色調補正ができるカスタムノードを紹介します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/data-utilities/color-adjustments/legacy_gyazo_e1ecb574e0c11da63b0c6f8cee7a9f87.png"

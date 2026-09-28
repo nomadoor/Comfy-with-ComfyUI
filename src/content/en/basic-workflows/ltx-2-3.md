@@ -8,6 +8,8 @@ title: "LTX 2.3"
 created: 2026-03-22
 updated: 2026-04-13
 summary: "Handle text2video, image2video, audio2video, and audio-image2video with LTX 2.3"
+seoTitle: "LTX 2.3 in ComfyUI: What Changed from LTX-2, with Workflows"
+seoDescription: "Use LTX 2.3 in ComfyUI: what changed from LTX-2 in settings and models, prompting tips, plus text2video, image2video, and audio2video workflows."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/ltx-2-3/legacy_gyazo_f3f8635fb9056670204fe9bdac577b39.mp4"

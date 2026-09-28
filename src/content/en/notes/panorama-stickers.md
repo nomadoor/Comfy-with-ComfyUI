@@ -9,6 +9,8 @@ created: 2026-03-02
 updated: 2026-03-22
 noteTags: ["project", "erp", "lora", "flux"]
 summary: "A dedicated UI for placing reference images on an ERP canvas and filling the rest with outpainting"
+seoTitle: "ComfyUI Panorama Stickers: Build 360° Panoramas"
+seoDescription: "A ComfyUI UI for 360° panoramas: place images on an ERP canvas and outpaint the rest with the FLUX.2 Klein 360 ERP LoRA. Nodes and workflow."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: "/media/notes/panorama-stickers/legacy_gyazo_0732762b1efdf916b6a5836a9078e90e.png"

@@ -8,6 +8,8 @@ title: "Qwen-Image-Layered"
 created: 2025-12-31
 updated: 2026-03-02
 summary: "Decompose input image into multiple RGBA layers"
+seoTitle: "Qwen-Image-Layered in ComfyUI: Split Images into Layers"
+seoDescription: "Use Qwen-Image-Layered to split an image into transparent RGBA layers and edit just one. The idea, model download, and workflow in ComfyUI."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/qwen-image-layered/legacy_gyazo_bfc9ecbc781e79e29f0a9b1df0597bbb.png"

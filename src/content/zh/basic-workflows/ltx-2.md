@@ -8,6 +8,8 @@ title: "LTX-2"
 created: 2026-02-06
 updated: 2026-09-03
 summary: "在 LTX-2 中处理 text2video / image2video / audio2video"
+seoTitle: "在 ComfyUI 中使用 LTX-2：text2video・image2video・audio2video"
+seoDescription: "在 ComfyUI 中运行 Lightricks 可同时生成音频与视频的 LTX-2。介绍推荐设置、模型获取方式，以及重新整理、易于阅读的 text2video / image2video / audio2video 工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/ltx-2/legacy_gyazo_2a89cce32669413fb7f5b3fe4ca22960.mp4"

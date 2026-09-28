@@ -8,6 +8,8 @@ title: "このサイトの使い方"
 created: 2025-11-13
 updated: 2026-08-01
 summary: "ようこそ、Comfyに使うComfyUIへ"
+seoTitle: "ComfyUIの使い方を基本から学ぶ：このサイトの使い方"
+seoDescription: "ComfyUIの操作から画像・動画生成AIの仕組み、主要モデルのworkflowまでを日本語で解説する「Comfyに使う ComfyUI」の案内。各セクションの内容と、workflowのコピー方法を紹介します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/begin-with/how-to-use-this-site/legacy_gyazo_8d7fa7b6602e2b4d1cec23ab66090cce.png"

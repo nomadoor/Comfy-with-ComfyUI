@@ -7,7 +7,9 @@ navId: path
 title: "Path"
 created: 2025-11-24
 updated: 2026-03-02
-summary: ""
+summary: "File path basics: how paths point to files"
+seoTitle: "What Is a File Path? Absolute vs. Relative"
+seoDescription: "File path basics for ComfyUI settings and errors: paths as file addresses, absolute vs. relative paths, and Windows vs. Mac/Linux separators."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

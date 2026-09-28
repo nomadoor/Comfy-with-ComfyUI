@@ -9,6 +9,8 @@ title: "FLUX.2 [klein]"
 created: 2026-01-22
 updated: 2026-03-02
 summary: "FLUX.2 [klein] 生成・画像編集workflow"
+seoTitle: "ComfyUIでFLUX.2 [klein]を使う：画像生成と画像編集"
+seoDescription: "画像生成と指示ベース画像編集を1つでこなす小型・高速なFLUX.2 [klein]の使い方。推奨設定、9B / 4BとBase / Distilledの違い、text2image、画像編集、マルチリファレンスのworkflowを解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/flux-2-klein/legacy_gyazo_46ebf7545e89db8df26b83a992e4c728.png"

@@ -8,6 +8,8 @@ title: "Wireless"
 created: 2025-11-26
 updated: 2026-03-02
 summary: "About wireless communication between nodes"
+seoTitle: "Wireless Nodes in ComfyUI: Set and Get"
+seoDescription: "Cut wires and tidy ComfyUI workflows with the KJNodes Set and Get nodes, and why overusing wireless nodes makes workflows harder to read."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

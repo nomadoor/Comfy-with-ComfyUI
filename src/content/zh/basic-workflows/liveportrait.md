@@ -8,6 +8,8 @@ title: "LivePortrait"
 created: 2025-12-12
 updated: 2026-08-26
 summary: "在 LivePortrait 中从 1 张脸部照片控制表情和摇头"
+seoTitle: "在 ComfyUI 中使用 LivePortrait：控制人脸表情与转头"
+seoDescription: "控制单张人脸照片表情和头部朝向的 LivePortrait 在 ComfyUI 中的用法。介绍用参数调整表情、从参考图编辑，以及迁移参考视频动作的 image2video / video2video。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/liveportrait/legacy_gyazo_0df8e012722c39159be1762a9a38ea99.png"

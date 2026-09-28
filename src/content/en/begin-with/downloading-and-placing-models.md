@@ -8,6 +8,8 @@ title: "Downloading and Placing Models"
 created: 2025-11-24
 updated: 2026-03-02
 summary: "About downloading and placing models"
+seoTitle: "Where to Download and Put Models in ComfyUI"
+seoDescription: "Download models from Hugging Face and Civitai, learn which ComfyUI models folder each type goes in, and keep a growing collection organized."
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""

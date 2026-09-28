@@ -8,6 +8,8 @@ title: "LTX 2.3"
 created: 2026-03-22
 updated: 2026-04-13
 summary: "LTX 2.3: text2video / image2video / audio2video"
+seoTitle: "ComfyUIでLTX 2.3を使う：LTX-2からの変更点とworkflow"
+seoDescription: "LTX 2.3をComfyUIで使う方法。LTX-2から変わった推奨設定とモデル、プロンプトのコツと、text2video / image2video / audio2videoのworkflowをまとめています。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/ltx-2-3/legacy_gyazo_f3f8635fb9056670204fe9bdac577b39.mp4"

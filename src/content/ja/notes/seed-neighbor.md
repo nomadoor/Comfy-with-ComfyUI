@@ -9,6 +9,8 @@ created: 2026-02-11
 updated: 2026-03-02
 noteTags: ["faq", "seed"]
 summary: "シードは「近い数字＝近い結果」にならない"
+seoTitle: "seed値が近くても似た画像にならない理由"
+seoDescription: "seed 1234と1235でまったく違う画像になる理由を、ノイズとシード値の関係から解説。似た画像を作りたいときのimage2image、ノイズのblend、ノイズのinjectionという方法も紹介します。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: "/media/notes/seed-neighbor/legacy_gyazo_9cc7e9a5752b2a65f4e8a76972b9b366.png"

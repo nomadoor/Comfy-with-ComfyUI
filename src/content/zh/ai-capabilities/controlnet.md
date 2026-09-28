@@ -8,6 +8,8 @@ title: ControlNet 系
 created: 2026-02-06
 updated: 2026-03-02
 summary: 使用姿势或线稿等附加信息控制图像生成的技术
+seoTitle: "什么是 ControlNet？用姿势和线稿控制图像生成"
+seoDescription: "用姿势、线稿、深度图等附加信息控制图像生成的 ControlNet 原理。介绍 openpose、depth、scribble、lineart、inpaint 等代表类型，以及与基于指令的图像编辑的关系。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: https://i.gyazo.com/374d9112c26cc1098d9e7e11b5ca49fa.png

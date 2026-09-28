@@ -9,6 +9,8 @@ title: Human Motion Transfer
 created: 2025-12-03
 updated: 2026-03-02
 summary: 別の動画の動きをキャラクターに移す技術
+seoTitle: "Human Motion Transfer：動画の動きをキャラクターに移すAI"
+seoDescription: "1枚の人物画像に、別の動画の全身モーションを移し替えるHuman Motion Transferの解説。Animate Anyone以降の流れと、Wan2.1 VACE、Wan-AnimateなどDiT世代のモデルを紹介します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
 image:

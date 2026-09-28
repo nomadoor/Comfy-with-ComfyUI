@@ -8,6 +8,8 @@ title: Lip Sync
 created: 2025-12-01
 updated: 2026-03-02
 summary: Technology to move mouth and facial expressions in sync with audio
+seoTitle: "What Is AI Lip Sync? Matching Mouths to Audio"
+seoDescription: "Lip sync adds mouth movement that matches audio: mouth-only models like Wav2Lip and LatentSync, talking still images, and audio-driven video models."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

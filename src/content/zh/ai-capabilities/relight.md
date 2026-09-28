@@ -8,6 +8,8 @@ title: 重打光
 created: 2026-02-06
 updated: 2026-03-02
 summary: "改变光源或环境光，调整图像的打光的任务"
+seoTitle: "什么是重打光？用 AI 改变图像光照"
+seoDescription: "改变图像光源与环境光的重打光（Relighting）技术。介绍让合成前景融入背景的 IC-Light、LBM，图像编辑模型加重打光 LoRA，以及放置虚拟光源的方法。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: '/media/ai-capabilities/relight/legacy_gyazo_4c413909ac34f89df891a976fc660f70.png'

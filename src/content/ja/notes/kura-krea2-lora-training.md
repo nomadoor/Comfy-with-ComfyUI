@@ -9,6 +9,8 @@ created: 2026-07-13
 updated: 2026-07-14
 noteTags: ["project", "lora", "krea-2", "kura"]
 summary: "Kura と AI エージェントを使って、Krea 2 のキャラクター LoRA を学習・比較する流れ"
+seoTitle: "KuraでKrea 2のLoRAを学習する"
+seoDescription: "学習ソフトの違いを吸収するKuraとAIエージェントを使って、Krea 2のキャラクターLoRAを学習・比較する流れ。データセットの準備、Kuraのセットアップ、学習の実行までを解説します。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: "/media/notes/kura-krea2-lora-training/legacy_gyazo_bd00a496f18c5ecb9925dd7f790ffc7d.png"

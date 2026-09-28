@@ -8,6 +8,8 @@ title: "SAM 3 / 3.1"
 created: 2026-05-07
 updated: 2026-05-07
 summary: "AI mask generation with SAM 3 / 3.1"
+seoTitle: "SAM 3 / 3.1 in ComfyUI: Text-Prompted Masks"
+seoDescription: "Use Meta's SAM 3 and 3.1 in ComfyUI to segment objects by text prompt, with model download and workflows for image and video masks."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""

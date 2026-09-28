@@ -8,6 +8,8 @@ title: "SDXL"
 created: 2025-12-10
 updated: 2026-03-02
 summary: "How to use SDXL"
+seoTitle: "SDXL in ComfyUI: Base and Refiner"
+seoDescription: "Use SDXL in ComfyUI: base-only text2image, CLIPTextEncodeSDXL, the base + refiner setup, switching with KSampler (Advanced), and the refiner idea."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/sdxl/legacy_gyazo_2317e881cf31b7c2af135774fb56b4e4.png"

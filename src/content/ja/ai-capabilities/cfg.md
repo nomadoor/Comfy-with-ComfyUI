@@ -8,6 +8,8 @@ title: CFG
 created: 2025-11-29
 updated: 2026-03-02
 summary: プロンプトの「効き具合」を決める仕組み
+seoTitle: "CFGとは？ 画像生成でのCFG値の目安と効き方"
+seoDescription: "プロンプトにどれだけ強く従わせるかを決めるCFG（Classifier-Free Guidance）の仕組み。値を上げ下げしたときの変化とちょうどよい値の考え方、CFG=1で計算量が減りネガティブプロンプトが無効になる理由を解説します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''

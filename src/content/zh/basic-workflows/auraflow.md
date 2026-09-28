@@ -8,6 +8,8 @@ title: "AuraFlow"
 created: 2025-12-09
 updated: 2026-03-02
 summary: "AuraFlow 和 Pony V7 的粗略整理"
+seoTitle: "在 ComfyUI 中使用 AuraFlow 与 Pony V7"
+seoDescription: "fal.ai 开发的轻量 flow 式 text2image 模型 AuraFlow，以及基于它的动漫模型 Pony V7 在 ComfyUI 中的用法，附模型下载与 text2image 工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/auraflow/legacy_gyazo_2d37855d2969e9cd5515e4852dce230e.png"

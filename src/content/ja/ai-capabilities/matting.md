@@ -8,6 +8,8 @@ title: マッティング
 created: 2025-12-03
 updated: 2026-03-02
 summary: "自然な画像から前景を切り出し、背景と分離する技術"
+seoTitle: "マッティングとは？ AIで背景を除去する技術"
+seoDescription: "普通の写真から前景を切り出し、背景と分離するマッティング（Image Matting）の解説。髪の毛まで自然に切り抜くアルファマットの考え方と、BiRefNet、SDMatteを紹介します。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: '/media/ai-capabilities/matting/legacy_gyazo_38630075ecd6336a630da0fe5b8ba130.mp4'
