@@ -1,0 +1,81 @@
+---
+layout: page.njk
+lang: en
+slug: home
+title: "Comfy with ComfyUI"
+summary: "A site for understanding how ComfyUI works and what generative AI can do."
+seoTitle: "Learn ComfyUI: Guides and Easy-to-Read Workflows"
+seoDescription: "Guides to ComfyUI and generative AI, from setup to image and video generation and editing, with the models to use now and clearly organized, easy-to-read workflows."
+created: 2026-09-29
+updated: 2026-09-29
+permalink: "/{{ lang }}/"
+searchExclude: true
+hero:
+  image: "/media/begin-with/how-to-use-this-site/legacy_gyazo_8d7fa7b6602e2b4d1cec23ab66090cce.png"
+picks:
+  title: "Recommended Models, September 2026"
+  lead: "New models appear almost every week, but few balance quality, versatility, and stability this well. For now, these are the safe choices."
+  groups:
+    - label: Image generation
+      items:
+        - page: /en/basic-workflows/krea-2/
+          text: "A flexible all-rounder that handles both illustration and photorealism."
+        - page: /en/basic-workflows/anima/
+          text: "A light, easy anime model. A good next step from SDXL-based models."
+    - label: Image editing
+      items:
+        - page: /en/basic-workflows/qwen-image-2-1/
+          text: "Generation and editing in one model, and it can even output transparent images."
+    - label: Video generation
+      items:
+        - page: /en/basic-workflows/minimax-h3/
+          text: "Generates video and audio together, with quality close to closed models."
+---
+{% from "icon.njk" import icon %}
+{% set updatesHeading = "Latest updates" %}
+{% set updatesMore = "All updates" %}
+{% markdown %}
+## Welcome to Comfy with ComfyUI
+
+This site is not just for sharing workflows. It is built to help people understand what generative AI can do, and how to operate ComfyUI itself.
+
+Templates can get you started quickly, but if you want to extend things your own way, you still need the fundamentals.
+
+I also hope this can be a useful place for experienced users to track how ComfyUI is evolving.
+{% endmarkdown %}
+
+<hr />
+
+{% include "home-picks.njk" %}
+
+<hr />
+
+{% include "home-updates.njk" %}
+
+<hr />
+
+<h2>About the author</h2>
+<section class="home-author">
+  <div class="home-author__header">
+    <span class="home-author__name">nomadoor</span>
+    <ul class="home-social" aria-label="nomadoor's accounts" data-no-link-icon>
+      <li><a href="https://x.com/noma_door" aria-label="X (@noma_door)">{{ icon("brand-x") }}</a></li>
+      <li><a href="https://github.com/nomadoor" aria-label="GitHub (nomadoor)">{{ icon("brand-github") }}</a></li>
+      <li><a href="https://www.reddit.com/user/nomadoor/" aria-label="Reddit (u/nomadoor)">{{ icon("brand-reddit") }}</a></li>
+    </ul>
+  </div>
+  {% markdown %}
+I have been using ComfyUI since its early days, so I know a little about how it is meant to be used.
+
+I build workflows with readability in mind ([readable nodes](/en/begin-with/readable-nodes/)). I would be glad if that way of thinking spreads and helps more people enjoy generative AI more deeply.
+{% endmarkdown %}
+  <p class="home-author__contact">For corrections, article requests, or feedback, use the <a href="/en/contact/">contact form</a> or reach me on X (<a href="https://x.com/noma_door">@noma_door</a>).</p>
+</section>
+
+{% markdown %}
+---
+
+## License
+
+All text, workflows, and images on this site are **CC0**. Use them freely.
+{% endmarkdown %}

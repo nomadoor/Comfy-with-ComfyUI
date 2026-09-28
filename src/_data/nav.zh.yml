@@ -2,8 +2,6 @@ sections:
 - key: begin-with
   label: 开始使用 ComfyUI
   pages:
-  - id: how-to-use-this-site
-    title: 如何使用本网站
   - id: spin-up-fast
     title: 快速上手
     noLink: true

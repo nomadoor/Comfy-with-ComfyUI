@@ -134,10 +134,11 @@ layout: base.njk
         </span>
       </div>
       <div class="article-footer__links">
-        {% if currentLang == "ja" %}
-          <a class="article-footer__link" href="/ja/">トップ</a>
+        {% set footerHome = ('/' ~ currentLang ~ '/') | langSwitchTarget(currentLang, collections.all) %}
+        {% if footerHome == '/' ~ currentLang ~ '/' %}
+          <a class="article-footer__link" href="{{ footerHome }}">{% if currentLang == "ja" %}トップ{% elseif currentLang == "zh" %}首页{% else %}Home{% endif %}</a>
         {% else %}
-          <a class="article-footer__link" href="/{{ currentLang }}/begin-with/how-to-use-this-site/">{{ site.i18n.footerGuide[currentLang] or site.i18n.footerGuide[site.defaultLang] or "How to use this site" }}</a>
+          <a class="article-footer__link" href="{{ footerHome }}">{{ site.i18n.footerGuide[currentLang] or site.i18n.footerGuide[site.defaultLang] or "How to use this site" }}</a>
         {% endif %}
         <a class="article-footer__link" href="/{{ currentLang }}/news/">
           {% if currentLang == "ja" %}更新情報{% elseif currentLang == "zh" %}更新信息{% else %}Updates{% endif %}

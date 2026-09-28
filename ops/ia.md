@@ -9,7 +9,7 @@
 | `notes` | 📝Notes | 📝Notes | Flat note collection for FAQ, troubleshooting, projects, and short incident playbooks. URL root `/<lang>/notes/<slug>/`. |
 | `about` | ℹ️About | ℹ️About | Standalone page (`/<lang>/about/`). Hidden from sidebar and main nav. |
 | `news` | 📰更新情報 | 📰News | Standalone page (`/<lang>/news/`). Not in main nav. |
-| `home` | Comfyに使う ComfyUI | Comfy with ComfyUI | Language home at `/<lang>/` (`src/content/<lang>/home.njk`): welcome, monthly picks by use, recent news, author, license. `/` redirects to `/ja/`; the header logo links here. JA only until translated. |
+| `home` | Comfyに使うComfyUI | Comfy with ComfyUI | Language home at `/<lang>/` (`src/content/<lang>/home.njk`, ja/en/zh): welcome, monthly picks by use, recent news, author, license. `/` redirects to `/ja/`; the header logo and the footer's first link lead here. |
 
 > Emoji-prefixed labels appear in UI copy. Slugs stay ASCII kebab-case.
 

@@ -10,7 +10,7 @@ test.describe("Language home", () => {
   test("the root sends visitors to the Japanese home", async ({ page }) => {
     await page.goto("/");
     await expect(page).toHaveURL("/ja/");
-    await expect(page.locator("h1").first()).toContainText("Comfyに使う ComfyUI");
+    await expect(page.locator("h1").first()).toContainText("Comfyに使うComfyUI");
   });
 
   test("shows the monthly picks as cards with thumbnails linking to their articles", async ({ page }) => {
@@ -62,7 +62,9 @@ test.describe("Language home", () => {
     await page.goto("/ja/basic-workflows/sdxl/");
     await expect(page.locator(".site-header__logo")).toHaveAttribute("href", "/ja/");
     await page.goto("/en/basic-workflows/sdxl/");
-    await expect(page.locator(".site-header__logo")).toHaveAttribute("href", "/en/begin-with/how-to-use-this-site/");
+    await expect(page.locator(".site-header__logo")).toHaveAttribute("href", "/en/");
+    await page.goto("/zh/basic-workflows/sdxl/");
+    await expect(page.locator(".site-header__logo")).toHaveAttribute("href", "/zh/");
   });
 
   test("the language menu only offers pages that exist", async ({ page }) => {
@@ -83,7 +85,7 @@ test.describe("Language home", () => {
     expect(await hrefs()).toContain("/en/begin-with/setup/");
     await page.goBack();
     await expect(page).toHaveURL("/ja/");
-    await expect(page.locator("h1").first()).toContainText("Comfyに使う ComfyUI");
+    await expect(page.locator("h1").first()).toContainText("Comfyに使うComfyUI");
     await assertAllExist();
   });
 
@@ -99,11 +101,24 @@ test.describe("Language home", () => {
     });
   });
 
-  test("the Japanese footer links to the home instead of the guide", async ({ page }) => {
-    await page.goto("/ja/basic-workflows/sdxl/");
-    await expect(page.locator('.article-footer__links a[href="/ja/"]')).toHaveText("トップ");
-    await page.goto("/en/basic-workflows/sdxl/");
-    await expect(page.locator('.article-footer__links a[href="/en/begin-with/how-to-use-this-site/"]')).toHaveCount(1);
+  test("the footer links to each language home", async ({ page }) => {
+    for (const [lang, label] of [["ja", "トップ"], ["en", "Home"], ["zh", "首页"]]) {
+      await page.goto(`/${lang}/basic-workflows/sdxl/`);
+      await expect(page.locator(`.article-footer__links a[href="/${lang}/"]`)).toHaveText(label);
+    }
+  });
+
+  test("every language home exists and the language menu moves between them", async ({ page }) => {
+    for (const lang of ["ja", "en", "zh"]) {
+      await page.goto(`/${lang}/`);
+      await expect(page.locator("html")).toHaveAttribute("lang", lang);
+      await expect(page.locator("[data-home-picks] a.home-pick")).toHaveCount(4);
+      await expect(page.locator("[data-home-updates] a.news-row")).toHaveCount(5);
+      const menu = await page.locator("header [data-lang-menu] a").evaluateAll((links) =>
+        Object.fromEntries(links.map((link) => [link.getAttribute("data-lang"), link.getAttribute("href")]))
+      );
+      expect(menu).toEqual({ ja: "/ja/", en: "/en/", zh: "/zh/" });
+    }
   });
 
   test("every page footer names the author with a link to X", async ({ page }) => {
@@ -113,5 +128,20 @@ test.describe("Language home", () => {
       await expect(author).toHaveText("CC0 · by nomadoor");
       await expect(author.locator("a")).toHaveAttribute("href", "https://x.com/noma_door");
     }
+  });
+
+  test("placeholder and 404 pages keep a sensible language menu", async ({ page }) => {
+    const menu = () =>
+      page.locator("header [data-lang-menu] a").evaluateAll((links) =>
+        Object.fromEntries(links.map((link) => [link.getAttribute("data-lang"), link.getAttribute("href")]))
+      );
+    await page.goto("/ja/begin-with/pc-basics/");
+    expect(await menu()).toEqual({
+      ja: "/ja/begin-with/pc-basics/",
+      en: "/en/begin-with/pc-basics/",
+      zh: "/zh/begin-with/pc-basics/"
+    });
+    await page.goto("/404.html");
+    expect((await menu()).ja).toBe("/ja/");
   });
 });
