@@ -88,6 +88,11 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - Article list markers apply only to authored list content; list-based interface components such as Workflow picker options must reset generated markers.
 - `.placeholder` component is dashed border block for “まだページがありません” states and 404 page.
 
+## 7. News Rows
+- News rows (the News page and the home "latest updates") show `date · section · title`. The section is the nav section label, never the internal key, rendered small in `--color-text-muted` with a small colored dot before it; no chip background.
+- Dot colors per section: `begin-with` #4f86e0 (blue), `data-utilities` #3a9d72 (green), `ai-capabilities` #c98a32 (amber), `basic-workflows` `--color-highlight` (purple), `notes` #8a8f98 (gray). Rows without a section keep an empty cell so titles stay aligned.
+- In-article `<hr>` and the footer top border are one 2px `--color-border` line of the same width as the article column.
+
 ## 8. TOC
 - Place TOC and the future Tips block inside the right sidebar column. Apply the border only to the TOC body, not the entire sidebar.
 - TOC links do not show a guide line by default. Only the active item shows a left accent line.

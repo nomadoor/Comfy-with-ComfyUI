@@ -1364,7 +1364,10 @@ export default function (eleventyConfig) {
     return content.replace(/<span class="news-row__tag">([^<]*)<\/span>/g, (match, key) => {
       const label = newsSectionLabel(lang, key.trim());
       // Keep an empty cell when there is no section so the title stays in its column.
-      return label ? `<span class="news-row__section">${escapeHTML(label)}</span>` : `<span class="news-row__section" aria-hidden="true"></span>`;
+      const sectionKey = key.trim() === "faq" ? "notes" : key.trim();
+      return label
+        ? `<span class="news-row__section" data-section="${escapeHTML(sectionKey)}">${escapeHTML(label)}</span>`
+        : `<span class="news-row__section" aria-hidden="true"></span>`;
     });
   });
 
