@@ -7,9 +7,10 @@
     "node": ">=20.15.0"
   },
   "scripts": {
-    "dev": "npx @11ty/eleventy --serve --port=8080",
-    "dev:watch": "npx @11ty/eleventy --watch --output=_site",
-    "dev:test": "COMFY_MEDIA_FIXTURES=1 COMFY_MEDIA_ORIGINALS= eleventy --serve --port=8091 --output=.cache/playwright-site",
+    "dev": "CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=500 npx @11ty/eleventy --serve --port=8080",
+    "dev:media": "COMFY_MEDIA_PREVIEW_CHANGED=1 CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=500 npx @11ty/eleventy --serve --port=8080",
+    "dev:watch": "CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=500 npx @11ty/eleventy --watch --output=_site",
+    "dev:test": "CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=500 COMFY_MEDIA_FIXTURES=1 COMFY_MEDIA_ORIGINALS= eleventy --serve --port=8091 --output=.cache/playwright-site",
     "dev:pages": "npx wrangler pages dev _site --port=8080 --compatibility-date=2026-02-17",
     "build": "eleventy --input=src --output=_site",
     "clean": "rimraf _site",

@@ -5,13 +5,18 @@ slug: news
 navId: news
 title: "更新情報"
 created: 2026-01-15
-updated: 2026-09-23
+updated: 2026-09-28
 summary: "このサイトの更新情報"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/ja/notes/conditioning-zero-out/">
+    <span class="news-row__date">2026.9.28</span>
+    <span class="news-row__tag">notes</span>
+    <span class="news-row__title">Conditioning Zero Out のページを追加しました</span>
+  </a>
   <a class="news-row" href="/ja/basic-workflows/qwen-image-2-1/">
     <span class="news-row__date">2026.9.21</span>
     <span class="news-row__tag">basic-workflows</span>

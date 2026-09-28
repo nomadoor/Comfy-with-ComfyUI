@@ -8429,6 +8429,54 @@
       "bytes": 233962
     }
   },
+  "notes/conditioning-zero-out/clip_text_encoder_conditioning_zero_out.png": {
+    "key": "images/45d62a80a630d750.webp",
+    "width": 1690,
+    "height": 890,
+    "type": "image/webp",
+    "bytes": 57986,
+    "source": "cab85712a19b04b8"
+  },
+  "notes/conditioning-zero-out/clip_text_encoder_empty.png": {
+    "key": "images/1e38a6d9b738764e.webp",
+    "width": 1422,
+    "height": 890,
+    "type": "image/webp",
+    "bytes": 62030,
+    "source": "0b9f4b61252a2417"
+  },
+  "notes/conditioning-zero-out/conditioning_zero_out_hero.png": {
+    "key": "images/1fabebd24276e54c.webp",
+    "width": 1920,
+    "height": 1080,
+    "type": "image/webp",
+    "bytes": 59906,
+    "source": "63d4719772ff8e2f"
+  },
+  "notes/conditioning-zero-out/krea2_conditioning_zero_out.png": {
+    "key": "images/af1b6a534baf46cd.webp",
+    "width": 2480,
+    "height": 1040,
+    "type": "image/webp",
+    "bytes": 151890,
+    "source": "863827d5d9f911ae"
+  },
+  "notes/conditioning-zero-out/krea2_empty_negative_prompt.png": {
+    "key": "images/00a94f95f40f4ae8.webp",
+    "width": 2480,
+    "height": 1040,
+    "type": "image/webp",
+    "bytes": 152554,
+    "source": "6c29b48325fae99b"
+  },
+  "notes/conditioning-zero-out/krea2_positive_as_negative.png": {
+    "key": "images/f30a2fd6fa6ac1e4.webp",
+    "width": 2480,
+    "height": 1040,
+    "type": "image/webp",
+    "bytes": 148286,
+    "source": "780a42149e83cdc8"
+  },
   "notes/find/legacy_gyazo_a6e07600049875412da66a0ac4ca5351.png": {
     "key": "images/b2c981238c48e466.webp",
     "width": 1024,

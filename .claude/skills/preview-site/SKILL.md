@@ -15,6 +15,14 @@ COMFY_MEDIA_ORIGINALS=/mnt/e/ai/comfy-with-comfyui-media npm run dev
 
 `npm run dev` alone works **only** if the shell already exports `COMFY_MEDIA_ORIGINALS`. It is exported from `~/.bashrc`, which is read once per shell, so a terminal opened before that line was added does not have it. Passing it inline always works.
 
+Normal preview checks local originals only for media that is not registered in `media.json`. When replacing an already registered image or video and the local replacement must appear before sync, use the slower replacement-preview mode:
+
+```bash
+COMFY_MEDIA_ORIGINALS=/mnt/e/ai/comfy-with-comfyui-media npm run dev:media
+```
+
+That mode hashes registered originals to find replacements, so use it only while replacing media.
+
 Never start a server without being asked. Check for one first, and never leave one running.
 
 ## Diagnose

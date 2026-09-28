@@ -5,13 +5,18 @@ slug: news
 navId: news
 title: "更新信息"
 created: 2026-02-05
-updated: 2026-09-23
+updated: 2026-09-28
 summary: "本站的更新信息"
 permalink: "/{{ lang }}/{{ slug }}/"
 tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/zh/notes/conditioning-zero-out/">
+    <span class="news-row__date">2026.9.28</span>
+    <span class="news-row__tag">notes</span>
+    <span class="news-row__title">追加了 Conditioning Zero Out 的页面</span>
+  </a>
   <a class="news-row" href="/zh/basic-workflows/qwen-image-2-1/">
     <span class="news-row__date">2026.9.21</span>
     <span class="news-row__tag">basic-workflows</span>

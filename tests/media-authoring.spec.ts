@@ -24,7 +24,7 @@ async function makeOriginals() {
 }
 
 test.describe("local preview", () => {
-  test("unregistered or changed originals preview locally; unchanged registered media does not", async () => {
+  test("default preview checks only unregistered originals; changed registered media is opt-in", async () => {
     const { localPreview, sourceHash } = await lib("media-local-preview.mjs");
     const { root, file } = await makeOriginals();
 
@@ -32,7 +32,8 @@ test.describe("local preview", () => {
       url: `/__media-originals/${NAME}`, width: 300, height: 120, reason: "unregistered"
     });
     expect(localPreview(root, NAME, { key: "images/0000000000000000.webp", source: sourceHash(file) })).toBeNull();
-    expect(localPreview(root, NAME, { key: "images/0000000000000000.webp", source: "ffffffffffffffff" })).toMatchObject({ reason: "changed" });
+    expect(localPreview(root, NAME, { key: "images/0000000000000000.webp", source: "ffffffffffffffff" })).toBeNull();
+    expect(localPreview(root, NAME, { key: "images/0000000000000000.webp", source: "ffffffffffffffff" }, { checkChanged: true })).toMatchObject({ reason: "changed" });
     // Legacy entries without `source` are treated as up to date.
     expect(localPreview(root, NAME, { key: "images/0000000000000000.webp" })).toBeNull();
     expect(localPreview(root, "basic-workflows/example/missing.png", undefined)).toBeNull();
