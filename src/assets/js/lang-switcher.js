@@ -120,14 +120,16 @@ const initLangSwitcher = () => {
     });
   });
 
+  // Capture phase so an open language menu takes this Escape before the mobile drawer closes.
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") return;
     controls.forEach((item) => {
       if (!item.menu.classList.contains("is-open")) return;
       setMenuState(item, false);
       item.toggle.focus();
+      event.preventDefault();
     });
-  });
+  }, true);
 
   controls.forEach((item) => setMenuState(item, false));
   triggerLangAttention();

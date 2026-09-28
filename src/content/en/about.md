@@ -8,7 +8,7 @@ title: "About"
 created: 2025-11-13
 updated: 2026-03-02
 summary: "About this site"
-seoTitle: "About Comfy with ComfyUI"
+seoTitle: "About This Site"
 seoDescription: "About Comfy with ComfyUI, a CC0 guide to ComfyUI and generative AI from the basics. Meet the author nomadoor and see the license and support options."
 searchExclude: true
 tags:
