@@ -181,4 +181,18 @@ test.describe("Language home", () => {
     await page.keyboard.press("Escape");
     await expect(page.locator("body")).not.toHaveClass(/nav-open/);
   });
+
+  test("update rows name the section next to the date instead of an internal key", async ({ page }) => {
+    const rawKeys = /^(begin-with|data-utilities|ai-capabilities|basic-workflows|notes|faq|none)$/;
+    for (const [url, expected] of [["/ja/", "Notes"], ["/ja/news/", "Notes"], ["/en/news/", "Notes"], ["/zh/news/", "Notes"]]) {
+      await page.goto(url);
+      const sections = await page.locator("a.news-row .news-row__section").allTextContents();
+      expect(sections.length, url).toBeGreaterThan(0);
+      expect(sections.some((text) => rawKeys.test(text.trim())), url).toBe(false);
+      expect(sections, url).toContain(expected);
+      await expect(page.locator("a.news-row .news-row__tag")).toHaveCount(0);
+    }
+    await page.goto("/ja/news/");
+    expect(await page.locator("a.news-row .news-row__section").allTextContents()).toContain("基本のworkflow");
+  });
 });

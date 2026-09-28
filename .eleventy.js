@@ -8,6 +8,7 @@ import { logicalNameFromRef, mediaRef, publicUrl, transformUrl } from "./scripts
 import { createOriginalsMiddleware, localPreview, originalsRootFromEnv } from "./scripts/lib/media-local-preview.mjs";
 import envData from "./src/_data/env.js";
 import missingPages from "./src/_data/missingPages.js";
+import navData from "./src/_data/nav.js";
 
 const GYAZO_HOST = "i.gyazo.com";
 const SITE_DATA_PATH = path.join("src", "_data", "site.json");
@@ -1349,6 +1350,24 @@ export default function (eleventyConfig) {
   enhanceStandaloneImages(markdownLib);
   preserveManualNumberedBullets(markdownLib);
   enhanceJsonLinks(markdownLib);
+  // News rows are authored with an internal section key (`<span class="news-row__tag">notes</span>`).
+  // Show the reader-facing section name from the nav instead, next to the date. `faq` is the old name
+  // of Notes; `none` and unknown keys show no section.
+  const newsSectionLabel = (lang, key) => {
+    const sectionKey = key === "faq" ? "notes" : key;
+    const section = (navData[lang] || navData[DEFAULT_LANG])?.sections?.find((item) => item.key === sectionKey);
+    return section ? String(section.label).replace(/^[^\p{L}\p{N}]+/u, "").trim() : "";
+  };
+  eleventyConfig.addTransform("news-section-labels", function (content) {
+    if (!(this.page.outputPath || "").endsWith(".html") || !content.includes("news-row__tag")) return content;
+    const lang = (this.page.url || "").split("/")[1] || DEFAULT_LANG;
+    return content.replace(/<span class="news-row__tag">([^<]*)<\/span>/g, (match, key) => {
+      const label = newsSectionLabel(lang, key.trim());
+      // Keep an empty cell when there is no section so the title stays in its column.
+      return label ? `<span class="news-row__section">${escapeHTML(label)}</span>` : `<span class="news-row__section" aria-hidden="true"></span>`;
+    });
+  });
+
   // Plain links to managed media (`[clip.mp4](/media/...)`) point at the published R2 file, like embeds do.
   markdownLib.core.ruler.after("inline", "resolve-media-links", (state) => {
     state.tokens.forEach((blockToken) => {
