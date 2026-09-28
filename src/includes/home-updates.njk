@@ -1,0 +1,10 @@
+{% set homeNewsRows = lang | newsRows(5) %}
+{% if homeNewsRows %}
+<h2>{{ updatesHeading }}</h2>
+<section class="home-updates" data-home-updates>
+  <div class="news-list">
+    {{ homeNewsRows | safe }}
+  </div>
+  <p class="home-updates__more"><a href="/{{ lang }}/news/">{{ updatesMore }}</a></p>
+</section>
+{% endif %}

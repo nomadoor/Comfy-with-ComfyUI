@@ -43,7 +43,9 @@ for (const file of await fg(["src/content/{ja,en,zh}/**/*.{md,njk}"])) {
   const match = fs.readFileSync(file, "utf8").match(/^---\r?\n([\s\S]*?)\r?\n---/);
   const data = match ? parse(match[1]) || {} : {};
   if (!data.lang || !data.slug) continue;
-  const pagePath = data.section ? `/${data.lang}/${data.section}/${data.slug}/` : `/${data.lang}/${data.slug}/`;
+  const pagePath = data.section
+    ? `/${data.lang}/${data.section}/${data.slug}/`
+    : data.slug === "home" ? `/${data.lang}/` : `/${data.lang}/${data.slug}/`;
   const date = dateOnly(data.updated || data.created);
   if (date) expectedLastmod.set(`${siteUrl}${pagePath}`, date);
   if (data.seoTitle || data.seoDescription) {

@@ -138,7 +138,8 @@ function enhanceAnchor(anchor) {
     anchor.setAttribute("rel", normalizeRel(anchor.getAttribute("rel") || ""));
   }
 
-  if (linkType === "external" && isArticleLink) {
+  // Icon-only links (e.g. social marks) opt out of the external-link glyph with data-no-link-icon.
+  if (linkType === "external" && isArticleLink && !anchor.closest("[data-no-link-icon]")) {
     ensureArticleLinkIcon(anchor);
   } else if (isArticleLink) {
     removeArticleLinkIcon(anchor);

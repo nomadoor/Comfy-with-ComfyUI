@@ -123,37 +123,18 @@ const initLangSwitcher = () => {
   triggerLangAttention();
 };
 
-export const updateLangLinks = (pathname) => {
-  const menus = document.querySelectorAll("[data-lang-menu]");
-  if (!menus.length) return;
-
-  const currentLangMatch = pathname.match(/^\/([a-z]{2})\//);
-  const currentLang = currentLangMatch ? currentLangMatch[1] : "ja";
-
-  menus.forEach((menu) => menu.querySelectorAll("a").forEach((link) => {
-    // Get the target language code from the initial href or data attribute if we added one.
-    // Since the structure is /<lang>/..., we can try to infer the target lang from the link's text or existing href.
-    // A safer way is to check the link's existing href to see which lang it points to.
-    const href = link.getAttribute("href");
-    if (!href) return;
-
-    const linkLangMatch = href.match(/^\/([a-z]{2})\//);
-    const targetLang = linkLangMatch ? linkLangMatch[1] : null;
-
-    if (targetLang) {
-      // Replace the language segment in the current pathname with the target language
-      // Assuming URL structure is /:lang/:section/:slug/
-      const newPath = pathname.replace(/^\/[a-z]{2}\//, `/${targetLang}/`);
-      link.setAttribute("href", newPath);
-
-      // Update active state
-      if (targetLang === currentLang) {
-        link.classList.add("is-active");
-      } else {
-        link.classList.remove("is-active");
-      }
-    }
-  }));
+// After a router swap, copy the language-menu links from the fetched page: the build already knows
+// which translations exist, and the header and sidebar menus are not part of the swapped content.
+export const syncLangMenus = (nextDoc) => {
+  const nextLinks = new Map(
+    [...nextDoc.querySelectorAll("[data-lang-menu] a[data-lang]")].map((link) => [link.dataset.lang, link])
+  );
+  document.querySelectorAll("[data-lang-menu] a[data-lang]").forEach((link) => {
+    const next = nextLinks.get(link.dataset.lang);
+    if (!next) return;
+    link.setAttribute("href", next.getAttribute("href") || link.getAttribute("href"));
+    link.classList.toggle("is-active", next.classList.contains("is-active"));
+  });
 };
 
 export default initLangSwitcher;

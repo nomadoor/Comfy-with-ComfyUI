@@ -116,22 +116,10 @@
 
           <div class="lang-menu" data-lang-menu>
 
-            {% set currentSlug = currentNavId or slug or 'how-to-use-this-site' %}
-            {% set isStandalone = (not sectionExists) and (currentSlug == 'news' or currentSlug == 'about' or currentSlug == 'contact') %}
 
             {% for option in site.languages %}
-
-              {% if isStandalone %}
-                {% set target = '/' + option.code + '/' + currentSlug + '/' %}
-              {% elif sectionExists and sectionCandidate %}
-                {% set target = '/' + option.code + '/' + sectionCandidate + '/' + currentSlug + '/' %}
-              {% else %}
-                {% set target = '/' + option.code + '/' + currentSlug + '/' %}
-              {% endif %}
-
-              <a href="{{ target }}" class="{% if option.code == lang %}is-active{% endif %}" data-router-ignore>{{ option.label }}</a>
-
-            {% endfor %}
+            <a href="{{ page.url | langSwitchTarget(option.code, collections.all) }}" class="{% if option.code == lang %}is-active{% endif %}" data-lang="{{ option.code }}" data-router-ignore>{{ option.label }}</a>
+          {% endfor %}
 
           </div>
 

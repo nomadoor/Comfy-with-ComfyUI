@@ -8,7 +8,7 @@
 ## 1. Content & Routing
 - Routes follow `/<lang>/<section>/<slug>/` with kebab-case slugs that match nav/data.
 - `lang` is one of `ja`, `en`, `zh`.
-- Exceptions: `about`, `news`, and `contact` are standalone pages and use `/<lang>/<slug>/` without `section`.
+- Exceptions: `about`, `news`, and `contact` are standalone pages and use `/<lang>/<slug>/` without `section`. The language home (slug `home`) is served at `/<lang>/`.
 - News rows announce newly published pages by default. Do not add rows for updates to existing pages unless the owner explicitly requests an exception.
 - The former `faq` section is replaced by `notes`. Old `/<lang>/faq/<slug>/` URLs must not keep duplicate content; redirect them with Cloudflare Pages `_redirects` to `/<lang>/notes/<slug>/`.
 - Markdown lives under `src/content/<lang>/`; workflows sit in `src/workflows/<slug>/*.json`; shared data under `_data`.
@@ -153,6 +153,7 @@
 
 ## 17. Social Cards (OGP / Twitter)
 - Add Open Graph and Twitter card meta tags in the base layout.
+- `og:type` is `article` for article pages and `website` for everything else (home, about, news, contact).
 - Use `summary_large_image` when the page has a hero image (owner decision 2026-09-28); otherwise `summary`.
 - `og:title` / `twitter:title` use `seoTitle` when set, otherwise page `title`.
 - Optional frontmatter `seoTitle` overrides the page title in `<title>`, `og:title`, and `twitter:title`; the visible H1, JSON-LD `headline`, and WebPage `name` keep `title`.
@@ -186,7 +187,7 @@
 - AI crawler policy is permissive: allow crawling for search, AI input, and AI training unless a future owner directive narrows this policy.
 - Publish machine-readable discovery files under `/.well-known/` only when they describe real site capabilities; do not advertise protected APIs, OAuth issuers, or MCP servers that do not exist.
 - Prefer low-maintenance static discovery artifacts for this Eleventy site. Cloudflare-only features may be enabled operationally, but their intended behavior must be reflected here or in an ADR.
-- `/` must use a real HTTP redirect to the canonical Japanese entry page; meta refresh and JavaScript are fallback output only, not the public redirect mechanism.
+- `/` must use a real HTTP redirect (301) to the Japanese language home `/ja/`; meta refresh and JavaScript are fallback output only, not the public redirect mechanism.
 - `llms.txt` must state concrete situations in which an agent should use the site.
 - Normal content pages publish minimal `WebSite` + `WebPage` JSON-LD using their canonical URL, language, title, and summary.
 - The real 404 response must provide recovery links to `sitemap.xml` and `llms.txt`.
