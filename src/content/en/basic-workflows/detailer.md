@@ -132,6 +132,6 @@ However, if you want to detect multiple people reflected in the image at once an
 
 ---
 
-## Sample Image
-
+{% outputs "samples" %}
 ![](/media/basic-workflows/detailer/legacy_gyazo_7564534ad31facc3d0c91bc36606c930.jpg){media=image}
+{% endoutputs %}

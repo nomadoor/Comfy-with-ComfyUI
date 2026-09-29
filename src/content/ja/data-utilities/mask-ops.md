@@ -207,6 +207,6 @@ ComfyUI上で、画像の特定部分をマスク（白黒画像）として描�
 
 ---
 
-## サンプル画像
-
+{% outputs "samples" %}
 ![](/media/data-utilities/mask-ops/legacy_gyazo_a4f60a62fa0aec62796ab908f16d9eaa.png){media=image} ![](/media/data-utilities/mask-ops/legacy_gyazo_20ca6b1922830c8864f755bc695d5c80.png){media=image} ![](/media/data-utilities/mask-ops/legacy_gyazo_727e5c4b9b80304adabccd3b36fbfcfe.png){media=image} ![](/media/data-utilities/mask-ops/legacy_gyazo_8c08c2615b3a741e711d3c11485d4d93.png){media=image} ![](/media/data-utilities/mask-ops/legacy_gyazo_96ab673a43e5b23bd666d1889360c981.png){media=image} ![](/media/data-utilities/mask-ops/legacy_gyazo_bb5bd997733867c5c07a986d5793c63a.png){media=image}
+{% endoutputs %}

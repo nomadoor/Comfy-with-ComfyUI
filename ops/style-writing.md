@@ -164,6 +164,7 @@
 
 - workflow の下に置く出力例は `{% outputs %}` 〜 `{% endoutputs %}` で囲む。中には画像・動画の行（と必要なら短い一言）だけを書く。
 - 「**出力例**」のような太字の見出しは書かない。ラベル（Outputs）とアイコンは自動で付く。
+- workflow に入れて試すための素材画像（記事末尾の「サンプル画像」など）は `{% outputs "samples" %}` 〜 `{% endoutputs %}` で囲む。ラベルは Samples になる。見出しは付けない。
 
 ```markdown
 {% outputs %}

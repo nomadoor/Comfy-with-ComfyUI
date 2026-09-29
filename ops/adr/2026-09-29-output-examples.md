@@ -13,3 +13,6 @@ Accepted
 
 ## Files
 - Updated: `.eleventy.js`, `src/assets/css/site.css`, `ops/style-writing.md`, `ops/style-design.md`, articles in `src/content/{ja,en,zh}`
+
+## Addendum (2026-09-29)
+- 記事末尾の「サンプル画像」（workflow に入れる素材）も同じトレイにする。`{% outputs "samples" %}` でラベルを Samples、アイコンをダウンロードにする。H2 は外す（mask-ops、differential-diffusion、detailer、sd15-image2image の3言語）。
