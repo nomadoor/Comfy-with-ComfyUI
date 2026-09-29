@@ -120,7 +120,9 @@ hero:
 
 在这个 workflow，最初的 10step 用 `红苹果`、剩下用 `红兔子` 这样的提示词生成。
 
+{% outputs %}
 ![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_b9db108769cb804df9df3fe8212e7707.mp4){media=loop}
+{% endoutputs %}
 
 为了更易懂，试着将切换步数每改变 1 时的生成图像做成了视频。  
 曾是 100% 苹果的东西，徐徐变成了兔子。
@@ -142,7 +144,9 @@ hero:
 
 以 **无 LoRA** 生成最初的 6step，以 **有 LoRA** 生成剩余。
 
+{% outputs %}
 ![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_ca0b90aaa5297a515c7bfe8f94e55684.png){media=image}
+{% endoutputs %}
 
 
 这是变成像素画的 LoRA，但 LoRA 以外“变成像素画”的概念之外，也持有作为学习素材的画的记忆。

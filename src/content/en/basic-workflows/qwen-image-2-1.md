@@ -132,7 +132,9 @@ As with other image-editing models, simply give an instruction such as “remove
 
 {% endmediaRow %}
 
+{% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_output.png){media=image}
+{% endoutputs %}
 
 ### Specify the location with colored circles
 
@@ -150,7 +152,9 @@ Then simply give an instruction such as “remove the wristwatch inside the red 
 
 You can use several colors for separate instructions, which is handy when the location is difficult to describe in words.
 
+{% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_output.png){media=image}
+{% endoutputs %}
 
 ### Specify the location with a mask
 
@@ -175,7 +179,9 @@ In fact, the model only receives an ordinary black-and-white image. You can skip
 > Inpainting has a mechanism that prevents edits outside the mask, while this is only a location guide.\
 > The edit may therefore spill outside the specified area.
 
+{% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask_convert_input.png){media=image} ![mask](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask_convert_mask.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask_convert_output.png){media=image}
+{% endoutputs %}
 
 ### Outpainting
 
@@ -193,7 +199,9 @@ It redraws the whole image rather than only the added space, so the original are
 
 This is not a way to preserve the source image precisely, but it is wonderfully simple.
 
+{% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting_output.png){media=image}
+{% endoutputs %}
 
 ### Generate from guide images
 
@@ -213,7 +221,9 @@ You might wonder whether turning the pose into a stick figure is really necessar
 
 Rather than using Pose simply because that is what you do with ControlNet, the point here is to strip away unnecessary information from the reference image and pass only the pose or shape.
 
+{% outputs %}
 ![reference](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_ref.png){media=image} ![pose](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_pose.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_output.png){media=image}
+{% endoutputs %}
 
 ### Upscale
 
@@ -229,7 +239,9 @@ This model is very good at preserving the reference image, so Upscale is probabl
 
 On the other hand, getting it to redraw the image more aggressively, as in what is often called enhancement, may take a little ingenuity.
 
+{% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale_output.png){media=image}
+{% endoutputs %}
 
 ---
 
@@ -269,7 +281,9 @@ Combine transparent generation with image editing and—yes—you can pull a sub
 
 Use the same format as above and tell it what to extract with `Extract ...`.
 
+{% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction_output.png){media=image}
+{% endoutputs %}
 
 ---
 

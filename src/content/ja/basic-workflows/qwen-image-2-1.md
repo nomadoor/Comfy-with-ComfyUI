@@ -134,7 +134,9 @@ workflow は Ref2Image とほとんど同じです。違うのは、生成する
 {% endmediaRow %}
 
 
+{% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_output.png){media=image}
+{% endoutputs %}
 
 ### 赤丸で位置指定して編集
 
@@ -151,7 +153,9 @@ workflow は Ref2Image とほとんど同じです。違うのは、生成する
 
 複数の色を使って別々の指示を出せたりするので言葉で上手く指示しにくいときには便利ですね。
 
+{% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_output.png){media=image}
+{% endoutputs %}
 
 ### マスクで位置指定して編集
 
@@ -176,7 +180,9 @@ workflow は Ref2Image とほとんど同じです。違うのは、生成する
 > inpainting にはマスクの外を編集させない仕組みがありますが、こちらはあくまで位置を示すガイドです。\
 > そのため、指定した範囲から編集がはみ出すこともあります。
 
+{% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask_convert_input.png){media=image} ![mask](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask_convert_mask.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask_convert_output.png){media=image}
+{% endoutputs %}
 
 ### Outpainting
 
@@ -194,7 +200,9 @@ workflow は Ref2Image とほとんど同じです。違うのは、生成する
 
 きっちり元画像を固定する方法ではありませんが、簡単でいいですね。
 
+{% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting_output.png){media=image}
+{% endoutputs %}
 
 ### ガイド画像から生成
 
@@ -214,7 +222,9 @@ ControlNet そのものではありませんが、ポーズ画像や深度マッ
 
 ControlNet だから Pose を使うというより、参照画像から余計な情報を削ぎ落とし、ポーズや形だけを取り出して渡す、という意味合いのほうが強いですね。
 
+{% outputs %}
 ![reference](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_ref.png){media=image} ![pose](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_pose.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_output.png){media=image}
+{% endoutputs %}
 
 ### Upscale
 
@@ -230,7 +240,9 @@ ControlNet だから Pose を使うというより、参照画像から余計な
 
 その一方で、いわゆるエンハンスのように大きく描き直すには、少し工夫がいるかもしれませんね。
 
+{% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale_output.png){media=image}
+{% endoutputs %}
 
 ---
 
@@ -270,7 +282,9 @@ This is an RGBA image with transparency. <ここに生成したいもののプ�
 
 先ほどのフォーマットで、切り抜きたいものを `Extract 〇〇` と指示するだけです。
 
+{% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction_output.png){media=image}
+{% endoutputs %}
 
 ---
 

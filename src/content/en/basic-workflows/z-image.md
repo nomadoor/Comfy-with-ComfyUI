@@ -77,9 +77,9 @@ Here we split it into the first 50% and the last 50%.
 - 🟪 Z-Image : 15 steps out of 30 steps
 - 🟨 Z-Image-Turbo : 4 steps out of 8 steps
 
-**Comparison**
-
+{% outputs %}
 ![Z-Image only](/media/basic-workflows/z-image/legacy_gyazo_73afc01007482bdfbcc0b0d33f75cb98.png){media=image} ![Z-Image + Turbo](/media/basic-workflows/z-image/legacy_gyazo_0c1ece70589a7b42801f37383a604440.png){media=image}
+{% endoutputs %}
 
 
 

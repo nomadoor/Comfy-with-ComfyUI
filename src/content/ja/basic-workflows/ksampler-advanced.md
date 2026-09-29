@@ -120,7 +120,9 @@ KSampler (Advanced)では、`add_noise`パラメータでノイズを追加す�
 
 このworkflowでは、最初の10stepを`赤いりんご`、残りを`赤いうさぎ`というプロンプトで生成しています。
 
+{% outputs %}
 ![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_b9db108769cb804df9df3fe8212e7707.mp4){media=loop}
+{% endoutputs %}
 
 もっとわかりやすくするために、切り替えステップを1ずつ変えたときの生成画像を動画にしてみました。  
 100%りんごだったものが、徐々にうさぎになっていきます。
@@ -142,7 +144,9 @@ KSampler (Advanced)では、`add_noise`パラメータでノイズを追加す�
 
 最初の6stepを**LoRAなし**で、残りを**LoRAあり**で生成しています。
 
+{% outputs %}
 ![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_ca0b90aaa5297a515c7bfe8f94e55684.png){media=image}
+{% endoutputs %}
 
 
 これはドット絵にするLoRAですが、LoRAは"ドット絵にする"という概念以外にも、学習素材にした絵の記憶も持ってしまっています。

@@ -79,9 +79,9 @@ image2image してもいいですが、ここでは少しオシャレにサン�
 - 🟪 Z-Image : 30 steps のうち 15 steps
 - 🟨 Z-Image-Turbo : 8 steps のうち 4 steps
 
-**比較**
-
+{% outputs %}
 ![Z-Image のみ](/media/basic-workflows/z-image/legacy_gyazo_73afc01007482bdfbcc0b0d33f75cb98.png){media=image} ![Z-Image + Turbo](/media/basic-workflows/z-image/legacy_gyazo_0c1ece70589a7b42801f37383a604440.png){media=image}
+{% endoutputs %}
 
 
 ## Z-Image-Fun-Controlnet-Union-2.1

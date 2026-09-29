@@ -132,7 +132,9 @@ Seed 带来的差异非常大，可以说有好有坏。改变分辨率也会让
 
 {% endmediaRow %}
 
+{% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_output.png){media=image}
+{% endoutputs %}
 
 ### 用彩色圆圈指定位置
 
@@ -150,7 +152,9 @@ Seed 带来的差异非常大，可以说有好有坏。改变分辨率也会让
 
 还可以使用多种颜色分别给出不同的指示，遇到难以用语言准确说明位置的情况时很方便。
 
+{% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_output.png){media=image}
+{% endoutputs %}
 
 ### 用蒙版指定位置
 
@@ -175,7 +179,9 @@ Seed 带来的差异非常大，可以说有好有坏。改变分辨率也会让
 > inpainting 有防止蒙版外区域被编辑的机制，而这里的图像只是用来提示位置。\
 > 因此，编辑也可能超出指定范围。
 
+{% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask_convert_input.png){media=image} ![mask](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask_convert_mask.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask_convert_output.png){media=image}
+{% endoutputs %}
 
 ### Outpainting
 
@@ -193,7 +199,9 @@ Qwen-Image-2.1 会生成一张补全上下空间的新图像。
 
 这并不是严格固定原图的方法，不过确实非常简单。
 
+{% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting_output.png){media=image}
+{% endoutputs %}
 
 ### 根据引导图像生成
 
@@ -213,7 +221,9 @@ Qwen-Image-2.1 会生成一张补全上下空间的新图像。
 
 与其说是因为 ControlNet 才使用 Pose，不如说重点在于从参考图像中剔除多余信息，只提取姿势或形状交给模型。
 
+{% outputs %}
 ![reference](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_ref.png){media=image} ![pose](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_pose.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_output.png){media=image}
+{% endoutputs %}
 
 ### Upscale
 
@@ -229,7 +239,9 @@ Qwen-Image-2.1 会生成一张补全上下空间的新图像。
 
 另一方面，如果想像通常所说的增强处理那样进行较大幅度的重绘，可能还需要一些调整。
 
+{% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale_output.png){media=image}
+{% endoutputs %}
 
 ---
 
@@ -269,7 +281,9 @@ This is an RGBA image with transparency. <在这里填写要生成的内容>. Th
 
 使用刚才的格式，并用 `Extract 〇〇` 指定要提取的内容即可。
 
+{% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction_output.png){media=image}
+{% endoutputs %}
 
 ---
 

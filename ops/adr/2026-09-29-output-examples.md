@@ -9,7 +9,7 @@ Accepted
 ## Decision
 - `{% outputs %}` 〜 `{% endoutputs %}` で出力例を囲む。中の Markdown（画像・動画の行など）はそのまま描画する。
 - ステップカード（`2026-09-29-media-step-cards.md`）と同じ形のトレイにする：カードと同じ塗り、枠線なし、左上の角が灰色の四角（画像アイコン）、カードのラベルと同じ書式の「Outputs」。ラベルは3言語共通の英語。見出しではないので TOC に出ない。
-- 既存の「出力例」系の太字段落は全言語で置き換える（日本語44、英語44、中国語44）。
+- 既存の「出力例」系の太字段落は全言語で置き換える（日本語・英語・中国語とも44か所。あわせて、ラベルなしで並んでいた出力（qwen-image-2-1 の7か所、ksampler-advanced の2か所）と「生成例」「比較」ラベルの4か所（wan-animate 3、z-image 1）も各言語でトレイにした）。
 
 ## Files
 - Updated: `.eleventy.js`, `src/assets/css/site.css`, `ops/style-writing.md`, `ops/style-design.md`, articles in `src/content/{ja,en,zh}`
