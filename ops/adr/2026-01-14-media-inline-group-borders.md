@@ -1,6 +1,6 @@
 # ADR: Media Inline Group Border Trimming (2026-01-14)
 
-- Status: Accepted  
+- Status: Superseded by `2026-09-29-media-step-cards.md`
 - Date: 2026-01-14
 
 ## Context

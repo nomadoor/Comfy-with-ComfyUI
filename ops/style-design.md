@@ -84,9 +84,11 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - Inline article media (R2 or Gyazo) stays completely flat: **no borders / box-shadows**. When contrast is needed, rely on `--color-panel-alt` as the single backing surface.
 - Image comparison tables must stay within the article content width. Tables that contain article media use fixed column layout, compact cell padding, and equal-size square media frames; images preserve their own aspect ratio with `object-fit: contain`.
 - 全ページで同一トーンを保つため、本文中の画像・動画もデフォルトで減光フィルタ（例：`filter: brightness(0.85)`）を適用する。
+- ダークモードでは、本文中のコード（コードブロックの文字と構文色、インラインコードの文字色）と絵文字も同じ 0.85 で減光する。絵文字は文字色が効かないため、Markdown レンダラーが `.emoji` で包む（U+1F000 以降の絵文字と、U+FE0F 付きの記号のみ。`↔` などの文字記号は対象外）。
 - Lists use custom markers: first-level unordered lists use small accent dots, nested unordered lists use muted hollow accent dots, and ordered lists use accent numbers.
 - Article list markers apply only to authored list content; list-based interface components such as Workflow picker options must reset generated markers.
 - `.placeholder` component is dashed border block for “まだページがありません” states and 404 page.
+- Media step cards (`mediaRow`) follow `ops/adr/2026-09-29-media-step-cards.md`: a filled card (one fill step above the reader, no border), header with a kind-colored top-left corner square, progress bar, fixed-ratio image frame, explanation, half-width previous / next buttons. Only `Deep dive` uses `--color-highlight`; `Workflows` / `Walkthrough` use `--color-border-strong`. The card never changes height when switching steps. Card images alone carry a soft shadow (an exception to flat inline media); parts inside the card use one fill step lighter than the card, never darker.
 
 ## 7. News Rows
 - News rows (the News page and the home "latest updates") show `date · section · title`. The section is the nav section label, never the internal key, rendered small in `--color-text-muted` with a small colored dot before it; no chip background.

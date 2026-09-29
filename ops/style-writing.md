@@ -60,22 +60,26 @@
 場合によっては短い Tip・注意書きを追加してもよい。
 ```
 
-### 4-2. mediaRow の補足（画像の下にリンクを置きたい場合）
+### 4-2. mediaRow と mediaFooter
 
-`mediaRow` の本文内で、画像の下にリンクや短い補足を置きたい場合は `mediaFooter` を使う。
+`mediaRow` はステップカードになる。隣り合う `mediaRow` は1枚のカードにまとまり、1手順ずつ切り替えて表示される（`ops/adr/2026-09-29-media-step-cards.md`）。
+
+- 本文の先頭を太字だけの段落（`**手順名**`）にすると、それが手順名になり、手順バーと前後ボタンにも使われる。先頭の `1.` などの番号は自動で外れる。
+- workflow ファイルは `mediaFooter` に入れる。解説の先頭に表示される。
+- `width` と `align` は指定しても使われない。
+- 同じカードの中で解説の長さを揃えるほど、短い手順の下の空きが減る。
 
 ```markdown
-{% mediaRow img="..." width=50 align="left" %}
+{% mediaRow img="..." %}
+**手順名**
+
 本文...
 
 {% mediaFooter %}
 [](/workflows/...json)
-短い補足文もOK。
 {% endmediaFooter %}
 {% endmediaRow %}
 ```
-
-`mediaFooter` は **画像の下** に表示される。本文とは別枠になるため、右側が窮屈なときの退避先として使える。
 
 **特徴として重要なルール：**
 

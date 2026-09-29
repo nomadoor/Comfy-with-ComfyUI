@@ -9,6 +9,7 @@ import { createOriginalsMiddleware, localPreview, originalsRootFromEnv } from ".
 import envData from "./src/_data/env.js";
 import missingPages from "./src/_data/missingPages.js";
 import navData from "./src/_data/nav.js";
+import { groupMediaSteps, renderMediaStep } from "./scripts/lib/media-steps.mjs";
 
 const GYAZO_HOST = "i.gyazo.com";
 const SITE_DATA_PATH = path.join("src", "_data", "site.json");
@@ -1358,6 +1359,21 @@ export default function (eleventyConfig) {
     const section = (navData[lang] || navData[DEFAULT_LANG])?.sections?.find((item) => item.key === sectionKey);
     return section ? String(section.label).replace(/^[^\p{L}\p{N}]+/u, "").trim() : "";
   };
+  // Adjacent media steps (see the mediaRow shortcode) become step cards.
+  eleventyConfig.addTransform("media-steps", function (content) {
+    if (!(this.page.outputPath || "").endsWith(".html")) return content;
+    const [, lang, section] = (this.page.url || "").split("/");
+    return groupMediaSteps(content, { lang, section });
+  });
+
+  // Emoji ignore the text colour; wrap them so dark mode can dim them like article images. Only
+  // colour emoji: pictographs from U+1F000 up, or older symbols with the emoji selector (U+FE0F);
+  // plain text symbols such as "↔" stay text.
+  const EMOJI = /(?:[\u{1F000}-\u{1FFFF}]|\p{Extended_Pictographic}\uFE0F)\uFE0F?(?:\u200D\p{Extended_Pictographic}\uFE0F?)*/gu;
+  const renderText = markdownLib.renderer.rules.text;
+  markdownLib.renderer.rules.text = (tokens, idx, options, env, self) =>
+    renderText(tokens, idx, options, env, self).replace(EMOJI, (emoji) => `<span class="emoji">${emoji}</span>`);
+
   eleventyConfig.addTransform("news-section-labels", function (content) {
     if (!(this.page.outputPath || "").endsWith(".html") || !content.includes("news-row__tag")) return content;
     const lang = (this.page.url || "").split("/")[1] || DEFAULT_LANG;
@@ -1391,30 +1407,24 @@ export default function (eleventyConfig) {
     return markdownLib.render(content, { page: this.page });
   });
 
-  // Paired shortcode: side-by-side media + text
+  // Paired shortcode: one media step (image or video with an explanation). Adjacent steps are
+  // gathered into a step card by the media-steps transform.
   // Usage (in Markdown):
-  // {% mediaRow img="https://... {media=image}", alt="説明", align="left", width=33 %}
+  // {% mediaRow img="https://... {media=image}", alt="説明" %}
   // 任意のMarkdown（箇条書きなど）
-  // {% mediaFooter %}画像の下に置きたいリンクや補足{% endmediaFooter %}
+  // {% mediaFooter %}workflow ファイルなど、解説の頭に置くもの{% endmediaFooter %}
   // {% endmediaRow %}
+  // `align` and `width` from the old side-by-side layout are accepted and ignored.
   eleventyConfig.addPairedShortcode("mediaFooter", function (content = "") {
     return `@@MEDIA_FOOTER_START@@${content}@@MEDIA_FOOTER_END@@`;
   });
 
-  eleventyConfig.addPairedShortcode("mediaRow", function (content, opts = {}) {
-    let { img = "", alt = "", align = "left", width = 33, gyazo = "", media = "", mode = "" } = opts;
-    const reverse = String(align).toLowerCase() === "right";
+  eleventyConfig.addPairedShortcode("mediaRow", function (content = "", opts = {}) {
+    let { img = "", alt = "", gyazo = "", media = "", mode = "" } = opts;
     const safeAlt = String(alt).replace(/"/g, "&quot;");
     const footerRegex = /@@MEDIA_FOOTER_START@@([\s\S]*?)@@MEDIA_FOOTER_END@@/g;
-    let footerContent = "";
-
-    if (typeof content === "string") {
-      const matches = Array.from(content.matchAll(footerRegex));
-      if (matches.length) {
-        footerContent = matches.map((match) => match[1]).join("\n");
-        content = content.replace(footerRegex, "");
-      }
-    }
+    const footerContent = Array.from(String(content).matchAll(footerRegex), (match) => match[1]).join("\n");
+    const bodyContent = String(content).replace(footerRegex, "");
 
     // Allow braces style in img param: "https://... {media=loop}" (compatible: {gyazo=loop})
     let modeFromBrace = "";
@@ -1425,13 +1435,13 @@ export default function (eleventyConfig) {
         img = img.replace(/\s*\{(?:media|gyazo)=[^}]+\}\s*/i, "");
       }
     }
-
     const mediaMode = normalizeMediaMode(mode || modeFromBrace || media || gyazo) || "image";
 
-    let mediaPart = "";
+    let mediaMarkup = "";
+    let ratio = null;
     if (img) {
       const resolved = resolveMedia(img, { mode: mediaMode, size: 1000 });
-      let mediaMarkup;
+      if (resolved.width && resolved.height) ratio = resolved.width / resolved.height;
       if (resolved.kind === "video") {
         mediaMarkup = renderVideoFigure(resolved, { caption: safeAlt, maxHeight: 360 });
       } else {
@@ -1444,7 +1454,8 @@ export default function (eleventyConfig) {
         ];
         if (resolved.srcset) {
           attrs.push(`srcset="${escapeHTML(resolved.srcset)}"`);
-          attrs.push(`sizes="(min-width: 900px) ${width}vw, 100vw"`);
+          // Step cards show the image across the article column.
+          attrs.push(`sizes="(min-width: 900px) 760px, 100vw"`);
         }
         if (resolved.width && resolved.height) {
           attrs.push(`width="${resolved.width}"`);
@@ -1452,38 +1463,14 @@ export default function (eleventyConfig) {
         }
         mediaMarkup = `<img ${attrs.join(" ")}>`;
       }
-      mediaPart = `<div class="media-inline__media-stack" style="--media-inline-width:${width}%;">
-  <div class="media-inline__media">
-    ${mediaMarkup}
-  </div>
-</div>`;
     }
 
-    const renderedBody = markdownLib.render(content);
-    const renderedFooter = footerContent.trim() ? markdownLib.render(footerContent) : "";
-    if (renderedFooter && mediaPart) {
-      const marker = "MEDIA_FOOTER_ANCHOR";
-      const footerMarkup = `  <div class="media-inline__footer">${renderedFooter}</div>\n`;
-      const lastCloseIndex = mediaPart.lastIndexOf("</div>");
-      if (lastCloseIndex !== -1) {
-        mediaPart =
-          mediaPart.slice(0, lastCloseIndex) +
-          footerMarkup +
-          mediaPart.slice(lastCloseIndex);
-      } else {
-        mediaPart = mediaPart.replace(marker, footerMarkup);
-      }
-    }
-
-    // Fix: Swap DOM order when reversed to match visual order (fixes Lightbox navigation)
-    const innerHTML = reverse
-      ? `<div class="media-inline__body">${renderedBody}</div>${mediaPart}`
-      : `${mediaPart}<div class="media-inline__body">${renderedBody}</div>`;
-
-    return `
-<div class="media-inline${reverse ? " media-inline--reverse" : ""}">
-  ${innerHTML}
-</div>`;
+    return renderMediaStep({
+      media: mediaMarkup,
+      files: footerContent.trim() ? markdownLib.render(footerContent) : "",
+      body: markdownLib.render(bodyContent),
+      ratio
+    });
   });
 
   eleventyConfig.addShortcode("workflow", function (file, performance = {}) {
