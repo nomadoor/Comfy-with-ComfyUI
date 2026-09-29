@@ -599,6 +599,8 @@ function onKeyDown(event) {
       break;
     case " ":
       if (!videoEl || videoEl.hidden) return;
+      // A focused button (close, zoom, arrows) keeps Space for itself.
+      if (event.target.closest?.("button, a, input, select, textarea, [role='button']")) return;
       // Stop the key here so a focused video's own controls do not toggle playback a second time.
       event.preventDefault();
       event.stopPropagation();
