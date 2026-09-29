@@ -76,6 +76,7 @@ text2video、image2video、FLF2V の 3 つのモードに対応しています�
         └── wan_2.1_vae.safetensors
 ```
 
+> [!TIP]
 > fp16 / bf16 版を使いたい場合は、上の fp8 のファイル名を読み替えてください。基本的な配置パスは同じです。
 
 ---
@@ -164,6 +165,7 @@ Wan2.1 の基本となる text2video の workflow です。
 - `LoraLoaderModelOnly` ノードで LoRA を読み込みます。
 - `KSampler` の `steps` を 4 ～ 8、`CFG` を 1.0 に設定します。
 
+> [!NOTE]
 > Self Forcing は「とにかく高速に回したいとき」の選択肢です。  
 > 許容できないほどではないですが、劣化は大きいです。
 

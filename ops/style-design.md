@@ -79,7 +79,8 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - The central surface may grow when side rails collapse, but article content inside `.app-shell__content-scroll` stays centered at the content max width.
 - Article body content remains transparent inside that surface. Content width follows `--content-max` (`50rem`).
 - Article typography follows the calmer blog rhythm: body letter spacing stays `0`, body line-height is about `1.7`, `h2` is around `1.4rem`, and `h3` is around `1.1rem` without accent coloring.
-- Blockquotes use a quiet but visible purple-tinted background surface with small radius and a small Tabler-style info icon at the start. Do not use borders, a left accent bar, or italic styling by default.
+- Plain blockquotes are quotations: no fill, no icon, only an indent and a quieter text colour. Do not use borders, a left accent bar, or italic styling.
+- Callouts (`> [!NOTE]`, `[!TIP]`, `[!WARNING]`, see `ops/adr/2026-09-29-callouts.md`) are filled blocks with small radius and a Tabler-style icon, no borders. NOTE: the card fill (text 6% into the reader) and a muted info icon. TIP: `--color-highlight` 14% fill and a purple bulb. WARNING: amber `#c98a32` 20% fill and an amber alert triangle; the only callout meant to stand out.
 - Inline images are centered, `max-width: 720px`, `max-height: 320px`, and `object-fit: contain` so portrait assets never force extra scrolling.
 - Inline article media (R2 or Gyazo) stays completely flat: **no borders / box-shadows**. When contrast is needed, rely on `--color-panel-alt` as the single backing surface.
 - Image comparison tables must stay within the article content width. Tables that contain article media use fixed column layout, compact cell padding, and equal-size square media frames; images preserve their own aspect ratio with `object-fit: contain`.

@@ -58,4 +58,5 @@ The day of realization is approaching with the latest research, but steady optim
 - Switch to lightweight models
 - Use acceleration technology dedicated to video (explained on another page)
 
+> [!NOTE]
 > "Realtime image2image" becomes a **special workflow based on acceleration technology**.

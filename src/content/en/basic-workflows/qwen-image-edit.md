@@ -31,6 +31,7 @@ Previously, it was only possible to "edit a single image", but with Qwen-Image-E
 * "Change the clothes of the person in Image 1 to those in Image 2"
 * "Generate an image where Image 1 and Image 2 are standing on the same stage"
 
+> [!TIP]
 > Since the training method is different, 2509 is not necessarily fully upward compatible with the original version, but if you are unsure, using 2509 should be fine.
 
 ---
@@ -97,6 +98,7 @@ Therefore, in this workflow, image size preprocessing is done in advance.
 * Resize to 1M pixels with `ImageScaleToTotalPixels` node
 * Crop so that the resolution is a multiple of 8 with `Resize Image v2` node
 
+> [!NOTE]
 > Qwen-Image-Edit cannot "match pixel perfect with the input image and edited image" no matter how much you try.
 > Several workarounds have been proposed, but it is better to understand the premise that the model design itself is not suitable for such use.
 

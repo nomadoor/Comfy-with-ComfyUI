@@ -160,6 +160,7 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
 
 用法和 [LTX 2 的 image2video](/zh/basic-workflows/ltx-2/#image2video) 相同。使用 `LTXVImgToVideoInplace` 将输入图像插入为第 1 帧。
 
+> [!NOTE]
 > 以前出于各种原因，会使用 `LTXV Preprocess` 故意降低输入图像的质量。不过在 LTX 2.5 中，至少就我使用的情况来看似乎已经不再需要，所以这里将它去掉了。
 
 **输出示例**
@@ -188,6 +189,7 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
 
 增加节点并依次连接起来，就能进行 Generative Interpolation。
 
+> [!NOTE]
 > 根据图像的不同，结果有时不像补帧，反而更像转场。<br>
 > 对于插在中间的 `LTXVAddGuide`，可以尝试将 `strength` 降到 0.3～0.4 左右。
 

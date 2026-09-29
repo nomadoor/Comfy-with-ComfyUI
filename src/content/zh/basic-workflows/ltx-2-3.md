@@ -78,6 +78,7 @@ tags: []
 
 这不是官方推荐的方法，但结果明显更好，所以这里采用它。
 
+> [!NOTE]
 > 这里全部使用 `distilled-lora` 的 8 步生成。
 
 ---
@@ -89,6 +90,7 @@ tags: []
 
 也可以让 LLM 帮你整理提示词。把参考链接和想生成的内容交给它，让它帮你润色即可。
 
+> [!NOTE]
 > ComfyUI 里有一个可以在核心中运行 LLM 的 [TextGenerate 节点](/zh/basic-workflows/llm-mllm/#textgenerate-节点)。  
 > 很多 LTX-2 workflow 会用它来整理提示词，不过它本质上也只是一个用来修正提示词的节点，所以这一页里的 workflow 并没有使用它。  
 > 就我个人来说，还是直接用 ChatGPT 或 Gemini 在外面先把提示词写好更轻松。
@@ -290,6 +292,7 @@ LTX-2 的 guide 机制里，如果直接输出，生成出来的视频会混入�
 
 - [LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-CelebVHQ-3K/blob/main/lora_weights.safetensors) (1.16 GB)
 - [LTX-2.3-ID-LoRA-TalkVid-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-TalkVid-3K/blob/main/lora_weights.safetensors) (1.16 GB)
+> [!TIP]
 > 这两个发布文件的名字都叫 `lora_weights.safetensors`。  
 > 为了便于区分，建议分别重命名为 `LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors` 和 `LTX-2.3-ID-LoRA-TalkVid-3K.safetensors`。
 

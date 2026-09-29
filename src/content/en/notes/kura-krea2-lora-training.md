@@ -102,6 +102,7 @@ You can also ask an AI to do this work. Here is an example of asking ChatGPT to 
 
 → [Creating LoRA training tags with ChatGPT](https://chatgpt.com/share/6a54dbe5-6bec-83e9-ae15-f6bb02972c59)
 
+> [!NOTE]
 > Because this is a character LoRA, we removed words that describe the character. For an outfit LoRA, remove words describing the outfit; for a style LoRA, remove words describing the art style.
 
 Save each caption in a text file with the same name as its image. The filenames do not need to be sequential.
@@ -133,6 +134,7 @@ Save each caption in a text file with the same name as its image. The filenames 
 - **For cloud training**
   - A [RunPod](https://www.runpod.io/) account
 
+> [!TIP]
 > For local training with WSL2, open `Settings → Resources → WSL Integration` in Docker Desktop and enable the WSL distribution where you run Kura, such as `Ubuntu`.
 
 ### Install Kura
@@ -277,6 +279,7 @@ Kura Monitor is a monitoring tool for checking training progress and previous ru
 
 It is a read-only view. You cannot start training or change settings from the Monitor.
 
+> [!TIP]
 > Open it in a separate terminal from the one running the training job.
 
 ```sh

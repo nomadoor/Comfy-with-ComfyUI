@@ -97,6 +97,7 @@ Flow の方が少し重いですが、性能は大分良いので、基本的に
 
 [](/workflows/notes/comfyui-video-stabilizer/video_stabilizer_to_motion_apply.json)
 
+> [!WARNING]
 > `crop` や `crop_and_pad` で補正した場合、すでに切り落とした画素は戻せません。復元まで考える場合は、最初の手ブレ補正で `expand` を使うのがおすすめです。
 
 ---
@@ -133,6 +134,7 @@ AI で生成した動画…に限りませんが、カメラワークが滑ら�
 - `action`: 強めで荒い動きを足します。
 - `vibration`: 細かい振動を足します。
 
+> [!NOTE]
 > `Video Stabilizer Shake Generator Manual` というノードもあります。
 > こちらは preset ではなく、内部パラメータで細かく動きを調整することができます。
 

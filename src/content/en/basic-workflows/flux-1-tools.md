@@ -78,6 +78,7 @@ It can be used with the same feeling as ControlNet Depth / Canny.
 
   * Since the image size of this depth map becomes the output image size as is, resize it to an appropriate size.
 
+> [!TIP]
 > For the Canny version, input the Canny edge image with the same configuration.
 
 ---

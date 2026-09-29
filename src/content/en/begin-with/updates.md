@@ -24,7 +24,8 @@ When updating, you can choose which version to apply.
 | **Stable Version** | A confirmed version with guaranteed operation where noticeable bugs have been fixed. Official announcements usually refer to this. | When you want to prioritize stability. |
 | **Nightly Version** | The latest version containing all newly implemented features and fixes. Operation verification is incomplete, so defects may occur. | When you want to try new features or support for the latest models immediately. |
 
-> **Note:** If "I updated to the latest version but cannot use this feature/model", you may have selected the **Stable Version**. The latest features go into the **Nightly Version** first.
+> [!WARNING]
+> If "I updated to the latest version but cannot use this feature/model", you may have selected the **Stable Version**. The latest features go into the **Nightly Version** first.
 
 ---
 
@@ -99,7 +100,8 @@ If you have installed ComfyUI Manager, you can update from the UI.
 - 1.  Select the version you want to update (**Nightly Version** or **Stable Version**)
 - 2.  Click the **`Update ComfyUI`** button
 
-> **Note:** `Update All` is a button to update **all installed custom nodes**, not ComfyUI itself.
+> [!WARNING]
+> `Update All` is a button to update **all installed custom nodes**, not ComfyUI itself.
 
 ---
 

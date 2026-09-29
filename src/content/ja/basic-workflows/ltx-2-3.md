@@ -78,6 +78,7 @@ tags: []
 
 公式に推奨されている方法ではありませんが、明確に結果が良いのでこちらを採用しています。
 
+> [!NOTE]
 > 全て `distilled-lora` を適用した 8 ステップ生成です。
 
 ---
@@ -89,6 +90,7 @@ LTX-2 と同様に、プロンプトの質はそのまま生成動画の質に�
 
 LLM に手伝ってもらうのも有効です。参考リンクと作りたい内容を渡して、整えてもらいましょう。
 
+> [!NOTE]
 > ComfyUI には、コアで LLM を動かす [TextGenerate ノード](/ja/basic-workflows/llm-mllm/#textgenerate-ノード) があります。  
 > 多くの LTX-2 workflow ではこれでプロンプトを整えていますが、あくまでプロンプトを修正するだけのノードなので、このページの workflow では使っていません。  
 > 個人的には ChatGPT や Gemini で別に作る方が気楽だと思います。
@@ -293,6 +295,7 @@ LTX-2 のガイド機構では、そのまま出力すると生成した動画�
 
 - [LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-CelebVHQ-3K/blob/main/lora_weights.safetensors) (1.16 GB)
 - [LTX-2.3-ID-LoRA-TalkVid-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-TalkVid-3K/blob/main/lora_weights.safetensors) (1.16 GB)
+> [!TIP]
 > 配布ファイル名はどちらも `lora_weights.safetensors` です。  
 > 分かりにくいので、それぞれ `LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors` / `LTX-2.3-ID-LoRA-TalkVid-3K.safetensors` にリネームしておくと扱いやすいです。
 

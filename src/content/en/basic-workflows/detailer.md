@@ -47,6 +47,7 @@ Detailer is efficient because it cuts out only the surrounding area you want to 
 
 - [lquesada/ComfyUI-Inpaint-CropAndStitch](https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch)
 
+> [!NOTE]
 > Generally, the Detailer node included in the Impact Pack is used.
 > That one is more multifunctional because it can automate up to object detection, but since it has many unique parameters and is difficult, we will handle it separately.
 

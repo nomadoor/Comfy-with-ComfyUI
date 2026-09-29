@@ -180,6 +180,7 @@ hero:
 
 [](/workflows/data-utilities/resize-crop-pad/resizeandpadimage.json)
 
+> [!NOTE]
 > このノードはパディング部分をマスクとして出力できないため、ほとんど使う場面はありません。
 
 ### Pad Image for Outpainting ノード
@@ -243,6 +244,7 @@ x, y座標と幅・高さを指定して、画像の一部分を矩形で切り�
 | **crop_position** | center, top, bottom, left, right |
 | **divisible_by** | この値の倍数の解像度にリサイズされます（例：32, 64） |
 
+> [!NOTE]
 > 以前は、縦横を N の倍数 になるようにリサイズする用途で多用していましたが、現在はコアノードで対応できるため、あまり使用していません。
 
 

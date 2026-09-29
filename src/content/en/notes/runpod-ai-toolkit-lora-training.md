@@ -26,6 +26,7 @@ If you only want to train a simple LoRA, it can be done for a few dollars, so it
 
 This note walks through the flow from launching AI Toolkit on RunPod to downloading the LoRA you trained.
 
+> [!NOTE]
 > I plan to cover detailed training settings and dataset preparation for each model in separate notes.
 
 ---
@@ -63,6 +64,7 @@ If you only want to try LoRA training, about 10 dollars is enough.
 - Choose `Other` if you want to purchase $150 or less
 - Enter the amount and continue to `Go to Checkout`
 
+> [!NOTE]
 > You do not have to use it, but this is my referral link. If you sign up from here and buy at least $10 in credits, you will get a little extra.
 >
 > [RunPod referral link](https://runpod.io?ref=ke9q7kqp)
@@ -97,6 +99,7 @@ After choosing the Template, change one setting from `Set overrides`.
 - Open `Environment Variables`
 - Change the value of `AI_TOOLKIT_AUTH` to a password only you know
 
+> [!WARNING]
 > You will use this value when opening AI Toolkit. If you leave the default as-is, anyone can open it with `password`, so use a different value.
 
 ### Choose a GPU
@@ -120,6 +123,7 @@ I usually use an RTX A5000 or A40.
 
 Click `Deploy Pod` to create the Pod.
 
+> [!WARNING]
 > Credit usage starts at this point. Prepare your dataset before deploying the Pod.
 
 ---
@@ -202,6 +206,7 @@ The only real way to know whether training went well is to generate images with 
 
 That is the basic flow.
 
+> [!WARNING]
 > If you delete the Pod, the uploaded dataset and generated LoRA files are deleted too. Make sure to download every file you need.  
 > It is also useful to save the config file that contains all the settings, so you can review it later.
 

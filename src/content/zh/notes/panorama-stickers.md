@@ -61,6 +61,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 为了在 Legacy / Node2.0 两边都保持稳定运行，基本上是以专用的模态 UI 作为主要操作方式。
 
+> [!NOTE]
 > 只有 `Panorama Preview` 也可以在节点上预览，不过操作还是以前提使用模态 UI 为主。
 
 {% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_fc789c1056b38005c59d1e5be6c3095d.mp4{media=loop}", width=60, align="left" %}
@@ -224,6 +225,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 下面实际使用这个 LoRA，试着根据参考图像做一个 ERP 全景。
 
+> [!WARNING]
 > 这是已知问题，Distilled 模型上这个 LoRA 几乎不起作用。现在还在找对策，所以目前请以 base model 为前提使用。
 
 ### 模型的下载
@@ -275,6 +277,7 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 Fill the green spaces according to the image. Outpaint as a seamless 360 equirectangular panorama (2:1). Keep the horizon level. Match left and right edges.
 ```
 
+> [!NOTE]
 > 生成出来的是 ERP（2:1）图像。直接看会不太直观，所以请用 `Panorama Preview` 或 `Panorama Cutout` 来确认或截取视角。
 
 ### flux-2-klein-4B-360-erp-outpaint

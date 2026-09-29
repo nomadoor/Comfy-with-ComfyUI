@@ -78,6 +78,7 @@ tags: [instruction-based-image-editing]
 
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_text2image.json)
 
+> [!NOTE]
 > 虽然在官方工作流中，使用叫 `Flux2Scheduler` 的东西，但因为没有大区别，为了简化工作流使用了 `Simple`。
 
 ### text2image Distilled

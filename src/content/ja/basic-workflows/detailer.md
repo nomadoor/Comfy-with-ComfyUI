@@ -47,6 +47,7 @@ Detailer は、inpaintしたい周辺領域だけ切り抜くため無駄があ�
 
 - [lquesada/ComfyUI-Inpaint-CropAndStitch](https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch)
 
+> [!NOTE]
 > 一般的には、Impact Pack に含まれる Detailer ノードを使います。  
 > こちらのほうが物体検出まで含めた自動化が出来るので多機能なのですが、独自パラメータが多く難しいため、別で改めて扱います。
 

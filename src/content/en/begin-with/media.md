@@ -28,6 +28,7 @@ Besides searching and adding nodes, there are several convenient ways:
 - b. Drag and drop an image onto the node.
 - c. With an image in your clipboard, press `Ctrl + V` on the canvas to paste it as a `Load Image` node.
 
+> [!NOTE]
 > Uploaded images are copied to the `ComfyUI\input` folder and loaded from there. **The original file is not referenced directly.**
 >
 > Since these images remain in the input folder unless deleted, you can reuse an image as many times as you like once it's loaded.
@@ -103,7 +104,7 @@ However, the output of this node is of type `VIDEO`, so it cannot be used as is.
 
 Therefore, when handling videos, we recommend using the **Video Helper Suite** described below.
 
-> **Note:**
+> [!WARNING]
 > Videos are basically compressed, but when loaded in ComfyUI, they are expanded as a sequence of images (uncompressed).
 > Loading a 4K high-fps video can exhaust your PC's RAM in seconds and cause a crash.
 >

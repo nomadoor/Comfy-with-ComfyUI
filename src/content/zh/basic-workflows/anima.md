@@ -24,6 +24,7 @@ hero:
 
 作为从 SDXL 世代的动漫模型迁移过去的目标之一，Anima 受到了相当多的期待。
 
+> [!WARNING]
 > 许可证是 **CircleStone Labs Non-Commercial License**。  
 > Anima 模型本身、派生模型和 LoRA 等为非商业用途。生成图像可以用于商业用途。
 
@@ -44,6 +45,7 @@ hero:
 
   * [qwen_image_vae.safetensors](https://huggingface.co/circlestone-labs/Anima/blob/main/split_files/vae/qwen_image_vae.safetensors) (254 MB)
 
+> [!TIP]
 > `anima-base-v1.0` 是未经调整的基础模型。
 > `anima-aesthetic-v1.1` 是使用高质量图像微调过的模型。如果只想轻松试试生成，基本上使用这个即可。
 
@@ -94,6 +96,7 @@ ControlNet-LLLite 是 kohya 开发的轻量级 ControlNet。
 
 请根据要使用的控制图像准备合适的模型。
 
+> [!NOTE]
 > 标有 `v2` 的模型针对 Anima-Base v1.0 训练。其他模型使用旧版 Anima Preview3 训练，因此效果可能会稍弱一些。
 
 ```text

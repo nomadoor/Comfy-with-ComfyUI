@@ -72,6 +72,7 @@ VTON系タスク（服の着せ替え）に特化したモデルはいくつも�
 モデルは両方を見ながら、「左の人物が右の服を着た画像」を生成します。
 
 
+> [!NOTE]
 > 自慢がしたかったため私が作ったLoRAを参考に出しましたが、その1日後に遥かに性能の高いQwen-Image-Edit用LoRAが発表されました☹️  
 > [Clothes Try On (Clothing Transfer) - Qwen Edit](https://civitai.com/models/1940532?modelVersionId=2196278)
 

@@ -51,6 +51,7 @@ Internally, each step applies image2image to the entire image, then restores the
 
 As a result, it looks as if image2image was applied only inside the mask.
 
+> [!TIP]
 > For details on creating and editing masks, see [Mask Operations](/en/data-utilities/mask-ops/) and [AI Mask Generation](/en/data-utilities/ai-mask-generation/).
 
 ### The problem: Higher denoise stops matching the surroundings
@@ -130,6 +131,7 @@ A dedicated inpainting model is not the only way to tell a model which area is m
 
 Another option is **ControlNet inpaint**.
 
+> [!NOTE]
 > [ControlNet](/en/basic-workflows/sd15-controlnet) is explained on another page.
 
 ### Custom node

@@ -90,6 +90,7 @@ Windows向けのインストーラー形式です。ComfyUI Managerがすでに�
 1. ComfyUI Desktopの [GitHubページ](https://github.com/Comfy-Org/desktop) から `ComfyUI Setup.exe` をダウンロードします。
 2. 実行し、インストール先やGPU設定を選択します。
 
+> [!NOTE]
 > ComfyUI Managerはデフォルトで搭載されています。
 
 ---

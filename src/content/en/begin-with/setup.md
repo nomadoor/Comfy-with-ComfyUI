@@ -92,6 +92,7 @@ This is an installer format for Windows. It provides stable operation with Comfy
 1. Download `ComfyUI Setup.exe` from the [GitHub page](https://github.com/Comfy-Org/desktop) of ComfyUI Desktop.
 2. Run it and select the installation destination and GPU settings.
 
+> [!NOTE]
 > ComfyUI Manager is included by default.
 
 ---

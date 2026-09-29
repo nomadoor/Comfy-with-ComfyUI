@@ -23,6 +23,7 @@ However, one of the beauties of node-based tools is that if they are neatly orga
 
 Let's build **"Readable Nodes"**, not the famous book "Readable Code", and live a comfortable ComfyUI life!
 
+> [!NOTE]
 > *This is all based on my prejudice and is not necessarily the method recommended by the official. Please read it casually.
 
 ---
@@ -65,6 +66,7 @@ Don't pack it tight, use the space luxuriously and arrange it spaciously.
 
 You can call the basic text2image workflow from `Templates` → `Getting Started` → `Image Generation` in the sidebar.
 
+> [!NOTE]
 > Unfortunately, the minimal workflow in the image has been removed from the templates.
 > Instead, I'll put it here.
 >

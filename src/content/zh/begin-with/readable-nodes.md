@@ -23,6 +23,7 @@ hero:
 
 即便没有名著《编写可读代码的艺术 (The Art of Readable Code)》，也让我们搭建出 **“Readable Node（可读节点）”**，过上舒适的 ComfyUI 生活吧！
 
+> [!NOTE]
 > ※ 这些全都是我的独断和偏见，并非官方推荐的方法。请轻松地阅读。
 
 ---
@@ -65,6 +66,7 @@ ComfyUI 拥有无限广阔的画布。
 
 从侧边栏的 `Templates` → `Getting Started` → `Image Generation`，可以调用基础的 text2image 工作流。
 
+> [!NOTE]
 > 遗憾的是，现在模板中已经删除了图中的极简工作流。
 > 作为替代，我把它放在这里。
 >

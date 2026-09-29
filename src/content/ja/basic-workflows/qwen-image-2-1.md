@@ -172,6 +172,7 @@ workflow は Ref2Image とほとんど同じです。違うのは、生成する
 
 {% endmediaRow %}
 
+> [!NOTE]
 > いわゆる [inpainting](/ja/basic-workflows/sd15-inpainting/) とはまったく異なる仕組みです。\
 > inpainting にはマスクの外を編集させない仕組みがありますが、こちらはあくまで位置を示すガイドです。\
 > そのため、指定した範囲から編集がはみ出すこともあります。
@@ -330,6 +331,7 @@ This is an RGBA image with transparency. <ここに生成したいもののプ�
 
 返ってきたオブジェクト名は、`Format Text` で Qwen-Image-2.1 への指示に組み込みます。
 
+> [!NOTE]
 > `Generate Text` ノードに RGBA 画像を渡すとエラーになるため、`Split Image with Alpha` で Alpha 情報を取り除きます。
 
 {% endmediaRow %}
@@ -370,6 +372,7 @@ MLLM が選んだオブジェクトだけを、透過画像として切り抜き
 
 {% endmediaRow %}
 
+> [!NOTE]
 > seed 値を固定にせず、わざわざ `iteration_index` にしているのはなんで？と思うかもしれません。  
 > バグか仕様かはわかりませんが、一度編集した画像を同じ seed 値で再び編集すると、出力がガビガビになってしまうんですねぇ…。  
 > seed 値さえ変われば大丈夫なので、ループごとに変わる値として、とりあえずの処置として `iteration_index` を入力しています。

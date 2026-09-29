@@ -33,6 +33,7 @@ hero:
 
 那种情况下，需要 LoRA 或全量微调等，重新学习模型本体的手法。
 
+> [!NOTE]
 > 由 Textual Inversion 制作的这 1 个词份的数据，习惯上被称为 *embedding*。
 
 ---

@@ -51,6 +51,7 @@ inpainting は **「画像の一部分だけを描き直す」** ための手法
 
 すると結果として、マスク部分だけに image2image をかけたように見えるんですね。
 
+> [!TIP]
 > マスクの作り方やマスク編集の詳細は、別ページの[マスク操作](/ja/data-utilities/mask-ops/)、[AIを使ったマスク生成](/ja/data-utilities/ai-mask-generation/)を参照してください。
 
 ### 【問題点】denoise を上げると周囲と合わなくなる
@@ -130,6 +131,7 @@ inpainting モデルでは、モデル自身にも「どこを描き直すのか
 
 その一つが、**ControlNet inpaint** です。
 
+> [!NOTE]
 > [ControlNet](/ja/basic-workflows/sd15-controlnet) については、また別のページで説明します。
 
 ### カスタムノード

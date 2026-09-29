@@ -61,6 +61,7 @@ ERPはパノラマを展開したものなので、場所によって歪み方�
 
 レガシー/Node2.0の両方で安定した動作をさせるため、基本的には専用のモーダルUIから操作する設計にしています。
 
+> [!NOTE]
 > `Panorama Preview` だけはノード上でもプレビューできますが、操作はモーダルUIを前提にしています。
 
 {% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_fc789c1056b38005c59d1e5be6c3095d.mp4{media=loop}", width=60, align="left" %}
@@ -224,6 +225,7 @@ ERPキャンバスに参照画像を置いていくためのEditorです。
 
 実際にLoRAを使って、参照画像からERPパノラマを作ってみます。
 
+> [!WARNING]
 > 既知の問題ですが、DistilledモデルではLoRAがほとんど効きません。対策を探していますが、現状は base model 前提で使ってください。
 
 ### モデルのダウンロード
@@ -276,6 +278,7 @@ ERPキャンバスに参照画像を置いていくためのEditorです。
 Fill the green spaces according to the image. Outpaint as a seamless 360 equirectangular panorama (2:1). Keep the horizon level. Match left and right edges.
 ```
 
+> [!NOTE]
 > 生成されるのはERP（2:1）画像です。そのままだと見づらいので、`Panorama Preview` や `Panorama Cutout` で確認・撮影してください。
 
 ### flux-2-klein-4B-360-erp-outpaint

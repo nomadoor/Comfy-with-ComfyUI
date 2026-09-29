@@ -78,6 +78,7 @@ In 2.3, you add one more stage: generate at a very small resolution, do 2x Hires
 
 This is not the officially recommended method, but the results are clearly better, so this is what we use here.
 
+> [!NOTE]
 > Everything here uses `distilled-lora` with 8-step generation.
 
 ---
@@ -89,6 +90,7 @@ It is a good idea to use the [official prompt guide](https://x.com/ltx_model/sta
 
 It can also help to let an LLM assist with prompt writing. Give it the reference link and a rough description of what you want, and have it clean the prompt up for you.
 
+> [!NOTE]
 > ComfyUI has a core [TextGenerate node](/en/basic-workflows/llm-mllm/#textgenerate-node) that can run an LLM directly.  
 > Many LTX-2 workflows use it to refine prompts, but it is still just a node for editing prompts, so the workflows on this page do not use it.  
 > Personally, I think it is easier to make prompts separately with ChatGPT or Gemini.
@@ -290,6 +292,7 @@ Because of that, the mouth movement and overall voice feel tend to come out more
 
 - [LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-CelebVHQ-3K/blob/main/lora_weights.safetensors) (1.16 GB)
 - [LTX-2.3-ID-LoRA-TalkVid-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-TalkVid-3K/blob/main/lora_weights.safetensors) (1.16 GB)
+> [!TIP]
 > Both distributed files are named `lora_weights.safetensors`.  
 > To keep them easy to tell apart, it is helpful to rename them to `LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors` and `LTX-2.3-ID-LoRA-TalkVid-3K.safetensors`.
 

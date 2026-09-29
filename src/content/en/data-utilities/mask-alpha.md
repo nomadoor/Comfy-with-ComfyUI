@@ -33,7 +33,7 @@ In image generation AI, it is mainly used in **Inpainting** to redraw only a par
 
 AI regenerates only the white part, and leaves the black part as the original image.
 
-> **Note:**
+> [!WARNING]
 > Normal Inpainting cannot handle gray (translucent) masks, so it is arbitrarily processed as binary of white or black.
 >
 > If you want to do something like "change lightly" using a mask with gradation, you need a special technique called **Differential Diffusion**.

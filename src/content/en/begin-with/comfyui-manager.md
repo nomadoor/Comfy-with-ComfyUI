@@ -38,6 +38,7 @@ Considering Comfy.Org's direction, the new Manager should be the recommended one
 
 ## Installation and Enabling
 
+> [!WARNING]
 > Manager does not appear just because it is installed.  
 > You also need to add a command line argument when launching ComfyUI.
 

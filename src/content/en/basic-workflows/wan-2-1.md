@@ -76,6 +76,7 @@ Since 16fps often results in slow-motion video, adjust it by saving at 24fps or 
         └── wan_2.1_vae.safetensors
 ```
 
+> [!TIP]
 > If you want to use the fp16 / bf16 version, please read the file names above as needed. The basic placement path is the same.
 
 ---
@@ -164,6 +165,7 @@ This is originally a technique for real-time video generation, but in ComfyUI, w
 - Load LoRA with the `LoraLoaderModelOnly` node.
 - Set `steps` in `KSampler` to 4 - 8 and `CFG` to 1.0.
 
+> [!NOTE]
 > Self Forcing is an option for "when you want to run it fast anyway".
 > Degradation is large, although not unacceptable.
 

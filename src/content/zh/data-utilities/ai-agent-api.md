@@ -103,6 +103,7 @@ API 格式的 JSON，则是用来告诉 ComfyUI 服务器“执行这个”的�
 2. 从菜单选择 `File` → **Export (API)**
 3. 用容易理解的名字保存（例：`SD1.5_text2image_API.json`）
 
+> [!NOTE]
 > 当然，这个 workflow 必须能在你自己的环境中实际运行。  
 > 请先下载好模型等必要文件，并实际运行确认一次。
 

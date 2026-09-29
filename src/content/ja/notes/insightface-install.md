@@ -32,6 +32,7 @@ python_embeded\python.exe -V
 ### 2. バージョンに対応するInsightFaceのパッケージをダウンロード
 
 `ComfyUI_windows_portable` の直下に置いてください。
+> [!NOTE]
 > **直リンクです。**
 
 - Python 3.10  

@@ -66,6 +66,7 @@ A method of performing upscale and restoration while redrawing the image using d
 - SUPIR
   - An SDXL-based model specialized for upscale and image restoration. It aims to restore natural high-resolution images from low-quality inputs.
 
+> [!NOTE]
 > Upscaling with diffusion models is redrawing in a sense.
 > Therefore, it tends to go beyond simple restoration and **"overdo it."**
 > Of course, this is also a form of expression, but it is sometimes distinguished from upscaling that preserves the original image as much as possible and expressed as **Enhance**.

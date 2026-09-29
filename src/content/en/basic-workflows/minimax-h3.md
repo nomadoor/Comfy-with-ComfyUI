@@ -288,6 +288,7 @@ The prompt format differs from the `fl2va` model.
 
 Use [the Ref2VA prompt section above](#ref2va) as a guide.
 
+> [!NOTE]
 > Confusingly, the node counts from 0 with names such as `ref_image_0`, while H3 prompts count from 1 with tags such as `<Picture 1>`.
 
 {% endmediaRow %}
@@ -374,6 +375,7 @@ Until now, the workflows have generated directly at 1.0 MP. The quality is good,
 
 Another option is to generate the first stage at 0.25 MP, then upscale promising results by 2x and finish them. This is the familiar [Hires.fix](/en/basic-workflows/sd15-hires-fix/) approach.
 
+> [!TIP]
 > Even with the same prompt, what the model can express differs between 0.25 MP and 1.0 MP.
 >
 > If you have the time, generating directly at the recommended 1.0 MP is still the better choice.

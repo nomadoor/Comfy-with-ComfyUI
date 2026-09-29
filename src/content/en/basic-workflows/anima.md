@@ -24,6 +24,7 @@ It is based on NVIDIA Cosmos, and is a **pure anime model** trained on several m
 
 It is one of the models drawing a lot of attention as a possible migration target from SDXL-era anime models.
 
+> [!WARNING]
 > The license is **CircleStone Labs Non-Commercial License**.  
 > The Anima model itself, derivative models, and LoRAs are non-commercial. Generated images can be used commercially.
 
@@ -44,6 +45,7 @@ It is one of the models drawing a lot of attention as a possible migration targe
 
   * [qwen_image_vae.safetensors](https://huggingface.co/circlestone-labs/Anima/blob/main/split_files/vae/qwen_image_vae.safetensors) (254 MB)
 
+> [!TIP]
 > `anima-base-v1.0` is the untuned base model.
 > `anima-aesthetic-v1.1` is fine-tuned on high-quality images. If you just want to try generating images, this is generally the one to use.
 
@@ -94,6 +96,7 @@ ControlNet-LLLite is a lightweight ControlNet developed by kohya.
 
 Choose a suitable model for the control image you want to use.
 
+> [!NOTE]
 > Models marked `v2` were trained for Anima-Base v1.0. The others were trained for the older Anima Preview3, so they may be a little less effective.
 
 ```text

@@ -93,6 +93,7 @@ hero:
 其思路是，视频模型原本就能处理“多帧的一致性”，如果把编辑前和编辑后视为“短视频”，那么即使是巨大的变化也能自然地连接起来。
 
 ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_dbf2c60d457434bccb4428108bb31164.png){media=image}
+> [!NOTE]
 > 这个想法本身很早就有了，我在 AnimateDiff 是主流的时代，也做过制作做出各种表情的角色动画，来制作角色差分（Variations）这样的事情。
 
 虽然还有很多问题，比如一致性太强导致难以进行大的变化，或者作为图像编辑只需要 1 张却作为视频输出了几十帧等，但这是今后值得关注的技术。

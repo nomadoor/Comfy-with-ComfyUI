@@ -129,6 +129,7 @@ Although the technical contents are completely different, both are trying to sol
 So far, we have discussed modeling a single object.
 On the other hand, attempts to create a whole world from photos are also progressing.
 
+> [!NOTE]
 > The "World Model" here means a **model that constructs a 3D world (scene)**, rather than a world model (prediction of physics).
 
 ### 360-degree Panorama Generation

@@ -125,6 +125,7 @@ KSampler (Advanced)では、`add_noise`パラメータでノイズを追加す�
 もっとわかりやすくするために、切り替えステップを1ずつ変えたときの生成画像を動画にしてみました。  
 100%りんごだったものが、徐々にうさぎになっていきます。
 
+> [!NOTE]
 > Stable Diffusion web UIユーザーであれば、[Prompt Editing](https://scrapbox.io/work4ai/Prompt_Editing)を思い出すかもしれません。実際、似たようなものです。  
 > その中で1stepsごとにプロンプトを切り替えるというものがありましたが、ComfyUIでは、残念ながらカスタムノードがなければ出来ません。  
 > KSampler (Advanced)を20個並べれば出来ますが、まぁ…やりませんね……

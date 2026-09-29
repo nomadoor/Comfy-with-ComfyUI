@@ -23,6 +23,7 @@ It's simple: just **POST API-formatted JSON (= prompt) to `http://127.0.0.1:8188
 
 With this, the ComfyUI server receives the command "execute this workflow", queues it, executes it, and returns a `prompt_id` (execution ID).
 
+> [!NOTE]
 > It's a bit confusing, but the "prompt" here refers to the **entire workflow (execution graph)**, not just the text prompt.
 > Text is just a part of it, for example, `inputs.text` of `CLIPTextEncode` falls under this.
 

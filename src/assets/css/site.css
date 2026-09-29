@@ -2293,33 +2293,13 @@ html:not(.js) .media-steps__footer {
   border-radius: 0;
 }
 
+/* Plain `>` is a quotation (prompt examples, remarks, captioned media): no fill and no icon, only an
+   indent and a quieter text colour. */
 .article-body blockquote {
-  --blockquote-icon-size: 1.25rem;
-  display: grid;
-  grid-template-columns: var(--blockquote-icon-size) minmax(0, 1fr);
-  column-gap: 0.75rem;
-  align-items: start;
   margin: 1.15rem 0;
-  padding: 0.78rem 0.9rem 0.78rem 1rem;
-  border-radius: 6px;
-  background: color-mix(in srgb, var(--color-highlight) 24%, var(--color-reader));
-  color: color-mix(in srgb, var(--color-text) 92%, var(--color-text-muted));
+  padding: 0 0 0 1.25rem;
+  color: color-mix(in srgb, var(--color-text) 80%, var(--color-reader));
   font-style: normal;
-}
-
-.article-body blockquote::before {
-  content: "";
-  grid-column: 1;
-  width: var(--blockquote-icon-size);
-  height: var(--blockquote-icon-size);
-  margin-top: calc((1lh - var(--blockquote-icon-size)) / 2);
-  background: var(--color-highlight);
-  -webkit-mask: url("/assets/icons/Info%20Circle%20SVG%20File.svg") no-repeat center / contain;
-  mask: url("/assets/icons/Info%20Circle%20SVG%20File.svg") no-repeat center / contain;
-}
-
-.article-body blockquote > * {
-  grid-column: 2;
 }
 
 .article-body blockquote > :first-child {
@@ -2328,6 +2308,51 @@ html:not(.js) .media-steps__footer {
 
 .article-body blockquote > :last-child {
   margin-bottom: 0;
+}
+
+/* Callouts (`> [!NOTE]`, `[!TIP]`, `[!WARNING]`): a filled block with the kind's icon. NOTE is the
+   quiet default, TIP takes a soft accent, and only WARNING stands out. No borders. */
+.article-body blockquote.callout {
+  --callout-icon-size: 1.25rem;
+  --callout-fill: color-mix(in srgb, var(--color-text) 6%, var(--color-reader));
+  --callout-icon-color: var(--color-text-muted);
+  --callout-icon: url("/assets/icons/Info%20Circle%20SVG%20File.svg");
+  display: grid;
+  grid-template-columns: var(--callout-icon-size) minmax(0, 1fr);
+  column-gap: 0.75rem;
+  align-items: start;
+  padding: 0.78rem 0.9rem 0.78rem 1rem;
+  border-radius: 6px;
+  background: var(--callout-fill);
+  color: var(--color-text);
+}
+
+.article-body blockquote.callout::before {
+  content: "";
+  grid-column: 1;
+  width: var(--callout-icon-size);
+  height: var(--callout-icon-size);
+  margin-top: calc((1lh - var(--callout-icon-size)) / 2);
+  background: var(--callout-icon-color);
+  -webkit-mask: var(--callout-icon) no-repeat center / contain;
+  mask: var(--callout-icon) no-repeat center / contain;
+}
+
+.article-body blockquote.callout > * {
+  grid-column: 2;
+}
+
+.article-body blockquote.callout--tip {
+  --callout-fill: color-mix(in srgb, var(--color-highlight) 14%, var(--color-reader));
+  --callout-icon-color: var(--color-highlight);
+  --callout-icon: url("/assets/icons/Bulb%20SVG%20File.svg");
+}
+
+.article-body blockquote.callout--warning {
+  --callout-warning: #c98a32;
+  --callout-fill: color-mix(in srgb, var(--callout-warning) 20%, var(--color-reader));
+  --callout-icon-color: var(--callout-warning);
+  --callout-icon: url("/assets/icons/Alert%20Triangle%20SVG%20File.svg");
 }
 
 .article-video {

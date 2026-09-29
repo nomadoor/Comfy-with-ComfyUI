@@ -20,6 +20,7 @@ tags: []
 
 **[LTX-2](https://website.ltx.video/blog/introducing-ltx-2)** is an audio-visual diffusion model released by Lightricks that can generate both audio and video simultaneously.
 
+> [!NOTE]
 > Its successor, [LTX 2.5](/en/basic-workflows/ltx-2-5/), is now available.<br>
 > The architecture is the same, so this page is still useful for learning how it works, but for actual generation I recommend using the newer model.
 
@@ -200,6 +201,7 @@ To apply `distilled-lora`, change some sampling settings.
 
 ![20 steps](/media/basic-workflows/ltx-2/legacy_gyazo_d7457da890a04a168e0f82655c9a6392.mp4){media=player} ![8 steps (distilled-lora)](/media/basic-workflows/ltx-2/legacy_gyazo_1e20bd8fd074213736b0a7a2e3766be1.mp4){media=player}
 
+> [!NOTE]
 > As far as I tried, applying distilled-lora produces more stable generations.  
 > Therefore, for speed and stability, all subsequent workflows apply **distilled-lora** from the 1st stage.
 
@@ -284,6 +286,7 @@ Insert the image into the 2nd stage as well.
 
 ![Input](/media/basic-workflows/ltx-2/legacy_gyazo_9e1e51a809c8838bb01c1258925c4e0e.png){media=image} ![Output](/media/basic-workflows/ltx-2/legacy_gyazo_cdd2bcb62649ec744892c1615eae01d9.mp4){media=player}
 
+> [!NOTE]
 > As a known issue, often the video hardly moves or just zooms out.  
 > Using appropriate prompts helps to some extent, but a LoRA has been introduced to address this.
 >
@@ -368,7 +371,8 @@ Since LTX-2 is a model that handles "video + audio" simultaneously, you can conf
 - Connect to the second stage `LTXVConcatAVLatent` as well.
 - Use the input audio as is for the output video (do not use generated audio).
 
-> 🚨If the audio length is **shorter** than the generated video length, the audio condition will not work. A video unrelated to the sound will be generated.
+> [!WARNING]
+> If the audio length is **shorter** than the generated video length, the audio condition will not work. A video unrelated to the sound will be generated.
 > Even if it's silent, you need to make it longer than the video being generated.
 
 I see workflows using `Set Latent Noise Mask` here, but the result is the same whether it's there or not.
@@ -398,6 +402,7 @@ If you combine a face image with spoken audio, you can do something like a talki
 
 ![Input](/media/basic-workflows/ltx-2/legacy_gyazo_7bf65ca84f1583d324c0debeee85b616.png){media=image} ![Output](/media/basic-workflows/ltx-2/legacy_gyazo_8cb2045b833bb0507d048bf9965cbf63.mp4){media=player}
 
+> [!NOTE]
 > Actually, because the video didn't follow the dialogue very well, I put the dialogue in the prompt. There might be a better workflow.
 
 ---
@@ -406,6 +411,7 @@ If you combine a face image with spoken audio, you can do something like a talki
 
 Contrary to audio2video, you can also input a video and generate sound (sound effects or environmental sounds) that matches it.
 
+> [!NOTE]
 > This task is unstable. Probably needs improvement.
 
 ![](/media/basic-workflows/ltx-2/legacy_gyazo_62df52a54b4bfcf67f53429d6343d666.png){media=image}
@@ -451,6 +457,7 @@ Mask only the "time range you want to remake" of the video and regenerate only t
              └─ inpaint ─┘
 ```
 
+> [!NOTE]
 > Structurally, it is difficult to assemble a two-stage workflow (low resolution -> Hires.fix), so we generate at 1.5MP from the beginning.
 
 {% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_b8efdb1050318602e40897d0d181c77c.png {media=image}", width=40, align="left" %}
@@ -574,6 +581,7 @@ This is exactly how IC-LoRA works, but since it is unnecessary for the output, r
 
 {% endmediaRow %}
 
+> [!TIP]
 > You can use it in the same way by changing Pose Image / IC-LoRA to Canny / Depth.
 > Note that using basically one type is recommended. (Applying Pose and Depth at the same time is not recommended.)
 

@@ -26,6 +26,7 @@ Many closed models are used from each company's site or dedicated UI, but there 
 
 API nodes (called Partner Nodes in the official documentation) are nodes for calling external closed models from ComfyUI via API.
 
+> [!NOTE]
 > The "API nodes" here refer to **paid nodes prepared by ComfyUI**.
 > I distinguish them from patterns where you get OpenAI or Gemini API keys yourself and hit them from custom nodes.
 

@@ -95,4 +95,5 @@ Stable Diffusion 1.5 は、ほぼ 512 × 512px の画像だけで学習されて
 - 🟩 text2image から出てきた latent を `NNLatentUpscale`ノード でそのまま拡大
 - 🟨 拡大した latent を image2image にそのまま流す
 
+> [!NOTE]
 > あくまで体感ですが、一度ピクセル画像にデコードする方法のほうが品質は良いと思います。

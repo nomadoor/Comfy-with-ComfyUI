@@ -24,6 +24,7 @@ Move freely around the vast canvas.
 - **Drag with middle button (wheel click)**
 - **Left drag while holding Space key**
 
+> [!TIP]
 > If you left drag on a node, the node itself moves instead of the canvas.<br>
 > In places where nodes are dense, moving using the **Middle Button** or **Space Key** is stress-free and recommended.
 

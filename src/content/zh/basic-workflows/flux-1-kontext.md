@@ -103,6 +103,7 @@ Kontext 的工作流本身，是在通常的 Flux.1 中只添加了 `ReferenceLa
 
 - e.g. `Keep the person's pose, position, and size the same.`
 
+> [!NOTE]
 > 话虽如此，作为模型的性能，经常也有不怎么听从指令的情况。  
 > 还不可以要求太多。
 

@@ -32,6 +32,7 @@ python_embeded\python.exe -V
 ### 2. 下载对应版本的 InsightFace 的包
 
 请放在 `ComfyUI_windows_portable` 的正下方。
+> [!NOTE]
 > **是直链。**
 
 - Python 3.10  

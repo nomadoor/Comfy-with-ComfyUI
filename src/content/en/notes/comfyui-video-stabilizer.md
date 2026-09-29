@@ -97,6 +97,7 @@ With `Video Stabilizer Motion Apply`, you can apply the shake removed by Video S
 
 [](/workflows/notes/comfyui-video-stabilizer/video_stabilizer_to_motion_apply.json)
 
+> [!WARNING]
 > If you stabilized with `crop` or `crop_and_pad`, pixels that were already cropped away cannot be recovered. If you plan to restore the shake later, I recommend using `expand` for the first stabilization step.
 
 ---
@@ -133,6 +134,7 @@ By intentionally adding camera shake, you can create a stronger sense of presenc
 - `action`: Adds stronger, rougher motion.
 - `vibration`: Adds fine vibration.
 
+> [!NOTE]
 > There is also a node called `Video Stabilizer Shake Generator Manual`.
 > Instead of using presets, it lets you fine-tune the motion through internal parameters.
 
