@@ -589,15 +589,19 @@ function onKeyDown(event) {
       break;
     case "ArrowRight":
       event.preventDefault();
+      event.stopPropagation();
       next(1);
       break;
     case "ArrowLeft":
       event.preventDefault();
+      event.stopPropagation();
       next(-1);
       break;
     case " ":
       if (!videoEl || videoEl.hidden) return;
+      // Stop the key here so a focused video's own controls do not toggle playback a second time.
       event.preventDefault();
+      event.stopPropagation();
       if (videoEl.paused) videoEl.play()?.catch?.(() => {});
       else videoEl.pause();
       break;
