@@ -1735,95 +1735,385 @@ h1 {
   margin-bottom: 0;
 }
 
-.media-inline {
+/* Step cards (mediaRow, gathered by scripts/lib/media-steps.mjs; behaviour in media-steps.js).
+   A filled surface with a header, a progress bar, a fixed image frame and the explanation below,
+   showing one step at a time. The card never changes height: the image frame has a ratio fixed at
+   build time and the text area is as tall as the card's longest explanation. */
+.media-steps {
+  /* The card sits one fill step above the page, and its inner parts one step above the card. */
+  --media-steps-surface: color-mix(in srgb, var(--color-text) 6%, var(--color-reader));
+  --media-steps-inset: color-mix(in srgb, var(--color-text) 12%, var(--color-reader));
+  --media-steps-lift: 0 8px 24px rgb(0 0 0 / 0.4);
+  --media-steps-header-size: 2.25rem;
+  margin: var(--space-xl) 0;
+}
+
+:root[data-theme="light"] .media-steps {
+  --media-steps-lift: 0 6px 18px rgb(0 0 0 / 0.12);
+}
+
+.media-steps__card {
+  position: relative;
   display: flex;
+  flex-direction: column;
   gap: var(--space-md);
-  align-items: flex-start;
-  padding: var(--space-xl) 0;
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.media-inline+.media-inline {
-  border-top: 0;
-}
-
-.media-inline:not(.media-inline + .media-inline) {
-  margin-top: var(--space-xl);
-}
-
-.media-inline:not(:has(+ .media-inline)) {
-  margin-bottom: var(--space-xl);
-}
-
-.media-inline--reverse {
-  flex-direction: row-reverse;
-}
-
-.media-inline__media-stack {
-  flex: 0 0 var(--media-inline-width, 33%);
-  max-width: var(--media-inline-width, 33%);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
-
-.media-inline__media {
-  background: var(--color-panel-alt);
+  padding: var(--space-sm) var(--space-md) 0;
   border-radius: var(--radius-md);
+  background: var(--media-steps-surface);
+}
+
+/* A single step has no bottom buttons, so the card closes with its own padding. */
+.media-steps--single .media-steps__card {
+  padding-bottom: var(--space-lg);
+}
+
+/* Header: the card's top-left corner is a square holding the kind's icon, then the kind and the
+   heading the card sits under. Only "Deep dive" (optional reading) takes the accent. */
+.media-steps__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-inline-size: 0;
+  block-size: var(--media-steps-header-size);
+  margin: calc(-1 * var(--space-sm)) calc(-1 * var(--space-md)) calc(-1 * var(--space-xs) / 2);
+  padding-inline-end: var(--space-md);
+}
+
+.media-steps__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: var(--media-steps-header-size);
+  block-size: var(--media-steps-header-size);
+  border-radius: var(--radius-md) 0 var(--radius-md) 0;
+  background: var(--color-border-strong);
+  color: var(--color-heading);
+}
+
+.media-steps__icon .icon {
+  inline-size: 1.1rem;
+  block-size: 1.1rem;
+}
+
+.media-steps__kicker {
+  flex: none;
+  color: var(--color-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.media-steps--breakdown .media-steps__icon {
+  background: var(--color-highlight);
+  color: #fff;
+}
+
+.media-steps--breakdown .media-steps__kicker {
+  color: var(--color-highlight);
+}
+
+.media-steps__topic {
+  min-inline-size: 0;
   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
 }
 
-.media-inline__media img,
-.media-inline__media video {
-  display: block;
-  inline-size: 100%;
-  block-size: auto;
-  border-radius: var(--radius-md);
+/* Progress bar: one segment per step, labelled with the step's name. */
+.media-steps__progress {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 6px;
 }
 
-.media-inline__body {
+.media-steps__segment {
   flex: 1 1 0;
-  min-width: 0;
-}
-
-.media-inline__footer {
+  min-inline-size: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: 0.45rem;
+  padding: 0.5rem 0 0.25rem;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-muted);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 
-.media-inline__footer> :first-child {
+.media-steps__bar {
+  display: block;
+  block-size: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--color-border-strong);
+  transition: background-color 160ms ease;
+}
+
+.media-steps__segment-label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  transition: color 160ms ease;
+}
+
+.media-steps__segment.is-done .media-steps__bar {
+  background: color-mix(in srgb, var(--color-text) 45%, var(--color-border-strong));
+}
+
+.media-steps__segment.is-active .media-steps__bar {
+  background: var(--color-heading);
+}
+
+.media-steps__segment.is-active .media-steps__segment-label {
+  color: var(--color-heading);
+}
+
+.media-steps__segment:hover:not(.is-active) .media-steps__bar {
+  background: var(--color-text-muted);
+}
+
+.media-steps__segment:hover:not(.is-active) .media-steps__segment-label {
+  color: var(--color-text);
+}
+
+/* Slides and texts: every step shares one grid cell of its stack. Without JS the steps simply
+   follow one another. */
+.media-steps__stage,
+.media-steps__texts {
+  display: grid;
+}
+
+.media-steps__slide,
+.media-steps__text {
+  min-inline-size: 0;
+  min-block-size: 0;
+}
+
+.js .media-steps__slide,
+.js .media-steps__text {
+  grid-area: 1 / 1;
+}
+
+/* opacity as well as visibility: children with their own visibility transition (the workflow copy
+   buttons) would otherwise linger for a moment after their step is switched away. */
+.js .media-steps__slide:not(.is-active),
+.js .media-steps__text:not(.is-active) {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* Image frame: a fixed ratio (the card's median, set at build time); each image is fitted whole
+   inside it and centred. */
+.js .media-steps__stage {
+  inline-size: 100%;
+  max-block-size: 24rem;
+  aspect-ratio: var(--media-steps-frame, 16 / 9);
+}
+
+.media-steps__slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-steps__slide img {
+  display: block;
+  inline-size: auto;
+  block-size: auto;
+  max-inline-size: 100%;
+  max-block-size: 100%;
+  border-radius: var(--radius-md);
+  /* ComfyUI screenshots are nearly the card's colour; a soft shadow lifts them off it. */
+  box-shadow: var(--media-steps-lift);
+}
+
+html:not(.js) .media-steps__slide img {
+  max-block-size: 24rem;
+}
+
+.js .media-steps__slide .article-video {
+  block-size: 100%;
+  justify-content: center;
+}
+
+.js .media-steps__slide .article-video__frame {
+  inline-size: auto;
+  block-size: 100%;
+  max-inline-size: 100%;
+}
+
+/* Explanation: the workflow file row first, then the step's title and text. */
+.media-steps__text {
+  padding: 0 var(--space-xs);
+  font-size: 0.9375em;
+  color: color-mix(in srgb, var(--color-text) 85%, var(--media-steps-surface));
+}
+
+.media-steps__text > :first-child {
   margin-top: 0;
 }
 
-.media-inline__footer> :last-child {
+.media-steps__files {
+  margin-bottom: var(--space-sm);
+}
+
+.media-steps__files > :first-child {
+  margin-top: 0;
+}
+
+.media-steps__files > :last-child {
   margin-bottom: 0;
 }
 
-.media-inline__body> :first-child {
-  margin-top: 0;
-  padding-top: 0;
+.article-body .media-steps__title {
+  color: var(--color-heading);
+  font-size: 1.0625rem;
+  font-weight: 700;
 }
 
-@media (max-width: 900px) {
+.media-steps .workflow-json__row,
+.article-body .media-steps pre,
+.article-body .media-steps :not(pre) > code {
+  background: var(--media-steps-inset);
+}
 
-  .media-inline,
-  .media-inline--reverse {
-    flex-direction: column;
+
+/* Previous / next zones over the card's left and right edges, from the image down (the script sets
+   the offset). Hovering one shades that edge and fades in an arrow; the middle of the image still
+   opens the lightbox. */
+.media-steps__edge {
+  position: absolute;
+  top: var(--media-steps-edge-top, 0);
+  bottom: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  inline-size: clamp(3.5rem, 12%, 6rem);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-heading);
+  cursor: pointer;
+  transition: background-color 160ms ease;
+}
+
+.media-steps__edge--prev {
+  left: 0;
+  border-radius: 0 0 0 var(--radius-md);
+}
+
+.media-steps__edge--next {
+  right: 0;
+  border-radius: 0 0 var(--radius-md) 0;
+}
+
+.media-steps__edge--prev:hover:not(:disabled) {
+  background: linear-gradient(to right, color-mix(in srgb, var(--media-steps-surface) 70%, transparent), transparent);
+}
+
+.media-steps__edge--next:hover:not(:disabled) {
+  background: linear-gradient(to left, color-mix(in srgb, var(--media-steps-surface) 70%, transparent), transparent);
+}
+
+.media-steps__edge .icon {
+  inline-size: 2rem;
+  block-size: 2rem;
+  opacity: 0;
+  filter: drop-shadow(0 1px 3px rgb(0 0 0 / 0.5));
+  transition: opacity 160ms ease;
+}
+
+.media-steps__edge:hover:not(:disabled) .icon {
+  opacity: 0.8;
+}
+
+.media-steps__edge:disabled {
+  pointer-events: none;
+}
+
+/* Bottom previous / next: the neighbouring step's name with an arrow. Each button is half the card
+   wide and reaches the card's bottom edge. */
+.media-steps__footer {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 calc(-1 * var(--space-md));
+}
+
+.media-steps__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-inline-size: 0;
+  min-block-size: 3.25rem;
+  padding: 0 var(--space-md);
+  border: 0;
+  border-radius: 0 0 0 var(--radius-md);
+  background: transparent;
+  color: var(--color-text-muted);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+
+.media-steps__nav--next {
+  justify-content: flex-end;
+  border-radius: 0 0 var(--radius-md) 0;
+}
+
+.media-steps__nav:hover:not(:disabled) {
+  color: var(--color-heading);
+}
+
+/* At either end the button keeps its place but holds nothing. */
+.media-steps__nav:disabled {
+  cursor: default;
+}
+
+.media-steps__nav:disabled > * {
+  visibility: hidden;
+}
+
+.media-steps__nav .icon {
+  flex: none;
+  inline-size: 1rem;
+  block-size: 1rem;
+}
+
+.media-steps__nav-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+html:not(.js) .media-steps__progress,
+html:not(.js) .media-steps__edge,
+html:not(.js) .media-steps__footer {
+  display: none;
+}
+
+/* Touch screens swipe instead of using the edge zones. */
+@media (hover: none) {
+  .media-steps__edge {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .media-steps__segment-label {
+    display: none;
   }
 
-  .media-inline__media {
-    max-width: 100%;
-    flex-basis: auto;
-  }
-
-  .media-inline__media-stack {
-    max-width: 100%;
-    flex-basis: auto;
-    /* The column layout would otherwise shrink to the media's own width, which is zero until the
-       image loads, so the box takes up no space and the text below jumps when it arrives. */
-    align-self: stretch;
+  .media-steps__segment {
+    padding-block: 0.6rem;
   }
 }
 
@@ -1989,6 +2279,18 @@ h1 {
   background: transparent;
   padding: 0;
   border-radius: 0;
+}
+
+/* Dark mode: code and emoji take the same dimming as article images (brightness 0.85), so bright
+   code text, syntax colours and colour emoji do not outshine the body text. Emoji ignore the text
+   colour, so the Markdown renderer wraps them in .emoji. */
+:root:not([data-theme="light"]) .article-body pre code,
+:root:not([data-theme="light"]) .article-body .emoji {
+  filter: brightness(0.85);
+}
+
+:root:not([data-theme="light"]) .article-body :not(pre) > code {
+  color: color-mix(in srgb, var(--color-code-text) 85%, var(--color-reader));
 }
 
 .article-body blockquote {

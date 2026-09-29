@@ -129,7 +129,7 @@ test.describe("lazy video loading", () => {
       });
       await fresh.waitForTimeout(blocked ? 500 : 2500);
       const sizes = await fresh.evaluate(() =>
-        [...document.querySelectorAll(".article-video__frame, .article-media__frame, .media-inline__media")].map((el) => {
+        [...document.querySelectorAll(".article-video__frame, .article-media__frame, .media-steps__stage")].map((el) => {
           const rect = el.getBoundingClientRect();
           return `${Math.round(rect.width)}x${Math.round(rect.height)}`;
         })
