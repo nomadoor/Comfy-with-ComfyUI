@@ -11,7 +11,6 @@ import initCopyJson from "./copy-json.js"; // workflow JSON copy/download
 import initWorkflowPicker from "./workflow-picker.js";
 import initWorkflowPerformance from "./workflow-performance.js";
 import initHeadingAnchors from "./heading-anchors.js";
-import initMediaSteps from "./media-steps.js";
 import initContact from "./contact.js";
 import "./sidebar.js"; // legacy auto-init; sidebar is persistent shell
 import "./mobile-nav.js"; // handles nav/search toggles; persistent shell
@@ -55,7 +54,6 @@ export default function initPage(root = document.getElementById("page") || docum
   const hasHashTarget = Boolean(window.location.hash);
   profileStep("toc", () => (hasHashTarget ? initToc?.(root) : runIdle(() => initToc?.(root))));
   profileStep("heading-anchors", () => initHeadingAnchors?.(root));
-  profileStep("media-steps", () => initMediaSteps?.(root));
   profileStep("lightbox", () => initLightbox?.(root));
   profileStep("media-toggle", () => initMediaToggle?.(root));
   profileStep("video-lazy", () => initVideoLazy?.(root));

@@ -6,12 +6,12 @@ let mediaEl = null;
 let closeButtons = [];
 let prevButton = null;
 let nextButton = null;
-let zoomControls = null;
 let zoomOutButton = null;
 let zoomInButton = null;
 let zoomResetButton = null;
 let zoomValueEl = null;
 let helpEl = null;
+let notesEl = null;
 let keyHandler = null;
 let currentIndex = 0;
 let mediaItems = [];
@@ -103,6 +103,10 @@ function getMediaRatio(target) {
   if (target.videoWidth && target.videoHeight) {
     return target.videoWidth / target.videoHeight;
   }
+  // A video that has not loaded yet: its figure carries the aspect ratio from the media data.
+  const aspect = target.closest?.("[data-media-toggle]")?.style.getPropertyValue("--article-video-aspect");
+  const [w, h] = (aspect || "").split("/").map(Number);
+  if (w > 0 && h > 0) return w / h;
   return 1;
 }
 
@@ -114,40 +118,43 @@ function buildLightbox() {
   wrapper.innerHTML = `
     <div class="lightbox__backdrop" data-lightbox-backdrop></div>
     <div class="lightbox__content" role="dialog" aria-modal="true" aria-label="${labels.dialog}">
+      <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="${labels.previous}">
+        ${renderIcon("prev")}
+      </button>
+      <div class="lightbox__window">
+        <div class="lightbox__image-area">
+          <div class="lightbox__media">
+            <div class="lightbox__image-stack" data-lightbox-image>
+              <img class="lightbox__raw-image" data-lightbox-raw data-fade-init="true" alt="" draggable="false" />
+            </div>
+            <video data-lightbox-video playsinline></video>
+          </div>
+          <div class="lightbox__controls">
+            <p class="lightbox__help" data-lightbox-help>${labels.help}</p>
+            <div class="lightbox__zoom-controls" data-lightbox-zoom-controls>
+              <button class="lightbox__reset-button" type="button" data-lightbox-zoom-reset aria-label="${labels.reset}">
+                ${renderIcon("reset")}
+              </button>
+              <div class="lightbox__zoom-level">
+                <button class="lightbox__zoom-button" type="button" data-lightbox-zoom-out aria-label="${labels.zoomOut}">
+                  ${renderIcon("minus")}
+                </button>
+                <span class="lightbox__zoom-value" data-lightbox-zoom-value>100%</span>
+                <button class="lightbox__zoom-button" type="button" data-lightbox-zoom-in aria-label="${labels.zoomIn}">
+                  ${renderIcon("plus")}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="lightbox__notes" data-lightbox-notes hidden></aside>
+      </div>
       <button class="lightbox__close" type="button" data-lightbox-close aria-label="${labels.close}">
         ${renderIcon("close")}
       </button>
-      <div class="lightbox__controls">
-        <p class="lightbox__help" data-lightbox-help>${labels.help}</p>
-        <div class="lightbox__zoom-controls" data-lightbox-zoom-controls hidden>
-          <button class="lightbox__reset-button" type="button" data-lightbox-zoom-reset aria-label="${labels.reset}">
-            ${renderIcon("reset")}
-          </button>
-          <div class="lightbox__zoom-level">
-            <button class="lightbox__zoom-button" type="button" data-lightbox-zoom-out aria-label="${labels.zoomOut}">
-              ${renderIcon("minus")}
-            </button>
-            <span class="lightbox__zoom-value" data-lightbox-zoom-value>100%</span>
-            <button class="lightbox__zoom-button" type="button" data-lightbox-zoom-in aria-label="${labels.zoomIn}">
-              ${renderIcon("plus")}
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="lightbox__image-area">
-        <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="${labels.previous}">
-          ${renderIcon("prev")}
-        </button>
-        <div class="lightbox__media">
-          <div class="lightbox__image-stack" data-lightbox-image>
-            <img class="lightbox__raw-image" data-lightbox-raw data-fade-init="true" alt="" draggable="false" />
-          </div>
-          <video data-lightbox-video playsinline></video>
-        </div>
-        <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="${labels.next}">
-          ${renderIcon("next")}
-        </button>
-      </div>
+      <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="${labels.next}">
+        ${renderIcon("next")}
+      </button>
     </div>
   `;
   document.body.appendChild(wrapper);
@@ -155,16 +162,22 @@ function buildLightbox() {
   imageEl = wrapper.querySelector("[data-lightbox-image]");
   rawImageEl = wrapper.querySelector("[data-lightbox-raw]");
   videoEl = wrapper.querySelector("[data-lightbox-video]");
+  // Once the real size is known, fit the frame to it.
+  videoEl.addEventListener("loadedmetadata", () => {
+    if (videoEl.videoWidth && videoEl.videoHeight) {
+      wrapper.style.setProperty("--lightbox-ratio", String(videoEl.videoWidth / videoEl.videoHeight));
+    }
+  });
   mediaEl = wrapper.querySelector(".lightbox__media");
   closeButtons = wrapper.querySelectorAll("[data-lightbox-close]");
   prevButton = wrapper.querySelector("[data-lightbox-prev]");
   nextButton = wrapper.querySelector("[data-lightbox-next]");
-  zoomControls = wrapper.querySelector("[data-lightbox-zoom-controls]");
   zoomOutButton = wrapper.querySelector("[data-lightbox-zoom-out]");
   zoomInButton = wrapper.querySelector("[data-lightbox-zoom-in]");
   zoomResetButton = wrapper.querySelector("[data-lightbox-zoom-reset]");
   zoomValueEl = wrapper.querySelector("[data-lightbox-zoom-value]");
   helpEl = wrapper.querySelector("[data-lightbox-help]");
+  notesEl = wrapper.querySelector("[data-lightbox-notes]");
   return wrapper;
 }
 
@@ -188,13 +201,19 @@ function getMediaSource(target) {
   return target.dataset.fullSrc || target.currentSrc || target.src || "";
 }
 
+// The element that zooms and pans: the image stack, or the video when a video is showing.
+function zoomTarget() {
+  return videoEl && !videoEl.hidden ? videoEl : imageEl;
+}
+
 function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value));
 }
 
 function getPanBounds(nextScale = scale) {
-  const imageWidth = imageEl?.clientWidth || 0;
-  const imageHeight = imageEl?.clientHeight || 0;
+  const target = zoomTarget();
+  const imageWidth = target?.clientWidth || 0;
+  const imageHeight = target?.clientHeight || 0;
   const viewportWidth = mediaEl?.clientWidth || imageWidth;
   const viewportHeight = mediaEl?.clientHeight || imageHeight;
   return {
@@ -227,21 +246,24 @@ function handleViewportResize() {
 }
 
 function applyTransform() {
-  if (!imageEl) return;
+  const target = zoomTarget();
+  if (!target) return;
   if (scale <= MIN_SCALE) {
     scale = MIN_SCALE;
     panX = 0;
     panY = 0;
-    imageEl.style.transform = "none";
+    target.style.transform = "none";
   } else {
     const bounds = getPanBounds();
     panX = clamp(panX, -bounds.x, bounds.x);
     panY = clamp(panY, -bounds.y, bounds.y);
-    imageEl.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${scale})`;
+    target.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${scale})`;
   }
 
-  imageEl.classList.toggle("is-zoomed", scale > MIN_SCALE);
-  imageEl.dataset.zoomScale = String(scale);
+  target.classList.toggle("is-zoomed", scale > MIN_SCALE);
+  if (target === imageEl) imageEl.dataset.zoomScale = String(scale);
+  // Native video controls would scale with the video; hide them while zoomed (Space still plays).
+  if (target === videoEl) videoEl.controls = scale <= MIN_SCALE;
   mediaEl?.classList.toggle("is-pannable", scale > MIN_SCALE);
 
   if (zoomValueEl) zoomValueEl.textContent = `${Math.round(scale * 100)}%`;
@@ -262,7 +284,8 @@ function resetView() {
 }
 
 function setScale(nextScale, clientX = null, clientY = null) {
-  if (!imageEl || imageEl.hidden) return;
+  const target = zoomTarget();
+  if (!target || target.hidden) return;
   const previousScale = scale;
   const clampedScale = clamp(nextScale, MIN_SCALE, maxScale);
 
@@ -290,6 +313,8 @@ function zoomBy(amount, clientX = null, clientY = null) {
 
 function stopLightboxVideo() {
   if (!videoEl) return;
+  videoEl.style.transform = "none";
+  videoEl.classList.remove("is-zoomed");
   videoEl.pause();
   videoEl.removeAttribute("src");
   videoEl.hidden = true;
@@ -308,8 +333,6 @@ function resetImageLayers() {
 
 function setImageViewerVisible(visible) {
   if (imageEl) imageEl.hidden = !visible;
-  if (zoomControls) zoomControls.hidden = !visible;
-  if (helpEl) helpEl.hidden = !visible;
 }
 
 function loadRawImage(source, token) {
@@ -368,6 +391,23 @@ function showVideo(target, source) {
   if (playPromise?.catch) playPromise.catch(() => { });
 }
 
+// Media in a step card brings its step's explanation into a column beside the enlarged media.
+// Workflow file rows stay in the article: their copy buttons are tied to ids on the page.
+function showNotes(target) {
+  if (!notesEl || !lightboxEl) return;
+  const text = target.closest(".media-steps__step")?.querySelector(".media-steps__text");
+  notesEl.replaceChildren();
+  if (text) {
+    const copy = text.cloneNode(true);
+    copy.querySelectorAll(".media-steps__files").forEach((el) => el.remove());
+    copy.querySelectorAll("[id]").forEach((el) => el.removeAttribute("id"));
+    notesEl.append(...copy.childNodes);
+    notesEl.scrollTop = 0;
+  }
+  notesEl.hidden = !text;
+  lightboxEl.classList.toggle("has-notes", Boolean(text));
+}
+
 function show(index) {
   if (!mediaItems.length) return;
   const token = ++showToken;
@@ -383,6 +423,7 @@ function show(index) {
   stopLightboxVideo();
   resetImageLayers();
 
+  showNotes(target);
   if (isVideo) {
     showVideo(target, highResSource);
   } else {
@@ -451,8 +492,11 @@ function beginPinch() {
 }
 
 function handlePointerDown(event) {
-  if (imageEl.hidden || (event.pointerType === "mouse" && event.button !== 0)) return;
-  imageEl.setPointerCapture?.(event.pointerId);
+  const target = zoomTarget();
+  if (!target || target.hidden || (event.pointerType === "mouse" && event.button !== 0)) return;
+  // An unzoomed video keeps its native controls: clicks go to play, seek and volume.
+  if (target === videoEl && scale <= MIN_SCALE) return;
+  target.setPointerCapture?.(event.pointerId);
   activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
   pointerMoved = false;
 
@@ -495,16 +539,17 @@ function handlePointerMove(event) {
   if (Math.abs(deltaX) > 3 || Math.abs(deltaY) > 3) pointerMoved = true;
   panX = dragStart.panX + deltaX;
   panY = dragStart.panY + deltaY;
-  imageEl.classList.add("is-dragging");
+  zoomTarget().classList.add("is-dragging");
   applyTransform();
 }
 
 function handlePointerEnd(event) {
   activePointers.delete(event.pointerId);
-  if (imageEl.hasPointerCapture?.(event.pointerId)) {
-    imageEl.releasePointerCapture(event.pointerId);
+  const target = zoomTarget();
+  if (target?.hasPointerCapture?.(event.pointerId)) {
+    target.releasePointerCapture(event.pointerId);
   }
-  imageEl.classList.remove("is-dragging");
+  target?.classList.remove("is-dragging");
   pinchStart = null;
 
   if (activePointers.size === 1) {
@@ -516,7 +561,8 @@ function handlePointerEnd(event) {
 }
 
 function handleWheel(event) {
-  if (imageEl.hidden) return;
+  const target = zoomTarget();
+  if (!target || target.hidden) return;
   event.preventDefault();
   const amount = event.deltaY < 0 ? ZOOM_STEP : -ZOOM_STEP;
   zoomBy(amount, event.clientX, event.clientY);
@@ -542,10 +588,18 @@ function onKeyDown(event) {
       close();
       break;
     case "ArrowRight":
+      event.preventDefault();
       next(1);
       break;
     case "ArrowLeft":
+      event.preventDefault();
       next(-1);
+      break;
+    case " ":
+      if (!videoEl || videoEl.hidden) return;
+      event.preventDefault();
+      if (videoEl.paused) videoEl.play()?.catch?.(() => {});
+      else videoEl.pause();
       break;
     case "+":
     case "=":
@@ -569,12 +623,13 @@ function onKeyDown(event) {
 function attachKeyHandler() {
   if (keyHandler) return;
   keyHandler = onKeyDown;
-  document.addEventListener("keydown", keyHandler);
+  // Capture phase: a focused video's native controls would otherwise take the arrow keys to seek.
+  document.addEventListener("keydown", keyHandler, true);
 }
 
 function detachKeyHandler() {
   if (!keyHandler) return;
-  document.removeEventListener("keydown", keyHandler);
+  document.removeEventListener("keydown", keyHandler, true);
   keyHandler = null;
 }
 
@@ -631,6 +686,10 @@ const initLightbox = (root = document) => {
     imageEl.addEventListener("pointermove", handlePointerMove);
     imageEl.addEventListener("pointerup", handlePointerEnd);
     imageEl.addEventListener("pointercancel", handlePointerEnd);
+    videoEl.addEventListener("pointerdown", handlePointerDown);
+    videoEl.addEventListener("pointermove", handlePointerMove);
+    videoEl.addEventListener("pointerup", handlePointerEnd);
+    videoEl.addEventListener("pointercancel", handlePointerEnd);
     mediaEl.addEventListener("click", handleMediaClick);
     mediaEl.addEventListener("wheel", handleWheel, { passive: false });
     lightboxEl.querySelector(".lightbox__backdrop").addEventListener("click", handleBackdropClick);

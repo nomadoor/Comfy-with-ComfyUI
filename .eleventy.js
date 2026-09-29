@@ -1382,8 +1382,8 @@ export default function (eleventyConfig) {
   // Adjacent media steps (see the mediaRow shortcode) become step cards.
   eleventyConfig.addTransform("media-steps", function (content) {
     if (!(this.page.outputPath || "").endsWith(".html")) return content;
-    const [, lang, section] = (this.page.url || "").split("/");
-    return groupMediaSteps(content, { lang, section });
+    const section = (this.page.url || "").split("/")[2];
+    return groupMediaSteps(content, { section });
   });
 
   // Emoji ignore the text colour; wrap them so dark mode can dim them like article images. Only
@@ -1480,10 +1480,8 @@ export default function (eleventyConfig) {
     const mediaMode = normalizeMediaMode(mode || modeFromBrace || media || gyazo) || "image";
 
     let mediaMarkup = "";
-    let ratio = null;
     if (img) {
       const resolved = resolveMedia(img, { mode: mediaMode, size: 1000 });
-      if (resolved.width && resolved.height) ratio = resolved.width / resolved.height;
       if (resolved.kind === "video") {
         mediaMarkup = renderVideoFigure(resolved, { caption: safeAlt, maxHeight: 360 });
       } else {
@@ -1496,8 +1494,8 @@ export default function (eleventyConfig) {
         ];
         if (resolved.srcset) {
           attrs.push(`srcset="${escapeHTML(resolved.srcset)}"`);
-          // Step cards show the image across the article column.
-          attrs.push(`sizes="(min-width: 900px) 760px, 100vw"`);
+          // Step cards show the image in a column beside its text.
+          attrs.push(`sizes="(min-width: 900px) 360px, 100vw"`);
         }
         if (resolved.width && resolved.height) {
           attrs.push(`width="${resolved.width}"`);
@@ -1510,8 +1508,7 @@ export default function (eleventyConfig) {
     return renderMediaStep({
       media: mediaMarkup,
       files: footerContent.trim() ? markdownLib.render(footerContent) : "",
-      body: markdownLib.render(bodyContent),
-      ratio
+      body: markdownLib.render(bodyContent)
     });
   });
 
