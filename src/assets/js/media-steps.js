@@ -32,7 +32,8 @@ const bindKeys = () => {
     if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
     if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
     if (document.documentElement.classList.contains("lightbox-open")) return;
-    if (event.target.closest?.("input, textarea, select, [contenteditable], [role='menu'], [role='tablist'], .app-shell__sidebar, header")) return;
+    // Leave arrow keys to elements that use them: form fields, media controls, scrollable code, sliders.
+    if (event.target.closest?.("input, textarea, select, video, audio, pre, [contenteditable], [role='menu'], [role='tablist'], [role='slider'], .app-shell__sidebar, header")) return;
     const card = cardInView();
     if (!card) return;
     event.preventDefault();

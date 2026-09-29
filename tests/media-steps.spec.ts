@@ -95,4 +95,16 @@ test.describe("Media step cards", () => {
     await expect(single).toBeVisible();
     await expect(single.locator(".media-steps__progress, .media-steps__footer, .media-steps__edge")).toHaveCount(0);
   });
+  test("arrow keys stay with a focused video inside a card", async ({ page }) => {
+    await page.goto("/ja/notes/panorama-stickers/");
+    const card = page.locator("[data-media-steps]").first();
+    await card.evaluate((el) => el.scrollIntoView({ block: "center" }));
+    const video = card.locator(".media-steps__slide.is-active video");
+    await video.evaluate((el) => {
+      el.setAttribute("tabindex", "0");
+      (el as HTMLVideoElement).focus();
+    });
+    await page.keyboard.press("ArrowRight");
+    expect(await card.evaluate((el) => [...el.querySelectorAll(".media-steps__slide")].findIndex((s) => s.classList.contains("is-active")))).toBe(0);
+  });
 });
