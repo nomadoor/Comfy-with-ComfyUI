@@ -124,9 +124,9 @@ Wan-Animate 本体と、Wan2.1 系で共通のモデルを揃えます。
 
 {% endmediaRow %}
 
-**生成例**
-
+{% outputs %}
 ![reference_image](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_9f0e0e20d750b2e207b01adc56858202.png){media=image} ![pose_video(処理前)](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_d7f66b4153473136c37e48c7066709a1.mp4){media=loop} ![output](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_86ed4c6aa64af79325ce18359a4021bc.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -167,9 +167,9 @@ Animation モードに、人物を inpainting するためのマスクと、背�
 
 {% endmediaRow %}
 
-**生成例**
-
+{% outputs %}
 ![background-pose_video](/media/basic-workflows/wan-animate/legacy_gyazo_f14909bbf4415e5477b67870379c6719.mp4){media=loop} ![reference_image](/media/basic-workflows/wan-animate/legacy_gyazo_59dda8074526ca42245b1220bbb4420f.png){media=image} ![output](/media/basic-workflows/wan-animate/legacy_gyazo_280c5916091919526db60ea0625d441a.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -210,9 +210,9 @@ text2video で使うと劣化が気になりましたが、Wan-Animate では 0 
 
 {% endmediaRow %}
 
-**比較**
-
+{% outputs %}
 ![20steps](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_86ed4c6aa64af79325ce18359a4021bc.mp4){media=loop} ![6steps](/media/basic-workflows/wan-animate/legacy_gyazo_67326f2a1a4d803ab4c6a40799aef8a7.mp4){media=loop}
+{% endoutputs %}
 
 ### Replacementモード（高速版）
 

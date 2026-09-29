@@ -2124,6 +2124,53 @@ html:not(.js) .media-steps__footer {
   gap: var(--space-xs);
 }
 
+/* Output examples ({% outputs %}): a tray with the media step cards' fill and a quiet muted
+   "Outputs" label with an image icon, so results read as their own block under the workflow without
+   competing with it. No borders. The label is not a heading and stays out of the TOC. */
+.outputs {
+  --outputs-header-size: 2.25rem;
+  margin: var(--space-xl) 0;
+  padding: 0 var(--space-md) var(--space-md);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-text) 6%, var(--color-reader));
+}
+
+.outputs__header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  block-size: var(--outputs-header-size);
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-muted);
+}
+
+.outputs__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+}
+
+.outputs__icon .icon {
+  inline-size: 1rem;
+  block-size: 1rem;
+}
+
+.outputs__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.outputs > .article-media-row,
+.outputs > p {
+  margin-top: 0;
+}
+
+.outputs > :last-child {
+  margin-bottom: 0;
+}
+
 .article-media-row {
   display: flex;
   flex-wrap: nowrap;

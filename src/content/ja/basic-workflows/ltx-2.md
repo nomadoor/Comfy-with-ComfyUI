@@ -282,9 +282,9 @@ LTX-Videoからの特徴ですが、動画は静止画と違い、少し圧縮�
 {% endmediaRow %}
 
 
-**出力例**
-
+{% outputs %}
 ![入力](/media/basic-workflows/ltx-2/legacy_gyazo_9e1e51a809c8838bb01c1258925c4e0e.png){media=image} ![出力](/media/basic-workflows/ltx-2/legacy_gyazo_cdd2bcb62649ec744892c1615eae01d9.mp4){media=player}
+{% endoutputs %}
 
 > [!NOTE]
 > 既知の問題として、ほとんど画面が動かなかったり、ズームアウトするだけの動画になることがあります。  
@@ -349,9 +349,9 @@ LTX-Videoからの特徴ですが、動画は静止画と違い、少し圧縮�
 
 {% endmediaRow %}
 
-**出力例**
-
+{% outputs %}
 ![入力](/media/basic-workflows/ltx-2/legacy_gyazo_4c2fdd21e0ff8bac1c572dc130753018.mp4){media=loop} ![出力](/media/basic-workflows/ltx-2/legacy_gyazo_1bce09367191f5fc19297331b43bdbb1.mp4){media=loop}
+{% endoutputs %}
 
 
 ---
@@ -379,9 +379,9 @@ LTX-2 は「動画＋音声」を同時に扱うモデルなので、音声を�
 ここに `Set Latent Noise Mask` を使うworkflowも見かけますが、あってもなくても同じ結果になります。
 
 
-**出力例**
-
+{% outputs %}
 ![](/media/basic-workflows/ltx-2/legacy_gyazo_a4290b4a15307547b106f83ced77ae44.mp4){media=player}
+{% endoutputs %}
 
 ---
 
@@ -399,9 +399,9 @@ LTX-2 は「動画＋音声」を同時に扱うモデルなので、音声を�
 
 - audio2video / image2video この 2 つのworkflowを組み合わせるだけです。
 
-**出力例**
-
+{% outputs %}
 ![入力](/media/basic-workflows/ltx-2/legacy_gyazo_7bf65ca84f1583d324c0debeee85b616.png){media=image} ![出力](/media/basic-workflows/ltx-2/legacy_gyazo_8cb2045b833bb0507d048bf9965cbf63.mp4){media=player}
+{% endoutputs %}
 
 > [!NOTE]
 > 実はあまりセリフに動画が追従しなかったため、プロンプトにセリフを入れています。もっと良いworkflowがあるかもしれません。
@@ -420,11 +420,11 @@ audio2video の逆で、動画を入力して それに合う音（効果音や�
 [](/workflows/basic-workflows/ltx-2/ltx_2_video2audio_distilled.json)
 
 
-**出力例**
-
+{% outputs %}
 ※音が大きいので注意してください。
 
 ![](/media/basic-workflows/ltx-2/legacy_gyazo_79db38d1a4e4f16317613bbb85cd37f7.mp4){media=player}
+{% endoutputs %}
 
 ---
 
@@ -481,9 +481,9 @@ inpainting したい時間範囲を指定します。
 - `start_time = 2.0` / `end_time = 5.0`
 
 
-**出力例**
-
+{% outputs %}
 ![入力](/media/basic-workflows/ltx-2/legacy_gyazo_c460984d015f16a93523a37f70ff730a.mp4){media=player} ![出力](/media/basic-workflows/ltx-2/legacy_gyazo_2ba5e11ee85ff39b50e44a3700cf8aa6.mp4){media=player}
+{% endoutputs %}
 
 
 ---
@@ -587,9 +587,9 @@ IC-LoRA (今回はPose) を適用してサンプリングします。
 > 注意点として、基本1種類の使用が推奨されています。(Pose と Depth を同時に適用したりするのは非推奨です。)
 
 
-**出力例**
-
+{% outputs %}
 ![入力](/media/basic-workflows/ltx-2/legacy_gyazo_a999fcd3eca5bcd0a3e89714be6d8074.mp4){media=loop} ![出力](/media/basic-workflows/ltx-2/legacy_gyazo_35e6cc779d6d126973a46cac63c7dec9.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -612,9 +612,9 @@ IC-LoRA (今回はPose) を適用してサンプリングします。
   - 入力画像は「1フレーム目として固定される画像」なので、ポーズ動画の1フレーム目と大きくズレると期待通りの動画になりません。
   - 事前に ControlNet や Qwen-Image-Edit などで「ポーズ1フレーム目に寄せた画像」を作りましょう。
 
-**出力例**
-
+{% outputs %}
 ![入力](/media/basic-workflows/ltx-2/legacy_gyazo_aed000bfabc8665e0fadb350ca72500b.mp4){media=loop} ![出力](/media/basic-workflows/ltx-2/legacy_gyazo_0ec1dbf4cf746b021443ca341b6c019a.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -643,9 +643,9 @@ IC-LoRA (Detailer)は、低解像度の動画のディテールや質感を修�
   - この workflow では 時間方向だけ タイリングしています。
 - 蒸留LoRAを使っていませんが、3 ステップで生成します。
 
-**出力例**
-
+{% outputs %}
 ![入力](/media/basic-workflows/ltx-2/legacy_gyazo_aa14f25d1ad8e274a8de629f4666b1bd.mp4){media=loop} ![出力](/media/basic-workflows/ltx-2/legacy_gyazo_ceb4d9d0ba0eec0b5379b63ec307460a.mp4){media=loop}
+{% endoutputs %}
 
 ---
 

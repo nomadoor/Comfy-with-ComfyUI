@@ -101,9 +101,9 @@ tags: []
 
 {% endmediaRow %}
 
-**输出示例**
-
+{% outputs %}
 ![](/media/basic-workflows/ltx-2-5/legacy_gyazo_e68699b3ebb44d9b20b5d85c73cf9644.mp4){media=loop}
+{% endoutputs %}
 
 ### Multi-shot
 
@@ -117,9 +117,9 @@ tags: []
 
 写起来很轻松，不过模型有时也不会将它识别为 Multi-shot。遇到这种情况，就耐心多试几次吧。
 
-**输出示例**
-
+{% outputs %}
 ![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7fe2eadbd6abb69f2015df4f8531fe26.mp4){media=loop}
+{% endoutputs %}
 
 ### Duration Predictor
 
@@ -163,9 +163,9 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
 > [!NOTE]
 > 以前出于各种原因，会使用 `LTXV Preprocess` 故意降低输入图像的质量。不过在 LTX 2.5 中，至少就我使用的情况来看似乎已经不再需要，所以这里将它去掉了。
 
-**输出示例**
-
+{% outputs %}
 ![输入](/media/basic-workflows/ltx-2-5/legacy_gyazo_856453de1d4eaea2b8e02a8e6993db08.png){media=image} ![输出](/media/basic-workflows/ltx-2-5/legacy_gyazo_d8bdced1eba00d48d1f5ff65dfb4e336.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -195,9 +195,9 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
 
 {% endmediaRow %}
 
-**输出示例**
-
+{% outputs %}
 ![输入 1](/media/basic-workflows/ltx-2-5/legacy_gyazo_de4eaa85c26607d8b0f98f774880e2b8.png){media=image} ![输入 2](https://gyazo.com/0ef0afcbe6a2d35cf018bb0f77e0a0ff){gyazo=image} ![输入 3](/media/basic-workflows/ltx-2-5/legacy_gyazo_c2058ec73687479e7abe3fa7f21f9d64.png){media=image} ![输出](/media/basic-workflows/ltx-2-5/legacy_gyazo_e0e2fcb86f4a8513708807bacd79af8c.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -230,9 +230,9 @@ LTX 2.5 与许多为 LTX 2.3 制作的 IC-LoRA 兼容，可以直接使用。
 
 关于 IC-LoRA 的详细说明，请参阅 [LTX 2 / IC-LoRA (Pose)](/zh/basic-workflows/ltx-2/#ic-lora-pose)。
 
-**输出示例**
-
+{% outputs %}
 ![输入 / 姿势](/media/basic-workflows/ltx-2-5/legacy_gyazo_824ba34d0fa1ef036db386c4f7f7b5f6.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2-5/legacy_gyazo_4f55983a4205360420e7cc605402301b.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -252,8 +252,8 @@ LTX 2.5 采用 2 阶段结构：先以一半分辨率生成，再将分辨率放
 
 这里改用 `Basic Scheduler`，并将 denoise 设为 0.3。请根据需要调整。
 
-**输出示例**
-
+{% outputs %}
 ![输入](/media/basic-workflows/ltx-2-5/legacy_gyazo_2090f2ae9f78af154922c00cd43e10f7.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2-5/legacy_gyazo_bb03d5683d784b144c290400638ba139.mp4){media=loop}
+{% endoutputs %}
 
 虽然现在也出现了许多竞争模型，但它生成自然视频的能力仍然相当突出。希望大家能根据用途灵活使用不同的模型。

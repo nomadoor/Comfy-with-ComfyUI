@@ -193,9 +193,9 @@ H3 is already CFG-distilled, so set CFG to `1.0`.
 
 {% endmediaRow %}
 
-**Output example**
-
+{% outputs %}
 ![](/media/basic-workflows/minimax-h3/minimax_h3_t2va_output.mp4){media=player}
+{% endoutputs %}
 
 ---
 
@@ -209,9 +209,9 @@ Model: `fl2va`
 
 Enter the prompt and first image in `MiniMax H3 Image to Video`.
 
-**Output example**
-
+{% outputs %}
 ![input](/media/basic-workflows/minimax-h3/minimax_h3_i2va_input.png){media=image} ![output](/media/basic-workflows/minimax-h3/minimax_h3_i2va_output.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -225,9 +225,9 @@ Model: `fl2va`
 
 This is basically the same as I2VA. Just provide an image for `last_frame` as well.
 
-**Output example**
-
+{% outputs %}
 ![first](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_first_frame.png){media=image} ![last](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_last_frame.png){media=image} ![output](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_output.mp4){media=loop}
+{% endoutputs %}
 
 ### Generative Interpolation
 
@@ -241,9 +241,9 @@ Insert images at specified frames and have the model fill in the motion between 
 
 This uses the `Add Guide for MiniMax H3` node.
 
-**Output example**
-
+{% outputs %}
 ![input1](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_1.png){media=image} ![input2](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_2.png){media=image} ![input3](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_3.png){media=image} ![output](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_output.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -259,9 +259,9 @@ Model: `fl2va`
 
 Provide an image and audio clip, then generate a video in which the person in the image moves in time with the audio.
 
-**Output example**
-
+{% outputs %}
 ![input](/media/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va_input.png){media=image} ![output](/media/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va_output.mp4){media=player}
+{% endoutputs %}
 
 ---
 
@@ -293,9 +293,9 @@ Use [the Ref2VA prompt section above](#ref2va) as a guide.
 
 {% endmediaRow %}
 
-**Output example**
-
+{% outputs %}
 ![](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output.mp4){media=player}
+{% endoutputs %}
 
 
 ### 🤔 Ref2VA has lower basic output quality than FL2VA
@@ -334,9 +334,9 @@ The workflow is basically the same as Reference Generation.
 
 Provide a video as a reference, then write a prompt instructing the model to do something such as “remove the person” or “change the visual style.”
 
-**Output example**
-
+{% outputs %}
 ![Ref image](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_ref.png){media=image} ![input video](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_input.mp4){media=loop} ![output](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_output.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -363,9 +363,9 @@ Use SAM 3.1 to mask the dog, then expand the mask slightly to leave some margin.
 
 {% endmediaRow %}
 
-**Output example**
-
+{% outputs %}
 ![input](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input.mp4){media=loop} ![mask](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_mask.mp4){media=loop} ![output](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_output.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -419,9 +419,9 @@ H3 also stores the video and audio latents together. Since only the video needs 
 {% endmediaRow %}
 
 
-**Output example**
-
+{% outputs %}
 ![0.25 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va_output_0_25mp.mp4){media=loop} ![1.0 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va_output_1_0mp.mp4){media=loop}
+{% endoutputs %}
 
 ### image2video / I2VA
 
@@ -433,9 +433,9 @@ I2VA and Ref2VA also take the resolution as part of their Conditioning.
 
 The first stage must be set to 0.25 MP, while the second must be set to 1.0 MP with twice the width and height, which makes the workflow a little complicated....
 
-**Output example**
-
+{% outputs %}
 ![0.25 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va_output_0_25mp.mp4){media=loop} ![1.0 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va_output_1_0mp.mp4){media=loop}
+{% endoutputs %}
 
 ## References
 

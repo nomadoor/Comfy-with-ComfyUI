@@ -79,9 +79,9 @@ Z-Image，作为（微调源的）基础模型，持有坦率的特性。
 - 🟪 Z-Image : 30 steps 中的 15 steps
 - 🟨 Z-Image-Turbo : 8 steps 中的 4 steps
 
-**比较**
-
+{% outputs %}
 ![仅 Z-Image](/media/basic-workflows/z-image/legacy_gyazo_73afc01007482bdfbcc0b0d33f75cb98.png){media=image} ![Z-Image + Turbo](/media/basic-workflows/z-image/legacy_gyazo_0c1ece70589a7b42801f37383a604440.png){media=image}
+{% endoutputs %}
 
 
 ## Z-Image-Fun-Controlnet-Union-2.1

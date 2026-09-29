@@ -282,9 +282,9 @@ tags: []
 {% endmediaRow %}
 
 
-**输出例**
-
+{% outputs %}
 ![输入](/media/basic-workflows/ltx-2/legacy_gyazo_9e1e51a809c8838bb01c1258925c4e0e.png){media=image} ![输出](/media/basic-workflows/ltx-2/legacy_gyazo_cdd2bcb62649ec744892c1615eae01d9.mp4){media=player}
+{% endoutputs %}
 
 > [!NOTE]
 > 作为已知的问题，有时画面几乎不动，或者变成只是缩小（Zoom Out）的视频。  
@@ -349,9 +349,9 @@ tags: []
 
 {% endmediaRow %}
 
-**输出例**
-
+{% outputs %}
 ![输入](/media/basic-workflows/ltx-2/legacy_gyazo_4c2fdd21e0ff8bac1c572dc130753018.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2/legacy_gyazo_1bce09367191f5fc19297331b43bdbb1.mp4){media=loop}
+{% endoutputs %}
 
 
 ---
@@ -379,9 +379,9 @@ LTX-2 因为是同时处理“视频＋音频”的模型，所以也可以传�
 虽然也看见在这里使用 `Set Latent Noise Mask` 的工作流，但有没有都是一样的结果。
 
 
-**输出例**
-
+{% outputs %}
 ![](/media/basic-workflows/ltx-2/legacy_gyazo_a4290b4a15307547b106f83ced77ae44.mp4){media=player}
+{% endoutputs %}
 
 ---
 
@@ -399,9 +399,9 @@ LTX-2 因为是同时处理“视频＋音频”的模型，所以也可以传�
 
 - 只是组合了 audio2video / image2video 这 2 个工作流。
 
-**输出例**
-
+{% outputs %}
 ![输入](/media/basic-workflows/ltx-2/legacy_gyazo_7bf65ca84f1583d324c0debeee85b616.png){media=image} ![输出](/media/basic-workflows/ltx-2/legacy_gyazo_8cb2045b833bb0507d048bf9965cbf63.mp4){media=player}
+{% endoutputs %}
 
 > [!NOTE]
 > 其实因为视频不太跟随台词，所以在提示词加入了台词。也许有更好的工作流。
@@ -420,11 +420,11 @@ audio2video 的反面，输入视频，也可以生成 适合那个的声音（�
 [](/workflows/basic-workflows/ltx-2/ltx_2_video2audio_distilled.json)
 
 
-**输出例**
-
+{% outputs %}
 ※因为声音很大请注意。
 
 ![](/media/basic-workflows/ltx-2/legacy_gyazo_79db38d1a4e4f16317613bbb85cd37f7.mp4){media=player}
+{% endoutputs %}
 
 ---
 
@@ -481,9 +481,9 @@ audio2video 的反面，输入视频，也可以生成 适合那个的声音（�
 - `start_time = 2.0` / `end_time = 5.0`
 
 
-**输出例**
-
+{% outputs %}
 ![输入](/media/basic-workflows/ltx-2/legacy_gyazo_c460984d015f16a93523a37f70ff730a.mp4){media=player} ![输出](/media/basic-workflows/ltx-2/legacy_gyazo_2ba5e11ee85ff39b50e44a3700cf8aa6.mp4){media=player}
+{% endoutputs %}
 
 
 ---
@@ -587,9 +587,9 @@ IC-LoRA 从姿势和深度图、边缘等的 引导信号制作视频。
 > 作为注意点，推荐基本使用 1 种类。(同时适用 Pose 和 Depth 等是非推荐的。)
 
 
-**输出例**
-
+{% outputs %}
 ![输入](/media/basic-workflows/ltx-2/legacy_gyazo_a999fcd3eca5bcd0a3e89714be6d8074.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2/legacy_gyazo_35e6cc779d6d126973a46cac63c7dec9.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -612,9 +612,9 @@ IC-LoRA 从姿势和深度图、边缘等的 引导信号制作视频。
   - 因为输入图像是“作为第 1 帧被固定的图像”，所以如果与姿势视频的第 1 帧大幅偏离的话不会变成期待那样的视频。
   - 事前在 ControlNet 或 Qwen-Image-Edit 等制作“靠近姿势第 1 帧的图像”吧。
 
-**输出例**
-
+{% outputs %}
 ![输入](/media/basic-workflows/ltx-2/legacy_gyazo_aed000bfabc8665e0fadb350ca72500b.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2/legacy_gyazo_0ec1dbf4cf746b021443ca341b6c019a.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -643,9 +643,9 @@ IC-LoRA (Detailer) 修复低分辨率的视频的细节和质感。
   - 在这个工作流中只平铺 时间方向。
 - 虽然没有使用蒸馏 LoRA，但以 3 步生成。
 
-**输出例**
-
+{% outputs %}
 ![输入](/media/basic-workflows/ltx-2/legacy_gyazo_aa14f25d1ad8e274a8de629f4666b1bd.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2/legacy_gyazo_ceb4d9d0ba0eec0b5379b63ec307460a.mp4){media=loop}
+{% endoutputs %}
 
 ---
 

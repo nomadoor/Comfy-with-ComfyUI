@@ -282,9 +282,9 @@ Insert the image into the 2nd stage as well.
 {% endmediaRow %}
 
 
-**Output Example**
-
+{% outputs %}
 ![Input](/media/basic-workflows/ltx-2/legacy_gyazo_9e1e51a809c8838bb01c1258925c4e0e.png){media=image} ![Output](/media/basic-workflows/ltx-2/legacy_gyazo_cdd2bcb62649ec744892c1615eae01d9.mp4){media=player}
+{% endoutputs %}
 
 > [!NOTE]
 > As a known issue, often the video hardly moves or just zooms out.  
@@ -348,9 +348,9 @@ The generation result includes the "connector (N frames from end of original vid
 
 {% endmediaRow %}
 
-**Output Example**
-
+{% outputs %}
 ![Input](/media/basic-workflows/ltx-2/legacy_gyazo_4c2fdd21e0ff8bac1c572dc130753018.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2/legacy_gyazo_1bce09367191f5fc19297331b43bdbb1.mp4){media=loop}
+{% endoutputs %}
 
 
 ---
@@ -378,9 +378,9 @@ Since LTX-2 is a model that handles "video + audio" simultaneously, you can conf
 I see workflows using `Set Latent Noise Mask` here, but the result is the same whether it's there or not.
 
 
-**Output Example**
-
+{% outputs %}
 ![](/media/basic-workflows/ltx-2/legacy_gyazo_a4290b4a15307547b106f83ced77ae44.mp4){media=player}
+{% endoutputs %}
 
 ---
 
@@ -398,9 +398,9 @@ If you combine a face image with spoken audio, you can do something like a talki
 
 - Just combine the audio2video / image2video workflows.
 
-**Output Example**
-
+{% outputs %}
 ![Input](/media/basic-workflows/ltx-2/legacy_gyazo_7bf65ca84f1583d324c0debeee85b616.png){media=image} ![Output](/media/basic-workflows/ltx-2/legacy_gyazo_8cb2045b833bb0507d048bf9965cbf63.mp4){media=player}
+{% endoutputs %}
 
 > [!NOTE]
 > Actually, because the video didn't follow the dialogue very well, I put the dialogue in the prompt. There might be a better workflow.
@@ -419,11 +419,11 @@ Contrary to audio2video, you can also input a video and generate sound (sound ef
 [](/workflows/basic-workflows/ltx-2/ltx_2_video2audio_distilled.json)
 
 
-**Output Example**
-
+{% outputs %}
 *Caution: Sound may be loud.*
 
 ![](/media/basic-workflows/ltx-2/legacy_gyazo_79db38d1a4e4f16317613bbb85cd37f7.mp4){media=player}
+{% endoutputs %}
 
 ---
 
@@ -480,9 +480,9 @@ e.g.: If input is "2 seconds"
 - `start_time = 2.0` / `end_time = 5.0`
 
 
-**Output Example**
-
+{% outputs %}
 ![Input](/media/basic-workflows/ltx-2/legacy_gyazo_c460984d015f16a93523a37f70ff730a.mp4){media=player} ![Output](/media/basic-workflows/ltx-2/legacy_gyazo_2ba5e11ee85ff39b50e44a3700cf8aa6.mp4){media=player}
+{% endoutputs %}
 
 
 ---
@@ -586,9 +586,9 @@ This is exactly how IC-LoRA works, but since it is unnecessary for the output, r
 > Note that using basically one type is recommended. (Applying Pose and Depth at the same time is not recommended.)
 
 
-**Output Example**
-
+{% outputs %}
 ![Input](/media/basic-workflows/ltx-2/legacy_gyazo_a999fcd3eca5bcd0a3e89714be6d8074.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2/legacy_gyazo_35e6cc779d6d126973a46cac63c7dec9.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -611,9 +611,9 @@ What it's doing is just combining IC-LoRA (Pose) above with image2video.
   - Since the input image is "an image fixed as the 1st frame", if it deviates significantly from the 1st frame of the pose video, you won't get the expected video.
   - Create an "image close to the 1st frame of pose" with ControlNet or Qwen-Image-Edit etc. in advance.
 
-**Output Example**
-
+{% outputs %}
 ![Input](/media/basic-workflows/ltx-2/legacy_gyazo_aed000bfabc8665e0fadb350ca72500b.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2/legacy_gyazo_0ec1dbf4cf746b021443ca341b6c019a.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -642,9 +642,9 @@ Basically it is video2video with IC-LoRA(Detailer) applied.
   - In this workflow, only the time direction is tiled.
 - It does not use distilled LoRA, but generates in 3 steps.
 
-**Output Example**
-
+{% outputs %}
 ![Input](/media/basic-workflows/ltx-2/legacy_gyazo_aa14f25d1ad8e274a8de629f4666b1bd.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2/legacy_gyazo_ceb4d9d0ba0eec0b5379b63ec307460a.mp4){media=loop}
+{% endoutputs %}
 
 ---
 

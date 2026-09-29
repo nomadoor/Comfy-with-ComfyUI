@@ -222,9 +222,9 @@ That, together with the edited image, goes back into a List and on to the next i
 
 {% endmediaRow %}
 
-**Output**
-
+{% outputs %}
 ![input](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_input.png){media=image} ![output1](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_1.png){media=image} ![output2](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_2.png){media=image} ![output3](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_3.png){media=image} ![output4](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_4.png){media=image}
+{% endoutputs %}
 
 ### Continuous I2V with a Prompt List on MiniMax H3
 
@@ -283,9 +283,9 @@ Only `video0` is connected, which looks odd, but that is all it takes.
 
 {% endmediaRow %}
 
-**Output**
-
+{% outputs %}
 ![output](/media/data-utilities/loop/loop_minimax_h3_i2va_output.mp4){media=loop}
+{% endoutputs %}
 
 To be honest, this workflow is not quite strong enough for real use.
 

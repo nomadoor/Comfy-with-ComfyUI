@@ -222,9 +222,9 @@ List 的内容是 `[图像, 历史]`。
 
 {% endmediaRow %}
 
-**输出示例**
-
+{% outputs %}
 ![input](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_input.png){media=image} ![output1](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_1.png){media=image} ![output2](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_2.png){media=image} ![output3](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_3.png){media=image} ![output4](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_4.png){media=image}
+{% endoutputs %}
 
 ### 用MiniMax H3和Prompt List实现连续I2V
 
@@ -283,9 +283,9 @@ List 的内容是 `[图像, 历史]`。
 
 {% endmediaRow %}
 
-**输出示例**
-
+{% outputs %}
 ![output](/media/data-utilities/loop/loop_minimax_h3_i2va_output.mp4){media=loop}
+{% endoutputs %}
 
 老实说，这个工作流拿去实战还是力有不逮。
 

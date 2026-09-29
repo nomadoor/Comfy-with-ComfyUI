@@ -137,9 +137,9 @@ SCAIL-2 也可以使用 [Wan2.1 高速生成](/zh/basic-workflows/wan-2-1/#self-
 
 {% endmediaRow %}
 
-**输出例**
-
+{% outputs %}
 ![参考图像](/media/basic-workflows/scail-2/legacy_gyazo_ce9827f452cdc3cf7d47de8b12996f28.png){media=image} ![动作视频](/media/basic-workflows/scail-2/legacy_gyazo_f14aef04ac197a4b92680e05c4fbd178.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_d87b2644f8f71218ebe678736479959e.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -171,9 +171,9 @@ Replacement 会以视频尺寸为基准。
 
 {% endmediaRow %}
 
-**输出例**
-
+{% outputs %}
 ![动作视频](/media/basic-workflows/scail-2/legacy_gyazo_395fd549274fb126d836ac0a9414d07d.mp4){media=loop} ![参考图像](/media/basic-workflows/scail-2/legacy_gyazo_ce9827f452cdc3cf7d47de8b12996f28.png){media=image} ![output](/media/basic-workflows/scail-2/legacy_gyazo_1a7caa57ded15aee5700bed072a4a0a7.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -203,9 +203,9 @@ SCAIL-2 也支持多人视频和图像。
 
 {% endmediaRow %}
 
-**输出例**
-
+{% outputs %}
 ![参考图像](/media/basic-workflows/scail-2/legacy_gyazo_567acaf722ca9e839ec7cb834c1ed344.png){media=image} ![动作视频](/media/basic-workflows/scail-2/legacy_gyazo_53461ca17746349fbd11e69798460ea6.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_913ff446dd39fa33f56ba9ed07ce6e16.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -236,9 +236,9 @@ SCAIL-2 也支持多人视频和图像。
 
 它适合用来补充人物的其他角度信息，但如果想合成背景，还是先用图像编辑做出 1 张完整的参考图像会更好。
 
-**输出例**
-
+{% outputs %}
 ![参考图像 1](/media/basic-workflows/scail-2/legacy_gyazo_d2935f1c3b0ff3016616c54d88d6be56.png){media=image} ![参考图像 2](/media/basic-workflows/scail-2/legacy_gyazo_7819645aea776b0aa5e24e8d9f642487.png){media=image} ![参考图像 3](/media/basic-workflows/scail-2/legacy_gyazo_4617d933cec4a3431d36af11c65180e3.png){media=image} ![动作视频](/media/basic-workflows/scail-2/legacy_gyazo_f14aef04ac197a4b92680e05c4fbd178.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_50154740248550b3ffa1dfee024da941.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -260,6 +260,6 @@ SCAIL-2 基本上生成到 81 帧为止，但使用 `WAN Context Windows (Manual
 
 {% endmediaRow %}
 
-**输出例**
-
+{% outputs %}
 ![参考图像](/media/basic-workflows/scail-2/legacy_gyazo_ce9827f452cdc3cf7d47de8b12996f28.png){media=image} ![动作视频](/media/basic-workflows/scail-2/legacy_gyazo_5491ba090036cbac5d76abd293d842ef.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_ae5729a3c9c70711f767364534ccedf9.mp4){media=loop}
+{% endoutputs %}

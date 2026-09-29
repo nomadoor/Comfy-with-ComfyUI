@@ -101,9 +101,9 @@ In this workflow, enter the desired duration in seconds (sec) and the FPS, and t
 
 {% endmediaRow %}
 
-**Output example**
-
+{% outputs %}
 ![](/media/basic-workflows/ltx-2-5/legacy_gyazo_e68699b3ebb44d9b20b5d85c73cf9644.mp4){media=loop}
+{% endoutputs %}
 
 ### Multi-shot
 
@@ -117,9 +117,9 @@ There is no special format. You can simply write something natural such as “a 
 
 This makes prompts easy to write, but the model may not always recognize them as Multi-shot. If it does not work, be patient and try a few times.
 
-**Output example**
-
+{% outputs %}
 ![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7fe2eadbd6abb69f2015df4f8531fe26.mp4){media=loop}
+{% endoutputs %}
 
 ### Duration Predictor
 
@@ -163,9 +163,9 @@ This works the same way as [image2video in LTX 2](/en/basic-workflows/ltx-2/#ima
 > [!NOTE]
 > For various reasons, earlier workflows deliberately degraded the input image with `LTXV Preprocess`. With LTX 2.5, at least in my experience, it no longer seems necessary, so I have left it out.
 
-**Output example**
-
+{% outputs %}
 ![Input](/media/basic-workflows/ltx-2-5/legacy_gyazo_856453de1d4eaea2b8e02a8e6993db08.png){media=image} ![Output](/media/basic-workflows/ltx-2-5/legacy_gyazo_d8bdced1eba00d48d1f5ff65dfb4e336.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -195,9 +195,9 @@ Add more nodes and connect them in sequence to create Generative Interpolation.
 
 {% endmediaRow %}
 
-**Output example**
-
+{% outputs %}
 ![Input 1](/media/basic-workflows/ltx-2-5/legacy_gyazo_de4eaa85c26607d8b0f98f774880e2b8.png){media=image} ![Input 2](https://gyazo.com/0ef0afcbe6a2d35cf018bb0f77e0a0ff){gyazo=image} ![Input 3](/media/basic-workflows/ltx-2-5/legacy_gyazo_c2058ec73687479e7abe3fa7f21f9d64.png){media=image} ![Output](/media/basic-workflows/ltx-2-5/legacy_gyazo_e0e2fcb86f4a8513708807bacd79af8c.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -230,9 +230,9 @@ Like a regular ControlNet, it can control the generated video with line art, dep
 
 For a more detailed explanation of IC-LoRA, see [LTX 2 / IC-LoRA (Pose)](/en/basic-workflows/ltx-2/#ic-lora-pose).
 
-**Output example**
-
+{% outputs %}
 ![Input / pose](/media/basic-workflows/ltx-2-5/legacy_gyazo_824ba34d0fa1ef036db386c4f7f7b5f6.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2-5/legacy_gyazo_4f55983a4205360420e7cc605402301b.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -252,8 +252,8 @@ However, the `ManualSigmas` values used above make the effective denoise too str
 
 Here, I replaced it with `Basic Scheduler` and set denoise to 0.3. Adjust it as needed.
 
-**Output example**
-
+{% outputs %}
 ![Input](/media/basic-workflows/ltx-2-5/legacy_gyazo_2090f2ae9f78af154922c00cd43e10f7.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2-5/legacy_gyazo_bb03d5683d784b144c290400638ba139.mp4){media=loop}
+{% endoutputs %}
 
 Many competing models are now available, but its ability to produce natural-looking video still stands out among them. It would be nice to use each model where it works best.

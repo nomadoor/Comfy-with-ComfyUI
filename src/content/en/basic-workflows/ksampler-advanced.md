@@ -120,7 +120,9 @@ You can use prompt "A" at first and switch to prompt "B" halfway through samplin
 
 In this workflow, the image is generated with the prompt `red apple` for the first 10 steps and `red rabbit` for the rest. Can you see that an image that somehow mixes "apple" and "rabbit" is generated?
 
+{% outputs %}
 ![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_b9db108769cb804df9df3fe8212e7707.mp4){media=loop}
+{% endoutputs %}
 
 To make it easier to understand, I made a video of the generated images when changing the switching step by 1. What was 100% apple gradually becomes a rabbit.
 
@@ -142,7 +144,9 @@ But if you look closely, two text2image workflows are lined up, and it's just sw
 
 Generating the first 6 steps **without LoRA**, and the rest **with LoRA**.
 
+{% outputs %}
 ![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_ca0b90aaa5297a515c7bfe8f94e55684.png){media=image}
+{% endoutputs %}
 
 
 This is a LoRA that makes it pixel art, but LoRA has memories of the pictures used as training material in addition to the concept of "making it pixel art".

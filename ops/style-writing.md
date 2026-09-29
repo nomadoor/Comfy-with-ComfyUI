@@ -160,6 +160,17 @@
 - 理由: Windows と WSL を行き来してもファイル名が壊れないこと、URL でエンコードが要らないこと、comfy.org の表記に合わせること。画像・動画の原本と同じ規則。
 - `npm run check:workflows` がこの規則を検査する。記事本文やモデル名の正式表記（`Qwen-Image-Edit-2509` など）は今までどおり。
 
+## 08-3. 出力例
+
+- workflow の下に置く出力例は `{% outputs %}` 〜 `{% endoutputs %}` で囲む。中には画像・動画の行（と必要なら短い一言）だけを書く。
+- 「**出力例**」のような太字の見出しは書かない。ラベル（Outputs）とアイコンは自動で付く。
+
+```markdown
+{% outputs %}
+![入力](/media/...){media=image} ![output](/media/...){media=loop}
+{% endoutputs %}
+```
+
 ## 09. Tip・補足・注意書き
 
 - 注意書きは、1行目に種類を書いた `blockquote` を使う（`ops/adr/2026-09-29-callouts.md`）。
