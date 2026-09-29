@@ -107,4 +107,10 @@ test.describe("Media step cards", () => {
     await page.keyboard.press("ArrowRight");
     expect(await card.evaluate((el) => [...el.querySelectorAll(".media-steps__slide")].findIndex((s) => s.classList.contains("is-active")))).toBe(0);
   });
+  test("steps written with a heading take it as their name", async ({ page }) => {
+    await page.goto("/ja/basic-workflows/sd15-text2image/");
+    const labels = page.locator("[data-media-steps]").first().locator(".media-steps__segment-label");
+    await expect(labels.first()).toHaveText("Load Checkpoint ノード");
+    await expect(page.locator(".media-steps h3")).toHaveCount(0);
+  });
 });

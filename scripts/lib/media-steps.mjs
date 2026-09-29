@@ -75,9 +75,11 @@ const innerOf = (html, className) => {
  *   body: rendered explanation; ratio: media width / height when known.
  */
 export function renderMediaStep({ media = "", files = "", body = "", ratio = null }) {
-  // A leading bold-only paragraph is the step's title.
+  // The step's title is a leading bold-only paragraph or a leading heading (`### Name`). A heading is
+  // turned into the title paragraph too: steps are not document sections and stay out of the TOC.
   let title = "";
-  const text = body.replace(/^\s*<p><strong>([\s\S]*?)<\/strong><\/p>/, (match, inner) => {
+  const text = body.replace(/^\s*(?:<p><strong>([\s\S]*?)<\/strong><\/p>|<h[1-6][^>]*>([\s\S]*?)<\/h[1-6]>)/, (match, bold, heading) => {
+    const inner = bold ?? heading;
     const clean = stripNumber(inner);
     title = stripTags(clean).trim();
     return `<p class="media-steps__title">${clean}</p>`;
