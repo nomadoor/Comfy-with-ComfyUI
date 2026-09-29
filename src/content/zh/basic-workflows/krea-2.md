@@ -29,6 +29,7 @@ tags: []
 - **Krea 2 Turbo**  
   - 可以用 8 steps 生成的蒸馏模型。
 
+> [!NOTE]
 > Krea 的 Web / API 版还有 **Krea 2 Medium** 和 **Krea 2 Large**，但作为 open weight 公开的只有 **Raw** 和 **Turbo**。
 
 ---

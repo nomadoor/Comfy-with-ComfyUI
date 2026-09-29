@@ -23,6 +23,7 @@ Let's look at the nodes for that.
 
 ---
 
+> [!NOTE]
 > Previously, a custom node was needed for this, but now a similar node has been added to the core, so it is no longer necessary.
 
 ---

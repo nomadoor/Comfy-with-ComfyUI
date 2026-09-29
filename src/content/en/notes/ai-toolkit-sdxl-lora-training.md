@@ -268,6 +268,7 @@ It means `1 × 10^-4`.
   - Images generated there can differ from ComfyUI outputs even with the same seed.
   - If you usually generate with ComfyUI, it is better to test by loading the LoRA in ComfyUI directly.
 
+> [!NOTE]
 > After finishing the settings, click `Create Job` in the upper right.
 
 ---

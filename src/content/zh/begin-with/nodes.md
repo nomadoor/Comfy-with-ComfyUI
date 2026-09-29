@@ -25,6 +25,7 @@ hero:
 
 点击搜索栏旁边的图标，可以打开过滤器。可以从数据类型或包含的自定义节点进行筛选。
 
+> [!NOTE]
 > 有哪些节点只能靠背。努力学习吧！！
 
 ![](/media/begin-with/nodes/legacy_gyazo_b0571db1685d43d84739aeac7559abc8.mp4){media=loop}
@@ -179,6 +180,7 @@ Reroute 节点是作为单独的节点存在的，而这个不是节点，是设
 - 选中节点并按 `Ctrl + M`
 - 或者右键点击 → `Mode` → `Never`
 
+> [!NOTE]
 > **关于区别**
 > - **屏蔽**: 假装“这个节点不存在”，并尝试直接连接前后的节点。
 > - **静音**: 叫做“此路不通”。
@@ -202,14 +204,14 @@ Reroute 节点是作为单独的节点存在的，而这个不是节点，是设
 
 可以用作任何类型输入的万能节点。会根据连接目标的类型动态变化。
 
-> **注意:** 
+> [!WARNING]
 > 由于要配合连接目标的类型，无法与 Reroute 节点组合使用。
 >
 > 现在推荐使用类型明确的 `int 节点`、`float 节点`、`string 节点` 等。
 
 ![](/media/begin-with/nodes/legacy_gyazo_e0a056e9c112028930466701e22afd10.mp4){media=loop}
 
-> **Tip:**
+> [!TIP]
 > **双击** 引脚，会自动连接符合该类型的 Primitive 节点。
 
 ![](/media/begin-with/nodes/legacy_gyazo_35f00ebec3fab7b0471b5595b4b0a5e5.mp4){media=loop}

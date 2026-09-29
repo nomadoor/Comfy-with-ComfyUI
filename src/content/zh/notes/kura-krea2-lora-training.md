@@ -102,6 +102,7 @@ Vivi, reclining, couch, indoors, living room, pillow, blanket, floor lamp, windo
 
 → [用 ChatGPT 制作 LoRA 训练标签](https://chatgpt.com/share/6a54dbe5-6bec-83e9-ae15-f6bb02972c59)
 
+> [!NOTE]
 > 这次制作的是角色 LoRA，所以删除了描述角色本身的词语。如果制作服装 LoRA，就删除描述服装的词语；如果制作风格 LoRA，就删除描述画风的词语。
 
 请把 caption 保存为与图片同名的文本文件。文件名不必使用连续编号。
@@ -133,6 +134,7 @@ Vivi, reclining, couch, indoors, living room, pillow, blanket, floor lamp, windo
 - **在云端训练时**
   - [RunPod](https://www.runpod.io/) 账户
 
+> [!TIP]
 > 如果要在 WSL2 中进行本地训练，请打开 Docker Desktop 的 `Settings → Resources → WSL Integration`，启用运行 Kura 的 WSL 发行版（例如 `Ubuntu`）。
 
 ### 安装 Kura
@@ -277,6 +279,7 @@ Kura Monitor 是用于查看训练进度和以往 run 的监控工具。
 
 Monitor 只是查看状态的界面，不能从这里开始训练或修改设置。
 
+> [!TIP]
 > 请在运行训练的终端之外，另开一个终端启动 Monitor。
 
 ```sh

@@ -28,6 +28,7 @@ hero:
 - b. 将图像拖放到节点上
 - c. 在剪贴板中有图像的状态下，在画布上按 `Ctrl + V`，会作为 `Load Image` 节点粘贴。
 
+> [!NOTE]
 > 上传的图像会被复制到 `ComfyUI\input` 文件夹，并从那里读取。**并不会引用原始文件。**
 >
 > 这个图像只要不从 input 文件夹中删除就不会消失，因此一旦 Load 过的图像可以多次使用。
@@ -103,7 +104,7 @@ main.py --output_dir --output-directory [path]
 
 因此，处理视频时推荐使用后述的 **Video Helper Suite**。
 
-> **注意:**
+> [!WARNING]
 > 视频基本上都是经过压缩的，但在 ComfyUI 中读取时会作为连续图像（非压缩）展开。
 > 如果读取 4K 高 fps 视频等，即使只有几秒钟，也可能耗尽 PC 的 RAM 导致崩溃。
 >

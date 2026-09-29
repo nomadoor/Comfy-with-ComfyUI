@@ -24,6 +24,7 @@ NVIDIA Cosmos をベースにし、数百万枚のアニメ画像とアート画
 
 SDXL 世代のアニメ系モデルからの移行先として、かなり期待されているモデルのひとつですね。
 
+> [!WARNING]
 > ライセンスは **CircleStone Labs Non-Commercial License** です。  
 > Anima のモデル本体・派生モデル・LoRA などは非商用です。生成した画像は商用利用できます。
 
@@ -44,6 +45,7 @@ SDXL 世代のアニメ系モデルからの移行先として、かなり期待
 
   * [qwen_image_vae.safetensors](https://huggingface.co/circlestone-labs/Anima/blob/main/split_files/vae/qwen_image_vae.safetensors) (254 MB)
 
+> [!TIP]
 > `anima-base-v1.0` は未調整のベースモデルです。
 > `anima-aesthetic-v1.1` は、高品質な画像でファインチューニングされたモデルです。気軽に生成を試したいときは、基本的にこちらを使えばよいでしょう。
 
@@ -94,6 +96,7 @@ ControlNet-LLLite は、kohya 氏が開発した軽量な ControlNet です。
 
 制御画像に合わせて適切なモデルを用意してください。
 
+> [!NOTE]
 > `v2` と書かれたものは Anima-Base v1.0 向けに学習されています。それ以外は旧 Preview3 版の Anima で学習されているので、効きが少し悪いかもしれません。
 
 ```text

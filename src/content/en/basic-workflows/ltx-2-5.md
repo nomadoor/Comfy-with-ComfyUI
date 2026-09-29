@@ -160,6 +160,7 @@ It is only a prediction, so the result may be shorter or longer than expected. E
 
 This works the same way as [image2video in LTX 2](/en/basic-workflows/ltx-2/#image2video). `LTXVImgToVideoInplace` inserts the input image as the first frame.
 
+> [!NOTE]
 > For various reasons, earlier workflows deliberately degraded the input image with `LTXV Preprocess`. With LTX 2.5, at least in my experience, it no longer seems necessary, so I have left it out.
 
 **Output example**
@@ -188,6 +189,7 @@ Use `frame_idx` to specify where each image is inserted.
 
 Add more nodes and connect them in sequence to create Generative Interpolation.
 
+> [!NOTE]
 > Depending on the images, the result may look more like a transition than frame interpolation.<br>
 > For an intermediate `LTXVAddGuide`, it may help to lower `strength` to around 0.3–0.4.
 

@@ -125,6 +125,7 @@ hero:
 为了更易懂，试着将切换步数每改变 1 时的生成图像做成了视频。  
 曾是 100% 苹果的东西，徐徐变成了兔子。
 
+> [!NOTE]
 > 如果是 Stable Diffusion web UI 用户，也许会想起 [Prompt Editing](https://scrapbox.io/work4ai/Prompt_Editing)。实际上，是相似的东西。  
 > 在那之中有每 1steps 切换提示词的东西，但在 ComfyUI，很遗憾如果没有自定义节点就无法做。  
 > 如果排列 20 个 KSampler (Advanced) 的话能做，但，嘛…不做呢……

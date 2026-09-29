@@ -71,6 +71,7 @@ hero:
 模型一边看着两侧，一边生成“左边的人物穿着右边的衣服的图像”。
 
 
+> [!NOTE]
 > 因为想炫耀一下，所以我把我自己制作的 LoRA 作为参考拿了出来，但 1 天后就发布了性能远超它的 Qwen-Image-Edit 用 LoRA ☹️
 > [Clothes Try On (Clothing Transfer) - Qwen Edit](https://civitai.com/models/1940532?modelVersionId=2196278)
 

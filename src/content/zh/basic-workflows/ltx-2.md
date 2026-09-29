@@ -20,6 +20,7 @@ tags: []
 
 **[LTX-2](https://website.ltx.video/blog/introducing-ltx-2)** 是 Lightricks 公开的能同时生成音频＋视频的扩散模型。
 
+> [!NOTE]
 > 现在已经有后继模型 [LTX 2.5](/zh/basic-workflows/ltx-2-5/)。<br>
 > 由于架构是相同的，这一页仍然适合用来理解它的机制；如果是实际生成，还是更推荐直接使用新模型。
 
@@ -201,6 +202,7 @@ tags: []
 
 ![20 步](/media/basic-workflows/ltx-2/legacy_gyazo_d7457da890a04a168e0f82655c9a6392.mp4){media=player} ![8 步(distilled-lora)](/media/basic-workflows/ltx-2/legacy_gyazo_1e20bd8fd074213736b0a7a2e3766be1.mp4){media=player}
 
+> [!NOTE]
 > 据我尝试，适用 distilled-lora 更能安定地生成。  
 > 因此，兼顾速度提升，以后的工作流全部 **从第 1 段开始适用 distilled-lora**。
 
@@ -284,6 +286,7 @@ tags: []
 
 ![输入](/media/basic-workflows/ltx-2/legacy_gyazo_9e1e51a809c8838bb01c1258925c4e0e.png){media=image} ![输出](/media/basic-workflows/ltx-2/legacy_gyazo_cdd2bcb62649ec744892c1615eae01d9.mp4){media=player}
 
+> [!NOTE]
 > 作为已知的问题，有时画面几乎不动，或者变成只是缩小（Zoom Out）的视频。  
 > 通过使用适当的提示词会好转多少，但也介绍了为了对此的 LoRA。
 >
@@ -369,7 +372,8 @@ LTX-2 因为是同时处理“视频＋音频”的模型，所以也可以传�
 - 也连接到第 2 段的 `LTXVConcatAVLatent`。
 - 输出视频，直接使用输入音频（不使用生成音频）。
 
-> 🚨音频的长度比生成的视频的长度 **短** 的情况下，音频条件不生效。会生成与声音无关的视频。  
+> [!WARNING]
+> 音频的长度比生成的视频的长度 **短** 的情况下，音频条件不生效。会生成与声音无关的视频。\
 > 哪怕是无声也好，必须让其比生成的视频的长度更长。
 
 虽然也看见在这里使用 `Set Latent Noise Mask` 的工作流，但有没有都是一样的结果。
@@ -399,6 +403,7 @@ LTX-2 因为是同时处理“视频＋音频”的模型，所以也可以传�
 
 ![输入](/media/basic-workflows/ltx-2/legacy_gyazo_7bf65ca84f1583d324c0debeee85b616.png){media=image} ![输出](/media/basic-workflows/ltx-2/legacy_gyazo_8cb2045b833bb0507d048bf9965cbf63.mp4){media=player}
 
+> [!NOTE]
 > 其实因为视频不太跟随台词，所以在提示词加入了台词。也许有更好的工作流。
 
 ---
@@ -407,6 +412,7 @@ LTX-2 因为是同时处理“视频＋音频”的模型，所以也可以传�
 
 audio2video 的反面，输入视频，也可以生成 适合那个的声音（效果音和环境音）。
 
+> [!NOTE]
 > 这个任务不安定。恐怕需要改良。
 
 ![](/media/basic-workflows/ltx-2/legacy_gyazo_62df52a54b4bfcf67f53429d6343d666.png){media=image}
@@ -452,6 +458,7 @@ audio2video 的反面，输入视频，也可以生成 适合那个的声音（�
              └─ inpaint ─┘
 ```
 
+> [!NOTE]
 > 构造上，因为难以组建二阶段工作流（低分辨率 → Hires.fix），所以从最初就以 1.5MP 生成。
 
 {% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_b8efdb1050318602e40897d0d181c77c.png {media=image}", width=40, align="left" %}
@@ -575,6 +582,7 @@ IC-LoRA 从姿势和深度图、边缘等的 引导信号制作视频。
 
 {% endmediaRow %}
 
+> [!TIP]
 > 如果将姿势图像・IC-LoRA，变更为 Canny / Depth 就能同样地使用。  
 > 作为注意点，推荐基本使用 1 种类。(同时适用 Pose 和 Depth 等是非推荐的。)
 

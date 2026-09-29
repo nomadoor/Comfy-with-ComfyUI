@@ -104,6 +104,7 @@ In short, you can use the generation ability of an existing model while avoiding
         └── pid_1.5_flux2_1024_to_4096_4step_bf16.safetensors
 ```
 
+> [!TIP]
 > You do not need to install all of them. Place only the PiD model that matches the base model you use.
 
 ### Choosing a Model
@@ -163,6 +164,7 @@ This example uses the PiD 1.5 model for Flux.2 with `flux2-vae.safetensors`.
 - Resize the input image to around 1M pixels, with dimensions that are multiples of 16
 - Get the resized height and width, multiply them by 4, and use those values as the PiD output size
 
+> [!NOTE]
 > What this does is essentially redrawing, so it is more of an enhance step than a normal upscaler.<br>
 > It is not well suited when faithful reproduction is required.
 

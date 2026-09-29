@@ -76,6 +76,7 @@ tags: []
         └── wan_2.1_vae.safetensors
 ```
 
+> [!TIP]
 > 如果想使用 fp16 / bf16 版，请替换上面的 fp8 的文件名。基本的配置路径是相同的。
 
 ---
@@ -164,6 +165,7 @@ Wan2.1 的基础 text2video 的工作流。
 - 在 `LoraLoaderModelOnly` 节点读取 LoRA。
 - 将 `KSampler` 的 `steps` 设为 4 ～ 8，`CFG` 设为 1.0。
 
+> [!NOTE]
 > Self Forcing 是“总之想高速运转时”的选择。  
 > 虽然不是无法容忍的程度，但劣化很大。
 

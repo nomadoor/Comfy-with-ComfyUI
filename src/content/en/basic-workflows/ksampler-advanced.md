@@ -124,6 +124,7 @@ In this workflow, the image is generated with the prompt `red apple` for the fir
 
 To make it easier to understand, I made a video of the generated images when changing the switching step by 1. What was 100% apple gradually becomes a rabbit.
 
+> [!NOTE]
 > Stable Diffusion web UI users might remember [Prompt Editing](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features#prompt-editing). Actually, it is something similar.
 > There was a feature to switch prompts every step, but unfortunately in ComfyUI, you can't do that without custom nodes.
 > You can do it if you line up 20 KSampler (Advanced) nodes, but well... you wouldn't do that...

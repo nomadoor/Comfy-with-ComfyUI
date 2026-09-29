@@ -182,6 +182,7 @@ Resizes to the specified resolution and fills the missing parts with padding.
 
 [](/workflows/data-utilities/resize-crop-pad/resizeandpadimage.json)
 
+> [!NOTE]
 > Since this node cannot output the padding part as a mask, there are practically no occasions to use it.
 
 ### Pad Image for Outpainting Node
@@ -245,6 +246,7 @@ It is like a node that combines the above resize, crop, and padding into one.
 | **crop_position** | center, top, bottom, left, right |
 | **divisible_by** | Resizes to a resolution that is a multiple of this value (e.g., 32, 64) |
 
+> [!NOTE]
 > Previously, this was used frequently to resize to multiples of N, but now that core nodes handle this, it is not used much.
 
 ---

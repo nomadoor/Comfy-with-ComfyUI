@@ -103,6 +103,7 @@ If something changes that you don't want to change (e.g., the background changes
 
 - e.g. `Keep the person's pose, position, and size the same.`
 
+> [!NOTE]
 > However, due to the performance of the model, it often does not follow instructions well.
 > You shouldn't ask for too much yet.
 

@@ -25,6 +25,7 @@ That is where Differential Diffusion comes in.
 
 It lets you **change denoise at each location according to the intensity of the mask**, so different areas can change by different amounts and blurred mask boundaries can work as expected.
 
+> [!TIP]
 > If you have not read [inpainting](/en/basic-workflows/sd15-inpainting/) yet, please start there.
 
 ---

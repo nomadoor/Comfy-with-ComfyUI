@@ -103,6 +103,7 @@ An API-format JSON is the shape used to tell the ComfyUI server, "execute this."
 2. Choose `File` -> **Export (API)**
 3. Save it with an easy-to-understand name, such as `SD1.5_text2image_API.json`
 
+> [!NOTE]
 > Of course, that workflow needs to actually run in your own environment.  
 > Download the required models and run it once to confirm it works.
 

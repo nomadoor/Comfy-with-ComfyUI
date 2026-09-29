@@ -35,6 +35,7 @@ python_embeded\python.exe -V
 
 Download the package corresponding to your Python version and place it directly under `ComfyUI_windows_portable`.
 
+> [!NOTE]
 > **Direct Download Links:**
 
 - **Python 3.10**

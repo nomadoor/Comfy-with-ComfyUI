@@ -104,6 +104,7 @@ PiD 则是把这个 latent 交给 PixelDiT，让图像还原和放大一起完�
         └── pid_1.5_flux2_1024_to_4096_4step_bf16.safetensors
 ```
 
+> [!TIP]
 > 不需要全部放进去。只放和使用的基础模型对应的 PiD 就可以。
 
 ### 模型的选择
@@ -163,6 +164,7 @@ PiD 则是把这个 latent 交给 PixelDiT，让图像还原和放大一起完�
 - 将输入图像 resize 到约 1M 像素，并让尺寸成为 16 的倍数
 - 取得 resize 后的高和宽，把它们乘以 4，作为 PiD 侧的输出尺寸
 
+> [!NOTE]
 > 本质上做的是重新描绘，所以与其说是 upscaler，不如说是 enhance。<br>
 > 不太适合需要忠实再现的用途。
 

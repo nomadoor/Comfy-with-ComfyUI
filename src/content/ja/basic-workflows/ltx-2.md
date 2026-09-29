@@ -20,6 +20,7 @@ tags: []
 
 **[LTX-2](https://website.ltx.video/blog/introducing-ltx-2)** は、Lightricks が公開している、音声と動画を同時に生成できる拡散モデルです。
 
+> [!NOTE]
 > 現在は、後継モデルとして [LTX 2.5](/ja/basic-workflows/ltx-2-5/) が登場しています。<br>
 > アーキテクチャは同じなので、こちらで仕組みを学びつつ、実際に生成するなら新しいモデルを使うのがおすすめです。
 
@@ -201,6 +202,7 @@ LTXシリーズの特徴ですが、プロンプトは多少こだわらない�
 
 ![20ステップ](/media/basic-workflows/ltx-2/legacy_gyazo_d7457da890a04a168e0f82655c9a6392.mp4){media=player} ![8ステップ(distilled-lora)](/media/basic-workflows/ltx-2/legacy_gyazo_1e20bd8fd074213736b0a7a2e3766be1.mp4){media=player}
 
+> [!NOTE]
 > 私が試した限りでは、distilled-lora を適用したほうが安定して生成できます。  
 > そのため、速度アップを兼ねて以降のworkflowは全て **１段目からdistilled-loraを適用** していきます。
 
@@ -284,6 +286,7 @@ LTX-Videoからの特徴ですが、動画は静止画と違い、少し圧縮�
 
 ![入力](/media/basic-workflows/ltx-2/legacy_gyazo_9e1e51a809c8838bb01c1258925c4e0e.png){media=image} ![出力](/media/basic-workflows/ltx-2/legacy_gyazo_cdd2bcb62649ec744892c1615eae01d9.mp4){media=player}
 
+> [!NOTE]
 > 既知の問題として、ほとんど画面が動かなかったり、ズームアウトするだけの動画になることがあります。  
 > 適切なプロンプトを使うことで多少マシになりますが、これを対策するための LoRA が登場したので紹介します。
 >
@@ -369,7 +372,8 @@ LTX-2 は「動画＋音声」を同時に扱うモデルなので、音声を�
 - 二段目の `LTXVConcatAVLatent` にも接続します。
 - 出力動画には、入力音声をそのまま使います（生成音声は使いません）。
 
-> 🚨音声の長さが生成する動画の長さより **短い** 場合、音声条件が効きません。音と無関係な動画が生成されます。  
+> [!WARNING]
+> 音声の長さが生成する動画の長さより **短い** 場合、音声条件が効きません。音と無関係な動画が生成されます。\
 > 無音でもいいので生成する動画の長さより余計に長くしておく必要があります。
 
 ここに `Set Latent Noise Mask` を使うworkflowも見かけますが、あってもなくても同じ結果になります。
@@ -399,6 +403,7 @@ LTX-2 は「動画＋音声」を同時に扱うモデルなので、音声を�
 
 ![入力](/media/basic-workflows/ltx-2/legacy_gyazo_7bf65ca84f1583d324c0debeee85b616.png){media=image} ![出力](/media/basic-workflows/ltx-2/legacy_gyazo_8cb2045b833bb0507d048bf9965cbf63.mp4){media=player}
 
+> [!NOTE]
 > 実はあまりセリフに動画が追従しなかったため、プロンプトにセリフを入れています。もっと良いworkflowがあるかもしれません。
 
 ---
@@ -407,6 +412,7 @@ LTX-2 は「動画＋音声」を同時に扱うモデルなので、音声を�
 
 audio2video の逆で、動画を入力して それに合う音（効果音や環境音） を生成することもできます。
 
+> [!NOTE]
 > このタスクは安定しません。おそらく改良が必要です。
 
 ![](/media/basic-workflows/ltx-2/legacy_gyazo_62df52a54b4bfcf67f53429d6343d666.png){media=image}
@@ -452,6 +458,7 @@ audio2video の逆で、動画を入力して それに合う音（効果音や�
              └─ inpaint ─┘
 ```
 
+> [!NOTE]
 > 仕組み上、二段階 workflow（低解像度 → Hires.fix）を組みにくいため、最初から 1.5MP で生成しています。
 
 {% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_b8efdb1050318602e40897d0d181c77c.png {media=image}", width=40, align="left" %}
@@ -575,6 +582,7 @@ IC-LoRA (今回はPose) を適用してサンプリングします。
 
 {% endmediaRow %}
 
+> [!TIP]
 > ポーズ画像・IC-LoRAを、Canny / Depth へ変更すれば同じように使えます。  
 > 注意点として、基本1種類の使用が推奨されています。(Pose と Depth を同時に適用したりするのは非推奨です。)
 

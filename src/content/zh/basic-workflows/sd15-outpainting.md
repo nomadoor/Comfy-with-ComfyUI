@@ -25,6 +25,7 @@ outpainting 是一种 **向图像“外侧”继续扩画** 的方法。
 
 填补图像内部，还是填补外侧新增的空白。区别仅此而已。
 
+> [!TIP]
 > 如果还没有读过 [inpainting](/zh/basic-workflows/sd15-inpainting/)，请先看一下。
 
 ---

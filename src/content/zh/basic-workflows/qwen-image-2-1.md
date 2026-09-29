@@ -171,6 +171,7 @@ Seed 带来的差异非常大，可以说有好有坏。改变分辨率也会让
 
 {% endmediaRow %}
 
+> [!NOTE]
 > 这与通常所说的 [inpainting](/zh/basic-workflows/sd15-inpainting/) 完全不同。\
 > inpainting 有防止蒙版外区域被编辑的机制，而这里的图像只是用来提示位置。\
 > 因此，编辑也可能超出指定范围。
@@ -329,6 +330,7 @@ This is an RGBA image with transparency. <在这里填写要生成的内容>. Th
 
 返回的物体名称会通过 `Format Text` 整理成给 Qwen-Image-2.1 的指令。
 
+> [!NOTE]
 > 将 RGBA 图像传给 `Generate Text` 节点会报错，因此先用 `Split Image with Alpha` 去掉 Alpha 信息。
 
 {% endmediaRow %}
@@ -369,6 +371,7 @@ This is an RGBA image with transparency. <在这里填写要生成的内容>. Th
 
 {% endmediaRow %}
 
+> [!NOTE]
 > 你可能会想，为什么不固定 seed，反而特意使用 `iteration_index`。  
 > 不知道这是 bug 还是预期行为，但用相同的 seed 再次编辑一张已经编辑过的图像时，输出会出现严重劣化。  
 > 只要 seed 发生变化就没有问题，所以作为临时处理，这里直接输入每次循环都会变化的 `iteration_index`。

@@ -171,6 +171,7 @@ In fact, the model only receives an ordinary black-and-white image. You can skip
 
 {% endmediaRow %}
 
+> [!NOTE]
 > This works very differently from [inpainting](/en/basic-workflows/sd15-inpainting/).\
 > Inpainting has a mechanism that prevents edits outside the mask, while this is only a location guide.\
 > The edit may therefore spill outside the specified area.
@@ -329,6 +330,7 @@ What should count as one layer depends on how many layers remain, so the prompt 
 
 The returned subject name is inserted into the Qwen-Image-2.1 instruction with `Format Text`.
 
+> [!NOTE]
 > `Generate Text` raises an error when given an RGBA image, so `Split Image with Alpha` removes the Alpha information first.
 
 {% endmediaRow %}
@@ -369,6 +371,7 @@ With `is_last` and `If/Else Switch`, the last iteration bypasses extraction and 
 
 {% endmediaRow %}
 
+> [!NOTE]
 > You might be wondering why I use `iteration_index` instead of a fixed seed.  
 > I do not know whether this is a bug or intended behavior, but editing an image again with the same seed makes the output badly artifacted.  
 > It works fine as long as the seed changes, so as a quick workaround I use `iteration_index`, which changes on every loop.

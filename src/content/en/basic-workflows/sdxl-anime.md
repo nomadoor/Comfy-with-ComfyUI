@@ -24,6 +24,7 @@ To be more precise, models that appeared after SDXL are large in size, and cases
 
 For photorealistic or CG styles, the performance of the base model itself has become sufficient, but there is still no definitive base model strong in anime style, so the situation is that we have to rely on SDXL.
 
+> [!NOTE]
 > To be honest, I am not very knowledgeable about anime-style models.
 > I think the ones listed here are representative, but I plan to research again if I have time.
 >

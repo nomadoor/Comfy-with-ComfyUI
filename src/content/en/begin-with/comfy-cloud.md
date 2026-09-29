@@ -27,6 +27,7 @@ It is still in beta and does not have the freedom of the local version (such as 
 
 ## Pricing
 
+> [!NOTE]
 > Pending until stable
 
 Details on the official page:

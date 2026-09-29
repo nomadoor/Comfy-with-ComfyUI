@@ -138,6 +138,7 @@ Since then, improved VAEs have been released. There are various VAEs, but if you
 - 🟥 Add a `Load VAE` node and select the VAE you just downloaded.
   - Connect it to VAE Decode.
 
+> [!NOTE]
 > **Future workflows will be based on this.**
 
 ---
@@ -193,6 +194,7 @@ CLIP tends to place more importance on text near the beginning, so things writte
 
 To adjust this manually, we use this attention notation.
 
+> [!NOTE]
 > However, this only works if CLIP understands the word.
 > Adding `(Ghoti:999)` to a word it probably doesn't know has no meaning.
 

@@ -75,6 +75,7 @@ When used with Queue, you can apply it to **generate continuously while changing
 
 Use `randomize` if you want to try different results each time like a seed gacha, and `fixed` if you want to fix the seed and compare other parameters.
 
+> [!NOTE]
 > The workflows on this site mostly use `fixed` for reproducibility.
 
 ---

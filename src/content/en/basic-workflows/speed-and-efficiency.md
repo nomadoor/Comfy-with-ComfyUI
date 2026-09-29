@@ -30,6 +30,7 @@ Note that the following two are similar but different.
 
 Using lightweighting techniques (Quantization / GGUF, etc.) can reduce VRAM, but in some cases, inference speed may actually decrease.
 
+> [!NOTE]
 > In this page, "Lightweighting" is treated mainly as VRAM usage reduction of models.
 
 ---
@@ -52,6 +53,7 @@ First, let's roughly organize which technologies are relevant for each common pu
   - CPU Offload / Block Swap
   - VAE Tiling (Tiled VAE / Temporal Tiling)
 
+> [!NOTE]
 > Things like SageAttention and Nunchaku are also famous, but the introduction difficulty is high, so we do not handle them on this site. Let's take stability over hardship.
 
 ---

@@ -30,6 +30,7 @@ After all, it is better to use an upscaler dedicated to video.
 
 I will introduce just two current SoTAs.
 
+> [!NOTE]
 > You cannot use still image upscalers for video, but the reverse is not particularly problematic.
 > In fact, they perform better than those dedicated to still images and are often used.
 

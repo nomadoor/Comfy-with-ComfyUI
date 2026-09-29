@@ -133,6 +133,7 @@ I will introduce this as well.
 
 NewBie-image (Exp0.1) is an anime-focused T2I model with a unique NewBie architecture designed based on Next-DiT, incorporating insights from Lumina architecture research. It uses a more powerful text encoder and enables more detailed control with XML-formatted prompts (structured tags).
 
+> [!NOTE]
 > This model is only 20% trained. The workflow may change with future updates.
 
 ### Model Download

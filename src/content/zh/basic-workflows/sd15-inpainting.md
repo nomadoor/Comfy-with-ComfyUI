@@ -51,6 +51,7 @@ inpainting 是一种 **“只重绘图像的一部分”** 的方法。
 
 最终看起来，就像只对掩膜部分执行了 image2image。
 
+> [!TIP]
 > 关于掩膜的制作和编辑方法，请参阅[掩膜操作](/zh/data-utilities/mask-ops/)和[使用 AI 生成掩膜](/zh/data-utilities/ai-mask-generation/)。
 
 ### 【问题】提高 denoise 后会和周围不协调
@@ -130,6 +131,7 @@ inpainting 模型还会接收到“要重绘哪里”和“该区域外有什么
 
 其中一种就是 **ControlNet inpaint**。
 
+> [!NOTE]
 > 关于 [ControlNet](/zh/basic-workflows/sd15-controlnet)，将在其他页面中说明。
 
 ### 自定义节点

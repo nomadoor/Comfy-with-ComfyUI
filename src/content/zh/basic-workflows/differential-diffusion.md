@@ -25,6 +25,7 @@ hero:
 
 它可以**根据掩膜的浓淡，改变各个位置的 denoise**，因此既能让不同位置产生不同程度的变化，也能使用边界经过模糊的掩膜。
 
+> [!TIP]
 > 如果还没有读过 [inpainting](/zh/basic-workflows/sd15-inpainting/)，请先看这篇文章。
 
 ---

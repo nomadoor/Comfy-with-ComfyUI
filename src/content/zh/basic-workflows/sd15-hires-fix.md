@@ -95,4 +95,5 @@ Stable Diffusion 1.5 几乎只用了 512 × 512px 的图像进行学习。
 - 🟩 将 text2image 出来的 latent 在 `NNLatentUpscale` 节点直接放大
 - 🟨 将放大的 latent 原样流入 image2image
 
+> [!NOTE]
 > 虽然只是体感，但我觉得一度解码为像素图像的方法品质更好。

@@ -103,6 +103,7 @@ The current latest model is covered on the [SAM 3 / 3.1](/en/data-utilities/sam3
 
 Let's combine the techniques above to generate masks for arbitrary text prompts or categories.
 
+> [!NOTE]
 > The workflows below were commonly used before SAM 3. If your goal is target-specified segmentation, start with [SAM 3 / 3.1](/en/data-utilities/sam3/) now.
 >
 > They remain here as references for understanding older workflows or reproducing the same setup in an existing environment.

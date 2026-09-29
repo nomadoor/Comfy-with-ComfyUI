@@ -26,6 +26,7 @@ permalink: "/{{ lang }}/notes/{{ slug }}/"
 
 这篇笔记会介绍从在 RunPod 上启动 AI Toolkit，到下载训练好的 LoRA 为止的流程。
 
+> [!NOTE]
 > 不同模型的详细训练设置，以及数据集的制作方法，我打算分别写在其他文章里。
 
 ---
@@ -63,6 +64,7 @@ RunPod 是先购买点数，再消耗点数使用 GPU 的形式。
 - 如果想购买 150 美元或更少的点数，选择 `Other`
 - 输入金额，然后进入 `Go to Checkout`
 
+> [!NOTE]
 > 不一定要用，不过这是我的邀请链接。从这里注册并购买至少 10 美元的点数，会额外得到一点额度。
 >
 > [RunPod 邀请链接](https://runpod.io?ref=ke9q7kqp)
@@ -97,6 +99,7 @@ Pod 就像一台可以自定义的云端租用 PC。
 - 打开 `Environment Variables`
 - 把 `AI_TOOLKIT_AUTH` 的值改成只有自己知道的密码
 
+> [!WARNING]
 > 这里设置的值会在打开 AI Toolkit 时使用。如果保持默认值，任何人都可以用 `password` 打开，所以请改成别的值。
 
 ### 选择 GPU
@@ -120,6 +123,7 @@ VRAM 不够时，训练中会出现 `Out of Memory`，无法继续处理。
 
 点击 `Deploy Pod` 后，Pod 就会被创建。
 
+> [!WARNING]
 > 从这个时间点开始会消耗点数。dataset 等准备工作最好提前完成。
 
 ---
@@ -202,6 +206,7 @@ Job 创建好之后，开始训练。
 
 基本流程到这里就结束了。
 
+> [!WARNING]
 > 删除 Pod 后，上传的 dataset 和生成的 LoRA 也会一起删除。需要的文件一定要提前下载。  
 > 写有全部设置的 config file 也建议保存下来，之后回看时会很有用。
 

@@ -22,6 +22,7 @@ Officially, it is a task called "Subject-Driven Image Generation."
 Subject refers not only to people but also to characters, stuffed animals, specific dogs, mascots, figures, etc., generally "that thing shown in this image."
 Subject Transfer is a technology for generating images containing the same Subject shown in the reference image.
 
+> [!NOTE]
 > Technology to transfer ID (person's face/identity) is included in Subject Transfer, but it is treated specially, and there are many technologies specialized for ID Transfer, so it is treated separately.
 
 ---

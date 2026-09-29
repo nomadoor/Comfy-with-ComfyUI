@@ -102,6 +102,7 @@ Vivi, reclining, couch, indoors, living room, pillow, blanket, floor lamp, windo
 
 → [ChatGPT で LoRA 学習用タグ作成](https://chatgpt.com/share/6a54dbe5-6bec-83e9-ae15-f6bb02972c59)
 
+> [!NOTE]
 > 今回はキャラクター LoRA なので、キャラクター本体を説明する語を消しました。服装 LoRA なら服装、スタイル LoRA なら絵柄を説明する語を消します。
 
 キャプションは、画像と同じ名前のテキストファイルに保存します。ファイル名は連番でなくても構いません。
@@ -133,6 +134,7 @@ Vivi, reclining, couch, indoors, living room, pillow, blanket, floor lamp, windo
 - **クラウドで学習する場合**
   - [RunPod](https://www.runpod.io/) アカウント
 
+> [!TIP]
 > WSL2 でローカル学習する場合は、Docker Desktop の `Settings → Resources → WSL Integration` を開き、Kura を動かす WSL ディストリビューション（例：`Ubuntu`）を有効にしてください。
 
 ### Kura をインストールする
@@ -277,6 +279,7 @@ Kura Monitor は、学習の進捗や過去の run を確認するための監�
 
 Monitor は状態を見るための画面です。ここから学習を開始したり、設定を書き換えたりすることはできません。
 
+> [!TIP]
 > 学習しているターミナルとは、別のターミナルから開いてください。
 
 ```sh

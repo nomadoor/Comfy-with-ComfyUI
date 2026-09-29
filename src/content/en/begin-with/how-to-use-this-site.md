@@ -34,6 +34,7 @@ Here is a quick overview of the main sections:
 
 ### 🧭 Begin With ComfyUI
 Covers ComfyUI setup and basic operations.
+> [!NOTE]
 > The UI changes frequently these days.
 > I want to keep it updated, but changes happen so often that I usually wait for a bit of stability.
 

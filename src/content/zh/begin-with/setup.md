@@ -92,6 +92,7 @@ hero:
 1. 从 ComfyUI Desktop 的 [GitHub 页面](https://github.com/Comfy-Org/desktop) 下载 `ComfyUI Setup.exe`。
 2. 运行程序，选择安装位置和 GPU 设置。
 
+> [!NOTE]
 > ComfyUI Manager 默认已经搭载。
 
 ---

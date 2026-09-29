@@ -182,6 +182,7 @@ hero:
 
 [](/workflows/data-utilities/resize-crop-pad/resizeandpadimage.json)
 
+> [!NOTE]
 > 该节点无法将填充部分作为蒙版输出，因此几乎没有使用的场合。
 
 ### Pad Image for Outpainting 节点
@@ -245,6 +246,7 @@ hero:
 | **crop_position** | center, top, bottom, left, right |
 | **divisible_by** | 会被调整为这个值的倍数的分辨率（例：32, 64） |
 
+> [!NOTE]
 > 以前经常用于将长宽调整为 N 的倍数，但现在核心节点也能支持了，所以就不怎么用了。
 
 

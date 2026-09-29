@@ -30,6 +30,7 @@ Stable Diffusion 1.5 は登場当初、推奨 VRAM が 10GB 程度とされ、RT
 
 軽量化のための技術（量子化 / GGUF など）を使うと、VRAM は削減できても、場合によっては推論速度がむしろ低下することもあります。
 
+> [!NOTE]
 > このページでは「軽量化」を、主にモデルの VRAM 使用量削減のこととして扱います。
 
 ---
@@ -52,6 +53,7 @@ Stable Diffusion 1.5 は登場当初、推奨 VRAM が 10GB 程度とされ、RT
   - CPUオフロード / Block Swap
   - VAE タイル化（Tiled VAE / Temporal Tiling）
 
+> [!NOTE]
 > SageAttention や Nunchaku のようなものも有名ですが、導入難度が高いので、このサイトでは扱いません。苦労より安定を取りましょう。
 
 ---

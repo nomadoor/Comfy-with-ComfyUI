@@ -78,6 +78,7 @@ Base（20 steps）に対し、Distilled は 4 steps で生成出来ます。
 
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_text2image.json)
 
+> [!NOTE]
 > 公式workflowでは、`Flux2Scheduler` というものを使いますが、大きな違いは無いので、workflowを簡略化するため`Simple`を使っています。
 
 ### text2image Distilled

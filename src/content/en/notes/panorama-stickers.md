@@ -61,6 +61,7 @@ This page covers the following three nodes.
 
 To keep it stable on both Legacy and Node 2.0, the main design is to operate it from a dedicated modal UI.
 
+> [!NOTE]
 > `Panorama Preview` can still be previewed on the node, but operation is designed around the modal UI.
 
 {% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_fc789c1056b38005c59d1e5be6c3095d.mp4{media=loop}", width=60, align="left" %}
@@ -224,6 +225,7 @@ This node lets you preview directly on the node. It uses the same modal UI as th
 
 Let's actually use the LoRA and create an ERP panorama from reference images.
 
+> [!WARNING]
 > This is a known issue, but the LoRA barely works with Distilled models. I am still looking for a workaround, but for now please use it with the base model.
 
 ### Model Download
@@ -275,6 +277,7 @@ Let's actually use the LoRA and create an ERP panorama from reference images.
 Fill the green spaces according to the image. Outpaint as a seamless 360 equirectangular panorama (2:1). Keep the horizon level. Match left and right edges.
 ```
 
+> [!NOTE]
 > What gets generated is an ERP (2:1) image. It is hard to read as-is, so check or capture it with `Panorama Preview` or `Panorama Cutout`.
 
 ### flux-2-klein-4B-360-erp-outpaint

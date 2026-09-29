@@ -35,6 +35,7 @@ If you want to create a functional unit, [Subgraph](/en/begin-with/subgraphs/) i
 
 - Select nodes -> Click `#` (Frame Nodes) in `Node Selection Toolbox`
 
+> [!NOTE]
 > Since the group frame is fixed as a rectangle, depending on the layout, unselected nodes may be included.  
 > Since it reduces layout freedom, personally I don't use the group function much.
 

@@ -25,6 +25,7 @@ hero:
 
 Clicking the icon next to the search bar opens a filter. You can narrow down by data type or included custom nodes.
 
+> [!NOTE]
 > You have to memorize what nodes exist. Let's do our best to learn!!
 
 ![](/media/begin-with/nodes/legacy_gyazo_b0571db1685d43d84739aeac7559abc8.mp4){media=loop}
@@ -179,6 +180,7 @@ Continues processing **ignoring** that node.
 - Select node and `Ctrl + M`
 - Or Right click -> `Mode` -> `Never`
 
+> [!NOTE]
 > **About the difference**
 > - **Bypass**: Pretends "this node didn't exist" and tries to connect the preceding and succeeding nodes directly.
 > - **Mute**: Makes it a "dead end here".
@@ -202,14 +204,14 @@ Converts the input field (widget) to pin input so that values can be passed from
 
 A versatile node that can be used as input for any type. It changes dynamically according to the connected type.
 
-> **Note:**
+> [!WARNING]
 > Because it adapts to the connected type, it cannot be used in combination with reroute nodes.
 >
 > Currently, it is recommended to use typed nodes such as `int node`, `float node`, `string node`.
 
 ![](/media/begin-with/nodes/legacy_gyazo_e0a056e9c112028930466701e22afd10.mp4){media=loop}
 
-> **Tip:**
+> [!TIP]
 > **Double clicking** a pin automatically connects a Primitive node matching that type.
 
 ![](/media/begin-with/nodes/legacy_gyazo_35f00ebec3fab7b0471b5595b4b0a5e5.mp4){media=loop}

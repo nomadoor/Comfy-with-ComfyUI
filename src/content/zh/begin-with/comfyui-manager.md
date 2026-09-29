@@ -38,6 +38,7 @@ ComfyUI Manager 是 ltdrdata 开发的工具，用于统一管理自定义节点
 
 ## 安装与启用
 
+> [!WARNING]
 > 只安装 Manager 并不会显示在画面上。  
 > 还需要在启动 ComfyUI 时追加命令行参数。
 

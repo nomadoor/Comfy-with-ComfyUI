@@ -103,6 +103,7 @@ Kontext の workflow 自体は、通常の Flux.1 に`ReferenceLatent` を追加
 
 - e.g. `Keep the person's pose, position, and size the same.`
 
+> [!NOTE]
 > とはいえ、モデルの性能として、指示にうまく従わないこともよくあります。  
 > まだまだ、あまり多くを求めすぎてはいけません。
 

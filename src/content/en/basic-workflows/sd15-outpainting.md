@@ -25,6 +25,7 @@ You deliberately add blank space outside the image, turn that space into a mask,
 
 Whether you fill an area inside the image or blank space added outside it—that is all that changes.
 
+> [!TIP]
 > If you have not read [inpainting](/en/basic-workflows/sd15-inpainting/) yet, take a look at it first.
 
 ---

@@ -26,6 +26,7 @@ ComfyUI 虽然是图像生成引擎，但原本如果 Stable Diffusion 或 Qwen-
 
 API 节点（官方文档上的呼名是 Partner Nodes），是为了从 ComfyUI 经由 API 调用外部的封闭模型的节点群。  
 
+> [!NOTE]
 > 在这里说的“API 节点”，到底是指 **ComfyUI 准备的课金节点**。  
 > 与自前取得 OpenAI 或 Gemini 的 API Key 从 custom node 敲击的模式区别开来。
 

@@ -92,6 +92,7 @@ Another trend involves diverting video generation models for editing. **FramePac
 The idea is that since video models can handle "consistency across multiple frames" to begin with, if we consider the pre-edit and post-edit states as a "short video," even large changes can be connected naturally.
 
 ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_dbf2c60d457434bccb4428108bb31164.png){media=image}
+> [!NOTE]
 > This idea itself has been around for a long time. Even when AnimateDiff was mainstream, I used to create animations of characters with various expressions to create character variations.
 
 Although there are still many issues, such as consistency being too strong making large changes difficult, or outputting dozens of frames as a video when only one image is needed for editing, I think this is a technology to watch in the future.

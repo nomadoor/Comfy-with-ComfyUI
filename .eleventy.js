@@ -1371,6 +1371,28 @@ export default function (eleventyConfig) {
     });
   });
 
+  // GitHub-style callouts: a blockquote whose first line is `[!NOTE]`, `[!TIP]` or `[!WARNING]`
+  // (IMPORTANT / CAUTION count as WARNING). A blockquote without a marker stays a plain quote.
+  const CALLOUT = /^\[!(NOTE|TIP|WARNING|IMPORTANT|CAUTION)\][ \t]*(?:\n|$)/i;
+  markdownLib.core.ruler.after("inline", "callouts", (state) => {
+    const tokens = state.tokens;
+    for (let i = 0; i < tokens.length - 2; i++) {
+      if (tokens[i].type !== "blockquote_open" || tokens[i + 1].type !== "paragraph_open") continue;
+      const inline = tokens[i + 2];
+      const match = inline.type === "inline" && inline.content.match(CALLOUT);
+      if (!match) continue;
+      const kind = { NOTE: "note", TIP: "tip" }[match[1].toUpperCase()] || "warning";
+      tokens[i].attrJoin("class", `callout callout--${kind}`);
+      inline.content = inline.content.slice(match[0].length);
+      // Drop the marker text and the line break after it from the parsed inline children.
+      const children = inline.children || [];
+      if (children[0]?.type === "text") children[0].content = children[0].content.replace(/^\[![A-Za-z]+\][ \t]*/, "");
+      while (children.length && ((children[0].type === "text" && !children[0].content) || children[0].type === "softbreak" || children[0].type === "hardbreak")) children.shift();
+      // A marker on its own line followed by a blank line leaves an empty paragraph behind.
+      if (!children.length) tokens.splice(i + 1, 3);
+    }
+  });
+
   // Plain links to managed media (`[clip.mp4](/media/...)`) point at the published R2 file, like embeds do.
   markdownLib.core.ruler.after("inline", "resolve-media-links", (state) => {
     state.tokens.forEach((blockToken) => {

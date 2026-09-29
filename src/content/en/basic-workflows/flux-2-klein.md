@@ -78,6 +78,7 @@ Since there is no significant difference in performance, we will basically use t
 
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_text2image.json)
 
+> [!NOTE]
 > The official workflow uses `Flux2Scheduler`, but since there is no major difference, we use `Simple` to simplify the workflow.
 
 ### text2image Distilled

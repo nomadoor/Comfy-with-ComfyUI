@@ -70,6 +70,7 @@ However, just like with IC-LoRA / ACE++, if you use the **side-by-side technique
 
 The model generates an "image of the person on the left wearing the clothes on the right" while looking at both.
 
+> [!NOTE]
 > I brought up the LoRA I made as a reference because I wanted to brag, but a day later, a much higher performance LoRA for Qwen-Image-Edit was announced ☹️
 > [Clothes Try On (Clothing Transfer) - Qwen Edit](https://civitai.com/models/1940532?modelVersionId=2196278)
 

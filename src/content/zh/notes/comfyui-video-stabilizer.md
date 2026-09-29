@@ -97,6 +97,7 @@ Flow 稍微重一些，但效果好很多，所以基本上推荐使用 Flow。
 
 [](/workflows/notes/comfyui-video-stabilizer/video_stabilizer_to_motion_apply.json)
 
+> [!WARNING]
 > 如果用 `crop` 或 `crop_and_pad` 做了补正，已经被裁掉的像素无法恢复。如果后面还想还原手抖，最开始补正时建议使用 `expand`。
 
 ---
@@ -133,6 +134,7 @@ Flow 稍微重一些，但效果好很多，所以基本上推荐使用 Flow。
 - `action`: 添加更强、更粗糙的运动。
 - `vibration`: 添加细小振动。
 
+> [!NOTE]
 > 还有一个叫做 `Video Stabilizer Shake Generator Manual` 的节点。
 > 它不是使用 preset，而是可以通过内部参数细调运动。
 

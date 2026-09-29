@@ -33,6 +33,7 @@ It is only for **things that the model originally knew but you didn't know how t
 
 In such cases, techniques that re-train the model itself, such as LoRA or full fine-tuning, are required.
 
+> [!NOTE]
 > This one-word data created by Textual Inversion is conventionally called an *embedding*.
 
 ---

@@ -177,6 +177,7 @@ Set `replacement_mode` to `true`.
 
 ---
 
+> [!NOTE]
 > From here on, the examples use Animation mode, but all of them can also be used in Replacement mode.
 
 ## Animation Mode (Multiple People)
@@ -197,6 +198,7 @@ When there are multiple people, it becomes important to control which person sho
 - When SAM3.1 segments multiple targets, `Create SCAIL-2 Colored Mask` paints them in different colors in order.
 - Basically, matching colors are linked together, so use options such as `sort_by` to align the colors.
 
+> [!NOTE]
 > However, as in the output example below, the color correspondence and the motion may not always match. This is only a light condition, and the model may simply choose the closer composition.
 
 {% endmediaRow %}

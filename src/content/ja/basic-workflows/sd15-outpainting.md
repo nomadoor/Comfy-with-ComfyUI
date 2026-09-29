@@ -25,6 +25,7 @@ outpainting は **画像の「外側」を描き足す** 手法です。
 
 画像の中を埋めるか、外側に作った余白を埋めるか。それだけです。
 
+> [!TIP]
 > [inpainting](/ja/basic-workflows/sd15-inpainting/) をまだ読んでいなければ、先にご覧ください。
 
 ---

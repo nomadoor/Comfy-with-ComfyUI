@@ -85,6 +85,7 @@ You can generally think of these as outputs to use with `If/Else Switch`.
 
 In this workflow, only the output from the last iteration is replaced with `12345`.
 
+> [!TIP]
 > `iteration_index` tells you which pass you are on, so `If/Else Switch` can also change the behavior at any point—not just the first or last iteration.
 
 ### Repeating image generation 4 times
@@ -121,6 +122,7 @@ That is what `initial_iteration_value` is for. As the name says, it sets the val
 
 The starting value `5` is multiplied by 10 and passed to `next_iteration_value`, then multiplied by 10 again on the next iteration, and so on.
 
+> [!TIP]
 > `next_iteration_value` only hands the value forward. To get a result out of the loop, remember to connect `output_value` as well.
 
 ### Carrying several values at once
@@ -141,6 +143,7 @@ Start from `[0, 1]`, compute `a + b`, and pass `[b, a + b]` to the next iteratio
 [0, 1] → [1, 1] → [1, 2] → [2, 3] → [3, 5] → …
 ```
 
+> [!NOTE]
 > Here we are bundling two `INT` values, but mixed types are fine too — `IMAGE` and `BOOLEAN`, for instance.
 
 ### Running Preview inside a loop

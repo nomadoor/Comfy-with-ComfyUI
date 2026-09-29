@@ -30,6 +30,7 @@ Stable Diffusion 1.5 登场当初，推荐 VRAM 被视为 10GB 左右，RTX 3080
 
 使用为了轻量化的技术（量子化 / GGUF 等）的话，即使能削减 VRAM，根据情况推论速度甚至有时会下降。
 
+> [!NOTE]
 > 这一页将“轻量化”，作为主要削减模型的 VRAM 使用量的事来处理。
 
 ---
@@ -52,6 +53,7 @@ Stable Diffusion 1.5 登场当初，推荐 VRAM 被视为 10GB 左右，RTX 3080
   - CPU 卸载 / Block Swap
   - VAE 瓦片化（Tiled VAE / Temporal Tiling）
 
+> [!NOTE]
 > 虽然 SageAttention 或 Nunchaku 这样的东西也有名，但因为导入难度高，所以在这个网站不处理。比起辛苦还是选取安定吧。
 
 ---

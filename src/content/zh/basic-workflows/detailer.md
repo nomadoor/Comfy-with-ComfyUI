@@ -47,6 +47,7 @@ Detailer 因为只剪切想 inpaint 的周边领域所以没有浪费。
 
 - [lquesada/ComfyUI-Inpaint-CropAndStitch](https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch)
 
+> [!NOTE]
 > 一般来说，使用 Impact Pack 中包含的 Detailer 节点。  
 > 这边因为连物体检测在内都能自动化所以多功能，但因为独自参数多很难，所以另外处理。
 
