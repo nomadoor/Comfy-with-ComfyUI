@@ -114,9 +114,9 @@ LLM に手伝ってもらうのも有効です。参考リンクと作りたい�
 
 {% endmediaRow %}
 
-**出力例**
-
+{% outputs %}
 ![](/media/basic-workflows/ltx-2-3/legacy_gyazo_2cd2d6eb51760a4928ba476bf2c0878b.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -126,9 +126,9 @@ LLM に手伝ってもらうのも有効です。参考リンクと作りたい�
 
 [](/workflows/basic-workflows/ltx-2-3/ltx_2_3_image2video_distilled_3stage.json)
 
-**出力例**
-
+{% outputs %}
 ![入力](/media/basic-workflows/ltx-2-3/legacy_gyazo_bf4c40372ce923fb53f2867c33c27bc6.png){media=image} ![出力](/media/basic-workflows/ltx-2-3/legacy_gyazo_cb1a91ed174f29d4441ae1332590f3a0.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -138,9 +138,9 @@ LLM に手伝ってもらうのも有効です。参考リンクと作りたい�
 
 [](/workflows/basic-workflows/ltx-2-3/ltx_2_3_audio2video_distilled_3stage.json)
 
-**出力例**
-
+{% outputs %}
 ![](/media/basic-workflows/ltx-2-3/legacy_gyazo_4e0ce0ea62fc7138ffe7ea1892ec21b8.mp4){media=player}
+{% endoutputs %}
 
 ---
 
@@ -150,9 +150,9 @@ LLM に手伝ってもらうのも有効です。参考リンクと作りたい�
 
 [](/workflows/basic-workflows/ltx-2-3/ltx_2_3_audio_image2video_distilled_3stage.json)
 
-**出力例**
-
+{% outputs %}
 ![](/media/basic-workflows/ltx-2-3/legacy_gyazo_dc3fb2e0b92432ca2651ca121aea7205.png){media=image} ![](/media/basic-workflows/ltx-2-3/legacy_gyazo_69ebdac3cc6a3badd9452f0cbb345167.mp4){media=player}
+{% endoutputs %}
 
 ---
 
@@ -204,9 +204,9 @@ LTX-2 のガイド機構では、そのまま出力すると生成した動画�
 
 {% endmediaRow %}
 
-**出力例**
-
+{% outputs %}
 ![入力](/media/basic-workflows/ltx-2-3/legacy_gyazo_513a407f54159c8e3cae9a32fe888702.mp4){media=loop} ![出力](/media/basic-workflows/ltx-2-3/legacy_gyazo_fad61f020fb0ed54bd23c59782bff81d.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -245,9 +245,9 @@ LTX-2 のガイド機構では、そのまま出力すると生成した動画�
   - そこまで小さくなると、制御画像として必要な情報を保ちにくくなります
   - そのため、IC-LoRA では 2 stage で止める方が安定します
 
-**出力例**
-
+{% outputs %}
 ![入力](/media/basic-workflows/ltx-2-3/legacy_gyazo_9aea1871cc24b0c98931d55bebb1c19c.mp4){media=loop} ![出力](/media/basic-workflows/ltx-2-3/legacy_gyazo_25f44e7a08247ae96a2ebcc3cb901d56.mp4){media=loop}
+{% endoutputs %}
 
 
 ### IC-LoRA Outpaint
@@ -275,9 +275,9 @@ LTX-2 のガイド機構では、そのまま出力すると生成した動画�
 
 {% endmediaRow %}
 
-**出力例**
-
+{% outputs %}
 ![入力](/media/basic-workflows/ltx-2-3/legacy_gyazo_676f9b4dfb10ea6bc80b25b46d3b63ef.mp4){media=loop} ![出力](/media/basic-workflows/ltx-2-3/legacy_gyazo_2776655edfe4896da1697755084b5e57.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -357,6 +357,6 @@ ID-LoRAと参照音声をつなぎます。
 {% endmediaRow %}
 
 
-**出力例**
-
+{% outputs %}
 ![input](/media/basic-workflows/ltx-2-3/legacy_gyazo_7d7fa9dc9a9f4fa1a08e25aff1285fd7.jpg){media=image} ![ref_audio](/media/basic-workflows/ltx-2-3/legacy_gyazo_921d5546567ae28fc9616803f0dcccb9.mp4){media=player}  ![output](/media/basic-workflows/ltx-2-3/legacy_gyazo_f179f159e0f3cf6fb05cf259b2828425.mp4){media=player}
+{% endoutputs %}

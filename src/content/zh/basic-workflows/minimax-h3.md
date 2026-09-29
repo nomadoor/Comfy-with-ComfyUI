@@ -193,9 +193,9 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 
 {% endmediaRow %}
 
-**输出示例**
-
+{% outputs %}
 ![](/media/basic-workflows/minimax-h3/minimax_h3_t2va_output.mp4){media=player}
+{% endoutputs %}
 
 ---
 
@@ -209,9 +209,9 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 
 在 `MiniMax H3 Image to Video` 中输入提示词和第一张图像。
 
-**输出示例**
-
+{% outputs %}
 ![输入](/media/basic-workflows/minimax-h3/minimax_h3_i2va_input.png){media=image} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_i2va_output.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -225,9 +225,9 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 
 基本上与 I2VA 完全相同，只需在 `last_frame` 中也输入一张图像。
 
-**输出示例**
-
+{% outputs %}
 ![第一帧](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_first_frame.png){media=image} ![最后一帧](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_last_frame.png){media=image} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_output.mp4){media=loop}
+{% endoutputs %}
 
 ### Generative Interpolation
 
@@ -241,9 +241,9 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 
 使用 `Add Guide for MiniMax H3` 节点。
 
-**输出示例**
-
+{% outputs %}
 ![输入 1](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_1.png){media=image} ![输入 2](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_2.png){media=image} ![输入 3](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_3.png){media=image} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_output.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -259,9 +259,9 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 
 输入图像和音频，试着生成一段让图中人物配合音频动作的视频吧。
 
-**输出示例**
-
+{% outputs %}
 ![输入](/media/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va_input.png){media=image} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va_output.mp4){media=player}
+{% endoutputs %}
 
 ---
 
@@ -292,9 +292,9 @@ H3 可以放入多个“图像”“视频”和“音频”，作为生成视�
 
 {% endmediaRow %}
 
-**输出示例**
-
+{% outputs %}
 ![](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output.mp4){media=player}
+{% endoutputs %}
 
 
 ### 🤔 Ref2VA 的直接输出质量低于 FL2VA
@@ -333,9 +333,9 @@ H3 可以放入多个“图像”“视频”和“音频”，作为生成视�
 
 只需把视频作为参考输入，再用提示词对它下达“删除人物”“改变画风”等指令。
 
-**输出示例**
-
+{% outputs %}
 ![参考图像](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_ref.png){media=image} ![输入视频](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_input.mp4){media=loop} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_output.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -362,9 +362,9 @@ H3 也可以使用传统的（？）遮罩，只重新绘制指定区域来进�
 
 {% endmediaRow %}
 
-**输出示例**
-
+{% outputs %}
 ![输入](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input.mp4){media=loop} ![遮罩](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_mask.mp4){media=loop} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_output.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -417,9 +417,9 @@ H3 也可以使用传统的（？）遮罩，只重新绘制指定区域来进�
 {% endmediaRow %}
 
 
-**输出示例**
-
+{% outputs %}
 ![0.25 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va_output_0_25mp.mp4){media=loop} ![1.0 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va_output_1_0mp.mp4){media=loop}
+{% endoutputs %}
 
 ### image2video / I2VA
 
@@ -431,9 +431,9 @@ H3 也可以使用传统的（？）遮罩，只重新绘制指定区域来进�
 
 第 1 阶段需要设为 0.25 MP，第 2 阶段则要把宽度和高度分别放大 2 倍，设为 1.0 MP，因此工作流会稍微复杂一些……
 
-**输出示例**
-
+{% outputs %}
 ![0.25 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va_output_0_25mp.mp4){media=loop} ![1.0 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va_output_1_0mp.mp4){media=loop}
+{% endoutputs %}
 
 ## 参考资料
 

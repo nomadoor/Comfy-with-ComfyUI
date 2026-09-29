@@ -113,9 +113,9 @@ This is where you decide the parameters for the video and audio you want to gene
 
 {% endmediaRow %}
 
-**Output example**
-
+{% outputs %}
 ![](/media/basic-workflows/ltx-2-3/legacy_gyazo_2cd2d6eb51760a4928ba476bf2c0878b.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -125,9 +125,9 @@ This is where you decide the parameters for the video and audio you want to gene
 
 [](/workflows/basic-workflows/ltx-2-3/ltx_2_3_image2video_distilled_3stage.json)
 
-**Output example**
-
+{% outputs %}
 ![Input](/media/basic-workflows/ltx-2-3/legacy_gyazo_bf4c40372ce923fb53f2867c33c27bc6.png){media=image} ![Output](/media/basic-workflows/ltx-2-3/legacy_gyazo_cb1a91ed174f29d4441ae1332590f3a0.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -137,9 +137,9 @@ This is where you decide the parameters for the video and audio you want to gene
 
 [](/workflows/basic-workflows/ltx-2-3/ltx_2_3_audio2video_distilled_3stage.json)
 
-**Output example**
-
+{% outputs %}
 ![](/media/basic-workflows/ltx-2-3/legacy_gyazo_4e0ce0ea62fc7138ffe7ea1892ec21b8.mp4){media=player}
+{% endoutputs %}
 
 ---
 
@@ -149,9 +149,9 @@ This is where you decide the parameters for the video and audio you want to gene
 
 [](/workflows/basic-workflows/ltx-2-3/ltx_2_3_audio_image2video_distilled_3stage.json)
 
-**Output example**
-
+{% outputs %}
 ![](/media/basic-workflows/ltx-2-3/legacy_gyazo_dc3fb2e0b92432ca2651ca121aea7205.png){media=image} ![](/media/basic-workflows/ltx-2-3/legacy_gyazo_69ebdac3cc6a3badd9452f0cbb345167.mp4){media=player}
+{% endoutputs %}
 
 ---
 
@@ -203,9 +203,9 @@ For more detail on the behavior, see this page.
 
 {% endmediaRow %}
 
-**Output example**
-
+{% outputs %}
 ![Input](/media/basic-workflows/ltx-2-3/legacy_gyazo_513a407f54159c8e3cae9a32fe888702.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2-3/legacy_gyazo_fad61f020fb0ed54bd23c59782bff81d.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -244,9 +244,9 @@ There are several variations, but here we only introduce two easy-to-understand 
   - At that size, it becomes hard to preserve enough information for a proper control image
   - That is why IC-LoRA is more stable when you stop at 2 stages
 
-**Output example**
-
+{% outputs %}
 ![Input](/media/basic-workflows/ltx-2-3/legacy_gyazo_9aea1871cc24b0c98931d55bebb1c19c.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2-3/legacy_gyazo_25f44e7a08247ae96a2ebcc3cb901d56.mp4){media=loop}
+{% endoutputs %}
 
 ### IC-LoRA Outpaint
 
@@ -273,9 +273,9 @@ You do not need a special mask here, as long as the added area is black.
 
 {% endmediaRow %}
 
-**Output example**
-
+{% outputs %}
 ![Input](/media/basic-workflows/ltx-2-3/legacy_gyazo_676f9b4dfb10ea6bc80b25b46d3b63ef.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2-3/legacy_gyazo_2776655edfe4896da1697755084b5e57.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -352,6 +352,6 @@ The prompt format is fixed, so write it in this structure.
 
 {% endmediaRow %}
 
-**Output example**
-
+{% outputs %}
 ![input](/media/basic-workflows/ltx-2-3/legacy_gyazo_7d7fa9dc9a9f4fa1a08e25aff1285fd7.jpg){media=image} ![ref_audio](/media/basic-workflows/ltx-2-3/legacy_gyazo_921d5546567ae28fc9616803f0dcccb9.mp4){media=player}  ![output](/media/basic-workflows/ltx-2-3/legacy_gyazo_f179f159e0f3cf6fb05cf259b2828425.mp4){media=player}
+{% endoutputs %}

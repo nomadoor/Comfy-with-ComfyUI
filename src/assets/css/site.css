@@ -1834,6 +1834,59 @@ h1 {
   gap: var(--space-xs);
 }
 
+/* Output examples ({% outputs %}): a tray in the same shape as the media step cards (a filled
+   surface whose top-left corner is a grey square with an image icon, then the "Outputs" label), so
+   results read as their own block under the workflow. No borders. The label is not a heading and
+   stays out of the TOC. */
+.outputs {
+  --outputs-header-size: 2.25rem;
+  margin: var(--space-xl) 0;
+  padding: 0 var(--space-md) var(--space-md);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-text) 6%, var(--color-reader));
+}
+
+.outputs__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  block-size: var(--outputs-header-size);
+  margin: 0 calc(-1 * var(--space-md)) var(--space-sm);
+}
+
+.outputs__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: var(--outputs-header-size);
+  block-size: var(--outputs-header-size);
+  border-radius: var(--radius-md) 0 var(--radius-md) 0;
+  background: var(--color-border-strong);
+  color: var(--color-heading);
+}
+
+.outputs__icon .icon {
+  inline-size: 1.1rem;
+  block-size: 1.1rem;
+}
+
+.outputs__label {
+  color: var(--color-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.outputs > .article-media-row,
+.outputs > p {
+  margin-top: 0;
+}
+
+.outputs > :last-child {
+  margin-bottom: 0;
+}
+
 .article-media-row {
   display: flex;
   flex-wrap: nowrap;

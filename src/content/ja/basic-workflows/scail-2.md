@@ -137,9 +137,9 @@ SCAIL-2 でも、[Wan2.1 の高速生成](/ja/basic-workflows/wan-2-1/#self-forc
 
 {% endmediaRow %}
 
-**出力例**
-
+{% outputs %}
 ![参照画像](/media/basic-workflows/scail-2/legacy_gyazo_ce9827f452cdc3cf7d47de8b12996f28.png){media=image} ![モーション用動画](/media/basic-workflows/scail-2/legacy_gyazo_f14aef04ac197a4b92680e05c4fbd178.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_d87b2644f8f71218ebe678736479959e.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -171,9 +171,9 @@ Replacement は動画のサイズが基準になります。
 
 {% endmediaRow %}
 
-**出力例**
-
+{% outputs %}
 ![モーション用動画](/media/basic-workflows/scail-2/legacy_gyazo_395fd549274fb126d836ac0a9414d07d.mp4){media=loop} ![参照画像](/media/basic-workflows/scail-2/legacy_gyazo_ce9827f452cdc3cf7d47de8b12996f28.png){media=image} ![output](/media/basic-workflows/scail-2/legacy_gyazo_1a7caa57ded15aee5700bed072a4a0a7.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -201,9 +201,9 @@ SCAIL-2 は複数人の動画・画像にも対応しています。
 
 {% endmediaRow %}
 
-**出力例**
-
+{% outputs %}
 ![参照画像](/media/basic-workflows/scail-2/legacy_gyazo_567acaf722ca9e839ec7cb834c1ed344.png){media=image} ![モーション用動画](/media/basic-workflows/scail-2/legacy_gyazo_53461ca17746349fbd11e69798460ea6.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_913ff446dd39fa33f56ba9ed07ce6e16.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -234,9 +234,9 @@ SCAIL-2 は複数人の動画・画像にも対応しています。
 
 別角度からの人物を補うには向いていますが、背景を合成したいなら、この機能を使うより、画像編集で 1 枚作り込んだほうがよいでしょう。
 
-**出力例**
-
+{% outputs %}
 ![参照画像1](/media/basic-workflows/scail-2/legacy_gyazo_d2935f1c3b0ff3016616c54d88d6be56.png){media=image} ![参照画像2](/media/basic-workflows/scail-2/legacy_gyazo_7819645aea776b0aa5e24e8d9f642487.png){media=image} ![参照画像3](/media/basic-workflows/scail-2/legacy_gyazo_4617d933cec4a3431d36af11c65180e3.png){media=image} ![モーション用動画](/media/basic-workflows/scail-2/legacy_gyazo_f14aef04ac197a4b92680e05c4fbd178.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_50154740248550b3ffa1dfee024da941.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -258,6 +258,6 @@ SCAIL-2 は基本的に 81 フレームまでの生成ですが、`WAN Context W
 
 {% endmediaRow %}
 
-**出力例**
-
+{% outputs %}
 ![参照画像](/media/basic-workflows/scail-2/legacy_gyazo_ce9827f452cdc3cf7d47de8b12996f28.png){media=image} ![モーション用動画](/media/basic-workflows/scail-2/legacy_gyazo_5491ba090036cbac5d76abd293d842ef.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_ae5729a3c9c70711f767364534ccedf9.mp4){media=loop}
+{% endoutputs %}

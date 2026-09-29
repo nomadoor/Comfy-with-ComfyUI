@@ -72,9 +72,9 @@ The image generation component is a compact 7B model, yet it covers generation, 
 
 For better or worse, the Seed makes a very large difference. Changing the resolution also changes the image substantially, so try a variety of resolutions and Seeds.
 
-**Output example**
-
+{% outputs %}
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_output.png){media=image}
+{% endoutputs %}
 
 ---
 
@@ -101,9 +101,9 @@ Enter the reference images and prompt here.
 
 {% endmediaRow %}
 
-**Output example**
-
+{% outputs %}
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image_output.png){media=image}
+{% endoutputs %}
 
 ---
 
@@ -255,9 +255,9 @@ The beginning and ending are fixed phrases, so you can copy them as-is and repla
 
 Save the output as PNG to preserve transparency. JPEG would discard the Alpha Channel.
 
-**Output example**
-
+{% outputs %}
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_rgba_output.png){media=image}
+{% endoutputs %}
 
 ### Subject extraction
 
@@ -373,6 +373,6 @@ With `is_last` and `If/Else Switch`, the last iteration bypasses extraction and 
 > I do not know whether this is a bug or intended behavior, but editing an image again with the same seed makes the output badly artifacted.  
 > It works fine as long as the seed changes, so as a quick workaround I use `iteration_index`, which changes on every loop.
 
-**Output example**
-
+{% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_input.png){media=image} ![output 1](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output1.png){media=image} ![output 2](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output2.png){media=image} ![output 3](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output3.png){media=image} ![output 4](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output4.png){media=image} ![output 5](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition_output5.png){media=image}
+{% endoutputs %}

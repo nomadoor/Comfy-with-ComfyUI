@@ -101,9 +101,9 @@ LTX-2 と同じく、まず目標の半分の解像度で作り、そのあと 2
 
 {% endmediaRow %}
 
-**出力例**
-
+{% outputs %}
 ![](/media/basic-workflows/ltx-2-5/legacy_gyazo_e68699b3ebb44d9b20b5d85c73cf9644.mp4){media=loop}
+{% endoutputs %}
 
 ### Multi-shot
 
@@ -117,9 +117,9 @@ Seedance 2 などから一般的になってきましたが、1 回の生成で�
 
 気楽に書ける反面、Multi-shot として認識してくれないこともあります。うまくいかないときは、気長に何度か試してみてください。
 
-**出力例**
-
+{% outputs %}
 ![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7fe2eadbd6abb69f2015df4f8531fe26.mp4){media=loop}
+{% endoutputs %}
 
 ### Duration Predictor
 
@@ -162,9 +162,9 @@ LTX 2.5 には、プロンプトの内容から、それを表現するために
 
 > 以前は、いろいろな理由から `LTXV Preprocess` で入力画像をわざと劣化させていましたが、LTX 2.5 では、少なくとも私が使った限りでは必要なさそうなので外しています。
 
-**出力例**
-
+{% outputs %}
 ![input](/media/basic-workflows/ltx-2-5/legacy_gyazo_856453de1d4eaea2b8e02a8e6993db08.png){media=image} ![output](/media/basic-workflows/ltx-2-5/legacy_gyazo_d8bdced1eba00d48d1f5ff65dfb4e336.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -193,9 +193,9 @@ LTX 2.5 には、プロンプトの内容から、それを表現するために
 
 {% endmediaRow %}
 
-**出力例**
-
+{% outputs %}
 ![input1](/media/basic-workflows/ltx-2-5/legacy_gyazo_de4eaa85c26607d8b0f98f774880e2b8.png){media=image} ![input2](https://gyazo.com/0ef0afcbe6a2d35cf018bb0f77e0a0ff){gyazo=image} ![input3](/media/basic-workflows/ltx-2-5/legacy_gyazo_c2058ec73687479e7abe3fa7f21f9d64.png){media=image} ![output](/media/basic-workflows/ltx-2-5/legacy_gyazo_e0e2fcb86f4a8513708807bacd79af8c.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -228,9 +228,9 @@ LTX 2.3 用も含めると非常に多くの種類がありますが、ここで
 
 IC-LoRA の詳しい解説は [LTX 2/IC-LoRA (Pose)](/ja/basic-workflows/ltx-2/#ic-lora-pose) で行っているので、興味があれば見てみてください。
 
-**出力例**
-
+{% outputs %}
 ![input/pose](/media/basic-workflows/ltx-2-5/legacy_gyazo_824ba34d0fa1ef036db386c4f7f7b5f6.mp4){media=loop} ![output](/media/basic-workflows/ltx-2-5/legacy_gyazo_4f55983a4205360420e7cc605402301b.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -250,8 +250,8 @@ LTX 2.5 は、半分の解像度で生成したものを 2 倍にして、もう
 
 ここでは `Basic Scheduler` に置き換え、denoise を 0.3 にしています。必要に応じて調整してください。
 
-**出力例**
-
+{% outputs %}
 ![input](/media/basic-workflows/ltx-2-5/legacy_gyazo_2090f2ae9f78af154922c00cd43e10f7.mp4){media=loop} ![output](/media/basic-workflows/ltx-2-5/legacy_gyazo_bb03d5683d784b144c290400638ba139.mp4){media=loop}
+{% endoutputs %}
 
 競合モデルも多く出てきていますが、自然な映像を作る力は、その中でも際立っています。適材適所で使いこなせるといいですね。

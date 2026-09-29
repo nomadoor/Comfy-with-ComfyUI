@@ -193,9 +193,9 @@ H3 はすでに CFG 蒸留されたモデルです。そのため、CFG は `1.0
 
 {% endmediaRow %}
 
-**出力例**
-
+{% outputs %}
 ![](/media/basic-workflows/minimax-h3/minimax_h3_t2va_output.mp4){media=player}
+{% endoutputs %}
 
 ---
 
@@ -209,9 +209,9 @@ H3 はすでに CFG 蒸留されたモデルです。そのため、CFG は `1.0
 
 `MiniMax H3 Image to Video` にプロンプトと最初の画像を入力します。
 
-**出力例**
-
+{% outputs %}
 ![input](/media/basic-workflows/minimax-h3/minimax_h3_i2va_input.png){media=image} ![output](/media/basic-workflows/minimax-h3/minimax_h3_i2va_output.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -225,9 +225,9 @@ H3 はすでに CFG 蒸留されたモデルです。そのため、CFG は `1.0
 
 I2VA と基本的にまったく同じです。`last_frame` にも画像を入力します。
 
-**出力例**
-
+{% outputs %}
 ![first](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_first_frame.png){media=image} ![last](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_last_frame.png){media=image} ![output](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_output.mp4){media=loop}
+{% endoutputs %}
 
 ### Generative Interpolation
 
@@ -241,9 +241,9 @@ I2VA と基本的にまったく同じです。`last_frame` にも画像を入�
 
 `Add Guide for MiniMax H3` ノードを使用します。
 
-**出力例**
-
+{% outputs %}
 ![input1](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_1.png){media=image} ![input2](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_2.png){media=image} ![input3](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_3.png){media=image} ![output](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_output.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -259,9 +259,9 @@ I2VA と基本的にまったく同じです。`last_frame` にも画像を入�
 
 画像と音声を入力し、画像の人物がその音声に合わせて動く動画を生成してみましょう。
 
-**出力例**
-
+{% outputs %}
 ![input](/media/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va_input.png){media=image} ![output](/media/basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va_output.mp4){media=player}
+{% endoutputs %}
 
 ---
 
@@ -292,9 +292,9 @@ H3 は動画を生成するための参考資料として、好きな「画像�
 
 {% endmediaRow %}
 
-**出力例**
-
+{% outputs %}
 ![](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output.mp4){media=player}
+{% endoutputs %}
 
 
 ### 🤔 Ref2VA は FL2VA と比べると単純な出力の質が落ちる
@@ -333,9 +333,9 @@ workflow は基本的に Reference Generation と同じです。
 
 動画を参照として入力し、その動画に対して「人を消して」「絵柄を変えて」などと指示するプロンプトを書くだけです。
 
-**出力例**
-
+{% outputs %}
 ![Ref image](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_ref.png){media=image} ![input video](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_input.mp4){media=loop} ![output](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_output.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -362,9 +362,9 @@ SAM 3.1 で犬をマスクし、少し余裕をもたせるためにマスクを
 
 {% endmediaRow %}
 
-**出力例**
-
+{% outputs %}
 ![input](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input.mp4){media=loop} ![mask](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_mask.mp4){media=loop} ![output](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_output.mp4){media=loop}
+{% endoutputs %}
 
 ---
 
@@ -417,9 +417,9 @@ latent を単純に拡大すると大きく劣化するため、専用のモデ�
 {% endmediaRow %}
 
 
-**出力例**
-
+{% outputs %}
 ![0.25 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va_output_0_25mp.mp4){media=loop} ![1.0 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_t2va_output_1_0mp.mp4){media=loop}
+{% endoutputs %}
 
 ### image2video / I2VA
 
@@ -431,9 +431,9 @@ I2VA や Ref2VA では、Conditioning 側にも解像度を入力します。
 
 1 段目は 0.25 MP、2 段目は幅と高さをそれぞれ 2 倍にした 1.0 MP に設定する必要があるので、workflow が少し複雑になってしまいますね……。
 
-**出力例**
-
+{% outputs %}
 ![0.25 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va_output_0_25mp.mp4){media=loop} ![1.0 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va_output_1_0mp.mp4){media=loop}
+{% endoutputs %}
 
 ## 参考
 

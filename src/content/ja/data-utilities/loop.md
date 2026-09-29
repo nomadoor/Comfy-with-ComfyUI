@@ -219,9 +219,9 @@ List の中身は `[画像, 履歴]` です。
 
 {% endmediaRow %}
 
-**出力例**
-
+{% outputs %}
 ![input](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_input.png){media=image} ![output1](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_1.png){media=image} ![output2](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_2.png){media=image} ![output3](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_3.png){media=image} ![output4](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_4.png){media=image}
+{% endoutputs %}
 
 ### MiniMax H3 で Prompt List を使った連続 I2V
 
@@ -280,9 +280,9 @@ List の中身は `[画像, 履歴]` です。
 
 {% endmediaRow %}
 
-**出力例**
-
+{% outputs %}
 ![output](/media/data-utilities/loop/loop_minimax_h3_i2va_output.mp4){media=loop}
+{% endoutputs %}
 
 正直にいうと、実践で使うにはこの workflow は力不足です。
 
