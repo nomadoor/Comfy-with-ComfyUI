@@ -79,7 +79,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - The central surface may grow when side rails collapse, but article content inside `.app-shell__content-scroll` stays centered at the content max width.
 - Article body content remains transparent inside that surface. Content width follows `--content-max` (`50rem`).
 - Article typography follows the calmer blog rhythm: body letter spacing stays `0`, body line-height is about `1.7`, `h2` is around `1.4rem`, and `h3` is around `1.1rem` without accent coloring.
-- Output examples (`{% outputs %}`) sit in a tray shaped like the media step cards: the card fill, no border, a top-left corner square in `--color-border-strong` with an image icon, and an uppercase "Outputs" label in the card kicker style. The label is not a heading and stays out of the TOC.
+- Output examples (`{% outputs %}`) sit in a tray with the media step card fill and no border. Its header is only a small muted image icon and an uppercase "Outputs" label in the card kicker type (no corner square), so it stays quieter than the workflow above. The label is not a heading and stays out of the TOC.
 - Blockquotes use a quiet but visible purple-tinted background surface with small radius and a small Tabler-style info icon at the start. Do not use borders, a left accent bar, or italic styling by default.
 - Inline images are centered, `max-width: 720px`, `max-height: 320px`, and `object-fit: contain` so portrait assets never force extra scrolling.
 - Inline article media (R2 or Gyazo) stays completely flat: **no borders / box-shadows**. When contrast is needed, rely on `--color-panel-alt` as the single backing surface.
