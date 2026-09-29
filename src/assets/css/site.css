@@ -2266,6 +2266,18 @@ html:not(.js) .media-steps__footer {
   color: var(--color-code-text, var(--color-text));
 }
 
+/* Dark mode: code and emoji take the same dimming as article images (brightness 0.85), so bright
+   code text, syntax colours and colour emoji do not outshine the body text. Emoji ignore the text
+   colour, so the Markdown renderer wraps them in .emoji. */
+:root:not([data-theme="light"]) .article-body pre code,
+:root:not([data-theme="light"]) .article-body .emoji {
+  filter: brightness(0.85);
+}
+
+:root:not([data-theme="light"]) .article-body :not(pre) > code {
+  color: color-mix(in srgb, var(--color-code-text) 85%, var(--color-reader));
+}
+
 .article-body code {
   font-family: ui-monospace, "JetBrains Mono", SFMono-Regular, Menlo, Consolas, monospace;
   background: var(--color-chip-border);
@@ -2279,18 +2291,6 @@ html:not(.js) .media-steps__footer {
   background: transparent;
   padding: 0;
   border-radius: 0;
-}
-
-/* Dark mode: code and emoji take the same dimming as article images (brightness 0.85), so bright
-   code text, syntax colours and colour emoji do not outshine the body text. Emoji ignore the text
-   colour, so the Markdown renderer wraps them in .emoji. */
-:root:not([data-theme="light"]) .article-body pre code,
-:root:not([data-theme="light"]) .article-body .emoji {
-  filter: brightness(0.85);
-}
-
-:root:not([data-theme="light"]) .article-body :not(pre) > code {
-  color: color-mix(in srgb, var(--color-code-text) 85%, var(--color-reader));
 }
 
 .article-body blockquote {

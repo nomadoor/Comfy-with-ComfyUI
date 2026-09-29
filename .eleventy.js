@@ -1359,19 +1359,6 @@ export default function (eleventyConfig) {
     const section = (navData[lang] || navData[DEFAULT_LANG])?.sections?.find((item) => item.key === sectionKey);
     return section ? String(section.label).replace(/^[^\p{L}\p{N}]+/u, "").trim() : "";
   };
-  eleventyConfig.addTransform("news-section-labels", function (content) {
-    if (!(this.page.outputPath || "").endsWith(".html") || !content.includes("news-row__tag")) return content;
-    const lang = (this.page.url || "").split("/")[1] || DEFAULT_LANG;
-    return content.replace(/<span class="news-row__tag">([^<]*)<\/span>/g, (match, key) => {
-      const label = newsSectionLabel(lang, key.trim());
-      // Keep an empty cell when there is no section so the title stays in its column.
-      const sectionKey = key.trim() === "faq" ? "notes" : key.trim();
-      return label
-        ? `<span class="news-row__section" data-section="${escapeHTML(sectionKey)}">${escapeHTML(label)}</span>`
-        : `<span class="news-row__section" aria-hidden="true"></span>`;
-    });
-  });
-
   // Adjacent media steps (see the mediaRow shortcode) become step cards.
   eleventyConfig.addTransform("media-steps", function (content) {
     if (!(this.page.outputPath || "").endsWith(".html")) return content;
@@ -1386,6 +1373,19 @@ export default function (eleventyConfig) {
   const renderText = markdownLib.renderer.rules.text;
   markdownLib.renderer.rules.text = (tokens, idx, options, env, self) =>
     renderText(tokens, idx, options, env, self).replace(EMOJI, (emoji) => `<span class="emoji">${emoji}</span>`);
+
+  eleventyConfig.addTransform("news-section-labels", function (content) {
+    if (!(this.page.outputPath || "").endsWith(".html") || !content.includes("news-row__tag")) return content;
+    const lang = (this.page.url || "").split("/")[1] || DEFAULT_LANG;
+    return content.replace(/<span class="news-row__tag">([^<]*)<\/span>/g, (match, key) => {
+      const label = newsSectionLabel(lang, key.trim());
+      // Keep an empty cell when there is no section so the title stays in its column.
+      const sectionKey = key.trim() === "faq" ? "notes" : key.trim();
+      return label
+        ? `<span class="news-row__section" data-section="${escapeHTML(sectionKey)}">${escapeHTML(label)}</span>`
+        : `<span class="news-row__section" aria-hidden="true"></span>`;
+    });
+  });
 
   // Plain links to managed media (`[clip.mp4](/media/...)`) point at the published R2 file, like embeds do.
   markdownLib.core.ruler.after("inline", "resolve-media-links", (state) => {
