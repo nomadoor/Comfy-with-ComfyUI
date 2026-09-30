@@ -9403,6 +9403,126 @@
     "bytes": 102776,
     "source": "9fae01fa7edb7ba1"
   },
+  "notes/typed-decision/typed_decision_choice_input.png": {
+    "key": "images/bef8706196e18b1a.webp",
+    "width": 1184,
+    "height": 1760,
+    "type": "image/webp",
+    "bytes": 234908,
+    "source": "57b4aaa325fa223c"
+  },
+  "notes/typed-decision/typed_decision_choice_resolution_from_prompt_krea2_output.png": {
+    "key": "images/482a8b79ece60110.webp",
+    "width": 1024,
+    "height": 1024,
+    "type": "image/webp",
+    "bytes": 55444,
+    "source": "4c397b0ebbeb8161"
+  },
+  "notes/typed-decision/typed_decision_choice_resolution_from_prompt_krea2.png": {
+    "key": "images/1ac72202cab54270.webp",
+    "width": 3146,
+    "height": 1588,
+    "type": "image/webp",
+    "bytes": 154670,
+    "source": "77c0cc9b290d2fd9"
+  },
+  "notes/typed-decision/typed_decision_choice.png": {
+    "key": "images/52dbf5d62313ed97.webp",
+    "width": 1232,
+    "height": 842,
+    "type": "image/webp",
+    "bytes": 45706,
+    "source": "085267c8d08c3a78"
+  },
+  "notes/typed-decision/typed_decision_noul_dataset_sort_input.png": {
+    "key": "images/2ce2fa61e7f986f6.webp",
+    "width": 807,
+    "height": 577,
+    "type": "image/webp",
+    "bytes": 62868,
+    "source": "f47a8bdffc354482"
+  },
+  "notes/typed-decision/typed_decision_noul_dataset_sort_output_accepted.png": {
+    "key": "images/23f812c6f4a16e48.webp",
+    "width": 807,
+    "height": 568,
+    "type": "image/webp",
+    "bytes": 25604,
+    "source": "1350ae59bd2a7689"
+  },
+  "notes/typed-decision/typed_decision_noul_dataset_sort_output_rejected.png": {
+    "key": "images/3731755781eee434.webp",
+    "width": 815,
+    "height": 538,
+    "type": "image/webp",
+    "bytes": 42584,
+    "source": "11025616ce54cff1"
+  },
+  "notes/typed-decision/typed_decision_noul_dataset_sort.png": {
+    "key": "images/4b907f8d7e2ffd4a.webp",
+    "width": 1908,
+    "height": 1056,
+    "type": "image/webp",
+    "bytes": 66776,
+    "source": "7113d635b1b8c760"
+  },
+  "notes/typed-decision/typed_decision_noul_input.png": {
+    "key": "images/858392af0d81eabc.webp",
+    "width": 1024,
+    "height": 1536,
+    "type": "image/webp",
+    "bytes": 331382,
+    "source": "cf2a400a9a8bf62c"
+  },
+  "notes/typed-decision/typed_decision_noul_two_images_input1.png": {
+    "key": "images/faa8b1f658b94aba.webp",
+    "width": 848,
+    "height": 1136,
+    "type": "image/webp",
+    "bytes": 56238,
+    "source": "ff990a582debfd05"
+  },
+  "notes/typed-decision/typed_decision_noul_two_images_input2.png": {
+    "key": "images/a3b88cbaeb5b4f7f.webp",
+    "width": 1086,
+    "height": 1448,
+    "type": "image/webp",
+    "bytes": 110428,
+    "source": "63869663c318b51f"
+  },
+  "notes/typed-decision/typed_decision_noul_two_images.png": {
+    "key": "images/5664355d3d6e71b6.webp",
+    "width": 1559,
+    "height": 942,
+    "type": "image/webp",
+    "bytes": 61606,
+    "source": "d26952f1ba41f25e"
+  },
+  "notes/typed-decision/typed_decision_noul.png": {
+    "key": "images/8c8bb3d145457f57.webp",
+    "width": 1236,
+    "height": 842,
+    "type": "image/webp",
+    "bytes": 71372,
+    "source": "58ee2373981512a5"
+  },
+  "notes/typed-decision/typed_decision_score_input.png": {
+    "key": "images/a9bdbb035a7e9519.webp",
+    "width": 1024,
+    "height": 1024,
+    "type": "image/webp",
+    "bytes": 239580,
+    "source": "c6d23aae4941b00b"
+  },
+  "notes/typed-decision/typed_decision_score.png": {
+    "key": "images/9c2decb206fdcbf0.webp",
+    "width": 1233,
+    "height": 788,
+    "type": "image/webp",
+    "bytes": 44922,
+    "source": "7117f36adac643cd"
+  },
   "notes/why-multiple-of-8/legacy_gyazo_74438e54d131fb86c2f02e889a9fad7b.mp4": {
     "key": "videos/acfd07c857798a37.mp4",
     "width": 744,

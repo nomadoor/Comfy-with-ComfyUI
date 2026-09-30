@@ -1,0 +1,356 @@
+{
+  "id": "1835cdc1-af81-46c2-a366-9093dcde0ed0",
+  "revision": 0,
+  "last_node_id": 29,
+  "last_link_id": 55,
+  "nodes": [
+    {
+      "id": 12,
+      "type": "LoadImage",
+      "pos": [
+        199.5016271458309,
+        367.39616053155135
+      ],
+      "size": [
+        292.3856049845041,
+        470.62809917355366
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            43
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "typed_decision_noul_two_images_input1.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "typed_decision_noul_two_images_input1.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 13,
+      "type": "PreviewAny",
+      "pos": [
+        1313.7663907577785,
+        219.39986990339145
+      ],
+      "size": [
+        243.88429752066122,
+        141.00826446280985
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 45
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 19,
+      "type": "LoadTypedDecisionModel",
+      "pos": [
+        526.3377633387137,
+        198.51433449140177
+      ],
+      "size": [
+        297.3442826704545,
+        82
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "typed_decision_model",
+          "type": "TYPED_DECISION_MODEL",
+          "links": [
+            42
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadTypedDecisionModel"
+      },
+      "widgets_values": [
+        "qwen3.5_4b_int8_convrot.safetensors",
+        "imajev-4b"
+      ],
+      "widgets_values_named": {
+        "backbone": "qwen3.5_4b_int8_convrot.safetensors",
+        "adapter": "imajev-4b"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 25,
+      "type": "TypedDecision",
+      "pos": [
+        870.7893462565752,
+        198.51433449140177
+      ],
+      "size": [
+        401.08040310212255,
+        446
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "TYPED_DECISION_MODEL",
+          "link": 42
+        },
+        {
+          "name": "images.image_0",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 43
+        },
+        {
+          "name": "images.image_1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 53
+        },
+        {
+          "name": "images.image_2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "FLOAT",
+          "links": []
+        },
+        {
+          "name": "label",
+          "type": "STRING",
+          "links": [
+            45
+          ]
+        },
+        {
+          "name": "index",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "pass",
+          "type": "BOOLEAN",
+          "links": [
+            55
+          ]
+        },
+        {
+          "name": "abstained",
+          "type": "BOOLEAN",
+          "links": null
+        },
+        {
+          "name": "result",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TypedDecision"
+      },
+      "widgets_values": [
+        "noul",
+        "The first and second images show the same person.",
+        "",
+        "",
+        "",
+        0.5,
+        false,
+        true
+      ],
+      "widgets_values_named": {
+        "mode": "noul",
+        "mode.instructions": "The first and second images show the same person.",
+        "mode.criteria_true": "",
+        "mode.criteria_false": "",
+        "state": "",
+        "threshold": 0.5,
+        "debias": false,
+        "calibration": true
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 28,
+      "type": "LoadImage",
+      "pos": [
+        531.2964410246641,
+        438.95868542283193
+      ],
+      "size": [
+        292.3856049845041,
+        470.62809917355366
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            53
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "typed_decision_noul_two_images_input2.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "typed_decision_noul_two_images_input2.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 29,
+      "type": "PreviewAny",
+      "pos": [
+        1313.7663907577785,
+        418.5737962417645
+      ],
+      "size": [
+        243.88429752066122,
+        141.00826446280985
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 55
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    }
+  ],
+  "links": [
+    [
+      45,
+      25,
+      1,
+      13,
+      0,
+      "STRING"
+    ],
+    [
+      55,
+      25,
+      3,
+      29,
+      0,
+      "BOOLEAN"
+    ],
+    [
+      42,
+      19,
+      0,
+      25,
+      0,
+      "TYPED_DECISION_MODEL"
+    ],
+    [
+      43,
+      12,
+      0,
+      25,
+      1,
+      "IMAGE"
+    ],
+    [
+      53,
+      28,
+      0,
+      25,
+      2,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9090909090909092,
+      "offset": [
+        -48.1352471114169,
+        90.70160354842213
+      ]
+    },
+    "frontendVersion": "1.53.6",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
