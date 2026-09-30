@@ -26,6 +26,10 @@ Accepted（PoC。記事側のボタン・案内表示は別途デザイン相談
   - ファイルサイズと gated 判定は外部への問い合わせが必要なので、ビルドのたびには行わない。`npm run runpod:refresh` で調べた結果を lock ファイルとしてコミットし、ビルドでは lock と workflow の整合だけを検査する（ビルドを外部ネットワークに依存させないため）。
 - **ComfyUI の既定は `latest`。** image は毎日 ComfyUI master の最新でビルドし、起動時は差分更新だけにする。環境変数 `COMFY_REF=verified` で動作確認済みの commit に戻せる。
 - **Pod 内の起動処理は Python。** ステータスページ（8188 番、枠線なしの最小限の 1 ページ）でダウンロードの進行と失敗理由を見せ、完了後に ComfyUI を起動する。起動結果は `report.json` に残す。
+- モデルは aria2 で 1 ファイルを 16 分割して取り、複数ファイルを同時に取る。2026-10-01 の実測（1.92 GB）で aria2 61 MB/s、hf_xet 53 MB/s。hf_xet は `HF_DOWNLOADER=xet` で選べる。
+- ComfyUI の初回表示では、テンプレート選択ダイアログ（`Comfy.TutorialCompleted`）を出さず、プロファイルの workflow を記事の順にすべてタブで開く。小さな ComfyUI 拡張（`runpod/image/extension/`）を起動処理が入れる。
+- 切り忘れ対策として、操作も生成もない状態が 30 分続くと Pod を Stop する（Terminate ではない。GPU の課金は止まり、Volume Disk は残る）。止まる 5 分前から画面上部に予告を出す。準備に失敗したまま放置された場合も同じ時間で止める。RunPod が Pod に渡す `RUNPOD_POD_ID` と Pod 用 API キー（`RUNPOD_API_KEY`）で REST API を呼ぶ（本番で要確認）。
+- 別の workflow のモデルや custom node を読者が UI から足せるよう、ComfyUI 内蔵の Manager を有効にする。Pod は外部から待ち受けるため、Manager の `network_mode` を `personal_cloud` にする（Pod の URL を知る人だけが使える前提）。
 - image は GitHub Actions でビルドして GHCR に push する。RunPod のテンプレートはオーナーのアカウントで作る。
 
 ## Consequences

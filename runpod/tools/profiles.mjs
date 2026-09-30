@@ -123,7 +123,17 @@ export const buildProfile = (id, { siteURL, coreNodes = readJSON(CORE_NODES_PATH
     errors.push(`${id}.yaml: comfyui.default is verified but verified_commit is empty`);
   }
 
-  const files = fg.sync(source.workflows ?? [], { cwd: process.cwd(), absolute: true }).sort();
+  // Workflows follow the order the Japanese article introduces them (the Pod opens them as tabs in
+  // this order); any the article does not link come last, by name.
+  const articleFile = path.resolve("src", "content", "ja", `${source.article}.md`);
+  const articleText = fs.existsSync(articleFile) ? fs.readFileSync(articleFile, "utf8") : "";
+  const articleOrder = (file) => {
+    const index = articleText.indexOf(`/workflows/${path.relative(WORKFLOW_ROOT, file).split(path.sep).join("/")}`);
+    return index === -1 ? Infinity : index;
+  };
+  const files = fg
+    .sync(source.workflows ?? [], { cwd: process.cwd(), absolute: true })
+    .sort((a, b) => articleOrder(a) - articleOrder(b) || a.localeCompare(b));
   if (files.length === 0) errors.push(`${id}.yaml: workflows match no files`);
 
   const models = new Map();

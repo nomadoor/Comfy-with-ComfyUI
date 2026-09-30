@@ -38,9 +38,14 @@ Pod の環境変数:
 | `COMFY_REF` | プロファイルの `comfyui.default` | `latest` / `verified` / commit sha |
 | `HF_TOKEN` | なし | テンプレートでは `{{ RUNPOD_SECRET_HF_TOKEN }}` |
 | `CIVITAI_TOKEN` | なし | 必要なときだけ |
-| `DL_CONCURRENCY` | `8` | 同時にダウンロードするファイル数 |
+| `DL_CONCURRENCY` | `8` | 同時にダウンロードするファイル数（各ファイルは aria2 が 16 分割で取る） |
+| `HF_DOWNLOADER` | `aria2` | `xet` にすると Hugging Face だけ hf_xet で取る |
+| `IDLE_STOP_MINUTES` | `30` | 操作も生成もない状態がこの分数続くと Pod を Stop する（`0` で無効）。準備に失敗したまま放置された場合も同じ時間で止める |
+| `ENABLE_MANAGER` | `1` | 内蔵の ComfyUI-Manager を有効にする（`0` で無効） |
 | `DATA_DIR` | `/workspace`、なければ `/data` | モデルと起動レポートの置き場所 |
 | `COMFY_ARGS` | なし | ComfyUI に足す引数 |
+
+ComfyUI の画面では、テンプレート選択ダイアログを出さず、プロファイルの workflow を記事の順にすべてタブで開く（ブラウザごとに初回だけ）。放置で止まる数分前には画面上部に予告が出る。どちらも `image/extension/`（ComfyUI の拡張として入れる）が行う。
 
 起動の結果は `${DATA_DIR}/runpod-boot/report.json` に残る（プロファイル、site の commit、ComfyUI の sha、custom node のバージョン、モデルごとの結果、所要時間）。
 

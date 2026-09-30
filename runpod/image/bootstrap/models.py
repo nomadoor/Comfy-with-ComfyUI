@@ -1,10 +1,12 @@
-"""Parallel model downloads into ${DATA_DIR}/models/<directory>/<name>.
+"""Model downloads into ${DATA_DIR}/models/<directory>/<name>: several files at once (DL_CONCURRENCY),
+each split into 16 ranges by aria2.
 
 Files are written under ${DATA_DIR}/models/.incoming and renamed into place only when complete
 (and verified when the profile has a sha256), so an interrupted Pod never leaves a broken model.
 """
 import json
 import os
+import re
 import shutil
 import subprocess
 import threading
@@ -22,19 +24,13 @@ class AuthError(Exception):
     pass
 
 
-def _dir_size(path):
-    total = 0
-    for root, _, files in os.walk(path):
-        for name in files:
-            try:
-                total += os.path.getsize(os.path.join(root, name))
-            except OSError:
-                pass
-    return total
+UNITS = {"B": 1, "KiB": 1024, "MiB": 1024**2, "GiB": 1024**3, "TiB": 1024**4}
+# aria2's summary line: [#ce14f6 2.6MiB/1.7GiB(0%) CN:16 DL:3.9MiB ETA:7m44s]
+ARIA2_PROGRESS = re.compile(r"\[#\w+ ([\d.]+)(B|KiB|MiB|GiB|TiB)/")
 
 
 def _progress_class(on_bytes):
-    """A stand-in for tqdm that reports bytes instead of drawing a bar.
+    """A stand-in for tqdm that reports bytes instead of drawing a bar (HF_DOWNLOADER=xet only).
 
     huggingface_hub hands a non-tqdm class the bar's kwargs and calls update() for bytes written.
     With hf_xet it also calls update_transfer() for bytes received, which runs well ahead of the
@@ -68,8 +64,8 @@ def _progress_class(on_bytes):
     return Progress
 
 
-def _download_hf(model, tmp_dir, token, on_bytes):
-    # Imported here so HF_XET_* settings from main() are already in the environment.
+def _download_xet(model, tmp_dir, token, on_bytes):
+    """Hugging Face through hf_xet. Kept as an option: aria2 was faster in the 2026-10-01 test."""
     from huggingface_hub import hf_hub_download
     from huggingface_hub.errors import GatedRepoError, HfHubHTTPError
 
@@ -92,20 +88,28 @@ def _download_hf(model, tmp_dir, token, on_bytes):
     return Path(path)
 
 
-def _download_aria2(model, tmp_dir, token):
+def _download_aria2(model, tmp_dir, token, on_bytes):
+    """One file split into 16 ranges fetched at once; progress comes from aria2's summary lines."""
     args = [
-        "aria2c", "-x", "16", "-s", "16", "--file-allocation=none", "--console-log-level=error",
-        "--summary-interval=0", "--download-result=hide", "--auto-file-renaming=false",
+        "aria2c", "-x", "16", "-s", "16", "-k", "16M", "--file-allocation=none",
+        "--summary-interval=1", "--show-console-readout=false", "--console-log-level=warn",
+        "--download-result=hide", "--auto-file-renaming=false", "--allow-overwrite=true",
         "-d", str(tmp_dir), "-o", model["name"], model["url"],
     ]
     if token:
         args[1:1] = ["--header", f"Authorization: Bearer {token}"]
-    result = subprocess.run(args, capture_output=True, text=True)
-    if result.returncode == 24:  # aria2: HTTP authorization failed
+    process = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)
+    for line in process.stdout:
+        match = ARIA2_PROGRESS.search(line)
+        if match:
+            on_bytes(int(float(match.group(1)) * UNITS[match.group(2)]))
+    code = process.wait()
+    if code == 24:  # aria2: HTTP authorization failed (Hugging Face answers 401 for gated files)
         raise AuthError("401")
-    if result.returncode != 0:
+    if code != 0:
         # Do not echo the command line: it may carry the token header.
-        raise RuntimeError(f"aria2c exited with {result.returncode}")
+        reason = {3: "file not found", 19: "name resolution failed", 22: "unexpected HTTP response"}.get(code, "")
+        raise RuntimeError(f"aria2c exited with {code}" + (f" ({reason})" if reason else ""))
     return Path(tmp_dir) / model["name"]
 
 
@@ -166,10 +170,10 @@ class Downloader:
             reported["bytes"] = n
 
         def watch():
-            # hf_xet writes in large bursts, so speed is averaged over the last ~10 seconds.
+            # Speed is averaged over the last ~10 seconds so bursts do not make it jump around.
             samples, last_log = [(time.time(), 0)], 0
             while not stop.wait(1):
-                size = max(reported["bytes"], _dir_size(tmp_dir))
+                size = reported["bytes"]  # file size is meaningless for sparse, segmented writes
                 now = time.time()
                 samples = [s for s in samples if now - s[0] <= 10] + [(now, size)]
                 t0, size0 = samples[0]
@@ -190,10 +194,11 @@ class Downloader:
             watcher = threading.Thread(target=watch, daemon=True)
             watcher.start()
             try:
-                if model["source"] == "hf":
-                    path = _download_hf(model, tmp_dir, self.hf_token, on_bytes)
+                if model["source"] == "hf" and os.environ.get("HF_DOWNLOADER") == "xet":
+                    path = _download_xet(model, tmp_dir, self.hf_token, on_bytes)
                 else:
-                    path = _download_aria2(model, tmp_dir, self.civitai_token)
+                    token = self.hf_token if model["source"] == "hf" else self.civitai_token
+                    path = _download_aria2(model, tmp_dir, token, on_bytes)
                 stop.set()
                 watcher.join()
                 if model.get("sha256"):
