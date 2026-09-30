@@ -30,5 +30,6 @@ COPY bootstrap /opt/runpod/bootstrap
 COPY status /opt/runpod/status
 COPY boot.sh /opt/runpod/boot.sh
 
+WORKDIR /opt/runpod
 EXPOSE 8188
 CMD ["/opt/runpod/boot.sh"]
