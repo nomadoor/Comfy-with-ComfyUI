@@ -1,0 +1,24 @@
+# RunPod profile source. Models and custom nodes come from the workflow JSON;
+# list here only what the workflows cannot say for themselves.
+id: qwen-image-2-1
+title: Qwen-Image-2.1
+article: basic-workflows/qwen-image-2-1
+workflows:
+  - src/workflows/basic-workflows/qwen-image-2-1/*.json
+comfyui:
+  default: latest
+  verified_commit: null
+gpu:
+  min_vram_gb: 12
+  recommended_vram_gb: 24
+  notes: ""
+overrides:
+  # These nodes were saved without cnr_id, so the workflow does not say where they come from.
+  custom_nodes:
+    - id: comfyui_controlnet_aux
+      version: 1.1.5
+      nodes: [OpenposePreprocessor]
+    - id: panorama-stickers
+      version: 1.5.0
+      nodes: [PanoramaPreview]
+  models: []

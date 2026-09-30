@@ -13,6 +13,8 @@ Accepted（PoC。記事側のボタン・案内表示は別途デザイン相談
   - サイトの workflow の多くは `properties.models` を持っていない（2026-09-30 時点で 408 本中 36 本）。PoC 対象の Qwen-Image-2.1 の 12 本に書き足す。書き足すのは `properties.models` だけで、他の内容には触れない。
   - 値は記事本文の「モデルのダウンロード」リストとローダーのファイル名を照合して埋める。照合できないものは推測で埋めない。
   - `properties.models` はローカルの ComfyUI でも「足りないモデル」ダイアログのダウンロード先として使われるので、読者にも役立つ。
+- workflow が出どころを持たない custom node（`cnr_id` なしで保存されたノード）だけは、プロファイル元ファイルの `overrides.custom_nodes` に Registry の ID とバージョンを書く。Qwen-Image-2.1 では `OpenposePreprocessor`（`comfyui_controlnet_aux`）と `PanoramaPreview`（`panorama-stickers`）の 2 つ。
+- コアノードかどうかは `runpod/core-nodes.json`（ComfyUI master のソースから抜き出したノード ID の一覧）で判定する。一覧にも `overrides` にもない `cnr_id` なしのノードはエラーにする。
 - **Docker image は汎用 1 種類。** モデルファミリ固有の情報は image に入れず、起動時にサイトから取得する「プロファイル」だけが中身を決める。
 - **プロファイルはサイトのビルドで生成する。** `runpod/profiles/<id>.yaml`（人間が書く最小限の元ファイル）と workflow JSON から、`/runpod/profiles/<id>.json` を出力してサイトと一緒にデプロイする。image の再ビルドなしで内容が更新される。
   - ID と公開パスは記事の slug に合わせる（PoC は `qwen-image-2-1`、公開 URL は `https://comfyui.nomadoor.net/runpod/profiles/qwen-image-2-1.json`）。
@@ -28,10 +30,12 @@ Accepted（PoC。記事側のボタン・案内表示は別途デザイン相談
 - 対象は Qwen-Image-2.1 のみ。他の記事への展開は PoC の結果を見て判断する。
 
 ## 未決事項
-- custom node の導入経路（Registry API / comfy-cli / git）。Qwen-Image-2.1 はコアノードのみなので PoC では検証できない。
+- custom node の導入経路（Registry API / comfy-cli / git）。Registry API の `/nodes/<id>/install?version=` で zip の URL が取れることは確認済み。
+- `overrides` のバージョンは Registry の最新版（`comfyui_controlnet_aux` 1.1.5、`panorama-stickers` 1.5.0）を仮に入れている。記事の検証に使ったバージョンの確認が必要。
+- GPU 案内の値（`min_vram_gb: 12`、`recommended_vram_gb: 24`）は仮。記事の検証環境（RTX 4070 Ti 12GB）をもとにしている。
 - RunPod のデプロイリンク形式、環境変数を URL で渡せるか、GPU を固定できるか。
 - テンプレート作者向けの還元制度の有無。
 
 ## Files
 - Added: `ops/adr/2026-09-30-runpod-poc.md`, `runpod/`, `scripts/add-workflow-models.mjs`
-- Updated: `src/workflows/basic-workflows/qwen-image-2-1/*.json`（`properties.models` の追加のみ）
+- Updated: `src/workflows/basic-workflows/qwen-image-2-1/*.json`（`properties.models` の追加のみ）, `.eleventy.js`（ビルド後にプロファイルを出力）, `package.json`（`check:runpod`, `runpod:refresh`）
