@@ -19,6 +19,8 @@ export const CORE_NODES_PATH = path.join(RUNPOD_DIR, "core-nodes.json");
 const WORKFLOW_ROOT = path.resolve("src", "workflows");
 const ALLOWED_HOSTS = new Set(["huggingface.co", "civitai.com"]);
 const MODEL_EXT = /\.(safetensors|gguf|ckpt|pt|pth|bin|sft)$/i;
+// Nodes that read a file from ComfyUI's input/ folder; widgets_values[0] is the file name.
+const INPUT_NODES = new Set(["LoadImage", "LoadImageMask", "LoadVideo", "LoadAudio"]);
 // Frontend-only nodes: they never reach the backend, so they need nothing installed.
 const FRONTEND_NODES = new Set(["Note", "MarkdownNote", "Reroute", "PrimitiveNode"]);
 
@@ -80,6 +82,28 @@ export const buildProfile = (id, { siteURL, coreNodes = readJSON(CORE_NODES_PATH
   const models = new Map();
   const customNodes = new Map();
   const workflows = [];
+  const inputs = new Map();
+
+  // Sample inputs live next to the workflows in inputs/, under the exact name the node reads.
+  const addInput = (file, node, origin) => {
+    const name = String(node.widgets_values?.[0] ?? "").replace(/ \[(input|output|temp)\]$/, "");
+    if (!name) return;
+    const source = path.join(path.dirname(file), "inputs", name);
+    if (!fs.existsSync(source)) {
+      warnings.push(`${origin} node ${node.id} ${node.type}: sample input ${name} is missing (add it to ${where(path.dirname(source))}/)`);
+      return;
+    }
+    const body = fs.readFileSync(source);
+    const sha256 = crypto.createHash("sha256").update(body).digest("hex");
+    const known = inputs.get(name);
+    if (known && known.sha256 !== sha256) {
+      errors.push(`${origin}: sample input ${name} differs from ${known.from}`);
+      return;
+    }
+    if (known) return;
+    const publicPath = `/workflows/${path.relative(WORKFLOW_ROOT, source).split(path.sep).join("/")}`;
+    inputs.set(name, { name, path: publicPath, url: new URL(publicPath, siteURL).href, sha256, size_bytes: body.length, from: where(source) });
+  };
 
   const addModel = (model, origin) => {
     const key = `${model.directory}/${model.name}`;
@@ -150,6 +174,8 @@ export const buildProfile = (id, { siteURL, coreNodes = readJSON(CORE_NODES_PATH
         }
       }
 
+      if (INPUT_NODES.has(node.type) && node.mode !== 4) addInput(file, node, origin);
+
       if (props.cnr_id && props.cnr_id !== "comfy-core") {
         addCustomNode({ id: props.cnr_id, version: "latest", source: "registry" });
       } else if (!props.cnr_id && props.aux_id) {
@@ -165,9 +191,12 @@ export const buildProfile = (id, { siteURL, coreNodes = readJSON(CORE_NODES_PATH
       }
     }
 
+    // `path` lets the Pod fetch workflows from wherever it fetched the profile (a preview or local build).
+    const publicPath = `/workflows/${path.relative(WORKFLOW_ROOT, file).split(path.sep).join("/")}`;
     workflows.push({
       name: path.basename(file),
-      url: new URL(`/workflows/${path.relative(WORKFLOW_ROOT, file).split(path.sep).join("/")}`, siteURL).href,
+      path: publicPath,
+      url: new URL(publicPath, siteURL).href,
       sha256: crypto.createHash("sha256").update(raw).digest("hex"),
     });
   }
@@ -214,6 +243,7 @@ export const buildProfile = (id, { siteURL, coreNodes = readJSON(CORE_NODES_PATH
     requires_hf_token: sortedModels.some((m) => m.requires_hf_token),
     unsafe_format: sortedModels.some((m) => m.unsafe_format),
     workflows,
+    inputs: [...inputs.values()].map(({ from, ...input }) => input).sort((a, b) => a.name.localeCompare(b.name)),
     custom_nodes: [...customNodes.values()].sort((a, b) => a.id.localeCompare(b.id)),
     models: sortedModels,
   };

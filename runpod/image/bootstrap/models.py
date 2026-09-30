@@ -1,0 +1,264 @@
+"""Parallel model downloads into ${DATA_DIR}/models/<directory>/<name>.
+
+Files are written under ${DATA_DIR}/models/.incoming and renamed into place only when complete
+(and verified when the profile has a sha256), so an interrupted Pod never leaves a broken model.
+"""
+import json
+import os
+import shutil
+import subprocess
+import threading
+import time
+from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
+
+from .state import BootError
+from .util import sha256_file
+
+RETRIES = 3
+
+
+class AuthError(Exception):
+    pass
+
+
+def _dir_size(path):
+    total = 0
+    for root, _, files in os.walk(path):
+        for name in files:
+            try:
+                total += os.path.getsize(os.path.join(root, name))
+            except OSError:
+                pass
+    return total
+
+
+def _progress_class(on_bytes):
+    """A stand-in for tqdm that reports bytes instead of drawing a bar.
+
+    huggingface_hub hands a non-tqdm class the bar's kwargs and calls update() for bytes written.
+    With hf_xet it also calls update_transfer() for bytes received, which runs well ahead of the
+    writes because hf_xet buffers in memory, so progress is the larger of the two.
+    """
+
+    class Progress:
+        def __init__(self, *args, **kwargs):
+            self.n = kwargs.get("initial") or 0
+            self.total = kwargs.get("total")
+            self.transferred = 0
+
+        def update(self, n=1):
+            self.n += n
+            on_bytes(max(self.n, self.transferred))
+
+        def update_transfer(self, n):
+            self.transferred += n
+            on_bytes(max(self.n, self.transferred))
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            pass
+
+        def __getattr__(self, name):
+            # Other tqdm methods (close, refresh, set_postfix_str, ...) are no-ops here.
+            return lambda *args, **kwargs: None
+
+    return Progress
+
+
+def _download_hf(model, tmp_dir, token, on_bytes):
+    # Imported here so HF_XET_* settings from main() are already in the environment.
+    from huggingface_hub import hf_hub_download
+    from huggingface_hub.errors import GatedRepoError, HfHubHTTPError
+
+    try:
+        path = hf_hub_download(
+            repo_id=model["repo_id"],
+            filename=model["path_in_repo"],
+            revision=model.get("revision") or "main",
+            local_dir=tmp_dir,
+            token=token or False,
+            tqdm_class=_progress_class(on_bytes),
+        )
+    except GatedRepoError as error:
+        raise AuthError("gated") from error
+    except HfHubHTTPError as error:
+        status = getattr(error.response, "status_code", None)
+        if status in (401, 403):
+            raise AuthError(str(status)) from error
+        raise RuntimeError(f"Hugging Face returned {status}") from None
+    return Path(path)
+
+
+def _download_aria2(model, tmp_dir, token):
+    args = [
+        "aria2c", "-x", "16", "-s", "16", "--file-allocation=none", "--console-log-level=error",
+        "--summary-interval=0", "--download-result=hide", "--auto-file-renaming=false",
+        "-d", str(tmp_dir), "-o", model["name"], model["url"],
+    ]
+    if token:
+        args[1:1] = ["--header", f"Authorization: Bearer {token}"]
+    result = subprocess.run(args, capture_output=True, text=True)
+    if result.returncode == 24:  # aria2: HTTP authorization failed
+        raise AuthError("401")
+    if result.returncode != 0:
+        # Do not echo the command line: it may carry the token header.
+        raise RuntimeError(f"aria2c exited with {result.returncode}")
+    return Path(tmp_dir) / model["name"]
+
+
+class Downloader:
+    def __init__(self, data_dir, state, concurrency, hf_token, civitai_token):
+        self.models_dir = Path(data_dir) / "models"
+        self.incoming = self.models_dir / ".incoming"
+        self.boot_dir = Path(data_dir) / "runpod-boot"
+        self.verified_path = self.boot_dir / "verified.json"
+        self.state = state
+        self.concurrency = concurrency
+        self.hf_token = hf_token
+        self.civitai_token = civitai_token
+        self._verified_lock = threading.Lock()
+        self.verified = json.loads(self.verified_path.read_text()) if self.verified_path.exists() else {}
+
+    def _remember(self, final, model):
+        with self._verified_lock:
+            stat = final.stat()
+            self.verified[str(final)] = {"size": stat.st_size, "mtime": int(stat.st_mtime), "sha256": model.get("sha256")}
+            self.boot_dir.mkdir(parents=True, exist_ok=True)
+            self.verified_path.write_text(json.dumps(self.verified, indent=2))
+
+    def _already_there(self, index, model, final):
+        """True when the file is present and matches; hashes it once, then trusts size + mtime."""
+        if not final.exists():
+            return False
+        size = final.stat().st_size
+        if model.get("size_bytes") and size != model["size_bytes"]:
+            return False
+        if not model.get("sha256"):
+            return True
+        known = self.verified.get(str(final))
+        if known and known["sha256"] == model["sha256"] and known["size"] == size and known["mtime"] == int(final.stat().st_mtime):
+            return True
+        self.state.model(index, state="verifying", done=0)
+        if sha256_file(final, lambda done: self.state.model(index, done=done)) != model["sha256"]:
+            return False
+        self._remember(final, model)
+        return True
+
+    def _fetch(self, index, model):
+        final = self.models_dir / model["directory"] / model["name"]
+        if self._already_there(index, model, final):
+            self.state.model(index, state="present", done=model.get("size_bytes") or final.stat().st_size, speed=0)
+            self.state.log(f"model {model['directory']}/{model['name']}: already present")
+            return "present"
+
+        if model.get("requires_hf_token") and not self.hf_token:
+            self.state.model(index, state="skipped", reason="hf_token")
+            return "skipped"
+
+        tmp_dir = self.incoming / f"{model['directory']}__{model['name']}"
+        stop = threading.Event()
+        reported = {"bytes": 0}
+
+        def on_bytes(n):
+            reported["bytes"] = n
+
+        def watch():
+            # hf_xet writes in large bursts, so speed is averaged over the last ~10 seconds.
+            samples, last_log = [(time.time(), 0)], 0
+            while not stop.wait(1):
+                size = max(reported["bytes"], _dir_size(tmp_dir))
+                now = time.time()
+                samples = [s for s in samples if now - s[0] <= 10] + [(now, size)]
+                t0, size0 = samples[0]
+                speed = max(0, (size - size0) / (now - t0)) if now > t0 else 0
+                self.state.model(index, done=size, speed=int(speed))
+                if now - last_log >= 15:
+                    last_log = now
+                    total = model.get("size_bytes") or 0
+                    pct = f" {size * 100 / total:.0f}%" if total else ""
+                    self.state.log(f"model {model['name']}:{pct} {size / 1e9:.2f} GB, {speed / 1e6:.0f} MB/s")
+
+        for attempt in range(1, RETRIES + 1):
+            shutil.rmtree(tmp_dir, ignore_errors=True)
+            tmp_dir.mkdir(parents=True, exist_ok=True)
+            self.state.model(index, state="downloading", done=0, attempt=attempt)
+            reported["bytes"] = 0
+            stop.clear()
+            watcher = threading.Thread(target=watch, daemon=True)
+            watcher.start()
+            try:
+                if model["source"] == "hf":
+                    path = _download_hf(model, tmp_dir, self.hf_token, on_bytes)
+                else:
+                    path = _download_aria2(model, tmp_dir, self.civitai_token)
+                stop.set()
+                watcher.join()
+                if model.get("sha256"):
+                    self.state.model(index, state="verifying", done=0, speed=0)
+                    digest = sha256_file(path, lambda done: self.state.model(index, done=done))
+                    if digest != model["sha256"]:
+                        raise RuntimeError("sha256 mismatch")
+                final.parent.mkdir(parents=True, exist_ok=True)
+                os.replace(path, final)
+                shutil.rmtree(tmp_dir, ignore_errors=True)
+                self._remember(final, model)
+                self.state.model(index, state="done", done=final.stat().st_size, speed=0)
+                self.state.log(f"model {model['directory']}/{model['name']}: done")
+                return "downloaded"
+            except AuthError:
+                stop.set()
+                watcher.join()
+                shutil.rmtree(tmp_dir, ignore_errors=True)
+                if model["source"] == "hf" and model.get("requires_hf_token"):
+                    self.state.model(index, state="skipped", reason="hf_token", speed=0)
+                    return "skipped"
+                self.state.model(index, state="error", speed=0)
+                if model["source"] == "hf":
+                    raise BootError("download", f"{model['name']}: Hugging Face refused access.", model=model["name"])
+                raise BootError("civitai_token", f"{model['name']}: Civitai refused the download (token required).", model=model["name"])
+            except Exception as error:  # noqa: BLE001 - reported to the reader, then retried
+                stop.set()
+                watcher.join()
+                message = str(error) or error.__class__.__name__
+                self.state.log(f"model {model['name']}: attempt {attempt} failed: {message}")
+                if attempt == RETRIES:
+                    shutil.rmtree(tmp_dir, ignore_errors=True)
+                    self.state.model(index, state="error", speed=0)
+                    raise BootError("download", f"{model['name']}: {message}", model=model["name"]) from None
+                time.sleep(2 ** attempt)
+        return "error"
+
+    def run(self, models):
+        self.state.set_models([
+            {"name": m["name"], "directory": m["directory"], "size": m.get("size_bytes"), "done": 0, "speed": 0, "state": "pending"}
+            for m in models
+        ])
+        self.incoming.mkdir(parents=True, exist_ok=True)
+
+        missing = sum(m.get("size_bytes") or 0 for m in models if not (self.models_dir / m["directory"] / m["name"]).exists())
+        free = shutil.disk_usage(self.models_dir).free
+        if missing > free:
+            need_gb = -(-missing // 10**9) + 5
+            raise BootError(
+                "disk_space",
+                f"Models need {missing / 1e9:.1f} GB but only {free / 1e9:.1f} GB is free on {self.models_dir}.",
+                need_gb=need_gb,
+            )
+
+        results = [None] * len(models)
+        with ThreadPoolExecutor(max_workers=self.concurrency) as pool:
+            futures = {pool.submit(self._fetch, i, m): i for i, m in enumerate(models)}
+            first_error = None
+            for future, i in futures.items():
+                try:
+                    results[i] = future.result()
+                except BootError as error:
+                    results[i] = "error"
+                    first_error = first_error or error
+        shutil.rmtree(self.incoming, ignore_errors=True)
+        if first_error:
+            raise first_error
+        return results

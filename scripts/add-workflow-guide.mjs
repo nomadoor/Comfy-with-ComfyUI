@@ -1,18 +1,19 @@
 #!/usr/bin/env node
-// Put a `## guide` section with the article links (EN / JA / ZH) at the top of each workflow's
-// first MarkdownNote, so a workflow opened on its own still leads back to its article.
+// Put a `## guide` section with the article links (JA / EN / ZH) at the end of each workflow's
+// first MarkdownNote, so a workflow opened on its own still leads back to its article. It goes
+// after `## models` and stays plain: the note is about running the workflow, not about the site.
 //
 // Usage: node scripts/add-workflow-guide.mjs <section>/<slug> <workflow.json|dir>... [--write]
 //
-// Only the note text changes. Notes that already have a `## guide` section are left alone.
+// Only the note text changes. An existing `## guide` section is replaced, wherever it is.
 // Without --write it only prints what would change.
 import fs from "node:fs";
 import path from "node:path";
 
 const SITE = JSON.parse(fs.readFileSync("src/_data/site.json", "utf8")).url;
 const LANGS = [
-  ["en", "English"],
   ["ja", "日本語"],
+  ["en", "English"],
   ["zh", "中文"],
 ];
 
@@ -46,8 +47,11 @@ for (const file of targets.flatMap(listWorkflows)) {
     skipped.push(`${file}: no MarkdownNote`);
     continue;
   }
-  if (/^## guide$/m.test(note.widgets_values[0])) continue;
-  note.widgets_values[0] = `${guide}\n\n${note.widgets_values[0]}`;
+  // Drop any earlier guide section (up to the next heading), then append the current one.
+  const rest = note.widgets_values[0].replace(/^## guide\n[\s\S]*?(?=^## |(?![\s\S]))/m, "").trim();
+  const text = `${rest}\n\n${guide}`;
+  if (text === note.widgets_values[0]) continue;
+  note.widgets_values[0] = text;
   changed += 1;
   console.log(`${write ? "updated" : "would update"}: ${path.basename(file)} node ${note.id}`);
   if (write) {
