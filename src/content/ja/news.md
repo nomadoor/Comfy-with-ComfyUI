@@ -5,7 +5,7 @@ slug: news
 navId: news
 title: "更新情報"
 created: 2026-01-15
-updated: 2026-09-28
+updated: 2026-09-30
 summary: "このサイトの更新情報"
 seoTitle: "更新情報：ComfyUIの新しい記事とworkflow"
 seoDescription: "「Comfyに使うComfyUI」の更新履歴。新しく追加したモデルの解説やworkflow、既存記事の更新を日付順にまとめています。"
@@ -14,6 +14,11 @@ tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/ja/notes/typed-decision/">
+    <span class="news-row__date">2026.9.30</span>
+    <span class="news-row__tag">notes</span>
+    <span class="news-row__title">ComfyUI-TypedDecision のページを追加しました</span>
+  </a>
   <a class="news-row" href="/ja/notes/conditioning-zero-out/">
     <span class="news-row__date">2026.9.28</span>
     <span class="news-row__tag">notes</span>

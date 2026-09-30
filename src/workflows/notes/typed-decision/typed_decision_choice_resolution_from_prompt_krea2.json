@@ -1,0 +1,1204 @@
+{
+  "id": "d8034549-7e0a-40f1-8c2e-de3ffc6f1cae",
+  "revision": 0,
+  "last_node_id": 78,
+  "last_link_id": 134,
+  "nodes": [
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1252.432861328125,
+        188.1918182373047
+      ],
+      "size": [
+        157.56002807617188,
+        46
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 35
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 76
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            101
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      }
+    },
+    {
+      "id": 37,
+      "type": "UNETLoader",
+      "pos": [
+        528.8914031982422,
+        34.805270385742176
+      ],
+      "size": [
+        305.3782043457031,
+        82
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            105
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "krea2_turbo_fp8_scaled.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "krea2_turbo_fp8_scaled.safetensors",
+        "weight_dtype": "default"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 38,
+      "type": "CLIPLoader",
+      "pos": [
+        56.288665771484375,
+        312.74468994140625
+      ],
+      "size": [
+        301.3524169921875,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            74
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "qwen3vl_4b_fp8_scaled.safetensors",
+        "krea2",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_4b_fp8_scaled.safetensors",
+        "type": "krea2",
+        "device": "default"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 62,
+      "type": "EmptyLatentImage",
+      "pos": [
+        596.1696075439453,
+        600.1646938177378
+      ],
+      "size": [
+        237,
+        106
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 123
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 124
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            112
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.26.0"
+      },
+      "widgets_values": [
+        512,
+        512,
+        1
+      ],
+      "widgets_values_named": {
+        "width": 512,
+        "height": 512,
+        "batch_size": 1
+      }
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        898.7548217773438,
+        188.1918182373047
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 105
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 46
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 116
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 112
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            35
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        1234,
+        "fixed",
+        8,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 1234,
+        "control_after_generate": "fixed",
+        "steps": 8,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        415.7513025457208,
+        186
+      ],
+      "size": [
+        418.5183049982245,
+        177.7917699892659
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 74
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 119
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            46,
+            115
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        ""
+      ],
+      "widgets_values_named": {
+        "text": ""
+      }
+    },
+    {
+      "id": 56,
+      "type": "SaveImage",
+      "pos": [
+        1443.3798111474612,
+        188.1918182373047
+      ],
+      "size": [
+        714.7533287281769,
+        648.4559006766484
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 101
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "ComfyUI"
+      }
+    },
+    {
+      "id": 39,
+      "type": "VAELoader",
+      "pos": [
+        951.5002075195309,
+        58.805270385742176
+      ],
+      "size": [
+        262.2546142578128,
+        58
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            76
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "qwen_image_vae.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "qwen_image_vae.safetensors"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 63,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        603.771205555309,
+        431.6922030739974
+      ],
+      "size": [
+        230.49840198863626,
+        26
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 115
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            116
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningZeroOut"
+      }
+    },
+    {
+      "id": 66,
+      "type": "TypedDecision",
+      "pos": [
+        -177.47038605329703,
+        1000.7298758012716
+      ],
+      "size": [
+        400,
+        392
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "TYPED_DECISION_MODEL",
+          "link": 117
+        },
+        {
+          "name": "images.image_0",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "state",
+          "type": "STRING",
+          "widget": {
+            "name": "state"
+          },
+          "link": 118
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "label",
+          "type": "STRING",
+          "links": [
+            133
+          ]
+        },
+        {
+          "name": "index",
+          "type": "INT",
+          "links": [
+            121,
+            122,
+            134
+          ]
+        },
+        {
+          "name": "pass",
+          "type": "BOOLEAN",
+          "links": null
+        },
+        {
+          "name": "abstained",
+          "type": "BOOLEAN",
+          "links": null
+        },
+        {
+          "name": "result",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TypedDecision"
+      },
+      "widgets_values": [
+        "choice",
+        "Which aspect ratio suits the image described in the state?",
+        "portrait: tall subject, such as a standing person\nlandscape: wide scene, such as scenery or a group\nsquare: single object or close-up",
+        "",
+        0.5,
+        false,
+        true
+      ],
+      "widgets_values_named": {
+        "mode": "choice",
+        "mode.instructions": "Which aspect ratio suits the image described in the state?",
+        "mode.criteria": "portrait: tall subject, such as a standing person\nlandscape: wide scene, such as scenery or a group\nsquare: single object or close-up",
+        "state": "",
+        "threshold": 0.5,
+        "debias": false,
+        "calibration": true
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 67,
+      "type": "LoadTypedDecisionModel",
+      "pos": [
+        -496.4172053714783,
+        1000.7298758012716
+      ],
+      "size": [
+        284.196875,
+        82
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "typed_decision_model",
+          "type": "TYPED_DECISION_MODEL",
+          "links": [
+            117
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadTypedDecisionModel"
+      },
+      "widgets_values": [
+        "qwen3.5_4b_int8_convrot.safetensors",
+        "imajev-4b"
+      ],
+      "widgets_values_named": {
+        "backbone": "qwen3.5_4b_int8_convrot.safetensors",
+        "adapter": "imajev-4b"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 68,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        -787.1335940093679,
+        212.60844338219795
+      ],
+      "size": [
+        422.99,
+        218.14999999999998
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            118,
+            119
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "A graphic design poster composition. The entire base of the image is a solid, flat, vivid red. On this red field sits one enormous flower silhouette, so large that it runs off the edges of the frame and is partly cropped. It is clearly shaped like a whole flower in full bloom, with several broad petals radiating from its center, each petal distinct and gracefully curved. The silhouette has smooth, clean, hard edges, like a cut-out.\n\nInside the flower shape only, an anime illustration of a young woman is visible, clipped by the flower as if through a mask. Outside the flower, there is nothing but flat red. The woman's image is cut off naturally wherever the flower's edge falls, including the gaps between the petals.\n\nWithin the flower: a young woman stands in front of a plain white background, holding an umbrella over her shoulder. Her hand grips the umbrella handle lightly, the canopy tilted back.\n\nShe has a blunt-cut bob with heavy, straight-cut bangs. The cut is layered in distinct steps, with sharp blunt lines at each tier, and the back of the bob has soft volume, rounding out gently behind her head. The hairstyle feels precise and stylish, with a crisp graphic silhouette.\n\nStylized anime illustration, flat cel shading, clean expressive linework, bold simplified forms, painterly digital texture, graphic poster layout, strong contrast between flat red and white, restrained colors, quiet tension, elegant composition."
+      ],
+      "widgets_values_named": {
+        "value": "A graphic design poster composition. The entire base of the image is a solid, flat, vivid red. On this red field sits one enormous flower silhouette, so large that it runs off the edges of the frame and is partly cropped. It is clearly shaped like a whole flower in full bloom, with several broad petals radiating from its center, each petal distinct and gracefully curved. The silhouette has smooth, clean, hard edges, like a cut-out.\n\nInside the flower shape only, an anime illustration of a young woman is visible, clipped by the flower as if through a mask. Outside the flower, there is nothing but flat red. The woman's image is cut off naturally wherever the flower's edge falls, including the gaps between the petals.\n\nWithin the flower: a young woman stands in front of a plain white background, holding an umbrella over her shoulder. Her hand grips the umbrella handle lightly, the canopy tilted back.\n\nShe has a blunt-cut bob with heavy, straight-cut bangs. The cut is layered in distinct steps, with sharp blunt lines at each tier, and the back of the bob has soft volume, rounding out gently behind her head. The hairstyle feels precise and stylish, with a crisp graphic silhouette.\n\nStylized anime illustration, flat cel shading, clean expressive linework, bold simplified forms, painterly digital texture, graphic poster layout, strong contrast between flat red and white, restrained colors, quiet tension, elegant composition."
+      }
+    },
+    {
+      "id": 69,
+      "type": "GetItemFromList",
+      "pos": [
+        321.6718807549042,
+        563.6144365640157
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "list",
+          "type": "*",
+          "link": 125
+        },
+        {
+          "name": "index",
+          "type": "INT",
+          "widget": {
+            "name": "index"
+          },
+          "link": 121
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            123
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GetItemFromList"
+      },
+      "widgets_values": [
+        0
+      ],
+      "widgets_values_named": {
+        "index": 0
+      }
+    },
+    {
+      "id": 70,
+      "type": "GetItemFromList",
+      "pos": [
+        321.6718807549042,
+        727.8375087585367
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "list",
+          "type": "*",
+          "link": 126
+        },
+        {
+          "name": "index",
+          "type": "INT",
+          "widget": {
+            "name": "index"
+          },
+          "link": 122
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [
+            124
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GetItemFromList"
+      },
+      "widgets_values": [
+        0
+      ],
+      "widgets_values_named": {
+        "index": 0
+      }
+    },
+    {
+      "id": 71,
+      "type": "CreateList",
+      "pos": [
+        117.17415396586316,
+        563.6144365640157
+      ],
+      "size": [
+        140,
+        106
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "inputs.input0",
+          "type": "*",
+          "link": 127
+        },
+        {
+          "name": "inputs.input1",
+          "shape": 7,
+          "type": "*",
+          "link": 128
+        },
+        {
+          "name": "inputs.input2",
+          "shape": 7,
+          "type": "*",
+          "link": 129
+        },
+        {
+          "name": "inputs.input3",
+          "shape": 7,
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "list",
+          "shape": 6,
+          "type": "*",
+          "links": [
+            125
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CreateList"
+      }
+    },
+    {
+      "id": 72,
+      "type": "CreateList",
+      "pos": [
+        117.17415396586316,
+        727.8375087585367
+      ],
+      "size": [
+        140,
+        106
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "inputs.input0",
+          "type": "*",
+          "link": 130
+        },
+        {
+          "name": "inputs.input1",
+          "shape": 7,
+          "type": "*",
+          "link": 131
+        },
+        {
+          "name": "inputs.input2",
+          "shape": 7,
+          "type": "*",
+          "link": 132
+        },
+        {
+          "name": "inputs.input3",
+          "shape": 7,
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "list",
+          "shape": 6,
+          "type": "*",
+          "links": [
+            126
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CreateList"
+      }
+    },
+    {
+      "id": 73,
+      "type": "PrimitiveInt",
+      "pos": [
+        -217.3235728231779,
+        517.584361691397
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            127,
+            131
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveInt"
+      },
+      "widgets_values": [
+        832,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "value": 832,
+        "fixed": "fixed"
+      }
+    },
+    {
+      "id": 74,
+      "type": "PrimitiveInt",
+      "pos": [
+        -217.3235728231779,
+        664.1755781383613
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            128,
+            130
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveInt"
+      },
+      "widgets_values": [
+        1216,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "value": 1216,
+        "fixed": "fixed"
+      }
+    },
+    {
+      "id": 75,
+      "type": "PrimitiveInt",
+      "pos": [
+        -217.3235728231779,
+        810.7667945853256
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            129,
+            132
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveInt"
+      },
+      "widgets_values": [
+        1024,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "value": 1024,
+        "fixed": "fixed"
+      }
+    },
+    {
+      "id": 76,
+      "type": "PreviewAny",
+      "pos": [
+        309.0253682105621,
+        1020.213008889044
+      ],
+      "size": [
+        288.25095963390504,
+        138.1400177583498
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 133
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 78,
+      "type": "PreviewAny",
+      "pos": [
+        308.9501099552038,
+        1213.105030409297
+      ],
+      "size": [
+        288.25095963390504,
+        138.1400177583498
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 134
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    }
+  ],
+  "links": [
+    [
+      35,
+      3,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      46,
+      6,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      74,
+      38,
+      0,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      76,
+      39,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      101,
+      8,
+      0,
+      56,
+      0,
+      "IMAGE"
+    ],
+    [
+      105,
+      37,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      112,
+      62,
+      0,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      115,
+      6,
+      0,
+      63,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      116,
+      63,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      119,
+      68,
+      0,
+      6,
+      1,
+      "STRING"
+    ],
+    [
+      121,
+      66,
+      2,
+      69,
+      1,
+      "INT"
+    ],
+    [
+      122,
+      66,
+      2,
+      70,
+      1,
+      "INT"
+    ],
+    [
+      123,
+      69,
+      0,
+      62,
+      0,
+      "INT"
+    ],
+    [
+      124,
+      70,
+      0,
+      62,
+      1,
+      "INT"
+    ],
+    [
+      125,
+      71,
+      0,
+      69,
+      0,
+      "*"
+    ],
+    [
+      126,
+      72,
+      0,
+      70,
+      0,
+      "*"
+    ],
+    [
+      133,
+      66,
+      1,
+      76,
+      0,
+      "STRING"
+    ],
+    [
+      134,
+      66,
+      2,
+      78,
+      0,
+      "INT"
+    ],
+    [
+      117,
+      67,
+      0,
+      66,
+      0,
+      "TYPED_DECISION_MODEL"
+    ],
+    [
+      127,
+      73,
+      0,
+      71,
+      0,
+      "INT"
+    ],
+    [
+      128,
+      74,
+      0,
+      71,
+      1,
+      "INT"
+    ],
+    [
+      129,
+      75,
+      0,
+      71,
+      2,
+      "INT"
+    ],
+    [
+      130,
+      74,
+      0,
+      72,
+      0,
+      "INT"
+    ],
+    [
+      131,
+      73,
+      0,
+      72,
+      1,
+      "INT"
+    ],
+    [
+      132,
+      75,
+      0,
+      72,
+      2,
+      "INT"
+    ],
+    [
+      118,
+      68,
+      0,
+      66,
+      2,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.751314800901578,
+      "offset": [
+        626.8279569394288,
+        94.27517379777686
+      ]
+    },
+    "frontendVersion": "1.53.6",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
