@@ -4,6 +4,7 @@
 import fs from "node:fs";
 import { spawnSync } from "node:child_process";
 import fg from "fast-glob";
+import { profileInputReferences } from "../../runpod/tools/profiles.mjs";
 
 export const PRODUCTION_MANIFEST = "src/_data/media.json";
 export const FIXTURE_MANIFEST = "tests/fixtures/media/media.json";
@@ -55,6 +56,14 @@ export function extractMediaReferences(text) {
   return references;
 }
 
+/**
+ * Sample inputs for RunPod profiles are media too (see runpod/tools/profiles.mjs): they are not
+ * written in any page, so they are derived from the workflows' LoadImage nodes instead.
+ */
+export function workflowInputReferences() {
+  return profileInputReferences();
+}
+
 /** Read files and return their media references with the file path attached. */
 export function referencesInFiles(files) {
   return files.flatMap((file) => extractMediaReferences(fs.readFileSync(file, "utf8")).map((reference) => ({ file, ...reference })));
@@ -83,5 +92,13 @@ export function stagedReferences() {
     .split("\0")
     .filter((file) => file && file !== PRODUCTION_MANIFEST && file !== "src/_data/pageViews.json")
     .filter((file) => PRODUCTION_SOURCE_PATHS.some((pattern) => pattern.test(file)));
-  return files.flatMap((file) => extractMediaReferences(git(["show", `:${file}`])).map((reference) => ({ file, ...reference })));
+  const pageReferences = files.flatMap((file) =>
+    extractMediaReferences(git(["show", `:${file}`])).map((reference) => ({ file, ...reference }))
+  );
+  const indexed = git(["ls-files", "--cached", "-z"]).split("\0").filter(Boolean);
+  const inputReferences = profileInputReferences({
+    listFiles: () => indexed.filter((file) => /^runpod\/profiles\/.+\.yaml$|^src\/workflows\/.+\.json$/.test(file)),
+    readText: (file) => git(["show", `:${file}`])
+  });
+  return [...pageReferences, ...inputReferences];
 }

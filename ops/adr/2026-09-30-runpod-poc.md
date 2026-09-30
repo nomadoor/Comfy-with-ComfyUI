@@ -13,10 +13,11 @@ Accepted（PoC。記事側のボタン・案内表示は別途デザイン相談
   - サイトの workflow の多くは `properties.models` を持っていない（2026-09-30 時点で 408 本中 36 本）。PoC 対象の Qwen-Image-2.1 の 12 本に書き足す。書き足すのは `properties.models` だけで、他の内容には触れない。
   - 値は記事本文の「モデルのダウンロード」リストとローダーのファイル名を照合して埋める。照合できないものは推測で埋めない。
   - `properties.models` はローカルの ComfyUI でも「足りないモデル」ダイアログのダウンロード先として使われるので、読者にも役立つ。
-- workflow が出どころを持たない custom node（`cnr_id` なしで保存されたノード）だけは、プロファイル元ファイルの `overrides.custom_nodes` に Registry の ID とバージョンを書く。Qwen-Image-2.1 では `OpenposePreprocessor`（`comfyui_controlnet_aux`）と `PanoramaPreview`（`panorama-stickers`）の 2 つ。
+- workflow が出どころを持たない custom node（`cnr_id` なしで保存されたノード）だけは、プロファイル元ファイルの `overrides.custom_nodes` に Registry の ID とバージョンを書く。Qwen-Image-2.1 では `PanoramaPreview`（`panorama-stickers`）のみ（ポーズ抽出は当初の `comfyui_controlnet_aux` から本体の SDPose に差し替えた）。
 - custom node は Registry の最新版を入れる（オーナー判断）。workflow に保存された `ver` は使わず、固定したいときだけ `overrides.custom_nodes` に `version:` を書く。実際に入ったバージョンは Pod の `report.json` に残す。custom node 側の破壊的変更で記事の workflow が一時的に動かなくなることは許容し、そのときに workflow を直す。
 - workflow の最初の MarkdownNote の末尾（`## models` の下）に目立たない `## guide` 節を置き、記事への JA / EN / ZH リンクを並べる（Pod で workflow だけを開いた人が記事に戻れるように）。まず Qwen-Image-2.1 の 12 本で試す。`scripts/add-workflow-guide.mjs` で入れる。
-- 入力画像のサンプルはオーナーが用意し、workflow の隣の `inputs/` に LoadImage が読むファイル名で置く。プロファイルの `inputs` に入り、Pod 起動時に `ComfyUI/input/` へ配る。workflow を開いてそのまま実行できるようにするため。マスクを塗った PNG をそのまま配る必要があるので、R2（変換済みの WebP / JPEG）ではなくリポジトリに置く。
+- 入力画像のサンプルはオーナーが用意し、記事の画像と同じメディアとして扱う。原本は `COMFY_MEDIA_ORIGINALS` に `<section>/<slug>/<stem>.png` で置き、`media:sync` が WebP にして R2 に上げる（git には入れない）。workflow の LoadImage は `<stem>.webp` を読む。プロファイル生成が `media.json` から R2 の URL とハッシュを引いて `inputs` に入れ、Pod は起動時にその WebP を `ComfyUI/input/<stem>.webp` に置く。記事に出している画像（出力例の入力など）はそのまま再利用する。
+- ページに書かれない入力画像も `media:sync` と `check:media` の対象にするため、プロファイルの workflow の LoadImage から `/media/...` の参照を導く（`profileInputReferences`）。pre-commit フックは `src/workflows/` と `runpod/profiles/` の変更でも動く。
 - コアノードかどうかは `runpod/core-nodes.json`（ComfyUI master のソースから抜き出したノード ID の一覧）で判定する。一覧にも `overrides` にもない `cnr_id` なしのノードはエラーにする。
 - **Docker image は汎用 1 種類。** モデルファミリ固有の情報は image に入れず、起動時にサイトから取得する「プロファイル」だけが中身を決める。
 - **プロファイルはサイトのビルドで生成する。** `runpod/profiles/<id>.yaml`（人間が書く最小限の元ファイル）と workflow JSON から、`/runpod/profiles/<id>.json` を出力してサイトと一緒にデプロイする。image の再ビルドなしで内容が更新される。
@@ -41,4 +42,4 @@ Accepted（PoC。記事側のボタン・案内表示は別途デザイン相談
 
 ## Files
 - Added: `ops/adr/2026-09-30-runpod-poc.md`, `runpod/`, `scripts/add-workflow-models.mjs`, `scripts/add-workflow-guide.mjs`
-- Updated: `src/workflows/basic-workflows/qwen-image-2-1/*.json`（`properties.models` と MarkdownNote の `## guide` 節の追加のみ）, `.eleventy.js`（ビルド後にプロファイルを出力）, `package.json`（`check:runpod`, `runpod:refresh`）
+- Updated: `src/workflows/basic-workflows/qwen-image-2-1/*.json`（`properties.models`、MarkdownNote の `## guide` 節、LoadImage のファイル名）, `scripts/lib/media-refs.mjs`, `scripts/media-sync.mjs`, `scripts/check-media.mjs`, `.githooks/pre-commit`, `.eleventy.js`（ビルド後にプロファイルを出力）, `package.json`（`check:runpod`, `runpod:refresh`）

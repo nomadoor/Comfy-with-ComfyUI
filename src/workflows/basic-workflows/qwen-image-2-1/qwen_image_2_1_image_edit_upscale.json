@@ -589,7 +589,7 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "diamond.png",
+        "qwen_image_2_1_image_edit_upscale_input.webp",
         "image"
       ],
       "widgets_values_named": {

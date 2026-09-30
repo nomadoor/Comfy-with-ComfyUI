@@ -48,7 +48,7 @@ for (const file of targets.flatMap(listWorkflows)) {
     continue;
   }
   // Drop any earlier guide section (up to the next heading), then append the current one.
-  const rest = note.widgets_values[0].replace(/^## guide\n[\s\S]*?(?=^## |(?![\s\S]))/m, "").trim();
+  const rest = note.widgets_values[0].replace(/^#{2,3} guide\n[\s\S]*?(?=^#{2,3} |(?![\s\S]))/m, "").trim();
   const text = `${rest}\n\n${guide}`;
   if (text === note.widgets_values[0]) continue;
   note.widgets_values[0] = text;

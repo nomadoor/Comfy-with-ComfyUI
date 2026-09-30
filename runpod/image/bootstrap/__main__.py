@@ -63,13 +63,20 @@ def place_workflows(profile, profile_url, comfy_dir):
     target.mkdir(parents=True, exist_ok=True)
     for workflow in profile["workflows"]:
         (target / workflow["name"]).write_bytes(fetch_site_file(workflow, profile_url))
+    # Sample inputs are site media on R2 (WebP); the key carries the first 16 hex of their sha256.
     input_dir = Path(comfy_dir) / "input"
     for item in profile.get("inputs", []):
         destination = (input_dir / item["name"]).resolve()
         if not destination.is_relative_to(input_dir.resolve()):
             raise BootError("workflow", f"Sample input {item['name']} points outside input/.")
+        try:
+            body = fetch(item["url"])
+        except Exception as error:  # noqa: BLE001
+            raise BootError("workflow", f"Could not fetch sample input {item['name']}: {error}") from None
+        if item.get("sha256_prefix") and hashlib.sha256(body).hexdigest()[:16] != item["sha256_prefix"]:
+            raise BootError("workflow", f"Sample input {item['name']} does not match the profile (sha256).")
         destination.parent.mkdir(parents=True, exist_ok=True)
-        destination.write_bytes(fetch_site_file(item, profile_url))
+        destination.write_bytes(body)
     return str(target)
 
 

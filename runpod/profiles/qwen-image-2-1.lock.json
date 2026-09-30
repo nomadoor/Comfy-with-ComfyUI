@@ -15,6 +15,11 @@
       "size_bytes": 675509688,
       "sha256": "bb21f7473051e1ac368515dd3f2e15cd44d7a11748ee8823e1ddca3e4876b7c9",
       "requires_hf_token": false
+    },
+    "https://huggingface.co/Comfy-Org/SDPose/resolve/main/checkpoints/sdpose_wholebody_fp16.safetensors": {
+      "size_bytes": 1916645792,
+      "sha256": "63d01f9a7494560693b24767f4469d59c9d3266b31ff0a253e74d1e611442721",
+      "requires_hf_token": false
     }
   }
 }

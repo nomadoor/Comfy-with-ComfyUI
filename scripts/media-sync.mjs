@@ -14,7 +14,13 @@ import os from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { ORIGINALS_ENV, originalsRootFromEnv } from "./lib/media-local-preview.mjs";
-import { PRODUCTION_MANIFEST, productionSourceFiles, referencesInFiles, stagedReferences } from "./lib/media-refs.mjs";
+import {
+  PRODUCTION_MANIFEST,
+  productionSourceFiles,
+  referencesInFiles,
+  stagedReferences,
+  workflowInputReferences
+} from "./lib/media-refs.mjs";
 import { syncMedia } from "./lib/media-sync.mjs";
 
 const CACHE_CONTROL = "public, max-age=31536000, immutable";
@@ -76,7 +82,9 @@ if (!config.bucket || !config.host) {
   process.exit(1);
 }
 const manifest = JSON.parse(fs.readFileSync(PRODUCTION_MANIFEST, "utf8"));
-const references = staged ? stagedReferences() : referencesInFiles(await productionSourceFiles());
+const references = staged
+  ? stagedReferences()
+  : [...referencesInFiles(await productionSourceFiles()), ...workflowInputReferences()];
 const root = originalsRootFromEnv();
 if (!root) console.warn(`[media:sync] ${ORIGINALS_ENV} が未設定か存在しません。登録済みのメディアだけ確認します。`);
 

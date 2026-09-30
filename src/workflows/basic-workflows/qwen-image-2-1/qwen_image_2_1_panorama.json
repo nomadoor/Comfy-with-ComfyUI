@@ -480,7 +480,7 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "ComfyUI_00407_.png",
+        "qwen_image_2_1_panorama_input.webp",
         "image"
       ],
       "widgets_values_named": {

@@ -6,7 +6,7 @@ slug: qwen-image-2-1
 navId: qwen-image-2-1
 title: "Qwen-Image-2.1"
 created: 2026-09-21
-updated: 2026-09-23
+updated: 2026-09-30
 summary: "Image generation and editing with Qwen-Image-2.1"
 seoTitle: "Qwen-Image-2.1 in ComfyUI: Image Generation and Editing"
 seoDescription: "Use Qwen-Image-2.1 for generation and editing in one model: settings, text2image, Ref2Image, circle or mask edits, and outpainting, with easy-to-read workflows."
@@ -208,13 +208,21 @@ This is not a way to preserve the source image precisely, but it is wonderfully 
 
 Although this is not ControlNet itself, you can pass pose images, depth maps, and similar images as image-editing references and generate images based on them.
 
-**Required custom node**
+**Model download**
 
-- [Fannovel16/comfyui_controlnet_aux](https://github.com/Fannovel16/comfyui_controlnet_aux)
+- checkpoints
+  - [sdpose_wholebody_fp16.safetensors](https://huggingface.co/Comfy-Org/SDPose/blob/main/checkpoints/sdpose_wholebody_fp16.safetensors) (1.92 GB)
 
-![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose.png){media=image}
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂checkpoints/
+        └── sdpose_wholebody_fp16.safetensors
+```
 
-{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="82s", tags=["2MP"], samplers=[{ speed: "1.38 s/it" }] %}
+![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_sdpose.png){media=image}
+
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_sdpose.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="130s", tags=["2MP"], samplers=[{ speed: "1.94 s/it" }] %}
 
 Let’s also provide a reference image and put the person in a specified pose.
 
@@ -223,7 +231,7 @@ You might wonder whether turning the pose into a stick figure is really necessar
 Rather than using Pose simply because that is what you do with ControlNet, the point here is to strip away unnecessary information from the reference image and pass only the pose or shape.
 
 {% outputs %}
-![reference](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_ref.png){media=image} ![pose](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_pose.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_output.png){media=image}
+![reference](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_ref.png){media=image} ![pose](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_sdpose_pose.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_sdpose_output.png){media=image}
 {% endoutputs %}
 
 ### Upscale

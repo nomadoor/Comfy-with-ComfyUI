@@ -3767,6 +3767,38 @@
     "bytes": 160458,
     "source": "9d046ea243eb0fca"
   },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_sdpose_output.png": {
+    "key": "images/fb1db460be2d81ef.webp",
+    "width": 1184,
+    "height": 1728,
+    "type": "image/webp",
+    "bytes": 203420,
+    "source": "e7eed0e50a03a356"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_sdpose_pose_input.png": {
+    "key": "images/24c4c96fa72b7d69.webp",
+    "width": 896,
+    "height": 1280,
+    "type": "image/webp",
+    "bytes": 93320,
+    "source": "95b1578d5853dcf7"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_sdpose_pose.png": {
+    "key": "images/04dbdd900ce890e2.webp",
+    "width": 1184,
+    "height": 1728,
+    "type": "image/webp",
+    "bytes": 39942,
+    "source": "587963297b34642b"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_sdpose.png": {
+    "key": "images/751c0dcf4b160700.webp",
+    "width": 3443,
+    "height": 2277,
+    "type": "image/webp",
+    "bytes": 215980,
+    "source": "d43dc8e54f09998d"
+  },
   "basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_text_encode.png": {
     "key": "images/005a14835671510b.webp",
     "width": 619,
@@ -3927,6 +3959,14 @@
     "bytes": 326858,
     "source": "ef62f622994ccdf4"
   },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_panorama_input.png": {
+    "key": "images/3852258bb9071e60.webp",
+    "width": 1184,
+    "height": 1760,
+    "type": "image/webp",
+    "bytes": 741686,
+    "source": "19bb28cb97a902cc"
+  },
   "basic-workflows/qwen-image-2-1/qwen_image_2_1_panorama.mp4": {
     "key": "videos/f7cebbcf83b928a2.mp4",
     "width": 1706,
@@ -3940,6 +3980,30 @@
       "height": 1028,
       "bytes": 88746
     }
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image_input_1.png": {
+    "key": "images/702e06fa54e230b6.webp",
+    "width": 1024,
+    "height": 1536,
+    "type": "image/webp",
+    "bytes": 95826,
+    "source": "5d31649fa403a428"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image_input_2.png": {
+    "key": "images/b0bcc7954e5e1bdf.webp",
+    "width": 1672,
+    "height": 941,
+    "type": "image/webp",
+    "bytes": 249216,
+    "source": "edf18363b2c98415"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image_input_3.png": {
+    "key": "images/e19750c800de38a2.webp",
+    "width": 1254,
+    "height": 1254,
+    "type": "image/webp",
+    "bytes": 248610,
+    "source": "ba7c9edccf1473ed"
   },
   "basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image_output.png": {
     "key": "images/a57e7b9869fa8333.webp",

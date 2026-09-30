@@ -508,7 +508,7 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "densha.png",
+        "qwen_image_2_1_ref2image_input_3.webp",
         "image"
       ],
       "widgets_values_named": {
@@ -596,7 +596,7 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "straw_hat.png",
+        "qwen_image_2_1_ref2image_input_1.webp",
         "image"
       ],
       "widgets_values_named": {
@@ -637,7 +637,7 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "shark.png",
+        "qwen_image_2_1_ref2image_input_2.webp",
         "image"
       ],
       "widgets_values_named": {

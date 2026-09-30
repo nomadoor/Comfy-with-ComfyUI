@@ -27,6 +27,53 @@ const FRONTEND_NODES = new Set(["Note", "MarkdownNote", "Reroute", "PrimitiveNod
 export const lockPath = (id) => path.join(PROFILE_DIR, `${id}.lock.json`);
 const readJSON = (file, fallback) => (fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : fallback);
 
+// --- Sample inputs
+// A workflow's input files are ordinary site media: the original sits in COMFY_MEDIA_ORIGINALS as
+// <article>/<stem>.png (or .jpg), media:sync uploads it to R2 as WebP, and the LoadImage node names
+// the file the Pod will write into input/, <stem>.webp. So one name links node, original and R2 object.
+const MEDIA_MANIFEST = path.resolve("src", "_data", "media.json");
+const ORIGINAL_EXTS = [".png", ".jpg", ".jpeg"];
+
+export const inputFileName = (node) =>
+  INPUT_NODES.has(node.type) && node.mode !== 4
+    ? String(node.widgets_values?.[0] ?? "").replace(/ \[(input|output|temp)\]$/, "") || null
+    : null;
+
+/** Logical media name for an input file: the registered original with the same stem, else <stem>.png. */
+export const inputMediaName = (article, fileName, manifest = {}) => {
+  const stem = `${article}/${fileName.replace(/\.[^./]+$/, "")}`;
+  return ORIGINAL_EXTS.map((ext) => stem + ext).find((name) => manifest[name]) ?? `${stem}.png`;
+};
+
+const globToRegExp = (glob) =>
+  new RegExp(`^${glob.replace(/[.+^${}()|[\]\\]/g, "\\$&").replace(/\*\*\/?/g, "\0").replace(/\*/g, "[^/]*").replace(/\0/g, ".*")}$`);
+
+/**
+ * `/media/...` references for every sample input the profiles use, so media:sync uploads them and
+ * check:media accounts for them. `listFiles`/`readText` let the pre-commit hook read the git index.
+ */
+export const profileInputReferences = ({
+  listFiles = () => fg.sync(["runpod/profiles/*.yaml", "src/workflows/**/*.json"]),
+  readText = (file) => fs.readFileSync(file, "utf8"),
+  manifest = readJSON(MEDIA_MANIFEST, {}),
+} = {}) => {
+  const files = listFiles();
+  const references = [];
+  for (const yamlFile of files.filter((f) => /^runpod\/profiles\/[^/]+\.yaml$/.test(f))) {
+    const source = YAML.parse(readText(yamlFile));
+    if (!source?.article) continue;
+    const patterns = (source.workflows ?? []).map(globToRegExp);
+    for (const file of files.filter((f) => f.endsWith(".json") && patterns.some((re) => re.test(f)))) {
+      const workflow = JSON.parse(readText(file));
+      for (const node of eachNode(workflow)) {
+        const name = inputFileName(node);
+        if (name) references.push({ file, ref: `/media/${inputMediaName(source.article, name, manifest)}` });
+      }
+    }
+  }
+  return references;
+};
+
 export const listProfileIds = () =>
   fs.existsSync(PROFILE_DIR)
     ? fs.readdirSync(PROFILE_DIR).filter((f) => f.endsWith(".yaml")).map((f) => f.slice(0, -5)).sort()
@@ -84,25 +131,24 @@ export const buildProfile = (id, { siteURL, coreNodes = readJSON(CORE_NODES_PATH
   const workflows = [];
   const inputs = new Map();
 
-  // Sample inputs live next to the workflows in inputs/, under the exact name the node reads.
-  const addInput = (file, node, origin) => {
-    const name = String(node.widgets_values?.[0] ?? "").replace(/ \[(input|output|temp)\]$/, "");
-    if (!name) return;
-    const source = path.join(path.dirname(file), "inputs", name);
-    if (!fs.existsSync(source)) {
-      warnings.push(`${origin} node ${node.id} ${node.type}: sample input ${name} is missing (add it to ${where(path.dirname(source))}/)`);
+  const manifest = readJSON(MEDIA_MANIFEST, {});
+  const mediaHost = readJSON(path.resolve("src", "_data", "site.json"), {}).media?.host;
+  const addInput = (node, origin) => {
+    const name = inputFileName(node);
+    if (!name || inputs.has(name)) return;
+    if (!name.endsWith(".webp")) {
+      warnings.push(`${origin} node ${node.id} ${node.type}: ${name} should be <stem>.webp (the Pod writes the R2 WebP under that name)`);
       return;
     }
-    const body = fs.readFileSync(source);
-    const sha256 = crypto.createHash("sha256").update(body).digest("hex");
-    const known = inputs.get(name);
-    if (known && known.sha256 !== sha256) {
-      errors.push(`${origin}: sample input ${name} differs from ${known.from}`);
+    const media = inputMediaName(source.article, name, manifest);
+    const entry = manifest[media];
+    if (!entry) {
+      warnings.push(`${origin} node ${node.id} ${node.type}: sample input ${media} is not in media.json (put the original in COMFY_MEDIA_ORIGINALS and commit)`);
       return;
     }
-    if (known) return;
-    const publicPath = `/workflows/${path.relative(WORKFLOW_ROOT, source).split(path.sep).join("/")}`;
-    inputs.set(name, { name, path: publicPath, url: new URL(publicPath, siteURL).href, sha256, size_bytes: body.length, from: where(source) });
+    // R2 keys are the first 16 hex of the object's sha256, so the Pod can verify what it downloads.
+    const hash = entry.key.match(/([0-9a-f]{16})\.\w+$/)?.[1];
+    inputs.set(name, { name, media, url: `https://${mediaHost}/${entry.key}`, sha256_prefix: hash, size_bytes: entry.bytes });
   };
 
   const addModel = (model, origin) => {
@@ -174,7 +220,7 @@ export const buildProfile = (id, { siteURL, coreNodes = readJSON(CORE_NODES_PATH
         }
       }
 
-      if (INPUT_NODES.has(node.type) && node.mode !== 4) addInput(file, node, origin);
+      addInput(node, origin);
 
       if (props.cnr_id && props.cnr_id !== "comfy-core") {
         addCustomNode({ id: props.cnr_id, version: "latest", source: "registry" });
@@ -243,7 +289,7 @@ export const buildProfile = (id, { siteURL, coreNodes = readJSON(CORE_NODES_PATH
     requires_hf_token: sortedModels.some((m) => m.requires_hf_token),
     unsafe_format: sortedModels.some((m) => m.unsafe_format),
     workflows,
-    inputs: [...inputs.values()].map(({ from, ...input }) => input).sort((a, b) => a.name.localeCompare(b.name)),
+    inputs: [...inputs.values()].sort((a, b) => a.name.localeCompare(b.name)),
     custom_nodes: [...customNodes.values()].sort((a, b) => a.id.localeCompare(b.id)),
     models: sortedModels,
   };
