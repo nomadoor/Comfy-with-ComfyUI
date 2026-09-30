@@ -14,6 +14,8 @@ Accepted（PoC。記事側のボタン・案内表示は別途デザイン相談
   - 値は記事本文の「モデルのダウンロード」リストとローダーのファイル名を照合して埋める。照合できないものは推測で埋めない。
   - `properties.models` はローカルの ComfyUI でも「足りないモデル」ダイアログのダウンロード先として使われるので、読者にも役立つ。
 - workflow が出どころを持たない custom node（`cnr_id` なしで保存されたノード）だけは、プロファイル元ファイルの `overrides.custom_nodes` に Registry の ID とバージョンを書く。Qwen-Image-2.1 では `OpenposePreprocessor`（`comfyui_controlnet_aux`）と `PanoramaPreview`（`panorama-stickers`）の 2 つ。
+- custom node は Registry の最新版を入れる（オーナー判断）。workflow に保存された `ver` は使わず、固定したいときだけ `overrides.custom_nodes` に `version:` を書く。実際に入ったバージョンは Pod の `report.json` に残す。custom node 側の破壊的変更で記事の workflow が一時的に動かなくなることは許容し、そのときに workflow を直す。
+- workflow の最初の MarkdownNote の先頭に `## guide` 節を置き、記事への EN / JA / ZH リンクを並べる（Pod で workflow だけを開いた人が記事に戻れるように）。まず Qwen-Image-2.1 の 12 本で試す。`scripts/add-workflow-guide.mjs` で入れる。
 - コアノードかどうかは `runpod/core-nodes.json`（ComfyUI master のソースから抜き出したノード ID の一覧）で判定する。一覧にも `overrides` にもない `cnr_id` なしのノードはエラーにする。
 - **Docker image は汎用 1 種類。** モデルファミリ固有の情報は image に入れず、起動時にサイトから取得する「プロファイル」だけが中身を決める。
 - **プロファイルはサイトのビルドで生成する。** `runpod/profiles/<id>.yaml`（人間が書く最小限の元ファイル）と workflow JSON から、`/runpod/profiles/<id>.json` を出力してサイトと一緒にデプロイする。image の再ビルドなしで内容が更新される。
@@ -31,11 +33,10 @@ Accepted（PoC。記事側のボタン・案内表示は別途デザイン相談
 
 ## 未決事項
 - custom node の導入経路（Registry API / comfy-cli / git）。Registry API の `/nodes/<id>/install?version=` で zip の URL が取れることは確認済み。
-- `overrides` のバージョンは Registry の最新版（`comfyui_controlnet_aux` 1.1.5、`panorama-stickers` 1.5.0）を仮に入れている。記事の検証に使ったバージョンの確認が必要。
 - GPU 案内の値（`min_vram_gb: 12`、`recommended_vram_gb: 24`）は仮。記事の検証環境（RTX 4070 Ti 12GB）をもとにしている。
 - RunPod のデプロイリンク形式、環境変数を URL で渡せるか、GPU を固定できるか。
 - テンプレート作者向けの還元制度の有無。
 
 ## Files
-- Added: `ops/adr/2026-09-30-runpod-poc.md`, `runpod/`, `scripts/add-workflow-models.mjs`
-- Updated: `src/workflows/basic-workflows/qwen-image-2-1/*.json`（`properties.models` の追加のみ）, `.eleventy.js`（ビルド後にプロファイルを出力）, `package.json`（`check:runpod`, `runpod:refresh`）
+- Added: `ops/adr/2026-09-30-runpod-poc.md`, `runpod/`, `scripts/add-workflow-models.mjs`, `scripts/add-workflow-guide.mjs`
+- Updated: `src/workflows/basic-workflows/qwen-image-2-1/*.json`（`properties.models` と MarkdownNote の `## guide` 節の追加のみ）, `.eleventy.js`（ビルド後にプロファイルを出力）, `package.json`（`check:runpod`, `runpod:refresh`）

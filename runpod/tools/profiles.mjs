@@ -116,14 +116,15 @@ export const buildProfile = (id, { siteURL, coreNodes = readJSON(CORE_NODES_PATH
     models.set(key, entry);
   };
 
-  const addCustomNode = (node, origin) => {
-    const known = customNodes.get(node.id);
-    if (known && known.version !== node.version) {
-      errors.push(`${origin}: custom node ${node.id} is ${node.version}, elsewhere ${known.version}`);
-      return;
-    }
-    if (!known) customNodes.set(node.id, node);
+  // Custom nodes install their latest release unless the profile source pins one. The `ver` saved
+  // in a workflow is ignored on purpose (owner decision, see the ADR); the Pod records what it got.
+  const addCustomNode = (node) => {
+    if (!customNodes.has(node.id)) customNodes.set(node.id, node);
   };
+  for (const node of overrideNodes) {
+    const version = String((node.git ? node.commit : node.version) ?? "latest");
+    addCustomNode(node.git ? { id: node.id, version, source: "git", git: node.git } : { id: node.id, version, source: "registry" });
+  }
 
   for (const file of files) {
     const origin = where(file);
@@ -150,12 +151,9 @@ export const buildProfile = (id, { siteURL, coreNodes = readJSON(CORE_NODES_PATH
       }
 
       if (props.cnr_id && props.cnr_id !== "comfy-core") {
-        addCustomNode({ id: props.cnr_id, version: String(props.ver ?? ""), source: "registry" }, `${origin} node ${node.id}`);
+        addCustomNode({ id: props.cnr_id, version: "latest", source: "registry" });
       } else if (!props.cnr_id && props.aux_id) {
-        addCustomNode(
-          { id: props.aux_id, version: String(props.ver ?? ""), source: "git", git: `https://github.com/${props.aux_id}` },
-          `${origin} node ${node.id}`
-        );
+        addCustomNode({ id: props.aux_id, version: "latest", source: "git", git: `https://github.com/${props.aux_id}` });
       } else if (
         !props.cnr_id &&
         !core.has(node.type) &&
@@ -174,13 +172,6 @@ export const buildProfile = (id, { siteURL, coreNodes = readJSON(CORE_NODES_PATH
     });
   }
 
-  for (const node of overrideNodes) {
-    if (node.git) {
-      addCustomNode({ id: node.id, version: String(node.commit ?? ""), source: "git", git: node.git }, `${id}.yaml`);
-    } else {
-      addCustomNode({ id: node.id, version: String(node.version ?? ""), source: "registry" }, `${id}.yaml`);
-    }
-  }
   for (const model of source.overrides?.models ?? []) addModel(model, `${id}.yaml`);
 
   let totalBytes = 0;
