@@ -135,6 +135,6 @@ Detailer 的基础只有这些，所以我想已经足够能运用自如了。
 
 ---
 
-## 样本图像
-
+{% outputs "samples" %}
 ![](/media/basic-workflows/detailer/legacy_gyazo_7564534ad31facc3d0c91bc36606c930.jpg){media=image}
+{% endoutputs %}

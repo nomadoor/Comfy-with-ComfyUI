@@ -1735,16 +1735,19 @@ h1 {
   margin-bottom: 0;
 }
 
-/* Step cards (mediaRow, gathered by scripts/lib/media-steps.mjs; behaviour in media-steps.js).
-   A filled surface with a header, a progress bar, a fixed image frame and the explanation below,
-   showing one step at a time. The card never changes height: the image frame has a ratio fixed at
-   build time and the text area is as tall as the card's longest explanation. */
+/* Step cards (mediaRow, gathered by scripts/lib/media-steps.mjs). Every step is its own floating
+   card (image beside its explanation) with a small gap between them, so the reader only scrolls and
+   still sees where each step ends. The first card of a run carries the kind header. Clicking a step's
+   image opens the lightbox with that step's explanation beside the enlarged image. */
 .media-steps {
-  /* The card sits one fill step above the page, and its inner parts one step above the card. */
+  /* Cards sit one fill step above the page, and their inner parts one step above the card. */
   --media-steps-surface: color-mix(in srgb, var(--color-text) 6%, var(--color-reader));
   --media-steps-inset: color-mix(in srgb, var(--color-text) 12%, var(--color-reader));
   --media-steps-lift: 0 8px 24px rgb(0 0 0 / 0.4);
   --media-steps-header-size: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
   margin: var(--space-xl) 0;
 }
 
@@ -1752,19 +1755,14 @@ h1 {
   --media-steps-lift: 0 6px 18px rgb(0 0 0 / 0.12);
 }
 
-.media-steps__card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  padding: var(--space-sm) var(--space-md) 0;
+.media-steps__step {
+  padding: var(--space-lg) var(--space-md);
   border-radius: var(--radius-md);
   background: var(--media-steps-surface);
 }
 
-/* A single step has no bottom buttons, so the card closes with its own padding. */
-.media-steps--single .media-steps__card {
-  padding-bottom: var(--space-lg);
+.media-steps__step:has(> .media-steps__header) {
+  padding-top: 0;
 }
 
 /* Header: the card's top-left corner is a square holding the kind's icon, then the kind and the
@@ -1775,7 +1773,7 @@ h1 {
   gap: 0.75rem;
   min-inline-size: 0;
   block-size: var(--media-steps-header-size);
-  margin: calc(-1 * var(--space-sm)) calc(-1 * var(--space-md)) calc(-1 * var(--space-xs) / 2);
+  margin: 0 calc(-1 * var(--space-md)) var(--space-md);
   padding-inline-end: var(--space-md);
 }
 
@@ -1822,156 +1820,56 @@ h1 {
   font-size: 0.8125rem;
 }
 
-/* Progress bar: one segment per step, labelled with the step's name. */
-.media-steps__progress {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  gap: 6px;
-}
-
-.media-steps__segment {
-  flex: 1 1 0;
-  min-inline-size: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-  padding: 0.5rem 0 0.25rem;
-  border: 0;
-  background: transparent;
-  color: var(--color-text-muted);
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-}
-
-.media-steps__bar {
-  display: block;
-  block-size: 3px;
-  border-radius: var(--radius-pill);
-  background: var(--color-border-strong);
-  transition: background-color 160ms ease;
-}
-
-.media-steps__segment-label {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-size: 0.75rem;
-  line-height: 1.3;
-  transition: color 160ms ease;
-}
-
-.media-steps__segment.is-done .media-steps__bar {
-  background: color-mix(in srgb, var(--color-text) 45%, var(--color-border-strong));
-}
-
-.media-steps__segment.is-active .media-steps__bar {
-  background: var(--color-heading);
-}
-
-.media-steps__segment.is-active .media-steps__segment-label {
-  color: var(--color-heading);
-}
-
-.media-steps__segment:hover:not(.is-active) .media-steps__bar {
-  background: var(--color-text-muted);
-}
-
-.media-steps__segment:hover:not(.is-active) .media-steps__segment-label {
-  color: var(--color-text);
-}
-
-/* Slides and texts: every step shares one grid cell of its stack. Without JS the steps simply
-   follow one another. */
-.media-steps__stage,
-.media-steps__texts {
+/* Step body: image column beside the explanation. */
+.media-steps__body {
   display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: var(--space-lg);
+  align-items: start;
 }
 
-.media-steps__slide,
-.media-steps__text {
-  min-inline-size: 0;
-  min-block-size: 0;
-}
-
-.js .media-steps__slide,
-.js .media-steps__text {
-  grid-area: 1 / 1;
-}
-
-/* opacity as well as visibility: children with their own visibility transition (the workflow copy
-   buttons) would otherwise linger for a moment after their step is switched away. */
-.js .media-steps__slide:not(.is-active),
-.js .media-steps__text:not(.is-active) {
-  visibility: hidden;
-  opacity: 0;
-}
-
-/* Image frame: a fixed ratio (the card's median, set at build time); each image is fitted whole
-   inside it and centred. */
-.js .media-steps__stage {
-  inline-size: 100%;
-  max-block-size: 24rem;
-  aspect-ratio: var(--media-steps-frame, 16 / 9);
-}
-
-.media-steps__slide {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.media-steps__slide img {
+.media-steps__media img {
   display: block;
-  inline-size: auto;
+  inline-size: 100%;
   block-size: auto;
-  max-inline-size: 100%;
-  max-block-size: 100%;
   border-radius: var(--radius-md);
   /* ComfyUI screenshots are nearly the card's colour; a soft shadow lifts them off it. */
   box-shadow: var(--media-steps-lift);
 }
 
-html:not(.js) .media-steps__slide img {
-  max-block-size: 24rem;
+/* The image sits centred against its explanation. */
+.media-steps__media {
+  align-self: center;
 }
 
-.js .media-steps__slide .article-video {
-  block-size: 100%;
-  justify-content: center;
-}
-
-.js .media-steps__slide .article-video__frame {
-  inline-size: auto;
-  block-size: 100%;
-  max-inline-size: 100%;
-}
-
-/* Explanation: the workflow file row first, then the step's title and text. */
+/* The explanation sits one step below the article body in size and tone. */
 .media-steps__text {
-  padding: 0 var(--space-xs);
+  min-inline-size: 0;
   font-size: 0.9375em;
-  color: color-mix(in srgb, var(--color-text) 85%, var(--media-steps-surface));
+  --media-steps-text: color-mix(in srgb, var(--color-text) 85%, var(--media-steps-surface));
+  color: var(--media-steps-text);
 }
 
-.media-steps__text > :first-child {
+/* Article paragraphs and lists set their own colour, so the quieter tone is applied to them too. */
+.article-body .media-steps__text :is(p, ul, ol) {
+  color: var(--media-steps-text);
+}
+
+.media-steps__text > :first-child,
+.media-steps__files > :first-child {
   margin-top: 0;
+}
+
+.media-steps__text > :last-child,
+.media-steps__files > :last-child {
+  margin-bottom: 0;
 }
 
 .media-steps__files {
   margin-bottom: var(--space-sm);
 }
 
-.media-steps__files > :first-child {
-  margin-top: 0;
-}
-
-.media-steps__files > :last-child {
-  margin-bottom: 0;
-}
-
-.article-body .media-steps__title {
+.article-body .media-steps__text .media-steps__title {
   color: var(--color-heading);
   font-size: 1.0625rem;
   font-weight: 700;
@@ -1983,137 +1881,10 @@ html:not(.js) .media-steps__slide img {
   background: var(--media-steps-inset);
 }
 
-
-/* Previous / next zones over the card's left and right edges, from the image down (the script sets
-   the offset). Hovering one shades that edge and fades in an arrow; the middle of the image still
-   opens the lightbox. */
-.media-steps__edge {
-  position: absolute;
-  top: var(--media-steps-edge-top, 0);
-  bottom: 0;
-  z-index: 1;
-  display: grid;
-  place-items: center;
-  inline-size: clamp(3.5rem, 12%, 6rem);
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: var(--color-heading);
-  cursor: pointer;
-  transition: background-color 160ms ease;
-}
-
-.media-steps__edge--prev {
-  left: 0;
-  border-radius: 0 0 0 var(--radius-md);
-}
-
-.media-steps__edge--next {
-  right: 0;
-  border-radius: 0 0 var(--radius-md) 0;
-}
-
-.media-steps__edge--prev:hover:not(:disabled) {
-  background: linear-gradient(to right, color-mix(in srgb, var(--media-steps-surface) 70%, transparent), transparent);
-}
-
-.media-steps__edge--next:hover:not(:disabled) {
-  background: linear-gradient(to left, color-mix(in srgb, var(--media-steps-surface) 70%, transparent), transparent);
-}
-
-.media-steps__edge .icon {
-  inline-size: 2rem;
-  block-size: 2rem;
-  opacity: 0;
-  filter: drop-shadow(0 1px 3px rgb(0 0 0 / 0.5));
-  transition: opacity 160ms ease;
-}
-
-.media-steps__edge:hover:not(:disabled) .icon {
-  opacity: 0.8;
-}
-
-.media-steps__edge:disabled {
-  pointer-events: none;
-}
-
-/* Bottom previous / next: the neighbouring step's name with an arrow. Each button is half the card
-   wide and reaches the card's bottom edge. */
-.media-steps__footer {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin: 0 calc(-1 * var(--space-md));
-}
-
-.media-steps__nav {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  min-inline-size: 0;
-  min-block-size: 3.25rem;
-  padding: 0 var(--space-md);
-  border: 0;
-  border-radius: 0 0 0 var(--radius-md);
-  background: transparent;
-  color: var(--color-text-muted);
-  font: inherit;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: color 160ms ease;
-}
-
-.media-steps__nav--next {
-  justify-content: flex-end;
-  border-radius: 0 0 var(--radius-md) 0;
-}
-
-.media-steps__nav:hover:not(:disabled) {
-  color: var(--color-heading);
-}
-
-/* At either end the button keeps its place but holds nothing. */
-.media-steps__nav:disabled {
-  cursor: default;
-}
-
-.media-steps__nav:disabled > * {
-  visibility: hidden;
-}
-
-.media-steps__nav .icon {
-  flex: none;
-  inline-size: 1rem;
-  block-size: 1rem;
-}
-
-.media-steps__nav-title {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-html:not(.js) .media-steps__progress,
-html:not(.js) .media-steps__edge,
-html:not(.js) .media-steps__footer {
-  display: none;
-}
-
-/* Touch screens swipe instead of using the edge zones. */
-@media (hover: none) {
-  .media-steps__edge {
-    display: none;
-  }
-}
-
-@media (max-width: 600px) {
-  .media-steps__segment-label {
-    display: none;
-  }
-
-  .media-steps__segment {
-    padding-block: 0.6rem;
+@media (max-width: 700px) {
+  .media-steps__body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-sm);
   }
 }
 
@@ -5197,8 +4968,23 @@ body.lightbox-open {
   overflow: hidden;
 }
 
+/* Lightbox over a dimmed page. Media in a step card opens in a floating window with a notes column
+   (the step's explanation) and zooms inside it; other media floats frameless at the window's size and
+   zooms across the screen. Previous / next sit just outside the window, the close button and the
+   zoom controls in the screen's corners, all in the same place whatever is showing. */
 .lightbox {
-  --lightbox-image-inline-gap: 4.75rem;
+  --lightbox-nav: 3.5rem;
+  /* Gap from the screen edge for the close button, and around the arrows. */
+  --lightbox-nav-inset: var(--space-lg);
+  --lightbox-image-inline-gap: var(--space-md);
+  /* Leave room for the arrows on both sides, plus the same gap again between arrow and window. */
+  --lightbox-win-w: min(76rem, calc(100vw - 2 * (var(--lightbox-nav) + 2 * var(--lightbox-nav-inset))));
+  --lightbox-win-h: min(46rem, calc(100dvh - 4rem));
+  --lightbox-notes-w: 0px;
+  --lightbox-notes-h: 0px;
+  /* The area the media may use inside the window. */
+  --lightbox-view-w: calc(var(--lightbox-win-w) - var(--lightbox-notes-w));
+  --lightbox-view-h: calc(var(--lightbox-win-h) - var(--lightbox-notes-h));
   position: fixed;
   inset: 0;
   display: none;
@@ -5214,23 +5000,123 @@ body.lightbox-open {
 .lightbox__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.96);
+  background: rgb(0 0 0 / 0.72);
+}
+
+.lightbox.has-notes {
+  --lightbox-notes-w: min(24rem, 34%);
 }
 
 .lightbox__content {
   position: absolute;
   inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
   pointer-events: none;
 }
 
-.lightbox__controls {
+.lightbox__window {
+  position: relative;
+  display: flex;
+  inline-size: var(--lightbox-win-w);
+  block-size: var(--lightbox-win-h);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-reader);
+  box-shadow: 0 24px 64px rgb(0 0 0 / 0.5);
+  pointer-events: auto;
+}
+
+/* Without notes there is no window: the media floats over the dimmed page at the window's size to
+   start with, and zooming spreads it over the whole screen instead of cropping it to a frame. */
+.lightbox:not(.has-notes) {
+  --lightbox-view-w: var(--lightbox-win-w);
+  --lightbox-view-h: var(--lightbox-win-h);
+}
+
+.lightbox:not(.has-notes) .lightbox__window {
   position: absolute;
+  inset: 0;
+  inline-size: auto;
+  block-size: auto;
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.lightbox:not(.has-notes) .lightbox__image-area {
+  background: transparent;
+}
+
+.lightbox__notes {
+  flex: none;
+  box-sizing: border-box;
+  inline-size: var(--lightbox-notes-w);
+  padding: var(--space-xl) var(--space-lg) var(--space-lg);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  color: var(--color-text);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.lightbox__notes[hidden] {
+  display: none;
+}
+
+.lightbox__notes > :first-child {
+  margin-top: 0;
+}
+
+.lightbox__notes .media-steps__title {
+  color: var(--color-heading);
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.lightbox__notes ul {
+  padding-left: 1.25rem;
+}
+
+.lightbox__notes code {
+  font-family: ui-monospace, "JetBrains Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  padding: 0.1rem var(--space-xs);
+  border-radius: var(--radius-sm);
+  background: var(--color-chip-border);
+  color: var(--color-code-text, var(--color-text));
+  font-size: 0.9em;
+}
+
+.lightbox__notes pre {
+  overflow-x: auto;
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  background: var(--color-panel-strong);
+}
+
+.lightbox__notes pre code {
+  padding: 0;
+  background: transparent;
+}
+
+.lightbox__notes a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* Help and zoom controls: always the bottom-right corner of the screen, in every mode. */
+.lightbox__controls {
+  position: fixed;
   right: var(--space-md);
   bottom: var(--space-md);
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: var(--space-xs);
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-sm);
   z-index: 4;
   pointer-events: none;
   color: #f5f5f5;
@@ -5250,12 +5136,14 @@ body.lightbox-open {
 }
 
 .lightbox__image-area {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  flex: 1 1 auto;
+  min-inline-size: 0;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   justify-content: center;
-  pointer-events: none;
+  background: color-mix(in srgb, var(--color-text) 4%, var(--color-bg));
 }
 
 .lightbox__media {
@@ -5263,22 +5151,22 @@ body.lightbox-open {
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
   overflow: hidden;
   pointer-events: auto;
 }
 
+/* The media fits the view area (less a small margin) at its own aspect ratio. */
 .lightbox__image-stack,
 .lightbox__media video {
-  width: min(calc(100vw - var(--lightbox-image-inline-gap) - var(--lightbox-image-inline-gap)), calc((100vh - 2rem) * var(--lightbox-ratio, 1)));
-  width: min(calc(100vw - var(--lightbox-image-inline-gap) - var(--lightbox-image-inline-gap)), calc((100dvh - 2rem) * var(--lightbox-ratio, 1)));
-  height: min(calc(100vh - 2rem), calc((100vw - var(--lightbox-image-inline-gap) - var(--lightbox-image-inline-gap)) / var(--lightbox-ratio, 1)));
-  height: min(calc(100dvh - 2rem), calc((100vw - var(--lightbox-image-inline-gap) - var(--lightbox-image-inline-gap)) / var(--lightbox-ratio, 1)));
-  max-width: calc(100vw - var(--lightbox-image-inline-gap) - var(--lightbox-image-inline-gap));
-  max-height: calc(100vh - 2rem);
-  max-height: calc(100dvh - 2rem);
+  --lightbox-fit-w: calc(var(--lightbox-view-w) - 2 * var(--lightbox-image-inline-gap));
+  --lightbox-fit-h: calc(var(--lightbox-view-h) - 2rem);
+  width: min(var(--lightbox-fit-w), calc(var(--lightbox-fit-h) * var(--lightbox-ratio, 1)));
+  height: min(var(--lightbox-fit-h), calc(var(--lightbox-fit-w) / var(--lightbox-ratio, 1)));
+  max-width: var(--lightbox-fit-w);
+  max-height: var(--lightbox-fit-h);
   cursor: zoom-in;
   flex: 0 1 auto;
   z-index: 1;
@@ -5313,6 +5201,16 @@ body.lightbox-open {
 .lightbox__media video {
   object-fit: contain;
   background: #000;
+  transform-origin: center;
+}
+
+.lightbox__media video.is-zoomed {
+  cursor: grab;
+  touch-action: none;
+}
+
+.lightbox__media video.is-dragging {
+  cursor: grabbing;
 }
 
 .lightbox__image-stack.is-zoomed {
@@ -5370,25 +5268,35 @@ body.lightbox-open {
   line-height: 1;
 }
 
+/* Close: the same glass circle as the arrows, a size smaller. */
 .lightbox__close {
-  position: absolute;
+  position: fixed;
   top: var(--space-md);
-  right: var(--space-md);
+  right: var(--lightbox-nav-inset);
   z-index: 4;
   width: 2.75rem;
   height: 2.75rem;
-  color: #f5f5f5;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.08);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06);
+  color: rgb(255 255 255 / 0.82);
   pointer-events: auto;
 }
 
 .lightbox__zoom-button:not(:disabled):hover,
 .lightbox__zoom-button:not(:disabled):focus-visible,
 .lightbox__reset-button:not(:disabled):hover,
-.lightbox__reset-button:not(:disabled):focus-visible,
-.lightbox__close:hover,
-.lightbox__close:focus-visible {
+.lightbox__reset-button:not(:disabled):focus-visible {
   color: #fff;
   opacity: 0.72;
+}
+
+.lightbox__close:hover,
+.lightbox__close:focus-visible {
+  background: rgb(255 255 255 / 0.16);
+  color: #fff;
 }
 
 .lightbox__zoom-button:disabled,
@@ -5405,38 +5313,47 @@ body.lightbox-open {
   height: 0.875rem;
 }
 
+/* Previous / next: the same place on screen in every mode, so repeated clicks never miss. They sit
+   just outside the window's largest frame rather than at the screen edges. */
 .lightbox__nav {
-  border: none;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--color-text);
-  width: 2.75rem;
-  height: 2.75rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: var(--transition-fast);
-  flex-shrink: 0;
-  position: fixed;
+  position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   z-index: 2;
+  display: grid;
+  place-items: center;
+  inline-size: var(--lightbox-nav);
+  block-size: var(--lightbox-nav);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.08);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06);
+  color: rgb(255 255 255 / 0.82);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background-color 160ms ease, color 160ms ease;
   pointer-events: auto;
 }
 
 .lightbox__nav--prev {
-  left: var(--space-md);
+  left: calc(50% - var(--lightbox-win-w) / 2 - var(--space-md) - var(--lightbox-nav));
 }
 
 .lightbox__nav--next {
-  right: var(--space-md);
+  right: calc(50% - var(--lightbox-win-w) / 2 - var(--space-md) - var(--lightbox-nav));
 }
 
 .lightbox__nav:hover,
 .lightbox__nav:focus-visible {
-  background: rgba(255, 255, 255, 0.18);
-  transform: translateY(-50%);
+  background: rgb(255 255 255 / 0.16);
+  color: #fff;
+}
+
+.lightbox__nav .lightbox__icon {
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
 }
 
 .lightbox__icon {
@@ -5446,8 +5363,62 @@ body.lightbox-open {
 }
 
 .lightbox__close .lightbox__icon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Narrow screens: the window takes the width, notes go below the media, arrows below the window. */
+@media (max-width: 800px) {
+  .lightbox {
+    --lightbox-win-w: calc(100vw - 2 * var(--space-sm));
+    --lightbox-win-h: calc(100dvh - var(--lightbox-nav) - 4 * var(--space-md) - 2.75rem - 2 * var(--space-md));
+  }
+
+  .lightbox.has-notes {
+    --lightbox-notes-w: 0px;
+    --lightbox-notes-h: calc(var(--lightbox-win-h) * 0.45);
+  }
+
+  /* Keep the window clear of the close button at the top of the screen. */
+  .lightbox__content {
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding-top: calc(2 * var(--space-md) + 2.75rem);
+  }
+
+  .lightbox__window {
+    order: -1;
+    flex-direction: column;
+  }
+
+  .lightbox__nav {
+    top: auto;
+    bottom: var(--space-md);
+    transform: none;
+  }
+
+  .lightbox__nav--prev {
+    left: calc(50% - var(--lightbox-nav) - var(--space-sm));
+  }
+
+  .lightbox__nav--next {
+    right: calc(50% - var(--lightbox-nav) - var(--space-sm));
+  }
+
+  .lightbox.has-notes .lightbox__notes {
+    inline-size: auto;
+    block-size: var(--lightbox-notes-h);
+    padding: var(--space-md);
+  }
+
+  .lightbox__help {
+    display: none;
+  }
+
+  .lightbox__controls {
+    right: var(--space-sm);
+    bottom: calc(var(--lightbox-nav) + 2 * var(--space-md));
+  }
 }
 
 .lightbox__icon svg {

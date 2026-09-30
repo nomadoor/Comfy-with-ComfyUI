@@ -153,6 +153,6 @@ Stable Diffusion 1.5 作为特殊的例子，在本站，将按本来的设计 *
 
 ---
 
-## 样本图像
-
+{% outputs "samples" %}
 ![](/media/basic-workflows/sd15-image2image/legacy_gyazo_1f5fee22e1db9942bf950cf39906c881.png){media=image}
+{% endoutputs %}

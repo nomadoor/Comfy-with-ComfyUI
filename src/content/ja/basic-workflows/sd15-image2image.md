@@ -153,6 +153,6 @@ Stable Diffusion 1.5は特殊な例として、このサイトでは、本来の
 
 ---
 
-## サンプル画像
-
+{% outputs "samples" %}
 ![](/media/basic-workflows/sd15-image2image/legacy_gyazo_1f5fee22e1db9942bf950cf39906c881.png){media=image}
+{% endoutputs %}
