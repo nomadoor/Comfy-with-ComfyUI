@@ -28,6 +28,8 @@ It also supports native RGBA output—in other words, transparent images.
 
 The image generation component is a compact 7B model, yet it covers generation, editing, references, and transparency. It is quite a versatile model.
 
+{% runpod %}
+
 ---
 
 ## Recommended settings

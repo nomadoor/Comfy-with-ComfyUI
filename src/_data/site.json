@@ -432,6 +432,38 @@
           }
         }
       }
+    },
+    "runpod": {
+      "title": {
+        "ja": "RunPod ですぐ試す",
+        "en": "Try it on RunPod",
+        "zh": "在 RunPod 上直接试用"
+      },
+      "vram": {
+        "ja": "VRAM {gb} GB 以上",
+        "en": "{gb} GB VRAM or more",
+        "zh": "显存 {gb} GB 以上"
+      },
+      "recommended": {
+        "ja": "{gpus} 推奨",
+        "en": "{gpus} recommended",
+        "zh": "推荐 {gpus}"
+      },
+      "workflows": {
+        "ja": "全 workflow とサンプル画像入り",
+        "en": "every workflow and sample image ready",
+        "zh": "包含全部 workflow 和示例图像"
+      },
+      "referral": {
+        "ja": "紹介リンクが含まれています",
+        "en": "Contains a referral link",
+        "zh": "包含推荐链接"
+      },
+      "howto": {
+        "ja": "使う流れを見る",
+        "en": "See how it works",
+        "zh": "查看使用流程"
+      }
     }
   },
   "footer": {
@@ -474,5 +506,9 @@
         }
       }
     ]
+  },
+  "runpod": {
+    "deployUrl": "https://console.runpod.io/deploy",
+    "referral": "knnme3w1"
   }
 }

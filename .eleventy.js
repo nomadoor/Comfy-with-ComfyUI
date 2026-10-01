@@ -10,7 +10,7 @@ import envData from "./src/_data/env.js";
 import missingPages from "./src/_data/missingPages.js";
 import navData from "./src/_data/nav.js";
 import { groupMediaSteps, renderMediaStep } from "./scripts/lib/media-steps.mjs";
-import { writeProfiles as writeRunpodProfiles } from "./runpod/tools/profiles.mjs";
+import { listProfileIds as listRunpodProfiles, readProfileSource as readRunpodProfile, writeProfiles as writeRunpodProfiles } from "./runpod/tools/profiles.mjs";
 
 const GYAZO_HOST = "i.gyazo.com";
 const SITE_DATA_PATH = path.join("src", "_data", "site.json");
@@ -1199,6 +1199,41 @@ export default function (eleventyConfig) {
     // No blank lines inside: the block must stay one HTML block for the Markdown around it.
     const body = markdownLib.render(content, { page: this.page }).trim().replace(/\n\s*\n/g, "\n");
     return `<div class="outputs outputs--${kind}"><div class="outputs__header"><span class="outputs__icon">${tray.icon}</span><span class="outputs__label">${tray.label}</span></div>\n${body}\n</div>`;
+  });
+
+  // `{% runpod %}`: a card that deploys this article's RunPod template (one Pod with every workflow,
+  // its models and sample images). Reads the profile whose `article` is this page, so the GPU guidance
+  // and the template stay in one place (runpod/profiles/<id>.yaml). The referral is disclosed under it.
+  const RUNPOD_ICON = iconSvg('<rect x="5" y="5" width="14" height="14" rx="2"></rect><path d="M9 9h6v6H9z"></path><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"></path>');
+  const RUNPOD_ARROW = iconSvg('<path d="M7 17L17 7"></path><path d="M8 7h9v9"></path>');
+  const runpodSources = () =>
+    Object.fromEntries(listRunpodProfiles().map((id) => readRunpodProfile(id)).map((source) => [source.article, source]));
+  eleventyConfig.addShortcode("runpod", function () {
+    const [, lang = DEFAULT_LANG, section = "", slug = ""] = (this.page.url || "").split("/");
+    const source = runpodSources()[`${section}/${slug}`];
+    if (!source?.template) throw new Error(`[runpod] no RunPod profile with a template for ${section}/${slug}`);
+    const t = (key, vars = {}) =>
+      String(siteData.i18n?.runpod?.[key]?.[lang] ?? siteData.i18n?.runpod?.[key]?.en ?? "").replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? "");
+    const url = new URL(siteData.runpod.deployUrl);
+    url.searchParams.set("template", source.template);
+    if (siteData.runpod.referral) url.searchParams.set("ref", siteData.runpod.referral);
+    const facts = [
+      source.gpu?.min_vram_gb ? t("vram", { gb: source.gpu.min_vram_gb }) : "",
+      source.gpu?.recommended?.length ? t("recommended", { gpus: source.gpu.recommended.join(" / ") }) : "",
+      t("workflows")
+    ].filter(Boolean);
+    const howto = fsSync.existsSync(path.join("src", "content", lang, "notes", "run-on-runpod.md"))
+      ? ` · <a href="/${lang}/notes/run-on-runpod/">${escapeHTML(t("howto"))}</a>`
+      : "";
+    return (
+      `<div class="runpod-launch">` +
+      `<a class="runpod-launch__card" href="${escapeHTML(url.href)}" target="_blank" rel="noopener sponsored" data-no-link-icon>` +
+      `<span class="runpod-launch__icon">${RUNPOD_ICON}</span>` +
+      `<span class="runpod-launch__text"><b>${escapeHTML(t("title"))}</b><small>${escapeHTML(facts.join(" · "))}</small></span>` +
+      `<span class="runpod-launch__arrow">${RUNPOD_ARROW}</span></a>` +
+      `<p class="runpod-launch__note">${escapeHTML(t("referral"))}${howto}</p>` +
+      `</div>`
+    );
   });
 
   const markdownLib = new MarkdownIt({

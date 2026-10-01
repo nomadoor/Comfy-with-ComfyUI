@@ -5758,3 +5758,79 @@ body.nav-open .nav-backdrop {
   }
 
 }
+
+/* RunPod launch card ({% runpod %}): the same link-card shape as the Pod's status page — a filled
+   surface, icon, bold title, muted facts and an arrow; no borders. The referral is disclosed in a
+   quiet line underneath, with the walkthrough link when that page exists. */
+.runpod-launch {
+  margin: var(--space-lg) 0 var(--space-xl);
+}
+
+.runpod-launch__card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.85rem var(--space-md);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-text) 6%, var(--color-reader));
+  color: var(--color-text);
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+/* Win over the article's link styles (underline, weight, heading colour). */
+.article-body a.runpod-launch__card,
+.article-body a.runpod-launch__card.link--external {
+  color: var(--color-text);
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+.runpod-launch__card:hover,
+.runpod-launch__card:focus-visible {
+  background: color-mix(in srgb, var(--color-text) 10%, var(--color-reader));
+}
+
+.runpod-launch__icon,
+.runpod-launch__arrow {
+  flex: none;
+  display: grid;
+  place-items: center;
+}
+
+.runpod-launch__icon .icon {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+}
+
+.runpod-launch__arrow {
+  margin-left: auto;
+  color: var(--color-text-muted);
+}
+
+.runpod-launch__arrow .icon {
+  inline-size: 1rem;
+  block-size: 1rem;
+}
+
+.runpod-launch__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.runpod-launch__text b {
+  color: var(--color-heading);
+  font-weight: 650;
+}
+
+.runpod-launch__text small {
+  color: var(--color-text-muted);
+  font-size: 0.85em;
+}
+
+.runpod-launch__note {
+  margin: 0.4rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+}

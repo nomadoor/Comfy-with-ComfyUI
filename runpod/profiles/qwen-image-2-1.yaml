@@ -3,6 +3,8 @@
 id: qwen-image-2-1
 title: Qwen-Image-2.1
 article: basic-workflows/qwen-image-2-1
+# RunPod template (Matatabi AI account) the article's launch card deploys.
+template: 16mbtha5fk
 workflows:
   - src/workflows/basic-workflows/qwen-image-2-1/*.json
 comfyui:
@@ -11,6 +13,8 @@ comfyui:
 gpu:
   min_vram_gb: 12
   recommended_vram_gb: 24
+  # Same as the template's recommended (starred) GPUs.
+  recommended: [RTX 4090, RTX 5090]
   notes: ""
 overrides:
   # These nodes were saved without cnr_id, so the workflow does not say where they come from.
