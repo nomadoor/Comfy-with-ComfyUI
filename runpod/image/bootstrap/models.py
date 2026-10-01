@@ -186,13 +186,13 @@ class Downloader:
                     pct = f" {size * 100 / total:.0f}%" if total else ""
                     self.state.log(f"model {model['name']}:{pct} {size / 1e9:.2f} GB, {speed / 1e6:.0f} MB/s")
 
-        started = time.time()
         for attempt in range(1, RETRIES + 1):
             shutil.rmtree(tmp_dir, ignore_errors=True)
             tmp_dir.mkdir(parents=True, exist_ok=True)
             self.state.model(index, state="downloading", done=0, attempt=attempt)
             reported["bytes"] = 0
             stop.clear()
+            started = time.time()  # the successful attempt's transfer only: no backoff, no hashing
             watcher = threading.Thread(target=watch, daemon=True)
             watcher.start()
             try:
@@ -203,6 +203,7 @@ class Downloader:
                     path = _download_aria2(model, tmp_dir, token, on_bytes)
                 stop.set()
                 watcher.join()
+                seconds = time.time() - started
                 if model.get("sha256"):
                     self.state.model(index, state="verifying", done=0, speed=0)
                     digest = sha256_file(path, lambda done: self.state.model(index, done=done))
@@ -213,7 +214,6 @@ class Downloader:
                 shutil.rmtree(tmp_dir, ignore_errors=True)
                 self._remember(final, model)
                 self.state.model(index, state="done", done=final.stat().st_size, speed=0)
-                seconds = time.time() - started
                 size = final.stat().st_size
                 method = "xet" if model["source"] == "hf" and os.environ.get("HF_DOWNLOADER") == "xet" else "aria2"
                 self.timings[model["name"]] = {"seconds": round(seconds, 1), "mb_per_s": round(size / 1e6 / max(seconds, 0.1)), "method": method}

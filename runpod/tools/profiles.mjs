@@ -316,7 +316,7 @@ export const buildTips = () => {
   const file = path.join(RUNPOD_DIR, "tips.yaml");
   if (!fs.existsSync(file)) return { tips: [], errors: [] };
   const errors = [];
-  const tips = YAML.parse(fs.readFileSync(file, "utf8")).map((tip, index) => {
+  const tips = (YAML.parse(fs.readFileSync(file, "utf8")) ?? []).map((tip, index) => {
     const entry = {};
     for (const lang of TIP_LANGS) {
       const article = path.resolve("src", "content", lang, `${tip.link}.md`);

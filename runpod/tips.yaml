@@ -89,7 +89,7 @@
     title: What Conditioning Zero Out is for
     body: At CFG 1.0 the negative drops out of the calculation, so this node simply fills the unused negative input.
   zh:
-    title: Conditioning Zero Out 的真面目
+    title: Conditioning Zero Out 到底是什么
     body: CFG 为 1.0 时 negative 不参与计算，这个节点只是用来填补空着的 negative 输入。
 - link: begin-with/readable-nodes
   ja:
