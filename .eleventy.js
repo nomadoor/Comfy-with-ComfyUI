@@ -1223,21 +1223,18 @@ export default function (eleventyConfig) {
     const url = new URL(siteData.runpod.deployUrl);
     url.searchParams.set("template", source.template);
     if (siteData.runpod.referral) url.searchParams.set("ref", siteData.runpod.referral);
-    // Second line: each recommended GPU and the minimum VRAM as its own rounded tag.
+    // Second line: each recommended GPU as its own rounded tag.
     const tag = (text) => `<span class="runpod-launch__tag">${escapeHTML(text)}</span>`;
     const recommended = source.gpu?.recommended ?? [];
     const specs = [
-      recommended.length ? `<span class="runpod-launch__spec">${t("recLabel")} : ${recommended.map(tag).join("")}</span>` : "",
-      source.gpu?.min_vram_gb
-        ? `<span class="runpod-launch__spec">${t("vramLabel")} : <span class="runpod-launch__tag">${t("vram", { gb: source.gpu.min_vram_gb })}</span></span>`
-        : ""
+      recommended.length ? `<span class="runpod-launch__spec">${t("recLabel")} : ${recommended.map(tag).join("")}</span>` : ""
     ].filter(Boolean).join("");
     const help = t("help");
     return (
       `<div class="runpod-launch-wrap"><div class="runpod-launch">` +
       `<a class="runpod-launch__main" href="${escapeHTML(url.href)}" target="_blank" rel="noopener sponsored" data-no-link-icon>` +
       RUNPOD_LOGO +
-      `<span class="runpod-launch__text"><b>${t("title")}${RUNPOD_ARROW}</b>${specs ? `<span class="runpod-launch__specs">${specs}</span>` : ""}</span></a>` +
+      `<span class="runpod-launch__text"><b>${t("title")}</b>${specs ? `<span class="runpod-launch__specs">${specs}</span>` : ""}</span>${RUNPOD_ARROW}</a>` +
       `<a class="runpod-launch__help" href="/${lang}/notes/run-on-runpod/" aria-label="${help}">${RUNPOD_HELP}<span class="workflow-performance__popup runpod-launch__tip" role="tooltip">${help}</span></a>` +
       `</div><p class="runpod-launch__ref">${t("referral")}</p></div>`
     );

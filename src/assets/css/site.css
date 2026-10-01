@@ -5879,7 +5879,9 @@ body.nav-open .nav-backdrop {
 
 .runpod-launch__spec {
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
+  white-space: nowrap;
   gap: 0.3rem;
 }
 
@@ -5899,11 +5901,10 @@ body.nav-open .nav-backdrop {
   text-align: right;
 }
 
-.runpod-launch__text b .icon {
-  display: inline-block;
-  margin-inline-start: 0.3rem;
-  vertical-align: -0.12em;
-  inline-size: 1rem;
-  block-size: 1rem;
+.runpod-launch__main > .icon {
+  flex: none;
+  margin-inline-start: auto;
+  inline-size: 1.1rem;
+  block-size: 1.1rem;
   color: var(--color-text-muted);
 }

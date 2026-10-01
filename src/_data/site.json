@@ -435,9 +435,9 @@
     },
     "runpod": {
       "title": {
-        "ja": "この workflow を Runpod の ComfyUI で開く",
-        "en": "Open this workflow in ComfyUI on Runpod",
-        "zh": "在 Runpod 的 ComfyUI 中打开此 workflow"
+        "ja": "この記事の workflow を Runpod の ComfyUI で開く",
+        "en": "Open this article's workflows in ComfyUI on Runpod",
+        "zh": "在 Runpod 的 ComfyUI 中打开本文的 workflow"
       },
       "referral": {
         "ja": "紹介リンクが含まれています",
@@ -448,16 +448,6 @@
         "ja": "推奨",
         "en": "Recommended",
         "zh": "推荐"
-      },
-      "vramLabel": {
-        "ja": "最低VRAM",
-        "en": "Min VRAM",
-        "zh": "最低显存"
-      },
-      "vram": {
-        "ja": "{gb}GB",
-        "en": "{gb} GB",
-        "zh": "{gb}GB"
       },
       "help": {
         "ja": "使い方の解説ページへ",
