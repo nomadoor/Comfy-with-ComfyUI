@@ -7,10 +7,10 @@
 <style>
   :root {
     --bg: #f6f5f3; --surface: #ecebe8; --text: #2b2a28; --muted: #77746f; --accent: #7a5cc4;
-    --ok: #4f9a6a; --warn: #c98a32; --error: #c4524a; --warn-fill: rgba(201, 138, 50, 0.16); --error-fill: rgba(196, 82, 74, 0.14);
+    --card-hover: #e4e2de; --ok: #4f9a6a; --warn: #c98a32; --error: #c4524a; --warn-fill: rgba(201, 138, 50, 0.16); --error-fill: rgba(196, 82, 74, 0.14);
   }
   @media (prefers-color-scheme: dark) {
-    :root { --bg: #1b1a19; --surface: #252422; --text: #e4e1dc; --muted: #9a968f; --accent: #a58be0; }
+    :root { --bg: #1b1a19; --surface: #252422; --card-hover: #2e2d2a; --text: #e4e1dc; --muted: #9a968f; --accent: #a58be0; }
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.6 system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Noto Sans JP", "Noto Sans SC", sans-serif; }
@@ -46,14 +46,24 @@
   .alert p { margin: 0.25rem 0 0; }
   .alert .raw { color: var(--muted); font-size: 0.85em; overflow-wrap: anywhere; }
   .muted { color: var(--muted); font-size: 0.85em; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .guide { margin: -1.25rem 0 2rem; }
+  /* Link cards: a filled surface, icon, bold title, muted subtitle and an arrow; no borders. */
+  .linkcard { display: flex; align-items: center; gap: 0.9rem; padding: 0.85rem 1rem; border-radius: 10px; background: var(--surface); color: var(--text); text-decoration: none; transition: background 0.15s; }
+  .linkcard:hover { background: var(--card-hover); }
+  .linkcard .icon, .linkcard .arrow { flex: none; display: flex; color: var(--text); }
+  .linkcard .arrow { margin-left: auto; color: var(--muted); }
+  .linkcard .text { display: flex; flex-direction: column; min-width: 0; }
+  .linkcard b { font-weight: 600; overflow-wrap: anywhere; }
+  .linkcard small { color: var(--muted); font-size: 0.85em; }
+  .linkcard svg { width: 1.15rem; height: 1.15rem; }
+  .guide { margin: -0.75rem 0 1rem; }
+  .tip .linkcard { margin-top: 0.9rem; background: var(--bg); }
+  .tip .linkcard:hover { background: var(--card-hover); }
+  #tip-content { transition: opacity 0.25s ease; }
+  #tip-content.fading { opacity: 0; }
   .tip { position: relative; }
   .tip .label { color: var(--muted); font-size: 0.8em; letter-spacing: 0.04em; text-transform: uppercase; margin: 0 0 0.5rem; }
   .tip h2 { font-size: 1rem; margin: 0 0 0.35rem; font-weight: 600; }
   .tip p { margin: 0; }
-  .tip .more { display: inline-block; margin-top: 0.5rem; font-size: 0.9em; }
   .tip nav { position: absolute; top: 0.75rem; right: 0.75rem; display: flex; align-items: center; gap: 0.25rem; color: var(--muted); font-size: 0.8em; font-variant-numeric: tabular-nums; }
   .tip button { width: 2rem; height: 2rem; border: 0; border-radius: 50%; background: transparent; color: var(--muted); font-size: 1.1rem; line-height: 1; cursor: pointer; }
   .tip button:hover { background: var(--bg); color: var(--text); }
@@ -64,7 +74,7 @@
 <main>
   <h1 id="title">Preparing ComfyUI</h1>
   <p class="lead" id="lead"></p>
-  <p class="guide" id="guide" hidden></p>
+  <div class="guide" id="guide" hidden></div>
   <div id="alerts"></div>
   <section class="panel"><ol class="steps" id="steps"></ol></section>
   <section class="panel" id="models-panel" hidden>
@@ -74,9 +84,11 @@
   <section class="panel tip" id="tip" hidden>
     <p class="label" id="tip-label"></p>
     <nav><button type="button" id="tip-prev" aria-label="previous">‹</button><span id="tip-count"></span><button type="button" id="tip-next" aria-label="next">›</button></nav>
-    <h2 id="tip-title"></h2>
-    <p id="tip-body"></p>
-    <a class="more" id="tip-link" target="_blank" rel="noopener"></a>
+    <div id="tip-content">
+      <h2 id="tip-title"></h2>
+      <p id="tip-body"></p>
+      <div id="tip-link"></div>
+    </div>
   </section>
   <p class="muted" id="footer"></p>
 </main>
@@ -87,7 +99,7 @@
     en: {
       preparing: "Preparing ComfyUI", lead: "This page switches to ComfyUI by itself when everything is ready.",
       steps: { profile: "Fetch profile", comfyui: "Update ComfyUI", custom_nodes: "Install custom nodes", models: "Download models", workflows: "Place workflows", start: "Start ComfyUI" },
-      guide: "Read the guide", whileWaiting: "While you wait",
+      guide: "Guide — Comfy with ComfyUI", related: "Read more — Comfy with ComfyUI", whileWaiting: "While you wait",
       detail: {
         fetching: (p) => `fetching ${p.ref}`, requirements: (p) => `installing requirements for ${p.sha}`, none: () => "none",
         files: (p) => `${p.count} files`, ready: (p) => `${p.ready} ready` + (p.skipped ? `, ${p.skipped} skipped` : ""),
@@ -112,7 +124,7 @@
     ja: {
       preparing: "ComfyUI を準備しています", lead: "準備ができると、このページは自動で ComfyUI に切り替わります。",
       steps: { profile: "プロファイルを取得", comfyui: "ComfyUI を更新", custom_nodes: "カスタムノードを導入", models: "モデルをダウンロード", workflows: "workflow を配置", start: "ComfyUI を起動" },
-      guide: "解説ページを読む", whileWaiting: "待っているあいだに",
+      guide: "解説ページ — Comfy with ComfyUI", related: "関連記事 — Comfy with ComfyUI", whileWaiting: "待っているあいだに",
       detail: {
         fetching: (p) => `${p.ref} を取得中`, requirements: (p) => `${p.sha} の依存をインストール中`, none: () => "なし",
         files: (p) => `${p.count} ファイル`, ready: (p) => `${p.ready} 個準備完了` + (p.skipped ? `、${p.skipped} 個スキップ` : ""),
@@ -137,7 +149,7 @@
     zh: {
       preparing: "正在准备 ComfyUI", lead: "准备完成后，本页面会自动切换到 ComfyUI。",
       steps: { profile: "获取配置", comfyui: "更新 ComfyUI", custom_nodes: "安装自定义节点", models: "下载模型", workflows: "放置 workflow", start: "启动 ComfyUI" },
-      guide: "阅读讲解页面", whileWaiting: "等待的时候",
+      guide: "讲解页面 — Comfy with ComfyUI", related: "相关文章 — Comfy with ComfyUI", whileWaiting: "等待的时候",
       detail: {
         fetching: (p) => `正在获取 ${p.ref}`, requirements: (p) => `正在安装 ${p.sha} 的依赖`, none: () => "无",
         files: (p) => `${p.count} 个文件`, ready: (p) => `${p.ready} 个已就绪` + (p.skipped ? `，${p.skipped} 个已跳过` : ""),
@@ -172,28 +184,45 @@
   $("title").textContent = T.preparing;
   $("lead").textContent = T.lead;
 
+  const ICONS = {
+    book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6v13"/><path d="M12 6v13"/><path d="M21 6v13"/></svg>',
+    doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M9 13h6"/><path d="M9 17h4"/></svg>',
+    arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>',
+  };
+  const linkCard = (href, icon, title, subtitle) =>
+    `<a class="linkcard" href="${esc(href)}" target="_blank" rel="noopener"><span class="icon">${ICONS[icon]}</span>` +
+    `<span class="text"><b>${esc(title)}</b><small>${esc(subtitle)}</small></span><span class="arrow">${ICONS.arrow}</span></a>`;
+
   const stepDetail = (step) => (step.key && T.detail[step.key] ? T.detail[step.key](step.params || {}) : step.detail);
 
   // Columns: one at a time, rotating every 12 s; the arrows step through them by hand.
   let tips = [], tipIndex = 0, tipTimer = null;
-  const showTip = (index) => {
-    tipIndex = (index + tips.length) % tips.length;
+  const fillTip = () => {
     const tip = tips[tipIndex][lang] || tips[tipIndex].en;
-    $("tip-label").textContent = T.whileWaiting;
     $("tip-count").textContent = `${tipIndex + 1} / ${tips.length}`;
     $("tip-title").textContent = tip.title;
     $("tip-body").textContent = tip.body;
-    $("tip-link").textContent = `→ ${tip.link.title}`;
-    $("tip-link").href = `${siteOrigin}${tip.link.path}`;
+    $("tip-link").innerHTML = linkCard(`${siteOrigin}${tip.link.path}`, "doc", tip.link.title, T.related);
+  };
+  // A short fade between columns; nothing here needs to be instant.
+  const showTip = (index, { fade = true } = {}) => {
+    tipIndex = (index + tips.length) % tips.length;
     clearTimeout(tipTimer);
     tipTimer = setTimeout(() => showTip(tipIndex + 1), 12000);
+    $("tip-label").textContent = T.whileWaiting;
+    if (!fade) return fillTip();
+    $("tip-content").classList.add("fading");
+    setTimeout(() => {
+      fillTip();
+      $("tip-content").classList.remove("fading");
+    }, 250);
   };
   let siteOrigin = "https://comfyui.nomadoor.net";
   const showTips = (list) => {
     if (tips.length || !list.length) return;
     tips = list.slice().sort(() => Math.random() - 0.5);
     $("tip").hidden = false;
-    showTip(0);
+    showTip(0, { fade: false });
   };
   $("tip-prev").addEventListener("click", () => showTip(tipIndex - 1));
   $("tip-next").addEventListener("click", () => showTip(tipIndex + 1));
@@ -220,7 +249,7 @@
       (step.detail || step.key ? `<span class="detail">${esc(stepDetail(step))}</span>` : "") + `</span></li>`).join("");
 
     if (s.site && s.article && s.title) {
-      $("guide").innerHTML = `<a href="${esc(`${s.site}/${lang}/${s.article}/`)}" target="_blank" rel="noopener">${esc(T.guide)} → ${esc(s.title)}</a>`;
+      $("guide").innerHTML = linkCard(`${s.site}/${lang}/${s.article}/`, "book", s.title, T.guide);
       $("guide").hidden = false;
     }
     showTips(s.tips || []);
