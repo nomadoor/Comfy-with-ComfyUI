@@ -12,8 +12,11 @@ ENV DEBIAN_FRONTEND=noninteractive \
     VIRTUAL_ENV=/opt/venv \
     PATH=/opt/venv/bin:$PATH
 
+# gcc and libc6-dev: Triton (used by PyTorch's native ops since cu130) compiles a small C helper
+# the first time it touches the GPU. Without a compiler every prompt fails with
+# "Failed to find C compiler".
 RUN apt-get update \
- && apt-get install -y --no-install-recommends git aria2 jq curl ca-certificates libgl1 libglib2.0-0 \
+ && apt-get install -y --no-install-recommends git aria2 jq curl ca-certificates libgl1 libglib2.0-0 gcc libc6-dev \
  && rm -rf /var/lib/apt/lists/*
 
 COPY --from=ghcr.io/astral-sh/uv:0.9 /uv /uvx /usr/local/bin/
@@ -23,11 +26,11 @@ COPY --from=ghcr.io/astral-sh/uv:0.9 /uv /uvx /usr/local/bin/
 # of similar size, so the Pod pulls them in parallel.
 # The CI build cache keeps these layers byte-identical across daily builds, so a machine that already
 # pulled them never pulls them again. That also means PyTorch stays at the version first resolved:
-# change TORCH_CACHE_KEY to pick up a newer release.
+# change TORCH_REFRESH to pick up a newer release.
 ENV TORCH_INDEX=https://download.pytorch.org/whl/cu130
-ARG TORCH_CACHE_KEY=2026-10-01
-RUN echo "PyTorch set resolved for cache key ${TORCH_CACHE_KEY}" \
- && uv venv --python 3.12 /opt/venv \
+ARG TORCH_REFRESH=2026-10-01
+RUN echo "PyTorch set resolved for refresh ${TORCH_REFRESH}" \
+ && uv venv --python 3.13 /opt/venv \
  && printf 'torch\ntorchvision\ntorchaudio\n' > /tmp/torch.in \
  && uv pip compile --quiet --python /opt/venv/bin/python --index-url "$TORCH_INDEX" /tmp/torch.in -o /opt/torch.lock
 RUN grep -E '^(nvidia-(cublas|cufft|cufile|curand|cusolver|cusparse|cuda-|nvjitlink|nvtx)[^=]*)==' /opt/torch.lock > /tmp/g1.txt \
