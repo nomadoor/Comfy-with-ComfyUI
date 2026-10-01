@@ -5759,24 +5759,38 @@ body.nav-open .nav-backdrop {
 
 }
 
-/* Runpod launch card ({% runpod %}): one filled surface, no borders. The top row (logo, title, lead,
-   arrow) opens the deploy page; below it the facts a reader needs before paying (GPU, startup time,
-   cost) in body text, then the referral disclosure and the walkthrough link. */
+/* Runpod launch card ({% runpod %}): one compact row on a filled surface, no borders — it sits near the
+   top of every article that has a profile, so it must not shout. Logo, title, a muted second line
+   (recommended GPU and the referral disclosure) and an arrow open the deploy page; a small "?" beside
+   it opens the walkthrough note. */
 .runpod-launch {
-  margin: var(--space-lg) 0 var(--space-xl);
+  display: flex;
+  align-items: stretch;
+  margin: var(--space-lg) 0;
   border-radius: var(--radius-md);
   background: color-mix(in srgb, var(--color-text) 6%, var(--color-reader));
   overflow: hidden;
 }
 
 .runpod-launch__main {
+  flex: 1;
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-md) var(--space-md) var(--space-sm);
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 0.6rem 0.75rem;
   color: var(--color-text);
   text-decoration: none;
   transition: background-color 0.15s ease;
+}
+
+.runpod-launch__help {
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: 2.75rem;
+  color: var(--color-text-muted);
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 /* Win over the article's link styles (underline, weight, heading colour). */
@@ -5788,32 +5802,45 @@ body.nav-open .nav-backdrop {
   text-decoration: none;
 }
 
+.article-body a.runpod-launch__help,
+.article-body a.runpod-launch__help.link--internal {
+  color: var(--color-text-muted);
+}
+
 .runpod-launch__main:hover,
-.runpod-launch__main:focus-visible {
+.runpod-launch__main:focus-visible,
+.runpod-launch__help:hover,
+.runpod-launch__help:focus-visible {
   background: color-mix(in srgb, var(--color-text) 4%, transparent);
+}
+
+.article-body a.runpod-launch__help:hover,
+.article-body a.runpod-launch__help:focus-visible {
+  color: var(--color-heading);
 }
 
 .runpod-launch__logo {
   flex: none;
-  inline-size: 2.5rem;
-  block-size: 2.5rem;
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
 }
 
-.runpod-launch__head {
+.runpod-launch__text {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  line-height: 1.35;
 }
 
-.runpod-launch__head b {
+.runpod-launch__text b {
   color: var(--color-heading);
-  font-size: 1.0625rem;
-  font-weight: 700;
+  font-size: 0.95rem;
+  font-weight: 650;
 }
 
-.runpod-launch__head span {
-  color: var(--color-text);
-  font-size: 0.9rem;
+.runpod-launch__text small {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
 }
 
 .runpod-launch__arrow {
@@ -5821,79 +5848,11 @@ body.nav-open .nav-backdrop {
   display: grid;
   place-items: center;
   margin-left: auto;
-  color: var(--color-heading);
-}
-
-.runpod-launch__arrow .icon {
-  inline-size: 1.15rem;
-  block-size: 1.15rem;
-}
-
-.runpod-launch__facts {
-  display: grid;
-  gap: 0.35rem;
-  margin: 0;
-  padding: var(--space-xs) var(--space-md) var(--space-sm) calc(var(--space-md) + 2.5rem + var(--space-sm));
-  font-size: 0.9rem;
-}
-
-.runpod-launch__facts div {
-  display: grid;
-  grid-template-columns: 3.5rem 1fr;
-  gap: var(--space-sm);
-}
-
-.runpod-launch__facts dt {
   color: var(--color-text-muted);
-  font-weight: 600;
 }
 
-.runpod-launch__facts dd {
-  margin: 0;
-  color: var(--color-text);
-}
-
-.runpod-launch__foot {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-xs) var(--space-md);
-  padding: var(--space-sm) var(--space-md);
-  background: color-mix(in srgb, var(--color-text) 3%, var(--color-reader));
-  color: var(--color-text-muted);
-  font-size: 0.8rem;
-}
-
-.article-body a.runpod-launch__help {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.3rem 0.7rem;
-  border-radius: var(--radius-pill);
-  background: color-mix(in srgb, var(--color-text) 8%, var(--color-reader));
-  color: var(--color-heading);
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-.article-body a.runpod-launch__help:hover,
-.article-body a.runpod-launch__help:focus-visible {
-  background: color-mix(in srgb, var(--color-text) 14%, var(--color-reader));
-}
-
+.runpod-launch__arrow .icon,
 .runpod-launch__help .icon {
-  inline-size: 1rem;
-  block-size: 1rem;
-}
-
-@media (max-width: 600px) {
-  .runpod-launch__facts {
-    padding-left: var(--space-md);
-  }
-
-  .runpod-launch__facts div {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
+  inline-size: 1.05rem;
+  block-size: 1.05rem;
 }

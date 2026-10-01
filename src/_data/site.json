@@ -439,40 +439,10 @@
         "en": "Try it on Runpod",
         "zh": "在 Runpod 上直接试用"
       },
-      "lead": {
-        "ja": "この記事の workflow を、ブラウザからそのまま動かせます",
-        "en": "Run this article's workflows right in your browser",
-        "zh": "在浏览器中直接运行本文的 workflow"
-      },
-      "gpuLabel": {
-        "ja": "GPU",
-        "en": "GPU",
-        "zh": "GPU"
-      },
       "gpu": {
-        "ja": "{gpus} 推奨（VRAM {gb} GB 以上）",
-        "en": "{gpus} recommended ({gb} GB VRAM or more)",
-        "zh": "推荐 {gpus}（显存 {gb} GB 以上）"
-      },
-      "bootLabel": {
-        "ja": "起動",
-        "en": "Startup",
-        "zh": "启动"
-      },
-      "boot": {
-        "ja": "約 2〜3 分。モデル・workflow・サンプル画像は自動で用意されます",
-        "en": "About 2–3 minutes; models, workflows and sample images are set up for you",
-        "zh": "约 2–3 分钟，模型、workflow 和示例图像会自动准备好"
-      },
-      "costLabel": {
-        "ja": "料金",
-        "en": "Cost",
-        "zh": "费用"
-      },
-      "cost": {
-        "ja": "Runpod の時間課金。30 分操作がないと自動で終了します",
-        "en": "Billed by Runpod by the hour; it shuts itself down after 30 idle minutes",
-        "zh": "按 Runpod 的时长计费；30 分钟无操作会自动结束"
+        "ja": "{gpus} 推奨・VRAM {gb} GB 以上",
+        "en": "{gpus} recommended · {gb} GB VRAM+",
+        "zh": "推荐 {gpus}・显存 {gb} GB 以上"
       },
       "referral": {
         "ja": "紹介リンクが含まれています",
