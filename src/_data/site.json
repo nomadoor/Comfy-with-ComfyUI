@@ -435,9 +435,9 @@
     },
     "runpod": {
       "title": {
-        "ja": "Runpod ですぐ試す",
-        "en": "Try it on Runpod",
-        "zh": "在 Runpod 上直接试用"
+        "ja": "この workflow を Runpod の ComfyUI で開く",
+        "en": "Open this workflow in ComfyUI on Runpod",
+        "zh": "在 Runpod 的 ComfyUI 中打开此 workflow"
       },
       "referral": {
         "ja": "紹介リンクが含まれています",

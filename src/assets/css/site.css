@@ -5857,7 +5857,7 @@ body.nav-open .nav-backdrop {
 .runpod-launch__text {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 0.55rem;
   min-width: 0;
   line-height: 1.4;
 }
@@ -5887,13 +5887,23 @@ body.nav-open .nav-backdrop {
 .runpod-launch__tag {
   padding: 0.05rem 0.5rem;
   border-radius: var(--radius-pill);
-  background: color-mix(in srgb, var(--color-text) 12%, var(--color-reader));
+  background: color-mix(in srgb, var(--color-text) 20%, var(--color-reader));
   color: var(--color-text);
 }
 
-.runpod-launch__ref {
-  margin: 0.35rem 0 0;
+/* Scoped under .article-body so the article's paragraph colour and spacing do not win. */
+.article-body .runpod-launch__ref {
+  margin: 0.25rem 0 0;
   color: var(--color-text-muted);
   font-size: 0.78rem;
   text-align: right;
+}
+
+.runpod-launch__text b .icon {
+  display: inline-block;
+  margin-inline-start: 0.3rem;
+  vertical-align: -0.12em;
+  inline-size: 1rem;
+  block-size: 1rem;
+  color: var(--color-text-muted);
 }
