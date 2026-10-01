@@ -125,6 +125,7 @@ class Downloader:
         self.civitai_token = civitai_token
         self._verified_lock = threading.Lock()
         self.verified = json.loads(self.verified_path.read_text()) if self.verified_path.exists() else {}
+        self.timings = {}  # per model: seconds, average MB/s and method, for report.json
 
     def _remember(self, final, model):
         with self._verified_lock:
@@ -185,6 +186,7 @@ class Downloader:
                     pct = f" {size * 100 / total:.0f}%" if total else ""
                     self.state.log(f"model {model['name']}:{pct} {size / 1e9:.2f} GB, {speed / 1e6:.0f} MB/s")
 
+        started = time.time()
         for attempt in range(1, RETRIES + 1):
             shutil.rmtree(tmp_dir, ignore_errors=True)
             tmp_dir.mkdir(parents=True, exist_ok=True)
@@ -211,7 +213,11 @@ class Downloader:
                 shutil.rmtree(tmp_dir, ignore_errors=True)
                 self._remember(final, model)
                 self.state.model(index, state="done", done=final.stat().st_size, speed=0)
-                self.state.log(f"model {model['directory']}/{model['name']}: done")
+                seconds = time.time() - started
+                size = final.stat().st_size
+                method = "xet" if model["source"] == "hf" and os.environ.get("HF_DOWNLOADER") == "xet" else "aria2"
+                self.timings[model["name"]] = {"seconds": round(seconds, 1), "mb_per_s": round(size / 1e6 / max(seconds, 0.1)), "method": method}
+                self.state.log(f"model {model['directory']}/{model['name']}: done in {seconds:.0f}s ({size / 1e6 / max(seconds, 0.1):.0f} MB/s, {method})")
                 return "downloaded"
             except AuthError:
                 stop.set()
