@@ -55,19 +55,20 @@
   .linkcard b { font-weight: 600; overflow-wrap: anywhere; }
   .linkcard small { color: var(--muted); font-size: 0.85em; }
   .linkcard svg { width: 1.15rem; height: 1.15rem; }
-  .guide { margin: 0 0 1rem; }
-  .guide p { margin: 0 0 0.5rem; color: var(--muted); font-size: 0.9em; }
+  .section-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 2rem; margin: 1.5rem 0 0.5rem; color: var(--muted); font-size: 0.9em; }
+  .section-head + .linkcard, .section-head + .panel { margin-top: 0; }
   .tip .linkcard { margin-top: 0.9rem; background: var(--bg); }
   .tip .linkcard:hover { background: var(--card-hover); }
+  #tip-content { display: flex; flex-direction: column; }
+  #tip-link { margin-top: auto; }
   #tip-content { transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out; }
   #tip-content.fading { opacity: 0; transform: translateY(4px); }
   .tip { position: relative; }
-  .tip .label { color: var(--muted); font-size: 0.8em; letter-spacing: 0.04em; text-transform: uppercase; margin: 0 0 0.5rem; }
   .tip h2 { font-size: 1rem; margin: 0 0 0.35rem; font-weight: 600; }
   .tip p { margin: 0; }
-  .tip nav { position: absolute; top: 0.75rem; right: 0.75rem; display: flex; align-items: center; gap: 0.25rem; color: var(--muted); font-size: 0.8em; font-variant-numeric: tabular-nums; }
-  .tip button { width: 2rem; height: 2rem; border: 0; border-radius: 50%; background: transparent; color: var(--muted); font-size: 1.1rem; line-height: 1; cursor: pointer; }
-  .tip button:hover { background: var(--bg); color: var(--text); }
+  .tip-nav { display: flex; align-items: center; gap: 0.25rem; font-size: 0.9em; font-variant-numeric: tabular-nums; }
+  .tip-nav button { width: 2rem; height: 2rem; border: 0; border-radius: 50%; background: transparent; color: var(--muted); font-size: 1.1rem; line-height: 1; cursor: pointer; }
+  .tip-nav button:hover { background: var(--bg); color: var(--text); }
   [hidden] { display: none !important; }
 </style>
 </head>
@@ -81,16 +82,17 @@
     <p class="summary" id="summary"></p>
     <div id="models"></div>
   </section>
-  <div class="guide" id="guide" hidden></div>
-  <section class="panel tip" id="tip" hidden>
-    <p class="label" id="tip-label"></p>
-    <nav><button type="button" id="tip-prev" aria-label="previous">‹</button><span id="tip-count"></span><button type="button" id="tip-next" aria-label="next">›</button></nav>
+  <div id="guide" hidden></div>
+  <div id="tip-section" hidden>
+  <div class="section-head"><span id="tip-label"></span><nav class="tip-nav"><button type="button" id="tip-prev" aria-label="previous">‹</button><span id="tip-count"></span><button type="button" id="tip-next" aria-label="next">›</button></nav></div>
+  <section class="panel tip" id="tip">
     <div id="tip-content">
       <h2 id="tip-title"></h2>
       <p id="tip-body"></p>
       <div id="tip-link"></div>
     </div>
   </section>
+  </div>
   <p class="muted" id="footer"></p>
 </main>
 <script>
@@ -205,12 +207,32 @@
     $("tip-body").textContent = tip.body;
     $("tip-link").innerHTML = linkCard(`${siteOrigin}${tip.link.path}`, "doc", tip.link.title, T.related);
   };
+  // The panel keeps the height of the tallest column, so switching never makes the page jump.
+  const reserveTipHeight = () => {
+    const box = $("tip-content");
+    const current = tipIndex;
+    box.style.minHeight = "";
+    let tallest = 0;
+    for (let i = 0; i < tips.length; i++) {
+      tipIndex = i;
+      fillTip();
+      tallest = Math.max(tallest, box.offsetHeight);
+    }
+    tipIndex = current;
+    fillTip();
+    box.style.minHeight = `${tallest}px`;
+  };
+  let resizeTimer = null;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => tips.length && reserveTipHeight(), 150);
+  });
+
   // A short fade between columns; nothing here needs to be instant.
   const showTip = (index, { fade = true } = {}) => {
     tipIndex = (index + tips.length) % tips.length;
     clearTimeout(tipTimer);
     tipTimer = setTimeout(() => showTip(tipIndex + 1), 12000);
-    $("tip-label").textContent = T.whileWaiting;
     if (!fade) return fillTip();
     $("tip-content").classList.add("fading");
     setTimeout(() => {
@@ -222,7 +244,9 @@
   const showTips = (list) => {
     if (tips.length || !list.length) return;
     tips = list.slice().sort(() => Math.random() - 0.5);
-    $("tip").hidden = false;
+    $("tip-section").hidden = false;
+    $("tip-label").textContent = T.whileWaiting;
+    reserveTipHeight();
     showTip(0, { fade: false });
   };
   $("tip-prev").addEventListener("click", () => showTip(tipIndex - 1));
@@ -250,7 +274,7 @@
       (step.detail || step.key ? `<span class="detail">${esc(stepDetail(step))}</span>` : "") + `</span></li>`).join("");
 
     if (s.site && s.article && s.title) {
-      $("guide").innerHTML = `<p>${esc(T.guideLead)}</p>` + linkCard(`${s.site}/${lang}/${s.article}/`, "book", s.title, T.guide);
+      $("guide").innerHTML = `<div class="section-head"><span>${esc(T.guideLead)}</span></div>` + linkCard(`${s.site}/${lang}/${s.article}/`, "book", s.title, T.guide);
       $("guide").hidden = false;
     }
     showTips(s.tips || []);
