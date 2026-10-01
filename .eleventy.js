@@ -1204,7 +1204,7 @@ export default function (eleventyConfig) {
   // `{% runpod %}`: a card that deploys this article's Runpod template (one Pod with every workflow,
   // its models and sample images). Reads the profile whose `article` is this page, so the GPU guidance
   // and the template stay in one place (runpod/profiles/<id>.yaml). Kept to one row: it sits near the
-  // top of every article that has a profile. The referral is disclosed in the card's corner.
+  // top of every article that has a profile. The referral is a small label beside the title.
   // The logo is Runpod's cube icon as its brand kit shows it (white cube on the official purple; the
   // kit allows the icon for compact placements and forbids recolouring), so it is not a currentColor icon.
   const RUNPOD_LOGO =
@@ -1235,10 +1235,10 @@ export default function (eleventyConfig) {
       `<div class="runpod-launch">` +
       `<a class="runpod-launch__main" href="${escapeHTML(url.href)}" target="_blank" rel="noopener sponsored" data-no-link-icon>` +
       RUNPOD_LOGO +
-      `<span class="runpod-launch__text"><b>${t("title")}</b>${gpuLine ? `<span class="runpod-launch__gpus">${gpuLine}</span>` : ""}</span>` +
+      `<span class="runpod-launch__text"><span class="runpod-launch__title"><b>${t("title")}</b><span class="runpod-launch__ref">${t("referral")}</span></span>` +
+      `${gpuLine ? `<span class="runpod-launch__gpus">${gpuLine}</span>` : ""}</span>` +
       `<span class="runpod-launch__arrow">${RUNPOD_ARROW}</span></a>` +
-      `<a class="runpod-launch__help" href="/${lang}/notes/run-on-runpod/" title="${howto}" aria-label="${howto}">${RUNPOD_HELP}</a>` +
-      `<span class="runpod-launch__ref">${t("referral")}</span>` +
+      `<a class="runpod-launch__help" href="/${lang}/notes/run-on-runpod/">${RUNPOD_HELP}<span>${howto}</span></a>` +
       `</div>`
     );
   });

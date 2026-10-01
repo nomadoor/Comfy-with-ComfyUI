@@ -445,9 +445,9 @@
         "zh": "推荐链接"
       },
       "howto": {
-        "ja": "使う流れを見る",
-        "en": "See how it works",
-        "zh": "查看使用流程"
+        "ja": "使い方",
+        "en": "How it works",
+        "zh": "使用方法"
       },
       "gpuBefore": {
         "ja": "",

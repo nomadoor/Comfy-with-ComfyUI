@@ -5765,9 +5765,8 @@ body.nav-open .nav-backdrop {
    (recommended GPU and the referral disclosure) and an arrow open the deploy page; a small "?" beside
    it opens the walkthrough note. */
 .runpod-launch {
-  position: relative;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   margin: var(--space-lg) 0;
   border-radius: var(--radius-md);
   background: color-mix(in srgb, var(--color-text) 6%, var(--color-reader));
@@ -5776,6 +5775,7 @@ body.nav-open .nav-backdrop {
 
 .runpod-launch__main {
   flex: 1;
+  align-self: stretch;
   display: flex;
   align-items: center;
   gap: 0.9rem;
@@ -5786,12 +5786,19 @@ body.nav-open .nav-backdrop {
   transition: background-color 0.15s ease;
 }
 
+/* The walkthrough link is its own button: a raised pill with icon and label, set apart from the
+   card's main link by a gap, so it never reads as part of "open Runpod". */
 .runpod-launch__help {
   flex: none;
-  display: grid;
-  place-items: center;
-  inline-size: 3.25rem;
-  color: var(--color-text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-right: 0.85rem;
+  padding: 0.4rem 0.8rem 0.4rem 0.6rem;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-text) 12%, var(--color-reader));
+  font-size: 0.85rem;
+  white-space: nowrap;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
@@ -5806,19 +5813,18 @@ body.nav-open .nav-backdrop {
 
 .article-body a.runpod-launch__help,
 .article-body a.runpod-launch__help.link--internal {
-  color: var(--color-text-muted);
+  color: var(--color-heading);
+  font-weight: 600;
 }
 
 .runpod-launch__main:hover,
-.runpod-launch__main:focus-visible,
-.runpod-launch__help:hover,
-.runpod-launch__help:focus-visible {
+.runpod-launch__main:focus-visible {
   background: color-mix(in srgb, var(--color-text) 4%, transparent);
 }
 
-.article-body a.runpod-launch__help:hover,
-.article-body a.runpod-launch__help:focus-visible {
-  color: var(--color-heading);
+.runpod-launch__help:hover,
+.runpod-launch__help:focus-visible {
+  background: color-mix(in srgb, var(--color-text) 20%, var(--color-reader));
 }
 
 .runpod-launch__logo {
@@ -5863,15 +5869,23 @@ body.nav-open .nav-backdrop {
   color: var(--color-text-muted);
 }
 
-/* The referral disclosure: present, but the quietest thing in the card. */
+/* The referral disclosure: a small label beside the title — clearly there, but not part of the GPU
+   information. */
+.runpod-launch__title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 .runpod-launch__ref {
-  position: absolute;
-  right: 0.7rem;
-  bottom: 0.3rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--color-text) 8%, var(--color-reader));
   color: var(--color-text-muted);
-  font-size: 0.65rem;
-  line-height: 1;
-  pointer-events: none;
+  font-size: 0.68rem;
+  font-weight: 500;
+  line-height: 1.5;
 }
 
 .runpod-launch__arrow {
@@ -5882,8 +5896,27 @@ body.nav-open .nav-backdrop {
   color: var(--color-text-muted);
 }
 
-.runpod-launch__arrow .icon,
-.runpod-launch__help .icon {
+.runpod-launch__arrow .icon {
   inline-size: 1.2rem;
   block-size: 1.2rem;
+}
+
+.runpod-launch__help .icon {
+  inline-size: 1rem;
+  block-size: 1rem;
+}
+
+/* Narrow screens: the walkthrough button drops below the main link instead of squeezing it. */
+@media (max-width: 600px) {
+  .runpod-launch {
+    flex-wrap: wrap;
+  }
+
+  .runpod-launch__main {
+    flex-basis: 100%;
+  }
+
+  .runpod-launch__help {
+    margin: 0 1.1rem 0.9rem auto;
+  }
 }
