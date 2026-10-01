@@ -44,6 +44,8 @@ Accepted（PoC。記事側のボタン・案内表示は別途デザイン相談
 - PyTorch 2.14（cu130）は一部の演算を Triton で行い、Triton は初回に C の補助を実行時コンパイルする。最小の CUDA base image にはコンパイラがないので、`gcc` と `libc6-dev` を入れる（ComfyUI の README の手順は torch と requirements だけで、コンパイラは普通の Linux 環境にある前提）。Python は README に合わせて 3.13 にする。PyTorch や CUDA を変えたときは、マージ前に GPU で短い計算を通して確かめる（CPU の起動確認では Triton の経路を通らない）。
 - 実測（2026-10-01、Pod のシステムログ）：image 4.1 GB の取得に約 1 分 38 秒。うち GHCR からのダウンロード約 49 秒（約 85 MB/s）、層の展開が 1 層ずつ約 45 秒。Docker の取得は層ごとに 1 本の接続で取り、展開も直列なので、xet のような並列化は効かない。
 - そこで PyTorch 一式を image から外し、起動処理がモデルと並行して PyTorch の配布元から入れる。版は build 時に解決した `/opt/runtime.lock` に固定するので、Pod ごとに中身は変わらない。起動のたびに配布元に頼る失敗点が増えるが、モデルもすでに毎回 Hugging Face から取っているので許容する。層は zstd で圧縮し、Docker Hub にも出して GHCR と取得時間を比べる。
+- 結果（2026-10-01）：image は圧縮後 4.1 GB → 1.14 GB。同じ試作 image で ComfyUI が出るまで GHCR 3:05、Docker Hub 1:41。Docker Hub に切り替えた本番テンプレートで 2:20 / 1:28 / 3:10（L4、モデルのダウンロードが遅い回）、平均約 2 分 20 秒（以前は約 4 分）。残るばらつきは、マシンに image が残っているかと、データセンターと Hugging Face の間の回線。
+- テンプレートは Docker Hub（`nomadoor` アカウント）の image を使い、GHCR にも毎日同じものを出して予備にする。Docker Hub の注意点：ログインなしの取得回数の上限（当たったら GHCR に戻す）、アクセストークンの期限（切れるとビルド全体が止まる）、個人アカウントにひもづくこと（テンプレートと紹介は Matatabi AI 名義）、無料プランの条件変更。
 - 土台を変える前に、Pod の作成・起動から起動処理開始までの秒数を `report.json` に残して測る。次に今の土台と RunPod 公式 `runpod/pytorch` の土台を `:exp` で比べる。PyTorch を起動時に入れる案は、版を固定すれば中身は変わらないが、起動のたびに配布元に頼る失敗点が増えるので、土台の乗り換えが効かなかったときの候補とする。
 
 ## Consequences

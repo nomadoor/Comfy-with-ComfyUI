@@ -27,12 +27,16 @@ runpod/
 
 ## Docker image
 
-`ghcr.io/nomadoor/comfy-with-comfyui-runpod`。`.github/workflows/runpod-image.yml` が毎日と `runpod/image/**` の変更時にビルドする。タグは `latest` と `<日付>-<ComfyUI の短い sha>`。
+`docker.io/nomadoor/comfy-with-comfyui-runpod`（テンプレートが使う）と `ghcr.io/nomadoor/comfy-with-comfyui-runpod`（予備）に、同じ image を出す。`.github/workflows/runpod-image.yml` が毎日と `runpod/image/**` の変更時にビルドする。タグは `latest` と `<日付>-<ComfyUI の短い sha>`。
+
+- テンプレートは Docker Hub の image を使う。RunPod では GHCR より取得が速かった（試作の同じ image で、ComfyUI まで Docker Hub 1:41、GHCR 3:05）。
+- Docker Hub はログインなしの取得回数に上限がある。Pod が image の取得で失敗するようになったら、テンプレートの image を `ghcr.io/nomadoor/comfy-with-comfyui-runpod:latest` に戻す（毎日両方に出しているので、すぐ切り替えられる）。
+- Docker Hub への push には Secrets の `DOCKERHUB_USERNAME` と `DOCKERHUB_TOKEN`（nomadoor の Read & Write トークン）を使う。トークンが切れると push が失敗してビルド全体が止まり、GHCR も更新されないので、期限を付けた場合はその前に作り直す。
 
 - PyTorch と CUDA ライブラリ（約 6.7 GB）は image に入れない。image には版を固定した一覧（`/opt/runtime.lock`）だけを入れ、起動処理がモデルのダウンロードと並行して PyTorch の配布元から入れる（ステップ「PyTorch とライブラリを導入」）。ComfyUI の requirements と custom node の依存は、PyTorch が入ったあとに入れる（先に入れると PyPI の汎用版 PyTorch が入るため）。
 - 層は zstd で圧縮する（展開が gzip より速い）。
 - ビルドキャッシュ（`:buildcache`）で、変わらない層を毎日作り直さない。
-- Secrets に `DOCKERHUB_USERNAME` と `DOCKERHUB_TOKEN` があれば、Docker Hub（`docker.io/<user>/comfy-with-comfyui-runpod`）にも同じタグで出す。
+- Secrets の `DOCKERHUB_USERNAME` と `DOCKERHUB_TOKEN` のどちらかが欠けていれば、Docker Hub には出さず GHCR にだけ出す。
 - 試作は `main` 以外のブランチで workflow を手動実行する（`gh workflow run runpod-image.yml --ref <branch>`）。`:exp` にだけ出て、`:latest` には触れない。キャッシュも `:buildcache-exp` に分ける。
 
 Pod の環境変数:
@@ -63,7 +67,7 @@ ComfyUI の画面では、テンプレート選択ダイアログを出さず、
 |---|---|
 | Template name | `ComfyUI <モデル名> - Comfy with ComfyUI`（括弧は使えない） |
 | Visibility | Public（作者への還元の対象になる。Matatabi AI のアカウントで作る） |
-| Container Image | `ghcr.io/nomadoor/comfy-with-comfyui-runpod:latest` |
+| Container Image | `docker.io/nomadoor/comfy-with-comfyui-runpod:latest`（問題が出たら `ghcr.io/nomadoor/comfy-with-comfyui-runpod:latest`） |
 | Container Disk | プロファイルの `storage.recommended_disk_gb`（Qwen-Image-2.1 は 70 GB）。モデル × 1.5 + 40 GB を 10 GB 単位で切り上げ。image、custom node の依存、生成画像、Manager で足すモデルもここに入るので多めにとる |
 | Volume Disk | 0（放置すると Pod ごと Terminate するので、残すものがない） |
 | HTTP Port | `ComfyUI` / 8188 |
