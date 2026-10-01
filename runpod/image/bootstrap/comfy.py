@@ -28,7 +28,10 @@ def update(comfy_dir, ref, profile, state):
     else:
         target = ref
     try:
-        before = run(["git", "-C", comfy_dir, "rev-parse", "HEAD"])
+        # Requirements are recorded as installed only after uv succeeds, so a failed install is
+        # retried on the next boot even though the new commit is already checked out.
+        marker = Path(comfy_dir).parent / ".runpod-comfyui-requirements.sha"
+        installed = marker.read_text(encoding="utf-8").strip() if marker.exists() else None
         state.step("comfyui", "running", f"fetching {ref}")
         run(["git", "-C", comfy_dir, "fetch", "--quiet", "origin", "master"])
         if target != "origin/master":
@@ -36,9 +39,10 @@ def update(comfy_dir, ref, profile, state):
             target = "FETCH_HEAD"
         run(["git", "-C", comfy_dir, "checkout", "--quiet", "--force", target])
         sha = run(["git", "-C", comfy_dir, "rev-parse", "HEAD"])
-        if sha != before:
+        if sha != installed:
             state.step("comfyui", "running", f"installing requirements for {sha[:7]}")
             pip_install("-r", str(Path(comfy_dir) / "requirements.txt"))
+            marker.write_text(sha + "\n", encoding="utf-8")
         return sha
     except RuntimeError as error:
         raise BootError("comfyui_update", f"Could not update ComfyUI to {ref}: {error}") from error
@@ -86,6 +90,7 @@ def install_custom_nodes(comfy_dir, nodes, state):
             if node["source"] == "git":
                 version = requested
                 if not marker.exists():
+                    shutil.rmtree(target, ignore_errors=True)  # leftovers of a failed earlier attempt
                     run(["git", "clone", "--quiet", node["git"], str(target)])
                     if requested != "latest":
                         run(["git", "-C", str(target), "checkout", "--quiet", requested])

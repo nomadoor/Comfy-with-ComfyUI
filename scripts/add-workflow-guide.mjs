@@ -52,6 +52,8 @@ for (const file of targets.flatMap(listWorkflows)) {
   const text = `${rest}\n\n${guide}`;
   if (text === note.widgets_values[0]) continue;
   note.widgets_values[0] = text;
+  // Newer frontends can restore widget values by name; keep that copy in step.
+  if (note.widgets_values_named && typeof note.widgets_values_named === "object") note.widgets_values_named.text = text;
   changed += 1;
   console.log(`${write ? "updated" : "would update"}: ${path.basename(file)} node ${note.id}`);
   if (write) {

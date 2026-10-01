@@ -66,22 +66,18 @@ const lookupHuggingFace = async (models) => {
     const { repo_id, revision } = group[0];
     const info = await fetchJSON(`https://huggingface.co/api/models/${repo_id}`);
     const gated = Boolean(info.gated);
-    let files = [];
-    try {
-      files = await fetchJSON(`https://huggingface.co/api/models/${repo_id}/paths-info/${encodeURIComponent(revision)}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ paths: group.map((m) => m.path_in_repo) }),
-      });
-    } catch (error) {
-      console.warn(`  ${repo_id}: ${error.message}`);
-    }
+    // A failed request throws: the caller then keeps the existing lock instead of writing nulls.
+    const files = await fetchJSON(`https://huggingface.co/api/models/${repo_id}/paths-info/${encodeURIComponent(revision)}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ paths: group.map((m) => m.path_in_repo) }),
+    });
     for (const model of group) {
       const file = files.find((f) => f.path === model.path_in_repo);
-      if (!file) console.warn(`  ${model.url}: not found in ${repo_id}@${revision}`);
+      if (!file) throw new Error(`${model.url}: not found in ${repo_id}@${revision}`);
       results[model.url] = {
-        size_bytes: file?.size ?? null,
-        sha256: file?.lfs?.oid ?? null,
+        size_bytes: file.size ?? null,
+        sha256: file.lfs?.oid ?? null,
         requires_hf_token: gated,
       };
     }
@@ -107,8 +103,14 @@ for (const id of ids.length ? ids : listProfileIds()) {
     continue;
   }
   const models = {};
-  Object.assign(models, await lookupHuggingFace(profile.models.filter((m) => m.source === "hf")));
-  for (const model of profile.models.filter((m) => m.source !== "hf")) models[model.url] = await lookupHead(model);
+  try {
+    Object.assign(models, await lookupHuggingFace(profile.models.filter((m) => m.source === "hf")));
+    for (const model of profile.models.filter((m) => m.source !== "hf")) models[model.url] = await lookupHead(model);
+  } catch (error) {
+    console.error(`${id}: ${error.message}; ${id}.lock.json left unchanged`);
+    process.exitCode = 1;
+    continue;
+  }
   const sorted = Object.fromEntries(Object.entries(models).sort(([a], [b]) => a.localeCompare(b)));
   writeJSON(lockPath(id), { checked_at: new Date().toISOString().slice(0, 10), models: sorted });
   const total = Object.values(sorted).reduce((sum, m) => sum + (m.size_bytes ?? 0), 0);

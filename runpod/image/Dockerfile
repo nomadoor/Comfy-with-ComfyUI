@@ -24,7 +24,8 @@ RUN uv venv --python 3.12 /opt/venv \
 ARG COMFY_COMMIT=master
 RUN git clone --filter=blob:none https://github.com/comfyanonymous/ComfyUI.git /opt/ComfyUI \
  && git -C /opt/ComfyUI checkout --quiet "$COMFY_COMMIT" \
- && uv pip install --no-cache -r /opt/ComfyUI/requirements.txt -r /opt/ComfyUI/manager_requirements.txt "huggingface_hub[hf_xet]"
+ && uv pip install --no-cache -r /opt/ComfyUI/requirements.txt -r /opt/ComfyUI/manager_requirements.txt "huggingface_hub[hf_xet]" \
+ && git -C /opt/ComfyUI rev-parse HEAD > /opt/.runpod-comfyui-requirements.sha
 
 COPY bootstrap /opt/runpod/bootstrap
 COPY status /opt/runpod/status

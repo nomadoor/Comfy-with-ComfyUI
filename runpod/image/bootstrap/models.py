@@ -243,7 +243,12 @@ class Downloader:
         ])
         self.incoming.mkdir(parents=True, exist_ok=True)
 
-        missing = sum(m.get("size_bytes") or 0 for m in models if not (self.models_dir / m["directory"] / m["name"]).exists())
+        def needs_download(m):
+            path = self.models_dir / m["directory"] / m["name"]
+            return not path.exists() or (m.get("size_bytes") and path.stat().st_size != m["size_bytes"])
+
+        # A wrong-sized file is downloaded again next to the old one, so it counts in full too.
+        missing = sum(m.get("size_bytes") or 0 for m in models if needs_download(m))
         free = shutil.disk_usage(self.models_dir).free
         if missing > free:
             need_gb = -(-missing // 10**9) + 5
