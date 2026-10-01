@@ -46,6 +46,17 @@
   .alert p { margin: 0.25rem 0 0; }
   .alert .raw { color: var(--muted); font-size: 0.85em; overflow-wrap: anywhere; }
   .muted { color: var(--muted); font-size: 0.85em; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .guide { margin: -1.25rem 0 2rem; }
+  .tip { position: relative; }
+  .tip .label { color: var(--muted); font-size: 0.8em; letter-spacing: 0.04em; text-transform: uppercase; margin: 0 0 0.5rem; }
+  .tip h2 { font-size: 1rem; margin: 0 0 0.35rem; font-weight: 600; }
+  .tip p { margin: 0; }
+  .tip .more { display: inline-block; margin-top: 0.5rem; font-size: 0.9em; }
+  .tip nav { position: absolute; top: 0.75rem; right: 0.75rem; display: flex; align-items: center; gap: 0.25rem; color: var(--muted); font-size: 0.8em; font-variant-numeric: tabular-nums; }
+  .tip button { width: 2rem; height: 2rem; border: 0; border-radius: 50%; background: transparent; color: var(--muted); font-size: 1.1rem; line-height: 1; cursor: pointer; }
+  .tip button:hover { background: var(--bg); color: var(--text); }
   [hidden] { display: none !important; }
 </style>
 </head>
@@ -53,11 +64,19 @@
 <main>
   <h1 id="title">Preparing ComfyUI</h1>
   <p class="lead" id="lead"></p>
+  <p class="guide" id="guide" hidden></p>
   <div id="alerts"></div>
   <section class="panel"><ol class="steps" id="steps"></ol></section>
   <section class="panel" id="models-panel" hidden>
     <p class="summary" id="summary"></p>
     <div id="models"></div>
+  </section>
+  <section class="panel tip" id="tip" hidden>
+    <p class="label" id="tip-label"></p>
+    <nav><button type="button" id="tip-prev" aria-label="previous">‹</button><span id="tip-count"></span><button type="button" id="tip-next" aria-label="next">›</button></nav>
+    <h2 id="tip-title"></h2>
+    <p id="tip-body"></p>
+    <a class="more" id="tip-link" target="_blank" rel="noopener"></a>
   </section>
   <p class="muted" id="footer"></p>
 </main>
@@ -68,6 +87,12 @@
     en: {
       preparing: "Preparing ComfyUI", lead: "This page switches to ComfyUI by itself when everything is ready.",
       steps: { profile: "Fetch profile", comfyui: "Update ComfyUI", custom_nodes: "Install custom nodes", models: "Download models", workflows: "Place workflows", start: "Start ComfyUI" },
+      guide: "Read the guide", whileWaiting: "While you wait",
+      detail: {
+        fetching: (p) => `fetching ${p.ref}`, requirements: (p) => `installing requirements for ${p.sha}`, none: () => "none",
+        files: (p) => `${p.count} files`, ready: (p) => `${p.ready} ready` + (p.skipped ? `, ${p.skipped} skipped` : ""),
+        placed: (p) => `${p.workflows} workflows` + (p.inputs ? `, ${p.inputs} sample images` : ""),
+      },
       left: "left", eta: "about", done: "ready", total: "total", failed: "Setup stopped", skipped: "Skipped", lost: "Waiting for the Pod…",
       starting: "Starting ComfyUI…", verifying: "verifying", present: "already on disk",
       advice: {
@@ -87,6 +112,12 @@
     ja: {
       preparing: "ComfyUI を準備しています", lead: "準備ができると、このページは自動で ComfyUI に切り替わります。",
       steps: { profile: "プロファイルを取得", comfyui: "ComfyUI を更新", custom_nodes: "カスタムノードを導入", models: "モデルをダウンロード", workflows: "workflow を配置", start: "ComfyUI を起動" },
+      guide: "解説ページを読む", whileWaiting: "待っているあいだに",
+      detail: {
+        fetching: (p) => `${p.ref} を取得中`, requirements: (p) => `${p.sha} の依存をインストール中`, none: () => "なし",
+        files: (p) => `${p.count} ファイル`, ready: (p) => `${p.ready} 個準備完了` + (p.skipped ? `、${p.skipped} 個スキップ` : ""),
+        placed: (p) => `workflow ${p.workflows} 本` + (p.inputs ? `、サンプル画像 ${p.inputs} 枚` : ""),
+      },
       left: "残り", eta: "あと約", done: "完了", total: "合計", failed: "準備が止まりました", skipped: "スキップしました", lost: "Pod の応答を待っています…",
       starting: "ComfyUI を起動しています…", verifying: "検証中", present: "ダウンロード済み",
       advice: {
@@ -106,6 +137,12 @@
     zh: {
       preparing: "正在准备 ComfyUI", lead: "准备完成后，本页面会自动切换到 ComfyUI。",
       steps: { profile: "获取配置", comfyui: "更新 ComfyUI", custom_nodes: "安装自定义节点", models: "下载模型", workflows: "放置 workflow", start: "启动 ComfyUI" },
+      guide: "阅读讲解页面", whileWaiting: "等待的时候",
+      detail: {
+        fetching: (p) => `正在获取 ${p.ref}`, requirements: (p) => `正在安装 ${p.sha} 的依赖`, none: () => "无",
+        files: (p) => `${p.count} 个文件`, ready: (p) => `${p.ready} 个已就绪` + (p.skipped ? `，${p.skipped} 个已跳过` : ""),
+        placed: (p) => `workflow ${p.workflows} 个` + (p.inputs ? `，示例图像 ${p.inputs} 张` : ""),
+      },
       left: "剩余", eta: "约", done: "完成", total: "合计", failed: "准备已停止", skipped: "已跳过", lost: "正在等待 Pod 响应…",
       starting: "正在启动 ComfyUI…", verifying: "校验中", present: "已下载",
       advice: {
@@ -135,7 +172,34 @@
   $("title").textContent = T.preparing;
   $("lead").textContent = T.lead;
 
+  const stepDetail = (step) => (step.key && T.detail[step.key] ? T.detail[step.key](step.params || {}) : step.detail);
+
+  // Columns: one at a time, rotating every 12 s; the arrows step through them by hand.
+  let tips = [], tipIndex = 0, tipTimer = null;
+  const showTip = (index) => {
+    tipIndex = (index + tips.length) % tips.length;
+    const tip = tips[tipIndex][lang] || tips[tipIndex].en;
+    $("tip-label").textContent = T.whileWaiting;
+    $("tip-count").textContent = `${tipIndex + 1} / ${tips.length}`;
+    $("tip-title").textContent = tip.title;
+    $("tip-body").textContent = tip.body;
+    $("tip-link").textContent = `→ ${tip.link.title}`;
+    $("tip-link").href = `${siteOrigin}${tip.link.path}`;
+    clearTimeout(tipTimer);
+    tipTimer = setTimeout(() => showTip(tipIndex + 1), 12000);
+  };
+  let siteOrigin = "https://comfyui.nomadoor.net";
+  const showTips = (list) => {
+    if (tips.length || !list.length) return;
+    tips = list.slice().sort(() => Math.random() - 0.5);
+    $("tip").hidden = false;
+    showTip(0);
+  };
+  $("tip-prev").addEventListener("click", () => showTip(tipIndex - 1));
+  $("tip-next").addEventListener("click", () => showTip(tipIndex + 1));
+
   const render = (s) => {
+    if (s.site) siteOrigin = s.site;
     if (s.title) {
       $("title").textContent = `${s.title}`;
       document.title = `${s.title} · ${T.preparing}`;
@@ -153,7 +217,13 @@
 
     $("steps").innerHTML = s.steps.map((step) =>
       `<li data-state="${step.state}"><span class="dot"></span><span>${esc(T.steps[step.id] || step.label)}` +
-      (step.detail ? `<span class="detail">${esc(step.detail)}</span>` : "") + `</span></li>`).join("");
+      (step.detail || step.key ? `<span class="detail">${esc(stepDetail(step))}</span>` : "") + `</span></li>`).join("");
+
+    if (s.site && s.article && s.title) {
+      $("guide").innerHTML = `<a href="${esc(`${s.site}/${lang}/${s.article}/`)}" target="_blank" rel="noopener">${esc(T.guide)} → ${esc(s.title)}</a>`;
+      $("guide").hidden = false;
+    }
+    showTips(s.tips || []);
 
     const models = s.models || [];
     $("models-panel").hidden = models.length === 0;

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Validate every RunPod profile offline (errors fail, warnings are printed).
 // Usage: npm run check:runpod [-- --print <id>]
-import { buildProfile, listProfileIds } from "./profiles.mjs";
+import { buildProfile, buildTips, listProfileIds } from "./profiles.mjs";
 
 const args = process.argv.slice(2);
 const printId = args.includes("--print") ? args[args.indexOf("--print") + 1] : null;
@@ -22,6 +22,11 @@ for (const id of listProfileIds()) {
       `${profile.custom_nodes.length} custom nodes, disk ${profile.storage.recommended_disk_gb} GB`
   );
 }
+
+const { tips, errors: tipErrors } = buildTips();
+for (const error of tipErrors) console.error(`[runpod] error: ${error}`);
+if (tipErrors.length) failed = true;
+else console.log(`tips.yaml: ${tips.length} columns`);
 
 if (failed) process.exit(1);
 console.log("RunPod profile checks passed.");

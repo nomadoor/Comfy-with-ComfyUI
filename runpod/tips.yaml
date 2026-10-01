@@ -1,0 +1,103 @@
+# Short columns shown on the Pod status page while it prepares (one at a time, rotating).
+# `link` is <section>/<slug> of the article that explains more; the build turns it into a
+# per-language URL and title. Published as /runpod/tips.json, so edits need no image rebuild.
+- link: begin-with/saving-and-loading-workflows
+  ja:
+    title: workflow はコピペでも開ける
+    body: .json はドラッグ＆ドロップで読み込めますが、中身をテキストとしてコピーし、キャンバスで Ctrl + V しても開けます。
+  en:
+    title: Workflows open with copy and paste, too
+    body: A .json file can be dragged in, but you can also copy its contents as text and press Ctrl + V on the canvas.
+  zh:
+    title: workflow 也可以复制粘贴打开
+    body: 除了拖放 .json 文件，也可以把文件内容作为文本复制，然后在画布上按 Ctrl + V 打开。
+- link: begin-with/media
+  ja:
+    title: 画像もそのまま貼れる
+    body: クリップボードに画像がある状態でキャンバスに Ctrl + V すると、Load Image ノードとして貼り付けられます。
+  en:
+    title: Paste images straight in
+    body: With an image on the clipboard, press Ctrl + V on the canvas and it arrives as a Load Image node.
+  zh:
+    title: 图像也能直接粘贴
+    body: 剪贴板里有图像时，在画布上按 Ctrl + V，就会作为 Load Image 节点粘贴进来。
+- link: begin-with/media
+  ja:
+    title: 保存ファイル名に日付を入れる
+    body: Save Image の filename_prefix に %date:yyyy-MM-dd%/cat_project と書くと、日付ごとのフォルダに分けて保存されます。
+  en:
+    title: Put the date in saved file names
+    body: Write %date:yyyy-MM-dd%/cat_project in Save Image's filename_prefix and outputs are saved into a folder per day.
+  zh:
+    title: 在保存文件名中加入日期
+    body: 在 Save Image 的 filename_prefix 中写入 %date:yyyy-MM-dd%/cat_project，就会按日期分文件夹保存。
+- link: begin-with/nodes
+  ja:
+    title: つなぎ直しはまとめて
+    body: Shift を押しながらピンから別のピンへドラッグすると、そこから出ている接続をまとめて付け替えられます。
+  en:
+    title: Move every link at once
+    body: Hold Shift and drag from one pin to another to move all of its connections together.
+  zh:
+    title: 一次性改接所有连线
+    body: 按住 Shift 从一个引脚拖到另一个引脚，就能把它的连线一起改接过去。
+- link: begin-with/group
+  ja:
+    title: グループの枠だけ動かす
+    body: グループ枠をドラッグすると中のノードも一緒に動きます。Ctrl + Alt を押しながらドラッグすれば、枠だけを動かせます。
+  en:
+    title: Move only a group's frame
+    body: Dragging a group frame moves the nodes inside it too. Hold Ctrl + Alt while dragging to move just the frame.
+  zh:
+    title: 只移动组的框
+    body: 拖动组框时，里面的节点也会一起移动。按住 Ctrl + Alt 拖动，就只移动框。
+- link: begin-with/canvas-navigation
+  ja:
+    title: 迷子になったら Alt + M
+    body: 大きな workflow で今どこにいるか分からなくなったら、Alt + M でミニマップを出せます。
+  en:
+    title: Lost? Press Alt + M
+    body: When you lose your place in a large workflow, Alt + M shows a minimap.
+  zh:
+    title: 迷路了就按 Alt + M
+    body: 在大型 workflow 中找不到位置时，按 Alt + M 可以显示小地图。
+- link: notes/seed-neighbor
+  ja:
+    title: seed 1234 と 1235 はまったく別物
+    body: 数字が近くても、最初のノイズはまるで違います。近い seed なら似た絵になる、ということはありません。
+  en:
+    title: Seed 1234 and 1235 have nothing in common
+    body: Close numbers still start from completely different noise. A nearby seed does not give a similar image.
+  zh:
+    title: seed 1234 和 1235 完全不同
+    body: 数字再接近，初始噪声也完全不同。相近的 seed 并不会得到相似的图像。
+- link: notes/why-multiple-of-8
+  ja:
+    title: 解像度は好きな数字にできない
+    body: 画像はいったん VAE で縮めてから計算し、モデルによってはさらにパッチ単位で扱います。そのため幅と高さは 8・16・32 といった決まった倍数に揃える必要があり、何の倍数かはモデルごとに違います。
+  en:
+    title: Resolution can't be any number
+    body: Images are shrunk by the VAE before the model works on them, and some models also process them in patches. Width and height must therefore be a multiple such as 8, 16 or 32, and which one depends on the model.
+  zh:
+    title: 分辨率不能随便设
+    body: 图像会先经 VAE 缩小再参与计算，有些模型还会按 patch 处理。因此宽高必须是 8、16、32 等特定数的倍数，具体是多少取决于模型。
+- link: notes/conditioning-zero-out
+  ja:
+    title: Conditioning Zero Out の正体
+    body: CFG 1.0 では negative が計算から消えるので、空いた negative 入力を埋めておくためのノードです。
+  en:
+    title: What Conditioning Zero Out is for
+    body: At CFG 1.0 the negative drops out of the calculation, so this node simply fills the unused negative input.
+  zh:
+    title: Conditioning Zero Out 的真面目
+    body: CFG 为 1.0 时 negative 不参与计算，这个节点只是用来填补空着的 negative 输入。
+- link: begin-with/readable-nodes
+  ja:
+    title: workflow は左上から右下へ
+    body: ComfyUI は素材が 1 本のラインで加工されていく構造なので、左上から右下へ流れるように並べると、あとで見返しても迷いません。
+  en:
+    title: Lay workflows out from top left to bottom right
+    body: In ComfyUI, material moves down a single production line, so arranging nodes to flow from top left to bottom right keeps a workflow easy to read later.
+  zh:
+    title: workflow 从左上排到右下
+    body: ComfyUI 的素材沿着一条生产线逐步加工，所以把节点按从左上到右下的方向排列，以后回头看也不会迷路。

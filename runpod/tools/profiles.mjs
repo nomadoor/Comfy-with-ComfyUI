@@ -284,6 +284,7 @@ export const buildProfile = (id, { siteURL, coreNodes = readJSON(CORE_NODES_PATH
     id,
     title: source.title,
     article: source.article,
+    site: new URL("/", siteURL).href.replace(/\/$/, ""),
     generated_at: new Date().toISOString(),
     site_commit: siteCommit(),
     comfyui: { default: source.comfyui.default, verified_commit: source.comfyui.verified_commit ?? null },
@@ -308,6 +309,30 @@ export const buildProfile = (id, { siteURL, coreNodes = readJSON(CORE_NODES_PATH
   return { profile, errors, warnings };
 };
 
+// --- Status page columns (runpod/tips.yaml -> /runpod/tips.json)
+const TIP_LANGS = ["ja", "en", "zh"];
+
+export const buildTips = () => {
+  const file = path.join(RUNPOD_DIR, "tips.yaml");
+  if (!fs.existsSync(file)) return { tips: [], errors: [] };
+  const errors = [];
+  const tips = YAML.parse(fs.readFileSync(file, "utf8")).map((tip, index) => {
+    const entry = {};
+    for (const lang of TIP_LANGS) {
+      const article = path.resolve("src", "content", lang, `${tip.link}.md`);
+      if (!tip[lang]?.title || !tip[lang]?.body) errors.push(`tips.yaml #${index + 1}: missing ${lang} title/body`);
+      if (!fs.existsSync(article)) {
+        errors.push(`tips.yaml #${index + 1}: ${lang}/${tip.link} does not exist`);
+        continue;
+      }
+      const title = fs.readFileSync(article, "utf8").match(/^title:\s*"?(.+?)"?\s*$/m)?.[1] ?? tip.link;
+      entry[lang] = { ...tip[lang], link: { path: `/${lang}/${tip.link}/`, title } };
+    }
+    return entry;
+  });
+  return { tips, errors };
+};
+
 // Used by the Eleventy build: writes every profile to <outDir>/runpod/profiles/, throws on errors.
 export const writeProfiles = ({ outDir, siteURL, log = console }) => {
   const failures = [];
@@ -322,5 +347,9 @@ export const writeProfiles = ({ outDir, siteURL, log = console }) => {
     fs.mkdirSync(path.dirname(target), { recursive: true });
     fs.writeFileSync(target, `${JSON.stringify(profile, null, 2)}\n`);
   }
+  const { tips, errors: tipErrors } = buildTips();
+  failures.push(...tipErrors);
+  fs.mkdirSync(path.join(outDir, "runpod"), { recursive: true });
+  fs.writeFileSync(path.join(outDir, "runpod", "tips.json"), `${JSON.stringify({ tips }, null, 2)}\n`);
   if (failures.length) throw new Error(`RunPod profile errors:\n  ${failures.join("\n  ")}`);
 };

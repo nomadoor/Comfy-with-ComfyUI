@@ -2,7 +2,7 @@
 # workflows: the bootstrap fetches /runpod/profiles/${PROFILE}.json at start and prepares those.
 # ComfyUI master is cloned at build time (rebuilt daily) so boot only applies the difference.
 # The CUDA "base" image is enough: the PyTorch wheels bring their own CUDA and cuDNN libraries.
-FROM nvidia/cuda:12.8.1-base-ubuntu24.04
+FROM nvidia/cuda:13.0.3-base-ubuntu24.04
 
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
@@ -19,7 +19,7 @@ RUN apt-get update \
 COPY --from=ghcr.io/astral-sh/uv:0.9 /uv /uvx /usr/local/bin/
 
 RUN uv venv --python 3.12 /opt/venv \
- && uv pip install --no-cache torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+ && uv pip install --no-cache torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu130
 
 ARG COMFY_COMMIT=master
 RUN git clone --filter=blob:none https://github.com/comfyanonymous/ComfyUI.git /opt/ComfyUI \
