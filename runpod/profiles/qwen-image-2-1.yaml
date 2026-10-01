@@ -5,6 +5,8 @@ title: Qwen-Image-2.1
 article: basic-workflows/qwen-image-2-1
 # RunPod template (Matatabi AI account) the article's launch card deploys.
 template: 16mbtha5fk
+# Qwen Research License: research and evaluation only, no commercial use. No referral code on its card.
+referral: false
 workflows:
   - src/workflows/basic-workflows/qwen-image-2-1/*.json
 comfyui:

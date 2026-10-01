@@ -74,7 +74,9 @@ ComfyUI の画面では、テンプレート選択ダイアログを出さず、
 | Environment Variables | `PROFILE=<id>`（gated なモデルがあるときだけ `HF_TOKEN`） |
 | GPU Compatibility | Allowed CUDA versions は 13.0 以上（image は CUDA 13 / PyTorch cu130）。Minimum vRAM と ★（おすすめ GPU）はプロファイルの GPU 案内に合わせる |
 
-記事に置くリンクは `https://console.runpod.io/deploy?template=<テンプレート ID>&ref=<Matatabi AI の紹介コード>`（GPU 選択画面に直接つながる）。
+記事に置くリンクは `https://console.runpod.io/deploy?template=<テンプレート ID>&ref=<Matatabi AI の紹介コード>`（GPU 選択画面に直接つながる）。記事のカードは `{% runpod %}` で、プロファイルの `template` から組み立てる。
+
+商用利用できないライセンスのモデル（研究・評価目的のみなど）を含むプロファイルには `referral: false` を書く。カードのリンクに紹介コードを付けず、「紹介リンクが含まれています」も出さない。理由のライセンス名はその行にコメントで残す。テンプレート作者への還元（利用額の 1% のクレジット）はテンプレート単位で外す設定が見当たらず、これは残る。
 
 ## 手元での確認
 

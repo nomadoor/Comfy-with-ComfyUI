@@ -1204,7 +1204,7 @@ export default function (eleventyConfig) {
   // `{% runpod %}`: a card that deploys this article's Runpod template (one Pod with every workflow,
   // its models and sample images). Reads the profile whose `article` is this page, so the GPU guidance
   // and the template stay in one place (runpod/profiles/<id>.yaml). Kept to one row: it sits near the
-  // top of every article that has a profile. The referral is disclosed in a line under the card.
+  // top of every article that has a profile. The referral, when there is one, is disclosed in a line under the card.
   // The logo is Runpod's cube icon as its brand kit shows it (white cube on the official purple; the
   // kit allows the icon for compact placements and forbids recolouring), so it is not a currentColor icon.
   const RUNPOD_LOGO =
@@ -1222,7 +1222,9 @@ export default function (eleventyConfig) {
       escapeHTML(String(siteData.i18n?.runpod?.[key]?.[lang] ?? siteData.i18n?.runpod?.[key]?.en ?? "").replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? ""));
     const url = new URL(siteData.runpod.deployUrl);
     url.searchParams.set("template", source.template);
-    if (siteData.runpod.referral) url.searchParams.set("ref", siteData.runpod.referral);
+    // A profile whose models forbid commercial use sets `referral: false`: no code, no disclosure line.
+    const referral = source.referral !== false && siteData.runpod.referral;
+    if (referral) url.searchParams.set("ref", referral);
     // Second line: each recommended GPU as its own rounded tag.
     const tag = (text) => `<span class="runpod-launch__tag">${escapeHTML(text)}</span>`;
     const recommended = source.gpu?.recommended ?? [];
@@ -1236,7 +1238,7 @@ export default function (eleventyConfig) {
       RUNPOD_LOGO +
       `<span class="runpod-launch__text"><b>${t("title")}</b>${specs ? `<span class="runpod-launch__specs">${specs}</span>` : ""}</span>${RUNPOD_ARROW}</a>` +
       `<a class="runpod-launch__help" href="/${lang}/notes/run-on-runpod/" aria-label="${help}">${RUNPOD_HELP}<span class="workflow-performance__popup runpod-launch__tip" role="tooltip">${help}</span></a>` +
-      `</div><p class="runpod-launch__ref">${t("referral")}</p></div>`
+      `</div>${referral ? `<p class="runpod-launch__ref">${t("referral")}</p>` : ""}</div>`
     );
   });
 
