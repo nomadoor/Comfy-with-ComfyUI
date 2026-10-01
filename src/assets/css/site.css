@@ -5790,6 +5790,7 @@ body.nav-open .nav-backdrop {
 }
 
 .runpod-launch__help {
+  --workflow-popup-gap: 0.6rem;
   position: relative;
   flex: none;
   display: grid;
@@ -5830,27 +5831,20 @@ body.nav-open .nav-backdrop {
   block-size: 1.25rem;
 }
 
-/* Hover tip for "?": above the button, right-aligned so it never leaves the reader column. */
+/* Hover tip for "?": the site's existing popup (.workflow-performance__popup, also on the element),
+   only re-anchored to the right edge so it stays inside the reader column. */
 .runpod-launch__tip {
-  position: absolute;
+  left: auto;
   right: 0;
-  bottom: calc(100% + 0.4rem);
-  padding: 0.35rem 0.6rem;
-  border-radius: var(--radius-sm);
-  background: var(--color-heading);
-  color: var(--color-reader);
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.85rem;
   white-space: nowrap;
-  opacity: 0;
-  transform: translateY(2px);
-  pointer-events: none;
-  transition: opacity 0.15s ease, transform 0.15s ease;
+  transform: translateY(0.25rem);
 }
 
 .runpod-launch__help:hover .runpod-launch__tip,
 .runpod-launch__help:focus-visible .runpod-launch__tip {
   opacity: 1;
+  visibility: visible;
   transform: none;
 }
 
@@ -5863,7 +5857,7 @@ body.nav-open .nav-backdrop {
 .runpod-launch__text {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.45rem;
   min-width: 0;
   line-height: 1.4;
 }
@@ -5878,17 +5872,23 @@ body.nav-open .nav-backdrop {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.2rem 1.1rem;
+  gap: 0.3rem 1.1rem;
   color: color-mix(in srgb, var(--color-text) 85%, var(--color-reader));
   font-size: 0.85rem;
 }
 
-.runpod-launch__gpu {
-  padding: 0.1rem 0.5rem;
+.runpod-launch__spec {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Each GPU and the VRAM figure in its own rounded tag, in body text colour: readable, not loud. */
+.runpod-launch__tag {
+  padding: 0.05rem 0.5rem;
   border-radius: var(--radius-pill);
-  background: color-mix(in srgb, var(--color-text) 14%, var(--color-reader));
-  color: var(--color-heading);
-  font-weight: 600;
+  background: color-mix(in srgb, var(--color-text) 12%, var(--color-reader));
+  color: var(--color-text);
 }
 
 .runpod-launch__ref {

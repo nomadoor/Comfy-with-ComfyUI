@@ -1223,14 +1223,14 @@ export default function (eleventyConfig) {
     const url = new URL(siteData.runpod.deployUrl);
     url.searchParams.set("template", source.template);
     if (siteData.runpod.referral) url.searchParams.set("ref", siteData.runpod.referral);
-    // Second line: the recommended GPUs in one rounded tag ("RTX 4090 / 5090"), then the minimum VRAM.
+    // Second line: each recommended GPU and the minimum VRAM as its own rounded tag.
+    const tag = (text) => `<span class="runpod-launch__tag">${escapeHTML(text)}</span>`;
     const recommended = source.gpu?.recommended ?? [];
-    const [first = "", ...rest] = recommended;
-    const prefix = first.includes(" ") ? first.slice(0, first.lastIndexOf(" ") + 1) : "";
-    const gpus = [first, ...rest.map((gpu) => (prefix && gpu.startsWith(prefix) ? gpu.slice(prefix.length) : gpu))].join(" / ");
     const specs = [
-      gpus ? `<span class="runpod-launch__spec">${t("recLabel")} : <span class="runpod-launch__gpu">${escapeHTML(gpus)}</span></span>` : "",
-      source.gpu?.min_vram_gb ? `<span class="runpod-launch__spec">${t("vramLabel")} : ${t("vram", { gb: source.gpu.min_vram_gb })}</span>` : ""
+      recommended.length ? `<span class="runpod-launch__spec">${t("recLabel")} : ${recommended.map(tag).join("")}</span>` : "",
+      source.gpu?.min_vram_gb
+        ? `<span class="runpod-launch__spec">${t("vramLabel")} : <span class="runpod-launch__tag">${t("vram", { gb: source.gpu.min_vram_gb })}</span></span>`
+        : ""
     ].filter(Boolean).join("");
     const help = t("help");
     return (
@@ -1238,7 +1238,7 @@ export default function (eleventyConfig) {
       `<a class="runpod-launch__main" href="${escapeHTML(url.href)}" target="_blank" rel="noopener sponsored" data-no-link-icon>` +
       RUNPOD_LOGO +
       `<span class="runpod-launch__text"><b>${t("title")}</b>${specs ? `<span class="runpod-launch__specs">${specs}</span>` : ""}</span></a>` +
-      `<a class="runpod-launch__help" href="/${lang}/notes/run-on-runpod/" aria-label="${help}">${RUNPOD_HELP}<span class="runpod-launch__tip" role="tooltip">${help}</span></a>` +
+      `<a class="runpod-launch__help" href="/${lang}/notes/run-on-runpod/" aria-label="${help}">${RUNPOD_HELP}<span class="workflow-performance__popup runpod-launch__tip" role="tooltip">${help}</span></a>` +
       `</div><p class="runpod-launch__ref">${t("referral")}</p></div>`
     );
   });
