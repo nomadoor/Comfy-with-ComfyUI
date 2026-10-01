@@ -5765,6 +5765,7 @@ body.nav-open .nav-backdrop {
    (recommended GPU and the referral disclosure) and an arrow open the deploy page; a small "?" beside
    it opens the walkthrough note. */
 .runpod-launch {
+  position: relative;
   display: flex;
   align-items: stretch;
   margin: var(--space-lg) 0;
@@ -5839,9 +5840,38 @@ body.nav-open .nav-backdrop {
   font-weight: 650;
 }
 
-.runpod-launch__text small {
+.runpod-launch__gpus {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
   color: color-mix(in srgb, var(--color-text) 80%, var(--color-reader));
   font-size: 0.85rem;
+}
+
+/* GPU names are what a reader looks for on the deploy page, so they read as small filled tags. */
+.runpod-launch__gpu {
+  padding: 0.05rem 0.45rem;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--color-text) 12%, var(--color-reader));
+  color: var(--color-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.runpod-launch__sep {
+  color: var(--color-text-muted);
+}
+
+/* The referral disclosure: present, but the quietest thing in the card. */
+.runpod-launch__ref {
+  position: absolute;
+  right: 0.7rem;
+  bottom: 0.3rem;
+  color: var(--color-text-muted);
+  font-size: 0.65rem;
+  line-height: 1;
+  pointer-events: none;
 }
 
 .runpod-launch__arrow {
