@@ -1,16 +1,16 @@
 // RunPod helper for the site's Pods:
 // - on the first visit from a browser, open every workflow of the profile as tabs, in the
 //   article's order, with the first one active (later visits keep ComfyUI's own tab restore);
-// - report reader activity for the idle auto-stop, and warn before the Pod stops itself.
+// - report reader activity for the idle auto-stop, and warn before the Pod terminates itself.
 import { app } from "../../scripts/app.js";
 
 const CONFIG_URL = new URL("./runpod.json", import.meta.url);
 const lang = (navigator.language || "en").toLowerCase();
 const T = lang.startsWith("ja")
-  ? { warn: (m) => `操作がないため、あと約 ${m} 分でこの Pod を停止します（GPU の課金が止まります）。`, keep: "使い続ける", stopped: "操作がなかったため、この Pod を停止しました。再開するには RunPod の画面で Start してください。" }
+  ? { warn: (m) => `操作がないため、あと約 ${m} 分でこの Pod を終了します。生成した画像は先に保存してください。`, keep: "使い続ける", stopped: "操作がなかったため、この Pod を終了しました。もう一度使うときは、記事のボタンから起動してください。" }
   : lang.startsWith("zh")
-    ? { warn: (m) => `由于没有操作，约 ${m} 分钟后将停止此 Pod（停止 GPU 计费）。`, keep: "继续使用", stopped: "由于没有操作，此 Pod 已停止。如需继续，请在 RunPod 页面中点击 Start。" }
-    : { warn: (m) => `No activity: this Pod stops in about ${m} min (GPU billing stops).`, keep: "Keep using", stopped: "This Pod was stopped after a period of inactivity. Start it again from the RunPod console." };
+    ? { warn: (m) => `由于没有操作，约 ${m} 分钟后将终止此 Pod。请先保存需要的图像。`, keep: "继续使用", stopped: "由于没有操作，此 Pod 已终止。如需再次使用，请通过文章中的按钮重新启动。" }
+    : { warn: (m) => `No activity: this Pod will be terminated in about ${m} min. Save any images you want to keep.`, keep: "Keep using", stopped: "This Pod was terminated after a period of inactivity. Launch a new one from the article's button." };
 
 const openProfileWorkflows = async (config) => {
   const flag = `comfy-with-comfyui.runpod.opened.${config.profile}`;

@@ -43,18 +43,18 @@ def sha256_file(path, on_progress=None):
     return digest.hexdigest()
 
 
-def stop_this_pod(log):
-    """Stop the Pod through the RunPod REST API (RunPod injects RUNPOD_POD_ID and a Pod-scoped key)."""
+def terminate_this_pod(log):
+    """Terminate the Pod through the RunPod REST API (RunPod injects RUNPOD_POD_ID and a Pod-scoped key)."""
     pod_id, key = os.environ.get("RUNPOD_POD_ID"), os.environ.get("RUNPOD_API_KEY")
     if not pod_id or not key:
-        log("not on RunPod (no RUNPOD_POD_ID/RUNPOD_API_KEY); not stopping")
+        log("not on RunPod (no RUNPOD_POD_ID/RUNPOD_API_KEY); not terminating")
         return False
     request = urllib.request.Request(
-        f"https://rest.runpod.io/v1/pods/{pod_id}/stop", method="POST", headers={"Authorization": f"Bearer {key}"}
+        f"https://rest.runpod.io/v1/pods/{pod_id}", method="DELETE", headers={"Authorization": f"Bearer {key}"}
     )
     try:
         urllib.request.urlopen(request, timeout=30).read()
         return True
     except Exception as error:  # noqa: BLE001
-        log(f"could not stop the Pod: {error}")
+        log(f"could not terminate the Pod: {error}")
         return False

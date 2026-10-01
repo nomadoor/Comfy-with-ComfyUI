@@ -5,8 +5,10 @@ the profile's workflows in article order (web/runpod.js opens them as tabs).
 
 Idle auto-stop: reader activity in the page (web/runpod.js posts /runpod/activity) and queued or
 running prompts keep the Pod alive. After IDLE_STOP_MINUTES (default 30, 0 turns it off) without
-either, the Pod stops itself through the RunPod API. Stop, not terminate: GPU billing ends and the
-volume disk is kept. The page shows a warning for the last few minutes.
+either, the Pod terminates itself through the RunPod API. Terminate, not stop: a stopped Pod keeps
+billing for its disk and keeps nothing a reader needs (outputs live on the container disk, models
+are downloaded again in minutes), and a new Pod from the article is the one way back. The page
+shows a warning for the last few minutes.
 """
 import json
 import logging
@@ -48,21 +50,21 @@ def _status():
 
 
 def stop_pod(reason):
-    """Stop this Pod through the RunPod REST API (the Pod-scoped key RunPod injects)."""
+    """Terminate this Pod through the RunPod REST API (the Pod-scoped key RunPod injects)."""
     pod_id, key = os.environ.get("RUNPOD_POD_ID"), os.environ.get("RUNPOD_API_KEY")
     _state["stopping"] = True
     if not pod_id or not key:
-        logging.warning("[comfy-with-comfyui] idle for too long, but RUNPOD_POD_ID/RUNPOD_API_KEY are not set; not stopping")
+        logging.warning("[comfy-with-comfyui] idle for too long, but RUNPOD_POD_ID/RUNPOD_API_KEY are not set; not terminating")
         return
-    logging.warning(f"[comfy-with-comfyui] stopping Pod {pod_id}: {reason}")
+    logging.warning(f"[comfy-with-comfyui] terminating Pod {pod_id}: {reason}")
     request = urllib.request.Request(
-        f"https://rest.runpod.io/v1/pods/{pod_id}/stop", method="POST", headers={"Authorization": f"Bearer {key}"}
+        f"https://rest.runpod.io/v1/pods/{pod_id}", method="DELETE", headers={"Authorization": f"Bearer {key}"}
     )
     try:
         urllib.request.urlopen(request, timeout=30).read()
     except Exception as error:  # noqa: BLE001
         _state["stopping"] = False
-        logging.error(f"[comfy-with-comfyui] could not stop the Pod: {error}")
+        logging.error(f"[comfy-with-comfyui] could not terminate the Pod: {error}")
 
 
 def _watch():

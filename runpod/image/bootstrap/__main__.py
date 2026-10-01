@@ -16,7 +16,7 @@ from pathlib import Path
 from . import comfy, server
 from .models import Downloader
 from .state import BootError, State
-from .util import fetch, fetch_json, stop_this_pod
+from .util import fetch, fetch_json, terminate_this_pod
 
 SCHEMA_VERSION = 1
 SITE = "https://comfyui.nomadoor.net"
@@ -197,12 +197,12 @@ def main():
         state.fail(error)
         write_report("error")
         # Keep the status page up so the reader sees why, but do not bill a GPU forever for it:
-        # after IDLE_STOP_MINUTES (default 30, 0 = never) the Pod stops itself.
+        # after IDLE_STOP_MINUTES (default 30, 0 = never) the Pod terminates itself.
         idle_minutes = float(os.environ.get("IDLE_STOP_MINUTES", "30"))
         if idle_minutes > 0:
             time.sleep(idle_minutes * 60)
-            state.log(f"setup failed {idle_minutes:.0f} minutes ago; stopping the Pod")
-            stop_this_pod(state.log)
+            state.log(f"setup failed {idle_minutes:.0f} minutes ago; terminating the Pod")
+            terminate_this_pod(state.log)
         while True:
             time.sleep(3600)
 
