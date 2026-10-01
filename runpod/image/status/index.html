@@ -55,11 +55,12 @@
   .linkcard b { font-weight: 600; overflow-wrap: anywhere; }
   .linkcard small { color: var(--muted); font-size: 0.85em; }
   .linkcard svg { width: 1.15rem; height: 1.15rem; }
-  .guide { margin: -0.75rem 0 1rem; }
+  .guide { margin: 0 0 1rem; }
+  .guide p { margin: 0 0 0.5rem; color: var(--muted); font-size: 0.9em; }
   .tip .linkcard { margin-top: 0.9rem; background: var(--bg); }
   .tip .linkcard:hover { background: var(--card-hover); }
-  #tip-content { transition: opacity 0.25s ease; }
-  #tip-content.fading { opacity: 0; }
+  #tip-content { transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out; }
+  #tip-content.fading { opacity: 0; transform: translateY(4px); }
   .tip { position: relative; }
   .tip .label { color: var(--muted); font-size: 0.8em; letter-spacing: 0.04em; text-transform: uppercase; margin: 0 0 0.5rem; }
   .tip h2 { font-size: 1rem; margin: 0 0 0.35rem; font-weight: 600; }
@@ -74,13 +75,13 @@
 <main>
   <h1 id="title">Preparing ComfyUI</h1>
   <p class="lead" id="lead"></p>
-  <div class="guide" id="guide" hidden></div>
   <div id="alerts"></div>
   <section class="panel"><ol class="steps" id="steps"></ol></section>
   <section class="panel" id="models-panel" hidden>
     <p class="summary" id="summary"></p>
     <div id="models"></div>
   </section>
+  <div class="guide" id="guide" hidden></div>
   <section class="panel tip" id="tip" hidden>
     <p class="label" id="tip-label"></p>
     <nav><button type="button" id="tip-prev" aria-label="previous">‹</button><span id="tip-count"></span><button type="button" id="tip-next" aria-label="next">›</button></nav>
@@ -99,7 +100,7 @@
     en: {
       preparing: "Preparing ComfyUI", lead: "This page switches to ComfyUI by itself when everything is ready.",
       steps: { profile: "Fetch profile", comfyui: "Update ComfyUI", custom_nodes: "Install custom nodes", models: "Download models", workflows: "Place workflows", start: "Start ComfyUI" },
-      guide: "Guide — Comfy with ComfyUI", related: "Read more — Comfy with ComfyUI", whileWaiting: "While you wait",
+      guideLead: "Want to know more about these workflows?", guide: "Guide — Comfy with ComfyUI", related: "Read more — Comfy with ComfyUI", whileWaiting: "While you wait",
       detail: {
         fetching: (p) => `fetching ${p.ref}`, requirements: (p) => `installing requirements for ${p.sha}`, none: () => "none",
         files: (p) => `${p.count} files`, ready: (p) => `${p.ready} ready` + (p.skipped ? `, ${p.skipped} skipped` : ""),
@@ -124,7 +125,7 @@
     ja: {
       preparing: "ComfyUI を準備しています", lead: "準備ができると、このページは自動で ComfyUI に切り替わります。",
       steps: { profile: "プロファイルを取得", comfyui: "ComfyUI を更新", custom_nodes: "カスタムノードを導入", models: "モデルをダウンロード", workflows: "workflow を配置", start: "ComfyUI を起動" },
-      guide: "解説ページ — Comfy with ComfyUI", related: "関連記事 — Comfy with ComfyUI", whileWaiting: "待っているあいだに",
+      guideLead: "workflow についてもっと詳しく知りたい方は", guide: "解説ページ — Comfy with ComfyUI", related: "関連記事 — Comfy with ComfyUI", whileWaiting: "待っているあいだに",
       detail: {
         fetching: (p) => `${p.ref} を取得中`, requirements: (p) => `${p.sha} の依存をインストール中`, none: () => "なし",
         files: (p) => `${p.count} ファイル`, ready: (p) => `${p.ready} 個準備完了` + (p.skipped ? `、${p.skipped} 個スキップ` : ""),
@@ -149,7 +150,7 @@
     zh: {
       preparing: "正在准备 ComfyUI", lead: "准备完成后，本页面会自动切换到 ComfyUI。",
       steps: { profile: "获取配置", comfyui: "更新 ComfyUI", custom_nodes: "安装自定义节点", models: "下载模型", workflows: "放置 workflow", start: "启动 ComfyUI" },
-      guide: "讲解页面 — Comfy with ComfyUI", related: "相关文章 — Comfy with ComfyUI", whileWaiting: "等待的时候",
+      guideLead: "想进一步了解这些 workflow 的话", guide: "讲解页面 — Comfy with ComfyUI", related: "相关文章 — Comfy with ComfyUI", whileWaiting: "等待的时候",
       detail: {
         fetching: (p) => `正在获取 ${p.ref}`, requirements: (p) => `正在安装 ${p.sha} 的依赖`, none: () => "无",
         files: (p) => `${p.count} 个文件`, ready: (p) => `${p.ready} 个已就绪` + (p.skipped ? `，${p.skipped} 个已跳过` : ""),
@@ -215,7 +216,7 @@
     setTimeout(() => {
       fillTip();
       $("tip-content").classList.remove("fading");
-    }, 250);
+    }, 600);
   };
   let siteOrigin = "https://comfyui.nomadoor.net";
   const showTips = (list) => {
@@ -249,7 +250,7 @@
       (step.detail || step.key ? `<span class="detail">${esc(stepDetail(step))}</span>` : "") + `</span></li>`).join("");
 
     if (s.site && s.article && s.title) {
-      $("guide").innerHTML = linkCard(`${s.site}/${lang}/${s.article}/`, "book", s.title, T.guide);
+      $("guide").innerHTML = `<p>${esc(T.guideLead)}</p>` + linkCard(`${s.site}/${lang}/${s.article}/`, "book", s.title, T.guide);
       $("guide").hidden = false;
     }
     showTips(s.tips || []);
