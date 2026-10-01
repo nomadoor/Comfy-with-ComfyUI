@@ -273,7 +273,10 @@
       `<li data-state="${step.state}"><span class="dot"></span><span>${esc(T.steps[step.id] || step.label)}` +
       (step.detail || step.key ? `<span class="detail">${esc(stepDetail(step))}</span>` : "") + `</span></li>`).join("");
 
-    if (s.site && s.article && s.title) {
+    // Built once: rebuilding it on every poll would drop the hover state under the pointer.
+    const guideKey = `${s.site}|${s.article}|${s.title}`;
+    if (s.site && s.article && s.title && $("guide").dataset.key !== guideKey) {
+      $("guide").dataset.key = guideKey;
       $("guide").innerHTML = `<div class="section-head"><span>${esc(T.guideLead)}</span></div>` + linkCard(`${s.site}/${lang}/${s.article}/`, "book", s.title, T.guide);
       $("guide").hidden = false;
     }
