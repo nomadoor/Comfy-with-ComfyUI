@@ -78,8 +78,11 @@ def pod_timing(boot_started):
     request = urllib.request.Request(f"https://rest.runpod.io/v1/pods/{pod_id}", headers={"Authorization": f"Bearer {key}"})
     try:
         pod = json.loads(urllib.request.urlopen(request, timeout=15).read())
-    except Exception as error:  # noqa: BLE001
+    except Exception as error:  # noqa: BLE001 - measurement only; never stop the boot over it
         info["pod_error"] = str(error)
+        return info
+    if not isinstance(pod, dict):
+        info["pod_error"] = f"unexpected response: {type(pod).__name__}"
         return info
     flat = dict(pod)
     for nested in ("machine", "runtime"):

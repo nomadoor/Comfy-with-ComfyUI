@@ -150,7 +150,10 @@ def main():
     report = {"started_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "data_dir": data_dir, "timings": {}}
     # How long RunPod took before this process ran (mostly the image pull): the number that decides
     # which base image to use. Logged so it shows in the Pod's log view too.
-    report["pod_start"] = pod_timing(state.started)
+    try:
+        report["pod_start"] = pod_timing(state.started)
+    except Exception as error:  # noqa: BLE001 - measurement only; never stop the boot over it
+        report["pod_start"] = {"pod_error": str(error)}
     for field in ("lastStartedAt", "createdAt"):
         if f"seconds_from_{field}" in report["pod_start"]:
             state.log(f"boot started {report['pod_start'][f'seconds_from_{field}']}s after the Pod's {field}")
