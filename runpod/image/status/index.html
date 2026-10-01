@@ -7,10 +7,10 @@
 <style>
   :root {
     --bg: #f6f5f3; --surface: #ecebe8; --text: #2b2a28; --muted: #77746f; --accent: #7a5cc4;
-    --ok: #4f9a6a; --warn: #c98a32; --error: #c4524a; --warn-fill: rgba(201, 138, 50, 0.16); --error-fill: rgba(196, 82, 74, 0.14);
+    --card-hover: #e4e2de; --ok: #4f9a6a; --warn: #c98a32; --error: #c4524a; --warn-fill: rgba(201, 138, 50, 0.16); --error-fill: rgba(196, 82, 74, 0.14);
   }
   @media (prefers-color-scheme: dark) {
-    :root { --bg: #1b1a19; --surface: #252422; --text: #e4e1dc; --muted: #9a968f; --accent: #a58be0; }
+    :root { --bg: #1b1a19; --surface: #252422; --card-hover: #2e2d2a; --text: #e4e1dc; --muted: #9a968f; --accent: #a58be0; }
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.6 system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Noto Sans JP", "Noto Sans SC", sans-serif; }
@@ -46,6 +46,29 @@
   .alert p { margin: 0.25rem 0 0; }
   .alert .raw { color: var(--muted); font-size: 0.85em; overflow-wrap: anywhere; }
   .muted { color: var(--muted); font-size: 0.85em; }
+  /* Link cards: a filled surface, icon, bold title, muted subtitle and an arrow; no borders. */
+  .linkcard { display: flex; align-items: center; gap: 0.9rem; padding: 0.85rem 1rem; border-radius: 10px; background: var(--surface); color: var(--text); text-decoration: none; transition: background 0.15s; }
+  .linkcard:hover { background: var(--card-hover); }
+  .linkcard .icon, .linkcard .arrow { flex: none; display: flex; color: var(--text); }
+  .linkcard .arrow { margin-left: auto; color: var(--muted); }
+  .linkcard .text { display: flex; flex-direction: column; min-width: 0; }
+  .linkcard b { font-weight: 600; overflow-wrap: anywhere; }
+  .linkcard small { color: var(--muted); font-size: 0.85em; }
+  .linkcard svg { width: 1.15rem; height: 1.15rem; }
+  .section-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 2rem; margin: 1.5rem 0 0.5rem; color: var(--muted); font-size: 0.9em; }
+  .section-head + .linkcard, .section-head + .panel { margin-top: 0; }
+  .tip .linkcard { margin-top: 0.9rem; background: var(--bg); }
+  .tip .linkcard:hover { background: var(--card-hover); }
+  #tip-content { display: flex; flex-direction: column; }
+  #tip-link { margin-top: auto; }
+  #tip-content { transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out; }
+  #tip-content.fading { opacity: 0; transform: translateY(4px); }
+  .tip { position: relative; }
+  .tip h2 { font-size: 1rem; margin: 0 0 0.35rem; font-weight: 600; }
+  .tip p { margin: 0; }
+  .tip-nav { display: flex; align-items: center; gap: 0.25rem; font-size: 0.9em; font-variant-numeric: tabular-nums; }
+  .tip-nav button { width: 2rem; height: 2rem; border: 0; border-radius: 50%; background: transparent; color: var(--muted); font-size: 1.1rem; line-height: 1; cursor: pointer; }
+  .tip-nav button:hover { background: var(--bg); color: var(--text); }
   [hidden] { display: none !important; }
 </style>
 </head>
@@ -59,6 +82,17 @@
     <p class="summary" id="summary"></p>
     <div id="models"></div>
   </section>
+  <div id="guide" hidden></div>
+  <div id="tip-section" hidden>
+  <div class="section-head"><span id="tip-label"></span><nav class="tip-nav"><button type="button" id="tip-prev" aria-label="previous">‹</button><span id="tip-count"></span><button type="button" id="tip-next" aria-label="next">›</button></nav></div>
+  <section class="panel tip" id="tip">
+    <div id="tip-content">
+      <h2 id="tip-title"></h2>
+      <p id="tip-body"></p>
+      <div id="tip-link"></div>
+    </div>
+  </section>
+  </div>
   <p class="muted" id="footer"></p>
 </main>
 <script>
@@ -68,6 +102,12 @@
     en: {
       preparing: "Preparing ComfyUI", lead: "This page switches to ComfyUI by itself when everything is ready.",
       steps: { profile: "Fetch profile", comfyui: "Update ComfyUI", custom_nodes: "Install custom nodes", models: "Download models", workflows: "Place workflows", start: "Start ComfyUI" },
+      guideLead: "Want to know more about these workflows?", guide: "Guide — Comfy with ComfyUI", related: "Read more — Comfy with ComfyUI", whileWaiting: "While you wait",
+      detail: {
+        fetching: (p) => `fetching ${p.ref}`, requirements: (p) => `installing requirements for ${p.sha}`, none: () => "none",
+        files: (p) => `${p.count} files`, ready: (p) => `${p.ready} ready` + (p.skipped ? `, ${p.skipped} skipped` : ""),
+        placed: (p) => `${p.workflows} workflows` + (p.inputs ? `, ${p.inputs} sample images` : ""),
+      },
       left: "left", eta: "about", done: "ready", total: "total", failed: "Setup stopped", skipped: "Skipped", lost: "Waiting for the Pod…",
       starting: "Starting ComfyUI…", verifying: "verifying", present: "already on disk",
       advice: {
@@ -87,6 +127,12 @@
     ja: {
       preparing: "ComfyUI を準備しています", lead: "準備ができると、このページは自動で ComfyUI に切り替わります。",
       steps: { profile: "プロファイルを取得", comfyui: "ComfyUI を更新", custom_nodes: "カスタムノードを導入", models: "モデルをダウンロード", workflows: "workflow を配置", start: "ComfyUI を起動" },
+      guideLead: "workflow についてもっと詳しく知りたい方は", guide: "解説ページ — Comfy with ComfyUI", related: "関連記事 — Comfy with ComfyUI", whileWaiting: "待っているあいだに",
+      detail: {
+        fetching: (p) => `${p.ref} を取得中`, requirements: (p) => `${p.sha} の依存をインストール中`, none: () => "なし",
+        files: (p) => `${p.count} ファイル`, ready: (p) => `${p.ready} 個準備完了` + (p.skipped ? `、${p.skipped} 個スキップ` : ""),
+        placed: (p) => `workflow ${p.workflows} 本` + (p.inputs ? `、サンプル画像 ${p.inputs} 枚` : ""),
+      },
       left: "残り", eta: "あと約", done: "完了", total: "合計", failed: "準備が止まりました", skipped: "スキップしました", lost: "Pod の応答を待っています…",
       starting: "ComfyUI を起動しています…", verifying: "検証中", present: "ダウンロード済み",
       advice: {
@@ -106,6 +152,12 @@
     zh: {
       preparing: "正在准备 ComfyUI", lead: "准备完成后，本页面会自动切换到 ComfyUI。",
       steps: { profile: "获取配置", comfyui: "更新 ComfyUI", custom_nodes: "安装自定义节点", models: "下载模型", workflows: "放置 workflow", start: "启动 ComfyUI" },
+      guideLead: "想进一步了解这些 workflow 的话", guide: "讲解页面 — Comfy with ComfyUI", related: "相关文章 — Comfy with ComfyUI", whileWaiting: "等待的时候",
+      detail: {
+        fetching: (p) => `正在获取 ${p.ref}`, requirements: (p) => `正在安装 ${p.sha} 的依赖`, none: () => "无",
+        files: (p) => `${p.count} 个文件`, ready: (p) => `${p.ready} 个已就绪` + (p.skipped ? `，${p.skipped} 个已跳过` : ""),
+        placed: (p) => `workflow ${p.workflows} 个` + (p.inputs ? `，示例图像 ${p.inputs} 张` : ""),
+      },
       left: "剩余", eta: "约", done: "完成", total: "合计", failed: "准备已停止", skipped: "已跳过", lost: "正在等待 Pod 响应…",
       starting: "正在启动 ComfyUI…", verifying: "校验中", present: "已下载",
       advice: {
@@ -135,50 +187,180 @@
   $("title").textContent = T.preparing;
   $("lead").textContent = T.lead;
 
-  const render = (s) => {
-    if (s.title) {
-      $("title").textContent = `${s.title}`;
-      document.title = `${s.title} · ${T.preparing}`;
-    }
-    $("lead").textContent = s.phase === "starting" ? T.starting : s.phase === "error" ? T.failed : T.lead;
+  const ICONS = {
+    book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6v13"/><path d="M12 6v13"/><path d="M21 6v13"/></svg>',
+    doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M9 13h6"/><path d="M9 17h4"/></svg>',
+    arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>',
+  };
+  const linkCard = (href, icon, title, subtitle) =>
+    `<a class="linkcard" href="${esc(href)}" target="_blank" rel="noopener"><span class="icon">${ICONS[icon]}</span>` +
+    `<span class="text"><b>${esc(title)}</b><small>${esc(subtitle)}</small></span><span class="arrow">${ICONS.arrow}</span></a>`;
 
-    let alerts = "";
-    if (s.error) {
-      alerts += `<div class="alert error"><h2>${esc(T.failed)}</h2><p>${advice(s.error.code, s.error)}</p><p class="raw">${esc(s.error.message)}</p></div>`;
-    }
-    for (const n of s.notices || []) {
-      alerts += `<div class="alert notice"><h2>${esc(T.skipped)}: ${esc(n.model || "")}</h2><p>${advice(n.code, n)}</p></div>`;
-    }
-    $("alerts").innerHTML = alerts;
+  const stepDetail = (step) => (step.key && T.detail[step.key] ? T.detail[step.key](step.params || {}) : step.detail);
 
-    $("steps").innerHTML = s.steps.map((step) =>
-      `<li data-state="${step.state}"><span class="dot"></span><span>${esc(T.steps[step.id] || step.label)}` +
-      (step.detail ? `<span class="detail">${esc(step.detail)}</span>` : "") + `</span></li>`).join("");
+  // Columns: one at a time, rotating every 12 s; the arrows step through them by hand.
+  let tips = [], tipIndex = 0, tipTimer = null;
+  const fillTip = () => {
+    const tip = tips[tipIndex][lang] || tips[tipIndex].en;
+    $("tip-count").textContent = `${tipIndex + 1} / ${tips.length}`;
+    $("tip-title").textContent = tip.title;
+    $("tip-body").textContent = tip.body;
+    $("tip-link").innerHTML = linkCard(`${siteOrigin}${tip.link.path}`, "doc", tip.link.title, T.related);
+  };
+  // The panel keeps the height of the tallest column, so switching never makes the page jump.
+  const reserveTipHeight = () => {
+    const box = $("tip-content");
+    const current = tipIndex;
+    box.style.minHeight = "";
+    let tallest = 0;
+    for (let i = 0; i < tips.length; i++) {
+      tipIndex = i;
+      fillTip();
+      tallest = Math.max(tallest, box.offsetHeight);
+    }
+    tipIndex = current;
+    fillTip();
+    box.style.minHeight = `${tallest}px`;
+  };
+  let resizeTimer = null;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => tips.length && reserveTipHeight(), 150);
+  });
 
-    const models = s.models || [];
-    $("models-panel").hidden = models.length === 0;
-    if (models.length) {
-      const total = models.reduce((a, m) => a + (m.size || 0), 0);
-      const counted = (m) => (["done", "present"].includes(m.state) ? m.size || m.done : m.state === "downloading" ? m.done : 0);
-      const done = models.reduce((a, m) => a + Math.min(counted(m), m.size || Infinity), 0);
-      const speed = models.reduce((a, m) => a + (m.state === "downloading" ? m.speed : 0), 0);
-      const left = Math.max(0, total - done);
-      $("summary").innerHTML =
-        `<span><b>${gb(done)}</b> / ${gb(total)}</span>` +
-        (left > 0 ? `<span>${T.left} <b>${gb(left)}</b></span>` : "") +
-        (speed > 0 ? `<span>${mbps(speed)}</span><span>${T.eta} <b>${duration(left / speed)}</b></span>` : "");
-      $("models").innerHTML = models.map((m) => {
-        const pct = m.size ? Math.min(100, (m.done / m.size) * 100) : m.state === "done" ? 100 : 0;
-        const nums = m.state === "verifying" ? T.verifying
-          : m.state === "present" ? T.present
-          : m.state === "skipped" ? T.skipped
-          : m.state === "done" ? gb(m.size || m.done)
-          : `${gb(m.done)} / ${m.size ? gb(m.size) : "?"}${m.state === "downloading" && m.speed ? ` · ${mbps(m.speed)}` : ""}`;
-        return `<div class="model" data-state="${m.state}"><div class="row"><span class="name">${esc(m.directory)}/${esc(m.name)}</span>` +
-          `<span class="nums">${esc(nums)}</span></div><div class="bar"><span style="width:${pct}%"></span></div></div>`;
-      }).join("");
+  // A short fade between columns; nothing here needs to be instant.
+  const showTip = (index, { fade = true } = {}) => {
+    tipIndex = (index + tips.length) % tips.length;
+    clearTimeout(tipTimer);
+    tipTimer = setTimeout(() => showTip(tipIndex + 1), 12000);
+    if (!fade) return fillTip();
+    $("tip-content").classList.add("fading");
+    setTimeout(() => {
+      fillTip();
+      $("tip-content").classList.remove("fading");
+    }, 600);
+  };
+  let siteOrigin = "https://comfyui.nomadoor.net";
+  const showTips = (list) => {
+    if (tips.length || !list.length) return;
+    tips = list.slice().sort(() => Math.random() - 0.5);
+    $("tip-section").hidden = false;
+    $("tip-label").textContent = T.whileWaiting;
+    reserveTipHeight();
+    showTip(0, { fade: false });
+  };
+  $("tip-prev").addEventListener("click", () => showTip(tipIndex - 1));
+  $("tip-next").addEventListener("click", () => showTip(tipIndex + 1));
+
+  // The page is built once and then updated in place: only changed text, states and bar widths are
+  // written. Rebuilding with innerHTML every second would reset hover and the bars' width transition.
+  const setText = (el, text) => { if (el.textContent !== text) el.textContent = text; };
+  const setData = (el, key, value) => { if (el.dataset[key] !== value) el.dataset[key] = value; };
+  const make = (tag, className, parent) => {
+    const el = document.createElement(tag);
+    if (className) el.className = className;
+    if (parent) parent.append(el);
+    return el;
+  };
+
+  const stepRows = new Map();
+  const renderSteps = (steps) => {
+    for (const step of steps) {
+      let row = stepRows.get(step.id);
+      if (!row) {
+        const li = make("li", "", $("steps"));
+        make("span", "dot", li);
+        const text = make("span", "", li);
+        row = { li, label: make("span", "", text), detail: make("span", "detail", text) };
+        stepRows.set(step.id, row);
+      }
+      setData(row.li, "state", step.state);
+      setText(row.label, T.steps[step.id] || step.label);
+      const detail = step.detail || step.key ? stepDetail(step) : "";
+      setText(row.detail, detail);
+      row.detail.hidden = !detail;
     }
   };
+
+  const modelRows = new Map();
+  const renderModels = (models) => {
+    $("models-panel").hidden = models.length === 0;
+    if (!models.length) return;
+    const total = models.reduce((a, m) => a + (m.size || 0), 0);
+    const counted = (m) => (["done", "present"].includes(m.state) ? m.size || m.done : m.state === "downloading" ? m.done : 0);
+    const done = models.reduce((a, m) => a + Math.min(counted(m), m.size || Infinity), 0);
+    const speed = models.reduce((a, m) => a + (m.state === "downloading" ? m.speed : 0), 0);
+    const left = Math.max(0, total - done);
+    // The summary is a single line of text; rebuilding it is harmless (nothing interactive in it).
+    const summary =
+      `<span><b>${gb(done)}</b> / ${gb(total)}</span>` +
+      (left > 0 ? `<span>${T.left} <b>${gb(left)}</b></span>` : "") +
+      (speed > 0 ? `<span>${mbps(speed)}</span><span>${T.eta} <b>${duration(left / speed)}</b></span>` : "");
+    if ($("summary").innerHTML !== summary) $("summary").innerHTML = summary;
+
+    for (const m of models) {
+      const key = `${m.directory}/${m.name}`;
+      let row = modelRows.get(key);
+      if (!row) {
+        const el = make("div", "model", $("models"));
+        const head = make("div", "row", el);
+        setText(make("span", "name", head), key);
+        const nums = make("span", "nums", head);
+        const bar = make("span", "", make("div", "bar", el));
+        row = { el, nums, bar };
+        modelRows.set(key, row);
+      }
+      const pct = m.size ? Math.min(100, (m.done / m.size) * 100) : m.state === "done" ? 100 : 0;
+      const nums = m.state === "verifying" ? T.verifying
+        : m.state === "present" ? T.present
+        : m.state === "skipped" ? T.skipped
+        : m.state === "done" ? gb(m.size || m.done)
+        : `${gb(m.done)} / ${m.size ? gb(m.size) : "?"}${m.state === "downloading" && m.speed ? ` · ${mbps(m.speed)}` : ""}`;
+      setData(row.el, "state", m.state);
+      setText(row.nums, nums);
+      const width = `${pct.toFixed(2)}%`;
+      if (row.bar.style.width !== width) row.bar.style.width = width;
+    }
+  };
+
+  let alertsKey = "";
+  const renderAlerts = (s) => {
+    const key = JSON.stringify([s.error, s.notices]);
+    if (key === alertsKey) return;
+    alertsKey = key;
+    let html = "";
+    if (s.error) {
+      html += `<div class="alert error"><h2>${esc(T.failed)}</h2><p>${advice(s.error.code, s.error)}</p><p class="raw">${esc(s.error.message)}</p></div>`;
+    }
+    for (const n of s.notices || []) {
+      html += `<div class="alert notice"><h2>${esc(T.skipped)}: ${esc(n.model || "")}</h2><p>${advice(n.code, n)}</p></div>`;
+    }
+    $("alerts").innerHTML = html;
+  };
+
+  let guideKey = "";
+  const renderGuide = (s) => {
+    const key = `${s.site}|${s.article}|${s.title}`;
+    if (!(s.site && s.article && s.title) || key === guideKey) return;
+    guideKey = key;
+    $("guide").innerHTML = `<div class="section-head"><span>${esc(T.guideLead)}</span></div>` + linkCard(`${s.site}/${lang}/${s.article}/`, "book", s.title, T.guide);
+    $("guide").hidden = false;
+  };
+
+  const render = (s) => {
+    if (s.site) siteOrigin = s.site;
+    if (s.title) {
+      setText($("title"), s.title);
+      document.title = `${s.title} · ${T.preparing}`;
+    }
+    setText($("lead"), s.phase === "starting" ? T.starting : s.phase === "error" ? T.failed : T.lead);
+    renderAlerts(s);
+    renderSteps(s.steps);
+    renderGuide(s);
+    showTips(s.tips || []);
+    renderModels(s.models || []);
+  };
+
 
   // Once the status server stops, the same port answers as ComfyUI: reload into it.
   const comfyReady = async () => {

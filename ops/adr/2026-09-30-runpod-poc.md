@@ -32,6 +32,14 @@ Accepted（PoC。記事側のボタン・案内表示は別途デザイン相談
 - 別の workflow のモデルや custom node を読者が UI から足せるよう、ComfyUI 内蔵の Manager を有効にする。Pod は外部から待ち受けるため、Manager の `network_mode` を `personal_cloud` にする（Pod の URL を知る人だけが使える前提）。
 - image は GitHub Actions でビルドして GHCR に push する。RunPod のテンプレートはオーナーのアカウントで作る。
 
+## Revision 2026-10-01: 本番の Pod で分かったこと
+- テンプレートは記事ごとに 1 つ（`PROFILE` を固定）。読者にプロファイルを選ばせない。Matatabi AI の RunPod アカウントで Public に作り、記事には `console.runpod.io/deploy?template=<ID>&ref=<コード>` を置く。
+- 今の ComfyUI は PyTorch cu130 でないと最適化された CUDA 演算を使わない（cu128 では警告が出て comfy_kitchen の CUDA backend が無効）。image を CUDA 13 / PyTorch cu130 にし、テンプレートの Allowed CUDA versions を 13.0 以上にする。
+- image の取得が遅かった（PyTorch 一式が 4 GB の 1 層）。依存を解決したうえで 4 グループに分けて入れ、Pod が並列に取れるようにする。
+- `HF_TOKEN` はシークレットを持たない読者がつまずくので、gated なモデルを使う記事のテンプレートにだけ入れる。
+- ステータスページに記事へのリンクと、待ち時間に読むコラム（`runpod/tips.yaml`、日英中）を出す。コラムはサイトから読むので image の作り直しは要らない。各ステップの補足も翻訳する。画面は一度だけ組み立て、以後は変わった値だけを書き換える。
+- モデルごとの所要時間・平均速度・取得方法を `report.json` に残し、aria2 と hf_xet を本番の回線で比べられるようにする。
+
 ## Consequences
 - workflow を差し替えるときは `properties.models` も保つ必要がある。欠けているとプロファイル生成が警告を出す。
 - 記事側の「Run on RunPod」ボタンと GPU・ディスク容量の案内は、Pod が動いてから別途デザインを決める。

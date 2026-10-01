@@ -32,7 +32,7 @@ def update(comfy_dir, ref, profile, state):
         # retried on the next boot even though the new commit is already checked out.
         marker = Path(comfy_dir).parent / ".runpod-comfyui-requirements.sha"
         installed = marker.read_text(encoding="utf-8").strip() if marker.exists() else None
-        state.step("comfyui", "running", f"fetching {ref}")
+        state.step("comfyui", "running", f"fetching {ref}", key="fetching", ref=ref)
         run(["git", "-C", comfy_dir, "fetch", "--quiet", "origin", "master"])
         if target != "origin/master":
             run(["git", "-C", comfy_dir, "fetch", "--quiet", "origin", target])
@@ -40,7 +40,7 @@ def update(comfy_dir, ref, profile, state):
         run(["git", "-C", comfy_dir, "checkout", "--quiet", "--force", target])
         sha = run(["git", "-C", comfy_dir, "rev-parse", "HEAD"])
         if sha != installed:
-            state.step("comfyui", "running", f"installing requirements for {sha[:7]}")
+            state.step("comfyui", "running", f"installing requirements for {sha[:7]}", key="requirements", sha=sha[:7])
             pip_install("-r", str(Path(comfy_dir) / "requirements.txt"))
             marker.write_text(sha + "\n", encoding="utf-8")
         return sha

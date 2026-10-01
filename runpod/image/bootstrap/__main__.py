@@ -59,6 +59,14 @@ def fetch_site_file(item, profile_url):
     return body
 
 
+def load_tips(profile_url):
+    """Columns for the status page, from the same site as the profile. Optional: none on failure."""
+    try:
+        return fetch_json(urllib.parse.urljoin(profile_url, "/runpod/tips.json"), timeout=15).get("tips", [])
+    except Exception:  # noqa: BLE001
+        return []
+
+
 def place_workflows(profile, profile_url, comfy_dir):
     """Workflows go to the sidebar's Workflows tab; sample inputs to input/ under the name the nodes read."""
     # Straight into the Workflows tab, no folder: a Pod serves one profile, and the folder is rebuilt per Pod.
@@ -158,7 +166,8 @@ def main():
 
     try:
         profile_url, profile = timed("profile", lambda: load_profile(state))
-        state.update(profile=profile["id"], title=profile["title"])
+        state.update(profile=profile["id"], title=profile["title"], site=profile.get("site"), article=profile.get("article"))
+        state.update(tips=load_tips(profile_url))
         report.update(profile=profile["id"], profile_url=profile_url, site_commit=profile.get("site_commit"))
         state.step("profile", "done", f"{profile['title']} ({(profile.get('site_commit') or '')[:7]})")
 
@@ -173,18 +182,24 @@ def main():
         nodes = profile.get("custom_nodes", [])
         installed = timed("custom_nodes", lambda: comfy.install_custom_nodes(comfy_dir, nodes, state))
         report["custom_nodes"] = installed
-        state.step("custom_nodes", "done", ", ".join(f"{n['id']} {n['version'][:12]}" for n in installed) or "none")
+        names = ", ".join(f"{n['id']} {n['version'][:12]}" for n in installed)
+        state.step("custom_nodes", "done", names or "none", key=None if names else "none")
 
-        state.step("models", "running", f"{len(profile['models'])} files")
+        state.step("models", "running", f"{len(profile['models'])} files", key="files", count=len(profile["models"]))
         downloader = Downloader(data_dir, state, concurrency, hf_token, civitai_token)
         results = timed("models", lambda: downloader.run(profile["models"]))
         report["models"] = [
-            {"name": m["name"], "directory": m["directory"], "result": r} for m, r in zip(profile["models"], results)
+            {"name": m["name"], "directory": m["directory"], "result": r, **downloader.timings.get(f"{m['directory']}/{m['name']}", {})}
+            for m, r in zip(profile["models"], results)
         ]
         skipped = [m["name"] for m, r in zip(profile["models"], results) if r == "skipped"]
         for name in skipped:
             state.notice("hf_token", f"{name} was skipped: it needs a Hugging Face token (HF_TOKEN).", model=name)
-        state.step("models", "done", f"{len(results) - len(skipped)} ready" + (f", {len(skipped)} skipped" if skipped else ""))
+        ready = len(results) - len(skipped)
+        state.step(
+            "models", "done", f"{ready} ready" + (f", {len(skipped)} skipped" if skipped else ""),
+            key="ready", ready=ready, skipped=len(skipped),
+        )
 
         state.step("workflows", "running")
         folder = timed("workflows", lambda: place_workflows(profile, profile_url, comfy_dir))
@@ -194,6 +209,7 @@ def main():
         state.step(
             "workflows", "done",
             f"{len(profile['workflows'])} in the Workflows tab" + (f", {len(inputs)} sample inputs" if inputs else ""),
+            key="placed", workflows=len(profile["workflows"]), inputs=len(inputs),
         )
     except BootError as error:
         state.fail(error)

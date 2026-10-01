@@ -36,7 +36,7 @@ Pod の環境変数:
 | `PROFILE` | （必須） | プロファイル ID |
 | `PROFILE_URL` | `https://comfyui.nomadoor.net/runpod/profiles/${PROFILE}.json` | 取得先の上書き（テスト用）。workflow も同じサイトから取る |
 | `COMFY_REF` | プロファイルの `comfyui.default` | `latest` / `verified` / commit sha |
-| `HF_TOKEN` | なし | テンプレートでは `{{ RUNPOD_SECRET_HF_TOKEN }}` |
+| `HF_TOKEN` | なし | gated なモデルを使う記事のテンプレートでだけ `{{ RUNPOD_SECRET_HF_TOKEN }}` を入れる（シークレットのない読者がつまずくので、不要なら入れない） |
 | `CIVITAI_TOKEN` | なし | 必要なときだけ |
 | `DL_CONCURRENCY` | `8` | 同時にダウンロードするファイル数（各ファイルは aria2 が 16 分割で取る） |
 | `HF_DOWNLOADER` | `aria2` | `xet` にすると Hugging Face だけ hf_xet で取る |
@@ -47,17 +47,24 @@ Pod の環境変数:
 
 ComfyUI の画面では、テンプレート選択ダイアログを出さず、プロファイルの workflow を記事の順にすべてタブで開く（ブラウザごとに初回だけ）。放置で終了する数分前には画面上部に予告が出る。どちらも `image/extension/`（ComfyUI の拡張として入れる）が行う。
 
-起動の結果は `${DATA_DIR}/runpod-boot/report.json` に残る（プロファイル、site の commit、ComfyUI の sha、custom node のバージョン、モデルごとの結果、所要時間）。
+起動の結果は `${DATA_DIR}/runpod-boot/report.json` に残る（プロファイル、site の commit、ComfyUI の sha、custom node のバージョン、モデルごとの結果・所要時間・平均速度・取得方法、全体の所要時間）。
 
-## RunPod テンプレート（モデルファミリごとに 1 つ）
+ステータスページは準備中に記事へのリンクと、`runpod/tips.yaml` のコラムを出す（ビルドで `/runpod/tips.json` になり、Pod は起動時に読む。image の作り直しは不要）。
+
+## RunPod テンプレート（記事ごとに 1 つ。読者は記事のボタンから GPU を選んで Deploy するだけ）
 
 | 項目 | 値 |
 |---|---|
+| Template name | `ComfyUI <モデル名> - Comfy with ComfyUI`（括弧は使えない） |
+| Visibility | Public（作者への還元の対象になる。Matatabi AI のアカウントで作る） |
 | Container Image | `ghcr.io/nomadoor/comfy-with-comfyui-runpod:latest` |
 | Container Disk | プロファイルの `storage.recommended_disk_gb`（Qwen-Image-2.1 は 70 GB）。モデル × 1.5 + 40 GB を 10 GB 単位で切り上げ。image、custom node の依存、生成画像、Manager で足すモデルもここに入るので多めにとる |
 | Volume Disk | 0（放置すると Pod ごと Terminate するので、残すものがない） |
-| HTTP Port | 8188 |
-| Environment Variables | `PROFILE=<id>`、`HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN }}` |
+| HTTP Port | `ComfyUI` / 8188 |
+| Environment Variables | `PROFILE=<id>`（gated なモデルがあるときだけ `HF_TOKEN`） |
+| GPU Compatibility | Allowed CUDA versions は 13.0 以上（image は CUDA 13 / PyTorch cu130）。Minimum vRAM と ★（おすすめ GPU）はプロファイルの GPU 案内に合わせる |
+
+記事に置くリンクは `https://console.runpod.io/deploy?template=<テンプレート ID>&ref=<Matatabi AI の紹介コード>`（GPU 選択画面に直接つながる）。
 
 ## 手元での確認
 
@@ -78,4 +85,11 @@ ComfyUI が上がったら、生成せずに揃っているかを確かめる（
 
 ```bash
 docker exec <container> python -m bootstrap.verify
+```
+
+ステータスページだけを確かめるときは、ダウンロードを模したプレビューを使う（GPU もダウンロードも使わない）:
+
+```bash
+docker run --rm -p 127.0.0.1:8199:8188 -e PROFILE_URL=file:///runpod/profiles/qwen-image-2-1.json \
+  -v "$PWD/_site/runpod:/runpod:ro" --entrypoint python cwc-runpod:dev -m bootstrap.preview
 ```

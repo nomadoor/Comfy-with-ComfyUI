@@ -125,6 +125,7 @@ class Downloader:
         self.civitai_token = civitai_token
         self._verified_lock = threading.Lock()
         self.verified = json.loads(self.verified_path.read_text()) if self.verified_path.exists() else {}
+        self.timings = {}  # "<directory>/<name>": seconds, average MB/s and method, for report.json
 
     def _remember(self, final, model):
         with self._verified_lock:
@@ -191,6 +192,7 @@ class Downloader:
             self.state.model(index, state="downloading", done=0, attempt=attempt)
             reported["bytes"] = 0
             stop.clear()
+            started = time.time()  # the successful attempt's transfer only: no backoff, no hashing
             watcher = threading.Thread(target=watch, daemon=True)
             watcher.start()
             try:
@@ -201,6 +203,7 @@ class Downloader:
                     path = _download_aria2(model, tmp_dir, token, on_bytes)
                 stop.set()
                 watcher.join()
+                seconds = time.time() - started
                 if model.get("sha256"):
                     self.state.model(index, state="verifying", done=0, speed=0)
                     digest = sha256_file(path, lambda done: self.state.model(index, done=done))
@@ -211,7 +214,10 @@ class Downloader:
                 shutil.rmtree(tmp_dir, ignore_errors=True)
                 self._remember(final, model)
                 self.state.model(index, state="done", done=final.stat().st_size, speed=0)
-                self.state.log(f"model {model['directory']}/{model['name']}: done")
+                size = final.stat().st_size
+                method = "xet" if model["source"] == "hf" and os.environ.get("HF_DOWNLOADER") == "xet" else "aria2"
+                self.timings[f"{model['directory']}/{model['name']}"] = {"seconds": round(seconds, 1), "mb_per_s": round(size / 1e6 / max(seconds, 0.1)), "method": method}
+                self.state.log(f"model {model['directory']}/{model['name']}: done in {seconds:.0f}s ({size / 1e6 / max(seconds, 0.1):.0f} MB/s, {method})")
                 return "downloaded"
             except AuthError:
                 stop.set()

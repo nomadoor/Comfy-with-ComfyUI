@@ -54,11 +54,14 @@ class State:
             self.data.update(fields)
             self.data["updated_at"] = int(time.time())
 
-    def step(self, step_id, state, detail=""):
+    def step(self, step_id, state, detail="", key=None, **params):
+        """`detail` is the English log line; `key` and `params` let the status page translate it."""
         with self._lock:
             step = self._step(step_id)
             step["state"] = state
             step["detail"] = detail
+            step["key"] = key
+            step["params"] = params
             self.data["updated_at"] = int(time.time())
         label = self._step(step_id)["label"]
         self.log(f"{label}: {state}{' - ' + detail if detail else ''}")
