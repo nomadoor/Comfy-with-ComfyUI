@@ -39,7 +39,7 @@ const openProfileWorkflows = async (config) => {
 
 const banner = document.createElement("div");
 banner.style.cssText =
-  "position:fixed;left:50%;top:56px;transform:translateX(-50%);z-index:10000;display:none;gap:12px;align-items:center;" +
+  "position:fixed;left:50%;top:100px;transform:translateX(-50%);z-index:10000;display:none;gap:12px;align-items:center;" +
   "width:max-content;max-width:calc(100vw - 32px);padding:10px 16px;border-radius:10px;background:#c98a32;color:#1b1a19;" +
   "font:14px/1.5 system-ui,sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.35)";
 const bannerText = document.createElement("span");
