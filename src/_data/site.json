@@ -440,29 +440,29 @@
         "zh": "在 Runpod 上直接试用"
       },
       "referral": {
-        "ja": "紹介リンク",
-        "en": "Referral link",
-        "zh": "推荐链接"
+        "ja": "紹介リンクが含まれています",
+        "en": "Contains a referral link",
+        "zh": "包含推荐链接"
       },
-      "howto": {
-        "ja": "使い方",
-        "en": "How it works",
-        "zh": "使用方法"
-      },
-      "gpuBefore": {
-        "ja": "",
-        "en": "",
+      "recLabel": {
+        "ja": "推奨",
+        "en": "Recommended",
         "zh": "推荐"
       },
-      "gpuAfter": {
-        "ja": "がおすすめ",
-        "en": "recommended",
-        "zh": ""
+      "vramLabel": {
+        "ja": "最低VRAM",
+        "en": "Min VRAM",
+        "zh": "最低显存"
       },
-      "minVram": {
-        "ja": "{gb} GB から動作",
-        "en": "runs from {gb} GB VRAM",
-        "zh": "{gb} GB 显存即可运行"
+      "vram": {
+        "ja": "{gb}GB",
+        "en": "{gb} GB",
+        "zh": "{gb}GB"
+      },
+      "help": {
+        "ja": "使い方の解説ページへ",
+        "en": "How it works",
+        "zh": "查看使用说明"
       }
     }
   },

@@ -1204,7 +1204,7 @@ export default function (eleventyConfig) {
   // `{% runpod %}`: a card that deploys this article's Runpod template (one Pod with every workflow,
   // its models and sample images). Reads the profile whose `article` is this page, so the GPU guidance
   // and the template stay in one place (runpod/profiles/<id>.yaml). Kept to one row: it sits near the
-  // top of every article that has a profile. The referral is a small label beside the title.
+  // top of every article that has a profile. The referral is disclosed in a line under the card.
   // The logo is Runpod's cube icon as its brand kit shows it (white cube on the official purple; the
   // kit allows the icon for compact placements and forbids recolouring), so it is not a currentColor icon.
   const RUNPOD_LOGO =
@@ -1223,23 +1223,23 @@ export default function (eleventyConfig) {
     const url = new URL(siteData.runpod.deployUrl);
     url.searchParams.set("template", source.template);
     if (siteData.runpod.referral) url.searchParams.set("ref", siteData.runpod.referral);
-    // Second line: the recommended GPUs as tags (what a reader picks on the deploy page) and the
-    // minimum VRAM. The referral disclosure is separate and smallest, in the card's corner.
-    const chips = (source.gpu?.recommended ?? []).map((gpu) => `<span class="runpod-launch__gpu">${escapeHTML(gpu)}</span>`).join("");
-    const gpuLine = chips
-      ? [t("gpuBefore"), chips, t("gpuAfter")].filter(Boolean).join(" ") +
-        (source.gpu?.min_vram_gb ? ` <span class="runpod-launch__sep">·</span> ${t("minVram", { gb: source.gpu.min_vram_gb })}` : "")
-      : "";
-    const howto = t("howto");
+    // Second line: the recommended GPUs in one rounded tag ("RTX 4090 / 5090"), then the minimum VRAM.
+    const recommended = source.gpu?.recommended ?? [];
+    const [first = "", ...rest] = recommended;
+    const prefix = first.includes(" ") ? first.slice(0, first.lastIndexOf(" ") + 1) : "";
+    const gpus = [first, ...rest.map((gpu) => (prefix && gpu.startsWith(prefix) ? gpu.slice(prefix.length) : gpu))].join(" / ");
+    const specs = [
+      gpus ? `<span class="runpod-launch__spec">${t("recLabel")} : <span class="runpod-launch__gpu">${escapeHTML(gpus)}</span></span>` : "",
+      source.gpu?.min_vram_gb ? `<span class="runpod-launch__spec">${t("vramLabel")} : ${t("vram", { gb: source.gpu.min_vram_gb })}</span>` : ""
+    ].filter(Boolean).join("");
+    const help = t("help");
     return (
-      `<div class="runpod-launch">` +
+      `<div class="runpod-launch-wrap"><div class="runpod-launch">` +
       `<a class="runpod-launch__main" href="${escapeHTML(url.href)}" target="_blank" rel="noopener sponsored" data-no-link-icon>` +
       RUNPOD_LOGO +
-      `<span class="runpod-launch__text"><span class="runpod-launch__title"><b>${t("title")}</b><span class="runpod-launch__ref">${t("referral")}</span></span>` +
-      `${gpuLine ? `<span class="runpod-launch__gpus">${gpuLine}</span>` : ""}</span>` +
-      `<span class="runpod-launch__arrow">${RUNPOD_ARROW}</span></a>` +
-      `<a class="runpod-launch__help" href="/${lang}/notes/run-on-runpod/">${RUNPOD_HELP}<span>${howto}</span></a>` +
-      `</div>`
+      `<span class="runpod-launch__text"><b>${t("title")}</b>${specs ? `<span class="runpod-launch__specs">${specs}</span>` : ""}</span></a>` +
+      `<a class="runpod-launch__help" href="/${lang}/notes/run-on-runpod/" aria-label="${help}">${RUNPOD_HELP}<span class="runpod-launch__tip" role="tooltip">${help}</span></a>` +
+      `</div><p class="runpod-launch__ref">${t("referral")}</p></div>`
     );
   });
 

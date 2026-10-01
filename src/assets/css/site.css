@@ -5761,44 +5761,42 @@ body.nav-open .nav-backdrop {
 }
 
 /* Runpod launch card ({% runpod %}): one compact row on a filled surface, no borders — it sits near the
-   top of every article that has a profile, so it must not shout. Logo, title, a muted second line
-   (recommended GPU and the referral disclosure) and an arrow open the deploy page; a small "?" beside
-   it opens the walkthrough note. */
+   top of every article that has a profile, so it must not shout. The main part (logo, title, the
+   recommended GPU tag and minimum VRAM) opens the deploy page. The right end is a slightly different
+   panel holding only "?", which opens the walkthrough note and explains itself in a hover tip. The
+   referral is disclosed in a plain line under the card. */
+.runpod-launch-wrap {
+  margin: var(--space-lg) 0;
+}
+
 .runpod-launch {
   display: flex;
-  align-items: center;
-  margin: var(--space-lg) 0;
+  align-items: stretch;
   border-radius: var(--radius-md);
   background: color-mix(in srgb, var(--color-text) 6%, var(--color-reader));
-  overflow: hidden;
 }
 
 .runpod-launch__main {
   flex: 1;
-  align-self: stretch;
   display: flex;
   align-items: center;
   gap: 0.9rem;
   min-width: 0;
-  padding: 1rem 1.1rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
   color: var(--color-text);
   text-decoration: none;
   transition: background-color 0.15s ease;
 }
 
-/* The walkthrough link is its own button: a raised pill with icon and label, set apart from the
-   card's main link by a gap, so it never reads as part of "open Runpod". */
 .runpod-launch__help {
+  position: relative;
   flex: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  margin-right: 0.85rem;
-  padding: 0.4rem 0.8rem 0.4rem 0.6rem;
-  border-radius: var(--radius-pill);
-  background: color-mix(in srgb, var(--color-text) 12%, var(--color-reader));
-  font-size: 0.85rem;
-  white-space: nowrap;
+  display: grid;
+  place-items: center;
+  inline-size: 3.25rem;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background: color-mix(in srgb, var(--color-text) 10%, var(--color-reader));
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
@@ -5813,8 +5811,7 @@ body.nav-open .nav-backdrop {
 
 .article-body a.runpod-launch__help,
 .article-body a.runpod-launch__help.link--internal {
-  color: var(--color-heading);
-  font-weight: 600;
+  color: var(--color-text-muted);
 }
 
 .runpod-launch__main:hover,
@@ -5822,9 +5819,39 @@ body.nav-open .nav-backdrop {
   background: color-mix(in srgb, var(--color-text) 4%, transparent);
 }
 
-.runpod-launch__help:hover,
-.runpod-launch__help:focus-visible {
-  background: color-mix(in srgb, var(--color-text) 20%, var(--color-reader));
+.article-body a.runpod-launch__help:hover,
+.article-body a.runpod-launch__help:focus-visible {
+  background: color-mix(in srgb, var(--color-text) 16%, var(--color-reader));
+  color: var(--color-heading);
+}
+
+.runpod-launch__help .icon {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+}
+
+/* Hover tip for "?": above the button, right-aligned so it never leaves the reader column. */
+.runpod-launch__tip {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 0.4rem);
+  padding: 0.35rem 0.6rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-heading);
+  color: var(--color-reader);
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(2px);
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.runpod-launch__help:hover .runpod-launch__tip,
+.runpod-launch__help:focus-visible .runpod-launch__tip {
+  opacity: 1;
+  transform: none;
 }
 
 .runpod-launch__logo {
@@ -5836,8 +5863,9 @@ body.nav-open .nav-backdrop {
 .runpod-launch__text {
   display: flex;
   flex-direction: column;
+  gap: 0.25rem;
   min-width: 0;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .runpod-launch__text b {
@@ -5846,77 +5874,26 @@ body.nav-open .nav-backdrop {
   font-weight: 650;
 }
 
-.runpod-launch__gpus {
+.runpod-launch__specs {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.3rem;
-  color: color-mix(in srgb, var(--color-text) 80%, var(--color-reader));
+  gap: 0.2rem 1.1rem;
+  color: color-mix(in srgb, var(--color-text) 85%, var(--color-reader));
   font-size: 0.85rem;
 }
 
-/* GPU names are what a reader looks for on the deploy page, so they read as small filled tags. */
 .runpod-launch__gpu {
-  padding: 0.05rem 0.45rem;
-  border-radius: var(--radius-sm);
-  background: color-mix(in srgb, var(--color-text) 12%, var(--color-reader));
+  padding: 0.1rem 0.5rem;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-text) 14%, var(--color-reader));
   color: var(--color-heading);
-  font-size: 0.8rem;
   font-weight: 600;
 }
 
-.runpod-launch__sep {
-  color: var(--color-text-muted);
-}
-
-/* The referral disclosure: a small label beside the title — clearly there, but not part of the GPU
-   information. */
-.runpod-launch__title {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
 .runpod-launch__ref {
-  padding: 0.05rem 0.4rem;
-  border-radius: var(--radius-sm);
-  background: color-mix(in srgb, var(--color-text) 8%, var(--color-reader));
+  margin: 0.35rem 0 0;
   color: var(--color-text-muted);
-  font-size: 0.68rem;
-  font-weight: 500;
-  line-height: 1.5;
-}
-
-.runpod-launch__arrow {
-  flex: none;
-  display: grid;
-  place-items: center;
-  margin-left: auto;
-  color: var(--color-text-muted);
-}
-
-.runpod-launch__arrow .icon {
-  inline-size: 1.2rem;
-  block-size: 1.2rem;
-}
-
-.runpod-launch__help .icon {
-  inline-size: 1rem;
-  block-size: 1rem;
-}
-
-/* Narrow screens: the walkthrough button drops below the main link instead of squeezing it. */
-@media (max-width: 600px) {
-  .runpod-launch {
-    flex-wrap: wrap;
-  }
-
-  .runpod-launch__main {
-    flex-basis: 100%;
-  }
-
-  .runpod-launch__help {
-    margin: 0 1.1rem 0.9rem auto;
-  }
+  font-size: 0.78rem;
+  text-align: right;
 }
