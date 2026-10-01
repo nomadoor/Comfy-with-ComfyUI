@@ -125,7 +125,7 @@ class Downloader:
         self.civitai_token = civitai_token
         self._verified_lock = threading.Lock()
         self.verified = json.loads(self.verified_path.read_text()) if self.verified_path.exists() else {}
-        self.timings = {}  # per model: seconds, average MB/s and method, for report.json
+        self.timings = {}  # "<directory>/<name>": seconds, average MB/s and method, for report.json
 
     def _remember(self, final, model):
         with self._verified_lock:
@@ -216,7 +216,7 @@ class Downloader:
                 self.state.model(index, state="done", done=final.stat().st_size, speed=0)
                 size = final.stat().st_size
                 method = "xet" if model["source"] == "hf" and os.environ.get("HF_DOWNLOADER") == "xet" else "aria2"
-                self.timings[model["name"]] = {"seconds": round(seconds, 1), "mb_per_s": round(size / 1e6 / max(seconds, 0.1)), "method": method}
+                self.timings[f"{model['directory']}/{model['name']}"] = {"seconds": round(seconds, 1), "mb_per_s": round(size / 1e6 / max(seconds, 0.1)), "method": method}
                 self.state.log(f"model {model['directory']}/{model['name']}: done in {seconds:.0f}s ({size / 1e6 / max(seconds, 0.1):.0f} MB/s, {method})")
                 return "downloaded"
             except AuthError:

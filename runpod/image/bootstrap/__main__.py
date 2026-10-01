@@ -189,7 +189,7 @@ def main():
         downloader = Downloader(data_dir, state, concurrency, hf_token, civitai_token)
         results = timed("models", lambda: downloader.run(profile["models"]))
         report["models"] = [
-            {"name": m["name"], "directory": m["directory"], "result": r, **downloader.timings.get(m["name"], {})}
+            {"name": m["name"], "directory": m["directory"], "result": r, **downloader.timings.get(f"{m['directory']}/{m['name']}", {})}
             for m, r in zip(profile["models"], results)
         ]
         skipped = [m["name"] for m, r in zip(profile["models"], results) if r == "skipped"]
