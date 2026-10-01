@@ -24,6 +24,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      # Optional Docker Hub mirror: set both secrets to also publish there (compare pull speeds).
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -47,13 +50,20 @@ jobs:
         id: tags
         run: |
           image=ghcr.io/${{ github.repository_owner }}/comfy-with-comfyui-runpod
+          names="$image"
+          if [ -n "$DOCKERHUB_USERNAME" ]; then names="$names docker.io/$DOCKERHUB_USERNAME/comfy-with-comfyui-runpod"; fi
           if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            printf 'list<<EOF\n%s:latest\n%s:%s\nEOF\n' "$image" "$image" "${{ steps.comfy.outputs.tag }}" >> "$GITHUB_OUTPUT"
+            suffixes="latest ${{ steps.comfy.outputs.tag }}"
             echo "cache=buildcache" >> "$GITHUB_OUTPUT"
           else
-            printf 'list<<EOF\n%s:exp\nEOF\n' "$image" >> "$GITHUB_OUTPUT"
+            suffixes="exp"
             echo "cache=buildcache-exp" >> "$GITHUB_OUTPUT"
           fi
+          {
+            echo 'list<<EOF'
+            for name in $names; do for suffix in $suffixes; do echo "$name:$suffix"; done; done
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
           echo "image=$image" >> "$GITHUB_OUTPUT"
 
       - name: Set up Docker Buildx
@@ -66,16 +76,24 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Log in to Docker Hub
+        if: env.DOCKERHUB_USERNAME != ''
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
           context: runpod/image
           build-args: COMFY_COMMIT=${{ steps.comfy.outputs.sha }}
-          push: true
           tags: ${{ steps.tags.outputs.list }}
-          # Reuse unchanged layers (PyTorch, CUDA libraries) from the last build instead of rebuilding
-          # them daily: rebuilt layers get new digests, so Pods could never reuse what a machine
-          # already pulled. Only the ComfyUI layers change from day to day.
+          # zstd layers unpack several times faster than gzip on the Pod (Docker 23+ reads them).
+          outputs: type=registry,compression=zstd,compression-level=3,force-compression=true,oci-mediatypes=true
+          # Reuse unchanged layers (system packages, uv, Python) from the last build instead of
+          # rebuilding them daily: rebuilt layers get new digests, so Pods could never reuse what a
+          # machine already pulled. Only the ComfyUI layer changes from day to day.
           # Trials read main's cache but write their own, so they never replace what Pods pull.
           cache-from: |
             type=registry,ref=${{ steps.tags.outputs.image }}:buildcache

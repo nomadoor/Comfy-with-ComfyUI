@@ -10,6 +10,7 @@ STEPS = [
     ("profile", "Fetch profile"),
     ("comfyui", "Update ComfyUI"),
     ("custom_nodes", "Install custom nodes"),
+    ("runtime", "Install PyTorch and packages"),
     ("models", "Download models"),
     ("workflows", "Place workflows"),
     ("start", "Start ComfyUI"),
