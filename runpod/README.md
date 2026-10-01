@@ -29,7 +29,7 @@ runpod/
 
 `ghcr.io/nomadoor/comfy-with-comfyui-runpod`。`.github/workflows/runpod-image.yml` が毎日と `runpod/image/**` の変更時にビルドする。タグは `latest` と `<日付>-<ComfyUI の短い sha>`。
 
-- ビルドキャッシュ（`:buildcache`）で、変わらない層（PyTorch と CUDA ライブラリ）を毎日作り直さない。層の digest が変わらないので、一度その層を取ったマシンは取り直さない。PyTorch を新しくするときは Dockerfile の `TORCH_CACHE_KEY` を変える。
+- ビルドキャッシュ（`:buildcache`）で、変わらない層（PyTorch と CUDA ライブラリ）を毎日作り直さない。層の digest が変わらないので、一度その層を取ったマシンは取り直さない。PyTorch を新しくするときは Dockerfile の `TORCH_REFRESH` を変える。
 - 試作は `main` 以外のブランチで workflow を手動実行する（`gh workflow run runpod-image.yml --ref <branch>`）。`:exp` にだけ出て、`:latest` には触れない。キャッシュも `:buildcache-exp` に分ける。
 
 Pod の環境変数:

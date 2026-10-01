@@ -41,6 +41,7 @@ Accepted（PoC。記事側のボタン・案内表示は別途デザイン相談
 - モデルごとの所要時間・平均速度・取得方法を `report.json` に残し、aria2 と hf_xet を本番の回線で比べられるようにする。
 - 実測（2026-10-01）：サーバーが立つまで約 3 分 15 秒、そこから ComfyUI まで約 1 分（モデル 19 GB 込み）。aria2 と hf_xet の差は誤差。遅いのは image の取得側。RunPod 公式の ComfyUI テンプレートは同じ日に 11 分超。
 - image のキャッシュはマシン単位で、そのマシンで誰かが同じ層を取ったことがある場合だけ効く。毎日のビルドで全層を作り直すと digest が変わり、キャッシュが一切効かないので、ビルドキャッシュで変わらない層を固定する。
+- PyTorch 2.14（cu130）は一部の演算を Triton で行い、Triton は初回に C の補助を実行時コンパイルする。最小の CUDA base image にはコンパイラがないので、`gcc` と `libc6-dev` を入れる（ComfyUI の README の手順は torch と requirements だけで、コンパイラは普通の Linux 環境にある前提）。Python は README に合わせて 3.13 にする。PyTorch や CUDA を変えたときは、マージ前に GPU で短い計算を通して確かめる（CPU の起動確認では Triton の経路を通らない）。
 - 土台を変える前に、Pod の作成・起動から起動処理開始までの秒数を `report.json` に残して測る。次に今の土台と RunPod 公式 `runpod/pytorch` の土台を `:exp` で比べる。PyTorch を起動時に入れる案は、版を固定すれば中身は変わらないが、起動のたびに配布元に頼る失敗点が増えるので、土台の乗り換えが効かなかったときの候補とする。
 
 ## Consequences
