@@ -12,8 +12,11 @@ ENV DEBIAN_FRONTEND=noninteractive \
     VIRTUAL_ENV=/opt/venv \
     PATH=/opt/venv/bin:$PATH
 
+# gcc and libc6-dev: Triton (used by PyTorch's native ops since cu130) compiles a small C helper
+# the first time it touches the GPU. Without a compiler every prompt fails with
+# "Failed to find C compiler".
 RUN apt-get update \
- && apt-get install -y --no-install-recommends git aria2 jq curl ca-certificates libgl1 libglib2.0-0 \
+ && apt-get install -y --no-install-recommends git aria2 jq curl ca-certificates libgl1 libglib2.0-0 gcc libc6-dev \
  && rm -rf /var/lib/apt/lists/*
 
 COPY --from=ghcr.io/astral-sh/uv:0.9 /uv /uvx /usr/local/bin/
