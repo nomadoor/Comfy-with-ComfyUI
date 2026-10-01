@@ -29,6 +29,9 @@ runpod/
 
 `ghcr.io/nomadoor/comfy-with-comfyui-runpod`。`.github/workflows/runpod-image.yml` が毎日と `runpod/image/**` の変更時にビルドする。タグは `latest` と `<日付>-<ComfyUI の短い sha>`。
 
+- ビルドキャッシュ（`:buildcache`）で、変わらない層（PyTorch と CUDA ライブラリ）を毎日作り直さない。層の digest が変わらないので、一度その層を取ったマシンは取り直さない。PyTorch を新しくするときは Dockerfile の `TORCH_CACHE_KEY` を変える。
+- 試作は `main` 以外のブランチで workflow を手動実行する（`gh workflow run runpod-image.yml --ref <branch>`）。`:exp` にだけ出て、`:latest` には触れない。キャッシュも `:buildcache-exp` に分ける。
+
 Pod の環境変数:
 
 | 変数 | 既定値 | 内容 |
@@ -47,7 +50,7 @@ Pod の環境変数:
 
 ComfyUI の画面では、テンプレート選択ダイアログを出さず、プロファイルの workflow を記事の順にすべてタブで開く（ブラウザごとに初回だけ）。放置で終了する数分前には画面上部に予告が出る。どちらも `image/extension/`（ComfyUI の拡張として入れる）が行う。
 
-起動の結果は `${DATA_DIR}/runpod-boot/report.json` に残る（プロファイル、site の commit、ComfyUI の sha、custom node のバージョン、モデルごとの結果・所要時間・平均速度・取得方法、全体の所要時間）。
+起動の結果は `${DATA_DIR}/runpod-boot/report.json` に残る（Pod の作成・起動からこの処理が始まるまでの秒数 `pod_start`、プロファイル、site の commit、ComfyUI の sha、custom node のバージョン、モデルごとの結果・所要時間・平均速度・取得方法、全体の所要時間）。
 
 ステータスページは準備中に記事へのリンクと、`runpod/tips.yaml` のコラムを出す（ビルドで `/runpod/tips.json` になり、Pod は起動時に読む。image の作り直しは不要）。
 

@@ -16,7 +16,7 @@ from pathlib import Path
 from . import comfy, server
 from .models import Downloader
 from .state import BootError, State
-from .util import fetch, fetch_json, terminate_this_pod
+from .util import fetch, fetch_json, pod_timing, terminate_this_pod
 
 SCHEMA_VERSION = 1
 SITE = "https://comfyui.nomadoor.net"
@@ -148,6 +148,15 @@ def main():
     status_server = server.start(state, PORT)
     state.log(f"status page on :{PORT}, data dir {data_dir}")
     report = {"started_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "data_dir": data_dir, "timings": {}}
+    # How long RunPod took before this process ran (mostly the image pull): the number that decides
+    # which base image to use. Logged so it shows in the Pod's log view too.
+    try:
+        report["pod_start"] = pod_timing(state.started)
+    except Exception as error:  # noqa: BLE001 - measurement only; never stop the boot over it
+        report["pod_start"] = {"pod_error": str(error)}
+    for field in ("lastStartedAt", "createdAt"):
+        if f"seconds_from_{field}" in report["pod_start"]:
+            state.log(f"boot started {report['pod_start'][f'seconds_from_{field}']}s after the Pod's {field}")
     report_path = Path(data_dir) / "runpod-boot" / "report.json"
 
     def timed(name, fn):
