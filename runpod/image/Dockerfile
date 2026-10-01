@@ -21,8 +21,13 @@ COPY --from=ghcr.io/astral-sh/uv:0.9 /uv /uvx /usr/local/bin/
 # PyTorch and its CUDA libraries are ~6.7 GB. Installed in one step they make one huge layer, which a
 # Pod downloads and unpacks as a single stream. Resolve the set once, then install it in four groups
 # of similar size, so the Pod pulls them in parallel.
+# The CI build cache keeps these layers byte-identical across daily builds, so a machine that already
+# pulled them never pulls them again. That also means PyTorch stays at the version first resolved:
+# change TORCH_CACHE_KEY to pick up a newer release.
 ENV TORCH_INDEX=https://download.pytorch.org/whl/cu130
-RUN uv venv --python 3.12 /opt/venv \
+ARG TORCH_CACHE_KEY=2026-10-01
+RUN echo "PyTorch set resolved for cache key ${TORCH_CACHE_KEY}" \
+ && uv venv --python 3.12 /opt/venv \
  && printf 'torch\ntorchvision\ntorchaudio\n' > /tmp/torch.in \
  && uv pip compile --quiet --python /opt/venv/bin/python --index-url "$TORCH_INDEX" /tmp/torch.in -o /opt/torch.lock
 RUN grep -E '^(nvidia-(cublas|cufft|cufile|curand|cusolver|cusparse|cuda-|nvjitlink|nvtx)[^=]*)==' /opt/torch.lock > /tmp/g1.txt \

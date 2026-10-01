@@ -42,6 +42,20 @@ jobs:
           echo "sha=$sha" >> "$GITHUB_OUTPUT"
           echo "tag=$(date -u +%Y%m%d)-${sha:0:7}" >> "$GITHUB_OUTPUT"
 
+      # main publishes :latest and a dated tag; any other branch (run by hand) only :exp, for trials.
+      - name: Choose tags
+        id: tags
+        run: |
+          image=ghcr.io/${{ github.repository_owner }}/comfy-with-comfyui-runpod
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            printf 'list<<EOF\n%s:latest\n%s:%s\nEOF\n' "$image" "$image" "${{ steps.comfy.outputs.tag }}" >> "$GITHUB_OUTPUT"
+            echo "cache=buildcache" >> "$GITHUB_OUTPUT"
+          else
+            printf 'list<<EOF\n%s:exp\nEOF\n' "$image" >> "$GITHUB_OUTPUT"
+            echo "cache=buildcache-exp" >> "$GITHUB_OUTPUT"
+          fi
+          echo "image=$image" >> "$GITHUB_OUTPUT"
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -58,9 +72,15 @@ jobs:
           context: runpod/image
           build-args: COMFY_COMMIT=${{ steps.comfy.outputs.sha }}
           push: true
-          tags: |
-            ghcr.io/${{ github.repository_owner }}/comfy-with-comfyui-runpod:latest
-            ghcr.io/${{ github.repository_owner }}/comfy-with-comfyui-runpod:${{ steps.comfy.outputs.tag }}
+          tags: ${{ steps.tags.outputs.list }}
+          # Reuse unchanged layers (PyTorch, CUDA libraries) from the last build instead of rebuilding
+          # them daily: rebuilt layers get new digests, so Pods could never reuse what a machine
+          # already pulled. Only the ComfyUI layers change from day to day.
+          # Trials read main's cache but write their own, so they never replace what Pods pull.
+          cache-from: |
+            type=registry,ref=${{ steps.tags.outputs.image }}:buildcache
+            type=registry,ref=${{ steps.tags.outputs.image }}:${{ steps.tags.outputs.cache }}
+          cache-to: type=registry,ref=${{ steps.tags.outputs.image }}:${{ steps.tags.outputs.cache }},mode=max
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
             org.opencontainers.image.revision=${{ github.sha }}

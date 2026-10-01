@@ -58,3 +58,43 @@ def terminate_this_pod(log):
     except Exception as error:  # noqa: BLE001
         log(f"could not terminate the Pod: {error}")
         return False
+
+
+_SECRET = ("KEY", "TOKEN", "SECRET", "PASSWORD")
+_POD_FIELDS = ("createdAt", "lastStartedAt", "lastStatusChange", "desiredStatus", "imageName", "machineId",
+               "gpuTypeId", "gpuCount", "dataCenterId", "costPerHr", "containerDiskInGb", "uptimeSeconds")
+
+
+def pod_timing(boot_started):
+    """How long the Pod took to reach our boot process (image pull + container start), for report.json.
+
+    Asks the RunPod REST API about this Pod with the Pod-scoped key and keeps a short whitelist of
+    fields: never the env, which can hold the reader's tokens. Returns {} outside RunPod.
+    """
+    info = {"runpod_env": {k: v for k, v in os.environ.items() if k.startswith("RUNPOD_") and not any(s in k for s in _SECRET)}}
+    pod_id, key = os.environ.get("RUNPOD_POD_ID"), os.environ.get("RUNPOD_API_KEY")
+    if not pod_id or not key:
+        return info
+    request = urllib.request.Request(f"https://rest.runpod.io/v1/pods/{pod_id}", headers={"Authorization": f"Bearer {key}"})
+    try:
+        pod = json.loads(urllib.request.urlopen(request, timeout=15).read())
+    except Exception as error:  # noqa: BLE001
+        info["pod_error"] = str(error)
+        return info
+    flat = dict(pod)
+    for nested in ("machine", "runtime"):
+        if isinstance(pod.get(nested), dict):
+            flat.update({k: v for k, v in pod[nested].items() if not isinstance(v, (dict, list))})
+    info["pod"] = {k: flat[k] for k in _POD_FIELDS if k in flat}
+    info["pod_fields"] = sorted(k for k in pod.keys() if k != "env")  # names only, to learn the schema
+    for field in ("lastStartedAt", "createdAt"):
+        value = flat.get(field)
+        if isinstance(value, str):
+            try:
+                from datetime import datetime
+
+                started = datetime.fromisoformat(value.replace("Z", "+00:00")).timestamp()
+                info[f"seconds_from_{field}"] = round(boot_started - started, 1)
+            except ValueError:
+                pass
+    return info
