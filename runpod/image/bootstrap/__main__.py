@@ -61,7 +61,8 @@ def fetch_site_file(item, profile_url):
 
 def place_workflows(profile, profile_url, comfy_dir):
     """Workflows go to the sidebar's Workflows tab; sample inputs to input/ under the name the nodes read."""
-    target = Path(comfy_dir) / "user" / "default" / "workflows" / profile["title"]
+    # Straight into the Workflows tab, no folder: a Pod serves one profile, and the folder is rebuilt per Pod.
+    target = Path(comfy_dir) / "user" / "default" / "workflows"
     target.mkdir(parents=True, exist_ok=True)
     for workflow in profile["workflows"]:
         (target / workflow["name"]).write_bytes(fetch_site_file(workflow, profile_url))
@@ -117,7 +118,7 @@ def prepare_frontend(profile, comfy_dir):
     shutil.copytree(EXTENSION, target)
     config = {
         "profile": profile["id"],
-        "workflows": [f"workflows/{profile['title']}/{w['name']}" for w in profile["workflows"]],
+        "workflows": [f"workflows/{w['name']}" for w in profile["workflows"]],
     }
     (target / "web" / "runpod.json").write_text(json.dumps(config, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
@@ -190,7 +191,7 @@ def main():
         report["workflows"] = {"folder": folder, "files": [w["name"] for w in profile["workflows"]], "inputs": inputs}
         state.step(
             "workflows", "done",
-            f"{len(profile['workflows'])} in Workflows › {profile['title']}" + (f", {len(inputs)} sample inputs" if inputs else ""),
+            f"{len(profile['workflows'])} in the Workflows tab" + (f", {len(inputs)} sample inputs" if inputs else ""),
         )
     except BootError as error:
         state.fail(error)
