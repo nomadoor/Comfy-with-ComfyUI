@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preparing ComfyUI</title>
+<style>
+  :root {
+    --bg: #f6f5f3; --surface: #ecebe8; --text: #2b2a28; --muted: #77746f; --accent: #7a5cc4;
+    --ok: #4f9a6a; --warn: #c98a32; --error: #c4524a; --warn-fill: rgba(201, 138, 50, 0.16); --error-fill: rgba(196, 82, 74, 0.14);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1b1a19; --surface: #252422; --text: #e4e1dc; --muted: #9a968f; --accent: #a58be0; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.6 system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Noto Sans JP", "Noto Sans SC", sans-serif; }
+  main { max-width: 44rem; margin: 0 auto; padding: 3rem 16px 4rem; }
+  h1 { font-size: 1.5rem; margin: 0 0 0.25rem; font-weight: 650; }
+  .lead { color: var(--muted); margin: 0 0 2rem; }
+  .panel { background: var(--surface); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+  .steps { list-style: none; margin: 0; padding: 0; }
+  .steps li { display: grid; grid-template-columns: 1.25rem 1fr; gap: 0.5rem; padding: 0.3rem 0; color: var(--muted); }
+  .steps li[data-state="running"], .steps li[data-state="done"] { color: var(--text); }
+  .steps .detail { display: block; font-size: 0.85em; color: var(--muted); overflow-wrap: anywhere; }
+  .dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: currentColor; opacity: 0.35; margin-top: 0.5rem; }
+  [data-state="running"] .dot { background: var(--accent); opacity: 1; animation: pulse 1.2s ease-in-out infinite; }
+  [data-state="done"] .dot { background: var(--ok); opacity: 1; }
+  [data-state="error"] .dot { background: var(--error); opacity: 1; }
+  [data-state="skipped"] .dot { background: var(--warn); opacity: 1; }
+  @keyframes pulse { 50% { opacity: 0.35; } }
+  .summary { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; margin: 0 0 0.75rem; font-variant-numeric: tabular-nums; }
+  .summary b { font-weight: 600; }
+  .model { padding: 0.5rem 0; }
+  .model .row { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.9em; }
+  .model .name { overflow-wrap: anywhere; }
+  .model .nums { color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .bar { height: 6px; border-radius: 3px; background: var(--bg); margin-top: 0.35rem; overflow: hidden; }
+  .bar span { display: block; height: 100%; width: 0; background: var(--accent); transition: width 0.8s linear; }
+  .model[data-state="done"] .bar span, .model[data-state="present"] .bar span { background: var(--ok); }
+  .model[data-state="verifying"] .bar span { background: var(--muted); }
+  .model[data-state="skipped"] .bar span, .model[data-state="error"] .bar span { background: var(--warn); }
+  .alert { border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+  .alert.error { background: var(--error-fill); }
+  .alert.notice { background: var(--warn-fill); }
+  .alert h2 { font-size: 1rem; margin: 0 0 0.25rem; }
+  .alert p { margin: 0.25rem 0 0; }
+  .alert .raw { color: var(--muted); font-size: 0.85em; overflow-wrap: anywhere; }
+  .muted { color: var(--muted); font-size: 0.85em; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <h1 id="title">Preparing ComfyUI</h1>
+  <p class="lead" id="lead"></p>
+  <div id="alerts"></div>
+  <section class="panel"><ol class="steps" id="steps"></ol></section>
+  <section class="panel" id="models-panel" hidden>
+    <p class="summary" id="summary"></p>
+    <div id="models"></div>
+  </section>
+  <p class="muted" id="footer"></p>
+</main>
+<script>
+  const lang = (navigator.language || "en").toLowerCase().startsWith("ja") ? "ja"
+    : (navigator.language || "").toLowerCase().startsWith("zh") ? "zh" : "en";
+  const T = {
+    en: {
+      preparing: "Preparing ComfyUI", lead: "This page switches to ComfyUI by itself when everything is ready.",
+      steps: { profile: "Fetch profile", comfyui: "Update ComfyUI", custom_nodes: "Install custom nodes", models: "Download models", workflows: "Place workflows", start: "Start ComfyUI" },
+      left: "left", eta: "about", done: "ready", total: "total", failed: "Setup stopped", skipped: "Skipped", lost: "Waiting for the Pod…",
+      starting: "Starting ComfyUI…", verifying: "verifying", present: "already on disk",
+      advice: {
+        profile_missing: "The template must set PROFILE. Deploy again from the article's button.",
+        profile_fetch: "The profile could not be downloaded. Check the Pod's network, or restart the Pod.",
+        profile_schema: "This image is older than the profile. Deploy again so the latest image is used.",
+        comfyui_ref: "Remove COMFY_REF or set it to latest, then restart the Pod.",
+        comfyui_update: "ComfyUI could not be updated. Restart the Pod, or set COMFY_REF=verified.",
+        custom_node: "A custom node failed to install. Restart the Pod; if it keeps failing, set COMFY_REF=verified.",
+        disk_space: "Not enough disk. Create the Pod again with a Container Disk of at least {need_gb} GB.",
+        download: "A download failed after several tries. Restart the Pod to resume.",
+        civitai_token: "This model needs a Civitai API key. Add CIVITAI_TOKEN to the Pod and restart it.",
+        workflow: "A workflow could not be fetched or did not match. Restart the Pod.",
+        hf_token: "This model needs you to accept its terms on Hugging Face and a token. Accept them on the model page, save HF_TOKEN in RunPod Secrets, and create the Pod again.",
+      },
+    },
+    ja: {
+      preparing: "ComfyUI を準備しています", lead: "準備ができると、このページは自動で ComfyUI に切り替わります。",
+      steps: { profile: "プロファイルを取得", comfyui: "ComfyUI を更新", custom_nodes: "カスタムノードを導入", models: "モデルをダウンロード", workflows: "workflow を配置", start: "ComfyUI を起動" },
+      left: "残り", eta: "あと約", done: "完了", total: "合計", failed: "準備が止まりました", skipped: "スキップしました", lost: "Pod の応答を待っています…",
+      starting: "ComfyUI を起動しています…", verifying: "検証中", present: "ダウンロード済み",
+      advice: {
+        profile_missing: "テンプレートに PROFILE が設定されていません。記事のボタンからもう一度デプロイしてください。",
+        profile_fetch: "プロファイルを取得できませんでした。Pod のネットワークを確認するか、Pod を再起動してください。",
+        profile_schema: "この image はプロファイルより古い版です。もう一度デプロイして最新の image を使ってください。",
+        comfyui_ref: "COMFY_REF を消すか latest にして、Pod を再起動してください。",
+        comfyui_update: "ComfyUI を更新できませんでした。Pod を再起動するか、COMFY_REF=verified にしてください。",
+        custom_node: "カスタムノードの導入に失敗しました。Pod を再起動し、それでも失敗する場合は COMFY_REF=verified にしてください。",
+        disk_space: "ディスクが足りません。Container Disk を {need_gb} GB 以上にして Pod を作り直してください。",
+        download: "何度か試しましたがダウンロードに失敗しました。Pod を再起動すると続きから再開します。",
+        civitai_token: "このモデルには Civitai の API キーが必要です。Pod に CIVITAI_TOKEN を設定して再起動してください。",
+        workflow: "workflow を取得できなかったか、内容が一致しませんでした。Pod を再起動してください。",
+        hf_token: "このモデルは Hugging Face で利用規約への同意とトークンが必要です。モデルページで同意し、RunPod の Secrets に HF_TOKEN を登録して Pod を作り直してください。",
+      },
+    },
+    zh: {
+      preparing: "正在准备 ComfyUI", lead: "准备完成后，本页面会自动切换到 ComfyUI。",
+      steps: { profile: "获取配置", comfyui: "更新 ComfyUI", custom_nodes: "安装自定义节点", models: "下载模型", workflows: "放置 workflow", start: "启动 ComfyUI" },
+      left: "剩余", eta: "约", done: "完成", total: "合计", failed: "准备已停止", skipped: "已跳过", lost: "正在等待 Pod 响应…",
+      starting: "正在启动 ComfyUI…", verifying: "校验中", present: "已下载",
+      advice: {
+        profile_missing: "模板没有设置 PROFILE。请从文章的按钮重新部署。",
+        profile_fetch: "无法获取配置。请检查 Pod 的网络，或重启 Pod。",
+        profile_schema: "此 image 比配置旧。请重新部署以使用最新的 image。",
+        comfyui_ref: "请删除 COMFY_REF 或设为 latest，然后重启 Pod。",
+        comfyui_update: "无法更新 ComfyUI。请重启 Pod，或设置 COMFY_REF=verified。",
+        custom_node: "自定义节点安装失败。请重启 Pod；如仍失败，请设置 COMFY_REF=verified。",
+        disk_space: "磁盘空间不足。请将 Container Disk 设为 {need_gb} GB 以上并重新创建 Pod。",
+        download: "多次尝试后下载仍失败。重启 Pod 即可从中断处继续。",
+        civitai_token: "此模型需要 Civitai API 密钥。请为 Pod 设置 CIVITAI_TOKEN 后重启。",
+        workflow: "无法获取 workflow，或内容不一致。请重启 Pod。",
+        hf_token: "此模型需要在 Hugging Face 上同意使用条款并提供令牌。请在模型页面同意条款，在 RunPod Secrets 中保存 HF_TOKEN，然后重新创建 Pod。",
+      },
+    },
+  }[lang];
+  document.documentElement.lang = lang;
+
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  const gb = (n) => (n / 1e9).toFixed(n >= 1e10 ? 1 : 2) + " GB";
+  const mbps = (n) => (n / 1e6).toFixed(0) + " MB/s";
+  const duration = (s) => (s >= 3600 ? `${Math.floor(s / 3600)}h ${Math.round((s % 3600) / 60)}m` : s >= 60 ? `${Math.round(s / 60)} min` : `${Math.max(1, Math.round(s))} s`);
+  const advice = (code, detail) => (T.advice[code] || "").replace(/\{(\w+)\}/g, (_, k) => esc(detail[k]));
+
+  $("title").textContent = T.preparing;
+  $("lead").textContent = T.lead;
+
+  const render = (s) => {
+    if (s.title) {
+      $("title").textContent = `${s.title}`;
+      document.title = `${s.title} · ${T.preparing}`;
+    }
+    $("lead").textContent = s.phase === "starting" ? T.starting : s.phase === "error" ? T.failed : T.lead;
+
+    let alerts = "";
+    if (s.error) {
+      alerts += `<div class="alert error"><h2>${esc(T.failed)}</h2><p>${advice(s.error.code, s.error)}</p><p class="raw">${esc(s.error.message)}</p></div>`;
+    }
+    for (const n of s.notices || []) {
+      alerts += `<div class="alert notice"><h2>${esc(T.skipped)}: ${esc(n.model || "")}</h2><p>${advice(n.code, n)}</p></div>`;
+    }
+    $("alerts").innerHTML = alerts;
+
+    $("steps").innerHTML = s.steps.map((step) =>
+      `<li data-state="${step.state}"><span class="dot"></span><span>${esc(T.steps[step.id] || step.label)}` +
+      (step.detail ? `<span class="detail">${esc(step.detail)}</span>` : "") + `</span></li>`).join("");
+
+    const models = s.models || [];
+    $("models-panel").hidden = models.length === 0;
+    if (models.length) {
+      const total = models.reduce((a, m) => a + (m.size || 0), 0);
+      const counted = (m) => (["done", "present"].includes(m.state) ? m.size || m.done : m.state === "downloading" ? m.done : 0);
+      const done = models.reduce((a, m) => a + Math.min(counted(m), m.size || Infinity), 0);
+      const speed = models.reduce((a, m) => a + (m.state === "downloading" ? m.speed : 0), 0);
+      const left = Math.max(0, total - done);
+      $("summary").innerHTML =
+        `<span><b>${gb(done)}</b> / ${gb(total)}</span>` +
+        (left > 0 ? `<span>${T.left} <b>${gb(left)}</b></span>` : "") +
+        (speed > 0 ? `<span>${mbps(speed)}</span><span>${T.eta} <b>${duration(left / speed)}</b></span>` : "");
+      $("models").innerHTML = models.map((m) => {
+        const pct = m.size ? Math.min(100, (m.done / m.size) * 100) : m.state === "done" ? 100 : 0;
+        const nums = m.state === "verifying" ? T.verifying
+          : m.state === "present" ? T.present
+          : m.state === "skipped" ? T.skipped
+          : m.state === "done" ? gb(m.size || m.done)
+          : `${gb(m.done)} / ${m.size ? gb(m.size) : "?"}${m.state === "downloading" && m.speed ? ` · ${mbps(m.speed)}` : ""}`;
+        return `<div class="model" data-state="${m.state}"><div class="row"><span class="name">${esc(m.directory)}/${esc(m.name)}</span>` +
+          `<span class="nums">${esc(nums)}</span></div><div class="bar"><span style="width:${pct}%"></span></div></div>`;
+      }).join("");
+    }
+  };
+
+  // Once the status server stops, the same port answers as ComfyUI: reload into it.
+  const comfyReady = async () => {
+    try {
+      const r = await fetch("/api/system_stats", { cache: "no-store" });
+      return r.ok && (r.headers.get("content-type") || "").includes("json");
+    } catch { return false; }
+  };
+
+  let starting = false;
+  const tick = async () => {
+    if (starting && (await comfyReady())) { location.reload(); return; }
+    try {
+      const r = await fetch("/status.json", { cache: "no-store" });
+      if (!r.ok || !(r.headers.get("content-type") || "").includes("json")) throw new Error();
+      const s = await r.json();
+      render(s);
+      starting = s.phase === "starting";
+      $("footer").textContent = "";
+    } catch {
+      if (await comfyReady()) { location.reload(); return; }
+      starting = true;
+      $("footer").textContent = T.lost;
+    }
+    setTimeout(tick, 1000);
+  };
+  tick();
+</script>
+</body>
+</html>

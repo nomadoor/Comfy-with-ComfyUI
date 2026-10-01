@@ -10,6 +10,7 @@ import envData from "./src/_data/env.js";
 import missingPages from "./src/_data/missingPages.js";
 import navData from "./src/_data/nav.js";
 import { groupMediaSteps, renderMediaStep } from "./scripts/lib/media-steps.mjs";
+import { writeProfiles as writeRunpodProfiles } from "./runpod/tools/profiles.mjs";
 
 const GYAZO_HOST = "i.gyazo.com";
 const SITE_DATA_PATH = path.join("src", "_data", "site.json");
@@ -816,6 +817,11 @@ export default function (eleventyConfig) {
 
   eleventyConfig.on("beforeBuild", () => {
     loadMediaManifest();
+  });
+
+  // RunPod profiles (/runpod/profiles/<id>.json) are built from the workflow JSON on every build.
+  eleventyConfig.on("eleventy.after", ({ dir }) => {
+    writeRunpodProfiles({ outDir: dir.output, siteURL: siteData.url });
   });
 
   const TAG_CHANNELS = ["tags", "noteTags"];

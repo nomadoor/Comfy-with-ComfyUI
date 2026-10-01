@@ -1,10 +1,11 @@
 #!/bin/sh
-# Upload new or changed media referenced by staged site sources, then stage the updated manifest.
+# Upload new or changed media referenced by staged site sources (and the sample inputs of the RunPod
+# profiles' workflows), then stage the updated manifest.
 # Skip once with: SKIP_MEDIA_SYNC=1 git commit ...
 
 [ "$SKIP_MEDIA_SYNC" = "1" ] && exit 0
 
-if ! git diff --cached --name-only --diff-filter=ACMR | grep -qE '^src/(content|_data|includes|layouts)/|^src/[^/]+\.(md|njk)$'; then
+if ! git diff --cached --name-only --diff-filter=ACMR | grep -qE '^src/(content|_data|includes|layouts|workflows)/|^src/[^/]+\.(md|njk)$|^runpod/profiles/'; then
   exit 0
 fi
 

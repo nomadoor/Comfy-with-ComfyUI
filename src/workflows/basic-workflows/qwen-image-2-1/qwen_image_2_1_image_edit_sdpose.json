@@ -1,8 +1,8 @@
 {
   "id": "179e9c66-d274-4857-bcd9-34408448057b",
   "revision": 0,
-  "last_node_id": 680,
-  "last_link_id": 1723,
+  "last_node_id": 685,
+  "last_link_id": 1732,
   "nodes": [
     {
       "id": 8,
@@ -16,7 +16,7 @@
         46
       ],
       "flags": {},
-      "order": 14,
+      "order": 16,
       "mode": 0,
       "inputs": [
         {
@@ -74,7 +74,14 @@
       "properties": {
         "Node name for S&R": "UNETLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "qwen_image_2.1_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "qwen_image_2.1_int8_convrot.safetensors",
@@ -115,7 +122,14 @@
       "properties": {
         "Node name for S&R": "CLIPLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "qwen3vl_8b_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
         "qwen3vl_8b_int8_convrot.safetensors",
@@ -142,7 +156,7 @@
         106
       ],
       "flags": {},
-      "order": 10,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -199,7 +213,7 @@
         262
       ],
       "flags": {},
-      "order": 13,
+      "order": 15,
       "mode": 0,
       "inputs": [
         {
@@ -269,7 +283,7 @@
         909.1114375342879
       ],
       "flags": {},
-      "order": 15,
+      "order": 17,
       "mode": 0,
       "inputs": [
         {
@@ -300,12 +314,12 @@
       "id": 55,
       "type": "MarkdownNote",
       "pos": [
-        49.87187153979269,
-        -171.34464343616293
+        2.3618878812764983,
+        -299.63534683107486
       ],
       "size": [
-        389.61380077225,
-        288.1499138219051
+        462.6550122826818,
+        416.44061721681703
       ],
       "flags": {},
       "order": 2,
@@ -314,10 +328,10 @@
       "outputs": [],
       "properties": {},
       "widgets_values": [
-        "## models\n\n- diffusion_models\n  - [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) (7.26 GB)\n- text_encoders\n  - [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (9.35 GB)\n- vae\n  - [qwen_image_2.1_vae_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/vae/qwen_image_2.1_vae_bf16.safetensors) (676 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── qwen_image_2.1_int8_convrot.safetensors \n    ├── 📂text_encoders/\n    │   └── qwen3vl_8b_int8_convrot.safetensors \n    └── 📂vae/\n        └── qwen_image_2.1_vae_bf16.safetensors \n```"
+        "## models\n\n- checkpoints\n  - [sdpose_wholebody_fp16.safetensors](https://huggingface.co/Comfy-Org/SDPose/blob/main/checkpoints/sdpose_wholebody_fp16.safetensors) (1.92 GB)\n- diffusion_models\n  - [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) (7.26 GB)\n- text_encoders\n  - [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (9.35 GB)\n- vae\n  - [qwen_image_2.1_vae_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/vae/qwen_image_2.1_vae_bf16.safetensors) (676 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂checkpoints/\n    │   └── sdpose_wholebody_fp16.safetensors\n    ├── 📂diffusion_models/\n    │   └── qwen_image_2.1_int8_convrot.safetensors \n    ├── 📂text_encoders/\n    │   └── qwen3vl_8b_int8_convrot.safetensors \n    └── 📂vae/\n        └── qwen_image_2.1_vae_bf16.safetensors \n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/qwen-image-2-1/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/qwen-image-2-1/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/qwen-image-2-1/)"
       ],
       "widgets_values_named": {
-        "text": "## models\n\n- diffusion_models\n  - [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) (7.26 GB)\n- text_encoders\n  - [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (9.35 GB)\n- vae\n  - [qwen_image_2.1_vae_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/vae/qwen_image_2.1_vae_bf16.safetensors) (676 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── qwen_image_2.1_int8_convrot.safetensors \n    ├── 📂text_encoders/\n    │   └── qwen3vl_8b_int8_convrot.safetensors \n    └── 📂vae/\n        └── qwen_image_2.1_vae_bf16.safetensors \n```"
+        "text": "## models\n\n- checkpoints\n  - [sdpose_wholebody_fp16.safetensors](https://huggingface.co/Comfy-Org/SDPose/blob/main/checkpoints/sdpose_wholebody_fp16.safetensors) (1.92 GB)\n- diffusion_models\n  - [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) (7.26 GB)\n- text_encoders\n  - [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (9.35 GB)\n- vae\n  - [qwen_image_2.1_vae_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/vae/qwen_image_2.1_vae_bf16.safetensors) (676 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂checkpoints/\n    │   └── sdpose_wholebody_fp16.safetensors\n    ├── 📂diffusion_models/\n    │   └── qwen_image_2.1_int8_convrot.safetensors \n    ├── 📂text_encoders/\n    │   └── qwen3vl_8b_int8_convrot.safetensors \n    └── 📂vae/\n        └── qwen_image_2.1_vae_bf16.safetensors \n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/qwen-image-2-1/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/qwen-image-2-1/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/qwen-image-2-1/)"
       },
       "color": "#323",
       "bgcolor": "#535"
@@ -351,7 +365,14 @@
       "properties": {
         "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "qwen_image_2.1_vae_bf16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "qwen_image_2.1_vae_bf16.safetensors"
@@ -374,7 +395,7 @@
         266
       ],
       "flags": {},
-      "order": 12,
+      "order": 14,
       "mode": 0,
       "inputs": [
         {
@@ -392,7 +413,7 @@
           "name": "images.image_2",
           "shape": 7,
           "type": "IMAGE",
-          "link": 1723
+          "link": 1732
         },
         {
           "name": "images.image_3",
@@ -454,7 +475,7 @@
         136
       ],
       "flags": {},
-      "order": 8,
+      "order": 9,
       "mode": 0,
       "inputs": [
         {
@@ -486,9 +507,7 @@
       ],
       "properties": {
         "Node name for S&R": "GetImageSize"
-      },
-      "widgets_values": [],
-      "widgets_values_named": {}
+      }
     },
     {
       "id": 77,
@@ -502,7 +521,7 @@
         106
       ],
       "flags": {},
-      "order": 7,
+      "order": 8,
       "mode": 0,
       "inputs": [
         {
@@ -517,7 +536,7 @@
           "type": "IMAGE",
           "links": [
             168,
-            173
+            1730
           ]
         }
       ],
@@ -568,69 +587,13 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "MD2XHSV63O4BZ.png",
+        "qwen_image_2_1_image_edit_sdpose_pose_input.webp",
         "image"
       ],
       "widgets_values_named": {
-        "image": "MD2XHSV63O4BZ.png",
+        "image": "qwen_image_2_1_image_edit_sdpose_pose_input.webp",
         "upload": "image"
       }
-    },
-    {
-      "id": 79,
-      "type": "OpenposePreprocessor",
-      "pos": [
-        49.871871539792664,
-        583.9363312425686
-      ],
-      "size": [
-        301.3524169921875,
-        174
-      ],
-      "flags": {},
-      "order": 9,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 173
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            175,
-            1723
-          ]
-        },
-        {
-          "name": "POSE_KEYPOINT",
-          "type": "POSE_KEYPOINT",
-          "links": null
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "OpenposePreprocessor"
-      },
-      "widgets_values": [
-        "enable",
-        "enable",
-        "enable",
-        512,
-        "disable"
-      ],
-      "widgets_values_named": {
-        "detect_hand": "enable",
-        "detect_body": "enable",
-        "detect_face": "enable",
-        "resolution": 512,
-        "scale_stick_for_xinsr_cn": "disable"
-      },
-      "color": "#232",
-      "bgcolor": "#353"
     },
     {
       "id": 80,
@@ -644,13 +607,13 @@
         334.96975102182785
       ],
       "flags": {},
-      "order": 11,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
           "name": "images",
           "type": "IMAGE",
-          "link": 175
+          "link": 1731
         }
       ],
       "outputs": [
@@ -670,12 +633,12 @@
       "id": 81,
       "type": "LoadImage",
       "pos": [
-        -394.5154233785755,
-        342.22348091976784
+        -1167.563631418078,
+        229.14465620217513
       ],
       "size": [
-        332.16188925425365,
-        592.7433855002427
+        478.5198383181406,
+        641.4181719344415
       ],
       "flags": {},
       "order": 5,
@@ -699,11 +662,11 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "Image_fx.png",
+        "qwen_image_2_1_image_edit_openpose_ref.webp",
         "image"
       ],
       "widgets_values_named": {
-        "image": "Image_fx.png",
+        "image": "qwen_image_2_1_image_edit_openpose_ref.webp",
         "upload": "image"
       }
     },
@@ -719,7 +682,7 @@
         106
       ],
       "flags": {},
-      "order": 6,
+      "order": 7,
       "mode": 0,
       "inputs": [
         {
@@ -750,6 +713,197 @@
         "resize_type.megapixels": 2,
         "scale_method": "bicubic"
       }
+    },
+    {
+      "id": 682,
+      "type": "SDPoseKeypointExtractor",
+      "pos": [
+        -169.33236228971344,
+        583.4390160020583
+      ],
+      "size": [
+        239.70273217255408,
+        118
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 1726
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 1727
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 1730
+        },
+        {
+          "name": "bboxes",
+          "shape": 7,
+          "type": "BOUNDING_BOX",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "keypoints",
+          "type": "POSE_KEYPOINT",
+          "links": [
+            1729
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SDPoseKeypointExtractor",
+        "cnr_id": "comfy-core",
+        "ver": "0.15.0",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        16
+      ],
+      "widgets_values_named": {
+        "batch_size": 16
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 684,
+      "type": "SDPoseDrawKeypoints",
+      "pos": [
+        88.56337938578963,
+        583.4390160020583
+      ],
+      "size": [
+        262.66090914619053,
+        226
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "keypoints",
+          "type": "POSE_KEYPOINT",
+          "link": 1729
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1731,
+            1732
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SDPoseDrawKeypoints",
+        "cnr_id": "comfy-core",
+        "ver": "0.15.0",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        true,
+        true,
+        true,
+        true,
+        4,
+        2,
+        0.5,
+        true
+      ],
+      "widgets_values_named": {
+        "draw_body": true,
+        "draw_hands": true,
+        "draw_face": true,
+        "draw_feet": true,
+        "stick_width": 4,
+        "face_point_size": 2,
+        "score_threshold": 0.5,
+        "draw_head": true
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 685,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -493.99963870181773,
+        583.4390160020583
+      ],
+      "size": [
+        306.4742669091553,
+        98
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            1726
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": []
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            1727
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "cnr_id": "comfy-core",
+        "ver": "0.15.0",
+        "models": [
+          {
+            "name": "sdpose_wholebody_fp16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/SDPose/resolve/main/checkpoints/sdpose_wholebody_fp16.safetensors",
+            "directory": "checkpoints"
+          }
+        ],
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "sdpose_wholebody_fp16.safetensors"
+      ],
+      "widgets_values_named": {
+        "ckpt_name": "sdpose_wholebody_fp16.safetensors"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
     }
   ],
   "links": [
@@ -834,16 +988,40 @@
       "INT"
     ],
     [
-      173,
+      1726,
+      685,
+      0,
+      682,
+      0,
+      "MODEL"
+    ],
+    [
+      1727,
+      685,
+      2,
+      682,
+      1,
+      "VAE"
+    ],
+    [
+      1729,
+      682,
+      0,
+      684,
+      0,
+      "POSE_KEYPOINT"
+    ],
+    [
+      1730,
       77,
       0,
-      79,
-      0,
+      682,
+      2,
       "IMAGE"
     ],
     [
-      175,
-      79,
+      1731,
+      684,
       0,
       80,
       0,
@@ -882,8 +1060,8 @@
       "IMAGE"
     ],
     [
-      1723,
-      79,
+      1732,
+      684,
       0,
       64,
       2,
@@ -902,10 +1080,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1.6350799082656506,
+      "scale": 0.5730855330117105,
       "offset": [
-        254.71330017683704,
-        -218.45929009981705
+        1133.3338313616587,
+        551.9126492856878
       ]
     },
     "frontendVersion": "1.53.6",

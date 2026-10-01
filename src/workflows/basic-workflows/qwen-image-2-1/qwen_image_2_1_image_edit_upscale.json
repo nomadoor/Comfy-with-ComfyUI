@@ -74,7 +74,14 @@
       "properties": {
         "Node name for S&R": "UNETLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "qwen_image_2.1_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "qwen_image_2.1_int8_convrot.safetensors",
@@ -115,7 +122,14 @@
       "properties": {
         "Node name for S&R": "CLIPLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "qwen3vl_8b_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
         "qwen3vl_8b_int8_convrot.safetensors",
@@ -314,10 +328,10 @@
       "outputs": [],
       "properties": {},
       "widgets_values": [
-        "## models\n\n- diffusion_models\n  - [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) (7.26 GB)\n- text_encoders\n  - [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (9.35 GB)\n- vae\n  - [qwen_image_2.1_vae_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/vae/qwen_image_2.1_vae_bf16.safetensors) (676 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── qwen_image_2.1_int8_convrot.safetensors \n    ├── 📂text_encoders/\n    │   └── qwen3vl_8b_int8_convrot.safetensors \n    └── 📂vae/\n        └── qwen_image_2.1_vae_bf16.safetensors \n```"
+        "## models\n\n- diffusion_models\n  - [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) (7.26 GB)\n- text_encoders\n  - [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (9.35 GB)\n- vae\n  - [qwen_image_2.1_vae_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/vae/qwen_image_2.1_vae_bf16.safetensors) (676 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── qwen_image_2.1_int8_convrot.safetensors \n    ├── 📂text_encoders/\n    │   └── qwen3vl_8b_int8_convrot.safetensors \n    └── 📂vae/\n        └── qwen_image_2.1_vae_bf16.safetensors \n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/qwen-image-2-1/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/qwen-image-2-1/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/qwen-image-2-1/)"
       ],
       "widgets_values_named": {
-        "text": "## models\n\n- diffusion_models\n  - [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) (7.26 GB)\n- text_encoders\n  - [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (9.35 GB)\n- vae\n  - [qwen_image_2.1_vae_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/vae/qwen_image_2.1_vae_bf16.safetensors) (676 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── qwen_image_2.1_int8_convrot.safetensors \n    ├── 📂text_encoders/\n    │   └── qwen3vl_8b_int8_convrot.safetensors \n    └── 📂vae/\n        └── qwen_image_2.1_vae_bf16.safetensors \n```"
+        "text": "## models\n\n- diffusion_models\n  - [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) (7.26 GB)\n- text_encoders\n  - [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (9.35 GB)\n- vae\n  - [qwen_image_2.1_vae_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/vae/qwen_image_2.1_vae_bf16.safetensors) (676 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── qwen_image_2.1_int8_convrot.safetensors \n    ├── 📂text_encoders/\n    │   └── qwen3vl_8b_int8_convrot.safetensors \n    └── 📂vae/\n        └── qwen_image_2.1_vae_bf16.safetensors \n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/qwen-image-2-1/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/qwen-image-2-1/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/qwen-image-2-1/)"
       },
       "color": "#323",
       "bgcolor": "#535"
@@ -351,7 +365,14 @@
       "properties": {
         "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "qwen_image_2.1_vae_bf16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "qwen_image_2.1_vae_bf16.safetensors"
@@ -568,11 +589,11 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "diamond.png",
+        "qwen_image_2_1_image_edit_upscale_input.webp",
         "image"
       ],
       "widgets_values_named": {
-        "image": "diamond.png",
+        "image": "qwen_image_2_1_image_edit_upscale_input.webp",
         "upload": "image"
       }
     },

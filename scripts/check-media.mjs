@@ -14,7 +14,8 @@ import {
   PRODUCTION_MANIFEST,
   URL_CHARS,
   productionSourceFiles,
-  referencesInFiles
+  referencesInFiles,
+  workflowInputReferences
 } from "./lib/media-refs.mjs";
 
 // Validates media manifests and media references.
@@ -84,7 +85,7 @@ function checkManifest(file, manifest, { fixtures }) {
   }
 }
 
-function checkReferences(files, manifest, manifestFile) {
+function checkReferences(files, manifest, manifestFile, extraReferences = []) {
   const used = new Set();
   const physicalUrl = host ? new RegExp(`https?://${host.replace(/\./g, "\\.")}/${URL_CHARS}`, "g") : null;
 
@@ -111,7 +112,7 @@ function checkReferences(files, manifest, manifestFile) {
     if (mode !== "image" && !isVideo) failures.push(`${file}: ${ref} is ${entry.type} but is displayed with {media=${mode}}`);
   };
 
-  for (const { file, ref, mode } of referencesInFiles(files)) {
+  for (const { file, ref, mode } of [...referencesInFiles(files), ...extraReferences]) {
     checkReference(file, ref, mode);
   }
 
@@ -135,7 +136,7 @@ function checkReferences(files, manifest, manifestFile) {
 const productionManifest = readManifest(PRODUCTION_MANIFEST);
 checkManifest(PRODUCTION_MANIFEST, productionManifest, { fixtures: false });
 const productionFiles = await productionSourceFiles();
-const usedInProduction = checkReferences(productionFiles, productionManifest, PRODUCTION_MANIFEST);
+const usedInProduction = checkReferences(productionFiles, productionManifest, PRODUCTION_MANIFEST, workflowInputReferences());
 for (const name of Object.keys(productionManifest)) {
   if (!usedInProduction.has(name)) advisories.push(`${PRODUCTION_MANIFEST}: ${name} is not referenced by any page or setting`);
 }

@@ -6,7 +6,7 @@ slug: qwen-image-2-1
 navId: qwen-image-2-1
 title: "Qwen-Image-2.1"
 created: 2026-09-21
-updated: 2026-09-23
+updated: 2026-09-30
 summary: "使用 Qwen-Image-2.1 生成和编辑图像"
 seoTitle: "在 ComfyUI 中使用 Qwen-Image-2.1：图像生成与编辑"
 seoDescription: "将图像生成与编辑合为一体的 Qwen-Image-2.1 在 ComfyUI 中的用法。介绍推荐设置、text2image、Ref2Image、用红圈或蒙版指定位置编辑以及 Outpainting，附整理清晰易读的工作流。"
@@ -208,13 +208,21 @@ Qwen-Image-2.1 会生成一张补全上下空间的新图像。
 
 虽然它本身并不是 ControlNet，但可以把姿势图、深度图等作为图像编辑的参考，让模型根据这些图像进行生成。
 
-**所需自定义节点**
+**模型下载**
 
-- [Fannovel16/comfyui_controlnet_aux](https://github.com/Fannovel16/comfyui_controlnet_aux)
+- checkpoints
+  - [sdpose_wholebody_fp16.safetensors](https://huggingface.co/Comfy-Org/SDPose/blob/main/checkpoints/sdpose_wholebody_fp16.safetensors) (1.92 GB)
 
-![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose.png){media=image}
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂checkpoints/
+        └── sdpose_wholebody_fp16.safetensors
+```
 
-{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="82s", tags=["2MP"], samplers=[{ speed: "1.38 s/it" }] %}
+![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_sdpose.png){media=image}
+
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_sdpose.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="130s", tags=["2MP"], samplers=[{ speed: "1.94 s/it" }] %}
 
 再输入一张参考图像，让其中的人物摆出指定姿势。
 
@@ -223,7 +231,7 @@ Qwen-Image-2.1 会生成一张补全上下空间的新图像。
 与其说是因为 ControlNet 才使用 Pose，不如说重点在于从参考图像中剔除多余信息，只提取姿势或形状交给模型。
 
 {% outputs %}
-![reference](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_ref.png){media=image} ![pose](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_pose.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_output.png){media=image}
+![reference](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_openpose_ref.png){media=image} ![pose](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_sdpose_pose.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_sdpose_output.png){media=image}
 {% endoutputs %}
 
 ### Upscale
