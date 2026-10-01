@@ -36,7 +36,7 @@ runpod/
 - PyTorch と CUDA ライブラリ（約 6.7 GB）は image に入れない。image には版を固定した一覧（`/opt/runtime.lock`）だけを入れ、起動処理がモデルのダウンロードと並行して PyTorch の配布元から入れる（ステップ「PyTorch とライブラリを導入」）。ComfyUI の requirements と custom node の依存は、PyTorch が入ったあとに入れる（先に入れると PyPI の汎用版 PyTorch が入るため）。
 - 層は zstd で圧縮する（展開が gzip より速い）。
 - ビルドキャッシュ（`:buildcache`）で、変わらない層を毎日作り直さない。
-- Secrets の `DOCKERHUB_USERNAME` と `DOCKERHUB_TOKEN` がなければ、GHCR にだけ出す。
+- Secrets の `DOCKERHUB_USERNAME` と `DOCKERHUB_TOKEN` のどちらかが欠けていれば、Docker Hub には出さず GHCR にだけ出す。
 - 試作は `main` 以外のブランチで workflow を手動実行する（`gh workflow run runpod-image.yml --ref <branch>`）。`:exp` にだけ出て、`:latest` には触れない。キャッシュも `:buildcache-exp` に分ける。
 
 Pod の環境変数:
