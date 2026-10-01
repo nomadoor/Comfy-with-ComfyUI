@@ -1,6 +1,6 @@
 // RunPod helper for the site's Pods:
-// - on the first visit from a browser, open every workflow of the profile as tabs, in the
-//   article's order, with the first one active (later visits keep ComfyUI's own tab restore);
+// - on the first visit to this Pod from a browser, open every workflow of the profile as tabs, in
+//   the article's order, with the first one active (later visits keep ComfyUI's own tab restore);
 // - report reader activity for the idle auto-stop, and warn before the Pod terminates itself.
 import { app } from "../../scripts/app.js";
 
@@ -13,7 +13,7 @@ const T = lang.startsWith("ja")
     : { warn: (m) => `No activity: this Pod will be terminated in about ${m} min. Save any images you want to keep.`, keep: "Keep using", stopped: "This Pod was terminated after a period of inactivity. Launch a new one from the article's button." };
 
 const openProfileWorkflows = async (config) => {
-  const flag = `comfy-with-comfyui.runpod.opened.${config.profile}`;
+  const flag = `comfy-with-comfyui.runpod.opened.${config.profile}.${config.boot}`;
   try {
     if (localStorage.getItem(flag)) return;
   } catch {}

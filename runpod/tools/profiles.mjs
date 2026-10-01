@@ -294,7 +294,9 @@ export const buildProfile = (id, { siteURL, coreNodes = readJSON(CORE_NODES_PATH
     },
     storage: {
       models_total_bytes: totalBytes,
-      recommended_disk_gb: Math.ceil((totalBytes / 1e9) * 1.2) + 20,
+      // Generous on purpose: the image itself, custom node dependencies, outputs, and models a reader
+      // adds through Manager all share the container disk. Rounded up to 10 GB.
+      recommended_disk_gb: Math.ceil(((totalBytes / 1e9) * 1.5 + 40) / 10) * 10,
     },
     requires_hf_token: sortedModels.some((m) => m.requires_hf_token),
     unsafe_format: sortedModels.some((m) => m.unsafe_format),

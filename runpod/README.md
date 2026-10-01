@@ -54,7 +54,7 @@ ComfyUI の画面では、テンプレート選択ダイアログを出さず、
 | 項目 | 値 |
 |---|---|
 | Container Image | `ghcr.io/nomadoor/comfy-with-comfyui-runpod:latest` |
-| Container Disk | プロファイルの `storage.recommended_disk_gb`（Qwen-Image-2.1 は 44 GB）。image 自体が含まれるかは本番で確認 |
+| Container Disk | プロファイルの `storage.recommended_disk_gb`（Qwen-Image-2.1 は 70 GB）。モデル × 1.5 + 40 GB を 10 GB 単位で切り上げ。image、custom node の依存、生成画像、Manager で足すモデルもここに入るので多めにとる |
 | Volume Disk | 0（放置すると Pod ごと Terminate するので、残すものがない） |
 | HTTP Port | 8188 |
 | Environment Variables | `PROFILE=<id>`、`HF_TOKEN={{ RUNPOD_SECRET_HF_TOKEN }}` |

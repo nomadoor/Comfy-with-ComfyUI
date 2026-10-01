@@ -118,6 +118,8 @@ def prepare_frontend(profile, comfy_dir):
     shutil.copytree(EXTENSION, target)
     config = {
         "profile": profile["id"],
+        # A new boot is a new Pod for the reader: its first visit opens the tabs again.
+        "boot": int(time.time()),
         "workflows": [f"workflows/{w['name']}" for w in profile["workflows"]],
     }
     (target / "web" / "runpod.json").write_text(json.dumps(config, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
