@@ -252,60 +252,115 @@
   $("tip-prev").addEventListener("click", () => showTip(tipIndex - 1));
   $("tip-next").addEventListener("click", () => showTip(tipIndex + 1));
 
+  // The page is built once and then updated in place: only changed text, states and bar widths are
+  // written. Rebuilding with innerHTML every second would reset hover and the bars' width transition.
+  const setText = (el, text) => { if (el.textContent !== text) el.textContent = text; };
+  const setData = (el, key, value) => { if (el.dataset[key] !== value) el.dataset[key] = value; };
+  const make = (tag, className, parent) => {
+    const el = document.createElement(tag);
+    if (className) el.className = className;
+    if (parent) parent.append(el);
+    return el;
+  };
+
+  const stepRows = new Map();
+  const renderSteps = (steps) => {
+    for (const step of steps) {
+      let row = stepRows.get(step.id);
+      if (!row) {
+        const li = make("li", "", $("steps"));
+        make("span", "dot", li);
+        const text = make("span", "", li);
+        row = { li, label: make("span", "", text), detail: make("span", "detail", text) };
+        stepRows.set(step.id, row);
+      }
+      setData(row.li, "state", step.state);
+      setText(row.label, T.steps[step.id] || step.label);
+      const detail = step.detail || step.key ? stepDetail(step) : "";
+      setText(row.detail, detail);
+      row.detail.hidden = !detail;
+    }
+  };
+
+  const modelRows = new Map();
+  const renderModels = (models) => {
+    $("models-panel").hidden = models.length === 0;
+    if (!models.length) return;
+    const total = models.reduce((a, m) => a + (m.size || 0), 0);
+    const counted = (m) => (["done", "present"].includes(m.state) ? m.size || m.done : m.state === "downloading" ? m.done : 0);
+    const done = models.reduce((a, m) => a + Math.min(counted(m), m.size || Infinity), 0);
+    const speed = models.reduce((a, m) => a + (m.state === "downloading" ? m.speed : 0), 0);
+    const left = Math.max(0, total - done);
+    // The summary is a single line of text; rebuilding it is harmless (nothing interactive in it).
+    const summary =
+      `<span><b>${gb(done)}</b> / ${gb(total)}</span>` +
+      (left > 0 ? `<span>${T.left} <b>${gb(left)}</b></span>` : "") +
+      (speed > 0 ? `<span>${mbps(speed)}</span><span>${T.eta} <b>${duration(left / speed)}</b></span>` : "");
+    if ($("summary").innerHTML !== summary) $("summary").innerHTML = summary;
+
+    for (const m of models) {
+      const key = `${m.directory}/${m.name}`;
+      let row = modelRows.get(key);
+      if (!row) {
+        const el = make("div", "model", $("models"));
+        const head = make("div", "row", el);
+        setText(make("span", "name", head), key);
+        const nums = make("span", "nums", head);
+        const bar = make("span", "", make("div", "bar", el));
+        row = { el, nums, bar };
+        modelRows.set(key, row);
+      }
+      const pct = m.size ? Math.min(100, (m.done / m.size) * 100) : m.state === "done" ? 100 : 0;
+      const nums = m.state === "verifying" ? T.verifying
+        : m.state === "present" ? T.present
+        : m.state === "skipped" ? T.skipped
+        : m.state === "done" ? gb(m.size || m.done)
+        : `${gb(m.done)} / ${m.size ? gb(m.size) : "?"}${m.state === "downloading" && m.speed ? ` · ${mbps(m.speed)}` : ""}`;
+      setData(row.el, "state", m.state);
+      setText(row.nums, nums);
+      const width = `${pct.toFixed(2)}%`;
+      if (row.bar.style.width !== width) row.bar.style.width = width;
+    }
+  };
+
+  let alertsKey = "";
+  const renderAlerts = (s) => {
+    const key = JSON.stringify([s.error, s.notices]);
+    if (key === alertsKey) return;
+    alertsKey = key;
+    let html = "";
+    if (s.error) {
+      html += `<div class="alert error"><h2>${esc(T.failed)}</h2><p>${advice(s.error.code, s.error)}</p><p class="raw">${esc(s.error.message)}</p></div>`;
+    }
+    for (const n of s.notices || []) {
+      html += `<div class="alert notice"><h2>${esc(T.skipped)}: ${esc(n.model || "")}</h2><p>${advice(n.code, n)}</p></div>`;
+    }
+    $("alerts").innerHTML = html;
+  };
+
+  let guideKey = "";
+  const renderGuide = (s) => {
+    const key = `${s.site}|${s.article}|${s.title}`;
+    if (!(s.site && s.article && s.title) || key === guideKey) return;
+    guideKey = key;
+    $("guide").innerHTML = `<div class="section-head"><span>${esc(T.guideLead)}</span></div>` + linkCard(`${s.site}/${lang}/${s.article}/`, "book", s.title, T.guide);
+    $("guide").hidden = false;
+  };
+
   const render = (s) => {
     if (s.site) siteOrigin = s.site;
     if (s.title) {
-      $("title").textContent = `${s.title}`;
+      setText($("title"), s.title);
       document.title = `${s.title} · ${T.preparing}`;
     }
-    $("lead").textContent = s.phase === "starting" ? T.starting : s.phase === "error" ? T.failed : T.lead;
-
-    let alerts = "";
-    if (s.error) {
-      alerts += `<div class="alert error"><h2>${esc(T.failed)}</h2><p>${advice(s.error.code, s.error)}</p><p class="raw">${esc(s.error.message)}</p></div>`;
-    }
-    for (const n of s.notices || []) {
-      alerts += `<div class="alert notice"><h2>${esc(T.skipped)}: ${esc(n.model || "")}</h2><p>${advice(n.code, n)}</p></div>`;
-    }
-    $("alerts").innerHTML = alerts;
-
-    $("steps").innerHTML = s.steps.map((step) =>
-      `<li data-state="${step.state}"><span class="dot"></span><span>${esc(T.steps[step.id] || step.label)}` +
-      (step.detail || step.key ? `<span class="detail">${esc(stepDetail(step))}</span>` : "") + `</span></li>`).join("");
-
-    // Built once: rebuilding it on every poll would drop the hover state under the pointer.
-    const guideKey = `${s.site}|${s.article}|${s.title}`;
-    if (s.site && s.article && s.title && $("guide").dataset.key !== guideKey) {
-      $("guide").dataset.key = guideKey;
-      $("guide").innerHTML = `<div class="section-head"><span>${esc(T.guideLead)}</span></div>` + linkCard(`${s.site}/${lang}/${s.article}/`, "book", s.title, T.guide);
-      $("guide").hidden = false;
-    }
+    setText($("lead"), s.phase === "starting" ? T.starting : s.phase === "error" ? T.failed : T.lead);
+    renderAlerts(s);
+    renderSteps(s.steps);
+    renderGuide(s);
     showTips(s.tips || []);
-
-    const models = s.models || [];
-    $("models-panel").hidden = models.length === 0;
-    if (models.length) {
-      const total = models.reduce((a, m) => a + (m.size || 0), 0);
-      const counted = (m) => (["done", "present"].includes(m.state) ? m.size || m.done : m.state === "downloading" ? m.done : 0);
-      const done = models.reduce((a, m) => a + Math.min(counted(m), m.size || Infinity), 0);
-      const speed = models.reduce((a, m) => a + (m.state === "downloading" ? m.speed : 0), 0);
-      const left = Math.max(0, total - done);
-      $("summary").innerHTML =
-        `<span><b>${gb(done)}</b> / ${gb(total)}</span>` +
-        (left > 0 ? `<span>${T.left} <b>${gb(left)}</b></span>` : "") +
-        (speed > 0 ? `<span>${mbps(speed)}</span><span>${T.eta} <b>${duration(left / speed)}</b></span>` : "");
-      $("models").innerHTML = models.map((m) => {
-        const pct = m.size ? Math.min(100, (m.done / m.size) * 100) : m.state === "done" ? 100 : 0;
-        const nums = m.state === "verifying" ? T.verifying
-          : m.state === "present" ? T.present
-          : m.state === "skipped" ? T.skipped
-          : m.state === "done" ? gb(m.size || m.done)
-          : `${gb(m.done)} / ${m.size ? gb(m.size) : "?"}${m.state === "downloading" && m.speed ? ` · ${mbps(m.speed)}` : ""}`;
-        return `<div class="model" data-state="${m.state}"><div class="row"><span class="name">${esc(m.directory)}/${esc(m.name)}</span>` +
-          `<span class="nums">${esc(nums)}</span></div><div class="bar"><span style="width:${pct}%"></span></div></div>`;
-      }).join("");
-    }
+    renderModels(s.models || []);
   };
+
 
   // Once the status server stops, the same port answers as ComfyUI: reload into it.
   const comfyReady = async () => {
