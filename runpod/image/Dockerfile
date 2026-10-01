@@ -1,7 +1,7 @@
 # Generic ComfyUI image for the site's RunPod profiles. It holds no models, custom nodes or
 # workflows: the bootstrap fetches /runpod/profiles/${PROFILE}.json at start and prepares those.
 # ComfyUI master is cloned at build time (rebuilt daily) so boot only applies the difference.
-# The CUDA "base" image is enough: the PyTorch wheels bring their own CUDA and cuDNN libraries.
+# The CUDA "base" image is enough: the PyTorch wheels (installed at boot) bring their own CUDA and cuDNN libraries.
 FROM nvidia/cuda:13.0.3-base-ubuntu24.04
 
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -21,30 +21,26 @@ RUN apt-get update \
 
 COPY --from=ghcr.io/astral-sh/uv:0.9 /uv /uvx /usr/local/bin/
 
-# PyTorch and its CUDA libraries are ~6.7 GB. Installed in one step they make one huge layer, which a
-# Pod downloads and unpacks as a single stream. Resolve the set once, then install it in four groups
-# of similar size, so the Pod pulls them in parallel.
-# The CI build cache keeps these layers byte-identical across daily builds, so a machine that already
-# pulled them never pulls them again. That also means PyTorch stays at the version first resolved:
-# change TORCH_REFRESH to pick up a newer release.
+# PyTorch and its CUDA libraries (~6.7 GB) are NOT in the image. Pulled as layers, they took a fresh
+# RunPod machine ~1.5 minutes (one stream per layer, unpacked one layer at a time); the boot process
+# installs the same wheels from the PyTorch index in parallel, while the models download. The image
+# keeps the exact versions (/opt/runtime.lock) so every Pod gets the same set; everything else
+# ComfyUI needs is resolved against those versions and installed here.
 ENV TORCH_INDEX=https://download.pytorch.org/whl/cu130
-ARG TORCH_REFRESH=2026-10-01
-RUN echo "PyTorch set resolved for refresh ${TORCH_REFRESH}" \
- && uv venv --python 3.13 /opt/venv \
- && printf 'torch\ntorchvision\ntorchaudio\n' > /tmp/torch.in \
- && uv pip compile --quiet --python /opt/venv/bin/python --index-url "$TORCH_INDEX" /tmp/torch.in -o /opt/torch.lock
-RUN grep -E '^(nvidia-(cublas|cufft|cufile|curand|cusolver|cusparse|cuda-|nvjitlink|nvtx)[^=]*)==' /opt/torch.lock > /tmp/g1.txt \
- && uv pip install --no-cache --no-deps --index-url "$TORCH_INDEX" -r /tmp/g1.txt
-RUN grep -E '^(nvidia-(cudnn|nccl|cusparselt|nvshmem)[^=]*)==' /opt/torch.lock > /tmp/g2.txt \
- && uv pip install --no-cache --no-deps --index-url "$TORCH_INDEX" -r /tmp/g2.txt
-RUN grep -E '^triton==' /opt/torch.lock > /tmp/g3.txt \
- && uv pip install --no-cache --no-deps --index-url "$TORCH_INDEX" -r /tmp/g3.txt
-RUN uv pip install --no-cache --index-url "$TORCH_INDEX" -r /opt/torch.lock
+RUN uv venv --python 3.13 /opt/venv
 
 ARG COMFY_COMMIT=master
 RUN git clone --filter=blob:none https://github.com/comfyanonymous/ComfyUI.git /opt/ComfyUI \
  && git -C /opt/ComfyUI checkout --quiet "$COMFY_COMMIT" \
- && uv pip install --no-cache -r /opt/ComfyUI/requirements.txt -r /opt/ComfyUI/manager_requirements.txt "huggingface_hub[hf_xet]" \
+ && printf 'torch\ntorchvision\ntorchaudio\n' > /tmp/torch.in \
+ && printf 'huggingface_hub[hf_xet]\n' > /tmp/extra.in \
+ && uv pip compile --quiet --python /opt/venv/bin/python --index-url "$TORCH_INDEX" /tmp/torch.in -o /tmp/torch.lock \
+ && uv pip compile --quiet --python /opt/venv/bin/python --extra-index-url "$TORCH_INDEX" --index-strategy unsafe-best-match \
+      -c /tmp/torch.lock /tmp/torch.in /opt/ComfyUI/requirements.txt /opt/ComfyUI/manager_requirements.txt /tmp/extra.in \
+      -o /opt/full.lock \
+ && grep -E '^(torch|torchvision|torchaudio|triton|nvidia-[a-z0-9-]+|cuda-[a-z0-9-]+)==' /opt/full.lock > /opt/runtime.lock \
+ && grep -vE '^(torch|torchvision|torchaudio|triton|nvidia-[a-z0-9-]+|cuda-[a-z0-9-]+)==' /opt/full.lock > /tmp/rest.lock \
+ && uv pip install --no-cache --no-deps --extra-index-url "$TORCH_INDEX" --index-strategy unsafe-best-match -r /tmp/rest.lock \
  && git -C /opt/ComfyUI rev-parse HEAD > /opt/.runpod-comfyui-requirements.sha
 
 COPY bootstrap /opt/runpod/bootstrap

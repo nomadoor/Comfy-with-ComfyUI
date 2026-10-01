@@ -13,7 +13,7 @@ import time
 import urllib.parse
 from pathlib import Path
 
-from . import comfy, server
+from . import comfy, runtime, server
 from .models import Downloader
 from .state import BootError, State
 from .util import fetch, fetch_json, pod_timing, terminate_this_pod
@@ -190,13 +190,22 @@ def main():
 
         nodes = profile.get("custom_nodes", [])
         installed = timed("custom_nodes", lambda: comfy.install_custom_nodes(comfy_dir, nodes, state))
-        report["custom_nodes"] = installed
+        report["custom_nodes"] = [{k: v for k, v in n.items() if k != "dir"} for n in installed]
         names = ", ".join(f"{n['id']} {n['version'][:12]}" for n in installed)
         state.step("custom_nodes", "done", names or "none", key=None if names else "none")
 
+        # PyTorch installs on a thread while the models download; every other pip install waits for
+        # it, so nothing pulls a generic PyTorch from PyPI first.
+        runtime_started = time.time()
+        torch_job = runtime.Background(state)
         state.step("models", "running", f"{len(profile['models'])} files", key="files", count=len(profile["models"]))
         downloader = Downloader(data_dir, state, concurrency, hf_token, civitai_token)
         results = timed("models", lambda: downloader.run(profile["models"]))
+        report["timings"]["torch"] = torch_job.wait()
+        comfy.sync_requirements(comfy_dir, sha, state)
+        comfy.install_node_deps(installed, state)
+        report["timings"]["runtime"] = round(time.time() - runtime_started, 1)
+        state.step("runtime", "done", "ready", key="runtime_ready")
         report["models"] = [
             {"name": m["name"], "directory": m["directory"], "result": r, **downloader.timings.get(f"{m['directory']}/{m['name']}", {})}
             for m, r in zip(profile["models"], results)

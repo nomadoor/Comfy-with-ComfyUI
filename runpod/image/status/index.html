@@ -101,10 +101,11 @@
   const T = {
     en: {
       preparing: "Preparing ComfyUI", lead: "This page switches to ComfyUI by itself when everything is ready.",
-      steps: { profile: "Fetch profile", comfyui: "Update ComfyUI", custom_nodes: "Install custom nodes", models: "Download models", workflows: "Place workflows", start: "Start ComfyUI" },
+      steps: { profile: "Fetch profile", comfyui: "Update ComfyUI", custom_nodes: "Install custom nodes", runtime: "Install PyTorch and packages", models: "Download models", workflows: "Place workflows", start: "Start ComfyUI" },
       guideLead: "Want to know more about these workflows?", guide: "Guide — Comfy with ComfyUI", related: "Read more — Comfy with ComfyUI", whileWaiting: "While you wait",
       detail: {
         fetching: (p) => `fetching ${p.ref}`, requirements: (p) => `installing requirements for ${p.sha}`, none: () => "none",
+        torch: () => "installing PyTorch alongside the models", node_deps: (p) => `dependencies of ${p.node}`, runtime_ready: () => "ready",
         files: (p) => `${p.count} files`, ready: (p) => `${p.ready} ready` + (p.skipped ? `, ${p.skipped} skipped` : ""),
         placed: (p) => `${p.workflows} workflows` + (p.inputs ? `, ${p.inputs} sample images` : ""),
       },
@@ -116,6 +117,7 @@
         profile_schema: "This image is older than the profile. Deploy again so the latest image is used.",
         comfyui_ref: "Remove COMFY_REF or set it to latest, then restart the Pod.",
         comfyui_update: "ComfyUI could not be updated. Restart the Pod, or set COMFY_REF=verified.",
+        runtime: "PyTorch could not be installed. Restart the Pod.",
         custom_node: "A custom node failed to install. Restart the Pod; if it keeps failing, set COMFY_REF=verified.",
         disk_space: "Not enough disk. Create the Pod again with a Container Disk of at least {need_gb} GB.",
         download: "A download failed after several tries. Restart the Pod to resume.",
@@ -126,10 +128,11 @@
     },
     ja: {
       preparing: "ComfyUI を準備しています", lead: "準備ができると、このページは自動で ComfyUI に切り替わります。",
-      steps: { profile: "プロファイルを取得", comfyui: "ComfyUI を更新", custom_nodes: "カスタムノードを導入", models: "モデルをダウンロード", workflows: "workflow を配置", start: "ComfyUI を起動" },
+      steps: { profile: "プロファイルを取得", comfyui: "ComfyUI を更新", custom_nodes: "カスタムノードを導入", runtime: "PyTorch とライブラリを導入", models: "モデルをダウンロード", workflows: "workflow を配置", start: "ComfyUI を起動" },
       guideLead: "workflow についてもっと詳しく知りたい方は", guide: "解説ページ — Comfy with ComfyUI", related: "関連記事 — Comfy with ComfyUI", whileWaiting: "待っているあいだに",
       detail: {
         fetching: (p) => `${p.ref} を取得中`, requirements: (p) => `${p.sha} の依存をインストール中`, none: () => "なし",
+        torch: () => "モデルと並行して PyTorch をインストール中", node_deps: (p) => `${p.node} の依存をインストール中`, runtime_ready: () => "完了",
         files: (p) => `${p.count} ファイル`, ready: (p) => `${p.ready} 個準備完了` + (p.skipped ? `、${p.skipped} 個スキップ` : ""),
         placed: (p) => `workflow ${p.workflows} 本` + (p.inputs ? `、サンプル画像 ${p.inputs} 枚` : ""),
       },
@@ -141,6 +144,7 @@
         profile_schema: "この image はプロファイルより古い版です。もう一度デプロイして最新の image を使ってください。",
         comfyui_ref: "COMFY_REF を消すか latest にして、Pod を再起動してください。",
         comfyui_update: "ComfyUI を更新できませんでした。Pod を再起動するか、COMFY_REF=verified にしてください。",
+        runtime: "PyTorch をインストールできませんでした。Pod を再起動してください。",
         custom_node: "カスタムノードの導入に失敗しました。Pod を再起動し、それでも失敗する場合は COMFY_REF=verified にしてください。",
         disk_space: "ディスクが足りません。Container Disk を {need_gb} GB 以上にして Pod を作り直してください。",
         download: "何度か試しましたがダウンロードに失敗しました。Pod を再起動すると続きから再開します。",
@@ -151,10 +155,11 @@
     },
     zh: {
       preparing: "正在准备 ComfyUI", lead: "准备完成后，本页面会自动切换到 ComfyUI。",
-      steps: { profile: "获取配置", comfyui: "更新 ComfyUI", custom_nodes: "安装自定义节点", models: "下载模型", workflows: "放置 workflow", start: "启动 ComfyUI" },
+      steps: { profile: "获取配置", comfyui: "更新 ComfyUI", custom_nodes: "安装自定义节点", runtime: "安装 PyTorch 和依赖", models: "下载模型", workflows: "放置 workflow", start: "启动 ComfyUI" },
       guideLead: "想进一步了解这些 workflow 的话", guide: "讲解页面 — Comfy with ComfyUI", related: "相关文章 — Comfy with ComfyUI", whileWaiting: "等待的时候",
       detail: {
         fetching: (p) => `正在获取 ${p.ref}`, requirements: (p) => `正在安装 ${p.sha} 的依赖`, none: () => "无",
+        torch: () => "正在与模型同时安装 PyTorch", node_deps: (p) => `正在安装 ${p.node} 的依赖`, runtime_ready: () => "完成",
         files: (p) => `${p.count} 个文件`, ready: (p) => `${p.ready} 个已就绪` + (p.skipped ? `，${p.skipped} 个已跳过` : ""),
         placed: (p) => `workflow ${p.workflows} 个` + (p.inputs ? `，示例图像 ${p.inputs} 张` : ""),
       },
@@ -166,6 +171,7 @@
         profile_schema: "此 image 比配置旧。请重新部署以使用最新的 image。",
         comfyui_ref: "请删除 COMFY_REF 或设为 latest，然后重启 Pod。",
         comfyui_update: "无法更新 ComfyUI。请重启 Pod，或设置 COMFY_REF=verified。",
+        runtime: "无法安装 PyTorch。请重启 Pod。",
         custom_node: "自定义节点安装失败。请重启 Pod；如仍失败，请设置 COMFY_REF=verified。",
         disk_space: "磁盘空间不足。请将 Container Disk 设为 {need_gb} GB 以上并重新创建 Pod。",
         download: "多次尝试后下载仍失败。重启 Pod 即可从中断处继续。",
