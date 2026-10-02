@@ -257,12 +257,13 @@ class Downloader:
 
         # A wrong-sized file is downloaded again next to the old one, so it counts in full too.
         missing = sum(m.get("size_bytes") or 0 for m in models if needs_download(m))
-        free = shutil.disk_usage(self.models_dir).free - self.reserve_bytes
-        if missing > free:
-            need_gb = -(-missing // 10**9) + 5
+        disk_free = shutil.disk_usage(self.models_dir).free
+        if missing + self.reserve_bytes > disk_free:
+            need_gb = -(-(missing + self.reserve_bytes) // 10**9) + 5
+            also = f" plus {self.reserve_bytes / 1e9:.0f} GB for PyTorch" if self.reserve_bytes else ""
             raise BootError(
                 "disk_space",
-                f"Models need {missing / 1e9:.1f} GB but only {free / 1e9:.1f} GB is free on {self.models_dir}.",
+                f"Models need {missing / 1e9:.1f} GB{also} but only {disk_free / 1e9:.1f} GB is free on {self.models_dir}.",
                 need_gb=need_gb,
             )
 

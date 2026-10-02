@@ -17,8 +17,9 @@ permissions:
   contents: read
   packages: write
 
-# One queue per branch: a trial build (:exp) never cancels main's, and main's builds finish in turn
-# so :latest is never pushed to one registry and not the other.
+# One group per branch: a trial build (:exp) never cancels main's. On main a running build is never
+# cancelled, so :latest is never pushed to one registry and not the other; a newer main run replaces
+# one still waiting, which is fine because it builds the newer commit.
 concurrency:
   group: runpod-image-${{ github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}

@@ -311,7 +311,18 @@ def main():
     # start, a crash later), this process brings the status page back with the reason and still
     # terminates the Pod. The idle auto-stop inside ComfyUI cannot cover a ComfyUI that is gone.
     # Manager's restart re-execs ComfyUI in place, so the child keeps its PID.
-    child = subprocess.Popen(args, cwd=comfy_dir)
+    def status_page_again():
+        # Best effort: the reason matters less than reaching the terminate in fail().
+        try:
+            server.start(state, PORT)
+        except OSError as error:
+            state.log(f"could not reopen the status page: {error}")
+
+    try:
+        child = subprocess.Popen(args, cwd=comfy_dir)
+    except OSError as error:
+        status_page_again()
+        fail(BootError("comfyui_exit", f"ComfyUI could not start: {error}."))
     asked_to_stop = []
 
     def forward(signum, _frame):
@@ -329,7 +340,7 @@ def main():
     for signum in (signal.SIGTERM, signal.SIGINT):
         signal.signal(signum, exit_on_stop)
     state.log(f"ComfyUI exited with code {code}")
-    server.start(state, PORT)
+    status_page_again()
     fail(BootError("comfyui_exit", f"ComfyUI exited with code {code}.", exit_code=code))
 
 
