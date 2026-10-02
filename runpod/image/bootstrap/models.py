@@ -89,11 +89,17 @@ def _download_xet(model, tmp_dir, token, on_bytes):
 
 
 def _download_aria2(model, tmp_dir, token, on_bytes):
-    """One file split into 16 ranges fetched at once; progress comes from aria2's summary lines."""
+    """One file split into 16 ranges fetched at once; progress comes from aria2's summary lines.
+
+    --continue with the .aria2 control file left in tmp_dir: a retry picks up the ranges already
+    fetched instead of starting over (a 9 GB file failing at 90% used to restart from zero). The
+    control file is saved every 5 s, so even a killed aria2 loses only the last few seconds.
+    """
     args = [
         "aria2c", "-x", "16", "-s", "16", "-k", "16M", "--file-allocation=none",
         "--summary-interval=1", "--show-console-readout=false", "--console-log-level=warn",
-        "--download-result=hide", "--auto-file-renaming=false", "--allow-overwrite=true",
+        "--download-result=hide", "--auto-file-renaming=false", "--allow-overwrite=true", "--continue=true",
+        "--auto-save-interval=5",
         "-d", str(tmp_dir), "-o", model["name"], model["url"],
     ]
     if token:
@@ -188,8 +194,11 @@ class Downloader:
                     pct = f" {size * 100 / total:.0f}%" if total else ""
                     self.state.log(f"model {model['name']}:{pct} {size / 1e9:.2f} GB, {speed / 1e6:.0f} MB/s")
 
+        fresh = True  # start from an empty tmp_dir; later attempts resume what aria2 already has
         for attempt in range(1, RETRIES + 1):
-            shutil.rmtree(tmp_dir, ignore_errors=True)
+            if fresh:
+                shutil.rmtree(tmp_dir, ignore_errors=True)
+                fresh = False
             tmp_dir.mkdir(parents=True, exist_ok=True)
             self.state.model(index, state="downloading", done=0, attempt=attempt)
             reported["bytes"] = 0
@@ -210,6 +219,7 @@ class Downloader:
                     self.state.model(index, state="verifying", done=0, speed=0)
                     digest = sha256_file(path, lambda done: self.state.model(index, done=done))
                     if digest != model["sha256"]:
+                        fresh = True  # a corrupt file must not be resumed
                         raise RuntimeError("sha256 mismatch")
                 final.parent.mkdir(parents=True, exist_ok=True)
                 os.replace(path, final)

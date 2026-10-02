@@ -43,8 +43,10 @@ def update(comfy_dir, ref, profile, state):
         raise BootError("comfyui_update", f"Could not update ComfyUI to {ref}: {error}") from error
 
 
-def sync_requirements(comfy_dir, sha, state):
+def sync_requirements(comfy_dir, sha, state, manager=False):
     """Install ComfyUI's requirements when the checked-out commit is newer than the image's.
+
+    With Manager on, its pinned package (manager_requirements.txt) moves with the commit too.
 
     Recorded only after uv succeeds, so a failed install is retried on the next boot.
     """
@@ -54,7 +56,9 @@ def sync_requirements(comfy_dir, sha, state):
         return
     state.step("runtime", "running", f"installing requirements for {sha[:7]}", key="requirements", sha=sha[:7])
     try:
-        pip_install("-r", str(Path(comfy_dir) / "requirements.txt"))
+        files = ["requirements.txt"] + (["manager_requirements.txt"] if manager else [])
+        args = [arg for name in files if (Path(comfy_dir) / name).exists() for arg in ("-r", str(Path(comfy_dir) / name))]
+        pip_install(*args)
     except RuntimeError as error:
         raise BootError("comfyui_update", f"Could not install ComfyUI's requirements: {error}") from error
     marker.write_text(sha + "\n", encoding="utf-8")

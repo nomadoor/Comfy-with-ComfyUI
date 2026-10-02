@@ -3,8 +3,11 @@
 The bootstrap copies this folder into ComfyUI/custom_nodes/ and writes web/runpod.json, which lists
 the profile's workflows in article order (web/runpod.js opens them as tabs).
 
-Idle auto-stop: reader activity in the page (web/runpod.js posts /runpod/activity) and queued or
-running prompts keep the Pod alive. After IDLE_STOP_MINUTES (default 30, 0 turns it off) without
+Idle auto-stop: reader activity in the page (web/runpod.js posts /runpod/activity) and generation
+that is actually moving keep the Pod alive. "Moving" means ComfyUI is sending execution events
+(a node starting, sampler steps): it sends them with the tab closed too, so a long batch left
+running is not cut. A queue that is merely non-empty does not count: a stuck node would keep it so
+forever. After IDLE_STOP_MINUTES (default 30, 0 turns it off) without
 either, the Pod terminates itself through the RunPod API. Terminate, not stop: with no volume disk a
 stopped Pod costs nothing but also keeps nothing (outputs live on the container disk, which a stop
 erases), restarting it waits for a GPU on the same machine, and it lingers in the reader's list. A
@@ -38,16 +41,26 @@ WARN_SECONDS = min(5 * 60, IDLE_SECONDS / 2)
 _state = {"last": time.time(), "stopping": False, "stopped_reason": None}
 
 
-def _busy():
-    try:
-        return server.PromptServer.instance.prompt_queue.get_tasks_remaining() > 0
-    except Exception:  # noqa: BLE001 - never let the watchdog break ComfyUI
-        return False
+# Events ComfyUI sends while a prompt runs. "progress" and "progress_state" go out whether or not a
+# browser is connected; "executing" only with a client, so it is a bonus, not the signal.
+EXECUTION_EVENTS = {"execution_start", "executing", "progress", "progress_state", "executed", "execution_cached", "execution_success"}
+
+
+def _watch_execution(instance):
+    send_sync = instance.send_sync
+
+    def recording_send_sync(event, data, sid=None):
+        if event in EXECUTION_EVENTS:
+            _state["last"] = time.time()
+        return send_sync(event, data, sid)
+
+    instance.send_sync = recording_send_sync
+
+
+_watch_execution(server.PromptServer.instance)
 
 
 def _status():
-    if _busy():
-        _state["last"] = time.time()
     left = IDLE_SECONDS - (time.time() - _state["last"])
     return {
         "enabled": IDLE_SECONDS > 0,

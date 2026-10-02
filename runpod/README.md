@@ -16,6 +16,7 @@ runpod/
 - ビルドのたびに `/runpod/profiles/<id>.json` が出力され、サイトと一緒に公開される。Pod はこれを読んで準備する。
 - モデルは workflow の `properties.models`、custom node は `properties.cnr_id` から集める。custom node は Registry の最新版（審査済みの `latest_version`）を入れ、固定したいときだけ `overrides.custom_nodes[].version` を書く。
 - 入力画像のサンプルは記事の画像と同じメディア。原本を `COMFY_MEDIA_ORIGINALS/<section>/<slug>/<stem>.png` に置き、LoadImage には `<stem>.webp` と書く。コミット時に `media:sync` が R2 に上げ、プロファイルの `inputs` に入り、Pod の `ComfyUI/input/` に配られる。未登録のものは警告（`check:media` ではエラー）になる。
+- プロファイルの `workflows` のパターンで使えるワイルドカードは `*` と `**` だけ（media:sync / check:media 側の照合が対応しているのがこの 2 つなので、ほかはエラーにする）。
 - `npm run check:runpod` で検査する（`npm run check` に含まれる）。ネットワークは使わない。lock にないモデル、`referral`（true / false のみ）・`template`・`gpu.recommended` の型の誤り、同じ記事を指す 2 つ目のプロファイル、存在しない記事はエラーにする（ビルドでは lock の不足は警告だけ）。
 - workflow やモデルを変えたら `npm run runpod:refresh` を実行して、lock と core-nodes.json をコミットする。
 
@@ -50,7 +51,7 @@ Pod の環境変数:
 | `CIVITAI_TOKEN` | なし | 必要なときだけ |
 | `DL_CONCURRENCY` | `8` | 同時にダウンロードするファイル数（各ファイルは aria2 が 16 分割で取る） |
 | `HF_DOWNLOADER` | `aria2` | `xet` にすると Hugging Face だけ hf_xet で取る |
-| `IDLE_STOP_MINUTES` | `30` | 操作も生成もない状態がこの分数続くと Pod を Terminate する（`0` で無効）。準備に失敗した場合と、ComfyUI が自分で終了した場合も、ステータスページで理由を見せてから同じ時間で終了する。Terminate の API 呼び出しは成功するまで繰り返す |
+| `IDLE_STOP_MINUTES` | `30` | 操作も生成もない状態がこの分数続くと Pod を Terminate する（`0` で無効）。「生成している」は ComfyUI が実行の通知（node の開始、ステップの進行）を出していること。キューに残っているだけでは数えないので、固まった node は延長しない。準備に失敗した場合と、ComfyUI が自分で終了した場合も、ステータスページで理由を見せてから同じ時間で終了する。Terminate の API 呼び出しは成功するまで繰り返す |
 | `BOOT_TIMEOUT_MINUTES` | `60` | 準備がこの分数で終わらなければ失敗として扱う（`0` で無効）。どこかで固まった Pod が課金され続けないため |
 | `ENABLE_MANAGER` | `1` | 内蔵の ComfyUI-Manager を有効にする（`0` で無効） |
 | `DATA_DIR` | `/workspace`、なければ `/data` | モデルと起動レポートの置き場所 |

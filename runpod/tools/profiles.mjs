@@ -117,6 +117,11 @@ export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = read
   const overrideTypes = new Map(overrideNodes.flatMap((n) => (n.nodes ?? []).map((type) => [type, n.id])));
 
   if (source.id !== id) errors.push(`${id}.yaml: id is "${source.id}", expected "${id}"`);
+  // profileInputReferences (media:sync, check:media) matches these with a small glob of its own that
+  // knows only `*` and `**`; anything else would make it and the Pod disagree on the workflow list.
+  for (const pattern of source.workflows ?? []) {
+    if (!/^[A-Za-z0-9_./*-]+$/.test(pattern)) errors.push(`${id}.yaml: workflows pattern ${pattern} may use only * and ** as wildcards`);
+  }
   if (!["latest", "verified"].includes(source.comfyui?.default)) {
     errors.push(`${id}.yaml: comfyui.default must be latest or verified`);
   }
