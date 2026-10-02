@@ -1,4 +1,4 @@
-"""Frontend helper and idle auto-stop for the site's RunPod Pods (no nodes).
+"""Frontend helper, idle auto-stop, and opening from the RunPod console for the site's RunPod Pods (no nodes).
 
 The bootstrap copies this folder into ComfyUI/custom_nodes/ and writes web/runpod.json, which lists
 the profile's workflows in article order (web/runpod.js opens them as tabs).
@@ -74,6 +74,28 @@ def _watch():
         if status["enabled"] and status["stop_in"] <= 0 and not _state["stopping"]:
             stop_pod(f"no activity for {IDLE_SECONDS / 60:.0f} minutes")
 
+
+# Opening the Pod from the RunPod console is a cross-site navigation (runpod.io -> proxy.runpod.net),
+# and ComfyUI answers every request marked `Sec-Fetch-Site: cross-site` with an empty 403. The status
+# page normally hides this: it answers the console's click and reloads into ComfyUI from the same
+# site. When ComfyUI is already up at the click (a Pod that stayed in initialization for a while),
+# the reader gets "Access ... was denied". Let only that top-level page load through; every other
+# cross-site request (prompts, API calls, uploads) still meets ComfyUI's check.
+@web.middleware
+async def _allow_console_navigation(request, handler):
+    headers = request.headers
+    if (
+        request.method == "GET"
+        and headers.get("Sec-Fetch-Site") == "cross-site"
+        and headers.get("Sec-Fetch-Mode") == "navigate"
+        and headers.get("Sec-Fetch-Dest") == "document"
+    ):
+        request = request.clone(headers={k: v for k, v in headers.items() if k.lower() != "sec-fetch-site"})
+    return await handler(request)
+
+
+# Custom nodes load before the app starts, so the middleware list is still open; first runs outermost.
+server.PromptServer.instance.app.middlewares.insert(0, _allow_console_navigation)
 
 routes = server.PromptServer.instance.routes
 
