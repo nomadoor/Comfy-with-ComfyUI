@@ -9411,6 +9411,70 @@
     "bytes": 64760,
     "source": "fc17d4999f830b7e"
   },
+  "notes/runpod-card/runpod_card_comfyui.mp4": {
+    "key": "videos/c9114458494ee225.mp4",
+    "width": 1920,
+    "height": 1080,
+    "type": "video/mp4",
+    "bytes": 17475606,
+    "source": "6c7634d285bbd74e",
+    "poster": {
+      "key": "images/042ce500fcf3851f.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 62324
+    }
+  },
+  "notes/runpod-card/runpod_card_deploy_pod.mp4": {
+    "key": "videos/bc8c29169122cb52.mp4",
+    "width": 1920,
+    "height": 1080,
+    "type": "video/mp4",
+    "bytes": 13609700,
+    "source": "ef02fe7f7c731f83",
+    "poster": {
+      "key": "images/babfba5db81ee78f.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 35192
+    }
+  },
+  "notes/runpod-card/runpod_card_pod_terminate.mp4": {
+    "key": "videos/f6ddbccf2d3a8a1f.mp4",
+    "width": 1920,
+    "height": 1080,
+    "type": "video/mp4",
+    "bytes": 7730180,
+    "source": "d283ae94630f740f",
+    "poster": {
+      "key": "images/c7af073f8022c1a9.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 75992
+    }
+  },
+  "notes/runpod-card/runpod_card_select_gpu.mp4": {
+    "key": "videos/5fded0eedb800918.mp4",
+    "width": 1920,
+    "height": 1080,
+    "type": "video/mp4",
+    "bytes": 6930031,
+    "source": "7b7ea7f5e61a4285",
+    "poster": {
+      "key": "images/f12da358ec818898.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 89720
+    }
+  },
+  "notes/runpod-card/runpod_card.png": {
+    "key": "images/b8a92bd65b916c57.webp",
+    "width": 720,
+    "height": 110,
+    "type": "image/webp",
+    "bytes": 4488,
+    "source": "8aa2ef756ad32cf3"
+  },
   "notes/sd15-sdxl-asset-compatibility/legacy_gyazo_3d13852e4d5921d17dd6e6c1835bfafa.png": {
     "key": "images/2bbdb164ce3addce.webp",
     "width": 1747,
