@@ -25,7 +25,16 @@ from multidict import CIMultiDict
 NODE_CLASS_MAPPINGS = {}
 WEB_DIRECTORY = "./web"
 
-IDLE_SECONDS = float(os.environ.get("IDLE_STOP_MINUTES", "30")) * 60
+def _idle_minutes():
+    # A typo must not fail this import: that would silently drop the idle auto-stop.
+    try:
+        return float(os.environ.get("IDLE_STOP_MINUTES", "30") or 30)
+    except ValueError:
+        logging.warning("[comfy-with-comfyui] IDLE_STOP_MINUTES is not a number; using 30")
+        return 30.0
+
+
+IDLE_SECONDS = _idle_minutes() * 60
 WARN_SECONDS = min(5 * 60, IDLE_SECONDS / 2)
 _state = {"last": time.time(), "stopping": False, "stopped_reason": None}
 
@@ -54,10 +63,11 @@ def _status():
 def stop_pod(reason):
     """Terminate this Pod through the RunPod REST API (the Pod-scoped key RunPod injects)."""
     pod_id, key = os.environ.get("RUNPOD_POD_ID"), os.environ.get("RUNPOD_API_KEY")
-    _state["stopping"] = True
     if not pod_id or not key:
+        # Not on RunPod: nothing to terminate, and the page must not claim it was.
         logging.warning("[comfy-with-comfyui] idle for too long, but RUNPOD_POD_ID/RUNPOD_API_KEY are not set; not terminating")
         return
+    _state["stopping"] = True
     logging.warning(f"[comfy-with-comfyui] terminating Pod {pod_id}: {reason}")
     request = urllib.request.Request(
         f"https://rest.runpod.io/v1/pods/{pod_id}", method="DELETE", headers={"Authorization": f"Bearer {key}"}
@@ -81,13 +91,15 @@ def _watch():
 # and ComfyUI answers every request marked `Sec-Fetch-Site: cross-site` with an empty 403. The status
 # page normally hides this: it answers the console's click and reloads into ComfyUI from the same
 # site. When ComfyUI is already up at the click (a Pod that stayed in initialization for a while),
-# the reader gets "Access ... was denied". Let only that top-level page load through; every other
-# cross-site request (prompts, API calls, uploads) still meets ComfyUI's check.
+# the reader gets "Access ... was denied". Let only that top-level load of the page itself (`/`)
+# through; every other cross-site request (prompts, API calls, uploads, other GET routes) still meets
+# ComfyUI's check.
 @web.middleware
 async def _allow_console_navigation(request, handler):
     headers = request.headers
     if (
         request.method == "GET"
+        and request.path == "/"
         and headers.get("Sec-Fetch-Site") == "cross-site"
         and headers.get("Sec-Fetch-Mode") == "navigate"
         and headers.get("Sec-Fetch-Dest") == "document"

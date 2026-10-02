@@ -50,7 +50,8 @@ Pod の環境変数:
 | `CIVITAI_TOKEN` | なし | 必要なときだけ |
 | `DL_CONCURRENCY` | `8` | 同時にダウンロードするファイル数（各ファイルは aria2 が 16 分割で取る） |
 | `HF_DOWNLOADER` | `aria2` | `xet` にすると Hugging Face だけ hf_xet で取る |
-| `IDLE_STOP_MINUTES` | `30` | 操作も生成もない状態がこの分数続くと Pod を Terminate する（`0` で無効）。準備に失敗したまま放置された場合も同じ時間で終了する |
+| `IDLE_STOP_MINUTES` | `30` | 操作も生成もない状態がこの分数続くと Pod を Terminate する（`0` で無効）。準備に失敗した場合と、ComfyUI が自分で終了した場合も、ステータスページで理由を見せてから同じ時間で終了する。Terminate の API 呼び出しは成功するまで繰り返す |
+| `BOOT_TIMEOUT_MINUTES` | `60` | 準備がこの分数で終わらなければ失敗として扱う（`0` で無効）。どこかで固まった Pod が課金され続けないため |
 | `ENABLE_MANAGER` | `1` | 内蔵の ComfyUI-Manager を有効にする（`0` で無効） |
 | `DATA_DIR` | `/workspace`、なければ `/data` | モデルと起動レポートの置き場所 |
 | `COMFY_ARGS` | なし | ComfyUI に足す引数 |

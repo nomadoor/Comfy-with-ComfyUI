@@ -59,7 +59,8 @@ const reportActivity = async (force = false) => {
 keepButton.addEventListener("click", () => reportActivity(true));
 
 const render = (status) => {
-  if (!status?.enabled) return;
+  // Off, or not on RunPod (no Pod ID/key): there is nothing to warn about or terminate.
+  if (!status?.enabled || !status.can_stop) return;
   if (status.stopping) {
     bannerText.textContent = T.stopped;
     keepButton.style.display = "none";

@@ -109,7 +109,7 @@
         files: (p) => `${p.count} files`, ready: (p) => `${p.ready} ready` + (p.skipped ? `, ${p.skipped} skipped` : ""),
         placed: (p) => `${p.workflows} workflows` + (p.inputs ? `, ${p.inputs} sample images` : ""),
       },
-      left: "left", eta: "about", done: "ready", total: "total", failed: "Setup stopped", skipped: "Skipped", lost: "Waiting for the Pod…",
+      left: "left", eta: "about", done: "ready", total: "total", failed: "Setup stopped", skipped: "Skipped", terminateFailed: "Terminate this Pod", lost: "Waiting for the Pod…",
       starting: "Starting ComfyUI…", verifying: "verifying", present: "already on disk",
       advice: {
         profile_missing: "The template must set PROFILE. Deploy again from the article's button.",
@@ -120,7 +120,11 @@
         runtime: "PyTorch could not be installed. Restart the Pod.",
         custom_node: "A custom node failed to install. Restart the Pod; if it keeps failing, set COMFY_REF=verified.",
         disk_space: "Not enough disk. Create the Pod again with a Container Disk of at least {need_gb} GB.",
-        download: "A download failed after several tries. Restart the Pod to resume.",
+        download: "A download failed after several tries. Create the Pod again from the article's button.",
+        internal: "Setup stopped on an unexpected error. Create the Pod again from the article's button.",
+        boot_timeout: "Setup did not finish within {minutes} minutes. Create the Pod again from the article's button.",
+        comfyui_exit: "ComfyUI stopped unexpectedly. Create the Pod again from the article's button.",
+        terminate: "This Pod could not terminate itself. Terminate it from the RunPod console so it stops billing.",
         civitai_token: "This model needs a Civitai API key. Add CIVITAI_TOKEN to the Pod and restart it.",
         workflow: "A workflow could not be fetched or did not match. Restart the Pod.",
         hf_token: "This model needs you to accept its terms on Hugging Face and a token. Accept them on the model page, save HF_TOKEN in RunPod Secrets, and create the Pod again.",
@@ -136,7 +140,7 @@
         files: (p) => `${p.count} ファイル`, ready: (p) => `${p.ready} 個準備完了` + (p.skipped ? `、${p.skipped} 個スキップ` : ""),
         placed: (p) => `workflow ${p.workflows} 本` + (p.inputs ? `、サンプル画像 ${p.inputs} 枚` : ""),
       },
-      left: "残り", eta: "あと約", done: "完了", total: "合計", failed: "準備が止まりました", skipped: "スキップしました", lost: "Pod の応答を待っています…",
+      left: "残り", eta: "あと約", done: "完了", total: "合計", failed: "準備が止まりました", skipped: "スキップしました", terminateFailed: "この Pod を終了してください", lost: "Pod の応答を待っています…",
       starting: "ComfyUI を起動しています…", verifying: "検証中", present: "ダウンロード済み",
       advice: {
         profile_missing: "テンプレートに PROFILE が設定されていません。記事のボタンからもう一度デプロイしてください。",
@@ -147,7 +151,11 @@
         runtime: "PyTorch をインストールできませんでした。Pod を再起動してください。",
         custom_node: "カスタムノードの導入に失敗しました。Pod を再起動し、それでも失敗する場合は COMFY_REF=verified にしてください。",
         disk_space: "ディスクが足りません。Container Disk を {need_gb} GB 以上にして Pod を作り直してください。",
-        download: "何度か試しましたがダウンロードに失敗しました。Pod を再起動すると続きから再開します。",
+        download: "何度か試しましたがダウンロードに失敗しました。記事のボタンから Pod を作り直してください。",
+        internal: "予期しないエラーで準備が止まりました。記事のボタンから Pod を作り直してください。",
+        boot_timeout: "{minutes} 分たっても準備が終わりませんでした。記事のボタンから Pod を作り直してください。",
+        comfyui_exit: "ComfyUI が予期せず止まりました。記事のボタンから Pod を作り直してください。",
+        terminate: "この Pod は自分で終了できませんでした。課金が続くので、RunPod の画面から Terminate してください。",
         civitai_token: "このモデルには Civitai の API キーが必要です。Pod に CIVITAI_TOKEN を設定して再起動してください。",
         workflow: "workflow を取得できなかったか、内容が一致しませんでした。Pod を再起動してください。",
         hf_token: "このモデルは Hugging Face で利用規約への同意とトークンが必要です。モデルページで同意し、RunPod の Secrets に HF_TOKEN を登録して Pod を作り直してください。",
@@ -163,7 +171,7 @@
         files: (p) => `${p.count} 个文件`, ready: (p) => `${p.ready} 个已就绪` + (p.skipped ? `，${p.skipped} 个已跳过` : ""),
         placed: (p) => `workflow ${p.workflows} 个` + (p.inputs ? `，示例图像 ${p.inputs} 张` : ""),
       },
-      left: "剩余", eta: "约", done: "完成", total: "合计", failed: "准备已停止", skipped: "已跳过", lost: "正在等待 Pod 响应…",
+      left: "剩余", eta: "约", done: "完成", total: "合计", failed: "准备已停止", skipped: "已跳过", terminateFailed: "请终止此 Pod", lost: "正在等待 Pod 响应…",
       starting: "正在启动 ComfyUI…", verifying: "校验中", present: "已下载",
       advice: {
         profile_missing: "模板没有设置 PROFILE。请从文章的按钮重新部署。",
@@ -174,7 +182,11 @@
         runtime: "无法安装 PyTorch。请重启 Pod。",
         custom_node: "自定义节点安装失败。请重启 Pod；如仍失败，请设置 COMFY_REF=verified。",
         disk_space: "磁盘空间不足。请将 Container Disk 设为 {need_gb} GB 以上并重新创建 Pod。",
-        download: "多次尝试后下载仍失败。重启 Pod 即可从中断处继续。",
+        download: "多次尝试后下载仍失败。请通过文章中的按钮重新创建 Pod。",
+        internal: "准备过程因意外错误而停止。请通过文章中的按钮重新创建 Pod。",
+        boot_timeout: "{minutes} 分钟内未能完成准备。请通过文章中的按钮重新创建 Pod。",
+        comfyui_exit: "ComfyUI 意外停止了。请通过文章中的按钮重新创建 Pod。",
+        terminate: "此 Pod 无法自行终止。为避免继续计费，请在 RunPod 控制台中 Terminate。",
         civitai_token: "此模型需要 Civitai API 密钥。请为 Pod 设置 CIVITAI_TOKEN 后重启。",
         workflow: "无法获取 workflow，或内容不一致。请重启 Pod。",
         hf_token: "此模型需要在 Hugging Face 上同意使用条款并提供令牌。请在模型页面同意条款，在 RunPod Secrets 中保存 HF_TOKEN，然后重新创建 Pod。",
@@ -339,7 +351,8 @@
       html += `<div class="alert error"><h2>${esc(T.failed)}</h2><p>${advice(s.error.code, s.error)}</p><p class="raw">${esc(s.error.message)}</p></div>`;
     }
     for (const n of s.notices || []) {
-      html += `<div class="alert notice"><h2>${esc(T.skipped)}: ${esc(n.model || "")}</h2><p>${advice(n.code, n)}</p></div>`;
+      const heading = n.code === "terminate" ? esc(T.terminateFailed) : `${esc(T.skipped)}: ${esc(n.model || "")}`;
+      html += `<div class="alert notice"><h2>${heading}</h2><p>${advice(n.code, n)}</p></div>`;
     }
     $("alerts").innerHTML = html;
   };

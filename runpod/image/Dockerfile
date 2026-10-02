@@ -43,6 +43,12 @@ RUN git clone --filter=blob:none https://github.com/comfyanonymous/ComfyUI.git /
  && uv pip install --no-cache --no-deps --extra-index-url "$TORCH_INDEX" --index-strategy unsafe-best-match -r /tmp/rest.lock \
  && git -C /opt/ComfyUI rev-parse HEAD > /opt/.runpod-comfyui-requirements.sha
 
+# Every later install (ComfyUI and custom node requirements at boot, Manager installs from the UI)
+# must keep the locked PyTorch: a node asking for another torch fails loudly instead of quietly
+# replacing the cu130 build with a PyPI one. Set after the build's own installs.
+ENV UV_CONSTRAINT=/opt/runtime.lock \
+    PIP_CONSTRAINT=/opt/runtime.lock
+
 COPY bootstrap /opt/runpod/bootstrap
 COPY status /opt/runpod/status
 COPY extension /opt/runpod/extension
