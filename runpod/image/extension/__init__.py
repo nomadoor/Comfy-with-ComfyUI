@@ -19,6 +19,7 @@ import urllib.request
 
 import server
 from aiohttp import web
+from multidict import CIMultiDict
 
 NODE_CLASS_MAPPINGS = {}
 WEB_DIRECTORY = "./web"
@@ -90,7 +91,7 @@ async def _allow_console_navigation(request, handler):
         and headers.get("Sec-Fetch-Mode") == "navigate"
         and headers.get("Sec-Fetch-Dest") == "document"
     ):
-        request = request.clone(headers={k: v for k, v in headers.items() if k.lower() != "sec-fetch-site"})
+        request = request.clone(headers=CIMultiDict((k, v) for k, v in headers.items() if k.lower() != "sec-fetch-site"))
     return await handler(request)
 
 
