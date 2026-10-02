@@ -48,11 +48,14 @@ def sync_requirements(comfy_dir, sha, state, manager=False):
 
     With Manager on, its pinned package (manager_requirements.txt) moves with the commit too.
 
-    Recorded only after uv succeeds, so a failed install is retried on the next boot.
+    Recorded only after uv succeeds, so a failed install is retried on the next boot. The record says
+    whether Manager's file went in, so turning Manager on later at the same commit still installs it.
+    The image writes the bare commit: its build installed both files.
     """
     marker = Path(comfy_dir).parent / ".runpod-comfyui-requirements.sha"
     installed = marker.read_text(encoding="utf-8").strip() if marker.exists() else None
-    if sha == installed:
+    covered = {sha, f"{sha} manager"} | (set() if manager else {f"{sha} no-manager"})
+    if installed in covered:
         return
     state.step("runtime", "running", f"installing requirements for {sha[:7]}", key="requirements", sha=sha[:7])
     try:
@@ -61,7 +64,7 @@ def sync_requirements(comfy_dir, sha, state, manager=False):
         pip_install(*args)
     except RuntimeError as error:
         raise BootError("comfyui_update", f"Could not install ComfyUI's requirements: {error}") from error
-    marker.write_text(sha + "\n", encoding="utf-8")
+    marker.write_text(f"{sha} {'manager' if manager else 'no-manager'}\n", encoding="utf-8")
 
 
 def write_model_paths(comfy_dir, models_dir, directories):
