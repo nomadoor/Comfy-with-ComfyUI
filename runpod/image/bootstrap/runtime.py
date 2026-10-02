@@ -24,6 +24,10 @@ def _lock_hash():
     return hashlib.sha256(LOCK.read_bytes()).hexdigest()
 
 
+# Room PyTorch takes once installed, kept free when it shares a disk with the models.
+INSTALLED_BYTES = 8 * 10**9
+
+
 def needed():
     return LOCK.exists() and (not MARKER.exists() or MARKER.read_text(encoding="utf-8").strip() != _lock_hash())
 
@@ -31,7 +35,8 @@ def needed():
 def install():
     """Install the locked set; recorded only after uv succeeds. Returns seconds taken."""
     started = time.time()
-    run(["uv", "pip", "install", "--python", sys.executable, "--no-deps", "--index-url", INDEX, "-r", str(LOCK)])
+    # --no-cache: otherwise the ~6.7 GB of wheels stay in the uv cache next to the installed copy.
+    run(["uv", "pip", "install", "--python", sys.executable, "--no-cache", "--no-deps", "--index-url", INDEX, "-r", str(LOCK)])
     MARKER.write_text(_lock_hash() + "\n", encoding="utf-8")
     return round(time.time() - started, 1)
 

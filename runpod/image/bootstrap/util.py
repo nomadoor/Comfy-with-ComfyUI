@@ -43,12 +43,27 @@ def sha256_file(path, on_progress=None):
     return digest.hexdigest()
 
 
+def env_minutes(name, default, log=print):
+    """A minutes setting from the environment; a typo falls back to the default instead of crashing."""
+    raw = os.environ.get(name, "").strip()
+    if not raw:
+        return float(default)
+    try:
+        return float(raw)
+    except ValueError:
+        log(f"{name}={raw!r} is not a number; using {default}")
+        return float(default)
+
+
 def terminate_this_pod(log):
-    """Terminate the Pod through the RunPod REST API (RunPod injects RUNPOD_POD_ID and a Pod-scoped key)."""
+    """Terminate the Pod through the RunPod REST API (RunPod injects RUNPOD_POD_ID and a Pod-scoped key).
+
+    True when RunPod accepted it, False when the call failed, None when this is not a RunPod Pod.
+    """
     pod_id, key = os.environ.get("RUNPOD_POD_ID"), os.environ.get("RUNPOD_API_KEY")
     if not pod_id or not key:
         log("not on RunPod (no RUNPOD_POD_ID/RUNPOD_API_KEY); not terminating")
-        return False
+        return None
     request = urllib.request.Request(
         f"https://rest.runpod.io/v1/pods/{pod_id}", method="DELETE", headers={"Authorization": f"Bearer {key}"}
     )

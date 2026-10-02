@@ -114,8 +114,10 @@ def _download_aria2(model, tmp_dir, token, on_bytes):
 
 
 class Downloader:
-    def __init__(self, data_dir, state, concurrency, hf_token, civitai_token):
+    def __init__(self, data_dir, state, concurrency, hf_token, civitai_token, reserve_bytes=0):
         self.models_dir = Path(data_dir) / "models"
+        # Space something else on the same disk still needs (PyTorch installing alongside).
+        self.reserve_bytes = reserve_bytes
         self.incoming = self.models_dir / ".incoming"
         self.boot_dir = Path(data_dir) / "runpod-boot"
         self.verified_path = self.boot_dir / "verified.json"
@@ -255,12 +257,13 @@ class Downloader:
 
         # A wrong-sized file is downloaded again next to the old one, so it counts in full too.
         missing = sum(m.get("size_bytes") or 0 for m in models if needs_download(m))
-        free = shutil.disk_usage(self.models_dir).free
-        if missing > free:
-            need_gb = -(-missing // 10**9) + 5
+        disk_free = shutil.disk_usage(self.models_dir).free
+        if missing + self.reserve_bytes > disk_free:
+            need_gb = -(-(missing + self.reserve_bytes) // 10**9) + 5
+            also = f" plus {self.reserve_bytes / 1e9:.0f} GB for PyTorch" if self.reserve_bytes else ""
             raise BootError(
                 "disk_space",
-                f"Models need {missing / 1e9:.1f} GB but only {free / 1e9:.1f} GB is free on {self.models_dir}.",
+                f"Models need {missing / 1e9:.1f} GB{also} but only {disk_free / 1e9:.1f} GB is free on {self.models_dir}.",
                 need_gb=need_gb,
             )
 

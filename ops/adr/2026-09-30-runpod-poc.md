@@ -55,6 +55,18 @@ Accepted（PoC。記事側のボタン・案内表示は別途デザイン相談
 - 使い方は `notes/runpod-card`（JA / EN / ZH、ナビの Notes に入れる）。slug は Runpod 全般ではなくこのサイトのカードを指す名前にした（当初案の `run-on-runpod` は汎用すぎるため）。
 - 使い終わりは `Stop` → `Terminate` を案内する。このテンプレートは Volume Disk を使わないので停止中の料金は $0 だが、中身は消え、Pod が一覧に残る。
 
+## Revision 2026-10-02: 誰も止めない Pod をなくす
+レビューで、Pod が課金され続ける道が残っていた。どの経路でも最後は Terminate にたどり着くようにする。
+- ComfyUI は `exec` せず子プロセスとして起動し、起動処理が見張る。起動直後の CUDA 初期化の失敗などで ComfyUI が自分で終了したら、ステータスページを戻して理由を出し、`IDLE_STOP_MINUTES` 後に Terminate する（ComfyUI の中の自動停止は、ComfyUI が落ちると働かない）。RunPod からの停止シグナルは ComfyUI に渡す。起動処理はコンテナの PID 1 なので、準備中や ComfyUI が落ちたあとの停止シグナルも自分で受けてすぐ終わる（何もしないと無視されて強制終了を待つ）。
+- 想定外の例外（`BootError` 以外）も同じ失敗の流れに入れる（コード `internal`）。結果の記録に失敗しても Terminate は飛ばさない。
+- 準備全体に期限を設ける（`BOOT_TIMEOUT_MINUTES`、既定 60 分）。git や custom node のインストールが固まっても失敗として扱う。期限のあとに準備が終わっても ComfyUI は起動しない。
+- Terminate の API 呼び出しは成功するまで繰り返す（60 秒から倍々、最大 15 分間隔）。最初に失敗した時点で、ステータスページに手で Terminate するよう案内を出す。
+- 起動後のインストール（ComfyUI と custom node の依存、Manager からの追加）は `/opt/runtime.lock` を制約にする（`UV_CONSTRAINT` / `PIP_CONSTRAINT`）。別の torch を求める custom node は、cu130 の PyTorch を黙って入れ替えずに失敗する。
+- 起動時の PyTorch のインストールは uv のキャッシュを残さない。モデルと同じディスクに入るときは、空き容量の確認で PyTorch の分（8 GB）を見込む。
+- 外のサイトからの表示を通す例外（#161）は `/` だけにする。
+- `IDLE_STOP_MINUTES` などが数値でなくても、既定値で動く（自動停止が丸ごと無効にならない）。RunPod 以外で動かしたときは「終了しました」と表示しない。
+- image のビルドは branch ごとに順番待ちにする。試作の `:exp` が main のビルドを止めて、Docker Hub と GHCR の `latest` が食い違うことがないように。
+
 ## Consequences
 - workflow を差し替えるときは `properties.models` も保つ必要がある。欠けているとプロファイル生成が警告を出す。
 - 記事側のカード（`{% runpod %}`）は 2026-10-02 の追記で決めた。ディスク容量はテンプレートに入っているので、カードには出さない。
