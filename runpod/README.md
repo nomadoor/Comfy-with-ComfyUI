@@ -16,7 +16,7 @@ runpod/
 - ビルドのたびに `/runpod/profiles/<id>.json` が出力され、サイトと一緒に公開される。Pod はこれを読んで準備する。
 - モデルは workflow の `properties.models`、custom node は `properties.cnr_id` から集める。custom node は Registry の最新版（審査済みの `latest_version`）を入れ、固定したいときだけ `overrides.custom_nodes[].version` を書く。
 - 入力画像のサンプルは記事の画像と同じメディア。原本を `COMFY_MEDIA_ORIGINALS/<section>/<slug>/<stem>.png` に置き、LoadImage には `<stem>.webp` と書く。コミット時に `media:sync` が R2 に上げ、プロファイルの `inputs` に入り、Pod の `ComfyUI/input/` に配られる。未登録のものは警告（`check:media` ではエラー）になる。
-- `npm run check:runpod` で検査する（`npm run check` に含まれる）。ネットワークは使わない。
+- `npm run check:runpod` で検査する（`npm run check` に含まれる）。ネットワークは使わない。lock にないモデル、`referral`（true / false のみ）・`template`・`gpu.recommended` の型の誤り、同じ記事を指す 2 つ目のプロファイル、存在しない記事はエラーにする（ビルドでは lock の不足は警告だけ）。
 - workflow やモデルを変えたら `npm run runpod:refresh` を実行して、lock と core-nodes.json をコミットする。
 
 新しいプロファイルを足すとき:

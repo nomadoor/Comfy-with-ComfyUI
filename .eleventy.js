@@ -1226,7 +1226,7 @@ export default function (eleventyConfig) {
     const referral = source.referral !== false && siteData.runpod.referral;
     if (referral) url.searchParams.set("ref", referral);
     // Second line: each recommended GPU as its own rounded tag.
-    const tag = (text) => `<span class="runpod-launch__tag">${escapeHTML(text)}</span>`;
+    const tag = (text) => `<span class="runpod-launch__tag">${escapeHTML(String(text))}</span>`;
     const recommended = source.gpu?.recommended ?? [];
     const specs = [
       recommended.length ? `<span class="runpod-launch__spec">${t("recLabel")} : ${recommended.map(tag).join("")}</span>` : ""

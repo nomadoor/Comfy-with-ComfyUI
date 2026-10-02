@@ -1506,8 +1506,7 @@ h1 {
   scroll-margin-top: calc(var(--header-height) + var(--space-lg));
   letter-spacing: 0;
   position: relative;
-  gap: 0.1rem;
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .article-body h3 {
@@ -5762,7 +5761,7 @@ body.nav-open .nav-backdrop {
 
 /* Runpod launch card ({% runpod %}): one compact row on a filled surface, no borders — it sits near the
    top of every article that has a profile, so it must not shout. The main part (logo, title, the
-   recommended GPU tag and minimum VRAM) opens the deploy page. The right end is a slightly different
+   recommended GPU tags, the arrow) opens the deploy page. The right end is a slightly different
    panel holding only "?", which opens the walkthrough note and explains itself in a hover tip. The
    referral is disclosed in a plain line under the card. */
 .runpod-launch-wrap {
@@ -5885,7 +5884,7 @@ body.nav-open .nav-backdrop {
   gap: 0.3rem;
 }
 
-/* Each GPU and the VRAM figure in its own rounded tag, in body text colour: readable, not loud. */
+/* Each recommended GPU in its own rounded tag, in body text colour: readable, not loud. */
 .runpod-launch__tag {
   padding: 0.05rem 0.5rem;
   border-radius: var(--radius-pill);
