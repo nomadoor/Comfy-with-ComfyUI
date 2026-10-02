@@ -9,7 +9,7 @@
     title: Workflows open with copy and paste, too
     body: A .json file can be dragged in, but you can also copy its contents as text and press Ctrl + V on the canvas.
   zh:
-    title: workflow 也可以复制粘贴打开
+    title: 工作流也可以复制粘贴打开
     body: 除了拖放 .json 文件，也可以把文件内容作为文本复制，然后在画布上按 Ctrl + V 打开。
 - link: begin-with/media
   ja:
@@ -60,7 +60,7 @@
     body: When you lose your place in a large workflow, Alt + M shows a minimap.
   zh:
     title: 迷路了就按 Alt + M
-    body: 在大型 workflow 中找不到位置时，按 Alt + M 可以显示小地图。
+    body: 在大型工作流中找不到位置时，按 Alt + M 可以显示小地图。
 - link: notes/seed-neighbor
   ja:
     title: seed 1234 と 1235 はまったく別物
@@ -99,5 +99,5 @@
     title: Lay workflows out from top left to bottom right
     body: In ComfyUI, material moves down a single production line, so arranging nodes to flow from top left to bottom right keeps a workflow easy to read later.
   zh:
-    title: workflow 从左上排到右下
+    title: 工作流从左上排到右下
     body: ComfyUI 的素材沿着一条生产线逐步加工，所以把节点按从左上到右下的方向排列，以后回头看也不会迷路。

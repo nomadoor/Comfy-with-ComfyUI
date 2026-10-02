@@ -1,0 +1,132 @@
+---
+layout: page.njk
+lang: ja
+section: notes
+slug: runpod-card
+navId: runpod-card
+title: "記事の workflow を Runpod で動かす"
+created: 2026-10-02
+updated: 2026-10-02
+noteTags: ["guide", "runpod"]
+summary: "記事の Runpod カードから ComfyUI を起動して使う流れ"
+seoTitle: "記事の workflow を Runpod の ComfyUI で動かす方法"
+seoDescription: "Comfy with ComfyUI の記事にある Runpod カードから、モデルと workflow を準備済みの ComfyUI をクラウド GPU で起動する流れ。GPU の選び方、起動までの待ち時間、使い終わったあとの扱いを説明します。"
+permalink: "/{{ lang }}/notes/{{ slug }}/"
+hero:
+  image: ""
+---
+
+## Runpod カードとは
+
+一部の記事には、こんなカードを置いています。
+
+![Runpod カード](/media/notes/runpod-card/runpod_card.png){media=image}
+
+クリックすると、その記事の workflow・モデル・カスタムノード・サンプル画像が全部そろった ComfyUI を、クラウドの GPU で立ち上げられます。
+
+新しいモデルを試すたびに、何十 GB もあるモデルをダウンロードして、custom node を入れて、VRAM が足りなくて落ちて……というのは、なかなか面倒ですからね……。
+
+そこを全部すっ飛ばして、**とりあえず絶対動く** 環境を用意するのがこのカードです。手元の GPU では足りないモデルを試したいとき、ローカルに入れる前にまず動くところを見てみたいときに使ってみてください。
+
+### Runpod と Pod
+
+[Runpod](https://www.runpod.io/) は、クラウド上の GPU を時間単位で借りられるサービスです。
+
+そこで借りる 1 台 1 台のことを **Pod** と呼びます。GPU 付きのパソコンを、使う時間だけレンタルするようなイメージですね。料金は借りている間の分だけで、返却すればそこで止まります。
+
+普通は、どの GPU を積むか、どんなソフトを入れておくかを自分で決めて Pod を作るのですが、カードの先にはその記事専用の設定を用意してあります。皆さんが選ぶのは GPU だけです。
+
+---
+
+## 全体の流れ
+
+1. Runpod のアカウントを作り、クレジットを買う
+2. 記事のカードから Pod を作る
+3. 準備が終わるのを待つ
+4. ComfyUI で生成する
+5. 使い終わったら Pod を削除する
+
+---
+
+## 1. アカウントとクレジット
+
+Runpod には無料のお試し枠がありません。先にクレジットを買って、そこから使った分が引かれていく仕組みです。
+
+- Runpod にアクセスして `Sign Up`
+- 右上の `+` からクレジットを購入
+
+![右上の + からクレジットを購入](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_f683db8baf406ed1aa79e5d348f1e406.png){media=image}
+
+いきなりたくさん入れる必要はありません。画像を何枚か生成して雰囲気をつかむくらいなら、10 ドルもあれば十分です。
+
+> [!NOTE]
+> 使う必要はありませんが、私の紹介リンクです。  
+> ここからアカウントを作ってクレジットを買うと、追加でクレジットがもらえます。私にも少しクレジットが入り、このサイトの検証に使わせてもらっています m(_ _)m
+>
+> [Runpod の紹介リンク](https://runpod.io?ref=knnme3w1)
+
+---
+
+## 2. カードから Pod を作る
+
+記事のカードをクリックすると、Runpod の Pod を作る画面が開きます。必要な設定はもう済んでいるので、あとは GPU を選ぶだけです。
+
+![好きな GPU を選んで Deploy Pod](/media/notes/runpod-card/runpod_card_select_gpu.mp4){media=loop}
+
+- ★ の付いた GPU が、その記事の workflow を快適に動かせるオススメです
+- 空いていないこともあるので、ほかの GPU でももちろん大丈夫
+- 選んだら `Deploy Pod`
+
+GPU ごとに 1 時間あたりの料金が書いてあります。高い GPU ほど速くはなりますが、料金が 2 倍でも速さが 2 倍になるわけではありません。おサイフと相談ですね。
+
+> [!WARNING]
+> `Deploy Pod` を押した瞬間から料金がかかり始めます。
+
+---
+
+## 3. 準備が終わるのを待つ
+
+Pod の用意には少し時間がかかります。プログレスバーを眺めて待ちましょう。
+
+![しばらく待っていると ComfyUI に切り替わります](/media/notes/runpod-card/runpod_card_deploy_pod.mp4){media=loop}
+
+用意ができると、`Connect` タブの `HTTP services` に `Port 8188 → ComfyUI` が出てくるので、クリックします。
+
+開くと、まず準備画面が出てきます。裏では、記事で使うモデルを一気にダウンロードしています。準備ができると、勝手に ComfyUI の画面に切り替わります。
+
+> [!NOTE]
+> `Deploy Pod` をクリックしてから、だいたい 3〜4 分かかります。高速化の工夫はいろいろしていますが、Pod の仕組み上、残念ながらこれくらいの時間はかかってしまいます。
+
+---
+
+## 4. ComfyUI で生成する
+
+ComfyUI が開くと、記事で紹介している workflow が全部タブで並んでいます。サンプルの入力画像も入っているので、そのまま `Run` を押せば生成できます。
+
+![記事の workflow がタブで開いているので、そのまま Run](/media/notes/runpod-card/runpod_card_comfyui.mp4){media=loop}
+
+タブを閉じてしまっても、サイドバーの `Workflows` に同じものが入っているので、そこからまた開けます。
+
+もちろん、そこからプロンプトを変えたり、自分の画像を読み込んだりするのも自由です。
+
+ダウンロードされているのはその記事で使うモデルだけですが、ComfyUI Manager も使えるので、別のモデルや custom node を追加して、ほかの workflow を試すこともできます。
+
+> [!WARNING]
+> 生成した画像は Pod の中にしか残りません。気に入ったものは、その都度ダウンロードしておいてください。
+
+---
+
+## 5. 使い終わったら Pod を削除する
+
+使い終わったら、Pod の画面で `Stop`（停止）してから、`Terminate`（削除）します。
+
+![Stop してから Terminate](/media/notes/runpod-card/runpod_card_pod_terminate.mp4){media=loop}
+
+`Terminate` のボタンは、`Stop` したあとに出てきます。`Stop` しただけでも料金は止まりますが、中身は全部消えるので、あとで再開しても最初からやり直しになります。`Terminate` まで済ませておきましょう。
+
+もし消し忘れても、操作も生成もしないまま 30 分たつと、Pod は自動で削除されるようにしてあります。削除の 5 分前には、ComfyUI の画面上部に予告が出ます。
+
+> [!WARNING]
+> `Terminate` すると、生成した画像も Pod ごと消えます。残したい画像や動画は、先にダウンロードしておいてください。
+
+もう一度使いたくなったら、また記事のカードから新しく Pod を作れば OK です。

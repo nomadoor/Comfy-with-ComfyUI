@@ -432,6 +432,28 @@
           }
         }
       }
+    },
+    "runpod": {
+      "title": {
+        "ja": "Runpod でこの記事の workflow を開く",
+        "en": "Open this article's workflows on Runpod",
+        "zh": "在 Runpod 上打开本文的工作流"
+      },
+      "referral": {
+        "ja": "紹介リンクが含まれています",
+        "en": "Contains a referral link",
+        "zh": "包含推荐链接"
+      },
+      "recLabel": {
+        "ja": "推奨",
+        "en": "Recommended",
+        "zh": "推荐"
+      },
+      "help": {
+        "ja": "使い方の解説ページへ",
+        "en": "How it works",
+        "zh": "查看使用说明"
+      }
     }
   },
   "footer": {
@@ -474,5 +496,9 @@
         }
       }
     ]
+  },
+  "runpod": {
+    "deployUrl": "https://console.runpod.io/deploy",
+    "referral": "knnme3w1"
   }
 }

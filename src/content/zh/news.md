@@ -5,7 +5,7 @@ slug: news
 navId: news
 title: "更新信息"
 created: 2026-02-05
-updated: 2026-09-30
+updated: 2026-10-02
 summary: "本站的更新信息"
 seoTitle: "更新信息：新的 ComfyUI 文章与工作流"
 seoDescription: "Comfy with ComfyUI 的更新记录。按日期列出新增的模型讲解、工作流以及已有文章的更新。"
@@ -14,6 +14,11 @@ tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/zh/notes/runpod-card/">
+    <span class="news-row__date">2026.10.2</span>
+    <span class="news-row__tag">notes</span>
+    <span class="news-row__title">追加了 Runpod 卡片使用方法的页面</span>
+  </a>
   <a class="news-row" href="/zh/notes/typed-decision/">
     <span class="news-row__date">2026.9.30</span>
     <span class="news-row__tag">notes</span>

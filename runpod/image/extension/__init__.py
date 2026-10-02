@@ -5,9 +5,10 @@ the profile's workflows in article order (web/runpod.js opens them as tabs).
 
 Idle auto-stop: reader activity in the page (web/runpod.js posts /runpod/activity) and queued or
 running prompts keep the Pod alive. After IDLE_STOP_MINUTES (default 30, 0 turns it off) without
-either, the Pod terminates itself through the RunPod API. Terminate, not stop: a stopped Pod keeps
-billing for its disk and keeps nothing a reader needs (outputs live on the container disk, models
-are downloaded again in minutes), and a new Pod from the article is the one way back. The page
+either, the Pod terminates itself through the RunPod API. Terminate, not stop: with no volume disk a
+stopped Pod costs nothing but also keeps nothing (outputs live on the container disk, which a stop
+erases), restarting it waits for a GPU on the same machine, and it lingers in the reader's list. A
+new Pod from the article is the one way back. The page
 shows a warning for the last few minutes.
 """
 import json

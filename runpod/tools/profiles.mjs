@@ -105,7 +105,8 @@ const siteCommit = () => {
 };
 
 // Returns { profile, errors, warnings }. `profile` is null when there are errors.
-export const buildProfile = (id, { siteURL, coreNodes = readJSON(CORE_NODES_PATH, { nodes: [] }).nodes } = {}) => {
+// `strictLock` (check:runpod) turns a model missing from the lock into an error; the build only warns.
+export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = readJSON(CORE_NODES_PATH, { nodes: [] }).nodes } = {}) => {
   const errors = [];
   const warnings = [];
   const where = (file) => path.relative(process.cwd(), file);
@@ -122,10 +123,23 @@ export const buildProfile = (id, { siteURL, coreNodes = readJSON(CORE_NODES_PATH
   if (source.comfyui?.default === "verified" && !source.comfyui?.verified_commit) {
     errors.push(`${id}.yaml: comfyui.default is verified but verified_commit is empty`);
   }
+  // The article card reads these straight from the YAML, so check their types here: YAML reads `no`
+  // as the string "no" (which would still add the referral code) and `4090` as a number.
+  if ("referral" in source && typeof source.referral !== "boolean") {
+    errors.push(`${id}.yaml: referral must be true or false, got ${JSON.stringify(source.referral)}`);
+  }
+  if ("template" in source && !(typeof source.template === "string" && /^[a-z0-9]+$/.test(source.template))) {
+    errors.push(`${id}.yaml: template must be a RunPod template ID such as 16mbtha5fk`);
+  }
+  const recommended = source.gpu?.recommended;
+  if (recommended != null && !(Array.isArray(recommended) && recommended.every((gpu) => typeof gpu === "string" && gpu.trim()))) {
+    errors.push(`${id}.yaml: gpu.recommended must be a list of GPU names such as "RTX 4090"`);
+  }
 
   // Workflows follow the order the Japanese article introduces them (the Pod opens them as tabs in
   // this order); any the article does not link come last, by name.
   const articleFile = path.resolve("src", "content", "ja", `${source.article}.md`);
+  if (!fs.existsSync(articleFile)) errors.push(`${id}.yaml: article ${source.article} has no ${where(articleFile)}`);
   const articleText = fs.existsSync(articleFile) ? fs.readFileSync(articleFile, "utf8") : "";
   const articleOrder = (file) => {
     const index = articleText.indexOf(`/workflows/${path.relative(WORKFLOW_ROOT, file).split(path.sep).join("/")}`);
@@ -263,7 +277,7 @@ export const buildProfile = (id, { siteURL, coreNodes = readJSON(CORE_NODES_PATH
   for (const [key, model] of models) {
     const locked = lock.models?.[model.url];
     if (!locked) {
-      warnings.push(`${key}: not in ${id}.lock.json, size unknown (run npm run runpod:refresh)`);
+      (strictLock ? errors : warnings).push(`${key}: not in ${id}.lock.json, size unknown (run npm run runpod:refresh)`);
       Object.assign(model, { size_bytes: null, sha256: null, requires_hf_token: false });
       continue;
     }

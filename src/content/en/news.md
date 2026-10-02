@@ -5,7 +5,7 @@ slug: news
 navId: news
 title: "News"
 created: 2026-01-15
-updated: 2026-09-30
+updated: 2026-10-02
 summary: "Site updates"
 seoTitle: "News: New ComfyUI Guides and Workflows"
 seoDescription: "Update history of Comfy with ComfyUI: newly added model guides and workflows, plus updates to existing articles, listed by date."
@@ -15,6 +15,11 @@ tags:
 ---
 
 <div class="news-list">
+  <a class="news-row" href="/en/notes/runpod-card/">
+    <span class="news-row__date">2026.10.2</span>
+    <span class="news-row__tag">notes</span>
+    <span class="news-row__title">Added a page on using the Runpod card</span>
+  </a>
   <a class="news-row" href="/en/notes/typed-decision/">
     <span class="news-row__date">2026.9.30</span>
     <span class="news-row__tag">notes</span>

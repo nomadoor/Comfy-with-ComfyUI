@@ -56,6 +56,7 @@ Use the project-local skills in `.claude/skills/` when the task matches:
 - `external-model-research`: source research for models, papers, Hugging Face, ModelScope, GitHub, or ComfyUI changes.
 - `english-reply`: English GitHub or maintainer replies.
 - `publish-pr`: pushing branches and opening or updating pull requests.
+- `runpod-launch`: Runpod launch cards, profiles, templates, and the referral rule.
 
 ## Checks
 

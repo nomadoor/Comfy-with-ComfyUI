@@ -5758,3 +5758,152 @@ body.nav-open .nav-backdrop {
   }
 
 }
+
+/* Runpod launch card ({% runpod %}): one compact row on a filled surface, no borders — it sits near the
+   top of every article that has a profile, so it must not shout. The main part (logo, title, the
+   recommended GPU tags, the arrow) opens the deploy page. The right end is a slightly different
+   panel holding only "?", which opens the walkthrough note and explains itself in a hover tip. The
+   referral is disclosed in a plain line under the card. */
+.runpod-launch-wrap {
+  margin: var(--space-lg) 0;
+}
+
+.runpod-launch {
+  display: flex;
+  align-items: stretch;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-text) 6%, var(--color-reader));
+}
+
+.runpod-launch__main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: 0;
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.runpod-launch__help {
+  --workflow-popup-gap: 0.6rem;
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: 3.25rem;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background: color-mix(in srgb, var(--color-text) 10%, var(--color-reader));
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* Win over the article's link styles (underline, weight, heading colour). */
+.article-body a.runpod-launch__main,
+.article-body a.runpod-launch__main.link--external,
+.article-body a.runpod-launch__help,
+.article-body a.runpod-launch__help.link--internal {
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+.article-body a.runpod-launch__help,
+.article-body a.runpod-launch__help.link--internal {
+  color: var(--color-text-muted);
+}
+
+.runpod-launch__main:hover,
+.runpod-launch__main:focus-visible {
+  background: color-mix(in srgb, var(--color-text) 4%, transparent);
+}
+
+.article-body a.runpod-launch__help:hover,
+.article-body a.runpod-launch__help:focus-visible {
+  background: color-mix(in srgb, var(--color-text) 16%, var(--color-reader));
+  color: var(--color-heading);
+}
+
+.runpod-launch__help .icon {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+}
+
+/* Hover tip for "?": the site's existing popup (.workflow-performance__popup, also on the element),
+   only re-anchored to the right edge so it stays inside the reader column. */
+.runpod-launch__tip {
+  left: auto;
+  right: 0;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  transform: translateY(0.25rem);
+}
+
+.runpod-launch__help:hover .runpod-launch__tip,
+.runpod-launch__help:focus-visible .runpod-launch__tip {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.runpod-launch__logo {
+  flex: none;
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+}
+
+.runpod-launch__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-width: 0;
+  line-height: 1.4;
+}
+
+.runpod-launch__text b {
+  color: var(--color-heading);
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.runpod-launch__specs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem 1.1rem;
+  color: color-mix(in srgb, var(--color-text) 85%, var(--color-reader));
+  font-size: 0.85rem;
+}
+
+.runpod-launch__spec {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  white-space: nowrap;
+  gap: 0.3rem;
+}
+
+/* Each recommended GPU in its own rounded tag, in body text colour: readable, not loud. */
+.runpod-launch__tag {
+  padding: 0.05rem 0.5rem;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-text) 20%, var(--color-reader));
+  color: var(--color-text);
+}
+
+/* Scoped under .article-body so the article's paragraph colour and spacing do not win. */
+.article-body .runpod-launch__ref {
+  margin: 0.25rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  text-align: right;
+}
+
+.runpod-launch__main > .icon {
+  flex: none;
+  margin-inline-start: auto;
+  inline-size: 1.1rem;
+  block-size: 1.1rem;
+  color: var(--color-text-muted);
+}

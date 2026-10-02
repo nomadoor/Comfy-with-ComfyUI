@@ -1,14 +1,22 @@
 #!/usr/bin/env node
 // Validate every RunPod profile offline (errors fail, warnings are printed).
 // Usage: npm run check:runpod [-- --print <id>]
-import { buildProfile, buildTips, listProfileIds } from "./profiles.mjs";
+import { buildProfile, buildTips, listProfileIds, readProfileSource } from "./profiles.mjs";
 
 const args = process.argv.slice(2);
 const printId = args.includes("--print") ? args[args.indexOf("--print") + 1] : null;
 let failed = false;
+// One profile per article: the article card picks its profile by `article`, so a second one would be ignored.
+const articles = new Map();
 
 for (const id of listProfileIds()) {
-  const { profile, errors, warnings } = buildProfile(id, { siteURL: "https://comfyui.nomadoor.net" });
+  const article = readProfileSource(id).article;
+  if (articles.has(article)) {
+    console.error(`[runpod] error: ${id}.yaml and ${articles.get(article)}.yaml both use article ${article}`);
+    failed = true;
+  }
+  articles.set(article, id);
+  const { profile, errors, warnings } = buildProfile(id, { siteURL: "https://comfyui.nomadoor.net", strictLock: true });
   for (const warning of warnings) console.warn(`[runpod] warning: ${warning}`);
   for (const error of errors) console.error(`[runpod] error: ${error}`);
   if (!profile) {
