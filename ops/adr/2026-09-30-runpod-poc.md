@@ -57,7 +57,7 @@ Accepted（PoC。記事側のボタン・案内表示は別途デザイン相談
 
 ## Revision 2026-10-02: 誰も止めない Pod をなくす
 レビューで、Pod が課金され続ける道が残っていた。どの経路でも最後は Terminate にたどり着くようにする。
-- ComfyUI は `exec` せず子プロセスとして起動し、起動処理が見張る。起動直後の CUDA 初期化の失敗などで ComfyUI が自分で終了したら、ステータスページを戻して理由を出し、`IDLE_STOP_MINUTES` 後に Terminate する（ComfyUI の中の自動停止は、ComfyUI が落ちると働かない）。RunPod からの停止シグナルは ComfyUI に渡す。
+- ComfyUI は `exec` せず子プロセスとして起動し、起動処理が見張る。起動直後の CUDA 初期化の失敗などで ComfyUI が自分で終了したら、ステータスページを戻して理由を出し、`IDLE_STOP_MINUTES` 後に Terminate する（ComfyUI の中の自動停止は、ComfyUI が落ちると働かない）。RunPod からの停止シグナルは ComfyUI に渡す。起動処理はコンテナの PID 1 なので、準備中や ComfyUI が落ちたあとの停止シグナルも自分で受けてすぐ終わる（何もしないと無視されて強制終了を待つ）。
 - 想定外の例外（`BootError` 以外）も同じ失敗の流れに入れる（コード `internal`）。結果の記録に失敗しても Terminate は飛ばさない。
 - 準備全体に期限を設ける（`BOOT_TIMEOUT_MINUTES`、既定 60 分）。git や custom node のインストールが固まっても失敗として扱う。期限のあとに準備が終わっても ComfyUI は起動しない。
 - Terminate の API 呼び出しは成功するまで繰り返す（60 秒から倍々、最大 15 分間隔）。最初に失敗した時点で、ステータスページに手で Terminate するよう案内を出す。

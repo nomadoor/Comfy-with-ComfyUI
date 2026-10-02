@@ -157,7 +157,16 @@ def give_up(state, minutes):
         time.sleep(3600)
 
 
+def exit_on_stop(signum, _frame):
+    # This process is the container's PID 1, which ignores SIGTERM unless it handles it: without
+    # this, stopping the Pod while it prepares (or after ComfyUI died) waits for the forced kill.
+    # os._exit: download threads must not hold the exit up.
+    os._exit(0)
+
+
 def main():
+    for signum in (signal.SIGTERM, signal.SIGINT):
+        signal.signal(signum, exit_on_stop)
     state = State()
     comfy_dir = os.environ.get("COMFY_DIR", "/opt/ComfyUI")
     data_dir = os.environ.get("DATA_DIR") or ("/workspace" if Path("/workspace").is_dir() else "/data")
@@ -317,6 +326,8 @@ def main():
     code = child.wait()
     if asked_to_stop:
         sys.exit(0)
+    for signum in (signal.SIGTERM, signal.SIGINT):
+        signal.signal(signum, exit_on_stop)
     state.log(f"ComfyUI exited with code {code}")
     server.start(state, PORT)
     fail(BootError("comfyui_exit", f"ComfyUI exited with code {code}.", exit_code=code))
