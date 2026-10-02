@@ -53,6 +53,7 @@ def load_profile(state):
     return url, profile
 
 
+# Same rule as safePath in runpod/tools/profiles.mjs, which rejects these names at check:runpod.
 SAFE_PART = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._ +()-]*$")
 
 

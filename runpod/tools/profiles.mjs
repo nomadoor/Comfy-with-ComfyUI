@@ -104,6 +104,11 @@ const siteCommit = () => {
   }
 };
 
+// Same rule as SAFE_PART in runpod/image/bootstrap/__main__.py.
+const SAFE_PART = /^[A-Za-z0-9][A-Za-z0-9._ +()-]*$/;
+const safePath = (value, nested = false) =>
+  (nested ? String(value).split("/") : [String(value)]).every((part) => SAFE_PART.test(part) && part !== "." && part !== "..");
+
 // Returns { profile, errors, warnings }. `profile` is null when there are errors.
 // `strictLock` (check:runpod) turns a model missing from the lock into an error; the build only warns.
 export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = readJSON(CORE_NODES_PATH, { nodes: [] }).nodes } = {}) => {
@@ -325,6 +330,14 @@ export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = read
     custom_nodes: [...customNodes.values()].sort((a, b) => a.id.localeCompare(b.id)),
     models: sortedModels,
   };
+  // The Pod refuses names that are unsafe as paths (bootstrap/__main__.py check_paths); catch them here
+  // first, with the same rule, so a profile never passes the check and then stops every Pod.
+  const unsafe = [
+    ...profile.models.filter((m) => !safePath(m.name) || !safePath(m.directory, true)).map((m) => `model ${m.directory}/${m.name}`),
+    ...profile.workflows.filter((w) => !safePath(w.name)).map((w) => `workflow ${w.name}`),
+    ...profile.custom_nodes.filter((n) => !safePath(n.id, true)).map((n) => `custom node ${n.id}`),
+  ];
+  if (unsafe.length) return { profile: null, errors: [...errors, `${id}: names not safe as paths on the Pod: ${unsafe.join(", ")}`], warnings };
   return { profile, errors, warnings };
 };
 

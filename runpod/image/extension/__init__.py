@@ -7,8 +7,8 @@ Idle auto-stop: reader activity in the page (web/runpod.js posts /runpod/activit
 that is actually moving keep the Pod alive. "Moving" means ComfyUI is sending execution events
 (a node starting, sampler steps): it sends them with the tab closed too, so a long batch left
 running is not cut. A queue that is merely non-empty does not count: a stuck node would keep it so
-forever. After IDLE_STOP_MINUTES (default 30, 0 turns it off) without
-either, the Pod terminates itself through the RunPod API. Terminate, not stop: with no volume disk a
+forever. After IDLE_STOP_MINUTES (default 30, 0 turns it off) with neither, the Pod terminates
+itself through the RunPod API. Terminate, not stop: with no volume disk a
 stopped Pod costs nothing but also keeps nothing (outputs live on the container disk, which a stop
 erases), restarting it waits for a GPU on the same machine, and it lingers in the reader's list. A
 new Pod from the article is the one way back. The page shows a warning for the last few minutes.
