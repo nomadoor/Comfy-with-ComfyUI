@@ -379,6 +379,8 @@ sections:
         title: AI Toolkit で SDXL（Illustrious）LoRA を学習する
       - id: runpod-ai-toolkit-lora-training
         title: RunPod で AI Toolkit を動かす
+      - id: run-on-runpod
+        title: 記事の workflow を Runpod で動かす
       - id: panorama-stickers
         title: ComfyUI Panorama Stickers
       - id: comfyui-video-stabilizer
