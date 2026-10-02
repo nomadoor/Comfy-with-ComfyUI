@@ -1237,7 +1237,7 @@ export default function (eleventyConfig) {
       `<a class="runpod-launch__main" href="${escapeHTML(url.href)}" target="_blank" rel="noopener sponsored" data-no-link-icon>` +
       RUNPOD_LOGO +
       `<span class="runpod-launch__text"><b>${t("title")}</b>${specs ? `<span class="runpod-launch__specs">${specs}</span>` : ""}</span>${RUNPOD_ARROW}</a>` +
-      `<a class="runpod-launch__help" href="/${lang}/notes/run-on-runpod/" aria-label="${help}">${RUNPOD_HELP}<span class="workflow-performance__popup runpod-launch__tip" role="tooltip">${help}</span></a>` +
+      `<a class="runpod-launch__help" href="/${lang}/notes/runpod-card/" aria-label="${help}">${RUNPOD_HELP}<span class="workflow-performance__popup runpod-launch__tip" role="tooltip">${help}</span></a>` +
       `</div>${referral ? `<p class="runpod-launch__ref">${t("referral")}</p>` : ""}</div>`
     );
   });
