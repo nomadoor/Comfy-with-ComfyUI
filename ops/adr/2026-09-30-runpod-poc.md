@@ -28,7 +28,7 @@ Accepted（PoC。記事側のボタン・案内表示は別途デザイン相談
 - **Pod 内の起動処理は Python。** ステータスページ（8188 番、枠線なしの最小限の 1 ページ）でダウンロードの進行と失敗理由を見せ、完了後に ComfyUI を起動する。起動結果は `report.json` に残す。
 - モデルは aria2 で 1 ファイルを 16 分割して取り、複数ファイルを同時に取る。2026-10-01 の実測（1.92 GB）で aria2 61 MB/s、hf_xet 53 MB/s。hf_xet は `HF_DOWNLOADER=xet` で選べる。
 - ComfyUI の初回表示では、テンプレート選択ダイアログ（`Comfy.TutorialCompleted`）を出さず、プロファイルの workflow を記事の順にすべてタブで開く。小さな ComfyUI 拡張（`runpod/image/extension/`）を起動処理が入れる。
-- 切り忘れ対策として、操作も生成もない状態が 30 分続くと Pod を Terminate する。Stop にしない理由：停止中の Pod はディスク代がかかり続けて初心者が気づきにくい、再開は GPU の空き次第で失敗しうる、生成画像はコンテナ側にあるので Stop でも残らない。再開は記事のボタンから新しい Pod を作る一通りにする（モデルの再ダウンロードは数分）。終了の 5 分前から画面上部に予告（生成画像を保存するよう促す）を出す。準備に失敗したまま放置された場合も同じ時間で終了する。Volume Disk は使わない。Container Disk は余裕を持たせ、モデル合計 × 1.5 + 40 GB を 10 GB 単位で切り上げた値を推奨にする（Qwen-Image-2.1 は 70 GB）。RunPod が Pod に渡す `RUNPOD_POD_ID` と Pod 用 API キー（`RUNPOD_API_KEY`）で REST API を呼ぶ（本番で要確認）。
+- 切り忘れ対策として、操作も生成もない状態が 30 分続くと Pod を Terminate する。Stop にしない理由：Volume Disk を使わないので Stop しても中身は消え、再開は新しい Pod と同じ準備をやり直す、再開は同じマシンの GPU の空き次第で失敗しうる、Stop した Pod が一覧に残り続ける。（当初は「停止中もディスク代がかかる」とも書いたが、課金が続くのは Volume Disk だけで、このテンプレートの Pod は停止中 $0。2026-10-02 に Stop の確認画面で確認）再開は記事のボタンから新しい Pod を作る一通りにする（モデルの再ダウンロードは数分）。終了の 5 分前から画面上部に予告（生成画像を保存するよう促す）を出す。準備に失敗したまま放置された場合も同じ時間で終了する。Volume Disk は使わない。Container Disk は余裕を持たせ、モデル合計 × 1.5 + 40 GB を 10 GB 単位で切り上げた値を推奨にする（Qwen-Image-2.1 は 70 GB）。RunPod が Pod に渡す `RUNPOD_POD_ID` と Pod 用 API キー（`RUNPOD_API_KEY`）で REST API を呼ぶ（本番で要確認）。
 - 別の workflow のモデルや custom node を読者が UI から足せるよう、ComfyUI 内蔵の Manager を有効にする。Pod は外部から待ち受けるため、Manager の `network_mode` を `personal_cloud` にする（Pod の URL を知る人だけが使える前提）。
 - image は GitHub Actions でビルドして GHCR に push する。RunPod のテンプレートはオーナーのアカウントで作る。
 
@@ -52,6 +52,8 @@ Accepted（PoC。記事側のボタン・案内表示は別途デザイン相談
 - 記事には `{% runpod %}` のカードを置く（Qwen-Image-2.1 は「推奨設定値」の前）。タイトル、推奨 GPU、右端の矢印、「?」（`notes/runpod-card` へ）。
 - 商用利用できないライセンスのモデルを含むプロファイルは `referral: false` にして、紹介コードを付けない（オーナー判断）。研究用モデルの読者を誘導して紹介報酬を得る形を避けるため。Qwen-Image-2.1（Qwen Research License、研究・評価目的のみ）が該当する。
 - テンプレート作者への還元（利用額の 1% を Runpod クレジットで）は、公開ドキュメントにテンプレート単位で外す設定がない。残ることを承知のうえで進める。
+- 使い方は `notes/runpod-card`（JA / EN / ZH、ナビの Notes に入れる）。slug は Runpod 全般ではなくこのサイトのカードを指す名前にした（当初案の `run-on-runpod` は汎用すぎるため）。
+- 使い終わりは `Stop` → `Terminate` を案内する。このテンプレートは Volume Disk を使わないので停止中の料金は $0 だが、中身は消え、Pod が一覧に残る。
 
 ## Consequences
 - workflow を差し替えるときは `properties.models` も保つ必要がある。欠けているとプロファイル生成が警告を出す。
