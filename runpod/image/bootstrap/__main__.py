@@ -8,6 +8,7 @@ import configparser
 import hashlib
 import json
 import os
+import re
 import shutil
 import signal
 import subprocess
@@ -48,7 +49,28 @@ def load_profile(state):
         raise BootError("profile_fetch", f"Could not fetch {url}: {error}") from None
     if profile.get("schema_version") != SCHEMA_VERSION:
         raise BootError("profile_schema", f"Profile schema {profile.get('schema_version')} is not supported by this image.")
+    check_paths(profile)
     return url, profile
+
+
+# Same rule as safePath in runpod/tools/profiles.mjs, which rejects these names at check:runpod.
+SAFE_PART = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._ +()-]*$")
+
+
+def check_paths(profile):
+    """Names from the profile become paths on disk: keep each one inside the folder it belongs to.
+
+    The profile comes from this site, so this is a guard against mistakes rather than attacks.
+    """
+    def ok(value, nested=False):
+        parts = str(value).split("/") if nested else [str(value)]
+        return all(SAFE_PART.match(part) and part not in (".", "..") for part in parts)
+
+    bad = [f"model {m.get('directory')}/{m.get('name')}" for m in profile.get("models", []) if not (ok(m.get("name", "")) and ok(m.get("directory", ""), nested=True))]
+    bad += [f"workflow {w.get('name')}" for w in profile.get("workflows", []) if not ok(w.get("name", ""))]
+    bad += [f"custom node {n.get('id')}" for n in profile.get("custom_nodes", []) if not ok(n.get("id", ""), nested=True)]
+    if bad:
+        raise BootError("profile_invalid", "The profile has names that are not safe as paths: " + ", ".join(bad))
 
 
 def fetch_site_file(item, profile_url):
@@ -260,7 +282,7 @@ def main():
         downloader = Downloader(data_dir, state, concurrency, hf_token, civitai_token, reserve_bytes=reserve)
         results = timed("models", lambda: downloader.run(profile["models"]))
         report["timings"]["torch"] = torch_job.wait()
-        comfy.sync_requirements(comfy_dir, sha, state)
+        comfy.sync_requirements(comfy_dir, sha, state, manager=manager_enabled())
         comfy.install_node_deps(installed, state)
         report["timings"]["runtime"] = round(time.time() - runtime_started, 1)
         state.step("runtime", "done", "ready", key="runtime_ready")

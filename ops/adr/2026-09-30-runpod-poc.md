@@ -67,6 +67,13 @@ Accepted（PoC。記事側のボタン・案内表示は別途デザイン相談
 - `IDLE_STOP_MINUTES` などが数値でなくても、既定値で動く（自動停止が丸ごと無効にならない）。RunPod 以外で動かしたときは「終了しました」と表示しない。
 - image のビルドは branch ごとに順番待ちにする。試作の `:exp` が main のビルドを止めて、Docker Hub と GHCR の `latest` が食い違うことがないように。
 
+## Revision 2026-10-02: レビューの残り
+- 自動停止の「生成中」を、キューに残っているかではなく、ComfyUI が実行の通知（`execution_start`、`progress`、`progress_state` など）を出しているかで判断する。タブを閉じても通知は出るので長いバッチは切らず、固まった node は延長しない。進捗を出さずに 30 分以上かかる 1 つの node は止まったとみなす（実際にはまずない）。
+- モデルのダウンロードは、再試行のとき aria2 の続きから再開する（制御ファイルを 5 秒ごとに保存）。sha256 が合わなかったときだけ最初から。
+- プロファイルの名前（モデル名、directory、workflow 名、custom node の ID）は、起動時にパスとして安全か確かめる（`..`、絶対パス、記号を拒否、コード `profile_invalid`）。
+- `COMFY_REF` で ComfyUI を動かしたときは、Manager の `manager_requirements.txt` も入れ直す。
+- `workflows` のパターンは `*` と `**` だけにする（`check:runpod` でエラー）。
+
 ## Consequences
 - workflow を差し替えるときは `properties.models` も保つ必要がある。欠けているとプロファイル生成が警告を出す。
 - 記事側のカード（`{% runpod %}`）は 2026-10-02 の追記で決めた。ディスク容量はテンプレートに入っているので、カードには出さない。
