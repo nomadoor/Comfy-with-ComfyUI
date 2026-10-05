@@ -88,7 +88,7 @@ There are several other improvements, but this is enough to know for now if you 
 
 ![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video.png){media=image}
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video.json)
+{% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="255s", tags=["1MP"], samplers=[{ name: "1st", speed: "1.70 s/it" }, { name: "2nd", speed: "12.77 s/it" }] %}
 
 Like LTX-2, this is a 2-stage workflow. It first generates at half the target resolution, then upscales the result by 2x.
 
@@ -118,7 +118,7 @@ This has become more common with models such as Seedance 2: you can generate mul
 
 ![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.png){media=image}
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.json)
+{% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="256s", tags=["1MP"], samplers=[{ speed: "12.69 s/it" }] %}
 
 There is no special format. You can simply write something natural such as “a cut happens here...” and the model will recognize it.
 
@@ -148,7 +148,7 @@ LTX 2.5 can automatically estimate how long a video needs to be to express the c
 
 ![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor.png){media=image}
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor.json)
+{% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="221s", tags=["1MP"], samplers=[{ speed: "5.66 s/it" }] %}
 
 {% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_4567c3906de961a9c90bc01cef27db5d.png", width=40, align="left" %}
 **LTXV Duration Predictor**
@@ -167,7 +167,7 @@ It is only a prediction, so the result may be shorter or longer than expected. E
 
 ![](/media/basic-workflows/ltx-2-5/ltx_2_5_image2video.png){media=image}
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_image2video.json)
+{% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_image2video.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="254s", tags=["1MP"], samplers=[{ speed: "12.82 s/it" }] %}
 
 This works the same way as [image2video in LTX 2](/en/basic-workflows/ltx-2/#image2video). `LTXVImgToVideoInplace` inserts the input image as the first frame.
 
@@ -188,7 +188,7 @@ If you specify only the first and last images of the video, it becomes what is c
 
 ![](/media/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation.png){media=image}
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation.json)
+{% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="334s", tags=["1MP"], samplers=[{ speed: "16.08 s/it" }] %}
 
 {% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_2e39b3e006fcb35d96b87d649ded0146.png", width=40, align="left" %}
 **LTXV Add Guide**
@@ -236,7 +236,7 @@ Like a regular ControlNet, it can control the generated video with line art, dep
 
 ![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_union_control_pose.png){media=image}
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_union_control_pose.json)
+{% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_union_control_pose.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="404s", tags=["1MP"], samplers=[{ name: "1st", speed: "2.37 s/it" }, { name: "2nd", speed: "8.56 s/it" }] %}
 
 For a more detailed explanation of IC-LoRA, see [LTX 2 / IC-LoRA (Pose)](/en/basic-workflows/ltx-2/#ic-lora-pose).
 
@@ -264,7 +264,7 @@ There are all sorts, from turning day into night to flooding a scene. This time,
 
 ![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate.png){media=image}
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate.json)
+{% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="433s", tags=["1MP"], samplers=[{ speed: "27.37 s/it" }] %}
 
 The prompt needs a little care.
 
@@ -299,7 +299,7 @@ It does not output a video with a transparent background directly, though, so a 
 
 ![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen.png){media=image}
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen.json)
+{% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="369s", tags=["1MP"], samplers=[{ speed: "25.78 s/it" }] %}
 
 It does not use a prompt. Leave it empty.
 
@@ -347,7 +347,7 @@ To keep the computation down it processes the video in tiles, so it needs a cust
 
 ![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details.png){media=image}
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details.json)
+{% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="533s", tags=["4MP"] %}
 
 {% mediaRow img="/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details_resize.png" %}
 **Resize the video first**
