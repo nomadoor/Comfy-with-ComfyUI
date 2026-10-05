@@ -97,3 +97,4 @@ Uploading during the Cloudflare Pages / CI build is not possible: originals live
 
 - WebP is accepted as an original. When the source already is a WebP, converting it to PNG only made the file heavier (120-240 KB became 1.4-1.8 MB) without adding anything.
 - A WebP original is not re-encoded: media:sync keeps its image-data chunks byte for byte, drops ICCP / EXIF / XMP, and clears the matching VP8X flags. Animated WebP is rejected, like animated PNG. The dev-server preview reads WebP dimensions too.
+- Two WebP cases still go through the normal (lossy q90) encode, because dropping their metadata would change how they look: an EXIF orientation other than 1 (the pixels are rotated) and a color profile that is not sRGB (the colors are converted to sRGB). An sRGB profile is simply dropped.

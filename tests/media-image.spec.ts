@@ -103,7 +103,7 @@ test.describe("media image encoding", () => {
   test("a WebP original is published without re-encoding, minus its metadata chunks", async () => {
     const { encodeFullWebp, listWebpChunks } = await loadEncoder();
     const source = await sharp(await comfyPng(), { animated: false })
-      .withIccProfile("p3")
+      .withIccProfile("srgb")
       .withExif({ IFD0: { Copyright: "private" } })
       .webp({ quality: 80 })
       .toBuffer();
@@ -128,6 +128,26 @@ test.describe("media image encoding", () => {
     // A clean WebP comes out unchanged.
     const clean = await sharp(await comfyPng()).webp({ quality: 80 }).toBuffer();
     expect((await encodeFullWebp(clean)).data.equals(clean)).toBe(true);
+  });
+
+  test("a WebP whose metadata changes how it looks goes through the normal encode", async () => {
+    const { encodeFullWebp, iccDescription } = await loadEncoder();
+
+    // Display P3: the colors are converted to sRGB instead of losing their profile.
+    const p3 = await sharp(await comfyPng()).withIccProfile("p3").webp({ quality: 80 }).toBuffer();
+    expect(iccDescription((await sharp(p3).metadata()).icc)).not.toMatch(/srgb/i);
+    const fromP3 = await encodeFullWebp(p3);
+    expect((await sharp(fromP3.data).metadata()).icc).toBeUndefined();
+    expect(fromP3.data.equals(p3)).toBe(false);
+
+    // EXIF orientation 6 (rotate 90°): the pixels are rotated, so width and height swap.
+    const turned = await sharp({ create: { width: 300, height: 100, channels: 3, background: "#2a6ec8" } })
+      .withMetadata({ orientation: 6 })
+      .webp()
+      .toBuffer();
+    expect((await sharp(turned).metadata()).orientation).toBe(6);
+    const upright = await encodeFullWebp(turned);
+    expect([upright.width, upright.height]).toEqual([100, 300]);
   });
 
   test("an animated WebP is rejected", async () => {

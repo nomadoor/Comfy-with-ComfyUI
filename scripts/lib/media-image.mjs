@@ -1,6 +1,9 @@
 // Encode a local original (PNG/JPEG, possibly with ComfyUI workflow metadata) into the full-size WebP
 // published to R2. A WebP original is not re-encoded: its image data is published as is, with only
-// the metadata chunks removed, so it gets neither heavier nor lossier. Only this WebP is stored; thumbnails, article images, and OGP images are produced by
+// the metadata chunks removed, so it gets neither heavier nor lossier. Two cases still go through the
+// normal encode, because dropping their metadata would change how they look: an EXIF orientation
+// other than 1 (the pixels need rotating) and a color profile other than sRGB (the colors need
+// converting). Only this WebP is stored; thumbnails, article images, and OGP images are produced by
 // Cloudflare Image Transformations presets.
 //
 // sharp is pinned to an exact version in package.json: object keys are content hashes, so the same
@@ -36,7 +39,7 @@ export async function encodeFullWebp(input) {
   if ((meta.pages || 1) > 1) {
     throw new MediaImageError("アニメーション画像は対象外です");
   }
-  if (meta.format === "webp") {
+  if (meta.format === "webp" && (meta.orientation ?? 1) === 1 && (!meta.icc || /srgb/i.test(iccDescription(meta.icc)))) {
     const data = stripWebpMetadata(input);
     await verifyPublicWebp(data, meta.width, meta.height);
     return { data, width: meta.width, height: meta.height, type: "image/webp" };
@@ -55,6 +58,24 @@ export async function encodeFullWebp(input) {
 
   await verifyPublicWebp(data, info.width, info.height);
   return { data, width: info.width, height: info.height, type: "image/webp" };
+}
+
+/** The description of an ICC profile ("sRGB", "Display P3", ...), from its `desc` tag (v2 or v4). */
+export function iccDescription(icc) {
+  if (!icc || icc.length < 132) return "";
+  const count = icc.readUInt32BE(128);
+  for (let i = 0; i < count && 132 + i * 12 + 12 <= icc.length; i++) {
+    const at = 132 + i * 12;
+    if (icc.toString("latin1", at, at + 4) !== "desc") continue;
+    const tag = icc.subarray(icc.readUInt32BE(at + 4), icc.readUInt32BE(at + 4) + icc.readUInt32BE(at + 8));
+    const type = tag.toString("latin1", 0, 4);
+    if (type === "desc" && tag.length >= 12) return tag.toString("latin1", 12, 12 + tag.readUInt32BE(8)).replace(/\0+$/, "");
+    if (type === "mluc" && tag.length >= 28) {
+      const text = Buffer.from(tag.subarray(tag.readUInt32BE(24), tag.readUInt32BE(24) + tag.readUInt32BE(20)));
+      return text.swap16().toString("utf16le"); // UTF-16BE
+    }
+  }
+  return "";
 }
 
 // VP8X flag bits for the metadata chunks dropped below (ICC profile, EXIF, XMP).
