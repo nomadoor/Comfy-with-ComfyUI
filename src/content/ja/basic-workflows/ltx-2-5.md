@@ -218,7 +218,7 @@ LTX における ControlNet や、動画編集 LoRA のような役割を持つ�
 
 LTX 2.5 は LTX 2.3 用 IC-LoRA の多くと互換性があり、そのまま使えます。
 
-### IC-LoRA Union
+### Union Control
 
 一般的な ControlNet と同様、線画や深度マップ、ポーズ動画で生成動画を制御できます。
 
@@ -234,14 +234,14 @@ LTX 2.5 は LTX 2.3 用 IC-LoRA の多くと互換性があり、そのまま使
         └── ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors
 ```
 
-![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_controlnet_union_pose.png){media=image}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_union_control_pose.png){media=image}
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_controlnet_union_pose.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_union_control_pose.json)
 
 IC-LoRA の詳しい解説は [LTX 2/IC-LoRA (Pose)](/ja/basic-workflows/ltx-2/#ic-lora-pose) で行っているので、興味があれば見てみてください。
 
 {% outputs %}
-![input/pose](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_controlnet_union_pose_input.mp4){media=loop} ![output](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_controlnet_union_pose_output.mp4){media=loop}
+![input/pose](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_union_control_pose_input.mp4){media=loop} ![output](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_union_control_pose_output.mp4){media=loop}
 {% endoutputs %}
 
 ### Clean Plate

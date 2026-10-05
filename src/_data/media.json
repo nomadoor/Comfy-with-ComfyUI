@@ -2771,6 +2771,42 @@
     "bytes": 324902,
     "source": "26a00ba0b7da111b"
   },
+  "basic-workflows/ltx-2-5/ltx_2_5_ic_lora_union_control_pose_input.mp4": {
+    "key": "videos/8651e9afeaf8f927.mp4",
+    "width": 1536,
+    "height": 1280,
+    "type": "video/mp4",
+    "bytes": 1556437,
+    "source": "eeeee8a4ae7fa5a9",
+    "poster": {
+      "key": "images/559dab99d358215c.webp",
+      "width": 1536,
+      "height": 1280,
+      "bytes": 78400
+    }
+  },
+  "basic-workflows/ltx-2-5/ltx_2_5_ic_lora_union_control_pose_output.mp4": {
+    "key": "videos/61d05a5abf403bad.mp4",
+    "width": 768,
+    "height": 1280,
+    "type": "video/mp4",
+    "bytes": 1449800,
+    "source": "b93a0f0308cc2c19",
+    "poster": {
+      "key": "images/85159ecae2353c23.webp",
+      "width": 768,
+      "height": 1280,
+      "bytes": 84550
+    }
+  },
+  "basic-workflows/ltx-2-5/ltx_2_5_ic_lora_union_control_pose.png": {
+    "key": "images/a03f45fa484c636f.webp",
+    "width": 7065,
+    "height": 2128,
+    "type": "image/webp",
+    "bytes": 424518,
+    "source": "7af695e8ee8888c1"
+  },
   "basic-workflows/ltx-2-5/ltx_2_5_image2video_input.webp": {
     "key": "images/cbaaa9a6f6d9ff68.webp",
     "width": 682,
