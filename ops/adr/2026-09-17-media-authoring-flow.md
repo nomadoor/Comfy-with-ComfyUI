@@ -18,7 +18,7 @@ Uploading during the Cloudflare Pages / CI build is not possible: originals live
 
 ### Authoring flow
 
-1. Place the original (PNG / JPEG / mp4) under `COMFY_MEDIA_ORIGINALS` as `<section>/<article slug>/<lowercase_snake_case>.<ext>`.
+1. Place the original (PNG / JPEG / WebP / mp4; WebP since 2026-10-05) under `COMFY_MEDIA_ORIGINALS` as `<section>/<article slug>/<lowercase_snake_case>.<ext>`.
 2. Write `![](/media/<logical name>){media=image|loop|player}` in the article.
 3. Check it on the dev server (`npm run dev`); unuploaded originals preview directly.
 4. Commit. The pre-commit hook runs `media:sync`, which uploads new or changed media and stages `src/_data/media.json`.
@@ -92,3 +92,8 @@ Uploading during the Cloudflare Pages / CI build is not possible: originals live
 - `scripts/lib/media-sync.mjs`, `scripts/lib/media-local-preview.mjs`, `scripts/lib/media-video.mjs`, `scripts/lib/media-refs.mjs`
 - `tests/media-authoring.spec.ts`
 - `ops/style-writing.md`, `ops/adr/2026-09-17-media-transforms.md`, `.claude/skills/article-authoring/SKILL.md`
+
+## Revision 2026-10-05: WebP originals
+
+- WebP is accepted as an original. When the source already is a WebP, converting it to PNG only made the file heavier (120-240 KB became 1.4-1.8 MB) without adding anything.
+- A WebP original is not re-encoded: media:sync keeps its image-data chunks byte for byte, drops ICCP / EXIF / XMP, and clears the matching VP8X flags. Animated WebP is rejected, like animated PNG. The dev-server preview reads WebP dimensions too.
