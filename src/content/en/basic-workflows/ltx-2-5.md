@@ -6,7 +6,7 @@ slug: ltx-2-5
 navId: ltx-2-5
 title: "LTX 2.5"
 created: 2026-09-01
-updated: 2026-09-03
+updated: 2026-10-05
 summary: "Generate video and audio with LTX 2.5"
 seoTitle: "LTX 2.5 in ComfyUI: Generate Video and Audio Together"
 seoDescription: "Use Lightricks' LTX 2.5 in ComfyUI: Multi-shot, Duration Predictor, text2video, image2video, FLF2V, and IC-LoRA, with easy-to-read workflows."
@@ -51,6 +51,13 @@ There are several other improvements, but this is enough to know for now if you 
 
 ## Model Download
 
+> [!WARNING]
+> LTX 2.5 models cannot be downloaded without authentication. Log in with your Hugging Face account and click `Agree and Access` on the [LTX-2.5 page](https://huggingface.co/Lightricks/LTX-2.5).
+>
+> ![](/media/basic-workflows/ltx-2-5/ltx_2_5_huggingface_agree_and_access.png){media=image}
+>
+> The IC-LoRAs used later on also need the same agreement on each of their pages.
+
 - diffusion_models
   - [ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors](https://huggingface.co/Lightricks/LTX-2.5/blob/main/diffusion_models/ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors) (21.5 GB)
 - latent_upscale_models
@@ -79,7 +86,7 @@ There are several other improvements, but this is enough to know for now if you 
 
 ## text2video
 
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_891b0474ea9ec2636b188b803f6ef2c3.png){media=image}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video.json)
 
@@ -94,7 +101,7 @@ This value must also be a multiple of 32, so set the target width and height to 
 
 {% endmediaRow %}
 
-{% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_82803fd97cf50afbdb616105f14b0405.png", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_frame.png", width=40, align="left" %}
 **Frame count settings**
 
 In this workflow, enter the desired duration in seconds (sec) and the FPS, and the frame count is rounded to a suitable `8n + 1` value.
@@ -102,14 +109,14 @@ In this workflow, enter the desired duration in seconds (sec) and the FPS, and t
 {% endmediaRow %}
 
 {% outputs %}
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_e68699b3ebb44d9b20b5d85c73cf9644.mp4){media=loop}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_output.mp4){media=loop}
 {% endoutputs %}
 
 ### Multi-shot
 
 This has become more common with models such as Seedance 2: you can generate multiple shots in a single run.
 
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7d681d86ce23e28e4e48aed1fe452c7d.png){media=image}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.json)
 
@@ -118,7 +125,7 @@ There is no special format. You can simply write something natural such as “a 
 This makes prompts easy to write, but the model may not always recognize them as Multi-shot. If it does not work, be patient and try a few times.
 
 {% outputs %}
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7fe2eadbd6abb69f2015df4f8531fe26.mp4){media=loop}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot_output.mp4){media=loop}
 {% endoutputs %}
 
 ### Duration Predictor
@@ -139,7 +146,7 @@ LTX 2.5 can automatically estimate how long a video needs to be to express the c
         └── ltx-2.5-duration-head-bf16.safetensors
 ```
 
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_ecf49f82e56e0fdec6283401d71ae657.png){media=image}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor.json)
 
@@ -152,9 +159,13 @@ It is only a prediction, so the result may be shorter or longer than expected. E
 
 {% endmediaRow %}
 
+{% outputs %}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor_output.mp4){media=loop}
+{% endoutputs %}
+
 ## image2video
 
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_e978305c53f6c658984db4ad42c71a7f.png){media=image}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_image2video.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_image2video.json)
 
@@ -164,7 +175,7 @@ This works the same way as [image2video in LTX 2](/en/basic-workflows/ltx-2/#ima
 > For various reasons, earlier workflows deliberately degraded the input image with `LTXV Preprocess`. With LTX 2.5, at least in my experience, it no longer seems necessary, so I have left it out.
 
 {% outputs %}
-![Input](/media/basic-workflows/ltx-2-5/legacy_gyazo_856453de1d4eaea2b8e02a8e6993db08.png){media=image} ![Output](/media/basic-workflows/ltx-2-5/legacy_gyazo_d8bdced1eba00d48d1f5ff65dfb4e336.mp4){media=loop}
+![Input](/media/basic-workflows/ltx-2-5/ltx_2_5_image2video_input.webp){media=image} ![Output](/media/basic-workflows/ltx-2-5/ltx_2_5_image2video_output.mp4){media=loop}
 {% endoutputs %}
 
 ---
@@ -175,7 +186,7 @@ This workflow takes any number of images and smoothly fills in the gaps between 
 
 If you specify only the first and last images of the video, it becomes what is commonly called **FLF2V**.
 
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_a0e7571b01f97b79d73325390e0a4d3c.png){media=image}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation.json)
 
@@ -196,7 +207,7 @@ Add more nodes and connect them in sequence to create Generative Interpolation.
 {% endmediaRow %}
 
 {% outputs %}
-![Input 1](/media/basic-workflows/ltx-2-5/legacy_gyazo_de4eaa85c26607d8b0f98f774880e2b8.png){media=image} ![Input 2](https://gyazo.com/0ef0afcbe6a2d35cf018bb0f77e0a0ff){gyazo=image} ![Input 3](/media/basic-workflows/ltx-2-5/legacy_gyazo_c2058ec73687479e7abe3fa7f21f9d64.png){media=image} ![Output](/media/basic-workflows/ltx-2-5/legacy_gyazo_e0e2fcb86f4a8513708807bacd79af8c.mp4){media=loop}
+![Input 1](/media/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation_input1.webp){media=image} ![Input 2](/media/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation_input2.webp){media=image} ![Input 3](/media/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation_input3.webp){media=image} ![Output](/media/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation_output.mp4){media=loop}
 {% endoutputs %}
 
 ---
@@ -207,11 +218,14 @@ IC-LoRA plays a role similar to ControlNet or a video-editing LoRA for LTX.
 
 LTX 2.5 is compatible with many IC-LoRAs made for LTX 2.3, and they can be used without modification.
 
-There are many types available when you include those made for LTX 2.3, but here we will use the most basic one, Union Control.
+### IC-LoRA Union
 
-### Model download
+Like a regular ControlNet, it can control the generated video with line art, depth maps, or pose videos.
 
-- [ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control/blob/main/ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors) (654 MB)
+**Model download**
+
+- loras
+  - [ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control/blob/main/ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors) (654 MB)
 
 ```text
 📂ComfyUI/
@@ -220,40 +234,141 @@ There are many types available when you include those made for LTX 2.3, but here
         └── ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors
 ```
 
-### IC-LoRA Union
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_controlnet_union_pose.png){media=image}
 
-Like a regular ControlNet, it can control the generated video with line art, depth maps, or pose videos.
-
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_4e194652b6db74b853390f20017bb542.png){media=image}
-
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_pose.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_controlnet_union_pose.json)
 
 For a more detailed explanation of IC-LoRA, see [LTX 2 / IC-LoRA (Pose)](/en/basic-workflows/ltx-2/#ic-lora-pose).
 
 {% outputs %}
-![Input / pose](/media/basic-workflows/ltx-2-5/legacy_gyazo_824ba34d0fa1ef036db386c4f7f7b5f6.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2-5/legacy_gyazo_4f55983a4205360420e7cc605402301b.mp4){media=loop}
+![Input / pose](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_controlnet_union_pose_input.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_controlnet_union_pose_output.mp4){media=loop}
 {% endoutputs %}
 
----
+### Clean Plate
 
-## Use it as an upscaler
+Lightricks has released plenty of [fun IC-LoRAs](https://huggingface.co/collections/Lightricks/ltx-25-creative-lab) for VFX work with LTX 2.5.
 
-LTX 2.5 uses a 2-stage process: it generates at half resolution, then doubles the resolution and cleans the result up once more.
+There are all sorts, from turning day into night to flooding a scene. This time, let's try **Clean Plate**, which removes a specific thing from a video.
 
-So it is only natural to use the second stage on its own and turn it into a 2x upscaler for any video.
+**Model download**
 
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7fa914cfea3fe3b4648960d1c3474258.png){media=image}
+- loras
+  - [ltx-2.5-22b-ic-lora-clean-plate-1.0.safetensors](https://huggingface.co/Lightricks/LTX-2.5-22b-IC-LoRA-Clean-Plate) (327 MB)
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_x2_upscaler.json)
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂loras/
+        └── ltx-2.5-22b-ic-lora-clean-plate-1.0.safetensors
+```
 
-It simply runs VAE Encode on any video and connects it to the second stage of the workflow used above.
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate.png){media=image}
 
-However, the `ManualSigmas` values used above make the effective denoise too strong, changing too much of the original video.
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate.json)
 
-Here, I replaced it with `Basic Scheduler` and set denoise to 0.3. Adjust it as needed.
+The prompt needs a little care.
+
+Instead of writing "remove ○○" as you would for image editing, describe the scene after ○○ is gone, as ordinary text. When you know exactly what should disappear, adding that it is absent, as in `no bicycle anywhere in the frame`, makes it work more reliably.
+
+> [!NOTE]
+> Things at the edge of the frame or partly hidden seem to disappear cleanly, while something filling the center of the frame seems hard for it. There is probably too little background left in the video to reconstruct from.
 
 {% outputs %}
-![Input](/media/basic-workflows/ltx-2-5/legacy_gyazo_2090f2ae9f78af154922c00cd43e10f7.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2-5/legacy_gyazo_bb03d5683d784b144c290400638ba139.mp4){media=loop}
+![Input](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate_input.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate_output.mp4){media=loop}
 {% endoutputs %}
 
-Many competing models are now available, but its ability to produce natural-looking video still stands out among them. It would be nice to use each model where it works best.
+In most cases, this workflow can run other IC-LoRAs too. A few need a dedicated workflow, though, so let's look at those below.
+
+### Alpha Gen
+
+It cuts the foreground out of a video.
+
+It does not output a video with a transparent background directly, though, so a little post-processing is needed.
+
+**Model download**
+
+- loras
+  - [ltx-2.5-22b-ic-lora-alpha-gen-0.9.safetensors](https://huggingface.co/Lightricks/LTX-2.5-22b-IC-LoRA-Alpha-Gen) (1.31 GB)
+
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂loras/
+        └── ltx-2.5-22b-ic-lora-alpha-gen-0.9.safetensors
+```
+
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen.png){media=image}
+
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen.json)
+
+It does not use a prompt. Leave it empty.
+
+The output is a black-and-white mask video.
+
+ComfyUI cannot make transparent video, so here we turn it into a green-screen video.
+
+{% mediaRow img="/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen_image_composite_masked.png" %}
+**Composite onto a green screen**
+
+- Turn the black-and-white video into a mask with `ImageToMask`
+- Invert it with `InvertMask`
+- With `ImageCompositeMasked`, composite a solid green `EmptyImage` onto the background
+
+{% endmediaRow %}
+
+> [!NOTE]
+> With videos longer than 145 frames, the original footage seems to start leaking into the mask. The workflow cuts the video at 145 frames.
+
+{% outputs %}
+![Input](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen_input.mp4){media=loop} ![Mask](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen_output_mask.mp4){media=loop} ![Green screen](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen_output_gb.mp4){media=loop}
+{% endoutputs %}
+
+### Refine Details
+
+It upscales any video to a high resolution such as 4K while drawing in fine detail.
+
+To keep the computation down it processes the video in tiles, so it needs a custom node.
+
+**Custom node**
+
+- [Lightricks/ComfyUI-LTXVideo](https://github.com/Lightricks/ComfyUI-LTXVideo)
+
+**Model download**
+
+- loras
+  - [ltx-2.5-22b-ic-lora-refine-details-1.0.safetensors](https://huggingface.co/Lightricks/LTX-2.5-22b-IC-LoRA-Refine-Details) (1.31 GB)
+
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂loras/
+        └── ltx-2.5-22b-ic-lora-refine-details-1.0.safetensors
+```
+
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details.png){media=image}
+
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details.json)
+
+{% mediaRow img="/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details_resize.png" %}
+**Resize the video first**
+
+First, enlarge the video to a large size (about 4 MP in this workflow).
+
+What Refine Details does is redraw that stretched, blurry video cleanly.
+
+{% endmediaRow %}
+
+{% mediaRow img="/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details_tiled_fusion_sampler.png" %}
+**Tiled Fusion Sampler**
+
+`LTXVTiledFusionSampler` splits the video into tiles and samples them.
+
+There is no need to change its settings.
+
+{% endmediaRow %}
+
+In the prompt, write words about image quality, such as `sharp photographic detail` or `natural film grain`, not about what is in the video. Every tile receives the whole prompt, so if you name a person, that person can get drawn into tiles where they are not.
+
+{% outputs %}
+![Input](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details_input.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details_output.mp4){media=loop}
+{% endoutputs %}

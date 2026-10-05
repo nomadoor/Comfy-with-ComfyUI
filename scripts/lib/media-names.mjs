@@ -3,7 +3,7 @@
 // Markdown and data files reference R2 media as `/media/<logical name>`. The logical name is the
 // path of the original file relative to COMFY_MEDIA_ORIGINALS (for example
 // `basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png`). src/_data/media.json maps each logical
-// name to one R2 object: `images/<hash>.webp` (full-size WebP derived from a PNG/JPEG original) or
+// name to one R2 object: `images/<hash>.webp` (full-size WebP derived from a PNG/JPEG/WebP original) or
 // `videos/<hash>.mp4`. The object URL is `https://<media.host>/<key>`; resized variants are served through
 // Cloudflare Image Transformations presets (`media.transforms` in src/_data/site.json).
 
@@ -15,6 +15,7 @@ export const TYPE_BY_EXTENSION = {
   png: "image/png",
   jpg: "image/jpeg",
   jpeg: "image/jpeg",
+  webp: "image/webp",
   mp4: "video/mp4"
 };
 
@@ -23,6 +24,7 @@ export const STORED_TYPE_BY_EXTENSION = {
   png: "image/webp",
   jpg: "image/webp",
   jpeg: "image/webp",
+  webp: "image/webp",
   mp4: "video/mp4"
 };
 

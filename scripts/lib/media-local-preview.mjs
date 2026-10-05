@@ -14,7 +14,7 @@ import { extensionOf, validateLogicalName } from "./media-names.mjs";
 export const LOCAL_PREVIEW_PREFIX = "/__media-originals/";
 export const ORIGINALS_ENV = "COMFY_MEDIA_ORIGINALS";
 
-const CONTENT_TYPES = { png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", mp4: "video/mp4" };
+const CONTENT_TYPES = { png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", webp: "image/webp", mp4: "video/mp4" };
 const hashCache = new Map();
 
 export function originalsRootFromEnv(env = process.env) {
@@ -62,7 +62,7 @@ export function sourceHash(file) {
 
 const dimensionCache = new Map();
 
-// Read PNG/JPEG dimensions synchronously (renderers are synchronous).
+// Read PNG/JPEG/WebP dimensions synchronously (renderers are synchronous).
 function imageDimensions(file) {
   const fd = fs.openSync(file, "r");
   try {
@@ -71,6 +71,15 @@ function imageDimensions(file) {
     const buffer = head.subarray(0, length);
     if (buffer.toString("latin1", 1, 4) === "PNG" && buffer.toString("latin1", 12, 16) === "IHDR") {
       return { width: buffer.readUInt32BE(16), height: buffer.readUInt32BE(20) };
+    }
+    if (buffer.toString("latin1", 0, 4) === "RIFF" && buffer.toString("latin1", 8, 12) === "WEBP" && buffer.length >= 30) {
+      const chunk = buffer.toString("latin1", 12, 16);
+      if (chunk === "VP8X") return { width: buffer.readUIntLE(24, 3) + 1, height: buffer.readUIntLE(27, 3) + 1 };
+      if (chunk === "VP8 ") return { width: buffer.readUInt16LE(26) & 0x3fff, height: buffer.readUInt16LE(28) & 0x3fff };
+      if (chunk === "VP8L") {
+        const bits = buffer.readUInt32LE(21);
+        return { width: (bits & 0x3fff) + 1, height: ((bits >>> 14) & 0x3fff) + 1 };
+      }
     }
     if (buffer[0] === 0xff && buffer[1] === 0xd8) {
       let offset = 2;

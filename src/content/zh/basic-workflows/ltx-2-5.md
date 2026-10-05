@@ -6,7 +6,7 @@ slug: ltx-2-5
 navId: ltx-2-5
 title: "LTX 2.5"
 created: 2026-09-01
-updated: 2026-09-03
+updated: 2026-10-05
 summary: "使用 LTX 2.5 生成视频和音频"
 seoTitle: "在 ComfyUI 中使用 LTX 2.5：同时生成视频与音频"
 seoDescription: "在 ComfyUI 中使用 Lightricks 的 LTX 2.5：推荐设置与模型、Multi-shot、Duration Predictor、text2video、image2video、FLF2V 和 IC-LoRA，附整理清晰易读的工作流。"
@@ -51,6 +51,13 @@ tags: []
 
 ## 模型下载
 
+> [!WARNING]
+> LTX 2.5 的模型需要认证才能下载。请用 Hugging Face 账号登录，然后在 [LTX-2.5 的页面](https://huggingface.co/Lightricks/LTX-2.5) 点击 `Agree and Access`。
+>
+> ![](/media/basic-workflows/ltx-2-5/ltx_2_5_huggingface_agree_and_access.png){media=image}
+>
+> 后面使用的 IC-LoRA，也需要在各自的页面上同样点击同意。
+
 - diffusion_models
   - [ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors](https://huggingface.co/Lightricks/LTX-2.5/blob/main/diffusion_models/ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors) (21.5 GB)
 - latent_upscale_models
@@ -79,7 +86,7 @@ tags: []
 
 ## text2video
 
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_891b0474ea9ec2636b188b803f6ef2c3.png){media=image}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video.json)
 
@@ -94,7 +101,7 @@ tags: []
 
 {% endmediaRow %}
 
-{% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_82803fd97cf50afbdb616105f14b0405.png", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_frame.png", width=40, align="left" %}
 **帧数设置**
 
 在这个工作流中，输入想要生成的视频秒数（sec）和 FPS 后，帧数会自动取整为合适的 `8n + 1`。
@@ -102,14 +109,14 @@ tags: []
 {% endmediaRow %}
 
 {% outputs %}
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_e68699b3ebb44d9b20b5d85c73cf9644.mp4){media=loop}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_output.mp4){media=loop}
 {% endoutputs %}
 
 ### Multi-shot
 
 从 Seedance 2 等模型开始，这种功能逐渐常见起来。现在一次生成就能制作多个镜头。
 
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7d681d86ce23e28e4e48aed1fe452c7d.png){media=image}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.json)
 
@@ -118,7 +125,7 @@ tags: []
 写起来很轻松，不过模型有时也不会将它识别为 Multi-shot。遇到这种情况，就耐心多试几次吧。
 
 {% outputs %}
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7fe2eadbd6abb69f2015df4f8531fe26.mp4){media=loop}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot_output.mp4){media=loop}
 {% endoutputs %}
 
 ### Duration Predictor
@@ -139,7 +146,7 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
         └── ltx-2.5-duration-head-bf16.safetensors
 ```
 
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_ecf49f82e56e0fdec6283401d71ae657.png){media=image}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor.json)
 
@@ -152,9 +159,13 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
 
 {% endmediaRow %}
 
+{% outputs %}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor_output.mp4){media=loop}
+{% endoutputs %}
+
 ## image2video
 
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_e978305c53f6c658984db4ad42c71a7f.png){media=image}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_image2video.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_image2video.json)
 
@@ -164,7 +175,7 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
 > 以前出于各种原因，会使用 `LTXV Preprocess` 故意降低输入图像的质量。不过在 LTX 2.5 中，至少就我使用的情况来看似乎已经不再需要，所以这里将它去掉了。
 
 {% outputs %}
-![输入](/media/basic-workflows/ltx-2-5/legacy_gyazo_856453de1d4eaea2b8e02a8e6993db08.png){media=image} ![输出](/media/basic-workflows/ltx-2-5/legacy_gyazo_d8bdced1eba00d48d1f5ff65dfb4e336.mp4){media=loop}
+![输入](/media/basic-workflows/ltx-2-5/ltx_2_5_image2video_input.webp){media=image} ![输出](/media/basic-workflows/ltx-2-5/ltx_2_5_image2video_output.mp4){media=loop}
 {% endoutputs %}
 
 ---
@@ -175,7 +186,7 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
 
 如果只指定视频的第一张和最后一张图像，就是通常所说的 **FLF2V**。
 
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_a0e7571b01f97b79d73325390e0a4d3c.png){media=image}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation.json)
 
@@ -196,7 +207,7 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
 {% endmediaRow %}
 
 {% outputs %}
-![输入 1](/media/basic-workflows/ltx-2-5/legacy_gyazo_de4eaa85c26607d8b0f98f774880e2b8.png){media=image} ![输入 2](https://gyazo.com/0ef0afcbe6a2d35cf018bb0f77e0a0ff){gyazo=image} ![输入 3](/media/basic-workflows/ltx-2-5/legacy_gyazo_c2058ec73687479e7abe3fa7f21f9d64.png){media=image} ![输出](/media/basic-workflows/ltx-2-5/legacy_gyazo_e0e2fcb86f4a8513708807bacd79af8c.mp4){media=loop}
+![输入 1](/media/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation_input1.webp){media=image} ![输入 2](/media/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation_input2.webp){media=image} ![输入 3](/media/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation_input3.webp){media=image} ![输出](/media/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation_output.mp4){media=loop}
 {% endoutputs %}
 
 ---
@@ -207,11 +218,14 @@ IC-LoRA 在 LTX 中的作用类似于 ControlNet 或视频编辑 LoRA。
 
 LTX 2.5 与许多为 LTX 2.3 制作的 IC-LoRA 兼容，可以直接使用。
 
-算上 LTX 2.3 用的模型，IC-LoRA 的种类非常多。这里先试试最基本的 Union Control。
+### IC-LoRA Union
 
-### 模型下载
+和普通 ControlNet 一样，可以用线稿、深度图或姿势视频控制生成视频。
 
-- [ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control/blob/main/ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors) (654 MB)
+**模型下载**
+
+- loras
+  - [ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control/blob/main/ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors) (654 MB)
 
 ```text
 📂ComfyUI/
@@ -220,40 +234,141 @@ LTX 2.5 与许多为 LTX 2.3 制作的 IC-LoRA 兼容，可以直接使用。
         └── ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors
 ```
 
-### IC-LoRA Union
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_controlnet_union_pose.png){media=image}
 
-和普通 ControlNet 一样，可以用线稿、深度图或姿势视频控制生成视频。
-
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_4e194652b6db74b853390f20017bb542.png){media=image}
-
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_pose.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_controlnet_union_pose.json)
 
 关于 IC-LoRA 的详细说明，请参阅 [LTX 2 / IC-LoRA (Pose)](/zh/basic-workflows/ltx-2/#ic-lora-pose)。
 
 {% outputs %}
-![输入 / 姿势](/media/basic-workflows/ltx-2-5/legacy_gyazo_824ba34d0fa1ef036db386c4f7f7b5f6.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2-5/legacy_gyazo_4f55983a4205360420e7cc605402301b.mp4){media=loop}
+![输入 / 姿势](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_controlnet_union_pose_input.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_controlnet_union_pose_output.mp4){media=loop}
 {% endoutputs %}
 
----
+### Clean Plate
 
-## 用作放大模型
+Lightricks 官方发布了许多可以用 LTX 2.5 做 VFX 处理的[有趣 IC-LoRA](https://huggingface.co/collections/Lightricks/ltx-25-creative-lab)。
 
-LTX 2.5 采用 2 阶段结构：先以一半分辨率生成，再将分辨率放大 2 倍并重新整理画面。
+有把白天变成夜晚的，也有让场景被水淹没的，种类很多。这次我们来试试能把视频中特定物体去掉的 **Clean Plate**。
 
-既然如此，只使用第 2 阶段，把它当作任意视频的 2 倍放大模型也是很自然的想法。
+**模型下载**
 
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7fa914cfea3fe3b4648960d1c3474258.png){media=image}
+- loras
+  - [ltx-2.5-22b-ic-lora-clean-plate-1.0.safetensors](https://huggingface.co/Lightricks/LTX-2.5-22b-IC-LoRA-Clean-Plate) (327 MB)
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_x2_upscaler.json)
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂loras/
+        └── ltx-2.5-22b-ic-lora-clean-plate-1.0.safetensors
+```
 
-这里只是对任意视频进行 VAE Encode，再接到前面一直使用的工作流第 2 阶段。
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate.png){media=image}
 
-不过，如果继续使用前面的 `ManualSigmas` 数值，实际 denoise 会过强，原视频的变化也会太大。
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate.json)
 
-这里改用 `Basic Scheduler`，并将 denoise 设为 0.3。请根据需要调整。
+提示词的写法需要注意一下。
+
+不要像图像编辑那样写“去掉〇〇”，而是用普通的句子描述〇〇消失之后的景象。如果要去掉的东西很明确，可以像 `no bicycle anywhere in the frame` 这样，再补充一句“没有它”，效果会更稳定。
+
+> [!NOTE]
+> 位于画面边缘或部分被遮挡的物体似乎比较容易去干净，而占据画面中央大部分的物体似乎不太擅长。大概是因为去掉之后，视频中几乎没有留下可以参考的背景吧。
 
 {% outputs %}
-![输入](/media/basic-workflows/ltx-2-5/legacy_gyazo_2090f2ae9f78af154922c00cd43e10f7.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2-5/legacy_gyazo_bb03d5683d784b144c290400638ba139.mp4){media=loop}
+![输入](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate_input.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate_output.mp4){media=loop}
 {% endoutputs %}
 
-虽然现在也出现了许多竞争模型，但它生成自然视频的能力仍然相当突出。希望大家能根据用途灵活使用不同的模型。
+基本上，用这个工作流也能运行其他 IC-LoRA。不过也有几个需要专用工作流，下面来看看。
+
+### Alpha Gen
+
+可以把视频中的前景抠出来。
+
+不过它不会直接输出透明背景的视频，所以需要稍微做一些后期处理。
+
+**模型下载**
+
+- loras
+  - [ltx-2.5-22b-ic-lora-alpha-gen-0.9.safetensors](https://huggingface.co/Lightricks/LTX-2.5-22b-IC-LoRA-Alpha-Gen) (1.31 GB)
+
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂loras/
+        └── ltx-2.5-22b-ic-lora-alpha-gen-0.9.safetensors
+```
+
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen.png){media=image}
+
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen.json)
+
+不使用提示词，保持空白即可。
+
+输出的是黑白的遮罩视频。
+
+ComfyUI 无法制作透明视频，所以这里把它做成绿幕视频。
+
+{% mediaRow img="/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen_image_composite_masked.png" %}
+**合成到绿幕上**
+
+- 用 `ImageToMask` 把黑白视频转成遮罩
+- 用 `InvertMask` 反转
+- 用 `ImageCompositeMasked`，把纯绿色的 `EmptyImage` 合成到背景部分
+
+{% endmediaRow %}
+
+> [!NOTE]
+> 超过 145 帧的视频，原视频的内容似乎会开始混进遮罩。工作流中截取到 145 帧。
+
+{% outputs %}
+![输入](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen_input.mp4){media=loop} ![遮罩](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen_output_mask.mp4){media=loop} ![绿幕](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen_output_gb.mp4){media=loop}
+{% endoutputs %}
+
+### Refine Details
+
+在补充细节的同时，把任意视频放大到 4K 这样的高分辨率。
+
+为了降低计算量，它会把视频分成图块（tile）来处理，因此需要自定义节点。
+
+**自定义节点**
+
+- [Lightricks/ComfyUI-LTXVideo](https://github.com/Lightricks/ComfyUI-LTXVideo)
+
+**模型下载**
+
+- loras
+  - [ltx-2.5-22b-ic-lora-refine-details-1.0.safetensors](https://huggingface.co/Lightricks/LTX-2.5-22b-IC-LoRA-Refine-Details) (1.31 GB)
+
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂loras/
+        └── ltx-2.5-22b-ic-lora-refine-details-1.0.safetensors
+```
+
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details.png){media=image}
+
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details.json)
+
+{% mediaRow img="/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details_resize.png" %}
+**先调整视频尺寸**
+
+先把视频拉伸到较大的尺寸（这个工作流中约为 4 MP）。
+
+Refine Details 做的事情，就是把这种被拉伸后变模糊的视频，重新清晰地描绘出来。
+
+{% endmediaRow %}
+
+{% mediaRow img="/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details_tiled_fusion_sampler.png" %}
+**Tiled Fusion Sampler**
+
+`LTXVTiledFusionSampler` 会把视频分割成图块后进行采样。
+
+设置不需要特别修改。
+
+{% endmediaRow %}
+
+提示词里写的不是画面中的内容，而是 `sharp photographic detail`、`natural film grain` 这类关于画质的词。每个图块都会收到完整的提示词，所以如果写了人物等内容，它可能会被画进没有这个人的图块里。
+
+{% outputs %}
+![输入](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details_input.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details_output.mp4){media=loop}
+{% endoutputs %}

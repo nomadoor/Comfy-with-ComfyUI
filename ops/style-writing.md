@@ -132,7 +132,7 @@
 - 既存の `{gyazo=...}` は同じ意味の互換記法。新規では使わない。
 - R2 の画像・動画は `/media/<論理名>` で参照する。論理名は原本置き場（`COMFY_MEDIA_ORIGINALS`）からの相対パス（例: `basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png`）。
 - 書き方の流れ：
-  1. 原本（PNG / JPEG / mp4）を原本置き場に置く
+  1. 原本（PNG / JPEG / WebP / mp4）を原本置き場に置く。手元にあるのが WebP ならそのまま置く（PNG に変換しても情報は増えず重くなるだけ）。WebP は再エンコードせず、画像以外のチャンク（色プロファイル、EXIF、XMP）だけを外して公開する。ただし向きの情報（EXIF Orientation）付きのものと、sRGB 以外の色プロファイル付きのものは、見た目が変わらないよう通常どおり変換する
   2. 記事に `![](/media/<論理名>){media=image}`（動画は `{media=loop}` / `{media=player}`）と書く
   3. `npm run dev` の localhost で確認する（未アップロードの原本はそのままプレビューされる）
   4. コミットすると pre-commit フックが `media:sync` を実行し、原寸 WebP（動画は metadata を除いた mp4 と poster）への変換・R2 アップロード・`src/_data/media.json` 登録を自動で行う

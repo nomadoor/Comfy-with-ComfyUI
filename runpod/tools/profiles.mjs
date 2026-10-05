@@ -29,10 +29,10 @@ const readJSON = (file, fallback) => (fs.existsSync(file) ? JSON.parse(fs.readFi
 
 // --- Sample inputs
 // A workflow's input files are ordinary site media: the original sits in COMFY_MEDIA_ORIGINALS as
-// <article>/<stem>.png (or .jpg), media:sync uploads it to R2 as WebP, and the LoadImage node names
+// <article>/<stem>.png (or .jpg / .webp), media:sync uploads it to R2 as WebP, and the LoadImage node names
 // the file the Pod will write into input/, <stem>.webp. So one name links node, original and R2 object.
 const MEDIA_MANIFEST = path.resolve("src", "_data", "media.json");
-const ORIGINAL_EXTS = [".png", ".jpg", ".jpeg"];
+const ORIGINAL_EXTS = [".png", ".jpg", ".jpeg", ".webp"];
 
 export const inputFileName = (node) =>
   INPUT_NODES.has(node.type) && node.mode !== 4
