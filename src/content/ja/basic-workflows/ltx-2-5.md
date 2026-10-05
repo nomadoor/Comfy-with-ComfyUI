@@ -6,7 +6,7 @@ slug: ltx-2-5
 navId: ltx-2-5
 title: "LTX 2.5"
 created: 2026-09-01
-updated: 2026-09-03
+updated: 2026-10-05
 summary: "LTX 2.5で動画と音声を生成する"
 seoTitle: "ComfyUIでLTX 2.5を使う：動画と音声を同時に生成"
 seoDescription: "LightricksのLTX 2.5をComfyUIで使う方法。推奨設定とモデル、Multi-shotやDuration Predictor、text2video、image2video、FLF2V、IC-LoRAを、読みやすく整理したworkflow付きで解説します。"
@@ -51,6 +51,13 @@ tags: []
 
 ## モデルのダウンロード
 
+> [!WARNING]
+> LTX 2.5 のモデルは、認証しないとダウンロードできません。Hugging Face のアカウントでログインし、[LTX-2.5 のページ](https://huggingface.co/Lightricks/LTX-2.5) で `Agree and Access` をクリックしてください。
+>
+> ![](/media/basic-workflows/ltx-2-5/ltx_2_5_huggingface_agree_and_access.png){media=image}
+>
+> 後半で使う IC-LoRA も、それぞれのページで同じように同意が必要です。
+
 - diffusion_models
   - [ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors](https://huggingface.co/Lightricks/LTX-2.5/blob/main/diffusion_models/ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors) (21.5 GB)
 - latent_upscale_models
@@ -79,7 +86,7 @@ tags: []
 
 ## text2video
 
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_891b0474ea9ec2636b188b803f6ef2c3.png){media=image}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video.json)
 
@@ -94,7 +101,7 @@ LTX-2 と同じく、まず目標の半分の解像度で作り、そのあと 2
 
 {% endmediaRow %}
 
-{% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_82803fd97cf50afbdb616105f14b0405.png", width=40, align="left" %}
+{% mediaRow img="/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_frame.png", width=40, align="left" %}
 **フレーム数の設定**
 
 この workflow では、作りたい動画の秒数（sec）と FPS を入力すると、適切な `8n + 1` のフレーム数に丸められます。
@@ -102,14 +109,14 @@ LTX-2 と同じく、まず目標の半分の解像度で作り、そのあと 2
 {% endmediaRow %}
 
 {% outputs %}
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_e68699b3ebb44d9b20b5d85c73cf9644.mp4){media=loop}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_output.mp4){media=loop}
 {% endoutputs %}
 
 ### Multi-shot
 
 Seedance 2 などから一般的になってきましたが、1 回の生成で複数のショットを作ることができます。
 
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7d681d86ce23e28e4e48aed1fe452c7d.png){media=image}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.json)
 
@@ -118,7 +125,7 @@ Seedance 2 などから一般的になってきましたが、1 回の生成で�
 気楽に書ける反面、Multi-shot として認識してくれないこともあります。うまくいかないときは、気長に何度か試してみてください。
 
 {% outputs %}
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7fe2eadbd6abb69f2015df4f8531fe26.mp4){media=loop}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot_output.mp4){media=loop}
 {% endoutputs %}
 
 ### Duration Predictor
@@ -139,7 +146,7 @@ LTX 2.5 には、プロンプトの内容から、それを表現するために
         └── ltx-2.5-duration-head-bf16.safetensors
 ```
 
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_ecf49f82e56e0fdec6283401d71ae657.png){media=image}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor.json)
 
@@ -152,9 +159,13 @@ LTX 2.5 には、プロンプトの内容から、それを表現するために
 
 {% endmediaRow %}
 
+{% outputs %}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor_output.mp4){media=loop}
+{% endoutputs %}
+
 ## image2video
 
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_e978305c53f6c658984db4ad42c71a7f.png){media=image}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_image2video.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_image2video.json)
 
@@ -164,7 +175,7 @@ LTX 2.5 には、プロンプトの内容から、それを表現するために
 > 以前は、いろいろな理由から `LTXV Preprocess` で入力画像をわざと劣化させていましたが、LTX 2.5 では、少なくとも私が使った限りでは必要なさそうなので外しています。
 
 {% outputs %}
-![input](/media/basic-workflows/ltx-2-5/legacy_gyazo_856453de1d4eaea2b8e02a8e6993db08.png){media=image} ![output](/media/basic-workflows/ltx-2-5/legacy_gyazo_d8bdced1eba00d48d1f5ff65dfb4e336.mp4){media=loop}
+![input](/media/basic-workflows/ltx-2-5/ltx_2_5_image2video_input.webp){media=image} ![output](/media/basic-workflows/ltx-2-5/ltx_2_5_image2video_output.mp4){media=loop}
 {% endoutputs %}
 
 ---
@@ -175,7 +186,7 @@ LTX 2.5 には、プロンプトの内容から、それを表現するために
 
 動画の最初と最後だけを指定すれば、いわゆる **FLF2V** というものになります。
 
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_a0e7571b01f97b79d73325390e0a4d3c.png){media=image}
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation.json)
 
@@ -196,7 +207,7 @@ LTX 2.5 には、プロンプトの内容から、それを表現するために
 {% endmediaRow %}
 
 {% outputs %}
-![input1](/media/basic-workflows/ltx-2-5/legacy_gyazo_de4eaa85c26607d8b0f98f774880e2b8.png){media=image} ![input2](https://gyazo.com/0ef0afcbe6a2d35cf018bb0f77e0a0ff){gyazo=image} ![input3](/media/basic-workflows/ltx-2-5/legacy_gyazo_c2058ec73687479e7abe3fa7f21f9d64.png){media=image} ![output](/media/basic-workflows/ltx-2-5/legacy_gyazo_e0e2fcb86f4a8513708807bacd79af8c.mp4){media=loop}
+![input1](/media/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation_input1.webp){media=image} ![input2](/media/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation_input2.webp){media=image} ![input3](/media/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation_input3.webp){media=image} ![output](/media/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation_output.mp4){media=loop}
 {% endoutputs %}
 
 ---
@@ -207,11 +218,14 @@ LTX における ControlNet や、動画編集 LoRA のような役割を持つ�
 
 LTX 2.5 は LTX 2.3 用 IC-LoRA の多くと互換性があり、そのまま使えます。
 
-LTX 2.3 用も含めると非常に多くの種類がありますが、ここでは最も基本的な Union Control を使ってみましょう。
+### IC-LoRA Union
 
-### モデルのダウンロード
+一般的な ControlNet と同様、線画や深度マップ、ポーズ動画で生成動画を制御できます。
 
-- [ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control/blob/main/ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors) (654 MB)
+**モデルのダウンロード**
+
+- loras
+  - [ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control/blob/main/ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors) (654 MB)
 
 ```text
 📂ComfyUI/
@@ -220,40 +234,141 @@ LTX 2.3 用も含めると非常に多くの種類がありますが、ここで
         └── ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors
 ```
 
-### IC-LoRA Union
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_controlnet_union_pose.png){media=image}
 
-一般的な ControlNet と同様、線画や深度マップ、ポーズ動画で生成動画を制御できます。
-
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_4e194652b6db74b853390f20017bb542.png){media=image}
-
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_pose.json)
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_controlnet_union_pose.json)
 
 IC-LoRA の詳しい解説は [LTX 2/IC-LoRA (Pose)](/ja/basic-workflows/ltx-2/#ic-lora-pose) で行っているので、興味があれば見てみてください。
 
 {% outputs %}
-![input/pose](/media/basic-workflows/ltx-2-5/legacy_gyazo_824ba34d0fa1ef036db386c4f7f7b5f6.mp4){media=loop} ![output](/media/basic-workflows/ltx-2-5/legacy_gyazo_4f55983a4205360420e7cc605402301b.mp4){media=loop}
+![input/pose](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_controlnet_union_pose_input.mp4){media=loop} ![output](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_controlnet_union_pose_output.mp4){media=loop}
 {% endoutputs %}
 
----
+### Clean Plate
 
-## アップスケーラーとして使う
+Lightricks 公式から、LTX 2.5 でできる VFX 処理として、[愉快な IC-LoRA](https://huggingface.co/collections/Lightricks/ltx-25-creative-lab) がたくさん出ています。
 
-LTX 2.5 は、半分の解像度で生成したものを 2 倍にして、もう一度綺麗にする 2 段階構成です。
+昼を夜にしたり、水浸しにしたりと色々なものがありますが、今回は動画内の特定のものを消す **Clean Plate** を使ってみましょう。
 
-そこで、2 段目だけを使い、好きな動画を 2 倍にするアップスケーラーとして使っちゃおう、というのは自然な発想ですね。
+**モデルのダウンロード**
 
-![](/media/basic-workflows/ltx-2-5/legacy_gyazo_7fa914cfea3fe3b4648960d1c3474258.png){media=image}
+- loras
+  - [ltx-2.5-22b-ic-lora-clean-plate-1.0.safetensors](https://huggingface.co/Lightricks/LTX-2.5-22b-IC-LoRA-Clean-Plate) (327 MB)
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_x2_upscaler.json)
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂loras/
+        └── ltx-2.5-22b-ic-lora-clean-plate-1.0.safetensors
+```
 
-任意の動画を VAE Encode し、これまで使ってきた workflow の 2 段目へつないでいるだけです。
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate.png){media=image}
 
-ただし、上で使ってきた `ManualSigmas` の値では、いわゆる denoise が強すぎて、元の映像が変わりすぎます。
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate.json)
 
-ここでは `Basic Scheduler` に置き換え、denoise を 0.3 にしています。必要に応じて調整してください。
+プロンプトの書き方に少し注意が必要です。
+
+画像編集のように「〇〇を消して」と書くのではなく、〇〇が消えたあとの景色を、普通の文章として書きます。消したいものがはっきりしているときは、`no bicycle anywhere in the frame` のように、それが無いことも書き添えると効きやすくなります。
+
+> [!NOTE]
+> 画面の端にあるものや、一部が隠れているものは綺麗に消えやすい一方、画面の真ん中を大きく占めるものは苦手なようです。消したあとの背景の手がかりが、映像の中にほとんど残らないからでしょうね。
 
 {% outputs %}
-![input](/media/basic-workflows/ltx-2-5/legacy_gyazo_2090f2ae9f78af154922c00cd43e10f7.mp4){media=loop} ![output](/media/basic-workflows/ltx-2-5/legacy_gyazo_bb03d5683d784b144c290400638ba139.mp4){media=loop}
+![input](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate_input.mp4){media=loop} ![output](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate_output.mp4){media=loop}
 {% endoutputs %}
 
-競合モデルも多く出てきていますが、自然な映像を作る力は、その中でも際立っています。適材適所で使いこなせるといいですね。
+基本的には、この workflow で他の IC-LoRA も動かせます。ただ、専用の workflow が必要なものもいくつかあるので、以下で見ていきます。
+
+### Alpha Gen
+
+動画の中から前景を切り抜くことができます。
+
+ただし、背景が透過された動画がそのまま出てくるわけではないので、少し後処理をしてあげる必要があります。
+
+**モデルのダウンロード**
+
+- loras
+  - [ltx-2.5-22b-ic-lora-alpha-gen-0.9.safetensors](https://huggingface.co/Lightricks/LTX-2.5-22b-IC-LoRA-Alpha-Gen) (1.31 GB)
+
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂loras/
+        └── ltx-2.5-22b-ic-lora-alpha-gen-0.9.safetensors
+```
+
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen.png){media=image}
+
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen.json)
+
+プロンプトは使いません。空のままにしておきます。
+
+出力されるのは、白黒のマスク動画です。
+
+ComfyUI では透過動画は作れないので、ここではグリーンバックの動画にしてみましょう。
+
+{% mediaRow img="/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen_image_composite_masked.png" %}
+**グリーンバックに合成する**
+
+- 白黒の動画を `ImageToMask` でマスクにする
+- `InvertMask` で反転する
+- `ImageCompositeMasked` で、緑一色の `EmptyImage` を背景部分に合成する
+
+{% endmediaRow %}
+
+> [!NOTE]
+> 145 frames より長い動画では、元の映像がマスクに混ざり始めるようです。workflow では 145 frames で切っています。
+
+{% outputs %}
+![input](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen_input.mp4){media=loop} ![mask](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen_output_mask.mp4){media=loop} ![green back](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen_output_gb.mp4){media=loop}
+{% endoutputs %}
+
+### Refine Details
+
+任意の動画を、細部を描き込みながら、4K のような高解像度にアップスケールします。
+
+計算量を抑えるためにタイルに分けて処理するので、カスタムノードが必要です。
+
+**カスタムノード**
+
+- [Lightricks/ComfyUI-LTXVideo](https://github.com/Lightricks/ComfyUI-LTXVideo)
+
+**モデルのダウンロード**
+
+- loras
+  - [ltx-2.5-22b-ic-lora-refine-details-1.0.safetensors](https://huggingface.co/Lightricks/LTX-2.5-22b-IC-LoRA-Refine-Details) (1.31 GB)
+
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂loras/
+        └── ltx-2.5-22b-ic-lora-refine-details-1.0.safetensors
+```
+
+![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details.png){media=image}
+
+[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details.json)
+
+{% mediaRow img="/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details_resize.png" %}
+**先に動画をリサイズする**
+
+先に、動画を大きなサイズ（この workflow では約 4 MP）へ引き伸ばしておきます。
+
+Refine Details がやるのは、引き伸ばされてぼやけた動画を、綺麗に描き込み直す作業ということですね。
+
+{% endmediaRow %}
+
+{% mediaRow img="/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details_tiled_fusion_sampler.png" %}
+**Tiled Fusion Sampler**
+
+`LTXVTiledFusionSampler` が、動画をタイル状に分割してサンプリングしてくれます。
+
+設定は特に変更する必要はありません。
+
+{% endmediaRow %}
+
+プロンプトには、写っているものではなく、`sharp photographic detail` や `natural film grain` のような、画質についての言葉を書きます。タイルごとにプロンプト全体が渡されるので、人物などを書くと、その人がいないタイルにまで描き込まれてしまいます。
+
+{% outputs %}
+![input](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details_input.mp4){media=loop} ![output](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details_output.mp4){media=loop}
+{% endoutputs %}
