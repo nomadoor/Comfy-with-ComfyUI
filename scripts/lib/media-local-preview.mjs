@@ -6,6 +6,7 @@
 // uploads anything. Checking registered originals for changes is opt-in because scanning and hashing
 // the entire originals library is expensive across WSL-mounted drives. Production builds never use this.
 
+import { pipeline } from "node:stream";
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
@@ -204,6 +205,13 @@ export function localPreview(root, name, entry, { checkChanged = false } = {}) {
   return { url: `${LOCAL_PREVIEW_PREFIX}${name}`, ...dims, reason };
 }
 
+// pipeline, not pipe: browsers abort video range requests all the time, and with pipe() the read
+// stream (and its file handle) stayed open after the response closed. Leaked handles piled up on the
+// originals and kept a renamed or replaced file looking stale from WSL until the dev server restarted.
+function send(stream, res) {
+  pipeline(stream, res, () => {});
+}
+
 /** Eleventy dev server middleware serving `/__media-originals/<logical name>` (with Range support). */
 export function createOriginalsMiddleware(getRoot = () => originalsRootFromEnv()) {
   return function mediaOriginalsMiddleware(req, res, next) {
@@ -238,11 +246,11 @@ export function createOriginalsMiddleware(getRoot = () => originalsRootFromEnv()
       res.statusCode = 206;
       res.setHeader("Content-Range", `bytes ${start}-${end}/${size}`);
       res.setHeader("Content-Length", String(end - start + 1));
-      fs.createReadStream(file, { start, end }).pipe(res);
+      send(fs.createReadStream(file, { start, end }), res);
       return;
     }
     res.statusCode = 200;
     res.setHeader("Content-Length", String(size));
-    fs.createReadStream(file).pipe(res);
+    send(fs.createReadStream(file), res);
   };
 }
