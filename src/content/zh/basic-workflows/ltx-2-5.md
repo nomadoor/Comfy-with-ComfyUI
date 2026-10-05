@@ -88,7 +88,7 @@ tags: []
 
 ![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video.png){media=image}
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video.json)
+{% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="255s", tags=["1MP"], samplers=[{ name: "1st", speed: "1.70 s/it" }, { name: "2nd", speed: "12.77 s/it" }] %}
 
 和 LTX-2 一样，这是一个 2 阶段工作流：先以目标分辨率的一半生成，再放大 2 倍。
 
@@ -118,7 +118,7 @@ tags: []
 
 ![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.png){media=image}
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.json)
+{% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="256s", tags=["1MP"], samplers=[{ speed: "12.69 s/it" }] %}
 
 不需要特别的写法，只要用自然语言写出“这里切换镜头……”之类的内容，模型就会识别。
 
@@ -148,7 +148,7 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
 
 ![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor.png){media=image}
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor.json)
+{% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_duration_predictor.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="221s", tags=["1MP"], samplers=[{ speed: "5.66 s/it" }] %}
 
 {% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_4567c3906de961a9c90bc01cef27db5d.png", width=40, align="left" %}
 **LTXV Duration Predictor**
@@ -167,7 +167,7 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
 
 ![](/media/basic-workflows/ltx-2-5/ltx_2_5_image2video.png){media=image}
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_image2video.json)
+{% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_image2video.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="254s", tags=["1MP"], samplers=[{ speed: "12.82 s/it" }] %}
 
 用法和 [LTX 2 的 image2video](/zh/basic-workflows/ltx-2/#image2video) 相同。使用 `LTXVImgToVideoInplace` 将输入图像插入为第 1 帧。
 
@@ -188,7 +188,7 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
 
 ![](/media/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation.png){media=image}
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation.json)
+{% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_generative_interpolation.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="334s", tags=["1MP"], samplers=[{ speed: "16.08 s/it" }] %}
 
 {% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_2e39b3e006fcb35d96b87d649ded0146.png", width=40, align="left" %}
 **LTXV Add Guide**
@@ -236,7 +236,7 @@ LTX 2.5 与许多为 LTX 2.3 制作的 IC-LoRA 兼容，可以直接使用。
 
 ![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_union_control_pose.png){media=image}
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_union_control_pose.json)
+{% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_union_control_pose.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="404s", tags=["1MP"], samplers=[{ name: "1st", speed: "2.37 s/it" }, { name: "2nd", speed: "8.56 s/it" }] %}
 
 关于 IC-LoRA 的详细说明，请参阅 [LTX 2 / IC-LoRA (Pose)](/zh/basic-workflows/ltx-2/#ic-lora-pose)。
 
@@ -264,7 +264,7 @@ Lightricks 官方发布了许多可以用 LTX 2.5 做 VFX 处理的[有趣 IC-Lo
 
 ![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate.png){media=image}
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate.json)
+{% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="433s", tags=["1MP"], samplers=[{ speed: "27.37 s/it" }] %}
 
 提示词的写法需要注意一下。
 
@@ -299,7 +299,7 @@ Lightricks 官方发布了许多可以用 LTX 2.5 做 VFX 处理的[有趣 IC-Lo
 
 ![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen.png){media=image}
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen.json)
+{% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="369s", tags=["1MP"], samplers=[{ speed: "25.78 s/it" }] %}
 
 不使用提示词，保持空白即可。
 
@@ -347,7 +347,7 @@ ComfyUI 无法制作透明视频，所以这里把它做成绿幕视频。
 
 ![](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details.png){media=image}
 
-[](/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details.json)
+{% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="533s", tags=["4MP"] %}
 
 {% mediaRow img="/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_refine_details_resize.png" %}
 **先调整视频尺寸**
