@@ -58,7 +58,7 @@ tags: []
 
 ## text2image
 
-![](/media/basic-workflows/krea-2/legacy_gyazo_31bce8c4982ff74992c599268d13374d.png){media=image}
+![](/media/basic-workflows/krea-2/krea_2_turbo_text2image.png){media=image}
 
 [](/workflows/basic-workflows/krea-2/krea_2_turbo_text2image.json)
 
@@ -89,7 +89,7 @@ Krea 2 的一大卖点，是 Style references 和 Moodboards 这类风格控制�
 
 ### text2image (with LoRA)
 
-![](/media/basic-workflows/krea-2/legacy_gyazo_7a2ec126a289cfa04dd8cb609b6d04e3.png){media=image}
+![](/media/basic-workflows/krea-2/krea_2_turbo_text2image_darkbrush.png){media=image}
 
 [](/workflows/basic-workflows/krea-2/krea_2_turbo_text2image_darkbrush.json)
 

@@ -1,19 +1,19 @@
 {
   "id": "d8034549-7e0a-40f1-8c2e-de3ffc6f1cae",
   "revision": 0,
-  "last_node_id": 62,
-  "last_link_id": 112,
+  "last_node_id": 63,
+  "last_link_id": 114,
   "nodes": [
     {
       "id": 8,
       "type": "VAEDecode",
       "pos": [
-        1252.432861328125,
+        1244.7673190371984,
         188.1918182373047
       ],
       "size": [
-        157.56002807617188,
-        46
+        225,
+        54.00002219460224
       ],
       "flags": {},
       "order": 9,
@@ -41,17 +41,16 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "VAEDecode",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "Node name for S&R": "VAEDecode"
-      },
-      "widgets_values": []
+        "ver": "0.3.33"
+      }
     },
     {
       "id": 37,
       "type": "UNETLoader",
       "pos": [
-        528.8914031982422,
+        529.8914031982422,
         34.805270385742176
       ],
       "size": [
@@ -73,14 +72,25 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "UNETLoader",
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "UNETLoader"
+        "models": [
+          {
+            "name": "krea2_turbo_fp8_scaled.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "krea2_turbo_fp8_scaled.safetensors",
         "default"
       ],
+      "widgets_values_named": {
+        "unet_name": "krea2_turbo_fp8_scaled.safetensors",
+        "weight_dtype": "default"
+      },
       "color": "#323",
       "bgcolor": "#535"
     },
@@ -88,8 +98,8 @@
       "id": 38,
       "type": "CLIPLoader",
       "pos": [
-        56.288665771484375,
-        312.74468994140625
+        60.288665771484375,
+        296.74468994140625
       ],
       "size": [
         301.3524169921875,
@@ -105,80 +115,48 @@
           "type": "CLIP",
           "slot_index": 0,
           "links": [
-            74,
-            75
+            74
           ]
         }
       ],
       "properties": {
+        "Node name for S&R": "CLIPLoader",
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "CLIPLoader"
+        "models": [
+          {
+            "name": "qwen3vl_4b_fp8_scaled.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
         "qwen3vl_4b_fp8_scaled.safetensors",
         "krea2",
         "default"
       ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_4b_fp8_scaled.safetensors",
+        "type": "krea2",
+        "device": "default"
+      },
       "color": "#432",
       "bgcolor": "#653"
-    },
-    {
-      "id": 7,
-      "type": "CLIPTextEncode",
-      "pos": [
-        415.00001525878906,
-        429.43443512719523
-      ],
-      "size": [
-        419.26959228515625,
-        107.08506774902344
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 6,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 75
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            52
-          ]
-        }
-      ],
-      "title": "CLIP Text Encode (Negative Prompt)",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        ""
-      ]
     },
     {
       "id": 62,
       "type": "EmptyLatentImage",
       "pos": [
-        597.2696075439453,
-        505.0728606096232
+        598.2696075439453,
+        534.0728606096231
       ],
       "size": [
         237,
         106
       ],
       "flags": {},
-      "order": 7,
+      "order": 6,
       "mode": 0,
       "inputs": [
         {
@@ -208,21 +186,26 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "EmptyLatentImage",
         "cnr_id": "comfy-core",
-        "ver": "0.26.0",
-        "Node name for S&R": "EmptyLatentImage"
+        "ver": "0.26.0"
       },
       "widgets_values": [
         512,
         512,
         1
-      ]
+      ],
+      "widgets_values_named": {
+        "width": 512,
+        "height": 512,
+        "batch_size": 1
+      }
     },
     {
       "id": 3,
       "type": "KSampler",
       "pos": [
-        898.7548217773438,
+        882.5184632905718,
         188.1918182373047
       ],
       "size": [
@@ -246,7 +229,7 @@
         {
           "name": "negative",
           "type": "CONDITIONING",
-          "link": 52
+          "link": 114
         },
         {
           "name": "latent_image",
@@ -265,9 +248,9 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "KSampler",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "Node name for S&R": "KSampler"
+        "ver": "0.3.33"
       },
       "widgets_values": [
         12345,
@@ -277,18 +260,27 @@
         "euler",
         "simple",
         1
-      ]
+      ],
+      "widgets_values_named": {
+        "seed": 12345,
+        "control_after_generate": "fixed",
+        "steps": 8,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
     },
     {
       "id": 60,
       "type": "ResolutionSelector",
       "pos": [
-        290.29125126341165,
-        530.2598267434913
+        290.53993646251007,
+        559.2598267434913
       ],
       "size": [
         270,
-        126
+        150
       ],
       "flags": {},
       "order": 2,
@@ -311,21 +303,26 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "ResolutionSelector",
         "cnr_id": "comfy-core",
-        "ver": "0.25.0",
-        "Node name for S&R": "ResolutionSelector"
+        "ver": "0.25.0"
       },
       "widgets_values": [
         "3:2 (Photo)",
         1,
         16
-      ]
+      ],
+      "widgets_values_named": {
+        "aspect_ratio": "3:2 (Photo)",
+        "megapixels": 1,
+        "multiple": 16
+      }
     },
     {
       "id": 6,
       "type": "CLIPTextEncode",
       "pos": [
-        415.7513025457208,
+        416.7513025457208,
         186
       ],
       "size": [
@@ -348,25 +345,29 @@
           "type": "CONDITIONING",
           "slot_index": 0,
           "links": [
-            46
+            46,
+            113
           ]
         }
       ],
       "title": "CLIP Text Encode (Positive Prompt)",
       "properties": {
+        "Node name for S&R": "CLIPTextEncode",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "Node name for S&R": "CLIPTextEncode"
+        "ver": "0.3.33"
       },
       "widgets_values": [
         "A highly stylized anime illustration, viewed from a high-angle three-quarter perspective, showing an old compact car dramatically stranded in shallow coastal water among large rocks, as if it ran aground and got stuck there. The car is tilted unevenly and wedged against multiple rocks, creating a more dynamic and three-dimensional stranded composition. The surrounding environment is a natural rocky shoreline with bright blue seawater, scattered stones under the water, and no alley, no wall, no air-conditioning units, no urban background, no tree, no graffiti, and no city clutter.\n\nA desperate young woman sits on the roof of the car near a large hand-painted \"SOS\" sign. She has messy blonde hair and a visibly exhausted, worn-down expression. She is urgently drinking from a nearly empty plastic water bottle, as if she is rationing the last of it. Her posture should feel tense, drained, and survival-oriented, not relaxed or casual. She wears a pale light blue jumpsuit that is heavily worn, torn, dirty, and damaged, with frayed fabric and signs of hardship. Her body language and face should suggest thirst, fatigue, and isolation.\n\nThe car is old, weathered, faded, rusted, and damaged, with cracked windows and a harsh sun-bleached surface. Strong cloud shadows pass dramatically over the woman, the car, the rocks, and the water, creating bold shifting patches of light and shadow. Flat cel-shaded anime style, graphic poster-like composition, bold simplified shapes, clean linework, slightly exaggerated perspective, painterly digital texture, quiet but intense survival mood, vivid cyan-blue water, pale rocks, faded vehicle colors, strong atmospheric lighting, no photorealism, no 3D render."
-      ]
+      ],
+      "widgets_values_named": {
+        "text": "A highly stylized anime illustration, viewed from a high-angle three-quarter perspective, showing an old compact car dramatically stranded in shallow coastal water among large rocks, as if it ran aground and got stuck there. The car is tilted unevenly and wedged against multiple rocks, creating a more dynamic and three-dimensional stranded composition. The surrounding environment is a natural rocky shoreline with bright blue seawater, scattered stones under the water, and no alley, no wall, no air-conditioning units, no urban background, no tree, no graffiti, and no city clutter.\n\nA desperate young woman sits on the roof of the car near a large hand-painted \"SOS\" sign. She has messy blonde hair and a visibly exhausted, worn-down expression. She is urgently drinking from a nearly empty plastic water bottle, as if she is rationing the last of it. Her posture should feel tense, drained, and survival-oriented, not relaxed or casual. She wears a pale light blue jumpsuit that is heavily worn, torn, dirty, and damaged, with frayed fabric and signs of hardship. Her body language and face should suggest thirst, fatigue, and isolation.\n\nThe car is old, weathered, faded, rusted, and damaged, with cracked windows and a harsh sun-bleached surface. Strong cloud shadows pass dramatically over the woman, the car, the rocks, and the water, creating bold shifting patches of light and shadow. Flat cel-shaded anime style, graphic poster-like composition, bold simplified shapes, clean linework, slightly exaggerated perspective, painterly digital texture, quiet but intense survival mood, vivid cyan-blue water, pale rocks, faded vehicle colors, strong atmospheric lighting, no photorealism, no 3D render."
+      }
     },
     {
       "id": 56,
       "type": "SaveImage",
       "pos": [
-        1443.3798111474612,
+        1517.016174783825,
         188.1918182373047
       ],
       "size": [
@@ -396,18 +397,21 @@
       },
       "widgets_values": [
         "ComfyUI"
-      ]
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "ComfyUI"
+      }
     },
     {
       "id": 55,
       "type": "MarkdownNote",
       "pos": [
-        -41.61175607181954,
-        -85.90566140100125
+        -392.5117560718194,
+        34.805270385742176
       ],
       "size": [
-        389.61380077225,
-        288.1499138219051
+        394.1592553177045,
+        402.6953683673596
       ],
       "flags": {},
       "order": 3,
@@ -416,8 +420,11 @@
       "outputs": [],
       "properties": {},
       "widgets_values": [
-        "## models\n\n- diffusion_models\n  - [krea2_turbo_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors) (13.1 GB)\n- text_encoders\n  - [qwen3vl_4b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors) (5.24 GB)\n- vae\n  - [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/vae/qwen_image_vae.safetensors) (254 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── krea2_turbo_fp8_scaled.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_4b_fp8_scaled.safetensors\n    └── 📂vae/\n        └── qwen_image_vae.safetensors\n```"
+        "## models\n\n- diffusion_models\n  - [krea2_turbo_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors) (13.1 GB)\n- text_encoders\n  - [qwen3vl_4b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors) (5.24 GB)\n- vae\n  - [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/vae/qwen_image_vae.safetensors) (254 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── krea2_turbo_fp8_scaled.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_4b_fp8_scaled.safetensors\n    └── 📂vae/\n        └── qwen_image_vae.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/krea-2/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/krea-2/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/krea-2/)"
       ],
+      "widgets_values_named": {
+        "text": "## models\n\n- diffusion_models\n  - [krea2_turbo_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors) (13.1 GB)\n- text_encoders\n  - [qwen3vl_4b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors) (5.24 GB)\n- vae\n  - [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/vae/qwen_image_vae.safetensors) (254 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── krea2_turbo_fp8_scaled.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_4b_fp8_scaled.safetensors\n    └── 📂vae/\n        └── qwen_image_vae.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/krea-2/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/krea-2/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/krea-2/)"
+      },
       "color": "#323",
       "bgcolor": "#535"
     },
@@ -425,7 +432,7 @@
       "id": 39,
       "type": "VAELoader",
       "pos": [
-        951.5002075195309,
+        935.263849032759,
         58.805270385742176
       ],
       "size": [
@@ -447,15 +454,59 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "VAELoader"
+        "models": [
+          {
+            "name": "qwen_image_vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/vae/qwen_image_vae.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "qwen_image_vae.safetensors"
       ],
+      "widgets_values_named": {
+        "vae_name": "qwen_image_vae.safetensors"
+      },
       "color": "#322",
       "bgcolor": "#533"
+    },
+    {
+      "id": 63,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        609.1348419189453,
+        425.28113848270567
+      ],
+      "size": [
+        226.134765625,
+        26
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 113
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            114
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningZeroOut"
+      }
     }
   ],
   "links": [
@@ -476,26 +527,10 @@
       "CONDITIONING"
     ],
     [
-      52,
-      7,
-      0,
-      3,
-      2,
-      "CONDITIONING"
-    ],
-    [
       74,
       38,
       0,
       6,
-      0,
-      "CLIP"
-    ],
-    [
-      75,
-      38,
-      0,
-      7,
       0,
       "CLIP"
     ],
@@ -546,19 +581,35 @@
       3,
       3,
       "LATENT"
+    ],
+    [
+      113,
+      6,
+      0,
+      63,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      114,
+      63,
+      0,
+      3,
+      2,
+      "CONDITIONING"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.620921323059155,
+      "scale": 0.6830134553650705,
       "offset": [
-        162.407381471326,
-        370.8669615172955
+        442.29281748818846,
+        282.7992610389731
       ]
     },
-    "frontendVersion": "1.45.19",
+    "frontendVersion": "1.53.6",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,
