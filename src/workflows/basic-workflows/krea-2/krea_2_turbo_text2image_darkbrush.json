@@ -1,19 +1,19 @@
 {
-  "id": "d8034549-7e0a-40f1-8c2e-de3ffc6f1cae",
+  "id": "b0b1233f-b263-43a3-bad8-4b3da9052b92",
   "revision": 0,
-  "last_node_id": 63,
-  "last_link_id": 114,
+  "last_node_id": 64,
+  "last_link_id": 116,
   "nodes": [
     {
       "id": 8,
       "type": "VAEDecode",
       "pos": [
-        1252.432861328125,
+        1244.7673190371984,
         188.1918182373047
       ],
       "size": [
-        157.56002807617188,
-        46
+        225,
+        54.00002219460224
       ],
       "flags": {},
       "order": 10,
@@ -41,25 +41,72 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      }
+    },
+    {
+      "id": 37,
+      "type": "UNETLoader",
+      "pos": [
+        237.16413047096918,
+        34.805270385742176
+      ],
+      "size": [
+        305.3782043457031,
+        82
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            115
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "VAEDecode"
+        "models": [
+          {
+            "name": "krea2_turbo_fp8_scaled.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
       },
-      "widgets_values": []
+      "widgets_values": [
+        "krea2_turbo_fp8_scaled.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "krea2_turbo_fp8_scaled.safetensors",
+        "weight_dtype": "default"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
     },
     {
       "id": 38,
       "type": "CLIPLoader",
       "pos": [
-        56.288665771484375,
-        312.74468994140625
+        60.288665771484375,
+        296.74468994140625
       ],
       "size": [
         301.3524169921875,
         106
       ],
       "flags": {},
-      "order": 0,
+      "order": 1,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -68,73 +115,41 @@
           "type": "CLIP",
           "slot_index": 0,
           "links": [
-            74,
-            75
+            74
           ]
         }
       ],
       "properties": {
+        "Node name for S&R": "CLIPLoader",
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "CLIPLoader"
+        "models": [
+          {
+            "name": "qwen3vl_4b_fp8_scaled.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
         "qwen3vl_4b_fp8_scaled.safetensors",
         "krea2",
         "default"
       ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_4b_fp8_scaled.safetensors",
+        "type": "krea2",
+        "device": "default"
+      },
       "color": "#432",
       "bgcolor": "#653"
-    },
-    {
-      "id": 7,
-      "type": "CLIPTextEncode",
-      "pos": [
-        415.00001525878906,
-        429.43443512719523
-      ],
-      "size": [
-        419.26959228515625,
-        107.08506774902344
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 6,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 75
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            52
-          ]
-        }
-      ],
-      "title": "CLIP Text Encode (Negative Prompt)",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        ""
-      ]
     },
     {
       "id": 62,
       "type": "EmptyLatentImage",
       "pos": [
-        597.2696075439453,
-        505.0728606096232
+        598.2696075439453,
+        534.0728606096231
       ],
       "size": [
         237,
@@ -171,29 +186,104 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "EmptyLatentImage",
         "cnr_id": "comfy-core",
-        "ver": "0.26.0",
-        "Node name for S&R": "EmptyLatentImage"
+        "ver": "0.26.0"
       },
       "widgets_values": [
         512,
         512,
         1
-      ]
+      ],
+      "widgets_values_named": {
+        "width": 512,
+        "height": 512,
+        "batch_size": 1
+      }
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        882.5184632905718,
+        188.1918182373047
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 116
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 46
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 114
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 112
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            35
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        12345,
+        "fixed",
+        8,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 12345,
+        "control_after_generate": "fixed",
+        "steps": 8,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
     },
     {
       "id": 60,
       "type": "ResolutionSelector",
       "pos": [
-        290.29125126341165,
-        530.2598267434913
+        290.53993646251007,
+        559.2598267434913
       ],
       "size": [
         270,
-        126
+        150
       ],
       "flags": {},
-      "order": 1,
+      "order": 2,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -213,21 +303,71 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "ResolutionSelector",
         "cnr_id": "comfy-core",
-        "ver": "0.25.0",
-        "Node name for S&R": "ResolutionSelector"
+        "ver": "0.25.0"
       },
       "widgets_values": [
         "3:2 (Photo)",
         1,
         16
-      ]
+      ],
+      "widgets_values_named": {
+        "aspect_ratio": "3:2 (Photo)",
+        "megapixels": 1,
+        "multiple": 16
+      }
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        416.7513025457208,
+        186
+      ],
+      "size": [
+        418.5183049982245,
+        177.7917699892659
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 74
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            46,
+            113
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "A rugged Land Cruiser-like off-road vehicle is stranded in shallow coastal water among large rocks at night, as if it ran aground and became stuck there. The vehicle is slightly tilted and wedged against rocks, creating a dynamic stranded composition. The surrounding environment is a natural rocky shoreline with dark seawater and scattered stones visible beneath the surface. Beside the vehicle, a small campfire burns near the shore, and its light reflects beautifully across the water, creating shimmering highlights on the waves and wet rocks. Near the fire, simple clothes are hanging to dry on a rough makeshift drying rack built from improvised wooden branches and sticks.\n\nOn top of the vehicle, a man in worn backpacker-style clothing lies resting on the roof while using binoculars to look up at the night sky. He feels like a lone traveler surviving in isolation, calm and contemplative. His outfit is practical and weathered, suitable for travel and outdoor survival. The vehicle is old, dusty, damaged, and worn, with cracked windows and a harsh exposed surface. The overall mood is quiet, isolated, and atmospheric, with strong contrast between deep night shadows and soft firelight reflections.\n\nStrictly grayscale, black and white only, monochrome image, no color accents, no vivid hues, ink-like tonal rendering, monochrome ink wash style"
+      ],
+      "widgets_values_named": {
+        "text": "A rugged Land Cruiser-like off-road vehicle is stranded in shallow coastal water among large rocks at night, as if it ran aground and became stuck there. The vehicle is slightly tilted and wedged against rocks, creating a dynamic stranded composition. The surrounding environment is a natural rocky shoreline with dark seawater and scattered stones visible beneath the surface. Beside the vehicle, a small campfire burns near the shore, and its light reflects beautifully across the water, creating shimmering highlights on the waves and wet rocks. Near the fire, simple clothes are hanging to dry on a rough makeshift drying rack built from improvised wooden branches and sticks.\n\nOn top of the vehicle, a man in worn backpacker-style clothing lies resting on the roof while using binoculars to look up at the night sky. He feels like a lone traveler surviving in isolation, calm and contemplative. His outfit is practical and weathered, suitable for travel and outdoor survival. The vehicle is old, dusty, damaged, and worn, with cracked windows and a harsh exposed surface. The overall mood is quiet, isolated, and atmospheric, with strong contrast between deep night shadows and soft firelight reflections.\n\nStrictly grayscale, black and white only, monochrome image, no color accents, no vivid hues, ink-like tonal rendering, monochrome ink wash style"
+      }
     },
     {
       "id": 56,
       "type": "SaveImage",
       "pos": [
-        1443.3798111474612,
+        1517.016174783825,
         188.1918182373047
       ],
       "size": [
@@ -257,13 +397,42 @@
       },
       "widgets_values": [
         "ComfyUI"
-      ]
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "ComfyUI"
+      }
+    },
+    {
+      "id": 55,
+      "type": "MarkdownNote",
+      "pos": [
+        -392.5117560718194,
+        34.805270385742176
+      ],
+      "size": [
+        400.1592553177045,
+        481.6953683673596
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n\n- diffusion_models\n  - [krea2_turbo_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors) (13.1 GB)\n- loras\n  - [darkbrush.safetensors](https://huggingface.co/krea/Krea-2-LoRA-darkbrush/blob/main/darkbrush.safetensors) (469 MB)\n- text_encoders\n  - [qwen3vl_4b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors) (5.24 GB)\n- vae\n  - [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/vae/qwen_image_vae.safetensors) (254 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── krea2_turbo_fp8_scaled.safetensors\n    ├── 📂loras/\n    │   └── darkbrush.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_4b_fp8_scaled.safetensors\n    └── 📂vae/\n        └── qwen_image_vae.safetensors\n```\n\n## loras\n\nOfficial Krea 2 style LoRAs: put the trigger word in the prompt. Strength 1.0 for all.\n\n| LoRA | trigger word |\n|---|---|\n| [darkbrush.safetensors](https://huggingface.co/krea/Krea-2-LoRA-darkbrush) | `monochrome ink wash style` |\n| [vintagetarot.safetensors](https://huggingface.co/krea/Krea-2-LoRA-vintagetarot) | `vintage tarot style` |\n| [sunsetblur.safetensors](https://huggingface.co/krea/Krea-2-LoRA-sunsetblur) | `ethereal motion blur style` |\n| [kidsdrawing.safetensors](https://huggingface.co/krea/Krea-2-LoRA-kidsdrawing) | `naive expressive sketch style` |\n| [dotmatrix.safetensors](https://huggingface.co/krea/Krea-2-LoRA-dotmatrix) | `Monochrome stippling style` |\n| [retroanime.safetensors](https://huggingface.co/krea/Krea-2-LoRA-retroanime) | `Purple retro anime style` |\n| [rainywindow.safetensors](https://huggingface.co/krea/Krea-2-LoRA-rainywindow) | `rainy window style` |\n| [neondrip.safetensors](https://huggingface.co/krea/Krea-2-LoRA-neondrip) | `Textured abstract style` |\n| [softwatercolor.safetensors](https://huggingface.co/krea/Krea-2-LoRA-softwatercolor) | `Art Deco watercolor style` |\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/krea-2/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/krea-2/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/krea-2/)"
+      ],
+      "widgets_values_named": {
+        "text": "## models\n\n- diffusion_models\n  - [krea2_turbo_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors) (13.1 GB)\n- loras\n  - [darkbrush.safetensors](https://huggingface.co/krea/Krea-2-LoRA-darkbrush/blob/main/darkbrush.safetensors) (469 MB)\n- text_encoders\n  - [qwen3vl_4b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors) (5.24 GB)\n- vae\n  - [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/vae/qwen_image_vae.safetensors) (254 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── krea2_turbo_fp8_scaled.safetensors\n    ├── 📂loras/\n    │   └── darkbrush.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_4b_fp8_scaled.safetensors\n    └── 📂vae/\n        └── qwen_image_vae.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/krea-2/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/krea-2/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/krea-2/)"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
     },
     {
       "id": 39,
       "type": "VAELoader",
       "pos": [
-        951.5002075195309,
+        935.263849032759,
         58.805270385742176
       ],
       "size": [
@@ -271,7 +440,7 @@
         58
       ],
       "flags": {},
-      "order": 2,
+      "order": 4,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -285,58 +454,65 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "VAELoader"
+        "models": [
+          {
+            "name": "qwen_image_vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/vae/qwen_image_vae.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "qwen_image_vae.safetensors"
       ],
+      "widgets_values_named": {
+        "vae_name": "qwen_image_vae.safetensors"
+      },
       "color": "#322",
       "bgcolor": "#533"
     },
     {
-      "id": 37,
-      "type": "UNETLoader",
+      "id": 63,
+      "type": "ConditioningZeroOut",
       "pos": [
-        230.43604514382105,
-        34.805270385742176
+        609.1348419189453,
+        425.28113848270567
       ],
       "size": [
-        305.3782043457031,
-        82
+        226.134765625,
+        26
       ],
       "flags": {},
-      "order": 3,
+      "order": 8,
       "mode": 0,
-      "inputs": [],
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 113
+        }
+      ],
       "outputs": [
         {
-          "name": "MODEL",
-          "type": "MODEL",
-          "slot_index": 0,
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
           "links": [
-            113
+            114
           ]
         }
       ],
       "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "Node name for S&R": "UNETLoader"
-      },
-      "widgets_values": [
-        "krea2_turbo_fp8_scaled.safetensors",
-        "default"
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
+        "Node name for S&R": "ConditioningZeroOut"
+      }
     },
     {
-      "id": 63,
+      "id": 64,
       "type": "LoraLoaderModelOnly",
       "pos": [
-        564.2696075439453,
+        565.2696075439453,
         34.805270385742176
       ],
       "size": [
@@ -344,13 +520,13 @@
         82
       ],
       "flags": {},
-      "order": 8,
+      "order": 5,
       "mode": 0,
       "inputs": [
         {
           "name": "model",
           "type": "MODEL",
-          "link": 113
+          "link": 115
         }
       ],
       "outputs": [
@@ -358,144 +534,30 @@
           "name": "MODEL",
           "type": "MODEL",
           "links": [
-            114
+            116
           ]
         }
       ],
       "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
         "cnr_id": "comfy-core",
         "ver": "0.26.0",
-        "Node name for S&R": "LoraLoaderModelOnly"
+        "models": [
+          {
+            "name": "darkbrush.safetensors",
+            "url": "https://huggingface.co/krea/Krea-2-LoRA-darkbrush/resolve/main/darkbrush.safetensors",
+            "directory": "loras"
+          }
+        ]
       },
       "widgets_values": [
         "darkbrush.safetensors",
         1
       ],
-      "color": "#323",
-      "bgcolor": "#535"
-    },
-    {
-      "id": 6,
-      "type": "CLIPTextEncode",
-      "pos": [
-        415.7513025457208,
-        186
-      ],
-      "size": [
-        418.5183049982245,
-        177.7917699892659
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 74
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            46
-          ]
-        }
-      ],
-      "title": "CLIP Text Encode (Positive Prompt)",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "Node name for S&R": "CLIPTextEncode"
+      "widgets_values_named": {
+        "lora_name": "darkbrush.safetensors",
+        "strength_model": 1
       },
-      "widgets_values": [
-        "A rugged Land Cruiser-like off-road vehicle is stranded in shallow coastal water among large rocks at night, as if it ran aground and became stuck there. The vehicle is slightly tilted and wedged against rocks, creating a dynamic stranded composition. The surrounding environment is a natural rocky shoreline with dark seawater and scattered stones visible beneath the surface. Beside the vehicle, a small campfire burns near the shore, and its light reflects beautifully across the water, creating shimmering highlights on the waves and wet rocks. Near the fire, simple clothes are hanging to dry on a rough makeshift drying rack built from improvised wooden branches and sticks.\n\nOn top of the vehicle, a man in worn backpacker-style clothing lies resting on the roof while using binoculars to look up at the night sky. He feels like a lone traveler surviving in isolation, calm and contemplative. His outfit is practical and weathered, suitable for travel and outdoor survival. The vehicle is old, dusty, damaged, and worn, with cracked windows and a harsh exposed surface. The overall mood is quiet, isolated, and atmospheric, with strong contrast between deep night shadows and soft firelight reflections.\n\nStrictly grayscale, black and white only, monochrome image, no color accents, no vivid hues, ink-like tonal rendering, monochrome ink wash style"
-      ]
-    },
-    {
-      "id": 3,
-      "type": "KSampler",
-      "pos": [
-        898.7548217773438,
-        188.1918182373047
-      ],
-      "size": [
-        315,
-        262
-      ],
-      "flags": {},
-      "order": 9,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 114
-        },
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 46
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "link": 52
-        },
-        {
-          "name": "latent_image",
-          "type": "LATENT",
-          "link": 112
-        }
-      ],
-      "outputs": [
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "slot_index": 0,
-          "links": [
-            35
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "Node name for S&R": "KSampler"
-      },
-      "widgets_values": [
-        12345,
-        "fixed",
-        8,
-        1,
-        "euler",
-        "simple",
-        1
-      ]
-    },
-    {
-      "id": 55,
-      "type": "MarkdownNote",
-      "pos": [
-        -209.04969164088908,
-        -96.21273705765634
-      ],
-      "size": [
-        400.3576528674205,
-        340.2160093474733
-      ],
-      "flags": {},
-      "order": 4,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "properties": {},
-      "widgets_values": [
-        "## models\n\n- diffusion_models\n  - [krea2_turbo_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors) (13.1 GB)\n- loras\n  - [darkbrush.safetensors](https://huggingface.co/krea/Krea-2-LoRA-darkbrush/blob/main/darkbrush.safetensors) (469 MB)\n- text_encoders\n  - [qwen3vl_4b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors) (5.24 GB)\n- vae\n  - [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/vae/qwen_image_vae.safetensors) (254 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── krea2_turbo_fp8_scaled.safetensors\n    ├── 📂loras/\n    │   └── darkbrush.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_4b_fp8_scaled.safetensors\n    └── 📂vae/\n        └── qwen_image_vae.safetensors\n```"
-      ],
       "color": "#323",
       "bgcolor": "#535"
     }
@@ -518,26 +580,10 @@
       "CONDITIONING"
     ],
     [
-      52,
-      7,
-      0,
-      3,
-      2,
-      "CONDITIONING"
-    ],
-    [
       74,
       38,
       0,
       6,
-      0,
-      "CLIP"
-    ],
-    [
-      75,
-      38,
-      0,
-      7,
       0,
       "CLIP"
     ],
@@ -583,15 +629,31 @@
     ],
     [
       113,
-      37,
+      6,
       0,
       63,
       0,
-      "MODEL"
+      "CONDITIONING"
     ],
     [
       114,
       63,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      115,
+      37,
+      0,
+      64,
+      0,
+      "MODEL"
+    ],
+    [
+      116,
+      64,
       0,
       3,
       0,
@@ -602,13 +664,13 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1.1,
+      "scale": 0.5131581182307067,
       "offset": [
-        -116.02518234177342,
-        113.02958189026839
+        930.4110784552818,
+        700.8827882854052
       ]
     },
-    "frontendVersion": "1.45.19",
+    "frontendVersion": "1.53.6",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

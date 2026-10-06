@@ -32,6 +32,8 @@ Krea が以前作っていた [FLUX.1 Krea](https://www.krea.ai/blog/flux-krea-o
 > [!NOTE]
 > Krea の Web / API 版には **Krea 2 Medium** や **Krea 2 Large** もありますが、open weight として公開されているのは **Raw** と **Turbo** のみです。
 
+{% runpod %}
+
 ---
 
 ## モデルのダウンロード
@@ -58,7 +60,7 @@ Krea が以前作っていた [FLUX.1 Krea](https://www.krea.ai/blog/flux-krea-o
 
 ## text2image
 
-![](/media/basic-workflows/krea-2/legacy_gyazo_31bce8c4982ff74992c599268d13374d.png){media=image}
+![](/media/basic-workflows/krea-2/krea_2_turbo_text2image.png){media=image}
 
 [](/workflows/basic-workflows/krea-2/krea_2_turbo_text2image.json)
 
@@ -89,7 +91,7 @@ LoRA ごとに推奨 trigger word と強度があるので、各モデルカー�
 
 ### text2image (with LoRA)
 
-![](/media/basic-workflows/krea-2/legacy_gyazo_7a2ec126a289cfa04dd8cb609b6d04e3.png){media=image}
+![](/media/basic-workflows/krea-2/krea_2_turbo_text2image_darkbrush.png){media=image}
 
 [](/workflows/basic-workflows/krea-2/krea_2_turbo_text2image_darkbrush.json)
 

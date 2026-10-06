@@ -1,0 +1,65 @@
+{
+  "checked_at": "2026-10-06",
+  "models": {
+    "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors": {
+      "size_bytes": 13141730784,
+      "sha256": "eb4dd8c612cfd10f64f25b057e6e6bbcb5737c94a7372177e456dbf7579502f1",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors": {
+      "size_bytes": 5242467968,
+      "sha256": "54bd5144df0bbc25dd6ccadfcb826b521445a1b06ae5a42570bdd2974ca87094",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/vae/qwen_image_vae.safetensors": {
+      "size_bytes": 253806246,
+      "sha256": "a70580f0213e67967ee9c95f05bb400e8fb08307e017a924bf3441223e023d1f",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/krea/Krea-2-LoRA-darkbrush/resolve/main/darkbrush.safetensors": {
+      "size_bytes": 469291992,
+      "sha256": "f476ad1c0679bc6b14c815187e78a6ece43248f6d232faeccbfed0c4f37f36de",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/krea/Krea-2-LoRA-dotmatrix/resolve/main/dotmatrix.safetensors": {
+      "size_bytes": 469291992,
+      "sha256": "805aa30d863347222485b9d3ce81642dbc70a73cebc95ab57219d98b878fceec",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/krea/Krea-2-LoRA-kidsdrawing/resolve/main/kidsdrawing.safetensors": {
+      "size_bytes": 469291992,
+      "sha256": "8c1d45d204aeb4e34a7d9e16a7d473917592ba0048b03f4e03e037e3578ca500",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/krea/Krea-2-LoRA-neondrip/resolve/main/neondrip.safetensors": {
+      "size_bytes": 469291992,
+      "sha256": "a779c14435949eabae9ce0bface4320cad6672ef3547e8489107e3498d65e871",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/krea/Krea-2-LoRA-rainywindow/resolve/main/rainywindow.safetensors": {
+      "size_bytes": 469291992,
+      "sha256": "7063a6f15ec6112ad3c06d79097b2a30a3ea7d9072821cb36021010d55989fe5",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/krea/Krea-2-LoRA-retroanime/resolve/main/retroanime.safetensors": {
+      "size_bytes": 469291992,
+      "sha256": "ca42107783d9e517c5d62cb9a9db9ab2ba4887d90e9dad97a9d1a7fe6ff14c56",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/krea/Krea-2-LoRA-softwatercolor/resolve/main/softwatercolor.safetensors": {
+      "size_bytes": 469291992,
+      "sha256": "3805e8655f19fbcac116542685e3f78f3a642e8fbfb857b5352bb32a4b3d445a",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/krea/Krea-2-LoRA-sunsetblur/resolve/main/sunsetblur.safetensors": {
+      "size_bytes": 469291992,
+      "sha256": "194abdd531ca190d32799f26ab5bab634aa5ba3f07b7a60ffb282657db8bf3a0",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/krea/Krea-2-LoRA-vintagetarot/resolve/main/vintagetarot.safetensors": {
+      "size_bytes": 469291992,
+      "sha256": "8cca96c56658fb3ac5269f9ef2245bd07cbf1b7a189f517c8763470bb1385f9f",
+      "requires_hf_token": false
+    }
+  }
+}

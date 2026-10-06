@@ -1811,6 +1811,22 @@
     "bytes": 104334,
     "source": "96cc3335d9cd7b6a"
   },
+  "basic-workflows/krea-2/krea_2_turbo_text2image_darkbrush.png": {
+    "key": "images/e2e5479365af91c5.webp",
+    "width": 3002,
+    "height": 1040,
+    "type": "image/webp",
+    "bytes": 199890,
+    "source": "57da4d6fa963a7f6"
+  },
+  "basic-workflows/krea-2/krea_2_turbo_text2image.png": {
+    "key": "images/31904a68a6d2f5ac.webp",
+    "width": 3002,
+    "height": 1040,
+    "type": "image/webp",
+    "bytes": 184200,
+    "source": "2ee4d458ff0153db"
+  },
   "basic-workflows/krea-2/legacy_gyazo_31bce8c4982ff74992c599268d13374d.png": {
     "key": "images/3cd39860adbffe99.webp",
     "width": 2577,

@@ -1,0 +1,48 @@
+# RunPod profile source. Models and custom nodes come from the workflow JSON;
+# list here only what the workflows cannot say for themselves.
+id: krea-2
+title: Krea 2
+article: basic-workflows/krea-2
+# RunPod template (Matatabi AI account) the article's launch card deploys.
+template: c1yqz9481c
+workflows:
+  - src/workflows/basic-workflows/krea-2/krea_2_turbo_text2image.json
+  - src/workflows/basic-workflows/krea-2/krea_2_turbo_text2image_darkbrush.json
+comfyui:
+  default: latest
+  verified_commit: null
+gpu:
+  min_vram_gb: 12
+  recommended_vram_gb: 24
+  # Same as the template's recommended (starred) GPUs.
+  recommended: [RTX A5000, RTX 3090, RTX 4090]
+  notes: ""
+overrides:
+  custom_nodes: []
+  # The other official Krea 2 style LoRAs, so a reader can swap the one in the darkbrush workflow
+  # (trigger words are in its note).
+  models:
+    - name: vintagetarot.safetensors
+      url: https://huggingface.co/krea/Krea-2-LoRA-vintagetarot/resolve/main/vintagetarot.safetensors
+      directory: loras
+    - name: sunsetblur.safetensors
+      url: https://huggingface.co/krea/Krea-2-LoRA-sunsetblur/resolve/main/sunsetblur.safetensors
+      directory: loras
+    - name: kidsdrawing.safetensors
+      url: https://huggingface.co/krea/Krea-2-LoRA-kidsdrawing/resolve/main/kidsdrawing.safetensors
+      directory: loras
+    - name: dotmatrix.safetensors
+      url: https://huggingface.co/krea/Krea-2-LoRA-dotmatrix/resolve/main/dotmatrix.safetensors
+      directory: loras
+    - name: retroanime.safetensors
+      url: https://huggingface.co/krea/Krea-2-LoRA-retroanime/resolve/main/retroanime.safetensors
+      directory: loras
+    - name: rainywindow.safetensors
+      url: https://huggingface.co/krea/Krea-2-LoRA-rainywindow/resolve/main/rainywindow.safetensors
+      directory: loras
+    - name: neondrip.safetensors
+      url: https://huggingface.co/krea/Krea-2-LoRA-neondrip/resolve/main/neondrip.safetensors
+      directory: loras
+    - name: softwatercolor.safetensors
+      url: https://huggingface.co/krea/Krea-2-LoRA-softwatercolor/resolve/main/softwatercolor.safetensors
+      directory: loras

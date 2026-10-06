@@ -32,6 +32,8 @@ Two models are available, but for normal image generation you will use Turbo.
 > [!NOTE]
 > The Web / API version of Krea also has **Krea 2 Medium** and **Krea 2 Large**, but the open-weight release only includes **Raw** and **Turbo**.
 
+{% runpod %}
+
 ---
 
 ## Model Download
@@ -58,7 +60,7 @@ Two models are available, but for normal image generation you will use Turbo.
 
 ## text2image
 
-![](/media/basic-workflows/krea-2/legacy_gyazo_31bce8c4982ff74992c599268d13374d.png){media=image}
+![](/media/basic-workflows/krea-2/krea_2_turbo_text2image.png){media=image}
 
 [](/workflows/basic-workflows/krea-2/krea_2_turbo_text2image.json)
 
@@ -89,7 +91,7 @@ Each LoRA has its own recommended trigger word and strength, so check the model 
 
 ### text2image (with LoRA)
 
-![](/media/basic-workflows/krea-2/legacy_gyazo_7a2ec126a289cfa04dd8cb609b6d04e3.png){media=image}
+![](/media/basic-workflows/krea-2/krea_2_turbo_text2image_darkbrush.png){media=image}
 
 [](/workflows/basic-workflows/krea-2/krea_2_turbo_text2image_darkbrush.json)
 
