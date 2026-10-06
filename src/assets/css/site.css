@@ -859,11 +859,11 @@ html.js .js-fallback-notice {
 }
 
 .sidebar__nav-panel>.nav-list>.nav-list__item>.nav-list__link {
-  color: var(--color-text);
+  color: var(--color-heading);
 }
 
 .sidebar__nav-panel>.nav-list>.nav-list__item>.nav-list__no-link {
-  color: var(--color-text);
+  color: var(--color-heading);
 }
 
 .nav-list__link.is-active {
@@ -903,8 +903,9 @@ html.js .js-fallback-notice {
   height: 1.25rem;
 }
 
+/* One step below the top-level rows (heading colour), one above the other children (muted). */
 .nav-list__link--pick:not(.is-active) {
-  color: var(--color-heading);
+  color: var(--color-text);
 }
 
 .nav-list__children {
