@@ -39,10 +39,19 @@ export const inputFileName = (node) =>
     ? String(node.widgets_values?.[0] ?? "").replace(/ \[(input|output|temp)\]$/, "") || null
     : null;
 
-/** Logical media name for an input file: the registered original with the same stem, else <stem>.png. */
-export const inputMediaName = (article, fileName, manifest = {}) => {
+/**
+ * Logical media name for an input file: the registered original with the same stem; before it is
+ * registered, the original actually sitting in COMFY_MEDIA_ORIGINALS (a .jpg must not be looked for
+ * as .png at its first media:sync); else <stem>.png.
+ */
+export const inputMediaName = (article, fileName, manifest = {}, originalsRoot = process.env.COMFY_MEDIA_ORIGINALS) => {
   const stem = `${article}/${fileName.replace(/\.[^./]+$/, "")}`;
-  return ORIGINAL_EXTS.map((ext) => stem + ext).find((name) => manifest[name]) ?? `${stem}.png`;
+  const names = ORIGINAL_EXTS.map((ext) => stem + ext);
+  return (
+    names.find((name) => manifest[name]) ??
+    (originalsRoot ? names.find((name) => fs.existsSync(path.join(originalsRoot, name))) : undefined) ??
+    `${stem}.png`
+  );
 };
 
 const globToRegExp = (glob) =>
