@@ -1,0 +1,41 @@
+# RunPod profile source. Models and custom nodes come from the workflow JSON;
+# list here only what the workflows cannot say for themselves.
+id: anima
+title: Anima
+article: basic-workflows/anima
+# RunPod template (Matatabi AI account) the article's launch card deploys. Set once the owner creates it.
+# template:
+# CircleStone Labs Non-Commercial License: the model may not be used commercially (generated images
+# may). No referral code on its card.
+referral: false
+workflows:
+  - src/workflows/basic-workflows/anima/anima_aesthetic_v1_1.json
+  - src/workflows/basic-workflows/anima/anima_lllite_any_test_like_v2.json
+comfyui:
+  default: latest
+  verified_commit: null
+gpu:
+  min_vram_gb: 12
+  recommended_vram_gb: 24
+  recommended: []
+  notes: ""
+overrides:
+  custom_nodes: []
+  # The other Anima LLLite control types, so a reader can swap the one in the workflow. Older
+  # versions are left out: any-test-like-1 (both steps), v2-beta, and inpainting-v1.
+  models:
+    - name: anima-lllite-depth-1.safetensors
+      url: https://huggingface.co/Comfy-Org/Anima-LLLite/resolve/main/model_patches/anima-lllite-depth-1.safetensors
+      directory: model_patches
+    - name: anima-lllite-inpainting-v2.safetensors
+      url: https://huggingface.co/Comfy-Org/Anima-LLLite/resolve/main/model_patches/anima-lllite-inpainting-v2.safetensors
+      directory: model_patches
+    - name: anima-lllite-lineart-1.safetensors
+      url: https://huggingface.co/Comfy-Org/Anima-LLLite/resolve/main/model_patches/anima-lllite-lineart-1.safetensors
+      directory: model_patches
+    - name: anima-lllite-pose-1.safetensors
+      url: https://huggingface.co/Comfy-Org/Anima-LLLite/resolve/main/model_patches/anima-lllite-pose-1.safetensors
+      directory: model_patches
+    - name: anima-lllite-scribble-1.safetensors
+      url: https://huggingface.co/Comfy-Org/Anima-LLLite/resolve/main/model_patches/anima-lllite-scribble-1.safetensors
+      directory: model_patches
