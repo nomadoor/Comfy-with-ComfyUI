@@ -177,9 +177,6 @@
   * システム・最適化 — 親ページあり
     * モデルのマージ
     * 高速化・軽量化
-  * 外部API — 親ページあり
-    * nano-banana
-    * gemini-flash
 * 📝Notes
   * Noteを探す / Find Notes / 查找 Notes
   * 個別Noteは階層化せず、左カラムではフラットなタイトルリストとして表示する

@@ -374,8 +374,6 @@ sections:
             title: モデルのマージと差分LoRA
           - id: speed-and-efficiency
             title: 高速化と軽量化
-      - id: api-nodes
-        title: APIノード
   - key: notes
     label: Notes
     pages:

@@ -374,8 +374,6 @@ sections:
             title: Model Merge & Difference LoRA
           - id: speed-and-efficiency
             title: Speed and Efficiency
-      - id: api-nodes
-        title: API Nodes
   - key: notes
     label: Notes
     pages:
