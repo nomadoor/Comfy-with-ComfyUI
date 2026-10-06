@@ -233,9 +233,12 @@ sections:
 - key: basic-workflows
   label: 基础工作流
   pages:
-  - id: sd15-basics
+  - id: sd15-workflows
     title: SD1.5 基础
+    noLink: true
     children:
+    - id: sd15-basics
+      title: 为什么从 SD1.5 开始
     - id: sd15-text2image
       title: text2image
     - id: sd15-textual-inversion
@@ -345,9 +348,12 @@ sections:
       title: MiniMax H3
     - id: liveportrait
       title: LivePortrait
-  - id: llm-mllm
+  - id: llm-mllm-workflows
     title: LLM / MLLM
+    noLink: true
     children:
+    - id: llm-mllm
+      title: LLM / MLLM 概述
     - id: joycaption
       title: JoyCaption
     - id: florence2
@@ -368,8 +374,6 @@ sections:
       title: 模型合并与差分 LoRA
     - id: speed-and-efficiency
       title: 速度与效率
-  - id: api-nodes
-    title: API 节点
 - key: notes
   label: Notes
   pages:

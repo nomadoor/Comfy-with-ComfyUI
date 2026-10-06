@@ -859,11 +859,11 @@ html.js .js-fallback-notice {
 }
 
 .sidebar__nav-panel>.nav-list>.nav-list__item>.nav-list__link {
-  color: var(--color-text);
+  color: var(--color-heading);
 }
 
 .sidebar__nav-panel>.nav-list>.nav-list__item>.nav-list__no-link {
-  color: var(--color-text);
+  color: var(--color-heading);
 }
 
 .nav-list__link.is-active {
@@ -884,6 +884,28 @@ html.js .js-fallback-notice {
 
 .nav-list__link.is-active::before {
   background: var(--color-highlight);
+}
+
+/* Models recommended on the home page (`picks`): a purple sparkles mark before the label. */
+.nav-list__link--pick {
+  justify-content: flex-start;
+  gap: var(--space-xs);
+}
+
+.nav-list__pick-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--color-highlight);
+}
+
+.nav-list__pick-icon .icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* One step below the top-level rows (heading colour), one above the other children (muted). */
+.nav-list__link--pick:not(.is-active) {
+  color: var(--color-text);
 }
 
 .nav-list__children {
@@ -1397,6 +1419,12 @@ html.js .js-fallback-notice {
   flex-shrink: 0;
 }
 
+/* Closed shapes inside line icons carry a translucent fill of the icon colour. */
+.icon__fill {
+  fill: currentColor;
+  fill-opacity: var(--icon-fill-opacity, 0.3);
+}
+
 .hero {
   position: relative;
   border-radius: var(--radius-md);
@@ -1900,6 +1928,9 @@ h1 {
    competing with it. No borders. The label is not a heading and stays out of the TOC. */
 .outputs {
   --outputs-header-size: 2.25rem;
+  /* Shrink to the media it holds, so one or two examples do not sit in a full-width tray. */
+  inline-size: fit-content;
+  max-inline-size: 100%;
   margin: var(--space-xl) 0;
   padding: 0 var(--space-md) var(--space-md);
   border-radius: var(--radius-md);

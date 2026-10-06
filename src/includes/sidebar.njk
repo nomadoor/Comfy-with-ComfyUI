@@ -1,5 +1,6 @@
 {% from "icon.njk" import icon %}
 {% set localeNav = nav[lang] or nav[site.defaultLang] %}
+{% set navPickUrls = collections.all | homePickUrls(lang) %}
 {% set sectionIcons = {
   "begin-with": "explore",
   "data-utilities": "image",

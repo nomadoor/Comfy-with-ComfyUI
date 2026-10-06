@@ -1,3 +1,4 @@
+{% from "icon.njk" import icon %}
 {% set listItems = navItems or items or [] %}
 {% set listSectionKey = navSectionKey or sectionKey or currentSection %}
 {% set listLang = lang or currentLang or site.defaultLang %}
@@ -11,8 +12,10 @@
     </span>
     {% else %}
     {% set url = "/" + listLang + "/" + listSectionKey + "/" + item.id + "/" %}
-    <a href="{{ url }}" class="nav-list__link{% if item.id == listCurrentId %} is-active{% endif %}" {% if
+    {% set isPick = navPickUrls and url in navPickUrls %}
+    <a href="{{ url }}" class="nav-list__link{% if isPick %} nav-list__link--pick{% endif %}{% if item.id == listCurrentId %} is-active{% endif %}" {% if
       item.id==listCurrentId %}aria-current="page" {% endif %}>
+      {% if isPick %}<span class="nav-list__pick-icon">{{ icon("sparkles") }}</span>{% endif %}
       <span class="nav-list__label">{{ item.title }}</span>
     </a>
     {% endif %}

@@ -64,6 +64,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - The left sidebar is split into two visible blocks: `sidebar__sections` for the labeled section selector/dropdown and `sidebar__section-panel` for icon-tabbed navigation plus sidebar controls. The TOC rail remains a single visible block.
 - Section selector buttons (`sidebar__sections` / `sidebar__section-btn`) keep inactive labels muted. Active and hover surfaces use `--color-tav-strong`; active selector text remains heading-colored.
 - Nav list: single column, children indented with border-left. Active link shows a 2px highlight bar (mock’s purple line).
+- Recommended models: a nav link whose URL is in the home page `picks` of the same language gets a 1.25rem `sparkles` icon in `--color-highlight` before its label, and its label uses `--color-text`. Sidebar rows use three brightness steps: top-level rows `--color-heading`, recommended models `--color-text`, other children `--color-text-muted`. The home `picks` frontmatter is the only list; there is no separate flag in nav data.
 - Footer: `About` link + language chips (JA/EN) + theme toggle stub. Chips use pill style with accent border when active.
   - Language chip opens a dropdown **upward** so it never falls off-screen; each option links to the same slug in the chosen locale.
 
@@ -83,7 +84,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - Callouts (`> [!NOTE]`, `[!TIP]`, `[!WARNING]`, see `ops/adr/2026-09-29-callouts.md`) are filled blocks with small radius and a Tabler-style icon, no borders. NOTE: the card fill (text 6% into the reader) and a muted info icon. TIP: `--color-highlight` 14% fill and a purple bulb. WARNING: amber `#c98a32` 20% fill and an amber alert triangle; the only callout meant to stand out.
 - Inline images are centered, `max-width: 720px`, `max-height: 320px`, and `object-fit: contain` so portrait assets never force extra scrolling.
 - Inline article media (R2 or Gyazo) stays completely flat: **no borders / box-shadows**. When contrast is needed, rely on `--color-panel-alt` as the single backing surface.
-- Output examples (`{% outputs %}`) sit in a tray with the media step card fill and no border. Its header is only a small muted image icon and an uppercase "Outputs" label in the card kicker type (no corner square), so it stays quieter than the workflow above. The label is not a heading and stays out of the TOC. `{% outputs "samples" %}` is the same tray for input images readers can use, labelled "Samples" with a download icon.
+- Output examples (`{% outputs %}`) sit in a tray with the media step card fill and no border. Its header is only a small muted image icon and an uppercase "Outputs" label in the card kicker type (no corner square), so it stays quieter than the workflow above. The tray shrinks to the width of the media it holds (capped at the column width), so one or two examples do not sit in a full-width tray. The label is not a heading and stays out of the TOC. `{% outputs "samples" %}` is the same tray for input images readers can use, labelled "Samples" with a download icon.
 - Image comparison tables must stay within the article content width. Tables that contain article media use fixed column layout, compact cell padding, and equal-size square media frames; images preserve their own aspect ratio with `object-fit: contain`.
 - 全ページで同一トーンを保つため、本文中の画像・動画もデフォルトで減光フィルタ（例：`filter: brightness(0.85)`）を適用する。
 - ダークモードでは、本文中のコード（コードブロックの文字と構文色、インラインコードの文字色）と絵文字も同じ 0.85 で減光する。絵文字は文字色が効かないため、Markdown レンダラーが `.emoji` で包む（U+1F000 以降の絵文字と、U+FE0F 付きの記号のみ。`↔` などの文字記号は対象外）。
@@ -122,7 +123,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 
 ## 12. Assets
 - Mock hero image tinted grayscale; when no asset, fill with ``--color-panel-alt``.
-- Icons remain monochrome, `currentColor`, 24px viewBox.
+- Icons remain monochrome, `currentColor`, 24px viewBox. Closed shapes inside a line icon (a frame, a circle, a body) carry a translucent fill of the same colour: mark the element `icon__fill` (CSS sets `fill-opacity` 0.3), or for CSS-mask icons write `fill="currentColor" fill-opacity="0.3"` in the SVG file. Open strokes (chevrons, arrows, crosses, menu, link, download, translate, search) and brand marks stay unfilled. When an icon mixes open and closed strokes in one path, add a separate stroke-less `icon__fill` path for the closed area instead of filling the mixed path.
 - Placeholder cat illustration (mock bottom-right) will be added later; for now reserve space in layout for helper popover.
 
 > Follow the mock first. If a token or component is missing, update `/ops/style-design.md` before touching `/src`.
