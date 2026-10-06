@@ -28,6 +28,8 @@ SDXL 世代のアニメ系モデルからの移行先として、かなり期待
 > ライセンスは **CircleStone Labs Non-Commercial License** です。  
 > Anima のモデル本体・派生モデル・LoRA などは非商用です。生成した画像は商用利用できます。
 
+{% runpod %}
+
 ---
 
 ## モデルのダウンロード
@@ -108,7 +110,7 @@ ControlNet-LLLite は、kohya 氏が開発した軽量な ControlNet です。
 
 ### anima-lllite-any-test-like-v2
 
-![](/media/basic-workflows/anima/legacy_gyazo_d42f85633b9036b7e2e6e806c064ef56.png){media=image}
+![](/media/basic-workflows/anima/anima_lllite_any_test_like_v2.png){media=image}
 
 [](/workflows/basic-workflows/anima/anima_lllite_any_test_like_v2.json)
 

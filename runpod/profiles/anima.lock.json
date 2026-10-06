@@ -1,0 +1,50 @@
+{
+  "checked_at": "2026-10-06",
+  "models": {
+    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/diffusion_models/anima-aesthetic-v1.1.safetensors": {
+      "size_bytes": 4182230656,
+      "sha256": "3c1868387a3a1ff504bbb87c33678321965ead381fcf87afbd0264daa600c082",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors": {
+      "size_bytes": 1192135096,
+      "sha256": "cd2a512003e2f9f3cd3c32a9c3573f820bb28c940f73c57b1ddaa983d9223eba",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors": {
+      "size_bytes": 253806246,
+      "sha256": "a70580f0213e67967ee9c95f05bb400e8fb08307e017a924bf3441223e023d1f",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/Comfy-Org/Anima-LLLite/resolve/main/model_patches/anima-lllite-any-test-like-v2.safetensors": {
+      "size_bytes": 16403008,
+      "sha256": "8863424f04a2445815a827b22cbda557a085d2752e05fab54a2b303821a9e3b2",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/Comfy-Org/Anima-LLLite/resolve/main/model_patches/anima-lllite-depth-1.safetensors": {
+      "size_bytes": 7864128,
+      "sha256": "81357e51cd59874b4fbdda1eb3117aa73eafe36cc7efb9cf80a152d6bc8d0602",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/Comfy-Org/Anima-LLLite/resolve/main/model_patches/anima-lllite-inpainting-v2.safetensors": {
+      "size_bytes": 65772872,
+      "sha256": "5242e677d2be34ee70ca7c97c3b14ff5ee49838c03fc1e60ac4852a180db6ef5",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/Comfy-Org/Anima-LLLite/resolve/main/model_patches/anima-lllite-lineart-1.safetensors": {
+      "size_bytes": 7787888,
+      "sha256": "1abfde93493445390632788339627c37c69c7792aef1e8104cf15ea5f2d379e9",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/Comfy-Org/Anima-LLLite/resolve/main/model_patches/anima-lllite-pose-1.safetensors": {
+      "size_bytes": 23310040,
+      "sha256": "ddb543be5e74ce8ca79ae45807aa0c1328a4888e00706727c6fd7100dde7c864",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/Comfy-Org/Anima-LLLite/resolve/main/model_patches/anima-lllite-scribble-1.safetensors": {
+      "size_bytes": 7864128,
+      "sha256": "cbc391a66cbb7e58b9007fae6f74aad91c479024589411c24bb7b70b945751c3",
+      "requires_hf_token": false
+    }
+  }
+}

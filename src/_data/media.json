@@ -1060,12 +1060,28 @@
     "source": "26645bfe324645a0"
   },
   "basic-workflows/anima/anima_aesthetic_v1_1.png": {
-    "key": "images/3b3c8faa28fea574.webp",
-    "width": 2624,
-    "height": 1171,
+    "key": "images/a8fbc80f18cdbb25.webp",
+    "width": 2923,
+    "height": 1070,
     "type": "image/webp",
-    "bytes": 292816,
-    "source": "1108f67451697e08"
+    "bytes": 297910,
+    "source": "8f217a45ecf7986c"
+  },
+  "basic-workflows/anima/anima_lllite_any_test_like_v2_input.jpg": {
+    "key": "images/868c94aee1d441fb.webp",
+    "width": 832,
+    "height": 1216,
+    "type": "image/webp",
+    "bytes": 100240,
+    "source": "8b3021cbc6717c55"
+  },
+  "basic-workflows/anima/anima_lllite_any_test_like_v2.png": {
+    "key": "images/09ae363540260323.webp",
+    "width": 2995,
+    "height": 1454,
+    "type": "image/webp",
+    "bytes": 233852,
+    "source": "76fc017eceb76df6"
   },
   "basic-workflows/anima/legacy_gyazo_1a342c19b3f7d493f6af396cde34891f.png": {
     "key": "images/b6c379866c5bcc88.webp",

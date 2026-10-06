@@ -3,7 +3,7 @@
 //
 // Usage: node scripts/add-workflow-models.mjs <article.md> <workflow.json|dir>... [--write]
 //
-// The article list is the usual form:
+// The article list is the usual form (`*` bullets and blank lines between items also work):
 //   - diffusion_models
 //     - [file.safetensors](https://huggingface.co/.../blob/main/...) (7.26 GB)
 // Every node (subgraphs included) whose widget value names a model file is matched by file name.
@@ -45,12 +45,13 @@ const readArticleModels = (file) => {
   const models = new Map();
   let directory = null;
   for (const line of fs.readFileSync(file, "utf8").split(/\r?\n/)) {
-    const folder = line.match(/^- `?([\w./-]+?)`?\s*$/);
+    if (!line.trim()) continue; // a loose list (blank lines between items) is still one list
+    const folder = line.match(/^[-*] `?([\w./-]+?)`?\s*$/);
     if (folder) {
       directory = folder[1].replace(/\/$/, "");
       continue;
     }
-    const item = line.match(/^\s+- \[`?([^\]`]+?)`?\]\((https?:\/\/[^)\s]+)\)/);
+    const item = line.match(/^\s+[-*] \[`?([^\]`]+?)`?\]\((https?:\/\/[^)\s]+)\)/);
     if (item && directory && MODEL_EXT.test(item[1])) {
       models.set(item[1], { name: item[1], url: downloadURL(item[2]), directory });
     } else if (!/^\s/.test(line)) {

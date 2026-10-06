@@ -28,6 +28,8 @@ It is one of the models drawing a lot of attention as a possible migration targe
 > The license is **CircleStone Labs Non-Commercial License**.  
 > The Anima model itself, derivative models, and LoRAs are non-commercial. Generated images can be used commercially.
 
+{% runpod %}
+
 ---
 
 ## Model Download
@@ -108,7 +110,7 @@ Choose a suitable model for the control image you want to use.
 
 ### anima-lllite-any-test-like-v2
 
-![](/media/basic-workflows/anima/legacy_gyazo_d42f85633b9036b7e2e6e806c064ef56.png){media=image}
+![](/media/basic-workflows/anima/anima_lllite_any_test_like_v2.png){media=image}
 
 [](/workflows/basic-workflows/anima/anima_lllite_any_test_like_v2.json)
 

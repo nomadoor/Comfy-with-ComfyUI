@@ -28,6 +28,8 @@ hero:
 > 许可证是 **CircleStone Labs Non-Commercial License**。  
 > Anima 模型本身、派生模型和 LoRA 等为非商业用途。生成图像可以用于商业用途。
 
+{% runpod %}
+
 ---
 
 ## 模型下载
@@ -108,7 +110,7 @@ ControlNet-LLLite 是 kohya 开发的轻量级 ControlNet。
 
 ### anima-lllite-any-test-like-v2
 
-![](/media/basic-workflows/anima/legacy_gyazo_d42f85633b9036b7e2e6e806c064ef56.png){media=image}
+![](/media/basic-workflows/anima/anima_lllite_any_test_like_v2.png){media=image}
 
 [](/workflows/basic-workflows/anima/anima_lllite_any_test_like_v2.json)
 
