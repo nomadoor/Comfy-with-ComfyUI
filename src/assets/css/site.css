@@ -886,6 +886,29 @@ html.js .js-fallback-notice {
   background: var(--color-highlight);
 }
 
+/* Models recommended on the home page (`picks`): a purple sparkles mark before the label. */
+.nav-list__link--pick {
+  justify-content: flex-start;
+  gap: var(--space-xs);
+}
+
+.nav-list__pick-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--color-highlight);
+}
+
+.nav-list__pick-icon .icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+  fill-opacity: 0.3;
+}
+
+.nav-list__link--pick:not(.is-active) {
+  color: var(--color-heading);
+}
+
 .nav-list__children {
   margin-left: var(--space-sm);
   padding-left: var(--space-xs);

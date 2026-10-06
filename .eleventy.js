@@ -1129,6 +1129,13 @@ export default function (eleventyConfig) {
     return entry ? { url: entry.url, title: entry.data.title, hero: entry.data.hero || {} } : null;
   });
 
+  // URLs of the models the home page recommends (`picks`) for one language; the sidebar marks them.
+  eleventyConfig.addFilter("homePickUrls", function (collection = [], lang = "") {
+    const home = collection.find((item) => item.url === `/${lang}/`);
+    const groups = home?.data?.picks?.groups || [];
+    return groups.flatMap((group) => (group.items || []).map((item) => item.page));
+  });
+
   // schema.org graph for a page: WebSite + WebPage, plus Article and its Person author for articles.
   eleventyConfig.addFilter("pageStructuredData", function (input = {}) {
     const { siteUrl, canonicalUrl, lang, siteName, title, description, article, author } = input;
