@@ -901,8 +901,6 @@ html.js .js-fallback-notice {
 .nav-list__pick-icon .icon {
   width: 1.25rem;
   height: 1.25rem;
-  fill: currentColor;
-  fill-opacity: 0.3;
 }
 
 .nav-list__link--pick:not(.is-active) {
@@ -1418,6 +1416,12 @@ html.js .js-fallback-notice {
   block-size: 1.25rem;
   display: inline-flex;
   flex-shrink: 0;
+}
+
+/* Closed shapes inside line icons carry a translucent fill of the icon colour. */
+.icon__fill {
+  fill: currentColor;
+  fill-opacity: var(--icon-fill-opacity, 0.3);
 }
 
 .hero {

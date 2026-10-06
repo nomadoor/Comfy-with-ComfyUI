@@ -64,7 +64,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - The left sidebar is split into two visible blocks: `sidebar__sections` for the labeled section selector/dropdown and `sidebar__section-panel` for icon-tabbed navigation plus sidebar controls. The TOC rail remains a single visible block.
 - Section selector buttons (`sidebar__sections` / `sidebar__section-btn`) keep inactive labels muted. Active and hover surfaces use `--color-tav-strong`; active selector text remains heading-colored.
 - Nav list: single column, children indented with border-left. Active link shows a 2px highlight bar (mock’s purple line).
-- Recommended models: a nav link whose URL is in the home page `picks` of the same language gets a 1.25rem `sparkles` icon in `--color-highlight` (outline plus 30% fill) before its label, and its label uses `--color-heading`. The home `picks` frontmatter is the only list; there is no separate flag in nav data.
+- Recommended models: a nav link whose URL is in the home page `picks` of the same language gets a 1.25rem `sparkles` icon in `--color-highlight` before its label, and its label uses `--color-heading`. The home `picks` frontmatter is the only list; there is no separate flag in nav data.
 - Footer: `About` link + language chips (JA/EN) + theme toggle stub. Chips use pill style with accent border when active.
   - Language chip opens a dropdown **upward** so it never falls off-screen; each option links to the same slug in the chosen locale.
 
@@ -123,7 +123,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 
 ## 12. Assets
 - Mock hero image tinted grayscale; when no asset, fill with ``--color-panel-alt``.
-- Icons remain monochrome, `currentColor`, 24px viewBox.
+- Icons remain monochrome, `currentColor`, 24px viewBox. Closed shapes inside a line icon (a frame, a circle, a body) carry a translucent fill of the same colour: mark the element `icon__fill` (CSS sets `fill-opacity` 0.3), or for CSS-mask icons write `fill="currentColor" fill-opacity="0.3"` in the SVG file. Open strokes (chevrons, arrows, crosses, menu, link, download, translate, search) and brand marks stay unfilled. When an icon mixes open and closed strokes in one path, add a separate stroke-less `icon__fill` path for the closed area instead of filling the mixed path.
 - Placeholder cat illustration (mock bottom-right) will be added later; for now reserve space in layout for helper popover.
 
 > Follow the mock first. If a token or component is missing, update `/ops/style-design.md` before touching `/src`.
