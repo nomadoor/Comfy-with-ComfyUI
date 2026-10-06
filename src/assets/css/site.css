@@ -1927,6 +1927,9 @@ h1 {
    competing with it. No borders. The label is not a heading and stays out of the TOC. */
 .outputs {
   --outputs-header-size: 2.25rem;
+  /* Shrink to the media it holds, so one or two examples do not sit in a full-width tray. */
+  inline-size: fit-content;
+  max-inline-size: 100%;
   margin: var(--space-xl) 0;
   padding: 0 var(--space-md) var(--space-md);
   border-radius: var(--radius-md);
