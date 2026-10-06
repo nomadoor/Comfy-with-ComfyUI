@@ -233,9 +233,12 @@ sections:
   - key: basic-workflows
     label: 基本のworkflow
     pages:
-      - id: sd15-basics
+      - id: sd15-workflows
         title: 画像生成の基本 (SD1.5)
+        noLink: true
         children:
+          - id: sd15-basics
+            title: SD1.5から始める理由
           - id: sd15-text2image
             title: text2image
           - id: sd15-textual-inversion
@@ -345,9 +348,12 @@ sections:
             title: MiniMax H3
           - id: liveportrait
             title: LivePortrait
-      - id: llm-mllm
+      - id: llm-mllm-workflows
         title: LLM / MLLM
+        noLink: true
         children:
+          - id: llm-mllm
+            title: LLM / MLLMとは
           - id: joycaption
             title: JoyCaption
           - id: florence2

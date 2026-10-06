@@ -233,9 +233,12 @@ sections:
   - key: basic-workflows
     label: Basic Workflows
     pages:
-      - id: sd15-basics
+      - id: sd15-workflows
         title: SD1.5 Basics
+        noLink: true
         children:
+          - id: sd15-basics
+            title: Why Start with SD1.5
           - id: sd15-text2image
             title: text2image
           - id: sd15-textual-inversion
@@ -345,9 +348,12 @@ sections:
             title: MiniMax H3
           - id: liveportrait
             title: LivePortrait
-      - id: llm-mllm
+      - id: llm-mllm-workflows
         title: LLM / MLLM
+        noLink: true
         children:
+          - id: llm-mllm
+            title: LLM / MLLM Overview
           - id: joycaption
             title: JoyCaption
           - id: florence2

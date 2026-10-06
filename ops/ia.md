@@ -115,7 +115,8 @@
     * キャプション生成
 
 * 📂基本のworkflow
-  * 画像生成の基本 (SD1.5) — 親ページあり
+  * 画像生成の基本 (SD1.5) — 見出しのみ（`2026-10-06-sidebar-group-parents.md`）
+    * SD1.5から始める理由（`sd15-basics`）
     * text2image
     * Textual Inversion
     * LoRA
@@ -167,7 +168,8 @@
     * LTX-Video
     * LivePortrait
     * HunyuanVideo-Foley
-  * LLM / MLLM — 親ページあり
+  * LLM / MLLM — 見出しのみ（`2026-10-06-sidebar-group-parents.md`）
+    * LLM / MLLMとは（`llm-mllm`）
     * JoyCaption
     * Florence2
   * その他 — 親ページあり
