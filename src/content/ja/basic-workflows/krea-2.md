@@ -32,6 +32,8 @@ Krea が以前作っていた [FLUX.1 Krea](https://www.krea.ai/blog/flux-krea-o
 > [!NOTE]
 > Krea の Web / API 版には **Krea 2 Medium** や **Krea 2 Large** もありますが、open weight として公開されているのは **Raw** と **Turbo** のみです。
 
+{% runpod %}
+
 ---
 
 ## モデルのダウンロード

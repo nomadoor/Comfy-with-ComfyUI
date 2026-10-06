@@ -32,6 +32,8 @@ Two models are available, but for normal image generation you will use Turbo.
 > [!NOTE]
 > The Web / API version of Krea also has **Krea 2 Medium** and **Krea 2 Large**, but the open-weight release only includes **Raw** and **Turbo**.
 
+{% runpod %}
+
 ---
 
 ## Model Download
