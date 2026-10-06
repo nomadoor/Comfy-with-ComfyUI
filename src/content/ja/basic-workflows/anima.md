@@ -28,6 +28,8 @@ SDXL 世代のアニメ系モデルからの移行先として、かなり期待
 > ライセンスは **CircleStone Labs Non-Commercial License** です。  
 > Anima のモデル本体・派生モデル・LoRA などは非商用です。生成した画像は商用利用できます。
 
+{% runpod %}
+
 ---
 
 ## モデルのダウンロード

@@ -3,8 +3,8 @@
 id: anima
 title: Anima
 article: basic-workflows/anima
-# RunPod template (Matatabi AI account) the article's launch card deploys. Set once the owner creates it.
-# template:
+# RunPod template (Matatabi AI account) the article's launch card deploys.
+template: jc4ze5tou0
 # CircleStone Labs Non-Commercial License: the model may not be used commercially (generated images
 # may). No referral code on its card.
 referral: false
@@ -17,7 +17,8 @@ comfyui:
 gpu:
   min_vram_gb: 12
   recommended_vram_gb: 24
-  recommended: []
+  # Same as the template's recommended (starred) GPUs.
+  recommended: [RTX A5000, RTX 3090, RTX 4090]
   notes: ""
 overrides:
   custom_nodes: []

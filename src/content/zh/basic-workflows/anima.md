@@ -28,6 +28,8 @@ hero:
 > 许可证是 **CircleStone Labs Non-Commercial License**。  
 > Anima 模型本身、派生模型和 LoRA 等为非商业用途。生成图像可以用于商业用途。
 
+{% runpod %}
+
 ---
 
 ## 模型下载

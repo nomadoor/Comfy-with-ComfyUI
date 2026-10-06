@@ -28,6 +28,8 @@ It is one of the models drawing a lot of attention as a possible migration targe
 > The license is **CircleStone Labs Non-Commercial License**.  
 > The Anima model itself, derivative models, and LoRAs are non-commercial. Generated images can be used commercially.
 
+{% runpod %}
+
 ---
 
 ## Model Download
