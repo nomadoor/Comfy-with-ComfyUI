@@ -76,7 +76,9 @@ export const profileInputReferences = ({
       const workflow = JSON.parse(readText(file));
       for (const node of eachNode(workflow)) {
         const name = inputFileName(node);
-        if (name) references.push({ file, ref: `/media/${inputMediaName(source.article, name, manifest)}` });
+        // Only <stem>.webp inputs reach the Pod; the lock warns about the rest and skips them, so they
+        // are not sample inputs and need no original.
+        if (name?.endsWith(".webp")) references.push({ file, ref: `/media/${inputMediaName(source.article, name, manifest)}` });
       }
     }
   }

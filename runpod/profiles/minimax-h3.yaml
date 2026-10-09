@@ -1,0 +1,25 @@
+# RunPod profile source. Models and custom nodes come from the workflow JSON;
+# list here only what the workflows cannot say for themselves.
+id: minimax-h3
+title: MiniMax H3
+article: basic-workflows/minimax-h3
+workflows:
+  - src/workflows/basic-workflows/minimax-h3/*.json
+comfyui:
+  default: latest
+  verified_commit: null
+gpu:
+  min_vram_gb: 24
+  recommended_vram_gb: 48
+  # Same as the template's recommended (starred) GPUs.
+  recommended: [RTX 5090, RTX PRO 6000, L40S]
+  notes: ""
+overrides:
+  # These nodes were saved without cnr_id, so the workflows do not say where they come from.
+  # Custom nodes install their latest release; add `version:` only to pin one.
+  custom_nodes:
+    - id: comfyui-minimax-h3-latent-upscaler
+      nodes: [MinimaxH3LatentUpscaler3D]
+    - id: comfyui-videohelpersuite
+      nodes: [VHS_LoadVideo]
+  models: []

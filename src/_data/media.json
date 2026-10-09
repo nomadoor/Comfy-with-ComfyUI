@@ -3769,6 +3769,30 @@
     "bytes": 185318,
     "source": "dae05c7d14814f7d"
   },
+  "basic-workflows/minimax-h3/minimax_h3_reference_generation_input1.png": {
+    "key": "images/0dc627eac3bb9c82.webp",
+    "width": 1080,
+    "height": 1080,
+    "type": "image/webp",
+    "bytes": 46490,
+    "source": "ac223d79df685c9e"
+  },
+  "basic-workflows/minimax-h3/minimax_h3_reference_generation_input2.png": {
+    "key": "images/583f9507868a12aa.webp",
+    "width": 1448,
+    "height": 1086,
+    "type": "image/webp",
+    "bytes": 114006,
+    "source": "eaee3ac2851deeac"
+  },
+  "basic-workflows/minimax-h3/minimax_h3_reference_generation_input3.png": {
+    "key": "images/68259eb6a9d3b3ce.webp",
+    "width": 1448,
+    "height": 1086,
+    "type": "image/webp",
+    "bytes": 187474,
+    "source": "a9c7c45a4889fe1e"
+  },
   "basic-workflows/minimax-h3/minimax_h3_reference_generation_output_fl2va.mp4": {
     "key": "videos/aa123e5df787f7ea.mp4",
     "width": 1184,
