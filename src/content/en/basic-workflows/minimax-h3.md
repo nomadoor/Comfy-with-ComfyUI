@@ -28,6 +28,8 @@ There are two model variants.
 - **Ref2VA**
   - Uses images, video, and audio as references, combining people, motion, camera work, visual style, voices, and more
 
+{% runpod %}
+
 ---
 
 ## Recommended Settings
@@ -53,7 +55,7 @@ There are two model variants.
   - [qwen3vl_32b_minimax_h3_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) (27.1 GB)
 - vae
   - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)
-  - [minimax_h3_video_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_fp16.safetensors) (5.21 GB)
+  - [minimax_h3_video_vae_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_int8_convrot.safetensors) (2.81 GB)
 
 ```text
 📂ComfyUI/
@@ -65,7 +67,7 @@ There are two model variants.
     │   └── qwen3vl_32b_minimax_h3_int8_convrot.safetensors
     └── 📂vae/
         ├── minimax_h3_audio_vae_fp32.safetensors
-        └── minimax_h3_video_vae_fp16.safetensors
+        └── minimax_h3_video_vae_int8_convrot.safetensors
 ```
 
 ---
@@ -229,22 +231,6 @@ This is basically the same as I2VA. Just provide an image for `last_frame` as we
 ![first](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_first_frame.png){media=image} ![last](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_last_frame.png){media=image} ![output](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_output.mp4){media=loop}
 {% endoutputs %}
 
-### Generative Interpolation
-
-Model: `fl2va`
-
-![](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation.png){media=image}
-
-[](/workflows/basic-workflows/minimax-h3/minimax_h3_generative_interpolation.json)
-
-Insert images at specified frames and have the model fill in the motion between them.
-
-This uses the `Add Guide for MiniMax H3` node.
-
-{% outputs %}
-![input1](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_1.png){media=image} ![input2](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_2.png){media=image} ![input3](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_3.png){media=image} ![output](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_output.mp4){media=loop}
-{% endoutputs %}
-
 ---
 
 ## Audio-driven Video Generation
@@ -306,7 +292,7 @@ Ideally, this will be solved properly in the future, but there are a few workaro
 
 The two models actually have almost the same architecture, so FL2VA can handle Reference Generation to some extent as well.
 
-![ref2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output.mp4){media=loop} ![fl2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_fl2va.mp4){media=loop} ![Hybrid](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_hybrid.mp4){media=loop}
+![ref2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_ref2va.mp4){media=loop} ![fl2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_fl2va.mp4){media=loop} ![Hybrid](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_hybrid.mp4){media=loop}
 
 The result is cleaner, though Ref2VA is still considerably more flexible.
 
@@ -335,7 +321,7 @@ The workflow is basically the same as Reference Generation.
 Provide a video as a reference, then write a prompt instructing the model to do something such as “remove the person” or “change the visual style.”
 
 {% outputs %}
-![Ref image](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_ref.png){media=image} ![input video](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_input.mp4){media=loop} ![output](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_output.mp4){media=loop}
+![input video](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_input.mp4){media=loop} ![output](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_output.mp4){media=loop}
 {% endoutputs %}
 
 ---
@@ -352,19 +338,19 @@ However, you can usually accomplish the same thing through Video Editing by simp
 
 [](/workflows/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting.json)
 
-For this example, we use the `ref2va` model to replace the dog in the video with the stuffed toy from the reference image.
+For this example, we use the `ref2va` model to replace the rider in the video made with T2VA with the woman from the reference images.
 
 {% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_segmentation.png", width=40, align="left" %}
 **Segmentation**
 
-Use SAM 3.1 to mask the dog, then expand the mask slightly to leave some margin.
+Use SAM 3.1 to mask the rider, then expand the mask to leave some margin.
 
 - [SAM 3.1](/en/data-utilities/sam3/) is covered on a separate page.
 
 {% endmediaRow %}
 
 {% outputs %}
-![input](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input.mp4){media=loop} ![mask](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_mask.mp4){media=loop} ![output](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_output.mp4){media=loop}
+![input](/media/basic-workflows/minimax-h3/minimax_h3_t2va_output.mp4){media=loop} ![ref 1](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input_image1.png){media=image} ![ref 2](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input_image2.png){media=image} ![output](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_output.mp4){media=loop}
 {% endoutputs %}
 
 ---
@@ -385,13 +371,13 @@ Another option is to generate the first stage at 0.25 MP, then upscale promising
 - [xmarre/Comfyui_Minimax_h3_latent_Upscaler-Plus](https://github.com/xmarre/Comfyui_Minimax_h3_latent_Upscaler-Plus)
   - The upstream repository is not listed in ComfyUI Manager, so we will use this version, which can be installed through Manager
 - latent_upscale_models
-  - [minimax_h3_latent_upscaler_3d_bf16.safetensors](https://huggingface.co/LBH-123-AI/Minimax_h3_latent_Upscaler/blob/main/minimax_h3_latent_upscaler_3d_bf16.safetensors) (691 MB)
+  - [minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors](https://huggingface.co/LBH-123-AI/Minimax_h3_latent_Upscaler/blob/main/minimax_h3_latent_upscaler_3d_conv_v1/minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors) (691 MB)
 
 ```text
 📂ComfyUI/
 └── 📂models/
     └── 📂latent_upscale_models/
-        └── minimax_h3_latent_upscaler_3d_bf16.safetensors
+        └── minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors
 ```
 
 ### text2video / T2VA

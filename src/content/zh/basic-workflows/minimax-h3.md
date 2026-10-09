@@ -28,6 +28,8 @@ tags: []
 - **Ref2VA**
   - 参考图像、视频和音频，将人物、动作、镜头、画风、声音等组合起来生成视频
 
+{% runpod %}
+
 ---
 
 ## 推荐设置
@@ -53,7 +55,7 @@ tags: []
   - [qwen3vl_32b_minimax_h3_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) (27.1 GB)
 - vae
   - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)
-  - [minimax_h3_video_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_fp16.safetensors) (5.21 GB)
+  - [minimax_h3_video_vae_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_int8_convrot.safetensors) (2.81 GB)
 
 ```text
 📂ComfyUI/
@@ -65,7 +67,7 @@ tags: []
     │   └── qwen3vl_32b_minimax_h3_int8_convrot.safetensors
     └── 📂vae/
         ├── minimax_h3_audio_vae_fp32.safetensors
-        └── minimax_h3_video_vae_fp16.safetensors
+        └── minimax_h3_video_vae_int8_convrot.safetensors
 ```
 
 ---
@@ -229,22 +231,6 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 ![第一帧](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_first_frame.png){media=image} ![最后一帧](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_last_frame.png){media=image} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_output.mp4){media=loop}
 {% endoutputs %}
 
-### Generative Interpolation
-
-使用模型：`fl2va`
-
-![](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation.png){media=image}
-
-[](/workflows/basic-workflows/minimax-h3/minimax_h3_generative_interpolation.json)
-
-在指定的帧中插入图像，让模型补全它们之间的内容。
-
-使用 `Add Guide for MiniMax H3` 节点。
-
-{% outputs %}
-![输入 1](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_1.png){media=image} ![输入 2](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_2.png){media=image} ![输入 3](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_3.png){media=image} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_output.mp4){media=loop}
-{% endoutputs %}
-
 ---
 
 ## Audio-driven Video Generation
@@ -306,7 +292,7 @@ H3 可以放入多个“图像”“视频”和“音频”，作为生成视�
 
 实际上，这两个模型的架构几乎相同，因此 FL2VA 模型也能在一定程度上进行 Reference Generation。
 
-![ref2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output.mp4){media=loop} ![fl2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_fl2va.mp4){media=loop} ![Hybrid](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_hybrid.mp4){media=loop}
+![ref2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_ref2va.mp4){media=loop} ![fl2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_fl2va.mp4){media=loop} ![Hybrid](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_hybrid.mp4){media=loop}
 
 画面变漂亮了。不过真要说灵活性，还是 Ref2VA 更好。
 
@@ -335,7 +321,7 @@ H3 可以放入多个“图像”“视频”和“音频”，作为生成视�
 只需把视频作为参考输入，再用提示词对它下达“删除人物”“改变画风”等指令。
 
 {% outputs %}
-![参考图像](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_ref.png){media=image} ![输入视频](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_input.mp4){media=loop} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_output.mp4){media=loop}
+![输入视频](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_input.mp4){media=loop} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_output.mp4){media=loop}
 {% endoutputs %}
 
 ---
@@ -352,19 +338,19 @@ H3 也可以使用传统的（？）遮罩，只重新绘制指定区域来进�
 
 [](/workflows/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting.json)
 
-这次使用 `ref2va` 模型，把视频里的狗替换成参考图像中的玩偶。
+这次使用 `ref2va` 模型，把用 T2VA 生成的视频里骑马的人物替换成参考图像中的女性。
 
 {% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_segmentation.png", width=40, align="left" %}
 **分割**
 
-使用 SAM 3.1 为狗生成遮罩，再稍微扩大遮罩，留出一些余量。
+使用 SAM 3.1 为人物生成遮罩，再扩大遮罩，留出一些余量。
 
 - [SAM 3.1](/zh/data-utilities/sam3/) 在另一个页面中有详细介绍。
 
 {% endmediaRow %}
 
 {% outputs %}
-![输入](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input.mp4){media=loop} ![遮罩](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_mask.mp4){media=loop} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_output.mp4){media=loop}
+![输入](/media/basic-workflows/minimax-h3/minimax_h3_t2va_output.mp4){media=loop} ![参考图像 1](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input_image1.png){media=image} ![参考图像 2](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input_image2.png){media=image} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_output.mp4){media=loop}
 {% endoutputs %}
 
 ---
@@ -385,13 +371,13 @@ H3 也可以使用传统的（？）遮罩，只重新绘制指定区域来进�
 - [xmarre/Comfyui_Minimax_h3_latent_Upscaler-Plus](https://github.com/xmarre/Comfyui_Minimax_h3_latent_Upscaler-Plus)
   - 原始仓库没有收录在 ComfyUI Manager 中，因此这里使用可通过 Manager 安装的这个版本
 - latent_upscale_models
-  - [minimax_h3_latent_upscaler_3d_bf16.safetensors](https://huggingface.co/LBH-123-AI/Minimax_h3_latent_Upscaler/blob/main/minimax_h3_latent_upscaler_3d_bf16.safetensors) (691 MB)
+  - [minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors](https://huggingface.co/LBH-123-AI/Minimax_h3_latent_Upscaler/blob/main/minimax_h3_latent_upscaler_3d_conv_v1/minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors) (691 MB)
 
 ```text
 📂ComfyUI/
 └── 📂models/
     └── 📂latent_upscale_models/
-        └── minimax_h3_latent_upscaler_3d_bf16.safetensors
+        └── minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors
 ```
 
 ### text2video / T2VA

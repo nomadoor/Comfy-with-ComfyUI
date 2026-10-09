@@ -1,7 +1,7 @@
 {
   "id": "0e41d131-d23d-4699-9dc2-7bb198629652",
   "revision": 0,
-  "last_node_id": 115,
+  "last_node_id": 117,
   "last_link_id": 197,
   "nodes": [
     {
@@ -45,12 +45,12 @@
       "id": 95,
       "type": "MarkdownNote",
       "pos": [
-        -480.03631463650436,
+        -497.1850249002485,
         -198.51277317993834
       ],
       "size": [
-        480.26512898835654,
-        306.99991194075415
+        500.6292224265528,
+        458.1229211399997
       ],
       "flags": {},
       "order": 0,
@@ -59,10 +59,10 @@
       "outputs": [],
       "properties": {},
       "widgets_values": [
-        "## models\n- diffusion_models\n  - [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (21 GB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) (27.1 GB)\n- vae\n  - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)\n  - [minimax_h3_video_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_fp16.safetensors) (5.21 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_fl2va_pruned_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n    └── 📂vae/\n         ├── minimax_h3_audio_vae_fp32.safetensors\n         └── minimax_h3_video_vae_fp16.safetensors\n```"
+        "## models\n- diffusion_models\n  - [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (21 GB)\n- latent_upscale_models\n  - [minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors](https://huggingface.co/LBH-123-AI/Minimax_h3_latent_Upscaler/blob/main/minimax_h3_latent_upscaler_3d_conv_v1/minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors) (691 MB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) (27.1 GB)\n- vae\n  - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)\n  - [minimax_h3_video_vae_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_int8_convrot.safetensors) (2.81 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_fl2va_pruned_int8_convrot.safetensors\n    ├── 📂latent_upscale_models/\n    │   └── minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n    └── 📂vae/\n         ├── minimax_h3_audio_vae_fp32.safetensors\n         └── minimax_h3_video_vae_int8_convrot.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/minimax-h3/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/minimax-h3/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/minimax-h3/)"
       ],
       "widgets_values_named": {
-        "text": "## models\n- diffusion_models\n  - [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (21 GB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) (27.1 GB)\n- vae\n  - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)\n  - [minimax_h3_video_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_fp16.safetensors) (5.21 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_fl2va_pruned_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n    └── 📂vae/\n         ├── minimax_h3_audio_vae_fp32.safetensors\n         └── minimax_h3_video_vae_fp16.safetensors\n```"
+        "text": "## models\n- diffusion_models\n  - [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (21 GB)\n- latent_upscale_models\n  - [minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors](https://huggingface.co/LBH-123-AI/Minimax_h3_latent_Upscaler/blob/main/minimax_h3_latent_upscaler_3d_conv_v1/minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors) (691 MB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) (27.1 GB)\n- vae\n  - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)\n  - [minimax_h3_video_vae_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_int8_convrot.safetensors) (2.81 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_fl2va_pruned_int8_convrot.safetensors\n    ├── 📂latent_upscale_models/\n    │   └── minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n    └── 📂vae/\n         ├── minimax_h3_audio_vae_fp32.safetensors\n         └── minimax_h3_video_vae_int8_convrot.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/minimax-h3/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/minimax-h3/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/minimax-h3/)"
       },
       "color": "#323",
       "bgcolor": "#535"
@@ -71,7 +71,7 @@
       "id": 37,
       "type": "UNETLoader",
       "pos": [
-        198.95419944148816,
+        52.62317611836556,
         -198.51277317993834
       ],
       "size": [
@@ -95,7 +95,14 @@
       "properties": {
         "Node name for S&R": "UNETLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
@@ -116,7 +123,7 @@
         76.42865257257024
       ],
       "size": [
-        301.3524169921875,
+        305.3782043457031,
         58
       ],
       "flags": {},
@@ -136,7 +143,14 @@
       "properties": {
         "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "minimax_h3_audio_vae_fp32.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_audio_vae_fp32.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "minimax_h3_audio_vae_fp32.safetensors"
@@ -175,7 +189,14 @@
       "properties": {
         "Node name for S&R": "CLIPLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
         "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
@@ -259,11 +280,11 @@
       "id": 8,
       "type": "VAEDecode",
       "pos": [
-        2447.012996871688,
+        2434.768241421168,
         258.7695300336093
       ],
       "size": [
-        194.25299723441972,
+        221.59220939465595,
         46
       ],
       "flags": {},
@@ -344,7 +365,7 @@
       "id": 86,
       "type": "ModelAttentionBackend",
       "pos": [
-        555.6042177585902,
+        428.4308432977674,
         -198.51277317993834
       ],
       "size": [
@@ -385,7 +406,7 @@
       "id": 105,
       "type": "Reroute",
       "pos": [
-        1948.4779508326274,
+        1946.9087941303949,
         -198.51277317993834
       ],
       "size": [
@@ -424,7 +445,7 @@
         -51.18135864304374
       ],
       "size": [
-        301.3524169921875,
+        305.3782043457031,
         58
       ],
       "flags": {},
@@ -444,13 +465,20 @@
       "properties": {
         "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "minimax_h3_video_vae_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_video_vae_int8_convrot.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
-        "minimax_h3_video_vae_fp16.safetensors"
+        "minimax_h3_video_vae_int8_convrot.safetensors"
       ],
       "widgets_values_named": {
-        "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+        "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
       },
       "color": "#322",
       "bgcolor": "#533"
@@ -459,12 +487,12 @@
       "id": 91,
       "type": "CreateVideo",
       "pos": [
-        2682.0787498545697,
+        2689.8759690510024,
         258.7695300336093
       ],
       "size": [
         270,
-        126
+        150
       ],
       "flags": {},
       "order": 26,
@@ -499,23 +527,25 @@
       "widgets_values": [
         24,
         8,
-        "sRGB"
+        "sRGB",
+        "none"
       ],
       "widgets_values_named": {
         "fps": 24,
         "bit_depth": 8,
-        "color_space": "sRGB"
+        "color_space": "sRGB",
+        "codec": "none"
       }
     },
     {
       "id": 77,
       "type": "VAEDecodeAudio",
       "pos": [
-        2447.012996871688,
+        2434.768241421168,
         364.8167547950162
       ],
       "size": [
-        194.25299723441972,
+        221.59220939465595,
         46
       ],
       "flags": {},
@@ -579,10 +609,17 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "MinimaxH3LatentUpscaler3D"
+        "Node name for S&R": "MinimaxH3LatentUpscaler3D",
+        "models": [
+          {
+            "name": "minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors",
+            "url": "https://huggingface.co/LBH-123-AI/Minimax_h3_latent_Upscaler/resolve/main/minimax_h3_latent_upscaler_3d_conv_v1/minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors",
+            "directory": "latent_upscale_models"
+          }
+        ]
       },
       "widgets_values": [
-        "minimax_h3_latent_upscaler_3d_bf16.safetensors",
+        "minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors",
         "scale by multiplier",
         2,
         32,
@@ -592,7 +629,7 @@
         false
       ],
       "widgets_values_named": {
-        "model_name": "minimax_h3_latent_upscaler_3d_bf16.safetensors",
+        "model_name": "minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors",
         "mode": "scale by multiplier",
         "mode.scale": 2,
         "align": 32,
@@ -794,7 +831,7 @@
       ],
       "size": [
         778.6372202009193,
-        538.0992983744327
+        542.9355544005252
       ],
       "flags": {},
       "order": 27,
@@ -881,11 +918,11 @@
       "id": 114,
       "type": "ComfyMathExpression",
       "pos": [
-        288.94156702650986,
+        293.4041047984035,
         724.2217890896594
       ],
       "size": [
-        210,
+        214.65850806503283,
         128
       ],
       "flags": {},
@@ -940,11 +977,11 @@
       "id": 113,
       "type": "ComfyMathExpression",
       "pos": [
-        288.94156702650986,
+        293.4041047984035,
         551.9271988752192
       ],
       "size": [
-        210,
+        214.65850806503283,
         128
       ],
       "flags": {},
@@ -999,11 +1036,11 @@
       "id": 87,
       "type": "ComfyMathExpression",
       "pos": [
-        288.94156702650986,
+        293.4041047984035,
         911.2522709601897
       ],
       "size": [
-        210,
+        214.65850806503283,
         128
       ],
       "flags": {},
@@ -1389,34 +1426,10 @@
       "MODEL"
     ],
     [
-      166,
-      94,
-      0,
-      87,
-      0,
-      "FLOAT"
-    ],
-    [
-      168,
-      91,
-      0,
-      99,
-      0,
-      "VIDEO"
-    ],
-    [
       169,
       3,
       0,
       101,
-      0,
-      "LATENT"
-    ],
-    [
-      171,
-      101,
-      0,
-      102,
       0,
       "LATENT"
     ],
@@ -1509,26 +1522,10 @@
       "CONDITIONING"
     ],
     [
-      194,
-      73,
-      0,
-      113,
-      0,
-      "INT"
-    ],
-    [
       195,
       113,
       1,
       76,
-      0,
-      "INT"
-    ],
-    [
-      196,
-      73,
-      1,
-      114,
       0,
       "INT"
     ],
@@ -1539,19 +1536,59 @@
       76,
       1,
       "INT"
+    ],
+    [
+      171,
+      101,
+      0,
+      102,
+      0,
+      "LATENT"
+    ],
+    [
+      168,
+      91,
+      0,
+      99,
+      0,
+      "VIDEO"
+    ],
+    [
+      196,
+      73,
+      1,
+      114,
+      0,
+      "INT"
+    ],
+    [
+      194,
+      73,
+      0,
+      113,
+      0,
+      "INT"
+    ],
+    [
+      166,
+      94,
+      0,
+      87,
+      0,
+      "FLOAT"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.3956893427901571,
+      "scale": 0.7009878078026738,
       "offset": [
-        646.8517452827605,
-        610.7484360136835
+        579.9592181633807,
+        665.3409976062251
       ]
     },
-    "frontendVersion": "1.51.10",
+    "frontendVersion": "1.55.14",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,
