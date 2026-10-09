@@ -22,7 +22,4 @@ overrides:
       nodes: [MinimaxH3LatentUpscaler3D]
     - id: comfyui-videohelpersuite
       nodes: [VHS_LoadVideo]
-    # Temporary: for capturing workflow screenshots while the workflows are rebuilt on the Pod.
-    # Remove before the card goes live.
-    - id: workflow-image-export
   models: []

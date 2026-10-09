@@ -1,18 +1,18 @@
 {
   "id": "ab470b3f-c850-4cc5-be9c-63a1bff0dc45",
   "revision": 0,
-  "last_node_id": 120,
+  "last_node_id": 122,
   "last_link_id": 215,
   "nodes": [
     {
       "id": 8,
       "type": "VAEDecode",
       "pos": [
-        2796.1261686020252,
+        2773.69956029154,
         188.1918182373047
       ],
       "size": [
-        194.25299723441972,
+        221.59220939465595,
         46
       ],
       "flags": {},
@@ -124,7 +124,7 @@
         64.14635395192796
       ],
       "size": [
-        301.3524169921875,
+        305.3782043457031,
         58
       ],
       "flags": {},
@@ -201,12 +201,12 @@
       "id": 95,
       "type": "MarkdownNote",
       "pos": [
-        -482.3943342566212,
-        -207.9445746188256
+        -500.74832612472113,
+        -210.56656545542015
       ],
       "size": [
-        480.26512898835654,
-        314.3204118484383
+        484.1981272458065,
+        465.08534505068724
       ],
       "flags": {},
       "order": 2,
@@ -218,7 +218,7 @@
         "## models\n- diffusion_models\n  - [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (21 GB)\n- latent_upscale_models\n  - [minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors](https://huggingface.co/LBH-123-AI/Minimax_h3_latent_Upscaler/blob/main/minimax_h3_latent_upscaler_3d_conv_v1/minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors) (691 MB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) (27.1 GB)\n- vae\n  - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)\n  - [minimax_h3_video_vae_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_int8_convrot.safetensors) (2.81 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_fl2va_pruned_int8_convrot.safetensors\n    ├── 📂latent_upscale_models/\n    │   └── minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n    └── 📂vae/\n         ├── minimax_h3_audio_vae_fp32.safetensors\n         └── minimax_h3_video_vae_int8_convrot.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/minimax-h3/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/minimax-h3/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/minimax-h3/)"
       ],
       "widgets_values_named": {
-        "text": "## models\n- diffusion_models\n  - [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (21 GB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) (27.1 GB)\n- vae\n  - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)\n  - [minimax_h3_video_vae_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_int8_convrot.safetensors) (2.81 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_fl2va_pruned_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n    └── 📂vae/\n         ├── minimax_h3_audio_vae_fp32.safetensors\n         └── minimax_h3_video_vae_int8_convrot.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/minimax-h3/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/minimax-h3/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/minimax-h3/)"
+        "text": "## models\n- diffusion_models\n  - [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (21 GB)\n- latent_upscale_models\n  - [minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors](https://huggingface.co/LBH-123-AI/Minimax_h3_latent_Upscaler/blob/main/minimax_h3_latent_upscaler_3d_conv_v1/minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors) (691 MB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) (27.1 GB)\n- vae\n  - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)\n  - [minimax_h3_video_vae_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_int8_convrot.safetensors) (2.81 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_fl2va_pruned_int8_convrot.safetensors\n    ├── 📂latent_upscale_models/\n    │   └── minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n    └── 📂vae/\n         ├── minimax_h3_audio_vae_fp32.safetensors\n         └── minimax_h3_video_vae_int8_convrot.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/minimax-h3/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/minimax-h3/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/minimax-h3/)"
       },
       "color": "#323",
       "bgcolor": "#535"
@@ -277,7 +277,7 @@
         853.1626745477416
       ],
       "size": [
-        210,
+        214.65850806503283,
         128
       ],
       "flags": {},
@@ -336,7 +336,7 @@
         1208.6257749488502
       ],
       "size": [
-        210,
+        214.65850806503283,
         128
       ],
       "flags": {},
@@ -439,7 +439,7 @@
         188.1918182373047
       ],
       "size": [
-        301.3524169921875,
+        305.3782043457031,
         106
       ],
       "flags": {},
@@ -736,7 +736,7 @@
         997.5710151195559
       ],
       "size": [
-        210,
+        214.65850806503283,
         136
       ],
       "flags": {},
@@ -782,7 +782,7 @@
       "id": 117,
       "type": "Reroute",
       "pos": [
-        151.7672387140089,
+        146.85987985144288,
         1039.9978681149084
       ],
       "size": [
@@ -934,12 +934,12 @@
       "id": 91,
       "type": "CreateVideo",
       "pos": [
-        3031.6919032680566,
+        3034.1482051929315,
         188.1918182373047
       ],
       "size": [
         270,
-        126
+        150
       ],
       "flags": {},
       "order": 36,
@@ -974,12 +974,14 @@
       "widgets_values": [
         24,
         8,
-        "sRGB"
+        "sRGB",
+        "none"
       ],
       "widgets_values_named": {
         "fps": 24,
         "bit_depth": 8,
-        "color_space": "sRGB"
+        "color_space": "sRGB",
+        "codec": "none"
       }
     },
     {
@@ -1057,11 +1059,11 @@
       "id": 77,
       "type": "VAEDecodeAudio",
       "pos": [
-        2796.8662161802217,
+        2773.69956029154,
         287.56047077038255
       ],
       "size": [
-        194.25299723441972,
+        221.59220939465595,
         46
       ],
       "flags": {},
@@ -1287,7 +1289,7 @@
         -59.89911033344882
       ],
       "size": [
-        301.3524169921875,
+        305.3782043457031,
         58
       ],
       "flags": {},
@@ -1474,7 +1476,7 @@
         680.8680843333011
       ],
       "size": [
-        210,
+        214.65850806503283,
         128
       ],
       "flags": {},
@@ -1558,11 +1560,11 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "ComfyUI_05011_.png",
+        "minimax_h3_hiresfix_i2va_input.webp",
         "image"
       ],
       "widgets_values_named": {
-        "image": "ComfyUI_05011_.png",
+        "image": "minimax_h3_hiresfix_i2va_input.webp",
         "upload": "image"
       },
       "color": "#232",
@@ -1572,7 +1574,7 @@
       "id": 86,
       "type": "ModelAttentionBackend",
       "pos": [
-        502.5398511791542,
+        434.27961405604844,
         -210.56656545542015
       ],
       "size": [
@@ -1613,7 +1615,7 @@
       "id": 37,
       "type": "UNETLoader",
       "pos": [
-        156.5403130152688,
+        52.62317611836556,
         -210.56656545542015
       ],
       "size": [
@@ -1706,11 +1708,11 @@
       "id": 111,
       "type": "PrimitiveNode",
       "pos": [
-        55.507462859255384,
+        52.62317611836556,
         356.57421966691356
       ],
       "size": [
-        301.3524169921875,
+        305.3782043457031,
         170.19960636851056
       ],
       "flags": {},
@@ -1858,14 +1860,6 @@
       "VAE"
     ],
     [
-      158,
-      91,
-      0,
-      92,
-      0,
-      "VIDEO"
-    ],
-    [
       159,
       8,
       0,
@@ -1896,30 +1890,6 @@
       3,
       0,
       "MODEL"
-    ],
-    [
-      166,
-      94,
-      0,
-      87,
-      0,
-      "FLOAT"
-    ],
-    [
-      167,
-      96,
-      0,
-      97,
-      0,
-      "IMAGE"
-    ],
-    [
-      168,
-      97,
-      0,
-      98,
-      0,
-      "IMAGE"
     ],
     [
       169,
@@ -1994,22 +1964,6 @@
       "CONDITIONING"
     ],
     [
-      182,
-      100,
-      0,
-      105,
-      0,
-      "INT"
-    ],
-    [
-      183,
-      100,
-      1,
-      104,
-      0,
-      "INT"
-    ],
-    [
       184,
       105,
       1,
@@ -2024,14 +1978,6 @@
       101,
       6,
       "INT"
-    ],
-    [
-      186,
-      107,
-      0,
-      106,
-      0,
-      "LATENT"
     ],
     [
       187,
@@ -2232,19 +2178,75 @@
       112,
       3,
       "LATENT"
+    ],
+    [
+      167,
+      96,
+      0,
+      97,
+      0,
+      "IMAGE"
+    ],
+    [
+      183,
+      100,
+      1,
+      104,
+      0,
+      "INT"
+    ],
+    [
+      166,
+      94,
+      0,
+      87,
+      0,
+      "FLOAT"
+    ],
+    [
+      168,
+      97,
+      0,
+      98,
+      0,
+      "IMAGE"
+    ],
+    [
+      186,
+      107,
+      0,
+      106,
+      0,
+      "LATENT"
+    ],
+    [
+      182,
+      100,
+      0,
+      105,
+      0,
+      "INT"
+    ],
+    [
+      158,
+      91,
+      0,
+      92,
+      0,
+      "VIDEO"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.2673486306413783,
+      "scale": 0.5209868481924381,
       "offset": [
-        2250.92434362,
-        864.199350594036
+        1331.1430900980936,
+        737.4222393673878
       ]
     },
-    "frontendVersion": "1.51.10",
+    "frontendVersion": "1.55.14",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

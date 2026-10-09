@@ -1,22 +1,22 @@
 {
   "id": "492d6f9b-8935-4aac-813c-0650d63c0596",
   "revision": 0,
-  "last_node_id": 127,
-  "last_link_id": 227,
+  "last_node_id": 140,
+  "last_link_id": 250,
   "nodes": [
     {
       "id": 77,
       "type": "VAEDecodeAudio",
       "pos": [
-        1308.6980183050962,
+        1263.8313081875897,
         296.9762089835968
       ],
       "size": [
-        194.25299723441972,
+        221.59220939465595,
         46
       ],
       "flags": {},
-      "order": 23,
+      "order": 21,
       "mode": 0,
       "inputs": [
         {
@@ -40,24 +40,24 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "VAEDecodeAudio",
         "cnr_id": "comfy-core",
-        "ver": "0.30.0",
-        "Node name for S&R": "VAEDecodeAudio"
+        "ver": "0.30.0"
       }
     },
     {
       "id": 91,
       "type": "CreateVideo",
       "pos": [
-        1544.2637529711267,
+        1535.5000039924914,
         188.1918182373047
       ],
       "size": [
         270,
-        126
+        150
       ],
       "flags": {},
-      "order": 24,
+      "order": 22,
       "mode": 0,
       "inputs": [
         {
@@ -82,34 +82,36 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "CreateVideo",
         "cnr_id": "comfy-core",
-        "ver": "0.33.0",
-        "Node name for S&R": "CreateVideo"
+        "ver": "0.33.0"
       },
       "widgets_values": [
         24,
         8,
-        "sRGB"
+        "sRGB",
+        "none"
       ],
       "widgets_values_named": {
         "fps": 24,
         "bit_depth": 8,
-        "color_space": "sRGB"
+        "color_space": "sRGB",
+        "codec": "none"
       }
     },
     {
       "id": 8,
       "type": "VAEDecode",
       "pos": [
-        1308.6980183050962,
+        1263.8313081875897,
         188.1918182373047
       ],
       "size": [
-        194.25299723441972,
+        221.59220939465595,
         46
       ],
       "flags": {},
-      "order": 22,
+      "order": 20,
       "mode": 0,
       "inputs": [
         {
@@ -134,9 +136,9 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "VAEDecode",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "Node name for S&R": "VAEDecode"
+        "ver": "0.3.33"
       }
     },
     {
@@ -151,7 +153,7 @@
         26
       ],
       "flags": {},
-      "order": 9,
+      "order": 7,
       "mode": 0,
       "inputs": [
         {
@@ -186,7 +188,7 @@
         26
       ],
       "flags": {},
-      "order": 8,
+      "order": 6,
       "mode": 0,
       "inputs": [
         {
@@ -213,7 +215,7 @@
       "id": 86,
       "type": "ModelAttentionBackend",
       "pos": [
-        559.0936845136185,
+        426.3652074439484,
         -207.9445746188256
       ],
       "size": [
@@ -221,7 +223,7 @@
         58
       ],
       "flags": {},
-      "order": 11,
+      "order": 8,
       "mode": 0,
       "inputs": [
         {
@@ -232,7 +234,7 @@
       ],
       "outputs": [
         {
-          "name": "MODEL",
+          "name": "model",
           "type": "MODEL",
           "links": [
             164
@@ -240,9 +242,9 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "ModelAttentionBackend",
         "cnr_id": "comfy-core",
-        "ver": "0.34.0",
-        "Node name for S&R": "ModelAttentionBackend"
+        "ver": "0.34.0"
       },
       "widgets_values": [
         "comfy kitchen attention"
@@ -259,7 +261,7 @@
         188.1918182373047
       ],
       "size": [
-        301.3524169921875,
+        305.3782043457031,
         106
       ],
       "flags": {},
@@ -277,9 +279,9 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "CLIPLoader",
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "CLIPLoader",
         "models": [
           {
             "name": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
@@ -309,7 +311,7 @@
         -59.89911033344882
       ],
       "size": [
-        301.3524169921875,
+        305.3782043457031,
         58
       ],
       "flags": {},
@@ -328,9 +330,9 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "VAELoader",
         "models": [
           {
             "name": "minimax_h3_video_vae_int8_convrot.safetensors",
@@ -356,7 +358,7 @@
         64.14635395192796
       ],
       "size": [
-        301.3524169921875,
+        305.3782043457031,
         58
       ],
       "flags": {},
@@ -375,9 +377,9 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "VAELoader",
         "models": [
           {
             "name": "minimax_h3_audio_vae_fp32.safetensors",
@@ -399,15 +401,15 @@
       "id": 75,
       "type": "ConditioningZeroOut",
       "pos": [
-        610.6589994550249,
-        687.4058481340641
+        613.3453120458804,
+        757.7230897066519
       ],
       "size": [
         218.4346850585937,
         26
       ],
       "flags": {},
-      "order": 20,
+      "order": 18,
       "mode": 0,
       "inputs": [
         {
@@ -426,51 +428,16 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "ConditioningZeroOut",
         "cnr_id": "comfy-core",
-        "ver": "0.30.0",
-        "Node name for S&R": "ConditioningZeroOut"
-      }
-    },
-    {
-      "id": 99,
-      "type": "Reroute",
-      "pos": [
-        278.97559311055306,
-        352.8802091216946
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 10,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 198
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "IMAGE",
-          "links": [
-            195
-          ]
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
+        "ver": "0.30.0"
       }
     },
     {
       "id": 123,
       "type": "ResizeImageMaskNode",
       "pos": [
-        -167.25870608263529,
+        -156.25208937157709,
         473.4103556894062
       ],
       "size": [
@@ -478,7 +445,7 @@
         106
       ],
       "flags": {},
-      "order": 16,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
@@ -492,16 +459,15 @@
           "name": "resized",
           "type": "IMAGE",
           "links": [
-            215,
             218,
             221
           ]
         }
       ],
       "properties": {
+        "Node name for S&R": "ResizeImageMaskNode",
         "cnr_id": "comfy-core",
-        "ver": "0.34.0",
-        "Node name for S&R": "ResizeImageMaskNode"
+        "ver": "0.34.0"
       },
       "widgets_values": [
         "scale to multiple",
@@ -528,7 +494,7 @@
         26
       ],
       "flags": {},
-      "order": 18,
+      "order": 16,
       "mode": 0,
       "inputs": [
         {
@@ -542,7 +508,7 @@
           "name": "",
           "type": "IMAGE",
           "links": [
-            223
+            249
           ]
         }
       ],
@@ -550,51 +516,6 @@
         "showOutputText": false,
         "horizontal": false
       }
-    },
-    {
-      "id": 96,
-      "type": "LoadImage",
-      "pos": [
-        -1306.2488452286336,
-        363.3498185322165
-      ],
-      "size": [
-        369.8098637230636,
-        662.9296573536006
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            198
-          ]
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.34.0",
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "pexels-photo-15169599.jpg",
-        "image"
-      ],
-      "widgets_values_named": {
-        "image": "pexels-photo-15169599.jpg",
-        "upload": "image"
-      },
-      "color": "#233",
-      "bgcolor": "#355"
     },
     {
       "id": 3,
@@ -608,7 +529,7 @@
         262
       ],
       "flags": {},
-      "order": 21,
+      "order": 19,
       "mode": 0,
       "inputs": [
         {
@@ -644,12 +565,12 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "KSampler",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "Node name for S&R": "KSampler"
+        "ver": "0.3.33"
       },
       "widgets_values": [
-        1234,
+        123,
         "fixed",
         20,
         1,
@@ -658,7 +579,7 @@
         1
       ],
       "widgets_values_named": {
-        "seed": 1234,
+        "seed": 123,
         "control_after_generate": "fixed",
         "steps": 20,
         "cfg": 1,
@@ -671,7 +592,7 @@
       "id": 37,
       "type": "UNETLoader",
       "pos": [
-        218.55216245088812,
+        52.62317611836556,
         -207.9445746188256
       ],
       "size": [
@@ -679,7 +600,7 @@
         82
       ],
       "flags": {},
-      "order": 4,
+      "order": 3,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -693,9 +614,9 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "UNETLoader",
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "UNETLoader",
         "models": [
           {
             "name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
@@ -716,67 +637,6 @@
       "bgcolor": "#535"
     },
     {
-      "id": 104,
-      "type": "ComfyMathExpression",
-      "pos": [
-        145.773025786573,
-        910.7312424233263
-      ],
-      "size": [
-        210,
-        128
-      ],
-      "flags": {},
-      "order": 13,
-      "mode": 0,
-      "inputs": [
-        {
-          "label": "a",
-          "name": "values.a",
-          "type": "FLOAT,INT,BOOLEAN",
-          "link": 182
-        },
-        {
-          "label": "b",
-          "name": "values.b",
-          "shape": 7,
-          "type": "FLOAT,INT,BOOLEAN",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "FLOAT",
-          "type": "FLOAT",
-          "links": null
-        },
-        {
-          "name": "INT",
-          "type": "INT",
-          "links": [
-            188,
-            224
-          ]
-        },
-        {
-          "name": "BOOL",
-          "type": "BOOLEAN",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.33.0",
-        "Node name for S&R": "ComfyMathExpression"
-      },
-      "widgets_values": [
-        "17 * round((a * 24 - 5) / 17) + 5"
-      ],
-      "widgets_values_named": {
-        "expression": "17 * round((a * 24 - 5) / 17) + 5"
-      }
-    },
-    {
       "id": 124,
       "type": "GetImageSize",
       "pos": [
@@ -788,7 +648,7 @@
         136.58041135497615
       ],
       "flags": {},
-      "order": 17,
+      "order": 15,
       "mode": 0,
       "inputs": [
         {
@@ -815,13 +675,15 @@
         {
           "name": "batch_size",
           "type": "INT",
-          "links": null
+          "links": [
+            243
+          ]
         }
       ],
       "properties": {
+        "Node name for S&R": "GetImageSize",
         "cnr_id": "comfy-core",
-        "ver": "0.34.0",
-        "Node name for S&R": "GetImageSize"
+        "ver": "0.34.0"
       }
     },
     {
@@ -836,7 +698,7 @@
         26
       ],
       "flags": {},
-      "order": 12,
+      "order": 14,
       "mode": 0,
       "inputs": [
         {
@@ -848,9 +710,9 @@
       "outputs": [
         {
           "name": "",
-          "type": "*",
+          "type": "AUDIO",
           "links": [
-            227
+            250
           ]
         }
       ],
@@ -860,129 +722,10 @@
       }
     },
     {
-      "id": 120,
-      "type": "VHS_LoadVideo",
-      "pos": [
-        -848.8100218650059,
-        473.4103556894062
-      ],
-      "size": [
-        354.8993996630419,
-        919.7104418520476
-      ],
-      "flags": {},
-      "order": 14,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "meta_batch",
-          "shape": 7,
-          "type": "VHS_BatchManager",
-          "link": null
-        },
-        {
-          "name": "vae",
-          "shape": 7,
-          "type": "VAE",
-          "link": null
-        },
-        {
-          "name": "frame_load_cap",
-          "type": "INT",
-          "widget": {
-            "name": "frame_load_cap"
-          },
-          "link": 224
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            209
-          ]
-        },
-        {
-          "name": "frame_count",
-          "type": "INT",
-          "links": null
-        },
-        {
-          "name": "audio",
-          "type": "AUDIO",
-          "links": []
-        },
-        {
-          "name": "video_info",
-          "type": "VHS_VIDEOINFO",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-videohelpersuite",
-        "ver": "1.7.9",
-        "Node name for S&R": "VHS_LoadVideo"
-      },
-      "widgets_values": {
-        "video": "horse.mp4",
-        "force_rate": 24,
-        "custom_width": 0,
-        "custom_height": 0,
-        "frame_load_cap": 0,
-        "skip_first_frames": 0,
-        "select_every_nth": 1,
-        "format": "AnimateDiff",
-        "videopreview": {
-          "hidden": false,
-          "paused": false,
-          "params": {
-            "filename": "horse.mp4",
-            "type": "input",
-            "format": "video/mp4",
-            "force_rate": 24,
-            "custom_width": 0,
-            "custom_height": 0,
-            "frame_load_cap": 0,
-            "skip_first_frames": 0,
-            "select_every_nth": 1
-          }
-        }
-      },
-      "widgets_values_named": {
-        "video": "horse.mp4",
-        "force_rate": 24,
-        "custom_width": 0,
-        "custom_height": 0,
-        "frame_load_cap": 0,
-        "skip_first_frames": 0,
-        "select_every_nth": 1,
-        "format": "AnimateDiff",
-        "choose video to upload": null,
-        "videopreview": {
-          "hidden": false,
-          "paused": false,
-          "params": {
-            "filename": "horse.mp4",
-            "type": "input",
-            "format": "video/mp4",
-            "force_rate": 24,
-            "custom_width": 0,
-            "custom_height": 0,
-            "frame_load_cap": 0,
-            "skip_first_frames": 0,
-            "select_every_nth": 1
-          }
-        }
-      },
-      "color": "#233",
-      "bgcolor": "#355"
-    },
-    {
       "id": 126,
       "type": "Reroute",
       "pos": [
-        -465.58466414229963,
+        -469.900857575815,
         608.3369912708454
       ],
       "size": [
@@ -990,19 +733,19 @@
         26
       ],
       "flags": {},
-      "order": 5,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": null
+          "link": 235
         }
       ],
       "outputs": [
         {
           "name": "",
-          "type": "*",
+          "type": "AUDIO",
           "links": [
             226
           ]
@@ -1022,10 +765,10 @@
       ],
       "size": [
         405.4147896605257,
-        443.39272420969405
+        424
       ],
       "flags": {},
-      "order": 19,
+      "order": 17,
       "mode": 0,
       "inputs": [
         {
@@ -1035,23 +778,18 @@
         },
         {
           "name": "vae",
+          "shape": 7,
           "type": "VAE",
           "link": 193
         },
         {
           "name": "audio_vae",
+          "shape": 7,
           "type": "VAE",
           "link": 194
         },
         {
           "name": "ref_images.ref_image_0",
-          "shape": 7,
-          "type": "IMAGE",
-          "link": 195
-        },
-        {
-          "label": "ref_image_1",
-          "name": "ref_images.ref_image_1",
           "shape": 7,
           "type": "IMAGE",
           "link": null
@@ -1060,11 +798,16 @@
           "name": "ref_videos.ref_video_0",
           "shape": 7,
           "type": "IMAGE",
-          "link": 223
+          "link": 249
         },
         {
-          "label": "ref_video_1",
           "name": "ref_videos.ref_video_1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "ref_videos.ref_video_2",
           "shape": 7,
           "type": "IMAGE",
           "link": null
@@ -1073,10 +816,9 @@
           "name": "ref_video_audios.ref_video_audio_0",
           "shape": 7,
           "type": "AUDIO",
-          "link": 227
+          "link": 250
         },
         {
-          "label": "ref_video_audio_1",
           "name": "ref_video_audios.ref_video_audio_1",
           "shape": 7,
           "type": "AUDIO",
@@ -1084,6 +826,18 @@
         },
         {
           "name": "ref_audios.ref_audio_0",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "ref_audios.ref_audio_1",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "ref_audios.ref_audio_2",
           "shape": 7,
           "type": "AUDIO",
           "link": null
@@ -1110,13 +864,7 @@
           "widget": {
             "name": "length"
           },
-          "link": 188
-        },
-        {
-          "name": "ref_videos.ref_video_2",
-          "shape": 7,
-          "type": "IMAGE",
-          "link": null
+          "link": 243
         }
       ],
       "outputs": [
@@ -1137,19 +885,19 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "MiniMaxH3ReferenceToVideo",
         "cnr_id": "comfy-core",
-        "ver": "0.34.0",
-        "Node name for S&R": "MiniMaxH3ReferenceToVideo"
+        "ver": "0.34.0"
       },
       "widgets_values": [
-        "subject_definitions:\n<Subject 1> is the woman in <Picture 1>, preserving her identity, face, hairstyle, makeup, black blazer, and black-and-white patterned top. Complete her lower body as tailored black suit trousers and black loafers.\n\nsummary:\n[video editing] Replace the male horse rider in <Video 1> with <Subject 1>.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - preserve her identity and outfit style from <Picture 1>.\n<Video 1> (appears in [Shot 1]): fully_preserved - preserve the horse, riding motion, camera work, lighting, environment, and overall scene continuity.\n\ndetailed_description:\n[Shot 1] Replace the original male rider in <Video 1> completely with <Subject 1>. She rides the same horse in the same position and follows the same riding motion and timing. Her appearance matches <Picture 1>, and her full outfit is a black blazer, black-and-white patterned top, tailored black suit trousers, and black loafers. Preserve the original horse, camera, framing, lighting, and background exactly.\n\noverall_soundscape:\nPreserve the original soundscape from <Video 1>.\n\nnon_diegetic_music:\nPreserve the original music from <Video 1>, or N/A if none.",
+        "subject_definitions:\n<Video 1> is the source video for the target video edit, a single static shot of a café interior looking out through large windows onto a street.\n<Subject 1> is the female barista in <Video 1>, with dark teal hair tied in a low bun, a grey puff-sleeved blouse with a black collar, a black apron, and bracelets on her wrist, pouring coffee from a round glass pot.\n<Subject 2> is the male barista in <Video 1>, with short dark hair, a dark shirt with rolled sleeves, and a black apron, who enters from the left carrying a cup and saucer.\n<Subject 3> is the street exterior seen through the café windows in <Video 1>, including the white building façade with green shutters and balconies, the scalloped green awning, the outdoor café tables and chairs, the man in a green jacket, the person walking a brown dog, and the cream-colored hatchback car.\n\nsummary:\n[video editing] The target video is an edited version of <Video 1>. The time of day and weather of <Subject 3> are changed from a bright day to a late night in heavy rain, while the camera, composition, and every motion of <Subject 1>, <Subject 2>, the pedestrians, the dog, and the car stay identical to <Video 1>. Midway through the single shot, an unseen lightning strike flashes outside, the café interior drops to near-black for an instant, and <Subject 1> and <Subject 2> are outlined by a strong yellow rim light.\n\nretention_analysis:\n<Video 1> (single static shot, timing, and all subject motion): partially_preserved - the framing, shot length, and frame-by-frame motion of every person, the dog, and the car are retained, while time of day, weather, and lighting are changed.\n<Subject 1> (appears in [Shot 1]): fully_preserved - her identity, hair, clothing, position, and pouring action are retained; only the light falling on her changes.\n<Subject 2> (appears in [Shot 1]): fully_preserved - his identity, clothing, entry from the left, cup placement, and exit are retained; only the light falling on him changes.\n<Subject 3> (appears in [Shot 1]): partially_preserved - the building façade, awning, outdoor furniture, pedestrians, dog, and car keep their shapes, positions, and movements, while the daylight is replaced by a dark late-night sky and heavy rain.\n\ndetailed_description:\nThe target video keeps the flat, painterly 2D-animated illustration style of <Video 1>, regraded to a dark late-night palette of deep blues and greens with warm interior accents.\n[Shot 1] The camera holds a static shot identical to <Video 1>: a red café counter runs from the foreground toward the windows, with a black kettle, a plate holding a sandwich, orange slices and cherry tomatoes, a folded napkin with a spoon, and a white cup on a saucer. On the right, <Subject 1>, the female barista with dark teal hair in a low bun, a grey puff-sleeved blouse, and a black apron, tilts a round glass pot and pours dark coffee into the cup with exactly the same timing as in <Video 1>, lit by soft warm lamp light from inside the café. Behind her a blue vase of pink flowers stands on the right, and a large potted plant fills the left edge. Through the windows, <Subject 3> is now a late-night street in heavy rain: the sky is black, the white façade with green shutters and balconies is dim and blue-grey, dense rain streaks fall across the whole exterior, water runs off the scalloped green awning in a steady curtain, raindrops slide down the window glass, and the pavement and empty outdoor tables are wet and reflective. The man in the green jacket walks from left to right past the tables, the person with the brown dog walks along the far side of the street, and the cream-colored hatchback drives across from right to left, all with the same paths, speed, and timing as in <Video 1>, now moving through the rain. <Subject 2>, the male barista in a dark shirt and black apron, enters from the left foreground carrying a cup and saucer and leans forward to set it on the counter, exactly as in <Video 1>. At around 00:03.000, as he places the cup, lightning strikes somewhere out of view: no lightning bolt is visible, only a sudden hard flash of light from outside. For a brief instant the street and windows flare bright, the entire café interior drops to near-black, and <Subject 1> and <Subject 2> become dark silhouettes edged with a strong, saturated yellow rim light along their hair, faces, shoulders, and arms. The flash fades within a fraction of a second and the warm interior light and dark rainy street return. A heavy thunderclap follows. <Subject 2> straightens, turns, and walks out of frame to the left, while <Subject 1> finishes pouring and holds the glass pot level in both hands, eyes lowered, as the rain keeps falling outside through the final frame.\n\noverall_soundscape:\nHeavy rain pours steadily on the street and drums on the awning throughout the video, with water splashing as the car passes. Coffee trickles into the cup and a cup and saucer clink on the counter. A sharp, close thunderclap cracks just after the flash and rolls away into a low rumble.\n\nnon_diegetic_music:\nN/A",
         1344,
         768,
         124,
         "match"
       ],
       "widgets_values_named": {
-        "prompt": "subject_definitions:\n<Subject 1> is the woman in <Picture 1>, preserving her identity, face, hairstyle, makeup, black blazer, and black-and-white patterned top. Complete her lower body as tailored black suit trousers and black loafers.\n\nsummary:\n[video editing] Replace the male horse rider in <Video 1> with <Subject 1>.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - preserve her identity and outfit style from <Picture 1>.\n<Video 1> (appears in [Shot 1]): fully_preserved - preserve the horse, riding motion, camera work, lighting, environment, and overall scene continuity.\n\ndetailed_description:\n[Shot 1] Replace the original male rider in <Video 1> completely with <Subject 1>. She rides the same horse in the same position and follows the same riding motion and timing. Her appearance matches <Picture 1>, and her full outfit is a black blazer, black-and-white patterned top, tailored black suit trousers, and black loafers. Preserve the original horse, camera, framing, lighting, and background exactly.\n\noverall_soundscape:\nPreserve the original soundscape from <Video 1>.\n\nnon_diegetic_music:\nPreserve the original music from <Video 1>, or N/A if none.",
+        "prompt": "subject_definitions:\n<Video 1> is the source video for the target video edit, a single static shot of a café interior looking out through large windows onto a street.\n<Subject 1> is the female barista in <Video 1>, with dark teal hair tied in a low bun, a grey puff-sleeved blouse with a black collar, a black apron, and bracelets on her wrist, pouring coffee from a round glass pot.\n<Subject 2> is the male barista in <Video 1>, with short dark hair, a dark shirt with rolled sleeves, and a black apron, who enters from the left carrying a cup and saucer.\n<Subject 3> is the street exterior seen through the café windows in <Video 1>, including the white building façade with green shutters and balconies, the scalloped green awning, the outdoor café tables and chairs, the man in a green jacket, the person walking a brown dog, and the cream-colored hatchback car.\n\nsummary:\n[video editing] The target video is an edited version of <Video 1>. The time of day and weather of <Subject 3> are changed from a bright day to a late night in heavy rain, while the camera, composition, and every motion of <Subject 1>, <Subject 2>, the pedestrians, the dog, and the car stay identical to <Video 1>. Midway through the single shot, an unseen lightning strike flashes outside, the café interior drops to near-black for an instant, and <Subject 1> and <Subject 2> are outlined by a strong yellow rim light.\n\nretention_analysis:\n<Video 1> (single static shot, timing, and all subject motion): partially_preserved - the framing, shot length, and frame-by-frame motion of every person, the dog, and the car are retained, while time of day, weather, and lighting are changed.\n<Subject 1> (appears in [Shot 1]): fully_preserved - her identity, hair, clothing, position, and pouring action are retained; only the light falling on her changes.\n<Subject 2> (appears in [Shot 1]): fully_preserved - his identity, clothing, entry from the left, cup placement, and exit are retained; only the light falling on him changes.\n<Subject 3> (appears in [Shot 1]): partially_preserved - the building façade, awning, outdoor furniture, pedestrians, dog, and car keep their shapes, positions, and movements, while the daylight is replaced by a dark late-night sky and heavy rain.\n\ndetailed_description:\nThe target video keeps the flat, painterly 2D-animated illustration style of <Video 1>, regraded to a dark late-night palette of deep blues and greens with warm interior accents.\n[Shot 1] The camera holds a static shot identical to <Video 1>: a red café counter runs from the foreground toward the windows, with a black kettle, a plate holding a sandwich, orange slices and cherry tomatoes, a folded napkin with a spoon, and a white cup on a saucer. On the right, <Subject 1>, the female barista with dark teal hair in a low bun, a grey puff-sleeved blouse, and a black apron, tilts a round glass pot and pours dark coffee into the cup with exactly the same timing as in <Video 1>, lit by soft warm lamp light from inside the café. Behind her a blue vase of pink flowers stands on the right, and a large potted plant fills the left edge. Through the windows, <Subject 3> is now a late-night street in heavy rain: the sky is black, the white façade with green shutters and balconies is dim and blue-grey, dense rain streaks fall across the whole exterior, water runs off the scalloped green awning in a steady curtain, raindrops slide down the window glass, and the pavement and empty outdoor tables are wet and reflective. The man in the green jacket walks from left to right past the tables, the person with the brown dog walks along the far side of the street, and the cream-colored hatchback drives across from right to left, all with the same paths, speed, and timing as in <Video 1>, now moving through the rain. <Subject 2>, the male barista in a dark shirt and black apron, enters from the left foreground carrying a cup and saucer and leans forward to set it on the counter, exactly as in <Video 1>. At around 00:03.000, as he places the cup, lightning strikes somewhere out of view: no lightning bolt is visible, only a sudden hard flash of light from outside. For a brief instant the street and windows flare bright, the entire café interior drops to near-black, and <Subject 1> and <Subject 2> become dark silhouettes edged with a strong, saturated yellow rim light along their hair, faces, shoulders, and arms. The flash fades within a fraction of a second and the warm interior light and dark rainy street return. A heavy thunderclap follows. <Subject 2> straightens, turns, and walks out of frame to the left, while <Subject 1> finishes pouring and holds the glass pot level in both hands, eyes lowered, as the rain keeps falling outside through the final frame.\n\noverall_soundscape:\nHeavy rain pours steadily on the street and drums on the awning throughout the video, with water splashing as the car passes. Coffee trickles into the cup and a cup and saucer clink on the counter. A sharp, close thunderclap cracks just after the flash and rolls away into a low rumble.\n\nnon_diegetic_music:\nN/A",
         "width": 1344,
         "height": 768,
         "length": 124,
@@ -1159,47 +907,10 @@
       "bgcolor": "#355"
     },
     {
-      "id": 106,
-      "type": "PrimitiveFloat",
-      "pos": [
-        -100.91059743661,
-        910.7312424233263
-      ],
-      "size": [
-        214.65850806503283,
-        58
-      ],
-      "flags": {},
-      "order": 6,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "FLOAT",
-          "type": "FLOAT",
-          "links": [
-            182
-          ]
-        }
-      ],
-      "title": "Float: Duration (sec)",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.34.0",
-        "Node name for S&R": "PrimitiveFloat"
-      },
-      "widgets_values": [
-        6
-      ],
-      "widgets_values_named": {
-        "value": 6
-      }
-    },
-    {
       "id": 121,
       "type": "ResizeImageMaskNode",
       "pos": [
-        -465.58466414229963,
+        -469.900857575815,
         473.4103556894062
       ],
       "size": [
@@ -1207,13 +918,13 @@
         106
       ],
       "flags": {},
-      "order": 15,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
           "name": "input",
           "type": "IMAGE,MASK",
-          "link": 209
+          "link": 234
         }
       ],
       "outputs": [
@@ -1226,9 +937,9 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "ResizeImageMaskNode",
         "cnr_id": "comfy-core",
-        "ver": "0.34.0",
-        "Node name for S&R": "ResizeImageMaskNode"
+        "ver": "0.34.0"
       },
       "widgets_values": [
         "scale total pixels",
@@ -1252,10 +963,10 @@
       ],
       "size": [
         480.26512898835654,
-        314.3204118484383
+        400.0130861279613
       ],
       "flags": {},
-      "order": 7,
+      "order": 4,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -1277,11 +988,11 @@
         188.1918182373047
       ],
       "size": [
-        497.7157105933684,
-        921.8941904090992
+        920,
+        760
       ],
       "flags": {},
-      "order": 25,
+      "order": 23,
       "mode": 0,
       "inputs": [
         {
@@ -1312,6 +1023,218 @@
         "format": "auto",
         "format.codec": "auto",
         "codec": "auto"
+      }
+    },
+    {
+      "id": 133,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        -917.1531950233182,
+        473.4103556894062
+      ],
+      "size": [
+        403.60356924326527,
+        538.0577935281846
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        },
+        {
+          "name": "frame_load_cap",
+          "type": "INT",
+          "widget": {
+            "name": "frame_load_cap"
+          },
+          "link": 242
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            234
+          ]
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            235
+          ]
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_LoadVideo"
+      },
+      "widgets_values": {
+        "video": "minimax_h3_video_editing_input.mp4",
+        "force_rate": 24,
+        "custom_width": 0,
+        "custom_height": 0,
+        "frame_load_cap": 0,
+        "skip_first_frames": 0,
+        "select_every_nth": 1,
+        "format": "AnimateDiff",
+        "choose video to upload": "image",
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "minimax_h3_video_editing_input.mp4",
+            "type": "input",
+            "format": "video/mp4",
+            "force_rate": 24,
+            "custom_width": 0,
+            "custom_height": 0,
+            "frame_load_cap": 0,
+            "skip_first_frames": 0,
+            "select_every_nth": 1
+          }
+        }
+      },
+      "widgets_values_named": {
+        "video": "minimax_h3_video_editing_input.mp4",
+        "force_rate": 24,
+        "custom_width": 0,
+        "custom_height": 0,
+        "frame_load_cap": 0,
+        "skip_first_frames": 0,
+        "select_every_nth": 1,
+        "format": "AnimateDiff",
+        "choose video to upload": "image",
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "minimax_h3_video_editing_input.mp4",
+            "type": "input",
+            "format": "video/mp4",
+            "force_rate": 24,
+            "custom_width": 0,
+            "custom_height": 0,
+            "frame_load_cap": 0,
+            "skip_first_frames": 0,
+            "select_every_nth": 1
+          }
+        }
+      }
+    },
+    {
+      "id": 135,
+      "type": "PrimitiveFloat",
+      "pos": [
+        -1404.2267390976542,
+        631.2321907890033
+      ],
+      "size": [
+        214.65850806503283,
+        58
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            241
+          ]
+        }
+      ],
+      "title": "Float: Duration (sec)",
+      "properties": {
+        "Node name for S&R": "PrimitiveFloat"
+      },
+      "widgets_values": [
+        6
+      ],
+      "widgets_values_named": {
+        "value": 6
+      }
+    },
+    {
+      "id": 136,
+      "type": "ComfyMathExpression",
+      "pos": [
+        -1157.5431158744714,
+        631.2321907890033
+      ],
+      "size": [
+        210,
+        128
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "a",
+          "name": "values.a",
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 241
+        },
+        {
+          "name": "values.b",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": []
+        },
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            242
+          ]
+        },
+        {
+          "name": "BOOL",
+          "type": "BOOLEAN",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ComfyMathExpression",
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0"
+      },
+      "widgets_values": [
+        "17 * round((a * 24 - 5) / 17) + 5"
+      ],
+      "widgets_values_named": {
+        "expression": "17 * round((a * 24 - 5) / 17) + 5"
       }
     }
   ],
@@ -1373,14 +1296,6 @@
       "VAE"
     ],
     [
-      158,
-      91,
-      0,
-      92,
-      0,
-      "VIDEO"
-    ],
-    [
       159,
       8,
       0,
@@ -1413,22 +1328,6 @@
       "MODEL"
     ],
     [
-      182,
-      106,
-      0,
-      104,
-      0,
-      "FLOAT"
-    ],
-    [
-      188,
-      104,
-      1,
-      108,
-      12,
-      "INT"
-    ],
-    [
       189,
       108,
       1,
@@ -1451,6 +1350,78 @@
       75,
       0,
       "CONDITIONING"
+    ],
+    [
+      218,
+      123,
+      0,
+      124,
+      0,
+      "IMAGE"
+    ],
+    [
+      221,
+      123,
+      0,
+      125,
+      0,
+      "IMAGE"
+    ],
+    [
+      226,
+      126,
+      0,
+      127,
+      0,
+      "AUDIO"
+    ],
+    [
+      235,
+      133,
+      2,
+      126,
+      0,
+      "AUDIO"
+    ],
+    [
+      242,
+      136,
+      1,
+      133,
+      2,
+      "INT"
+    ],
+    [
+      211,
+      121,
+      0,
+      123,
+      0,
+      "IMAGE"
+    ],
+    [
+      234,
+      133,
+      0,
+      121,
+      0,
+      "IMAGE"
+    ],
+    [
+      158,
+      91,
+      0,
+      92,
+      0,
+      "VIDEO"
+    ],
+    [
+      241,
+      135,
+      0,
+      136,
+      0,
+      "FLOAT"
     ],
     [
       192,
@@ -1477,59 +1448,27 @@
       "VAE"
     ],
     [
-      195,
-      99,
+      249,
+      125,
       0,
       108,
-      3,
+      4,
       "IMAGE"
     ],
     [
-      198,
-      96,
-      0,
-      99,
-      0,
-      "IMAGE"
-    ],
-    [
-      209,
-      120,
-      0,
-      121,
-      0,
-      "IMAGE"
-    ],
-    [
-      211,
-      121,
-      0,
-      123,
-      0,
-      "IMAGE"
-    ],
-    [
-      215,
-      123,
+      250,
+      127,
       0,
       108,
-      6,
-      "IMAGE"
-    ],
-    [
-      218,
-      123,
-      0,
-      124,
-      0,
-      "IMAGE"
+      7,
+      "AUDIO"
     ],
     [
       219,
       124,
       0,
       108,
-      10,
+      12,
       "INT"
     ],
     [
@@ -1537,61 +1476,29 @@
       124,
       1,
       108,
-      11,
+      13,
       "INT"
     ],
     [
-      221,
-      123,
-      0,
-      125,
-      0,
-      "IMAGE"
-    ],
-    [
-      223,
-      125,
-      0,
-      108,
-      5,
-      "IMAGE"
-    ],
-    [
-      224,
-      104,
-      1,
-      120,
+      243,
+      124,
       2,
-      "INT"
-    ],
-    [
-      226,
-      126,
-      0,
-      127,
-      0,
-      "AUDIO"
-    ],
-    [
-      227,
-      127,
-      0,
       108,
-      7,
-      "AUDIO"
+      14,
+      "INT"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.43056764313425877,
+      "scale": 0.5730855330117113,
       "offset": [
-        1766.4214840264067,
-        863.4420263451012
+        2267.3179681358693,
+        740.1835030681547
       ]
     },
-    "frontendVersion": "1.49.6",
+    "frontendVersion": "1.55.14",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,
