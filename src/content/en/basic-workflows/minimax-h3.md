@@ -28,6 +28,8 @@ There are two model variants.
 - **Ref2VA**
   - Uses images, video, and audio as references, combining people, motion, camera work, visual style, voices, and more
 
+{% runpod %}
+
 ---
 
 ## Recommended Settings

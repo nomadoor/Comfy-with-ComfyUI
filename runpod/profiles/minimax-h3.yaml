@@ -3,6 +3,8 @@
 id: minimax-h3
 title: MiniMax H3
 article: basic-workflows/minimax-h3
+# RunPod template (Matatabi AI account) the article's launch card deploys.
+template: 1kdm8c5zot
 workflows:
   - src/workflows/basic-workflows/minimax-h3/*.json
 comfyui:
