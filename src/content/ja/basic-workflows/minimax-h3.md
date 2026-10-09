@@ -53,7 +53,7 @@ tags: []
   - [qwen3vl_32b_minimax_h3_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) (27.1 GB)
 - vae
   - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)
-  - [minimax_h3_video_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_fp16.safetensors) (5.21 GB)
+  - [minimax_h3_video_vae_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_int8_convrot.safetensors) (2.81 GB)
 
 ```text
 📂ComfyUI/
@@ -65,7 +65,7 @@ tags: []
     │   └── qwen3vl_32b_minimax_h3_int8_convrot.safetensors
     └── 📂vae/
         ├── minimax_h3_audio_vae_fp32.safetensors
-        └── minimax_h3_video_vae_fp16.safetensors
+        └── minimax_h3_video_vae_int8_convrot.safetensors
 ```
 
 ---
@@ -229,22 +229,6 @@ I2VA と基本的にまったく同じです。`last_frame` にも画像を入�
 ![first](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_first_frame.png){media=image} ![last](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_last_frame.png){media=image} ![output](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_output.mp4){media=loop}
 {% endoutputs %}
 
-### Generative Interpolation
-
-使用モデル：`fl2va`
-
-![](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation.png){media=image}
-
-[](/workflows/basic-workflows/minimax-h3/minimax_h3_generative_interpolation.json)
-
-指定したフレームに画像を差し込み、その間をつないでもらいます。
-
-`Add Guide for MiniMax H3` ノードを使用します。
-
-{% outputs %}
-![input1](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_1.png){media=image} ![input2](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_2.png){media=image} ![input3](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_3.png){media=image} ![output](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_output.mp4){media=loop}
-{% endoutputs %}
-
 ---
 
 ## Audio-driven Video Generation
@@ -306,7 +290,7 @@ H3 は動画を生成するための参考資料として、好きな「画像�
 
 実は、この 2 つのモデルはアーキテクチャがほとんど同じなので、FL2VA モデルでも Reference Generation がある程度できたりします。
 
-![ref2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output.mp4){media=loop} ![fl2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_fl2va.mp4){media=loop} ![Hybrid](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_hybrid.mp4){media=loop}
+![ref2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_ref2va.mp4){media=loop} ![fl2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_fl2va.mp4){media=loop} ![Hybrid](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_hybrid.mp4){media=loop}
 
 綺麗になりました。とはいえ、さすがに Ref2VA のほうが柔軟性はありますね。
 
@@ -385,13 +369,13 @@ SAM 3.1 で犬をマスクし、少し余裕をもたせるためにマスクを
 - [xmarre/Comfyui_Minimax_h3_latent_Upscaler-Plus](https://github.com/xmarre/Comfyui_Minimax_h3_latent_Upscaler-Plus)
   - フォーク元が ComfyUI Manager に登録されていないため、Manager からインストールできるこちらを使います
 - latent_upscale_models
-  - [minimax_h3_latent_upscaler_3d_bf16.safetensors](https://huggingface.co/LBH-123-AI/Minimax_h3_latent_Upscaler/blob/main/minimax_h3_latent_upscaler_3d_bf16.safetensors) (691 MB)
+  - [minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors](https://huggingface.co/LBH-123-AI/Minimax_h3_latent_Upscaler/blob/main/minimax_h3_latent_upscaler_3d_conv_v1/minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors) (691 MB)
 
 ```text
 📂ComfyUI/
 └── 📂models/
     └── 📂latent_upscale_models/
-        └── minimax_h3_latent_upscaler_3d_bf16.safetensors
+        └── minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors
 ```
 
 ### text2video / T2VA

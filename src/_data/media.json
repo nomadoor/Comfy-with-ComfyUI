@@ -3532,26 +3532,26 @@
     "source": "68e9c0d2d8945228"
   },
   "basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va_output.mp4": {
-    "key": "videos/ec4efc648d113d9d.mp4",
+    "key": "videos/bd50acef70f49036.mp4",
     "width": 1152,
     "height": 864,
     "type": "video/mp4",
-    "bytes": 721239,
-    "source": "70df75f6cdbdfca0",
+    "bytes": 1570958,
+    "source": "6cb342a54cf87001",
     "poster": {
-      "key": "images/7b3321074ecc4c27.webp",
+      "key": "images/3a7f5da7802ff77c.webp",
       "width": 1152,
       "height": 864,
-      "bytes": 115150
+      "bytes": 133600
     }
   },
   "basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va.png": {
-    "key": "images/87a9bc20ca3e4a47.webp",
+    "key": "images/98a082e0de831313.webp",
     "width": 3872,
     "height": 1553,
     "type": "image/webp",
-    "bytes": 252406,
-    "source": "6ff821188ab8c9eb"
+    "bytes": 259872,
+    "source": "90f813a8a10d119e"
   },
   "basic-workflows/minimax-h3/minimax_h3_flf2va_first_frame.png": {
     "key": "images/46db73c021a2286f.webp",
@@ -3570,26 +3570,26 @@
     "source": "07d04ad487599d7b"
   },
   "basic-workflows/minimax-h3/minimax_h3_flf2va_output.mp4": {
-    "key": "videos/a0f0ec3623e8a8ec.mp4",
+    "key": "videos/e30e6960af46ce33.mp4",
     "width": 864,
     "height": 1152,
     "type": "video/mp4",
-    "bytes": 2432974,
-    "source": "4ef8d706989463bc",
+    "bytes": 2505147,
+    "source": "31711f8ab2055289",
     "poster": {
-      "key": "images/4eef88750aa3fe09.webp",
+      "key": "images/13b4341857cd2d68.webp",
       "width": 864,
       "height": 1152,
-      "bytes": 170372
+      "bytes": 170714
     }
   },
   "basic-workflows/minimax-h3/minimax_h3_flf2va.png": {
-    "key": "images/31f15cefef960b39.webp",
-    "width": 3547,
-    "height": 1526,
+    "key": "images/7374d0ceb33e5473.webp",
+    "width": 3668,
+    "height": 1559,
     "type": "image/webp",
-    "bytes": 236066,
-    "source": "f0775f8e47412c98"
+    "bytes": 288822,
+    "source": "475682e6f7642a93"
   },
   "basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_1.png": {
     "key": "images/d653cf2d64f1822a.webp",
@@ -3740,34 +3740,34 @@
     "source": "543f1c8a93df68a0"
   },
   "basic-workflows/minimax-h3/minimax_h3_i2va_input.png": {
-    "key": "images/33dd83f835d77239.webp",
-    "width": 1152,
-    "height": 864,
+    "key": "images/aa5ed27e20dfaf17.webp",
+    "width": 1472,
+    "height": 1104,
     "type": "image/webp",
-    "bytes": 63750,
-    "source": "6e988c00c45b40e9"
+    "bytes": 85434,
+    "source": "dc56f79af392d3b5"
   },
   "basic-workflows/minimax-h3/minimax_h3_i2va_output.mp4": {
-    "key": "videos/8a3ad18197588597.mp4",
+    "key": "videos/d0625b8e4192813d.mp4",
     "width": 1152,
     "height": 864,
     "type": "video/mp4",
-    "bytes": 767056,
-    "source": "05105fbc99efd073",
+    "bytes": 777710,
+    "source": "61ee4d70a5e21827",
     "poster": {
-      "key": "images/cb7b70f38bf54dab.webp",
+      "key": "images/ba6c6d6e0aa0627e.webp",
       "width": 1152,
       "height": 864,
-      "bytes": 58160
+      "bytes": 58458
     }
   },
   "basic-workflows/minimax-h3/minimax_h3_i2va.png": {
-    "key": "images/682514faf88fedc7.webp",
-    "width": 3663,
+    "key": "images/58982dde4be34b8a.webp",
+    "width": 3523,
     "height": 1302,
     "type": "image/webp",
-    "bytes": 185132,
-    "source": "c4da3974ba55e184"
+    "bytes": 185318,
+    "source": "dae05c7d14814f7d"
   },
   "basic-workflows/minimax-h3/minimax_h3_reference_generation_output_fl2va.mp4": {
     "key": "videos/aa123e5df787f7ea.mp4",
@@ -3797,7 +3797,7 @@
       "bytes": 89544
     }
   },
-  "basic-workflows/minimax-h3/minimax_h3_reference_generation_output.mp4": {
+  "basic-workflows/minimax-h3/minimax_h3_reference_generation_output_ref2va.mp4": {
     "key": "videos/4d13e1a683d653d0.mp4",
     "width": 1184,
     "height": 896,
@@ -3811,6 +3811,20 @@
       "bytes": 86818
     }
   },
+  "basic-workflows/minimax-h3/minimax_h3_reference_generation_output.mp4": {
+    "key": "videos/b3fbe92f1991ca83.mp4",
+    "width": 1184,
+    "height": 896,
+    "type": "video/mp4",
+    "bytes": 2802256,
+    "source": "f2eb6c3aea038167",
+    "poster": {
+      "key": "images/0de3192e3ce55d63.webp",
+      "width": 1184,
+      "height": 896,
+      "bytes": 95842
+    }
+  },
   "basic-workflows/minimax-h3/minimax_h3_reference_generation_prompt.png": {
     "key": "images/e379a992291fd33e.webp",
     "width": 603,
@@ -3820,12 +3834,12 @@
     "source": "d2caf235fc91c064"
   },
   "basic-workflows/minimax-h3/minimax_h3_reference_generation.png": {
-    "key": "images/c369c66cf90064c8.webp",
+    "key": "images/d804c6689f437012.webp",
     "width": 4059,
     "height": 1442,
     "type": "image/webp",
-    "bytes": 237796,
-    "source": "b23068a22eaa5fb1"
+    "bytes": 244818,
+    "source": "5f176aa2f829e874"
   },
   "basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input.mp4": {
     "key": "videos/6e32984493484589.mp4",
@@ -3894,17 +3908,17 @@
     "source": "06721765d6341569"
   },
   "basic-workflows/minimax-h3/minimax_h3_t2va_output.mp4": {
-    "key": "videos/24ffaf8cee095124.mp4",
+    "key": "videos/5adbe4458f7fb0cd.mp4",
     "width": 1376,
     "height": 768,
     "type": "video/mp4",
-    "bytes": 2684451,
-    "source": "6b38eb731a3a5b35",
+    "bytes": 2697169,
+    "source": "2887ec63d5a24797",
     "poster": {
-      "key": "images/1e2024236726a3ba.webp",
+      "key": "images/34d20a24cceceec2.webp",
       "width": 1376,
       "height": 768,
-      "bytes": 68800
+      "bytes": 68984
     }
   },
   "basic-workflows/minimax-h3/minimax_h3_t2va_resolution_length.png": {
@@ -3916,12 +3930,12 @@
     "source": "10686349098479a6"
   },
   "basic-workflows/minimax-h3/minimax_h3_t2va.png": {
-    "key": "images/7b6c20828f8806f8.webp",
-    "width": 3516,
-    "height": 1345,
+    "key": "images/390b2d5c4117a604.webp",
+    "width": 3489,
+    "height": 1361,
     "type": "image/webp",
-    "bytes": 172246,
-    "source": "510a3144a32bd6a7"
+    "bytes": 174238,
+    "source": "f1e3f94a9b056f68"
   },
   "basic-workflows/minimax-h3/minimax_h3_video_editing_input.mp4": {
     "key": "videos/aede17fee5406e29.mp4",

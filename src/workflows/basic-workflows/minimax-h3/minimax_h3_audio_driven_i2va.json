@@ -1,18 +1,18 @@
 {
   "id": "0ddd6ae2-9ecf-4f2d-a828-f66ecd6b7f0f",
   "revision": 0,
-  "last_node_id": 125,
+  "last_node_id": 129,
   "last_link_id": 236,
   "nodes": [
     {
       "id": 77,
       "type": "VAEDecodeAudio",
       "pos": [
-        1621.6991877195373,
+        1578.8006287112544,
         288.24730987442047
       ],
       "size": [
-        194.25299723441972,
+        221.59220939465595,
         46
       ],
       "flags": {},
@@ -49,11 +49,11 @@
       "id": 8,
       "type": "VAEDecode",
       "pos": [
-        1621.6991877195373,
+        1578.8006287112544,
         179.46291912812848
       ],
       "size": [
-        194.25299723441972,
+        221.59220939465595,
         46
       ],
       "flags": {},
@@ -91,7 +91,7 @@
       "id": 37,
       "type": "UNETLoader",
       "pos": [
-        196.5961798213713,
+        52.62317611836556,
         -207.9445746188256
       ],
       "size": [
@@ -115,7 +115,14 @@
       "properties": {
         "Node name for S&R": "UNETLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
@@ -167,7 +174,7 @@
       "id": 86,
       "type": "ModelAttentionBackend",
       "pos": [
-        553.2461981384733,
+        423.6189261015094,
         -207.9445746188256
       ],
       "size": [
@@ -186,7 +193,7 @@
       ],
       "outputs": [
         {
-          "name": "MODEL",
+          "name": "model",
           "type": "MODEL",
           "links": [
             235
@@ -204,41 +211,15 @@
       }
     },
     {
-      "id": 95,
-      "type": "MarkdownNote",
-      "pos": [
-        -482.3943342566212,
-        -207.9445746188256
-      ],
-      "size": [
-        480.26512898835654,
-        314.3204118484383
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "properties": {},
-      "widgets_values": [
-        "## models\n- diffusion_models\n  - [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (21 GB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) (27.1 GB)\n- vae\n  - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)\n  - [minimax_h3_video_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_fp16.safetensors) (5.21 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_fl2va_pruned_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n    └── 📂vae/\n         ├── minimax_h3_audio_vae_fp32.safetensors\n         └── minimax_h3_video_vae_fp16.safetensors\n```"
-      ],
-      "widgets_values_named": {
-        "text": "## models\n- diffusion_models\n  - [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (21 GB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) (27.1 GB)\n- vae\n  - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)\n  - [minimax_h3_video_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_fp16.safetensors) (5.21 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_fl2va_pruned_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n    └── 📂vae/\n         ├── minimax_h3_audio_vae_fp32.safetensors\n         └── minimax_h3_video_vae_fp16.safetensors\n```"
-      },
-      "color": "#323",
-      "bgcolor": "#535"
-    },
-    {
       "id": 91,
       "type": "CreateVideo",
       "pos": [
-        1857.2649223855678,
+        1852.4374756253796,
         179.46291912812848
       ],
       "size": [
         270,
-        126
+        150
       ],
       "flags": {},
       "order": 26,
@@ -273,12 +254,14 @@
       "widgets_values": [
         24,
         8,
-        "sRGB"
+        "sRGB",
+        "none"
       ],
       "widgets_values_named": {
         "fps": 24,
         "bit_depth": 8,
-        "color_space": "sRGB"
+        "color_space": "sRGB",
+        "codec": "none"
       }
     },
     {
@@ -348,11 +331,11 @@
         188.16650543074402
       ],
       "size": [
-        301.3524169921875,
+        305.3782043457031,
         106
       ],
       "flags": {},
-      "order": 3,
+      "order": 2,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -368,7 +351,14 @@
       "properties": {
         "Node name for S&R": "CLIPLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
         "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
@@ -509,6 +499,8 @@
       "properties": {
         "Node name for S&R": "GetImageSize"
       },
+      "widgets_values": [],
+      "widgets_values_named": {},
       "color": "#232",
       "bgcolor": "#353"
     },
@@ -520,11 +512,11 @@
         -59.89911033344882
       ],
       "size": [
-        301.3524169921875,
+        305.3782043457031,
         58
       ],
       "flags": {},
-      "order": 4,
+      "order": 3,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -540,13 +532,20 @@
       "properties": {
         "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "minimax_h3_video_vae_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_video_vae_int8_convrot.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
-        "minimax_h3_video_vae_fp16.safetensors"
+        "minimax_h3_video_vae_int8_convrot.safetensors"
       ],
       "widgets_values_named": {
-        "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+        "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors"
       },
       "color": "#322",
       "bgcolor": "#533"
@@ -749,11 +748,11 @@
         64.14635395192796
       ],
       "size": [
-        301.3524169921875,
+        305.3782043457031,
         58
       ],
       "flags": {},
-      "order": 5,
+      "order": 4,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -769,7 +768,14 @@
       "properties": {
         "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "minimax_h3_audio_vae_fp32.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_audio_vae_fp32.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "minimax_h3_audio_vae_fp32.safetensors"
@@ -792,7 +798,7 @@
         477.20492096161456
       ],
       "flags": {},
-      "order": 6,
+      "order": 5,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -813,11 +819,11 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "oldman.png",
+        "minimax_h3_audio_driven_i2va_input.webp",
         "image"
       ],
       "widgets_values_named": {
-        "image": "oldman.png",
+        "image": "minimax_h3_audio_driven_i2va_input.webp",
         "upload": "image"
       },
       "color": "#232",
@@ -901,7 +907,7 @@
         136
       ],
       "flags": {},
-      "order": 7,
+      "order": 6,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -917,12 +923,11 @@
         "Node name for S&R": "LoadAudio"
       },
       "widgets_values": [
-        "voice.mov",
-        null,
+        "minimax_h3_audio_driven_i2va_input_audio.mov",
         null
       ],
       "widgets_values_named": {
-        "audio": "voice.mov",
+        "audio": "minimax_h3_audio_driven_i2va_input_audio.mov",
         "upload": null
       },
       "color": "#232",
@@ -968,7 +973,7 @@
       "id": 107,
       "type": "SaveVideo",
       "pos": [
-        2174.4821131448493,
+        2174.482113144849,
         179.46291912812848
       ],
       "size": [
@@ -1222,6 +1227,32 @@
       },
       "color": "#232",
       "bgcolor": "#353"
+    },
+    {
+      "id": 128,
+      "type": "MarkdownNote",
+      "pos": [
+        -475.18383745129626,
+        -207.9445746188256
+      ],
+      "size": [
+        473.0546321830316,
+        413.82526776192253
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n- diffusion_models\n  - [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (21 GB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) (27.1 GB)\n- vae\n  - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)\n  - [minimax_h3_video_vae_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_int8_convrot.safetensors) (2.81 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_fl2va_pruned_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n    └── 📂vae/\n         ├── minimax_h3_audio_vae_fp32.safetensors\n         └── minimax_h3_video_vae_int8_convrot.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/minimax-h3/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/minimax-h3/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/minimax-h3/)"
+      ],
+      "widgets_values_named": {
+        "text": "## models\n- diffusion_models\n  - [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (21 GB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) (27.1 GB)\n- vae\n  - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)\n  - [minimax_h3_video_vae_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_int8_convrot.safetensors) (2.81 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_fl2va_pruned_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_int8_convrot.safetensors\n    └── 📂vae/\n         ├── minimax_h3_audio_vae_fp32.safetensors\n         └── minimax_h3_video_vae_int8_convrot.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/minimax-h3/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/minimax-h3/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/minimax-h3/)"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
     }
   ],
   "links": [
@@ -1290,30 +1321,6 @@
       "MODEL"
     ],
     [
-      166,
-      94,
-      0,
-      87,
-      0,
-      "FLOAT"
-    ],
-    [
-      167,
-      96,
-      0,
-      97,
-      0,
-      "IMAGE"
-    ],
-    [
-      168,
-      97,
-      0,
-      98,
-      0,
-      "IMAGE"
-    ],
-    [
       169,
       98,
       0,
@@ -1328,14 +1335,6 @@
       100,
       0,
       "IMAGE"
-    ],
-    [
-      188,
-      91,
-      0,
-      107,
-      0,
-      "VIDEO"
     ],
     [
       189,
@@ -1488,19 +1487,51 @@
       3,
       0,
       "MODEL"
+    ],
+    [
+      166,
+      94,
+      0,
+      87,
+      0,
+      "FLOAT"
+    ],
+    [
+      167,
+      96,
+      0,
+      97,
+      0,
+      "IMAGE"
+    ],
+    [
+      168,
+      97,
+      0,
+      98,
+      0,
+      "IMAGE"
+    ],
+    [
+      188,
+      91,
+      0,
+      107,
+      0,
+      "VIDEO"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.47362440744767537,
+      "scale": 0.520986848192445,
       "offset": [
-        819.9539200996915,
-        520.184490623166
+        838.7025959260112,
+        385.7081144122693
       ]
     },
-    "frontendVersion": "1.51.9",
+    "frontendVersion": "1.53.10",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

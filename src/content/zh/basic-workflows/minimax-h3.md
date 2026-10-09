@@ -53,7 +53,7 @@ tags: []
   - [qwen3vl_32b_minimax_h3_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) (27.1 GB)
 - vae
   - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)
-  - [minimax_h3_video_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_fp16.safetensors) (5.21 GB)
+  - [minimax_h3_video_vae_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_int8_convrot.safetensors) (2.81 GB)
 
 ```text
 📂ComfyUI/
@@ -65,7 +65,7 @@ tags: []
     │   └── qwen3vl_32b_minimax_h3_int8_convrot.safetensors
     └── 📂vae/
         ├── minimax_h3_audio_vae_fp32.safetensors
-        └── minimax_h3_video_vae_fp16.safetensors
+        └── minimax_h3_video_vae_int8_convrot.safetensors
 ```
 
 ---
@@ -229,22 +229,6 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 ![第一帧](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_first_frame.png){media=image} ![最后一帧](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_last_frame.png){media=image} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_flf2va_output.mp4){media=loop}
 {% endoutputs %}
 
-### Generative Interpolation
-
-使用模型：`fl2va`
-
-![](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation.png){media=image}
-
-[](/workflows/basic-workflows/minimax-h3/minimax_h3_generative_interpolation.json)
-
-在指定的帧中插入图像，让模型补全它们之间的内容。
-
-使用 `Add Guide for MiniMax H3` 节点。
-
-{% outputs %}
-![输入 1](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_1.png){media=image} ![输入 2](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_2.png){media=image} ![输入 3](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_input_3.png){media=image} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_generative_interpolation_output.mp4){media=loop}
-{% endoutputs %}
-
 ---
 
 ## Audio-driven Video Generation
@@ -306,7 +290,7 @@ H3 可以放入多个“图像”“视频”和“音频”，作为生成视�
 
 实际上，这两个模型的架构几乎相同，因此 FL2VA 模型也能在一定程度上进行 Reference Generation。
 
-![ref2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output.mp4){media=loop} ![fl2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_fl2va.mp4){media=loop} ![Hybrid](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_hybrid.mp4){media=loop}
+![ref2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_ref2va.mp4){media=loop} ![fl2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_fl2va.mp4){media=loop} ![Hybrid](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_hybrid.mp4){media=loop}
 
 画面变漂亮了。不过真要说灵活性，还是 Ref2VA 更好。
 
@@ -385,13 +369,13 @@ H3 也可以使用传统的（？）遮罩，只重新绘制指定区域来进�
 - [xmarre/Comfyui_Minimax_h3_latent_Upscaler-Plus](https://github.com/xmarre/Comfyui_Minimax_h3_latent_Upscaler-Plus)
   - 原始仓库没有收录在 ComfyUI Manager 中，因此这里使用可通过 Manager 安装的这个版本
 - latent_upscale_models
-  - [minimax_h3_latent_upscaler_3d_bf16.safetensors](https://huggingface.co/LBH-123-AI/Minimax_h3_latent_Upscaler/blob/main/minimax_h3_latent_upscaler_3d_bf16.safetensors) (691 MB)
+  - [minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors](https://huggingface.co/LBH-123-AI/Minimax_h3_latent_Upscaler/blob/main/minimax_h3_latent_upscaler_3d_conv_v1/minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors) (691 MB)
 
 ```text
 📂ComfyUI/
 └── 📂models/
     └── 📂latent_upscale_models/
-        └── minimax_h3_latent_upscaler_3d_bf16.safetensors
+        └── minimax_h3_latent_upscaler_3d_conv_v1_bf16.safetensors
 ```
 
 ### text2video / T2VA
