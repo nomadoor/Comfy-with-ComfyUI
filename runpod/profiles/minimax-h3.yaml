@@ -12,7 +12,7 @@ gpu:
   min_vram_gb: 24
   recommended_vram_gb: 48
   # Same as the template's recommended (starred) GPUs.
-  recommended: [RTX 5090, RTX PRO 6000, L40S]
+  recommended: [RTX 4090, RTX 5090, RTX PRO 6000]
   notes: ""
 overrides:
   # These nodes were saved without cnr_id, so the workflows do not say where they come from.
