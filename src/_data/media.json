@@ -4173,6 +4173,14 @@
     "bytes": 68768,
     "source": "6787b9561876272b"
   },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask_input.webp": {
+    "key": "images/b8aeb060a84951ae.webp",
+    "width": 1184,
+    "height": 1760,
+    "type": "image/webp",
+    "bytes": 238738,
+    "source": "b8aeb060a84951ae"
+  },
   "basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask.png": {
     "key": "images/a76723e280c382f3.webp",
     "width": 3026,
