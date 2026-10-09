@@ -319,7 +319,7 @@ The workflow is basically the same as Reference Generation.
 Provide a video as a reference, then write a prompt instructing the model to do something such as “remove the person” or “change the visual style.”
 
 {% outputs %}
-![Ref image](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_ref.png){media=image} ![input video](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_input.mp4){media=loop} ![output](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_output.mp4){media=loop}
+![input video](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_input.mp4){media=loop} ![output](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_output.mp4){media=loop}
 {% endoutputs %}
 
 ---
@@ -336,19 +336,19 @@ However, you can usually accomplish the same thing through Video Editing by simp
 
 [](/workflows/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting.json)
 
-For this example, we use the `ref2va` model to replace the dog in the video with the stuffed toy from the reference image.
+For this example, we use the `ref2va` model to replace the rider in the video made with T2VA with the woman from the reference images.
 
 {% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_segmentation.png", width=40, align="left" %}
 **Segmentation**
 
-Use SAM 3.1 to mask the dog, then expand the mask slightly to leave some margin.
+Use SAM 3.1 to mask the rider, then expand the mask to leave some margin.
 
 - [SAM 3.1](/en/data-utilities/sam3/) is covered on a separate page.
 
 {% endmediaRow %}
 
 {% outputs %}
-![input](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input.mp4){media=loop} ![mask](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_mask.mp4){media=loop} ![output](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_output.mp4){media=loop}
+![input](/media/basic-workflows/minimax-h3/minimax_h3_t2va_output.mp4){media=loop} ![ref 1](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input_image1.png){media=image} ![ref 2](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input_image2.png){media=image} ![output](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_output.mp4){media=loop}
 {% endoutputs %}
 
 ---

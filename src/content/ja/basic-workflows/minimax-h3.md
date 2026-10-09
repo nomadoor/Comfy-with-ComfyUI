@@ -319,7 +319,7 @@ workflow は基本的に Reference Generation と同じです。
 動画を参照として入力し、その動画に対して「人を消して」「絵柄を変えて」などと指示するプロンプトを書くだけです。
 
 {% outputs %}
-![Ref image](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_ref.png){media=image} ![input video](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_input.mp4){media=loop} ![output](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_output.mp4){media=loop}
+![input video](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_input.mp4){media=loop} ![output](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_output.mp4){media=loop}
 {% endoutputs %}
 
 ---
@@ -336,19 +336,19 @@ workflow は基本的に Reference Generation と同じです。
 
 [](/workflows/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting.json)
 
-今回は `ref2va` モデルを使って、動画内の犬を参照画像のぬいぐるみに変えてみます。
+今回は `ref2va` モデルを使って、T2VA で作った動画の馬に乗っている人物を、参照画像の女性に変えてみます。
 
 {% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_segmentation.png", width=40, align="left" %}
 **セグメンテーション**
 
-SAM 3.1 で犬をマスクし、少し余裕をもたせるためにマスクを大きくします。
+SAM 3.1 で人物をマスクし、余裕をもたせるためにマスクを大きくします。
 
 - [SAM 3.1](/ja/data-utilities/sam3/) については、別のページで解説しています。
 
 {% endmediaRow %}
 
 {% outputs %}
-![input](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input.mp4){media=loop} ![mask](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_mask.mp4){media=loop} ![output](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_output.mp4){media=loop}
+![input](/media/basic-workflows/minimax-h3/minimax_h3_t2va_output.mp4){media=loop} ![ref 1](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input_image1.png){media=image} ![ref 2](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input_image2.png){media=image} ![output](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_output.mp4){media=loop}
 {% endoutputs %}
 
 ---

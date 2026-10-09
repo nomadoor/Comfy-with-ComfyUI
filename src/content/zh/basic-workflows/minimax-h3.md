@@ -319,7 +319,7 @@ H3 可以放入多个“图像”“视频”和“音频”，作为生成视�
 只需把视频作为参考输入，再用提示词对它下达“删除人物”“改变画风”等指令。
 
 {% outputs %}
-![参考图像](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_ref.png){media=image} ![输入视频](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_input.mp4){media=loop} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_output.mp4){media=loop}
+![输入视频](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_input.mp4){media=loop} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_video_editing_output.mp4){media=loop}
 {% endoutputs %}
 
 ---
@@ -336,19 +336,19 @@ H3 也可以使用传统的（？）遮罩，只重新绘制指定区域来进�
 
 [](/workflows/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting.json)
 
-这次使用 `ref2va` 模型，把视频里的狗替换成参考图像中的玩偶。
+这次使用 `ref2va` 模型，把用 T2VA 生成的视频里骑马的人物替换成参考图像中的女性。
 
 {% mediaRow img="/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_segmentation.png", width=40, align="left" %}
 **分割**
 
-使用 SAM 3.1 为狗生成遮罩，再稍微扩大遮罩，留出一些余量。
+使用 SAM 3.1 为人物生成遮罩，再扩大遮罩，留出一些余量。
 
 - [SAM 3.1](/zh/data-utilities/sam3/) 在另一个页面中有详细介绍。
 
 {% endmediaRow %}
 
 {% outputs %}
-![输入](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input.mp4){media=loop} ![遮罩](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_mask.mp4){media=loop} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_output.mp4){media=loop}
+![输入](/media/basic-workflows/minimax-h3/minimax_h3_t2va_output.mp4){media=loop} ![参考图像 1](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input_image1.png){media=image} ![参考图像 2](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_input_image2.png){media=image} ![输出](/media/basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_output.mp4){media=loop}
 {% endoutputs %}
 
 ---

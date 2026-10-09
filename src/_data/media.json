@@ -3932,12 +3932,12 @@
     }
   },
   "basic-workflows/minimax-h3/minimax_h3_spatial_inpainting_segmentation.png": {
-    "key": "images/54d8cd813008d223.webp",
-    "width": 1544,
-    "height": 433,
+    "key": "images/1d8ffb87e4e4793e.webp",
+    "width": 1460,
+    "height": 420,
     "type": "image/webp",
-    "bytes": 35780,
-    "source": "e7778532914a8b82"
+    "bytes": 42506,
+    "source": "a84ac2a66edf1efb"
   },
   "basic-workflows/minimax-h3/minimax_h3_spatial_inpainting.png": {
     "key": "images/e92d117e8ade211d.webp",
