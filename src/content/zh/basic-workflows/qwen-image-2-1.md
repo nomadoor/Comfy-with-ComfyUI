@@ -47,7 +47,7 @@ tags: []
   - [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) (7.26 GB)
 - loras
   - [qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/loras/qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors) (913 MB)
-    - Turbo 版使用
+    - 🚨 Turbo 版使用
 - text_encoders
   - [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (9.35 GB)
 - vae
@@ -80,14 +80,14 @@ tags: []
 Seed 带来的差异非常大，可以说有好有坏。改变分辨率也会让图像产生明显变化，请尝试不同的分辨率和 Seed。
 
 {% outputs %}
-![标准](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_output.png){media=image} ![Turbo](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image_output.png){media=image}
+![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_output.png){media=image}
 {% endoutputs %}
 
 ### Turbo
 
 Qwen 官方还发布了只需 8 步即可生成的 Turbo 版。
 
-虽然也有 Turbo 专用模型，这里使用的是叠加在标准模型上的 Turbo LoRA。与再下载一整个模型相比，下载量不到 1 GB。
+虽然也有 Turbo 专用模型，不过 LoRA 需要额外下载的量更少，所以这里使用 LoRA。
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image.png){media=image}
 
@@ -96,12 +96,15 @@ Qwen 官方还发布了只需 8 步即可生成的 Turbo 版。
 - `Load LoRA`
   - 以 strength `1.0` 应用 `qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors`
 - `SamplerCustomAdvanced` + `ManualSigmas`
-  - Turbo 按固定的 8 步调度生成，因此直接输入 sigma
+  - 使用 Euler / Simple 无法很好地生成，因此使用官方推荐的 sigma
   - `1.0, 0.978453, 0.95418, 0.926626, 0.89508, 0.845148, 0.704534, 0.414568, 0.0`
-- `BasicGuider`
-  - 以 CFG 1 为前提，因此不使用 Negative Prompt
 
-本页其他 workflow 也都在各自正下方放了 Turbo 版。
+{% outputs %}
+![标准](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_output.png){media=image} ![Turbo](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image_output.png){media=image}
+{% endoutputs %}
+
+> [!NOTE]
+> 本页其他 workflow 也都在各自正下方放了 Turbo 版。
 
 ---
 

@@ -47,7 +47,7 @@ tags: []
   - [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) (7.26 GB)
 - loras
   - [qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/loras/qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors) (913 MB)
-    - Turbo 版で使用
+    - 🚨 Turbo 版で使用
 - text_encoders
   - [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (9.35 GB)
 - vae
@@ -80,14 +80,14 @@ tags: []
 良くも悪くも、Seed による差が非常に大きいです。解像度を変えても絵が大きく変わるので、いろいろな解像度と Seed で試してみてください。
 
 {% outputs %}
-![通常](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_output.png){media=image} ![Turbo](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image_output.png){media=image}
+![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_output.png){media=image}
 {% endoutputs %}
 
 ### Turbo
 
 Qwen 公式から、8 ステップで生成できる Turbo 版も公開されています。
 
-Turbo 専用のモデルもありますが、ここでは通常版のモデルに重ねて使う Turbo LoRA を使います。モデルを丸ごと増やすより、ダウンロードが 1 GB 弱で済むためです。
+Turbo 専用モデルもありますが、追加でダウンロードする量が減るので LoRA を使いましょう。
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image.png){media=image}
 
@@ -96,12 +96,15 @@ Turbo 専用のモデルもありますが、ここでは通常版のモデル�
 - `Load LoRA`
   - `qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors` を strength `1.0` で適用します
 - `SamplerCustomAdvanced` + `ManualSigmas`
-  - Turbo は決まった 8 ステップのスケジュールで生成するので、sigma を直接入力します
+  - Euler / Simple では上手く生成できないため、公式が推奨している sigma を使います
   - `1.0, 0.978453, 0.95418, 0.926626, 0.89508, 0.845148, 0.704534, 0.414568, 0.0`
-- `BasicGuider`
-  - CFG 1 前提なので、Negative Prompt は使いません
 
-ほかの workflow にも、それぞれのすぐ下に Turbo 版を置いています。
+{% outputs %}
+![通常](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_output.png){media=image} ![Turbo](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image_output.png){media=image}
+{% endoutputs %}
+
+> [!NOTE]
+> ほかの workflow にも、それぞれのすぐ下に Turbo 版を置いています。
 
 ---
 
