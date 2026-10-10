@@ -45,9 +45,11 @@ tags: []
 
 - diffusion_models
   - [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) (7.26 GB)
+  - [qwen_image_2.1_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_turbo_int8_convrot.safetensors) (7.26 GB)
+    - 🚨 Turbo 版で使用（LoRA の代わりに使う場合）
 - loras
   - [qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/loras/qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors) (913 MB)
-    - 🚨 Turbo 版で使用
+    - 🚨 Turbo 版で使用（この記事の workflow はこちら）
 - text_encoders
   - [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (9.35 GB)
 - vae
@@ -57,7 +59,8 @@ tags: []
 📂ComfyUI/
 └── 📂models/
     ├── 📂diffusion_models/
-    │   └── qwen_image_2.1_int8_convrot.safetensors
+    │   ├── qwen_image_2.1_int8_convrot.safetensors
+    │   └── qwen_image_2.1_turbo_int8_convrot.safetensors
     ├── 📂loras/
     │   └── qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors
     ├── 📂text_encoders/
@@ -83,7 +86,7 @@ tags: []
 
 Qwen 公式から、8 ステップで生成できる Turbo 版も公開されています。
 
-Turbo 専用モデルもありますが、追加でダウンロードする量が減るので LoRA を使いましょう。
+Turbo 専用モデルもありますが、追加でダウンロードする量が減るので、ここでは LoRA を使っていきます。
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image.png){media=image}
 
@@ -91,6 +94,10 @@ Turbo 専用モデルもありますが、追加でダウンロードする量�
 
 - `Load LoRA`
   - `qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors` を strength `1.0` で適用します
+
+  > [!TIP]
+  > Turbo モデル（`qwen_image_2.1_turbo_int8_convrot.safetensors`）を使う場合は、LoRA は使わないので `Load LoRA` を消してください。
+
 - `SamplerCustomAdvanced` + `ManualSigmas`
   - Euler / Simple では上手く生成できないため、公式が推奨している sigma を使います
   - `1.0, 0.978453, 0.95418, 0.926626, 0.89508, 0.845148, 0.704534, 0.414568, 0.0`
