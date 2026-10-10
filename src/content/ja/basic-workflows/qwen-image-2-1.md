@@ -79,10 +79,6 @@ tags: []
 
 良くも悪くも、Seed による差が非常に大きいです。解像度を変えても絵が大きく変わるので、いろいろな解像度と Seed で試してみてください。
 
-{% outputs %}
-![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_output.png){media=image}
-{% endoutputs %}
-
 ### Turbo
 
 Qwen 公式から、8 ステップで生成できる Turbo 版も公開されています。

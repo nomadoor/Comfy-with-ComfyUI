@@ -79,10 +79,6 @@ The image generation component is a compact 7B model, yet it covers generation, 
 
 For better or worse, the Seed makes a very large difference. Changing the resolution also changes the image substantially, so try a variety of resolutions and Seeds.
 
-{% outputs %}
-![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_output.png){media=image}
-{% endoutputs %}
-
 ### Turbo
 
 Qwen has also released an official Turbo version that generates in 8 steps.

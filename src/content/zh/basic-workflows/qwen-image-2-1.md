@@ -79,10 +79,6 @@ tags: []
 
 Seed 带来的差异非常大，可以说有好有坏。改变分辨率也会让图像产生明显变化，请尝试不同的分辨率和 Seed。
 
-{% outputs %}
-![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_output.png){media=image}
-{% endoutputs %}
-
 ### Turbo
 
 Qwen 官方还发布了只需 8 步即可生成的 Turbo 版。
