@@ -45,6 +45,9 @@ The image generation component is a compact 7B model, yet it covers generation, 
 
 - diffusion_models
   - [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) (7.26 GB)
+- loras
+  - [qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/loras/qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors) (913 MB)
+    - Used by the Turbo versions
 - text_encoders
   - [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (9.35 GB)
 - vae
@@ -55,6 +58,8 @@ The image generation component is a compact 7B model, yet it covers generation, 
 └── 📂models/
     ├── 📂diffusion_models/
     │   └── qwen_image_2.1_int8_convrot.safetensors
+    ├── 📂loras/
+    │   └── qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors
     ├── 📂text_encoders/
     │   └── qwen3vl_8b_int8_convrot.safetensors
     └── 📂vae/
@@ -75,8 +80,28 @@ The image generation component is a compact 7B model, yet it covers generation, 
 For better or worse, the Seed makes a very large difference. Changing the resolution also changes the image substantially, so try a variety of resolutions and Seeds.
 
 {% outputs %}
-![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_output.png){media=image}
+![Standard](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_output.png){media=image} ![Turbo](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image_output.png){media=image}
 {% endoutputs %}
+
+### Turbo
+
+Qwen has also released an official Turbo version that generates in 8 steps.
+
+There is a dedicated Turbo model too, but here we use the Turbo LoRA on top of the standard model. It is a download of just under 1 GB instead of a whole extra model.
+
+![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image.png){media=image}
+
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="68s", tags=["4MP"], samplers=[{ speed: "2.88 s/it" }] %}
+
+- `Load LoRA`
+  - Apply `qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors` at strength `1.0`
+- `SamplerCustomAdvanced` + `ManualSigmas`
+  - Turbo generates on a fixed 8-step schedule, so the sigmas are entered directly
+  - `1.0, 0.978453, 0.95418, 0.926626, 0.89508, 0.845148, 0.704534, 0.414568, 0.0`
+- `BasicGuider`
+  - Turbo assumes CFG 1, so no Negative Prompt is used
+
+Every other workflow on this page also has a Turbo version, placed right below it.
 
 ---
 
@@ -87,6 +112,8 @@ This workflow combines reference images to create a new image.
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image.png){media=image}
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="108s", tags=["2MP"], samplers=[{ speed: "1.95 s/it" }] %}
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_ref2image.json)
 
 - Accepts up to 10 reference images
 - Specify which images to use in the prompt, such as “the woman from `<image1>` is sitting in the location from `<image2>`.”
@@ -123,6 +150,8 @@ The second and subsequent images can be used as references, just as in Ref2Image
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="57s", tags=["1MP"], samplers=[{ speed: "1.72 it/s" }] %}
 
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit.json)
+
 As with other image-editing models, simply give an instruction such as “remove the man,” “make the clothes red,” or “turn this into a watercolor painting.”
 
 {% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_text_encode.png", width=40, align="left" %}
@@ -146,6 +175,8 @@ Draw colored circles around the areas you want to edit.
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="64s", tags=["1MP"], samplers=[{ speed: "1.72 it/s" }] %}
 
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit_local.json)
+
 Draw directly on the image to mark the objects you want to edit.
 
 - You can also use the `Mask Editor` attached to the `Load Image` node
@@ -163,6 +194,8 @@ You can use several colors for separate instructions, which is handy when the lo
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask.png){media=image}
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="117s", tags=["2MP"], samplers=[{ speed: "2.27 s/it" }] %}
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit_local_mask.json)
 
 The idea is the same as using a colored circle, but here a black-and-white image that marks the location is supplied **separately from the original image**.
 
@@ -193,6 +226,8 @@ This works very differently from ordinary [Outpainting](/en/basic-workflows/sd15
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting.png){media=image}
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="93s", tags=["2MP"], samplers=[{ speed: "1.67 s/it" }] %}
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_outpainting.json)
 
 What happens if you provide a wide image as a reference, but generate a portrait image?
 
@@ -226,6 +261,8 @@ Although this is not ControlNet itself, you can pass pose images, depth maps, an
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_sdpose.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="130s", tags=["2MP"], samplers=[{ speed: "1.94 s/it" }] %}
 
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit_sdpose.json)
+
 Let’s also provide a reference image and put the person in a specified pose.
 
 You might wonder whether turning the pose into a stick figure is really necessary. Even if you ask the model to look only at the pose, it may also pick up unnecessary details such as the clothing and background.
@@ -243,6 +280,8 @@ Since it can generate images up to 4 MP, let’s use that ability to clean up a 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale.png){media=image}
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="212s", tags=["4MP"], samplers=[{ speed: "5.28 s/it" }] %}
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit_upscale.json)
 
 First upscale the image to 4 MP and provide it as a reference, then have the model refine it.
 
@@ -268,6 +307,8 @@ No special nodes are required. It produces an RGBA image with an Alpha Channel f
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_rgba.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="65s", tags=["2MP"], samplers=[{ speed: "1.11 s/it" }] %}
 
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image_rgba.json)
+
 Write the prompt in this format:
 
 ```text
@@ -289,6 +330,8 @@ Combine transparent generation with image editing and—yes—you can pull a sub
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction.png){media=image}
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="90s", tags=["2MP"], samplers=[{ speed: "1.67 s/it" }] %}
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_subject_extraction.json)
 
 Use the same format as above and tell it what to extract with `Extract ...`.
 
@@ -313,6 +356,8 @@ Give it any reference image and ask for an ERP image at a 2:1 resolution. That a
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_panorama.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="159s", tags=["4MP"], samplers=[{ speed: "4.29 s/it" }] %}
 
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_panorama.json)
+
 This workflow generates a wide 2:1 image while using the source image as a reference.
 
 Rather than strictly outpainting the left and right sides, it redraws the full ERP image so everything fits naturally into the panoramic space.
@@ -326,6 +371,8 @@ Now remove that subject from the image, then extract the next thing in front. Re
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition.json)
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_layer_decomposition.json)
 
 This uses [loops](/en/data-utilities/loop/) to repeat the following steps:
 

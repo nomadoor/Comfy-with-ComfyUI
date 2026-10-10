@@ -45,6 +45,9 @@ tags: []
 
 - diffusion_models
   - [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) (7.26 GB)
+- loras
+  - [qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/loras/qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors) (913 MB)
+    - Turbo 版使用
 - text_encoders
   - [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (9.35 GB)
 - vae
@@ -55,6 +58,8 @@ tags: []
 └── 📂models/
     ├── 📂diffusion_models/
     │   └── qwen_image_2.1_int8_convrot.safetensors
+    ├── 📂loras/
+    │   └── qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors
     ├── 📂text_encoders/
     │   └── qwen3vl_8b_int8_convrot.safetensors
     └── 📂vae/
@@ -75,8 +80,28 @@ tags: []
 Seed 带来的差异非常大，可以说有好有坏。改变分辨率也会让图像产生明显变化，请尝试不同的分辨率和 Seed。
 
 {% outputs %}
-![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_output.png){media=image}
+![标准](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_output.png){media=image} ![Turbo](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image_output.png){media=image}
 {% endoutputs %}
+
+### Turbo
+
+Qwen 官方还发布了只需 8 步即可生成的 Turbo 版。
+
+虽然也有 Turbo 专用模型，这里使用的是叠加在标准模型上的 Turbo LoRA。与再下载一整个模型相比，下载量不到 1 GB。
+
+![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image.png){media=image}
+
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="68s", tags=["4MP"], samplers=[{ speed: "2.88 s/it" }] %}
+
+- `Load LoRA`
+  - 以 strength `1.0` 应用 `qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors`
+- `SamplerCustomAdvanced` + `ManualSigmas`
+  - Turbo 按固定的 8 步调度生成，因此直接输入 sigma
+  - `1.0, 0.978453, 0.95418, 0.926626, 0.89508, 0.845148, 0.704534, 0.414568, 0.0`
+- `BasicGuider`
+  - 以 CFG 1 为前提，因此不使用 Negative Prompt
+
+本页其他 workflow 也都在各自正下方放了 Turbo 版。
 
 ---
 
@@ -87,6 +112,8 @@ Seed 带来的差异非常大，可以说有好有坏。改变分辨率也会让
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image.png){media=image}
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="108s", tags=["2MP"], samplers=[{ speed: "1.95 s/it" }] %}
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_ref2image.json)
 
 - 最多可以输入 10 张参考图像
 - 在提示词中用“`<image1>` 中的女性坐在 `<image2>` 中的地点”这种方式，指定要使用的图像
@@ -123,6 +150,8 @@ Seed 带来的差异非常大，可以说有好有坏。改变分辨率也会让
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="57s", tags=["1MP"], samplers=[{ speed: "1.72 it/s" }] %}
 
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit.json)
+
 和以往的图像编辑一样，只要直接输入“删除男性”“把衣服变成红色”“改成水彩画”等指示即可。
 
 {% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_text_encode.png", width=40, align="left" %}
@@ -146,6 +175,8 @@ Seed 带来的差异非常大，可以说有好有坏。改变分辨率也会让
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="64s", tags=["1MP"], samplers=[{ speed: "1.72 it/s" }] %}
 
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit_local.json)
+
 直接在图像上圈出要编辑的对象。
 
 - 也可以使用 `Load Image` 节点附带的 `Mask Editor`
@@ -163,6 +194,8 @@ Seed 带来的差异非常大，可以说有好有坏。改变分辨率也会让
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask.png){media=image}
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="117s", tags=["2MP"], samplers=[{ speed: "2.27 s/it" }] %}
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit_local_mask.json)
 
 思路与彩色圆圈相同，不过这里会将表示位置的黑白图像，**与原图分开** 输入。
 
@@ -193,6 +226,8 @@ Seed 带来的差异非常大，可以说有好有坏。改变分辨率也会让
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting.png){media=image}
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="93s", tags=["2MP"], samplers=[{ speed: "1.67 s/it" }] %}
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_outpainting.json)
 
 将横向图像作为参考图像输入，却把生成尺寸设成纵向，会怎么样呢？
 
@@ -226,6 +261,8 @@ Qwen-Image-2.1 会生成一张补全上下空间的新图像。
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_sdpose.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="130s", tags=["2MP"], samplers=[{ speed: "1.94 s/it" }] %}
 
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit_sdpose.json)
+
 再输入一张参考图像，让其中的人物摆出指定姿势。
 
 可能会觉得，真的有必要特意把姿势转换成火柴人吗？不过，即使只想让模型参考姿势，它有时也会把服装、背景等无关信息一并带进去。
@@ -243,6 +280,8 @@ Qwen-Image-2.1 会生成一张补全上下空间的新图像。
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale.png){media=image}
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="212s", tags=["4MP"], samplers=[{ speed: "5.28 s/it" }] %}
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit_upscale.json)
 
 先将图像放大到 4 MP，作为参考图像输入，再让模型以此为基础进行细化。
 
@@ -268,6 +307,8 @@ Qwen-Image-2.1 只需稍微修改提示词，就可以生成透明图像。
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_rgba.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="65s", tags=["2MP"], samplers=[{ speed: "1.11 s/it" }] %}
 
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image_rgba.json)
+
 按下面的格式编写提示词。
 
 ```text
@@ -289,6 +330,8 @@ This is an RGBA image with transparency. <在这里填写要生成的内容>. Th
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction.png){media=image}
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="90s", tags=["2MP"], samplers=[{ speed: "1.67 s/it" }] %}
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_subject_extraction.json)
 
 使用刚才的格式，并用 `Extract 〇〇` 指定要提取的内容即可。
 
@@ -313,6 +356,8 @@ This is an RGBA image with transparency. <在这里填写要生成的内容>. Th
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_panorama.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="159s", tags=["4MP"], samplers=[{ speed: "4.29 s/it" }] %}
 
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_panorama.json)
+
 这个工作流会参考原图，生成一张横向的 2:1 图像。
 
 它并不是严格地对左右两侧进行 Outpainting，而是重新绘制整个 ERP，使内容自然地落在全景空间中。
@@ -326,6 +371,8 @@ This is an RGBA image with transparency. <在这里填写要生成的内容>. Th
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition.json)
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_layer_decomposition.json)
 
 这里使用[循环处理](/zh/data-utilities/loop/)，重复以下步骤：
 

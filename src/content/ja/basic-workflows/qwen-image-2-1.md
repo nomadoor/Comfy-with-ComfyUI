@@ -45,6 +45,9 @@ tags: []
 
 - diffusion_models
   - [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) (7.26 GB)
+- loras
+  - [qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/loras/qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors) (913 MB)
+    - Turbo 版で使用
 - text_encoders
   - [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (9.35 GB)
 - vae
@@ -55,6 +58,8 @@ tags: []
 └── 📂models/
     ├── 📂diffusion_models/
     │   └── qwen_image_2.1_int8_convrot.safetensors
+    ├── 📂loras/
+    │   └── qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors
     ├── 📂text_encoders/
     │   └── qwen3vl_8b_int8_convrot.safetensors
     └── 📂vae/
@@ -75,8 +80,28 @@ tags: []
 良くも悪くも、Seed による差が非常に大きいです。解像度を変えても絵が大きく変わるので、いろいろな解像度と Seed で試してみてください。
 
 {% outputs %}
-![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_output.png){media=image}
+![通常](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_output.png){media=image} ![Turbo](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image_output.png){media=image}
 {% endoutputs %}
+
+### Turbo
+
+Qwen 公式から、8 ステップで生成できる Turbo 版も公開されています。
+
+Turbo 専用のモデルもありますが、ここでは通常版のモデルに重ねて使う Turbo LoRA を使います。モデルを丸ごと増やすより、ダウンロードが 1 GB 弱で済むためです。
+
+![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image.png){media=image}
+
+{% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="68s", tags=["4MP"], samplers=[{ speed: "2.88 s/it" }] %}
+
+- `Load LoRA`
+  - `qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors` を strength `1.0` で適用します
+- `SamplerCustomAdvanced` + `ManualSigmas`
+  - Turbo は決まった 8 ステップのスケジュールで生成するので、sigma を直接入力します
+  - `1.0, 0.978453, 0.95418, 0.926626, 0.89508, 0.845148, 0.704534, 0.414568, 0.0`
+- `BasicGuider`
+  - CFG 1 前提なので、Negative Prompt は使いません
+
+ほかの workflow にも、それぞれのすぐ下に Turbo 版を置いています。
 
 ---
 
@@ -87,6 +112,8 @@ tags: []
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image.png){media=image}
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="108s", tags=["2MP"], samplers=[{ speed: "1.95 s/it" }] %}
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_ref2image.json)
 
 - 参照画像は最大 10 枚まで入力可
 - プロンプトで「`<image1>` の女性が `<image2>` の場所に座っている」のように、どの画像を使うのか指定します。
@@ -124,6 +151,8 @@ workflow は Ref2Image とほとんど同じです。違うのは、生成する
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="57s", tags=["1MP"], samplers=[{ speed: "1.72 it/s" }] %}
 
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit.json)
+
 これまでの画像編集と同様に、「男性を消して」「服を赤くして」「水彩画に変えて」のように指示してください。
 
 {% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_text_encode.png", width=40, align="left" %}
@@ -148,6 +177,8 @@ workflow は Ref2Image とほとんど同じです。違うのは、生成する
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="64s", tags=["1MP"], samplers=[{ speed: "1.72 it/s" }] %}
 
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit_local.json)
+
 編集したい画像に直接、編集させたいオブジェクトを囲みます。
 - `Load Image` ノードに付いている `Mask Editor` でも可能です。
 
@@ -164,6 +195,8 @@ workflow は Ref2Image とほとんど同じです。違うのは、生成する
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask.png){media=image}
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="117s", tags=["2MP"], samplers=[{ speed: "2.27 s/it" }] %}
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit_local_mask.json)
 
 赤丸と考え方は同じですが、こちらは位置を示す白黒画像を、**元画像とは別に** 入力します。
 
@@ -194,6 +227,8 @@ workflow は Ref2Image とほとんど同じです。違うのは、生成する
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting.png){media=image}
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="93s", tags=["2MP"], samplers=[{ speed: "1.67 s/it" }] %}
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_outpainting.json)
 
 参照画像として横長の画像を入れる。でも、生成させる画像サイズを縦長にしたらどうでしょう？
 
@@ -227,6 +262,8 @@ ControlNet そのものではありませんが、ポーズ画像や深度マッ
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_sdpose.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="130s", tags=["2MP"], samplers=[{ speed: "1.94 s/it" }] %}
 
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit_sdpose.json)
+
 参照画像も一緒に入力し、その人物を指定したポーズにしてみましょう。
 
 わざわざ棒人間に直す必要があるのか？という気もしますが、「ポーズだけ見てほしい」といっていても、服装や背景など余計な情報まで引っ張ってしまうことがあります。
@@ -244,6 +281,8 @@ ControlNet だから Pose を使うというより、参照画像から余計な
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale.png){media=image}
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_upscale.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="212s", tags=["4MP"], samplers=[{ speed: "5.28 s/it" }] %}
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit_upscale.json)
 
 あらかじめ 4 MP まで拡大した画像を参照として入力し、それを元にリファインしてもらいます。
 
@@ -269,6 +308,8 @@ Qwen-Image-2.1 は、プロンプトを少し変えるだけで透過画像も�
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image_rgba.json", level=1, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="65s", tags=["2MP"], samplers=[{ speed: "1.11 s/it" }] %}
 
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image_rgba.json)
+
 以下の形でプロンプトを書きます。
 
 ```text
@@ -290,6 +331,8 @@ This is an RGBA image with transparency. <ここに生成したいもののプ�
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction.png){media=image}
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_subject_extraction.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="90s", tags=["2MP"], samplers=[{ speed: "1.67 s/it" }] %}
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_subject_extraction.json)
 
 先ほどのフォーマットで、切り抜きたいものを `Extract 〇〇` と指示するだけです。
 
@@ -314,6 +357,8 @@ This is an RGBA image with transparency. <ここに生成したいもののプ�
 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_panorama.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="159s", tags=["4MP"], samplers=[{ speed: "4.29 s/it" }] %}
 
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_panorama.json)
+
 元画像を参照しながら、横長 (2:1) の画像を生成します。
 
 左右をキッチリ Outpainting するというよりは、パノラマ空間に自然に収まるように ERP 全体を描き直してもらうイメージです。
@@ -327,6 +372,8 @@ This is an RGBA image with transparency. <ここに生成したいもののプ�
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition.json)
+
+[](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_layer_decomposition.json)
 
 [ループ処理](/ja/data-utilities/loop/)を使い、以下の処理を繰り返します。
 
