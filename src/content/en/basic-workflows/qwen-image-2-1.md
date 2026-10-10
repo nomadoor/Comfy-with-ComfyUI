@@ -45,9 +45,11 @@ The image generation component is a compact 7B model, yet it covers generation, 
 
 - diffusion_models
   - [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) (7.26 GB)
+  - [qwen_image_2.1_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_turbo_int8_convrot.safetensors) (7.26 GB)
+    - 🚨 Used by the Turbo versions (instead of the LoRA)
 - loras
   - [qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/loras/qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors) (913 MB)
-    - 🚨 Used by the Turbo versions
+    - 🚨 Used by the Turbo versions (the workflows on this page use this)
 - text_encoders
   - [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (9.35 GB)
 - vae
@@ -57,7 +59,8 @@ The image generation component is a compact 7B model, yet it covers generation, 
 📂ComfyUI/
 └── 📂models/
     ├── 📂diffusion_models/
-    │   └── qwen_image_2.1_int8_convrot.safetensors
+    │   ├── qwen_image_2.1_int8_convrot.safetensors
+    │   └── qwen_image_2.1_turbo_int8_convrot.safetensors
     ├── 📂loras/
     │   └── qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors
     ├── 📂text_encoders/
@@ -83,7 +86,7 @@ For better or worse, the Seed makes a very large difference. Changing the resolu
 
 Qwen has also released an official Turbo version that generates in 8 steps.
 
-There is also a dedicated Turbo model, but the LoRA means less to download, so let's use that.
+There is also a dedicated Turbo model, but the LoRA means less to download, so this page uses the LoRA.
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image.png){media=image}
 
@@ -91,6 +94,10 @@ There is also a dedicated Turbo model, but the LoRA means less to download, so l
 
 - `Load LoRA`
   - Apply `qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors` at strength `1.0`
+
+  > [!TIP]
+  > If you use the Turbo model (`qwen_image_2.1_turbo_int8_convrot.safetensors`), the LoRA is not needed, so delete `Load LoRA`.
+
 - `SamplerCustomAdvanced` + `ManualSigmas`
   - Euler / Simple does not generate well, so we use the sigmas the official release recommends
   - `1.0, 0.978453, 0.95418, 0.926626, 0.89508, 0.845148, 0.704534, 0.414568, 0.0`

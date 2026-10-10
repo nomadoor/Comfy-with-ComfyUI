@@ -45,9 +45,11 @@ tags: []
 
 - diffusion_models
   - [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) (7.26 GB)
+  - [qwen_image_2.1_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_turbo_int8_convrot.safetensors) (7.26 GB)
+    - 🚨 Turbo 版使用（代替 LoRA 时）
 - loras
   - [qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/loras/qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors) (913 MB)
-    - 🚨 Turbo 版使用
+    - 🚨 Turbo 版使用（本页 workflow 使用这个）
 - text_encoders
   - [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) (9.35 GB)
 - vae
@@ -57,7 +59,8 @@ tags: []
 📂ComfyUI/
 └── 📂models/
     ├── 📂diffusion_models/
-    │   └── qwen_image_2.1_int8_convrot.safetensors
+    │   ├── qwen_image_2.1_int8_convrot.safetensors
+    │   └── qwen_image_2.1_turbo_int8_convrot.safetensors
     ├── 📂loras/
     │   └── qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors
     ├── 📂text_encoders/
@@ -91,6 +94,10 @@ Qwen 官方还发布了只需 8 步即可生成的 Turbo 版。
 
 - `Load LoRA`
   - 以 strength `1.0` 应用 `qwen_image_2.1_turbo_lora_avg_rank_178_bf16.safetensors`
+
+  > [!TIP]
+  > 如果使用 Turbo 模型（`qwen_image_2.1_turbo_int8_convrot.safetensors`），就不需要 LoRA，请删除 `Load LoRA`。
+
 - `SamplerCustomAdvanced` + `ManualSigmas`
   - 使用 Euler / Simple 无法很好地生成，因此使用官方推荐的 sigma
   - `1.0, 0.978453, 0.95418, 0.926626, 0.89508, 0.845148, 0.704534, 0.414568, 0.0`
