@@ -173,7 +173,8 @@ export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = read
 
   // Tabs the Pod opens on a reader's first visit: the files `open` names, or just the article's first
   // workflow. Opening every workflow buried the one the reader came for under a row of tabs; the rest
-  // wait in the sidebar's Workflows tab. `folders` groups them there (folder name -> patterns).
+  // wait in the sidebar's Workflows tab. `folders` groups them there (folder name -> patterns); a
+  // workflow goes to the first folder that matches it, so a catch-all can come last.
   const repoPath = (file) => path.relative(process.cwd(), file).split(path.sep).join("/");
   const matching = (patterns, label) => {
     if (!Array.isArray(patterns) || !patterns.every((p) => typeof p === "string" && /^[A-Za-z0-9_./*-]+$/.test(p))) {
@@ -197,8 +198,7 @@ export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = read
     for (const [folder, patterns] of Object.entries(source.folders ?? {})) {
       if (!safePath(folder)) errors.push(`${id}.yaml: folder name ${folder} is not safe as a path`);
       for (const file of matching(patterns, `folders.${folder}`)) {
-        if (folderOf.has(file)) errors.push(`${id}.yaml: ${repoPath(file)} is in two folders`);
-        folderOf.set(file, folder);
+        if (!folderOf.has(file)) folderOf.set(file, folder);
       }
     }
   }
