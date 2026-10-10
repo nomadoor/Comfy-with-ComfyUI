@@ -1,6 +1,7 @@
 // RunPod helper for the site's Pods:
-// - on the first visit to this Pod from a browser, open every workflow of the profile as tabs, in
-//   the article's order, with the first one active (later visits keep ComfyUI's own tab restore);
+// - on the first visit to this Pod from a browser, open the profile's `open` workflows as tabs, in
+//   the article's order, with the first one active, and show the sidebar's Workflows tab, where all
+//   of them wait (later visits keep ComfyUI's own tab and sidebar restore);
 // - report reader activity for the idle auto-stop, and warn before the Pod terminates itself.
 import { app } from "../../scripts/app.js";
 
@@ -32,6 +33,9 @@ const openProfileWorkflows = async (config) => {
   if (blank?.isTemporary && !blank.isModified && blank.path !== first.path) {
     await store.closeWorkflow(blank);
   }
+  // The other workflows are in the Workflows tab; toggleSidebarTab closes it if it is already open.
+  const sidebar = app.extensionManager.sidebarTab;
+  if (sidebar && sidebar.activeSidebarTabId !== "workflows") sidebar.toggleSidebarTab?.("workflows");
   try {
     localStorage.setItem(flag, "1");
   } catch {}
