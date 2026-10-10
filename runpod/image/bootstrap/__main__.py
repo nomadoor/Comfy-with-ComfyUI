@@ -67,7 +67,7 @@ def check_paths(profile):
         return all(SAFE_PART.match(part) and part not in (".", "..") for part in parts)
 
     bad = [f"model {m.get('directory')}/{m.get('name')}" for m in profile.get("models", []) if not (ok(m.get("name", "")) and ok(m.get("directory", ""), nested=True))]
-    bad += [f"workflow {w.get('name')}" for w in profile.get("workflows", []) if not ok(w.get("name", ""))]
+    bad += [f"workflow {w.get('name')}" for w in profile.get("workflows", []) if not ok(w.get("name", "")) or ("folder" in w and not ok(w["folder"]))]
     bad += [f"custom node {n.get('id')}" for n in profile.get("custom_nodes", []) if not ok(n.get("id", ""), nested=True)]
     if bad:
         raise BootError("profile_invalid", "The profile has names that are not safe as paths: " + ", ".join(bad))
@@ -93,13 +93,27 @@ def load_tips(profile_url):
         return []
 
 
+def workflow_file(workflow):
+    """Where a workflow sits in the sidebar's Workflows tab: its profile folder, if any, then its name."""
+    return f"{workflow['folder']}/{workflow['name']}" if workflow.get("folder") else workflow["name"]
+
+
+def opened_workflows(profile):
+    """The workflows opened as tabs on a reader's first visit. A profile built before `open` existed
+    flags none; it opens its first (the article's first) workflow, like a profile without `open` does."""
+    return [w for w in profile["workflows"] if w.get("open")] or profile["workflows"][:1]
+
+
 def place_workflows(profile, profile_url, comfy_dir):
     """Workflows go to the sidebar's Workflows tab; sample inputs to input/ under the name the nodes read."""
-    # Straight into the Workflows tab, no folder: a Pod serves one profile, and the folder is rebuilt per Pod.
+    # Into the Workflows tab, in the profile's folders if it has any (a Pod serves one profile, and the
+    # folder is rebuilt per Pod).
     target = Path(comfy_dir) / "user" / "default" / "workflows"
     target.mkdir(parents=True, exist_ok=True)
     for workflow in profile["workflows"]:
-        (target / workflow["name"]).write_bytes(fetch_site_file(workflow, profile_url))
+        destination = target / workflow_file(workflow)
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes(fetch_site_file(workflow, profile_url))
     # Sample inputs are site media on R2 (WebP); the key carries the first 16 hex of their sha256.
     input_dir = Path(comfy_dir) / "input"
     for item in profile.get("inputs", []):
@@ -125,7 +139,7 @@ def manager_enabled():
 
 
 def prepare_frontend(profile, comfy_dir):
-    """Skip the first-run template gallery, set up Manager, and open the profile's workflows as tabs."""
+    """Skip the first-run template gallery, set up Manager, and open the profile's `open` workflows as tabs."""
     user_dir = Path(comfy_dir) / "user" / "default"
     settings_file = user_dir / "comfy.settings.json"
     settings = json.loads(settings_file.read_text(encoding="utf-8")) if settings_file.exists() else {}
@@ -154,7 +168,7 @@ def prepare_frontend(profile, comfy_dir):
         "profile": profile["id"],
         # A new boot is a new Pod for the reader: its first visit opens the tabs again.
         "boot": int(time.time()),
-        "workflows": [f"workflows/{w['name']}" for w in profile["workflows"]],
+        "workflows": [f"workflows/{workflow_file(w)}" for w in opened_workflows(profile)],
     }
     (target / "web" / "runpod.json").write_text(json.dumps(config, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
@@ -303,7 +317,7 @@ def main():
         folder = timed("workflows", lambda: place_workflows(profile, profile_url, comfy_dir))
         prepare_frontend(profile, comfy_dir)
         inputs = [i["name"] for i in profile.get("inputs", [])]
-        report["workflows"] = {"folder": folder, "files": [w["name"] for w in profile["workflows"]], "inputs": inputs}
+        report["workflows"] = {"folder": folder, "files": [workflow_file(w) for w in profile["workflows"]], "inputs": inputs}
         state.step(
             "workflows", "done",
             f"{len(profile['workflows'])} in the Workflows tab" + (f", {len(inputs)} sample inputs" if inputs else ""),

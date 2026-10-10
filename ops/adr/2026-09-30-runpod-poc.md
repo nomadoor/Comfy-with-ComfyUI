@@ -74,6 +74,12 @@ Accepted（PoC。記事側のボタン・案内表示は別途デザイン相談
 - `COMFY_REF` で ComfyUI を動かしたときは、Manager の `manager_requirements.txt` も入れ直す。
 - `workflows` のパターンは `*` と `**` だけにする（`check:runpod` でエラー）。
 
+## Revision 2026-10-10: 開くタブを絞る
+- 初回表示で全 workflow をタブで開くのをやめる。Qwen-Image-2.1 は 12 本（Turbo 版を足すと 24 本）並び、読者が来た目的の workflow が埋もれる。
+- 開くのはプロファイルの `open` に書いた workflow。書かなければ記事で最初に出てくる 1 本。選ぶのはプロファイルを書く人で、読者は起動中に何も選ばない（ダウンロードが速い Pod はすぐ ComfyUI に切り替わるため）。
+- 全 workflow はこれまでどおりサイドバーの Workflows タブに置き、初回表示ではそのサイドバーを開いておく。`folders`（フォルダ名 → パターン）でまとめられる。workflow は上から順に見て最初に当たったフォルダに入るので、最後に全体を受けるパターンを置ける。
+- プロファイルの workflow に `open`（真偽）と任意の `folder` を足す。古い Pod image は無視し、`open` のない古いプロファイルを新しい image が読むと最初の 1 本だけを開く。どちらの組み合わせでも動くので `schema_version` は上げない。
+
 ## Consequences
 - workflow を差し替えるときは `properties.models` も保つ必要がある。欠けているとプロファイル生成が警告を出す。
 - 記事側のカード（`{% runpod %}`）は 2026-10-02 の追記で決めた。ディスク容量はテンプレートに入っているので、カードには出さない。

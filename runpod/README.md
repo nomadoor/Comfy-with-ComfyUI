@@ -17,6 +17,7 @@ runpod/
 - モデルは workflow の `properties.models`、custom node は `properties.cnr_id` から集める。custom node は Registry の最新版（審査済みの `latest_version`）を入れ、固定したいときだけ `overrides.custom_nodes[].version` を書く。
 - 入力画像のサンプルは記事の画像と同じメディア。原本を `COMFY_MEDIA_ORIGINALS/<section>/<slug>/<stem>.png` に置き、LoadImage には `<stem>.webp` と書く。コミット時に `media:sync` が R2 に上げ、プロファイルの `inputs` に入り、Pod の `ComfyUI/input/` に配られる。未登録のものは警告（`check:media` ではエラー）になる。
 - プロファイルの `workflows` のパターンで使えるワイルドカードは `*` と `**` だけ（media:sync / check:media 側の照合が対応しているのがこの 2 つなので、ほかはエラーにする）。
+- Pod が初回表示でタブとして開くのは、`open` に書いた workflow（パターン可）。書かなければ記事で最初に出てくる 1 本だけ。全 workflow はサイドバーの Workflows タブにあり、初回表示ではそのサイドバーを開いておく。`folders` にフォルダ名とパターンを書くと、サイドバーでその中にまとまる（上から順に見て、最初に当たったフォルダに入る）。どちらも、プロファイルの workflow に当たらないパターンはエラー。
 - `npm run check:runpod` で検査する（`npm run check` に含まれる）。ネットワークは使わない。lock にないモデル、`referral`（true / false のみ）・`template`・`gpu.recommended` の型の誤り、同じ記事を指す 2 つ目のプロファイル、存在しない記事はエラーにする（ビルドでは lock の不足は警告だけ）。
 - workflow やモデルを変えたら `npm run runpod:refresh` を実行して、lock と core-nodes.json をコミットする。
 
@@ -57,7 +58,7 @@ Pod の環境変数:
 | `DATA_DIR` | `/workspace`、なければ `/data` | モデルと起動レポートの置き場所 |
 | `COMFY_ARGS` | なし | ComfyUI に足す引数 |
 
-ComfyUI の画面では、テンプレート選択ダイアログを出さず、プロファイルの workflow を記事の順にすべてタブで開く（ブラウザごとに初回だけ）。放置で終了する数分前には画面上部に予告が出る。どちらも `image/extension/`（ComfyUI の拡張として入れる）が行う。
+ComfyUI の画面では、テンプレート選択ダイアログを出さず、プロファイルの `open` の workflow を記事の順にタブで開き、サイドバーの Workflows タブを開いておく（ブラウザごとに初回だけ）。放置で終了する数分前には画面上部に予告が出る。どちらも `image/extension/`（ComfyUI の拡張として入れる）が行う。
 
 起動の結果は `${DATA_DIR}/runpod-boot/report.json` に残る（Pod の作成・起動からこの処理が始まるまでの秒数 `pod_start`、プロファイル、site の commit、ComfyUI の sha、custom node のバージョン、モデルごとの結果・所要時間・平均速度・取得方法、全体の所要時間）。
 

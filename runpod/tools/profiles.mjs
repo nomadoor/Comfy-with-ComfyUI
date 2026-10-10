@@ -157,8 +157,8 @@ export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = read
     errors.push(`${id}.yaml: gpu.recommended must be a list of GPU names such as "RTX 4090"`);
   }
 
-  // Workflows follow the order the Japanese article introduces them (the Pod opens them as tabs in
-  // this order); any the article does not link come last, by name.
+  // Workflows follow the order the Japanese article introduces them (the Pod lists them, and opens the
+  // `open` ones as tabs, in this order); any the article does not link come last, by name.
   const articleFile = path.resolve("src", "content", "ja", `${source.article}.md`);
   if (!fs.existsSync(articleFile)) errors.push(`${id}.yaml: article ${source.article} has no ${where(articleFile)}`);
   const articleText = fs.existsSync(articleFile) ? fs.readFileSync(articleFile, "utf8") : "";
@@ -170,6 +170,38 @@ export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = read
     .sync(source.workflows ?? [], { cwd: process.cwd(), absolute: true })
     .sort((a, b) => articleOrder(a) - articleOrder(b) || a.localeCompare(b));
   if (files.length === 0) errors.push(`${id}.yaml: workflows match no files`);
+
+  // Tabs the Pod opens on a reader's first visit: the files `open` names, or just the article's first
+  // workflow. Opening every workflow buried the one the reader came for under a row of tabs; the rest
+  // wait in the sidebar's Workflows tab. `folders` groups them there (folder name -> patterns); a
+  // workflow goes to the first folder that matches it, so a catch-all can come last.
+  const repoPath = (file) => path.relative(process.cwd(), file).split(path.sep).join("/");
+  const matching = (patterns, label) => {
+    if (!Array.isArray(patterns) || !patterns.every((p) => typeof p === "string" && /^[A-Za-z0-9_./*-]+$/.test(p))) {
+      errors.push(`${id}.yaml: ${label} must be a list of workflow paths, with only * and ** as wildcards`);
+      return new Set();
+    }
+    const found = new Set();
+    for (const pattern of patterns) {
+      const re = globToRegExp(pattern);
+      const hits = files.filter((file) => re.test(repoPath(file)));
+      if (!hits.length) errors.push(`${id}.yaml: ${label} entry ${pattern} matches none of the profile's workflows`);
+      hits.forEach((file) => found.add(file));
+    }
+    return found;
+  };
+  const opened = source.open == null ? new Set(files.slice(0, 1)) : matching(source.open, "open");
+  const folderOf = new Map();
+  if (source.folders != null && (typeof source.folders !== "object" || Array.isArray(source.folders))) {
+    errors.push(`${id}.yaml: folders must map a folder name to a list of workflow paths`);
+  } else {
+    for (const [folder, patterns] of Object.entries(source.folders ?? {})) {
+      if (!safePath(folder)) errors.push(`${id}.yaml: folder name ${folder} is not safe as a path`);
+      for (const file of matching(patterns, `folders.${folder}`)) {
+        if (!folderOf.has(file)) folderOf.set(file, folder);
+      }
+    }
+  }
 
   const models = new Map();
   const customNodes = new Map();
@@ -286,6 +318,8 @@ export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = read
     const publicPath = `/workflows/${path.relative(WORKFLOW_ROOT, file).split(path.sep).join("/")}`;
     workflows.push({
       name: path.basename(file),
+      ...(folderOf.has(file) ? { folder: folderOf.get(file) } : {}),
+      open: opened.has(file),
       path: publicPath,
       url: new URL(publicPath, siteURL).href,
       sha256: crypto.createHash("sha256").update(raw).digest("hex"),
@@ -345,7 +379,7 @@ export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = read
   // first, with the same rule, so a profile never passes the check and then stops every Pod.
   const unsafe = [
     ...profile.models.filter((m) => !safePath(m.name) || !safePath(m.directory, true)).map((m) => `model ${m.directory}/${m.name}`),
-    ...profile.workflows.filter((w) => !safePath(w.name)).map((w) => `workflow ${w.name}`),
+    ...profile.workflows.filter((w) => !safePath(w.name) || (w.folder != null && !safePath(w.folder))).map((w) => `workflow ${w.name}`),
     ...profile.custom_nodes.filter((n) => !safePath(n.id, true)).map((n) => `custom node ${n.id}`),
   ];
   if (unsafe.length) return { profile: null, errors: [...errors, `${id}: names not safe as paths on the Pod: ${unsafe.join(", ")}`], warnings };

@@ -1,7 +1,8 @@
 """Frontend helper, idle auto-stop, and opening from the RunPod console for the site's RunPod Pods (no nodes).
 
 The bootstrap copies this folder into ComfyUI/custom_nodes/ and writes web/runpod.json, which lists
-the profile's workflows in article order (web/runpod.js opens them as tabs).
+the profile's `open` workflows in article order (web/runpod.js opens them as tabs and shows the
+sidebar's Workflows tab, where all of the profile's workflows are).
 
 Idle auto-stop: reader activity in the page (web/runpod.js posts /runpod/activity) and generation
 that is actually moving keep the Pod alive. "Moving" means ComfyUI is sending execution events
