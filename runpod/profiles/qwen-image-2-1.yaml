@@ -25,3 +25,11 @@ overrides:
     - id: panorama-stickers
       nodes: [PanoramaPreview]
   models: []
+# Turbo is close to the standard model at a fraction of the time, so a Pod opens the three main
+# Turbo workflows; the rest are in the sidebar's Workflows tab.
+open:
+  - src/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image.json
+  - src/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_ref2image.json
+  - src/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit.json
+folders:
+  Turbo: [src/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_*.json]
