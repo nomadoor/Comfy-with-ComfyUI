@@ -593,11 +593,11 @@
         "image": "clipspace-painted-masked-1789936442000.png [input]"
       },
       "widgets_values": [
-        "qwen_image_2_1_image_edit_local_mask_convert_input.webp",
+        "qwen_image_2_1_image_edit_local_mask_input.webp",
         "image"
       ],
       "widgets_values_named": {
-        "image": "qwen_image_2_1_image_edit_local_mask_convert_input.webp",
+        "image": "qwen_image_2_1_image_edit_local_mask_input.webp",
         "upload": "image"
       }
     },

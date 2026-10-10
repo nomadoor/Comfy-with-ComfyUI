@@ -4173,6 +4173,14 @@
     "bytes": 68768,
     "source": "6787b9561876272b"
   },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask_input.webp": {
+    "key": "images/b8aeb060a84951ae.webp",
+    "width": 1184,
+    "height": 1760,
+    "type": "image/webp",
+    "bytes": 238738,
+    "source": "b8aeb060a84951ae"
+  },
   "basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask.png": {
     "key": "images/a76723e280c382f3.webp",
     "width": 3026,
@@ -4554,6 +4562,30 @@
     "type": "image/webp",
     "bytes": 125124,
     "source": "ae24e37997eb11b8"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit_local_mask_input.webp": {
+    "key": "images/cb56326d63ce27fa.webp",
+    "width": 1184,
+    "height": 1760,
+    "type": "image/webp",
+    "bytes": 240118,
+    "source": "cb56326d63ce27fa"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image_output.png": {
+    "key": "images/4e0e397ff86dc2f6.webp",
+    "width": 1664,
+    "height": 2496,
+    "type": "image/webp",
+    "bytes": 467858,
+    "source": "50e273bee7e79e75"
+  },
+  "basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_text2image.png": {
+    "key": "images/440bee87e3be736f.webp",
+    "width": 2822,
+    "height": 1162,
+    "type": "image/webp",
+    "bytes": 155606,
+    "source": "33d7a9d827809fee"
   },
   "basic-workflows/qwen-image-edit/legacy_gyazo_14e608fdb6033e436570157da4645e34.png": {
     "key": "images/e1ae7c7e4e22eff7.webp",
