@@ -43,3 +43,13 @@ An external agent-readiness scan exposed several places where the site's existin
 - Return a structured JSON 405 response, including `Allow: POST`, when `/api/contact` receives a non-POST request.
 
 These changes describe capabilities that already exist. The site will not add a developer portal, invented API versioning or rate-limit policies, or organization address/telephone data solely to satisfy a generic readiness score.
+
+## 2026-10-11 Amendment: Workflow catalog
+
+Agents that need a workflow, rather than an article, had to open articles one by one to find the JSON. The site should be a dependable place for basic ComfyUI workflows, so it now publishes what it already knows about them in one file:
+
+- Publish `/workflows/index.json`, rebuilt on every build from the published (not `noindex`) articles and the workflow files (`scripts/lib/workflow-catalog.mjs`). Each entry gives the workflow URL, the articles that link it with the heading it sits under, the measured performance from the article's `{% workflow %}` shortcode, the custom nodes from the nodes' `cnr_id` / `aux_id`, and the models: the loaders' `properties.models` where present, else the links in the workflow's `## models` note, else only the file names its loaders ask for. `models_source` says which, so an entry never claims more than the files say.
+- Point to it from `llms.txt`, the API catalog, the OpenAPI document (`getWorkflowCatalog`), and the Agent Skill.
+- `llms.txt` is rendered without the blank lines its template used to leave between list items.
+- `scripts/lib/workflow-catalog.test.mjs` (`npm run test:unit`, part of `npm run check`) covers how articles and workflow files are read; Playwright checks that `llms.txt` links the catalog and the catalog is served. Files written after the build (the catalog and the Runpod profiles) go to Eleventy's actual output directory, so the Playwright server's `--output` gets them too.
+- Not included for now: API-format workflow JSON (needs ComfyUI's node definitions to convert), the date and ComfyUI version a workflow was last verified with, and model licenses. Revisit once the catalog shows use.

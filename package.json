@@ -14,7 +14,7 @@
     "dev:pages": "npx wrangler pages dev _site --port=8080 --compatibility-date=2026-02-17",
     "build": "eleventy --input=src --output=_site",
     "clean": "rimraf _site",
-    "check": "npm run check:encoding && npm run check:content && npm run check:workflows && npm run check:runpod && npm run check:media && npm run check:assets",
+    "check": "npm run check:encoding && npm run check:content && npm run check:workflows && npm run check:runpod && npm run check:media && npm run check:assets && npm run test:unit",
     "check:all": "npm run check && npm run clean && npm run build && npm run check:build && npm run test:playwright",
     "check:assets": "node scripts/check-esm.mjs && node scripts/check-icons.mjs",
     "check:content": "node scripts/check-frontmatter.mjs && node scripts/check-nav-integrity.mjs && node scripts/check-markdown-links.mjs",
@@ -30,6 +30,7 @@
     "media:sync": "node scripts/media-sync.mjs",
     "media:waf-expression": "node scripts/media-waf-expression.mjs",
     "test:playwright": "playwright test",
+    "test:unit": "node --test scripts/lib/*.test.mjs",
     "prepare": "node scripts/install-git-hooks.mjs",
     "runpod:refresh": "node runpod/tools/refresh.mjs"
   },

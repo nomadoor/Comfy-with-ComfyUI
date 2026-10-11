@@ -55,6 +55,21 @@
       ]
     },
     {
+      "anchor": "https://comfyui.nomadoor.net/workflows/index.json",
+      "service-desc": [
+        {
+          "href": "https://comfyui.nomadoor.net/.well-known/openapi.json",
+          "type": "application/vnd.oai.openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://comfyui.nomadoor.net/llms.txt",
+          "type": "text/plain"
+        }
+      ]
+    },
+    {
       "anchor": "https://comfyui.nomadoor.net/api/contact",
       "service-desc": [
         {
