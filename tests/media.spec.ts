@@ -30,7 +30,7 @@ test.describe("Media layer fixtures", () => {
 
   test("fixture page is noindex and excluded from discovery files", async ({ page, request }) => {
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex");
-    for (const file of ["/sitemap.xml", "/llms.txt", "/search/index-ja.json"]) {
+    for (const file of ["/sitemap.xml", "/llms.txt", "/search/index-ja.json", "/workflows/index.json"]) {
       const body = await (await request.get(file)).text();
       expect(body, file).not.toContain("/internal/media-fixtures/");
     }

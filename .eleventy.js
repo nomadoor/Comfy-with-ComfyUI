@@ -821,14 +821,16 @@ export default function (eleventyConfig) {
   });
 
   // RunPod profiles (/runpod/profiles/<id>.json) are built from the workflow JSON on every build.
-  eleventyConfig.on("eleventy.after", ({ dir }) => {
-    writeRunpodProfiles({ outDir: dir.output, siteURL: siteData.url });
+  // `directories.output` follows `--output` (the Playwright server builds into .cache/playwright-site);
+  // `dir.output` is the config's default and would write next to someone else's build.
+  eleventyConfig.on("eleventy.after", ({ directories, dir }) => {
+    writeRunpodProfiles({ outDir: directories?.output ?? dir.output, siteURL: siteData.url });
   });
 
   // The workflow catalog (/workflows/index.json, see scripts/lib/workflow-catalog.mjs) lists every
   // workflow the published articles link, for agents looking for a workflow rather than an article.
-  eleventyConfig.on("eleventy.after", ({ dir, results }) => {
-    writeWorkflowCatalog({ outDir: dir.output, siteURL: siteData.url, pages: results ?? [] });
+  eleventyConfig.on("eleventy.after", ({ directories, dir, results }) => {
+    writeWorkflowCatalog({ outDir: directories?.output ?? dir.output, siteURL: siteData.url, pages: results ?? [] });
   });
 
   const TAG_CHANNELS = ["tags", "noteTags"];

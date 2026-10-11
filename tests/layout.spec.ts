@@ -36,6 +36,23 @@ test.describe("Layout rails", () => {
     await expect(page.getByRole("link", { name: "AI・機械向けの記事一覧" })).toHaveAttribute("href", "/llms.txt");
   });
 
+  test("llms.txt points to the workflow catalog, which lists the published workflows", async ({ request }) => {
+    const llms = await (await request.get("/llms.txt")).text();
+    expect(llms).toContain("/workflows/index.json");
+    expect(llms).not.toMatch(/\n[ \t]*\n[ \t]*\n/); // no runs of blank lines
+
+    const response = await request.get("/workflows/index.json");
+    expect(response.status()).toBe(200);
+    const catalog = await response.json();
+    expect(catalog.count).toBe(catalog.workflows.length);
+    expect(catalog.workflows.length).toBeGreaterThan(100);
+    const turbo = catalog.workflows.find((w) => w.name === "qwen_image_2_1_turbo_text2image.json");
+    expect(turbo.models_source).toBe("loaders");
+    expect(turbo.articles.map((a) => a.lang)).toEqual(["ja", "en", "zh"]);
+    expect(turbo.articles[0].heading).toBe("Turbo");
+    expect(turbo.performance.time).toBe("68s");
+  });
+
   test("each language has its own 404 page with one heading and no correction link", async ({ page }) => {
     for (const [url, lang, home] of [["/404.html", "ja", "/ja/"], ["/en/404.html", "en", "/en/"], ["/zh/404.html", "zh", "/zh/"]]) {
       await page.goto(url);

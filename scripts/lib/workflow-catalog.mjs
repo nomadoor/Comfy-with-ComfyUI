@@ -15,8 +15,10 @@ const LANG_ORDER = ["ja", "en", "zh"];
 const MODEL_FILE = /\.(safetensors|gguf|ckpt|pt|pth|bin|sft|onnx)$/i;
 
 // `{% workflow "/workflows/…json", level=…, … %}`, `{% workflowPicker "!/workflows/…json", … %}` and
-// plain `[](/workflows/…json)` links all name the file the page shows.
-const WORKFLOW_REF = /\/workflows\/[^\s"')]+?\.json/g;
+// plain `[](/workflows/…json)` links (or `../../../workflows/…json`) all name the file the page shows.
+// The path has to start the reference (after `"`, `(`, `!`, a space or `..`), so a link to another
+// site's /workflows/ is not one.
+const WORKFLOW_REF = /(?<=^|["(!\s]|\.\.)\/workflows\/[^\s"')]+?\.json/g;
 const SHORTCODE = /\{%\s*workflow\s+"(\/workflows\/[^"]+\.json)"([^%]*)%\}/g;
 
 const frontmatter = (text) => {
@@ -33,11 +35,11 @@ const stripMarkdown = (text) =>
   text
     .replace(/`([^`]*)`/g, "$1")
     .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
-    .replace(/[*_]/g, "")
+    .replace(/\*+/g, "") // emphasis; underscores stay, they are mostly snake_case names
     .trim();
 
 // The `{% workflow %}` arguments as the article writes them (see ops/adr/2026-09-21-workflow-performance.md).
-const parsePerformance = (args) => {
+export const parsePerformance = (args) => {
   const level = args.match(/\blevel=(\d)/)?.[1];
   if (!level) return null;
   const text = (key) => args.match(new RegExp(`\\b${key}="([^"]*)"`))?.[1] ?? null;
@@ -47,10 +49,24 @@ const parsePerformance = (args) => {
 };
 
 // Where each workflow appears in one article: the nearest heading above it, and its performance.
-const scanArticle = (body) => {
+// Fenced code is skipped: a `##` or a workflow path inside it is an example, not the page's own.
+export const scanArticle = (body) => {
   const found = new Map();
   let heading = null;
+  let fence = null;
   for (const line of body.split("\n")) {
+    // A fence may open inside a list item (`- ```text`); it closes on a run of the same character at
+    // least as long, with nothing after it (CommonMark).
+    if (fence) {
+      const close = line.match(/^\s*(`{3,}|~{3,})\s*$/)?.[1];
+      if (close && close[0] === fence[0] && close.length >= fence.length) fence = null;
+      continue;
+    }
+    const open = line.match(/^\s*(?:(?:[-*+]|\d+[.)])\s+)?(`{3,}|~{3,})/)?.[1];
+    if (open) {
+      fence = open;
+      continue;
+    }
     const h = line.match(/^#{2,4}\s+(.+?)\s*#*\s*$/);
     if (h) {
       heading = stripMarkdown(h[1]);
@@ -75,8 +91,8 @@ const eachNode = function* (workflow) {
 // Models: the loaders' `properties.models` (url and folder, as ComfyUI's missing-model dialog reads
 // them); for a workflow without them, the links in its note's `## models` list (older notes list them
 // without folders); failing both, just the file names its loaders ask for.
-const noteModels = (workflow) => {
-  const models = [];
+export const noteModels = (workflow) => {
+  const models = new Map();
   for (const node of eachNode(workflow)) {
     if (node.type !== "MarkdownNote" && node.type !== "Note") continue;
     const text = String(node.widgets_values?.[0] ?? "");
@@ -90,28 +106,34 @@ const noteModels = (workflow) => {
         continue;
       }
       const link = line.match(/^(\s*)-\s+\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)(?:\s*\(([^)]+)\))?/);
-      if (link) models.push({ name: link[2], directory: link[1] ? directory : null, url: link[3], size: link[4] ?? null });
+      if (!link) continue;
+      const model = { name: link[2], directory: link[1] ? directory : null, url: link[3], size: link[4] ?? null };
+      const key = `${model.directory ?? ""}/${model.name}`;
+      if (!models.has(key)) models.set(key, model); // several notes may repeat the list
     }
   }
-  return models;
+  return [...models.values()];
 };
 
-const workflowFacts = (file) => {
-  const workflow = JSON.parse(fs.readFileSync(file, "utf8"));
+export const workflowFacts = (workflow) => {
   const fromLoaders = new Map();
   const customNodes = new Map();
   const askedFor = new Set();
   for (const node of eachNode(workflow)) {
     if (node.mode === 4) continue; // bypassed
-    // widgets_values is a list for most nodes and an object for some (VideoHelperSuite, for one).
-    const widgets = node.widgets_values;
+    // Any widget naming a model file asks for one, whatever the node is called (custom loaders are
+    // not always "…Loader"). Notes are text, not choices. widgets_values is a list for most nodes and
+    // an object for some (VideoHelperSuite, for one).
+    const widgets = /Note$/.test(node.type ?? "") ? [] : node.widgets_values;
     for (const value of Array.isArray(widgets) ? widgets : Object.values(widgets ?? {})) {
-      if (typeof value === "string" && MODEL_FILE.test(value) && /Load|Checkpoint|Model/i.test(node.type)) {
+      if (typeof value === "string" && !value.includes("\n") && MODEL_FILE.test(value)) {
         askedFor.add(value.split(/[\\/]/).pop());
       }
     }
     for (const model of node.properties?.models ?? []) {
-      if (model?.name && model?.url) fromLoaders.set(`${model.directory}/${model.name}`, { name: model.name, directory: model.directory, url: model.url });
+      if (model?.name && model?.url) {
+        fromLoaders.set(`${model.directory ?? ""}/${model.name}`, { name: model.name, directory: model.directory ?? null, url: model.url });
+      }
     }
     const { cnr_id: cnr, aux_id: aux } = node.properties ?? {};
     if (cnr && cnr !== "comfy-core") customNodes.set(cnr, { id: cnr, source: "registry" });
@@ -164,7 +186,7 @@ export const buildWorkflowCatalog = ({ siteURL, pages }) => {
         url: `${site}${ref}`,
         articles: articles.map(({ performance: _, ...article }) => article),
         performance,
-        ...workflowFacts(file),
+        ...workflowFacts(JSON.parse(fs.readFileSync(file, "utf8"))),
       };
     })
     .sort((a, b) => a.url.localeCompare(b.url));
