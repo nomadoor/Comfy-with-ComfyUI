@@ -15,10 +15,10 @@ const LANG_ORDER = ["ja", "en", "zh"];
 const MODEL_FILE = /\.(safetensors|gguf|ckpt|pt|pth|bin|sft|onnx)$/i;
 
 // `{% workflow "/workflows/…json", level=…, … %}`, `{% workflowPicker "!/workflows/…json", … %}` and
-// plain `[](/workflows/…json)` links (or `../../../workflows/…json`) all name the file the page shows.
-// The path has to start the reference (after `"`, `(`, `!`, a space or `..`), so a link to another
-// site's /workflows/ is not one.
-const WORKFLOW_REF = /(?<=^|["(!\s]|\.\.)\/workflows\/[^\s"')]+?\.json/g;
+// plain `[](/workflows/…json)` links (or `(../../../workflows/…json)`) all name the file the page
+// shows. Only those forms count: a path quoted in a shortcode or picker, or the target of a link. A
+// path merely mentioned in the text, or another site's /workflows/, is not a workflow the page shows.
+const WORKFLOW_REF = /(?<="!?|\(|\((?:\.\.\/)*\.\.)\/workflows\/[^\s"')]+?\.json(?=[")])/g;
 const SHORTCODE = /\{%\s*workflow\s+"(\/workflows\/[^"]+\.json)"([^%]*)%\}/g;
 
 const frontmatter = (text) => {
@@ -167,7 +167,8 @@ export const buildWorkflowCatalog = ({ siteURL, pages }) => {
       if (!fs.existsSync(file)) continue;
       if (!entries.has(ref)) entries.set(ref, { file, articles: [] });
       entries.get(ref).articles.push({
-        lang: data.lang ?? null,
+        // The locale folder (src/content/<lang>/…) when the frontmatter does not say.
+        lang: data.lang ?? path.relative(CONTENT_ROOT, input).split(path.sep)[0],
         title: data.title ?? null,
         url: new URL(page.url, `${site}/`).href,
         heading: where.heading,

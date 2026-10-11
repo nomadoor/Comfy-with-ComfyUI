@@ -29,6 +29,7 @@ test("scanArticle ignores fenced code and other sites' /workflows/ paths", () =>
     "[](/workflows/a/example.json)",
     "```",
     "See https://github.com/someone/repo/blob/main/workflows/x.json",
+    "The file /workflows/a/mentioned.json is only mentioned here.",
     "[](/workflows/a/real.json)",
   ].join("\n");
   const found = scanArticle(body);

@@ -40,6 +40,7 @@ test.describe("Layout rails", () => {
     const llms = await (await request.get("/llms.txt")).text();
     expect(llms).toContain("/workflows/index.json");
     expect(llms).not.toMatch(/\n[ \t]*\n[ \t]*\n/); // no runs of blank lines
+    expect(llms).not.toMatch(/^ *- .*\n[ \t]*\n *- /m); // and no blank line between list items
 
     const response = await request.get("/workflows/index.json");
     expect(response.status()).toBe(200);

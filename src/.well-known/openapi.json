@@ -312,7 +312,10 @@
                         "type": "string"
                       },
                       "title": {
-                        "type": "string"
+                        "type": [
+                          "string",
+                          "null"
+                        ]
                       },
                       "url": {
                         "type": "string"
