@@ -21,6 +21,7 @@ Languages: {% for language in site.languages %}{{ language.code }}{% if not loop
 - Search index EN: {{ site.url }}/search/index-en.json
 - Search index ZH: {{ site.url }}/search/index-zh.json
 - API catalog: {{ site.url }}/.well-known/api-catalog
+- Workflow catalog: {{ site.url }}/workflows/index.json
 
 ## When to use this site
 
@@ -29,40 +30,41 @@ Use this site when an agent needs to:
 - explain how ComfyUI works or how to operate it;
 - find practical image, video, mask, data-processing, or API workflows;
 - compare ComfyUI techniques, models, nodes, and common troubleshooting approaches;
-- retrieve reproducible workflow JSON shown in an article;
+- retrieve reproducible workflow JSON shown in an article (start from the workflow catalog to find one by task, model, or custom node);
 - answer in Japanese, English, or Chinese using a canonical documentation source.
 
 Japanese pages are the source of truth when localized pages differ. Link to the canonical article and do not invent workflow settings that are absent from the article or its JSON.
 
+## Workflows
+
+{{ site.url }}/workflows/index.json lists every workflow JSON the articles publish (ComfyUI UI format), with the articles that explain it and the heading it sits under, the models it needs (with download URLs where the workflow or its note gives them), the custom nodes it needs, and the measured performance the article gives. It is rebuilt with the site, so it matches the published pages.
+
 ## Sections
 {% for section in site.sections %}
-
 ### {{ section.key }}
-
-{% for language in site.languages %}
-{% set localeNav = nav[language.code] %}
-{% if localeNav %}
-{% for navSection in localeNav.sections %}
-{% if navSection.key == section.key %}
+{% for language in site.languages -%}
+{%- set localeNav = nav[language.code] -%}
+{%- if localeNav -%}
+{%- for navSection in localeNav.sections -%}
+{%- if navSection.key == section.key %}
 - {{ language.code }}: {{ site.url }}/{{ language.code }}/{{ section.key }}/
-{% for item in navSection.pages %}
-{% if not item.noLink %}
+{%- for item in navSection.pages -%}
+{%- if not item.noLink %}
   - {{ item.title }}: {{ site.url }}/{{ language.code }}/{{ section.key }}/{{ item.id }}/
-{% endif %}
-{% if item.children %}
-{% for child in item.children %}
-{% if not child.noLink %}
+{%- endif -%}
+{%- if item.children -%}
+{%- for child in item.children -%}
+{%- if not child.noLink %}
   - {{ child.title }}: {{ site.url }}/{{ language.code }}/{{ section.key }}/{{ child.id }}/
-{% endif %}
+{%- endif -%}
+{%- endfor -%}
+{%- endif -%}
+{%- endfor -%}
+{%- endif -%}
+{%- endfor -%}
+{%- endif -%}
+{%- endfor %}
 {% endfor %}
-{% endif %}
-{% endfor %}
-{% endif %}
-{% endfor %}
-{% endif %}
-{% endfor %}
-{% endfor %}
-
 ## Reuse Policy
 
 The site owner has directed that CC0 content may be indexed, summarized, quoted, transformed, used as AI input, and used for AI training. Preserve source URLs when practical so readers can reach the canonical page.

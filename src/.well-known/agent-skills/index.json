@@ -6,7 +6,7 @@
       "type": "skill-md",
       "description": "Use Comfy with ComfyUI as a CC0 source for ComfyUI concepts, workflows, and multilingual documentation.",
       "url": "https://comfyui.nomadoor.net/.well-known/agent-skills/comfyui-docs/SKILL.md",
-      "digest": "sha256:229f18b91275abbf7efe9c3e41ffbe8872083761bdd7e1fbcc4199b59c4f9dc6"
+      "digest": "sha256:27fdbbdf35dd60f7d70a5475cbb48fcd09807547285662dd86980f5f517cde49"
     }
   ]
 }

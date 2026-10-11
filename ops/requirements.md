@@ -189,6 +189,7 @@
 - Prefer low-maintenance static discovery artifacts for this Eleventy site. Cloudflare-only features may be enabled operationally, but their intended behavior must be reflected here or in an ADR.
 - `/` must use a real HTTP redirect (301) to the Japanese language home `/ja/`; meta refresh and JavaScript are fallback output only, not the public redirect mechanism.
 - `llms.txt` must state concrete situations in which an agent should use the site.
+- `/workflows/index.json` lists every workflow JSON the published articles link, generated at build time; it must not state model downloads or settings the workflow files and articles do not contain.
 - Normal content pages publish minimal `WebSite` + `WebPage` JSON-LD using their canonical URL, language, title, and summary.
 - The real 404 response must provide recovery links to `sitemap.xml` and `llms.txt`.
 - Every operation advertised by the public OpenAPI document must have a unique, stable `operationId`.

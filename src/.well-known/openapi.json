@@ -68,6 +68,25 @@
         }
       }
     },
+    "/workflows/index.json": {
+      "get": {
+        "operationId": "getWorkflowCatalog",
+        "summary": "Workflow catalog",
+        "description": "Returns every ComfyUI workflow JSON the articles publish, with the articles that explain it, the models and custom nodes it needs, and the measured performance the article gives. Rebuilt with the site.",
+        "responses": {
+          "200": {
+            "description": "Workflow catalog JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowCatalog"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/contact": {
       "post": {
         "operationId": "submitContactMessage",
@@ -252,6 +271,130 @@
         "required": [
           "ok",
           "error"
+        ],
+        "additionalProperties": true
+      },
+      "WorkflowCatalog": {
+        "type": "object",
+        "properties": {
+          "schema_version": {
+            "type": "integer"
+          },
+          "site": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "generated_at": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer"
+          },
+          "workflows": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "articles": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "lang": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "heading": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "performance": {
+                  "type": [
+                    "object",
+                    "null"
+                  ]
+                },
+                "models": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "directory": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "url": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "models_source": {
+                  "type": "string",
+                  "enum": [
+                    "loaders",
+                    "note",
+                    "names_only",
+                    "none"
+                  ]
+                },
+                "custom_nodes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "source": {
+                        "type": "string",
+                        "enum": [
+                          "registry",
+                          "github"
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "name",
+                "url",
+                "articles"
+              ],
+              "additionalProperties": true
+            }
+          }
+        },
+        "required": [
+          "schema_version",
+          "workflows"
         ],
         "additionalProperties": true
       }
