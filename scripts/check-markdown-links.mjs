@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { listFiles } from "./lib/files.mjs";
+import { stripCode } from "./lib/markdown-code.mjs";
 
 const CONTENT_DIR = path.resolve("src", "content");
 const PUBLIC_ROOTS = ["assets", "workflows", "search", ".well-known"];
@@ -47,7 +48,8 @@ function extractMarkdownLinks(text) {
 for (const file of listFiles(CONTENT_DIR, { extensions: [".md", ".njk"] })) {
   const relative = path.relative(process.cwd(), file);
   const text = fs.readFileSync(file, "utf8");
-  for (const rawUrl of extractMarkdownLinks(text)) {
+  // Links shown inside code are examples, not links of the page.
+  for (const rawUrl of extractMarkdownLinks(stripCode(text))) {
     if (!rawUrl.startsWith("/") || rawUrl.startsWith("//")) continue;
     // `/media/` is a reserved virtual namespace for R2 media, validated by check-media.mjs.
     if (rawUrl.startsWith("/media/")) continue;
