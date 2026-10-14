@@ -8,8 +8,9 @@ const initCodeCopy = () => {
   // Same glyph as the `copy` icon in src/includes/icon.njk, so code blocks and workflow JSON match.
   const iconMarkup =
     '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="var(--icon-stroke-width, 1.5)" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect class="icon__fill" x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path></svg>';
-  const copyLabel = "Copy";
-  const copiedLabel = "Copied";
+  // Localized on <body> (base.njk), from the workflow JSON copy labels in site.json.
+  const copyLabel = document.body?.dataset?.codeCopyLabel || "Copy";
+  const copiedLabel = document.body?.dataset?.codeCopiedLabel || "Copied";
   blocks.forEach((code) => {
     const pre = code.parentElement;
     if (!pre || pre.classList.contains("code-block")) return;
@@ -21,7 +22,8 @@ const initCodeCopy = () => {
     button.setAttribute("aria-label", copyLabel);
     button.dataset.label = copyLabel;
     button.dataset.successLabel = copiedLabel;
-    button.innerHTML = `<span class="code-copy__icon" aria-hidden="true">${iconMarkup}</span><span class="sr-only">${copyLabel}</span>`;
+    button.innerHTML = `<span class="code-copy__icon" aria-hidden="true">${iconMarkup}</span><span class="sr-only"></span>`;
+    button.querySelector(".sr-only").textContent = copyLabel;
 
     button.addEventListener("click", async () => {
       const ok = await copyText(code.textContent);

@@ -17,6 +17,8 @@ localeNav.sections else site.sections[0].key) -%}
 headingAnchorI18n.copyLabel[site.defaultLang] or "Copy heading link" -%}
 {% set headingAnchorCopiedLabel = headingAnchorI18n.copiedLabel[currentLang] or
 headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
+{% set codeCopyLabel = site.i18n.workflow.copyLabel[currentLang] or site.i18n.workflow.copyLabel[site.defaultLang] or "Copy" -%}
+{% set codeCopiedLabel = site.i18n.workflow.copiedLabel[currentLang] or site.i18n.workflow.copiedLabel[site.defaultLang] or "Copied" -%}
 {% set pageSummary = summary | default('Comfy with ComfyUI docs') -%}
 {% set searchTitle = seoTitle or title -%}
 {% set searchDescription = seoDescription or pageSummary -%}
@@ -113,7 +115,8 @@ headingAnchorI18n.copiedLabel[site.defaultLang] or "Copied" -%}
 </head>
 
 <body lang="{{ currentLang }}" id="top" data-heading-anchor-copy-label="{{ headingAnchorCopyLabel | escape }}"
-  data-heading-anchor-copied-label="{{ headingAnchorCopiedLabel | escape }}">
+  data-heading-anchor-copied-label="{{ headingAnchorCopiedLabel | escape }}"
+  data-code-copy-label="{{ codeCopyLabel | escape }}" data-code-copied-label="{{ codeCopiedLabel | escape }}">
   {% include "header.njk" %}
   <div class="nav-backdrop" aria-hidden="true"></div>
   <div class="app-shell">

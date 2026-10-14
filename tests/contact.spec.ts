@@ -123,3 +123,36 @@ test("report links on articles open the fix form for the current page", async ({
   await expect(link).toHaveAttribute("href", /[?&]type=fix(&|$)/);
   await expect(link).toHaveAttribute("href", /[?&]url=[^&#]*%2Fja%2Fbasic-workflows%2Fsd15-basics%2F/);
 });
+
+test("fix report: a double click on send posts once and reports success", async ({ page }) => {
+  let requests = 0;
+  let release: () => void = () => {};
+  const held = new Promise<void>((resolve) => (release = resolve));
+  await page.route(FEEDBACK_ENDPOINT, async (route) => {
+    requests += 1;
+    await held;
+    await route.fulfill({ status: 200, contentType: "application/json", body: "{}" });
+  });
+  await page.goto(CONTACT);
+  await page.evaluate((endpoint) => {
+    document.querySelector<HTMLElement>(".assistant-rail")!.dataset.feedbackEndpoint = endpoint;
+  }, FEEDBACK_ENDPOINT);
+
+  const form = page.locator('[data-contact-form="fix"]');
+  await form.locator('input[name="page_url"]').fill("/ja/begin-with/setup/");
+  await form.locator('textarea[name="message"]').fill("手順3のコマンドが古いバージョンのままになっています。");
+  await form.locator("[data-contact-submit]").click();
+  await expect(form).toHaveAttribute("data-form-state", "confirm");
+  await expect(form.locator("[data-contact-confirm-send]")).toBeEnabled();
+
+  // Two clicks in the same task, before the first request can finish.
+  await form.locator("[data-contact-confirm-send]").evaluate((button) => {
+    button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  });
+  await expect.poll(() => requests).toBe(1);
+  release();
+  await expect(form).toHaveAttribute("data-form-state", "input");
+  await expect(form.locator("[data-contact-status]").first()).not.toHaveClass(/is-error/);
+  expect(requests).toBe(1);
+});

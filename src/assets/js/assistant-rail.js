@@ -1,3 +1,4 @@
+import { ASSISTANT_PUBLISH_STRINGS, localized } from "./strings.js";
 import { loadTurnstile } from "./turnstile.js";
 
 class AssistantRail {
@@ -280,7 +281,7 @@ class AssistantFormController {
     this.endpointMessage = form.dataset.statusEndpoint || "";
     this.errorMessage = form.dataset.statusError || "";
     this.sendingMessage = form.dataset.statusSending || "";
-    this.turnstileMessage = form.dataset.statusTurnstile || "認証を完了してください。";
+    this.turnstileMessage = form.dataset.statusTurnstile || "";
     this.successDetail = form.dataset.successDetail || "";
     this.type = form.dataset.formType || "feedback";
     this.state = "input";
@@ -337,20 +338,8 @@ class AssistantFormController {
   getPublishPermissionSentence() {
     if (!this.hasPublishPermission) return "";
     const value = this.getPublishPermissionValue();
-    const lang = String(this.rail.lang || document.documentElement.lang || "ja").slice(0, 2);
-    if (lang === "en") {
-      return value === "allow"
-        ? "This content may be cited/quoted on the site."
-        : "Please do not cite/quote this content on the site.";
-    }
-    if (lang === "zh") {
-      return value === "allow"
-        ? "此内容可以在网站上引用/刊登。"
-        : "请不要在网站上引用/刊登此内容。";
-    }
-    return value === "allow"
-      ? "この内容をサイトに掲載/引用して良い"
-      : "この内容をサイトに掲載/引用しないでほしい";
+    const sentences = localized(ASSISTANT_PUBLISH_STRINGS, this.rail.lang);
+    return value === "allow" ? sentences.allow : sentences.deny;
   }
 
   getSubmissionMessage() {
