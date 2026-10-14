@@ -11,7 +11,7 @@
     "dev:media": "COMFY_MEDIA_PREVIEW_CHANGED=1 CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=500 eleventy --serve --port=8080",
     "build": "eleventy",
     "clean": "rimraf _site",
-    "check": "npm run check:encoding && npm run check:content && npm run check:workflows && npm run check:runpod && npm run check:media && npm run check:assets && npm run test:unit",
+    "check": "npm run check:encoding && npm run check:content && npm run check:workflows && npm run check:runpod && npm run check:media && npm run check:assets && npm run test:unit && npm run test:python",
     "check:assets": "node scripts/check-esm.mjs && node scripts/check-icons.mjs",
     "check:content": "node scripts/check-frontmatter.mjs && node scripts/check-nav-integrity.mjs && node scripts/check-markdown-links.mjs",
     "check:encoding": "node scripts/check-utf8.mjs",
@@ -28,6 +28,7 @@
     "test:server": "CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=500 COMFY_MEDIA_FIXTURES=1 COMFY_MEDIA_ORIGINALS= eleventy --serve --port=8091 --output=.cache/playwright-site",
     "test:playwright": "playwright test",
     "test:unit": "node --test scripts/lib/*.test.mjs",
+    "test:python": "python3 -I -m unittest discover -s runpod/tests",
     "prepare": "node scripts/install-git-hooks.mjs",
     "runpod:refresh": "node runpod/tools/refresh.mjs"
   },

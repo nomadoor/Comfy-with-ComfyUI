@@ -49,7 +49,7 @@ Pod の環境変数:
 | `PROFILE_URL` | `https://comfyui.nomadoor.net/runpod/profiles/${PROFILE}.json` | 取得先の上書き（テスト用）。workflow も同じサイトから取る |
 | `COMFY_REF` | プロファイルの `comfyui.default` | `latest` / `verified` / commit sha |
 | `HF_TOKEN` | なし | gated なモデルを使う記事のテンプレートでだけ `{{ RUNPOD_SECRET_HF_TOKEN }}` を入れる（シークレットのない読者がつまずくので、不要なら入れない） |
-| `CIVITAI_TOKEN` | なし | 必要なときだけ |
+| `CIVITAI_TOKEN` | なし | 必要なときだけ。token を付けて送るのは最初のダウンロード URL への 1 回だけで、リダイレクト先（署名付き URL）は aria2 が token なしで取る |
 | `DL_CONCURRENCY` | `8` | 同時にダウンロードするファイル数（各ファイルは aria2 が 16 分割で取る） |
 | `HF_DOWNLOADER` | `aria2` | `xet` にすると Hugging Face だけ hf_xet で取る |
 | `IDLE_STOP_MINUTES` | `30` | 操作も生成もない状態がこの分数続くと Pod を Terminate する（`0` で無効）。「生成している」は ComfyUI が実行の通知（node の開始、ステップの進行）を出していること。キューに残っているだけでは数えないので、固まった node は延長しない。Terminate の API 呼び出しは成功するまで繰り返す |
