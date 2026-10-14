@@ -302,6 +302,9 @@ export function wireContactForms(root) {
         statusNodes?.forEach((node) => setStatus(node, message, isError));
       };
       if (!form) return;
+      // One request at a time: a second click would resend with a Turnstile token the endpoint
+      // has already used, and its failure would replace the "sent" status of the first request.
+      if (form.dataset.sending === "true") return;
       const submitType = form.dataset.contactSubmitType || "form-correction";
       const sourceUrl = form.dataset.contactSourceUrl || window.location.href;
       const message = form.dataset.contactPendingMessage || buildContactMessage(form, submitType);
@@ -322,6 +325,8 @@ export function wireContactForms(root) {
         return;
       }
 
+      form.dataset.sending = "true";
+      button.disabled = true;
       try {
         const sent = await submitToTipsEndpoint(submitType, message, sourceUrl, turnstileToken);
         if (sent) {
@@ -337,6 +342,9 @@ export function wireContactForms(root) {
         }
       } catch (error) {
         setContactStatus(getStatusMessage(root, "error"), true);
+      } finally {
+        form.dataset.sending = "false";
+        button.disabled = form.dataset.formState !== "confirm" || form.dataset.turnstileTokenReady !== "true";
       }
     });
   });
