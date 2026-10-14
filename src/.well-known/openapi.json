@@ -107,10 +107,12 @@
                 "properties": {
                   "reply_to": {
                     "type": "string",
-                    "format": "email"
+                    "format": "email",
+                    "maxLength": 254
                   },
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 100
                   },
                   "category": {
                     "type": "string",
@@ -122,10 +124,12 @@
                     ]
                   },
                   "body": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 10000
                   },
                   "environment": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 2000
                   },
                   "cf-turnstile-response": {
                     "type": "string"
