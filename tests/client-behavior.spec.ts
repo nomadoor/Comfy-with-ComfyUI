@@ -105,3 +105,14 @@ test("search history: an opened result is remembered, reusable, and clearable", 
   await page.locator("[data-clear-search-history]").click();
   await expect(page.locator("[data-history-term]")).toHaveCount(0);
 });
+
+test("code block copy buttons use the page language", async ({ page }) => {
+  const expected = { ja: ["コピー", "コピーしました"], en: ["Copy", "Copied"], zh: ["复制", "已复制"] };
+  for (const [lang, [label, success]] of Object.entries(expected)) {
+    await page.goto(`/${lang}/begin-with/downloading-and-placing-models/`);
+    const button = page.locator(".code-copy").first();
+    await expect(button).toHaveAttribute("aria-label", label);
+    await expect(button).toHaveAttribute("data-label", label);
+    await expect(button).toHaveAttribute("data-success-label", success);
+  }
+});

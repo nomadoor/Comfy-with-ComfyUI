@@ -96,6 +96,7 @@
 ## 7. JavaScript
 - All scripts are ESM modules in `src/assets/js/`. No CommonJS.
 - `base.njk` loads one entry, `app.js`, from a deployment-versioned directory; shared helpers are relative ESM imports from there. No import maps, no bundlers.
+- UI strings: what templates render comes from `src/_data/site.json`; strings only scripts show (search history, lightbox controls, contact form messages) live in `src/assets/js/strings.js`, with ja, en and zh for every entry. A script that shows a label the templates already have reads it from a data attribute instead of repeating it.
 
 ## 8. Icons / SVG
 - Store SVG sources in `src/assets/icons`. New files use kebab-case filenames.

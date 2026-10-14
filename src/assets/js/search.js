@@ -1,4 +1,5 @@
 import { loadSearchIndex } from "./search-index.js";
+import { localized, SEARCH_STRINGS } from "./strings.js";
 
 let docClickAttached = false;
 const containers = new Set();
@@ -21,12 +22,7 @@ const initSearch = () => {
     const HISTORY_LIMIT = 5;
     const MIN_CHARS = 2;
     const HISTORY_STORAGE_KEY = `cw-search-history:${lang}`;
-    const I18N = {
-      ja: { recent: "最近の検索", clear: "履歴をクリア", fromHistory: "履歴" },
-      en: { recent: "Recent searches", clear: "Clear history", fromHistory: "History" },
-      zh: { recent: "最近搜索", clear: "清除历史", fromHistory: "历史" }
-    };
-    const i18n = I18N[lang] || I18N.en;
+    const i18n = localized(SEARCH_STRINGS, lang);
     let index = [];
     let debounceTimer = null;
     let lastQuery = "";

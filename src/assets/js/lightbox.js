@@ -1,3 +1,5 @@
+import { LIGHTBOX_STRINGS, localized } from "./strings.js";
+
 let lightboxEl = null;
 let imageEl = null;
 let rawImageEl = null;
@@ -32,39 +34,6 @@ const RAW_ZOOM_HEADROOM = 1.5;
 const ZOOM_STEP = 0.5;
 let maxScale = MINIMUM_MAX_SCALE;
 
-const LIGHTBOX_LABELS = {
-  ja: {
-    dialog: "画像プレビュー",
-    close: "閉じる",
-    previous: "前の画像",
-    next: "次の画像",
-    zoomOut: "縮小",
-    zoomIn: "拡大",
-    reset: "倍率と位置をリセット",
-    help: "クリックで拡大・＋／−／ホイール／ピンチで拡大縮小・ドラッグで移動",
-  },
-  en: {
-    dialog: "Image preview",
-    close: "Close",
-    previous: "Previous image",
-    next: "Next image",
-    zoomOut: "Zoom out",
-    zoomIn: "Zoom in",
-    reset: "Reset zoom and position",
-    help: "Click to zoom · Use + / −, scroll, or pinch to zoom · Drag to move",
-  },
-  zh: {
-    dialog: "图片预览",
-    close: "关闭",
-    previous: "上一张图片",
-    next: "下一张图片",
-    zoomOut: "缩小",
-    zoomIn: "放大",
-    reset: "重置缩放和位置",
-    help: "点击放大・使用＋／−、滚轮或双指缩放・拖动移动",
-  },
-};
-
 const LIGHTBOX_ICONS = {
   close:
     '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 5L5 19M5 5L19 19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
@@ -85,9 +54,7 @@ function renderIcon(name) {
 }
 
 function getLightboxLabels() {
-  const rawLang = document.documentElement.lang || document.body?.lang || "en";
-  const lang = rawLang.toLowerCase().split("-")[0];
-  return LIGHTBOX_LABELS[lang] || LIGHTBOX_LABELS.en;
+  return localized(LIGHTBOX_STRINGS);
 }
 
 function getMediaRatio(target) {
