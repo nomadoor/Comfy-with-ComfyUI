@@ -120,6 +120,7 @@
 - R2 media is referenced as `/media/<logical name>` (reserved virtual namespace), must be registered in `src/_data/media.json`, and must match its display mode; physical R2 URLs must not be written in content or data (`npm run check:media`). See `ops/adr/2026-09-17-media-layer-r2-gyazo.md`.
 - Update README/ADRs whenever IA or UX changes.
 - Pull request titles, bodies and comments link only within this repository. No other repository's issues or pull requests, in any form, and no external URLs — a cross-repository reference posts a backlink on the target's timeline and cannot be withdrawn. Upstream references go in articles, ADRs or code comments instead.
+- Commit messages and pull request titles and bodies are written in Japanese (owner decision, 2026-10-14).
 - No AI or Claude attribution in commits or pull requests.
 
 ## 12. Tests
