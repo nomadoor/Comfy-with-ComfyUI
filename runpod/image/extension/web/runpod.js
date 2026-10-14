@@ -53,7 +53,7 @@ const STYLE = `
   background:rgba(4,4,4,.68);font-family:"Plus Jakarta Sans","Zen Kaku Gothic New","Hiragino Sans",system-ui,sans-serif;
   line-height:1.7;color:var(--text);cursor:pointer}
 .cwc-idle[data-mode]{display:flex}
-.cwc-idle__card{display:grid;gap:1rem;width:min(30rem,100%);padding:1.5rem;border-radius:.5rem;background:var(--card);cursor:default}
+.cwc-idle__card{display:grid;gap:1rem;width:min(30rem,100%);padding:1.5rem;border-radius:.5rem;background:var(--card);cursor:default;outline:none}
 .cwc-idle__head{display:flex;gap:.75rem;align-items:center;margin:0;color:var(--heading);font-size:1rem;font-weight:600}
 .cwc-idle__icon{flex:none;display:grid;place-items:center;width:2rem;height:2rem;border-radius:.5rem;
   background:color-mix(in srgb,var(--amber) 20%,transparent);color:var(--amber)}
@@ -71,18 +71,27 @@ const ICON = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke
 
 const overlay = document.createElement("div");
 overlay.className = "cwc-idle";
+// A modal alert dialog: named by its heading, focus moves in when it opens and back when it closes.
+// The background is not made inert: the first click or key on the notice closes it anyway.
 overlay.setAttribute("role", "alertdialog");
-overlay.innerHTML = `<div class="cwc-idle__card"><p class="cwc-idle__head"><span class="cwc-idle__icon">${ICON}</span><span></span></p>` +
-  `<p class="cwc-idle__time"></p><p class="cwc-idle__note"></p><button type="button" class="cwc-idle__keep"></button></div>`;
-const heading = overlay.querySelector(".cwc-idle__head span:last-child");
+overlay.setAttribute("aria-modal", "true");
+overlay.setAttribute("aria-labelledby", "cwc-idle-heading");
+overlay.setAttribute("aria-describedby", "cwc-idle-time cwc-idle-note");
+overlay.innerHTML = `<div class="cwc-idle__card" tabindex="-1"><p class="cwc-idle__head"><span class="cwc-idle__icon">${ICON}</span><span id="cwc-idle-heading"></span></p>` +
+  `<p class="cwc-idle__time" id="cwc-idle-time"></p><p class="cwc-idle__note" id="cwc-idle-note"></p><button type="button" class="cwc-idle__keep"></button></div>`;
+const card = overlay.querySelector(".cwc-idle__card");
+const heading = overlay.querySelector("#cwc-idle-heading");
 const countdown = overlay.querySelector(".cwc-idle__time");
 const note = overlay.querySelector(".cwc-idle__note");
 const keepButton = overlay.querySelector(".cwc-idle__keep");
 keepButton.textContent = T.keep;
+// click covers activation without pointer or key events (assistive technology).
+keepButton.addEventListener("click", () => reportActivity(true));
 
 let mode = "hidden"; // "hidden" | "warn" | "stopped"
 let deadline = 0; // ms timestamp the server will terminate at, from the last status
 let pageTitle = "";
+let returnFocus = null; // where focus was before the notice took it
 
 const clock = () => {
   const left = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
@@ -90,8 +99,17 @@ const clock = () => {
 };
 
 const show = (next) => {
-  if (mode === "hidden" && next !== "hidden") pageTitle = document.title;
-  if (mode !== "hidden" && next === "hidden" && pageTitle) document.title = pageTitle;
+  const opening = mode === "hidden" && next !== "hidden";
+  if (opening) {
+    pageTitle = document.title;
+    returnFocus = document.activeElement;
+  }
+  if (mode !== "hidden" && next === "hidden") {
+    if (pageTitle) document.title = pageTitle;
+    if (returnFocus?.isConnected) returnFocus.focus?.({ preventScroll: true });
+    returnFocus = null;
+  }
+  const changed = mode !== next;
   mode = next;
   if (next === "hidden") overlay.removeAttribute("data-mode");
   else overlay.dataset.mode = next;
@@ -100,6 +118,8 @@ const show = (next) => {
     note.textContent = T.relaunch;
     document.title = T.tabStopped;
   }
+  if (changed && next === "warn") keepButton.focus({ preventScroll: true });
+  if (changed && next === "stopped") card.focus({ preventScroll: true });
   tick();
 };
 
@@ -126,6 +146,8 @@ const render = (status) => {
 let lastReport = 0;
 const reportActivity = async (force = false) => {
   if (mode === "stopped") return;
+  // One press of "Keep using" sends pointerdown and click (or keydown and click): report it once.
+  if (Date.now() - lastReport < 1_000) return;
   // Normal use reports at most once a minute; while the notice is up every touch counts at once.
   if (!force && mode !== "warn" && Date.now() - lastReport < 60_000) return;
   lastReport = Date.now();
