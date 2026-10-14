@@ -9,6 +9,7 @@ description: Use when pushing a branch, opening a pull request, updating pull re
 
 - Push or update a PR only when the owner explicitly asks for it.
 - After the owner explicitly approves PR creation, open a regular (ready-for-review) PR by default; use a draft only when the owner asks for one.
+- Write the PR title and body, and every commit message, in Japanese.
 - Keep the PR title focused on the change itself.
 - Do not prefix PR titles with agent labels such as `[codex]`, `[claude]`, or similar. They add noise and are not part of the project change.
 - Use one PR for one intent.
@@ -53,7 +54,7 @@ Report every finding to the owner with your recommendation. Do not silently acce
 
 The end of the article pipeline in [article-authoring](../article-authoring/SKILL.md). [release-check](../release-check/SKILL.md) comes first.
 
-English wording for the title and body follows [english-reply](../english-reply/SKILL.md).
+The voice for the title and body is the owner's plain Japanese; keep it short and factual.
 
 ## Checks Before Publishing
 

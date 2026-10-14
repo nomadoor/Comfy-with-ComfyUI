@@ -27,7 +27,7 @@
    - このページに間違いがあります。のほうでは、現在いるURL(slug)を取得して送信します。
 
 ## 今後の実装タスク
-- Cloudflare Worker（`ops/cf-worker-feedback.js`）をデプロイし、`GITHUB_TOKEN / OWNER / REPO` を Workers の環境変数に設定する。
+- Cloudflare Worker（当初 `ops/cf-worker-feedback.js`。現在は `workers/feedback/`、`2025-11-28-assistant-feedback-worker.md` を参照）をデプロイし、`GITHUB_TOKEN / OWNER / REPO` を Workers の環境変数に設定する。
 - CSRF 用 Cookie(`assistant_feedback_csrf`) を Cloudflare Pages/Functions で発行し、Worker 側で `X-CSRF-Token` ヘッダーと照合する。
 - `ASSISTANT_FEEDBACK_ENDPOINT` などの環境変数をビルド時に注入し、`env.js` からテンプレートへ渡す。
 - Worker 側で rate-limit・エラーハンドリングを実装し、GitHub API 失敗時の再試行/ログを整備する。

@@ -17,7 +17,7 @@ Keep the always-loaded rules small. Task-specific procedures live in `.claude/sk
 
 - Canonical article URLs use `/<lang>/<section>/<slug>/`.
 - `lang` is `ja`, `en`, or `zh`.
-- Main section keys are `begin-with`, `ai-capabilities`, `basic-workflows`, `data-utilities`, and `notes`.
+- Main section keys, in sidebar order: `begin-with`, `data-utilities`, `ai-capabilities`, `basic-workflows`, `notes`.
 - Slugs, `navId`, and public URLs are stable IDs. Renames require owner approval, nav updates, and an ADR.
 - Japanese is the source language for new content. Do not create or update EN/ZH pages or nav entries unless the owner explicitly asks for localization in the current task.
 - The human owner is the author. Keep edits to requested changes, light proofreading, factual fixes, and structure that preserves the owner's voice.
@@ -30,6 +30,7 @@ Keep the always-loaded rules small. Task-specific procedures live in `.claude/sk
 - SVG icons in `src/assets/icons/` must define a `viewBox` and inherit `currentColor`.
 - Files must remain UTF-8 without BOM. If encoding looks wrong, stop and ask.
 - Do not push, force-push, open a PR, update a PR branch, or publish local changes unless the owner explicitly says to push/publish in the current work sequence.
+- Commit messages and PR titles and bodies are written in Japanese.
 - For new feature work, use a dedicated branch and record the intent first with a small `/ops` update or reversible scaffold commit.
 
 ## Agent skills
