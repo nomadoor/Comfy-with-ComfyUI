@@ -10,7 +10,7 @@ function applyTheme(theme, buttons) {
   });
 }
 
-function initThemeToggle() {
+export default function initThemeToggle() {
   const buttons = Array.from(document.querySelectorAll("[data-theme-toggle]"));
   let stored = null;
   try {
@@ -34,5 +34,3 @@ function initThemeToggle() {
     }
   }));
 }
-
-initThemeToggle();

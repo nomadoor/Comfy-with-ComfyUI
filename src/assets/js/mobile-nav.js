@@ -1,7 +1,6 @@
-const initMobileNav = () => {
+export default function initMobileNav() {
   const menuBtn = document.querySelector(".site-header__menu-btn");
   const searchToggle = document.querySelector("[data-search-toggle]");
-  const searchFocus = document.querySelector("[data-search-focus]");
   const searchInput = document.querySelector("[data-search-input]");
   const body = document.body;
   // Target the sidebar itself as it will be the overlay
@@ -67,14 +66,6 @@ const initMobileNav = () => {
     });
   }
 
-  if (searchFocus && searchInput) {
-    searchFocus.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      searchInput.focus();
-    });
-  }
-
   if (navBackdrop) {
     navBackdrop.addEventListener("click", closeNav);
   }
@@ -113,6 +104,4 @@ const initMobileNav = () => {
       closeSearch();
     }
   });
-};
-
-initMobileNav();
+}

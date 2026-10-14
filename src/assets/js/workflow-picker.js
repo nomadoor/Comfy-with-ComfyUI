@@ -1,4 +1,6 @@
 import { copyJsonFromUrl } from "./copy-json.js";
+import { getScope } from "./dom.js";
+import { flashClass } from "./flash.js";
 
 const SUCCESS_VISIBLE_MS = 1000;
 const ERROR_VISIBLE_MS = 2400;
@@ -6,42 +8,18 @@ const PICKER_BOUND_FLAG = "workflowPickerBound";
 const OPEN_CLASS = "is-open";
 const OPTION_SELECTED_CLASS = "is-selected";
 
-function getScope(root) {
-  if (root && typeof root.querySelectorAll === "function") {
-    return root;
-  }
-  return document;
-}
-
 function getBasename(file = "") {
   const clean = String(file).split("?")[0].split("#")[0];
   const parts = clean.split("/");
   return parts[parts.length - 1] || clean;
 }
 
-function showSuccessState(element) {
-  element.classList.add("is-success");
-  if (element.__successTimer) {
-    clearTimeout(element.__successTimer);
-  }
-  element.__successTimer = setTimeout(() => {
-    element.classList.remove("is-success");
-    element.__successTimer = null;
-  }, SUCCESS_VISIBLE_MS);
-}
+const showSuccessState = (element) => flashClass(element, "is-success", SUCCESS_VISIBLE_MS);
 
 function showErrorMessage(messageNode, text) {
   if (!messageNode) return;
   messageNode.textContent = text;
-  messageNode.classList.add("is-error");
-  if (messageNode.__errorTimer) {
-    clearTimeout(messageNode.__errorTimer);
-  }
-  messageNode.__errorTimer = setTimeout(() => {
-    messageNode.textContent = "";
-    messageNode.classList.remove("is-error");
-    messageNode.__errorTimer = null;
-  }, ERROR_VISIBLE_MS);
+  flashClass(messageNode, "is-error", ERROR_VISIBLE_MS, { onEnd: () => (messageNode.textContent = "") });
 }
 
 function updateActionLabels(container, file) {

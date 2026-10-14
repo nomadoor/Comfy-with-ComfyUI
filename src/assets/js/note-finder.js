@@ -1,16 +1,4 @@
-function sortCards(grid, mode) {
-  const cards = Array.from(grid.querySelectorAll("[data-note-card]"));
-  cards.sort((a, b) => {
-    if (mode === "views") {
-      const views = Number(b.dataset.views || 0) - Number(a.dataset.views || 0);
-      if (views !== 0) return views;
-    }
-    const updated = String(b.dataset.updated || "").localeCompare(String(a.dataset.updated || ""));
-    if (updated !== 0) return updated;
-    return String(a.dataset.title || "").localeCompare(String(b.dataset.title || ""));
-  });
-  cards.forEach((card) => grid.appendChild(card));
-}
+import { sortNotes } from "./notes-sort.js";
 
 export default function initNoteFinder(root = document) {
   const finder = root.querySelector("[data-note-finder]");
@@ -86,11 +74,11 @@ export default function initNoteFinder(root = document) {
         item.classList.toggle("is-active", isActive);
         item.setAttribute("aria-pressed", String(isActive));
       });
-      sortCards(grid, sortMode);
+      sortNotes(grid, "[data-note-card]", sortMode);
       applyFilter();
     });
   });
 
-  sortCards(grid, sortMode);
+  sortNotes(grid, "[data-note-card]", sortMode);
   applyFilter();
 }

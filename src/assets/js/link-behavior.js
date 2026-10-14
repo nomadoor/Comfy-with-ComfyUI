@@ -213,7 +213,6 @@ const initLinkBehavior = () => {
   if (!observerInitialized) {
     enhanceAllLinks(document);
     setupMutationObserver();
-    collectNavLinks();
     observerInitialized = true;
   }
   setActiveNavLink();
