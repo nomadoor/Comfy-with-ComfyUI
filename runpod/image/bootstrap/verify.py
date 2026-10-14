@@ -10,7 +10,7 @@ import sys
 import urllib.parse
 from pathlib import Path
 
-from .util import fetch_json
+from .util import default_data_dir, fetch_json
 
 FRONTEND_NODES = {"Note", "MarkdownNote", "Reroute", "PrimitiveNode"}
 INPUT_NODES = {"LoadImage", "LoadImageMask", "LoadVideo", "LoadAudio"}
@@ -21,7 +21,7 @@ MODEL_EXT = (".safetensors", ".gguf", ".ckpt", ".pt", ".pth", ".bin", ".sft")
 def main():
     base = os.environ.get("COMFY_URL", "http://127.0.0.1:8188")
     comfy_dir = Path(os.environ.get("COMFY_DIR", "/opt/ComfyUI"))
-    data_dir = Path(os.environ.get("DATA_DIR") or ("/workspace" if Path("/workspace").is_dir() else "/data"))
+    data_dir = Path(default_data_dir())
     report = json.loads((data_dir / "runpod-boot" / "report.json").read_text(encoding="utf-8"))
     folder = Path(report["workflows"]["folder"])
 

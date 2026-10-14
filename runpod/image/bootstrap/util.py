@@ -2,8 +2,8 @@ import hashlib
 import json
 import os
 import subprocess
-import urllib.error
 import urllib.request
+from pathlib import Path
 
 USER_AGENT = "comfy-with-comfyui-runpod/1"
 
@@ -27,8 +27,9 @@ def fetch_json(url, timeout=60):
     return json.loads(fetch(url, timeout).decode("utf-8"))
 
 
-def http_status(error):
-    return error.code if isinstance(error, urllib.error.HTTPError) else None
+def default_data_dir():
+    """Where models and the boot report live. boot.sh exports DATA_DIR; `docker exec` (verify) does not."""
+    return os.environ.get("DATA_DIR") or ("/workspace" if Path("/workspace").is_dir() else "/data")
 
 
 def sha256_file(path, on_progress=None):

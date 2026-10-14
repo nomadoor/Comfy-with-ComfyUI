@@ -8,7 +8,8 @@ import os
 import time
 
 from . import server
-from .__main__ import PORT, SITE, load_tips
+from .__main__ import PORT
+from .profile import SITE, load_tips
 from .state import State
 from .util import fetch_json
 

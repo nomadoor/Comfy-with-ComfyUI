@@ -113,23 +113,19 @@ const SAFE_PART = /^[A-Za-z0-9][A-Za-z0-9._ +()-]*$/;
 const safePath = (value, nested = false) =>
   (nested ? String(value).split("/") : [String(value)]).every((part) => SAFE_PART.test(part) && part !== "." && part !== "..");
 
-// Returns { profile, errors, warnings }. `profile` is null when there are errors.
-// `strictLock` (check:runpod) turns a model missing from the lock into an error; the build only warns.
-export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = readJSON(CORE_NODES_PATH, { nodes: [] }).nodes } = {}) => {
-  const errors = [];
-  const warnings = [];
-  const where = (file) => path.relative(process.cwd(), file);
-  const source = readProfileSource(id);
-  const lock = readJSON(lockPath(id), { models: {} });
-  const core = new Set(coreNodes);
-  const overrideNodes = source.overrides?.custom_nodes ?? [];
-  const overrideTypes = new Map(overrideNodes.flatMap((n) => (n.nodes ?? []).map((type) => [type, n.id])));
+// --- Building a profile, stage by stage. Each stage appends to the shared `errors` / `warnings`.
 
+const WORKFLOW_PATTERN = /^[A-Za-z0-9_./*-]+$/;
+const repoPath = (file) => path.relative(process.cwd(), file).split(path.sep).join("/");
+const where = (file) => path.relative(process.cwd(), file);
+
+// Fields the article card and the Pod read straight from the YAML.
+const checkSource = (id, source, errors) => {
   if (source.id !== id) errors.push(`${id}.yaml: id is "${source.id}", expected "${id}"`);
   // profileInputReferences (media:sync, check:media) matches these with a small glob of its own that
   // knows only `*` and `**`; anything else would make it and the Pod disagree on the workflow list.
   for (const pattern of source.workflows ?? []) {
-    if (!/^[A-Za-z0-9_./*-]+$/.test(pattern)) errors.push(`${id}.yaml: workflows pattern ${pattern} may use only * and ** as wildcards`);
+    if (!WORKFLOW_PATTERN.test(pattern)) errors.push(`${id}.yaml: workflows pattern ${pattern} may use only * and ** as wildcards`);
   }
   if (!["latest", "verified"].includes(source.comfyui?.default)) {
     errors.push(`${id}.yaml: comfyui.default must be latest or verified`);
@@ -149,9 +145,11 @@ export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = read
   if (recommended != null && !(Array.isArray(recommended) && recommended.every((gpu) => typeof gpu === "string" && gpu.trim()))) {
     errors.push(`${id}.yaml: gpu.recommended must be a list of GPU names such as "RTX 4090"`);
   }
+};
 
-  // Workflows follow the order the Japanese article introduces them (the Pod lists them, and opens the
-  // `open` ones as tabs, in this order); any the article does not link come last, by name.
+// Workflows follow the order the Japanese article introduces them (the Pod lists them, and opens the
+// `open` ones as tabs, in this order); any the article does not link come last, by name.
+const workflowFiles = (id, source, errors) => {
   const articleFile = path.resolve("src", "content", "ja", `${source.article}.md`);
   if (!fs.existsSync(articleFile)) errors.push(`${id}.yaml: article ${source.article} has no ${where(articleFile)}`);
   const articleText = fs.existsSync(articleFile) ? fs.readFileSync(articleFile, "utf8") : "";
@@ -163,14 +161,16 @@ export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = read
     .sync(source.workflows ?? [], { cwd: process.cwd(), absolute: true })
     .sort((a, b) => articleOrder(a) - articleOrder(b) || a.localeCompare(b));
   if (files.length === 0) errors.push(`${id}.yaml: workflows match no files`);
+  return files;
+};
 
-  // Tabs the Pod opens on a reader's first visit: the files `open` names, or just the article's first
-  // workflow. Opening every workflow buried the one the reader came for under a row of tabs; the rest
-  // wait in the sidebar's Workflows tab. `folders` groups them there (folder name -> patterns); a
-  // workflow goes to the first folder that matches it, so a catch-all can come last.
-  const repoPath = (file) => path.relative(process.cwd(), file).split(path.sep).join("/");
+// Tabs the Pod opens on a reader's first visit: the files `open` names, or just the article's first
+// workflow. Opening every workflow buried the one the reader came for under a row of tabs; the rest
+// wait in the sidebar's Workflows tab. `folders` groups them there (folder name -> patterns); a
+// workflow goes to the first folder that matches it, so a catch-all can come last.
+const workflowPlacement = (id, source, files, errors) => {
   const matching = (patterns, label) => {
-    if (!Array.isArray(patterns) || !patterns.every((p) => typeof p === "string" && /^[A-Za-z0-9_./*-]+$/.test(p))) {
+    if (!Array.isArray(patterns) || !patterns.every((p) => typeof p === "string" && WORKFLOW_PATTERN.test(p))) {
       errors.push(`${id}.yaml: ${label} must be a list of workflow paths, with only * and ** as wildcards`);
       return new Set();
     }
@@ -195,14 +195,17 @@ export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = read
       }
     }
   }
+  return { opened, folderOf };
+};
 
+// What the Pod has to fetch or install: models, sample inputs and custom nodes, each recorded once.
+const createRequirements = (source, errors, warnings) => {
   const models = new Map();
   const customNodes = new Map();
-  const workflows = [];
   const inputs = new Map();
-
   const manifest = readJSON(MEDIA_MANIFEST, {});
   const mediaHost = readJSON(path.resolve("src", "_data", "site.json"), {}).media?.host;
+
   const addInput = (node, origin) => {
     const name = inputFileName(node);
     if (!name || inputs.has(name)) return;
@@ -261,11 +264,15 @@ export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = read
   const addCustomNode = (node) => {
     if (!customNodes.has(node.id)) customNodes.set(node.id, node);
   };
-  for (const node of overrideNodes) {
-    const version = String((node.git ? node.commit : node.version) ?? "latest");
-    addCustomNode(node.git ? { id: node.id, version, source: "git", git: node.git } : { id: node.id, version, source: "registry" });
-  }
 
+  return { models, customNodes, inputs, addInput, addModel, addCustomNode };
+};
+
+// Reads every workflow: its models, sample inputs and custom nodes go into `needs`; returns the
+// workflow entries for the profile.
+const scanWorkflows = ({ files, placement, needs, coreNodes, overrideTypes, siteURL, errors, warnings }) => {
+  const core = new Set(coreNodes);
+  const workflows = [];
   for (const file of files) {
     const origin = where(file);
     if (path.relative(WORKFLOW_ROOT, file).startsWith("..")) {
@@ -281,7 +288,7 @@ export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = read
       const listed = new Set();
       for (const model of props.models ?? []) {
         listed.add(model.name);
-        addModel(model, `${origin} node ${node.id}`);
+        needs.addModel(model, `${origin} node ${node.id}`);
       }
       // A loader that names a model file without saying where to get it would be missed.
       for (const value of Array.isArray(node.widgets_values) ? node.widgets_values : []) {
@@ -290,12 +297,12 @@ export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = read
         }
       }
 
-      addInput(node, origin);
+      needs.addInput(node, origin);
 
       if (props.cnr_id && props.cnr_id !== "comfy-core") {
-        addCustomNode({ id: props.cnr_id, version: "latest", source: "registry" });
+        needs.addCustomNode({ id: props.cnr_id, version: "latest", source: "registry" });
       } else if (!props.cnr_id && props.aux_id) {
-        addCustomNode({ id: props.aux_id, version: "latest", source: "git", git: `https://github.com/${props.aux_id}` });
+        needs.addCustomNode({ id: props.aux_id, version: "latest", source: "git", git: `https://github.com/${props.aux_id}` });
       } else if (
         !props.cnr_id &&
         !core.has(node.type) &&
@@ -311,16 +318,18 @@ export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = read
     const publicPath = `/workflows/${path.relative(WORKFLOW_ROOT, file).split(path.sep).join("/")}`;
     workflows.push({
       name: path.basename(file),
-      ...(folderOf.has(file) ? { folder: folderOf.get(file) } : {}),
-      open: opened.has(file),
+      ...(placement.folderOf.has(file) ? { folder: placement.folderOf.get(file) } : {}),
+      open: placement.opened.has(file),
       path: publicPath,
       url: new URL(publicPath, siteURL).href,
       sha256: crypto.createHash("sha256").update(raw).digest("hex"),
     });
   }
+  return workflows;
+};
 
-  for (const model of source.overrides?.models ?? []) addModel(model, `${id}.yaml`);
-
+// Sizes, hashes and gating come from <id>.lock.json (npm run runpod:refresh). Returns the total size.
+const applyLock = ({ id, models, lock, strictLock, errors, warnings }) => {
   let totalBytes = 0;
   for (const [key, model] of models) {
     const locked = lock.models?.[model.url];
@@ -337,10 +346,42 @@ export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = read
     });
     totalBytes += locked.size_bytes ?? 0;
   }
+  return totalBytes;
+};
+
+// The Pod refuses names that are unsafe as paths (bootstrap/__main__.py check_paths); catch them here
+// first, with the same rule, so a profile never passes the check and then stops every Pod.
+const unsafeNames = (profile) => [
+  ...profile.models.filter((m) => !safePath(m.name) || !safePath(m.directory, true)).map((m) => `model ${m.directory}/${m.name}`),
+  ...profile.workflows.filter((w) => !safePath(w.name) || (w.folder != null && !safePath(w.folder))).map((w) => `workflow ${w.name}`),
+  ...profile.custom_nodes.filter((n) => !safePath(n.id, true)).map((n) => `custom node ${n.id}`),
+];
+
+// Returns { profile, errors, warnings }. `profile` is null when there are errors.
+// `strictLock` (check:runpod) turns a model missing from the lock into an error; the build only warns.
+export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = readJSON(CORE_NODES_PATH, { nodes: [] }).nodes } = {}) => {
+  const errors = [];
+  const warnings = [];
+  const source = readProfileSource(id);
+  const lock = readJSON(lockPath(id), { models: {} });
+  const overrideNodes = source.overrides?.custom_nodes ?? [];
+  const overrideTypes = new Map(overrideNodes.flatMap((n) => (n.nodes ?? []).map((type) => [type, n.id])));
+
+  checkSource(id, source, errors);
+  const files = workflowFiles(id, source, errors);
+  const placement = workflowPlacement(id, source, files, errors);
+  const needs = createRequirements(source, errors, warnings);
+  for (const node of overrideNodes) {
+    const version = String((node.git ? node.commit : node.version) ?? "latest");
+    needs.addCustomNode(node.git ? { id: node.id, version, source: "git", git: node.git } : { id: node.id, version, source: "registry" });
+  }
+  const workflows = scanWorkflows({ files, placement, needs, coreNodes, overrideTypes, siteURL, errors, warnings });
+  for (const model of source.overrides?.models ?? []) needs.addModel(model, `${id}.yaml`);
+  const totalBytes = applyLock({ id, models: needs.models, lock, strictLock, errors, warnings });
 
   if (errors.length) return { profile: null, errors, warnings };
 
-  const sortedModels = [...models.values()].sort((a, b) => `${a.directory}/${a.name}`.localeCompare(`${b.directory}/${b.name}`));
+  const sortedModels = [...needs.models.values()].sort((a, b) => `${a.directory}/${a.name}`.localeCompare(`${b.directory}/${b.name}`));
   const profile = {
     schema_version: SCHEMA_VERSION,
     id,
@@ -364,17 +405,11 @@ export const buildProfile = (id, { siteURL, strictLock = false, coreNodes = read
     requires_hf_token: sortedModels.some((m) => m.requires_hf_token),
     unsafe_format: sortedModels.some((m) => m.unsafe_format),
     workflows,
-    inputs: [...inputs.values()].sort((a, b) => a.name.localeCompare(b.name)),
-    custom_nodes: [...customNodes.values()].sort((a, b) => a.id.localeCompare(b.id)),
+    inputs: [...needs.inputs.values()].sort((a, b) => a.name.localeCompare(b.name)),
+    custom_nodes: [...needs.customNodes.values()].sort((a, b) => a.id.localeCompare(b.id)),
     models: sortedModels,
   };
-  // The Pod refuses names that are unsafe as paths (bootstrap/__main__.py check_paths); catch them here
-  // first, with the same rule, so a profile never passes the check and then stops every Pod.
-  const unsafe = [
-    ...profile.models.filter((m) => !safePath(m.name) || !safePath(m.directory, true)).map((m) => `model ${m.directory}/${m.name}`),
-    ...profile.workflows.filter((w) => !safePath(w.name) || (w.folder != null && !safePath(w.folder))).map((w) => `workflow ${w.name}`),
-    ...profile.custom_nodes.filter((n) => !safePath(n.id, true)).map((n) => `custom node ${n.id}`),
-  ];
+  const unsafe = unsafeNames(profile);
   if (unsafe.length) return { profile: null, errors: [...errors, `${id}: names not safe as paths on the Pod: ${unsafe.join(", ")}`], warnings };
   return { profile, errors, warnings };
 };
