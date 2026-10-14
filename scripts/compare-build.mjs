@@ -25,7 +25,9 @@ const baseRef = process.argv[2] || "main";
 const SHOW_LINES = 3;
 
 // Values that differ between two builds of the same source.
-const VOLATILE = [/"generated_at": "[^"]*"/g];
+// generated_at is the build time; site_commit is the checked-out commit, which differs between
+// the base worktree and the working tree whenever HEAD is not the base ref.
+const VOLATILE = [/"generated_at": "[^"]*"/g, /"site_commit": "[^"]*"/g];
 // Only text is masked; anything else is compared byte for byte.
 const TEXT_EXTENSIONS = new Set([".html", ".json", ".xml", ".txt", ".js", ".mjs", ".css", ".svg", ".md"]);
 

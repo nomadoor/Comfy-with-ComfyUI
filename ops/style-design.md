@@ -5,7 +5,7 @@
 - IA sections remain `begin-with`, `data-utilities`, `ai-capabilities`, `basic-workflows`, `notes`.
 - Design intent: full-bleed black canvas, single-column article, chrome anchored on the left and top.
 - Dark theme is canonical. The light theme reuses the same token keys under `:root[data-theme="light"]`.
-- The values below describe what `src/assets/css/site.css` renders today. When the two disagree, the rendered CSS is the reference and this file is corrected to match (owner decision, 2026-10-14).
+- The values below describe what the site stylesheet (`src/styles/*.css`, served as `/assets/css/site.css`) renders today. When the two disagree, the rendered CSS is the reference and this file is corrected to match (owner decision, 2026-10-14).
 
 ## 1. Color Tokens
 | Token | Dark | Light | Usage |

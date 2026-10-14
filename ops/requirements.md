@@ -104,6 +104,7 @@
 - Keep `viewBox` and rely on `currentColor` for strokes/fills.
 
 ## 9. CSS
+- The stylesheet is written in `src/styles/NN-<concern>.css`; `src/styles/site.css.11ty.js` concatenates the files in file-name order into `/assets/css/site.css`, so the number prefix is the cascade order. Tokens live in `01-base.css`.
 - Use the shared design tokens; prefer BEM-like selectors and `var(--transition-fast)` (100ms cubic-bezier(0.2,0.91,0.85,0.96)).
 - Reference `/ops/style-design.md` for typography, spacing, and elevation rules.
 

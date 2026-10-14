@@ -1,0 +1,543 @@
+/* Step cards (mediaRow, gathered by scripts/lib/media-steps.mjs). Every step is its own floating
+   card (image beside its explanation) with a small gap between them, so the reader only scrolls and
+   still sees where each step ends. The first card of a run carries the kind header. Clicking a step's
+   image opens the lightbox with that step's explanation beside the enlarged image. */
+.media-steps {
+  /* Cards sit one fill step above the page, and their inner parts one step above the card. */
+  --media-steps-surface: color-mix(in srgb, var(--color-text) 6%, var(--color-reader));
+  --media-steps-inset: color-mix(in srgb, var(--color-text) 12%, var(--color-reader));
+  --media-steps-lift: 0 8px 24px rgb(0 0 0 / 0.4);
+  --media-steps-header-size: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin: var(--space-xl) 0;
+}
+
+:root[data-theme="light"] .media-steps {
+  --media-steps-lift: 0 6px 18px rgb(0 0 0 / 0.12);
+}
+
+.media-steps__step {
+  padding: var(--space-lg) var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--media-steps-surface);
+}
+
+.media-steps__step:has(> .media-steps__header) {
+  padding-top: 0;
+}
+
+/* Header: the card's top-left corner is a square holding the kind's icon, then the kind and the
+   heading the card sits under. Only "Deep dive" (optional reading) takes the accent. */
+.media-steps__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-inline-size: 0;
+  block-size: var(--media-steps-header-size);
+  margin: 0 calc(-1 * var(--space-md)) var(--space-md);
+  padding-inline-end: var(--space-md);
+}
+
+.media-steps__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: var(--media-steps-header-size);
+  block-size: var(--media-steps-header-size);
+  border-radius: var(--radius-md) 0 var(--radius-md) 0;
+  background: var(--color-border-strong);
+  color: var(--color-heading);
+}
+
+.media-steps__icon .icon {
+  inline-size: 1.1rem;
+  block-size: 1.1rem;
+}
+
+.media-steps__kicker {
+  flex: none;
+  color: var(--color-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.media-steps--breakdown .media-steps__icon {
+  background: var(--color-highlight);
+  color: #fff;
+}
+
+.media-steps--breakdown .media-steps__kicker {
+  color: var(--color-highlight);
+}
+
+.media-steps__topic {
+  min-inline-size: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+}
+
+/* Step body: image column beside the explanation. */
+.media-steps__body {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+.media-steps__media img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  border-radius: var(--radius-md);
+  /* ComfyUI screenshots are nearly the card's colour; a soft shadow lifts them off it. */
+  box-shadow: var(--media-steps-lift);
+}
+
+/* The image sits centred against its explanation. */
+.media-steps__media {
+  align-self: center;
+}
+
+/* The explanation sits one step below the article body in size and tone. */
+.media-steps__text {
+  min-inline-size: 0;
+  font-size: 0.9375em;
+  --media-steps-text: color-mix(in srgb, var(--color-text) 85%, var(--media-steps-surface));
+  color: var(--media-steps-text);
+}
+
+/* Article paragraphs and lists set their own colour, so the quieter tone is applied to them too. */
+.article-body .media-steps__text :is(p, ul, ol) {
+  color: var(--media-steps-text);
+}
+
+.media-steps__text > :first-child,
+.media-steps__files > :first-child {
+  margin-top: 0;
+}
+
+.media-steps__text > :last-child,
+.media-steps__files > :last-child {
+  margin-bottom: 0;
+}
+
+.media-steps__files {
+  margin-bottom: var(--space-sm);
+}
+
+.article-body .media-steps__text .media-steps__title {
+  color: var(--color-heading);
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.media-steps .workflow-json__row,
+.article-body .media-steps pre,
+.article-body .media-steps :not(pre) > code {
+  background: var(--media-steps-inset);
+}
+
+@media (max-width: 700px) {
+  .media-steps__body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-sm);
+  }
+}
+
+.article-media {
+  margin: var(--space-md) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+/* Output examples ({% outputs %}): a tray with the media step cards' fill and a quiet muted
+   "Outputs" label with an image icon, so results read as their own block under the workflow without
+   competing with it. No borders. The label is not a heading and stays out of the TOC. */
+.outputs {
+  --outputs-header-size: 2.25rem;
+  /* Shrink to the media it holds, so one or two examples do not sit in a full-width tray. */
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  margin: var(--space-xl) 0;
+  padding: 0 var(--space-md) var(--space-md);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-text) 6%, var(--color-reader));
+}
+
+.outputs__header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  block-size: var(--outputs-header-size);
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-muted);
+}
+
+.outputs__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+}
+
+.outputs__icon .icon {
+  inline-size: 1rem;
+  block-size: 1rem;
+}
+
+.outputs__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.outputs > .article-media-row,
+.outputs > p {
+  margin-top: 0;
+}
+
+.outputs > :last-child {
+  margin-bottom: 0;
+}
+
+.article-media-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-xs);
+  overflow: hidden;
+  margin: var(--space-md) 0;
+}
+
+.article-media-row .article-media {
+  margin: 0;
+}
+
+.article-media__frame {
+  width: min(100%,
+      var(--article-media-width, 720px),
+      calc(var(--article-media-aspect, 16 / 9) * min(var(--article-media-height, 320px), 320px)));
+  max-width: 100%;
+  max-height: min(var(--article-media-height, 320px), 320px);
+  min-height: min(var(--article-media-height, 320px), 320px);
+  aspect-ratio: var(--article-media-aspect, 16 / 9);
+  height: auto;
+  border-radius: var(--radius-md);
+  background: var(--color-panel-alt);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Row items are laid out by flexbox alone, so a row has its final size in the first paint. Every item
+   is drawn at the row's shared height (`--article-row-height`, the smallest member's height, set
+   while the page is built), so its width is just that height times its own aspect ratio and all
+   items line up. When the row is too wide, flex-shrink takes the same proportion off every item,
+   which is the uniform scale the old media-row-fit.js measured and applied after the page had
+   already been painted. */
+.article-media-row > .article-media,
+.article-media-row > .article-video {
+  flex: 0 1 auto;
+  min-width: 0;
+  width: calc(var(--article-media-aspect, var(--article-video-aspect, 16 / 9))
+      * var(--article-row-height, 320px));
+}
+
+.article-media-row .article-media__frame,
+.article-media-row .article-video__frame {
+  width: 100%;
+  min-height: 0;
+}
+
+.article-body table {
+  width: 100%;
+  max-width: 100%;
+  margin: var(--space-md) 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  background: var(--color-panel);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  table-layout: auto;
+}
+
+.article-body table th,
+.article-body table td {
+  color: #7f7f7f;
+  text-align: left;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.9rem;
+}
+
+.article-body table thead {
+  background: var(--color-panel-alt);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.75rem;
+}
+
+.article-body table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.article-body table tbody tr+tr td {
+  border-top: 1px solid var(--color-border);
+}
+
+.article-body table:has(.article-media) {
+  table-layout: fixed;
+}
+
+.article-body table:has(.article-media) th,
+.article-body table:has(.article-media) td {
+  padding: var(--space-xs);
+  vertical-align: top;
+}
+
+.article-body table:has(.article-media) .article-media {
+  margin: 0;
+}
+
+.article-body table:has(.article-media) .article-media__frame {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  aspect-ratio: 1 / 1;
+}
+
+.article-body table:has(.article-media) .article-media__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.article-body table td:first-child code,
+.article-body table th:first-child code {
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+
+  .article-body table td:first-child code,
+  .article-body table th:first-child code {
+    white-space: normal;
+    word-break: break-word;
+  }
+}
+
+.article-body pre {
+  margin: var(--space-md) 0;
+  padding: calc(var(--space-md) + 0.4rem) var(--space-md) var(--space-md) var(--space-md);
+  background: var(--color-panel-strong);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  position: relative;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  color: var(--color-code-text, var(--color-text));
+}
+
+/* Dark mode: code and emoji take the same dimming as article images (brightness 0.85), so bright
+   code text, syntax colours and colour emoji do not outshine the body text. Emoji ignore the text
+   colour, so the Markdown renderer wraps them in .emoji. */
+:root:not([data-theme="light"]) .article-body pre code,
+:root:not([data-theme="light"]) .article-body .emoji {
+  filter: brightness(0.85);
+}
+
+:root:not([data-theme="light"]) .article-body :not(pre) > code {
+  color: color-mix(in srgb, var(--color-code-text) 85%, var(--color-reader));
+}
+
+.article-body code {
+  font-family: ui-monospace, "JetBrains Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  background: var(--color-chip-border);
+  padding: 0.1rem var(--space-xs);
+  border-radius: var(--radius-sm);
+  font-size: 0.9em;
+  color: var(--color-code-text, var(--color-text));
+}
+
+.article-body pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Plain `>` is a quotation (prompt examples, remarks, captioned media): no fill and no icon, only an
+   indent and a quieter text colour. */
+.article-body blockquote {
+  margin: 1.15rem 0;
+  padding: 0 0 0 1.25rem;
+  color: color-mix(in srgb, var(--color-text) 80%, var(--color-reader));
+  font-style: normal;
+}
+
+.article-body blockquote > :first-child {
+  margin-top: 0;
+}
+
+.article-body blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+/* Callouts (`> [!NOTE]`, `[!TIP]`, `[!WARNING]`): a filled block with the kind's icon. NOTE is the
+   quiet default, TIP takes a soft accent, and only WARNING stands out. No borders. */
+.article-body blockquote.callout {
+  --callout-icon-size: 1.25rem;
+  --callout-fill: color-mix(in srgb, var(--color-text) 6%, var(--color-reader));
+  --callout-icon-color: var(--color-text-muted);
+  --callout-icon: url("/assets/icons/Info%20Circle%20SVG%20File.svg");
+  display: grid;
+  grid-template-columns: var(--callout-icon-size) minmax(0, 1fr);
+  column-gap: 0.75rem;
+  align-items: start;
+  padding: 0.78rem 0.9rem 0.78rem 1rem;
+  border-radius: 6px;
+  background: var(--callout-fill);
+  color: var(--color-text);
+}
+
+.article-body blockquote.callout::before {
+  content: "";
+  grid-column: 1;
+  width: var(--callout-icon-size);
+  height: var(--callout-icon-size);
+  margin-top: calc((1lh - var(--callout-icon-size)) / 2);
+  background: var(--callout-icon-color);
+  -webkit-mask: var(--callout-icon) no-repeat center / contain;
+  mask: var(--callout-icon) no-repeat center / contain;
+}
+
+.article-body blockquote.callout > * {
+  grid-column: 2;
+}
+
+.article-body blockquote.callout--tip {
+  --callout-fill: color-mix(in srgb, var(--color-highlight) 14%, var(--color-reader));
+  --callout-icon-color: var(--color-highlight);
+  --callout-icon: url("/assets/icons/Bulb%20SVG%20File.svg");
+}
+
+.article-body blockquote.callout--warning {
+  --callout-warning: #c98a32;
+  --callout-fill: color-mix(in srgb, var(--callout-warning) 20%, var(--color-reader));
+  --callout-icon-color: var(--callout-warning);
+  --callout-icon: url("/assets/icons/Alert%20Triangle%20SVG%20File.svg");
+}
+
+.article-video {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.article-video__frame {
+  width: min(100%,
+      var(--article-video-width, 720px),
+      calc(var(--article-video-aspect, 16 / 9) * var(--article-video-height, 360px)));
+  max-width: 100%;
+  aspect-ratio: var(--article-video-aspect, 16 / 9);
+  max-height: var(--article-video-height, 360px);
+  height: auto;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #000;
+  position: relative;
+}
+
+.article-video video,
+.article-video iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: inherit;
+}
+
+.article-video video {
+  object-fit: cover;
+}
+
+.article-video figcaption {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.article-media figcaption {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.article-video--toggleable {
+  position: relative;
+}
+
+.media-toggle {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  background: var(--color-panel);
+  color: var(--color-text);
+  border-radius: var(--radius-pill);
+  padding: 0.25rem 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-fast);
+  border: none;
+}
+
+.article-video--toggleable .article-video__frame:hover .media-toggle,
+.article-video--toggleable .article-video__frame:focus-within .media-toggle,
+.media-toggle:focus-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.media-toggle__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--radius-pill);
+  transition: var(--transition-fast);
+}
+
+.media-toggle__knob {
+  inline-size: 0.7rem;
+  block-size: 0.7rem;
+  border-radius: 999px;
+  background: currentColor;
+  transition: var(--transition-fast);
+}
+
+.media-toggle__text {
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.media-toggle[data-state="player"] {
+  color: var(--color-highlight);
+}
+
+.media-toggle[data-state="player"] .media-toggle__knob {
+  transform: translateX(2px);
+}
+

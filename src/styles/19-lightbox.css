@@ -1,0 +1,464 @@
+body.lightbox-open {
+  overflow: hidden;
+}
+
+/* Lightbox over a dimmed page. Media in a step card opens in a floating window with a notes column
+   (the step's explanation) and zooms inside it; other media floats frameless at the window's size and
+   zooms across the screen. Previous / next sit just outside the window, the close button and the
+   zoom controls in the screen's corners, all in the same place whatever is showing. */
+.lightbox {
+  --lightbox-nav: 3.5rem;
+  /* Gap from the screen edge for the close button, and around the arrows. */
+  --lightbox-nav-inset: var(--space-lg);
+  --lightbox-image-inline-gap: var(--space-md);
+  /* Leave room for the arrows on both sides, plus the same gap again between arrow and window. */
+  --lightbox-win-w: min(76rem, calc(100vw - 2 * (var(--lightbox-nav) + 2 * var(--lightbox-nav-inset))));
+  --lightbox-win-h: min(46rem, calc(100dvh - 4rem));
+  --lightbox-notes-w: 0px;
+  --lightbox-notes-h: 0px;
+  /* The area the media may use inside the window. */
+  --lightbox-view-w: calc(var(--lightbox-win-w) - var(--lightbox-notes-w));
+  --lightbox-view-h: calc(var(--lightbox-win-h) - var(--lightbox-notes-h));
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.lightbox.is-open {
+  display: flex;
+}
+
+.lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 0.72);
+}
+
+.lightbox.has-notes {
+  --lightbox-notes-w: min(24rem, 34%);
+}
+
+.lightbox__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  pointer-events: none;
+}
+
+.lightbox__window {
+  position: relative;
+  display: flex;
+  inline-size: var(--lightbox-win-w);
+  block-size: var(--lightbox-win-h);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-reader);
+  box-shadow: 0 24px 64px rgb(0 0 0 / 0.5);
+  pointer-events: auto;
+}
+
+/* Without notes there is no window: the media floats over the dimmed page at the window's size to
+   start with, and zooming spreads it over the whole screen instead of cropping it to a frame. */
+.lightbox:not(.has-notes) {
+  --lightbox-view-w: var(--lightbox-win-w);
+  --lightbox-view-h: var(--lightbox-win-h);
+}
+
+.lightbox:not(.has-notes) .lightbox__window {
+  position: absolute;
+  inset: 0;
+  inline-size: auto;
+  block-size: auto;
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.lightbox:not(.has-notes) .lightbox__image-area {
+  background: transparent;
+}
+
+.lightbox__notes {
+  flex: none;
+  box-sizing: border-box;
+  inline-size: var(--lightbox-notes-w);
+  padding: var(--space-xl) var(--space-lg) var(--space-lg);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  color: var(--color-text);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.lightbox__notes[hidden] {
+  display: none;
+}
+
+.lightbox__notes > :first-child {
+  margin-top: 0;
+}
+
+.lightbox__notes .media-steps__title {
+  color: var(--color-heading);
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.lightbox__notes ul {
+  padding-left: 1.25rem;
+}
+
+.lightbox__notes code {
+  font-family: ui-monospace, "JetBrains Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  padding: 0.1rem var(--space-xs);
+  border-radius: var(--radius-sm);
+  background: var(--color-chip-border);
+  color: var(--color-code-text, var(--color-text));
+  font-size: 0.9em;
+}
+
+.lightbox__notes pre {
+  overflow-x: auto;
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  background: var(--color-panel-strong);
+}
+
+.lightbox__notes pre code {
+  padding: 0;
+  background: transparent;
+}
+
+.lightbox__notes a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* Help and zoom controls: always the bottom-right corner of the screen, in every mode. */
+.lightbox__controls {
+  position: fixed;
+  right: var(--space-md);
+  bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  z-index: 4;
+  pointer-events: none;
+  color: #f5f5f5;
+}
+
+.lightbox__help {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  text-align: right;
+  pointer-events: none;
+}
+
+.lightbox__help[hidden] {
+  display: none;
+}
+
+.lightbox__image-area {
+  position: relative;
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  background: color-mix(in srgb, var(--color-text) 4%, var(--color-bg));
+}
+
+.lightbox__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+/* The media fits the view area (less a small margin) at its own aspect ratio. */
+.lightbox__image-stack,
+.lightbox__media video {
+  --lightbox-fit-w: calc(var(--lightbox-view-w) - 2 * var(--lightbox-image-inline-gap));
+  --lightbox-fit-h: calc(var(--lightbox-view-h) - 2rem);
+  width: min(var(--lightbox-fit-w), calc(var(--lightbox-fit-h) * var(--lightbox-ratio, 1)));
+  height: min(var(--lightbox-fit-h), calc(var(--lightbox-fit-w) / var(--lightbox-ratio, 1)));
+  max-width: var(--lightbox-fit-w);
+  max-height: var(--lightbox-fit-h);
+  cursor: zoom-in;
+  flex: 0 1 auto;
+  z-index: 1;
+  filter: none;
+}
+
+.lightbox__image-stack {
+  display: grid;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  touch-action: none;
+  user-select: none;
+  transform-origin: center;
+}
+
+.lightbox__image-stack[hidden],
+.lightbox__media video[hidden] {
+  display: none;
+}
+
+.lightbox__image-stack img {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  object-fit: contain;
+  filter: none;
+  pointer-events: auto;
+}
+
+.lightbox__media video {
+  object-fit: contain;
+  background: #000;
+  transform-origin: center;
+}
+
+.lightbox__media video.is-zoomed {
+  cursor: grab;
+  touch-action: none;
+}
+
+.lightbox__media video.is-dragging {
+  cursor: grabbing;
+}
+
+.lightbox__image-stack.is-zoomed {
+  cursor: grab;
+  will-change: transform;
+}
+
+.lightbox__image-stack.is-dragging {
+  cursor: grabbing;
+}
+
+.lightbox__zoom-controls {
+  display: flex;
+  align-items: center;
+  color: #f5f5f5;
+  pointer-events: auto;
+}
+
+.lightbox__zoom-level {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.lightbox__zoom-controls[hidden] {
+  display: none;
+}
+
+.lightbox__zoom-button,
+.lightbox__reset-button,
+.lightbox__close {
+  box-sizing: border-box;
+  min-width: 1.875rem;
+  height: 1.875rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.lightbox__zoom-value {
+  width: 3rem;
+  height: 1.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.68);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+/* Close: the same glass circle as the arrows, a size smaller. */
+.lightbox__close {
+  position: fixed;
+  top: var(--space-md);
+  right: var(--lightbox-nav-inset);
+  z-index: 4;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.08);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06);
+  color: rgb(255 255 255 / 0.82);
+  pointer-events: auto;
+}
+
+.lightbox__zoom-button:not(:disabled):hover,
+.lightbox__zoom-button:not(:disabled):focus-visible,
+.lightbox__reset-button:not(:disabled):hover,
+.lightbox__reset-button:not(:disabled):focus-visible {
+  color: #fff;
+  opacity: 0.72;
+}
+
+.lightbox__close:hover,
+.lightbox__close:focus-visible {
+  background: rgb(255 255 255 / 0.16);
+  color: #fff;
+}
+
+.lightbox__zoom-button:disabled,
+.lightbox__reset-button:disabled {
+  color: rgba(255, 255, 255, 0.34);
+  opacity: 1;
+  cursor: default;
+  background: transparent;
+}
+
+.lightbox__zoom-button .lightbox__icon,
+.lightbox__reset-button .lightbox__icon {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+/* Previous / next: the same place on screen in every mode, so repeated clicks never miss. They sit
+   just outside the window's largest frame rather than at the screen edges. */
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  inline-size: var(--lightbox-nav);
+  block-size: var(--lightbox-nav);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.08);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.06);
+  color: rgb(255 255 255 / 0.82);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background-color 160ms ease, color 160ms ease;
+  pointer-events: auto;
+}
+
+.lightbox__nav--prev {
+  left: calc(50% - var(--lightbox-win-w) / 2 - var(--space-md) - var(--lightbox-nav));
+}
+
+.lightbox__nav--next {
+  right: calc(50% - var(--lightbox-win-w) / 2 - var(--space-md) - var(--lightbox-nav));
+}
+
+.lightbox__nav:hover,
+.lightbox__nav:focus-visible {
+  background: rgb(255 255 255 / 0.16);
+  color: #fff;
+}
+
+.lightbox__nav .lightbox__icon {
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+}
+
+.lightbox__icon {
+  display: inline-flex;
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.lightbox__close .lightbox__icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Narrow screens: the window takes the width, notes go below the media, arrows below the window. */
+@media (max-width: 800px) {
+  .lightbox {
+    --lightbox-win-w: calc(100vw - 2 * var(--space-sm));
+    --lightbox-win-h: calc(100dvh - var(--lightbox-nav) - 4 * var(--space-md) - 2.75rem - 2 * var(--space-md));
+  }
+
+  .lightbox.has-notes {
+    --lightbox-notes-w: 0px;
+    --lightbox-notes-h: calc(var(--lightbox-win-h) * 0.45);
+  }
+
+  /* Keep the window clear of the close button at the top of the screen. */
+  .lightbox__content {
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding-top: calc(2 * var(--space-md) + 2.75rem);
+  }
+
+  .lightbox__window {
+    order: -1;
+    flex-direction: column;
+  }
+
+  .lightbox__nav {
+    top: auto;
+    bottom: var(--space-md);
+    transform: none;
+  }
+
+  .lightbox__nav--prev {
+    left: calc(50% - var(--lightbox-nav) - var(--space-sm));
+  }
+
+  .lightbox__nav--next {
+    right: calc(50% - var(--lightbox-nav) - var(--space-sm));
+  }
+
+  .lightbox.has-notes .lightbox__notes {
+    inline-size: auto;
+    block-size: var(--lightbox-notes-h);
+    padding: var(--space-md);
+  }
+
+  .lightbox__help {
+    display: none;
+  }
+
+  .lightbox__controls {
+    right: var(--space-sm);
+    bottom: calc(var(--lightbox-nav) + 2 * var(--space-md));
+  }
+}
+
+.lightbox__icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+}
+
