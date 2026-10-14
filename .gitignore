@@ -30,3 +30,6 @@ AGENT_STATE.md
 
 # Mock assets (large reference images only)
 src/assets/mock/**
+
+# Python bytecode (runpod tests)
+__pycache__/

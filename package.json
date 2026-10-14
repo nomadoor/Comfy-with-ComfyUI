@@ -28,7 +28,7 @@
     "test:server": "CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=500 COMFY_MEDIA_FIXTURES=1 COMFY_MEDIA_ORIGINALS= eleventy --serve --port=8091 --output=.cache/playwright-site",
     "test:playwright": "playwright test",
     "test:unit": "node --test scripts/lib/*.test.mjs",
-    "test:python": "python3 -I -m unittest discover -s runpod/tests",
+    "test:python": "python3 -I -B -m unittest discover -s runpod/tests",
     "prepare": "node scripts/install-git-hooks.mjs",
     "runpod:refresh": "node runpod/tools/refresh.mjs"
   },
