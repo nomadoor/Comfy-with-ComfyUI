@@ -9,6 +9,17 @@ interface TurnstileVerifyResponse {
   success: boolean;
 }
 
+// Generous limits: far above any real inquiry, low enough that the mail stays a mail.
+const LIMITS = { replyTo: 254, name: 100, body: 10000, environment: 2000 };
+const CATEGORY_LABELS: Record<string, string> = {
+  "comfyui-consulting": "ComfyUIの相談（トラブル／ワークフロー）",
+  "genai-dev": "生成AI / カスタムノード（技術・開発）",
+  "business": "仕事の相談（依頼／見積）",
+  "other": "その他"
+};
+// One address, no spaces or angle brackets: enough to keep a reply-to header meaningful.
+const EMAIL = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/;
+
 function json(data: unknown, status = 200): Response {
   return new Response(JSON.stringify(data), {
     status,
@@ -88,18 +99,21 @@ export const onRequest: PagesFunction<Env> = async ({ request, env }) => {
     const body = String(form.get("body") || "").trim();
     const environment = String(form.get("environment") || "").trim();
 
-    if (!replyTo || !category || !body) {
+    if (
+      !replyTo ||
+      !body ||
+      !Object.hasOwn(CATEGORY_LABELS, category) ||
+      replyTo.length > LIMITS.replyTo ||
+      !EMAIL.test(replyTo) ||
+      name.length > LIMITS.name ||
+      body.length > LIMITS.body ||
+      environment.length > LIMITS.environment
+    ) {
       return json({ ok: false, error: "invalid" }, 400);
     }
 
     const subject = "[Comfy with ComfyUI] 個人相談・仕事依頼";
-    const categoryLabels: Record<string, string> = {
-      "comfyui-consulting": "ComfyUIの相談（トラブル／ワークフロー）",
-      "genai-dev": "生成AI / カスタムノード（技術・開発）",
-      "business": "仕事の相談（依頼／見積）",
-      "other": "その他"
-    };
-    const categoryLabel = categoryLabels[category] || category;
+    const categoryLabel = CATEGORY_LABELS[category];
     const lines = [
       "[Contact] 個人相談・仕事依頼",
       `返信用メールアドレス: ${replyTo}`,
@@ -141,16 +155,14 @@ export const onRequest: PagesFunction<Env> = async ({ request, env }) => {
           resendDetail = "";
         }
       }
-      return json({
-        ok: false,
-        error: "send",
-        status: resendResponse.status,
-        detail: resendDetail || "Resend API request failed."
-      }, 502);
+      // The provider's message stays in the log; the visitor only needs to know sending failed.
+      console.error("[contact] Resend request failed", resendResponse.status, resendDetail);
+      return json({ ok: false, error: "send" }, 502);
     }
 
     return json({ ok: true });
   } catch (error) {
+    console.error("[contact] unexpected error", error);
     return json({ ok: false, error: "server" }, 500);
   }
 };
