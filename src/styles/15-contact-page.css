@@ -28,7 +28,6 @@
   background: transparent;
 }
 
-
 .contact-page__segment-btn:hover,
 .contact-page__segment-btn:focus-visible {
   background: var(--color-panel-alt);
@@ -249,8 +248,6 @@
   white-space: nowrap;
 }
 
-/* SYNCHRONIZED ANIMATION REMOVED BY USER REQUEST */
-
 .contact-page__submit[data-contact-submit],
 .contact-page__submit[data-contact-confirm-back],
 .contact-page__submit[data-contact-confirm-send],
@@ -353,7 +350,6 @@
   color: var(--color-text-muted);
 }
 
-
 .contact-page__submit:hover,
 .contact-page__submit:focus-visible {
   background: var(--color-panel-alt);
@@ -364,8 +360,6 @@
 .contact-page__status.is-error {
   color: var(--color-danger);
 }
-
-
 
 .contact-page__actions {
   display: flex;

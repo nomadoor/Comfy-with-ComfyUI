@@ -35,7 +35,22 @@ body.nav-open .nav-backdrop {
   pointer-events: auto;
 }
 
+/* Up to 900px: what the old narrow-screen block did that the 1100px blocks (in 04-sidebar.css and
+   below) do not already do. body scrolls with overflow auto here (the base rule clips horizontal
+   overflow), the header becomes one column, and the reader surface stops being a positioned box. */
+@media (max-width: 900px) {
+  body {
+    overflow: auto;
+  }
 
+  .site-header__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .app-shell__content {
+    position: static;
+  }
+}
 
 @media (max-width: 1100px) {
   :root {
@@ -144,9 +159,9 @@ body.nav-open .nav-backdrop {
     pointer-events: none;
   }
 
-  /* User Strategy: Fixed Sidebar Overlay */
+  /* The sidebar becomes a fixed overlay that slides in over the page. */
   .app-shell__sidebar {
-    position: fixed !important;
+    position: fixed;
     top: var(--header-height);
     left: 0;
     bottom: auto;

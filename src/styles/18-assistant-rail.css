@@ -177,8 +177,6 @@
   padding: 0;
 }
 
-
-
 .assistant-rail__panel-button {
   width: 100%;
   border: none;
@@ -564,50 +562,5 @@
 
 .assistant-rail__submitted-value {
   color: var(--color-text);
-}
-
-@media (max-width: 900px) {
-  body {
-    overflow: auto;
-  }
-
-  .site-header__inner {
-    grid-template-columns: 1fr;
-    height: auto;
-    padding: var(--space-md);
-    gap: var(--space-sm);
-  }
-
-  .app-shell {
-    grid-template-columns: 1fr;
-    padding: var(--space-lg) var(--space-md);
-    height: auto;
-  }
-
-  .app-shell__sidebar,
-  .app-shell__toc {
-    height: auto;
-    overflow: visible;
-    position: static;
-    padding: 0;
-  }
-
-  .app-shell__content {
-    height: auto;
-    overflow: visible;
-    position: static;
-  }
-
-  .app-shell__content-scroll {
-    height: auto;
-    overflow: visible;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
 }
 

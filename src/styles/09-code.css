@@ -38,8 +38,6 @@
   color: var(--color-highlight);
 }
 
-
-
 .token.comment,
 .token.prolog,
 .token.doctype,
@@ -103,16 +101,4 @@
 .token.italic {
   font-style: italic;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 

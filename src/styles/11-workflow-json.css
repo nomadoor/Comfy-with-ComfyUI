@@ -29,7 +29,7 @@
   color: var(--color-text);
 }
 
-/* Rebuilt Workflow Picker Styles */
+/* Workflow picker: a filename dropdown in place of the filename, with the same actions. */
 .workflow-json__row--picker {
   padding: 0.2rem var(--workflow-row-padding);
   flex-wrap: nowrap;
