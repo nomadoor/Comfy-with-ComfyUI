@@ -21,8 +21,8 @@ const MODEL_FILE = /\.(safetensors|gguf|ckpt|pt|pth|bin|sft|onnx)$/i;
 const WORKFLOW_REF = /(?<="!?|\(|\((?:\.\.\/)*\.\.)\/workflows\/[^\s"')]+?\.json(?=[")])/g;
 const SHORTCODE = /\{%\s*workflow\s+"(\/workflows\/[^"]+\.json)"([^%]*)%\}/g;
 
-const frontmatter = (text) => {
-  const match = text.match(/^---\n([\s\S]*?)\n---\n/);
+export const frontmatter = (text) => {
+  const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
   if (!match) return { data: {}, body: text };
   try {
     return { data: YAML.parse(match[1]) ?? {}, body: text.slice(match[0].length) };

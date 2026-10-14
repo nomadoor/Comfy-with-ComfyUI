@@ -26,8 +26,9 @@ const initSearch = () => {
     };
     const i18n = I18N[lang] || I18N.en;
     let index = [];
-    let loaded = false;
-    let loading = false;
+    // One shared request: a second search while the index is still loading waits for it
+    // instead of searching an empty index. A failed load clears it so the next search retries.
+    let indexRequest = null;
     let debounceTimer = null;
     let lastQuery = "";
     let activeIndex = -1;
@@ -229,7 +230,9 @@ const initSearch = () => {
         const term = historyTarget.dataset.historyTerm || "";
         input.value = term;
         lastQuery = term;
-        loadIndex().then(() => performSearch(term));
+        loadIndex().then(() => {
+          if (lastQuery === term) performSearch(term);
+        });
         return;
       }
 
@@ -243,20 +246,18 @@ const initSearch = () => {
       resetSearchUi();
     });
 
-    const loadIndex = async () => {
-      if (loaded || loading) return;
-      loading = true;
-      try {
-        const response = await fetch(`/search/index-${lang}.json`);
-        if (response.ok) {
+    const loadIndex = () => {
+      indexRequest ??= (async () => {
+        try {
+          const response = await fetch(`/search/index-${lang}.json`);
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
           index = await response.json();
-          loaded = true;
+        } catch (error) {
+          console.error("Failed to load search index", error);
+          indexRequest = null;
         }
-      } catch (error) {
-        console.error("Failed to load search index", error);
-      } finally {
-        loading = false;
-      }
+      })();
+      return indexRequest;
     };
 
     const computeScore = (item, normalized) => {
@@ -338,7 +339,8 @@ const initSearch = () => {
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(async () => {
           await loadIndex();
-          performSearch(value);
+          // The input may have changed while the index loaded; only the latest query renders.
+          if (lastQuery === value) performSearch(value);
         }, 150);
       });
 

@@ -1,4 +1,5 @@
 import { pushEntry } from "./history-entries.js";
+import ensureHeadingIds from "./heading-ids.js";
 
 let tocState = {
   scrollHandler: null,
@@ -74,28 +75,9 @@ const initToc = () => {
   }
 
   function getHeadings() {
-    // Only select direct h2, h3 in the article to avoid accidentally picking up unwanted headers
-    // :scope is widely supported in modern browsers.
-    const heads = Array.from(article.querySelectorAll(":scope > h2, :scope > h3"));
-    const counts = new Map();
-
-    heads.forEach((h) => {
-      const baseText = (h.textContent || h.id || "section").trim().toLowerCase();
-      const baseSlug = (h.id || baseText)
-        .replace(/[^\p{L}\p{N}]+/gu, "-")
-        .replace(/^-+|-+$/g, "") || "section";
-
-      const seen = counts.get(baseSlug) || 0;
-      const next = seen + 1;
-      counts.set(baseSlug, next);
-
-      const finalId = seen === 0 ? baseSlug : `${baseSlug}-${next}`;
-      if (h.id !== finalId) {
-        h.id = finalId;
-      }
-    });
-
-    return heads;
+    ensureHeadingIds(article);
+    // The TOC lists only direct h2, h3 of the article, not headings nested in components.
+    return Array.from(article.querySelectorAll(":scope > h2, :scope > h3"));
   }
 
   function buildToc() {

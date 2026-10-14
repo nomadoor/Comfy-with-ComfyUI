@@ -98,7 +98,7 @@ layout: base.njk
   </p>
 {% endif %}
 {% if navPrevNext and (navPrevNext.prev or navPrevNext.next) %}
-  <section class="article-pagination" aria-label="{% if currentLang == 'ja' %}ページ移動{% else %}Page navigation{% endif %}">
+  <section class="article-pagination" aria-label="{% if currentLang == 'ja' %}ページ移動{% elif currentLang == 'zh' %}页面导航{% else %}Page navigation{% endif %}">
     <div class="article-pagination__inner">
       {% if navPrevNext.prev %}
         <a class="article-pagination__link article-pagination__link--prev" href="/{{ currentLang }}/{{ navSectionKey }}/{{ navPrevNext.prev.id }}/">

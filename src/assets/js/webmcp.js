@@ -79,12 +79,7 @@ const registerTool = (modelContext, definition, options) => {
   }
 };
 
-export default function initWebMcp() {
-  const modelContext = navigator.modelContext;
-  if (!modelContext || typeof modelContext.registerTool !== "function") {
-    return;
-  }
-
+function registerTools(modelContext) {
   const controller = new AbortController();
   const options = { signal: controller.signal };
 
@@ -133,5 +128,20 @@ export default function initWebMcp() {
     options
   );
 
-  window.addEventListener("pagehide", () => controller.abort(), { once: true });
+  return controller;
+}
+
+export default function initWebMcp() {
+  const modelContext = navigator.modelContext;
+  if (!modelContext || typeof modelContext.registerTool !== "function") {
+    return;
+  }
+
+  // Tools are unregistered when the page is hidden and registered again if it comes back
+  // from the back/forward cache, which restores the page without running scripts again.
+  let controller = registerTools(modelContext);
+  window.addEventListener("pagehide", () => controller?.abort());
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) controller = registerTools(modelContext);
+  });
 }

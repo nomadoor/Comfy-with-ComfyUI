@@ -7,13 +7,15 @@ function stripHtml(value = "") {
     .trim();
 }
 
+// Drafts never reach collections (the "drafts" preprocessor drops them), so only
+// opt-outs remain: searchExclude, and pages that ask search engines not to index
+// them (404, retired About, coming-soon stubs, placeholders).
 function isExcludedFromSearch(entry) {
   const data = entry?.data || {};
-  if (data.draft || data.searchExclude) return true;
-  return false;
+  return Boolean(data.searchExclude) || /\bnoindex\b/.test(data.robots || "");
 }
 
-module.exports = class SearchIndex {
+export default class SearchIndex {
   data() {
     return {
       pagination: {
@@ -47,4 +49,4 @@ module.exports = class SearchIndex {
 
     return `${JSON.stringify(items, null, 2)}\n`;
   }
-};
+}

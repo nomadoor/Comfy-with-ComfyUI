@@ -68,7 +68,11 @@ html {
   --rail-height: calc(max(100vh, 100dvh) - var(--header-height) - var(--shell-padding-block-start) - var(--shell-padding-block-end));
 
   --font-base: "Plus Jakarta Sans", "Zen Kaku Gothic New", "Hiragino Sans", system-ui, sans-serif;
-  --transition-fast: all 100ms cubic-bezier(0.2, 0.91, 0.85, 0.96) 0s;
+  --duration-fast: 100ms;
+  --ease-standard: cubic-bezier(0.2, 0.91, 0.85, 0.96);
+  /* Shorthand for `transition: var(--transition-fast)` only. To animate named properties,
+     use --duration-fast and --ease-standard: this value already contains `all`. */
+  --transition-fast: all var(--duration-fast) var(--ease-standard) 0s;
 }
 
 :root[data-theme="light"] {
@@ -1639,11 +1643,12 @@ h1 {
   text-underline-offset: 0.22em;
   text-decoration-skip-ink: auto;
   font-weight: 500;
-  transition: text-decoration-thickness var(--transition-fast), color var(--transition-fast);
+  transition:
+    text-decoration-thickness var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard);
 }
 
-.article-body a:hover,
-.article-body ul li .article-body a:focus-visible {
+.article-body a:hover {
   text-decoration-thickness: 0.14em;
 }
 
@@ -3923,7 +3928,7 @@ h1 {
   line-height: 1.5;
   text-align: left;
   cursor: pointer;
-  transition: color var(--transition-fast);
+  transition: color var(--duration-fast) var(--ease-standard);
 }
 
 .contact-page__category-trigger:hover,
@@ -5682,7 +5687,7 @@ body.nav-open .nav-backdrop {
   }
 }
 
-/* Ensure rail top padding is cleared on very short viewports even in mobile layout */
+/* Compact sidebar: short viewports of any width (ops/requirements.md §2), plus small mobile screens */
 @media (max-width: 1100px) and (max-height: 720px),
 (hover: none) and (pointer: coarse) and (max-height: 900px),
 (max-height: 950px) {
