@@ -11,6 +11,9 @@ import shutil
 import subprocess
 import threading
 import time
+import urllib.error
+import urllib.parse
+import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -88,6 +91,72 @@ def _download_xet(model, tmp_dir, token, on_bytes):
     return Path(path)
 
 
+REDIRECTS = (301, 302, 303, 307, 308)
+
+
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, *args, **kwargs):
+        return None  # surface the redirect as an HTTPError so its Location can be read
+
+
+def _resolve_download_url(url, token, timeout=60):
+    """Where aria2 should download from, and whether it still needs the token.
+
+    aria2 repeats a --header on every redirect it follows, so a token given to it would also reach
+    the storage host the file is served from (Civitai redirects to third-party object storage).
+    Instead the token is used once, here, without following the redirect; aria2 then fetches the
+    signed URL without credentials. A server that answers 200 itself is downloaded by
+    _download_direct instead, which never follows a redirect with the token.
+    Resolved on every attempt, so a signed URL that expired between retries is replaced.
+    """
+    if not token:
+        return url, None
+    request = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}", "User-Agent": "comfy-with-comfyui-runpod"})
+    try:
+        response = urllib.request.build_opener(_NoRedirect).open(request, timeout=timeout)
+    except urllib.error.HTTPError as error:
+        location = error.headers.get("Location") if error.code in REDIRECTS else None
+        if location:
+            return urllib.parse.urljoin(url, location), None
+        if error.code in (401, 403):
+            raise AuthError(str(error.code)) from None
+        raise RuntimeError(f"download URL returned HTTP {error.code}") from None
+    response.close()
+    return url, token
+
+
+def _download_direct(url, token, path, on_bytes, timeout=60):
+    """One stream with the token, for a server that sends the file itself instead of redirecting.
+
+    aria2 cannot be given the token here: it would repeat it on any redirect it follows. A redirect
+    is an error instead; the next attempt resolves again and normally gets a signed URL for aria2.
+    A partial file from an earlier attempt is continued with a Range request.
+    """
+    path = Path(path)
+    have = path.stat().st_size if path.exists() else 0
+    headers = {"Authorization": f"Bearer {token}", "User-Agent": "comfy-with-comfyui-runpod"}
+    if have:
+        headers["Range"] = f"bytes={have}-"
+    request = urllib.request.Request(url, headers=headers)
+    try:
+        response = urllib.request.build_opener(_NoRedirect).open(request, timeout=timeout)
+    except urllib.error.HTTPError as error:
+        if error.code in (401, 403):
+            raise AuthError(str(error.code)) from None
+        if error.code == 416 and have:
+            return path  # nothing left to fetch; the sha256 check decides whether it is whole
+        raise RuntimeError(f"direct download returned HTTP {error.code}") from None
+    with response:
+        resume = have and response.status == 206
+        done = have if resume else 0
+        with open(path, "ab" if resume else "wb") as out:
+            while chunk := response.read(1 << 20):
+                out.write(chunk)
+                done += len(chunk)
+                on_bytes(done)
+    return path
+
+
 def _download_aria2(model, tmp_dir, token, on_bytes):
     """One file split into 16 ranges fetched at once; progress comes from aria2's summary lines.
 
@@ -95,15 +164,16 @@ def _download_aria2(model, tmp_dir, token, on_bytes):
     fetched instead of starting over (a 9 GB file failing at 90% used to restart from zero). The
     control file is saved every 5 s, so even a killed aria2 loses only the last few seconds.
     """
+    url, direct_token = _resolve_download_url(model["url"], token)
+    if direct_token:
+        return _download_direct(url, direct_token, Path(tmp_dir) / model["name"], on_bytes)
     args = [
         "aria2c", "-x", "16", "-s", "16", "-k", "16M", "--file-allocation=none",
         "--summary-interval=1", "--show-console-readout=false", "--console-log-level=warn",
         "--download-result=hide", "--auto-file-renaming=false", "--allow-overwrite=true", "--continue=true",
         "--auto-save-interval=5",
-        "-d", str(tmp_dir), "-o", model["name"], model["url"],
+        "-d", str(tmp_dir), "-o", model["name"], url,
     ]
-    if token:
-        args[1:1] = ["--header", f"Authorization: Bearer {token}"]
     process = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)
     for line in process.stdout:
         match = ARIA2_PROGRESS.search(line)
@@ -113,7 +183,6 @@ def _download_aria2(model, tmp_dir, token, on_bytes):
     if code == 24:  # aria2: HTTP authorization failed (Hugging Face answers 401 for gated files)
         raise AuthError("401")
     if code != 0:
-        # Do not echo the command line: it may carry the token header.
         reason = {3: "file not found", 19: "name resolution failed", 22: "unexpected HTTP response"}.get(code, "")
         raise RuntimeError(f"aria2c exited with {code}" + (f" ({reason})" if reason else ""))
     return Path(tmp_dir) / model["name"]
