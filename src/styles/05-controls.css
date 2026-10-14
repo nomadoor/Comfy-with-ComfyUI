@@ -7,7 +7,6 @@
   font-size: 0.75rem;
 }
 
-
 .theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -51,8 +50,6 @@
 .theme-toggle__icon+.theme-toggle__icon {
   margin-left: var(--space-2xs);
 }
-
-
 
 .chip:hover {
   color: var(--color-text);
@@ -199,9 +196,6 @@
   pointer-events: none;
   z-index: -1;
   opacity: 0;
-}
-
-.lang-toggle::before {
   background:
     radial-gradient(130% 120% at 0% 50%, var(--color-highlight) 0%, transparent 72%),
     radial-gradient(130% 120% at 100% 50%, var(--color-link) 0%, transparent 72%),
@@ -251,7 +245,6 @@
     background-position: 100% 50%;
   }
 }
-
 
 .icon-button {
   width: 2.25rem;

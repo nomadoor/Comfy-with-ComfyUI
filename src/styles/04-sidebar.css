@@ -36,9 +36,8 @@
   min-height: 0;
 }
 
-
-
 .sidebar__nav-wrapper {
+  position: relative;
   flex: 1;
   overflow-y: auto;
   padding: var(--space-sm) 0;
@@ -50,9 +49,14 @@
   }
 }
 
+/* Section tabs stay visible while the sidebar scrolls. */
 .sidebar__section-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 2;
   display: flex;
   gap: var(--space-2xs);
+  background: transparent;
 }
 
 .sidebar__section-tab {
@@ -101,7 +105,6 @@
 }
 
 @supports selector(:has(*)) {
-
   /* 背景色：ボタンのみ */
   .sidebar:has(.sidebar__section-tab[data-section-tab="begin-with"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="begin-with"]:not(.is-active),
   .sidebar:has(.sidebar__section-tab[data-section-tab="data-utilities"]:is(:hover, :focus-visible)) .sidebar__section-btn[data-section-key="data-utilities"]:not(.is-active),
@@ -129,7 +132,6 @@
     color: var(--color-text);
   }
 }
-
 
 .rail {
   height: var(--rail-height);
@@ -240,9 +242,8 @@
 }
 
 .sidebar__section-btn.is-active .sidebar__section-icon {
-  color: #9357A3;
+  color: var(--color-highlight);
 }
-
 
 .sidebar__section-btn:not(.is-active):hover .sidebar__section-icon,
 .sidebar__section-btn:not(.is-active):focus-visible .sidebar__section-icon {
@@ -293,7 +294,7 @@
   position: relative;
   font-size: 0.85rem;
   font-weight: 600;
-  transition: all 100ms cubic-bezier(0.2, 0.91, 0.85, 0.96) 0s;
+  transition: var(--transition-fast);
 }
 
 .sidebar__nav-panel>.nav-list>.nav-list__item>.nav-list__link {
@@ -471,15 +472,8 @@
 }
 
 /* Height-responsive (three-step) */
+/* Short screens: group labels sit tight against the row above. */
 @media (max-height: 1080px) {
-  .sidebar__sections {
-    gap: var(--space-2xs);
-  }
-
-  .sidebar__section-btn {
-    padding: var(--space-xs) 0.9rem;
-  }
-
   .nav-list__no-link {
     margin-top: 0;
   }
@@ -494,18 +488,6 @@
   .sidebar__sections {
     gap: var(--space-2xs);
   }
-}
-
-/* Keep section tabs visible while scrolling the sidebar */
-.sidebar__section-tabs {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  background: transparent;
-}
-
-.sidebar__nav-wrapper {
-  position: relative;
 }
 
 .sidebar__footer {
@@ -525,12 +507,6 @@
     display: none;
   }
 }
-
-
-
-
-
-
 
 .sidebar__footer-icon {
   display: inline-flex;

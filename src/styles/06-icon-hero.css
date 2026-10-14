@@ -33,10 +33,6 @@
   position: absolute;
   inset: 0;
   background: lab(0 0 0 / 0.3);
-
-  &[data-theme="light"] {
-    background: lab(100 0 0 / 0.3);
-  }
 }
 
 .hero__content {
@@ -56,5 +52,4 @@
   margin: 0;
   color: var(--color-hero-title, var(--color-heading));
 }
-
 

@@ -38,7 +38,6 @@ html {
   --token-regex: #ffc8dd;
   --color-section-strong: #DEDEDE;
   --color-tav-strong: #2f2f2f;
-  --color-sidebar-hover: #373737;
 
   --space-2xs: 0.25rem;
   --space-xs: 0.5rem;
@@ -50,7 +49,6 @@ html {
 
   --radius-md: 0.5rem;
   --radius-sm: 0.25rem;
-  --radius-lg: var(--radius-md);
   --radius-pill: 9999px;
 
   --header-height: 72px;
@@ -103,11 +101,20 @@ html {
   --color-panel-strong: #d9d9d9;
   --color-section-strong: #2f2f2f;
   --color-tav-strong: #f1f1f1;
-  --color-sidebar-hover: var(--color-tav-strong);
 }
 
 * {
   box-sizing: border-box;
+}
+
+/* Reduced motion: no animation or transition anywhere on the site. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 body {
