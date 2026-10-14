@@ -3,13 +3,14 @@ to the host a redirect points at. A local HTTP server stands in for Hugging Face
 
 import http.server
 import sys
+import tempfile
 import threading
 import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "image"))
 
-from bootstrap.models import AuthError, _resolve_download_url  # noqa: E402
+from bootstrap.models import AuthError, _download_direct, _resolve_download_url  # noqa: E402
 
 SEEN = []
 
@@ -28,10 +29,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
             self.send_response(404)
             self.end_headers()
         else:
-            self.send_response(200)
-            self.send_header("Content-Length", "4")
+            body = b"0123456789"
+            start = int(self.headers["Range"].split("=")[1].rstrip("-")) if self.headers.get("Range") else 0
+            self.send_response(206 if start else 200)
+            self.send_header("Content-Length", str(len(body) - start))
             self.end_headers()
-            self.wfile.write(b"data")
+            self.wfile.write(body[start:])
 
     def log_message(self, *args):
         pass
@@ -70,6 +73,27 @@ class ResolveDownloadUrlTest(unittest.TestCase):
         with self.assertRaises(RuntimeError) as caught:
             _resolve_download_url(f"{self.base}/missing", "secret")
         self.assertNotIn("secret", str(caught.exception))
+
+    def test_direct_download_sends_the_token_and_writes_the_file(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            seen = []
+            path = _download_direct(f"{self.base}/plain", "secret", Path(tmp) / "f", seen.append)
+            self.assertEqual(path.read_bytes(), b"0123456789")
+            self.assertEqual(seen[-1], 10)
+            self.assertEqual(SEEN, [("/plain", "Bearer secret")])
+
+    def test_direct_download_resumes_a_partial_file(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "f"
+            path.write_bytes(b"0123")
+            _download_direct(f"{self.base}/plain", "secret", path, lambda done: None)
+            self.assertEqual(path.read_bytes(), b"0123456789")
+
+    def test_direct_download_never_follows_a_redirect_with_the_token(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with self.assertRaises(RuntimeError):
+                _download_direct(f"{self.base}/redirect", "secret", Path(tmp) / "f", lambda done: None)
+        self.assertEqual(SEEN, [("/redirect", "Bearer secret")])
 
     def test_without_token_nothing_is_requested(self):
         self.assertEqual(_resolve_download_url(f"{self.base}/redirect", None), (f"{self.base}/redirect", None))
