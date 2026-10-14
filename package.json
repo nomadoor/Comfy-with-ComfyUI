@@ -19,6 +19,7 @@
     "check:runpod": "node runpod/tools/check.mjs",
     "check:media": "node scripts/check-media.mjs",
     "check:build": "node scripts/check-build-output.mjs",
+    "compare:build": "node scripts/compare-build.mjs",
     "views:update": "node scripts/update-page-views.mjs",
     "views:update:dry": "node scripts/update-page-views.mjs --dry-run",
     "media:sync": "node scripts/media-sync.mjs",

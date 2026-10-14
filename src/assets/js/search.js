@@ -368,8 +368,12 @@ const initSearch = () => {
 
   if (!docClickAttached) {
     document.addEventListener("click", (event) => {
+      // The path is fixed at dispatch time. `contains(event.target)` is not: a history item
+      // re-renders the results synchronously when the index is loaded, which detaches the
+      // clicked button before this listener runs and made the click look like an outside one.
+      const path = event.composedPath();
       containers.forEach((container) => {
-        if (!container.contains(event.target)) {
+        if (!path.includes(container)) {
           const results = container.querySelector("[data-search-results]");
           if (results) {
             results.hidden = true;
