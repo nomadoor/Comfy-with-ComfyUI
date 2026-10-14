@@ -11,7 +11,7 @@
 - Exceptions: `about`, `news`, and `contact` are standalone pages and use `/<lang>/<slug>/` without `section`. The language home (slug `home`) is served at `/<lang>/`.
 - News rows announce newly published pages by default. Do not add rows for updates to existing pages unless the owner explicitly requests an exception.
 - The former `faq` section is replaced by `notes`. Old `/<lang>/faq/<slug>/` URLs must not keep duplicate content; redirect them with Cloudflare Pages `_redirects` to `/<lang>/notes/<slug>/`.
-- Markdown lives under `src/content/<lang>/`; workflows sit in `src/workflows/<slug>/*.json`; shared data under `_data`.
+- Markdown lives under `src/content/<lang>/`; workflows sit in `src/workflows/<section>/<slug>/*.json`; shared data under `_data`.
 - Front matter requires `slug`, `title`, `created`, and `updated`. `created` / `updated` use `YYYY-MM-DD`; when exact authorship dates are unknown, use the best available Git history date and adjust later if the owner provides a better date. `tags` は任意（最大5件）。ただし **`ai-capabilities` セクションは原則 tags なし**。例外的に付ける場合はオーナー指示と `/ops` 合意を先に取る。`draft: true` で非公開化。
 
 ## 2. Navigation & Tags
@@ -95,10 +95,10 @@
 
 ## 7. JavaScript
 - All scripts are ESM modules in `src/assets/js/`. No CommonJS.
-- Use import maps for shared helpers; no bundlers.
+- `base.njk` loads one entry, `app.js`, from a deployment-versioned directory; shared helpers are relative ESM imports from there. No import maps, no bundlers.
 
 ## 8. Icons / SVG
-- Store SVG sources in `src/assets/icons` with kebab-case filenames.
+- Store SVG sources in `src/assets/icons`. New files use kebab-case filenames.
 - Keep `viewBox` and rely on `currentColor` for strokes/fills.
 
 ## 9. CSS
@@ -106,7 +106,7 @@
 - Reference `/ops/style-design.md` for typography, spacing, and elevation rules.
 
 ## 10. Accessibility & Performance
-- Provide descriptive `alt` text (describe actions shown in videos too).
+- Article media in Markdown is written with an empty alt (`![](…)`): the surrounding text explains each image, and this is the authoring template used across the site. Images that carry meaning in the UI itself need `alt` or an `aria-label`.
 - Ensure keyboard support: focus states, Esc handlers, Enter/Space activations.
 - Append the deployment version to the main CSS URL, and serve the complete JavaScript module graph from a deployment-versioned directory so newly deployed HTML never reuses older CSS or child modules.
 - Serve `/assets/css/*` and `/assets/js/*` with `Cache-Control: public, max-age=0, must-revalidate`.
@@ -122,13 +122,11 @@
 - Pull request titles, bodies and comments link only within this repository. No other repository's issues or pull requests, in any form, and no external URLs — a cross-repository reference posts a backlink on the target's timeline and cannot be withdrawn. Upstream references go in articles, ADRs or code comments instead.
 - No AI or Claude attribution in commits or pull requests.
 
-## 12. Deliverables
-- Required folders: `.eleventy.js`, `layouts/`, `includes/`, `assets/js/`, `_data/`, `src/content/**`.
-- Tests live in `tests/` (Playwright). Update or add tests for behavior changes.
+## 12. Tests
+- Browser tests live in `tests/` (Playwright); Node unit tests live beside their module as `*.test.mjs` (`npm run test:unit`). Update or add tests for behavior changes.
 
 ## 13. Change Control
-- IA/nav, hero, sidebar, or major UX shifts require an ADR before merge plus reviewer approval.
-- Weekly rollups summarize ADR decisions.
+- IA/nav, hero, sidebar, or major UX shifts require an ADR and owner approval before merge.
 
 ## 14. Right-Rail Tips Widget
 - States remain `collapsed`, `hover-expanded`, `json-help`, `form-correction`, `form-request`, `submitted`. `data-view` controls which window renders while `data-expanded` only drives the avatar animation.

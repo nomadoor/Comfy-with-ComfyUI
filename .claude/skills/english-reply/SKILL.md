@@ -26,4 +26,4 @@ One note: ...
 
 ## Pipeline
 
-This is also the voice for pull request titles and bodies — see [publish-pr](../publish-pr/SKILL.md), which sets what a PR body may and may not contain.
+Pull requests in this repository are written in Japanese, not in this voice — see [publish-pr](../publish-pr/SKILL.md). Use this skill for replies on other people's repositories and external collaboration.

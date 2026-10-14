@@ -3,51 +3,57 @@
 ## 0. Identity
 - JA site title: **「Comfyに使うComfyUI」** / EN: **“Comfy with ComfyUI”**. Strings live in `site.json`.
 - IA sections remain `begin-with`, `data-utilities`, `ai-capabilities`, `basic-workflows`, `notes`.
-- Design intent follows `src/assets/mock/ホームデザイン_v01.png`: full-bleed black canvas, single-column article, chrome anchored on the left and top.
-- Dark theme is canonical. Light mode will reuse the same token keys with different values.
+- Design intent: full-bleed black canvas, single-column article, chrome anchored on the left and top.
+- Dark theme is canonical. The light theme reuses the same token keys under `:root[data-theme="light"]`.
+- The values below describe what `src/assets/css/site.css` renders today. When the two disagree, the rendered CSS is the reference and this file is corrected to match (owner decision, 2026-10-14).
 
 ## 1. Color Tokens
-| Token | Value | Usage |
-| --- | --- | --- |
-| `--color-bg` | `#040404` | Body background. |
-| `--color-panel` | `#111111` | Sidebar and cards. |
-| `--color-reader` | `#101010` | Central reading surface behind `app-shell__content`. |
-| `--color-sidebar-surface` | `#101010` | Sidebar and TOC column surface, matching the central reader surface. |
-| ``--color-panel-alt`` | `#1a1a1a` | Active nav rows, hero fallback, search input. |
-| `--color-border` | `#292929` | Default 1px borders. |
-| `--color-border-strong` | `#3a3a3a` | Active nav highlight, chip border. |
-| `--color-text` | `#f1f1f1` | Primary text. |
-| `--color-text-muted` | `#a3a3a3` | Supporting text, controls. |
-| `--color-highlight` | `#9b8cff` | Accent bar (active nav/tab) and links. |
-| `--color-chip-bg` | `#1d1d1d` | Tag chips, language toggles. |
-| `--color-chip-border` | `#3d3d3d` | Chip outline. |
-| `--color-hero-title` | Dark `#dfdfdf` / Light `#f1f1f1` (=`--color-bg`) | Hero タイトル専用前景色。背景画像の明度に依らず可読性を確保する。 |
-| `--color-code-text` | Dark `#e9e9e9` / Light `#1f2430` | コードブロック／インラインコードのデフォルト文字色。 |
-| `--token-comment` | Dark `#6c7394` / Light `#6e7781` | コメント、DOCTYPE。背景に対して WCAG AA 目安を満たす。 |
-| `--token-punctuation` | Dark `#c3c8ff` / Light `#5b6476` | 記号・句読点。 |
-| `--token-property` | Dark `#ffb86c` / Light `#c8551d` | プロパティ名・タグ・定数。 |
-| `--token-number` | Dark `#ff6cf6` / Light `#7b2cbf` | 数値・boolean。 |
-| `--token-string` | Dark `#8bf8d8` / Light `#1f7a3e` | 文字列、属性値。 |
-| `--token-operator` | Dark `#fef0a5` / Light `#7a5f00` | 演算子、entity、url。 |
-| `--token-atrule` | Dark `#9eb0ff` / Light `#2f6fda` | @規則、関数、class 名。 |
-| `--token-keyword` | Dark `#db8bff` / Light `#af52de` | 言語キーワード。 |
-| `--token-regex` | Dark `#ffc8dd` / Light `#c02c5a` | 正規表現、important。 |
+| Token | Dark | Light | Usage |
+| --- | --- | --- | --- |
+| `--color-bg` | `#040404` | `#f1f1f1` | Body background. |
+| `--color-panel` | `#111111` | `#d9d9d9` | Sidebar and cards. |
+| `--color-panel-strong` | `#1d1d1d` | `#d9d9d9` | Code blocks, footer link icons, workflow controls. |
+| `--color-panel-alt` | `#1a1a1a` | `#d9d9d9` | Active nav rows, hero fallback, search input. |
+| `--color-reader` | `#101010` | `#ffffff` | Central reading surface behind `app-shell__content`. |
+| `--color-sidebar-surface` | `#101010` | `#e8e8e8` | Sidebar and TOC column surface. |
+| `--color-border` | `#292929` | `#d8d8e0` | Default 1px lines (`<hr>`, footer top line). |
+| `--color-border-strong` | `#3a3a3a` | `#bebec7` | Nav child indent line, media step corner square for `Workflows` / `Walkthrough`. |
+| `--color-text` | `#B0B0B0` | `#181818` | Article text, recommended-model nav labels. |
+| `--color-text-muted` | `#636363` | `#51515a` | Body default, supporting text, controls. |
+| `--color-heading` | `#dfdfdf` | `#222222` | Headings, top-level nav rows, popup data text. |
+| `--color-highlight` | `#9458A3` | (same) | Accent bar (active nav/tab), list markers, TIP callout. |
+| `--color-link` | `#cfc6ff` | (same) | Language toggle gradient, contact form description. |
+| `--color-danger` | `#ff7a7a` | `#b42318` | Error and validation text. |
+| `--color-chip-bg` | `#1d1d1d` | `#ffffff` | Tag chips, language toggles. |
+| `--color-chip-border` | `#3d3d3d` | `#d8d8e0` | Chip outline, inline code background (dark). |
+| `--color-section-strong` | `#DEDEDE` | `#2f2f2f` | Strong labels in tooltips and popups (code copy, contact form, assistant rail). |
+| `--color-tav-strong` | `#2f2f2f` | `#f1f1f1` | Active / hover surface of section buttons, focused search inputs. |
+| `--color-hero-title` | `var(--color-heading)` | `var(--color-bg)` | Hero タイトル専用前景色。背景画像の明度に依らず可読性を確保する。 |
+| `--color-code-text` | `#e9e9e9` | `#1f2430` | コードブロック／インラインコードのデフォルト文字色。 |
+| `--token-comment` | `#6c7394` | `#6e7781` | コメント、DOCTYPE。背景に対して WCAG AA 目安を満たす。 |
+| `--token-punctuation` | `#c3c8ff` | `#5b6476` | 記号・句読点。 |
+| `--token-property` | `#ffb86c` | `#c8551d` | プロパティ名・タグ・定数。 |
+| `--token-number` | `#ff6cf6` | `#7b2cbf` | 数値・boolean。 |
+| `--token-string` | `#8bf8d8` | `#1f7a3e` | 文字列、属性値。 |
+| `--token-operator` | `#fef0a5` | `#7a5f00` | 演算子、entity、url。 |
+| `--token-atrule` | `#9eb0ff` | `#2f6fda` | @規則、関数、class 名。 |
+| `--token-keyword` | `#db8bff` | `#af52de` | 言語キーワード。 |
+| `--token-regex` | `#ffc8dd` | `#c02c5a` | 正規表現、important。 |
 
-PNG mock does **not** use gradients; hero fallback stays solid charcoal.
+The hero fallback stays solid charcoal (no gradient).
 
 **Code color guidance:** Code blocks keep the existing backgrounds (`--color-panel-strong` for block, `--color-chip-border` for inline). Syntax colors must come from the `--color-code-text` / `--token-*` tokens listed above. When changing any code color, update this table first, then adjust CSS to match. Target contrast is roughly WCAG AA (≥4.5:1) against the block background for both themes.
 
 ## 2. Typography
-- Base font stack (all locales): `"Berlin Type", "Zen Kaku Gothic New", "Hiragino Sans", system-ui, sans-serif`
-  - Latin glyphs render via Berlin Type, Japanese via Zen Kaku (fallback).
-- `--font-jp` used only for body copy that must stay purely Japanese.
+- Base font stack (all locales), `--font-base`: `"Plus Jakarta Sans", "Zen Kaku Gothic New", "Hiragino Sans", system-ui, sans-serif`. Both web fonts load from Google Fonts in `base.njk`; there is no `@font-face` in the site CSS.
+  - Latin glyphs render via Plus Jakarta Sans, Japanese via Zen Kaku Gothic New.
 - Headings use 600 weight; body 400.
 - Line height: `1.7`.
-- `@font-face` declared for Berlin Type regular + bold (woff2 + woff) under `src/assets/fonts/berlin-type/`.
 
 ## 3. Layout & Spacing
-- Spacing scale (`rem`): `0.25, 0.5, 0.75, 1, 1.5, 2, 3`.
-- Border radii: use `--radius-md = 0.5rem` for every component (pill shapes use `--radius-pill`).
+- Spacing scale: `--space-2xs` 0.25rem, `--space-xs` 0.5rem, `--space-sm` 0.75rem, `--space-md` 1rem, `--space-lg` 1.5rem, `--space-xl` 2rem, `--space-2xl` 4rem.
+- Border radii: `--radius-md` (0.5rem) for components, `--radius-sm` (0.25rem) for small parts inside them, `--radius-pill` for pills.
+- Breakpoints in use: width 1400, 1100 (mobile layout below, desktop from 1101), 900, 800, 768, 700; height 1080, 950, 720. They are recorded as they are; merging them changes rendering.
 - Grid: sidebar `15rem`, content `50rem` max, TOC `15rem`. Side rails add internal padding without reducing their content width. Column gap is `1.5rem`; outer padding is `--shell-padding = --space-xl = 2rem`; and `--layout-max = sidebar + content + toc + (gap * 2) + (--shell-padding * 2)`. Header uses the same width.
 - Header height `72px`, sticky at the top. Logo / search / actions stay centered within their columns; search input maxes at 80% width (竕､520px).
 - On desktop, search, theme, and language controls live in the top-right header actions area. Header actions may use their own compact width instead of being constrained to the TOC column. On mobile, keep the existing search toggle and sidebar footer controls.
@@ -69,11 +75,11 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
   - Language chip opens a dropdown **upward** so it never falls off-screen; each option links to the same slug in the chosen locale.
 
 ## 5. Hero & Tags
-- Hero height is fixed at `12rem`. Use a grayscale image (fallback ``--color-panel-alt``) with a dark scrim.
+- Hero height is fixed at `12rem`. Use a grayscale image (fallback `--color-panel-alt`) with a dark scrim.
 - Hero H1 uses `2rem` on all desktop/tablet widths; do not scale it with viewport width.
 - Hero content is flex-centered both vertically and horizontally; remove all default margins (H1 included).
 - Apply `--radius-md` to the hero container and imagery. Tag chips still appear only on **basic-workflows** pages and link to the AI Capabilities slug.
-- Images remain tinted with `filter: grayscale(1) brightness(0.6)` inside the hero to match the mock.
+- Images remain tinted with `filter: grayscale(1) brightness(0.6)` inside the hero.
 ## 6. Article Body
 - The central content column may use a subtle reader surface drawn in normal document flow. It is not a card: avoid borders, shadows, and decorative paper motifs.
 - On desktop, `.app-shell__content-corner-mask` keeps only the upper reader corners visible below the header while the document scrolls. It must not reserve vertical space; `.app-shell__content-scroll` is a structural padding and width wrapper, not an independent page scroller.
@@ -90,7 +96,7 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - ダークモードでは、本文中のコード（コードブロックの文字と構文色、インラインコードの文字色）と絵文字も同じ 0.85 で減光する。絵文字は文字色が効かないため、Markdown レンダラーが `.emoji` で包む（U+1F000 以降の絵文字と、U+FE0F 付きの記号のみ。`↔` などの文字記号は対象外）。
 - Lists use custom markers: first-level unordered lists use small accent dots, nested unordered lists use muted hollow accent dots, and ordered lists use accent numbers.
 - Article list markers apply only to authored list content; list-based interface components such as Workflow picker options must reset generated markers.
-- `.placeholder` component is dashed border block for “まだページがありません” states and 404 page.
+- `.placeholder` component is a softly filled block (no border) for “まだページがありません” states and the 404 page.
 - Media step cards (`mediaRow`) follow `ops/adr/2026-09-29-media-step-cards.md`: every step is its own filled card (one fill step above the reader, no border) listed vertically with a small gap; the first card of a run carries the header with a kind-colored top-left corner square. Inside, the image (about 40%, vertically centred) sits beside the explanation, which is one step smaller and quieter than the body. Only `Deep dive` uses `--color-highlight`; `Workflows` / `Walkthrough` use `--color-border-strong`. Card images alone carry a soft shadow (an exception to flat inline media); parts inside the card use one fill step lighter than the card, never darker.
 - Runpod launch card (`{% runpod %}`, see `ops/adr/2026-09-30-runpod-poc.md`): one filled row with the card fill (text 6% into the reader), no border. Left: Runpod's official cube logo, a title saying what the link does, and the recommended GPUs as separate pill chips (text 20% fill, body text colour). Right edge: a muted ↗ centred vertically, then a separate "?" panel one fill step darker that links to `notes/runpod-card` and shows the site's existing popup (`.workflow-performance__popup`) on hover. When the profile has a referral code, a muted "紹介リンクが含まれています" line sits right-aligned just under the card. Placed near the top of the article (Qwen-Image-2.1: before 推奨設定値).
 - Lightbox: step-card media opens in a floating window with the step's explanation beside it and zooms inside the window; other media floats frameless at the window's size and zooms across the screen. Previous / next are glass circles just outside the window; close and zoom controls sit in the screen corners, in the same place for every item. No hover movement on the arrows.
@@ -101,9 +107,8 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - In-article `<hr>` and the footer top border are one 2px `--color-border` line of the same width as the article column.
 
 ## 8. TOC
-- Place TOC and the future Tips block inside the right sidebar column. Apply the border only to the TOC body, not the entire sidebar.
+- The TOC and the assistant rail (Tips) sit in the right sidebar column. Neither has a border.
 - TOC links do not show a guide line by default. Only the active item shows a left accent line.
-- Reserve a grey rectangular placeholder beneath the TOC for character/Tips content.
 - The assistant rail bubble list stays transparent. Each bubble button owns its surface, so the gaps between suggestions reveal the underlying rail.
 
 ## 9. Workflow Assets
@@ -118,12 +123,11 @@ PNG mock does **not** use gradients; hero fallback stays solid charcoal.
 - Missing page slugs auto-generate placeholders via `src/content/placeholders.11ty.js`. Placeholder copy: “まだページがありません…”.
 
 ## 11. Fonts & Language Rules
-- Always list Berlin Type **before** Zen Kaku Gothic in CSS so Latin glyphs render in Berlin Type, even on JA pages.
+- Always list the Latin face (Plus Jakarta Sans) **before** Zen Kaku Gothic New so Latin glyphs use it, even on JA pages.
 - `body[lang="ja"]` is still allowed for locale-specific tweaks (date format, etc.) but **not** to change typeface order.
 
 ## 12. Assets
-- Mock hero image tinted grayscale; when no asset, fill with ``--color-panel-alt``.
+- Hero image tinted grayscale; when no asset, fill with `--color-panel-alt`.
 - Icons remain monochrome, `currentColor`, 24px viewBox. Closed shapes inside a line icon (a frame, a circle, a body) carry a translucent fill of the same colour: mark the element `icon__fill` (CSS sets `fill-opacity` 0.3), or for CSS-mask icons write `fill="currentColor" fill-opacity="0.3"` in the SVG file. Open strokes (chevrons, arrows, crosses, menu, link, download, translate, search) and brand marks stay unfilled. When an icon mixes open and closed strokes in one path, add a separate stroke-less `icon__fill` path for the closed area instead of filling the mixed path.
-- Placeholder cat illustration (mock bottom-right) will be added later; for now reserve space in layout for helper popover.
 
-> Follow the mock first. If a token or component is missing, update `/ops/style-design.md` before touching `/src`.
+> If a token or component is missing, update `/ops/style-design.md` before touching `/src`.

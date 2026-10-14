@@ -22,11 +22,11 @@
 
 ## 4. Five Section Contract
 - Section keys: `begin-with`, `data-utilities`, `ai-capabilities`, `basic-workflows`, `notes`.
-- A slug must be unique inside its section across both languages.
+- A slug must be unique inside its section and is shared by every language version of the page.
 - Sidebar ordering matches this list, and search filters respect the same buckets.
 
 ## 5. Experience Guardrails
-- Match the provided mock layout (3 columns, tag chips below H1, workflow rail at bottom).
+- Keep the established layout: 3 columns on desktop (sidebar, article, TOC + assistant rail), tag chips below the H1. Layout changes follow `/ops/style-design.md`.
 - JS is ESM-only, no frameworks, no global pollution; CSS sticks to vanilla + nesting.
 - Performance budget: avoid loading unused workflows/search data (language-scoped fetch only), lazy-load heavy assets.
 
@@ -38,13 +38,10 @@
 - No external tracking or heavyweight dependencies; if something feels heavy, propose it here first.
 
 ## 7. Delivery Ritual
-- 1 PR = 1 intent (e.g., “app shell” or “search”), with mock-compliance screenshots attached.
+- 1 PR = 1 intent (e.g., “app shell” or “search”).
 - PR titles describe the change itself. Do not prefix titles with agent labels such as `[codex]` or `[claude]`.
-- Document breaking questions as issues linked from `/ops`; never patch around ambiguity.
+- Ask the owner when something is ambiguous; never patch around it. Record the answer in `/ops` or an ADR when it outlives the task.
 - Keep change logs in the PR description; this file should summarize enduring rules, not per-PR notes.
 
 ## 8. Agent Working Memory
-- Agents must read `AGENT_STATE.md` at startup if it exists, then update it after meaningful steps.
-- `AGENT_STATE.md` is local working memory and must stay out of git.
-- The shared contract lives in `AGENTS.md`; the shared template lives in `AGENT_STATE.example.md`.
-- Durable project decisions still belong in `/ops` and ADRs, not in `AGENT_STATE.md`.
+- Agent working rules, including `AGENT_STATE.md`, live in `AGENTS.md`. Durable project decisions belong in `/ops` and ADRs, not in `AGENT_STATE.md`.

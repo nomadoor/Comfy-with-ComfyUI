@@ -3,8 +3,8 @@
 ## Language
 
 - Project prose language: Japanese
-- AI専用の指示は英語で書く。schema、identifier、template heading、tool keyword、canonical termも英語を維持する。
-- 人が確認するリポジトリ文書、ADR、commit、PRの説明文は日本語で書く。
+- エージェント向けの指示（`AGENTS.md`、`.claude/skills/`）は英語で書く。schema、identifier、template heading、tool keyword、canonical termも英語を維持する。
+- 人が確認するリポジトリ文書、ADR、commit message、PRのタイトルと本文は日本語で書く（2026-10-14 オーナー決定）。
 
 ## Local workflow
 
