@@ -59,7 +59,7 @@ Pod の環境変数:
 | `DATA_DIR` | `/workspace`、なければ `/data` | モデルと起動レポートの置き場所 |
 | `COMFY_ARGS` | なし | ComfyUI に足す引数 |
 
-ComfyUI の画面では、テンプレート選択ダイアログを出さず、プロファイルの `open` の workflow を記事の順にタブで開き、サイドバーの Workflows タブを開いておく（ブラウザごとに初回だけ）。放置で終了する数分前には画面上部に予告が出る。どちらも `image/extension/`（ComfyUI の拡張として入れる）が行う。
+ComfyUI の画面では、テンプレート選択ダイアログを出さず、プロファイルの `open` の workflow を記事の順にタブで開き、サイドバーの Workflows タブを開いておく（ブラウザごとに初回だけ）。放置で終了する 5 分前からは、画面全体に残り時間つきの予告が出る（クリックかキー入力で消え、時間が戻る）。どちらも `image/extension/`（ComfyUI の拡張として入れる）が行う。
 
 起動の結果は `${DATA_DIR}/runpod-boot/report.json` に残る（Pod の作成・起動からこの処理が始まるまでの秒数 `pod_start`、プロファイル、site の commit、ComfyUI の sha、custom node のバージョン、モデルごとの結果・所要時間・平均速度・取得方法、全体の所要時間）。
 
