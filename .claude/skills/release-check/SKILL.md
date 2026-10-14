@@ -32,6 +32,7 @@ git diff --check
 - Content/nav/workflow changes: `npm run check`
 - Site generation: `npm run build`
 - UI, search, notes, nav, form, client JS, or layout changes: `npm run test:playwright`
+- Refactors meant to leave the site unchanged: `npm run compare:build` (builds `main` in a temporary worktree and the working tree, then lists every output file that differs; pass another ref as the argument). It must report "identical", or every listed difference must be explained. The base build borrows this checkout's `node_modules`, so it cannot show the effect of a dependency upgrade.
 
 ## Notes
 

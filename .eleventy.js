@@ -790,6 +790,21 @@ function getPageViewCount(entry, pageViews = {}) {
   return 0;
 }
 
+const FALLBACK_PAGE_DATE = new Date("2025-01-01T00:00:00Z");
+const CREATED_LINE = /^created:\s*["']?(\d{4}-\d{2}-\d{2})/m;
+
+function createdDateFor(inputPath = "") {
+  let text = "";
+  try {
+    text = fsSync.readFileSync(inputPath, "utf8");
+  } catch {
+    return FALLBACK_PAGE_DATE;
+  }
+  const frontmatter = text.match(/^---\r?\n([\s\S]*?)\r?\n---/)?.[1] || "";
+  const created = frontmatter.match(CREATED_LINE)?.[1];
+  return created ? new Date(`${created}T00:00:00Z`) : FALLBACK_PAGE_DATE;
+}
+
 export default function (eleventyConfig) {
   // Passthrough static assets
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
@@ -797,6 +812,14 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/workflows": "workflows" });
   // Drafts are unpublished (ops/requirements.md): skip them entirely instead of building hidden pages.
   eleventyConfig.addPreprocessor("drafts", "*", (data) => (data.draft ? false : undefined));
+  // A page's date (it orders collections.all, and so the sitemap, search index and related
+  // cards) defaults to the file's creation time, which differs between checkouts. Use the
+  // frontmatter `created` instead; pages without one share a fixed date and Eleventy then
+  // orders them by input path.
+  eleventyConfig.addDateParsing(function (dateValue) {
+    if (dateValue !== undefined) return undefined;
+    return createdDateFor(this.page?.inputPath);
+  });
   // Asset notes are for maintainers, not pages.
   eleventyConfig.ignores.add("src/assets/fonts/README.md");
   eleventyConfig.addPassthroughCopy({ "src/search": "search" });
