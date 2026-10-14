@@ -15,6 +15,7 @@ description: Use when modifying CSS, layout, components, icons, client-side Java
 
 - No silent UX or visual design changes.
 - Document IA, token, component, or behavior changes in `/ops` or an ADR before implementation.
+- CSS lives in `src/styles/NN-<concern>.css` (the number is the cascade order; tokens are in `01-base.css`). Edit the part that owns the component; a new part needs a number that keeps the cascade right.
 - Use existing CSS tokens and component patterns.
 - JavaScript must remain ESM.
 - Icons in `src/assets/icons/` must have `viewBox` and inherit `currentColor`.

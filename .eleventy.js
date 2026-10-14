@@ -23,6 +23,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
 
   eleventyConfig.addWatchTarget("ops");
+  // The stylesheet parts are not templates; changing one must rebuild /assets/css/site.css.
+  eleventyConfig.addWatchTarget("src/styles/");
 
   registerBuild(eleventyConfig);
   registerFilters(eleventyConfig);
