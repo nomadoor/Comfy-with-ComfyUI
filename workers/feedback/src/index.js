@@ -1,5 +1,6 @@
 const ipHits = new Map();
 const MAX_IP_ENTRIES = 1000;
+const LANGS = new Set(["ja", "en", "zh"]);
 const ALLOWED_ISSUE_LABELS = new Set([
   "report",
   "request",
@@ -17,6 +18,12 @@ export default {
       return cors(new Response("Method Not Allowed", { status: 405 }), env, request);
     }
 
+    // With an origin allowlist configured, only those pages may post. (A non-browser client can
+    // fake the header; this stops other sites from using the endpoint through visitors' browsers.)
+    if (!isAllowedOrigin(request.headers.get("Origin"), env)) {
+      return cors(new Response("Forbidden", { status: 403 }), env, request);
+    }
+
     let body;
     try {
       body = await request.json();
@@ -28,25 +35,34 @@ export default {
       type = "report",
       message = "",
       url = "",
-      lang = "ja",
+      lang: rawLang = "ja",
       turnstileToken = "",
       labels = []
     } = body;
-    const text = (message || "").trim();
+    // The language becomes an issue label (`lang:…`), and GitHub creates unknown labels on the fly.
+    const lang = LANGS.has(String(rawLang).toLowerCase()) ? String(rawLang).toLowerCase() : "ja";
+    const text = String(message || "").trim();
     if (text.length < 20) return cors(new Response("Message too short", { status: 400 }), env, request);
     if (text.length > 1200) return cors(new Response("Message too long", { status: 400 }), env, request);
 
-    // Optional Turnstile
-    if (env.TURNSTILE_SECRET) {
+    // Turnstile is required. Without a secret the worker refuses instead of accepting unverified
+    // posts; an environment that deliberately skips it sets TURNSTILE_DISABLED = "true".
+    if (env.TURNSTILE_DISABLED !== "true") {
+      if (!env.TURNSTILE_SECRET) {
+        console.error("Missing TURNSTILE_SECRET in environment");
+        return cors(new Response("Server configuration error", { status: 500 }), env, request);
+      }
       const ok = await verifyTurnstile(turnstileToken, request, env);
       if (!ok) return cors(new Response("Turnstile verification failed", { status: 403 }), env, request);
     }
 
     // Simple rate-limit
     const ip = request.headers.get("cf-connecting-ip") || "unknown";
+    // Per isolate: a burst from one visitor is caught, a distributed one is not (Turnstile is the
+    // real gate).
     if (!rateLimit(ip, env)) {
-    return cors(new Response("Too Many Requests", { status: 429 }), env, request);
-  }
+      return cors(new Response("Too Many Requests", { status: 429 }), env, request);
+    }
 
     const kind = normalizeType(type);
     const pageUrl = url && isValidOriginUrl(url, env) ? url : "N/A";
@@ -220,30 +236,39 @@ function buildIssueLabels(kind, lang, requestedLabels = []) {
   return Array.from(labelSet);
 }
 
+// Whether a request's Origin may use the endpoint. ALLOW_ORIGIN "*" (or unset) allows any origin;
+// otherwise a comma-separated list of origins, hostnames or "*.suffix" rules must match.
+function originMatches(origin, env) {
+  if (!origin) return false;
+  const allowOrigin = env.ALLOW_ORIGIN || "*";
+  if (allowOrigin === "*") return true;
+  const origins = allowOrigin.split(",").map((o) => o.trim()).filter(Boolean);
+  try {
+    const { hostname } = new URL(origin);
+    return origins.some((rule) => {
+      if (rule === origin) return true;
+      if (rule === hostname) return true;
+      if (rule.startsWith("*.")) {
+        const suffix = rule.slice(1); // keep leading dot
+        return hostname.endsWith(suffix);
+      }
+      return false;
+    });
+  } catch {
+    return false;
+  }
+}
+
+function isAllowedOrigin(origin, env) {
+  if ((env.ALLOW_ORIGIN || "*") === "*") return true;
+  return originMatches(origin, env);
+}
+
 function cors(response, env, request) {
   const origin = request.headers.get("Origin");
   const allowOrigin = env.ALLOW_ORIGIN || "*";
   const headers = new Headers(response.headers);
-
-  const allowed = (() => {
-    if (!origin) return false;
-    if (allowOrigin === "*") return true;
-    const origins = allowOrigin.split(",").map((o) => o.trim()).filter(Boolean);
-    try {
-      const { hostname } = new URL(origin);
-      return origins.some((rule) => {
-        if (rule === origin) return true;
-        if (rule === hostname) return true;
-        if (rule.startsWith("*.")) {
-          const suffix = rule.slice(1); // keep leading dot
-          return hostname.endsWith(suffix);
-        }
-        return false;
-      });
-    } catch {
-      return false;
-    }
-  })();
+  const allowed = originMatches(origin, env);
 
   if (allowed) {
     headers.set("Access-Control-Allow-Origin", origin);
