@@ -116,3 +116,19 @@ test("code block copy buttons use the page language", async ({ page }) => {
     await expect(button).toHaveAttribute("data-success-label", success);
   }
 });
+
+test("reduced motion also stops pseudo-element animations and transitions", async ({ browser }) => {
+  const context = await browser.newContext({ reducedMotion: "reduce" });
+  const page = await context.newPage();
+  await page.goto(ARTICLE);
+  const styles = await page.evaluate(() => {
+    // The glow animation runs on ::before only while the language menu asks for attention.
+    const toggle = document.querySelector(".sidebar__lang .lang-toggle");
+    toggle?.closest(".sidebar__lang")?.classList.add("is-attention");
+    const pseudo = toggle ? getComputedStyle(toggle, "::before") : null;
+    return { animation: pseudo?.animationName, transition: pseudo?.transitionDuration };
+  });
+  expect(styles.animation).toBe("none");
+  expect(styles.transition).toBe("0s");
+  await context.close();
+});

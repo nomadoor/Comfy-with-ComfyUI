@@ -109,7 +109,9 @@ html {
 
 /* Reduced motion: no animation or transition anywhere on the site. */
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *,
+  *::before,
+  *::after {
     animation: none !important;
     transition: none !important;
   }

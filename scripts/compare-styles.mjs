@@ -116,12 +116,22 @@ const render = async (root, url, width, height, theme) => {
   }, theme);
   const page = await context.newPage();
   await page.route("**/*", serveFrom(root));
+  const failedStyles = [];
+  page.on("response", (res) => {
+    if (res.request().resourceType() === "stylesheet" && res.url().startsWith(ORIGIN) && res.status() !== 200) {
+      failedStyles.push(`${res.url()} (${res.status()})`);
+    }
+  });
+  page.on("requestfailed", (req) => {
+    if (req.resourceType() === "stylesheet" && req.url().startsWith(ORIGIN)) failedStyles.push(req.url());
+  });
   const response = await page.goto(ORIGIN + url, { waitUntil: "networkidle" });
   // A page or stylesheet missing on both sides would otherwise compare as "identical".
   if (!response || response.status() !== 200) throw new Error(`${root} ${url}: HTTP ${response?.status()}`);
   await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
   const state = await page.evaluate(() => ({ sheets: document.styleSheets.length, theme: document.documentElement.dataset.theme }));
   if (!state.sheets) throw new Error(`${root} ${url}: no stylesheet loaded`);
+  if (failedStyles.length) throw new Error(`${root} ${url}: stylesheet failed: ${failedStyles.join(", ")}`);
   if (state.theme !== theme) throw new Error(`${root} ${url}: theme ${state.theme}, expected ${theme}`);
   const result = await page.evaluate(collect);
   await context.close();
@@ -146,16 +156,17 @@ const compareCase = async ({ url, width, height, theme }) => {
   let before = await render(BASE, url, width, height, theme);
   let after = await render(HEAD, url, width, height, theme);
   compared += new Set([...Object.keys(before), ...Object.keys(after)]).size;
-  let keys = diffKeys(before, after);
-  // Late loads and timers can still shift a frame; a real difference survives a second look.
+  const keys = diffKeys(before, after);
+  const first = new Map(keys.map((key) => [key, changedProps(before[key], after[key]).sort().join("\n")]));
+  // Late loads and timers can still shift a frame. A real difference survives a second look with
+  // the same properties and values; anything else is dropped.
   if (keys.length) {
     before = await render(BASE, url, width, height, theme);
     after = await render(HEAD, url, width, height, theme);
-    const again = new Set(diffKeys(before, after));
-    keys = keys.filter((key) => again.has(key));
   }
   for (const key of keys) {
     const props = changedProps(before[key], after[key]);
+    if (props.slice().sort().join("\n") !== first.get(key)) continue;
     // Custom properties are tracked once for the whole run: adding or removing a token shows up
     // on every element, while what matters is whether a real property changed.
     props.filter((line) => line.startsWith("--")).forEach((line) => variableChanges.add(line));
