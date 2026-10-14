@@ -108,3 +108,12 @@ docker exec <container> python -m bootstrap.verify
 docker run --rm -p 127.0.0.1:8199:8188 -e PROFILE_URL=file:///runpod/profiles/qwen-image-2-1.json \
   -v "$PWD/_site/runpod:/runpod:ro" --entrypoint python cwc-runpod:dev -m bootstrap.preview
 ```
+
+## 本番の Pod での確認（課金に関わる変更）
+
+放置での Terminate、準備に失敗したときの Terminate、RunPod の API を呼ぶ処理を変えたときは、マージの前に本物のテンプレートの Pod で確かめる。手元の確認では RunPod の API（Pod 用 API キー、API の前にある Cloudflare）を通らないので、止まらない Pod を見落とす。2026-10-14 までの 2 週間、Terminate は一度も成功していなかった（ADR の 2026-10-14 の改訂）。
+
+1. ブランチで `:exp` の image を作る（`gh workflow run runpod-image.yml --ref <branch>`）。
+2. いちばん軽いプロファイルのテンプレートで Pod を作り、Edit Template でイメージを `:exp` に、環境変数に `IDLE_STOP_MINUTES=3` を足す。
+3. ComfyUI のタブは閉じたまま放置し、Pod が自分で消えることを確かめる。Logs に `could not terminate` が出ていたら失敗。
+4. 準備に失敗したときの Terminate も見るときは、`PROFILE` を存在しない ID にする。ステータスページに理由が出て、3 分後に Pod が消えればよい。

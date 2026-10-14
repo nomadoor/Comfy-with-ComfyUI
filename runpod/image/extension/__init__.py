@@ -38,6 +38,7 @@ def _idle_minutes():
 
 
 IDLE_SECONDS = _idle_minutes() * 60
+USER_AGENT = "comfy-with-comfyui-runpod/1"  # same as the bootstrap
 WARN_SECONDS = min(5 * 60, IDLE_SECONDS / 2)
 _state = {"last": time.time(), "stopping": False, "stopped_reason": None}
 
@@ -74,7 +75,7 @@ def _status():
 
 
 def stop_pod(reason):
-    """Terminate this Pod through the RunPod REST API (the Pod-scoped key RunPod injects)."""
+    """Terminate this Pod through the RunPod v2 API (the Pod-scoped key RunPod injects)."""
     pod_id, key = os.environ.get("RUNPOD_POD_ID"), os.environ.get("RUNPOD_API_KEY")
     if not pod_id or not key:
         # Not on RunPod: nothing to terminate, and the page must not claim it was.
@@ -82,8 +83,11 @@ def stop_pod(reason):
         return
     _state["stopping"] = True
     logging.warning(f"[comfy-with-comfyui] terminating Pod {pod_id}: {reason}")
+    # Cloudflare in front of rest.runpod.io answers Python's default User-Agent with 403 (error 1010)
+    # before the key is read, so every call names itself. v2 is the one checked with the Pod-scoped key
+    # on a real Pod (204, 2026-10-14).
     request = urllib.request.Request(
-        f"https://rest.runpod.io/v1/pods/{pod_id}", method="DELETE", headers={"Authorization": f"Bearer {key}"}
+        f"https://api.runpod.io/v2/pods/{pod_id}", method="DELETE", headers={"Authorization": f"Bearer {key}", "User-Agent": USER_AGENT}
     )
     try:
         urllib.request.urlopen(request, timeout=30).read()
