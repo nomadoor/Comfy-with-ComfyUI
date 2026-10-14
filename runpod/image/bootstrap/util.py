@@ -56,7 +56,7 @@ def env_minutes(name, default, log=print):
 
 
 def terminate_this_pod(log):
-    """Terminate the Pod through the RunPod REST API (RunPod injects RUNPOD_POD_ID and a Pod-scoped key).
+    """Terminate the Pod through the RunPod v2 API (RunPod injects RUNPOD_POD_ID and a Pod-scoped key).
 
     True when RunPod accepted it, False when the call failed, None when this is not a RunPod Pod.
     """
@@ -64,8 +64,11 @@ def terminate_this_pod(log):
     if not pod_id or not key:
         log("not on RunPod (no RUNPOD_POD_ID/RUNPOD_API_KEY); not terminating")
         return None
+    # Cloudflare in front of rest.runpod.io answers Python's default User-Agent with 403 (error 1010)
+    # before the key is read, so every call names itself. v2 is the one checked with the Pod-scoped key
+    # on a real Pod (204, 2026-10-14).
     request = urllib.request.Request(
-        f"https://rest.runpod.io/v1/pods/{pod_id}", method="DELETE", headers={"Authorization": f"Bearer {key}"}
+        f"https://api.runpod.io/v2/pods/{pod_id}", method="DELETE", headers={"Authorization": f"Bearer {key}", "User-Agent": USER_AGENT}
     )
     try:
         urllib.request.urlopen(request, timeout=30).read()
@@ -90,7 +93,7 @@ def pod_timing(boot_started):
     pod_id, key = os.environ.get("RUNPOD_POD_ID"), os.environ.get("RUNPOD_API_KEY")
     if not pod_id or not key:
         return info
-    request = urllib.request.Request(f"https://rest.runpod.io/v1/pods/{pod_id}", headers={"Authorization": f"Bearer {key}"})
+    request = urllib.request.Request(f"https://rest.runpod.io/v1/pods/{pod_id}", headers={"Authorization": f"Bearer {key}", "User-Agent": USER_AGENT})
     try:
         pod = json.loads(urllib.request.urlopen(request, timeout=15).read())
     except Exception as error:  # noqa: BLE001 - measurement only; never stop the boot over it

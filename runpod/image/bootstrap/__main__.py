@@ -213,9 +213,10 @@ def main():
     os.environ.setdefault("HF_HUB_DISABLE_PROGRESS_BARS", "1")
     os.environ.setdefault("HF_HUB_DISABLE_TELEMETRY", "1")
     Path(data_dir).mkdir(parents=True, exist_ok=True)
-    # IDLE_STOP_MINUTES: how long a failed Pod shows why before it terminates (0 = never).
+    # FAIL_STOP_MINUTES: how long a failed Pod shows why before it terminates (0 = never). Short: a
+    # failed Pod never recovers (nothing retries the boot or restarts ComfyUI), so it only bills.
     # BOOT_TIMEOUT_MINUTES: setup that has not finished by then counts as failed (0 = no deadline).
-    idle_minutes = env_minutes("IDLE_STOP_MINUTES", 30, state.log)
+    fail_minutes = env_minutes("FAIL_STOP_MINUTES", 3, state.log)
     boot_minutes = env_minutes("BOOT_TIMEOUT_MINUTES", 60, state.log)
 
     status_server = server.start(state, PORT)
@@ -255,7 +256,7 @@ def main():
     def fail(error):
         state.fail(error)
         write_report("error")
-        give_up(state, idle_minutes)
+        give_up(state, fail_minutes)
 
     def deadline():
         time.sleep(boot_minutes * 60)

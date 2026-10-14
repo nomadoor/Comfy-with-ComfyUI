@@ -52,7 +52,8 @@ Pod の環境変数:
 | `CIVITAI_TOKEN` | なし | 必要なときだけ |
 | `DL_CONCURRENCY` | `8` | 同時にダウンロードするファイル数（各ファイルは aria2 が 16 分割で取る） |
 | `HF_DOWNLOADER` | `aria2` | `xet` にすると Hugging Face だけ hf_xet で取る |
-| `IDLE_STOP_MINUTES` | `30` | 操作も生成もない状態がこの分数続くと Pod を Terminate する（`0` で無効）。「生成している」は ComfyUI が実行の通知（node の開始、ステップの進行）を出していること。キューに残っているだけでは数えないので、固まった node は延長しない。準備に失敗した場合と、ComfyUI が自分で終了した場合も、ステータスページで理由を見せてから同じ時間で終了する。Terminate の API 呼び出しは成功するまで繰り返す |
+| `IDLE_STOP_MINUTES` | `30` | 操作も生成もない状態がこの分数続くと Pod を Terminate する（`0` で無効）。「生成している」は ComfyUI が実行の通知（node の開始、ステップの進行）を出していること。キューに残っているだけでは数えないので、固まった node は延長しない。Terminate の API 呼び出しは成功するまで繰り返す |
+| `FAIL_STOP_MINUTES` | `3` | 準備に失敗した場合（期限切れを含む）と、ComfyUI が自分で終了した場合に、ステータスページで理由を見せてから Terminate するまでの分数（`0` で無効）。失敗した Pod は直らないので短くしている |
 | `BOOT_TIMEOUT_MINUTES` | `60` | 準備がこの分数で終わらなければ失敗として扱う（`0` で無効）。どこかで固まった Pod が課金され続けないため |
 | `ENABLE_MANAGER` | `1` | 内蔵の ComfyUI-Manager を有効にする（`0` で無効） |
 | `DATA_DIR` | `/workspace`、なければ `/data` | モデルと起動レポートの置き場所 |
@@ -108,3 +109,12 @@ docker exec <container> python -m bootstrap.verify
 docker run --rm -p 127.0.0.1:8199:8188 -e PROFILE_URL=file:///runpod/profiles/qwen-image-2-1.json \
   -v "$PWD/_site/runpod:/runpod:ro" --entrypoint python cwc-runpod:dev -m bootstrap.preview
 ```
+
+## 本番の Pod での確認（課金に関わる変更）
+
+放置での Terminate、準備に失敗したときの Terminate、RunPod の API を呼ぶ処理を変えたときは、マージの前に本物のテンプレートの Pod で確かめる。手元の確認では RunPod の API（Pod 用 API キー、API の前にある Cloudflare）を通らないので、止まらない Pod を見落とす。2026-10-14 までの 2 週間、Terminate は一度も成功していなかった（ADR の 2026-10-14 の改訂）。
+
+1. ブランチで `:exp` の image を作る（`gh workflow run runpod-image.yml --ref <branch>`）。
+2. いちばん軽いプロファイルのテンプレートで Pod を作り、Edit Template でイメージを `:exp` に、環境変数に `IDLE_STOP_MINUTES=3` を足す。
+3. ComfyUI のタブは閉じたまま放置し、Pod が自分で消えることを確かめる。Logs に `could not terminate` が出ていたら失敗。
+4. 準備に失敗したときの Terminate も見るときは、`PROFILE` を存在しない ID にする。ステータスページに理由が出て、`FAIL_STOP_MINUTES`（既定 3 分）後に Pod が消えればよい。

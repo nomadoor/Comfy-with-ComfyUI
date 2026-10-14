@@ -14,6 +14,7 @@ The design and the reasons live in `ops/adr/2026-09-30-runpod-poc.md` and `runpo
 - **Check the model licenses before adding a card.** If any model in the profile forbids commercial use (research or evaluation only, non-commercial, and so on), write `referral: false` in the profile with a comment naming the license. The card then has no referral code and no disclosure line. Read the license text itself (the model's LICENSE file), not only the Hugging Face tag. When unsure, ask the owner.
 - The template's creator earnings (1% of spend in Runpod credits) cannot be turned off per template as far as the public docs say. Tell the owner when a non-commercial model gets a template.
 - Do not run Pods or local GPU tests without asking the owner first.
+- Changes to the idle or failure terminate, or to any RunPod API call, are not merged until a real Pod from a real template has terminated itself ("本番の Pod での確認" in `runpod/README.md`). Local runs never reach the RunPod API, and a terminate that only passed locally stayed broken for two weeks.
 
 ## Steps
 

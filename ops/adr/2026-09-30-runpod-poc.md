@@ -80,6 +80,15 @@ Accepted（PoC。記事側のボタン・案内表示は別途デザイン相談
 - 全 workflow はこれまでどおりサイドバーの Workflows タブに置き、初回表示ではそのサイドバーを開いておく。`folders`（フォルダ名 → パターン）でまとめられる。workflow は上から順に見て最初に当たったフォルダに入るので、最後に全体を受けるパターンを置ける。
 - プロファイルの workflow に `open`（真偽）と任意の `folder` を足す。古い Pod image は無視し、`open` のない古いプロファイルを新しい image が読むと最初の 1 本だけを開く。どちらの組み合わせでも動くので `schema_version` は上げない。
 
+## Revision 2026-10-14: Terminate が効いていなかった
+- 放置した Pod が Terminate されず、課金が続いていた。拡張もブートストラップも時間切れで Terminate を呼んでいたが、`DELETE https://rest.runpod.io/v1/pods/{id}` が毎回 `403 Forbidden` で返っていた（本番テンプレートの Pod のログで確認）。
+- 原因はキーの権限ではなく、`rest.runpod.io` の前にある Cloudflare。Python の `urllib` の既定の User-Agent を、キーを見る前に `403`（error code 1010）で拒否する。curl からは同じ URL が認証まで進む。起動時間の計測（`pod_timing` の `GET`）も同じ理由でずっと失敗していた。
+- RunPod の API を呼ぶときは必ず User-Agent（`comfy-with-comfyui-runpod/1`）を付ける。
+- Terminate は `DELETE https://api.runpod.io/v2/pods/{id}` にする。本番の Pod の中から Pod 用 API キーで呼び、`204` で Pod が消えることを確認した（2026-10-14）。v1 の DELETE を Pod 用キーで通した確認はない。
+- 「本番で要確認」としていた Pod 用キーでの Terminate は、これで確認済みになる。
+- 失敗した Pod（準備の失敗、準備の期限切れ、ComfyUI の終了）は、理由を見せてから 3 分で Terminate する（`FAIL_STOP_MINUTES`、既定 3）。これまでは放置と同じ `IDLE_STOP_MINUTES`（30 分）だったが、失敗した Pod は準備をやり直さず ComfyUI も起動し直さないので、待っても直らず課金だけが続く。理由は 3 分あれば読める。直すには記事のボタンから作り直す。
+- 本番の Pod で確認（2026-10-14、`:exp` image）：`IDLE_STOP_MINUTES=3` で、ComfyUI を開かずに放置した Pod が自分で消えた。`PROFILE=no-such-profile` で準備に失敗させた Pod も、理由を出してから 3 分で自分で消えた。
+
 ## Consequences
 - workflow を差し替えるときは `properties.models` も保つ必要がある。欠けているとプロファイル生成が警告を出す。
 - 記事側のカード（`{% runpod %}`）は 2026-10-02 の追記で決めた。ディスク容量はテンプレートに入っているので、カードには出さない。
