@@ -3,7 +3,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { test } from "node:test";
-import { listFiles, parseFrontmatter } from "./files.mjs";
+import { listFiles, parseFrontmatter, splitFrontmatter } from "./files.mjs";
 
 test("parseFrontmatter reads LF and CRLF, and returns {} without frontmatter", () => {
   for (const eol of ["\n", "\r\n"]) {
@@ -14,6 +14,15 @@ test("parseFrontmatter reads LF and CRLF, and returns {} without frontmatter", (
   }
   assert.deepEqual(parseFrontmatter("no frontmatter"), {});
   assert.deepEqual(parseFrontmatter("---\n---\nempty"), {});
+});
+
+test("splitFrontmatter returns the body after the frontmatter, LF or CRLF", () => {
+  for (const eol of ["\n", "\r\n"]) {
+    const { data, body } = splitFrontmatter(["---", "title: Panorama", "---", "", "Body"].join(eol));
+    assert.deepEqual(data, { title: "Panorama" });
+    assert.equal(body.trim(), "Body");
+  }
+  assert.deepEqual(splitFrontmatter("plain"), { data: {}, body: "plain" });
 });
 
 test("listFiles filters by extension, skips build and dependency folders, and accepts a file", () => {

@@ -64,13 +64,13 @@ Writing articles against hash-named R2 URLs would also make Markdown hard to rea
 ### Display mode vs. source
 
 - `{media=image|loop|player}` is the official Markdown syntax and describes **only how media is displayed**. It behaves the same for `/media/` and Gyazo. `{gyazo=…}` remains a compatible alias; new content uses `{media=…}`. `mediaRow` accepts both in `img="… {media=loop}"` and as `mode`/`media`/`gyazo` parameters.
-- `resolveMedia(url, { mode, size })` in `.eleventy.js` is the single place that knows about storage and returns `{ kind, mode, src, fullSrc, width, height, srcset, poster }`:
+- `resolveMedia(url, { mode, size })` in `.eleventy.js` (since 2026-10-14 `eleventy/media.mjs`) is the single place that knows about storage and returns `{ kind, mode, src, fullSrc, width, height, srcset, poster }`:
   - `/media/<name>`: key, dimensions, and poster from the manifest.
   - Gyazo: `max_size` preview, `/raw` full image, ID-derived mp4 for videos, `max_size` still as `poster`.
   - Other URLs: used as-is.
   - Without `mode`, video vs. image is inferred from the manifest type or the `.mp4` extension (hero and data files).
 - An unregistered `/media/` name **fails production builds** (`eleventy` build mode). Dev servers (`--serve`/`--watch`) warn and render an empty source so work in progress stays viewable. `check:media` fails in both cases.
-- Markdown images, `{media}`/`{gyazo}` embeds, `mediaRow`, the compatibility `gyazoVideoLoop`/`gyazoVideoPlayer` shortcodes, hero, OGP, related cards, Notes finder cards, and the assistant rail video all go through `resolveMedia`. The `imageVariant` filter is replaced by `resolveMedia`. Video figures are rendered by one shared function.
+- Markdown images, `{media}`/`{gyazo}` embeds, `mediaRow`, the compatibility `gyazoVideoLoop`/`gyazoVideoPlayer` shortcodes (removed 2026-10-14; no page used them), hero, OGP, related cards, Notes finder cards, and the assistant rail video all go through `resolveMedia`. The `imageVariant` filter is replaced by `resolveMedia`. Video figures are rendered by one shared function.
 - OGP and card thumbnails use `poster`; without one, OGP falls back to `site.ogImage` and cards show the placeholder icon.
 - The assistant rail stores `panel.video.url` instead of a Gyazo ID.
 

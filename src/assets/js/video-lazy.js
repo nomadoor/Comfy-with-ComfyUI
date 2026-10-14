@@ -1,7 +1,7 @@
 // Load article videos only when the reader gets close to them.
 //
 // Videos are rendered with `preload="none"` and without `autoplay` (see renderVideoFigure in
-// .eleventy.js), so a page costs nothing in video traffic until this module activates a clip. Without
+// eleventy/media.mjs), so a page costs nothing in video traffic until this module activates a clip. Without
 // it, every video on a page downloads at once and competes with the images the reader is actually
 // looking at; on a slow connection that delayed images by several seconds.
 //
