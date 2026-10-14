@@ -1,48 +1,18 @@
+import { copyWithTextarea } from "./clipboard.js";
+import { getScope } from "./dom.js";
+import { flashClass } from "./flash.js";
+
 const SUCCESS_VISIBLE_MS = 1000;
-const successTimerKey = Symbol("workflowJsonSuccessTimer");
 const COPY_BOUND_FLAG = "jsonCopyBound";
 const DOWNLOAD_BOUND_FLAG = "jsonDownloadBound";
 
-function getScope(root) {
-  if (root && typeof root.querySelectorAll === "function") {
-    return root;
-  }
-  return document;
-}
-
-function showSuccessState(element, className = "is-success") {
-  element.classList.add(className);
-  if (element[successTimerKey]) {
-    clearTimeout(element[successTimerKey]);
-  }
-  element[successTimerKey] = setTimeout(() => {
-    element.classList.remove(className);
-    element[successTimerKey] = null;
-  }, SUCCESS_VISIBLE_MS);
-}
+const showSuccessState = (element) => flashClass(element, "is-success", SUCCESS_VISIBLE_MS);
 
 function fetchJsonText(url) {
   return fetch(url, { credentials: "same-origin" }).then((response) => {
     if (!response.ok) throw new Error(`Failed to fetch JSON: ${response.status}`);
     return response.text().then((text) => text.trim());
   });
-}
-
-function copyWithTextarea(text) {
-  const temp = document.createElement("textarea");
-  temp.value = text;
-  temp.style.position = "fixed";
-  temp.style.top = "-9999px";
-  document.body.appendChild(temp);
-  temp.select();
-  let success = false;
-  try {
-    success = document.execCommand("copy");
-  } catch (error) {
-    console.warn("Copy fallback failed", error);
-  }
-  document.body.removeChild(temp);
-  if (!success) throw new Error("Copy fallback failed");
 }
 
 // Workflow JSON is not embedded in the page; it is fetched when the user copies it.
@@ -69,7 +39,7 @@ export async function copyJsonFromUrl(url) {
       // Fall back to the textarea copy below.
     }
   }
-  copyWithTextarea(text);
+  if (!copyWithTextarea(text)) throw new Error("Copy fallback failed");
 }
 
 function copyJson(button) {

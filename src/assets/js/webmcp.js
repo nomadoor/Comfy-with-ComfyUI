@@ -1,3 +1,5 @@
+import { loadSearchIndex } from "./search-index.js";
+
 const siteOrigin = "https://comfyui.nomadoor.net";
 const supportedLangs = new Set(["ja", "en", "zh"]);
 
@@ -33,14 +35,8 @@ const searchDocs = async ({ query, lang = "ja", limit = 5 } = {}) => {
   }
   const normalizedLang = getLang(lang);
   const cappedLimit = Math.max(1, Math.min(Number(limit) || 5, 5));
-  const response = await fetch(`/search/index-${normalizedLang}.json`, {
-    headers: { Accept: "application/json" }
-  });
-  if (!response.ok) {
-    throw new Error(`Search index request failed: ${response.status}`);
-  }
-  const index = await response.json();
-  const results = (Array.isArray(index) ? index : [])
+  const index = await loadSearchIndex(normalizedLang);
+  const results = index
     .map((item) => ({ item, score: scoreResult(item, normalizedQuery) }))
     .filter((entry) => entry.score > 0)
     .sort((a, b) => b.score - a.score)

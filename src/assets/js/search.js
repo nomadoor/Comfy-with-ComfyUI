@@ -1,3 +1,5 @@
+import { loadSearchIndex } from "./search-index.js";
+
 let docClickAttached = false;
 const containers = new Set();
 const initialized = new WeakSet();
@@ -26,9 +28,6 @@ const initSearch = () => {
     };
     const i18n = I18N[lang] || I18N.en;
     let index = [];
-    // One shared request: a second search while the index is still loading waits for it
-    // instead of searching an empty index. A failed load clears it so the next search retries.
-    let indexRequest = null;
     let debounceTimer = null;
     let lastQuery = "";
     let activeIndex = -1;
@@ -246,19 +245,15 @@ const initSearch = () => {
       resetSearchUi();
     });
 
-    const loadIndex = () => {
-      indexRequest ??= (async () => {
-        try {
-          const response = await fetch(`/search/index-${lang}.json`);
-          if (!response.ok) throw new Error(`HTTP ${response.status}`);
-          index = await response.json();
-        } catch (error) {
-          console.error("Failed to load search index", error);
-          indexRequest = null;
-        }
-      })();
-      return indexRequest;
-    };
+    // A second search while the index is still loading waits for the same request instead of
+    // searching an empty index (see search-index.js).
+    const loadIndex = () =>
+      loadSearchIndex(lang).then(
+        (loaded) => {
+          index = loaded;
+        },
+        (error) => console.error("Failed to load search index", error)
+      );
 
     const computeScore = (item, normalized) => {
       const title = String(item.title || "").toLowerCase();

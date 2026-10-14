@@ -20,7 +20,7 @@ function watchImage(img) {
   }
 }
 
-export function initImageFade(root = document) {
+export default function initImageFade(root = document) {
   Array.from(root.querySelectorAll("img")).forEach(watchImage);
 
   const observer = new MutationObserver((mutations) => {
@@ -49,5 +49,3 @@ export function initImageFade(root = document) {
     }
   });
 }
-
-initImageFade();

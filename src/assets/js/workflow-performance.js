@@ -1,9 +1,8 @@
+import { getScope } from "./dom.js";
+
 const BOUND_ATTRIBUTE = "data-performance-bound";
 let documentClickBound = false;
 
-function getScope(root) {
-  return root && typeof root.querySelectorAll === "function" ? root : document;
-}
 
 function closePerformance(wrapper, { dismiss = false } = {}) {
   const trigger = wrapper.querySelector("[data-performance-trigger]");

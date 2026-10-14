@@ -12,10 +12,6 @@ import initWorkflowPicker from "./workflow-picker.js";
 import initWorkflowPerformance from "./workflow-performance.js";
 import initHeadingAnchors from "./heading-anchors.js";
 import initContact from "./contact.js";
-import "./sidebar.js"; // legacy auto-init; sidebar is persistent shell
-import "./mobile-nav.js"; // handles nav/search toggles; persistent shell
-import "./theme-toggle.js"; // global theme switcher
-import "./image-fade.js"; // progressive image reveal
 import initRelatedHero from "./related-hero.js";
 import initHighlight from "./highlight.js"; // search term highlight per page render
 

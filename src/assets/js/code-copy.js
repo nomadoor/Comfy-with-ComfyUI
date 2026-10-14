@@ -1,45 +1,7 @@
+import { copyText } from "./clipboard.js";
+import { flashClass } from "./flash.js";
+
 const SUCCESS_VISIBLE_MS = 1000;
-const successTimerKey = Symbol("codeCopySuccessTimer");
-
-function markCopiedState(button) {
-  button.classList.add("is-copied");
-  if (button[successTimerKey]) {
-    clearTimeout(button[successTimerKey]);
-  }
-  button[successTimerKey] = setTimeout(() => {
-    button.classList.remove("is-copied");
-    button[successTimerKey] = null;
-  }, SUCCESS_VISIBLE_MS);
-}
-
-async function copyText(text) {
-  if (!text) return false;
-  // Prefer async clipboard when available
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    try {
-      await navigator.clipboard.writeText(text);
-      return true;
-    } catch (error) {
-      // fall through to legacy path
-    }
-  }
-
-  // Fallback: use a temporary textarea + execCommand
-  try {
-    const textarea = document.createElement("textarea");
-    textarea.value = text;
-    textarea.setAttribute("readonly", "");
-    textarea.style.position = "absolute";
-    textarea.style.left = "-9999px";
-    document.body.appendChild(textarea);
-    textarea.select();
-    const success = document.execCommand("copy");
-    document.body.removeChild(textarea);
-    return success;
-  } catch {
-    return false;
-  }
-}
 
 const initCodeCopy = () => {
   const blocks = document.querySelectorAll("pre code");
@@ -64,7 +26,7 @@ const initCodeCopy = () => {
     button.addEventListener("click", async () => {
       const ok = await copyText(code.textContent);
       if (ok) {
-        markCopiedState(button);
+        flashClass(button, "is-copied", SUCCESS_VISIBLE_MS);
       } else {
         console.warn("Code copy failed");
       }

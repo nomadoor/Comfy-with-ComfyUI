@@ -1,16 +1,19 @@
-const sectionButtons = Array.from(document.querySelectorAll(".sidebar__section-btn"));
-const sectionTabs = Array.from(document.querySelectorAll(".sidebar__section-tab"));
-const navPanels = Array.from(document.querySelectorAll(".sidebar__nav-panel"));
-const navWrapper = document.querySelector(".sidebar__nav-wrapper");
-const sectionSelector = document.querySelector("[data-section-selector]");
-const sectionSelectorToggle = sectionSelector?.querySelector("[data-section-selector-toggle]") || null;
-const sectionSelectorLabel = sectionSelector?.querySelector("[data-section-selector-label]") || null;
+import { sortNotes } from "./notes-sort.js";
+
+// The sidebar is part of the persistent shell: initSidebar() runs once per full page load (from
+// app.js), and the router keeps the open section in step through setActiveSectionByPathname().
 const NAV_SCROLL_KEY = "sidebar-scroll";
 
-const SECTION_KEYS = new Set(sectionButtons.map((btn) => btn.dataset.sectionKey));
+let sectionButtons = [];
+let sectionTabs = [];
+let navPanels = [];
+let navWrapper = null;
+let sectionSelector = null;
+let sectionSelectorToggle = null;
+let sectionSelectorLabel = null;
+let sectionKeys = new Set();
 
-// Storage can throw (blocked site data, some private modes). This module runs at import
-// time, so an uncaught error here would stop every other script on the page.
+// Storage can throw (blocked site data, some private modes).
 const readNavScroll = () => {
   try {
     return sessionStorage.getItem(NAV_SCROLL_KEY);
@@ -26,13 +29,6 @@ const saveNavScroll = (value) => {
     // Storage unavailable: the scroll position is simply not restored.
   }
 };
-
-if (navWrapper) {
-  const saved = readNavScroll();
-  if (saved !== null) {
-    navWrapper.scrollTop = parseFloat(saved);
-  }
-}
 
 function setSectionSelectorOpen(isOpen) {
   if (!sectionSelector || !sectionSelectorToggle) return;
@@ -74,20 +70,6 @@ function activateSection(key, { focus = true } = {}) {
   setSectionSelectorOpen(false);
 }
 
-function sortNotesList(list, mode) {
-  const items = Array.from(list.querySelectorAll("[data-updated]"));
-  items.sort((a, b) => {
-    if (mode === "views") {
-      const views = Number(b.dataset.views || 0) - Number(a.dataset.views || 0);
-      if (views !== 0) return views;
-    }
-    const updated = String(b.dataset.updated || "").localeCompare(String(a.dataset.updated || ""));
-    if (updated !== 0) return updated;
-    return String(a.dataset.title || "").localeCompare(String(b.dataset.title || ""));
-  });
-  items.forEach((item) => list.appendChild(item));
-}
-
 function focusNext(currentIndex, direction) {
   if (!sectionButtons.length) return;
   const total = sectionButtons.length;
@@ -98,99 +80,117 @@ function focusNext(currentIndex, direction) {
   }
 }
 
-sectionButtons.forEach((btn, index) => {
-  btn.addEventListener("click", () => activateSection(btn.dataset.sectionKey));
-  btn.addEventListener("keydown", (event) => {
-    switch (event.key) {
-      case "ArrowRight":
-      case "ArrowDown":
-        event.preventDefault();
-        focusNext(index, 1);
-        break;
-      case "ArrowLeft":
-      case "ArrowUp":
-        event.preventDefault();
-        focusNext(index, -1);
-        break;
-      case "Home":
-        event.preventDefault();
-        activateSection(sectionButtons[0].dataset.sectionKey);
-        break;
-      case "End":
-        event.preventDefault();
-        activateSection(sectionButtons[sectionButtons.length - 1].dataset.sectionKey);
-        break;
-      default:
-        break;
+export function initSidebar() {
+  sectionButtons = Array.from(document.querySelectorAll(".sidebar__section-btn"));
+  sectionTabs = Array.from(document.querySelectorAll(".sidebar__section-tab"));
+  navPanels = Array.from(document.querySelectorAll(".sidebar__nav-panel"));
+  navWrapper = document.querySelector(".sidebar__nav-wrapper");
+  sectionSelector = document.querySelector("[data-section-selector]");
+  sectionSelectorToggle = sectionSelector?.querySelector("[data-section-selector-toggle]") || null;
+  sectionSelectorLabel = sectionSelector?.querySelector("[data-section-selector-label]") || null;
+  sectionKeys = new Set(sectionButtons.map((btn) => btn.dataset.sectionKey));
+
+  if (navWrapper) {
+    const saved = readNavScroll();
+    if (saved !== null) {
+      navWrapper.scrollTop = parseFloat(saved);
+    }
+  }
+
+  sectionButtons.forEach((btn, index) => {
+    btn.addEventListener("click", () => activateSection(btn.dataset.sectionKey));
+    btn.addEventListener("keydown", (event) => {
+      switch (event.key) {
+        case "ArrowRight":
+        case "ArrowDown":
+          event.preventDefault();
+          focusNext(index, 1);
+          break;
+        case "ArrowLeft":
+        case "ArrowUp":
+          event.preventDefault();
+          focusNext(index, -1);
+          break;
+        case "Home":
+          event.preventDefault();
+          activateSection(sectionButtons[0].dataset.sectionKey);
+          break;
+        case "End":
+          event.preventDefault();
+          activateSection(sectionButtons[sectionButtons.length - 1].dataset.sectionKey);
+          break;
+        default:
+          break;
+      }
+    });
+  });
+
+  if (sectionSelectorToggle) {
+    sectionSelectorToggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+      setSectionSelectorOpen(!sectionSelector?.classList.contains("is-open"));
+    });
+  }
+
+  document.addEventListener("click", (event) => {
+    if (!sectionSelector || !sectionSelector.classList.contains("is-open")) return;
+    if (sectionSelector.contains(event.target)) return;
+    setSectionSelectorOpen(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    if (!sectionSelector || !sectionSelector.classList.contains("is-open")) return;
+    setSectionSelectorOpen(false);
+    if (sectionSelectorToggle && typeof sectionSelectorToggle.focus === "function") {
+      sectionSelectorToggle.focus();
     }
   });
-});
 
-if (sectionSelectorToggle) {
-  sectionSelectorToggle.addEventListener("click", (event) => {
-    event.stopPropagation();
-    setSectionSelectorOpen(!sectionSelector?.classList.contains("is-open"));
+  sectionTabs.forEach((tab) => {
+    tab.addEventListener("click", () => activateSection(tab.dataset.sectionTab, { focus: false }));
   });
-}
 
-document.addEventListener("click", (event) => {
-  if (!sectionSelector || !sectionSelector.classList.contains("is-open")) return;
-  if (sectionSelector.contains(event.target)) return;
-  setSectionSelectorOpen(false);
-});
+  document.querySelectorAll("[data-notes-nav]").forEach((notesNav) => {
+    const list = notesNav.querySelector("[data-notes-list]");
+    const buttons = Array.from(notesNav.querySelectorAll("[data-notes-sort]"));
+    if (!list || !buttons.length) return;
 
-document.addEventListener("keydown", (event) => {
-  if (event.key !== "Escape") return;
-  if (!sectionSelector || !sectionSelector.classList.contains("is-open")) return;
-  setSectionSelectorOpen(false);
-  if (sectionSelectorToggle && typeof sectionSelectorToggle.focus === "function") {
-    sectionSelectorToggle.focus();
-  }
-});
-
-sectionTabs.forEach((tab) => {
-  tab.addEventListener("click", () => activateSection(tab.dataset.sectionTab, { focus: false }));
-});
-
-document.querySelectorAll("[data-notes-nav]").forEach((notesNav) => {
-  const list = notesNav.querySelector("[data-notes-list]");
-  const buttons = Array.from(notesNav.querySelectorAll("[data-notes-sort]"));
-  if (!list || !buttons.length) return;
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const mode = button.dataset.notesSort || "updated";
-      buttons.forEach((item) => {
-        const isActive = item === button;
-        item.classList.toggle("is-active", isActive);
-        item.setAttribute("aria-pressed", String(isActive));
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const mode = button.dataset.notesSort || "updated";
+        buttons.forEach((item) => {
+          const isActive = item === button;
+          item.classList.toggle("is-active", isActive);
+          item.setAttribute("aria-pressed", String(isActive));
+        });
+        sortNotes(list, "[data-updated]", mode);
       });
-      sortNotesList(list, mode);
     });
+
+    sortNotes(list, "[data-updated]", "updated");
   });
 
-  sortNotesList(list, "updated");
-});
+  const initialActive =
+    sectionButtons.find((btn) => btn.classList.contains("is-active")) || sectionButtons[0];
+  if (initialActive) {
+    activateSection(initialActive.dataset.sectionKey, { focus: false });
+  }
 
-const initialActive =
-  sectionButtons.find((btn) => btn.classList.contains("is-active")) || sectionButtons[0];
-if (initialActive) {
-  activateSection(initialActive.dataset.sectionKey, { focus: false });
-}
-
-if (navWrapper) {
-  let ticking = false;
-  navWrapper.addEventListener("scroll", () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
+  if (navWrapper) {
+    let ticking = false;
+    navWrapper.addEventListener("scroll", () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        saveNavScroll(navWrapper.scrollTop);
+        ticking = false;
+      });
+    });
+    window.addEventListener("pagehide", () => {
       saveNavScroll(navWrapper.scrollTop);
-      ticking = false;
     });
-  });
-  window.addEventListener("pagehide", () => {
-    saveNavScroll(navWrapper.scrollTop);
-  });
+  }
 }
 
 export function setActiveSectionByPathname(pathname = window.location.pathname) {
@@ -199,7 +199,7 @@ export function setActiveSectionByPathname(pathname = window.location.pathname) 
   // Expecting /<lang>/<section>/...
   const sectionKey = parts[1];
   // Pages outside a section (home, news, contact) render with the first section open; match that.
-  const target = sectionKey && SECTION_KEYS.has(sectionKey) ? sectionKey : sectionButtons[0].dataset.sectionKey;
+  const target = sectionKey && sectionKeys.has(sectionKey) ? sectionKey : sectionButtons[0].dataset.sectionKey;
   if (!target) return;
   activateSection(target, { focus: false });
 }

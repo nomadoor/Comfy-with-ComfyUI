@@ -1,39 +1,11 @@
+import { copyText } from "./clipboard.js";
+import { flashClass } from "./flash.js";
 import ensureHeadingIds from "./heading-ids.js";
 
 const ROOT_SELECTOR = ".article-body";
 const ANCHOR_CLASS = "heading-anchor";
 const SUCCESS_CLASS = "is-success";
 const SUCCESS_TIMEOUT_MS = 800;
-
-async function writeClipboard(text) {
-  const value = String(text || "");
-  if (!value) return false;
-
-  try {
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(value);
-      return true;
-    }
-  } catch {
-    // fall through
-  }
-
-  try {
-    const textarea = document.createElement("textarea");
-    textarea.value = value;
-    textarea.setAttribute("readonly", "true");
-    textarea.style.position = "fixed";
-    textarea.style.top = "-1000px";
-    textarea.style.left = "-1000px";
-    document.body.appendChild(textarea);
-    textarea.select();
-    const ok = document.execCommand("copy");
-    textarea.remove();
-    return ok;
-  } catch {
-    return false;
-  }
-}
 
 function buildHeadingUrl(id) {
   const url = new URL(window.location.href);
@@ -57,23 +29,16 @@ function decorateHeading(heading, { copyLabel, copiedLabel }) {
   icon.setAttribute("aria-hidden", "true");
   btn.appendChild(icon);
 
-  let successTimer = null;
-
   const setSuccess = () => {
-    btn.classList.add(SUCCESS_CLASS);
     btn.setAttribute("aria-label", copiedLabel);
-    if (successTimer) window.clearTimeout(successTimer);
-    successTimer = window.setTimeout(() => {
-      btn.classList.remove(SUCCESS_CLASS);
-      btn.setAttribute("aria-label", copyLabel);
-    }, SUCCESS_TIMEOUT_MS);
+    flashClass(btn, SUCCESS_CLASS, SUCCESS_TIMEOUT_MS, { onEnd: () => btn.setAttribute("aria-label", copyLabel) });
   };
 
   btn.addEventListener("click", async (event) => {
     event.preventDefault();
     event.stopPropagation();
     const link = buildHeadingUrl(heading.id);
-    const ok = await writeClipboard(link);
+    const ok = await copyText(link);
     if (ok) setSuccess();
   });
 
