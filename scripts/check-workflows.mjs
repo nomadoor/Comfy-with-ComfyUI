@@ -1,23 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
+import { listFiles } from "./lib/files.mjs";
 
 const WORKFLOW_DIR = path.resolve("src", "workflows");
 
-function walk(dir, files = []) {
-  if (!fs.existsSync(dir)) return files;
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const fullPath = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      walk(fullPath, files);
-    } else {
-      files.push(fullPath);
-    }
-  }
-  return files;
-}
-
 const failures = [];
-const files = walk(WORKFLOW_DIR);
+const files = listFiles(WORKFLOW_DIR);
 
 for (const file of files) {
   const relative = path.relative(process.cwd(), file);

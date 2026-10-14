@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { parse } from "yaml";
+import { listFiles, readFrontmatter } from "./lib/files.mjs";
 
 const CONTENT_DIR = path.resolve("src", "content");
 const LANGS = new Set(["ja", "en", "zh"]);
@@ -18,23 +18,7 @@ const SEO_LIMITS = {
   en: { title: 64, description: 170 }
 };
 
-function walk(dir, files = []) {
-  if (!fs.existsSync(dir)) return files;
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const fullPath = path.join(dir, entry.name);
-    if (entry.isDirectory()) walk(fullPath, files);
-    else if (entry.name.endsWith(".md") || entry.name.endsWith(".njk")) files.push(fullPath);
-  }
-  return files;
-}
-
-function readFrontmatter(file) {
-  const text = fs.readFileSync(file, "utf8");
-  const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
-  return match ? parse(match[1]) || {} : {};
-}
-
-for (const file of walk(CONTENT_DIR)) {
+for (const file of listFiles(CONTENT_DIR, { extensions: [".md", ".njk"] })) {
   const relative = path.relative(process.cwd(), file);
   const parts = path.relative(CONTENT_DIR, file).split(path.sep);
   const [lang, sectionOrFile] = parts;

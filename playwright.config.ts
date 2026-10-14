@@ -13,7 +13,7 @@ export default defineConfig({
   },
   reporter: [["list"]],
   webServer: {
-    command: "npm run dev:test",
+    command: "npm run test:server",
     port,
     reuseExistingServer: !process.env.CI,
     timeout: 120000

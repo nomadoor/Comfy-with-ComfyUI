@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { parse } from "yaml";
+import { readFrontmatter } from "./lib/files.mjs";
 
 const DATA_DIR = path.resolve("src", "_data");
 const CONTENT_DIR = path.resolve("src", "content");
@@ -17,12 +18,6 @@ function collectNav(acc, lang, section, pages = []) {
     acc.push({ lang, section, id: page.id, noLink: Boolean(page.noLink) });
     collectNav(acc, lang, section, page.children || []);
   }
-}
-
-function readFrontmatter(file) {
-  const text = fs.readFileSync(file, "utf8");
-  const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
-  return match ? parse(match[1]) || {} : {};
 }
 
 function pageExists(lang, section, id) {

@@ -1,19 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
+import { listFiles } from "./lib/files.mjs";
 
 const CONTENT_DIR = path.resolve("src", "content");
 const PUBLIC_ROOTS = ["assets", "workflows", "search", ".well-known"];
 const failures = [];
-
-function walk(dir, files = []) {
-  if (!fs.existsSync(dir)) return files;
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const fullPath = path.join(dir, entry.name);
-    if (entry.isDirectory()) walk(fullPath, files);
-    else if (entry.name.endsWith(".md") || entry.name.endsWith(".njk")) files.push(fullPath);
-  }
-  return files;
-}
 
 function stripFragmentAndQuery(url) {
   return url.split("#")[0].split("?")[0];
@@ -53,7 +44,7 @@ function extractMarkdownLinks(text) {
   return links;
 }
 
-for (const file of walk(CONTENT_DIR)) {
+for (const file of listFiles(CONTENT_DIR, { extensions: [".md", ".njk"] })) {
   const relative = path.relative(process.cwd(), file);
   const text = fs.readFileSync(file, "utf8");
   for (const rawUrl of extractMarkdownLinks(text)) {
@@ -65,12 +56,8 @@ for (const file of walk(CONTENT_DIR)) {
 }
 
 if (failures.length) {
-  const message = failures.join("\n");
-  if (process.env.STRICT_LINKS === "1") {
-    console.error(message);
-    process.exit(1);
-  }
-  console.warn(`Markdown link checks found ${failures.length} advisory issue(s). Set STRICT_LINKS=1 to fail and print details.`);
+  console.error(failures.join("\n"));
+  process.exit(1);
 } else {
   console.log("Markdown link checks passed.");
 }

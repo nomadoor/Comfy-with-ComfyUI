@@ -56,7 +56,8 @@ jobs:
           image=ghcr.io/${{ github.repository_owner }}/comfy-with-comfyui-runpod
           names="$image"
           if [ "$DOCKERHUB_ENABLED" = "true" ]; then names="$names docker.io/$DOCKERHUB_USERNAME/comfy-with-comfyui-runpod"; fi
-          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+          # $GITHUB_REF, not an inline expression: a branch name is never pasted into the script.
+          if [ "$GITHUB_REF" = "refs/heads/main" ]; then
             suffixes="latest ${{ steps.comfy.outputs.tag }}"
             echo "cache=buildcache" >> "$GITHUB_OUTPUT"
           else

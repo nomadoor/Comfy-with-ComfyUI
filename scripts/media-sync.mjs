@@ -6,7 +6,7 @@
 // Runs automatically from the git pre-commit hook (.githooks/pre-commit) with --staged, which reads
 // references from the git index (the snapshot being committed) instead of the working tree.
 // Authenticate once with
-// `npx wrangler login`. Videos need ffmpeg (`sudo apt install ffmpeg`).
+// `npx wrangler@4.149.0 login`. Videos need ffmpeg (`sudo apt install ffmpeg`).
 
 import crypto from "node:crypto";
 import fs from "node:fs";
@@ -48,6 +48,10 @@ async function remoteObjectMatchesKey(host, key) {
   }
 }
 
+// Pinned so a commit never runs whatever wrangler release npx resolves that day. Wrangler is not a
+// dependency on purpose: only the owner's machine uploads, and CI would pay for its download.
+const WRANGLER = "wrangler@4.149.0";
+
 function uploadWithWrangler(bucket, host) {
   return async (key, data, type) => {
     const tmpFile = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "media-sync-")), path.basename(key));
@@ -55,7 +59,7 @@ function uploadWithWrangler(bucket, host) {
     try {
       const result = spawnSync(
         "npx",
-        ["wrangler", "r2", "object", "put", `${bucket}/${key}`, "--file", tmpFile, "--content-type", type, "--cache-control", CACHE_CONTROL, "--remote"],
+        ["--yes", WRANGLER, "r2", "object", "put", `${bucket}/${key}`, "--file", tmpFile, "--content-type", type, "--cache-control", CACHE_CONTROL, "--remote"],
         { encoding: "utf8" }
       );
       if (result.status !== 0) {

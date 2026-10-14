@@ -7,20 +7,14 @@
     "node": ">=20.15.0"
   },
   "scripts": {
-    "dev": "CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=500 npx @11ty/eleventy --serve --port=8080",
-    "dev:media": "COMFY_MEDIA_PREVIEW_CHANGED=1 CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=500 npx @11ty/eleventy --serve --port=8080",
-    "dev:watch": "CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=500 npx @11ty/eleventy --watch --output=_site",
-    "dev:test": "CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=500 COMFY_MEDIA_FIXTURES=1 COMFY_MEDIA_ORIGINALS= eleventy --serve --port=8091 --output=.cache/playwright-site",
-    "dev:pages": "npx wrangler pages dev _site --port=8080 --compatibility-date=2026-02-17",
-    "build": "eleventy --input=src --output=_site",
+    "dev": "CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=500 eleventy --serve --port=8080",
+    "dev:media": "COMFY_MEDIA_PREVIEW_CHANGED=1 CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=500 eleventy --serve --port=8080",
+    "build": "eleventy",
     "clean": "rimraf _site",
     "check": "npm run check:encoding && npm run check:content && npm run check:workflows && npm run check:runpod && npm run check:media && npm run check:assets && npm run test:unit",
-    "check:all": "npm run check && npm run clean && npm run build && npm run check:build && npm run test:playwright",
     "check:assets": "node scripts/check-esm.mjs && node scripts/check-icons.mjs",
     "check:content": "node scripts/check-frontmatter.mjs && node scripts/check-nav-integrity.mjs && node scripts/check-markdown-links.mjs",
     "check:encoding": "node scripts/check-utf8.mjs",
-    "check:links": "STRICT_LINKS=1 node scripts/check-markdown-links.mjs",
-    "check:icons": "STRICT_ICONS=1 node scripts/check-icons.mjs",
     "check:workflows": "node scripts/check-workflows.mjs",
     "check:runpod": "node runpod/tools/check.mjs",
     "check:media": "node scripts/check-media.mjs",
@@ -29,6 +23,7 @@
     "views:update:dry": "node scripts/update-page-views.mjs --dry-run",
     "media:sync": "node scripts/media-sync.mjs",
     "media:waf-expression": "node scripts/media-waf-expression.mjs",
+    "test:server": "CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=500 COMFY_MEDIA_FIXTURES=1 COMFY_MEDIA_ORIGINALS= eleventy --serve --port=8091 --output=.cache/playwright-site",
     "test:playwright": "playwright test",
     "test:unit": "node --test scripts/lib/*.test.mjs",
     "prepare": "node scripts/install-git-hooks.mjs",
@@ -43,15 +38,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy": "^3.1.6",
     "fast-glob": "^3.3.3",
-    "prismjs": "^1.29.0",
-    "yaml": "^2.8.1"
+    "markdown-it": "^14.3.2",
+    "prismjs": "^1.30.0",
+    "yaml": "^2.9.1"
   },
   "devDependencies": {
-    "@playwright/test": "^1.56.1",
-    "markdown-it": "^14.1.0",
-    "rimraf": "^6.1.0",
+    "@playwright/test": "^1.64.0",
+    "rimraf": "^6.1.3",
     "sharp": "0.35.4"
   }
 }

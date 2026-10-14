@@ -14,6 +14,7 @@ from .util import fetch_json
 
 FRONTEND_NODES = {"Note", "MarkdownNote", "Reroute", "PrimitiveNode"}
 INPUT_NODES = {"LoadImage", "LoadImageMask", "LoadVideo", "LoadAudio"}
+# Mirrors MODEL_EXT in scripts/lib/workflow-graph.mjs (the profile builder applies the same rule).
 MODEL_EXT = (".safetensors", ".gguf", ".ckpt", ".pt", ".pth", ".bin", ".sft")
 
 
