@@ -4,6 +4,21 @@ const LONG_PAGE = "/ja/basic-workflows/ltx-2/";
 const OTHER_PAGE = "/ja/basic-workflows/sdxl/";
 const ROUTER_HEADER = "x-requested-with";
 
+// The pages' own headings, read from the built HTML once: the tests check which page is showing
+// without depending on how an article happens to be titled.
+const headings = new Map<string, string>();
+const headingOf = async (page, url: string) => {
+  if (!headings.has(url)) {
+    const html = await (await page.request.get(url)).text();
+    const text = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1].replace(/<[^>]+>/g, "").trim();
+    if (!text) throw new Error(`no <h1> in ${url}`);
+    headings.set(url, text);
+  }
+  return headings.get(url)!;
+};
+const expectPageShown = async (page, url: string) =>
+  expect(page.locator("h1").first()).toContainText(await headingOf(page, url));
+
 // Click a sidebar link without Playwright's scroll-into-view, which can move the window and change
 // the very scroll position these tests measure.
 const clickSidebarLink = (page, href: string) =>
@@ -23,14 +38,14 @@ test.describe("View-transition router", () => {
 
     await clickSidebarLink(page, OTHER_PAGE);
     await expect(page).toHaveURL(OTHER_PAGE);
-    await expect(page.locator("h1").first()).toContainText("SDXL");
+    await expectPageShown(page, OTHER_PAGE);
     await page.evaluate(() => window.scrollTo({ top: 700, behavior: "instant" }));
     await expect.poll(scrollY).toBeGreaterThan(600);
     const otherY = await scrollY();
 
     await page.goBack();
     await expect(page).toHaveURL(LONG_PAGE);
-    await expect(page.locator("h1").first()).toContainText("LTX-2");
+    await expectPageShown(page, LONG_PAGE);
     // The browser may jump briefly before the router swaps content, so require the position to hold.
     await expect.poll(async () => Math.abs((await scrollY()) - savedY), { timeout: 5000 }).toBeLessThan(50);
     await page.waitForTimeout(300);
@@ -38,7 +53,7 @@ test.describe("View-transition router", () => {
 
     await page.goForward();
     await expect(page).toHaveURL(OTHER_PAGE);
-    await expect(page.locator("h1").first()).toContainText("SDXL");
+    await expectPageShown(page, OTHER_PAGE);
     await expect.poll(async () => Math.abs((await scrollY()) - otherY), { timeout: 5000 }).toBeLessThan(50);
   });
 
@@ -57,7 +72,7 @@ test.describe("View-transition router", () => {
     expect(await page.evaluate(() => document.documentElement.scrollHeight - window.innerHeight)).toBeLessThan(savedY);
     await page.goBack();
     await expect(page).toHaveURL(LONG_PAGE);
-    await expect(page.locator("h1").first()).toContainText("LTX-2");
+    await expectPageShown(page, LONG_PAGE);
     await expect.poll(async () => Math.abs((await scrollY()) - savedY), { timeout: 5000 }).toBeLessThan(50);
   });
 
@@ -66,12 +81,12 @@ test.describe("View-transition router", () => {
     const scrollY = () => page.evaluate(() => window.scrollY);
     await page.goto(START_PAGE);
     await clickSidebarLink(page, LONG_PAGE);
-    await expect(page.locator("h1").first()).toContainText("LTX-2");
+    await expectPageShown(page, LONG_PAGE);
     await page.evaluate(() => window.scrollTo({ top: 2400, behavior: "instant" }));
     await expect.poll(scrollY).toBeGreaterThan(2000);
     const longY = await scrollY();
     await clickSidebarLink(page, OTHER_PAGE);
-    await expect(page.locator("h1").first()).toContainText("SDXL");
+    await expectPageShown(page, OTHER_PAGE);
     await page.evaluate(() => window.scrollTo({ top: 300, behavior: "instant" }));
     await expect.poll(scrollY).toBeGreaterThan(250);
 
@@ -87,13 +102,13 @@ test.describe("View-transition router", () => {
     await longFetch;
     await page.evaluate(() => history.back());
     await expect(page).toHaveURL(START_PAGE);
-    await expect(page.locator("h1").first()).toContainText("Chroma1-HD");
+    await expectPageShown(page, START_PAGE);
     releaseLong();
     await page.unroute(`**${LONG_PAGE}`);
 
     await page.goForward();
     await expect(page).toHaveURL(LONG_PAGE);
-    await expect(page.locator("h1").first()).toContainText("LTX-2");
+    await expectPageShown(page, LONG_PAGE);
     await expect.poll(async () => Math.abs((await scrollY()) - longY), { timeout: 5000 }).toBeLessThan(50);
   });
 
@@ -103,9 +118,9 @@ test.describe("View-transition router", () => {
     await page.evaluate(() => window.scrollTo({ top: 2400, behavior: "instant" }));
     await expect.poll(scrollY).toBeGreaterThan(2000);
     await clickSidebarLink(page, OTHER_PAGE);
-    await expect(page.locator("h1").first()).toContainText("SDXL");
+    await expectPageShown(page, OTHER_PAGE);
     await page.goBack();
-    await expect(page.locator("h1").first()).toContainText("LTX-2");
+    await expectPageShown(page, LONG_PAGE);
     await expect.poll(scrollY).toBeGreaterThan(2000);
     // Like dragging the scrollbar or find-in-page: a scroll with no input events on the page, after the
     // short grace period in which leftover smooth-scroll frames are ignored.
@@ -123,7 +138,7 @@ test.describe("View-transition router", () => {
     const savedY = await scrollY();
     await page.waitForTimeout(400);
     await page.reload();
-    await expect(page.locator("h1").first()).toContainText("LTX-2");
+    await expectPageShown(page, LONG_PAGE);
     await expect.poll(async () => Math.abs((await scrollY()) - savedY), { timeout: 5000 }).toBeLessThan(50);
   });
 
@@ -140,7 +155,7 @@ test.describe("View-transition router", () => {
     await page.goto(LONG_PAGE);
     await page.locator(`.sidebar a[href="${OTHER_PAGE}"]`).first().click();
     await expect(page).toHaveURL(OTHER_PAGE);
-    await expect(page.locator("h1").first()).toContainText("SDXL");
+    await expectPageShown(page, OTHER_PAGE);
 
     const routerFetch = page.waitForRequest(
       (request) => request.url().endsWith(SLOW_PAGE) && Boolean(request.headers()[ROUTER_HEADER])
@@ -151,14 +166,14 @@ test.describe("View-transition router", () => {
     await page.goBack();
     releaseSlow();
     await expect(page).toHaveURL(LONG_PAGE);
-    await expect(page.locator("h1").first()).toContainText("LTX-2");
+    await expectPageShown(page, LONG_PAGE);
     await page.waitForTimeout(800);
     await expect(page).toHaveURL(LONG_PAGE);
-    await expect(page.locator("h1").first()).toContainText("LTX-2");
+    await expectPageShown(page, LONG_PAGE);
 
     await page.goForward();
     await expect(page).toHaveURL(OTHER_PAGE);
-    await expect(page.locator("h1").first()).toContainText("SDXL");
+    await expectPageShown(page, OTHER_PAGE);
   });
 
   test("Back fired right after a prefetched navigation commits keeps history intact", async ({ page }) => {
@@ -166,7 +181,7 @@ test.describe("View-transition router", () => {
     await page.goto(LONG_PAGE);
     await page.locator(`.sidebar a[href="${OTHER_PAGE}"]`).first().click();
     await expect(page).toHaveURL(OTHER_PAGE);
-    await expect(page.locator("h1").first()).toContainText("SDXL");
+    await expectPageShown(page, OTHER_PAGE);
 
     // Make sure the next page is prefetched so the click commits without waiting for the network.
     await page.locator(`.sidebar a[href="${NEXT_PAGE}"]`).first().hover();
@@ -186,14 +201,14 @@ test.describe("View-transition router", () => {
     }, NEXT_PAGE);
 
     await expect(page).toHaveURL(LONG_PAGE);
-    await expect(page.locator("h1").first()).toContainText("LTX-2");
+    await expectPageShown(page, LONG_PAGE);
     await page.waitForTimeout(800);
     await expect(page).toHaveURL(LONG_PAGE);
-    await expect(page.locator("h1").first()).toContainText("LTX-2");
+    await expectPageShown(page, LONG_PAGE);
 
     await page.goForward();
     await expect(page).toHaveURL(OTHER_PAGE);
-    await expect(page.locator("h1").first()).toContainText("SDXL");
+    await expectPageShown(page, OTHER_PAGE);
   });
 
   test("cross-page links with a hash scroll to the target heading", async ({ page }) => {
@@ -218,7 +233,7 @@ test.describe("View-transition router", () => {
     await expect(page).toHaveURL(OTHER_PAGE);
     await page.goBack();
     await expect(page).toHaveURL(LONG_PAGE);
-    await expect(page.locator("h1").first()).toContainText("LTX-2");
+    await expectPageShown(page, LONG_PAGE);
     await expect(page).toHaveTitle(/LTX-2/);
   });
 
@@ -313,7 +328,7 @@ test.describe("View-transition router", () => {
     await page.goto(LONG_PAGE);
     await clickSidebarLink(page, OTHER_PAGE);
     await expect(page).toHaveURL(OTHER_PAGE);
-    await expect(page.locator("h1").first()).toContainText("SDXL");
+    await expectPageShown(page, OTHER_PAGE);
     // After a router navigation the head must match a direct load of the same page.
     expect(await headState()).toEqual(direct);
     expect(direct.canonical).toContain(OTHER_PAGE);
@@ -337,7 +352,7 @@ test.describe("View-transition router", () => {
 
     await page.goBack();
     await expect(page).toHaveURL(OTHER_PAGE);
-    await expect(page.locator("h1").first()).toContainText("SDXL");
+    await expectPageShown(page, OTHER_PAGE);
     expect(await headState()).toEqual(direct);
   });
 
@@ -361,13 +376,13 @@ test.describe("View-transition router", () => {
       page.evaluate(() => (window as any).__docListeners.filter((r: any) => !r.removed && !r.signal?.aborted).length);
 
     await page.goto(LONG_PAGE);
-    await expect(page.locator("h1").first()).toContainText("LTX-2");
+    await expectPageShown(page, LONG_PAGE);
     for (let i = 0; i < 2; i += 1) {
       await page.locator(`.sidebar a[href="${OTHER_PAGE}"]`).first().click();
       await expect(page).toHaveURL(OTHER_PAGE);
       await page.goBack();
       await expect(page).toHaveURL(LONG_PAGE);
-      await expect(page.locator("h1").first()).toContainText("LTX-2");
+      await expectPageShown(page, LONG_PAGE);
     }
     await page.mouse.click(2, 2); // fire pointer events on the document without depending on a target
     const baseline = await active();
@@ -377,7 +392,7 @@ test.describe("View-transition router", () => {
       await expect(page).toHaveURL(OTHER_PAGE);
       await page.goBack();
       await expect(page).toHaveURL(LONG_PAGE);
-      await expect(page.locator("h1").first()).toContainText("LTX-2");
+      await expectPageShown(page, LONG_PAGE);
     }
     await page.mouse.click(2, 2); // fire pointer events on the document without depending on a target
     expect(await active()).toBe(baseline);
