@@ -87,7 +87,7 @@ Accepted（PoC。記事側のボタン・案内表示は別途デザイン相談
 - Terminate は `DELETE https://api.runpod.io/v2/pods/{id}` にする。本番の Pod の中から Pod 用 API キーで呼び、`204` で Pod が消えることを確認した（2026-10-14）。v1 の DELETE を Pod 用キーで通した確認はない。
 - 「本番で要確認」としていた Pod 用キーでの Terminate は、これで確認済みになる。
 - 失敗した Pod（準備の失敗、準備の期限切れ、ComfyUI の終了）は、理由を見せてから 3 分で Terminate する（`FAIL_STOP_MINUTES`、既定 3）。これまでは放置と同じ `IDLE_STOP_MINUTES`（30 分）だったが、失敗した Pod は準備をやり直さず ComfyUI も起動し直さないので、待っても直らず課金だけが続く。理由は 3 分あれば読める。直すには記事のボタンから作り直す。
-- 本番の Pod で確認（2026-10-14、`:exp` image）：`IDLE_STOP_MINUTES=3` で、ComfyUI を開かずに放置した Pod が自分で消えた。
+- 本番の Pod で確認（2026-10-14、`:exp` image）：`IDLE_STOP_MINUTES=3` で、ComfyUI を開かずに放置した Pod が自分で消えた。`PROFILE=no-such-profile` で準備に失敗させた Pod も、理由を出してから 3 分で自分で消えた。
 
 ## Consequences
 - workflow を差し替えるときは `properties.models` も保つ必要がある。欠けているとプロファイル生成が警告を出す。
