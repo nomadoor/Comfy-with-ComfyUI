@@ -73,7 +73,7 @@ test("search keyboard: arrows move the active result and Enter opens it", async 
   // The first hit must be another page, or the URL check below would pass without navigating.
   expect(href).not.toBe(SEARCH_PAGE);
   await input.press("Enter");
-  await expect(page).toHaveURL(new RegExp(`${href}$`));
+  await expect(page).toHaveURL((url) => url.pathname === href);
 });
 
 test("search Escape hides the results", async ({ page }) => {

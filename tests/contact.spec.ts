@@ -117,8 +117,9 @@ test("operator form: category, confirm and send post the form to /api/contact", 
   await expect(form.locator('input[name="reply_to"]')).toHaveValue("");
 });
 
-test("report links on articles carry the current page URL", async ({ page }) => {
+test("report links on articles open the fix form for the current page", async ({ page }) => {
   await page.goto("/ja/basic-workflows/sd15-basics/");
   const link = page.locator("[data-contact-report-link]").first();
-  await expect(link).toHaveAttribute("href", /url=.*%2Fja%2Fbasic-workflows%2Fsd15-basics%2F/);
+  await expect(link).toHaveAttribute("href", /[?&]type=fix(&|$)/);
+  await expect(link).toHaveAttribute("href", /[?&]url=[^&#]*%2Fja%2Fbasic-workflows%2Fsd15-basics%2F/);
 });
