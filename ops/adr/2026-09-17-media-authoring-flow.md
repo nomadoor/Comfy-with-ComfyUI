@@ -30,7 +30,7 @@ Uploading during the Cloudflare Pages / CI build is not possible: originals live
 - `npm run dev:media` enables `COMFY_MEDIA_PREVIEW_CHANGED=1` and additionally checks registered originals for changes since upload (`source` differs). Use this slower mode only while replacing already registered media.
 - A selected local original uses `/__media-originals/<logical name>`, served by an Eleventy dev server middleware (`scripts/lib/media-local-preview.mjs`) with Range support and `Cache-Control: no-store`. Paths are validated as logical names and must resolve inside the originals root.
 - Dimensions come from the PNG/JPEG header, or for mp4 from the first video track's `tkhd` box (moov before or after mdat; a 90/270 degree display rotation swaps width and height), cached by size and mtime. Without them, video figures fell back to 16:9 and `object-fit: cover` cropped portrait clips.
-- Production builds never use the preview and still fail on unregistered names. Playwright's `dev:test` clears `COMFY_MEDIA_ORIGINALS` so tests do not depend on local files.
+- Production builds never use the preview and still fail on unregistered names. Playwright's `test:server` (formerly `dev:test`) clears `COMFY_MEDIA_ORIGINALS` so tests do not depend on local files.
 
 ### `media:sync`
 

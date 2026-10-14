@@ -106,7 +106,7 @@ mp4 is registered manually for now. ComfyUI video outputs (e.g. VideoHelperSuite
 - Production never contains fixtures: `src/_data/media.json` holds only real public media, and no fixture objects are uploaded to R2.
 - `tests/fixtures/media/` holds the fixture manifest (`media.json`, `fixtures/…` names), the fixture page (`media-fixtures.md`), `r2_image.png`, and `r2_video.mp4` (32×32 synthetic H.264).
 - With `COMFY_MEDIA_FIXTURES=1`, `.eleventy.js` merges the fixture manifest and adds the page as a virtual template at `/internal/media-fixtures/` (`robots: noindex`, `searchExclude: true`, not in nav/sitemap/llms.txt/search). Without it, neither is read.
-- Playwright starts `npm run dev:test` (fixtures enabled, port 8091, output `.cache/playwright-site`), so a regular `npm run dev` server on 8080 and `_site` are never reused. R2 and Gyazo requests are fulfilled from local fixtures.
+- Playwright starts `npm run test:server` (formerly `dev:test`; fixtures enabled, port 8091, output `.cache/playwright-site`), so a regular `npm run dev` server on 8080 and `_site` are never reused. R2 and Gyazo requests are fulfilled from local fixtures.
 - `tests/media.spec.ts` covers `/media/` resolution, R2/Gyazo × image/loop/player, OGP poster, UI naming, and lightbox; `tests/media-metadata.spec.ts` covers metadata removal. Player click-to-open is asserted with a normally sized Gyazo player because native controls cover the 32px R2 fixture.
 - `npm run check:build` verifies a production `_site` has no fixture page, no fixture references, and no unresolved `/media/` references.
 

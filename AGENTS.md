@@ -64,8 +64,8 @@ Use the project-local skills in `.claude/skills/` when the task matches:
 Run checks that match the blast radius:
 
 - `git diff --check`
-- `npm run build`
 - `npm run check`
+- `npm run build`, then `npm run check:build`
 - `npm run test:playwright` when layout, client JS, search, notes, forms, or navigation behavior changes.
 
 If Playwright fails in the sandbox because Eleventy cannot bind `0.0.0.0`, rerun with the required approval rather than treating it as an article failure.

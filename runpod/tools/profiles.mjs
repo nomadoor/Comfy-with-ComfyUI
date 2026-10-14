@@ -10,6 +10,7 @@ import fs from "node:fs";
 import path from "node:path";
 import fg from "fast-glob";
 import YAML from "yaml";
+import { eachNode, MODEL_EXT } from "../../scripts/lib/workflow-graph.mjs";
 
 export const SCHEMA_VERSION = 1;
 export const RUNPOD_DIR = path.resolve("runpod");
@@ -18,7 +19,6 @@ export const CORE_NODES_PATH = path.join(RUNPOD_DIR, "core-nodes.json");
 
 const WORKFLOW_ROOT = path.resolve("src", "workflows");
 const ALLOWED_HOSTS = new Set(["huggingface.co", "civitai.com"]);
-const MODEL_EXT = /\.(safetensors|gguf|ckpt|pt|pth|bin|sft)$/i;
 // Nodes that read a file from ComfyUI's input/ folder; widgets_values[0] is the file name.
 const INPUT_NODES = new Set(["LoadImage", "LoadImageMask", "LoadVideo", "LoadAudio"]);
 // Frontend-only nodes: they never reach the backend, so they need nothing installed.
@@ -97,13 +97,6 @@ export const parseHuggingFaceURL = (url) => {
   const match = new URL(url).pathname.match(/^\/([^/]+\/[^/]+)\/(?:resolve|blob)\/([^/]+)\/(.+)$/);
   if (!match) return null;
   return { repo_id: match[1], revision: decodeURIComponent(match[2]), path_in_repo: decodeURIComponent(match[3]) };
-};
-
-const eachNode = function* (workflow) {
-  for (const node of workflow.nodes ?? []) yield node;
-  for (const subgraph of workflow.definitions?.subgraphs ?? []) {
-    for (const node of subgraph.nodes ?? []) yield node;
-  }
 };
 
 const siteCommit = () => {

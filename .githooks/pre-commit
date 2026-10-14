@@ -9,6 +9,12 @@ if ! git diff --cached --name-only --diff-filter=ACMR | grep -qE '^src/(content|
   exit 0
 fi
 
+# The hook stages media.json in full below, so an unstaged hand edit there would slip into the commit.
+if ! git diff --quiet -- src/_data/media.json; then
+  echo "[pre-commit] src/_data/media.json has unstaged changes; stage or discard them first" >&2
+  exit 1
+fi
+
 echo "[pre-commit] media:sync"
 # --staged: read references from the index, so unstaged edits cannot change what gets uploaded/recorded.
 if ! node scripts/media-sync.mjs --staged; then

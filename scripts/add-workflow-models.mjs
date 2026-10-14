@@ -11,8 +11,8 @@
 // does not list are reported, never guessed. Without --write it only prints the plan.
 import fs from "node:fs";
 import path from "node:path";
+import { eachNode, MODEL_EXT } from "./lib/workflow-graph.mjs";
 
-const MODEL_EXT = /\.(safetensors|gguf|ckpt|pt|pth|bin|sft)$/i;
 
 // Folder each core loader reads from; a mismatch with the article's folder is reported.
 const LOADER_DIRS = {
@@ -65,13 +65,6 @@ const listWorkflows = (target) =>
   fs.statSync(target).isDirectory()
     ? fs.readdirSync(target).filter((f) => f.endsWith(".json")).sort().map((f) => path.join(target, f))
     : [target];
-
-const eachNode = function* (workflow) {
-  for (const node of workflow.nodes ?? []) yield node;
-  for (const subgraph of workflow.definitions?.subgraphs ?? []) {
-    for (const node of subgraph.nodes ?? []) yield node;
-  }
-};
 
 const articleModels = readArticleModels(articlePath);
 if (articleModels.size === 0) {

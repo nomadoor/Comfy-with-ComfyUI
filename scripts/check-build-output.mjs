@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import fg from "fast-glob";
-import { parse } from "yaml";
+import { readFrontmatter } from "./lib/files.mjs";
 
 // Verifies a production build (default: _site) contains no test fixtures and no unresolved
 // `/media/` references. Run after a clean `npm run build` (Eleventy keeps stale files in the output
@@ -40,8 +40,7 @@ const expectedArticles = new Map();
 const expectedSeo = new Map();
 const dateOnly = (value) => String(value || "").match(/^\d{4}-\d{2}-\d{2}/)?.[0];
 for (const file of await fg(["src/content/{ja,en,zh}/**/*.{md,njk}"])) {
-  const match = fs.readFileSync(file, "utf8").match(/^---\r?\n([\s\S]*?)\r?\n---/);
-  const data = match ? parse(match[1]) || {} : {};
+  const data = readFrontmatter(file);
   if (!data.lang || !data.slug) continue;
   const pagePath = data.section
     ? `/${data.lang}/${data.section}/${data.slug}/`
