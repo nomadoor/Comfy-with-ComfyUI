@@ -178,7 +178,7 @@
                       <span class="assistant-rail__button-label">{{ formStrings.editLabel[currentLang] or formStrings.editLabel[site.defaultLang] or "Edit" }}</span>
                     </button>
                     <button type="button" class="assistant-rail__button assistant-rail__button--primary" data-assistant-action="send">
-                      <span class="assistant-rail__button-label">{{ "この内容で送信" if currentLang == "ja" else (formStrings.sendLabel[currentLang] or formStrings.sendLabel[site.defaultLang] or "Send") }}</span>
+                      <span class="assistant-rail__button-label">{{ formStrings.sendLabel[currentLang] or formStrings.sendLabel[site.defaultLang] or "Send" }}</span>
                       <svg class="assistant-rail__button-icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                       </svg>

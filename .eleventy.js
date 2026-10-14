@@ -799,7 +799,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addPreprocessor("drafts", "*", (data) => (data.draft ? false : undefined));
   // Asset notes are for maintainers, not pages.
   eleventyConfig.ignores.add("src/assets/fonts/README.md");
-  eleventyConfig.addPassthroughCopy({ "src/search": "search" });
   eleventyConfig.addPassthroughCopy({ "src/.well-known": ".well-known" });
   eleventyConfig.addPassthroughCopy({ "src/_headers": "_headers" });
   eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
@@ -1616,17 +1615,19 @@ export default function (eleventyConfig) {
     if (!items.length) return "";
     if (defaultIndex < 0) defaultIndex = 0;
 
-    env.__workflowPickerCounter = env.__workflowPickerCounter || 0;
-    env.__workflowPickerCounter += 1;
+    // `this` is a fresh object per call; the page context (env.ctx) lives for the whole page,
+    // so the counter keeps two pickers with the same files from sharing an id.
+    const counterState = env.ctx && typeof env.ctx === "object" ? env.ctx : env;
+    counterState.__workflowPickerCounter = (counterState.__workflowPickerCounter || 0) + 1;
     const pickerKey = hashString(items.map((item) => item.file).join("|"));
-    const pickerId = `workflow-picker-${pickerKey}-${env.__workflowPickerCounter}`;
+    const pickerId = `workflow-picker-${pickerKey}-${counterState.__workflowPickerCounter}`;
     const lang = getRenderLang(env);
     const copyLabel = getWorkflowLabel("copyLabel", lang);
     const downloadLabel = getWorkflowLabel("downloadLabel", lang);
     const copiedLabel = getWorkflowLabel("copiedLabel", lang);
     const downloadedLabel = getWorkflowLabel("downloadedLabel", lang);
-    const copyErrorLabel = lang === "ja" ? "コピーに失敗しました" : "Copy failed";
-    const selectLabel = lang === "ja" ? "workflow JSONを選択" : "Select workflow JSON";
+    const copyErrorLabel = getWorkflowLabel("copyErrorLabel", lang);
+    const selectLabel = getWorkflowLabel("selectLabel", lang);
     const copyIcon = getIconMarkup("copy");
     const downloadIcon = getIconMarkup("download");
 

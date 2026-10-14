@@ -124,6 +124,16 @@
         "en": "Downloaded",
         "zh": "已下载"
       },
+      "copyErrorLabel": {
+        "ja": "コピーに失敗しました",
+        "en": "Copy failed",
+        "zh": "复制失败"
+      },
+      "selectLabel": {
+        "ja": "workflow JSONを選択",
+        "en": "Select workflow JSON",
+        "zh": "选择 workflow JSON"
+      },
       "performanceLabel": {
         "ja": "パフォーマンス",
         "en": "Performance",
@@ -353,7 +363,7 @@
           "zh": "确认"
         },
         "sendLabel": {
-          "ja": "送信する",
+          "ja": "この内容で送信",
           "en": "Send",
           "zh": "发送"
         },

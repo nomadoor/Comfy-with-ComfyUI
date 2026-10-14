@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { noteModels, parsePerformance, scanArticle, workflowFacts } from "./workflow-catalog.mjs";
+import { frontmatter, noteModels, parsePerformance, scanArticle, workflowFacts } from "./workflow-catalog.mjs";
 
 test("scanArticle finds shortcode, picker and plain links under their nearest heading", () => {
   const body = [
@@ -118,4 +118,13 @@ test("workflowFacts lists custom nodes, reads object widgets, and skips bypassed
     { id: "someone/upscaler", source: "github" },
   ]);
   assert.deepEqual(facts.models.map((m) => m.name), ["u.safetensors"]);
+});
+
+test("frontmatter reads LF and CRLF files alike", () => {
+  for (const eol of ["\n", "\r\n"]) {
+    const text = ["---", "title: Panorama", "robots: noindex", "---", "", "Body"].join(eol);
+    const { data, body } = frontmatter(text);
+    assert.deepEqual(data, { title: "Panorama", robots: "noindex" });
+    assert.equal(body.trim(), "Body");
+  }
 });

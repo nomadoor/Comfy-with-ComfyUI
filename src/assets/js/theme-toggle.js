@@ -12,7 +12,12 @@ function applyTheme(theme, buttons) {
 
 function initThemeToggle() {
   const buttons = Array.from(document.querySelectorAll("[data-theme-toggle]"));
-  const stored = window.localStorage?.getItem(STORAGE_KEY);
+  let stored = null;
+  try {
+    stored = window.localStorage?.getItem(STORAGE_KEY);
+  } catch {
+    // Storage blocked: fall back to the default theme.
+  }
   const initial = stored === "light" ? "light" : DEFAULT_THEME;
   applyTheme(initial, buttons);
 

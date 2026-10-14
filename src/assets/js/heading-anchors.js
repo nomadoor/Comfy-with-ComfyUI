@@ -1,35 +1,9 @@
-const HEADING_SELECTOR = "h2, h3";
+import ensureHeadingIds from "./heading-ids.js";
+
 const ROOT_SELECTOR = ".article-body";
 const ANCHOR_CLASS = "heading-anchor";
 const SUCCESS_CLASS = "is-success";
 const SUCCESS_TIMEOUT_MS = 800;
-
-const slugify = (value = "") =>
-  String(value)
-    .trim()
-    .toLowerCase()
-    .replace(/[^\p{L}\p{N}]+/gu, "-")
-    .replace(/^-+|-+$/g, "");
-
-function ensureHeadingIds(headings = []) {
-  const used = new Set();
-  headings.forEach((heading) => {
-    if (heading.id) used.add(heading.id);
-  });
-
-  headings.forEach((heading) => {
-    if (heading.id) return;
-    const base = slugify(heading.textContent || "section") || "section";
-    let id = base;
-    let n = 2;
-    while (used.has(id)) {
-      id = `${base}-${n}`;
-      n += 1;
-    }
-    heading.id = id;
-    used.add(id);
-  });
-}
 
 async function writeClipboard(text) {
   const value = String(text || "");
@@ -111,10 +85,8 @@ export default function initHeadingAnchors(root = document) {
   const article = scope.querySelector(ROOT_SELECTOR);
   if (!article) return;
 
-  const headings = Array.from(article.querySelectorAll(HEADING_SELECTOR));
+  const headings = ensureHeadingIds(article);
   if (!headings.length) return;
-
-  ensureHeadingIds(headings);
 
   const copyLabel =
     document.body?.dataset?.headingAnchorCopyLabel || "Copy heading link";

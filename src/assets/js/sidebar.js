@@ -9,8 +9,26 @@ const NAV_SCROLL_KEY = "sidebar-scroll";
 
 const SECTION_KEYS = new Set(sectionButtons.map((btn) => btn.dataset.sectionKey));
 
+// Storage can throw (blocked site data, some private modes). This module runs at import
+// time, so an uncaught error here would stop every other script on the page.
+const readNavScroll = () => {
+  try {
+    return sessionStorage.getItem(NAV_SCROLL_KEY);
+  } catch {
+    return null;
+  }
+};
+
+const saveNavScroll = (value) => {
+  try {
+    sessionStorage.setItem(NAV_SCROLL_KEY, value);
+  } catch {
+    // Storage unavailable: the scroll position is simply not restored.
+  }
+};
+
 if (navWrapper) {
-  const saved = sessionStorage.getItem(NAV_SCROLL_KEY);
+  const saved = readNavScroll();
   if (saved !== null) {
     navWrapper.scrollTop = parseFloat(saved);
   }
@@ -166,12 +184,12 @@ if (navWrapper) {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      sessionStorage.setItem(NAV_SCROLL_KEY, navWrapper.scrollTop);
+      saveNavScroll(navWrapper.scrollTop);
       ticking = false;
     });
   });
   window.addEventListener("pagehide", () => {
-    sessionStorage.setItem(NAV_SCROLL_KEY, navWrapper.scrollTop);
+    saveNavScroll(navWrapper.scrollTop);
   });
 }
 
