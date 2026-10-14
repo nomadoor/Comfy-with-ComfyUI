@@ -27,10 +27,15 @@ export function listFiles(target, { extensions } = {}) {
 
 const FRONTMATTER = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/;
 
-// The YAML frontmatter of a page as an object ({} when there is none). Accepts LF and CRLF.
-export function parseFrontmatter(text) {
-  const match = String(text).match(FRONTMATTER);
-  return match ? parse(match[1]) || {} : {};
+// A page split into its YAML frontmatter (an object, {} when there is none) and the body after it.
+// Accepts LF and CRLF. Invalid YAML throws, so the check scripts report it.
+export function splitFrontmatter(text) {
+  const source = String(text);
+  const match = source.match(FRONTMATTER);
+  if (!match) return { data: {}, body: source };
+  return { data: parse(match[1]) || {}, body: source.slice(match[0].length) };
 }
+
+export const parseFrontmatter = (text) => splitFrontmatter(text).data;
 
 export const readFrontmatter = (file) => parseFrontmatter(fs.readFileSync(file, "utf8"));

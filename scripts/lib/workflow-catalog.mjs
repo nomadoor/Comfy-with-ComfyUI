@@ -6,12 +6,15 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import YAML from "yaml";
+import { splitFrontmatter } from "./files.mjs";
+import { eachNode } from "./workflow-graph.mjs";
 
 export const CATALOG_SCHEMA_VERSION = 1;
 const WORKFLOW_ROOT = path.resolve("src", "workflows");
 const CONTENT_ROOT = path.resolve("src", "content");
 const LANG_ORDER = ["ja", "en", "zh"];
+// Wider than MODEL_EXT in workflow-graph.mjs on purpose: the catalog also lists ONNX models
+// (detectors and the like) that readers download, which the Pod checks do not need to know.
 const MODEL_FILE = /\.(safetensors|gguf|ckpt|pt|pth|bin|sft|onnx)$/i;
 
 // `{% workflow "/workflows/…json", level=…, … %}`, `{% workflowPicker "!/workflows/…json", … %}` and
@@ -21,13 +24,13 @@ const MODEL_FILE = /\.(safetensors|gguf|ckpt|pt|pth|bin|sft|onnx)$/i;
 const WORKFLOW_REF = /(?<="!?|\(|\((?:\.\.\/)*\.\.)\/workflows\/[^\s"')]+?\.json(?=[")])/g;
 const SHORTCODE = /\{%\s*workflow\s+"(\/workflows\/[^"]+\.json)"([^%]*)%\}/g;
 
-export const frontmatter = (text) => {
-  const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
-  if (!match) return { data: {}, body: text };
+// The catalog is written after every build, so a page with broken frontmatter is listed without
+// its metadata instead of stopping the build (check:content reports it).
+export const articleFrontmatter = (text) => {
   try {
-    return { data: YAML.parse(match[1]) ?? {}, body: text.slice(match[0].length) };
+    return splitFrontmatter(text);
   } catch {
-    return { data: {}, body: text.slice(match[0].length) };
+    return { data: {}, body: text.replace(/^---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)/, "") };
   }
 };
 
@@ -81,11 +84,6 @@ export const scanArticle = (body) => {
     }
   }
   return found;
-};
-
-const eachNode = function* (workflow) {
-  yield* workflow.nodes ?? [];
-  for (const subgraph of workflow.definitions?.subgraphs ?? []) yield* subgraph.nodes ?? [];
 };
 
 // Models: the loaders' `properties.models` (url and folder, as ComfyUI's missing-model dialog reads
@@ -160,7 +158,7 @@ export const buildWorkflowCatalog = ({ siteURL, pages }) => {
   for (const page of pages) {
     const input = path.resolve(page.inputPath);
     if (!input.startsWith(CONTENT_ROOT + path.sep) || !input.endsWith(".md") || !page.url) continue;
-    const { data, body } = frontmatter(fs.readFileSync(input, "utf8"));
+    const { data, body } = articleFrontmatter(fs.readFileSync(input, "utf8"));
     if (data.robots === "noindex" || data.draft === true) continue;
     for (const [ref, where] of scanArticle(body)) {
       const file = path.join(WORKFLOW_ROOT, ref.slice("/workflows/".length));

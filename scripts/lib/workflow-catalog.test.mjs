@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { frontmatter, noteModels, parsePerformance, scanArticle, workflowFacts } from "./workflow-catalog.mjs";
+import { articleFrontmatter, noteModels, parsePerformance, scanArticle, workflowFacts } from "./workflow-catalog.mjs";
 
 test("scanArticle finds shortcode, picker and plain links under their nearest heading", () => {
   const body = [
@@ -120,11 +120,10 @@ test("workflowFacts lists custom nodes, reads object widgets, and skips bypassed
   assert.deepEqual(facts.models.map((m) => m.name), ["u.safetensors"]);
 });
 
-test("frontmatter reads LF and CRLF files alike", () => {
+test("articleFrontmatter keeps the body and drops the metadata when the YAML is broken", () => {
   for (const eol of ["\n", "\r\n"]) {
-    const text = ["---", "title: Panorama", "robots: noindex", "---", "", "Body"].join(eol);
-    const { data, body } = frontmatter(text);
-    assert.deepEqual(data, { title: "Panorama", robots: "noindex" });
+    const { data, body } = articleFrontmatter(["---", "title: [unclosed", "---", "", "Body"].join(eol));
+    assert.deepEqual(data, {});
     assert.equal(body.trim(), "Body");
   }
 });

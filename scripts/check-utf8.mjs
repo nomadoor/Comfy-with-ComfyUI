@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { listFiles } from "./lib/files.mjs";
 
-const ROOTS = ["AGENTS.md", "README.md", "ops", "docs", "scripts", "src", "tests", "runpod", "workers", "functions", ".github", ".claude/skills"];
+const ROOTS = ["AGENTS.md", "README.md", ".eleventy.js", "eleventy", "ops", "docs", "scripts", "src", "tests", "runpod", "workers", "functions", ".github", ".claude/skills"];
 const TEXT_EXTENSIONS = new Set([
   ".cjs",
   ".css",

@@ -2,6 +2,7 @@
 
 ## 0. Stack & General Rules
 - Eleventy + Nunjucks. JavaScript must stay ESM (`<script type="module">`).
+- `.eleventy.js` only wires the build together; filters, shortcodes, the Markdown library and its rules, media resolution, workflow rows, transforms and build hooks live in `eleventy/*.mjs`.
 - Style with plain CSS; follow `/ops/style-design.md` tokens and transitions.
 - Deploy to Cloudflare Pages. Version mutable CSS and JavaScript entry URLs per deployment, and require browser revalidation for CSS and JavaScript module files.
 
