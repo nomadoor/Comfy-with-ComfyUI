@@ -1,19 +1,24 @@
+# The top level is production: the live worker is `comfyui-feedback`, deployed with
+#   wrangler deploy --env=""
+# and its secrets (GITHUB_TOKEN, TURNSTILE_SECRET) are set on it. These values match what that worker
+# runs with; a deploy that differs from them would change production (wrangler shows the diff first).
 name = "comfyui-feedback"
 main = "src/index.js"
-compatibility_date = "2025-11-01"
+compatibility_date = "2024-11-01"
+preview_urls = false
 
 [vars]
+ALLOW_ORIGIN = "https://comfyui.nomadoor.net"
 # GitHub repository info
 GITHUB_OWNER = "nomadoor"
 GITHUB_REPO = "Comfy-with-ComfyUI"
-
 # Rate limit (per IP)
 RATE_LIMIT_MAX = 3
 RATE_LIMIT_WINDOW = 60
 
-[env.production.vars]
-ALLOW_ORIGIN = "https://comfyui.nomadoor.net"
-
+# Pages previews post here (src/_data/env.js): `comfyui-feedback-staging`, deployed with
+#   wrangler deploy --env staging
+# It needs its own secrets: wrangler secret put GITHUB_TOKEN --env staging (and TURNSTILE_SECRET).
 [env.staging.vars]
 # Allow any preview for this project (branch hashes on comfy-with-comfyui.pages.dev)
 ALLOW_ORIGIN = "*.comfy-with-comfyui.pages.dev"

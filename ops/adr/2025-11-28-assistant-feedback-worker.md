@@ -10,7 +10,7 @@ Accepted — implemented via comfyui-feedback Worker
 ## Decision
 - Use a Cloudflare Worker (`comfyui-feedback`) as the single ingestion point.
 - Auth: GitHub PAT in `GITHUB_TOKEN` secret (bot account recommended).
-- CORS: `ALLOW_ORIGIN` per env — production `https://comfyui.nomadoor.net`; staging `*.comfy-with-comfyui.pages.dev`. Since 2026-10-15 a POST whose `Origin` does not match is refused with 403 (unset or `*` allows any origin).
+- CORS: `ALLOW_ORIGIN` per environment — production (top level) `https://comfyui.nomadoor.net`; staging `*.comfy-with-comfyui.pages.dev`. Since 2026-10-15 a POST whose `Origin` does not match is refused with 403 (unset or `*` allows any origin).
 - Pages preview auto-targets staging endpoint when `CF_PAGES_URL` ends with `.pages.dev` and branch != `main`.
 - Rate limit: per-IP sliding window; env-configurable `RATE_LIMIT_MAX` (default 3) and `RATE_LIMIT_WINDOW` seconds (default 60), validated with fallbacks.
 - Turnstile: required (changed 2026-10-15; it used to be enforced only when `TURNSTILE_SECRET` was set). It is the only gate against scripted posts: the rate limit is per isolate and `Origin` can be forged outside a browser, so a missing secret must not silently open the endpoint. Without `TURNSTILE_SECRET` the worker answers 500 and logs the missing secret. An environment that deliberately runs without it sets `TURNSTILE_DISABLED = "true"`. Sitekey supplied via Pages env `ASSISTANT_TURNSTILE_SITEKEY`.
@@ -24,9 +24,11 @@ Accepted — implemented via comfyui-feedback Worker
 - IA/rate-limit changes must be reflected in `/ops` and worker config before deploy.
 
 ## Ops / How-to
-- Deploy staging: `cd workers/feedback && wrangler deploy --env staging`
-- Deploy production: `cd workers/feedback && wrangler deploy --env production`
-- Secrets: `wrangler secret put GITHUB_TOKEN [--env production|staging]` and `wrangler secret put TURNSTILE_SECRET [--env production|staging]`. Check with `wrangler secret list --env <env>` before deploying: since 2026-10-15 a missing `TURNSTILE_SECRET` stops the endpoint.
+- Production is the top level of `wrangler.toml` (worker `comfyui-feedback`), not an `[env.production]` section (corrected 2026-10-15 to match the live worker; `--env production` would create a separate worker without secrets).
+- Deploy production: `cd workers/feedback && wrangler deploy --env=""`
+- Deploy staging: `cd workers/feedback && wrangler deploy --env staging` (worker `comfyui-feedback-staging`)
+- Secrets: `wrangler secret put GITHUB_TOKEN --env=""` and `wrangler secret put TURNSTILE_SECRET --env=""` (`--env staging` for staging). Check with `wrangler secret list --env=""` (or `--env staging`) before deploying: since 2026-10-15 a missing `TURNSTILE_SECRET` stops the endpoint. Always name the environment: with `CLOUDFLARE_ENV` set, a command without `--env` targets that environment instead of production.
+- `wrangler deploy` prints a diff when the local configuration differs from the live worker's; with `wrangler.toml` matching production, a deploy only changes the code.
 - Pages env (Preview/Production):
   - `ASSISTANT_FEEDBACK_ENDPOINT` (staging or production worker URL)
   - `ASSISTANT_TURNSTILE_SITEKEY` (empty only together with `TURNSTILE_DISABLED` on the worker)
