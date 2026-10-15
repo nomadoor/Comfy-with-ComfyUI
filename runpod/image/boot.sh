@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Pod entry point. The bootstrap prepares everything the profile names, then execs ComfyUI.
+# Pod entry point. The bootstrap prepares everything the profile names, then runs ComfyUI as a
+# child process and watches it (bootstrap/__main__.py).
 set -euo pipefail
 
 if [ -z "${DATA_DIR:-}" ]; then

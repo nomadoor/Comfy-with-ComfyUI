@@ -4,27 +4,23 @@ Any failure keeps the status page up with the cause instead of starting ComfyUI,
 Pod. So does a setup that runs past its deadline, and a ComfyUI that exits on its own: no path may
 leave a GPU billing with nobody watching. See ops/adr/2026-09-30-runpod-poc.md for the design.
 """
-import configparser
-import hashlib
 import json
 import os
-import re
-import shutil
 import signal
 import subprocess
 import sys
 import threading
 import time
-import urllib.parse
+from dataclasses import dataclass
 from pathlib import Path
 
 from . import comfy, runtime, server
+from .frontend import manager_enabled, place_workflows, prepare_frontend
 from .models import Downloader
+from .profile import load_profile, load_tips, workflow_file
 from .state import BootError, State
-from .util import env_minutes, fetch, fetch_json, pod_timing, terminate_this_pod
+from .util import default_data_dir, env_minutes, pod_timing, terminate_this_pod
 
-SCHEMA_VERSION = 1
-SITE = "https://comfyui.nomadoor.net"
 PORT = 8188
 
 
@@ -35,142 +31,6 @@ def env_token(name):
         os.environ.pop(name, None)
         return None
     return value
-
-
-def load_profile(state):
-    profile_id = os.environ.get("PROFILE", "").strip()
-    if not profile_id:
-        raise BootError("profile_missing", "PROFILE is not set on this Pod.")
-    url = os.environ.get("PROFILE_URL") or f"{SITE}/runpod/profiles/{profile_id}.json"
-    state.step("profile", "running", url)
-    try:
-        profile = fetch_json(url)
-    except Exception as error:  # noqa: BLE001
-        raise BootError("profile_fetch", f"Could not fetch {url}: {error}") from None
-    if profile.get("schema_version") != SCHEMA_VERSION:
-        raise BootError("profile_schema", f"Profile schema {profile.get('schema_version')} is not supported by this image.")
-    check_paths(profile)
-    return url, profile
-
-
-# Same rule as safePath in runpod/tools/profiles.mjs, which rejects these names at check:runpod.
-SAFE_PART = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._ +()-]*$")
-
-
-def check_paths(profile):
-    """Names from the profile become paths on disk: keep each one inside the folder it belongs to.
-
-    The profile comes from this site, so this is a guard against mistakes rather than attacks.
-    """
-    def ok(value, nested=False):
-        parts = str(value).split("/") if nested else [str(value)]
-        return all(SAFE_PART.match(part) and part not in (".", "..") for part in parts)
-
-    bad = [f"model {m.get('directory')}/{m.get('name')}" for m in profile.get("models", []) if not (ok(m.get("name", "")) and ok(m.get("directory", ""), nested=True))]
-    bad += [f"workflow {w.get('name')}" for w in profile.get("workflows", []) if not ok(w.get("name", "")) or ("folder" in w and not ok(w["folder"]))]
-    bad += [f"custom node {n.get('id')}" for n in profile.get("custom_nodes", []) if not ok(n.get("id", ""), nested=True)]
-    if bad:
-        raise BootError("profile_invalid", "The profile has names that are not safe as paths: " + ", ".join(bad))
-
-
-def fetch_site_file(item, profile_url):
-    # Fetch from the same site as the profile, so previews and local builds stay consistent.
-    url = urllib.parse.urljoin(profile_url, item["path"]) if item.get("path") else item["url"]
-    try:
-        body = fetch(url)
-    except Exception as error:  # noqa: BLE001
-        raise BootError("workflow", f"Could not fetch {item['name']}: {error}") from None
-    if hashlib.sha256(body).hexdigest() != item["sha256"]:
-        raise BootError("workflow", f"{item['name']} does not match the profile (sha256).")
-    return body
-
-
-def load_tips(profile_url):
-    """Columns for the status page, from the same site as the profile. Optional: none on failure."""
-    try:
-        return fetch_json(urllib.parse.urljoin(profile_url, "/runpod/tips.json"), timeout=15).get("tips", [])
-    except Exception:  # noqa: BLE001
-        return []
-
-
-def workflow_file(workflow):
-    """Where a workflow sits in the sidebar's Workflows tab: its profile folder, if any, then its name."""
-    return f"{workflow['folder']}/{workflow['name']}" if workflow.get("folder") else workflow["name"]
-
-
-def opened_workflows(profile):
-    """The workflows opened as tabs on a reader's first visit. A profile built before `open` existed
-    flags none; it opens its first (the article's first) workflow, like a profile without `open` does."""
-    return [w for w in profile["workflows"] if w.get("open")] or profile["workflows"][:1]
-
-
-def place_workflows(profile, profile_url, comfy_dir):
-    """Workflows go to the sidebar's Workflows tab; sample inputs to input/ under the name the nodes read."""
-    # Into the Workflows tab, in the profile's folders if it has any (a Pod serves one profile, and the
-    # folder is rebuilt per Pod).
-    target = Path(comfy_dir) / "user" / "default" / "workflows"
-    target.mkdir(parents=True, exist_ok=True)
-    for workflow in profile["workflows"]:
-        destination = target / workflow_file(workflow)
-        destination.parent.mkdir(parents=True, exist_ok=True)
-        destination.write_bytes(fetch_site_file(workflow, profile_url))
-    # Sample inputs are site media on R2 (WebP); the key carries the first 16 hex of their sha256.
-    input_dir = Path(comfy_dir) / "input"
-    for item in profile.get("inputs", []):
-        destination = (input_dir / item["name"]).resolve()
-        if not destination.is_relative_to(input_dir.resolve()):
-            raise BootError("workflow", f"Sample input {item['name']} points outside input/.")
-        try:
-            body = fetch(item["url"])
-        except Exception as error:  # noqa: BLE001
-            raise BootError("workflow", f"Could not fetch sample input {item['name']}: {error}") from None
-        if item.get("sha256_prefix") and hashlib.sha256(body).hexdigest()[:16] != item["sha256_prefix"]:
-            raise BootError("workflow", f"Sample input {item['name']} does not match the profile (sha256).")
-        destination.parent.mkdir(parents=True, exist_ok=True)
-        destination.write_bytes(body)
-    return str(target)
-
-
-EXTENSION = Path(__file__).resolve().parent.parent / "extension"
-
-
-def manager_enabled():
-    return os.environ.get("ENABLE_MANAGER", "1") != "0"
-
-
-def prepare_frontend(profile, comfy_dir):
-    """Skip the first-run template gallery, set up Manager, and open the profile's `open` workflows as tabs."""
-    user_dir = Path(comfy_dir) / "user" / "default"
-    settings_file = user_dir / "comfy.settings.json"
-    settings = json.loads(settings_file.read_text(encoding="utf-8")) if settings_file.exists() else {}
-    settings["Comfy.TutorialCompleted"] = True
-    settings_file.write_text(json.dumps(settings, indent=2) + "\n", encoding="utf-8")
-
-    # The built-in ComfyUI-Manager lets readers add models and custom nodes for other workflows from
-    # the UI. It refuses installs on a non-loopback listener unless network_mode is personal_cloud,
-    # which is what a Pod behind its own private proxy URL is.
-    if manager_enabled():
-        manager_config = Path(comfy_dir) / "user" / "__manager" / "config.ini"
-        manager_config.parent.mkdir(parents=True, exist_ok=True)
-        parser = configparser.ConfigParser()
-        parser.read(manager_config)
-        if not parser.has_section("default"):
-            parser.add_section("default")
-        parser.set("default", "network_mode", "personal_cloud")
-        parser.set("default", "security_level", "normal")
-        with manager_config.open("w", encoding="utf-8") as f:
-            parser.write(f)
-
-    target = Path(comfy_dir) / "custom_nodes" / "comfy-with-comfyui-runpod"
-    shutil.rmtree(target, ignore_errors=True)
-    shutil.copytree(EXTENSION, target)
-    config = {
-        "profile": profile["id"],
-        # A new boot is a new Pod for the reader: its first visit opens the tabs again.
-        "boot": int(time.time()),
-        "workflows": [f"workflows/{workflow_file(w)}" for w in opened_workflows(profile)],
-    }
-    (target / "web" / "runpod.json").write_text(json.dumps(config, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def give_up(state, minutes):
@@ -200,144 +60,160 @@ def exit_on_stop(signum, _frame):
     os._exit(0)
 
 
-def main():
-    for signum in (signal.SIGTERM, signal.SIGINT):
-        signal.signal(signum, exit_on_stop)
-    state = State()
-    comfy_dir = os.environ.get("COMFY_DIR", "/opt/ComfyUI")
-    data_dir = os.environ.get("DATA_DIR") or ("/workspace" if Path("/workspace").is_dir() else "/data")
-    concurrency = max(1, int(os.environ.get("DL_CONCURRENCY", "8")))
-    hf_token = env_token("HF_TOKEN")
-    civitai_token = env_token("CIVITAI_TOKEN")
-    os.environ.setdefault("HF_XET_HIGH_PERFORMANCE", "1")
-    os.environ.setdefault("HF_HUB_DISABLE_PROGRESS_BARS", "1")
-    os.environ.setdefault("HF_HUB_DISABLE_TELEMETRY", "1")
-    Path(data_dir).mkdir(parents=True, exist_ok=True)
+@dataclass
+class BootConfig:
+    """Settings from the Pod's environment variables (runpod/README.md lists them)."""
+    comfy_dir: str
+    data_dir: str
+    concurrency: int
+    hf_token: str | None
+    civitai_token: str | None
     # FAIL_STOP_MINUTES: how long a failed Pod shows why before it terminates (0 = never). Short: a
     # failed Pod never recovers (nothing retries the boot or restarts ComfyUI), so it only bills.
+    fail_minutes: float
     # BOOT_TIMEOUT_MINUTES: setup that has not finished by then counts as failed (0 = no deadline).
-    fail_minutes = env_minutes("FAIL_STOP_MINUTES", 3, state.log)
-    boot_minutes = env_minutes("BOOT_TIMEOUT_MINUTES", 60, state.log)
+    boot_minutes: float
 
-    status_server = server.start(state, PORT)
-    state.log(f"status page on :{PORT}, data dir {data_dir}")
-    report = {"started_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "data_dir": data_dir, "timings": {}}
-    # How long RunPod took before this process ran (mostly the image pull): the number that decides
-    # which base image to use. Logged so it shows in the Pod's log view too.
-    try:
-        report["pod_start"] = pod_timing(state.started)
-    except Exception as error:  # noqa: BLE001 - measurement only; never stop the boot over it
-        report["pod_start"] = {"pod_error": str(error)}
-    for field in ("lastStartedAt", "createdAt"):
-        if f"seconds_from_{field}" in report["pod_start"]:
-            state.log(f"boot started {report['pod_start'][f'seconds_from_{field}']}s after the Pod's {field}")
-    report_path = Path(data_dir) / "runpod-boot" / "report.json"
+    @classmethod
+    def from_env(cls, log):
+        return cls(
+            comfy_dir=os.environ.get("COMFY_DIR", "/opt/ComfyUI"),
+            data_dir=default_data_dir(),
+            concurrency=max(1, int(os.environ.get("DL_CONCURRENCY", "8"))),
+            hf_token=env_token("HF_TOKEN"),
+            civitai_token=env_token("CIVITAI_TOKEN"),
+            fail_minutes=env_minutes("FAIL_STOP_MINUTES", 3, log),
+            boot_minutes=env_minutes("BOOT_TIMEOUT_MINUTES", 60, log),
+        )
 
-    def timed(name, fn):
+
+class Boot:
+    """One boot: the status page state, report.json, and the rule that exactly one of the main
+    thread (starting ComfyUI or failing) and the deadline ends the boot."""
+
+    def __init__(self, state, config):
+        self.state = state
+        self.config = config
+        self.report = {"started_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "data_dir": config.data_dir, "timings": {}}
+        self.report_path = Path(config.data_dir) / "runpod-boot" / "report.json"
+        self.decided = threading.Lock()
+
+    def record_pod_start(self):
+        # How long RunPod took before this process ran (mostly the image pull): the number that decides
+        # which base image to use. Logged so it shows in the Pod's log view too.
+        try:
+            self.report["pod_start"] = pod_timing(self.state.started)
+        except Exception as error:  # noqa: BLE001 - measurement only; never stop the boot over it
+            self.report["pod_start"] = {"pod_error": str(error)}
+        for field in ("lastStartedAt", "createdAt"):
+            if f"seconds_from_{field}" in self.report["pod_start"]:
+                self.state.log(f"boot started {self.report['pod_start'][f'seconds_from_{field}']}s after the Pod's {field}")
+
+    def timed(self, name, fn):
         t = time.time()
         result = fn()
-        report["timings"][name] = round(time.time() - t, 1)
+        self.report["timings"][name] = round(time.time() - t, 1)
         return result
 
-    def write_report(outcome):
+    def write_report(self, outcome):
+        report = self.report
         report["outcome"] = outcome
         report["finished_at"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
-        report["notices"] = state.data["notices"]
-        report["error"] = state.data["error"]
+        report["notices"] = self.state.data["notices"]
+        report["error"] = self.state.data["error"]
         try:
-            report_path.parent.mkdir(parents=True, exist_ok=True)
-            report_path.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            self.report_path.parent.mkdir(parents=True, exist_ok=True)
+            self.report_path.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         except OSError as error:  # a full disk must not skip the terminate that follows
-            state.log(f"could not write {report_path}: {error}")
+            self.state.log(f"could not write {self.report_path}: {error}")
 
-    # Exactly one of these ends the boot: the main thread starting ComfyUI or failing, or the deadline.
-    decided = threading.Lock()
+    def fail(self, error):
+        self.state.fail(error)
+        self.write_report("error")
+        give_up(self.state, self.config.fail_minutes)
 
-    def fail(error):
-        state.fail(error)
-        write_report("error")
-        give_up(state, fail_minutes)
+    def start_deadline(self):
+        boot_minutes = self.config.boot_minutes
 
-    def deadline():
-        time.sleep(boot_minutes * 60)
-        if decided.acquire(blocking=False):
-            fail(BootError("boot_timeout", f"Setup did not finish within {boot_minutes:.0f} minutes.", minutes=round(boot_minutes)))
+        def deadline():
+            time.sleep(boot_minutes * 60)
+            if self.decided.acquire(blocking=False):
+                self.fail(BootError("boot_timeout", f"Setup did not finish within {boot_minutes:.0f} minutes.", minutes=round(boot_minutes)))
 
-    if boot_minutes > 0:
-        threading.Thread(target=deadline, name="boot-deadline", daemon=True).start()
+        if boot_minutes > 0:
+            threading.Thread(target=deadline, name="boot-deadline", daemon=True).start()
 
-    try:
-        profile_url, profile = timed("profile", lambda: load_profile(state))
-        state.update(profile=profile["id"], title=profile["title"], site=profile.get("site"), article=profile.get("article"))
-        state.update(tips=load_tips(profile_url))
-        report.update(profile=profile["id"], profile_url=profile_url, site_commit=profile.get("site_commit"))
-        state.step("profile", "done", f"{profile['title']} ({(profile.get('site_commit') or '')[:7]})")
 
-        ref = os.environ.get("COMFY_REF") or profile["comfyui"]["default"]
-        sha = timed("comfyui", lambda: comfy.update(comfy_dir, ref, profile, state))
-        report["comfyui"] = {"ref": ref, "commit": sha}
-        state.step("comfyui", "done", f"{ref} {sha[:7]}")
+def setup(boot):
+    """Everything before ComfyUI starts. Returns nothing; raises on any failure."""
+    state, config, report, timed = boot.state, boot.config, boot.report, boot.timed
+    comfy_dir, data_dir = config.comfy_dir, config.data_dir
 
-        models_dir = Path(data_dir) / "models"
-        comfy.write_model_paths(comfy_dir, models_dir, [m["directory"] for m in profile["models"]])
+    profile_url, profile = timed("profile", lambda: load_profile(state))
+    state.update(profile=profile["id"], title=profile["title"], site=profile.get("site"), article=profile.get("article"))
+    state.update(tips=load_tips(profile_url))
+    report.update(profile=profile["id"], profile_url=profile_url, site_commit=profile.get("site_commit"))
+    state.step("profile", "done", f"{profile['title']} ({(profile.get('site_commit') or '')[:7]})")
 
-        nodes = profile.get("custom_nodes", [])
-        installed = timed("custom_nodes", lambda: comfy.install_custom_nodes(comfy_dir, nodes, state))
-        report["custom_nodes"] = [{k: v for k, v in n.items() if k != "dir"} for n in installed]
-        names = ", ".join(f"{n['id']} {n['version'][:12]}" for n in installed)
-        state.step("custom_nodes", "done", names or "none", key=None if names else "none")
+    ref = os.environ.get("COMFY_REF") or profile["comfyui"]["default"]
+    sha = timed("comfyui", lambda: comfy.update(comfy_dir, ref, profile, state))
+    report["comfyui"] = {"ref": ref, "commit": sha}
+    state.step("comfyui", "done", f"{ref} {sha[:7]}")
 
-        # PyTorch installs on a thread while the models download; every other pip install waits for
-        # it, so nothing pulls a generic PyTorch from PyPI first.
-        runtime_started = time.time()
-        torch_job = runtime.Background(state)
-        state.step("models", "running", f"{len(profile['models'])} files", key="files", count=len(profile["models"]))
-        same_disk = os.stat(data_dir).st_dev == os.stat(runtime.LOCK.parent).st_dev
-        reserve = runtime.INSTALLED_BYTES if torch_job.thread and same_disk else 0
-        downloader = Downloader(data_dir, state, concurrency, hf_token, civitai_token, reserve_bytes=reserve)
-        results = timed("models", lambda: downloader.run(profile["models"]))
-        report["timings"]["torch"] = torch_job.wait()
-        comfy.sync_requirements(comfy_dir, sha, state, manager=manager_enabled())
-        comfy.install_node_deps(installed, state)
-        report["timings"]["runtime"] = round(time.time() - runtime_started, 1)
-        state.step("runtime", "done", "ready", key="runtime_ready")
-        report["models"] = [
-            {"name": m["name"], "directory": m["directory"], "result": r, **downloader.timings.get(f"{m['directory']}/{m['name']}", {})}
-            for m, r in zip(profile["models"], results)
-        ]
-        skipped = [m["name"] for m, r in zip(profile["models"], results) if r == "skipped"]
-        for name in skipped:
-            state.notice("hf_token", f"{name} was skipped: it needs a Hugging Face token (HF_TOKEN).", model=name)
-        ready = len(results) - len(skipped)
-        state.step(
-            "models", "done", f"{ready} ready" + (f", {len(skipped)} skipped" if skipped else ""),
-            key="ready", ready=ready, skipped=len(skipped),
-        )
+    models_dir = Path(data_dir) / "models"
+    comfy.write_model_paths(comfy_dir, models_dir, [m["directory"] for m in profile["models"]])
 
-        state.step("workflows", "running")
-        folder = timed("workflows", lambda: place_workflows(profile, profile_url, comfy_dir))
-        prepare_frontend(profile, comfy_dir)
-        inputs = [i["name"] for i in profile.get("inputs", [])]
-        report["workflows"] = {"folder": folder, "files": [workflow_file(w) for w in profile["workflows"]], "inputs": inputs}
-        state.step(
-            "workflows", "done",
-            f"{len(profile['workflows'])} in the Workflows tab" + (f", {len(inputs)} sample inputs" if inputs else ""),
-            key="placed", workflows=len(profile["workflows"]), inputs=len(inputs),
-        )
-    except Exception as error:  # noqa: BLE001 - every failure, expected or not, ends in a terminate
-        if not isinstance(error, BootError):
-            error = BootError("internal", f"{type(error).__name__}: {error}")
-        if decided.acquire(blocking=False):
-            fail(error)
-        while True:  # the deadline already failed the boot and owns the terminate
-            time.sleep(3600)
+    nodes = profile.get("custom_nodes", [])
+    installed = timed("custom_nodes", lambda: comfy.install_custom_nodes(comfy_dir, nodes, state))
+    report["custom_nodes"] = [{k: v for k, v in n.items() if k != "dir"} for n in installed]
+    names = ", ".join(f"{n['id']} {n['version'][:12]}" for n in installed)
+    state.step("custom_nodes", "done", names or "none", key=None if names else "none")
 
-    if not decided.acquire(blocking=False):
-        while True:  # finished after the deadline had already given up
-            time.sleep(3600)
+    # PyTorch installs on a thread while the models download; every other pip install waits for
+    # it, so nothing pulls a generic PyTorch from PyPI first.
+    runtime_started = time.time()
+    torch_job = runtime.Background(state)
+    state.step("models", "running", f"{len(profile['models'])} files", key="files", count=len(profile["models"]))
+    same_disk = os.stat(data_dir).st_dev == os.stat(runtime.LOCK.parent).st_dev
+    reserve = runtime.INSTALLED_BYTES if torch_job.thread and same_disk else 0
+    downloader = Downloader(data_dir, state, config.concurrency, config.hf_token, config.civitai_token, reserve_bytes=reserve)
+    results = timed("models", lambda: downloader.run(profile["models"]))
+    report["timings"]["torch"] = torch_job.wait()
+    comfy.sync_requirements(comfy_dir, sha, state, manager=manager_enabled())
+    comfy.install_node_deps(installed, state)
+    report["timings"]["runtime"] = round(time.time() - runtime_started, 1)
+    state.step("runtime", "done", "ready", key="runtime_ready")
+    report["models"] = [
+        {"name": m["name"], "directory": m["directory"], "result": r, **downloader.timings.get(f"{m['directory']}/{m['name']}", {})}
+        for m, r in zip(profile["models"], results)
+    ]
+    skipped = [m["name"] for m, r in zip(profile["models"], results) if r == "skipped"]
+    for name in skipped:
+        state.notice("hf_token", f"{name} was skipped: it needs a Hugging Face token (HF_TOKEN).", model=name)
+    ready = len(results) - len(skipped)
+    state.step(
+        "models", "done", f"{ready} ready" + (f", {len(skipped)} skipped" if skipped else ""),
+        key="ready", ready=ready, skipped=len(skipped),
+    )
+
+    state.step("workflows", "running")
+    folder = timed("workflows", lambda: place_workflows(profile, profile_url, comfy_dir))
+    prepare_frontend(profile, comfy_dir)
+    inputs = [i["name"] for i in profile.get("inputs", [])]
+    report["workflows"] = {"folder": folder, "files": [workflow_file(w) for w in profile["workflows"]], "inputs": inputs}
+    state.step(
+        "workflows", "done",
+        f"{len(profile['workflows'])} in the Workflows tab" + (f", {len(inputs)} sample inputs" if inputs else ""),
+        key="placed", workflows=len(profile["workflows"]), inputs=len(inputs),
+    )
+
+
+def run_comfyui(boot, status_server):
+    """Hand the port to ComfyUI and watch it: an exit of its own fails the boot (and the Pod)."""
+    state, comfy_dir = boot.state, boot.config.comfy_dir
     state.update(phase="starting")
     state.step("start", "running")
-    write_report("started")
+    boot.write_report("started")
     time.sleep(2)  # let open status pages see the final state before the port changes hands
     server.stop(status_server)
     args = [sys.executable, "main.py", "--listen", "0.0.0.0", "--port", str(PORT)]
@@ -359,7 +235,7 @@ def main():
         child = subprocess.Popen(args, cwd=comfy_dir)
     except OSError as error:
         status_page_again()
-        fail(BootError("comfyui_exit", f"ComfyUI could not start: {error}."))
+        boot.fail(BootError("comfyui_exit", f"ComfyUI could not start: {error}."))
     asked_to_stop = []
 
     def forward(signum, _frame):
@@ -378,7 +254,42 @@ def main():
         signal.signal(signum, exit_on_stop)
     state.log(f"ComfyUI exited with code {code}")
     status_page_again()
-    fail(BootError("comfyui_exit", f"ComfyUI exited with code {code}.", exit_code=code))
+    boot.fail(BootError("comfyui_exit", f"ComfyUI exited with code {code}.", exit_code=code))
+
+
+def wait_forever():
+    while True:
+        time.sleep(3600)
+
+
+def main():
+    for signum in (signal.SIGTERM, signal.SIGINT):
+        signal.signal(signum, exit_on_stop)
+    state = State()
+    config = BootConfig.from_env(state.log)
+    os.environ.setdefault("HF_XET_HIGH_PERFORMANCE", "1")
+    os.environ.setdefault("HF_HUB_DISABLE_PROGRESS_BARS", "1")
+    os.environ.setdefault("HF_HUB_DISABLE_TELEMETRY", "1")
+    Path(config.data_dir).mkdir(parents=True, exist_ok=True)
+
+    status_server = server.start(state, PORT)
+    state.log(f"status page on :{PORT}, data dir {config.data_dir}")
+    boot = Boot(state, config)
+    boot.record_pod_start()
+    boot.start_deadline()
+
+    try:
+        setup(boot)
+    except Exception as error:  # noqa: BLE001 - every failure, expected or not, ends in a terminate
+        if not isinstance(error, BootError):
+            error = BootError("internal", f"{type(error).__name__}: {error}")
+        if boot.decided.acquire(blocking=False):
+            boot.fail(error)
+        wait_forever()  # the deadline already failed the boot and owns the terminate
+
+    if not boot.decided.acquire(blocking=False):
+        wait_forever()  # finished after the deadline had already given up
+    run_comfyui(boot, status_server)
 
 
 if __name__ == "__main__":
