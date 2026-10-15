@@ -7,6 +7,8 @@ interface Env {
 
 interface TurnstileVerifyResponse {
   success: boolean;
+  "error-codes"?: string[];
+  hostname?: string;
 }
 
 // Generous limits: far above any real inquiry, low enough that the mail stays a mail.
@@ -62,6 +64,7 @@ export const onRequest: PagesFunction<Env> = async ({ request, env }) => {
     const turnstileToken = String(form.get("cf-turnstile-response") || "").trim();
 
     if (!turnstileToken) {
+      console.warn("[contact] refused: no Turnstile token");
       return json({ ok: false, error: "turnstile" }, 400);
     }
 
@@ -90,6 +93,13 @@ export const onRequest: PagesFunction<Env> = async ({ request, env }) => {
     }
 
     if (!verifyResponse.ok || !verifyJson?.success) {
+      // The error codes tell a wrong secret (invalid-input-secret: the secret belongs to another
+      // widget than the page's sitekey) from an expired or reused token (timeout-or-duplicate).
+      console.warn("[contact] refused: Turnstile", {
+        status: verifyResponse.status,
+        errorCodes: verifyJson?.["error-codes"] ?? [],
+        hostname: verifyJson?.hostname ?? null
+      });
       return json({ ok: false, error: "turnstile" }, 400);
     }
 
@@ -99,16 +109,21 @@ export const onRequest: PagesFunction<Env> = async ({ request, env }) => {
     const body = String(form.get("body") || "").trim();
     const environment = String(form.get("environment") || "").trim();
 
-    if (
-      !replyTo ||
-      !body ||
-      !Object.hasOwn(CATEGORY_LABELS, category) ||
-      replyTo.length > LIMITS.replyTo ||
-      !EMAIL.test(replyTo) ||
-      name.length > LIMITS.name ||
-      body.length > LIMITS.body ||
-      environment.length > LIMITS.environment
-    ) {
+    // Which checks failed, never the values: enough to tell a form bug from a bad submission.
+    const failed = Object.entries({
+      reply_to_missing: !replyTo,
+      reply_to_too_long: replyTo.length > LIMITS.replyTo,
+      reply_to_format: Boolean(replyTo) && !EMAIL.test(replyTo),
+      body_missing: !body,
+      body_too_long: body.length > LIMITS.body,
+      category_unknown: !Object.hasOwn(CATEGORY_LABELS, category),
+      name_too_long: name.length > LIMITS.name,
+      environment_too_long: environment.length > LIMITS.environment
+    })
+      .filter(([, bad]) => bad)
+      .map(([check]) => check);
+    if (failed.length) {
+      console.warn("[contact] refused: invalid input", { failed, categoryLength: category.length });
       return json({ ok: false, error: "invalid" }, 400);
     }
 
