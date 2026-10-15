@@ -1,19 +1,19 @@
 {
-  "id": "1835cdc1-af81-46c2-a366-9093dcde0ed0",
+  "id": "17ae126a-bd94-4581-a3ba-743d24141279",
   "revision": 0,
-  "last_node_id": 29,
-  "last_link_id": 55,
+  "last_node_id": 28,
+  "last_link_id": 53,
   "nodes": [
     {
       "id": 12,
       "type": "LoadImage",
       "pos": [
-        199.5016271458309,
-        367.39616053155135
+        526.3377633387137,
+        408.2833271433699
       ],
       "size": [
-        292.3856049845041,
-        470.62809917355366
+        297.3442826704545,
+        417.2847483095418
       ],
       "flags": {},
       "order": 0,
@@ -37,11 +37,11 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "typed_decision_noul_two_images_input1.png",
+        "typed_decision_score_input.png",
         "image"
       ],
       "widgets_values_named": {
-        "image": "typed_decision_noul_two_images_input1.png",
+        "image": "typed_decision_score_input.png",
         "upload": "image"
       }
     },
@@ -49,8 +49,8 @@
       "id": 13,
       "type": "PreviewAny",
       "pos": [
-        1313.7663907577785,
-        219.39986990339145
+        1314.473975471382,
+        397.6042896213693
       ],
       "size": [
         243.88429752066122,
@@ -88,7 +88,7 @@
       ],
       "size": [
         297.3442826704545,
-        82
+        130
       ],
       "flags": {},
       "order": 1,
@@ -104,15 +104,26 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "LoadTypedDecisionModel"
+        "Node name for S&R": "LoadTypedDecisionModel",
+        "models": [
+          {
+            "name": "d3_mini_int8_convrot.safetensors",
+            "url": "https://huggingface.co/nomadoor/d3/resolve/main/text_encoders/d3_mini_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
-        "qwen3.5_4b_int8_convrot.safetensors",
-        "imajev-4b"
+        "d3_mini_int8_convrot.safetensors",
+        "d3",
+        false,
+        2
       ],
       "widgets_values_named": {
-        "backbone": "qwen3.5_4b_int8_convrot.safetensors",
-        "adapter": "imajev-4b"
+        "backbone": "d3_mini_int8_convrot.safetensors",
+        "adapter": "d3",
+        "adapter.debias": false,
+        "adapter.fps": 2
       },
       "color": "#232",
       "bgcolor": "#353"
@@ -126,10 +137,10 @@
       ],
       "size": [
         401.08040310212255,
-        446
+        449.74568304450133
       ],
       "flags": {},
-      "order": 3,
+      "order": 2,
       "mode": 0,
       "inputs": [
         {
@@ -147,12 +158,12 @@
           "name": "images.image_1",
           "shape": 7,
           "type": "IMAGE",
-          "link": 53
+          "link": null
         },
         {
-          "name": "images.image_2",
+          "name": "videos.video_0",
           "shape": 7,
-          "type": "IMAGE",
+          "type": "VIDEO",
           "link": null
         }
       ],
@@ -160,7 +171,9 @@
         {
           "name": "value",
           "type": "FLOAT",
-          "links": []
+          "links": [
+            53
+          ]
         },
         {
           "name": "label",
@@ -177,9 +190,7 @@
         {
           "name": "pass",
           "type": "BOOLEAN",
-          "links": [
-            55
-          ]
+          "links": []
         },
         {
           "name": "abstained",
@@ -196,88 +207,41 @@
         "Node name for S&R": "TypedDecision"
       },
       "widgets_values": [
-        "noul",
-        "The first and second images show the same person.",
+        "score",
+        "How usable is this photo for a training dataset?",
+        "unusable: blurry, dark or badly cropped\npoor\nacceptable\ngood\nexcellent: sharp, well lit, subject fills the frame",
         "",
-        "",
-        "",
-        0.5,
-        false,
-        true
+        0.5
       ],
       "widgets_values_named": {
-        "mode": "noul",
-        "mode.instructions": "The first and second images show the same person.",
-        "mode.criteria_true": "",
-        "mode.criteria_false": "",
+        "mode": "score",
+        "mode.instructions": "How usable is this photo for a training dataset?",
+        "mode.criteria": "unusable: blurry, dark or badly cropped\npoor\nacceptable\ngood\nexcellent: sharp, well lit, subject fills the frame",
         "state": "",
-        "threshold": 0.5,
-        "debias": false,
-        "calibration": true
+        "threshold": 0.5
       },
       "color": "#232",
       "bgcolor": "#353"
     },
     {
       "id": 28,
-      "type": "LoadImage",
-      "pos": [
-        531.2964410246641,
-        438.95868542283193
-      ],
-      "size": [
-        292.3856049845041,
-        470.62809917355366
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            53
-          ]
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": []
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "typed_decision_noul_two_images_input2.png",
-        "image"
-      ],
-      "widgets_values_named": {
-        "image": "typed_decision_noul_two_images_input2.png",
-        "upload": "image"
-      }
-    },
-    {
-      "id": 29,
       "type": "PreviewAny",
       "pos": [
-        1313.7663907577785,
-        418.5737962417645
+        1314.473975471382,
+        198.51433449140177
       ],
       "size": [
         243.88429752066122,
         141.00826446280985
       ],
       "flags": {},
-      "order": 5,
+      "order": 3,
       "mode": 0,
       "inputs": [
         {
           "name": "source",
           "type": "*",
-          "link": 55
+          "link": 53
         }
       ],
       "outputs": [
@@ -304,12 +268,12 @@
       "STRING"
     ],
     [
-      55,
+      53,
       25,
-      3,
-      29,
       0,
-      "BOOLEAN"
+      28,
+      0,
+      "FLOAT"
     ],
     [
       42,
@@ -326,27 +290,19 @@
       25,
       1,
       "IMAGE"
-    ],
-    [
-      53,
-      28,
-      0,
-      25,
-      2,
-      "IMAGE"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.9090909090909092,
+      "scale": 1.6105100000000008,
       "offset": [
-        -48.1352471114169,
-        90.70160354842213
+        165.34537448608543,
+        85.96955615840645
       ]
     },
-    "frontendVersion": "1.53.6",
+    "frontendVersion": "1.55.14",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

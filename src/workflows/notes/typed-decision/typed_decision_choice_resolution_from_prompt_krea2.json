@@ -503,18 +503,14 @@
         "Which aspect ratio suits the image described in the state?",
         "portrait: tall subject, such as a standing person\nlandscape: wide scene, such as scenery or a group\nsquare: single object or close-up",
         "",
-        0.5,
-        false,
-        true
+        0.5
       ],
       "widgets_values_named": {
         "mode": "choice",
         "mode.instructions": "Which aspect ratio suits the image described in the state?",
         "mode.criteria": "portrait: tall subject, such as a standing person\nlandscape: wide scene, such as scenery or a group\nsquare: single object or close-up",
         "state": "",
-        "threshold": 0.5,
-        "debias": false,
-        "calibration": true
+        "threshold": 0.5
       },
       "color": "#232",
       "bgcolor": "#353"
@@ -544,15 +540,26 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "LoadTypedDecisionModel"
+        "Node name for S&R": "LoadTypedDecisionModel",
+        "models": [
+          {
+            "name": "d3_mini_int8_convrot.safetensors",
+            "url": "https://huggingface.co/nomadoor/d3/resolve/main/text_encoders/d3_mini_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
-        "qwen3.5_4b_int8_convrot.safetensors",
-        "imajev-4b"
+        "d3_mini_int8_convrot.safetensors",
+        "d3",
+        false,
+        2
       ],
       "widgets_values_named": {
-        "backbone": "qwen3.5_4b_int8_convrot.safetensors",
-        "adapter": "imajev-4b"
+        "backbone": "d3_mini_int8_convrot.safetensors",
+        "adapter": "d3",
+        "adapter.debias": false,
+        "adapter.fps": 2
       },
       "color": "#232",
       "bgcolor": "#353"

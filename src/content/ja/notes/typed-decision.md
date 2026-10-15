@@ -6,23 +6,24 @@ section: notes
 navId: typed-decision
 title: "ComfyUI-TypedDecision"
 created: 2026-09-30
-updated: 2026-09-30
+updated: 2026-10-16
 noteTags: ["project", "custom-nodes", "concept"]
-summary: "画像やテキストについての問いに、確率つきで答えてもらうノード"
+summary: "画像や動画、テキストについての問いに、確率つきで答えてもらうノード"
 seoTitle: "ComfyUI-TypedDecision：判断だけをするMLLMをComfyUIで使う"
-seoDescription: "noul / choice / score の3つの型で、画像やテキストについての問いに確率つきで答えるComfyUIカスタムノード。imajev-4bを使った基本のworkflowと、プロンプトから解像度を決める例、データセットの仕分け例を紹介します。"
+seoDescription: "noul / choice / score の3つの型で、画像や動画、テキストについての問いに確率つきで答えるComfyUIカスタムノード。d3-miniを使った基本のworkflowと、プロンプトから解像度を決める例、データセットの仕分け、動画から人物が映る区間を探す例を紹介します。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
-  image: "/media/notes/typed-decision/typed_decision_noul.png"
+  image: "/media/notes/typed-decision/typed_decision_d3_mini_noul.png"
 ---
 
 ## ComfyUI-TypedDecision
 
-Jev を発端に、いま **判断だけをする MLLM** が流行っています。文章を書かせるのではなく、「この画像に人は写っているか」と聞くと `yes` / `no` と、その確からしさを確率で返してくれる。こういうタスクを **typed decision** と呼んだりします。
+マルチモーダル LLM に文章を書かせず、判定だけをさせるタスクを "Typed Decision" と呼んだりします。
+Jev が有名ですが、ローカルで同じようなことができるモデルがいくつかあるため、ComfyUI カスタムノードとして実装しました。
 
-Jev のローカル代替プロジェクトはいくつかあるのですが、その中の [imajev](https://github.com/mohit67890/imajev) が ComfyUI のコアシステムと非常に相性がよかったので、まずこれをカスタムノードとして実装してみました。
+答えの形が決まっているため、条件分岐やデータセットの処理に使えるかもしれません。なにより、高速ですしね。
 
-では、typed decision で何ができるのか、ComfyUI でどう遊べるのかを見ていきましょう。
+では、Typed Decision で何ができるのか、ComfyUI でどう遊べるのかを見ていきましょう。
 
 ---
 
@@ -34,11 +35,47 @@ Jev のローカル代替プロジェクトはいくつかあるのですが、�
 
 ---
 
+## 対応モデル
+
+| モデル | ベース | int8 のサイズ | 画像 | 動画 |
+| --- | --- | --- | --- | --- |
+| [d3-flash](https://huggingface.co/vllm-sr/d3-flash) | Qwen3.5-9B | 9.88 GB | 何枚でも | ○ |
+| [d3-mini](https://huggingface.co/vllm-sr/d3-mini) | Qwen3.5-4B | 5.52 GB | 何枚でも | ○ |
+| [d3-nano](https://huggingface.co/vllm-sr/d3-nano) | Qwen3.5-2B | 3.06 GB | 何枚でも | ○ |
+| [d3-lite](https://huggingface.co/vllm-sr/d3-lite) | Qwen3.5-0.8B | 1.21 GB | 何枚でも | ○ |
+| [Clef-flash](https://huggingface.co/Cloudflare/clef-flash) | Qwen3.5-9B | 12.2 GB | 何枚でも | ○ |
+| [imajev-4b](https://huggingface.co/mohit67890/imajev-4b) | Qwen3.5-4B + LoRA | 5.76 GB + 490 MB | 2 枚まで | × |
+
+この記事では、すべて **d3-mini** を使っています。性能がよく、そのうえ軽いのでおすすめです。
+
+---
+
 ## モデルのダウンロード
+
+### d3 / Clef-flash
+
+使うものを `text_encoders` に置いてください。
+
+- text_encoders
+  - [d3_mini_int8_convrot.safetensors](https://huggingface.co/nomadoor/d3/blob/main/text_encoders/d3_mini_int8_convrot.safetensors) (5.52 GB)
+  - [d3_flash_int8_convrot.safetensors](https://huggingface.co/nomadoor/d3/blob/main/text_encoders/d3_flash_int8_convrot.safetensors) (9.88 GB)
+  - [d3_nano_int8_convrot.safetensors](https://huggingface.co/nomadoor/d3/blob/main/text_encoders/d3_nano_int8_convrot.safetensors) (3.06 GB)
+  - [d3_lite_int8_convrot.safetensors](https://huggingface.co/nomadoor/d3/blob/main/text_encoders/d3_lite_int8_convrot.safetensors) (1.21 GB)
+  - [clef_flash_int8_convrot.safetensors](https://huggingface.co/nomadoor/clef/blob/main/text_encoders/clef_flash_int8_convrot.safetensors) (12.2 GB)
+
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂text_encoders/
+        └── d3_mini_int8_convrot.safetensors
+```
+
+### imajev
+
+Qwen3.5-4B に、imajev-4b のファイルを組み合わせて使います。
 
 - text_encoders
   - [qwen3.5_4b_int8_convrot.safetensors](https://huggingface.co/nomadoor/Qwen3.5/blob/main/text_encoders/qwen3.5_4b_int8_convrot.safetensors) (5.76 GB)
-  - もしくはオリジナルの [qwen3.5_4b_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen3.5/blob/main/text_encoders/qwen3.5_4b_bf16.safetensors) (9.32 GB)
 - typed_decision
   - [mohit67890/imajev-4b](https://huggingface.co/mohit67890/imajev-4b/tree/main) (以下のファイルで 490 MB)
     - 以下のファイルを `imajev-4b` フォルダに入れます。リポジトリを丸ごとダウンロードしても構いません
@@ -59,21 +96,40 @@ Jev のローカル代替プロジェクトはいくつかあるのですが、�
 
 ---
 
+## Load Typed Decision Model
+
+`backbone` でモデルのファイルを、`adapter` でそのモデルの種類を選んでください。
+
+| モデル | `backbone` | `adapter` |
+| --- | --- | --- |
+| d3 | d3 のファイル | `d3` |
+| Clef-flash | Clef-flash のファイル | `clef` |
+| imajev | Qwen3.5-4B のファイル | `imajev-4b` |
+
+`adapter` を選ぶと、そのモデルで使える設定が出てきます。
+
+- `debias`（d3・imajev）：選択肢の並び順を変えて判定し、平均します。並び順による偏りが減りますが、そのぶん遅くなります
+  - d3 は choice のときだけ、逆の順番でも判定します
+  - imajev はすべての mode で、最大 4 通りの並び順を判定します
+- `fps`（d3・Clef-flash）：動画を 1 秒に何フレーム読むか（既定は 2）
+- `calibration`（imajev）：温度較正をかけます
+
+---
+
 ## 3つの mode
 
-問いの形は 3 種類です。どれを選ぶかで、入力欄と答えの型が変わります。
+問いの形は 3 種類です。どれを選ぶかで、入力欄と答えの型が変わります。質問と選択肢は英語で書いてください。
 
 > [!NOTE]
 > 出力ソケットは 3 つの mode で共通ですが、中身の意味は mode ごとに変わります。
-
 
 ### noul (Yes or No)
 
 質問に対して、true か false かを答えます。
 
-![](/media/notes/typed-decision/typed_decision_noul.png){media=image}
+![](/media/notes/typed-decision/typed_decision_d3_mini_noul.png){media=image}
 
-[](/workflows/notes/typed-decision/typed_decision_noul.json)
+[](/workflows/notes/typed-decision/typed_decision_d3_mini_noul.json)
 
 **入力**
 
@@ -83,9 +139,8 @@ Jev のローカル代替プロジェクトはいくつかあるのですが、�
 **出力**
 
 - `value` に true の確率
-  - 判断がつかないぶんは true と false に半分ずつ振られるので、迷ったときは 0.5 付近になります
 - `label` に `yes` / `no`
-- `pass` に `value >= threshold` かつ判断を保留していない、の結果が `Boolean` で出ます
+- `pass` に `value >= threshold` の結果が `Boolean` で出ます
 
 今回は「画像に人がたくさん写っている」という問いを、true か false で判断させています。
 
@@ -95,9 +150,9 @@ Jev のローカル代替プロジェクトはいくつかあるのですが、�
 
 用意された選択肢から 1 つ選びます。
 
-![](/media/notes/typed-decision/typed_decision_choice.png){media=image}
+![](/media/notes/typed-decision/typed_decision_d3_mini_choice.png){media=image}
 
-[](/workflows/notes/typed-decision/typed_decision_choice.json)
+[](/workflows/notes/typed-decision/typed_decision_d3_mini_choice.json)
 
 **入力**
 
@@ -106,6 +161,7 @@ Jev のローカル代替プロジェクトはいくつかあるのですが、�
 
 **出力**
 
+- `value` に選ばれた選択肢の確率
 - `label` に選ばれた選択肢
 - `index` に何行目か
   - 選ばれた選択肢が 3 行目なら、0 から数えて `index` は 2 です
@@ -114,9 +170,9 @@ Jev のローカル代替プロジェクトはいくつかあるのですが、�
 
 用意した評価軸で、N 段階評価ができます。
 
-![](/media/notes/typed-decision/typed_decision_score.png){media=image}
+![](/media/notes/typed-decision/typed_decision_d3_mini_score.png){media=image}
 
-[](/workflows/notes/typed-decision/typed_decision_score.json)
+[](/workflows/notes/typed-decision/typed_decision_d3_mini_score.json)
 
 **入力**
 
@@ -129,23 +185,35 @@ Jev のローカル代替プロジェクトはいくつかあるのですが、�
 
 ここでは、学習データとして使えるかを 5 段階で評価させています。
 
-`value` は各段階の確率で重みをつけた平均なので、`3.4` のような段階の間の値になります。「good と excellent の間だが good 寄り」といった評価ができるわけですね。
+`value` は各段階の確率で重みをつけた平均なので、`1.35` のような段階の間の値になります。「poor と acceptable の間だが poor 寄り」といった評価ができるわけですね。
 
 ---
 
-## 画像は2枚入れられる
+## 画像は何枚でも入れられる
 
-imajev は画像を 2 枚まで入れられます。
-**1 枚目が参照、2 枚目が判定対象**です。
+d3 と Clef-flash は画像を何枚でも入れられます。複数の画像を見比べる問いも立てられますね。
 
-> [!WARNING]
-> ComfyUI の仕様上、3 枚目以降のソケットも出てきます。ただ imajev は 2 枚までなので、つなぐとエラーになります。
+imajev は 2 枚までで、**1 枚目が参照、2 枚目が判定対象**になります。
 
-![](/media/notes/typed-decision/typed_decision_noul_two_images.png){media=image}
+![](/media/notes/typed-decision/typed_decision_d3_mini_noul_two_images.png){media=image}
 
-[](/workflows/notes/typed-decision/typed_decision_noul_two_images.json)
+[](/workflows/notes/typed-decision/typed_decision_d3_mini_noul_two_images.json)
 
-「1 枚目と 2 枚目は同じ人物ですか？」と聞けば、同一人物判定として使えますね。
+「1 枚目と 2 枚目は同じ人物ですか？」と聞けば、同一人物判定として使えます。
+
+---
+
+## 動画も判定できる
+
+d3 と Clef-flash では、`videos` に動画をつなげば、動画についての問いにも答えてくれます。
+
+![](/media/notes/typed-decision/typed_decision_d3_mini_noul_visible.png){media=image}
+
+[](/workflows/notes/typed-decision/typed_decision_d3_mini_noul_visible.json)
+
+Load Typed Decision Model の `fps` で動画全体を読み、全フレームをまとめて一度に判定します。1 分の動画を 2 fps で読むと 120 フレームです。
+
+`fps` が 2 だと 0.5 秒単位でしか見ないので、一瞬しか現れないものは見逃すかもしれません。
 
 ---
 
@@ -165,11 +233,52 @@ imajev は画像を 2 枚まで入れられます。
 
 ---
 
+## Typed Decision Moment Search
+
+動画の中から、条件が成り立っている区間を探すノードです。「犬が映っている」「この人が映っている」といった、1 フレームを見れば分かる条件に向いています。仕組み上、「右に歩いている」といった動きの向きを判定するようなことはできません。
+
+![](/media/notes/typed-decision/typed_decision_moment_search_d3_mini.png){media=image}
+
+[](/workflows/notes/typed-decision/typed_decision_moment_search_d3_mini.json)
+
+ここでは、参照画像の人物が映っている区間を探し、つなげて 1 本の動画にしています。
+
+**入力**
+
+- `instructions` / `criteria_true` / `criteria_false` / `state` は、Typed Decision の noul と同じです
+- `images` に参照画像をつなぐと、その人や物を動画の中から探せます
+- `window` は、最初にまとめて判定するフレーム数です（既定は 8。2 fps で読むので 4 秒ぶん）
+- `threshold` は、フレームを合格にする確率です
+
+**出力**
+
+- `intervals` に、見つかった区間の開始・終了の秒数などが JSON で出ます
+- `videos` に、区間ごとに切り出した動画が出ます
+  - 何も見つからなければ、後ろの動画ノードは実行されません
+
+{% outputs %}
+![input](/media/notes/typed-decision/typed_decision_moment_search_d3_mini_input_video.mp4){media=loop} ![参照画像](/media/notes/typed-decision/typed_decision_moment_search_d3_mini_input_image.png){media=image} ![output](/media/notes/typed-decision/typed_decision_moment_search_d3_mini_output.mp4){media=loop}
+{% endoutputs %}
+
+### 質問の書き方
+
+参照画像を使うときは、**動画について**質問してください。
+
+- 〇 `The video shows the same person as the image.`
+- × `The person in the image is visible.`
+
+後者は参照画像そのものにも当てはまってしまうので、全フレームが合格になります。
+
+> [!NOTE]
+> 区間はモデルの判断どおりに切られます。画面から半分はみ出した人は、もう「映っていない」とされることもあるので、数えたいものに合わせて質問を書いてください。
+
+---
+
 ## 実践
 
 ### プロンプトから解像度を決める
 
-上では全て画像を入力しましたが、テキスト入力だけでも使うことができます。
+上では画像や動画を入力しましたが、テキスト入力だけでも使うことができます。
 
 プロンプトを読ませて、縦長、横長、正方形……どの形で生成させるのが良さそうか判断してもらいましょう。
 
@@ -193,9 +302,7 @@ imajev は画像を 2 枚まで入れられます。
 
 ### データセットの仕分け
 
-typed decision の何よりいいところは高速であることです。
-
-その特徴を使って、大量の画像を仕分ける、というのは良さそうな使い方ですね。
+速さを活かして、大量の画像を仕分ける、というのは良さそうな使い方ですね。
 
 ![](/media/notes/typed-decision/typed_decision_noul_dataset_sort.png){media=image}
 
@@ -216,11 +323,8 @@ typed decision の何よりいいところは高速であることです。
 
 人が写っている画像は `accepted`、写っていない画像は `rejected` に保存されていますね。
 
-> [!NOTE]
-> `abstained` 出力を使えば、「判断できなかったもの」だけを別に分けることもできます。人間が見るべきものを絞る、という使い方ですね。
-
 ---
 
 {% outputs "samples" %}
-![noul](/media/notes/typed-decision/typed_decision_noul_input.png){media=image} ![choice](/media/notes/typed-decision/typed_decision_choice_input.png){media=image} ![score](/media/notes/typed-decision/typed_decision_score_input.png){media=image} ![2枚入力 1枚目](/media/notes/typed-decision/typed_decision_noul_two_images_input1.png){media=image} ![2枚入力 2枚目](/media/notes/typed-decision/typed_decision_noul_two_images_input2.png){media=image}
+![noul](/media/notes/typed-decision/typed_decision_noul_input.png){media=image} ![choice](/media/notes/typed-decision/typed_decision_choice_input.png){media=image} ![score](/media/notes/typed-decision/typed_decision_score_input.png){media=image} ![2枚入力 1枚目](/media/notes/typed-decision/typed_decision_noul_two_images_input1.png){media=image} ![2枚入力 2枚目](/media/notes/typed-decision/typed_decision_noul_two_images_input2.png){media=image} ![動画](/media/notes/typed-decision/typed_decision_d3_mini_noul_input.mp4){media=loop}
 {% endoutputs %}

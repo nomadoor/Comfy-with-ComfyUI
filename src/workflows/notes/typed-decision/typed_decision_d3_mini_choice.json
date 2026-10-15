@@ -8,8 +8,8 @@
       "id": 12,
       "type": "LoadImage",
       "pos": [
-        531.4724535921118,
-        339.2058299530388
+        531.2964410246641,
+        406.6922162530308
       ],
       "size": [
         292.3856049845041,
@@ -88,7 +88,7 @@
       ],
       "size": [
         297.3442826704545,
-        82
+        130
       ],
       "flags": {},
       "order": 1,
@@ -104,15 +104,26 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "LoadTypedDecisionModel"
+        "Node name for S&R": "LoadTypedDecisionModel",
+        "models": [
+          {
+            "name": "d3_mini_int8_convrot.safetensors",
+            "url": "https://huggingface.co/nomadoor/d3/resolve/main/text_encoders/d3_mini_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
-        "qwen3.5_4b_int8_convrot.safetensors",
-        "imajev-4b"
+        "d3_mini_int8_convrot.safetensors",
+        "d3",
+        false,
+        2
       ],
       "widgets_values_named": {
-        "backbone": "qwen3.5_4b_int8_convrot.safetensors",
-        "adapter": "imajev-4b"
+        "backbone": "d3_mini_int8_convrot.safetensors",
+        "adapter": "d3",
+        "adapter.debias": false,
+        "adapter.fps": 2
       },
       "color": "#232",
       "bgcolor": "#353"
@@ -147,6 +158,12 @@
           "name": "images.image_1",
           "shape": 7,
           "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "videos.video_0",
+          "shape": 7,
+          "type": "VIDEO",
           "link": null
         }
       ],
@@ -194,18 +211,14 @@
         "What is the main subject of the image?",
         "person\nanimal\nvehicle\nfood\nlandscape: scenery with no clear main subject",
         "",
-        0.5,
-        false,
-        true
+        0.5
       ],
       "widgets_values_named": {
         "mode": "choice",
         "mode.instructions": "What is the main subject of the image?",
         "mode.criteria": "person\nanimal\nvehicle\nfood\nlandscape: scenery with no clear main subject",
         "state": "",
-        "threshold": 0.5,
-        "debias": false,
-        "calibration": true
+        "threshold": 0.5
       },
       "color": "#232",
       "bgcolor": "#353"
@@ -255,6 +268,14 @@
       "STRING"
     ],
     [
+      49,
+      25,
+      2,
+      26,
+      0,
+      "INT"
+    ],
+    [
       42,
       19,
       0,
@@ -269,27 +290,19 @@
       25,
       1,
       "IMAGE"
-    ],
-    [
-      49,
-      25,
-      2,
-      26,
-      0,
-      "INT"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1.1,
+      "scale": 1.3310000000000006,
       "offset": [
-        -226.37270162129022,
-        -39.63498920526289
+        485.3644499642315,
+        147.65610181559362
       ]
     },
-    "frontendVersion": "1.53.6",
+    "frontendVersion": "1.55.14",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

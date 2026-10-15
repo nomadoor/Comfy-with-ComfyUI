@@ -10065,6 +10065,104 @@
     "bytes": 45706,
     "source": "085267c8d08c3a78"
   },
+  "notes/typed-decision/typed_decision_d3_mini_choice.png": {
+    "key": "images/c58eda44b54edf6f.webp",
+    "width": 1232,
+    "height": 909,
+    "type": "image/webp",
+    "bytes": 46010,
+    "source": "ad00756928544305"
+  },
+  "notes/typed-decision/typed_decision_d3_mini_noul_input.mp4": {
+    "key": "videos/8f6cdc5ee2855e69.mp4",
+    "width": 1376,
+    "height": 768,
+    "type": "video/mp4",
+    "bytes": 1876326,
+    "source": "a133080d79fb2d8d",
+    "poster": {
+      "key": "images/346f1b20c55f418c.webp",
+      "width": 1376,
+      "height": 768,
+      "bytes": 124104
+    }
+  },
+  "notes/typed-decision/typed_decision_d3_mini_noul_two_images.png": {
+    "key": "images/52a80663a53a3812.webp",
+    "width": 1566,
+    "height": 942,
+    "type": "image/webp",
+    "bytes": 64358,
+    "source": "c774f1e009c5951a"
+  },
+  "notes/typed-decision/typed_decision_d3_mini_noul_visible.png": {
+    "key": "images/46cb175cc8141845.webp",
+    "width": 1236,
+    "height": 764,
+    "type": "image/webp",
+    "bytes": 44710,
+    "source": "a1209e1b88adb82e"
+  },
+  "notes/typed-decision/typed_decision_d3_mini_noul.png": {
+    "key": "images/8b0d79f9bfd6dc86.webp",
+    "width": 1236,
+    "height": 912,
+    "type": "image/webp",
+    "bytes": 66576,
+    "source": "03e3c3402216e986"
+  },
+  "notes/typed-decision/typed_decision_d3_mini_score.png": {
+    "key": "images/5d36bb8dc14d41b8.webp",
+    "width": 1233,
+    "height": 858,
+    "type": "image/webp",
+    "bytes": 46656,
+    "source": "a2913954cc6626cf"
+  },
+  "notes/typed-decision/typed_decision_moment_search_d3_mini_input_image.png": {
+    "key": "images/2ddb28170efb5d17.webp",
+    "width": 680,
+    "height": 707,
+    "type": "image/webp",
+    "bytes": 27970,
+    "source": "b86a8d1006c5b4fe"
+  },
+  "notes/typed-decision/typed_decision_moment_search_d3_mini_input_video.mp4": {
+    "key": "videos/cf07e79a59ea6345.mp4",
+    "width": 1080,
+    "height": 1920,
+    "type": "video/mp4",
+    "bytes": 7462937,
+    "source": "7cbffa5d7024795c",
+    "poster": {
+      "key": "images/c19915a257181bb1.webp",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 120974
+    }
+  },
+  "notes/typed-decision/typed_decision_moment_search_d3_mini_output.mp4": {
+    "key": "videos/81586c9610f36681.mp4",
+    "width": 1080,
+    "height": 1920,
+    "type": "video/mp4",
+    "bytes": 8463920,
+    "source": "fdf24cf5ba399925",
+    "poster": {
+      "key": "images/c24b7718cae795f4.webp",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 117178
+    }
+  },
+  "notes/typed-decision/typed_decision_moment_search_d3_mini.png": {
+    "key": "images/d3ca5b3832281f61.webp",
+    "width": 2491,
+    "height": 1543,
+    "type": "image/webp",
+    "bytes": 169536,
+    "source": "9b45b662cf38b5a2"
+  },
   "notes/typed-decision/typed_decision_noul_dataset_sort_input.png": {
     "key": "images/2ce2fa61e7f986f6.webp",
     "width": 807,

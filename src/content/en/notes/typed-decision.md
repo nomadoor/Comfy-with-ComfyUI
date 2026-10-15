@@ -6,23 +6,24 @@ section: notes
 navId: typed-decision
 title: "ComfyUI-TypedDecision"
 created: 2026-09-30
-updated: 2026-09-30
+updated: 2026-10-16
 noteTags: ["project", "custom-nodes", "concept"]
-summary: "A node that answers one question about images or text, with a probability attached"
+summary: "A node that answers one question about images, video or text, with a probability attached"
 seoTitle: "ComfyUI-TypedDecision: an MLLM that only decides"
-seoDescription: "A ComfyUI custom node that answers questions about images and text with probabilities, in three shapes: noul, choice and score. Workflows using imajev-4b."
+seoDescription: "A ComfyUI custom node that answers questions about images, video and text with probabilities, in three shapes: noul, choice and score. Workflows using d3-mini."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
-  image: "/media/notes/typed-decision/typed_decision_noul.png"
+  image: "/media/notes/typed-decision/typed_decision_d3_mini_noul.png"
 ---
 
 ## ComfyUI-TypedDecision
 
-Jev started it, and **MLLMs that only decide** are having a moment. Instead of writing prose, you ask "is there a person in this image?" and get back `yes` / `no` along with how sure it is. The task has come to be called **typed decision**.
+Having a multimodal LLM make a decision instead of writing text is sometimes called "Typed Decision".
+Jev is the well-known one, but several models can do the same thing locally, so I built them into a ComfyUI custom node.
 
-There are a few local alternatives to Jev. [imajev](https://github.com/mohit67890/imajev) fit ComfyUI's core system unusually well, so that is the one I built a custom node for first.
+Since the shape of the answer is fixed, it may come in handy for branching or for processing datasets. And above all, it's fast.
 
-Let's look at what typed decision can do, and what you can do with it in ComfyUI.
+Let's look at what Typed Decision can do, and what you can do with it in ComfyUI.
 
 ---
 
@@ -34,11 +35,47 @@ Let's look at what typed decision can do, and what you can do with it in ComfyUI
 
 ---
 
+## Supported models
+
+| Model | Base | int8 size | Images | Video |
+| --- | --- | --- | --- | --- |
+| [d3-flash](https://huggingface.co/vllm-sr/d3-flash) | Qwen3.5-9B | 9.88 GB | any number | ○ |
+| [d3-mini](https://huggingface.co/vllm-sr/d3-mini) | Qwen3.5-4B | 5.52 GB | any number | ○ |
+| [d3-nano](https://huggingface.co/vllm-sr/d3-nano) | Qwen3.5-2B | 3.06 GB | any number | ○ |
+| [d3-lite](https://huggingface.co/vllm-sr/d3-lite) | Qwen3.5-0.8B | 1.21 GB | any number | ○ |
+| [Clef-flash](https://huggingface.co/Cloudflare/clef-flash) | Qwen3.5-9B | 12.2 GB | any number | ○ |
+| [imajev-4b](https://huggingface.co/mohit67890/imajev-4b) | Qwen3.5-4B + LoRA | 5.76 GB + 490 MB | up to 2 | × |
+
+Everything in this article uses **d3-mini**. It performs well and is light on top of that, so I recommend it.
+
+---
+
 ## Downloading the models
+
+### d3 / Clef-flash
+
+Put the ones you use in `text_encoders`.
+
+- text_encoders
+  - [d3_mini_int8_convrot.safetensors](https://huggingface.co/nomadoor/d3/blob/main/text_encoders/d3_mini_int8_convrot.safetensors) (5.52 GB)
+  - [d3_flash_int8_convrot.safetensors](https://huggingface.co/nomadoor/d3/blob/main/text_encoders/d3_flash_int8_convrot.safetensors) (9.88 GB)
+  - [d3_nano_int8_convrot.safetensors](https://huggingface.co/nomadoor/d3/blob/main/text_encoders/d3_nano_int8_convrot.safetensors) (3.06 GB)
+  - [d3_lite_int8_convrot.safetensors](https://huggingface.co/nomadoor/d3/blob/main/text_encoders/d3_lite_int8_convrot.safetensors) (1.21 GB)
+  - [clef_flash_int8_convrot.safetensors](https://huggingface.co/nomadoor/clef/blob/main/text_encoders/clef_flash_int8_convrot.safetensors) (12.2 GB)
+
+```text
+📂ComfyUI/
+└── 📂models/
+    └── 📂text_encoders/
+        └── d3_mini_int8_convrot.safetensors
+```
+
+### imajev
+
+imajev combines Qwen3.5-4B with the imajev-4b files.
 
 - text_encoders
   - [qwen3.5_4b_int8_convrot.safetensors](https://huggingface.co/nomadoor/Qwen3.5/blob/main/text_encoders/qwen3.5_4b_int8_convrot.safetensors) (5.76 GB)
-  - or the original [qwen3.5_4b_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen3.5/blob/main/text_encoders/qwen3.5_4b_bf16.safetensors) (9.32 GB)
 - typed_decision
   - [mohit67890/imajev-4b](https://huggingface.co/mohit67890/imajev-4b/tree/main) (490 MB for the files below)
     - Put these files in an `imajev-4b` folder. Downloading the whole repository also works.
@@ -59,21 +96,40 @@ Let's look at what typed decision can do, and what you can do with it in ComfyUI
 
 ---
 
+## Load Typed Decision Model
+
+Pick the model file in `backbone`, and the kind of model in `adapter`.
+
+| Model | `backbone` | `adapter` |
+| --- | --- | --- |
+| d3 | a d3 file | `d3` |
+| Clef-flash | a Clef-flash file | `clef` |
+| imajev | a Qwen3.5-4B file | `imajev-4b` |
+
+Once you pick an `adapter`, the settings that model supports appear.
+
+- `debias` (d3, imajev): judges with the options in different orders and averages the results. Less bias from the order, but slower
+  - d3 also judges in reverse order, for choice only
+  - imajev judges up to four orders, in every mode
+- `fps` (d3, Clef-flash): how many video frames to read per second (default 2)
+- `calibration` (imajev): applies temperature calibration
+
+---
+
 ## The three modes
 
-There are three shapes a question can take. The one you pick changes both the input fields and the type of the answer.
+There are three shapes a question can take. The one you pick changes both the input fields and the type of the answer. Write the questions and options in English.
 
 > [!NOTE]
 > The output sockets are the same across all three modes, but what they mean changes with the mode.
-
 
 ### noul (Yes or No)
 
 Answers a question with true or false.
 
-![](/media/notes/typed-decision/typed_decision_noul.png){media=image}
+![](/media/notes/typed-decision/typed_decision_d3_mini_noul.png){media=image}
 
-[](/workflows/notes/typed-decision/typed_decision_noul.json)
+[](/workflows/notes/typed-decision/typed_decision_d3_mini_noul.json)
 
 **Input**
 
@@ -83,9 +139,8 @@ Answers a question with true or false.
 **Output**
 
 - `value` is the probability of true
-  - Whatever it cannot decide is split evenly between true and false, so an uncertain answer lands near 0.5
 - `label` is `yes` / `no`
-- `pass` is a `Boolean`: `value >= threshold`, and the model did not abstain
+- `pass` is a `Boolean`: `value >= threshold`
 
 Here the claim is "many people are in the image", judged true or false.
 
@@ -95,9 +150,9 @@ How many counts as "many" is vague, though. So the criteria spell it out: yes fo
 
 Picks one of the options you supply.
 
-![](/media/notes/typed-decision/typed_decision_choice.png){media=image}
+![](/media/notes/typed-decision/typed_decision_d3_mini_choice.png){media=image}
 
-[](/workflows/notes/typed-decision/typed_decision_choice.json)
+[](/workflows/notes/typed-decision/typed_decision_d3_mini_choice.json)
 
 **Input**
 
@@ -106,6 +161,7 @@ Picks one of the options you supply.
 
 **Output**
 
+- `value` is the probability of the chosen option
 - `label` is the chosen option
 - `index` is the line it came from
   - The third line counts as `index` 2, since counting starts at 0
@@ -114,9 +170,9 @@ Picks one of the options you supply.
 
 Rates something on the scale you define.
 
-![](/media/notes/typed-decision/typed_decision_score.png){media=image}
+![](/media/notes/typed-decision/typed_decision_d3_mini_score.png){media=image}
 
-[](/workflows/notes/typed-decision/typed_decision_score.json)
+[](/workflows/notes/typed-decision/typed_decision_d3_mini_score.json)
 
 **Input**
 
@@ -129,23 +185,35 @@ Rates something on the scale you define.
 
 Here it rates how usable a photo is for a training dataset, on five levels.
 
-`value` is an average weighted by the probability of each level, so it lands between levels, like `3.4`. That reads as "between good and excellent, closer to good".
+`value` is an average weighted by the probability of each level, so it lands between levels, like `1.35`. That reads as "between poor and acceptable, closer to poor".
 
 ---
 
-## Two images at once
+## Any number of images
 
-imajev takes up to two images.
-**The first is the reference, the second is the one being judged.**
+d3 and Clef-flash take any number of images, so you can ask questions that compare several of them.
 
-> [!WARNING]
-> ComfyUI will keep offering a third socket and beyond. imajev only takes two, so connecting more is an error.
+imajev takes up to two, and **the first is the reference, the second is the one being judged.**
 
-![](/media/notes/typed-decision/typed_decision_noul_two_images.png){media=image}
+![](/media/notes/typed-decision/typed_decision_d3_mini_noul_two_images.png){media=image}
 
-[](/workflows/notes/typed-decision/typed_decision_noul_two_images.json)
+[](/workflows/notes/typed-decision/typed_decision_d3_mini_noul_two_images.json)
 
 Ask "are the first and second images the same person?" and you have a same-person check.
+
+---
+
+## Video works too
+
+With d3 and Clef-flash, connect a video to `videos` and it answers questions about the video.
+
+![](/media/notes/typed-decision/typed_decision_d3_mini_noul_visible.png){media=image}
+
+[](/workflows/notes/typed-decision/typed_decision_d3_mini_noul_visible.json)
+
+The whole video is read at the `fps` set in Load Typed Decision Model, and all the frames are judged together in one go. A one-minute video at 2 fps is 120 frames.
+
+At 2 fps it only looks every 0.5 seconds, so something that appears for just an instant may be missed.
 
 ---
 
@@ -165,11 +233,52 @@ Put the listing in `state` and the model has something to compare against.
 
 ---
 
+## Typed Decision Moment Search
+
+A node that finds the stretches of a video where a condition holds. It suits conditions a single frame can show, such as "a dog is visible" or "this person is visible". By design, it cannot judge the direction of a motion, such as "walking to the right".
+
+![](/media/notes/typed-decision/typed_decision_moment_search_d3_mini.png){media=image}
+
+[](/workflows/notes/typed-decision/typed_decision_moment_search_d3_mini.json)
+
+Here it finds where the person in the reference image appears, and joins those stretches into one video.
+
+**Input**
+
+- `instructions` / `criteria_true` / `criteria_false` / `state` work as in Typed Decision's noul
+- Connect a reference image to `images` to find that person or thing in the video
+- `window` is how many frames are judged together at first (default 8, which is 4 seconds at 2 fps)
+- `threshold` is the probability a frame needs to pass
+
+**Output**
+
+- `intervals` is JSON with the start and end time of each stretch found, and more
+- `videos` holds the video cut out for each stretch
+  - When nothing is found, the video nodes after it do not run
+
+{% outputs %}
+![input](/media/notes/typed-decision/typed_decision_moment_search_d3_mini_input_video.mp4){media=loop} ![reference image](/media/notes/typed-decision/typed_decision_moment_search_d3_mini_input_image.png){media=image} ![output](/media/notes/typed-decision/typed_decision_moment_search_d3_mini_output.mp4){media=loop}
+{% endoutputs %}
+
+### Writing the question
+
+With a reference image, ask **about the video**.
+
+- ○ `The video shows the same person as the image.`
+- × `The person in the image is visible.`
+
+The second one is true of the reference image itself, so every frame passes.
+
+> [!NOTE]
+> Stretches are cut exactly where the model says. Someone half out of frame may already count as "not visible", so write the question for what you want to count.
+
+---
+
 ## In practice
 
 ### Picking a resolution from the prompt
 
-Everything above took an image, but text alone works too.
+The examples above took images or video, but text alone works too.
 
 Let's have it read the prompt and decide which shape to generate — portrait, landscape or square.
 
@@ -193,9 +302,7 @@ This prompt chose `square`, and sure enough the image came out 1024 × 1024.
 
 ### Sorting a dataset
 
-The best thing about typed decision is how fast it is.
-
-Which makes sorting a large pile of images a promising use for it.
+Making use of the speed, sorting a large pile of images looks like a good fit.
 
 ![](/media/notes/typed-decision/typed_decision_noul_dataset_sort.png){media=image}
 
@@ -216,11 +323,8 @@ Let's feed it a folder holding two photos of people and three of something else.
 
 The images with a person land in `accepted`, the rest in `rejected`.
 
-> [!NOTE]
-> The `abstained` output lets you separate out the ones it could not decide on. A way to narrow down what a human needs to look at.
-
 ---
 
 {% outputs "samples" %}
-![noul](/media/notes/typed-decision/typed_decision_noul_input.png){media=image} ![choice](/media/notes/typed-decision/typed_decision_choice_input.png){media=image} ![score](/media/notes/typed-decision/typed_decision_score_input.png){media=image} ![two images, first](/media/notes/typed-decision/typed_decision_noul_two_images_input1.png){media=image} ![two images, second](/media/notes/typed-decision/typed_decision_noul_two_images_input2.png){media=image}
+![noul](/media/notes/typed-decision/typed_decision_noul_input.png){media=image} ![choice](/media/notes/typed-decision/typed_decision_choice_input.png){media=image} ![score](/media/notes/typed-decision/typed_decision_score_input.png){media=image} ![two images, first](/media/notes/typed-decision/typed_decision_noul_two_images_input1.png){media=image} ![two images, second](/media/notes/typed-decision/typed_decision_noul_two_images_input2.png){media=image} ![video](/media/notes/typed-decision/typed_decision_d3_mini_noul_input.mp4){media=loop}
 {% endoutputs %}
