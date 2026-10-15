@@ -108,7 +108,7 @@ const siteCommit = () => {
   }
 };
 
-// Same rule as SAFE_PART in runpod/image/bootstrap/__main__.py.
+// Same rule as SAFE_PART in runpod/image/bootstrap/profile.py.
 const SAFE_PART = /^[A-Za-z0-9][A-Za-z0-9._ +()-]*$/;
 const safePath = (value, nested = false) =>
   (nested ? String(value).split("/") : [String(value)]).every((part) => SAFE_PART.test(part) && part !== "." && part !== "..");
@@ -349,7 +349,7 @@ const applyLock = ({ id, models, lock, strictLock, errors, warnings }) => {
   return totalBytes;
 };
 
-// The Pod refuses names that are unsafe as paths (bootstrap/__main__.py check_paths); catch them here
+// The Pod refuses names that are unsafe as paths (bootstrap/profile.py check_paths); catch them here
 // first, with the same rule, so a profile never passes the check and then stops every Pod.
 const unsafeNames = (profile) => [
   ...profile.models.filter((m) => !safePath(m.name) || !safePath(m.directory, true)).map((m) => `model ${m.directory}/${m.name}`),
