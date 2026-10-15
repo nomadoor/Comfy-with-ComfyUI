@@ -27,7 +27,7 @@ Accepted — implemented via comfyui-feedback Worker
 - Production is the top level of `wrangler.toml` (worker `comfyui-feedback`), not an `[env.production]` section (corrected 2026-10-15 to match the live worker; `--env production` would create a separate worker without secrets).
 - Deploy production: `cd workers/feedback && wrangler deploy --env=""`
 - Deploy staging: `cd workers/feedback && wrangler deploy --env staging` (worker `comfyui-feedback-staging`)
-- Secrets: `wrangler secret put GITHUB_TOKEN` and `wrangler secret put TURNSTILE_SECRET` (add `--env staging` for staging). Check with `wrangler secret list` (or `--env staging`) before deploying: since 2026-10-15 a missing `TURNSTILE_SECRET` stops the endpoint.
+- Secrets: `wrangler secret put GITHUB_TOKEN --env=""` and `wrangler secret put TURNSTILE_SECRET --env=""` (`--env staging` for staging). Check with `wrangler secret list --env=""` (or `--env staging`) before deploying: since 2026-10-15 a missing `TURNSTILE_SECRET` stops the endpoint. Always name the environment: with `CLOUDFLARE_ENV` set, a command without `--env` targets that environment instead of production.
 - `wrangler deploy` prints a diff when the local configuration differs from the live worker's; with `wrangler.toml` matching production, a deploy only changes the code.
 - Pages env (Preview/Production):
   - `ASSISTANT_FEEDBACK_ENDPOINT` (staging or production worker URL)
