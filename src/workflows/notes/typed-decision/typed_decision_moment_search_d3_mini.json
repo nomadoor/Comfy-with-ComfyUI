@@ -1,0 +1,362 @@
+{
+  "id": "b23da074-3821-443e-b751-2756e15eee5a",
+  "revision": 0,
+  "last_node_id": 12,
+  "last_link_id": 17,
+  "nodes": [
+    {
+      "id": 2,
+      "type": "LoadTypedDecisionModel",
+      "pos": [
+        2033.131672249509,
+        392.0915748419598
+      ],
+      "size": [
+        297.3442826704545,
+        169.9132025967317
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "typed_decision_model",
+          "type": "TYPED_DECISION_MODEL",
+          "links": [
+            17
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadTypedDecisionModel",
+        "models": [
+          {
+            "name": "d3_mini_int8_convrot.safetensors",
+            "url": "https://huggingface.co/nomadoor/d3/resolve/main/text_encoders/d3_mini_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
+      },
+      "widgets_values": [
+        "d3_mini_int8_convrot.safetensors",
+        "d3",
+        false,
+        2
+      ],
+      "widgets_values_named": {
+        "backbone": "d3_mini_int8_convrot.safetensors",
+        "adapter": "d3",
+        "adapter.debias": false,
+        "adapter.fps": 2
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 3,
+      "type": "LoadVideo",
+      "pos": [
+        1387.2079310687013,
+        619.641999477643
+      ],
+      "size": [
+        503.45139770507797,
+        969.0247070312497
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            12
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadVideo"
+      },
+      "widgets_values": [
+        "typed_decision_moment_search_d3_mini_input_video.mp4",
+        "image"
+      ],
+      "widgets_values_named": {
+        "file": "typed_decision_moment_search_d3_mini_input_video.mp4",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 7,
+      "type": "SaveVideo",
+      "pos": [
+        3122.0900752075863,
+        619.7378616823667
+      ],
+      "size": [
+        555.1491801047778,
+        1084.9318757418273
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 14
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": []
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "video/ComfyUI",
+        "auto",
+        "auto",
+        "auto"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "video/ComfyUI",
+        "format": "auto",
+        "format.codec": "auto",
+        "codec": "auto"
+      }
+    },
+    {
+      "id": 8,
+      "type": "ConcatenateVideo",
+      "pos": [
+        2813.9991646126787,
+        619.7378616823667
+      ],
+      "size": [
+        270,
+        118
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "videos.video0",
+          "type": "VIDEO",
+          "link": 16
+        },
+        {
+          "name": "videos.video1",
+          "shape": 7,
+          "type": "VIDEO",
+          "link": null
+        },
+        {
+          "name": "complete_audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            14
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConcatenateVideo"
+      },
+      "widgets_values": [
+        "auto"
+      ],
+      "widgets_values_named": {
+        "codec": "auto"
+      }
+    },
+    {
+      "id": 9,
+      "type": "LoadImage",
+      "pos": [
+        1940.7429466232174,
+        890.4553616371747
+      ],
+      "size": [
+        389.733008296746,
+        499.7312032818754
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            13
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "typed_decision_moment_search_d3_mini_input_image.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "typed_decision_moment_search_d3_mini_input_image.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 11,
+      "type": "TypedDecisionMomentSearch",
+      "pos": [
+        2380.5595727694017,
+        599.0483323010891
+      ],
+      "size": [
+        400,
+        378.00000000000006
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "TYPED_DECISION_MODEL",
+          "link": 17
+        },
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 12
+        },
+        {
+          "name": "images.image_0",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 13
+        },
+        {
+          "name": "images.image_1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "intervals",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "videos",
+          "shape": 6,
+          "type": "VIDEO",
+          "links": [
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TypedDecisionMomentSearch"
+      },
+      "widgets_values": [
+        "The video shows the same person as the image.",
+        "",
+        8,
+        0.5,
+        "",
+        ""
+      ],
+      "widgets_values_named": {
+        "instructions": "The video shows the same person as the image.",
+        "state": "",
+        "window": 8,
+        "threshold": 0.5,
+        "criteria_true": "",
+        "criteria_false": ""
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      14,
+      8,
+      0,
+      7,
+      0,
+      "VIDEO"
+    ],
+    [
+      16,
+      11,
+      1,
+      8,
+      0,
+      "VIDEO"
+    ],
+    [
+      17,
+      2,
+      0,
+      11,
+      0,
+      "TYPED_DECISION_MODEL"
+    ],
+    [
+      12,
+      3,
+      0,
+      11,
+      1,
+      "VIDEO"
+    ],
+    [
+      13,
+      9,
+      0,
+      11,
+      2,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8264462809917354,
+      "offset": [
+        -544.0255103639996,
+        -97.26556410527924
+      ]
+    },
+    "frontendVersion": "1.55.14",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
