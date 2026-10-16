@@ -597,3 +597,29 @@ test.describe("Layout rails", () => {
     await expect(page.locator("[data-assistant-submitted-detail]")).toContainText("誤り報告");
   });
 });
+
+test.describe("Sidebar archive", () => {
+  const archive = '.sidebar__nav-panel.is-active details.nav-list__archive';
+
+  test("stays closed outside the archive and leaves archived pages out of prev/next", async ({ page }) => {
+    await page.goto("/ja/basic-workflows/krea-2/");
+    await expect(page.locator(archive)).not.toHaveAttribute("open", /.*/);
+    await expect(page.locator(".article-pagination__link--next")).toHaveAttribute("href", "/ja/basic-workflows/wan-2-1/");
+  });
+
+  test("is open on an archived page, which has no prev/next", async ({ page }) => {
+    await page.goto("/ja/basic-workflows/flux-1-kontext/");
+    await expect(page.locator(archive)).toHaveAttribute("open", "");
+    await expect(page.locator(`${archive} a[aria-current="page"]`)).toBeVisible();
+    await expect(page.locator(".article-pagination__link")).toHaveCount(0);
+  });
+
+  test("opens when the router navigates into an archived page", async ({ page }) => {
+    await page.goto("/ja/basic-workflows/speed-and-efficiency/");
+    await expect(page.locator(archive)).not.toHaveAttribute("open", /.*/);
+    await page.locator('.article-body a[href^="/ja/basic-workflows/qwen-image/"]').first().click();
+    await expect(page).toHaveURL(/\/ja\/basic-workflows\/qwen-image\//);
+    await expect(page.locator(archive)).toHaveAttribute("open", "");
+    await expect(page.locator(`${archive} a[aria-current="page"]`)).toBeVisible();
+  });
+});
