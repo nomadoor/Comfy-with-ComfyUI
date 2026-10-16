@@ -100,7 +100,7 @@ With BBOX, you can specify what goes where.
   - `width` / `height` should match the output size (the value from `Resolution Selector`).
 
   > [!WARNING]
-  > It's tempting to connect `Resolution Selector` to `width` / `height`, but a bug currently shifts the box coordinates when you do.  
+  > It's tempting to connect `Resolution Selector` to `width` / `height`, but there's currently a bug: when the resolution comes in through an input, the BBOX coordinates get shifted.  
   > Type the same values in by hand instead.
 
 - `MOSS-Image Layout Prompt`

@@ -100,7 +100,7 @@ Quality -> Score -> Meta -> Year -> Character -> Series -> Artist -> General
   - `width` / `height` 要和输出尺寸（`Resolution Selector` 的值）一致。
 
   > [!WARNING]
-  > 很容易想把 `Resolution Selector` 的值直接连到 `width` / `height`，但目前有 bug，这样连接后坐标会偏移。  
+  > 很容易想把 `Resolution Selector` 的值直接连到 `width` / `height`，但目前有 bug，通过外部输入传入分辨率时，BBOX 的坐标会偏移。  
   > 请手动输入相同的数值。
 
 - `MOSS-Image Layout Prompt`

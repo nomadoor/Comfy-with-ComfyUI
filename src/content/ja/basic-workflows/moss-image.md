@@ -99,7 +99,7 @@ BBOX で、どこに何を置くかを指定できます。
   - `width` / `height` は、出力サイズ（`Resolution Selector` の値）に合わせます。
 
   > [!WARNING]
-  > `width` / `height` には `Resolution Selector` の値をつなぎたくなりますが、今はバグで座標がずれてしまいます。  
+  > `width` / `height` には `Resolution Selector` の値をつなぎたくなりますが、今はバグがあり、外部入力で解像度を入力すると BBOX の座標がずれてしまいます。  
   > 同じ値を手で入力してください。
 
 - `MOSS-Image Layout Prompt`
