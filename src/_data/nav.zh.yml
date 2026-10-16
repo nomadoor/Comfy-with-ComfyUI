@@ -286,6 +286,8 @@ sections:
         title: Chroma1-HD
     - id: flux-2-klein
       title: FLUX.2 [klein]
+    - id: flux-3-image-klein
+      title: FLUX 3 Image Klein
     - id: auraflow
       title: AuraFlow
     - id: lumina-image-2.0

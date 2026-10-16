@@ -19,14 +19,15 @@ test.describe("Language home", () => {
     await expect(page.locator(".article-body > h2").filter({ hasText: "おすすめモデル" })).toBeVisible();
     await expect(page.locator(".toc")).toContainText("おすすめモデル");
     const cards = picks.locator("a.home-pick");
-    await expect(cards).toHaveCount(4);
+    await expect(cards).toHaveCount(5);
     await expect(cards.nth(0)).toHaveAttribute("href", "/ja/basic-workflows/krea-2/");
     await expect(cards.nth(1)).toHaveAttribute("href", "/ja/basic-workflows/anima/");
-    await expect(cards.nth(2)).toHaveAttribute("href", "/ja/basic-workflows/qwen-image-2-1/");
-    await expect(cards.nth(3)).toHaveAttribute("href", "/ja/basic-workflows/minimax-h3/");
+    await expect(cards.nth(2)).toHaveAttribute("href", "/ja/basic-workflows/flux-3-image-klein/");
+    await expect(cards.nth(3)).toHaveAttribute("href", "/ja/basic-workflows/qwen-image-2-1/");
+    await expect(cards.nth(4)).toHaveAttribute("href", "/ja/basic-workflows/minimax-h3/");
     await expect(picks.locator(".home-picks__category")).toHaveText(["画像生成", "画像編集", "動画生成"]);
     await expect(picks.locator(".home-picks__category").nth(0).locator("+ .home-picks__grid a.home-pick")).toHaveCount(2);
-    for (let i = 0; i < 4; i += 1) {
+    for (let i = 0; i < 5; i += 1) {
       await expect(cards.nth(i).locator("[data-hero]")).toHaveAttribute("data-hero", /\S/);
       await expect(cards.nth(i).locator(".home-pick__text")).not.toBeEmpty();
     }
@@ -112,7 +113,7 @@ test.describe("Language home", () => {
     for (const lang of ["ja", "en", "zh"]) {
       await page.goto(`/${lang}/`);
       await expect(page.locator("html")).toHaveAttribute("lang", lang);
-      await expect(page.locator("[data-home-picks] a.home-pick")).toHaveCount(4);
+      await expect(page.locator("[data-home-picks] a.home-pick")).toHaveCount(5);
       await expect(page.locator("[data-home-updates] a.news-row")).toHaveCount(5);
       const menu = await page.locator("header [data-lang-menu] a").evaluateAll((links) =>
         Object.fromEntries(links.map((link) => [link.getAttribute("data-lang"), link.getAttribute("href")]))

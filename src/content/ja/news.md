@@ -5,7 +5,7 @@ slug: news
 navId: news
 title: "更新情報"
 created: 2026-01-15
-updated: 2026-10-02
+updated: 2026-10-16
 summary: "このサイトの更新情報"
 seoTitle: "更新情報：ComfyUIの新しい記事とworkflow"
 seoDescription: "「Comfyに使うComfyUI」の更新履歴。新しく追加したモデルの解説やworkflow、既存記事の更新を日付順にまとめています。"
@@ -14,6 +14,11 @@ tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/ja/basic-workflows/flux-3-image-klein/">
+    <span class="news-row__date">2026.10.16</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">FLUX 3 Image Klein のページを追加しました</span>
+  </a>
   <a class="news-row" href="/ja/notes/runpod-card/">
     <span class="news-row__date">2026.10.2</span>
     <span class="news-row__tag">notes</span>
