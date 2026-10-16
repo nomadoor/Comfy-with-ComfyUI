@@ -273,34 +273,12 @@ sections:
             children:
               - id: sdxl-anime
                 title: SDXL Anime
-          - id: flux-1
-            title: Flux.1
-            children:
-              - id: flux-1-tools
-                title: Flux.1 Tools
-              - id: ace-plus-plus
-                title: ACE++
-              - id: flux-1-kontext
-                title: Flux.1 Kontext
-              - id: chroma1-hd
-                title: Chroma1-HD
           - id: flux-2-klein
             title: FLUX.2 [klein]
           - id: flux-3-image-klein
             title: FLUX 3 Image Klein
-          - id: auraflow
-            title: AuraFlow
-          - id: lumina-image-2.0
-            title: Lumina-Image 2.0
           - id: anima
             title: Anima
-          - id: qwen-image
-            title: Qwen-Image
-            children:
-              - id: qwen-image-edit
-                title: Qwen-Image-Edit
-              - id: qwen-image-layered
-                title: Qwen-Image-Layered
           - id: qwen-image-2-1
             title: Qwen-Image-2.1
           - id: z-image
@@ -376,6 +354,33 @@ sections:
             title: Model Merge & Difference LoRA
           - id: speed-and-efficiency
             title: Speed and Efficiency
+      - id: archive
+        title: Archive
+        noLink: true
+        archive: true
+        children:
+          - id: flux-1
+            title: Flux.1
+            children:
+              - id: flux-1-tools
+                title: Flux.1 Tools
+              - id: ace-plus-plus
+                title: ACE++
+              - id: flux-1-kontext
+                title: Flux.1 Kontext
+              - id: chroma1-hd
+                title: Chroma1-HD
+          - id: auraflow
+            title: AuraFlow
+          - id: lumina-image-2.0
+            title: Lumina-Image 2.0
+          - id: qwen-image
+            title: Qwen-Image
+            children:
+              - id: qwen-image-edit
+                title: Qwen-Image-Edit
+              - id: qwen-image-layered
+                title: Qwen-Image-Layered
   - key: notes
     label: Notes
     pages:

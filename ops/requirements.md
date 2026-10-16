@@ -22,6 +22,7 @@
 - The `notes` section is a flat collection. Its left sidebar panel uses a fixed `find` link, an independent Updated / Views segment control, and a flat title list. It must not render category headings or nested children.
 - `/notes/find/` is a local note finder page. It filters only notes by title, summary, and tags; it does not change the global header search.
 - Every page begins with one H1. Section badges and chip styles come from `/ops/style-design.md`.
+- A section may end with an `archive: true` heading in its nav YAML. Pages under it are archived: URL unchanged, kept in search / sitemap / llms.txt, but left out of prev/next links (in both directions) and out of other pages' related cards. It is the only heading that folds: closed by default, open when the current page is inside it. Every other heading stays expanded. See `adr/2026-10-17-nav-archive.md`.
 - On short viewports, sidebar section switching uses a compact dropdown: show only the current section label by default and expand section choices on tap/click.
 - Compact mode applies to:
   - mobile viewports (`max-width: 1100px` and `max-height: 720px`)

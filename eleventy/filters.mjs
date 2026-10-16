@@ -2,6 +2,7 @@
 import fsSync from "node:fs";
 import path from "node:path";
 import missingPages from "../src/_data/missingPages.js";
+import nav from "../src/_data/nav.js";
 import { resolveMedia } from "./media.mjs";
 
 function toDateKey(value = "") {
@@ -22,6 +23,29 @@ function normalizeSitePath(value = "") {
     const withLeadingSlash = pathOnly.startsWith("/") ? pathOnly : `/${pathOnly}`;
     return withLeadingSlash.endsWith("/") ? withLeadingSlash : `${withLeadingSlash}/`;
   }
+}
+
+// Pages under an `archive: true` heading in the nav, as "lang/section/id". The nav is the only record of
+// which pages are archived (ADR 2026-10-17-nav-archive).
+function navIds(pages = [], ids = new Set()) {
+  pages.forEach((page) => {
+    if (page?.id) ids.add(page.id);
+    if (Array.isArray(page?.children)) navIds(page.children, ids);
+  });
+  return ids;
+}
+
+const archivedPageKeys = new Set();
+for (const [lang, data] of Object.entries(nav)) {
+  (data.sections || []).forEach((section) => {
+    (section.pages || []).filter((page) => page?.archive).forEach((page) => {
+      navIds(page.children).forEach((id) => archivedPageKeys.add(`${lang}/${section.key}/${id}`));
+    });
+  });
+}
+
+function isArchivedEntry(data = {}) {
+  return archivedPageKeys.has(`${data.lang}/${data.section}/${data.navId || data.slug}`);
 }
 
 function getPageViewCount(entry, pageViews = {}) {
@@ -119,6 +143,7 @@ export function registerFilters(eleventyConfig) {
         if (!entry.data.section) return false;
         if (entry.data.section === "notes" && entry.data.slug === "find") return false;
         if (currentLang && entry.data.lang && entry.data.lang !== currentLang) return false;
+        if (isArchivedEntry(entry.data)) return false;
         return true;
       })
       .map((entry, index) => {
@@ -179,6 +204,10 @@ export function registerFilters(eleventyConfig) {
     return notes.some((note) => Number(note?.views || 0) > 0);
   });
 
+  eleventyConfig.addFilter("navContains", function (item, id) {
+    return Boolean(item && id) && navIds(item.children).has(id);
+  });
+
   eleventyConfig.addFilter("navPrevNext", function (navData, sectionKey, currentId) {
     if (!navData || !currentId) {
       return { prev: null, next: null };
@@ -207,6 +236,8 @@ export function registerFilters(eleventyConfig) {
     const ordered = [];
     const addPages = (pages = []) => {
       pages.forEach((page) => {
+        // Archived pages sit outside the reading order and get no prev/next of their own.
+        if (page && page.archive) return;
         if (page && page.id && !page.noLink) {
           ordered.push({ id: page.id, title: page.title || page.id });
         }

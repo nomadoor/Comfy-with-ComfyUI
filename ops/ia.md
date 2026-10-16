@@ -133,27 +133,11 @@
   * 他の基盤モデル — 親ページあり
     * SDXL（親ページあり）
       * Illustrious
-    * Flux（親ページあり）
-      * Flux LoRA
-      * Flux.1 Tools
-      * ACE++
-      * Flux.1 Kontext
-      * Chroma
-    * AuraFlow
-    * Lumina-Image 2.0
     * Anima
-    * Qwen-Image（親ページあり）
-      * Qwen-Image-Edit
     * Z-Image（親ページあり）
       * Z-Image-Turbo
     * PixelDiT / PiD
     * Ideogram 4.0
-  * アップスケール・修正 — 親ページあり
-    * ESRGAN
-    * GFPGAN
-    * SUPIR
-    * Ultimate SD Upscale
-    * Detailer
   * マスク生成 — 親ページあり
     * BiRefNet
     * YOLO
@@ -168,6 +152,12 @@
     * LTX-Video
     * LivePortrait
     * HunyuanVideo-Foley
+  * アップスケール・修正 — 親ページあり
+    * ESRGAN
+    * GFPGAN
+    * SUPIR
+    * Ultimate SD Upscale
+    * Detailer
   * LLM / MLLM — 見出しのみ（`2026-10-06-sidebar-group-parents.md`）
     * LLM / MLLMとは（`llm-mllm`）
     * JoyCaption
@@ -177,6 +167,17 @@
   * システム・最適化 — 親ページあり
     * モデルのマージ
     * 高速化・軽量化
+  * アーカイブ — 見出しのみ、既定で閉じる（`2026-10-17-nav-archive.md`）
+    * Flux.1（親ページあり）
+      * Flux.1 Tools
+      * ACE++
+      * Flux.1 Kontext
+      * Chroma1-HD
+    * AuraFlow
+    * Lumina-Image 2.0
+    * Qwen-Image（親ページあり）
+      * Qwen-Image-Edit
+      * Qwen-Image-Layered
 * 📝Notes
   * Noteを探す / Find Notes / 查找 Notes
   * 個別Noteは階層化せず、左カラムではフラットなタイトルリストとして表示する

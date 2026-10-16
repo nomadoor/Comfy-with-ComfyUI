@@ -6,7 +6,19 @@
 <ul class="nav-list">
   {% for item in listItems %}
   <li class="nav-list__item">
-    {% if item.noLink %}
+    {% if item.archive %}
+    {# The only folding heading: closed unless the current page is inside (ADR 2026-10-17-nav-archive). #}
+    <details class="nav-list__archive" {% if item | navContains(listCurrentId) %}open{% endif %}>
+      <summary class="nav-list__no-link nav-list__archive-summary">
+        <span class="nav-list__label">{{ item.title }}</span>
+        <span class="nav-list__archive-caret" aria-hidden="true">{{ icon("chevron-down") }}</span>
+      </summary>
+      <div class="nav-list__children">
+        {% set navItems = item.children %}
+        {% include "nav-list.njk" %}
+      </div>
+    </details>
+    {% elif item.noLink %}
     <span class="nav-list__no-link">
       <span class="nav-list__label">{{ item.title }}</span>
     </span>
@@ -19,7 +31,7 @@
       <span class="nav-list__label">{{ item.title }}</span>
     </a>
     {% endif %}
-    {% if item.children %}
+    {% if item.children and not item.archive %}
     <div class="nav-list__children">
       {% set navItems = item.children %}
       {% include "nav-list.njk" %}

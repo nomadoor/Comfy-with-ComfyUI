@@ -81,6 +81,9 @@ function setActiveNavLink(pathname = window.location.pathname, options = {}) {
       anchor.removeAttribute("aria-current");
     }
   });
+  // The sidebar is not swapped on navigation, so open the archive heading here when the new page is in it.
+  const archive = activeAnchor?.closest("details.nav-list__archive");
+  if (archive && !archive.open) archive.open = true;
   if (options.scroll !== false) {
     scrollNavIntoView(activeAnchor, options);
   }
