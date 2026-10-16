@@ -247,10 +247,10 @@
         "ver": "0.3.33"
       },
       "widgets_values": [
-        "Add a shallow water puddle on the ground around her bare feet. Change her red shirt and gray plaid trousers to a one-piece swimsuit. "
+        ""
       ],
       "widgets_values_named": {
-        "text": "Add a shallow water puddle on the ground around her bare feet. Change her red shirt and gray plaid trousers to a one-piece swimsuit. "
+        "text": ""
       }
     },
     {
@@ -632,7 +632,7 @@
         "Node name for S&R": "TextGenerate"
       },
       "widgets_values": [
-        "change her hair to silver long straight",
+        "",
         3584,
         "off",
         false,
@@ -640,7 +640,7 @@
         "auto"
       ],
       "widgets_values_named": {
-        "prompt": "change her hair to silver long straight",
+        "prompt": "",
         "max_length": 3584,
         "sampling_mode": "off",
         "thinking": false,

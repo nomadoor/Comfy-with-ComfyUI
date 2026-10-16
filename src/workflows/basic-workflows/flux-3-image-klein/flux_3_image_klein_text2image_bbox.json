@@ -2,7 +2,7 @@
   "id": "f5f73ff4-bcef-43ab-bdd0-58381c38c42c",
   "revision": 0,
   "last_node_id": 95,
-  "last_link_id": 204,
+  "last_link_id": 205,
   "nodes": [
     {
       "id": 8,
@@ -16,7 +16,7 @@
         46
       ],
       "flags": {},
-      "order": 12,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -142,7 +142,7 @@
         262
       ],
       "flags": {},
-      "order": 11,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -260,13 +260,21 @@
         177.7917699892659
       ],
       "flags": {},
-      "order": 6,
+      "order": 8,
       "mode": 0,
       "inputs": [
         {
           "name": "clip",
           "type": "CLIP",
           "link": 74
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 205
         }
       ],
       "outputs": [
@@ -287,10 +295,10 @@
         "ver": "0.3.33"
       },
       "widgets_values": [
-        "Poster illustration drawn with crisp, confident black ink linework of even weight, flat fills, and hard-edged cel shadows in a single darker tone per color, strong sunlit cast shadows with some areas filled solid black, finely detailed drawing of vehicles, buildings and plants, and a faint paper texture. The palette is saturated: warm oranges, reds and yellows against teal, cyan and fresh greens. Low-angle view looking up at a tall pile of abandoned vehicles heaped at odd angles against a bright, clear blue sky, with the camera slightly rolled so the pile leans toward the upper right. Behind the pile, huge poster lettering <obj_6> fills the upper left of the frame, partly hidden where the vehicles overlap it. At the base lies a white truck <obj_1> that runs off the left edge of the frame, with a cobalt-blue SUV <obj_2> skewed across its roof, a lemon-yellow sedan <obj_3> resting on top at a slant, and a small cherry-red car <obj_4> perched at the very top. A girl <obj_5> sits on the topmost car, leaning back on her hands and gazing up at the sky, her hair and clothes streaming sideways in the wind. In the background, ruined concrete buildings wrapped in ferns and vines rise along the edges of the frame, and ferns and grass sprout from cracks in the vehicles. [{\"id\": \"obj_1\", \"bbox\": [575, 0, 893, 869], \"desc\": \"A white box truck with chipped paint and rust streaks along its panels, a cracked windshield, flat tires, and clumps of ferns growing from the wheel wells.\"}, {\"id\": \"obj_2\", \"bbox\": [469, 126, 640, 869], \"desc\": \"A cobalt-blue SUV with dented doors, a bent roof rack, a pink spare-tire cover on its rear, and thin vines trailing from its windows.\"}, {\"id\": \"obj_3\", \"bbox\": [338, 308, 480, 872], \"desc\": \"A lemon-yellow sedan with a crumpled side, a mint-green replacement door, a cracked rear window and small ferns sprouting around the trunk lid.\"}, {\"id\": \"obj_4\", \"bbox\": [229, 455, 374, 874], \"desc\": \"A small cherry-red hatchback with a dented roof, a cracked tail light, and a few orange petals scattered across its body.\"}, {\"id\": \"obj_5\", \"bbox\": [169, 731, 280, 891], \"desc\": \"A teenage girl with fair skin and light freckles, messy short orange hair tied into a small loose bun with strands blowing in the wind, wearing an oversized mustard-yellow work jacket with rolled sleeves over a red tank top, frayed denim shorts and scuffed teal sneakers, sitting with her legs dangling over the edge, leaning back on her hands, her face tilted up toward the sky.\"}, {\"id\": \"obj_6\", \"bbox\": [2, 40, 602, 537], \"desc\": \"Poster lettering reading \\\"FLUX\\\\n3\\\", set in huge heavy condensed sans-serif capitals, with \\\"FLUX\\\" on the first line and an oversized \\\"3\\\" filling the second line, filled in flat bright orange with a thin black ink outline.\"}]"
+        ""
       ],
       "widgets_values_named": {
-        "text": "Poster illustration drawn with crisp, confident black ink linework of even weight, flat fills, and hard-edged cel shadows in a single darker tone per color, strong sunlit cast shadows with some areas filled solid black, finely detailed drawing of vehicles, buildings and plants, and a faint paper texture. The palette is saturated: warm oranges, reds and yellows against teal, cyan and fresh greens. Low-angle view looking up at a tall pile of abandoned vehicles heaped at odd angles against a bright, clear blue sky, with the camera slightly rolled so the pile leans toward the upper right. Behind the pile, huge poster lettering <obj_6> fills the upper left of the frame, partly hidden where the vehicles overlap it. At the base lies a white truck <obj_1> that runs off the left edge of the frame, with a cobalt-blue SUV <obj_2> skewed across its roof, a lemon-yellow sedan <obj_3> resting on top at a slant, and a small cherry-red car <obj_4> perched at the very top. A girl <obj_5> sits on the topmost car, leaning back on her hands and gazing up at the sky, her hair and clothes streaming sideways in the wind. In the background, ruined concrete buildings wrapped in ferns and vines rise along the edges of the frame, and ferns and grass sprout from cracks in the vehicles. [{\"id\": \"obj_1\", \"bbox\": [575, 0, 893, 869], \"desc\": \"A white box truck with chipped paint and rust streaks along its panels, a cracked windshield, flat tires, and clumps of ferns growing from the wheel wells.\"}, {\"id\": \"obj_2\", \"bbox\": [469, 126, 640, 869], \"desc\": \"A cobalt-blue SUV with dented doors, a bent roof rack, a pink spare-tire cover on its rear, and thin vines trailing from its windows.\"}, {\"id\": \"obj_3\", \"bbox\": [338, 308, 480, 872], \"desc\": \"A lemon-yellow sedan with a crumpled side, a mint-green replacement door, a cracked rear window and small ferns sprouting around the trunk lid.\"}, {\"id\": \"obj_4\", \"bbox\": [229, 455, 374, 874], \"desc\": \"A small cherry-red hatchback with a dented roof, a cracked tail light, and a few orange petals scattered across its body.\"}, {\"id\": \"obj_5\", \"bbox\": [169, 731, 280, 891], \"desc\": \"A teenage girl with fair skin and light freckles, messy short orange hair tied into a small loose bun with strands blowing in the wind, wearing an oversized mustard-yellow work jacket with rolled sleeves over a red tank top, frayed denim shorts and scuffed teal sneakers, sitting with her legs dangling over the edge, leaning back on her hands, her face tilted up toward the sky.\"}, {\"id\": \"obj_6\", \"bbox\": [2, 40, 602, 537], \"desc\": \"Poster lettering reading \\\"FLUX\\\\n3\\\", set in huge heavy condensed sans-serif capitals, with \\\"FLUX\\\" on the first line and an oversized \\\"3\\\" filling the second line, filled in flat bright orange with a thin black ink outline.\"}]"
+        "text": ""
       }
     },
     {
@@ -301,11 +309,11 @@
         187.93908374218398
       ],
       "size": [
-        456.53799518752487,
-        813.4313345278119
+        525.3347309328533,
+        974.2734488766506
       ],
       "flags": {},
-      "order": 13,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
@@ -417,7 +425,7 @@
         106
       ],
       "flags": {},
-      "order": 7,
+      "order": 6,
       "mode": 0,
       "inputs": [
         {
@@ -464,8 +472,8 @@
       "id": 92,
       "type": "MarkdownNote",
       "pos": [
-        -413.6480450708028,
-        34.805270385742176
+        -461.69319423851255,
+        -165.8968225095714
       ],
       "size": [
         435.72716346592114,
@@ -490,12 +498,12 @@
       "id": 93,
       "type": "CreateBoundingBoxes",
       "pos": [
-        2124.8464565620056,
-        8.933481307413558
+        -596.5206958769875,
+        511.38407886434607
       ],
       "size": [
-        378.55758796612355,
-        992.6952595192712
+        420,
+        560
       ],
       "flags": {},
       "order": 5,
@@ -549,19 +557,19 @@
             "metadata": {
               "type": "obj",
               "text": "",
-              "desc": "white truck",
+              "desc": "A white box truck with chipped paint and rust streaks along its panels, a cracked windshield, flat tires, and clumps of ferns growing from the wheel wells.",
               "palette": []
             }
           },
           {
             "x": 137,
-            "y": 908,
+            "y": 905,
             "width": 809,
             "height": 332,
             "metadata": {
               "type": "obj",
               "text": "",
-              "desc": "suv",
+              "desc": "A cobalt-blue SUV with dented doors, a bent roof rack, a pink spare-tire cover on its rear, and thin vines trailing from its windows.",
               "palette": []
             }
           },
@@ -573,7 +581,7 @@
             "metadata": {
               "type": "obj",
               "text": "",
-              "desc": "sedan",
+              "desc": "A lemon-yellow sedan with a crumpled side, a mint-green replacement door, a cracked rear window and small ferns sprouting around the trunk lid.",
               "palette": []
             }
           },
@@ -585,7 +593,7 @@
             "metadata": {
               "type": "obj",
               "text": "",
-              "desc": "car",
+              "desc": "A small cherry-red hatchback with a dented roof, a cracked tail light, and a few orange petals scattered across its body.",
               "palette": []
             }
           },
@@ -597,7 +605,7 @@
             "metadata": {
               "type": "obj",
               "text": "",
-              "desc": "a girl is sitting",
+              "desc": "A teenage girl with fair skin and light freckles, messy short orange hair tied into a small loose bun with strands blowing in the wind, wearing an oversized mustard-yellow work jacket with rolled sleeves over a red tank top, frayed denim shorts and scuffed teal sneakers, sitting with her legs dangling over the edge, leaning back on her hands, her face tilted up toward the sky.",
               "palette": []
             }
           },
@@ -609,7 +617,7 @@
             "metadata": {
               "type": "obj",
               "text": "",
-              "desc": "FLUX 3",
+              "desc": "Poster lettering reading \"FLUX\\n3\", set in huge heavy condensed sans-serif capitals, with \"FLUX\" on the first line and an oversized \"3\" filling the second line, filled in flat bright orange with a thin black ink outline.",
               "palette": []
             }
           }
@@ -628,19 +636,19 @@
             "metadata": {
               "type": "obj",
               "text": "",
-              "desc": "white truck",
+              "desc": "A white box truck with chipped paint and rust streaks along its panels, a cracked windshield, flat tires, and clumps of ferns growing from the wheel wells.",
               "palette": []
             }
           },
           {
             "x": 137,
-            "y": 908,
+            "y": 905,
             "width": 809,
             "height": 332,
             "metadata": {
               "type": "obj",
               "text": "",
-              "desc": "suv",
+              "desc": "A cobalt-blue SUV with dented doors, a bent roof rack, a pink spare-tire cover on its rear, and thin vines trailing from its windows.",
               "palette": []
             }
           },
@@ -652,7 +660,7 @@
             "metadata": {
               "type": "obj",
               "text": "",
-              "desc": "sedan",
+              "desc": "A lemon-yellow sedan with a crumpled side, a mint-green replacement door, a cracked rear window and small ferns sprouting around the trunk lid.",
               "palette": []
             }
           },
@@ -664,7 +672,7 @@
             "metadata": {
               "type": "obj",
               "text": "",
-              "desc": "car",
+              "desc": "A small cherry-red hatchback with a dented roof, a cracked tail light, and a few orange petals scattered across its body.",
               "palette": []
             }
           },
@@ -676,7 +684,7 @@
             "metadata": {
               "type": "obj",
               "text": "",
-              "desc": "a girl is sitting",
+              "desc": "A teenage girl with fair skin and light freckles, messy short orange hair tied into a small loose bun with strands blowing in the wind, wearing an oversized mustard-yellow work jacket with rolled sleeves over a red tank top, frayed denim shorts and scuffed teal sneakers, sitting with her legs dangling over the edge, leaning back on her hands, her face tilted up toward the sky.",
               "palette": []
             }
           },
@@ -688,7 +696,7 @@
             "metadata": {
               "type": "obj",
               "text": "",
-              "desc": "FLUX 3",
+              "desc": "Poster lettering reading \"FLUX\\n3\", set in huge heavy condensed sans-serif capitals, with \"FLUX\" on the first line and an oversized \"3\" filling the second line, filled in flat bright orange with a thin black ink outline.",
               "palette": []
             }
           }
@@ -697,52 +705,18 @@
       }
     },
     {
-      "id": 94,
-      "type": "PreviewAny",
-      "pos": [
-        2841.5659847594543,
-        53.02275202437454
-      ],
-      "size": [
-        379.8182614499916,
-        238.30973150359716
-      ],
-      "flags": {},
-      "order": 10,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "source",
-          "type": "*",
-          "link": 203
-        }
-      ],
-      "outputs": [
-        {
-          "name": "STRING",
-          "type": "STRING",
-          "links": []
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "PreviewAny"
-      },
-      "widgets_values": [],
-      "widgets_values_named": {}
-    },
-    {
       "id": 95,
       "type": "Flux3LayoutPrompt",
       "pos": [
-        2550.89028845778,
-        50.902921941768454
+        -130,
+        552.2355499363362
       ],
       "size": [
-        245.96256584784373,
-        125.89844145445912
+        324.30713755473414,
+        178.50495458251504
       ],
       "flags": {},
-      "order": 8,
+      "order": 7,
       "mode": 0,
       "inputs": [
         {
@@ -756,7 +730,7 @@
           "name": "prompt",
           "type": "STRING",
           "links": [
-            203
+            205
           ]
         }
       ],
@@ -764,10 +738,10 @@
         "Node name for S&R": "Flux3LayoutPrompt"
       },
       "widgets_values": [
-        ""
+        "Poster illustration drawn with crisp, confident black ink linework of even weight, flat fills, and hard-edged cel shadows in a single darker tone per color, strong sunlit cast shadows with some areas filled solid black, finely detailed drawing of vehicles, buildings and plants, and a faint paper texture. The palette is saturated: warm oranges, reds and yellows against teal, cyan and fresh greens. Low-angle view looking up at a tall pile of abandoned vehicles heaped at odd angles against a bright, clear blue sky, with the camera slightly rolled so the pile leans toward the upper right. Behind the pile, huge poster lettering <obj_6> fills the upper left of the frame, partly hidden where the vehicles overlap it. At the base lies a white truck <obj_1> that runs off the left edge of the frame, with a cobalt-blue SUV <obj_2> skewed across its roof, a lemon-yellow sedan <obj_3> resting on top at a slant, and a small cherry-red car <obj_4> perched at the very top. A girl <obj_5> sits on the topmost car, leaning back on her hands and gazing up at the sky, her hair and clothes streaming sideways in the wind. In the background, ruined concrete buildings wrapped in ferns and vines rise along the edges of the frame, and ferns and grass sprout from cracks in the vehicles."
       ],
       "widgets_values_named": {
-        "prompt": ""
+        "prompt": "Poster illustration drawn with crisp, confident black ink linework of even weight, flat fills, and hard-edged cel shadows in a single darker tone per color, strong sunlit cast shadows with some areas filled solid black, finely detailed drawing of vehicles, buildings and plants, and a faint paper texture. The palette is saturated: warm oranges, reds and yellows against teal, cyan and fresh greens. Low-angle view looking up at a tall pile of abandoned vehicles heaped at odd angles against a bright, clear blue sky, with the camera slightly rolled so the pile leans toward the upper right. Behind the pile, huge poster lettering <obj_6> fills the upper left of the frame, partly hidden where the vehicles overlap it. At the base lies a white truck <obj_1> that runs off the left edge of the frame, with a cobalt-blue SUV <obj_2> skewed across its roof, a lemon-yellow sedan <obj_3> resting on top at a slant, and a small cherry-red car <obj_4> perched at the very top. A girl <obj_5> sits on the topmost car, leaning back on her hands and gazing up at the sky, her hair and clothes streaming sideways in the wind. In the background, ruined concrete buildings wrapped in ferns and vines rise along the edges of the frame, and ferns and grass sprout from cracks in the vehicles."
       }
     }
   ],
@@ -861,30 +835,30 @@
       "INT"
     ],
     [
-      203,
-      95,
-      0,
-      94,
-      0,
-      "STRING"
-    ],
-    [
       204,
       93,
       2,
       95,
       0,
       "ARRAY"
+    ],
+    [
+      205,
+      95,
+      0,
+      6,
+      1,
+      "STRING"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.5209868481924692,
+      "scale": 0.6303940863128896,
       "offset": [
-        914.432650635407,
-        793.8415173518606
+        891.1463935854249,
+        420.49716948371145
       ]
     },
     "frontendVersion": "1.55.17",
