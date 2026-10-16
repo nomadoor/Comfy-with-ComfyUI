@@ -1,10 +1,6 @@
 # Reviews are read by the Japanese-speaking owner.
 language: ja-JP
 reviews:
-  # Generated data files: media:sync writes media.json, the page-views script writes pageViews.json.
-  path_filters:
-    - "!src/_data/media.json"
-    - "!src/_data/pageViews.json"
   # Diagrams of ComfyUI workflow JSON and article edits do not help review.
   sequence_diagrams: false
   pre_merge_checks:
@@ -18,6 +14,7 @@ reviews:
         - `tags` are optional. Do not request adding tags when they are intentionally omitted.
         - When tags exist, enforce max 5 and topic consistency.
         - Images with a display mode (`![](...){media=image|loop|player}`, the older `{gyazo=...}` alias, and images inside `{% mediaRow %}` or `{% outputs %}`) are renderer/CSS-managed embeds, whether they point to R2 (`/media/...`) or Gyazo. Do not request markdown alt/width/height fixes for them.
+        - Standard Markdown images without a display mode need width/height attributes or CSS aspect enforcement (`/ops/requirements.md`). Keep requesting that for them.
         - Empty alt text (`![](...)`) is the documented template in `/ops/style-writing.md` and is used across the site. Do not request alt text for these images.
     - path: "src/workflows/**/*.json"
       instructions: |
