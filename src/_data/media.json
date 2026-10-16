@@ -1844,12 +1844,20 @@
     "source": "6e1269f3dc2176fb"
   },
   "basic-workflows/flux-3-image-klein/flux_3_image_klein_text2image_bbox_output.png": {
-    "key": "images/08a27c7ce18e4e09.webp",
+    "key": "images/b1e0a498ee76658b.webp",
     "width": 1088,
     "height": 1936,
     "type": "image/webp",
-    "bytes": 868930,
-    "source": "5c509e40db1e233a"
+    "bytes": 875434,
+    "source": "aecf9444de481f56"
+  },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_text2image_bbox.png": {
+    "key": "images/04496f54f45df93d.webp",
+    "width": 2205,
+    "height": 1509,
+    "type": "image/webp",
+    "bytes": 147164,
+    "source": "da762b25f9a22270"
   },
   "basic-workflows/flux-3-image-klein/flux_3_image_klein_text2image_output.png": {
     "key": "images/b1e115725cea8d9e.webp",

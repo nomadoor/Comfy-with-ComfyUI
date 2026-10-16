@@ -104,7 +104,7 @@ Prompt Upsampler 本身有 9B，但扩散模型主体很轻，所以应该不会
 
 在提示词中写入坐标，就能直观地指定什么东西放在哪里。
 
-![](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_bbox_layout_prompt.png){media=image}
+![](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_text2image_bbox.png){media=image}
 
 [](/workflows/basic-workflows/flux-3-image-klein/flux_3_image_klein_text2image_bbox.json)
 
@@ -117,7 +117,7 @@ Prompt Upsampler 本身有 9B，但扩散模型主体很轻，所以应该不会
 - `FLUX 3 Image Layout Prompt`
   - 在这里写关于整张图像的提示词。
   - 它会从方框信息中只提取 FLUX 3 需要的内容（ID、坐标、说明），和提示词合在一起输出。
-  - 我会把这里留空，把输出的坐标列表交给 Claude，让它来写提示词。
+  - 也可以把随手填好的 BBOX `elements` 交给 AI，让它帮忙写提示词。
 
 {% outputs %}
 ![output](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_text2image_bbox_output.png){media=image}

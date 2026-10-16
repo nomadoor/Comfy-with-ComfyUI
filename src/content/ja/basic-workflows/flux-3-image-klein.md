@@ -103,7 +103,7 @@ Prompt Upsampler 自体は 9B ありますが、拡散モデル本体が軽い�
 
 プロンプトに座標を含めることで、どこに何を置くかを直感的に指示できます。
 
-![](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_bbox_layout_prompt.png){media=image}
+![](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_text2image_bbox.png){media=image}
 
 [](/workflows/basic-workflows/flux-3-image-klein/flux_3_image_klein_text2image_bbox.json)
 
@@ -116,7 +116,7 @@ Prompt Upsampler 自体は 9B ありますが、拡散モデル本体が軽い�
 - `FLUX 3 Image Layout Prompt`
   - 画像全体についてのプロンプトを書きます。
   - ボックスの情報から FLUX 3 に必要なもの（ID・座標・説明）だけを抜き出して、プロンプトとまとめて出してくれます。
-  - 私はここを空にして、出てきた座標の一覧を Claude に渡し、プロンプトを書いてもらっています。
+  - 雑に埋めた BBOX の `elements` を AI に渡して、プロンプトを作ってもらうのもいいですね。
 
 {% outputs %}
 ![output](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_text2image_bbox_output.png){media=image}

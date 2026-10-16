@@ -104,7 +104,7 @@ The Prompt Upsampler itself is 9B, but the diffusion model is light, so it shoul
 
 By including coordinates in the prompt, you can intuitively tell the model what goes where.
 
-![](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_bbox_layout_prompt.png){media=image}
+![](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_text2image_bbox.png){media=image}
 
 [](/workflows/basic-workflows/flux-3-image-klein/flux_3_image_klein_text2image_bbox.json)
 
@@ -117,7 +117,7 @@ By including coordinates in the prompt, you can intuitively tell the model what 
 - `FLUX 3 Image Layout Prompt`
   - Write a prompt for the whole image here.
   - It pulls out only what FLUX 3 needs from the box data (ID, coordinates, description) and outputs it together with the prompt.
-  - I leave this empty, hand the resulting coordinate list to Claude, and have it write the prompt.
+  - You could also hand roughly filled-in BBOX `elements` to an AI and have it write the prompt.
 
 {% outputs %}
 ![output](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_text2image_bbox_output.png){media=image}
