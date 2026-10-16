@@ -47,8 +47,8 @@ hero:
 
 ### 生成中的预览
 
-ComfyUI Manger → Preview method 设置为 `Auto`/`TAESD`/`latent2RGB` 中的任意一个
-- KSamlper 节点内部会显示生成过程中的预览图像。
+ComfyUI Manager → Preview method 设置为 `Auto`/`TAESD`/`latent2RGB` 中的任意一个
+- KSampler 节点内部会显示生成过程中的预览图像。
 - 因为很占空间，我自己是关掉的，不过用来了解图像是怎么一步步生成的，是个很好的功能。
 
 ![](/media/begin-with/settings/legacy_gyazo_b57c81af6a11466c664303f29b25b4cc.mp4){media=loop}

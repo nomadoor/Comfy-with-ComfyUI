@@ -54,7 +54,7 @@ Stable Diffusion 1.5をダウンロードしてみましょう。
 
 ## Civitaiからダウンロードする
 
-Stable Diffusion 1.5のファインチューニングモデルとして一斉を風靡したepiCRealismをダウンロードしてみましょう。
+Stable Diffusion 1.5のファインチューニングモデルとして一世を風靡したepiCRealismをダウンロードしてみましょう。
 
 ![](/media/begin-with/downloading-and-placing-models/legacy_gyazo_7bcde1665657f544a1191c760248dd80.png){media=image}
 

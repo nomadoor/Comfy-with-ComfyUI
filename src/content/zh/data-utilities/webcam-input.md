@@ -64,4 +64,4 @@ ComfyUI 可以把连接在电脑上的摄像头画面作为图像导入。
 
 ![](/media/data-utilities/webcam-input/legacy_gyazo_6b57f5d40d4c55b13d82bf6737a24e5a.mp4){media=loop}
 
-如果只是拍一张静态图，普通执行就够了；但如果想把正在画的画实时交给 AI 转换，请使用 `▷ Rum` 菜单中的 **`Run (Instant)`**。
+如果只是拍一张静态图，普通执行就够了；但如果想把正在画的画实时交给 AI 转换，请使用 `▷ Run` 菜单中的 **`Run (Instant)`**。

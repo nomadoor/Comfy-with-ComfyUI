@@ -56,6 +56,6 @@ Lip Sync 是根据音频的内容和节奏，事后给画面加上嘴部和表�
 再加上视频生成模型已经达到实用水平，技术也从单纯的“对口型”，逐渐走向了 **音频驱动的人像视频生成**。
 
 > ![](/media/ai-capabilities/lip-sync/legacy_gyazo_808dcfc73aa5fb1959eb35be3534e5e7.mp4){media=player}
-> InfineTalk
+> InfiniteTalk
 
 目前的 SoTA 有基于 Wan2.1 的 [FantasyTalking](https://fantasy-amap.github.io/fantasy-talking/)、[InfiniteTalk](https://meigen-ai.github.io/InfiniteTalk/) 等。

@@ -24,7 +24,7 @@ It drops the `denoise` parameter and adds these four:
   - `add_noise`
   - `start_at_step`
   - `end_at_step`
-  - `return_with_leftsover_noise`
+  - `return_with_leftover_noise`
 
 I think this is one of the most interesting features in ComfyUI, so let's go through it slowly.
 

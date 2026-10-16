@@ -24,7 +24,7 @@ hero:
   - `add_noise`
   - `start_at_step`
   - `end_at_step`
-  - `return_with_leftsover_noise`
+  - `return_with_leftover_noise`
 
 我觉得这是 ComfyUI 里最有意思的功能之一，我们慢慢来看。
 
@@ -75,7 +75,7 @@ KSampler (Advanced) 才能做到的一件事，就是把一次采样拆分给 2 
 
 ![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_27eed74329f52442a046e59245ee9b14.png){media=image}
 
-如图，我们试着让前半段 0 ~ 10step 由 🟪Ksample (Advanced) 完成，11~20step 由 🟨KSampler (Advanced) 完成。
+如图，我们试着让前半段 0 ~ 10step 由 🟪KSampler (Advanced) 完成，11~20step 由 🟨KSampler (Advanced) 完成。
 
 ![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_d57cb22d3d85f90010815d19d45bb638.png){media=image}
 

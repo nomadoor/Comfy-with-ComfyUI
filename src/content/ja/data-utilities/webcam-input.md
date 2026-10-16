@@ -65,4 +65,4 @@ ComfyUIに戻り、`Webcam Capture` ノードの設定を変更します。
 
 ![](/media/data-utilities/webcam-input/legacy_gyazo_6b57f5d40d4c55b13d82bf6737a24e5a.mp4){media=loop}
 
-静止画として1枚撮るだけなら通常の実行で良いですが、お絵描きをリアルタイムでAI変換したい場合などは、`▷ Rum` メニューの **`Run (Instant)`** を使用します。
+静止画として1枚撮るだけなら通常の実行で良いですが、お絵描きをリアルタイムでAI変換したい場合などは、`▷ Run` メニューの **`Run (Instant)`** を使用します。
