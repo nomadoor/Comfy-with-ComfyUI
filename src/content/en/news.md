@@ -5,7 +5,7 @@ slug: news
 navId: news
 title: "News"
 created: 2026-01-15
-updated: 2026-10-16
+updated: 2026-10-17
 summary: "Site updates"
 seoTitle: "News: New ComfyUI Guides and Workflows"
 seoDescription: "Update history of Comfy with ComfyUI: newly added model guides and workflows, plus updates to existing articles, listed by date."
@@ -15,6 +15,11 @@ tags:
 ---
 
 <div class="news-list">
+  <a class="news-row" href="/en/basic-workflows/moss-image/">
+    <span class="news-row__date">2026.10.17</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">Added MOSS-Image page</span>
+  </a>
   <a class="news-row" href="/en/basic-workflows/flux-3-image-klein/">
     <span class="news-row__date">2026.10.16</span>
     <span class="news-row__tag">basic-workflows</span>

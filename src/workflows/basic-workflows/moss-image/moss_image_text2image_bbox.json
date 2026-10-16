@@ -1,0 +1,915 @@
+{
+  "id": "5725723d-ff4a-4afe-8eee-b3ac4b32f148",
+  "revision": 0,
+  "last_node_id": 98,
+  "last_link_id": 214,
+  "nodes": [
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1255.3972990369018,
+        187.93908374218398
+      ],
+      "size": [
+        225,
+        46
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 35
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 76
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            101
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      }
+    },
+    {
+      "id": 37,
+      "type": "UNETLoader",
+      "pos": [
+        187.0405571482405,
+        -91.54487589908234
+      ],
+      "size": [
+        305.3782043457031,
+        82
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            206
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "moss_image_sft_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/main/diffusion_models/moss_image_sft_int8_convrot.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
+      },
+      "widgets_values": [
+        "moss_image_sft_int8_convrot.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "moss_image_sft_int8_convrot.safetensors",
+        "weight_dtype": "default"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 38,
+      "type": "CLIPLoader",
+      "pos": [
+        16.772437521741324,
+        187.93908374218398
+      ],
+      "size": [
+        301.3524169921875,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            74,
+            204
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "qwen3.5_9b_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/main/text_encoders/qwen3.5_9b_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen3.5_9b_int8_convrot.safetensors",
+        "moss_image",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3.5_9b_int8_convrot.safetensors",
+        "type": "moss_image",
+        "device": "default"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        898.7548217773438,
+        187.93908374218398
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 207
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 152
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 205
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 160
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            35
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        1234,
+        "fixed",
+        25,
+        3,
+        "euler",
+        "sgm_uniform",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 1234,
+        "control_after_generate": "fixed",
+        "steps": 25,
+        "cfg": 3,
+        "sampler_name": "euler",
+        "scheduler": "sgm_uniform",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 60,
+      "type": "ResolutionSelector",
+      "pos": [
+        -404.04367226628926,
+        749.8746887767816
+      ],
+      "size": [
+        270,
+        150
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "showAdvanced": true,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            161,
+            211
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            162,
+            212
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResolutionSelector",
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0"
+      },
+      "widgets_values": [
+        "16:9 (Widescreen)",
+        2,
+        16
+      ],
+      "widgets_values_named": {
+        "aspect_ratio": "16:9 (Widescreen)",
+        "megapixels": 2,
+        "multiple": 16
+      }
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        415.7513025457208,
+        187.93908374218398
+      ],
+      "size": [
+        418.5183049982245,
+        177.7917699892659
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 74
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 213
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            152
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        ""
+      ],
+      "widgets_values_named": {
+        "text": ""
+      }
+    },
+    {
+      "id": 56,
+      "type": "SaveImage",
+      "pos": [
+        1522.0397762964599,
+        187.93908374218398
+      ],
+      "size": [
+        1081.2694557787563,
+        730.9332210891914
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 101
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "ComfyUI"
+      }
+    },
+    {
+      "id": 39,
+      "type": "VAELoader",
+      "pos": [
+        896.719753042673,
+        -91.54487589908234
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            76
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "flux2-vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/main/vae/flux2-vae.safetensors",
+            "directory": "vae"
+          }
+        ]
+      },
+      "widgets_values": [
+        "flux2-vae.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "flux2-vae.safetensors"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 74,
+      "type": "EmptyFlux2LatentImage",
+      "pos": [
+        590,
+        610
+      ],
+      "size": [
+        237,
+        106
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 161
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 162
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            160
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyFlux2LatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ],
+      "widgets_values_named": {
+        "width": 1024,
+        "height": 1024,
+        "batch_size": 1
+      }
+    },
+    {
+      "id": 92,
+      "type": "MarkdownNote",
+      "pos": [
+        -471.8775469576457,
+        -91.54487589908234
+      ],
+      "size": [
+        434.36831439218804,
+        441.83593639711034
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n\n- diffusion_models\n  - [moss_image_sft_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MOSS-Image/blob/main/diffusion_models/moss_image_sft_int8_convrot.safetensors) (5.41 GB)\n- text_encoders\n  - [qwen3.5_9b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MOSS-Image/blob/main/text_encoders/qwen3.5_9b_int8_convrot.safetensors) (9.75 GB)\n- vae\n  - [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/MOSS-Image/blob/main/vae/flux2-vae.safetensors) (336 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── moss_image_sft_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3.5_9b_int8_convrot.safetensors\n    └── 📂vae/\n        └── flux2-vae.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/moss-image/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/moss-image/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/moss-image/)"
+      ],
+      "widgets_values_named": {
+        "text": "## models\n\n- diffusion_models\n  - [moss_image_sft_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MOSS-Image/blob/main/diffusion_models/moss_image_sft_int8_convrot.safetensors) (5.41 GB)\n- text_encoders\n  - [qwen3.5_9b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MOSS-Image/blob/main/text_encoders/qwen3.5_9b_int8_convrot.safetensors) (9.75 GB)\n- vae\n  - [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/MOSS-Image/blob/main/vae/flux2-vae.safetensors) (336 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── moss_image_sft_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3.5_9b_int8_convrot.safetensors\n    └── 📂vae/\n        └── flux2-vae.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/moss-image/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/moss-image/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/moss-image/)"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 93,
+      "type": "SkipLayerGuidanceDiTSimple",
+      "pos": [
+        536.8335622467746,
+        -91.54487589908234
+      ],
+      "size": [
+        295.4009765625,
+        130
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "showAdvanced": true,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 206
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            207
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SkipLayerGuidanceDiTSimple"
+      },
+      "widgets_values": [
+        "",
+        "22",
+        0,
+        0.5
+      ],
+      "widgets_values_named": {
+        "double_layers": "",
+        "single_layers": "22",
+        "start_percent": 0,
+        "end_percent": 0.5
+      }
+    },
+    {
+      "id": 94,
+      "type": "CLIPTextEncode",
+      "pos": [
+        415.7513025457208,
+        439.0549810836888
+      ],
+      "size": [
+        418.5183049982245,
+        105.54682990845009
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 204
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            205
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Negative Prompt)",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "nsfw, worst quality, bad anatomy, watermark, jpeg artifact, 3d render, chibi, realistic face, defined cheekbones, detailed nose, full lips, heavy facial shading, clouds, wall, vertical shadow, dappled shade, tree shadow, hatched shadow, gray background, extra limbs, extra legs"
+      ],
+      "widgets_values_named": {
+        "text": "nsfw, worst quality, bad anatomy, watermark, jpeg artifact, 3d render, chibi, realistic face, defined cheekbones, detailed nose, full lips, heavy facial shading, clouds, wall, vertical shadow, dappled shade, tree shadow, hatched shadow, gray background, extra limbs, extra legs"
+      }
+    },
+    {
+      "id": 95,
+      "type": "MOSSImageLayoutPrompt",
+      "pos": [
+        -72.46467456515143,
+        653.7397323142789
+      ],
+      "size": [
+        390.58952907908036,
+        240.9544770081634
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "element",
+          "type": "ARRAY",
+          "link": 209
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 211
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 212
+        }
+      ],
+      "outputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "links": [
+            213
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MOSSImageLayoutPrompt"
+      },
+      "widgets_values": [
+        "A wide fashion illustration of a young woman and a large crocodile crawling on a flat, open ground, framed as a close, low eye-level shot with white space above them. The crocodile crawls from right to left in the back of the scene with its tail running off the right edge. The woman crawls from left to right in the near foreground, directly in front of the crocodile and close to it, her back just below the line of its belly, so large in the frame that only her upper body and hips are visible, her legs continuing beyond the left edge of the image. The two pass each other in opposite directions, the crocodile's head near the left side and the woman's head near the right side. The ground is a flat, pale off-white plane meeting a pure white background at a faint horizon.\n\nRealistic photographic lighting falls across the illustration: a large cloud shadow covers the crocodile's body and the woman's shoulders and back, with a wide, naturally soft penumbra and a smooth gradient falloff, while her face and the crocodile's head stay in bright sunlight. Inside the shadow, colors look deeper and cooler through translucent darkening, and the ink lines and marker colors remain clearly visible. The sunlit areas glow with clean, bright daylight and a subtle warm bloom.\n\nThe illustration uses crisp black ink lines with visible pen strokes, tapered, whip-like stroke ends and strong weight variation: heavy outer contours, thin interior lines, and sharp angular creases at fabric folds. Bold solid-black spot fills shape the hair, the trousers and deep shadows, with white scratch-line highlights carved into the black. Hair is rendered as ink-defined strand clumps with tapered tips, thin white gaps between clumps and a glossy white sheen band. Scales are drawn as ink-outlined ridges and plates with fine interior lines and hand-colored marker fills in the same manner as the woman. Color is laid in with hand-colored markers, showing brush texture and slightly uneven fills. Skin is pale and matte, with two-tone cel shadows and small crisp white highlights. The palette is mostly black, white, muted olive and soft neutrals, so the vivid emerald green of the woman's jacket and hair pops strongly, echoed by the gold of her eyes and the crocodile's eye.\n\nThe woman is a slender figure about seven and a half heads tall, with a small head and long limbs. Her face is a smooth, flat-shaded oval that narrows to a neat pointed chin, with clean simple contours. Her eyes are sharp and upturned at the outer corners, framed by a thick, bold black upper lash line, and each has one crisp white highlight. Her nose is a single short line, her mouth a simple line drawing with a flat-colored interior, and her eyebrows thin and sharply angled. Facial shading is limited to a crisp shadow under the hair fringe and beneath the chin onto the neck. She has exactly two arms and two slender hands with clean, simplified fingers. The crocodile keeps natural animal proportions at true real-life scale.",
+        1024,
+        1024,
+        ""
+      ],
+      "widgets_values_named": {
+        "prompt": "A wide fashion illustration of a young woman and a large crocodile crawling on a flat, open ground, framed as a close, low eye-level shot with white space above them. The crocodile crawls from right to left in the back of the scene with its tail running off the right edge. The woman crawls from left to right in the near foreground, directly in front of the crocodile and close to it, her back just below the line of its belly, so large in the frame that only her upper body and hips are visible, her legs continuing beyond the left edge of the image. The two pass each other in opposite directions, the crocodile's head near the left side and the woman's head near the right side. The ground is a flat, pale off-white plane meeting a pure white background at a faint horizon.\n\nRealistic photographic lighting falls across the illustration: a large cloud shadow covers the crocodile's body and the woman's shoulders and back, with a wide, naturally soft penumbra and a smooth gradient falloff, while her face and the crocodile's head stay in bright sunlight. Inside the shadow, colors look deeper and cooler through translucent darkening, and the ink lines and marker colors remain clearly visible. The sunlit areas glow with clean, bright daylight and a subtle warm bloom.\n\nThe illustration uses crisp black ink lines with visible pen strokes, tapered, whip-like stroke ends and strong weight variation: heavy outer contours, thin interior lines, and sharp angular creases at fabric folds. Bold solid-black spot fills shape the hair, the trousers and deep shadows, with white scratch-line highlights carved into the black. Hair is rendered as ink-defined strand clumps with tapered tips, thin white gaps between clumps and a glossy white sheen band. Scales are drawn as ink-outlined ridges and plates with fine interior lines and hand-colored marker fills in the same manner as the woman. Color is laid in with hand-colored markers, showing brush texture and slightly uneven fills. Skin is pale and matte, with two-tone cel shadows and small crisp white highlights. The palette is mostly black, white, muted olive and soft neutrals, so the vivid emerald green of the woman's jacket and hair pops strongly, echoed by the gold of her eyes and the crocodile's eye.\n\nThe woman is a slender figure about seven and a half heads tall, with a small head and long limbs. Her face is a smooth, flat-shaded oval that narrows to a neat pointed chin, with clean simple contours. Her eyes are sharp and upturned at the outer corners, framed by a thick, bold black upper lash line, and each has one crisp white highlight. Her nose is a single short line, her mouth a simple line drawing with a flat-colored interior, and her eyebrows thin and sharply angled. Facial shading is limited to a crisp shadow under the hair fringe and beneath the chin onto the neck. She has exactly two arms and two slender hands with clean, simplified fingers. The crocodile keeps natural animal proportions at true real-life scale.",
+        "width": 1024,
+        "height": 1024,
+        "character_boxes": ""
+      }
+    },
+    {
+      "id": 96,
+      "type": "CreateBoundingBoxes",
+      "pos": [
+        -1003.6566361913077,
+        617.2009982145082
+      ],
+      "size": [
+        538.0339662238806,
+        482.7147996648729
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "background",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "bboxes",
+          "shape": 7,
+          "type": "BOUNDING_BOX,ARRAY,STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "preview",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "name": "bboxes",
+          "type": "BOUNDING_BOX",
+          "links": []
+        },
+        {
+          "name": "elements",
+          "type": "ARRAY",
+          "links": [
+            209
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CreateBoundingBoxes",
+        "bboxGrid": false
+      },
+      "widgets_values": [
+        1936,
+        1088,
+        [
+          {
+            "x": 203,
+            "y": 287,
+            "width": 1733,
+            "height": 571,
+            "metadata": {
+              "type": "obj",
+              "text": "",
+              "desc": "A large adult crocodile in the background, lying low and stretched out in side view, crawling from right to left, its head and long toothy snout at the left end of the box in bright sunlight and its heavy tail running off the right edge of the frame. Its legs splay out to the sides with clawed feet pressed into the ground. Rough armored scales drawn as crisp ink-outlined ridges along the back with hand-colored marker fills, a half-lidded golden eye with a narrow slit pupil, and muted olive-brown skin with darker patches and a paler underside. Its body lies in soft cloud shadow.",
+              "palette": [
+                "#5b5a3a",
+                "#c9a23a"
+              ]
+            }
+          },
+          {
+            "x": 0,
+            "y": 471,
+            "width": 1365,
+            "height": 394,
+            "metadata": {
+              "type": "obj",
+              "text": "",
+              "desc": "A young woman in the foreground, drawn in crisp ink lines with flat cel-shaded marker color, shown from the hips up in a commando crawl moving from left to right: both forearms flat on the ground in front of her chest, elbows bent, chest low and back stretched long, her legs continuing past the left edge of the frame. Her head is raised at the right end of the box, turned slightly toward the viewer with a wild, sharp grin showing small pointed canine teeth. Her eyes are vivid gold with narrow vertical slit pupils, and her bold black upper lash line flicks up into a sharp point at the outer corner. A tiny dot marks a mole under her left eye. Her glossy black hair has a vivid emerald-green inner layer and is woven into one long, thick braid that falls forward over her shoulder onto the ground. She wears small gold ear cuffs shaped like curved teeth, a fitted cropped jacket in deep emerald green with a raised scale-textured pattern and ridged shoulder seams over a black high-neck top, and slim black cargo trousers. Her shoulders and back lie in soft cloud shadow, and her face is in bright sunlight.",
+              "palette": [
+                "#0f7a57",
+                "#000000",
+                "#d4a537"
+              ]
+            }
+          }
+        ],
+        []
+      ],
+      "widgets_values_named": {
+        "width": 1936,
+        "height": 1088,
+        "editor_state": [
+          {
+            "x": 203,
+            "y": 287,
+            "width": 1733,
+            "height": 571,
+            "metadata": {
+              "type": "obj",
+              "text": "",
+              "desc": "A large adult crocodile in the background, lying low and stretched out in side view, crawling from right to left, its head and long toothy snout at the left end of the box in bright sunlight and its heavy tail running off the right edge of the frame. Its legs splay out to the sides with clawed feet pressed into the ground. Rough armored scales drawn as crisp ink-outlined ridges along the back with hand-colored marker fills, a half-lidded golden eye with a narrow slit pupil, and muted olive-brown skin with darker patches and a paler underside. Its body lies in soft cloud shadow.",
+              "palette": [
+                "#5b5a3a",
+                "#c9a23a"
+              ]
+            }
+          },
+          {
+            "x": 0,
+            "y": 471,
+            "width": 1365,
+            "height": 394,
+            "metadata": {
+              "type": "obj",
+              "text": "",
+              "desc": "A young woman in the foreground, drawn in crisp ink lines with flat cel-shaded marker color, shown from the hips up in a commando crawl moving from left to right: both forearms flat on the ground in front of her chest, elbows bent, chest low and back stretched long, her legs continuing past the left edge of the frame. Her head is raised at the right end of the box, turned slightly toward the viewer with a wild, sharp grin showing small pointed canine teeth. Her eyes are vivid gold with narrow vertical slit pupils, and her bold black upper lash line flicks up into a sharp point at the outer corner. A tiny dot marks a mole under her left eye. Her glossy black hair has a vivid emerald-green inner layer and is woven into one long, thick braid that falls forward over her shoulder onto the ground. She wears small gold ear cuffs shaped like curved teeth, a fitted cropped jacket in deep emerald green with a raised scale-textured pattern and ridged shoulder seams over a black high-neck top, and slim black cargo trousers. Her shoulders and back lie in soft cloud shadow, and her face is in bright sunlight.",
+              "palette": [
+                "#0f7a57",
+                "#000000",
+                "#d4a537"
+              ]
+            }
+          }
+        ],
+        "last_incoming": []
+      }
+    }
+  ],
+  "links": [
+    [
+      35,
+      3,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      74,
+      38,
+      0,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      76,
+      39,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      101,
+      8,
+      0,
+      56,
+      0,
+      "IMAGE"
+    ],
+    [
+      152,
+      6,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      160,
+      74,
+      0,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      161,
+      60,
+      0,
+      74,
+      0,
+      "INT"
+    ],
+    [
+      162,
+      60,
+      1,
+      74,
+      1,
+      "INT"
+    ],
+    [
+      204,
+      38,
+      0,
+      94,
+      0,
+      "CLIP"
+    ],
+    [
+      205,
+      94,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      206,
+      37,
+      0,
+      93,
+      0,
+      "MODEL"
+    ],
+    [
+      207,
+      93,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      209,
+      96,
+      2,
+      95,
+      0,
+      "ARRAY"
+    ],
+    [
+      213,
+      95,
+      0,
+      6,
+      1,
+      "STRING"
+    ],
+    [
+      211,
+      60,
+      0,
+      95,
+      1,
+      "INT"
+    ],
+    [
+      212,
+      60,
+      1,
+      95,
+      2,
+      "INT"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.693433494944211,
+      "offset": [
+        841.0377314180663,
+        545.8859679870968
+      ]
+    },
+    "frontendVersion": "1.55.17",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

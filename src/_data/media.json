@@ -4245,6 +4245,46 @@
     "bytes": 88204,
     "source": "7ac39ec0d068a9f2"
   },
+  "basic-workflows/moss-image/moss_image_hero.png": {
+    "key": "images/9a18d5506cf57a4e.webp",
+    "width": 1936,
+    "height": 1088,
+    "type": "image/webp",
+    "bytes": 263656,
+    "source": "6965f142b862ad28"
+  },
+  "basic-workflows/moss-image/moss_image_text2image_bbox_output.png": {
+    "key": "images/2a3c7ae810a25d74.webp",
+    "width": 1936,
+    "height": 1088,
+    "type": "image/webp",
+    "bytes": 339950,
+    "source": "cb03b81fbd006a30"
+  },
+  "basic-workflows/moss-image/moss_image_text2image_bbox.png": {
+    "key": "images/82f2f84f011e2e40.webp",
+    "width": 2976,
+    "height": 1202,
+    "type": "image/webp",
+    "bytes": 140632,
+    "source": "58c0f0226e68bc0f"
+  },
+  "basic-workflows/moss-image/moss_image_text2image_output.png": {
+    "key": "images/10e6fa693d21a812.webp",
+    "width": 1248,
+    "height": 1680,
+    "type": "image/webp",
+    "bytes": 223836,
+    "source": "71add48417b6c4f1"
+  },
+  "basic-workflows/moss-image/moss_image_text2image.png": {
+    "key": "images/a79002a4da2c6bb1.webp",
+    "width": 2112,
+    "height": 1020,
+    "type": "image/webp",
+    "bytes": 96524,
+    "source": "b54857fd9930fcdb"
+  },
   "basic-workflows/pixeldit-pid/legacy_gyazo_31ea733be7d13db9616875f7c59e3f40.png": {
     "key": "images/e4280a216b098d46.webp",
     "width": 832,

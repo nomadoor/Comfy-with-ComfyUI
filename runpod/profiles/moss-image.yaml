@@ -1,0 +1,22 @@
+# RunPod profile source. Models and custom nodes come from the workflow JSON;
+# list here only what the workflows cannot say for themselves.
+id: moss-image
+title: MOSS-Image
+article: basic-workflows/moss-image
+# RunPod template (Matatabi AI account) the article's launch card deploys.
+template: cwx9ylv13h
+workflows:
+  - src/workflows/basic-workflows/moss-image/moss_image_text2image.json
+  - src/workflows/basic-workflows/moss-image/moss_image_text2image_bbox.json
+comfyui:
+  default: latest
+  verified_commit: null
+gpu:
+  min_vram_gb: 12
+  recommended_vram_gb: 24
+  # Same as the template's recommended (starred) GPUs.
+  recommended: [RTX A5000, RTX 3090, RTX 4090]
+  notes: ""
+overrides:
+  custom_nodes: []
+  models: []

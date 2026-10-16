@@ -292,6 +292,8 @@ sections:
             title: Ideogram 4.0
           - id: krea-2
             title: Krea 2
+          - id: moss-image
+            title: MOSS-Image
       - id: video-workflows
         title: 動画生成・処理
         noLink: true
