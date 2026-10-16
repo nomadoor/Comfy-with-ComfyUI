@@ -98,6 +98,11 @@ Quality -> Score -> Meta -> Year -> Character -> Series -> Artist -> General
 - `Create Bounding Boxes`
   - 用来绘制 BBOX 的核心节点。拖动即可添加方框，然后写下想放在那里的内容。
   - `width` / `height` 要和输出尺寸（`Resolution Selector` 的值）一致。
+
+  > [!WARNING]
+  > 很容易想把 `Resolution Selector` 的值直接连到 `width` / `height`，但目前有 bug，这样连接后坐标会偏移。  
+  > 请手动输入相同的数值。
+
 - `MOSS-Image Layout Prompt`
   - 在这里写整张图像的提示词。
   - 它会把方框的信息和提示词整理成 MOSS-Image 训练时使用的 JSON 格式。

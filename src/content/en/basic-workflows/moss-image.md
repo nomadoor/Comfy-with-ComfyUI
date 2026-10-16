@@ -98,6 +98,11 @@ With BBOX, you can specify what goes where.
 - `Create Bounding Boxes`
   - A core node for drawing BBOXes. Drag to add a box, then describe what you want to place there.
   - `width` / `height` should match the output size (the value from `Resolution Selector`).
+
+  > [!WARNING]
+  > It's tempting to connect `Resolution Selector` to `width` / `height`, but a bug currently shifts the box coordinates when you do.  
+  > Type the same values in by hand instead.
+
 - `MOSS-Image Layout Prompt`
   - Write the prompt for the whole image here.
   - It combines the box information and the prompt into the JSON format MOSS-Image was trained on.

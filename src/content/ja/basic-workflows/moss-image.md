@@ -97,6 +97,11 @@ BBOX で、どこに何を置くかを指定できます。
 - `Create Bounding Boxes`
   - BBOX を描くためのコアノードです。ドラッグでボックスを追加して、そこに置きたいものを書いていきます。
   - `width` / `height` は、出力サイズ（`Resolution Selector` の値）に合わせます。
+
+  > [!WARNING]
+  > `width` / `height` には `Resolution Selector` の値をつなぎたくなりますが、今はバグで座標がずれてしまいます。  
+  > 同じ値を手で入力してください。
+
 - `MOSS-Image Layout Prompt`
   - 画像全体についてのプロンプトを書きます。
   - ボックスの情報とプロンプトを、MOSS-Image が学習している JSON の形にまとめて出してくれます。
