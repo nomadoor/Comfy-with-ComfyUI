@@ -17,7 +17,7 @@ hero:
 
 ## External LLM Server Integration
 
-ComfyUI itself is an "engine for connecting generation workflows for images, video, and more" — it has no built-in capability to run LLMs.
+ComfyUI itself is an "engine for wiring up generation workflows for images, video, and more," and it basically has no way to run LLMs on its own.
 
 So the idea is to delegate LLM work to a separate inference engine (server), while ComfyUI only handles "sending requests and receiving results."
 
@@ -33,10 +33,10 @@ If you have multiple powerful PCs, you can even offload processing to a separate
 
 ## How to connect
 
-There are several ways to integrate, but the most convenient option right now is the **OpenAI API-compatible** format.
+There are several ways to integrate, but the easiest to work with right now is the OpenAI-compatible API.
 
 Despite the "OpenAI" name, it's widely used as a common HTTP API format for chat-based LLMs.
-Ollama also provides this [compatible API](https://docs.ollama.com/api/openai-compatibility), so using an OpenAI-compatible node on the ComfyUI side is the quickest approach.
+Ollama also provides this [compatible API](https://docs.ollama.com/api/openai-compatibility), so on the ComfyUI side, an OpenAI-compatible node is probably the quickest route.
 
 ---
 
@@ -66,9 +66,9 @@ ollama run qwen3-vl:8b
 
 Other locally useful models:
 
-- **gemma3** : Developed by Google. Usable for similar purposes as Qwen3 VL
+- **gemma3** : Made by Google. Works for much the same tasks as Qwen3 VL
 - **gpt-oss:20b** : OpenAI's open-weight model. Text-only, but very powerful
-- **◯◯-Abliterated** : Even open-weight models typically include censorship (not just NSFW). Models with this alignment removed carry this kind of name
+- **◯◯-Abliterated** : Even open-weight models are usually censored (and not just for NSFW). Models with that alignment removed get names like this
   - [UGI Leaderboard](https://huggingface.co/spaces/DontPlanToEnd/UGI-Leaderboard) is a good place to find various models
 
 ---
@@ -94,7 +94,7 @@ We'll use a node that can send requests in OpenAI API-compatible format. Any wil
 - `model` : Enter the model name you downloaded (e.g., `qwen3-vl:8b`)
 - `system_prompt` : Optional
 
-Type your message in the input field at the top of the node and hit `▷Run`.
+Then just type a message in the input box at the top of the node and hit `▷Run`.
 
 ### Continuing a conversation
 
@@ -120,11 +120,11 @@ If you're using an MLLM like Qwen3 VL that understands images, you can feed in a
 
 ### Prompt generation → Image generation
 
-Let's put it to use: have the model generate a prompt from an input image, then use that prompt to generate a similar image.
+While we're at it, let's have the model write a prompt from an input image and use it to generate a similar image.
 
 ![](/media/basic-workflows/external-llm-server/legacy_gyazo_214851c957532e34fb705e0d5feeeef9.png){media=image}
 
 [](/workflows/basic-workflows/external-llm-server/openai_api_chat_image2prompt.json)
 
-- Use the system prompt to specify an output format like "output a ready-to-use image generation prompt."
+- It's a good idea to set the format in the system prompt so it outputs "an image generation prompt you can use as is."
 - Then just connect the output to `CLIP Text Encode`.

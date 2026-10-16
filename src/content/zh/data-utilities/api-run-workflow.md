@@ -7,7 +7,7 @@ navId: api-run-workflow
 title: "尝试通过 API 执行工作流"
 created: 2026-02-06
 updated: 2026-03-02
-summary: "请求执行 → 确认完成 → 获取输出，的最简步骤"
+summary: "请求执行 → 确认完成 → 获取输出的最简步骤"
 seoTitle: "用 Python 通过 ComfyUI API 执行工作流"
 seoDescription: "从外部执行 ComfyUI 工作流的最简步骤：用最简 Python 脚本将 API 格式 JSON POST 到 /prompt，以及从命令行修改提示词的方法。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -15,28 +15,28 @@ hero:
   image: ""
 ---
 
-## 基本原理
+## 基本上在做的事
 
-我们将通过 API，从“外部”执行 ComfyUI 的 工作流。
+这里试着通过 API，从“外部”执行 ComfyUI 的工作流。
 
-要做的事情很简单，只需将 **API 格式的 JSON（= prompt）POST 到 `http://127.0.0.1:8188/prompt`** 即可。
+要做的事很简单，只需将 **API 格式的 JSON（= prompt）POST 到 `http://127.0.0.1:8188/prompt`** 即可。
 
-这样 ComfyUI 服务器就会接收到“执行该 工作流”的指令，并将其放入队列执行，最后返回 `prompt_id`（执行 ID）。
+这样 ComfyUI 服务器就会收到“执行这个工作流”的指令，把它放进队列执行，并返回 `prompt_id`（执行 ID）。
 
 > [!NOTE]
-> 稍微有点绕的是，这里出现的“prompt”并不是文本提示词，而是指 **整个工作流（执行图表）**。
+> 稍微有点绕的是，这里出现的“prompt”并不是文本提示词，而是指 **整个工作流（执行图）**。
 > 文本只是其中的一部分，例如 `CLIPTextEncode` 的 `inputs.text` 等就属于这部分。
 
 这次，我们试着用 Python 来执行。
 
 --- 
 
-## 预先启动 ComfyUI
+## 先启动 ComfyUI
 
 API 并不是“让你无需启动 ComfyUI 的机制”。
-Python 是向正在运行的 ComfyUI 服务器发送指令。
+Python 是向正在运行的 ComfyUI 服务器发送指令的。
 
-- 请预先启动 ComfyUI
+- 先启动 ComfyUI
 - 确保浏览器能打开 `http://127.0.0.1:8188`
 
 ---
@@ -45,7 +45,7 @@ Python 是向正在运行的 ComfyUI 服务器发送指令。
 
 ### 这次使用的工作流（SD1.5 text2image）
 
-首先，我们使用最简单的 Stable Diffusion 1.5 的 text2image。
+先用最简单的 Stable Diffusion 1.5 text2image。
 
 ![](/media/basic-workflows/sd15-text2image/legacy_gyazo_897f66c308b3b98440f641ee3d33d50e.png){media=image}
 
@@ -68,7 +68,7 @@ Python 是向正在运行的 ComfyUI 服务器发送指令。
 
 ### 获取 API 用的工作流
 
-- 1. 在 ComfyUI 的节点 UI 中，打开上述 工作流
+- 1. 在 ComfyUI 的节点 UI 中，打开上述工作流
 - 2. 从菜单中选择 `File` → **Export (API)**
 - 3. 以易懂的名称保存（例：SD1.5_text2image_API.json）
 
@@ -79,7 +79,7 @@ Python 是向正在运行的 ComfyUI 服务器发送指令。
 ### 与普通工作流 JSON 的区别
 
 普通的 JSON 包含了“便于在 UI 中编辑和分享的信息”。
-API 的 工作流 则是去除了这些多余信息，变成了方便服务器接收并执行的形式。
+API 格式的工作流则去掉了这些多余信息，变成了便于交给服务器执行的形式。
 
 ---
 
@@ -101,8 +101,8 @@ pip install requests
 
 ### run_min.py
 
-这是读取 `SD1.5_text2image_API.json` 并投递给 `/prompt` 的最小代码。
-这与在节点 UI 中按下 `▷Run` 基本相同。
+这是读取 `SD1.5_text2image_API.json`、发送到 `/prompt` 的最小代码。
+基本上和在节点 UI 中按下 `▷Run` 一样。
 
 ```python
 import json
@@ -116,7 +116,7 @@ res = requests.post(f"{BASE}/prompt", json={"prompt": prompt}).json()
 print(res)  # {"prompt_id": "...", "number": ..., "node_errors": {...}}
 ```
 
-文件放置
+文件结构
 
 ```text
 your_project/
@@ -135,7 +135,7 @@ venv\Scripts\activate
 python run_min.py
 ```
 
-让我们确认一下是否执行成功。
+确认一下是否执行成功。
 
 - Python 侧返回 `{"prompt_id": "...", ...}` （这就是执行 ID。）
 - ComfyUI 侧的终端显示执行日志
@@ -148,10 +148,10 @@ python run_min.py
 
 ## 从 CLI 更改提示词
 
-即使直接编辑 API 用的 JSON，当然也可以更改参数。
-但是，如果想在不弄脏原文件的情况下连续执行，**用 Python 进行替换** 会更容易处理。
+直接编辑 API 用的 JSON，当然也能改参数。
+不过，如果想不动原文件、连续执行，**用 Python 来替换**会更方便。
 
-### 要重写哪里（以本次的 JSON 为例）
+### 改哪里（以本次的 JSON 为例）
 
 这次我们只更改“提示词”。
 
@@ -159,8 +159,8 @@ python run_min.py
 
 ### 注：节点 ID 不是固定的
 
-本页面的示例使用了 `6`，但这 **仅仅是因为在这个分发的 JSON 中是这样**。
-如果是用自己的 工作流，最稳妥的方法是打开 JSON 寻找。
+本页的示例用的是 `6`，但这**只是本页提供的这个 JSON 里恰好如此**。
+用自己的工作流时，最稳妥的办法是打开 JSON，找到下面这样的部分。
 
 e.g. `SD1.5_text2image_API.json`
 ```json
@@ -215,19 +215,19 @@ python run.py
 positive prompt: 输入喜欢的提示词
 ```
 
-如果该提示词生成的图像保存在了 `ComfyUI/output/` 中，那就 OK 了。
+用这个提示词生成的图像保存到了 `ComfyUI/output/` 里，就 OK 了。
 
 ---
 
-## 掌握了感觉后，剩下的就只是制作了
+## 找到感觉后，剩下的就是动手做了
 
-这次只使用了“执行”的 API，但 API 还有很多其他功能。
+这次只用了“执行”的 API，其实 API 还有很多。
 
 - 实时接收进度（WebSocket）
 - 队列控制（停止、中断等）
 - 图像上传（传递给 i2i 的输入）
-- 获取节点的输入规格（自动化 工作流 编辑的立足点）
+- 获取节点的输入规格（自动化编辑工作流的第一步）
 
-在这个页面，只要掌握了“能从外部执行 工作流”的感觉就足够了。
+本页只要让你感受到“能从外部执行工作流”就足够了。
 
-剩下的不管是 vibe coding 还是什么，请试着实际制作你想要的东西吧！
+接下来不管是用 vibe coding 还是别的方式，动手做出你想要的东西吧！

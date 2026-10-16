@@ -7,7 +7,7 @@ navId: video-to-audio
 title: video2audio
 created: 2025-12-01
 updated: 2026-03-02
-summary: Technology to automatically generate sound effects and environmental sounds from video
+summary: Technology that automatically generates sound effects and ambient sound from video
 seoTitle: "video2audio: Generate Sound Effects from Video"
 seoDescription: "Most generated videos are silent. video2audio adds sound effects and ambience synced to the footage. How FoleyCrafter and HunyuanVideo-Foley work."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
@@ -17,11 +17,11 @@ hero:
 
 ## What is video2audio?
 
-Except for Sora 2 and Veo 3, current video generation models still only generate video. In other words, there is no sound.
+Apart from a few like Sora 2 and Veo 3, today's video generation models still generate only video. In other words, there's no sound.
 
-That's where **video2audio** comes in handy - technology to generate audio from video.
+That's where **video2audio** comes in: technology that generates audio from video.
 
-It understands "what is happening" from the video and generates sound corresponding to that content so that it synchronizes with the video.
+It works out "what is happening" in the footage and generates matching sound, synced to the video.
 
 ---
 
@@ -31,12 +31,12 @@ FoleyCrafter is a **Video2Audio framework that adds a "video adapter" on top of 
 
 <iframe width="100%" height="540" src="https://www.youtube.com/embed/7m4YLrSBOv0" title="FoleyCrafter: Bring Silent Videos to Life with Lifelike and Synchronized Sounds" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-It is an image of adding information on "what sound is appropriate by looking at the video" and "when it should sound (timing)" to the original Text2Audio model.
+Think of it as giving the base Text2Audio model extra information: "what sound fits what's on screen" and "when it should play (timing)."
 
 ---
 
 ## HunyuanVideo-Foley
 
-[HunyuanVideo-Foley](https://szczesnys.github.io/hunyuanvideo-foley/) is a multimodal diffusion Transformer that assumes **text + video -> audio** from the beginning.
+[HunyuanVideo-Foley](https://szczesnys.github.io/hunyuanvideo-foley/) is a multimodal diffusion Transformer designed for **text + video -> audio** from the start.
 
-It does not add functions to a text2audio model like FoleyCrafter from the start, but learns text, video, and audio together.
+Rather than bolting features onto a text2audio model the way FoleyCrafter does, it is trained on text, video, and audio together from the outset.

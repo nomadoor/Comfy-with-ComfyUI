@@ -4,7 +4,7 @@ lang: en
 section: notes
 slug: sd15-sdxl-asset-compatibility
 navId: sd15-sdxl-asset-compatibility
-title: "Can't use SD1.5 LoRA / ControlNet with SDXL?"
+title: "Can you use SD1.5 LoRAs / ControlNets with SDXL?"
 created: 2025-12-13
 updated: 2026-03-02
 noteTags: ["faq", "sd15", "sdxl"]
@@ -16,47 +16,47 @@ hero:
   image: ""
 ---
 
-## Can't use SD1.5 LoRA / ControlNet with SDXL?
+## Can you use SD1.5 LoRAs / ControlNets with SDXL?
 
-In conclusion, **no, you cannot.**
-And this is not limited to SD1.5 and SDXL; it is safe to assume that **there is almost no compatibility between different models**.
+Short answer: **no, you can't.**
+And this isn't just about SD1.5 and SDXL. It's safe to assume that **different models are almost never compatible with each other**.
 
-It is like electrical outlets.
+Think of it like power outlets.
 - SD1.5 is a Japanese outlet (Type A)
 - SDXL is a US outlet (Type B)
 
-Appliances (LoRA / ControlNet) for that country can only be used in that country.
-Even if the functions are similar, the shape of the connection part is different, so they cannot be physically plugged in.
+Appliances (LoRA / ControlNet) made for one country only work in that country.
+They may do similar things, but the plugs are shaped differently, so they physically won't fit.
 
 ---
 
-## Why is there no compatibility?
+## Why aren't they compatible?
 
-Roughly summarized, the technical reasons are as follows:
+Roughly speaking, the technical reasons are:
 
-- **The prerequisite models are different**
-  - SD1.5 and SDXL have different UNet structures, channel counts, latent resolutions, etc., so the premise of LoRA / ControlNet on "which layer to add what difference to" does not match.
+- **They are built for different models**
+  - SD1.5 and SDXL have different UNet structures, channel counts, latent resolutions, etc., so the assumption a LoRA / ControlNet relies on, "which layer gets which difference added", no longer holds.
 
 - **Text encoders are also different**
-  - SD1.5 uses CLIP, while SDXL uses a text encoder with a different configuration. The learning result of "how to move this word" does not apply to another model as is.
+  - SD1.5 uses CLIP, while SDXL uses a text encoder with a different configuration. What was learned about "how this word should shift the result" doesn't carry over to a different model.
 
 
-You can assume that adapters are dedicated to that model.
+It's fine to think of an adapter as working only with the model it was made for.
 
-- LoRA / ControlNet for SD1.5 → **Dedicated to SD1.5 based models**
-- LoRA / ControlNet for SDXL → **Dedicated to SDXL based models**
-- LoRA / ControlNet for Flux → **Dedicated to Flux based models**
+- LoRA / ControlNet for SD1.5 → **SD1.5-family models only**
+- LoRA / ControlNet for SDXL → **SDXL-family models only**
+- LoRA / ControlNet for Flux → **Flux-family models only**
 
 ---
 
-## Does it actually cause an error?
+## Do you actually get an error?
 
 ![](/media/notes/sd15-sdxl-asset-compatibility/legacy_gyazo_3d13852e4d5921d17dd6e6c1835bfafa.png){media=image}
 
-If you connect a ControlNet model for SDXL to a ControlNet workflow for SD1.5, an error like the one above will be displayed:
+If you plug an SDXL ControlNet model into an SD1.5 ControlNet workflow, you get an error like the one above:
 
 ```
 y is None, did you try using a controlnet for SDXL on SD1?
 ```
 
-In this way, the system detects that there is no compatibility and returns an error.
+So ComfyUI itself detects the mismatch and returns an error.

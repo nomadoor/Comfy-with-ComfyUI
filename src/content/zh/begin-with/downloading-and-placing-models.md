@@ -4,28 +4,28 @@ lang: zh
 section: begin-with
 slug: downloading-and-placing-models
 navId: downloading-and-placing-models
-title: "模型的下载与放置"
+title: "下载与放置模型"
 created: 2026-02-06
 updated: 2026-03-02
-summary: "关于模型的下载与放置"
-seoTitle: "ComfyUI 模型的下载与存放位置"
-seoDescription: "从 Hugging Face 和 Civitai 下载模型的步骤，各类模型应放在 ComfyUI 的 models 文件夹中的哪里，以及模型增多后的整理方法。"
+summary: "介绍如何下载和放置模型"
+seoTitle: "ComfyUI 模型下载与存放位置"
+seoDescription: "介绍从 Hugging Face 和 Civitai 下载模型的步骤、模型应该放在 ComfyUI 的 models 文件夹中的哪里，以及模型多起来之后的整理方法。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
 hero:
   gradient: ""
 ---
 
-## 模型的发布场所
+## 模型在哪里发布
 
-模型（有时也称为权重）基本上发布在以下两个地方。只要学会使用这两个地方，就不会有什么困扰了。
+模型（有时也叫权重）基本上都发布在下面两个地方。只要会用这两个网站，基本就不会遇到什么困难。
 
 ### [Huggingface](https://huggingface.co/models)
 - 类似于生成式 AI 界的 GitHub，主要是研究者在这里发布模型。
 
 ### [Civitai](https://civitai.com/)
-- 这里是分享社区微调（Fine-tuning）模型的最古老、也是最受欢迎的地方之一。
-- Huggingface 上有除图像生成模型以外的各类模型，而 Civitai 则是专为图像生成模型打造的网站，因此具有筛选功能等，更容易查找模型。（虽然界面稍微有点乱……）
-- 此外，这里的 NSFW 模型相当多。这既是优点也是一大弱点，近期各方面的限制也正在变得越来越严格。
+- 这是社区分享微调（Fine-tuning）模型的地方，历史最久，也是最受欢迎的网站之一。
+- Huggingface 上除了图像生成模型，还有各种各样的模型；而 Civitai 是专为图像生成模型打造的网站，所以有筛选等方便找模型的功能。（虽然界面有点太乱了……）
+- 另外，这里的 NSFW 模型相当多。这既是优点，也是一大弱点，最近来自各方面的管控越来越严格了。
 
 ---
 
@@ -53,7 +53,7 @@ hero:
 
 ## 从 Civitai 下载
 
-让我们试着下载作为 Stable Diffusion 1.5 微调模型曾风靡一时的 epiCRealism。
+我们来下载 epiCRealism 试试，它是曾经风靡一时的 Stable Diffusion 1.5 微调模型。
 
 ![](/media/begin-with/downloading-and-placing-models/legacy_gyazo_7bcde1665657f544a1191c760248dd80.png){media=image}
 
@@ -65,11 +65,11 @@ hero:
 
 ---
 
-## 模型的放置位置
+## 模型放在哪里
 
-下载的模型文件，根据种类不同，放置的位置也是固定的。
+下载的模型文件，要按照种类放到固定的位置。
 
-如果不了解图像生成的机制可能会觉得有点难，但在本站，所有模型的下载链接都会附带其配置场所，请放心。让我们一点一点找找感觉吧。
+如果不了解图像生成的原理，可能会觉得挺难的；不过本站会写明所有模型的下载链接和放置位置，请放心。一点一点找感觉就好。
 
 ```text
 📂ComfyUI
@@ -80,20 +80,20 @@ hero:
     ...
 ```
 
-即便在启动 ComfyUI 后将模型放入文件夹，ComfyUI 也不会自动识别。
+如果在启动 ComfyUI 之后才把模型放进文件夹，ComfyUI 是识别不到的。
 
 放置文件后，按下键盘上的 `r` 键，或点击 `ComfyUI 图标` → `Edit` → `Refresh Node Definitions`，ComfyUI 就会加载它。
 
 ---
 
-## 模型整理术
+## 整理模型的方法
 
-随着模型越来越多，就会出现“这个是以什么为基础的模型来着？”“那个模型去哪了？”之类的问题。
-让我们通过文件夹分类来整理整顿吧。
+模型多起来以后，就会出现“这个模型是基于什么的来着？”“那个模型跑哪去了？”之类的问题。
+用文件夹分类整理一下吧。
 
 ### 文件夹分类
 
-只要是在合适的文件夹（`checkpoints` 或 `loras` 等）内，创建子文件夹进行整理也是没问题的。
+只要是在对应的文件夹（`checkpoints` 或 `loras` 等）里，再建子文件夹来整理也没有问题。
 ComfyUI 会自动识别子文件夹内的模型。
 
 例如，如果像下面这样整理 `checkpoints` 文件夹：
@@ -107,12 +107,12 @@ ComfyUI 会自动识别子文件夹内的模型。
 ```
 
 在 ComfyUI 的 `Load Checkpoint` 节点等地方，文件名就会像 `SD1.5\v1-5-pruned.ckpt` 这样带着文件夹名显示。
-这样就可以根据模型的种类或用途进行分类，更易于管理。
+这样就能按模型的种类或用途分类，管理起来更方便。
 
 ### 用自定义节点更方便
 
 如果安装了 **[rgthree-comfy](https://github.com/rgthree/rgthree-comfy)** 这个自定义节点，
-它就能在菜单上层级化显示分好类的文件夹结构。
+就能在菜单中按层级显示分好类的文件夹结构。
 
 - `ComfyUI 图标` → `⚙Settings` → `rgthree-comfy settings` → `Auto Nest Subdirectories in Menus ✅️`
 

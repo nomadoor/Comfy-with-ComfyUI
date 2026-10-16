@@ -17,15 +17,15 @@ hero:
 
 ## Where Models are Distributed
 
-Basically, there are two places where models (sometimes called weights) are distributed. If you learn how to use these two, you will not be in trouble.
+Models (sometimes also called weights) are basically distributed in these two places. Once you know how to use both, you'll be fine.
 
 ### [Huggingface](https://huggingface.co/models)
-- It is like GitHub in generative AI, and researchers mainly publish models.
+- It's something like the GitHub of generative AI, where mostly researchers publish their models.
 
 ### [Civitai](https://civitai.com/)
-- It is one of the oldest and most popular places for the community to share fine-tuned models.
-- Huggingface has various types of models other than image generation models, but since Civitai is a site for image generation models, there are functions that make it easy to find models such as filter functions. (Although it is a bit too cluttered...)
-- Also, there are quite a few NSFW models. That is a strength as well as a big weakness, and recently regulations are becoming stricter from various directions.
+- It's one of the oldest and most popular places for the community to share fine-tuned models.
+- Huggingface hosts all kinds of models beyond image generation, but Civitai is a site for image generation models, so it has features like filters that make models easier to find. (It's a bit too cluttered, though...)
+- It also has a lot of NSFW models. That's both a strength and a big weakness, and lately pressure on it has been tightening from many directions.
 
 ---
 
@@ -36,8 +36,8 @@ Let's download Stable Diffusion 1.5.
 ![](/media/begin-with/downloading-and-placing-models/legacy_gyazo_b274b58909cf22061a2506ab7b43bf61.mp4){media=loop}
 
 - 1.  First, open the [Comfy-Org/stable-diffusion-v1-5-archive](https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive) page.
-- 2.  Click the `Files and versions` tab and find the target model file (e.g. `.safetensors` or `.ckpt`) from the file list.
-- 3.  There are 3 ways to download.
+- 2.  Click the `Files and versions` tab and find the model file you want (e.g. `.safetensors` or `.ckpt`) in the file list.
+- 3.  There are 3 ways to download it.
     * **Direct Download:**
         - Click **↓ (Download Icon)** next to the file name.
     * **Download from Detail Page:**
@@ -54,13 +54,13 @@ Let's download Stable Diffusion 1.5.
 
 ## Downloading from Civitai
 
-Let's download epiCRealism, which took the world by storm as a fine-tuning model of Stable Diffusion 1.5.
+Let's download epiCRealism, a fine-tuned Stable Diffusion 1.5 model that was hugely popular in its day.
 
 ![](/media/begin-with/downloading-and-placing-models/legacy_gyazo_7bcde1665657f544a1191c760248dd80.png){media=image}
 
 - 1.  First, open the [epiCRealism](https://civitai.com/models/25694/epicrealism) page.
 - 2.  Click the blue **Download** button on the right side of the screen.
-- 3.  Download starts.
+- 3.  The download starts.
 
 * Some models (such as NSFW) cannot be downloaded unless you log in.
 
@@ -68,9 +68,9 @@ Let's download epiCRealism, which took the world by storm as a fine-tuning model
 
 ## Where to Place Models
 
-The place to put the downloaded model file is determined by the type.
+Where a downloaded model file goes depends on its type.
 
-It may be difficult if you don't understand the mechanism of image generation, but rest assured that this site lists all model download links and their placement locations. Let's get the hang of it little by little.
+This can be pretty hard until you understand how image generation works, but don't worry: this site lists the download link and the folder for every model. You'll get a feel for it bit by bit.
 
 ```text
 📂ComfyUI
@@ -81,20 +81,20 @@ It may be difficult if you don't understand the mechanism of image generation, b
     ...
 ```
 
-Even if you put the model in the folder after starting ComfyUI, ComfyUI will not recognize it.
+If you add a model to the folder after ComfyUI has started, ComfyUI won't pick it up.
 
-After placing the file, press the `r` key on the keyboard, or press `ComfyUI Icon` -> `Edit` -> `Refresh Node Definitions` to load it into ComfyUI.
+After placing the file, press the `r` key, or click `ComfyUI Icon` -> `Edit` -> `Refresh Node Definitions`, and ComfyUI will load it.
 
 ---
 
 ## Model Organization Techniques
 
-As the number of models increases, problems such as "What was the base model of this?" and "Where did that model go?" will arise.
-Let's organize by dividing into folders.
+As your models pile up, you start running into questions like "What base model was this one for?" and "Where did that model go?"
+Keep things tidy by sorting them into folders.
 
-### Folder Division
+### Using Folders
 
-As long as it is inside an appropriate folder (such as `checkpoints` or `loras`), you can create subfolders to organize them without any problem.
+As long as you stay inside the right folder (such as `checkpoints` or `loras`), you can freely create subfolders to organize them.
 ComfyUI automatically recognizes models in subfolders as well.
 
 For example, if you organize the `checkpoints` folder as follows:
@@ -107,13 +107,13 @@ For example, if you organize the `checkpoints` folder as follows:
 │   └── sd_xl_base_1.0.safetensors
 ```
 
-In ComfyUI's `Load Checkpoint` node etc., the file name will be displayed with the folder name, such as `SD1.5\v1-5-pruned.ckpt`.
-This makes it easier to classify and manage by model type and usage.
+Nodes like ComfyUI's `Load Checkpoint` will then show the file name with its folder, such as `SD1.5\v1-5-pruned.ckpt`.
+This makes it easier to sort and manage models by type and purpose.
 
 ### Even More Convenient with Custom Nodes
 
 If you install a custom node called **[rgthree-comfy](https://github.com/rgthree/rgthree-comfy)**,
-it will display the folder structure hierarchically on the menu.
+it shows your folder structure as nested menus.
 
 - `ComfyUI Icon` -> `⚙Settings` -> `rgthree-comfy settings` -> `Auto Nest Subdirectories in Menus ✅️`
 

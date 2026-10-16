@@ -17,7 +17,7 @@ hero:
 
 ## 执行处理
 
-执行 工作流。
+执行工作流。
 
 ![](/media/begin-with/run-and-stop/legacy_gyazo_e1be6c3b9c1666f5735bd17261d7714f.mp4){media=loop}
 
@@ -27,7 +27,7 @@ hero:
 
 ## 重复处理
 
-使用相同的设置多次执行 工作流。
+用相同的设置多次执行工作流。
 
 ![](/media/begin-with/run-and-stop/legacy_gyazo_5831e4d69bd26c7d5a533fb5781a33ad.mp4){media=loop}
 
@@ -40,7 +40,7 @@ hero:
 
 ## 自动重复处理
 
-当“希望每次更改参数都自动生成”或者“想把它放着让它无限生成”的时候使用。
+适合“希望每次改参数都自动生成”或者“想放着不管一直生成下去”的时候。
 
 ![](/media/begin-with/run-and-stop/legacy_gyazo_c516b3b9fd8b2c506fb1fa91cf385174.mp4){media=loop}
 
@@ -54,13 +54,13 @@ hero:
 
 - **Queue (Change)**
   - 基本处于待机状态。
-  - 某个参数（提示词或数值等）发生变化的瞬间，开始处理。
+  - 一旦有参数（提示词或数值等）发生变化，就立即开始处理。
 
 ---
 
 ## 中断处理
 
-如果不小心误点了执行，可以从这里中断。
+比如不小心点了执行，可以在这里中断。
 
 ![](/media/begin-with/run-and-stop/stop.mp4){media=loop}
 
@@ -68,14 +68,14 @@ hero:
 
 ### 关于强制结束
 
-在 KSampler 进行采样等 PC 负载较高的时候，即使按下 `❌️` 也可能不会立即响应。
+在 KSampler 采样等电脑负载较高的时候，即使按下 `❌️` 也可能不会立即响应。
 如果实在停不下来，请**关闭终端并重启 ComfyUI 本身**。这是最稳妥的方法。
 
 ---
 
-## 队列的确认与清除
+## 查看和清空队列
 
-可以确认已预约的处理（队列），或者批量删除它们。
+可以查看排队中的处理（队列），或者一次性全部删除。
 
 ![](/media/begin-with/run-and-stop/legacy_gyazo_23f7fb0414ad302f23b333ae0add5827.mp4){media=loop}
 

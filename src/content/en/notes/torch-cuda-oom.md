@@ -18,13 +18,13 @@ hero:
 
 ## Symptom
 
-- A red error screen appears and processing stops instantly when executing processing or during sampling.
+- As soon as you run the workflow, or partway through sampling, a red error screen appears and processing stops.
 
-- A message regarding `torch.cuda.OutOfMemoryError` and VRAM usage appears in the terminal.
+- The terminal shows `torch.cuda.OutOfMemoryError` along with a message about VRAM usage.
 
-## Timing of occurrence
+## When it happens
 
-- When running heavy models such as Flux / video models with large resolution or large batch size.
+- When running heavy models such as Flux or video models at a high resolution or with a large batch size.
 
 
 ## Cause
@@ -34,5 +34,5 @@ hero:
 ## Solution
 
 - Set batch size to 1, and lower resolution to the model's recommended value (around 512-768px for SD1.5, around 1024px for SDXL).
-- If that doesn't work, consider using lighter models or quantized models (gguf / nf4 etc.).
-- If that still doesn't work, upgrade your GPU honestly.
+- If that still doesn't work, use a lighter model or consider a quantized model (gguf / nf4, etc.).
+- If even that doesn't help, just accept it and upgrade your GPU.

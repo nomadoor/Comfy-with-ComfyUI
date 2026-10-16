@@ -19,9 +19,9 @@ tags: []
 
 [MiniMax H3](https://github.com/MiniMax-AI/MiniMax-H3) is a video generation model released by MiniMax.
 
-It uses a simple architecture that handles text, images, video, and audio in a single Transformer, yet delivers exceptional performance and flexibility among local video generation models.
+Its architecture is simple, handling text, images, video, and audio all in a single Transformer, and among local video generation models it stands a cut above in both performance and flexibility.
 
-There are two model variants.
+The base is the same, but there are two models, split by role.
 
 - **FL2VA**
   - Used for text2video, image2video, and First / Last Frame to Video
@@ -84,7 +84,7 @@ The format is too complicated to write by hand, so give MiniMax's official promp
 - [Full-Reference Prompt Guide](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/docs/VIDEO_PROMPT_WRITING_GUIDE_ref_en.md)
   - For Ref2VA
 
-Still, it helps to know the basics so that you can check whether the generated prompt is correct.
+Still, so you can check whether the prompt you get back is right, I'll go over the basics.
 
 ### FL2VA
 
@@ -161,7 +161,7 @@ MiniMax H3 produces excellent quality, but it is also an extremely demanding mod
 
 Many techniques have been developed to reduce VRAM usage or speed up generation. They are all impressive, but each comes with some loss of quality.
 
-Choosing among them means weighing the benefits against the drawbacks, and that is surprisingly difficult. For this page, the workflows use only `Comfy Kitchen Attention` (CK Attention) and no other optimizations.
+Choosing among them means weighing the benefits against the drawbacks, and that's very hard to judge. So on this page, the workflows use only `Comfy Kitchen Attention` (CK Attention) and no other optimizations.
 
 I have collected more details here:
 
@@ -257,9 +257,9 @@ Model: `ref2va`
 
 This is where MiniMax H3 really comes into its own—and where things get interesting.
 
-H3 lets you freely provide multiple images, videos, and audio clips as reference material for video generation.
+H3 lets you throw in as many images, videos, and audio clips as you like as reference material for the video, without much fuss.
 
-Then simply give it an instruction such as “make the person in Picture 1 speak with the voice from Audio 1” to control the generated video. It is remarkably flexible.
+Then just give an instruction like “make the person in Picture 1 speak with the voice from Audio 1,” and that's enough to control the video. Amazing.
 
 ![](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation.png){media=image}
 
@@ -288,15 +288,15 @@ Use [the Ref2VA prompt section above](#ref2va) as a guide.
 
 [MiniMax itself acknowledges this](https://www.reddit.com/r/StableDiffusion/comments/1vh9rtw/comment/p29qqaa/): the Ref2VA model produces lower basic output quality than the FL2VA model.
 
-Ideally, this will be solved properly in the future, but there are a few workarounds.
+I'd rather wait for a proper fix, but there are a few tricks.
 
 The two models actually have almost the same architecture, so FL2VA can handle Reference Generation to some extent as well.
 
 ![ref2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_ref2va.mp4){media=loop} ![fl2va](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_fl2va.mp4){media=loop} ![Hybrid](/media/basic-workflows/minimax-h3/minimax_h3_reference_generation_output_hybrid.mp4){media=loop}
 
-The result is cleaner, though Ref2VA is still considerably more flexible.
+It's cleaner now. That said, Ref2VA is still the more flexible of the two, as you'd expect.
 
-There is also a community-made Hybrid model that mixes the two models together. If Ref2VA's output quality becomes too frustrating, it may be worth trying.
+There's also a community-made Hybrid model that cleverly blends the two, so I'll mention it here. If you can't put up with Ref2VA's quality anymore, give it a try.
 
 - [Minimax-H3-fl2va-ref2va-hybrid-models](https://huggingface.co/smhfacct/Minimax-H3-fl2va-ref2va-hybrid-models/tree/main)
   - Several versions are available, differing in how heavily they lean toward Ref2VA
@@ -417,7 +417,7 @@ H3 also stores the video and audio latents together. Since only the video needs 
 
 I2VA and Ref2VA also take the resolution as part of their Conditioning.
 
-The first stage must be set to 0.25 MP, while the second must be set to 1.0 MP with twice the width and height, which makes the workflow a little complicated....
+The first stage must be set to 0.25 MP, while the second must be set to 1.0 MP with twice the width and height, which makes the workflow a bit complicated…
 
 {% outputs %}
 ![0.25 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va_output_0_25mp.mp4){media=loop} ![1.0 MP](/media/basic-workflows/minimax-h3/minimax_h3_hiresfix_i2va_output_1_0mp.mp4){media=loop}

@@ -17,17 +17,17 @@ hero:
 
 ## What is Git?
 
-In a nutshell, it's like a **game save function**.
-It provides functions to proceed with development comfortably so that you don't have to start over from the beginning if you fail.
+In a nutshell, it's like **saving in a video game**.
+It gives you tools to keep development going smoothly, so one mistake doesn't send you all the way back to the start.
 
 - **Commit**
-  - A function like a "save point" in an action game.
-  - If you save (commit) at any timing you like, even if the program breaks in the subsequent work, you can reliably rewind time to that place where it was working and start over.
+  - Like a "save point" in an action game.
+  - Save (commit) whenever you like, and if the program breaks later on, you can rewind to the point where it definitely worked and try again.
 
 - **Branch**
-  - A function to create "branching routes" or "parallel worlds" in a game.
-  - You can safely try new features in a copied world (branch) without affecting the main file.
-  - Unlike games, the point is that you can integrate (merge) only the changes (diffs) that went well in the branch into the main world later.
+  - Like creating a "branching route" or a "parallel world" in a game.
+  - You can safely try new features in a copied world (a branch) without touching the main files.
+  - Unlike a game, you can later bring just the changes (diffs) that worked out in the branch back into the main world (merge).
 
 ---
 
@@ -35,32 +35,32 @@ It provides functions to proceed with development comfortably so that you don't 
 
 ![](/media/begin-with/git/legacy_gyazo_aa0bd187bca975346df5582992735910.png){media=image}
 
-It is a **"huge warehouse (cloud storage)"** to keep data saved with Git.
+It's a **"huge warehouse (cloud storage)"** for the data you save with Git.
 
-Developers all over the world upload and publish their programs (such as ComfyUI custom nodes) here.
-Generally, the act of "installing a custom node" refers to "copying files from this warehouse called GitHub to your PC".
+Developers all over the world upload and publish their programs (like ComfyUI custom nodes) here.
+When people say "install a custom node", they usually mean "copy the files from this warehouse called GitHub to your PC".
 
-Also, GitHub has an aspect like SNS.
-It is also a place for communication between developers and users, such as reporting bugs in programs (Issue) or requesting new features.
+GitHub also has a social-media side to it.
+It's where developers and users talk to each other: reporting bugs (Issues), requesting new features, and so on.
 
 ---
 
 ## Minimum Commands to Remember
 
 - **git clone**
-  - Basically, it is okay to understand it as "a function to download the program on GitHub as a whole to your PC".
-  - However, unlike simply downloading a Zip file, it is important to bring a copy to your hand **while maintaining the connection with the repository**. Thanks to this "connection", the next `pull` becomes possible.
+  - For the most part, you can think of it as "downloading an entire program from GitHub to your PC".
+  - The important difference from just downloading a Zip file is that your local copy **stays connected to the repository**. That "connection" is what makes the next command, `pull`, possible.
 
 - **git pull**
-  - Even after `git clone`, developers continue to improve software and add features, so the program in your environment gradually becomes old.
-  - When you run `git pull`, it compares the latest state on GitHub with the contents of your PC and **downloads and updates only the parts that have changed**.
-  - You can consider it practically an "update" command.
+  - After you `git clone`, the developers keep improving the software and adding features, so your copy gradually goes out of date.
+  - Running `git pull` compares the latest version on GitHub with what's on your PC and **downloads and updates only the parts that changed**.
+  - You can think of it as the "update" command, in practice.
 
 ---
 
-## The True Identity of ComfyUI Manager
-The frequently used **ComfyUI Manager** is a tool that automatically performs these `git clone` and `git pull` in the background.
+## What ComfyUI Manager Really Does
+**ComfyUI Manager**, which you'll use a lot, is a tool that runs these `git clone` and `git pull` commands for you behind the scenes.
 
 - **Install:** `git clone` runs in the background.
-  - (At the same time, it performs `pip install` etc. and prepares necessary libraries)
+  - (It also runs things like `pip install` to set up the libraries you need)
 - **Update:** `git pull` runs in the background.

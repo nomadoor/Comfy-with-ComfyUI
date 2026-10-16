@@ -77,7 +77,7 @@ Flow is a little heavier, but performs much better, so I generally recommend Flo
 - `expand`
   - Does not crop at all, and expands the canvas as much as needed.
 
-Most video editing tools only provide something close to `crop`, but with video generation models, you can use the padded area as a mask and outpaint it. That opens up some interesting workflows.
+Regular editing software only does something close to `crop`, but with a video generation model you can do fun things like using the padded area as a mask and outpainting it.
 
 ### 🔒 camera_lock
 
@@ -89,7 +89,7 @@ Normal stabilization only makes the camera motion smoother, but `camera_lock` tr
 
 ## Restoring Camera Shake
 
-In video editing, processing can be more stable if you remove camera shake first, but leaving it removed can also erase the original sense of presence.
+When editing video, processing sometimes goes more smoothly if you remove camera shake first, but leave it that way and you lose the immediacy the original footage had.
 
 With `Video Stabilizer Motion Apply`, you can apply the shake removed by Video Stabilizer in reverse, restoring the original motion.
 
@@ -104,9 +104,9 @@ With `Video Stabilizer Motion Apply`, you can apply the shake removed by Video S
 
 ## Adding Artificial Camera Shake
 
-This is not limited to AI-generated video, but when camera work is too smooth, it can feel a little CG-like.
+With AI-generated video (though not only that), camera work that is too smooth can feel a little CG-like.
 
-By intentionally adding camera shake, you can create a stronger sense of presence and rawness.
+Adding camera shake on purpose can give it more presence and a rawer feel.
 
 ![](/media/notes/comfyui-video-stabilizer/legacy_gyazo_695ab8d32156327393d57ac9432a1e62.png){media=image}
 
@@ -120,7 +120,7 @@ By intentionally adding camera shake, you can create a stronger sense of presenc
 | --- | --- |
 | `frame_rate` | The input video FPS. Used as a fallback when FPS metadata is not available from the video. |
 | `style` | The type of shake. |
-| `amount` | The strength of the shake. Lower values are enough if you only want to add a little naturalness. Too much can easily make the video uncomfortable to watch. |
+| `amount` | The strength of the shake. Lower values are enough if you only want to add a little naturalness. Push it too far and you just get a video that makes people motion sick. |
 | `speed` | The speed of the shake. Lower it for slower handheld motion, or raise it for busier, finer shake. |
 | `seed` | The random seed for the shake. Changing `seed` changes the shake pattern even with the same settings. |
 
@@ -142,6 +142,6 @@ By intentionally adding camera shake, you can create a stronger sense of presenc
 
 `Video Stabilizer Motion Apply` can also add motion blur.
 
-Adding a little motion blur makes the result feel closer to real camera footage.
+Adding just a little makes it feel more like real camera footage.
 
 ![Original video](/media/notes/comfyui-video-stabilizer/legacy_gyazo_430ba048b450cebcc13829b3ac6151c8.mp4){media=loop}  ![Blur: 0](/media/notes/comfyui-video-stabilizer/legacy_gyazo_3cc5171d2839d110d07748395ddbf32f.mp4){media=loop} ![Blur: 1.00](/media/notes/comfyui-video-stabilizer/legacy_gyazo_a5a106e029af738b5642e1c0aff3c57c.mp4){media=loop}

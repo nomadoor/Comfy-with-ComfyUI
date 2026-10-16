@@ -8,8 +8,8 @@ title: "ComfyUI-TypedDecision"
 created: 2026-09-30
 updated: 2026-10-16
 noteTags: ["project", "custom-nodes", "concept"]
-summary: "对图像、视频或文本提出一个问题，并带着概率给出答案的节点"
-seoTitle: "ComfyUI-TypedDecision：只做判断的 MLLM"
+summary: "针对图像、视频或文本的提问，给出带概率答案的节点"
+seoTitle: "ComfyUI-TypedDecision：在 ComfyUI 中使用只做判断的 MLLM"
 seoDescription: "用 noul / choice / score 三种类型，对图像、视频和文本的提问给出带概率的答案的 ComfyUI 自定义节点。介绍使用 d3-mini 的基础工作流，以及从提示词决定分辨率、数据集分拣、在视频中查找人物出现片段的实例。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
@@ -21,7 +21,7 @@ hero:
 不让多模态 LLM 生成文字、只让它做判断的任务，有时被称为 "Typed Decision"。
 Jev 比较有名，不过也有好几个能在本地做到同样事情的模型，所以我把它们做成了 ComfyUI 自定义节点。
 
-因为答案的形式是固定的，也许可以用在条件分支或数据集处理上。最重要的是，它很快。
+因为答案的形式是固定的，也许可以用在条件分支或数据集处理上。最重要的是，它很快嘛。
 
 那就来看看 Typed Decision 能做什么，在 ComfyUI 里又能怎么玩吧。
 
@@ -50,7 +50,7 @@ Jev 比较有名，不过也有好几个能在本地做到同样事情的模型�
 
 ---
 
-## 模型的下载
+## 下载模型
 
 ### d3 / Clef-flash
 
@@ -183,7 +183,7 @@ imajev 需要把 Qwen3.5-4B 和 imajev-4b 的文件搭配使用。
 - `value` 是期望值
   - 第 1 行算作 `0`，所以 5 级的范围就是 `0.0` 到 `4.0`
 
-这里让它用 5 级来评价一张照片是否适合作为训练数据。
+这里让它用 5 级来评价能否用作训练数据。
 
 `value` 是按各等级的概率加权的平均值，所以会得到 `1.35` 这样介于等级之间的值。也就是“在 poor 和 acceptable 之间，偏 poor”这样的评价。
 

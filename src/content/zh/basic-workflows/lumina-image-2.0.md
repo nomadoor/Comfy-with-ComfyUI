@@ -7,7 +7,7 @@ navId: lumina-image-2.0
 title: "Lumina-Image 2.0"
 created: 2025-12-11
 updated: 2026-03-02
-summary: "Lumina-Image 2.0 的基础和在 ComfyUI 中的使用方法"
+summary: "Lumina-Image 2.0 的基础知识与在 ComfyUI 中的用法"
 seoTitle: "在 ComfyUI 中使用 Lumina-Image 2.0 与 Neta Lumina"
 seoDescription: "轻量 2.6B 图像生成模型 Lumina-Image 2.0，以及其衍生动漫模型 Neta Lumina、NetaYume Lumina、NewBie image 在 ComfyUI 中的用法与 text2image 工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -19,15 +19,15 @@ tags: []
 
 ## 什么是 Lumina-Image 2.0？
 
-[Lumina-Image 2.0](https://github.com/Alpha-VLLM/Lumina-Image-2.0) 是组合了 Unified Next-DiT 和 Flux 系 VAE 的 **2.6B 参数的图像生成模型**。
+[Lumina-Image 2.0](https://github.com/Alpha-VLLM/Lumina-Image-2.0) 是一个结合了 Unified Next-DiT 和 Flux 系 VAE 的 **2.6B 参数图像生成模型**。
 
-采用了 Gemma 2B 系文本编码器，模型本体比 SD3 和 FLUX Pro 相当小，设计目标和 **AuraFlow 一样是“比较轻量且日常容易使用的基础模型”定位**。
-尺寸虽小但提示词遵从性高也是特征，作为次世代基础模型候补之一备受瞩目。
+它采用 Gemma 2B 系文本编码器，模型本身比 SD3 和 FLUX Pro 小得多，**和 AuraFlow 一样，定位于“相对轻量、适合日常使用的基础模型”**。
+它的另一个特点是，以这个体量来说提示词遵循度很高，曾作为下一代基础模型的候选之一受到关注。
 
 
 ---
 
-## 模型的下载
+## 下载模型
 
 * diffusion_models
 
@@ -62,11 +62,11 @@ tags: []
 
 ## Neta Lumina
 
-[Neta-Lumina](https://huggingface.co/neta-art/Neta-Lumina) 是以 Lumina-Image 2.0 为基础的 **动漫面向微调模型**。
+[Neta-Lumina](https://huggingface.co/neta-art/Neta-Lumina) 是基于 Lumina-Image 2.0 的 **动漫向微调模型**。
 
-很有动漫模型的风格，也对应 Danbooru 标签，特征是接受中文・英语・日语和多语言的提示词。
+作为动漫模型，它也支持 Danbooru 标签，特点是能接受中文、英文、日文等多语言提示词。
 
-### 模型的下载
+### 下载模型
 
 * diffusion_models
 
@@ -86,27 +86,27 @@ tags: []
 
 [](/workflows/basic-workflows/lumina-image-2.0/neta_lumina_v1_0.json)
 
-- 采样器遵从官方设定，使用 `res_multistep` / `linear_quadratic`。
+- 采样器按照官方设置，使用 `res_multistep` / `linear_quadratic`。
 
-提示词稍微有特征，需要在实际想让其画的文本前写 **系统提示词**。
+提示词有一点特别：需要在真正想写的提示词前面加上 **系统提示词**。
 
 ```text
 You are an assistant designed to generate anime images based on textual prompts. <Prompt Start>
 1girl, portrait, ...
 ```
 
-详情请参照官方的 Prompt Book。
+详情请参考官方的 Prompt Book。
 - [Neta Lumina Prompt Book](https://nieta-art.feishu.cn/wiki/RY3GwpT59icIQlkWXEfcCqIMnQd)
 
 ---
 
 ## NetaYume Lumina
 
-也有以 Neta Lumina 为基础，进一步微调的名为 [NetaYume Lumina](https://huggingface.co/duongve/NetaYume-Lumina-Image-2.0) 的模型。
+还有一个在 Neta Lumina 基础上进一步微调的模型 [NetaYume Lumina](https://huggingface.co/duongve/NetaYume-Lumina-Image-2.0)。
 
-机会难得，这里也介绍一下吧。
+难得有机会，这里也一起介绍一下吧。
 
-### 模型的下载
+### 下载模型
 
 * diffusion_models
 
@@ -129,12 +129,12 @@ You are an assistant designed to generate anime images based on textual prompts.
 
 ## NewBie image Exp0.1
 
-NewBie-image（Exp0.1）是立足于 Lumina 架构研究的知识，以 Next-DiT 为地基设计的 NewBie 独自架构的动漫面向 T2I 模型。使用了更强力的文本编码器，设计为能用 XML 形式提示词（结构化标签）进行更细致地控制。
+NewBie-image（Exp0.1）是一个动漫向 T2I 模型，它借鉴了 Lumina 架构研究的成果，以 Next-DiT 为基础，采用 NewBie 自己设计的架构。它使用了更强的文本编码器，可以用 XML 格式的提示词（结构化标签）进行更细致的控制。
 
 > [!NOTE]
-> 这个模型还只进行了 20% 的训练。根据今后的更新，workflow 可能会有变更。
+> 这个模型目前只完成了 20% 的训练。今后的更新可能会让工作流发生变化。
 
-### 模型的下载
+### 下载模型
 
 - diffusion models
   * [NewBie-Image-Exp0.1-bf16.safetensors](https://huggingface.co/Comfy-Org/NewBie-image-Exp0.1_repackaged/blob/main/split_files/diffusion_models/NewBie-Image-Exp0.1-bf16.safetensors)
@@ -166,7 +166,7 @@ NewBie-image（Exp0.1）是立足于 Lumina 架构研究的知识，以 Next-DiT
 
 [](/workflows/basic-workflows/lumina-image-2.0/newbie_image_exp0_1.json)
 
-提示词推荐 **XML 形式（用标签区隔的结构化）**。　　
+提示词推荐使用 XML 格式（用标签分隔的结构化写法）。　　
 
 ```xml
 <general_tags>
@@ -181,7 +181,7 @@ NewBie-image（Exp0.1）是立足于 Lumina 架构研究的知识，以 Next-DiT
 </general_tags>
 ```
 
-虽说如此，用自然语言写也能没问题地生成，所以首先请轻松地尝试一下。
+话虽如此，用自然语言写也能正常生成，所以先轻松地试试看吧。
 
-详情请参照官方的提示词指南。
+详情请参考官方的提示词指南。
 - [NewBie-image Deployment and Zero-Threshold Usage Tutorial / Prompt Writing](https://ai.feishu.cn/wiki/NZl9wm7V1iuNzmkRKCUcb1USnsh#RN74dYdXaokGnSx0F5IcaBK0nHc)

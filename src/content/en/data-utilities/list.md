@@ -7,7 +7,7 @@ navId: list
 title: "List"
 created: 2025-11-26
 updated: 2026-09-27
-summary: "Concept of continuous processing using multiple data"
+summary: "How to think about processing multiple pieces of data in sequence"
 seoTitle: "Lists in ComfyUI: Process Multiple Inputs in Turn"
 seoDescription: "ComfyUI lists process several inputs one by one in a single run: how they differ from the queue, Create List and Get Item From List, and multiple lists."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -17,16 +17,16 @@ hero:
 
 ## What is List?
 
-List is a mechanism for handling multiple data as a "single group".
+A List is a way to handle multiple pieces of data as "one bundle."
 
-While Queue executes "the same workflow multiple times", List processes **multiple inputs sequentially in a single execution**.
+Where Queue "runs the same workflow many times," a List **processes multiple inputs one after another in a single run**.
 
 - **Queue**
-  - Executes the same workflow repeatedly from the outside
+  - Runs the same workflow over and over, from the outside
 - **List**
-  - Processes multiple inputs sequentially on the inside
+  - Works through multiple inputs in order, on the inside
 
-It is easier to understand if you think of it as the difference between "Pressing Run multiple times" and "Pouring multiple inputs in a single Run".
+It's easiest to think of it as the difference between "pressing Run many times" and "feeding multiple inputs into a single Run."
 
 ---
 
@@ -44,7 +44,7 @@ This node lets you assemble a List manually. It combines values of any type, suc
 
 ### Get Item From List Node
 
-Retrieves one item at any position from a List.
+Picks out one item from a List by its position.
 
 ![](/media/data-utilities/list/get_item_from_list.png){media=image}
 
@@ -60,12 +60,12 @@ Retrieves one item at any position from a List.
 
 [](/workflows/data-utilities/list/image2image_2list_3list.json)
 
-For example, let's consider the following situation in image2image:
+For example, take this image2image setup:
 
 - List of images: 3
 - List of prompts: 2
 
-At this time, you might think "3 x 2 = 6 images likely", but the actual behavior is **"proceeding in step"**.
+You might expect "3 x 2 = 6 images," but what actually happens is that **the Lists "move forward in step."**
 
 - 1st image x 1st prompt
 - 2nd image x 2nd prompt

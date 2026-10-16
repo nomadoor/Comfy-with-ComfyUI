@@ -7,7 +7,7 @@ navId: wan-animate
 title: "Wan-Animate"
 created: 2025-12-12
 updated: 2026-03-02
-summary: "Perform motion transfer to people/characters with Wan-Animate"
+summary: "Transfer motion to people and characters with Wan-Animate"
 seoTitle: "Wan-Animate in ComfyUI: Motion Transfer to Characters"
 seoDescription: "Animate a person in an image with a video's motion using Wan-Animate: Animation and Replacement modes, 6-step Lightx2v LoRA, and long videos."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -22,18 +22,18 @@ tags: ["human-motion-transfer","talking-head"]
 
 > ![](/media/basic-workflows/wan-animate/legacy_gyazo_20a7f10f302751293cda0e0ed353d25a.png){media=image}
 
-- **Animation Mode**: Moves the input image according to the movement of the reference video.
+- **Animation Mode**: Animates the input image to follow the movement of the person in the reference video.
 - **Replacement Mode**: Replaces the person in the input video with the person in the reference image.
 
-There are two generation modes, but it is easier to think of Replacement Mode as Animation Mode with added "processing to blend into the background".
+There are these two generation modes. I think it's easiest to think of Replacement Mode as Animation Mode plus "some extra processing to blend into the background".
 
-Since it is based on Wan 2.1, it can only generate up to 77 frames, but like the [Wan 2.1 VACE](/en/basic-workflows/wan-2-1-vace/) extension, it has a feature that allows you to generate virtually infinitely long videos by repeatedly extracting the last few frames and generating the continuation.
+Because it's based on Wan 2.1, it can only generate up to 77 frames. But just like Extension in [Wan 2.1 VACE](/en/basic-workflows/wan-2-1-vace/), you can repeatedly take the last few frames and generate what comes next, which effectively lets you handle long videos.
 
 ---
 
 ## Required Custom Nodes
 
-Face detection and pose estimation are performed as pre-processing. The following custom nodes are very convenient.
+Face detection and pose estimation are done as preprocessing. These custom nodes make that much easier.
 
 - [ComfyUI-WanAnimatePreprocess](https://github.com/kijai/ComfyUI-WanAnimatePreprocess)
   - Face detection by YOLO
@@ -45,7 +45,7 @@ Face detection and pose estimation are performed as pre-processing. The followin
 
 ## Model Download
 
-Collect Wan-Animate core and common models for the Wan 2.1 series.
+Get the Wan-Animate model itself plus the models shared across the Wan 2.1 family.
 
 - diffusion_models
   - [Wan2_2-Animate-14B_fp8_e4m3fn_scaled_KJ.safetensors](https://huggingface.co/Kijai/WanVideo_comfy_fp8_scaled/blob/main/Wan22Animate/Wan2_2-Animate-14B_fp8_e4m3fn_scaled_KJ.safetensors)
@@ -85,7 +85,7 @@ Placement example:
 
 This mode moves the input still image according to the movement of the person in the reference video.
 
-It's quite huge so it might be intimidating, but the base is exactly the same form as [Wan 2.1 image2video](/en/basic-workflows/wan-2-1/#image2video). Let's go ahead without fear!
+It's pretty huge, which can make you nervous, but underneath it's exactly the same shape as [Wan 2.1 image2video](/en/basic-workflows/wan-2-1/#image2video). Don't be scared off; let's keep going.
 
 ![](/media/basic-workflows/wan-animate/legacy_gyazo_d25335c059e8117f9e617de4ffffefca.png){media=image}
 
@@ -111,16 +111,16 @@ It's quite huge so it might be intimidating, but the base is exactly the same fo
 
 {% mediaRow img="/media/basic-workflows/wan-animate/legacy_gyazo_c76608836777ce6a604372c2d9cc9c43.png{media=image}", width=33, align="left" %}
 
-**3. Input additional information to WanAnimateToVideo node**
+**3. Feed extra inputs into the WanAnimateToVideo node**
 
 - `reference_image`
-  The still image you want to move.
+  The still image you want to animate.
 - `face_video`
-  Video with the face part cropped from the reference video.
-  `Pose and Face Detection` automatically performs face detection by YOLO -> cropping.
+  A video of the face cropped out of the reference video.
+  `Pose and Face Detection` automatically runs YOLO face detection -> cropping.
 - `pose_video`
-  Video generating stick figures (key points) from the reference video using ViTPose.
-  Since the skeleton and position are different between the driving video and the image you want to move, adjustments are made by the retarget process.
+  A stick-figure (keypoint) video made from the reference video with ViTPose.
+  The driving video and the image you want to animate differ in body proportions and position, so a retarget step adjusts for that.
 
 {% endmediaRow %}
 
@@ -134,7 +134,7 @@ It's quite huge so it might be intimidating, but the base is exactly the same fo
 
 This mode replaces the person in the input video with the person in the reference image.
 
-It adds a mask for inpainting the person and relighting processing to blend into the background to the Animation Mode.
+It's Animation Mode plus a mask for inpainting the person and a relighting step to blend them into the background.
 
 ![](/media/basic-workflows/wan-animate/legacy_gyazo_ab3d36d1e2ddfd5d7e452778dbab411c.png){media=image}
 
@@ -144,7 +144,7 @@ It adds a mask for inpainting the person and relighting processing to blend into
 
 **1. Add Relight LoRA**
 
-- Add relight LoRA to blend the replaced person into the background.
+- Add a relight LoRA to blend the swapped-in person into the background.
 
 {% endmediaRow %}
 
@@ -152,7 +152,7 @@ It adds a mask for inpainting the person and relighting processing to blend into
 
 **2. Padding of Reference Image**
 
-- Since the video is the standard this time, pad the reference image according to the resolution of the video.
+- This time the video is the base, so pad the reference image to match the video's resolution.
 
 {% endmediaRow %}
 
@@ -161,9 +161,9 @@ It adds a mask for inpainting the person and relighting processing to blend into
 **3. Person Mask Generation**
 
 - Pass the person coordinates acquired by `Pose and Face Detection` to SAM2.1 to generate a mask.
-- Inflate the mask slightly and convert it to a blocky mask like pixel art with the `Blockify` node to make it a `character_mask`.
+- Expand the mask a little, then turn it into a blocky, pixel-art-like mask with the `Blockify` node and use that as `character_mask`.
   If you don't do this, for some reason a thin edge remains on the outline of the generated video.
-- Use a video where the masked part is filled with black with `ImageCompositeMasked` as `background_video`.
+- Fill the masked area with black using `ImageCompositeMasked`, and use that video as `background_video`.
 
 {% endmediaRow %}
 
@@ -175,9 +175,9 @@ It adds a mask for inpainting the person and relighting processing to blend into
 
 ## 6-Step Inference (Lightx2v LoRA)
 
-You can reduce sampling steps to 4-6 steps using Distilled LoRA.
+With a distilled LoRA, you can cut sampling down to 4-6 steps.
 
-I was concerned about degradation when using it with text2video, but with Wan-Animate, since we are not creating a video from scratch, it doesn't bother me much. I want to actively use it.
+With text2video the quality loss bothered me, but Wan-Animate isn't making a video from scratch, so it's barely noticeable. This one is worth using whenever you can.
 
 ### Model Download
 
@@ -202,7 +202,7 @@ I was concerned about degradation when using it with text2video, but with Wan-An
 
 **Apply LoRA**
 
-- 🟪 Load Lightx2v LoRA with `LoraLoaderModelOnly`.
+- 🟪 Load the Lightx2v LoRA with `LoraLoaderModelOnly`.
 - KSampler Settings
 
   - `steps` ... 4-6
@@ -224,12 +224,12 @@ I was concerned about degradation when using it with text2video, but with Wan-An
 
 ## Repeating Process for Long Videos
 
-The base of Wan-Animate is the same as Wan 2.1 I2V, and the upper limit is **77 frames generated in one inference**.
-If you want to create a long video exceeding this, construct it to "repeat the generation many times while inheriting the last few frames".
+Like Wan 2.1 I2V, which it's based on, Wan-Animate can generate **at most 77 frames in one run**.
+To make anything longer, set it up to "generate over and over, carrying over the last few frames each time".
 
-Since ComfyUI cannot perform loop processing, it will be in the form of connecting almost the same workflow in series one after another.
+ComfyUI can't do loops, so you end up chaining nearly identical copies of the workflow one after another.
 
-Allows specific to be frankly not a smart process, and is a part where it yields a step to Kijai's implementation in [ComfyUI-WanVideoWrapper](https://github.com/kijai/ComfyUI-WanVideoWrapper).
+Honestly, this isn't an elegant setup, and it's one place where Kijai's implementation in [ComfyUI-WanVideoWrapper](https://github.com/kijai/ComfyUI-WanVideoWrapper) does better.
 
 ### Animation Mode (Repeat)
 
@@ -237,21 +237,21 @@ Allows specific to be frankly not a smart process, and is a part where it yields
 
 [](/workflows/basic-workflows/wan-animate/wan2_2_animate_animation_lightx2v_repeat.json)
 
-At first glance, it looks like a huge workflow, but the only differences from the previous ones are the following two points.
+At first glance it looks like a massive workflow, but there are only two differences from the earlier ones.
 
 ![](/media/basic-workflows/wan-animate/legacy_gyazo_5db9830b2a2db2dd24ad1543906f49da.png){media=image}
 
 - `video_frame_offset`
 
-  - If 77 frames were generated in the first round, `face_video` and `pose_video` need to be used from the 78th frame onwards in the second round.
-  - If you put the offset frame count in `video_frame_offset`, it will automatically shift the reference start position of `face_video` / `pose_video`.
+  - If the first run generated 77 frames, the second run needs to use `face_video` and `pose_video` from frame 78 onward.
+  - Put the number of offset frames in `video_frame_offset`, and it automatically shifts where `face_video` / `pose_video` start being read.
 - `continue_motion_max_frames`
 
-  - Set the number of frames to serve as overlap.
-  - For example, if `length` is 77 and `continue_motion_max_frames` is 5, it uses the last 5 frames from the previous round and generates the remaining new 72 frames.
+  - Sets how many frames overlap between runs.
+  - For example, with `length` at 77 and `continue_motion_max_frames` at 5, it uses the last 5 frames of the previous run and generates the remaining 72 frames fresh.
 
-If you connect this group repeatedly, you can theoretically make a video as long as you want.
-However, like a copier, the error accumulates little by little.
+Keep chaining this group and, in theory, you can make a video as long as you like.
+Just like a photocopier, though, small errors build up a little at a time.
 
 ### Replacement Mode (Repeat)
 

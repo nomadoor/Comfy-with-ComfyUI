@@ -17,23 +17,23 @@ hero:
 
 ## Stable Version and Nightly Version
 
-When updating, you can choose which version to apply.
+When you update, you can choose which version to install.
 
 | Version | Features | Recommended Case |
 | :--- | :--- | :--- |
-| **Stable Version** | A confirmed version with guaranteed operation where noticeable bugs have been fixed. Official announcements usually refer to this. | When you want to prioritize stability. |
-| **Nightly Version** | The latest version containing all newly implemented features and fixes. Operation verification is incomplete, so defects may occur. | When you want to try new features or support for the latest models immediately. |
+| **Stable Version** | A finalized release with noticeable bugs fixed, confirmed to work. Official announcements usually refer to this version. | When you want to prioritize stability. |
+| **Nightly Version** | The latest version, with every newly added feature and fix. It hasn't been fully tested, so you may run into bugs. | When you want to try new features or support for the latest models immediately. |
 
 > [!WARNING]
-> If "I updated to the latest version but cannot use this feature/model", you may have selected the **Stable Version**. The latest features go into the **Nightly Version** first.
+> If you "updated to the latest version but still can't use this feature/model," you may have chosen the **Stable Version**. The latest features go into the **Nightly Version** first.
 
 ---
 
 ## Portable Version
 
-The Windows portable version can be easily updated just by executing the provided `.bat` file.
+The Windows portable version is easy to update: just run one of the included `.bat` files.
 
-Update starts when you execute the `.bat` file in the following hierarchy. Even if it looks like it has stopped during execution, it is often running, so wait until **`Done!`** is displayed.
+Run a `.bat` file in the folder below to start the update. Even if it looks stuck while running, it's usually still working, so wait until **`Done!`** appears.
 
 ```bat
 📂ComfyUI_windows_portable/
@@ -48,8 +48,8 @@ Update starts when you execute the `.bat` file in the following hierarchy. Even 
 * **`update_comfyui_stable.bat`**
     * Updates to the Stable version.
 * **`update_comfyui_and_python_dependencies.bat` ⚠️**
-    * After updating to the Nightly version, PyTorch (Python's core library) update is performed.
-    * PyTorch updates are **very likely to cause custom nodes to stop working**, so it is better not to use it if there are currently no problems.
+    * Updates to the Nightly version, then also updates PyTorch (a core Python library).
+    * Updating PyTorch is **very likely to break custom nodes**, so if nothing is wrong right now, it's better not to use this one.
 
 ---
 
@@ -57,7 +57,7 @@ Update starts when you execute the `.bat` file in the following hierarchy. Even 
 
 ### Update to Nightly Version
 
-Executing the following commands will update to the latest Nightly version.
+Run the following commands to update to the latest Nightly version.
 
 **Windows**
 
@@ -87,17 +87,17 @@ pip install -r requirements.txt
 
 
 ### Switching to Stable Version
-Complex operations are required to switch the current Git HEAD to the latest stable tag. Usually, if you use the stable version with the manual installation version, it is easier to clone the Stable branch from the beginning or use Manager.
+Switching the current Git HEAD to the latest stable tag takes some fiddly steps. If you want the stable version on a manual install, it's usually easier to clone the Stable branch from the start or to use Manager.
 
 ---
 
 ## ComfyUI Manager
 
-If you have installed ComfyUI Manager, you can update from the UI.
+If you have ComfyUI Manager installed, you can update from the UI.
 
 ![ComfyUI_Manager_Updates](/media/begin-with/updates/legacy_gyazo_33cab8c113457ee1a54035612bea9c11.png){media=image}
 
-- 1.  Select the version you want to update (**Nightly Version** or **Stable Version**)
+- 1.  Select the version you want to update to (**Nightly Version** or **Stable Version**)
 - 2.  Click the **`Update ComfyUI`** button
 
 > [!WARNING]
@@ -109,4 +109,4 @@ If you have installed ComfyUI Manager, you can update from the UI.
 
 It updates automatically.
 
-Basically, only the stable version can be used, so if you want to use the latest features, use the Portable version etc.
+As a rule, it only runs the stable version, so if you want the latest features, use something like the Portable version.

@@ -7,7 +7,7 @@ navId: cfg
 title: CFG
 created: 2025-12-01
 updated: 2026-03-02
-summary: A mechanism that determines the 'effectiveness' of the prompt.
+summary: How strongly the prompt takes effect
 seoTitle: "What Is CFG? How the CFG Scale Works in Image Generation"
 seoDescription: "How CFG sets how closely a model follows the prompt: what changing it does, how to pick a value, and why CFG 1 cuts compute and ignores the negative prompt."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
@@ -16,25 +16,25 @@ hero:
 ---
 ## What is CFG?
 
-Roughly speaking, CFG (Classifier-Free Guidance) is a **coefficient that determines "how strongly to follow the prompt."**
+Roughly speaking, CFG (Classifier-Free Guidance) is a **coefficient that sets "how strongly the model follows the prompt."**
 
-- **Higher value**: Tries to follow the prompt strongly.
-- **Lower value**: Tends to lean towards the model's inherent "natural-looking image."
+- **Higher values**: The model tries harder to follow the prompt.
+- **Lower values**: The output drifts toward the model's own idea of a "plausible, natural image."
 
-However, CFG is only effective when the text encoder can properly understand the prompt and the model has sufficient expressive power.
+That said, CFG only helps when the text encoder actually understands the prompt and the model is capable enough to express it.
 
-The design of the prompt, model, and conditioning plays the leading role, and CFG is merely a **fine-tuning knob**.
+The prompt, the model, and how you set up conditioning are what really matter. CFG is just a **knob for fine adjustments**.
 
 ---
 
-## Mechanism of CFG
+## How CFG Works
 
-Internally, the diffusion model calculates "noise prediction" in two ways:
+Internally, the diffusion model makes two "noise predictions":
 
-- **positive**: When a prompt is provided (conditional)
-- **negative**: When the prompt is ignored (unconditional)
+- **positive**: with the prompt (conditional)
+- **negative**: ignoring the prompt (unconditional)
 
-In ComfyUI, these are mixed using the following formula:
+ComfyUI blends them with this formula:
 
 ```
 output = negative + guidance_scale × (positive - negative)
@@ -42,52 +42,52 @@ output = negative + guidance_scale × (positive - negative)
 
 Here, `guidance_scale` is the **CFG value**.
 
-What this formula means is **how much to amplify the difference between the "with prompt" and "without prompt" predictions.**
+In other words, it sets **how much to amplify the difference between the "with prompt" and "without prompt" predictions.**
 
-- **Larger value**: The difference `positive - negative` is emphasized, pulling strongly in the direction of the prompt.
-- **Smaller value**: The influence of the prompt weakens, leaning towards `negative` (the model's inherent tendency).
+- **Larger values**: The `positive - negative` difference is amplified, pulling the result strongly toward the prompt.
+- **Smaller values**: The prompt has less influence, and the result leans toward `negative` (the model's own tendencies).
 
 ---
 
-## CFG Value and "Just Right"
+## Finding the "Just Right" CFG
 
-The optimal CFG value varies depending on the model and sampler, but for now, using **4 to 7** should be fine.
+The best CFG value depends on the model and sampler, but **4 to 7** is a safe place to start.
 
-I said that increasing CFG can increase the effectiveness of the prompt, but that is only when:
+I said that raising CFG makes the prompt take stronger effect, but that's only true when:
 
-- The text encoder understands the prompt content
-- The model has the performance to express that image
+- The text encoder understands what the prompt says
+- The model is capable of expressing that image
 
-If this is not possible, increasing CFG will not improve the generation result.
+If those aren't the case, raising CFG won't make the results any better.
 
 ---
 
 ## Special Meaning of CFG = 1
 
-Among CFG values, `1` is a bit special.
-Let's substitute `guidance_scale = 1` into the previous formula.
+A CFG of `1` is a bit special.
+Let's plug `guidance_scale = 1` into the formula from earlier.
 
 ```
 output = negative + 1 × (positive - negative)
        = positive
 ```
 
-The information of `negative` is canceled out, and **only `positive`** remains.
+The `negative` term cancels out, leaving **only `positive`**.
 
-Two things happen at this time:
+This has two consequences:
 
-### 1. Reduction of Computational Cost
+### 1. Less Computation
 
-Since inference for `negative` (unconditional) becomes unnecessary, **the computational cost per step can be almost halved** compared to when CFG > 1 (depending on implementation).
+Since the `negative` (unconditional) pass is no longer needed, **compute per step can drop to roughly half** of what it is with CFG > 1 (depending on the implementation).
 
-There are various methods to speed up image generation, but the simplest is **using CFG = 1**. However, since you can no longer adjust the strength of the prompt with CFG, many models substitute with other parameters.
+There are many ways to speed up image generation, but the simplest is **using CFG = 1**. You lose the ability to adjust prompt strength with CFG, though, so many models handle that with other parameters instead.
 
-### 2. Negative Prompt Becomes Ineffective
+### 2. The Negative Prompt Stops Working
 
-Since the output becomes only `positive`, **Negative Prompt stops working**.
-This is because whatever text you put in the `negative` side is canceled out in the formula.
+Since the output is just `positive`, **the negative prompt has no effect**.
+Whatever text you put on the `negative` side cancels out in the formula.
 
 ### Note
 
-Models called "turbo" or "lightning" are mostly trained assuming CFG = 1.
-If you set CFG to a value larger than 1 with such models, **broken images will be output**, so check the distribution page or documentation to see what CFG value the model assumes.
+Most so-called fast (accelerated) models are trained with CFG = 1 in mind.
+Setting CFG above 1 on these models **produces broken images**, so check the model's download page or documentation to see which CFG value it expects.

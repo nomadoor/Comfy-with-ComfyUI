@@ -17,23 +17,23 @@ hero:
 
 ## What is LoRA?
 
-[Textual Inversion](/en/basic-workflows/sd15-textual-inversion/) was a technique to compress "appearances difficult to explain in text" into a single word, but it does not have the power to make the model draw something it doesn't know from scratch.
+[Textual Inversion](/en/basic-workflows/sd15-textual-inversion/) was a technique for packing "a look that's hard to describe in text" into a single word, but it can't make the model draw something it doesn't already know from scratch.
 
-When you wanted to "make the model draw something it originally couldn't!", conventionally you needed to fine-tune the entire model.
-However, training costs are quite high.
+When you wanted the model to "draw things it couldn't draw before!", you used to have to fine-tune the entire model.
+But that training is quite expensive.
 
-So, **LoRA (Low-Rank Adaptation)**, which was originally used in LLMs, came to be used.
+That's where **LoRA (Low-Rank Adaptation)**, originally used for LLMs, came in.
 
-LoRA uses a method where instead of rewriting the weights of the model itself, only the "difference" is saved externally as small additional data.
-You can add new styles and characters to the base model as if loading an expansion pack later.
+Instead of rewriting the model's weights themselves, LoRA stores only the "changes" separately, as small add-on data.
+It feels like loading an expansion pack onto the base model afterward: you can add new styles and characters.
 
 ---
 
-## text2image Applying LoRA
+## text2image with LoRA
 
-### Downloading LoRA
+### Downloading the LoRA
 
-This time, as an example, let's use a LoRA that makes it look like pixel art.
+As an example, let's use a LoRA that gives images a pixel-art look.
 
 - [8bitdiffuser 64x](https://civitai.com/models/185743)
 
@@ -51,12 +51,12 @@ This time, as an example, let's use a LoRA that makes it look like pixel art.
 [](/workflows/basic-workflows/sd15-lora/sd1_5_lora.json)
 
 - 🟩 Add a `Load LoRA (Model and CLIP)` node.
-  - Connect it so that it is sandwiched between `Load Checkpoint` and `CLIP Text Encode` / `KSampler`.
-  - Pass both **MODEL** and **CLIP** through `Load LoRA (Model and CLIP)`.
-- `strength_model` / `strength_clip` : The application strength of LoRA. Basically `1.0`, but lower it if it works too strongly.
+  - Connect it in between `Load Checkpoint` and `CLIP Text Encode` / `KSampler`.
+  - Both **MODEL** and **CLIP** need to go through `Load LoRA (Model and CLIP)`.
+- `strength_model` / `strength_clip` : How strongly the LoRA is applied. `1.0` is the usual value, but lower it if the effect is too strong.
 - 🟨 Trigger Word
-  - Just applying LoRA adds the ability to draw pixel art to the base model internally.
-  - However, to ensure that ability is brought out, you need to include the word the author used during training in the prompt.
+  - Simply applying the LoRA already adds the ability to draw pixel art to the base model internally.
+  - However, to reliably bring that ability out, you need to include the word the author used during training in your prompt.
   - This is called a trigger word. In this LoRA, `pixel_art` is the trigger word.
 
 ---
@@ -69,7 +69,7 @@ However, training the text encoder is difficult and can actually make prompts wo
 
 SDXL has two text encoders, and later models began using large language models such as T5 and Qwen.
 
-Today, it is more common to leave prompt understanding to the base text encoder and train only the diffusion model.
+So today, the mainstream approach is to leave prompt understanding to the base text encoder and train only the diffusion model.
 
 ### ComfyUI workflow
 

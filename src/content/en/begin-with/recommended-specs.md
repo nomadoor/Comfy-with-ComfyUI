@@ -15,47 +15,47 @@ hero:
   image: ""
 ---
 
-When incorporating image generation into illustration production or design work, local execution is overwhelmingly more stable and practical than a cloud environment. Here, we summarize the recommended specs for comfortably handling ComfyUI based on actual usage.
+If you want to build image generation into illustration or design work, running locally is far more stable and practical than using the cloud. Here are the specs I recommend for using ComfyUI comfortably, based on real use.
 
 ---
 
 ## CPU
 
-Since most processing is done by the GPU, there is no need to be particular about the CPU.
+Most of the work runs on the GPU, so you don't need to be picky about the CPU.
 
-Some things are processed by the CPU, but with modern CPUs, this will not be a bottleneck.
+Some things do run on the CPU, but any modern CPU won't be the bottleneck.
 
 ---
 
 ## GPU
 
-Anyway, VRAM amount is important. No matter how fast you can calculate, if you don't have enough VRAM, you can't run the model in the first place. This is a point where you shouldn't compromise.
+VRAM is what matters above all. No matter how fast the GPU computes, if you don't have enough VRAM, you can't run the model in the first place. This is the one place you shouldn't compromise.
 
-- 8GB: Minimum. It works with some ingenuity, but there are many restrictions.
-- 12-16GB: Can handle most latest technologies (or rather, models are optimized aiming for this range)
+- 8GB: The bare minimum. Things run with some workarounds, but with a lot of limits.
+- 12-16GB: Handles most of the latest tech (or rather, new models get slimmed down to fit this range)
   - e.g., RTX 5060 (16GB)
-- 24GB or more: Aim for this if you want to do heavy work such as using LLM together or long videos.
+- 24GB or more: Aim for this if you also want heavy work, like running LLMs alongside or making long videos.
   - e.g., RTX 5090
 
 
 Also, don't forget to choose an Nvidia GPU.
 
-AMD and Intel can be purchased cheaper for the same VRAM amount, but most AI models are optimized for Nvidia. Even if the specs look similar, you will regret it as processing takes many times longer when you actually run it.
+AMD and Intel cards are cheaper for the same amount of VRAM, but most AI models are optimized for Nvidia. The specs may look about the same on paper, but once you actually run things, they can take several times longer, and you'll regret it.
 
 ---
 
 ## Memory (RAM)
 
-We will talk about the detailed mechanism elsewhere, but by utilizing RAM, you can run models of sizes that do not fit in VRAM. And ComfyUI is very good at that processing.
+I'll go into how it works elsewhere, but by using RAM, you can run models too big to fit in VRAM. And ComfyUI is very good at this.
 
-Increasing VRAM by 12GB costs a ridiculous amount of money, but increasing RAM can be done relatively cheaply (though prices have soared recently...), so load as much as you can. At least 32GB is required.
+Adding 12GB of VRAM costs a ridiculous amount of money, but RAM is relatively cheap to add (though prices have shot up lately...), so get as much as you can. You need at least 32GB.
 
 ---
 
 ## Storage
 
-Loading is overwhelmingly faster with SSD, so we recommend SSD rather than HDD for placing models.
+SSDs load files far faster, so I recommend keeping your models on an SSD rather than an HDD.
 
-However, AI models are quite large one by one, and even if you carefully select frequently used ones, it will soon exceed 1TB. The more SSD capacity, the better, but consult your wallet.
+That said, each AI model is quite large, and even if you keep only the ones you use often, you'll pass 1TB in no time. The more SSD space the better, but that's between you and your wallet.
 
-There is no problem with HDD for the destination of output images and videos.
+An HDD is fine for saving output images and videos.

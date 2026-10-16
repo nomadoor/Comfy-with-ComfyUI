@@ -7,7 +7,7 @@ navId: sd15-basics
 title: "Basics of Image Generation (SD1.5)"
 created: 2025-11-13
 updated: 2026-03-02
-summary: "Basics of Image Generation with Stable Diffusion 1.5"
+summary: "Learn the basics of image generation with Stable Diffusion 1.5"
 seoTitle: "Image Generation Basics: Learn ComfyUI Workflows with SD1.5"
 seoDescription: "Almost every model shares the same ComfyUI workflow shape. Learn it with Stable Diffusion 1.5: prepare inputs, pass them to KSampler, and what \"modular\" means."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
@@ -22,49 +22,49 @@ hero:
 
 ![](/media/basic-workflows/sd15-basics/legacy_gyazo_bc7fe8fc68bbc2fb408314e8acee9ab1.png){media=image}
 
-The top is the workflow for **Stable Diffusion 1.5**, and the bottom is for the latest model **Z-Image** (hypothetical/example).
+The top is the workflow for **Stable Diffusion 1.5**, and the bottom is for **Z-Image**, one of the latest models.
 
-Can you see that although there are minor differences such as the number of nodes, they are roughly the same?
-No matter what new image generation model or video generation model comes out, the flow of **"preparing materials and throwing them to KSampler"** does not change.
+There are small differences, like the number of nodes, but can you see they're mostly the same?
+However new the image or video generation model, the flow of **"prepare the ingredients and throw them at KSampler"** stays the same.
 
-I understand very well the feeling of wanting to use new models quickly, but please suppress your impatience and cover the workflows based on Stable Diffusion 1.5 once.
+I totally get wanting to jump into the new models right away, but hold that urge for a moment and work through the Stable Diffusion 1.5-based workflows once.
 
-Your future ComfyUI life should become much more enjoyable.
+It should make the rest of your ComfyUI life a lot more fun.
 
 ---
 
 ## What does "Modular" mean?
 
-Node-based tools like ComfyUI are often explained as having the advantage of being "modular".
+Node-based tools like ComfyUI are often said to have the advantage of being "modular".
 
-So, what is modular in the first place?
-How is it useful in image generation?
+So what does "modular" actually mean?
+And how does it help with image generation?
 
 ### Modular System
 
-A modular system is a structure where "necessary functions can be added later" like LEGO blocks.
+Modular means a structure where, like LEGO blocks, you can add the features you need later on.
 
-- There is a base foundation
-- When a necessary function comes up, add only that block
-- If you want to increase functions further, add blocks again
+- There's a base to build on
+- When you need a feature, add a block for just that part
+- When you want more features, add more blocks
 
-This way of thinking of "adding on" applies directly to ComfyUI workflows.
+This "keep adding on" approach applies directly to ComfyUI workflows.
 
 ### How it works in ComfyUI
 
-Leaving aside specific node names for a moment, let's look at how a workflow expands little by little.
-Let's check in the flow which parts are increasing as modules.
+Let's set specific node names aside for now and watch a workflow grow step by step.
+As you go, check which parts are being added as modules.
 
 - 1. **text2image**
-  - The basics. Just input a prompt and throw it to KSampler.
+  - The basics. You just enter a prompt and throw it at KSampler.
   - ![](/media/basic-workflows/sd15-basics/legacy_gyazo_10c6a84174c94fbd6b66fbed2bd2a4c3.png){media=image}
   - [](/workflows/basic-workflows/sd15-basics/sd1_5_text2image.json)
 
 - 2. **image2image**
-  - Generates an image using an input image as a draft.
+  - Generates an image using the input image as a rough draft.
   - ![](/media/basic-workflows/sd15-basics/legacy_gyazo_8426a110f038cddb3907e51d155ed9b3.png){media=image}
   - [](/workflows/basic-workflows/sd15-basics/sd1_5_image2image.json)
-  - 🟩 Add a node to load an image and a node to convert it to latent.
+  - 🟩 Add a node to load an image and a node to convert it into a latent.
 
 - 3. **inpainting**
   - Performs image2image on only a part of the input image.
@@ -73,20 +73,20 @@ Let's check in the flow which parts are increasing as modules.
   - 🟥 Add nodes to make image2image happen only in the masked area.
 
 - 4. **ControlNet**
-  - ControlNet is a function that allows you to control image generation by inputting an image.
+  - ControlNet lets you guide image generation with an input image.
   - ![](/media/basic-workflows/sd15-basics/legacy_gyazo_46553948d7e458ed19a69b0a5a8f5141.png){media=image}
   - [](/workflows/basic-workflows/sd15-basics/sd1_5_inpainting_controlnet.json)
-  - 🟦 Add nodes to add ControlNet and nodes to create images used for ControlNet control.
+  - 🟦 Add a node that applies ControlNet, plus nodes that create the image it uses for control.
   
-- 5. **Add even more ControlNet**
-  - There is no restriction that ControlNet must be only one. Let's add another one.
+- 5. **Add another ControlNet**
+  - You're not limited to one ControlNet. Let's add another.
   - ![](/media/basic-workflows/sd15-basics/legacy_gyazo_daa261583657abf6c25d2003581d1610.png){media=image}
   - [](/workflows/basic-workflows/sd15-basics/sd1_5_inpainting_controlnet2.json)
   - 🟦 Just create another set of ControlNet and its preprocessing nodes and connect them.
 
 ---
 
-This is just one example, but I think it showed the flexibility of ComfyUI.
+This is just one example, but I think it shows how flexible ComfyUI is.
 
-In addition to official templates, many people publish workflows, but still, the perfect workflow you desire might not exist in this world.
-But don't worry. If you don't need it, delete it, and if there are other functions you want, just add them.
+Besides the official templates, lots of people share their workflows, but even so, the perfect workflow you want may not exist anywhere.
+But don't worry. Delete what you don't need, and add whatever else you want.

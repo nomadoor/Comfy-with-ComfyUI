@@ -20,14 +20,14 @@ tags: []
 
 **Wan 2.1 VACE** is an editing model for Wan 2.1 video generation.
 
-It has features that summarize ControlNet for video, inpainting / outpainting / reference2video into a single node (`WanVaceToVideo`).
+It packs something like a video ControlNet plus inpainting / outpainting / reference2video into a single node (`WanVaceToVideo`).
 
-- Control "movement only" with pose or depth map for existing videos
-- Swap characters or adapt styles based on reference images
+- Control "just the motion" of an existing video with a pose or depth map
+- Swap characters or pull the style toward a reference image
 - Inpaint / outpaint only specific areas
-- Generate video continuation (Extension), loop, or create in-between frames
+- Generate the continuation of a video (Extension), or make loops and in-betweens
 
-You can handle these things while maintaining the generation quality of Wan 2.1.
+And you get all of this at Wan 2.1's generation quality.
 
 ---
 
@@ -42,8 +42,8 @@ You can handle these things while maintaining the generation quality of Wan 2.1.
 
 ## Model Download
 
-For Wan 2.1 VACE, use a VACE-dedicated diffusion model separate from the normal T2V model.
-Here we only handle 14B.
+Wan 2.1 VACE uses its own VACE diffusion model, separate from the regular T2V model.
+This page covers only the 14B model.
 
 - diffusion_models
   - [wan2.1_vace_14B_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/diffusion_models/wan2.1_vace_14B_fp16.safetensors)
@@ -69,7 +69,7 @@ Here we only handle 14B.
 
 ## Basic Structure
 
-In any pattern, the basic form is adding the `WanVaceToVideo` node based on [Wan 2.1 text2video](/en/basic-workflows/wan-2-1/#quality-improvement-techniques).
+Every pattern starts from the same base: a `WanVaceToVideo` node added to [Wan 2.1 text2video](/en/basic-workflows/wan-2-1/#quality-improvement-techniques).
 
 ![](/media/basic-workflows/wan-2-1-vace/legacy_gyazo_15272b819b453d21ec3707c059831edc.png){media=image}
 
@@ -78,13 +78,13 @@ In any pattern, the basic form is adding the `WanVaceToVideo` node based on [Wan
 - `control_masks`
   - Mask for inpainting
 - `reference_image`
-  - Reference image you want to transfer character or style
+  - Reference image whose character or style you want to transfer
 
 ---
 
 ## ControlNet-like Usage
 
-Control video movement using pose or depth map.
+Control the motion of a video with a pose, depth map, and so on.
 
 ![](/media/basic-workflows/wan-2-1-vace/legacy_gyazo_ef1dae4f7c1fe82cb201e33558c6ca39.png){media=image}
 

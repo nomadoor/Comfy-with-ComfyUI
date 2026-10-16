@@ -17,21 +17,21 @@ hero:
 
 ## How to Open Settings Screen
 
-Settings can be opened by **ComfyUI Logo** -> **⚙ Settings** at the top left of the screen.
+Open settings from the **ComfyUI Logo** -> **⚙ Settings** at the top left of the screen.
 
-Limited to what is provided, settings for not only the ComfyUI body but also custom nodes can be done from here.
-Basically, you can understand by looking, so please customize various things yourself.
+You can change settings here not only for ComfyUI itself but also for custom nodes (as long as they provide some).
+Most of it is self-explanatory, so feel free to play around and customize things yourself.
 
 ---
 
-## My Recommended Recommendations
+## My Recommended Settings
 
-I introduce some recommended settings.
+Here are a few settings I recommend.
 
 ### Language
 `Comfy` → `Locale` → `English`
-- For Japanese users, this is probably set to Japanese, but we use `English` on this site.
-- I understand the desire to set it to Japanese, but since most of the terms used are technical terms, setting it to Japanese poorly makes it even more confusing.
+- If your system is in another language, this is probably set to that language, but this site uses `English`.
+- I get wanting it in your own language, but most of the terms are technical jargon, and a clumsy translation only makes them harder to understand.
 
 ### Badge
 `Lite Graph` → `Node` → `Node source badge mode` → `Show All`
@@ -48,7 +48,7 @@ You can change it to your preferred position by dragging `⋮⋮` next to the `�
 ### Preview during generation
 
 ComfyUI Manager → Set Preview method to one of `Auto`/`TAESD`/`latent2RGB`
-- A preview image being generated will be displayed inside the KSamlper node.
-- I turn it off because it takes up a lot of space, but it is a good function to learn how images are generated.
+- A preview of the image as it is being generated appears inside the KSampler node.
+- I keep it off because it takes up a lot of space, but it's a great way to learn how images get generated.
 
 ![](/media/begin-with/settings/legacy_gyazo_b57c81af6a11466c664303f29b25b4cc.mp4){media=loop}

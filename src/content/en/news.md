@@ -58,7 +58,7 @@ tags:
   <a class="news-row" href="/en/notes/kura-krea2-lora-training/">
     <span class="news-row__date">2026.7.19</span>
     <span class="news-row__tag">notes</span>
-    <span class="news-row__title">Added the “Training a Krea 2 LoRA with Kura” page</span>
+    <span class="news-row__title">Added a page on training a Krea 2 LoRA with Kura</span>
   </a>
   <a class="news-row" href="/en/notes/comfyui-video-stabilizer/">
     <span class="news-row__date">2026.7.3</span>
@@ -108,12 +108,12 @@ tags:
   <a class="news-row" href="/en/begin-with/multiple-comfyui-instances/">
     <span class="news-row__date">2026.5.24</span>
     <span class="news-row__tag">begin-with</span>
-    <span class="news-row__title">Added Run Multiple ComfyUI Instances page</span>
+    <span class="news-row__title">Added a page on running multiple ComfyUI instances</span>
   </a>
   <a class="news-row" href="/en/data-utilities/ai-agent-api/">
     <span class="news-row__date">2026.5.17</span>
     <span class="news-row__tag">data-utilities</span>
-    <span class="news-row__title">Added Letting AI Agents Use ComfyUI Workflows page</span>
+    <span class="news-row__title">Added a page on letting AI agents use ComfyUI workflows</span>
   </a>
   <a class="news-row" href="/en/data-utilities/sam3/">
     <span class="news-row__date">2026.5.7</span>
@@ -123,12 +123,12 @@ tags:
   <a class="news-row" href="/en/notes/runpod-ai-toolkit-lora-training/">
     <span class="news-row__date">2026.5.4</span>
     <span class="news-row__tag">notes</span>
-    <span class="news-row__title">Added Running AI Toolkit on RunPod page</span>
+    <span class="news-row__title">Added a page on running AI Toolkit on RunPod</span>
   </a>
   <a class="news-row" href="/en/notes/ai-toolkit-sdxl-lora-training/">
     <span class="news-row__date">2026.5.4</span>
     <span class="news-row__tag">notes</span>
-    <span class="news-row__title">Added SDXL LoRA training with AI Toolkit page</span>
+    <span class="news-row__title">Added a page on training an SDXL LoRA with AI Toolkit</span>
   </a>
   <a class="news-row" href="/en/basic-workflows/ltx-2-3/">
     <span class="news-row__date">2026.3.22</span>
@@ -158,7 +158,7 @@ tags:
   <a class="news-row" href="/en/data-utilities/api-about/">
     <span class="news-row__date">2026.2.5</span>
     <span class="news-row__tag">data-utilities</span>
-    <span class="news-row__title">Added API documentation page</span>
+    <span class="news-row__title">Added a page about APIs</span>
   </a>
   <a class="news-row" href="/en/basic-workflows/z-image/">
     <span class="news-row__date">2026.1.31</span>
@@ -173,6 +173,6 @@ tags:
   <a class="news-row" href="/en/news/">
     <span class="news-row__date">2026.1.15</span>
     <span class="news-row__tag">none</span>
-    <span class="news-row__title">Created the updates page</span>
+    <span class="news-row__title">Created the News page</span>
   </a>
 </div>

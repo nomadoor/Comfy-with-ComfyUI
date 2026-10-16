@@ -17,9 +17,9 @@ hero:
 
 ## 外部 LLM 服务器集成
 
-ComfyUI 本身是"连接图像、视频等生成工作流的引擎"，基本上不具备运行 LLM 的功能。
+ComfyUI 本身是“串联图像、视频等生成工作流的引擎”，基本上不具备运行 LLM 的功能。
 
-因此，将 LLM 的工作交给独立的推理引擎（服务器），ComfyUI 只负责"发送请求并接收结果"。
+因此，将 LLM 的工作交给独立的推理引擎（服务器），ComfyUI 这边只负责充当“发出请求、接收结果的窗口”。
 
 ### 为什么要分离处理？
 
@@ -33,10 +33,10 @@ ComfyUI 本身是"连接图像、视频等生成工作流的引擎"，基本上�
 
 ## 连接方式
 
-集成方式有多种，但目前最易用的是 **OpenAI API 兼容**格式。
+联动的方法有好几种，目前最好用的是 OpenAI API 兼容格式。
 
-虽然名字里有"OpenAI"，但它已作为面向聊天类 LLM 的通用 HTTP API 格式被广泛采用。
-Ollama 也提供了这个[兼容 API](https://docs.ollama.com/api/openai-compatibility)，因此在 ComfyUI 侧使用 OpenAI 兼容节点是最便捷的方案。
+虽然名字里带着“OpenAI”，但它已作为面向聊天类 LLM 的通用 HTTP API 格式被广泛采用。
+Ollama 也提供了这个[兼容 API](https://docs.ollama.com/api/openai-compatibility)，所以 ComfyUI 这边直接用 OpenAI 兼容节点是最省事的。
 
 ---
 
@@ -54,11 +54,11 @@ Ollama 也提供了这个[兼容 API](https://docs.ollama.com/api/openai-compati
 
 ### 下载模型
 
-找到你想使用的模型。可以在 [Ollama Search](https://ollama.com/search) 搜索支持的模型。
+先找找想用的模型吧。可以在 [Ollama Search](https://ollama.com/search) 搜索支持的模型。
 
 本次使用 `qwen3-vl:8b`——一个轻量但性能出色、同时支持图像输入的模型。
 
-打开终端，运行：
+打开终端，指定想用的模型并运行。
 
 ```bash
 ollama run qwen3-vl:8b
@@ -67,7 +67,7 @@ ollama run qwen3-vl:8b
 其他适合本地使用的模型：
 
 - **gemma3** : Google 开发，可用于与 Qwen3 VL 类似的用途
-- **gpt-oss:20b** : OpenAI 的开放权重模型，仅支持文本处理，但非常强大
+- **gpt-oss:20b** : OpenAI 的开放权重模型。只能处理文本，但真的非常强
 - **◯◯-Abliterated** : 即使是开放权重模型，通常也内置了审查机制（不仅限于 NSFW）。移除了这种对齐的模型会带有此类名称
   - [UGI Leaderboard](https://huggingface.co/spaces/DontPlanToEnd/UGI-Leaderboard) 可以找到各种模型
 
@@ -79,7 +79,7 @@ ollama run qwen3-vl:8b
 
 ### 自定义节点
 
-使用能以 OpenAI API 兼容格式发送请求的节点。任意一款均可，这里选用最简洁的一款。
+使用能以 OpenAI API 兼容格式发送请求的节点。用哪个都可以，这里就用最简单的一个。
 
 - **[comfyui-openai-api](https://github.com/hekmon/comfyui-openai-api)**
 
@@ -94,11 +94,11 @@ ollama run qwen3-vl:8b
 - `model` : 输入刚才下载的模型名称（如 `qwen3-vl:8b`）
 - `system_prompt` : 可省略
 
-在节点顶部的输入框中输入消息，点击 `▷Run` 即可。
+接下来在节点上方的输入框里写下聊天内容，点 `▷Run` 试试看吧。
 
 ### 继续对话
 
-该节点内部没有"记忆"功能。
+这个节点内部没有“记忆”。
 若要延续对话，将上一个节点的 `History` 连接到下一个节点的 `History`，每次请求时一并发送历史记录。
 
 ![](/media/basic-workflows/external-llm-server/legacy_gyazo_274ae7b0dac7a88e4481cd4ca815757f.png){media=image}
@@ -120,11 +120,11 @@ ollama run qwen3-vl:8b
 
 ### 提示词生成 → 图像生成
 
-趁此机会，让模型根据输入图像生成提示词，再用该提示词生成相似图像。
+既然都做到这里了，就让它根据输入的图像写出提示词，再生成一张类似的图像吧。
 
 ![](/media/basic-workflows/external-llm-server/legacy_gyazo_214851c957532e34fb705e0d5feeeef9.png){media=image}
 
 [](/workflows/basic-workflows/external-llm-server/openai_api_chat_image2prompt.json)
 
-- 在系统提示词中指定输出格式，例如"输出可直接使用的图像生成提示词"。
+- 最好在系统提示词里规定好输出格式，让它输出“可以直接使用的图像生成提示词”。
 - 之后只需将输出连接到 `CLIP Text Encode` 即可。

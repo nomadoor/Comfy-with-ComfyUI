@@ -32,7 +32,7 @@ Whether you fill an area inside the image or blank space added outside it—that
 
 ## Inpainting model
 
-One way is to use an inpainting model.
+Let's start with an inpainting model.
 
 ### workflow
 
@@ -66,7 +66,7 @@ Of course, you can also use ControlNet inpaint.
 
 Image editing models make this even simpler.
 
-Add a gray area outside the image—the color does not really matter—then feed the result to the image editing model. All you have to do is tell it to outpaint the gray area naturally.
+Add a gray area outside the image—the color does not really matter—then feed the result to the image editing model. Then just prompt it with something like "outpaint the gray area naturally."
 
 ### FLUX.2 [klein]
 
@@ -76,4 +76,4 @@ Let’s try [FLUX.2 \[klein\]](/en/basic-workflows/flux-2-klein/) 9B.
 
 [](/workflows/basic-workflows/sd15-outpainting/flux_2_klein_9b_image_edit_outpainting.json)
 
-- 🟩 No mask is needed. Give it an image with added blank space and tell it to fill that area.
+- 🟩 No mask is used. You just give it the image with the added blank space and tell it to fill that area.

@@ -23,9 +23,9 @@ ComfyUI 的工作流虽然看起来复杂，但基本上是一条直线。放入
 
 这种时候就轮到 **循环处理** 登场了。
 
-## 循环处理的基本
+## 循环处理的基础
 
-### Start Loop和End Loop
+### Start Loop 和 End Loop
 
 循环由 `Start Loop` 和 `End Loop` 成对构成。夹在这两者之间的部分会被重复执行。
 
@@ -38,7 +38,7 @@ ComfyUI 的工作流虽然看起来复杂，但基本上是一条直线。放入
 
 在这个工作流中，`iteration_index` 从 0 开始，于是按 `0 * 10` → `1 * 10` … 推进，最后只输出 `3 * 10` 的结果。
 
-### 用accumulate一次性取出循环中的所有结果
+### 用 accumulate 一次性取出循环中的所有结果
 
 ![](/media/data-utilities/loop/loop_simple_accumulate.png){media=image}
 
@@ -81,14 +81,14 @@ ComfyUI 的工作流虽然看起来复杂，但基本上是一条直线。放入
 
 [](/workflows/data-utilities/loop/loop_simple_is_last.json)
 
-基本上，可以把它们理解为与 `If/Else Switch` 配合使用的输出。
+基本上可以认为，它们就是和 `If/Else Switch` 搭配使用的。
 
 这个工作流只会把最后一次 iteration 的输出替换为 `12345`。
 
 > [!TIP]
 > `iteration_index` 会输出当前是第几轮，因此配合 `If/Else Switch`，也可以在第一次和最后一次以外的任意时机切换处理。
 
-### 把图像生成重复4次
+### 把图像生成重复 4 次
 
 一直盯着数字也没意思，我们把它和图像生成结合起来。
 
@@ -112,7 +112,7 @@ ComfyUI 的工作流虽然看起来复杂，但基本上是一条直线。放入
 
 把循环中生成的数据连到 `next_iteration_value`，这个值就会回到 `Start Loop`。下一次 iteration 可以从 `current_iteration_value` 接收它。
 
-有一点需要注意，最开始的那次 iteration 并没有可以送回来的上一次结果。
+不过，最开始的那次 iteration 还没有上一次的结果。
 
 这时就要用 `initial_iteration_value`。正如其名，它用于设定最开始使用的值。
 
@@ -127,7 +127,7 @@ ComfyUI 的工作流虽然看起来复杂，但基本上是一条直线。放入
 
 ### 一次传递多个值
 
-工作流搭得多了，就会想把 2 个 3 个数据一起送到下一次 iteration，这也是可以的。
+工作流搭得多了，就会想把 2 个、3 个数据一起送到下一次 iteration。这也完全没问题。
 
 用 `Create List` 打包发送，接收一侧再用 `Get Item From List` 逐个取出使用。
 
@@ -146,7 +146,7 @@ ComfyUI 的工作流虽然看起来复杂，但基本上是一条直线。放入
 > [!NOTE]
 > 这里打包的是两个 `INT`，不过像 `IMAGE` 和 `BOOLEAN` 这样类型不同也没问题。
 
-### 在循环内执行Preview等节点
+### 在循环内执行 Preview 等节点
 
 Preview 顾名思义只是用来看的，所以会很想像下面这样连接……可惜会报错。
 
@@ -162,7 +162,7 @@ Preview 顾名思义只是用来看的，所以会很想像下面这样连接…
 
 [](/workflows/data-utilities/loop/loop_krea_2_preview_termination.json)
 
-把它理解成「为了让循环成立而存在的垃圾桶」就没问题了。
+把它当成“为了让循环能成立的垃圾桶”就好。
 
 ---
 
@@ -170,7 +170,7 @@ Preview 顾名思义只是用来看的，所以会很想像下面这样连接…
 
 我们来搭几个更实用的工作流。也许能给你一些灵感。
 
-### 用Generate Text实现灵活的循环处理
+### 用 Generate Text 实现灵活的循环处理
 
 提到循环处理，容易让人联想到不断重复同样的操作，但其实有办法往里面加入创造性，那就是 MLLM。
 
@@ -187,7 +187,7 @@ Preview 顾名思义只是用来看的，所以会很想像下面这样连接…
 再讲究一点，传给 MLLM 的不只是图像，还有它自己过去写过的提示词历史。这样可以避免反复给出相似的指令。
 
 {% mediaRow img="/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_create_list.png", width=40, align="left" %}
-**把图像和提示词历史放进List**
+**把图像和提示词历史放进 List**
 
 把要编辑的图像和提示词历史打包成 List 交给循环。
 
@@ -205,16 +205,16 @@ List 的内容是 `[图像, 历史]`。
 {% endmediaRow %}
 
 {% mediaRow img="/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_prompt_mllm.png", width=40, align="left" %}
-**编写给MLLM的指令**
+**编写给 MLLM 的指令**
 
-核心内容是「看着图中的人物，写一条改变其服装某一处的提示词」。
+基本上，发给 MLLM 的是“看着图中的人物，写一条改掉服装某一处的提示词”这样的内容。
 
 在此基础上，用 `Format Text` 告诉它历史记录和当前是第几轮。
 
 {% endmediaRow %}
 
 {% mediaRow img="/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_image_and_prompt.png", width=40, align="left" %}
-**追加到历史，再放回List**
+**追加到历史，再放回 List**
 
 把这次 MLLM 写出的提示词追加到已有的历史后面。
 
@@ -226,7 +226,7 @@ List 的内容是 `[图像, 历史]`。
 ![input](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_input.png){media=image} ![output1](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_1.png){media=image} ![output2](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_2.png){media=image} ![output3](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_3.png){media=image} ![output4](/media/data-utilities/loop/loop_flux_2_klein_9b_qwen3_5_output_4.png){media=image}
 {% endoutputs %}
 
-### 用MiniMax H3和Prompt List实现连续I2V
+### 用 MiniMax H3 和 Prompt List 实现连续 I2V
 
 即使是最新的视频生成模型，一次也只能生成 5〜15 秒左右的视频。
 

@@ -22,23 +22,23 @@ tags: ["instruction-based-image-editing","collage-refine"]
 
 Roughly speaking, you can think of it as the **Qwen-Image version of Flux.1 Kontext**.
 
-Flux.1 Kontext was limited to VAE-based editing only, but Qwen-Image-Edit uses MLLM to actually "see" the reference image, allowing for more flexible editing.
+Flux.1 Kontext could only edit through the VAE, but Qwen-Image-Edit uses an MLLM to actually "see" the reference image, so it can make more flexible edits.
 
-A while later, a model called **Qwen-Image-Edit-2509** which supports multi-reference was released.
+A while later, **Qwen-Image-Edit-2509** came out with multi-reference support.
 
-Previously, it was only possible to "edit a single image", but with Qwen-Image-Edit-2509, you can do things like:
+Until then, you could only edit a single image, but with Qwen-Image-Edit-2509 you can do things like:
 
 * "Change the clothes of the person in Image 1 to those in Image 2"
 * "Generate an image where Image 1 and Image 2 are standing on the same stage"
 
 > [!TIP]
-> Since the training method is different, 2509 is not necessarily fully upward compatible with the original version, but if you are unsure, using 2509 should be fine.
+> Because it was trained differently, 2509 isn't strictly an upgrade over the original, but if you're unsure, just go with 2509.
 
 ---
 
 ## Qwen-Image-Edit (Original)
 
-For what it can do, please refer to the [Official GitHub](https://github.com/QwenLM/Qwen-Image#showcase-of-qwen-image-edit-2509) or [Flux.1 Kontext / What it can do](/en/basic-workflows/flux-1-kontext/#what-it-can-do).
+For what it can do, the [Official GitHub](https://github.com/QwenLM/Qwen-Image#showcase-of-qwen-image-edit-2509) or [Flux.1 Kontext / What it can do](/en/basic-workflows/flux-1-kontext/#what-it-can-do) should give you a good idea.
 
 ### Model Download
 
@@ -55,7 +55,7 @@ For what it can do, please refer to the [Official GitHub](https://github.com/Qwe
 
   * [QuantStack/Qwen-Image-Edit-GGUF](https://huggingface.co/QuantStack/Qwen-Image-Edit-GGUF/tree/main)
 
-    * Please choose a model of Q4_K_M or higher. Performance drops significantly below this.
+    * Choose Q4_K_M or higher. Below that, quality drops off sharply.
     * cf. [Qwen-Image-Edit GGUF model comparison](https://scrapbox.io/work4ai/Qwen-Image-Edit_GGUF%E3%83%A2%E3%83%87%E3%83%AB%E6%AF%94%E8%BC%83)
   * [unsloth/Qwen2.5-VL-7B-Instruct-GGUF](https://huggingface.co/unsloth/Qwen2.5-VL-7B-Instruct-GGUF/tree/main)
   * [Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf](https://huggingface.co/QuantStack/Qwen-Image-Edit-GGUF/blob/main/mmproj/Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf)
@@ -83,31 +83,31 @@ For what it can do, please refer to the [Official GitHub](https://github.com/Qwe
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit.json)
 
-🟩 I will add a little supplementary explanation about the behavior of the `TextEncodeQwenImageEdit` node.
+🟩 A quick note on how the `TextEncodeQwenImageEdit` node behaves.
 
-Internally, it does roughly the following processing:
+Internally, it roughly does the following:
 
-* 1. Resize the input image to be about 1M pixels
-* 2. Generate latent from that image
+* 1. Resize the input image to about 1M pixels
+* 2. Create a latent from that image
 * 3. Pass text + image together to Qwen2.5-VL
 
-Since image resizing processing is included automatically, **if the generated image size deviates significantly from 1M pixels, unexpected results may occur.**
+Because this resize happens automatically, **if the output image size is far from 1M pixels, you may get unexpected results.**
 
-Therefore, in this workflow, image size preprocessing is done in advance.
+So this workflow prepares the image size beforehand.
 
-* Resize to 1M pixels with `ImageScaleToTotalPixels` node
-* Crop so that the resolution is a multiple of 8 with `Resize Image v2` node
+* Resize to 1M pixels with the `ImageScaleToTotalPixels` node
+* Crop with the `Resize Image v2` node so the resolution is a multiple of 8
 
 > [!NOTE]
-> Qwen-Image-Edit cannot "match pixel perfect with the input image and edited image" no matter how much you try.
-> Several workarounds have been proposed, but it is better to understand the premise that the model design itself is not suitable for such use.
+> No matter what you try, Qwen-Image-Edit can't make the edited image match the input image pixel-perfectly.
+> A few workarounds have been suggested, but it's worth keeping in mind that the model simply isn't designed for that kind of use.
 
 ---
 
 ## Qwen-Image-Edit-2509
 
-Qwen-Image-Edit-2509 is a version that extends the original version.
-The biggest difference is that **multiple reference images can be input**.
+Qwen-Image-Edit-2509 is an extended version of the original.
+The biggest difference is that it **accepts multiple reference images**.
 
 ### Model Download
 
@@ -133,7 +133,7 @@ The biggest difference is that **multiple reference images can be input**.
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2509.json)
 
-- The basic flow is the same as the original version, but replace the `TextEncodeQwenImageEdit` node with the `TextEncodeQwenImageEditPlus` node.
+- The basic flow is the same as the original; just replace the `TextEncodeQwenImageEdit` node with the `TextEncodeQwenImageEditPlus` node.
 
 ### workflow (Multiple Images)
 
@@ -141,19 +141,19 @@ The biggest difference is that **multiple reference images can be input**.
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2509_multi_ref.json)
 
-- 🟩 Since it looks at the images properly, it works even with somewhat vague instructions, but you can also explicitly specify which image, such as "XX of image1", "XX of image2".
+- 🟩 Because it really looks at the images, fairly loose instructions work, but you can also say explicitly which image you mean, like "the XX in image1" or "the XX in image2".
 
-Previously, because we wanted to finish the input image and the edited image to the same size as much as possible, we performed resizing processing first and input it to `latent_image`.
+So far, we wanted the input and edited images to come out at roughly the same size, so we resized first and fed the result into `latent_image`.
 
-On the other hand, in cases where "I just want to generate a new image with the reference image as a hint", there is no problem using the `EmptySD3LatentImage` node like text2image.
+If you just want to generate a new image using the reference images as hints, though, it's fine to use the `EmptySD3LatentImage` node, as in text2image.
 
 ---
 
 ## Qwen-Image-Edit-2511
 
-Qwen-Image-Edit-2511 is a new model that improves upon 2509.
+Qwen-Image-Edit-2511 is a new model that improves on 2509.
 
-While there are no drastic changes like from the original to 2509, steady improvements have been made, such as improved character consistency and integration of popular LoRA models like Relighting LoRA.
+The jump isn't as big as the one from the original to 2509, but it's a solid step forward: better character consistency, and popular LoRAs such as the Relighting LoRA built into the model.
 
 ### Model Download
 
@@ -187,9 +187,9 @@ It works with exactly the same workflow as 2509.
 
 ## Lightning
 
-**Qwen-Image-Edit-Lightning** is a LoRA set distilled to allow Qwen-Image-Edit to run in 4 / 8 steps.
+**Qwen-Image-Edit-Lightning** is a set of LoRAs distilled so that Qwen-Image-Edit runs in 4 / 8 steps.
 
-Since the number of steps can be significantly reduced with almost no degradation, it is adopted in many workflows.
+It cuts the step count dramatically with almost no loss in quality, so many workflows use it.
 
 ### Model Download
 
@@ -214,7 +214,7 @@ Since the number of steps can be significantly reduced with almost no degradatio
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_lightning_8steps.json)
 
-* Load Lightning LoRA with the `LoraLoaderModelOnly` node.
+* Load the Lightning LoRA with the `LoraLoaderModelOnly` node.
 * Set `steps` in `KSampler` to 4 or 8, and `CFG` to 1.0.
 
 ### Qwen-Image-Edit-2511
@@ -223,4 +223,4 @@ Since the number of steps can be significantly reduced with almost no degradatio
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2511_lightning_4steps.json)
 
-* Load Lightning LoRA with the `LoraLoaderModelOnly` node.
+* Load the Lightning LoRA with the `LoraLoaderModelOnly` node.

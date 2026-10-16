@@ -17,137 +17,137 @@ tags:
   <a class="news-row" href="/zh/basic-workflows/flux-3-image-klein/">
     <span class="news-row__date">2026.10.16</span>
     <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">追加了 FLUX 3 Image Klein 的页面</span>
+    <span class="news-row__title">新增了 FLUX 3 Image Klein 页面</span>
   </a>
   <a class="news-row" href="/zh/notes/runpod-card/">
     <span class="news-row__date">2026.10.2</span>
     <span class="news-row__tag">notes</span>
-    <span class="news-row__title">追加了 Runpod 卡片使用方法的页面</span>
+    <span class="news-row__title">新增了 Runpod 卡片使用方法页面</span>
   </a>
   <a class="news-row" href="/zh/notes/typed-decision/">
     <span class="news-row__date">2026.9.30</span>
     <span class="news-row__tag">notes</span>
-    <span class="news-row__title">追加了 ComfyUI-TypedDecision 的页面</span>
+    <span class="news-row__title">新增了 ComfyUI-TypedDecision 页面</span>
   </a>
   <a class="news-row" href="/zh/notes/conditioning-zero-out/">
     <span class="news-row__date">2026.9.28</span>
     <span class="news-row__tag">notes</span>
-    <span class="news-row__title">追加了 Conditioning Zero Out 的页面</span>
+    <span class="news-row__title">新增了 Conditioning Zero Out 页面</span>
   </a>
   <a class="news-row" href="/zh/basic-workflows/qwen-image-2-1/">
     <span class="news-row__date">2026.9.21</span>
     <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">追加了 Qwen-Image-2.1 的页面</span>
+    <span class="news-row__title">新增了 Qwen-Image-2.1 页面</span>
   </a>
   <a class="news-row" href="/zh/data-utilities/loop/">
     <span class="news-row__date">2026.9.19</span>
     <span class="news-row__tag">data-utilities</span>
-    <span class="news-row__title">追加了循环处理的页面</span>
+    <span class="news-row__title">新增了循环处理页面</span>
   </a>
   <a class="news-row" href="/zh/basic-workflows/minimax-h3/">
     <span class="news-row__date">2026.9.14</span>
     <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">追加了 MiniMax H3 的页面</span>
+    <span class="news-row__title">新增了 MiniMax H3 页面</span>
   </a>
   <a class="news-row" href="/zh/basic-workflows/ltx-2-5/">
     <span class="news-row__date">2026.9.3</span>
     <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">追加了 LTX 2.5 的页面</span>
+    <span class="news-row__title">新增了 LTX 2.5 页面</span>
   </a>
   <a class="news-row" href="/zh/notes/kura-krea2-lora-training/">
     <span class="news-row__date">2026.7.19</span>
     <span class="news-row__tag">notes</span>
-    <span class="news-row__title">追加了用 Kura 训练 Krea 2 LoRA 的页面</span>
+    <span class="news-row__title">新增了用 Kura 训练 Krea 2 LoRA 的页面</span>
   </a>
   <a class="news-row" href="/zh/notes/comfyui-video-stabilizer/">
     <span class="news-row__date">2026.7.3</span>
     <span class="news-row__tag">notes</span>
-    <span class="news-row__title">追加了 ComfyUI Video Stabilizer 的页面</span>
+    <span class="news-row__title">新增了 ComfyUI Video Stabilizer 页面</span>
   </a>
   <a class="news-row" href="/zh/basic-workflows/krea-2/">
     <span class="news-row__date">2026.6.24</span>
     <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">追加了 Krea 2 的页面</span>
+    <span class="news-row__title">新增了 Krea 2 页面</span>
   </a>
   <a class="news-row" href="/zh/basic-workflows/scail-2/">
     <span class="news-row__date">2026.6.11</span>
     <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">追加了 SCAIL-2 的页面</span>
+    <span class="news-row__title">新增了 SCAIL-2 页面</span>
   </a>
   <a class="news-row" href="/zh/basic-workflows/ideogram-4/">
     <span class="news-row__date">2026.6.10</span>
     <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">追加了 Ideogram 4.0 的页面</span>
+    <span class="news-row__title">新增了 Ideogram 4.0 页面</span>
   </a>
   <a class="news-row" href="/zh/basic-workflows/pixeldit-pid/">
     <span class="news-row__date">2026.6.9</span>
     <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">追加了 PixelDiT / PiD 的页面</span>
+    <span class="news-row__title">新增了 PixelDiT / PiD 页面</span>
   </a>
   <a class="news-row" href="/zh/notes/flux2-klein-schematic-lora/">
     <span class="news-row__date">2026.6.1</span>
     <span class="news-row__tag">notes</span>
-    <span class="news-row__title">追加了 FLUX.2 [klein] Schematic LoRA 的页面</span>
+    <span class="news-row__title">新增了 FLUX.2 [klein] Schematic LoRA 页面</span>
   </a>
   <a class="news-row" href="/zh/basic-workflows/anima/">
     <span class="news-row__date">2026.5.29</span>
     <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">追加了 Anima 的页面</span>
+    <span class="news-row__title">新增了 Anima 页面</span>
   </a>
   <a class="news-row" href="/zh/data-utilities/conditional-branching/">
     <span class="news-row__date">2026.5.29</span>
     <span class="news-row__tag">data-utilities</span>
-    <span class="news-row__title">追加了条件分支的页面</span>
+    <span class="news-row__title">新增了条件分支页面</span>
   </a>
   <a class="news-row" href="/zh/begin-with/comfyui-manager/">
     <span class="news-row__date">2026.5.27</span>
     <span class="news-row__tag">begin-with</span>
-    <span class="news-row__title">追加了 ComfyUI Manager 的页面</span>
+    <span class="news-row__title">新增了 ComfyUI Manager 页面</span>
   </a>
   <a class="news-row" href="/zh/begin-with/multiple-comfyui-instances/">
     <span class="news-row__date">2026.5.24</span>
     <span class="news-row__tag">begin-with</span>
-    <span class="news-row__title">追加了多开 ComfyUI 的页面</span>
+    <span class="news-row__title">新增了多开 ComfyUI 的页面</span>
   </a>
   <a class="news-row" href="/zh/data-utilities/ai-agent-api/">
     <span class="news-row__date">2026.5.17</span>
     <span class="news-row__tag">data-utilities</span>
-    <span class="news-row__title">追加了让 AI Agent 使用 ComfyUI 工作流的页面</span>
+    <span class="news-row__title">新增了让 AI Agent 使用 ComfyUI 工作流的页面</span>
   </a>
   <a class="news-row" href="/zh/data-utilities/sam3/">
     <span class="news-row__date">2026.5.7</span>
     <span class="news-row__tag">data-utilities</span>
-    <span class="news-row__title">追加了 SAM 3 / 3.1 的页面</span>
+    <span class="news-row__title">新增了 SAM 3 / 3.1 页面</span>
   </a>
   <a class="news-row" href="/zh/notes/runpod-ai-toolkit-lora-training/">
     <span class="news-row__date">2026.5.4</span>
     <span class="news-row__tag">notes</span>
-    <span class="news-row__title">追加了在 RunPod 上运行 AI Toolkit 的页面</span>
+    <span class="news-row__title">新增了在 RunPod 上运行 AI Toolkit 的页面</span>
   </a>
   <a class="news-row" href="/zh/notes/ai-toolkit-sdxl-lora-training/">
     <span class="news-row__date">2026.5.4</span>
     <span class="news-row__tag">notes</span>
-    <span class="news-row__title">追加了用 AI Toolkit 训练 SDXL LoRA 的页面</span>
+    <span class="news-row__title">新增了用 AI Toolkit 训练 SDXL LoRA 的页面</span>
   </a>
   <a class="news-row" href="/zh/basic-workflows/ltx-2-3/">
     <span class="news-row__date">2026.3.22</span>
     <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">追加了 LTX 2.3 的页面</span>
+    <span class="news-row__title">新增了 LTX 2.3 页面</span>
   </a>
   <a class="news-row" href="/zh/notes/panorama-stickers/">
     <span class="news-row__date">2026.3.2</span>
     <span class="news-row__tag">notes</span>
-    <span class="news-row__title">追加了 ComfyUI Panorama Stickers 的页面</span>
+    <span class="news-row__title">新增了 ComfyUI Panorama Stickers 页面</span>
   </a>
   <a class="news-row" href="/zh/basic-workflows/external-llm-server/">
     <span class="news-row__date">2026.2.18</span>
     <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">追加了外部 LLM 服务器集成的页面</span>
+    <span class="news-row__title">新增了外部 LLM 服务器集成页面</span>
   </a>
   <a class="news-row" href="/zh/basic-workflows/llm-mllm/">
     <span class="news-row__date">2026.2.18</span>
     <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">追加了 LLM / MLLM 的页面</span>
+    <span class="news-row__title">新增了 LLM / MLLM 页面</span>
   </a>
   <a class="news-row" href="/zh/begin-with/how-to-use-this-site/">
     <span class="news-row__date">2026.2.6</span>
@@ -157,21 +157,21 @@ tags:
   <a class="news-row" href="/zh/data-utilities/api-about/">
     <span class="news-row__date">2026.2.5</span>
     <span class="news-row__tag">data-utilities</span>
-    <span class="news-row__title">追加了关于 API 的页面</span>
+    <span class="news-row__title">新增了 API 相关页面</span>
   </a>
   <a class="news-row" href="/zh/basic-workflows/z-image/">
     <span class="news-row__date">2026.1.31</span>
     <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">追加了 Z-Image 的页面</span>
+    <span class="news-row__title">新增了 Z-Image 页面</span>
   </a>
   <a class="news-row" href="/zh/basic-workflows/flux-2-klein/">
     <span class="news-row__date">2026.1.20</span>
     <span class="news-row__tag">basic-workflows</span>
-    <span class="news-row__title">追加了 FLUX.2 [klein] 的页面</span>
+    <span class="news-row__title">新增了 FLUX.2 [klein] 页面</span>
   </a>
   <a class="news-row" href="/zh/news/">
     <span class="news-row__date">2026.1.15</span>
     <span class="news-row__tag">none</span>
-    <span class="news-row__title">制作了更新信息的页面</span>
+    <span class="news-row__title">新建了更新信息页面</span>
   </a>
 </div>

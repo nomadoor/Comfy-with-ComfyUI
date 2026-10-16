@@ -18,20 +18,20 @@ tags: []
 
 ## What is Chroma1-HD?
 
-[Flux.1 [dev]](/en/basic-workflows/flux-1/) was a great model, but it had two major issues for widespread community use.
+[Flux.1 [dev]](/en/basic-workflows/flux-1/) was a great model, but it had two big problems when it came to wide use in the community.
 
-- Since it is strongly distilled, compatibility with LoRA and full fine-tuning is not very good.
+- It's heavily distilled, so it doesn't work very well with LoRAs or full fine-tuning.
 - Non-commercial license.
 
-Therefore, several attempts appeared to reconstruct "Undistilled Flux" starting from Flux.1 [schnell] which has a more generous license, and one of the most labor-intensive ones among them is [Chroma1-HD](https://huggingface.co/lodestones/Chroma1-HD) by LodestoneRock.
+So several projects set out to rebuild a "de-distilled Flux" starting from Flux.1 [schnell], which has a more permissive license. One of the projects that put the most work in is [Chroma1-HD](https://huggingface.co/lodestones/Chroma1-HD) by LodestoneRock.
 
-Since it has been re-trained including NSFW and anime images, it has a higher degree of freedom in style than the original Flux series, and it fits better to perceive it as a new general-purpose model based on Flux architecture rather than "Undistilled Flux".
+Because it was retrained on data that includes NSFW and anime images, it has much more stylistic freedom than the original Flux models. Rather than a "de-distilled Flux," it makes more sense to think of it as a new general-purpose model built on the Flux architecture.
 
 ---
 
 ## Model Download
 
-Unlike Flux.1, Chroma1-HD does not use CLIP, but uses only T5.
+Unlike Flux.1, Chroma1-HD doesn't use CLIP; it uses only T5.
 
 - diffusion_models
   - [Chroma1-HD.safetensors](https://huggingface.co/lodestones/Chroma1-HD/blob/main/Chroma1-HD.safetensors)
@@ -57,6 +57,6 @@ Unlike Flux.1, Chroma1-HD does not use CLIP, but uses only T5.
 
 [](/workflows/basic-workflows/chroma1-hd/chroma1_hd.json)
 
-- The basic construction is almost the same as Flux.1.
-- 🟦 `T5TokenizerOptions` is a node that fills with padding when the number of tokens is less than the set value. There is no big difference whether you put it in or not.
-- CFG is specified as 4.0, but some say 6 to 7 is good. Please try various things.
+- The basic setup is almost the same as Flux.1.
+- 🟦 `T5TokenizerOptions` pads the input when the token count is below the set value. It doesn't make much difference whether you use it or not.
+- The default CFG is 4.0, but some people say 6-7 works better. Try a few values and see.

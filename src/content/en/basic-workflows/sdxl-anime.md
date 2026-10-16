@@ -7,7 +7,7 @@ navId: sdxl-anime
 title: "Anime-style SDXL Models"
 created: 2025-12-10
 updated: 2026-03-02
-summary: "Rough organization of SDXL-based anime models"
+summary: "A rough overview of SDXL-based anime models"
 seoTitle: "Anime SDXL Models: Illustrious, Pony, Animagine"
 seoDescription: "An overview of SDXL-based anime model families you can use in ComfyUI: Animagine XL, Illustrious XL, Pony Diffusion V6 XL, WAI-illustrious, and how they relate."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
@@ -18,20 +18,20 @@ tags: []
 
 ## What are Anime-style SDXL Models?
 
-New models like Flux and Qwen-Image have increased, but SDXL-based models are still active when it comes to **anime style**.
+Newer models like Flux and Qwen-Image keep coming out, but when it comes to **anime**, SDXL-based models are still going strong.
 
-To be more precise, models that appeared after SDXL are large in size, and cases of full fine-tuning have decreased considerably.
+More precisely, the models released after SDXL are large, so full fine-tunes of them have become much rarer.
 
-For photorealistic or CG styles, the performance of the base model itself has become sufficient, but there is still no definitive base model strong in anime style, so the situation is that we have to rely on SDXL.
+For photorealistic and CG images, base models are now good enough on their own, but there's still no definitive base model that's strong at anime, so we're stuck relying on SDXL.
 
 > [!NOTE]
-> To be honest, I am not very knowledgeable about anime-style models.
-> I think the ones listed here are representative, but I plan to research again if I have time.
+> To be honest, I don't know much about anime models.
+> I think the ones listed here are the representative ones, but I plan to look into them again when I have time.
 >
-> Anime-style models are often fine-tuned sharply, and parameters are unique.
-> When actually using them, be sure to read the model creator's explanation carefully.
+> Anime models are often fine-tuned in very particular directions, and their parameters are unusual too.
+> When you actually use one, be sure to read the model creator's notes carefully.
 
-In this page, I will briefly introduce only the following 5 lineages as representative anime-style SDXL models.
+On this page, I'll briefly introduce just the following 5 families as representative anime SDXL models.
 
 - **Animagine XL**
 - **Illustrious XL**
@@ -43,8 +43,8 @@ In this page, I will briefly introduce only the following 5 lineages as represen
 
 ## Animagine XL Family
 
-Animagine XL appeared in the very early stages as an anime-style fine-tuning model.
-Updates have been continued until relatively recently, and it is a general-purpose model with new knowledge.
+Animagine XL was one of the very first anime fine-tuned models.
+It kept getting updates until fairly recently, and it's a general-purpose model with up-to-date knowledge.
 
 ### Model
 
@@ -61,9 +61,9 @@ Updates have been continued until relatively recently, and it is a general-purpo
 
 ## Illustrious XL Family
 
-Illustrious XL is a model being developed by [OnomaAI](https://www.illustrious-xl.ai/).
-Wait is clearly different from other models is that it is developed by a company.
-I recall that at one time, alongside Pony Diffusion V6 XL below, it was one of the two giants of the anime style.
+Illustrious XL is a model developed by [OnomaAI](https://www.illustrious-xl.ai/).
+What clearly sets it apart from the others is probably that it's developed by a company.
+As I recall, at one point it and Pony Diffusion V6 XL (below) were the two giants of anime models.
 
 ### Model
 
@@ -79,8 +79,8 @@ I recall that at one time, alongside Pony Diffusion V6 XL below, it was one of t
 
 ## Pony Diffusion V6 XL
 
-Pony Diffusion V6 XL is a community-created model made to generate My Little Pony as the name suggests.
-It is stronger in fantasy, beastmen, and furry styles rather than Japanese anime.
+As the name suggests, Pony Diffusion V6 XL is a community-made model built to generate My Little Pony.
+It's stronger at fantasy, anthro, and kemono (furry) styles than at Japanese anime.
 
 ### Model
 
@@ -96,7 +96,7 @@ It is stronger in fantasy, beastmen, and furry styles rather than Japanese anime
 
 ## Anything XL
 
-Anything XL is a merged model of several famous anime-style SDXL models (Animagine, Pony, etc.).
+Anything XL (万象熔炉) is a merge of several well-known anime SDXL models (Animagine, Pony, etc.).
 
 ### Model
 
@@ -112,8 +112,8 @@ Anything XL is a merged model of several famous anime-style SDXL models (Animagi
 
 ## WAI-illustrious Family
 
-WAI-illustrious is one of the derivative models based on Illustrious XL, and it is a popular lineage whose name is still often mentioned now.
-Even in 2025, version upgrades such as v15 are continuing, and it is a relatively new model among those listed here.
+WAI-illustrious is one of the derivatives of Illustrious XL, and a popular line whose name still comes up a lot.
+It was still getting updates such as v15 as of 2025, which makes it relatively new among the models listed here.
 
 ### Model
 

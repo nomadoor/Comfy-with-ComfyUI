@@ -21,7 +21,7 @@ hero:
 
 The first thing to understand is that ComfyUI is split into a **screen** and an **execution engine**.
 
-The node screen you usually touch is the frontend for editing workflows and pressing the run button. The part that actually generates images and videos is the ComfyUI server running behind it.
+The node screen you usually work in is the frontend for editing workflows and pressing the run button. The part that actually generates images and videos is the ComfyUI server running behind it.
 
 This is also covered in [What is the API?](/en/data-utilities/api-about/), but as a quick review:
 
@@ -29,7 +29,7 @@ This is also covered in [What is the API?](/en/data-utilities/api-about/), but a
 - ComfyUI server: the engine that receives and executes workflows
 - API: the entry point for external programs to send commands to the server
 
-If you can pass the information needed for execution, the node screen is not always required.
+As long as you can pass along what's needed to run it, you don't actually need the node screen.
 
 ---
 
@@ -39,7 +39,7 @@ If you can pass the information needed for execution, the node screen is not alw
 
 The first method is to prepare a working workflow yourself, then let AI execute it through the API.
 
-This is the same general idea covered in [Running a Workflow via API](/en/data-utilities/api-run-workflow/).
+This is the method covered in [Running a Workflow via API](/en/data-utilities/api-run-workflow/).
 
 Rather than letting AI freely operate all of ComfyUI, the idea is to hand AI **one function made in ComfyUI as a tool**.
 
@@ -64,9 +64,9 @@ ComfyUI workflows are JSON, so it may look as if AI could create them just like 
 In practice, however, workflows depend heavily on each person's ComfyUI environment.  
 They only run when conditions such as installed custom nodes, available model files, and current node specifications line up.
 
-Before AI performance even becomes the issue, there are too many factors outside AI's control that can make the behavior unstable.
+Before AI performance even becomes the issue, **there are too many things outside what AI can handle that make the behavior unstable**.
 
-Maybe this will become more practical in the future.  
+Of course, AI may be able to do this kind of work in the future.  
 At least for now, though, it is more realistic to let AI use workflows that a human has already tested.
 
 ---
@@ -81,7 +81,7 @@ The API-based approach is simple.
 4. Tell it what to do with that workflow
 
 [Running a Workflow via API](/en/data-utilities/api-run-workflow/) explains how ComfyUI is executed through the API.  
-You can leave the detailed API code to the AI.
+That said, the AI will take care of the API details, so feel free to leave that part to it.
 
 ### Start ComfyUI
 
@@ -97,7 +97,7 @@ Think of it as the AI loading the workflow from outside and pressing `Run` inste
 Next, save the workflow you want AI to use in API format.
 
 A regular workflow JSON also includes information for the UI, such as node positions.  
-An API-format JSON is the shape used to tell the ComfyUI server, "execute this."
+An API-format JSON is the format you hand to the ComfyUI server to say, "run this."
 
 1. Open the workflow you want to give it in the ComfyUI node UI
 2. Choose `File` -> **Export (API)**
@@ -167,7 +167,7 @@ In that case, preparing small, minimal workflows is more flexible than preparing
 
 ## About MCP
 
-The method above has AI write and run a small program that uses the API. It works, but from an AI-native perspective, it is a little clumsy.
+In the method above, AI writes and runs a small program that uses the API, but from an AI-native point of view, that's also a bit clunky.
 
 Another option is to convert it into **MCP**, a common protocol for giving tools and data to AI agents.
 
@@ -184,4 +184,4 @@ From the AI's perspective, it calls a tool such as `run_text2image` instead of d
 Inside that tool, you can load an API-format workflow, replace the needed values, and submit it to ComfyUI's `/prompt`.
 
 That said, it mainly makes things a little easier for AI to handle. It does not greatly change what is possible.  
-For now, there is no need to force yourself to use it.
+For now, there's probably no need to go out of your way to use it.

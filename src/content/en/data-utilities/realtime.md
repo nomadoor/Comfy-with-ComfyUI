@@ -15,48 +15,48 @@ hero:
   image: ""
 ---
 
-## ComfyUI is not suitable for Realtime Processing
+## ComfyUI Isn't Built for Realtime Processing
 
-First of all, ComfyUI is **not suitable for realtime processing**.
-This is because all processing is executed as a single workflow, and it cannot proceed to the next operation until one process is finished.
+To start with the basics: ComfyUI is **not well suited to realtime processing**.
+Everything runs as a single workflow, and nothing else can happen until that run finishes.
 
-However, by automatically pouring the next process immediately after the process finishes,
-it is possible to "make it look like realtime".
+That said, by automatically feeding in the next run as soon as one finishes,
+you can make it *look* like realtime.
 
 ---
 
 ## Run(Instant) / Run(Change)
 
-ComfyUI input nodes have the following two execution modes.
+ComfyUI has two run modes for this.
 
 ### Run (Instant)
 
 ![](/media/data-utilities/realtime/legacy_gyazo_ba99c003cb82d4e8f2a483eab84e9f03.mp4){media=loop}
 
 - Once execution starts, **the same workflow is automatically re-executed every time processing finishes**
-- If you want to stop, please switch to another mode (it will not stop as it is)
+- To stop it, switch to another mode (it won't stop on its own)
 
 ### Run (On Change)
 
 ![](/media/data-utilities/realtime/legacy_gyazo_59133ed0ac3bcc4d02f0a34cc8bf9320.mp4){media=loop}
 
-- Executes only when values such as sliders change
-- Processing enters the queue automatically every time you move the mouse
+- Runs only when a value, such as a slider, changes
+- A run is queued automatically every time you move the mouse
 
 
 ---
 
 ## About Realtime image2image / video2video
 
-Theoretically, if you apply image2image / video2video for each frame, you can create an experience close to "realtime video processing".
-However, since inference of generative AI inevitably takes time, **realtime processing in the actual sense is very difficult**.
+In theory, running image2image / video2video on every frame could get you something close to "realtime video processing."
+But generative AI inference always takes time, so **true realtime processing is very hard**.
 
 
-The day of realization is approaching with the latest research, but steady optimization will still be necessary for a while.
+Recent research is bringing that day closer, but for now it still takes a lot of patient optimization.
 
 - Lower resolution
 - Switch to lightweight models
-- Use acceleration technology dedicated to video (explained on another page)
+- Use speed-up techniques made for video (covered on another page)
 
 > [!NOTE]
-> "Realtime image2image" becomes a **special workflow based on acceleration technology**.
+> "Realtime image2image" is a **special kind of workflow that depends on speed-up techniques**.

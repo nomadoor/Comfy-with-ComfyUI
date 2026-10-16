@@ -19,7 +19,7 @@ hero:
 
 Masks are often needed for inpainting and similar workflows, but drawing them by hand or preparing mask images every time is a lot of work. Above all, it cannot be automated.
 
-However, there are not many techniques that can simply take "mask this part" and always produce a clean mask.
+But there aren't many techniques that let you just say "mask this part" and easily get a clean mask.
 
 You need to think in terms of combining several AI techniques.
 
@@ -29,7 +29,7 @@ You need to think in terms of combining several AI techniques.
 
 For example, you might use object detection to find the target, then pass that result to segmentation to turn it into a mask.
 
-Let's look at the main techniques.
+Let's see what's out there.
 
 ---
 
@@ -45,15 +45,15 @@ YOLO is an extremely fast detection technique designed for real-time object dete
 
 ![](/media/data-utilities/ai-mask-generation/legacy_gyazo_e8b4e05d42db0b613aee4467a8dca633.png){media=image}
 
-Basically, one model is made for each type of object you want to detect, such as faces or hands. If there is no model for your target, you need to make one yourself, and it is not suitable when you want to detect many different categories at once.
+Basically, each model is made for one type of object you want to detect (faces only, hands only, and so on). If there's no model for your target, you have to train one yourself, and it's not a good fit when you want to detect several kinds of objects.
 
-In exchange, it is very light, so it is suitable when high-speed processing is needed.
+In exchange, it's very lightweight, so it's a good choice when you need speed.
 
 ### Grounding DINO and Others
 
 Grounding DINO detects objects specified by text and outputs BBOXes.
 
-Unlike YOLO, you can specify objects with text such as "white dog" or "red car", so it is easy to use and can detect multiple objects at the same time.
+Unlike YOLO, you can name any object you like in text, such as "white dog" or "red car," so it's easy to use, and it can also detect multiple objects at once.
 
 ### VLM / MLLM
 
@@ -63,15 +63,15 @@ They can do many things, such as caption generation, and some of them can also p
 
 ![](/media/data-utilities/ai-mask-generation/legacy_gyazo_eac97524bcdcb395cdd5172c3694da41.png){media=image}
 
-A representative older example is **Florence-2**.
+It's quite old now, but a well-known example is **Florence-2**.
 
-It is slow, but because it has strong understanding ability, you can specify targets with complex text such as "the woman on the right side of the screen wearing a blue hat."
+It's slow, but it understands a lot, so you can describe the target with complex text such as "the woman on the right side of the screen wearing a blue hat."
 
 ---
 
 ## Matting
 
-Many processes called "background removal" are matting.
+Much of what's called "background removal" is actually matting.
 
 Matting separates the foreground from the background, and can handle fine boundaries such as hair and semi-transparent areas.
 
@@ -139,7 +139,7 @@ This combines fast face detection with YOLO and the original SAM.
 
 This combines Grounding DINO with HQ-SAM, an improved version of SAM.
 
-It can specify targets by text and generate high-precision masks, so it was one of the most commonly used combinations.
+You can pick the target with text and still get a high-precision mask, so it's one of the most commonly used combinations.
 
 ### Florence2 x SAM2
 
@@ -149,7 +149,7 @@ It can specify targets by text and generate high-precision masks, so it was one 
 
 This combines Florence2 and SAM2.1.
 
-For easy targets such as people or animals, many methods work fine. But when you want to specify a complex condition like "a man wearing sunglasses" or "a cat lying under a tree", this kind of LLM-based model is useful.
+For simple targets like people or animals, anything works, but when you want to specify something more complex, like "a man wearing sunglasses" or "a cat lying under a tree," LLM-based models like this really shine.
 
 ### SAM 3 x BiRefNet
 
@@ -157,8 +157,8 @@ For easy targets such as people or animals, many methods work fine. But when you
 
 [](/workflows/data-utilities/ai-mask-generation/sam3_birefnet.json)
 
-Segmentation is for distinguishing objects, not for fine cutouts.
+Segmentation is about telling objects apart in the first place, not about making fine cutouts.
 
 By contrast, matting can handle fine details like hair and semi-transparent objects like glass.
 
-Combining them lets you take advantage of both.
+Combining the two lets each one make up for what the other lacks.

@@ -7,7 +7,7 @@ navId: text-ops
 title: "文本操作"
 created: 2025-11-25
 updated: 2026-05-27
-summary: "关于操作文本的节点"
+summary: "处理文本的节点"
 seoTitle: "ComfyUI 文本操作节点：拼接、替换、正则表达式"
 seoDescription: "ComfyUI 中处理提示词等字符串的节点汇总：拼接、替换、截取、去除空白等基本操作，以及正则表达式和 rgthree 的 Power Puter，附工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -15,21 +15,21 @@ hero:
   image: ""
 ---
 
-## 文本的操作
+## 操作文本
 
 ![](/media/data-utilities/text-ops/legacy_gyazo_8731cc3b1bd685d83a13d37ffc0617ed.png){media=image}
 
-在 ComfyUI 中，文本主要作为提示词来使用。
-通过自动化一些操作，如替换部分字符串，或将触发词附加到 LLM 创建的提示词中，可以使 工作流 更加便捷。
+在 ComfyUI 中，文本主要是作为提示词来用的。
+替换字符串的一部分、给 LLM 写好的提示词加上触发词……把这类操作自动化，工作流会方便很多。
 
 
 ## 什么是 string？
 
-在编程世界中，为了区分文本和数字等，将文本称为 **string（字符串）**。
+在编程的世界里，为了和数字等区分开，文本被称为 **string（字符串）**。
 
 - `apple` → 5 个字符的 string
-- `123` → 看起来是数字，但实际上是作为字符处理的 string
-- `" "` (空白) → 虽然看不见，但是是 1 个字符的 string
+- `123` → 看起来是数字，实际上是被当作文字处理的 string
+- `" "` (空白) → 虽然看不见，但也是 1 个字符的 string
 
 ---
 
@@ -39,17 +39,17 @@ hero:
 
 ![](/media/data-utilities/text-ops/legacy_gyazo_7669da6621b5fcb5b7cc0c539f4d5af7.png){media=image}
 
-输入字符串的基本节点。
-使用 **String (Multiline)** 节点，可以输入包含换行符的文本。
+用来输入字符串的基本节点。
+使用 **String (Multiline)** 节点，可以输入带换行的文本。
 
-### Concatenate 节点 (文字结合)
+### Concatenate 节点 (文字拼接)
 
 ![](/media/data-utilities/text-ops/legacy_gyazo_a20e6df7b2f65bf71d42c2070f79c726.png){media=image}
 
-将多个 string 连接成一个。
+把多个 string 拼接成一个。
 （例：`apple` + `pen` → `applepen`）
 
-- `delimiter` 是指分隔符。可以使用喜欢的字符（逗号或换行符等）。
+- `delimiter` 指的是分隔符，可以随意设置（逗号、换行等）。
 
 ### Format Text 节点
 
@@ -57,24 +57,24 @@ hero:
 
 [](../../../workflows/data-utilities/text-ops/format_text.json)
 
-这个节点可以先写好文章的模板，再把其他 string 插入进去。
+这个节点先写好一段文本模板，再把其他 string 填进去。
 
 相比 Concatenate，它可以更灵活地组合文本。
 
-例如，将 `apple` 连接到 `a`，将 `red` 连接到 `b`，然后在 format 中写入 `{a} is {b}.`，就可以生成类似 `apple is red.` 的字符串。
+例如给 `a` 连上 `apple`、给 `b` 连上 `red`，再在 format 里写 `{a} is {b}.`，就能生成 `apple is red.` 这样的字符串。
 
 ### Replace 节点 (文字替换)
 
 ![](/media/data-utilities/text-ops/legacy_gyazo_db1e540470805d5888a9c90b1381fa44.png){media=image}
 
-将指定的字符替换为其他字符。
+把指定的字符替换成别的字符。
 （例：`apple pen` → `orange pen`）
 
 ### Substring 节点 (文字提取)
 
 ![](/media/data-utilities/text-ops/legacy_gyazo_ab158488e388004f441a2258379c7930.png){media=image}
 
-提取指定范围的字符。
+提取指定范围内的字符。
 （例：`apple` → `ppl`）
 
 - 截取从 `start` 到 `end` 的字符串。
@@ -83,10 +83,10 @@ hero:
 
 ![](/media/data-utilities/text-ops/trim_text.png){media=image}
 
-删除字符串前后的空格。
+去掉字符串前后的空格。
 （例：` apple ` → `apple`）
 
-- 由于可以防止因用户输入等导致意外混入空白而报错，虽然不起眼但很重要。
+- 能避免用户输入等混入意外的空格而导致报错，虽然不起眼，却很重要。
 
 ### Length 节点 (计算字符数)
 
@@ -95,32 +95,32 @@ hero:
 计算字符的长度。
 （例：`apple` → `5`）
 
-- 空格和换行符也被算作 1 个字符。
-- 输出将是 **int 类型（数值）**。
+- 空格和换行也各算 1 个字符。
+- 输出为 **int 类型（数值）**。
 
 ---
 
 ## 高级操作（正则表达式）
 
-使用“正则表达式（Regex）”这一描述规则，进行复杂的搜索或替换。
+用“正则表达式（Regex）”这套书写规则，来做复杂的搜索和替换。
 
 ### Regex Extract 节点
 
 ![](/media/data-utilities/text-ops/legacy_gyazo_ad16cc24b76fdffe4ed4adfd84a48563.png){media=image}
 
-使用正则表达式，提取符合条件的字符串。
+用正则表达式提取符合条件的字符串。
 
 ### Regex Replace 节点
 
 ![](/media/data-utilities/text-ops/legacy_gyazo_8f469774411a0096e3725a090fe41d9d.png){media=image}
 
-使用正则表达式，替换符合条件的字符串。
+用正则表达式替换符合条件的字符串。
 
 ---
 
 ## Power Puter (rgthree)
 
-在 [简单计算](/zh/data-utilities/simple-math/) 中使用的 [rgthree-comfy](https://github.com/rgthree/rgthree-comfy) 的 `Power Puter` 也可以输入输出 string，因此可以灵活地操作字符串，包括上述的文本处理。
+在 [简单计算](/zh/data-utilities/simple-math/) 中用过的 [rgthree-comfy](https://github.com/rgthree/rgthree-comfy) 的 `Power Puter` 也能输入输出 string，包括上面这些文本处理在内，都可以灵活地完成。
 
 - [Node: Power Puter (Wiki)](https://github.com/rgthree/rgthree-comfy/wiki/Node:-Power-Puter)
 

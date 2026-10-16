@@ -7,8 +7,8 @@ navId: region-limited-generation
 title: Region-Limited Generation
 created: 2025-12-01
 updated: 2026-03-02
-summary: Techniques to generate only parts of an image with different conditions,
-  and their limitations.
+summary: Techniques for generating parts of an image under different conditions, and
+  their limits
 seoTitle: "Regional Prompting: Place Things Where You Want in an Image"
 seoDescription: "Control where things appear: positions in the prompt, repeated inpainting, Conditioning Set Area, Latent Couple, Attention Couple, and collage refining."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
@@ -17,19 +17,19 @@ hero:
 ---
 ## What is Region-Limited Generation?
 
-Layout is an important element in design.
+Layout matters a lot in design.
 
-Simply generating an image with the prompt "a woman leaning against a wall in the city" will not create an attractive work.
+Just generating an image from the prompt "a woman leaning against a wall in the city" won't give you a compelling piece.
 
-A brick wall on the right edge of the screen, a woman leaning against it, a street lamp right in front of it, and reducing objects on the left side of the screen to create white space...
+A brick wall along the right edge of the frame, a woman leaning against it, a streetlight just in front of her, and fewer objects on the left to leave some breathing room...
 
-The technology for generating images with objects placed where you want them is "Region-Limited Generation."
+Techniques for generating images with the things you want placed where you want them are what "region-limited generation" is about.
 
 ---
 
 ## Instructing Position with Prompts
 
-The simplest method is to write the positional relationship directly in the prompt.
+The simplest way is to write the positions directly into the prompt.
 
 ![](/media/ai-capabilities/region-limited-generation/legacy_gyazo_70bc945855f5eb1162bba1cbd2babb60.png){media=image}
 
@@ -37,59 +37,59 @@ The simplest method is to write the positional relationship directly in the prom
 
 > "Banana on the left, apple on the right"
 
-Stable Diffusion's text encoder could hardly understand positional relationships, but models since Flux have started to reflect positional relationships to some extent.
+Stable Diffusion's text encoder barely understood spatial relationships, but models from Flux onward have started to reflect them to some extent.
 
-Still, it tends to break down with complex compositions, and it is a means of conveying loose layout wishes rather than strict region specification.
+Still, it tends to fall apart with complex compositions. It's more a way to express a loose layout preference than to specify regions precisely.
 
 ---
 
 ## Repeating Inpainting
 
-A method of generating an image once and then repeating Inpainting many times.
+Generate an image once, then inpaint again and again.
 
 ![](/media/ai-capabilities/region-limited-generation/legacy_gyazo_2c5b6e3fd8491c24da35f6c5d8d825c9.png){media=image}
 
 [](/workflows/ai-capabilities/region-limited-generation/flux_1_fill.json)
 
 - 1. Generate a base image
-- 2. Mask the area you want to edit and Inpaint
-- 3. Change the mask to another area and Inpaint as needed
+- 2. Mask the area you want to edit and inpaint it
+- 3. If needed, move the mask to another area and inpaint that too
 
-You might think it's not very smart, but it is a **reliable and stable method**. Prompts do not mix, and LoRA basically does not affect outside the mask. Each region can be treated as a completely independent step.
+It might not seem very clever, but it's a **dependable, stable method**. Prompts don't bleed into each other, and LoRAs basically don't affect anything outside the mask. Each region can be handled as a fully independent step.
 
-The weakness is that since they are generated separately, interactions between subjects are not possible. Images of people shaking hands, for example, tend to have mismatched lines of sight or look unnatural.
+The weakness is that because each part is generated separately, subjects can't really interact. In an image of two people shaking hands, for example, their eyes often don't meet, or it just looks off.
 
 ---
 
 ## Conditioning Set Area (Regional Prompting)
 
-A method that attempts to apply different text conditions to each position of the image. It uses the Cross-Attention layer to use different prompts for each region.
+This approach tries to apply different text conditions to different parts of the image, using the Cross-Attention layers to give each region its own prompt.
 
 ![](/media/ai-capabilities/region-limited-generation/legacy_gyazo_bca9aa6c5425ee4f7e4294d081d04e18.png){media=image}
 
 [](/workflows/ai-capabilities/region-limited-generation/conditioning_set_mask.json)
 
-The theory is beautiful, but in reality, boundaries often blur or do not switch cleanly, and **practicality is not high**.
+It's neat in theory, but in practice the boundaries often bleed or don't switch over cleanly, so it's **not very practical**.
 
-Also, you cannot specify LoRA by region.
+You also can't assign LoRAs per region.
 
 ---
 
 ## Latent Composite (Composition in Latent Space)
 
-A method of synthesizing images at the latent space stage.
+Combine images while they're still in latent space.
 
 ![](/media/ai-capabilities/region-limited-generation/legacy_gyazo_87c4aa926f36889c2987cf5fc827c4e9.png){media=image}
 
 [](/workflows/ai-capabilities/region-limited-generation/latent_composite.json)
 
 - 1. First, generate multiple images (banana image, apple image, background image, etc.)
-- 2. Paste each latent onto a single latent using masks
-- 3. Run the remaining sampling steps on the synthesized latent
+- 2. Use masks to paste their latents together into a single latent
+- 3. Run the remaining sampling steps on that combined latent
 
-Each object can be generated with separate conditions, and finally blended as a "single image."
+Each object can be generated under its own conditions and then blended into "one image" at the end.
 
-However, there are many situations where it is more reliable to Inpaint multiple times and finally image2image the whole thing than to use this.
+That said, in many cases it's more reliable to just inpaint several times and finish with an image2image pass over the whole thing.
 
 ---
 
@@ -97,18 +97,18 @@ However, there are many situations where it is more reliable to Inpaint multiple
 
 ### Latent Couple
 
-A method where the latent space is completely divided for each region, generated with separate settings (prompts, LoRA, etc.), and then combined.
+Splits the latent space completely by region, generates each with its own settings (prompts, LoRAs, etc.), then merges them.
 
-- Ideal in that completely different settings can be used for each region
-- Computational complexity is high because it is the same as generating as many images as there are regions
+- Ideal in that each region can use completely different settings
+- Heavy on compute, since it's effectively generating one image per region
 
-There is no direct implementation in ComfyUI at the moment.
+There's currently no direct implementation in ComfyUI.
 
 ### Attention Couple
 
-While Latent Couple calculated the entire UNet, this calculates only the Cross-Attention layer.
+Latent Couple runs the whole UNet for each region, but this only computes the Cross-Attention layers.
 
-The computational complexity is much lower, but LoRA cannot be specified by region.
+That cuts the compute a lot, but you can't assign LoRAs per region.
 
 ![](/media/ai-capabilities/region-limited-generation/legacy_gyazo_efd7424ffea10f0eed2ef0f4b744636d.png){media=image}
 
@@ -118,11 +118,11 @@ The computational complexity is much lower, but LoRA cannot be specified by regi
 
 ## Refining Rough Collages (Recommended)
 
-A method of creating a rough collage image and having it remade into a natural picture based on it.
+Make a rough collage, then have the model redo it as a natural-looking picture.
 
 ![](/media/ai-capabilities/collage-refine/legacy_gyazo_be997efbbc0c0802513bfab1e8ebe585.png){media=image}
 
-You can specify the position very intuitively, and since you just need to paste appropriate objects for what you want to generate, it is actually a highly recommended method.
+You can place things very intuitively, and for the things you want to generate you can just paste in any rough stand-in object, so honestly, I highly recommend this method.
 
 Details → [Refining Rough Collages](/en/ai-capabilities/collage-refine/)
 

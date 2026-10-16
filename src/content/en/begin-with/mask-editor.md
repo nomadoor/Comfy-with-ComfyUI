@@ -15,27 +15,27 @@ hero:
   gradient: ""
 ---
 
-## What is Mask Editor?
+## What is the Mask Editor?
 
-It is a tool that allows you to draw a specific part of an image as a mask (black and white image) on ComfyUI.
+It's a tool for drawing a mask (a black-and-white image) over part of an image, right inside ComfyUI.
 
-It has not only mask creation but also a simple paint function.
+Besides making masks, it also has basic painting features.
 
 ---
 
 ## How to Launch
 
-- Select `Load Image` node etc. → Click `🌔` (Open Mask Editor) in `Node Selection Toolbox`
+- Select a node such as `Load Image` → click `🌔` (Open Mask Editor) in the `Node Selection Toolbox`
 
 ![](/media/begin-with/mask-editor/legacy_gyazo_41526255834943bb591e62583d85d324.mp4){media=loop}
 
 ---
 
-## Tool Operation
+## Tools
 
-Switch functions with the tab on the left end.
+Switch tools with the tabs on the far left.
 
-- * If browser's "Hardware Acceleration" is off, operation may become heavy.
+- * If your browser's "Hardware Acceleration" is turned off, the editor may become sluggish.
 
 ### Mask Drawing
 
@@ -44,38 +44,38 @@ Draw a mask with a brush.
 - **Brush Shape**: Shape of the brush
 - **Thickness**: Thickness of the brush
 - **Opacity**: Opacity
-  - Since masks in AI generation are usually handled as "white or black (0 or 1)", basically use at maximum value.
-- **Hardness**: Hardness of the brush (blurring degree)
+  - Masks in AI generation are usually treated as "white or black (0 or 1)", so you'll normally leave this at the maximum.
+- **Hardness**: Brush hardness (how soft the edge is)
 - **Smoothing precision**: Line correction strength
 
 ### Paint
 
-Paint color on the image. Can be used for guides during Inpaint etc.
+Paint colors onto the image. Useful as a guide for inpainting, for example.
 
-- **Color Selector**: Selection of drawing color
+- **Color Selector**: Pick the paint color
 
 ![](/media/begin-with/mask-editor/legacy_gyazo_398548a6895a8ad00ab2c9f5cf509222.mp4){media=loop}
 
 ### Eraser
 
-Erases drawn masks and paints.
+Erases masks and paint you've drawn.
 
-Right-clicking while int Mask or Paint mode also functions as an eraser.
+You can also erase by **right-clicking** while in Mask or Paint mode.
 
 ### Fill
 
-Fills the area surrounded by handwritten masks.
+Fills an area enclosed by a hand-drawn mask.
 
 - **Tolerance**: Tolerance range
-  - If low, gaps will be created, so it is better to increase it.
+  - If it's low, gaps get left behind, so it's better to turn it up.
 
 ![](/media/begin-with/mask-editor/legacy_gyazo_98edbb1b4ca8324d0974416546194a3c.mp4){media=loop}
 
 ### Automatic Selection
 
-So-called "Magic Wand".
+This is the so-called "magic wand" tool.
 
-Automatically masks the range of colors similar to the clicked location.
+It automatically masks the area with colors similar to where you clicked.
 
 - **Tolerance**: Color tolerance
 
@@ -83,9 +83,9 @@ Automatically masks the range of colors similar to the clicked location.
 
 ---
 
-## Top Menu Operation
+## Top Menu
 
-- **Undo / Redo**: Undo / Redo operation
+- **Undo / Redo**: Undo / redo
 - **Clear**: Clear all
 - **Invert**: Invert mask
 

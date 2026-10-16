@@ -7,7 +7,7 @@ navId: joycaption
 title: "JoyCaption"
 created: 2026-02-06
 updated: 2026-03-02
-summary: "使用 JoyCaption 的图像说明文生成"
+summary: "用 JoyCaption 生成图像描述"
 seoTitle: "在 ComfyUI 中使用 JoyCaption：高精度图像描述生成"
 seoDescription: "可为照片、动漫、插画等广泛类型生成高精度描述的 VLM——JoyCaption 在 ComfyUI 中的用法，从安装自定义节点到 JoyCaption 节点的设置。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -18,11 +18,11 @@ tags: ["tag-caption-generation"]
 
 ## 什么是 JoyCaption？
 
-[JoyCaption](https://github.com/fpgaminer/joycaption) 是，为了从图像生成说明文的 VLM（Visual Language Model）。
+[JoyCaption](https://github.com/fpgaminer/joycaption) 是一个从图像生成描述（caption）的 VLM（Visual Language Model）。
 
-以实写・动漫・数字艺术等，广泛种类的图像为对象可以生成高精度的说明文。尤其是即使是 NSFW 图像也不检阅进行处理，因此即使在更高性能的通用 MLLM 登场的现在，作为“说明文专用模型”也有人气。
+它能为照片、动漫、数字艺术等各种类型的图像生成高精度的描述。最重要的是，它连 NSFW 图像也不做审查、照样处理，所以即使在更强的通用 MLLM 已经出现的今天，它作为“描述专用模型”依然很受欢迎。
 
-由于是以 LLaVA 系的多模态模型为基础，虽然与 tagger 相比不能说是轻量，但在 ComfyUI 的节点作为容易组装进本地的图像生成管道有其简便性。
+它基于 LLaVA 系的多模态模型，和 tagger 相比算不上轻量，但作为 ComfyUI 节点，很容易就能接入本地的图像生成流程，用起来很方便。
 
 
 ---
@@ -35,7 +35,7 @@ tags: ["tag-caption-generation"]
 
 ## JoyCaption 节点
 
-从被输入的图像生成说明文。
+根据输入的图像生成描述。
 
 ![](/media/basic-workflows/joycaption/legacy_gyazo_c14e87a362f349d3e649af28622262f1.png){media=image}
 
@@ -43,19 +43,19 @@ tags: ["tag-caption-generation"]
 
 - `prompt_style`
   - **Descriptive**
-      - 作为形式且稍长的散文记述。
-      - 虽然想详细留下图像的内容时便利，但原样用于提示词容易变得冗长。
+      - 以正式、偏长的散文形式描述。
+      - 想详细记录图像内容时很方便，但直接拿来当提示词往往太啰嗦。
   - **Straightforward**
-      - 以简洁且客观的文体记述。
-      - 是容易原样挪用于提示词或 LoRA 用说明文的风格。
+      - 以简洁、客观的文体描述。
+      - 这种风格很容易直接用作提示词或 LoRA 训练用的描述。
   - **Stable Diffusion Prompt**
-      - 以面向 Stable Diffusion 的提示词形式记述。
+      - 以 Stable Diffusion 用的提示词格式描述。
   - **Danbooru tag list**
-      - 以 Danbooru 的标签形式（例: `1girl`, `blue_hair`）列举标签。
+      - 以 Danbooru 的标签格式（例: `1girl`, `blue_hair`）列出标签。
 
 - `caption_length`
-  - 指定输出的说明文的容量（稍短／稍长）。
+  - 指定输出描述的篇幅（偏短／偏长）。
 
 - `Extra Options`
-  - 设定为了引导说明文生成的追加指示。
-  - 作为例子，关于相机角度或画质・分辨率、NSFW 要素等，可以指定“详细写／不太触及”这样的方针。
+  - 设置用来引导描述生成的附加指示。
+  - 例如，可以针对相机角度、画质与分辨率、NSFW 元素等，指定“详细写／尽量少提”之类的方针。

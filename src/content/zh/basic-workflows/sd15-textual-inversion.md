@@ -7,7 +7,7 @@ navId: sd15-textual-inversion
 title: "Textual Inversion"
 created: 2025-12-05
 updated: 2026-08-26
-summary: "Stable Diffusion 1.5 的 Textual Inversion"
+summary: "在 Stable Diffusion 1.5 中使用 Textual Inversion"
 seoTitle: "在 ComfyUI 中使用 Textual Inversion（embedding）"
 seoDescription: "把难以用文字描述的外观作为新词教给模型的 Textual Inversion 原理，以及在 ComfyUI 中使用 embedding 的方法，附 embedding 下载与 text2image 工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -17,46 +17,46 @@ hero:
 
 ## 什么是 Textual Inversion？
 
-即使想让它生成某个图像，很多时候也很难用文本很好地进行说明。
+想生成某种图像，却没法用文字描述清楚，这种情况很常见。
 
-**Textual Inversion** 是将这种“难以用文本表现的外观和概念”，作为新单词让其记住的技术。
+**Textual Inversion** 就是把这种“难以用文字表达的外观或概念”作为一个新单词教给模型的技术。
 
 - 首先，准备 1 个像 `<my_keyword>` 这样的虚拟单词。
-- 将那个单词和几张〜几十张氛围相似的图像作为一套展示给模型。
-- 模型学习“这些图像共通的特征”，并将那个信息埋入 `<my_keyword>` 这 1 个词中。
+- 把这个单词和几张到几十张氛围相似的图像配成一组，给模型看。
+- 模型会学习“这些图像的共同特征”，并把这些信息嵌入到 `<my_keyword>` 这 1 个词里。
 
-著名的例子有 `easynegative` 和 `badhandv4` 等。  
-通过收集大量的“失败图像”让其学习，将“图像生成中常发生的失败”的概念总结为一句话。
+有名的例子有 `easynegative` 和 `badhandv4` 等。  
+它们是收集大量“失败的图像”来训练，把“图像生成中常见的失败”这个概念浓缩成了一个词。
 
-但是，这无法让原本的模型从零画出完全不会画的东西。  
-终究只是 **模型原本知道，但不知道该用什么指令表达的东西**。
+不过，原本的模型完全画不出的东西，它没法让模型从零开始画出来。  
+它能处理的只有 **模型原本就知道，但不知道该怎么下指令的东西**。
 
-那种情况下，需要 LoRA 或全量微调等，重新学习模型本体的手法。
+遇到那种情况，就需要 LoRA 或全量微调这类重新训练模型本身的方法。
 
 > [!NOTE]
-> 由 Textual Inversion 制作的这 1 个词份的数据，习惯上被称为 *embedding*。
+> 用 Textual Inversion 做出的这 1 个词的数据，习惯上称为 *embedding*。
 
 ---
 
-## 几乎不再被使用
+## 现在几乎没人用了
 
-Textual Inversion 虽然有学习轻便的优点，但现在几乎被 LoRA 取代了。
+Textual Inversion 虽然有训练轻量的优点，但现在几乎都被 LoRA 取代了。
 
-`easynegative` 和 `badhandv4` 等，也因为模型本身的性能提高了，基本不需要了。
+`easynegative`、`badhandv4` 等也因为模型本身性能的提升，基本上用不着了。
 
-例外的是，Checkpoint 或 LoRA 的作者，为了接近预想的输出，有时会一起分发专用的 embeddings。
+例外的情况是，Checkpoint 或 LoRA 的作者有时会一并分发专用的 embeddings，好让输出更接近他们设想的效果。
 
-为了引出模型的性能，使用者需要正确输入“作者预想的提示词”。但是，不限于所有使用者都会遵从那个，每次写细致的提示词也很麻烦。
+要发挥出模型的性能，使用者需要正确输入“作者设想的提示词”。但并不是所有使用者都会照做，而且每次都写一大段细致的提示词也很麻烦。
 
-于是，作者会预先准备 embeddings，让使用者加入这个单词，使输出更容易接近作者预想的效果。
+所以作者会预先准备好 embeddings，只要使用者加上这个词，输出就更容易接近作者设想的效果。
 
 ---
 
-## 应用了 embedding 的 text2image
+## 使用 embedding 的 text2image
 
-### embedding 的下载
+### 下载 embedding
 
-试着使用名为 `Porsche 911 Turbo` 的 embedding 吧。
+来试试名为 `Porsche 911 Turbo` 的 embedding 吧。
 
 - [Porsche 911 Turbo](https://civitai.com/models/54528/porsche-911-turbo?modelVersionId=58895)
 -  ```text
@@ -72,5 +72,5 @@ Textual Inversion 虽然有学习轻便的优点，但现在几乎被 LoRA 取�
 
 [](/workflows/basic-workflows/sd15-textual-inversion/sd1_5_embedding.json)
 
-- 在 CLIP Text Encode 中写入 `embedding:文件名` 这样来调用 embedding。
+- 在 CLIP Text Encode 中写入 `embedding:文件名`，就能调用 embedding。
   - e.g. `embedding:porsche911_ti`

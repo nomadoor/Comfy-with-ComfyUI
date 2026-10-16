@@ -4,57 +4,57 @@ lang: zh
 section: ai-capabilities
 slug: object-removal
 navId: object-removal
-title: 对象去除
+title: 物体去除
 created: 2026-02-06
 updated: 2026-03-02
-summary: 从图像中仅去除特定物品的任务，及其代表性的方法
+summary: 只把特定物体从图像中去掉的任务，以及几种代表性的做法
 seoTitle: "用 AI 去除图像中的物体：LaMa、inpainting、图像编辑"
 seoDescription: "比较从图像中去除人物、电线等多余物体的方法：LaMa、扩散模型的 inpainting，以及无需蒙版的基于指令的图像编辑模型。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: /media/ai-capabilities/object-removal/legacy_gyazo_e06eeccf0efa2e91773bb54acb31560a.mp4
 ---
-## 什么是对象去除？
+## 什么是物体去除？
 
-顾名思义，这是从图像中去除特定对象的任务。
+顾名思义，就是只把某个特定物体从图像中去掉的任务。
 
-自然地去除人物、看板、电线、垃圾、路人等不希望出现的东西，并平滑地填充背景。
+把人物、招牌、电线、垃圾、路人等不想出现在画面里的东西自然地去掉，并把背景平滑地补上。
 
 ---
 
 ## LaMa
 
-在扩散模型出现之前，像 LaMa 这样基于 CNN 的 inpainting 模型经常作为 SoTA 被使用。
+在扩散模型出现之前，LaMa 这类基于 CNN 的 inpainting 模型是常用的 SoTA。
 
 ![](/media/ai-capabilities/object-removal/legacy_gyazo_4c0b962c3983bc3296da9b994c07f3b6.png){media=image}
 
 [](/workflows/ai-capabilities/object-removal/lama.json)
 
-它专注于用周围的纹理填充被遮罩的区域，也被用于去除水印等。
+它专门用周围的纹理来填补遮罩区域，以前也常被用来去水印。
 
 ---
 
-## 通过 inpainting 去除
+## 用 inpainting 去除
 
-最朴素的方法是准备蒙版，用普通的 inpainting 进行填充。
+最朴素的方法，是准备好蒙版，用普通的 inpainting 涂掉。
 
-在想要去除的对象上绘制蒙版，编写配合背景的提示词（例：“只有背景的草坪”、“什么都没有的地板”），然后进行 inpainting。
+在要去掉的物体上画蒙版，写一段与背景相符的提示词（例：“只有背景的草坪”“空无一物的地板”），然后进行 inpainting。
 
 ![](/media/ai-capabilities/object-removal/legacy_gyazo_2cad88edab0d74b24f0fc78f528a320d.png){media=image}
 
 [](/workflows/ai-capabilities/object-removal/remake_for_sdxl_removing_object_and_filling_with_background.json)
 
-但是，有时不仅没把对象消除，反而新增加了别的对象，对于对象去除来说有时并不稳定。
+不过，有时不但没把物体去掉，反而多画出了别的东西，作为物体去除的手段不太稳定。
 
-因此，以前也有过在 inpainting 的预处理中使用 LaMa 的情况，但现在的模型已经不需要了吧。
+所以以前也有人先用 LaMa 做 inpainting 的预处理，不过现在的模型应该不需要了。
 
 ---
 
-## 指示基图像编辑中的对象去除
+## 用基于指令的图像编辑去除物体
 
-在最近的 [基于指令的图像编辑](/zh/ai-capabilities/instruction-based-image-editing/) 模型中，对象去除也正在成为相当单纯的任务。
+在最近的 [基于指令的图像编辑](/zh/ai-capabilities/instruction-based-image-editing/) 模型中，物体去除也正变成一项相当简单的任务。
 
-只要指示“把这个人消除”、“把这个标志消除”、“把右下的 LOGO 消除”等即可。
+只要下指令“去掉这个人”“去掉这个标志”“去掉右下角的 Logo”就行了。
 
 ![](/media/ai-capabilities/object-removal/legacy_gyazo_84af7edfab7cd344f7654090b7957166.png){media=image}
 
@@ -62,8 +62,8 @@ hero:
 
 ### 不需要蒙版的优点
 
-与 inpainting 相比，明确的优点是 **不需要绘制蒙版**。
+与 inpainting 相比，它明显更好的一点是 **不用画蒙版**。
 
-如果想自动化对象去除，虽然可以通过分割制作对象的蒙版，但本来 **必须连同影子或玻璃上的反射也一起消除**。这很难。
+想把物体去除自动化，就得用分割来生成物体的蒙版；但其实要去掉的不只是物体本身，**连它的影子、玻璃上的倒影也得一起去掉**。这才是难点。
 
-如果是基于指令的图像编辑模型，连同这些也能一起消除。
+基于指令的图像编辑模型，会把这些也一并去掉。

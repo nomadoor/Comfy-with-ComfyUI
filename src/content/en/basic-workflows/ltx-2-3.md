@@ -7,7 +7,7 @@ navId: ltx-2-3
 title: "LTX 2.3"
 created: 2026-03-22
 updated: 2026-04-13
-summary: "Handle text2video, image2video, audio2video, and audio-image2video with LTX 2.3"
+summary: "LTX 2.3: text2video / image2video / audio2video"
 seoTitle: "LTX 2.3 in ComfyUI: What Changed from LTX-2, with Workflows"
 seoDescription: "Use LTX 2.3 in ComfyUI: what changed from LTX-2 in settings and models, prompting tips, plus text2video, image2video, and audio2video workflows."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -86,9 +86,9 @@ This is not the officially recommended method, but the results are clearly bette
 ## About prompts
 
 Just like LTX-2, prompt quality directly affects video quality.  
-It is a good idea to use the [official prompt guide](https://x.com/ltx_model/status/2029927683539325332) as a reference and write prompts that are both specific and information-rich.
+It is a good idea to use the [official prompt guide](https://x.com/ltx_model/status/2029927683539325332) as a reference and write concrete, detailed prompts.
 
-It can also help to let an LLM assist with prompt writing. Give it the reference link and a rough description of what you want, and have it clean the prompt up for you.
+Getting an LLM to help works well too. Give it the reference link and what you want to make, and have it tidy up the prompt for you.
 
 > [!NOTE]
 > ComfyUI has a core [TextGenerate node](/en/basic-workflows/llm-mllm/#textgenerate-node) that can run an LLM directly.  
@@ -110,7 +110,7 @@ It can also help to let an LLM assist with prompt writing. Give it the reference
 This is where you decide the parameters for the video and audio you want to generate.
 
 - Enter resolution, frame count, and FPS in `EmptyLTXVLatentVideo` / `LTXV Empty Latent Audio`
-- 🚨This is the part that differs from LTX-2
+- 🚨Where this differs from LTX-2
   - Since it upscales by 2x twice, meaning 4x in width and height overall, set a value around 0.1MP with that in mind
 
 {% endmediaRow %}
@@ -159,7 +159,7 @@ This is where you decide the parameters for the video and audio you want to gene
 
 ## Generative Interpolation
 
-It is also called FLF2V or FMLF2V, but in practice it means inserting images into intermediate frames and generating a video while using them as guideposts.
+Also called FLF2V or FMLF2V, this inserts images at frames partway through and generates the video using them as guideposts.
 
 ![](/media/basic-workflows/ltx-2-3/legacy_gyazo_f0cdfd8e0d5f0106e0d6fc98fdcb9aee.png){media=image}
 
@@ -188,8 +188,8 @@ Insert the reference images here as guides.
 - In `frame_idx`, specify the frame position and the image you want to insert.
   - `0`: first frame
   - `-1`: last frame
-- This workflow uses 3 reference frames, but you can chain more of them in series if needed
-  - With only 1 image, it can behave a lot like `image2video`, and if you only place images at the first and last frames, it becomes FLF2V.
+- This workflow uses 3 reference frames, but you can add as many as you like by chaining them in series
+  - Conversely, with just 1 image it works like `image2video`, and if you only insert the first and last frames, it becomes FLF2V.
 
 {% endmediaRow %}
 
@@ -197,7 +197,7 @@ Insert the reference images here as guides.
 
 **3. LTXVCropGuides**
 
-With LTX-2's guide mechanism, the guide images will remain mixed into the generated video if you output it as-is.  
+With LTX-2's guide mechanism, the guide images end up mixed into the generated video if you output it as-is.  
 So you remove those guide areas with the `LTXVCropGuides` node.
 
 For more detail on the behavior, see this page.
@@ -283,10 +283,10 @@ You do not need a special mask here, as long as the added area is black.
 
 ## ID-LoRA
 
-Generate a talking-head video of a person speaking in a scene, using one reference image, a short reference audio clip, and a text prompt.
+From one reference image, a short reference audio clip, and a text prompt, this generates a talking-head video of that person saying those lines in that scene.
 
 Unlike feeding cloned audio into `audio-image2video` afterward, ID-LoRA generates the audio and video at the same time.  
-Because of that, the mouth movement and overall voice feel tend to come out more naturally as one piece.
+Because of that, the mouth movement and the feel of the voice tend to hang together better.
 
 ### Model Download
 

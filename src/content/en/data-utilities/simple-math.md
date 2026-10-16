@@ -7,7 +7,7 @@ navId: simple-math
 title: "Simple Math"
 created: 2025-11-24
 updated: 2026-03-21
-summary: "About nodes that perform basic calculations such as arithmetic operations"
+summary: "Nodes for basic calculations like arithmetic"
 seoTitle: "Math in ComfyUI: The Math Expression Node"
 seoDescription: "Do arithmetic in ComfyUI: the core Math Expression node, int vs. float and type conversion, quick math in input fields, and rgthree's Power Puter."
 
@@ -18,13 +18,13 @@ hero:
 
 ## Simple Math
 
-There are often situations where simple arithmetic operations are performed, such as neatly halving the image size or adjusting the batch size.
+You'll often need simple arithmetic, like cleanly halving an image size or adjusting the batch size.
 Let's look at the nodes for that.
 
 ---
 
 > [!NOTE]
-> Previously, a custom node was needed for this, but now a similar node has been added to the core, so it is no longer necessary.
+> I used to install a custom node for this, but core now has a node that does the same thing, so it's no longer needed.
 
 ---
 
@@ -34,10 +34,10 @@ Let's look at the nodes for that.
 
 [](/workflows/data-utilities/simple-math/math_expression.json)
 
-You can enter numbers in `a`, `b`, and `c` respectively.
-Using those variables, if you write like `a * b - c`, you can simply perform arithmetic.
+You can put a number into each of `a`, `b`, and `c`.
+Then write something like `a * b - c` with those variables to do basic arithmetic.
 
-Also, since this uses Python expressions as is, you can perform slightly more advanced calculations.
+And since it takes Python expressions as-is, you can do somewhat more advanced math too.
 
 ```python
 a // b       # Integer division (truncate decimal places)
@@ -57,24 +57,24 @@ round(a / b) # Round off
 
 ---
 
-## int type and float type
+## int and float
 
-Numbers have "types".
-ComfyUI mainly uses two types: **`int`** and **`float`**.
+Numbers have types.
+ComfyUI mainly uses two: **`int`** and **`float`**.
 
 - **int type**: Integers only (e.g., `512`, `32`, `1`)
   - Batch size, image resolution, etc.
 - **float type**: Can handle decimals (e.g., `0.7`, `1.5`, `24.0`)
   - KSampler strength, video fps, etc.
 
-You cannot connect to nodes unless you input/output with the appropriate type.
-I can hear a tsukkomi saying "Everything is fine with float", but they are distinguished for calculation efficiency and precision... Let's get used to it.
+You can't connect nodes unless the types match.
+I can already hear someone saying "Why not just make everything a float?", but they're kept separate for efficiency and precision... you'll just have to get used to it.
 
 ### Type Conversion
 
-By the way, if you pass the value through the `Math Expression` node once, you can convert between `int` ↔ `float`.
+By the way, passing a value through a `Math Expression` node lets you convert between `int` ↔ `float`.
 
-Even if the input is float, if the output destination is int, it will automatically convert it.
+Even if the input is a float, it's converted automatically when the destination expects an int.
 
 ![](/media/data-utilities/simple-math/legacy_gyazo_07161b2b92b1f8cedc7fa99cbf1d22cc.png){media=image}
 
@@ -82,9 +82,9 @@ Even if the input is float, if the output destination is int, it will automatica
 
 ---
 
-## [Tip] Simple calculation in input field
+## [Tip] Quick Math in Input Fields
 
-If it is a simple calculation that does not worth using a node, if you write the calculation formula directly in the input field, the calculated value will be input.
+For simple math that isn't worth a node, type the expression straight into an input field and it fills in the result.
 
 ![](/media/data-utilities/simple-math/legacy_gyazo_a285ddb6cb86d6a0e8d3a58766afe51e.mp4){media=loop}
 
@@ -92,7 +92,7 @@ If it is a simple calculation that does not worth using a node, if you write the
 
 ## Power Puter (rgthree)
 
-If you use `Power Puter` added by **[rgthree-comfy](https://github.com/rgthree/rgthree-comfy)**, you can get image size or use if statements, which is almost programming, but you can perform more complex processing.
+With `Power Puter` from **[rgthree-comfy](https://github.com/rgthree/rgthree-comfy)**, you can do more complex things, like getting an image's size or using if statements. At that point it's pretty much programming.
 
 cf. [Node: Power Puter (Wiki)](https://github.com/rgthree/rgthree-comfy/wiki/Node:-Power-Puter)
 

@@ -26,9 +26,9 @@ Although these methods use pretrained image generation models, they are ultimate
 
 Now that instruction-based image editing models have become common, another idea has appeared: maybe tasks such as depth estimation and segmentation can be treated, in a broad sense, as **image editing**. That is the idea behind Google DeepMind's [Vision Banana](https://vision-banana.github.io/).
 
-Inspired by that direction, I wanted to see whether something similar could be done with FLUX.2 [klein].
+That got me wondering whether something along the same lines could be done with FLUX.2 [klein], which is what motivated this experiment.
 
-The result is not SOTA-level performance. Still, I hope this experiment shows that even a simple LoRA can make a local model behave in a direction somewhat close to Vision Banana.
+I can't claim SOTA results, but I hope this experiment shows that even a simple LoRA can make a local model behave in a direction somewhat close to Vision Banana.
 
 ## Downloads
 
@@ -326,7 +326,7 @@ The first problem is that pose is the least suited to RGB-image representation a
 
 Even if the model outputs an OpenPose-style image, converting that back into keypoints is not easy, which makes it difficult to use in practice. The colors and number of bones are also strict, so even small deviations stand out.
 
-I thought this would be an easy task to train, but it broke down more than expected. Hallucinations on animal images and non-person images are not prevented either.
+Even so, I thought it would be an easy task to train, but it fell apart more than I expected. It also still hallucinates poses on images of animals or with no people in them.
 
 ### segmentation
 
@@ -352,7 +352,7 @@ If I get the chance, I would like to try again with a larger dataset.
 
 ## Closing
 
-Regardless of quality, this small-scale LoRA training was enough to teach FLUX.2 [klein] some CV-task-like RGB outputs.
+Quality aside, this small-scale LoRA training was enough to teach FLUX.2 [klein] some CV-task-like RGB outputs.
 
 The important point is not really whether it "can do CV tasks." It is that the possible uses of image editing models can expand quite a lot depending on **what we decide to treat as image editing**.
 

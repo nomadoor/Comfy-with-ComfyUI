@@ -7,7 +7,7 @@ navId: color-adjustments
 title: "Color Adjustments & Effects"
 created: 2025-11-25
 updated: 2026-03-02
-summary: "About image brightness adjustment, blur, and effects"
+summary: "Adjusting brightness, blurring, and other image effects"
 seoTitle: "Color Adjustment and Effect Nodes in ComfyUI"
 seoDescription: "ComfyUI nodes for color and effects: invert, sharpen, blur, quantize, add noise, morphology, and custom nodes for full color grading."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -17,11 +17,11 @@ hero:
 
 ## Color Adjustments & Effects
 
-Brightening images, increasing contrast, adding glow to make them look cool... these are familiar processes for designers and artists.
+Brightening an image, boosting contrast, adding a glow to make it look cool... these are everyday steps for designers and illustrators.
 
-In image generation, these functions are sometimes used as "preprocessing" to make images easier for AI to use.
+In image generation, these features are sometimes used as "preprocessing" to get images into a shape that's easier for AI to work with.
 
-There are many custom nodes related to image processing, and more advanced processing is possible, but honestly, there are many situations where it feels easier to use a familiar paint tool.
+There are plenty of image-processing custom nodes, and they can do much more advanced things, but honestly, a lot of the time it's just easier to use the paint tool you already know.
 
 **You don't have to do everything in ComfyUI.**
 
@@ -69,7 +69,7 @@ Reduces the number of colors (posterization).
 
 Adds noise to the image.
 
-Although a bit niche, there is a technique to increase details even with low denoise settings by intentionally adding noise when performing image2image.
+It's a bit niche, but there's a technique where you deliberately add noise before image2image to get more detail even at a low denoise setting.
 
 cf. [Adding noise to pixel images to increase details in image2image with low denoise](https://scrapbox.io/work4ai/%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E7%94%BB%E5%83%8F%E3%81%AB%E3%83%8E%E3%82%A4%E3%82%BA%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%97%E3%81%A6%E3%80%81%E4%BD%8Edenoise%E3%81%A7%E3%81%AEimage2image%E3%81%AE%E3%83%87%E3%82%A3%E3%83%86%E3%83%BC%E3%83%AB%E3%82%92%E5%A2%97%E3%82%84%E3%81%99)
 
@@ -81,8 +81,8 @@ cf. [Adding noise to pixel images to increase details in image2image with low de
 
 [](/workflows/data-utilities/color-adjustments/imagemorphology.json)
 
-It may be an unfamiliar term, but it is mainly used to process black and white mask images.
-Processing such as "thickening lines (dilation)" and "removing noise (erosion)" is possible.
+It may not be a term you hear often, but it's mainly used on black-and-white mask images.
+It lets you do things like "thicken lines (dilation)" or "remove noise (erosion)."
 
 cf. [OpenCV-Python/Morphological Transformations](https://docs.opencv.org/4.x/d9/d61/tutorial_py_morphological_ops.html)
 
@@ -90,8 +90,8 @@ cf. [OpenCV-Python/Morphological Transformations](https://docs.opencv.org/4.x/d9
 
 ## Full-scale Color Correction (Custom Nodes)
 
-There are countless custom nodes that add more practical image editing functions like those done in Photoshop.
-Among them, we will introduce one that covers basic functions and is simple and easy to use.
+There are countless custom nodes that add more practical, Photoshop-style image editing features.
+Here's one that covers the basics while staying simple and easy to use.
 
 ### ComfyUI-Image-Effects
 
@@ -99,5 +99,5 @@ Among them, we will introduce one that covers basic functions and is simple and 
 
 ![](/media/data-utilities/color-adjustments/legacy_gyazo_e1ecb574e0c11da63b0c6f8cee7a9f87.png){media=image}
 
-It includes many functions that humans would want to adjust, such as Hue/Saturation/Value adjustment (HSV adjustment), tone curve-like adjustment, and various filters.
-Please check the repository documentation for a detailed list of functions.
+It includes most of the adjustments a person would want to make, such as hue/saturation/value (HSV) adjustment, tone-curve-style adjustment, and various filters.
+See the repository's documentation for the full list of features.

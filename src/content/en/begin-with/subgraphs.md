@@ -17,12 +17,12 @@ hero:
 
 ## What is a Subgraph?
 
-It is a function to aggregate multiple nodes into one node.
-Not only does it clean up the appearance, but it can also be saved as a reusable module (Blueprint) and handled like a new node.
+A subgraph combines multiple nodes into a single node.
+Besides tidying up the canvas, you can save it as a reusable module (Blueprint) and use it like a new node.
 
-It is possible to summarize all nodes into one, but ComfyUI is characterized by being able to divide the image generation pipeline into small modules.
+You could pack every node into one, but what makes ComfyUI distinctive is that it lets you split the image generation pipeline into small modules.
 
-Personally, I consider it a function to create "reusable modules" rather than just cleaning up the appearance.
+Personally, I see it less as a way to tidy things up and more as a feature for building "reusable modules."
 
 ---
 
@@ -39,7 +39,7 @@ Personally, I consider it a function to create "reusable modules" rather than ju
 
 Enter edit mode by double-clicking the subgraph or clicking the icon on the upper right.
 
-Basic operations are the same as usual, but parameters to interact with the outside need to be connected to the input/output slots (left end/right end) of the subgraph.
+Editing works the same as usual, but any parameter that passes data to or from the outside has to be connected to the subgraph's input/output slots (on the left and right edges).
 
 ![](/media/begin-with/subgraphs/legacy_gyazo_5d5ebc1bc37a8dfdaad5a5db64d66cb2.mp4){media=loop}
 
@@ -48,7 +48,7 @@ Basic operations are the same as usual, but parameters to interact with the outs
 ## Parameter Publication Settings
 
 You can expose parameters inside the subgraph as widgets of the subgraph node.
-You can change values without entering edit mode every time.
+That way you can change values without entering edit mode every time.
 
 - 1. Select Subgraph
 - 2. Click `Edit Subgraph Widgets` in `Node Selection Toolbox`
@@ -60,15 +60,15 @@ You can change values without entering edit mode every time.
 
 ## Saving and Reusing Subgraphs
 
-If you save the created subgraph, you can reuse it as a unique node.
+Once you save a subgraph, you can reuse it as your own node.
 
 - 1. Select Subgraph
 - 2. Click `📖` (Publish Subgraph) in `Node Selection Toolbox`
 - 3. Enter name and `Confirm`
 
-After saving, you can call it by searching (double clicking) just like a normal node.
+After saving, you can search for it (double-click the canvas) and add it just like any other node.
 
-You can also check it from the node library in the sidebar, and delete/edit the Blueprint from here.
+It also shows up in the node library in the sidebar, which is where you delete or edit Blueprints.
 
 ![](/media/begin-with/subgraphs/legacy_gyazo_74f9469b12a6b87fc7a62099dde54db7.mp4){media=loop}
 

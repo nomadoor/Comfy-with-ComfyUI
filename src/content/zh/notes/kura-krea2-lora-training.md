@@ -8,9 +8,9 @@ title: "用 Kura 训练 Krea 2 LoRA"
 created: 2026-07-13
 updated: 2026-07-14
 noteTags: ["project", "lora", "krea-2", "kura"]
-summary: "使用 Kura 和 AI 智能体训练、比较 Krea 2 角色 LoRA 的完整流程"
+summary: "使用 Kura 和 AI 智能体训练、比较 Krea 2 角色 LoRA 的流程"
 seoTitle: "用 Kura 训练 Krea 2 LoRA"
-seoDescription: "使用 Kura 和 AI 智能体训练并比较 Krea 2 角色 LoRA 的流程，包括准备数据集、搭建 Kura 以及执行训练。"
+seoDescription: "借助能抹平训练软件差异的 Kura 和 AI 智能体，训练并比较 Krea 2 角色 LoRA 的流程。从准备数据集、搭建 Kura 到执行训练，依次进行讲解。"
 permalink: "/{{ lang }}/notes/{{ slug }}/"
 hero:
   image: "/media/notes/kura-krea2-lora-training/legacy_gyazo_bd00a496f18c5ecb9925dd7f790ffc7d.png"
@@ -18,7 +18,7 @@ hero:
 
 ## Kura 是什么？
 
-无论使用什么基础模型、训练什么任务，LoRA 训练的基本流程都一样：制作数据集，确定学习率和 rank 等参数，再交给训练软件处理。
+无论使用什么基础模型、训练什么任务，LoRA 训练的基本流程都一样：制作数据集，确定学习率和 rank 等参数，再交给训练软件处理。说到底，基本上就这些。
 
 听上去很简单，但实际操作中主要有两个难点。
 
@@ -39,9 +39,9 @@ Kura 主要由三个部分组成：
 
 现在的 AI 智能体应该也能从零搭建环境并完成训练。但每次都从头开始会浪费 token，更重要的是，它没有积累过去实验经验的机制。
 
-Kura 是一套为 LoRA 训练准备好快捷方式的工具框架，让人可以把注意力放在数据集和参数调整上。
+Kura 就是这样一套 harness：为 LoRA 训练准备好捷径，让人可以专心调整数据集和参数。
 
-下面就以 Krea 2 为基础模型，训练一个角色 LoRA。
+那么，马上以 Krea 2 为基础模型，来训练一个角色 LoRA 吧。
 
 ---
 
@@ -319,7 +319,7 @@ LoRA 的效果究竟如何，只有实际生成后才知道。下面通过 Kura 
 
 如果使用本地 ComfyUI，请像平时一样启动，并确保可以通过 `http://127.0.0.1:8188` 访问。
 
-第一次使用时，Kura 可能会询问 ComfyUI 的 `models/loras` 文件夹位置。Kura 只会在生成时临时放入 LoRA，生成结束后会将其清理掉。
+第一次使用时，可能会被问到 ComfyUI 的 `models/loras` 文件夹位置。Kura 只会在生成时临时放入 LoRA，生成结束后会将其清理掉。
 
 如果本地没有 ComfyUI，也可以在 RunPod 上启动 ComfyUI 进行生成。
 
@@ -368,7 +368,7 @@ LoRA 的效果究竟如何，只有实际生成后才知道。下面通过 Kura 
 
 Kura 自带的默认值也不是绝对正确的答案。目前只是根据作者的经验，暂时设置了一组比较容易使用的值。
 
-如果愿意，也请在 [Kura Issues](https://github.com/nomadoor/Kura/issues) 中分享你的成功和失败案例。随着实验结果不断积累，它们会反映到 Kura 的 Skill 和默认值中。我们的目标是，即使不逐项钻研设置，也能完成高质量的训练。
+如果愿意，也请在 [Kura Issues](https://github.com/nomadoor/Kura/issues) 中分享你的成功和失败案例。实验结果积累起来后，我会把它们反映到 Kura 的 Skill 和默认值中。目标是做成这样一个工具：随手用用，也能训练出高质量的 LoRA。
 
 ---
 

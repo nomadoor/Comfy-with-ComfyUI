@@ -7,7 +7,7 @@ navId: krea-2
 title: "Krea 2"
 created: 2026-06-24
 updated: 2026-06-24
-summary: "使用 Krea 2 Turbo 进行图像生成"
+summary: "用 Krea 2 Turbo 生成图像"
 seoTitle: "在 ComfyUI 中使用 Krea 2：不像 AI 的精美图像"
 seoDescription: "以生成没有 AI 感的精美图像为目标的 Krea 2 Open-Source（Turbo）在 ComfyUI 中的用法。介绍模型下载、text2image 以及官方风格 LoRA 工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -20,9 +20,9 @@ tags: []
 
 [Krea 2 Open-Source](https://www.krea.ai/krea-2-open-source) 是 Krea 发布的 open weight 图像生成模型。
 
-和 Krea 以前做过的 [FLUX.1 Krea](https://www.krea.ai/blog/flux-krea-open-source-release) 类似，它在架构上并没有特别特殊的部分，而是更像是通过认真整理数据集，努力生成不那么有 AI 感、更加漂亮的图像。
+和 Krea 以前做过的 [FLUX.1 Krea](https://www.krea.ai/blog/flux-krea-open-source-release) 一样，它在架构上没有什么特别之处，但数据集是精心打造的，为了生成没有 AI 感的精美图像，在制作上下了不少功夫。
 
-公开了 2 种模型，但通常的图像生成会使用 Turbo。
+官方公开了 2 种模型，平时生成图像用 Turbo 就行。
 
 - **Krea 2 Raw**
   - 未蒸馏的基础模型。主要用于 LoRA 训练和 fine-tuning。
@@ -36,7 +36,7 @@ tags: []
 
 ---
 
-## 模型的下载
+## 下载模型
 
 - diffusion_models
   - [krea2_turbo_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors) (13.1 GB)
@@ -76,7 +76,7 @@ Krea 2 Turbo 是用于 8 steps 生成的模型。
 
 Krea 2 的一大卖点，是 Style references 和 Moodboards 这类风格控制功能，但目前还没有作为 OSS 公开。
 
-作为替代，官方公开了一些 Style LoRA，可以先试试看。
+不过官方公开了几个 Style LoRA 作为替代，来试试看吧。
 
 - [Krea 2 LoRAs](https://huggingface.co/collections/krea/krea-2-loras)
 
@@ -98,4 +98,4 @@ Krea 2 的一大卖点，是 Style references 和 Moodboards 这类风格控制�
 - 这里使用的是 [Krea-2-LoRA-darkbrush](https://huggingface.co/krea/Krea-2-LoRA-darkbrush)。
 - trigger word 是 `monochrome ink wash style`。
 
-很期待社区里出现更多 LoRA。
+很期待社区能做出更多 LoRA 呢。

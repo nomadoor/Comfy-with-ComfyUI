@@ -7,7 +7,7 @@ navId: upscale-restoration
 title: Upscale & Restoration
 created: 2025-11-13
 updated: 2026-09-27
-summary: Technologies to enlarge images or restore degraded ones.
+summary: Techniques for enlarging images or restoring degraded ones.
 seoTitle: "AI Upscaling and Image Restoration: GAN to Diffusion"
 seoDescription: "Upscale low-quality images and restore lost detail: GAN upscalers, face restoration models, diffusion-based methods, and image editing models."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
@@ -16,22 +16,22 @@ hero:
 ---
 ## Upscale & Restoration
 
-Upscaling is the task of enlarging a low-resolution image, but if you just want to make it bigger, you can do it with PowerPoint.
+Upscaling means making a low-resolution image bigger, but if bigger is all you want, even PowerPoint can do that.
 
-However, simply enlarging a low-quality, pixelated image by 2x or 4x will only result in a "large pixelated image" and will not increase the amount of information.
+But if you simply blow up a low-quality, blocky image 2x or 4x, all you get is a "big blocky image." No new information is added.
 
-Therefore, upscaling here refers to a technology that performs these two sets: **"enlarging the image"** and **"plausibly supplementing lost details and restoring image quality"**.
+So when this page says upscaling, it means techniques that do two things together: **"enlarge the image"** and **"plausibly fill in lost detail to restore image quality"**.
 
-There are also those more specialized in image restoration. Processes such as removing scratches from old photos or automatically coloring black-and-white photos can also be considered a type of "image restoration."
+Some tools focus more on restoration itself. Removing scratches from old photos or automatically colorizing black-and-white photos can also be thought of as kinds of "image restoration."
 
-Let's look at what kind of methods and models are used, focusing on representative ones.
+Let's go through the methods and models used, sticking to the main ones.
 
 ---
 
 ## GAN / Traditional Upscale
 
 Upscaling using GANs or traditional super-resolution models.
-This lineage has existed since before Stable Diffusion and is still used as a lightweight process.
+This family predates Stable Diffusion and is still sometimes used when you want something lightweight.
 
 ![](/media/ai-capabilities/upscale-restoration/esrgan.png){media=image}
 
@@ -46,8 +46,8 @@ This lineage has existed since before Stable Diffusion and is still used as a li
 
 ## Face Restoration Models (Specialized for Faces)
 
-Models specialized for restoring blurred, collapsed, or low-resolution faces.
-There is a technology called ReActor famous for FaceSwap, but since it can only generate low-resolution images, these are used as post-processing.
+Models that specialize in faces, restoring ones that are blurry, distorted, or low-resolution.
+ReActor, well known for face swapping, can only generate at low resolution, so these models are used to post-process its output.
 
 - GFPGAN
 - CodeFormer
@@ -56,48 +56,48 @@ There is a technology called ReActor famous for FaceSwap, but since it can only 
 
 ## Diffusion Model-Based Upscale & Restoration
 
-A method of performing upscale and restoration while redrawing the image using diffusion models like Stable Diffusion.
+These methods use diffusion models such as Stable Diffusion to redraw the image while upscaling and restoring it.
 
 - image2image
-  - A function to generate an image based on an image, but by suppressing the `denoise` amount, it can be used as "restoration" without changing the composition or content much.
+  - This generates an image using another image as a base, but if you keep `denoise` low, you can use it for "restoration" without changing the composition or content much.
 - Ultimate SD upscale
-  - With simple `image2image`, there are limits to the resolution the model can handle and the size that can be generated due to PC specs.
-  - Therefore, this mechanism divides the image into tiles, performs `image2image` on each one, and then combines them again to handle larger images.
+  - Plain `image2image` is limited by the resolution the model can handle and by the size your PC can generate.
+  - Ultimate SD upscale gets around this by splitting the image into tiles, running `image2image` on each one, and stitching them back together, so it can handle larger images.
 - SUPIR
-  - An SDXL-based model specialized for upscale and image restoration. It aims to restore natural high-resolution images from low-quality inputs.
+  - An SDXL-based model built specifically for upscaling and image restoration. Its goal is to recover natural high-resolution images from low-quality input.
 
 > [!NOTE]
-> Upscaling with diffusion models is redrawing in a sense.
-> Therefore, it tends to go beyond simple restoration and **"overdo it."**
-> Of course, this is also a form of expression, but it is sometimes distinguished from upscaling that preserves the original image as much as possible and expressed as **Enhance**.
+> In a sense, upscaling with a diffusion model means redrawing the image.
+> So it tends to go beyond simple restoration and **"overdo it."**
+> That can be a valid look in its own right, of course, but it is sometimes called **Enhance** to set it apart from upscaling that keeps the original image as intact as possible.
 
 ---
 
 ## Restoration by Instruction-Based Image Editing
 
-Some recent "Instruction-Based Image Editing" models can perform processing close to upscale and restoration collectively just by instructing with text.
+Some recent instruction-based image editing models can handle much of what upscaling and restoration do, all from a text instruction.
 
-Even without preparing specialized models individually, if you instruct "clean up this photo," "reduce noise," or "color this black and white photo," it will do those processes together.
+You don't need a separate specialized model for each job: just say "clean up this photo," "reduce the noise," or "colorize this black-and-white photo," and it handles it all in one go.
 
 ![](/media/ai-capabilities/upscale-restoration/legacy_gyazo_70baa67331207740cbab838d153c990d.png){media=image}
 
 [](/workflows/ai-capabilities/upscale-restoration/qwen_image_edit_2509.json)
 
-Details are covered on the "[Instruction-Based Image Editing](/en/ai-capabilities/instruction-based-image-editing/)" page.
+The "[Instruction-Based Image Editing](/en/ai-capabilities/instruction-based-image-editing/)" page covers this in detail.
 
 ---
 
 ## Video Upscale & Restoration
 
-If you apply image upscaling frame by frame, video upscaling is technically possible.
+If you apply image upscaling one frame at a time, you can technically upscale video too.
 
-However, since this method lacks temporal consistency, flickering may remain.
+But this approach has no temporal consistency, so you may be left with flicker and shimmering.
 
-Upscale and restoration models dedicated to video aim to improve image quality while suppressing flickering by using information from preceding and succeeding frames.
+Upscale and restoration models made for video also use information from the surrounding frames, aiming to improve quality while keeping flicker down.
 
-Representative lineages include:
+The main families include:
 
 - SeedVR2
 - FlashVSR
 
-There is no problem using these for still image upscaling. In fact, they are popular for that use as well.
+It's perfectly fine to use these for upscaling still images, too. In fact, they're very popular for that.

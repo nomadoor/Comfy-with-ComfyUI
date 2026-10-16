@@ -18,26 +18,26 @@ hero:
 
 ## 什么是 Batch (批次)？
 
-Batch（批次）是用于 **汇总并同时处理** 多张图像的机制。
-与 List“逐张按顺序处理”不同，Batch 的区别在于 **一次执行就能让多张图像一次性通过**。
+Batch（批次）是把多张图像**打包在一起同时处理**的机制。
+List 是“逐张按顺序处理”，而 Batch 是**一次执行就让多张图像同时通过**。
 
 Queue / List / Batch 的关系如下。
 
 - **Queue**
-  - 从外部按顺序执行同一个 工作流
+  - 从外部依次执行同一个工作流
 - **List**
   - 逐个按顺序处理多个输入（串行处理）
 - **Batch**
-  - 将多张图像汇总处理（并行处理）
+  - 把多张图像打包成一组处理（并行处理）
 
 ---
 
 ## 视频就是 Batch
 
-由于视频是由一系列连续编号的图像构成的，因此在 ComfyUI 中，**视频 = IMAGE 的 Batch** 来处理。
+视频由一连串序列帧图像组成，所以在 ComfyUI 中是按 **视频 = IMAGE 的 Batch** 来处理的。
 
-因此，常规的 Batch 操作节点可以直接用于视频，反之视频用节点也可以像一般的 Batch 操作一样使用。
-没有必要区分视频和 Batch。
+因此，常规的 Batch 操作节点可以直接用于视频；反过来，视频用的节点也几乎可以像普通的 Batch 操作一样使用。
+不需要把视频和 Batch 分开来考虑。
 
 ---
 
@@ -56,18 +56,18 @@ Queue / List / Batch 的关系如下。
 
 ---
 
-## 并行处理的负载（OOM 的注意）
+## 并行处理的负载（注意 OOM）
 
 由于 Batch 会同时处理多张图像，因此所需的内存量也会相应增加。
-如果直接把 1 分钟的视频放入 image2image，VRAM 会不足，瞬间就会 **OOM（内存不足）**。
+要是把 1 分钟的视频直接丢进 image2image，VRAM 根本不够，转眼就 **OOM（内存不足）** 了。
 
-这种情况下，最好 **转换为 Batch → List**，通过逐张处理来解决。
+这种情况下，最好 **把 Batch 转换为 List**，逐张处理。
 
 ---
 
 ## 必要的自定义节点
 
-虽然核心节点中已经准备了基本的，但想处理视频的话还是有点勉强。
+基本的功能核心节点里都有，但要处理视频就有点吃力了。
 
 - [ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 - [ltdrdata/ComfyUI-Inspire-Pack](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
@@ -76,7 +76,7 @@ Queue / List / Batch 的关系如下。
 
 ---
 
-## 制作 Batch
+## 创建 Batch
 
 ### Batch Images 节点
 
@@ -86,11 +86,11 @@ Queue / List / Batch 的关系如下。
 
 [](/workflows/data-utilities/batch-video/batch_images.json)
 
-- 每次连接增加时都会添加插槽，可以汇总任意数量。
+- 每多连接一个，就会多出一个插槽，想合并多少张都可以。
 
 ### Load Image Batch From Dir (Inspire) / Load Images (Path) 节点
 
-将文件夹内的图像作为 Batch 汇总。
+把文件夹里的图像合并成一个 Batch。
 
 ![](/media/data-utilities/batch-video/legacy_gyazo_fca9d0847d5c6a45aafa63c923b0e0d8.png){media=image}
 
@@ -106,7 +106,7 @@ Queue / List / Batch 的关系如下。
 ### Reverse Image Batch 节点
 
 颠倒 Batch 的顺序。
-可用于视频的倒放等。
+可以用来让视频倒放等。
 
 ![](/media/data-utilities/batch-video/legacy_gyazo_433f02c632e722abfe3174cd7eb23837.png){media=image}
 

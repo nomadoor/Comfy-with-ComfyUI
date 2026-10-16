@@ -20,13 +20,13 @@ hero:
 
 ![](/media/notes/panorama-stickers/legacy_gyazo_748e50cd59976f45acabd7cf39d45bc6.mp4){media=player}
 
-This is a dedicated UI for **FLUX.2 Klein 4B/9B 360 ERP Outpaint LoRA**, which creates a 360 panorama from reference images.
+This is a UI built specifically for the **FLUX.2 Klein 4B/9B 360 ERP Outpaint LoRA**, which creates a 360° panorama from reference images.
 
 The basic approach of this LoRA is outpainting.  
-An image where a panorama is unfolded into a rectangle is called an **ERP** (equirectangular panorama), and the idea here is that you can create a panorama by placing any image on an empty ERP and outpainting the remaining area.
+A panorama unrolled into a rectangle is called an **ERP** (equirectangular panorama). The idea is simple: paste any image onto an empty ERP, outpaint the rest, and you have a panorama.
 
-However, simply placing an image on a rectangle does not make it look natural as an ERP.  
-Since an ERP is an unfolded panorama, the distortion changes depending on the location. Also, creating a control image while looking at an ERP and trying to imagine the finished panorama is not great UX.
+However, just pasting an image in as a flat rectangle does not look natural in an ERP.  
+Because an ERP is an unrolled panorama, the distortion changes from place to place. And building a control image by staring at an ERP while imagining the finished panorama is just not good UX.
 
 This custom node
 
@@ -59,10 +59,10 @@ This page covers the following three nodes.
 
 ## Basic Canvas Controls
 
-To keep it stable on both Legacy and Node 2.0, the main design is to operate it from a dedicated modal UI.
+To keep it stable on both the legacy frontend and Node 2.0, it is designed so that you basically work in a dedicated modal UI.
 
 > [!NOTE]
-> `Panorama Preview` can still be previewed on the node, but operation is designed around the modal UI.
+> Only `Panorama Preview` also shows a preview on the node itself, but the controls are designed around the modal UI.
 
 {% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_fc789c1056b38005c59d1e5be6c3095d.mp4{media=loop}", width=60, align="left" %}
 
@@ -116,7 +116,7 @@ This is the editor for placing reference images on the ERP canvas.
 **Add images**
 
 - Add with the `+ Image` button, or via drag and drop
-- Right after adding, the image is placed near the center of the current view
+- New images are placed near the center of the current view
 
 {% endmediaRow %}
 
@@ -125,7 +125,7 @@ This is the editor for placing reference images on the ERP canvas.
 **Move / Scale / Rotate images**
 
 - Drag the image to move it
-- When you select an image, handles appear, so you can transform it by grabbing each dot
+- Selecting an image shows handles; grab the dots to transform it
   - Hold `Shift` while rotating to snap in 45-degree steps
 - You can also adjust it with the sliders in the Inspector
 

@@ -7,7 +7,7 @@ navId: ltx-2
 title: "LTX-2"
 created: 2026-01-10
 updated: 2026-09-03
-summary: "Handle text2video / image2video / audio2video with LTX-2"
+summary: "text2video / image2video / audio2video with LTX-2"
 seoTitle: "LTX-2 in ComfyUI: text2video, image2video, audio2video"
 seoDescription: "Run LTX-2, Lightricks' video-with-audio model, in ComfyUI: settings, models, and text2video, image2video, and audio2video in easy-to-read workflows."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -18,7 +18,7 @@ tags: []
 
 ## What is LTX-2?
 
-**[LTX-2](https://website.ltx.video/blog/introducing-ltx-2)** is an audio-visual diffusion model released by Lightricks that can generate both audio and video simultaneously.
+**[LTX-2](https://website.ltx.video/blog/introducing-ltx-2)** is a diffusion model from Lightricks that generates audio and video together.
 
 > [!NOTE]
 > Its successor, [LTX 2.5](/en/basic-workflows/ltx-2-5/), is now available.<br>
@@ -32,7 +32,7 @@ tags: []
   - 640×640 (1:1)
   - 768×512 (3:2)
   - 704×512 (4:3)
-  - *Upscaled 2x in post-processing, so actual output will be 1280×1280, etc.*
+  - *Upscaled 2x in post-processing, so the actual output is 1280×1280*
   - *Must be a multiple of 32*
 - FPS
   - 24 / 25 / 30
@@ -56,7 +56,7 @@ tags: []
   - [ltx-2-19b-distilled-lora-384.safetensors](https://huggingface.co/Lightricks/LTX-2/blob/main/ltx-2-19b-distilled-lora-384.safetensors)
 - text_encoders
 
-- [gemma_3_12B_it_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/ltx-2/blob/main/split_files/text_encoders/gemma_3_12B_it_fp8_scaled.safetensors)
+  - [gemma_3_12B_it_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/ltx-2/blob/main/split_files/text_encoders/gemma_3_12B_it_fp8_scaled.safetensors)
 
 ```text
 📂ComfyUI/
@@ -77,13 +77,13 @@ tags: []
 
 ![](/media/basic-workflows/ltx-2/legacy_gyazo_1884b40ee25bafb8476dd4df1256b026.png){media=image}
 
-It might feel complicated because there are more nodes compared to Wan, but this is all it does:
+It has more nodes than Wan and the like, so it may look complicated, but this is all it's doing:
 
 - 1. text2video + audio
   - First, generate the base video (and audio).
 - 2. Hires.fix (2nd stage)
   - Upscale the generated video by 2x and refine it with video2video.
-  - You can skip this and decode directly, but Hires.fix is recommended for quality.
+  - You can skip this and decode directly, but for quality I recommend doing the Hires.fix.
 - 3. Decode
   - Decode video and audio separately for output.
 
@@ -98,7 +98,7 @@ It might feel complicated because there are more nodes compared to Wan, but this
   "/workflows/basic-workflows/ltx-2/ltx_2_text2video.json"
 %}
 
-Follow the basic flow explained above to build the workflow.
+The workflow follows the basic flow described above.
 - **1, 2, 3** are the 1st stage.
 - **4, 5** are Hires.fix.
 - **6** is Decode.
@@ -107,7 +107,7 @@ Follow the basic flow explained above to build the workflow.
 
 **1. Set Video Resolution, Length, FPS**
 
-Decide the parameters for the video and audio you want to generate here.
+This is where you set the parameters for the video and audio you want to generate.
 
 - Enter resolution, frame count, and FPS in `EmptyLTXVLatentVideo` / `LTXV Empty Latent Audio`.
 - Follow the [Recommended Settings](/en/basic-workflows/ltx-2/#recommended-settings).
@@ -121,9 +121,9 @@ Decide the parameters for the video and audio you want to generate here.
 
 **2. Prompt**
 
-A characteristic of the LTX series is that you need to be somewhat particular about the prompt, otherwise you won't get a very good video.
+This is typical of the LTX series: unless you put some care into the prompt, you won't get much of a video.
 
-- That said, there isn't a strict format like when borrowing the power of LLMs.
+- That said, the format isn't so detailed that you need an LLM's help.
 - Try describing the video you want to generate as if you were writing a novel.
 - cf. [Prompting Guide for LTX-2](https://docs.ltx.video/open-source-model/usage-guides/prompting-guide)
 
@@ -133,12 +133,12 @@ A characteristic of the LTX series is that you need to be somewhat particular ab
 
 **3. Sampling (1st Stage)**
 
-It doesn't look like the familiar `KSampler` so it might seem a bit complicated, but the basics are just "decide steps and CFG and sample".
+It isn't the familiar `KSampler`, so it may look a bit complicated, but at heart it's just "set the steps and CFG, then sample."
 
 - In this workflow, the 1st stage is run with 20 steps / CFG 4.0.
 - It uses a dedicated scheduler called `LTXVScheduler`.
   - It behaves similarly to `linear_quadratic`, but you don't need to worry about it too much.
-- Since LTX-2 handles video and audio simultaneously, combine video latent and audio latent into one with 🟫 `LTXVConcatAVLatent`.
+- Since LTX-2 handles video and audio together, 🟫 `LTXVConcatAVLatent` merges the video latent and audio latent into one.
 
 {% endmediaRow %}
 
@@ -157,13 +157,13 @@ Upscale the resolution of the video latent by 2x.
 
 **5. Sampling (2nd Stage / video2video)**
 
-Refine the upscaled latent with short steps.
+Refine the upscaled latent in just a few steps.
 
-- Here we use `distilled-lora` which allows generation in 4~8 steps.
+- Here we use `distilled-lora`, which lets you generate in 4–8 steps.
   - Think of it as something like Lightning / Turbo in other models.
   - This workflow runs in **3 steps**.
   - Accordingly, CFG is changed to `1.0`.
-- Because it uses `Manual Sigma`, it's a bit hard to understand, but if thinking in terms of `Simple`, it behaves somewhat close to `denoise = 0.47`.
+- Because it uses `Manual Sigma`, it's a bit hard to read, but in `Simple` terms it behaves roughly like `denoise = 0.47`.
 
 {% endmediaRow %}
 
@@ -171,9 +171,9 @@ Refine the upscaled latent with short steps.
 
 **6. Decode**
 
-Finally, decode and export video and audio respectively.
+Finally, decode the video and audio separately and write them out.
 
-- Separate the latent for video / audio and decode with appropriate VAE.
+- Split the latent into video and audio, and decode each with the matching VAE.
 - (Tiled VAE is used because VRAM is tight.)
 
 {% endmediaRow %}
@@ -191,7 +191,7 @@ Above, we used `distilled-lora` only for Hires.fix, but let's apply it to the 1s
   "/workflows/basic-workflows/ltx-2/ltx_2_text2video_distilled.json"
 %}
 
-To apply `distilled-lora`, change some sampling settings.
+To apply `distilled-lora`, change a few sampling settings.
 
 - CFG : `1.0`
 - scheduler : `Simple`
@@ -202,8 +202,8 @@ To apply `distilled-lora`, change some sampling settings.
 ![20 steps](/media/basic-workflows/ltx-2/legacy_gyazo_d7457da890a04a168e0f82655c9a6392.mp4){media=player} ![8 steps (distilled-lora)](/media/basic-workflows/ltx-2/legacy_gyazo_1e20bd8fd074213736b0a7a2e3766be1.mp4){media=player}
 
 > [!NOTE]
-> As far as I tried, applying distilled-lora produces more stable generations.  
-> Therefore, for speed and stability, all subsequent workflows apply **distilled-lora** from the 1st stage.
+> In my testing, applying distilled-lora gives more stable results.  
+> So, partly for the speed boost too, every workflow from here on **applies distilled-lora from the 1st stage**.
 
 ---
 
@@ -218,9 +218,9 @@ To apply `distilled-lora`, change some sampling settings.
   "/workflows/basic-workflows/ltx-2/ltx_2_image2video_distilled.json"
 %}
 
-The basic idea is "fix the 1st frame with input image and generate the rest".
+The basic idea is "lock the 1st frame to the input image and generate the rest."
 
-For example, if creating a 121-frame video, the flow is roughly like this:
+For example, for a 121-frame video, the flow is roughly this:
 
 ```text
 (1) Create a frame for 121 frames (8n+1)
@@ -232,7 +232,7 @@ For example, if creating a 121-frame video, the flow is roughly like this:
 (3) Generate the remaining 120 frames
     [ 🖼️ ✨ ✨ ✨ ✨ ... ✨ ]
 ```
-Imagine the frames (✨) filling up consecutively starting from 🖼️.
+Picture the following frames (✨) being filled in, starting from 🖼️.
 
 
 {% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_981d0f06afef7364fcbe2c10bc1428c1.png {media=image}", width=40, align="left" %}
@@ -240,7 +240,7 @@ Imagine the frames (✨) filling up consecutively starting from 🖼️.
 **1. Resize Input Image (Create 2 versions)**
 
 - First, create a full-resolution version matching the final output resolution.
-  - Resize to arbitrary size (here 1MP).
+  - Resize to any size you like (1MP here).
   - Width and height must be multiples of 64.
     - Since the 1st stage runs at 1/2 resolution, make it a multiple of 64 so it remains a multiple of 32 when halved.
 - Next, for the 1st stage (half resolution), create a version with width/height halved from the above image.
@@ -252,8 +252,8 @@ Imagine the frames (✨) filling up consecutively starting from 🖼️.
 
 **2. Image Preprocessing**
 
-A characteristic from LTX-Video is that since video is slightly compressed and degraded compared to still images, using an image that is too clean may result in a video that doesn't move at all.
-- To avoid this, intentionally degrade it to look like video compression with `LTXVPreprocess`.
+This goes back to LTX-Video: unlike still images, video frames are slightly compressed and degraded, so an image that's too clean can produce a video that doesn't move at all.
+- To avoid this, `LTXVPreprocess` deliberately degrades the image to look like video compression.
 
 {% endmediaRow %}
 
@@ -275,8 +275,8 @@ Insert the image into the 2nd stage as well.
 
 - Make sure to connect this node **after** the spatial node.
 - Set strength to `1.0`.
-  - If you reduce this, the inserted image itself will behave like it's being image2image'd.
-  - That's fine if you want it to blend in as a whole, but if you want to match the input image and 1st frame perfectly, set it to `1.0`.
+  - If you lower it, the inserted image itself gets image2image'd as well.
+  - That's fine if you want everything to blend together, but if you want the 1st frame to match the input image exactly, set it to `1.0`.
 
 
 {% endmediaRow %}
@@ -287,8 +287,8 @@ Insert the image into the 2nd stage as well.
 {% endoutputs %}
 
 > [!NOTE]
-> As a known issue, often the video hardly moves or just zooms out.  
-> Using appropriate prompts helps to some extent, but a LoRA has been introduced to address this.
+> A known issue is that the video sometimes barely moves, or just zooms out.  
+> A good prompt helps somewhat, but a LoRA has come out to deal with this, so here it is.
 >
 > link + workflow : [LTX-2 Image2Video Adapter LoRa](https://scrapbox.io/work4ai/LTX-2_Image2Video_Adapter_LoRa)
 
@@ -297,7 +297,7 @@ Insert the image into the 2nd stage as well.
 ### multi-frame I2V
 
 The previous image2video workflow can take not only a **single image** but also an **image batch (= video)** as input.  
-By applying this, you can create a workflow that uses the end of an arbitrary video as a "connector" and extends it further.
+Building on this, you can make a workflow that uses the end of any video as an "overlap" and extends it from there.
 
 ![](https://gyazo.com/777521712af9329c1f8612710f00584a){gyazo=image}
 
@@ -331,9 +331,9 @@ It takes the last few frames of the input video and generates the continuation.
 
 **1. Get End Image Batch**
 
-Get the image batch that serves as the connector from the end of the input video.
-- Enter an arbitrary number in `num_frames` of `Get Image or Mask Range From Batch` (must be 8n+1).
-- Increasing N makes it easier to inherit the movement and atmosphere of the original video.
+Take the image batch that will serve as the overlap from the end of the input video.
+- Enter any number you like in `num_frames` of `Get Image or Mask Range From Batch` (it must be 8n+1).
+- The larger N is, the better it carries over the original video's motion and mood.
 - However, since the generated section becomes 121 - N frames, increasing N makes the "continuation" shorter.
 
 {% endmediaRow %}
@@ -342,7 +342,7 @@ Get the image batch that serves as the connector from the end of the input video
 
 **2. Concatenate Generated Video and Original Video**
 
-The generation result includes the "connector (N frames from end of original video)" at the beginning, but since this part duplicates the original video, delete it before concatenation.
+The generated result starts with the "overlap" (the last N frames of the original video), which duplicates the original, so delete it before joining.
 - Delete the first N frames of the generated video (25 frames in this example)
 - Concatenate to the end of the original video
 
@@ -357,7 +357,7 @@ The generation result includes the "connector (N frames from end of original vid
 
 ## audio2video
 
-Since LTX-2 is a model that handles "video + audio" simultaneously, you can configure it to take audio as input and create a video driven by the sound.
+Since LTX-2 handles "video + audio" together, you can also feed it audio as input and make a video driven by the sound.
 
 ![](/media/basic-workflows/ltx-2/legacy_gyazo_be5aaa842432ee760228eeed24a3636f.png){media=image}
 
@@ -373,9 +373,9 @@ Since LTX-2 is a model that handles "video + audio" simultaneously, you can conf
 
 > [!WARNING]
 > If the audio length is **shorter** than the generated video length, the audio condition will not work. A video unrelated to the sound will be generated.
-> Even if it's silent, you need to make it longer than the video being generated.
+> Silence is fine, but the audio has to be longer than the video you're generating.
 
-I see workflows using `Set Latent Noise Mask` here, but the result is the same whether it's there or not.
+You'll also see workflows that use `Set Latent Noise Mask` here, but the result is the same with or without it.
 
 
 {% outputs %}
@@ -386,7 +386,7 @@ I see workflows using `Set Latent Noise Mask` here, but the result is the same w
 
 ## audio-image2video
 
-You can combine the above two.
+You can also combine the two above.
 If you combine a face image with spoken audio, you can do something like a talking head. Let's try it.
 
 ![](/media/basic-workflows/ltx-2/legacy_gyazo_853b6d4b375b6ea1ef45f7697b71d369.png){media=image}
@@ -403,16 +403,16 @@ If you combine a face image with spoken audio, you can do something like a talki
 {% endoutputs %}
 
 > [!NOTE]
-> Actually, because the video didn't follow the dialogue very well, I put the dialogue in the prompt. There might be a better workflow.
+> The video didn't follow the dialogue very well, so I actually put the lines in the prompt too. There may be a better workflow.
 
 ---
 
 ## video2audio
 
-Contrary to audio2video, you can also input a video and generate sound (sound effects or environmental sounds) that matches it.
+The reverse of audio2video: you can also input a video and generate sound to match it (sound effects or ambient sound).
 
 > [!NOTE]
-> This task is unstable. Probably needs improvement.
+> This task isn't stable. It probably needs some work.
 
 ![](/media/basic-workflows/ltx-2/legacy_gyazo_62df52a54b4bfcf67f53429d6343d666.png){media=image}
 
@@ -429,14 +429,14 @@ Contrary to audio2video, you can also input a video and generate sound (sound ef
 
 ## Temporal inpainting
 
-This is temporal inpainting (= repairing only a part of the video). Think of it like VACE Extension.
+This is inpainting along the time axis (= regenerating just part of a video). It's like VACE Extension.
 
 ![](/media/basic-workflows/ltx-2/legacy_gyazo_4f55cbb7932cdefc0d879c2c432ed224.png){media=image}
 
 [](/workflows/basic-workflows/ltx-2/ltx_2_temporal_inpainting_distilled.json)
 
 Basically it is video2video.
-Mask only the "time range you want to remake" of the video and regenerate only that section.
+Mask only the "time range you want to redo" and have just that section regenerated.
 
 ```text
 (1) Input video (= existing video latent)
@@ -458,7 +458,7 @@ Mask only the "time range you want to remake" of the video and regenerate only t
 ```
 
 > [!NOTE]
-> Structurally, it is difficult to assemble a two-stage workflow (low resolution -> Hires.fix), so we generate at 1.5MP from the beginning.
+> Because of how it works, a two-stage workflow (low resolution → Hires.fix) is hard to set up, so this generates at 1.5MP from the start.
 
 {% mediaRow img="/media/basic-workflows/ltx-2/legacy_gyazo_b8efdb1050318602e40897d0d181c77c.png {media=image}", width=40, align="left" %}
 
@@ -472,11 +472,11 @@ Specify the time range you want to inpaint.
 - `audio_start_time` / `audio_end_time`: Basically same as video, but by shifting them you can do "edit video only while keeping sound" or "edit sound only while keeping video"
 {% endmediaRow %}
 
-**Can also Extend**
+**It can extend, too**
 
-If you specify `end_time` beyond the length of the input video, the overlapping part is newly generated, resulting in extended video.
+If you set `end_time` past the end of the input video, the part that runs over is newly generated, which extends the video.
 e.g.: If input is "2 seconds"
-- Remake 2.0s → 5.0s (= newly generate after 2 seconds to extend)
+- Redo 2.0s → 5.0s (= generate everything after 2 seconds, extending the video)
 - `start_time = 2.0` / `end_time = 5.0`
 
 
@@ -489,7 +489,7 @@ e.g.: If input is "2 seconds"
 
 ## IC-LoRA
 
-IC-LoRA creates video from control signals such as pose, depth map, edges, etc.
+IC-LoRA generates video from control signals such as poses, depth maps, and edges.
 
 ### Model Download
 
@@ -512,7 +512,7 @@ IC-LoRA creates video from control signals such as pose, depth map, edges, etc.
 ### IC-LoRA (Pose)
 
 
-Add control video based on text2video.
+Starting from the text2video workflow, add a ControlNet-style control video input.
 
 ![](/media/basic-workflows/ltx-2/legacy_gyazo_d520faa02e72245494eedeea79ebef20.png){media=image}
 
@@ -525,11 +525,11 @@ Add control video based on text2video.
 
 **1. Resize Control Video**
 
-Align to the same ratio and resolution as the video to be generated.
+Match it to the aspect ratio and resolution of the video you'll generate.
 
-- Resize to arbitrary size (here 1.5MP).
+- Resize to any size you like (1.5MP here).
 - Width and height must be multiples of 64.
-- Input the width/height of the image halved vertically and horizontally into `EmptyLTXVLatentVideo`.
+- Enter the width/height of the image halved on each side into `EmptyLTXVLatentVideo`.
 
 
 {% endmediaRow %}
@@ -538,7 +538,7 @@ Align to the same ratio and resolution as the video to be generated.
 
 **2. Generate Pose Image**
 
-Create stick figure images from video.
+Make stick-figure images from the video.
 
 - Extract pose with OpenPose or DWPose.
 
@@ -562,7 +562,7 @@ Apply IC-LoRA (Pose this time) and sample.
 
 - IC-LoRA is designed assuming `strength = 1.0`.
 - In this workflow, IC-LoRA is applied only to the 1st stage sampling.
-  - Making the 2nd stage focus on refining results in a cleaner video.
+  - Letting the 2nd stage concentrate on refining gives a cleaner video.
 
 {% endmediaRow %}
 
@@ -571,19 +571,19 @@ Apply IC-LoRA (Pose this time) and sample.
 
 **5. LTXVCropGuides**
 
-If you decode once after the 1st stage is finished, it's easy to understand, but the generated video is mixed with the pose video created earlier.
+It's easy to see if you decode once after the 1st stage: the pose video you made earlier is mixed into the generated video.
 
-- Focus on the latter half: [Before LTXVCropGuides.mp4](/media/basic-workflows/ltx-2/legacy_gyazo_8c92e2b45a7d3f3ee98f6a3d0a3cc14b.mp4)
+- Watch the second half: [Before LTXVCropGuides.mp4](/media/basic-workflows/ltx-2/legacy_gyazo_8c92e2b45a7d3f3ee98f6a3d0a3cc14b.mp4)
 
-This is exactly how IC-LoRA works, but since it is unnecessary for the output, remove it before entering the 2nd stage.
+This is exactly how IC-LoRA works, but it isn't wanted in the output, so remove it before the 2nd stage.
 
 - `LTXVCropGuides` is a node for removing control images from latent / conditioning.
 
 {% endmediaRow %}
 
 > [!TIP]
-> You can use it in the same way by changing Pose Image / IC-LoRA to Canny / Depth.
-> Note that using basically one type is recommended. (Applying Pose and Depth at the same time is not recommended.)
+> Swap the pose images and IC-LoRA for Canny / Depth and it works the same way.
+> Note that using only one type at a time is generally recommended. (Applying Pose and Depth together is not recommended.)
 
 
 {% outputs %}
@@ -594,7 +594,7 @@ This is exactly how IC-LoRA works, but since it is unnecessary for the output, r
 
 ### IC-LoRA (Pose) + image2video
 
-You cannot stack multiple IC-LoRAs, but you can combine with image2video or audio2video.
+You can't stack multiple IC-LoRAs, but you can combine one with image2video or audio2video.
 
 ![](/media/basic-workflows/ltx-2/legacy_gyazo_a65682de39d9ea5c9fe6003cdf27e892.png){media=image}
 
@@ -603,13 +603,13 @@ You cannot stack multiple IC-LoRAs, but you can combine with image2video or audi
   "/workflows/basic-workflows/ltx-2/ltx_2_ic_lora_pose_image2video_distilled.json"
 %}
 
-What it's doing is just combining IC-LoRA (Pose) above with image2video.
+All it does is merge IC-LoRA (Pose) above with image2video.
 
-- Note that `LTXVAddGuide` is connected **after** `LTXVImgToVideoInplace`.
-  - Provide control won't work if reversed.
+- Note: connect `LTXVAddGuide` **after** `LTXVImgToVideoInplace`.
+  - The other way around, the control won't take effect.
 - This is strictly image2video, **not reference2video** like VACE.
-  - Since the input image is "an image fixed as the 1st frame", if it deviates significantly from the 1st frame of the pose video, you won't get the expected video.
-  - Create an "image close to the 1st frame of pose" with ControlNet or Qwen-Image-Edit etc. in advance.
+  - The input image is "the image locked in as the 1st frame," so if it differs a lot from the pose video's 1st frame, you won't get the video you expect.
+  - Make an "image matched to the pose's 1st frame" beforehand with ControlNet, Qwen-Image-Edit, or similar.
 
 {% outputs %}
 ![Input](/media/basic-workflows/ltx-2/legacy_gyazo_aed000bfabc8665e0fadb350ca72500b.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2/legacy_gyazo_0ec1dbf4cf746b021443ca341b6c019a.mp4){media=loop}
@@ -625,7 +625,7 @@ IC-LoRA (Detailer) restores details and textures of low-resolution videos.
 
 - [ComfyUI-LTXVideo](https://github.com/Lightricks/ComfyUI-LTXVideo)
 
-- You can run it with just core nodes, but custom nodes are required to handle large resolutions / long duration videos.
+- It does run with core nodes alone, but you need the custom nodes to handle high resolutions and long videos.
 
 ![](/media/basic-workflows/ltx-2/legacy_gyazo_a366728b300f253233432d1c12239f8d.png){media=image}
 
@@ -638,9 +638,9 @@ Basically it is video2video with IC-LoRA(Detailer) applied.
 
 - 🟦 First, resize the input video to the desired final size.
 - Use `🅛🅣🅧 LTXV Looping Sampler` instead of `SamplerCustomAdvanced`.
-  - This works like [Ultimate SD upscale](/en/basic-workflows/ultimate-sd-upscale/), processing time/space in tiles, allowing you to save VRAM.
+  - Like [Ultimate SD upscale](/en/basic-workflows/ultimate-sd-upscale/), it splits time and space into tiles, which saves VRAM.
   - In this workflow, only the time direction is tiled.
-- It does not use distilled LoRA, but generates in 3 steps.
+- It doesn't use the distilled LoRA, but still generates in 3 steps.
 
 {% outputs %}
 ![Input](/media/basic-workflows/ltx-2/legacy_gyazo_aa14f25d1ad8e274a8de629f4666b1bd.mp4){media=loop} ![Output](/media/basic-workflows/ltx-2/legacy_gyazo_ceb4d9d0ba0eec0b5379b63ec307460a.mp4){media=loop}

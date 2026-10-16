@@ -21,7 +21,7 @@ tags: []
 
 它采用一种简洁的架构，在同一个 Transformer 中处理文本、图像、视频和音频。在本地视频生成 AI 中，其性能与灵活性可以说格外突出。
 
-模型分为两种。
+基础是相同的，但按用途分成了两种模型。
 
 - **FL2VA**
   - 用于 text2video、image2video、First / Last Frame to Video
@@ -46,7 +46,7 @@ tags: []
 
 ---
 
-## 模型下载
+## 下载模型
 
 - diffusion_models
   - [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (21 GB)
@@ -257,7 +257,7 @@ H3 已经是经过 CFG 蒸馏的模型。因此，CFG 设为 `1.0`。
 
 从这里开始才是 MiniMax H3 真正有意思的地方。
 
-H3 可以放入多个“图像”“视频”和“音频”，作为生成视频时的参考素材。
+H3 可以把喜欢的“图像”“视频”“音频”作为生成视频的参考素材，不用太多顾虑地一次放进好几个。
 
 之后只需写出“让图像 1 使用音频 1 说话”这样的指示，就能控制生成的视频。很厉害。
 
@@ -288,7 +288,7 @@ H3 可以放入多个“图像”“视频”和“音频”，作为生成视�
 
 [MiniMax 官方也承认](https://www.reddit.com/r/StableDiffusion/comments/1vh9rtw/comment/p29qqaa/)这一点：与 FL2VA 模型相比，Ref2VA 模型的直接输出质量会更低。
 
-最好还是等这个问题从根本上解决，不过现在也有一些取巧的办法。
+希望这个问题能被正式解决，不过现在也有一些取巧的办法。
 
 实际上，这两个模型的架构几乎相同，因此 FL2VA 模型也能在一定程度上进行 Reference Generation。
 

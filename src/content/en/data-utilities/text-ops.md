@@ -7,7 +7,7 @@ navId: text-ops
 title: "Text Operations"
 created: 2025-11-25
 updated: 2026-05-27
-summary: "About nodes that manipulate text"
+summary: "Nodes for working with text"
 seoTitle: "Text Nodes in ComfyUI: Concatenate, Replace, Regex"
 seoDescription: "ComfyUI nodes for prompts and other strings: concatenate, replace, substring, and trim, plus regular expressions and rgthree's Power Puter."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -19,13 +19,13 @@ hero:
 
 ![](/media/data-utilities/text-ops/legacy_gyazo_8731cc3b1bd685d83a13d37ffc0617ed.png){media=image}
 
-In ComfyUI, text is mainly handled as prompts.
-Automating some operations, such as replacing part of a string or attaching trigger words to prompts created by LLMs, makes the workflow more convenient.
+In ComfyUI, text mostly shows up as prompts.
+Automating a few operations, like replacing part of a string or adding trigger words to a prompt an LLM wrote, makes your workflows more convenient.
 
 
 ## What is a string?
 
-In the programming world, text is called **string** to distinguish it from numbers and the like.
+In programming, text is called a **string** to tell it apart from numbers and other data.
 
 - `apple` → 5-character string
 - `123` → Looks like a number, but is actually a string treated as text
@@ -39,8 +39,8 @@ In the programming world, text is called **string** to distinguish it from numbe
 
 ![](/media/data-utilities/text-ops/legacy_gyazo_7669da6621b5fcb5b7cc0c539f4d5af7.png){media=image}
 
-This is a basic node for entering character strings.
-Using the **String (Multiline)** node allows you to enter text containing line breaks.
+The basic node for entering a string.
+Use the **String (Multiline)** node to enter text with line breaks.
 
 ### Concatenate Node (Text Joining)
 
@@ -49,7 +49,7 @@ Using the **String (Multiline)** node allows you to enter text containing line b
 Combines multiple strings into one.
 (Example: `apple` + `pen` → `applepen`)
 
-- `delimiter` is a separator character. You can use whatever you like (comma, line break, etc.).
+- `delimiter` is the separator. You can use anything you like (a comma, a line break, etc.).
 
 ### Format Text Node
 
@@ -67,26 +67,26 @@ For example, if you connect `apple` to `a` and `red` to `b`, then write `{a} is 
 
 ![](/media/data-utilities/text-ops/legacy_gyazo_db1e540470805d5888a9c90b1381fa44.png){media=image}
 
-Replaces specified characters with other characters.
+Replaces the specified text with other text.
 (Example: `apple pen` → `orange pen`)
 
 ### Substring Node (Text Extraction)
 
 ![](/media/data-utilities/text-ops/legacy_gyazo_ab158488e388004f441a2258379c7930.png){media=image}
 
-Extracts characters in a specified range.
+Extracts the characters in a specified range.
 (Example: `apple` → `ppl`)
 
-- Extracts the string from the `start`th to the `end`th character.
+- Cuts out the characters from position `start` to position `end`.
 
 ### Trim Text Node (Remove Spaces)
 
 ![](/media/data-utilities/text-ops/trim_text.png){media=image}
 
-Removes spaces before and after the string.
+Removes spaces at the start and end of a string.
 (Example: ` apple ` → `apple`)
 
-- It is plain but important because it prevents errors caused by unintended spaces in user input etc.
+- Unglamorous but important: it prevents errors from stray spaces in things like user input.
 
 ### Length Node (Character Count)
 
@@ -96,31 +96,31 @@ Counts the length of the text.
 (Example: `apple` → `5`)
 
 - Spaces and line breaks are also counted as 1 character.
-- The output will be **int type (number)**.
+- The output is an **int (number)**.
 
 ---
 
 ## Advanced Operations (Regular Expressions)
 
-Performs complex searches and replacements using a description rule called "Regular Expression (Regex)".
+These use a pattern syntax called regular expressions (Regex) for more complex searching and replacing.
 
 ### Regex Extract Node
 
 ![](/media/data-utilities/text-ops/legacy_gyazo_ad16cc24b76fdffe4ed4adfd84a48563.png){media=image}
 
-Extracts strings that match the condition using regular expressions.
+Uses a regular expression to extract matching text.
 
 ### Regex Replace Node
 
 ![](/media/data-utilities/text-ops/legacy_gyazo_8f469774411a0096e3725a090fe41d9d.png){media=image}
 
-Replaces strings that match the condition using regular expressions.
+Uses a regular expression to replace matching text.
 
 ---
 
 ## Power Puter (rgthree)
 
-The `Power Puter` from [rgthree-comfy](https://github.com/rgthree/rgthree-comfy) used in [Simple Math](/en/data-utilities/simple-math/) can also input/output strings, so you can manipulate strings flexibly including the text processing mentioned above.
+The `Power Puter` from [rgthree-comfy](https://github.com/rgthree/rgthree-comfy) that came up in [Simple Math](/en/data-utilities/simple-math/) can take and output strings too, so you can handle text flexibly, including everything covered above.
 
 - [Node: Power Puter (Wiki)](https://github.com/rgthree/rgthree-comfy/wiki/Node:-Power-Puter)
 

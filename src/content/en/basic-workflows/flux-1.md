@@ -7,7 +7,7 @@ navId: flux-1
 title: "Flux.1"
 created: 2025-12-12
 updated: 2026-03-02
-summary: "Basics of Flux.1 and usage in ComfyUI"
+summary: "Flux.1 basics and how to use it in ComfyUI"
 seoTitle: "Flux.1 in ComfyUI: dev, schnell, LoRA, ControlNet"
 seoDescription: "Use Black Forest Labs' Flux.1 in ComfyUI: [dev] and [schnell] text2image, LoRA, ControlNet, and lighter GGUF models, with easy-to-read workflows."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -18,20 +18,20 @@ tags: []
 
 ## What is Flux.1?
 
-**Flux.1** is an image generation model by Black Forest Labs, launched by members who developed Stable Diffusion.
-It is a model that became a major turning point in terms of architecture, not just a "high-performance version".
+**Flux.1** is an image generation model from Black Forest Labs, a company founded by members of the team behind Stable Diffusion.
+It's more than just a "better-performing version": it also marked a major turning point in architecture.
 
-- The core of image generation was replaced from the traditional UNet to Transformer (DiT) base.
-- T5-based LLM was adopted as a text encoder.
+- The core of the image generator moved from the traditional UNet to a Transformer (DiT).
+- A T5-family LLM was adopted as the text encoder.
 
-This combination made it possible to learn efficiently from large-scale datasets, and by utilizing the sentence comprehension ability of LLM as is, it became a branching point to the group of image generation models that are currently mainstream.
+Together, these made it possible to train efficiently on large datasets and to tap directly into an LLM's language understanding, and Flux.1 became the point where today's mainstream image generation models branched off.
 
-There are 3 variations of Flux.1.
+Flux.1 comes in 3 variants.
 
 - **Flux.1 pro**
   - A version available only via API; model weights are not public.
 - **Flux.1 dev**
-  - A research/verification model distilled from pro. This is the most commonly used version in local environments.
+  - A model distilled from pro, intended for research and testing. This is the one most people use locally.
 - **Flux.1 schnell**
   - A model further distilled from dev, released under the relatively loose Apache-2.0 license.
 
@@ -39,7 +39,7 @@ There are 3 variations of Flux.1.
 
 ## Model Download
 
-Here, we use the fp8 version of `dev` / `schnell`.
+Here, we use the fp8 versions of `dev` / `schnell`.
 
 - diffusion model
   - [flux1-dev-fp8.safetensors](https://huggingface.co/Comfy-Org/flux1-dev/blob/main/flux1-dev-fp8.safetensors)
@@ -71,20 +71,20 @@ Here, we use the fp8 version of `dev` / `schnell`.
 
 [](/workflows/basic-workflows/flux1/flux1_dev.json)
 
-Flux.1 dev / schnell are **models distilled with CFG fixed at 1.0**.
-Therefore, adjustment of `CFG scale` and Negative Prompt like in traditional Stable Diffusion is not assumed, and **Negative Prompt has no effect at all**.
+Flux.1 dev / schnell are **distilled with CFG fixed at 1.0**.
+So they aren't designed for tuning `CFG scale` or the negative prompt the way you would with Stable Diffusion, and **the negative prompt has no effect at all**.
 
 * cf. [CFG / Special meaning of CFG = 1](/en/ai-capabilities/cfg/#special-meaning-of-cfg-1)
 
-I leave the Negative side prompt empty, but in other workflows, `ConditioningZeroOut` node is sometimes inserted instead of the `CLIP Text Encode` node for Negative.
+I just leave the negative prompt empty, but some other workflows plug in a `ConditioningZeroOut` node instead of the negative `CLIP Text Encode` node.
 
-In either case, since the condition on the Negative side is multiplied by 0, **writing anything will not affect the output**.
+Either way, the negative conditioning gets multiplied by 0, so **nothing you write there affects the output**.
 
 ---
 
 ## text2image - Flux.1 [schnell]
 
-This is a further distilled version of Flux.1 [dev], capable of generating images in 4-6 steps.
+A further distilled version of Flux.1 [dev] that can generate images in 4-6 steps.
 
 ![](/media/basic-workflows/flux-1/legacy_gyazo_365108a45e0039af1ce0d35cf2cdcfa6.png){media=image}
 
@@ -95,7 +95,7 @@ This is a further distilled version of Flux.1 [dev], capable of generating image
 
 ## LoRA - Flux.1 [dev]
 
-Let's use LoRA to improve the quality of portrait images.
+Let's try a LoRA that improves the quality of portraits.
 
 * [AWPortrait-FL-lora.safetensors](https://huggingface.co/Shakker-Labs/AWPortrait-FL/blob/main/AWPortrait-FL-lora.safetensors)
 
@@ -103,19 +103,19 @@ Let's use LoRA to improve the quality of portrait images.
 
 [](/workflows/basic-workflows/flux1/flux1_dev_lora.json)
 
-* 🟪 As written in [LoRA](/en/basic-workflows/sd15-lora/), since Flux and later models no longer train the text encoder, use the `LoraLoaderModelOnly` node which **applies only to weights**, instead of the `Load LoRA` node.
+* 🟪 As mentioned in [LoRA](/en/basic-workflows/sd15-lora/), from Flux onward LoRAs no longer train the text encoder, so instead of the `Load LoRA` node, use the `LoraLoaderModelOnly` node, which **applies only to the model weights**.
 
 ---
 
 ## ControlNet - Flux.1 [dev]
 
-Several ControlNet models for Flux.1 have been released, but here we introduce a Union type model as an example.
+Several ControlNet models have been released for Flux.1. Here, we'll use a Union-type model as the example.
 
 ### Model Download
 
 * [FLUX.1-dev-ControlNet-Union-Pro-2.0-fp8/diffusion_pytorch_model.safetensors](https://huggingface.co/ABDALLALSWAITI/FLUX.1-dev-ControlNet-Union-Pro-2.0-fp8/blob/main/diffusion_pytorch_model.safetensors)
 
-  * Rename it to something like `FLUX.1-dev-ControlNet-Union-Pro-2.0-fp8.safetensors` as the original name is confusing.
+  * The original name is confusing, so rename it to something like `FLUX.1-dev-ControlNet-Union-Pro-2.0-fp8.safetensors`.
 
 ```text
 📂ComfyUI/
@@ -126,27 +126,27 @@ Several ControlNet models for Flux.1 have been released, but here we introduce a
 
 ### workflow
 
-ControlNet-Union incorporates multiple typical ControlNets into a single model.
+ControlNet-Union packs several common ControlNets into a single model.
 
 ![](/media/basic-workflows/flux-1/legacy_gyazo_9e7cb79f7ca50fe5946ac9f232a552c6.png){media=image}
 
 [](/workflows/basic-workflows/flux1/flux_1_dev_controlnet_union_pro_depth.json)
 
-* 🟩 It is simply a workflow where ControlNet is inserted into an image2image workflow using Flux.
+* 🟩 This is just a Flux image2image workflow with ControlNet added.
 
-  * Although it is image2image, since `denoise` is 1.0, the behavior is almost the same as text2image.
-  * I often use this form because an image of the same size as the input image can be created with fewer nodes.
-* 🟩 Input the type of ControlNet you want to use in `SetUnionControlNetType`.
+  * It's image2image, but `denoise` is 1.0, so it behaves almost exactly like text2image.
+  * I use this setup a lot because it gives you an image the same size as the input with fewer nodes.
+* 🟩 Set the ControlNet type you want to use in `SetUnionControlNetType`.
 
   * Basically `auto` is fine.
 
 ---
 
-## GGUF (Lightweighting Flux.1)
+## GGUF (Making Flux.1 Lighter)
 
-Finally, let's touch a little on the **GGUF version of Flux.1**.
+Finally, a quick word on the **GGUF version of Flux.1**.
 
-Originally GGUF is a format for lightweighting LLMs (quantized weight format), but by applying this to Flux.1, you can **run it at a reasonable speed while reducing VRAM usage**.
+GGUF was originally a format for shrinking LLMs (a quantized weight format), but applying it to Flux.1 lets you **cut VRAM usage while still running at a decent speed**.
 
 ### Custom Nodes
 
@@ -154,8 +154,8 @@ Originally GGUF is a format for lightweighting LLMs (quantized weight format), b
 
 ### Model Download
 
-There are several variations depending on the balance between performance and model size.
-Please choose according to your PC specs and usage.
+There are several variants trading off quality against model size.
+Pick one that suits your PC and what you're doing.
 
 * [FLUX.1-dev-gguf](https://huggingface.co/city96/FLUX.1-dev-gguf/tree/main)
 * [FLUX.1-schnell-gguf](https://huggingface.co/city96/FLUX.1-schnell-gguf/tree/main)
@@ -174,9 +174,9 @@ Please choose according to your PC specs and usage.
 [](/workflows/basic-workflows/flux1/flux_1_dev_gguf.json)
 
 * 🟪 Replace the `Load Diffusion Model` node with the `Unet Loader (GGUF)` node.
-* Other CLIP / T5 / VAE parts remain the same.
+* The CLIP / T5 / VAE parts stay the same.
 
-  * You can also change T5 to GGUF, but in my experience, the effect is not that significant.
+  * You can switch T5 to GGUF too, but in my experience it doesn't make a big difference.
 
-GGUF versions are available for many current models.
-Since **there are almost no downsides to using GGUF**, please try using it actively when VRAM is insufficient.
+Many current models have GGUF versions.
+**There's hardly any downside to using GGUF**, so don't hesitate to try it when you're short on VRAM.

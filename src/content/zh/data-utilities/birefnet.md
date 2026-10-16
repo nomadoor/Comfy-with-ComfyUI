@@ -15,17 +15,17 @@ hero:
   image: "/media/data-utilities/birefnet/legacy_gyazo_2e42734281821aa3f28153af9ba6a08e.png"
 ---
 
-## BiRefNet 是什么？
+## 什么是 BiRefNet？
 
 BiRefNet 是用于背景去除和抠图的模型。
 
-正式来说，它是用于 **Dichotomous Image Segmentation (DIS)** 的模型，也就是把图像分成 **前景** 和 **背景** 两部分。
+严格来说，它是用于 **Dichotomous Image Segmentation (DIS)** 的模型，也就是把图像分成 **前景** 和 **背景** 两部分。
 
-它并不是像 SAM 那样，通过“这个点”“这个框”“这个物体”来指定并生成蒙版。BiRefNet 更擅长从头发、植物等细节复杂的对象中，生成高质量的切出蒙版。
+它不像 SAM 那样，通过“这个点”“这个框”“这个物体”来指定并生成蒙版，但抠图精度很高，即使是头发、植物这类细节复杂的对象，也能生成高质量的蒙版。
 
 ---
 
-## 模型下载
+## 下载模型
 
 - [birefnet.safetensors](https://huggingface.co/Comfy-Org/BiRefNet/blob/main/background_removal/birefnet.safetensors) (444 MB)
 
@@ -38,7 +38,7 @@ BiRefNet 是用于背景去除和抠图的模型。
 
 ---
 
-## workflow
+## 工作流
 
 ### 切出前景
 
@@ -53,7 +53,7 @@ BiRefNet 是用于背景去除和抠图的模型。
 
 ### 填充背景
 
-上面的 workflow 会把背景变为透明，但作为图像生成或分析的预处理使用时，把背景填充成单色通常更容易处理。
+上面的工作流把背景变成了透明，但作为图像生成或分析的预处理使用时，把背景填充成单色通常更容易处理。
 
 ![](/media/data-utilities/birefnet/legacy_gyazo_5d22ae3e905a8ccd3c1b8c63f615bb4e.png){media=image}
 

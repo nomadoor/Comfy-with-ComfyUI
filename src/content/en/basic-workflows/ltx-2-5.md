@@ -20,7 +20,7 @@ tags: []
 
 `LTX 2.5` is a new version of Lightricks' video generation model, following `LTX-2` and `LTX 2.3`.
 
-The basic architecture is the same as [LTX 2.3](/en/basic-workflows/ltx-2-3/), but it does more than simply produce cleaner output. It also comes with several major improvements.
+The basic architecture is the same as [LTX 2.3](/en/basic-workflows/ltx-2-3/), but beyond simply producing cleaner output, it brings several major improvements.
 
 - **Multi-shot**
   - Generate multiple shots in a single run
@@ -28,9 +28,9 @@ The basic architecture is the same as [LTX 2.3](/en/basic-workflows/ltx-2-3/), b
   - The Text Encoder has changed from Gemma 3 to Gemma 4
 - **Diffusion Decoder**
   - Instead of VAE Decode, it uses a diffusion model to reconstruct video from the latent
-  - The basic idea is similar to [PiD](/en/basic-workflows/pixeldit-pid/#pid)
+  - The idea is close to [PiD](/en/basic-workflows/pixeldit-pid/#pid)
 
-There are several other improvements, but this is enough to know for now if you are using it in ComfyUI.
+There are a few other improvements too, but for using it in ComfyUI, this is all you need to know for now.
 
 ---
 
@@ -114,13 +114,13 @@ In this workflow, enter the desired duration in seconds (sec) and the FPS, and t
 
 ### Multi-shot
 
-This has become more common with models such as Seedance 2: you can generate multiple shots in a single run.
+Something that's become common since Seedance 2 and the like: you can generate multiple shots in a single run.
 
 ![](/media/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.png){media=image}
 
 {% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_text2video_multishot.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="256s", tags=["1MP"], samplers=[{ speed: "12.69 s/it" }] %}
 
-There is no special format. You can simply write something natural such as “a cut happens here...” and the model will recognize it.
+There's no special syntax. Just write in plain language, something like “then it cuts to...”, and the model picks it up.
 
 This makes prompts easy to write, but the model may not always recognize them as Multi-shot. If it does not work, be patient and try a few times.
 
@@ -153,9 +153,9 @@ LTX 2.5 can automatically estimate how long a video needs to be to express the c
 {% mediaRow img="/media/basic-workflows/ltx-2-5/legacy_gyazo_4567c3906de961a9c90bc01cef27db5d.png", width=40, align="left" %}
 **LTXV Duration Predictor**
 
-It outputs the predicted frame count, which is connected to `length` in the regular text2video workflow.
+It outputs the frame count predicted from the prompt, so connect that to `length` in the usual text2video workflow.
 
-It is only a prediction, so the result may be shorter or longer than expected. Even so, automatically predicting the video length is an interesting feature.
+It is only a prediction, so the result may be shorter or longer than expected. Still, having it guess the video length for you is a fun feature.
 
 {% endmediaRow %}
 
@@ -301,7 +301,7 @@ It does not output a video with a transparent background directly, though, so a 
 
 {% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_alpha_gen.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="369s", tags=["1MP"], samplers=[{ speed: "25.78 s/it" }] %}
 
-It does not use a prompt. Leave it empty.
+No prompt is used here. Leave it empty.
 
 The output is a black-and-white mask video.
 

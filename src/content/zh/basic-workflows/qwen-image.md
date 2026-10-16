@@ -18,17 +18,17 @@ tags: []
 
 ## 什么是 Qwen-Image？
 
-[Qwen-Image](https://github.com/QwenLM/Qwen-Image) 是中国 Alibaba 系的 Qwen 团队开发的画像生成模型。
+[Qwen-Image](https://github.com/QwenLM/Qwen-Image) 是中国 Alibaba 旗下 Qwen 团队开发的图像生成模型。
 
-文本编码器使用了多模态 LLM 的 **Qwen2.5-VL**，与使用 T5 或 Gemma 的模型相比，提示词的理解力高出一头。
+它的文本编码器用的是多模态 LLM **Qwen2.5-VL**，和使用 T5 或 Gemma 的模型相比，对提示词的理解力高出一截。
 
-而且，与 [Flux.1 dev](/zh/basic-workflows/flux-1/) 不同，由于基础不是蒸馏模型所以容易学习，与作为姐妹模型的 [Qwen-Image-Edit](/zh/basic-workflows/qwen-image-edit/) 合在一起，LoRA 或 Lightning 系周边的生态系统充实也是特征。
+另外，和 [Flux.1 dev](/zh/basic-workflows/flux-1/) 不同，它的基础模型不是蒸馏模型，训练起来比较容易；加上姐妹模型 [Qwen-Image-Edit](/zh/basic-workflows/qwen-image-edit/)，LoRA、Lightning 等周边生态也很丰富，这也是它的特点。
 
 ---
 
 ## 推荐分辨率
 
-Qwen-Image 推荐 1.5M〜1.8M 像素前后。
+Qwen-Image 推荐使用 1.5M〜1.8M 像素左右的分辨率。
 
 * 1:1 … 1328 × 1328
 * 4:3 … 1472 × 1104
@@ -37,7 +37,7 @@ Qwen-Image 推荐 1.5M〜1.8M 像素前后。
 
 ---
 
-## 模型的下载
+## 下载模型
 
 * diffusion_models
 
@@ -76,15 +76,15 @@ Qwen-Image 推荐 1.5M〜1.8M 像素前后。
 
 [](/workflows/basic-workflows/qwen-image/qwen_image.json)
 
-* 采样器经常被使用 `euler` 或 `res_multistep`。
+* 采样器多用 `euler` 或 `res_multistep`。
 
 ---
 
 ## ControlNet（InstantX）
 
-Qwen-Image 面向的 ControlNet 模型有几个，因为方便使用，介绍作为 **ControlNet-Union** 被提供的 InstantX 基础的东西。
+Qwen-Image 用的 ControlNet 模型有好几种，这里介绍以 **ControlNet-Union** 形式提供、基于 InstantX 的那一款，因为它用起来比较顺手。
 
-### 模型的下载
+### 下载模型
 
 * controlnet
 
@@ -113,11 +113,11 @@ Qwen-Image 面向的 ControlNet 模型有几个，因为方便使用，介绍作
 
 ## Lightning（高速生成 LoRA）
 
-**Qwen-Image-Lightning** 是，为了让 Qwen-Image 用 **4 / 8 steps 运转而被蒸馏的 LoRA 组**。
+**Qwen-Image-Lightning** 是 **一组经过蒸馏、让 Qwen-Image 能用 4 / 8 steps 运行的 LoRA**。
 
-几乎没有劣化就能大幅减少步数，在相当多的工作流被采用。
+它几乎不损失画质就能大幅减少步数，所以相当多的工作流都在用。
 
-### 模型的下载
+### 下载模型
 
 * loras
 
@@ -138,5 +138,5 @@ Qwen-Image 面向的 ControlNet 模型有几个，因为方便使用，介绍作
 
 [](/workflows/basic-workflows/qwen-image/qwen_image_lightning_8steps.json)
 
-* 用 `LoraLoaderModelOnly` 节点读取 Lightning LoRA。
-* 将 `KSampler` 的 `steps` 设定为 4 或 8，`CFG` 设定为 1.0。
+* 用 `LoraLoaderModelOnly` 节点加载 Lightning LoRA。
+* 把 `KSampler` 的 `steps` 设为 4 或 8，`CFG` 设为 1.0。

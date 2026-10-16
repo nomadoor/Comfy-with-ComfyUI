@@ -16,50 +16,50 @@ hero:
 ---
 ## 什么是线稿上色？
 
-这是给线稿上色的任务。
+就是给线稿上色的任务。
 
-对于已经能自己画线稿的人来说，比起从 0 开始的 text2image，也许“如何让 AI 给自己的线稿上色”往往更重要。
+对已经能自己画线稿的人来说，比起从零开始的 text2image，“怎样让 AI 给自己的线稿上色”往往更重要吧。
 
 ---
 
 ## 使用 ControlNet 进行线稿上色
 
-如果使用 ControlNet Canny（edge），就可以在保持输入线稿大致原貌的情况下，在那里上色。
+使用 ControlNet Canny（edge），就能在基本保留输入线稿的前提下为它上色。
 
 ![](/media/ai-capabilities/line-art-coloring/legacy_gyazo_7e1ed10e17831b224bc547a8d6b3deea.png){media=image}
 
 [](/workflows/ai-capabilities/line-art-coloring/flux_controlnet_union.json)
 
-将线稿（或边缘提取结果）传递给 ControlNet，用文本提示词指定服装、颜色和氛围。
+把线稿（或边缘提取结果）交给 ControlNet，再用文本提示词指定服装、颜色和氛围。
 
 ---
 
-## 基于指令的图像编辑进行的线稿上色
+## 用基于指令的图像编辑给线稿上色
 
-也可以将线稿原样传递给 [基于指令的图像编辑](/zh/ai-capabilities/instruction-based-image-editing/) 模型让其上色。
+也可以把线稿直接交给 [基于指令的图像编辑](/zh/ai-capabilities/instruction-based-image-editing/) 模型，让它来上色。
 
 ![](/media/ai-capabilities/line-art-coloring/qwen_image_edit_2509.png){media=image}
 
 [](/workflows/ai-capabilities/line-art-coloring/qwen_image_edit_2509.json)
 
-只需将线稿作为输入图像，然后用文本指示“把这个线稿涂成全彩”、“用动画涂法上色”等即可。
+只要把线稿作为输入图像，再用文本下指令，比如“把这张线稿涂成全彩”“用动画风格的平涂上色”就行了。
 
 ---
 
 ## 基于参考的上色（线稿＋彩色图像）
 
-如果是“想用和这个角色相同的配色涂这个线稿”、“想借用这张画的用色”的情况，可以使用基于参考的上色。
+如果想“用和这个角色一样的配色来涂这张线稿”“借用这张画的用色”，就可以用基于参考图像的上色。
 
-用 ControlNet（lineart / anime 等）固定线稿的形状・构图，用 IP-Adapter 等参考图像适配器传递彩色插图或照片，使其配色、质感、画风接近。
+用 ControlNet（lineart / anime 等）固定线稿的形状和构图，再通过 IP-Adapter 等参考图像适配器传入彩色插画或照片，让配色、质感和画风向它靠拢。
 
-即使是基于指令的图像编辑模型，如果支持多参考，也可以指定“希望参考图像 2 给图像 1 的线稿上色”。
+基于指令的图像编辑模型中，支持多参考的那些，也有的可以指定“参考图像 2 来给图像 1 的线稿上色”。
 
 ---
 
-## 闲话
+## 题外话
 
-实际画师的工作流，是“底色 → 阴影 → 完稿”这样，稍微多一些步骤的。
+画师实际的工作流程，会像“铺底色 → 上阴影 → 收尾”这样，多分几个步骤。
 
-不限于着色，AI 虽然擅长突然制作出成品，但不太擅长像人类一样循序渐进地画画。
+不只是上色，AI 擅长一下子做出成品，却不太擅长像人一样一点点把画画出来。
 
-我是日本人所以多少有点偏心，从像 [Copainter](https://www.copainter.ai/ja) 这样的商业服务到社区的 LoRA，在日本这类研究・实现相当盛行。
+因为我是日本人，难免有点偏心：从 [Copainter](https://www.copainter.ai/ja) 这样的商业服务到社区的 LoRA，日本在这方面的研究和实现相当活跃。

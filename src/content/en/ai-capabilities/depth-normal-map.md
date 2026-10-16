@@ -7,7 +7,7 @@ navId: depth-normal-map
 title: "Depth Estimation & Normal Map"
 created: 2025-12-01
 updated: 2026-03-02
-summary: "Technology to extract depth and three-dimensionality from images"
+summary: "Pulling depth and 3D form out of an image"
 seoTitle: "Depth Estimation and Normal Maps: Depth Anything and More"
 seoDescription: "Estimate depth and normals from a single image: MiDaS, ZoeDepth, and Depth Anything compared with diffusion-based Marigold, Lotus, and LBM."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -18,68 +18,68 @@ hero:
 ## What are Depth Maps and Normal Maps?
 
 **Depth Map**
-- An image comprising values of "distance from the camera" for each pixel.
-- Generally, closer objects are whiter, and farther objects are blacker.
+- An image where each pixel stores its "distance from the camera."
+- Usually, closer things are whiter and farther things are darker.
 
 **Normal Map**
-- An image where "surface orientation (normal vector)" for each pixel is encoded in RGB.
-- Since it tells which direction a surface is facing, it is used for relighting and 3D-like deformation.
+- An image where each pixel's "surface orientation (normal vector)" is encoded as RGB.
+- Because it shows which way each surface faces, it's used for relighting and 3D-style deformation.
 
 **Monocular Depth Estimation**
-- A task to estimate a depth map from a single RGB image.
-- If you want truly accurate depth, you need multiple sensors like LiDAR or stereo cameras, but monocular depth estimation attempts to "restore pseudo depth information from just one photo."
-- Since depth and normal are similar information, many models can estimate both simultaneously.
+- The task of estimating a depth map from a single RGB image.
+- For truly accurate depth you'd need LiDAR, stereo cameras, or other multiple sensors. Monocular depth estimation is an attempt to "recover approximate depth from just one photo."
+- Depth and normals carry closely related information, so many models can estimate both at once.
 
 ---
 
 ## Representative Models for Monocular Depth Estimation
 
-### MiDaS / ZoeDepth (Standard before Diffusion Models)
+### MiDaS / ZoeDepth (The Standards Before Diffusion Models)
 
-Before diffusion models became generalized, MiDaS and ZoeDepth were the standard models for monocular depth estimation.
+Before diffusion models became widespread, MiDaS and ZoeDepth were the go-to models for monocular depth estimation.
 
 ![](/media/ai-capabilities/depth-normal-map/legacy_gyazo_8471cde6727e271aa05f0bad44797144.png){media=image}
 
 [](/workflows/ai-capabilities/depth-normal-map/midas_depth_normal_map.json)
 
 - **MiDaS**
-  - A model trained to estimate relative depth even from "miscellaneous images" with varied camera parameters.
-  - It has been widely used for purposes where knowing "relatively which is front or back" is sufficient.
+  - Trained to estimate relative depth even from a messy mix of images with all sorts of camera parameters.
+  - Widely used whenever it's enough to know "what's in front of what."
 
 - **ZoeDepth**
-  - A model aiming to uniformly handle relative depth and metric depth (meters).
+  - Aims to handle both relative depth and metric depth (in meters) in one model.
 
-There is not much point in using these in new workflows, but you may see them in old workflows, so just remember the names.
+There's little reason to use these in new workflows, but they show up in older ones, so it's worth knowing the names.
 
 ### Depth Anything Family
 
-The current mainstream is foundation models for depth estimation like **Depth Anything / Depth Anything V2 / V3**.
+These days, the mainstream choice is depth estimation foundation models like **Depth Anything / Depth Anything V2 / V3**.
 
 ![](/media/ai-capabilities/depth-normal-map/legacy_gyazo_69b8c5331c693c699d389f1c95935fff.png){media=image}
 
 [](/workflows/ai-capabilities/depth-normal-map/depth_anything_v2.json)
 
-When creating depth maps in ComfyUI, you will mostly use them as preprocessing for ControlNet, so for now, using this is OK.
+In ComfyUI, you'll mostly be making depth maps as preprocessing for ControlNet, and for that, just using this is fine.
 
 ---
 
 ## Depth/Normal Estimation Derived from Diffusion Models
 
-Since diffusion models became widespread, research has also emerged in the direction of "using the world knowledge possessed by generative models for other tasks."
+Once diffusion models caught on, research also started on "putting the world knowledge inside generative models to use for other tasks."
 
-Without fear of misunderstanding, it is like **"converting style to depth map style."**
+To put it crudely, it's like **"style-transferring the image into a depth map."**
 
 ### Marigold
 
-Marigold is a model based on Stable Diffusion 2, "fine-tuned for depth estimation tasks."
+Marigold is Stable Diffusion 2 "fine-tuned for depth estimation."
 
-It attracted a lot of attention at the time because there were few other ideas of using image generation models for purposes other than image generation.
-However, since it requires almost the same computational cost as generating one image, it is a bit heavy as mere preprocessing.
+It got a lot of attention at the time, since hardly anyone else had thought of using an image generation model for something other than generating images.
+But it costs about as much compute as generating a whole image, which is a bit heavy for a simple preprocessing step.
 
 ### Lotus
 
-Lotus is a dense prediction model of the type that "uses the architecture of diffusion models but outputs depth or normal itself instead of predicting noise."
+Lotus is a dense prediction model that "uses a diffusion model architecture but outputs depth or normals directly instead of predicting noise."
 
 ### LBM (Latent Bridge Matching)
 
-LBM is a framework for "1-step image-to-image" based on Stable Diffusion XL, but it has derivative models for depth estimation / normal estimation within it.
+LBM is a framework for "one-step image-to-image" built on Stable Diffusion XL, and it includes spin-off models for depth estimation and normal estimation.

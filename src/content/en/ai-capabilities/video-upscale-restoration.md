@@ -7,7 +7,7 @@ navId: video-upscale-restoration
 title: Video Upscale & Restoration
 created: 2025-12-01
 updated: 2026-03-02
-summary: Dedicated models to make videos larger and cleaner
+summary: Dedicated models for making videos bigger and cleaner
 seoTitle: "AI Video Upscaling and Restoration: SeedVR2, FlashVSR"
 seoDescription: "Models for upscaling and restoring video: why frame-by-frame image upscalers flicker, and how SeedVR2 and FlashVSR stay consistent over time."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
@@ -17,22 +17,22 @@ hero:
 
 ## Video Upscale & Restoration
 
-The basic concept and methods are almost the same as [Upscale & Restoration](/en/ai-capabilities/upscale-restoration/).
+The basic idea and methods are almost the same as in [Upscale & Restoration](/en/ai-capabilities/upscale-restoration/).
 
 * 1. Increase resolution
-* 2. Complement lost details plausibly and adjust image quality
+* 2. Plausibly fill in lost detail and clean up the image quality
 
-However, there is one major difference: in video, **temporal connection (no flickering)** is important.
+There is one big difference, though: with video, **continuity over time (no flicker)** matters.
 
-Applying a still image upscaler "frame by frame" is technically video upscaling, but since it does not have **temporal consistency**, flickering may occur.
+Applying a still-image upscaler "one frame at a time" does technically upscale a video, but it has no **temporal consistency**, so you may get flicker.
 
-After all, it is better to use an upscaler dedicated to video.
+So you're better off using an upscaler made for video.
 
-I will introduce just two current SoTAs.
+Here are just two of the current state-of-the-art options.
 
 > [!NOTE]
-> You cannot use still image upscalers for video, but the reverse is not particularly problematic.
-> In fact, they perform better than those dedicated to still images and are often used.
+> You can't use still-image upscalers for video, but the reverse works just fine.
+> In fact, video upscalers often perform better than dedicated still-image ones, and they're widely used that way.
 
 ---
 
@@ -40,9 +40,9 @@ I will introduce just two current SoTAs.
 
 [numz/ComfyUI-SeedVR2_VideoUpscaler](https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler)
 
-Specialized in video upscaling, enabling generation in 1 step.
+Built specifically for video upscaling, it generates in a single step.
 
-It is extremely high performance enough to be used at the restoration level, but it is very heavy.
+It's powerful enough to use for proper restoration, but it's very heavy.
 
 ---
 
@@ -54,6 +54,6 @@ It is extremely high performance enough to be used at the restoration level, but
 
 [](/workflows/ai-capabilities/video-upscale-restoration/flashvsr.json)
 
-It processes multiple frames together to suppress temporal blur and flickering.
+It processes several frames at once to keep temporal jitter and flicker down.
 
-It is designed to achieve processing speeds close to real-time, and is fast and lightweight, so it is good to try this one for now.
+It's designed for near-real-time processing speeds, and since it's fast and lightweight, it's a good one to try first.

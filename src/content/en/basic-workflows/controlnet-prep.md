@@ -7,7 +7,7 @@ navId: controlnet-prep
 title: "ControlNet Preprocessor"
 created: 2025-12-08
 updated: 2026-03-02
-summary: "Creating auxiliary images for use with ControlNet"
+summary: "Making the control images ControlNet uses"
 seoTitle: "ComfyUI ControlNet Preprocessors: Canny, Depth, OpenPose"
 seoDescription: "Make ControlNet control images from a reference: Canny, SoftEdge, Lineart, Depth, Normal, MLSD, OpenPose, and other preprocessors compared."
 tags: ["controlnet"]
@@ -16,23 +16,23 @@ hero:
   image: "/media/basic-workflows/controlnet-prep/legacy_gyazo_b0ce7cf302624ce253c4d12e78885127.png"
 ---
 
-## What is Preprocessor?
+## What is a Preprocessor?
 
-How do you prepare "control images" like stick figures and depth maps used in ControlNet?
-While simple edges like Canny might be manageable, drawing a depth map by hand every time is not realistic.
+How do you prepare the "control images" ControlNet uses, like stick figures and depth maps?
+Simple edges like Canny might be doable, but drawing a depth map by hand every time just isn't realistic.
 
-Therefore, the process of automatically creating stick figures, depth maps, line drawings, normal maps, etc. from reference images is collectively called **"Preprocessor"** for convenience in the ControlNet community.
+So in the ControlNet world, the processes that automatically create stick figures, depth maps, line art, normal maps, and so on from a reference image are lumped together, for convenience, as **"Preprocessors."**
 
-There is no single technology that does all of these; there are separate technologies for each, such as pose estimation, depth estimation, and line drawing extraction.
+There isn't one technology that does all of this. Pose estimation, depth estimation, line art extraction, and the rest are each separate technologies.
 
 ---
 
 ## The True Nature of Control Images
 
-I said it was hard to draw by hand, but please remember that **"it IS possible to draw by hand"**.
+I said drawing them by hand is hard, but keep in mind that you *can* draw them by hand.
 
-The control image is not a special data type, but **just an RGB image**.
-You can paint over interfering parts in a depth map with black, or redraw just the arms of a pose image to change the posture.
+A control image isn't a special data type. It's **just an RGB image**.
+Feel free to paint out unwanted parts of a depth map in black, or redraw just the arms in a pose image to change the pose.
 
 ---
 
@@ -46,10 +46,10 @@ Basically, this is all you need.
 
 ## Frequently Used Preprocessors
 
-Here we introduce technologies that are actually used frequently.
-There are things with better performance, but we have chosen them focusing on ease of use, lightness, and usability.
+Here are the ones that actually get used a lot.
+There are better-performing options, but I picked these for being easy, lightweight, and simple to use.
 
-If you are using it for ControlNet, you don't need such extreme accuracy.
+For ControlNet, you don't need extreme accuracy anyway.
 
 {% mediaRow img="/media/basic-workflows/controlnet-prep/legacy_gyazo_25026afc9e67bd130954acbf98fd851a.png{media=image}", width=50, align="left" %}
 
@@ -99,7 +99,7 @@ If you are using it for ControlNet, you don't need such extreme accuracy.
 
 
 - 🟩 Depth Anything V2
-  - Currently developed up to V3, but V2 is sufficient for ControlNet use.
+  - It's up to V3 now, but V2 is plenty for ControlNet.
 
 {% mediaFooter %}
 [](/workflows/basic-workflows/controlnet-prep/depth_anything_v2.json)
@@ -140,7 +140,7 @@ If you are using it for ControlNet, you don't need such extreme accuracy.
 
 - 🟩 OpenPose
 - 🟨 DWPose
-  - Often treated as a higher compatible version of OpenPose, but it has a clear weakness that it is not good at back views. Use it together with OpenPose depending on the situation.
+  - It's often treated as a straight upgrade over OpenPose, but it has one clear weakness: it struggles with people seen from behind. Use it alongside OpenPose depending on the situation.
 
 {% mediaFooter %}
 [](/workflows/basic-workflows/controlnet-prep/openpose_dwpose.json)
@@ -155,7 +155,7 @@ If you are using it for ControlNet, you don't need such extreme accuracy.
 
 [judian17/ComfyUI-SDPose-OOD](https://github.com/judian17/ComfyUI-SDPose-OOD)
 - 🟩 SDPose
-  - OpenPose is very weak with animals and anime illustrations, so try this if it doesn't work well.
+  - OpenPose is really bad with animals and anime illustrations, so try this one when it doesn't work.
 
 {% mediaFooter %}
 [](/workflows/basic-workflows/controlnet-prep/sdpose.json)

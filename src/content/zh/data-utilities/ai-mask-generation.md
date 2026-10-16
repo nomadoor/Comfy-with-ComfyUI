@@ -19,7 +19,7 @@ hero:
 
 在 inpainting 等场景中，经常需要制作蒙版。但每次都手动绘制，或者提前准备蒙版图像，非常麻烦。最重要的是，这样无法自动化。
 
-但是，单纯说一句“把这部分做成蒙版”，并不一定就能轻松得到干净的蒙版。
+不过，只说一句“把这部分做成蒙版”就能轻松做出干净蒙版的技术，其实并不多。
 
 需要把几种 AI 技术组合起来考虑。
 
@@ -47,7 +47,7 @@ YOLO 是以实时检测物体为目的的超高速检测技术。
 
 基本上，它会针对想要检测的物体类型分别制作模型，例如人脸专用、手专用等。如果没有对应模型，就需要自己制作；如果想同时检测多种类别，也不太适合。
 
-相对地，它的处理非常轻，适合需要高速处理的情况。
+相应地，它的处理非常轻，适合需要高速处理的场合。
 
 ### Grounding DINO 等
 
@@ -63,7 +63,7 @@ Grounding DINO 会检测用文本指定的物体，并输出 BBOX。
 
 ![](/media/data-utilities/ai-mask-generation/legacy_gyazo_eac97524bcdcb395cdd5172c3694da41.png){media=image}
 
-比较早期的代表例是 **Florence-2**。
+虽然已经相当老了，代表性的有 **Florence-2**。
 
 速度较慢，但理解能力较高，因此可以用“画面右侧戴着蓝色帽子的女性”这样的复杂句子来指定目标。
 
@@ -95,29 +95,29 @@ SAM 是目前最有名的分割模型。
 
 ![](/media/data-utilities/ai-mask-generation/legacy_gyazo_cd6078ed81d850085144836e404754d5.png){media=image}
 
-目前最新模型的内容，会在 [SAM 3 / 3.1](/zh/data-utilities/sam3/) 页面中说明。
+目前最新的模型 [SAM 3 / 3.1](/zh/data-utilities/sam3/) 有单独的页面介绍。
 
 ---
 
-## 实践例
+## 实践示例
 
 下面组合上述技术，生成任意文本或类别的蒙版。
 
 > [!NOTE]
-> 以下 workflow 是 SAM 3 出现以前经常使用的结构。如果目标是指定对象并进行分割，现在请先尝试 [SAM 3 / 3.1](/zh/data-utilities/sam3/)。
+> 以下工作流是 SAM 3 出现以前经常使用的结构。如果目标是指定对象并进行分割，现在请先尝试 [SAM 3 / 3.1](/zh/data-utilities/sam3/)。
 >
-> 这里保留下来，是为了方便理解旧 workflow，或在既有环境中复现相同结构。
+> 这里保留下来，是为了方便理解旧工作流，或在既有环境中复现相同结构。
 
 ### 必要的自定义节点
 
-以下自定义节点可能是运行本页实践例所需要的。
+运行本页的实践示例时，可能会用到以下自定义节点。
 
 - **[1038lab/ComfyUI-RMBG](https://github.com/1038lab/ComfyUI-RMBG)**
   - 以前从抠图到分割都经常使用。
   - 现在 ComfyUI core 中也有 BiRefNet 系背景去除，所以请先确认 core 侧的节点。
 - **[ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)**
 - **[ltdrdata/ComfyUI-Impact-Subpack](https://github.com/ltdrdata/ComfyUI-Impact-Subpack)**
-  - 常用于 Detailer 周边。单纯作为蒙版生成使用时稍微有点特殊。
+  - 常用于 Detailer 周边。只拿来生成蒙版的话，用起来有点别扭。
 - **[kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2)**
   - 运行 Florence2 这个 MLLM。
 - **[kijai/ComfyUI-segment-anything-2](https://github.com/kijai/ComfyUI-segment-anything-2)**
@@ -139,7 +139,7 @@ SAM 是目前最有名的分割模型。
 
 Grounding DINO 与 SAM 改良版 HQ-SAM 的组合。
 
-它可以用文本指定对象，同时生成高精度蒙版，因此曾是最常用的组合之一。
+它可以用文本指定对象，同时生成高精度蒙版，因此是最常用的组合之一。
 
 ### Florence2 × SAM2
 
@@ -149,7 +149,7 @@ Grounding DINO 与 SAM 改良版 HQ-SAM 的组合。
 
 Florence2 与 SAM2.1 的组合。
 
-如果是人或动物等容易理解的对象，很多方法都可以。但如果想指定“戴墨镜的男人”、“躺在树下的猫”这类复杂条件，这种 LLM 系模型就会发挥作用。
+如果是人或动物这类好认的对象，用哪个都行；但想用“戴墨镜的男人”“躺在树下的猫”这类复杂条件来指定时，这种基于 LLM 的模型就能大显身手。
 
 ### SAM 3 × BiRefNet
 
@@ -159,6 +159,6 @@ Florence2 与 SAM2.1 的组合。
 
 分割本来是为了区分对象，并不是为了精细抠图。
 
-相对地，抠图可以处理头发这种细小部分，也可以处理玻璃这类半透明物体。
+而抠图可以处理头发这种细小部分，也可以处理玻璃这类半透明物体。
 
-把它们组合起来，就可以利用两者的能力。
+把两者组合起来，就能让各自的长处相互叠加。

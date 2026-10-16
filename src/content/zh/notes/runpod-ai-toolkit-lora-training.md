@@ -33,7 +33,7 @@ permalink: "/{{ lang }}/notes/{{ slug }}/"
 
 ## 整体流程
 
-1. 创建 RunPod 账号并购买点数
+1. 创建 RunPod 账号并购买积分
 2. 创建 Pod
 3. 打开 AI Toolkit 界面
 4. 上传 Dataset
@@ -44,7 +44,7 @@ permalink: "/{{ lang }}/notes/{{ slug }}/"
 
 ---
 
-## 1. 创建 RunPod 账号并购买点数
+## 1. 创建 RunPod 账号并购买积分
 
 ### 创建账号
 
@@ -52,20 +52,20 @@ permalink: "/{{ lang }}/notes/{{ slug }}/"
 
 打开 [RunPod](https://www.runpod.io/)，从 `Sign Up` 创建账号。
 
-### 购买点数
+### 购买积分
 
-RunPod 是先购买点数，再消耗点数使用 GPU 的形式。
+RunPod 需要先购买积分再使用。
 
 如果只是试一下 LoRA 训练，10 美元左右就足够了。
 
 ![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_f683db8baf406ed1aa79e5d348f1e406.png){media=image}
 
 - 点击右上角的 `+` 按钮
-- 如果想购买 150 美元或更少的点数，选择 `Other`
+- 如果想购买 150 美元或更少的积分，选择 `Other`
 - 输入金额，然后进入 `Go to Checkout`
 
 > [!NOTE]
-> 不一定要用，不过这是我的邀请链接。从这里注册并购买至少 10 美元的点数，会额外得到一点额度。
+> 不一定要用，不过这是我的邀请链接。从这里注册并购买至少 10 美元的积分，会额外得到一点额度。
 >
 > [RunPod 邀请链接](https://runpod.io?ref=ke9q7kqp)
 
@@ -94,7 +94,7 @@ Pod 就像一台可以自定义的云端租用 PC。
   - 这是 AI Toolkit 作者 Ostris 制作的 Template。
   - 搜索结果里会出现许多同名 Template，请注意不要选错。
 
-选择 Template 后，从 `Set overrides` 修改一项设置。
+选好 Template 后，从 `Set overrides` 稍微改一下设置。
 
 - 打开 `Environment Variables`
 - 把 `AI_TOOLKIT_AUTH` 的值改成只有自己知道的密码
@@ -124,7 +124,7 @@ VRAM 不够时，训练中会出现 `Out of Memory`，无法继续处理。
 点击 `Deploy Pod` 后，Pod 就会被创建。
 
 > [!WARNING]
-> 从这个时间点开始会消耗点数。dataset 等准备工作最好提前完成。
+> 从这个时间点开始会消耗积分。dataset 等准备工作最好提前完成。
 
 ---
 
@@ -140,7 +140,7 @@ Pod 准备好后，会显示 `🟢Ready`，并出现打开 AI Toolkit 的链接�
 
 ![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_696fa9e2aa3260c51214fd4fc7c3af1a.png){media=image}
 
-它会要求输入密码，这里输入刚才设置在 `AI_TOOLKIT_AUTH` 中的值。
+如果要求输入密码，就输入刚才在 `AI_TOOLKIT_AUTH` 中设置的值。
 
 接下来大致看一下在 AI Toolkit 中训练模型的流程。
 
@@ -157,7 +157,7 @@ Pod 准备好后，会显示 `🟢Ready`，并出现打开 AI Toolkit 的链接�
 - 给 dataset 命名
 - 拖放图片和 `.txt` 文件
 
-只要图片和对应的 caption file 被正确读取，就可以继续。
+只要图片和对应的 caption file 都读取进来了，就 OK 了。
 
 ---
 
@@ -216,7 +216,7 @@ Job 创建好之后，开始训练。
 
 RunPod 在 Pod 运行期间，即使没有实际操作，也会产生费用。
 
-所以不要忘记停止它。
+白白花钱太可惜了，别忘了停止它。
 
 ![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_f60fe312a59e9fe6624490c8004da78e.png){media=image}
 
@@ -225,7 +225,7 @@ RunPod 在 Pod 运行期间，即使没有实际操作，也会产生费用。
 - 用 `Stop` 停止 Pod
 - 确认必要文件都已经下载
 
-只按 `Stop` 的话，GPU 计费会停止，但 Volume disk 的 storage 费用仍然会保留。
+只按 `Stop` 的话，GPU 计费会停止，但 Volume disk 的 storage 费用还会继续产生。
 
 如果已经可以关闭 AI Toolkit，就执行 `Terminate` 完全关闭。
 

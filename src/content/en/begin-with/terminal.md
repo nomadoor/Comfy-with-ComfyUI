@@ -19,8 +19,8 @@ hero:
 
 **It's "that thing hackers use in movies".**
 
-Unlike the screen operated with a mouse (GUI) that you usually use, the terminal (CLI) operates the computer by **typing commands (text)**.
-It may be unfamiliar and intimidating for non-engineers, but if you actually try it, it's surprisingly not a big deal.
+Unlike the mouse-driven screens (GUI) you normally use, a terminal (CLI) lets you **control the computer by typing commands (text)**.
+If you're not an engineer, it may feel unfamiliar or intimidating, but once you actually try it, it's surprisingly no big deal.
 
 ## Basic Structure of CLI
 
@@ -28,12 +28,12 @@ It may be unfamiliar and intimidating for non-engineers, but if you actually try
 
 * **Prompt**
     * The `PS D:\something` part.
-    * It indicates "current folder (location)". (User name etc. on Mac)
+    * It shows the "folder (location) you're currently in." (On a Mac, it shows things like your user name.)
 * **Command**
-    * Enter the operation you want the computer to do.
+    * Type what you want the computer to do.
     * Example: `cd` (change directory) / `ls` (list files)
 * **Argument (Option)**
-    * Additional parameters to finely control the command behavior.
+    * Extra parameters for fine-tuning how the command behaves.
     * Example: `ls -l`
 * **Path**
     * -> [Path](/en/begin-with/path/)
@@ -45,12 +45,12 @@ It may be unfamiliar and intimidating for non-engineers, but if you actually try
 
 ### How to open PowerShell
 - 1.  `Win key` + `R` -> Type `powershell` -> `OK`
-- 2.  Or, open the folder you want to operate in Explorer -> Right click on blank space -> `Open in Terminal`
+- 2.  Or open the folder you want to work in with Explorer -> Right-click an empty area -> `Open in Terminal`
 
-### Commands you should remember at minimum
+### The bare-minimum commands
 
 * `cd <path>`
-    * Move folders.
+    * Moves to another folder.
     ![](/media/begin-with/terminal/legacy_gyazo_aae05ca5c1531996bf5781960e260f46.mp4){media=loop}
 * `dir`
     * Displays a list of folders and files in the current folder.
@@ -71,26 +71,26 @@ It may be unfamiliar and intimidating for non-engineers, but if you actually try
 * **Linux:** `Ctrl` + `Alt` + `T` (Common in many distributions)
 
 ### Basic Commands
-There are many parts common with Windows (PowerShell), but there are also subtle differences.
+Much of it is the same as Windows (PowerShell), but some commands are slightly different.
 
 * `cd <path>`
-    * Move folders.
+    * Moves to another folder.
 * `ls`
     * Displays a list of files in the current folder.
 * `mkdir <folder name>`
     * Creates a folder.
 * `rm <file name>`
     * Deletes a file.
-    * **Caution:** If you delete it in the terminal, it does not go to the "Trash" and disappears immediately, so it cannot be restored. Be careful!
+    * **Caution:** Files deleted in the terminal don't go to the "Trash"; they're gone immediately and can't be recovered. Be careful!
 * `./<executable file name>`
-    * Executes a script etc. in the current folder. Pay attention to the direction of the slash `/`.
+    * Runs a script or similar file in the current folder. Note which way the slash `/` leans.
 * `open .` (macOS only)
-    * Opens the location currently open in the terminal with Finder (window). It is the strongest command when you wonder "Where am I?" or want to check files with GUI.
-    * *In Linux, `xdg-open .` corresponds to this.
+    * Opens the terminal's current location in a Finder window. It's the ultimate command when you're wondering "Where am I?" or want to check files in the GUI.
+    * *On Linux, the equivalent is `xdg-open .`.
 
 ### Supplement: sudo
-In Linux/Mac, when making important changes related to the system, you may be asked for "administrator privileges".
-In that case, add `sudo` to the beginning of the command (Example: `sudo rm ...`).
+On Linux/Mac, you may need "administrator privileges" to make important changes to the system.
+In that case, put `sudo` at the start of the command (Example: `sudo rm ...`).
 
-* **Important:** You will be asked for a password, but **nothing is displayed on the screen even if you type on the keyboard**.
-* It's not broken, so trust it, enter the password, and press Enter.
+* **Important:** You'll be asked for a password, but **nothing shows up on screen as you type**.
+* It's not broken, so trust it, type your password, and press Enter.

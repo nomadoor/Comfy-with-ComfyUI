@@ -20,11 +20,11 @@ tags: []
 
 [Ideogram 4.0](https://ideogram.ai/models/4.0/) is a 9.3B DiT-based model.
 
-Its main feature is that it uses JSON-style captions, allowing fairly detailed control over elements inside the image.
+Its standout feature is JSON-format captions, which let you specify the elements in an image in quite a lot of detail.
 
-There was a similar model called [FIBO](https://github.com/Bria-AI/FIBO), but Ideogram 4.0 is stronger at BBOX coordinate instructions and color specification. It is suited to DTP-like design tasks such as posters, logos, UI, and packaging.
+[FIBO](https://github.com/Bria-AI/FIBO) took a similar approach, but Ideogram 4.0 is especially good at following BBOX coordinates and specified colors, which makes it a good fit for DTP-style design work like posters, logos, UI, and packaging.
 
-In exchange for that control, it may not be the most casual model. You need to write prompts in the expected format to get its intended performance.
+The price of all that control is that it won't perform as intended unless you write prompts in its expected format, so it may not be the most casual model to use.
 
 ---
 
@@ -54,19 +54,19 @@ In exchange for that control, it may not be the most casual model. You need to w
         └── flux2-vae.safetensors
 ```
 
-I will explain the details later, but because it loads two Diffusion models, it is quite heavy.
+I'll explain the details later, but it loads two diffusion models, so it's quite heavy.
 
-ComfyUI manages memory internally, so lack of VRAM does not always mean it cannot generate at all, but it can take a very long time.
+ComfyUI juggles memory internally, so running short on VRAM doesn't mean you can't generate at all, but it will take a very long time.
 
-`nvfp4` is an option to make it lighter, but quality drops.
+You can use `nvfp4` to lighten the load, but quality drops.
 
-The `unconditional` side has less impact on quality, so using `fp8` for the normal side and `nvfp4` for the `unconditional` side may be a good balance.
+The `unconditional` side has less effect on quality, so using `fp8` for the main model and `nvfp4` for the `unconditional` one might be a good choice.
 
 ---
 
 ## Prompt
 
-Plain natural language can generate images, but without following the expected JSON schema, the quality will not really come out.
+Plain natural-language prompts do work, but unless you follow the expected JSON schema, you won't get decent quality.
 
 The basic form looks like this.
 
@@ -101,9 +101,9 @@ The basic form looks like this.
 }
 ```
 
-The structure itself is simple: overall description, style, background, and descriptions for each element. Still, writing this by hand every time is not realistic.
+The structure itself is simple: an overall description, style, background, and a description for each element. But you can't be writing this by hand every time.
 
-The coordinates are especially annoying. You need to specify where each element should go using BBOX, and imagining that in your head is almost impossible.
+The coordinates are especially tedious. You have to specify with BBOXes which element goes where in the image, and picturing that in your head is next to impossible.
 
 So here are a few ways to create the prompt.
 
@@ -111,9 +111,9 @@ So here are a few ways to create the prompt.
 
 The easiest way is to pass the official [Prompting Guide](https://github.com/ideogram-oss/ideogram4/blob/main/docs/prompting.md) and a description of the image you want to an LLM, and have it convert the request into a JSON caption.
 
-You can also give it reference images or a rough sketch you made.
+You could also hand it a reference image or a rough sketch of your own.
 
-Local models that can run inside ComfyUI usually are not strong enough for this, so it is better to rely on ChatGPT, Gemini, and similar tools.
+Local models small enough to run in ComfyUI aren't up to this, so you're better off just relying on ChatGPT, Gemini, or similar.
 
 ![](/media/basic-workflows/ideogram-4/legacy_gyazo_b314abc36bec096b81fb3231a2687064.png){media=image}
 
@@ -127,8 +127,8 @@ For example, [ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes) include
 
 ![](/media/basic-workflows/ideogram-4/legacy_gyazo_a1c3a269983b478c1f605e2f0a5c6e4f.png){media=image}
 
-- Set the generated image size, then enter the background and style fields.
-- Drag in the region field to create a BBOX, then set the prompt and color code for what you want drawn there.
+- Set the size of the image to generate, then fill in things like the background and style.
+- Drag in the region area to create a BBOX, then set the prompt and color codes for what you want drawn there.
 
 ---
 
@@ -138,16 +138,16 @@ For example, [ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes) include
 
 [](/workflows/basic-workflows/ideogram-4/ideogram_4_0_text2image.json)
 
-Aside from the prompt, there are a few parts that are slightly different from a normal workflow, so let's look only at those.
+Besides the prompt, a few parts differ a little from a typical workflow, so let's just go over those.
 
 {% mediaRow img="/media/basic-workflows/ideogram-4/legacy_gyazo_c0d5e9131313e7c3c5255b4f54d55dbb.png {media=image}", width=33, align="left" %}
 **Load Diffusion Model**
 
 Ideogram 4.0 loads two diffusion models for its slightly unusual CFG.
 
-- In normal [CFG](/en/ai-capabilities/cfg/), the result with a prompt and the result without a prompt are compared, pushing the generation toward the prompt.
+- Normal [CFG](/en/ai-capabilities/cfg/) compares the result with the prompt against the result without it, and pushes the generation toward the prompt.
 - Ideogram 4.0 does not pass an empty prompt to the unconditional side. Instead, it sends image-only input, without text tokens, through the unconditional model.
-- It is easy to wonder what the difference is, but you can think of it as a trick for handling the positive prompt more delicately.
+- You might wonder what difference that makes, but I guess it's a trick for handling the positive prompt with more finesse.
 
 {% endmediaRow %}
 
@@ -155,7 +155,7 @@ Ideogram 4.0 loads two diffusion models for its slightly unusual CFG.
 
 ## Ideogram 4 TurboTime LoRA
 
-This is a LoRA published by Ostris for generating in 2 to 8 steps.
+A LoRA released by Ostris that lets you generate in 2 to 8 steps.
 
 ### Model Download
 
@@ -176,16 +176,16 @@ This is a LoRA published by Ostris for generating in 2 to 8 steps.
 [](/workflows/basic-workflows/ideogram-4/ideogram_4_0_text2image_turbotime.json)
 
 - It generates with CFG 1.0, so the unconditional model is no longer needed.
-- It is described as a 2 to 8 step LoRA, but very low step counts clearly start to break the image.
-- For now, using it at 8 steps is a good choice.
+- It's billed as a 2-8 step LoRA, but with too few steps the image clearly starts to fall apart.
+- For now, 8 steps is the way to go.
 
 {% mediaRow img="/media/basic-workflows/ideogram-4/legacy_gyazo_26ef78ed5bf868ab5ca9a62b643640ff.png {media=image}", width=33, align="left" %}
 **CFG**
 
-This is an old small technique, but the CFG value changes between the first and second half of sampling.
+This is a small trick that's been around for ages: use a different CFG value for the first and second halves of sampling.
 
 - In this workflow, the first half is CFG 7, and the second half is CFG 3.
-- Rather than applying high CFG from start to finish, weakening it partway through tends to be more stable.
+- Lowering a high CFG partway through is more stable than keeping it high from start to finish.
 - `CFG Override` is the node used for this.
 - It overrides the CFG value only for the specified step range.
 - In this workflow, `cfg` becomes 3 after 70% of the total steps.

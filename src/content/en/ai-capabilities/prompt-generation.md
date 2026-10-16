@@ -7,7 +7,7 @@ navId: prompt-generation
 title: Prompt Generation & Editing
 created: 2025-12-01
 updated: 2026-03-02
-summary: "Techniques to refine roughly written instructions into prompts that models can easily understand"
+summary: "Turning rough instructions into prompts a model can easily understand"
 seoTitle: "Generate and Refine Prompts with LLMs for Image Generation"
 seoDescription: "Use LLMs to turn rough ideas into prompts image models understand, from the Stable Diffusion era to natural-language models, and how to do it in ComfyUI."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
@@ -17,63 +17,63 @@ hero:
 
 ## What is Prompt Generation & Editing?
 
-Back when prompts were the only parameter we could really touch, terms like "prompt engineering" and "spells" were popular (nostalgic, isn't it?).
+Back when the prompt was the only parameter we could really play with, terms like "prompt engineering" and "spells" were all the rage (good times).
 
-Compared to current natural language prompts, prompts for Stable Diffusion 1.5 were like spells listing tags. The model's comprehension was low, and it was necessary to trial and error prompts while looking at the actual output.
+Compared to today's natural-language prompts, prompts for Stable Diffusion 1.5 were incantations made of strings of tags. The models didn't understand much, so you had to tweak prompts by trial and error while watching the output.
 
-However, writing this by hand every time is tedious, and it inevitably becomes a craftsmanship. The attempt to offload this to LLMs is what we call "Prompt Generation & Editing" on this page.
+But writing these by hand every time is a chore, and it inevitably turns into a specialist craft. Handing that job off to an LLM is what this page calls "prompt generation & editing."
 
 ---
 
 ## Prompt Generation in the Stable Diffusion Era
 
-Models of the Stable Diffusion / SDXL generation could not understand natural language well, and writing comma-separated tags was the basic style.
+Stable Diffusion / SDXL-era models didn't understand natural language well, so the standard style was a string of comma-separated tags.
 
 > masterpiece, (best quality:1.05), 1girl, blue hair, …
 
-We devised ways such as lining up words with similar meanings or aligning with the quirks of the text used for model training... but it is troublesome to assemble "AI-oriented writing" by hand every time.
+People came up with tricks like stacking words with similar meanings or matching the quirks of the text the model was trained on... but building that "AI-flavored writing" by hand every time is a pain.
 
-So, dedicated models appeared that "convert roughly written prompts into Stable Diffusion-style tag sequences."
+So dedicated models appeared that "turn a roughly written prompt into a Stable Diffusion-style tag list."
 
 ### Representative Examples
 
 - **[dart](https://github.com/nkchocoai/ComfyUI-Dart/)**
-  - A lightweight model that generates Danbooru tag sequences. If you pass rough tags or descriptions, it turns them into dense tag sequences suitable for Stable Diffusion.
+  - A lightweight model that generates Danbooru tag lists. Give it a few rough tags or a description, and it expands them into a dense tag list that suits Stable Diffusion.
 
 - **[Qwen 1.8B Stable Diffusion Prompt](https://huggingface.co/hahahafofo/Qwen-1_8B-Stable-Diffusion-Prompt)**
-  - A smaller Qwen-based model specialized for SD prompt generation (Japanese -> English tag sequences, etc.).
+  - A small Qwen-based model specialized for generating SD prompts (e.g., Japanese → English tag lists).
 
-Both are tools specialized in **vomiting prompts in a format that SD1.5 / SDXL can easily handle**, not whether they are easy for humans to read.
+Neither cares whether the result is readable for humans. Both are tools built purely to **spit out prompts in a format SD1.5 / SDXL handles well**.
 
 ---
 
 ## Recent Models and Prompts
 
-DiT-based models like FLUX and recent image editing models use **LLM-based text encoders** like T5 and Qwen for their text encoders.
+DiT models like FLUX and recent image editing models now use **LLM-based text encoders** such as T5 and Qwen.
 
-Thanks to this, the ability to interpret natural language has improved far more than in the Stable Diffusion era, and techniques like so-called "spell prompts" have become almost unnecessary.
+As a result, they understand natural language far better than Stable Diffusion-era models did, and "spell"-style prompt tricks are mostly unnecessary now.
 
-On the other hand, it does not mean that "you can stably get good results even if you write roughly."
+That doesn't mean you can "write something sloppy and reliably get good results," though.
 
-The same goes for dealing with humans. It can be said that a good director's job is to concisely explain elements like the below.
+It's the same with people. You could say a good director's job is to explain things like these concisely:
 
-- **Quantitative information such as distance, angle of view, focal length, time of day, number of sheets**
-- **Specification for each element such as background, composition, lighting, style, facial expression**
+- **Quantitative details such as distance, angle of view, focal length, time of day, and how many of something**
+- **Specifics for each element, such as background, composition, lighting, style, and facial expression**
 
-However, writing this by hand every time is troublesome, so we use LLMs like ChatGPT. Even smooth requests like "Detail this Japanese prompt for FLUX.1," "Format it by adding composition, lighting, and camera information," or "Format this prompt for Qwen-Image" are enough to boost the density of the prompt.
+Still, writing all that by hand every time is a pain, so we use an LLM like ChatGPT. Even loose requests like "flesh out this Japanese prompt for FLUX.2," "add composition, lighting, and camera details and clean it up," or "format this prompt for Qwen-Image" are enough to make the prompt much richer.
 
-Some image generation models have dedicated LLMs prepared, but it does not mean that they are improved that significantly. The performance of the image generation model itself is more important.
+Some image generation models come with their own dedicated LLM, but it doesn't make a huge difference. The image generation model's own capability matters far more.
 
 ---
 
-## Operation in ComfyUI
+## Using It in ComfyUI
 
-There are several LLMs that can be run locally in ComfyUI, but please also consider **calling Gemini or ChatGPT with API nodes**.
+There are several LLMs you can run locally in ComfyUI, but also consider **calling Gemini or ChatGPT through API nodes**.
 
 ![](/media/ai-capabilities/prompt-generation/legacy_gyazo_94496f33d758475aa62f614978ea2252.png){media=image}
 
 [](/workflows/ai-capabilities/prompt-generation/z_image_gemini_3.json)
 
-I am one of those who want to stick to local models, but honestly, speaking of PC specs, it is often more severe to use a decent quality LLM locally on a regular basis than to run an image generation model.
+I'm one of those people who'd rather stick with local models, but honestly, running a decent LLM locally day to day is often harder on your PC than running an image generation model.
 
-Thankfully, LLM API usage fees are quite cheap. I still haven't used up the $5 credit I bought a long time ago (´・ω・｀)
+Luckily, LLM API fees are pretty cheap. I still haven't used up the $5 of credit I bought ages ago (´・ω・｀)

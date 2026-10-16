@@ -19,7 +19,7 @@ hero:
 
 ComfyUI Manager is a tool developed by ltdrdata for managing custom node installation, updates, and related tasks in one place.
 
-It became so common in many setups that it was almost treated like a default feature. As ComfyUI development moved under Comfy.Org, Manager has now also been incorporated as an official feature.
+It was installed almost everywhere as a matter of course, so it was effectively a default feature already. As ComfyUI development moved to Comfy.Org, Manager has now been brought in as an official feature too.
 
 ---
 
@@ -27,19 +27,19 @@ It became so common in many setups that it was almost treated like a default fea
 
 ![](/media/begin-with/comfyui-manager/legacy_gyazo_a0b09641bae0c8b02187e6c6b7bb9c5a.png){media=image}
 
-Confusingly, the current ComfyUI Manager has two versions: the **new Manager** and the **older Manager**, also called the legacy UI.
+Confusingly, the current ComfyUI Manager has two versions: the **new Manager** and the **old (legacy) Manager**.
 
-The new Manager has a cleaner UI and focuses on custom node management.
+The new Manager comes with a polished UI and is focused purely on managing custom nodes.
 On the other hand, convenient features that existed in the legacy version, such as restarting ComfyUI itself, updating ComfyUI, and downloading models, have been removed.
 
-Considering Comfy.Org's direction, the new Manager should be the recommended one, but many people may continue using the legacy version.
+If I follow what Comfy.Org intends, I should recommend the new Manager, but plenty of people are probably still using the legacy version.
 
 ---
 
 ## Installation and Enabling
 
 > [!WARNING]
-> Manager does not appear just because it is installed.  
+> Installing Manager alone does not make it appear.  
 > You also need to add a command line argument when launching ComfyUI.
 
 ### Desktop Version
@@ -103,7 +103,7 @@ For manual installation, work inside the ComfyUI folder with the virtual environ
 
 ![](/media/begin-with/comfyui-manager/legacy_gyazo_ff8b7cdae4aba2a086a9cfebe8019023.png){media=image}
 
-If installation and enabling succeeded, the `Extensions` button appears in the upper right.
+Once it's installed and enabled, an `Extensions` button appears in the upper right.
 
 Click it to open the Manager screen.
 
@@ -125,8 +125,8 @@ For manual installation:
 python main.py --enable-manager --enable-manager-legacy-ui
 ```
 
-If the new Manager UI is enough, start with `--enable-manager` only.
-If you need features that remain in the legacy version, such as update and model management, enable the legacy UI as needed.
+If the new Manager UI is all you need, `--enable-manager` on its own is fine to start with.
+If you want features that only the legacy version still has, such as updates and model management, enable the legacy UI as needed.
 
 ---
 

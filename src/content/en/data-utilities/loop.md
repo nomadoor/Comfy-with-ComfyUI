@@ -15,13 +15,13 @@ hero:
   image: ""
 ---
 
-For all its visual complexity, a ComfyUI workflow is basically a straight path. Material goes in, comes out processed. That is all.
+For all its visual complexity, a ComfyUI workflow is basically a straight path. You put material in, and it comes out processed. That's it.
 
 Sometimes, though, you want to take what you just processed and process it again.
 
-You could chain the same workflow over and over, but that is not very elegant.
+You could chain copies of the same workflow one after another, but that's not very elegant.
 
-That is where **loops** come in.
+That's where **loops** come in.
 
 ## Loop Basics
 
@@ -148,7 +148,7 @@ Start from `[0, 1]`, compute `a + b`, and pass `[b, a + b]` to the next iteratio
 
 ### Running Preview inside a loop
 
-Preview nodes only look at things, as the name suggests, so you will want to wire them up like this… but it gives an error.
+Preview nodes only look at things, as the name suggests, so you'll want to wire them up like this… but unfortunately, that gives an error.
 
 ![](/media/data-utilities/loop/loop_krea_2_preview_invalid.png){media=image}
 
@@ -162,7 +162,7 @@ Still, sometimes you just want a look at something without outputting it. That i
 
 [](/workflows/data-utilities/loop/loop_krea_2_preview_termination.json)
 
-Think of it as a bin that exists to keep the loop valid, and you will not go wrong.
+It's fine to think of it as a trash bin that's just there to make the loop valid.
 
 ---
 

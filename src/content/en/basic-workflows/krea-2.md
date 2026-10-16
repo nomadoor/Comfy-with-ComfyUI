@@ -20,9 +20,9 @@ tags: []
 
 [Krea 2 Open-Source](https://www.krea.ai/krea-2-open-source) is an open-weight image generation model from Krea.
 
-As with [FLUX.1 Krea](https://www.krea.ai/blog/flux-krea-open-source-release), which Krea released earlier, the architecture itself is not especially unusual. Instead, the model feels built with care around the dataset, aiming for beautiful images that do not look overly AI-like.
+Just like [FLUX.1 Krea](https://www.krea.ai/blog/flux-krea-open-source-release), which Krea made earlier, there's nothing special about the architecture. What sets it apart is the care that went into it: the dataset was carefully built so the model can generate beautiful images that don't look AI-made.
 
-Two models are available, but for normal image generation you will use Turbo.
+Two models have been released, but for regular image generation you'll use Turbo.
 
 - **Krea 2 Raw**
   - An undistilled base model. Mainly intended for LoRA training and fine-tuning.
@@ -30,7 +30,7 @@ Two models are available, but for normal image generation you will use Turbo.
   - A distilled model that can generate in 8 steps.
 
 > [!NOTE]
-> The Web / API version of Krea also has **Krea 2 Medium** and **Krea 2 Large**, but the open-weight release only includes **Raw** and **Turbo**.
+> Krea's web / API versions also include **Krea 2 Medium** and **Krea 2 Large**, but only **Raw** and **Turbo** have been released as open weights.
 
 {% runpod %}
 
@@ -64,7 +64,7 @@ Two models are available, but for normal image generation you will use Turbo.
 
 [](/workflows/basic-workflows/krea-2/krea_2_turbo_text2image.json)
 
-Krea 2 Turbo is a model for 8-step generation.
+Krea 2 Turbo is built for 8-step generation.
 
 - `steps` : 8
 - `cfg` : 1.0
@@ -74,7 +74,7 @@ Krea 2 Turbo is a model for 8-step generation.
 
 ## Official Style LoRAs
 
-One of Krea 2's major selling points is style control through features such as Style references and Moodboards, but at the moment those are not released as OSS.
+One of Krea 2's big selling points is style control through features like Style references and Moodboards, but for now those haven't been released as open source.
 
 Instead, Krea has released several official style LoRAs, so let's try those.
 
@@ -95,7 +95,7 @@ Each LoRA has its own recommended trigger word and strength, so check the model 
 
 [](/workflows/basic-workflows/krea-2/krea_2_turbo_text2image_darkbrush.json)
 
-- Here, [Krea-2-LoRA-darkbrush](https://huggingface.co/krea/Krea-2-LoRA-darkbrush) is used.
+- This example uses [Krea-2-LoRA-darkbrush](https://huggingface.co/krea/Krea-2-LoRA-darkbrush).
 - The trigger word is `monochrome ink wash style`.
 
-I am looking forward to seeing many LoRAs from the community.
+I'm looking forward to seeing lots of LoRAs from the community.

@@ -8,7 +8,7 @@ title: "(IMPORT FAILED)"
 created: 2025-12-13
 updated: 2026-03-02
 noteTags: ["troubleshoot", "custom-nodes"]
-summary: "Custom node loading failure"
+summary: "When custom nodes fail to load"
 seoTitle: "ComfyUI (IMPORT FAILED): Causes and Fixes"
 seoDescription: "Why ComfyUI shows (IMPORT FAILED) and custom nodes disappear, and how to fix it, from missing libraries to mismatched Python or PyTorch versions."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
@@ -20,30 +20,30 @@ hero:
 
 ![](/media/notes/import-failed/legacy_gyazo_3054a82b909490117748ae061e29c35e.png){media=image}
 
-- When starting ComfyUI, multiple lines of `(IMPORT FAILED)` appear in the terminal, and specific custom nodes cannot be used or do not appear in the node list.
+- When you start ComfyUI, several `(IMPORT FAILED)` lines show up in the terminal, and certain custom nodes don't work or don't appear in the node list.
 
-## Timing of occurrence
+## When it happens
 
-- Immediately after starting ComfyUI.
-- When installed custom nodes do not appear in the node list.
+- Right after starting ComfyUI.
+- When custom nodes you installed don't show up in the node list.
 
 ## Cause
 
-- Essential libraries are missing, or an incompatible Python / PyTorch version is used.
-  - If you scroll up from `(IMPORT FAILED)` in the terminal, you will see `ModuleNotFoundError: No module named 'facenet_pytorch'`, etc., indicating that the library required for that custom node cannot be found.
-- Path or OS dependent issues.
-  - Example: Cases like `UnicodeDecodeError('cp932' codec can't decode byte 0x87...)` where having non-ASCII characters in the folder path causes errors.
-- Conflict with other custom nodes.
-  - Sometimes nodes with old frontend implementations or unique dependencies crash because they are incompatible with the new ComfyUI.
+- A required library is missing, or you're using an unsupported Python / PyTorch version.
+  - Scroll up from `(IMPORT FAILED)` in the terminal and you'll see something like `ModuleNotFoundError: No module named 'facenet_pytorch'`, saying a library that custom node needs couldn't be found.
+- There's a path or OS-specific problem.
+  - For example, non-ASCII characters (such as Japanese) in the folder path can cause errors like `UnicodeDecodeError('cp932' codec can't decode byte 0x87...)`.
+- It conflicts with another custom node.
+  - Nodes with older frontend code or their own unusual dependencies sometimes don't get along with newer ComfyUI and fail to load.
 
 ## Solution
 
 - **If libraries are missing**
-  - If you are familiar with Python, you can `pip install` yourself, but otherwise, first open the GitHub of that custom node and check if the installation method is correct.
-  - Currently, if it is via ComfyUI Manager, many nodes install necessary libraries all together. Unless there is a special reason, please install from Manager first.
-  - Even for nodes where special procedures like "Please run this script manually" are written in README, if you don't understand well, please do not touch it in the first place.
+  - If you're comfortable with Python, you can `pip install` it yourself. Otherwise, first open that custom node's GitHub page and check that you installed it the right way.
+  - These days, many nodes install all the libraries they need when installed through ComfyUI Manager. Unless you have a specific reason not to, install from Manager first.
+  - If a node's README asks for special steps like "run this script manually" and you don't really understand them, don't touch that node in the first place.
 
-- **If conflict with other custom nodes is suspected**
-  - If possible, evacuate custom nodes other than the one outputting `(IMPORT FAILED)` from `custom_nodes`, and check if ComfyUI starts with only that node remaining.
-  - After that, return them little by little in combinations of "problem node + one other node" to isolate which node causes the crash when combined.
-  - If you don't need to use it that much, uninstall that node (delete the folder itself).
+- **If you suspect a conflict with another custom node**
+  - If you can, move every custom node except the one showing `(IMPORT FAILED)` out of `custom_nodes`, and check whether ComfyUI starts with only that node left.
+  - Then bring the others back a little at a time, as "problem node + one other node," to find out which combination makes it fail.
+  - If you don't need that node badly enough to go through all this, uninstall it (delete its whole folder).

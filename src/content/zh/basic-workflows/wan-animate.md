@@ -7,9 +7,9 @@ navId: wan-animate
 title: "Wan-Animate"
 created: 2026-02-06
 updated: 2026-03-02
-summary: "在 Wan-Animate 中进行向人物・角色的动作传送"
+summary: "用 Wan-Animate 把动作迁移到人物或角色上"
 seoTitle: "在 ComfyUI 中使用 Wan-Animate：人物动作迁移"
-seoDescription: "把参考视频的动作迁移到图像人物上的 Wan-Animate 用法。介绍 Animation 与 Replacement 模式、用 Lightx2v LoRA 实现 6 步加速，以及为长视频重复处理的方法。"
+seoDescription: "Wan-Animate 能把参考视频的动作迁移到图像中的人物上。本文介绍 Animation 与 Replacement 模式、用 Lightx2v LoRA 实现 6 步加速，以及为长视频重复处理的方法。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: ""
@@ -18,34 +18,34 @@ tags: ["human-motion-transfer","talking-head"]
 
 ## 什么是 Wan-Animate？
 
-[Wan-Animate](https://humanaigc.github.io/wan-animate/) 是专注于向人・角色传送动作的 **Wan2.1-14B-I2V 基础** 的模型。
+[Wan-Animate](https://humanaigc.github.io/wan-animate/) 是一个 **基于 Wan2.1-14B-I2V**、专门用于把动作迁移到人物或角色上的模型。
 
 > ![](/media/basic-workflows/wan-animate/legacy_gyazo_20a7f10f302751293cda0e0ed353d25a.png){media=image}
 
-- 配合参照视频的人物的动作，让输入的图像动起来的 **Animation 模式**
-- 将输入视频的人物，替换为参照图像的人物的 **Replacement 模式**
+- **Animation 模式**：让输入的图像按照参考视频中人物的动作动起来
+- **Replacement 模式**：把输入视频中的人物替换成参考图像中的人物
 
-有 2 种生成模式，如果将 Replacement 模式认为是向 Animation 模式添加了“适应背景那样的处理”的东西，我想比较容易理解。
+它有这 2 种生成模式。可以把 Replacement 模式理解为在 Animation 模式上加了“让人物融入背景的处理”，这样会比较好懂。
 
-因为是 Wan2.1 基础，所以只能生成到 77 帧，但也和 [Wan2.1 VACE](/zh/basic-workflows/wan-2-1-vace/) 的 Extension 一样，通过抽出最后的数帧并重复生成那个后续的处理，也可以实质上处理长视频。
+由于基于 Wan2.1，它最多只能生成 77 帧；不过和 [Wan2.1 VACE](/zh/basic-workflows/wan-2-1-vace/) 的 Extension 一样，反复“取出最后几帧、再生成后续”，实际上也能做出长视频。
 
 ---
 
-## 必要的自定义节点
+## 需要的自定义节点
 
-作为事前处理进行人脸检测和姿势推断。有以下的自定义节点非常方便。
+预处理阶段需要做人脸检测和姿势估计。有下面这些自定义节点会方便很多。
 
 - [ComfyUI-WanAnimatePreprocess](https://github.com/kijai/ComfyUI-WanAnimatePreprocess)
-  - 通过 YOLO 的人脸检测
-  - 通过 ViTPose 的姿势（火柴人）抽出
+  - 用 YOLO 检测人脸
+  - 用 ViTPose 提取姿势（火柴人）
 - [ComfyUI-segment-anything-2](https://github.com/kijai/ComfyUI-segment-anything-2)
-  - 使用 SAM2 的人物掩膜的生成（在 Replacement 模式使用）
+  - 用 SAM2 生成人物遮罩（Replacement 模式中使用）
 
 ---
 
-## 模型的下载
+## 下载模型
 
-凑齐 Wan-Animate 本体和 Wan2.1 系共通的模型。
+准备好 Wan-Animate 本身，以及 Wan2.1 系列通用的模型。
 
 - diffusion_models
   - [Wan2_2-Animate-14B_fp8_e4m3fn_scaled_KJ.safetensors](https://huggingface.co/Kijai/WanVideo_comfy_fp8_scaled/blob/main/Wan22Animate/Wan2_2-Animate-14B_fp8_e4m3fn_scaled_KJ.safetensors)
@@ -57,10 +57,10 @@ tags: ["human-motion-transfer","talking-head"]
   - [umt5_xxl_fp8_e4m3fn_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors)
 - vae
   - [wan_2.1_vae.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/vae/wan_2.1_vae.safetensors)
-- gguf（任意）
+- gguf（可选）
   - [Wan2.2-Animate-14B-GGUF](https://huggingface.co/QuantStack/Wan2.2-Animate-14B-GGUF/tree/main)
 
-配置例。
+放置示例如下。
 
 ```text
 📂ComfyUI/
@@ -83,9 +83,9 @@ tags: ["human-motion-transfer","talking-head"]
 
 ## Animation 模式
 
-是配合参照视频的人物的动作，让输入的静止画动起来的模式。
+这个模式会让输入的静态图像按照参考视频中人物的动作动起来。
 
-因为相当巨大所以心跳加速，但基础原样是 [Wan2.1 image2video](/zh/basic-workflows/wan-2-1/#image2video) 的形式。不要畏惧前进吧。
+工作流相当庞大，看着有点心慌，但基础就是 [Wan2.1 image2video](/zh/basic-workflows/wan-2-1/#image2video) 的结构。别怕，往下走吧。
 
 ![](/media/basic-workflows/wan-animate/legacy_gyazo_d25335c059e8117f9e617de4ffffefca.png){media=image}
 
@@ -93,9 +93,9 @@ tags: ["human-motion-transfer","talking-head"]
 
 {% mediaRow img="/media/basic-workflows/wan-animate/legacy_gyazo_77b9c908b9e96505678ccaa0bde8055b.png{media=image}", width=33, align="left" %}
 
-**1. 读取 Wan-Animate 模型**
+**1. 加载 Wan-Animate 模型**
 
-- 在 `Load Diffusion Model` 读取 `Wan2_2-Animate`。
+- 用 `Load Diffusion Model` 加载 `Wan2_2-Animate`。
 
 {% endmediaRow %}
 
@@ -103,24 +103,24 @@ tags: ["human-motion-transfer","talking-head"]
 
 **2. 决定生成分辨率**
 
-- 配合输入图像在 `Scale Image to Total Pixels` 调整总像素数。
-- 请配合 PC 的规格改变数值。
+- 根据输入图像，用 `Scale Image to Total Pixels` 调整总像素数。
+- 请根据电脑配置调整数值。
 - 最后将分辨率 **裁剪为 16 的倍数**。
 
 {% endmediaRow %}
 
 {% mediaRow img="/media/basic-workflows/wan-animate/legacy_gyazo_c76608836777ce6a604372c2d9cc9c43.png{media=image}", width=33, align="left" %}
 
-**3. 向 WanAnimateToVideo 节点输入追加信息**
+**3. 向 WanAnimateToVideo 节点输入额外信息**
 
 - `reference_image`
-  想动的静止画。
+  想让它动起来的静态图像。
 - `face_video`
-  从参照视频裁剪颜部分的视频。
-  `Pose and Face Detection` 自动通过 YOLO 进行人脸检测 → 裁剪。
+  从参考视频中裁剪出脸部的视频。
+  `Pose and Face Detection` 会自动用 YOLO 检测人脸 → 裁剪。
 - `pose_video`
-  从参照视频通过 ViTPose 生成火柴人（关键点）的视频。
-  因为驱动视频和想动的图像骨骼和位置不同，所以在 retarget 处理进行调整。
+  用 ViTPose 从参考视频生成的火柴人（关键点）视频。
+  驱动视频和要动起来的图像在骨架和位置上不一样，所以会通过 retarget 处理来调整。
 
 {% endmediaRow %}
 
@@ -132,9 +132,9 @@ tags: ["human-motion-transfer","talking-head"]
 
 ## Replacement 模式
 
-将输入视频的人物，替换为参照图像的人物的模式。
+这个模式会把输入视频中的人物替换成参考图像中的人物。
 
-变成向 Animation 模式添加了，为了 inpainting 人物的掩膜，和为了适应背景のリライト処理的东西。
+它是在 Animation 模式的基础上，加入了用于 inpainting 人物的遮罩，以及让人物融入背景的重新打光（relight）处理。
 
 ![](/media/basic-workflows/wan-animate/legacy_gyazo_ab3d36d1e2ddfd5d7e452778dbab411c.png){media=image}
 
@@ -142,28 +142,28 @@ tags: ["human-motion-transfer","talking-head"]
 
 {% mediaRow img="/media/basic-workflows/wan-animate/legacy_gyazo_a26743871782e80338ed0d920ef6b786.png{media=image}", width=33, align="left" %}
 
-**1. リライト LoRA 的追加**
+**1. 添加重新打光 LoRA**
 
-- 为了让替换后的人物溶入背景，添加 રિライト LoRA。
+- 添加 relight LoRA，让替换后的人物融入背景。
 
 {% endmediaRow %}
 
 {% mediaRow img="/media/basic-workflows/wan-animate/legacy_gyazo_bc59ff33c803effd0e772879857e8a3a.png{media=image}", width=33, align="left" %}
 
-**2. 参照图像的 padding**
+**2. 对参考图像做 padding**
 
-- 因为这次基准是视频，所以配合视频的分辨率 padding 参照图像。
+- 这次以视频为基准，所以按照视频的分辨率对参考图像做 padding。
 
 {% endmediaRow %}
 
 {% mediaRow img="/media/basic-workflows/wan-animate/legacy_gyazo_a6c53693b87e1cebda390d6b7dca306a.png{media=image}", width=33, align="left" %}
 
-**3. 人物掩膜生成**
+**3. 生成人物遮罩**
 
-- 将 `Pose and Face Detection` 取得的人物坐标传递给 SAM2.1 生成掩膜。
-- 将掩膜稍稍膨胀，在 `Blockify` 节点转换为像点绘那样锯齿状的掩膜作为 `character_mask`。
-  不这样做的话不知为何生成的视频的轮廓会残留细边。
-- 将在 `ImageCompositeMasked` 将掩膜的部分涂黑的视频作为 `background_video` 使用。
+- 把 `Pose and Face Detection` 得到的人物坐标传给 SAM2.1，生成遮罩。
+- 把遮罩稍微扩大一些，再用 `Blockify` 节点转换成像素画一样棱角分明的遮罩，作为 `character_mask`。
+  不这样做的话，不知为何生成视频的轮廓上会残留一圈细边。
+- 用 `ImageCompositeMasked` 把遮罩区域涂黑，得到的视频作为 `background_video` 使用。
 
 {% endmediaRow %}
 
@@ -173,13 +173,13 @@ tags: ["human-motion-transfer","talking-head"]
 
 ---
 
-## 6 步推论（Lightx2v LoRA）
+## 6 步推理（Lightx2v LoRA）
 
-使用蒸馏 LoRA，可以减少采样步数到 4〜6 steps。
+使用蒸馏 LoRA，可以把采样步数减少到 4〜6 steps。
 
-在 text2video 使用的话会介意劣化，但在 Wan-Animate 因为不是从 0 制作视频，所以不怎么介意。想积极地活用。
+用在 text2video 时画质下降比较明显，但 Wan-Animate 并不是从零生成视频，所以不太明显。很值得积极用起来。
 
-### 模型的下载
+### 下载模型
 
 - loras
 
@@ -200,10 +200,10 @@ tags: ["human-motion-transfer","talking-head"]
 
 {% mediaRow img="/media/basic-workflows/wan-animate/legacy_gyazo_3808ae94efd870f0ff0ce1d77595ea36.png{media=image}", width=33, align="left" %}
 
-**LoRA 的适用**
+**应用 LoRA**
 
-- 🟪 在 `LoraLoaderModelOnly` 读取 Lightx2v LoRA。
-- KSampler 的设定
+- 🟪 用 `LoraLoaderModelOnly` 加载 Lightx2v LoRA。
+- KSampler 的设置
 
   - `steps` … 4〜6
   - `cfg` … 1.0
@@ -222,38 +222,38 @@ tags: ["human-motion-transfer","talking-head"]
 
 ---
 
-## 为了长视频重复处理
+## 为长视频重复处理
 
-Wan-Animate 的基础和 Wan2.1 I2V 同样，**1 次推论能生成的上限是 77 帧**。
-制作超过这个的长视频的情况下，要构成“一边继承最后的数帧，一边重复好几次生成”。
+Wan-Animate 的基础和 Wan2.1 I2V 一样，**1 次推理最多只能生成 77 帧**。
+要做更长的视频，就得搭成“一边接过最后几帧，一边反复生成”的结构。
 
-在 ComfyUI 无法进行循环处理，所以变成向后向后串联连接几乎相同的工作流的形式。
+ComfyUI 没法做循环处理，所以只能把几乎相同的工作流一段接一段地往后串联。
 
-这里老实说称不上 SMART 的处理，是向 Kijai 先生的 [ComfyUI-WanVideoWrapper](https://github.com/kijai/ComfyUI-WanVideoWrapper) 的实现退让一步的部分。
+老实说这种处理方式算不上聪明，这一点还是 Kijai 的 [ComfyUI-WanVideoWrapper](https://github.com/kijai/ComfyUI-WanVideoWrapper) 的实现更胜一筹。
 
-### Animation 模式（Repeat）
+### Animation 模式（重复）
 
 ![](/media/basic-workflows/wan-animate/legacy_gyazo_a489fad9b07fb1f1745d556fa130c731.png){media=image}
 
 [](/workflows/basic-workflows/wan-animate/wan2_2_animate_animation_lightx2v_repeat.json)
 
-乍一看是巨大的工作流，但与至今的东西不同的点只有以下 2 点。
+乍一看是个庞大的工作流，但和前面的相比，不同之处只有下面 2 点。
 
 ![](/media/basic-workflows/wan-animate/legacy_gyazo_5db9830b2a2db2dd24ad1543906f49da.png){media=image}
 
 - `video_frame_offset`
 
-  - 第 1 次生成了 77 帧的情况下，第 2 次必须从第 78 帧以后使用 `face_video` 和 `pose_video`。
-  - 向 `video_frame_offset` 输入偏移帧数的话，会自动错开 `face_video` / `pose_video` 的参照开始位置。
+  - 如果第 1 次生成了 77 帧，第 2 次就需要从第 78 帧开始使用 `face_video` 和 `pose_video`。
+  - 在 `video_frame_offset` 中填入偏移帧数，就会自动把 `face_video` / `pose_video` 的读取起点往后挪。
 - `continue_motion_max_frames`
 
-  - 设定作为重叠部分的帧数。
-  - 例如将 `length` 设为 77，`continue_motion_max_frames` 设为 5 的话，使用上次的最后 5 帧，新生成剩余的 72 帧。
+  - 设置用来衔接的重叠帧数。
+  - 例如把 `length` 设为 77、`continue_motion_max_frames` 设为 5，就会沿用上一次的最后 5 帧，新生成剩下的 72 帧。
 
-如果重复连接这个组，理论上可以制作无限长的视频。
-但是和复印机一样，误差会一点点积累下去。
+把这个组不断接下去，理论上可以做出任意长度的视频。
+不过就像反复复印一样，误差会一点点累积。
 
-### Replacement 模式（Repeat）
+### Replacement 模式（重复）
 
 ![](/media/basic-workflows/wan-animate/legacy_gyazo_5efe20ed9671e3eb4960fd5ddc70cb46.png){media=image}
 

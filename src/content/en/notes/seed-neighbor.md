@@ -29,7 +29,7 @@ Why does this happen?
 
 ---
 
-## Relationship between noise and generated images
+## How noise relates to the generated image
 
 Diffusion models create images by starting from noise and gradually removing that noise.  
 (See [Diffusion Models](/en/ai-capabilities/diffusion-models/) for details.)
@@ -38,7 +38,7 @@ So if the initial noise is different, the final image is naturally different as 
 
 ---
 
-## Relationship between noise and seed values
+## How noise relates to the seed
 
 In text2image, noise must be created first.  
 Random numbers are used when generating that noise.
@@ -47,7 +47,7 @@ The seed is the number that determines how those random numbers are initialized.
 
 ### A seed is the number that initializes random generation
 
-Computers do not generate truly random numbers; they use a pseudo-random number generator (PRNG).
+Computers do not generate truly random numbers; they use a pseudo-random number generator (PRNG) to produce sequences that merely look random.
 
 You might think "if seeds are close, random sequences should also be close." But that is not how it works.
 
@@ -60,7 +60,7 @@ A simple analogy: page 1234 and page 1235 in a dictionary are adjacent, but ther
 
 ## Then how do you make similar images?
 
-Now we know that seed proximity is not related to output similarity.  
+So how close two seeds are has nothing to do with how similar the outputs are.  
 So if `seed=1234` gives you a great image, how can you make similar variations?
 
 ### 1. Use image2image
@@ -90,16 +90,16 @@ Another way is to add a small noise latent to the base latent.
 1. Create noise A with `seed_A`
 2. Add a small noise latent from another random value, with a coefficient like `0.01`
 
-Because this injects noise, the total noise amount increases.
+Since you are injecting noise, the total amount of noise goes up.
 
-A small increase is usually fine, but if `strength` is set to `1.0` or `2.0`, the sampler may fail to denoise properly and output mostly noisy images.
+A small increase is fine, but if you set `strength` to `1.0` or `2.0`, the sampler cannot fully denoise it and you tend to get nothing but noise.
 
 ## workflow
 
 In a normal workflow, noise generation and injection are handled internally by `KSampler`.
 In these techniques, you create and modify noise (latent) before feeding it into `KSampler`.
 
-This is a bit more irregular for ComfyUI, so in many cases plain image2image may be the simpler option.
+This is a little unusual for ComfyUI, so plain image2image might honestly be good enough.
 
 ### Blend noise
 

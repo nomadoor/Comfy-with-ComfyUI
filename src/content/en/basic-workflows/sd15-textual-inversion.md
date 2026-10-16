@@ -17,43 +17,43 @@ hero:
 
 ## What is Textual Inversion?
 
-It is common to want to generate an image but not be able to explain it well in text.
+Often you want to generate something but can't describe it well in text.
 
-**Textual Inversion** is a technology that allows the model to learn such "appearances or concepts that are difficult to express in text" as new words.
+**Textual Inversion** is a technique that teaches the model such "looks or concepts that are hard to express in text" as a new word.
 
 - First, prepare one dummy word like `<my_keyword>`.
-- Show the model a few to several dozen images with a similar atmosphere along with that word.
+- Show the model a handful to a few dozen images with a similar feel, paired with that word.
 - The model learns the "features common to these images" and embeds that information into the single word `<my_keyword>`.
 
-Famous examples include `easynegative` and `badhandv4`.
-By collecting a large number of "failed images" and having the model learn them, the concept of "failures that often occur in image generation" is summarized in a single word.
+Well-known examples include `easynegative` and `badhandv4`.
+They were made by collecting lots of "failed images" and training on them, packing the concept of "common image generation failures" into a single word.
 
-However, it cannot make the model draw something from scratch that the original model cannot draw at all.
-It is only for **things that the model originally knew but you didn't know how to instruct**.
+However, it can't make the model draw something from scratch that the original model can't draw at all.
+It only works for **things the model already knew, but you didn't know how to ask for**.
 
-In such cases, techniques that re-train the model itself, such as LoRA or full fine-tuning, are required.
+For those cases, you need methods that retrain the model itself, such as LoRA or full fine-tuning.
 
 > [!NOTE]
 > This one-word data created by Textual Inversion is conventionally called an *embedding*.
 
 ---
 
-## Almost No Longer Used
+## Hardly Used Anymore
 
-Although Textual Inversion has the advantage of being light to train, it has now been mostly replaced by LoRA.
+Textual Inversion does have the advantage of being light to train, but these days it has mostly been replaced by LoRA.
 
-`easynegative` and `badhandv4` are also basically unnecessary as the performance of the models themselves has improved.
+`easynegative`, `badhandv4`, and the like are basically unnecessary now too, partly because the models themselves have improved.
 
-Exceptionally, checkpoint or LoRA authors sometimes distribute dedicated embeddings together to bring the output closer to what they intend.
+One exception: checkpoint or LoRA authors sometimes ship dedicated embeddings alongside their models to get closer to the output they have in mind.
 
-To bring out the performance of the model, the user needs to correctly input the "prompt intended by the author". However, not all users will follow it, and it is troublesome to write detailed prompts every time.
+To get the most out of a model, users need to enter "the prompt the author had in mind" correctly. But not every user will follow it, and writing a detailed prompt every time is a hassle.
 
-So, authors prepare embeddings in advance and ask users to include that word, making it easier to get the output they intended.
+So the author prepares embeddings in advance and has users add that word, which makes it easier to get close to the intended output.
 
 
 ---
 
-## text2image Applying Embedding
+## text2image with an Embedding
 
 ### Downloading the Embedding
 
@@ -73,5 +73,5 @@ Let's use an embedding called `Porsche 911 Turbo`.
 
 [](/workflows/basic-workflows/sd15-textual-inversion/sd1_5_embedding.json)
 
-- Call the embedding by writing something like `embedding:filename` in CLIP Text Encode.
+- Call the embedding by writing `embedding:filename` in CLIP Text Encode.
   - e.g. `embedding:porsche911_ti`

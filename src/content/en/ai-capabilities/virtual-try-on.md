@@ -7,7 +7,7 @@ navId: virtual-try-on
 title: Virtual Try-On
 created: 2025-12-01
 updated: 2026-03-02
-summary: The task of replacing only the clothes with a different design or variation.
+summary: The task of swapping just the clothes for a different design or variation.
 seoTitle: "AI Virtual Try-On: Swap Clothes in an Image"
 seoDescription: "Swap only the clothes in an image: LoRA, catvton-flux, and instruction-based image editing with side-by-side or multi-reference inputs."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
@@ -16,32 +16,30 @@ hero:
 ---
 ## What is Virtual Try-On?
 
-If ID Transfer is "Subject Transfer specialized for people," then Virtual Try-On (VTON) can be said to be **"Subject Transfer specialized for clothes."**
+If ID transfer is "subject transfer specialized for people," then swapping outfits is fair to call **"subject transfer specialized for clothes."**
 
-It is also called **Virtual Try-On (VTON)**.
+It's also called **Virtual Try-On (VTON)**.
 
-Especially when used for product images, **consistency** such as:
+Especially for product images, **consistency** like this matters:
 
-- Patterns and details do not change
-- Naturally fitting the body shape and pose
-
-becomes important.
+- Patterns and details stay the same
+- The clothes fit the body shape and pose naturally
 
 ---
 
 ## LoRA
 
-As with anything, the most reliable and flexible method is to create a LoRA of the clothes.
+As with anything, the most reliable and flexible approach is to just train a LoRA of the clothes.
 
-By combining it with inpainting, you can dress a specific person in the clothes.
+Combine it with inpainting and you can change what a specific person is wearing.
 
 ---
 
 ## catvton-flux
 
-There are many models specialized for VTON tasks (changing clothes), but **catvton-flux** is a representative example.
+There are plenty of models specialized for VTON tasks (swapping clothes), but here's **catvton-flux** as a representative example.
 
-The basic idea is the same as IC-LoRA / ACE++, using a **side-by-side layout**.
+The basic idea is the same as IC-LoRA / ACE++: it uses a **side-by-side layout**.
 
 ![](/media/ai-capabilities/virtual-try-on/legacy_gyazo_e06c4fb2aca261c0d37b792bea9dcc80.png){media=image}
 
@@ -56,9 +54,9 @@ The model generates an "image of the person on the left wearing the clothes on t
 
 ## Instruction-Based Image Editing (Side-by-Side)
 
-[Instruction-Based Image Editing](/en/ai-capabilities/instruction-based-image-editing/) models that do not support multi-reference cannot originally do things like "bring elements of image A to image B."
+[Instruction-Based Image Editing](/en/ai-capabilities/instruction-based-image-editing/) models that don't support multi-reference can't, by design, do things like "take an element from image A and put it into image B."
 
-However, just like with IC-LoRA / ACE++, if you use the **side-by-side technique** and a LoRA trained for this purpose, you can do something similar.
+But as with IC-LoRA / ACE++, the **side-by-side technique** plus a LoRA trained for it gets you something close.
 
 ![](/media/ai-capabilities/virtual-try-on/legacy_gyazo_30a82ecdd7a8cff9483a162decf7c31d.png){media=image}
 
@@ -71,20 +69,20 @@ However, just like with IC-LoRA / ACE++, if you use the **side-by-side technique
 The model generates an "image of the person on the left wearing the clothes on the right" while looking at both.
 
 > [!NOTE]
-> I brought up the LoRA I made as a reference because I wanted to brag, but a day later, a much higher performance LoRA for Qwen-Image-Edit was announced ☹️
+> I used my own LoRA as the example because I wanted to show it off, but just one day later a far better LoRA for Qwen-Image-Edit came out ☹️
 > [Clothes Try On (Clothing Transfer) - Qwen Edit](https://civitai.com/models/1940532?modelVersionId=2196278)
 
-The biggest advantage of using instruction-based image editing is that **masks become unnecessary**.
+The biggest advantage of using instruction-based image editing is that **you don't need a mask**.
 
-For example, if you want to dress a person in a mini skirt in jeans, with normal VTON, you have to mask not only the mini skirt part but also the leg part that will become jeans.
-It is very difficult to automatically generate a mask for the area combining these two.
+For example, say you want to put jeans on someone wearing a miniskirt. With regular VTON, you have to mask not just the miniskirt but also the legs that the jeans will cover.
+Generating a mask for that combined area automatically is really hard.
 
-In contrast, instruction-based image editing does not require masks, so you can change clothes without worrying about such troublesome things.
+Instruction-based image editing needs no mask, so you can swap clothes without worrying about any of that hassle.
 
 ---
 
 ## Instruction-Based Image Editing (Multi-Reference)
 
-If it is an instruction-based image editing model that supports multi-reference, it is easy.
+With an instruction-based image editing model that supports multi-reference, it's easy.
 
-Just pass the person you want to change clothes and the clothes to separate slots and give instructions like "dress this person in these clothes," and you can change clothes.
+Just pass the person and the outfit into separate slots and give an instruction like "dress this person in these clothes," and you're done.

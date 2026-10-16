@@ -9,9 +9,9 @@ navId: voice-clone
 title: Voice Clone
 created: 2025-12-01
 updated: 2026-03-02
-summary: Voice Clone overview (draft)
+summary: Voice cloning overview (coming soon)
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: ''
 ---
-This page is a placeholder for Voice Clone. Content will be added soon.
+This page is still in progress. More on voice cloning will be added soon.

@@ -19,7 +19,7 @@ hero:
 
 In normal inpainting, the white areas of the mask change while the black areas do not.
 
-So does making an area gray change it just a little? Unfortunately, it does not give you that kind of control on its own.
+So does painting it gray make it change just a little? Sadly, no. Out of the box, you can't get the kind of control you'd imagine.
 
 That is where Differential Diffusion comes in.
 
@@ -72,7 +72,7 @@ Combine Differential Diffusion with a blurred mask to blend the boundary more na
 
 [](/workflows/basic-workflows/differential-diffusion/sd1_5_differential_diffusion_blur.json)
 
-- 🟪 This time, incorporate it into a workflow using an inpainting model.
+- 🟪 This time, we add it to a workflow that uses an inpainting model.
 - 🟨 Blur the mask boundary with the `Gaussian Blur Mask` node ([ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack))
   - Blurring effectively shrinks the mask, so enlarge it slightly beforehand.
 

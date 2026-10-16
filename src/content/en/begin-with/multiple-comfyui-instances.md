@@ -17,14 +17,14 @@ hero:
 
 You can run multiple ComfyUI instances on the same PC.
 
-However, if you launch it twice without thinking about anything, you will usually get an error like this and the second launch will fail.
+But if you just launch it twice without thinking, the second one will spit out an error like this and fail.
 
 ```text
 Port 8188 is already in use on address 127.0.0.1.   
 Please close the other application or use a different port with --port.
 ```
 
-It means "that port is already being used", but what does that actually mean?
+It's saying "that entrance is already in use", but what does that mean?
 
 ---
 
@@ -32,7 +32,7 @@ It means "that port is already being used", but what does that actually mean?
 
 ![](/media/begin-with/multiple-comfyui-instances/legacy_gyazo_a04e2d09b534afb1e32900a738f0c3a7.png){media=image}
 
-The first thing to know is that ComfyUI is split into a **screen** and an **execution engine**.
+First, it helps to know that ComfyUI is split into a **screen** and an **execution engine**.
 
 The node screen you normally use is the frontend for editing workflows and pressing the run button.
 The thing actually generating images and videos is the ComfyUI server running behind it.
@@ -45,13 +45,13 @@ http://127.0.0.1:8188
 
 `127.0.0.1` is the address for "your own PC", and `8188` after it is the port number.
 
-This port number is the endpoint for the ComfyUI server.
+This port number is the entrance to the ComfyUI server.
 
 ---
 
 ## Starting two as-is makes the ports collide
 
-If the first ComfyUI is using `127.0.0.1:8188` and you try to start a second one, the second one also uses `127.0.0.1:8188` by default, so the ports collide.
+If the first ComfyUI is using `127.0.0.1:8188` and you try to start a second one, the second one also defaults to `127.0.0.1:8188`, so the two entrances collide.
 
 The same port number cannot be used by two servers at the same time, so the second ComfyUI fails to start.
 
@@ -88,28 +88,28 @@ They both look like the same ComfyUI, but each one connects to a different serve
 Now you can run multiple instances.
 
 However, while ComfyUI is generating images, it usually uses the GPU at full power.
-Even if two ComfyUI instances generate at the same time, if one process is occupying the GPU, the other has to wait for that work to finish.
+Even if you generate with two ComfyUI instances at once, if one of them is hogging the GPU, the other still has to wait for that job to finish before it can move on.
 
-Starting two instances does not mean generation speed becomes twice as fast.
+Running two doesn't make generation twice as fast.
 
-Still, there are several useful cases.
+It's still useful in plenty of ways.
 
 - Separate tasks that do not use much GPU
-- Keep your everyday ComfyUI running while starting a development ComfyUI
+- Start a ComfyUI for development while your everyday one keeps running
 
 ---
 
 ## The same URL means the same server
 
-Here we talked about running multiple ComfyUI servers.
+This page has been about running multiple ComfyUI servers.
 
-On the other hand, there is also a small trick where you open the same URL in another browser tab or another window.
+There's also a little trick of opening the same URL in another browser tab or window.
 
 ![](/media/begin-with/multiple-comfyui-instances/legacy_gyazo_71d8f5ff0d41e4b1e6790fc2e0a366a2.png){media=image}
 
 For example, if you open `http://127.0.0.1:8188` in two browser tabs, you can control the same ComfyUI server from multiple screens.
 
-They feel somewhat similar, but they are completely different operations, so be careful.
+They seem kind of similar, but they're completely different things, so be careful.
 
 - **Opening the same URL in multiple tabs**: You are viewing the same ComfyUI server from multiple screens
 - **Opening URLs with different ports**: You are viewing separate ComfyUI servers

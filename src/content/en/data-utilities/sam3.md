@@ -19,9 +19,9 @@ hero:
 
 [SAM 3](https://github.com/facebookresearch/sam3) is a new model in Meta's Segment Anything Model series.
 
-Earlier SAM models could understand **the shape of objects**, but to cut out a specific object, you needed to specify its location with a BBOX or coordinates.
+Earlier SAM models only knew **the shapes of things**, so to cut out a specific object, you had to point to its location with a BBOX or coordinates.
 
-With SAM 3, you can specify the target with text, like a VLM, and complete segmentation with SAM alone.
+With SAM 3, you can name the target in text, like with a VLM, and it handles the segmentation entirely on its own.
 
 [SAM 3.1](https://ai.meta.com/blog/segment-anything-model-3/) is an updated version of SAM 3. It improves tracking of multiple objects in video.
 
@@ -49,9 +49,9 @@ With SAM 3, you can specify the target with text, like a VLM, and complete segme
 [](/workflows/data-utilities/sam3/sam3_1.json)
 
 - Input the image, mask, and target information (text prompt, BBOX, coordinates) into the `SAM3 Detect` node.
-- The behavior is a little tricky. If multiple objects match the prompt, simply writing `car` detects only the most likely one.
+- This part is a little confusing: if several objects match the prompt, just writing `car` detects only the most likely one.
   - If you want to segment up to the N-th item, write it like `car:N`.
-  - If you simply want to detect all visible matching objects, writing something like `car:99` is also fine.
+  - If you just want everything on screen that matches, you can simply write something like `car:99`.
 
 ### Video
 

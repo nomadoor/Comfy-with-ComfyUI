@@ -28,14 +28,14 @@ hero:
 
 ## 准备数据集
 
-LoRA 训练里，数据集质量比什么都重要。这里要稍微认真一点处理。
+LoRA 训练里，数据集的质量比什么都重要。一步步仔细处理吧。
 
 ### 1. 收集图像
 
 收集能清楚看出训练对象的图像。
 
-- 比起数量，质量更重要。尽量使用高分辨率图像。
-  - 这次用 15 张图训练，但数量更少也可以训练。
+- 比起数量，质量更重要。尽量收集高分辨率的图像。
+  - 这次用 15 张图训练，比这更少也能训练。
 
 模型会从多张图像里学习 **共同的概念**。
 
@@ -47,7 +47,7 @@ LoRA 训练里，数据集质量比什么都重要。这里要稍微认真一点
 
 不过不需要把对象严格抠出来。
 
-稍微保留一些背景或不同服装，反而有助于模型理解“什么是角色本体，什么只是当前场景”。
+稍微混入一些背景或其他服装，反而能让模型理解“什么是角色本体，什么只是场景”。
 
 ### 3. 创建 caption
 
@@ -66,15 +66,15 @@ images/
 
 文本文件里写这张图像的说明，也就是 **caption**。
 
-caption 主要有 **自然语言** 和 **标签形式** 两种写法。对于 SDXL，基本上用逗号（`,`）分隔单词的标签形式会更好用。
+caption 主要有 **自然语言** 和 **标签形式** 两种写法。SDXL 基本上用标签形式来写，也就是用逗号（`,`）分隔一个个单词。
 
 ### 4. caption 的写法
 
-我们用 Myaku-Myaku 的例子来看。
+我们拿 Myaku-Myaku 做例子，看看 caption 怎么写。
 
 ![Myaku-Myaku](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_0b39351c0a14cdf1e768d4cc64b9ac0c.png){media=image}
 
-看图可以发现很多元素：
+看看这张图，里面有各种各样的元素：
 
 - 笔记本电脑
 - 椅子
@@ -83,10 +83,10 @@ caption 主要有 **自然语言** 和 **标签形式** 两种写法。对于 SD
 - 图像风格（这次是照片）
 - ...
 
-这些不需要全部写进 caption。  
-角色 LoRA 中要写的是 **不定义角色本体的词**。
+caption 里不会把这些全部写进去。  
+要写的是其中 **定义角色本体的词以外的部分**。
 
-图像中反复出现、但 **没有被文本说明的东西**，会更容易被 LoRA 学进去。
+模型会把图像中共同出现、又 **没有被文本说明的东西**，归到 LoRA 这边来学习。
 
 比如直接给上图写 caption，大概会是这样：
 
@@ -94,16 +94,16 @@ caption 主要有 **自然语言** 和 **标签形式** 两种写法。对于 SD
 mascot, sitting, indoors, office, desk, laptop, office chair, lanyard, id card, multiple eyes, smile, blue body, red appendages, plush, photo
 ```
 
-为了训练角色 LoRA，把定义 Myaku-Myaku 本体的词删掉：
+再为角色 LoRA 整理一下，这次就是把和 Myaku-Myaku 本身有关的词删掉，变成这样：
 
 ```text
 sitting, indoors, office, desk, laptop, office chair, photo
 ```
 
-最后，在开头加上用于呼出这个角色的 trigger word。这里用 `myakumyaku-san`。
+最后，在开头加上用来调出这个角色的 trigger word（这次是 `myakumyaku-san`），caption 就完成了。
 
-- trigger word 没有严格规则。
-- 不过如果太普通，可能会和其他概念混在一起，所以用专有名词会更安全。
+- trigger word 没有什么特别的规则。
+- 不过太常见的词可能会和其他概念混在一起，用专有名词会比较好。
 
 ```text
 myakumyaku-san, sitting, indoors, office, desk, laptop, office chair, photo
@@ -111,7 +111,7 @@ myakumyaku-san, sitting, indoors, office, desk, laptop, office chair, photo
 
 ### 4.5 用 MLLM 创建 caption
 
-最近的 MLLM 性能很好，所以也可以把 caption 创建基本交给它。
+最近的 MLLM 性能非常好，把 caption 整个交给它来写也没问题。
 
 1. 把图像交给它，让它写 SDXL / Illustrious 系 caption
 2. 让它删掉定义角色本体的词
@@ -145,17 +145,17 @@ myakumyaku-san, sitting, indoors, office, desk, laptop, office chair, photo
 1. 打开 `Dataset` 标签
 2. 点击右上角的 `New Dataset`
 3. 用任意名称创建文件夹
-4. 通过 `Add Images` 把图像和文本文件所在的文件夹加入进去
+4. 通过 `Add Images`，把图像和文本按整个文件夹添加进去
 
-只要图像和对应 caption 正确读取，就可以了。
+图像和对应的 caption 都正确读取进来就 OK 了。
 
 ---
 
 ## 创建 Job
 
-在 AI Toolkit 里，会先创建一个叫 Job 的训练设置，然后再启动它。
+在 AI Toolkit 里，训练的流程是先创建一个叫 Job 的训练设置，再启动它。
 
-可以理解成类似 ComfyUI 里的 workflow。
+相当于 ComfyUI 里的工作流。
 
 ![](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_b4ef7a58d34d67eb34963f61d1bc50c3.png){media=image}
 
@@ -183,12 +183,12 @@ myakumyaku-san, sitting, indoors, office, desk, laptop, office chair, photo
 ### JOB
 
 - **Training Name**
-  - 取一个自己喜欢的名字。
-  - 之后还会回来看，所以最好包含模型名、对象、日期之类的信息。
+  - 随便取个喜欢的名字。
+  - 之后还会翻回来看，名字里带上模型名、对象、日期等信息会比较方便。
 
 - **Trigger Word**
-  - 如果 caption 文件里还没有写 trigger word，可以在这里填写，AI Toolkit 会统一插入。
-  - 如果每个 `.txt` 里已经写好了，就保持空白。
+  - 如果做 caption 时没有加 trigger word，在这里填写就会统一插入。
+  - 如果一开始就写进了每个 `.txt`，留空即可。
 
 ### MODEL
 
@@ -206,15 +206,15 @@ myakumyaku-san, sitting, indoors, office, desk, laptop, office chair, photo
 这里决定 LoRA 模型的大小。
 
 Rank 越大，LoRA 能容纳的信息越多。  
-但并不是越大越好，也更容易把不必要的东西记进去。
+但并不是越大就一定越好，也更容易把多余的东西记进去。
 
 角色 LoRA 的话，`16/8` 这样偏小的 Rank 通常已经够用。
 
 ### SAVE
 
-LoRA 学得好不好，最后还是只能实际生成图像来确认。
+LoRA 学得好不好，只能实际生成看看。
 
-所以训练过程中要定期保存 LoRA，再拿出来测试。
+所以要在训练过程中定期保存 LoRA，把它拿出来用。
 
 - **Save Every**
   - 决定每隔多少 step 保存一次 LoRA。
@@ -223,30 +223,30 @@ LoRA 学得好不好，最后还是只能实际生成图像来确认。
 - **Max Step Saves to Keep**
   - 决定保留多少个 LoRA。
 
-比如每 100 step 保存一次，训练到 3000 step，就会在 100 step、200 step、300 step……这样细分保存 LoRA。
+比如每 100 step 保存一次、训练到 3000 step，就会按 100 step、200 step、300 step……这样一份份保存下来。
 
-如果 `Max Step Saves to Keep` 太小，旧文件会被删除。存储空间足够的话，可以设大一点。
+`Max Step Saves to Keep` 设得太小，旧的就会被依次删掉，所以存储空间够的话，就设大一点吧。
 
 ### TRAINING
 
-这里决定训练量和训练推进方式。
+这里决定训练量和训练的推进方式。
 
 - **Batch Size / Gradient Accumulation**
   - Batch Size 是训练时同时看几张图像。
-    - 比起一次只看一张图，同时看几张图会更容易找到共同点。
-    - LoRA 训练也是类似。角色 LoRA 的话，我常用实质 batch `2` 到 `4`。
+    - 比起一次只看一张，同时看几张好像更容易找到共同点，对吧。
+    - LoRA 训练也是一样。角色 LoRA 的话，我多半会选实质 batch `2` 到 `4`。
   - 提高 Batch Size 会增加 VRAM 使用量。
     - Gradient Accumulation 在这种时候很方便，可以在不大幅增加 VRAM 使用量的情况下，提高实质 Batch Size。
     - `Batch Size × Gradient Accumulation` 就是实质 batch。
 
 - **Steps**
-  - 需要多少 step，实际训练前很难确定。
-  - 后面可以继续追加，所以一开始设到 3000 左右就可以。
+  - 需要多少 step，不实际训练一下是不知道的。
+  - 之后还能再加，所以先设成 3000 左右。
 
 - **Learning Rate**
   - 一般可以从 `0.00005` 到 `0.0001` 左右开始试。
   - 值越大收敛越快，值越小推进越慢。
-  - 不过慢并不一定更好，最后还是要看实际输出结果判断。
+  - 不过慢也不一定就好，最终还是要看输出结果来判断。
 
 顺带一提，`0.0001` 有时也写作 `1e-4`。  
 意思是 `1 × 10^-4`。
@@ -257,16 +257,16 @@ LoRA 学得好不好，最后还是只能实际生成图像来确认。
   - 选择刚才创建的 Dataset。
 
 - **Resolutions**
-  - 决定以哪些分辨率读取图像。内部会自动 resize。
-  - 高分辨率图像多的话，更高分辨率可能有利，但训练时间也会变长。
-  - 角色 LoRA 的话，只用 `512` 和 `768` 也通常够了。
+  - 决定以什么分辨率把图像给模型看。内部会自动缩放。
+  - 高分辨率图像多的话，用大分辨率也有好处，但训练时间会相应变长。
+  - 角色 LoRA 的话，只用 `512` 和 `768` 就足够了。
 
 ### SAMPLE
 
 - **Disable Sampling**
   - AI Toolkit 有训练中生成 sample 的功能，但这里不用。
   - 这里生成的图像和 ComfyUI 里生成的图像，即使 seed 相同，通常也会不同。
-  - 如果平时主要用 ComfyUI 生成，那么直接把 LoRA 读进 ComfyUI 测试会更可靠。
+  - 如果平时主要用 ComfyUI 生成，最好以实际在 ComfyUI 里加载 LoRA 生成的结果为准。
 
 > [!NOTE]
 > 设置完成后，点击右上角的 `Create Job`。
@@ -283,9 +283,9 @@ LoRA 学得好不好，最后还是只能实际生成图像来确认。
 
 ## 确认训练结果
 
-LoRA 是否真的学好了，还是要实际生成图像来确认。
+LoRA 有没有真正学好，只能实际生成来确认……这是我一贯的看法。
 
-下载训练过程中定期输出的 LoRA，在 ComfyUI 里试试看。
+把定期输出的 LoRA 下载下来，在 ComfyUI 里生成试试吧。
 
 ### 下载 LoRA
 
@@ -294,21 +294,21 @@ LoRA 是否真的学好了，还是要实际生成图像来确认。
 Job 画面右侧的 `Checkpoints` 里会显示已保存的 LoRA。  
 可以通过下载按钮取得。
 
-### 用什么 prompt 测试？
+### 用什么提示词测试？
 
-首先用包含 trigger word 的简单 prompt，确认角色能否出现。
+先用带 trigger word 的简单提示词，确认角色能不能出来。
 
 ```text
 myakumyaku-san, standing, simple background
 ```
 
-角色能出来的话，第一步算是安心了。但这还不代表 LoRA 已经很好。
+角色能出来就可以先松一口气，但光这样还不能说是好的 LoRA。
 
-好的 LoRA 应该只学习 **原本想让它学习的概念**。
+好的 LoRA，应该 **只学到了原本想让它学的概念**。
 
 如果连背景一起学进去了，或者只能生成训练图里出现过的姿势，那作为 LoRA 来说灵活性还不够。
 
-所以需要用训练图里没有的 prompt 来测试。
+所以需要像下面这样，编写训练图里没有的提示词来做生成测试。
 
 - 不同姿势
 - 不同服装
@@ -316,24 +316,24 @@ myakumyaku-san, standing, simple background
 - 不同构图
 - 稍微不同的画风
 
-如果只有接近训练图的条件下才好看，稍微改一下 prompt 就崩，可能是训练还不够，也可能是数据集本身需要调整。
+如果只有在接近训练图的条件下才出得漂亮，稍微一改就崩，那可能是训练还不够，或者压根没训练好。
 
-这时可以重新检查数据集，或者调整 learning rate。
+这时就重新检查一下数据集或学习率吧。
 
 ### 在 ComfyUI 里批量确认
 
-如果想一次测试多个 prompt，`Create List` 节点很方便。
+想一次测试多个提示词，用 `Create List` 节点很方便。
 
 ![](/media/notes/ai-toolkit-sdxl-lora-training/legacy_gyazo_88aed03eb70c3ada096a5e388c3cc245.png){media=image}
 
 [](/workflows/notes/ai-toolkit-sdxl-lora-training/sdxl_list.json)
 
-- 准备多个 prompt
-- 连接到 `Create List`，再连接到 `CLIP Text Encode`
+- 准备多个提示词
+- 连到 `Create List`，再把它连到 `CLIP Text Encode` 节点
 - 固定 LoRA 以外的生成参数，例如 CFG、seed 等
 - 一边替换不同 step 的 LoRA，一边比较结果
 
-对于 SDXL LoRA，一般会先让它在 LoRA Strength `0.8` 左右正常出图。
+一般来说，LoRA 要做到在 LoRA Strength `0.8` 左右就能正常出图。
 
 ---
 
@@ -341,17 +341,17 @@ myakumyaku-san, standing, simple background
 
 训练越久，并不一定越好。
 
-训练过头会变成过拟合，灵活性会下降。
+训练过头会进入过拟合状态，失去灵活性。
 
-用不同 prompt 生成几次，找出刚好合适的 step。
+用各种提示词生成看看，找出刚刚好的 step 吧。
 
-因为之后可以用 LoRA Strength 调弱，所以稍微偏强一点通常也没问题。
+想减弱的话可以用 LoRA Strength 调，所以停在“是不是有点过头了？”的程度就可以。
 
 ---
 
-## 不同 step 的生成例
+## 不同 step 的生成示例
 
-下面是这次 Myaku-Myaku LoRA 的生成例。
+下面是这次 Myaku-Myaku LoRA 的生成示例。
 
 这次看起来 2700 step 左右比较好。
 

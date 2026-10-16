@@ -20,31 +20,31 @@ tags: ["instruction-based-image-editing","collage-refine"]
 
 Flux.1 Kontext is an instruction-based image editing model based on [Flux.1](/en/basic-workflows/flux-1/).
 
-It is undoubtedly this model that sparked the popularity of the task of AI image editing such as nano banana.
+There's no doubt this was the model that kicked off the AI image editing boom that nano banana and others followed.
 
-Like Flux.1, there are three variations: `pro`, `max`, and `dev`, but only `dev` is available for local use.
+Like Flux.1, it comes in three variants, `pro`, `max`, and `dev`, but only `dev` can be run locally.
 
 
 ---
 
 ## What is Instruction-based Image Editing?
 
-A model that edits an image according to instructions when you input an image and text instructions is called an **instruction-based image editing model** on this site.
+On this site, a model that takes an image plus a text instruction and edits the image to follow that instruction is called an **instruction-based image editing model**.
 
-For example, suppose you want to dye the hair of a woman in a photo red.
-Until now, you would mask the hair, add ControlNet Canny because you don't want to change the hairstyle, and then perform inpainting with a prompt like "photo of a woman with red hair".
+Say you want to make the hair of a woman in a photo red.
+Until now, you'd mask the hair, add ControlNet Canny so the hairstyle wouldn't change, and then inpaint with a prompt like "photo of a woman with red hair."
 
-It is easy with instruction-based image editing. Just pass the image to the model and **instruct** it like a producer asking a designer, "Make the woman's hair red."
+With instruction-based image editing, it's easy. Just pass the image to the model and **instruct** it, "Make the woman's hair red," the way a producer would ask a designer.
 
-Change facial expressions, remove disturbing objects, change the art style.
+Changing facial expressions, removing objects that get in the way, converting the art style.
 
-Everything can be achieved with just one model and prompt.
+You can do all of it with a single model and a prompt.
 
 ---
 
 ## Model Download
 
-Even with Kontext, the basic configuration is the same as the regular Flux.1.
+Kontext uses basically the same set of models as regular Flux.1.
 
 * diffusion_models
 
@@ -78,7 +78,7 @@ Even with Kontext, the basic configuration is the same as the regular Flux.1.
 
 ## Workflow (Basic)
 
-The workflow of Kontext itself is a simple configuration that just adds `ReferenceLatent` to the regular Flux.1.
+The Kontext workflow itself is simple: it's just the regular Flux.1 workflow with `ReferenceLatent` added.
 
 ![](/media/basic-workflows/flux-1-kontext/legacy_gyazo_b872b5de146a585c0c9745168d5f1dae.png){media=image}
 
@@ -86,26 +86,26 @@ The workflow of Kontext itself is a simple configuration that just adds `Referen
 
 * 🟪 Load `flux1-dev-kontext_fp8_scaled.safetensors`.
 * 🟩 Resize the input image to a resolution suitable for Kontext with the `FluxKontextImageScale` node.
-  - There are resolutions recommended by Flux, and **a resolution with a close aspect ratio is automatically selected** from them.
-* 🟩 Convert the resized image to latent and connect it to `ReferenceLatent`.
+  - Flux has a set of recommended resolutions, and **the one with the closest aspect ratio is picked automatically**.
+* 🟩 Convert the resized image to a latent and connect it to `ReferenceLatent`.
 
 ---
 
 ## How to write prompts
 
-Basically, follow the official prompting guide.
+In general, follow the official prompting guide.
 - [FLUX.1 Kontext Prompting Guide](https://docs.bfl.ai/guides/prompting_guide_kontext_i2i)
 
-However, there is no special notation.
-If you write what you want to do in English in the form of **"Do △△ to ◯◯"**, it will generally work.
+That said, there's no special syntax.
+Just write what you want in plain English, along the lines of **"Make ◯◯ △△,"** and it'll usually work.
 
-If something changes that you don't want to change (e.g., the background changes even though you only want to change the hairstyle), explicitly state the "conditions you don't want to change" as follows:
+If things you wanted left alone change too (e.g., you only wanted a new hairstyle but the background changed), spell out what should stay the same, like this:
 
 - e.g. `Keep the person's pose, position, and size the same.`
 
 > [!NOTE]
-> However, due to the performance of the model, it often does not follow instructions well.
-> You shouldn't ask for too much yet.
+> That said, the model itself often doesn't follow instructions very well.
+> Don't expect too much from it just yet.
 
 ---
 
@@ -169,14 +169,14 @@ Add a sailing ship to the box position.
 {% mediaRow img="/media/basic-workflows/flux-1-kontext/legacy_gyazo_dae38a4ef8ee07c4a5922992c585578a.png {media=image}", width=50, align="left" %}
 ### Refine Collage
 
-It edits to **blend** manually created collage images.
+An edit that **blends in** a collage you put together by hand.
 
 
 ```text
 Transform the flat duck sticker into a realistic plush duck toy with the same blue hat and place it in the woman’s arms so she is naturally hugging it. Also turn the outlined pendant lamp into a realistic lamp, removing the white sticker edges and matching the scene’s lighting, color, and perspective.
 ```
 
-There is also a LoRA that boosts this ability.
+There's also a LoRA that improves this ability.
 
 - [Place it Flux Kontext LoRA](https://civitai.com/models/1780962/place-it-flux-kontext-lora)
 

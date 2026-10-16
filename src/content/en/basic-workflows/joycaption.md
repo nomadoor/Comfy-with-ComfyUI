@@ -7,7 +7,7 @@ navId: joycaption
 title: "JoyCaption"
 created: 2025-12-09
 updated: 2026-03-02
-summary: "Image caption generation using JoyCaption"
+summary: "Image captioning with JoyCaption"
 seoTitle: "JoyCaption in ComfyUI: Accurate Image Captioning"
 seoDescription: "Use JoyCaption in ComfyUI, a VLM that writes accurate captions for photos, anime, and illustrations: installing and configuring the node."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -20,9 +20,9 @@ tags: ["tag-caption-generation"]
 
 [JoyCaption](https://github.com/fpgaminer/joycaption) is a VLM (Visual Language Model) for generating captions from images.
 
-It can generate high-accuracy captions for a wide range of genres such as real photos, anime, and digital art. Above all, since it handles NSFW images without censoring, it is popular as a "caption-specific model" even now that higher-performance general-purpose MLLMs have appeared.
+It generates accurate captions for a wide range of images, from photos to anime and digital art. Above all, it handles NSFW images without censoring them, so it's still popular as a "dedicated captioning model" even now that more capable general-purpose MLLMs are around.
 
-Because it is based on LLaVA-based multimodal models, it cannot be said to be lightweight compared to taggers, but it has the ease of being easy to incorporate into a local image generation pipeline as a ComfyUI node.
+It's built on a LLaVA-family multimodal model, so it isn't exactly lightweight compared with taggers, but as a ComfyUI node it's easy to drop into a local image generation pipeline.
 
 
 ---
@@ -43,19 +43,19 @@ Generates a caption from the input image.
 
 - `prompt_style`
     - **Descriptive**
-        - Writes as formal and long prose.
-        - Useful when you want to keep the content of the image in detail, but tends to be redundant to use as a prompt as is.
+        - Writes fairly long, formal prose.
+        - Handy when you want a detailed record of what's in the image, but tends to be too wordy to use as a prompt as is.
     - **Straightforward**
-        - Writes in a concise and objective style.
-        - A style that is easy to divert as is for prompts and captions for LoRA.
+        - Writes in a concise, objective style.
+        - Easy to reuse as is for prompts or LoRA training captions.
     - **Stable Diffusion Prompt**
-        - Writes in a prompt format for Stable Diffusion.
+        - Writes in Stable Diffusion prompt format.
     - **Danbooru tag list**
         - Lists tags in Danbooru tag format (e.g., `1girl`, `blue_hair`).
 
 - `caption_length`
-    - Specifies the volume of the caption to output (short/long).
+    - Sets how long the caption should be (shorter/longer).
 
 - `Extra Options`
-    - Sets additional instructions to guide caption generation.
-    - For example, you can specify a policy such as "write in detail / do not touch much" about camera angle, image quality/resolution, NSFW elements, etc.
+    - Adds extra instructions to guide the captioning.
+    - For example, you can tell it whether to "describe in detail" or "barely mention" things like camera angle, image quality/resolution, or NSFW elements.

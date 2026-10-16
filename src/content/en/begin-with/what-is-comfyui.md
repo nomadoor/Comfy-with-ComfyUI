@@ -15,19 +15,19 @@ hero:
   image: "/media/begin-with/what-is-comfyui/legacy_gyazo_85c2b6638ce871ee1923a68ed24323b8.png"
 ---
 
-At the dawn of generative AI, when Stable Diffusion web UI was mainstream, **ComfyUI** was born aiming for a node-based implementation.
+In the early days of AI image generation, when Stable Diffusion web UI was the go-to tool, **ComfyUI** was created as a node-based alternative.
 
-It started as a simple image generation tool, but now it is becoming the foundation of the industry as an OS (Operating System) for generative AI.
+It started out as just an image generation tool, but it's now becoming the foundation of the industry: an OS (operating system) for generative AI.
 
 ---
 
 ## ComfyUI as a Generative AI Engine
 
-ComfyUI provides an environment to stably run various publicly available models such as Stable Diffusion, video generation Wan, 3D, music generation models, etc., on your home PC.
+ComfyUI lets you reliably run just about any publicly released model on your home PC: Stable Diffusion, the video model Wan, 3D models, music generation models, and more.
 
-We tend to focus on the node-based UI, but the true value lies in this "engine part".
+The node-based UI tends to get all the attention, but its real value lies in this "engine."
 
-There are countless services and software that have different UIs but are powered by ComfyUI in the background.
+There are countless services and apps that look different on the surface but have ComfyUI running behind the scenes.
 
 ---
 
@@ -35,36 +35,36 @@ There are countless services and software that have different UIs but are powere
 
 For users, the most distinctive feature is probably this node-based UI.
 
-Break down the flow of processing by function, place them as nodes, and connect them.
-To master this UI, you need to understand the mechanism of image generation and the role of nodes.
-Compared to tools where you "just enter a prompt and press a button to complete," it might feel unfriendly at first.
+You split the process into functions, place each one as a node, and connect them.
+To get the most out of this UI, you need to know how image generation works and what each node does.
+Compared with tools where you "type a prompt, press a button, and you're done," it may feel unfriendly at first.
 
-However, this has a huge advantage.
-When a new model or method appears, you can flexibly incorporate it into your existing workflow just by adding a corresponding node.
+But this has a big advantage.
+When a new model or technique comes out, you can just add the matching nodes and fit it into your existing workflow.
 
-To keep up with the rapidly progressing AI technology, this flexible node-based UI might be the optimal solution.
+For keeping up with fast-moving AI technology, this flexible node-based UI may well be the best answer.
 
 ---
 
 ## ComfyUI as a Generative AI Platform
 
-The mechanism that supports the extensibility of ComfyUI is **Custom Nodes**.
+What makes ComfyUI so extensible is a mechanism called **custom nodes**.
 
-The main body of ComfyUI provides a minimum foundation for running models.
-Even for models not supported by the main body, developers around the world create "custom nodes" so that they can be run immediately.
+ComfyUI itself provides the bare-minimum foundation for running models.
+Even when ComfyUI itself doesn't support a model yet, developers around the world build "custom nodes" so you can run it right away.
 
 - **Users**: Can use the latest models with a familiar UI
 - **Developers**: Can have their technology used without creating a UI from scratch
 
-This mutual benefit strongly supports the ComfyUI community.
+These benefits on both sides are what keep the ComfyUI community so strong.
 
 ---
 
 ## Operation as an Organization
 
-Originally it was a personal project by **Comfyanonymous**, but now it is organized as [Comfy.org](https://www.comfy.org/about), and development and fundraising are being carried out.
+It started as a personal project by **Comfyanonymous**, but it's now run as an organization, [Comfy.org](https://www.comfy.org/about), which handles development and fundraising.
 
-It is difficult for an individual to continue maintaining in this rapidly progressing field.
-Being organized guarantees a stable development system and continuous updates.
+In a field moving this fast, it's hard for one person to keep maintaining a project.
+Becoming an organization has secured a stable development team and continued updates.
 
-Whether as an individual or a company, there is no more reassuring reason to choose ComfyUI as a generative AI engine.
+For individuals and companies alike, there's no more reassuring reason to choose ComfyUI as your generative AI engine.

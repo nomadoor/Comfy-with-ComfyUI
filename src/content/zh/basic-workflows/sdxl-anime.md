@@ -7,7 +7,7 @@ navId: sdxl-anime
 title: "动漫系 SDXL 模型"
 created: 2026-02-06
 updated: 2026-03-02
-summary: "SDXL 基础的动漫系模型的粗略整理"
+summary: "粗略整理基于 SDXL 的动漫系模型"
 seoTitle: "动漫系 SDXL 模型汇总：Illustrious、Pony、Animagine"
 seoDescription: "整理可在 ComfyUI 中使用的 SDXL 动漫系模型系列：Animagine XL、Illustrious XL、Pony Diffusion V6 XL、WAI-illustrious 等的特点与关系。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -18,20 +18,20 @@ tags: []
 
 ## 什么是动漫系 SDXL 模型？
 
-虽然 Flux 和 Qwen-Image 等新模型增加了，但仅限于 **动漫系** 来说 SDXL 基础的模型现在也现役。
+虽然 Flux、Qwen-Image 等新模型越来越多，但单就 **动漫系** 而言，基于 SDXL 的模型现在仍是主力。
 
-更准确地说，SDXL 以后登场的模型尺寸很大，全量微调的情况相当减少了。
+更准确地说，SDXL 之后出现的模型体积都很大，做全量微调的情况少了很多。
 
-虽然实写和 CG 方面基础模型本身的性能已经足够了，但动漫系强的基础模型至今没有决定版，是不得不依赖 SDXL 的状况。
+写实和 CG 方面，基础模型本身的性能已经足够了；但擅长动漫的基础模型至今还没有决定版，所以只能继续依赖 SDXL。
 
 > [!NOTE]
 > 老实说，我不太熟悉动漫系模型。  
-> 虽说这里列举的东西是代表，但如果有时间的话打算重新调查。  
+> 我认为这里列出的是有代表性的模型，不过有时间的话打算重新调查一下。  
 >
-> 动漫系模型经常被进行尖锐的微调，参数也很独特。  
-> 实际使用时，请务必仔细阅读模型制作说明。
+> 动漫系模型的微调往往很极端，参数也很独特。  
+> 实际使用时，请务必仔细阅读模型作者的说明。
 
-本页面作为代表性的动漫系 SDXL 模型，只简单介绍以下 5 个系统。
+本页只简单介绍以下 5 个有代表性的动漫系 SDXL 模型系列。
 
 - **Animagine XL**
 - **Illustrious XL**
@@ -43,8 +43,8 @@ tags: []
 
 ## Animagine XL 系
 
-Animagine XL 是作为动漫系微调模型最初期登场的模型。  
-直到比较最近只要持续进行更新，是拥有新知识的通用模型。
+Animagine XL 是动漫系微调模型中最早出现的一批。  
+直到不久前还在持续更新，是一个掌握较新知识的通用模型。
 
 ### 模型
 
@@ -62,8 +62,8 @@ Animagine XL 是作为动漫系微调模型最初期登场的模型。
 ## Illustrious XL 系
 
 Illustrious XL 是 [OnomaAI](https://www.illustrious-xl.ai/) 开发的模型。  
-与其他模型明确不同的是企业开发的点吧。  
-记得一时曾与下一个 Pony Diffusion V6 XL 并列，是动漫系的两大巨头。
+和其他模型明显不同的一点，大概是它由企业开发吧。  
+印象中它曾和下面要介绍的 Pony Diffusion V6 XL 并称动漫系的两大巨头。
 
 ### 模型
 
@@ -79,8 +79,8 @@ Illustrious XL 是 [OnomaAI](https://www.illustrious-xl.ai/) 开发的模型。
 
 ## Pony Diffusion V6 XL
 
-Pony Diffusion V6 XL 正如其名，是名为为了生成小马宝莉而制作的社区发的模型。  
-与其说是日本动漫，不如说擅长奇幻系・兽人・兽系等。
+Pony Diffusion V6 XL 正如其名，是社区为了生成《小马宝莉》而做的模型。  
+与其说擅长日本动漫，不如说更擅长奇幻、兽人、Kemono（兽系）等题材。
 
 ### 模型
 
@@ -96,7 +96,7 @@ Pony Diffusion V6 XL 正如其名，是名为为了生成小马宝莉而制作�
 
 ## Anything XL
 
-Anything XL（万象熔炉）是几个有名的动漫系 SDXL 模型（Animagine 和 Pony 等）的合并模型。
+Anything XL（万象熔炉）是由几个有名的动漫系 SDXL 模型（Animagine、Pony 等）融合而成的模型。
 
 ### 模型
 
@@ -112,8 +112,8 @@ Anything XL（万象熔炉）是几个有名的动漫系 SDXL 模型（Animagine
 
 ## WAI-illustrious 系
 
-WAI-illustrious 是以 Illustrious XL 为基础的派生模型之一，是现在也经常被提到的名字的人气系列。  
-2025 年时点 v15 等版本升级也在持续，在这里列举的东西中是比较新的模型。
+WAI-illustrious 是基于 Illustrious XL 的派生模型之一，至今仍常被提起，是很受欢迎的系列。  
+截至 2025 年仍在持续更新到 v15 等版本，在这里列出的模型中算是比较新的。
 
 ### 模型
 

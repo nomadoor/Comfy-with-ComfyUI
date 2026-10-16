@@ -19,48 +19,48 @@ hero:
 
 ![](/media/basic-workflows/sd15-hires-fix/legacy_gyazo_a63d1a6610c9928b6c21ba39a0d533d0.png){media=image}
 
-It has a cool name, but what it does is not that complex.
+It has a cool name, but what it does isn't all that complicated.
 
-First, generate an image with text2image, then resize that image by 1.5 to 2 times.
-Put that enlarged image into image2image and have it redrawn again.
+First, generate an image with text2image, then resize it to 1.5–2x.
+Feed the enlarged image into image2image and have it redrawn once more.
 
-It is simply a consolidation of this procedure.
+That's all it is: these steps bundled together.
 
 ---
 
-## Why was this method born?
+## Why Did This Method Come About?
 
-The recommended resolution for Stable Diffusion 1.5 was 512 × 512px, and it could not generate large images.
+The recommended resolution for Stable Diffusion 1.5 was 512 × 512px, and it couldn't generate large images.
 
 There are two main reasons for this.
 
-### Problem of Calculation Cost
+### Computational Cost
 
-As the resolution increases, the required VRAM and calculation time increase dramatically.
-When image generation first appeared, it was not as optimized as it is now, and generating large images suddenly was a very heavy process.
+As resolution goes up, the VRAM and compute time you need shoot up.
+When image generation first appeared, things weren't as optimized as they are now, and generating a large image in one go was very heavy.
 
 
-### Problem of Image Size Used for Training
+### The Image Size Used for Training
 
-More fundamentally, it is about **"what size images the model was trained with"**.
+The more fundamental issue is **"what size of images the model was trained on"**.
 
 ![](/media/basic-workflows/sd15-hires-fix/legacy_gyazo_a5fee7589b0c712f6db86426d8f1cc72.png){media=image}
 
-Stable Diffusion 1.5 is trained almost exclusively with 512 × 512px images.
-In other words, it is good at drawing pictures around this size, but **it hasn't practiced other resolutions at all.**
+Stable Diffusion 1.5 was trained almost entirely on 512 × 512px images.
+So it's good at drawing around that size, but **it never practiced other resolutions in the first place.**
 
-Suppose you ask a manga artist to suddenly draw a picture filling a gymnasium wall.
-Since they usually draw on manuscript paper size, they would probably blindly line up small panels and characters with that sense.
+Imagine asking a manga artist to suddenly fill an entire gym wall with a drawing.
+They usually draw on manuscript pages, so they'd probably keep that same sense of scale and pack the wall with small panels and characters.
 
-They haven't practiced drawing "one huge picture using the whole wall", and the idea doesn't even occur to them.
+They've never practiced drawing "one huge picture across the whole wall". The idea wouldn't even occur to them.
 
 
-### Birth of Hires.fix
+### The Birth of Hires.fix
 
-So, first have the model draw at around 512 × 512px, which it is good at, then enlarge it, and have it redraw again using the enlarged image as a draft.
+So first, have the model draw at around 512 × 512px, where it's comfortable, enlarge that, and then have it redraw using the enlarged image as a draft.
 
-This two-stage approach was born.
-This idea of "going through the model's comfortable resolution once and then lifting it to high resolution" is the concept behind Hires.fix.
+That's how this two-stage approach came about.
+This trick of "passing through the model's comfortable resolution first, then lifting it to high resolution" is the idea behind Hires.fix.
 
 
 ---
@@ -72,27 +72,27 @@ This idea of "going through the model's comfortable resolution once and then lif
 [](/workflows/basic-workflows/sd15-hires-fix/sd1_5_hires_fix.json)
 
 - 🟪 text2image
-- 🟦 Enlarge the decoded image by 1.5 times with the `Upscale Image By` node
-- 🟨 Input the enlarged image into image2image
+- 🟦 Enlarge the decoded image 1.5x with the `Upscale Image By` node
+- 🟨 Feed the enlarged image into image2image
 
 
 ---
 
-## Method of Enlarging as Latent
+## Upscaling as a Latent
 
-In the previous workflow, the flow was to decode the text2image image into a pixel image once, enlarge it, convert it back to latent, and then image2image.
+In the previous workflow, the text2image result was decoded into a pixel image, enlarged, converted back into a latent, and then run through image2image.
 
-Here, the idea comes up: "Can't we enlarge it as latent without bothering to return it to a pixel image?"
+That raises an idea: "Couldn't we just enlarge it as a latent, without bothering to turn it back into pixels?"
 
-However, simply enlarging latent causes unacceptable degradation.
-Therefore, it was not practical for a long time, but a custom node that performs "latent enlargement with suppressed degradation" has appeared.
+However, simply enlarging the latent causes unacceptable degradation.
+So for a long time it wasn't practical, but then a custom node appeared that does "latent upscaling with less degradation".
 
 - [Goktug/ComfyUI_NNLatentUpscale (forked from Ttl)](https://github.com/Goktug/ComfyUi_NNLatentUpscale)
-  - Upscales latent using a neural network.
+  - Upscales the latent using a neural network.
 
 ![](/media/basic-workflows/sd15-hires-fix/legacy_gyazo_545160bee6b5c66fd91b32e917ada79c.png){media=image}
 
 [](/workflows/basic-workflows/sd15-hires-fix/sd1_5_hires_fix_nnlatentupscale.json)
 
-- 🟩 Enlarge the latent coming out of text2image directly with the `NNLatentUpscale` node
-- 🟨 Flow the enlarged latent directly into image2image
+- 🟩 Enlarge the latent from text2image as-is with the `NNLatentUpscale` node
+- 🟨 Feed the enlarged latent straight into image2image
