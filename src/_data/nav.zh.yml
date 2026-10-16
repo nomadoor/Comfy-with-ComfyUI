@@ -314,16 +314,6 @@ sections:
       title: Ideogram 4.0
     - id: krea-2
       title: Krea 2
-  - id: upscale-fix
-    title: 放大与修复
-    noLink: true
-    children:
-    - id: esrgan
-      title: ESRGAN
-    - id: ultimate-sd-upscale
-      title: Ultimate SD Upscale
-    - id: detailer
-      title: Detailer
   - id: video-workflows
     title: 视频工作流
     noLink: true
@@ -350,6 +340,16 @@ sections:
       title: MiniMax H3
     - id: liveportrait
       title: LivePortrait
+  - id: upscale-fix
+    title: 放大与修复
+    noLink: true
+    children:
+    - id: esrgan
+      title: ESRGAN
+    - id: ultimate-sd-upscale
+      title: Ultimate SD Upscale
+    - id: detailer
+      title: Detailer
   - id: llm-mllm-workflows
     title: LLM / MLLM
     noLink: true
