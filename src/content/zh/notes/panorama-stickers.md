@@ -23,18 +23,18 @@ hero:
 这是一个专用于 **FLUX.2 Klein 4B/9B 360 ERP Outpaint LoRA** 的 UI，可以根据参考图像制作 360 度全景图像。
 
 这个 LoRA 的基本思路是 outpainting。  
-把全景图展开成矩形后的图像，叫做 **ERP**（equirectangular panorama，等距柱状全景），而这里的思路就是把任意图像贴到空白 ERP 上，再把剩余部分 outpaint 掉，这样就能做出全景图像。
+把全景图展开成矩形后的图像，叫做 **ERP**（equirectangular panorama，等距柱状全景）。只要把任意图像贴到空白 ERP 上，再用 outpaint 补全剩下的部分，就能做出全景图像，思路就是这样。
 
 不过，只是把图像贴到矩形上，并不会让它自然地看起来像 ERP。  
-ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会变化。另外，一边看着 ERP 一边去想象“完成后的全景”，再制作 control 图像，作为 UX 来说并不理想。
+ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会变化。另外，一边看着 ERP 一边去想象“完成后的全景”，再去制作 control 图像，这种 UX 实在不怎么样。
 
-这个自定义节点
+这个自定义节点是一个 UI，按照
 
-- **可以让你进入全景内部，**
+- **进入全景内部，**
 - **按照真的在看风景时的感觉去摆放参考图像，**
-- **并把结果输出为 ERP。**
+- **把结果输出为 ERP**
 
-这样一来，制作 control 图像就会轻松很多。  
+这样的流程，让制作 control 图像变得轻松。  
 再让 FLUX.2 Klein 直接编辑输出的 ERP，全景图像就完成了。
 
 ---
@@ -59,10 +59,10 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 
 ## 画布的基本操作
 
-为了在 Legacy / Node2.0 两边都保持稳定运行，基本上是以专用的模态 UI 作为主要操作方式。
+为了在 Legacy / Node2.0 两边都能稳定运行，设计上基本都通过专用的模态 UI 来操作。
 
 > [!NOTE]
-> 只有 `Panorama Preview` 也可以在节点上预览，不过操作还是以前提使用模态 UI 为主。
+> 只有 `Panorama Preview` 也能直接在节点上预览，但操作仍以模态 UI 为前提。
 
 {% mediaRow img="/media/notes/panorama-stickers/legacy_gyazo_fc789c1056b38005c59d1e5be6c3095d.mp4{media=loop}", width=60, align="left" %}
 
@@ -221,14 +221,14 @@ ERP 本身是把全景展开后的形式，所以不同位置的畸变方式会�
 {% endmediaRow %}
 
 
-## workflow
+## 工作流
 
 下面实际使用这个 LoRA，试着根据参考图像做一个 ERP 全景。
 
 > [!WARNING]
 > 这是已知问题，Distilled 模型上这个 LoRA 几乎不起作用。现在还在找对策，所以目前请以 base model 为前提使用。
 
-### 模型的下载
+### 下载模型
 
 - diffusion_models
 

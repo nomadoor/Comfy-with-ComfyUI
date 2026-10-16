@@ -16,17 +16,17 @@ tags: ["controlnet"]
 
 ## What are Flux.1 Tools?
 
-For Flux.1, derivative models equivalent to [ControlNet](/en/basic-workflows/sd15-controlnet/) and [IP-Adapter](/en/basic-workflows/sd15-ip-adapter/) have been released by Flux officially, separate from the base model.
+Besides the base model, the Flux team has officially released derivative models for Flux.1 that do the job of [ControlNet](/en/basic-workflows/sd15-controlnet/) and [IP-Adapter](/en/basic-workflows/sd15-ip-adapter/).
 
-- `FLUX.1 Fill` ... Model for inpainting / outpainting
-- `FLUX.1 Depth` / `FLUX.1 Canny` ... Models that redraw while keeping the shape with structure-based guides (Depth / Canny)
-- `FLUX.1 Redux` ... An IP-Adapter-like model for Flux that mass-produces variations that look exactly like the reference image
+- `FLUX.1 Fill` ... A model for inpainting / outpainting
+- `FLUX.1 Depth` / `FLUX.1 Canny` ... Models that redraw an image while keeping its shape, using a structural guide (Depth / Canny)
+- `FLUX.1 Redux` ... An IP-Adapter-style model for Flux that churns out variations closely matching the reference image
 
 ---
 
 ## FLUX.1 Fill
 
-It can be used just like an inpainting model.
+You can use it just like an inpainting model.
 
 ### Model Download
 
@@ -45,15 +45,15 @@ It can be used just like an inpainting model.
 [](/workflows/basic-workflows/flux-1-tools/flux_1_fill.json)
 
 * 🟪 Load `flux1-fill-dev.safetensors` with the `Load Diffusion Model` node.
-* 🟩 Even specifically for Flux.1 workflows, add the `InpaintModelConditioning` node just like in Stable Diffusion 1.5 [inpainting](/en/basic-workflows/sd15-inpainting/).
+* 🟩 In the Flux.1 workflow too, add the `InpaintModelConditioning` node, just as in Stable Diffusion 1.5 [inpainting](/en/basic-workflows/sd15-inpainting/).
 
-  * Input the image and mask.
+  * Feed it the image and the mask.
 
 ---
 
 ## FLUX.1 Depth / FLUX.1 Canny
 
-It can be used with the same feeling as ControlNet Depth / Canny.
+They work much like ControlNet Depth / Canny.
 
 ### Model Download
 
@@ -73,25 +73,25 @@ It can be used with the same feeling as ControlNet Depth / Canny.
 
 [](/workflows/basic-workflows/flux-1-tools/flux_1_depth.json)
 
-* 🟩 Input the control image to the `InstructPixToPixConditioning` node.
-* 🟦 Since it is Depth this time, create a depth map with Depth Anything V2.
+* 🟩 Feed the control image into the `InstructPixToPixConditioning` node.
+* 🟦 This example uses Depth, so we create a depth map with Depth Anything V2.
 
-  * Since the image size of this depth map becomes the output image size as is, resize it to an appropriate size.
+  * The depth map's size becomes the output image size as is, so resize it to something reasonable.
 
 > [!TIP]
-> For the Canny version, input the Canny edge image with the same configuration.
+> For the Canny version, use the same setup and feed in a Canny edge image instead.
 
 ---
 
 ## FLUX.1 Redux
 
-`FLUX.1 Redux` is a model where you pass one or more reference images and generate variations strongly biased towards those images.
-It is close to IP-Adapter, but Redux is quite resistant to prompts, and the appearance of the reference image comes out almost as is.
+`FLUX.1 Redux` is a model that takes one or more reference images and generates variations that stick very closely to them.
+It's similar to IP-Adapter, but prompts have very little effect on Redux, and the reference image's look comes through almost unchanged.
 
 ### Model Download
 
-Redux is loaded as a "style model" separate from the Flux body.
-Furthermore, CLIP-ViT for encoding reference images is also required.
+Redux is loaded as a "style model," separate from the main Flux model.
+You also need a CLIP-ViT model to encode the reference images.
 
 * [FLUX.1-Redux-dev](https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/tree/main)
 * [sigclip_vision_patch14_384](https://huggingface.co/Comfy-Org/sigclip_vision_384/tree/main)
@@ -110,13 +110,13 @@ Furthermore, CLIP-ViT for encoding reference images is also required.
 
 [](/workflows/basic-workflows/flux-1-tools/flux_1_redux.json)
 
-* 🟩 Add the `Apply Style Model` node and connect the Style model and `CLIP Vision Encode`.
+* 🟩 Add the `Apply Style Model` node and connect the style model and `CLIP Vision Encode` to it.
 
   * Connect `sigclip_vision_patch14_384.safetensors` and the reference image to the `CLIP Vision Encode` node.
 
 ### Mixing Multiple Images
 
-If you line up the chunks of `Apply Style Model` horizontally, you can also reference and mix multiple images.
+Line up several `Apply Style Model` groups side by side, and you can reference and blend multiple images.
 
 ![](/media/basic-workflows/flux-1-tools/legacy_gyazo_cd6233194a56e2ceeb597c8877d645ef.png){media=image}
 
@@ -124,9 +124,9 @@ If you line up the chunks of `Apply Style Model` horizontally, you can also refe
 
 ### Problem with Redux
 
-Again, Redux ignores most other parameters such as prompts and LoRA.
+To repeat, Redux pretty much ignores other inputs like prompts and LoRAs.
 
-I think it is best to use it as a "tool to mass-produce variations that look exactly like the reference image" by cutting it off like that,
-but there are also custom nodes that allow some control with prompts. For your reference.
+I think it's best to accept that and use it as "a tool for churning out variations that closely match the reference image,"
+but there are also custom nodes that let prompts have some control. Just for reference.
 
 * [kaibioinfo/ComfyUI_AdvancedRefluxControl](https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl)

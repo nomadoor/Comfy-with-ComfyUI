@@ -7,8 +7,7 @@ navId: subject-transfer
 title: Subject Transfer
 created: 2025-12-01
 updated: 2026-03-02
-summary: Technology to make the same thing in a reference image appear in another
-  scene.
+summary: Putting the same thing from a reference image into a different scene
 seoTitle: "Subject Transfer: Same Character in New Scenes"
 seoDescription: "Place the subject of a reference image into new scenes. Compares LoRA, IP-Adapter, IC-LoRA, ACE++, and instruction-based image editing models."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
@@ -17,86 +16,86 @@ hero:
 ---
 ## What is Subject Transfer?
 
-Officially, it is a task called "Subject-Driven Image Generation."
+The formal name for this task is "Subject-Driven Image Generation."
 
-Subject refers not only to people but also to characters, stuffed animals, specific dogs, mascots, figures, etc., generally "that thing shown in this image."
-Subject Transfer is a technology for generating images containing the same Subject shown in the reference image.
+A "subject" isn't just a person. It can be a character, a stuffed animal, a particular dog, a mascot, a figure... basically "*that* thing in this image."
+Subject transfer is about generating images that contain the same subject shown in the reference image.
 
 > [!NOTE]
-> Technology to transfer ID (person's face/identity) is included in Subject Transfer, but it is treated specially, and there are many technologies specialized for ID Transfer, so it is treated separately.
+> Transferring ID (a person's face and identity) is technically part of subject transfer, but it gets special treatment and has many dedicated techniques, so it's covered separately.
 
 ---
 
 ## LoRA
 
-Needless to say, it is a method to learn and enable the model to draw things it cannot draw.
+Needless to say, this is the way to train a model so it can draw things it couldn't before.
 
-From its appearance to the present, nothing beats this in flexibility and stability.
+From the day it appeared until now, nothing has beaten it for flexibility and stability.
 
-The big problem is that **training is required**. There is no casualness.
+The big problem is that **it requires training**. It's not something you can just casually do.
 
 ---
 
 ## image2prompt
 
-As the most primitive method, there is a method of "generating a caption from an image and running text2image with that caption."
+The most basic approach is to "generate a caption from the image, then run text2image with that caption."
 
-You might think, "With such a primitive method?" but it is theoretically possible if there is an MLLM that can perfectly describe the reference image and an image generation model that can perfectly reproduce that description.
+"Something that primitive?" you might think, but in principle it works, as long as you have an MLLM that can describe the reference image perfectly and an image model that can reproduce that description perfectly.
 
 ![](/media/ai-capabilities/subject-transfer/legacy_gyazo_26351f2e5d3eb17c623acd815ba8709c.png){media=image}
 
 [](/workflows/ai-capabilities/subject-transfer/z_image_gemini_3_0.json)
 
-The performance of recent models is making this possible. It is worth trying once as the "cheapest pseudo-Subject Transfer."
+Recent models are getting close to making that possible. As "the cheapest knockoff of subject transfer," it's worth a try.
 
 ---
 
 ## SeeCoder / UnCLIP Family
 
-image2prompt was a two-step process of "Image → Text → Embedding," but SeeCoder and UnCLIP systems **perform "Image → Embedding" directly**.
+image2prompt is a two-step "image → text → embedding" process, but SeeCoder and the UnCLIP family **go from "image → embedding" directly**.
 
-It creates a vector corresponding to text embedding from the image and uses it instead of the text encoder.
+They create a vector equivalent to a text embedding from the image and use it in place of the text encoder.
 
 ![](/media/ai-capabilities/subject-transfer/legacy_gyazo_d0196735e6162d464bd8764448d4088b.png){media=image}
 
 [](/workflows/ai-capabilities/subject-transfer/seecoder.json)
 
-While there is less information loss in "textualization" than image2prompt, usability is inferior because it cannot be edited as text.
+You lose less information than image2prompt does when converting to text, but since you can't edit it as text, it's less convenient to use.
 
 ---
 
 ## IP-Adapter
 
-It is the technology that first reached a practical level in business as a method of "doing Subject Transfer without training."
+This was the first "subject transfer without training" technique that was good enough for real-world use.
 
-IP-Adapter is an adapter for inserting "conditions from images" into existing text2image models. It was widely used as a representative adapter following ControlNet.
+IP-Adapter is an adapter that feeds "conditions from an image" into existing text2image models. Next to ControlNet, it was one of the most widely used adapters.
 
-It extracts feature vectors from the reference image and injects those features into the UNet (around Cross-Attention, etc.) to reflect them in the generated image. Since it can be used simultaneously with text prompts, you can use "Specify Subject by image" and "Specify scene and style by text" separately.
+It extracts feature vectors from the reference image and injects them into the UNet (around the Cross-Attention layers, etc.) so they show up in the output. Because it works alongside a text prompt, you can split the roles: "subject from the image, scene and style from the text."
 
 ---
 
 ## IC-LoRA / ACE++
 
-DiT-based models including Flux have the potential to "create consistent images."
+DiT models such as Flux have a latent ability to "create consistent images."
 
-Subject Transfer using this property is IC-LoRA / ACE++.
+IC-LoRA / ACE++ use this property for subject transfer.
 
 ![](/media/ai-capabilities/subject-transfer/legacy_gyazo_8e01db8cebce51e7c47d9f958a94c61b.png){media=image}
 
 [](/workflows/ai-capabilities/subject-transfer/ace_plus_portrait.json)
 
-Place the reference image (including the Subject) on the left side of the image canvas, mask the entire right side, and generate (inpaint). Since the model fills the right side while looking at the information on the left, it can "generate a new image using the same Subject as the left side."
+You place the reference image (with the subject) on the left side of the canvas, mask the entire right side, and generate (inpaint). The model fills in the right side while looking at the left, so it can "generate a new image with the same subject as on the left."
 
 ---
 
 ## Instruction-Based Image Editing Models
 
-"[Instruction-Based Image Editing Models](/en/ai-capabilities/instruction-based-image-editing/)" can also be used for Subject Transfer.
+"[Instruction-based image editing models](/en/ai-capabilities/instruction-based-image-editing/)" can be used for subject transfer too.
 
 ![](/media/ai-capabilities/subject-transfer/legacy_gyazo_358c8441ff70ee58135d8340bd691200.png){media=image}
 
 [](/workflows/ai-capabilities/subject-transfer/qwen_image_edit_2509_multi_ref.json)
 
-These models can edit images with text instructions like "put this dog in a different background" or "place this person in the forest."
+These models can edit images from text instructions like "put this dog in front of a different background" or "place this person in a forest."
 
-Also, if it supports multiple reference images, you can do things like replacing "the clothes of the person in image A" with "the clothes of the person in image B."
+And if the model supports multiple reference images, you can even do things like swap "the outfit of the person in image A" for "the outfit of the person in image B."

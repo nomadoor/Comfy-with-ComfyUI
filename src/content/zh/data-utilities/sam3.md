@@ -19,15 +19,15 @@ hero:
 
 [SAM 3](https://github.com/facebookresearch/sam3) 是 Meta Segment Anything Model 系列的新模型。
 
-以前的 SAM 主要只是 **理解物体的形状**。如果想切出指定对象，需要用 BBOX 或坐标来指定位置。
+以前的 SAM 说到底只能 **看出物体的形状**，想切出指定的对象，还得用 BBOX 或坐标告诉它位置。
 
-SAM 3 则可以像 VLM 一样用文本指定对象，并且单独完成分割。
+SAM 3 则可以像 VLM 一样用文本指定对象，靠它自己就能完成分割。
 
 [SAM 3.1](https://ai.meta.com/blog/segment-anything-model-3/) 是 SAM 3 的更新版，改进了视频中多个对象的追踪处理。
 
 ---
 
-## 模型下载
+## 下载模型
 
 - [sam3.1_multiplex_fp16.safetensors](https://huggingface.co/Comfy-Org/sam3.1/blob/main/checkpoints/sam3.1_multiplex_fp16.safetensors) (1.75 GB)
 
@@ -40,7 +40,7 @@ SAM 3 则可以像 VLM 一样用文本指定对象，并且单独完成分割。
 
 ---
 
-## workflow
+## 工作流
 
 ### 静态图像
 
@@ -49,9 +49,9 @@ SAM 3 则可以像 VLM 一样用文本指定对象，并且单独完成分割。
 [](/workflows/data-utilities/sam3/sam3_1.json)
 
 - 向 `SAM3 Detect` 节点输入图像、蒙版，以及想切出的对象信息（文本提示词、BBOX、坐标）。
-- 这个规格有点绕。如果有多个对象符合提示词，只写 `car` 的话，只会检测其中最像的一个。
-  - 如果想分割到第 N 个对象，需要写成 `car:N`。
-  - 如果只是想检测画面中所有符合条件的对象，直接写成 `car:99` 也可以。
+- 这里的规则有点绕：如果有多个对象符合提示词，只写 `car` 的话，只会检测出其中最像的那一个。
+  - 想分割出前 N 个，需要写成 `car:N`。
+  - 如果只是想把画面里出现的对象全部检测出来，直接写 `car:99` 也无妨。
 
 ### 视频
 
@@ -60,5 +60,5 @@ SAM 3 则可以像 VLM 一样用文本指定对象，并且单独完成分割。
 [](/workflows/data-utilities/sam3/sam3_1_video.json)
 
 - 使用 `SAM3 Video Track` 节点。
-- 将输出传给 `SAM3 Track to Mask` 节点，就可以作为蒙版使用。
-- `SAM3 Track Preview` 节点输入图像和 `track_data` 后，会给蒙版部分上色，方便查看。
+- 把输出传给 `SAM3 Track to Mask` 节点，就能当作蒙版使用。
+- 给 `SAM3 Track Preview` 节点输入图像和 `track_data`，它会给蒙版部分上色，方便查看。

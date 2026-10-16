@@ -106,7 +106,7 @@ Stable Diffusionのテキストエンコーダは位置関係をほとんど理�
 
 ### Attention Couple
 
-Lantent CoupleではUNet丸々計算していましたが、こちらはCross-Attention層のみ計算します
+Latent CoupleではUNet丸々計算していましたが、こちらはCross-Attention層のみ計算します
 
 その分計算量は大分少なくなりますが、LoRAの領域別指定はできません
 

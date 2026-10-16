@@ -7,7 +7,7 @@ navId: talking-head
 title: talking head
 created: 2025-12-01
 updated: 2026-03-02
-summary: Technology to make a single image or face photo speak in sync with a reference video or audio
+summary: Making a single image or face photo talk, driven by a reference video or audio
 seoTitle: "What Is a Talking Head Model? Make a Still Image Speak"
 seoDescription: "Talking head models animate one image from a video or audio. How they differ from lip sync, plus warping (LivePortrait), diffusion, and video-model methods."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
@@ -17,11 +17,11 @@ hero:
 
 ## What is talking head?
 
-Talking head is a technology to move a single image or face photo to look like a "speaking person". It moves the mouth and facial expressions of the input image using the **movement of a separately prepared reference video** or **audio** as a clue.
+Talking head animates a single image or face photo so it looks like "a person talking." It moves the mouth and expressions of the input image using the **motion from a separate reference video** or **audio** as a guide.
 
-It is very similar to lip sync, but lip sync focuses on "matching only the mouth of an existing video to audio". Talking head is basically about moving a single image, and many of them focus on moving based on the movement of a reference video rather than audio.
+It's very similar to lip sync, but lip sync is mostly about "matching just the mouth in an existing video to audio." Talking head is basically about animating a single image, and many methods are driven mainly by the motion in a reference video rather than by audio.
 
-As the name talking head suggests, it started from moving the face, but it is evolving in the direction of moving the upper body and even the whole body.
+As the name suggests, it started with moving the face, but it's been evolving toward moving the upper body and even the whole body.
 
 ---
 
@@ -31,9 +31,9 @@ As the name talking head suggests, it started from moving the face, but it is ev
 
 ![](/media/ai-capabilities/talking-head/legacy_gyazo_8e6de400ea9bc95a25e689483bd6b238.png){media=image} ![](/media/ai-capabilities/talking-head/legacy_gyazo_b38439d333755e724f174fa774f74f71.mp4){media=loop} ![](/media/ai-capabilities/talking-head/legacy_gyazo_c86570789722d04da913aed1f9ffd268.mp4){media=loop}
 
-When you input a single image and a video of a moving person, the image side deforms to mimic that movement.
+Give it a single image and a video of someone moving, and the image deforms to mimic that motion.
 
-What it is doing is closer to an image of twisting "squishy" in 2D rather than a 3D model. It's like Photoshop's Puppet Warp.
+Rather than using a 3D model, it's more like squishing and twisting the image while it stays 2D. Think Photoshop's Puppet Warp.
 
 ### [LivePortrait](/en/basic-workflows/liveportrait/)
 
@@ -41,39 +41,39 @@ What it is doing is closer to an image of twisting "squishy" in 2D rather than a
 
 [](/workflows/basic-workflows/liveportrait/liveportrait_i2v_ref.json)
 
-This also takes a single image and a reference video as input, but it is devised to stably reproduce the movement of each part of the face, line of sight, and nuances of emotion.
+This also takes a single image and a reference video, but it's designed to reproduce the movement of each facial feature, gaze direction, and subtle emotion reliably.
 
-Since it is not a diffusion model, it is relatively light and suitable for real-time applications. Also, since it allows editing such as "face direction slightly down" or "open eyes slightly", it is still often used today.
+It isn't a diffusion model, so it's relatively light and leans toward real-time use. It also lets you make edits like "tilt the face down a little" or "open the eyes a bit," so it's still widely used today.
 
 ---
 
 ## Diffusion model-based talking head
 
-In the next generation, talking heads in the direction of "redrawing the picture itself" using diffusion models appeared. This includes lineages such as [X-Portrait](https://byteaigc.github.io/x-portrait/) and [HelloMeme](https://songkey.github.io/hellomeme/).
+The next generation brought talking heads that use diffusion models to "redraw the picture itself," such as [X-Portrait](https://byteaigc.github.io/x-portrait/) and [HelloMeme](https://songkey.github.io/hellomeme/).
 
 ![](/media/ai-capabilities/talking-head/legacy_gyazo_c70468086a939dce538a876073c9c523.mp4){media=loop}
 
 [](/workflows/ai-capabilities/talking-head/hellomeme_video.json)
 
-These extract signals corresponding to "head orientation" and "facial expression changes" from the reference video and pass them to the diffusion model as conditions. What they are doing is close to generating an image while fixing the pose and composition with ControlNet, specifying "I want you to redraw this character's face with this movement".
+They extract signals for things like "head direction" and "changes in expression" from the reference video and pass them to the diffusion model as conditions. It's a lot like generating an image while ControlNet holds the pose and composition in place, as if you were saying "redraw this character's face with this motion."
 
 ---
 
 ## Video generation model-based talking head
 
-In a newer generation, talking head / avatar models based on video generation models themselves have appeared. [OmniAvatar](https://omni-avatar.github.io/) and [Wan-Animate](https://humanaigc.github.io/wan-animate/) fall into this line.
+Even newer are talking head / avatar models built on video generation models themselves. [OmniAvatar](https://omni-avatar.github.io/) and [Wan-Animate](https://humanaigc.github.io/wan-animate/) belong to this line.
 
 ![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_9f0e0e20d750b2e207b01adc56858202.png){media=image} ![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_d7f66b4153473136c37e48c7066709a1.mp4){media=loop} ![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_86ed4c6aa64af79325ce18359a4021bc.mp4){media=loop}
 > Wan-Animate
 
-Wan-Animate is a type of model that takes a character image and a "reference video with movement" as input and moves the character to trace that movement.
+Wan-Animate takes a character image and a "reference video with motion" and animates the character to follow that motion.
 
 ---
 
 ## To Human Motion Transfer
 
-When talking head technology becomes able to handle the face area stably, it is a natural flow to want to "move the upper body and whole body as well".
+Once talking head techniques could handle the face reliably, it was only natural to want to "move the upper body and whole body too."
 
-Old things like Thin-Plate Spline could originally be applied to the whole body as well as the face, and Wan-Animate can handle the whole body perfectly, so I feel there is no need to distinguish it from talking head, but Human Motion Transfer has evolved independently here, so let's take a look.
+Older methods like Thin-Plate Spline could already be applied to the whole body, not just the face, and Wan-Animate handles the whole body perfectly, so honestly I don't think there's much need to separate it from talking head. Still, human motion transfer has evolved along its own path, so let's take a quick look.
 
 → [Human Motion Transfer](/en/ai-capabilities/human-motion-transfer)

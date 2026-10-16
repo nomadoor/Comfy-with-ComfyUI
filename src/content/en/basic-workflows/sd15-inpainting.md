@@ -66,11 +66,11 @@ Try setting `denoise` to `1.00` in the workflow above.
 
 With image2image over the whole image, even a large change can be fun in its own way.
 
-With image2image applied to only one part, however, the area outside the mask stays unchanged. The inside and outside of the mask can lose consistency.
+With image2image applied to only one part, however, the area outside the mask stays unchanged. So the inside and outside of the mask no longer match.
 
-This method is fine for a small change to the shape of a flower. A major change is more difficult.
+For slightly changing the shape of a flower, this method is fine. Bigger changes are hard, though.
 
-Turning a red flower blue or replacing it with a musical instrument requires a higher `denoise`. But then the edited area may no longer blend with its surroundings...
+Turning a red flower blue or replacing it with a musical instrument requires a higher `denoise`. But then it sticks out from its surroundings...
 
 So, what can we do in a case like this? 🤔
 
@@ -160,7 +160,7 @@ Another option is **ControlNet inpaint**.
 - 🟩 Pass the ControlNet model, image, and VAE to the `Apply ControlNet` node
 - 🟥 Use `Set Latent Noise Mask` to limit the redrawn area to the mask
 
-The technology is different, but the action is the same as with an inpainting model: pass the model "where to fill" and "what is visible around it."
+The technique is different, but just like an inpainting model, it passes the model "where to fill" and "what is visible around it."
 
 ---
 
@@ -176,9 +176,9 @@ They are not covered here, but model families released after Stable Diffusion 1.
 
 ## Image editing models
 
-Today, we cannot discuss this subject without mentioning image editing models.
+These days, I can't leave out image editing models.
 
-An image editing model can follow a prompt such as "remove the man's hat," or take an image with an area circled in red together with an instruction such as "add a cat here." It does not even need a dedicated mask.
+An image editing model can follow a prompt such as "remove the man's hat," or take an image with an area circled in red together with an instruction such as "add a cat here." You don't even need a dedicated mask.
 
 Strictly speaking, these models are not normally discussed in the context of inpainting. But in the sense that they can **change only part of an image**, they can accomplish the same thing.
 

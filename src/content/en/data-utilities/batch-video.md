@@ -7,7 +7,7 @@ navId: batch-video
 title: "Batch & Video"
 created: 2025-11-27
 updated: 2026-03-02
-summary: "Mechanism to handle multiple images/video frames collectively"
+summary: "How to handle multiple images or video frames together"
 seoTitle: "Batches and Video in ComfyUI"
 seoDescription: "Process many images or video frames at once with ComfyUI batches: vs. Queue and List, why video is a batch, OOM pitfalls, and batch nodes."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -17,35 +17,35 @@ hero:
 
 ## What is Batch?
 
-Batch is a mechanism to **process multiple images simultaneously**.
-While List "processes one by one sequentially", Batch differs in that it **passes multiple images at once in a single execution**.
+A Batch is a way to **process multiple images together, at the same time**.
+Where a List "processes items one at a time, in order," a Batch **sends several images through at once in a single run**.
 
-The relationship between Queue / List / Batch is as follows:
+Here's how Queue, List, and Batch relate:
 
 - **Queue**
-  - Executes the same workflow sequentially from the outside
+  - Runs the same workflow repeatedly, in order, from the outside
 - **List**
-  - Processes multiple inputs one by one sequentially (Sequential processing)
+  - Processes multiple inputs one at a time, in order (sequential processing)
 - **Batch**
-  - Processes multiple images collectively (Parallel processing)
+  - Processes multiple images as one bundle (parallel processing)
 
 ---
 
 ## Video is Batch
 
-Since a video consists of a collection of sequential images,
-ComfyUI treats **Video = Batch of IMAGE**.
+A video is made up of a sequence of numbered images,
+so ComfyUI treats **video = a Batch of IMAGE**.
 
-Therefore, normal Batch operation nodes can be used for videos as they are,
-and conversely, video nodes can be used with almost the same feeling as general Batch operations.
-There is no need to distinguish between Video and Batch.
+That means regular Batch nodes work on videos as they are,
+and the other way around, video nodes feel almost the same as ordinary Batch operations.
+You don't need to think of video and Batch as separate things.
 
 ---
 
 ## Images in Batch must be the same size
 
 Images entering a Batch must **all be the same size**.
-If the width/height do not match, subsequent images are automatically cropped based on the first one.
+If the width or height doesn't match, the later images are automatically cropped to match the first one.
 
 ![](/media/data-utilities/batch-video/legacy_gyazo_8e42e9262108b5d6065a330d16863352.png){media=image}
 
@@ -53,22 +53,22 @@ If the width/height do not match, subsequent images are automatically cropped ba
 
 > Top: List
 > Bottom: Batch
-> Since shapes need to be aligned, images in the back are truncated in Batch.
+> Because the shapes have to match, the later images get cropped in the Batch.
 
 ---
 
 ## Load of Parallel Processing (Note on OOM)
 
-Since Batch processes multiple images simultaneously, the required memory amount increases accordingly.
-For example, if you flow a 1-minute video directly into image2image, VRAM is likely to be insufficient and cause **OOM (Out Of Memory)**.
+A Batch processes several images at the same time, so it needs that much more memory.
+Try feeding a 1-minute video straight into image2image, and you'll run out of VRAM and hit **OOM (Out Of Memory)** in no time.
 
-In such cases, it is safe to **convert Batch → List** and process one by one.
+In cases like this, it's best to **convert the Batch → List** and process the frames one at a time.
 
 ---
 
 ## Required Custom Nodes
 
-Basic ones are provided as core nodes, but it is a bit tough when trying to handle videos.
+The basics are covered by core nodes, but they fall a bit short once you start working with video.
 
 - [ltdrdata/ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack)
 - [ltdrdata/ComfyUI-Inspire-Pack](https://github.com/ltdrdata/ComfyUI-Inspire-Pack)
@@ -87,7 +87,7 @@ Groups multiple `IMAGE`s into a Batch.
 
 [](/workflows/data-utilities/batch-video/batch_images.json)
 
-- Slots are added every time a connection is made, allowing you to group any number of images.
+- A new slot appears each time you connect one, so you can combine as many images as you like.
 
 ### Load Image Batch From Dir (Inspire) / Load Images (Path) Node
 
@@ -97,8 +97,8 @@ Groups images in a folder into a Batch.
 
 [](/workflows/data-utilities/batch-video/load_image_batch_from_dir_load_image_path.json)
 
-- Inspire node can sort
-- VHS node has additional functions such as "Output every N images"
+- The Inspire node can sort
+- The VHS node has extra options, such as "output every N images"
 
 ---
 
@@ -107,7 +107,7 @@ Groups images in a folder into a Batch.
 ### Reverse Image Batch Node
 
 Reverses the order of the Batch.
-Can be used for reverse playback of videos, etc.
+Useful for things like playing a video backwards.
 
 ![](/media/data-utilities/batch-video/legacy_gyazo_433f02c632e722abfe3174cd7eb23837.png){media=image}
 
@@ -134,7 +134,7 @@ Repeats each frame a specified number of times.
 
 ### ImageFromBatch Node
 
-Extracts an image at an arbitrary position from the Batch.
+Picks out the image at any position in the Batch.
 
 ![](/media/data-utilities/batch-video/legacy_gyazo_6e48d34613f09e7dddfe3f40187f0de0.png){media=image}
 
@@ -145,24 +145,24 @@ Extracts an image at an arbitrary position from the Batch.
 
 ### Get Image or Mask Range From Batch Node
 
-Extracts a range of images (or masks) collectively.
+Extracts a range of images (or masks) at once.
 
 ### Select Every Nth Image Node (Video Helper Suite)
 
-Gets frames skipping every N images.
+Takes every Nth frame.
 
 ![](/media/data-utilities/batch-video/legacy_gyazo_f5b845e89342f120cc994b999e390e11.png){media=image}
 
 [](/workflows/data-utilities/batch-video/select_every_nth_image.json)
 
-- `select_every_nth`: Interval to extract
-- `skip_first_images`: Skip the first number of images
+- `select_every_nth`: How often to take a frame
+- `skip_first_images`: How many images to skip at the start
 
 ---
 
 ## Conversion Batch ↔ List
 
-If you want to process one by one after loading a video or Batch, convert it to a List.
+If you want to process a video or Batch one image at a time after loading it, convert it to a List.
 
 ### Image Batch to Image List Node
 
@@ -170,6 +170,6 @@ If you want to process one by one after loading a video or Batch, convert it to 
 
 [](/workflows/data-utilities/batch-video/image_batch_to_image_list.json)
 
-Conversely, there is also a node to group a List into a Batch.
+There's also a node that goes the other way, combining a List into a Batch.
 
 - `Image List to Image Batch` Node

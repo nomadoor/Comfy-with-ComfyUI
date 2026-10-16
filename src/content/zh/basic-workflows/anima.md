@@ -7,7 +7,7 @@ navId: anima
 title: "Anima"
 created: 2026-05-29
 updated: 2026-08-01
-summary: "使用 Anima 进行图像生成"
+summary: "用 Anima 生成图像"
 seoTitle: "在 ComfyUI 中使用 Anima：轻量动漫图像生成模型"
 seoDescription: "基于 NVIDIA Cosmos、用动漫图像训练的 2B 图像生成模型 Anima 在 ComfyUI 中的用法。介绍模型下载、提示词写法、text2image 和 Anima LLLite 工作流。"
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
@@ -18,21 +18,21 @@ hero:
 
 ## Anima 是什么？
 
-[Anima](https://huggingface.co/circlestone-labs/Anima) 是由 CircleStone Labs 与 Comfy Org 合作创建的，2B 参数图像生成模型。
+[Anima](https://huggingface.co/circlestone-labs/Anima) 是 CircleStone Labs 与 Comfy Org 合作打造的 2B 参数图像生成模型。
 
-它以 NVIDIA Cosmos 为基础，是使用数百万张动漫图像和艺术图像训练的 **纯动漫模型**。
+它以 NVIDIA Cosmos 为基础，用数百万张动漫图像和艺术图像训练而成，是一个 **纯动漫模型**。
 
-作为从 SDXL 世代的动漫模型迁移过去的目标之一，Anima 受到了相当多的期待。
+作为 SDXL 时代动漫模型的接班人，它可以说是相当受期待的模型之一。
 
 > [!WARNING]
 > 许可证是 **CircleStone Labs Non-Commercial License**。  
-> Anima 模型本身、派生模型和 LoRA 等为非商业用途。生成图像可以用于商业用途。
+> Anima 模型本身、派生模型、LoRA 等仅限非商业用途。生成的图像可以商用。
 
 {% runpod %}
 
 ---
 
-## 模型下载
+## 下载模型
 
 * diffusion_models
 
@@ -48,8 +48,8 @@ hero:
   * [qwen_image_vae.safetensors](https://huggingface.co/circlestone-labs/Anima/blob/main/split_files/vae/qwen_image_vae.safetensors) (254 MB)
 
 > [!TIP]
-> `anima-base-v1.0` 是未经调整的基础模型。
-> `anima-aesthetic-v1.1` 是使用高质量图像微调过的模型。如果只想轻松试试生成，基本上使用这个即可。
+> `anima-base-v1.0` 是未经微调的基础模型。
+> `anima-aesthetic-v1.1` 是使用高质量图像微调过的模型。想随手试试生成的话，基本上用这个就行。
 
 ```text
 📂ComfyUI/
@@ -67,7 +67,7 @@ hero:
 
 ## 提示词
 
-Anima 使用 Danbooru 系标签、自然语言，以及两者的组合进行训练。
+Anima 的训练数据包括 Danbooru 风格的标签、自然语言，以及两者的组合。
 
 因为文本编码器比较聪明，所以不需要像 [Pony Diffusion V6](/zh/basic-workflows/sdxl-anime/#pony-diffusion-v6-xl) 那样严格，不过在提示词开头加上下面这样的质量标签，可能会比较好用。
 
@@ -84,7 +84,7 @@ masterpiece, best quality, score_9, safe,
 [](/workflows/basic-workflows/anima/anima_aesthetic_v1_1.json)
 
 * 推荐分辨率是 `512px` 到 `1536px`。
-* 推荐使用 `er_sde` 或 `euler_ancestral` 这样带有一点随机变化的采样器。
+* 推荐使用 `er_sde`、`euler_ancestral` 这类带一点随机性的采样器。
 
 ---
 
@@ -92,7 +92,7 @@ masterpiece, best quality, score_9, safe,
 
 ControlNet-LLLite 是 kohya 开发的轻量级 ControlNet。
 
-### 模型下载
+### 下载模型
 
 * [Comfy-Org/Anima-LLLite](https://huggingface.co/Comfy-Org/Anima-LLLite/tree/main/model_patches)
 

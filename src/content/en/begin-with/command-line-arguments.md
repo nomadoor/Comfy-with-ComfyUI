@@ -17,19 +17,19 @@ hero:
 
 ## What are Command Line Arguments?
 
-Command line arguments are additional settings and options specified when executing a program (here, ComfyUI's `main.py`).
+Command line arguments are extra settings and options you pass when running a program (here, ComfyUI's `main.py`).
 
-Use this when you want to control more core parts such as VRAM usage and network connection than the normal settings screen.
+You use them to control lower-level things that the regular settings screen doesn't cover, such as how VRAM is used or network connections.
 
 ## How to Set
 
-Start by adding arguments after `python main.py`.
+Add the arguments after `python main.py` when you launch it.
 
 ```
 python main.py --fast
 ```
 
-In the portable version, you can set it by right-clicking and editing the `.bat` file used for startup (e.g. `run_nvidia_gpu.bat`) and adding arguments after `python.exe`.
+In the portable version, right-click the `.bat` file you use to launch it (e.g. `run_nvidia_gpu.bat`), choose edit, and add the arguments after `python.exe`.
 
 ![](/media/begin-with/command-line-arguments/legacy_gyazo_44f113bf9373f5dac0ced2a92e054165.png){media=image}
 
@@ -41,59 +41,59 @@ In the portable version, you can set it by right-clicking and editing the `.bat`
 
 ### VRAM / Memory Control (Stability and Performance)
 
-Used for countermeasures against errors due to lack of VRAM (OOM) and operation adjustment according to VRAM capacity.
+For dealing with out-of-VRAM errors (OOM) and tuning behavior to how much VRAM you have.
 
 |  | Argument Name | Function | Remarks |
 | :---: | :--- | :--- | :--- |
-| 🔥 | `--reserve-vram [GB]` | **Reserve VRAM:** Sets the amount of VRAM to use in GB units, and reserves that amount for the OS and other apps. | In the case of `--reserve-vram 1.0`, at least 1.0GB remains. |
+| 🔥 | `--reserve-vram [GB]` | **Reserve VRAM:** Sets an amount of VRAM in GB and keeps that much free for the OS and other apps. | With `--reserve-vram 1.0`, at least 1.0GB is left free. |
 | | `--vram-headroom [GB]` | Keep additional VRAM free for DynamicVRAM. | With `--vram-headroom 1.0`, ComfyUI tries to leave an extra 1.0GB free. |
-| 🔥 | `--disable-smart-memory` | **Forced release of memory management.** Does not keep the model in VRAM and actively offloads it to RAM. | Effective when you want to prioritize stability in an environment with low VRAM. Speed may drop. |
-| | `--lowvram` | Enable VRAM saving mode. | Splits and executes UNET partially to reduce VRAM usage. Standard setting when VRAM is low. |
-| | `--highvram` | Keep the model in GPU memory without unloading it to CPU memory. | Improves model switching speed in environments with large VRAM capacity. |
+| 🔥 | `--disable-smart-memory` | **Turns off smart memory management.** Models aren't kept in VRAM and are aggressively offloaded to RAM. | Useful on low-VRAM systems when you want stability first. It may be slower. |
+| | `--lowvram` | Enable VRAM saving mode. | Runs the UNET in parts to reduce VRAM usage. The standard setting when VRAM is low. |
+| | `--highvram` | Keep the model in GPU memory without unloading it to CPU memory. | Speeds up model switching on systems with lots of VRAM. |
 | | `--high-ram` | Remove RAM usage limits and make it easier to keep models in memory. | For systems with plenty of RAM. Memory usage will increase. |
 | | `--fast-disk` | Prefer fast disk storage for DynamicVRAM loading and offloading. | Useful when using a fast NVMe SSD. |
-| | `--cpu` | Use CPU for all processing. | Very slow, so use as a last resort when there is no GPU. |
+| | `--cpu` | Use CPU for all processing. | Very slow, so it's a last resort when you have no GPU. |
 | | `--normalvram` | Force normal VRAM usage even if `lowvram` is automatically enabled. | |
 
 ### Startup / Connection Settings (Convenience and Network)
 
-Used for browser behavior and ComfyUI sharing settings within LAN.
+For browser behavior and sharing ComfyUI over your LAN.
 
 |  | Argument Name | Function | Remarks |
 | :---: | :--- | :--- | :--- |
 | 🔥 | `--disable-auto-launch` | Disable **browser auto-launch**. | With official Windows Portable, add this to the end of the `.bat` file if you do not want the browser to open at startup. |
-| 🔥 | `--output-directory [path]` | Set **output directory**. | When you want to change the save destination of generated images. |
-| | `--listen` | Allow external connection: Specify the IP address to listen to. | With no argument (`--listen`), listen on both IPv4 `0.0.0.0` and IPv6 `::`. Accessible from another PC. |
-| | `--port [num]` | Set listen port (default: 8188). | Change when the port is already in use. |
+| 🔥 | `--output-directory [path]` | Set **output directory**. | For when you want generated images saved somewhere else. |
+| | `--listen` | Allow external connections: sets the IP address to listen on. | With no value (`--listen`), it listens on both IPv4 `0.0.0.0` and IPv6 `::`, so other PCs can connect. |
+| | `--port [num]` | Set listen port (default: 8188). | Change it when the port is already in use, for example. |
 | | `--enable-manager` | Enable ComfyUI Manager. | Used to show Manager in the portable and manual installation versions. |
 | | `--enable-manager-legacy-ui` | Enable the old ComfyUI Manager UI. | Use together with `--enable-manager`. See [ComfyUI Manager](/en/begin-with/comfyui-manager/) for details. |
 | | `--models-directory [path]` | Change the location of the `models` directory. | Specify an existing readable directory. |
-| | `--extra-model-paths-config [path]` | Load one or more `extra_model_paths.yaml` files. | When you want to manage multiple model storage locations. |
+| | `--extra-model-paths-config [path]` | Load one or more `extra_model_paths.yaml` files. | For when you keep models in more than one place. |
 | | `--auto-launch` | Automatically launch ComfyUI in the default browser. | |
 
 ### Troubleshooting (Error Isolation / Debugging)
 
-Used when ComfyUI stops starting or when defects such as black images appear.
+For when ComfyUI won't start, or when something goes wrong, like images coming out black.
 
 |  | Argument Name | Function | Remarks |
 | :---: | :--- | :--- | :--- |
-| 🔥 | `--disable-all-custom-nodes` | **Disable loading of all custom nodes**. | Most useful for isolating whether a custom node is the cause when ComfyUI stops starting. |
-| | `--force-fp32` | Force FP32 (single precision). | For troubleshooting precision issues such as black images appearing. |
-| | `--disable-xformers` | Disable xformers (acceleration library). | Isolate when xformers causes errors or black images. |
+| 🔥 | `--disable-all-custom-nodes` | **Disable loading of all custom nodes**. | The most useful way to check whether a custom node is the cause when ComfyUI won't start. |
+| | `--force-fp32` | Force FP32 (single precision). | For troubleshooting precision issues, such as black images. |
+| | `--disable-xformers` | Disable xformers (acceleration library). | Helps tell whether xformers is behind errors or black images. |
 | | `--fp16-vae` | Run VAE in FP16 (half precision). | Saves VRAM during VAE execution, but black images may be generated. |
-| | `--cpu-vae` | Run VAE on CPU. | Last resort to leave VAE processing to CPU when VRAM is extremely low. |
-| | `--disable-metadata` | Do not save prompt metadata to file. | When you want to reduce the image file size. |
+| | `--cpu-vae` | Run VAE on CPU. | A last resort that hands VAE work to the CPU when VRAM is extremely low. |
+| | `--disable-metadata` | Do not save prompt metadata in files. | For when you want smaller image files. |
 | | `--fast` | Enable untested optimizations. | For speed testing. Quality is not guaranteed. |
 
 ### Others (Advanced / For Developers)
 
-Mainly includes advanced tuning of VRAM/precision and frontend testing.
+Mostly advanced VRAM/precision tuning and frontend testing.
 
 |  | Argument Name | Function | Remarks |
 | :---: | :--- | :--- | :--- |
 | | `--cuda-device [ID]` | Set the CUDA device ID used by this instance. | For multi-GPU environments. |
-| 🔥 | `--front-end-version [version]` | Used to try the new UI (frontend). | Example: `--front-end-version Comfy-Org/ComfyUI_frontend@latest` |
-| | `--temp-directory [path]` | Set ComfyUI temporary directory. | |
+| 🔥 | `--front-end-version [version]` | For trying out a new UI (frontend). | Example: `--front-end-version Comfy-Org/ComfyUI_frontend@latest` |
+| | `--temp-directory [path]` | Set ComfyUI's temporary directory. | |
 | | `--multi-user` | Enable per-user storage. | |
-| | `--verbose` | Increase debug prints. | For detailed error tracking. |
+| | `--verbose` | Print more debug output. | For detailed error tracking. |
 | | `--force-channels-last` | Force channels-last format during model inference. | |

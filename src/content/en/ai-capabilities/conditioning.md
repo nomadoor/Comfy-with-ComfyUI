@@ -7,7 +7,7 @@ navId: conditioning
 title: Conditioning
 created: 2025-11-13
 updated: 2026-08-01
-summary: A mechanism to tell the diffusion model 'what kind of image I want'.
+summary: How you tell a diffusion model "this is the image I want"
 seoTitle: "What Is Conditioning in Diffusion Models?"
 seoDescription: "How conditioning tells a diffusion model what you want: text encoders, CLIP-style vs. LLM-style encoders, and conditioning from images, pose, or depth."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
@@ -18,51 +18,51 @@ hero:
 
 Diffusion models have made it possible to generate meaningful images from noise.
 
-However, as it is, it only outputs "something that looks like an image," and you cannot specify the contents, such as what kind of picture you want to output.
+But on its own, it just produces "something plausible." You can't **specify what's in it**, like what kind of picture you want.
 
-What is needed here is **Conditioning**.
+That's where **Conditioning** comes in.
 
 ---
 
 ## What is Conditioning?
 
-In ComfyUI, the additional information that tells a diffusion model "what kind of image you want" or "where and how you want it changed" as it reduces noise is collectively called **Conditioning**.
+In ComfyUI, **Conditioning** is the umbrella term for the extra information that tells a diffusion model, as it removes noise, "what kind of image you want" or "what to change, where, and how."
 
-Simply put, it's like a **guidepost that determines the direction of generation**.
+Simply put, it's a **signpost that sets the direction of generation**.
 
 ---
 
 ## Conditioning by Text
 
-The most common means of controlling image generation is probably the **text prompt**.
-Let's see how to turn just text into Conditioning.
+The most common way to control image generation is probably the **text prompt**.
+Let's look at how plain text gets turned into Conditioning.
 
-### Role of Text Encoder
+### What the Text Encoder Does
 
-The diffusion model cannot read sentences as they are.
-Words like "dog," "forest," and "sunset" are just strings of characters.
+A diffusion model can't read sentences on its own.
+To it, words like "dog," "forest," and "sunset" are just strings of characters.
 
-Therefore, the **Text Encoder** plays the role of converting text into numerical values (vectors) that the diffusion model can easily handle.
+That's where the **text encoder** comes in: it converts text into numbers (vectors) the diffusion model can work with.
 
-- **Input**: Text (Prompt)
-- **Output**: Vector representing its meaning (a set of numerical values)
+- **Input**: Text (the prompt)
+- **Output**: A vector representing its meaning (a bundle of numbers)
 
-The diffusion model uses this vector as a guidepost and reduces noise so that it becomes an image that matches the text prompt.
+The diffusion model follows this vector as a signpost, removing noise so that the image ends up matching the text prompt.
 
 ### CLIP-type Text Encoder
 
-In models like Stable Diffusion 1.5, a text encoder based on a mechanism called **CLIP** is mainly used.
+Models like Stable Diffusion 1.5 mainly use a text encoder based on **CLIP**.
 
-CLIP is a "seeing AI" that has learned a large number of "text and image pairs." It is characterized by being able to place images and text in the same "semantic space."
+CLIP is a "seeing AI" trained on huge numbers of text–image pairs. Its key trait is that it can place images and text in the same "space of meaning."
 
-- If you show it a picture of a cat, it can judge that it is compatible with the sentence "a cat."
-- This means that conversely, if you input the text "a cat," it will output a vector representing "cat-likeness."
+- Show it a photo of a cat, and it can tell that the photo matches the text "a cat."
+- Which means that, the other way around, if you give it the text "a cat," it outputs a vector representing "cat-ness."
 
-The diffusion model (U-Net) uses this vector as a guidepost to judge "in which direction should I reduce the noise to make it an image that matches this text?"
+The diffusion model (U-Net) uses this vector as a signpost to work out "which way should I remove noise so the image matches this text?"
 
 ### LLM / MLLM-type Text Encoder
 
-Recent image and video models may use text encoders based on **LLMs** or **MLLMs (Multimodal LLMs)** instead of CLIP.
+Recent image and video models have started using text encoders based on **LLMs** or **MLLMs (multimodal LLMs)** instead of CLIP.
 
 LLMs are the technology behind conversational AI such as ChatGPT and can process the context of a passage. MLLMs extend this ability to images and other types of input.
 
@@ -82,16 +82,16 @@ From ComfyUI's perspective, however, CLIP, LLMs, and MLLMs all have the same rol
 
 ## Other Conditioning (Roughly)
 
-This page focused on text, but actually, there are various Conditionings other than text.
+This page focused on text, but in practice there are many other kinds of Conditioning besides text.
 
 ### Reference Image-Based Conditioning
 
 - **IP-Adapter family, etc.**
-- Convey "make it close to this character, this coloring, the atmosphere of this photo"
+- Tells the model "lean toward this character, this coloring style, the mood of this photo"
 
 ### Structure-Based Conditioning
 
 - **ControlNet, etc.** (Pose, Line Art, Depth Map, etc.)
-- Convey "keep this pose, outline, depth"
+- Tells the model "keep this pose, these outlines, this depth"
 
 All of these are forms of Conditioning that tell the diffusion model what to prioritize and which direction to move toward.

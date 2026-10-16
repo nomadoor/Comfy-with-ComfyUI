@@ -8,7 +8,7 @@ title: "ComfyUI-TypedDecision"
 created: 2026-09-30
 updated: 2026-10-16
 noteTags: ["project", "custom-nodes", "concept"]
-summary: "A node that answers one question about images, video or text, with a probability attached"
+summary: "A node that answers questions about images, video or text, with a probability attached"
 seoTitle: "ComfyUI-TypedDecision: an MLLM that only decides"
 seoDescription: "A ComfyUI custom node that answers questions about images, video and text with probabilities, in three shapes: noul, choice and score. Workflows using d3-mini."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
@@ -221,7 +221,7 @@ At 2 fps it only looks every 0.5 seconds, so something that appears for just an 
 
 If `instructions` is the question, `state` is **the context for answering it**. Anything the image cannot tell you goes here as text.
 
-Say you want to judge whether the product in a photo matches the colour in a listing. Nothing in the question says which colour is correct.
+Say you want to judge whether the product in a photo matches the color in a listing. Nothing in the question says which color is correct.
 
 Put the listing in `state` and the model has something to compare against.
 
@@ -302,7 +302,7 @@ This prompt chose `square`, and sure enough the image came out 1024 × 1024.
 
 ### Sorting a dataset
 
-Making use of the speed, sorting a large pile of images looks like a good fit.
+Sorting a large pile of images seems like a good way to put that speed to use.
 
 ![](/media/notes/typed-decision/typed_decision_noul_dataset_sort.png){media=image}
 
@@ -313,7 +313,7 @@ This sorts a folder of images into the ones that match a condition and the ones 
 1. `Load Image (from Folder)` reads the folder as a List
 2. `noul` judges whether a person is visible
 3. `pass` goes to `If/Else Switch`, which switches the save path
-   - A `typed_decision` folder appears in ComfyUI's output folder, with `accepted` and `rejected` inside it
+   - There should now be a `typed_decision` folder in ComfyUI's output folder, with `accepted` and `rejected` inside it
 
 Let's feed it a folder holding two photos of people and three of something else.
 

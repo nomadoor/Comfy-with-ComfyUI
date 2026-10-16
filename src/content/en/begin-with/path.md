@@ -17,15 +17,15 @@ hero:
 
 ## What is a Path?
 
-Folders and files on a computer have something like an "address" in the real world. This address is called a **"Path"**.
+Folders and files on a computer have something like a real-world "address". This address is called a **"path"**.
 
-For example, when giving instructions to software, if you ask "bring that photo~", the computer will be like "Which one!".
-Therefore, it is necessary to clearly convey the location and name, such as "Bring the photo named 'dog.jpeg' in the folder named 'Animals'".
+Say you're giving software instructions and you ask it to "grab that photo~". The computer will go, "Which one?!"
+So you have to spell out the location and the name: "Grab the photo called 'giraffe.jpeg' in the folder called 'Animals'."
 
-There are two main types of paths depending on "how to specify the location" (absolute path and relative path).
+Paths come in two main types, depending on how they specify the location: absolute paths and relative paths.
 
 ### Example: Folder Structure
-First, let's assume there is a folder structure like the following.
+For the explanation, assume we have this folder structure.
 
 ```text
 📂C:/
@@ -41,7 +41,7 @@ First, let's assume there is a folder structure like the following.
 
 ## Absolute Path
 
-A method of describing the entire route from the very root (root) such as C drive to the target file.
+This writes out the whole route to the file, starting from the very top (the root), such as the C drive.
 
 Example: Specifying the location of cat.jpg
 
@@ -49,13 +49,13 @@ Example: Specifying the location of cat.jpg
 C:\Users\Yamada\Photos\cat.jpg
 ```
 
-Feature: It is very clear and easy to understand, but if you move the folder or take data to another computer and the "address" to cat.jpg changes, you have to rewrite it or it won't work.
+Characteristics: It's very clear and easy to follow, but if you move the folder or take the data to another computer and the "address" of cat.jpg changes, it stops working until you rewrite it.
 
 ---
 
 ## Relative Path
 
-A method of describing only the route from "where you are now (current directory)" to the target file.
+This writes only the route from "where you are now" (the current directory) to the file.
 
 Example 1: Specifying cat.jpg while the Yamada folder is open
 
@@ -64,7 +64,7 @@ Photos\cat.jpg
 ```
 
 Example 2: Using the symbol `..` to go back one level
-For example, to specify cat.jpg while the Animals folder is open, "go back one level (Photos) and then specify".
+For example, to point to cat.jpg while the Animals folder is open, you "go up one level (to Photos) first, then point to it".
 
 ```
 ..\cat.jpg
@@ -72,11 +72,11 @@ For example, to specify cat.jpg while the Animals folder is open, "go back one l
 
 ---
 
-## Difference between Windows and Mac/Linux (Delimiter)
-The character that separates path hierarchies (delimiter) differs depending on the OS.
+## Windows vs. Mac/Linux (Separators)
+The character that separates the levels of a path (the separator) differs by OS.
 
 - Windows: `¥` or `\` (backslash)
 
-  - * Depending on the environment, it may look like a yen symbol or a backslash, but the entity is the same.
+  - * Depending on your system it may show up as a yen sign or a backslash, but it's the same character.
 
 - Mac / Linux: `/` (slash)

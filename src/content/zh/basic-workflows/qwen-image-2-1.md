@@ -41,7 +41,7 @@ tags: []
 
 ---
 
-## 模型的下载
+## 下载模型
 
 - diffusion_models
   - [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/blob/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) (7.26 GB)
@@ -165,7 +165,7 @@ Qwen 官方还发布了只需 8 步即可生成的 Turbo 版。
 
 - `resolution`
   - 与 Ref2Image 不同，这里设置为 `0`。图像不会缩放，只会将尺寸取整为 32 的倍数（因为事先已经调整过尺寸，实际不会发生变化）
-  - 最好还是让模型看到的图像尺寸与输出尺寸保持一致
+  - 模型看到的图像尺寸和输出尺寸，还是姑且对齐一下吧
 
 {% endmediaRow %}
 
@@ -173,7 +173,7 @@ Qwen 官方还发布了只需 8 步即可生成的 Turbo 版。
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_output.png){media=image}
 {% endoutputs %}
 
-### 用彩色圆圈指定位置
+### 用红圈指定位置进行编辑
 
 用彩色笔圈出想要编辑的位置。
 
@@ -183,7 +183,7 @@ Qwen 官方还发布了只需 8 步即可生成的 Turbo 版。
 
 [](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit_local.json)
 
-直接在图像上圈出要编辑的对象。
+直接在要编辑的图像上，把想让它编辑的对象圈出来。
 
 - 也可以使用 `Load Image` 节点附带的 `Mask Editor`
 
@@ -195,7 +195,7 @@ Qwen 官方还发布了只需 8 步即可生成的 Turbo 版。
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_output.png){media=image}
 {% endoutputs %}
 
-### 用蒙版指定位置
+### 用蒙版指定位置进行编辑
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask.png){media=image}
 
@@ -212,7 +212,7 @@ Qwen 官方还发布了只需 8 步即可生成的 Turbo 版。
 
 使用 `Convert Mask to Image` 将 `Load Image` 的 MASK 输出转换为黑白图像，再输入到 `image_2`。
 
-实际上，模型接收到的只是一张普通的黑白图像。也可以不从蒙版转换，直接准备一张在黑色背景上用白色涂出范围的图像。
+实际上，模型接收到的只是一张普通的黑白图像。不从蒙版转换也行，直接准备一张在黑底上用白色涂涂抹抹的图像也没问题哦。
 
 {% endmediaRow %}
 
@@ -235,13 +235,13 @@ Qwen 官方还发布了只需 8 步即可生成的 Turbo 版。
 
 [](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_outpainting.json)
 
-将横向图像作为参考图像输入，却把生成尺寸设成纵向，会怎么样呢？
+把横向图像作为参考图像输入，但把要生成的图像尺寸设成纵向，会怎么样呢？
 
-Qwen-Image-2.1 会生成一张补全上下空间的新图像。
+没错，Qwen-Image-2.1 会生成一张把上下空间补上的图像。
 
 它不是只绘制空白部分，而是重新绘制整张图像，因此原图部分也会发生一些变化。
 
-这并不是严格固定原图的方法，不过确实非常简单。
+这并不是严格固定原图的方法，不过很简单，挺好的。
 
 {% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting_output.png){media=image}
@@ -251,7 +251,7 @@ Qwen-Image-2.1 会生成一张补全上下空间的新图像。
 
 虽然它本身并不是 ControlNet，但可以把姿势图、深度图等作为图像编辑的参考，让模型根据这些图像进行生成。
 
-**模型下载**
+**下载模型**
 
 - checkpoints
   - [sdpose_wholebody_fp16.safetensors](https://huggingface.co/Comfy-Org/SDPose/blob/main/checkpoints/sdpose_wholebody_fp16.safetensors) (1.92 GB)
@@ -271,7 +271,7 @@ Qwen-Image-2.1 会生成一张补全上下空间的新图像。
 
 再输入一张参考图像，让其中的人物摆出指定姿势。
 
-可能会觉得，真的有必要特意把姿势转换成火柴人吗？不过，即使只想让模型参考姿势，它有时也会把服装、背景等无关信息一并带进去。
+也许你会觉得，有必要特意转成火柴人吗？不过，就算你说“只看姿势就好”，它有时也会把服装、背景等多余的信息一起带进来。
 
 与其说是因为 ControlNet 才使用 Pose，不如说重点在于从参考图像中剔除多余信息，只提取姿势或形状交给模型。
 
@@ -372,7 +372,7 @@ This is an RGBA image with transparency. <在这里填写要生成的内容>. Th
 
 在上面的[抠图](#抠图)中，可以从图像里单独提取任意内容，得到透明图像。
 
-那么，把抠出的物体从图像中移除，再继续抠出下一个位于前方的内容。重复这个过程，就能把一张图像从前到后分成多个图层。
+那么，把抠出的物体从图像中去掉，再抠出下一个位于最前方的内容。重复这个过程，应该就能把一张图像从前到后依次分成多个图层。
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition.png){media=image}
 
@@ -430,7 +430,7 @@ This is an RGBA image with transparency. <在这里填写要生成的内容>. Th
 
 图层分解不只需要抠出的物体，还需要一张移除该物体后的图像。
 
-直接输入原图和抠图，再要求“把这个去掉”没有取得理想效果。因此，这里把抠出的区域涂成绿色，并要求模型自然地填补绿色部分。
+本来希望直接输入原图和抠图，说一句“把这个去掉”就能解决，可惜效果不好。因此，这里把抠出的区域涂成绿色，并指示模型“把绿色部分自然地填上”。
 
 移除物体后的图像，会成为下一次抠图使用的原图。
 
@@ -450,7 +450,7 @@ This is an RGBA image with transparency. <在这里填写要生成的内容>. Th
 
 > [!NOTE]
 > 你可能会想，为什么不固定 seed，反而特意使用 `iteration_index`。  
-> 不知道这是 bug 还是预期行为，但用相同的 seed 再次编辑一张已经编辑过的图像时，输出会出现严重劣化。  
+> 不知道是 bug 还是设计如此，用相同的 seed 再次编辑一张已经编辑过的图像时，输出会变得糊成一团……  
 > 只要 seed 发生变化就没有问题，所以作为临时处理，这里直接输入每次循环都会变化的 `iteration_index`。
 
 {% outputs %}

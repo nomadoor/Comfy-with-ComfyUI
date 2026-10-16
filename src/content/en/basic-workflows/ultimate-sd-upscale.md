@@ -7,7 +7,7 @@ navId: ultimate-sd-upscale
 title: "Ultimate SD Upscale"
 created: 2025-12-09
 updated: 2026-03-02
-summary: "Super resolution upscale using Tile and ControlNet"
+summary: "Ultra-high-resolution upscaling with Tile and ControlNet"
 seoTitle: "Ultimate SD Upscale in ComfyUI: Tiled Upscaling"
 seoDescription: "Ultimate SD Upscale enlarges images tile by tile: hide seams with overlap, handle the prompt problem, and lock structure with ControlNet Tile."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -20,17 +20,17 @@ tags: ["upscale-restoration", "controlnet"]
 
 ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_d3b6f13de466be0cb0a17f2565d6f9e3.png){media=image}
 
-There were two reasons why Stable Diffusion could not generate large images: one was that it was not trained on large images, and another simple reason was the problem of computational cost.
+One reason Stable Diffusion couldn't generate large images was that it wasn't trained on them, but there was another, simpler cause: computational cost.
 
-Trying to generate a super high-resolution image like 4K or 8K in one go is quite severe in terms of VRAM and computation time.
+Trying to generate an ultra-high-resolution image like 4K or 8K in one go is pretty tough on VRAM and compute time.
 
-Therefore, the idea was born not to make it all at once, but to divide the image and perform Hires.fix on each of them.
+So instead of making it all at once, the idea came up to split the image and run Hires.fix on each piece.
 - 1. Enlarge the image
-- 2. Divide into tiles
-- 3. image2image for each tile individually
-- 4. Connect the tiles at the end
+- 2. Split it into tiles
+- 3. Run image2image on each tile separately
+- 4. Stitch the tiles back together at the end
 
-The name **Ultimate SD upscale** is famous, but what is really important is the concept of **Tile (tile division)**.
+**Ultimate SD upscale** is the well-known name, but what really matters is the idea of **Tile (tiling)**.
 
 ---
 
@@ -38,100 +38,100 @@ The name **Ultimate SD upscale** is famous, but what is really important is the 
 
 - [shiimizu/ComfyUI-TiledDiffusion](https://github.com/shiimizu/ComfyUI-TiledDiffusion)
 
-There is also a node exactly named [ssitu/ComfyUI_UltimateSDUpscale](https://github.com/ssitu/ComfyUI_UltimateSDUpscale), but since we want to follow the principle this time, we will use the simple node above.
+There's also a node that is literally Ultimate SD upscale, [ssitu/ComfyUI_UltimateSDUpscale](https://github.com/ssitu/ComfyUI_UltimateSDUpscale), but this time I want to follow the underlying principle, so I'll use the simpler node above.
 
 ---
 
-## Weakness of Tile: Seams
+## Tile's Weakness: Seams
 
-First, let's look at the basic behavior of Tile.
-Here we will explain using the Tiled Diffusion node as an example, but the node can be anything as long as you understand the concept.
+First, let's look at how Tile basically behaves.
+I'll use the Tiled Diffusion nodes as an example, but any node will do as long as you get the idea.
 
 ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_6ff5e63c42367c9ef8ffd8e2a89a61c5.png){media=image} ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_daf241e640303e9bdbebdbdb06ae4afa.png){media=image}
 
 [](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap0.json)
 
-* 🟨 Resize input image to 1024 × 1024 px
+* 🟨 Resize the input image to 1024 × 1024 px
 * 🟩 Set tile size to 512 × 512 px
 
-With this setting, the image of the puppy on the bottom left is neatly divided into 4, and each tile is processed as an independent image2image.
+With these settings, the puppy image at the bottom left is split neatly into 4, and each tile is processed as an independent image2image.
 
-As you can see, the boundaries of the tiles are clearly visible, and the unity of the screen as a whole is weak.
-This is the **first weakness** of Tile.
+As you can see, the tile boundaries are clearly visible, and the image doesn't hold together well as a whole.
+This is Tile's **first weakness**.
 
 ---
 
 ## Blending seams with overlap
 
-If you are concerned about boundaries, you can arrange the tiles with a slight overlap.
-This is `tile_overlap`.
+If the seams bother you, one idea is to place the tiles so they overlap a little.
+That's what `tile_overlap` does.
 
 ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_d6bf859530ae65b7b09ca8a2b2e3006b.png){media=image} ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_fec3f15e6e4ff7110d3f5ff110f0faa2.png){media=image}
 
 [](/workflows/basic-workflows/ultimate-sd-upscale/tiled_diffusion_overlap256.json)
 
 - 🟩 Set `tile_overlap` to 256px
-- Instead of lining up tiles neatly, imagine arranging them **intentionally overlapping by about half**.
+- Instead of lining the tiles up neatly, picture placing them **deliberately overlapping by about half**.
   - ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_5f5d51e77955a55c8df142e45d8d12f5.png){media=image}
 
-The overlapped part acts like a cushion where adjacent tiles share information, so the boundary blends in as sampling progresses, making the seams of the tiles less noticeable.
+The overlapping areas act like a cushion where neighboring tiles share information, so as sampling proceeds, the boundaries blend in and the seams become less noticeable.
 
-However, increasing the overlap means sampling the same area multiple times, so the generation time increases.
+However, the more overlap you add, the more times the same area gets sampled, so generation takes longer.
 
 ---
 
-## Another weakness of Tile: Prompt
+## Tile's Other Weakness: The Prompt
 
-Tile has another major weakness.
-Since **the same prompt is used for all tiles**, unnecessary things are generated in unexpected places.
+Tile has one more big weakness.
+Because **every tile uses the same prompt**, extra things get generated in places you never intended.
 
 ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_b180b2b157a72b030b099dcb6f7c046f.png){media=image}
 
-Let's try generating with settings like `tile_overlap = 0` / `denoise = 1` in the previous workflow, and writing only `a dog` in the prompt.
-Then, as shown in the image, many dogs appear in one image.
+In the previous workflow, set something like `tile_overlap = 0` / `denoise = 1`, write only `a dog` in the prompt, and generate.
+As in the image, you get several dogs in a single image.
 
-Since it tries to generate one dog in each of the top left, top right, bottom left, and bottom right tiles, four dogs are drawn as a whole. This is the **second weakness** of Tile.
+The top-left, top-right, bottom-left, and bottom-right tiles each try to draw one dog, so you end up with four dogs overall. This is Tile's **second weakness**.
 
 ---
 
-## Idea of changing prompt for each tile
+## What About a Different Prompt per Tile?
 
-In theory, you could consider **writing a separate prompt for each tile**.
+In theory, you could **write a separate prompt for each tile**.
 
 - Top left tile: `dog right ear, right eye`
 - Top right tile: `dog left ear, left eye`
 - Bottom left tile: `dog front leg`
 - Bottom right tile: `dog back leg`
 
-If you do this, every tile should understand "I only need to be responsible for the ear".
+That way, each tile should understand "I only need to handle the ear".
 
-However, in practice, this is rarely used.
+In practice, though, this is hardly ever used.
 
-Writing prompts for the number of tiles is not realistic, and above all, Stable Diffusion cannot understand and differentiate prompts like "only the top right quarter of a dog's face".
+Writing a prompt for every tile isn't realistic, and above all, Stable Diffusion can't understand a prompt like "only the top-right quarter of a dog's face" and draw accordingly.
 
 ---
 
-## Fixing structure with ControlNet Tile
+## Locking the Structure with ControlNet Tile
 
 This is where **ControlNet Tile** comes in.
 
-ControlNet Tile is a ControlNet that generates a new image while **maintaining the structure of the input image quite strongly**.
+ControlNet Tile is a ControlNet that generates a new image while **holding on to the input image's structure quite strongly**.
 
-It does not copy pixels as they are, but behaves like repainting textures and details while maintaining the **rough shape** and **positional relationship of objects**.
+It doesn't copy the pixels as-is, but it behaves as if it were repainting textures and details while keeping the **rough shapes** and **positions of objects**.
 
 ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_a0d8adb6b4cbd35562588238db87f71e.png){media=image} ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_1bf02bf5900f379735c6a29a7aa1935e.png){media=image}
 
 [](/workflows/basic-workflows/ultimate-sd-upscale/tileddiffusion_controlnet_tile.json)
 
-In this workflow, we dare to set `tile_overlap = 0`, `denoise = 1`, which makes the weakness of Tile most visible.
+In this workflow, I deliberately use `tile_overlap = 0`, `denoise = 1`, the settings where Tile's weaknesses show up the most.
 
-Still, you can see that by passing through ControlNet Tile, upscaling is possible while **keeping the composition of the original image to a considerable extent**.
+Even so, you should be able to see that going through ControlNet Tile lets it upscale **while keeping much of the original composition**.
 
 ---
 
 ## Finishing with overlap × ControlNet Tile
 
-Combining the elements so far, practical Tile upscale form comes into view.
+Put everything so far together, and a practical form of Tile upscaling starts to take shape.
 
 ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_763660c52564a7af2f5dce9eaa81e20f.png){media=image} ![](/media/basic-workflows/ultimate-sd-upscale/legacy_gyazo_3e4bf6018a4e4500f3bbd14151ce56e7.png){media=image}
 
@@ -140,25 +140,25 @@ Combining the elements so far, practical Tile upscale form comes into view.
 - 🟩 overlap 256px
 - 🟦 Controlnet strength 0.6
 
-It has become a much more natural finish.
+It looks much more natural now.
 
 ---
 
-## Summary: The concept of Ultimate SD upscale
+## Summary: The Ideas Behind Ultimate SD upscale
 
-The essence of Ultimate SD upscale is the following three pillars.
+At its core, Ultimate SD upscale rests on three pillars.
 
 - 1. **Tile (Tile Division)**
-   Instead of handling large images as they are, divide them into tiles and perform image2image to aim for super-resolution while suppressing VRAM and computation time load.
+   Instead of handling a large image as-is, split it into tiles and run image2image on each, aiming for super-resolution while keeping the VRAM and compute load down.
 
 - 2. **overlap (Tile Overlap)**
-   Arrange tiles slightly overlapping each other and blend boundaries during the sampling process to make seams unnoticeable.
+   Place the tiles slightly overlapping and let the boundaries blend during sampling, so the seams don't stand out.
 
 - 3. **ControlNet Tile (fixing structure)**
-   By upscaling tiles while strongly maintaining the structure of the input image, suppress the "dog inside dog" problem and the problem that the whole becomes disjointed.
+   Upscale the tiles while strongly preserving the input image's structure, to keep the "dogs inside the dog" problem and the whole image falling apart in check.
 
-Actual Ultimate SD upscale nodes and presets are just packaging this concept into a single node.
+The actual Ultimate SD upscale nodes and presets are nothing more than this idea packaged into a single node.
 
-By the way, a similar idea can be applied to video generation, where frames are divided.
-It's like taking 20 frames at a time from a 100-frame video and overlapping 5 frames.
-We won't cover details here, but the point of dividing finely to reduce calculation cost is exactly the same.
+By the way, the same idea carries over to video generation, where you split by frames instead.
+Something like splitting a 100-frame video into 20-frame chunks with a 5-frame overlap.
+I won't go into detail here, but the point is exactly the same: split things up finely to cut computational cost.

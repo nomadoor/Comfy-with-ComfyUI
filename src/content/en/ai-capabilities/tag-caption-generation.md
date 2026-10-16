@@ -7,7 +7,7 @@ navId: tag-caption-generation
 title: Tag & Caption Generation
 created: 2025-12-03
 updated: 2026-03-02
-summary: "Technology to automatically add tags and descriptions (captions) from images."
+summary: "Automatically tagging and captioning images"
 seoTitle: "AI Models for Image Tagging and Captioning"
 seoDescription: "Tag and caption images automatically: WD taggers and JoyTagger, JoyCaption and Qwen-VL captions, API models like ChatGPT and Gemini, and local models."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
@@ -17,76 +17,76 @@ hero:
 
 ## What is Tag & Caption Generation?
 
-It is a task to automatically add tags and descriptions (captions) from images.
+The task of automatically adding tags and descriptions (captions) to images.
 
-It is used for creating datasets for LoRA and fine-tuning, and for generating prompts to create images similar to reference images.
+It's used for building datasets for LoRAs and fine-tuning, and for generating prompts to make images similar to a reference.
 
 ---
 
 ## Tag Generation (Tagger)
 
-This automatically assigns Danbooru-style tags and genre labels.
+Automatically assigns Danbooru-style tags and genre labels.
 
 ### WD Family Taggers
 
 - **WD14-tagger / WD-tagger-v3 family**
   - ![](/media/ai-capabilities/tag-caption-generation/legacy_gyazo_a97fe3f3a2e72a2396df6ebc8c005b72.png){media=image}
   - [](/workflows/ai-capabilities/tag-caption-generation/wd_tagger_v3.json)
-  - Tagging models for illustration and anime images.
-  - They provide very detailed tags such as characters, hair color, clothing, facial expressions, and composition.
+  - Tagging models for illustrations and anime-style images.
+  - They add very fine-grained tags for things like character, hair color, clothing, expression, and composition.
 
 ### JoyTagger
 
-- While the WD family is specialized for anime, this tagger supports more general images.
-- It is by the same author as **JoyCaption** mentioned later, which is convenient if you want to align tagging and caption generation with the same family of tools.
+- Where the WD family specializes in anime, this tagger also handles more general images.
+- It's made by the same author as **JoyCaption** (covered below), which is handy if you want your tagging and captioning tools to come from the same family.
 
 ---
 
 ## Local Caption Generation Models
 
-When LLMs (VLMs) that could handle images were rare, many caption generation models running locally were proposed.
-Moondream, LLaVA family, InternLM-XComposer2-VL, etc., the list goes on.
+Back when LLMs that could handle images (VLMs) were rare, lots of local captioning models were proposed.
+moondream, the LLaVA family, InternLM-XComposer2-VL... the list goes on.
 
-Looking at them from current standards, many are tough in terms of the balance between accuracy, stability, and cost, and those worth introducing anew are becoming limited.
+By today's standards, many of them don't hold up in terms of accuracy, stability, and cost, and few are worth setting up fresh now.
 
-Here, I will list only those that are still relatively easy to use.
+Here I'll list only the ones that are still fairly easy to use.
 
 ### JoyCaption
 
 - [JoyCaption](https://github.com/fpgaminer/joycaption)
-- A **lightweight model specialized for caption generation** created by the same author as JoyTagger.
-- Unlike VLMs aiming for general-purpose use, it specializes in "Image → Description," so you don't need to be particular about prompts and can use it casually.
-- Being lightweight is the best part.
+- A **lightweight model built specifically for captioning**, by the same author as JoyTagger.
+- Unlike general-purpose VLMs, it does only "image → description," so you don't need to fuss over prompts and can just use it.
+- Best of all, it's lightweight.
 
 ### Qwen-2.5 / Qwen3-VL Family
 
-- As a lightweight local MLLM, this series can be said to be SoTA class at the moment.
-- It supports not only general caption generation but also slightly more in-depth instructions like "Make it a writing style suitable for training captions."
-- If you want to run an LVLM like ChatGPT locally, try using this for now.
+- Among lightweight local MLLMs, this series is about as close to SoTA as it gets right now.
+- Besides ordinary captioning, it can handle somewhat more involved instructions like "write it in a style suited to training captions."
+- If you want to run a ChatGPT-like LVLM locally, start with this one.
 
 ---
 
 ## APIs like ChatGPT / Gemini
 
-Just like with prompt generation, using closed models via API is also a good choice.
+As with prompt generation, using closed models through an API is also a good option.
 
 - Setup is very easy.
 - Japanese captions can be handled as is.
 - You can ask for post-processing together, like "Make it a slightly more technical description for LoRA training."
 
-Setting up an MLLM is difficult, and computational costs tend to be high...
-Being able to use it casually is the happiest thing above all.
+Setting up an MLLM is hard, and the compute costs are high too...
+So being able to just use one without any hassle is a real blessing.
 
 ---
 
 ## Reasons to Use Local Models
 
-Not limited to LLMs, a big reason to use local models is **whether they can handle NSFW data**.
+This goes beyond LLMs, but the big reason to use local models is really **whether they can handle NSFW content**.
 
 - Public APIs often blur or reject NSFW content.
 - On the other hand, training datasets sometimes require "captions as they are" regardless of content.
 - Even local models are often censored.
 
-I think this is the sole reason why WD family taggers and JoyCaption still maintain a certain demand.
+I think that's exactly why WD taggers and JoyCaption are still in demand.
 
-If you need completely local operation or are creating a dataset including NSFW, please use these local models in combination.
+If you need to run everything locally, or you're building a dataset that includes NSFW content, use these local models together.

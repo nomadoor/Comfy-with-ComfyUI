@@ -17,45 +17,45 @@ hero:
 
 ## 什么是 Lip Sync（对口型）？
 
-Lip Sync 是配合音频的内容或节奏，追加嘴巴或表情动作的技术。
+Lip Sync 是根据音频的内容和节奏，事后给画面加上嘴部和表情动作的技术。
 
-它用于给原本的视频叠加单独录制的音频，或让一张静止画“像在说话一样”移动。
+它常用于给现有视频配上另外录制的音频，或者让一张静态图“像在说话一样”动起来。
 
 ---
 
-## 配合现有视频的对口型
+## 让现有视频的口型对上
 
 ![](https://gyazo.com/17b81df017311b5fee98119e7e808492){gyazo=player} ![](/media/ai-capabilities/lip-sync/legacy_gyazo_a6286699b56195148b64533d441561c0.mp4){media=player}
 > ← 基础视频 | → Lip Sync (LatentSync)
 
-最初广为人知的是像 Wav2Lip 那样“只修改嘴角”类型的模型。
+最早广为人知的，是 Wav2Lip 这类“只修改嘴部”的模型。
 
-输入已经拍摄好的视频和单独录制的音频，就会输出脸或身体的动作保持原样，只有嘴巴配合新音频移动的视频。
+输入已经拍好的视频和另外录制的音频，它会输出一段脸和身体动作保持不变、只有嘴巴配合新音频在动的视频。
 
 ---
 
-## 让一张静止画说话
+## 让一张图说话
 
 > ![](/media/ai-capabilities/lip-sync/legacy_gyazo_a74335c1403caa5475429688f420212d.mp4){media=player}
 > EMO
 
-像 [EMO](https://humanaigc.github.io/emote-portrait-alive/) 这样的模型，可以从一张人脸图像和音频中直接生成说话的视频。
-用音频来控制并驱动输入图像，可以说是 image2video 的发展。
+像 [EMO](https://humanaigc.github.io/emote-portrait-alive/) 这样的模型，可以根据一张人脸图像和音频，直接生成说话的视频。
+用音频来控制并驱动输入图像，可以说是 image2video 的延伸。
 
-准备一张角色插图或人脸照片，并给予台词或歌声，它就会返回对应长度的、带有对口型的视频。眨眼、嘴角动作、轻微的头部晃动等也会一并制作出来。
+准备一张角色插画或人脸照片，再给它台词或歌声的音频，就会得到一段长度与音频相应、口型对得上的视频。眨眼、嘴角的动作、轻微的摇头等也会一起生成。
 
 ---
 
-## 通过音频驱动整个视频
+## 用音频驱动整段视频
 
-稍微大声说话就能明白，说话时不仅仅是嘴巴在动。
-肺部膨胀，肩膀抬起，回过神来甚至在用手做手势。
+稍微提高嗓门说几句话就会发现，说话时动的可不只是嘴。
+肺会鼓起来，肩膀会抬起来，不知不觉连手势都用上了。
 
-归根结底，像 Wav2Lip 那样只让嘴巴配合音频移动，是无法制作出自然的视频的。
+也就是说，像 Wav2Lip 那样只让嘴巴配合音频动，是做不出自然的视频的。
 
-再加上视频生成模型已经达到了实用的性能，不仅仅是单纯的“对口型”，正在朝着 **音频驱动型肖像视频生成** 的方向发展。
+再加上视频生成模型已经达到实用水平，技术也从单纯的“对口型”，逐渐走向了 **音频驱动的人像视频生成**。
 
 > ![](/media/ai-capabilities/lip-sync/legacy_gyazo_808dcfc73aa5fb1959eb35be3534e5e7.mp4){media=player}
-> InfineTalk
+> InfiniteTalk
 
-作为现在的 SoTA，有基于 Wan2.1 的 [FantasyTalking](https://fantasy-amap.github.io/fantasy-talking/) 或 [InfiniteTalk](https://meigen-ai.github.io/InfiniteTalk/) 等。
+目前的 SoTA 有基于 Wan2.1 的 [FantasyTalking](https://fantasy-amap.github.io/fantasy-talking/)、[InfiniteTalk](https://meigen-ai.github.io/InfiniteTalk/) 等。

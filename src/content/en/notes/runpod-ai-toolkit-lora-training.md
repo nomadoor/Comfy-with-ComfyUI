@@ -22,7 +22,7 @@ There are several similar services, but I feel RunPod has the best balance of pr
 
 Compared with simple image generation, model training needs more compute power and VRAM. You also keep the GPU running for tens of minutes or several hours.
 
-If you only want to train a simple LoRA, it can be done for a few dollars, so it is easy enough to try.
+If you only want to train a simple LoRA, it only costs a few dollars, so feel free to give it a try.
 
 This note walks through the flow from launching AI Toolkit on RunPod to downloading the LoRA you trained.
 
@@ -110,7 +110,7 @@ It is easy to get lost, but the first thing to look at is **VRAM**.
 
 If you do not have enough VRAM, training will fail with `Out of Memory`.
 
-More expensive GPUs are generally faster for training, but twice the price does not mean twice the speed. It is a tradeoff between your wallet and how much time you have left.
+More expensive GPUs are generally faster for training, but twice the price does not mean twice the speed. It comes down to weighing your wallet against the time you have.
 
 I usually use an RTX A5000 or A40.
 
@@ -124,13 +124,13 @@ I usually use an RTX A5000 or A40.
 Click `Deploy Pod` to create the Pod.
 
 > [!WARNING]
-> Credit usage starts at this point. Prepare your dataset before deploying the Pod.
+> Credits start being used from this point. Get your dataset and anything else ready beforehand.
 
 ---
 
 ## 3. Open the AI Toolkit UI
 
-It takes a little while for the Pod to be created. Wait for it to finish.
+It takes a little while for the Pod to be created, so just wait.
 
 ![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_952faa4188776b9cc626a5c2009422b3.png){media=image}
 
@@ -142,7 +142,7 @@ Click `HTTP Service`, and AI Toolkit should open.
 
 When it asks for a password, enter the value you just set in `AI_TOOLKIT_AUTH`.
 
-From here, we will look at the rough training flow in AI Toolkit.
+From here, let's take a rough look at how model training works in AI Toolkit.
 
 ---
 
@@ -216,7 +216,7 @@ That is the basic flow.
 
 RunPod charges while the Pod is running, even if you are not actively working.
 
-Do not forget to stop it.
+That is wasted money, so do not forget to stop it.
 
 ![](/media/notes/runpod-ai-toolkit-lora-training/legacy_gyazo_f60fe312a59e9fe6624490c8004da78e.png){media=image}
 

@@ -20,11 +20,11 @@ hero:
 
 最近的工作流里，经常会看到一个叫 `Conditioning Zero Out` 的节点。
 
-这到底是什么？
+这到底是个啥！
 
 简单来说，**它是在 CFG 1.0 时，用来填上不会被使用的 `negative` 输入的节点**。
 
-为什么需要这样的节点？下面按顺序来看。
+为什么需要这种东西？下面一步步来看。
 
 ## CFG 1.0 会忽略 Negative
 
@@ -45,17 +45,17 @@ Negative 就这样干干净净地消失了。
 
 也就是说，CFG 为 1.0 时，无论 Negative 里放什么，结果都不会改变。
 
-与此同时，Negative 一侧的计算可以整个省掉，所以生成速度会快不少。挺好。
+与此同时，Negative 一侧的计算可以整个省掉，所以生成速度会快不少。真不错。
 
-最近很多模型都通过 CFG 蒸馏，学习了如何在 CFG 1.0 下正常生成。因此，使用 CFG 1.0 的工作流也越来越常见。
+最近很多模型在训练时就让它在 CFG 1.0 下也能好好生成（CFG 蒸馏）。所以用 CFG 1.0 的工作流也越来越多了。
 
 ## 但 KSampler 仍然有 negative 输入
 
 CFG 为 1.0 时不会用到 Negative。
 
-但 `KSampler` 依然有一个 `negative` 输入，如果什么都不连接，就会报错。
+可 `KSampler` 照样有 `negative` 输入，这里不接点什么就会报错。
 
-虽然生成时不会使用，但仍然需要先连接某种 conditioning。
+生成时明明用不上，却还是得先随便接一个 conditioning。
 
 反正都会被忽略，接什么得到的结果都一样。下面看看几种做法。
 
@@ -69,7 +69,7 @@ CFG 为 1.0 时不会用到 Negative。
 
 这样也能正常运行。
 
-不过从工作流来看，总觉得有点奇怪。刚接触的人看到以后，大概会想：
+不过作为工作流，看着总有点别扭。新手看到的话，大概会想：
 
 “为什么 negative 里接的是 positive？”
 
@@ -95,7 +95,7 @@ output = positive + CFG × (positive - positive)
 
 [](/workflows/notes/conditioning-zero-out/krea2_empty_negative_prompt.json)
 
-这种接法看起来更容易理解。
+这种做法从外观上就比较好懂。
 
 不过，只是为了生成一份根本不会使用的 conditioning，却让 Text Encoder 又运行了一次。
 
@@ -113,17 +113,19 @@ output = positive + CFG × (positive - positive)
 
 在 CFG 1.0 下，得到的生成结果当然和前面一样。
 
-而且：
+在此基础上：
 
 - 不需要为了 Negative 再运行一次 Text Encoder
 - 从工作流外观就能看出，“Negative 里接的是没有意义的数据”
 - 和直接复用 Positive 不同，调高 CFG 后结果会正常变化
 
-可以说是取了两种做法的优点。
+可以说是集各家之所长。
 
 ## 空提示词和 Zero Out 的区别
 
-空提示词和 `Conditioning Zero Out` 听起来似乎差不多，但它们生成的数据完全不同。
+空提示词和 `Conditioning Zero Out`。
+
+总感觉好像是一回事，但它们生成的数据完全不同。
 
 实际在 ComfyUI 里看看里面的数值吧。
 
@@ -139,8 +141,8 @@ output = positive + CFG × (positive - positive)
 
 里面并不全是 0。
 
-什么都没写，看起来应该会得到“什么都没有的 conditioning”。但对 Text Encoder 来说，“什么都没写的句子”本身也有一定含义。
+什么都没写，按理说应该得到一个“什么都没有”的 conditioning，但对 Text Encoder 来说，“什么都没写的句子”本身也有一定的含义。
 
 CFG 为 1.0 时，Negative 本身不会被使用，所以两种方法得到的生成结果相同。
 
-但把 CFG 调到 1.0 以上后，结果就会出现差异。只需要注意这一点。
+不过，把 CFG 调到大于 1.0 时结果就会不同，只有这一点要注意。

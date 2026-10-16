@@ -17,46 +17,46 @@ hero:
 
 ## Structure of ComfyUI
 
-ComfyUI is actually divided into "two parts".
+ComfyUI is actually split into "two parts."
 
 ### Server (ComfyUI Core)
 
-The "engine" side that executes the workflow and generates images, videos, audio, etc.
-When you start ComfyUI, this server waits at a URL like `http://127.0.0.1:8188` locally.
+This is the "engine" side that runs workflows and generates images, videos, audio, and so on.
+When you start ComfyUI, this is the server listening locally at a URL like `http://127.0.0.1:8188`.
 
 ### Frontend (User Interface)
 
-The "operation" side that instructs the server to "execute this workflow".
-The Web node UI you usually use is just one of these frontends.
+This is the "control" side that tells the server, "run this workflow."
+The web-based node UI you normally use is just one of these frontends.
 
 ---
 
 ## API is a "Window to Send Commands to Server"
 
-The frontend and server are not connected arbitrarily.
-They are connected by the **API (Application Programming Interface)**.
+The frontend and the server don't just connect on their own.
+What links them is the **API (the window that passes commands along)**.
 
 ![](/media/begin-with/multiple-comfyui-instances/legacy_gyazo_a04e2d09b534afb1e32900a738f0c3a7.png){media=image}
 
-The Web node UI also sends commands to the server internally via the API.
-In other words, the moment you press `▷Run` in the UI, a request saying "execute this workflow" is sent to the server in the background.
+The web node UI also sends its commands to the server through the API behind the scenes.
+In other words, the moment you press `▷Run` in the UI, a request saying "run this workflow" is sent to the server in the background.
 
 ---
 
 ## API Increases "Ways to Execute"
 
-The most interesting part of the API is that you can **operate the same ComfyUI server from entry points other than the browser**.
+The most interesting thing about the API is that **you can drive the same ComfyUI server from entry points other than the browser**.
 
 For example, you can do the following:
 
 - Run workflows from commands (CLI) or scripts
-- Create and execute a small custom UI (e.g., a screen with only forms)
-- Replace only the seed or text and execute continuously
+- Build your own small UI (like a screen with just a form) and run workflows from it
+- Swap only the seed or text and run it over and over
 
-While the node UI offers high freedom, high freedom can sometimes cause confusion.
-Also, when "running the same workflow many times while changing it slightly" like batch processing, running it with a script is sometimes simpler than fiddling with nodes.
+The node UI gives you a lot of freedom, but sometimes that much freedom just gets confusing.
+Also, for batch-style jobs where you "run the same workflow many times with small changes," a script is sometimes simpler than fiddling with nodes.
 
-The advantage of the API is that you can choose the entry point according to your purpose.
+That's the advantage of the API: you can pick the entry point that suits the job.
 
 ---
 
@@ -64,13 +64,13 @@ The advantage of the API is that you can choose the entry point according to you
 
 ### Server Must Be Running
 
-The API is not a mechanism that "eliminates the need to start ComfyUI".
+The API is not a way to "skip starting ComfyUI."
 
-Since the server side executes the generation, the server must be started and waiting.
+The server is what actually runs the generation, so it has to be running and waiting.
 
 ### Mainly for Automating "Execution"
 
-Even if we say "you can execute in any way you like", it basically means that the entry points for "execution" increase.
-The construction of the workflow itself is basically done in the node UI.
+"Run it however you like" basically means you get more entry points for *running* workflows.
+Building the workflow itself is still mostly done in the node UI.
 
-On top of that, imagine that you can continuously execute by changing parameters like seed and text little by little, or switching the workflow itself.
+From there, you can run it repeatedly while tweaking parameters like the seed or text, or switching between whole workflows.

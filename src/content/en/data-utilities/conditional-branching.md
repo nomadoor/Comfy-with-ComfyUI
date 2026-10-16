@@ -46,7 +46,7 @@ In Switch, the value that decides which of the two inputs to output is a **Boole
 
 A Boolean is a simple type that can only be `true` or `false` (0 or 1). It is like a toggle switch.
 
-Of course, you can click it manually, but that is not very interesting.
+Of course, you can flip it by hand, but where's the fun in that?
 
 Switching the process programmatically is basically about how to create this Boolean.
 
@@ -70,7 +70,7 @@ For example, write the following.
 a == 20
 ```
 
-Connect an `int` node that inputs a number such as `18` or `20` to `a`.
+Connect an `int` node set to a number such as `18` or `20` to `a`.
 As you can see, it shows `true` only when the value is `20`, the value you set.
 
 You can also use more numbers and variables.
@@ -114,11 +114,11 @@ It compares `string_a` and `string_b`, and outputs `true` if the condition match
 
 ### MLLM
 
-A slightly richer method is to use an MLLM to create a Boolean.
+For a slightly more elaborate approach, you can use an MLLM to create a Boolean.
 
 We said that a Boolean is represented as `true` / `false`, but it can also be represented as `1` / `0`.
 
-In other words, you can tell the MLLM, `If it is XX, output 1; otherwise output 0`, and then convert that result into a Boolean.
+In other words, if you tell the MLLM, `If it is XX, output 1; otherwise output 0`, you can turn its answer into a Boolean.
 
 ![](/media/data-utilities/conditional-branching/legacy_gyazo_09299f1fde08831664593c6f0b4c0d5e.png){media=image}
 
@@ -175,14 +175,14 @@ No need to overthink it. Try using them and watch how they behave.
 2. When the image is portrait, `width < height` becomes `true`
 3. When it is `true`, output the input image after rotating it with `Rotate Image`
 
-### Change a Woman into a Man If a Woman Is Shown
+### If There's a Woman in the Image, Change Her into a Man
 
-If a woman is shown, change her into a man. Otherwise, remove all people.
+If there's a woman in the image, change her into a man. Otherwise, remove all the people.
 
 ![](/media/data-utilities/conditional-branching/legacy_gyazo_cf499e4e4ed79b91d0020220c854d4ea.png){media=image}
 
 [](/workflows/data-utilities/conditional-branching/switch_mllm_flux_2_klein_9b.json)
 
-1. Show the image to the MLLM, and make it output `1` if a woman is shown, or `0` otherwise
+1. Show the image to the MLLM and have it output `1` if there's a woman in it, or `0` otherwise
 2. When `true`, switch to a prompt that changes the woman into a man; when `false`, switch to a prompt that removes people
 3. Pass the image and prompt to Flux.2 Klein 9B for image editing

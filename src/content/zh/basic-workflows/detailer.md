@@ -7,7 +7,7 @@ navId: detailer
 title: "Detailer"
 created: 2026-02-06
 updated: 2026-03-02
-summary: "只切出小脸和细部进行 inpaint 的机制"
+summary: "只裁出小脸或细节部分来 inpaint 的机制"
 seoTitle: "ComfyUI 的 Detailer：重绘小脸和细节"
 seoDescription: "只裁出崩坏的小脸或细节并重绘的 Detailer 原理。介绍用 Inpaint Crop / Stitch 手动搭建 Detailer，以及结合物体检测自动化的方法，附工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -20,26 +20,26 @@ tags: ["upscale-restoration"]
 
 ![](/media/basic-workflows/detailer/legacy_gyazo_eb9c93e225419a1fe7574451d7cd94e1.png){media=image}
 
-Stable Diffusion 1.5 最擅长的，大概是 512〜768px 前后的图像。  
-以这个分辨率画全身时，每 1 人能用于“脸”的像素数只有 30〜50px 程度。
+Stable Diffusion 1.5 最擅长的，是 512〜768px 左右的图像。  
+用这个分辨率画全身时，每个人的“脸”只能分到大约 30〜50px。
 
-也有分辨率的问题，但从画面整体来看脸太小了，  
-对 AI 来说也变成了过于“精细的作业”。和人类一样，AI 也不擅长精细的作业。
+除了分辨率的问题，脸在整个画面里也实在太小了，  
+对 AI 来说成了太过“精细的活儿”。和人一样，AI 也不擅长精细的活儿。
 
-那样的话索性，只剪切脸的部分，把重画的东西贴回原图像不就好了吗？ 出现了这样的想法。
+既然这样，干脆只把脸裁出来，重画之后再贴回原图不就好了？于是就有了这个思路。
 
-这个 **“剪切 → 扩大 → inpaint → 贴回原图像”** 这一连串的处理，叫做 **Detailer**。
+这一连串 **“裁剪 → 放大 → inpaint → 贴回原图”** 的处理，就叫 **Detailer**。
 
 ---
 
 ## 为什么需要 Detailer
 
-也有“将图像整体放大并 inpaint 不就好了吗？”的想法。
+也有人会想：“把整张图放大再 inpaint 不就行了？”
 
-但是，inpainting 的计算量，不由掩膜的大小而是由 **原图像的尺寸** 决定。  
-有 4K 的图像时，即使想只重涂脸，也会发生 4K 整体份的计算，非常无效率。
+但是，inpainting 的计算量不是由蒙版大小决定的，而是由 **原图尺寸** 决定的。  
+面对一张 4K 图像，哪怕只想重画脸，也要做整张 4K 的计算，效率非常低。
 
-Detailer 因为只剪切想 inpaint 的周边领域所以没有浪费。
+Detailer 只裁出需要 inpaint 的周边区域，所以没有浪费。
 
 ---
 
@@ -48,21 +48,21 @@ Detailer 因为只剪切想 inpaint 的周边领域所以没有浪费。
 - [lquesada/ComfyUI-Inpaint-CropAndStitch](https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch)
 
 > [!NOTE]
-> 一般来说，使用 Impact Pack 中包含的 Detailer 节点。  
-> 这边因为连物体检测在内都能自动化所以多功能，但因为独自参数多很难，所以另外处理。
+> 一般会用 Impact Pack 里的 Detailer 节点。  
+> 它连物体检测都能自动化，功能更多，但独有的参数很多、比较难，所以另开一篇再讲。
 
 ---
 
-## 掩膜和裁剪领域
+## 蒙版和裁剪区域
 
-确认掩膜和裁剪领域的区别吧。
+先弄清楚蒙版和裁剪区域的区别。
 
 ![](/media/basic-workflows/detailer/legacy_gyazo_e52ea814ccd051de4c939bb7e90eb941.png){media=image}
 
-- 掩膜：真的想改写的部分（脸本身 等）
-- 裁剪领域：将掩膜和 BBOX 稍微扩大的“作业用画布”
+- 蒙版：真正想重画的部分（比如脸本身）
+- 裁剪区域：把蒙版或 BBOX 稍微扩大一圈的“工作画布”
 
-Detailer 是，仅在这个裁剪领域进行的 inpainting。
+Detailer 就是只在这个裁剪区域内进行的 inpainting。
 
 ---
 
@@ -72,21 +72,21 @@ Detailer 是，仅在这个裁剪领域进行的 inpainting。
 
 [](/workflows/basic-workflows/detailer/inpaint_crop_improved.json)
 
-看工作流就明白，传递 **掩膜＋原图像** 的话，会自动制作以掩膜为基础足了稍微留白的裁剪领域，并只将那部分调整为指定尺寸。
+从工作流可以看出，只要传入 **蒙版＋原图**，它就会根据蒙版自动加一点留白，生成裁剪区域，并只把这部分缩放到指定尺寸。
 
 
-虽然有相当多的参数，但基本上只要看下面的就足够了。
+参数相当多，但基本上只看下面这些就够了。
 
-| 参数名           | 作用・意思                                                                 |
+| 参数名           | 作用                                                                 |
 |------------------------|----------------------------------------------------------------------------|
-| `mask_fill_holes`      | 自动填埋掩膜内的小孔（涂剩）                               |
-| `mask_expand_pixels`   | 将掩膜的边界向外侧扩大指定像素份                                |
-| `mask_invert`          | 反转掩膜             |
-| `mask_blend_pixels`    | 模糊掩膜边界。                                  |
-| 🔥`context_from_mask_extend_factor` | 以倍率指定从掩膜制作裁剪领域时的“留白量”        |
-| 🔥`output_target_width`  | 裁剪后的输出宽（像素）。指定脸用画布的横尺寸等    |
-| 🔥`output_target_height` | 裁剪后的输出高（像素）。指定脸用画布的纵尺寸等  |
-| `output_padding`       | 根据需要，为了让分辨率成为这个值的倍数追加留白             |
+| `mask_fill_holes`      | 自动填补蒙版内的小洞（漏涂的地方）                               |
+| `mask_expand_pixels`   | 把蒙版边界向外扩大指定的像素数                                |
+| `mask_invert`          | 反转蒙版             |
+| `mask_blend_pixels`    | 模糊蒙版边界。                                  |
+| 🔥`context_from_mask_extend_factor` | 用倍率指定从蒙版生成裁剪区域时的“留白量”        |
+| 🔥`output_target_width`  | 裁剪后的输出宽度（像素），比如脸部画布的宽度    |
+| 🔥`output_target_height` | 裁剪后的输出高度（像素），比如脸部画布的高度  |
+| `output_padding`       | 必要时追加留白，让分辨率成为这个值的倍数             |
 
 ---
 
@@ -96,40 +96,40 @@ Detailer 是，仅在这个裁剪领域进行的 inpainting。
 
 [](/workflows/basic-workflows/detailer/inpaint_stitch_improved.json)
 
-`✂️ Inpaint Stitch (Improved)` 节点，将弄过的裁剪图像返回原来的位置。
+`✂️ Inpaint Stitch (Improved)` 节点会把处理过的裁剪图像放回原来的位置。
 
-只将掩膜的部分覆盖到原图像。
+只有蒙版部分会覆盖到原图上。
 
 
 ---
 
-## 用 Inpaint Crop and Stitch 手工作业 Detailer
+## 用 Inpaint Crop and Stitch 手动做 Detailer
 
-那么，立刻做做看 Detailer 吧。  
-虽这么说，但也只是组装进 [inpainting](/zh/basic-workflows/sd15-inpainting/) 的工作流而已。
+那么，马上来试试 Detailer 吧。  
+话虽如此，其实只是把它加进 [inpainting](/zh/basic-workflows/sd15-inpainting/) 的工作流而已。
 
 ![](/media/basic-workflows/detailer/legacy_gyazo_4246aded675f5267c9b5685486791390.png){media=image}
 
 [](/workflows/basic-workflows/detailer/detailer_inpaint_crop.json)
 
 - 🟩 请根据基础模型调整 `output_target_width/height`。
-  - 这次因为是 SD1.5 所以是 512px
-- 🟥 虽然与 Detailer 没有直接关系，但 Inpaint Crop 会输出“模糊了边界的掩膜”，所以与能活用那个的 [Differential Diffusion](/zh/basic-workflows/differential-diffusion/) 相性相当好。
+  - 这次用的是 SD1.5，所以是 512px
+- 🟥 这和 Detailer 没有直接关系，不过 Inpaint Crop 会输出“边界已模糊的蒙版”，所以和能利用这种蒙版的 [Differential Diffusion](/zh/basic-workflows/differential-diffusion/) 非常搭。
 
 ---
 
-## 组合物体检测
+## 结合物体检测
 
-自动制作脸的掩膜，试着稍微自动化吧。
+让脸部蒙版自动生成，稍微自动化一下。
 
 ![](/media/basic-workflows/detailer/legacy_gyazo_d65f393b285ec6c84a17a6a6ef438f14.png){media=image}
 
 [](/workflows/basic-workflows/detailer/detailer_inpaint_crop_sam3.json)
 
-- 🟦 使用 SAM 3 制作脸的掩膜。
+- 🟦 用 SAM 3 生成脸部蒙版。
 
-Detailer 的基础只有这些，所以我想已经足够能运用自如了。  
-只是，如果想汇总检测映在图像的复数人物，并一口气处理……的话就需要使用 ImpactPack。
+Detailer 的基础就这些，我想你已经能用得很顺手了。  
+不过，如果想把图里的多个人物一起检测出来、一次性处理……那就需要用 ImpactPack 了。
 
 → [Detailer ImpactPack (WIP)](还没)
 

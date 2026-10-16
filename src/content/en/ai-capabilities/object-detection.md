@@ -7,7 +7,7 @@ navId: object-detection
 title: Object Detection
 created: 2025-12-01
 updated: 2026-03-02
-summary: "Technology to find 'what' is 'where' in an image"
+summary: "Finding what is where in an image"
 seoTitle: "Object Detection: YOLO, Grounding DINO, Florence-2"
 seoDescription: "Object detection finds what is where in an image: YOLO and DETR, text-prompted Grounding DINO and Florence-2, and its role in ComfyUI masking."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
@@ -17,48 +17,48 @@ hero:
 
 ## What is Object Detection?
 
-Object Detection is a task to find "what is in the image (class)" and "where it is (location)".
+Object detection is the task of finding "what's in the image (class)" and "where it is (location)."
 
-Generally, it outputs a bounding box (rectangle) and a label for each object.
+It usually outputs a bounding box (rectangle) and a label for each object.
 
-In ComfyUI, it is used almost exclusively as an entry point for mask generation.
-Detecting a dog to remove it, detecting only a face to refine it... It is a technology that comes into play very often.
+In ComfyUI, it's used almost entirely as the first step in making masks.
+Detect a dog and erase it, detect just the face and refine it... it comes up all the time.
 
 ---
 
 ## Representative Methods
 
-There are various lineages in the world of object detection proper, but from a ComfyUI perspective, the following are representative.
+The wider field of object detection has many branches, but from a ComfyUI point of view, these are the main ones.
 
 ### YOLO Family
 
-A traditional and powerful group of models for detecting specific objects (cars, people, dogs, etc.).
+A long-established, powerful family of models for detecting specific objects (cars, people, dogs, etc.).
 
 ![](/media/ai-capabilities/object-detection/legacy_gyazo_2b694eacfaee03e50818eb87174f0ef9.png){media=image}
 
 [](/workflows/ai-capabilities/object-detection/yolo8.json)
 
-* It is overwhelmingly fast and light enough to be used for real-time processing.
-* It detects from a pre-determined set of classes such as "person" or "car".
-* If there is no model, you need to train it yourself.
+* Extremely fast, and light enough for real-time use.
+* Trained in advance on a fixed set of classes like "person" or "car," and detects only from that set.
+* If no model exists for what you need, you have to train one yourself.
 
 ### DETR Family
 
-Detection models using Transformers instead of CNNs.
-You rarely have the opportunity to handle them directly in ComfyUI, but you may see the name in the context of object detection.
+Detection models that use Transformers instead of CNNs.
+You'll rarely use them directly in ComfyUI, but you may come across the name when reading about object detection.
 
 ---
 
 ## Object Detection by Text
 
-The detectors above can only detect pre-determined classes, so they suddenly become difficult to use when trying to detect things other than representative ones like people or cars.
+The detectors above can only find their predefined classes, so as soon as you want to detect something beyond the usual people or cars, they get awkward to use.
 
-What is important for ComfyUI is detection of the type where **objects can be specified by text**.
+What matters for ComfyUI is detection where **you can specify the object in text**.
 
 ### Grounding DINO
 
-* A model that associates image and text features with an image encoder + text encoder.
-* It can detect anything instructed by a prompt (text), such as "red car" or "traffic light".
+* Uses an image encoder + text encoder to match image features with text features.
+* It can detect anything you describe in the prompt (text), such as "red car" or "traffic light."
 
 ### Florence-2
 
@@ -66,20 +66,20 @@ What is important for ComfyUI is detection of the type where **objects can be sp
 
 [](/workflows/ai-capabilities/object-detection/florence_2.json)
 
-* A general-purpose VLM that performs multiple roles in one model, such as caption generation, object detection, and segmentation by looking at an image.
-* Since it has a structure close to an LLM, its strength is that it can be instructed with more complex sentences than Grounding DINO.
+* A general-purpose VLM that looks at an image and handles many jobs in one model: captioning, object detection, segmentation, and more.
+* Its structure is close to an LLM's, so its strength is that it understands more complex instructions than Grounding DINO.
 
 ---
 
 ## Use Cases in ComfyUI (As Mask Generation)
 
-In ComfyUI, object detection is used almost as an **entry point for mask generation**.
+In ComfyUI, object detection is used almost entirely as the **first step in mask generation**.
 
-However, what is output from the object detection model is only a BBOX (rectangle).
+But all an object detection model outputs is a BBOX (rectangle).
 
-This alone is useful for object removal by inpainting, etc., but for example, when a person is detected, most of that area is background, so it is a bit wasteful to use as a mask.
+That alone is useful for things like object removal with inpainting, but when you detect a person, for example, most of the box is background, so it's a bit wasteful as a mask.
 
-Therefore, these detection results are often not used alone but in combination with subsequent matting or segmentation. Let's look at those next.
+So detection results are usually not used on their own but passed on to matting or segmentation. Let's look at those next.
 
 ## Related
 

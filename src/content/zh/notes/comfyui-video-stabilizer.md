@@ -18,13 +18,13 @@ hero:
 
 ## ComfyUI Video Stabilizer
 
-[ComfyUI Video Stabilizer](https://github.com/nomadoor/ComfyUI-Video-Stabilizer) 是一个用于在 ComfyUI 中进行视频防抖的 custom node。
+[ComfyUI Video Stabilizer](https://github.com/nomadoor/ComfyUI-Video-Stabilizer) 是一个在 ComfyUI 中给视频做防抖的自定义节点。
 
 主要有以下 3 个功能。
 
-- 对视频进行手抖补正
-- 从补正后的视频中还原原本的手抖
-- 添加人工手抖
+- 给视频防抖
+- 从防抖后的视频中还原原本的抖动
+- 添加人工抖动
 
 ---
 
@@ -36,9 +36,9 @@ hero:
 
 ---
 
-## 手抖补正
+## 防抖
 
-手抖补正使用 `Video Stabilizer Classic` 或 `Video Stabilizer Flow`。
+防抖使用 `Video Stabilizer Classic` 或 `Video Stabilizer Flow`。
 
 功能完全相同，只是处理方式不同。
 
@@ -51,18 +51,18 @@ Flow 稍微重一些，但效果好很多，所以基本上推荐使用 Flow。
 
 ### 参数
 
-`Video Stabilizer Classic` 和 `Video Stabilizer Flow` 的参数是共通的。
+`Video Stabilizer Classic` 和 `Video Stabilizer Flow` 的参数相同。
 
 | Parameter | 说明 |
 | --- | --- |
 | `frame_rate` | 输入视频的 FPS。它会作为时间方向 smoothing 的基准。 |
-| <span style="white-space: nowrap;">🎞️ <code>framing_mode</code></span> | 处理手抖补正后画面边缘缺失的方式。这个参数在视频里很容易看出差异。 |
+| <span style="white-space: nowrap;">🎞️ <code>framing_mode</code></span> | 如何处理防抖后画面边缘的缺失。这是个重要参数，在视频里差别很明显。 |
 | `transform_mode` | 用哪种变换来估计相机运动。 |
 | <span style="white-space: nowrap;">🔒 <code>camera_lock</code></span> | 让画面更接近三脚架拍摄的固定镜头。 |
-| `strength` | 去除估计出的相机运动的强度。`0.0` 基本保持原来的运动，`1.0` 会进行较强补正。 |
-| `smooth` | 让相机运动变得多平滑。值越高，越能抑制突然的抖动。 |
+| `strength` | 把估计出的相机运动去掉多少。`0.0` 基本保持原来的运动，`1.0` 会强力补正。 |
+| `smooth` | 让相机运动平滑到什么程度。值越高，越能抑制突然的晃动。 |
 | `keep_fov` | 只在 `framing_mode` 为 `crop` 时有效。指定保留多少视角。`1.0` 缩放较少，`0.0` 则牺牲视角来消除边缘空白。 |
-| `padding_color` | padding 区域的颜色。如果后续用 `padding_mask` 做 inpaint / outpaint，颜色本身并不太重要。 |
+| `padding_color` | 出现 padding 的区域的颜色。后续要 inpaint / outpaint 时会用到 `padding_mask`，所以颜色本身不太重要。 |
 
 ### 🎞️ framing_mode
 
@@ -77,51 +77,51 @@ Flow 稍微重一些，但效果好很多，所以基本上推荐使用 Flow。
 - `expand`
   - 完全不裁剪，只根据需要扩大画布。
 
-一般的视频编辑软件大多只能做接近 `crop` 的处理，但如果使用视频生成模型，就可以把 padding 部分当作 mask 来 outpainting。这样会有一些很有意思的用法。
+一般的编辑软件只会用到接近 `crop` 的处理，但借助视频生成模型，就能把 padding 部分当作蒙版来 outpainting，玩出一些有意思的用法。
 
 ### 🔒 camera_lock
 
 启用 `camera_lock` 后，虽然并不完美，但会把视频调整得更接近三脚架拍摄的固定镜头。
 
-普通的手抖补正只是让相机运动“更平滑”，而 `camera_lock` 会尽量把相机运动停下来。
+普通的防抖只是让相机运动“变平滑”，而 `camera_lock` 会尽量让相机运动停下来。
 
 ---
 
-## 还原手抖
+## 还原抖动
 
-在视频编辑中，先消除手抖再处理，有时会更稳定；但如果一直保持防抖后的状态，原本的临场感也会消失。
+在视频编辑中，先去掉抖动再处理有时会更稳定，但就这样放着的话，原本的临场感也就没了。
 
-使用 `Video Stabilizer Motion Apply`，可以把之前用 Video Stabilizer 消除的手抖反向应用回来，从而还原原来的运动。
+使用 `Video Stabilizer Motion Apply`，可以把用 Video Stabilizer 去掉的抖动反过来再应用回去，把它还原出来。
 
 ![](/media/notes/comfyui-video-stabilizer/legacy_gyazo_cf0408a1b507b5ecd0699c2e16ff539d.png){media=image}
 
 [](/workflows/notes/comfyui-video-stabilizer/video_stabilizer_to_motion_apply.json)
 
 > [!WARNING]
-> 如果用 `crop` 或 `crop_and_pad` 做了补正，已经被裁掉的像素无法恢复。如果后面还想还原手抖，最开始补正时建议使用 `expand`。
+> 如果用 `crop` 或 `crop_and_pad` 做了补正，已经裁掉的像素是回不来的。如果打算之后还原，建议最初防抖时就用 `expand`。
 
 ---
 
-## 添加人工手抖
+## 人为添加抖动
 
-不限于 AI 生成的视频，如果相机运动过于平滑，有时会显得有些 CG 感。
+AI 生成的视频……其实不限于此，相机运动太平滑的话，就会有点 CG 感。
 
-这时有意识地添加一点手抖，可以营造临场感和真实感。
+这时故意加一点手持抖动，就能营造出临场感和真实感。
 
 ![](/media/notes/comfyui-video-stabilizer/legacy_gyazo_695ab8d32156327393d57ac9432a1e62.png){media=image}
 
 [](/workflows/notes/comfyui-video-stabilizer/video_stabilizer_shake.json)
 
-`Video Stabilizer Shake Generator` 用来生成人工相机抖动，再把它交给 `Video Stabilizer Motion Apply`，就可以让视频产生抖动。
+用 `Video Stabilizer Shake Generator` 生成人工的相机晃动，再交给 `Video Stabilizer Motion Apply`，就能让视频晃起来。
 
 ### 参数
 
 | Parameter | 说明 |
 | --- | --- |
-| `frame_rate` | 输入视频的 FPS。当视频侧没有 FPS 元数据时，会作为 fallback 使用。 |
+| `frame_rate` | 输入视频的 FPS。视频那边没有传入 FPS 时，作为 fallback 使用。 |
 | `style` | 抖动的类型。 |
-| `amount` | 抖动强度。只想稍微增加自然感时，较低的值就足够了。调得太高会很容易让人看着不舒服。 |
-| `speed` | 抖动速度。想要较慢的手持感就调低，想要更细碎、更忙的抖动就调高。 |
+| `amount` | 抖动强度。只想稍微增加一点自然感的话，低一些就够了。调得太高，就会变成很容易让人晕的画面。 |
+| `speed` | 抖动速度。想要缓慢的手持感就调低，想要细碎、急促的抖动就调高。 |
 | `seed` | 抖动的随机 seed。即使其他设置相同，改变 `seed` 也会改变抖动方式。 |
 
 ### style
@@ -136,12 +136,12 @@ Flow 稍微重一些，但效果好很多，所以基本上推荐使用 Flow。
 
 > [!NOTE]
 > 还有一个叫做 `Video Stabilizer Shake Generator Manual` 的节点。
-> 它不是使用 preset，而是可以通过内部参数细调运动。
+> 它不用 preset，而是可以通过内部参数细致地调整运动。
 
 ### Motion Blur
 
 `Video Stabilizer Motion Apply` 也可以添加 motion blur。
 
-稍微加一点后，会更接近真实相机拍摄的氛围。
+稍微加一点，氛围就更接近真实相机拍出来的画面了。
 
 ![原视频](/media/notes/comfyui-video-stabilizer/legacy_gyazo_430ba048b450cebcc13829b3ac6151c8.mp4){media=loop}  ![Blur: 0](/media/notes/comfyui-video-stabilizer/legacy_gyazo_3cc5171d2839d110d07748395ddbf32f.mp4){media=loop} ![Blur: 1.00](/media/notes/comfyui-video-stabilizer/legacy_gyazo_a5a106e029af738b5642e1c0aff3c57c.mp4){media=loop}

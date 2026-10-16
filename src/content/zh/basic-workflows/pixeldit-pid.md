@@ -26,11 +26,11 @@ Stable Diffusion 之后的很多图像生成模型，都使用 [Latent Diffusion
 
 不过，从 latent 还原回像素时，细小文字、纹样这类细节还是容易劣化。
 
-**像素扩散模型** 不经过 latent，而是直接在像素空间里处理图像。因此，VAE 还原带来的劣化在机制上不会以同样的方式发生。
+**像素扩散模型** 不经过 latent，而是直接在像素空间里处理图像。因此，从机制上就不会出现 VAE 还原带来的劣化。
 
-那不是正因为计算量大，才要用 latent 吗？PixelDiT 的做法是把图像切成 patch，一边粗略地看整体，一边在像素侧补细节。
+你可能会问：用 latent 不就是为了降低计算量吗？这个问题它是这样解决的：不把整张图原样细细地看，而是切成 patch 粗略地把握整体，细节则在像素侧画出来。
 
-### 模型的下载
+### 下载模型
 
 - diffusion_models
   - [pixeldit_1300m_1024px_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pixeldit_1300m_1024px_bf16.safetensors) (2.6 GB)
@@ -65,29 +65,29 @@ Stable Diffusion 之后的很多图像生成模型，都使用 [Latent Diffusion
 **PiD** 是用来替代 VAE Decode 的 PixelDiT。
 
 通常情况下，生成出的 latent 会经过 VAE Decode 还原成图像。
-PiD 则是把这个 latent 交给 PixelDiT，让图像还原和放大一起完成。
+PiD 的想法很有意思：把这个 latent 交给 PixelDiT，让图像还原和放大一口气完成。
 
 例如，先用 Z-Image-Turbo 生成 1024×1024 的 latent，再在 VAE Decode 之前交给 PiD。
 如果使用 `1024_to_4096` 的 PiD，就会输出 4096×4096 的图像。
 
 也就是说，可以利用现有模型的生成能力，同时避开 VAE Decode 对细节造成的劣化。
 
-### 模型的下载
+### 下载模型
 
-- SDXL 用
+- 适用于 SDXL
 
   - [pid_sdxl_1024_to_4096_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_sdxl_1024_to_4096_4step_bf16.safetensors) (2.72 GB)
 
-- Qwen-Image 用
+- 适用于 Qwen-Image
 
   - [pid_1.5_qwenimage_1024_to_4096_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_1.5_qwenimage_1024_to_4096_4step_bf16.safetensors) (2.8 GB)
 
-- Flux.1 / Z-Image 用
+- 适用于 Flux.1 / Z-Image
 
   - [pid_flux1_512_to_2048_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_flux1_512_to_2048_4step_bf16.safetensors) (2.72 GB)
   - [pid_1.5_flux1_1024_to_4096_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_1.5_flux1_1024_to_4096_4step_bf16.safetensors) (2.8 GB)
 
-- Flux.2 用
+- 适用于 Flux.2
 
   - [pid_flux2_512_to_2048_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_flux2_512_to_2048_4step_bf16.safetensors) (2.73 GB)
   - [pid_1.5_flux2_1024_to_4096_4step_bf16.safetensors](https://huggingface.co/Comfy-Org/PixelDiT/blob/main/diffusion_models/pid_1.5_flux2_1024_to_4096_4step_bf16.safetensors) (2.8 GB)
@@ -107,13 +107,13 @@ PiD 则是把这个 latent 交给 PixelDiT，让图像还原和放大一起完�
 > [!TIP]
 > 不需要全部放进去。只放和使用的基础模型对应的 PiD 就可以。
 
-### 模型的选择
+### 如何选择模型
 
 选择 PiD 模型时，需要注意两点。
 
 - 基础模型的种类
   - 需要和原模型使用的 latent 类型一致。
-  - SDXL 就用 SDXL 用，Z-Image 就用 **Flux.1 用**。
+  - 比如 SDXL 就用 SDXL 版，Z-Image 就用 **Flux.1 版**。
 
 - 放大倍率
   - 模型名里会看到 `1024_to_4096` 这样的字样，这表示放大倍率。
@@ -124,7 +124,7 @@ PiD 则是把这个 latent 交给 PixelDiT，让图像还原和放大一起完�
 
 ### Z-Image-Turbo → PiD
 
-试着用 PiD 解码 Z-Image-Turbo 的 latent。
+来试试用 PiD 解码 Z-Image-Turbo 的 latent 吧。
 
 ![](/media/basic-workflows/pixeldit-pid/z_image_turbo_to_pid1_5_4k.png){media=image}
 
@@ -136,7 +136,7 @@ PiD 则是把这个 latent 交给 PixelDiT，让图像还原和放大一起完�
   - Z-Image-Turbo 侧以约 1M 像素生成，PiD 侧指定为 4 倍分辨率。
 - PiD 是 4 step 蒸馏模型，所以这里把 `steps` 设为 4，`cfg` 设为 1.0。
 - `Context Windows (Manual)` 节点用于 tiling。
-  OOM 时，或者纵长 / 横长图像输出变粗糙时使用。
+  OOM 时，或者竖长、横长的图像输出变粗糙时使用。
 
 ---
 
@@ -170,7 +170,7 @@ PiD 则是把这个 latent 交给 PixelDiT，让图像还原和放大一起完�
 
 ---
 
-## 参考
+## 参考资料
 
 - [PixelDiT](https://pixeldit.github.io/)
 - [PiD: Fast and High-Resolution Latent Decoding with Pixel Diffusion](https://research.nvidia.com/labs/sil/projects/pid/)

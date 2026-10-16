@@ -17,15 +17,15 @@ hero:
 
 ## ComfyUI 的安装
 
-有几种方法可以在本地环境中运行 ComfyUI：
+在本地运行 ComfyUI 有几种方法：
 
 * **[便携版（推荐）](#使用便携版进行安装)**
 * [桌面版（安装程序形式）](#桌面版)
 * [手动安装版（venv + Git / 面向高级用户）](#手动安装-windows-linux)
 
-便携版灵活且稳定，无论谁来安装都能创建出相似的环境，因此本站将以使用便携版为前提进行解说。
+便携版既灵活又稳定，不管谁来装，环境都差不多，所以本站的讲解基本都以便携版为前提。
 
-此外，我们也将在这里介绍 **ComfyUI Manager** 的安装。
+另外，**ComfyUI Manager** 也顺便在这里装好吧。
 
 这是一个能简化 ComfyUI 管理（如安装自定义节点）的工具。
 
@@ -37,21 +37,21 @@ hero:
 
 ### 1. 下载
 
-访问 ComfyUI 的 [GitHub 发布页面](https://github.com/comfyanonymous/ComfyUI/releases) 并选择适合你 GPU 的文件。
+访问 ComfyUI 的 [GitHub 发布页面](https://github.com/comfyanonymous/ComfyUI/releases) ，选择适合自己 GPU 的文件。
 
 | GPU 类型 | 文件名 (例) | 备注 |
 | :--- | :--- | :--- |
-| **NVIDIA GPU** | `ComfyUI_windows_portable_nvidia.7z` | 驱动程序足够新的环境下，请首先选择此版本。如果启动失败，请更新 GPU 驱动，或使用下方的**旧驱动版**。|
-| NVIDIA GPU (稳定/旧版环境) | `cu126`/`cu128` | 不想更新驱动，或者标准版启动后立即退出的情况下使用。|
+| **NVIDIA GPU** | `ComfyUI_windows_portable_nvidia.7z` | 驱动足够新的话，请先选择这个不带后缀的版本。如果启动失败，请更新 GPU 驱动，或使用下方的**旧驱动版**。|
+| NVIDIA GPU (稳定/旧版环境) | `cu126`/`cu128` | 不想更新驱动，或者不带后缀的版本启动后马上退出时使用。|
 | AMD GPU | `ComfyUI_windows_portable_amd.7z` | 面向 AMD 用户。 |
 
 
 ### 2. 解压与启动
 
-1. 右键点击下载的 `7z 文件`，选择“提取到”进行解压。
-   - 正如在[推荐配置的存储部分](/zh/begin-with/recommended-specs/#存储)中所述，推荐将其放置在 SSD 上。
+1. 右键点击下载的 `7z 文件`，选择“全部解压缩”进行解压。
+   - [推荐配置的存储](/zh/begin-with/recommended-specs/#存储)里也提到过，建议放在 SSD 上。
 2. 双击解压文件夹中的 `run_nvidia_gpu.bat` 启动。
-3. 首次启动时环境配置需要一些时间。如果浏览器自动打开，即表示成功。
+3. 首次启动时环境配置需要一些时间。浏览器自动打开就说明成功了。
 
 ### 3. 安装 ComfyUI Manager
 
@@ -65,7 +65,7 @@ hero:
 
    这样会安装 Manager 所需的库。
 
-   不过，仅这样操作还不会在画面中显示 Manager。接下来需要给启动用的 `.bat` 文件追加命令行参数。
+   不过，光这样画面里还不会出现 Manager，所以要给启动用的 `.bat` 文件追加命令行参数。
 
 3. 右键点击 `run_nvidia_gpu.bat`，选择 `编辑`。
 
@@ -85,7 +85,7 @@ hero:
 
 ## 桌面版
 
-这是面向 Windows 的安装程序形式。预装了 ComfyUI Manager 等，提供了稳定的运行环境，但也因此稍微多了一些限制。
+这是面向 Windows 的安装程序形式。已经预装了 ComfyUI Manager 等，运行很稳定，但相应地限制也稍多一些。
 
 ### 下载
 
@@ -116,14 +116,14 @@ hero:
 
 2. 创建并激活虚拟环境。
 
-   Windows 的情况:
+   Windows：
 
    ```powershell
    python -m venv venv
    venv\Scripts\activate
    ```
 
-   Linux/macOS 的情况:
+   Linux/macOS：
 
    ```bash
    python -m venv venv
@@ -162,7 +162,7 @@ hero:
    pip install -r manager_requirements.txt
    ```
 
-2. 启动 ComfyUI 时，追加 `--enable-manager`。
+2. 光这样画面里还不会出现 Manager，所以启动 ComfyUI 时要追加 `--enable-manager`。
 
    ```bash
    python main.py --enable-manager
@@ -182,9 +182,9 @@ hero:
 
 然而，中间涉及的要素越多，故障也就越多……当出现问题时，很难查明原因，最终往往超出初学者的处理能力。
 
-包括便携版在内，ComfyUI 的安装并不难，因此建议简单地只使用官方提供的手段进行安装。
+以便携版为首，ComfyUI 的安装并没有那么难，所以建议简单一点，只用官方提供的方式来安装。
 
 ---
 
-### 参考文献
+### 参考资料
 * [ComfyUI Manager 的安装](https://docs.comfy.org/zh/manager/install)

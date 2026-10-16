@@ -7,7 +7,7 @@ navId: sd15-ip-adapter
 title: "IP-Adapter"
 created: 2025-12-09
 updated: 2026-08-26
-summary: "从参照图像转印风格和被摄体的元祖机制"
+summary: "从参考图像迁移风格和主体的鼻祖级机制"
 seoTitle: "在 ComfyUI 中使用 IP-Adapter：从参考图迁移画风"
 seoDescription: "在 Stable Diffusion 1.5 上用 IP-Adapter，无需文字即可迁移参考图的风格或主体。介绍自定义节点、模型下载、工作流，以及 plus / light / face 等主要模型的区别。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -18,16 +18,16 @@ tags: ["subject-transfer", "style-transfer"]
 
 ## 什么是 IP-Adapter？
 
-看着画或照片想“希望用和这个一样的氛围画”，但只用文本详细说明细节几乎是不可能的。
+看着一幅画或一张照片，心想“希望能画出和这个一样的氛围”，可只靠文字把细节都说清楚几乎是不可能的。
 
-于是，“不介由文本，直接让 AI 看图像”的机制被提出了几个。  
-其中，被用于 **风格和被摄体的“转印”** 的古典手法之一就是 **IP-Adapter**。
+于是，人们提出了好几种“不经过文字，直接让 AI 看图像”的机制。  
+其中一直被用来 **“迁移”风格和主体** 的经典方法之一，就是 **IP-Adapter**。
 
-请认为是“reference2image”、“[Subject 转印](/zh/ai-capabilities/subject-transfer/)”的元祖定位。
+可以把它看作“reference2image”“[Subject 转印](/zh/ai-capabilities/subject-transfer/)”的鼻祖。
 
 ---
 
-## 必要的自定义节点
+## 所需的自定义节点
 
 - [cubiq/ComfyUI_IPAdapter_plus](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
 
@@ -35,15 +35,15 @@ tags: ["subject-transfer", "style-transfer"]
 
 ## SD1.5 × IP-Adapter
 
-IP-Adapter 有几种种类，首先试一下最标准的东西吧。
+IP-Adapter 有好几种，先来试试最标准的那一个吧。
 
-### 模型的下载
+### 下载模型
 
-- IP-Adapter 本体（SD1.5 用）
+- IP-Adapter 本身（SD1.5 用）
   - [ip-adapter_sd15.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/ip-adapter_sd15.safetensors)
 - CLIP Vision 模型
   - [model.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/image_encoder/model.safetensors)
-    - 很难懂所以请重命名为 `OpenCLIP-ViT-H-14`。
+    - 这个名字不好认，请重命名为 `OpenCLIP-ViT-H-14`。
 ```text
 📂ComfyUI/
   └── 📂models/
@@ -59,67 +59,67 @@ IP-Adapter 有几种种类，首先试一下最标准的东西吧。
 
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_sd15.json)
 
-- 🟩 将各种模型和想参考的图像连接到 `IPAdapter Advanced` 节点。
-- 🟦 在 `Prep Image For ClipVision` 节点裁剪参考图像。
-  - 详情在下面
+- 🟩 把各个模型和想参考的图像连接到 `IPAdapter Advanced` 节点。
+- 🟦 用 `Prep Image For ClipVision` 节点裁剪参考图像。
+  - 详见下文
 
 ---
 
-## 在“看”哪里
+## 它在“看”哪里
 
 ![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_302c47a4eb43f19e7e8535ca40e8ed5c.png){media=image}
 
-相当于 IP-Adapter “眼睛”的 CLIP ViT-H-14，基本只看 **224 × 224 的范围**。  
-因此，如果原样传递纵长的人物照片，脸和脚会被切掉，或者只以身体中间附近为线索获取特征。
+CLIP ViT-H-14 相当于 IP-Adapter 的“眼睛”，它基本上只看 **224 × 224 的范围**。  
+所以如果直接传入竖长的人物照片，脸或脚可能会被切掉，或者只根据身体中间一带来提取特征。
 
-如果想决定以哪个部分为基准，请像上面的工作流那样先进行缩放・裁剪。
+如果想指定以哪个部分为基准，请像上面的工作流那样先缩放、裁剪。
 
 ---
 
 ## IP-Adapter 的主要模型
 
-虽然有几个派生模型，但从参照图像“借来什么到什么程度”，每个模型的性格相当不同。  
+IP-Adapter 有几个派生模型，从参考图像“借用什么、借到什么程度”，每个模型的风格差别相当大。  
 
 ### ip-adapter-plus_sd15
 
-强力转印构图和对象位置的模型。
+会较强地迁移构图和物体位置的模型。
 
 ![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_ecbbe99d3410a850767aaf506645952b.png){media=image}
 
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_plus_sd15.json)
 
 - [ip-adapter-plus_sd15.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/ip-adapter-plus_sd15.safetensors)
-- 变成与参照图像相当接近的构图
+- 构图会和参考图像相当接近
 
 
 ### ip-adapter_sd15_light
 
-偏向文本提示词优先的模型。
+偏向以文本提示词为主的模型。
 
 ![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_422b44322caef6fe6fdec8c7d37f54e3.png){media=image}
 
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_sd15_light.json)
 
 - [ip-adapter_sd15_light.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/ip-adapter_sd15_light.safetensors)
-- 强力保留文本的指示
-- 参照图像主要只是“风格・氛围”的提示程度
+- 较多地保留文本的指示
+- 参考图像主要只是作为“风格、氛围”的提示
 
 ### ip-adapter-plus-face_sd15
 
-专注于脸（头部）的 IP-Adapter。
+专门针对脸部（头部）的 IP-Adapter。
 
 ![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_bba6f8053f411bee64044c141d4632c0.png){media=image}
 
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_plus_face_sd15.json)
 
 - [ip-adapter-plus-face_sd15.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/ip-adapter-plus-face_sd15.safetensors)
-- 相当强地固定长相・轮廓・五官等
+- 会相当强地固定长相、脸型、五官等
 
 ---
 
 ## SDXL 用模型链接
 
-面向也想试试 SDXL 的人，这里是 SDXL 用模型链接的一览。
+如果也想试试 SDXL，这里列出了 SDXL 用的模型链接。
 
 - [ip-adapter_sdxl_vit-h](https://huggingface.co/h94/IP-Adapter/blob/main/sdxl_models/ip-adapter_sdxl_vit-h.safetensors)
 - [ip-adapter-plus-face_sdxl_vit-h](https://huggingface.co/h94/IP-Adapter/blob/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors)

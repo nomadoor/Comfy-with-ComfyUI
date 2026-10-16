@@ -7,7 +7,7 @@ navId: queue
 title: "队列 (Queue)"
 created: 2026-02-06
 updated: 2026-03-02
-summary: "关于处理的预约和指定次数运行"
+summary: "预约任务，以及指定次数连续运行"
 seoTitle: "ComfyUI 队列（Queue）：预约生成与连续执行"
 seoDescription: "ComfyUI 的 Run 按钮其实是向队列添加预约。介绍连续执行、control after generate 设置、停止当前任务、删除预约和查看历史的方法。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -17,9 +17,9 @@ hero:
 
 ## 什么是 Queue (队列)？
 
-Queue (队列) 是指将想要让计算机执行的处理按顺序排列等候的机制。
+Queue (队列) 是把想要执行的任务按顺序排好的机制。
 
-当前的处理结束后，堆积在 Queue 中的下一个处理就会被自动执行。
+当前任务结束后，Queue 中排着的下一个任务就会自动开始执行。
 
 ---
 
@@ -27,56 +27,56 @@ Queue (队列) 是指将想要让计算机执行的处理按顺序排列等候�
 
 ![](/media/begin-with/run-and-stop/legacy_gyazo_5831e4d69bd26c7d5a533fb5781a33ad.mp4){media=loop}
 
-ComfyUI 的 `▷ Run` 按钮虽然看起来是“执行”，但实际上是 **向 Queue 中追加 1 个预约的按钮**。按下 `▷ Run` 的瞬间生成就开始了，是因为预约直接进入了排头并且被立即执行了。
+ComfyUI 的 `▷ Run` 按钮看上去是“执行”，实际上是 **向 Queue 添加 1 个预约的按钮**。之所以一按 `▷ Run` 就开始生成，是因为这个预约直接排到了最前面，并立即被执行。
 
 打开侧边栏的 `Queue`，试着连续点击 `▷ Run` 看看。
-你应该能看到 Queue 被一个个添加进去。
+应该能看到 Queue 里的任务一个个增加。
 
 ---
 
-## 堆积 Queue（预约）的方法
+## 向 Queue 添加任务（预约）的方法
 
-### 1. 在处理中直接点击 Run
+### 1. 在处理过程中直接点击 Run
 
 这是最简单的方法。
-当你想再次执行同一个 工作流 时，可以马上将其追加到 Queue 中。
+想把同一个工作流再执行一次时，可以马上接着把它加入 Queue。
 
 ![](/media/data-utilities/queue/legacy_gyazo_0680d8d1d2ff86a81f15a81085af35a9.mp4){media=loop}
 
-由于 ComfyUI 只有一个处理引擎，因此无论你从
+ComfyUI 只有一个处理引擎，所以无论是从
 
 - 别的标签页
-- 别的 工作流
+- 别的工作流
 
-点击 `▷ Run`，它们都会排在同一个 Queue 中。
+点击 `▷ Run`，都会排进同一个 Queue。
 
-### 2. 这增加 Run 旁边的数字进行连续运行
+### 2. 调大 Run 旁边的数字，连续运行
 
 ![](/media/begin-with/run-and-stop/legacy_gyazo_5831e4d69bd26c7d5a533fb5781a33ad.mp4){media=loop}
 
-更改 `▷ Run` 按钮旁边的数字，就可以根据该次数批量堆积到 Queue 中。
-当想用相同的设置制作多张图时很方便。
+修改 `▷ Run` 按钮旁边的数字，就能按这个次数一次性加入 Queue。
+想用相同设置生成多张图时很方便。
 
 ---
 
 ## Control After Generate
 
-`INT` 类型的参数（例: `KSampler` 的 `seed` 等），拥有在生成后更改数值的选项。
+`INT` 类型的参数（例: `KSampler` 的 `seed` 等）带有一个在生成后改变数值的选项。
 
 ![](/media/data-utilities/queue/legacy_gyazo_3f0dd7eb5dde53d648a2fe2c49d41324.mp4){media=loop}
 
-与 Queue 并用，就可以进行 **每次改变数值并连续生成** 这样的应用。
+配合 Queue 使用，就能实现 **每次改变数值、连续生成** 这样的玩法。
 
 - `fixed`：数值不变
 - `increment`：增加 1
 - `decrement`：减少 1
 - `randomize`：每次随机
 
-如果想像扭蛋一样每次尝试不同的结果，就使用 `randomize`。
-如果想固定 seed 并比较其他参数，就使用 `fixed`。
+想像抽卡一样每次试出不同结果，就用 `randomize`；
+想固定 seed、比较其他参数，就用 `fixed`。
 
 > [!NOTE]
-> 本网站的 工作流 为了可复现性，绝大多数都使用了 `fixed`。
+> 为了便于复现，本站的工作流几乎都使用 `fixed`。
 
 ---
 
@@ -85,38 +85,38 @@ ComfyUI 的 `▷ Run` 按钮虽然看起来是“执行”，但实际上是 **�
 ### 添加预约
 
 - 点击 `▷ Run`
-- 增加旁边的数字，就可以根据该次数批量添加。
+- 调大旁边的数字，就能按这个次数一次性添加。
 
-### 停止当前正在进行的处理
+### 停止当前正在运行的任务
 
-仅停止运行中的任务。
-堆积在 Queue 中的“后续预约”会保留。
+只停止正在运行的任务。
+Queue 中排着的“后续预约”会保留下来。
 
 ![](/media/data-utilities/queue/legacy_gyazo_a7d76a9fee8c00efeddb0f454528c8d6.mp4){media=loop}
 
 - 点击 `❌️ (Cancel Current Run)`
 
-当前正在运行的任务会停止。
-排在 Queue 中的“后续预约”会保留。
+只有当前正在运行的任务会停止。
+Queue 中排着的“后续预约”会原样保留。
 
 ### 删除已预约的任务
 
 ![](/media/data-utilities/queue/legacy_gyazo_b4d1229ca875c9fd5cbbde0dfbf47fc6.mp4){media=loop}
 
-想只删除 1 个时
-- 在侧边栏的 Queue 中右键点击对象 → Delete
+只想删除 1 个时
+- 在侧边栏的 Queue 中右键点击该任务 → Delete
 
 想批量删除未执行的预约时
 - 点击 `🔳 (Clear Pending Tasks)`
-- 可以一键删除残留在 Queue 中的任务（未执行部分）
+- 可以一次性删除 Queue 中剩下的任务（未执行的部分）
 
 
 ---
 
 
-## 确认过去的处理
+## 查看过去的任务
 
 ![](/media/data-utilities/queue/legacy_gyazo_3db298a7968024f5c06db82ee194d0c9.mp4){media=loop}
 
-打开侧边栏的 `Queue`，可以确认过去的处理历史。
-也可以从这里读取过去的 工作流。
+打开侧边栏的 `Queue`，可以查看过去的处理历史。
+也可以从这里载入过去的工作流。

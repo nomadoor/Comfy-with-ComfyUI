@@ -7,7 +7,7 @@ navId: lumina-image-2.0
 title: "Lumina-Image 2.0"
 created: 2025-12-11
 updated: 2026-03-02
-summary: "Basics of Lumina-Image 2.0 and usage in ComfyUI"
+summary: "Lumina-Image 2.0 basics and how to use it in ComfyUI"
 seoTitle: "Lumina-Image 2.0 and Neta Lumina in ComfyUI"
 seoDescription: "Use Lumina-Image 2.0, a light 2.6B image model, and anime models Neta Lumina, NetaYume Lumina, and NewBie image in ComfyUI, with workflows."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
@@ -19,10 +19,10 @@ tags: []
 
 ## What is Lumina-Image 2.0?
 
-[Lumina-Image 2.0](https://github.com/Alpha-VLLM/Lumina-Image-2.0) is a **2.6B parameter image generation model** that combines Unified Next-DiT and Flux-based VAE.
+[Lumina-Image 2.0](https://github.com/Alpha-VLLM/Lumina-Image-2.0) is a **2.6B parameter image generation model** that pairs Unified Next-DiT with a Flux-family VAE.
 
-While adopting the Gemma 2B text encoder, the model body is considerably smaller than SD3 and FLUX Pro, and **like AuraFlow, it is designed aiming for the "relatively lightweight and easy-to-use base model" category**.
-It is also characterized by high prompt adherence for its size, and attracted attention as one of the candidates for the next-generation base model.
+It uses a Gemma 2B-family text encoder, but the model itself is much smaller than SD3 or FLUX Pro. **Like AuraFlow, it's designed to fill the "relatively lightweight base model that's easy to use every day" slot**.
+It also follows prompts well for its size, and drew attention as one of the candidates for the next generation of base models.
 
 However, since it uses Gemma 2B (2B parameters) as a text encoder, it should be noted that the VRAM usage for the text encoder is slightly larger compared to SD1.5 etc.
 
@@ -66,7 +66,7 @@ However, since it uses Gemma 2B (2B parameters) as a text encoder, it should be 
 
 [Neta-Lumina](https://huggingface.co/neta-art/Neta-Lumina) is a **fine-tuned model for anime** based on Lumina-Image 2.0.
 
-Like an anime model, it also supports Danbooru tags and is characterized by accepting multi-language prompts such as Chinese, English, and Japanese.
+As you'd expect from an anime model, it supports Danbooru tags, and it also accepts prompts in multiple languages: Chinese, English, and Japanese.
 
 ### Model Download
 
@@ -88,25 +88,25 @@ Like an anime model, it also supports Danbooru tags and is characterized by acce
 
 [](/workflows/basic-workflows/lumina-image-2.0/neta_lumina_v1_0.json)
 
-- Follow the official settings for the sampler, use `res_multistep` / `linear_quadratic`.
+- Following the official settings, the sampler uses `res_multistep` / `linear_quadratic`.
 
-Prompts are a bit unique, and you need to write a **system prompt** before the text you actually want to generate.
+The prompt is a little unusual: you need to put a **system prompt** before the prompt you actually want to use.
 
 ```text
 You are an assistant designed to generate anime images based on textual prompts. <Prompt Start>
 1girl, portrait, ...
 ```
 
-Please refer to the official Prompt Book for details.
+See the official Prompt Book for details.
 - [Neta Lumina Prompt Book](https://nieta-art.feishu.cn/wiki/RY3GwpT59icIQlkWXEfcCqIMnQd)
 
 ---
 
 ## NetaYume Lumina
 
-There is also a model called [NetaYume Lumina](https://huggingface.co/duongve/NetaYume-Lumina-Image-2.0), which is further fine-tuned based on Neta Lumina.
+There's also [NetaYume Lumina](https://huggingface.co/duongve/NetaYume-Lumina-Image-2.0), a further fine-tune built on Neta Lumina.
 
-I will introduce this as well.
+While we're at it, let's cover this one too.
 
 ### Model Download
 
@@ -131,10 +131,10 @@ I will introduce this as well.
 
 ## NewBie image Exp0.1
 
-NewBie-image (Exp0.1) is an anime-focused T2I model with a unique NewBie architecture designed based on Next-DiT, incorporating insights from Lumina architecture research. It uses a more powerful text encoder and enables more detailed control with XML-formatted prompts (structured tags).
+NewBie-image (Exp0.1) is an anime-focused T2I model with NewBie's own architecture, built on Next-DiT and informed by research on the Lumina architecture. It uses a stronger text encoder and allows finer control through XML-style prompts (structured tags).
 
 > [!NOTE]
-> This model is only 20% trained. The workflow may change with future updates.
+> This model is only 20% of the way through training. The workflow may change with future updates.
 
 ### Model Download
 
@@ -183,7 +183,7 @@ Prompts in XML format (structured with tags) are recommended.
 </general_tags>
 ```
 
-However, you can generate images without problems even if you write in natural language, so please feel free to try it first.
+That said, natural-language prompts work fine too, so just give it a try first.
 
-Please refer to the official prompt guide for details.
+See the official prompt guide for details.
 - [NewBie-image Deployment and Zero-Threshold Usage Tutorial / Prompt Writing](https://ai.feishu.cn/wiki/NZl9wm7V1iuNzmkRKCUcb1USnsh#RN74dYdXaokGnSx0F5IcaBK0nHc)

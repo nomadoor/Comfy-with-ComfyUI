@@ -18,14 +18,14 @@ hero:
 
 ## What is Anima?
 
-[Anima](https://huggingface.co/circlestone-labs/Anima) is a 2B parameter image generation model created through a collaboration between CircleStone Labs and Comfy Org.
+[Anima](https://huggingface.co/circlestone-labs/Anima) is a 2B-parameter image generation model made in collaboration between CircleStone Labs and Comfy Org.
 
-It is based on NVIDIA Cosmos, and is a **pure anime model** trained on several million anime images and art images.
+It's built on NVIDIA Cosmos and trained on millions of anime and art images, making it a **pure anime model**.
 
-It is one of the models drawing a lot of attention as a possible migration target from SDXL-era anime models.
+It's one of the models people have high hopes for as a successor to SDXL-era anime models.
 
 > [!WARNING]
-> The license is **CircleStone Labs Non-Commercial License**.  
+> The license is the **CircleStone Labs Non-Commercial License**.  
 > The Anima model itself, derivative models, and LoRAs are non-commercial. Generated images can be used commercially.
 
 {% runpod %}
@@ -69,7 +69,7 @@ It is one of the models drawing a lot of attention as a possible migration targe
 
 Anima is trained on Danbooru-style tags, natural language, and combinations of both.
 
-Because the text encoder is smart, you do not need to be as strict as with [Pony Diffusion V6](/en/basic-workflows/sdxl-anime/#pony-diffusion-v6-xl), but it may be useful to put quality tags like the following at the beginning of the prompt.
+The text encoder is smart, so you don't need to be as fussy as with [Pony Diffusion V6](/en/basic-workflows/sdxl-anime/#pony-diffusion-v6-xl), but it might help to put quality tags like these at the start of the prompt.
 
 ```text
 masterpiece, best quality, score_9, safe,
@@ -84,7 +84,7 @@ masterpiece, best quality, score_9, safe,
 [](/workflows/basic-workflows/anima/anima_aesthetic_v1_1.json)
 
 * Recommended resolution is `512px` to `1536px`.
-* Samplers with a little variation, such as `er_sde` and `euler_ancestral`, are recommended.
+* Samplers that add a bit of randomness, such as `er_sde` and `euler_ancestral`, are recommended.
 
 ---
 
@@ -96,7 +96,7 @@ ControlNet-LLLite is a lightweight ControlNet developed by kohya.
 
 * [Comfy-Org/Anima-LLLite](https://huggingface.co/Comfy-Org/Anima-LLLite/tree/main/model_patches)
 
-Choose a suitable model for the control image you want to use.
+Pick the model that matches your control image.
 
 > [!NOTE]
 > Models marked `v2` were trained for Anima-Base v1.0. The others were trained for the older Anima Preview3, so they may be a little less effective.

@@ -18,10 +18,10 @@ hero:
 
 ## What is Comfy Cloud?
 
-**Comfy Cloud** is an official cloud service provided by Comfy Org.
-You can instantly use ComfyUI in an environment equipped with high-performance GPUs (such as A100 40GB) just by opening a browser.
+**Comfy Cloud** is the official cloud service from Comfy Org.
+Just open a browser and you can start using ComfyUI right away on a machine with a high-end GPU (Blackwell RTX 6000 Pro).
 
-It is still in beta and does not have the freedom of the local version (such as adding arbitrary custom nodes), but if you just want to run models, there is no problem and it is a good option.
+It's still in beta and doesn't give you the freedom of a local install (like adding any custom node you want), but if you just want to run models, it works fine and is a good option.
 
 ---
 
@@ -30,7 +30,7 @@ It is still in beta and does not have the freedom of the local version (such as 
 > [!NOTE]
 > Pending until stable
 
-Details on the official page:
+See the official page for details:
 
 *   [Pricing - Comfy Cloud](https://www.comfy.org/cloud/pricing)
 
@@ -40,4 +40,4 @@ Details on the official page:
 
 - 1. Access [Comfy Cloud](https://cloud.comfy.org/) and create an account (or log in).
 - 2. Pay the subscription fee.
-- 3. You will be able to generate with ComfyUI on the browser.
+- 3. You can now generate with ComfyUI in your browser.

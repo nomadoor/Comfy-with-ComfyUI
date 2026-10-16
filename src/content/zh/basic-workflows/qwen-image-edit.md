@@ -8,9 +8,9 @@ navId: qwen-image-edit
 title: "Qwen-Image-Edit"
 created: 2025-12-11
 updated: 2026-03-02
-summary: "用 Qwen-Image-Edit 进行基于指示的图像编辑"
-seoTitle: "在 ComfyUI 中使用 Qwen-Image-Edit：原版、2509、2511"
-seoDescription: "Qwen-Image-Edit 是以 Qwen-Image 为基础、基于指令的图像编辑模型。介绍它在 ComfyUI 中的用法，包括原版、2509、2511 的模型下载，以及使用单张和多张图像的编辑工作流。"
+summary: "用 Qwen-Image-Edit 进行基于指令的图像编辑"
+seoTitle: "在 ComfyUI 中使用 Qwen-Image-Edit：不带后缀版、2509、2511"
+seoDescription: "Qwen-Image-Edit 是以 Qwen-Image 为基础、基于指令的图像编辑模型。介绍它在 ComfyUI 中的用法，包括不带后缀版、2509、2511 的模型下载，以及使用单张和多张图像的编辑工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/qwen-image-edit/legacy_gyazo_14e608fdb6033e436570157da4645e34.png"
@@ -19,30 +19,30 @@ tags: ["instruction-based-image-editing","collage-refine"]
 
 ## 什么是 Qwen-Image-Edit？
 
-[Qwen-Image-Edit](https://github.com/QwenLM/Qwen-Image) 是，以 [Qwen-Image](/zh/basic-workflows/qwen-image/) 为基础的 [基于指示的图像编辑模型](/zh/ai-capabilities/instruction-based-image-editing/)。
+[Qwen-Image-Edit](https://github.com/QwenLM/Qwen-Image) 是以 [Qwen-Image](/zh/basic-workflows/qwen-image/) 为基础的 [基于指令的图像编辑模型](/zh/ai-capabilities/instruction-based-image-editing/)。
 
-粗略地说，是 **Flux.1 Kontext 的 Qwen-Image 版** 这样的认识就可以。
+简单来说，把它理解成 **Qwen-Image 版的 Flux.1 Kontext** 应该就可以了。
 
-Flux.1 Kontext 虽然只是基于 VAE 的编辑，但 Qwen-Image-Edit 可以使用 MLLM 实际上“看”参照图像，那分量能进行柔软的编辑。
+Flux.1 Kontext 只能做基于 VAE 的编辑，而 Qwen-Image-Edit 会用 MLLM 真正“看”参考图像，所以编辑起来也更灵活。
 
-其后过了一段时间，对应多参照的 **Qwen-Image-Edit-2509** 这个模型被发表了。
+又过了一段时间，支持多张参考图的 **Qwen-Image-Edit-2509** 发布了。
 
-之前只是“编辑 1 张图像”，但在 Qwen-Image-Edit-2509 变得能做：
+以前只能“编辑 1 张图像”，到了 Qwen-Image-Edit-2509，就可以做这样的事：
 
-* “将图像 1 的人物的服装，变更为图像 2 的东西”
-* “生成图像 1 和图像 2 站在同一个舞台的图像”
+* “把图像 1 中人物的衣服换成图像 2 里的那套”
+* “生成图像 1 和图像 2 站在同一个舞台上的图像”
 
 > [!TIP]
-> 因为学习方法不同，2509 未必是无印版的上位互换，但迷茫的时候使用 2509 就可以吧。
+> 由于训练方法不同，2509 并不一定全面胜过不带后缀的版本，不过拿不准的时候用 2509 就好。
 
 ---
 
-## Qwen-Image-Edit（无印）
+## Qwen-Image-Edit（不带后缀的版本）
 
-关于能做什么，[官方 GitHub](https://github.com/QwenLM/Qwen-Image#showcase-of-qwen-image-edit-2509)、或 [Flux.1 Kontext / 能做的事](/zh/basic-workflows/flux-1-kontext/#能做的事) 也许也能作为参考。
+关于它能做什么，可以参考 [官方 GitHub](https://github.com/QwenLM/Qwen-Image#showcase-of-qwen-image-edit-2509)，或者 [Flux.1 Kontext / 能做的事](/zh/basic-workflows/flux-1-kontext/#能做的事)。
 
 
-### 模型的下载
+### 下载模型
 
 * diffusion_models
 
@@ -57,12 +57,12 @@ Flux.1 Kontext 虽然只是基于 VAE 的编辑，但 Qwen-Image-Edit 可以使�
 
   * [QuantStack/Qwen-Image-Edit-GGUF](https://huggingface.co/QuantStack/Qwen-Image-Edit-GGUF/tree/main)
 
-    * 请选择 Q4_K_M 以上的模型。未满这个的话性能会一气下降。
+    * 请选择 Q4_K_M 及以上的模型。低于这个档位，性能会一下子掉很多。
     * cf. [Qwen-Image-Edit GGUF 模型比较](https://scrapbox.io/work4ai/Qwen-Image-Edit_GGUF%E3%83%A2%E3%83%87%E3%83%AB%E6%AF%94%E8%BC%83)
   * [unsloth/Qwen2.5-VL-7B-Instruct-GGUF](https://huggingface.co/unsloth/Qwen2.5-VL-7B-Instruct-GGUF/tree/main)
   * [Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf](https://huggingface.co/QuantStack/Qwen-Image-Edit-GGUF/blob/main/mmproj/Qwen2.5-VL-7B-Instruct-mmproj-BF16.gguf)
 
-    * 使用 gguf 的情况，这个 mmproj 文件是必须的。
+    * 使用 gguf 时，必须有这个 mmproj 文件。
 
 ```text
 📂ComfyUI/
@@ -86,33 +86,33 @@ Flux.1 Kontext 虽然只是基于 VAE 的编辑，但 Qwen-Image-Edit 可以使�
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit.json)
 
 
-🟩 关于 `TextEncodeQwenImageEdit` 节点的举动，稍微补充一下。
+🟩 关于 `TextEncodeQwenImageEdit` 节点的行为，这里稍微补充一下。
 
-在内部，粗略进行次那样的处理。
+它内部大致做了这些处理：
 
-* 1. 将输入图像调整为 1M 像素程度
-* 2. 从那个图像生成 latent
-* 3. 文本＋图像汇总传给 Qwen2.5-VL
+* 1. 把输入图像缩放到 1M 像素左右
+* 2. 用这张图像生成 latent
+* 3. 把文本和图像一起传给 Qwen2.5-VL
 
-因为自动进入图像的调整处理，**生成的图像尺寸如果大大偏离 1M 像素，有变成非意图结果的可能性。**
+由于会自动插入缩放处理，**如果生成的图像尺寸与 1M 像素相差太多，结果可能会不符合预期。**
 
-因此，在这个工作流预先进行了图像尺寸的下处理。
+所以这个工作流事先对图像尺寸做了预处理。
 
-* 用 `ImageScaleToTotalPixels` 节点调整为 1M 像素
-* 用 `Resize Image v2` 节点，让分辨率变为 8 的倍数那样裁剪
+* 用 `ImageScaleToTotalPixels` 节点缩放到 1M 像素
+* 用 `Resize Image v2` 节点裁剪，让分辨率成为 8 的倍数
 
 > [!NOTE]
-> Qwen-Image-Edit，无论怎么工夫都无法“让输入图像和编辑后图像像素完美一致”。  
-> 虽然被提案了几个回避策略，但原本模型的设计就不是面向那种用途，这个前提最好先把握。
+> 无论怎么下功夫，Qwen-Image-Edit 都无法让“输入图像和编辑后的图像像素级完全一致”。  
+> 虽然有人提出了几种规避方法，但最好先明白一个前提：这个模型本来就不是为这种用途设计的。
 
 ---
 
 ## Qwen-Image-Edit-2509
 
-Qwen-Image-Edit-2509 是，扩展了无印版的版本。
-最大的区别是，**可以输入复数枚参照图像**。
+Qwen-Image-Edit-2509 是在不带后缀的版本上扩展而来的。
+最大的区别是 **可以输入多张参考图像**。
 
-### 模型的下载
+### 下载模型
 
 * diffusion_models
 
@@ -136,29 +136,29 @@ Qwen-Image-Edit-2509 是，扩展了无印版的版本。
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2509.json)
 
-- 基本的流程与无印版相同，但将 `TextEncodeQwenImageEdit` 节点替换为 `TextEncodeQwenImageEditPlus` 节点。
+- 基本流程与不带后缀的版本相同，只是把 `TextEncodeQwenImageEdit` 节点换成 `TextEncodeQwenImageEditPlus` 节点。
 
-### 工作流（复数枚）
+### 工作流（多张）
 
 ![](/media/basic-workflows/qwen-image-edit/legacy_gyazo_e33abcb42d03c53f3171a8fb12d7eca0.png){media=image}
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2509_multi_ref.json)
 
-- 🟩 因为正经地看着图像，某种程度粗略的指示也能动，但像“image1 的〇〇”“image2 的〇〇”那样，也可以明示地指定是哪个图像。
+- 🟩 模型会认真看图，所以指令粗略一点也能用；不过也可以像“image1 的〇〇”“image2 的〇〇”这样，明确指定是哪张图。
 
-之前，因为想让输入图像和编辑后图像完成尽量相同的尺寸，先进行调整处理，并将那个输入到 latent_image。
+前面的例子希望输入图像和编辑后的图像尽量保持相同尺寸，所以先做缩放，再把结果输入到 latent_image。
 
-另一方面在“只想以参照图像为提示生成新图像”的例子，像 text2image 那样使用 EmptySD3LatentImage 节点也没问题。
+而如果只是“想以参考图像为线索生成一张新图”，像 text2image 那样使用 EmptySD3LatentImage 节点也没有问题。
 
 ---
 
 ## Qwen-Image-Edit-2511
 
-Qwen-Image-Edit-2511 是，改良了 2509 的新模型。
+Qwen-Image-Edit-2511 是在 2509 基础上改良的新模型。
 
-没有从无印到 2509 时那样的大幅度变化，但角色的一致性提高了，或者 Relighting LoRA 等有人气的 LoRA 模型被整合了，进行了着实的改良。
+变化没有从不带后缀的版本到 2509 时那么大，但角色一致性有所提升，还整合了 Relighting LoRA 等热门 LoRA 模型，改进相当扎实。
 
-### 模型的下载
+### 下载模型
 
 * diffusion_models
 
@@ -183,18 +183,18 @@ Qwen-Image-Edit-2511 是，改良了 2509 的新模型。
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2511.json)
 
-以与 2509 完全相同的工作流动作。
+和 2509 用完全相同的工作流就能运行。
 
 ---
 
 
 ## Lightning
 
-**Qwen-Image-Edit-Lightning** 是，为了让 Qwen-Image-Edit 以 4 / 8 steps 运转而被蒸馏的 LoRA 组。
+**Qwen-Image-Edit-Lightning** 是一组经过蒸馏的 LoRA，让 Qwen-Image-Edit 能用 4 / 8 steps 运行。
 
-几乎没有劣化就能大幅减少步数，在很多工作流被采用。
+它几乎不损失画质就能大幅减少步数，所以很多工作流都在用。
 
-### 模型的下载
+### 下载模型
 
 * loras
 
@@ -217,8 +217,8 @@ Qwen-Image-Edit-2511 是，改良了 2509 的新模型。
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_lightning_8steps.json)
 
-* 用 `LoraLoaderModelOnly` 节点读取 Lightning LoRA。
-* 将 `KSampler` 的 `steps` 设定为 4 或 8，`CFG` 设定为 1.0。
+* 用 `LoraLoaderModelOnly` 节点加载 Lightning LoRA。
+* 把 `KSampler` 的 `steps` 设为 4 或 8，`CFG` 设为 1.0。
 
 ### Qwen-Image-Edit-2511
 
@@ -226,4 +226,4 @@ Qwen-Image-Edit-2511 是，改良了 2509 的新模型。
 
 [](/workflows/basic-workflows/qwen-image-edit/qwen_image_edit_2511_lightning_4steps.json)
 
-* 用 `LoraLoaderModelOnly` 节点读取 Lightning LoRA。
+* 用 `LoraLoaderModelOnly` 节点加载 Lightning LoRA。

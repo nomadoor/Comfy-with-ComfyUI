@@ -17,13 +17,13 @@ hero:
 
 ## Introduction
 
-Welcome to **Comfy with ComfyUI**.
+Welcome to **Comfy with ComfyUI**!
 
-This site is not just for sharing workflows. It is built to help people understand what generative AI can do, and how to operate ComfyUI itself.
+I made this site to do more than hand out workflows: I want people to see what generative AI makes possible, and to learn how ComfyUI itself works and what it can do.
 
-Templates can get you started quickly, but if you want to extend things your own way, you still need the fundamentals.
+Templates will get a model running, but if you want to extend things the way you want from there, you really do need to know the basics.
 
-I also hope this can be a useful place for experienced users to track how ComfyUI is evolving.
+I think it can also be a good place for experienced users to keep up with how ComfyUI is evolving.
 
 ---
 
@@ -35,27 +35,27 @@ Here is a quick overview of the main sections:
 ### 🧭 Begin With ComfyUI
 Covers ComfyUI setup and basic operations.
 > [!NOTE]
-> The UI changes frequently these days.
-> I want to keep it updated, but changes happen so often that I usually wait for a bit of stability.
+> The UI has been changing very often lately.
+> I'd like to fix the pages, but it will probably change again, so I'll update them once things settle down a bit.
 
 ### 🖼️ Data / Image Utilities
-Focuses on preparing data and images for generation.
-Includes editing/conversion workflows and ways to process many images at once.
+Covers how to prepare the images and data you use for generation.
+It includes editing and converting images, and ways to handle many images at once.
 
 ### 🔼 AI Capabilities
 Generative AI comes in many forms, and each has different strengths.
 This section is designed so you can start from "what you want to do" and find "what kind of AI you can use."
 
-It also explains the basic mechanism of image generation AI.
+It also gives a very simple explanation of how image generation AI works.
 
 ### 🗺️ Basic Workflows
-Basic workflow guides.
-They are close to ComfyUI templates, but with a more minimal and easy-to-read structure.
+Explanations of basic workflows.
+They're not that different from the ComfyUI templates, but they're laid out to be more minimal and easier to follow.
 
 ### ☹️ FAQ / Troubleshooting
-Organizes common questions like "Why 512px?" and "Why seed 1234 and 1235 are totally different."
+Sorts out questions whose answers everyone now seems to take for granted, like "Why is 512px so common?" and "Seeds 1234 and 1235 are completely different."
 
-It also collects frequent ComfyUI errors and troubleshooting patterns.
+It also collects errors and problems you're likely to run into with ComfyUI, with the cause and fix for each.
 
 ---
 
@@ -63,8 +63,8 @@ It also collects frequent ComfyUI errors and troubleshooting patterns.
 
 This site provides workflow JSON for almost every workflow article.
 
-Copy the workflow JSON text, then press **Ctrl + V** on the ComfyUI canvas.
-The workflow will be pasted directly.
+Not many people know this, but if you copy the workflow JSON text
+and press **Ctrl + V** on the ComfyUI canvas, the workflow is pasted right in.
 
 ![](https://gyazo.com/13c0019ad1e471bcf89cdb4b17bc7d9c){gyazo=loop}
 
@@ -72,21 +72,21 @@ Test workflow:
 
 [Stable_Diffusion_1.5.json](/workflows/begin-with/saving-and-loading-workflows/stable_diffusion_1_5.json)
 
-Please make use of it.
+Make good use of it!
 
 ---
 
 ## How to Face Generative AI
 
-Generative AI opens new possibilities, but it still **cannot do many things**.
+Generative AI opens up possibilities that never existed before, but it **can do far less than we imagine.**
 
-For example, maintaining strong multi-character consistency is still very hard.
-Creating a solid 1-minute video is also not there yet.
+Making an image that references several characters while keeping them consistent? Still not achieved.
+Making a 1-minute video? Can't.
 
-When AI fails to do what you want, there is often no hidden trick.
-In many cases, the technology just has not reached that point yet.
+When AI can't do what you want, you might think there must be some solution.
+In most cases, though, AI just hasn't progressed far enough yet to do what you're hoping for.
 
-Take your time and enjoy this still-immature phase of AI.
+Don't rush. Enjoy AI while it's still immature. That's something you can only do now.
 
 ---
 
@@ -104,10 +104,10 @@ If you want to contact the author directly, please use the contact page as well:
 
 All text, workflows, and images on this site are **CC0**.
 
-Please use them freely.
+Have fun and use them freely |дﾟ)
 
 ---
 
 ## Into the World of ComfyUI
 
-Let's keep learning together so we can use ComfyUI more **Comfy**.
+Now, let's learn together so we can use ComfyUI in a **Comfy** way!

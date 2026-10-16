@@ -17,10 +17,10 @@ hero:
 
 ## About Python
 
-There are numerous programming languages in the world, but ComfyUI runs on a language called **Python**.
+There are countless programming languages out there, and ComfyUI runs on one called **Python**.
 
-You don't need to be able to program in Python at all to master ComfyUI.
-However, knowing a few terms might give you the energy to fight the errors you will face from now on.
+You don't need to be able to program in Python at all to get good at ComfyUI.
+But knowing a few terms might give you the will to fight the errors you're going to run into.
 
 ---
 
@@ -28,65 +28,65 @@ However, knowing a few terms might give you the energy to fight the errors you w
 
 It may seem strange for a language to have versions, but spoken languages also gain new words and expressions over time. Likewise, Python adds new features and improvements with each update.
 
-Basically, it is designed to maintain backward compatibility (making old code work), but some programs stop working when the version goes up.
+It's generally designed to stay backward compatible (so old code keeps working), but some programs do stop working when the version goes up.
 
 * **Recommended Version**
-  - Currently, the latest version of Python is advancing rapidly, but ComfyUI runs stably in the range of `3.10` to `3.13`.
+  - The latest Python keeps moving forward, but ComfyUI runs reliably on `3.10` to `3.13`.
 
 ---
 
 ## Library
 
-It's strange to compare it in ComfyUI, but a "library" is like a **Custom Node**.
-It is an "expansion part" to add functions not in Python itself or to make complex processing easy to write.
+It's a bit odd to explain it with ComfyUI, but a "library" is something like a **custom node**.
+It's an "add-on part" that adds features Python itself doesn't have, or makes complex processing easy to write.
 
-Although convenient, if a library depends on another library or does not match the version of Python itself, it may cause a state like **"I didn't do anything but it broke"**.
-In fact, most errors encountered in ComfyUI are caused by libraries.
+They're handy, but when a library depends on other libraries, or doesn't match the version of Python itself, you can end up with the classic **"I didn't touch anything and it broke"**.
+In fact, most of the errors you'll hit in ComfyUI come from libraries.
 
 ---
 
 ## pip install
 
-This is the command to install that "library".
+This is the command for installing those "libraries".
 
 ```bash
 pip install <library>
 ```
 
-For example, typing as above downloads and installs the library from the internet.
+Type something like the above, and it downloads the library from the internet and installs it.
 
 ---
 
 ## Virtual Environment
 
-Libraries are Python's strength and at the same time can be a cause of errors.
-The more you put in, the more convenient it becomes, but the dependency relationship becomes complicated, and the possibility of causing errors increases.
+As we saw, libraries are Python's strength, but also a common cause of errors.
+The more you install, the more you can do, but the dependencies get more tangled and errors become more likely.
 
-That's where **"Virtual Environment"** comes in.
+That's where **"virtual environments"** come in.
 
-If you install libraries without doing anything, it will affect all Python programs on your PC, but by managing them in "dedicated rooms" for each software, you can prevent complex dependency relationships.
-The frequently appearing `venv` is one of the functions to create this virtual environment.
+If you just install libraries as is, they affect every Python program on your PC. Keeping each piece of software in its own "private room" stops the dependencies from getting tangled.
+The `venv` you'll see a lot is one tool for creating these virtual environments.
 
 ---
 
 ## Portable Version
 
 The portable version of ComfyUI is a bit special.
-If you look into the `ComfyUI_windows_portable` folder, there is a folder called `python_embeded`.
+Take a look inside the `ComfyUI_windows_portable` folder and you'll find a folder called `python_embeded`.
 
-* **Manual Install (venv):** Install Python on the PC and create a virtual environment (room) in it.
-* **Portable Version:** Built-in Python itself in the folder.
+* **Manual Install (venv):** Python is installed on the PC, and a virtual environment (room) is created inside it.
+* **Portable Version:** Python itself is bundled inside the folder.
 
-It's a structure like "bringing the whole house".
-Therefore, it works even if Python is not installed on the PC itself, and if you put it on a USB memory and start it on another PC, you can run it as is.
+You could say it "brings the whole house along".
+So it runs even if Python isn't installed on the PC, and if you copy it to a USB stick and launch it on another PC, it runs as is.
 
 
 ### 🚨 Caution
 
-Even if it says "works anywhere," there are limits.
+"Runs anywhere" still has its limits.
 
 - 1. **OS Barrier:** The portable version for Windows does not work on Linux or Mac.
 - 2. **Hardware Barrier:** ComfyUI configured for CUDA (NVIDIA) does not work on PCs without NVIDIA GPUs.
-- 3. **Environment Dependency Barrier:** Specific libraries such as `xformers` and `FlashAttention` strongly depend on drivers, hardware configurations, and paths, so they often do not work when taken to another PC.
+- 3. **Environment Barrier:** Certain libraries such as `xformers` and `FlashAttention` depend heavily on drivers, hardware setup, and paths, so they often break when moved to another PC.
 
-Let's just understand it at the level of "It works if the basic hardware configuration and OS are the same".
+Think of it as "it works if the basic hardware setup and OS are the same", and no more than that.

@@ -56,7 +56,7 @@ hero:
 動画生成モデルが実用的な性能になってきたのも相まって、単なる「リップシンク」というより、**音声駆動型のポートレート動画生成** という流れに進んでいきます。
 
 > ![](/media/ai-capabilities/lip-sync/legacy_gyazo_808dcfc73aa5fb1959eb35be3534e5e7.mp4){media=player}
-> InfineTalk
+> InfiniteTalk
 
 現在のSoTAとして、Wan2.1をベースにした、[FantasyTalking](https://fantasy-amap.github.io/fantasy-talking/)や[InfiniteTalk](https://meigen-ai.github.io/InfiniteTalk/)のようなものがあります。
 

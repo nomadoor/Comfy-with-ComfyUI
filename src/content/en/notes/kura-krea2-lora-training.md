@@ -18,9 +18,9 @@ hero:
 
 ## What is Kura?
 
-Training a LoRA follows the same basic process regardless of the base model or task: prepare a dataset, choose parameters such as the learning rate and rank, and pass everything to the training software.
+Training a LoRA follows the same basic process regardless of the base model or task: prepare a dataset, choose parameters such as the learning rate and rank, and hand it all to the training software. That's basically all there is to it.
 
-That sounds simple, but two things make it difficult.
+Put that way, it sounds simple, but two big things make it hard.
 
 - **Every training tool works differently**
   - The tool changes with the model, whether that is AI Toolkit, Musubi Tuner, or something else
@@ -29,7 +29,7 @@ That sounds simple, but two things make it difficult.
   - The number of images, learning rate, rank, and step count depend on the model and task
   - If the job does not fit on the GPU, you have to decide which settings to reduce
 
-[Kura](https://github.com/nomadoor/Kura) was built to solve these problems by giving an AI agent a consistent way to handle LoRA training.
+To solve these two problems, I built [Kura](https://github.com/nomadoor/Kura), designed from the start to be used by an AI agent.
 
 Kura has three main parts:
 
@@ -37,11 +37,11 @@ Kura has three main parts:
 - **Files** that preserve past experiments
 - A **Skill** that helps the AI choose parameters using knowledge about models and previous experiments
 
-Today's AI agents can probably build an environment from scratch and run a training job. Doing that every time wastes tokens, though, and it provides no way to accumulate what was learned from earlier experiments.
+Today's AI agents can probably build an environment from scratch and run a training job. But doing that every time is a waste of tokens, and above all, there is no way to build up what you learned from earlier experiments.
 
 Kura is a harness that provides shortcuts for LoRA training, so people can focus on the dataset and parameter tuning.
 
-Let's use Krea 2 as the base model and train a character LoRA.
+Let's jump right in and train a character LoRA on Krea 2.
 
 ---
 
@@ -214,7 +214,7 @@ Open the Kura folder as the AI agent's working directory.
 
 ## Train a LoRA with an AI agent
 
-Now it is time to let the AI do some of the work.
+From here on, let's have the AI pitch in too.
 
 ### Place the dataset
 
@@ -246,9 +246,9 @@ Use the images in datasets/character-lora to create a Krea 2 character LoRA.
 
 Kura includes a Skill for reviewing datasets and choosing parameters. You do not need to specify every parameter at the start.
 
-If you know what you want, you can say, “Use `rank 16` and `learning rate 5e-5`.” If you want to use RunPod, simply say, “Train it on RunPod.”
+Of course, if you know your way around, you can say, “Use `rank 16` and `learning rate 5e-5`.” If you want to use RunPod, simply say, “Train it on RunPod.”
 
-Unlike a GUI, the requirements can be adjusted through conversation.
+Unlike a GUI, you can adjust the requirements as you talk it through.
 
 ### Review the plan and start training
 
@@ -256,7 +256,7 @@ Before training begins, the AI agent creates a Kura `plan` and shows it to you.
 
 <!-- TODO: Add an image of the actual run plan -->
 
-The `plan` contains information like the following. Check whatever you understand.
+The `plan` contains information like the following. Check what you can.
 
 - **Training details**
   - The model and training backend
@@ -358,7 +358,7 @@ In this example, around 1000 steps looks best.
 
 ---
 
-## The experiment knowledge stays with you
+## What you learn from experiments stays
 
 The training process is now complete, but this is where Kura becomes most useful.
 
@@ -368,7 +368,7 @@ Files alone cannot tell the AI which result was best. After comparing the output
 
 Kura's default values are not absolute answers either. For now, they are simply values that the author has found reasonably useful through experience.
 
-If you would like, share your successful and failed experiments in [Kura Issues](https://github.com/nomadoor/Kura/issues). As more results are collected, they can be reflected in Kura's Skill and default values. The goal is to make high-quality training possible without having to obsess over every setting.
+If you would like, share your successful and failed experiments in [Kura Issues](https://github.com/nomadoor/Kura/issues). As results come in, I'll fold them into Kura's Skill and default values. I'm aiming for something that gives you high-quality training even when you use it without much thought.
 
 ---
 

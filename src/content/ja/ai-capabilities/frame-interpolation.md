@@ -34,7 +34,7 @@ hero:
 
 [](/workflows/ai-capabilities/frame-interpolation/vfi_gmfss.json)
 
-[FILM](https://github.com/google-research/frame-interpolation)やGMFSSなど、様々な補完手法が存在します。
+[FILM](https://github.com/google-research/frame-interpolation)やGMFSSなど、様々な補間手法が存在します。
 
 ---
 

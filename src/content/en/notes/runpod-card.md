@@ -22,9 +22,9 @@ Some articles have a card like this.
 
 ![Runpod card](/media/notes/runpod-card/runpod_card.png){media=image}
 
-Click it and you can start, on a cloud GPU, a ComfyUI that already has everything from that article: the workflows, models, custom nodes and sample images.
+Click it to launch ComfyUI on a cloud GPU with everything from that article already in place: the workflows, models, custom nodes and sample images.
 
-Every time a new model comes out, you download tens of GB of models, install custom nodes, run out of VRAM and crash… it gets tiring, doesn't it.
+Every time you want to try a new model, you download tens of GB of files, install custom nodes, run out of VRAM and crash… it's a real hassle, isn't it…
 
 This card skips all of that and gives you an environment that **just works, for sure**. Use it when a model is too much for your own GPU, or when you want to see it run before installing anything locally.
 
@@ -73,9 +73,9 @@ Click the card in an article and Runpod's screen for creating a Pod opens. Every
 
 ![Pick any GPU and Deploy Pod](/media/notes/runpod-card/runpod_card_select_gpu.mp4){media=loop}
 
-- GPUs with a ★ are the ones that run that article's workflows comfortably
-- They are sometimes unavailable, and any other GPU is fine too
-- Once chosen, `Deploy Pod`
+- GPUs with a ★ are the recommended ones that run that article's workflows comfortably
+- They are sometimes unavailable, so any other GPU is of course fine too
+- Once you've picked one, click `Deploy Pod`
 
 Each GPU shows its price per hour. Pricier GPUs are faster, but paying twice as much does not make it twice as fast. It comes down to your wallet.
 
@@ -124,7 +124,7 @@ When you are done, `Stop` the Pod on its screen, then `Terminate` (delete) it.
 
 The `Terminate` button appears after you `Stop`. Stopping alone already stops the charges, but everything inside is erased, so restarting it later means starting over anyway. Go all the way to `Terminate`.
 
-If you forget, the Pod deletes itself after 30 minutes with no activity and no generation. A notice appears at the top of the ComfyUI screen 5 minutes before.
+If you forget, the Pod deletes itself after 30 minutes with no activity and no generation. Five minutes before that, a notice covers the whole ComfyUI screen.
 
 > [!WARNING]
 > `Terminate` deletes your generated images along with the Pod. Download any images or videos you want to keep first.

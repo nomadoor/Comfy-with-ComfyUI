@@ -18,25 +18,25 @@ tags: ["upscale-restoration"]
 
 ## What is ESRGAN?
 
-Before diffusion models (like Stable Diffusion) became popular, the main player in image generation was **GANs**.
-ESRGAN is an upscaling model inherited from that GAN generation.
+Before diffusion models (like Stable Diffusion) took off, **GANs** were the stars of image generation.
+ESRGAN is an upscaling model handed down from that GAN era.
 
-ESRGAN is a **Super-Resolution GAN** for upscaling low-resolution images to high resolution.
-It doesn't just enlarge; it draws "plausible details" while enlarging by 2-4 times.
+ESRGAN is a **super-resolution GAN** that upscales low-resolution images to high resolution.
+Rather than just enlarging, it adds "plausible-looking detail" as it scales the image up 2-4x.
 
-It is very lightweight compared to upscaling with diffusion models, so there are still many opportunities for it to play an active role.
+It's very lightweight compared with diffusion-based upscaling, so it still gets plenty of use.
 
 ## Model Download
 
-There are a ridiculous number of models depending on the use case, but for now, let's use the following models.
+There's a ridiculous number of models for different uses, but for now, let's try this one.
 
 **RealESRGAN**
 - `ComfyUI Manager` → `Model Manager`
 - Search for `RealESRGAN x4` and `Install` it.
 
 [OpenModelDB](https://openmodeldb.info/)
-  - Models developed by volunteers are shared here.
-  - There are models specialized for cleanup, so it's fun just to look around.
+  - A place where community-made models are shared.
+  - There are even models specialized for cleanup, and it's fun just to browse.
 
 ## Upscaling with ESRGAN
 
@@ -46,13 +46,13 @@ There are a ridiculous number of models depending on the use case, but for now, 
 
 - 🟩 Load any model into the `Load Upscale Model` node.
 
-### Correcting magnification
+### Adjusting the scale
 
-Most upscalers like `RealESRGAN x4` have text like `x4`.
-This is the magnification, and using this model to upscale will **forcibly** make it 4 times larger.
+Most upscalers have something like `x4` in their name, as in `RealESRGAN x4`.
+That's the scale factor: upscaling with this model **always** makes the image 4x larger.
 
-However, for example, when incorporating it into a Hires.fix workflow, 4 times is too large.
-In such cases, add a process to shrink the image enlarged by the upscaler.
+But 4x is too big for some uses, such as when you add it to a Hires.fix workflow.
+In that case, add a step that shrinks the upscaled image back down.
 
 ### workflow
 
@@ -60,15 +60,15 @@ In such cases, add a process to shrink the image enlarged by the upscaler.
 
 [](/workflows/basic-workflows/esrgan/realesrgan_x0_5.json)
 
-- 🟨 You can adjust the magnification by changing the `scale_by` value.
+- 🟨 Change the `scale_by` value to adjust the scale.
 
 ---
 
-## Correcting only faces with GFPGAN
+## Fixing just the faces with GFPGAN
 
-There is **GFPGAN** as a **Face-specific restoration GAN**.
-It is a type of model that detects faces collapsed by noise and redraws them close to "learned beautiful faces".
+There's a **face-specific restoration GAN** called GFPGAN.
+It detects faces distorted by noise and redraws them toward the "clean faces" it learned in training.
 
-It sometimes appears for the purpose of "fixing only the face while you're at it" in post-processing such as FaceSwap nodes.
+You'll sometimes see it in post-processing, such as after FaceSwap nodes, to "clean up the face while you're at it."
 
-We won't cover detailed usage here, but it's enough to remember that there is **"a finishing GAN specifically for fixing faces"**.
+I won't go into how to use it here. It's enough to remember that **"there's a finishing GAN just for fixing faces."**

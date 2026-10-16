@@ -20,15 +20,15 @@ tags: [upscale-restoration]
 
 **[PixelDiT](https://pixeldit.github.io/)** is a **pixel diffusion model** released by NVIDIA.
 
-Many image generation models after Stable Diffusion use a mechanism called a [Latent Diffusion Model](/en/ai-capabilities/latent-diffusion-vae/).
+Many image generation models since Stable Diffusion use a mechanism called a [Latent Diffusion Model](/en/ai-capabilities/latent-diffusion-vae/).
 
 Calculating an image pixel by pixel is expensive, so these models first compress the image into a smaller representation called a latent. This reduces computation while making it easier to handle features like shape, color, and composition.
 
-However, when the latent is converted back into pixels, fine details such as small text and patterns can degrade.
+However, when the latent is converted back into pixels, fine details such as small text and patterns inevitably degrade.
 
-A **pixel diffusion model** works directly with the image in pixel space instead of going through a latent. Because of that, VAE reconstruction loss does not occur in the same way.
+A **pixel diffusion model** works directly with the image in pixel space instead of going through a latent. Because of that, degradation from VAE reconstruction can't happen, by design.
 
-That raises the obvious question: wasn't the latent there to reduce computation? PixelDiT handles this by splitting the image into patches, looking at the whole image roughly while drawing details on the pixel side.
+You might still wonder: wasn't the latent there to cut computation in the first place? It gets around this with tricks such as splitting the image into patches to see the overall picture roughly, rather than examining the whole image in fine detail, while drawing the details on the pixel side.
 
 ### Model Download
 
@@ -65,7 +65,7 @@ It may look as if the image is being decoded with a VAE called `pixel_space`, bu
 **PiD** is PixelDiT used in place of VAE Decode.
 
 Normally, the generated latent is passed through VAE Decode to become an image.
-With PiD, that latent is passed to PixelDiT instead, so restoration into an image and upscaling are handled together.
+PiD's fun idea is to hand that latent to PixelDiT instead and have it restore the image and upscale it in one go.
 
 For example, Z-Image-Turbo can generate a 1024×1024 latent, then send it to PiD before VAE Decode.
 With a `1024_to_4096` PiD model, the result is output as a 4096×4096 image.

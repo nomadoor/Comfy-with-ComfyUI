@@ -7,7 +7,7 @@ navId: liveportrait
 title: "LivePortrait"
 created: 2025-12-12
 updated: 2026-08-26
-summary: "在 LivePortrait 中从 1 张脸部照片控制表情和摇头"
+summary: "用 LivePortrait 控制一张人脸照片的表情和转头"
 seoTitle: "在 ComfyUI 中使用 LivePortrait：控制人脸表情与转头"
 seoDescription: "控制单张人脸照片表情和头部朝向的 LivePortrait 在 ComfyUI 中的用法。介绍用参数调整表情、从参考图编辑，以及迁移参考视频动作的 image2video / video2video。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -18,14 +18,14 @@ tags: ["talking-head"]
 
 ## 什么是 LivePortrait？
 
-[LivePortrait](https://liveportrait.github.io/) 是为了配合别的视频或参数让 1 张脸部照片动起来的 **基于关键点的 Talking Head 模型**。
+[LivePortrait](https://liveportrait.github.io/) 是一个 **基于关键点的 Talking Head 模型**，可以让一张人脸照片跟着别的视频或参数动起来。
 
-以在照片中的脸部打的关键点为线索，以 AI 1 秒几十次自动执行 Photoshop 的“液化工具”那样的印象使其变形。
+它以照片中人脸上标出的关键点为线索来变形图像，感觉就像 AI 在 1 秒内自动执行几十次 Photoshop 的“液化工具”。
 
-可以让其做与参照视频相同的表情・摇头，也可以按脸部的部件（眼・口・首的方向等）进行微调。  
-虽然没有最近使用视频生成模型的东西那样的“什么都有感”，但 **正因为不是扩散模型所以非常轻，几乎能实时让其动作** 是其巨大的特征。
+既可以让照片做出和参考视频一样的表情、转头动作，也可以按脸部的各个部位（眼睛、嘴、头的朝向等）进行微调。  
+虽然没有最近那些基于视频生成模型的方法那种“什么都能做”的感觉，但 **因为不是扩散模型，所以非常轻量，几乎可以实时驱动**，这是它的一大特点。
 
-用于装置也可以，用于“让眼睑稍微闭上”“让脸稍微朝下”等，在此微调生成的图像也相当方便。
+可以用在装置艺术上，用来微调生成的图像也相当方便，比如“让眼睛稍微闭上一点”“让脸稍微朝下一点”。
 
 ---
 
@@ -37,11 +37,11 @@ tags: ["talking-head"]
 
 ## image2image
 
-变化输入的人物图像的脸的方向・表情。  
-大体有 2 种控制方法。
+改变输入人物图像中脸的朝向和表情。  
+主要有 2 种控制方法。
 
 - 用参数调整表情
-- 设为与参照图像相同的表情
+- 做成与参考图像相同的表情
 
 ### 用参数调整表情
 
@@ -49,34 +49,34 @@ tags: ["talking-head"]
 
 [](/workflows/basic-workflows/liveportrait/liveportrait_i2i.json)
 
-- 虽然有各种参数，但试着摸一下比较快呢。
-- 像这个视频那样，使用 `▷ Run (On Change)` 比较方便。
+- 参数有很多，直接动手试试最快。
+- 像这个视频一样，使用 `▷ Run (On Change)` 会很方便。
 
-### 从参照图像编辑
+### 根据参考图像编辑
 
 ![](/media/basic-workflows/liveportrait/legacy_gyazo_0df8e012722c39159be1762a9a38ea99.png){media=image}
 
 [](/workflows/basic-workflows/liveportrait/liveportrait_i2i_ref.json)
 
-- 只是向刚才的工作流加入 `sample_image`。
-- 可以从 `sample_parts`，选择让哪个部位跟随参照图像。
+- 只是在刚才的工作流中加上 `sample_image`。
+- 可以在 `sample_parts` 中选择让哪些部位跟随参考图像。
   - `OnlyExpression` … 仅表情
-  - `OnlyRotation` … 仅脸的方向
-  - `OnlyMouth` … 仅口
-  - `OnlyEyes` … 仅眼
+  - `OnlyRotation` … 仅脸的朝向
+  - `OnlyMouth` … 仅嘴
+  - `OnlyEyes` … 仅眼睛
   - `All` … 全部
 
-让其变成参照图像的表情（方向）的基础上，也可以使用参数进行微调。
+也可以先变成参考图像的表情（朝向），再用参数进行微调。
 
 ---
 
 ## image2video
 
-把图像内的人物，依照参数或参照视频使其动作。
+让图像中的人物按照参数或参考视频动起来。
 
 ### motion_link
 
-在 `Expression Editor (PHM)` 制作好几个表情，通过让那个表情一个接一个变化可以制作视频。
+在 `Expression Editor (PHM)` 中做出几个表情，再让它们依次变化下去，就可以做成视频。
 
 ![](/media/basic-workflows/liveportrait/legacy_gyazo_adf677e141945fd7d957acb2e26c02ec.mp4){media=loop}
 
@@ -84,15 +84,15 @@ tags: ["talking-head"]
 
 - 🟨 `Advanced Live Portrait (PHM)` 节点
   - 将 `animate_without_vid` 设为 `true`
-  - 在其下的命令栏，设定对哪个表情花多少变化。
+  - 在下方的命令栏中，设置向哪个表情变化、花多少帧。
 
-命令栏的格式是如下那样的印象。
+命令栏的格式大致如下。
 
 ```text
 表情的索引 = 向那个表情“变化用的帧数”:“保持那个表情等待的帧数”
 ````
 
-例如，考虑如下写的情况。
+例如，假设写成下面这样。
 
 ```text
 1 = 1:0
@@ -103,38 +103,38 @@ tags: ["talking-head"]
 * `1 = 1:0`
 
   * 变化帧 1、等待帧 0
-  * 从这个表情开始，马上向下一个表情变化。
+  * 从这个表情开始，马上变化到下一个表情。
 * `2 = 15:0`
 
-  * 花 15 帧从 1 的表情向这个表情变化，马上移向下一个表情。
+  * 用 15 帧从表情 1 变化到这个表情，然后马上转到下一个表情。
 * `3 = 20:10`
 
-  * 花 20 帧从 2 的表情向这个表情变化，之后保持 10 帧。
+  * 用 20 帧从表情 2 变化到这个表情，之后保持 10 帧。
 
-这种情况下，能做出合计 46 帧的视频。
+这样会生成总共 46 帧的视频。
 
-### 从参照视频传送
+### 从参考视频迁移
 
-虽然上面做了稍微取巧的事，但实际上这边的使用方法才是主流。
+上面做的事情有点取巧，实际上我想这种用法才是主流。
 
 ![](/media/ai-capabilities/talking-head/legacy_gyazo_c893e38c12859f8f20ff1e0fca545788.mp4){media=loop}
 
 [](/workflows/basic-workflows/liveportrait/liveportrait_i2v_ref.json)
 
-* 🟨 只是向 `driving_images` 输入参照视频。
+* 🟨 只需把参考视频输入到 `driving_images`。
 
-将参照视频侧的表情・摇头，原样传送到输入图像。
-当然，也可以与上面的 `motion_link` 组合使用。
+参考视频中的表情和转头动作，会原样迁移到输入图像上。
+当然，也可以和上面的 `motion_link` 组合使用。
 
 ---
 
 ## video2video
 
-将视频中的人物的表情配合参照视频。
+让视频中人物的表情跟随参考视频。
 
 ![](/media/basic-workflows/liveportrait/legacy_gyazo_1a0205956e78b32045372f207582566d.mp4){media=loop}
 
 [](/workflows/basic-workflows/liveportrait/liveportrait_v2v_ref.json)
 
-- 🟨 只是将 `src_images`、 `driving_images` 双方设为视频。
-* 可以保持基础视频的运镜和背景原样，只替换人物的表情・对口型。
+- 🟨 只需把 `src_images` 和 `driving_images` 都换成视频。
+* 可以保留原视频的运镜和背景，只替换人物的表情和口型。

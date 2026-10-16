@@ -4,10 +4,10 @@ lang: zh
 section: begin-with
 slug: saving-and-loading-workflows
 navId: saving-and-loading-workflows
-title: "保存与读取 工作流"
+title: "保存与读取工作流"
 created: 2026-02-06
 updated: 2026-03-02
-summary: "关于 工作流 的保存与读取"
+summary: "关于工作流的保存与读取"
 seoTitle: "ComfyUI 工作流的保存、读取、导出"
 seoDescription: "在 ComfyUI 中打开官方模板、在浏览器内保存工作流、导出为 JSON 文件，以及从文件或生成的图像读取工作流的方法。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
@@ -23,62 +23,62 @@ hero:
 
 ---
 
-## 保存 工作流 (浏览器内)
+## 保存工作流（浏览器内）
 
-将创建的 工作流 保存在 ComfyUI 内部。
+将创建的工作流保存在 ComfyUI 内部。
 
-- 1. 点击顶部的 `工作流`，选择 `Save` 或 `Save as`
+- 1. 点击顶部的 `Workflow`，选择 `Save` 或 `Save as`
 - 2. 取一个喜欢的名字并 `Confirm`（或按 `Enter` 键）
 
-保存的 工作流 可以通过左侧边栏的文件夹图标 📂（或 `W` 键）进行调用。
+保存的工作流可以通过左侧边栏的文件夹图标 📂（或 `W` 键）打开。
 
 ![](/media/begin-with/saving-and-loading-workflows/legacy_gyazo_b9970219294a79c53a651585baa179b4.mp4){media=loop}
 
 ---
 
-## 导出 工作流 (保存为文件)
+## 导出工作流（保存为文件）
 
-将 工作流 导出为 `.json` 文件，用于分享或备份。
+将工作流导出为 `.json` 文件，用于分享或备份。
 
 ### 导出为 JSON 文件
 
-- 1. 点击顶部的 `工作流`，选择 `Export`
+- 1. 点击顶部的 `Workflow`，选择 `Export`
 - 2. 取一个喜欢的名字并 `Confirm`（或按 `Enter` 键）
 - 3. 选择保存位置进行保存
 
 ![](/media/begin-with/saving-and-loading-workflows/legacy_gyazo_e13e29d51a26ea2a29ec87cc872bf522.mp4){media=loop}
 
-### 嵌入生成的图像并保存
+### 嵌入到生成的图像中保存
 
-通过 ComfyUI 标准的图像保存节点（如 `Save Image`）生成的图像，会自动嵌入 工作流 的元数据（设置信息）。只需读取这张图片，即可还原生成时的 工作流。
+通过 ComfyUI 标准的图像保存节点（如 `Save Image`）生成的图像，会自动嵌入工作流的元数据（设置信息）。只要读取这张图像，就能还原生成时的工作流。
 
 
 ### 保存为截图
 
-如果安装了 **[ComfyUI-Custom-Scripts](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)** 等自定义节点，就可以对整个 工作流 进行截图，并在其中嵌入元数据进行保存。
+如果安装了 **[ComfyUI-Custom-Scripts](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)** 等自定义节点，就可以对整个工作流进行截图，并在其中嵌入元数据进行保存。
 
 ![](/media/begin-with/saving-and-loading-workflows/legacy_gyazo_a66d20bf36c02fa63c6cd5ab957fe4db.mp4){media=loop}
 
 
 ---
 
-## 读取 工作流
+## 读取工作流
 
-### 读取保存的 工作流
+### 读取保存的工作流
 
-打开保存在 ComfyUI 内部的 工作流。
+打开保存在 ComfyUI 内部的工作流。
 
 - 1. 点击左侧边栏的文件夹图标 📂（或 `W` 键）
-- 2. 从列表中点击想要打开的 工作流
+- 2. 从列表中点击想要打开的工作流
 
 ![](/media/begin-with/saving-and-loading-workflows/legacy_gyazo_7c2149e7af5d6f78a30c9c03ff671356.mp4){media=loop}
 
 ### 读取外部文件 (JSON / 图像)
 
-读取 PC 中的 `.json` 文件，或带有元数据的图像。
+读取电脑上的 `.json` 文件，或带有元数据的图像。
 
 **方法 A: 通过菜单**
-- 1. 点击顶部的 `工作流`，选择 `Open`（或 `Ctrl + O`）
+- 1. 点击顶部的 `Workflow`，选择 `Open`（或 `Ctrl + O`）
 - 2. 选择文件并打开
 
 **方法 B: 拖放**
@@ -89,14 +89,14 @@ hero:
 
 ### 从文本读取
 
-如果你复制了 JSON 格式的文本数据，只需在 ComfyUI 上进行粘贴（`Ctrl + V`）即可读取。
+如果你复制了 JSON 格式的文本数据，只需在 ComfyUI 上进行粘贴（`Ctrl + V`）就能读取。
 
 ![](/media/begin-with/saving-and-loading-workflows/legacy_gyazo_2df1b87e2f4771e3ea2f718b55357435.mp4){media=loop}
 
-### 😎读取本站的 工作流
+### 😎读取本站的工作流
 
-本站公开的 工作流 提供了复制按钮和下载按钮。
-只需点击复制按钮，然后直接在画布上 `Ctrl + V` 即可读取 工作流，请务必利用起来。
+本站公开的工作流提供了复制按钮和下载按钮。
+点击复制按钮，直接在画布上 `Ctrl + V` 就能读取工作流，欢迎多多使用。
 
 [](/workflows/begin-with/saving-and-loading-workflows/stable_diffusion_1_5.json)
 

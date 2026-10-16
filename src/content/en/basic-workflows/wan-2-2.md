@@ -7,7 +7,7 @@ navId: wan-2-2
 title: "Wan 2.2"
 created: 2025-12-12
 updated: 2026-03-02
-summary: "Video generation using text2video / image2video / FLF2V with Wan 2.2"
+summary: "Video generation with text2video / image2video / FLF2V in Wan 2.2"
 seoTitle: "Wan 2.2 in ComfyUI: 14B and 5B Video Workflows"
 seoDescription: "Use Wan 2.2 in ComfyUI: the 14B high/low-noise pair and TI2V-5B, with text2video, image2video, and FLF2V in easy-to-read workflows."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -18,8 +18,8 @@ tags: []
 
 ## What is Wan 2.2?
 
-Wan 2.2 is a family of video generation models that are the legitimate successors to [Wan 2.1](/en/basic-workflows/wan-2-1/).
-It consists largely of two models:
+Wan 2.2 is a family of video generation models and the true successor to [Wan 2.1](/en/basic-workflows/wan-2-1/).
+It comes in two main models:
 
 - 14B: A two-stage architecture that switches between `high_noise` and `low_noise` models.
 - 5B: A TI2V model that handles text2video and image2video with a single model + Wan 2.2 VAE.
@@ -30,7 +30,7 @@ It consists largely of two models:
 
 Wan 2.2-A14B has a two-stage pipeline where the `high_noise` model handles the first half of sampling and the `low_noise` model handles the second half.
 
-By dividing it into two models, the model size is doubled to improve performance without increasing VRAM usage compared to Wan 2.1.
+Splitting it into two models lets them double the model size for better performance without using more VRAM than Wan 2.1.
 
 ### Recommended Settings
 
@@ -39,8 +39,8 @@ By dividing it into two models, the model size is doubled to improve performance
 - Maximum Number of Frames
   - 81 frames
 - FPS
-  - Often output around 16fps
-  - However, since 16fps often results in slow-motion video, adjust it by saving at 24fps or dropping frames.
+  - Output is usually around 16fps
+  - At 16fps, though, the video often looks like slow motion, so save it at 24fps or drop frames to adjust.
 
 ### Model Download
 
@@ -84,11 +84,11 @@ Use KSampler Advanced to process the first half with the `high_noise` model and 
 
 [](/workflows/basic-workflows/wan-2-2/wan2_2_text2video_14b.json)
 
-- 🟩 Specify at which step out of the total 20 steps to switch from `high_noise` -> `low_noise`.
-  - As for the timing of this switch, it is recommended that the **ratio of "non-noise parts" to "noise parts"** be `1 : 1`.
-  - Although it is possible to calculate this, it is difficult because Sampler / Scheduler / sigma_shift / number of steps are all intertwined.
-  - Also, perfectly matching this does not necessarily mean it is optimal.
-  - In this workflow, we switch at 4 steps, but please try experimenting with this as a baseline.
+- 🟩 Set the step, out of 20 in total, at which to switch from `high_noise` -> `low_noise`.
+  - The official recommendation is to switch when the **ratio of "non-noise" to "noise"** is `1 : 1`.
+  - You can calculate this, but it's tricky because the Sampler / Scheduler / sigma_shift / step count all affect each other.
+  - And hitting it exactly isn't guaranteed to give the best result anyway.
+  - This workflow switches at step 4. Start from there and try different values.
 - 🟨🟥 The text encoder and VAE are the same as Wan 2.1.
 
 ---
@@ -99,7 +99,7 @@ Use KSampler Advanced to process the first half with the `high_noise` model and 
 
 [](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_14b.json)
 
-- 🟦 Input the start image into the `WanImageToVideo` node.
+- 🟦 Input the start image into a `WanImageToVideo`-type node.
 - Unlike Wan 2.1, Wan 2.2 **does not use** `clip_vision`.
 
 ---
@@ -120,12 +120,12 @@ In ComfyUI, you can generate a video that interpolates between two images simply
 
 ## Wan 2.2 5B Model (TI2V-5B)
 
-Wan 2.2-TI2V-5B is a TI2V model that handles both text2video and image2video with a single model.
-By combining a higher compression VAE and patchification processing, it can generate **720p, 24fps, ~5 second videos with lighter computational cost than 14B**.
+Wan 2.2-TI2V-5B is a TI2V model that handles both text2video and image2video in one model.
+By combining a more highly compressed VAE with patchification, it can generate **~5 second, 720p, 24fps videos at a lower compute cost than 14B**.
 
-Rather than being a 1.3B-like scaled-down version of 14B, it is better to think of it as a line with a fundamentally different design.
+Rather than a scaled-down version of 14B, like 1.3B was, it's better to think of it as a separate line with a more fundamentally different design.
 
-The design is interesting, but unfortunately, it cannot beat 14B in performance, and in reality, it is rarely used.
+The design is interesting, but unfortunately it still can't beat 14B on quality, and in practice hardly anyone uses it.
 
 ### Recommended Settings
 
@@ -164,14 +164,14 @@ Placement example:
 
 [](/workflows/basic-workflows/wan-2-2/wan2_2_text2video_5b.json)
 
-In 5B text2video, the video is generated internally via the "first frame latent".
+In 5B text2video, the video is generated internally by way of a "first frame latent".
 
-- 🟥 Use `wan2.2_vae` for VAE.
-  Since the compression structure is different from Wan 2.1 VAE, failing to replace it will cause significant degradation in image quality and movement.
+- 🟥 Use `wan2.2_vae` for the VAE.
+  Its compression scheme is different from the Wan 2.1 VAE, so if you forget to swap it, image quality and motion fall apart badly.
 - 🟩 Even for text2video, insert a latent node for TI2V (e.g., `Wan22ImageToVideoLatent`).
-  Since 5B is designed based on the "1 frame latent -> video" pipeline, a configuration that skips this step is not envisaged.
+  5B is designed around a "1 frame latent -> video" pipeline, so setups that skip this step aren't expected to work.
 
-If you understand it as "text2video, but essentially a special case of image2video", it will be easier to organize along with other TI2V models.
+Thinking of it as "text2video, but really a special case of image2video" should make it easier to fit together with other TI2V models.
 
 ### image2video (5B)
 
@@ -180,10 +180,10 @@ If you understand it as "text2video, but essentially a special case of image2vid
 [](/workflows/basic-workflows/wan-2-2/wan2_2_image2video_5b.json)
 
 image2video also uses the same TI2V model as text2video.
-Only the input increases, and the subsequent steps from KSampler onwards are almost common.
+There's just one more input; everything from the KSampler onward is almost the same.
 
 - 🟦 Input the start image into the latent node for TI2V to create a compressed latent.
-- 🟩 Since both text2video / image2video can be done with the same model, it is easy to solidify the workflow with 5B first and then add 14B as needed.
+- 🟩 Since text2video and image2video both run on the same model, it's easy to settle your workflow with 5B first and then add 14B as needed.
 
 ---
 

@@ -7,7 +7,7 @@ navId: mask-alpha
 title: "Mask & Alpha Channel"
 created: 2025-11-25
 updated: 2026-03-02
-summary: "Concept of mask and handling of transparent images"
+summary: "What masks are and how transparent images are handled"
 seoTitle: "Masks and Alpha Channels in ComfyUI"
 seoDescription: "How ComfyUI handles masks and transparency: what masks mean, the alpha channel, differences from other apps, joining and splitting RGBA, and common errors."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -19,63 +19,63 @@ hero:
 
 ![](/media/data-utilities/mask-alpha/legacy_gyazo_bd1a30f0d9562418f2fd74c7d9dd6f1e.png){media=image}
 
-A mask is a black and white image for instructing **"whether to target / exclude"** a part of the image for processing.
+A mask is a black-and-white image that tells a process which parts of an image to **include or exclude**.
 
 - **White**: Process (Apply)
 - **Black**: Do not process (Protect)
-- **Gray**: Adjust intensity (* Depending on the function)
+- **Gray**: Adjusts the strength (*depends on the feature)
 
-### Mask in AI
+### Masks in AI
 
 ![](/media/data-utilities/mask-alpha/legacy_gyazo_3b4d37c9bb4a46d514f2fc77234718f8.png){media=image}
 
-In image generation AI, it is mainly used in **Inpainting** to redraw only a part of the image.
+In image generation AI, masks are mainly used for **Inpainting**, which redraws only part of an image.
 
-AI regenerates only the white part, and leaves the black part as the original image.
+The AI regenerates only the white areas and leaves the black areas as they were in the original image.
 
 > [!WARNING]
-> Normal Inpainting cannot handle gray (translucent) masks, so it is arbitrarily processed as binary of white or black.
+> Regular Inpainting can't handle gray (semi-transparent) masks, so they get treated as either white or black anyway.
 >
-> If you want to do something like "change lightly" using a mask with gradation, you need a special technique called **Differential Diffusion**.
+> If you want to use a gradient mask to, say, "change things just slightly," you need a special technique called **Differential Diffusion**.
 
 ---
 
-## What is Output Channel?
+## What is an Alpha Channel?
 
 ![](/media/data-utilities/mask-alpha/legacy_gyazo_cf9be566f77d85571b29a2b5597121cb.png){media=image}
 
-Normal images express colors with three channels: **R (Red), G (Green), B (Blue)**, but images with transparent backgrounds (such as PNG) contain an additional channel called **A (Alpha)**.
-This is the information governing transparency.
+Regular images represent color with three channels, **R (Red), G (Green), and B (Blue)**, but images with a transparent background (such as PNGs) also contain a channel called **A (Alpha)**.
+This is the channel that holds transparency.
 
-### Handling of Transparent Images in ComfyUI
+### How ComfyUI Handles Transparent Images
 
-This is a slightly confusing point, but Stable Diffusion itself cannot directly handle transparent images.
-Therefore, when you load a transparent PNG image into ComfyUI, it is internally separated into two: **"RGB Image" and "Mask"**.
+This is where it gets a little confusing: Stable Diffusion itself can't work with transparent images directly.
+So when you load a transparent PNG into ComfyUI, it is split internally into two parts: an **RGB image and a mask**.
 
 ![](/media/data-utilities/mask-alpha/legacy_gyazo_dbe187645fd186d20f936f226a79b926.png){media=image}
 
 Let's look at the output of the `Load Image` node.
 
 - **IMAGE (RGB)**
-  - Since the alpha channel information disappears, the transparent part is filled with **black**.
+  - The alpha channel is dropped, so transparent areas are filled with **black**.
 - **MASK**
-  - The alpha channel (transparency) information is extracted.
-  - In ComfyUI, **the transparent part is expressed as "White"**.
+  - The alpha channel (transparency) is extracted.
+  - In ComfyUI, **transparent areas become white**.
 
-### Beware of differences from general software
+### How This Differs from Other Software
 
 ![](/media/data-utilities/mask-alpha/legacy_gyazo_e3ba8dcc1452e3ed88512250b0c81d06.png){media=image}
 
 
-In many software, masks are created as "transparent part = black", so people accustomed to image editing software such as Photoshop and Affinity Photo may be confused, but please consider it as a different thing.
+Many apps create masks with transparent areas as black, so if you're used to image editors like Photoshop or Affinity Photo, this may be confusing. Just think of it as a different convention.
 
-It will be easy to understand if you follow the flow: Part to process is white part of mask → Alpha channel is added to white part and becomes transparent image.
+It's easier to follow if you think of it as a flow: the white part of the mask is what gets processed → the alpha channel is applied to the white part, making it transparent.
 
 ---
 
 ## Joining and Splitting RGBA
 
-How can I save it with the background transparent again after processing is finished?
+So what if you want to save the result with a transparent background again after processing?
 
 ![](/media/data-utilities/mask-alpha/legacy_gyazo_b05103b1633b9a4b0fbfdd96063499c2.png){media=image}
 
@@ -83,26 +83,26 @@ How can I save it with the background transparent again after processing is fini
 
 ### 🟨Join Image With Alpha Node
 
-Combines `IMAGE` (RGB image) and `MASK` to convert it into a single **RGBA image (transparent image)**.
-If you connect this to the `Save Image` node, you can save it as a transparent PNG.
+Combines an `IMAGE` (RGB image) and a `MASK` into a single **RGBA image (transparent image)**.
+Connect it to a `Save Image` node to save it as a transparent PNG.
 
 ### 🟪Split Image With Alpha Node
 
-Conversely, it is a node that separates an RGBA image into RGB and MASK.
+The reverse: this node splits an RGBA image into RGB and MASK.
 
 ---
 
-## 🚨 Error Trap: Confusion of RGBA and RGB
+## 🚨 Error Trap: Mixing Up RGBA and RGB
 
-On the wire of ComfyUI, both RGB image (3 channels) and RGBA image (4 channels) flow as the same **`IMAGE`** type. You can't tell by looking.
+On ComfyUI wires, RGB images (3 channels) and RGBA images (4 channels) both travel as the same **`IMAGE`** type. You can't tell them apart by looking.
 
-However, AI (KSampler and VAE) basically accepts only 3-channel RGB images.
-Therefore, if you inadvertently connect an RGBA image after `Join Image With Alpha` to `VAE Encode` etc., the following error will appear.
+But the AI parts (KSampler and VAE) basically only accept 3-channel RGB images.
+So if you accidentally connect an RGBA image from `Join Image With Alpha` to something like `VAE Encode`, you'll get an error like this:
 
 ```bash
 RuntimeError: Given groups=1, ... expected input to have 3 channels, but got 4 channels instead
 ```
 
-If you get scolded saying "I expected 3 channels but 4 channels came!", please suspect if the image is RGBA somewhere.
+If ComfyUI yells at you with "I expected 3 channels but got 4!", check whether your image turned into RGBA somewhere along the way.
 
-Custom nodes for background clipping etc. may output RGBA suddenly.
+Custom nodes for things like background removal sometimes output RGBA without warning.

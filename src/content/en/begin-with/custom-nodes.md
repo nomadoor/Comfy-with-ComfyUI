@@ -17,27 +17,27 @@ hero:
 
 ## What are Custom Nodes?
 
-They are sometimes called "MODs" or "plugins" in other software, but they are like plugins that add functions not in default.
+Other software might call them "mods" or "plugins": they're basically plugins that add features ComfyUI doesn't have out of the box.
 
-It is one of the features that make ComfyUI powerful, such as supporting AI models not usable by default, summarizing complex processing into one node, or making the design cool.
+They can add support for AI models you can't use by default, pack complex processing into a single node, or even just make the design look cooler. They're one of the things that make ComfyUI so powerful.
 
 ---
 
 ## Risks of Custom Nodes
 
-They are very convenient, but you should remember that **the probability of encountering trouble increases as you install more**.
+They're very handy, but keep in mind that **the more you install, the more likely you are to run into trouble**.
 
-- Nodes are incompatible causing errors
-- The author stops updating, and it stops working with new ComfyUI
-- Possibility of containing malicious code (not zero)
+- Nodes conflict with each other and cause errors
+- The author stops updating it, and it breaks on newer ComfyUI
+- It might contain malicious code (the chance isn't zero)
 
-Of course, there are many technologies that cannot be used without installing custom nodes, so we will introduce them as appropriate, but please do not forget that **"less is better"**.
+Of course, plenty of techniques can't be used without custom nodes, so we'll install them as needed. Just don't forget that **"the fewer, the better"**.
 
 ---
 
 ## Installing Custom Nodes
 
-Basically, install from **ComfyUI Manager**.
+Normally, you install them from **ComfyUI Manager**.
 
 ### Using ComfyUI Manager (Recommended)
 
@@ -47,16 +47,16 @@ Basically, install from **ComfyUI Manager**.
    - If ComfyUI Manager is not installed yet, please refer to [ComfyUI Manager](/en/begin-with/comfyui-manager/) to install it.
 2. Click `Manager` in the menu
 3. Click `Custom Nodes Manager`
-4. Enter the node name in the search bar to search
-5. Click `Install` (Version is usually `latest` OK)
+4. Search for the node name in the search bar
+5. Click `Install` (`latest` is usually fine for the version)
 6. Click `Restart` to restart ComfyUI
 
 ### Installing Manually
 
-Perform this when it is not in Manager or when you want to use the latest version under development.
+Do this when a node isn't in Manager, or when you want the latest development version.
 
-1. Move to `ComfyUI/custom_nodes` folder in terminal
-2. Download the repository with `git clone` command
+1. In a terminal, go to the `ComfyUI/custom_nodes` folder
+2. Download the repository with `git clone`
    ```powershell
    cd ComfyUI/custom_nodes
    git clone https://github.com/username/repository-name.git
@@ -77,9 +77,9 @@ Perform this when it is not in Manager or when you want to use the latest versio
 
 ---
 
-## Custom Nodes you should install for now
+## Custom Nodes to Install Right Away
 
-We basically build with default nodes, but since there are things missing for everyday use, please install the following nodes.
+We mostly build with the default nodes, but some things you'll need every day just aren't there, so please install these.
 
 - **[kijai/ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes)**
   - Many utility functions, video generation assistance
@@ -93,25 +93,25 @@ We basically build with default nodes, but since there are things missing for ev
 - **[rgthree/rgthree-comfy](https://github.com/rgthree/rgthree-comfy)**
   - Comparison slider, Nested folder display, Advanced calculation
 - **[crystian/ComfyUI-Crystools](https://github.com/crystian/ComfyUI-Crystools)**
-  - Resource monitor
+  - A resource monitor that shows CPU, RAM, GPU, VRAM, and more in real time
 
 ---
 
 ## ComfyUI Native vs Wrapper
 
-You don't need to remember much, but there are broadly two types of custom nodes.
+You don't really need to remember this, but custom nodes broadly come in two types.
 
 ### 1. ComfyUI Native
 
-As mentioned a little in [What is ComfyUI?](/en/begin-with/what-is-comfyui/), the true value of ComfyUI lies in **optimization** that allows AI models to run comfortably even on home PCs.
+As I touched on in [What is ComfyUI?](/en/begin-with/what-is-comfyui/), ComfyUI's real strength is its **optimization**, which lets AI models run comfortably even on home PCs.
 
-Custom nodes that utilize this core function are called ComfyUI native, and can utilize ComfyUI's strengths.
+Custom nodes built on this core are called ComfyUI native, and they get the full benefit of those strengths.
 
 ### 2. Wrapper
 
-It is a node that **wraps** external code to run on ComfyUI.
+These are nodes that **wrap** external code so it runs on ComfyUI.
 
-It is often made to run research code etc. as is on ComfyUI.
-Optimization is often not advanced, and it tends to be unstable, such as being heavy or prone to errors.
+They're often made to run things like research code on ComfyUI more or less as is.
+They're often not well optimized, and tend to be unstable: heavy, or prone to errors.
 
-Of course, there are many technologies that can only be used with wrappers, and many implementations have their own optimization processing. While being deeply grateful to the developers, it is better to use it as a test operation.
+Of course, many techniques are only available through wrappers, and many implementations do their own optimization. Be deeply grateful to the developers, but it's best to treat them as something for testing.

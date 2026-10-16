@@ -7,7 +7,7 @@ navId: auraflow
 title: "AuraFlow"
 created: 2025-12-09
 updated: 2026-03-02
-summary: "AuraFlow 和 Pony V7 的粗略整理"
+summary: "简单梳理 AuraFlow 和 Pony V7"
 seoTitle: "在 ComfyUI 中使用 AuraFlow 与 Pony V7"
 seoDescription: "fal.ai 开发的轻量 flow 式 text2image 模型 AuraFlow，以及基于它的动漫模型 Pony V7 在 ComfyUI 中的用法，附模型下载与 text2image 工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -18,13 +18,13 @@ tags: []
 
 ## 什么是 AuraFlow
 
-[AuraFlow](https://blog.fal.ai/auraflow/) 是 fal.ai 开发的 **flow 基础的 text2image 模型**。以 Apache-2.0 许可证公开，特征是轻量且易于处理。
+[AuraFlow](https://blog.fal.ai/auraflow/) 是 fal.ai 开发的 **基于 flow 的 text2image 模型**。它以 Apache-2.0 许可证公开，特点是轻量、好上手。
 
-也有一些从 SDXL 移行的动作，这里也介绍作为那个代表例的 **Pony V7**。
+也有一些模型打算从 SDXL 转移到它上面，这里也介绍其中的代表 **Pony V7**。
 
 ---
 
-## 模型的下载
+## 下载模型
 
 最新版是 **AuraFlow v0.3**。
 
@@ -41,7 +41,7 @@ tags: []
 
 ## text2image
 
-基本的组建方法与 SD1.5 / SDXL 几乎相同。
+基本的搭法和 SD1.5 / SDXL 几乎一样。
 
 ![](/media/basic-workflows/auraflow/legacy_gyazo_b19fda7dcd1fd17b91e2f0eea9d70c8c.png){media=image}
 
@@ -49,11 +49,11 @@ tags: []
 
 ---
 
-## Pony V7 : AuraFlow 基础的动漫系模型
+## Pony V7 : 基于 AuraFlow 的动漫模型
 
-作为 [Pony Diffusion V6 XL](/zh/basic-workflows/sdxl-anime/#pony-diffusion-v6-xl) 的后继制作的，AuraFlow 基础的动漫面向模型。
+作为 [Pony Diffusion V6 XL](/zh/basic-workflows/sdxl-anime/#pony-diffusion-v6-xl) 的后继，基于 AuraFlow 打造的动漫模型。
 
-### 模型的下载
+### 下载模型
 
 - diffusion_model  
   - [pony-v7-base.safetensors](https://huggingface.co/purplesmartai/pony-v7-base/blob/main/safetensor/pony-v7-base.safetensors)
@@ -80,6 +80,6 @@ tags: []
 [](/workflows/basic-workflows/auraflow/pony_v7_base.json)
 
 - 🟦 `T5TokenizerOptions`  
-  - 令牌数在设定值以下的情况下用 padding 填充的节点。放不放都没有大差别。
-- 官方工作流是 `euler_normal`，但因为线条容易乱，所以这里使用了 **CFG++（改良版 CFG 引导）**。  
-  - 平滑调整传统的 CFG 的东西，线条更容易安定。
+  - 当 token 数少于设定值时，用 padding 补齐的节点。加不加都没有太大差别。
+- 官方工作流用的是 `euler_normal`，但线条容易乱，所以这里改用了 **CFG++（改良版 CFG 引导）**。  
+  - 它会把传统的 CFG 调得更平滑，线条更容易稳定。

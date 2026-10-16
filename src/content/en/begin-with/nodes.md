@@ -7,7 +7,7 @@ navId: nodes
 title: "Nodes"
 created: 2025-11-24
 updated: 2026-03-02
-summary: "About Nodes"
+summary: "Basic node operations"
 seoTitle: "ComfyUI Nodes: Add, Connect, Copy, and More"
 seoDescription: "Basic ComfyUI node operations: add nodes by search, menu, or dragging from a pin, connect and rewire, and select, delete, copy, collapse, or pin nodes."
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
@@ -20,19 +20,19 @@ hero:
 
 ### Search and Add (Recommended)
 
-- Double click on canvas -> Enter in search box
-- Click the desired node, or select with arrow keys and `Enter`
+- Double-click on the canvas -> type in the search box
+- Click the node you want, or select it with the arrow keys and press `Enter`
 
-Clicking the icon next to the search bar opens a filter. You can narrow down by data type or included custom nodes.
+Click the icon next to the search box to open the filters. You can narrow results by data type or by the custom node pack they come from.
 
 > [!NOTE]
-> You have to memorize what nodes exist. Let's do our best to learn!!
+> There's no way around it: you just have to learn which nodes exist. Hang in there!!
 
 ![](/media/begin-with/nodes/legacy_gyazo_b0571db1685d43d84739aeac7559abc8.mp4){media=loop}
 
 ### Add from Menu
 
-- Right click on canvas -> `Add Node` -> Find node and click
+- Right-click on the canvas -> `Add Node` -> find the node and click it
 
 ![](/media/begin-with/nodes/legacy_gyazo_ef2cca44a8446a84d9722578e97becbc.mp4){media=loop}
 
@@ -40,7 +40,7 @@ Clicking the icon next to the search bar opens a filter. You can narrow down by 
 ### Add from Connectable Nodes
 
 - Drag from a pin and release on the canvas
-- A search window appears, but it is displayed with a filter applied by data type
+- A search box appears, already filtered by data type
 
 ![](/media/begin-with/nodes/legacy_gyazo_89de8c5d0c26473008ed7b65c6d62f71.mp4){media=loop}
 
@@ -48,7 +48,7 @@ Clicking the icon next to the search bar opens a filter. You can narrow down by 
 ### Add from Connectable Nodes (Legacy)
 
 - Drag from a pin and release on the canvas **while holding Shift**
-- Select from the displayed list (Since there is a display limit, search from `Search` if not found)
+- Pick from the list that appears (it only shows a limited number, so use `Search` if you can't find it)
 
 ![](/media/begin-with/nodes/legacy_gyazo_7fd0db2ee2795630a82eff60f59dc967.mp4){media=loop}
 
@@ -57,14 +57,14 @@ Clicking the icon next to the search bar opens a filter. You can narrow down by 
 ## Connecting Nodes
 
 - Drag from pin to pin
-- Even if you don't align exactly with the pin, it will automatically snap just by dragging onto the node.
+- You don't have to hit the pin exactly: just drag onto the node and it snaps into place.
 
 ![](/media/begin-with/nodes/legacy_gyazo_b8d64b7c5ff3ec72eab34d230b18220f.mp4){media=loop}
 
 ### Changing Connections
 
 - Drag from pin to pin while holding `Shift`
-- If there are already connected lines, you can reconnect them all at once.
+- If links are already connected, you can move them all to the new pin at once.
 
 ![](/media/begin-with/nodes/legacy_gyazo_bd765ab5d368f0ea62bd9f6752bbd511.mp4){media=loop}
 
@@ -74,23 +74,23 @@ Clicking the icon next to the search bar opens a filter. You can narrow down by 
 
 ### Selection and Movement
 
-- **Multiple Selection**: `Shift` or `Ctrl` + Left Click
-- **Range Selection**: `Ctrl` + Drag
-- **Move**: Drag while selected
+- **Select multiple**: `Shift` or `Ctrl` + left-click
+- **Box select**: `Ctrl` + drag
+- **Move**: Drag the selection
 
 ![](/media/begin-with/nodes/legacy_gyazo_ec2d834b60c0fdc243fe12298f2a849d.mp4){media=loop}
 
 ### Deletion
 
-- Select node and `Delete` key
-- Or click `🗑️` in `Node Selection Toolbox`
+- Select the node and press `Delete`
+- Or click `🗑️` in the `Node Selection Toolbox`
 
 ![](/media/begin-with/nodes/legacy_gyazo_38bdfe83ae6bbbff8f063bed7936edfe.mp4){media=loop}
 
 ### Copy & Paste
 
-- **Normal Copy**: `Ctrl + C` -> `Ctrl + V`
-- **Paste Maintaining Connections**: `Ctrl + C` -> `Ctrl + Shift + V`
+- **Regular copy**: `Ctrl + C` -> `Ctrl + V`
+- **Paste with connections kept**: `Ctrl + C` -> `Ctrl + Shift + V`
 - **Duplicate**: Drag while holding `Alt`
 
 ![](/media/begin-with/nodes/legacy_gyazo_3898dc47a12c5d95d8f81093bdf5bfb7.mp4){media=loop}
@@ -98,44 +98,44 @@ Clicking the icon next to the search bar opens a filter. You can narrow down by 
 ### Collapse
 
 - Click `⚫` at the top left of the node
-- While collapsed, new connections or disconnections cannot be made.
+- While a node is collapsed, you can't connect or disconnect links.
 
 ![](/media/begin-with/nodes/legacy_gyazo_cc2fb21c796ea9a872dd9b25fdf317c0.mp4){media=loop}
 
 ### Pinning (Fixing)
 
-Fix the node so it doesn't move.
+Locks the node in place so it can't be moved.
 
-- Select node and `P` key
+- Select the node and press `P`
 
 ![](/media/begin-with/nodes/legacy_gyazo_e18df835c4248220e5c8a0c2d021dacd.mp4){media=loop}
 
 ### Reset Parameters
 
-- Right click node -> `Fix node(recreate)`
+- Right-click the node -> `Fix node(recreate)`
 
 ![](/media/begin-with/nodes/legacy_gyazo_b1fec4d60d74acb79b6ef2c56db4e6ab.mp4){media=loop}
 
 ### Node Info
 
-Check detailed information of the node.
+Shows details about the node.
 
-- Click `ℹ️` in `Node Selection Toolbox`
-- You can see which Python file defines the node. Useful for debugging errors.
+- Click `ℹ️` in the `Node Selection Toolbox`
+- You can see things like which Python file defines the node. Handy for debugging errors.
 
 ### Changing Node Color
 
-Changing the background color of the node and color-coding by role makes it easier to see.
+Changing node background colors to color-code them by role makes a workflow easier to read.
 
-- Click `🎨 (Color)` in `Node Selection Toolbox` and select a color
+- Click `🎨 (Color)` in the `Node Selection Toolbox` and pick a color
 
 ![](/media/begin-with/nodes/legacy_gyazo_57d95f8586bdda17ed96855cbac37af8.mp4){media=loop}
 
 ### Changing Node Title
 
-Change the display name (title) of the node.
+Changes the node's display name (title).
 
-- Double click node -> Enter desired name and `Enter`
+- Double-click the node -> type any name you like and press `Enter`
 
 ![](/media/begin-with/nodes/legacy_gyazo_6d04c3d29e18e2ef5327c438264ff3d0.mp4){media=loop}
 
@@ -144,19 +144,19 @@ Change the display name (title) of the node.
 
 ## Reroute Node
 
-Used to organize workflow wiring.
+Used to tidy up the wiring in a workflow.
 
-- Search and add
-- Add by middle clicking on a point
+- Search for it and add it
+- Middle-click a point to add one
 
 ![](/media/begin-with/nodes/legacy_gyazo_86de60d6b6959f5448dcfaad42178fcb.mp4){media=loop}
 
 
 ### Dot Type Reroute
 
-The Reroute node existed as a single node, but this one is not a node but sets a passing point for the line.
+The Reroute node is a standalone node, but this one isn't a node at all: it just sets a point the link passes through.
 
-- `Alt + Left Click` on a point on the line
+- `Alt + Left Click` a point on the link
 
 ![](/media/begin-with/nodes/legacy_gyazo_cac43ac8b7fef76a4cdb0ff5d83bd1c7.mp4){media=loop}
 
@@ -166,26 +166,26 @@ The Reroute node existed as a single node, but this one is not a node but sets a
 
 ### Bypass
 
-Continues processing **ignoring** that node.
+Processing continues, **skipping** that node.
 
-- Select node and `Ctrl + B`
-- Click `🔀` in `Node Selection Toolbox`
+- Select the node and press `Ctrl + B`
+- Click `🔀` in the `Node Selection Toolbox`
 
 ![](/media/begin-with/nodes/legacy_gyazo_4ab6605bdd97ee8cae5b4403057a38e5.mp4){media=loop}
 
 ### Mute
 
-**Stops** processing at that node.
+Processing **stops** at that node.
 
-- Select node and `Ctrl + M`
-- Or Right click -> `Mode` -> `Never`
+- Select the node and press `Ctrl + M`
+- Or right-click -> `Mode` -> `Never`
 
 > [!NOTE]
-> **About the difference**
-> - **Bypass**: Pretends "this node didn't exist" and tries to connect the preceding and succeeding nodes directly.
-> - **Mute**: Makes it a "dead end here".
+> **The difference**
+> - **Bypass**: Treats the node as if "it wasn't there" and tries to connect the nodes before and after it directly.
+> - **Mute**: Makes it "a dead end here".
 >
-> Actually, mute is rarely used. It is common to bypass all unused nodes.
+> In practice, mute isn't used much. Most people just bypass every node they're not using.
 
 ![](/media/begin-with/nodes/legacy_gyazo_5d96054e7b54a62b3a446a28d70212d6.png){media=image}
 
@@ -193,21 +193,21 @@ Continues processing **ignoring** that node.
 
 ## Converting to External Input
 
-Converts the input field (widget) to pin input so that values can be passed from other nodes.
+Turns an input field (widget) into a pin input so other nodes can pass it a value.
 
-- **Convert**: Move the cursor next to a parameter without a pin, and a connection point appears.
-- **Revert**: Disconnect the connected line, and it automatically returns to the original input field.
+- **Convert**: Hover next to a parameter that has no pin, and a connection point appears.
+- **Revert**: Disconnect the link, and it automatically goes back to a regular input field.
 
 ![](/media/begin-with/nodes/legacy_gyazo_80e1bb9211082f4d89a2a85d5abd78c2.mp4){media=loop}
 
 ### Primitive Node
 
-A versatile node that can be used as input for any type. It changes dynamically according to the connected type.
+An all-purpose node that can feed an input of any type. It changes dynamically to match whatever it's connected to.
 
 > [!WARNING]
-> Because it adapts to the connected type, it cannot be used in combination with reroute nodes.
+> Because it adapts to the type it's connected to, it can't be used together with reroute nodes.
 >
-> Currently, it is recommended to use typed nodes such as `int node`, `float node`, `string node`.
+> These days, I recommend using nodes with a fixed type, such as `int node`, `float node`, and `string node`.
 
 ![](/media/begin-with/nodes/legacy_gyazo_e0a056e9c112028930466701e22afd10.mp4){media=loop}
 
@@ -219,9 +219,9 @@ A versatile node that can be used as input for any type. It changes dynamically 
 
 ## Organizing Nodes
 
-Select multiple nodes and click `⋮` in `Node Selection Toolbox`.
+Select multiple nodes and click `⋮` in the `Node Selection Toolbox`.
 
-- **Align Selected To**: Aligns selected nodes (Top align, Left align, etc.).
-- **Distribute Nodes**: Arranges selected nodes at equal intervals.
+- **Align Selected To**: Lines up the selected nodes (top, left, and so on).
+- **Distribute Nodes**: Spaces the selected nodes evenly.
 
 ![](/media/begin-with/nodes/legacy_gyazo_6bb992414f853ea57c7182cde11933f8.mp4){media=loop}

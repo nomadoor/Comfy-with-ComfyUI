@@ -7,7 +7,7 @@ navId: wan-2-1
 title: "Wan 2.1"
 created: 2025-12-12
 updated: 2026-03-02
-summary: "Basic workflow for handling text2video, image2video, and FLF2V with Wan2.1"
+summary: "Basic workflows for text2video, image2video, and FLF2V with Wan2.1"
 seoTitle: "Wan 2.1 in ComfyUI: text2video, image2video, FLF2V"
 seoDescription: "Use Alibaba's Wan 2.1 in ComfyUI: settings, model downloads, text2video, image2video, FLF2V (first and last frame), and fast Self Forcing."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -20,14 +20,14 @@ tags: []
 
 **Wan2.1** is an open-source video generation model developed by Alibaba.
 
-It is an impressive model that can be said to be the catalyst for full-scale video generation in the open-source community.
+It's a memorable model: you could say it's the one that got serious video generation going in the open-source world.
 
 It supports three modes: text2video, image2video, and FLF2V.
 It can also be used as an image generation model by generating only 1 frame.
 
-Although it is a minor detail, this does not mean that "video generation includes image generation", but rather that it is **a video generation model designed from the start to be capable of image generation as well**.
+This is a fine point, but it's not that "video generation happens to include image generation". It's **a video generation model designed from the start to do image generation too**.
 
-Two model sizes, 1.3B and 14B, are available, but since 1.3B lacks performance and is rarely used, we will only use 14B here.
+It comes in two sizes, 1.3B and 14B. The 1.3B model just isn't capable enough and hardly anyone uses it, so this page only uses 14B.
 
 ---
 
@@ -38,9 +38,9 @@ Two model sizes, 1.3B and 14B, are available, but since 1.3B lacks performance a
 - Maximum Number of Frames
   - 81 frames
 - FPS
-  - Often output around 16fps
+  - Output is usually around 16fps
 
-Since 16fps often results in slow-motion video, adjust it by saving at 24fps or dropping frames.
+At 16fps the video often looks like slow motion, so save it at 24fps or drop frames to adjust.
 
 ---
 
@@ -77,7 +77,7 @@ Since 16fps often results in slow-motion video, adjust it by saving at 24fps or 
 ```
 
 > [!TIP]
-> If you want to use the fp16 / bf16 version, please read the file names above as needed. The basic placement path is the same.
+> If you want the fp16 / bf16 versions, swap in those file names for the fp8 ones above. They go in the same folders.
 
 ---
 
@@ -89,16 +89,16 @@ This is the basic text2video workflow for Wan2.1.
 
 [](/workflows/basic-workflows/wan-2-1/wan2_1_text2video_14b.json)
 
-- 🟦 `Shift` in the `ModelSamplingSD3` node is a parameter that affects the magnitude of movement.
+- 🟦 `Shift` in the `ModelSamplingSD3` node controls how much movement you get.
 
-  - Moving it up increases the camera work and changes in the subject, but if it is too high, it causes collapse. For now, leaving it at `8` should be fine.
+  - Higher values mean bigger camera moves and more change in the subject, but too high and things start to break down. Leaving it at `8` should be fine for now.
   - cf. [Wan2.1 parameter sweep](https://replicate.com/blog/wan-21-parameter-sweep#what-is-shift)
 
 ---
 
 ### Quality Improvement Techniques
 
-Although it is not noticeably different, a technology that improves quality with almost no downside is implemented as a core node, so let's use it.
+The difference isn't something you'd really notice, but these techniques improve quality with almost no downside and are available as core nodes, so you might as well use them.
 
 ![](/media/basic-workflows/wan-2-1/legacy_gyazo_02c625103e8076b8a1f14046839e1ff9.mp4){media=loop}
 
@@ -139,7 +139,7 @@ Give two images and generate a video so that the gap between them is filled natu
 
 ## Self Forcing (Fast Generation)
 
-This is originally a technique for real-time video generation, but in ComfyUI, we use it as a speed-up method by simply generating a few steps.
+It was originally a technique for real-time video generation, but in ComfyUI we just use it as a speed-up: generating in a few steps.
 
 ### Model Download
 
@@ -162,18 +162,18 @@ This is originally a technique for real-time video generation, but in ComfyUI, w
 
 [](/workflows/basic-workflows/wan-2-1/wan2_1_text2video_14b_self_forcing.json)
 
-- Load LoRA with the `LoraLoaderModelOnly` node.
+- Load the LoRA with the `LoraLoaderModelOnly` node.
 - Set `steps` in `KSampler` to 4 - 8 and `CFG` to 1.0.
 
 > [!NOTE]
-> Self Forcing is an option for "when you want to run it fast anyway".
-> Degradation is large, although not unacceptable.
+> Self Forcing is the option for when you just want it fast.
+> The quality loss is significant, though not to the point of being unacceptable.
 
 ---
 
 ## Image Generation
 
-Simply generate a video with **1 frame** using the text2video workflow.
+Just use the text2video workflow and **generate a 1-frame video**.
 
 ![](/media/basic-workflows/wan-2-1/legacy_gyazo_edf26ea1ef891b721579af1dc5aa6bd1.png){media=image}
 

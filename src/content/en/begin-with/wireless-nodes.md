@@ -15,19 +15,19 @@ hero:
   image: ""
 ---
 
-## What is Node Wirelessization?
+## What Are Wireless Nodes?
 
-The biggest feature of node-based tools is that you can perform complex processing just by connecting each function with lines.
-On the other hand, there is also a problem that the screen becomes cluttered (spaghetti-like) and it becomes completely unclear what is being done as the number of nodes and lines increases.
+The best thing about node-based tools is that you can build complex processes just by wiring functions together.
+The flip side is that the more nodes and wires you add, the more cluttered the screen gets (spaghetti), until you have no idea what's going on.
 
-In such a situation, it is natural that the idea "Why don't we fly data wirelessly?" comes out.
+So it's only natural that someone would think, "Why not just send the data wirelessly?"
 
 ---
 
 ## Custom Node
 
-There are several custom nodes that realize wirelessization.
-[chrisgoringe/cg-use-everywhere](https://github.com/chrisgoringe/cg-use-everywhere) is also famous, but recently the set of **KJNodes**, which is simpler and easier to handle, is often used.
+Several custom nodes make wireless connections possible.
+[chrisgoringe/cg-use-everywhere](https://github.com/chrisgoringe/cg-use-everywhere) is well known too, but these days the simpler, easier-to-use nodes from **KJNodes** are the common choice.
 
 - **[kijai/ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes)**
 
@@ -35,7 +35,7 @@ There are several custom nodes that realize wirelessization.
 
 ### Set & Get Node
 
-Usage is very simple.
+They're very simple to use.
 
 ![](/media/begin-with/wireless-nodes/legacy_gyazo_fd49b6cc5d0da73a01189cc407104371.png){media=image}
 
@@ -43,19 +43,19 @@ Usage is very simple.
 
 
 - 1. **Set Node** (Sender):
-    - Input data and set any name (ID) to `Constant`.
+    - Feed in the data and give `Constant` any name (ID) you like.
 - 2. **Get Node** (Receiver):
-    - If you set the same name as the sender to `Constant`, you can receive data even at a distant place.
+    - Set `Constant` to the same name as the sender, and you can receive the data even far away on the canvas.
 
 ---
 
-## Convenient but use with caution
+## Handy, but don't overdo it
 
 ![](/media/begin-with/wireless-nodes/legacy_gyazo_0128233c9681fdaa4ad62d7afe59d2aa.png){media=image}
 
 [](/workflows/begin-with/wireless-nodes/set_get_image2image.json)
 
-As mentioned in [Recommendation for Readable Nodes](/en/begin-with/readable-nodes/), the biggest advantage of node tools is that "you can grasp the flow of data just by looking at the connected lines".
-If you wirelessly unnecessarily, it becomes very difficult to trace the flow of processing, asking "Where did this image data fly from?".
+As mentioned in [Recommendation for Readable Nodes](/en/begin-with/readable-nodes/), the biggest advantage of node tools is that "you can follow the data flow just by looking at the wires."
+Go wireless for no good reason, and it gets very hard to trace the flow: "Wait, where did this image data come from?"
 
-If the same variable appears over and over again everywhere in one workflow, wirelessization may be convenient, but in the first place, such a large workflow might should be split into smaller pieces (；・∀・)
+Wireless nodes can be handy when the same variable shows up again and again all over one workflow, but then again, a workflow that big should maybe be split into smaller ones in the first place (；・∀・)

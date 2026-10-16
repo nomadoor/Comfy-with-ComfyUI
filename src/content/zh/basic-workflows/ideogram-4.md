@@ -7,7 +7,7 @@ navId: ideogram-4
 title: "Ideogram 4.0"
 created: 2026-06-10
 updated: 2026-06-18
-summary: "使用 Ideogram 4.0 进行图像生成"
+summary: "用 Ideogram 4.0 生成图像"
 seoTitle: "在 ComfyUI 中使用 Ideogram 4.0：用 JSON 提示词精细指定"
 seoDescription: "可用 JSON 格式描述指定元素位置和颜色的 Ideogram 4.0 在 ComfyUI 中的用法。介绍用 LLM 或专用构建器生成提示词、text2image，以及 8 步的 TurboTime LoRA。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -20,15 +20,15 @@ tags: []
 
 [Ideogram 4.0](https://ideogram.ai/models/4.0/) 是一个 9.3B 的 DiT 系模型。
 
-它最大的特点是使用 JSON 形式的 caption，可以比较细地指定图像里的各个元素。
+它最大的特点是：用 JSON 格式的 caption，可以相当细致地指定图像里的各个元素。
 
 以前也有类似思路的 [FIBO](https://github.com/Bria-AI/FIBO)，但 Ideogram 4.0 更擅长用 BBOX 指定坐标，也更擅长颜色指定。海报、Logo、UI、包装这类偏 DTP 的设计任务，会比较适合它。
 
-作为交换，它可能不是那种随手就很好用的模型。提示词必须按既定格式写，才能发挥出本来的效果。
+作为换取可控性的代价，提示词必须按既定格式来写才能发挥出本来的性能，所以它可能算不上一个随手就能用的模型。
 
 ---
 
-## 模型下载
+## 下载模型
 
 - diffusion_models
   - [ideogram4_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Ideogram-4/blob/main/diffusion_models/ideogram4_fp8_scaled.safetensors) (9.28 GB)
@@ -54,13 +54,13 @@ tags: []
         └── flux2-vae.safetensors
 ```
 
-细节后面再说，因为它会读取两个 Diffusion model，所以相当重。
+详细原因后面再说，它需要加载两个 Diffusion model，所以相当重。
 
-ComfyUI 内部会处理显存，所以 VRAM 不够也不一定完全不能生成，但可能会非常慢。
+ComfyUI 会在内部帮忙调配，所以即使 VRAM 不够，也不至于完全无法生成，但会非常慢。
 
 想减轻负担，可以使用 `nvfp4`，不过画质会下降。
 
-`unconditional` 侧对质量的影响相对小一些，所以普通侧用 `fp8`，`unconditional` 侧用 `nvfp4`，可能是比较合适的平衡。
+`unconditional` 那边对质量的影响较小，所以普通模型用 `fp8`、`unconditional` 模型用 `nvfp4`，也许是不错的选择。
 
 ---
 
@@ -101,7 +101,7 @@ ComfyUI 内部会处理显存，所以 VRAM 不够也不一定完全不能生成
 }
 ```
 
-整体说明、风格、背景、各元素说明，结构本身并不复杂。但每次都手写这种东西，还是不太现实。
+整体说明、风格、背景、各元素的说明，结构本身很简单，但总不能每次都手写这么一大段。
 
 尤其是坐标指定很麻烦。每个元素要放在图像的哪里，都要用 BBOX 指定，光靠脑子想象基本不可能。
 
@@ -111,9 +111,9 @@ ComfyUI 内部会处理显存，所以 VRAM 不够也不一定完全不能生成
 
 最轻松的方法，是把官方的 [Prompting Guide](https://github.com/ideogram-oss/ideogram4/blob/main/docs/prompting.md) 和想做的图像说明交给 LLM，让它转换成 JSON caption。
 
-也可以把参考图，或者自己画的草图一起丢给它。
+把参考图或者自己画的草图丢给它来生成，也是不错的办法。
 
-能在 ComfyUI 里本地跑的模型，一般能力不太够，所以还是老老实实交给 ChatGPT、Gemini 之类会比较好。
+能在 ComfyUI 上跑的本地模型，性能还不太够，所以还是老老实实交给 ChatGPT、Gemini 之类比较好。
 
 ![](/media/basic-workflows/ideogram-4/legacy_gyazo_b314abc36bec096b81fb3231a2687064.png){media=image}
 
@@ -121,7 +121,7 @@ ComfyUI 内部会处理显存，所以 VRAM 不够也不一定完全不能生成
 
 ### 使用专用提示词构建器
 
-也可以使用专用的提示词构建器，视觉化地制作提示词。
+也可以用专用的提示词构建器，以可视化的方式制作提示词。
 
 例如 [ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes) 里的 `Ideogram 4 Prompt Builder KJ` 节点，就是比较常用的一个。
 
@@ -138,16 +138,16 @@ ComfyUI 内部会处理显存，所以 VRAM 不够也不一定完全不能生成
 
 [](/workflows/basic-workflows/ideogram-4/ideogram_4_0_text2image.json)
 
-除了提示词以外，它和普通 workflow 相比还有几个稍微特殊的地方，所以这里只看这些部分。
+除了提示词之外，它和一般的工作流相比还有一些特殊的地方，这里只看这些部分。
 
 {% mediaRow img="/media/basic-workflows/ideogram-4/legacy_gyazo_c0d5e9131313e7c3c5255b4f54d55dbb.png {media=image}", width=33, align="left" %}
 **Load Diffusion Model**
 
-Ideogram 4.0 为了稍微特殊的 CFG，会读取两个 diffusion model。
+Ideogram 4.0 因为采用了一种稍微特殊的 CFG，需要加载两个 diffusion model。
 
-- 普通的 [CFG](/zh/ai-capabilities/cfg/) 是比较有提示词的结果和没有提示词的结果，把生成方向往提示词靠。
-- Ideogram 4.0 的 unconditional 侧不是传入空提示词，而是把不使用文本 token 的 image-only 输入送入 unconditional 用模型。
-- 乍看可能会觉得这有什么区别，但可以把它理解成一种更细致处理 positive prompt 的办法。
+- 普通的 [CFG](/zh/ai-capabilities/cfg/) 会比较有提示词和没有提示词时的结果，把生成往提示词的方向推。
+- 而 Ideogram 4.0 的 unconditional 侧不是传入空提示词，而是把不使用文本 token 的 image-only 输入送进 unconditional 专用模型。
+- 可能会觉得这有什么不一样，大概可以理解成是为了更细腻地处理 positive prompt 而下的功夫吧。
 
 {% endmediaRow %}
 
@@ -157,7 +157,7 @@ Ideogram 4.0 为了稍微特殊的 CFG，会读取两个 diffusion model。
 
 这是 Ostris 发布的 LoRA，可以用于 2〜8 step 生成。
 
-### 模型下载
+### 下载模型
 
 - loras
   - [ideogram_4_turbotime_v1.safetensors](https://huggingface.co/ostris/ideogram_4_turbotime_lora/blob/main/ideogram_4_turbotime_v1.safetensors) (847 MB)
@@ -176,18 +176,17 @@ Ideogram 4.0 为了稍微特殊的 CFG，会读取两个 diffusion model。
 [](/workflows/basic-workflows/ideogram-4/ideogram_4_0_text2image_turbotime.json)
 
 - 由于使用 CFG 1.0 生成，因此不需要 unconditional model。
-- 虽然它标注为 2〜8 step 用 LoRA，但 step 数太少时，图像会明显开始崩。
-- 目前建议以 8 step 使用。
+- 虽然标称适用于 2〜8 step，但 step 数太少时画面会明显开始崩坏，所以目前用 8 step 比较好。
 
 {% mediaRow img="/media/basic-workflows/ideogram-4/legacy_gyazo_26ef78ed5bf868ab5ca9a62b643640ff.png {media=image}", width=33, align="left" %}
 **CFG**
 
 这是很早就有的小技巧：采样前半段和后半段使用不同的 CFG 值。
 
-- 这个 workflow 里，前半段是 CFG 7，后半段是 CFG 3。
-- 与其从头到尾一直套很高的 CFG，中途降下来通常更稳定。
+- 这个工作流里，前半段是 CFG 7，后半段是 CFG 3。
+- 与其从头到尾一直用很高的 CFG，不如中途调低，这样更稳定。
 - 这里使用的是 `CFG Override` 节点。
 - 它只会在指定的 step 范围内覆盖 CFG 值。
-- 这个 workflow 里，总步数 70% 之后，`cfg` 会变成 3。
+- 这个工作流里，整体进度过了 70% 之后，`cfg` 就会变成 3。
 
 {% endmediaRow %}

@@ -18,20 +18,20 @@ tags: []
 
 ## 什么是 Chroma1-HD？
 
-[Flux.1 [dev]](/zh/basic-workflows/flux-1/) 虽然是极好的模型，但在社区广泛使用上也就有 2 个大的课题。
+[Flux.1 [dev]](/zh/basic-workflows/flux-1/) 是一个非常出色的模型，但要在社区里广泛使用，它有两个大问题。
 
-- 因为被强力蒸留，所以与 LoRA 或全微调的相性不太好
-- 非商用许可证
+- 蒸馏程度很高，和 LoRA、全量微调不太合得来
+- 非商业许可证
 
-因此，以持有更宽大的许可证的 Flux.1 [schnell] 为出发点，出现了一些试图再构筑“脱蒸留版 Flux”的尝试，其中花费了最大劳力之一的是由 LodestoneRock 开发的 [Chroma1-HD](https://huggingface.co/lodestones/Chroma1-HD)。
+于是出现了一些尝试，以许可证更宽松的 Flux.1 [schnell] 为起点，重新构建“去蒸馏版 Flux”。其中投入心血最多的之一，就是 LodestoneRock 开发的 [Chroma1-HD](https://huggingface.co/lodestones/Chroma1-HD)。
 
-因为包含 NSFW 和动漫图像在内进行了再学习，比起原来的 Flux 系风格的自由度更高，比起“脱蒸留版 Flux”，不如理解为 以 Flux 系架构为基础的新的通用模型 更合适。
+它重新训练时也加入了 NSFW 和动漫图像，风格的自由度比原来的 Flux 系更高。与其说是“去蒸馏版 Flux”，不如把它看作一个基于 Flux 系架构的全新通用模型，这样更贴切。
 
 ---
 
-## 模型的下载
+## 下载模型
 
-Chroma1-HD 与 Flux.1 不同，不使用 CLIP，仅利用 T5。
+Chroma1-HD 和 Flux.1 不同，不用 CLIP，只用 T5。
 
 - diffusion_models  
   - [Chroma1-HD.safetensors](https://huggingface.co/lodestones/Chroma1-HD/blob/main/Chroma1-HD.safetensors)
@@ -57,6 +57,6 @@ Chroma1-HD 与 Flux.1 不同，不使用 CLIP，仅利用 T5。
 
 [](/workflows/basic-workflows/chroma1-hd/chroma1_hd.json)
 
-- 基本的组建方法与 Flux.1 几乎相同。
-- 🟦 T5TokenizerOptions 是当令牌数比设定值少时用 padding 填充的节点。放不放都没有大差别。
-- 尽管规定 CFG 为 4.0，但也有 6〜7 比较好的声音。请尝试各种设定。
+- 基本的搭法和 Flux.1 几乎一样。
+- 🟦 T5TokenizerOptions 是在 token 数少于设定值时用 padding 补齐的节点。加不加都没有太大差别。
+- CFG 默认是 4.0，不过也有人说 6〜7 更好。可以多试试看。

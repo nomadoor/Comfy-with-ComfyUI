@@ -7,7 +7,7 @@ navId: sd15-text2image
 title: "text2image"
 created: 2025-12-04
 updated: 2026-08-26
-summary: "Stable Diffusion 1.5 的 text2image"
+summary: "在 Stable Diffusion 1.5 中进行 text2image"
 seoTitle: "ComfyUI text2image 入门：基本工作流与节点"
 seoDescription: "用 Stable Diffusion 1.5 讲解在 ComfyUI 中由文字生成图像的 text2image 基础，介绍 Load Checkpoint、Empty Latent Image、CLIP Text Encode、KSampler、VAE Decode 各节点的作用。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -18,18 +18,18 @@ hero:
 
 ## 什么是 text2image？
 
-输入文本提示词，生成图像。
+输入文本提示词来生成图像。
 
-从本质上讲，是通过 **文本提示词这一条件** 来控制扩散模型。
+说得更本质一点，就是用 **文本提示词这个条件** 来控制扩散模型。
 
-这是接下来制作的所有工作流的基础。让我们慢慢来看。
+这是之后所有工作流的基础，我们慢慢来看。
 
 ---
 
-## 图像生成 AI 的机制
+## 图像生成 AI 的原理
 
-虽然非常简单，但在这里有解说。  
-完全不了解图像生成 AI 机制的人，请简单浏览一下。应该会更能理解参数的含义。
+下面这些页面做了非常简单的讲解。  
+如果完全不了解图像生成 AI 的原理，可以先大致看一下，应该会对参数的含义多一点理解。
 
 - [扩散模型](/zh/ai-capabilities/diffusion-models/)
 - [Conditioning](/zh/ai-capabilities/conditioning/)
@@ -40,9 +40,9 @@ hero:
 
 ---
 
-## 模型的下载
+## 下载模型
 
-我们将使用作为一切开端的 Stable Diffusion 1.5 进行解说。
+这里用一切的开端 Stable Diffusion 1.5 来讲解。
 
 - [Comfy-Org/stable-diffusion-v1-5-archive](https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive/blob/main/v1-5-pruned-emaonly-fp16.safetensors)
 ```text
@@ -60,21 +60,21 @@ hero:
 
 [](/workflows/basic-workflows/sd15-text2image/sd1_5_text2image.json)
 
-## 关于各节点
+## 各个节点
 
 {% mediaRow img="/media/basic-workflows/sd15-text2image/legacy_gyazo_c9e67fd1fd3382708102f366bdf63855.png {media=image}", width=33, align="left" %}
 ### Load Checkpoint 节点
 
 加载旧格式的 Checkpoint 模型。
-- Checkpoint 是将 **扩散模型 / 文本编码器 / VAE** 打包在一个文件中的东西。
-- 初期经常以这种形式发布，但现在几乎都是单独发布的。
-- 因此，将会使用 Load Diffusion Model / Load CLIP / Load VAE 等单独的节点。
+- Checkpoint 是把 **扩散模型 / 文本编码器 / VAE** 打包成一个文件的格式。
+- 早期大多以这种形式发布，但现在几乎都是分开发布的。
+- 所以现在会分别使用 Load Diffusion Model / Load CLIP / Load VAE 等节点。
 {% endmediaRow %}
 
 {% mediaRow img="/media/basic-workflows/sd15-text2image/legacy_gyazo_2321a6cfbee1f95261c5bf857068f4b7.png {media=image}", width=33, align="left" %}
 ### Empty Latent Image 节点
 
-制作作为图像生成“出发点”的、空的潜在图像 (latent)。
+创建一张空的潜在图像 (latent)，作为图像生成的“起点”。
 - 指定想要创建的图像尺寸。
 {% endmediaRow %}
 
@@ -82,7 +82,7 @@ hero:
 ### CLIP Text Encode 节点
 
 将文本提示词转换为模型可以理解的 Conditioning。
-- 将想要生成的内容作为“positive 提示词”，想要避免的内容作为“negative 提示词”，准备在不同的节点中。
+- 想要生成的内容写成“positive 提示词”，想要避免的内容写成“negative 提示词”，分别放在不同的节点里。
 - 不过，这个节点本身并没有 `positive` / `negative` 的概念。
 - 输入到下一个 KSampler 的 `positive` 插槽就被视为 positive，输入到 `negative` 插槽就被视为 negative。
 {% endmediaRow %}
@@ -90,16 +90,16 @@ hero:
 {% mediaRow img="/media/basic-workflows/sd15-text2image/legacy_gyazo_5404e0e4a52dade391da4cb125b8512e.png {media=image}", width=33, align="left" %}
 ### KSampler 节点
 
-进行 Sampling（去噪），是图像生成核心的节点。
+负责 Sampling（去噪）的节点，是图像生成的核心。
 
-- 连接上述所有节点（Model / Positive / Negative / Latent）来使用。
-- `seed` : 决定噪声形状的值。如果是相同的设置，可以重现相同的图像。
-- `control_after_generate` : 决定每次图像生成如何改变 seed。`fixed` 是保持原样，`randomize` 是每次随机。
-- `steps` : 消除噪声的步数。大多数模型通过 `20` 就足够了。
+- 把上面的节点（Model / Positive / Negative / Latent）全部连上来使用。
+- `seed` : 决定噪声形状的值。设置相同，就能复现同一张图像。
+- `control_after_generate` : 决定每次生成后 seed 怎么变化。`fixed` 保持不变，`randomize` 每次随机。
+- `steps` : 去除噪声的步数。大多数模型设为 `20` 就足够了。
 - `cfg` : 决定提示词的生效程度。
 - `sampler_name` : 选择使用哪种采样算法。基本用 `Euler` 就好。
-- `scheduler` : 在各步骤中以什么顺序・强度减少噪声的种类。
-- `denoise` : 详情在 [KSamplerAdvanced] 中解说。在 text2image 中设为 `1.0`。
+- `scheduler` : 决定每一步按什么顺序、什么强度减少噪声的类型。
+- `denoise` : 详见 [KSamplerAdvanced]。text2image 中设为 `1.0`。
 
 {% endmediaRow %}
 
@@ -117,9 +117,9 @@ hero:
 
 说实话，Stable Diffusion 1.5 的 VAE 性能并不是很好。如果使用微调模型，有时会生成颜色奇怪的图像。
 
-之后，发布了改良版的 VAE。此外还发布了各种各样的 VAE，但 Stable Diffusion 1.5 的 VAE 只要使用这个几乎不会出问题。
+后来发布了改良版的 VAE。其他各种 VAE 也有不少，但 Stable Diffusion 1.5 的 VAE 只要用这个，基本就不会出问题。
 
-### VAE 的下载
+### 下载 VAE
 
 - [vae-ft-mse-840000-ema-pruned.safetensors](https://huggingface.co/stabilityai/sd-vae-ft-mse-original/blob/main/vae-ft-mse-840000-ema-pruned.safetensors)
 ```text
@@ -143,10 +143,10 @@ hero:
 
 ---
 
-## 初学者容易受挫的疑问
+## 新手容易卡住的疑问
 
-虽然被理所当然地对待，但仔细一想，有一些是图像生成特有的、不可思议的东西。  
-关于这些在别的页面简单地进行了解说。
+有些东西大家都当作理所当然，但仔细想想，其实是图像生成特有的、挺奇妙的现象。  
+这些在其他页面做了简单的讲解。
 
   - [即使使用相同的参数，Stable Diffusion web UI 和 ComfyUI 也无法生成相同的图像](/zh/notes/sdwebui-comfyui-reproducibility/)
   - [为什么生成 512px × 512px？](/zh/notes/why-512px/)
@@ -157,7 +157,7 @@ hero:
 
 ## 提示词的写法
 
-在 Stable Diffuision 1.5 / SDXL 中使用的文本编码器 **CLIP**，即使恭维也不能说性能很好。因此，为了生成期望的图像，有着被称为提示词工程学或咒语的技巧。
+Stable Diffusion 1.5 / SDXL 使用的文本编码器 **CLIP**，就算客气地说，性能也算不上好。所以为了生成想要的图像，出现了各种被称为提示词工程或“咒语”的技巧。
 
 ### 标签罗列
 
@@ -165,9 +165,9 @@ hero:
 ```
 1girl, solo, upper body, looking at viewer, smile, outdoors, sunset
 ```
-因此，像这样以单纯的 **标签罗列** 的形式书写提示词的情况很多。
+所以以前大多像这样，用单纯 **罗列标签** 的方式来写提示词。
 
-另外，动漫系模型直接使用了名为 Danbooru 网站的图像・以及用于整理该图像的标签。因此，过去常做去查在 Danbooru 中使用的标签并直接使用。
+另外，动漫类模型直接使用了 Danbooru 这个网站的图像，以及用来整理这些图像的标签。所以大家常常会去查 Danbooru 上用的标签，直接拿来用。
 
 ### 质量咒语
 
@@ -175,8 +175,8 @@ hero:
 (best quality, masterpiece, ultra detailed, 8k, HDR, sharp focus, highly detailed)
 ```
 
-像这样，只顾着在最前面写 **似乎能提高质量** 的词。  
-现在想来不知道有没有意义，但因为不知道哪个词有多大效果，所以就一味地写了。
+像这样，在最前面拼命堆 **好像能提高质量** 的词。  
+现在想想也不知道有没有意义，但当时不知道哪个词到底有多少效果，所以只好一个劲地往上写。
 
 ### Negative Prompt
 
@@ -184,20 +184,20 @@ hero:
 bad anatomy, extra fingers, extra limbs, blurry, lowres, jpeg artifacts, ...
 ```
 
-与刚才相反，把似乎会降低质量的词一味地写在负面提示词中。这些又有多少效果呢……
+和刚才相反，把好像会降低质量的词一个劲地写进负面提示词。这些到底有多少效果呢……
 
 ### 关注度记法
 
-通过将 `(red:1.05)` / `(blue:0.9)` 这样的数值设定给提示词的各单词，可以更改该单词的重要性。
+给提示词中的单词加上 `(red:1.05)` / `(blue:0.9)` 这样的数值，就能改变该单词的重要程度。
 
 CLIP 往往会更重视前面的文本，因此越靠后写的内容越不容易生效。此外，有些词本来就更容易生效，有些则不太容易。
 
-为了手动调整这些，使用这个关注度记法。
+这种关注度记法就是用来手动调整这些的。
 
 > [!NOTE]
-> 但是，这能顺利进行的前提终究是 CLIP 理解那个词的时候。  
+> 不过，这只有在 CLIP 理解那个词的时候才管用。  
 > 给可能根本不认识的词加上 `(Ghoti:999)` 之类的也没有意义。
 
 ![](/media/basic-workflows/sd15-text2image/legacy_gyazo_e13bd76787711c8392334243177e60f3.mp4){media=loop}
 
-- 将光标放在想改变关注度的词上，按 `Ctrl + 箭头↑/↓`，可以用 0.05 为单位进行调整。
+- 把光标放在想改变关注度的词上，按 `Ctrl + 箭头↑/↓`，就能以 0.05 为单位调整。

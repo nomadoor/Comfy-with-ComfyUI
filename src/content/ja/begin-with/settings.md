@@ -47,8 +47,8 @@ hero:
 
 ### 生成中のプレビュー
 
-ComfyUI Manger → Preview methodを `Auto`/`TAESD`/`latent2RGB`のどれかに設定
-- KSamlperノードの内部に、生成される最中のプレビュー画像が表示されるようになります。
+ComfyUI Manager → Preview methodを `Auto`/`TAESD`/`latent2RGB`のどれかに設定
+- KSamplerノードの内部に、生成される最中のプレビュー画像が表示されるようになります。
 - かなりスペースを取ってしまうため私はオフにしていますが、どのように画像が生成されるのか学べる良い機能です。
 
 ![](/media/begin-with/settings/legacy_gyazo_b57c81af6a11466c664303f29b25b4cc.mp4){media=loop}

@@ -18,17 +18,17 @@ tags: []
 
 ## What is Qwen-Image?
 
-[Qwen-Image](https://github.com/QwenLM/Qwen-Image) is an image generation model developed by the Qwen team of Alibaba, China.
+[Qwen-Image](https://github.com/QwenLM/Qwen-Image) is an image generation model developed by the Qwen team at China's Alibaba.
 
-It uses the multimodal LLM **Qwen2.5-VL** for the text encoder, and its ability to understand prompts is one step ahead compared to models using T5 or Gemma.
+It uses the multimodal LLM **Qwen2.5-VL** as its text encoder, and its prompt understanding is a cut above models that use T5 or Gemma.
 
-Furthermore, unlike [Flux.1 dev](/en/basic-workflows/flux-1/), the base is not a distilled model, so it is easy to train, and along with its sister model [Qwen-Image-Edit](/en/basic-workflows/qwen-image-edit/) (available in Japanese), it is characterized by a rich surrounding ecosystem such as LoRA and Lightning systems.
+On top of that, unlike [Flux.1 dev](/en/basic-workflows/flux-1/), the base isn't a distilled model, so it's easy to train. Together with its sister model [Qwen-Image-Edit](/en/basic-workflows/qwen-image-edit/), it has a rich ecosystem around it, from LoRAs to Lightning models.
 
 ---
 
 ## Recommended Resolution
 
-Qwen-Image recommends around 1.5M to 1.8M pixels.
+For Qwen-Image, around 1.5M to 1.8M pixels is recommended.
 
 * 1:1 ... 1328 × 1328
 * 4:3 ... 1472 × 1104
@@ -76,13 +76,13 @@ Qwen-Image recommends around 1.5M to 1.8M pixels.
 
 [](/workflows/basic-workflows/qwen-image/qwen_image.json)
 
-* `euler` or `res_multistep` is often used for the sampler.
+* For the sampler, `euler` or `res_multistep` is the common choice.
 
 ---
 
 ## ControlNet (InstantX)
 
-There are several ControlNet models for Qwen-Image, but I will introduce the one based on InstantX provided as **ControlNet-Union** because it is easy to use.
+There are several ControlNet models for Qwen-Image, but here I'll introduce the InstantX one released as **ControlNet-Union**, since it's easy to use.
 
 ### Model Download
 
@@ -113,9 +113,9 @@ There are several ControlNet models for Qwen-Image, but I will introduce the one
 
 ## Lightning (High Speed Generation LoRA)
 
-**Qwen-Image-Lightning** is a LoRA set distilled so that Qwen-Image can be run in **4 / 8 steps**.
+**Qwen-Image-Lightning** is **a set of LoRAs distilled so that Qwen-Image runs in 4 / 8 steps**.
 
-Since it significantly reduces the number of steps with almost no degradation, it is adopted in quite a few workflows.
+It cuts the step count dramatically with almost no loss in quality, so a lot of workflows use it.
 
 ### Model Download
 
@@ -138,5 +138,5 @@ Since it significantly reduces the number of steps with almost no degradation, i
 
 [](/workflows/basic-workflows/qwen-image/qwen_image_lightning_8steps.json)
 
-* Load Lightning LoRA with some nodes such as `LoraLoaderModelOnly`.
-* Set `steps` of `KSampler` to 4 or 8, and `CFG` to 1.0.
+* Load the Lightning LoRA with the `LoraLoaderModelOnly` node.
+* Set `steps` in `KSampler` to 4 or 8, and `CFG` to 1.0.

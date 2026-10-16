@@ -20,38 +20,38 @@ hero:
 There are several ways to run ComfyUI in a local environment.
 
 * **[Portable Version (Recommended)](#setup-with-portable-version)**
-* [Desktop Version (Installer format)](#desktop-version)
-* [Manual Installation Version (venv + Git / For advanced users)](#manual-installation-windows-linux)
+* [Desktop Version (Installer)](#desktop-version)
+* [Manual Installation (venv + Git / For advanced users)](#manual-installation-windows-linux)
 
-The portable version is flexible yet stable, and since anyone can create a similar environment, this site will explain assuming that you are basically using the portable version.
+The portable version is flexible yet stable, and anyone who sets it up ends up with much the same environment, so the guides on this site generally assume you're using the portable version.
 
-We will also install **ComfyUI Manager** here.
+We'll also install **ComfyUI Manager** here.
 
-It is a tool that makes ComfyUI management easier, including installing custom nodes.
+It's a tool that makes managing ComfyUI easier, for things like installing custom nodes.
 
 ---
 
 ## Setup with Portable Version
 
-The portable version includes Python, PyTorch, and the CUDA environment, and works just by extracting it.
+The portable version bundles Python, PyTorch, and CUDA, so it works as soon as you extract it.
 
 ### 1. Download
 
-Access the [GitHub release page](https://github.com/comfyanonymous/ComfyUI/releases) of ComfyUI and select the file that matches your GPU.
+Go to ComfyUI's [GitHub release page](https://github.com/comfyanonymous/ComfyUI/releases) and pick the file that matches your GPU.
 
 | GPU Type | File Name (Example) | Remarks |
 | :--- | :--- | :--- |
-| **NVIDIA GPU** | `ComfyUI_windows_portable_nvidia.7z` | In an environment where the driver is new enough, please choose the standard one first. If startup fails, update the GPU driver or use the **version for old drivers** below. |
-| NVIDIA GPU (Stable/Older environment) | `cu126`/`cu128` | Use this if you do not want to update the driver, or if the standard version terminates immediately after startup. |
+| **NVIDIA GPU** | `ComfyUI_windows_portable_nvidia.7z` | If your driver is new enough, start with the plain version (no suffix). If startup fails, update the GPU driver or use the **version for old drivers** below. |
+| NVIDIA GPU (Stable/Older environment) | `cu126`/`cu128` | Use this if you don't want to update your driver, or if the plain version closes right after it starts. |
 | AMD GPU | `ComfyUI_windows_portable_amd.7z` | For AMD users. |
 
 
 ### 2. Extract and Run
 
 1. Right-click the downloaded `7z file` and extract it with `Extract All`.
-   - As explained in [Recommended Specs - Storage](/en/begin-with/recommended-specs/#storage), we recommend placing it on an SSD.
+   - As explained in [Recommended Specs - Storage](/en/begin-with/recommended-specs/#storage), I recommend putting it on an SSD.
 2. Double-click `run_nvidia_gpu.bat` in the extracted folder to start it.
-3. Initial startup takes time for environment configuration. If the browser opens automatically, it is successful.
+3. The first launch takes a while to set up the environment. If your browser opens automatically, it worked.
 
 ### 3. Installing ComfyUI Manager
 
@@ -65,7 +65,7 @@ Access the [GitHub release page](https://github.com/comfyanonymous/ComfyUI/relea
 
    This installs the libraries required by Manager.
 
-   However, Manager will not appear in the screen yet. Next, add a command line argument to the launch `.bat` file.
+   This alone won't make Manager show up in the UI, though, so add a command-line argument to the launch `.bat` file.
 
 3. Right-click `run_nvidia_gpu.bat` and choose `Edit`.
 
@@ -85,12 +85,12 @@ Access the [GitHub release page](https://github.com/comfyanonymous/ComfyUI/relea
 
 ## Desktop Version
 
-This is an installer format for Windows. It provides stable operation with ComfyUI Manager already installed, but there are slightly more restrictions.
+This is an installer for Windows. It runs reliably, with ComfyUI Manager already included and so on, but it's a bit more restricted in return.
 
 ### Download
 
-1. Download `ComfyUI Setup.exe` from the [GitHub page](https://github.com/Comfy-Org/desktop) of ComfyUI Desktop.
-2. Run it and select the installation destination and GPU settings.
+1. Download `ComfyUI Setup.exe` from the ComfyUI Desktop [GitHub page](https://github.com/Comfy-Org/desktop).
+2. Run it and choose the install location and GPU settings.
 
 > [!NOTE]
 > ComfyUI Manager is included by default.
@@ -162,7 +162,7 @@ This is a standard installation method using `git clone` and `pip`.
    pip install -r manager_requirements.txt
    ```
 
-2. Add `--enable-manager` when starting ComfyUI.
+2. This alone won't make Manager show up in the UI, so add `--enable-manager` when you start ComfyUI.
 
    ```bash
    python main.py --enable-manager
@@ -178,11 +178,11 @@ This is a standard installation method using `git clone` and `pip`.
 
 ## About Easy Installers
 
-Easy installers like Pinokio and Stability Matrix are certainly convenient and allow you to easily introduce complex functions.
+Easy installers like Pinokio and Stability Matrix are certainly convenient, and they let you set up complex features easily.
 
-However, the more elements involved in between, the more troubles increase... When a problem occurs, it becomes difficult to pinpoint the cause, and eventually, there are situations where beginners cannot handle it.
+But the more layers sit in between, the more trouble you get... When something goes wrong, it's harder to track down the cause, and you end up in situations a beginner can't handle.
 
-Since introducing ComfyUI, including the portable version, is not that difficult, we recommend doing it simply by the means provided by the official.
+Installing ComfyUI, starting with the portable version, isn't that hard, so I recommend keeping it simple and sticking to the official methods.
 
 ---
 

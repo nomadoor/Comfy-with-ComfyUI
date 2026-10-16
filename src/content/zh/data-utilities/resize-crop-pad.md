@@ -7,7 +7,7 @@ navId: resize-crop-pad
 title: "调整大小、裁剪与填充"
 created: 2025-11-25
 updated: 2026-03-02
-summary: "关于图像的调整大小、裁剪、填充"
+summary: "图像的缩放、裁剪与填充"
 seoTitle: "在 ComfyUI 中调整图像大小、裁剪、填充"
 seoDescription: "ComfyUI 中统一图像尺寸的调整大小、裁剪、填充节点的区别与用法。为适配模型的最佳分辨率、节省显存，附整理清晰易读的工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -15,23 +15,23 @@ hero:
   image: "/media/data-utilities/resize-crop-pad/legacy_gyazo_02cf6bd2a573dc15dff4799c94b15a0d.png"
 ---
 
-## 图像的调整大小与裁剪
+## 缩放与裁剪图像
 
-将图像尺寸放大，或者裁剪成正方形……虽然是单纯的作业，但在图像生成中却是非常重要的工作。
+把图像放大，或者裁成正方形……任务虽然简单，在图像生成中却非常重要。
 
-- **模型的适宜分辨率**: 模型有“最能发挥性能的分辨率”。
-- **VRAM 的节约**: 如果不小心读取了 4K 图像进行处理，瞬间就会变成“Out of memory”。
-- **素材的统一**: 在图像合成等操作中，需要统一多个素材的尺寸。
+- **模型的合适分辨率**: 每个模型都有“最能发挥性能的分辨率”。
+- **节省 VRAM**: 不小心读入一张 4K 图像去处理，转眼就会“Out of memory”。
+- **统一素材**: 在图像合成等场景中，需要把多个素材的尺寸统一起来。
 
-因为是经常登场的作业，所以要好好理解各个节点的区别。
+这些操作出场频率很高，所以要好好理解各个节点的区别。
 
 ---
 
-## 图像信息的获取
+## 获取图像信息
 
 ### Get Image Size 节点
 
-将图像的宽度 (width) 和高度 (height)、以及 Batch Size（张数）作为数值输出。
+以数值形式输出图像的宽度 (width)、高度 (height) 和 Batch Size（张数）。
 
 ![](/media/data-utilities/resize-crop-pad/legacy_gyazo_ffb5c8bfea06d5ce1b15183cc70dc973.png){media=image}
 
@@ -43,16 +43,16 @@ hero:
 
 ### Resize Image/Mask 节点
 
-这是一个可以切换使用多种调整大小方法的节点。
-基本上，这一个节点就能涵盖大部分所需的处理。（顺便说一下，蒙版也可以调整大小）
+这个节点可以切换多种缩放方式。
+基本上，有它一个就能搞定大部分需要的处理。（顺便一提，蒙版也能缩放）
 
 {% mediaRow img="/media/data-utilities/resize-crop-pad/legacy_gyazo_afa66ff808e05a40e363761184c668c1.png {media=image}", width=45, align="left" %}
 
 **scale by multiplier**
 
-按“倍率”对长宽进行放大/缩小。
+按“倍率”放大或缩小宽高。
 
-例如 `0.5` 就是长宽各减半，`2.0` 就是长宽各 2 倍。
+例如 `0.5` 就是宽高各缩小一半，`2.0` 就是宽高各放大 2 倍。
 
 {% mediaFooter %}
 [](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_by_multiplier.json)
@@ -64,11 +64,11 @@ hero:
 
 **scale dimensions**
 
-强制变更为指定的宽度/高度分辨率。
+强制改为指定的宽度、高度。
 
 - `crop`
-  - `disabled` : 如果纵横比不同，图像会变形。
-  - `center` : 保持中心，将超出的部分裁剪（舍弃）。
+  - `disabled` : 纵横比不同时，图像会变形。
+  - `center` : 以中心为准，把超出的部分裁掉（舍弃）。
 
 {% mediaFooter %}
 [](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_dimensions.json)
@@ -80,7 +80,7 @@ hero:
 
 **scale longer/shorter dimension**
 
-只指定长边（longer）或短边（shorter），保持纵横比进行调整大小。
+只指定长边（longer）或短边（shorter），在保持纵横比的情况下缩放。
 
 {% mediaFooter %}
 [](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_longer_dimension.json)
@@ -92,7 +92,7 @@ hero:
 
 **scale width/height**
 
-只指定宽度或高度的其中一方，保持纵横比进行调整大小。
+只指定宽度或高度中的一个，在保持纵横比的情况下缩放。
 
 {% mediaFooter %}
 [](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_width.json)
@@ -104,11 +104,11 @@ hero:
 
 **scale total pixels**
 
-按照指定的 **总像素数**，保持纵横比进行调整大小。
+在保持纵横比的情况下，缩放到指定的 **总像素数**。
 
-`1024 * 1024 = 1.00MP` 进行计算。
+按 `1024 * 1024 = 1.00MP` 计算。
 
-| 目标尺寸 | 总像素数 | 设定值 |
+| 目标尺寸 | 总像素数 | 设置值 |
 | :--- | :--- | :--- |
 | **512 × 512** | 262,144 | **0.25** |
 | **768 × 768** | 589,824 | **0.56** |
@@ -125,14 +125,14 @@ hero:
 
 **match size**
 
-调整为与参考图像相同的尺寸。
+缩放到与参考图像相同的尺寸。
 
-以前需要先获取参考图像的尺寸，再将其传递给其他节点，现在这就合二为一了。
+以前需要先获取参考图像的尺寸，再传给另一个节点，现在一个节点就搞定了。
 
 - `match`: 连接想要作为基准的图像
 - `crop`
-  - `disabled` : 如果纵横比不同，图像会变形。
-  - `center`: 保持中心，将超出的部分裁剪（舍弃）。
+  - `disabled` : 纵横比不同时，图像会变形。
+  - `center`: 以中心为准，把超出的部分裁掉（舍弃）。
 
 {% mediaFooter %}
 [](/workflows/data-utilities/resize-crop-pad/resize_imagemask_match_size.json)
@@ -144,11 +144,11 @@ hero:
 
 **scale to multiple**
 
-调整大小使长宽成为 N 的倍数。
+把宽高缩放为 N 的倍数。
 
-详细内容会在 [为什么只能生成 8 的倍数的分辨率？](/zh/notes/why-multiple-of-8/) 中讲解，简而言之，由于 VAE 的原因，扩散模型无法直接处理不是特定倍数的分辨率。
+详细内容在 [为什么只能生成 8 的倍数的分辨率？](/zh/notes/why-multiple-of-8/) 中讲解：由于 VAE 的缘故，扩散模型无法直接处理不是特定倍数的分辨率。
 
-虽然基本上很多时候会在某个节点自动调整，但在必须是指定分辨率否则报错的情况下，或者希望输入和输出的像素“完全一致”的情况下，会使用这个功能。
+很多时候某个节点会自动帮你调整，但遇到不是指定分辨率就会报错，或者希望输入和输出的像素“完全一致”时，就会用到它。
 
 {% mediaFooter %}
 [](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_to_multiple.json)
@@ -159,8 +159,8 @@ hero:
 
 ### ImageScaleToMaxDimension 节点
 
-以图像的 **长边** 为设定的尺寸，保持纵横比进行调整大小。
-（例：无论是纵向长图还是横向长图，都让长的那一边变成 1024px）
+在保持纵横比的情况下，把图像的 **长边** 缩放到设定的尺寸。
+（例：无论竖图还是横图，都让较长的一边变成 1024px）
 
 ![](/media/data-utilities/resize-crop-pad/legacy_gyazo_42ffc7b0534face3e58fc7946b243ce0.png){media=image}
 
@@ -171,23 +171,23 @@ hero:
 
 ## 填充 (Padding)
 
-填充是指在图像周围添加空白（黑边等），以调整尺寸的处理。
-根据节点不同，可以将这个空白部分作为蒙版输出，因此可以作为进行 Outpainting 时的准备工作。
+填充是指在图像周围添加空白（黑边等）来调整尺寸的处理。
+有些节点可以把这块空白作为蒙版输出，因此常用作 Outpainting 的前期准备。
 
 ### ResizeAndPadImage 节点
 
-调整为指定的分辨率，不足的部分用填充来填补。
+按指定的分辨率缩放，不够的部分用填充补齐。
 
 ![](/media/data-utilities/resize-crop-pad/legacy_gyazo_633441a119959e98e0dca5cb765a53d8.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/resizeandpadimage.json)
 
 > [!NOTE]
-> 该节点无法将填充部分作为蒙版输出，因此几乎没有使用的场合。
+> 这个节点无法把填充部分作为蒙版输出，所以几乎用不上。
 
 ### Pad Image for Outpainting 节点
 
-在图像的上下左右，添加指定像素数的空白。
+在图像的上下左右添加指定像素数的空白。
 
 ![](/media/data-utilities/resize-crop-pad/legacy_gyazo_c6200467aad1b43edbc09b2ec4f3f2b0.png){media=image}
 
@@ -196,7 +196,7 @@ hero:
 
 空白部分会作为蒙版输出。
 
-- **feathering**: 模糊空白与图像的边界。只影响蒙版。
+- **feathering**: 对空白与图像的边界做模糊。只影响蒙版。
 
 ---
 
@@ -204,7 +204,7 @@ hero:
 
 ### ImageCrop 节点
 
-指定 x, y 坐标和宽度、高度，将图像的一部分以矩形进行裁剪。
+指定 x, y 坐标和宽度、高度，把图像的一部分按矩形裁剪出来。
 
 ![](/media/data-utilities/resize-crop-pad/legacy_gyazo_1c996b2fa8f7213f05c524b16468181e.png){media=image}
 
@@ -222,7 +222,7 @@ hero:
 
 ### ImageFlip 节点
 
-将图像在水平 / 垂直方向进行翻转。
+把图像沿水平 / 垂直方向翻转。
 
 ![](/media/data-utilities/resize-crop-pad/legacy_gyazo_e0661734e160f918d9fc9080dda91240.png){media=image}
 
@@ -233,35 +233,35 @@ hero:
 
 ## Resize Image v2 节点
 
-这是包含在 **[kijai/ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes)** 中的节点。
+这是 **[kijai/ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes)** 中的节点。
 
-它就像是把上述的调整大小、裁剪、填充汇总到了一个节点里。
+可以把它看作是把上面的缩放、裁剪、填充合到了一个节点里。
 
 | 参数名 | 说明 |
 | :--- | :--- |
-| **width / height** | 目标的宽度和高度（0 则不变更） |
-| **upscale_method** | 调整大小时的插值方法（nearest, bilinear 等） |
+| **width / height** | 目标宽度和高度（0 表示不变） |
+| **upscale_method** | 缩放时的插值方法（nearest, bilinear 等） |
 | **keep_proportion** | stretch, pad, crop, etc. |
 | **pad_color** | 填充时的颜色（RGB） |
 | **crop_position** | center, top, bottom, left, right |
-| **divisible_by** | 会被调整为这个值的倍数的分辨率（例：32, 64） |
+| **divisible_by** | 缩放到该值倍数的分辨率（例：32, 64） |
 
 > [!NOTE]
-> 以前经常用于将长宽调整为 N 的倍数，但现在核心节点也能支持了，所以就不怎么用了。
+> 以前经常用它把宽高调成 N 的倍数，现在核心节点也能做到，就不怎么用了。
 
 
 ---
 
-## 一点应用
+## 稍微进阶一点
 
-让我们组合目前为止介绍的节点，进行稍微复杂的图像加工。
+把前面介绍的节点组合起来，做一些稍微复杂的图像处理吧。
 
-### 将图像裁剪为一半
+### 把图像裁掉一半
 
 ![](/media/data-utilities/resize-crop-pad/legacy_gyazo_02cf6bd2a573dc15dff4799c94b15a0d.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/crop_to_half_size.json)
 
 - 获取图像尺寸
-- 用 `Simple math` 节点计算宽度的一半长度
-- 将计算出的宽度输入到 `ImageCrop` 节点，进行半幅裁剪
+- 用 `Simple math` 节点算出宽度的一半
+- 把算出的宽度输入 `ImageCrop` 节点，裁出一半

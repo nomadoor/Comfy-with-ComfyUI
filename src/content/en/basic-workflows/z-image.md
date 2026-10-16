@@ -22,11 +22,11 @@ Z-Image is a **family of image generation models** by Alibaba / Tongyi-MAI.
 
 ![](/media/basic-workflows/z-image/z_family.png){media=image}
 
-The name Z-Image refers to the entire model family, which can be confusing, but this page covers **Z-Image** as the base model (sometimes referred to as Z-Image-Base to distinguish it).
+Since the name Z-Image itself refers to the whole model family, it's a little confusing, but this page covers **Z-Image** as the base model the others are derived from (sometimes called Z-Image-Base to tell them apart).
 
-Z-Image has straightforward characteristics as a base model (source for fine-tuning).
+As a base model (the starting point for fine-tuning), Z-Image behaves in a plain, unbiased way.
 
-Unlike [Z-Image-Turbo](/en/basic-workflows/z-image-turbo/) which is stabilized by distillation and reinforcement learning, Z-Image directly reflects differences in seeds and initial noise in its output. While this offers high creativity and variation, it is also a difficult model where results can vary significantly and parameters are sensitive.
+It doesn't have the stabilizing distillation and reinforcement learning that [Z-Image-Turbo](/en/basic-workflows/z-image-turbo/) has, so differences in seed and initial noise show up readily in the output. That gives it more creativity and variety, but it's also a tricky model: it's sensitive to parameters and results can swing a lot.
 
 ---
 
@@ -58,14 +58,14 @@ Unlike [Z-Image-Turbo](/en/basic-workflows/z-image-turbo/) which is stabilized b
 
 [](/workflows/basic-workflows/z-image/z_image.json)
 
-- `steps` : Depending on the sampler, 30-40 steps (slightly higher) is more stable.
+- `steps` : It depends on the sampler, but a slightly higher count, around 30-40, is more stable.
 
 ## Refine with Z-Image-Turbo
 
-This method uses Z-Image-Turbo to refine the generation results of Z-Image in a few steps.
-It aims to combine the creativity of Z-Image with the stability of Z-Image-Turbo.
+This refines Z-Image's output with Z-Image-Turbo in a few steps.
+The goal is to get both Z-Image's creativity and Z-Image-Turbo's consistent quality.
 
-You can use image2image, but let's try splitting the sampling into two stages for a smarter approach.
+You could just do image2image, but here let's be a little fancy and split the sampling into two stages.
 
 ![](/media/basic-workflows/z-image/legacy_gyazo_2545e8ea917a80488d8687464185410d.png){media=image}
 
@@ -106,7 +106,7 @@ A ControlNet-like patch for Z-Image.
 
 [](/workflows/basic-workflows/z-image/z_image_fun_controlnet_union_2_1.json)
 
-- 🟩 Add model and control image to `QwenImageDiffsynthControlnet`.
+- 🟩 Add the model and control image to `QwenImageDiffsynthControlnet`.
 - 🟩 In this workflow, Depth Anything V2 is used to create a depth map.
 
 

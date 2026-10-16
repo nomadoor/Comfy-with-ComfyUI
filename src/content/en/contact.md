@@ -18,10 +18,10 @@ hero:
 
 ## Site Requests
 
-Use this page to send typo/bug reports, article requests, or general feedback.
-Choose one of the cards below based on your request.
+Use this page to report typos or bugs, request articles, or send feedback and anything else.
+Pick the card below that fits what you want to send.
 
-This content is sent anonymously to [GitHub Issues](https://github.com/nomadoor/Comfy-with-ComfyUI/issues). If you are familiar with GitHub, direct posting is also welcome.
+Your message is posted anonymously as a [GitHub issue](https://github.com/nomadoor/Comfy-with-ComfyUI/issues). If you're comfortable with GitHub, feel free to post there directly.
 
 <div data-contact-page>
 <div class="contact-page__site-card contact-page__site-card--stacked">
@@ -32,7 +32,7 @@ This content is sent anonymously to [GitHub Issues](https://github.com/nomadoor/
 </div>
 <form class="contact-page__form" data-contact-form="fix" data-contact-message-min-length="20" novalidate>
 <p class="contact-page__form-description">
-If you found incorrect or outdated content, please send the page URL and details below.
+If you spot a mistake or typo, let me know with the form below, along with the page URL.
 </p>
 <label class="contact-page__field">
 <span class="contact-page__field-label">Page URL</span>
@@ -70,8 +70,8 @@ If you found incorrect or outdated content, please send the page URL and details
 </form>
 <form class="contact-page__form" data-contact-form="request" hidden novalidate>
 <p class="contact-page__form-description">
-If there is a ComfyUI feature or AI topic you want explained, feel free to request it.<br>
-This site aims to stay simple, so I cannot promise everything will be added, but I will try to cover it in some format.
+If there's a ComfyUI feature or AI technique you'd like explained, feel free to request it.<br>
+I try to keep this site simple, so I can't promise it'll be added here, but I'd like to cover it somewhere, in some form.
 </p>
 <label class="contact-page__field">
 <span class="contact-page__field-label">Topic</span>
@@ -104,7 +104,7 @@ This site aims to stay simple, so I cannot promise everything will be added, but
 </form>
 <form class="contact-page__form" data-contact-form="feedback" data-contact-message-min-length="20" hidden novalidate>
 <p class="contact-page__form-description">
-Any feedback helps, whether praise, criticism, or anything else. Thank you as always.
+Words of encouragement, words of criticism—anything at all keeps me motivated. Thank you, as always!
 </p>
 <label class="contact-page__field">
 <span class="contact-page__field-label">Message</span>
@@ -146,17 +146,17 @@ Any feedback helps, whether praise, criticism, or anything else. Thank you as al
 </div>
 </div>
 
-## About the Operator
+## Who Made This Site
 
 ![](/media/shared/contact/legacy_gyazo_b2e27b1ad9320212da03b23da92de02d.png){media=image}
 
 **nomadoor**
 
-I am one of the people deeply fascinated by image-generation AI since the early Midjourney era.
+I'm one of the many people who got hooked on AI image generation when Midjourney first kicked it all off.
 
-Rather than only thinking "how to make images with AI," I usually focus on "what new things AI makes possible."
+I probably spend more time thinking about "what new things AI lets us do" than about "making illustrations with AI."
 
-I am not exactly a designer, engineer, or creator in the strict sense, but I have continued researching open-source image/video models since Stable Diffusion 1.5. I may be able to help with your case.
+I'm somewhere in between, not quite a designer, an engineer, or a creator, but I've been digging into open-source image/video generation models ever since Stable Diffusion 1.5 came out, so I might be able to help.
 
 - Twitter : [@noma_door](https://x.com/noma_door)
 - Reddit : [u/nomadoor](https://www.reddit.com/user/nomadoor/)
@@ -166,7 +166,7 @@ I am not exactly a designer, engineer, or creator in the strict sense, but I hav
 <div class="contact-page__site-card">
 <form class="contact-page__form" data-operator-form novalidate>
 <p class="contact-page__form-heading"><span class="contact-page__segment-label">Contact</span></p>
-<p class="contact-page__form-description">ComfyUI workflow setup/tuning, troubleshooting, and technical guidance (for example: what you should actually use). Work inquiries and small questions are both welcome.
+<p class="contact-page__form-description">ComfyUI workflow setup/tuning, troubleshooting, and technical guidance (for example: what you should actually use). Work inquiries and quick questions are both welcome. Feel free to get in touch.
 </p>
 <label class="contact-page__field">
     <span class="contact-page__field-label">Reply-to Email</span>
@@ -234,9 +234,9 @@ I am not exactly a designer, engineer, or creator in the strict sense, but I hav
 
 ## Support
 
-You do not need to pay to read this site or ask for help.
+You don't need to pay anything to read this site or to ask me for help.
 
-That said, support is always appreciated.
+That said, if you'd like to support me, I'd be very, very, very happy 🙏.
 
 - [☕ Support me on Ko-fi](https://ko-fi.com/nomadoor)
 - [♥️ Become a GitHub Sponsor](https://github.com/sponsors/nomadoor/)

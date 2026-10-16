@@ -6,7 +6,7 @@ navId: contact
 title: "联系我们"
 created: 2026-02-17
 updated: 2026-03-02
-summary: "站点修正、文章请求与运营者联系"
+summary: "站点问题反馈、文章请求、联系站长"
 seoTitle: "联系我们、文章需求"
 seoDescription: "向 Comfy with ComfyUI 报告错别字或故障、请求讲解 ComfyUI 功能或 AI 技术，或发送感想。内容会以匿名方式提交为 GitHub issue。"
 permalink: "/{{ lang }}/{{ slug }}/"
@@ -71,7 +71,7 @@ hero:
 <form class="contact-page__form" data-contact-form="request" hidden novalidate>
 <p class="contact-page__form-description">
 如果你希望我补充讲解某个 ComfyUI 功能或 AI 技术，欢迎随时提交请求。<br>
-本站保持精简，未必都能立刻追加，但我会尽量通过某种形式回应。
+本站力求简洁，不一定能加进来，但我会争取以某种形式回应。
 </p>
 <label class="contact-page__field">
 <span class="contact-page__field-label">主题</span>
@@ -81,7 +81,7 @@ hero:
 <label class="contact-page__field">
 <span class="contact-page__field-label">期望内容</span>
 <span class="contact-page__field-meta is-optional">选填</span>
-<textarea name="expectation" rows="4" placeholder="简要写下你想了解的部分"></textarea>
+<textarea name="expectation" rows="4" placeholder="请写下关于这个主题你想详细了解的部分。"></textarea>
 </label>
 <div class="contact-page__actions">
 <p class="contact-page__status" data-contact-status aria-live="polite"></p>
@@ -104,7 +104,7 @@ hero:
 </form>
 <form class="contact-page__form" data-contact-form="feedback" data-contact-message-min-length="20" hidden novalidate>
 <p class="contact-page__form-description">
-无论是鼓励、批评还是其他意见，都很有价值。感谢你的支持。
+无论是鼓励还是批评，什么样的话都会成为我的动力。一直以来谢谢大家！
 </p>
 <label class="contact-page__field">
 <span class="contact-page__field-label">内容</span>
@@ -146,17 +146,17 @@ hero:
 </div>
 </div>
 
-## 站点运营者
+## 做这个网站的人
 
 ![](/media/shared/contact/legacy_gyazo_b2e27b1ad9320212da03b23da92de02d.png){media=image}
 
 **nomadoor**
 
-我是被图像生成 AI 深深吸引的一员，从 Midjourney 早期开始一路关注到现在。
+Midjourney 的登场拉开了图像生成 AI 的序幕，我也是被它的魅力迷住的人之一。
 
-相比“用 AI 画图”，我更常思考“AI 还能带来哪些新可能”。
+比起“用 AI 画插画”，我想得更多的大概是“用 AI 能做出什么新东西”。
 
-严格来说我既不完全是设计师，也不完全是工程师或创作者，但自 Stable Diffusion 1.5 起我一直在研究开源图像/视频模型，也许能在你的问题上提供帮助。
+我算不上设计师，也算不上工程师或创作者，有点不上不下，不过从 Stable Diffusion 1.5 出现起，我就一直在研究开源的图像/视频生成模型，也许能帮上点忙。
 
 - Twitter : [@noma_door](https://x.com/noma_door)
 - Reddit : [u/nomadoor](https://www.reddit.com/user/nomadoor/)
@@ -166,7 +166,7 @@ hero:
 <div class="contact-page__site-card">
 <form class="contact-page__form" data-operator-form novalidate>
 <p class="contact-page__form-heading"><span class="contact-page__segment-label">联系我们</span></p>
-<p class="contact-page__form-description">关于 ComfyUI workflow 的搭建/调优、问题排查、技术整理（比如“到底该用哪个”）等，都可以咨询。无论是工作合作还是一般问题，都欢迎联系。
+<p class="contact-page__form-description">ComfyUI 工作流的搭建/调整、问题排查、技术梳理（比如“到底该用哪个”这类话题）等。工作上的咨询也好，随口一问也好，都欢迎，请随时联系。
 </p>
 <label class="contact-page__field">
     <span class="contact-page__field-label">回复邮箱地址</span>
@@ -228,15 +228,15 @@ hero:
       </div>
     </div>
   </div>
-  <p class="contact-page__fallback-link">若发送失败请联系: <a href="mailto:nomadoor@gmail.com">nomadoor@gmail.com</a></p>
+  <p class="contact-page__fallback-link">无法发送时请联系: <a href="mailto:nomadoor@gmail.com">nomadoor@gmail.com</a></p>
 </form>
 </div>
 
 ## 支持本站
 
-浏览本站或向我咨询都不需要付费。
+浏览本站、找我帮忙，都不需要花钱。
 
-如果愿意支持，我会非常感激。
+不过，如果能支持一下，我会非常非常非常开心🙏。
 
 - [☕ 在 Ko-fi 支持我 / Support me on Ko-fi](https://ko-fi.com/nomadoor)
 - [♥️ 成为 GitHub Sponsor](https://github.com/sponsors/nomadoor/)

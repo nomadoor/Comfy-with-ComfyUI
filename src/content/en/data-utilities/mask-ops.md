@@ -31,7 +31,7 @@ This is the mask version of the `Preview Image` node.
 
 [](/workflows/data-utilities/mask-ops/convert_mask_to_image.json)
 
-Converts a mask to a black and white `Image`.
+Converts a mask into a black-and-white `Image`.
 
 ---
 
@@ -46,8 +46,8 @@ Converts a mask to a black and white `Image`.
 Loads an image file directly as mask data.
 
 - **channel**:
-  - `red`/`green`/`blue`: If using a black and white image, any choice is OK.
-  - `alpha`: Select this if you want to use the "transparent part" of a transparent PNG as a mask.
+  - `red`/`green`/`blue`: For a black-and-white image, any of these works.
+  - `alpha`: Choose this to use the transparent areas of a transparent PNG as the mask.
 
 ### Convert Image to Mask Node
 
@@ -57,7 +57,7 @@ Loads an image file directly as mask data.
 
 Converts an `IMAGE` (RGB image) in the workflow to a `MASK`.
 
-It's like breaking down the `Load Image (as Mask)` node.
+Think of it as the `Load Image (as Mask)` node split into its parts.
 
 ### 🪢 Color To Mask Node
 
@@ -65,13 +65,13 @@ It's like breaking down the `Load Image (as Mask)` node.
 
 [](/workflows/data-utilities/mask-ops/color_to_mask.json)
 
-Converts a specific color of an image (such as a green screen) to a mask. This is so-called chroma key processing.
+Converts a specific color in an image (such as a green screen) into a mask. In other words, chroma keying.
 
-There is a core node called `ImageColorToMask` with similar functionality, but it is difficult to use because the threshold cannot be adjusted, so we use the following custom node.
+There is a core node with the same kind of function, `ImageColorToMask`, but you can't adjust its threshold, which makes it awkward to use, so I use the following custom node instead.
 
 - **[Kijai/ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes)**: `Color To Mask` node
 
-Specify the target color in RGB and adjust the color error with `threshold`.
+Specify the target color in RGB, and use `threshold` (tolerance) to set how far the color can be off.
 
 ### Create Solid Mask Node
 
@@ -85,7 +85,7 @@ Use this when you need a fully filled (or empty) mask.
 
 ### Mask Editor
 
-A tool that allows you to draw specific parts of an image as a mask (black and white image) on ComfyUI.
+A tool for painting parts of an image as a mask (black-and-white image) right inside ComfyUI.
 
 - **How to launch**: Select a `Load Image` node etc. → Click `🌔` (Open Mask Editor) in the `Node Selection Toolbox`.
 
@@ -94,12 +94,12 @@ A tool that allows you to draw specific parts of an image as a mask (black and w
 Switch functions with the tabs on the left edge.
 
 - **Draw Mask**: Draw a mask with a brush.
-- **Fill**: Fills the area enclosed by the handwritten mask.
-- **Auto Select**: Automatically masks the range of colors similar to the clicked point.
+- **Fill**: Fills an area enclosed by a hand-drawn mask.
+- **Auto Select**: Automatically masks areas with colors similar to the spot you click.
 
-When editing is complete, click `Save` in the header to apply.
+When you're done, click `Save` in the header to apply it.
 
-For detailed operation instructions, please see [Mask Editor](/en/begin-with/mask-editor/).
+For details on how to use it, see [Mask Editor](/en/begin-with/mask-editor/).
 
 ---
 
@@ -111,11 +111,11 @@ For detailed operation instructions, please see [Mask Editor](/en/begin-with/mas
 
 [](/workflows/data-utilities/mask-ops/depthmapasmask.json)
 
-A depth map is a black and white gradient image. This means it can be diverted as a mask as it is.
+A depth map is a black-and-white gradient image, which means you can use it directly as a mask.
 
-Smartphone apps have processing to blur the background of photos later, and basically, it is the same mechanism.
+Smartphone apps that let you blur a photo's background after the fact work in basically the same way.
 
-For how to create depth maps, please see [ControlNet Preprocessor](/en/basic-workflows/controlnet-prep/#frequently-used-preprocessors).
+For how to create depth maps, see [ControlNet Preprocessor](/en/basic-workflows/controlnet-prep/#frequently-used-preprocessors).
 
 ---
 
@@ -123,16 +123,16 @@ For how to create depth maps, please see [ControlNet Preprocessor](/en/basic-wor
 
 ### Resize Image/Mask Node
 
-It is covered in detail in [Resize Image/Mask Node](/en/data-utilities/resize-crop-pad/#resize-image-mask-node), so please refer to that.
+This is covered in detail in [Resize Image/Mask Node](/en/data-utilities/resize-crop-pad/#resize-image-mask-node), so see that page.
 
 ![](/media/data-utilities/mask-ops/legacy_gyazo_fd9f3fab0b5ead47c84ce51f9ec3325a.png){media=image}
 
 [](/workflows/data-utilities/mask-ops/resize_imagemask_match_size.json)
 
-Here, I will only touch on `match size`.
-When you resize an image, the size of the image and the mask may become misaligned, making it impossible to maintain correspondence.
+Here, I'll only cover `match size`.
+When you resize an image, the image and mask sizes can end up out of sync, so they no longer line up.
 
-By using `match size`, you can resize the mask side to match the reference image, keeping the shape (positional relationship) aligned.
+With `match size`, you can resize the mask to match a reference image, so the two line up while keeping the shape (and positions) intact.
 
 ### CropMask Node
 
@@ -148,7 +148,7 @@ Crops the mask to the specified range.
 
 [](/workflows/data-utilities/mask-ops/growmask.json)
 
-Expands the outline of the mask. If the value is negative, you can also narrow (thin) it.
+Expands the edges of the mask. A negative value shrinks it instead.
 
 ### 🪢 Gaussian Blur Mask Node
 
@@ -156,7 +156,7 @@ Expands the outline of the mask. If the value is negative, you can also narrow (
 
 [](/workflows/data-utilities/mask-ops/gaussian_blur_mask.json)
 
-Blurs the mask. Important for blending boundaries during composition.
+Blurs the mask. This matters for blending edges when compositing.
 
 - Included in [ComfyUI-Impact-Pack](https://github.com/ltdrdata/ComfyUI-Impact-Pack) etc.
 
@@ -166,7 +166,7 @@ Blurs the mask. Important for blending boundaries during composition.
 
 [](/workflows/data-utilities/mask-ops/invertmask.json)
 
-Inverts the black and white of the mask.
+Inverts the mask, swapping black and white.
 
 ### ThresholdMask Node
 
@@ -182,8 +182,8 @@ Converts a mask with intermediate values (gradients) into a binary (white or bla
 
 [](/workflows/data-utilities/mask-ops/remap_mask_range.json)
 
-Adjusts how the gradient mask is applied.
-Combining with the aforementioned "Depth Map", you can change "which position" in the depth to focus on, obtaining interesting effects.
+Adjusts how a gradient mask is applied.
+Combine it with the depth map from earlier, and you can shift which depth the effect focuses on, which gives some fun results.
 
 ---
 

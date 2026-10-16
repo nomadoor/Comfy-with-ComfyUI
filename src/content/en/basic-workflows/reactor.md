@@ -18,11 +18,11 @@ tags: ["id-transfer"]
 
 ## What is ReActor?
 
-**Face swap** (Deepfake) has existed for years, but back then, it required collecting hundreds of face images of the same person for training.
+**Face swap** has been around for years in the form of deepfakes, but back then you had to collect hundreds of face images of the same person and train on them.
 
-ReActor (more precisely, its core **InsightFace**) allows you to swap a face in an image or video using just **one single face photo** as a reference.
+ReActor (more precisely, its core, **InsightFace**) can swap the face in another image or video using just one face photo as a reference.
 
-Although more flexible ID transfer methods based on diffusion models have appeared recently, ReActor is still widely used because it is "relatively lightweight" and "stable due to its lack of flexibility (in a good way)."
+More flexible diffusion-based ID transfer methods have appeared since then, but ReActor is still widely used because it's relatively lightweight and, in a good way, inflexible and stable.
 
 ---
 
@@ -32,26 +32,26 @@ Although more flexible ID transfer methods based on diffusion models have appear
 
 ### Installation Method
 
-This node is a bit tricky to install and often doesn't work just by installing it from ComfyUI Manager.
+This node is a bit tricky to set up: installing it from ComfyUI Manager alone won't make it work.
 
 1. Install the ReActor node from **ComfyUI Manager**.
 2. Run `install.bat` located in `ComfyUI/custom_nodes/ComfyUI-ReActor`.
-3. **For Windows users**: This alone is usually not enough; you need to install **InsightFace** separately.
-    - See details: [How to install InsightFace](/en/notes/insightface-install/)
+3. **For Windows users**: This alone isn't enough; you also need to install **InsightFace** separately.
+    - For details, see [How to install InsightFace](/en/notes/insightface-install/)
 4. Restart ComfyUI.
 
 ---
 
 ## FaceSwap (inswapper)
 
-Basic FaceSwap simply involves inputting a "Source Image" and a "Reference Face Image" into the ReActor node.
+For a basic FaceSwap, you just feed the "original image" and a "reference face image" into the ReActor node.
 
 ![](/media/basic-workflows/reactor/legacy_gyazo_bc67dfff78c431c688d8ec1a4937969e.png){media=image}
 
 [](/workflows/basic-workflows/reactor/reactor_fast_face_swap.json)
 
 - **`input_image`**
-    - Connect the original image where you want to swap the face.
+    - Connect the original image whose face you want to swap.
 - **`source_image`**
     - Connect the reference face image (e.g., a single face photo).
 
@@ -59,15 +59,15 @@ Basic FaceSwap simply involves inputting a "Source Image" and a "Reference Face 
 
 - **`face_restore_model`**
     - If you select `GFPGANv1.3`, GFPGAN face restoration will be applied after FaceSwap.
-    - Since `inswapper` resizes the face part to 128px square for processing, details are easily lost, so this post-processing is important.
-    - *Note: It tends to give a somewhat "smooth/flat" impression.*
+    - `inswapper` resizes the face to a 128px square for processing, so details get lost easily on their own. That's why post-processing like this matters.
+    - *That said, keep in mind that the face tends to end up looking flat and featureless.*
 - **`detect_gender_input` / `detect_gender_source`**
-    - Settings to automatically detect the gender of the input/source images.
+    - Whether to automatically detect the gender of the input/source images.
     - If the result looks unnatural due to gender differences, try toggling these ON/OFF.
 - **`input_faces_index`**
     - If there are multiple faces in the `input_image`, specify which face to target.
-    - `0` is the first found face, `1` is the second, and so on.
-    - You can specify multiple faces with comma separation like `0,1` to swap multiple people at once.
+    - Think of `0` as the first face found, `1` as the second, and so on.
+    - List several separated by commas, like `0,1`, to swap multiple people at once.
 - **`source_faces_index`**
     - If there are multiple faces in the `source_image`, specify which face to use, similar to `input_faces_index`.
 
@@ -75,7 +75,7 @@ Basic FaceSwap simply involves inputting a "Source Image" and a "Reference Face 
 
 ## Using Another FaceSwap Model (HyperSwap)
 
-The `inswapper` model used above is an older model, and the high-resolution version has been sealed by the developer due to social impact concerns.
+The `inswapper` model used above is fairly old, and on top of that, its developer has withheld the high-resolution version out of concern for its social impact.
 There are several alternative models, but let's try **HyperSwap** developed by FaceFusion Labs.
 
 Here is an example using `hyperswap_1a_256.onnx`.
@@ -103,8 +103,8 @@ Here is an example using `hyperswap_1a_256.onnx`.
 
 ## About NSFW Filter
 
-To prevent the repository from being deleted, ReActor has a built-in filter for NSFW images.
-Therefore, if you use an image containing NSFW content, it will be rejected.
+To keep the repository from being taken down, ReActor has a built-in filter for NSFW images.
+So if you use an image with NSFW content, it gets rejected.
 
-I won't go into detail, but there are simple ways to bypass this.
-( [Detailer](/en/basic-workflows/detailer/) might be useful... maybe. )
+I won't go into detail, but there are simple ways around it.
+( [Detailer](/en/basic-workflows/detailer/) might come in handy... maybe. )

@@ -49,7 +49,7 @@ It is not like SAM, where you specify "this point", "this box", or "this object"
 - Use `Load Background Removal Model` to load `birefnet.safetensors`.
 - Input the image and model into `Remove Background` to output a background-removal `MASK`.
 - Use `Join Image with Alpha` when you want an image with a transparent background.
-  - If you use the mask as-is, the foreground becomes transparent, so insert `Invert Mask` first.
+  - If you use the mask as-is, the foreground becomes transparent, so add `Invert Mask` in between.
 
 ### Fill the Background
 

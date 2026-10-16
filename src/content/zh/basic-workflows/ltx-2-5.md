@@ -49,7 +49,7 @@ tags: []
 
 ---
 
-## 模型下载
+## 下载模型
 
 > [!WARNING]
 > LTX 2.5 的模型需要认证才能下载。请用 Hugging Face 账号登录，然后在 [LTX-2.5 的页面](https://huggingface.co/Lightricks/LTX-2.5) 点击 `Agree and Access`。
@@ -134,7 +134,7 @@ tags: []
 
 LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视频长度。
 
-**模型下载**
+**下载模型**
 
 - model_patches
   - [ltx-2.5-duration-head-bf16.safetensors](https://huggingface.co/Lightricks/LTX-2.5/blob/main/model_patches/ltx-2.5-duration-head-bf16.safetensors) (3.84 MB)
@@ -202,7 +202,7 @@ LTX 2.5 可以根据提示词内容，自动推测表现这些内容所需的视
 
 > [!NOTE]
 > 根据图像的不同，结果有时不像补帧，反而更像转场。<br>
-> 对于插在中间的 `LTXVAddGuide`，可以尝试将 `strength` 降到 0.3～0.4 左右。
+> 插在中间的 `LTXVAddGuide`，也许把 `strength` 降到 0.3～0.4 左右会更好。
 
 {% endmediaRow %}
 
@@ -222,7 +222,7 @@ LTX 2.5 与许多为 LTX 2.3 制作的 IC-LoRA 兼容，可以直接使用。
 
 和普通 ControlNet 一样，可以用线稿、深度图或姿势视频控制生成视频。
 
-**模型下载**
+**下载模型**
 
 - loras
   - [ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control/blob/main/ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors) (654 MB)
@@ -238,7 +238,7 @@ LTX 2.5 与许多为 LTX 2.3 制作的 IC-LoRA 兼容，可以直接使用。
 
 {% workflow "/workflows/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_union_control_pose.json", level=3, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="404s", tags=["1MP"], samplers=[{ name: "1st", speed: "2.37 s/it" }, { name: "2nd", speed: "8.56 s/it" }] %}
 
-关于 IC-LoRA 的详细说明，请参阅 [LTX 2 / IC-LoRA (Pose)](/zh/basic-workflows/ltx-2/#ic-lora-pose)。
+关于 IC-LoRA 的详细说明写在 [LTX 2 / IC-LoRA (Pose)](/zh/basic-workflows/ltx-2/#ic-lora-pose)，感兴趣的话可以看看。
 
 {% outputs %}
 ![输入 / 姿势](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_union_control_pose_input.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_union_control_pose_output.mp4){media=loop}
@@ -250,7 +250,7 @@ Lightricks 官方发布了许多可以用 LTX 2.5 做 VFX 处理的[有趣 IC-Lo
 
 有把白天变成夜晚的，也有让场景被水淹没的，种类很多。这次我们来试试能把视频中特定物体去掉的 **Clean Plate**。
 
-**模型下载**
+**下载模型**
 
 - loras
   - [ltx-2.5-22b-ic-lora-clean-plate-1.0.safetensors](https://huggingface.co/Lightricks/LTX-2.5-22b-IC-LoRA-Clean-Plate) (327 MB)
@@ -271,7 +271,7 @@ Lightricks 官方发布了许多可以用 LTX 2.5 做 VFX 处理的[有趣 IC-Lo
 不要像图像编辑那样写“去掉〇〇”，而是用普通的句子描述〇〇消失之后的景象。如果要去掉的东西很明确，可以像 `no bicycle anywhere in the frame` 这样，再补充一句“没有它”，效果会更稳定。
 
 > [!NOTE]
-> 位于画面边缘或部分被遮挡的物体似乎比较容易去干净，而占据画面中央大部分的物体似乎不太擅长。大概是因为去掉之后，视频中几乎没有留下可以参考的背景吧。
+> 位于画面边缘或部分被遮挡的物体比较容易去干净，而占据画面中央一大块的物体似乎就不太擅长了。大概是因为去掉之后，视频中几乎没有留下背景的线索吧。
 
 {% outputs %}
 ![输入](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate_input.mp4){media=loop} ![输出](/media/basic-workflows/ltx-2-5/ltx_2_5_ic_lora_clean_plate_output.mp4){media=loop}
@@ -285,7 +285,7 @@ Lightricks 官方发布了许多可以用 LTX 2.5 做 VFX 处理的[有趣 IC-Lo
 
 不过它不会直接输出透明背景的视频，所以需要稍微做一些后期处理。
 
-**模型下载**
+**下载模型**
 
 - loras
   - [ltx-2.5-22b-ic-lora-alpha-gen-0.9.safetensors](https://huggingface.co/Lightricks/LTX-2.5-22b-IC-LoRA-Alpha-Gen) (1.31 GB)
@@ -333,7 +333,7 @@ ComfyUI 无法制作透明视频，所以这里把它做成绿幕视频。
 
 - [Lightricks/ComfyUI-LTXVideo](https://github.com/Lightricks/ComfyUI-LTXVideo)
 
-**模型下载**
+**下载模型**
 
 - loras
   - [ltx-2.5-22b-ic-lora-refine-details-1.0.safetensors](https://huggingface.co/Lightricks/LTX-2.5-22b-IC-LoRA-Refine-Details) (1.31 GB)

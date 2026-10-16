@@ -21,7 +21,7 @@ Wildcards are a feature that randomly replaces part of a prompt for each queue r
 
 For example, if you write `photo of {red|yellow|blue} flower`, one of `red` / `yellow` / `blue` will be selected at execution time.
 
-When you generate many images at once, using the exact same prompt can get repetitive, so this is a simple way to add variety.
+When you churn out a lot of images at once, the same prompt every time gets boring, so use this to mix things up!
 
 ---
 
@@ -44,7 +44,7 @@ ComfyUI text fields (for example, `CLIP Text Encode`) support wildcard syntax in
 
 By default, only the simplest wildcard pattern is available.
 
-If you want to nest wildcards, bias word frequency, or load candidates from text files, Impact-Pack is the standard choice.
+If you want to nest wildcards, make some words come up more often than others, or load options from a text file, Impact-Pack is the go-to.
 
 ### Custom node
 
@@ -69,7 +69,7 @@ This is the most basic form: list candidates inside `{}`.
 
 - `{a|b|c}`
 
-  - One item is selected using `|`
+  - One of the `|`-separated items is picked
 - `{a|{1|2|3}|c}`
 
   - Nesting is supported
@@ -80,7 +80,7 @@ This is the most basic form: list candidates inside `{}`.
 
 **Load from a text file**
 
-You can prepare a word list separately and call it as a wildcard source.
+You can also keep a word list in a separate file and use it as a wildcard.
 
 - 1. Location
 

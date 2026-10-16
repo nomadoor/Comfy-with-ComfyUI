@@ -15,7 +15,7 @@ hero:
   image: ""
 ---
 
-## What is LLM / MLLM?
+## What are LLMs / MLLMs?
 
 An LLM is, very roughly speaking, an AI that reads text and responds with text — like ChatGPT.
 
@@ -25,7 +25,7 @@ An MLLM is an LLM that can also accept images and other inputs. As the name sugg
 
 ## What do you use it for in ComfyUI?
 
-In ComfyUI, LLMs are used less for conversation and more as a "behind-the-scenes" helper — creating the baton to pass to image generation models.
+In ComfyUI, LLMs are used less for conversation and more as a "behind-the-scenes" helper, preparing what gets handed off to image generation models.
 
 - **Prompt expansion & translation**
   - Turning a rough human instruction into a detailed English prompt that AI can understand
@@ -40,17 +40,17 @@ In ComfyUI, LLMs are used less for conversation and more as a "behind-the-scenes
 
 ## 4 ways to use LLMs in ComfyUI
 
-ComfyUI is an engine specialized for image generation, so its LLM functionality is limited — the underlying mechanisms are completely different.
+ComfyUI is an engine specialized for image generation, so its LLM functionality is limited. They work completely differently, after all.
 
 That means you'll generally use core nodes, custom nodes, or external integrations.
 
 ### TextGenerate node
 
-This is a recently added core node that tries to let you use the text encoder from image generation models as an LLM / MLLM.
+This core node was added recently so that the text encoders used for image generation can also be used as LLMs / MLLMs.
 
-Because it is forced to run entirely inside ComfyUI, it is much slower and less capable than dedicated engines such as `llama-cpp`.
+Because it's brute-forced with nothing but ComfyUI's own code, it falls well behind dedicated engines such as `llama-cpp` in both speed and features.
 
-It is certainly nice that this works in the core at all, but at the moment it is still hard to recommend.
+Being able to run it in the core at all is great, of course, but for now it's not something I can recommend yet.
 
 ![Gemma 3](/media/basic-workflows/llm-mllm/legacy_gyazo_4e2275270a8f40c8ecdbe2b286addb2e.png){media=image}
 
@@ -65,7 +65,7 @@ It is certainly nice that this works in the core at all, but at the moment it is
 
 Download a model file and run it on your own PC, just like image generation models.
 
-Lightweight models specialized for specific tasks — like caption generation or object detection — are the main use case here.
+The main players here are lightweight models specialized for specific tasks, like caption generation or object detection.
 
 ![Florence2](/media/basic-workflows/florence2/legacy_gyazo_b364e8bc1ba2799ad953384f4dfe2079.png){media=image}
 
@@ -102,5 +102,5 @@ Bluntly put, these are far smarter and faster than local models.
 
 Recent image generation models (like Qwen-Image and Z-Image) embed MLLMs such as Qwen or Gemma as their text encoder — the component that understands your prompt.
 
-They use it to understand text prompts and reference images for generation and editing, but in a sense, that's all they're using it for — a rather lavish arrangement.
-It would be interesting if we could use that MLLM directly for other purposes someday…
+It's there to understand text prompts and reference images for generation and editing, but put the other way around, that's all it's used for, which is a rather lavish setup.
+It would be fun if we could use it directly as an MLLM…

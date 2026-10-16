@@ -28,7 +28,7 @@ Depth, contact, intertwined multi-person motion, non-human character motion, and
 
 So SCAIL-2 passes the reference image and motion video almost directly to the DiT.
 
-Rather than humans building a complicated processing pipeline by hand, it is often more flexible to prepare the right dataset and let the AI understand the task. That way of thinking will probably become more common from here.
+Rather than having people hand-craft a complicated processing pipeline, building the right dataset and letting the AI understand the task gives you something more flexible and easier to use. I expect we'll see this way of thinking more and more.
 
 ---
 
@@ -74,7 +74,7 @@ Move a **reference image** using a motion video.
 
 [](/workflows/basic-workflows/scail-2/scail_2_animation.json)
 
-The base workflow is similar to [Wan-Animate](/en/basic-workflows/wan-animate/), but this one is much simpler, so let's look through it.
+The base workflow is the same as [Wan-Animate](/en/basic-workflows/wan-animate/), but it's much simpler, so let's take it easy and go through it.
 
 {% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_0846209526768f5c450c700d1a153dad.png {media=image}", width=33, align="left" %}
 **Reference Image / Motion Video**
@@ -84,7 +84,7 @@ The reference image and motion video are resized internally, so they do not need
 - Similar aspect ratios are easier to handle.
 - The pose in the image and the pose in the video do not need to match perfectly.
 - However, if they are too different, generation will fail.
-- It is usually safer to choose a reference image close to the first frame of the motion video.
+- It's better to choose a reference image close to the first frame of the motion video.
 
 {% endmediaRow %}
 
@@ -184,7 +184,7 @@ Set `replacement_mode` to `true`.
 
 SCAIL-2 also supports videos and images with multiple people.
 
-No special operation is required. As before, just input the video and reference image.
+Nothing special is needed. Just input the video and reference image as before.
 
 ![](/media/basic-workflows/scail-2/legacy_gyazo_a04e322f84ca4377479a7760a60436cd.png){media=image}
 
@@ -193,13 +193,13 @@ No special operation is required. As before, just input the video and reference 
 {% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_86e8ccd07a045bb039e2e69b81b2781b.png {media=image}", width=33, align="left" %}
 **Create SCAIL-2 Colored Mask**
 
-When there are multiple people, it becomes important to control which person should follow which motion. SCAIL-2 uses colored masks for this.
+With multiple people, which motion goes to which person becomes important, and SCAIL-2 controls this with colored masks.
 
 - When SAM3.1 segments multiple targets, `Create SCAIL-2 Colored Mask` paints them in different colors in order.
 - Basically, matching colors are linked together, so use options such as `sort_by` to align the colors.
 
 > [!NOTE]
-> However, as in the output example below, the color correspondence and the motion may not always match. This is only a light condition, and the model may simply choose the closer composition.
+> However, as in the output example below, the color correspondence and the motion may not always match. It's only a loose condition, and sometimes the model simply picks whichever is closer in composition.
 
 {% endmediaRow %}
 
@@ -232,9 +232,9 @@ Input the images you want to reference into `Batch Images`.
 
 {% endmediaRow %}
 
-Multiple reference images can be used, but this does not automatically adjust the background to the person's size or rewrite the whole image into a natural composition.
+You can use multiple reference images, but it won't adjust the background to match the person's size or relight the whole scene naturally.
 
-It is useful for supplementing a person from another angle, but if you want to composite the background, it is better to first create a single polished reference image with image editing.
+It works well for filling in a person from other angles, but if you want to composite a background, you're better off building a single image with image editing than using this feature.
 
 {% outputs %}
 ![reference image 1](/media/basic-workflows/scail-2/legacy_gyazo_d2935f1c3b0ff3016616c54d88d6be56.png){media=image} ![reference image 2](/media/basic-workflows/scail-2/legacy_gyazo_7819645aea776b0aa5e24e8d9f642487.png){media=image} ![reference image 3](/media/basic-workflows/scail-2/legacy_gyazo_4617d933cec4a3431d36af11c65180e3.png){media=image} ![motion video](/media/basic-workflows/scail-2/legacy_gyazo_f14aef04ac197a4b92680e05c4fbd178.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_50154740248550b3ffa1dfee024da941.mp4){media=loop}
@@ -244,7 +244,7 @@ It is useful for supplementing a person from another angle, but if you want to c
 
 ## Animation Mode (Over 81 Frames)
 
-SCAIL-2 basically generates up to 81 frames, but with `WAN Context Windows (Manual)`, you can generate longer videos by splitting along the time direction.
+SCAIL-2 normally generates up to 81 frames, but with `WAN Context Windows (Manual)`, you can generate longer videos by splitting them along the time axis.
 
 ![](/media/basic-workflows/scail-2/legacy_gyazo_43b5c2e2684957795ab7d80f8ce9976a.png){media=image}
 
@@ -253,10 +253,10 @@ SCAIL-2 basically generates up to 81 frames, but with `WAN Context Windows (Manu
 {% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_55aa8d3ccee17c3a43f87f17895ebfb1.png {media=image}", width=33, align="left" %}
 **WAN Context Windows (Manual)**
 
-It is like tiling along the time axis, or context sliding.
+It's something like tiling along the time axis, or context sliding.
 
 - Set `context_length` to 81, and it generates internally in chunks of 81 frames.
-- If you leave it as-is, the seams will be obvious, so set an appropriate number of frames in `context_overlap` as overlap.
+- If you leave it as-is, the seams will be obvious, so set `context_overlap` to a suitable number of frames as an overlap margin.
 
 {% endmediaRow %}
 

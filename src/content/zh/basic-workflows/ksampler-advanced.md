@@ -5,8 +5,8 @@ section: basic-workflows
 slug: ksampler-advanced
 navId: ksampler-advanced
 title: "KSampler (Advanced) 节点"
-summary: "可以拆分采样、在中途切换提示词或模型的 KSampler 进阶版"
-seoTitle: "ComfyUI 的 KSampler (Advanced) 用法"
+summary: "可以拆分采样、并在中途切换的 KSampler 进阶版"
+seoTitle: "ComfyUI KSampler (Advanced) 使用方法"
 seoDescription: "讲解 KSampler (Advanced) 的 add_noise、start_at_step、end_at_step 等参数，以及拆分采样、在中途切换提示词或模型（LoRA）的用法，附工作流。"
 created: 2025-12-06
 updated: 2026-03-02
@@ -19,24 +19,24 @@ hero:
 
 ![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_6f12a584833996a7a4800a13bb59cc23.png){media=image}
 
-`KSampler (Advanced)` 节点，是无印 `KSampler` 节点的上位互换。
-参数 `denoise` 消失增加了以下的 4 个。
+`KSampler (Advanced)` 节点是普通 `KSampler` 节点的升级版，能做到 `KSampler` 能做的一切。
+参数方面，去掉了 `denoise`，新增了以下 4 个：
   - `add_noise`
   - `start_at_step`
   - `end_at_step`
-  - `return_with_leftsover_noise`
+  - `return_with_leftover_noise`
 
-在 ComfyUI 之中，也认为是原本最有趣的功能之一，慢慢看吧。
+我觉得这是 ComfyUI 里最有意思的功能之一，我们慢慢来看。
 
 ---
 
-## 扩散模型和 Sampling 的复习
+## 复习扩散模型和 Sampling
 
 ![](/media/ai-capabilities/sampling/legacy_gyazo_bf9d6d2e5b528f0b82f9d13e3c18c5fa.png){media=image}
 
-[扩散模型](/zh/ai-capabilities/diffusion-models/) 是，通过从完全的噪声，徐徐去除噪声从而生成图像的机制。
+[扩散模型](/zh/ai-capabilities/diffusion-models/) 的原理是：从一张完全的噪声开始，一点点去除噪声，最终生成图像。
 
-如果是上的图像，在第 0 步追加满量的噪声，在第 20 步所有的噪声被去除，图像完成。
+以上图为例，第 0 步加入满量的噪声，到第 20 步时噪声全部去除，图像就完成了。
 
 ---
 
@@ -44,45 +44,45 @@ hero:
 
 ### `start_at_step` 和 `end_at_step`
 
-在 KSampler (Advanced)，通过设定 `start_at_step` 和 `end_at_step`，可以控制从哪里开始采样，推进采样到哪里。
+在 KSampler (Advanced) 中，可以通过 `start_at_step` 和 `end_at_step` 控制采样从哪一步开始、进行到哪一步为止。
 
 ![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_e73ba8cf96fd09b8c5335844858a6c86.png){media=image}
 
-例如，设定 `start_at_step` 为 **4** / `end_at_step` 为 **11** 时，对图像的白色部分只进行采样。
+例如把 `start_at_step` 设为 **4**、`end_at_step` 设为 **11** 时，只会对图中白色的部分进行采样。
 
 ### `add_noise`
 
-虽然重复几次，扩散模型是制作噪声图像，徐徐去除噪声的机制。
+再重复一次：扩散模型的原理是先生成一张噪声图，再一点点去除噪声。
 
-那么，那个噪声从哪里来呢？  
-是的，追加噪声的也是 KSampler 进行的。
+那么，这些噪声是从哪来的呢？  
+没错，加噪声这件事也是 KSampler 做的。
 
-在 KSampler (Advanced)，可以用 `add_noise` 参数选择追加还是不追加噪声。
+在 KSampler (Advanced) 中，可以用 `add_noise` 参数选择是否添加噪声。
 
 ![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_64cca8d8e53b01d4315b4aec434dd5ec.png){media=image}
 
 [](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_add_noise.json)
 
-🟫 假如设定 `add_noise` 为 disable 进行采样，因为从没有噪声的图像持续去除噪声所以什么都不生成。
+🟫 假如把 `add_noise` 设为 disable 再进行采样，就会对一张没有噪声的图像不断去噪，结果什么也生成不出来。
 
 ---
 
-## 分割采样
+## 拆分采样
 
-只采样中间的步数，或不追加噪声，到底在哪里有用呢？
+只采样中间的几步、不添加噪声……这些到底有什么用呢？
 
-正因为是这个 KSampler (Advanced) 才能做的事，有将一个采样分割为 2 个以上的 KSampler，这样的事。
+KSampler (Advanced) 才能做到的一件事，就是把一次采样拆分给 2 个以上的 KSampler 来完成。
 
 ![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_27eed74329f52442a046e59245ee9b14.png){media=image}
 
-如图，前半 0 ~ 10step 用 🟪Ksample (Advanced)、11~20step 用 🟨KSampler (Advanced) 进行试一下吧。
+如图，我们试着让前半段 0 ~ 10step 由 🟪KSampler (Advanced) 完成，11~20step 由 🟨KSampler (Advanced) 完成。
 
 ![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_d57cb22d3d85f90010815d19d45bb638.png){media=image}
 
 [](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_divide.json)
 
-我想知道即使分割为 2 个生成的图像也完全一样。
-因为参数稍微麻烦，仔细看。
+可以看到，即使拆成 2 段，生成的图像也完全一样。
+参数有点绕，我们仔细看一下。
 
 {% mediaRow img="/media/basic-workflows/ksampler-advanced/legacy_gyazo_05f6a71f5fe47d5c2257bce31a015d2b.png{media=image}", width=33, align="left" %}
 **🟪KSampler (Advanced)**
@@ -90,79 +90,79 @@ hero:
 - `start_at_step` : `0`
 - `end_at_step` : `10`
 - `return_with_leftover_noise` : `enable`
-  - 保持残留噪声的状态返回 latent。
+  - 在保留剩余噪声的状态下返回 latent。
 {% endmediaRow %}
 
 {% mediaRow img="/media/basic-workflows/ksampler-advanced/ksampler_advanced_2nd.png{media=image}", width=33, align="left" %}
 **🟨KSampler (Advanced)**
 - `add_noise` : `disable`
-  - 因为残留噪声的 latent 被渡过来，所以在这里不追加噪声。
+  - 因为传进来的 latent 还带着剩余噪声，所以这里不再添加噪声。
 - `start_at_step` : `10`
-  - 设为与 🟪 的 `end_at_step` 相同。
+  - 与 🟪 的 `end_at_step` 设为相同的值。
 - `end_at_step` : `20`
-  - 设定为比整体 step 数大的值的情况，内部变得与 `steps` 相同。
+  - 如果设成比总 step 数更大的值，内部会按与 `steps` 相同的值处理。
 - `return_with_leftover_noise` : `disable`
 {% endmediaRow %}
 
-虽然分割似乎没有意义，但这很有趣。
+拆分看起来似乎没什么意义，但有意思的就在这里。
 
 ---
 
-## 正因为是 KSampler (Advanced) 能做的事
+## KSampler (Advanced) 才能做的事
 
-### 提示词的切换
+### 切换提示词
 
-最初使用 "A" 的提示词，从采样途中切换为 "B" 的提示词，能做这样的事。
+可以先用提示词 "A"，在采样中途切换到提示词 "B"。
 
 ![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_6fd6725df9ce2fd370f7561927bafd4e.png){media=image}
 
 [](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_prompt_editing.json)
 
-在这个 workflow，最初的 10step 用 `红苹果`、剩下用 `红兔子` 这样的提示词生成。
+这个工作流中，前 10step 用 `红苹果`、剩下的用 `红兔子` 这个提示词来生成。
 
 {% outputs %}
 ![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_b9db108769cb804df9df3fe8212e7707.mp4){media=loop}
 {% endoutputs %}
 
-为了更易懂，试着将切换步数每改变 1 时的生成图像做成了视频。  
-曾是 100% 苹果的东西，徐徐变成了兔子。
+为了更直观，我把切换步数每次改变 1 时生成的图像做成了视频。  
+原本 100% 是苹果，慢慢地变成了兔子。
 
 > [!NOTE]
-> 如果是 Stable Diffusion web UI 用户，也许会想起 [Prompt Editing](https://scrapbox.io/work4ai/Prompt_Editing)。实际上，是相似的东西。  
-> 在那之中有每 1steps 切换提示词的东西，但在 ComfyUI，很遗憾如果没有自定义节点就无法做。  
-> 如果排列 20 个 KSampler (Advanced) 的话能做，但，嘛…不做呢……
+> 如果你是 Stable Diffusion web UI 用户，可能会想起 [Prompt Editing](https://scrapbox.io/work4ai/Prompt_Editing)。实际上两者差不多。  
+> 其中有每 1 step 切换一次提示词的用法，可惜在 ComfyUI 中，没有自定义节点就做不到。  
+> 排 20 个 KSampler (Advanced) 倒是可以做到，不过嘛……没人会这么做吧……
 
-### 模型 (LoRA) 的切换
+### 切换模型 (LoRA)
 
-同样地，也可以从途中切换模型或 LoRA。
+同样，也可以在中途切换模型或 LoRA。
 
 ![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_f85b62fe88508687bf562fd162fcc569.png){media=image}
 
 [](/workflows/basic-workflows/ksampler-advanced/sd1_5_ksampler_advanced_lora.json)
 
-节点增加变得稍微麻烦了呢。  
-只是，仔细看的话 text2image 的 workflow 排列了 2 个，只是在途中切换而已。
+节点变多了，看起来有点复杂了呢。  
+不过仔细看就会发现，只是并排放了 2 个 text2image 工作流，在中途切换而已。
 
-以 **无 LoRA** 生成最初的 6step，以 **有 LoRA** 生成剩余。
+前 6step **不使用 LoRA**，剩下的 **使用 LoRA** 生成。
 
 {% outputs %}
 ![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_ca0b90aaa5297a515c7bfe8f94e55684.png){media=image}
 {% endoutputs %}
 
 
-这是变成像素画的 LoRA，但 LoRA 以外“变成像素画”的概念之外，也持有作为学习素材的画的记忆。
+这是一个把图像变成像素画的 LoRA，不过 LoRA 除了“变成像素画”这个概念之外，也带有训练素材中那些画的记忆。
 
-因此，并不是无 LoRA 生成时的图像原样变成像素画。  
-试着对比看不使用 LoRA 时和适用全 step 时，不仅变成了像素画风格，连苹果的形状都变了。
+因此，并不是把不用 LoRA 时生成的图像原样变成像素画。  
+对比一下不使用 LoRA 时和全部 step 都使用 LoRA 时的结果，可以看到不仅变成了像素画风格，连苹果的形状都变了。
 
-**扩散模型，在序盘的步数制作形，在后盘描绘细部。**  
-制作形的最初 step 不挂 LoRA，只在后半挂 LoRA，从而可以活用模型本来的能力并进行由 LoRA 带来的画风变换。
+**扩散模型在前期的步数中确定形状，在后期描绘细节。**  
+确定形状的前几个 step 不使用 LoRA，只在后半段使用 LoRA，就能在发挥模型本身能力的同时，用 LoRA 转换画风。
 
 ---
 
 ## image2image
 
-从途中追加噪声，这就原样连接 image2image 的机制。  
-那么，就这样看看 image2image 的机制吧。
+从中途开始添加噪声，这正好就是 image2image 的原理。  
+那么，接下来就看看 image2image 的原理吧。
 
 → [image2image](/zh/basic-workflows/sd15-image2image/)

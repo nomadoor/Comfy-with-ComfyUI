@@ -7,7 +7,7 @@ navId: media
 title: "媒体 (Media)"
 created: 2026-02-06
 updated: 2026-03-02
-summary: "关于媒体文件"
+summary: "关于媒体"
 seoTitle: "在 ComfyUI 中读取与保存图像、视频、音频"
 seoDescription: "ComfyUI 处理媒体的基础节点汇总。介绍 Load Image、Save Image 等图像节点，包括 Video Helper Suite 在内的视频节点、音频节点以及便捷的读取方法。"
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
@@ -19,29 +19,29 @@ hero:
 
 ### Load Image 节点
 
-将图像读取到 ComfyUI 中。
+把图像加载到 ComfyUI 中。
 
 ![](/media/begin-with/media/legacy_gyazo_9dd4bfe10197dddec18b0e7a1dc94f53.mp4){media=loop}
 
-除了搜索并添加节点外，还有几种方便的方法。
+除了搜索并添加节点，还有几种方便的方法。
 - a. 点击 `choose file to upload` 选择文件
 - b. 将图像拖放到节点上
-- c. 在剪贴板中有图像的状态下，在画布上按 `Ctrl + V`，会作为 `Load Image` 节点粘贴。
+- c. 剪贴板里有图像时，在画布上按 `Ctrl + V`，就会粘贴成一个 `Load Image` 节点。
 
 > [!NOTE]
 > 上传的图像会被复制到 `ComfyUI\input` 文件夹，并从那里读取。**并不会引用原始文件。**
 >
-> 这个图像只要不从 input 文件夹中删除就不会消失，因此一旦 Load 过的图像可以多次使用。
+> 只要不从 input 文件夹里删掉，这些图像就会一直在，所以 Load 过一次的图像可以反复使用。
 
 ### Preview Image 节点
 
-当场确认生成的图像。
-由于不会被保存，因此用于暂时确认处理的中途经过或生成结果。
+直接查看生成的图像。
+它不会保存图像，适合临时查看处理的中间结果或生成结果。
 
 ![](/media/begin-with/media/legacy_gyazo_9f5a3055bbb8ef271583545155f70371.mp4){media=loop}
 
-- 其他图像类节点也通用，可以通过右键菜单中的 `Save Image` 或 `Copy Image` 来保存或复制图像。
-- 不需要特地去 output 文件夹找图片，很方便。
+- 其他图像类节点也一样，可以通过右键菜单的 `Save Image` 或 `Copy Image` 保存或复制图像。
+- 不用特地去 output 文件夹里找图片，很方便。
 
 
 ### Save Image 节点
@@ -49,13 +49,13 @@ hero:
 保存生成的图像。
 
 - 默认保存位置: `ComfyUI\output`
-- 文件名会自动赋予连号。(例: `ComfyUI_00001_.png`)
+- 文件名会自动加上序号。(例: `ComfyUI_00001_.png`)
 
-通过在 `filename_prefix` 中输入数值，可以控制保存目录和文件名格式。
+在 `filename_prefix` 中填入内容，就可以控制保存目录和文件名格式。
 
-主要使用的格式如下：
+常用的写法如下：
 
-| 用途 | 格式例 | 说明 |
+| 用途 | 写法示例 | 说明 |
 |------|--------|------|
 | 插入日期 | `%date:yyyy-MM-dd%` | 插入年月日（例: `2025-11-23`） |
 | 创建子文件夹 | 包含 `/` | 包含 `/` 会被视为文件夹层级 |
@@ -65,17 +65,17 @@ hero:
 ComfyUI/output/2025-11-23/cat_project_00001_.png    #输出例
 ```
 
-- 虽然还有很多其他用法，但详细请见：[ComfyUI 解説 (wiki ではない)/SaveImage](https://comfyui.creamlab.net/nodes/SaveImage)
+- 还有很多其他写法，详情请看这里：[ComfyUI 解説 (wiki ではない)/SaveImage](https://comfyui.creamlab.net/nodes/SaveImage)
 
-如果想更改默认保存位置，请在 [命令行启动参数](/zh/begin-with/command-line-arguments/) 中进行设置。
+如果想修改默认保存位置，可以通过 [命令行参数](/zh/begin-with/command-line-arguments/) 设置。
 ```powershell
 main.py --output_dir --output-directory [path]
 ```
 
 ### Load Image (from Outputs) 节点
 
-`Save Image` 节点保存的最新图像会被读取到这里。
-有时被用作伪循环处理。
+`Save Image` 节点保存的最新图像会加载到这里。
+有时会用来实现伪循环处理。
 
 ![](/media/begin-with/media/legacy_gyazo_1b344fc1baa844c784d53a9790e6aafb.mp4){media=loop}
 
@@ -87,7 +87,7 @@ main.py --output_dir --output-directory [path]
 
 [](/workflows/begin-with/media/image_comparer_rgthree.json)
 
-- 通过 [rgthree/rgthree-comfy](https://github.com/rgthree/rgthree-comfy) 添加。
+- 由 [rgthree/rgthree-comfy](https://github.com/rgthree/rgthree-comfy) 提供。
 
 ---
 
@@ -95,20 +95,20 @@ main.py --output_dir --output-directory [path]
 
 ### Load Video 节点
 
-读取视频。
+加载视频。
 
 ![](/media/begin-with/media/legacy_gyazo_96531a04d73333953691800babd073b9.png){media=image}
 
-在 ComfyUI 中，许多节点将视频视为 **连续的静态图像** 来处理。
-但是，这个节点的输出是 `VIDEO` 类型，直接是无法使用的。需要通过 `Get Video Components` 节点，将视频分解为图像、音频和 fps。
+在 ComfyUI 中，很多节点会把视频当作 **图像序列** 来处理。
+但这个节点输出的是 `VIDEO` 类型，无法直接使用。需要通过 `Get Video Components` 节点，把视频拆成图像、音频和 fps。
 
-因此，处理视频时推荐使用后述的 **Video Helper Suite**。
+因此，处理视频时推荐使用后面介绍的 **Video Helper Suite**。
 
 > [!WARNING]
-> 视频基本上都是经过压缩的，但在 ComfyUI 中读取时会作为连续图像（非压缩）展开。
-> 如果读取 4K 高 fps 视频等，即使只有几秒钟，也可能耗尽 PC 的 RAM 导致崩溃。
+> 视频基本上都是压缩过的，但在 ComfyUI 中加载时，会被展开成未压缩的图像序列。
+> 如果加载 4K、高 fps 的视频，哪怕只有几秒，也可能耗尽电脑的 RAM 而崩溃。
 >
-> **Video Helper Suite** 的节点可以进行图像缩放或指定读取帧数，从内存管理的角度来看也更推荐使用。
+> **Video Helper Suite** 的节点可以缩放图像、指定加载的帧数，从内存管理的角度来看也更推荐。
 
 ### Save Video 节点
 
@@ -116,50 +116,50 @@ main.py --output_dir --output-directory [path]
 
 ![](/media/begin-with/media/legacy_gyazo_695faf8fda159e16dc56ef533e28eb8f.png){media=image}
 
-这次反过来，需要将连续图像转回 `VIDEO`，因此使用 Create Video 节点将图像和音频合并。
+这次反过来，需要把图像序列转回 `VIDEO`，所以要用 Create Video 节点把图像和音频合在一起。
 
 ## 🎥Video Helper Suite
 
 [Kosinkadink/ComfyUI-VideoHelperSuite](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite)
 
-处理视频用的便捷节点群。
-比核心节点存在得更久，功能丰富且易用，因此经常被使用。
+一套方便处理视频的节点。
+它比核心节点出现得更早，功能丰富又好用，所以很多时候会用它。
 
 ![](/media/begin-with/media/legacy_gyazo_ebfd8a274dbdecb613f3fa232eb3dbb0.png){media=image}
 
 ### Load Video (Upload/Path) 节点
 
-在读取时，可以降低 FPS 或缩小尺寸。
-只要以当前视频生成 AI 所需的最低限度参数读取视频，就不会产生多余的负载。
+加载时可以降低 FPS 或缩小尺寸。
+只要按当前视频生成 AI 所需的最低参数来加载视频，就不会带来多余的负担。
 
-和 Load Imaeg 节点一样，也可以通过拖放来读取视频。
+和 Load Image 节点一样，也可以拖放视频来加载。
 
-加载视频的 fps 和帧数等，从 `Video Info` 节点获取。
+已加载视频的 fps、帧数等信息，可以从 `Video Info` 节点获取。
 
 | 参数名 | 说明 |
 | --- | --- |
-| force_rate | 指定帧率（0 为无效） |
-| custom_width | 缩放时的宽度（0 为无效） |
-| custom_height | 缩放时的高度（0 为无效） |
+| force_rate | 指定帧率（0 表示不启用） |
+| custom_width | 缩放时的宽度（0 表示不启用） |
+| custom_height | 缩放时的高度（0 表示不启用） |
 | frame_load_cap | 读取帧数的上限（0 为无限制） |
 | skip_first_frames | 开头跳过的帧数 |
 | select_every_nth | 每 N 帧获取 1 帧（抽帧） |
-| format | 输出格式（可选择对应模型的预设） |
+| format | 输出格式（可以选择适合各模型的预设） |
 
 ### Video Combine 节点
 
-直接输入连续图像、音频来创建视频。
+直接输入图像序列和音频来生成视频。
 
 | 参数名 | 说明 |
 | --- | --- |
-| images | 输入图像（连续） |
+| images | 输入图像（序列） |
 | audio | 输入音频 |
 | frame_rate | 输出帧率 |
-| loop_count | 循环输出输入视频 |
+| loop_count | 把输入的视频循环后输出 |
 | filename_prefix | 与 `Save Image` 节点相同 |
 | format | 输出格式（mp4, gif, webp 等） |
-| pingpong | 往返播放（播放后追加倒放） |
-| save_output | 关闭后不会保存，仅进行预览 |
+| pingpong | 往返播放（播放完后接上倒放） |
+| save_output | 关闭后不保存，只做预览 |
 
 ---
 
@@ -167,17 +167,17 @@ main.py --output_dir --output-directory [path]
 
 ### Load Audio 节点
 
-读取音频文件。
+加载音频文件。
 
 ### Preview Audio 节点
 
-当场确认音频。
+直接试听音频。
 
 ### Save Audio 节点
 
 保存音频。
 
-根据保存格式分为以下 3 种。
+根据保存格式，有以下 3 种。
 
 - `Save Audio (FLAC)`
 - `Save Audio (MP3)`
@@ -187,6 +187,6 @@ main.py --output_dir --output-directory [path]
 
 ![](/media/begin-with/media/legacy_gyazo_2a7ab2f8dc9179e6c02d15e74dedcea3.png){media=image}
 
-可以将摄像头的输入作为图像导入。
+可以把摄像头的画面作为图像导入。
 
 详情请参阅 [摄像头 (Webcam)](/zh/data-utilities/webcam-input/)。

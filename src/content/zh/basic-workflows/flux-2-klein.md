@@ -8,7 +8,7 @@ navId: flux-2-klein
 title: "FLUX.2 [klein]"
 created: 2026-01-22
 updated: 2026-03-02
-summary: "FLUX.2 [klein] 生成・图像编辑工作流"
+summary: "FLUX.2 [klein] 图像生成与图像编辑工作流"
 seoTitle: "在 ComfyUI 中使用 FLUX.2 [klein]：图像生成与编辑"
 seoDescription: "一个模型兼顾图像生成与基于指令编辑的小型高速 FLUX.2 [klein] 用法。介绍推荐设置、9B / 4B 与 Base / Distilled 的区别、text2image、图像编辑和多参考工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -19,34 +19,34 @@ tags: [instruction-based-image-editing]
 
 ## 什么是 FLUX.2 [klein]？
 
-**FLUX.2 [klein]** 是可以用 1 个模型处理 **图像生成** 和 **指令基础图像编辑** 的，小型・高速的 Flux.2 系模型。
+**FLUX.2 [klein]** 是 Flux.2 系列中小巧、快速的模型，一个模型就能兼顾 **图像生成** 和 **基于指令的图像编辑**。
 
-产品线
+型号
 
-* **9B** / **9B Base**（FLUX Non-Commercial License。非商用）
+* **9B** / **9B Base**（FLUX Non-Commercial License，非商用）
 * **4B** / **4B Base**（Apache 2.0）
 
-虽然很难懂，无印的是蒸馏（Distilled）模型。
-相当于 Base（20 steps），Distilled 可以用 4 steps 生成。
+有点容易混淆：不带后缀的版本才是蒸馏（Distilled）模型。
+Base 需要 20 steps，而 Distilled 只要 4 steps 就能生成。
 
-因为没有大的性能差，所以生成基本上使用 Distilled 模型。
+两者性能差距不大，所以生成时基本上都用 Distilled 模型。
 
 ---
 
-## 推荐设定值
+## 推荐设置
 
 - 分辨率
   - 最小 64×64
   - 最大 4MP (2048×2048)
-  - 纵横均为 16 的倍数
-- 参考图像张数
+  - 宽和高都必须是 16 的倍数
+- 参考图像数量
   - 最大 4
 
 ---
 
 ## Flux.2 [klein] 9B
 
-### 模型的下载（9B）
+### 下载模型（9B）
 
 * diffusion_models
 
@@ -79,7 +79,7 @@ tags: [instruction-based-image-editing]
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_text2image.json)
 
 > [!NOTE]
-> 虽然在官方工作流中，使用叫 `Flux2Scheduler` 的东西，但因为没有大区别，为了简化工作流使用了 `Simple`。
+> 官方工作流用的是 `Flux2Scheduler`，不过效果差别不大，为了简化工作流，这里用的是 `Simple`。
 
 ### text2image Distilled
 
@@ -87,7 +87,7 @@ tags: [instruction-based-image-editing]
 
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_text2image.json)
 
-只变更以下的参数。
+只需修改以下参数。
 - `CFG` : 1.0
 - `steps` : 4
 
@@ -97,8 +97,8 @@ tags: [instruction-based-image-editing]
 
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_image_edit.json)
 
-“输入图像 + 指令提示词” 是基本。
-- VAE Encode 输入图像，传递给 `ReferenceLatent`。
+基本形式是“输入图像 + 指令提示词”。
+- 把输入图像经过 VAE Encode 后传给 `ReferenceLatent`。
 
 
 ### 图像编辑 Distilled
@@ -107,18 +107,18 @@ tags: [instruction-based-image-editing]
 
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_image_edit.json)
 
-### 图像编辑（Multi-Reference）Base
+### 图像编辑（多参考）Base
 
-也可以输入多张图像让其参考。
+也可以输入多张图像作为参考。
 
 ![](/media/basic-workflows/flux-2-klein/legacy_gyazo_d5d524090b273847fbc4a45cf52284b4.png){media=image}
 
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_image_edit_multi.json)
 
-- 只要串联连接 `参考图像 → VAE Encode → ReferenceLatent` 这个块就行。
-- 2 张或 3 张都 OK。（但是上限是 4）
+- 只要把 `参考图像 → VAE Encode → ReferenceLatent` 这一组串联起来就行。
+- 2 张、3 张都可以。（但上限是 4 张）
 
-### 图像编辑（Multi-Reference）Distilled
+### 图像编辑（多参考）Distilled
 
 ![](/media/basic-workflows/flux-2-klein/legacy_gyazo_8d4bcf62e22ccaf6e91c3b2de20a417b.png){media=image}
 
@@ -128,7 +128,7 @@ tags: [instruction-based-image-editing]
 
 ## Flux.2 [klein] 4B
 
-### 模型的下载（4B）
+### 下载模型（4B）
 
 * diffusion_models
 
@@ -156,7 +156,7 @@ tags: [instruction-based-image-editing]
 ### 工作流
 
 基本和 9B 完全一样。  
-只是根据将模型和文本编码器替换为 4B 的东西。
+只要把模型和文本编码器换成 4B 版即可。
 
 **text2image**
 - [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_base_4b_text2image.json)
@@ -166,19 +166,19 @@ tags: [instruction-based-image-editing]
 - [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_base_4b_image_edit.json)
 - [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_4b_image_edit.json)
 
-**图像编辑（Multi-Reference)**
+**图像编辑（多参考)**
 - [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_base_4b_image_edit_multi.json)
 - [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_4b_image_edit_multi.json)
 
 ---
 
-## 能做的事
+## 可以做什么
 
-这儿的终究只是一个例子。
+这里列出的只是一些例子。
 
-改变画风，消除对象不过是图像编辑的一小部分。将什么视为“图像编辑”？能做的事无限宽广。请开发各种各样的使用方法。
+改变画风、去除物体，只是图像编辑的一小部分。把什么看作“图像编辑”，决定了它能做的事情可以无限扩展。欢迎去发掘各种各样的用法。
 
-### 单一图像
+### 单张图像
 
 {% mediaRow img="/media/basic-workflows/flux-2-klein/legacy_gyazo_9739688bffdd08a9c5b3db5fa1dd8119.png {media=image}", width=45, align="left" %}
 
@@ -198,7 +198,7 @@ Reskin this into a watercolor illustration on textured paper.
 
 {% mediaRow img="/media/basic-workflows/flux-2-klein/legacy_gyazo_1fc2e71374a7d109c7f4d008973b4693.png {media=image}", width=45, align="left" %}
 
-**环境・状态变更**
+**改变环境与状态**
 
 ```text
 Change the time to bright midday.
@@ -212,7 +212,7 @@ Change the time to bright midday.
 
 {% mediaRow img="/media/basic-workflows/flux-2-klein/legacy_gyazo_13aca28a7b3b85966d2831ccd99ba2f4.png {media=image}", width=45, align="left" %}
 
-**对象替换 / 追加**
+**替换 / 添加物体**
 
 ```text
 Replace the ice bear with an ice duck. Add a hat on the duck with light blue, red, and white colors. Add sneakers on the duck.
@@ -256,10 +256,10 @@ Restore and colorize this black-and-white photo.
 {% mediaRow img="/media/basic-workflows/flux-2-klein/legacy_gyazo_ef668f3e2ef9f7598ec410bcbbd30960.png {media=image}", width=45, align="left" %}
 
 
-**ControlNet-like（Pose）**
+**类 ControlNet（Pose）**
 
-并不是以 ControlNet 的机制在动。  
-通过给予火柴人或深度图，让其以之为基础生成真实的图像，作为图像编辑可以进行 **ControlNet 式** 的任务。
+它并不是靠 ControlNet 的机制运作的。  
+给它火柴人或深度图，让它据此生成写实图像，就能以图像编辑的方式完成 **类似 ControlNet** 的任务。
 
 ```text
 A office lady sitting on outdoor stairs at dusk, matching the pose from the reference image. Evening ambient light, calm urban atmosphere. She wears a long skirt and a black camisole with frills. Natural, realistic photo
@@ -275,7 +275,7 @@ A office lady sitting on outdoor stairs at dusk, matching the pose from the refe
 
 **inpainting / outpainting**
 
-并非给予掩膜填补那里，而是只发出了“请自然地填补灰色区域”的指令。
+这里并不是给出蒙版让它填充，而只是下了一句“把灰色区域自然地补全”的指令。
 
 ```text
 Outpaint the gray areas to extend the scene naturally
@@ -288,7 +288,7 @@ Outpaint the gray areas to extend the scene naturally
 
 {% mediaRow img="/media/basic-workflows/flux-2-klein/legacy_gyazo_4a562fb90e23c8695ebe7c13b0db223e.png {media=image}", width=45, align="left" %}
 
-**杂乱 Collage 的 Refine**
+**粗糙拼贴的精修**
 
 ```text
 Turn this into a single realistic underwater ruins scene with two robots: a sleek white mecha and a large rusty moss-covered robot.
@@ -300,11 +300,11 @@ Turn this into a single realistic underwater ruins scene with two robots: a slee
 
 {% endmediaRow %}
 
-### Multi-Reference 图像编辑
+### 多参考图像编辑
 
 {% mediaRow img="/media/basic-workflows/flux-2-klein/legacy_gyazo_fabad47684ddbc15657d34973511a405.png {media=image}", width=45, align="left" %}
 
-**风格转印**
+**风格迁移**
 
 ```text
 Change image 1 to match the style of image 2.
@@ -318,7 +318,7 @@ Change image 1 to match the style of image 2.
 
 {% mediaRow img="/media/basic-workflows/flux-2-klein/legacy_gyazo_d673551f6b212c41c35c0cfd2e729e8f.png {media=image}", width=45, align="left" %}
 
-**对象・人物替换**
+**替换物体或人物**
 
 ```text
 Replace the person in image 1 with the person from image 2.
@@ -332,7 +332,7 @@ Replace the person in image 1 with the person from image 2.
 
 {% mediaRow img="/media/basic-workflows/flux-2-klein/legacy_gyazo_6360d713f4bee61dd3c844d4336eebcd.png {media=image}", width=45, align="left" %}
 
-**对象追加**
+**添加物体**
 
 ```text
 Place the airship from image 2 in the sky of image 1,Make the airship prominent (closer to camera)
@@ -345,7 +345,7 @@ Place the airship from image 2 in the sky of image 1,Make the airship prominent 
 {% endmediaRow %}
 
 
-## 参考
+## 参考资料
 
 - [Prompting Guide - FLUX.2 [klein]](https://docs.bfl.ai/guides/prompting_guide_flux2_klein)
 - [FLUX.2 [klein] 官方 Doc](https://docs.bfl.ai/flux_2/flux2_overview#flux-2-[klein]-models)

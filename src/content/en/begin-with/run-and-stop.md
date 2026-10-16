@@ -17,7 +17,7 @@ hero:
 
 ## Execute Processing
 
-Execute the workflow.
+Run the workflow.
 
 ![](/media/begin-with/run-and-stop/legacy_gyazo_e1be6c3b9c1666f5735bd17261d7714f.mp4){media=loop}
 
@@ -27,7 +27,7 @@ Execute the workflow.
 
 ## Repeat Processing
 
-Execute the workflow multiple times with the same settings.
+Run the workflow multiple times with the same settings.
 
 ![](/media/begin-with/run-and-stop/legacy_gyazo_5831e4d69bd26c7d5a533fb5781a33ad.mp4){media=loop}
 
@@ -40,7 +40,7 @@ The default limit is **100**, but it can be changed in the settings.
 
 ## Repeat Processing Automatically
 
-Use this when you want to "generate automatically every time you change a parameter" or "leave it alone and continue generating infinitely".
+Use this when you want it to "generate automatically every time I change a parameter" or to "keep generating forever while I leave it alone."
 
 ![](/media/begin-with/run-and-stop/legacy_gyazo_c516b3b9fd8b2c506fb1fa91cf385174.mp4){media=loop}
 
@@ -48,19 +48,19 @@ Use this when you want to "generate automatically every time you change a parame
 
 ### Difference in Modes
 
-- **Queue (Instant)**
+- **Run (Instant)**
   - Starts the next process immediately after the previous process finishes.
-  - **Note**: Skipped if the generation result is completely the same (e.g. Seed is fixed).
+  - **Note**: If the result would be exactly the same (for example, the seed is fixed), the run is skipped.
 
-- **Queue (Change)**
-  - Basically in a standby state.
+- **Run (On Change)**
+  - It basically sits and waits.
   - Processing starts the moment any parameter (prompt, number, etc.) is changed.
 
 ---
 
 ## Interrupt Processing
 
-If you execute it by mistake, you can interrupt it from here.
+If you started a run by mistake, you can stop it here.
 
 ![](/media/begin-with/run-and-stop/stop.mp4){media=loop}
 
@@ -68,18 +68,18 @@ If you execute it by mistake, you can interrupt it from here.
 
 ### About Forced Termination
 
-When the load on the PC is high, such as during sampling with KSampler, pressing `❌️` may not respond immediately.
-If it doesn't stop no matter what, **close the terminal and restart ComfyUI itself**. This is the most certain way.
+When your PC is under heavy load, such as during sampling in KSampler, pressing `❌️` may not take effect right away.
+If it just won't stop, **close the terminal and restart ComfyUI itself**. That's the surest way.
 
 ---
 
 ## Check and Clear Queue
 
-You can check reserved processes (queues) or delete them all at once.
+You can check the jobs waiting to run (the queue) or delete them all at once.
 
 ![](/media/begin-with/run-and-stop/legacy_gyazo_23f7fb0414ad302f23b333ae0add5827.mp4){media=loop}
 
-- **Operation**: Click the Queue icon on the left sidebar (or `Q` key on the keyboard) to display the list.
+- **Operation**: Click the Queue icon on the left sidebar (or press `Q`) to show the list.
 
 - **Cancel Individually**: Right-click the process you want to cancel and select `Delete`.
 - **Cancel All**: Click `Clear queue` in the `Job Queue` window.

@@ -7,7 +7,7 @@ navId: flux-3-image-klein
 title: "FLUX 3 Image Klein"
 created: 2026-10-16
 updated: 2026-10-16
-summary: "FLUX 3 Image Klein 生成与图像编辑工作流"
+summary: "FLUX 3 Image Klein 图像生成与图像编辑工作流"
 seoTitle: "在 ComfyUI 中使用 FLUX 3 Image Klein：图像生成与编辑"
 seoDescription: "一个模型即可完成图像生成、图像编辑和 BBOX 布局指定的 FLUX 3 Image Klein 在 ComfyUI 中的用法。介绍模型下载、Prompt Upsampler、text2image、Ref2Image 和图像编辑的工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -31,13 +31,13 @@ tags: [instruction-based-image-editing]
 
 - 分辨率
   - 最大 4K
-  - 宽度和高度都需要是 16 的倍数
+  - 宽和高都必须是 16 的倍数
 - 参考图像数量
   - 最多 10 张
 
 ---
 
-## 模型的下载
+## 下载模型
 
 > [!WARNING]
 > FLUX 3 Image Klein 的模型需要认证才能下载。请用 Hugging Face 账号登录，然后在 [flux-3-image-klein-comfy 的页面](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) 同意使用条款。
@@ -117,7 +117,7 @@ Prompt Upsampler 本身有 9B，但扩散模型主体很轻，所以应该不会
 - `FLUX 3 Image Layout Prompt`
   - 在这里写关于整张图像的提示词。
   - 它会从方框信息中只提取 FLUX 3 需要的内容（ID、坐标、说明），和提示词合在一起输出。
-  - 也可以把随手填好的 BBOX `elements` 交给 AI，让它帮忙写提示词。
+  - 把随手填好的 BBOX `elements` 交给 AI，让它帮忙写提示词，也是个好办法。
 
 {% outputs %}
 ![output](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_text2image_bbox_output.png){media=image}
@@ -195,7 +195,7 @@ Prompt Upsampler 会查看输入图像和编辑指令，把它们改写成合适
   - 把输入图像接到 `background` 后，分辨率会自动匹配这张图像。
   - 这次想要移动小鸟，所以给原位置的方框标上 `src`，给目标位置的方框标上 `tgt`。
 - `FLUX 3 Image Layout Prompt`
-  - 在这里写编辑指令。方框上标的说明可以直接写进指令里。
+  - 在这里写编辑指令。方框上标的说明可以直接用在指令里哦。
 
     ```text
     Move the bird from src to tgt.

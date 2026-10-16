@@ -20,7 +20,7 @@ hero:
 
 This note walks through training a LoRA for SDXL-style models with [AI Toolkit](https://github.com/ostris/ai-toolkit).
 
-Here I use [WAI-illustrious-SDXL v16.0](https://civitai.com/models/827184/wai-illustrious-sdxl), but the same general flow works for SDXL-style models.
+Here I use [WAI-illustrious-SDXL v16.0](https://civitai.com/models/827184/wai-illustrious-sdxl), but any SDXL-based model can be trained the same way.
 
 This example trains a **character LoRA**, but the basic flow is similar for outfit LoRAs and style LoRAs as well.
 
@@ -66,7 +66,7 @@ images/
 
 In each text file, write a description of that image. This is the **caption**.
 
-Captions can be written as natural language or as tags. For SDXL, a comma-separated tag style is usually easier to use.
+There are two main ways to write captions, **natural language** and **tags**. For SDXL, you generally use tags: words separated by commas (`,`).
 
 ### 4. How to write captions
 
@@ -86,7 +86,7 @@ There are several visible elements in the image:
 You do not write all of these into the caption.  
 For a character LoRA, you write the words that are **not defining the character itself**.
 
-The model tends to push common elements that are **not explained by text** into the LoRA.
+Whatever is common across the images but **not described in the text** is what the model learns into the LoRA.
 
 For example, a plain caption for the image above might look like this:
 
@@ -117,7 +117,7 @@ Recent MLLMs are quite capable, so you can also let one handle most of the capti
 2. Ask it to remove only the words that define the character itself
 3. Add the trigger word at the beginning
 
-[Here is an example](https://chatgpt.com/share/69c4c369-b4d4-83ab-95c4-ebf9ca5e6823) created with ChatGPT. The quality is more than enough for this kind of task.
+[Here is an example](https://chatgpt.com/share/69c4c369-b4d4-83ab-95c4-ebf9ca5e6823) of captions made with ChatGPT, and the quality is plenty good.
 
 ---
 
@@ -233,7 +233,7 @@ This section controls the amount of training and how it progresses.
 
 - **Batch Size / Gradient Accumulation**
   - Batch Size is how many images are seen at the same time during training.
-    - Seeing multiple images at once makes it easier to find common features than seeing only one image at a time.
+    - It feels like looking at several images at once would make it easier to spot what they have in common than looking at one at a time, right?
     - The same idea applies to LoRA training. For character LoRAs, I often use an effective batch size of `2` to `4`.
   - Increasing Batch Size also increases VRAM usage.
     - Gradient Accumulation is useful here. It lets you increase the effective Batch Size without increasing VRAM usage as much.
@@ -244,7 +244,7 @@ This section controls the amount of training and how it progresses.
   - You can extend training later, so starting around 3000 is reasonable.
 
 - **Learning Rate**
-  - I usually start around `0.00005` to `0.0001`.
+  - A common starting range is around `0.00005` to `0.0001`.
   - Larger values converge faster; smaller values move more slowly.
   - But slower is not always better, so judge by the actual outputs.
 
@@ -265,7 +265,7 @@ It means `1 × 10^-4`.
 
 - **Disable Sampling**
   - AI Toolkit can generate samples during training, but I do not use it here.
-  - Images generated there can differ from ComfyUI outputs even with the same seed.
+  - The images it generates are generally different from what ComfyUI generates, even with the same seed.
   - If you usually generate with ComfyUI, it is better to test by loading the LoRA in ComfyUI directly.
 
 > [!NOTE]
@@ -316,7 +316,7 @@ So you need to test it with prompts that are not in the training images.
 - different compositions
 - slightly different styles
 
-If it looks good only under conditions close to the training images, but breaks when you change the prompt a little, it may need more training or the dataset may need to be revised.
+If it looks good only under conditions close to the training images, but breaks when you change the prompt a little, it may not be trained enough yet, or the training may not be working at all.
 
 Review the dataset or adjust the learning rate.
 
@@ -333,7 +333,7 @@ If you want to test several prompts at once, the `Create List` node is useful.
 - Keep generation parameters other than the LoRA fixed, such as CFG and seed
 - Swap LoRAs from different steps and compare them
 
-For SDXL LoRAs, it is common to make the LoRA work well around a LoRA Strength of `0.8`.
+It's common to aim for a LoRA that works well at a LoRA Strength of around `0.8`.
 
 ---
 
@@ -345,7 +345,7 @@ If you go too far, it becomes overtrained and loses flexibility.
 
 Generate with several prompts and look for the step that feels right.
 
-Since you can weaken it with LoRA Strength, aiming for a slightly strong result is usually fine.
+You can always weaken it with LoRA Strength, so stopping at "hmm, maybe that went a bit too far?" is fine.
 
 ---
 

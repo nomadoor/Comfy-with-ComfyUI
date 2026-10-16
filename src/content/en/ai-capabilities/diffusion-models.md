@@ -7,7 +7,7 @@ navId: diffusion-models
 title: Diffusion Models
 created: 2025-12-01
 updated: 2026-03-02
-summary: The mechanism of diffusion models.
+summary: How diffusion models work
 seoTitle: "What Is a Diffusion Model? How Images Emerge from Noise"
 seoDescription: "How diffusion models, the core of image AI, turn noise into images, explained through ComfyUI's live preview: how they are trained and how generation works."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
@@ -18,67 +18,66 @@ hero:
 
 ![](/media/ai-capabilities/diffusion-models/legacy_gyazo_3c82ca8a7dcb51f2475d0451de727783.mp4){media=loop}
 
-When you preview the image generation process in ComfyUI, you can see that although initially only noise like a sandstorm is visible, as the steps progress, outlines appear, and finally, it becomes a reasonably organized image.
+If you preview image generation in ComfyUI, you'll see that at first there's nothing but TV-static noise. As the steps go on, outlines start to appear, and in the end you get a reasonably clean image.
 
-"How is a meaningful image born from mere noise?"
+"How does a meaningful image come out of plain noise?"
 
-The entity performing this mysterious movement is the **Diffusion Model**.
+The thing behind this strange process is the **diffusion model**.
 
 ---
 
 ## What is a Diffusion Model?
 
-We consider the noise image in front of us not as something completely meaningless, but as "a clean original image that has been dirtied with extra noise."
+Instead of seeing the noise image in front of you as completely meaningless, think of it as "a clean original image that's been dirtied by extra noise."
 
-If we think so, then **if we can successfully remove only the extra noise, we should be able to return it to the original clean image.**
+Seen that way, **if you can remove just the extra noise, you should be able to get back to the clean original.**
 
-So, let's have AI play the role of that "noise remover."
+So let's have AI do the job of "noise remover."
 
 ---
 
-## Training of Diffusion Models
+## Training a Diffusion Model
 
-AI is good at remembering "relationships."
-In diffusion models, we show and train it with a large number of pairs like the following:
+AI is good at learning relationships.
+A diffusion model is trained by showing it huge numbers of pairs like these:
 
-- **Clean image**
-- **"Dirty image"** with noise added to that image
+- A **clean image**
+- A **"dirty image"**: the same image with noise added
 
-Through these pairs, the AI learns how to fix it:
+From these pairs, the AI learns how to fix a dirty image when it sees one:
 
-> "If I fix it like this, it seems to get a little closer to the original clean image."
-
-when it sees a dirty image.
+> "If I fix it like this, it should get a little closer to the clean original."
 
 ---
 
 ## Creating Images from Noise
 
-Once this "AI that reduces noise a little" is created, the rest is simple.
+Once you have this "AI that removes a little noise," the rest is simple.
 
 - 1. Prepare a random noise image.
 - 2. Pass it to the AI and ask it to "reduce the noise just a little."
 - 3. Pass the slightly improved image to the AI again... and repeat.
 
-What was initially just noise is gradually stripped of noise by the AI, and gradually grows into a "reasonably meaningful image."
+What started as pure noise has its noise peeled away bit by bit by the AI,
+and slowly grows into a "reasonably meaningful image."
 
 ---
 
 ## Isn't It Just Generating Random Images?
 
-Now, images are generated from noise, but you might have this question:
+So now we can generate some kind of image from noise, but you might be wondering:
 
-> Doesn't it just output "something that looks like an image" randomly?
-> How do I convey instructions like "draw a dog" or "I want an autumn forest"?
+> Won't it just spit out random "plausible-looking images"?
+> How do I tell it things like "draw a dog" or "I want an autumn forest"?
 
-Exactly. With just the diffusion model so far, although it can create "something that looks like a natural image," it cannot specify specific contents.
+Exactly. The diffusion model as described so far can make "something that looks like a natural image," but you can't specify what's actually in it.
 
-If you have touched image generation a little, you probably know that there are control methods such as:
+If you've played with image generation a bit, you probably know there are ways to control it, such as:
 
 -   **Text Prompts**
 -   **ControlNet**
 -   **Reference Images** (IP-Adapter, etc.)
 
-In ComfyUI, the mechanism that teaches the diffusion process **"under what conditions you want it generated"** is collectively called **Conditioning**.
+In ComfyUI, these mechanisms that tell the diffusion process **"what conditions to generate under"** are collectively called **Conditioning**.
 
 Next, let's look at this Conditioning.

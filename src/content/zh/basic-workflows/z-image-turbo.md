@@ -7,9 +7,9 @@ navId: z-image-turbo
 title: "Z-Image-Turbo"
 created: 2025-12-12
 updated: 2026-03-02
-summary: "使用 Z-Image-Turbo 的图像生成"
+summary: "用 Z-Image-Turbo 生成图像"
 seoTitle: "在 ComfyUI 中使用 Z-Image-Turbo：8 步高速图像生成"
-seoDescription: "把 Z-Image 蒸馏为 8 步即可生成的高速模型 Z-Image-Turbo 在 ComfyUI 中的用法。介绍模型下载、text2image 以及 Fun ControlNet Union 工作流。"
+seoDescription: "Z-Image-Turbo 是把 Z-Image 蒸馏成 8 步即可生成的高速模型。本文说明它在 ComfyUI 中的用法，介绍模型下载、text2image 以及 Fun ControlNet Union 工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/z-image-turbo/legacy_gyazo_8cb43e18daed0bcb2bf3bf7c794e5360.png"
@@ -18,22 +18,22 @@ tags: []
 
 ## 什么是 Z-Image-Turbo？
 
-Z-Image 是，Alibaba / Tongyi-MAI 的 **图像生成模型家族**。
+Z-Image 是 Alibaba / Tongyi-MAI 推出的 **图像生成模型家族**。
 
 ![](/media/basic-workflows/z-image-turbo/legacy_gyazo_569a829f2dbd9021bfdecf6d1e3267b9.png){media=image}
 
-**Z-Image-Turbo** 是，为了能以少的步数 (8 steps) 生成 [Z-Image (Base)](/zh/basic-workflows/z-image) 而被蒸馏的高速模型。  
-并且，不仅是单纯的高速化，为了得到安定的画质也合并施加了强化学习。
+**Z-Image-Turbo** 是把 [Z-Image (Base)](/zh/basic-workflows/z-image) 蒸馏而成的高速模型，用很少的步数（8 steps）就能生成。  
+而且它不只是单纯提速，还同时做了强化学习，以获得稳定的画质。
 
-因此，即使不细微地填设定也能快速生成美丽的图像，另一方面，
-基于 Seed 的变化保守，拿手领域偏向实写。  
-关于插画风或特殊的提示词表现，不太擅长。
+所以即使不仔细调参数，也能很快生成漂亮的图像；但另一方面，
+不同种子之间的变化比较小，擅长的领域也偏向写实。  
+插画风格或比较特殊的提示词表达，它不太擅长。
 
-虽是余谈，但在 Z-Image 家族中是 最早阶段被公开的模型。
+顺带一提，它是 Z-Image 家族中最早公开的模型。
 
 ---
 
-## 模型的下载
+## 下载模型
 
 - diffusion_models  
   - [z_image_turbo_bf16.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors) (12.3 GB)
@@ -57,7 +57,7 @@ Z-Image 是，Alibaba / Tongyi-MAI 的 **图像生成模型家族**。
 
 ## text2image
 
-Z-Image-Turbo 是，与 Flux.1 dev 相同类型的 **蒸馏模型**。
+Z-Image-Turbo 和 Flux.1 dev 一样，属于 **蒸馏模型**。
 
 ![](/media/basic-workflows/z-image-turbo/legacy_gyazo_7e5d76cec53ee44278c313a30035463f.png){media=image}
 
@@ -70,9 +70,9 @@ Z-Image-Turbo 是，与 Flux.1 dev 相同类型的 **蒸馏模型**。
 
 ## Z-Image-Turbo Fun ControlNet Union
 
-Z-Image-Turbo 用的 ControlNet 风补丁。
+这是 Z-Image-Turbo 用的 ControlNet 式补丁。
 
-### 模型的下载
+### 下载模型
 
 - model_patches
 
@@ -91,5 +91,5 @@ Z-Image-Turbo 用的 ControlNet 风补丁。
 
 [](/workflows/basic-workflows/z-image-turbo/z_image_turbo_fun_controlnet_union_2_1.json)
 
-- 🟩 向 `QwenImageDiffsynthControlnet` 追加模型和控制数据
-- 🟩 在这个 workflow 用 Depth Anything V2 制作深度图。
+- 🟩 向 `QwenImageDiffsynthControlnet` 添加模型和控制图像
+- 🟩 这个工作流用 Depth Anything V2 生成深度图。

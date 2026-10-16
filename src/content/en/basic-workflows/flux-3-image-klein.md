@@ -20,7 +20,7 @@ tags: [instruction-based-image-editing]
 
 **FLUX 3 Image Klein** is an image generation model from Black Forest Labs.
 
-It is the next generation after [FLUX.2 [klein]](/en/basic-workflows/flux-2-klein/), and one model handles image generation, image editing, and Ref2Image.  
+It's the next generation after [FLUX.2 [klein]](/en/basic-workflows/flux-2-klein/), and a single model handles image generation, image editing, and Ref2Image.  
 Another fun part is that you can use BBOX to set where things go, or which area to edit. It works much like [Ideogram 4.0](/en/basic-workflows/ideogram-4/).
 
 It isn't a model with exceptional expressive power, but it's fast, and it feels great to casually churn out image after image.
@@ -83,7 +83,7 @@ For Ref2Image / image editing, on the other hand, results are not stable at all 
 The Prompt Upsampler itself is 9B, but the diffusion model is light, so it shouldn't be much of a burden… probably…
 
 > [!NOTE]
-> Ref2Image / image editing, with and without BBOX, each need different instructions, so each uses its own system prompt (this differs from the official workflow).
+> Ref2Image and image editing, each with and without BBOX, need different instructions, so each one uses its own system prompt (this part differs from the official workflow).
 
 ---
 
@@ -144,7 +144,7 @@ For Ref2Image I want to choose the output size freely, so I connect a separate `
 
 ### Ref2Image with BBOX
 
-You can place things from the reference images where you specify with BBOX.
+You can place things from the reference images wherever you mark with a BBOX.
 
 ![](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox.png){media=image}
 

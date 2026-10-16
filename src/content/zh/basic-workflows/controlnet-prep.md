@@ -7,7 +7,7 @@ navId: controlnet-prep
 title: "ControlNet 预处理器"
 created: 2025-12-08
 updated: 2026-03-02
-summary: "制作在 ControlNet 使用的辅助图像"
+summary: "制作 ControlNet 用的辅助图像"
 seoTitle: "ComfyUI 的 ControlNet 预处理器：Canny、Depth、OpenPose"
 seoDescription: "从参考图自动生成 ControlNet 所需的线稿、深度图、骨架等控制图像的预处理器用法。比较 Canny、SoftEdge、Lineart、Depth、Normal、MLSD、OpenPose 等。"
 tags: ["controlnet"]
@@ -18,38 +18,38 @@ hero:
 
 ## 什么是 Preprocessor？
 
-像火柴人或深度图那样在 ControlNet 使用的“控制用图像”，该怎么准备呢？  
-如果是像 Canny 那样单纯的边缘还可以，但每次都手绘深度图是不现实的。
+ControlNet 用到的火柴人、深度图这类“控制图像”，该怎么准备呢？  
+Canny 那样简单的边缘图还好说，但每次都手绘深度图就不太现实了。
 
-因此，将从参考图像自动制作火柴人・深度图・线稿・法线贴图等的处理，在 ControlNet 业界为方便起见统称为 **“Preprocessor（预处理器）”**。
+因此，在 ControlNet 圈子里，为了方便，把从参考图像自动生成火柴人、深度图、线稿、法线贴图等的处理统称为 **“Preprocessor（预处理器）”**。
 
-并不是有一个进行这些全部的技术，而是姿势推定・深度推定・线稿抽出等，分别有别的技术。
-
----
-
-## 控制图像的真面目
-
-虽说手绘很难，但请记住“是可以手绘的”。
-
-控制用图像不是特殊的数据型，**只是单纯的 RGB 图像**。  
-用黑色涂满深度图中碍事的部分，或只重画姿势图像的手臂改变姿势也没关系。
+并没有一种技术能包办所有这些，姿态估计、深度估计、线稿提取等，各自都是不同的技术。
 
 ---
 
-## 必要的自定义节点
+## 控制图像的本质
+
+前面说手绘很费劲，但请记住：它“是可以手绘的”。
+
+控制图像并不是什么特殊的数据类型，**只是普通的 RGB 图像**。  
+把深度图里碍事的部分涂黑，或者只重画姿势图里的手臂来改变姿势，都完全可以。
+
+---
+
+## 需要的自定义节点
 
 - [Fannovel16/comfyui_controlnet_aux](https://github.com/Fannovel16/comfyui_controlnet_aux)
 
-基本上，只要有这个就足够了。
+基本上有这一个就够了。
 
 ---
 
-## 经常被使用的 Preprocessor
+## 常用的 Preprocessor
 
-在这里介绍实际上使用频率高的技术。  
-虽然在性能方面也有更好的东西，但重视简便・轻量・易用性选出了这些。
+这里介绍实际使用频率较高的技术。  
+论性能还有更好的选择，但这里优先考虑了简便、轻量和好用。
 
-如果是用于 ControlNet 的程度，不需要那么极端的精度。
+只是给 ControlNet 用的话，并不需要那么极致的精度。
 
 {% mediaRow img="/media/basic-workflows/controlnet-prep/legacy_gyazo_25026afc9e67bd130954acbf98fd851a.png{media=image}", width=50, align="left" %}
 
@@ -99,7 +99,7 @@ hero:
 
 
 - 🟩 Depth Anything V2
-  - 虽然现在开发到了 V3，但如果是 ControlNet 用途的话 V2 就足够了。
+  - 目前已经开发到 V3，但用于 ControlNet 的话，V2 就足够了。
 
 {% mediaFooter %}
 [](/workflows/basic-workflows/controlnet-prep/depth_anything_v2.json)
@@ -140,7 +140,7 @@ hero:
 
 - 🟩 OpenPose
 - 🟨 DWPose
-  - 虽然经常被作为 OpenPose 的上位互换对待，但有不擅长背影这个明确的弱点。请根据状况与 OpenPose 并用。
+  - 它常被当作 OpenPose 的升级版，但有一个明显的弱点：不擅长处理背影。请视情况和 OpenPose 搭配使用。
 
 {% mediaFooter %}
 [](/workflows/basic-workflows/controlnet-prep/openpose_dwpose.json)
@@ -155,7 +155,7 @@ hero:
 
 [judian17/ComfyUI-SDPose-OOD](https://github.com/judian17/ComfyUI-SDPose-OOD)
 - 🟩 SDPose
-  - OpenPose 因为非常不擅长动物和动漫插图，所以如果不顺利的时候请尝试这边。
+  - OpenPose 很不擅长处理动物和动漫插画，效果不好的时候可以试试这个。
 
 {% mediaFooter %}
 [](/workflows/basic-workflows/controlnet-prep/sdpose.json)

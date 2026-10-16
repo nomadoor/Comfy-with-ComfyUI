@@ -7,7 +7,7 @@ navId: queue
 title: "Queue"
 created: 2025-11-27
 updated: 2026-03-02
-summary: "About queuing processes and batch execution"
+summary: "Queuing up runs and running them multiple times"
 seoTitle: "The ComfyUI Queue: Schedule and Repeat Generations"
 seoDescription: "The ComfyUI Run button adds a job to the queue. Run multiple times, use control after generate, stop the current job, clear jobs, and check history."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -15,57 +15,57 @@ hero:
   image: ""
 ---
 
-## What is Queue?
+## What is the Queue?
 
-Queue is a mechanism to line up processes you want to execute in order.
+The Queue lines up the jobs you want to run, in order.
 
-When the current process finishes, the next process in the Queue is automatically executed.
+When the current job finishes, the next one in the Queue starts automatically.
 
 ---
 
-## Basic of Queue in ComfyUI
+## Queue Basics in ComfyUI
 
 ![](/media/begin-with/run-and-stop/legacy_gyazo_5831e4d69bd26c7d5a533fb5781a33ad.mp4){media=loop}
 
-The `▷ Run` button in ComfyUI looks like "Execute", but it is actually a button to **add one reservation to the Queue**. The reason generation starts the moment you press `▷ Run` is because the reservation enters the front of the line and is executed immediately.
+The `▷ Run` button in ComfyUI looks like it means "execute," but it actually **adds one job to the Queue**. Generation starts the moment you press `▷ Run` only because that job goes straight to the front and runs immediately.
 
-Open the `Queue` in the sidebar and try pressing `▷ Run` continuously.
-You should see the Queue being added.
+Open `Queue` in the sidebar and press `▷ Run` several times in a row.
+You should see jobs piling up in the Queue.
 
 ---
 
-## How to Queue (Reserve)
+## How to Add Jobs to the Queue
 
-### 1. Press Run during processing
+### 1. Press Run while a job is running
 
 This is the simplest way.
-If you want to run the same workflow again, you can add it to the Queue immediately.
+If you want to run the same workflow again, you can add it to the Queue right away.
 
 ![](/media/data-utilities/queue/legacy_gyazo_0680d8d1d2ff86a81f15a81085af35a9.mp4){media=loop}
 
-Since ComfyUI has only one processing engine,
+ComfyUI has only one processing engine, so even if you press `▷ Run` from
 
-- From another tab
-- From another workflow
+- another tab
+- another workflow
 
-Even if you press `▷ Run` from these, they will all line up in the same Queue.
+they all line up in the same Queue.
 
-### 2. Increase the number next to Run for continuous execution
+### 2. Raise the number next to Run to run it several times
 
 ![](/media/begin-with/run-and-stop/legacy_gyazo_5831e4d69bd26c7d5a533fb5781a33ad.mp4){media=loop}
 
-By changing the number next to the `▷ Run` button, you can stack that many runs into the Queue at once.
-This is useful when you want to create multiple images with the same settings.
+Change the number next to the `▷ Run` button to add that many runs to the Queue at once.
+This is handy when you want several images with the same settings.
 
 ---
 
 ## Control After Generate
 
-For `INT` type parameters (e.g., `seed` in `KSampler`), there is an option to change the value after generation.
+`INT` parameters (such as `seed` in `KSampler`) have an option that changes the value after each generation.
 
 ![](/media/data-utilities/queue/legacy_gyazo_3f0dd7eb5dde53d648a2fe2c49d41324.mp4){media=loop}
 
-When used with Queue, you can apply it to **generate continuously while changing the value each time**.
+Combined with the Queue, this lets you **generate over and over while changing the value each time**.
 
 - `fixed`: Do not change the value
 - `increment`: Increase by 1
@@ -73,7 +73,7 @@ When used with Queue, you can apply it to **generate continuously while changing
 - `randomize`: Randomize each time
 
 
-Use `randomize` if you want to try different results each time like a seed gacha, and `fixed` if you want to fix the seed and compare other parameters.
+Use `randomize` when you want a different result every time, like rolling the dice on seeds, and `fixed` when you want to lock the seed and compare other parameters.
 
 > [!NOTE]
 > The workflows on this site mostly use `fixed` for reproducibility.
@@ -82,41 +82,41 @@ Use `randomize` if you want to try different results each time like a seed gacha
 
 ## Queue Operations
 
-### Add a reservation
+### Add a job
 
 - Click `▷ Run`
-- Increase the number next to it to stack that amount at once.
+- Raise the number next to it to add that many at once.
 
 ### Stop the current job
 
-Stops only the currently running job.
-"Future reservations" stacked in the Queue remain.
+Stops only the job that is running.
+The jobs still waiting in the Queue stay put.
 
 ![](/media/data-utilities/queue/legacy_gyazo_a7d76a9fee8c00efeddb0f454528c8d6.mp4){media=loop}
 
 - Click `❌️ (Cancel Current Run)`
 
-Only the currently running job stops.
-"Future reservations" in the Queue remain as they are.
+Only the running job stops.
+The jobs waiting in the Queue stay as they are.
 
-### Delete reserved tasks
+### Delete queued tasks
 
 ![](/media/data-utilities/queue/legacy_gyazo_b4d1229ca875c9fd5cbbde0dfbf47fc6.mp4){media=loop}
 
 To delete only one item:
 - Right-click the target in the Queue sidebar -> Delete
 
-To delete all unexecuted reservations:
+To delete all pending jobs at once:
 - Click `🔳 (Clear Pending Tasks)`
-- You can batch delete tasks remaining in the Queue (unexecuted ones).
+- This deletes every task still waiting in the Queue (not yet run).
 
 
 ---
 
 
-## Check past processes
+## Checking Past Runs
 
 ![](/media/data-utilities/queue/legacy_gyazo_3db298a7968024f5c06db82ee194d0c9.mp4){media=loop}
 
-Opening `Queue` in the sidebar allows you to check past processing history.
+Open `Queue` in the sidebar to see your past runs.
 You can also load past workflows from here.

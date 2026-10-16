@@ -7,7 +7,7 @@ navId: ltx-2-3
 title: "LTX 2.3"
 created: 2026-03-22
 updated: 2026-04-13
-summary: "在 LTX 2.3 中处理 text2video、image2video、audio2video 和 audio-image2video"
+summary: "LTX 2.3：text2video / image2video / audio2video"
 seoTitle: "在 ComfyUI 中使用 LTX 2.3：相比 LTX-2 的变化与工作流"
 seoDescription: "在 ComfyUI 中使用 LTX 2.3 的方法。整理相比 LTX-2 变化的推荐设置与模型、提示词技巧，以及 text2video / image2video / audio2video 工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -25,7 +25,7 @@ tags: []
 
 ---
 
-## 推荐设定值
+## 推荐设置
 
 - 分辨率
   - 最终输出建议在 1.5M 像素左右
@@ -38,7 +38,7 @@ tags: []
 
 ---
 
-## 模型下载
+## 下载模型
 
 - checkpoints
   - [ltx-2.3-22b-dev-fp8.safetensors](https://huggingface.co/Lightricks/LTX-2.3-fp8/blob/main/ltx-2.3-22b-dev-fp8.safetensors) (29.1 GB)
@@ -71,7 +71,7 @@ tags: []
 架构和 [LTX-2](/zh/basic-workflows/ltx-2/) 一样，所以 workflow 本身也可以直接沿用。  
 不过，如果原样照搬，结果通常不会太好。
 
-所以这里采用社区总结出来的 **[3stage workflow](https://www.reddit.com/r/StableDiffusion/comments/1rn3fjv/for_ltx2_use_triple_stage_sampling/)**。
+所以这一页介绍社区摸索出来的 **[3stage workflow](https://www.reddit.com/r/StableDiffusion/comments/1rn3fjv/for_ltx2_use_triple_stage_sampling/)**。
 
 原本 LTX-2 是先在低分辨率生成，再用 Hires.fix 放大到 1.5MP 的 2stage 方案。  
 而在 2.3 里，会再多加一段：先在非常小的分辨率生成，做一次 2 倍 Hires.fix，再做一次 2 倍 Hires.fix。
@@ -93,7 +93,7 @@ tags: []
 > [!NOTE]
 > ComfyUI 里有一个可以在核心中运行 LLM 的 [TextGenerate 节点](/zh/basic-workflows/llm-mllm/#textgenerate-节点)。  
 > 很多 LTX-2 workflow 会用它来整理提示词，不过它本质上也只是一个用来修正提示词的节点，所以这一页里的 workflow 并没有使用它。  
-> 就我个人来说，还是直接用 ChatGPT 或 Gemini 在外面先把提示词写好更轻松。
+> 我个人觉得，另外用 ChatGPT 或 Gemini 写好提示词更轻松。
 
 ---
 
@@ -189,7 +189,7 @@ tags: []
   - `0`: 第一帧
   - `-1`: 最后一帧
 - 这个 workflow 里放了 3 个参考帧，不过如果串联下去，也可以继续增加
-  - 反过来说，如果只放 1 张，就会有点像 `image2video`；如果只在最前和最后放图，那就是 FLF2V。
+  - 反过来说，如果只放 1 张，就能像 `image2video` 一样用；如果只在最前和最后放图，那就是 FLF2V。
 
 {% endmediaRow %}
 
@@ -221,7 +221,7 @@ LTX-2 的 guide 机制里，如果直接输出，生成出来的视频会混入�
 - Outpaint
   - 自然补全输入视频里的黑色区域
 
-### 模型下载
+### 下载模型
 
 - [ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors](https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control/blob/main/ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors) (654 MB)
 - [ltx-2.3-22b-ic-lora-outpaint.safetensors](https://huggingface.co/oumoumad/LTX-2.3-22b-IC-LoRA-Outpaint/blob/main/ltx-2.3-22b-ic-lora-outpaint.safetensors) (1.31 GB)
@@ -288,7 +288,7 @@ LTX-2 的 guide 机制里，如果直接输出，生成出来的视频会混入�
 它和先做语音克隆、再把音频送进 `audio-image2video` 不一样，ID-LoRA 是同时生成音频和视频的。  
 因此，嘴部动作和声音气质往往会更统一一些。
 
-### 模型下载
+### 下载模型
 
 - [LTX-2.3-ID-LoRA-CelebVHQ-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-CelebVHQ-3K/blob/main/lora_weights.safetensors) (1.16 GB)
 - [LTX-2.3-ID-LoRA-TalkVid-3K.safetensors](https://huggingface.co/AviadDahan/LTX-2.3-ID-LoRA-TalkVid-3K/blob/main/lora_weights.safetensors) (1.16 GB)
@@ -351,7 +351,7 @@ LTX-2 的 guide 机制里，如果直接输出，生成出来的视频会混入�
 [SOUNDS]: 说话方式 + 环境音 / 周围声音
 ```
 
-- 为了避免最后变成“只有声音盖在画面上”的感觉，最好也在 `[VISUAL]` 里写清楚人物正在实际开口说话
+- 为了避免变成像旁白那样只有声音盖在画面上，在 `[VISUAL]` 里也写上人物正在开口说话，结果会更稳定
 
 {% endmediaRow %}
 

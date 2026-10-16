@@ -7,7 +7,7 @@ navId: first-run
 title: "First Run"
 created: 2025-11-24
 updated: 2026-03-02
-summary: "About first run"
+summary: "Launching ComfyUI and generating your first image"
 seoTitle: "ComfyUI First Run: Generate Your First Image"
 seoDescription: "Start ComfyUI and generate your first image from an official template, on portable, desktop, or manual installs, and fix a missing model."
 permalink: "/{{ lang }}/begin-with/{{ slug }}/"
@@ -15,23 +15,23 @@ hero:
   gradient: ""
 ---
 
-Leaving the details aside, let's generate an image for now.
+Never mind the details for now. Let's just generate an image.
 
-## Startup
+## Launching
 
 ### **Portable Version**
-- Double-click `run_nvidia_gpu.bat` in the installed folder.
+- Double-click `run_nvidia_gpu.bat` in the folder where you installed it.
 ### **Desktop Version**
-- Start from the desktop shortcut or Start menu.
+- Launch it from the desktop shortcut or the Start menu.
 ### **Manual Installation**
-- Execute the following commands:
+- Run the following commands:
   ```powershell
   cd path\to\comfyui
   venv\Scripts\activate
   python main.py
   ```
 
-After a while, the ComfyUI screen will open in your browser.
+After a short wait, ComfyUI opens in your browser.
 * If the screen does not open, try entering `http://127.0.0.1:8188` in the browser's address bar.
 
 ---
@@ -40,24 +40,24 @@ After a while, the ComfyUI screen will open in your browser.
 
 ![](/media/begin-with/first-run/legacy_gyazo_7ffdc91e29dc41127e4101360ceff732.png){media=image}
 
-- Immediately after the very first startup, the template screen is probably open. (If not, select `Templates` on the left sidebar.)
+- Right after your very first launch, the template screen will probably be open. (If it isn't, select `Templates` in the left sidebar.)
 - First, select `Getting Started` -> `Image Generation`.
-- An error `Missing Models` will be displayed.
-  - This indicates that the model for running the workflow is missing, but ignore it for now and press `✕` to close it.
+- A `Missing Models` error will appear.
+  - It means you don't have the models this workflow needs, but ignore it for now and press `✕` to close it.
 
 ---
 
 ## Downloading the Model
 
 This workflow is for running a model called **Stable Diffusion 1.5**.
-Compared to current latest models, its performance is modest... or rather, honestly, it's not very useful, but the fundamental mechanism hasn't changed.
+Compared to today's latest models its performance is modest... or honestly, it's not really usable, but the fundamental mechanism hasn't changed.
 
-Let's learn basic image generation with this model, which can be said to be the ancestor of image generation AI.
+Let's learn the basics of image generation with this model, which you could call the ancestor of image generation AI.
 
-- 1.  **Download Model**
+- 1.  **Download the model**
   - [v1-5-pruned-emaonly-fp16.safetensors (Direct Link)](https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive/resolve/main/v1-5-pruned-emaonly-fp16.safetensors)
   - Clicking the link above will start the download.
-  - Save this in the following folder:
+  - Save it in the following folder:
   ```text
   📂ComfyUI/
     └── 📂models/
@@ -67,7 +67,7 @@ Let's learn basic image generation with this model, which can be said to be the 
 
 - 2.  **Refresh**
   - Just placing the model is not enough for ComfyUI to recognize it.
-  - Press the `r` key on your keyboard, or press `ComfyUI Icon` -> `Edit` -> `Refresh Node Definitions` to recognize it.
+  - Press the `r` key, or click `ComfyUI Icon` -> `Edit` -> `Refresh Node Definitions`, and it will be picked up.
 
 ---
 
@@ -76,8 +76,8 @@ Let's learn basic image generation with this model, which can be said to be the 
 ![](/media/begin-with/first-run/legacy_gyazo_57af4e96b7f6b2280aeed28afe3bb121.mp4){media=loop}
 
 - Press the **`▷ Run`** button at the top of the screen to start generation.
-- If an image is displayed in the `Save Image` node, it is successful.
-- The `Save Image` node is, as the name suggests, a node that saves the input image. The generated image is saved in the following folder:
+- If an image shows up in the `Save Image` node, it worked.
+- As the name suggests, the `Save Image` node saves the image it receives. Generated images are saved in this folder:
 ```text
 📂ComfyUI/
   └── 📂output/
@@ -85,19 +85,19 @@ Let's learn basic image generation with this model, which can be said to be the 
       ...
 ```
 
-Try changing the prompt (text in the `CLIP Text Encode` node) or changing the `seed` number to play around.
+Play around by changing the prompt (the text in the `CLIP Text Encode` node) or the `seed` number.
 
 ---
 
-## Common Troubles
+## Common Problems
 
 ### Model not found (Load Checkpoint is red)
 - **Symptom**
-  - The `Load Checkpoint` node is surrounded by red and an error is displayed.
+  - The `Load Checkpoint` node is outlined in red and an error appears.
   - `Value not in list: ckpt_name: 'v1-5-pruned.ckpt' not in []`
 - **Cause**
   - The specified model file is not in the `models/checkpoints/` folder.
-  - The file name has been changed.
+  - The file has been renamed.
 - **Solution**
-  - Check if the folder location is correct (`models/checkpoints`).
-  - There is no problem if the file name changes, but in that case, please re-select the model.
+  - Check that the file is in the right folder (`models/checkpoints`).
+  - Renaming the file is fine, but if you do, select the model again.

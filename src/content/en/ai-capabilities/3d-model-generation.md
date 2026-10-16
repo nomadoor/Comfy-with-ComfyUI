@@ -17,46 +17,46 @@ hero:
 
 ## 3D Generation
 
-3D generation, as the name suggests, is a task to create a 3D model based on a text prompt or a reference image.
+3D generation is exactly what it sounds like: creating a 3D model from a text prompt or a reference image.
 
-Like text2image, it would be nice if a model simply appeared from noise, but just as video has one more dimension in the time axis, 3D generation increases dimensions in the spatial direction, so it cannot be realized easily.
+It would be nice if a model simply emerged from noise, the way it does in text2image. But just as video adds a dimension along the time axis, 3D generation adds a spatial dimension, so it isn't that easy.
 
-Let me tell you first, 3D generation has not yet reached a performance level for professional use.
-However, the technology to create models from images and eventually create a walkable world is growing steadily.
+To be upfront: 3D generation isn't yet good enough for professional use.
+Still, the technology for turning images into models, and even into worlds you can walk around in, is steadily improving.
 
-Let's follow the flow of this technology, which is in the midst of development.
+Let's trace a bit of how this fast-moving technology has developed.
 
-*Note: The chronological order and technical connections are quite loose. Please look at it broadly.*
+*Note: Both the timeline and the technical connections here are pretty rough. Take it as a loose overview.*
 
 ---
 
 ## Multi-View Generation
 
-Originally, technologies like NeRF to create 3D spaces/models from images existed.
-However, to build 3D with NeRF, images of the same object viewed from various viewpoints are required.
+Techniques like NeRF, which build 3D spaces and models from images, already existed.
+But to build 3D with NeRF, you need images of the same object from many different viewpoints.
 
-Multi-view generation was born from this perspective.
+That need is what gave rise to multi-view generation.
 
 ### Zero-1-to-3
 
 > ![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_8f4d195ac2daffffc7356a036d4a3c98.png){media=image}
 > [Zero-1-to-3: Zero-shot One Image to 3D Object](https://zero123.cs.columbia.edu/)
 
-One of the earliest multi-view generations based on diffusion models, it generates an image from a new viewpoint by changing the camera composition of the input image.
+One of the earliest diffusion-based multi-view models. It generates an image from a new viewpoint by changing the camera angle of the input image.
 
-At the time, I thought it looked useful regardless of 3D generation, but the required specs were high and I couldn't use it.
-Now, similar things can be easily done with instruction-based image editing.
+At the time I thought it looked handy even outside of 3D generation, but the hardware requirements were too high for me to use it.
+These days you can do something similar easily with instruction-based image editing.
 
 ### Zero123++
 
-Zero-1-to-3 was used as "Make one image of another angle of the input image → Rotate the angle and repeat", but **[Zero123++](https://github.com/SUDO-AI-3D/zero123plus)** generates multiple viewpoints simultaneously.
+Zero-1-to-3 was used as "make one image of the input from another angle → change the angle and run it again and again," whereas **[Zero123++](https://github.com/SUDO-AI-3D/zero123plus)** generates multiple viewpoints simultaneously.
 
 ![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_b6b4e05ace668acfd75449b8252b139f.png){media=image} ![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_59359f3b3b6f250358211d2044d207fe.jpg){media=image}
 
-Originally, it was known that when diffusion models generate multiple images in batch (cf. [Batch & Video](/en/data-utilities/batch-video)), the generated images have some consistency with each other.
+It was already known that when a diffusion model generates several images as a batch (cf. [Batch & Video](/en/data-utilities/batch-video)), the images come out somewhat consistent with each other.
 
-3D generation requires images from all directions from the beginning.
-Zero123++ can be said to be a model that utilized this property and swung in the direction of "making as consistent multi-views as possible in one generation".
+3D generation needs images from every direction right from the start.
+You could say Zero123++ takes advantage of that property and leans toward "making a set of multi-views that are as consistent as possible in a single generation."
 
 ---
 
@@ -64,92 +64,90 @@ Zero123++ can be said to be a model that utilized this property and swung in the
 
 A little later, models capable of video generation began to appear.
 
-Here, instead of treating multi-view generation as "a type of image editing", the idea comes up:
+This led to an idea. Instead of treating multi-view generation as "a kind of image editing," why not think of it like this?
 
-> A video shot while going around the target object
-> = Very finely chopped multi-view
-
-Why not treat it as such?
+> A video shot while circling around the target object
+> = Very finely sliced multi-view
 
 ### Stable Video 3D
 
 [Introducing Stable Video 3D](https://stability.ai/news/introducing-stable-video-3d)
 
-It is a flow of image2model based on Stable Video Diffusion.
+An image2model model based on Stable Video Diffusion.
 
 ![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_49e94de4d1476e100761e2e6be7a2f6e.mp4){media=loop}
 
 [](/workflows/ai-capabilities/3d-model-generation/sv3d.json)
 
 * Input one still image
-* Generate a 360-degree video where the object rotates
-* Treat each frame of the video as a separate viewpoint image and restore 3D from there
+* Generate a 360-degree video of the object turning all the way around
+* Treat each frame as an image from a different viewpoint and reconstruct 3D from them
 
-The flow of applying video generation models to 3D model generation continues to this day.
+Applying video generation models to 3D model generation is still an active approach today.
 
-Current video generation models are much higher performance than at this time, so you can generate high-definition 360-degree rotation videos without specialized fine-tuning.
+Today's video generation models are far more capable than they were back then, so they can produce detailed 360-degree turnaround videos even without dedicated fine-tuning.
 
 ---
 
 ## Models Aiming Directly for image→3D Model
 
-Up to this point, the premise was a "two-stage configuration":
+Up to this point, everything assumed a "two-stage" setup:
 
-* First collect multi-views (or rotation videos)
-* Create 3D with another mechanism
+* First, gather multi-views (or a turnaround video)
+* Then, turn them into 3D with a separate method
 
-From there, models are emerging that go one step further and aim directly for the form:
+Going a step further, models are now appearing that tackle this head-on:
 
-> Input is image (or text), output is suddenly 3D model
+> Input an image (or text), and get a 3D model directly
 
 ### Hunyuan3D-2.1
 
 Hunyuan3D-2.1 is a large-scale model for creating 3D assets from images or text.
 
-* First stage to output only the "shape" part (rough 3D shape)
-* Second stage to apply high-resolution appearance including PBR textures
+* A first stage that produces only the "shape" (a rough 3D form)
+* A second stage that applies a high-resolution appearance, including PBR textures
 
-It has a two-stage configuration like this.
+It works in these two stages.
 
 ### SAM 3D Objects
 
-SAM 3D Objects is a model that restores 3D objects from a single real photo.
+SAM 3D Objects reconstructs 3D objects from a single real photo.
 
-* On the 2D side, use SAM-based segmentation to firmly cut out the target object
-* Using the cut-out area as a clue, estimate the 3D shape and texture while complementing the hidden parts
+* On the 2D side, it uses SAM-style segmentation to cleanly cut out the target object
+* Using the cut-out region as a guide, it estimates the 3D shape and texture, filling in hidden parts along the way
 
-It follows this flow.
+That's the overall flow.
 
-Although the technical contents are completely different, both are trying to solve "image → 3D model" head-on.
+The technology inside is completely different, but both are trying to solve "image → 3D model" head-on.
 
 ---
 
 ## World Models
 
-So far, we have discussed modeling a single object.
-On the other hand, attempts to create a whole world from photos are also progressing.
+So far, we've talked about turning a single object into a 3D model.
+Meanwhile, there are also efforts to build entire worlds from photos.
 
 > [!NOTE]
-> The "World Model" here means a **model that constructs a 3D world (scene)**, rather than a world model (prediction of physics).
+> "World model" here doesn't mean a world model in the sense of predicting physics. It simply means a **model that builds a 3D world (scene)**.
 
 ### 360-degree Panorama Generation
 
-The start is 360-degree panorama generation.
+It starts with 360-degree panorama generation.
 
-Tools from Latent Labs and [HunyuanWorld-1.0](https://github.com/Tencent-Hunyuan/HunyuanWorld-1.0) correspond to this.
+Examples include tools from Latent Labs and [HunyuanWorld-1.0](https://github.com/Tencent-Hunyuan/HunyuanWorld-1.0).
 
-* Paste the input image onto a panoramic sphere
-* Supplement the directions not shown with outpainting
+* Map the input image onto a panoramic sphere
+* Fill in the directions it doesn't show with outpainting
 
-With this simple idea, create a "look that is filled 360 degrees for now".
+It's a simple idea that gives you something that "at least looks filled in all 360 degrees."
 
-At this stage, it cannot be called 3D yet, but
-by combining depth maps and mesh restoration here, they are trying to build a 3D space with depth.
+At this stage it isn't really 3D yet, but
+by adding depth maps and mesh reconstruction on top, these approaches aim to build a 3D space with real depth.
 
 ### HunyuanWorld-Mirror
 
-When it comes to [HunyuanWorld-Mirror](https://github.com/Tencent-Hunyuan/HunyuanWorld-Mirror), it gets closer to creating a world that you can essentially walk around in.
+[HunyuanWorld-Mirror](https://github.com/Tencent-Hunyuan/HunyuanWorld-Mirror) gets closer to the real goal: a world you can actually walk around in.
 
 > ![](/media/ai-capabilities/3d-model-generation/legacy_gyazo_47ddf0aa2f5bc667b43be75d2ed1223c.mp4){media=player}
 
-* It consists of components such as estimating camera information, depth, and 3D representation (3D Gaussian, etc.) collectively with an image (or video) as input.
+* It's built from components that take an image (or video) as input and estimate camera information, depth, and a 3D representation (such as 3D Gaussians) all together.

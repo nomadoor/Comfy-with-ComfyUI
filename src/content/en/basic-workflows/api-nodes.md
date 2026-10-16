@@ -7,7 +7,7 @@ navId: api-nodes
 title: "API Nodes"
 created: 2025-12-11
 updated: 2026-03-02
-summary: "How to use external closed models with API nodes in ComfyUI"
+summary: "How to use external closed models through ComfyUI's API nodes"
 seoTitle: "ComfyUI API Nodes: Use Closed Models in ComfyUI"
 seoDescription: "Use closed image and video models inside ComfyUI with API nodes: how credits work and how to buy them, how to use the nodes, and when they fit."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -18,30 +18,30 @@ tags: []
 
 ## What are API Nodes?
 
-ComfyUI is an image generation engine, but it is meaningless unless models like Stable Diffusion and Qwen-Image are released as open weights in the first place.
+ComfyUI is an image generation engine, but it's useless unless models like Stable Diffusion and Qwen-Image are released as open weights in the first place.
 
-Most companies developing AI are for-profit companies, so it is rare for them to release models like this. We really have to be grateful.
+Most companies developing AI are for-profit, so it's actually rare for them to release their models like this. We really should be grateful (´・ω・｀)
 
-Many closed models are used from each company's site or dedicated UI, but there is also a way to call them via nodes from within ComfyUI.
+Most closed models are used through each company's own site or app, but there's also a way to call them through nodes from inside ComfyUI.
 
-API nodes (called Partner Nodes in the official documentation) are nodes for calling external closed models from ComfyUI via API.
+API nodes (called Partner Nodes in the official documentation) are a set of nodes for calling external closed models from ComfyUI through an API.
 
 > [!NOTE]
-> The "API nodes" here refer to **paid nodes prepared by ComfyUI**.
-> I distinguish them from patterns where you get OpenAI or Gemini API keys yourself and hit them from custom nodes.
+> "API nodes" here means only the **paid nodes provided by ComfyUI**.
+> I'm keeping them separate from setups where you get your own OpenAI or Gemini API key and call it from a custom node.
 
 ---
 
 ## Credit System
 
-API nodes **always consume credits (prepaid)** regardless of which model you use. There is no free tier or trial, and it cannot be executed when the credit balance is 0.
+API nodes **always use up credits (prepaid)**, whichever model you use. There's no free tier or trial, and they won't run when your credit balance is 0.
 
-The fee is determined for each model in the form of "X credits per generation".
-Basically, it is set at a level that does not deviate significantly from the API price range published by each company, and there is no such thing as "it becomes extremely expensive because it is via ComfyUI".
+Each model has its own price, along the lines of "X credits per generation."
+Prices are generally set close to each company's published API pricing, so going through ComfyUI doesn't make things dramatically more expensive.
 
 ![](/media/basic-workflows/api-nodes/legacy_gyazo_6f7f9247364acac4d4fb1ccfeeb2e845.png){media=image}
 
-Approximate charges are displayed as badges on the top right of the API node.
+The rough cost is shown as a badge in the top-right corner of each API node.
 
 ---
 
@@ -50,14 +50,14 @@ Approximate charges are displayed as badges on the top right of the API node.
 - 1. Launch ComfyUI and open `User` from `⚙ Settings`
 - 2. Log in with your Comfy account, or Google / GitHub account
 - 3. Click `Credits` under the `User` tab
-- 4. Click `Purchase Credits` and charge only the necessary amount with Stripe payment
-- 5. After payment is complete, confirm that the balance has increased (if it is not reflected, reload the browser or restart ComfyUI)
+- 4. Click `Purchase Credits` and top up as much as you need via Stripe
+- 5. Once payment is complete, check that your balance has gone up (if it hasn't, reload the browser or restart ComfyUI)
 
 ---
 
 ## How to Use API Nodes
 
-The usage is the same as other nodes. Just search for the node by model name and connect it.
+They work just like any other node. Search for the node by model name and connect it.
 
 ![](/media/basic-workflows/api-nodes/legacy_gyazo_0d12a7369948fa19779c0b7ffb487cd0.png){media=image}
 
@@ -67,8 +67,8 @@ The usage is the same as other nodes. Just search for the node by model name and
 
 ## When to Use API Nodes
 
-I am one of those who are particular about running AI locally, so honestly I don't use API nodes frequently.
+I'm one of those people who insist on running AI locally, so honestly, I don't use API nodes very often.
 
-Still, caption generation and the like are much easier to use Gemini than running LLM on my own PC, so I sometimes use it.
+Still, for things like generating captions, just using Gemini is far easier than running an LLM on my own PC, so I do rely on it now and then.
 
-ComfyUI's strength is that it can run models in a local environment, but being able to mix and use closed models and local models in the same workflow can also be said to be a strength.
+ComfyUI's strength is running models locally, but being able to mix closed and local models in the same workflow is arguably a strength too.

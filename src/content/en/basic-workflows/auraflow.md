@@ -7,7 +7,7 @@ navId: auraflow
 title: "AuraFlow"
 created: 2025-12-09
 updated: 2026-03-02
-summary: "AuraFlow and Pony V7 rough organization"
+summary: "A quick overview of AuraFlow and Pony V7"
 seoTitle: "AuraFlow and Pony V7 in ComfyUI"
 seoDescription: "Use AuraFlow, fal.ai's lightweight flow-based text2image model, and the AuraFlow-based anime model Pony V7 in ComfyUI, with text2image workflows."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
@@ -18,9 +18,9 @@ tags: []
 
 ## What is AuraFlow?
 
-[AuraFlow](https://blog.fal.ai/auraflow/) is a **flow-based text2image model** developed by fal.ai. It is released under the Apache-2.0 license and is characterized by being lightweight and easy to handle.
+[AuraFlow](https://blog.fal.ai/auraflow/) is a **flow-based text2image model** developed by fal.ai. It's released under the Apache-2.0 license and is lightweight and easy to work with.
 
-There are some movements to move from SDXL, and **Pony V7**, a representative example of this, is also introduced here.
+There have been a few efforts to move over from SDXL to it, and this page also covers the best-known one, **Pony V7**.
 
 ---
 
@@ -41,7 +41,7 @@ The latest version is **AuraFlow v0.3**.
 
 ## text2image
 
-The basic construction is almost the same as SD1.5 / SDXL.
+The basic setup is almost the same as SD1.5 / SDXL.
 
 ![](/media/basic-workflows/auraflow/legacy_gyazo_b19fda7dcd1fd17b91e2f0eea9d70c8c.png){media=image}
 
@@ -51,7 +51,7 @@ The basic construction is almost the same as SD1.5 / SDXL.
 
 ## Pony V7 : AuraFlow-based Anime Model
 
-It is an anime-oriented model based on AuraFlow, created as a successor to [Pony Diffusion V6 XL](/en/basic-workflows/sdxl-anime/#pony-diffusion-v6-xl).
+An AuraFlow-based anime model created as the successor to [Pony Diffusion V6 XL](/en/basic-workflows/sdxl-anime/#pony-diffusion-v6-xl).
 
 ### Model Download
 
@@ -80,6 +80,6 @@ It is an anime-oriented model based on AuraFlow, created as a successor to [Pony
 [](/workflows/basic-workflows/auraflow/pony_v7_base.json)
 
 - 🟦 `T5TokenizerOptions`
-  - A node that fills with padding if the number of tokens is below the set value. There is no big difference whether you include it or not.
-- The official workflow was `euler_normal`, but since the lines tended to be chaotic, **CFG++ (Improved CFG Guidance)** is used here.
-  - It adjusts conventional CFG smoothly, making lines easier to stabilize.
+  - Pads the input when the token count is below the set value. It doesn't make much difference whether you use it or not.
+- The official workflow used `euler_normal`, but the lines tended to get messy, so this one uses **CFG++ (an improved version of CFG guidance)** instead.
+  - It smooths out regular CFG, which helps keep lines stable.

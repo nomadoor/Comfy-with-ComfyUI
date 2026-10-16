@@ -18,21 +18,21 @@ hero:
 
 ## 什么是 Human Motion Transfer？
 
-Human Motion Transfer 是将 **其他视频的全身动作转移** 到一张人物图像（或角色图像）上的技术。
+Human Motion Transfer 是一种把 **另一段视频中的全身动作转移** 到一张人物图像（或角色图像）上的技术。
 
-我想很多用法是借用舞蹈视频或走路视频的“动作”，让自己的角色来表演。
+我想最常见的用法，是借来舞蹈视频、走路视频里的“动作本身”，让自己的角色来演。
 
-与 [talking head](/zh/ai-capabilities/talking-head/) 主要以“脸〜上半身”为对象、细致地匹配表情和嘴部动作相对，Human Motion Transfer 主要处理 **全身的姿势**。
+[talking head](/zh/ai-capabilities/talking-head/) 主要针对“脸部到上半身”，细致地匹配表情和嘴部动作；而 Human Motion Transfer 处理的主要是 **全身的姿势**。
 
 ---
 
 ## Animate Anyone 之后的潮流
 
-虽然像 [BDMM](https://github.com/rocketappslab/BDMM?tab=readme-ov-file) 等，以前就存在转移动作的研究，但在图像生成 AI 社区中并没有广泛传播，让这个任务广为人知的应该是 **[Animate Anyone](https://humanaigc.github.io/animate-anyone/)**。
+[BDMM](https://github.com/rocketappslab/BDMM?tab=readme-ov-file) 等转移动作的研究以前就有，但让这个任务在图像生成 AI 社区里广为人知的，应该是 **[Animate Anyone](https://humanaigc.github.io/animate-anyone/)**。
 
-以一张人物图像和另一个人物的舞蹈视频等作为输入，生成“该角色做同样动作的全身视频”为概念，流传了许多演示视频。
+它的概念是：输入一张人物图像和另一个人的舞蹈视频等，生成“这个角色做出同样动作的全身视频”，当时有大量演示视频流传开来。
 
-但是 Animate Anyone 本身没有开源，所以作为实际能接触到的模型，出现了以 Stable Video Diffusion 为基础试图重现的 **MimicMotion** 等模型。
+不过 Animate Anyone 本身没有开源，所以实际能上手的，是以 Stable Video Diffusion 为基础尝试复现的 **MimicMotion** 等模型。
 
 ![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_1e1bb54d4617ed57e696502727b80092.mp4){media=loop}
 
@@ -40,27 +40,27 @@ Human Motion Transfer 是将 **其他视频的全身动作转移** 到一张人�
 
 ---
 
-## DiT 世代和 Wan-Animate
+## DiT 世代与 Wan-Animate
 
-随着基于 DiT 的视频生成模型的登场，Human Motion Transfer 也在顺理成章地进化。
+随着基于 DiT 的视频生成模型出现，Human Motion Transfer 也顺理成章地进化了。
 
 ### Wan2.1 VACE
 
-Wan2.1 中有一种被称为 VACE 的机制。
+Wan2.1 有一个叫 VACE 的机制。
 
-VACE 是在视频生成中可以汇总处理 `ControlNet`、`reference2video`、`inpainting` 的框架。
-通过组合 `ControlNet Pose` 和 reference2video 式的操作，可以做到接近 Human Motion Transfer 的事情。
+VACE 是一个在视频生成中统一处理 `ControlNet`、`reference2video`、`inpainting` 的框架。
+把 `ControlNet Pose` 和 reference2video 式的操作组合起来，就能做到接近 Human Motion Transfer 的效果。
 
-与其说是专用的 Human Motion Transfer 模型，不如说是作为“以 Wan2.1 为基础，使用姿势和参考视频控制动作的平台”来使用。
+与其说它是专门的 Human Motion Transfer 模型，不如说是“以 Wan2.1 为底座，用姿势和参考视频来控制动作的基础”。
 
 ### Wan-Animate
 
-更专注于动作转移的模型是 [Wan-Animate](https://humanaigc.github.io/wan-animate/)。
+更专注于动作转移的模型，是 [Wan-Animate](https://humanaigc.github.io/wan-animate/)。
 
 ![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_9f0e0e20d750b2e207b01adc56858202.png){media=image} ![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_d7f66b4153473136c37e48c7066709a1.mp4){media=loop} ![](/media/ai-capabilities/human-motion-transfer/legacy_gyazo_86ed4c6aa64af79325ce18359a4021bc.mp4){media=loop}
 
 > Wan-Animate
 
-输入角色图像和带有动作的驱动视频，可以转移全身的动作。
+输入角色图像和带有动作的驱动视频，就能转移全身的动作。
 
-不仅是全身的姿势，还可以使用“面部特写视频”作为驱动，因此特征是 **可以覆盖 talking head 式的用法和 Human Motion Transfer 式的用法两者**。
+它不仅能用全身姿势，还能把“面部特写视频”当作驱动视频，所以特点是 **talking head 式和 Human Motion Transfer 式两种用法都能覆盖**。

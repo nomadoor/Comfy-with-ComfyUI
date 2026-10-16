@@ -7,7 +7,7 @@ navId: instruction-based-image-editing
 title: 基于指令的图像编辑
 created: 2025-12-01
 updated: 2026-03-02
-summary: 只需用文本指示，就能完成各种图像编辑任务的模型群
+summary: 只需用文本下指令，就能完成各种图像编辑任务的一类模型
 seoTitle: "什么是基于指令的图像编辑？用文字编辑图像的 AI"
 seoDescription: "只需图像和文字指令就能完成画风转换、物体替换等编辑的模型。整理从 InstructPix2Pix 到 DiT、In-Context 系、多参考以及基于视频模型的编辑的发展历史。"
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
@@ -16,65 +16,65 @@ hero:
 ---
 ## 什么是基于指令的图像编辑？
 
-输入图像和文本指令（如果需要也可以输入参考图像），就会按照该指令编辑图像的模型，本网站称之为 **基于指令的图像编辑模型**。
+输入图像和文本指令（需要的话还可以加上参考图像），模型就会按照指令编辑图像。本站把这类模型称为 **基于指令的图像编辑模型**。
 
 以前，
 
 - 画风转换 → LoRA 或 IP-Adapter
-- 对象的去除・替换 → inpainting
+- 物体去除、替换 → inpainting
 - 换装 → 专用模型
 
-像这样，必须针对每个任务构建不同的技术或工作流。
+像这样，每个任务都得用不同的技术、搭不同的工作流。
 
-基于指令的图像编辑模型，是将这些任务进化为 **“全部通过文本指令汇总处理”** 的方向。
-目前作为 SOTA 的 nano banana 也属于这个范畴。
+基于指令的图像编辑模型，则朝着 **“全部用文本指令统一处理”** 的方向进化。
+目前的 SOTA nano banana 也属于这一类。
 
 ---
 
-## 发展的历史
+## 发展历史
 
-让我们大致了解一下基于指令的图像编辑是如何发展起来的。
+我们先大致了解一下，基于指令的图像编辑是怎样一路发展过来的。
 
-### InstructPix2Pix ― 指令编辑构想的出发点
+### InstructPix2Pix ― 用指令编辑这一思路的起点
 
-随着 2023 年发布的 **InstructPix2Pix**，“基于指令的图像编辑”之路被开启了。
+2023 年发布的 **InstructPix2Pix**，开辟了“基于指令的图像编辑”这条路。
 
 ![](https://gyazo.com/09fac2eec2d2fba279e9f4f185522964){gyazo=image} ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_afbd89b61246690907e2bfde3bb0b8fa.png){media=image}
-> Turn the car red (把车变成红色)
+> Turn the car red
 
-该模型成对了学习“图像”和“对其的编辑指令文本”，旨在按照用户编写的指令编辑图像。
+这个模型成对学习“图像”和“针对它的编辑指令文本”，目标是按照用户写的指令来编辑图像。
 
-### DiT 和 In-Context 系
+### DiT 与 In-Context 系
 
-这是后来发现的，Flux 等 DiT 系模型原本就具有 **制作多张具有一致性图像的能力**。
+这是后来才发现的：Flux 等 DiT 系模型本来就具备 **生成多张彼此一致的图像的能力**。
 
-将这种性质应用到编辑中的框架就是 **IC-LoRA / ACE++**。
+把这一性质用于编辑的框架，就是 **IC-LoRA / ACE++**。
 
 ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_4d84f2e35f1c7fe99a322d8ee3eaec43.png){media=image}
 
 [](/workflows/ai-capabilities/instruction-based-image-editing/ace_plus_portrait_face_swap.json)
 
 - 在图像画布的左侧放置“参考图像”
-- 遮罩右侧并让其生成
-- 结合文本指令，让它“看着左边编辑右边”
+- 给右侧加上遮罩，让模型生成
+- 结合文本指令，让它“看着左边来编辑右边”
 
-像这样，通过使用所谓的 **并排技巧**，证明了即使不通过特殊的适配器也能“保持参考图像的特征进行编辑”。
+通过这种所谓的 **并排技巧**，人们发现即使不借助专门的适配器，也能“在保留参考图像特征的同时进行编辑”。
 
-### 图像编辑模型的登场
+### 图像编辑模型的出现
 
-之后，作为 text2image 模型的衍生，**FLUX.1 Kontext**、**Qwen-Image-Edit**、**OmniGen** 等“图像编辑”专用的模型登场，“图像编辑”开始被视为与 text2image 不同的一个类别。
+之后，作为 text2image 模型的衍生，**FLUX.1 Kontext**、**Qwen-Image-Edit**、**OmniGen** 等“图像编辑”专用模型相继出现，“图像编辑”逐渐被当作与 text2image 不同的一个类别。
 
 ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_5a7d5ddf5327f52ccc01acb5aae79a4a.png){media=image}
 
 [](/workflows/ai-capabilities/instruction-based-image-editing/flux_1_kontext.json)
 
-共同点是，通过一个模型（某种程度上）通用地处理理解输入图像的内容，根据文本指令调整“哪里改变多少”这样的编辑任务。
+它们的共同点是：理解输入图像的内容，再根据文本指令调整“哪里改、改多少”——想用一个模型（还算）通用地处理这类编辑任务。
 
 ### 多参考时代
 
-初期的基于指令的图像编辑，是以“图像 1 张”＋“文本指令”→ 编辑结果这种 1 输入图像为前提的。
+早期的基于指令的图像编辑，以“1 张图像”＋“文本指令”→ 编辑结果为前提，只有一张输入图像。
 
-**Qwen-Image-Edit-2509** 或 **Flux.2** 以后，同时处理多个参考图像的趋势变强了。
+从 **Qwen-Image-Edit-2509** 和 **Flux.2** 开始，同时处理多张参考图像的趋势越来越明显。
 
 ![](/media/ai-capabilities/instruction-based-image-editing/qwen_image_edit_2509_object_swap.png){media=image}
 
@@ -84,103 +84,101 @@ hero:
 - 图像 B：衣服（换装用）
 - 图像 C：背景或风格
 
-像这样，可以“混合”多个参考进行编辑，Subject 转移、ID 转移、换装、风格・光照的移植等任务，与基于指令的编辑开始有了相当大的重叠。
+像这样，可以一边“混合”多张参考一边编辑，于是 Subject 转移、ID 转移、换装、风格和光照的迁移等任务，与基于指令的编辑开始大幅重叠。
 
 ### 基于视频模型的编辑
 
-作为另一个潮流，有将视频生成模型转用于编辑的系统。**FramePack 的 1 帧推理** 或 **ChronoEdit** 等是代表性的。
+另一条路线，是把视频生成模型转用于编辑。**FramePack 的 1 帧推理** 和 **ChronoEdit** 等是代表。
 
-其思路是，视频模型原本就能处理“多帧的一致性”，如果把编辑前和编辑后视为“短视频”，那么即使是巨大的变化也能自然地连接起来。
+思路是：视频模型本来就能处理“多帧之间的一致性”，只要把编辑前和编辑后看作一段“短视频”，即使变化很大，也能自然地衔接起来。
 
 ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_dbf2c60d457434bccb4428108bb31164.png){media=image}
 > [!NOTE]
-> 这个想法本身很早就有了，我在 AnimateDiff 是主流的时代，也做过制作做出各种表情的角色动画，来制作角色差分（Variations）这样的事情。
+> 这个想法本身由来已久。在 AnimateDiff 还是主流的时候，我也做过这样的事：生成角色做出各种表情的动画，用来制作角色差分。
 
-虽然还有很多问题，比如一致性太强导致难以进行大的变化，或者作为图像编辑只需要 1 张却作为视频输出了几十帧等，但这是今后值得关注的技术。
+问题还有不少，比如一致性太强、很难做出大的变化，或者图像编辑明明只要 1 张，却要作为视频输出几十帧等等，但我认为这是今后值得关注的技术。
 
 ---
 
-## 基于指令的图像编辑能做的事情
+## 基于指令的图像编辑可以做什么
 
-基于指令的图像编辑模型能处理的任务相当多，本网站会在个别页面详细介绍，这里先大致整理一下名字。
+基于指令的图像编辑模型能处理的任务相当多。本站会在各自的页面详细介绍，这里先简单列一下名称。
 
 ### 画风转换
 
-改变画风或风格，通过“油画风”、“变成动漫风”等指令进行转换。
+改变画风或调性，进行“油画风”“改成动漫风格”之类的转换。
 
 ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_9cb22fffbc3c4252d73d8126b551112c.png){media=image} ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_e1525d66b933d4a87fc5d4ee612ee7f0.png){media=image}
 
-### 对象替换
+### 物体替换
 
-进行“把这个杯子变成马克杯”、“把车变成摩托车”等替换。
+进行“把这个杯子换成马克杯”“把车换成摩托车”之类的替换。
 
 ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_53f14e6d461b52d124d1f269ebf9663e.jpg){media=image} ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_01ad4af4f435f48394b2a7a1af4bbd20.png){media=image}
 
-### 对象去除
+### 物体去除
 
-去除行人、看板、垃圾等“不需要的东西”的任务。
+去掉路人、招牌、垃圾等“多余东西”的任务。
 
 ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_a573409de28653a2cf68d6d86bf3e17c.jpg){media=image} ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_b8d68c03b7ca8f9e7baece3700323ea9.png){media=image}
 
-### 背景变更
+### 更换背景
 
 室内→海边、白天→夜晚等，只改变背景的编辑。
-
 ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_e19dc759345f54e3115ca7518c5af7e7.jpg){media=image} ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_937a2c1d9fe5f071582c984fccf6063e.png){media=image}
 
 ### 文本编辑
 
-改变看板或包装上的文字，替换排版等。
+修改招牌或包装上的文字、替换字体排版等。
 
 ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_ac1594d861c1357dad7ed73d229ffef2.png){media=image} ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_c91c136c690e7a82c1f964b1659d370b.png){media=image}
 
-### 摄像机角度的变更
+### 改变相机角度
 
-“稍微拉远点”、“低角度”、“从侧面看的构图”等，进行构图方面的变更。
+“稍微拉远一点”“低角度”“从侧面看的构图”等，偏向构图方面的修改。
 
 ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_eaea9d1804747fc905f3289ed6492d91.png){media=image} ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_ba1a72c2649068502251de53d04e1483.png){media=image}
 
 ### 换装
 
-改变人物或角色的服装的任务。
+更换人物或角色服装的任务。
 
 ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_6c347851817bca776c29adb85120ad90.png){media=image} ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_8ab258d34095ebfe4c44f4df38daf7c0.png){media=image}
 
 ### ControlNet 式生成
 
-ControlNet 是火柴人或深度图等条件 + 文本进行图像生成的，这可以被视为一种“基于指令的图像编辑”。
-现在的基于指令的图像编辑模型被训练为可以进行基本的 ControlNet 式图像生成。
+ControlNet 是用火柴人、深度图等条件 + 文本来生成图像的，这也可以看作一种“基于指令的图像编辑”。
+现在的基于指令的图像编辑模型，经过训练已经能做基本的 ControlNet 式图像生成。
 
 ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_25e1001b36c95236106af1cfb293444d.png){media=image} ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_cce6069cd28da9b8ea71dc546cc6e0c4.png){media=image}
 
-### 杂项拼贴的优化
+### 粗糙拼贴的精修
 
-制作拼贴图像（杂项拼贴），并让其“编辑”使得看起来自然的任务。
-
+先做一张拼贴图像（粗糙拼贴），再让模型“编辑”成看起来自然的样子。
 ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_5771f27e35298b919e3f216847214e6f.png){media=image}
 
-- 自己决定位置・大小并粘贴对象
-- 然后指示“变成自然的照片”、“作为一张画没有违和感”
+- 自己决定位置和大小，把物体贴上去
+- 再下指令：“变成自然的照片”“让整张画面看起来不违和”
 
-像这样，可以组合直观的布局指定和基于指令的编辑。
-详情在“[杂项拼贴的优化](/zh/ai-capabilities/collage-refine/)”页面介绍。
+像这样，就能把直观的布局指定和基于指令的编辑结合起来。
+详情会在“[粗糙拼贴的精修](/zh/ai-capabilities/collage-refine/)”页面介绍。
 
-### 涂鸦指示
+### 用涂鸦下指令
 
-“让脸也朝向箭头的方向”、“在这个红圈的地方放一辆巴士”等，结合粗略的涂鸦和文本进行指示。
+“让脸也朝向箭头的方向”“在这个红圈的位置放一辆巴士”等，把随手画的标记和文本结合起来下指令。
 
 ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_378ec283b1acabfe3bc9af5fc02b013f.png){media=image} ![](/media/ai-capabilities/instruction-based-image-editing/legacy_gyazo_3275c49767be7cf8487af00a41a9cc52.png){media=image}
 
-基于指令的图像编辑的弱点是，仅靠文本很难表现具体的位置和变化量。
-就像制作人向设计师用笔进行指示一样，对 AI 也能“用笔指示”的话就理想了。
+基于指令的图像编辑的弱点在于，单靠文本很难表达具体的位置和变化幅度。
+就像制作人拿笔给设计师标注修改一样，如果对 AI 也能“用笔下指令”，那就理想了。
 
-开源模型中能充分做到这一点的还不多，但如果完成了，将是理想的与 AI 协作的 UI/UX。
+开源模型中能充分做到这一点的还不多，但一旦实现，将会是与 AI 协作的理想 UI/UX。
 
 ## 容易制作 LoRA
 
-多亏了社区整顿的训练环境，制作编辑用 LoRA 相对容易。
+多亏社区搭好了训练环境，制作编辑用的 LoRA 相对容易。
 
-如果是转换成自己插图画风的 LoRA，只要准备 10 张左右编辑前图像和编辑后图像的配对，就能制作出一定质量的 LoRA。
+比如想做一个把图像转换成自己插画画风的 LoRA，只要准备 10 组左右的编辑前、编辑后图像配对，就能做出质量还不错的 LoRA。
 
-“杂项拼贴的优化”正是如此，但把什么视为“图像编辑”？实际上是一个自由度很高的问题。
-也许会有还未被发现的革新性编辑。请务必挑战一下！
+“粗糙拼贴的精修”正是一个例子：把什么当作“图像编辑”，其实是一个自由度很高的问题。
+也许还有尚未被发现的创新编辑方式。请务必挑战一下！

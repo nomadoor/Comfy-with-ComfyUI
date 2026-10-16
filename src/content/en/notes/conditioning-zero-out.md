@@ -18,13 +18,13 @@ hero:
 
 ![](/media/notes/conditioning-zero-out/conditioning_zero_out_hero.png){media=image}
 
-You will often see a node called `Conditioning Zero Out` in recent workflows.
+You see a node called `Conditioning Zero Out` pop up in recent workflows every so often.
 
-So, what exactly is it?
+What on earth is this thing?!
 
 In short, **it fills the unused `negative` input when CFG is set to 1.0**.
 
-Let us look at why that is necessary.
+Let's go through why you'd need something like that.
 
 ## CFG 1.0 ignores Negative
 
@@ -41,7 +41,7 @@ output = negative + 1.0 × (positive - negative)
        = positive
 ```
 
-Negative disappears completely.
+Negative cancels out neatly.
 
 In other words, when CFG is 1.0, the result does not change no matter what you put in Negative.
 
@@ -125,7 +125,7 @@ It gives you the best parts of both approaches.
 
 An empty prompt and `Conditioning Zero Out` may sound like the same thing, but the data they produce is completely different.
 
-Let us inspect the values in ComfyUI.
+Let's actually look at the data in ComfyUI.
 
 ![](/media/notes/conditioning-zero-out/clip_text_encoder_conditioning_zero_out.png){media=image}
 
@@ -139,7 +139,7 @@ What about an empty prompt?
 
 Its values are not all 0.
 
-It may seem like no text should produce empty conditioning, but to the Text Encoder, even “a sentence with nothing written in it” still has its own meaning.
+You'd think writing nothing would give you empty conditioning, but to the Text Encoder, even "a sentence with nothing written in it" means something.
 
 At CFG 1.0, Negative itself is not used, so both methods produce the same generated result.
 

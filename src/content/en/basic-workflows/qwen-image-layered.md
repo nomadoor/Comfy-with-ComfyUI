@@ -7,7 +7,7 @@ navId: qwen-image-layered
 title: "Qwen-Image-Layered"
 created: 2025-12-31
 updated: 2026-03-02
-summary: "Decompose input image into multiple RGBA layers"
+summary: "Split an input image into multiple RGBA layers"
 seoTitle: "Qwen-Image-Layered in ComfyUI: Split Images into Layers"
 seoDescription: "Use Qwen-Image-Layered to split an image into transparent RGBA layers and edit just one. The idea, model download, and workflow in ComfyUI."
 permalink: "/{{ lang }}/basic-workflows/{{ slug }}/"
@@ -18,13 +18,13 @@ tags: []
 
 ## What is Qwen-Image-Layered?
 
-It is a diffusion model that decomposes an input image into an arbitrary number of **layers**.
+It's a diffusion model that splits an input image into any number of **layers**.
 
-In recent trending image editing, parts unrelated to the instructions sometimes change.
-So, the motivation was "why not separate layers like designers have done so far, and edit only the target layer?", right?
+Image editing is all the rage lately, but parts unrelated to your instruction sometimes change too.
+So why not split the image into layers, the way designers always have, and edit only the layer you want? That's the idea behind this task.
 
-It is also noteworthy that it is the first general-purpose method to handle transparent images (RGBA).
-Previous methods required post-processing or special processing only during decoding, but this one takes a more straightforward approach of "handling as RGBA images".
+It's also notable as the first general-purpose method that handles transparent (RGBA) images.
+Earlier methods needed post-processing, or special handling just at decode time, but this one takes the more straightforward approach of simply treating them as RGBA images.
 
 
 ---
@@ -67,26 +67,26 @@ Previous methods required post-processing or special processing only during deco
 [](/workflows/basic-workflows/qwen-image-layered/qwen_image_layered.json)
 
 
-* Resize input image
+* Resize the input image
 
-  * It can handle up to 1024px, but since it tends to get heavier as the number of layers increases, it is set to 0.5M pixels here.
+  * You can go up to 1024px, but it tends to get heavy as you add layers, so it's set to 0.5M pixels here.
 * 🟩`Empty Qwen Image Layered Latent`
 
-  * `layers`: Number of layers you want to split
-  * Increasing this also increases memory and time costs.
+  * `layers`: how many layers to split into
+  * Raising this also costs more memory and time.
 
 * 🟫`LatentCutToBatch`
 
-  * It might be hard to understand what it is doing, but please think of it as "formatting" for implementation convenience.
-  * As the name suggests, this model outputs multiple images as "layers", but the current `VAE Decode` cannot understand the concept of layers well, so it converts them into a simple batch of N images.
+  * It's probably hard to tell what this is doing, but just think of it as "reshaping" the data for implementation reasons.
+  * As the name says, this model outputs multiple images as "layers", but the current `VAE Decode` doesn't really understand the idea of layers, so this node turns them into a plain batch of N images.
 
-* 🟦 Synthesize images again (Optional)
-  - If split into 2 layers, a total of 3 RGBA images (original image + decomposition results) are output.
-  * You can return to the original single image by continuing to overlay the 2nd and subsequent images with `ImageCompositeMasked`.
-    - However, since this node can only handle RGB images, it is necessary to convert it to the form of RGB image + mask.
+* 🟦 Composite the images back together (Optional)
+  - If you split into 2 layers, you get 3 RGBA images in total (the original image + the decomposed layers).
+  * Stacking the 2nd and later images one after another with `ImageCompositeMasked` gets you back to the original single image.
+    - However, this node only handles RGB images, so you need to convert each one into an RGB image + mask.
     - cf. [Mask and Alpha Channel](/en/data-utilities/mask-alpha/)
 
-  * I think it's troublesome, but node-based UIs and layer systems are not very compatible, not limited to ComfyUI 😥
+  * It's a hassle, I know, but node-based UIs and layer systems just don't get along, and not only in ComfyUI 😥
 
 
 ---

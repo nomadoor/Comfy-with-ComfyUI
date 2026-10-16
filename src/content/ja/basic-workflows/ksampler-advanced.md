@@ -24,7 +24,7 @@ hero:
   - `add_noise`
   - `start_at_step`
   - `end_at_step`
-  - `return_with_leftsover_noise`
+  - `return_with_leftover_noise`
 
 ComfyUIの中でも、最も面白い機能の一つだと思っているので、ゆっくり見ていきましょう。
 
@@ -75,7 +75,7 @@ KSampler (Advanced)では、`add_noise`パラメータでノイズを追加す�
 
 ![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_27eed74329f52442a046e59245ee9b14.png){media=image}
 
-図のように、前半 0 ~ 10stepは🟪Ksample (Advanced)、11~20stepは🟨KSampler (Advanced)で行ってみましょう。
+図のように、前半 0 ~ 10stepは🟪KSampler (Advanced)、11~20stepは🟨KSampler (Advanced)で行ってみましょう。
 
 ![](/media/basic-workflows/ksampler-advanced/legacy_gyazo_d57cb22d3d85f90010815d19d45bb638.png){media=image}
 
@@ -162,7 +162,7 @@ LoRAを使わなかったときと全step適用したときを見比べてみる
 
 ## image2image
 
-途中からノイズを追加する、というのはそのままimage2imageの仕組みつながります。  
+途中からノイズを追加する、というのはそのままimage2imageの仕組みにつながります。  
 それでは、このままimage2imageの仕組みを見てみましょう。
 
 → [image2image](/ja/basic-workflows/sd15-image2image/)

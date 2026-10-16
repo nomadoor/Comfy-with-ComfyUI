@@ -7,7 +7,7 @@ navId: resize-crop-pad
 title: "Resize, Crop, and Pad"
 created: 2025-11-25
 updated: 2026-03-02
-summary: "About image resizing, cropping, and padding"
+summary: "Resizing, cropping, and padding images"
 seoTitle: "Resize, Crop, and Pad Images in ComfyUI"
 seoDescription: "ComfyUI nodes for resizing, cropping, and padding images, and when to use each to match a model's resolution and save VRAM, with easy-to-read workflows."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -17,13 +17,13 @@ hero:
 
 ## Image Resizing and Cropping
 
-It may seem like a simple task of enlarging an image or cropping it to a square, but it is a very important process in image generation.
+Making an image bigger, cropping it to a square... these are simple tasks, but they matter a lot in image generation.
 
-- **Model's Optimal Resolution**: Models have a "resolution where they perform best".
-- **Saving VRAM**: If you inadvertently load and process a 4K image, you will instantly run "Out of memory".
-- **Unifying Materials**: In image compositing, etc., it is necessary to align the sizes of multiple materials.
+- **The model's ideal resolution**: Every model has a resolution where it performs best.
+- **Saving VRAM**: Accidentally load and process a 4K image, and you'll hit "Out of memory" in no time.
+- **Matching your inputs**: For things like compositing, you need several images to be the same size.
 
-Since this is a frequently used task, let's firmly understand the differences between each node.
+You'll do this a lot, so it's worth getting a solid grasp of how each node differs.
 
 ---
 
@@ -31,7 +31,7 @@ Since this is a frequently used task, let's firmly understand the differences be
 
 ### Get Image Size Node
 
-Outputs the width, height, and batch size (count) of the image as numerical values.
+Outputs the image's width, height, and batch size (number of images) as numbers.
 
 ![](/media/data-utilities/resize-crop-pad/legacy_gyazo_ffb5c8bfea06d5ce1b15183cc70dc973.png){media=image}
 
@@ -43,16 +43,16 @@ Outputs the width, height, and batch size (count) of the image as numerical valu
 
 ### Resize Image/Mask Node
 
-A node that allows you to switch between several resizing methods.  
-Basically, this one node covers most of the necessary processing. (By the way, masks can also be resized.)
+A node that lets you switch between several resize methods.  
+This one node covers most of what you'll need. (It can resize masks too, by the way.)
 
 {% mediaRow img="/media/data-utilities/resize-crop-pad/legacy_gyazo_afa66ff808e05a40e363761184c668c1.png {media=image}", width=45, align="left" %}
 
 **scale by multiplier**
 
-Scales vertically and horizontally by a "multiplier".
+Scales width and height by a multiplier.
 
-For example, `0.5` makes the vertical and horizontal dimensions half, and `2.0` makes them double.
+For example, `0.5` halves both, and `2.0` doubles both.
 
 {% mediaFooter %}
 [](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_by_multiplier.json)
@@ -64,11 +64,11 @@ For example, `0.5` makes the vertical and horizontal dimensions half, and `2.0` 
 
 **scale dimensions**
 
-Forcibly changes the resolution to the specified width and height.
+Forces the image to the width and height you specify.
 
 - `crop`
   - `disabled` : Distorts the image if the aspect ratio is different.
-  - `center` : Maintains the center and crops (discards) the protruding parts instead of distorting.
+  - `center` : Keeps the center and crops off (discards) whatever sticks out.
 
 {% mediaFooter %}
 [](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_dimensions.json)
@@ -80,7 +80,7 @@ Forcibly changes the resolution to the specified width and height.
 
 **scale longer/shorter dimension**
 
-Resizes the image specifying only the long side (longer) or short side (shorter), maintaining the aspect ratio.
+Resizes while keeping the aspect ratio, based only on the long side (longer) or short side (shorter).
 
 {% mediaFooter %}
 [](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_longer_dimension.json)
@@ -92,7 +92,7 @@ Resizes the image specifying only the long side (longer) or short side (shorter)
 
 **scale width/height**
 
-Resizes the image specifying only either the width or height, maintaining the aspect ratio.
+Resizes while keeping the aspect ratio, based only on the width or the height.
 
 {% mediaFooter %}
 [](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_width.json)
@@ -104,7 +104,7 @@ Resizes the image specifying only either the width or height, maintaining the as
 
 **scale total pixels**
 
-Resizes the image to match the specified **total number of pixels** while maintaining the aspect ratio.
+Resizes to the specified **total pixel count** while keeping the aspect ratio.
 
 Calculated as `1024 * 1024 = 1.00MP`.
 
@@ -125,14 +125,14 @@ Calculated as `1024 * 1024 = 1.00MP`.
 
 **match size**
 
-Resizes the image to match the size of a reference image.
+Resizes the image to the same size as a reference image.
 
-Previously, it was necessary to get the size of the reference image and pass it to another node, but now this combines it into one.
+You used to have to get the reference image's size and pass it to another node, but now it all happens in one.
 
 - `match`: Connect the image you want to use as a reference.
 - `crop`
   - `disabled` : Distorts the image if the aspect ratio is different.
-  - `center`: Maintains the center and crops (discards) the protruding parts.
+  - `center`: Keeps the center and crops off (discards) whatever sticks out.
 
 {% mediaFooter %}
 [](/workflows/data-utilities/resize-crop-pad/resize_imagemask_match_size.json)
@@ -144,11 +144,11 @@ Previously, it was necessary to get the size of the reference image and pass it 
 
 **scale to multiple**
 
-Resizes the vertical and horizontal dimensions to be multiples of N.
+Resizes so that width and height are multiples of N.
 
-Details are explained in [Why can I only generate resolutions that are multiples of 8?](/en/notes/why-multiple-of-8/), but in short, diffusion models cannot handle resolutions that are not specific multiples due to VAE limitations.
+I go into detail in [Why can I only generate resolutions that are multiples of 8?](/en/notes/why-multiple-of-8/), but because of how the VAE works, diffusion models can't handle resolutions that aren't a certain multiple as-is.
 
-Basically, ComfyUI often adjusts automatically internally, so there isn't much need for this node unless you encounter errors with non-specific resolutions, or when you want to "perfectly match" the pixels of the input and output.
+Some node along the way often adjusts this for you, but this comes in handy when you get errors unless the resolution is exactly right, or when you want the input and output pixels to match exactly.
 
 {% mediaFooter %}
 [](/workflows/data-utilities/resize-crop-pad/resize_imagemask_scale_to_multiple.json)
@@ -159,8 +159,8 @@ Basically, ComfyUI often adjusts automatically internally, so there isn't much n
 
 ### ImageScaleToMaxDimension Node
 
-Resizes the image so that the **long side** becomes the set size, maintaining the aspect ratio.  
-(Example: Whether it is a portrait or landscape image, make the longer side 1024px)
+Resizes so that the image's **long side** matches the size you set, keeping the aspect ratio.  
+(For example, the longer side becomes 1024px whether the image is portrait or landscape.)
 
 ![](/media/data-utilities/resize-crop-pad/legacy_gyazo_42ffc7b0534face3e58fc7946b243ce0.png){media=image}
 
@@ -171,40 +171,40 @@ Resizes the image so that the **long side** becomes the set size, maintaining th
 
 ## Padding
 
-Padding is the process of adjusting the size by adding margins (black bars, etc.) around the image.  
-Depending on the node, this margin part can be output as a mask, so it is used as preparation for Outpainting.
+Padding adjusts the size by adding margins (such as black bars) around the image.  
+Some nodes can output the margin as a mask, which makes padding a common first step for Outpainting.
 
 ### ResizeAndPadImage Node
 
-Resizes to the specified resolution and fills the missing parts with padding.
+Resizes to the specified resolution and fills the rest with padding.
 
 ![](/media/data-utilities/resize-crop-pad/legacy_gyazo_633441a119959e98e0dca5cb765a53d8.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/resizeandpadimage.json)
 
 > [!NOTE]
-> Since this node cannot output the padding part as a mask, there are practically no occasions to use it.
+> This node can't output the padding as a mask, so you'll hardly ever use it.
 
 ### Pad Image for Outpainting Node
 
-Adds margins of the specified number of pixels to the top, bottom, left, and right of the image.
+Adds the specified number of pixels of margin to the top, bottom, left, and right of the image.
 
 ![](/media/data-utilities/resize-crop-pad/legacy_gyazo_c6200467aad1b43edbc09b2ec4f3f2b0.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/pad_image_for_outpainting.json)
 
 
-The margin part is output as a mask.
+The margin is output as a mask.
 
 - **feathering**: Blurs the boundary between the margin and the image. Affects only the mask.
 
 ---
 
-## Crop and Other Edit Operations
+## Cropping and Other Edits
 
 ### ImageCrop Node
 
-Crops a part of the image in a rectangle by specifying x, y coordinates and width/height.
+Cuts out a rectangular part of the image, given x/y coordinates and a width and height.
 
 ![](/media/data-utilities/resize-crop-pad/legacy_gyazo_1c996b2fa8f7213f05c524b16468181e.png){media=image}
 
@@ -233,9 +233,9 @@ Flips the image horizontally / vertically.
 
 ## Resize Image v2 Node
 
-This is a node included in **[kijai/ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes)**.
+This node comes from **[kijai/ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes)**.
 
-It is like a node that combines the above resize, crop, and padding into one.
+It's basically the resize, crop, and padding above rolled into one node.
 
 | Parameter Name | Description |
 | :--- | :--- |
@@ -247,13 +247,13 @@ It is like a node that combines the above resize, crop, and padding into one.
 | **divisible_by** | Resizes to a resolution that is a multiple of this value (e.g., 32, 64) |
 
 > [!NOTE]
-> Previously, this was used frequently to resize to multiples of N, but now that core nodes handle this, it is not used much.
+> I used to use this a lot for resizing to multiples of N, but core nodes can do that now, so I don't use it much anymore.
 
 ---
 
-## A Little Application
+## Putting It Together
 
-Let's try some slightly complex image processing by combining the nodes so far.
+Let's combine the nodes so far to do something a little more involved.
 
 ### Crop Image to Half
 
@@ -262,5 +262,5 @@ Let's try some slightly complex image processing by combining the nodes so far.
 [](/workflows/data-utilities/resize-crop-pad/crop_to_half_size.json)
 
 - Get the size of the image
-- Calculate half the width with `Simple math` node
-- Input the calculated width to `ImageCrop` node and crop to half
+- Calculate half the width with the `Simple math` node
+- Feed that width into the `ImageCrop` node to crop the image in half

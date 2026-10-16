@@ -7,7 +7,7 @@ navId: speed-and-efficiency
 title: "Speed and Efficiency"
 created: 2025-12-11
 updated: 2026-03-02
-summary: "Organizing speed-up and lightweighting techniques for diffusion models and using them according to purpose"
+summary: "An overview of techniques for making diffusion models faster and lighter, and which to use for what"
 seoTitle: "Speed Up ComfyUI and Reduce VRAM: Techniques Compared"
 seoDescription: "Speed and memory techniques for diffusion models by goal: 8-bit and 4-bit quantization, GGUF, distillation, attention optimization, and sampling caches."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -18,35 +18,35 @@ tags: []
 
 ## What are Speed and Efficiency?
 
-When Stable Diffusion 1.5 first appeared, the recommended VRAM was about 10GB, and benchmark results were reported that it took about 5 seconds to generate one image with the RTX 3080 class.
-That is now a thing of the past. Thanks to technological advances, it is now possible to infer in a few seconds to a dozen seconds with only CPU, and to generate dozens of images per second.
+When Stable Diffusion 1.5 first came out, the recommended VRAM was around 10GB, and many benchmarks reported about 5 seconds per image on an RTX 3080-class GPU.
+That's ancient history now. Thanks to technical progress, you can run inference on a CPU alone in anywhere from a few seconds to a dozen or so, or generate dozens of images per second.
 
-The history of diffusion models can be said to be the **"history of speed-up and lightweighting"** in a sense.
+In a sense, you could say the history of diffusion models is a **"history of getting faster and lighter"**.
 
-Note that the following two are similar but different.
+One thing to keep in mind: these two sound similar, but they're different things.
 
-- **Speed-up: Shorten the generation time per image with the same hardware**
-- **Lightweighting: Enable the same model to run with less VRAM / memory**
+- **Speed-up: shorter generation time per image on the same hardware**
+- **Memory savings: running the same model with less VRAM / memory**
 
-Using lightweighting techniques (Quantization / GGUF, etc.) can reduce VRAM, but in some cases, inference speed may actually decrease.
+Memory-saving techniques (quantization / GGUF, etc.) can cut VRAM, but in some cases they actually make inference slower.
 
 > [!NOTE]
-> In this page, "Lightweighting" is treated mainly as VRAM usage reduction of models.
+> On this page, "memory savings" mainly means reducing a model's VRAM usage.
 
 ---
 
-## Rough Map of This Page
+## A Rough Map of This Page
 
-First, let's roughly organize which technologies are relevant for each common purpose.
+First, a rough breakdown of which techniques come into play for each common goal.
 
-- Want to make it faster anyway
+- Just want it faster
 
-  - Distillation (Lightning / schnell / various one-step systems)
+  - Distillation (Lightning / schnell / various one-step models)
   - Small VAE (TAE, etc.)
-  - Attention Optimization (FlashAttention systems, etc.)
-  - Sampling Cache (TeaCache systems, etc.)
+  - Attention optimization (FlashAttention family, etc.)
+  - Sampling cache (TeaCache family, etc.)
 
-- Want to cut VRAM / Want to run it anyway
+- Want to cut VRAM / just want it to run
 
   - Quantization (8bit / 4bit)
   - GGUF
@@ -54,27 +54,27 @@ First, let's roughly organize which technologies are relevant for each common pu
   - VAE Tiling (Tiled VAE / Temporal Tiling)
 
 > [!NOTE]
-> Things like SageAttention and Nunchaku are also famous, but the introduction difficulty is high, so we do not handle them on this site. Let's take stability over hardship.
+> SageAttention and Nunchaku are also well known, but they're hard to set up, so this site doesn't cover them. Choose stability over struggle.
 
 ---
 
-## List of Main Speed-up / Lightweighting Methods
+## Main Speed-up and Memory-Saving Methods
 
-- Speed-up / Lightweighting is roughly effective (◎ > ○ > △ > ―)
-- Introduction Difficulty is "Easy / Normal / Hard", which is a guideline for setup effort and ease of incorporation into existing workflows.
+- Speed-up / Memory savings show roughly how effective each method is (◎ > ○ > △ > ―)
+- Setup difficulty is "Easy / Medium / Hard": a rough guide to the setup effort and how easily it fits into existing workflows.
 
-| Method Name | Type | Speed-up | Lightweighting | Introduction Difficulty |
+| Method | Type | Speed-up | Memory savings | Setup difficulty |
 | --- | --- | --- | --- | --- |
-| 8bit Quantization | Model Quantization | △~○ | ○ (Roughly halve VRAM) | Easy |
-| 4bit Quantization | Model Quantization | △ | ◎ (Significantly reduce VRAM) | Hard |
-| GGUF | Dedicated Format + Quantization | △ | ◎ (Model capacity / VRAM reduction) | Normal |
-| Distilled Model | Model Distillation (Lightning / schnell) | ◎ | ― (Model size is almost the same) | Normal |
-| Attention Optimization | Attention Implementation Replacement | ○ | ― | Normal~Hard |
-| Sampling Cache | Sampling Cache | ○ | ― | Hard |
-| Small VAE | Distilled VAE | ○~◎ | △ (Only VAE part becomes lighter) | Normal |
-| CPU Offload | Evacuate part of the model to CPU/RAM | ✕ | ◎ (VRAM can be reduced to a few GB) | Easy |
-| Block Swap | Evacuation per Transformer Block | ✕ | ◎ | Easy |
-| VAE Tiling | Process image/video by tile division | ― | ○ (VRAM saving at high resolution) | Normal |
+| 8bit Quantization | Model quantization | △~○ | ○ (Roughly halves VRAM) | Easy |
+| 4bit Quantization | Model quantization | △ | ◎ (Cuts VRAM a lot) | Hard |
+| GGUF | Dedicated format + quantization | △ | ◎ (Smaller model files / less VRAM) | Medium |
+| Distilled Model | Model distillation (Lightning / schnell) | ◎ | ― (Model size stays about the same) | Medium |
+| Attention Optimization | Swapping the Attention implementation | ○ | ― | Medium~Hard |
+| Sampling Cache | Caching during sampling | ○ | ― | Hard |
+| Small VAE | Distilled VAE | ○~◎ | △ (Only the VAE part gets lighter) | Medium |
+| CPU Offload | Moves part of the model to CPU/RAM | ✕ | ◎ (Can bring VRAM down to a few GB) | Easy |
+| Block Swap | Moves Transformer blocks out one at a time | ✕ | ◎ | Easy |
+| VAE Tiling | Processes images/videos in tiles | ― | ○ (Saves VRAM at high resolutions) | Medium |
 
 ---
 
@@ -82,84 +82,84 @@ First, let's roughly organize which technologies are relevant for each common pu
 
 ### 8bit Quantization
 
-8bit quantization is a method to suppress VRAM usage to about half roughly by dropping model weights to 8bit (INT8 or FP8 systems).
-In many environments, deterioration of image quality is hardly noticeable, and speed remains almost unchanged or improves slightly.
+8-bit quantization reduces model weights to 8 bits (INT8 or FP8 variants), cutting VRAM usage roughly in half.
+In most setups, the quality loss is barely noticeable, and speed stays about the same or improves slightly.
 
-Checkpoints with `fp8` in the model name can also be considered as lightweight versions of this 8bit system.
+You can think of checkpoints with `fp8` in the model name as 8-bit lightweight versions like this.
 
 ### 4bit Quantization
 
-4bit quantization is a method to save VRAM significantly by further reducing the number of bits.
-In return, reconstruction of weights and numerical errors have a larger impact, and breakdown of colors and details is easy to notice, so it is safe to view it as an "experimental area" at present.
+4-bit quantization cuts the bit count even further to save a lot of VRAM.
+The trade-off is that weight reconstruction and numerical error have a bigger effect, so breakdowns in color and detail become easy to spot. For now, it's safest to treat it as experimental territory.
 
-There are stacks like SVDQuant and Nunchaku that runs its 4bit model at high speed, but the degree of freedom of introduction and setting is high, so we will not cover them in detail here.
+There are also stacks like SVDQuant, and Nunchaku, which runs those 4-bit models fast, but they come with a lot of setup and configuration choices, so I won't go into detail here.
 
 ### GGUF
 
-GGUF is a dedicated format for storing quantized weights. (As a supplement) This is designed with a focus on efficient inference from CPU memory (RAM), and a major feature is that it is easy to operate even in environments where VRAM is insufficient.
+GGUF is a dedicated format for storing quantized weights. (As a side note) It was designed mainly for efficient inference from CPU memory (RAM), and a big advantage is that it runs easily even when VRAM is short.
 
-In ComfyUI, if you introduce [city96/ComfyUI-GGUF](https://github.com/city96/ComfyUI-GGUF), you can use it just by replacing the `Load Diffusion Model` node with a node for GGUF and specifying the GGUF model.
+In ComfyUI, once you install [city96/ComfyUI-GGUF](https://github.com/city96/ComfyUI-GGUF), you can use it just by swapping the `Load Diffusion Model` node for the GGUF node and selecting a GGUF model.
 
 ---
 
 ## Distillation
 
-Distillation is a method of teaching the behavior of a teacher model to another model (or LoRA), and in diffusion models, it is mainly used for the purpose of "enabling output of equivalent images with fewer steps".
+Distillation teaches a teacher model's behavior to another model (or a LoRA). In diffusion models, it's mainly used to "produce equivalent images in fewer steps".
 
-Representative Examples
+Examples
 
-- "High-speed version" checkpoints like [FLUX.1-schnell](/en/basic-workflows/flux-1/#text2image-flux-1-schnell)
-- High-speed generation LoRA like [Qwen-Image-Lightning](/en/basic-workflows/qwen-image/#lightning-high-speed-generation-lora)
+- "Fast version" checkpoints like [FLUX.1-schnell](/en/basic-workflows/flux-1/#text2image-flux-1-schnell)
+- Fast-generation LoRAs like [Qwen-Image-Lightning](/en/basic-workflows/qwen-image/#lightning-high-speed-generation-lora)
 
-Since the number of steps can be reduced to about 1 to 4 steps, it is the first candidate when you want to make it faster anyway.
+It can sometimes cut the step count to around 1–4 steps, which makes it the first thing to try when you just want speed.
 
 ---
 
 ## Attention Optimization
 
-Since Self-Attention is a heavy process in diffusion models, several implementations have been proposed to speed this up.
+Self-Attention is a heavy operation in diffusion models, so several implementations have been proposed to speed it up.
 
-- `scaled_dot_product_attention` of PyTorch 2 systems (FlashAttention systems)
-- Speeded-up Attention kernels provided by various libraries
+- PyTorch 2's `scaled_dot_product_attention` (FlashAttention family)
+- Optimized Attention kernels provided by various libraries
 
-Using such implementations may expect a speed improvement of several tens of percent without changing the model itself.
-On the other hand, there are implementations that require build or dedicated nodes like SageAttention, and the introduction difficulty is high, so we do not handle them on this site.
+Using these can sometimes get you a speed-up of tens of percent without changing the model itself.
+On the other hand, some implementations, such as SageAttention, need a build step or dedicated nodes and are hard to set up, so this site doesn't cover them.
 
 ---
 
 ## Sampling Cache
 
-Sampling cache is a general term for speed-up methods like "teaching calculation by caching and reusing results of some steps during sampling".
-Things like TeaCache and MagCache are implemented in ComfyUI.
+Sampling cache is an umbrella term for speed-up methods that "cache and reuse the results of some steps during sampling to skip computation".
+Methods like TeaCache and MagCache are implemented in ComfyUI.
 
-While it can speed up without additional training, obvious deterioration is more likely to appear compared to other methods.
+It speeds things up without any extra training, but compared with other methods, it's more prone to visible quality loss.
 
 ---
 
 ## Small VAE
 
-Small VAE is a distilled and smaller version of the original VAE to speed up decode.
-Representative examples include TAE (Tiny AutoEncoder system), which is used for real-time preview and intermediate confirmation.
+A small VAE is a distilled, smaller version of the original VAE that speeds up decoding.
+A typical example is TAE (the Tiny AutoEncoder family), used for real-time previews and checking intermediate results.
 
 ---
 
 ## CPU Offload and Block Swap
 
-CPU offload is a mechanism to evacuate a part of the model or intermediate tensors to the CPU side (RAM) when VRAM is insufficient.
-Instead of making it easier to avoid CUDA OOM, generation time extends at once because transfer via PCIe increases.
+CPU offload moves part of the model or intermediate tensors to the CPU side (RAM) when VRAM runs short.
+It makes CUDA OOM easier to avoid, but the extra transfers over PCIe make generation time shoot up.
 
-In ComfyUI, depending on settings and nodes, offload is automatically performed internally, and it may move on its own without the user being aware of it.
-If you feel "the time per image is unusually long", you might suspect that CPU offload or Block Swap is working behind the scenes.
+In ComfyUI, offloading can happen automatically under the hood depending on your settings and nodes, so it may be running without you noticing.
+If each image feels like it's taking oddly long, it might be worth suspecting that CPU offload or Block Swap is at work behind the scenes.
 
-Block Swap is a mechanism that divides Transformer into block units and controls input/output so that "only currently necessary blocks are put on GPU".
-Both are the same in that they escape to RAM, but Block Swap is a method aiming to suppress the peak of VRAM more finely, and is used in large video models etc.
+Block Swap splits a Transformer into blocks and moves them in and out so that "only the blocks needed right now are on the GPU".
+Both move things out to RAM, but Block Swap aims to keep peak VRAM down at a finer level, and it's used for large video models and the like.
 
 ---
 
 ## VAE Tiling
 
-VAE tiling is a method to reduce the area processed per time by dividing image or video into tiles and encoding / decoding it.
-For example, if you process by dividing the image into 4, the necessary VRAM and calculation amount for each tile will be roughly 1/4.
+VAE tiling splits an image or video into tiles to encode / decode it, so each pass handles a smaller area.
+For example, if you split an image into 4, the VRAM and compute needed for each tile drop to roughly 1/4.
 
-Thanks to this, even images of sizes that are originally impossible in terms of memory or ultra-high resolution decode can be managed somehow.
-Please try it when VAE decode takes an abnormally long time or when you want to handle images of 4K or more.
+This lets you get through images at sizes that would normally be impossible memory-wise, and even ultra-high-resolution decodes.
+Try it when VAE decode takes abnormally long, or when you want to work with images at 4K or above.

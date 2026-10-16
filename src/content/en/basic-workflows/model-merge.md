@@ -7,7 +7,7 @@ navId: model-merge
 title: "Model Merge & Difference LoRA"
 created: 2025-12-11
 updated: 2026-08-26
-summary: "How to merge checkpoints/LoRAs and create difference LoRAs"
+summary: "How to merge checkpoints and LoRAs into new models or difference LoRAs"
 seoTitle: "Merge Models in ComfyUI and Make Difference LoRAs"
 seoDescription: "Merge checkpoints and LoRAs in ComfyUI: 50:50 merges and their limits, block merging, LoRA merging, and extracting a difference LoRA, with workflows."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
@@ -16,7 +16,7 @@ hero:
 tags: []
 ---
 
-## What is Model Merge?
+## What is Model Merging?
 
 There are roughly three ways to prepare a new checkpoint model:
 
@@ -24,7 +24,7 @@ There are roughly three ways to prepare a new checkpoint model:
 - Fine-tune an existing model (Fine-tuning / LoRA, etc.)
 - **Mix existing models (Merge)**
 
-The first two require specialized knowledge and dataset preparation, but the third one, "Merge", can be easily done on ComfyUI.
+The first two take specialized knowledge and a lot of dataset preparation, but the third, merging, is easy to do in ComfyUI.
 
 ---
 
@@ -39,32 +39,32 @@ First, let's simply mix two models half and half.
 In this workflow, we use the `ModelMergeSimple` node to merge two checkpoints at a 1:1 ratio.
 
 - 🟩 `ModelMergeSimple` takes two `MODEL` inputs and outputs a new model with weights linearly interpolated by the specified ratio.
-  - When `ratio=0.5`, you can think of it as "something mixed half and half of Model A and Model B".
+  - With `ratio=0.5`, you can think of it as "half Model A, half Model B."
 - If you connect the output `MODEL` directly to `KSampler`, you can easily try out the intermediate model.
-  - It just roughly mixes an anime-style model and a realistic model, but it is surprising that it can create expressions like 2.5D.
+  - This is just a rough mix of an anime model and a realistic model, but it's surprising how well it pulls off a 2.5D look.
 
 ![](/media/basic-workflows/model-merge/legacy_gyazo_89e876767a48d9acd6c6bb684e6b2495.png){media=image}
 
 - If you like the merge result, connect it to the `CheckpointSave` node to save it as a checkpoint. (It is bypassed in the workflow above.)
-  - The default save location is `ComfyUI/output/checkpoints/` (standard setting for Windows portable version).
+  - The default save location is `ComfyUI/output/checkpoints/` (the standard setting for the Windows portable version).
 
 ---
 
-## Weakness of Model Merge
+## The Weakness of Model Merging
 
-Even if you mix two models, the number of parameters itself remains "for one model".
-While adding some new power, it can also be thought that the expressive power of the original field of expertise is scraped off by that amount.
+Even when you mix two models, the parameter count stays at "one model's worth."
+You can think of it this way: whatever new ability you add, the model loses that much expressiveness in what it was originally good at.
 
-If you mix a model that is good at drawing characters and a model that is good at drawing landscapes half and half, you will get a model that is neither good at characters nor backgrounds.
+If you mix a model that is good at drawing characters and a model that is good at drawing landscapes half and half, you end up with a model that's mediocre at both characters and backgrounds.
 
-This doesn't seem very useful...
-Is there any good way?
+That doesn't sound very useful...
+Is there a better way?
 
 ---
 
 ## Block Merge (Layer Merge)
 
-The "main body that restores images from noise" in Stable Diffusion is a U-shaped network called "U-Net".
+In Stable Diffusion, the "core that restores images from noise" is a U-shaped network called "U-Net".
 The U-Net is divided into many layers, and each appears to play a different role. Its outer layers tend to affect texture and color, while the layers near the center tend to affect shape and composition. (cf. [P+](https://prompt-plus.github.io/))
 
 Block Merge uses these differences to mix only the features you want.
@@ -75,29 +75,29 @@ Block Merge uses these differences to mix only the features you want.
 
 ComfyUI's standard `ModelMergeBlocks` node divides the U-Net into `IN`, from the input toward the center; `MID`, at the center; and `OUT`, from the center toward the output. You can set a separate ratio for each.
 
-ComfyUI also has nodes like `ModelMergeSD1` / `ModelMergeSDXL` that can adjust the ratio layer by layer. However, mastering this would be a craftsmanship...
+ComfyUI also has nodes like `ModelMergeSD1` / `ModelMergeSDXL` that can adjust the ratio layer by layer. But mastering those is a craft in itself...
 
 ---
 
 ## Merging LoRAs
 
-Since LoRA is like a "difference patch that can be added to the original model later", LoRAs can be added together and merged just like checkpoints.
+Since a LoRA is like a "difference patch you can add to the original model later," LoRAs can be added together and merged, just like checkpoints.
 
-Before that, even just loading one LoRA, behind the scenes, it behaves like "adding the LoRA difference to the base checkpoint and creating a synthesized model on the spot".
+In fact, even loading a single LoRA behaves, behind the scenes, like "adding the LoRA's difference to the base checkpoint and building a merged model on the spot."
 
-In other words, at the point of applying LoRA to a checkpoint, we have already been doing "something like merging" in a broad sense all along (*ﾟ∀ﾟ)
+In other words, every time we applied a LoRA to a checkpoint, we were already doing something "merge-like" in the broad sense all along (*ﾟ∀ﾟ)
 
 ---
 
 ## Difference LoRA
 
-The story so far has been in the direction of "mixing models to create a new checkpoint", but conversely, there is also an idea of **extracting "only the difference" from a checkpoint as a LoRA**.
+So far we've been going in the direction of "mixing models to make a new checkpoint," but you can also go the other way: **extract "just the difference" from a checkpoint as a LoRA**.
 
 - Base model `Base` (e.g. `v1-5-pruned`)
 - Custom checkpoint `Base+X` (e.g. a model that has learned specific characters or styles)
 
-At this time, `Base+X` can be roughly regarded as "Base + Additional Style X".
-Extracting "only the part of X" from this and making it a LoRA is **Difference LoRA**.
+Here, `Base+X` can roughly be seen as "Base + extra style X."
+Pulling out "just the X part" and turning it into a LoRA is a **difference LoRA**.
 
 - 1. `Base+X - Base = X (← Difference to be LoRA)`
 - 2. Compress that difference into LoRA format
@@ -108,13 +108,13 @@ Extracting "only the part of X" from this and making it a LoRA is **Difference L
 
 [](/workflows/basic-workflows/model-merge/modelmergesubtract_save_lora.json)
 
-- 🟩 Input the models you want to take the difference of into the `ModelMergeSubtract` node.
-  - It is `model1 - model2`.
-- 🟨 Although not used above, there is also a `CLIPMergeSubtract` node that takes the difference of the text encoder.
-  - Text encoders are quite severe, so there is a possibility that it gets worse.
-- Save as LoRA with `Extract and Save Lora` node.
-  - The larger the `rank`, the more faithfully the difference is saved, but the model size increases accordingly.
-  - As a guide, if it is a style difference, around 8 to 32, and if you want to extract a solid difference from a completely different model, keep in mind that use cases often distinguish like 64 or more.
+- 🟩 Feed the models you want the difference between into the `ModelMergeSubtract` node.
+  - It computes `model1 - model2`.
+- 🟨 It isn't used above, but there's also a `CLIPMergeSubtract` node that takes the difference between text encoders.
+  - Text encoders are quite sensitive, so this may make things worse.
+- Save it as a LoRA with the `Extract and Save Lora` node.
+  - The higher the `rank`, the more faithfully the difference is kept, but the bigger the model file gets.
+  - As a rough guide, my impression is that people often use around 8–32 for style differences, and 64 or more when they want to pull a big difference out of a very different model.
   - The extracted LoRA model is saved in `\ComfyUI\output\loras`.
 
 ### Testing Difference LoRA
@@ -123,7 +123,7 @@ Extracting "only the part of X" from this and making it a LoRA is **Difference L
 
 [](/workflows/basic-workflows/model-merge/sd1_5_text2image_with_lora.json)
 
-- Since the difference was large this time, it is not possible to reproduce perfectly just by applying LoRA, but even with SD1.5, it has become possible to generate images that look like it.
+- The difference was large this time, so applying the LoRA alone doesn't reproduce it perfectly, but even on SD1.5 it now generates images that look the part.
 
 ---
 

@@ -7,8 +7,7 @@ navId: object-removal
 title: Object Removal
 created: 2025-12-01
 updated: 2026-03-02
-summary: The task of removing specific things from an image and typical methods for
-  doing so.
+summary: Removing specific things from an image, and the usual ways to do it
 seoTitle: "Remove Objects from Images with AI: LaMa to Editing"
 seoDescription: "Erase unwanted people, wires, or signs from images: LaMa, diffusion inpainting, and mask-free removal with instruction-based editing models."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
@@ -17,27 +16,27 @@ hero:
 ---
 ## What is Object Removal?
 
-As the name suggests, it is the task of removing only specific objects from an image.
+Just what it sounds like: the task of erasing specific objects from an image.
 
-It naturally removes things you don't want in the picture, such as people, signs, power lines, trash, and passersby, and smoothly fills in the background.
+It cleanly removes things you don't want in the shot, like people, signs, power lines, trash, or passersby, and fills in the background seamlessly.
 
 ---
 
 ## LaMa
 
-Before the advent of diffusion models, CNN-based inpainting models like LaMa were often used as SOTA.
+Before diffusion models, CNN-based inpainting models like LaMa were the SOTA and widely used.
 
 ![](/media/ai-capabilities/object-removal/legacy_gyazo_4c0b962c3983bc3296da9b994c07f3b6.png){media=image}
 
 [](/workflows/ai-capabilities/object-removal/lama.json)
 
-It specializes in filling masked areas with surrounding textures and was also used for watermark removal.
+It specializes in filling masked areas with the surrounding texture, and it was also popular for removing watermarks.
 
 ---
 
 ## Removal by Inpainting
 
-The most primitive method is to prepare a mask and fill it with ordinary inpainting.
+The most straightforward approach is to make a mask and fill it in with regular inpainting.
 
 Draw a mask on the object you want to remove, write a prompt that matches the background (e.g., "background lawn only", "empty floor"), and inpaint.
 
@@ -45,17 +44,17 @@ Draw a mask on the object you want to remove, write a prompt that matches the ba
 
 [](/workflows/ai-capabilities/object-removal/remake_for_sdxl_removing_object_and_filling_with_background.json)
 
-However, sometimes it adds another object instead of removing it, so it was sometimes unstable as object removal.
+But instead of removing the object, it would sometimes add a new one, so it wasn't always reliable for object removal.
 
-Therefore, LaMa was sometimes used for preprocessing inpainting in the past, but it is probably unnecessary for current models.
+That's why LaMa was sometimes used as a preprocessing step before inpainting, but current models probably don't need it.
 
 ---
 
 ## Object Removal with Instruction-Based Image Editing
 
-With recent [Instruction-Based Image Editing](/en/ai-capabilities/instruction-based-image-editing/) models, object removal is becoming a fairly simple task.
+With recent [instruction-based image editing](/en/ai-capabilities/instruction-based-image-editing/) models, object removal is becoming a pretty simple task.
 
-Just instruct "remove this person," "remove this sign," "remove the logo on the bottom right," etc.
+You just say "remove this person," "remove this sign," "remove the logo in the bottom right," and so on.
 
 ![](/media/ai-capabilities/object-removal/legacy_gyazo_84af7edfab7cd344f7654090b7957166.png){media=image}
 
@@ -63,8 +62,8 @@ Just instruct "remove this person," "remove this sign," "remove the logo on the 
 
 ### Advantage: No Mask Required
 
-A clear advantage over inpainting is that **you don't have to draw a mask**.
+The clear advantage over inpainting is that **you don't have to draw a mask**.
 
-If you try to automate object removal, you need to create a mask of the object by segmentation, but originally you have to remove not only the target object but also **shadows and reflections in glass**. This is difficult.
+To automate object removal, you'd need segmentation to mask the object, but really you need to remove not just the object itself but also **its shadow and its reflection in glass**. That's the hard part.
 
-Instruction-based image editing models will remove those as well.
+Instruction-based image editing models remove those too.

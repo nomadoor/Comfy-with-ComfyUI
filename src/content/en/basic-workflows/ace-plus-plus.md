@@ -20,23 +20,23 @@ tags: ["id-transfer","subject-transfer"]
 
 ![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_1ecb26d7a9f2f9f558b02e91114cc692.png){media=image}
 
-This image is a single image generated with the following prompt:
-- Image divided into 2 frames.
+This is a single image generated from a prompt like this:
+- An image split into 2 frames.
 - In the first frame, person A is sitting.
-- In the second frame, person A is facing here.
+- In the second frame, person A is looking at the viewer.
 
 As you can see, the people on the left and right look like the same person.
-This is called the sprite sheet technique, and it is a trick that has been used since the Stable Diffusion 1.5 era when we wanted to create multiple consistent situations.
+This is called the sprite sheet technique, a trick people have used since the Stable Diffusion 1.5 days to make several consistent shots of the same scene.
 
 ![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_5b66002abf37e213214611933ac7b833.png){media=image}
 
-Taking it one step further, if we provide an image like the one above and inpaint only the right half.
-Then, **a new image is generated on the right side while referencing the image on the left.**
+Now let's go one step further: give the model an image like the one above and have it inpaint only the right half.
+Then **a new image is generated on the right, using the left image as a reference.**
 
-This is the fundamental principle of IC-LoRA and **[ACE++](https://ali-vilab.github.io/ACE_plus_page/)** dealt with here.
-Until now, it was a technique of "sometimes it works well" level, but with the advent of Flux, reasonably stable generation became possible.
+This is the core principle behind IC-LoRA and **[ACE++](https://ali-vilab.github.io/ACE_plus_page/)**, which this page covers.
+It used to be a "works sometimes" kind of technique, but since Flux came along, it has become reasonably stable.
 
-To summarize roughly, ACE++ is one that strengthened this principle with LoRA, and 3 LoRAs are prepared for each purpose.
+Put roughly, ACE++ reinforces this principle with LoRAs, and there are 3 LoRAs, one for each use case.
 
 * ID Transfer / Face Swap
 * Subject Transfer
@@ -48,8 +48,8 @@ To summarize roughly, ACE++ is one that strengthened this principle with LoRA, a
 
 * [1038lab/ComfyUI-RMBG](https://github.com/1038lab/ComfyUI-RMBG)
 
-Although it is a custom node that contains many matting and segmentation nodes, we use only the `IC LoRA Concat (RMBG) 🖼️` node in this.
-There is also an official ACE++ custom node, but we do not adopt it here because the behavior is unstable.
+This custom node pack includes lots of matting and segmentation nodes, but we only use the `IC LoRA Concat (RMBG) 🖼️` node from it.
+There is also an official ACE++ custom node, but its behavior is unstable, so we don't use it here.
 
 ---
 
@@ -77,77 +77,77 @@ There is also an official ACE++ custom node, but we do not adopt it here because
 
 ## Basic Concept
 
-ACE++ moves while looking at a **single image where "reference image" and "image to edit + mask" are side-by-side**.
+ACE++ works by looking at **a single image with the "reference image" and the "image to edit + mask" placed side by side**.
 
-* Left side: Reference image (face, character you want to resemble, etc.)
-* Right side: Blank or image to edit (+ mask drawn on it)
+* Left side: Reference image (the face, character, etc. you want the result to resemble)
+* Right side: A blank image or the image to edit (+ a mask drawn on it)
 
-The image is to attach these two sideways to make one image, and then inpaint as usual.
-It is easy to understand if you think that Flux.1 Fill is in charge of "where to redraw" and ACE++ LoRA is in charge of "what kind of appearance to resemble".
+Think of it as joining these two side by side into one image and then inpainting as usual.
+It's easiest to understand if you think of Flux.1 Fill as handling "where to redraw" and the ACE++ LoRA as handling "what it should look like."
 
 ---
 
 ## ID Transfer
 
-Generates an image resembling the person (face) of the reference image.
+Generates an image that resembles the person (face) in the reference image.
 
 ![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_ebe23ac6ca509cf96538f2a85fcf69c3.png){media=image}
 
 [](/workflows/basic-workflows/ace-plus-plus/ace_plus_portrait.json)
 
 * The base is inpainting using Flux.1 Fill.
-* 🟪 Load FLUX.1 Fill and `portrait` LoRA.
-* 🟩 Use the `IC LoRA Concat (RMBG) 🖼️` node to put "Reference Image" and "Base Image + Mask" side by side.
+* 🟪 Load FLUX.1 Fill and the `portrait` LoRA.
+* 🟩 Use the `IC LoRA Concat (RMBG) 🖼️` node to put the "reference image" and the "base image + mask" side by side.
   * Left: Reference image (portrait photo, etc.)
-  * Right: Base image (gray empty image here) + mask
-  * If nothing is entered in the mask, the entire right side is treated as a mask.
-* 🟨 It is the same `InpaintModelConditioning` node used in normal inpainting.
-* 🟦 The output image will naturally be a landscape pair.
-  * Since we want to use only the right half, crop only the right side using the position information passed from the `IC LoRA Concat (RMBG) 🖼️` node.
+  * Right: Base image (a blank gray image here) + mask
+  * If you don't connect anything to the mask input, the whole right side is treated as masked.
+* 🟨 This is the same `InpaintModelConditioning` node used in regular inpainting.
+* 🟦 Naturally, the output is a wide image with two panels.
+  * We only want the right half, so we crop out just the right side using the position info passed from the `IC LoRA Concat (RMBG) 🖼️` node.
 
 ---
 
 ## Using as Face Swap
 
-The basics are the same as ID transfer, but it works as Face Swap by changing "Base image to put on the right side" and "How to apply mask".
+The basics are the same as ID transfer, but by changing "the base image on the right" and "how you mask it," it works as a face swap.
 
 ![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_966d3c2bfcbaa5ae054fdd7ec4bb1c96.png){media=image}
 
 [](/workflows/basic-workflows/ace-plus-plus/ace_plus_portrait_faceswap.json)
 
-* 🟩 Input the image you want to swap faces (base image) on the right side.
-* 🟩 If you want to change only the face, mask only around the face.
+* 🟩 Put the image whose face you want to swap (the base image) on the right side.
+* 🟩 If you only want to change the face, mask just the area around the face.
 
-Although it is called FaceSwap, it is more flexible, so masking the entire head also works well.
+It's called face swap, but it's more flexible than that, so masking the whole head works well too.
 
 ---
 
 ## Subject Transfer
 
-If you switch to `comfyui_subject_lora16.safetensors`, you can do Subject transfer.
+Switch to `comfyui_subject_lora16.safetensors` and you can do subject transfer.
 
 ![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_3e84f30e31b23d804ff651a4d29667e9.png){media=image}
 
 [](/workflows/basic-workflows/ace-plus-plus/ace_plus_subject.json)
 
-* It is the same workflow as the previous Face Swap.
-* 🟪 Change the LoRA to load to `subject`.
+* It's the same workflow as the Face Swap one above.
+* 🟪 Change the loaded LoRA to `subject`.
 
-You can generate by referring to various things such as logos and items as well as people.
-* Transfer only the logo to another package photo
-* Make a certain character or mascot stand on a different background
-* Transplant only specific accessories (bags, etc.) to another photo
+You can use all kinds of things as references, not just people but also logos and objects.
+* Transfer just a logo onto a different package photo
+* Place a character or mascot against a different background
+* Move one specific item (a bag, etc.) into another photo
 
 ---
 
 ## Local Editing
 
-Using `comfyui_local_lora16.safetensors` allows you to bring it closer to **local editing redrawing along instructions** only for the masked area.
+With `comfyui_local_lora16.safetensors`, you can steer it toward **local editing that redraws only the masked area to follow the prompt**.
 
 ![](/media/basic-workflows/ace-plus-plus/legacy_gyazo_e93a8e393eca60dbb1832fd314402dec.png){media=image}
 
 [](/workflows/basic-workflows/ace-plus-plus/ace_plus_local.json)
 
-* Use a normal inpainting workflow instead of side-by-side.
-* 🟪 Change the LoRA to load to `local`.
-* Write a prompt in the form of **instruction** like "Change her clothes to a white shirt".
+* Use a regular inpainting workflow, not the side-by-side one.
+* 🟪 Change the loaded LoRA to `local`.
+* Write the prompt as an **instruction**, like "Change her clothes to a white shirt."

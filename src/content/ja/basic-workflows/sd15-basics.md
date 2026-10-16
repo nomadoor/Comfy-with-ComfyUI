@@ -63,7 +63,7 @@ ComfyUI のようなノードベースツールは、よく「モジュール式
   - 入力した画像を下書きに画像生成します。
   - ![](/media/basic-workflows/sd15-basics/legacy_gyazo_8426a110f038cddb3907e51d155ed9b3.png){media=image}
   - [](/workflows/basic-workflows/sd15-basics/sd1_5_image2image.json)
-  - 🟩画像を読み込むノードと、それをlatentに変換するノードを追加しまう。
+  - 🟩画像を読み込むノードと、それをlatentに変換するノードを追加します。
 
 - 3. **inpainting**
   - 入力した画像の一部分だけimage2imageします。

@@ -7,43 +7,43 @@ navId: id-transfer
 title: ID Transfer & FaceSwap
 created: 2025-12-01
 updated: 2026-03-02
-summary: Techniques to create images of different scenes while maintaining the person's
-  face or identity, and face replacement.
+summary: Creating images of a person in new scenes while keeping their face and identity,
+  plus face swapping
 seoTitle: "ID Transfer and FaceSwap: Keep a Face Across Images"
 seoDescription: "Keep a person's face and identity in new scenes, plus FaceSwap: LoRA, IP-Adapter, InstantID, PuLID-FLUX, InfiniteYou, and instruction-based editing."
 permalink: /{{ lang }}/{{ section }}/{{ slug }}/
 hero:
   image: /media/ai-capabilities/id-transfer/legacy_gyazo_877d8862f6e7f6dd3ec7fbeac5331cd9.png
 ---
-## What is ID Transfer and FaceSwap?
+## What Are ID Transfer and FaceSwap?
 
-ID Transfer is a type of Subject Transfer specialized for people. It often focuses particularly on the consistency of the **face** (personally, I wish hair and body were also treated as ID).
+ID transfer is the people-specific branch of subject transfer. Most methods focus especially on keeping the **face** consistent (personally, I wish they'd treat hair and body as part of the ID too).
 
-FaceSwap is a task that existed before the advent of generative AI. The classical method involves putting a "mask" of the reference person's face on the target person's face, but by using ID Transfer technology and inpainting only the target face part, more flexible FaceSwap is possible.
+FaceSwap has been around since before generative AI. The classic approach puts a "mask" of the reference person's face over the target person's face, but if you use ID transfer to inpaint just the target's face, you get a much more flexible FaceSwap.
 
 ---
 
 ## LoRA
 
-LoRA is a mechanism to "enable the model to draw things it couldn't draw later," and it can also learn images of people.
+LoRA is a way to "teach a model to draw things it couldn't draw before," and you can train it on images of a person too.
 
-If you can overcome the disadvantage of needing training, flexibility and stability are top-class.
+If you can live with the downside of having to train it, its flexibility and stability are top-notch.
 
 ---
 
 ## IP-Adapter Family
 
-There are several lineages that specialized the IP-Adapter technology treated in Subject Transfer for ID.
+There are several offshoots that take the IP-Adapter technique covered in subject transfer and specialize it for ID.
 
 ### IP-Adapter (Original)
 
-IP-Adapter is an adapter for adding "condition input from images" to existing text2image models.
+IP-Adapter is an adapter that adds "image-based conditioning" to existing text2image models.
 
-It extracts feature vectors from images and injects them into the UNet to reflect them in the generation results. It can transfer people, but it is mainly used to roughly reflect the Subject or style.
+It extracts feature vectors from an image and injects them into the UNet so they show up in the output. It can transfer people, but it's mainly for roughly carrying over a subject or style.
 
 ### IP-Adapter-plus-face
 
-The official IP-Adapter model specialized for faces.
+The official face-specialized IP-Adapter model.
 
 ![](/media/ai-capabilities/id-transfer/legacy_gyazo_afe7232d9dd3cc54f5d8a2f1d956e15f.png){media=image}
 
@@ -51,65 +51,65 @@ The official IP-Adapter model specialized for faces.
 
 ### IP-Adapter-FaceID
 
-The IP-Adapter-FaceID series is a group of models for strongly fixing ID in combination with face recognition models (InsightFace).
+The IP-Adapter-FaceID models work with a face recognition model (InsightFace) to lock in identity more strongly.
 
-In **FaceID**, "Face ID embeddings from face recognition models" are used instead of CLIP image embeddings, and ID consistency is further enhanced with LoRA.
+**FaceID** uses "Face ID embeddings from a face recognition model" instead of CLIP image embeddings, and adds a LoRA to further improve ID consistency.
 
-In the improved version **FaceID-Plus**, both "Face ID embeddings for ID" and "CLIP image embeddings for facial structure" are used to achieve both facial resemblance and stability of facial shape/structure.
+The improved **FaceID-Plus** uses both "Face ID embeddings for identity" and "CLIP image embeddings for facial structure," getting a good likeness while keeping the face shape and structure stable.
 
 ### InstantID
 
-Strictly speaking, it is not a lineage of IP-Adapter, but it is a technique specialized for ID transfer that can be used just by pointing to an additional adapter.
+Strictly speaking it isn't part of the IP-Adapter family, but like those, it's an ID transfer method you can use just by plugging in an extra adapter.
 
 ![](/media/ai-capabilities/id-transfer/legacy_gyazo_a4213b144081a1267432874bfc09c1f4.png){media=image}
 
 [](/workflows/ai-capabilities/id-transfer/instantid_simple.json)
 
-By combining an IP-Adapter type image adapter with an additional network (IdentityNet) that uses ID embeddings and facial landmarks obtained from face recognition models, it enhances the balance between ID retention from a single face photo and text editing.
+It combines an IP-Adapter-style image adapter with an extra network (IdentityNet) that uses ID embeddings and facial landmarks from a face recognition model. This gives a better balance between keeping the identity from a single face photo and following text edits.
 
-Personally, I think InstantID is the strongest if using SDXL.
+Personally, I think InstantID is the best option for SDXL.
 
 ### PuLID-FLUX / InfiniteYou
 
-As times progress, the main battlefield of base models has shifted from SDXL to Diffusion Transformer systems (FLUX systems). Accordingly, ID transfer methods assuming Flux.1 have also appeared.
+Over time, the main arena for base models moved from SDXL to Diffusion Transformers (the FLUX family). ID transfer methods built for Flux.1 followed.
 
-**PuLID-FLUX** is an ID-specialized customization method based on FLUX1-dev. Thanks to innovations like Lightning T2I, you can change the art style while maintaining the ID with "reference face + text" without additional training.
+**PuLID-FLUX** is an ID-focused customization method built on FLUX1-dev. Thanks to tricks like Lightning T2I, you can change the art style while keeping the identity from just "reference face + text," with no extra training.
 
 - ![](/media/ai-capabilities/id-transfer/legacy_gyazo_7a87706872f7b195d46aeabafa6a399e.png){media=image}
 
 - [](/workflows/ai-capabilities/id-transfer/pulid_flux_ll.json)
 
-**InfiniteYou** is an ID retention framework based on FLUX-based Diffusion Transformers. It aims to improve ID resemblance, text consistency, and image quality simultaneously through a module (InfuseNet) that injects Identity features into the DiT body and a multi-stage learning strategy.
+**InfiniteYou** is an identity-preserving framework built on FLUX-family Diffusion Transformers. With a module that injects identity features into the DiT itself (InfuseNet) and a multi-stage training strategy, it aims to improve likeness, text alignment, and image quality all at once.
 
 ---
 
 ## Instruction-Based Image Editing and ID Transfer
 
-Since Subject Transfer is possible, it goes without saying that "[Instruction-Based Image Editing Models](/en/ai-capabilities/instruction-based-image-editing/)" can also be used for ID Transfer.
+Since they can do subject transfer, it goes without saying that "[instruction-based image editing models](/en/ai-capabilities/instruction-based-image-editing/)" work for ID transfer too.
 
 ---
 
 ## FaceSwap
 
-FaceSwap is a technology that replaces the target person's face with the reference person's face.
+FaceSwap replaces the target person's face with the reference person's face.
 
 ### Classical FaceSwap (ReActor / InsightFace based)
 
-It is an idea closer to "making a mask and putting it on" rather than ID Transfer.
+Rather than ID transfer, the idea is closer to "making a mask and putting it on."
 
-It estimates the position, orientation, and contour of the face with face detection and landmark detection, aligns the source face and target face with affine transformation, etc., and replaces the target side face part with the source face using masks and blending.
+It uses face detection and landmark detection to estimate the face's position, angle, and outline, aligns the source and target faces with affine transforms and the like, then replaces the target's face with the source face using masks and blending.
 
 ![](/media/ai-capabilities/id-transfer/legacy_gyazo_1a0a81f044bd264db835ef99d40a37d1.png){media=image}
 
 [](/workflows/ai-capabilities/id-transfer/reactor_fast.json)
 
-Representative ones that can be used in ComfyUI include ReActor (InsightFace-based FaceSwap), but it is also a technology with strong anxiety factors, such as repositories being deleted from an ethical point of view.
+The best-known option in ComfyUI is ReActor (InsightFace-based FaceSwap), but it's also a shaky technology to rely on; its repository has been taken down over ethical concerns, for example.
 
 ### Face Inpainting using ID Transfer
 
-A method of redrawing the target face using ID Transfer technology when inpainting with the target person's face as a mask.
+Here you mask the target person's face and inpaint it, using ID transfer to redraw it as the reference face.
 
-When ID Transfer technology was immature, there was also a method of FaceSwapping with ReActor and then refining with inpainting using ID Transfer (this is one of the most popular workflows I made).
+Back when ID transfer was still immature, one approach was to FaceSwap with ReActor first, then refine with ID transfer inpainting (it's one of the most popular workflows I've made).
 
 [Refining with InstantID after Face Swapping with ReActor](https://scrapbox.io/work4ai/ReActor%E3%81%A7Face_Swap%E3%81%97%E3%81%9F%E3%81%82%E3%81%A8%E3%81%ABInstantID%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%83%AA%E3%83%95%E3%82%A1%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B)
 

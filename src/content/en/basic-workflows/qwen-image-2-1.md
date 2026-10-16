@@ -26,7 +26,7 @@ Previous Qwen-Image models used separate models for generation and editing. Like
 
 It also supports native RGBA output—in other words, transparent images.
 
-The image generation component is a compact 7B model, yet it covers generation, editing, references, and transparency. It is quite a versatile model.
+The image generation part is a compact 7B, yet it covers generation, editing, references, and transparency. Quite a handy model.
 
 {% runpod %}
 
@@ -78,7 +78,7 @@ The image generation component is a compact 7B model, yet it covers generation, 
 {% workflow "/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_text2image.json", level=2, gpu="RTX 4070 Ti 12GB", ram="DDR5 64GB", time="121s", tags=["4MP"], samplers=[{ speed: "3.45 s/it" }] %}
 
 - `CFG`: 1.0
-  - The official workflow does not use CFG, but it may be worth raising it slightly to try a Negative Prompt
+  - The official workflow does not use CFG, but it might be worth raising it a little and trying a Negative Prompt
 
 For better or worse, the Seed makes a very large difference. Changing the resolution also changes the image substantially, so try a variety of resolutions and Seeds.
 
@@ -113,7 +113,7 @@ There is also a dedicated Turbo model, but the LoRA means less to download, so t
 
 ## Ref2Image
 
-This workflow combines reference images to create a new image.
+Combine reference images and have the model draw a new image.
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_ref2image.png){media=image}
 
@@ -146,9 +146,9 @@ Enter the reference images and prompt here.
 
 The workflow is almost the same as Ref2Image. The only difference is that the output size is matched to the first image.
 
-For editing, it would be inconvenient if the result came back at a different size. This workflow reads the first image dimensions with `Get Image Size` and passes them to `Empty Latent Image`.
+Since this is editing, you need the original picture back at the same size. So this workflow reads the first image dimensions with `Get Image Size` and passes them to `Empty Latent Image`.
 
-The second and subsequent images can be used as references, just as in Ref2Image.
+From the second image on, it's the same as Ref2Image: you can use them as references.
 
 ### Basic image editing
 
@@ -165,7 +165,7 @@ As with other image-editing models, simply give an instruction such as “remove
 
 - `resolution`
   - Unlike Ref2Image, set this to `0`. The image is not scaled; its dimensions are only rounded to multiples of 32 (I resize the image beforehand, so in practice nothing changes)
-  - It is still a good idea to match the size seen by the model to the output size
+  - Just to be safe, keep the size the model sees and the output size the same
 
 {% endmediaRow %}
 
@@ -183,7 +183,7 @@ Draw colored circles around the areas you want to edit.
 
 [](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit_local.json)
 
-Draw directly on the image to mark the objects you want to edit.
+Draw directly on the image, circling the object you want edited.
 
 - You can also use the `Mask Editor` attached to the `Load Image` node
 
@@ -205,14 +205,14 @@ You can use several colors for separate instructions, which is handy when the lo
 
 The idea is the same as using a colored circle, but here a black-and-white image that marks the location is supplied **separately from the original image**.
 
-The nice part is that you do not have to draw directly on and alter the original image.
+The nice part is that you don't draw on the original, so it stays clean.
 
 {% mediaRow img="/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_image_edit_local_mask_convert.png", width=40, align="left" %}
 **Convert the mask to an image**
 
 Convert the MASK output from `Load Image` into a black-and-white image with `Convert Mask to Image`, then connect it to `image_2`.
 
-In fact, the model only receives an ordinary black-and-white image. You can skip the mask conversion and prepare an image painted white over a black background instead.
+In fact, the model only receives an ordinary black-and-white image. You can skip the mask conversion and just paint white over a black background yourself.
 
 {% endmediaRow %}
 
@@ -227,7 +227,7 @@ In fact, the model only receives an ordinary black-and-white image. You can skip
 
 ### Outpainting
 
-This works very differently from ordinary [Outpainting](/en/basic-workflows/sd15-outpainting/), where padding is added and then inpainted.
+This one, too, works very differently from ordinary [Outpainting](/en/basic-workflows/sd15-outpainting/), where padding is added and then inpainted.
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting.png){media=image}
 
@@ -237,11 +237,11 @@ This works very differently from ordinary [Outpainting](/en/basic-workflows/sd15
 
 What happens if you provide a wide image as a reference, but generate a portrait image?
 
-Qwen-Image-2.1 creates a new image that fills in the space above and below.
+That's right: Qwen-Image-2.1 generates an image that fills in the space above and below.
 
-It redraws the whole image rather than only the added space, so the original area will also change slightly.
+Here too, it redraws the whole image rather than only the added space, so the original area changes a little as well.
 
-This is not a way to preserve the source image precisely, but it is wonderfully simple.
+It's not a way to keep the source image strictly fixed, but it's nice and easy.
 
 {% outputs %}
 ![input](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting_input.png){media=image} ![output](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_outpainting_output.png){media=image}
@@ -269,7 +269,7 @@ Although this is not ControlNet itself, you can pass pose images, depth maps, an
 
 [](/workflows/basic-workflows/qwen-image-2-1/qwen_image_2_1_turbo_image_edit_sdpose.json)
 
-Let’s also provide a reference image and put the person in a specified pose.
+Let’s feed in a reference image as well and put that person in the specified pose.
 
 You might wonder whether turning the pose into a stick figure is really necessary. Even if you ask the model to look only at the pose, it may also pick up unnecessary details such as the clothing and background.
 
@@ -372,7 +372,7 @@ Rather than strictly outpainting the left and right sides, it redraws the full E
 
 In [Subject extraction](#subject-extraction), we extracted any subject from an image as a transparent image.
 
-Now remove that subject from the image, then extract the next thing in front. Repeat the process, and a single image can be split into layers from front to back.
+So what if we remove the extracted subject from the image, then extract whatever is in front next? Repeat this, and we should be able to split a single image into layers, front to back.
 
 ![](/media/basic-workflows/qwen-image-2-1/qwen_image_2_1_layer_decomposition.png){media=image}
 
@@ -430,7 +430,7 @@ The resulting image is passed to `End Loop` as one layer.
 
 Layer decomposition needs not only the extracted subject, but also an image with that subject removed.
 
-Passing the source image and cutout directly and asking it to “remove this” did not work well. Instead, the extracted region is painted green and the model is told to fill the green area naturally.
+It would have been nice if passing the source image and cutout as-is and saying “remove this” had worked, but it didn't. Instead, the extracted region is painted green and the model is told to fill the green area naturally.
 
 The image with the subject removed then becomes the source for the next extraction.
 
@@ -450,7 +450,7 @@ With `is_last` and `If/Else Switch`, the last iteration bypasses extraction and 
 
 > [!NOTE]
 > You might be wondering why I use `iteration_index` instead of a fixed seed.  
-> I do not know whether this is a bug or intended behavior, but editing an image again with the same seed makes the output badly artifacted.  
+> I'm not sure whether it's a bug or intended, but if you edit an already-edited image again with the same seed, the output comes out all crunchy and artifacted…  
 > It works fine as long as the seed changes, so as a quick workaround I use `iteration_index`, which changes on every loop.
 
 {% outputs %}

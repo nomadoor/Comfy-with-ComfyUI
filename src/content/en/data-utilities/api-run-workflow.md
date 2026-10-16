@@ -7,7 +7,7 @@ navId: api-run-workflow
 title: "Running a Workflow via API"
 created: 2026-02-05
 updated: 2026-03-02
-summary: "Minimum steps: Request execution -> Check completion -> Get output"
+summary: "The minimum steps: request a run -> confirm it finished -> get the output"
 seoTitle: "Run a ComfyUI Workflow via the API with Python"
 seoDescription: "Run a ComfyUI workflow from outside: POST API-format JSON to /prompt with a minimal Python script, then change the prompt from the command line."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -17,27 +17,27 @@ hero:
 
 ## What We're Basically Doing
 
-Let's try executing a ComfyUI workflow "from the outside" via the API.
+Let's run a ComfyUI workflow "from the outside" through the API.
 
 It's simple: just **POST API-formatted JSON (= prompt) to `http://127.0.0.1:8188/prompt`**.
 
-With this, the ComfyUI server receives the command "execute this workflow", queues it, executes it, and returns a `prompt_id` (execution ID).
+The ComfyUI server then takes this as an order to "run this workflow," adds it to the queue, runs it, and returns a `prompt_id` (execution ID).
 
 > [!NOTE]
-> It's a bit confusing, but the "prompt" here refers to the **entire workflow (execution graph)**, not just the text prompt.
-> Text is just a part of it, for example, `inputs.text` of `CLIPTextEncode` falls under this.
+> It's a bit confusing, but the "prompt" here isn't the text prompt. It means the **entire workflow (execution graph)**.
+> The text is just one part of it, such as `inputs.text` in `CLIPTextEncode`.
 
-This time, let's try executing it from Python.
+This time, let's run it from Python.
 
 --- 
 
 ## Start ComfyUI
 
-The API is not a mechanism that "eliminates the need to start ComfyUI".
-Python sends commands to the running ComfyUI server.
+The API is not a way to "skip starting ComfyUI."
+Python sends its commands to a ComfyUI server that is already running.
 
 - Start ComfyUI
-- Ensure `http://127.0.0.1:8188` can be opened in your browser
+- Make sure you can open `http://127.0.0.1:8188` in your browser
 
 ---
 
@@ -45,7 +45,7 @@ Python sends commands to the running ComfyUI server.
 
 ### Workflow to Use (SD1.5 text2image)
 
-For now, we will use the simplest Stable Diffusion 1.5 text2image.
+To start, we'll use the simplest workflow there is: Stable Diffusion 1.5 text2image.
 
 ![](/media/basic-workflows/sd15-text2image/legacy_gyazo_897f66c308b3b98440f641ee3d33d50e.png){media=image}
 
@@ -68,7 +68,7 @@ For now, we will use the simplest Stable Diffusion 1.5 text2image.
 
 ### Get Workflow for API
 
-- 1. Open the workflow above in ComfyUI Node UI
+- 1. Open the workflow above in the ComfyUI node UI
 - 2. Select `File` -> **Export (API)** from the menu
 - 3. Save with a recognizable name (e.g. `SD1.5_text2image_API.json`)
 
@@ -78,8 +78,8 @@ For now, we will use the simplest Stable Diffusion 1.5 text2image.
 
 ### Difference from Normal Workflow JSON
 
-Normal JSON contains "information easy to edit/share in UI".  
-API workflow strips away such extra information and is in a convenient form to pass to the server for execution.
+A regular workflow JSON also contains "information that makes it easy to edit and share in the UI."  
+An API workflow strips out that extra information, leaving a form that's convenient to hand to the server to run.
 
 ---
 
@@ -101,8 +101,8 @@ pip install requests
 
 ### run_min.py
 
-This is minimal code that just reads `SD1.5_text2image_API.json` and throws it to `/prompt`.
-It is basically the same as pressing `▷Run` in the node UI.
+This is the minimal code: it just reads `SD1.5_text2image_API.json` and sends it to `/prompt`.
+It's basically the same as pressing `▷Run` in the node UI.
 
 ```python
 import json
@@ -135,32 +135,32 @@ venv\Scripts\activate
 python run_min.py
 ```
 
-Let's check if it ran successfully.
+Let's check whether it worked.
 
-- `{"prompt_id": "...", ...}` returns on the Python side (This is the execution ID.)
-- Execution logs appear in the ComfyUI terminal
-- Image file increases in `ComfyUI/output/`
-  - It should be saved in the same location as when executing with the node UI
+- Python prints `{"prompt_id": "...", ...}` (this is the execution ID)
+- Execution logs appear in ComfyUI's terminal
+- A new image file appears in `ComfyUI/output/`
+  - It should be saved in the same place as when you run from the node UI
 
-If you can do this far, you are executing via API.
+If you've gotten this far, you're running workflows through the API.
 
 ---
 
 ## Change Prompt from CLI
 
-Of course, you can change parameters by directly editing the JSON for API.  
-However, if you want to execute continuously without polluting the original file, it is easier to handle by **replacing with Python**.
+Of course, you can change parameters by editing the API JSON directly.  
+But if you want to run it repeatedly without touching the original file, it's easier to **swap the values in Python**.
 
-### What to Rewrite (In Case of This JSON)
+### What to Rewrite (for This JSON)
 
-This time, we will only change the "prompt".
+This time, we'll change "only the prompt."
 
 - Positive prompt: `inputs.text` of node `6`
 
 ### Note: Node ID is Not Fixed
 
-In the example on this page, `6` is used, but this is **only because it is so in this distributed JSON**.
-When doing it with your own workflow, it is surest to open the JSON and look for it.
+The examples on this page use `6`, but **that's only how it happens to be in this sample JSON**.
+For your own workflow, the surest way is to open the JSON and look for the following.
 
 e.g. `SD1.5_text2image_API.json`
 ```json
@@ -209,25 +209,25 @@ venv\Scripts\activate
 python run.py
 ```
 
-This time, input of parameters is required during the process.
+This time, it will ask you to type in a parameter partway through.
 
 ```bash
 positive prompt: Enter your favorite prompt
 ```
 
-If the image is saved in `ComfyUI/output/` with that prompt, it is OK.
+If an image made with that prompt is saved to `ComfyUI/output/`, you're done.
 
 ---
 
 ## Once You Get the Feel, Just Build It
 
-Although we only used API to "execute" this time, there are various other things in the API.
+This time we only used the API for "running" workflows, but the API can do plenty more.
 
 - Receive progress in real time (WebSocket)
 - Control queue (stop, interrupt, etc.)
 - Image upload (pass to i2i input)
-- Get node input specifications (foothold to automate workflow editing)
+- Get node input specs (a first step toward automating workflow editing)
 
-On this page, it is enough if you just get the atmosphere that "you can execute workflow from outside".
+For this page, it's enough to get a feel for how "you can run workflows from outside."
 
-Now, feel free to build whatever you want, whether it's vibe coding or anything else!
+From here, vibe coding or whatever works for you, go build what you actually want!

@@ -28,7 +28,7 @@ hero:
 
 受到这个方向的启发，我想试试看 FLUX.2 [klein] 是否也能做类似的事情。
 
-结果当然谈不上达到 SOTA 性能。不过我希望这个实验能说明，仅靠简单的 LoRA 训练，也可以在本地模型上尝试接近 Vision Banana 方向的行为。
+结果还谈不上达到 SOTA 性能，不过希望这个实验能说明：仅靠简单的 LoRA 训练，也能在本地模型上尝试接近 Vision Banana 方向的行为。
 
 ## 发布地址
 
@@ -37,11 +37,11 @@ hero:
 
 ---
 
-## 任务设定
+## 任务设置
 
 Vision Banana 主要处理 depth / normal / segmentation。
 
-这次没有完全照搬它的任务构成，而是选择了 ComfyUI / 图像生成社区里更熟悉的，也就是类似 ControlNet Preprocessor 的输出。
+这次没有照搬它的任务构成，而是以 ComfyUI / 图像生成社区里熟悉的、也就是类似 ControlNet Preprocessor 的输出为主来挑选。
 
 我个人把这些任务称为 `image2schematic`，这次创建的 LoRA 名称里也都包含 `schematic` 这个词。
 
@@ -61,17 +61,17 @@ Vision Banana 主要处理 depth / normal / segmentation。
 这里面，可能有人没听过 amodal segmentation 这个任务。
 
 - 普通 segmentation 只会 mask 对象 **实际可见的区域**。
-- amodal segmentation 会把遮挡物后面看不见的部分也包含进去，推定对象整体形状并生成 mask。
+- amodal segmentation 会把被遮挡物挡住的部分也算进去，推测出对象整体的形状并生成 mask。
 
 比如鹿的前面被树枝遮住时，普通 segmentation 不会输出树枝后面被挡住的部分。  
 而 amodal segmentation 会把被树枝挡住的部分也包括进去，输出鹿整体的 mask。
 
-因为需要推定看不见的部分，所以它与其说是单纯分类，不如说更接近生成。  
-反过来说，这也是图像生成模型可能比较能发挥能力的任务，所以这次尝试了一下。
+因为需要推测看不见的部分，它与其说是单纯的分类，不如说更接近生成。  
+反过来说，这也是图像生成模型容易发挥实力的任务，所以这次挑战了一下。
 
 ### 按任务分别训练 LoRA
 
-一开始我打算把所有任务训练到一个 LoRA 里，但内部任务混在了一起，单靠 prompt 无法稳定切换。
+一开始我打算把所有任务训练进一个 LoRA，但任务在内部混在了一起，单靠提示词没法顺利切换。
 
 因此这次采用 1 个任务 1 个 LoRA 的构成。
 
@@ -120,7 +120,7 @@ amodal segmentation 是为对象创建 mask 的任务，不只包含可见部分
 
 ![](/media/notes/flux2-klein-schematic-lora/legacy_gyazo_c3daf3c0a5804bf37d4920a95c7dde61.png){media=image}
 
-1. 让 GPT-5.5 创建包含明确 subject 和自然 occluder 的 occlusion scene prompt
+1. 用 GPT-5.5 编写 occlusion scene 的提示词，其中包含明确的 subject，以及自然地遮住它的 occluder
 2. 用 Z-Image-Turbo 生成 source image
 3. GPT-5.5 检查 source image
 4. 用 FLUX.2 [klein] 9B image edit 去除 occluder
@@ -131,7 +131,7 @@ amodal segmentation 是为对象创建 mask 的任务，不只包含可见部分
 
 mask 只靠 SAM 3.1 并不稳定，所以几乎全部都用 BiRefNet 和手动方式修正过。
 
-这不是主线内容，但如果让 LLM 大量生成图像 prompt，结果会容易偏向：
+这不是本文重点，不过让 LLM 大量生成图像提示词时，结果会偏向：
 
 - 相似的对象
 - 相似的 occluder
@@ -147,7 +147,7 @@ mask 只靠 SAM 3.1 并不稳定，所以几乎全部都用 BiRefNet 和手动�
 
 ### Negative Samples
 
-pose / segmentation 都会遇到一个问题：当输入图像里不存在目标对象时，模型容易 hallucination。
+pose 和 segmentation 都有一个问题：输入图像里不存在目标对象时会出现幻觉（hallucination）。
 
 例如，输入图像里没有猫，却给出 `generate mask of the cat` 这样的指令时，模型可能会随便生成一个猫形状的 mask。
 
@@ -190,13 +190,13 @@ pose / segmentation 都会遇到一个问题：当输入图像里不存在目标
 
 ---
 
-## workflow
+## 工作流
 
-下面是用于在 ComfyUI 中使用这些 LoRA 的 workflow。
+下面是在 ComfyUI 中使用的工作流。
 
 需要注意，基于 FLUX.2 [klein] Base 训练的 LoRA，在 FLUX.2 [klein] Distilled 模型上运行效果不好。请使用 Base 模型，或者使用 Distilled 与 Base 的差分 LoRA（[Klein 4B/9B Base to Turbo Lora](https://civitai.com/models/2324315/klein-4b9b-base-to-turbo-lora?modelVersionId=2617121)）。
 
-### 模型下载
+### 下载模型
 
 基础模型是 [FLUX.2 [klein]](/zh/basic-workflows/flux-2-klein/)。
 
@@ -326,15 +326,15 @@ teacher 的质量会直接反映到 LoRA 的输出上，这让我再次感受到
 
 即使能输出 OpenPose 风格图像，把它再转换回 keypoint 也并不容易，实际使用上会比较麻烦。另外，颜色和骨骼数量都有严格规则，所以一点点偏差也会很显眼。
 
-我原本以为这是一个容易训练的任务，但实际比想象中更容易崩。动物图像和非人物图像上的 hallucination 也没有防住。
+即便如此，我原本还以为这是个容易训练的任务，结果崩得比想象中厉害。动物图像和非人物图像上的幻觉也没能防住。
 
 ### segmentation
 
-我原本期待文本编码器 Qwen3 8B 的 prompt 理解力能发挥作用，但控制能力没有达到预期。
+我原本对文本编码器 Qwen3 8B 的提示词理解能力抱有期待，但没能得到预期中的控制能力。
 
 它可以听懂“删除某某人物”这样的指令，但在应用 LoRA 后要求“segment 某某人物”时，会失败，或者 segment 到另一个人物。
 
-因此，这可能不只是 prompt 理解力的问题。模型也可能没有从数据集中很好地理解 segmentation 任务本身。
+所以，这与其说只是提示词理解能力的问题，更可能是模型没能从数据集中很好地理解 segmentation 这个任务本身。
 
 细节抠图精度方面，我本来期待能接近 matting 那种更平滑的边界，但目前还停留在 SAM 3.1 左右的粗糙程度。
 
@@ -342,11 +342,11 @@ teacher 的质量会直接反映到 LoRA 的输出上，这让我再次感受到
 
 整体来看，数据集数量不够。
 
-这次 amodal segmentation 的数据集制作非常重，所以为了统一规模，所有任务大致都控制在 300 张左右。  
-不过如果要认真切分原因，我觉得每个任务大概需要 2000～3000 张。
+这次 amodal segmentation 的数据集制作非常费力，所以配合它，把所有任务都大致统一在 300 张左右。  
+不过要好好排查原因的话，我觉得每个任务大概需要 2000～3000 张。
 
-还有很多改进点，但预算和时间已经花得太多，所以这次先到这里。  
-如果有机会，希望能用更大的数据集再试一次。
+还有很多可以改进的地方，但预算和时间都花得太多了，这次就先到此为止。  
+有机会的话，想用更大的数据集再试一次。
 
 ---
 
@@ -354,16 +354,16 @@ teacher 的质量会直接反映到 LoRA 的输出上，这让我再次感受到
 
 先不谈质量如何，仅靠小规模 LoRA 训练，也确实能让 FLUX.2 [klein] 在一定程度上学会 CV 任务风格的 RGB 输出。
 
-不过真正重要的，并不是“是否完成了 CV 任务”，而是根据 **我们把什么东西当作图像编辑来处理**，图像编辑模型的用途还可以继续扩展。
+不过真正重要的，并不是“能不能完成 CV 任务”，而是取决于 **把什么当作图像编辑来处理**，图像编辑模型的用途还能拓展得相当广。
 
 一提到图像编辑，最先想到的通常是画风转换或对象移除。  
 但像这次这种 CV 任务风格输出，或者让模型生成自定义中间表示，也可以在广义上当作图像编辑。
 
-原本只是“画图”的图像生成模型，逐渐变得像通用视觉模型一样，这一点很有趣。
+原本只会画画的图像生成模型，看起来正一点点接近通用视觉模型，真是让人开心。
 
 ---
 
-## 参考
+## 参考资料
 
 - [Marigold: Repurposing Diffusion-Based Image Generators for Monocular Depth Estimation](https://arxiv.org/abs/2312.02145)
 - [Lotus: Diffusion-based Visual Foundation Model for High-quality Dense Prediction](https://huggingface.co/papers/2409.18124)

@@ -8,7 +8,7 @@ title: "How to Install InsightFace"
 created: 2025-12-09
 updated: 2026-03-02
 noteTags: ["troubleshoot", "install", "insightface", "reactor"]
-summary: "Installation guide for InsightFace"
+summary: "How to install InsightFace"
 seoTitle: "How to Install InsightFace for ComfyUI"
 seoDescription: "Install InsightFace for nodes like ReActor: check the Python version of the ComfyUI Windows portable build and install the matching wheel."
 permalink: "/{{ lang }}/notes/{{ slug }}/"
@@ -16,7 +16,7 @@ hero:
   image: ""
 ---
 
-This page summarizes the additional installation steps required to run custom nodes that use **InsightFace**, such as [ReActor](/en/basic-workflows/reactor/).
+This page covers the extra installation steps needed to run custom nodes that use **InsightFace**, such as [ReActor](/en/basic-workflows/reactor/).
 
 ---
 

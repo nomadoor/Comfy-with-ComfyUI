@@ -8,7 +8,7 @@ navId: flux-2-klein
 title: "FLUX.2 [klein]"
 created: 2026-01-22
 updated: 2026-03-02
-summary: "FLUX.2 [klein] generation and image editing workflow"
+summary: "FLUX.2 [klein] workflows for generation and image editing"
 seoTitle: "FLUX.2 [klein] in ComfyUI: Image Generation and Editing"
 seoDescription: "Use FLUX.2 [klein] for generation and editing: settings, 9B vs. 4B, Base vs. Distilled, and text2image, editing, and multi-reference workflows."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
@@ -19,17 +19,17 @@ tags: [instruction-based-image-editing]
 
 ## What is FLUX.2 [klein]?
 
-**FLUX.2 [klein]** is a compact and fast Flux.2 series model that can handle both **Image Generation** and **Instruction-based Image Editing** with a single model.
+**FLUX.2 [klein]** is a small, fast Flux.2-family model that handles both **image generation** and **instruction-based image editing** in one model.
 
 Lineup:
 
-* **9B** / **9B Base** (FLUX Non-Commercial License)
+* **9B** / **9B Base** (FLUX Non-Commercial License; non-commercial use only)
 * **4B** / **4B Base** (Apache 2.0)
 
-It's a bit confusing, but the one without "Base" is the Distilled model.
-While Base requires 20 steps, Distilled can generate in 4 steps.
+It's a bit confusing, but the one without "Base" in its name is the distilled model.
+Base takes 20 steps, while Distilled can generate in 4.
 
-Since there is no significant difference in performance, we will basically use the Distilled model for generation.
+There's no big difference in quality, so we'll mostly use the Distilled model for generation.
 
 ---
 
@@ -79,7 +79,7 @@ Since there is no significant difference in performance, we will basically use t
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_text2image.json)
 
 > [!NOTE]
-> The official workflow uses `Flux2Scheduler`, but since there is no major difference, we use `Simple` to simplify the workflow.
+> The official workflow uses something called `Flux2Scheduler`, but it doesn't make much difference, so I use `Simple` to keep the workflow simple.
 
 ### text2image Distilled
 
@@ -97,7 +97,7 @@ Change only the following parameters:
 
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_image_edit.json)
 
-"Input Image + Instruction Prompt" is the basic method.
+The basic recipe is "input image + instruction prompt."
 - VAE Encode the input image and pass it to `ReferenceLatent`.
 
 
@@ -109,14 +109,14 @@ Change only the following parameters:
 
 ### Image Editing (Multi-Reference) Base
 
-You can also input and reference multiple images.
+You can also feed in multiple images as references.
 
 ![](/media/basic-workflows/flux-2-klein/legacy_gyazo_d5d524090b273847fbc4a45cf52284b4.png){media=image}
 
 [](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_image_edit_multi.json)
 
-- Just connect the block of `Reference Image → VAE Encode → ReferenceLatent` in series.
-- 2 or 3 images are OK. (Maximum is 4)
+- Just chain `Reference Image → VAE Encode → ReferenceLatent` blocks one after another.
+- 2 or 3 images both work. (The limit is 4.)
 
 ### Image Editing (Multi-Reference) Distilled
 
@@ -176,7 +176,7 @@ Just replace the model and text encoder with the 4B ones.
 
 These are just a few examples.
 
-Changing style or removing objects is only a small part of image editing. The possibilities are endless depending on what you consider "image editing". Please explore various uses.
+Changing the style or removing objects is only a tiny part of image editing. What counts as "image editing"? Depending on how you answer that, the possibilities are endless. Go ahead and come up with your own uses.
 
 ### Single Image
 
@@ -258,8 +258,8 @@ Restore and colorize this black-and-white photo.
 
 **ControlNet-like (Pose)**
 
-It does not work on the mechanism of ControlNet.
-By providing a stick figure or depth map and asking it to generate a realistic image based on it, you can perform **ControlNet-like** tasks as image editing.
+This doesn't actually use ControlNet's mechanism.
+By giving it a stick figure or depth map and asking for a realistic image based on it, you can do **ControlNet-style** tasks as an image edit.
 
 ```text
 A office lady sitting on outdoor stairs at dusk, matching the pose from the reference image. Evening ambient light, calm urban atmosphere. She wears a long skirt and a black camisole with frills. Natural, realistic photo
@@ -275,7 +275,7 @@ A office lady sitting on outdoor stairs at dusk, matching the pose from the refe
 
 **inpainting / outpainting**
 
-It doesn't fill in the masked area, but you just instruct it to "fill the gray area naturally".
+You're not giving it a mask to fill. You just tell it to "fill in the gray areas naturally."
 
 ```text
 Outpaint the gray areas to extend the scene naturally

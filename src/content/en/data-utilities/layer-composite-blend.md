@@ -17,17 +17,17 @@ hero:
 
 ## Image Composition
 
-This involves overlaying two images or arranging them side by side.
+This means layering two images or placing them side by side.
 
-While this is a simple drag-and-drop operation in Photoshop, it can be quite a struggle to achieve in the node-based ComfyUI.
+In Photoshop, you'd just drag one image on top of the other, but doing the same thing in node-based ComfyUI takes some work.
 
-Although there are scenes where it is necessary, such as in Inpainting processing, like color correction, giving up and using a paint tool is also a good choice.
+You'll sometimes need it for things like inpainting, but just like with color correction, giving up and using a paint tool is also a perfectly good choice.
 
 ---
 
 ## Overlaying Images
 
-This is the operation of simply placing one image on top of another.
+This simply places one image on top of another.
 
 ### ImageCompositeMasked Node
 
@@ -39,7 +39,7 @@ This is the basic node for overlaying images.
 
 - **destination**: The background (base) image.
 - **source**: The foreground (top) image.
-- **x / y**: Position adjustment based on the top-left corner.
+- **x / y**: Position, measured from the top-left corner.
 - **resize_source**: If set to `true`, the `source` image is stretched to the same size as the `destination` (Note: it will be distorted if the aspect ratio is different).
 
 ### Centering the Image
@@ -48,17 +48,17 @@ This is the basic node for overlaying images.
 
 [](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_align_center.json)
 
-It is possible to center the image by performing coordinate calculations with nodes like the familiar `position: absolute; top: 50%; left: 50%;` in CSS, but... well, honestly, it's a hassle (；・∀・)
+You can center it by doing coordinate math with nodes, like the familiar `position: absolute; top: 50%; left: 50%;` in CSS, but... well, honestly, it's a pain (；・∀・)
 
 ---
 
 ## Overlaying Transparent Images
 
-This is the core of layer composition in ComfyUI.
+This is the key to layer compositing in ComfyUI.
 
-If you want to overlay an "image with a transparent background", simply connecting the images will not work.
+If you want to overlay "an image with a transparent background," simply connecting the images won't work.
 
-In ComfyUI, you need to rethink this as a process of **"replacing the masked part with the source image"**.
+In ComfyUI, you have to think of it instead as **"replacing the masked area with the source image."**
 
 ### Steps to Composite Transparent PNGs
 
@@ -66,7 +66,7 @@ In ComfyUI, you need to rethink this as a process of **"replacing the masked par
 
 [](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_with_alpha.json)
 
-We use the same `ImageCompositeMasked` node, but we use the **`mask` input**.
+It's the same `ImageCompositeMasked` node, but this time you use the **`mask` input**.
 
 - 1. When you load a transparent image, you get a "mask of the transparent part" from the `MASK` output.
 - 2. Connect this mask to the `mask` input of the `ImageCompositeMasked` node.
@@ -80,7 +80,7 @@ If `resize_source` is set to `true`, the source image is forcibly stretched to t
 
 [](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_with_crop_pad.json)
 
-This is not a concern if the background is a solid color or pattern, but it will be distorted in the case of photos.
+That's fine if the background is a solid color or a pattern, but a photo will end up distorted.
 The easiest solution is to **pad/crop the two images to the same size in advance**.
 
 - 🟪 Pad the foreground image to the size of the background image.
@@ -92,20 +92,20 @@ The easiest solution is to **pad/crop the two images to the same size in advance
 
 [](/workflows/data-utilities/layer-composite-blend/imagecompositemasked_segmentation.json)
 
-The same logic applies when you want to "change the color of only the dress part".
+The same idea applies when you want to "change the color of just the dress."
 
 - 1. Create a "dress mask" from the input image using segmentation.
 - 2. Connect `EmptyImage` (solid color image) etc. to `source`.
-- 3. Set `resize_source` to `true` (It's OK because it doesn't matter if a solid color is distorted).
-- 4. Now only the dress part is filled with the specified color.
+- 3. Set `resize_source` to `true` (a solid color doesn't care about distortion, so this is fine).
+- 4. Now only the dress is filled with the chosen color.
 
-It may be hard to grasp at first, but you will get used to it gradually.
+It may be hard to get a feel for at first, but you'll get used to it.
 
 ---
 
 ## Stitching Images (Concatenation)
 
-Combine images side by side or vertically. This is useful when you want to create comparison images.
+Joins images side by side or top to bottom. Handy for making comparison images.
 
 ### Image Stitch Node
 
@@ -121,7 +121,7 @@ A simple stitching node.
 
 [](/workflows/data-utilities/layer-composite-blend/image_concatenate_from_batch.json)
 
-You can arrange 3 or 4 images by using multiple Stitch nodes, but if you want to arrange batch (multiple set) images in a grid, this node handles it smartly.
+You can line up 3 or 4 images by chaining Stitch nodes, but if you want to lay out a batch (a set of images) in a grid all at once, this node handles it neatly.
 
 - Included in **[Kijai/ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes)**.
 
@@ -135,10 +135,10 @@ You can arrange 3 or 4 images by using multiple Stitch nodes, but if you want to
 
 [](/workflows/data-utilities/layer-composite-blend/image_blend.json)
 
-This is like the "blend mode" of layers in paint software.
-Standard nodes can only do very simple blending, but you can adjust the strength of the composition with `blend_factor`.
+It's like a layer's "blend mode" in paint software.
+Out of the box it can only do very simple blending, but you can adjust how strongly the images are mixed with `blend_factor`.
 
-- `blend_factor`: The closer to 1.0, the stronger the source image becomes.
+- `blend_factor`: The closer to 1.0, the stronger the source image.
 
 ---
 
@@ -152,7 +152,7 @@ A node that just creates a solid color image.
 
 ### How to Set Color
 
-Setting the color is tricky; instead of the familiar hexadecimal or RGB, you set it in **24-bit color (decimal)**.
+Setting the color is a bit confusing: instead of the familiar hex code or RGB, you enter it as **24-bit color (a decimal number)**.
 
 The calculation formula is as follows:
 
@@ -166,4 +166,4 @@ Decimal Value = (Red × 65536) + (Green × 256) + Blue
 255 × 65536 + 192 × 256 + 203 = 16,761,035
 ```
 
-Enter the value calculated in this way into the `color` parameter.
+Enter the resulting value in the `color` parameter.

@@ -22,13 +22,13 @@ Z-Image is a **family of image generation models** by Alibaba / Tongyi-MAI.
 
 ![](/media/basic-workflows/z-image-turbo/legacy_gyazo_569a829f2dbd9021bfdecf6d1e3267b9.png){media=image}
 
-**Z-Image-Turbo** is a high-speed model distilled from [Z-Image (Base)](/en/basic-workflows/z-image/) for generation in few steps (8 steps).
-In addition to simply being faster, it has also undergone reinforcement learning to achieve stable image quality.
+**Z-Image-Turbo** is a fast model distilled from [Z-Image (Base)](/en/basic-workflows/z-image/) so it can generate in just a few steps (8 steps).
+It isn't only faster, either: it has also been through reinforcement learning aimed at consistent image quality.
 
-Therefore, you can quickly generate beautiful images without fine-tuning settings. On the other hand, variation due to seed changes is limited, and its strength is biased towards photorealism.
-It is not very good at illustration styles or specific prompt expressions.
+So you can get beautiful images quickly without carefully tuning settings. On the other hand, changing the seed doesn't give much variation, and it leans heavily toward photorealism.
+It's not very good at illustration styles or unusual prompt expressions.
 
-As a side note, it is the earliest model released in the Z-Image family.
+As a side note, it was the first model in the Z-Image family to be released.
 
 ---
 
@@ -90,5 +90,5 @@ A ControlNet-style patch for Z-Image-Turbo.
 
 [](/workflows/basic-workflows/z-image-turbo/z_image_turbo_fun_controlnet_union_2_1.json)
 
-- 🟩 Add model and control image to `QwenImageDiffsynthControlnet`.
+- 🟩 Add the model and control image to `QwenImageDiffsynthControlnet`.
 - 🟩 In this workflow, Depth Anything V2 is used to create a depth map.

@@ -7,9 +7,9 @@ navId: z-image
 title: "Z-Image"
 created: 2026-01-31
 updated: 2026-03-02
-summary: "使用 Z-Image 的图像生成"
+summary: "用 Z-Image 生成图像"
 seoTitle: "在 ComfyUI 中使用 Z-Image：基础模型与 ControlNet"
-seoDescription: "阿里巴巴 / Tongyi-MAI 图像生成模型家族 Z-Image 基础模型在 ComfyUI 中的用法。介绍 text2image、用 Z-Image-Turbo 精修，以及 Fun ControlNet Union 2.1 工作流。"
+seoDescription: "阿里巴巴 / Tongyi-MAI 的图像生成模型家族 Z-Image 中，基础模型在 ComfyUI 中的用法。介绍 text2image、用 Z-Image-Turbo 精修，以及 Fun ControlNet Union 2.1 工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
   image: "/media/basic-workflows/z-image/legacy_gyazo_39cddc1debeff5423090f2fe87e5b038.png"
@@ -18,21 +18,21 @@ tags: []
 
 ## 什么是 Z-Image？
 
-Z-Image 是，Alibaba / Tongyi-MAI 开发的 **图像生成模型家族**。
+Z-Image 是 Alibaba / Tongyi-MAI 推出的 **图像生成模型家族**。
 
 ![](/media/basic-workflows/z-image/z_family.png){media=image}
 
-Z-Image 这个名字本身是模型群的总称所以稍微难以理解，但在这个页面，处理作为派生源的基础模型的 **Z-Image**。
-（为了区别有时也被呼为 Z-Image-Base。）
+Z-Image 这个名字本身是整个模型系列的总称，所以有点容易混淆。本页介绍的是作为其他模型派生来源的基础模型 **Z-Image**。
+（为了区分，有时也称为 Z-Image-Base。）
 
 
-Z-Image，作为（微调源的）基础模型，持有坦率的特性。
+作为（供微调使用的）基础模型，Z-Image 的特性比较朴素。
 
-因为没有加入像 [Z-Image-Turbo](/zh/basic-workflows/z-image-turbo/) 那样的基于蒸馏・强化学习的安定化，所以 Seed 或初期噪声的区别容易反映在输出上，虽然创造性和变化广泛，但反面也是参数严峻且结果大幅摆动的困难模型。
+它没有像 [Z-Image-Turbo](/zh/basic-workflows/z-image-turbo/) 那样经过蒸馏和强化学习来稳定输出，所以种子和初始噪声的差异很容易体现在结果上。创造性和变化幅度都很大，但另一方面，它对参数很敏感，结果波动也大，是个不太好驾驭的模型。
 
 ---
 
-## 模型的下载
+## 下载模型
 
 - diffusion_models  
   - [z_image_bf16.safetensors](https://huggingface.co/Comfy-Org/z_image/blob/main/split_files/diffusion_models/z_image_bf16.safetensors) (12.3 GB)
@@ -60,21 +60,21 @@ Z-Image，作为（微调源的）基础模型，持有坦率的特性。
 
 [](/workflows/basic-workflows/z-image/z_image.json)
 
-- `steps` : 虽然也根据采样器，但 30〜40 左右稍多的一方比较安定。
+- `steps` : 取决于采样器，不过设得稍多一些，30〜40 左右会比较稳定
 
-## 使用 Z-Image-Turbo 进行精炼
+## 用 Z-Image-Turbo 精修
 
-是将 Z-Image 的生成结果，用 Z-Image-Turbo 以短的步数进行精炼的方法。
-目标是两全 Z-Image 的创造性和 Z-Image-Turbo 的品质的安定感。
+这个方法是用 Z-Image-Turbo 以较少的步数对 Z-Image 的生成结果进行精修。
+目标是兼得 Z-Image 的创造性和 Z-Image-Turbo 稳定的画质。
 
-虽然 image2image 也可以，但在这里稍微时髦地将采样分为 2 段试试吧。
+用 image2image 也可以，不过这里我们稍微玩得漂亮一点，把采样拆成两段试试。
 
 ![](/media/basic-workflows/z-image/legacy_gyazo_2545e8ea917a80488d8687464185410d.png){media=image}
 
 [](/workflows/basic-workflows/z-image/z_image_refine_turbo.json)
 
-这次以前半 50%，后半 50% 分开。
-(cf. [分割采样](/zh/basic-workflows/ksampler-advanced/#分割采样))
+这次按前半 50%、后半 50% 来分。
+(cf. [拆分采样](/zh/basic-workflows/ksampler-advanced/#拆分采样))
 
 - 🟪 Z-Image : 30 steps 中的 15 steps
 - 🟨 Z-Image-Turbo : 8 steps 中的 4 steps
@@ -86,9 +86,9 @@ Z-Image，作为（微调源的）基础模型，持有坦率的特性。
 
 ## Z-Image-Fun-Controlnet-Union-2.1
 
-Z-Image 用的 ControlNet 风补丁。
+这是 Z-Image 用的 ControlNet 式补丁。
 
-### 模型的下载
+### 下载模型
 
 - model_patches
 
@@ -107,12 +107,12 @@ Z-Image 用的 ControlNet 风补丁。
 
 [](/workflows/basic-workflows/z-image/z_image_fun_controlnet_union_2_1.json)
 
-- 🟩 向 `QwenImageDiffsynthControlnet` 追加模型和控制图像
-- 🟩 在这个 workflow 用 Depth Anything V2 制作深度图。
+- 🟩 向 `QwenImageDiffsynthControlnet` 添加模型和控制图像
+- 🟩 这个工作流用 Depth Anything V2 生成深度图。
 
 
 
-## 参考
+## 参考资料
 
 - [Comfy.Org blog](https://blog.comfy.org/p/z-image-day-0-support-in-comfyui?utm_campaign=post-expanded-share&utm_medium=web&triedRedirect=true)
 - [A different way of combining Z-Image and Z-Image-Turbo](https://www.reddit.com/r/StableDiffusion/comments/1qqzlv8/a_different_way_of_combining_zimage_and/)

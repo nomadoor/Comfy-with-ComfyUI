@@ -18,9 +18,9 @@ tags: ["subject-transfer", "style-transfer"]
 
 ## What is IP-Adapter?
 
-When looking at a picture or photo and thinking "I want it drawn with this same vibe," it is almost impossible to explain every detail using only text.
+You might look at a picture or photo and think "I want something with this same vibe," but describing every detail in text alone is nearly impossible.
 
-Therefore, several mechanisms have been proposed to "let the AI look directly at the image without going through text."
+So several mechanisms have been proposed that "let the AI look at the image directly, without going through text."
 Among them, **IP-Adapter** is one of the classic methods used for **"transferring" style and subject**.
 
 Think of it as the pioneer of "reference2image" and "[Subject Transfer](/en/ai-capabilities/subject-transfer/)".
@@ -59,7 +59,7 @@ There are several types of IP-Adapter, but let's start by trying the most standa
 
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_sd15.json)
 
-- 🟩 Connect various models and the reference image you want to use to the `IPAdapter Advanced` node.
+- 🟩 Connect the models and the reference image you want to use to the `IPAdapter Advanced` node.
 - 🟦 Crop the reference image with the `Prep Image For ClipVision` node.
   - Details below.
 
@@ -69,40 +69,40 @@ There are several types of IP-Adapter, but let's start by trying the most standa
 
 ![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_302c47a4eb43f19e7e8535ca40e8ed5c.png){media=image}
 
-The CLIP ViT-H-14, which acts as the "eye" for IP-Adapter, basically only sees a **224 × 224 square area**.
-Therefore, if you pass a portrait photo as is, the face or feet might be cut off, or it might only pick up features from the middle of the body.
+CLIP ViT-H-14, which serves as IP-Adapter's "eye", basically only sees a **224 × 224 area**.
+So if you pass in a tall photo of a person as-is, the face or feet may get cut off, or it may pick up features only from around the middle of the body.
 
-If you want to decide which part should be the standard, resize and crop it first as shown in the workflow above.
+If you want to choose which part it goes by, resize and crop the image first, as in the workflow above.
 
 ---
 
 ## Main IP-Adapter Models
 
-There are several derivative models, and "what and how much they borrow" from the reference image varies greatly from model to model.
+There are several derivative models, and "what they borrow from the reference image, and how much" varies quite a bit from model to model.
 
 ### ip-adapter-plus_sd15
 
-A model that strongly transfers composition and object positions.
+A model that transfers composition and object positions fairly strongly.
 
 ![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_ecbbe99d3410a850767aaf506645952b.png){media=image}
 
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_plus_sd15.json)
 
 - [ip-adapter-plus_sd15.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/ip-adapter-plus_sd15.safetensors)
-- The composition will be very close to the reference image.
+- The composition ends up quite close to the reference image.
 
 
 ### ip-adapter_sd15_light
 
-A model that prioritizes text prompts.
+A model that leans toward prioritizing the text prompt.
 
 ![](/media/basic-workflows/sd15-ip-adapter/legacy_gyazo_422b44322caef6fe6fdec8c7d37f54e3.png){media=image}
 
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_sd15_light.json)
 
 - [ip-adapter_sd15_light.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/ip-adapter_sd15_light.safetensors)
-- Leaves text instructions strongly.
-- The reference image is mainly used as a hint for "style/atmosphere".
+- Keeps more of the text instructions.
+- The reference image serves mostly as a hint for "style/atmosphere".
 
 ### ip-adapter-plus-face_sd15
 
@@ -113,13 +113,13 @@ An IP-Adapter specialized for faces (head).
 [](/workflows/basic-workflows/sd15-ip-adapter/ip_adapter_plus_face_sd15.json)
 
 - [ip-adapter-plus-face_sd15.safetensors](https://huggingface.co/h94/IP-Adapter/blob/main/models/ip-adapter-plus-face_sd15.safetensors)
-- Fixes facial features, contours, etc. quite strongly.
+- Locks in facial features, face shape, and so on quite strongly.
 
 ---
 
 ## SDXL Model Links
 
-For those who want to try SDXL as well, here is a list of model links for SDXL.
+If you want to try SDXL too, here are the SDXL model links.
 
 - [ip-adapter_sdxl_vit-h](https://huggingface.co/h94/IP-Adapter/blob/main/sdxl_models/ip-adapter_sdxl_vit-h.safetensors)
 - [ip-adapter-plus-face_sdxl_vit-h](https://huggingface.co/h94/IP-Adapter/blob/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors)
