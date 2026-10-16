@@ -74,14 +74,7 @@
       "properties": {
         "Node name for S&R": "UNETLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "models": [
-          {
-            "name": "qwen_image_2.1_int8_convrot.safetensors",
-            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors",
-            "directory": "diffusion_models"
-          }
-        ]
+        "ver": "0.3.33"
       },
       "widgets_values": [
         "flux3_image_klein_sd_int8_convrot.safetensors",
@@ -122,14 +115,7 @@
       "properties": {
         "Node name for S&R": "CLIPLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "models": [
-          {
-            "name": "qwen3vl_8b_int8_convrot.safetensors",
-            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors",
-            "directory": "text_encoders"
-          }
-        ]
+        "ver": "0.3.33"
       },
       "widgets_values": [
         "qwen3vl_4b_int8_convrot.safetensors",
@@ -361,14 +347,7 @@
       "properties": {
         "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33",
-        "models": [
-          {
-            "name": "qwen_image_2.1_vae_bf16.safetensors",
-            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors",
-            "directory": "vae"
-          }
-        ]
+        "ver": "0.3.33"
       },
       "widgets_values": [
         "flux2-vae.safetensors"
