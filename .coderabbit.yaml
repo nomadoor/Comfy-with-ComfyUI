@@ -1,9 +1,26 @@
+# Reviews are read by the Japanese-speaking owner.
+language: ja-JP
 reviews:
+  # Generated data files: media:sync writes media.json, the page-views script writes pageViews.json.
+  path_filters:
+    - "!src/_data/media.json"
+    - "!src/_data/pageViews.json"
+  # Diagrams of ComfyUI workflow JSON and article edits do not help review.
+  sequence_diagrams: false
+  pre_merge_checks:
+    # An Eleventy site with few functions; docstring coverage is not a project rule.
+    docstrings:
+      mode: "off"
   path_instructions:
     - path: "src/content/**/*.md"
       instructions: |
         Follow project policy from /ops:
         - `tags` are optional. Do not request adding tags when they are intentionally omitted.
         - When tags exist, enforce max 5 and topic consistency.
-        - For Gyazo-rendered media (`![](...){gyazo=image|loop}` and Gyazo usage inside `{% mediaRow %}`), do not request markdown alt/width/height fixes. These are renderer/CSS-managed embeds.
-        - Keep accessibility and dimension feedback for non-Gyazo standard markdown images.
+        - Images with a display mode (`![](...){media=image|loop|player}`, the older `{gyazo=...}` alias, and images inside `{% mediaRow %}` or `{% outputs %}`) are renderer/CSS-managed embeds, whether they point to R2 (`/media/...`) or Gyazo. Do not request markdown alt/width/height fixes for them.
+        - Empty alt text (`![](...)`) is the documented template in `/ops/style-writing.md` and is used across the site. Do not request alt text for these images.
+    - path: "src/workflows/**/*.json"
+      instructions: |
+        These are ComfyUI workflows exported from the editor.
+        - Node ids, link ids, `order`, `pos`, `size`, and canvas/`extra.ds` values change on every save. Do not comment on them.
+        - Do check what a reader loads: model filenames in loader widgets and, when present, in `properties.models` (it is left out on purpose for gated downloads), `LoadImage` filenames (when `widgets_values_named` exists, it must agree with `widgets_values`), and prompt text left in widgets that an input link overrides.
