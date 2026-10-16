@@ -1,0 +1,970 @@
+{
+  "id": "87945de1-01d9-46e9-972e-bc6048391299",
+  "revision": 0,
+  "last_node_id": 97,
+  "last_link_id": 216,
+  "nodes": [
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1578.4067385408707,
+        167.36048381577803
+      ],
+      "size": [
+        225,
+        46
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 35
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 76
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            101
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      }
+    },
+    {
+      "id": 37,
+      "type": "UNETLoader",
+      "pos": [
+        876.8100510941658,
+        34.805270385742176
+      ],
+      "size": [
+        305.3782043457031,
+        82
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            105
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "flux3_image_klein_sd_int8_convrot.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "flux3_image_klein_sd_int8_convrot.safetensors",
+        "weight_dtype": "default"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 38,
+      "type": "CLIPLoader",
+      "pos": [
+        67.38904068787144,
+        186.7020461700888
+      ],
+      "size": [
+        301.3524169921875,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            74
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "qwen3vl_4b_int8_convrot.safetensors",
+        "flux3",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_4b_int8_convrot.safetensors",
+        "type": "flux3",
+        "device": "default"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        1224.7286989900895,
+        167.36048381577803
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 105
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 162
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 163
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 164
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            35
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        1234,
+        "fixed",
+        15,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 1234,
+        "control_after_generate": "fixed",
+        "steps": 15,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        415.7513025457208,
+        186.7020461700888
+      ],
+      "size": [
+        418.5183049982245,
+        177.7917699892659
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 74
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 216
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            113,
+            160
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "Add a shallow water puddle on the ground around her bare feet. Change her red shirt and gray plaid trousers to a one-piece swimsuit. "
+      ],
+      "widgets_values_named": {
+        "text": "Add a shallow water puddle on the ground around her bare feet. Change her red shirt and gray plaid trousers to a one-piece swimsuit. "
+      }
+    },
+    {
+      "id": 56,
+      "type": "SaveImage",
+      "pos": [
+        1848.0136535092056,
+        167.36048381577803
+      ],
+      "size": [
+        645.0198200515991,
+        847.653143776555
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 101
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "ComfyUI"
+      }
+    },
+    {
+      "id": 39,
+      "type": "VAELoader",
+      "pos": [
+        519.2696075439453,
+        538.1055745563773
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            76,
+            165
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "flux2-vae.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "flux2-vae.safetensors"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 63,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        609.2696075439453,
+        436.8646670878917
+      ],
+      "size": [
+        225,
+        26
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 113
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            161
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningZeroOut"
+      }
+    },
+    {
+      "id": 74,
+      "type": "ReferenceMultiLatent",
+      "pos": [
+        876.8100510941658,
+        186.7020461700888
+      ],
+      "size": [
+        305.3782043457031,
+        158
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 160
+        },
+        {
+          "name": "negative",
+          "shape": 7,
+          "type": "CONDITIONING",
+          "link": 161
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 165
+        },
+        {
+          "name": "images.image0",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 210
+        },
+        {
+          "name": "images.image1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            162
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            163
+          ]
+        },
+        {
+          "name": "empty_latent",
+          "type": "LATENT",
+          "links": [
+            164
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ReferenceMultiLatent"
+      },
+      "widgets_values": [
+        "keep resolution"
+      ],
+      "widgets_values_named": {
+        "resolution": "keep resolution"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 75,
+      "type": "LoadImage",
+      "pos": [
+        -889.433634594612,
+        711.1398618720623
+      ],
+      "size": [
+        549.3443118502694,
+        758.5045263048829
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            208
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "flux_3_image_klein_image_edit_input.webp",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "flux_3_image_klein_image_edit_input.webp",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 81,
+      "type": "ResizeImageMaskNode",
+      "pos": [
+        -306.1327934434606,
+        711.1398618720623
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "IMAGE,MASK",
+          "link": 208
+        }
+      ],
+      "outputs": [
+        {
+          "name": "resized",
+          "type": "IMAGE",
+          "links": [
+            178,
+            209
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResizeImageMaskNode"
+      },
+      "widgets_values": [
+        "scale to multiple",
+        16,
+        "bicubic"
+      ],
+      "widgets_values_named": {
+        "resize_type": "scale to multiple",
+        "resize_type.multiple": 16,
+        "scale_method": "bicubic"
+      }
+    },
+    {
+      "id": 83,
+      "type": "TextGenerate",
+      "pos": [
+        -26.22688921893304,
+        -308.79051990273126
+      ],
+      "size": [
+        400,
+        288
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 177
+        },
+        {
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 178
+        },
+        {
+          "name": "video",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "system_prompt",
+          "shape": 7,
+          "type": "STRING",
+          "link": 179
+        }
+      ],
+      "outputs": [
+        {
+          "name": "generated_text",
+          "type": "STRING",
+          "links": [
+            181,
+            216
+          ]
+        },
+        {
+          "name": "thinking",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TextGenerate"
+      },
+      "widgets_values": [
+        "Make her hair long and straight.",
+        3584,
+        "off",
+        false,
+        true,
+        "auto"
+      ],
+      "widgets_values_named": {
+        "prompt": "Make her hair long and straight.",
+        "max_length": 3584,
+        "sampling_mode": "off",
+        "thinking": false,
+        "use_default_template": true,
+        "mtp": "auto"
+      },
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 84,
+      "type": "CLIPLoader",
+      "pos": [
+        -370,
+        -310
+      ],
+      "size": [
+        301.3524169921875,
+        106
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            177
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "qwen3.5_9b_flux3_prompt_upsampler_int8_convrot.safetensors",
+        "flux3",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3.5_9b_flux3_prompt_upsampler_int8_convrot.safetensors",
+        "type": "flux3",
+        "device": "default"
+      },
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 85,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        -471.8247526298163,
+        -141.2158376045371
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            179
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "You are the prompt upsampler of an image-editing model. You see the reference image(s), attached in order (the first image, the second image, ...), and the user's short request. Expand it into ONE detailed, self-contained instruction: the caption the editing model receives together with the same images. Output only the instruction as one continuous English prose block, with no greetings, explanations, Markdown, JSON, coordinates, ids or angle-bracket tokens. Read a vague or conversational request in any language as the most plausible edit of the supplied images.\n\nThe task is always an edit of the first image: the image stays, and only the requested changes are made. Write an imperative editing instruction on it (\"Remove the ...\", \"Change the ... to ...\", \"Add a ...\"); a whole-image transformation opens with its scope (\"Convert the entire image into ...\", \"Apply a ... filter over the entire scene\", \"Shift the camera viewpoint to ...\", then where the major elements should now be). Use only this voice: never open with \"Create\", \"Generate\" or \"Redraw\", and never re-describe the whole scene. When further images are attached, say what is taken from each of them, by ordinal.\n\nKeep every explicit edit, constraint, count, position, style cue and piece of wording, and decide what is left open as one concrete plan. Ground everything in what is actually visible: identify each referent unambiguously by its real appearance and never mention content that is not there. If the request names a subject that is absent but a similar subject is visible, apply the requested change to that visible subject. State every end state concretely (which color, how large, which pose, which material) and give new content enough appearance to be generated. Cover the knock-on effects of the change (shadows, reflections, occlusion, perspective, scale, lighting) and say what fills any region the edit empties. Describe the change, not the whole scene, and close with one compact clause naming what stays unchanged; people keep their identity, face and accessories unless asked otherwise. Transcribe on-image text verbatim in its original language inside double quotes, with line breaks as \\n, and match the original font, size and color when replacing it. Name recognizable public figures, brands and landmarks you can see. Directions are frame-relative; use no evaluative or quality words. Typical length is 50 to 150 words.\n\nOutput only the instruction."
+      ],
+      "widgets_values_named": {
+        "value": "You are the prompt upsampler of an image-editing model. You see the reference image(s), attached in order (the first image, the second image, ...), and the user's short request. Expand it into ONE detailed, self-contained instruction: the caption the editing model receives together with the same images. Output only the instruction as one continuous English prose block, with no greetings, explanations, Markdown, JSON, coordinates, ids or angle-bracket tokens. Read a vague or conversational request in any language as the most plausible edit of the supplied images.\n\nThe task is always an edit of the first image: the image stays, and only the requested changes are made. Write an imperative editing instruction on it (\"Remove the ...\", \"Change the ... to ...\", \"Add a ...\"); a whole-image transformation opens with its scope (\"Convert the entire image into ...\", \"Apply a ... filter over the entire scene\", \"Shift the camera viewpoint to ...\", then where the major elements should now be). Use only this voice: never open with \"Create\", \"Generate\" or \"Redraw\", and never re-describe the whole scene. When further images are attached, say what is taken from each of them, by ordinal.\n\nKeep every explicit edit, constraint, count, position, style cue and piece of wording, and decide what is left open as one concrete plan. Ground everything in what is actually visible: identify each referent unambiguously by its real appearance and never mention content that is not there. If the request names a subject that is absent but a similar subject is visible, apply the requested change to that visible subject. State every end state concretely (which color, how large, which pose, which material) and give new content enough appearance to be generated. Cover the knock-on effects of the change (shadows, reflections, occlusion, perspective, scale, lighting) and say what fills any region the edit empties. Describe the change, not the whole scene, and close with one compact clause naming what stays unchanged; people keep their identity, face and accessories unless asked otherwise. Transcribe on-image text verbatim in its original language inside double quotes, with line breaks as \\n, and match the original font, size and color when replacing it. Name recognizable public figures, brands and landmarks you can see. Directions are frame-relative; use no evaluative or quality words. Typical length is 50 to 150 words.\n\nOutput only the instruction."
+      },
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 86,
+      "type": "PreviewAny",
+      "pos": [
+        414.7628296047744,
+        -307.32120017858426
+      ],
+      "size": [
+        387.9444297800972,
+        321.71285303719196
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 181
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {},
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 95,
+      "type": "Reroute",
+      "pos": [
+        759.2696075439453,
+        711.1398618720623
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 209
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "links": [
+            210
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 97,
+      "type": "MarkdownNote",
+      "pos": [
+        -959.4963899759136,
+        -310
+      ],
+      "size": [
+        435.72716346592114,
+        545.840161067743
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n\n> [black-forest-labs/flux-3-image-klein-comfy](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) is gated. Log in to Hugging Face and accept the terms on the repository page before downloading.\n\n- diffusion_models\n  - flux3_image_klein_sd_int8_convrot.safetensors (5.83 GB)\n- text_encoders\n  - qwen3vl_4b_int8_convrot.safetensors (4.86 GB)\n  - qwen3.5_9b_flux3_prompt_upsampler_int8_convrot.safetensors (9.75 GB, prompt upsampler / optional)\n- vae\n  - flux2-vae.safetensors (336 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── flux3_image_klein_sd_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   ├── qwen3vl_4b_int8_convrot.safetensors\n    │   └── qwen3.5_9b_flux3_prompt_upsampler_int8_convrot.safetensors\n    └── 📂vae/\n        └── flux2-vae.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/flux-3-image-klein/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/flux-3-image-klein/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/flux-3-image-klein/)"
+      ],
+      "widgets_values_named": {
+        "text": "## models\n\n> [black-forest-labs/flux-3-image-klein-comfy](https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy) is gated. Log in to Hugging Face and accept the terms on the repository page before downloading.\n\n- diffusion_models\n  - flux3_image_klein_sd_int8_convrot.safetensors (5.83 GB)\n- text_encoders\n  - qwen3vl_4b_int8_convrot.safetensors (4.86 GB)\n  - qwen3.5_9b_flux3_prompt_upsampler_int8_convrot.safetensors (9.75 GB, prompt upsampler / optional)\n- vae\n  - flux2-vae.safetensors (336 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── flux3_image_klein_sd_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   ├── qwen3vl_4b_int8_convrot.safetensors\n    │   └── qwen3.5_9b_flux3_prompt_upsampler_int8_convrot.safetensors\n    └── 📂vae/\n        └── flux2-vae.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/flux-3-image-klein/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/flux-3-image-klein/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/flux-3-image-klein/)"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    }
+  ],
+  "links": [
+    [
+      35,
+      3,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      74,
+      38,
+      0,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      76,
+      39,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      101,
+      8,
+      0,
+      56,
+      0,
+      "IMAGE"
+    ],
+    [
+      105,
+      37,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      113,
+      6,
+      0,
+      63,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      162,
+      74,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      163,
+      74,
+      1,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      164,
+      74,
+      2,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      181,
+      83,
+      0,
+      86,
+      0,
+      "STRING"
+    ],
+    [
+      209,
+      81,
+      0,
+      95,
+      0,
+      "IMAGE"
+    ],
+    [
+      216,
+      83,
+      0,
+      6,
+      1,
+      "STRING"
+    ],
+    [
+      160,
+      6,
+      0,
+      74,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      161,
+      63,
+      0,
+      74,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      165,
+      39,
+      0,
+      74,
+      2,
+      "VAE"
+    ],
+    [
+      210,
+      95,
+      0,
+      74,
+      3,
+      "IMAGE"
+    ],
+    [
+      208,
+      75,
+      0,
+      81,
+      0,
+      "IMAGE"
+    ],
+    [
+      177,
+      84,
+      0,
+      83,
+      0,
+      "CLIP"
+    ],
+    [
+      178,
+      81,
+      0,
+      83,
+      1,
+      "IMAGE"
+    ],
+    [
+      179,
+      85,
+      0,
+      83,
+      4,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6934334949441434,
+      "offset": [
+        655.6131593031388,
+        129.98159470672164
+      ]
+    },
+    "frontendVersion": "1.55.17",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

@@ -1747,6 +1747,134 @@
     "bytes": 482304,
     "source": "61e01936d81f7781"
   },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_bbox_layout_prompt.png": {
+    "key": "images/68938330703cb811.webp",
+    "width": 1002,
+    "height": 908,
+    "type": "image/webp",
+    "bytes": 21468,
+    "source": "a3071963f76269fb"
+  },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_hero.png": {
+    "key": "images/aab4411ed1327086.webp",
+    "width": 1936,
+    "height": 1088,
+    "type": "image/webp",
+    "bytes": 338724,
+    "source": "93ddd892cbbd8254"
+  },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_huggingface_gated.png": {
+    "key": "images/fba060a5038e1804.webp",
+    "width": 929,
+    "height": 395,
+    "type": "image/webp",
+    "bytes": 38706,
+    "source": "8602c28e1978a5de"
+  },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_image_edit_bbox_input.jpg": {
+    "key": "images/e76dd9ccb14445a9.webp",
+    "width": 1408,
+    "height": 768,
+    "type": "image/webp",
+    "bytes": 79242,
+    "source": "50f490cdb365cefa"
+  },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_image_edit_bbox_output.png": {
+    "key": "images/209b95d85048b96a.webp",
+    "width": 1408,
+    "height": 768,
+    "type": "image/webp",
+    "bytes": 73438,
+    "source": "5d9b2594f9d5bce9"
+  },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_image_edit_bbox.png": {
+    "key": "images/c1bb760ba22deacb.webp",
+    "width": 3340,
+    "height": 1519,
+    "type": "image/webp",
+    "bytes": 156038,
+    "source": "5904e247e7394b45"
+  },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_image_edit_input.png": {
+    "key": "images/248ae71a4c1fec63.webp",
+    "width": 1024,
+    "height": 1536,
+    "type": "image/webp",
+    "bytes": 161268,
+    "source": "a296069feed9d564"
+  },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_image_edit_output.png": {
+    "key": "images/a2cffcecb79e27b8.webp",
+    "width": 1024,
+    "height": 1536,
+    "type": "image/webp",
+    "bytes": 153680,
+    "source": "09bdba2055502376"
+  },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_image_edit.png": {
+    "key": "images/d3134a88335a51e5.webp",
+    "width": 2852,
+    "height": 1538,
+    "type": "image/webp",
+    "bytes": 135568,
+    "source": "8d61c6ea21ec3b99"
+  },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_input.png": {
+    "key": "images/1585acc8764c34c2.webp",
+    "width": 1024,
+    "height": 1536,
+    "type": "image/webp",
+    "bytes": 262440,
+    "source": "749c894010484181"
+  },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_output.png": {
+    "key": "images/95bb868bda5c899d.webp",
+    "width": 1248,
+    "height": 1680,
+    "type": "image/webp",
+    "bytes": 374328,
+    "source": "b7af56773db9838a"
+  },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image.png": {
+    "key": "images/186c7617e8ce6543.webp",
+    "width": 3092,
+    "height": 1538,
+    "type": "image/webp",
+    "bytes": 187664,
+    "source": "6e1269f3dc2176fb"
+  },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_text2image_bbox_output.png": {
+    "key": "images/08a27c7ce18e4e09.webp",
+    "width": 1088,
+    "height": 1936,
+    "type": "image/webp",
+    "bytes": 868930,
+    "source": "5c509e40db1e233a"
+  },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_text2image_output.png": {
+    "key": "images/b1e115725cea8d9e.webp",
+    "width": 1680,
+    "height": 1248,
+    "type": "image/webp",
+    "bytes": 631572,
+    "source": "4cafb60747be2588"
+  },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_text2image.png": {
+    "key": "images/85690fda4b921455.webp",
+    "width": 2088,
+    "height": 700,
+    "type": "image/webp",
+    "bytes": 85462,
+    "source": "8b8b8c22d3d8dfea"
+  },
+  "basic-workflows/flux-3-image-klein/qwen3_5_9b_flux3_prompt_upsampler.png": {
+    "key": "images/9ae758e71adb174b.webp",
+    "width": 1656,
+    "height": 581,
+    "type": "image/webp",
+    "bytes": 115014,
+    "source": "3f7652ce21031e34"
+  },
   "basic-workflows/ideogram-4/legacy_gyazo_26ef78ed5bf868ab5ca9a62b643640ff.png": {
     "key": "images/89b84b0a4145ee75.webp",
     "width": 781,
