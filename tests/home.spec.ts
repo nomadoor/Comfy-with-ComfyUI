@@ -21,7 +21,7 @@ test.describe("Language home", () => {
     const cards = picks.locator("a.home-pick");
     await expect(cards).toHaveCount(5);
     await expect(cards.nth(0)).toHaveAttribute("href", "/ja/basic-workflows/krea-2/");
-    await expect(cards.nth(1)).toHaveAttribute("href", "/ja/basic-workflows/anima/");
+    await expect(cards.nth(1)).toHaveAttribute("href", "/ja/basic-workflows/moss-image/");
     await expect(cards.nth(2)).toHaveAttribute("href", "/ja/basic-workflows/flux-3-image-klein/");
     await expect(cards.nth(3)).toHaveAttribute("href", "/ja/basic-workflows/qwen-image-2-1/");
     await expect(cards.nth(4)).toHaveAttribute("href", "/ja/basic-workflows/minimax-h3/");
