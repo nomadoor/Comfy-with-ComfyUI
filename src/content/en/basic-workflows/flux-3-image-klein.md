@@ -142,6 +142,30 @@ For Ref2Image I want to choose the output size freely, so I connect a separate `
 ![input](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_input.png){media=image} ![output](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_output.png){media=image}
 {% endoutputs %}
 
+### Ref2Image with BBOX
+
+You can place things from the reference images where you specify with BBOX.
+
+![](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox.png){media=image}
+
+[](/workflows/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox.json)
+
+> [!NOTE]
+> If you use the Prompt Upsampler, it just ends up ignoring the BBOX coordinates entirely, so I don't use it here.
+
+- `Create Bounding Boxes`
+  - `width` / `height` should match the output size (the value from `Resolution Selector`).
+- `FLUX 3 Image Layout Prompt`
+  - Write boxes as `<obj_1>` and reference images as `<ref_image_0>`, and specify what from which image goes where. Reference image numbers start at 0.
+
+    ```text
+    Create a cinematic film still of the monkey <obj_2> from <ref_image_0> riding the motorcycle <obj_1> from <ref_image_1> ...
+    ```
+
+{% outputs %}
+![input](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox_input1.jpg){media=image} ![input](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox_input2.png){media=image} ![output](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox_output.png){media=image}
+{% endoutputs %}
+
 ---
 
 ## Image editing

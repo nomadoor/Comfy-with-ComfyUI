@@ -1819,6 +1819,38 @@
     "bytes": 135568,
     "source": "8d61c6ea21ec3b99"
   },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox_input1.jpg": {
+    "key": "images/3c2f8a1ec306556e.webp",
+    "width": 896,
+    "height": 1195,
+    "type": "image/webp",
+    "bytes": 108024,
+    "source": "acd75fc3777ec66d"
+  },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox_input2.png": {
+    "key": "images/09e674dafb037777.webp",
+    "width": 1680,
+    "height": 1248,
+    "type": "image/webp",
+    "bytes": 200204,
+    "source": "abee201750e8137c"
+  },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox_output.png": {
+    "key": "images/33375740f8841cb6.webp",
+    "width": 1248,
+    "height": 1680,
+    "type": "image/webp",
+    "bytes": 502588,
+    "source": "36352ff2641ffa27"
+  },
+  "basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox.png": {
+    "key": "images/d58e7b233eee89da.webp",
+    "width": 2830,
+    "height": 1447,
+    "type": "image/webp",
+    "bytes": 154698,
+    "source": "c79daa6eaa555094"
+  },
   "basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_input.png": {
     "key": "images/1585acc8764c34c2.webp",
     "width": 1024,

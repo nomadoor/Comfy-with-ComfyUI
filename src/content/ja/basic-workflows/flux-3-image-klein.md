@@ -141,6 +141,30 @@ Ref2Image では好きなサイズで出力したいので、別途 `Empty Flux 
 ![input](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_input.png){media=image} ![output](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_output.png){media=image}
 {% endoutputs %}
 
+### Ref2Image with BBOX
+
+参照画像のものを、BBOX で指定した場所に置くことができます。
+
+![](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox.png){media=image}
+
+[](/workflows/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox.json)
+
+> [!NOTE]
+> Prompt Upsampler を使うと、どうしても BBOX の座標を全く無視してしまうので、ここでは使っていません。
+
+- `Create Bounding Boxes`
+  - `width` / `height` は、出力サイズ（`Resolution Selector` の値）に合わせます。
+- `FLUX 3 Image Layout Prompt`
+  - ボックスは `<obj_1>`、参照画像は `<ref_image_0>` のように書いて、どの画像の何をどこに置くかを指定します。参照画像の番号は 0 から始まります。
+
+    ```text
+    Create a cinematic film still of the monkey <obj_2> from <ref_image_0> riding the motorcycle <obj_1> from <ref_image_1> ...
+    ```
+
+{% outputs %}
+![input](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox_input1.jpg){media=image} ![input](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox_input2.png){media=image} ![output](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox_output.png){media=image}
+{% endoutputs %}
+
 ---
 
 ## 画像編集

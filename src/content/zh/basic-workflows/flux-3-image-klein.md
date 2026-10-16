@@ -142,6 +142,30 @@ Prompt Upsampler 本身有 9B，但扩散模型主体很轻，所以应该不会
 ![input](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_input.png){media=image} ![output](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_output.png){media=image}
 {% endoutputs %}
 
+### Ref2Image with BBOX
+
+可以把参考图像中的内容放到 BBOX 指定的位置。
+
+![](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox.png){media=image}
+
+[](/workflows/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox.json)
+
+> [!NOTE]
+> 使用 Prompt Upsampler 时，它总是会完全忽略 BBOX 的坐标，所以这里没有使用。
+
+- `Create Bounding Boxes`
+  - `width` / `height` 要和输出尺寸（`Resolution Selector` 的值）一致。
+- `FLUX 3 Image Layout Prompt`
+  - 方框写成 `<obj_1>`，参考图像写成 `<ref_image_0>`，以此指定把哪张图像里的哪个对象放到哪里。参考图像的编号从 0 开始。
+
+    ```text
+    Create a cinematic film still of the monkey <obj_2> from <ref_image_0> riding the motorcycle <obj_1> from <ref_image_1> ...
+    ```
+
+{% outputs %}
+![input](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox_input1.jpg){media=image} ![input](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox_input2.png){media=image} ![output](/media/basic-workflows/flux-3-image-klein/flux_3_image_klein_ref2image_bbox_output.png){media=image}
+{% endoutputs %}
+
 ---
 
 ## 图像编辑
