@@ -82,15 +82,23 @@ test("noteModels reads foldered and flat model lists, stops at the next section,
   ]);
 });
 
-test("workflowFacts prefers loader metadata, then the note, then bare file names", () => {
+test("workflowFacts takes loader metadata, adds what only the note links, then bare file names", () => {
   const loader = {
     type: "UNETLoader",
     widgets_values: ["sub\\m.safetensors", "default"],
     properties: { cnr_id: "comfy-core", models: [{ name: "m.safetensors", directory: "diffusion_models", url: "https://huggingface.co/x/resolve/main/m.safetensors" }] },
   };
-  const facts = workflowFacts({ nodes: [loader, note("## models\n- [n.safetensors](https://huggingface.co/n)")] });
+  const facts = workflowFacts({
+    nodes: [loader, note("## models\n- [m.safetensors](https://huggingface.co/other/m)\n- [n.safetensors](https://huggingface.co/n)")],
+  });
   assert.equal(facts.models_source, "loaders");
-  assert.deepEqual(facts.models.map((m) => m.name), ["m.safetensors"]);
+  assert.deepEqual(
+    facts.models.map((m) => [m.name, m.url, m.source]),
+    [
+      ["n.safetensors", "https://huggingface.co/n", "note"],
+      ["m.safetensors", "https://huggingface.co/x/resolve/main/m.safetensors", "loaders"],
+    ],
+  );
 
   const fromNote = workflowFacts({ nodes: [{ type: "VAELoader", widgets_values: ["v.safetensors"] }, note("## models\n- [n.safetensors](https://huggingface.co/n)")] });
   assert.equal(fromNote.models_source, "note");
@@ -98,7 +106,7 @@ test("workflowFacts prefers loader metadata, then the note, then bare file names
 
   const namesOnly = workflowFacts({ nodes: [{ type: "CheckpointLoaderSimple", widgets_values: ["SV3D\\sv3d_p.safetensors"] }] });
   assert.equal(namesOnly.models_source, "names_only");
-  assert.deepEqual(namesOnly.models, [{ name: "sv3d_p.safetensors", directory: null, url: null }]);
+  assert.deepEqual(namesOnly.models, [{ name: "sv3d_p.safetensors", directory: null, url: null, source: null }]);
 
   assert.equal(workflowFacts({ nodes: [{ type: "LoadImage", widgets_values: ["in.png", "image"] }] }).models_source, "none");
 });

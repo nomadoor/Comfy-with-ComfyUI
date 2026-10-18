@@ -88,8 +88,9 @@ export const scanArticle = (body) => {
 };
 
 // Models: the loaders' `properties.models` (url and folder, as ComfyUI's missing-model dialog reads
-// them); for a workflow without them, the links in its note's `## models` list (older notes list them
-// without folders); failing both, just the file names its loaders ask for.
+// them); then the links in its note's `## models` list that no loader lists (older notes list them
+// without folders, and a note may offer alternatives the loaders do not pick); failing both, just
+// the file names its loaders ask for. Each model says which of the two it came from.
 export const noteModels = (workflow) => {
   const models = new Map();
   for (const node of eachNode(workflow)) {
@@ -131,16 +132,20 @@ export const workflowFacts = (workflow) => {
     }
     for (const model of node.properties?.models ?? []) {
       if (model?.name && model?.url) {
-        fromLoaders.set(`${model.directory ?? ""}/${model.name}`, { name: model.name, directory: model.directory ?? null, url: model.url });
+        fromLoaders.set(`${model.directory ?? ""}/${model.name}`, { name: model.name, directory: model.directory ?? null, url: model.url, source: "loaders" });
       }
     }
     const { cnr_id: cnr, aux_id: aux } = node.properties ?? {};
     if (cnr && cnr !== "comfy-core") customNodes.set(cnr, { id: cnr, source: "registry" });
     else if (!cnr && aux) customNodes.set(aux, { id: aux, source: "github" });
   }
-  const linked = fromLoaders.size ? [...fromLoaders.values()] : noteModels(workflow);
+  const byLoaders = new Set([...fromLoaders.values()].map((m) => m.name));
+  const fromNote = noteModels(workflow)
+    .filter((m) => !byLoaders.has(m.name))
+    .map((m) => ({ ...m, source: "note" }));
+  const linked = [...fromLoaders.values(), ...fromNote];
   const known = new Set(linked.map((m) => m.name));
-  const namesOnly = [...askedFor].filter((name) => !known.has(name)).map((name) => ({ name, directory: null, url: null }));
+  const namesOnly = [...askedFor].filter((name) => !known.has(name)).map((name) => ({ name, directory: null, url: null, source: null }));
   const models = [...linked, ...namesOnly];
   return {
     models: models.sort((a, b) => `${a.directory ?? ""}/${a.name}`.localeCompare(`${b.directory ?? ""}/${b.name}`)),
@@ -199,8 +204,9 @@ export const buildWorkflowCatalog = ({ siteURL, pages, dates = readDates() }) =>
     description:
       "Every ComfyUI workflow JSON published on Comfy with ComfyUI (CC0), with the articles that explain it. " +
       "Japanese articles are the source of truth. Workflow files are the ComfyUI UI format (open or drag into ComfyUI). " +
-      "models_source tells where the model list comes from: loaders (the workflow's own properties.models), note (links in its Markdown note), " +
+      "models_source tells where the model list comes from: loaders (the workflow's own properties.models, plus any model its Markdown note links that no loader lists), note (only links in its note), " +
       "names_only (only the file names its loaders ask for; find them through the article), or none (it picks no model file; a custom node may still download its own). " +
+      "Each model's source says the same per model (loaders, note, or null for a bare file name). " +
       "A model with directory null does not say which models/ folder it belongs in. " +
       "updated is the last day the workflow's build changed (YYYY-MM-DD); filling in model or custom node metadata does not move it.",
     generated_at: new Date().toISOString(),

@@ -365,6 +365,17 @@
                           "string",
                           "null"
                         ]
+                      },
+                      "source": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "enum": [
+                          "loaders",
+                          "note",
+                          null
+                        ]
                       }
                     }
                   }

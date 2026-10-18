@@ -62,3 +62,9 @@ An agent that takes a workflow from the catalog as a model to imitate (readable-
 - The date is recorded when the workflow is committed, not computed at build time: `.githooks/pre-commit` runs `scripts/workflow-dates.mjs --staged`, which writes `src/_data/workflowDates.json` and stages it. The build only reads that file, so the date does not depend on the build host's git history (Cloudflare Pages clones shallowly).
 - A commit that only fills metadata on the nodes (`properties.models`, `cnr_id`, `ver`, `aux_id`) does not move the date. Filling those in bulk must not make old workflows look new.
 - `scripts/workflow-dates.mjs --backfill` fills the file from the git history once, under the same rule; `--check` (part of `npm run check:workflows`) fails when a workflow has no date or a date names a file that no longer exists.
+
+## 2026-10-18 Amendment: Loader and note models together
+
+Filling `properties.models` into older workflows left some with loader metadata for part of their models and note links for the rest. The catalog used to drop the note as soon as any loader had metadata, which lost those links.
+
+- A workflow's models are now the loaders' `properties.models`, plus every model its `## models` note links that no loader lists, plus the bare file names neither covers. Each model carries `source` (`loaders`, `note`, or `null` for a bare name). `models_source` keeps its values; `loaders` now means "the loaders, topped up from the note".
