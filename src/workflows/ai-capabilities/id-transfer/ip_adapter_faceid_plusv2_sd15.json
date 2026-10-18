@@ -34,6 +34,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -65,6 +66,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "EmptyLatentImage"
       },
       "widgets_values": [
@@ -120,6 +122,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
@@ -159,6 +162,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "VAELoader"
       },
       "widgets_values": [
@@ -202,6 +206,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "VAEDecode"
       }
     },
@@ -227,6 +232,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewImage"
       }
     },
@@ -262,6 +268,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -308,6 +315,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CheckpointLoaderSimple"
       },
       "widgets_values": [
@@ -339,6 +347,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_ipadapter_plus",
         "Node name for S&R": "InsightFaceLoader"
       },
       "widgets_values": [
@@ -379,6 +388,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -421,6 +431,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_ipadapter_plus",
         "Node name for S&R": "PrepImageForClipVision"
       },
       "widgets_values": [
@@ -457,6 +468,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPVisionLoader"
       },
       "widgets_values": [
@@ -491,6 +503,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_ipadapter_plus",
         "Node name for S&R": "IPAdapterModelLoader"
       },
       "widgets_values": [
@@ -558,6 +571,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_ipadapter_plus",
         "Node name for S&R": "IPAdapterApplyFaceID"
       },
       "widgets_values": [

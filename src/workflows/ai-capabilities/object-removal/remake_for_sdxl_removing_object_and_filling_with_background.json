@@ -27,6 +27,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_ipadapter_plus",
         "Node name for S&R": "IPAdapterModelLoader"
       },
       "widgets_values": [
@@ -115,6 +116,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-inpaint-nodes",
         "Node name for S&R": "INPAINT_VAEEncodeInpaintConditioning"
       },
       "color": "#2a363b",
@@ -145,6 +147,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_segment_anything",
         "Node name for S&R": "SAMModelLoader (segment anything)"
       },
       "widgets_values": [
@@ -178,6 +181,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_segment_anything",
         "Node name for S&R": "GroundingDinoModelLoader (segment anything)"
       },
       "widgets_values": [
@@ -229,6 +233,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-inpaint-nodes",
         "Node name for S&R": "INPAINT_ApplyFooocusInpaint"
       },
       "color": "#2a363b",
@@ -276,6 +281,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CheckpointLoaderSimple"
       },
       "widgets_values": [
@@ -330,6 +336,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
@@ -416,6 +423,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "VAEDecode"
       }
     },
@@ -482,6 +490,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-inpaint-nodes",
         "Node name for S&R": "INPAINT_LoadFooocusInpaint"
       },
       "widgets_values": [
@@ -546,6 +555,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_ipadapter_plus",
         "Node name for S&R": "IPAdapterApply"
       },
       "widgets_values": [
@@ -593,6 +603,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "GrowMask"
       },
       "widgets_values": [
@@ -628,6 +639,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-inpaint-nodes",
         "Node name for S&R": "INPAINT_LoadInpaintModel"
       },
       "widgets_values": [
@@ -681,6 +693,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-inpaint-nodes",
         "Node name for S&R": "INPAINT_InpaintWithModel"
       },
       "color": "#232",
@@ -741,6 +754,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_segment_anything",
         "Node name for S&R": "GroundingDinoSAMSegment (segment anything)"
       },
       "widgets_values": [
@@ -816,6 +830,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "was-node-suite-comfyui",
         "Node name for S&R": "Image Size to Number"
       }
     },
@@ -866,6 +881,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "image-resize-comfyui",
         "Node name for S&R": "ImageResize"
       },
       "widgets_values": [
@@ -922,6 +938,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -962,6 +979,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -993,6 +1011,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPVisionLoader"
       },
       "widgets_values": [
@@ -1039,6 +1058,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "JoinImageWithAlpha"
       }
     },
@@ -1091,6 +1111,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ImageScale"
       },
       "widgets_values": [
@@ -1135,6 +1156,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -1163,7 +1185,9 @@
           "link": 172
         }
       ],
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfy-core"
+      },
       "widgets_values": [
         "ComfyUI"
       ],
@@ -1203,6 +1227,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-wd14-tagger",
         "Node name for S&R": "WD14Tagger|pysssss"
       },
       "widgets_values": [
@@ -1236,7 +1261,9 @@
           "link": 171
         }
       ],
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfy-core"
+      },
       "widgets_values": [
         "ComfyUI"
       ],
@@ -1313,6 +1340,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "InvertMask"
       }
     }

@@ -421,6 +421,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ConditioningZeroOut"
       }
     },
@@ -1493,6 +1494,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "VideoTemporalCrop"
       },
       "widgets_values": [
@@ -1559,6 +1561,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "GetVideoComponents"
       },
       "color": "#233",
@@ -1698,6 +1701,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadVideo"
       },
       "widgets_values": [
@@ -1742,6 +1746,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ImageToMask"
       },
       "widgets_values": [
@@ -1793,6 +1798,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ImageCompositeMasked"
       },
       "widgets_values": [
@@ -1947,6 +1953,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "EmptyImage"
       },
       "widgets_values": [
@@ -1997,6 +2004,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ColorToRGBInt"
       },
       "widgets_values": [
@@ -2037,6 +2045,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "InvertMask"
       }
     },

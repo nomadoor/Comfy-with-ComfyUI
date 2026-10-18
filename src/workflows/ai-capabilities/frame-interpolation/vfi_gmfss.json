@@ -40,6 +40,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-frame-interpolation",
         "Node name for S&R": "GMFSS Fortuna VFI"
       },
       "widgets_values": [
@@ -90,6 +91,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
         "Node name for S&R": "VHS_VideoCombine"
       },
       "widgets_values": {
@@ -156,6 +158,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
         "Node name for S&R": "VHS_LoadVideo"
       },
       "widgets_values": {

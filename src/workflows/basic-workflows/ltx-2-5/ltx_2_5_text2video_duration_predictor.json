@@ -1828,6 +1828,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ConditioningZeroOut"
       }
     },
@@ -2032,6 +2033,7 @@
       ],
       "title": "Float:  Frame Rate",
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PrimitiveFloat"
       },
       "widgets_values": [

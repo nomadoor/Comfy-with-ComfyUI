@@ -141,6 +141,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-reactor",
         "Node name for S&R": "ReActorFaceSwap"
       },
       "widgets_values": [

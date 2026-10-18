@@ -1196,6 +1196,7 @@
       ],
       "title": "Set_reference_image",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "reference_image"
       },
       "widgets_values": [
@@ -1238,6 +1239,7 @@
       ],
       "title": "Set_face_video",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "face_video"
       },
       "widgets_values": [
@@ -1280,6 +1282,7 @@
       ],
       "title": "Set_vae",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "vae"
       },
       "widgets_values": [
@@ -1322,6 +1325,7 @@
       ],
       "title": "Set_CLIP_Vision",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "CLIP_Vision"
       },
       "widgets_values": [
@@ -1362,6 +1366,7 @@
       ],
       "title": "Set_negative",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "negative"
       },
       "widgets_values": [
@@ -1404,6 +1409,7 @@
       ],
       "title": "Set_pose_video",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "pose_video"
       },
       "widgets_values": [
@@ -1446,6 +1452,7 @@
       ],
       "title": "Set_width",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "width"
       },
       "widgets_values": [
@@ -1488,6 +1495,7 @@
       ],
       "title": "Set_height",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "height"
       },
       "widgets_values": [
@@ -1530,6 +1538,7 @@
       ],
       "title": "Set_background_video",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "background_video"
       },
       "widgets_values": [
@@ -1565,7 +1574,9 @@
         }
       ],
       "title": "Get_vae",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "vae"
       ],
@@ -1606,6 +1617,7 @@
       ],
       "title": "Set_model",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "model"
       },
       "widgets_values": [
@@ -1695,6 +1707,7 @@
       ],
       "title": "Set_positive",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "positive"
       },
       "widgets_values": [
@@ -1730,7 +1743,9 @@
         }
       ],
       "title": "Get_negative",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "negative"
       ],
@@ -1765,7 +1780,9 @@
         }
       ],
       "title": "Get_vae",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "vae"
       ],
@@ -1800,7 +1817,9 @@
         }
       ],
       "title": "Get_CLIP_Vision",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "CLIP_Vision"
       ],
@@ -1833,7 +1852,9 @@
         }
       ],
       "title": "Get_pose_video",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "pose_video"
       ],
@@ -1868,7 +1889,9 @@
         }
       ],
       "title": "Get_width",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "width"
       ],
@@ -2024,7 +2047,9 @@
         }
       ],
       "title": "Get_face_video",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "face_video"
       ],
@@ -2059,7 +2084,9 @@
         }
       ],
       "title": "Get_height",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "height"
       ],
@@ -2093,7 +2120,9 @@
         }
       ],
       "title": "Get_background_video",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "background_video"
       ],
@@ -2128,7 +2157,9 @@
         }
       ],
       "title": "Get_character_mask",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "character_mask"
       ],
@@ -2162,7 +2193,9 @@
         }
       ],
       "title": "Get_positive",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "positive"
       ],
@@ -2197,7 +2230,9 @@
         }
       ],
       "title": "Get_reference_image",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "reference_image"
       ],
@@ -2275,7 +2310,9 @@
         }
       ],
       "title": "Get_vae",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "vae"
       ],
@@ -2456,7 +2493,9 @@
         }
       ],
       "title": "Get_model",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "model"
       ],
@@ -2736,6 +2775,7 @@
       ],
       "title": "Set_character_mask",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "character_mask"
       },
       "widgets_values": [
@@ -2962,7 +3002,9 @@
         }
       ],
       "title": "Get_negative",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "negative"
       ],
@@ -2997,7 +3039,9 @@
         }
       ],
       "title": "Get_vae",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "vae"
       ],
@@ -3032,7 +3076,9 @@
         }
       ],
       "title": "Get_CLIP_Vision",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "CLIP_Vision"
       ],
@@ -3065,7 +3111,9 @@
         }
       ],
       "title": "Get_pose_video",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "pose_video"
       ],
@@ -3100,7 +3148,9 @@
         }
       ],
       "title": "Get_width",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "width"
       ],
@@ -3195,7 +3245,9 @@
         }
       ],
       "title": "Get_face_video",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "face_video"
       ],
@@ -3230,7 +3282,9 @@
         }
       ],
       "title": "Get_height",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "height"
       ],
@@ -3264,7 +3318,9 @@
         }
       ],
       "title": "Get_background_video",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "background_video"
       ],
@@ -3299,7 +3355,9 @@
         }
       ],
       "title": "Get_character_mask",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "character_mask"
       ],
@@ -3333,7 +3391,9 @@
         }
       ],
       "title": "Get_positive",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "positive"
       ],
@@ -3368,7 +3428,9 @@
         }
       ],
       "title": "Get_reference_image",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "reference_image"
       ],
@@ -3445,7 +3507,9 @@
         }
       ],
       "title": "Get_vae",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "vae"
       ],
@@ -3479,7 +3543,9 @@
         }
       ],
       "title": "Get_model",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "model"
       ],

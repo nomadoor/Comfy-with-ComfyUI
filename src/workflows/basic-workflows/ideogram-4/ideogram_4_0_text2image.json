@@ -129,6 +129,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "EmptyFlux2LatentImage"
       },
       "widgets_values": [
@@ -185,6 +186,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "DualModelGuider"
       },
       "widgets_values": [
@@ -216,6 +218,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPLoader"
       },
       "widgets_values": [
@@ -330,6 +333,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ConditioningZeroOut"
       },
       "widgets_values": []
@@ -445,6 +449,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "Ideogram4Scheduler"
       },
       "widgets_values": [
@@ -519,6 +524,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ResolutionSelector"
       },
       "widgets_values": [
@@ -683,6 +689,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CFGOverride"
       },
       "widgets_values": [

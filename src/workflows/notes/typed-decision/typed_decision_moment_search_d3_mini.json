@@ -29,6 +29,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "typed-decision",
         "Node name for S&R": "LoadTypedDecisionModel",
         "models": [
           {
@@ -78,6 +79,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadVideo"
       },
       "widgets_values": [
@@ -117,7 +119,9 @@
           "links": []
         }
       ],
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfy-core"
+      },
       "widgets_values": [
         "video/ComfyUI",
         "auto",
@@ -174,6 +178,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ConcatenateVideo"
       },
       "widgets_values": [
@@ -213,6 +218,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -278,6 +284,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "typed-decision",
         "Node name for S&R": "TypedDecisionMomentSearch"
       },
       "widgets_values": [

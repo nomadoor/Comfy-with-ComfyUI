@@ -444,6 +444,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "EmptyFlux2LatentImage"
       },
       "widgets_values": [
@@ -515,6 +516,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "SkipLayerGuidanceDiTSimple"
       },
       "widgets_values": [
@@ -621,6 +623,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "MOSSImageLayoutPrompt"
       },
       "widgets_values": [
@@ -684,6 +687,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CreateBoundingBoxes",
         "bboxGrid": false
       },

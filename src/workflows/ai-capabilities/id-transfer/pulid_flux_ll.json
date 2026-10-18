@@ -39,6 +39,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "VAEDecode"
       },
       "widgets_values": []
@@ -66,6 +67,7 @@
       ],
       "outputs": [],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewImage"
       },
       "widgets_values": []
@@ -96,6 +98,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_pulid_flux_ll",
         "Node name for S&R": "PulidFluxModelLoader"
       },
       "widgets_values": [
@@ -151,6 +154,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
@@ -196,6 +200,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "FluxGuidance"
       },
       "widgets_values": [
@@ -227,6 +232,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_pulid_flux_ll",
         "Node name for S&R": "PulidFluxInsightFaceLoader"
       },
       "widgets_values": [
@@ -260,6 +266,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_pulid_flux_ll",
         "Node name for S&R": "PulidFluxEvaClipLoader"
       },
       "widgets_values": [],
@@ -296,6 +303,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -329,6 +337,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "EmptyLatentImage"
       },
       "widgets_values": [
@@ -369,6 +378,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -402,6 +412,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "VAELoader"
       },
       "widgets_values": [
@@ -440,6 +451,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoraLoaderModelOnly"
       },
       "widgets_values": [
@@ -473,6 +485,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "ComfyUI-GGUF",
         "Node name for S&R": "UnetLoaderGGUF"
       },
       "widgets_values": [
@@ -507,6 +520,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "DualCLIPLoader"
       },
       "widgets_values": [
@@ -548,6 +562,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -612,6 +627,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_pulid_flux_ll",
         "Node name for S&R": "ApplyPulidFlux"
       },
       "widgets_values": [

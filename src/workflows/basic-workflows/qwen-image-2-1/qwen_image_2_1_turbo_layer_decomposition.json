@@ -162,6 +162,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "TextGenerate"
       },
       "widgets_values": [
@@ -221,6 +222,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "StringFormat"
       },
       "widgets_values": [
@@ -277,6 +279,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "EndLoop"
       },
       "widgets_values": [
@@ -360,6 +363,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "StartLoop"
       },
       "widgets_values": [
@@ -403,7 +407,9 @@
           "links": null
         }
       ],
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfy-core"
+      },
       "widgets_values": [
         "ComfyUI"
       ],
@@ -454,6 +460,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "GetImageSize"
       }
     },
@@ -641,6 +648,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "TextEncodeQwenImage21"
       },
       "widgets_values": [
@@ -823,6 +831,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PrimitiveInt"
       },
       "widgets_values": [
@@ -886,6 +895,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "StringFormat"
       },
       "widgets_values": [
@@ -985,6 +995,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ComfyMathExpression"
       },
       "widgets_values": [
@@ -1075,6 +1086,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "TextEncodeQwenImage21"
       },
       "widgets_values": [
@@ -1176,6 +1188,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ComfySwitchNode"
       },
       "widgets_values": [
@@ -1231,6 +1244,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ComfySwitchNode"
       },
       "widgets_values": [
@@ -1290,6 +1304,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "StringFormat"
       },
       "widgets_values": [
@@ -1872,6 +1887,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ManualSigmas"
       },
       "widgets_values": [
@@ -1906,6 +1922,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "KSamplerSelect"
       },
       "widgets_values": [
@@ -1951,6 +1968,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "BasicGuider"
       }
     },
@@ -1988,6 +2006,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "RandomNoise"
       },
       "widgets_values": [
@@ -2055,6 +2074,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "SamplerCustomAdvanced"
       }
     },
@@ -2090,6 +2110,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoraLoaderModelOnly",
         "models": [
           {
@@ -2135,6 +2156,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ManualSigmas"
       },
       "widgets_values": [
@@ -2169,6 +2191,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "KSamplerSelect"
       },
       "widgets_values": [
@@ -2234,6 +2257,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "SamplerCustomAdvanced"
       }
     },
@@ -2273,6 +2297,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "BasicGuider"
       }
     },
@@ -2310,6 +2335,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "RandomNoise"
       },
       "widgets_values": [
@@ -3025,6 +3051,7 @@
               }
             ],
             "properties": {
+              "cnr_id": "comfy-core",
               "Node name for S&R": "GrowMask"
             },
             "widgets_values": [
@@ -3082,6 +3109,7 @@
               }
             ],
             "properties": {
+              "cnr_id": "comfy-core",
               "Node name for S&R": "ImageCompositeMasked"
             },
             "widgets_values": [
@@ -3131,6 +3159,7 @@
               }
             ],
             "properties": {
+              "cnr_id": "comfy-core",
               "Node name for S&R": "EmptyImage"
             },
             "widgets_values": [
@@ -3179,6 +3208,7 @@
               }
             ],
             "properties": {
+              "cnr_id": "comfy-core",
               "Node name for S&R": "InvertMask"
             }
           },
@@ -3221,6 +3251,7 @@
               }
             ],
             "properties": {
+              "cnr_id": "comfy-core",
               "Node name for S&R": "SplitImageWithAlpha"
             }
           },
@@ -3262,6 +3293,7 @@
               }
             ],
             "properties": {
+              "cnr_id": "comfy-core",
               "Node name for S&R": "ColorToRGBInt"
             },
             "widgets_values": [

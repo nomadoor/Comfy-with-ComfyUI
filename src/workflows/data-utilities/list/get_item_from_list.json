@@ -256,6 +256,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "GetItemFromList"
       },
       "widgets_values": [

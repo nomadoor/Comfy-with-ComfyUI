@@ -207,6 +207,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ModelAttentionBackend"
       },
       "widgets_values": [
@@ -584,6 +585,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ResizeImageMaskNode"
       },
       "widgets_values": [
@@ -683,6 +685,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "VAEEncode"
       },
       "color": "#232",
@@ -923,6 +926,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "MiniMaxH3ReferenceToVideo"
       },
       "widgets_values": [
@@ -1035,6 +1039,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "GetImageSize"
       }
     },
@@ -1070,6 +1075,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "GrowMask"
       },
       "widgets_values": [
@@ -1164,6 +1170,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LTXVSeparateAVLatent"
       },
       "color": "#232",
@@ -1219,6 +1226,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "EmptyMiniMaxH3LatentAV"
       },
       "widgets_values": [
@@ -1334,6 +1342,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ResizeImageMaskNode"
       },
       "widgets_values": [
@@ -1385,6 +1394,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LTXVConcatAVLatent"
       }
     },
@@ -1424,6 +1434,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "SetLatentNoiseMask"
       },
       "color": "#232",
@@ -1459,6 +1470,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -1533,6 +1545,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
         "Node name for S&R": "VHS_LoadVideo"
       },
       "widgets_values": {
@@ -1619,6 +1632,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "MaskPreview"
       },
       "widgets_values": [],
@@ -1650,6 +1664,7 @@
       ],
       "title": "Float: Duration (sec)",
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PrimitiveFloat"
       },
       "widgets_values": [
@@ -1748,6 +1763,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [

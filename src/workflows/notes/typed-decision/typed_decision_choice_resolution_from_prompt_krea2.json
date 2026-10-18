@@ -419,6 +419,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ConditioningZeroOut"
       }
     },
@@ -496,6 +497,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "typed-decision",
         "Node name for S&R": "TypedDecision"
       },
       "widgets_values": [
@@ -540,6 +542,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "typed-decision",
         "Node name for S&R": "LoadTypedDecisionModel",
         "models": [
           {
@@ -590,6 +593,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PrimitiveStringMultiline"
       },
       "widgets_values": [
@@ -638,6 +642,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "GetItemFromList"
       },
       "widgets_values": [
@@ -686,6 +691,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "GetItemFromList"
       },
       "widgets_values": [
@@ -745,6 +751,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CreateList"
       }
     },
@@ -798,6 +805,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CreateList"
       }
     },
@@ -827,6 +835,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PrimitiveInt"
       },
       "widgets_values": [
@@ -864,6 +873,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PrimitiveInt"
       },
       "widgets_values": [
@@ -901,6 +911,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PrimitiveInt"
       },
       "widgets_values": [
@@ -941,6 +952,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewAny"
       },
       "widgets_values": [],
@@ -975,6 +987,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewAny"
       },
       "widgets_values": [],

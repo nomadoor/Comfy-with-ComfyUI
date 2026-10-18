@@ -24,6 +24,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewImage"
       },
       "color": "#232",
@@ -51,6 +52,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewImage"
       }
     },
@@ -90,6 +92,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -136,6 +139,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-lama-remover",
         "Node name for S&R": "LamaRemover"
       },
       "widgets_values": [

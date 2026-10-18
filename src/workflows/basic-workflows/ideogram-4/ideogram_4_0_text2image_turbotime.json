@@ -129,6 +129,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "EmptyFlux2LatentImage"
       },
       "widgets_values": [
@@ -162,6 +163,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPLoader"
       },
       "widgets_values": [
@@ -341,6 +343,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ResolutionSelector"
       },
       "widgets_values": [
@@ -390,6 +393,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CFGGuider"
       },
       "widgets_values": [
@@ -474,6 +478,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ConditioningZeroOut"
       },
       "widgets_values": []
@@ -598,6 +603,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "Ideogram4Scheduler"
       },
       "widgets_values": [
@@ -662,6 +668,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoraLoaderModelOnly"
       },
       "widgets_values": [

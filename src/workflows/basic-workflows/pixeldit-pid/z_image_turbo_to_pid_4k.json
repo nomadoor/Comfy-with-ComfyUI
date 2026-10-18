@@ -397,6 +397,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ComfyMathExpression"
       },
       "widgets_values": [
@@ -452,6 +453,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ComfyMathExpression"
       },
       "widgets_values": [
@@ -664,6 +666,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "EmptyChromaRadianceLatentImage"
       },
       "widgets_values": [
@@ -839,6 +842,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ModelSamplingSD3"
       },
       "widgets_values": [
@@ -868,6 +872,7 @@
       ],
       "outputs": [],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewImage"
       },
       "widgets_values": []
@@ -931,6 +936,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PiDConditioning"
       },
       "widgets_values": [
@@ -974,6 +980,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ResolutionSelector"
       },
       "widgets_values": [
@@ -1112,6 +1119,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ContextWindowsManual"
       },
       "widgets_values": [

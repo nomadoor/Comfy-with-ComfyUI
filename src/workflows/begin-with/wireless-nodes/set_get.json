@@ -62,7 +62,9 @@
         }
       ],
       "title": "Get_A",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "A"
       ],
@@ -128,6 +130,7 @@
       ],
       "title": "Set_A",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "A"
       },
       "widgets_values": [
@@ -161,7 +164,9 @@
         }
       ],
       "title": "Get_B",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "B"
       ],
@@ -198,6 +203,7 @@
       ],
       "title": "Set_B",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "B"
       },
       "widgets_values": [

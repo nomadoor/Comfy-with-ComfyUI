@@ -33,6 +33,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -71,6 +72,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-wd14-tagger",
         "Node name for S&R": "WD14Tagger|pysssss"
       },
       "widgets_values": [

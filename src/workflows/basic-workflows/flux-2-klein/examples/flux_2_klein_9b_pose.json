@@ -456,6 +456,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_controlnet_aux",
         "Node name for S&R": "DWPreprocessor"
       },
       "widgets_values": [

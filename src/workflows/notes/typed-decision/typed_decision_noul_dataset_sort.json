@@ -33,6 +33,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewAny"
       },
       "widgets_values": [],
@@ -63,6 +64,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "typed-decision",
         "Node name for S&R": "LoadTypedDecisionModel",
         "models": [
           {
@@ -156,6 +158,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "typed-decision",
         "Node name for S&R": "TypedDecision"
       },
       "widgets_values": [
@@ -204,6 +207,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImageDataSetFromFolder"
       },
       "widgets_values": [
@@ -259,6 +263,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ComfySwitchNode"
       },
       "widgets_values": [
@@ -304,7 +309,9 @@
           "links": null
         }
       ],
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfy-core"
+      },
       "widgets_values": [
         "ComfyUI"
       ],
@@ -337,6 +344,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PrimitiveString"
       },
       "widgets_values": [
@@ -371,6 +379,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PrimitiveString"
       },
       "widgets_values": [

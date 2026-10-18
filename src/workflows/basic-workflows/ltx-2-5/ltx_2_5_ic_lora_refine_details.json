@@ -417,6 +417,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ConditioningZeroOut"
       }
     },
@@ -1115,6 +1116,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "VideoTemporalCrop"
       },
       "widgets_values": [
@@ -1183,6 +1185,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "GetVideoComponents"
       },
       "color": "#233",
@@ -1322,6 +1325,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadVideo"
       },
       "widgets_values": [
@@ -1397,6 +1401,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "ComfyUI-LTXVideo",
         "Node name for S&R": "LTXVTiledFusionSampler"
       },
       "widgets_values": [
