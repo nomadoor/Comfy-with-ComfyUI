@@ -8581,6 +8581,22 @@
       "bytes": 55168
     }
   },
+  "data-utilities/resize-crop-pad/crop_image.png": {
+    "key": "images/7509e7e76acdca50.webp",
+    "width": 1879,
+    "height": 907,
+    "type": "image/webp",
+    "bytes": 45300,
+    "source": "caa71efe029f33f7"
+  },
+  "data-utilities/resize-crop-pad/crop_to_half_size.png": {
+    "key": "images/fe90408fbd635a26.webp",
+    "width": 1755,
+    "height": 631,
+    "type": "image/webp",
+    "bytes": 30868,
+    "source": "74431235602074db"
+  },
   "data-utilities/resize-crop-pad/legacy_gyazo_02cf6bd2a573dc15dff4799c94b15a0d.png": {
     "key": "images/4b49ad6a46c38f07.webp",
     "width": 1593,
