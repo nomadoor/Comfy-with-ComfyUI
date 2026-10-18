@@ -3,7 +3,7 @@
 //
 //   --staged    record today for the staged workflows whose build changed (run by .githooks/pre-commit)
 //   --backfill  rebuild the whole file from the git history (first-parent), under the same rule
-//   --check     fail when a workflow has no date or a date names a file that no longer exists
+//   --check     fail when a committed workflow has no date or a date names a file that no longer exists
 //
 // A change to node metadata only (`properties.models`, `cnr_id`, `ver`, `aux_id`) keeps the old date;
 // see scripts/lib/workflow-dates.mjs.
@@ -13,6 +13,7 @@ import { listFiles } from "./lib/files.mjs";
 import { apply, parseNameStatus, readDates, writeDates } from "./lib/workflow-dates.mjs";
 
 const WORKFLOW_ROOT = "src/workflows";
+const isWorkflowPath = (p) => p.startsWith(`${WORKFLOW_ROOT}/`) && p.endsWith(".json");
 
 const git = (args) => {
   const result = spawnSync("git", args, { encoding: "utf8", maxBuffer: 1 << 28 });
@@ -63,9 +64,15 @@ const backfill = () => {
 
 const check = () => {
   const dates = readDates();
-  const files = listFiles(path.resolve(WORKFLOW_ROOT), { extensions: [".json"] }).map((f) =>
-    path.relative(path.resolve(WORKFLOW_ROOT), f).split(path.sep).join("/"),
-  );
+  // Committed workflows only: a new one gets its date when it is committed, so an uncommitted file is
+  // not missing one yet. Outside a git work tree, every file on disk.
+  const tree = spawnSync("git", ["ls-tree", "-r", "--name-only", "HEAD", "--", WORKFLOW_ROOT], { encoding: "utf8" });
+  const files =
+    tree.status === 0
+      ? tree.stdout.split("\n").filter(isWorkflowPath).map((p) => p.slice(WORKFLOW_ROOT.length + 1))
+      : listFiles(path.resolve(WORKFLOW_ROOT), { extensions: [".json"] }).map((f) =>
+          path.relative(path.resolve(WORKFLOW_ROOT), f).split(path.sep).join("/"),
+        );
   const failures = [];
   for (const key of files) if (!dates[key]) failures.push(`${key}: no date in src/_data/workflowDates.json (commit it, or run scripts/workflow-dates.mjs --staged)`);
   const present = new Set(files);
