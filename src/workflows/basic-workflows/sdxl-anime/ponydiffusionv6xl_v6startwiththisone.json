@@ -168,7 +168,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "CheckpointLoaderSimple"
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "models": [
+          {
+            "name": "ponyDiffusionV6XL_v6StartWithThisOne.safetensors",
+            "url": "https://civitai.com/api/download/models/290640",
+            "directory": "checkpoints"
+          }
+        ]
       },
       "widgets_values": [
         "ponyDiffusionV6XL_v6StartWithThisOne.safetensors"

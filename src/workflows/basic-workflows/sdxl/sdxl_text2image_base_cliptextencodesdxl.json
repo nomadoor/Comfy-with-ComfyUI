@@ -219,7 +219,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "CheckpointLoaderSimple"
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "models": [
+          {
+            "name": "sd_xl_base_1.0_0.9vae.safetensors",
+            "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0_0.9vae.safetensors",
+            "directory": "checkpoints"
+          }
+        ]
       },
       "widgets_values": [
         "sd_xl_base_1.0_0.9vae.safetensors"

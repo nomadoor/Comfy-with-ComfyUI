@@ -28,7 +28,14 @@
       ],
       "properties": {
         "cnr_id": "comfyui_ipadapter_plus",
-        "Node name for S&R": "IPAdapterModelLoader"
+        "Node name for S&R": "IPAdapterModelLoader",
+        "models": [
+          {
+            "name": "ip-adapter_sdxl_vit-h.bin",
+            "url": "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl_vit-h.bin",
+            "directory": "ipadapter"
+          }
+        ]
       },
       "widgets_values": [
         "ip-adapter_sdxl_vit-h.bin"
@@ -491,7 +498,14 @@
       ],
       "properties": {
         "cnr_id": "comfyui-inpaint-nodes",
-        "Node name for S&R": "INPAINT_LoadFooocusInpaint"
+        "Node name for S&R": "INPAINT_LoadFooocusInpaint",
+        "models": [
+          {
+            "name": "fooocus_inpaint_head.pth",
+            "url": "https://huggingface.co/lllyasviel/fooocus_inpaint/resolve/main/fooocus_inpaint_head.pth",
+            "directory": "inpaint"
+          }
+        ]
       },
       "widgets_values": [
         "fooocus_inpaint_head.pth",
@@ -640,7 +654,14 @@
       ],
       "properties": {
         "cnr_id": "comfyui-inpaint-nodes",
-        "Node name for S&R": "INPAINT_LoadInpaintModel"
+        "Node name for S&R": "INPAINT_LoadInpaintModel",
+        "models": [
+          {
+            "name": "big-lama.pt",
+            "url": "https://github.com/Sanster/models/releases/download/add_big_lama/big-lama.pt",
+            "directory": "inpaint"
+          }
+        ]
       },
       "widgets_values": [
         "big-lama.pt"

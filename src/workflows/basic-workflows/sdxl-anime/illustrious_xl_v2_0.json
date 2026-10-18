@@ -132,7 +132,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "CheckpointLoaderSimple"
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "models": [
+          {
+            "name": "Illustrious-XL-v2.0.safetensors",
+            "url": "https://huggingface.co/OnomaAIResearch/Illustrious-XL-v2.0/resolve/main/Illustrious-XL-v2.0.safetensors",
+            "directory": "checkpoints"
+          }
+        ]
       },
       "widgets_values": [
         "Illustrious-XL-v2.0.safetensors"

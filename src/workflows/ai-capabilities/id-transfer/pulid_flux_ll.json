@@ -99,7 +99,14 @@
       ],
       "properties": {
         "cnr_id": "comfyui_pulid_flux_ll",
-        "Node name for S&R": "PulidFluxModelLoader"
+        "Node name for S&R": "PulidFluxModelLoader",
+        "models": [
+          {
+            "name": "pulid_flux_v0.9.1.safetensors",
+            "url": "https://huggingface.co/guozinan/PuLID/resolve/main/pulid_flux_v0.9.1.safetensors",
+            "directory": "pulid"
+          }
+        ]
       },
       "widgets_values": [
         "pulid_flux_v0.9.1.safetensors"
@@ -486,7 +493,14 @@
       ],
       "properties": {
         "cnr_id": "ComfyUI-GGUF",
-        "Node name for S&R": "UnetLoaderGGUF"
+        "Node name for S&R": "UnetLoaderGGUF",
+        "models": [
+          {
+            "name": "flux1-dev-Q4_0.gguf",
+            "url": "https://huggingface.co/city96/FLUX.1-dev-gguf/resolve/main/flux1-dev-Q4_0.gguf",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "FLUX_gguf\\flux1-dev-Q4_0.gguf"
@@ -526,6 +540,11 @@
           {
             "name": "clip_l.safetensors",
             "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors",
+            "directory": "text_encoders"
+          },
+          {
+            "name": "t5xxl_fp16.safetensors",
+            "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors",
             "directory": "text_encoders"
           }
         ]

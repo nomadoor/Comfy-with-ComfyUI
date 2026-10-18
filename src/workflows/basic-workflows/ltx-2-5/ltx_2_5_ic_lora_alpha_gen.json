@@ -668,7 +668,14 @@
       "properties": {
         "Node name for S&R": "LoraLoaderModelOnly",
         "cnr_id": "comfy-core",
-        "ver": "0.33.0"
+        "ver": "0.33.0",
+        "models": [
+          {
+            "name": "ltx-2.5-22b-ic-lora-alpha-gen-0.9.safetensors",
+            "url": "https://huggingface.co/Lightricks/LTX-2.5-22b-IC-LoRA-Alpha-Gen/resolve/main/ltx-2.5-22b-ic-lora-alpha-gen-0.9.safetensors",
+            "directory": "loras"
+          }
+        ]
       },
       "widgets_values": [
         "ltx-2.5-22b-ic-lora-alpha-gen-0.9.safetensors",

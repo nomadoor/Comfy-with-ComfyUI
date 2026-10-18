@@ -276,7 +276,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.76",
-        "Node name for S&R": "ControlNetLoader"
+        "Node name for S&R": "ControlNetLoader",
+        "models": [
+          {
+            "name": "control_v11p_sd15_canny.pth",
+            "url": "https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_canny.pth",
+            "directory": "controlnet"
+          }
+        ]
       },
       "widgets_values": [
         "ControlNet-v1-1\\control_v11p_sd15_canny.pth"

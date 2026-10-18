@@ -354,7 +354,14 @@
       "properties": {
         "cnr_id": "comfyui_ipadapter_plus",
         "ver": "a0f451a5113cf9becb0847b92884cb10cbdec0ef",
-        "Node name for S&R": "IPAdapterModelLoader"
+        "Node name for S&R": "IPAdapterModelLoader",
+        "models": [
+          {
+            "name": "ip-adapter-plus-face_sd15.safetensors",
+            "url": "https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus-face_sd15.safetensors",
+            "directory": "ipadapter"
+          }
+        ]
       },
       "widgets_values": [
         "ip-adapter-plus-face_sd15.safetensors"

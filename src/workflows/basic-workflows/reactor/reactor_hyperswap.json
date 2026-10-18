@@ -142,7 +142,14 @@
       ],
       "properties": {
         "cnr_id": "comfyui-reactor",
-        "Node name for S&R": "ReActorFaceSwap"
+        "Node name for S&R": "ReActorFaceSwap",
+        "models": [
+          {
+            "name": "hyperswap_1a_256.onnx",
+            "url": "https://huggingface.co/facefusion/models-3.3.0/resolve/main/hyperswap_1a_256.onnx",
+            "directory": "hyperswap"
+          }
+        ]
       },
       "widgets_values": [
         true,

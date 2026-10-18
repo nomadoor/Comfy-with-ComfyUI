@@ -38,6 +38,11 @@
             "name": "clip_l.safetensors",
             "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors",
             "directory": "text_encoders"
+          },
+          {
+            "name": "t5xxl_fp8_e4m3fn.safetensors",
+            "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors",
+            "directory": "text_encoders"
           }
         ]
       },
@@ -246,7 +251,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.76",
-        "Node name for S&R": "CLIPVisionLoader"
+        "Node name for S&R": "CLIPVisionLoader",
+        "models": [
+          {
+            "name": "sigclip_vision_patch14_384.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/sigclip_vision_384/resolve/main/sigclip_vision_patch14_384.safetensors",
+            "directory": "clip_vision"
+          }
+        ]
       },
       "widgets_values": [
         "sigclip_vision_patch14_384.safetensors"
@@ -328,7 +340,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.76",
-        "Node name for S&R": "StyleModelLoader"
+        "Node name for S&R": "StyleModelLoader",
+        "models": [
+          {
+            "name": "flux1-redux-dev.safetensors",
+            "url": "https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/resolve/main/flux1-redux-dev.safetensors",
+            "directory": "style_models"
+          }
+        ]
       },
       "widgets_values": [
         "flux1-redux-dev.safetensors"
@@ -406,7 +425,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.39",
-        "Node name for S&R": "UNETLoader"
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "flux1-dev-fp8.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "Flux.1\\flux1-dev-fp8.safetensors",

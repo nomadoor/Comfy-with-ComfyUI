@@ -80,6 +80,11 @@
             "name": "clip_l.safetensors",
             "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors",
             "directory": "text_encoders"
+          },
+          {
+            "name": "t5xxl_fp8_e4m3fn.safetensors",
+            "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors",
+            "directory": "text_encoders"
           }
         ]
       },
@@ -240,7 +245,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.39",
-        "Node name for S&R": "UNETLoader"
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "flux1-schnell-fp8.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "Flux.1\\flux1-schnell-fp8.safetensors",

@@ -516,7 +516,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.44",
-        "Node name for S&R": "VAELoader"
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "sdxl_vae.safetensors",
+            "url": "https://huggingface.co/stabilityai/sdxl-vae/resolve/main/sdxl_vae.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "sdxl_vae.safetensors"
@@ -572,6 +579,11 @@
           {
             "name": "v1-5-pruned-emaonly-fp16.safetensors",
             "url": "https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive/resolve/main/v1-5-pruned-emaonly-fp16.safetensors?download=true",
+            "directory": "checkpoints"
+          },
+          {
+            "name": "RealVisXL_V4.0.safetensors",
+            "url": "https://huggingface.co/SG161222/RealVisXL_V4.0/resolve/main/RealVisXL_V4.0.safetensors",
             "directory": "checkpoints"
           }
         ]

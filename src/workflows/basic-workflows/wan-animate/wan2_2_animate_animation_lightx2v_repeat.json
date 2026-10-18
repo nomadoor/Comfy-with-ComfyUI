@@ -202,7 +202,24 @@
       "properties": {
         "aux_id": "kijai/ComfyUI-WanAnimatePreprocess",
         "ver": "e63d6e71ae4c271f3f81211a7ca7f87607b7e50d",
-        "Node name for S&R": "OnnxDetectionModelLoader"
+        "Node name for S&R": "OnnxDetectionModelLoader",
+        "models": [
+          {
+            "name": "vitpose_h_wholebody_model.onnx",
+            "url": "https://huggingface.co/Kijai/vitpose_comfy/resolve/main/onnx/vitpose_h_wholebody_model.onnx",
+            "directory": "detection"
+          },
+          {
+            "name": "vitpose_h_wholebody_data.bin",
+            "url": "https://huggingface.co/Kijai/vitpose_comfy/resolve/main/onnx/vitpose_h_wholebody_data.bin",
+            "directory": "detection"
+          },
+          {
+            "name": "yolov10m.onnx",
+            "url": "https://huggingface.co/Wan-AI/Wan2.2-Animate-14B/resolve/main/process_checkpoint/det/yolov10m.onnx",
+            "directory": "detection"
+          }
+        ]
       },
       "widgets_values": [
         "vitpose_h_wholebody_model.onnx",

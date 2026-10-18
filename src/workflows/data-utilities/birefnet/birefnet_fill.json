@@ -31,7 +31,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.26.0",
-        "Node name for S&R": "LoadBackgroundRemovalModel"
+        "Node name for S&R": "LoadBackgroundRemovalModel",
+        "models": [
+          {
+            "name": "birefnet.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/BiRefNet/resolve/main/background_removal/birefnet.safetensors",
+            "directory": "background_removal"
+          }
+        ]
       },
       "widgets_values": [
         "birefnet.safetensors"

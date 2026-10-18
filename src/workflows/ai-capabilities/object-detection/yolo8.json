@@ -36,7 +36,14 @@
       "properties": {
         "cnr_id": "comfyui-impact-subpack",
         "ver": "1.3.5",
-        "Node name for S&R": "UltralyticsDetectorProvider"
+        "Node name for S&R": "UltralyticsDetectorProvider",
+        "models": [
+          {
+            "name": "person_yolov8m-seg.pt",
+            "url": "https://huggingface.co/Bingsu/adetailer/resolve/main/person_yolov8m-seg.pt",
+            "directory": "ultralytics/segm"
+          }
+        ]
       },
       "widgets_values": [
         "segm/person_yolov8m-seg.pt"

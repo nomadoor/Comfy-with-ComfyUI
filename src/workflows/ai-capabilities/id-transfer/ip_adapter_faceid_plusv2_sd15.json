@@ -511,7 +511,14 @@
       ],
       "properties": {
         "cnr_id": "comfyui_ipadapter_plus",
-        "Node name for S&R": "IPAdapterModelLoader"
+        "Node name for S&R": "IPAdapterModelLoader",
+        "models": [
+          {
+            "name": "ip-adapter-faceid-plusv2_sd15.bin",
+            "url": "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sd15.bin",
+            "directory": "ipadapter"
+          }
+        ]
       },
       "widgets_values": [
         "ip-adapter-faceid-plusv2_sd15.bin"

@@ -130,7 +130,14 @@
       ],
       "properties": {
         "cnr_id": "comfy-core",
-        "Node name for S&R": "CheckpointLoaderSimple"
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "models": [
+          {
+            "name": "dreamshaper_8.safetensors",
+            "url": "https://civitai.com/api/download/models/128713",
+            "directory": "checkpoints"
+          }
+        ]
       },
       "widgets_values": [
         "📷-v1.x\\dreamshaper_8.safetensors"

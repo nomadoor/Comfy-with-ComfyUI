@@ -263,7 +263,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.29",
-        "Node name for S&R": "CheckpointLoaderSimple"
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "models": [
+          {
+            "name": "meinamix_meinaV11.safetensors",
+            "url": "https://civitai.com/api/download/models/119057",
+            "directory": "checkpoints"
+          }
+        ]
       },
       "widgets_values": [
         "😎-v1.x\\meinamix_meinaV11.safetensors"

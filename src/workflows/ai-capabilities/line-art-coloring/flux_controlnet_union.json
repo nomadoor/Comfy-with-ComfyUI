@@ -157,6 +157,11 @@
             "name": "clip_l.safetensors",
             "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors",
             "directory": "text_encoders"
+          },
+          {
+            "name": "t5xxl_fp8_e4m3fn.safetensors",
+            "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors",
+            "directory": "text_encoders"
           }
         ]
       },
@@ -650,7 +655,14 @@
       "properties": {
         "cnr_id": "ComfyUI-GGUF",
         "ver": "02dac863ee1b65852d39ce6b9180bf5d9bc8a636",
-        "Node name for S&R": "UnetLoaderGGUF"
+        "Node name for S&R": "UnetLoaderGGUF",
+        "models": [
+          {
+            "name": "flux1-dev-Q4_0.gguf",
+            "url": "https://huggingface.co/city96/FLUX.1-dev-gguf/resolve/main/flux1-dev-Q4_0.gguf",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "FLUX_gguf\\flux1-dev-Q4_0.gguf"

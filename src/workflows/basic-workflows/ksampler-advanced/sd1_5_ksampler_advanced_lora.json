@@ -432,7 +432,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.76",
-        "Node name for S&R": "LoraLoader"
+        "Node name for S&R": "LoraLoader",
+        "models": [
+          {
+            "name": "PX64NOCAP_epoch_10.safetensors",
+            "url": "https://civitai.com/api/download/models/636318",
+            "directory": "loras"
+          }
+        ]
       },
       "widgets_values": [
         "PX64NOCAP_epoch_10.safetensors",

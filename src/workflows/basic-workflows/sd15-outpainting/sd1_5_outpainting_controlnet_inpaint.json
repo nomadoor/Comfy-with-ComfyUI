@@ -114,7 +114,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.76",
-        "Node name for S&R": "ControlNetLoader"
+        "Node name for S&R": "ControlNetLoader",
+        "models": [
+          {
+            "name": "control_v11p_sd15_inpaint_fp16.safetensors",
+            "url": "https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_inpaint_fp16.safetensors",
+            "directory": "controlnet"
+          }
+        ]
       },
       "widgets_values": [
         "control_v11p_sd15_inpaint_fp16.safetensors"

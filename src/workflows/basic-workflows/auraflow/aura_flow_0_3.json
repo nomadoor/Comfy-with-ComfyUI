@@ -237,7 +237,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "CheckpointLoaderSimple"
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "models": [
+          {
+            "name": "aura_flow_0.3.safetensors",
+            "url": "https://huggingface.co/fal/AuraFlow-v0.3/resolve/main/aura_flow_0.3.safetensors",
+            "directory": "checkpoints"
+          }
+        ]
       },
       "widgets_values": [
         "AuraFlow\\aura_flow_0.3.safetensors"
