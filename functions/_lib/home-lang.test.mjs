@@ -2,11 +2,11 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { pickHomeLang } from "./home-lang.mjs";
 
-test("no header or an unsupported language goes to the Japanese home", () => {
-  assert.equal(pickHomeLang(""), "ja");
-  assert.equal(pickHomeLang(undefined), "ja");
-  assert.equal(pickHomeLang("fr-FR,fr;q=0.9,de;q=0.8"), "ja");
-  assert.equal(pickHomeLang("*"), "ja");
+test("no header or an unsupported language goes to the English home", () => {
+  assert.equal(pickHomeLang(""), "en");
+  assert.equal(pickHomeLang(undefined), "en");
+  assert.equal(pickHomeLang("fr-FR,fr;q=0.9,de;q=0.8"), "en");
+  assert.equal(pickHomeLang("*"), "en");
 });
 
 test("the first supported language in the list wins", () => {

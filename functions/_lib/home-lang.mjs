@@ -1,7 +1,8 @@
 // Which language home `/` sends a visitor to, from the Accept-Language header.
 // Kept free of Pages types so `node --test` can run it.
 export const HOME_LANGS = ["ja", "en", "zh"];
-export const DEFAULT_HOME_LANG = "ja";
+// Visitors who list none of these (other languages, crawlers) read English best.
+export const DEFAULT_HOME_LANG = "en";
 
 export function pickHomeLang(acceptLanguage = "") {
   const ranked = String(acceptLanguage)
@@ -19,6 +20,5 @@ export function pickHomeLang(acceptLanguage = "") {
     const primary = tag.split("-")[0];
     if (HOME_LANGS.includes(primary)) return primary;
   }
-  // No supported language listed (crawlers send none): the default home, as before.
   return DEFAULT_HOME_LANG;
 }
