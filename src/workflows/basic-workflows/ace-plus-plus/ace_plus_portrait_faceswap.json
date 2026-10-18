@@ -151,7 +151,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.76",
-        "Node name for S&R": "LoraLoaderModelOnly"
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "models": [
+          {
+            "name": "comfyui_portrait_lora64.safetensors",
+            "url": "https://huggingface.co/ali-vilab/ACE_Plus/resolve/main/portrait/comfyui_portrait_lora64.safetensors",
+            "directory": "loras"
+          }
+        ]
       },
       "widgets_values": [
         "ACE_Plus\\comfyui_portrait_lora64.safetensors",
@@ -187,7 +194,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.39",
-        "Node name for S&R": "UNETLoader"
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "FLUX.1-Fill-dev_fp8.safetensors",
+            "url": "https://huggingface.co/1038lab/FLUX.1-Fill-dev_fp8/resolve/main/FLUX.1-Fill-dev_fp8.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "Flux.1\\FLUX.1-Fill-dev_fp8.safetensors",

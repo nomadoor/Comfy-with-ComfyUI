@@ -191,7 +191,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "VAELoader"
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "wan_2.1_vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "wan_2.1_vae.safetensors"
@@ -317,7 +324,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.76",
-        "Node name for S&R": "LoraLoaderModelOnly"
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "models": [
+          {
+            "name": "Wan21_T2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors",
+            "url": "https://huggingface.co/lightx2v/Wan2.1-T2V-14B-StepDistill-CfgDistill-Lightx2v/resolve/main/loras/Wan21_T2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors",
+            "directory": "loras"
+          }
+        ]
       },
       "widgets_values": [
         "Wan2.1\\Wan21_T2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors",

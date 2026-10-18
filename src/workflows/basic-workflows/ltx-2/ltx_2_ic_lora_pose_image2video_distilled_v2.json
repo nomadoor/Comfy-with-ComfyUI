@@ -682,6 +682,11 @@
             "name": "ltx-2-19b-distilled-lora-384.safetensors",
             "url": "https://huggingface.co/Lightricks/LTX-2/resolve/main/ltx-2-19b-distilled-lora-384.safetensors",
             "directory": "loras"
+          },
+          {
+            "name": "ltx-2-19b-ic-lora-pose-control.safetensors",
+            "url": "https://huggingface.co/Lightricks/LTX-2-19b-IC-LoRA-Pose-Control/resolve/main/ltx-2-19b-ic-lora-pose-control.safetensors",
+            "directory": "loras"
           }
         ]
       },
@@ -1824,6 +1829,11 @@
           {
             "name": "gemma_3_12B_it.safetensors",
             "url": "https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/text_encoders/gemma_3_12B_it.safetensors",
+            "directory": "text_encoders"
+          },
+          {
+            "name": "gemma_3_12B_it_fp8_scaled.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/text_encoders/gemma_3_12B_it_fp8_scaled.safetensors",
             "directory": "text_encoders"
           }
         ]

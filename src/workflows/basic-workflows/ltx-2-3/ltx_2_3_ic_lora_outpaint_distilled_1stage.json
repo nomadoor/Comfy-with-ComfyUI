@@ -584,6 +584,11 @@
             "name": "ltx-2-19b-distilled-lora-384.safetensors",
             "url": "https://huggingface.co/Lightricks/LTX-2/resolve/main/ltx-2-19b-distilled-lora-384.safetensors",
             "directory": "loras"
+          },
+          {
+            "name": "ltx-2.3-22b-distilled-lora-384.safetensors",
+            "url": "https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-22b-distilled-lora-384.safetensors",
+            "directory": "loras"
           }
         ]
       },
@@ -646,6 +651,11 @@
             "name": "ltx-2-19b-dev-fp8.safetensors",
             "url": "https://huggingface.co/Lightricks/LTX-2/resolve/main/ltx-2-19b-dev-fp8.safetensors",
             "directory": "checkpoints"
+          },
+          {
+            "name": "ltx-2.3-22b-dev-fp8.safetensors",
+            "url": "https://huggingface.co/Lightricks/LTX-2.3-fp8/resolve/main/ltx-2.3-22b-dev-fp8.safetensors",
+            "directory": "checkpoints"
           }
         ]
       },
@@ -694,6 +704,11 @@
           {
             "name": "ltx-2-19b-dev-fp8.safetensors",
             "url": "https://huggingface.co/Lightricks/LTX-2/resolve/main/ltx-2-19b-dev-fp8.safetensors",
+            "directory": "checkpoints"
+          },
+          {
+            "name": "ltx-2.3-22b-dev-fp8.safetensors",
+            "url": "https://huggingface.co/Lightricks/LTX-2.3-fp8/resolve/main/ltx-2.3-22b-dev-fp8.safetensors",
             "directory": "checkpoints"
           }
         ]
@@ -750,6 +765,16 @@
             "name": "gemma_3_12B_it.safetensors",
             "url": "https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/text_encoders/gemma_3_12B_it.safetensors",
             "directory": "text_encoders"
+          },
+          {
+            "name": "gemma_3_12B_it_fp8_scaled.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/text_encoders/gemma_3_12B_it_fp8_scaled.safetensors",
+            "directory": "text_encoders"
+          },
+          {
+            "name": "ltx-2.3-22b-dev-fp8.safetensors",
+            "url": "https://huggingface.co/Lightricks/LTX-2.3-fp8/resolve/main/ltx-2.3-22b-dev-fp8.safetensors",
+            "directory": "checkpoints"
           }
         ]
       },
@@ -1171,7 +1196,14 @@
       "properties": {
         "cnr_id": "ComfyUI-LTXVideo",
         "ver": "49add6dddb2e1bb2d23bc509a9fac3edd2834961",
-        "Node name for S&R": "LTXICLoRALoaderModelOnly"
+        "Node name for S&R": "LTXICLoRALoaderModelOnly",
+        "models": [
+          {
+            "name": "ltx-2.3-22b-ic-lora-outpaint.safetensors",
+            "url": "https://huggingface.co/oumoumad/LTX-2.3-22b-IC-LoRA-Outpaint/resolve/main/ltx-2.3-22b-ic-lora-outpaint.safetensors",
+            "directory": "loras"
+          }
+        ]
       },
       "widgets_values": [
         "LTX-2\\ltx-2.3-22b-ic-lora-outpaint.safetensors",

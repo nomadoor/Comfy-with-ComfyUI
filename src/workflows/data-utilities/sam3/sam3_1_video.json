@@ -84,7 +84,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.19.3",
-        "Node name for S&R": "CheckpointLoaderSimple"
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "models": [
+          {
+            "name": "sam3.1_multiplex_fp16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/sam3.1/resolve/main/checkpoints/sam3.1_multiplex_fp16.safetensors",
+            "directory": "checkpoints"
+          }
+        ]
       },
       "widgets_values": [
         "sam3.1_multiplex_fp16.safetensors"

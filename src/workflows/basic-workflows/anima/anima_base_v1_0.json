@@ -205,7 +205,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "CLIPLoader"
+        "Node name for S&R": "CLIPLoader",
+        "models": [
+          {
+            "name": "qwen_3_06b_base.safetensors",
+            "url": "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/text_encoders/qwen_3_06b_base.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
         "qwen_3_06b_base.safetensors",
@@ -243,7 +250,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "VAELoader"
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "qwen_image_vae.safetensors",
+            "url": "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "qwen_image_vae.safetensors"

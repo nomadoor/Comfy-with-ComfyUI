@@ -75,7 +75,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.39",
-        "Node name for S&R": "VAELoader"
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "flux2-vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/main/vae/flux2-vae.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "flux2-vae.safetensors"

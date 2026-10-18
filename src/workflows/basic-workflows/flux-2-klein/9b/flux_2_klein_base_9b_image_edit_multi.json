@@ -191,7 +191,14 @@
       "properties": {
         "Node name for S&R": "CLIPLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.73"
+        "ver": "0.3.73",
+        "models": [
+          {
+            "name": "qwen_3_8b.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/resolve/main/split_files/text_encoders/qwen_3_8b.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
         "qwen_3_8b.safetensors",
@@ -424,7 +431,14 @@
       "properties": {
         "Node name for S&R": "UNETLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.9.2"
+        "ver": "0.9.2",
+        "models": [
+          {
+            "name": "flux-2-klein-base-9b-fp8.safetensors",
+            "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-base-9b-fp8/resolve/main/flux-2-klein-base-9b-fp8.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "Flux.2\\flux-2-klein-base-9b-fp8.safetensors",
@@ -638,7 +652,14 @@
       "properties": {
         "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.39"
+        "ver": "0.3.39",
+        "models": [
+          {
+            "name": "flux2-vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/resolve/main/split_files/vae/flux2-vae.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "flux2-vae.safetensors"

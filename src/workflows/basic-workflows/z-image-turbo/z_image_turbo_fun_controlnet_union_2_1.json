@@ -119,7 +119,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "CLIPLoader"
+        "Node name for S&R": "CLIPLoader",
+        "models": [
+          {
+            "name": "qwen_3_4b.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
         "qwen_3_4b.safetensors",
@@ -155,7 +162,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "UNETLoader"
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "z_image_turbo_bf16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "Z-Image\\z_image_turbo_bf16.safetensors",
@@ -375,7 +389,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "VAELoader"
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "ae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "ae.safetensors"
@@ -572,7 +593,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.76",
-        "Node name for S&R": "ModelPatchLoader"
+        "Node name for S&R": "ModelPatchLoader",
+        "models": [
+          {
+            "name": "Z-Image-Turbo-Fun-Controlnet-Union-2.1.safetensors",
+            "url": "https://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.0/resolve/main/Z-Image-Turbo-Fun-Controlnet-Union-2.1.safetensors",
+            "directory": "model_patches"
+          }
+        ]
       },
       "widgets_values": [
         "Z-Image\\Z-Image-Turbo-Fun-Controlnet-Union-2.1.safetensors"

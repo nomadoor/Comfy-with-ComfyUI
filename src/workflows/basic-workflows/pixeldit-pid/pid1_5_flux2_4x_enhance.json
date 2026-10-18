@@ -835,7 +835,14 @@
       "properties": {
         "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "flux2-vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/main/vae/flux2-vae.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "flux2-vae.safetensors"
@@ -874,7 +881,14 @@
       "properties": {
         "Node name for S&R": "CLIPLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "gemma_2_2b_it_elm_bf16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/PixelDiT/resolve/main/text_encoders/gemma_2_2b_it_elm_bf16.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
         "gemma_2_2b_it_elm_bf16.safetensors",

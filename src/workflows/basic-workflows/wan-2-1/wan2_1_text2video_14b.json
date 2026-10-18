@@ -330,7 +330,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "VAELoader"
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "wan_2.1_vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "wan_2.1_vae.safetensors"

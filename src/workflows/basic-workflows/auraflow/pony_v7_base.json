@@ -31,7 +31,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.66",
-        "Node name for S&R": "UNETLoader"
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "pony-v7-base.safetensors",
+            "url": "https://huggingface.co/purplesmartai/pony-v7-base/resolve/main/safetensor/pony-v7-base.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "AuraFlow\\pony-v7-base.safetensors",

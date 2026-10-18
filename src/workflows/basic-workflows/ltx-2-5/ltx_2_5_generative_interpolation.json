@@ -102,7 +102,14 @@
       "properties": {
         "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
-        "ver": "0.30.0"
+        "ver": "0.30.0",
+        "models": [
+          {
+            "name": "ltx-2.5-audio-vae-bf16.safetensors",
+            "url": "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/vae/ltx-2.5-audio-vae-bf16.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "ltx-2.5-audio-vae-bf16.safetensors"
@@ -280,7 +287,14 @@
       "properties": {
         "Node name for S&R": "CLIPLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.30.0"
+        "ver": "0.30.0",
+        "models": [
+          {
+            "name": "gemma4-12b-with-proj-ltx-2.5-comfy-int8-convrot.safetensors",
+            "url": "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/text_encoders/gemma4-12b-with-proj-ltx-2.5-comfy-int8-convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
         "gemma4-12b-with-proj-ltx-2.5-comfy-int8-convrot.safetensors",
@@ -397,7 +411,14 @@
       "properties": {
         "Node name for S&R": "UNETLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.30.0"
+        "ver": "0.30.0",
+        "models": [
+          {
+            "name": "ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors",
+            "url": "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/diffusion_models/ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors",
@@ -612,7 +633,14 @@
       "properties": {
         "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
-        "ver": "0.30.0"
+        "ver": "0.30.0",
+        "models": [
+          {
+            "name": "ltx-2.5-video-vae-bf16.safetensors",
+            "url": "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/vae/ltx-2.5-video-vae-bf16.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "ltx-2.5-video-vae-bf16.safetensors"
