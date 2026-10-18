@@ -31,7 +31,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "CLIPVisionLoader"
+        "Node name for S&R": "CLIPVisionLoader",
+        "models": [
+          {
+            "name": "clip_vision_h.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors",
+            "directory": "clip_vision"
+          }
+        ]
       },
       "widgets_values": [
         "clip_vision_h.safetensors"
@@ -66,7 +73,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "CLIPLoader"
+        "Node name for S&R": "CLIPLoader",
+        "models": [
+          {
+            "name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
         "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
@@ -188,7 +202,24 @@
       "properties": {
         "aux_id": "kijai/ComfyUI-WanAnimatePreprocess",
         "ver": "e63d6e71ae4c271f3f81211a7ca7f87607b7e50d",
-        "Node name for S&R": "OnnxDetectionModelLoader"
+        "Node name for S&R": "OnnxDetectionModelLoader",
+        "models": [
+          {
+            "name": "vitpose_h_wholebody_model.onnx",
+            "url": "https://huggingface.co/Kijai/vitpose_comfy/resolve/main/onnx/vitpose_h_wholebody_model.onnx",
+            "directory": "detection"
+          },
+          {
+            "name": "vitpose_h_wholebody_data.bin",
+            "url": "https://huggingface.co/Kijai/vitpose_comfy/resolve/main/onnx/vitpose_h_wholebody_data.bin",
+            "directory": "detection"
+          },
+          {
+            "name": "yolov10m.onnx",
+            "url": "https://huggingface.co/Wan-AI/Wan2.2-Animate-14B/resolve/main/process_checkpoint/det/yolov10m.onnx",
+            "directory": "detection"
+          }
+        ]
       },
       "widgets_values": [
         "vitpose_h_wholebody_model.onnx",
@@ -226,7 +257,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "UNETLoader"
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "Wan2_2-Animate-14B_fp8_e4m3fn_scaled_KJ.safetensors",
+            "url": "https://huggingface.co/Kijai/WanVideo_comfy_fp8_scaled/resolve/main/Wan22Animate/Wan2_2-Animate-14B_fp8_e4m3fn_scaled_KJ.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "Wan2.2\\Wan2_2-Animate-14B_fp8_e4m3fn_scaled_KJ.safetensors",
@@ -619,7 +657,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "VAELoader"
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "wan_2.1_vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "wan_2.1_vae.safetensors"
@@ -913,6 +958,7 @@
       ],
       "title": "Set_width",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "width"
       },
       "widgets_values": [
@@ -955,6 +1001,7 @@
       ],
       "title": "Set_pose_video",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "pose_video"
       },
       "widgets_values": [
@@ -997,6 +1044,7 @@
       ],
       "title": "Set_face_video",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "face_video"
       },
       "widgets_values": [
@@ -1039,6 +1087,7 @@
       ],
       "title": "Set_height",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "height"
       },
       "widgets_values": [
@@ -1159,6 +1208,7 @@
       ],
       "title": "Set_reference_image",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "reference_image"
       },
       "widgets_values": [
@@ -1194,7 +1244,9 @@
         }
       ],
       "title": "Get_vae",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "vae"
       ],
@@ -1228,7 +1280,9 @@
         }
       ],
       "title": "Get_negative",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "negative"
       ],
@@ -1262,7 +1316,9 @@
         }
       ],
       "title": "Get_vae",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "vae"
       ],
@@ -1296,7 +1352,9 @@
         }
       ],
       "title": "Get_reference_image",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "reference_image"
       ],
@@ -1330,7 +1388,9 @@
         }
       ],
       "title": "Get_face_video",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "face_video"
       ],
@@ -1364,7 +1424,9 @@
         }
       ],
       "title": "Get_pose_video",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "pose_video"
       ],
@@ -1398,7 +1460,9 @@
         }
       ],
       "title": "Get_width",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "width"
       ],
@@ -1432,7 +1496,9 @@
         }
       ],
       "title": "Get_height",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "height"
       ],
@@ -1466,7 +1532,9 @@
         }
       ],
       "title": "Get_CLIP_Vision",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "CLIP_Vision"
       ]
@@ -1505,6 +1573,7 @@
       ],
       "title": "Set_negative",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "negative"
       },
       "widgets_values": [
@@ -1547,6 +1616,7 @@
       ],
       "title": "Set_CLIP_Vision",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "CLIP_Vision"
       },
       "widgets_values": [
@@ -1580,7 +1650,9 @@
         }
       ],
       "title": "Get_model",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "model"
       ],
@@ -1621,6 +1693,7 @@
       ],
       "title": "Set_model",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "model"
       },
       "widgets_values": [
@@ -1663,6 +1736,7 @@
       ],
       "title": "Set_vae",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "vae"
       },
       "widgets_values": [
@@ -1705,6 +1779,7 @@
       ],
       "title": "Set_positive",
       "properties": {
+        "cnr_id": "comfyui-kjnodes",
         "previousName": "positive"
       },
       "widgets_values": [
@@ -1740,7 +1815,9 @@
         }
       ],
       "title": "Get_positive",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "positive"
       ],
@@ -1950,7 +2027,9 @@
         }
       ],
       "title": "Get_vae",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "vae"
       ],
@@ -2136,7 +2215,9 @@
         }
       ],
       "title": "Get_negative",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "negative"
       ],
@@ -2170,7 +2251,9 @@
         }
       ],
       "title": "Get_vae",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "vae"
       ],
@@ -2204,7 +2287,9 @@
         }
       ],
       "title": "Get_reference_image",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "reference_image"
       ],
@@ -2238,7 +2323,9 @@
         }
       ],
       "title": "Get_face_video",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "face_video"
       ],
@@ -2272,7 +2359,9 @@
         }
       ],
       "title": "Get_pose_video",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "pose_video"
       ],
@@ -2306,7 +2395,9 @@
         }
       ],
       "title": "Get_width",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "width"
       ],
@@ -2340,7 +2431,9 @@
         }
       ],
       "title": "Get_height",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "height"
       ],
@@ -2374,7 +2467,9 @@
         }
       ],
       "title": "Get_CLIP_Vision",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "CLIP_Vision"
       ]
@@ -2406,7 +2501,9 @@
         }
       ],
       "title": "Get_model",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "model"
       ],
@@ -2440,7 +2537,9 @@
         }
       ],
       "title": "Get_positive",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "positive"
       ],
@@ -2474,7 +2573,9 @@
         }
       ],
       "title": "Get_vae",
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfyui-kjnodes"
+      },
       "widgets_values": [
         "vae"
       ],
@@ -3059,7 +3160,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.60",
-        "Node name for S&R": "LoraLoaderModelOnly"
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "models": [
+          {
+            "name": "Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors",
+            "url": "https://huggingface.co/lightx2v/Wan2.1-I2V-14B-480P-StepDistill-CfgDistill-Lightx2v/resolve/main/loras/Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors",
+            "directory": "loras"
+          }
+        ]
       },
       "widgets_values": [
         "Wan2.1\\Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors",

@@ -196,7 +196,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "CheckpointLoaderSimple"
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "models": [
+          {
+            "name": "v1-5-pruned-emaonly-fp16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive/resolve/main/v1-5-pruned-emaonly-fp16.safetensors",
+            "directory": "checkpoints"
+          }
+        ]
       },
       "widgets_values": [
         "v1-5-pruned-emaonly-fp16.safetensors"
@@ -229,7 +236,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.76",
-        "Node name for S&R": "VAELoader"
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "vae-ft-mse-840000-ema-pruned.safetensors",
+            "url": "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "vae-ft-mse-840000-ema-pruned.safetensors"
@@ -340,7 +354,14 @@
       "properties": {
         "cnr_id": "comfyui_ipadapter_plus",
         "ver": "a0f451a5113cf9becb0847b92884cb10cbdec0ef",
-        "Node name for S&R": "IPAdapterModelLoader"
+        "Node name for S&R": "IPAdapterModelLoader",
+        "models": [
+          {
+            "name": "ip-adapter-plus-face_sd15.safetensors",
+            "url": "https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus-face_sd15.safetensors",
+            "directory": "ipadapter"
+          }
+        ]
       },
       "widgets_values": [
         "ip-adapter-plus-face_sd15.safetensors"

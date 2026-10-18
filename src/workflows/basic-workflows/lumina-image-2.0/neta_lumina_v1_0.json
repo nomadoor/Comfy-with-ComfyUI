@@ -68,7 +68,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.41",
-        "Node name for S&R": "CLIPLoader"
+        "Node name for S&R": "CLIPLoader",
+        "models": [
+          {
+            "name": "gemma_2_2b_fp16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Lumina_Image_2.0_Repackaged/resolve/main/split_files/text_encoders/gemma_2_2b_fp16.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
         "gemma_2_2b_fp16.safetensors",
@@ -105,7 +112,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.39",
-        "Node name for S&R": "VAELoader"
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "ae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Lumina_Image_2.0_Repackaged/resolve/main/split_files/vae/ae.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "ae.safetensors"
@@ -367,7 +381,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.39",
-        "Node name for S&R": "UNETLoader"
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "neta-lumina-v1.0.safetensors",
+            "url": "https://huggingface.co/neta-art/Neta-Lumina/resolve/main/Unet/neta-lumina-v1.0.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "Lumina\\neta-lumina-v1.0.safetensors",

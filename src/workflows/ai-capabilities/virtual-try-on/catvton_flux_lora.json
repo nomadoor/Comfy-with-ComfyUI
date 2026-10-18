@@ -37,6 +37,7 @@
       ],
       "title": "CLIP Text Encode (Negative Prompt)",
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -80,6 +81,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "VAEDecode"
       },
       "widgets_values": []
@@ -117,6 +119,7 @@
       ],
       "title": "CLIP Text Encode (Positive Prompt)",
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -155,6 +158,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ImageToMask"
       },
       "widgets_values": [
@@ -186,6 +190,7 @@
       ],
       "outputs": [],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewImage"
       },
       "widgets_values": []
@@ -223,6 +228,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "Comfyui_segformer_b2_clothes",
         "Node name for S&R": "segformer_b2_clothes"
       },
       "widgets_values": [
@@ -275,6 +281,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -314,6 +321,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoraLoaderModelOnly"
       },
       "widgets_values": [
@@ -391,6 +399,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "InpaintModelConditioning"
       },
       "widgets_values": [
@@ -432,6 +441,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "FluxGuidance"
       },
       "widgets_values": [
@@ -528,6 +538,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-in-context-lora-utils",
         "Node name for S&R": "AddMaskForICLora"
       },
       "widgets_values": [
@@ -562,7 +573,20 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "DualCLIPLoader"
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "DualCLIPLoader",
+        "models": [
+          {
+            "name": "clip_l.safetensors",
+            "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors",
+            "directory": "text_encoders"
+          },
+          {
+            "name": "t5xxl_fp8_e4m3fn.safetensors",
+            "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
         "clip_l.safetensors",
@@ -597,6 +621,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "VAELoader"
       },
       "widgets_values": [
@@ -635,6 +660,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "InvertMask"
       },
       "widgets_values": [],
@@ -688,6 +714,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
@@ -731,6 +758,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -770,6 +798,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "GrowMask"
       },
       "widgets_values": [
@@ -802,6 +831,7 @@
       ],
       "outputs": [],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewImage"
       },
       "widgets_values": []
@@ -829,6 +859,7 @@
       ],
       "outputs": [],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewImage"
       },
       "widgets_values": []
@@ -870,6 +901,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "JoinImageWithAlpha"
       },
       "widgets_values": []
@@ -900,7 +932,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "UNETLoader"
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "flux1-fill-dev.safetensors",
+            "url": "https://huggingface.co/black-forest-labs/FLUX.1-Fill-dev/resolve/main/flux1-fill-dev.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "Flux\\flux1-fill-dev.safetensors",

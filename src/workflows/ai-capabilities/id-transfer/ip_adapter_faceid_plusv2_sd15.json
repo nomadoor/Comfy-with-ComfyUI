@@ -34,6 +34,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -65,6 +66,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "EmptyLatentImage"
       },
       "widgets_values": [
@@ -120,6 +122,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
@@ -159,7 +162,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "VAELoader"
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "vae-ft-mse-840000-ema-pruned.safetensors",
+            "url": "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "vae-ft-mse-840000-ema-pruned.safetensors"
@@ -202,6 +213,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "VAEDecode"
       }
     },
@@ -227,6 +239,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewImage"
       }
     },
@@ -262,6 +275,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -308,6 +322,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CheckpointLoaderSimple"
       },
       "widgets_values": [
@@ -339,6 +354,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_ipadapter_plus",
         "Node name for S&R": "InsightFaceLoader"
       },
       "widgets_values": [
@@ -379,6 +395,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -421,6 +438,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_ipadapter_plus",
         "Node name for S&R": "PrepImageForClipVision"
       },
       "widgets_values": [
@@ -457,6 +475,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPVisionLoader"
       },
       "widgets_values": [
@@ -491,7 +510,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "IPAdapterModelLoader"
+        "cnr_id": "comfyui_ipadapter_plus",
+        "Node name for S&R": "IPAdapterModelLoader",
+        "models": [
+          {
+            "name": "ip-adapter-faceid-plusv2_sd15.bin",
+            "url": "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sd15.bin",
+            "directory": "ipadapter"
+          }
+        ]
       },
       "widgets_values": [
         "ip-adapter-faceid-plusv2_sd15.bin"
@@ -558,6 +585,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_ipadapter_plus",
         "Node name for S&R": "IPAdapterApplyFaceID"
       },
       "widgets_values": [

@@ -35,6 +35,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-automaticcfg",
         "Node name for S&R": "Automatic CFG"
       }
     },
@@ -71,6 +72,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "SelfAttentionGuidance"
       },
       "widgets_values": [
@@ -119,6 +121,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -197,6 +200,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -246,6 +250,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-impact-pack",
         "Node name for S&R": "SEGSPaste"
       },
       "widgets_values": [
@@ -412,6 +417,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-impact-pack",
         "Node name for S&R": "ImpactSimpleDetectorSEGS"
       },
       "widgets_values": [
@@ -473,7 +479,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "LoraLoader"
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "LoraLoader",
+        "models": [
+          {
+            "name": "epiCPhotoXL.safetensors",
+            "url": "https://civitai.com/api/download/models/335906",
+            "directory": "loras"
+          }
+        ]
       },
       "widgets_values": [
         "XL\\👩\\epiCPhotoXL.safetensors",
@@ -527,7 +541,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "LoraLoader"
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "LoraLoader",
+        "models": [
+          {
+            "name": "SDXL_BetterFaces-LoRA_v1.safetensors",
+            "url": "https://civitai.com/api/download/models/339112",
+            "directory": "loras"
+          }
+        ]
       },
       "widgets_values": [
         "XL\\👩\\SDXL_BetterFaces-LoRA_v1.safetensors",
@@ -579,7 +601,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "CheckpointLoaderSimple"
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "models": [
+          {
+            "name": "epicrealismXL_v2Wip.safetensors",
+            "url": "https://civitai.com/api/download/models/344386",
+            "directory": "checkpoints"
+          }
+        ]
       },
       "widgets_values": [
         "📷-XL\\epicrealismXL_v2Wip.safetensors"
@@ -626,6 +656,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-impact-pack",
         "Node name for S&R": "ImpactSEGSOrderedFilter"
       },
       "widgets_values": [
@@ -661,7 +692,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ControlNetLoader"
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "ControlNetLoader",
+        "models": [
+          {
+            "name": "diffusion_pytorch_model.safetensors",
+            "url": "https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors",
+            "directory": "controlnet"
+          }
+        ]
       },
       "widgets_values": [
         "InstantID\\diffusion_pytorch_model.safetensors"
@@ -702,7 +741,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "LLava Loader Simple"
+        "cnr_id": "comfyui_vlm_nodes",
+        "Node name for S&R": "LLava Loader Simple",
+        "models": [
+          {
+            "name": "llava-v1.6-mistral-7b.Q4_K_M.gguf",
+            "url": "https://huggingface.co/cjpais/llava-1.6-mistral-7b-gguf/resolve/main/llava-v1.6-mistral-7b.Q4_K_M.gguf",
+            "directory": "LLavacheckpoints"
+          }
+        ]
       },
       "widgets_values": [
         "llava-v1.6-mistral-7b.Q4_K_M.gguf",
@@ -738,7 +785,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "LlavaClipLoader"
+        "cnr_id": "comfyui_vlm_nodes",
+        "Node name for S&R": "LlavaClipLoader",
+        "models": [
+          {
+            "name": "mmproj-model-f16.gguf",
+            "url": "https://huggingface.co/cjpais/llava-1.6-mistral-7b-gguf/resolve/main/mmproj-model-f16.gguf",
+            "directory": "LLavacheckpoints"
+          }
+        ]
       },
       "widgets_values": [
         "mmproj-model-f16.gguf"
@@ -773,6 +828,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_instantid",
         "Node name for S&R": "InstantIDFaceAnalysis"
       },
       "widgets_values": [
@@ -803,6 +859,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewImage"
       }
     },
@@ -828,6 +885,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewImage"
       },
       "color": "#223",
@@ -882,6 +940,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_vlm_nodes",
         "Node name for S&R": "LLavaSamplerSimple"
       },
       "widgets_values": [
@@ -930,6 +989,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-impact-pack",
         "Node name for S&R": "ImpactSEGSOrderedFilter"
       },
       "widgets_values": [
@@ -988,6 +1048,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-impact-pack",
         "Node name for S&R": "ImpactSimpleDetectorSEGS"
       },
       "widgets_values": [
@@ -1037,7 +1098,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "UltralyticsDetectorProvider"
+        "cnr_id": "comfyui-impact-subpack",
+        "Node name for S&R": "UltralyticsDetectorProvider",
+        "models": [
+          {
+            "name": "face_yolov8m.pt",
+            "url": "https://huggingface.co/Bingsu/adetailer/resolve/main/face_yolov8m.pt",
+            "directory": "ultralytics/bbox"
+          }
+        ]
       },
       "widgets_values": [
         "bbox/face_yolov8m.pt"
@@ -1072,7 +1141,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "SAMLoader"
+        "cnr_id": "comfyui-impact-pack",
+        "Node name for S&R": "SAMLoader",
+        "models": [
+          {
+            "name": "sam_vit_h_4b8939.pth",
+            "url": "https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth",
+            "directory": "sams"
+          }
+        ]
       },
       "widgets_values": [
         "sam_vit_h_4b8939.pth",
@@ -1107,7 +1184,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "InstantIDModelLoader"
+        "cnr_id": "comfyui_instantid",
+        "Node name for S&R": "InstantIDModelLoader",
+        "models": [
+          {
+            "name": "ip-adapter.bin",
+            "url": "https://huggingface.co/InstantX/InstantID/resolve/main/ip-adapter.bin",
+            "directory": "instantid"
+          }
+        ]
       },
       "widgets_values": [
         "ip-adapter.bin"
@@ -1206,6 +1291,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_instantid",
         "Node name for S&R": "ApplyInstantID"
       },
       "widgets_values": [
@@ -1267,6 +1353,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-impact-pack",
         "Node name for S&R": "ToBasicPipe"
       }
     },
@@ -1296,6 +1383,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-impact-pack",
         "Node name for S&R": "DenoiseSchedulerDetailerHookProvider"
       },
       "widgets_values": [
@@ -1341,6 +1429,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ConditioningCombine"
       }
     },
@@ -1383,6 +1472,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-impact-pack",
         "Node name for S&R": "SEGSPreview"
       },
       "widgets_values": [
@@ -1416,6 +1506,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_vlm_nodes",
         "Node name for S&R": "SimpleText"
       },
       "widgets_values": [
@@ -1457,6 +1548,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-custom-scripts",
         "Node name for S&R": "ShowText|pysssss"
       },
       "widgets_values": [
@@ -1500,6 +1592,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -1548,6 +1641,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_instantid",
         "Node name for S&R": "FaceKeypointsPreprocessor"
       },
       "color": "#2a363b",
@@ -1602,7 +1696,20 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ReActorFaceSwap"
+        "cnr_id": "comfyui-reactor",
+        "Node name for S&R": "ReActorFaceSwap",
+        "models": [
+          {
+            "name": "inswapper_128.onnx",
+            "url": "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/inswapper_128.onnx",
+            "directory": "insightface"
+          },
+          {
+            "name": "GFPGANv1.4.pth",
+            "url": "https://github.com/TencentARC/GFPGAN/releases/download/v1.3.4/GFPGANv1.4.pth",
+            "directory": "facerestore_models"
+          }
+        ]
       },
       "widgets_values": [
         true,
@@ -1654,6 +1761,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -1701,6 +1809,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-impact-pack",
         "Node name for S&R": "SEGSPreview"
       },
       "widgets_values": [
@@ -1753,6 +1862,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "image-resize-comfyui",
         "Node name for S&R": "ImageResize"
       },
       "widgets_values": [
@@ -1859,6 +1969,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-impact-pack",
         "Node name for S&R": "DetailerForEachDebugPipe"
       },
       "widgets_values": [
@@ -1915,6 +2026,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [

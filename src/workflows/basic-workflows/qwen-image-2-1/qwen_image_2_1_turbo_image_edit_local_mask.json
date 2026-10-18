@@ -344,6 +344,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoraLoaderModelOnly",
         "models": [
           {
@@ -420,6 +421,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "SamplerCustomAdvanced"
       }
     },
@@ -448,6 +450,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "RandomNoise"
       },
       "widgets_values": [
@@ -495,6 +498,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "BasicGuider"
       }
     },
@@ -523,6 +527,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "KSamplerSelect"
       },
       "widgets_values": [
@@ -557,6 +562,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ManualSigmas"
       },
       "widgets_values": [
@@ -631,6 +637,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "TextEncodeQwenImage21"
       },
       "widgets_values": [
@@ -687,6 +694,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "GetImageSize"
       }
     },
@@ -722,6 +730,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage",
         "image": "qwen_image_2_1_turbo_image_edit_local_mask_input.webp"
       },
@@ -767,6 +776,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ResizeImageMaskNode"
       },
       "widgets_values": [
@@ -811,6 +821,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "MaskToImage"
       }
     },
@@ -850,6 +861,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ResizeImageMaskNode"
       },
       "widgets_values": [

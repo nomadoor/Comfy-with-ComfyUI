@@ -56,6 +56,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
         "Node name for S&R": "VHS_VideoInfoLoaded"
       },
       "widgets_values": {}
@@ -115,6 +116,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
         "Node name for S&R": "VHS_LoadVideo"
       },
       "widgets_values": {
@@ -198,6 +200,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
         "Node name for S&R": "VHS_VideoCombine"
       },
       "widgets_values": {
@@ -276,6 +279,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "video-stabilizer",
         "Node name for S&R": "video_stabilizer_flow"
       },
       "widgets_values": [

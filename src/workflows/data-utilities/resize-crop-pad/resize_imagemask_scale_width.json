@@ -27,6 +27,7 @@
       ],
       "outputs": [],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewImage"
       },
       "widgets_values": []
@@ -61,6 +62,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -99,6 +101,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ResizeImageMaskNode"
       },
       "widgets_values": [

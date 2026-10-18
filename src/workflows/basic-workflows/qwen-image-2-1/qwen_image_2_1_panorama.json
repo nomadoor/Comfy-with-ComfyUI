@@ -434,6 +434,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "TextEncodeQwenImage21"
       },
       "widgets_values": [
@@ -477,6 +478,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -523,6 +525,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "panorama-stickers",
         "Node name for S&R": "PanoramaPreview"
       },
       "widgets_values": [

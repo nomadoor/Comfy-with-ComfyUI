@@ -202,7 +202,14 @@
       "properties": {
         "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.76"
+        "ver": "0.3.76",
+        "models": [
+          {
+            "name": "vae-ft-mse-840000-ema-pruned.safetensors",
+            "url": "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "vae-ft-mse-840000-ema-pruned.safetensors"
@@ -253,7 +260,14 @@
       "properties": {
         "Node name for S&R": "CheckpointLoaderSimple",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "v1-5-pruned-emaonly-fp16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive/resolve/main/v1-5-pruned-emaonly-fp16.safetensors",
+            "directory": "checkpoints"
+          }
+        ]
       },
       "widgets_values": [
         "v1-5-pruned-emaonly-fp16.safetensors"
@@ -347,7 +361,14 @@
       "properties": {
         "Node name for S&R": "LoraLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.76"
+        "ver": "0.3.76",
+        "models": [
+          {
+            "name": "PX64NOCAP_epoch_10.safetensors",
+            "url": "https://civitai.com/api/download/models/636318",
+            "directory": "loras"
+          }
+        ]
       },
       "widgets_values": [
         "PX64NOCAP_epoch_10.safetensors",

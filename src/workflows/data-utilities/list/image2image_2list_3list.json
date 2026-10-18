@@ -401,7 +401,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "CheckpointLoaderSimple"
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "models": [
+          {
+            "name": "unrealworldUltra_v30.safetensors",
+            "url": "https://civitai.com/api/download/models/1775024",
+            "directory": "checkpoints"
+          }
+        ]
       },
       "widgets_values": [
         "unrealworldUltra_v30.safetensors"

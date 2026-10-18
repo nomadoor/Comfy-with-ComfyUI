@@ -328,6 +328,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoraLoaderModelOnly",
         "models": [
           {
@@ -404,6 +405,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "SamplerCustomAdvanced"
       }
     },
@@ -432,6 +434,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "RandomNoise"
       },
       "widgets_values": [
@@ -479,6 +482,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "BasicGuider"
       }
     },
@@ -507,6 +511,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "KSamplerSelect"
       },
       "widgets_values": [
@@ -541,6 +546,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ManualSigmas"
       },
       "widgets_values": [
@@ -615,6 +621,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "TextEncodeQwenImage21"
       },
       "widgets_values": [
@@ -658,6 +665,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -704,6 +712,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "panorama-stickers",
         "Node name for S&R": "PanoramaPreview"
       },
       "widgets_values": [

@@ -151,6 +151,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "TextGenerate"
       },
       "widgets_values": [
@@ -210,6 +211,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "StringFormat"
       },
       "widgets_values": [
@@ -266,6 +268,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "EndLoop"
       },
       "widgets_values": [
@@ -350,6 +353,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "StartLoop"
       },
       "widgets_values": [
@@ -393,7 +397,9 @@
           "links": null
         }
       ],
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfy-core"
+      },
       "widgets_values": [
         "ComfyUI"
       ],
@@ -444,6 +450,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "GetImageSize"
       }
     },
@@ -711,6 +718,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "TextEncodeQwenImage21"
       },
       "widgets_values": [
@@ -919,6 +927,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PrimitiveInt"
       },
       "widgets_values": [
@@ -982,6 +991,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "StringFormat"
       },
       "widgets_values": [
@@ -1081,6 +1091,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ComfyMathExpression"
       },
       "widgets_values": [
@@ -1251,6 +1262,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "TextEncodeQwenImage21"
       },
       "widgets_values": [
@@ -1342,6 +1354,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "SplitImageWithAlpha"
       },
       "color": "#233",
@@ -1393,6 +1406,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ComfySwitchNode"
       },
       "widgets_values": [
@@ -1448,6 +1462,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ComfySwitchNode"
       },
       "widgets_values": [
@@ -1507,6 +1522,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "StringFormat"
       },
       "widgets_values": [
@@ -2737,6 +2753,7 @@
               }
             ],
             "properties": {
+              "cnr_id": "comfy-core",
               "Node name for S&R": "GrowMask"
             },
             "widgets_values": [
@@ -2794,6 +2811,7 @@
               }
             ],
             "properties": {
+              "cnr_id": "comfy-core",
               "Node name for S&R": "ImageCompositeMasked"
             },
             "widgets_values": [
@@ -2843,6 +2861,7 @@
               }
             ],
             "properties": {
+              "cnr_id": "comfy-core",
               "Node name for S&R": "EmptyImage"
             },
             "widgets_values": [
@@ -2891,6 +2910,7 @@
               }
             ],
             "properties": {
+              "cnr_id": "comfy-core",
               "Node name for S&R": "InvertMask"
             }
           },
@@ -2933,6 +2953,7 @@
               }
             ],
             "properties": {
+              "cnr_id": "comfy-core",
               "Node name for S&R": "SplitImageWithAlpha"
             }
           },
@@ -2974,6 +2995,7 @@
               }
             ],
             "properties": {
+              "cnr_id": "comfy-core",
               "Node name for S&R": "ColorToRGBInt"
             },
             "widgets_values": [

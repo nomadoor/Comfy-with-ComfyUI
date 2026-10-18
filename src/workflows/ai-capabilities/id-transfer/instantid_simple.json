@@ -24,6 +24,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewImage"
       }
     },
@@ -59,6 +60,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -91,7 +93,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ControlNetLoader"
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "ControlNetLoader",
+        "models": [
+          {
+            "name": "diffusion_pytorch_model.safetensors",
+            "url": "https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors",
+            "directory": "controlnet"
+          }
+        ]
       },
       "widgets_values": [
         "InstantID\\diffusion_pytorch_model.safetensors"
@@ -191,6 +201,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_instantid",
         "Node name for S&R": "ApplyInstantID"
       },
       "widgets_values": [
@@ -226,6 +237,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "EmptyLatentImage"
       },
       "widgets_values": [
@@ -276,6 +288,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CheckpointLoaderSimple"
       },
       "widgets_values": [
@@ -308,6 +321,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_instantid",
         "Node name for S&R": "InstantIDFaceAnalysis"
       },
       "widgets_values": [
@@ -342,7 +356,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "InstantIDModelLoader"
+        "cnr_id": "comfyui_instantid",
+        "Node name for S&R": "InstantIDModelLoader",
+        "models": [
+          {
+            "name": "ip-adapter.bin",
+            "url": "https://huggingface.co/InstantX/InstantID/resolve/main/ip-adapter.bin",
+            "directory": "instantid"
+          }
+        ]
       },
       "widgets_values": [
         "ip-adapter.bin"
@@ -383,6 +405,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -422,6 +445,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -465,6 +489,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "VAEDecode"
       }
     },
@@ -515,6 +540,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [

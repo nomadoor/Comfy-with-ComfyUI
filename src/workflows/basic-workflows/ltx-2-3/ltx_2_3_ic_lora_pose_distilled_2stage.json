@@ -1525,6 +1525,11 @@
             "name": "ltx-2-19b-distilled-lora-384.safetensors",
             "url": "https://huggingface.co/Lightricks/LTX-2/resolve/main/ltx-2-19b-distilled-lora-384.safetensors",
             "directory": "loras"
+          },
+          {
+            "name": "ltx-2.3-22b-distilled-lora-384.safetensors",
+            "url": "https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-22b-distilled-lora-384.safetensors",
+            "directory": "loras"
           }
         ]
       },
@@ -1575,7 +1580,14 @@
       "properties": {
         "cnr_id": "ComfyUI-LTXVideo",
         "ver": "49add6dddb2e1bb2d23bc509a9fac3edd2834961",
-        "Node name for S&R": "LTXICLoRALoaderModelOnly"
+        "Node name for S&R": "LTXICLoRALoaderModelOnly",
+        "models": [
+          {
+            "name": "ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors",
+            "url": "https://huggingface.co/Lightricks/LTX-2.3-22b-IC-LoRA-Union-Control/resolve/main/ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors",
+            "directory": "loras"
+          }
+        ]
       },
       "widgets_values": [
         "LTX-2\\ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors",
@@ -1636,6 +1648,11 @@
             "name": "ltx-2-19b-dev-fp8.safetensors",
             "url": "https://huggingface.co/Lightricks/LTX-2/resolve/main/ltx-2-19b-dev-fp8.safetensors",
             "directory": "checkpoints"
+          },
+          {
+            "name": "ltx-2.3-22b-dev-fp8.safetensors",
+            "url": "https://huggingface.co/Lightricks/LTX-2.3-fp8/resolve/main/ltx-2.3-22b-dev-fp8.safetensors",
+            "directory": "checkpoints"
           }
         ]
       },
@@ -1685,6 +1702,11 @@
           {
             "name": "ltx-2-19b-dev-fp8.safetensors",
             "url": "https://huggingface.co/Lightricks/LTX-2/resolve/main/ltx-2-19b-dev-fp8.safetensors",
+            "directory": "checkpoints"
+          },
+          {
+            "name": "ltx-2.3-22b-dev-fp8.safetensors",
+            "url": "https://huggingface.co/Lightricks/LTX-2.3-fp8/resolve/main/ltx-2.3-22b-dev-fp8.safetensors",
             "directory": "checkpoints"
           }
         ]
@@ -1741,6 +1763,16 @@
             "name": "gemma_3_12B_it.safetensors",
             "url": "https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/text_encoders/gemma_3_12B_it.safetensors",
             "directory": "text_encoders"
+          },
+          {
+            "name": "gemma_3_12B_it_fp8_scaled.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/text_encoders/gemma_3_12B_it_fp8_scaled.safetensors",
+            "directory": "text_encoders"
+          },
+          {
+            "name": "ltx-2.3-22b-dev-fp8.safetensors",
+            "url": "https://huggingface.co/Lightricks/LTX-2.3-fp8/resolve/main/ltx-2.3-22b-dev-fp8.safetensors",
+            "directory": "checkpoints"
           }
         ]
       },
@@ -1990,6 +2022,11 @@
           {
             "name": "ltx-2-spatial-upscaler-x2-1.0.safetensors",
             "url": "https://huggingface.co/Lightricks/LTX-2/resolve/main/ltx-2-spatial-upscaler-x2-1.0.safetensors",
+            "directory": "latent_upscale_models"
+          },
+          {
+            "name": "ltx-2.3-spatial-upscaler-x2-1.1.safetensors",
+            "url": "https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-spatial-upscaler-x2-1.1.safetensors",
             "directory": "latent_upscale_models"
           }
         ]

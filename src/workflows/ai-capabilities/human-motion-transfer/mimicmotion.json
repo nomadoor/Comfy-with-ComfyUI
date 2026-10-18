@@ -40,6 +40,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-mimicmotionwrapper",
         "Node name for S&R": "MimicMotionDecode"
       },
       "widgets_values": [
@@ -93,6 +94,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
         "Node name for S&R": "VHS_VideoCombine"
       },
       "widgets_values": {
@@ -175,6 +177,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
         "Node name for S&R": "VHS_LoadVideo"
       },
       "widgets_values": {
@@ -248,6 +251,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-mimicmotionwrapper",
         "Node name for S&R": "MimicMotionGetPoses"
       },
       "widgets_values": [
@@ -308,6 +312,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ImageScale"
       },
       "widgets_values": [
@@ -366,6 +371,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ImageScale"
       },
       "widgets_values": [
@@ -401,6 +407,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-mimicmotionwrapper",
         "Node name for S&R": "DiffusersScheduler"
       },
       "widgets_values": [
@@ -446,6 +453,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -553,6 +561,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-mimicmotionwrapper",
         "Node name for S&R": "DownloadAndLoadMimicMotionModel"
       },
       "widgets_values": [
@@ -610,6 +619,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-mimicmotionwrapper",
         "Node name for S&R": "MimicMotionSampler"
       },
       "widgets_values": [

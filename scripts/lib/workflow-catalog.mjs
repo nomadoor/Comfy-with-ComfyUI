@@ -8,6 +8,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { splitFrontmatter } from "./files.mjs";
 import { eachNode } from "./workflow-graph.mjs";
+import { readDates } from "./workflow-dates.mjs";
 
 export const CATALOG_SCHEMA_VERSION = 1;
 const WORKFLOW_ROOT = path.resolve("src", "workflows");
@@ -16,6 +17,7 @@ const LANG_ORDER = ["ja", "en", "zh"];
 // Wider than MODEL_EXT in workflow-graph.mjs on purpose: the catalog also lists ONNX models
 // (detectors and the like) that readers download, which the Pod checks do not need to know.
 const MODEL_FILE = /\.(safetensors|gguf|ckpt|pt|pth|bin|sft|onnx)$/i;
+const SOURCE_ORDER = ["loaders", "note", null];
 
 // `{% workflow "/workflows/…json", level=…, … %}`, `{% workflowPicker "!/workflows/…json", … %}` and
 // plain `[](/workflows/…json)` links (or `(../../../workflows/…json)`) all name the file the page
@@ -87,8 +89,9 @@ export const scanArticle = (body) => {
 };
 
 // Models: the loaders' `properties.models` (url and folder, as ComfyUI's missing-model dialog reads
-// them); for a workflow without them, the links in its note's `## models` list (older notes list them
-// without folders); failing both, just the file names its loaders ask for.
+// them); then the links in its note's `## models` list that no loader lists (older notes list them
+// without folders, and a note may offer alternatives the loaders do not pick); failing both, just
+// the file names its loaders ask for. Each model says which of the two it came from.
 export const noteModels = (workflow) => {
   const models = new Map();
   for (const node of eachNode(workflow)) {
@@ -130,29 +133,41 @@ export const workflowFacts = (workflow) => {
     }
     for (const model of node.properties?.models ?? []) {
       if (model?.name && model?.url) {
-        fromLoaders.set(`${model.directory ?? ""}/${model.name}`, { name: model.name, directory: model.directory ?? null, url: model.url });
+        fromLoaders.set(`${model.directory ?? ""}/${model.name}`, { name: model.name, directory: model.directory ?? null, url: model.url, source: "loaders" });
       }
     }
     const { cnr_id: cnr, aux_id: aux } = node.properties ?? {};
     if (cnr && cnr !== "comfy-core") customNodes.set(cnr, { id: cnr, source: "registry" });
     else if (!cnr && aux) customNodes.set(aux, { id: aux, source: "github" });
   }
-  const linked = fromLoaders.size ? [...fromLoaders.values()] : noteModels(workflow);
+  const byLoaders = new Set([...fromLoaders.values()].map((m) => m.name));
+  // A note may link a repository rather than a file (`Qwen-Image-Edit-gguf`); only files are models.
+  const fromNote = noteModels(workflow)
+    .filter((m) => MODEL_FILE.test(m.name) && !byLoaders.has(m.name))
+    .map((m) => ({ ...m, source: "note" }));
+  const linked = [...fromLoaders.values(), ...fromNote];
   const known = new Set(linked.map((m) => m.name));
-  const namesOnly = [...askedFor].filter((name) => !known.has(name)).map((name) => ({ name, directory: null, url: null }));
+  const namesOnly = [...askedFor].filter((name) => !known.has(name)).map((name) => ({ name, directory: null, url: null, source: null }));
   const models = [...linked, ...namesOnly];
   return {
-    models: models.sort((a, b) => `${a.directory ?? ""}/${a.name}`.localeCompare(`${b.directory ?? ""}/${b.name}`)),
+    // What the loaders pick first, then what only the note offers (often alternatives, such as GGUF
+    // versions), then bare names.
+    models: models.sort(
+      (a, b) =>
+        SOURCE_ORDER.indexOf(a.source) - SOURCE_ORDER.indexOf(b.source) ||
+        `${a.directory ?? ""}/${a.name}`.localeCompare(`${b.directory ?? ""}/${b.name}`),
+    ),
     models_source: fromLoaders.size ? "loaders" : linked.length ? "note" : namesOnly.length ? "names_only" : "none",
     custom_nodes: [...customNodes.values()].sort((a, b) => a.id.localeCompare(b.id)),
   };
 };
 
 /**
- * @param {{ siteURL: string, pages: { inputPath: string, url: string }[] }} options
+ * @param {{ siteURL: string, pages: { inputPath: string, url: string }[], dates?: Record<string, string> }} options
  *   `pages`: the built pages (Eleventy's results), so article URLs are the ones actually published.
+ *   `dates`: src/_data/workflowDates.json by default (see workflow-dates.mjs).
  */
-export const buildWorkflowCatalog = ({ siteURL, pages }) => {
+export const buildWorkflowCatalog = ({ siteURL, pages, dates = readDates() }) => {
   const site = siteURL.replace(/\/$/, "");
   const entries = new Map();
   for (const page of pages) {
@@ -183,6 +198,7 @@ export const buildWorkflowCatalog = ({ siteURL, pages }) => {
       return {
         name: path.basename(file),
         url: `${site}${ref}`,
+        updated: dates[ref.slice("/workflows/".length)] ?? null,
         articles: articles.map(({ performance: _, ...article }) => article),
         performance,
         ...workflowFacts(JSON.parse(fs.readFileSync(file, "utf8"))),
@@ -196,9 +212,11 @@ export const buildWorkflowCatalog = ({ siteURL, pages }) => {
     description:
       "Every ComfyUI workflow JSON published on Comfy with ComfyUI (CC0), with the articles that explain it. " +
       "Japanese articles are the source of truth. Workflow files are the ComfyUI UI format (open or drag into ComfyUI). " +
-      "models_source tells where the model list comes from: loaders (the workflow's own properties.models), note (links in its Markdown note), " +
+      "models_source tells where the model list comes from: loaders (the workflow's own properties.models, plus any model file its Markdown note links that no loader lists; those are often alternatives, such as GGUF versions), note (only links in its note), " +
       "names_only (only the file names its loaders ask for; find them through the article), or none (it picks no model file; a custom node may still download its own). " +
-      "A model with directory null does not say which models/ folder it belongs in.",
+      "Each model's source says the same per model (loaders, note, or null for a bare file name). " +
+      "A model with directory null does not say which models/ folder it belongs in. " +
+      "updated is the last day the workflow's build changed (YYYY-MM-DD); filling in model or custom node metadata does not move it.",
     generated_at: new Date().toISOString(),
     count: workflows.length,
     workflows,

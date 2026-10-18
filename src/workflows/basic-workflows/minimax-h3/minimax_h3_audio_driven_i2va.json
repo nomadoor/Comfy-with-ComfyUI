@@ -161,6 +161,7 @@
       ],
       "title": "Float: Duration (sec)",
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PrimitiveFloat"
       },
       "widgets_values": [
@@ -201,6 +202,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ModelAttentionBackend"
       },
       "widgets_values": [
@@ -439,6 +441,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ResizeImageMaskNode"
       },
       "widgets_values": [
@@ -497,6 +500,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "GetImageSize"
       },
       "widgets_values": [],
@@ -618,6 +622,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ResizeImageMaskNode"
       },
       "widgets_values": [
@@ -816,6 +821,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -920,6 +926,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadAudio"
       },
       "widgets_values": [
@@ -997,7 +1004,9 @@
           "links": null
         }
       ],
-      "properties": {},
+      "properties": {
+        "cnr_id": "comfy-core"
+      },
       "widgets_values": [
         "video/ComfyUI",
         "auto",
@@ -1042,6 +1051,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -1217,6 +1227,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "MiniMaxH3AddGuide"
       },
       "widgets_values": [

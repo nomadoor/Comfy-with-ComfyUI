@@ -114,7 +114,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.76",
-        "Node name for S&R": "VAELoader"
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "vae-ft-mse-840000-ema-pruned.safetensors",
+            "url": "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "vae-ft-mse-840000-ema-pruned.safetensors"
@@ -614,7 +621,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "CheckpointLoaderSimple"
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "models": [
+          {
+            "name": "AuroraONE_F16.safetensors",
+            "url": "https://huggingface.co/SweetLuna/Aurora/resolve/main/Aurora%20ONE/AuroraONE_F16.safetensors",
+            "directory": "checkpoints"
+          }
+        ]
       },
       "widgets_values": [
         "😎-v1.x\\AuroraONE_F16.safetensors"

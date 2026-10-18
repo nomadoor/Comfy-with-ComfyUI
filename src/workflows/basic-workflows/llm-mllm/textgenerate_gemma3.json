@@ -31,7 +31,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.17.0",
-        "Node name for S&R": "CLIPLoader"
+        "Node name for S&R": "CLIPLoader",
+        "models": [
+          {
+            "name": "gemma_3_12B_it_fp8_scaled.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/text_encoders/gemma_3_12B_it_fp8_scaled.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
         "gemma_3_12B_it_fp8_scaled.safetensors",

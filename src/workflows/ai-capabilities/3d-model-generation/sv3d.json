@@ -27,6 +27,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPVisionLoader"
       },
       "widgets_values": [
@@ -99,6 +100,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "SV3D_Conditioning"
       },
       "widgets_values": [
@@ -139,7 +141,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "VAELoader"
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "vae-ft-mse-840000-ema-pruned.safetensors",
+            "url": "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "vae-ft-mse-840000-ema-pruned.safetensors"
@@ -182,7 +192,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "CheckpointLoaderSimple"
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "models": [
+          {
+            "name": "sv3d_p.safetensors",
+            "url": "https://huggingface.co/stabilityai/sv3d/resolve/main/sv3d_p.safetensors",
+            "directory": "checkpoints"
+          }
+        ]
       },
       "widgets_values": [
         "SV3D\\sv3d_p.safetensors"
@@ -221,6 +239,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -265,6 +284,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "VAEDecode"
       }
     },
@@ -308,6 +328,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
         "Node name for S&R": "VHS_VideoCombine"
       },
       "widgets_values": {
@@ -376,6 +397,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
@@ -421,6 +443,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "VideoTriangleCFGGuidance"
       },
       "widgets_values": [

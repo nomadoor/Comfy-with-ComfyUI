@@ -31,7 +31,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.66",
-        "Node name for S&R": "UNETLoader"
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "pony-v7-base.safetensors",
+            "url": "https://huggingface.co/purplesmartai/pony-v7-base/resolve/main/safetensor/pony-v7-base.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "AuraFlow\\pony-v7-base.safetensors",
@@ -110,7 +117,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.66",
-        "Node name for S&R": "CLIPLoader"
+        "Node name for S&R": "CLIPLoader",
+        "models": [
+          {
+            "name": "model.fp16.safetensors",
+            "url": "https://huggingface.co/purplesmartai/pony-v7-base/resolve/main/text_encoder/model.fp16.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
         "model.fp16.safetensors",
@@ -328,7 +342,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.66",
-        "Node name for S&R": "VAELoader"
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "diffusion_pytorch_model.fp16.safetensors",
+            "url": "https://huggingface.co/purplesmartai/pony-v7-base/resolve/main/vae/diffusion_pytorch_model.fp16.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "diffusion_pytorch_model.fp16.safetensors"

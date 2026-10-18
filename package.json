@@ -15,7 +15,7 @@
     "check:assets": "node scripts/check-esm.mjs && node scripts/check-icons.mjs",
     "check:content": "node scripts/check-frontmatter.mjs && node scripts/check-nav-integrity.mjs && node scripts/check-markdown-links.mjs",
     "check:encoding": "node scripts/check-utf8.mjs",
-    "check:workflows": "node scripts/check-workflows.mjs",
+    "check:workflows": "node scripts/check-workflows.mjs && node scripts/workflow-dates.mjs --check",
     "check:runpod": "node runpod/tools/check.mjs",
     "check:media": "node scripts/check-media.mjs",
     "check:build": "node scripts/check-build-output.mjs",

@@ -31,7 +31,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.39",
-        "Node name for S&R": "VAELoader"
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "ae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Lumina_Image_2.0_Repackaged/resolve/main/split_files/vae/ae.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "ae.safetensors"
@@ -109,7 +116,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.39",
-        "Node name for S&R": "UNETLoader"
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "NewBie-Image-Exp0.1-bf16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/NewBie-image-Exp0.1_repackaged/resolve/main/split_files/diffusion_models/NewBie-Image-Exp0.1-bf16.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "Lumina\\NewBie-Image-Exp0.1-bf16.safetensors",
@@ -264,7 +278,19 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.5.1",
-        "Node name for S&R": "DualCLIPLoader"
+        "Node name for S&R": "DualCLIPLoader",
+        "models": [
+          {
+            "name": "gemma_3_4b_it_bf16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/NewBie-image-Exp0.1_repackaged/resolve/main/split_files/text_encoders/gemma_3_4b_it_bf16.safetensors",
+            "directory": "text_encoders"
+          },
+          {
+            "name": "jina_clip_v2_bf16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/NewBie-image-Exp0.1_repackaged/resolve/main/split_files/text_encoders/jina_clip_v2_bf16.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
         "gemma_3_4b_it_bf16.safetensors",

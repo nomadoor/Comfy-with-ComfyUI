@@ -39,6 +39,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "VAEDecode"
       },
       "widgets_values": []
@@ -66,6 +67,7 @@
       ],
       "outputs": [],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewImage"
       },
       "widgets_values": []
@@ -96,7 +98,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "PulidFluxModelLoader"
+        "cnr_id": "comfyui_pulid_flux_ll",
+        "Node name for S&R": "PulidFluxModelLoader",
+        "models": [
+          {
+            "name": "pulid_flux_v0.9.1.safetensors",
+            "url": "https://huggingface.co/guozinan/PuLID/resolve/main/pulid_flux_v0.9.1.safetensors",
+            "directory": "pulid"
+          }
+        ]
       },
       "widgets_values": [
         "pulid_flux_v0.9.1.safetensors"
@@ -151,6 +161,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
@@ -196,6 +207,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "FluxGuidance"
       },
       "widgets_values": [
@@ -227,6 +239,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_pulid_flux_ll",
         "Node name for S&R": "PulidFluxInsightFaceLoader"
       },
       "widgets_values": [
@@ -260,6 +273,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_pulid_flux_ll",
         "Node name for S&R": "PulidFluxEvaClipLoader"
       },
       "widgets_values": [],
@@ -296,6 +310,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -329,6 +344,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "EmptyLatentImage"
       },
       "widgets_values": [
@@ -369,6 +385,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -402,6 +419,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "VAELoader"
       },
       "widgets_values": [
@@ -440,6 +458,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoraLoaderModelOnly"
       },
       "widgets_values": [
@@ -473,7 +492,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "UnetLoaderGGUF"
+        "cnr_id": "ComfyUI-GGUF",
+        "Node name for S&R": "UnetLoaderGGUF",
+        "models": [
+          {
+            "name": "flux1-dev-Q4_0.gguf",
+            "url": "https://huggingface.co/city96/FLUX.1-dev-gguf/resolve/main/flux1-dev-Q4_0.gguf",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "FLUX_gguf\\flux1-dev-Q4_0.gguf"
@@ -507,7 +534,20 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "DualCLIPLoader"
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "DualCLIPLoader",
+        "models": [
+          {
+            "name": "clip_l.safetensors",
+            "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors",
+            "directory": "text_encoders"
+          },
+          {
+            "name": "t5xxl_fp16.safetensors",
+            "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
         "t5xxl_fp16.safetensors",
@@ -548,6 +588,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -612,6 +653,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui_pulid_flux_ll",
         "Node name for S&R": "ApplyPulidFlux"
       },
       "widgets_values": [

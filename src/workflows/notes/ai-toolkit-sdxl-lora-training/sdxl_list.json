@@ -487,7 +487,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.33",
-        "Node name for S&R": "CheckpointLoaderSimple"
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "models": [
+          {
+            "name": "waiIllustriousSDXL_v160.safetensors",
+            "url": "https://civitai.com/api/download/models/2514310",
+            "directory": "checkpoints"
+          }
+        ]
       },
       "widgets_values": [
         "waiIllustriousSDXL_v160.safetensors"

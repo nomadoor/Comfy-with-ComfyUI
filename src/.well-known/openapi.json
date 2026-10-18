@@ -307,6 +307,13 @@
                 "url": {
                   "type": "string"
                 },
+                "updated": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Last day the workflow's build changed (YYYY-MM-DD). Filling in model or custom node metadata does not move it."
+                },
                 "articles": {
                   "type": "array",
                   "items": {
@@ -357,6 +364,24 @@
                         "type": [
                           "string",
                           "null"
+                        ]
+                      },
+                      "size": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "description": "File size as the workflow's note gives it (note models only)."
+                      },
+                      "source": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "enum": [
+                          "loaders",
+                          "note",
+                          null
                         ]
                       }
                     }

@@ -74,7 +74,14 @@
       "properties": {
         "Node name for S&R": "UNETLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "krea2_turbo_fp8_scaled.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
       },
       "widgets_values": [
         "krea2_turbo_fp8_scaled.safetensors",
@@ -115,7 +122,14 @@
       "properties": {
         "Node name for S&R": "CLIPLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "qwen3vl_4b_fp8_scaled.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
       },
       "widgets_values": [
         "qwen3vl_4b_fp8_scaled.safetensors",
@@ -377,7 +391,14 @@
       "properties": {
         "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.33"
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "qwen_image_vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/vae/qwen_image_vae.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "qwen_image_vae.safetensors"
@@ -419,6 +440,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ConditioningZeroOut"
       }
     },
@@ -496,6 +518,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "typed-decision",
         "Node name for S&R": "TypedDecision"
       },
       "widgets_values": [
@@ -540,6 +563,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "typed-decision",
         "Node name for S&R": "LoadTypedDecisionModel",
         "models": [
           {
@@ -590,6 +614,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PrimitiveStringMultiline"
       },
       "widgets_values": [
@@ -638,6 +663,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "GetItemFromList"
       },
       "widgets_values": [
@@ -686,6 +712,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "GetItemFromList"
       },
       "widgets_values": [
@@ -745,6 +772,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CreateList"
       }
     },
@@ -798,6 +826,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CreateList"
       }
     },
@@ -827,6 +856,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PrimitiveInt"
       },
       "widgets_values": [
@@ -864,6 +894,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PrimitiveInt"
       },
       "widgets_values": [
@@ -901,6 +932,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PrimitiveInt"
       },
       "widgets_values": [
@@ -941,6 +973,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewAny"
       },
       "widgets_values": [],
@@ -975,6 +1008,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewAny"
       },
       "widgets_values": [],

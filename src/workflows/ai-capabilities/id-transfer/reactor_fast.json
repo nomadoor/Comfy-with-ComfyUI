@@ -35,6 +35,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -96,7 +97,20 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ReActorFaceSwap"
+        "cnr_id": "comfyui-reactor",
+        "Node name for S&R": "ReActorFaceSwap",
+        "models": [
+          {
+            "name": "inswapper_128.onnx",
+            "url": "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/inswapper_128.onnx",
+            "directory": "insightface"
+          },
+          {
+            "name": "GPEN-BFR-2048.onnx",
+            "url": "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GPEN-BFR-2048.onnx",
+            "directory": "facerestore_models"
+          }
+        ]
       },
       "widgets_values": [
         true,
@@ -137,6 +151,7 @@
       ],
       "outputs": [],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewImage"
       }
     },
@@ -173,6 +188,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [

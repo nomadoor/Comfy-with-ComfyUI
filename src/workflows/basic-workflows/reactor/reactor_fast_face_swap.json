@@ -141,7 +141,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ReActorFaceSwap"
+        "cnr_id": "comfyui-reactor",
+        "Node name for S&R": "ReActorFaceSwap",
+        "models": [
+          {
+            "name": "inswapper_128.onnx",
+            "url": "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/inswapper_128.onnx",
+            "directory": "insightface"
+          }
+        ]
       },
       "widgets_values": [
         true,

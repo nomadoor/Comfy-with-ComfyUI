@@ -198,7 +198,14 @@
       "properties": {
         "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.76"
+        "ver": "0.3.76",
+        "models": [
+          {
+            "name": "vae-ft-mse-840000-ema-pruned.safetensors",
+            "url": "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "vae-ft-mse-840000-ema-pruned.safetensors"
@@ -495,7 +502,14 @@
       "properties": {
         "Node name for S&R": "CheckpointLoaderSimple",
         "cnr_id": "comfy-core",
-        "ver": "0.3.76"
+        "ver": "0.3.76",
+        "models": [
+          {
+            "name": "epicrealism_naturalSinRC1VAE.safetensors",
+            "url": "https://civitai.com/api/download/models/143906",
+            "directory": "checkpoints"
+          }
+        ]
       },
       "widgets_values": [
         "SD1.5/epicrealism_naturalSinRC1VAE.safetensors"
@@ -550,7 +564,14 @@
       "properties": {
         "Node name for S&R": "CheckpointLoaderSimple",
         "cnr_id": "comfy-core",
-        "ver": "0.3.76"
+        "ver": "0.3.76",
+        "models": [
+          {
+            "name": "meinamix_v12Final.safetensors",
+            "url": "https://civitai.com/api/download/models/948574",
+            "directory": "checkpoints"
+          }
+        ]
       },
       "widgets_values": [
         "SD1.5/meinamix_v12Final.safetensors"

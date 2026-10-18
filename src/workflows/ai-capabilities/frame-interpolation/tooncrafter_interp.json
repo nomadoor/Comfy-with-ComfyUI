@@ -35,6 +35,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -75,6 +76,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -126,6 +128,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
         "Node name for S&R": "VHS_VideoCombine"
       },
       "widgets_values": {
@@ -180,6 +183,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-dynamicrafterwrapper",
         "Node name for S&R": "DownloadAndLoadDynamiCrafterModel"
       },
       "widgets_values": [
@@ -217,6 +221,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-dynamicrafterwrapper",
         "Node name for S&R": "DownloadAndLoadCLIPVisionModel"
       },
       "widgets_values": [
@@ -253,6 +258,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-dynamicrafterwrapper",
         "Node name for S&R": "DownloadAndLoadCLIPModel"
       },
       "widgets_values": [
@@ -324,6 +330,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-dynamicrafterwrapper",
         "Node name for S&R": "ToonCrafterInterpolation"
       },
       "widgets_values": [
@@ -374,6 +381,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -418,6 +426,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-dynamicrafterwrapper",
         "Node name for S&R": "ToonCrafterDecode"
       },
       "widgets_values": [
@@ -465,6 +474,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ImageBatch"
       },
       "color": "#323",
@@ -514,6 +524,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "image-resize-comfyui",
         "Node name for S&R": "ImageResize"
       },
       "widgets_values": [
@@ -562,6 +573,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [

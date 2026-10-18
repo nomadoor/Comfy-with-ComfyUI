@@ -356,6 +356,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LTXVSeparateAVLatent"
       },
       "color": "#332922",
@@ -393,6 +394,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ModelAttentionBackend"
       },
       "widgets_values": [
@@ -609,6 +611,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-minimax-h3-latent-upscaler",
         "Node name for S&R": "MinimaxH3LatentUpscaler3D",
         "models": [
           {
@@ -677,6 +680,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LTXVConcatAVLatent"
       },
       "color": "#332922",
@@ -1117,6 +1121,7 @@
       ],
       "title": "Float: Duration (sec)",
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PrimitiveFloat"
       },
       "widgets_values": [

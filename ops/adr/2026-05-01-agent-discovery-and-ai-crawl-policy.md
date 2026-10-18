@@ -53,3 +53,19 @@ Agents that need a workflow, rather than an article, had to open articles one by
 - `llms.txt` is rendered without the blank lines its template used to leave between list items.
 - `scripts/lib/workflow-catalog.test.mjs` (`npm run test:unit`, part of `npm run check`) covers how articles and workflow files are read; Playwright checks that `llms.txt` links the catalog and the catalog is served. Files written after the build (the catalog and the Runpod profiles) go to Eleventy's actual output directory, so the Playwright server's `--output` gets them too.
 - Not included for now: API-format workflow JSON (needs ComfyUI's node definitions to convert), the date and ComfyUI version a workflow was last verified with, and model licenses. Revisit once the catalog shows use.
+
+## 2026-10-18 Amendment: Workflow update dates
+
+An agent that takes a workflow from the catalog as a model to imitate (readable-node, a skill that rebuilds ComfyUI workflows for readability) needs to prefer the newer of two workflows for the same task, so it does not copy an outdated build.
+
+- Each catalog entry gains `updated` (`YYYY-MM-DD`): the last day the workflow's build changed. `schema_version` stays 1, since the field is only added.
+- The date is recorded when the workflow is committed, not computed at build time: `.githooks/pre-commit` runs `scripts/workflow-dates.mjs --staged`, which writes `src/_data/workflowDates.json` and stages it. The build only reads that file, so the date does not depend on the build host's git history (Cloudflare Pages clones shallowly).
+- A commit that only fills metadata on the nodes (`properties.models`, `cnr_id`, `ver`, `aux_id`) does not move the date. Filling those in bulk must not make old workflows look new.
+- `scripts/workflow-dates.mjs --backfill` fills the file from the git history once, under the same rule; `--check` (part of `npm run check:workflows`) fails when a workflow has no date or a date names a file that no longer exists.
+- The date is only as good as the hook: a change committed without it (`--no-verify`, a clone without `npm install`, an edit on GitHub) keeps the old date, and `--check` cannot tell. A merge commit made by hand (after resolving a conflict) dates the other side's workflows to the merge day. The backfill uses committer dates, so rebased history carries the rebase day. `git commit -- <path>` is refused when the hook would update a manifest, since its temporary index would not keep the update.
+
+## 2026-10-18 Amendment: Loader and note models together
+
+Filling `properties.models` into older workflows left some with loader metadata for part of their models and note links for the rest. The catalog used to drop the note as soon as any loader had metadata, which lost those links.
+
+- A workflow's models are now the loaders' `properties.models`, plus every model file its `## models` note links that no loader lists (listed after them; these are often alternatives such as GGUF versions, and repository links are left out), plus the bare file names neither covers. Each model carries `source` (`loaders`, `note`, or `null` for a bare name). `models_source` keeps its values; `loaders` now means "the loaders, topped up from the note".

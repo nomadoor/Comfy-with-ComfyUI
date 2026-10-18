@@ -31,7 +31,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "VAELoader"
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "vae-ft-mse-840000-ema-pruned.safetensors",
+            "url": "https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors",
+            "directory": "vae"
+          }
+        ]
       },
       "widgets_values": [
         "vae-ft-mse-840000-ema-pruned.safetensors"
@@ -69,6 +77,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -113,6 +122,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "VAEDecode"
       }
     },
@@ -138,6 +148,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewImage"
       }
     },
@@ -179,6 +190,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "VAEEncode"
       }
     },
@@ -222,7 +234,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "CheckpointLoaderSimple"
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "models": [
+          {
+            "name": "dreamshaper_8.safetensors",
+            "url": "https://civitai.com/api/download/models/128713",
+            "directory": "checkpoints"
+          }
+        ]
       },
       "widgets_values": [
         "📷-v1.x\\dreamshaper_8.safetensors"
@@ -253,7 +273,15 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ControlNetLoader"
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "ControlNetLoader",
+        "models": [
+          {
+            "name": "control_v11f1e_sd15_tile.pth",
+            "url": "https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11f1e_sd15_tile.pth",
+            "directory": "controlnet"
+          }
+        ]
       },
       "widgets_values": [
         "ControlNet-v1-1\\control_v11f1e_sd15_tile.pth"
@@ -293,6 +321,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
@@ -358,6 +387,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ControlNetApplyAdvanced"
       },
       "widgets_values": [
@@ -401,6 +431,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "ComfyUI-TiledDiffusion",
         "Node name for S&R": "TiledDiffusion"
       },
       "widgets_values": [
@@ -447,6 +478,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "ImageScale"
       },
       "widgets_values": [
@@ -506,6 +538,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
@@ -550,6 +583,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [

@@ -1088,6 +1088,7 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
         "Node name for S&R": "VHS_LoadVideo"
       },
       "widgets_values": {
@@ -1169,6 +1170,7 @@
       ],
       "title": "Float: Duration (sec)",
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PrimitiveFloat"
       },
       "widgets_values": [

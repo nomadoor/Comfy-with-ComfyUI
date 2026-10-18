@@ -535,6 +535,11 @@
             "name": "ltx-2-19b-distilled-lora-384.safetensors",
             "url": "https://huggingface.co/Lightricks/LTX-2/resolve/main/ltx-2-19b-distilled-lora-384.safetensors",
             "directory": "loras"
+          },
+          {
+            "name": "ltx-2-19b-ic-lora-detailer.safetensors",
+            "url": "https://huggingface.co/Lightricks/LTX-2-19b-IC-LoRA-Detailer/resolve/main/ltx-2-19b-ic-lora-detailer.safetensors",
+            "directory": "loras"
           }
         ]
       },

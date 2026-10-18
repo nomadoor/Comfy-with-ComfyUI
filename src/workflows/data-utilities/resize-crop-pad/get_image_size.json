@@ -66,6 +66,7 @@
       ],
       "outputs": [],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewAny"
       },
       "widgets_values": [
@@ -97,6 +98,7 @@
       ],
       "outputs": [],
       "properties": {
+        "cnr_id": "comfy-core",
         "Node name for S&R": "PreviewAny"
       },
       "widgets_values": [
