@@ -307,6 +307,13 @@
                 "url": {
                   "type": "string"
                 },
+                "updated": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Last day the workflow's build changed (YYYY-MM-DD). Filling in model or custom node metadata does not move it."
+                },
                 "articles": {
                   "type": "array",
                   "items": {

@@ -8,6 +8,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { splitFrontmatter } from "./files.mjs";
 import { eachNode } from "./workflow-graph.mjs";
+import { readDates } from "./workflow-dates.mjs";
 
 export const CATALOG_SCHEMA_VERSION = 1;
 const WORKFLOW_ROOT = path.resolve("src", "workflows");
@@ -149,10 +150,11 @@ export const workflowFacts = (workflow) => {
 };
 
 /**
- * @param {{ siteURL: string, pages: { inputPath: string, url: string }[] }} options
+ * @param {{ siteURL: string, pages: { inputPath: string, url: string }[], dates?: Record<string, string> }} options
  *   `pages`: the built pages (Eleventy's results), so article URLs are the ones actually published.
+ *   `dates`: src/_data/workflowDates.json by default (see workflow-dates.mjs).
  */
-export const buildWorkflowCatalog = ({ siteURL, pages }) => {
+export const buildWorkflowCatalog = ({ siteURL, pages, dates = readDates() }) => {
   const site = siteURL.replace(/\/$/, "");
   const entries = new Map();
   for (const page of pages) {
@@ -183,6 +185,7 @@ export const buildWorkflowCatalog = ({ siteURL, pages }) => {
       return {
         name: path.basename(file),
         url: `${site}${ref}`,
+        updated: dates[ref.slice("/workflows/".length)] ?? null,
         articles: articles.map(({ performance: _, ...article }) => article),
         performance,
         ...workflowFacts(JSON.parse(fs.readFileSync(file, "utf8"))),
@@ -198,7 +201,8 @@ export const buildWorkflowCatalog = ({ siteURL, pages }) => {
       "Japanese articles are the source of truth. Workflow files are the ComfyUI UI format (open or drag into ComfyUI). " +
       "models_source tells where the model list comes from: loaders (the workflow's own properties.models), note (links in its Markdown note), " +
       "names_only (only the file names its loaders ask for; find them through the article), or none (it picks no model file; a custom node may still download its own). " +
-      "A model with directory null does not say which models/ folder it belongs in.",
+      "A model with directory null does not say which models/ folder it belongs in. " +
+      "updated is the last day the workflow's build changed (YYYY-MM-DD); filling in model or custom node metadata does not move it.",
     generated_at: new Date().toISOString(),
     count: workflows.length,
     workflows,

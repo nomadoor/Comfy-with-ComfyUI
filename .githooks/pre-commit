@@ -1,7 +1,21 @@
 #!/bin/sh
-# Upload new or changed media referenced by staged site sources (and the sample inputs of the RunPod
-# profiles' workflows), then stage the updated manifest.
+# Record the day each staged workflow's build changed (src/workflows/**, see scripts/workflow-dates.mjs),
+# then upload new or changed media referenced by staged site sources (and the sample inputs of the RunPod
+# profiles' workflows), then stage the updated manifests.
 # Skip once with: SKIP_MEDIA_SYNC=1 git commit ...
+
+if git diff --cached --name-only | grep -q '^src/workflows/'; then
+  # The hook stages workflowDates.json in full below, so an unstaged hand edit there would slip in.
+  if ! git diff --quiet -- src/_data/workflowDates.json; then
+    echo "[pre-commit] src/_data/workflowDates.json has unstaged changes; stage or discard them first" >&2
+    exit 1
+  fi
+  if ! node scripts/workflow-dates.mjs --staged; then
+    echo "[pre-commit] workflow-dates failed; commit aborted" >&2
+    exit 1
+  fi
+  git add src/_data/workflowDates.json
+fi
 
 [ "$SKIP_MEDIA_SYNC" = "1" ] && exit 0
 
