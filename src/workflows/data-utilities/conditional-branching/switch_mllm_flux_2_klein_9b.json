@@ -79,7 +79,7 @@
         "models": [
           {
             "name": "flux2-vae.safetensors",
-            "url": "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/main/vae/flux2-vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/resolve/main/split_files/vae/flux2-vae.safetensors",
             "directory": "vae"
           }
         ]

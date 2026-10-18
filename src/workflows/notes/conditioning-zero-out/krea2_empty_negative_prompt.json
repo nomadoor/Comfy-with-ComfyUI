@@ -480,7 +480,7 @@
         "models": [
           {
             "name": "qwen_image_vae.safetensors",
-            "url": "https://huggingface.co/circlestone-labs/Anima/resolve/main/split_files/vae/qwen_image_vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/vae/qwen_image_vae.safetensors",
             "directory": "vae"
           }
         ]
