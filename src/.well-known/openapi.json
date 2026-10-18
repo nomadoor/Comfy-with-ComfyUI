@@ -366,6 +366,13 @@
                           "null"
                         ]
                       },
+                      "size": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "description": "File size as the workflow's note gives it (note models only)."
+                      },
                       "source": {
                         "type": [
                           "string",

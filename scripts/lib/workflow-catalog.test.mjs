@@ -89,14 +89,14 @@ test("workflowFacts takes loader metadata, adds what only the note links, then b
     properties: { cnr_id: "comfy-core", models: [{ name: "m.safetensors", directory: "diffusion_models", url: "https://huggingface.co/x/resolve/main/m.safetensors" }] },
   };
   const facts = workflowFacts({
-    nodes: [loader, note("## models\n- [m.safetensors](https://huggingface.co/other/m)\n- [n.safetensors](https://huggingface.co/n)")],
+    nodes: [loader, note("## models\n- [m.safetensors](https://huggingface.co/other/m)\n- [n.safetensors](https://huggingface.co/n)\n- [Some-Repo-gguf](https://huggingface.co/r)")],
   });
   assert.equal(facts.models_source, "loaders");
   assert.deepEqual(
     facts.models.map((m) => [m.name, m.url, m.source]),
     [
-      ["n.safetensors", "https://huggingface.co/n", "note"],
       ["m.safetensors", "https://huggingface.co/x/resolve/main/m.safetensors", "loaders"],
+      ["n.safetensors", "https://huggingface.co/n", "note"],
     ],
   );
 

@@ -11,11 +11,13 @@ export const DATES_PATH = path.resolve("src", "_data", "workflowDates.json");
 // them in (often in bulk, years after the workflow was made) must not make a workflow look new.
 const METADATA = ["models", "cnr_id", "ver", "aux_id"];
 
+// A node whose properties hold nothing but metadata compares like one without properties.
 const stripMetadata = (node) => {
   if (!node?.properties) return node;
+  const { properties: _, ...rest } = node;
   const properties = { ...node.properties };
   for (const key of METADATA) delete properties[key];
-  return { ...node, properties };
+  return Object.keys(properties).length ? { ...rest, properties } : rest;
 };
 
 // The workflow without the node metadata above, as a string to compare. Text that is not JSON is
@@ -27,6 +29,7 @@ export const buildOf = (text) => {
   } catch {
     return text;
   }
+  if (!workflow || typeof workflow !== "object") return text;
   const shaped = { ...workflow, nodes: (workflow.nodes ?? []).map(stripMetadata) };
   if (workflow.definitions?.subgraphs) {
     shaped.definitions = {

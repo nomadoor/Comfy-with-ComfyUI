@@ -11,6 +11,9 @@ test("buildChanged ignores node metadata, in subgraphs too, but not the build", 
   assert.equal(buildChanged(bare, filled), false);
   assert.equal(buildChanged(bare, bare.replace("a.safetensors", "b.safetensors")), true);
   assert.equal(buildChanged(null, bare), true);
+  const node = (extra) => JSON.stringify({ nodes: [{ id: 1, type: "VAELoader", ...extra }] });
+  assert.equal(buildChanged(node({}), node({ properties: { cnr_id: "comfy-core" } })), false);
+  assert.equal(buildChanged("null", "null"), false);
 
   const sub = (properties) => JSON.stringify({ nodes: [], definitions: { subgraphs: [{ id: "s", nodes: [{ id: 2, properties }] }] } });
   assert.equal(buildChanged(sub({}), sub({ aux_id: "owner/repo" })), false);

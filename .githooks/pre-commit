@@ -4,7 +4,18 @@
 # profiles' workflows), then stage the updated manifests.
 # Skip once with: SKIP_MEDIA_SYNC=1 git commit ...
 
-if git diff --cached --name-only | grep -q '^src/workflows/'; then
+# `git commit -- <path>` runs the hook on a temporary index: what the hook stages goes into that commit
+# but not into the real index, so the next commit would silently undo it.
+case "$GIT_INDEX_FILE" in
+  *next-index*)
+    if git -c core.quotePath=false diff --cached --name-only | grep -qE '^src/(content|_data|includes|layouts|workflows)/|^src/[^/]+\.(md|njk)$|^runpod/profiles/'; then
+      echo "[pre-commit] commit with paths (git commit -- <path>) cannot update the manifests; git add the files, then git commit" >&2
+      exit 1
+    fi
+    ;;
+esac
+
+if git -c core.quotePath=false diff --cached --name-only | grep -q '^src/workflows/'; then
   # The hook stages workflowDates.json in full below, so an unstaged hand edit there would slip in.
   if ! git diff --quiet -- src/_data/workflowDates.json; then
     echo "[pre-commit] src/_data/workflowDates.json has unstaged changes; stage or discard them first" >&2
@@ -19,7 +30,7 @@ fi
 
 [ "$SKIP_MEDIA_SYNC" = "1" ] && exit 0
 
-if ! git diff --cached --name-only --diff-filter=ACMR | grep -qE '^src/(content|_data|includes|layouts|workflows)/|^src/[^/]+\.(md|njk)$|^runpod/profiles/'; then
+if ! git -c core.quotePath=false diff --cached --name-only --diff-filter=ACMR | grep -qE '^src/(content|_data|includes|layouts|workflows)/|^src/[^/]+\.(md|njk)$|^runpod/profiles/'; then
   exit 0
 fi
 
