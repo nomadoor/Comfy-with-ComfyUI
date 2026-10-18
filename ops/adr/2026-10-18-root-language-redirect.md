@@ -12,9 +12,9 @@ Accepted
 - `/` は Pages Function `functions/index.ts` が答える。`Accept-Language` を重み順に見て、最初に当たった `ja` / `en` / `zh` のホームへ送る。どれも無いとき（それ以外の言語の読者、言語を送らないクローラー）は `/en/`。日本語以外の読者にとって一番読みやすいのは英語なので、既定は英語にする。
 - 302 にし、`Vary: Accept-Language` と `Cache-Control: private, no-store` を付ける。行き先が要求ごとに変わるので、恒久的な 301 やキャッシュは使わない。クエリ文字列は引き継ぐ。
 - `src/_redirects` から `/ /ja/ 301` を外す。`src/index.njk`（meta refresh と JS で `/ja/` へ）は、開発サーバーなど Function が動かない場所のための予備として残す。
-- 各ページの hreflang の `x-default` は、この ADR では変えない（日本語のまま）。
+- 各ページの hreflang の `x-default` も、日本語から英語の URL に変える。`/` の既定と同じく、どの言語にも当たらない読者には英語を出す。英語版の無いページは日本語のまま。
 - 振り分けるのは `/` だけ。言語つきの URL を開いた読者を別の言語へ動かすことはしない（言語ボタンを光らせて知らせる今の動きは変えない）。
 
 ## Files
 - Added: `functions/index.ts`, `functions/_lib/home-lang.mjs`, `functions/_lib/home-lang.test.mjs`
-- Updated: `src/_redirects`, `src/index.njk`, `package.json`（`test:unit` に追加）, `ops/requirements.md`, `ops/ia.md`
+- Updated: `src/_redirects`, `eleventy/filters.mjs`（x-default）, `src/index.njk`, `package.json`（`test:unit` に追加）, `ops/requirements.md`, `ops/ia.md`
