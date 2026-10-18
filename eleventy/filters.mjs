@@ -310,7 +310,8 @@ export function registerFilters(eleventyConfig) {
   };
 
   // hreflang alternates for a localized URL, limited to translations that were actually built
-  // (JA is the source language, so EN/ZH may not exist yet). x-default is the default-language URL.
+  // (JA is the source language, so EN/ZH may not exist yet). x-default is the English URL, the version
+  // for readers of none of these languages; the default-language URL when there is no English page.
   // URLs of built pages that are not noindex, cached per collection object.
   const builtUrlSets = new WeakMap();
   const indexableUrls = (collection) => {
@@ -327,8 +328,8 @@ export function registerFilters(eleventyConfig) {
       const href = localizedPathFor(url, code);
       if (href && built.has(href)) alternates.push({ hreflang: code, href });
     }
-    const defaultHref = localizedPathFor(url, defaultLang);
-    if (alternates.length > 1 && built.has(defaultHref)) alternates.push({ hreflang: "x-default", href: defaultHref });
+    const xDefault = ["en", defaultLang].map((code) => localizedPathFor(url, code)).find((href) => href && built.has(href));
+    if (alternates.length > 1 && xDefault) alternates.push({ hreflang: "x-default", href: xDefault });
     return alternates.length > 1 ? alternates : [];
   });
 

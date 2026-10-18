@@ -173,7 +173,7 @@
 
 ## 18. i18n SEO (Canonical / Hreflang / Sitemap)
 - `link rel="canonical"` must be present for every page (`site.url + page.url`).
-- When a page exists in two or more languages, emit `hreflang` for each existing `ja` / `en` / `zh` translation plus `x-default` (the default-language URL). A page that exists in only one language emits no `hreflang`, since there is no alternate to declare.
+- When a page exists in two or more languages, emit `hreflang` for each existing `ja` / `en` / `zh` translation plus `x-default`, which points to the English URL (the Japanese URL when the page has no English version; `adr/2026-10-18-root-language-redirect.md`). A page that exists in only one language emits no `hreflang`, since there is no alternate to declare.
 - Sitemaps should include alternate language references (`xhtml:link`) or equivalent per-locale sitemaps.
 - `hreflang` alternates (HTML and sitemap) are built by swapping the language segment of the page URL, and are emitted only for translations that exist. Noindex placeholders and the 404 page emit no `hreflang`.
 - Page-specific head tags (description, robots, canonical, Open Graph, Twitter, `article:*`, author, JSON-LD, `hreflang`) carry `data-page-meta`; the router replaces that set from the fetched page on every navigation so the head matches a direct load.
@@ -190,7 +190,7 @@
 - AI crawler policy is permissive: allow crawling for search, AI input, and AI training unless a future owner directive narrows this policy.
 - Publish machine-readable discovery files under `/.well-known/` only when they describe real site capabilities; do not advertise protected APIs, OAuth issuers, or MCP servers that do not exist.
 - Prefer low-maintenance static discovery artifacts for this Eleventy site. Cloudflare-only features may be enabled operationally, but their intended behavior must be reflected here or in an ADR.
-- `/` must use a real HTTP redirect (301) to the Japanese language home `/ja/`; meta refresh and JavaScript are fallback output only, not the public redirect mechanism.
+- `/` must use a real HTTP redirect to a language home, chosen from the request's `Accept-Language` (first supported of `ja` / `en` / `zh` by weight, otherwise `/en/`). It is a 302 with `Vary: Accept-Language`, served by the Pages Function `functions/index.ts`; meta refresh and JavaScript in `src/index.njk` are fallback output only. See `adr/2026-10-18-root-language-redirect.md`.
 - `llms.txt` must state concrete situations in which an agent should use the site.
 - `/workflows/index.json` lists every workflow JSON the published articles link, generated at build time; it must not state model downloads or settings the workflow files and articles do not contain.
 - Normal content pages publish minimal `WebSite` + `WebPage` JSON-LD using their canonical URL, language, title, and summary.
