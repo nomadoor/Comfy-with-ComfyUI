@@ -1,15 +1,15 @@
 {
-  "id": "d8034549-7e0a-40f1-8c2e-de3ffc6f1cae",
+  "id": "82f8e8b2-8daf-4d31-b10c-57f86c7b8587",
   "revision": 0,
-  "last_node_id": 132,
-  "last_link_id": 263,
+  "last_node_id": 134,
+  "last_link_id": 278,
   "nodes": [
     {
       "id": 57,
       "type": "CLIPVisionLoader",
       "pos": [
-        198.41612625655785,
-        1467.4246010131833
+        206.41903405565162,
+        1502.1955240091906
       ],
       "size": [
         270,
@@ -54,7 +54,7 @@
       "type": "CLIPLoader",
       "pos": [
         56.288665771484375,
-        63.8154509134279
+        59.804082459569884
       ],
       "size": [
         301.3524169921875,
@@ -190,8 +190,8 @@
       "id": 48,
       "type": "ModelSamplingSD3",
       "pos": [
-        763.2649079624939,
-        -284.0887216420331
+        766.7556675299505,
+        -277.14352639228446
       ],
       "size": [
         225,
@@ -215,7 +215,7 @@
           "type": "MODEL",
           "slot_index": 0,
           "links": [
-            262
+            277
           ]
         }
       ],
@@ -232,58 +232,11 @@
       }
     },
     {
-      "id": 102,
-      "type": "ResizeImageMaskNode",
-      "pos": [
-        -465.8034305495086,
-        1208.0180043619057
-      ],
-      "size": [
-        270,
-        106
-      ],
-      "flags": {},
-      "order": 11,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "input",
-          "type": "IMAGE,MASK",
-          "link": 204
-        }
-      ],
-      "outputs": [
-        {
-          "name": "resized",
-          "type": "IMAGE",
-          "links": [
-            203
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ResizeImageMaskNode",
-        "cnr_id": "comfy-core"
-      },
-      "widgets_values": [
-        "scale total pixels",
-        0.5,
-        "bicubic"
-      ],
-      "widgets_values_named": {
-        "resize_type": "scale total pixels",
-        "resize_type.megapixels": 0.5,
-        "scale_method": "bicubic"
-      },
-      "color": "#233",
-      "bgcolor": "#355"
-    },
-    {
       "id": 37,
       "type": "UNETLoader",
       "pos": [
-        76.66608663364555,
-        -284.0887216420331
+        87.13836533601534,
+        -277.14352639228446
       ],
       "size": [
         305.3782043457031,
@@ -330,8 +283,8 @@
       "id": 96,
       "type": "LoraLoaderModelOnly",
       "pos": [
-        419.9654972980697,
-        -284.0887216420331
+        426.94701643298293,
+        -277.14352639228446
       ],
       "size": [
         305.3782043457031,
@@ -430,15 +383,15 @@
       "id": 56,
       "type": "CLIPVisionEncode",
       "pos": [
-        584.2995326201956,
-        1467.4246010131833
+        592.3024404192895,
+        1502.1955240091906
       ],
       "size": [
         252.89327743839817,
         78
       ],
       "flags": {},
-      "order": 23,
+      "order": 16,
       "mode": 0,
       "inputs": [
         {
@@ -479,8 +432,8 @@
       "id": 58,
       "type": "LoadImage",
       "pos": [
-        -807.9415036236062,
-        1208.0180043619057
+        -180.88289715000565,
+        1396.6910004174078
       ],
       "size": [
         308.07680913429937,
@@ -495,7 +448,8 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            204
+            275,
+            276
           ]
         },
         {
@@ -554,7 +508,7 @@
           "name": "pose_video",
           "shape": 7,
           "type": "IMAGE",
-          "link": 255
+          "link": 269
         },
         {
           "name": "pose_video_mask",
@@ -663,47 +617,11 @@
       "bgcolor": "#353"
     },
     {
-      "id": 119,
-      "type": "Reroute",
-      "pos": [
-        40.9222264472059,
-        574.6788611800339
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 12,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 239
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "IMAGE",
-          "links": [
-            240,
-            254
-          ]
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
       "id": 123,
       "type": "MarkdownNote",
       "pos": [
         -524.0256787597663,
-        -284.0887216420331
+        -277.14352639228446
       ],
       "size": [
         519.8662482760207,
@@ -725,59 +643,11 @@
       "bgcolor": "#535"
     },
     {
-      "id": 103,
-      "type": "ResizeImageMaskNode",
-      "pos": [
-        -161.7421666097104,
-        1208.0180043619057
-      ],
-      "size": [
-        270,
-        106
-      ],
-      "flags": {},
-      "order": 16,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "input",
-          "type": "IMAGE,MASK",
-          "link": 203
-        }
-      ],
-      "outputs": [
-        {
-          "name": "resized",
-          "type": "IMAGE",
-          "links": [
-            233,
-            258
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ResizeImageMaskNode",
-        "cnr_id": "comfy-core"
-      },
-      "widgets_values": [
-        "scale to multiple",
-        32,
-        "bicubic"
-      ],
-      "widgets_values_named": {
-        "resize_type": "scale to multiple",
-        "resize_type.multiple": 32,
-        "scale_method": "bicubic"
-      },
-      "color": "#233",
-      "bgcolor": "#355"
-    },
-    {
       "id": 104,
       "type": "GetImageSize",
       "pos": [
-        584.2995326201956,
-        1609.8451526057252
+        590.0394102496111,
+        684.8468601411636
       ],
       "size": [
         252.89327743839817,
@@ -790,7 +660,7 @@
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 260
+          "link": 271
         }
       ],
       "outputs": [
@@ -823,7 +693,7 @@
       "id": 113,
       "type": "VHS_LoadVideo",
       "pos": [
-        -1174.3710036236066,
+        -969.8659289421508,
         574.6788611800339
       ],
       "size": [
@@ -852,7 +722,7 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            239
+            263
           ]
         },
         {
@@ -935,8 +805,8 @@
       "id": 110,
       "type": "CheckpointLoaderSimple",
       "pos": [
-        -595.1384567461077,
-        708.2930814562927
+        -588.3667655314902,
+        896.9660775117956
       ],
       "size": [
         297.3094587159344,
@@ -994,8 +864,8 @@
       "id": 109,
       "type": "CLIPTextEncode",
       "pos": [
-        -198.4878402098418,
-        781.0557665932362
+        -180.88289715000565,
+        969.728762648739
       ],
       "size": [
         303.1060036882727,
@@ -1038,8 +908,8 @@
       "id": 115,
       "type": "CLIPTextEncode",
       "pos": [
-        -198.4878402098418,
-        981.8894445347981
+        -180.88289715000565,
+        1170.562440590301
       ],
       "size": [
         303.1060036882727,
@@ -1082,22 +952,22 @@
       "id": 116,
       "type": "SAM3_VideoTrack",
       "pos": [
-        200.5543761380298,
-        926.0058948474609
+        207.32606735264753,
+        1114.678890902965
       ],
       "size": [
         225,
         166
       ],
       "flags": {},
-      "order": 20,
+      "order": 19,
       "mode": 0,
       "inputs": [
         {
           "label": "images",
           "name": "images",
           "type": "IMAGE",
-          "link": 233
+          "link": 275
         },
         {
           "label": "model",
@@ -1151,22 +1021,22 @@
       "id": 112,
       "type": "SAM3_VideoTrack",
       "pos": [
-        203.95932129876246,
-        692.2440318695158
+        210.73101251338028,
+        880.9170279250186
       ],
       "size": [
         225,
         166
       ],
       "flags": {},
-      "order": 18,
+      "order": 21,
       "mode": 0,
       "inputs": [
         {
           "label": "images",
           "name": "images",
           "type": "IMAGE",
-          "link": 240
+          "link": 264
         },
         {
           "label": "model",
@@ -1220,15 +1090,15 @@
       "id": 107,
       "type": "SCAIL2ColoredMask",
       "pos": [
-        497.73577880859375,
-        690.6052825955783
+        504.50747002321134,
+        880.9170279250186
       ],
       "size": [
         339.45703125,
         126
       ],
       "flags": {},
-      "order": 22,
+      "order": 23,
       "mode": 0,
       "inputs": [
         {
@@ -1282,8 +1152,8 @@
       "id": 117,
       "type": "PreviewImage",
       "pos": [
-        991.7196506501074,
-        797.6456466201365
+        987.6755966567375,
+        977.1252592488499
       ],
       "size": [
         273.9091749999998,
@@ -1318,7 +1188,7 @@
       "type": "CLIPTextEncode",
       "pos": [
         417.9232177734375,
-        63.8154509134279
+        59.804082459569884
       ],
       "size": [
         419.26959228515625,
@@ -1375,7 +1245,7 @@
         {
           "name": "model",
           "type": "MODEL",
-          "link": 263
+          "link": 278
         },
         {
           "name": "positive",
@@ -1431,8 +1301,8 @@
       "id": 118,
       "type": "PreviewImage",
       "pos": [
-        1311.3808950988005,
-        694.1520955134855
+        1298.323720098776,
+        877.2369565448614
       ],
       "size": [
         284.48608749999994,
@@ -1560,11 +1430,11 @@
       }
     },
     {
-      "id": 127,
+      "id": 128,
       "type": "Reroute",
       "pos": [
-        753.0397264472066,
-        574.6788611800339
+        768.9645012732113,
+        1396.6910004174078
       ],
       "size": [
         75,
@@ -1572,41 +1442,6 @@
       ],
       "flags": {},
       "order": 17,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 254
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "IMAGE",
-          "links": [
-            255
-          ]
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 128,
-      "type": "Reroute",
-      "pos": [
-        762.1928100585938,
-        1208.0180043619057
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 25,
       "mode": 0,
       "inputs": [
         {
@@ -1633,21 +1468,21 @@
       "id": 129,
       "type": "Reroute",
       "pos": [
-        393.41612625655785,
-        1208.0180043619057
+        400.18781747117544,
+        1396.6910004174078
       ],
       "size": [
         75,
         26
       ],
       "flags": {},
-      "order": 21,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
           "name": "",
           "type": "*",
-          "link": 258
+          "link": 276
         }
       ],
       "outputs": [
@@ -1656,7 +1491,6 @@
           "type": "IMAGE",
           "links": [
             259,
-            260,
             261
           ]
         }
@@ -1667,24 +1501,190 @@
       }
     },
     {
+      "id": 130,
+      "type": "ResizeImageMaskNode",
+      "pos": [
+        -441.57556276024985,
+        574.6788611800339
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "IMAGE,MASK",
+          "link": 263
+        }
+      ],
+      "outputs": [
+        {
+          "name": "resized",
+          "type": "IMAGE",
+          "links": [
+            262
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResizeImageMaskNode",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "scale total pixels",
+        0.5,
+        "bicubic"
+      ],
+      "widgets_values_named": {
+        "resize_type": "scale total pixels",
+        "resize_type.megapixels": 0.5,
+        "scale_method": "bicubic"
+      },
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
       "id": 131,
+      "type": "ResizeImageMaskNode",
+      "pos": [
+        -137.5142988204516,
+        574.6788611800339
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "IMAGE,MASK",
+          "link": 262
+        }
+      ],
+      "outputs": [
+        {
+          "name": "resized",
+          "type": "IMAGE",
+          "links": [
+            264,
+            270
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResizeImageMaskNode",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "scale to multiple",
+        32,
+        "bicubic"
+      ],
+      "widgets_values_named": {
+        "resize_type": "scale to multiple",
+        "resize_type.multiple": 32,
+        "scale_method": "bicubic"
+      },
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 132,
+      "type": "Reroute",
+      "pos": [
+        762.1928100585938,
+        574.6788611800339
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 272
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "links": [
+            269
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 133,
+      "type": "Reroute",
+      "pos": [
+        409.8392556190711,
+        573.8564116977698
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 270
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "links": [
+            271,
+            272
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 134,
       "type": "WanContextWindowsManual",
       "pos": [
         1026.186114281215,
-        -284.0887216420331
+        -277.14352639228446
       ],
       "size": [
         316.1412109375,
         250
       ],
       "flags": {},
-      "order": 19,
+      "order": 20,
       "mode": 0,
       "inputs": [
         {
           "name": "model",
           "type": "MODEL",
-          "link": 262
+          "link": 277
         }
       ],
       "outputs": [
@@ -1692,7 +1692,7 @@
           "name": "MODEL",
           "type": "MODEL",
           "links": [
-            263
+            278
           ]
         }
       ],
@@ -1904,14 +1904,6 @@
       "CONDITIONING"
     ],
     [
-      233,
-      103,
-      0,
-      116,
-      0,
-      "IMAGE"
-    ],
-    [
       234,
       116,
       0,
@@ -1934,22 +1926,6 @@
       116,
       1,
       "MODEL"
-    ],
-    [
-      239,
-      113,
-      0,
-      119,
-      0,
-      "IMAGE"
-    ],
-    [
-      240,
-      119,
-      0,
-      112,
-      0,
-      "IMAGE"
     ],
     [
       243,
@@ -1984,35 +1960,11 @@
       "VAE"
     ],
     [
-      254,
-      119,
-      0,
-      127,
-      0,
-      "IMAGE"
-    ],
-    [
-      255,
-      127,
-      0,
-      101,
-      3,
-      "IMAGE"
-    ],
-    [
       257,
       128,
       0,
       101,
       5,
-      "IMAGE"
-    ],
-    [
-      258,
-      103,
-      0,
-      129,
-      0,
       "IMAGE"
     ],
     [
@@ -2024,14 +1976,6 @@
       "IMAGE"
     ],
     [
-      260,
-      129,
-      0,
-      104,
-      0,
-      "IMAGE"
-    ],
-    [
       261,
       129,
       0,
@@ -2040,20 +1984,76 @@
       "IMAGE"
     ],
     [
-      204,
-      58,
+      264,
+      131,
       0,
-      102,
+      112,
       0,
       "IMAGE"
     ],
     [
-      203,
-      102,
+      269,
+      132,
       0,
-      103,
+      101,
+      3,
+      "IMAGE"
+    ],
+    [
+      270,
+      131,
+      0,
+      133,
       0,
       "IMAGE"
+    ],
+    [
+      271,
+      133,
+      0,
+      104,
+      0,
+      "IMAGE"
+    ],
+    [
+      272,
+      133,
+      0,
+      132,
+      0,
+      "IMAGE"
+    ],
+    [
+      275,
+      58,
+      0,
+      116,
+      0,
+      "IMAGE"
+    ],
+    [
+      276,
+      58,
+      0,
+      129,
+      0,
+      "IMAGE"
+    ],
+    [
+      277,
+      48,
+      0,
+      134,
+      0,
+      "MODEL"
+    ],
+    [
+      278,
+      134,
+      0,
+      3,
+      0,
+      "MODEL"
     ],
     [
       252,
@@ -2064,30 +2064,30 @@
       "VIDEO"
     ],
     [
-      262,
-      48,
+      263,
+      113,
       0,
-      131,
+      130,
       0,
-      "MODEL"
+      "IMAGE"
     ],
     [
-      263,
+      262,
+      130,
+      0,
       131,
       0,
-      3,
-      0,
-      "MODEL"
+      "IMAGE"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.473624407447671,
+      "scale": 0.6303940863128524,
       "offset": [
-        2194.013498217429,
-        1189.9035799466262
+        1223.6362434270188,
+        501.1343595012107
       ]
     },
     "frontendVersion": "1.55.17",
