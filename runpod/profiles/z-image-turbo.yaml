@@ -3,6 +3,8 @@
 id: z-image-turbo
 title: Z-Image-Turbo
 article: basic-workflows/z-image-turbo
+# RunPod template (Matatabi AI account) the article's launch card deploys.
+template: nn14ws8ntz
 # Every model is Apache 2.0 (Z-Image-Turbo, Z-Image-Turbo Fun ControlNet Union 2.1 lite, Qwen3-4B,
 # Depth Anything 3 Mono Large), so the card keeps the referral code.
 workflows:
