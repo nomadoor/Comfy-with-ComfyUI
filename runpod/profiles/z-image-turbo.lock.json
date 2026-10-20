@@ -1,0 +1,30 @@
+{
+  "checked_at": "2026-10-20",
+  "models": {
+    "https://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1/resolve/main/Z-Image-Turbo-Fun-Controlnet-Union-2.1-lite-2602-8steps.safetensors": {
+      "size_bytes": 2016627488,
+      "sha256": "3ea098db9bd145be525c7e2366920b6d76c5ffd46b3d7aa8169bbc943fdaee35",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/Comfy-Org/Depth-Anything-3/resolve/main/geometry_estimation/depth_anything_3_mono_large.safetensors": {
+      "size_bytes": 1336748056,
+      "sha256": "9b44eda5bedba5b4e125686fdb79d1db309c1b9785277576eb930f885b008f96",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_int8_convrot.safetensors": {
+      "size_bytes": 6201001296,
+      "sha256": "be517ebd47c912a5626a588e1aeea43e6be4a43c0cdcd2b48a2a780d9f358635",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b_fp8_mixed.safetensors": {
+      "size_bytes": 5631994051,
+      "sha256": "72450b19758172c5a7273cf7de729d1c17e7f434a104a00167624cba94f68f15",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors": {
+      "size_bytes": 335304388,
+      "sha256": "afc8e28272cd15db3919bacdb6918ce9c1ed22e96cb12c4d5ed0fba823529e38",
+      "requires_hf_token": false
+    }
+  }
+}
