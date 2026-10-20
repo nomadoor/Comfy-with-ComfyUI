@@ -1,107 +1,19 @@
 {
-  "id": "0613b710-fadb-4f72-9aff-d02126893c5a",
+  "id": "360e497e-c636-4042-860a-8e8bc004f4e7",
   "revision": 0,
-  "last_node_id": 66,
-  "last_link_id": 106,
+  "last_node_id": 67,
+  "last_link_id": 93,
   "nodes": [
     {
-      "id": 51,
-      "type": "ResizeImageMaskNode",
+      "id": 43,
+      "type": "VAELoader",
       "pos": [
-        210.9172345510862,
-        484.74016932307575
+        719.5695617653074,
+        537.7074748890724
       ],
       "size": [
         270,
-        106
-      ],
-      "flags": {},
-      "order": 7,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "input",
-          "type": "IMAGE,MASK",
-          "link": 100
-        }
-      ],
-      "outputs": [
-        {
-          "name": "resized",
-          "type": "IMAGE",
-          "links": [
-            82
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ResizeImageMaskNode",
-        "cnr_id": "comfy-core",
-        "ver": "0.9.2"
-      },
-      "widgets_values": [
-        "scale total pixels",
-        1,
-        "nearest-exact"
-      ],
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
-      "id": 49,
-      "type": "ReferenceLatent",
-      "pos": [
-        1021.2781285510225,
-        160.40068341159756
-      ],
-      "size": [
-        204.134765625,
-        46
-      ],
-      "flags": {},
-      "order": 10,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "conditioning",
-          "type": "CONDITIONING",
-          "link": 70
-        },
-        {
-          "name": "latent",
-          "shape": 7,
-          "type": "LATENT",
-          "link": 75
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            71
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ReferenceLatent",
-        "cnr_id": "comfy-core",
-        "ver": "0.9.2"
-      },
-      "widgets_values": [],
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
-      "id": 44,
-      "type": "CLIPLoader",
-      "pos": [
-        224.49879211425772,
-        292.66704483032197
-      ],
-      "size": [
-        283.80000000000007,
-        106
+        58
       ],
       "flags": {},
       "order": 0,
@@ -109,11 +21,56 @@
       "inputs": [],
       "outputs": [
         {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            71,
+            87
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "models": [
+          {
+            "name": "flux2-vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/resolve/main/split_files/vae/flux2-vae.safetensors",
+            "directory": "vae"
+          }
+        ]
+      },
+      "widgets_values": [
+        "flux2-vae.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "flux2-vae.safetensors"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 44,
+      "type": "CLIPLoader",
+      "pos": [
+        264.19423123219167,
+        188.31324214235457
+      ],
+      "size": [
+        283.80000000000007,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
           "name": "CLIP",
           "type": "CLIP",
           "links": [
-            63,
-            64
+            63
           ]
         }
       ],
@@ -134,61 +91,107 @@
         "flux2",
         "default"
       ],
+      "widgets_values_named": {
+        "clip_name": "qwen_3_8b.safetensors",
+        "type": "flux2",
+        "device": "default"
+      },
       "color": "#432",
       "bgcolor": "#653"
     },
     {
-      "id": 43,
-      "type": "VAELoader",
+      "id": 45,
+      "type": "SaveImage",
       "pos": [
-        517.231573621917,
-        656.7863480776692
+        1942.5074821590401,
+        168.31341407615582
       ],
       "size": [
-        269.8313103058076,
-        58
+        389.21137499999963,
+        638.9862499999999
       ],
       "flags": {},
-      "order": 1,
+      "order": 12,
       "mode": 0,
-      "inputs": [],
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 72
+        }
+      ],
       "outputs": [
         {
-          "name": "VAE",
-          "type": "VAE",
-          "links": [
-            62,
-            76
-          ]
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
         }
       ],
       "properties": {
-        "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
-        "ver": "0.3.39",
-        "models": [
-          {
-            "name": "flux2-vae.safetensors",
-            "url": "https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/resolve/main/split_files/vae/flux2-vae.safetensors",
-            "directory": "vae"
-          }
-        ]
+        "ver": "0.3.73"
       },
       "widgets_values": [
-        "flux2-vae.safetensors"
+        "ComfyUI"
       ],
-      "color": "#322",
-      "bgcolor": "#533"
+      "widgets_values_named": {
+        "filename_prefix": "ComfyUI"
+      }
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        589.5695617653074,
+        188.31324214235457
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 63
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            80,
+            91
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39"
+      },
+      "widgets_values": [
+        "A office lady sitting on outdoor stairs at dusk, matching the pose from the reference image. Evening ambient light, calm urban atmosphere. She wears a long skirt and a black camisole with frills. Natural, realistic photo"
+      ],
+      "widgets_values_named": {
+        "text": "remove the deer"
+      }
     },
     {
       "id": 48,
       "type": "UNETLoader",
       "pos": [
-        917.2536154382312,
-        19.495025634765582
+        999.9355116686602,
+        20.69222352459778
       ],
       "size": [
-        308.1592787377913,
+        301,
         82
       ],
       "flags": {},
@@ -207,7 +210,6 @@
       "properties": {
         "Node name for S&R": "UNETLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.9.2",
         "models": [
           {
             "name": "flux-2-klein-9b-fp8.safetensors",
@@ -217,68 +219,29 @@
         ]
       },
       "widgets_values": [
-        "Flux.2\\flux-2-klein-9b-fp8.safetensors",
+        "flux-2-klein-9b-fp8.safetensors",
         "default"
       ],
+      "widgets_values_named": {
+        "unet_name": "flux-2-klein-9b-fp8.safetensors",
+        "weight_dtype": "default"
+      },
       "color": "#323",
       "bgcolor": "#535"
-    },
-    {
-      "id": 33,
-      "type": "CLIPTextEncode",
-      "pos": [
-        558.700000000001,
-        387.24938745307793
-      ],
-      "size": [
-        425.2650317382812,
-        122.99611236572264
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 5,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 64
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            86
-          ]
-        }
-      ],
-      "title": "CLIP Text Encode (Negative Prompt)",
-      "properties": {
-        "Node name for S&R": "CLIPTextEncode",
-        "cnr_id": "comfy-core",
-        "ver": "0.3.39"
-      },
-      "widgets_values": [
-        ""
-      ]
     },
     {
       "id": 31,
       "type": "KSampler",
       "pos": [
-        1262.7259909887628,
-        160.40068341159756
+        1347.930147444712,
+        168.31341407615582
       ],
       "size": [
-        315,
+        270,
         262
       ],
       "flags": {},
-      "order": 11,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -289,17 +252,17 @@
         {
           "name": "positive",
           "type": "CONDITIONING",
-          "link": 71
+          "link": 84
         },
         {
           "name": "negative",
           "type": "CONDITIONING",
-          "link": 86
+          "link": 85
         },
         {
           "name": "latent_image",
           "type": "LATENT",
-          "link": 74
+          "link": 86
         }
       ],
       "outputs": [
@@ -308,7 +271,7 @@
           "type": "LATENT",
           "slot_index": 0,
           "links": [
-            52
+            70
           ]
         }
       ],
@@ -325,128 +288,337 @@
         "euler",
         "simple",
         1
-      ]
+      ],
+      "widgets_values_named": {
+        "seed": 1234,
+        "control_after_generate": "fixed",
+        "steps": 4,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
     },
     {
-      "id": 8,
+      "id": 53,
       "type": "VAEDecode",
       "pos": [
-        1615.039087801503,
-        160.40068341159756
+        1667.718814801876,
+        168.31341407615582
       ],
       "size": [
-        161.111083984375,
+        225,
         46
       ],
       "flags": {},
-      "order": 12,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
           "name": "samples",
           "type": "LATENT",
-          "link": 52
+          "link": 70
         },
         {
           "name": "vae",
           "type": "VAE",
-          "link": 62
+          "link": 71
         }
       ],
       "outputs": [
         {
           "name": "IMAGE",
           "type": "IMAGE",
-          "slot_index": 0,
           "links": [
-            65
+            72
           ]
         }
       ],
       "properties": {
-        "Node name for S&R": "VAEDecode",
         "cnr_id": "comfy-core",
-        "ver": "0.3.39"
-      },
-      "widgets_values": []
+        "Node name for S&R": "VAEDecode"
+      }
     },
     {
-      "id": 45,
-      "type": "SaveImage",
+      "id": 54,
+      "type": "MarkdownNote",
       "pos": [
-        1813.4632685986182,
-        160.40068341159756
+        -184.125,
+        20.69222352459778
       ],
       "size": [
-        582.6799999999998,
-        614.729
+        386.24331439218804,
+        415.71093639711034
       ],
       "flags": {},
-      "order": 13,
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n\n- diffusion_models\n  - [flux-2-klein-9b-fp8.safetensors](https://huggingface.co/black-forest-labs/FLUX.2-klein-9b-fp8/blob/main/flux-2-klein-9b-fp8.safetensors) (9.43 GB)\n- text_encoders\n  - [qwen_3_8b.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/blob/main/split_files/text_encoders/qwen_3_8b.safetensors) (16.38 GB)\n- vae\n  - [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/blob/main/split_files/vae/flux2-vae.safetensors) (336 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── flux-2-klein-9b-fp8.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen_3_8b.safetensors\n    └── 📂vae/\n        └── flux2-vae.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/flux-2-klein/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/flux-2-klein/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/flux-2-klein/)"
+      ],
+      "widgets_values_named": {
+        "text": "## models\n\n- diffusion_models\n  - [flux-2-klein-9b-fp8.safetensors](https://huggingface.co/black-forest-labs/FLUX.2-klein-9b-fp8/blob/main/flux-2-klein-9b-fp8.safetensors) (9.43 GB)\n- text_encoders\n  - [qwen_3_8b.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/blob/main/split_files/text_encoders/qwen_3_8b.safetensors) (16.38 GB)\n- vae\n  - [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/blob/main/split_files/vae/flux2-vae.safetensors) (336 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── flux-2-klein-9b-fp8.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen_3_8b.safetensors\n    └── 📂vae/\n        └── flux2-vae.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/flux-2-klein/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/flux-2-klein/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/flux-2-klein/)"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 62,
+      "type": "ReferenceMultiLatent",
+      "pos": [
+        1026.24058979366,
+        188.23348620284509
+      ],
+      "size": [
+        274.694921875,
+        158
+      ],
+      "flags": {},
+      "order": 9,
       "mode": 0,
       "inputs": [
         {
-          "name": "images",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 80
+        },
+        {
+          "name": "negative",
+          "shape": 7,
+          "type": "CONDITIONING",
+          "link": 92
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 87
+        },
+        {
+          "name": "images.image0",
+          "shape": 7,
           "type": "IMAGE",
-          "link": 65
+          "link": 90
+        },
+        {
+          "name": "images.image1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            84
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            85
+          ]
+        },
+        {
+          "name": "empty_latent",
+          "type": "LATENT",
+          "links": [
+            86
+          ]
+        }
+      ],
       "properties": {
         "cnr_id": "comfy-core",
-        "ver": "0.3.73"
+        "Node name for S&R": "ReferenceMultiLatent"
       },
       "widgets_values": [
-        "ComfyUI"
-      ]
+        "keep resolution"
+      ],
+      "widgets_values_named": {
+        "resolution": "keep resolution"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
     },
     {
-      "id": 6,
-      "type": "CLIPTextEncode",
+      "id": 63,
+      "type": "LoadImage",
       "pos": [
-        558.700000000001,
-        160.40068341159756
+        -274.5576337284507,
+        658.2257634496026
       ],
       "size": [
-        425.2650317382812,
-        167.9430462646484
+        330.8067822435713,
+        583.3962338638072
       ],
       "flags": {},
       "order": 4,
       "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            93
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "example.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "flux_2_klein_base_9b_image_edit_input.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 64,
+      "type": "ResizeImageMaskNode",
+      "pos": [
+        412.70525357771396,
+        658.2257634496026
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
       "inputs": [
         {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 63
+          "name": "input",
+          "type": "IMAGE,MASK",
+          "link": 88
+        }
+      ],
+      "outputs": [
+        {
+          "name": "resized",
+          "type": "IMAGE",
+          "links": [
+            89
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "ResizeImageMaskNode"
+      },
+      "widgets_values": [
+        "scale total pixels",
+        1,
+        "bicubic"
+      ],
+      "widgets_values_named": {
+        "resize_type": "scale total pixels",
+        "resize_type.megapixels": 1,
+        "scale_method": "area"
+      }
+    },
+    {
+      "id": 65,
+      "type": "ResizeImageMaskNode",
+      "pos": [
+        719.5695617653073,
+        658.2257634496026
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "IMAGE,MASK",
+          "link": 89
+        }
+      ],
+      "outputs": [
+        {
+          "name": "resized",
+          "type": "IMAGE",
+          "links": [
+            90
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "ResizeImageMaskNode"
+      },
+      "widgets_values": [
+        "scale to multiple",
+        16,
+        "bicubic"
+      ],
+      "widgets_values_named": {
+        "resize_type": "scale to multiple",
+        "resize_type.multiple": 16,
+        "scale_method": "area"
+      }
+    },
+    {
+      "id": 66,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        764.5695617653074,
+        450.0227959371505
+      ],
+      "size": [
+        225,
+        26
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 91
         }
       ],
       "outputs": [
         {
           "name": "CONDITIONING",
           "type": "CONDITIONING",
-          "slot_index": 0,
           "links": [
-            70
+            92
           ]
         }
       ],
-      "title": "CLIP Text Encode (Positive Prompt)",
       "properties": {
-        "Node name for S&R": "CLIPTextEncode",
         "cnr_id": "comfy-core",
-        "ver": "0.3.39"
-      },
-      "widgets_values": [
-        "A office lady sitting on outdoor stairs at dusk, matching the pose from the reference image. Evening ambient light, calm urban atmosphere. She wears a long skirt and a black camisole with frills. Natural, realistic photo"
-      ]
+        "Node name for S&R": "ConditioningZeroOut"
+      }
     },
     {
-      "id": 63,
+      "id": 67,
       "type": "DWPreprocessor",
       "pos": [
-        -64.19846091751185,
-        484.74016932307575
+        105.03416314654928,
+        658.2257634496026
       ],
       "size": [
         239.591796875,
@@ -459,7 +631,7 @@
         {
           "name": "image",
           "type": "IMAGE",
-          "link": 99
+          "link": 93
         }
       ],
       "outputs": [
@@ -467,13 +639,13 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            100
+            88
           ]
         },
         {
           "name": "POSE_KEYPOINT",
           "type": "POSE_KEYPOINT",
-          "links": null
+          "links": []
         }
       ],
       "properties": {
@@ -491,154 +663,9 @@
       ],
       "color": "#232",
       "bgcolor": "#353"
-    },
-    {
-      "id": 54,
-      "type": "ResizeImageMaskNode",
-      "pos": [
-        516.4411331446843,
-        484.74016932307575
-      ],
-      "size": [
-        270,
-        106
-      ],
-      "flags": {},
-      "order": 8,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "input",
-          "type": "IMAGE,MASK",
-          "link": 82
-        }
-      ],
-      "outputs": [
-        {
-          "name": "resized",
-          "type": "IMAGE",
-          "links": [
-            80
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ResizeImageMaskNode",
-        "cnr_id": "comfy-core",
-        "ver": "0.9.2"
-      },
-      "widgets_values": [
-        "scale to multiple",
-        16,
-        "nearest-exact"
-      ],
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
-      "id": 52,
-      "type": "VAEEncode",
-      "pos": [
-        821.9650317382823,
-        484.74016932307575
-      ],
-      "size": [
-        162,
-        46
-      ],
-      "flags": {},
-      "order": 9,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "pixels",
-          "type": "IMAGE",
-          "link": 80
-        },
-        {
-          "name": "vae",
-          "type": "VAE",
-          "link": 76
-        }
-      ],
-      "outputs": [
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "links": [
-            74,
-            75
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "VAEEncode",
-        "cnr_id": "comfy-core",
-        "ver": "0.9.2"
-      },
-      "widgets_values": [],
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
-      "id": 50,
-      "type": "LoadImage",
-      "pos": [
-        -396.5211876361099,
-        484.74016932307575
-      ],
-      "size": [
-        296.798828125,
-        458.0000000000001
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            99
-          ]
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LoadImage",
-        "cnr_id": "comfy-core",
-        "ver": "0.9.2"
-      },
-      "widgets_values": [
-        "image4.png",
-        "image"
-      ],
-      "color": "#232",
-      "bgcolor": "#353"
     }
   ],
   "links": [
-    [
-      52,
-      31,
-      0,
-      8,
-      0,
-      "LATENT"
-    ],
-    [
-      62,
-      43,
-      0,
-      8,
-      1,
-      "VAE"
-    ],
     [
       63,
       44,
@@ -646,22 +673,6 @@
       6,
       0,
       "CLIP"
-    ],
-    [
-      64,
-      44,
-      0,
-      33,
-      0,
-      "CLIP"
-    ],
-    [
-      65,
-      8,
-      0,
-      45,
-      0,
-      "IMAGE"
     ],
     [
       69,
@@ -673,81 +684,113 @@
     ],
     [
       70,
-      6,
+      31,
       0,
-      49,
+      53,
       0,
-      "CONDITIONING"
+      "LATENT"
     ],
     [
       71,
-      49,
-      0,
-      31,
-      1,
-      "CONDITIONING"
-    ],
-    [
-      74,
-      52,
-      0,
-      31,
-      3,
-      "LATENT"
-    ],
-    [
-      75,
-      52,
-      0,
-      49,
-      1,
-      "LATENT"
-    ],
-    [
-      76,
       43,
       0,
-      52,
+      53,
       1,
       "VAE"
     ],
     [
-      80,
-      54,
+      72,
+      53,
       0,
-      52,
-      0,
-      "IMAGE"
-    ],
-    [
-      82,
-      51,
-      0,
-      54,
+      45,
       0,
       "IMAGE"
     ],
     [
-      86,
-      33,
+      84,
+      62,
       0,
+      31,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      85,
+      62,
+      1,
       31,
       2,
       "CONDITIONING"
     ],
     [
-      99,
-      50,
+      86,
+      62,
+      2,
+      31,
+      3,
+      "LATENT"
+    ],
+    [
+      80,
+      6,
       0,
-      63,
+      62,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      87,
+      43,
+      0,
+      62,
+      2,
+      "VAE"
+    ],
+    [
+      90,
+      65,
+      0,
+      62,
+      3,
+      "IMAGE"
+    ],
+    [
+      88,
+      67,
+      0,
+      64,
       0,
       "IMAGE"
     ],
     [
-      100,
+      89,
+      64,
+      0,
+      65,
+      0,
+      "IMAGE"
+    ],
+    [
+      91,
+      6,
+      0,
+      66,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      92,
+      66,
+      0,
+      62,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      93,
       63,
       0,
-      51,
+      67,
       0,
       "IMAGE"
     ]
@@ -756,13 +799,13 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.6830134553650705,
+      "scale": 1,
       "offset": [
-        611.9972748802562,
-        262.9209225159331
+        341.3601510741819,
+        218.68258818877007
       ]
     },
-    "frontendVersion": "1.38.8",
+    "frontendVersion": "1.55.17",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

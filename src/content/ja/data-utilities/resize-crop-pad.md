@@ -12,7 +12,7 @@ seoTitle: "ComfyUIで画像をリサイズ・クロップ・パディングす�
 seoDescription: "ComfyUIで画像サイズを揃えるリサイズ、クロップ、パディングの各ノードの違いと使い分け。モデルの適正解像度やVRAM節約のための基本操作を、読みやすく整理したworkflow付きで解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
-  image: "/media/data-utilities/resize-crop-pad/legacy_gyazo_02cf6bd2a573dc15dff4799c94b15a0d.png"
+  image: "/media/data-utilities/resize-crop-pad/crop_to_half_size.png"
 ---
 
 ## 画像のリサイズとクロップ
@@ -200,13 +200,13 @@ hero:
 
 ## クロップその他の編集操作
 
-### ImageCrop ノード
+### Crop Image ノード
 
 x, y座標と幅・高さを指定して、画像の一部分を矩形で切り抜きます。
 
-![](/media/data-utilities/resize-crop-pad/legacy_gyazo_1c996b2fa8f7213f05c524b16468181e.png){media=image}
+![](/media/data-utilities/resize-crop-pad/crop_image.png){media=image}
 
-[](/workflows/data-utilities/resize-crop-pad/imagecrop.json)
+[](/workflows/data-utilities/resize-crop-pad/crop_image.json)
 
 
 ### ImageRotate ノード
@@ -256,10 +256,10 @@ x, y座標と幅・高さを指定して、画像の一部分を矩形で切り�
 
 ### 画像を半分にクロップ
 
-![](/media/data-utilities/resize-crop-pad/legacy_gyazo_02cf6bd2a573dc15dff4799c94b15a0d.png){media=image}
+![](/media/data-utilities/resize-crop-pad/crop_to_half_size.png){media=image}
 
 [](/workflows/data-utilities/resize-crop-pad/crop_to_half_size.json)
 
 - 画像のサイズを取得
-- `Simple math` ノードで幅の半分の長さを計算
+- `Math Expression` ノードで幅の半分の長さを計算
 - `ImageCrop` ノードに計算した幅を入力し、半分にクロップ

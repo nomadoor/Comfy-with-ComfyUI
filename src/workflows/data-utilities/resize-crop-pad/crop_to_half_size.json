@@ -1,8 +1,8 @@
 {
   "id": "4868028c-000b-496e-b4e0-958cdd175f4a",
   "revision": 0,
-  "last_node_id": 63,
-  "last_link_id": 89,
+  "last_node_id": 72,
+  "last_link_id": 107,
   "nodes": [
     {
       "id": 53,
@@ -36,20 +36,24 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "LoadImage",
         "cnr_id": "comfy-core",
-        "ver": "0.3.71",
-        "Node name for S&R": "LoadImage"
+        "ver": "0.3.71"
       },
       "widgets_values": [
         "example.png",
         "image"
-      ]
+      ],
+      "widgets_values_named": {
+        "image": "example.png",
+        "upload": "image"
+      }
     },
     {
       "id": 62,
       "type": "ImageCrop",
       "pos": [
-        931.9558227064256,
+        980.2447602059549,
         158.8181818181818
       ],
       "size": [
@@ -71,7 +75,7 @@
           "widget": {
             "name": "width"
           },
-          "link": 86
+          "link": 106
         },
         {
           "name": "height",
@@ -87,14 +91,14 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            89
+            107
           ]
         }
       ],
       "properties": {
+        "Node name for S&R": "ImageCrop",
         "cnr_id": "comfy-core",
-        "ver": "0.3.71",
-        "Node name for S&R": "ImageCrop"
+        "ver": "0.3.71"
       },
       "widgets_values": [
         512,
@@ -102,59 +106,12 @@
         0,
         0
       ],
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
-      "id": 61,
-      "type": "SimpleMath+",
-      "pos": [
-        682.0468954122235,
-        245.45250567287064
-      ],
-      "size": [
-        210,
-        78
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "a",
-          "shape": 7,
-          "type": "INT,FLOAT",
-          "link": 85
-        },
-        {
-          "name": "b",
-          "shape": 7,
-          "type": "INT,FLOAT",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "INT",
-          "type": "INT",
-          "links": [
-            86
-          ]
-        },
-        {
-          "name": "FLOAT",
-          "type": "FLOAT",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui_essentials",
-        "ver": "1.1.0",
-        "Node name for S&R": "SimpleMath+"
+      "widgets_values_named": {
+        "width": 512,
+        "height": 512,
+        "x": 0,
+        "y": 0
       },
-      "widgets_values": [
-        "a / 2"
-      ],
       "color": "#232",
       "bgcolor": "#353"
     },
@@ -162,11 +119,11 @@
       "id": 60,
       "type": "GetImageSize",
       "pos": [
-        432.13796811802143,
-        246.82201179564242
+        438.2342806178645,
+        250
       ],
       "size": [
-        210,
+        225,
         136
       ],
       "flags": {},
@@ -184,14 +141,15 @@
           "name": "width",
           "type": "INT",
           "links": [
-            85
+            99
           ]
         },
         {
           "name": "height",
           "type": "INT",
           "links": [
-            87
+            87,
+            100
           ]
         },
         {
@@ -201,13 +159,10 @@
         }
       ],
       "properties": {
+        "Node name for S&R": "GetImageSize",
         "cnr_id": "comfy-core",
-        "ver": "0.3.71",
-        "Node name for S&R": "GetImageSize"
+        "ver": "0.3.71"
       },
-      "widgets_values": [
-        "width: 768, height: 768\n batch size: 1"
-      ],
       "color": "#232",
       "bgcolor": "#353"
     },
@@ -215,12 +170,12 @@
       "id": 63,
       "type": "PreviewImage",
       "pos": [
-        1241.8647500006277,
+        1296.25,
         158.8181818181818
       ],
       "size": [
-        225.18399999999997,
-        371.114
+        331.99393532492877,
+        389.2950994318179
       ],
       "flags": {},
       "order": 4,
@@ -229,16 +184,88 @@
         {
           "name": "images",
           "type": "IMAGE",
-          "link": 89
+          "link": 107
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.71"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 71,
+      "type": "ComfyMathExpression",
+      "pos": [
+        709.2395204119097,
+        250
+      ],
+      "size": [
+        225,
+        141.91409276536663
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "values.a",
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 99
+        },
+        {
+          "name": "values.b",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 100
+        },
+        {
+          "name": "values.c",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            106
+          ]
+        },
+        {
+          "name": "BOOL",
+          "type": "BOOLEAN",
+          "links": null
+        }
+      ],
       "properties": {
         "cnr_id": "comfy-core",
-        "ver": "0.3.71",
-        "Node name for S&R": "PreviewImage"
+        "Node name for S&R": "ComfyMathExpression"
       },
-      "widgets_values": []
+      "widgets_values": [
+        "a / 2"
+      ],
+      "widgets_values_named": {
+        "expression": "a / 2"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
     }
   ],
   "links": [
@@ -249,22 +276,6 @@
       60,
       0,
       "IMAGE"
-    ],
-    [
-      85,
-      60,
-      0,
-      61,
-      0,
-      "INT,FLOAT"
-    ],
-    [
-      86,
-      61,
-      0,
-      62,
-      1,
-      "INT"
     ],
     [
       87,
@@ -283,7 +294,31 @@
       "IMAGE"
     ],
     [
-      89,
+      99,
+      60,
+      0,
+      71,
+      0,
+      "INT"
+    ],
+    [
+      100,
+      60,
+      1,
+      71,
+      1,
+      "INT"
+    ],
+    [
+      106,
+      71,
+      1,
+      62,
+      1,
+      "INT"
+    ],
+    [
+      107,
       62,
       0,
       63,
@@ -295,13 +330,13 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.7513148009015778,
+      "scale": 1,
       "offset": [
-        94.15372727272724,
-        67.6268181818182
+        623.1352155790987,
+        603.7852569488019
       ]
     },
-    "frontendVersion": "1.30.6",
+    "frontendVersion": "1.55.17",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,
