@@ -6529,13 +6529,77 @@
     "bytes": 17786,
     "source": "6c43246c50d7be66"
   },
-  "basic-workflows/z-image/z_image_fun_controlnet_union_2_1.png": {
-    "key": "images/69391efc66205c69.webp",
-    "width": 2659,
-    "height": 1596,
+  "basic-workflows/z-image/z_image_fun_controlnet_union_2_1_depth_image.png": {
+    "key": "images/d940bb8080a20c7f.webp",
+    "width": 1024,
+    "height": 1024,
     "type": "image/webp",
-    "bytes": 201654,
-    "source": "edf3b09f2529af87"
+    "bytes": 16942,
+    "source": "3670d5067d7e30dc"
+  },
+  "basic-workflows/z-image/z_image_fun_controlnet_union_2_1_input.png": {
+    "key": "images/2485f1d237d73287.webp",
+    "width": 1024,
+    "height": 1024,
+    "type": "image/webp",
+    "bytes": 121288,
+    "source": "c5227f48b339c534"
+  },
+  "basic-workflows/z-image/z_image_fun_controlnet_union_2_1_output.png": {
+    "key": "images/3b7e3a4472fc3dd0.webp",
+    "width": 1024,
+    "height": 1024,
+    "type": "image/webp",
+    "bytes": 96412,
+    "source": "8b69151c0f81cc31"
+  },
+  "basic-workflows/z-image/z_image_fun_controlnet_union_2_1.png": {
+    "key": "images/e5e1255f9ffa1919.webp",
+    "width": 3346,
+    "height": 1672,
+    "type": "image/webp",
+    "bytes": 236628,
+    "source": "4ca3cc27a39062f0"
+  },
+  "basic-workflows/z-image/z_image_only_output.png": {
+    "key": "images/c480d9f142215e5b.webp",
+    "width": 1248,
+    "height": 1680,
+    "type": "image/webp",
+    "bytes": 168152,
+    "source": "31d13c63153d2ee2"
+  },
+  "basic-workflows/z-image/z_image_output.png": {
+    "key": "images/65d6c0872d71f374.webp",
+    "width": 1248,
+    "height": 1680,
+    "type": "image/webp",
+    "bytes": 140156,
+    "source": "88e10a0a0b0b65ce"
+  },
+  "basic-workflows/z-image/z_image_refine_turbo_output.png": {
+    "key": "images/42ad4642de7baf1e.webp",
+    "width": 1248,
+    "height": 1680,
+    "type": "image/webp",
+    "bytes": 176522,
+    "source": "26528e7ba7278f12"
+  },
+  "basic-workflows/z-image/z_image_refine_turbo.png": {
+    "key": "images/41358e380e11f350.webp",
+    "width": 2758,
+    "height": 1148,
+    "type": "image/webp",
+    "bytes": 158946,
+    "source": "5100e4880aa6e26f"
+  },
+  "basic-workflows/z-image/z_image.png": {
+    "key": "images/9bf82bd98d3e2c6a.webp",
+    "width": 2421,
+    "height": 1008,
+    "type": "image/webp",
+    "bytes": 101378,
+    "source": "3b60bf0e3e8cc26d"
   },
   "begin-with/canvas-navigation/legacy_gyazo_076543f8a710ae811112a54812adb348.mp4": {
     "key": "videos/23c9a7729b27f2f5.mp4",

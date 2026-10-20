@@ -6,7 +6,7 @@ slug: z-image
 navId: z-image
 title: "Z-Image"
 created: 2026-01-31
-updated: 2026-03-02
+updated: 2026-10-20
 summary: "Z-Imageでの画像生成"
 seoTitle: "ComfyUIでZ-Imageを使う：ベースモデルとControlNet"
 seoDescription: "Alibaba / Tongyi-MAIの画像生成モデルファミリーZ-Imageのベースモデルの、ComfyUIでの使い方。text2image、Z-Image-Turboでのリファイン、Fun ControlNet Union 2.1のworkflowを紹介します。"
@@ -32,22 +32,33 @@ Z-Image は、（ファインチューニング元となる）ベースモデル
 
 ---
 
+## 推奨設定値
+
+- 解像度
+  - 512×512 〜 2048×2048（総ピクセル数）
+  - 幅と高さは 16 の倍数にします
+
+---
+
 ## モデルのダウンロード
 
-- diffusion_models  
-  - [z_image_bf16.safetensors](https://huggingface.co/Comfy-Org/z_image/blob/main/split_files/diffusion_models/z_image_bf16.safetensors) (12.3 GB)
-- text_encoders  
-  - [qwen_3_4b.safetensors](https://huggingface.co/Comfy-Org/z_image/blob/main/split_files/text_encoders/qwen_3_4b.safetensors) (8.04 GB)
-- vae  
-  - [ae.safetensors](https://huggingface.co/Comfy-Org/z_image/blob/main/split_files/vae/ae.safetensors)（335 MB）
+- diffusion_models
+  - [z_image_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/z_image/blob/main/split_files/diffusion_models/z_image_int8_convrot.safetensors) (6.20 GB)
+  - [z_image_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/diffusion_models/z_image_turbo_int8_convrot.safetensors) (6.20 GB)
+    - 🚨 Z-Image-Turbo によるリファインで使用
+- text_encoders
+  - [qwen_3_4b_fp8_mixed.safetensors](https://huggingface.co/Comfy-Org/z_image/blob/main/split_files/text_encoders/qwen_3_4b_fp8_mixed.safetensors) (5.63 GB)
+- vae
+  - [ae.safetensors](https://huggingface.co/Comfy-Org/z_image/blob/main/split_files/vae/ae.safetensors) (335 MB)
 
 ```text
 📂ComfyUI/
 └── 📂models/
     ├── 📂diffusion_models/
-    │   └── z_image_bf16.safetensors
+    │   ├── z_image_int8_convrot.safetensors
+    │   └── z_image_turbo_int8_convrot.safetensors
     ├── 📂text_encoders/
-    │   └── qwen_3_4b.safetensors
+    │   └── qwen_3_4b_fp8_mixed.safetensors
     └── 📂vae/
         └── ae.safetensors
 ```
@@ -56,11 +67,15 @@ Z-Image は、（ファインチューニング元となる）ベースモデル
 
 ## text2image
 
-![](/media/basic-workflows/z-image/legacy_gyazo_8f4213b84c8d739021b8be032e8f6f8a.png){media=image}
+![](/media/basic-workflows/z-image/z_image.png){media=image}
 
 [](/workflows/basic-workflows/z-image/z_image.json)
 
 - `steps` : サンプラーにもよりますが、30〜40 ほどと少し多めのほうが安定します
+
+{% outputs %}
+![](/media/basic-workflows/z-image/z_image_output.png){media=image}
+{% endoutputs %}
 
 ## Z-Image-Turbo によるリファイン
 
@@ -69,18 +84,18 @@ Z-Image の創造性と、Z-Image-Turbo の品質の安定感の両取りを狙�
 
 image2image してもいいですが、ここでは少しオシャレにサンプリングを2段に分けてみましょう。
 
-![](/media/basic-workflows/z-image/legacy_gyazo_2545e8ea917a80488d8687464185410d.png){media=image}
+![](/media/basic-workflows/z-image/z_image_refine_turbo.png){media=image}
 
 [](/workflows/basic-workflows/z-image/z_image_refine_turbo.json)
 
 今回は前半50%、後半50%で分けます。
 (cf. [サンプリングを分割する](/ja/basic-workflows/ksampler-advanced/#サンプリングを分割する))
 
-- 🟪 Z-Image : 30 steps のうち 15 steps
-- 🟨 Z-Image-Turbo : 8 steps のうち 4 steps
+- Z-Image : 30 steps のうち 15 steps
+- Z-Image-Turbo : 8 steps のうち 4 steps
 
 {% outputs %}
-![Z-Image のみ](/media/basic-workflows/z-image/legacy_gyazo_73afc01007482bdfbcc0b0d33f75cb98.png){media=image} ![Z-Image + Turbo](/media/basic-workflows/z-image/legacy_gyazo_0c1ece70589a7b42801f37383a604440.png){media=image}
+![Z-Image のみ](/media/basic-workflows/z-image/z_image_only_output.png){media=image} ![Z-Image + Turbo](/media/basic-workflows/z-image/z_image_refine_turbo_output.png){media=image}
 {% endoutputs %}
 
 
@@ -93,12 +108,16 @@ Z-Image 用の ControlNet 風パッチです。
 - model_patches
 
   - [Z-Image-Fun-Controlnet-Union-2.1.safetensors](https://huggingface.co/alibaba-pai/Z-Image-Fun-Controlnet-Union-2.1/blob/main/Z-Image-Fun-Controlnet-Union-2.1.safetensors) (6.71 GB)
+- geometry_estimation
+  - [depth_anything_3_mono_large.safetensors](https://huggingface.co/Comfy-Org/Depth-Anything-3/blob/main/geometry_estimation/depth_anything_3_mono_large.safetensors) (1.34 GB)
 
 ```text
 📂ComfyUI/
 └── 📂models/
-    └── 📂model_patches/
-        └── Z-Image-Fun-Controlnet-Union-2.1.safetensors
+    ├── 📂model_patches/
+    │   └── Z-Image-Fun-Controlnet-Union-2.1.safetensors
+    └── 📂geometry_estimation/
+        └── depth_anything_3_mono_large.safetensors
 ```
 
 ### workflow
@@ -107,8 +126,12 @@ Z-Image 用の ControlNet 風パッチです。
 
 [](/workflows/basic-workflows/z-image/z_image_fun_controlnet_union_2_1.json)
 
-- 🟩 `QwenImageDiffsynthControlnet` にモデルと制御画像を追加
-- 🟩 この workflow では Depth Anything V2 で深度マップを作成します。
+- `QwenImageDiffsynthControlnet` にモデルと制御画像を追加
+- 🟩 この workflow では Depth Anything 3 で深度マップを作成します。
+
+{% outputs %}
+![input](/media/basic-workflows/z-image/z_image_fun_controlnet_union_2_1_input.png){media=image} ![depth](/media/basic-workflows/z-image/z_image_fun_controlnet_union_2_1_depth_image.png){media=image} ![output](/media/basic-workflows/z-image/z_image_fun_controlnet_union_2_1_output.png){media=image}
+{% endoutputs %}
 
 
 
