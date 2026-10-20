@@ -3,6 +3,8 @@
 id: scail-2
 title: SCAIL-2
 article: basic-workflows/scail-2
+# RunPod template (Matatabi AI account) the article's launch card deploys.
+template: 704f1a0d1g
 # SCAIL-2 is MIT on its model card (Apache 2.0 for the code), the Wan 2.1 files and the Lightx2v LoRA
 # are Apache 2.0, and SAM 3.1 is under the SAM License, which does not forbid commercial use.
 # So the card keeps the referral code.
@@ -20,7 +22,7 @@ gpu:
   min_vram_gb: 24
   recommended_vram_gb: 48
   # Same as the template's recommended (starred) GPUs.
-  recommended: []
+  recommended: [RTX 3090, RTX 4090, RTX 5090]
   notes: ""
 overrides:
   custom_nodes: []
