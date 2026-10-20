@@ -1,0 +1,25 @@
+# RunPod profile source. Models and custom nodes come from the workflow JSON;
+# list here only what the workflows cannot say for themselves.
+id: z-image
+title: Z-Image
+article: basic-workflows/z-image
+# Every model is Apache 2.0 (Z-Image, Z-Image-Turbo, Fun ControlNet Union 2.1, Qwen3-4B,
+# Depth Anything 3 Mono Large), so the card keeps the referral code.
+workflows:
+  - src/workflows/basic-workflows/z-image/*.json
+comfyui:
+  default: latest
+  verified_commit: null
+gpu:
+  min_vram_gb: 12
+  recommended_vram_gb: 24
+  # Same as the template's recommended (starred) GPUs.
+  recommended: []
+  notes: ""
+overrides:
+  custom_nodes: []
+  models: []
+open:
+  - src/workflows/basic-workflows/z-image/z_image.json
+  - src/workflows/basic-workflows/z-image/z_image_refine_turbo.json
+  - src/workflows/basic-workflows/z-image/z_image_fun_controlnet_union_2_1.json

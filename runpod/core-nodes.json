@@ -1,5 +1,5 @@
 {
-  "comfyui_commit": "fc04da91b2ab12f99e4716371a7e4f98ac982597",
+  "comfyui_commit": "e3bee7ffcb7d6547ed0bcd15221792f3b8646b17",
   "nodes": [
     "APG",
     "ARVideoI2V",
@@ -106,6 +106,7 @@
     "CheckpointSave",
     "ChromaRadianceOptions",
     "ClarityCrystalUpscaleNode",
+    "ClarityCrystalVideoUpscaleNode",
     "ClaudeNode",
     "ColorToRGBInt",
     "ColorTransfer",
@@ -280,6 +281,8 @@
     "HeyGenTalkingPhotoNode",
     "HeyGenTextToSpeechNode",
     "HeyGenVideoTranslateNode",
+    "HeyGenVoiceCloneNode",
+    "HeyGenVoiceTextToSpeechNode",
     "HiDreamO1PatchSeamSmoothing",
     "HiDreamO1ReferenceImages",
     "HiggsfieldMotionTransferNode",
@@ -474,6 +477,7 @@
     "LumaRay32VideoReframeNode",
     "LumaReferenceNode",
     "LumaVideoNode",
+    "MOSSImageControl",
     "MOSSImageLayoutPrompt",
     "MagnificImageRelightNode",
     "MagnificImageSkinEnhancerNode",

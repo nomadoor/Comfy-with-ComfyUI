@@ -658,11 +658,11 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "z_image_fun_controlnet_union_2_1_input.png",
+        "z_image_fun_controlnet_union_2_1_input.webp",
         "image"
       ],
       "widgets_values_named": {
-        "image": "z_image_fun_controlnet_union_2_1_input.png",
+        "image": "z_image_fun_controlnet_union_2_1_input.webp",
         "upload": "image"
       }
     },
