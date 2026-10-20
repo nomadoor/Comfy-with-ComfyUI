@@ -5305,6 +5305,238 @@
       "bytes": 28430
     }
   },
+  "basic-workflows/scail-2/scail_2_animation_lightx2v.png": {
+    "key": "images/46ccd9310dcadc5c.webp",
+    "width": 506,
+    "height": 312,
+    "type": "image/webp",
+    "bytes": 8448,
+    "source": "782df6af5147d86c"
+  },
+  "basic-workflows/scail-2/scail_2_animation_multi_colored_mask.png": {
+    "key": "images/3bf26eaba3ddd00d.webp",
+    "width": 1299,
+    "height": 688,
+    "type": "image/webp",
+    "bytes": 64350,
+    "source": "bc477632b5a09b8c"
+  },
+  "basic-workflows/scail-2/scail_2_animation_multi_input_image.png": {
+    "key": "images/9337c486132d71d4.webp",
+    "width": 1248,
+    "height": 1680,
+    "type": "image/webp",
+    "bytes": 87478,
+    "source": "add01f29c939f458"
+  },
+  "basic-workflows/scail-2/scail_2_animation_multi_input_video.mp4": {
+    "key": "videos/15bc06003e5f5c79.mp4",
+    "width": 896,
+    "height": 1184,
+    "type": "video/mp4",
+    "bytes": 2591795,
+    "source": "2b925d1f9f8b8fcb",
+    "poster": {
+      "key": "images/238978f396ad8f9c.webp",
+      "width": 896,
+      "height": 1184,
+      "bytes": 151450
+    }
+  },
+  "basic-workflows/scail-2/scail_2_animation_multi_output.mp4": {
+    "key": "videos/1b589e0ac442740a.mp4",
+    "width": 608,
+    "height": 832,
+    "type": "video/mp4",
+    "bytes": 1081392,
+    "source": "931b6a515cfa55a4",
+    "poster": {
+      "key": "images/0017cbba0783187c.webp",
+      "width": 608,
+      "height": 832,
+      "bytes": 25796
+    }
+  },
+  "basic-workflows/scail-2/scail_2_animation_multi.png": {
+    "key": "images/259d499d1f86068d.webp",
+    "width": 4354,
+    "height": 2180,
+    "type": "image/webp",
+    "bytes": 358940,
+    "source": "b95fb6a6f6addadb"
+  },
+  "basic-workflows/scail-2/scail_2_animation_output.mp4": {
+    "key": "videos/a0fcd7a675fbf6d4.mp4",
+    "width": 608,
+    "height": 832,
+    "type": "video/mp4",
+    "bytes": 1148377,
+    "source": "2c05e832ea5f382b",
+    "poster": {
+      "key": "images/0e4d9532429500d9.webp",
+      "width": 608,
+      "height": 832,
+      "bytes": 11984
+    }
+  },
+  "basic-workflows/scail-2/scail_2_animation_prompt.png": {
+    "key": "images/b6c28ebf4bd0ed64.webp",
+    "width": 620,
+    "height": 379,
+    "type": "image/webp",
+    "bytes": 18008,
+    "source": "7658d3c93218a94a"
+  },
+  "basic-workflows/scail-2/scail_2_animation_refimage_video.png": {
+    "key": "images/9d741fb5d12c4490.webp",
+    "width": 875,
+    "height": 1407,
+    "type": "image/webp",
+    "bytes": 59078,
+    "source": "5d11e8630b520daf"
+  },
+  "basic-workflows/scail-2/scail_2_animation_resolution.png": {
+    "key": "images/7fe18e80fb559ddd.webp",
+    "width": 1846,
+    "height": 774,
+    "type": "image/webp",
+    "bytes": 46896,
+    "source": "b4d97edda3c21c4a"
+  },
+  "basic-workflows/scail-2/scail_2_animation_sam3_1.png": {
+    "key": "images/170835df1e3eb7c1.webp",
+    "width": 1225,
+    "height": 637,
+    "type": "image/webp",
+    "bytes": 39444,
+    "source": "86207dc742f644ef"
+  },
+  "basic-workflows/scail-2/scail_2_animation_wan_context_windows_input_video.mp4": {
+    "key": "videos/90a7aa1d0bfa88ac.mp4",
+    "width": 896,
+    "height": 1184,
+    "type": "video/mp4",
+    "bytes": 3901418,
+    "source": "f4d793ae2714e350",
+    "poster": {
+      "key": "images/9e5bbd93d535ccf7.webp",
+      "width": 896,
+      "height": 1184,
+      "bytes": 69388
+    }
+  },
+  "basic-workflows/scail-2/scail_2_animation_wan_context_windows_output.mp4": {
+    "key": "videos/913f2c4b1b1d7e27.mp4",
+    "width": 608,
+    "height": 832,
+    "type": "video/mp4",
+    "bytes": 1255379,
+    "source": "d39dc260cb52fa27",
+    "poster": {
+      "key": "images/41fb998dadd460b3.webp",
+      "width": 608,
+      "height": 832,
+      "bytes": 18958
+    }
+  },
+  "basic-workflows/scail-2/scail_2_animation_wan_context_windows_wanscailtovideo.png": {
+    "key": "images/36db1b5ec8b5d070.webp",
+    "width": 545,
+    "height": 664,
+    "type": "image/webp",
+    "bytes": 36562,
+    "source": "070c8051cbf472af"
+  },
+  "basic-workflows/scail-2/scail_2_animation_wan_context_windows.png": {
+    "key": "images/c61b0d9e3bcbdc53.webp",
+    "width": 4354,
+    "height": 2266,
+    "type": "image/webp",
+    "bytes": 344362,
+    "source": "f8ec4a7470496dfd"
+  },
+  "basic-workflows/scail-2/scail_2_animation.png": {
+    "key": "images/2ba153267c80e4dc.webp",
+    "width": 4354,
+    "height": 2180,
+    "type": "image/webp",
+    "bytes": 343228,
+    "source": "0060d080ed2eef4c"
+  },
+  "basic-workflows/scail-2/scail_2_input_image.png": {
+    "key": "images/dd0cf107cb144475.webp",
+    "width": 1248,
+    "height": 1680,
+    "type": "image/webp",
+    "bytes": 73028,
+    "source": "e8dbd2f42029138a"
+  },
+  "basic-workflows/scail-2/scail_2_input_video.mp4": {
+    "key": "videos/5eae9ebc3b4eb2e3.mp4",
+    "width": 896,
+    "height": 1184,
+    "type": "video/mp4",
+    "bytes": 7866375,
+    "source": "fa7186e9f2264068",
+    "poster": {
+      "key": "images/6d72e6477b1ad6ca.webp",
+      "width": 896,
+      "height": 1184,
+      "bytes": 260288
+    }
+  },
+  "basic-workflows/scail-2/scail_2_replacement_coloredmask_wanscailtovideo.png": {
+    "key": "images/f76fc463d7d1a198.webp",
+    "width": 1038,
+    "height": 1178,
+    "type": "image/webp",
+    "bytes": 86092,
+    "source": "eaaf971af8fa0d1c"
+  },
+  "basic-workflows/scail-2/scail_2_replacement_output.mp4": {
+    "key": "videos/52a11f89994aaa4a.mp4",
+    "width": 608,
+    "height": 832,
+    "type": "video/mp4",
+    "bytes": 2752342,
+    "source": "f45a559b123a0bc1",
+    "poster": {
+      "key": "images/621505c6691d9fba.webp",
+      "width": 608,
+      "height": 832,
+      "bytes": 102808
+    }
+  },
+  "basic-workflows/scail-2/scail_2_replacement_resolution.png": {
+    "key": "images/60ba38bf28a4a4c5.webp",
+    "width": 1303,
+    "height": 916,
+    "type": "image/webp",
+    "bytes": 71920,
+    "source": "c1436b44b9fee7ba"
+  },
+  "basic-workflows/scail-2/scail_2_replacement_wan_context_windows_output.mp4": {
+    "key": "videos/4e2ac39df02084bc.mp4",
+    "width": 608,
+    "height": 832,
+    "type": "video/mp4",
+    "bytes": 1478923,
+    "source": "700dde6ebba2352a",
+    "poster": {
+      "key": "images/4ac892456d798883.webp",
+      "width": 608,
+      "height": 832,
+      "bytes": 35214
+    }
+  },
+  "basic-workflows/scail-2/scail_2_replacement.png": {
+    "key": "images/eb09c4d2c2594045.webp",
+    "width": 4149,
+    "height": 2368,
+    "type": "image/webp",
+    "bytes": 370634,
+    "source": "f8fb19f567c110a6"
+  },
   "basic-workflows/sd15-basics/legacy_gyazo_10c6a84174c94fbd6b66fbed2bd2a4c3.png": {
     "key": "images/35e70d7d4187aabf.webp",
     "width": 2036,
