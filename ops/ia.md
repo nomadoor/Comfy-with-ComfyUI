@@ -14,7 +14,7 @@
 > Emoji-prefixed labels appear in UI copy. Slugs stay ASCII kebab-case.
 
 * 📂はじめてのComfyUI
-  * このサイトの使い方（JAナビからは除外。ページは残す）
+  * このサイトの使い方（全言語のナビから除外。ページとURLは残し、noindex。2026-10-20）
   * とりあえず動かしてみる
     * ComfyUIとは？
     * 推奨スペック
