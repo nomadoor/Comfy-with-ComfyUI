@@ -6,7 +6,7 @@ slug: scail-2
 navId: scail-2
 title: "SCAIL-2"
 created: 2026-06-11
-updated: 2026-06-18
+updated: 2026-10-20
 summary: "SCAIL-2で参照画像の人物に動画の動きを転送する"
 seoTitle: "ComfyUIでSCAIL-2を使う：棒人間なしのモーション転送"
 seoDescription: "棒人間などの中間表現に変換せず、参照画像の人物に動画の動きを転送するWan2.1ベースのSCAIL-2の使い方。AnimationモードとReplacementモード、複数人やマルチ参照、長い動画の生成を解説します。"
@@ -39,7 +39,7 @@ ViTPose や OpenPose で棒人間を作り、それを条件として人物を�
 - clip_vision
   - [clip_vision_h.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/clip_vision/clip_vision_h.safetensors) (1.26 GB)
 - diffusion_models
-  - [wan2.1_14B_SCAIL_2_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/SCAIL-2/blob/main/diffusion_models/wan2.1_14B_SCAIL_2_fp8_scaled.safetensors) (17.7 GB)
+  - [wan2.1_14B_SCAIL_2_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/SCAIL-2/blob/main/diffusion_models/wan2.1_14B_SCAIL_2_int8_convrot.safetensors) (16.65 GB)
 - loras
   - [Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors](https://huggingface.co/lightx2v/Wan2.1-I2V-14B-480P-StepDistill-CfgDistill-Lightx2v/blob/main/loras/Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors) (739 MB)
 - text_encoders
@@ -55,7 +55,7 @@ ViTPose や OpenPose で棒人間を作り、それを条件として人物を�
     ├── 📂clip_vision/
     │   └── clip_vision_h.safetensors
     ├── 📂diffusion_models/
-    │   └── wan2.1_14B_SCAIL_2_fp8_scaled.safetensors
+    │   └── wan2.1_14B_SCAIL_2_int8_convrot.safetensors
     ├── 📂loras/
     │   └── Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors
     ├── 📂text_encoders/
@@ -70,13 +70,13 @@ ViTPose や OpenPose で棒人間を作り、それを条件として人物を�
 
 **参照画像** をモーション用動画で動かします。
 
-![](/media/basic-workflows/scail-2/legacy_gyazo_3f28188680b010f2bce1a13858ccaf9f.png){media=image}
+![](/media/basic-workflows/scail-2/scail_2_animation.png){media=image}
 
 [](/workflows/basic-workflows/scail-2/scail_2_animation.json)
 
 ベースの workflow は [Wan-Animate](/ja/basic-workflows/wan-animate/) と同じですが、かなりシンプルになっているので気楽に見ていきましょう。
 
-{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_0846209526768f5c450c700d1a153dad.png {media=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/scail_2_animation_refimage_video.png {media=image}", width=33, align="left" %}
 **参照画像・モーション用動画**
 
 参照画像とモーション用動画は、内部でリサイズされるため、同じサイズに揃える必要はありません。
@@ -88,17 +88,17 @@ ViTPose や OpenPose で棒人間を作り、それを条件として人物を�
 
 {% endmediaRow %}
 
-{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_ce84cc6fe405261d50b5a6a3cfd8bf91.png {media=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/scail_2_animation_prompt.png {media=image}", width=33, align="left" %}
 **プロンプト**
 
 モーションを転送するだけなので、詳細なプロンプトは必要ありません。
 
 - ただ、短すぎると、特に [Replacement モード](#replacement-モード) では失敗しやすくなります。
-- 今回であれば、`シャツを着た男性が腰に手を当てて髪を触っている` というように、どんな動画にしたいかが十分に伝わるようなプロンプトを書きます。
+- 今回であれば、`黒いコートの女性が、カメラに向かって小走りで来て、前かがみになり、右手を差し伸べる` というように、どんな動画にしたいかが十分に伝わるようなプロンプトを書きます。
 
 {% endmediaRow %}
 
-{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_a632cf95fdb6fb5997e6fff4b71218fb.png {media=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/scail_2_animation_resolution.png {media=image}", width=33, align="left" %}
 **解像度・フレーム数**
 
 生成サイズとフレーム数は `WanSCAILToVideo` に入力します。
@@ -109,7 +109,7 @@ ViTPose や OpenPose で棒人間を作り、それを条件として人物を�
 
 {% endmediaRow %}
 
-{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_74c8fc85eb5026b42cbb8f5d6255ba9b.png {media=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/scail_2_animation_sam3_1.png {media=image}", width=33, align="left" %}
 **SAM3.1 によるマスク生成**
 
 参照画像とモーション用動画の人物を、[SAM 3 / 3.1](/ja/data-utilities/sam3/) でマスクします。
@@ -127,7 +127,7 @@ ViTPose や OpenPose で棒人間を作り、それを条件として人物を�
 
 {% endmediaRow %}
 
-{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_25a3907c1246d3513e3bb109997579ab.png {media=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/scail_2_animation_lightx2v.png {media=image}", width=33, align="left" %}
 **6 steps 生成**
 
 SCAIL-2 でも、[Wan2.1 の高速生成](/ja/basic-workflows/wan-2-1/#self-forcing高速生成) 用の Lightx2v LoRA を使えます。
@@ -138,7 +138,7 @@ SCAIL-2 でも、[Wan2.1 の高速生成](/ja/basic-workflows/wan-2-1/#self-forc
 {% endmediaRow %}
 
 {% outputs %}
-![参照画像](/media/basic-workflows/scail-2/legacy_gyazo_ce9827f452cdc3cf7d47de8b12996f28.png){media=image} ![モーション用動画](/media/basic-workflows/scail-2/legacy_gyazo_f14aef04ac197a4b92680e05c4fbd178.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_d87b2644f8f71218ebe678736479959e.mp4){media=loop}
+![参照画像](/media/basic-workflows/scail-2/scail_2_input_image.png){media=image} ![モーション用動画](/media/basic-workflows/scail-2/scail_2_input_video.mp4){media=loop} ![output](/media/basic-workflows/scail-2/scail_2_animation_output.mp4){media=loop}
 {% endoutputs %}
 
 ---
@@ -147,13 +147,13 @@ SCAIL-2 でも、[Wan2.1 の高速生成](/ja/basic-workflows/wan-2-1/#self-forc
 
 **動画内の人物** を **参照画像の人物** に入れ替えます。
 
-![](/media/basic-workflows/scail-2/legacy_gyazo_6ade374ea0cbcb2175889cdc0be0bc46.png){media=image}
+![](/media/basic-workflows/scail-2/scail_2_replacement.png){media=image}
 
 [](/workflows/basic-workflows/scail-2/scail_2_replacement.json)
 
 基本的には `Create SCAIL-2 Colored Mask` と `WanSCAILToVideo` の `replacement_mode` を `true` にするだけです。
 
-{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_5862792bc1510147b0cc73b260624a11.png {media=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/scail_2_replacement_resolution.png {media=image}", width=33, align="left" %}
 **解像度**
 
 Replacement は動画のサイズが基準になります。
@@ -162,7 +162,7 @@ Replacement は動画のサイズが基準になります。
 
 {% endmediaRow %}
 
-{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_cfdb30273c14347f30aad0d2c9987f8c.png {media=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/scail_2_replacement_coloredmask_wanscailtovideo.png {media=image}", width=33, align="left" %}
 **Create SCAIL-2 Colored Mask と WanSCAILToVideo**
 
 `replacement_mode` を `true` にします。
@@ -172,7 +172,7 @@ Replacement は動画のサイズが基準になります。
 {% endmediaRow %}
 
 {% outputs %}
-![モーション用動画](/media/basic-workflows/scail-2/legacy_gyazo_395fd549274fb126d836ac0a9414d07d.mp4){media=loop} ![参照画像](/media/basic-workflows/scail-2/legacy_gyazo_ce9827f452cdc3cf7d47de8b12996f28.png){media=image} ![output](/media/basic-workflows/scail-2/legacy_gyazo_1a7caa57ded15aee5700bed072a4a0a7.mp4){media=loop}
+![モーション用動画](/media/basic-workflows/scail-2/scail_2_input_video.mp4){media=loop} ![参照画像](/media/basic-workflows/scail-2/scail_2_input_image.png){media=image} ![output](/media/basic-workflows/scail-2/scail_2_replacement_output.mp4){media=loop}
 {% endoutputs %}
 
 ---
@@ -186,9 +186,9 @@ SCAIL-2 は複数人の動画・画像にも対応しています。
 
 特別な操作は必要ありません。これまでと同様に動画と参照画像を入力するだけです。
 
-![](/media/basic-workflows/scail-2/legacy_gyazo_a04e322f84ca4377479a7760a60436cd.png){media=image}
+![](/media/basic-workflows/scail-2/scail_2_animation_multi.png){media=image}
 
-[](/workflows/basic-workflows/scail-2/scail_2_animation_multi_char.json)
+[](/workflows/basic-workflows/scail-2/scail_2_animation_multi.json)
 
 {% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_86e8ccd07a045bb039e2e69b81b2781b.png {media=image}", width=33, align="left" %}
 **Create SCAIL-2 Colored Mask**
@@ -209,46 +209,15 @@ SCAIL-2 は複数人の動画・画像にも対応しています。
 
 ---
 
-## Animation モード (マルチ参照)
-
-参照人物の別角度の画像や、背景用の画像をまとめて参照させることもできます。
-
-![](/media/basic-workflows/scail-2/legacy_gyazo_a135dfdaef80d8d16acd904f3d26a12a.png){media=image}
-
-[](/workflows/basic-workflows/scail-2/scail_2_animation_multi_ref.json)
-
-基本的な流れは通常の Animation モードと同じです。違いは、参照画像を 1 枚ではなくバッチとして入力する点です。
-
-{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_23f0af93cd4027f7a8366c16b62181e0.png {media=image}", width=33, align="left" %}
-**バッチ入力**
-
-参照させたい画像を `Batch Images` に入力します。
-
-- バッチにした時点で、すべて 1 枚目と同じサイズにクロップされます。
-  - 2 枚目以降は基本的にリサイズしなくても構いませんが、はみ出した部分は反映されません。
-  - この workflow では、1 枚目と同じサイズになるように padding しています。
-- **一番最後** に入力した画像が最も強く反映されます。
-  - 背景よりも、動かしたい人物を後ろに入れるほうがよさそうです。
-
-{% endmediaRow %}
-
-複数の参照画像は使えますが、人物のサイズに合わせて背景を調整したり、全体を自然にリライトしたりするわけではありません。
-
-別角度からの人物を補うには向いていますが、背景を合成したいなら、この機能を使うより、画像編集で 1 枚作り込んだほうがよいでしょう。
-
-{% outputs %}
-![参照画像1](/media/basic-workflows/scail-2/legacy_gyazo_d2935f1c3b0ff3016616c54d88d6be56.png){media=image} ![参照画像2](/media/basic-workflows/scail-2/legacy_gyazo_7819645aea776b0aa5e24e8d9f642487.png){media=image} ![参照画像3](/media/basic-workflows/scail-2/legacy_gyazo_4617d933cec4a3431d36af11c65180e3.png){media=image} ![モーション用動画](/media/basic-workflows/scail-2/legacy_gyazo_f14aef04ac197a4b92680e05c4fbd178.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_50154740248550b3ffa1dfee024da941.mp4){media=loop}
-{% endoutputs %}
-
----
-
 ## Animation モード (81 フレーム以上)
 
 SCAIL-2 は基本的に 81 フレームまでの生成ですが、`WAN Context Windows (Manual)` を使うと、時間方向に分割しながら長めの動画を生成できます。
 
-![](/media/basic-workflows/scail-2/legacy_gyazo_43b5c2e2684957795ab7d80f8ce9976a.png){media=image}
+![](/media/basic-workflows/scail-2/scail_2_animation_wan_context_windows.png){media=image}
 
 [](/workflows/basic-workflows/scail-2/scail_2_animation_wan_context_windows.json)
+
+[](/workflows/basic-workflows/scail-2/scail_2_replacement_wan_context_windows.json)
 
 {% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_55aa8d3ccee17c3a43f87f17895ebfb1.png {media=image}", width=33, align="left" %}
 **WAN Context Windows (Manual)**
@@ -260,6 +229,13 @@ SCAIL-2 は基本的に 81 フレームまでの生成ですが、`WAN Context W
 
 {% endmediaRow %}
 
+{% mediaRow img="/media/basic-workflows/scail-2/scail_2_animation_wan_context_windows_wanscailtovideo.png {media=image}", width=33, align="left" %}
+**WanSCAILToVideo**
+
+- `length` に、生成したいフレーム数を入れます（この workflow では 125）。
+
+{% endmediaRow %}
+
 {% outputs %}
-![参照画像](/media/basic-workflows/scail-2/legacy_gyazo_ce9827f452cdc3cf7d47de8b12996f28.png){media=image} ![モーション用動画](/media/basic-workflows/scail-2/legacy_gyazo_5491ba090036cbac5d76abd293d842ef.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_ae5729a3c9c70711f767364534ccedf9.mp4){media=loop}
+![Animation](/media/basic-workflows/scail-2/scail_2_animation_wan_context_windows_output.mp4){media=loop} ![Replacement](/media/basic-workflows/scail-2/scail_2_replacement_wan_context_windows_output.mp4){media=loop}
 {% endoutputs %}
