@@ -83,10 +83,7 @@ Base（20 steps）に対し、Distilled は 4 steps で生成出来ます。
 
 ![](/media/basic-workflows/flux-2-klein/flux_2_klein_base_9b_text2image.png){media=image}
 
-{% workflowPicker
-  "!/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_text2image.json",
-  "/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_base_4b_text2image.json"
-%}
+[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_text2image.json)
 
 > [!NOTE]
 > 公式workflowでは、`Flux2Scheduler` というものを使いますが、大きな違いは無いので、workflowを簡略化するため`Simple`を使っています。
@@ -95,10 +92,7 @@ Base（20 steps）に対し、Distilled は 4 steps で生成出来ます。
 
 ![](/media/basic-workflows/flux-2-klein/flux_2_klein_9b_text2image.png){media=image}
 
-{% workflowPicker
-  "!/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_text2image.json",
-  "/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_4b_text2image.json"
-%}
+[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_text2image.json)
 
 以下のパラメータだけ変更します。
 - `CFG` : 1.0
@@ -108,21 +102,15 @@ Base（20 steps）に対し、Distilled は 4 steps で生成出来ます。
 ![Base](/media/basic-workflows/flux-2-klein/flux_2_klein_base_9b_text2image_output.png){media=image} ![Distilled](/media/basic-workflows/flux-2-klein/flux_2_klein_9b_text2image_output.png){media=image}
 {% endoutputs %}
 
-> [!NOTE]
-> 4B は、モデルとテキストエンコーダを 4B のものに置き換えるだけです。workflow は切り替えて選べます。
-
 ---
 
 ## 画像編集
 
 ![](/media/basic-workflows/flux-2-klein/flux_2_klein_base_9b_image_edit.png){media=image}
 
-{% workflowPicker
-  "!/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_image_edit.json",
-  "/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_image_edit.json",
-  "/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_base_4b_image_edit.json",
-  "/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_4b_image_edit.json"
-%}
+[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_image_edit.json)
+
+[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_image_edit.json)
 
 「入力画像 + 指示プロンプト」 が基本です。
 - 入力画像を `Set Reference Multi Latent` につなぐと、VAE Encode して参照として渡してくれます。
@@ -140,12 +128,9 @@ Base（20 steps）に対し、Distilled は 4 steps で生成出来ます。
 
 ![](/media/basic-workflows/flux-2-klein/flux_2_klein_base_9b_image_edit_multi.png){media=image}
 
-{% workflowPicker
-  "!/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_image_edit_multi.json",
-  "/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_image_edit_multi.json",
-  "/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_base_4b_image_edit_multi.json",
-  "/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_4b_image_edit_multi.json"
-%}
+[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_image_edit_multi.json)
+
+[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_image_edit_multi.json)
 
 - `Set Reference Multi Latent` に参照画像をつないでいくだけです。
 - 2枚でも3枚でもOKです。（ただし上限は4）
@@ -153,6 +138,24 @@ Base（20 steps）に対し、Distilled は 4 steps で生成出来ます。
 {% outputs %}
 ![input](/media/basic-workflows/flux-2-klein/flux_2_klein_9b_text2image_output.png){media=image} ![input](/media/basic-workflows/flux-2-klein/flux_2_klein_base_9b_image_edit_multi_input2.png){media=image} ![output](/media/basic-workflows/flux-2-klein/flux_2_klein_base_9b_image_edit_multi_output.png){media=image}
 {% endoutputs %}
+
+---
+
+## 4B
+
+基本は9Bと全く同じです。モデルとテキストエンコーダを4Bのものに置き換えるだけです。
+
+**text2image**
+- [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_base_4b_text2image.json)
+- [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_4b_text2image.json)
+
+**画像編集**
+- [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_base_4b_image_edit.json)
+- [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_4b_image_edit.json)
+
+**画像編集（マルチリファレンス）**
+- [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_base_4b_image_edit_multi.json)
+- [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_4b_image_edit_multi.json)
 
 ---
 
