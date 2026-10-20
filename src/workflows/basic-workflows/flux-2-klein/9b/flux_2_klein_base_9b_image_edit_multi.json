@@ -575,7 +575,7 @@
       "widgets_values": [
         "scale total pixels",
         1,
-        "area"
+        "bicubic"
       ],
       "widgets_values_named": {
         "resize_type": "scale total pixels",
@@ -620,7 +620,7 @@
       "widgets_values": [
         "scale to multiple",
         16,
-        "area"
+        "bicubic"
       ],
       "widgets_values_named": {
         "resize_type": "scale to multiple",
@@ -707,7 +707,7 @@
       "widgets_values": [
         "scale total pixels",
         1,
-        "area"
+        "bicubic"
       ],
       "widgets_values_named": {
         "resize_type": "scale total pixels",
