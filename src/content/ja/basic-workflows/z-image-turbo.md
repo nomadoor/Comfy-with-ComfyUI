@@ -6,7 +6,7 @@ slug: z-image-turbo
 navId: z-image-turbo
 title: "Z-Image-Turbo"
 created: 2025-12-12
-updated: 2026-03-02
+updated: 2026-10-20
 summary: "Z-Image-Turboでの画像生成"
 seoTitle: "ComfyUIでZ-Image-Turboを使う：8ステップの高速画像生成"
 seoDescription: "Z-Imageを8ステップで生成できるように蒸留した高速モデルZ-Image-Turboの、ComfyUIでの使い方。モデルのダウンロード、text2image、Fun ControlNet Unionのworkflowを紹介します。"
@@ -35,20 +35,20 @@ Z-Image は、Alibaba / Tongyi-MAI による **画像生成モデルファミリ
 
 ## モデルのダウンロード
 
-- diffusion_models  
-  - [z_image_turbo_bf16.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors) (12.3 GB)
-- text_encoders  
-  - [qwen_3_4b.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/text_encoders/qwen_3_4b.safetensors) (8.04 GB)
-- vae  
-  - [ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors)（335 MB）
+- diffusion_models
+  - [z_image_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/diffusion_models/z_image_turbo_int8_convrot.safetensors) (6.20 GB)
+- text_encoders
+  - [qwen_3_4b_fp8_mixed.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/text_encoders/qwen_3_4b_fp8_mixed.safetensors) (5.63 GB)
+- vae
+  - [ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors) (335 MB)
 
 ```text
 📂ComfyUI/
 └── 📂models/
     ├── 📂diffusion_models/
-    │   └── z_image_turbo_bf16.safetensors
+    │   └── z_image_turbo_int8_convrot.safetensors
     ├── 📂text_encoders/
-    │   └── qwen_3_4b.safetensors
+    │   └── qwen_3_4b_fp8_mixed.safetensors
     └── 📂vae/
         └── ae.safetensors
 ```
@@ -59,12 +59,16 @@ Z-Image は、Alibaba / Tongyi-MAI による **画像生成モデルファミリ
 
 Z-Image-Turbo は、Flux.1 dev と同じタイプの **蒸留モデル** です。
 
-![](/media/basic-workflows/z-image-turbo/legacy_gyazo_7e5d76cec53ee44278c313a30035463f.png){media=image}
+![](/media/basic-workflows/z-image-turbo/z_image_turbo.png){media=image}
 
 [](/workflows/basic-workflows/z-image-turbo/z_image_turbo.json)
 
 - `steps` … 6〜8
 - `cfg` … 1.0
+
+{% outputs %}
+![](/media/basic-workflows/z-image-turbo/z_image_turbo_output.png){media=image}
+{% endoutputs %}
 
 ---
 
@@ -75,21 +79,28 @@ Z-Image-Turbo 用の ControlNet 風パッチです。
 ### モデルのダウンロード
 
 - model_patches
-
-  - [Z-Image-Turbo-Fun-Controlnet-Union-2.1.safetensors](https://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.0/blob/main/Z-Image-Turbo-Fun-Controlnet-Union-2.1.safetensors)
+  - [Z-Image-Turbo-Fun-Controlnet-Union-2.1-lite-2602-8steps.safetensors](https://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1/blob/main/Z-Image-Turbo-Fun-Controlnet-Union-2.1-lite-2602-8steps.safetensors) (2.02 GB)
+- geometry_estimation
+  - [depth_anything_3_mono_large.safetensors](https://huggingface.co/Comfy-Org/Depth-Anything-3/blob/main/geometry_estimation/depth_anything_3_mono_large.safetensors) (1.34 GB)
 
 ```text
 📂ComfyUI/
 └── 📂models/
-    └── 📂model_patches/
-        └── Z-Image-Turbo-Fun-Controlnet-Union-2.1.safetensors
+    ├── 📂model_patches/
+    │   └── Z-Image-Turbo-Fun-Controlnet-Union-2.1-lite-2602-8steps.safetensors
+    └── 📂geometry_estimation/
+        └── depth_anything_3_mono_large.safetensors
 ```
 
 ### workflow
 
-![](/media/basic-workflows/z-image-turbo/legacy_gyazo_53c91fd9eeb8f94357b20839e5d8c967.png){media=image}
+![](/media/basic-workflows/z-image-turbo/z_image_turbo_fun_controlnet_union_2_1.png){media=image}
 
 [](/workflows/basic-workflows/z-image-turbo/z_image_turbo_fun_controlnet_union_2_1.json)
 
-- 🟩 `QwenImageDiffsynthControlnet` にモデルと制御画像を追加
-- 🟩 この workflow では Depth Anything V2 で深度マップを作成します。
+- `QwenImageDiffsynthControlnet` にモデルと制御画像を追加
+- 🟩 この workflow では Depth Anything 3 で深度マップを作成します。
+
+{% outputs %}
+![input](/media/basic-workflows/z-image-turbo/z_image_turbo_fun_controlnet_union_2_1_input.png){media=image} ![depth](/media/basic-workflows/z-image-turbo/z_image_turbo_fun_controlnet_union_2_1_depth_image.png){media=image} ![output](/media/basic-workflows/z-image-turbo/z_image_turbo_fun_controlnet_union_2_1_output.png){media=image}
+{% endoutputs %}
