@@ -5313,6 +5313,50 @@
     "bytes": 8448,
     "source": "782df6af5147d86c"
   },
+  "basic-workflows/scail-2/scail_2_animation_multi_colored_mask.png": {
+    "key": "images/3bf26eaba3ddd00d.webp",
+    "width": 1299,
+    "height": 688,
+    "type": "image/webp",
+    "bytes": 64350,
+    "source": "bc477632b5a09b8c"
+  },
+  "basic-workflows/scail-2/scail_2_animation_multi_input_image.png": {
+    "key": "images/9337c486132d71d4.webp",
+    "width": 1248,
+    "height": 1680,
+    "type": "image/webp",
+    "bytes": 87478,
+    "source": "add01f29c939f458"
+  },
+  "basic-workflows/scail-2/scail_2_animation_multi_input_video.mp4": {
+    "key": "videos/15bc06003e5f5c79.mp4",
+    "width": 896,
+    "height": 1184,
+    "type": "video/mp4",
+    "bytes": 2591795,
+    "source": "2b925d1f9f8b8fcb",
+    "poster": {
+      "key": "images/238978f396ad8f9c.webp",
+      "width": 896,
+      "height": 1184,
+      "bytes": 151450
+    }
+  },
+  "basic-workflows/scail-2/scail_2_animation_multi_output.mp4": {
+    "key": "videos/1b589e0ac442740a.mp4",
+    "width": 608,
+    "height": 832,
+    "type": "video/mp4",
+    "bytes": 1081392,
+    "source": "931b6a515cfa55a4",
+    "poster": {
+      "key": "images/0017cbba0783187c.webp",
+      "width": 608,
+      "height": 832,
+      "bytes": 25796
+    }
+  },
   "basic-workflows/scail-2/scail_2_animation_multi.png": {
     "key": "images/259d499d1f86068d.webp",
     "width": 4354,
@@ -5366,6 +5410,20 @@
     "type": "image/webp",
     "bytes": 39444,
     "source": "86207dc742f644ef"
+  },
+  "basic-workflows/scail-2/scail_2_animation_wan_context_windows_input_video.mp4": {
+    "key": "videos/90a7aa1d0bfa88ac.mp4",
+    "width": 896,
+    "height": 1184,
+    "type": "video/mp4",
+    "bytes": 3901418,
+    "source": "f4d793ae2714e350",
+    "poster": {
+      "key": "images/9e5bbd93d535ccf7.webp",
+      "width": 896,
+      "height": 1184,
+      "bytes": 69388
+    }
   },
   "basic-workflows/scail-2/scail_2_animation_wan_context_windows_output.mp4": {
     "key": "videos/913f2c4b1b1d7e27.mp4",

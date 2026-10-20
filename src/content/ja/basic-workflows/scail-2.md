@@ -93,7 +93,6 @@ ViTPose や OpenPose で棒人間を作り、それを条件として人物を�
 
 モーションを転送するだけなので、詳細なプロンプトは必要ありません。
 
-- ただ、短すぎると、特に [Replacement モード](#replacement-モード) では失敗しやすくなります。
 - 今回であれば、`黒いコートの女性が、カメラに向かって小走りで来て、前かがみになり、右手を差し伸べる` というように、どんな動画にしたいかが十分に伝わるようなプロンプトを書きます。
 
 {% endmediaRow %}
@@ -180,7 +179,7 @@ Replacement は動画のサイズが基準になります。
 > [!NOTE]
 > ここから先は Animation モードを使っていますが、どれも Replacement モードでも使えます。
 
-## Animation モード (複数人)
+## 複数人
 
 SCAIL-2 は複数人の動画・画像にも対応しています。
 
@@ -190,7 +189,7 @@ SCAIL-2 は複数人の動画・画像にも対応しています。
 
 [](/workflows/basic-workflows/scail-2/scail_2_animation_multi.json)
 
-{% mediaRow img="/media/basic-workflows/scail-2/legacy_gyazo_86e8ccd07a045bb039e2e69b81b2781b.png {media=image}", width=33, align="left" %}
+{% mediaRow img="/media/basic-workflows/scail-2/scail_2_animation_multi_colored_mask.png {media=image}", width=33, align="left" %}
 **Create SCAIL-2 Colored Mask**
 
 複数人の場合は、どの人物にどの動きを対応させるかが重要になりますが、SCAIL-2 では色付きマスクを使ってそれを制御します。
@@ -199,17 +198,17 @@ SCAIL-2 は複数人の動画・画像にも対応しています。
 - 基本的には、同じ色同士が紐づけられるため、`sort_by` などで色を合わせてください。
 
 > [!NOTE]
-> ただし、以下の出力例のように色の対応と動きが合わないことがあります。あくまでひとつの軽い条件であり、単純に構図的に近い方を選ぶこともあります。
+> ただし、色の対応と動きが合わないこともあります。
 
 {% endmediaRow %}
 
 {% outputs %}
-![参照画像](/media/basic-workflows/scail-2/legacy_gyazo_567acaf722ca9e839ec7cb834c1ed344.png){media=image} ![モーション用動画](/media/basic-workflows/scail-2/legacy_gyazo_53461ca17746349fbd11e69798460ea6.mp4){media=loop} ![output](/media/basic-workflows/scail-2/legacy_gyazo_913ff446dd39fa33f56ba9ed07ce6e16.mp4){media=loop}
+![参照画像](/media/basic-workflows/scail-2/scail_2_animation_multi_input_image.png){media=image} ![モーション用動画](/media/basic-workflows/scail-2/scail_2_animation_multi_input_video.mp4){media=loop} ![output](/media/basic-workflows/scail-2/scail_2_animation_multi_output.mp4){media=loop}
 {% endoutputs %}
 
 ---
 
-## Animation モード (81 フレーム以上)
+## 81 フレーム以上
 
 SCAIL-2 は基本的に 81 フレームまでの生成ですが、`WAN Context Windows (Manual)` を使うと、時間方向に分割しながら長めの動画を生成できます。
 
@@ -233,9 +232,10 @@ SCAIL-2 は基本的に 81 フレームまでの生成ですが、`WAN Context W
 **WanSCAILToVideo**
 
 - `length` に、生成したいフレーム数を入れます（この workflow では 125）。
+- モーション用動画も、このフレーム数以上を読み込んでおきます。
 
 {% endmediaRow %}
 
 {% outputs %}
-![Animation](/media/basic-workflows/scail-2/scail_2_animation_wan_context_windows_output.mp4){media=loop} ![Replacement](/media/basic-workflows/scail-2/scail_2_replacement_wan_context_windows_output.mp4){media=loop}
+![参照画像](/media/basic-workflows/scail-2/scail_2_input_image.png){media=image} ![モーション用動画](/media/basic-workflows/scail-2/scail_2_animation_wan_context_windows_input_video.mp4){media=loop} ![Animation](/media/basic-workflows/scail-2/scail_2_animation_wan_context_windows_output.mp4){media=loop} ![Replacement](/media/basic-workflows/scail-2/scail_2_replacement_wan_context_windows_output.mp4){media=loop}
 {% endoutputs %}
