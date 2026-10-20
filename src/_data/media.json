@@ -1603,6 +1603,86 @@
     "bytes": 80940,
     "source": "fa00f46f13c64cfa"
   },
+  "basic-workflows/flux-2-klein/flux_2_klein_9b_text2image_output.png": {
+    "key": "images/b09ad47af6539636.webp",
+    "width": 1248,
+    "height": 1680,
+    "type": "image/webp",
+    "bytes": 246180,
+    "source": "c5718bdb9c8a9bcd"
+  },
+  "basic-workflows/flux-2-klein/flux_2_klein_9b_text2image.png": {
+    "key": "images/d66f3a4f313ac4a2.webp",
+    "width": 2419,
+    "height": 919,
+    "type": "image/webp",
+    "bytes": 102936,
+    "source": "3f188ceb396a2e39"
+  },
+  "basic-workflows/flux-2-klein/flux_2_klein_base_9b_image_edit_input.png": {
+    "key": "images/c56f2e6ef65c2733.webp",
+    "width": 832,
+    "height": 1216,
+    "type": "image/webp",
+    "bytes": 91480,
+    "source": "7e239c3ad6df38d7"
+  },
+  "basic-workflows/flux-2-klein/flux_2_klein_base_9b_image_edit_multi_input2.png": {
+    "key": "images/aab4411ed1327086.webp",
+    "width": 1936,
+    "height": 1088,
+    "type": "image/webp",
+    "bytes": 338724,
+    "source": "93ddd892cbbd8254"
+  },
+  "basic-workflows/flux-2-klein/flux_2_klein_base_9b_image_edit_multi_output.png": {
+    "key": "images/cb667dafc74fa6a6.webp",
+    "width": 880,
+    "height": 1184,
+    "type": "image/webp",
+    "bytes": 226514,
+    "source": "5eaa604f3c7071d2"
+  },
+  "basic-workflows/flux-2-klein/flux_2_klein_base_9b_image_edit_multi.png": {
+    "key": "images/0060503aa3591b69.webp",
+    "width": 2716,
+    "height": 1572,
+    "type": "image/webp",
+    "bytes": 223864,
+    "source": "9a5cd67a0b5c4de4"
+  },
+  "basic-workflows/flux-2-klein/flux_2_klein_base_9b_image_edit_output.png": {
+    "key": "images/7b06f948f5569759.webp",
+    "width": 832,
+    "height": 1232,
+    "type": "image/webp",
+    "bytes": 57440,
+    "source": "e0add02a6074fdf3"
+  },
+  "basic-workflows/flux-2-klein/flux_2_klein_base_9b_image_edit.png": {
+    "key": "images/b1bc41ed61c93623.webp",
+    "width": 2716,
+    "height": 1561,
+    "type": "image/webp",
+    "bytes": 140878,
+    "source": "3f0f1bd8069b3311"
+  },
+  "basic-workflows/flux-2-klein/flux_2_klein_base_9b_text2image_output.png": {
+    "key": "images/ff934f6796b7b091.webp",
+    "width": 1248,
+    "height": 1680,
+    "type": "image/webp",
+    "bytes": 240988,
+    "source": "a90fdbc04d132f8b"
+  },
+  "basic-workflows/flux-2-klein/flux_2_klein_base_9b_text2image.png": {
+    "key": "images/a866e02ee6774473.webp",
+    "width": 2421,
+    "height": 1008,
+    "type": "image/webp",
+    "bytes": 102420,
+    "source": "4a6921245f6f3483"
+  },
   "basic-workflows/flux-2-klein/legacy_gyazo_090e1bccb68070e4a22c7315d1bdc2ce.png": {
     "key": "images/753ae41d8191d2d2.webp",
     "width": 1824,

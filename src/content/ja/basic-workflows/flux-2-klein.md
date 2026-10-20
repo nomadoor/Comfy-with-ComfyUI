@@ -7,7 +7,7 @@ slug: flux-2-klein
 navId: flux-2-klein
 title: "FLUX.2 [klein]"
 created: 2026-01-22
-updated: 2026-03-02
+updated: 2026-10-20
 summary: "FLUX.2 [klein] 生成・画像編集workflow"
 seoTitle: "ComfyUIでFLUX.2 [klein]を使う：画像生成と画像編集"
 seoDescription: "画像生成と指示ベース画像編集を1つでこなす小型・高速なFLUX.2 [klein]の使い方。推奨設定、9B / 4BとBase / Distilledの違い、text2image、画像編集、マルチリファレンスのworkflowを解説します。"
@@ -44,131 +44,115 @@ Base（20 steps）に対し、Distilled は 4 steps で生成出来ます。
 
 ---
 
-## Flux.2 [klein] 9B
+## モデルのダウンロード
 
-### モデルのダウンロード（9B）
+> [!WARNING]
+> 9B のモデルは、認証しないとダウンロードできません。Hugging Face のアカウントでログインし、[FLUX.2-klein-9b-fp8](https://huggingface.co/black-forest-labs/FLUX.2-klein-9b-fp8) と [FLUX.2-klein-base-9b-fp8](https://huggingface.co/black-forest-labs/FLUX.2-klein-base-9b-fp8) のページで利用条件に同意してください。
 
-* diffusion_models
-
-  * [flux-2-klein-9b-fp8.safetensors（distilled）](https://huggingface.co/black-forest-labs/FLUX.2-klein-9b-fp8/blob/main/flux-2-klein-9b-fp8.safetensors)
-  * [flux-2-klein-base-9b-fp8.safetensors](https://huggingface.co/black-forest-labs/FLUX.2-klein-base-9b-fp8/blob/main/flux-2-klein-base-9b-fp8.safetensors)
-* text_encoders
-
-  * [qwen_3_8b.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/blob/main/split_files/text_encoders/qwen_3_8b.safetensors)
-* vae
-
-  * [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/blob/main/split_files/vae/flux2-vae.safetensors)
-
+- diffusion_models
+  - [flux-2-klein-9b-fp8.safetensors（distilled）](https://huggingface.co/black-forest-labs/FLUX.2-klein-9b-fp8/blob/main/flux-2-klein-9b-fp8.safetensors) (9.43 GB)
+  - [flux-2-klein-base-9b-fp8.safetensors](https://huggingface.co/black-forest-labs/FLUX.2-klein-base-9b-fp8/blob/main/flux-2-klein-base-9b-fp8.safetensors) (9.57 GB)
+  - [flux-2-klein-4b.safetensors（distilled）](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-4b/blob/main/split_files/diffusion_models/flux-2-klein-4b.safetensors) (7.75 GB)
+  - [flux-2-klein-base-4b.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-4b/blob/main/split_files/diffusion_models/flux-2-klein-base-4b.safetensors) (7.75 GB)
+- text_encoders
+  - [qwen_3_8b.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/blob/main/split_files/text_encoders/qwen_3_8b.safetensors) (16.38 GB)
+    - 9B 用
+  - [qwen_3_4b.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-4b/blob/main/split_files/text_encoders/qwen_3_4b.safetensors) (8.04 GB)
+    - 4B 用
+- vae
+  - [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/blob/main/split_files/vae/flux2-vae.safetensors) (336 MB)
 
 ```text
 📂ComfyUI/
 └── 📂models/
     ├── 📂diffusion_models/
     │   ├── flux-2-klein-9b-fp8.safetensors
-    │   └── flux-2-klein-base-9b-fp8.safetensors
-    ├── 📂text_encoders/
-    │   └── qwen_3_8b.safetensors
-    └── 📂vae/
-        └── flux2-vae.safetensors
-```
-
-### text2image Base
-
-![](/media/basic-workflows/flux-2-klein/legacy_gyazo_0936f046def982bdf00c697bb1740bfa.png){media=image}
-
-[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_text2image.json)
-
-> [!NOTE]
-> 公式workflowでは、`Flux2Scheduler` というものを使いますが、大きな違いは無いので、workflowを簡略化するため`Simple`を使っています。
-
-### text2image Distilled
-
-![](/media/basic-workflows/flux-2-klein/legacy_gyazo_ba71c46ad1a5880a40a4897992777050.png){media=image}
-
-[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_text2image.json)
-
-以下のパラメータだけ変更します。
-- `CFG` : 1.0
-- `steps` : 4
-
-### 画像編集 Base
-
-![](/media/basic-workflows/flux-2-klein/legacy_gyazo_74b3fe065e88c1a48210c04b0e9c0766.png){media=image}
-
-[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_image_edit.json)
-
-「入力画像 + 指示プロンプト」 が基本です。
-- 入力画像を VAE Encode して `ReferenceLatent` に渡します。
-
-
-### 画像編集 Distilled
-
-![](/media/basic-workflows/flux-2-klein/legacy_gyazo_e55ff686078115488cef6406f60b9370.png){media=image}
-
-[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_image_edit.json)
-
-### 画像編集（マルチリファレンス）Base
-
-複数枚の画像を入力して参照させることもできます。
-
-![](/media/basic-workflows/flux-2-klein/legacy_gyazo_d5d524090b273847fbc4a45cf52284b4.png){media=image}
-
-[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_image_edit_multi.json)
-
-- `参照画像 → VAE Encode → ReferenceLatent` この塊を直列に繋いでいくだけです。
-- 2枚でも3枚でもOKです。（ただし上限は4）
-
-### 画像編集（マルチリファレンス）Distilled
-
-![](/media/basic-workflows/flux-2-klein/legacy_gyazo_8d4bcf62e22ccaf6e91c3b2de20a417b.png){media=image}
-
-[](/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_image_edit_multi.json)
-
----
-
-## Flux.2 [klein] 4B
-
-### モデルのダウンロード（4B）
-
-* diffusion_models
-
-  * [flux-2-klein-4b.safetensors（distilled）](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-4b/blob/main/split_files/diffusion_models/flux-2-klein-4b.safetensors)
-  * [flux-2-klein-base-4b.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-4b/blob/main/split_files/diffusion_models/flux-2-klein-base-4b.safetensors)
-* text_encoders
-
-  * [qwen_3_4b.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-4b/blob/main/split_files/text_encoders/qwen_3_4b.safetensors)
-* vae
-
-  * [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/blob/main/split_files/vae/flux2-vae.safetensors)
-
-```text
-📂ComfyUI/
-└── 📂models/
-    ├── 📂diffusion_models/
+    │   ├── flux-2-klein-base-9b-fp8.safetensors
     │   ├── flux-2-klein-4b.safetensors
     │   └── flux-2-klein-base-4b.safetensors
     ├── 📂text_encoders/
+    │   ├── qwen_3_8b.safetensors
     │   └── qwen_3_4b.safetensors
     └── 📂vae/
         └── flux2-vae.safetensors
 ```
 
-### workflow
+---
 
-基本は9Bと全く同じです。  
-モデルとテキストエンコーダを4Bのものに置き換えるだけです。
+## text2image
 
-**text2image**
-- [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_base_4b_text2image.json)
-- [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_4b_text2image.json)
+![](/media/basic-workflows/flux-2-klein/flux_2_klein_base_9b_text2image.png){media=image}
 
-**画像編集**
-- [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_base_4b_image_edit.json)
-- [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_4b_image_edit.json)
+{% workflowPicker
+  "!/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_text2image.json",
+  "/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_base_4b_text2image.json"
+%}
 
-**画像編集（マルチリファレンス)**
-- [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_base_4b_image_edit_multi.json)
-- [](/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_4b_image_edit_multi.json)
+> [!NOTE]
+> 公式workflowでは、`Flux2Scheduler` というものを使いますが、大きな違いは無いので、workflowを簡略化するため`Simple`を使っています。
+
+### Distilled
+
+![](/media/basic-workflows/flux-2-klein/flux_2_klein_9b_text2image.png){media=image}
+
+{% workflowPicker
+  "!/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_text2image.json",
+  "/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_4b_text2image.json"
+%}
+
+以下のパラメータだけ変更します。
+- `CFG` : 1.0
+- `steps` : 4
+
+{% outputs %}
+![Base](/media/basic-workflows/flux-2-klein/flux_2_klein_base_9b_text2image_output.png){media=image} ![Distilled](/media/basic-workflows/flux-2-klein/flux_2_klein_9b_text2image_output.png){media=image}
+{% endoutputs %}
+
+> [!NOTE]
+> 4B は、モデルとテキストエンコーダを 4B のものに置き換えるだけです。workflow は切り替えて選べます。
+
+---
+
+## 画像編集
+
+![](/media/basic-workflows/flux-2-klein/flux_2_klein_base_9b_image_edit.png){media=image}
+
+{% workflowPicker
+  "!/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_image_edit.json",
+  "/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_image_edit.json",
+  "/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_base_4b_image_edit.json",
+  "/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_4b_image_edit.json"
+%}
+
+「入力画像 + 指示プロンプト」 が基本です。
+- 入力画像を `Set Reference Multi Latent` につなぐと、VAE Encode して参照として渡してくれます。
+- `empty_latent` 出力は 1 枚目と同じサイズの空 latent なので、そのまま `KSampler` に渡します。
+
+{% outputs %}
+![input](/media/basic-workflows/flux-2-klein/flux_2_klein_base_9b_image_edit_input.png){media=image} ![output](/media/basic-workflows/flux-2-klein/flux_2_klein_base_9b_image_edit_output.png){media=image}
+{% endoutputs %}
+
+---
+
+## 画像編集（マルチリファレンス）
+
+複数枚の画像を入力して参照させることもできます。
+
+![](/media/basic-workflows/flux-2-klein/flux_2_klein_base_9b_image_edit_multi.png){media=image}
+
+{% workflowPicker
+  "!/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_base_9b_image_edit_multi.json",
+  "/workflows/basic-workflows/flux-2-klein/9b/flux_2_klein_9b_image_edit_multi.json",
+  "/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_base_4b_image_edit_multi.json",
+  "/workflows/basic-workflows/flux-2-klein/4b/flux_2_klein_4b_image_edit_multi.json"
+%}
+
+- `Set Reference Multi Latent` に参照画像をつないでいくだけです。
+- 2枚でも3枚でもOKです。（ただし上限は4）
+
+{% outputs %}
+![input](/media/basic-workflows/flux-2-klein/flux_2_klein_9b_text2image_output.png){media=image} ![input](/media/basic-workflows/flux-2-klein/flux_2_klein_base_9b_image_edit_multi_input2.png){media=image} ![output](/media/basic-workflows/flux-2-klein/flux_2_klein_base_9b_image_edit_multi_output.png){media=image}
+{% endoutputs %}
 
 ---
 
