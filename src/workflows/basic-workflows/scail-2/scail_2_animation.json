@@ -510,11 +510,11 @@
         "ver": "0.3.33"
       },
       "widgets_values": [
-        "scail_2_input_image.png",
+        "scail_2_input_image.webp",
         "image"
       ],
       "widgets_values_named": {
-        "image": "scail_2_input_image.png",
+        "image": "scail_2_input_image.webp",
         "upload": "image"
       },
       "color": "#233",
