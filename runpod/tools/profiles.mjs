@@ -19,8 +19,15 @@ export const CORE_NODES_PATH = path.join(RUNPOD_DIR, "core-nodes.json");
 
 const WORKFLOW_ROOT = path.resolve("src", "workflows");
 const ALLOWED_HOSTS = new Set(["huggingface.co", "civitai.com"]);
-// Nodes that read a file from ComfyUI's input/ folder; widgets_values[0] is the file name.
-const INPUT_NODES = new Set(["LoadImage", "LoadImageMask", "LoadVideo", "LoadAudio"]);
+// Nodes that read a file from ComfyUI's input/ folder, and where the file name sits in widgets_values:
+// the first value of a list, or a named value of an object (VideoHelperSuite keeps its widgets that way).
+const INPUT_NODES = new Map([
+  ["LoadImage", 0],
+  ["LoadImageMask", 0],
+  ["LoadVideo", 0],
+  ["LoadAudio", 0],
+  ["VHS_LoadVideo", "video"],
+]);
 // Frontend-only nodes: they never reach the backend, so they need nothing installed.
 const FRONTEND_NODES = new Set(["Note", "MarkdownNote", "Reroute", "PrimitiveNode"]);
 
@@ -29,15 +36,22 @@ const readJSON = (file, fallback) => (fs.existsSync(file) ? JSON.parse(fs.readFi
 
 // --- Sample inputs
 // A workflow's input files are ordinary site media: the original sits in COMFY_MEDIA_ORIGINALS as
-// <article>/<stem>.png (or .jpg / .webp), media:sync uploads it to R2 as WebP, and the LoadImage node names
-// the file the Pod will write into input/, <stem>.webp. So one name links node, original and R2 object.
+// <article>/<stem>.png (or .jpg / .webp) for an image or <stem>.mp4 for a video, media:sync uploads it to
+// R2 (images as WebP, videos as MP4), and the loader node names the file the Pod will write into input/,
+// <stem>.webp or <stem>.mp4. So one name links node, original and R2 object.
 const MEDIA_MANIFEST = path.resolve("src", "_data", "media.json");
-const ORIGINAL_EXTS = [".png", ".jpg", ".jpeg", ".webp"];
+// The extension the loader names, and the originals that can stand behind it.
+const INPUT_KINDS = new Map([
+  [".webp", { type: "image/webp", originals: [".png", ".jpg", ".jpeg", ".webp"] }],
+  [".mp4", { type: "video/mp4", originals: [".mp4"] }],
+]);
+const inputKind = (fileName) => INPUT_KINDS.get(path.extname(fileName).toLowerCase()) ?? null;
 
-export const inputFileName = (node) =>
-  INPUT_NODES.has(node.type) && node.mode !== 4
-    ? String(node.widgets_values?.[0] ?? "").replace(/ \[(input|output|temp)\]$/, "") || null
-    : null;
+export const inputFileName = (node) => {
+  if (!INPUT_NODES.has(node.type) || node.mode === 4) return null;
+  const value = node.widgets_values?.[INPUT_NODES.get(node.type)];
+  return typeof value === "string" ? value.replace(/ \[(input|output|temp)\]$/, "") || null : null;
+};
 
 /**
  * Logical media name for an input file: the registered original with the same stem; before it is
@@ -46,11 +60,12 @@ export const inputFileName = (node) =>
  */
 export const inputMediaName = (article, fileName, manifest = {}, originalsRoot = process.env.COMFY_MEDIA_ORIGINALS) => {
   const stem = `${article}/${fileName.replace(/\.[^./]+$/, "")}`;
-  const names = ORIGINAL_EXTS.map((ext) => stem + ext);
+  const originals = (inputKind(fileName) ?? INPUT_KINDS.get(".webp")).originals;
+  const names = originals.map((ext) => stem + ext);
   return (
     names.find((name) => manifest[name]) ??
     (originalsRoot ? names.find((name) => fs.existsSync(path.join(originalsRoot, name))) : undefined) ??
-    `${stem}.png`
+    stem + originals[0]
   );
 };
 
@@ -76,9 +91,9 @@ export const profileInputReferences = ({
       const workflow = JSON.parse(readText(file));
       for (const node of eachNode(workflow)) {
         const name = inputFileName(node);
-        // Only <stem>.webp inputs reach the Pod; the lock warns about the rest and skips them, so they
-        // are not sample inputs and need no original.
-        if (name?.endsWith(".webp")) references.push({ file, ref: `/media/${inputMediaName(source.article, name, manifest)}` });
+        // Only <stem>.webp and <stem>.mp4 inputs reach the Pod; the lock warns about the rest and skips
+        // them, so they are not sample inputs and need no original.
+        if (name && inputKind(name)) references.push({ file, ref: `/media/${inputMediaName(source.article, name, manifest)}` });
       }
     }
   }
@@ -209,14 +224,21 @@ const createRequirements = (source, errors, warnings) => {
   const addInput = (node, origin) => {
     const name = inputFileName(node);
     if (!name || inputs.has(name)) return;
-    if (!name.endsWith(".webp")) {
-      warnings.push(`${origin} node ${node.id} ${node.type}: ${name} should be <stem>.webp (the Pod writes the R2 WebP under that name)`);
+    const kind = inputKind(name);
+    if (!kind) {
+      warnings.push(
+        `${origin} node ${node.id} ${node.type}: ${name} should be <stem>.webp for an image or <stem>.mp4 for a video (the Pod writes the R2 file under that name)`,
+      );
       return;
     }
     const media = inputMediaName(source.article, name, manifest);
     const entry = manifest[media];
     if (!entry) {
       warnings.push(`${origin} node ${node.id} ${node.type}: sample input ${media} is not in media.json (put the original in COMFY_MEDIA_ORIGINALS and commit)`);
+      return;
+    }
+    if (entry.type !== kind.type) {
+      warnings.push(`${origin} node ${node.id} ${node.type}: ${name} asks for ${kind.type}, but ${media} is stored as ${entry.type}`);
       return;
     }
     // R2 keys are the first 16 hex of the object's sha256, so the Pod can verify what it downloads.
