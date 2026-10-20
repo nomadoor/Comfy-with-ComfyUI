@@ -13,7 +13,8 @@ from pathlib import Path
 from .util import default_data_dir, fetch_json
 
 FRONTEND_NODES = {"Note", "MarkdownNote", "Reroute", "PrimitiveNode"}
-INPUT_NODES = {"LoadImage", "LoadImageMask", "LoadVideo", "LoadAudio"}
+# Where each loader keeps its file name in widgets_values (VideoHelperSuite uses an object).
+INPUT_NODES = {"LoadImage": 0, "LoadImageMask": 0, "LoadVideo": 0, "LoadAudio": 0, "VHS_LoadVideo": "video"}
 # Mirrors MODEL_EXT in scripts/lib/workflow-graph.mjs (the profile builder applies the same rule).
 MODEL_EXT = (".safetensors", ".gguf", ".ckpt", ".pt", ".pth", ".bin", ".sft")
 
@@ -56,10 +57,14 @@ def main():
                     directory = listed.get(os.path.basename(value))
                     if directory and value not in models_in(directory):
                         problems.append(f"node {node['id']}: {directory}/{value} is not visible to ComfyUI")
-            if node_type in INPUT_NODES and values:
-                file_name = str(values[0]).removesuffix(" [input]")
-                if not (comfy_dir / "input" / file_name).exists():
-                    problems.append(f"node {node['id']}: sample input {file_name} is not in input/")
+            if node_type in INPUT_NODES:
+                key = INPUT_NODES[node_type]
+                raw = node.get("widgets_values")
+                file_name = raw.get(key) if isinstance(raw, dict) else (raw[key] if isinstance(raw, list) and raw else None)
+                if isinstance(file_name, str) and file_name:
+                    file_name = file_name.removesuffix(" [input]")
+                    if not (comfy_dir / "input" / file_name).exists():
+                        problems.append(f"node {node['id']}: sample input {file_name} is not in input/")
         failures += bool(problems)
         print(f"{'ok  ' if not problems else 'FAIL'} {name}")
         for problem in problems:
