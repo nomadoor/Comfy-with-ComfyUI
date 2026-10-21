@@ -602,7 +602,7 @@ test.describe("Sidebar archive", () => {
   const archive = '.sidebar__nav-panel.is-active details.nav-list__archive';
 
   test("stays closed outside the archive and leaves archived pages out of prev/next", async ({ page }) => {
-    await page.goto("/ja/basic-workflows/moss-image/");
+    await page.goto("/ja/basic-workflows/fibo-2/");
     await expect(page.locator(archive)).not.toHaveAttribute("open", /.*/);
     await expect(page.locator(".article-pagination__link--next")).toHaveAttribute("href", "/ja/basic-workflows/wan-2-1/");
   });
