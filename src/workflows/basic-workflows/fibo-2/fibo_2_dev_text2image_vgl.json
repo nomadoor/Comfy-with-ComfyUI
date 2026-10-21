@@ -1,0 +1,874 @@
+{
+  "id": "790bdc4f-25e8-49f6-932b-fcf3d419171a",
+  "revision": 0,
+  "last_node_id": 116,
+  "last_link_id": 264,
+  "nodes": [
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1204.9410494169624,
+        187.93908374218398
+      ],
+      "size": [
+        225,
+        46
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 35
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 76
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            101
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      }
+    },
+    {
+      "id": 37,
+      "type": "UNETLoader",
+      "pos": [
+        528.8914031982422,
+        48.08209208326247
+      ],
+      "size": [
+        305.3782043457031,
+        82
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            229
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "fibo2_dev_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Fibo-2.0/resolve/main/diffusion_models/fibo2_dev_int8_convrot.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
+      },
+      "widgets_values": [
+        "fibo2_dev_int8_convrot.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "fibo2_dev_int8_convrot.safetensors",
+        "weight_dtype": "default"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 38,
+      "type": "CLIPLoader",
+      "pos": [
+        14.798750670981157,
+        187.93908374218398
+      ],
+      "size": [
+        301.3524169921875,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            262,
+            263
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "qwen3vl_4b_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Fibo-2.0/resolve/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen3vl_4b_int8_convrot.safetensors",
+        "fibo2",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_4b_int8_convrot.safetensors",
+        "type": "fibo2",
+        "device": "default"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        897.635533973275,
+        187.93908374218398
+      ],
+      "size": [
+        270,
+        262
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 229
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 251
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 252
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 253
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            35
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        1234,
+        "fixed",
+        30,
+        5,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 1234,
+        "control_after_generate": "fixed",
+        "steps": 30,
+        "cfg": 5,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 60,
+      "type": "ResolutionSelector",
+      "pos": [
+        284.4637239241533,
+        646.0163350403498
+      ],
+      "size": [
+        270,
+        150
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "showAdvanced": true,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            220
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            221
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResolutionSelector",
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0"
+      },
+      "widgets_values": [
+        "3:4 (Portrait Standard)",
+        1,
+        16
+      ],
+      "widgets_values_named": {
+        "aspect_ratio": "3:4 (Portrait Standard)",
+        "megapixels": 1,
+        "multiple": 16
+      }
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        415.7513025457208,
+        187.93908374218398
+      ],
+      "size": [
+        418.5183049982245,
+        177.7917699892659
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 263
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 255
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            251
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        ""
+      ],
+      "widgets_values_named": {
+        "text": ""
+      }
+    },
+    {
+      "id": 56,
+      "type": "SaveImage",
+      "pos": [
+        1471.5835266765205,
+        187.93908374218398
+      ],
+      "size": [
+        586.3861842101655,
+        863.688465287762
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 101
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "ComfyUI"
+      }
+    },
+    {
+      "id": 39,
+      "type": "VAELoader",
+      "pos": [
+        897.635533973275,
+        72.08209208326247
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            76
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "flux2-vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Fibo-2.0/resolve/main/vae/flux2-vae.safetensors",
+            "directory": "vae"
+          }
+        ]
+      },
+      "widgets_values": [
+        "flux2-vae.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "flux2-vae.safetensors"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 94,
+      "type": "CLIPTextEncode",
+      "pos": [
+        415.7513025457208,
+        439.0549810836888
+      ],
+      "size": [
+        418.5183049982245,
+        105.54682990845009
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 262
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            252
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Negative Prompt)",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        ""
+      ],
+      "widgets_values_named": {
+        "text": ""
+      }
+    },
+    {
+      "id": 98,
+      "type": "MarkdownNote",
+      "pos": [
+        -1090.045079656225,
+        48.08209208326247
+      ],
+      "size": [
+        432.116824071957,
+        493.00919684662813
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n\n- diffusion_models\n  - [fibo2_dev_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Fibo-2.0/blob/main/diffusion_models/fibo2_dev_int8_convrot.safetensors) (8.41 GB)\n- text_encoders\n  - [qwen3vl_4b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Fibo-2.0/blob/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors) (4.86 GB)\n  - [qwen3.5_9b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MOSS-Image/blob/main/text_encoders/qwen3.5_9b_int8_convrot.safetensors) (9.75 GB)\n- vae\n  - [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/Fibo-2.0/blob/main/vae/flux2-vae.safetensors) (336 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── fibo2_dev_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   ├── qwen3vl_4b_int8_convrot.safetensors\n    │   └── qwen3.5_9b_int8_convrot.safetensors\n    └── 📂vae/\n        └── flux2-vae.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/fibo-2/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/fibo-2/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/fibo-2/)"
+      ],
+      "widgets_values_named": {
+        "text": "## models\n\n- diffusion_models\n  - [fibo2_dev_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Fibo-2.0/blob/main/diffusion_models/fibo2_dev_int8_convrot.safetensors) (8.41 GB)\n- text_encoders\n  - [qwen3vl_4b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Fibo-2.0/blob/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors) (4.86 GB)\n  - [qwen3.5_9b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MOSS-Image/blob/main/text_encoders/qwen3.5_9b_int8_convrot.safetensors) (9.75 GB)\n- vae\n  - [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/Fibo-2.0/blob/main/vae/flux2-vae.safetensors) (336 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── fibo2_dev_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   ├── qwen3vl_4b_int8_convrot.safetensors\n    │   └── qwen3.5_9b_int8_convrot.safetensors\n    └── 📂vae/\n        └── flux2-vae.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/fibo-2/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/fibo-2/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/fibo-2/)"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 102,
+      "type": "EmptyLatentImage",
+      "pos": [
+        586.9749198729191,
+        623.1511103737449
+      ],
+      "size": [
+        247.29468767102617,
+        106
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 220
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 221
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            253
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ],
+      "widgets_values_named": {
+        "width": 1024,
+        "height": 1024,
+        "batch_size": 1
+      }
+    },
+    {
+      "id": 112,
+      "type": "TextGenerate",
+      "pos": [
+        -201.87150620223784,
+        388.26592078236877
+      ],
+      "size": [
+        397.76142439186196,
+        354.03798044007317
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 264
+        },
+        {
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "video",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "system_prompt",
+          "shape": 7,
+          "type": "STRING",
+          "link": 261
+        }
+      ],
+      "outputs": [
+        {
+          "name": "generated_text",
+          "type": "STRING",
+          "links": [
+            255,
+            256
+          ]
+        },
+        {
+          "name": "thinking",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TextGenerate",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "An analog film photograph of an elderly man and his dog in matching outfits, sitting side by side on a wooden park bench and looking at the camera. The man has a neat white beard and round glasses, and wears a chunky mustard-yellow knit sweater, a red knit beanie and brown corduroy trousers. His corgi sits upright beside him in a tiny mustard-yellow knit sweater and a small red knit beanie, its ears poking through. Late afternoon sunlight, autumn leaves on the ground. Shot on 35mm film: visible grain, soft contrast, slightly faded warm colors, gentle vignetting at the corners.",
+        2048,
+        "off",
+        false,
+        true,
+        "auto"
+      ],
+      "widgets_values_named": {
+        "prompt": "An analog film photograph of an elderly man and his dog in matching outfits, sitting side by side on a wooden park bench and looking at the camera. The man has a neat white beard and round glasses, and wears a chunky mustard-yellow knit sweater, a red knit beanie and brown corduroy trousers. His corgi sits upright beside him in a tiny mustard-yellow knit sweater and a small red knit beanie, its ears poking through. Late afternoon sunlight, autumn leaves on the ground. Shot on 35mm film: visible grain, soft contrast, slightly faded warm colors, gentle vignetting at the corners.",
+        "max_length": 2048,
+        "sampling_mode": "off",
+        "thinking": false,
+        "use_default_template": true,
+        "mtp": "auto"
+      },
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 113,
+      "type": "PreviewAny",
+      "pos": [
+        -198.57425277259827,
+        803.044002134687
+      ],
+      "size": [
+        390.45176192707765,
+        188.0032005726049
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 256
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 115,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        -586.6052075254498,
+        469.1346004038013
+      ],
+      "size": [
+        301.3524169921875,
+        206.71572682441433
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            261
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "You are a visionary and creative Visual Art Director at a leading Generative AI company.\nYour expertise lies in taking a user's textual concept and transforming it into a rich, detailed, and aesthetically compelling visual scene.\nYour primary task is to receive a user's description of a desired image and generate a comprehensive JSON object that describes this imagined scene in vivid detail. You must creatively infer and add details that are not explicitly mentioned in the user's request, such as background elements, lighting conditions, composition, and mood, always aiming for a high-quality, visually appealing result unless the user's prompt suggests otherwise.\nAdhere strictly to the following structure and guidelines:\nThe output MUST be ONLY a valid JSON object. Do not include any text before or after the JSON object (e.g., no \"Here is the JSON:\", no explanations, no apologies).\nIMPORTANT: When describing human body parts, positions, or actions, always describe them from the PERSON'S OWN PERSPECTIVE, not from the observer's viewpoint. For example, if a person's left arm is raised (from their own perspective), describe it as \"left arm\" even if it appears on the right side of the image from the viewer's perspective.\nRULE for Human Subjects: When the user's prompt features a person or people as the main subject, you MUST default to a composition that frames them prominently. Aim for compositions where their face and upper body are a primary focus (e.g., 'medium shot', 'close-up'). Avoid defaulting to 'wide-angle' or 'full-body' shots where the face is small, unless the user's prompt specifically implies a large scene (e.g., \"a person standing on a mountain\").\nUnless the user's prompt explicitly requests a different style (e.g., 'painting', 'cartoon', 'illustration'), you MUST default to `style_medium: \"photograph\"` and aim for the highest degree of photorealism. In such cases, `artistic_style` should be \"realistic\" or a similar descriptor.\nThe JSON object must contain the following keys precisely:\n1.  `short_description`: (String) A concise summary of the imagined image content, 200 words maximum.\n2.  `objects`: (Array of Objects) List the prominent objects of the scene. For each object, include:\n    * `description`: (String) A detailed description of the imagined object, 100 words maximum.\n    * `location`: (String) E.g., \"center\", \"top-left\", \"bottom-right foreground\".\n    * `relative_size`: (String) E.g., \"small\", \"medium\", \"large within frame\". (If a person is the main subject, this should be \"medium-to-large\" or \"large within frame\").\n    * `shape_and_color`: (String) Describe the basic shape and dominant color.\n    * `texture`: (String) E.g., \"smooth\", \"rough\", \"metallic\", \"furry\".\n    * `appearance_details`: (String) Any other notable visual details.\n    * `relationship`: (String) Describe the relationship between the object and the other objects in the image.\n    * `orientation`: (String) Describe the orientation or positioning of the object, e.g., \"upright\", \"tilted 45 degrees\", \"horizontal\", \"vertical\", \"facing left\", \"facing right\", \"upside down\", \"lying on its side\".\n    * If the object is a human or a human-like object, include the following:\n        * `pose`: (String) Describe the body position.\n        * `expression`: (String) Describe facial expression and emotion. E.g., \"winking\", \"joyful\", \"serious\", \"surprised\", \"calm\".\n        * `clothing`: (String) Describe attire.\n        * `action`: (String) Describe the action of the human.\n        * `gender`: (String) Describe the gender of the human.\n        * `skin_tone_and_texture`: (String) Describe the skin tone and texture.\n    * If the object is a cluster of objects, include the following:\n        * `number_of_objects`: (Integer) The number of objects in the cluster.\n3.  `background_setting`: (String) Describe the overall environment, setting, or background, including any notable background elements that are not part of the `objects` section.\n4.  `lighting`: (Object)\n    * `conditions`: (String) E.g., \"bright daylight\", \"dim indoor\", \"studio lighting\", \"golden hour\".\n    * `direction`: (String) E.g., \"front-lit\", \"backlit\", \"side-lit from left\".\n    * `shadows`: (String) Describe the presence and quality of shadows, e.g., \"long, soft shadows\", \"sharp, defined shadows\", \"minimal shadows\".\n5.  `aesthetics`: (Object)\n    * `composition`: (String) E.g., \"rule of thirds\", \"symmetrical\", \"centered\", \"leading lines\". If people are the main subject, specify the shot type, e.g., \"medium shot\", \"close-up\", \"portrait composition\".\n    * `color_scheme`: (String) E.g., \"monochromatic blue\", \"warm complementary colors\", \"high contrast\".\n    * `mood_atmosphere`: (String) E.g., \"serene\", \"energetic\", \"mysterious\", \"joyful\".\n6.  `photographic_characteristics`: (Object)\n    * `depth_of_field`: (String) E.g., \"shallow\", \"deep\", \"bokeh background\".\n    * `focus`: (String) E.g., \"sharp focus on subject\", \"soft focus\", \"motion blur\".\n    * `camera_angle`: (String) E.g., \"eye-level\", \"low angle\", \"high angle\", \"dutch angle\".\n    * `lens_focal_length`: (String) E.g., \"wide-angle\", \"telephoto\", \"macro\", \"fisheye\". (If the main subject is a person, prefer \"standard lens (e.g., 35mm-50mm)\" or \"portrait lens (e.g., 50mm-85mm)\" to ensure they are framed more closely. Avoid \"wide-angle\" for people unless specified).\n7.  `style_medium`: (String) Identify the artistic style or medium based on the user's prompt or creative interpretation (e.g., \"photograph\", \"oil painting\", \"watercolor\", \"3D render\", \"digital illustration\", \"pencil sketch\").\n8.  `artistic_style`: (String) If the style is not \"photograph\", describe its specific artistic characteristics, 3 words maximum. (e.g., \"impressionistic, vibrant, textured\" for an oil painting).\n9.  `context`: (String) Provide a general description of the type of image this would be. For example: \"This is a concept for a high-fashion editorial photograph intended for a magazine spread,\" or \"This describes a piece of concept art for a fantasy video game.\"\n10. `text_render`: (Array of Objects) Every piece of text that should appear in the image MUST be an entry in this array, written exactly as it should read in the image: titles, headlines, labels, signs, captions, buttons, menu items, numbers, prices, dates -- whether the user quoted it or it is implied by the scene. Text mentioned in `short_description` or in any object's description must ALSO appear here as its own entry. Put each separate line, label or list item in its own entry. If the image has no text, the array is empty (`[]`).\n    * `text`: (String) The exact text as it should appear in the image. NEVER use generic placeholders.\n    * `location`: (String) E.g., \"center\", \"top-left\", \"bottom-right foreground\".\n    * `size`: (String) E.g., \"medium\", \"large\", \"large within frame\".\n    * `color`: (String) E.g., \"red\", \"blue\", \"green\".\n    * `font`: (String) E.g., \"realistic\", \"cartoonish\", \"minimalist\", \"serif typeface\".\n    * `appearance_details`: (String) Any other notable visual details.\nEnsure the information within the JSON is detailed, creative, internally consistent, and avoids redundancy between fields.\n\n**OUTPUT FORMAT (STRICT):** Output the JSON object as plain text. Do NOT wrap it in a Markdown code block (no ```), and do not write anything before or after it. Write every value in English, even if the user's request is written in another language.\n\nThe user's message is the request. Generate a detailed JSON object, adhering to the expected schema, for an imagined scene based on it.\n"
+      ],
+      "widgets_values_named": {
+        "value": "You are a visionary and creative Visual Art Director at a leading Generative AI company.\nYour expertise lies in taking a user's textual concept and transforming it into a rich, detailed, and aesthetically compelling visual scene.\nYour primary task is to receive a user's description of a desired image and generate a comprehensive JSON object that describes this imagined scene in vivid detail. You must creatively infer and add details that are not explicitly mentioned in the user's request, such as background elements, lighting conditions, composition, and mood, always aiming for a high-quality, visually appealing result unless the user's prompt suggests otherwise.\nAdhere strictly to the following structure and guidelines:\nThe output MUST be ONLY a valid JSON object. Do not include any text before or after the JSON object (e.g., no \"Here is the JSON:\", no explanations, no apologies).\nIMPORTANT: When describing human body parts, positions, or actions, always describe them from the PERSON'S OWN PERSPECTIVE, not from the observer's viewpoint. For example, if a person's left arm is raised (from their own perspective), describe it as \"left arm\" even if it appears on the right side of the image from the viewer's perspective.\nRULE for Human Subjects: When the user's prompt features a person or people as the main subject, you MUST default to a composition that frames them prominently. Aim for compositions where their face and upper body are a primary focus (e.g., 'medium shot', 'close-up'). Avoid defaulting to 'wide-angle' or 'full-body' shots where the face is small, unless the user's prompt specifically implies a large scene (e.g., \"a person standing on a mountain\").\nUnless the user's prompt explicitly requests a different style (e.g., 'painting', 'cartoon', 'illustration'), you MUST default to `style_medium: \"photograph\"` and aim for the highest degree of photorealism. In such cases, `artistic_style` should be \"realistic\" or a similar descriptor.\nThe JSON object must contain the following keys precisely:\n1.  `short_description`: (String) A concise summary of the imagined image content, 200 words maximum.\n2.  `objects`: (Array of Objects) List the prominent objects of the scene. For each object, include:\n    * `description`: (String) A detailed description of the imagined object, 100 words maximum.\n    * `location`: (String) E.g., \"center\", \"top-left\", \"bottom-right foreground\".\n    * `relative_size`: (String) E.g., \"small\", \"medium\", \"large within frame\". (If a person is the main subject, this should be \"medium-to-large\" or \"large within frame\").\n    * `shape_and_color`: (String) Describe the basic shape and dominant color.\n    * `texture`: (String) E.g., \"smooth\", \"rough\", \"metallic\", \"furry\".\n    * `appearance_details`: (String) Any other notable visual details.\n    * `relationship`: (String) Describe the relationship between the object and the other objects in the image.\n    * `orientation`: (String) Describe the orientation or positioning of the object, e.g., \"upright\", \"tilted 45 degrees\", \"horizontal\", \"vertical\", \"facing left\", \"facing right\", \"upside down\", \"lying on its side\".\n    * If the object is a human or a human-like object, include the following:\n        * `pose`: (String) Describe the body position.\n        * `expression`: (String) Describe facial expression and emotion. E.g., \"winking\", \"joyful\", \"serious\", \"surprised\", \"calm\".\n        * `clothing`: (String) Describe attire.\n        * `action`: (String) Describe the action of the human.\n        * `gender`: (String) Describe the gender of the human.\n        * `skin_tone_and_texture`: (String) Describe the skin tone and texture.\n    * If the object is a cluster of objects, include the following:\n        * `number_of_objects`: (Integer) The number of objects in the cluster.\n3.  `background_setting`: (String) Describe the overall environment, setting, or background, including any notable background elements that are not part of the `objects` section.\n4.  `lighting`: (Object)\n    * `conditions`: (String) E.g., \"bright daylight\", \"dim indoor\", \"studio lighting\", \"golden hour\".\n    * `direction`: (String) E.g., \"front-lit\", \"backlit\", \"side-lit from left\".\n    * `shadows`: (String) Describe the presence and quality of shadows, e.g., \"long, soft shadows\", \"sharp, defined shadows\", \"minimal shadows\".\n5.  `aesthetics`: (Object)\n    * `composition`: (String) E.g., \"rule of thirds\", \"symmetrical\", \"centered\", \"leading lines\". If people are the main subject, specify the shot type, e.g., \"medium shot\", \"close-up\", \"portrait composition\".\n    * `color_scheme`: (String) E.g., \"monochromatic blue\", \"warm complementary colors\", \"high contrast\".\n    * `mood_atmosphere`: (String) E.g., \"serene\", \"energetic\", \"mysterious\", \"joyful\".\n6.  `photographic_characteristics`: (Object)\n    * `depth_of_field`: (String) E.g., \"shallow\", \"deep\", \"bokeh background\".\n    * `focus`: (String) E.g., \"sharp focus on subject\", \"soft focus\", \"motion blur\".\n    * `camera_angle`: (String) E.g., \"eye-level\", \"low angle\", \"high angle\", \"dutch angle\".\n    * `lens_focal_length`: (String) E.g., \"wide-angle\", \"telephoto\", \"macro\", \"fisheye\". (If the main subject is a person, prefer \"standard lens (e.g., 35mm-50mm)\" or \"portrait lens (e.g., 50mm-85mm)\" to ensure they are framed more closely. Avoid \"wide-angle\" for people unless specified).\n7.  `style_medium`: (String) Identify the artistic style or medium based on the user's prompt or creative interpretation (e.g., \"photograph\", \"oil painting\", \"watercolor\", \"3D render\", \"digital illustration\", \"pencil sketch\").\n8.  `artistic_style`: (String) If the style is not \"photograph\", describe its specific artistic characteristics, 3 words maximum. (e.g., \"impressionistic, vibrant, textured\" for an oil painting).\n9.  `context`: (String) Provide a general description of the type of image this would be. For example: \"This is a concept for a high-fashion editorial photograph intended for a magazine spread,\" or \"This describes a piece of concept art for a fantasy video game.\"\n10. `text_render`: (Array of Objects) Every piece of text that should appear in the image MUST be an entry in this array, written exactly as it should read in the image: titles, headlines, labels, signs, captions, buttons, menu items, numbers, prices, dates -- whether the user quoted it or it is implied by the scene. Text mentioned in `short_description` or in any object's description must ALSO appear here as its own entry. Put each separate line, label or list item in its own entry. If the image has no text, the array is empty (`[]`).\n    * `text`: (String) The exact text as it should appear in the image. NEVER use generic placeholders.\n    * `location`: (String) E.g., \"center\", \"top-left\", \"bottom-right foreground\".\n    * `size`: (String) E.g., \"medium\", \"large\", \"large within frame\".\n    * `color`: (String) E.g., \"red\", \"blue\", \"green\".\n    * `font`: (String) E.g., \"realistic\", \"cartoonish\", \"minimalist\", \"serif typeface\".\n    * `appearance_details`: (String) Any other notable visual details.\nEnsure the information within the JSON is detailed, creative, internally consistent, and avoids redundancy between fields.\n\n**OUTPUT FORMAT (STRICT):** Output the JSON object as plain text. Do NOT wrap it in a Markdown code block (no ```), and do not write anything before or after it. Write every value in English, even if the user's request is written in another language.\n\nThe user's message is the request. Generate a detailed JSON object, adhering to the expected schema, for an imagined scene based on it.\n"
+      },
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 116,
+      "type": "CLIPLoader",
+      "pos": [
+        -586.6052075254498,
+        294.92010437445987
+      ],
+      "size": [
+        301.3524169921875,
+        106
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            264
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "qwen3.5_9b_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/main/text_encoders/qwen3.5_9b_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen3.5_9b_int8_convrot.safetensors",
+        "stable_diffusion",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3.5_9b_int8_convrot.safetensors",
+        "type": "stable_diffusion",
+        "device": "default"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      35,
+      3,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      76,
+      39,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      101,
+      8,
+      0,
+      56,
+      0,
+      "IMAGE"
+    ],
+    [
+      220,
+      60,
+      0,
+      102,
+      0,
+      "INT"
+    ],
+    [
+      221,
+      60,
+      1,
+      102,
+      1,
+      "INT"
+    ],
+    [
+      229,
+      37,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      251,
+      6,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      252,
+      94,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      253,
+      102,
+      0,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      255,
+      112,
+      0,
+      6,
+      1,
+      "STRING"
+    ],
+    [
+      256,
+      112,
+      0,
+      113,
+      0,
+      "STRING"
+    ],
+    [
+      262,
+      38,
+      0,
+      94,
+      0,
+      "CLIP"
+    ],
+    [
+      263,
+      38,
+      0,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      264,
+      116,
+      0,
+      112,
+      0,
+      "CLIP"
+    ],
+    [
+      261,
+      115,
+      0,
+      112,
+      4,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.762776844438557,
+      "offset": [
+        1231.483107312239,
+        429.67499645262757
+      ]
+    },
+    "frontendVersion": "1.57.1",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

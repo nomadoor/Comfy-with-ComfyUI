@@ -1,0 +1,30 @@
+{
+  "checked_at": "2026-10-21",
+  "models": {
+    "https://huggingface.co/Comfy-Org/Fibo-2.0/resolve/main/diffusion_models/fibo2_dev_int8_convrot.safetensors": {
+      "size_bytes": 8408562474,
+      "sha256": "063dd397395809fd22234c6bd32932cfcb22619f4d2282bdbf1dc58c406fe325",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/Comfy-Org/Fibo-2.0/resolve/main/diffusion_models/fibo2_edit_turbo_int8_convrot.safetensors": {
+      "size_bytes": 8408562474,
+      "sha256": "1f6fa7c499191f405467123f655f11762661eaa5bd479d1da8f161398ef72c3b",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/Comfy-Org/Fibo-2.0/resolve/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors": {
+      "size_bytes": 4858559240,
+      "sha256": "32de113cbf8282b02cbff0794b637b9d6676da09314a1db5a30bcea9bf4ee01c",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/Comfy-Org/Fibo-2.0/resolve/main/vae/flux2-vae.safetensors": {
+      "size_bytes": 336211292,
+      "sha256": "868fe7b343cc8f3a19dbcfcafbc3d5f888802be3f89bd81b65b3621a066ce8f3",
+      "requires_hf_token": false
+    },
+    "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/main/text_encoders/qwen3.5_9b_int8_convrot.safetensors": {
+      "size_bytes": 9748121532,
+      "sha256": "32e3787472f708fa5f83624acbf5ef23f7fc89c439e05065ea57cfe5a97f025a",
+      "requires_hf_token": false
+    }
+  }
+}

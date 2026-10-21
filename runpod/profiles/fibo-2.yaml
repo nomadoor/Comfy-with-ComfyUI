@@ -1,0 +1,33 @@
+# RunPod profile source. Models and custom nodes come from the workflow JSON;
+# list here only what the workflows cannot say for themselves.
+id: fibo-2
+title: Fibo 2.0
+article: basic-workflows/fibo-2
+# RunPod template (Matatabi AI account) the article's launch card deploys.
+template: j6eqyvgvu4
+# Fibo 2.0 (Dev and Edit Turbo) is CC BY-NC 4.0: non-commercial use only, commercial use needs an
+# agreement with Bria AI. No referral code on its card.
+referral: false
+workflows:
+  - src/workflows/basic-workflows/fibo-2/*.json
+comfyui:
+  default: latest
+  verified_commit: null
+gpu:
+  min_vram_gb: 12
+  recommended_vram_gb: 24
+  # Same as the template's recommended (starred) GPUs.
+  recommended: [RTX 3090, RTX 4090]
+  notes: ""
+overrides:
+  custom_nodes: []
+  models: []
+# Dev for generation, Edit Turbo for editing; the Dev edits and the VGL workflows are in the
+# sidebar's Workflows tab.
+open:
+  - src/workflows/basic-workflows/fibo-2/fibo_2_dev_text2image.json
+  - src/workflows/basic-workflows/fibo-2/fibo_2_edit_turbo_image_edit.json
+  - src/workflows/basic-workflows/fibo-2/fibo_2_edit_turbo_image_edit_multi.json
+folders:
+  Dev: [src/workflows/basic-workflows/fibo-2/fibo_2_dev_*.json]
+  Edit Turbo: [src/workflows/basic-workflows/fibo-2/fibo_2_edit_turbo_*.json]

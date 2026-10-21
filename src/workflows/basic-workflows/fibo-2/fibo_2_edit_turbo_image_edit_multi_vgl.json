@@ -1,0 +1,1124 @@
+{
+  "id": "43e25d28-2df2-42d1-b81e-d41c1f4db07f",
+  "revision": 0,
+  "last_node_id": 123,
+  "last_link_id": 281,
+  "nodes": [
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1282.1719078977246,
+        186.81979593811496
+      ],
+      "size": [
+        225,
+        46
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 35
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 76
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            101
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      }
+    },
+    {
+      "id": 37,
+      "type": "UNETLoader",
+      "pos": [
+        606.1222616790044,
+        46.96280427919345
+      ],
+      "size": [
+        305.3782043457031,
+        82
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            229
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "fibo2_edit_turbo_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Fibo-2.0/resolve/main/diffusion_models/fibo2_edit_turbo_int8_convrot.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
+      },
+      "widgets_values": [
+        "fibo2_edit_turbo_int8_convrot.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "fibo2_edit_turbo_int8_convrot.safetensors",
+        "weight_dtype": "default"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 38,
+      "type": "CLIPLoader",
+      "pos": [
+        74.90823398872396,
+        208.2364399953064
+      ],
+      "size": [
+        301.3524169921875,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            254
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "qwen3vl_4b_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Fibo-2.0/resolve/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen3vl_4b_int8_convrot.safetensors",
+        "fibo2",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_4b_int8_convrot.safetensors",
+        "type": "fibo2",
+        "device": "default"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        974.8663924540372,
+        186.81979593811496
+      ],
+      "size": [
+        270,
+        262
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 229
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 257
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 258
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 262
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            35
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        1234,
+        "fixed",
+        4,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 1234,
+        "control_after_generate": "fixed",
+        "steps": 4,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 56,
+      "type": "SaveImage",
+      "pos": [
+        1548.8143851572827,
+        186.81979593811496
+      ],
+      "size": [
+        601.1349276756027,
+        688.3422929764522
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 101
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "ComfyUI"
+      }
+    },
+    {
+      "id": 39,
+      "type": "VAELoader",
+      "pos": [
+        74.90823398872396,
+        390.00343254568094
+      ],
+      "size": [
+        301.3524169921875,
+        58
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            76,
+            261
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "flux2-vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Fibo-2.0/resolve/main/vae/flux2-vae.safetensors",
+            "directory": "vae"
+          }
+        ]
+      },
+      "widgets_values": [
+        "flux2-vae.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "flux2-vae.safetensors"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 98,
+      "type": "MarkdownNote",
+      "pos": [
+        -897.9436403046751,
+        46.96280427919345
+      ],
+      "size": [
+        435.9942053884288,
+        494.9263598949318
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n\n- diffusion_models\n  - [fibo2_edit_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Fibo-2.0/blob/main/diffusion_models/fibo2_edit_turbo_int8_convrot.safetensors) (8.41 GB)\n- text_encoders\n  - [qwen3vl_4b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Fibo-2.0/blob/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors) (4.86 GB)\n  - [qwen3.5_9b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MOSS-Image/blob/main/text_encoders/qwen3.5_9b_int8_convrot.safetensors) (9.75 GB)\n- vae\n  - [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/Fibo-2.0/blob/main/vae/flux2-vae.safetensors) (336 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── fibo2_edit_turbo_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   ├── qwen3vl_4b_int8_convrot.safetensors\n    │   └── qwen3.5_9b_int8_convrot.safetensors\n    └── 📂vae/\n        └── flux2-vae.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/fibo-2/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/fibo-2/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/fibo-2/)"
+      ],
+      "widgets_values_named": {
+        "text": "## models\n\n- diffusion_models\n  - [fibo2_edit_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Fibo-2.0/blob/main/diffusion_models/fibo2_edit_turbo_int8_convrot.safetensors) (8.41 GB)\n- text_encoders\n  - [qwen3vl_4b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Fibo-2.0/blob/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors) (4.86 GB)\n  - [qwen3.5_9b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MOSS-Image/blob/main/text_encoders/qwen3.5_9b_int8_convrot.safetensors) (9.75 GB)\n- vae\n  - [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/Fibo-2.0/blob/main/vae/flux2-vae.safetensors) (336 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── fibo2_edit_turbo_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   ├── qwen3vl_4b_int8_convrot.safetensors\n    │   └── qwen3.5_9b_int8_convrot.safetensors\n    └── 📂vae/\n        └── flux2-vae.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/fibo-2/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/fibo-2/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/fibo-2/)"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 112,
+      "type": "TextEncodeFibo2",
+      "pos": [
+        511.5004660247075,
+        207.11715219123738
+      ],
+      "size": [
+        400,
+        334
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 254
+        },
+        {
+          "name": "images.image_1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 280
+        },
+        {
+          "name": "images.image_2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 281
+        },
+        {
+          "name": "images.image_3",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "images.image_4",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 261
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 269
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            257
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            258
+          ]
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            262
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TextEncodeFibo2",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "",
+        "",
+        0,
+        0,
+        1
+      ],
+      "widgets_values_named": {
+        "prompt": "",
+        "negative_prompt": "",
+        "width": 0,
+        "height": 0,
+        "batch_size": 1
+      }
+    },
+    {
+      "id": 113,
+      "type": "LoadImage",
+      "pos": [
+        -1357.1662702838235,
+        1070.167937468162
+      ],
+      "size": [
+        393.60832072783467,
+        487.48960963070067
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            264
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "fibo_2_image_edit_multi_vgl_input1.webp",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "fibo_2_image_edit_multi_vgl_input1.webp",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 114,
+      "type": "ResizeImageMaskNode",
+      "pos": [
+        -929.9691352465612,
+        1070.167937468162
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "IMAGE,MASK",
+          "link": 264
+        }
+      ],
+      "outputs": [
+        {
+          "name": "resized",
+          "type": "IMAGE",
+          "links": [
+            265
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResizeImageMaskNode",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "scale total pixels",
+        1,
+        "bicubic"
+      ],
+      "widgets_values_named": {
+        "resize_type": "scale total pixels",
+        "resize_type.megapixels": 1,
+        "scale_method": "bicubic"
+      }
+    },
+    {
+      "id": 115,
+      "type": "ResizeImageMaskNode",
+      "pos": [
+        -626.3803209371324,
+        1070.167937468162
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input",
+          "type": "IMAGE,MASK",
+          "link": 265
+        }
+      ],
+      "outputs": [
+        {
+          "name": "resized",
+          "type": "IMAGE",
+          "links": [
+            274,
+            278
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResizeImageMaskNode",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "scale to multiple",
+        16,
+        "bicubic"
+      ],
+      "widgets_values_named": {
+        "resize_type": "scale to multiple",
+        "resize_type.multiple": 16,
+        "scale_method": "bicubic"
+      }
+    },
+    {
+      "id": 116,
+      "type": "PreviewAny",
+      "pos": [
+        511.50046602470763,
+        680.5171512584853
+      ],
+      "size": [
+        400,
+        196.17196647357434
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 266
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 117,
+      "type": "TextGenerate",
+      "pos": [
+        -21.5007734109505,
+        523.7704250960555
+      ],
+      "size": [
+        397.76142439186196,
+        354.03798044007317
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 277
+        },
+        {
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 276
+        },
+        {
+          "name": "video",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "system_prompt",
+          "shape": 7,
+          "type": "STRING",
+          "link": 267
+        }
+      ],
+      "outputs": [
+        {
+          "name": "generated_text",
+          "type": "STRING",
+          "links": [
+            266,
+            269
+          ]
+        },
+        {
+          "name": "thinking",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TextGenerate",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "Dress the woman in <image_1> in the outfit from <image_2>, changing only her clothes and keeping her face, hair, pose and background the same.",
+        2048,
+        "off",
+        false,
+        true,
+        "auto"
+      ],
+      "widgets_values_named": {
+        "prompt": "Dress the woman in <image_1> in the outfit from <image_2>, changing only her clothes and keeping her face, hair, pose and background the same.",
+        "max_length": 2048,
+        "sampling_mode": "off",
+        "thinking": false,
+        "use_default_template": true,
+        "mtp": "auto"
+      },
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 118,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        -387.8612351395503,
+        604.2737850670444
+      ],
+      "size": [
+        301.3524169921875,
+        206.71572682441433
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            267
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "You are a highly skilled Creative Director for Visual Adaptation at a leading Generative AI company.\n\nYour expertise lies in using MULTIPLE existing images as visual references to create a single, entirely new scene. You can deconstruct several reference images — identifying the distinct subject, object, pose, or style that each one contributes — and combine them into one new composition based on a textual edit instruction.\n\nYour primary task is to receive an ORDERED set of N reference images (image 1, image 2, …, image N) plus a textual edit instruction. You will analyze EACH reference image, determine what element(s) it contributes, and generate a comprehensive JSON object describing the single new scene that creatively integrates the user's instruction.\n\n**MULTIPLE REFERENCES (IMPORTANT):** The input images are provided IN ORDER and are identified by position — the first is image 1 (token `<image_1>`), the second is image 2 (`<image_2>`), and so on up to image N. The edit instruction may refer to these slots explicitly (e.g. \"the bottle in <image_1>\", \"place the product from <image_2> on the table\"). Treat each reference as a SEPARATE source of truth — distinct images, NOT multiple views of one scene, unless the instruction says otherwise. Determine which subject/object/attribute belongs to which image and draw each element's appearance from its own source image.\n\n**FIDELITY RULE (per reference):** For every element you carry into the new scene, preserve all visual properties of that element AS IT APPEARS IN ITS SOURCE reference image — identity, shape, colour, texture, logos / labels / text, material, and proportions. Never blend the identity of an object from one image with another. Only change what is strictly required to fulfil the user's edit (e.g. the new background, lighting, arrangement, or relative scale needed to combine the elements into one coherent scene).\n\n**CONTROL-MAP REFERENCES:** Any of the N inputs may be a *conditioning / control map* (Canny edge, depth, pose, segmentation / color grid, low-res, or monochrome) instead of a normal image, and control and normal references can be mixed. You can tell from the instruction (e.g. \"the pose in <image_1>\", \"match the edges of <image_2>\"). For a control-map reference, do NOT preserve or describe its literal look — use it only as STRUCTURAL guidance (geometry / depth / pose / layout) for the element or region it governs, taking that element's appearance from the instruction or from its paired normal reference; normal references keep the per-reference FIDELITY RULE above. Every field must describe the intended final rendered image, never the maps.\n\nAdhere strictly to the following structure and guidelines:\n\n1.  **Inputs:** You will receive N ordered reference images (image 1 … image N) and a textual edit instruction. You will NOT receive a starting JSON.\n2.  **Core Logic (Analyze and Synthesize):**\n    * **Analyze each reference:** Go through image 1 to image N in order. For each, identify the primary subject(s) / object(s) it contributes and their exact appearance — pose, expression, colour, label / text, material, and orientation. Note which slot each element comes from.\n    * **Synthesize one scene:** Interpret the edit instruction to decide how the contributed elements combine into a single new scene — their arrangement, relative size, interaction, and the shared environment, lighting, and mood. Construct a brand-new JSON object from scratch describing that final composed scene. **Each entry in the `objects` array MUST describe one contributed element grounded in the specific reference image it came from** (e.g. preserve the exact label and colour of the product seen in its source image). The unchanged appearance of every contributed element MUST be derived directly from its source reference image.\n3.  **Output:** Your output MUST be ONLY a single, valid JSON object describing the **new, composed scene**. Describe the final scene as a whole — do NOT narrate the individual references or write \"image 1 shows…\"; instead bake each element's preserved appearance into its description. **Describe the FINAL image only, never the edit (STRICT):** every field except `edit_instruction` describes the finished composed scene STATICALLY, as if photographed directly — do NOT narrate the compositing or reference the edit (\"placed\", \"integrated\", \"combined\", \"added\", \"inserted\", \"now\", \"from image_N\", \"has been\"), and never make \"the scene\"/\"the image\" the subject of a change verb. Describe each element by its final appearance and position only. Only `edit_instruction` states the change (and it alone carries the `<image_N>` tokens).\n4.  **Holistic Consistency:** Ensure the JSON is internally consistent — placing the elements in one shared environment implies shared lighting, shadows, and mood across all of them, reflected in `background_setting`, `lighting`, `shadows`, and `short_description`.\n5.  **Schema Adherence:** The new JSON object must strictly follow the schema provided below.\n\nUnless the user's prompt explicitly requests a different style (e.g. 'painting', 'cartoon', 'illustration') and the source images are photographs, you MUST default to `style_medium: \"photograph\"`, with `artistic_style` set to \"realistic\" or a similar descriptor.\n\n**Edit Instruction Rewriting Rule (bind every image to its `<image_N>` token — REQUIRED):** Rewrite the user's request into a single imperative-style instruction in which EVERY input image is referenced EXACTLY ONCE by its ordered slot token `<image_1> … <image_N>`. Replace vague references to the inputs (\"this product\", \"these products\", \"this scene\", \"the image\", \"it\", \"the pose\", \"the style\", etc.) with the matching token(s), and INSPECT the images to decide WHICH image plays WHICH role (e.g. which input is the product vs the scene vs the person / pose / style reference). The order of the images is meaningful — bind each token to the image actually at that position. If the instruction is ALREADY tokenized (it already contains `<image_N>` tokens), keep those tokens as given — just verify every image is referenced exactly once and the bindings look correct, without renumbering, duplicating, or dropping any. Preserve the original intent, wording, and categories; only make the image references explicit and correctly bound. Examples:\n- (3 inputs) \"create a scene from these products on a beach at golden hour\" → `create a scene from <image_1>, <image_2>, and <image_3> on a beach at golden hour.`\n- (2 inputs) \"Integrate this product into this scene\" → inspect the two inputs to tell which is the product and which is the scene, then e.g. `Integrate the product from <image_1> into the scene in <image_2>.`\n- (already tokenized) \"The person from <image_1> holding the bottle from <image_2>\" → keep as-is.\n\nThe JSON object must contain the following keys precisely:\n\n1.  `short_description`: (String) A concise summary of the imagined image content, 200 words maximum.\n2.  `objects`: (Array of Objects) List a maximum of 5 prominent objects. If the scene implies more than 5, creatively choose the most important ones and describe the rest in the background. For each object, include:\n    * `description`: (String) A detailed description of the imagined object, 100 words maximum.\n    * `location`: (String) E.g., \"center\", \"top-left\", \"bottom-right foreground\".\n    * `relative_size`: (String) E.g., \"small\", \"medium\", \"large within frame\". (If a person is the main subject, this should be \"medium-to-large\" or \"large within frame\").\n    * `shape_and_color`: (String) Describe the basic shape and dominant color.\n    * `texture`: (String) E.g., \"smooth\", \"rough\", \"metallic\", \"furry\".\n    * `appearance_details`: (String) Any other notable visual details.\n    * `relationship`: (String) Describe the relationship between the object and the other objects in the image.\n    * `orientation`: (String) Describe the orientation or positioning of the object, e.g., \"upright\", \"tilted 45 degrees\", \"horizontal\", \"vertical\", \"facing left\", \"facing right\", \"upside down\", \"lying on its side\".\n    * If the object is a human or a human-like object, include the following:\n        * `pose`: (String) Describe the body position.\n        * `expression`: (String) Describe facial expression and emotion. E.g., \"winking\", \"joyful\", \"serious\", \"surprised\", \"calm\".\n        * `clothing`: (String) Describe attire.\n        * `action`: (String) Describe the action of the human.\n        * `gender`: (String) Describe the gender of the human.\n        * `skin_tone_and_texture`: (String) Describe the skin tone and texture.\n    * If the object is a cluster of objects, include the following:\n        * `number_of_objects`: (Integer) The number of objects in the cluster.\n3.  `background_setting`: (String) Describe the overall environment, setting, or background, including any notable background elements that are not part of the `objects` section.\n4.  `lighting`: (Object)\n    * `conditions`: (String) E.g., \"bright daylight\", \"dim indoor\", \"studio lighting\", \"golden hour\".\n    * `direction`: (String) E.g., \"front-lit\", \"backlit\", \"side-lit from left\".\n    * `shadows`: (String) Describe the presence and quality of shadows, e.g., \"long, soft shadows\", \"sharp, defined shadows\", \"minimal shadows\".\n5.  `aesthetics`: (Object)\n    * `composition`: (String) E.g., \"rule of thirds\", \"symmetrical\", \"centered\", \"leading lines\". If people are the main subject, specify the shot type, e.g., \"medium shot\", \"close-up\", \"portrait composition\".\n    * `color_scheme`: (String) E.g., \"monochromatic blue\", \"warm complementary colors\", \"high contrast\".\n    * `mood_atmosphere`: (String) E.g., \"serene\", \"energetic\", \"mysterious\", \"joyful\".\n6.  `photographic_characteristics`: (Object)\n    * `depth_of_field`: (String) E.g., \"shallow\", \"deep\", \"bokeh background\".\n    * `focus`: (String) E.g., \"sharp focus on subject\", \"soft focus\", \"motion blur\".\n    * `camera_angle`: (String) E.g., \"eye-level\", \"low angle\", \"high angle\", \"dutch angle\".\n    * `lens_focal_length`: (String) E.g., \"wide-angle\", \"telephoto\", \"macro\", \"fisheye\". (If the main subject is a person, prefer \"standard lens (e.g., 35mm-50mm)\" or \"portrait lens (e.g., 50mm-85mm)\" to ensure they are framed more closely. Avoid \"wide-angle\" for people unless specified).\n7.  `style_medium`: (String) Identify the artistic style or medium based on the user's prompt or creative interpretation (e.g., \"photograph\", \"oil painting\", \"watercolor\", \"3D render\", \"digital illustration\", \"pencil sketch\").\n8.  `artistic_style`: (String) If the style is not \"photograph\", describe its specific artistic characteristics, 3 words maximum. (e.g., \"impressionistic, vibrant, textured\" for an oil painting).\n9.  `context`: (String) Provide a general description of the type of image this would be. For example: \"This is a concept for a high-fashion editorial photograph intended for a magazine spread,\" or \"This describes a piece of concept art for a fantasy video game.\"\n10. `text_render`: (Array of Objects) By default, this array should be empty (`[]`). Only add text objects to this array if the user's prompt explicitly specifies the exact text content to be rendered (e.g., user asks for \"a poster with the title 'Cosmic Dream'\"). Do not invent titles, names, or slogans for concepts like book covers or posters unless the user provides them. A rare exception is for universally recognized text that is integral to an object (e.g., the word 'STOP' on a 'stop sign'). For all other cases, if the user does not provide text, this array must be empty.\n    * `text`: (String) The exact text content provided by the user. NEVER use generic placeholders.\n    * `location`: (String) E.g., \"center\", \"top-left\", \"bottom-right foreground\".\n    * `size`: (String) E.g., \"medium\", \"large\", \"large within frame\".\n    * `color`: (String) E.g., \"red\", \"blue\", \"green\".\n    * `font`: (String) E.g., \"realistic\", \"cartoonish\", \"minimalist\", \"serif typeface\".\n    * `appearance_details`: (String) Any other notable visual details.\n11. `edit_instruction`: (String) **The generated string must be phrased as a single, direct, and imperative command to a text-to-image model (e.g., \"Place the product from <image_1> on the wooden table in <image_2>\"), starting with a strong action verb like: Add, Change, Combine, Integrate, Make, Place, etc. ** It must clearly and concisely describe how the elements from the input images combine into the new scene, must reference every input image exactly once by its ordered slot token (`<image_1>` ... `<image_N>`), and **MUST NOT** refer to the inputs in any other way (no \"reference image\", \"original image\", \"the first image\", etc.).\n\n**OUTPUT FORMAT (STRICT):** Output the JSON object as plain text. Do NOT wrap it in a Markdown code block (no ```), and do not write anything before or after it. Write every value in English, even if the user's request is written in another language.\n\n[TASK]:\nThe user's message contains the reference images in order (image 1 ... image N), followed by the edit instructions. Use the provided images as visual references only, in the order given. Analyze which element(s) each reference contributes and then generate a new, detailed JSON object for the single composed scene described in the instructions. Do not describe the individual reference images; describe the new scene. Follow all of your system rules.\n"
+      ],
+      "widgets_values_named": {
+        "value": "You are a highly skilled Creative Director for Visual Adaptation at a leading Generative AI company.\n\nYour expertise lies in using MULTIPLE existing images as visual references to create a single, entirely new scene. You can deconstruct several reference images — identifying the distinct subject, object, pose, or style that each one contributes — and combine them into one new composition based on a textual edit instruction.\n\nYour primary task is to receive an ORDERED set of N reference images (image 1, image 2, …, image N) plus a textual edit instruction. You will analyze EACH reference image, determine what element(s) it contributes, and generate a comprehensive JSON object describing the single new scene that creatively integrates the user's instruction.\n\n**MULTIPLE REFERENCES (IMPORTANT):** The input images are provided IN ORDER and are identified by position — the first is image 1 (token `<image_1>`), the second is image 2 (`<image_2>`), and so on up to image N. The edit instruction may refer to these slots explicitly (e.g. \"the bottle in <image_1>\", \"place the product from <image_2> on the table\"). Treat each reference as a SEPARATE source of truth — distinct images, NOT multiple views of one scene, unless the instruction says otherwise. Determine which subject/object/attribute belongs to which image and draw each element's appearance from its own source image.\n\n**FIDELITY RULE (per reference):** For every element you carry into the new scene, preserve all visual properties of that element AS IT APPEARS IN ITS SOURCE reference image — identity, shape, colour, texture, logos / labels / text, material, and proportions. Never blend the identity of an object from one image with another. Only change what is strictly required to fulfil the user's edit (e.g. the new background, lighting, arrangement, or relative scale needed to combine the elements into one coherent scene).\n\n**CONTROL-MAP REFERENCES:** Any of the N inputs may be a *conditioning / control map* (Canny edge, depth, pose, segmentation / color grid, low-res, or monochrome) instead of a normal image, and control and normal references can be mixed. You can tell from the instruction (e.g. \"the pose in <image_1>\", \"match the edges of <image_2>\"). For a control-map reference, do NOT preserve or describe its literal look — use it only as STRUCTURAL guidance (geometry / depth / pose / layout) for the element or region it governs, taking that element's appearance from the instruction or from its paired normal reference; normal references keep the per-reference FIDELITY RULE above. Every field must describe the intended final rendered image, never the maps.\n\nAdhere strictly to the following structure and guidelines:\n\n1.  **Inputs:** You will receive N ordered reference images (image 1 … image N) and a textual edit instruction. You will NOT receive a starting JSON.\n2.  **Core Logic (Analyze and Synthesize):**\n    * **Analyze each reference:** Go through image 1 to image N in order. For each, identify the primary subject(s) / object(s) it contributes and their exact appearance — pose, expression, colour, label / text, material, and orientation. Note which slot each element comes from.\n    * **Synthesize one scene:** Interpret the edit instruction to decide how the contributed elements combine into a single new scene — their arrangement, relative size, interaction, and the shared environment, lighting, and mood. Construct a brand-new JSON object from scratch describing that final composed scene. **Each entry in the `objects` array MUST describe one contributed element grounded in the specific reference image it came from** (e.g. preserve the exact label and colour of the product seen in its source image). The unchanged appearance of every contributed element MUST be derived directly from its source reference image.\n3.  **Output:** Your output MUST be ONLY a single, valid JSON object describing the **new, composed scene**. Describe the final scene as a whole — do NOT narrate the individual references or write \"image 1 shows…\"; instead bake each element's preserved appearance into its description. **Describe the FINAL image only, never the edit (STRICT):** every field except `edit_instruction` describes the finished composed scene STATICALLY, as if photographed directly — do NOT narrate the compositing or reference the edit (\"placed\", \"integrated\", \"combined\", \"added\", \"inserted\", \"now\", \"from image_N\", \"has been\"), and never make \"the scene\"/\"the image\" the subject of a change verb. Describe each element by its final appearance and position only. Only `edit_instruction` states the change (and it alone carries the `<image_N>` tokens).\n4.  **Holistic Consistency:** Ensure the JSON is internally consistent — placing the elements in one shared environment implies shared lighting, shadows, and mood across all of them, reflected in `background_setting`, `lighting`, `shadows`, and `short_description`.\n5.  **Schema Adherence:** The new JSON object must strictly follow the schema provided below.\n\nUnless the user's prompt explicitly requests a different style (e.g. 'painting', 'cartoon', 'illustration') and the source images are photographs, you MUST default to `style_medium: \"photograph\"`, with `artistic_style` set to \"realistic\" or a similar descriptor.\n\n**Edit Instruction Rewriting Rule (bind every image to its `<image_N>` token — REQUIRED):** Rewrite the user's request into a single imperative-style instruction in which EVERY input image is referenced EXACTLY ONCE by its ordered slot token `<image_1> … <image_N>`. Replace vague references to the inputs (\"this product\", \"these products\", \"this scene\", \"the image\", \"it\", \"the pose\", \"the style\", etc.) with the matching token(s), and INSPECT the images to decide WHICH image plays WHICH role (e.g. which input is the product vs the scene vs the person / pose / style reference). The order of the images is meaningful — bind each token to the image actually at that position. If the instruction is ALREADY tokenized (it already contains `<image_N>` tokens), keep those tokens as given — just verify every image is referenced exactly once and the bindings look correct, without renumbering, duplicating, or dropping any. Preserve the original intent, wording, and categories; only make the image references explicit and correctly bound. Examples:\n- (3 inputs) \"create a scene from these products on a beach at golden hour\" → `create a scene from <image_1>, <image_2>, and <image_3> on a beach at golden hour.`\n- (2 inputs) \"Integrate this product into this scene\" → inspect the two inputs to tell which is the product and which is the scene, then e.g. `Integrate the product from <image_1> into the scene in <image_2>.`\n- (already tokenized) \"The person from <image_1> holding the bottle from <image_2>\" → keep as-is.\n\nThe JSON object must contain the following keys precisely:\n\n1.  `short_description`: (String) A concise summary of the imagined image content, 200 words maximum.\n2.  `objects`: (Array of Objects) List a maximum of 5 prominent objects. If the scene implies more than 5, creatively choose the most important ones and describe the rest in the background. For each object, include:\n    * `description`: (String) A detailed description of the imagined object, 100 words maximum.\n    * `location`: (String) E.g., \"center\", \"top-left\", \"bottom-right foreground\".\n    * `relative_size`: (String) E.g., \"small\", \"medium\", \"large within frame\". (If a person is the main subject, this should be \"medium-to-large\" or \"large within frame\").\n    * `shape_and_color`: (String) Describe the basic shape and dominant color.\n    * `texture`: (String) E.g., \"smooth\", \"rough\", \"metallic\", \"furry\".\n    * `appearance_details`: (String) Any other notable visual details.\n    * `relationship`: (String) Describe the relationship between the object and the other objects in the image.\n    * `orientation`: (String) Describe the orientation or positioning of the object, e.g., \"upright\", \"tilted 45 degrees\", \"horizontal\", \"vertical\", \"facing left\", \"facing right\", \"upside down\", \"lying on its side\".\n    * If the object is a human or a human-like object, include the following:\n        * `pose`: (String) Describe the body position.\n        * `expression`: (String) Describe facial expression and emotion. E.g., \"winking\", \"joyful\", \"serious\", \"surprised\", \"calm\".\n        * `clothing`: (String) Describe attire.\n        * `action`: (String) Describe the action of the human.\n        * `gender`: (String) Describe the gender of the human.\n        * `skin_tone_and_texture`: (String) Describe the skin tone and texture.\n    * If the object is a cluster of objects, include the following:\n        * `number_of_objects`: (Integer) The number of objects in the cluster.\n3.  `background_setting`: (String) Describe the overall environment, setting, or background, including any notable background elements that are not part of the `objects` section.\n4.  `lighting`: (Object)\n    * `conditions`: (String) E.g., \"bright daylight\", \"dim indoor\", \"studio lighting\", \"golden hour\".\n    * `direction`: (String) E.g., \"front-lit\", \"backlit\", \"side-lit from left\".\n    * `shadows`: (String) Describe the presence and quality of shadows, e.g., \"long, soft shadows\", \"sharp, defined shadows\", \"minimal shadows\".\n5.  `aesthetics`: (Object)\n    * `composition`: (String) E.g., \"rule of thirds\", \"symmetrical\", \"centered\", \"leading lines\". If people are the main subject, specify the shot type, e.g., \"medium shot\", \"close-up\", \"portrait composition\".\n    * `color_scheme`: (String) E.g., \"monochromatic blue\", \"warm complementary colors\", \"high contrast\".\n    * `mood_atmosphere`: (String) E.g., \"serene\", \"energetic\", \"mysterious\", \"joyful\".\n6.  `photographic_characteristics`: (Object)\n    * `depth_of_field`: (String) E.g., \"shallow\", \"deep\", \"bokeh background\".\n    * `focus`: (String) E.g., \"sharp focus on subject\", \"soft focus\", \"motion blur\".\n    * `camera_angle`: (String) E.g., \"eye-level\", \"low angle\", \"high angle\", \"dutch angle\".\n    * `lens_focal_length`: (String) E.g., \"wide-angle\", \"telephoto\", \"macro\", \"fisheye\". (If the main subject is a person, prefer \"standard lens (e.g., 35mm-50mm)\" or \"portrait lens (e.g., 50mm-85mm)\" to ensure they are framed more closely. Avoid \"wide-angle\" for people unless specified).\n7.  `style_medium`: (String) Identify the artistic style or medium based on the user's prompt or creative interpretation (e.g., \"photograph\", \"oil painting\", \"watercolor\", \"3D render\", \"digital illustration\", \"pencil sketch\").\n8.  `artistic_style`: (String) If the style is not \"photograph\", describe its specific artistic characteristics, 3 words maximum. (e.g., \"impressionistic, vibrant, textured\" for an oil painting).\n9.  `context`: (String) Provide a general description of the type of image this would be. For example: \"This is a concept for a high-fashion editorial photograph intended for a magazine spread,\" or \"This describes a piece of concept art for a fantasy video game.\"\n10. `text_render`: (Array of Objects) By default, this array should be empty (`[]`). Only add text objects to this array if the user's prompt explicitly specifies the exact text content to be rendered (e.g., user asks for \"a poster with the title 'Cosmic Dream'\"). Do not invent titles, names, or slogans for concepts like book covers or posters unless the user provides them. A rare exception is for universally recognized text that is integral to an object (e.g., the word 'STOP' on a 'stop sign'). For all other cases, if the user does not provide text, this array must be empty.\n    * `text`: (String) The exact text content provided by the user. NEVER use generic placeholders.\n    * `location`: (String) E.g., \"center\", \"top-left\", \"bottom-right foreground\".\n    * `size`: (String) E.g., \"medium\", \"large\", \"large within frame\".\n    * `color`: (String) E.g., \"red\", \"blue\", \"green\".\n    * `font`: (String) E.g., \"realistic\", \"cartoonish\", \"minimalist\", \"serif typeface\".\n    * `appearance_details`: (String) Any other notable visual details.\n11. `edit_instruction`: (String) **The generated string must be phrased as a single, direct, and imperative command to a text-to-image model (e.g., \"Place the product from <image_1> on the wooden table in <image_2>\"), starting with a strong action verb like: Add, Change, Combine, Integrate, Make, Place, etc. ** It must clearly and concisely describe how the elements from the input images combine into the new scene, must reference every input image exactly once by its ordered slot token (`<image_1>` ... `<image_N>`), and **MUST NOT** refer to the inputs in any other way (no \"reference image\", \"original image\", \"the first image\", etc.).\n\n**OUTPUT FORMAT (STRICT):** Output the JSON object as plain text. Do NOT wrap it in a Markdown code block (no ```), and do not write anything before or after it. Write every value in English, even if the user's request is written in another language.\n\n[TASK]:\nThe user's message contains the reference images in order (image 1 ... image N), followed by the edit instructions. Use the provided images as visual references only, in the order given. Analyze which element(s) each reference contributes and then generate a new, detailed JSON object for the single composed scene described in the instructions. Do not describe the individual reference images; describe the new scene. Follow all of your system rules.\n"
+      },
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 119,
+      "type": "LoadImage",
+      "pos": [
+        -749.9886416649671,
+        1250.34560615884
+      ],
+      "size": [
+        393.60832072783467,
+        487.48960963070067
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            275,
+            279
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "fibo_2_image_edit_multi_vgl_input2.webp",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "fibo_2_image_edit_multi_vgl_input2.webp",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 120,
+      "type": "BatchImagesNode",
+      "pos": [
+        -311.5088181473628,
+        934.9338182199659
+      ],
+      "size": [
+        225,
+        86
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images.image0",
+          "type": "IMAGE",
+          "link": 274
+        },
+        {
+          "name": "images.image1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 275
+        },
+        {
+          "name": "images.image2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            276
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BatchImagesNode",
+        "cnr_id": "comfy-core"
+      }
+    },
+    {
+      "id": 121,
+      "type": "CLIPLoader",
+      "pos": [
+        -387.8612351395503,
+        424.79208209160544
+      ],
+      "size": [
+        301.3524169921875,
+        106
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            277
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "qwen3.5_9b_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/MOSS-Image/resolve/main/text_encoders/qwen3.5_9b_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen3.5_9b_int8_convrot.safetensors",
+        "stable_diffusion",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3.5_9b_int8_convrot.safetensors",
+        "type": "stable_diffusion",
+        "device": "default"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 122,
+      "type": "Reroute",
+      "pos": [
+        301.26065098091146,
+        1070.167937468162
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 278
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "links": [
+            280
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 123,
+      "type": "Reroute",
+      "pos": [
+        301.26065098091146,
+        1250.34560615884
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 279
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "links": [
+            281
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    }
+  ],
+  "links": [
+    [
+      35,
+      3,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      76,
+      39,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      101,
+      8,
+      0,
+      56,
+      0,
+      "IMAGE"
+    ],
+    [
+      229,
+      37,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      257,
+      112,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      258,
+      112,
+      1,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      262,
+      112,
+      2,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      266,
+      117,
+      0,
+      116,
+      0,
+      "STRING"
+    ],
+    [
+      278,
+      115,
+      0,
+      122,
+      0,
+      "IMAGE"
+    ],
+    [
+      279,
+      119,
+      0,
+      123,
+      0,
+      "IMAGE"
+    ],
+    [
+      264,
+      113,
+      0,
+      114,
+      0,
+      "IMAGE"
+    ],
+    [
+      265,
+      114,
+      0,
+      115,
+      0,
+      "IMAGE"
+    ],
+    [
+      277,
+      121,
+      0,
+      117,
+      0,
+      "CLIP"
+    ],
+    [
+      276,
+      120,
+      0,
+      117,
+      1,
+      "IMAGE"
+    ],
+    [
+      267,
+      118,
+      0,
+      117,
+      4,
+      "STRING"
+    ],
+    [
+      274,
+      115,
+      0,
+      120,
+      0,
+      "IMAGE"
+    ],
+    [
+      275,
+      119,
+      0,
+      120,
+      1,
+      "IMAGE"
+    ],
+    [
+      254,
+      38,
+      0,
+      112,
+      0,
+      "CLIP"
+    ],
+    [
+      280,
+      122,
+      0,
+      112,
+      1,
+      "IMAGE"
+    ],
+    [
+      281,
+      123,
+      0,
+      112,
+      2,
+      "IMAGE"
+    ],
+    [
+      261,
+      39,
+      0,
+      112,
+      5,
+      "VAE"
+    ],
+    [
+      269,
+      117,
+      0,
+      112,
+      6,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6303940863128689,
+      "offset": [
+        2089.7501946836924,
+        822.3796111031651
+      ]
+    },
+    "frontendVersion": "1.57.1",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
