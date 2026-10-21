@@ -1427,6 +1427,198 @@
     "bytes": 130874,
     "source": "83ecc911f9f820b0"
   },
+  "basic-workflows/fibo-2/fibo_2_dev_image_edit_multi_output.png": {
+    "key": "images/c22dde2c8429022c.webp",
+    "width": 880,
+    "height": 1184,
+    "type": "image/webp",
+    "bytes": 75994,
+    "source": "fa943ba9f7d45989"
+  },
+  "basic-workflows/fibo-2/fibo_2_dev_image_edit_multi_vgl_output.png": {
+    "key": "images/6a4d6e726fc5b499.webp",
+    "width": 832,
+    "height": 1248,
+    "type": "image/webp",
+    "bytes": 53552,
+    "source": "7e66380f9d02aa25"
+  },
+  "basic-workflows/fibo-2/fibo_2_dev_image_edit_output.png": {
+    "key": "images/b6ae7fa35666f0d9.webp",
+    "width": 1024,
+    "height": 1024,
+    "type": "image/webp",
+    "bytes": 100516,
+    "source": "e6524ec9ae7b39d2"
+  },
+  "basic-workflows/fibo-2/fibo_2_dev_image_edit_vgl_output.png": {
+    "key": "images/ea6874f37a424acc.webp",
+    "width": 832,
+    "height": 1248,
+    "type": "image/webp",
+    "bytes": 111448,
+    "source": "0afe35b4302f9e00"
+  },
+  "basic-workflows/fibo-2/fibo_2_dev_text2image_output.png": {
+    "key": "images/c3ddffd5264e0d6c.webp",
+    "width": 880,
+    "height": 1184,
+    "type": "image/webp",
+    "bytes": 195378,
+    "source": "d40279597be0497b"
+  },
+  "basic-workflows/fibo-2/fibo_2_dev_text2image_vgl_output.png": {
+    "key": "images/0a0e39b3935ca21b.webp",
+    "width": 880,
+    "height": 1184,
+    "type": "image/webp",
+    "bytes": 238200,
+    "source": "bf260d6e293334b0"
+  },
+  "basic-workflows/fibo-2/fibo_2_dev_text2image_vgl_output2.png": {
+    "key": "images/1127a1cc59873528.webp",
+    "width": 880,
+    "height": 1184,
+    "type": "image/webp",
+    "bytes": 236076,
+    "source": "b660cc3bcd4f83ad"
+  },
+  "basic-workflows/fibo-2/fibo_2_dev_text2image_vgl.png": {
+    "key": "images/150f7a20e9c4ad0a.webp",
+    "width": 3349,
+    "height": 1234,
+    "type": "image/webp",
+    "bytes": 261068,
+    "source": "ebabb20357f47856"
+  },
+  "basic-workflows/fibo-2/fibo_2_dev_text2image.png": {
+    "key": "images/ccdc41dd80b7b744.webp",
+    "width": 2679,
+    "height": 1234,
+    "type": "image/webp",
+    "bytes": 193178,
+    "source": "e7ec298a44ee57b1"
+  },
+  "basic-workflows/fibo-2/fibo_2_edit_turbo_image_edit_multi_output.png": {
+    "key": "images/d33450e0e3636638.webp",
+    "width": 880,
+    "height": 1184,
+    "type": "image/webp",
+    "bytes": 89458,
+    "source": "c34bebd1300528d8"
+  },
+  "basic-workflows/fibo-2/fibo_2_edit_turbo_image_edit_multi_vgl_output.png": {
+    "key": "images/9b77f6c8b1fefdc5.webp",
+    "width": 832,
+    "height": 1248,
+    "type": "image/webp",
+    "bytes": 61204,
+    "source": "db08a4ea8cf5394d"
+  },
+  "basic-workflows/fibo-2/fibo_2_edit_turbo_image_edit_multi_vgl.png": {
+    "key": "images/693243c97615ab5e.webp",
+    "width": 3708,
+    "height": 1921,
+    "type": "image/webp",
+    "bytes": 198514,
+    "source": "924b7e3416ff570f"
+  },
+  "basic-workflows/fibo-2/fibo_2_edit_turbo_image_edit_multi.png": {
+    "key": "images/dd72ceed3a579fc3.webp",
+    "width": 2821,
+    "height": 1569,
+    "type": "image/webp",
+    "bytes": 167256,
+    "source": "b7535dc9e56dc0ff"
+  },
+  "basic-workflows/fibo-2/fibo_2_edit_turbo_image_edit_output.png": {
+    "key": "images/d8729e9550db8560.webp",
+    "width": 1024,
+    "height": 1024,
+    "type": "image/webp",
+    "bytes": 148554,
+    "source": "6116d0cd2bd9cdf3"
+  },
+  "basic-workflows/fibo-2/fibo_2_edit_turbo_image_edit_vgl_output.png": {
+    "key": "images/79cbb733de6da9da.webp",
+    "width": 832,
+    "height": 1248,
+    "type": "image/webp",
+    "bytes": 140612,
+    "source": "481052a2fdeb72d1"
+  },
+  "basic-workflows/fibo-2/fibo_2_edit_turbo_image_edit_vgl.png": {
+    "key": "images/994758d3a731db5a.webp",
+    "width": 3446,
+    "height": 1658,
+    "type": "image/webp",
+    "bytes": 209064,
+    "source": "ba3d6df5fa294313"
+  },
+  "basic-workflows/fibo-2/fibo_2_edit_turbo_image_edit.png": {
+    "key": "images/7b3f71ab879192fb.webp",
+    "width": 2903,
+    "height": 1304,
+    "type": "image/webp",
+    "bytes": 156214,
+    "source": "acf262248542505b"
+  },
+  "basic-workflows/fibo-2/fibo_2_hero.png": {
+    "key": "images/6f7c3f12f96457d1.webp",
+    "width": 1360,
+    "height": 768,
+    "type": "image/webp",
+    "bytes": 177290,
+    "source": "00dba91ae83af2be"
+  },
+  "basic-workflows/fibo-2/fibo_2_image_edit_input.png": {
+    "key": "images/31f8fc97aff1bfac.webp",
+    "width": 1024,
+    "height": 1024,
+    "type": "image/webp",
+    "bytes": 111466,
+    "source": "b6d608a8f84a7cfd"
+  },
+  "basic-workflows/fibo-2/fibo_2_image_edit_multi_input1.png": {
+    "key": "images/e3189ccc52bcc9ae.webp",
+    "width": 1248,
+    "height": 1680,
+    "type": "image/webp",
+    "bytes": 108126,
+    "source": "2ee40a2cedea131c"
+  },
+  "basic-workflows/fibo-2/fibo_2_image_edit_multi_input2.png": {
+    "key": "images/489d04a1b640eeb3.webp",
+    "width": 1248,
+    "height": 1680,
+    "type": "image/webp",
+    "bytes": 80342,
+    "source": "945c39862ca662e8"
+  },
+  "basic-workflows/fibo-2/fibo_2_image_edit_multi_vgl_input1.png": {
+    "key": "images/248ae71a4c1fec63.webp",
+    "width": 1024,
+    "height": 1536,
+    "type": "image/webp",
+    "bytes": 161268,
+    "source": "a296069feed9d564"
+  },
+  "basic-workflows/fibo-2/fibo_2_image_edit_multi_vgl_input2.png": {
+    "key": "images/dd0cf107cb144475.webp",
+    "width": 1248,
+    "height": 1680,
+    "type": "image/webp",
+    "bytes": 73028,
+    "source": "e8dbd2f42029138a"
+  },
+  "basic-workflows/fibo-2/fibo_2_image_edit_vgl_input.png": {
+    "key": "images/5e3036cc71ae0cf0.webp",
+    "width": 1024,
+    "height": 1536,
+    "type": "image/webp",
+    "bytes": 154856,
+    "source": "91d833f8c62b688e"
+  },
   "basic-workflows/florence2/legacy_gyazo_0acc3146eed131b9642857ebc1edcce1.png": {
     "key": "images/666a4ad224b6421b.webp",
     "width": 1860,

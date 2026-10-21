@@ -1,0 +1,629 @@
+{
+  "id": "0ed730dd-17da-4c4d-acf5-c1b61c681ac7",
+  "revision": 0,
+  "last_node_id": 111,
+  "last_link_id": 253,
+  "nodes": [
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1204.9410494169624,
+        187.93908374218398
+      ],
+      "size": [
+        225,
+        46
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 35
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 76
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            101
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      }
+    },
+    {
+      "id": 37,
+      "type": "UNETLoader",
+      "pos": [
+        528.8914031982422,
+        48.08209208326247
+      ],
+      "size": [
+        305.3782043457031,
+        82
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            229
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "fibo2_dev_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Fibo-2.0/resolve/main/diffusion_models/fibo2_dev_int8_convrot.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
+      },
+      "widgets_values": [
+        "fibo2_dev_int8_convrot.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "fibo2_dev_int8_convrot.safetensors",
+        "weight_dtype": "default"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 38,
+      "type": "CLIPLoader",
+      "pos": [
+        67.38904068787144,
+        187.93908374218398
+      ],
+      "size": [
+        301.3524169921875,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            74,
+            204
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "qwen3vl_4b_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Fibo-2.0/resolve/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen3vl_4b_int8_convrot.safetensors",
+        "fibo2",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_4b_int8_convrot.safetensors",
+        "type": "fibo2",
+        "device": "default"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        897.635533973275,
+        187.93908374218398
+      ],
+      "size": [
+        270,
+        262
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 229
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 251
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 252
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 253
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            35
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        1234,
+        "fixed",
+        30,
+        5,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 1234,
+        "control_after_generate": "fixed",
+        "steps": 30,
+        "cfg": 5,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 60,
+      "type": "ResolutionSelector",
+      "pos": [
+        284.4637239241533,
+        646.0163350403498
+      ],
+      "size": [
+        270,
+        150
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "showAdvanced": true,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            220
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            221
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResolutionSelector",
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0"
+      },
+      "widgets_values": [
+        "3:4 (Portrait Standard)",
+        1,
+        16
+      ],
+      "widgets_values_named": {
+        "aspect_ratio": "3:4 (Portrait Standard)",
+        "megapixels": 1,
+        "multiple": 16
+      }
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        415.7513025457208,
+        187.93908374218398
+      ],
+      "size": [
+        418.5183049982245,
+        177.7917699892659
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 74
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            251
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "A magazine cover portrait photograph of a fluffy ginger tabby cat curled up inside an empty round clear glass goldfish bowl, shot from a high angle, looking down into the bowl from about 45 degrees above. The cat's body wraps around the inside of the bowl in a full circle, its back arched along the curved glass wall, its spine following the round shape of the bowl, its fluffy tail coiling around the bottom to meet its front paws. Its chin rests on its paws near the rim, and its face tilts upward toward the camera, large amber eyes looking straight up into the lens. Where the fur presses against the glass, the curve gently magnifies and bends it, and thin bright highlights trace the rim and the round outline of the bowl. The bowl sits on a pale oak table.\n\nSoft natural window light from the upper left falls across the cat's face and the rim of the bowl. Behind and below the bowl, the pale oak tabletop and a dusty-teal wall fade into a soft blur. Shallow depth of field with the eyes in crisp focus, 85mm portrait lens, fine individual fur detail, rich warm color saturation with the orange fur glowing against the teal and pale wood.\n\nAt the top, the magazine title \"PURR\" centered across the full width in very large high-contrast serif capitals, with thin hairline strokes and thick vertical stems, cream white. At the bottom left, the cover line \"THE GLASS ISSUE\" in small, widely spaced sans-serif capitals in cream white, with \"NO. 48 / SPRING\" in a smaller size directly beneath it."
+      ],
+      "widgets_values_named": {
+        "text": "A magazine cover portrait photograph of a fluffy ginger tabby cat curled up inside an empty round clear glass goldfish bowl, shot from a high angle, looking down into the bowl from about 45 degrees above. The cat's body wraps around the inside of the bowl in a full circle, its back arched along the curved glass wall, its spine following the round shape of the bowl, its fluffy tail coiling around the bottom to meet its front paws. Its chin rests on its paws near the rim, and its face tilts upward toward the camera, large amber eyes looking straight up into the lens. Where the fur presses against the glass, the curve gently magnifies and bends it, and thin bright highlights trace the rim and the round outline of the bowl. The bowl sits on a pale oak table.\n\nSoft natural window light from the upper left falls across the cat's face and the rim of the bowl. Behind and below the bowl, the pale oak tabletop and a dusty-teal wall fade into a soft blur. Shallow depth of field with the eyes in crisp focus, 85mm portrait lens, fine individual fur detail, rich warm color saturation with the orange fur glowing against the teal and pale wood.\n\nAt the top, the magazine title \"PURR\" centered across the full width in very large high-contrast serif capitals, with thin hairline strokes and thick vertical stems, cream white. At the bottom left, the cover line \"THE GLASS ISSUE\" in small, widely spaced sans-serif capitals in cream white, with \"NO. 48 / SPRING\" in a smaller size directly beneath it."
+      }
+    },
+    {
+      "id": 56,
+      "type": "SaveImage",
+      "pos": [
+        1471.5835266765205,
+        187.93908374218398
+      ],
+      "size": [
+        586.3861842101655,
+        863.688465287762
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 101
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "ComfyUI"
+      }
+    },
+    {
+      "id": 39,
+      "type": "VAELoader",
+      "pos": [
+        897.635533973275,
+        72.08209208326247
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            76
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "flux2-vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Fibo-2.0/resolve/main/vae/flux2-vae.safetensors",
+            "directory": "vae"
+          }
+        ]
+      },
+      "widgets_values": [
+        "flux2-vae.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "flux2-vae.safetensors"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 94,
+      "type": "CLIPTextEncode",
+      "pos": [
+        415.7513025457208,
+        439.0549810836888
+      ],
+      "size": [
+        418.5183049982245,
+        105.54682990845009
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 204
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            252
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Negative Prompt)",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        "water, fish, blurry eyes, out-of-focus face, distorted paws, extra legs, warped glass, warped text, misspelled letters, garbled typography, low resolution, jpeg artifacts, washed-out colors, dull flat lighting, cartoon, 3D render, watermark"
+      ],
+      "widgets_values_named": {
+        "text": "water, fish, blurry eyes, out-of-focus face, distorted paws, extra legs, warped glass, warped text, misspelled letters, garbled typography, low resolution, jpeg artifacts, washed-out colors, dull flat lighting, cartoon, 3D render, watermark"
+      }
+    },
+    {
+      "id": 98,
+      "type": "MarkdownNote",
+      "pos": [
+        -420.2435582359609,
+        48.08209208326247
+      ],
+      "size": [
+        434.36831439218804,
+        441.83593639711034
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n\n- diffusion_models\n  - [fibo2_dev_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Fibo-2.0/blob/main/diffusion_models/fibo2_dev_int8_convrot.safetensors) (8.41 GB)\n- text_encoders\n  - [qwen3vl_4b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Fibo-2.0/blob/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors) (4.86 GB)\n- vae\n  - [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/Fibo-2.0/blob/main/vae/flux2-vae.safetensors) (336 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── fibo2_dev_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_4b_int8_convrot.safetensors\n    └── 📂vae/\n        └── flux2-vae.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/fibo-2/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/fibo-2/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/fibo-2/)"
+      ],
+      "widgets_values_named": {
+        "text": "## models\n\n- diffusion_models\n  - [fibo2_dev_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Fibo-2.0/blob/main/diffusion_models/fibo2_dev_int8_convrot.safetensors) (8.41 GB)\n- text_encoders\n  - [qwen3vl_4b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Fibo-2.0/blob/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors) (4.86 GB)\n- vae\n  - [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/Fibo-2.0/blob/main/vae/flux2-vae.safetensors) (336 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── fibo2_dev_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_4b_int8_convrot.safetensors\n    └── 📂vae/\n        └── flux2-vae.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/fibo-2/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/fibo-2/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/fibo-2/)"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 102,
+      "type": "EmptyLatentImage",
+      "pos": [
+        586.9749198729191,
+        623.1511103737449
+      ],
+      "size": [
+        247.29468767102617,
+        106
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 220
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 221
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            253
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ],
+      "widgets_values_named": {
+        "width": 1024,
+        "height": 1024,
+        "batch_size": 1
+      }
+    }
+  ],
+  "links": [
+    [
+      35,
+      3,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      74,
+      38,
+      0,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      76,
+      39,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      101,
+      8,
+      0,
+      56,
+      0,
+      "IMAGE"
+    ],
+    [
+      204,
+      38,
+      0,
+      94,
+      0,
+      "CLIP"
+    ],
+    [
+      220,
+      60,
+      0,
+      102,
+      0,
+      "INT"
+    ],
+    [
+      221,
+      60,
+      1,
+      102,
+      1,
+      "INT"
+    ],
+    [
+      229,
+      37,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      251,
+      6,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      252,
+      94,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      253,
+      102,
+      0,
+      3,
+      3,
+      "LATENT"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9229599817706493,
+      "offset": [
+        787.0336731287953,
+        349.6952488191554
+      ]
+    },
+    "frontendVersion": "1.57.1",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

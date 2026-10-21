@@ -294,6 +294,8 @@ sections:
       title: Krea 2
     - id: moss-image
       title: MOSS-Image
+    - id: fibo-2
+      title: Fibo 2.0
   - id: video-workflows
     title: 视频工作流
     noLink: true

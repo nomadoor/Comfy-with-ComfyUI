@@ -5,7 +5,7 @@ slug: news
 navId: news
 title: "更新信息"
 created: 2026-02-05
-updated: 2026-10-17
+updated: 2026-10-21
 summary: "本站的更新信息"
 seoTitle: "更新信息：新的 ComfyUI 文章与工作流"
 seoDescription: "Comfy with ComfyUI 的更新记录。按日期列出新增的模型讲解、工作流以及已有文章的更新。"
@@ -14,6 +14,11 @@ tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/zh/basic-workflows/fibo-2/">
+    <span class="news-row__date">2026.10.21</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">新增了 Fibo 2.0 页面</span>
+  </a>
   <a class="news-row" href="/zh/basic-workflows/moss-image/">
     <span class="news-row__date">2026.10.17</span>
     <span class="news-row__tag">basic-workflows</span>
