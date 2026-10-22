@@ -62,6 +62,7 @@ Accepted（PoC。記事側のボタン・案内表示は別途デザイン相談
 - 準備全体に期限を設ける（`BOOT_TIMEOUT_MINUTES`、既定 60 分）。git や custom node のインストールが固まっても失敗として扱う。期限のあとに準備が終わっても ComfyUI は起動しない。
 - Terminate の API 呼び出しは成功するまで繰り返す（60 秒から倍々、最大 15 分間隔）。最初に失敗した時点で、ステータスページに手で Terminate するよう案内を出す。
 - 起動後のインストール（ComfyUI と custom node の依存、Manager からの追加）は `/opt/runtime.lock` を制約にする（`UV_CONSTRAINT` / `PIP_CONSTRAINT`）。別の torch を求める custom node は、cu130 の PyTorch を黙って入れ替えずに失敗する。
+  - 2026-10-22 追記: 制約は `/opt/constraints.txt` に移した。中身は `/opt/runtime.lock` と certifi・uv の下限（古い版は危殆化した eMudhra の中間 CA を信頼する）。`/opt/runtime.lock` は PyTorch のインストール一覧として残す。あわせて ca-certificates を上げる層を、workflow が `CA_REFRESH` に日付を渡して毎日作り直す。
 - 起動時の PyTorch のインストールは uv のキャッシュを残さない。モデルと同じディスクに入るときは、空き容量の確認で PyTorch の分（8 GB）を見込む。
 - 外のサイトからの表示を通す例外（#161）は `/` だけにする。
 - `IDLE_STOP_MINUTES` などが数値でなくても、既定値で動く（自動停止が丸ごと無効にならない）。RunPod 以外で動かしたときは「終了しました」と表示しない。
