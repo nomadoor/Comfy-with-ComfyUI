@@ -26,11 +26,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Node.js をセットアップ (20 系)
+      # 2. Node.js をセットアップ (22 系。22.23.4 未満は危殆化した eMudhra 中間 CA を信頼したまま)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22.23.4
           cache: npm
 
       # 3. 依存パッケージをインストール

@@ -19,7 +19,8 @@ RUN apt-get update \
  && apt-get install -y --no-install-recommends git aria2 jq curl ca-certificates libgl1 libglib2.0-0 gcc libc6-dev \
  && rm -rf /var/lib/apt/lists/*
 
-COPY --from=ghcr.io/astral-sh/uv:0.9 /uv /uvx /usr/local/bin/
+# 0.13.4 or later: older uv builds still trust the compromised eMudhra intermediates (October 2026).
+COPY --from=ghcr.io/astral-sh/uv:0.13 /uv /uvx /usr/local/bin/
 
 # PyTorch and its CUDA libraries (~6.7 GB) are NOT in the image. Pulled as layers, they took a fresh
 # RunPod machine ~1.5 minutes (one stream per layer, unpacked one layer at a time); the boot process
@@ -29,25 +30,40 @@ COPY --from=ghcr.io/astral-sh/uv:0.9 /uv /uvx /usr/local/bin/
 ENV TORCH_INDEX=https://download.pytorch.org/whl/cu130
 RUN uv venv --python 3.13 /opt/venv
 
+# The system packages above come from the build cache and are never refreshed on their own, so a
+# CA removal (like the compromised eMudhra intermediates in October 2026) would never reach the
+# image. The daily build passes a new CA_REFRESH, which reruns only this small layer and those
+# after it (the ComfyUI layer changes daily anyway). The check fails the build rather than ship
+# a trust store that still holds those CAs.
+ARG CA_REFRESH
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends --only-upgrade ca-certificates \
+ && rm -rf /var/lib/apt/lists/* \
+ && dpkg --compare-versions "$(dpkg-query -W -f='${Version}' ca-certificates)" ge 20260816ubuntu0.24.04.1
+
 ARG COMFY_COMMIT=master
 RUN git clone --filter=blob:none https://github.com/comfyanonymous/ComfyUI.git /opt/ComfyUI \
  && git -C /opt/ComfyUI checkout --quiet "$COMFY_COMMIT" \
  && printf 'torch\ntorchvision\ntorchaudio\n' > /tmp/torch.in \
  && printf 'huggingface_hub[hf_xet]\n' > /tmp/extra.in \
+ && printf 'certifi>=2026.10.19\nuv>=0.13.4\n' > /tmp/floors.in \
  && uv pip compile --quiet --python /opt/venv/bin/python --index-url "$TORCH_INDEX" /tmp/torch.in -o /tmp/torch.lock \
  && uv pip compile --quiet --python /opt/venv/bin/python --extra-index-url "$TORCH_INDEX" --index-strategy unsafe-best-match \
-      -c /tmp/torch.lock /tmp/torch.in /opt/ComfyUI/requirements.txt /opt/ComfyUI/manager_requirements.txt /tmp/extra.in \
+      -c /tmp/torch.lock /tmp/torch.in /opt/ComfyUI/requirements.txt /opt/ComfyUI/manager_requirements.txt /tmp/extra.in /tmp/floors.in \
       -o /opt/full.lock \
  && grep -E '^(torch|torchvision|torchaudio|triton|nvidia-[a-z0-9-]+|cuda-[a-z0-9-]+)==' /opt/full.lock > /opt/runtime.lock \
  && grep -vE '^(torch|torchvision|torchaudio|triton|nvidia-[a-z0-9-]+|cuda-[a-z0-9-]+)==' /opt/full.lock > /tmp/rest.lock \
+ && cat /opt/runtime.lock /tmp/floors.in > /opt/constraints.txt \
  && uv pip install --no-cache --no-deps --extra-index-url "$TORCH_INDEX" --index-strategy unsafe-best-match -r /tmp/rest.lock \
  && git -C /opt/ComfyUI rev-parse HEAD > /opt/.runpod-comfyui-requirements.sha
 
 # Every later install (ComfyUI and custom node requirements at boot, Manager installs from the UI)
 # must keep the locked PyTorch: a node asking for another torch fails loudly instead of quietly
-# replacing the cu130 build with a PyPI one. Set after the build's own installs.
-ENV UV_CONSTRAINT=/opt/runtime.lock \
-    PIP_CONSTRAINT=/opt/runtime.lock
+# replacing the cu130 build with a PyPI one. certifi and uv keep their floors the same way: an older
+# one would trust the compromised eMudhra intermediates again. /opt/runtime.lock stays the PyTorch
+# install list; the constraints are that list plus the floors. Set after the build's own installs.
+ENV UV_CONSTRAINT=/opt/constraints.txt \
+    PIP_CONSTRAINT=/opt/constraints.txt
 
 COPY bootstrap /opt/runpod/bootstrap
 COPY status /opt/runpod/status
