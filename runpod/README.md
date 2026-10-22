@@ -89,7 +89,7 @@ GPU と NVIDIA Container Toolkit がある環境で:
 
 ```bash
 npm run build
-docker build -t cwc-runpod:dev runpod/image
+docker build --build-arg CA_REFRESH="$(date -u +%Y%m%d)" -t cwc-runpod:dev runpod/image
 docker run --rm --gpus all -p 127.0.0.1:8188:8188 \
   -e PROFILE=qwen-image-2-1 -e PROFILE_URL=file:///runpod/profiles/qwen-image-2-1.json \
   -v "$PWD/_site/runpod:/runpod:ro" -v "$PWD/_site/workflows:/workflows:ro" \
