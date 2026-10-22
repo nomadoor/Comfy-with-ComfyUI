@@ -47,6 +47,7 @@ jobs:
         run: |
           sha=$(git ls-remote https://github.com/comfyanonymous/ComfyUI.git refs/heads/master | cut -f1)
           echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          echo "date=$(date -u +%Y%m%d)" >> "$GITHUB_OUTPUT"
           echo "tag=$(date -u +%Y%m%d)-${sha:0:7}" >> "$GITHUB_OUTPUT"
 
       # main publishes :latest and a dated tag; any other branch (run by hand) only :exp, for trials.
@@ -92,7 +93,10 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: runpod/image
-          build-args: COMFY_COMMIT=${{ steps.comfy.outputs.sha }}
+          # CA_REFRESH changes every day so the image's CA certificates are upgraded daily (Dockerfile).
+          build-args: |
+            COMFY_COMMIT=${{ steps.comfy.outputs.sha }}
+            CA_REFRESH=${{ steps.comfy.outputs.date }}
           tags: ${{ steps.tags.outputs.list }}
           # zstd layers unpack several times faster than gzip on the Pod (Docker 23+ reads them).
           outputs: type=registry,compression=zstd,compression-level=3,force-compression=true,oci-mediatypes=true
