@@ -6,6 +6,7 @@ slug: pika-h3-flex
 navId: pika-h3-flex
 title: "Pika H3 Flex"
 created: 2026-11-02
+updated: 2026-11-02
 summary: "Pika H3 Flexで映像と音声を6ステップで生成する"
 seoTitle: "ComfyUIでPika H3 Flexを使う：MiniMax H3を6ステップで"
 seoDescription: "PikaがMiniMax H3を追加学習したPika H3 FlexのComfyUIでの使い方。6ステップで映像と音声を生成します。必要なモデル、推奨設定、text2video、image2video、First / Last Frame、Reference Generation、Video Editing、空間Inpaintingのworkflowを解説します。"
@@ -62,6 +63,8 @@ Pika は自社でも動画生成モデルを作っている会社で、学習に
 
 ### ベースモデル
 
+- checkpoints
+  - [sam3.1_multiplex_fp16.safetensors](https://huggingface.co/Comfy-Org/sam3.1/blob/main/checkpoints/sam3.1_multiplex_fp16.safetensors) (1.75 GB)
 - diffusion_models
   - [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (21 GB)
   - [minimax_h3_ref2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors) (21 GB)
@@ -74,6 +77,8 @@ Pika は自社でも動画生成モデルを作っている会社で、学習に
 ```text
 📂ComfyUI/
 └── 📂models/
+    ├── 📂checkpoints/
+    │   └── sam3.1_multiplex_fp16.safetensors
     ├── 📂diffusion_models/
     │   ├── minimax_h3_fl2va_pruned_int8_convrot.safetensors
     │   └── minimax_h3_ref2va_pruned_int8_convrot.safetensors

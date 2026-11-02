@@ -6,6 +6,7 @@ slug: pika-h3-flex
 navId: pika-h3-flex
 title: "Pika H3 Flex"
 created: 2026-11-02
+updated: 2026-11-02
 summary: "Generate video and audio in 6 steps with Pika H3 Flex"
 seoTitle: "Pika H3 Flex in ComfyUI: MiniMax H3 in 6 Steps"
 seoDescription: "Pika H3 Flex, MiniMax H3 further trained by Pika, generates video with audio in 6 steps. Models, settings, and workflows from text2video to video editing and inpainting."
@@ -61,6 +62,8 @@ On top of better quality, step distillation cuts it down to 6 steps, so generati
 
 ### Base Models
 
+- checkpoints
+  - [sam3.1_multiplex_fp16.safetensors](https://huggingface.co/Comfy-Org/sam3.1/blob/main/checkpoints/sam3.1_multiplex_fp16.safetensors) (1.75 GB)
 - diffusion_models
   - [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (21 GB)
   - [minimax_h3_ref2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors) (21 GB)
@@ -73,6 +76,8 @@ On top of better quality, step distillation cuts it down to 6 steps, so generati
 ```text
 📂ComfyUI/
 └── 📂models/
+    ├── 📂checkpoints/
+    │   └── sam3.1_multiplex_fp16.safetensors
     ├── 📂diffusion_models/
     │   ├── minimax_h3_fl2va_pruned_int8_convrot.safetensors
     │   └── minimax_h3_ref2va_pruned_int8_convrot.safetensors

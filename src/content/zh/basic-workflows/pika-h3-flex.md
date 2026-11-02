@@ -6,6 +6,7 @@ slug: pika-h3-flex
 navId: pika-h3-flex
 title: "Pika H3 Flex"
 created: 2026-11-02
+updated: 2026-11-02
 summary: "使用 Pika H3 Flex 以 6 步生成视频和音频"
 seoTitle: "在 ComfyUI 中使用 Pika H3 Flex：6 步运行 MiniMax H3"
 seoDescription: "Pika 在 MiniMax H3 基础上追加训练的 Pika H3 Flex 在 ComfyUI 中的用法。以 6 步生成视频和音频。讲解所需模型、推荐设置，以及 text2video、image2video、首尾帧、Reference Generation、Video Editing、空间 Inpainting 工作流。"
@@ -61,6 +62,8 @@ Pika 自己也在开发视频生成模型，训练时用的就是他们自己的
 
 ### 基础模型
 
+- checkpoints
+  - [sam3.1_multiplex_fp16.safetensors](https://huggingface.co/Comfy-Org/sam3.1/blob/main/checkpoints/sam3.1_multiplex_fp16.safetensors) (1.75 GB)
 - diffusion_models
   - [minimax_h3_fl2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors) (21 GB)
   - [minimax_h3_ref2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors) (21 GB)
@@ -73,6 +76,8 @@ Pika 自己也在开发视频生成模型，训练时用的就是他们自己的
 ```text
 📂ComfyUI/
 └── 📂models/
+    ├── 📂checkpoints/
+    │   └── sam3.1_multiplex_fp16.safetensors
     ├── 📂diffusion_models/
     │   ├── minimax_h3_fl2va_pruned_int8_convrot.safetensors
     │   └── minimax_h3_ref2va_pruned_int8_convrot.safetensors
