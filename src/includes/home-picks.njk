@@ -16,7 +16,7 @@
         <a class="home-pick workflow-related__card" href="{{ item.page }}" aria-labelledby="{{ pickId }}-title" aria-describedby="{{ pickId }}-text">
           <div class="workflow-related__hero" {% if pickHero and pickHero.poster %}data-hero="{{ pickHero.poster }}"{% endif %}>
             {% if pickHero and pickHero.kind == "video" %}
-              <video class="home-pick__video" src="{{ pickHero.src }}" poster="{{ pickHero.poster }}" muted autoplay loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video>
+              <video class="home-pick__video" src="{{ pickHero.src }}" poster="{{ pickHero.poster }}" muted autoplay loop playsinline disablepictureinpicture preload="metadata" aria-hidden="true" tabindex="-1"></video>
             {% endif %}
             {% if not (pickHero and pickHero.poster) %}
               <span class="workflow-related__placeholder-icon" aria-hidden="true">{{ icon("sparkles") }}</span>

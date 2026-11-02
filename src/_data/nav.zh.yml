@@ -320,6 +320,9 @@ sections:
         title: LTX 2.5
     - id: minimax-h3
       title: MiniMax H3
+      children:
+      - id: pika-h3-flex
+        title: Pika H3 Flex
     - id: liveportrait
       title: LivePortrait
   - id: upscale-fix

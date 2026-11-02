@@ -150,6 +150,8 @@
       * SCAIL-2
     * Wan 2.2
     * LTX-Video
+    * MiniMax H3（親ページあり）
+      * Pika H3 Flex
     * LivePortrait
     * HunyuanVideo-Foley
   * アップスケール・修正 — 親ページあり
