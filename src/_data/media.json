@@ -4557,6 +4557,236 @@
     "bytes": 96524,
     "source": "b54857fd9930fcdb"
   },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_flf2va_input1.png": {
+    "key": "images/f54d0aa3511fbe28.webp",
+    "width": 1680,
+    "height": 1248,
+    "type": "image/webp",
+    "bytes": 696568,
+    "source": "a7f036f4db4b7625"
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_flf2va_input2.png": {
+    "key": "images/d238d7d0422d4d89.webp",
+    "width": 1680,
+    "height": 1248,
+    "type": "image/webp",
+    "bytes": 314512,
+    "source": "da7f700899539f51"
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_flf2va_output.mp4": {
+    "key": "videos/c9223b10fcd9d7c9.mp4",
+    "width": 1184,
+    "height": 864,
+    "type": "video/mp4",
+    "bytes": 10442350,
+    "source": "f9feb36882409780",
+    "poster": {
+      "key": "images/8f435bec98a6ef32.webp",
+      "width": 1184,
+      "height": 864,
+      "bytes": 339044
+    }
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_flf2va.png": {
+    "key": "images/8afc2c8ac469e05b.webp",
+    "width": 4370,
+    "height": 1759,
+    "type": "image/webp",
+    "bytes": 405302,
+    "source": "0da7b1512a82cc9e"
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_hero.mp4": {
+    "key": "videos/cdd5166eb9105b66.mp4",
+    "width": 1376,
+    "height": 768,
+    "type": "video/mp4",
+    "bytes": 4190942,
+    "source": "271074e787753d13",
+    "poster": {
+      "key": "images/3c27cb740bbd2875.webp",
+      "width": 1376,
+      "height": 768,
+      "bytes": 109864
+    }
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_i2va_input.png": {
+    "key": "images/b6bf23a9fdecd454.webp",
+    "width": 1248,
+    "height": 832,
+    "type": "image/webp",
+    "bytes": 157106,
+    "source": "9bbb8210992c30d2"
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_i2va_output.mp4": {
+    "key": "videos/501f4e5e3581e2a0.mp4",
+    "width": 1248,
+    "height": 832,
+    "type": "video/mp4",
+    "bytes": 2971896,
+    "source": "79eba8e40990637b",
+    "poster": {
+      "key": "images/b0bbacbdd444c1ca.webp",
+      "width": 1248,
+      "height": 832,
+      "bytes": 148538
+    }
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_i2va.png": {
+    "key": "images/7e384629334b01dc.webp",
+    "width": 4200,
+    "height": 1558,
+    "type": "image/webp",
+    "bytes": 307656,
+    "source": "942988abc480f05a"
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_reference_generation_input1.png": {
+    "key": "images/e3189ccc52bcc9ae.webp",
+    "width": 1248,
+    "height": 1680,
+    "type": "image/webp",
+    "bytes": 108126,
+    "source": "2ee40a2cedea131c"
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_reference_generation_input2.png": {
+    "key": "images/597672ec68bf330b.webp",
+    "width": 1248,
+    "height": 832,
+    "type": "image/webp",
+    "bytes": 59922,
+    "source": "0980f5be83c24f46"
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_reference_generation_input3.png": {
+    "key": "images/37810bed9a6ba38b.webp",
+    "width": 1248,
+    "height": 832,
+    "type": "image/webp",
+    "bytes": 134092,
+    "source": "8697e28a2685d227"
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_reference_generation_output.mp4": {
+    "key": "videos/08f9fc284bb5586f.mp4",
+    "width": 1376,
+    "height": 768,
+    "type": "video/mp4",
+    "bytes": 3134874,
+    "source": "e8ca41a6382a1e11",
+    "poster": {
+      "key": "images/53a068b54e094a39.webp",
+      "width": 1376,
+      "height": 768,
+      "bytes": 110240
+    }
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_reference_generation.png": {
+    "key": "images/e1c5eed6a02fa988.webp",
+    "width": 4808,
+    "height": 1759,
+    "type": "image/webp",
+    "bytes": 280832,
+    "source": "83d27038cee913d5"
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_spatial_inpainting_input_image.png": {
+    "key": "images/c32a9c1e1a99a361.webp",
+    "width": 1776,
+    "height": 1184,
+    "type": "image/webp",
+    "bytes": 180470,
+    "source": "d08023120198520b"
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_spatial_inpainting_input_video.mp4": {
+    "key": "videos/742b745b0cce316f.mp4",
+    "width": 1376,
+    "height": 768,
+    "type": "video/mp4",
+    "bytes": 5049540,
+    "source": "78e9b4e30ccf4bbc",
+    "poster": {
+      "key": "images/6b31d2184aa471ef.webp",
+      "width": 1376,
+      "height": 768,
+      "bytes": 70776
+    }
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_spatial_inpainting_output.mp4": {
+    "key": "videos/8e808b05a86f0eeb.mp4",
+    "width": 1344,
+    "height": 736,
+    "type": "video/mp4",
+    "bytes": 4280135,
+    "source": "802f679e52bd19a9",
+    "poster": {
+      "key": "images/529d22896b91ed64.webp",
+      "width": 1344,
+      "height": 736,
+      "bytes": 61132
+    }
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_spatial_inpainting.png": {
+    "key": "images/7ef98c2103b6d57c.webp",
+    "width": 5016,
+    "height": 2232,
+    "type": "image/webp",
+    "bytes": 352768,
+    "source": "5eebe0b71becf72b"
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_t2va_output.mp4": {
+    "key": "videos/1b2a40555171c50a.mp4",
+    "width": 1376,
+    "height": 768,
+    "type": "video/mp4",
+    "bytes": 2283790,
+    "source": "c7ad4d8c3373986e",
+    "poster": {
+      "key": "images/91f633c3412892d3.webp",
+      "width": 1376,
+      "height": 768,
+      "bytes": 35668
+    }
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_t2va.png": {
+    "key": "images/9e813e8a6c1d5421.webp",
+    "width": 3952,
+    "height": 1205,
+    "type": "image/webp",
+    "bytes": 184406,
+    "source": "f290baa30afb8055"
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_video_editing_input.mp4": {
+    "key": "videos/ea907c5bee96bfcb.mp4",
+    "width": 1344,
+    "height": 768,
+    "type": "video/mp4",
+    "bytes": 4572443,
+    "source": "89c8497725b736be",
+    "poster": {
+      "key": "images/a0fa25938977ba8f.webp",
+      "width": 1344,
+      "height": 768,
+      "bytes": 277450
+    }
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_video_editing_output.mp4": {
+    "key": "videos/c2c6f1cabe2e7a61.mp4",
+    "width": 1344,
+    "height": 768,
+    "type": "video/mp4",
+    "bytes": 2250170,
+    "source": "d60dd77b5c3316e3",
+    "poster": {
+      "key": "images/72c690b1ca222ca8.webp",
+      "width": 1344,
+      "height": 768,
+      "bytes": 117704
+    }
+  },
+  "basic-workflows/pika-h3-flex/pika_h3_flex_video_editing.png": {
+    "key": "images/396f566c6da6d277.webp",
+    "width": 4667,
+    "height": 1619,
+    "type": "image/webp",
+    "bytes": 269470,
+    "source": "39a9e0c4593f43d6"
+  },
   "basic-workflows/pixeldit-pid/legacy_gyazo_31ea733be7d13db9616875f7c59e3f40.png": {
     "key": "images/e4280a216b098d46.webp",
     "width": 832,
