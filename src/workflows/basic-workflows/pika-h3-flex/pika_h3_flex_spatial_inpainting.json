@@ -789,8 +789,8 @@
         -75.50541840401587
       ],
       "size": [
-        493.0681701824316,
-        563.4942318234185
+        496.20095939217515,
+        637.0469970077032
       ],
       "flags": {},
       "order": 7,
@@ -802,7 +802,7 @@
         "## models\n- checkpoints\n  - [sam3.1_multiplex_fp16.safetensors](https://huggingface.co/Comfy-Org/sam3.1/blob/main/checkpoints/sam3.1_multiplex_fp16.safetensors) (1.75 GB)\n- diffusion_models\n  - [minimax_h3_ref2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors) (21 GB)\n- loras\n  - [pika_h3_flex_ref2va_v1_bf16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/loras/pika_h3_flex_ref2va_v1_bf16.safetensors) (1.96 GB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) (15.7 GB)\n- vae\n  - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)\n  - [minimax_h3_video_vae_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_int8_convrot.safetensors) (2.81 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂checkpoints/\n    │   └── sam3.1_multiplex_fp16.safetensors\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_ref2va_pruned_int8_convrot.safetensors\n    ├── 📂loras/\n    │   └── pika_h3_flex_ref2va_v1_bf16.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors\n    └── 📂vae/\n        ├── minimax_h3_audio_vae_fp32.safetensors\n        └── minimax_h3_video_vae_int8_convrot.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/pika-h3-flex/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/pika-h3-flex/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/pika-h3-flex/)"
       ],
       "widgets_values_named": {
-        "text": "## models\n- diffusion_models\n  - [minimax_h3_ref2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors) (21 GB)\n- loras\n  - [pika_h3_flex_ref2va_v1_bf16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/loras/pika_h3_flex_ref2va_v1_bf16.safetensors) (1.96 GB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) (15.7 GB)\n- vae\n  - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)\n  - [minimax_h3_video_vae_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_int8_convrot.safetensors) (2.81 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_ref2va_pruned_int8_convrot.safetensors\n    ├── 📂loras/\n    │   └── pika_h3_flex_ref2va_v1_bf16.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors\n    └── 📂vae/\n        ├── minimax_h3_audio_vae_fp32.safetensors\n        └── minimax_h3_video_vae_int8_convrot.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/pika-h3-flex/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/pika-h3-flex/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/pika-h3-flex/)"
+        "text": "## models\n- checkpoints\n  - [sam3.1_multiplex_fp16.safetensors](https://huggingface.co/Comfy-Org/sam3.1/blob/main/checkpoints/sam3.1_multiplex_fp16.safetensors) (1.75 GB)\n- diffusion_models\n  - [minimax_h3_ref2va_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors) (21 GB)\n- loras\n  - [pika_h3_flex_ref2va_v1_bf16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/loras/pika_h3_flex_ref2va_v1_bf16.safetensors) (1.96 GB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) (15.7 GB)\n- vae\n  - [minimax_h3_audio_vae_fp32.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_audio_vae_fp32.safetensors) (605 MB)\n  - [minimax_h3_video_vae_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3/blob/main/vae/minimax_h3_video_vae_int8_convrot.safetensors) (2.81 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂checkpoints/\n    │   └── sam3.1_multiplex_fp16.safetensors\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_ref2va_pruned_int8_convrot.safetensors\n    ├── 📂loras/\n    │   └── pika_h3_flex_ref2va_v1_bf16.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors\n    └── 📂vae/\n        ├── minimax_h3_audio_vae_fp32.safetensors\n        └── minimax_h3_video_vae_int8_convrot.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/pika-h3-flex/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/pika-h3-flex/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/pika-h3-flex/)"
       },
       "color": "#323",
       "bgcolor": "#535"
@@ -816,7 +816,7 @@
       ],
       "size": [
         400,
-        444
+        484
       ],
       "flags": {},
       "order": 26,
@@ -852,10 +852,22 @@
           "link": null
         },
         {
+          "name": "ref_images.ref_image_2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
           "name": "ref_videos.ref_video_0",
           "shape": 7,
           "type": "IMAGE",
           "link": 287
+        },
+        {
+          "name": "ref_videos.ref_video_1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
         },
         {
           "name": "ref_video_audios.ref_video_audio_0",
@@ -870,6 +882,12 @@
           "link": null
         },
         {
+          "name": "ref_video_audios.ref_video_audio_2",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
           "name": "ref_audios.ref_audio_0",
           "shape": 7,
           "type": "AUDIO",
@@ -877,12 +895,6 @@
         },
         {
           "name": "ref_audios.ref_audio_1",
-          "shape": 7,
-          "type": "AUDIO",
-          "link": null
-        },
-        {
-          "name": "ref_audios.ref_audio_2",
           "shape": 7,
           "type": "AUDIO",
           "link": null
@@ -912,9 +924,9 @@
           "link": 279
         },
         {
-          "name": "ref_videos.ref_video_1",
+          "name": "ref_audios.ref_audio_2",
           "shape": 7,
-          "type": "IMAGE",
+          "type": "AUDIO",
           "link": null
         },
         {
@@ -2198,14 +2210,6 @@
       "CONDITIONING"
     ],
     [
-      274,
-      149,
-      1,
-      137,
-      2,
-      "INT"
-    ],
-    [
       277,
       154,
       0,
@@ -2294,11 +2298,19 @@
       "IMAGE"
     ],
     [
+      287,
+      147,
+      0,
+      123,
+      6,
+      "IMAGE"
+    ],
+    [
       284,
       137,
       2,
       123,
-      8,
+      11,
       "AUDIO"
     ],
     [
@@ -2306,7 +2318,7 @@
       153,
       0,
       123,
-      11,
+      13,
       "INT"
     ],
     [
@@ -2314,7 +2326,7 @@
       153,
       1,
       123,
-      12,
+      14,
       "INT"
     ],
     [
@@ -2322,26 +2334,26 @@
       153,
       2,
       123,
-      13,
+      15,
       "INT"
     ],
     [
-      287,
-      147,
-      0,
-      123,
-      5,
-      "IMAGE"
+      274,
+      149,
+      1,
+      137,
+      2,
+      "INT"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.3597175843546903,
+      "scale": 0.43525827706917536,
       "offset": [
-        1880.1260136685166,
-        1081.2194758937549
+        1488.4310365809804,
+        621.3293139979569
       ]
     },
     "frontendVersion": "1.57.6",

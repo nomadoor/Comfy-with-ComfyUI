@@ -4722,12 +4722,12 @@
     }
   },
   "basic-workflows/pika-h3-flex/pika_h3_flex_spatial_inpainting.png": {
-    "key": "images/7ef98c2103b6d57c.webp",
+    "key": "images/0ceec6056356dbcc.webp",
     "width": 5016,
     "height": 2232,
     "type": "image/webp",
-    "bytes": 352768,
-    "source": "5eebe0b71becf72b"
+    "bytes": 363398,
+    "source": "1e55c7fd6b912345"
   },
   "basic-workflows/pika-h3-flex/pika_h3_flex_t2va_output.mp4": {
     "key": "videos/1b2a40555171c50a.mp4",
