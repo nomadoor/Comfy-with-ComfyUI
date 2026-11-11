@@ -163,7 +163,7 @@
   * LLM / MLLM — 見出しのみ（`2026-10-06-sidebar-group-parents.md`）
     * LLM / MLLMとは（`llm-mllm`）
     * JoyCaption
-    * Florence2
+    * WeVisOne-VL
   * その他 — 親ページあり
     * ReActor
   * システム・最適化 — 親ページあり
@@ -180,6 +180,7 @@
     * Qwen-Image（親ページあり）
       * Qwen-Image-Edit
       * Qwen-Image-Layered
+    * Florence2（2026-11-11 移動）
 * 📝Notes
   * Noteを探す / Find Notes / 查找 Notes
   * 個別Noteは階層化せず、左カラムではフラットなタイトルリストとして表示する
