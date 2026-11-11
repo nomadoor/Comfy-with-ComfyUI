@@ -1,0 +1,428 @@
+{
+  "id": "9a462c96-a219-41b9-bffa-f38d3b9c5066",
+  "revision": 0,
+  "last_node_id": 25,
+  "last_link_id": 32,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "WeVisOneDetect",
+      "pos": [
+        583.2080406943984,
+        246.37506759640755
+      ],
+      "size": [
+        343.0180710688839,
+        242.00001690869414
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 1
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 2
+        },
+        {
+          "name": "bboxes",
+          "shape": 7,
+          "type": "BOUNDING_BOX",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "masks",
+          "type": "MASK",
+          "links": [
+            3
+          ]
+        },
+        {
+          "name": "bboxes",
+          "type": "BOUNDING_BOX",
+          "links": [
+            31
+          ]
+        },
+        {
+          "name": "points",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "WeVisOneDetect"
+      },
+      "widgets_values": [
+        "segmentation",
+        "red apple",
+        false,
+        4096
+      ],
+      "widgets_values_named": {
+        "task": "segmentation",
+        "query": "red apple",
+        "individual_masks": false,
+        "max_length": 4096
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 2,
+      "type": "CLIPLoader",
+      "pos": [
+        226.46779637116998,
+        246.37506759640755
+      ],
+      "size": [
+        300.41347169345505,
+        114.0000155939492
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "showAdvanced": false,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "models": [
+          {
+            "name": "wevisone_vl_4b_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/WeVisOne-VL/resolve/main/text_encoders/wevisone_vl_4b_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
+      },
+      "widgets_values": [
+        "wevisone_vl_4b_int8_convrot.safetensors",
+        "stable_diffusion",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "wevisone_vl_4b_int8_convrot.safetensors",
+        "type": "stable_diffusion",
+        "device": "default"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 3,
+      "type": "LoadImage",
+      "pos": [
+        94.56272608671196,
+        435.18309544835483
+      ],
+      "size": [
+        432.31854197791307,
+        508.73594319299
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            2,
+            30
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "wevisone_vl_input.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "wevisone-vl_input.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 4,
+      "type": "MaskPreview",
+      "pos": [
+        978.2853234428349,
+        246.37506759640755
+      ],
+      "size": [
+        590.0735335975104,
+        426.32767237403465
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MaskPreview"
+      }
+    },
+    {
+      "id": 23,
+      "type": "CreateBoundingBoxes",
+      "pos": [
+        982.9195760035562,
+        735.0784445356574
+      ],
+      "size": [
+        480.7826167967525,
+        610.5156432268675
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "background",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 30
+        },
+        {
+          "name": "bboxes",
+          "shape": 7,
+          "type": "BOUNDING_BOX,ARRAY,STRING",
+          "link": 31
+        }
+      ],
+      "outputs": [
+        {
+          "name": "preview",
+          "type": "IMAGE",
+          "links": null
+        },
+        {
+          "name": "bboxes",
+          "type": "BOUNDING_BOX",
+          "links": null
+        },
+        {
+          "name": "elements",
+          "type": "ARRAY",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CreateBoundingBoxes"
+      },
+      "widgets_values": [
+        1776,
+        1184,
+        [
+          {
+            "x": 625,
+            "y": 610,
+            "width": 247,
+            "height": 284,
+            "metadata": {
+              "type": "obj",
+              "text": "",
+              "desc": "",
+              "palette": []
+            }
+          },
+          {
+            "x": 1067,
+            "y": 584,
+            "width": 213,
+            "height": 227,
+            "metadata": {
+              "type": "obj",
+              "text": "",
+              "desc": "",
+              "palette": []
+            }
+          }
+        ],
+        [
+          {
+            "x": 625.1519999999999,
+            "y": 609.76,
+            "width": 246.86400000000003,
+            "height": 284.15999999999997
+          },
+          {
+            "x": 1067.376,
+            "y": 583.712,
+            "width": 213.1199999999999,
+            "height": 227.3280000000001
+          }
+        ]
+      ],
+      "widgets_values_named": {
+        "width": 1776,
+        "height": 1184,
+        "editor_state": [
+          {
+            "x": 625,
+            "y": 610,
+            "width": 247,
+            "height": 284,
+            "metadata": {
+              "type": "obj",
+              "text": "",
+              "desc": "",
+              "palette": []
+            }
+          },
+          {
+            "x": 1067,
+            "y": 584,
+            "width": 213,
+            "height": 227,
+            "metadata": {
+              "type": "obj",
+              "text": "",
+              "desc": "",
+              "palette": []
+            }
+          }
+        ],
+        "last_incoming": [
+          {
+            "x": 625.1519999999999,
+            "y": 609.76,
+            "width": 246.86400000000003,
+            "height": 284.15999999999997
+          },
+          {
+            "x": 1067.376,
+            "y": 583.712,
+            "width": 213.1199999999999,
+            "height": 227.3280000000001
+          }
+        ]
+      }
+    },
+    {
+      "id": 25,
+      "type": "MarkdownNote",
+      "pos": [
+        -371.9444218661919,
+        246.37506759640755
+      ],
+      "size": [
+        384.3030354917121,
+        341.7154435512236
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n\n- text_encoders\n  - [wevisone_vl_4b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/WeVisOne-VL/blob/main/text_encoders/wevisone_vl_4b_int8_convrot.safetensors) (5.29 GB)\n  - [wevisone_vl_2b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/WeVisOne-VL/blob/main/text_encoders/wevisone_vl_2b_int8_convrot.safetensors) (2.89 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    └── 📂text_encoders/\n        ├── wevisone_vl_2b_int8_convrot.safetensors\n        └── wevisone_vl_4b_int8_convrot.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/wevisone-vl/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/wevisone-vl/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/wevisone-vl/)"
+      ],
+      "widgets_values_named": {
+        "text": "## models\n\n- text_encoders\n  - [wevisone_vl_4b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/WeVisOne-VL/blob/main/text_encoders/wevisone_vl_4b_int8_convrot.safetensors) (5.29 GB)\n  - [wevisone_vl_2b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/WeVisOne-VL/blob/main/text_encoders/wevisone_vl_2b_int8_convrot.safetensors) (2.89 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    └── 📂text_encoders/\n        ├── wevisone_vl_2b_int8_convrot.safetensors\n        └── wevisone_vl_4b_int8_convrot.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/wevisone-vl/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/wevisone-vl/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/wevisone-vl/)"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      0,
+      1,
+      0,
+      "CLIP"
+    ],
+    [
+      2,
+      3,
+      0,
+      1,
+      1,
+      "IMAGE"
+    ],
+    [
+      3,
+      1,
+      0,
+      4,
+      0,
+      "MASK"
+    ],
+    [
+      30,
+      3,
+      0,
+      23,
+      0,
+      "IMAGE"
+    ],
+    [
+      31,
+      1,
+      1,
+      23,
+      1,
+      "BOUNDING_BOX"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7627768444385534,
+      "offset": [
+        552.5405509423708,
+        179.1095291326819
+      ]
+    },
+    "frontendVersion": "1.58.5",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

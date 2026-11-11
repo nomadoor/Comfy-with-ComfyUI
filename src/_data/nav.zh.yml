@@ -343,8 +343,8 @@ sections:
       title: LLM / MLLM 概述
     - id: joycaption
       title: JoyCaption
-    - id: florence2
-      title: Florence-2
+    - id: wevisone-vl
+      title: WeVisOne-VL
     - id: external-llm-server
       title: 外部 LLM 服务器集成
   - id: other-workflows
@@ -388,6 +388,8 @@ sections:
         title: Qwen-Image-Edit
       - id: qwen-image-layered
         title: Qwen-Image-Layered
+    - id: florence2
+      title: Florence-2
 - key: notes
   label: Notes
   pages:

@@ -186,7 +186,7 @@ test.describe("Language home", () => {
 
   test("update rows name the section next to the date instead of an internal key", async ({ page }) => {
     const rawKeys = /^(begin-with|data-utilities|ai-capabilities|basic-workflows|notes|faq|none)$/;
-    for (const [url, expected] of [["/ja/", "Notes"], ["/ja/news/", "Notes"], ["/en/news/", "Notes"], ["/zh/news/", "Notes"]]) {
+    for (const [url, expected] of [["/ja/", "基本のworkflow"], ["/ja/news/", "Notes"], ["/en/news/", "Notes"], ["/zh/news/", "Notes"]]) {
       await page.goto(url);
       const sections = await page.locator("a.news-row .news-row__section").allTextContents();
       expect(sections.length, url).toBeGreaterThan(0);

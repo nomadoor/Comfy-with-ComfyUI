@@ -40,3 +40,6 @@ Accepted
 
 ## Files
 - Updated: `src/_data/nav.{ja,en,zh}.yml`, `src/includes/nav-list.njk`, `eleventy/filters.mjs`, `src/styles/04-sidebar.css`, `src/assets/js/link-behavior.js`（ルーターでの移動はサイドバーを差し替えないので、移動先がアーカイブ内なら JS で開く）, `tests/layout.spec.ts`, `ops/ia.md`, `ops/requirements.md`
+
+## 追記 (2026-11-11)
+- Florence-2 を LLM / MLLM からアーカイブの末尾へ移した。後継として WeVisOne-VL（`wevisone-vl`）を LLM / MLLM の JoyCaption の次に置く（JA / EN / ZH）。物体検出・grounding・OCR の役割が重なるため。
