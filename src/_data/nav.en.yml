@@ -343,6 +343,8 @@ sections:
             title: LLM / MLLM Overview
           - id: joycaption
             title: JoyCaption
+          - id: wevisone-vl
+            title: WeVisOne-VL
           - id: external-llm-server
             title: External LLM Server
       - id: other-workflows
