@@ -7103,6 +7103,62 @@
       "bytes": 44388
     }
   },
+  "basic-workflows/wevisone-vl/wevisone_vl_count_box.png": {
+    "key": "images/7cd3e461dde90bd1.webp",
+    "width": 3276,
+    "height": 1244,
+    "type": "image/webp",
+    "bytes": 116084,
+    "source": "9d72a703a55af2b8"
+  },
+  "basic-workflows/wevisone-vl/wevisone_vl_freeform.png": {
+    "key": "images/30d34e2909985bae.webp",
+    "width": 2674,
+    "height": 1244,
+    "type": "image/webp",
+    "bytes": 98114,
+    "source": "cee93f3d052e33e4"
+  },
+  "basic-workflows/wevisone-vl/wevisone_vl_input.png": {
+    "key": "images/45977b942004ac52.webp",
+    "width": 1776,
+    "height": 1184,
+    "type": "image/webp",
+    "bytes": 242680,
+    "source": "3fa9ede9a1b3acbc"
+  },
+  "basic-workflows/wevisone-vl/wevisone_vl_ocr_grounding.png": {
+    "key": "images/62c6815f5f21b06c.webp",
+    "width": 2827,
+    "height": 1244,
+    "type": "image/webp",
+    "bytes": 124040,
+    "source": "3a585fbe9af452c7"
+  },
+  "basic-workflows/wevisone-vl/wevisone_vl_ocr.png": {
+    "key": "images/2c27d20dce4110be.webp",
+    "width": 2676,
+    "height": 1244,
+    "type": "image/webp",
+    "bytes": 96676,
+    "source": "664d0704e46c7fa3"
+  },
+  "basic-workflows/wevisone-vl/wevisone_vl_segmentation.png": {
+    "key": "images/dab6a285c9ad2938.webp",
+    "width": 3041,
+    "height": 1839,
+    "type": "image/webp",
+    "bytes": 147470,
+    "source": "7fe4efcfe36d3958"
+  },
+  "basic-workflows/wevisone-vl/wevisone_vl_visual_prompt.png": {
+    "key": "images/ad90b54e4dcb6d7c.webp",
+    "width": 3459,
+    "height": 1509,
+    "type": "image/webp",
+    "bytes": 164692,
+    "source": "1af7c218b8cee27b"
+  },
   "basic-workflows/z-image-turbo/legacy_gyazo_53c91fd9eeb8f94357b20839e5d8c967.png": {
     "key": "images/71741123383d1061.webp",
     "width": 1538,

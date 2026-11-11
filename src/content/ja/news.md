@@ -5,7 +5,7 @@ slug: news
 navId: news
 title: "更新情報"
 created: 2026-01-15
-updated: 2026-11-02
+updated: 2026-11-11
 summary: "このサイトの更新情報"
 seoTitle: "更新情報：ComfyUIの新しい記事とworkflow"
 seoDescription: "「Comfyに使うComfyUI」の更新履歴。新しく追加したモデルの解説やworkflow、既存記事の更新を日付順にまとめています。"
@@ -14,6 +14,11 @@ tags:
   - news
 ---
 <div class="news-list">
+  <a class="news-row" href="/ja/basic-workflows/wevisone-vl/">
+    <span class="news-row__date">2026.11.11</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">WeVisOne-VL のページを追加しました</span>
+  </a>
   <a class="news-row" href="/ja/basic-workflows/pika-h3-flex/">
     <span class="news-row__date">2026.11.02</span>
     <span class="news-row__tag">basic-workflows</span>

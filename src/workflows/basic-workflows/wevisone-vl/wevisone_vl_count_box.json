@@ -1,0 +1,427 @@
+{
+  "id": "9a462c96-a219-41b9-bffa-f38d3b9c5066",
+  "revision": 0,
+  "last_node_id": 30,
+  "last_link_id": 38,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "WeVisOneDetect",
+      "pos": [
+        583.2080406943984,
+        246.37506759640755
+      ],
+      "size": [
+        343.0180710688839,
+        242.00001690869414
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 1
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 2
+        },
+        {
+          "name": "bboxes",
+          "shape": 7,
+          "type": "BOUNDING_BOX",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "masks",
+          "type": "MASK",
+          "links": []
+        },
+        {
+          "name": "bboxes",
+          "type": "BOUNDING_BOX",
+          "links": []
+        },
+        {
+          "name": "points",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            35,
+            36
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "WeVisOneDetect"
+      },
+      "widgets_values": [
+        "count_box",
+        "mushroom",
+        false,
+        4096
+      ],
+      "widgets_values_named": {
+        "task": "count_box",
+        "query": "mushroom",
+        "individual_masks": false,
+        "max_length": 4096
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 2,
+      "type": "CLIPLoader",
+      "pos": [
+        226.46779637116998,
+        246.37506759640755
+      ],
+      "size": [
+        300.41347169345505,
+        114.0000155939492
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "showAdvanced": false,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "models": [
+          {
+            "name": "wevisone_vl_4b_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/WeVisOne-VL/resolve/main/text_encoders/wevisone_vl_4b_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
+      },
+      "widgets_values": [
+        "wevisone_vl_4b_int8_convrot.safetensors",
+        "stable_diffusion",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "wevisone_vl_4b_int8_convrot.safetensors",
+        "type": "stable_diffusion",
+        "device": "default"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 3,
+      "type": "LoadImage",
+      "pos": [
+        94.56272608671196,
+        435.18309544835483
+      ],
+      "size": [
+        432.31854197791307,
+        508.73594319299
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "wevisone_vl_input.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "wevisone-vl_input.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 25,
+      "type": "MarkdownNote",
+      "pos": [
+        -371.9444218661919,
+        246.37506759640755
+      ],
+      "size": [
+        384.3030354917121,
+        341.7154435512236
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n\n- text_encoders\n  - [wevisone_vl_4b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/WeVisOne-VL/blob/main/text_encoders/wevisone_vl_4b_int8_convrot.safetensors) (5.29 GB)\n  - [wevisone_vl_2b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/WeVisOne-VL/blob/main/text_encoders/wevisone_vl_2b_int8_convrot.safetensors) (2.89 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    └── 📂text_encoders/\n        ├── wevisone_vl_2b_int8_convrot.safetensors\n        └── wevisone_vl_4b_int8_convrot.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/wevisone-vl/)"
+      ],
+      "widgets_values_named": {
+        "text": "## models\n\n- text_encoders\n  - [wevisone_vl_4b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/WeVisOne-VL/blob/main/text_encoders/wevisone_vl_4b_int8_convrot.safetensors) (5.29 GB)\n  - [wevisone_vl_2b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/WeVisOne-VL/blob/main/text_encoders/wevisone_vl_2b_int8_convrot.safetensors) (2.89 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    └── 📂text_encoders/\n        ├── wevisone_vl_2b_int8_convrot.safetensors\n        └── wevisone_vl_4b_int8_convrot.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/wevisone-vl/)"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 26,
+      "type": "RegexExtract",
+      "pos": [
+        979.454365334903,
+        283.759943474809
+      ],
+      "size": [
+        225,
+        262
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "string",
+          "type": "STRING",
+          "widget": {
+            "name": "string"
+          },
+          "link": 35
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            33
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RegexExtract"
+      },
+      "widgets_values": [
+        "",
+        "Total number:\\s*(\\d+)",
+        "First Group",
+        true,
+        false,
+        false,
+        1
+      ],
+      "widgets_values_named": {
+        "string": "",
+        "regex_pattern": "Total number:\\s*(\\d+)",
+        "mode": "First Group",
+        "case_insensitive": true,
+        "multiline": false,
+        "dotall": false,
+        "group_index": 1
+      }
+    },
+    {
+      "id": 27,
+      "type": "ComfyNumberConvert",
+      "pos": [
+        1237.825025731131,
+        284.8118419118855
+      ],
+      "size": [
+        225,
+        53.99998593606051
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "INT,FLOAT,STRING,BOOLEAN",
+          "link": 33
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": []
+        },
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            34
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ComfyNumberConvert"
+      }
+    },
+    {
+      "id": 28,
+      "type": "PreviewAny",
+      "pos": [
+        1502.3022579446592,
+        305.15473208615344
+      ],
+      "size": [
+        225,
+        137.99997187212102
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 34
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 29,
+      "type": "PreviewAny",
+      "pos": [
+        979.454365334903,
+        625.1600234097422
+      ],
+      "size": [
+        353.1273363305291,
+        187.85465051456893
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 36
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      0,
+      1,
+      0,
+      "CLIP"
+    ],
+    [
+      2,
+      3,
+      0,
+      1,
+      1,
+      "IMAGE"
+    ],
+    [
+      33,
+      26,
+      0,
+      27,
+      0,
+      "STRING"
+    ],
+    [
+      34,
+      27,
+      1,
+      28,
+      0,
+      "INT"
+    ],
+    [
+      35,
+      1,
+      3,
+      26,
+      0,
+      "STRING"
+    ],
+    [
+      36,
+      1,
+      3,
+      29,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8390545288824102,
+      "offset": [
+        359.1233976255002,
+        171.36217558306987
+      ]
+    },
+    "frontendVersion": "1.58.5",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

@@ -1,0 +1,621 @@
+{
+  "id": "9a462c96-a219-41b9-bffa-f38d3b9c5066",
+  "revision": 0,
+  "last_node_id": 36,
+  "last_link_id": 50,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "WeVisOneDetect",
+      "pos": [
+        583.2080406943984,
+        246.37506759640755
+      ],
+      "size": [
+        343.0180710688839,
+        242.00001690869414
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 1
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 49
+        },
+        {
+          "name": "bboxes",
+          "shape": 7,
+          "type": "BOUNDING_BOX",
+          "link": 45
+        }
+      ],
+      "outputs": [
+        {
+          "name": "masks",
+          "type": "MASK",
+          "links": []
+        },
+        {
+          "name": "bboxes",
+          "type": "BOUNDING_BOX",
+          "links": [
+            44
+          ]
+        },
+        {
+          "name": "points",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "WeVisOneDetect"
+      },
+      "widgets_values": [
+        "visual_prompt",
+        "",
+        false,
+        4096
+      ],
+      "widgets_values_named": {
+        "task": "visual_prompt",
+        "query": "",
+        "individual_masks": false,
+        "max_length": 4096
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 2,
+      "type": "CLIPLoader",
+      "pos": [
+        226.46779637116998,
+        246.37506759640755
+      ],
+      "size": [
+        300.41347169345505,
+        114.0000155939492
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "showAdvanced": false,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "models": [
+          {
+            "name": "wevisone_vl_4b_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/WeVisOne-VL/resolve/main/text_encoders/wevisone_vl_4b_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
+      },
+      "widgets_values": [
+        "wevisone_vl_4b_int8_convrot.safetensors",
+        "stable_diffusion",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "wevisone_vl_4b_int8_convrot.safetensors",
+        "type": "stable_diffusion",
+        "device": "default"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 3,
+      "type": "LoadImage",
+      "pos": [
+        -345.9970393299562,
+        445.67170864842257
+      ],
+      "size": [
+        410.6809222555687,
+        489.9869311324717
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            41,
+            48
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "wevisone_vl_input.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "wevisone-vl_input.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 25,
+      "type": "MarkdownNote",
+      "pos": [
+        -787.6861740317252,
+        246.37506759640755
+      ],
+      "size": [
+        384.3030354917121,
+        341.7154435512236
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n\n- text_encoders\n  - [wevisone_vl_4b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/WeVisOne-VL/blob/main/text_encoders/wevisone_vl_4b_int8_convrot.safetensors) (5.29 GB)\n  - [wevisone_vl_2b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/WeVisOne-VL/blob/main/text_encoders/wevisone_vl_2b_int8_convrot.safetensors) (2.89 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    └── 📂text_encoders/\n        ├── wevisone_vl_2b_int8_convrot.safetensors\n        └── wevisone_vl_4b_int8_convrot.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/wevisone-vl/)"
+      ],
+      "widgets_values_named": {
+        "text": "## models\n\n- text_encoders\n  - [wevisone_vl_4b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/WeVisOne-VL/blob/main/text_encoders/wevisone_vl_4b_int8_convrot.safetensors) (5.29 GB)\n  - [wevisone_vl_2b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/WeVisOne-VL/blob/main/text_encoders/wevisone_vl_2b_int8_convrot.safetensors) (2.89 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    └── 📂text_encoders/\n        ├── wevisone_vl_2b_int8_convrot.safetensors\n        └── wevisone_vl_4b_int8_convrot.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/wevisone-vl/)"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 33,
+      "type": "CreateBoundingBoxes",
+      "pos": [
+        117.53497426436815,
+        559.3204607715786
+      ],
+      "size": [
+        409.3462938002569,
+        562.8905814124236
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "background",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 41
+        },
+        {
+          "name": "bboxes",
+          "shape": 7,
+          "type": "BOUNDING_BOX,ARRAY,STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "preview",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "name": "bboxes",
+          "type": "BOUNDING_BOX",
+          "links": [
+            45
+          ]
+        },
+        {
+          "name": "elements",
+          "type": "ARRAY",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CreateBoundingBoxes"
+      },
+      "widgets_values": [
+        1776,
+        1184,
+        [
+          {
+            "x": 640,
+            "y": 608,
+            "width": 256,
+            "height": 288,
+            "metadata": {
+              "type": "obj",
+              "text": "",
+              "desc": "",
+              "palette": []
+            }
+          }
+        ],
+        [
+          {
+            "x": 516.8159999999999,
+            "y": 454.656,
+            "width": 321.456,
+            "height": 105.37599999999992
+          }
+        ]
+      ],
+      "widgets_values_named": {
+        "width": 1776,
+        "height": 1184,
+        "editor_state": [
+          {
+            "x": 640,
+            "y": 608,
+            "width": 256,
+            "height": 288,
+            "metadata": {
+              "type": "obj",
+              "text": "",
+              "desc": "",
+              "palette": []
+            }
+          }
+        ],
+        "last_incoming": [
+          {
+            "x": 516.8159999999999,
+            "y": 454.656,
+            "width": 321.456,
+            "height": 105.37599999999992
+          }
+        ]
+      }
+    },
+    {
+      "id": 34,
+      "type": "CreateBoundingBoxes",
+      "pos": [
+        982.1370836835824,
+        245.9856273729487
+      ],
+      "size": [
+        452.61111165183814,
+        423.7343262541847
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "background",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 50
+        },
+        {
+          "name": "bboxes",
+          "shape": 7,
+          "type": "BOUNDING_BOX,ARRAY,STRING",
+          "link": 44
+        }
+      ],
+      "outputs": [
+        {
+          "name": "preview",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "name": "bboxes",
+          "type": "BOUNDING_BOX",
+          "links": []
+        },
+        {
+          "name": "elements",
+          "type": "ARRAY",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CreateBoundingBoxes"
+      },
+      "widgets_values": [
+        1776,
+        1184,
+        [
+          {
+            "x": 639,
+            "y": 607,
+            "width": 256,
+            "height": 287,
+            "metadata": {
+              "type": "obj",
+              "text": "",
+              "desc": "",
+              "palette": []
+            }
+          },
+          {
+            "x": 874,
+            "y": 614,
+            "width": 245,
+            "height": 301,
+            "metadata": {
+              "type": "obj",
+              "text": "",
+              "desc": "",
+              "palette": []
+            }
+          },
+          {
+            "x": 1064,
+            "y": 581,
+            "width": 218,
+            "height": 233,
+            "metadata": {
+              "type": "obj",
+              "text": "",
+              "desc": "",
+              "palette": []
+            }
+          },
+          {
+            "x": 1177,
+            "y": 613,
+            "width": 250,
+            "height": 329,
+            "metadata": {
+              "type": "obj",
+              "text": "",
+              "desc": "",
+              "palette": []
+            }
+          }
+        ],
+        [
+          {
+            "x": 639.36,
+            "y": 607.392,
+            "width": 255.74400000000003,
+            "height": 286.5279999999999
+          },
+          {
+            "x": 873.792,
+            "y": 614.496,
+            "width": 245.08800000000008,
+            "height": 300.736
+          },
+          {
+            "x": 1063.824,
+            "y": 581.3439999999999,
+            "width": 218.44799999999987,
+            "height": 233.24800000000005
+          },
+          {
+            "x": 1177.488,
+            "y": 613.312,
+            "width": 250.41599999999994,
+            "height": 329.15200000000004
+          }
+        ]
+      ],
+      "widgets_values_named": {
+        "width": 1776,
+        "height": 1184,
+        "editor_state": [
+          {
+            "x": 639,
+            "y": 607,
+            "width": 256,
+            "height": 287,
+            "metadata": {
+              "type": "obj",
+              "text": "",
+              "desc": "",
+              "palette": []
+            }
+          },
+          {
+            "x": 874,
+            "y": 614,
+            "width": 245,
+            "height": 301,
+            "metadata": {
+              "type": "obj",
+              "text": "",
+              "desc": "",
+              "palette": []
+            }
+          },
+          {
+            "x": 1064,
+            "y": 581,
+            "width": 218,
+            "height": 233,
+            "metadata": {
+              "type": "obj",
+              "text": "",
+              "desc": "",
+              "palette": []
+            }
+          },
+          {
+            "x": 1177,
+            "y": 613,
+            "width": 250,
+            "height": 329,
+            "metadata": {
+              "type": "obj",
+              "text": "",
+              "desc": "",
+              "palette": []
+            }
+          }
+        ],
+        "last_incoming": [
+          {
+            "x": 639.36,
+            "y": 607.392,
+            "width": 255.74400000000003,
+            "height": 286.5279999999999
+          },
+          {
+            "x": 873.792,
+            "y": 614.496,
+            "width": 245.08800000000008,
+            "height": 300.736
+          },
+          {
+            "x": 1063.824,
+            "y": 581.3439999999999,
+            "width": 218.44799999999987,
+            "height": 233.24800000000005
+          },
+          {
+            "x": 1177.488,
+            "y": 613.312,
+            "width": 250.41599999999994,
+            "height": 329.15200000000004
+          }
+        ]
+      }
+    },
+    {
+      "id": 36,
+      "type": "Reroute",
+      "pos": [
+        446.5879685249165,
+        445.67170864842257
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 48
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "links": [
+            49,
+            50
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      0,
+      1,
+      0,
+      "CLIP"
+    ],
+    [
+      41,
+      3,
+      0,
+      33,
+      0,
+      "IMAGE"
+    ],
+    [
+      44,
+      1,
+      1,
+      34,
+      1,
+      "BOUNDING_BOX"
+    ],
+    [
+      45,
+      33,
+      1,
+      1,
+      2,
+      "BOUNDING_BOX"
+    ],
+    [
+      48,
+      3,
+      0,
+      36,
+      0,
+      "IMAGE"
+    ],
+    [
+      49,
+      36,
+      0,
+      1,
+      1,
+      "IMAGE"
+    ],
+    [
+      50,
+      36,
+      0,
+      34,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8390545288824123,
+      "offset": [
+        834.8639788372836,
+        215.89075894616093
+      ]
+    },
+    "frontendVersion": "1.58.5",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
