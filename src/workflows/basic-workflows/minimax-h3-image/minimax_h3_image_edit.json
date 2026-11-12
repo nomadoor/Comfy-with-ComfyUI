@@ -1,7 +1,7 @@
 {
   "id": "e7fd3de9-5ce6-4355-9ab8-a4c83f822526",
   "revision": 0,
-  "last_node_id": 133,
+  "last_node_id": 134,
   "last_link_id": 317,
   "nodes": [
     {
@@ -302,32 +302,6 @@
       "bgcolor": "#533"
     },
     {
-      "id": 98,
-      "type": "MarkdownNote",
-      "pos": [
-        -443.73320072122476,
-        -246.83284184121737
-      ],
-      "size": [
-        424.0217455454948,
-        397.9493925797697
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "properties": {},
-      "widgets_values": [
-        "## models\n\n- diffusion_models\n  - [minimax_h3_image_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/blob/main/diffusion_models/minimax_h3_image_pruned_int8_convrot.safetensors) (21 GB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/blob/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) (15.7 GB)\n- vae\n  - [minimax_h3_image_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/blob/main/vae/minimax_h3_image_vae_fp16.safetensors) (1.17 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_image_pruned_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors\n    └── 📂vae/\n        └── minimax_h3_image_vae_fp16.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/minimax-h3-image/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/minimax-h3-image/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/minimax-h3-image/)"
-      ],
-      "widgets_values_named": {
-        "text": "## models\n\n- diffusion_models\n  - [minimax_h3_image_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/blob/main/diffusion_models/minimax_h3_image_pruned_int8_convrot.safetensors) (21 GB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/blob/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) (15.7 GB)\n- vae\n  - [minimax_h3_image_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/blob/main/vae/minimax_h3_image_vae_fp16.safetensors) (1.17 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_image_pruned_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors\n    └── 📂vae/\n        └── minimax_h3_image_vae_fp16.safetensors\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/minimax-h3-image/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/minimax-h3-image/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/minimax-h3-image/)"
-      },
-      "color": "#323",
-      "bgcolor": "#535"
-    },
-    {
       "id": 102,
       "type": "EmptyLatentImage",
       "pos": [
@@ -509,7 +483,7 @@
         371.9873462090105
       ],
       "flags": {},
-      "order": 4,
+      "order": 3,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -715,6 +689,32 @@
         "cnr_id": "comfy-core",
         "ver": "0.3.33"
       }
+    },
+    {
+      "id": 134,
+      "type": "MarkdownNote",
+      "pos": [
+        -429.8103591496436,
+        -297.4467037793811
+      ],
+      "size": [
+        424.01559547436915,
+        448.56325451793344
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n\n- diffusion_models\n  - [minimax_h3_image_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/blob/main/diffusion_models/minimax_h3_image_pruned_int8_convrot.safetensors) (21 GB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/blob/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) (15.7 GB)\n- vae\n  - [minimax_h3_image_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/blob/main/vae/minimax_h3_image_vae_fp16.safetensors) (1.17 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_image_pruned_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors\n    └── 📂vae/\n        └── minimax_h3_image_vae_fp16.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/minimax-h3-image/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/minimax-h3-image/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/minimax-h3-image/)"
+      ],
+      "widgets_values_named": {
+        "text": "## models\n\n- diffusion_models\n  - [minimax_h3_image_pruned_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/blob/main/diffusion_models/minimax_h3_image_pruned_int8_convrot.safetensors) (21 GB)\n- text_encoders\n  - [qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/blob/main/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors) (15.7 GB)\n- vae\n  - [minimax_h3_image_vae_fp16.safetensors](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/blob/main/vae/minimax_h3_image_vae_fp16.safetensors) (1.17 GB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── minimax_h3_image_pruned_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors\n    └── 📂vae/\n        └── minimax_h3_image_vae_fp16.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/minimax-h3-image/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/minimax-h3-image/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/minimax-h3-image/)"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
     }
   ],
   "links": [
@@ -859,10 +859,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.6934334949441373,
+      "scale": 0.8390545288824063,
       "offset": [
-        768.2865728210958,
-        640.5493384905357
+        485.82578887696195,
+        477.1511381582962
       ]
     },
     "frontendVersion": "1.58.5",
