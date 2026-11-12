@@ -3980,12 +3980,12 @@
     "source": "94fb83906c1646ae"
   },
   "basic-workflows/minimax-h3-image/minimax_h3_image_edit.png": {
-    "key": "images/5934d18ed2e5e601.webp",
+    "key": "images/d6c6926e019c40bf.webp",
     "width": 2875,
-    "height": 1322,
+    "height": 1373,
     "type": "image/webp",
-    "bytes": 242954,
-    "source": "7abf5f9bf212c545"
+    "bytes": 252182,
+    "source": "cf313b11fb5777b6"
   },
   "basic-workflows/minimax-h3-image/minimax_h3_image_hero.png": {
     "key": "images/307ee7988432efdd.webp",
@@ -4028,12 +4028,12 @@
     "source": "5fdd72410d8e346e"
   },
   "basic-workflows/minimax-h3-image/minimax_h3_image_ref2image.png": {
-    "key": "images/7426669a6b91ff3c.webp",
+    "key": "images/71db7eb5809e835b.webp",
     "width": 3049,
-    "height": 1437,
+    "height": 1487,
     "type": "image/webp",
-    "bytes": 176434,
-    "source": "908ed5038af3b8cd"
+    "bytes": 186084,
+    "source": "5cd73a18a40a9880"
   },
   "basic-workflows/minimax-h3-image/minimax_h3_image_text2image_output.png": {
     "key": "images/00b66539ff0646c0.webp",
@@ -4044,12 +4044,12 @@
     "source": "d36c02f1a7dcfbcb"
   },
   "basic-workflows/minimax-h3-image/minimax_h3_image_text2image.png": {
-    "key": "images/2486d6f9c79b53f9.webp",
-    "width": 2660,
+    "key": "images/377be8e02c83aa6d.webp",
+    "width": 2643,
     "height": 1142,
     "type": "image/webp",
-    "bytes": 164220,
-    "source": "89656980031cb521"
+    "bytes": 172084,
+    "source": "fab6e7bc469b3aa0"
   },
   "basic-workflows/minimax-h3/minimax_h3_audio_driven_i2va_input.png": {
     "key": "images/1a7689b5dbed9bc4.webp",
