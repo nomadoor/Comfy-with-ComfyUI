@@ -296,6 +296,8 @@ sections:
             title: MOSS-Image
           - id: fibo-2
             title: Fibo 2.0
+          - id: minimax-h3-image
+            title: MiniMax H3 Image
       - id: video-workflows
         title: 動画生成・処理
         noLink: true
