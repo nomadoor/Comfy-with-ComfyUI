@@ -1,0 +1,925 @@
+{
+  "id": "d8034549-7e0a-40f1-8c2e-de3ffc6f1cae",
+  "revision": 0,
+  "last_node_id": 71,
+  "last_link_id": 121,
+  "nodes": [
+    {
+      "id": 57,
+      "type": "TripoSplatConditioning",
+      "pos": [
+        621.0086842132514,
+        207.6144111790794
+      ],
+      "size": [
+        229.12391495575358,
+        66
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip_vision",
+          "type": "CLIP_VISION",
+          "link": 106
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 107
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 108
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            103
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            104
+          ]
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            105
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TripoSplatConditioning",
+        "cnr_id": "comfy-core"
+      }
+    },
+    {
+      "id": 61,
+      "type": "LoadBackgroundRemovalModel",
+      "pos": [
+        -361.8211589058698,
+        484.6145115853473
+      ],
+      "size": [
+        325.9727446183857,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "bg_model",
+          "type": "BACKGROUND_REMOVAL",
+          "links": [
+            109
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadBackgroundRemovalModel",
+        "models": [
+          {
+            "name": "birefnet.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/BiRefNet/resolve/main/background_removal/birefnet.safetensors",
+            "directory": "background_removal"
+          }
+        ],
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "birefnet.safetensors"
+      ],
+      "widgets_values_named": {
+        "bg_removal_name": "birefnet.safetensors"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 64,
+      "type": "VAEDecodeTripoSplat",
+      "pos": [
+        1207.4159292247066,
+        188.1918182373047
+      ],
+      "size": [
+        270,
+        126
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 111
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 112
+        }
+      ],
+      "outputs": [
+        {
+          "name": "splat",
+          "type": "SPLAT",
+          "links": [
+            113
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecodeTripoSplat",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        262144,
+        1234,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "num_gaussians": 262144,
+        "seed": 1234,
+        "control_after_generate": "fixed"
+      }
+    },
+    {
+      "id": 59,
+      "type": "VAELoader",
+      "pos": [
+        270.3433600998972,
+        335.15548021051075
+      ],
+      "size": [
+        290.8892578125,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            107
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "flux2-vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Idol/resolve/main/vae/flux2-vae.safetensors",
+            "directory": "vae"
+          }
+        ]
+      },
+      "widgets_values": [
+        "flux2-vae.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "flux2-vae.safetensors"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 37,
+      "type": "UNETLoader",
+      "pos": [
+        539.5832007120212,
+        32.17834713555761
+      ],
+      "size": [
+        305.3782043457031,
+        82
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            102
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "idol_fp16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Idol/resolve/main/diffusion_models/idol_fp16.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
+      },
+      "widgets_values": [
+        "idol_fp16.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "idol_fp16.safetensors",
+        "weight_dtype": "default"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 58,
+      "type": "CLIPVisionLoader",
+      "pos": [
+        270.3433600998972,
+        208.5120236472667
+      ],
+      "size": [
+        290.8892578125,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP_VISION",
+          "type": "CLIP_VISION",
+          "links": [
+            106
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPVisionLoader",
+        "models": [
+          {
+            "name": "dino_v3_vit_h_bf16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Idol/resolve/main/clip_vision/dino_v3_vit_h_bf16.safetensors",
+            "directory": "clip_vision"
+          }
+        ],
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "dino_v3_vit_h_bf16.safetensors"
+      ],
+      "widgets_values_named": {
+        "clip_name": "dino_v3_vit_h_bf16.safetensors"
+      }
+    },
+    {
+      "id": 67,
+      "type": "PreviewImage",
+      "pos": [
+        621.0086842132514,
+        565.1713309167316
+      ],
+      "size": [
+        272.08997045898434,
+        303.84002215576163
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 117
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 39,
+      "type": "VAELoader",
+      "pos": [
+        898.19034784729,
+        56.17834713555764
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            112
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "models": [
+          {
+            "name": "idol_decoder_fp16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Idol/resolve/main/vae/idol_decoder_fp16.safetensors",
+            "directory": "vae"
+          }
+        ]
+      },
+      "widgets_values": [
+        "idol_decoder_fp16.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "idol_decoder_fp16.safetensors"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 65,
+      "type": "SplatToFile3D",
+      "pos": [
+        1516.0770366720694,
+        188.1918182373047
+      ],
+      "size": [
+        238.84409179687498,
+        58
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "splat",
+          "type": "SPLAT",
+          "link": 113
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model_3d",
+          "type": "FILE_3D_SPLAT_ANY",
+          "links": [
+            121
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SplatToFile3D",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "ply"
+      ],
+      "widgets_values_named": {
+        "format": "ply"
+      }
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        898.7548217773438,
+        188.1918182373047
+      ],
+      "size": [
+        270,
+        262
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 102
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 103
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 104
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 105
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            111
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33"
+      },
+      "widgets_values": [
+        1234,
+        "fixed",
+        20,
+        3,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 1234,
+        "control_after_generate": "fixed",
+        "steps": 20,
+        "cfg": 3,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 60,
+      "type": "TripoSplatPreprocessImage",
+      "pos": [
+        270.3433600998972,
+        461.7989367737548
+      ],
+      "size": [
+        290.8892578125,
+        102
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 115
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 120
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            108,
+            117
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TripoSplatPreprocessImage",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        1,
+        1024
+      ],
+      "widgets_values_named": {
+        "erode_radius": 1,
+        "size": 1024
+      }
+    },
+    {
+      "id": 62,
+      "type": "RemoveBackground",
+      "pos": [
+        3.7580105939574096,
+        484.6145115853473
+      ],
+      "size": [
+        228.00524086095973,
+        54.00001210614667
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "bg_removal_model",
+          "type": "BACKGROUND_REMOVAL",
+          "link": 109
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 110
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [
+            120
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RemoveBackground",
+        "cnr_id": "comfy-core"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 63,
+      "type": "LoadImage",
+      "pos": [
+        -361.3540348590587,
+        604.6117374579684
+      ],
+      "size": [
+        325.5056205715746,
+        459.13681582045564
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            110,
+            115
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "idol_input.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "idol_input.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 55,
+      "type": "MarkdownNote",
+      "pos": [
+        -227.8060026164382,
+        -196.90701978948925
+      ],
+      "size": [
+        439.6250305175781,
+        590.0625
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "## models\n\n* background_removal\n\n  * [birefnet.safetensors](https://huggingface.co/Comfy-Org/BiRefNet/blob/main/background_removal/birefnet.safetensors) (444 MB)\n* diffusion_models\n\n  * [idol_fp16.safetensors](https://huggingface.co/Comfy-Org/Idol/blob/main/diffusion_models/idol_fp16.safetensors) (741 MB)\n* clip_vision\n\n  * [dino_v3_vit_h_bf16.safetensors](https://huggingface.co/Comfy-Org/Idol/blob/main/clip_vision/dino_v3_vit_h_bf16.safetensors) (1.68 GB)\n* vae\n\n  * [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/Idol/blob/main/vae/flux2-vae.safetensors) (336 MB)\n  * [idol_decoder_fp16.safetensors](https://huggingface.co/Comfy-Org/Idol/blob/main/vae/idol_decoder_fp16.safetensors) (576 MB)\n\n```\n📂ComfyUI/\n└── 📂models/\n    ├── 📂background_removal/\n    │   └── birefnet.safetensors\n    ├── 📂clip_vision/\n    │   └── dino_v3_vit_h_bf16.safetensors\n    ├── 📂diffusion_models/\n    │   └── idol_fp16.safetensors\n    └── 📂vae/\n         ├── flux2-vae.safetensors\n         └── idol_decoder_fp16.safetensors\n```\n\n## guide\n\n* [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/idol/)\n* [English](https://comfyui.nomadoor.net/en/basic-workflows/idol/)\n* [中文](https://comfyui.nomadoor.net/zh/basic-workflows/idol/)"
+      ],
+      "widgets_values_named": {
+        "text": "## models\n\n* background_removal\n\n  * [birefnet.safetensors](https://huggingface.co/Comfy-Org/BiRefNet/blob/main/background_removal/birefnet.safetensors) (444 MB)\n* diffusion_models\n\n  * [idol_fp16.safetensors](https://huggingface.co/Comfy-Org/Idol/blob/main/diffusion_models/idol_fp16.safetensors) (741 MB)\n* clip_vision\n\n  * [dino_v3_vit_h_bf16.safetensors](https://huggingface.co/Comfy-Org/Idol/blob/main/clip_vision/dino_v3_vit_h_bf16.safetensors) (1.68 GB)\n* vae\n\n  * [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/Idol/blob/main/vae/flux2-vae.safetensors) (336 MB)\n  * [idol_decoder_fp16.safetensors](https://huggingface.co/Comfy-Org/Idol/blob/main/vae/idol_decoder_fp16.safetensors) (576 MB)\n\n```\n📂ComfyUI/\n└── 📂models/\n    ├── 📂background_removal/\n    │   └── birefnet.safetensors\n    ├── 📂clip_vision/\n    │   └── dino_v3_vit_h_bf16.safetensors\n    ├── 📂diffusion_models/\n    │   └── idol_fp16.safetensors\n    └── 📂vae/\n         ├── flux2-vae.safetensors\n         └── idol_decoder_fp16.safetensors\n```\n\n## guide\n\n* [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/idol/)\n* [English](https://comfyui.nomadoor.net/en/basic-workflows/idol/)\n* [中文](https://comfyui.nomadoor.net/zh/basic-workflows/idol/)"
+      },
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 71,
+      "type": "SaveGLB",
+      "pos": [
+        1793.5822359163074,
+        188.1918182373047
+      ],
+      "size": [
+        555.5624400000002,
+        706.583450170227
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mesh",
+          "type": "MESH,FILE_3D_GLB,FILE_3D_GLTF,FILE_3D_OBJ,FILE_3D_FBX,FILE_3D_STL,FILE_3D_USDZ,FILE_3D_PLY,FILE_3D_SPLAT,FILE_3D_SPZ,FILE_3D_KSPLAT,FILE_3D_SPLAT_ANY,FILE_3D_POINT_CLOUD_ANY,FILE_3D",
+          "link": 121
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Last Time Model File": "3d/ComfyUI_00011_.ply",
+        "Last Time Model Folder": "output",
+        "Scene Config": {
+          "showGrid": true,
+          "backgroundColor": "#282828",
+          "backgroundImage": "",
+          "backgroundRenderMode": "tiled",
+          "models": [
+            {
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "quaternion": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+              },
+              "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            }
+          ]
+        },
+        "Camera Config": {
+          "cameraType": "perspective",
+          "fov": 31,
+          "state": {
+            "position": {
+              "x": 2.008509069173792,
+              "y": 0.9838742869679705,
+              "z": 1.9993457641094872
+            },
+            "target": {
+              "x": 0.01015544692526446,
+              "y": -0.01530252415629321,
+              "z": 0.0009921418609592225
+            },
+            "zoom": 1,
+            "cameraType": "perspective",
+            "quaternion": {
+              "x": -0.1562298570518912,
+              "y": 0.3771722397422857,
+              "z": 0.06471252563850326,
+              "w": 0.9105743365364628
+            },
+            "fov": 31,
+            "aspect": 0.9622980251346499,
+            "near": 0.01,
+            "far": 10000,
+            "frustum": {
+              "left": -5,
+              "right": 5,
+              "top": 5,
+              "bottom": -5
+            }
+          }
+        },
+        "Light Config": {
+          "intensity": 2.4000000000000004,
+          "hdri": {
+            "enabled": false,
+            "hdriPath": "",
+            "showAsBackground": false,
+            "intensity": 1
+          }
+        },
+        "Model Config": {
+          "upDirection": "original",
+          "materialMode": "original",
+          "showSkeleton": false,
+          "gizmo": {
+            "enabled": false,
+            "mode": "translate",
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          }
+        },
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [
+        "3d/ComfyUI",
+        ""
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "3d/ComfyUI",
+        "image": ""
+      }
+    }
+  ],
+  "links": [
+    [
+      102,
+      37,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      103,
+      57,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      104,
+      57,
+      1,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      105,
+      57,
+      2,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      106,
+      58,
+      0,
+      57,
+      0,
+      "CLIP_VISION"
+    ],
+    [
+      107,
+      59,
+      0,
+      57,
+      1,
+      "VAE"
+    ],
+    [
+      108,
+      60,
+      0,
+      57,
+      2,
+      "IMAGE"
+    ],
+    [
+      109,
+      61,
+      0,
+      62,
+      0,
+      "BACKGROUND_REMOVAL"
+    ],
+    [
+      110,
+      63,
+      0,
+      62,
+      1,
+      "IMAGE"
+    ],
+    [
+      111,
+      3,
+      0,
+      64,
+      0,
+      "LATENT"
+    ],
+    [
+      112,
+      39,
+      0,
+      64,
+      1,
+      "VAE"
+    ],
+    [
+      113,
+      64,
+      0,
+      65,
+      0,
+      "SPLAT"
+    ],
+    [
+      115,
+      63,
+      0,
+      60,
+      0,
+      "IMAGE"
+    ],
+    [
+      117,
+      60,
+      0,
+      67,
+      0,
+      "IMAGE"
+    ],
+    [
+      120,
+      62,
+      0,
+      60,
+      1,
+      "MASK"
+    ],
+    [
+      121,
+      65,
+      0,
+      71,
+      0,
+      "FILE_3D_SPLAT_ANY"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.5131581182307067,
+      "offset": [
+        1366.3050961202437,
+        1111.812319577471
+      ]
+    },
+    "frontendVersion": "1.58.5",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

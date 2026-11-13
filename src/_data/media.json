@@ -2243,6 +2243,42 @@
     "bytes": 145618,
     "source": "27ebf643100990cb"
   },
+  "basic-workflows/idol/idol_hero.mp4": {
+    "key": "videos/7ff98352593bf9e6.mp4",
+    "width": 1024,
+    "height": 1024,
+    "type": "video/mp4",
+    "bytes": 1691294,
+    "source": "d46958e8826d9f21",
+    "poster": {
+      "key": "images/b7dc559fcdfc42b1.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 50370
+    }
+  },
+  "basic-workflows/idol/idol_image_to_gaussian_splat.png": {
+    "key": "images/4ef944b1e392d337.webp",
+    "width": 2911,
+    "height": 1491,
+    "type": "image/webp",
+    "bytes": 131896,
+    "source": "c87aaf878b86b85b"
+  },
+  "basic-workflows/idol/idol_turntable.mp4": {
+    "key": "videos/a62f9c554d00d7d6.mp4",
+    "width": 1024,
+    "height": 1024,
+    "type": "video/mp4",
+    "bytes": 329540,
+    "source": "9b09bb989243979d",
+    "poster": {
+      "key": "images/93c5d3f947d3fe66.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 9846
+    }
+  },
   "basic-workflows/joycaption/legacy_gyazo_c14e87a362f349d3e649af28622262f1.png": {
     "key": "images/1cd20d1a9b2ab507.webp",
     "width": 1497,

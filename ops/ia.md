@@ -154,6 +154,8 @@
       * Pika H3 Flex
     * LivePortrait
     * HunyuanVideo-Foley
+  * 3D生成 — 見出しのみ（`2026-11-12-3d-workflows-group.md`）
+    * Idol
   * アップスケール・修正 — 親ページあり
     * ESRGAN
     * GFPGAN
