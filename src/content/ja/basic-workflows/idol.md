@@ -5,7 +5,7 @@ section: basic-workflows
 slug: idol
 navId: idol
 title: "Idol"
-created: 2026-11-12
+created: 2026-11-13
 summary: "画像1枚から3D Gaussian Splatを作る"
 seoTitle: "ComfyUIでIdolを使う：画像1枚から3D Gaussian Splatを生成"
 seoDescription: "画像1枚から3D Gaussian Splat（3DGS）を生成するIdolの、ComfyUIでの使い方。TripoSplatと同じ構造なので、ComfyUI標準のTripoSplatノードで動かせます。必要なモデルとworkflowを解説します。"

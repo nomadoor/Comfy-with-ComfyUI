@@ -5,7 +5,7 @@ section: basic-workflows
 slug: idol
 navId: idol
 title: "Idol"
-created: 2026-11-12
+created: 2026-11-13
 summary: "Turn a single image into a 3D Gaussian Splat"
 seoTitle: "Idol in ComfyUI: 3D Gaussian Splat from a Single Image"
 seoDescription: "Use Idol in ComfyUI to make a 3D Gaussian Splat (3DGS) from one image. It shares TripoSplat's architecture, so it runs on the built-in TripoSplat nodes."
