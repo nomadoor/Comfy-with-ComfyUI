@@ -327,6 +327,12 @@ sections:
                 title: Pika H3 Flex
           - id: liveportrait
             title: LivePortrait
+      - id: 3d-workflows
+        title: 3D生成
+        noLink: true
+        children:
+          - id: idol
+            title: Idol
       - id: upscale-fix
         title: アップスケール・修正
         noLink: true
