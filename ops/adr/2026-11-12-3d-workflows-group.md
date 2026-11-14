@@ -16,4 +16,4 @@ Accepted
 
 ## Files
 - Updated: `src/_data/nav.{ja,en,zh}.yml`, `ops/ia.md`
-- Added: `src/content/{ja,en,zh}/basic-workflows/idol.md`, `src/workflows/basic-workflows/idol/idol_image_to_gaussian_splat.json`
+- Added: `src/content/{ja,en,zh}/basic-workflows/idol.md`, `src/workflows/basic-workflows/idol/idol_image2gaussian_splat.json`

@@ -2265,6 +2265,14 @@
     "bytes": 131896,
     "source": "c87aaf878b86b85b"
   },
+  "basic-workflows/idol/idol_image2gaussian_splat.png": {
+    "key": "images/4ef944b1e392d337.webp",
+    "width": 2911,
+    "height": 1491,
+    "type": "image/webp",
+    "bytes": 131896,
+    "source": "c87aaf878b86b85b"
+  },
   "basic-workflows/idol/idol_turntable.mp4": {
     "key": "videos/071fb0cb731ad758.mp4",
     "width": 1024,
