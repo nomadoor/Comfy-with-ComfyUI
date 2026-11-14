@@ -53,9 +53,9 @@ Idol 与 TripoSplat 的结构相同，所以在 ComfyUI 中使用 TripoSplat 的
 
 ## image to 3DGS
 
-![](/media/basic-workflows/idol/idol_image_to_gaussian_splat.png){media=image}
+![](/media/basic-workflows/idol/idol_image2gaussian_splat.png){media=image}
 
-[](/workflows/basic-workflows/idol/idol_image_to_gaussian_splat.json)
+[](/workflows/basic-workflows/idol/idol_image2gaussian_splat.json)
 
 - `Remove Background`
   - 用 BiRefNet 去除背景。

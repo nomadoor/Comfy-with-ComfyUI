@@ -157,6 +157,7 @@
 - `src/workflows/<セクション>/<記事 slug>/<ファイル名>.json` に置く。
 - ファイル名は小文字 snake_case（`[a-z0-9_]` のみ）。大文字・空白・ハイフン・括弧・ピリオドは `_` にする（例: `Qwen-Image-Edit-2509.json` → `qwen_image_edit_2509.json`、`BiRefNet_Remove_Background_(RMBG).json` → `birefnet_remove_background_rmbg.json`）。
 - 理由: Windows と WSL を行き来してもファイル名が壊れないこと、URL でエンコードが要らないこと、comfy.org の表記に合わせること。画像・動画の原本と同じ規則。
+- 何をする workflow かは `<モデル名>_<入力>2<出力>` で書く（例: `ltx_2_5_image2video.json`、`krea_2_turbo_text2image.json`、3D 生成は `trellis_2_image2model.json`、`pixal3d_multiview2model.json`）。`_to_` でつながない。派生は後ろに足す（例: `ltx_2_5_text2video_multishot.json`）。workflow のスクショも同じ名前にする。
 - `npm run check:workflows` がこの規則を検査する。記事本文やモデル名の正式表記（`Qwen-Image-Edit-2509` など）は今までどおり。
 
 ## 08-3. 出力例
