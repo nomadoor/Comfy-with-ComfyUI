@@ -7,7 +7,7 @@ navId: minimax-h3-image
 title: "MiniMax H3 Image"
 created: 2026-11-12
 summary: "MiniMax H3 Imageでの画像生成と画像編集"
-seoTitle: "ComfyUIでMiniMax H3 Imageを使う：画像生成と画像編集"
+seoTitle: "ComfyUIでMiniMax H3 Imageを使う：最大16MPの画像生成と画像編集"
 seoDescription: "動画生成モデルMiniMax H3と同じ祖先を持ち、16MPまで一発で生成できる画像生成モデルMiniMax H3 Imageの、ComfyUIでの使い方。推奨設定、必要なモデル、プロンプトの書き方、text2image、Ref2Image、画像編集のworkflowを解説します。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
