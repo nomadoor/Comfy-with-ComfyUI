@@ -155,6 +155,7 @@
     * LivePortrait
     * HunyuanVideo-Foley
   * 3D生成 — 見出しのみ（`2026-11-12-3d-workflows-group.md`）
+    * TRELLIS.2（Pixal3D を含む。`2026-11-13-trellis-2-page.md`）
     * Idol
   * アップスケール・修正 — 親ページあり
     * ESRGAN

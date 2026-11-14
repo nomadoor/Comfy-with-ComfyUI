@@ -2244,17 +2244,17 @@
     "source": "27ebf643100990cb"
   },
   "basic-workflows/idol/idol_hero.mp4": {
-    "key": "videos/7ff98352593bf9e6.mp4",
+    "key": "videos/80d514dc01d8427e.mp4",
     "width": 1024,
     "height": 1024,
     "type": "video/mp4",
-    "bytes": 1691294,
-    "source": "d46958e8826d9f21",
+    "bytes": 2730927,
+    "source": "ae888fa40e5ea6f0",
     "poster": {
-      "key": "images/b7dc559fcdfc42b1.webp",
+      "key": "images/d95a0834c9d07204.webp",
       "width": 1024,
       "height": 1024,
-      "bytes": 50370
+      "bytes": 49284
     }
   },
   "basic-workflows/idol/idol_image_to_gaussian_splat.png": {
@@ -2266,17 +2266,17 @@
     "source": "c87aaf878b86b85b"
   },
   "basic-workflows/idol/idol_turntable.mp4": {
-    "key": "videos/a62f9c554d00d7d6.mp4",
+    "key": "videos/071fb0cb731ad758.mp4",
     "width": 1024,
     "height": 1024,
     "type": "video/mp4",
-    "bytes": 329540,
-    "source": "9b09bb989243979d",
+    "bytes": 474433,
+    "source": "8d1b81bf9bd2a2c7",
     "poster": {
-      "key": "images/93c5d3f947d3fe66.webp",
+      "key": "images/ed992c43b8aa6d72.webp",
       "width": 1024,
       "height": 1024,
-      "bytes": 9846
+      "bytes": 9648
     }
   },
   "basic-workflows/joycaption/legacy_gyazo_c14e87a362f349d3e649af28622262f1.png": {
@@ -6632,6 +6632,190 @@
     "type": "image/webp",
     "bytes": 66470,
     "source": "77235ec0e5120d9e"
+  },
+  "basic-workflows/trellis-2/pixal3d_image2model.png": {
+    "key": "images/5fb0563c35290fff.webp",
+    "width": 9095,
+    "height": 1925,
+    "type": "image/webp",
+    "bytes": 383508,
+    "source": "1a3a23477e32f440"
+  },
+  "basic-workflows/trellis-2/pixal3d_input.png": {
+    "key": "images/09e674dafb037777.webp",
+    "width": 1680,
+    "height": 1248,
+    "type": "image/webp",
+    "bytes": 200204,
+    "source": "abee201750e8137c"
+  },
+  "basic-workflows/trellis-2/pixal3d_model.png": {
+    "key": "images/8af293473f4bed79.webp",
+    "width": 512,
+    "height": 327,
+    "type": "image/webp",
+    "bytes": 6560,
+    "source": "974009882efe989a"
+  },
+  "basic-workflows/trellis-2/pixal3d_moge.png": {
+    "key": "images/9ce79825ecb07738.webp",
+    "width": 1522,
+    "height": 629,
+    "type": "image/webp",
+    "bytes": 38760,
+    "source": "59a51fd6a96a3f9e"
+  },
+  "basic-workflows/trellis-2/pixal3d_multiview_input_back.png": {
+    "key": "images/420b0c5137274b8b.webp",
+    "width": 1024,
+    "height": 1024,
+    "type": "image/webp",
+    "bytes": 127442,
+    "source": "f008ea93d7a69acc"
+  },
+  "basic-workflows/trellis-2/pixal3d_multiview_input_front.png": {
+    "key": "images/5cdc2ddc98bb0796.webp",
+    "width": 1024,
+    "height": 1024,
+    "type": "image/webp",
+    "bytes": 74680,
+    "source": "6d545cd391f863ea"
+  },
+  "basic-workflows/trellis-2/pixal3d_multiview_input_left.png": {
+    "key": "images/76dcea2fc5b0270a.webp",
+    "width": 1024,
+    "height": 1024,
+    "type": "image/webp",
+    "bytes": 97642,
+    "source": "ad04044f2c3ad298"
+  },
+  "basic-workflows/trellis-2/pixal3d_multiview_input_right.png": {
+    "key": "images/600accb03b2d85ae.webp",
+    "width": 1024,
+    "height": 1024,
+    "type": "image/webp",
+    "bytes": 99990,
+    "source": "9370af725fc7b331"
+  },
+  "basic-workflows/trellis-2/pixal3d_multiview_turntable.mp4": {
+    "key": "videos/bcdd251c0dacc74d.mp4",
+    "width": 1024,
+    "height": 1024,
+    "type": "video/mp4",
+    "bytes": 1082977,
+    "source": "acf94712beca6b21",
+    "poster": {
+      "key": "images/defb4e397c09851c.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 33856
+    }
+  },
+  "basic-workflows/trellis-2/pixal3d_multiview_views.png": {
+    "key": "images/c0ec3e58c5795f2c.webp",
+    "width": 3401,
+    "height": 1185,
+    "type": "image/webp",
+    "bytes": 146014,
+    "source": "1420dae05d621401"
+  },
+  "basic-workflows/trellis-2/pixal3d_multiview2model.png": {
+    "key": "images/0f4103061db7104f.webp",
+    "width": 9411,
+    "height": 2042,
+    "type": "image/webp",
+    "bytes": 424914,
+    "source": "547b3b9b0f0efdf7"
+  },
+  "basic-workflows/trellis-2/pixal3d_preprocess.png": {
+    "key": "images/374ee9ff01480440.webp",
+    "width": 1474,
+    "height": 880,
+    "type": "image/webp",
+    "bytes": 55532,
+    "source": "1eb4f94024931b19"
+  },
+  "basic-workflows/trellis-2/pixal3d_turntable.mp4": {
+    "key": "videos/8cc393f8e0467fc2.mp4",
+    "width": 1024,
+    "height": 1024,
+    "type": "video/mp4",
+    "bytes": 1916777,
+    "source": "239be3a2d1ff460a",
+    "poster": {
+      "key": "images/e0b6ca2b0c1d1f05.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 35930
+    }
+  },
+  "basic-workflows/trellis-2/trellis_2_hero.mp4": {
+    "key": "videos/8d92e8a13ec5f0f2.mp4",
+    "width": 1024,
+    "height": 1024,
+    "type": "video/mp4",
+    "bytes": 1536141,
+    "source": "ba49c5a32d4fea9c",
+    "poster": {
+      "key": "images/b7d9fe22204176fa.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 23908
+    }
+  },
+  "basic-workflows/trellis-2/trellis_2_image2model.png": {
+    "key": "images/0fc3f665786992d5.webp",
+    "width": 8441,
+    "height": 1925,
+    "type": "image/webp",
+    "bytes": 329432,
+    "source": "2ea4ee5f11bbc6fd"
+  },
+  "basic-workflows/trellis-2/trellis_2_input.png": {
+    "key": "images/0ef664078ec611f8.webp",
+    "width": 2048,
+    "height": 2048,
+    "type": "image/webp",
+    "bytes": 303304,
+    "source": "d46eb54794e50d8b"
+  },
+  "basic-workflows/trellis-2/trellis_2_mesh_cleanup.png": {
+    "key": "images/d8382ca17826ec69.webp",
+    "width": 1950,
+    "height": 731,
+    "type": "image/webp",
+    "bytes": 54664,
+    "source": "b6d3f551c646c056"
+  },
+  "basic-workflows/trellis-2/trellis_2_preprocess.png": {
+    "key": "images/1302685da044c7d3.webp",
+    "width": 1474,
+    "height": 880,
+    "type": "image/webp",
+    "bytes": 49444,
+    "source": "fda74e02035658ab"
+  },
+  "basic-workflows/trellis-2/trellis_2_sampling_stages.png": {
+    "key": "images/ee0994d0716904ad.webp",
+    "width": 3105,
+    "height": 653,
+    "type": "image/webp",
+    "bytes": 74488,
+    "source": "9ebcf8b9251c34ff"
+  },
+  "basic-workflows/trellis-2/trellis_2_turntable.mp4": {
+    "key": "videos/28631ae18515b0da.mp4",
+    "width": 1024,
+    "height": 1024,
+    "type": "video/mp4",
+    "bytes": 1043257,
+    "source": "0f2e360a87cc7e2d",
+    "poster": {
+      "key": "images/831c25858d745cd7.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 26560
+    }
   },
   "basic-workflows/ultimate-sd-upscale/legacy_gyazo_1bf02bf5900f379735c6a29a7aa1935e.png": {
     "key": "images/e515816b975155bb.webp",

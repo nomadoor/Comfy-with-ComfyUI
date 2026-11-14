@@ -331,6 +331,8 @@ sections:
     title: 3D 生成
     noLink: true
     children:
+    - id: trellis-2
+      title: TRELLIS.2
     - id: idol
       title: Idol
   - id: upscale-fix

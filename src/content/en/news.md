@@ -5,7 +5,7 @@ slug: news
 navId: news
 title: "News"
 created: 2026-01-15
-updated: 2026-11-13
+updated: 2026-11-14
 summary: "Site updates"
 seoTitle: "News: New ComfyUI Guides and Workflows"
 seoDescription: "Update history of Comfy with ComfyUI: newly added model guides and workflows, plus updates to existing articles, listed by date."
@@ -15,6 +15,11 @@ tags:
 ---
 
 <div class="news-list">
+  <a class="news-row" href="/en/basic-workflows/trellis-2/">
+    <span class="news-row__date">2026.11.14</span>
+    <span class="news-row__tag">basic-workflows</span>
+    <span class="news-row__title">Added TRELLIS.2 page</span>
+  </a>
   <a class="news-row" href="/en/basic-workflows/idol/">
     <span class="news-row__date">2026.11.13</span>
     <span class="news-row__tag">basic-workflows</span>
