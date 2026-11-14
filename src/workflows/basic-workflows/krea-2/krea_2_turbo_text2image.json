@@ -1,15 +1,15 @@
 {
   "id": "d8034549-7e0a-40f1-8c2e-de3ffc6f1cae",
   "revision": 0,
-  "last_node_id": 63,
-  "last_link_id": 114,
+  "last_node_id": 64,
+  "last_link_id": 120,
   "nodes": [
     {
       "id": 8,
       "type": "VAEDecode",
       "pos": [
-        1244.7673190371984,
-        188.1918182373047
+        1253.5262254685042,
+        189.2811384827057
       ],
       "size": [
         225,
@@ -22,7 +22,7 @@
         {
           "name": "samples",
           "type": "LATENT",
-          "link": 35
+          "link": 119
         },
         {
           "name": "vae",
@@ -50,11 +50,11 @@
       "id": 37,
       "type": "UNETLoader",
       "pos": [
-        529.8914031982422,
+        550.1933166111628,
         34.805270385742176
       ],
       "size": [
-        305.3782043457031,
+        291.27534251932514,
         82
       ],
       "flags": {},
@@ -67,7 +67,7 @@
           "type": "MODEL",
           "slot_index": 0,
           "links": [
-            105
+            118
           ]
         }
       ],
@@ -77,18 +77,18 @@
         "ver": "0.3.33",
         "models": [
           {
-            "name": "krea2_turbo_fp8_scaled.safetensors",
-            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors",
+            "name": "krea2_turbo_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/diffusion_models/krea2_turbo_int8_convrot.safetensors",
             "directory": "diffusion_models"
           }
         ]
       },
       "widgets_values": [
-        "krea2_turbo_fp8_scaled.safetensors",
+        "krea2_turbo_int8_convrot.safetensors",
         "default"
       ],
       "widgets_values_named": {
-        "unet_name": "krea2_turbo_fp8_scaled.safetensors",
+        "unet_name": "krea2_turbo_int8_convrot.safetensors",
         "weight_dtype": "default"
       },
       "color": "#323",
@@ -98,11 +98,11 @@
       "id": 38,
       "type": "CLIPLoader",
       "pos": [
-        60.288665771484375,
-        296.74468994140625
+        92.4381924431598,
+        187.96387713061387
       ],
       "size": [
-        301.3524169921875,
+        291.27534251932514,
         106
       ],
       "flags": {},
@@ -125,19 +125,19 @@
         "ver": "0.3.33",
         "models": [
           {
-            "name": "qwen3vl_4b_fp8_scaled.safetensors",
-            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors",
+            "name": "qwen3vl_4b_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors",
             "directory": "text_encoders"
           }
         ]
       },
       "widgets_values": [
-        "qwen3vl_4b_fp8_scaled.safetensors",
+        "qwen3vl_4b_int8_convrot.safetensors",
         "krea2",
         "default"
       ],
       "widgets_values_named": {
-        "clip_name": "qwen3vl_4b_fp8_scaled.safetensors",
+        "clip_name": "qwen3vl_4b_int8_convrot.safetensors",
         "type": "krea2",
         "device": "default"
       },
@@ -148,7 +148,7 @@
       "id": 62,
       "type": "EmptyLatentImage",
       "pos": [
-        598.2696075439453,
+        618.5715209568659,
         534.0728606096231
       ],
       "size": [
@@ -181,7 +181,7 @@
           "name": "LATENT",
           "type": "LATENT",
           "links": [
-            112
+            120
           ]
         }
       ],
@@ -202,81 +202,11 @@
       }
     },
     {
-      "id": 3,
-      "type": "KSampler",
-      "pos": [
-        882.5184632905718,
-        188.1918182373047
-      ],
-      "size": [
-        315,
-        262
-      ],
-      "flags": {},
-      "order": 8,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 105
-        },
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 46
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "link": 114
-        },
-        {
-          "name": "latent_image",
-          "type": "LATENT",
-          "link": 112
-        }
-      ],
-      "outputs": [
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "slot_index": 0,
-          "links": [
-            35
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "KSampler",
-        "cnr_id": "comfy-core",
-        "ver": "0.3.33"
-      },
-      "widgets_values": [
-        12345,
-        "fixed",
-        8,
-        1,
-        "euler",
-        "simple",
-        1
-      ],
-      "widgets_values_named": {
-        "seed": 12345,
-        "control_after_generate": "fixed",
-        "steps": 8,
-        "cfg": 1,
-        "sampler_name": "euler",
-        "scheduler": "simple",
-        "denoise": 1
-      }
-    },
-    {
       "id": 60,
       "type": "ResolutionSelector",
       "pos": [
-        290.53993646251007,
-        559.2598267434913
+        305.9944819170554,
+        556.0728606096231
       ],
       "size": [
         270,
@@ -322,8 +252,8 @@
       "id": 6,
       "type": "CLIPTextEncode",
       "pos": [
-        416.7513025457208,
-        186
+        437.05321595864143,
+        187.96387713061384
       ],
       "size": [
         418.5183049982245,
@@ -345,8 +275,8 @@
           "type": "CONDITIONING",
           "slot_index": 0,
           "links": [
-            46,
-            113
+            113,
+            116
           ]
         }
       ],
@@ -367,12 +297,12 @@
       "id": 56,
       "type": "SaveImage",
       "pos": [
-        1517.016174783825,
-        188.1918182373047
+        1531.8659064646608,
+        189.2811384827057
       ],
       "size": [
-        891.9094287281766,
-        655.7764006766484
+        659.9959887281768,
+        517.8810423723186
       ],
       "flags": {},
       "order": 10,
@@ -406,12 +336,12 @@
       "id": 55,
       "type": "MarkdownNote",
       "pos": [
-        -392.5117560718194,
+        -377.8707560718192,
         34.805270385742176
       ],
       "size": [
-        394.1592553177045,
-        402.6953683673596
+        398.14926666259765,
+        452.71049774169927
       ],
       "flags": {},
       "order": 3,
@@ -420,10 +350,10 @@
       "outputs": [],
       "properties": {},
       "widgets_values": [
-        "## models\n\n- diffusion_models\n  - [krea2_turbo_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors) (13.1 GB)\n- text_encoders\n  - [qwen3vl_4b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors) (5.24 GB)\n- vae\n  - [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/vae/qwen_image_vae.safetensors) (254 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── krea2_turbo_fp8_scaled.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_4b_fp8_scaled.safetensors\n    └── 📂vae/\n        └── qwen_image_vae.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/krea-2/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/krea-2/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/krea-2/)"
+        "## models\n\n- diffusion_models\n  - [krea2_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/diffusion_models/krea2_turbo_int8_convrot.safetensors) (13.5 GB)\n- text_encoders\n  - [qwen3vl_4b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors) (4.86 GB)\n- vae\n  - [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/vae/qwen_image_vae.safetensors) (254 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── krea2_turbo_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_4b_int8_convrot.safetensors\n    └── 📂vae/\n        └── qwen_image_vae.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/krea-2/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/krea-2/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/krea-2/)"
       ],
       "widgets_values_named": {
-        "text": "## models\n\n- diffusion_models\n  - [krea2_turbo_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors) (13.1 GB)\n- text_encoders\n  - [qwen3vl_4b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors) (5.24 GB)\n- vae\n  - [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/vae/qwen_image_vae.safetensors) (254 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── krea2_turbo_fp8_scaled.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_4b_fp8_scaled.safetensors\n    └── 📂vae/\n        └── qwen_image_vae.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/krea-2/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/krea-2/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/krea-2/)"
+        "text": "## models\n\n- diffusion_models\n  - [krea2_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/diffusion_models/krea2_turbo_int8_convrot.safetensors) (13.5 GB)\n- text_encoders\n  - [qwen3vl_4b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors) (4.86 GB)\n- vae\n  - [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/vae/qwen_image_vae.safetensors) (254 MB)\n\n```text\n📂ComfyUI/\n└── 📂models/\n    ├── 📂diffusion_models/\n    │   └── krea2_turbo_int8_convrot.safetensors\n    ├── 📂text_encoders/\n    │   └── qwen3vl_4b_int8_convrot.safetensors\n    └── 📂vae/\n        └── qwen_image_vae.safetensors\n```\n\n## guide\n\n- [日本語](https://comfyui.nomadoor.net/ja/basic-workflows/krea-2/)\n- [English](https://comfyui.nomadoor.net/en/basic-workflows/krea-2/)\n- [中文](https://comfyui.nomadoor.net/zh/basic-workflows/krea-2/)"
       },
       "color": "#323",
       "bgcolor": "#535"
@@ -432,11 +362,11 @@
       "id": 39,
       "type": "VAELoader",
       "pos": [
-        935.263849032759,
+        908.9112019530226,
         58.805270385742176
       ],
       "size": [
-        262.2546142578128,
+        291.27534251932514,
         58
       ],
       "flags": {},
@@ -478,11 +408,11 @@
       "id": 63,
       "type": "ConditioningZeroOut",
       "pos": [
-        609.1348419189453,
-        425.28113848270567
+        618.5715209568659,
+        436.9142538647514
       ],
       "size": [
-        226.134765625,
+        237,
         26
       ],
       "flags": {},
@@ -500,33 +430,84 @@
           "name": "CONDITIONING",
           "type": "CONDITIONING",
           "links": [
-            114
+            117
           ]
         }
       ],
       "properties": {
-        "cnr_id": "comfy-core",
-        "Node name for S&R": "ConditioningZeroOut"
+        "Node name for S&R": "ConditioningZeroOut",
+        "cnr_id": "comfy-core"
+      }
+    },
+    {
+      "id": 64,
+      "type": "KSampler",
+      "pos": [
+        908.9112019530224,
+        189.28113848270567
+      ],
+      "size": [
+        291.27534251932514,
+        262
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 118
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 116
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 117
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 120
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            119
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        12345,
+        "fixed",
+        8,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 12345,
+        "control_after_generate": "fixed",
+        "steps": 8,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
       }
     }
   ],
   "links": [
-    [
-      35,
-      3,
-      0,
-      8,
-      0,
-      "LATENT"
-    ],
-    [
-      46,
-      6,
-      0,
-      3,
-      1,
-      "CONDITIONING"
-    ],
     [
       74,
       38,
@@ -552,14 +533,6 @@
       "IMAGE"
     ],
     [
-      105,
-      37,
-      0,
-      3,
-      0,
-      "MODEL"
-    ],
-    [
       110,
       60,
       0,
@@ -576,14 +549,6 @@
       "INT"
     ],
     [
-      112,
-      62,
-      0,
-      3,
-      3,
-      "LATENT"
-    ],
-    [
       113,
       6,
       0,
@@ -592,25 +557,57 @@
       "CONDITIONING"
     ],
     [
-      114,
+      116,
+      6,
+      0,
+      64,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      117,
       63,
       0,
-      3,
+      64,
       2,
       "CONDITIONING"
+    ],
+    [
+      118,
+      37,
+      0,
+      64,
+      0,
+      "MODEL"
+    ],
+    [
+      119,
+      64,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      120,
+      62,
+      0,
+      64,
+      3,
+      "LATENT"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.6830134553650705,
+      "scale": 0.6830134553650707,
       "offset": [
-        442.29281748818846,
-        282.7992610389731
+        589.2385255363256,
+        704.1025485651923
       ]
     },
-    "frontendVersion": "1.53.6",
+    "frontendVersion": "1.58.5",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,
