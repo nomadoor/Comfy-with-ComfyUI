@@ -40,11 +40,11 @@
         "ver": "0.33.0"
       },
       "widgets_values": [
-        "pixal3d_multiview_input_front.png",
+        "pixal3d_multiview_input_front.webp",
         "image"
       ],
       "widgets_values_named": {
-        "image": "pixal3d_multiview_input_front.png",
+        "image": "pixal3d_multiview_input_front.webp",
         "upload": "image"
       },
       "color": "#2a363b",
@@ -2853,11 +2853,11 @@
         "ver": "0.33.0"
       },
       "widgets_values": [
-        "pixal3d_multiview_input_left.png",
+        "pixal3d_multiview_input_left.webp",
         "image"
       ],
       "widgets_values_named": {
-        "image": "pixal3d_multiview_input_left.png",
+        "image": "pixal3d_multiview_input_left.webp",
         "upload": "image"
       },
       "color": "#2a363b",
@@ -2899,11 +2899,11 @@
         "ver": "0.33.0"
       },
       "widgets_values": [
-        "pixal3d_multiview_input_back.png",
+        "pixal3d_multiview_input_back.webp",
         "image"
       ],
       "widgets_values_named": {
-        "image": "pixal3d_multiview_input_back.png",
+        "image": "pixal3d_multiview_input_back.webp",
         "upload": "image"
       },
       "color": "#2a363b",
@@ -2945,11 +2945,11 @@
         "ver": "0.33.0"
       },
       "widgets_values": [
-        "pixal3d_multiview_input_right.png",
+        "pixal3d_multiview_input_right.webp",
         "image"
       ],
       "widgets_values_named": {
-        "image": "pixal3d_multiview_input_right.png",
+        "image": "pixal3d_multiview_input_right.webp",
         "upload": "image"
       },
       "color": "#2a363b",

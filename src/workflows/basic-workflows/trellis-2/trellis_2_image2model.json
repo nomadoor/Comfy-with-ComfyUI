@@ -41,11 +41,11 @@
         "ver": "0.33.0"
       },
       "widgets_values": [
-        "trellis_2_input.png",
+        "trellis_2_input.webp",
         "image"
       ],
       "widgets_values_named": {
-        "image": "trellis_2_input.png",
+        "image": "trellis_2_input.webp",
         "upload": "image"
       },
       "color": "#2a363b",
@@ -563,7 +563,7 @@
         "models": [
           {
             "name": "trellis_2_shape_vae_bf16.safetensors",
-            "url": "https://huggingface.co/Comfy-Org/TRELLIS.2/resolve/main/vae/trellis_2_shape_vae_bf16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Pixal3D/resolve/main/vae/trellis_2_shape_vae_bf16.safetensors",
             "directory": "vae"
           }
         ]
@@ -1220,7 +1220,7 @@
         "models": [
           {
             "name": "trellis_2_texture_vae_bf16.safetensors",
-            "url": "https://huggingface.co/Comfy-Org/TRELLIS.2/resolve/main/vae/trellis_2_texture_vae_bf16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Pixal3D/resolve/main/vae/trellis_2_texture_vae_bf16.safetensors",
             "directory": "vae"
           }
         ]

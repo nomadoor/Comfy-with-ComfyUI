@@ -27,6 +27,8 @@ The output is a 3D model with color and surface detail (a mesh with PBR textures
 
 It projects the image features into 3D space pixel by pixel before generating, so the input image and the 3D model line up pixel for pixel, and the shape stays faithful to the input image.
 
+{% runpod %}
+
 ---
 
 ## Downloading the models

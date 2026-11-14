@@ -41,11 +41,11 @@
         "ver": "0.33.0"
       },
       "widgets_values": [
-        "pixal3d_input.png",
+        "pixal3d_input.webp",
         "image"
       ],
       "widgets_values_named": {
-        "image": "pixal3d_input.png",
+        "image": "pixal3d_input.webp",
         "upload": "image"
       },
       "color": "#2a363b",
