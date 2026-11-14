@@ -6,7 +6,7 @@ slug: krea-2
 navId: krea-2
 title: "Krea 2"
 created: 2026-06-24
-updated: 2026-06-24
+updated: 2026-11-14
 summary: "用 Krea 2 Turbo 生成图像"
 seoTitle: "在 ComfyUI 中使用 Krea 2：不像 AI 的精美图像"
 seoDescription: "以生成没有 AI 感的精美图像为目标的 Krea 2 Open-Source（Turbo）在 ComfyUI 中的用法。介绍模型下载、text2image 以及官方风格 LoRA 工作流。"
@@ -39,9 +39,9 @@ tags: []
 ## 下载模型
 
 - diffusion_models
-  - [krea2_turbo_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors) (13.1 GB)
+  - [krea2_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/diffusion_models/krea2_turbo_int8_convrot.safetensors) (13.5 GB)
 - text_encoders
-  - [qwen3vl_4b_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors) (5.24 GB)
+  - [qwen3vl_4b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/text_encoders/qwen3vl_4b_int8_convrot.safetensors) (4.86 GB)
 - vae
   - [qwen_image_vae.safetensors](https://huggingface.co/Comfy-Org/Krea-2/blob/main/vae/qwen_image_vae.safetensors) (254 MB)
 
@@ -49,9 +49,9 @@ tags: []
 📂ComfyUI/
 └── 📂models/
     ├── 📂diffusion_models/
-    │   └── krea2_turbo_fp8_scaled.safetensors
+    │   └── krea2_turbo_int8_convrot.safetensors
     ├── 📂text_encoders/
-    │   └── qwen3vl_4b_fp8_scaled.safetensors
+    │   └── qwen3vl_4b_int8_convrot.safetensors
     └── 📂vae/
         └── qwen_image_vae.safetensors
 ```
