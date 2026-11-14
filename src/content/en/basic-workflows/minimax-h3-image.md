@@ -7,7 +7,7 @@ navId: minimax-h3-image
 title: "MiniMax H3 Image"
 created: 2026-11-12
 summary: "Image generation and editing with MiniMax H3 Image"
-seoTitle: "MiniMax H3 Image in ComfyUI: Image Generation and Editing"
+seoTitle: "MiniMax H3 Image in ComfyUI: Up to 16 MP Generation and Editing"
 seoDescription: "MiniMax H3 Image in ComfyUI, a sibling of MiniMax H3 that generates up to 16 MP in one pass. Settings, models, prompts, and text2image, Ref2Image, and editing workflows."
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:

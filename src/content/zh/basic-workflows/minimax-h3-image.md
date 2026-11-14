@@ -7,7 +7,7 @@ navId: minimax-h3-image
 title: "MiniMax H3 Image"
 created: 2026-11-12
 summary: "用 MiniMax H3 Image 生成和编辑图像"
-seoTitle: "在 ComfyUI 中使用 MiniMax H3 Image：图像生成与图像编辑"
+seoTitle: "在 ComfyUI 中使用 MiniMax H3 Image：最高 16MP 的图像生成与编辑"
 seoDescription: "MiniMax H3 Image 与视频生成模型 MiniMax H3 同源，可一次生成高达 16MP 的图像。本文介绍它在 ComfyUI 中的用法，包括推荐设置、所需模型、提示词写法，以及 text2image、Ref2Image 和图像编辑的工作流。"
 permalink: "/{{ lang }}/{{ section }}/{{ slug }}/"
 hero:
