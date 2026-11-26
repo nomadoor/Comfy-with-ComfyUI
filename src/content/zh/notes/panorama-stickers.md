@@ -18,6 +18,10 @@ hero:
 
 ## ComfyUI Panorama Stickers
 
+> [!WARNING]
+> Panorama Stickers 已在 2.0 中全面重做。现在以 **Panorama Studio** 为核心，可以在全景中放置图像、视频和 3D，并从任意视角拍摄。<br>
+> 最新用法请参阅 [YouTube 播放列表](https://www.youtube.com/playlist?list=PLAmiRv5Kxgh8)（英语）。
+
 ![](/media/notes/panorama-stickers/legacy_gyazo_748e50cd59976f45acabd7cf39d45bc6.mp4){media=player}
 
 这是一个专用于 **FLUX.2 Klein 4B/9B 360 ERP Outpaint LoRA** 的 UI，可以根据参考图像制作 360 度全景图像。

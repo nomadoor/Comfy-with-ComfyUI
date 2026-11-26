@@ -18,6 +18,10 @@ hero:
 
 ## ComfyUI Panorama Stickers
 
+> [!WARNING]
+> Panorama Stickers は 2.0 で全面的に作り直しました。今は、パノラマに画像・動画・3D を置いて好きな視点から撮る **Panorama Studio** が中心です。<br>
+> 最新の使い方は [YouTube の再生リスト](https://www.youtube.com/playlist?list=PLCEQ7gzDQYVs) をご覧ください。
+
 ![](/media/notes/panorama-stickers/legacy_gyazo_748e50cd59976f45acabd7cf39d45bc6.mp4){media=player}
 
 参照画像から360度パノラマ画像を作る **FLUX.2 Klein 4B/9B 360 ERP Outpaint LoRA** 専用のUIです。
