@@ -18,6 +18,10 @@ hero:
 
 ## ComfyUI Panorama Stickers
 
+> [!WARNING]
+> Panorama Stickers has been completely rebuilt in 2.0. It now centers on **Panorama Studio**, where you place images, videos, and 3D in a panorama and shoot from any viewpoint.<br>
+> For the latest usage, please see the [YouTube playlist](https://www.youtube.com/playlist?list=PLAmiRv5Kxgh8).
+
 ![](/media/notes/panorama-stickers/legacy_gyazo_748e50cd59976f45acabd7cf39d45bc6.mp4){media=player}
 
 This is a UI built specifically for the **FLUX.2 Klein 4B/9B 360 ERP Outpaint LoRA**, which creates a 360° panorama from reference images.
